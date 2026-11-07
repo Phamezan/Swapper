@@ -1,0 +1,4370 @@
+{
+  "schema": 1,
+  "champion": 3,
+  "generatedAt": "2026-11-07T13:25:14.592Z",
+  "guides": [
+    {
+      "champion": 3,
+      "enemy": 84,
+      "lane": "mid",
+      "patch": "26.21",
+      "reviewed": false,
+      "difficulty": "Hard",
+      "favoredWhen": "She outranges and outscales you. Concede the 1v1, answer with E, and win on roams.",
+      "keyTips": [
+        {
+          "text": "She outranges and outscales: concede the 1v1, win elsewhere.",
+          "scope": "pair",
+          "sourceIds": [
+            "anguish"
+          ]
+        },
+        {
+          "text": "When you E in, she double-Ws Q-E backwards: expect the retreat combo.",
+          "scope": "pair",
+          "sourceIds": [
+            "anguish"
+          ],
+          "abilityKeys": [
+            {
+              "champion": 3,
+              "key": "E"
+            },
+            {
+              "champion": 84,
+              "key": "W"
+            }
+          ]
+        },
+        {
+          "text": "She shoves when you ult away: your roam costs plates.",
+          "scope": "pair",
+          "sourceIds": [
+            "anguish"
+          ],
+          "abilityKeys": [
+            {
+              "champion": 3,
+              "key": "R"
+            }
+          ]
+        }
+      ],
+      "enemyTips": {},
+      "sections": {
+        "overview": {
+          "tips": []
+        },
+        "early-lane": {
+          "tips": [
+            {
+              "text": "Take care early: her range beats yours from level 1.",
+              "scope": "pair",
+              "sourceIds": [
+                "anguish"
+              ]
+            },
+            {
+              "text": "Farm under tower: concede CS before HP.",
+              "scope": "pair",
+              "sourceIds": [
+                "anguish"
+              ]
+            }
+          ]
+        },
+        "mid-lane": {
+          "tips": [
+            {
+              "text": "Ult away only on crashed waves: she shoves every roam.",
+              "scope": "pair",
+              "sourceIds": [
+                "anguish"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 3,
+                  "key": "R"
+                }
+              ]
+            },
+            {
+              "text": "All-in with jungle: your E needs help to stick.",
+              "scope": "pair",
+              "sourceIds": [
+                "anguish"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 3,
+                  "key": "E"
+                }
+              ]
+            }
+          ]
+        },
+        "win-condition": {
+          "tips": [
+            {
+              "text": "Roams converted plus lane conceded: the Akali who never dove you never wins.",
+              "scope": "pair",
+              "sourceIds": [
+                "anguish"
+              ]
+            }
+          ]
+        }
+      },
+      "itemization": [],
+      "sources": [
+        {
+          "id": "anguish",
+          "author": "Anguish333",
+          "rankClaim": "Master (profile badge; title claims 2000LP GrandMaster EUW and Challenger EUNE) · Akali main",
+          "rank": "master",
+          "url": "https://www.mobafire.com/league-of-legends/build/26-20-anguish-2000lp-grandmasters-euw-challenger-eune-akali-mid-top-s16-guide-every-matchup-item-rune-explained-625064",
+          "kind": "mobafire"
+        }
+      ]
+    },
+    {
+      "champion": 3,
+      "enemy": 103,
+      "lane": "mid",
+      "patch": "26.21",
+      "reviewed": false,
+      "difficulty": "Hard",
+      "favoredWhen": "She pokes constantly and you cannot engage solo. Shield up, farm, and roam on shove.",
+      "keyTips": [
+        {
+          "text": "She pokes you constantly and you cannot engage her alone: respect her mobility plus Charm.",
+          "scope": "pair",
+          "sourceIds": [
+            "hexeria"
+          ],
+          "abilityKeys": [
+            {
+              "champion": 103,
+              "key": "E"
+            }
+          ]
+        },
+        {
+          "text": "Dodge her Charm and the true-damage return of her Q: sidestep both halves.",
+          "scope": "pair",
+          "sourceIds": [
+            "hexeria"
+          ],
+          "abilityKeys": [
+            {
+              "champion": 103,
+              "key": "E"
+            },
+            {
+              "champion": 103,
+              "key": "Q"
+            }
+          ]
+        },
+        {
+          "text": "Go Doran's Shield plus Second Wind: farm, play safe, play with your jungler.",
+          "scope": "pair",
+          "sourceIds": [
+            "hexeria"
+          ],
+          "itemIds": [
+            1054
+          ]
+        }
+      ],
+      "enemyTips": {},
+      "sections": {
+        "overview": {
+          "tips": []
+        },
+        "early-lane": {
+          "tips": [
+            {
+              "text": "Concede the early poke: DShield plus potions outlast her mana.",
+              "scope": "pair",
+              "sourceIds": [
+                "hexeria"
+              ]
+            },
+            {
+              "text": "Trade on your Q (about {cd:3:Q}): the cooldown is your window.",
+              "scope": "pair",
+              "sourceIds": [
+                "peng04"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 3,
+                  "key": "Q"
+                }
+              ]
+            }
+          ]
+        },
+        "mid-lane": {
+          "tips": [
+            {
+              "text": "When her Charm is spent, all-in: E dash into W taunt.",
+              "scope": "pair",
+              "sourceIds": [
+                "peng04"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 103,
+                  "key": "E"
+                },
+                {
+                  "champion": 3,
+                  "key": "E"
+                },
+                {
+                  "champion": 3,
+                  "key": "W"
+                }
+              ]
+            },
+            {
+              "text": "Her W speed answers your E: bait before committing.",
+              "scope": "pair",
+              "sourceIds": [
+                "peng04"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 103,
+                  "key": "W"
+                },
+                {
+                  "champion": 3,
+                  "key": "E"
+                }
+              ]
+            }
+          ]
+        },
+        "win-condition": {
+          "tips": [
+            {
+              "text": "Farmed plus roamed: you outscale her and kill her easily later.",
+              "scope": "pair",
+              "sourceIds": [
+                "hexeria"
+              ]
+            }
+          ]
+        }
+      },
+      "itemization": [],
+      "sources": [
+        {
+          "id": "hexeria",
+          "author": "Hexeria",
+          "rankClaim": "Masters (title); Master (profile badge) · Galio main",
+          "rank": "master",
+          "url": "https://www.mobafire.com/league-of-legends/build/26-21-hexerias-detailed-masters-guide-to-galio-630181",
+          "kind": "mobafire"
+        },
+        {
+          "id": "peng04",
+          "author": "Peng04",
+          "rankClaim": "Challenger · Ahri main",
+          "rank": "challenger",
+          "url": "https://www.mobafire.com/league-of-legends/build/26-20-pengs-ahri-guide-5-1mil-points-13x-challenger-648700",
+          "kind": "mobafire"
+        },
+        {
+          "id": "shok-ahri",
+          "author": "ShokLoL",
+          "rankClaim": "Rank 1 Challenger · Ahri main",
+          "rank": "challenger",
+          "url": "https://www.mobafire.com/league-of-legends/build/26-5-shoks-rank-1-challenger-ahri-guide-635065",
+          "kind": "mobafire"
+        }
+      ]
+    },
+    {
+      "champion": 3,
+      "enemy": 134,
+      "lane": "mid",
+      "patch": "26.21",
+      "reviewed": false,
+      "difficulty": "Hard",
+      "favoredWhen": "She dictates every trade and her poke is free. Survive it, call friends, and tax her roams.",
+      "keyTips": [
+        {
+          "text": "She dictates every trade: concede the poke, contest the map.",
+          "scope": "pair",
+          "sourceIds": [
+            "shok"
+          ]
+        },
+        {
+          "text": "Her Aery poke is free against your kit: concede early CS to stay healthy.",
+          "scope": "pair",
+          "sourceIds": [
+            "shok"
+          ]
+        },
+        {
+          "text": "Your gank setup is the threat: weak laners call friends.",
+          "scope": "pair",
+          "sourceIds": [
+            "shok"
+          ]
+        }
+      ],
+      "enemyTips": {},
+      "sections": {
+        "overview": {
+          "tips": []
+        },
+        "early-lane": {
+          "tips": [
+            {
+              "text": "She establishes poke dominance early: you cannot answer.",
+              "scope": "pair",
+              "sourceIds": [
+                "shok"
+              ]
+            },
+            {
+              "text": "Give CS, keep HP: her poke only matters if it sticks.",
+              "scope": "pair",
+              "sourceIds": [
+                "shok"
+              ]
+            }
+          ]
+        },
+        "mid-lane": {
+          "tips": [
+            {
+              "text": "Her shoves answer your roams: crash before you move.",
+              "scope": "pair",
+              "sourceIds": [
+                "shok"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 3,
+                  "key": "R"
+                }
+              ]
+            },
+            {
+              "text": "She scales greedy with First Strike: trade into it to spoil the banks.",
+              "scope": "pair",
+              "sourceIds": [
+                "shok"
+              ]
+            }
+          ]
+        },
+        "win-condition": {
+          "tips": [
+            {
+              "text": "Setup converted plus poke survived: the Syndra who never killed you never carries.",
+              "scope": "pair",
+              "sourceIds": [
+                "shok"
+              ]
+            }
+          ]
+        }
+      },
+      "itemization": [],
+      "sources": [
+        {
+          "id": "shok",
+          "author": "ShokLoL",
+          "rankClaim": "Rank 1 Challenger · Syndra main",
+          "rank": "challenger",
+          "url": "https://www.mobafire.com/league-of-legends/build/26-17-shoks-rank-1-challenger-syndra-guide-602710",
+          "kind": "mobafire"
+        }
+      ]
+    },
+    {
+      "champion": 3,
+      "enemy": 238,
+      "lane": "mid",
+      "patch": "26.21",
+      "reviewed": false,
+      "difficulty": "Hard",
+      "favoredWhen": "He outranges and outscales you. Weather the poke, bait his E answers, and convert roams.",
+      "keyTips": [
+        {
+          "text": "He outranges and outscales: never his melee, always your patience.",
+          "scope": "pair",
+          "sourceIds": [
+            "aikopanda"
+          ]
+        },
+        {
+          "text": "His double-W Q-E backwards answers your E: expect retreating damage every engage.",
+          "scope": "pair",
+          "sourceIds": [
+            "aikopanda"
+          ],
+          "abilityKeys": [
+            {
+              "champion": 3,
+              "key": "E"
+            },
+            {
+              "champion": 238,
+              "key": "W"
+            }
+          ]
+        },
+        {
+          "text": "Keep CS and XP even or better: parity now denies his sidelane later.",
+          "scope": "pair",
+          "sourceIds": [
+            "v222"
+          ]
+        }
+      ],
+      "enemyTips": {
+        "early-lane": [
+          {
+            "text": "Zed often places Living Shadow before Death Mark so he can swap away from skillshots. Hold your crowd control until he has used the swap.",
+            "scope": "enemy",
+            "sourceIds": [
+              "aikopanda"
+            ],
+            "patch": "26.21",
+            "abilityKeys": [
+              {
+                "champion": 238,
+                "key": "W"
+              },
+              {
+                "champion": 238,
+                "key": "R"
+              }
+            ]
+          }
+        ],
+        "win-condition": [
+          {
+            "text": "Death Mark always lands Zed behind his target. Pre-aim crowd control and escapes behind you, not toward where he cast it.",
+            "scope": "enemy",
+            "sourceIds": [
+              "peng04"
+            ],
+            "patch": "26.21",
+            "abilityKeys": [
+              {
+                "champion": 238,
+                "key": "R"
+              }
+            ]
+          }
+        ]
+      },
+      "sections": {
+        "overview": {
+          "tips": []
+        },
+        "early-lane": {
+          "tips": [
+            {
+              "text": "He pokes and backs off: never follow into extended fighting.",
+              "scope": "pair",
+              "sourceIds": [
+                "v222"
+              ]
+            },
+            {
+              "text": "His backwards WEQ answers every E: no exceptions, so bait first.",
+              "scope": "pair",
+              "sourceIds": [
+                "v222"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 238,
+                  "key": "W"
+                },
+                {
+                  "champion": 3,
+                  "key": "E"
+                }
+              ]
+            }
+          ]
+        },
+        "mid-lane": {
+          "tips": [
+            {
+              "text": "Death Mark always lands Zed behind his target. Pre-aim crowd control and escapes behind you, not toward where he cast it.",
+              "scope": "pair",
+              "sourceIds": [
+                "peng04"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 238,
+                  "key": "R"
+                }
+              ]
+            },
+            {
+              "text": "When you ult away, he shoves: your roam is his CS lead.",
+              "scope": "pair",
+              "sourceIds": [
+                "aikopanda"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 3,
+                  "key": "R"
+                }
+              ]
+            }
+          ]
+        },
+        "win-condition": {
+          "tips": [
+            {
+              "text": "Roams converted plus parity kept: the Zed who never sidelaned you never ends it.",
+              "scope": "pair",
+              "sourceIds": [
+                "v222"
+              ]
+            }
+          ]
+        }
+      },
+      "itemization": [],
+      "sources": [
+        {
+          "id": "aikopanda",
+          "author": "AikoPanda",
+          "rankClaim": "Zed main",
+          "url": "https://www.mobafire.com/league-of-legends/build/26-20-video-guides-hidden-combos-all-matchups-zed-all-in-one-guide-652800",
+          "kind": "mobafire"
+        },
+        {
+          "id": "v222",
+          "author": "V222",
+          "rankClaim": "Challenger EUW · Zed main",
+          "rank": "challenger",
+          "url": "https://www.mobafire.com/league-of-legends/build/all-matchups-26-14-zed-guide-2000lp-euw-challenger-652354",
+          "kind": "mobafire"
+        },
+        {
+          "id": "peng04",
+          "author": "Peng04",
+          "rankClaim": "Challenger · Ahri main",
+          "rank": "challenger",
+          "url": "https://www.mobafire.com/league-of-legends/build/26-20-pengs-ahri-guide-5-1mil-points-13x-challenger-648700",
+          "kind": "mobafire"
+        }
+      ]
+    }
+  ],
+  "general": [
+    {
+      "champion": 3,
+      "lane": "mid",
+      "patch": "26.21",
+      "reviewed": false,
+      "keyTips": [
+        {
+          "text": "Lane safely by collecting minions and punishing opponent mistakes instead of forcing early duels.",
+          "scope": "champion",
+          "sourceIds": [
+            "hexeria"
+          ]
+        },
+        {
+          "text": "Expect ranged mid laners to pressure Galio before he can reach them with engage.",
+          "scope": "champion",
+          "sourceIds": [
+            "hexeria"
+          ]
+        },
+        {
+          "text": "Join skirmishes over holding side lanes, since control plus the ultimate can flip an ally fight.",
+          "scope": "champion",
+          "sourceIds": [
+            "hexeria"
+          ],
+          "abilityKeys": [
+            {
+              "champion": 3,
+              "key": "R"
+            }
+          ]
+        }
+      ],
+      "sections": {
+        "overview": {
+          "tips": []
+        },
+        "early-lane": {
+          "tips": [
+            {
+              "text": "Call the jungler when an opening shows; knock-up into taunt sets up the gank.",
+              "scope": "champion",
+              "sourceIds": [
+                "hexeria"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 3,
+                  "key": "E"
+                },
+                {
+                  "champion": 3,
+                  "key": "W"
+                }
+              ]
+            },
+            {
+              "text": "Max Q in a solo lane to reset the passive faster, add percentage-health damage, and clear waves sooner.",
+              "scope": "champion",
+              "sourceIds": [
+                "hexeria"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 3,
+                  "key": "Q"
+                }
+              ]
+            },
+            {
+              "text": "Shove the wave under the enemy turret with Q and passive hits, then look to roam.",
+              "scope": "champion",
+              "sourceIds": [
+                "hexeria"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 3,
+                  "key": "Q"
+                }
+              ]
+            },
+            {
+              "text": "Weave Colossal Smash between spells whenever possible, since landed abilities shorten its cooldown and skipped hits waste damage.",
+              "scope": "champion",
+              "sourceIds": [
+                "hexeria"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 3,
+                  "key": "P"
+                }
+              ]
+            },
+            {
+              "text": "Run the realistic engage of E knock-up into a passive hit, W taunt, Q, and another passive hit.",
+              "scope": "champion",
+              "sourceIds": [
+                "hexeria"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 3,
+                  "key": "E"
+                },
+                {
+                  "champion": 3,
+                  "key": "W"
+                },
+                {
+                  "champion": 3,
+                  "key": "Q"
+                }
+              ]
+            },
+            {
+              "text": "Take Flash default with Ghost second for sticking or escaping, or Teleport for hard lanes and faster joins.",
+              "scope": "champion",
+              "sourceIds": [
+                "hexeria"
+              ]
+            }
+          ]
+        },
+        "mid-lane": {
+          "tips": [
+            {
+              "text": "Turn pushed waves into first moves toward teammates and river plays across his wave-pressure, roam, invade, and teamfight strengths.",
+              "scope": "champion",
+              "sourceIds": [
+                "hexeria"
+              ]
+            },
+            {
+              "text": "Respect long cooldowns by valuing haste; after an early engage dump, little remains until spells return.",
+              "scope": "champion",
+              "sourceIds": [
+                "hexeria"
+              ]
+            },
+            {
+              "text": "Stack haste and cycle the passive reset to sustain damage and control through fights.",
+              "scope": "champion",
+              "sourceIds": [
+                "hexeria"
+              ]
+            },
+            {
+              "text": "Drop Hero's Entrance to shield an ally or flip a fight by knocking up nearby enemies.",
+              "scope": "champion",
+              "sourceIds": [
+                "hexeria"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 3,
+                  "key": "R"
+                }
+              ]
+            }
+          ]
+        },
+        "win-condition": {
+          "tips": [
+            {
+              "text": "Choose each fight between locking opponents down and peeling a carry through layered control.",
+              "scope": "champion",
+              "sourceIds": [
+                "hexeria"
+              ]
+            },
+            {
+              "text": "Layer Shield of Durand taunts on groups with Justice Punch and Hero's Entrance knock-ups.",
+              "scope": "champion",
+              "sourceIds": [
+                "hexeria"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 3,
+                  "key": "W"
+                },
+                {
+                  "champion": 3,
+                  "key": "E"
+                },
+                {
+                  "champion": 3,
+                  "key": "R"
+                }
+              ]
+            },
+            {
+              "text": "Never default to split-pushing; teamfights carry far more of his value.",
+              "scope": "champion",
+              "sourceIds": [
+                "hexeria"
+              ]
+            },
+            {
+              "text": "Stay useful while behind purely through engage, protection, and control.",
+              "scope": "champion",
+              "sourceIds": [
+                "hexeria"
+              ]
+            }
+          ]
+        }
+      },
+      "itemization": [
+        {
+          "text": "Run Aftershock with Shield Bash, Second Wind, and Overgrowth, plus Nimbus Cloak and Transcendence.",
+          "scope": "champion",
+          "sourceIds": [
+            "hexeria"
+          ]
+        },
+        {
+          "text": "Build Abyssal Mask, Mercury's Treads, Imperial Mandate, Zhonya's Hourglass, Riftmaker, and Jak'Sho.",
+          "scope": "champion",
+          "sourceIds": [
+            "hexeria"
+          ],
+          "itemIds": [
+            8020,
+            3111,
+            4005,
+            3157,
+            4633
+          ]
+        },
+        {
+          "text": "Rush Ionian Boots as a cheap early spike for long cooldowns; swap Mercury's Treads into magic damage or control, Steelcaps into basic-attack threats, and Sorcerer's Shoes for damage builds.",
+          "scope": "champion",
+          "sourceIds": [
+            "hexeria"
+          ],
+          "itemIds": [
+            3111,
+            3020
+          ]
+        },
+        {
+          "text": "Rate Abyssal Mask highly for its low cost, defensive stats, and nearby-enemy magic-damage amplification.",
+          "scope": "champion",
+          "sourceIds": [
+            "hexeria"
+          ],
+          "itemIds": [
+            8020
+          ]
+        },
+        {
+          "text": "Add Cosmic Drive for health, AP, haste, and movement speed behind repeated spell and passive cycles.",
+          "scope": "champion",
+          "sourceIds": [
+            "hexeria"
+          ],
+          "itemIds": [
+            4629
+          ]
+        },
+        {
+          "text": "Pick Dusk and Dawn as the AP-bruiser spellblade, or Fimbulwinter from an early Tear for mana, health, and haste.",
+          "scope": "champion",
+          "sourceIds": [
+            "hexeria"
+          ],
+          "itemIds": [
+            2510
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "id": "hexeria",
+          "author": "Hexeria",
+          "rankClaim": "Masters (title); Master (profile badge) · Galio main",
+          "rank": "master",
+          "url": "https://www.mobafire.com/league-of-legends/build/26-21-hexerias-detailed-masters-guide-to-galio-630181",
+          "kind": "mobafire"
+        }
+      ]
+    }
+  ],
+  "vods": [
+    {
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "X6cel6PzLYQ",
+          "title": "Rank 1 Galio : This Dude is WRECKING CN Super Server",
+          "rankClaim": "Master+",
+          "patch": "26.11",
+          "durationSec": 1729,
+          "patchEstimated": true,
+          "player": "Baicaiovo",
+          "uploaded": "2026-06-09",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "LKpv_D7osjQ",
+          "title": "Baicaiovo Galio : This CN Super Server Legend is CRUSHING Challenger Mid Lane with CLEAN Mechanics",
+          "rankClaim": "Challenger",
+          "patch": "26.6",
+          "durationSec": 1014,
+          "patchEstimated": true,
+          "player": "Baicaiovo",
+          "uploaded": "2026-03-20",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "Qpg-18ETCcE",
+          "title": "Rank 1 Galio : This CN Super Server Legend is DEVASTATING Mid Lane - Engsub",
+          "rankClaim": "Master+",
+          "patch": "26.5",
+          "durationSec": 1344,
+          "patchEstimated": true,
+          "player": "Baicaiovo",
+          "uploaded": "2026-03-17",
+          "format": "stream",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "sUt5GA5PDMc",
+          "title": "Baicaiovo Perfects Galio Roaming Strategy to Hit Top 2 on Chinese Super Server Engsub",
+          "rankClaim": "Master+",
+          "patch": "26.3",
+          "durationSec": 1343,
+          "patchEstimated": true,
+          "player": "Baicaiovo",
+          "uploaded": "2026-02-12",
+          "format": "stream",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 1,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "rppHIy5qV34",
+          "title": "Galio vs Annie 16/2/10 (Mid) | EUW Grandmaster | Galio OTP Replay",
+          "rankClaim": "Grandmaster",
+          "patch": "26.10",
+          "durationSec": 1590,
+          "region": "EUW",
+          "patchEstimated": true,
+          "uploaded": "2026-05-18",
+          "moments": []
+        },
+        {
+          "videoId": "sl5tvK1Gs7k",
+          "title": "Galio Mid vs Annie - KR Challenger Patch 25.07",
+          "rankClaim": "Challenger",
+          "patch": "25.7",
+          "durationSec": 1648,
+          "region": "KR",
+          "uploaded": "2025-04-07",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 260,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 414,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 620,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 757,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 975,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1026,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1046,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1113,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1159,
+              "label": "Hunt The Dragon",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1284,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1320,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1382,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1491,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1576,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1627,
+              "label": "End credit"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 4,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "Xl6dghLXthY",
+          "title": "(KT PerfecT) Galio Mid vs Twisted Fate - KR Challenger Patch 26.14",
+          "rankClaim": "Challenger",
+          "patch": "26.14",
+          "durationSec": 1491,
+          "region": "KR",
+          "player": "PerfecT",
+          "team": "KT",
+          "uploaded": "2026-07-19",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 8,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "Oat5auWWMes",
+          "title": "Galio vs Vladimir 5/0/3 (Mid) | EUW Grandmaster | Galio OTP Replay",
+          "rankClaim": "Grandmaster",
+          "patch": "26.10",
+          "durationSec": 942,
+          "region": "EUW",
+          "patchEstimated": true,
+          "uploaded": "2026-05-19",
+          "moments": []
+        },
+        {
+          "videoId": "7vW_swJYjDk",
+          "title": "T1 Faker Galio vs Vladimir [ MID ] Patch 25.10 Korea Challenger",
+          "rankClaim": "Challenger",
+          "patch": "25.10",
+          "durationSec": 1250,
+          "region": "KR",
+          "player": "Faker",
+          "team": "T1",
+          "uploaded": "2025-05-18",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 9,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "Qm_3QszrWN8",
+          "title": "Galio Support vs Fiddlesticks - EUW Grandmaster Patch 25.13",
+          "rankClaim": "Grandmaster",
+          "patch": "25.13",
+          "durationSec": 1678,
+          "region": "EUW",
+          "uploaded": "2025-07-05",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 12,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "erRIp3fstvA",
+          "title": "Galio Support vs Alistar - KR Master Patch 26.20",
+          "rankClaim": "Master",
+          "patch": "26.20",
+          "durationSec": 1467,
+          "region": "KR",
+          "uploaded": "2026-10-19",
+          "result": "W",
+          "moments": [
+            {
+              "atSec": 280,
+              "label": "Blue takes 1st Dragon (Ocean)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 521,
+              "label": "First Blood — Yorick kills Orianna",
+              "kind": "kill"
+            },
+            {
+              "atSec": 595,
+              "label": "Ahri eliminates Orianna"
+            },
+            {
+              "atSec": 727,
+              "label": "Ahri Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 794,
+              "label": "Galio eliminates Tristana"
+            },
+            {
+              "atSec": 847,
+              "label": "Jinx takes down Twitch"
+            },
+            {
+              "atSec": 1066,
+              "label": "Blue takes 2nd Dragon (Mountain)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1096,
+              "label": "Jinx picks off Tristana"
+            },
+            {
+              "atSec": 1106,
+              "label": "Jinx Triple Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1179,
+              "label": "Team fight (4 kills)",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1247,
+              "label": "Red takes Baron",
+              "kind": "baron"
+            },
+            {
+              "atSec": 1375,
+              "label": "Jinx Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1407,
+              "label": "Blue takes 3rd Dragon (Hextech)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1441,
+              "label": "Jinx takes down Twitch"
+            },
+            {
+              "atSec": 1446,
+              "label": "Jinx Triple Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1454,
+              "label": "Jinx Quadra Kill",
+              "kind": "kill"
+            }
+          ]
+        },
+        {
+          "videoId": "rPhBTzuM53k",
+          "title": "Galio Support vs Alistar - KR Master Patch 25.23",
+          "rankClaim": "Master",
+          "patch": "25.23",
+          "durationSec": 1484,
+          "region": "KR",
+          "uploaded": "2025-11-30",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 13,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "PgjLGdIDEaQ",
+          "title": "T1 Faker Galio vs Ryze [ MID ] Korea Grandmaster 1730 LP | Patch 26.13",
+          "rankClaim": "Grandmaster",
+          "patch": "26.13",
+          "durationSec": 1326,
+          "region": "KR",
+          "player": "Faker",
+          "team": "T1",
+          "uploaded": "2026-07-03",
+          "moments": []
+        },
+        {
+          "videoId": "2v966srMZVU",
+          "title": "Galio Mid vs Ryze - KR Challenger Patch 26.09",
+          "rankClaim": "Challenger",
+          "patch": "26.9",
+          "durationSec": 1547,
+          "region": "KR",
+          "uploaded": "2026-05-06",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 14,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "iXF1L_fn-XQ",
+          "title": "Galio vs Sion 16/3/6 (Mid) | EUW Grandmaster | Galio OTP Replay",
+          "rankClaim": "Grandmaster",
+          "patch": "26.8",
+          "durationSec": 1732,
+          "region": "EUW",
+          "patchEstimated": true,
+          "uploaded": "2026-04-20",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 17,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "EqVfTpB2Vt0",
+          "title": "Galio Top vs Teemo - KR Master Patch 25.04",
+          "rankClaim": "Master",
+          "patch": "25.4",
+          "durationSec": 2137,
+          "region": "KR",
+          "uploaded": "2025-03-03",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 18,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "fQ0WjjFa_KE",
+          "title": "Galio Mid vs Tristana - KR Grandmaster Patch 26.17",
+          "rankClaim": "Grandmaster",
+          "patch": "26.17",
+          "durationSec": 1620,
+          "region": "KR",
+          "uploaded": "2026-09-03",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 31,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "93K_yjFfR8o",
+          "title": "Galio vs Cho'Gath 4/7/14 (Mid) | EUW Grandmaster | Galio OTP Replay",
+          "rankClaim": "Grandmaster",
+          "patch": "26.10",
+          "durationSec": 1594,
+          "region": "EUW",
+          "patchEstimated": true,
+          "uploaded": "2026-05-16",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 33,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "R_NdNemvzs4",
+          "title": "Galio Support vs Rammus - KR Master Patch 25.11",
+          "rankClaim": "Master",
+          "patch": "25.11",
+          "durationSec": 1597,
+          "region": "KR",
+          "uploaded": "2025-06-07",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 34,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "gfJM1JBNO5E",
+          "title": "Baicaiovo Galio: This Guy is DEVASTATING Anivia in CN Super Server",
+          "rankClaim": "Master+",
+          "patch": "26.13",
+          "durationSec": 1422,
+          "patchEstimated": true,
+          "player": "Baicaiovo",
+          "uploaded": "2026-06-27",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "U0sHBe6ovnA",
+          "title": "Galio Mid vs Anivia - KR Grandmaster Patch 26.03",
+          "rankClaim": "Grandmaster",
+          "patch": "26.3",
+          "durationSec": 1529,
+          "region": "KR",
+          "uploaded": "2026-02-07",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 34,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "HM5NTfPrHc8",
+          "title": "Galio Support vs Anivia - KR Grandmaster Patch 26.05",
+          "rankClaim": "Grandmaster",
+          "patch": "26.5",
+          "durationSec": 1568,
+          "region": "KR",
+          "uploaded": "2026-03-15",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 33,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 232,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 417,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 487,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 538,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 631,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 769,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 972,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1052,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1304,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1427,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1468,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1557,
+              "label": "End credit"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 34,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "p1rXRlxO5Yw",
+          "title": "(HLE Zeus) Galio Top vs Anivia - KR Challenger Patch 26.15",
+          "rankClaim": "Challenger",
+          "patch": "26.15",
+          "durationSec": 1568,
+          "region": "KR",
+          "player": "Zeus",
+          "team": "HLE",
+          "uploaded": "2026-08-09",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 36,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "l8DAHn-UHfQ",
+          "title": "Galio Top vs Dr. Mundo - KR Grandmaster Patch 26.21",
+          "rankClaim": "Grandmaster",
+          "patch": "26.21",
+          "durationSec": 1689,
+          "region": "KR",
+          "uploaded": "2026-11-02",
+          "result": "W",
+          "moments": [
+            {
+              "atSec": 253,
+              "label": "Galio catches Dr. Mundo"
+            },
+            {
+              "atSec": 388,
+              "label": "Alistar eliminates Dr. Mundo"
+            },
+            {
+              "atSec": 606,
+              "label": "Galio outduels Dr. Mundo again"
+            },
+            {
+              "atSec": 742,
+              "label": "Blue takes 1st Dragon (Hextech)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 942,
+              "label": "Viego kills Camille",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1051,
+              "label": "Team fight (3 kills)",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1054,
+              "label": "Red takes 1st Dragon (Chemtech)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1094,
+              "label": "Viego Triple Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1244,
+              "label": "Red takes Baron",
+              "kind": "baron"
+            },
+            {
+              "atSec": 1355,
+              "label": "Kindred eliminates Olaf"
+            },
+            {
+              "atSec": 1431,
+              "label": "Red takes 2nd Dragon (Infernal)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1559,
+              "label": "Mid Inhibitor falls (Red)"
+            },
+            {
+              "atSec": 1667,
+              "label": "Viego picks off Syndra"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 37,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "BpZciEDCQaA",
+          "title": "Galio Support vs Sona - NA Grandmaster Patch 26.07",
+          "rankClaim": "Grandmaster",
+          "patch": "26.7",
+          "durationSec": 1530,
+          "region": "NA",
+          "uploaded": "2026-04-12",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 150,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 257,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 356,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 420,
+              "label": "Hunt The Dragon",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 557,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 615,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 665,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 751,
+              "label": "Hunt The Dragon",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 772,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 881,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 949,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1068,
+              "label": "Hunt The Dragon",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1205,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1331,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1360,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1376,
+              "label": "Take down The Inhibitor"
+            },
+            {
+              "atSec": 1391,
+              "label": "Hunt The Dragon",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1451,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1484,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1519,
+              "label": "End credit"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 39,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "6Y9uRu42DTc",
+          "title": "(FK Adam) Galio Top vs Irelia (SU Leks) - EUW Challenger Patch 26.11",
+          "rankClaim": "Challenger",
+          "patch": "26.11",
+          "durationSec": 1478,
+          "region": "EUW",
+          "player": "FK Adam",
+          "uploaded": "2026-06-08",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 43,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "hkAcwqhu27w",
+          "title": "Galio Support vs Karma - KR Master Patch 26.08",
+          "rankClaim": "Master",
+          "patch": "26.8",
+          "durationSec": 1467,
+          "region": "KR",
+          "uploaded": "2026-04-27",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 53,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "YPvYhZ72MN0",
+          "title": "Galio Support vs Blitzcrank - KR Master Patch 26.19",
+          "rankClaim": "Master",
+          "patch": "26.19",
+          "durationSec": 1588,
+          "region": "KR",
+          "uploaded": "2026-10-04",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 54,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "5xljOaVUdY0",
+          "title": "Galio Top vs Malphite - KR Master Patch 26.13",
+          "rankClaim": "Master",
+          "patch": "26.13",
+          "durationSec": 1564,
+          "region": "KR",
+          "uploaded": "2026-07-16",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 55,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "QdpQmJCG-wI",
+          "title": "Galio vs Katarina 15/4/5 (Mid) | EUW Grandmaster | Galio OTP Replay",
+          "rankClaim": "Grandmaster",
+          "patch": "26.10",
+          "durationSec": 1497,
+          "region": "EUW",
+          "patchEstimated": true,
+          "uploaded": "2026-05-14",
+          "moments": []
+        },
+        {
+          "videoId": "6moIGjDiBOo",
+          "title": "Galio Mid vs Katarina - KR Master Patch 26.08",
+          "rankClaim": "Master",
+          "patch": "26.8",
+          "durationSec": 1727,
+          "region": "KR",
+          "uploaded": "2026-04-19",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 57,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "aZ8GLT6vBEs",
+          "title": "Galio Support vs Maokai - KR Master Patch 25.17",
+          "rankClaim": "Master",
+          "patch": "25.17",
+          "durationSec": 1584,
+          "region": "KR",
+          "uploaded": "2025-09-05",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 60,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "P_sAYu90IA8",
+          "title": "Galio Support vs Elise - EUW Grandmaster Patch 26.06",
+          "rankClaim": "Grandmaster",
+          "patch": "26.6",
+          "durationSec": 1743,
+          "region": "EUW",
+          "uploaded": "2026-03-29",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 61,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "PW2EsxSUf2w",
+          "title": "Galio Mid vs Orianna - EUW Challenger Patch 26.07",
+          "rankClaim": "Challenger",
+          "patch": "26.7",
+          "durationSec": 1849,
+          "region": "EUW",
+          "uploaded": "2026-04-05",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 399,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 687,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 774,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 802,
+              "label": "Hunt The Dragon",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 896,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 969,
+              "label": "Hunt The Rift Herald",
+              "kind": "herald"
+            },
+            {
+              "atSec": 1146,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1229,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1416,
+              "label": "Hunt The Baron Nashor",
+              "kind": "baron"
+            },
+            {
+              "atSec": 1437,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1505,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1531,
+              "label": "Hunt The Dragon",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1596,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1804,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1838,
+              "label": "End credit"
+            }
+          ]
+        },
+        {
+          "videoId": "ZFGyXiQ-ndo",
+          "title": "Galio Mid vs Orianna - KR Challenger Patch 25.23",
+          "rankClaim": "Challenger",
+          "patch": "25.23",
+          "durationSec": 1780,
+          "region": "KR",
+          "uploaded": "2025-11-24",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 63,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "fmqG90w9lvU",
+          "title": "Galio Mid vs Brand - KR Master Patch 26.06",
+          "rankClaim": "Master",
+          "patch": "26.6",
+          "durationSec": 1449,
+          "region": "KR",
+          "uploaded": "2026-03-22",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 179,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 301,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 411,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 487,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 644,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 840,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1006,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1133,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1195,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1247,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1273,
+              "label": "Hunt The Baron Nashor",
+              "kind": "baron"
+            },
+            {
+              "atSec": 1335,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1355,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1416,
+              "label": "Take down The Inhibitor"
+            },
+            {
+              "atSec": 1438,
+              "label": "End credit"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 68,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "fTXfEbloEDY",
+          "title": "(CFO Rest) Galio Top vs Rumble (AL Flandre) - KR Master Patch 26.14",
+          "rankClaim": "Master",
+          "patch": "26.14",
+          "durationSec": 1716,
+          "region": "KR",
+          "player": "CFO Rest",
+          "uploaded": "2026-07-27",
+          "moments": []
+        },
+        {
+          "videoId": "aO_gvlTx2s4",
+          "title": "(KRX Vincenzo) Galio Top vs Rumble - KR Challenger Patch 26.12",
+          "rankClaim": "Challenger",
+          "patch": "26.12",
+          "durationSec": 1623,
+          "region": "KR",
+          "player": "KRX Vincenzo",
+          "uploaded": "2026-06-13",
+          "moments": []
+        },
+        {
+          "videoId": "xV-3fvmpcUg",
+          "title": "Galio Top vs Rumble - KR Grandmaster Patch 25.24",
+          "rankClaim": "Grandmaster",
+          "patch": "25.24",
+          "durationSec": 1471,
+          "region": "KR",
+          "uploaded": "2025-12-19",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 397,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 540,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 665,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 749,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 763,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 900,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 962,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 990,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1043,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1130,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1163,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1234,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1269,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1295,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1372,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1406,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1418,
+              "label": "Take down The Inhibitor"
+            },
+            {
+              "atSec": 1428,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1440,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1460,
+              "label": "End credit"
+            }
+          ]
+        },
+        {
+          "videoId": "j3e-2muo3eg",
+          "title": "Galio Top vs Rumble - KR Master Patch 25.13",
+          "rankClaim": "Master",
+          "patch": "25.13",
+          "durationSec": 1782,
+          "region": "KR",
+          "uploaded": "2025-07-11",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 69,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "xnFVAt4WcjM",
+          "title": "Galio Mid vs Cassiopeia (Buddy) - KR Challenger Patch 26.20",
+          "rankClaim": "Challenger",
+          "patch": "26.20",
+          "durationSec": 1519,
+          "region": "KR",
+          "uploaded": "2026-10-14",
+          "result": "W",
+          "moments": [
+            {
+              "atSec": 327,
+              "label": "First Blood — Ezreal kills Kai'Sa",
+              "kind": "kill"
+            },
+            {
+              "atSec": 357,
+              "label": "Red takes 1st Dragon (Chemtech)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 467,
+              "label": "Jayce kills Kha'Zix",
+              "kind": "kill"
+            },
+            {
+              "atSec": 552,
+              "label": "Rek'Sai eliminates Kai'Sa"
+            },
+            {
+              "atSec": 659,
+              "label": "Rek'Sai picks off Cassiopeia"
+            },
+            {
+              "atSec": 693,
+              "label": "Red takes 2nd Dragon (Cloud)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1003,
+              "label": "Galio takes down Jax"
+            },
+            {
+              "atSec": 1040,
+              "label": "Red takes 3rd Dragon (Infernal)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1259,
+              "label": "Rek'Sai Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1298,
+              "label": "Red takes Baron",
+              "kind": "baron"
+            },
+            {
+              "atSec": 1339,
+              "label": "Team fight (3 kills)",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1368,
+              "label": "Red takes 4th Dragon (Infernal)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1465,
+              "label": "Galio takes down Jax"
+            },
+            {
+              "atSec": 1483,
+              "label": "Mid Inhibitor falls (Blue)"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 80,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "X5K6dqQI-tI",
+          "title": "Galio Mid vs Pantheon - NA Master Patch 26.01",
+          "rankClaim": "Master",
+          "patch": "26.1",
+          "durationSec": 1508,
+          "region": "NA",
+          "uploaded": "2026-01-14",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 84,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "tjx8o7gakWY",
+          "title": "(WE Karis) Galio Mid vs Akali (IG Rookie) - KR Challenger Patch 26.16",
+          "rankClaim": "Challenger",
+          "patch": "26.16",
+          "durationSec": 1773,
+          "region": "KR",
+          "player": "Rookie",
+          "team": "WE",
+          "uploaded": "2026-08-15",
+          "moments": []
+        },
+        {
+          "videoId": "xTgbd4__mFg",
+          "title": "(WE Karis) Galio Mid vs Akali (KT Bdd) - KR Challenger Patch 26.11",
+          "rankClaim": "Challenger",
+          "patch": "26.11",
+          "durationSec": 1510,
+          "region": "KR",
+          "player": "Bdd",
+          "team": "WE",
+          "uploaded": "2026-05-31",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 84,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "8A4dz1NN5IM",
+          "title": "Galio Top vs Akali - EUW Grandmaster Patch 26.13",
+          "rankClaim": "Grandmaster",
+          "patch": "26.13",
+          "durationSec": 1803,
+          "region": "EUW",
+          "uploaded": "2026-07-06",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 85,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "zhJCteUcdaE",
+          "title": "Galio Top vs Kennen - NA Grandmaster Patch 26.09",
+          "rankClaim": "Grandmaster",
+          "patch": "26.9",
+          "durationSec": 1869,
+          "region": "NA",
+          "uploaded": "2026-05-13",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 103,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "Sof9bnJXeBc",
+          "title": "(HLE Zeka) Galio Mid vs Ahri - KR Challenger Patch 26.16",
+          "rankClaim": "Challenger",
+          "patch": "26.16",
+          "durationSec": 1457,
+          "region": "KR",
+          "player": "Zeka",
+          "team": "HLE",
+          "uploaded": "2026-08-24",
+          "moments": []
+        },
+        {
+          "videoId": "l61quo6c9dM",
+          "title": "Galio Mid vs Ahri - KR Challenger Patch 26.12",
+          "rankClaim": "Challenger",
+          "patch": "26.12",
+          "durationSec": 1456,
+          "region": "KR",
+          "uploaded": "2026-06-21",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 105,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "K31bszYKB4E",
+          "title": "Rank 1 Galio: DELETING Fizz on CN Super Server - Engsub",
+          "rankClaim": "Master+",
+          "patch": "26.13",
+          "durationSec": 1263,
+          "patchEstimated": true,
+          "player": "Baicaiovo",
+          "uploaded": "2026-06-28",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "1Sj0vUNKNi0",
+          "title": "(HLE Zeka) Galio Mid vs Fizz - KR Challenger Patch 26.10",
+          "rankClaim": "Challenger",
+          "patch": "26.10",
+          "durationSec": 1516,
+          "region": "KR",
+          "player": "Zeka",
+          "team": "HLE",
+          "uploaded": "2026-05-22",
+          "result": "W",
+          "moments": [
+            {
+              "atSec": 255,
+              "label": "First Blood — Galio kills Fizz",
+              "kind": "kill"
+            },
+            {
+              "atSec": 277,
+              "label": "Galio picks off Zac"
+            },
+            {
+              "atSec": 369,
+              "label": "Galio picks off Zac"
+            },
+            {
+              "atSec": 590,
+              "label": "Jarvan IV eliminates Corki"
+            },
+            {
+              "atSec": 659,
+              "label": "Jarvan IV picks off Fizz"
+            },
+            {
+              "atSec": 710,
+              "label": "Red takes 1st Dragon (Mountain)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 758,
+              "label": "Yone takes down Fizz"
+            },
+            {
+              "atSec": 834,
+              "label": "Galio picks off Zac"
+            },
+            {
+              "atSec": 953,
+              "label": "Galio takes down Jayce"
+            },
+            {
+              "atSec": 1027,
+              "label": "Team fight (3 kills)",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1081,
+              "label": "Blue takes 1st Dragon (Infernal)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1290,
+              "label": "Blue takes Baron",
+              "kind": "baron"
+            },
+            {
+              "atSec": 1419,
+              "label": "Team fight (3 kills)",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1445,
+              "label": "Top Inhibitor falls (Red)"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 111,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "x2t__XEFBaQ",
+          "title": "Galio Support vs Nautilus - NA Master Patch 26.18",
+          "rankClaim": "Master",
+          "patch": "26.18",
+          "durationSec": 1626,
+          "region": "NA",
+          "uploaded": "2026-09-22",
+          "result": "W",
+          "moments": [
+            {
+              "atSec": 47,
+              "label": "First Blood — Xin Zhao kills Nautilus",
+              "kind": "kill"
+            },
+            {
+              "atSec": 251,
+              "label": "Ashe picks off Nautilus"
+            },
+            {
+              "atSec": 294,
+              "label": "Blue takes 1st Dragon (Mountain)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 310,
+              "label": "Xin Zhao kills Nautilus",
+              "kind": "kill"
+            },
+            {
+              "atSec": 400,
+              "label": "Lissandra Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 464,
+              "label": "Xin Zhao kills Fiora",
+              "kind": "kill"
+            },
+            {
+              "atSec": 580,
+              "label": "Team fight (3 kills)",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 643,
+              "label": "Red takes 1st Dragon (Hextech)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 918,
+              "label": "Galio picks off Karthus"
+            },
+            {
+              "atSec": 964,
+              "label": "Blue takes 2nd Dragon (Chemtech)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 986,
+              "label": "Galio picks off Karthus"
+            },
+            {
+              "atSec": 1067,
+              "label": "Gangplank takes down Fizz"
+            },
+            {
+              "atSec": 1154,
+              "label": "Xin Zhao kills Nautilus",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1230,
+              "label": "Lissandra takes down Fiora"
+            },
+            {
+              "atSec": 1286,
+              "label": "Blue takes 3rd Dragon (Chemtech)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1397,
+              "label": "Ashe eliminates Rengar"
+            },
+            {
+              "atSec": 1531,
+              "label": "Blue takes Baron",
+              "kind": "baron"
+            },
+            {
+              "atSec": 1574,
+              "label": "Gangplank Double Kill",
+              "kind": "kill"
+            }
+          ]
+        },
+        {
+          "videoId": "2KHu4PjUjos",
+          "title": "Galio Support vs Nautilus - KR Master Patch 25.21",
+          "rankClaim": "Master",
+          "patch": "25.21",
+          "durationSec": 1575,
+          "region": "KR",
+          "uploaded": "2025-11-01",
+          "moments": []
+        },
+        {
+          "videoId": "XinLzkQBsDg",
+          "title": "Galio Support vs Nautilus - KR Grandmaster Patch 25.16",
+          "rankClaim": "Grandmaster",
+          "patch": "25.16",
+          "durationSec": 1444,
+          "region": "KR",
+          "uploaded": "2025-08-23",
+          "moments": []
+        },
+        {
+          "videoId": "F1PNl5c4yUw",
+          "title": "Galio Support vs Nautilus - KR Master Patch 25.15",
+          "rankClaim": "Master",
+          "patch": "25.15",
+          "durationSec": 1871,
+          "region": "KR",
+          "uploaded": "2025-08-09",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 112,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "GoaYCXDRYHg",
+          "title": "Galio vs Viktor 12/1/10 (Mid) | EUW Grandmaster | Galio OTP Replay",
+          "rankClaim": "Grandmaster",
+          "patch": "26.10",
+          "durationSec": 1179,
+          "region": "EUW",
+          "patchEstimated": true,
+          "uploaded": "2026-05-26",
+          "moments": []
+        },
+        {
+          "videoId": "XfoFI_nDKV4",
+          "title": "Galio Mid vs Viktor - EUW Challenger Patch 25.24",
+          "rankClaim": "Challenger",
+          "patch": "25.24",
+          "durationSec": 1479,
+          "region": "EUW",
+          "uploaded": "2025-12-29",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 237,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 354,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 662,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 806,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 965,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1023,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1118,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1181,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1211,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1242,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1395,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1468,
+              "label": "End credit"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 117,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "JRW7arMRtI0",
+          "title": "Galio Support vs Lulu - TW Challenger Patch 25.10",
+          "rankClaim": "Challenger",
+          "patch": "25.10",
+          "durationSec": 1596,
+          "uploaded": "2025-05-23",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 126,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "6697ThFkigI",
+          "title": "Galio Mid vs Jayce - KR Challenger Patch 25.19",
+          "rankClaim": "Challenger",
+          "patch": "25.19",
+          "durationSec": 1438,
+          "region": "KR",
+          "uploaded": "2025-09-30",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 126,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "q_QKs9654xQ",
+          "title": "Galio Top vs Jayce - KR Grandmaster Patch 26.17",
+          "rankClaim": "Grandmaster",
+          "patch": "26.17",
+          "durationSec": 1636,
+          "region": "KR",
+          "uploaded": "2026-09-09",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 127,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "fo4MLkM7hAg",
+          "title": "Galio Mid vs Lissandra - KR Grandmaster Patch 25.12",
+          "rankClaim": "Grandmaster",
+          "patch": "25.12",
+          "durationSec": 1572,
+          "region": "KR",
+          "uploaded": "2025-06-13",
+          "moments": []
+        },
+        {
+          "videoId": "5CEuNiVzmco",
+          "title": "Galio Mid vs Lissandra - KR Grandmaster Patch 25.09",
+          "rankClaim": "Grandmaster",
+          "patch": "25.9",
+          "durationSec": 1758,
+          "region": "KR",
+          "uploaded": "2025-05-04",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 253,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 403,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 483,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 668,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 826,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 948,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1021,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1357,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1399,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1440,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1543,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1599,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1652,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1668,
+              "label": "Take down The Inhibitor"
+            },
+            {
+              "atSec": 1692,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1717,
+              "label": "Take down The Inhibitor"
+            },
+            {
+              "atSec": 1737,
+              "label": "End credit"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 134,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "xdT7ajLMElw",
+          "title": "Showmaker Galio vs Syndra Mid - NA Grandmaster - Patch 16.21 Season 16",
+          "rankClaim": "Grandmaster",
+          "patch": "26.21",
+          "durationSec": 1560,
+          "region": "NA",
+          "player": "ShowMaker",
+          "uploaded": "2026-10-26",
+          "moments": []
+        },
+        {
+          "videoId": "W01paUXFm8A",
+          "title": "Galio Mid vs Syndra - KR Master Patch 26.02",
+          "rankClaim": "Master",
+          "patch": "26.2",
+          "durationSec": 1548,
+          "region": "KR",
+          "uploaded": "2026-01-24",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 147,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "Z74HXb7bOFg",
+          "title": "Galio Support vs Seraphine - KR Master Patch 26.02",
+          "rankClaim": "Master",
+          "patch": "26.2",
+          "durationSec": 1615,
+          "region": "KR",
+          "uploaded": "2026-02-03",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 138,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 270,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 342,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 416,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 474,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 779,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 838,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 890,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 987,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1275,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1444,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1543,
+              "label": "Take down The Inhibitor"
+            },
+            {
+              "atSec": 1558,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1604,
+              "label": "End credit"
+            }
+          ]
+        },
+        {
+          "videoId": "WpGoD3yoEEM",
+          "title": "Galio Support vs Seraphine - KR Master Patch 25.18",
+          "rankClaim": "Master",
+          "patch": "25.18",
+          "durationSec": 1764,
+          "region": "KR",
+          "uploaded": "2025-09-21",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 157,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "-uRWMK8Q2Sg",
+          "title": "Galio Mid vs Yasuo - KR Master Patch 25.16",
+          "rankClaim": "Master",
+          "patch": "25.16",
+          "durationSec": 1699,
+          "region": "KR",
+          "uploaded": "2025-08-16",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 163,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "u857koAoBEw",
+          "title": "Galio Mid vs Taliyah - KR Grandmaster Patch 25.21",
+          "rankClaim": "Grandmaster",
+          "patch": "25.21",
+          "durationSec": 1984,
+          "region": "KR",
+          "uploaded": "2025-10-24",
+          "moments": []
+        },
+        {
+          "videoId": "K8R7fb-VVmE",
+          "title": "Galio Mid vs Taliyah - KR Grandmaster Patch 25.20",
+          "rankClaim": "Grandmaster",
+          "patch": "25.20",
+          "durationSec": 1594,
+          "region": "KR",
+          "uploaded": "2025-10-12",
+          "moments": []
+        },
+        {
+          "videoId": "v9CaknGBM-k",
+          "title": "Galio Mid vs Taliyah - KR Challenger Patch 25.14",
+          "rankClaim": "Challenger",
+          "patch": "25.14",
+          "durationSec": 1631,
+          "region": "KR",
+          "uploaded": "2025-07-20",
+          "moments": []
+        },
+        {
+          "videoId": "W_WHHXQwfQY",
+          "title": "Galio vs Taliyah Mid - KR Challenger - Patch 25.11 Season 15",
+          "rankClaim": "Challenger",
+          "patch": "25.11",
+          "durationSec": 1691,
+          "region": "KR",
+          "uploaded": "2025-05-30",
+          "moments": []
+        },
+        {
+          "videoId": "NaKPFq1HwVQ",
+          "title": "Galio Mid vs Taliyah - KR Grandmaster Patch 25.08",
+          "rankClaim": "Grandmaster",
+          "patch": "25.8",
+          "durationSec": 1569,
+          "region": "KR",
+          "uploaded": "2025-04-20",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 166,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "U9tDyZTvBq8",
+          "title": "T1 Faker Galio vs Akshan [ MID ] Korea Challenger 2054 LP | Patch 26.19",
+          "rankClaim": "Challenger",
+          "patch": "26.19",
+          "durationSec": 1487,
+          "region": "KR",
+          "player": "Faker",
+          "team": "T1",
+          "uploaded": "2026-10-02",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 201,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "1nEla9h5NV0",
+          "title": "Galio Support vs Braum - KR Master Patch 25.24",
+          "rankClaim": "Master",
+          "patch": "25.24",
+          "durationSec": 1519,
+          "region": "KR",
+          "uploaded": "2026-01-03",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 267,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 349,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 410,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 565,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 967,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1086,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1239,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1325,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1441,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1508,
+              "label": "End credit"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 235,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "rZqIa_faJ1c",
+          "title": "Galio Support vs Senna - KR Master Patch 25.19",
+          "rankClaim": "Master",
+          "patch": "25.19",
+          "durationSec": 1759,
+          "region": "KR",
+          "uploaded": "2025-10-05",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 238,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "tMfYaNUuhrw",
+          "title": "Galio Mid vs Zed - KR Grandmaster Patch 26.19",
+          "rankClaim": "Grandmaster",
+          "patch": "26.19",
+          "durationSec": 1620,
+          "region": "KR",
+          "uploaded": "2026-09-30",
+          "result": "W",
+          "moments": [
+            {
+              "atSec": 163,
+              "label": "First Blood — Kha'Zix kills Zed",
+              "kind": "kill"
+            },
+            {
+              "atSec": 375,
+              "label": "Red takes 1st Dragon (Infernal)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 661,
+              "label": "Vel'Koz Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 757,
+              "label": "Galio takes down Rumble"
+            },
+            {
+              "atSec": 815,
+              "label": "Red takes 2nd Dragon (Cloud)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 864,
+              "label": "Ambessa kills Cho'Gath",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1131,
+              "label": "Vel'Koz Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1197,
+              "label": "Vel'Koz eliminates Cho'Gath"
+            },
+            {
+              "atSec": 1303,
+              "label": "Red takes 3rd Dragon (Mountain)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1325,
+              "label": "Galio takes down Zed"
+            },
+            {
+              "atSec": 1369,
+              "label": "Galio kills Zeri",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1435,
+              "label": "Vel'Koz eliminates Cho'Gath"
+            },
+            {
+              "atSec": 1455,
+              "label": "Vel'Koz kills Zed",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1487,
+              "label": "Red takes Baron",
+              "kind": "baron"
+            },
+            {
+              "atSec": 1567,
+              "label": "Ambessa Double Kill",
+              "kind": "kill"
+            }
+          ]
+        },
+        {
+          "videoId": "X2tcBlTdZjU",
+          "title": "Galio Mid vs Zed - TW Challenger Patch 26.05",
+          "rankClaim": "Challenger",
+          "patch": "26.5",
+          "durationSec": 1882,
+          "uploaded": "2026-03-07",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 168,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 256,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 308,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 437,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 611,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 636,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 734,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 825,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1063,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1169,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1348,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1389,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1503,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1575,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1592,
+              "label": "Take down The Inhibitor"
+            },
+            {
+              "atSec": 1605,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1750,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1829,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1871,
+              "label": "End credit"
+            }
+          ]
+        },
+        {
+          "videoId": "bC7u1SfCPas",
+          "title": "Galio Mid vs Zed - KR Challenger Patch 26.04",
+          "rankClaim": "Challenger",
+          "patch": "26.4",
+          "durationSec": 1833,
+          "region": "KR",
+          "uploaded": "2026-02-21",
+          "moments": []
+        },
+        {
+          "videoId": "KErB5T0p2EE",
+          "title": "Galio Mid vs Zed - KR Master Patch 25.18",
+          "rankClaim": "Master",
+          "patch": "25.18",
+          "durationSec": 1694,
+          "region": "KR",
+          "uploaded": "2025-09-15",
+          "moments": []
+        },
+        {
+          "videoId": "UD5Ka_b0iHk",
+          "title": "Galio Mid vs Zed - KR Challenger Patch 25.06",
+          "rankClaim": "Challenger",
+          "patch": "25.6",
+          "durationSec": 1787,
+          "region": "KR",
+          "uploaded": "2025-03-22",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 43,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 382,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 633,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 696,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 768,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 818,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1011,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1102,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1220,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1274,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1338,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1394,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1431,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1512,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1717,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1748,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1766,
+              "label": "End credit"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 268,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "qetXp0RXmYc",
+          "title": "Galio Mid vs Azir - KR Challenger Patch 25.13",
+          "rankClaim": "Challenger",
+          "patch": "25.13",
+          "durationSec": 1749,
+          "region": "KR",
+          "uploaded": "2025-06-28",
+          "moments": []
+        },
+        {
+          "videoId": "h9fJSK5orbc",
+          "title": "Galio Mid vs Azir - KR Grandmaster Patch 25.11",
+          "rankClaim": "Grandmaster",
+          "patch": "25.11",
+          "durationSec": 1890,
+          "region": "KR",
+          "uploaded": "2025-06-01",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 350,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "kDrzA4I9ioU",
+          "title": "Galio Support vs Yuumi - KR Master Patch 25.24",
+          "rankClaim": "Master",
+          "patch": "25.24",
+          "durationSec": 1488,
+          "region": "KR",
+          "uploaded": "2025-12-14",
+          "moments": []
+        },
+        {
+          "videoId": "jEQaFIyMjgY",
+          "title": "Galio Support vs Yuumi - KR Master Patch 25.20",
+          "rankClaim": "Master",
+          "patch": "25.20",
+          "durationSec": 1480,
+          "region": "KR",
+          "uploaded": "2025-10-19",
+          "moments": []
+        },
+        {
+          "videoId": "uVVUqNBRTDg",
+          "title": "Galio Support vs Yuumi - KR Master Patch 25.12",
+          "rankClaim": "Master",
+          "patch": "25.12",
+          "durationSec": 1830,
+          "region": "KR",
+          "uploaded": "2025-06-22",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 432,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "wnB_v4oqH20",
+          "title": "Galio Support vs Bard - KR Master Patch 26.03",
+          "rankClaim": "Master",
+          "patch": "26.3",
+          "durationSec": 1608,
+          "region": "KR",
+          "uploaded": "2026-02-14",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 277,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 553,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 656,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 730,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 942,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1012,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1229,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1409,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1506,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1520,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1539,
+              "label": "Take down The Inhibitor"
+            },
+            {
+              "atSec": 1555,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1581,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1597,
+              "label": "End credit"
+            }
+          ]
+        },
+        {
+          "videoId": "p5Pw9AooqLI",
+          "title": "Galio Support vs Bard - EUW Challenger Patch 25.22",
+          "rankClaim": "Challenger",
+          "patch": "25.22",
+          "durationSec": 1511,
+          "region": "EUW",
+          "uploaded": "2025-11-16",
+          "moments": []
+        },
+        {
+          "videoId": "xXZX1b59LG4",
+          "title": "Galio Support vs Bard - EUW Grandmaster Patch 25.05",
+          "rankClaim": "Grandmaster",
+          "patch": "25.5",
+          "durationSec": 1492,
+          "region": "EUW",
+          "uploaded": "2025-03-15",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 497,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "xbtAMT7ecFY",
+          "title": "Galio Support vs Rakan - KR Master Patch 25.14",
+          "rankClaim": "Master",
+          "patch": "25.14",
+          "durationSec": 1589,
+          "region": "KR",
+          "uploaded": "2025-07-29",
+          "moments": []
+        },
+        {
+          "videoId": "txoEAFCLU1A",
+          "title": "Galio Support vs Rakan - KR Master Patch 25.07",
+          "rankClaim": "Master",
+          "patch": "25.7",
+          "durationSec": 1616,
+          "region": "KR",
+          "uploaded": "2025-04-16",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 516,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "p2VfoXkZRRY",
+          "title": "Galio Top vs Ornn - KR Master Patch 26.10",
+          "rankClaim": "Master",
+          "patch": "26.10",
+          "durationSec": 1666,
+          "region": "KR",
+          "uploaded": "2026-05-16",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 517,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "y5lKG6n3r3g",
+          "title": "Galio Mid vs Sylas - NA Grandmaster Patch 25.04",
+          "rankClaim": "Grandmaster",
+          "patch": "25.4",
+          "durationSec": 2115,
+          "region": "NA",
+          "uploaded": "2025-02-23",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 141,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 234,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 336,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 414,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 496,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 607,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 662,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 771,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 883,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1039,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1055,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1219,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1396,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1591,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1619,
+              "label": "Take down The Inhibitor"
+            },
+            {
+              "atSec": 1716,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1852,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 2001,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 2018,
+              "label": "Take down The Inhibitor"
+            },
+            {
+              "atSec": 2094,
+              "label": "End credit"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 517,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "jvHfmclIPl4",
+          "title": "Galio Support vs Sylas - EUW Grandmaster Patch 25.06",
+          "rankClaim": "Grandmaster",
+          "patch": "25.6",
+          "durationSec": 1533,
+          "region": "EUW",
+          "uploaded": "2025-03-29",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 172,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 497,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 562,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 680,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 949,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1066,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1232,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1330,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1477,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1512,
+              "label": "End credit"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 518,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "aorpkgMqPxk",
+          "title": "Galio Support vs Neeko - KR Master Patch 25.08",
+          "rankClaim": "Master",
+          "patch": "25.8",
+          "durationSec": 1694,
+          "region": "KR",
+          "uploaded": "2025-04-27",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 282,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 360,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 411,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 532,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 620,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 651,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 742,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 836,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1036,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1255,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1289,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1319,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1401,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1497,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1617,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1673,
+              "label": "End credit"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 555,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "oM_EDYgD82c",
+          "title": "Galio Support vs Pyke - KR Grandmaster Patch 26.04",
+          "rankClaim": "Grandmaster",
+          "patch": "26.4",
+          "durationSec": 1907,
+          "region": "KR",
+          "uploaded": "2026-03-01",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 777,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "lQbI_jjeqbU",
+          "title": "Galio Mid vs Yone - KR Master Patch 25.05",
+          "rankClaim": "Master",
+          "patch": "25.5",
+          "durationSec": 1910,
+          "region": "KR",
+          "uploaded": "2025-03-07",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 57,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 115,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 183,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 205,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 280,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 362,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 503,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 690,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 802,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 831,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 852,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 988,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1023,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1054,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1077,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1165,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1251,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1345,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1367,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1378,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1445,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1541,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1561,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1636,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1665,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1889,
+              "label": "End credit"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 777,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "bzvWnxmdc4U",
+          "title": "Galio Top vs Yone - NA Grandmaster Patch 25.10",
+          "rankClaim": "Grandmaster",
+          "patch": "25.10",
+          "durationSec": 1936,
+          "region": "NA",
+          "uploaded": "2025-05-29",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 805,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "Q7_gvXqf26A",
+          "title": "Galio Mid vs Locke - EUW Challenger Patch 26.18",
+          "rankClaim": "Challenger",
+          "patch": "26.18",
+          "durationSec": 1739,
+          "region": "EUW",
+          "uploaded": "2026-09-16",
+          "moments": []
+        },
+        {
+          "videoId": "DvcUqMVIBug",
+          "title": "T1 Faker Galio vs Locke [ MID ] Korea Grandmaster 1828 LP | Patch 26.16",
+          "rankClaim": "Grandmaster",
+          "patch": "26.16",
+          "durationSec": 1258,
+          "region": "KR",
+          "player": "Faker",
+          "team": "T1",
+          "uploaded": "2026-08-14",
+          "moments": [
+            {
+              "atSec": 0,
+              "label": "Early game laning phase"
+            },
+            {
+              "atSec": 236,
+              "label": "First skirmishes and objectives"
+            },
+            {
+              "atSec": 435,
+              "label": "Mid game intensity"
+            },
+            {
+              "atSec": 625,
+              "label": "Mid-game team fights",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 852,
+              "label": "Pushing for map control"
+            },
+            {
+              "atSec": 1041,
+              "label": "Late game siege and victory"
+            }
+          ]
+        },
+        {
+          "videoId": "TEDhM9iWX_E",
+          "title": "DK ShowMaker Galio vs Locke [ MID ] Korea Challenger 2719 LP | Patch 26.15",
+          "rankClaim": "Challenger",
+          "patch": "26.15",
+          "durationSec": 1245,
+          "region": "KR",
+          "player": "ShowMaker",
+          "team": "DK",
+          "uploaded": "2026-08-08",
+          "moments": []
+        },
+        {
+          "videoId": "iLG0pMZeok8",
+          "title": "(DK ShowMaker) Galio Mid vs Locke - KR Challenger Patch 26.15",
+          "rankClaim": "Challenger",
+          "patch": "26.15",
+          "durationSec": 1662,
+          "region": "KR",
+          "player": "ShowMaker",
+          "team": "DK",
+          "uploaded": "2026-08-03",
+          "moments": []
+        },
+        {
+          "videoId": "lr-Nr6_oc3s",
+          "title": "(LNG BuLLDoG) Galio Mid vs Locke (DK ShowMaker) - KR Challenger Patch 26.13",
+          "rankClaim": "Challenger",
+          "patch": "26.13",
+          "durationSec": 1664,
+          "region": "KR",
+          "player": "BuLLDoG",
+          "team": "LNG",
+          "uploaded": "2026-06-28",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 893,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "yeaZ4H44e1g",
+          "title": "Galio Mid vs Aurora - KR Grandmaster Patch 25.24",
+          "rankClaim": "Grandmaster",
+          "patch": "25.24",
+          "durationSec": 1509,
+          "region": "KR",
+          "uploaded": "2025-12-08",
+          "moments": []
+        },
+        {
+          "videoId": "A6vKhv9v7U0",
+          "title": "Galio Mid vs Aurora - KR Grandmaster Patch 25.15",
+          "rankClaim": "Grandmaster",
+          "patch": "25.15",
+          "durationSec": 1825,
+          "region": "KR",
+          "uploaded": "2025-08-01",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 893,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "qL-Ui503OQE",
+          "title": "Galio Top vs Aurora - KR Challenger Patch 25.05",
+          "rankClaim": "Challenger",
+          "patch": "25.5",
+          "durationSec": 1696,
+          "region": "KR",
+          "uploaded": "2025-03-20",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 901,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "Ql8AYMmT7DE",
+          "title": "(Evaan) Galio Mid vs Smolder (pump) - EUW Challenger Patch 26.21",
+          "rankClaim": "Challenger",
+          "patch": "26.21",
+          "durationSec": 1712,
+          "region": "EUW",
+          "player": "Evaan",
+          "uploaded": "2026-10-28",
+          "result": "W",
+          "moments": [
+            {
+              "atSec": 280,
+              "label": "Blue takes 1st Dragon (Infernal)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 314,
+              "label": "Karthus kills Irelia",
+              "kind": "kill"
+            },
+            {
+              "atSec": 476,
+              "label": "Galio takes down Irelia"
+            },
+            {
+              "atSec": 619,
+              "label": "Blue takes 2nd Dragon (Chemtech)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 624,
+              "label": "Pyke picks off Corki"
+            },
+            {
+              "atSec": 678,
+              "label": "Karthus takes down Sylas"
+            },
+            {
+              "atSec": 936,
+              "label": "Blue takes 3rd Dragon (Cloud)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 971,
+              "label": "Varus picks off Braum"
+            },
+            {
+              "atSec": 1033,
+              "label": "Varus Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1247,
+              "label": "Red takes 1st Dragon (Cloud)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1277,
+              "label": "Galio kills Corki",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1314,
+              "label": "Blue takes Baron",
+              "kind": "baron"
+            },
+            {
+              "atSec": 1468,
+              "label": "Varus picks off Braum"
+            },
+            {
+              "atSec": 1570,
+              "label": "Red takes 2nd Dragon (Cloud)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1649,
+              "label": "Pyke Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1681,
+              "label": "Mid Inhibitor falls (Red)"
+            }
+          ]
+        },
+        {
+          "videoId": "oUUarcR-pAU",
+          "title": "Galio Mid vs Smolder - KR Grandmaster Patch 25.22",
+          "rankClaim": "Grandmaster",
+          "patch": "25.22",
+          "durationSec": 1624,
+          "region": "KR",
+          "uploaded": "2025-11-09",
+          "moments": []
+        },
+        {
+          "videoId": "uXTBW_SmDCg",
+          "title": "Faker Galio vs Smolder Mid - KR Grandmaster - Patch 25.7 Season 15",
+          "rankClaim": "Grandmaster",
+          "patch": "25.7",
+          "durationSec": 1786,
+          "region": "KR",
+          "player": "Faker",
+          "uploaded": "2025-04-15",
+          "moments": []
+        },
+        {
+          "videoId": "wfK59I7-dLQ",
+          "title": "T1 Faker Galio vs Smolder [ MID ] Patch 25.7 Korea Grandmaster ✅",
+          "rankClaim": "Grandmaster",
+          "patch": "25.7",
+          "durationSec": 1575,
+          "region": "KR",
+          "player": "Faker",
+          "team": "T1",
+          "uploaded": "2025-04-14",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 902,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "NTCUT6qF8S4",
+          "title": "Galio Support vs Milio - TW Challenger Patch 25.09",
+          "rankClaim": "Challenger",
+          "patch": "25.9",
+          "durationSec": 1580,
+          "uploaded": "2025-05-15",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 910,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "0jX3qgXaKlE",
+          "title": "Galio Mid vs Hwei - KR Grandmaster Patch 25.17",
+          "rankClaim": "Grandmaster",
+          "patch": "25.17",
+          "durationSec": 1466,
+          "region": "KR",
+          "uploaded": "2025-08-31",
+          "moments": []
+        },
+        {
+          "videoId": "QSv0qog-w5s",
+          "title": "Galio Mid vs Hwei - KR Master Patch 25.10",
+          "rankClaim": "Master",
+          "patch": "25.10",
+          "durationSec": 1993,
+          "region": "KR",
+          "uploaded": "2025-05-16",
+          "moments": []
+        }
+      ]
+    }
+  ]
+}

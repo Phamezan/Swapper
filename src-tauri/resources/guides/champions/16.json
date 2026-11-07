@@ -1,0 +1,2595 @@
+{
+  "schema": 1,
+  "champion": 16,
+  "generatedAt": "2026-11-07T13:25:14.592Z",
+  "guides": [
+    {
+      "champion": 16,
+      "enemy": 111,
+      "lane": "support",
+      "patch": "26.21",
+      "reviewed": false,
+      "difficulty": "Medium",
+      "favoredWhen": "Deny his level-2 all-in through minions, and never get hooked under your own tower.",
+      "keyTips": [
+        {
+          "text": "Stand behind your minions at level 1 and poke him and his carry down: entering level 2 behind on health removes the all-in he queued for.",
+          "scope": "pair",
+          "sourceIds": [
+            "henry"
+          ],
+          "abilityKeys": [
+            {
+              "champion": 16,
+              "key": "Q"
+            }
+          ]
+        },
+        {
+          "text": "Never stand in his hook range while his wave crashes into your tower: getting hooked under your own tower is the one death pattern you cannot heal through.",
+          "scope": "pair",
+          "sourceIds": [
+            "henry"
+          ],
+          "abilityKeys": [
+            {
+              "champion": 111,
+              "key": "Q"
+            }
+          ]
+        },
+        {
+          "text": "Track his ult ({cd:111:R}) and give ground while it is up: his engage without it is only a hook, so bait it out, then zone him for its full duration.",
+          "scope": "pair",
+          "sourceIds": [
+            "henry"
+          ],
+          "abilityKeys": [
+            {
+              "champion": 111,
+              "key": "R"
+            }
+          ]
+        }
+      ],
+      "enemyTips": {},
+      "sections": {
+        "overview": {
+          "tips": []
+        },
+        "early-lane": {
+          "tips": [
+            {
+              "text": "Take the side bush first for early poke, then play behind your wave: if he does land a hook, steady healing out-sustains it as long as the wave is not crashing into you.",
+              "scope": "pair",
+              "sourceIds": [
+                "henry"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 16,
+                  "key": "W"
+                }
+              ]
+            },
+            {
+              "text": "Start extra health into his engage and build toward Knight's Vow first: the early health plus redirection blunts his all-in better than rushing your enchanter core.",
+              "scope": "pair",
+              "sourceIds": [
+                "henry"
+              ],
+              "itemIds": [
+                3109
+              ]
+            }
+          ]
+        },
+        "mid-lane": {
+          "tips": [
+            {
+              "text": "Save silence for the follow-up diver instead of spending it on him: his hook is the entry but the carry dash is the kill, so hold E for that.",
+              "scope": "pair",
+              "sourceIds": [
+                "henry"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 16,
+                  "key": "E"
+                }
+              ]
+            },
+            {
+              "text": "Ping his roams the moment he leaves and hover within reach of mid: he cannot do much alone, so answering his move denies the pick.",
+              "scope": "pair",
+              "sourceIds": [
+                "henry"
+              ]
+            }
+          ]
+        },
+        "win-condition": {
+          "tips": [
+            {
+              "text": "Set up objectives behind walls and let him come to you: with terrain breaking his hook lanes, he has to walk into your silence and focus to start a fight.",
+              "scope": "pair",
+              "sourceIds": [
+                "henry"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 111,
+                  "key": "Q"
+                },
+                {
+                  "champion": 16,
+                  "key": "E"
+                }
+              ]
+            },
+            {
+              "text": "Once Knight's Vow is done and Moonstone is coming online, bait his engage onto yourself and heal through it: with his cooldowns spent and your redirection plus healing up, your team wins the extended fight.",
+              "scope": "pair",
+              "sourceIds": [
+                "henry"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 16,
+                  "key": "W"
+                }
+              ],
+              "itemIds": [
+                3109
+              ]
+            }
+          ]
+        }
+      },
+      "itemization": [],
+      "sources": [
+        {
+          "id": "henry",
+          "author": "needyhenry",
+          "rankClaim": "Grandmaster (video claims grandmaster-or-challenger on any server; modest reading) · Soraka main",
+          "rank": "grandmaster",
+          "url": "https://www.youtube.com/watch?v=5DFoZ6eOdy0",
+          "kind": "youtube"
+        }
+      ]
+    },
+    {
+      "champion": 16,
+      "enemy": 412,
+      "lane": "support",
+      "patch": "26.21",
+      "reviewed": false,
+      "difficulty": "Hard",
+      "favoredWhen": "Poke him out at level 1 and match his resets; hold silence for the diver and never walk up without minions.",
+      "keyTips": [
+        {
+          "text": "Open level 1 behind your minions and trade autos plus Q whenever their carry steps for farm: entering level 2 ahead on health takes away the all-in they queued for.",
+          "scope": "pair",
+          "sourceIds": [
+            "henry-t"
+          ],
+          "abilityKeys": [
+            {
+              "champion": 16,
+              "key": "Q"
+            }
+          ]
+        },
+        {
+          "text": "Dodge hooks by walking straight back out of range instead of sidestepping: lateral movement keeps you inside the hook's path longer, while a straight retreat exits it.",
+          "scope": "pair",
+          "sourceIds": [
+            "henry-t"
+          ],
+          "abilityKeys": [
+            {
+              "champion": 412,
+              "key": "Q"
+            }
+          ]
+        },
+        {
+          "text": "Hold silence for the diver onto your carry, then answer with Q and heals: spending E early leaves nothing for the engage that actually kills.",
+          "scope": "pair",
+          "sourceIds": [
+            "henry-t"
+          ],
+          "abilityKeys": [
+            {
+              "champion": 16,
+              "key": "E"
+            },
+            {
+              "champion": 16,
+              "key": "Q"
+            }
+          ]
+        }
+      ],
+      "enemyTips": {},
+      "sections": {
+        "overview": {
+          "tips": []
+        },
+        "early-lane": {
+          "tips": [
+            {
+              "text": "Click his portrait at level 1 to see whether he started Q or E from the buff icon: when his E is missed or absent, run the lane down while he has no trade-back.",
+              "scope": "pair",
+              "sourceIds": [
+                "henry-t"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 412,
+                  "key": "Q"
+                },
+                {
+                  "champion": 412,
+                  "key": "E"
+                }
+              ]
+            },
+            {
+              "text": "Do not blow summoners over a level-1 hook: without ranks and backup damage it cannot kill you, so save your spells for the level-2 window that matters.",
+              "scope": "pair",
+              "sourceIds": [
+                "henry-t"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 412,
+                  "key": "Q"
+                }
+              ]
+            }
+          ]
+        },
+        "mid-lane": {
+          "tips": [
+            {
+              "text": "Base when he bases so you share his roam timer: matching his return keeps him from finding a free roam while you are stuck holding a wave.",
+              "scope": "pair",
+              "sourceIds": [
+                "henry-t"
+              ]
+            },
+            {
+              "text": "Track him when he goes missing and shade toward his roam with ult ready: arriving second with Wish turns his pick attempt into a lost play.",
+              "scope": "pair",
+              "sourceIds": [
+                "henry-t"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 16,
+                  "key": "R"
+                }
+              ]
+            }
+          ]
+        },
+        "win-condition": {
+          "tips": [
+            {
+              "text": "Rush Knight's Vow out of early health first when they run all-in burst: the health plus damage redirection keeps your carry alive through the hook-plus-jump window.",
+              "scope": "pair",
+              "sourceIds": [
+                "henry-t"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 16,
+                  "key": "W"
+                }
+              ],
+              "itemIds": [
+                3109
+              ]
+            },
+            {
+              "text": "Win by staying alive in the backline with your team topped up: as long as you are up with heals and ult ready, their pick comp cannot finish a fight, so never facecheck without minions or backup.",
+              "scope": "pair",
+              "sourceIds": [
+                "henry-t"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 16,
+                  "key": "R"
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "itemization": [],
+      "sources": [
+        {
+          "id": "henry-t",
+          "author": "needyhenry",
+          "rankClaim": "Grandmaster (video claims grandmaster-or-challenger on any server; modest reading) · Soraka main",
+          "rank": "grandmaster",
+          "url": "https://www.youtube.com/watch?v=-Zyqp_NxBHA",
+          "kind": "youtube"
+        }
+      ]
+    }
+  ],
+  "vods": [
+    {
+      "enemy": 2,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "kLrXdNHJq4Y",
+          "title": "Soraka Top vs Olaf - NA Challenger Patch 26.14",
+          "rankClaim": "Challenger",
+          "patch": "26.14",
+          "durationSec": 1672,
+          "region": "NA",
+          "uploaded": "2026-07-28",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 3,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "8gs7ESZPO_8",
+          "title": "Soraka Top vs Galio - KR Master Patch 25.16",
+          "rankClaim": "Master",
+          "patch": "25.16",
+          "durationSec": 2004,
+          "region": "KR",
+          "uploaded": "2025-08-26",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 8,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "Im5QFQnZMeI",
+          "title": "Soraka Top vs Vladimir - NA Grandmaster Patch 26.03",
+          "rankClaim": "Grandmaster",
+          "patch": "26.3",
+          "durationSec": 1689,
+          "region": "NA",
+          "uploaded": "2026-02-19",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 12,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "MGfslP5aPz4",
+          "title": "Soraka Support vs Alistar - KR Master Patch 26.04",
+          "rankClaim": "Master",
+          "patch": "26.4",
+          "durationSec": 1648,
+          "region": "KR",
+          "uploaded": "2026-03-06",
+          "moments": []
+        },
+        {
+          "videoId": "cEFX2NMVpNo",
+          "title": "Soraka Support vs Alistar - EUW Challenger Patch 25.13",
+          "rankClaim": "Challenger",
+          "patch": "25.13",
+          "durationSec": 1548,
+          "region": "EUW",
+          "uploaded": "2025-07-16",
+          "moments": []
+        },
+        {
+          "videoId": "J3Iaz4LX4mY",
+          "title": "Soraka Support vs Alistar - KR Master Patch 25.11",
+          "rankClaim": "Master",
+          "patch": "25.11",
+          "durationSec": 1623,
+          "region": "KR",
+          "uploaded": "2025-06-07",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 24,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "3GeaDfYaVwU",
+          "title": "Soraka Top vs Jax - KR Master Patch 25.17",
+          "rankClaim": "Master",
+          "patch": "25.17",
+          "durationSec": 1938,
+          "region": "KR",
+          "uploaded": "2025-09-11",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 25,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "TXNCb3HR6So",
+          "title": "(Henry Snow) Soraka Support vs Morgana - EUW Grandmaster Patch 26.13",
+          "rankClaim": "Grandmaster",
+          "patch": "26.13",
+          "durationSec": 1491,
+          "region": "EUW",
+          "player": "Henry Snow",
+          "uploaded": "2026-07-08",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 32,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "Tc3LTINhGv4",
+          "title": "Soraka Support vs Amumu - EUW Master Patch 26.17",
+          "rankClaim": "Master",
+          "patch": "26.17",
+          "durationSec": 1861,
+          "region": "EUW",
+          "uploaded": "2026-09-02",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 34,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "e_1teQuuhVo",
+          "title": "Soraka Top vs Anivia - BR Challenger Patch 26.08",
+          "rankClaim": "Challenger",
+          "patch": "26.8",
+          "durationSec": 1671,
+          "uploaded": "2026-04-27",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 37,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "6x6h4YQeyi0",
+          "title": "Soraka Support vs Sona - EUW Challenger Patch 26.18",
+          "rankClaim": "Challenger",
+          "patch": "26.18",
+          "durationSec": 1533,
+          "region": "EUW",
+          "uploaded": "2026-09-23",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 39,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "GfHokxRoN9I",
+          "title": "Soraka Top vs Irelia - KR Master Patch 26.13",
+          "rankClaim": "Master",
+          "patch": "26.13",
+          "durationSec": 1635,
+          "region": "KR",
+          "uploaded": "2026-07-03",
+          "moments": []
+        },
+        {
+          "videoId": "Ruz1l4-yS84",
+          "title": "(BIG Irrelevant) Soraka Top vs Irelia - EUW Challenger Patch 26.12",
+          "rankClaim": "Challenger",
+          "patch": "26.12",
+          "durationSec": 1862,
+          "region": "EUW",
+          "player": "BIG Irrelevant",
+          "uploaded": "2026-06-16",
+          "result": "L",
+          "moments": [
+            {
+              "atSec": 485,
+              "label": "First Blood — Soraka kills Irelia",
+              "kind": "kill"
+            },
+            {
+              "atSec": 528,
+              "label": "Tristana takes down Kai'Sa"
+            },
+            {
+              "atSec": 562,
+              "label": "Red takes 1st Dragon (Chemtech)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 643,
+              "label": "Soraka catches Irelia"
+            },
+            {
+              "atSec": 717,
+              "label": "Rengar kills Irelia",
+              "kind": "kill"
+            },
+            {
+              "atSec": 880,
+              "label": "Soraka picks off Kai'Sa"
+            },
+            {
+              "atSec": 927,
+              "label": "Red takes 2nd Dragon (Hextech)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 981,
+              "label": "Soraka eliminates Irelia"
+            },
+            {
+              "atSec": 1025,
+              "label": "Brand kills Kai'Sa",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1195,
+              "label": "Blue takes Baron",
+              "kind": "baron"
+            },
+            {
+              "atSec": 1243,
+              "label": "Blue takes 1st Dragon (Ocean)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1554,
+              "label": "Blue takes 2nd Dragon (Ocean)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1606,
+              "label": "Tristana Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1656,
+              "label": "Red takes Baron",
+              "kind": "baron"
+            },
+            {
+              "atSec": 1776,
+              "label": "Rengar Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1805,
+              "label": "Mid Inhibitor falls (Blue)"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 40,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "9o2kOqXdvms",
+          "title": "Soraka Support vs Janna - KR Master Patch 26.03",
+          "rankClaim": "Master",
+          "patch": "26.3",
+          "durationSec": 1462,
+          "region": "KR",
+          "uploaded": "2026-02-11",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 43,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "itV6hZS9lJk",
+          "title": "Soraka Support vs Karma - KR Challenger Patch 26.09",
+          "rankClaim": "Challenger",
+          "patch": "26.9",
+          "durationSec": 1737,
+          "region": "KR",
+          "uploaded": "2026-05-05",
+          "moments": []
+        },
+        {
+          "videoId": "wiZqC1WMaWU",
+          "title": "Soraka Support vs Karma - KR Master Patch 25.13",
+          "rankClaim": "Master",
+          "patch": "25.13",
+          "durationSec": 1476,
+          "region": "KR",
+          "uploaded": "2025-07-03",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 45,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "3NWskbNduZ4",
+          "title": "Soraka Support vs Veigar - KR Challenger Patch 25.24",
+          "rankClaim": "Challenger",
+          "patch": "25.24",
+          "durationSec": 1610,
+          "region": "KR",
+          "uploaded": "2025-12-10",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 53,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "lwh58l7UDss",
+          "title": "Soraka Support vs Blitzcrank - BR Challenger Patch 26.04",
+          "rankClaim": "Challenger",
+          "patch": "26.4",
+          "durationSec": 1810,
+          "uploaded": "2026-02-25",
+          "moments": []
+        },
+        {
+          "videoId": "ne1c6edv3AA",
+          "title": "Soraka Support vs Blitzcrank - BR Challenger Patch 26.02",
+          "rankClaim": "Challenger",
+          "patch": "26.2",
+          "durationSec": 1549,
+          "uploaded": "2026-01-27",
+          "moments": []
+        },
+        {
+          "videoId": "IznGC1QwB5o",
+          "title": "Soraka Support vs Blitzcrank - KR Grandmaster Patch 25.20",
+          "rankClaim": "Grandmaster",
+          "patch": "25.20",
+          "durationSec": 1575,
+          "region": "KR",
+          "uploaded": "2025-10-18",
+          "moments": []
+        },
+        {
+          "videoId": "PJEjx7TQ3j0",
+          "title": "Soraka Support vs Blitzcrank - KR Grandmaster Patch 25.06",
+          "rankClaim": "Grandmaster",
+          "patch": "25.6",
+          "durationSec": 2025,
+          "region": "KR",
+          "uploaded": "2025-03-26",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 54,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "K-fiaEQC8Ug",
+          "title": "Soraka Top vs Malphite - KR Master Patch 25.15",
+          "rankClaim": "Master",
+          "patch": "25.15",
+          "durationSec": 1473,
+          "region": "KR",
+          "uploaded": "2025-08-13",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 58,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "sE1EXCfe0iY",
+          "title": "Soraka Top vs Renekton - KR Master Patch 25.19",
+          "rankClaim": "Master",
+          "patch": "25.19",
+          "durationSec": 1450,
+          "region": "KR",
+          "uploaded": "2025-10-07",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 60,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "yvWQ-3um4Ww",
+          "title": "Soraka Support vs Elise - KR Master Patch 26.15",
+          "rankClaim": "Master",
+          "patch": "26.15",
+          "durationSec": 1782,
+          "region": "KR",
+          "uploaded": "2026-08-11",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 68,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "8rGbyaYYh1s",
+          "title": "Soraka Top vs Rumble - NA Grandmaster Patch 25.07",
+          "rankClaim": "Grandmaster",
+          "patch": "25.7",
+          "durationSec": 1457,
+          "region": "NA",
+          "uploaded": "2025-04-13",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 78,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "t5_Kf1NvnKg",
+          "title": "Soraka Top vs Poppy - KR Master Patch 26.11",
+          "rankClaim": "Master",
+          "patch": "26.11",
+          "durationSec": 1860,
+          "region": "KR",
+          "uploaded": "2026-06-09",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 80,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "mx7pQb6XDe4",
+          "title": "Soraka Support vs Pantheon - KR Challenger Patch 26.20",
+          "rankClaim": "Challenger",
+          "patch": "26.20",
+          "durationSec": 1699,
+          "region": "KR",
+          "uploaded": "2026-10-10",
+          "result": "W",
+          "moments": [
+            {
+              "atSec": 70,
+              "label": "First Blood — Soraka kills Jhin",
+              "kind": "kill"
+            },
+            {
+              "atSec": 620,
+              "label": "Blue takes 1st Dragon (Mountain)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 711,
+              "label": "Locke takes down Corki"
+            },
+            {
+              "atSec": 822,
+              "label": "Locke Triple Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 918,
+              "label": "Soraka eliminates Corki"
+            },
+            {
+              "atSec": 951,
+              "label": "Kayn eliminates Jhin"
+            },
+            {
+              "atSec": 974,
+              "label": "Team fight (3 kills)",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1017,
+              "label": "Red takes 1st Dragon (Ocean)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1167,
+              "label": "Team fight (3 kills)",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1282,
+              "label": "Team fight (5 kills)",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1332,
+              "label": "Red takes Baron",
+              "kind": "baron"
+            },
+            {
+              "atSec": 1395,
+              "label": "Red takes 2nd Dragon (Infernal)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1514,
+              "label": "Jax eliminates Pantheon"
+            },
+            {
+              "atSec": 1519,
+              "label": "Bot Inhibitor falls (Blue)"
+            },
+            {
+              "atSec": 1654,
+              "label": "Team fight (4 kills)",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1674,
+              "label": "Mid Inhibitor falls (Blue)"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 89,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "cGCGaU0t0E8",
+          "title": "Soraka Support vs Leona - KR Master Patch 26.16",
+          "rankClaim": "Master",
+          "patch": "26.16",
+          "durationSec": 1500,
+          "region": "KR",
+          "uploaded": "2026-08-24",
+          "moments": []
+        },
+        {
+          "videoId": "jzm6VtXR6G0",
+          "title": "Soraka Support vs Leona - EUW Grandmaster Patch 25.24",
+          "rankClaim": "Grandmaster",
+          "patch": "25.24",
+          "durationSec": 1530,
+          "region": "EUW",
+          "uploaded": "2025-12-17",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 92,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "MsSGWFsvfCM",
+          "title": "Soraka Mid vs Riven - EUW Challenger Patch 26.10",
+          "rankClaim": "Challenger",
+          "patch": "26.10",
+          "durationSec": 1871,
+          "region": "EUW",
+          "uploaded": "2026-05-28",
+          "moments": []
+        },
+        {
+          "videoId": "rV6N8p7cL6s",
+          "title": "Soraka Mid vs Riven - NA Grandmaster Patch 25.08",
+          "rankClaim": "Grandmaster",
+          "patch": "25.8",
+          "durationSec": 1722,
+          "region": "NA",
+          "uploaded": "2025-04-27",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 111,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "qxZknKnNsWc",
+          "title": "Soraka Support vs Nautilus - KR Challenger Patch 26.21",
+          "rankClaim": "Challenger",
+          "patch": "26.21",
+          "durationSec": 1613,
+          "region": "KR",
+          "uploaded": "2026-10-25",
+          "result": "W",
+          "moments": [
+            {
+              "atSec": 83,
+              "label": "First Blood — Soraka kills Jayce",
+              "kind": "kill"
+            },
+            {
+              "atSec": 106,
+              "label": "Xin Zhao eliminates Xerath"
+            },
+            {
+              "atSec": 462,
+              "label": "Akshan picks off Jayce"
+            },
+            {
+              "atSec": 547,
+              "label": "Red takes 1st Dragon (Cloud)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 649,
+              "label": "Sylas eliminates Nautilus"
+            },
+            {
+              "atSec": 745,
+              "label": "Team fight (4 kills)",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 841,
+              "label": "Akshan takes down Nautilus"
+            },
+            {
+              "atSec": 880,
+              "label": "Red takes 2nd Dragon (Chemtech)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1026,
+              "label": "Team fight (3 kills)",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1151,
+              "label": "Team fight (3 kills)",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1271,
+              "label": "Red takes 3rd Dragon (Infernal)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1273,
+              "label": "Blue takes Baron",
+              "kind": "baron"
+            },
+            {
+              "atSec": 1345,
+              "label": "Xin Zhao Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1592,
+              "label": "Akshan Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1597,
+              "label": "Akshan Triple Kill",
+              "kind": "kill"
+            }
+          ]
+        },
+        {
+          "videoId": "Kj5gA7FhDMo",
+          "title": "Soraka Support vs Nautilus - KR Challenger Patch 26.19",
+          "rankClaim": "Challenger",
+          "patch": "26.19",
+          "durationSec": 1578,
+          "region": "KR",
+          "uploaded": "2026-09-27",
+          "moments": []
+        },
+        {
+          "videoId": "mj4_p7cn-MI",
+          "title": "Soraka Support vs Nautilus - NA Challenger Patch 26.05",
+          "rankClaim": "Challenger",
+          "patch": "26.5",
+          "durationSec": 1656,
+          "region": "NA",
+          "uploaded": "2026-03-11",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 25,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 52,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 185,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 458,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 618,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 789,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 816,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 843,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 980,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1260,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1346,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1427,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1456,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1558,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1600,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1610,
+              "label": "Take down The Inhibitor"
+            },
+            {
+              "atSec": 1620,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1631,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1645,
+              "label": "End credit"
+            }
+          ]
+        },
+        {
+          "videoId": "fK2uI-ql-2A",
+          "title": "Soraka Support vs Nautilus - KR Master Patch 25.23",
+          "rankClaim": "Master",
+          "patch": "25.23",
+          "durationSec": 1537,
+          "region": "KR",
+          "uploaded": "2025-11-28",
+          "moments": []
+        },
+        {
+          "videoId": "8fsjifTBm7Y",
+          "title": "Soraka Support vs Nautilus - KR Master Patch 25.18",
+          "rankClaim": "Master",
+          "patch": "25.18",
+          "durationSec": 1664,
+          "region": "KR",
+          "uploaded": "2025-09-17",
+          "moments": []
+        },
+        {
+          "videoId": "XXh-sPkYDJ4",
+          "title": "Soraka Support vs Nautilus - KR Master Patch 25.15",
+          "rankClaim": "Master",
+          "patch": "25.15",
+          "durationSec": 1956,
+          "region": "KR",
+          "uploaded": "2025-08-07",
+          "moments": []
+        },
+        {
+          "videoId": "wF4U6nOoot8",
+          "title": "Soraka Support vs Nautilus - NA Grandmaster Patch 25.14",
+          "rankClaim": "Grandmaster",
+          "patch": "25.14",
+          "durationSec": 1884,
+          "region": "NA",
+          "uploaded": "2025-07-27",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 117,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "nQWJqXMXJmM",
+          "title": "Soraka Support vs Lulu - KR Master Patch 25.12",
+          "rankClaim": "Master",
+          "patch": "25.12",
+          "durationSec": 1604,
+          "region": "KR",
+          "uploaded": "2025-06-21",
+          "moments": []
+        },
+        {
+          "videoId": "d7OhzGCUdOk",
+          "title": "Soraka Support vs Lulu - KR Challenger Patch 25.05",
+          "rankClaim": "Challenger",
+          "patch": "25.5",
+          "durationSec": 1718,
+          "region": "KR",
+          "uploaded": "2025-03-12",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 122,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "VUxKbF9Yzqc",
+          "title": "Soraka Top vs Darius - BR Challenger Patch 25.24",
+          "rankClaim": "Challenger",
+          "patch": "25.24",
+          "durationSec": 1492,
+          "uploaded": "2026-01-03",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 330,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 498,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 617,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 727,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 869,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 965,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1018,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1094,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1210,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1238,
+              "label": "Hunt The Atakhan"
+            },
+            {
+              "atSec": 1285,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1318,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1335,
+              "label": "Take down The Inhibitor"
+            },
+            {
+              "atSec": 1439,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1468,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1481,
+              "label": "End credit"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 131,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "G0b4LcolgzM",
+          "title": "Soraka Mid vs Diana - KR Master Patch 25.04",
+          "rankClaim": "Master",
+          "patch": "25.4",
+          "durationSec": 1867,
+          "region": "KR",
+          "uploaded": "2025-03-01",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 433,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 502,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 527,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 594,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 757,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1093,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1167,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1447,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1574,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1846,
+              "label": "End credit"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 142,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "wLbE9hEcNsw",
+          "title": "Soraka Support vs Zoe - KR Grandmaster Patch 26.10",
+          "rankClaim": "Grandmaster",
+          "patch": "26.10",
+          "durationSec": 1759,
+          "region": "KR",
+          "uploaded": "2026-05-19",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 157,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "yKefw-V5924",
+          "title": "Soraka Top vs Yasuo - KR Master Patch 25.05",
+          "rankClaim": "Master",
+          "patch": "25.5",
+          "durationSec": 1762,
+          "region": "KR",
+          "uploaded": "2025-03-18",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 164,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "cJL4Jo_zJVo",
+          "title": "Soraka Support vs Camille - KR Master Patch 26.19",
+          "rankClaim": "Master",
+          "patch": "26.19",
+          "durationSec": 1567,
+          "region": "KR",
+          "uploaded": "2026-10-07",
+          "result": "W",
+          "moments": [
+            {
+              "atSec": 77,
+              "label": "First Blood — Kai'Sa kills Camille",
+              "kind": "kill"
+            },
+            {
+              "atSec": 397,
+              "label": "Lee Sin eliminates Aurelion Sol"
+            },
+            {
+              "atSec": 451,
+              "label": "Kai'Sa eliminates Talon"
+            },
+            {
+              "atSec": 524,
+              "label": "Gragas eliminates Camille"
+            },
+            {
+              "atSec": 583,
+              "label": "Kai'Sa picks off Camille"
+            },
+            {
+              "atSec": 632,
+              "label": "Red takes 1st Dragon (Mountain)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 676,
+              "label": "Yasuo picks off Talon"
+            },
+            {
+              "atSec": 895,
+              "label": "Blue takes Rift Herald",
+              "kind": "herald"
+            },
+            {
+              "atSec": 988,
+              "label": "Red takes 2nd Dragon (Chemtech)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1133,
+              "label": "Gragas eliminates Akali"
+            },
+            {
+              "atSec": 1215,
+              "label": "Mid Inhibitor falls (Red)"
+            },
+            {
+              "atSec": 1301,
+              "label": "Red takes 3rd Dragon (Hextech)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1360,
+              "label": "Team fight (4 kills)",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1400,
+              "label": "Blue takes Baron",
+              "kind": "baron"
+            },
+            {
+              "atSec": 1477,
+              "label": "Team fight (4 kills)",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1519,
+              "label": "Lee Sin eliminates Aurelion Sol"
+            },
+            {
+              "atSec": 1525,
+              "label": "Mid Inhibitor falls (Red)"
+            },
+            {
+              "atSec": 1537,
+              "label": "Bot Inhibitor falls (Red)"
+            }
+          ]
+        },
+        {
+          "videoId": "-zgf0DVdZ3M",
+          "title": "Soraka Support vs Camille - KR Master Patch 26.17",
+          "rankClaim": "Master",
+          "patch": "26.17",
+          "durationSec": 1782,
+          "region": "KR",
+          "uploaded": "2026-09-11",
+          "moments": []
+        },
+        {
+          "videoId": "95GAExTekd4",
+          "title": "Soraka Support vs Camille - KR Grandmaster Patch 26.02",
+          "rankClaim": "Grandmaster",
+          "patch": "26.2",
+          "durationSec": 1555,
+          "region": "KR",
+          "uploaded": "2026-02-04",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 248,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 516,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 701,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 792,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1005,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1094,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1299,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1403,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1512,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1544,
+              "label": "End credit"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 164,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "ejS5FjfIITU",
+          "title": "Soraka Top vs Camille - KR Master Patch 25.04",
+          "rankClaim": "Master",
+          "patch": "25.4",
+          "durationSec": 2010,
+          "region": "KR",
+          "uploaded": "2025-02-22",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 193,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 678,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 783,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 894,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1006,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1042,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1252,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1574,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1668,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1784,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1912,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1954,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1989,
+              "label": "End credit"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 201,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "l8apaWSdIxw",
+          "title": "Soraka Support vs Braum - KR Master Patch 26.20",
+          "rankClaim": "Master",
+          "patch": "26.20",
+          "durationSec": 1570,
+          "region": "KR",
+          "uploaded": "2026-10-23",
+          "result": "W",
+          "moments": [
+            {
+              "atSec": 83,
+              "label": "First Blood — Soraka kills Vayne",
+              "kind": "kill"
+            },
+            {
+              "atSec": 497,
+              "label": "Blue takes 1st Dragon (Infernal)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 755,
+              "label": "Team fight (3 kills)",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 846,
+              "label": "Red takes 1st Dragon (Hextech)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 921,
+              "label": "Akali eliminates Twisted Fate"
+            },
+            {
+              "atSec": 943,
+              "label": "Akali Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 951,
+              "label": "Akali Triple Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1124,
+              "label": "Sion eliminates Olaf"
+            },
+            {
+              "atSec": 1164,
+              "label": "Blue takes 2nd Dragon (Chemtech)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1180,
+              "label": "Xin Zhao kills Braum",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1202,
+              "label": "Ashe Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1243,
+              "label": "Blue takes Baron",
+              "kind": "baron"
+            },
+            {
+              "atSec": 1311,
+              "label": "Xin Zhao takes down Kindred"
+            },
+            {
+              "atSec": 1402,
+              "label": "Team fight (3 kills)",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1495,
+              "label": "Blue takes 3rd Dragon (Chemtech)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1510,
+              "label": "Ashe Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1516,
+              "label": "Ashe Triple Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1519,
+              "label": "Ashe Quadra Kill",
+              "kind": "kill"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 235,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "1bRQDW0mtGo",
+          "title": "Soraka Support vs Senna - EUW Challenger Patch 26.07",
+          "rankClaim": "Challenger",
+          "patch": "26.7",
+          "durationSec": 1658,
+          "region": "EUW",
+          "uploaded": "2026-04-08",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 240,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "AS_KH_EcX20",
+          "title": "Soraka Top vs Kled - KR Master Patch 25.14",
+          "rankClaim": "Master",
+          "patch": "25.14",
+          "durationSec": 2068,
+          "region": "KR",
+          "uploaded": "2025-07-24",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 245,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "_vRZuvuAoFk",
+          "title": "Soraka Mid vs Ekko - EUW Grandmaster Patch 25.24",
+          "rankClaim": "Grandmaster",
+          "patch": "25.24",
+          "durationSec": 1572,
+          "region": "EUW",
+          "uploaded": "2026-01-05",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 266,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "3mmOQxMwCsE",
+          "title": "Soraka Top vs Aatrox - KR Master Patch 25.23",
+          "rankClaim": "Master",
+          "patch": "25.23",
+          "durationSec": 1678,
+          "region": "KR",
+          "uploaded": "2025-12-01",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 267,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "UyTXh43yr8o",
+          "title": "Soraka Support vs Nami - VN Master Patch 26.01",
+          "rankClaim": "Master",
+          "patch": "26.1",
+          "durationSec": 1453,
+          "uploaded": "2026-01-14",
+          "moments": []
+        },
+        {
+          "videoId": "tcfLOUwCFAo",
+          "title": "Soraka Support vs Nami - KR Master Patch 25.09",
+          "rankClaim": "Master",
+          "patch": "25.9",
+          "durationSec": 1945,
+          "region": "KR",
+          "uploaded": "2025-05-09",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 188,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 282,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 432,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 556,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 745,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 849,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 875,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 958,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 989,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1211,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1314,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1388,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1426,
+              "label": "Take down The Inhibitor"
+            },
+            {
+              "atSec": 1443,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1672,
+              "label": "Take down The Inhibitor"
+            },
+            {
+              "atSec": 1884,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1924,
+              "label": "End credit"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 268,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "cOlgSG5cghs",
+          "title": "Soraka Mid vs Azir - EUW Grandmaster Patch 25.09",
+          "rankClaim": "Grandmaster",
+          "patch": "25.9",
+          "durationSec": 1464,
+          "region": "EUW",
+          "uploaded": "2025-05-14",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 138,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 342,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 441,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 560,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 893,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 963,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1053,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1143,
+              "label": "Hunt The Rift Herald",
+              "kind": "herald"
+            },
+            {
+              "atSec": 1200,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1269,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1377,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1415,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1443,
+              "label": "End credit"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 350,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "FvTTNwR01hk",
+          "title": "Soraka Support vs Yuumi - KR Master Patch 26.18",
+          "rankClaim": "Master",
+          "patch": "26.18",
+          "durationSec": 1749,
+          "region": "KR",
+          "uploaded": "2026-09-14",
+          "moments": []
+        },
+        {
+          "videoId": "vuPe_XOLWVo",
+          "title": "Soraka Support vs Yuumi - KR Master Patch 25.21",
+          "rankClaim": "Master",
+          "patch": "25.21",
+          "durationSec": 2027,
+          "region": "KR",
+          "uploaded": "2025-10-30",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 350,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "nIYAoU6pvps",
+          "title": "THE BIGGEST CONTENT CREATOR TOURNAMENT EVER",
+          "rankClaim": "Master+",
+          "patch": "26.10",
+          "durationSec": 24433,
+          "patchEstimated": true,
+          "player": "Alois",
+          "uploaded": "2026-05-22",
+          "format": "stream",
+          "cam": true,
+          "startSec": 22078,
+          "endSec": 24433,
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 412,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "rFc2SapIoXc",
+          "title": "Soraka Support vs Thresh - EUW Grandmaster Patch 26.16",
+          "rankClaim": "Grandmaster",
+          "patch": "26.16",
+          "durationSec": 1842,
+          "region": "EUW",
+          "uploaded": "2026-08-20",
+          "moments": []
+        },
+        {
+          "videoId": "_S08beODov4",
+          "title": "Soraka Support vs Thresh - KR Master Patch 25.08",
+          "rankClaim": "Master",
+          "patch": "25.8",
+          "durationSec": 1934,
+          "region": "KR",
+          "uploaded": "2025-04-22",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 432,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "1S6OGM4KQ8k",
+          "title": "Soraka Support vs Bard - KR Challenger Patch 26.12",
+          "rankClaim": "Challenger",
+          "patch": "26.12",
+          "durationSec": 1781,
+          "region": "KR",
+          "uploaded": "2026-06-25",
+          "moments": []
+        },
+        {
+          "videoId": "p3JqgMMJvlE",
+          "title": "Soraka Support vs Bard - EUW Challenger Patch 25.20",
+          "rankClaim": "Challenger",
+          "patch": "25.20",
+          "durationSec": 1423,
+          "region": "EUW",
+          "uploaded": "2025-10-24",
+          "moments": []
+        },
+        {
+          "videoId": "pvfIOE46_oc",
+          "title": "Soraka Support vs Bard - KR Grandmaster Patch 25.19",
+          "rankClaim": "Grandmaster",
+          "patch": "25.19",
+          "durationSec": 1952,
+          "region": "KR",
+          "uploaded": "2025-10-01",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 497,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "RtM87qDaG6Q",
+          "title": "Soraka Support vs Rakan - KR Master Patch 25.16",
+          "rankClaim": "Master",
+          "patch": "25.16",
+          "durationSec": 1634,
+          "region": "KR",
+          "uploaded": "2025-08-21",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 516,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "PW_OO9ik6fg",
+          "title": "Soraka Top vs Ornn - EUW Grandmaster Patch 25.11",
+          "rankClaim": "Grandmaster",
+          "patch": "25.11",
+          "durationSec": 1445,
+          "region": "EUW",
+          "uploaded": "2025-06-10",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 518,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "TWmO7AM3lg0",
+          "title": "Soraka Support vs Neeko - KR Challenger Patch 26.06",
+          "rankClaim": "Challenger",
+          "patch": "26.6",
+          "durationSec": 1706,
+          "region": "KR",
+          "uploaded": "2026-03-26",
+          "moments": []
+        },
+        {
+          "videoId": "hT2pNVyHKLk",
+          "title": "Soraka Support vs Neeko - KR Grandmaster Patch 25.22",
+          "rankClaim": "Grandmaster",
+          "patch": "25.22",
+          "durationSec": 1737,
+          "region": "KR",
+          "uploaded": "2025-11-12",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 555,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "8SFsVHPkPM4",
+          "title": "Soraka Support vs Pyke - KR Master Patch 25.24",
+          "rankClaim": "Master",
+          "patch": "25.24",
+          "durationSec": 1562,
+          "region": "KR",
+          "uploaded": "2025-12-26",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 310,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 405,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 492,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 609,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 664,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 759,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 787,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 810,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 902,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1008,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1323,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1361,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1397,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1527,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1551,
+              "label": "End credit"
+            }
+          ]
+        },
+        {
+          "videoId": "LOJGBM6fmV0",
+          "title": "Soraka Support vs Pyke - KR Challenger Patch 25.17",
+          "rankClaim": "Challenger",
+          "patch": "25.17",
+          "durationSec": 1786,
+          "region": "KR",
+          "uploaded": "2025-09-03",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 711,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "VBEGnUZjfjo",
+          "title": "Soraka Mid vs Vex - EUW Grandmaster Patch 25.10",
+          "rankClaim": "Grandmaster",
+          "patch": "25.10",
+          "durationSec": 1495,
+          "region": "EUW",
+          "uploaded": "2025-05-26",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 875,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "ogQ33d-BbvM",
+          "title": "Soraka Top vs Sett - KR Master Patch 25.13",
+          "rankClaim": "Master",
+          "patch": "25.13",
+          "durationSec": 1669,
+          "region": "KR",
+          "uploaded": "2025-07-11",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 888,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "4IK09Uzs_8w",
+          "title": "Soraka Support vs Renata Glasc - KR Master Patch 25.07",
+          "rankClaim": "Master",
+          "patch": "25.7",
+          "durationSec": 1768,
+          "region": "KR",
+          "uploaded": "2025-04-10",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 209,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 479,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 674,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 878,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 967,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1208,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1307,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1374,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1492,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1620,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1639,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1655,
+              "label": "Take down The Inhibitor"
+            },
+            {
+              "atSec": 1682,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1700,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1734,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1747,
+              "label": "End credit"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 893,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "Vu-VMcGBVVw",
+          "title": "Soraka Mid vs Aurora - EUW Challenger Patch 26.07",
+          "rankClaim": "Challenger",
+          "patch": "26.7",
+          "durationSec": 1581,
+          "region": "EUW",
+          "uploaded": "2026-04-13",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 314,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 451,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 567,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 755,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 906,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 937,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 974,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1011,
+              "label": "Hunt The Rift Herald",
+              "kind": "herald"
+            },
+            {
+              "atSec": 1037,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1084,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1148,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1283,
+              "label": "Hunt The Baron Nashor",
+              "kind": "baron"
+            },
+            {
+              "atSec": 1348,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1390,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1405,
+              "label": "Hunt The Dragon",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1431,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1461,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1483,
+              "label": "Take down The Inhibitor"
+            },
+            {
+              "atSec": 1530,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1550,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1560,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1570,
+              "label": "End credit"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 897,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "uin7bR-PGAU",
+          "title": "Soraka Support vs K'Sante - EUW Challenger Patch 26.08",
+          "rankClaim": "Challenger",
+          "patch": "26.8",
+          "durationSec": 1736,
+          "region": "EUW",
+          "uploaded": "2026-04-20",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 901,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "0HLchZxi5Ls",
+          "title": "Soraka Top vs Smolder - NA Grandmaster Patch 25.12",
+          "rankClaim": "Grandmaster",
+          "patch": "25.12",
+          "durationSec": 1665,
+          "region": "NA",
+          "uploaded": "2025-06-24",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 902,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "wpmdNpDH5HA",
+          "title": "Soraka Support vs Milio - KR Grandmaster Patch 25.10",
+          "rankClaim": "Grandmaster",
+          "patch": "25.10",
+          "durationSec": 1510,
+          "region": "KR",
+          "uploaded": "2025-05-21",
+          "moments": []
+        }
+      ]
+    }
+  ]
+}

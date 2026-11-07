@@ -1,0 +1,2404 @@
+{
+  "schema": 1,
+  "champion": 12,
+  "generatedAt": "2026-11-07T13:25:14.592Z",
+  "guides": [],
+  "general": [
+    {
+      "champion": 12,
+      "lane": "support",
+      "patch": "26.21",
+      "reviewed": false,
+      "keyTips": [
+        {
+          "text": "Spike at level 2 with W and Q together, then use the early level edge to start a skirmish.",
+          "scope": "champion",
+          "sourceIds": [
+            "mobalytics-alistar"
+          ],
+          "abilityKeys": [
+            {
+              "champion": 12,
+              "key": "Q"
+            },
+            {
+              "champion": 12,
+              "key": "W"
+            }
+          ]
+        },
+        {
+          "text": "Reach level 3 fast and engage once an opponent steps past their safe line.",
+          "scope": "champion",
+          "sourceIds": [
+            "mobalytics-alistar"
+          ]
+        },
+        {
+          "text": "Save R for tower dives and objective fights so its protection covers the whole play.",
+          "scope": "champion",
+          "sourceIds": [
+            "mobalytics-alistar"
+          ],
+          "abilityKeys": [
+            {
+              "champion": 12,
+              "key": "R"
+            }
+          ]
+        }
+      ],
+      "sections": {
+        "overview": {
+          "tips": []
+        },
+        "early-lane": {
+          "tips": [
+            {
+              "text": "At level 2, combine displacement and knock-up the moment the level lead opens.",
+              "scope": "champion",
+              "sourceIds": [
+                "mobalytics-alistar"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 12,
+                  "key": "Q"
+                },
+                {
+                  "champion": 12,
+                  "key": "W"
+                }
+              ]
+            },
+            {
+              "text": "When the lane sits safely, roam elsewhere, with stronger roams once boots land.",
+              "scope": "champion",
+              "sourceIds": [
+                "mobalytics-alistar"
+              ]
+            },
+            {
+              "text": "Aim Q at the most important or mobile target during an engage so they cannot slip the follow-up.",
+              "scope": "champion",
+              "sourceIds": [
+                "mobalytics-alistar"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 12,
+                  "key": "Q"
+                }
+              ]
+            },
+            {
+              "text": "Before crashing a big wave for a dive, sync with the jungler and keep R to soak tower pressure.",
+              "scope": "champion",
+              "sourceIds": [
+                "mobalytics-alistar"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 12,
+                  "key": "R"
+                }
+              ]
+            },
+            {
+              "text": "At level 6, try riskier bot or mid dives when allies can follow up.",
+              "scope": "champion",
+              "sourceIds": [
+                "mobalytics-alistar"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 12,
+                  "key": "R"
+                }
+              ]
+            }
+          ]
+        },
+        "mid-lane": {
+          "tips": [
+            {
+              "text": "Roam through the enemy jungle, plant deep wards, track their jungler, and back invades.",
+              "scope": "champion",
+              "sourceIds": [
+                "mobalytics-alistar"
+              ]
+            },
+            {
+              "text": "At objectives, hunt a multi-person W and Q knock-up, or zone their jungler from the pit when no angle exists.",
+              "scope": "champion",
+              "sourceIds": [
+                "mobalytics-alistar"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 12,
+                  "key": "Q"
+                },
+                {
+                  "champion": 12,
+                  "key": "W"
+                }
+              ]
+            },
+            {
+              "text": "Find flank paths with vision and displace the enemy carry with Q, diving only with teammates behind.",
+              "scope": "champion",
+              "sourceIds": [
+                "mobalytics-alistar"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 12,
+                  "key": "Q"
+                }
+              ]
+            },
+            {
+              "text": "Group to create more multi-target W and Q chances, since lower cooldowns also open extra picks.",
+              "scope": "champion",
+              "sourceIds": [
+                "mobalytics-alistar"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 12,
+                  "key": "Q"
+                },
+                {
+                  "champion": 12,
+                  "key": "W"
+                }
+              ]
+            },
+            {
+              "text": "Buy defensive items in this phase to hold the frontline through longer fights.",
+              "scope": "champion",
+              "sourceIds": [
+                "mobalytics-alistar"
+              ]
+            }
+          ]
+        },
+        "win-condition": {
+          "tips": [
+            {
+              "text": "Open with W and Q only when the team stands close enough to turn the control into a kill or objective.",
+              "scope": "champion",
+              "sourceIds": [
+                "mobalytics-alistar"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 12,
+                  "key": "Q"
+                },
+                {
+                  "champion": 12,
+                  "key": "W"
+                }
+              ]
+            },
+            {
+              "text": "Hunt late side picks and flanks through the enemy jungle, including a support stepping out to ward.",
+              "scope": "champion",
+              "sourceIds": [
+                "mobalytics-alistar"
+              ]
+            },
+            {
+              "text": "Dive enemy carries with R active, then drop back to guard allied carries and release tower aggro before running low.",
+              "scope": "champion",
+              "sourceIds": [
+                "mobalytics-alistar"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 12,
+                  "key": "R"
+                }
+              ]
+            },
+            {
+              "text": "Before a big neutral fight, set a pick on the enemy jungler with vision, then zone their carries while the team secures it.",
+              "scope": "champion",
+              "sourceIds": [
+                "mobalytics-alistar"
+              ]
+            }
+          ]
+        }
+      },
+      "itemization": [
+        {
+          "text": "Buy boots early to unlock stronger roams across the map.",
+          "scope": "champion",
+          "sourceIds": [
+            "mobalytics-alistar"
+          ]
+        },
+        {
+          "text": "Stack defensive items afterward so Alistar can frontline and survive longer fights.",
+          "scope": "champion",
+          "sourceIds": [
+            "mobalytics-alistar"
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "id": "mobalytics-alistar",
+          "author": "Mobalytics",
+          "rankClaim": "No rank claim",
+          "url": "https://mobalytics.gg/lol/champions/alistar/guide/support",
+          "kind": "web"
+        }
+      ]
+    }
+  ],
+  "vods": [
+    {
+      "enemy": 3,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "qfGASTsG4sg",
+          "title": "Alistar Support vs Galio - KR Grandmaster Patch 26.20",
+          "rankClaim": "Grandmaster",
+          "patch": "26.20",
+          "durationSec": 1633,
+          "region": "KR",
+          "uploaded": "2026-10-09",
+          "result": "W",
+          "moments": [
+            {
+              "atSec": 157,
+              "label": "First Blood — Aphelios kills Tristana",
+              "kind": "kill"
+            },
+            {
+              "atSec": 162,
+              "label": "Aphelios Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 382,
+              "label": "Ahri takes down Galio"
+            },
+            {
+              "atSec": 553,
+              "label": "Aphelios takes down Tristana"
+            },
+            {
+              "atSec": 585,
+              "label": "Aphelios picks off Galio"
+            },
+            {
+              "atSec": 617,
+              "label": "Blue takes 1st Dragon (Mountain)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 723,
+              "label": "Lee Sin kills Galio",
+              "kind": "kill"
+            },
+            {
+              "atSec": 894,
+              "label": "Aphelios takes down Tristana"
+            },
+            {
+              "atSec": 971,
+              "label": "Blue takes Rift Herald",
+              "kind": "herald"
+            },
+            {
+              "atSec": 984,
+              "label": "Red takes 1st Dragon (Chemtech)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1153,
+              "label": "Lee Sin eliminates Tristana"
+            },
+            {
+              "atSec": 1303,
+              "label": "Red takes 2nd Dragon (Cloud)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1355,
+              "label": "Lee Sin kills Galio",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1384,
+              "label": "Blue takes Baron",
+              "kind": "baron"
+            },
+            {
+              "atSec": 1511,
+              "label": "Aphelios Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1556,
+              "label": "Mid Inhibitor falls (Red)"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 3,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "x1hThIPrpgM",
+          "title": "Alistar Top vs Galio - KR Master Patch 25.08",
+          "rankClaim": "Master",
+          "patch": "25.8",
+          "durationSec": 1746,
+          "region": "KR",
+          "uploaded": "2025-04-26",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 582,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 703,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1062,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1228,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1359,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1455,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1485,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1690,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1725,
+              "label": "End credit"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 10,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "WF1hIz-NliU",
+          "title": "Alistar Mid vs Kayle - BR Challenger Patch 26.03",
+          "rankClaim": "Challenger",
+          "patch": "26.3",
+          "durationSec": 1454,
+          "uploaded": "2026-02-20",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 14,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "Ti0QfWMm3zE",
+          "title": "Alistar Support vs Sion - KR Challenger Patch 25.08",
+          "rankClaim": "Challenger",
+          "patch": "25.8",
+          "durationSec": 1859,
+          "region": "KR",
+          "uploaded": "2025-04-20",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 24,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "hFULC2FYy5g",
+          "title": "Alistar Top vs Jax - KR Master Patch 25.14",
+          "rankClaim": "Master",
+          "patch": "25.14",
+          "durationSec": 1991,
+          "region": "KR",
+          "uploaded": "2025-07-25",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 37,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "QgD_FBWELD0",
+          "title": "Alistar Support vs Sona - NA Challenger Patch 26.06",
+          "rankClaim": "Challenger",
+          "patch": "26.6",
+          "durationSec": 1604,
+          "region": "NA",
+          "uploaded": "2026-04-02",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 375,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 443,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 531,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 847,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 927,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 998,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1103,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1123,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1137,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1198,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1291,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1407,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1511,
+              "label": "Take down The Inhibitor"
+            },
+            {
+              "atSec": 1593,
+              "label": "End credit"
+            }
+          ]
+        },
+        {
+          "videoId": "5WeijUVtrYI",
+          "title": "Alistar Support vs Sona - EUW Grandmaster Patch 25.22",
+          "rankClaim": "Grandmaster",
+          "patch": "25.22",
+          "durationSec": 1696,
+          "region": "EUW",
+          "uploaded": "2025-11-20",
+          "moments": []
+        },
+        {
+          "videoId": "Vm54TweRhcI",
+          "title": "Alistar Support vs Sona - NA Challenger Patch 25.11",
+          "rankClaim": "Challenger",
+          "patch": "25.11",
+          "durationSec": 2045,
+          "region": "NA",
+          "uploaded": "2025-06-12",
+          "moments": []
+        },
+        {
+          "videoId": "7ch_bc1a6HE",
+          "title": "Alistar Support vs Sona - KR Grandmaster Patch 25.09",
+          "rankClaim": "Grandmaster",
+          "patch": "25.9",
+          "durationSec": 1709,
+          "region": "KR",
+          "uploaded": "2025-05-03",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 43,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "N53npp2eqws",
+          "title": "Alistar Support vs Karma - KR Grandmaster Patch 26.07",
+          "rankClaim": "Grandmaster",
+          "patch": "26.7",
+          "durationSec": 1614,
+          "region": "KR",
+          "uploaded": "2026-04-06",
+          "moments": []
+        },
+        {
+          "videoId": "wuyX7WMhtrs",
+          "title": "Alistar Support vs Karma - KR Grandmaster Patch 25.17",
+          "rankClaim": "Grandmaster",
+          "patch": "25.17",
+          "durationSec": 1453,
+          "region": "KR",
+          "uploaded": "2025-08-31",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 44,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "L1_MhqF2w5o",
+          "title": "Alistar Support vs Taric - KR Challenger Patch 26.04",
+          "rankClaim": "Challenger",
+          "patch": "26.4",
+          "durationSec": 1457,
+          "region": "KR",
+          "uploaded": "2026-02-22",
+          "moments": []
+        },
+        {
+          "videoId": "ZTIwWfQZuRo",
+          "title": "Alistar Support vs Taric - EUW Challenger Patch 25.10",
+          "rankClaim": "Challenger",
+          "patch": "25.10",
+          "durationSec": 1503,
+          "region": "EUW",
+          "uploaded": "2025-05-27",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 59,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "HkL7wAU1JSM",
+          "title": "(GZ 1Jiang) Alistar Support vs Jarvan IV - KR Master Patch 26.11",
+          "rankClaim": "Master",
+          "patch": "26.11",
+          "durationSec": 1470,
+          "region": "KR",
+          "player": "GZ 1Jiang",
+          "uploaded": "2026-06-02",
+          "result": "L",
+          "moments": [
+            {
+              "atSec": 208,
+              "label": "First Blood — Rek'Sai kills Xin Zhao",
+              "kind": "kill"
+            },
+            {
+              "atSec": 276,
+              "label": "Kai'Sa picks off Jarvan IV"
+            },
+            {
+              "atSec": 495,
+              "label": "Kai'Sa takes down Yunara"
+            },
+            {
+              "atSec": 627,
+              "label": "Kai'Sa takes down Yunara"
+            },
+            {
+              "atSec": 767,
+              "label": "Red takes 1st Dragon (Cloud)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 789,
+              "label": "Kai'Sa picks off Jarvan IV"
+            },
+            {
+              "atSec": 920,
+              "label": "Team fight (3 kills)",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1002,
+              "label": "Rek'Sai kills Jarvan IV",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1054,
+              "label": "Kai'Sa picks off Jarvan IV"
+            },
+            {
+              "atSec": 1087,
+              "label": "Red takes 2nd Dragon (Mountain)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1192,
+              "label": "Team fight (3 kills)",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1251,
+              "label": "Red takes Baron",
+              "kind": "baron"
+            },
+            {
+              "atSec": 1318,
+              "label": "Rek'Sai eliminates Yunara"
+            },
+            {
+              "atSec": 1342,
+              "label": "Mid Inhibitor falls (Blue)"
+            },
+            {
+              "atSec": 1408,
+              "label": "Red takes 3rd Dragon (Infernal)",
+              "kind": "dragon"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 60,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "gIeGfEtBWVw",
+          "title": "Alistar Support vs Elise - EUW Challenger Patch 25.04",
+          "rankClaim": "Challenger",
+          "patch": "25.4",
+          "durationSec": 2036,
+          "region": "EUW",
+          "uploaded": "2025-03-07",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 234,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 344,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 446,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 581,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 840,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 938,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1021,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1277,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1407,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1510,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1654,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1969,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 2015,
+              "label": "End credit"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 76,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "a8phhS5huyM",
+          "title": "Alistar Support vs Nidalee - EUW Challenger Patch 25.12",
+          "rankClaim": "Challenger",
+          "patch": "25.12",
+          "durationSec": 1558,
+          "region": "EUW",
+          "uploaded": "2025-06-25",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 78,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "rEI8Dw1UOvA",
+          "title": "Alistar Support vs Poppy - KR Challenger Patch 26.06",
+          "rankClaim": "Challenger",
+          "patch": "26.6",
+          "durationSec": 1572,
+          "region": "KR",
+          "uploaded": "2026-03-23",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 101,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 327,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 857,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1107,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1196,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1214,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1226,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1329,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1418,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1462,
+              "label": "Hunt The Dragon",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1512,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1561,
+              "label": "End credit"
+            }
+          ]
+        },
+        {
+          "videoId": "xHT96h-kKZQ",
+          "title": "Alistar Support vs Poppy - KR Challenger Patch 26.02",
+          "rankClaim": "Challenger",
+          "patch": "26.2",
+          "durationSec": 1577,
+          "region": "KR",
+          "uploaded": "2026-01-25",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 154,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 221,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 337,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 511,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 680,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 787,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 917,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 974,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1058,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1147,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1180,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1216,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1336,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1480,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1554,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1566,
+              "label": "End credit"
+            }
+          ]
+        },
+        {
+          "videoId": "Sg-Jr55EUus",
+          "title": "Alistar Support vs Poppy - NA Challenger Patch 25.24",
+          "rankClaim": "Challenger",
+          "patch": "25.24",
+          "durationSec": 1445,
+          "region": "NA",
+          "uploaded": "2025-12-25",
+          "moments": []
+        },
+        {
+          "videoId": "ANMcGXFAC0w",
+          "title": "Alistar Support vs Poppy - KR Challenger Patch 25.18",
+          "rankClaim": "Challenger",
+          "patch": "25.18",
+          "durationSec": 1542,
+          "region": "KR",
+          "uploaded": "2025-09-13",
+          "moments": []
+        },
+        {
+          "videoId": "Hq0HXg2H8A0",
+          "title": "Alistar Support vs Poppy - EUW Grandmaster Patch 25.13",
+          "rankClaim": "Grandmaster",
+          "patch": "25.13",
+          "durationSec": 1516,
+          "region": "EUW",
+          "uploaded": "2025-07-09",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 79,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "uFK-cpg1LnE",
+          "title": "Alistar Support vs Gragas - KR Grandmaster Patch 25.12",
+          "rankClaim": "Grandmaster",
+          "patch": "25.12",
+          "durationSec": 1422,
+          "region": "KR",
+          "uploaded": "2025-06-14",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 80,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "9dozW2k1cTk",
+          "title": "(TES JackeyLove) Alistar Support vs Pantheon - KR Challenger Patch 26.13",
+          "rankClaim": "Challenger",
+          "patch": "26.13",
+          "durationSec": 1595,
+          "region": "KR",
+          "player": "JackeyLove",
+          "team": "TES",
+          "uploaded": "2026-07-01",
+          "moments": []
+        },
+        {
+          "videoId": "7rkn-QAyiGs",
+          "title": "Alistar Support vs Pantheon - EUW Grandmaster Patch 25.24",
+          "rankClaim": "Grandmaster",
+          "patch": "25.24",
+          "durationSec": 1611,
+          "region": "EUW",
+          "uploaded": "2025-12-17",
+          "moments": []
+        },
+        {
+          "videoId": "cEUJvtwtN-E",
+          "title": "Alistar Support vs Pantheon - KR Grandmaster Patch 25.07",
+          "rankClaim": "Grandmaster",
+          "patch": "25.7",
+          "durationSec": 1530,
+          "region": "KR",
+          "uploaded": "2025-04-06",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 89,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "QPVyb1PEV40",
+          "title": "Alistar Support vs Leona - KR Grandmaster Patch 26.19",
+          "rankClaim": "Grandmaster",
+          "patch": "26.19",
+          "durationSec": 1640,
+          "region": "KR",
+          "uploaded": "2026-09-26",
+          "moments": []
+        },
+        {
+          "videoId": "9UbzX8oGLgg",
+          "title": "(DNS Quantum ) Alistar Support vs Leona - KR Challenger Patch 26.17",
+          "rankClaim": "Challenger",
+          "patch": "26.17",
+          "durationSec": 1681,
+          "region": "KR",
+          "player": "DNS Quantum",
+          "uploaded": "2026-09-08",
+          "moments": []
+        },
+        {
+          "videoId": "HfU2zzT7XwA",
+          "title": "Alistar Support vs Leona - KR Challenger Patch 26.05",
+          "rankClaim": "Challenger",
+          "patch": "26.5",
+          "durationSec": 1605,
+          "region": "KR",
+          "uploaded": "2026-03-16",
+          "moments": []
+        },
+        {
+          "videoId": "wnlzksm-Teo",
+          "title": "Alistar Support vs Leona - KR Grandmaster Patch 26.03",
+          "rankClaim": "Grandmaster",
+          "patch": "26.3",
+          "durationSec": 1497,
+          "region": "KR",
+          "uploaded": "2026-02-09",
+          "moments": []
+        },
+        {
+          "videoId": "ERxuhXjT1dA",
+          "title": "Alistar Support vs Leona - TW Challenger Patch 25.24",
+          "rankClaim": "Challenger",
+          "patch": "25.24",
+          "durationSec": 1554,
+          "uploaded": "2026-01-02",
+          "moments": []
+        },
+        {
+          "videoId": "qbyy1cwV_kA",
+          "title": "Alistar Support vs Leona - KR Grandmaster Patch 25.23",
+          "rankClaim": "Grandmaster",
+          "patch": "25.23",
+          "durationSec": 1498,
+          "region": "KR",
+          "uploaded": "2025-11-23",
+          "moments": []
+        },
+        {
+          "videoId": "lF8Nb39GmbY",
+          "title": "Alistar Support vs Leona - EUW Challenger Patch 25.09",
+          "rankClaim": "Challenger",
+          "patch": "25.9",
+          "durationSec": 1701,
+          "region": "EUW",
+          "uploaded": "2025-05-13",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 181,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 326,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 376,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 463,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 678,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 906,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1008,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1029,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1172,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1301,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1369,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1495,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1592,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1638,
+              "label": "Take down The Inhibitor"
+            },
+            {
+              "atSec": 1657,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1680,
+              "label": "End credit"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 98,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "8pE36bxcNGU",
+          "title": "(KRX Minous) Alistar Support vs Shen - KR Challenger Patch 26.16",
+          "rankClaim": "Challenger",
+          "patch": "26.16",
+          "durationSec": 1414,
+          "region": "KR",
+          "player": "KRX Minous",
+          "uploaded": "2026-08-23",
+          "moments": []
+        },
+        {
+          "videoId": "4MySP9LQQS8",
+          "title": "(DNS Peter) Alistar Support vs Shen (KT Ghost) - KR Challenger Patch 26.14",
+          "rankClaim": "Challenger",
+          "patch": "26.14",
+          "durationSec": 1662,
+          "region": "KR",
+          "player": "DNS Peter",
+          "uploaded": "2026-07-18",
+          "moments": []
+        },
+        {
+          "videoId": "aYIUmJTbgGI",
+          "title": "Alistar Support vs Shen - KR Master Patch 25.20",
+          "rankClaim": "Master",
+          "patch": "25.20",
+          "durationSec": 1573,
+          "region": "KR",
+          "uploaded": "2025-10-11",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 111,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "bPtE8RTrK3U",
+          "title": "(TES Creme) Alistar Support vs Nautilus - KR Grandmaster Patch 26.13",
+          "rankClaim": "Grandmaster",
+          "patch": "26.13",
+          "durationSec": 1573,
+          "region": "KR",
+          "player": "Creme",
+          "team": "TES",
+          "uploaded": "2026-07-10",
+          "moments": []
+        },
+        {
+          "videoId": "T5rapdWmVwI",
+          "title": "Alistar Support vs Nautilus - KR Master Patch 26.07",
+          "rankClaim": "Master",
+          "patch": "26.7",
+          "durationSec": 1770,
+          "region": "KR",
+          "uploaded": "2026-04-17",
+          "moments": []
+        },
+        {
+          "videoId": "fPN21TgWhGA",
+          "title": "Alistar Support vs Nautilus - EUW Grandmaster Patch 25.18",
+          "rankClaim": "Grandmaster",
+          "patch": "25.18",
+          "durationSec": 1713,
+          "region": "EUW",
+          "uploaded": "2025-09-25",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 117,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "KWTUPluvvbA",
+          "title": "Alistar Support vs Lulu (DNS Peter) - KR Grandmaster Patch 26.18",
+          "rankClaim": "Grandmaster",
+          "patch": "26.18",
+          "durationSec": 1490,
+          "region": "KR",
+          "uploaded": "2026-09-13",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 127,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "cOBuaqf6Mx8",
+          "title": "(LOUD Bull) Alistar Support vs Lissandra - KR Challenger Patch 26.18",
+          "rankClaim": "Challenger",
+          "patch": "26.18",
+          "durationSec": 1541,
+          "region": "KR",
+          "player": "LOUD Bull",
+          "uploaded": "2026-09-24",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 147,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "RpcbwPRRipg",
+          "title": "Alistar Support vs Seraphine - KR Grandmaster Patch 25.24",
+          "rankClaim": "Grandmaster",
+          "patch": "25.24",
+          "durationSec": 1613,
+          "region": "KR",
+          "uploaded": "2026-01-07",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 206,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 337,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 456,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 516,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 579,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 709,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 836,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 979,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1041,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1105,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1208,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1279,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1410,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1438,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1452,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1556,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1602,
+              "label": "End credit"
+            }
+          ]
+        },
+        {
+          "videoId": "0lvH4ZBXNpk",
+          "title": "Alistar Support vs Seraphine - KR Challenger Patch 25.22",
+          "rankClaim": "Challenger",
+          "patch": "25.22",
+          "durationSec": 1448,
+          "region": "KR",
+          "uploaded": "2025-11-08",
+          "moments": []
+        },
+        {
+          "videoId": "XD3YZ3gHW0s",
+          "title": "Alistar Support vs Seraphine - EUW Challenger Patch 25.06",
+          "rankClaim": "Challenger",
+          "patch": "25.6",
+          "durationSec": 1865,
+          "region": "EUW",
+          "uploaded": "2025-04-01",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 200,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "q4722VfNWW4",
+          "title": "(LNG MISSING) Alistar Support vs Bel'Veth - KR Challenger Patch 26.15",
+          "rankClaim": "Challenger",
+          "patch": "26.15",
+          "durationSec": 1695,
+          "region": "KR",
+          "player": "MISSING",
+          "team": "LNG",
+          "uploaded": "2026-08-02",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 201,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "rACkmnxMsOQ",
+          "title": "Alistar Support vs Braum - KR Challenger Patch 26.20",
+          "rankClaim": "Challenger",
+          "patch": "26.20",
+          "durationSec": 1625,
+          "region": "KR",
+          "uploaded": "2026-10-21",
+          "result": "W",
+          "moments": [
+            {
+              "atSec": 160,
+              "label": "First Blood — Kai'Sa kills Braum",
+              "kind": "kill"
+            },
+            {
+              "atSec": 351,
+              "label": "Red takes 1st Dragon (Chemtech)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 595,
+              "label": "Viego picks off Syndra"
+            },
+            {
+              "atSec": 652,
+              "label": "Alistar picks off Aphelios"
+            },
+            {
+              "atSec": 681,
+              "label": "Red takes 2nd Dragon (Hextech)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 683,
+              "label": "Lissandra picks off Lee Sin"
+            },
+            {
+              "atSec": 711,
+              "label": "Gangplank eliminates Kennen"
+            },
+            {
+              "atSec": 805,
+              "label": "Viego kills Kennen",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1025,
+              "label": "Red takes 3rd Dragon (Mountain)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1190,
+              "label": "Kai'Sa Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1311,
+              "label": "Gangplank picks off Aphelios"
+            },
+            {
+              "atSec": 1348,
+              "label": "Blue takes 1st Dragon (Mountain)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1383,
+              "label": "Team fight (3 kills)",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1472,
+              "label": "Red takes Baron",
+              "kind": "baron"
+            },
+            {
+              "atSec": 1559,
+              "label": "Mid Inhibitor falls (Blue)"
+            },
+            {
+              "atSec": 1593,
+              "label": "Viego picks off Syndra"
+            }
+          ]
+        },
+        {
+          "videoId": "pg1GRt7P3v0",
+          "title": "Alistar Support vs Braum - EUW Grandmaster Patch 25.21",
+          "rankClaim": "Grandmaster",
+          "patch": "25.21",
+          "durationSec": 1671,
+          "region": "EUW",
+          "uploaded": "2025-11-05",
+          "moments": []
+        },
+        {
+          "videoId": "feybPE1UW-c",
+          "title": "Alistar Support vs Braum - EUW Challenger Patch 25.19",
+          "rankClaim": "Challenger",
+          "patch": "25.19",
+          "durationSec": 1607,
+          "region": "EUW",
+          "uploaded": "2025-10-09",
+          "moments": []
+        },
+        {
+          "videoId": "bORbP3X8XLw",
+          "title": "Alistar Support vs Braum - KR Master Patch 25.13",
+          "rankClaim": "Master",
+          "patch": "25.13",
+          "durationSec": 1590,
+          "region": "KR",
+          "uploaded": "2025-07-16",
+          "moments": []
+        },
+        {
+          "videoId": "5O1uJTB0Reo",
+          "title": "Alistar Support vs Braum - KR Grandmaster Patch 25.05",
+          "rankClaim": "Grandmaster",
+          "patch": "25.5",
+          "durationSec": 1665,
+          "region": "KR",
+          "uploaded": "2025-03-08",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 267,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "A3i3QYybADs",
+          "title": "Alistar Support vs Nami - EUW Grandmaster Patch 26.05",
+          "rankClaim": "Grandmaster",
+          "patch": "26.5",
+          "durationSec": 1900,
+          "region": "EUW",
+          "uploaded": "2026-03-07",
+          "moments": []
+        },
+        {
+          "videoId": "XdZ6y3wF4zk",
+          "title": "Alistar Support vs Nami - EUW Challenger Patch 25.23",
+          "rankClaim": "Challenger",
+          "patch": "25.23",
+          "durationSec": 1747,
+          "region": "EUW",
+          "uploaded": "2025-12-03",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 412,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "K6UNOtV-ibM",
+          "title": "(DNS Peter) Alistar Support vs Thresh - KR Challenger Patch 26.19",
+          "rankClaim": "Challenger",
+          "patch": "26.19",
+          "durationSec": 1747,
+          "region": "KR",
+          "player": "DNS Peter",
+          "uploaded": "2026-10-06",
+          "result": "W",
+          "moments": [
+            {
+              "atSec": 149,
+              "label": "First Blood — Yunara kills Thresh",
+              "kind": "kill"
+            },
+            {
+              "atSec": 371,
+              "label": "Blue takes 1st Dragon (Ocean)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 691,
+              "label": "Blue takes 2nd Dragon (Mountain)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 721,
+              "label": "Kha'Zix eliminates Tristana"
+            },
+            {
+              "atSec": 908,
+              "label": "Blue takes Rift Herald",
+              "kind": "herald"
+            },
+            {
+              "atSec": 979,
+              "label": "Rumble kills Master Yi",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1006,
+              "label": "Blue takes 3rd Dragon (Infernal)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1130,
+              "label": "Sylas Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1192,
+              "label": "Red takes Baron",
+              "kind": "baron"
+            },
+            {
+              "atSec": 1199,
+              "label": "Sylas picks off Master Yi"
+            },
+            {
+              "atSec": 1244,
+              "label": "Kha'Zix eliminates Tristana"
+            },
+            {
+              "atSec": 1328,
+              "label": "Blue takes 4th Dragon (Infernal)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1371,
+              "label": "Yunara picks off Jax"
+            },
+            {
+              "atSec": 1513,
+              "label": "Yunara takes down Tristana"
+            },
+            {
+              "atSec": 1574,
+              "label": "Blue takes Baron",
+              "kind": "baron"
+            },
+            {
+              "atSec": 1703,
+              "label": "Team fight (4 kills)",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1726,
+              "label": "Mid Inhibitor falls (Red)"
+            }
+          ]
+        },
+        {
+          "videoId": "P3Qbam_wUWA",
+          "title": "Alistar Support vs Thresh - KR Challenger Patch 26.01",
+          "rankClaim": "Challenger",
+          "patch": "26.1",
+          "durationSec": 1479,
+          "region": "KR",
+          "uploaded": "2026-01-12",
+          "moments": []
+        },
+        {
+          "videoId": "uzbjyVI7o2o",
+          "title": "Alistar Support vs Thresh - EUW Challenger Patch 25.20",
+          "rankClaim": "Challenger",
+          "patch": "25.20",
+          "durationSec": 1634,
+          "region": "EUW",
+          "uploaded": "2025-10-23",
+          "moments": []
+        },
+        {
+          "videoId": "Kz19FgaBYsI",
+          "title": "Alistar Support vs Thresh - KR Master Patch 25.10",
+          "rankClaim": "Master",
+          "patch": "25.10",
+          "durationSec": 1904,
+          "region": "KR",
+          "uploaded": "2025-05-17",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 432,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "rBvbfCKjlLU",
+          "title": "Alistar Support vs Bard - KR Challenger Patch 26.21",
+          "rankClaim": "Challenger",
+          "patch": "26.21",
+          "durationSec": 1669,
+          "region": "KR",
+          "uploaded": "2026-11-03",
+          "result": "W",
+          "moments": [
+            {
+              "atSec": 373,
+              "label": "Graves kills Bard",
+              "kind": "kill"
+            },
+            {
+              "atSec": 500,
+              "label": "Graves takes down Hecarim"
+            },
+            {
+              "atSec": 622,
+              "label": "Blue takes 1st Dragon (Mountain)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 741,
+              "label": "Graves kills Bard",
+              "kind": "kill"
+            },
+            {
+              "atSec": 765,
+              "label": "Olaf takes down Syndra"
+            },
+            {
+              "atSec": 984,
+              "label": "Blue takes 2nd Dragon (Infernal)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1040,
+              "label": "Jhin Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1048,
+              "label": "Jhin Triple Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1067,
+              "label": "Twisted Fate takes down Bard"
+            },
+            {
+              "atSec": 1128,
+              "label": "Jhin picks off Bard"
+            },
+            {
+              "atSec": 1225,
+              "label": "Jhin picks off Bard"
+            },
+            {
+              "atSec": 1253,
+              "label": "Blue takes Baron",
+              "kind": "baron"
+            },
+            {
+              "atSec": 1301,
+              "label": "Blue takes 3rd Dragon (Ocean)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1388,
+              "label": "Jhin picks off Bard"
+            },
+            {
+              "atSec": 1427,
+              "label": "Mid Inhibitor falls (Red)"
+            },
+            {
+              "atSec": 1520,
+              "label": "Bot Inhibitor falls (Red)"
+            },
+            {
+              "atSec": 1557,
+              "label": "Twisted Fate eliminates Syndra"
+            },
+            {
+              "atSec": 1638,
+              "label": "Team fight (3 kills)",
+              "kind": "teamfight"
+            }
+          ]
+        },
+        {
+          "videoId": "Qo7an58v6Cg",
+          "title": "(KCB Prime) Alistar Support vs Bard (HRTS Batuuu) - EUW Master Patch 26.16",
+          "rankClaim": "Master",
+          "patch": "26.16",
+          "durationSec": 1717,
+          "region": "EUW",
+          "player": "KCB Prime",
+          "uploaded": "2026-08-14",
+          "moments": []
+        },
+        {
+          "videoId": "KvJVXKkbYFA",
+          "title": "Alistar Support vs Bard - EUW Challenger Patch 26.08",
+          "rankClaim": "Challenger",
+          "patch": "26.8",
+          "durationSec": 1491,
+          "region": "EUW",
+          "uploaded": "2026-04-22",
+          "moments": []
+        },
+        {
+          "videoId": "s_oyxjP8RtM",
+          "title": "Alistar Support vs Bard - EUW Challenger Patch 25.16",
+          "rankClaim": "Challenger",
+          "patch": "25.16",
+          "durationSec": 1613,
+          "region": "EUW",
+          "uploaded": "2025-08-28",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 497,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "TUlFYBb_eW0",
+          "title": "Alistar Support vs Rakan - EUW Grandmaster Patch 26.02",
+          "rankClaim": "Grandmaster",
+          "patch": "26.2",
+          "durationSec": 1450,
+          "region": "EUW",
+          "uploaded": "2026-02-06",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 174,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 281,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 639,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 751,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 827,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1037,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1058,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1071,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1165,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1314,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1412,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1439,
+              "label": "End credit"
+            }
+          ]
+        },
+        {
+          "videoId": "3sxvsP0hRog",
+          "title": "Alistar Support vs Rakan - KR Grandmaster Patch 25.19",
+          "rankClaim": "Grandmaster",
+          "patch": "25.19",
+          "durationSec": 1554,
+          "region": "KR",
+          "uploaded": "2025-09-26",
+          "moments": []
+        },
+        {
+          "videoId": "eMFM_zlcLOw",
+          "title": "Alistar Support vs Rakan - KR Challenger Patch 25.15",
+          "rankClaim": "Challenger",
+          "patch": "25.15",
+          "durationSec": 1490,
+          "region": "KR",
+          "uploaded": "2025-08-03",
+          "moments": []
+        },
+        {
+          "videoId": "LuqRe_adKlA",
+          "title": "Alistar Support vs Rakan - KR Challenger Patch 25.14",
+          "rankClaim": "Challenger",
+          "patch": "25.14",
+          "durationSec": 1617,
+          "region": "KR",
+          "uploaded": "2025-07-18",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 518,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "2-BnzOM9_8M",
+          "title": "Alistar Support vs Neeko - KR Challenger Patch 26.04",
+          "rankClaim": "Challenger",
+          "patch": "26.4",
+          "durationSec": 1812,
+          "region": "KR",
+          "uploaded": "2026-03-06",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 526,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "aog1fpTHD3c",
+          "title": "Alistar Support vs Rell (GEN SIRIUSS) - KR Challenger Patch 26.21",
+          "rankClaim": "Challenger",
+          "patch": "26.21",
+          "durationSec": 1770,
+          "region": "KR",
+          "uploaded": "2026-10-25",
+          "result": "W",
+          "moments": [
+            {
+              "atSec": 191,
+              "label": "Sylas takes down Cho'Gath"
+            },
+            {
+              "atSec": 379,
+              "label": "Vladimir kills Zeri",
+              "kind": "kill"
+            },
+            {
+              "atSec": 465,
+              "label": "Vladimir takes down Rumble"
+            },
+            {
+              "atSec": 598,
+              "label": "Blue takes 1st Dragon (Ocean)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 637,
+              "label": "Jhin picks off Rell"
+            },
+            {
+              "atSec": 713,
+              "label": "Jhin picks off Rell"
+            },
+            {
+              "atSec": 812,
+              "label": "Alistar eliminates Rumble"
+            },
+            {
+              "atSec": 930,
+              "label": "Vladimir Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 954,
+              "label": "Red takes 1st Dragon (Hextech)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1296,
+              "label": "Red takes 2nd Dragon (Cloud)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1376,
+              "label": "Jhin Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1419,
+              "label": "Blue takes Baron",
+              "kind": "baron"
+            },
+            {
+              "atSec": 1431,
+              "label": "Vladimir Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1636,
+              "label": "Blue takes 2nd Dragon (Cloud)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1718,
+              "label": "Jhin Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1744,
+              "label": "Mid Inhibitor falls (Blue)"
+            }
+          ]
+        },
+        {
+          "videoId": "-kQst51eMHs",
+          "title": "(OMG re0) Alistar Support vs Rell - KR Challenger Patch 26.17",
+          "rankClaim": "Challenger",
+          "patch": "26.17",
+          "durationSec": 1452,
+          "region": "KR",
+          "player": "OMG re0",
+          "uploaded": "2026-08-29",
+          "moments": []
+        },
+        {
+          "videoId": "z6RiF_rkYUM",
+          "title": "(G2 Labrov) Alistar Support vs Rell - EUW Challenger Patch 26.10",
+          "rankClaim": "Challenger",
+          "patch": "26.10",
+          "durationSec": 1683,
+          "region": "EUW",
+          "player": "Labrov",
+          "team": "G2",
+          "uploaded": "2026-05-22",
+          "moments": []
+        },
+        {
+          "videoId": "nUIiw7hYAyQ",
+          "title": "Alistar Support vs Rell - KR Grandmaster Patch 26.09",
+          "rankClaim": "Grandmaster",
+          "patch": "26.9",
+          "durationSec": 1517,
+          "region": "KR",
+          "uploaded": "2026-05-07",
+          "moments": []
+        },
+        {
+          "videoId": "DYj51ecjLNs",
+          "title": "Alistar Support vs Rell - EUW Challenger Patch 26.08",
+          "rankClaim": "Challenger",
+          "patch": "26.8",
+          "durationSec": 1676,
+          "region": "EUW",
+          "uploaded": "2026-04-30",
+          "moments": []
+        },
+        {
+          "videoId": "OUeBHp0W550",
+          "title": "Alistar Support vs Rell - KR Master Patch 25.24",
+          "rankClaim": "Master",
+          "patch": "25.24",
+          "durationSec": 1722,
+          "region": "KR",
+          "uploaded": "2025-12-06",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 201,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 374,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 605,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 658,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 769,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 819,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 838,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 905,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1195,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1301,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1404,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1453,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1522,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1564,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1648,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1711,
+              "label": "End credit"
+            }
+          ]
+        },
+        {
+          "videoId": "R7foDUWX2xI",
+          "title": "Alistar Support vs Rell - KR Grandmaster Patch 25.16",
+          "rankClaim": "Grandmaster",
+          "patch": "25.16",
+          "durationSec": 1458,
+          "region": "KR",
+          "uploaded": "2025-08-16",
+          "moments": []
+        },
+        {
+          "videoId": "qL_6Donuwd0",
+          "title": "Alistar Support vs Rell - KR Challenger Patch 25.13",
+          "rankClaim": "Challenger",
+          "patch": "25.13",
+          "durationSec": 1968,
+          "region": "KR",
+          "uploaded": "2025-06-28",
+          "moments": []
+        },
+        {
+          "videoId": "6uzPO3bMEFA",
+          "title": "Alistar Support vs Rell - KR Grandmaster Patch 25.06",
+          "rankClaim": "Grandmaster",
+          "patch": "25.6",
+          "durationSec": 1714,
+          "region": "KR",
+          "uploaded": "2025-03-23",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 223,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 423,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 515,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 944,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 997,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1236,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1390,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1420,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1503,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1652,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1693,
+              "label": "End credit"
+            }
+          ]
+        },
+        {
+          "videoId": "-23g8PLNYmg",
+          "title": "Alistar Support vs Rell - KR Master Patch 25.04",
+          "rankClaim": "Master",
+          "patch": "25.4",
+          "durationSec": 2003,
+          "region": "KR",
+          "uploaded": "2025-02-24",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 555,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "_TlyD-Zm3xI",
+          "title": "(HLE Delight) Alistar Support vs Pyke - KR Grandmaster Patch 26.12",
+          "rankClaim": "Grandmaster",
+          "patch": "26.12",
+          "durationSec": 1496,
+          "region": "KR",
+          "player": "Delight",
+          "team": "HLE",
+          "uploaded": "2026-06-13",
+          "moments": []
+        },
+        {
+          "videoId": "uBiBd56JASY",
+          "title": "Alistar Support vs Pyke - KR Challenger Patch 25.21",
+          "rankClaim": "Challenger",
+          "patch": "25.21",
+          "durationSec": 1458,
+          "region": "KR",
+          "uploaded": "2025-10-26",
+          "moments": []
+        },
+        {
+          "videoId": "IR6X9zdPLZk",
+          "title": "Alistar Support vs Pyke - KR Grandmaster Patch 25.11",
+          "rankClaim": "Grandmaster",
+          "patch": "25.11",
+          "durationSec": 1460,
+          "region": "KR",
+          "uploaded": "2025-05-31",
+          "moments": []
+        }
+      ]
+    }
+  ]
+}

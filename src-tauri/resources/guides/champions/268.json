@@ -1,0 +1,3240 @@
+{
+  "schema": 1,
+  "champion": 268,
+  "generatedAt": "2026-11-07T13:25:14.592Z",
+  "guides": [
+    {
+      "champion": 268,
+      "enemy": 238,
+      "lane": "mid",
+      "patch": "26.21",
+      "reviewed": false,
+      "difficulty": "Skill matchup",
+      "favoredWhen": "Annoying vs a good Azir. He Ws before R to dodge yours, kills after Voltaic, never Rs near tower.",
+      "keyTips": [
+        {
+          "text": "He finds you annoying: a good Azir keeps him out, so hold the line.",
+          "scope": "pair",
+          "sourceIds": [
+            "aikopanda"
+          ]
+        },
+        {
+          "text": "He Ws before R to dodge yours after ulting: hold R until the shadow lands.",
+          "scope": "pair",
+          "sourceIds": [
+            "aikopanda"
+          ],
+          "abilityKeys": [
+            {
+              "champion": 238,
+              "key": "W"
+            },
+            {
+              "champion": 268,
+              "key": "R"
+            }
+          ]
+        },
+        {
+          "text": "He looks for kills after Voltaic: end it before the spike.",
+          "scope": "pair",
+          "sourceIds": [
+            "aikopanda"
+          ]
+        }
+      ],
+      "enemyTips": {
+        "early-lane": [
+          {
+            "text": "Zed often places Living Shadow before Death Mark so he can swap away from skillshots. Hold your crowd control until he has used the swap.",
+            "scope": "enemy",
+            "sourceIds": [
+              "aikopanda"
+            ],
+            "patch": "26.21",
+            "abilityKeys": [
+              {
+                "champion": 238,
+                "key": "W"
+              },
+              {
+                "champion": 238,
+                "key": "R"
+              }
+            ]
+          }
+        ],
+        "win-condition": [
+          {
+            "text": "Death Mark always lands Zed behind his target. Pre-aim crowd control and escapes behind you, not toward where he cast it.",
+            "scope": "enemy",
+            "sourceIds": [
+              "peng04"
+            ],
+            "patch": "26.21",
+            "abilityKeys": [
+              {
+                "champion": 238,
+                "key": "R"
+              }
+            ]
+          }
+        ]
+      },
+      "sections": {
+        "overview": {
+          "tips": []
+        },
+        "early-lane": {
+          "tips": [
+            {
+              "text": "He gives you prio and looks for Ignite all-ins: respect the sums.",
+              "scope": "pair",
+              "sourceIds": [
+                "v222"
+              ]
+            },
+            {
+              "text": "He WEQs when you Q, positioned to cut off your E: Q from max range.",
+              "scope": "pair",
+              "sourceIds": [
+                "v222"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 238,
+                  "key": "W"
+                },
+                {
+                  "champion": 268,
+                  "key": "Q"
+                }
+              ]
+            }
+          ]
+        },
+        "mid-lane": {
+          "tips": [
+            {
+              "text": "Death Mark always lands Zed behind his target. Pre-aim crowd control and escapes behind you, not toward where he cast it.",
+              "scope": "pair",
+              "sourceIds": [
+                "peng04"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 238,
+                  "key": "R"
+                }
+              ]
+            },
+            {
+              "text": "He refuses to R near your tower: your R shoves him in, so hold it for dives.",
+              "scope": "pair",
+              "sourceIds": [
+                "v222"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 268,
+                  "key": "R"
+                }
+              ]
+            }
+          ]
+        },
+        "win-condition": {
+          "tips": [
+            {
+              "text": "R held plus soldiers placed: the Zed whose shadow never dodges never kills.",
+              "scope": "pair",
+              "sourceIds": [
+                "aikopanda",
+                "v222"
+              ]
+            }
+          ]
+        }
+      },
+      "itemization": [],
+      "sources": [
+        {
+          "id": "aikopanda",
+          "author": "AikoPanda",
+          "rankClaim": "Zed main",
+          "url": "https://www.mobafire.com/league-of-legends/build/26-20-video-guides-hidden-combos-all-matchups-zed-all-in-one-guide-652800",
+          "kind": "mobafire"
+        },
+        {
+          "id": "v222",
+          "author": "V222",
+          "rankClaim": "Challenger EUW · Zed main",
+          "rank": "challenger",
+          "url": "https://www.mobafire.com/league-of-legends/build/all-matchups-26-14-zed-guide-2000lp-euw-challenger-652354",
+          "kind": "mobafire"
+        },
+        {
+          "id": "peng04",
+          "author": "Peng04",
+          "rankClaim": "Challenger · Ahri main",
+          "rank": "challenger",
+          "url": "https://www.mobafire.com/league-of-legends/build/26-20-pengs-ahri-guide-5-1mil-points-13x-challenger-648700",
+          "kind": "mobafire"
+        }
+      ]
+    }
+  ],
+  "general": [
+    {
+      "champion": 268,
+      "lane": "mid",
+      "patch": "26.21",
+      "reviewed": false,
+      "keyTips": [
+        {
+          "text": "Cover weak base early damage with repeated soldier harass instead of hunting early burst.",
+          "scope": "champion",
+          "sourceIds": [
+            "bodythosefools"
+          ]
+        },
+        {
+          "text": "Keep Shifting Sands plus a standing soldier ready as the only escape route against ganks.",
+          "scope": "champion",
+          "sourceIds": [
+            "bodythosefools"
+          ],
+          "abilityKeys": [
+            {
+              "champion": 268,
+              "key": "E"
+            }
+          ]
+        },
+        {
+          "text": "Group harder for late objectives while still catching side waves when safe.",
+          "scope": "champion",
+          "sourceIds": [
+            "bodythosefools"
+          ]
+        }
+      ],
+      "sections": {
+        "overview": {
+          "tips": []
+        },
+        "early-lane": {
+          "tips": [
+            {
+              "text": "Slide soldiers through the opponent with Q and follow with an auto as the basic short trade.",
+              "scope": "champion",
+              "sourceIds": [
+                "bodythosefools"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 268,
+                  "key": "Q"
+                }
+              ]
+            },
+            {
+              "text": "On Hail of Blades, spend its available attacks inside the trade instead of stopping after one hit.",
+              "scope": "champion",
+              "sourceIds": [
+                "bodythosefools"
+              ]
+            },
+            {
+              "text": "Expect weaker early trading on the scaling Lethal Tempo page than on Comet or Hail of Blades setups.",
+              "scope": "champion",
+              "sourceIds": [
+                "bodythosefools"
+              ]
+            },
+            {
+              "text": "Build lane priority through harass in most lanes, with Xerath and Yone named as the lanes that can contest it.",
+              "scope": "champion",
+              "sourceIds": [
+                "bodythosefools"
+              ]
+            },
+            {
+              "text": "Preserve a Sand Soldier whenever possible so E keeps a retreat dash target.",
+              "scope": "champion",
+              "sourceIds": [
+                "bodythosefools"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 268,
+                  "key": "E"
+                }
+              ]
+            }
+          ]
+        },
+        "mid-lane": {
+          "tips": [
+            {
+              "text": "After laning, push a side lane into its turret, then regroup with the team.",
+              "scope": "champion",
+              "sourceIds": [
+                "bodythosefools"
+              ]
+            },
+            {
+              "text": "Ward around the side lane before extending, since getting caught erases pressure everywhere else.",
+              "scope": "champion",
+              "sourceIds": [
+                "bodythosefools"
+              ]
+            },
+            {
+              "text": "During a siege, plant a soldier behind Azir to feed the extra attack-speed effect and hold an E escape line.",
+              "scope": "champion",
+              "sourceIds": [
+                "bodythosefools"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 268,
+                  "key": "E"
+                }
+              ]
+            },
+            {
+              "text": "Drop the passive turret near the end of a side siege as another defensive layer.",
+              "scope": "champion",
+              "sourceIds": [
+                "bodythosefools"
+              ]
+            }
+          ]
+        },
+        "win-condition": {
+          "tips": [
+            {
+              "text": "With Teleport, set up opposite the next objective to threaten a side wave and still join; without it, stay on the objective side.",
+              "scope": "champion",
+              "sourceIds": [
+                "bodythosefools"
+              ]
+            },
+            {
+              "text": "Never enter unwarded ground late, since one pick can cost an objective or the game.",
+              "scope": "champion",
+              "sourceIds": [
+                "bodythosefools"
+              ]
+            }
+          ]
+        }
+      },
+      "itemization": [
+        {
+          "text": "Build Liandry's Torment into Sorcerer's Shoes, Nashor's Tooth, Void Staff, Rabadon's Deathcap, and Zhonya's Hourglass, with Banshee's Veil as an option.",
+          "scope": "champion",
+          "sourceIds": [
+            "bodythosefools"
+          ],
+          "itemIds": [
+            6653,
+            3020,
+            3115,
+            3135,
+            3089,
+            3157,
+            3102
+          ]
+        },
+        {
+          "text": "Take the Liandry's route into frontline or health stacking, and the Shadowflame route into squishier teams.",
+          "scope": "champion",
+          "sourceIds": [
+            "bodythosefools"
+          ],
+          "itemIds": [
+            4645
+          ]
+        },
+        {
+          "text": "Buy Seeker's Armguard into Zhonya's Hourglass against dive or attack-damage threats, and Verdant Barrier into Banshee's Veil against crowd control or pick threats.",
+          "scope": "champion",
+          "sourceIds": [
+            "bodythosefools"
+          ],
+          "itemIds": [
+            2420,
+            3157,
+            4632,
+            3102
+          ]
+        },
+        {
+          "text": "Run the scaling page of Lethal Tempo with Presence of Mind, Legend: Alacrity, and Cut Down, plus Manaflow Band and Gathering Storm.",
+          "scope": "champion",
+          "sourceIds": [
+            "bodythosefools"
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "id": "bodythosefools",
+          "author": "Body Those Fools",
+          "rankClaim": "Challenger (guide title; no badge)",
+          "rank": "challenger",
+          "url": "https://www.mobafire.com/league-of-legends/build/season-16-bodythosefools-challenger-azir-guide-in-depth-10-000-000-mastery-points-beat-faker-614215",
+          "kind": "mobafire"
+        }
+      ]
+    }
+  ],
+  "vods": [
+    {
+      "enemy": 1,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "RdFoVl2s32U",
+          "title": "Azir Mid vs Annie - KR Grandmaster Patch 25.19",
+          "rankClaim": "Grandmaster",
+          "patch": "25.19",
+          "durationSec": 1548,
+          "region": "KR",
+          "uploaded": "2025-09-30",
+          "moments": []
+        },
+        {
+          "videoId": "Ij_TJ8wKmQk",
+          "title": "T1 Faker Azir vs Annie [ MID ] Patch 25.10 Korea Challenger",
+          "rankClaim": "Challenger",
+          "patch": "25.10",
+          "durationSec": 1051,
+          "region": "KR",
+          "player": "Faker",
+          "team": "T1",
+          "uploaded": "2025-05-21",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 3,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "xRT3ZJqFv7M",
+          "title": "Azir Mid vs Galio - EUW Challenger Patch 26.05",
+          "rankClaim": "Challenger",
+          "patch": "26.5",
+          "durationSec": 1798,
+          "region": "EUW",
+          "uploaded": "2026-03-20",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 650,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 705,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 799,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 865,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1013,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1134,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1187,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1242,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1380,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1406,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1503,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1527,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1609,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1635,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1649,
+              "label": "Take down The Inhibitor"
+            },
+            {
+              "atSec": 1672,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1756,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1787,
+              "label": "End credit"
+            }
+          ]
+        },
+        {
+          "videoId": "EAS87V-9PaM",
+          "title": "Azir Mid vs Galio - KR Challenger Patch 25.21",
+          "rankClaim": "Challenger",
+          "patch": "25.21",
+          "durationSec": 1905,
+          "region": "KR",
+          "uploaded": "2025-11-06",
+          "moments": []
+        },
+        {
+          "videoId": "tzZTi_q-_O0",
+          "title": "T1 Faker Azir vs Galio [ MID ] Patch 25.9 Korea Grandmaster ✅",
+          "rankClaim": "Grandmaster",
+          "patch": "25.9",
+          "durationSec": 1316,
+          "region": "KR",
+          "player": "Faker",
+          "team": "T1",
+          "uploaded": "2025-05-06",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 7,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "4C_xs4aKW3U",
+          "title": "Azir Mid vs LeBlanc - VN Challenger Patch 26.08",
+          "rankClaim": "Challenger",
+          "patch": "26.8",
+          "durationSec": 1781,
+          "uploaded": "2026-04-23",
+          "moments": []
+        },
+        {
+          "videoId": "HHgU-C8YsPk",
+          "title": "Azir Mid vs LeBlanc - KR Challenger Patch 25.15",
+          "rankClaim": "Challenger",
+          "patch": "25.15",
+          "durationSec": 1444,
+          "region": "KR",
+          "uploaded": "2025-08-02",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 8,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "biPgfJf2png",
+          "title": "Azir Mid vs Vladimir - EUW Master Patch 26.19",
+          "rankClaim": "Master",
+          "patch": "26.19",
+          "durationSec": 1850,
+          "region": "EUW",
+          "uploaded": "2026-09-28",
+          "moments": []
+        },
+        {
+          "videoId": "-eOvg6XD3l8",
+          "title": "(FNC Vladi) Azir Mid vs Vladimir - EUW Challenger Patch 26.13",
+          "rankClaim": "Challenger",
+          "patch": "26.13",
+          "durationSec": 1743,
+          "region": "EUW",
+          "player": "Vladi",
+          "team": "FNC",
+          "uploaded": "2026-07-02",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 8,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "5Pb54p5G-gw",
+          "title": "Azir Top vs Vladimir - NA Grandmaster Patch 25.13",
+          "rankClaim": "Grandmaster",
+          "patch": "25.13",
+          "durationSec": 1443,
+          "region": "NA",
+          "uploaded": "2025-07-13",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 11,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "fCjnxr1nvao",
+          "title": "Azir Top vs Master Yi - NA Grandmaster Patch 25.15",
+          "rankClaim": "Grandmaster",
+          "patch": "25.15",
+          "durationSec": 1450,
+          "region": "NA",
+          "uploaded": "2025-08-10",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 13,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "5WCrwkhaMSA",
+          "title": "(DNS Clozer) Azir Mid vs Ryze - KR Challenger Patch 26.11",
+          "rankClaim": "Challenger",
+          "patch": "26.11",
+          "durationSec": 1734,
+          "region": "KR",
+          "player": "Clozer",
+          "uploaded": "2026-06-01",
+          "moments": []
+        },
+        {
+          "videoId": "t9_Y3QAYNFo",
+          "title": "Azir Mid vs Ryze - KR Master Patch 25.20",
+          "rankClaim": "Master",
+          "patch": "25.20",
+          "durationSec": 1843,
+          "region": "KR",
+          "uploaded": "2025-10-12",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 14,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "hMt5q904hgM",
+          "title": "Azir Top vs Sion - KR Master Patch 26.14",
+          "rankClaim": "Master",
+          "patch": "26.14",
+          "durationSec": 1663,
+          "region": "KR",
+          "uploaded": "2026-07-30",
+          "moments": []
+        },
+        {
+          "videoId": "ai8sJOCa1Fg",
+          "title": "Azir Top vs Sion - EUW Grandmaster Patch 25.17",
+          "rankClaim": "Grandmaster",
+          "patch": "25.17",
+          "durationSec": 1629,
+          "region": "EUW",
+          "uploaded": "2025-09-07",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 24,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "6Q_FYcHICTA",
+          "title": "Azir Top vs Jax - KR Master Patch 25.08",
+          "rankClaim": "Master",
+          "patch": "25.8",
+          "durationSec": 1900,
+          "region": "KR",
+          "uploaded": "2025-04-28",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 26,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "SImARIItkPs",
+          "title": "Azir Mid vs Zilean - KR Challenger Patch 25.14",
+          "rankClaim": "Challenger",
+          "patch": "25.14",
+          "durationSec": 1479,
+          "region": "KR",
+          "uploaded": "2025-07-19",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 26,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "SOC9kYkQhD0",
+          "title": "Azir Top vs Zilean - NA Challenger Patch 25.12",
+          "rankClaim": "Challenger",
+          "patch": "25.12",
+          "durationSec": 1489,
+          "region": "NA",
+          "uploaded": "2025-06-22",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 34,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "iHnziAtPTXo",
+          "title": "Azir Mid vs Anivia - EUW Grandmaster Patch 25.20",
+          "rankClaim": "Grandmaster",
+          "patch": "25.20",
+          "durationSec": 1742,
+          "region": "EUW",
+          "uploaded": "2025-10-23",
+          "moments": []
+        },
+        {
+          "videoId": "RX-48nHypPk",
+          "title": "Azir Mid vs Anivia - KR Challenger Patch 25.06",
+          "rankClaim": "Challenger",
+          "patch": "25.6",
+          "durationSec": 1785,
+          "region": "KR",
+          "uploaded": "2025-03-25",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 234,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 337,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 424,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 492,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 593,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 931,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1196,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1287,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1431,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1553,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1572,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1631,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1656,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1690,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1741,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1764,
+              "label": "End credit"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 36,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "Y2cCtgUSmC8",
+          "title": "Azir Top vs Dr. Mundo - KR Master Patch 26.18",
+          "rankClaim": "Master",
+          "patch": "26.18",
+          "durationSec": 1876,
+          "region": "KR",
+          "uploaded": "2026-09-22",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 39,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "aSIpXBbf86U",
+          "title": "(S04 Simpli) Azir Mid vs Irelia - EUW Grandmaster Patch 26.12",
+          "rankClaim": "Grandmaster",
+          "patch": "26.12",
+          "durationSec": 1778,
+          "region": "EUW",
+          "player": "S04 Simpli",
+          "uploaded": "2026-06-15",
+          "moments": []
+        },
+        {
+          "videoId": "gDv_XhyWo4U",
+          "title": "Azir Mid vs Irelia - NA Grandmaster Patch 25.21",
+          "rankClaim": "Grandmaster",
+          "patch": "25.21",
+          "durationSec": 1946,
+          "region": "NA",
+          "uploaded": "2025-10-28",
+          "moments": []
+        },
+        {
+          "videoId": "n696fnJ4x-c",
+          "title": "T1 Faker Azir vs Irelia [ MID ] Patch 25.15 Korea Master",
+          "rankClaim": "Master",
+          "patch": "25.15",
+          "durationSec": 1664,
+          "region": "KR",
+          "player": "Faker",
+          "team": "T1",
+          "uploaded": "2025-08-11",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 42,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "LKujKnw8c5g",
+          "title": "Azir vs Corki Mid - KR Challenger - Patch 25.24 Season 15",
+          "rankClaim": "Challenger",
+          "patch": "25.24",
+          "durationSec": 1656,
+          "region": "KR",
+          "uploaded": "2025-12-31",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 43,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "eZQlbXfBFmg",
+          "title": "Azir Mid vs Karma - EUW Master Patch 26.02",
+          "rankClaim": "Master",
+          "patch": "26.2",
+          "durationSec": 1532,
+          "region": "EUW",
+          "uploaded": "2026-02-05",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 45,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "pnsP0urinIs",
+          "title": "T1 Faker Azir vs Veigar [ MID ] Patch 25.13 Ranked NA",
+          "rankClaim": "Master+",
+          "patch": "25.13",
+          "durationSec": 1394,
+          "region": "NA",
+          "player": "Faker",
+          "team": "T1",
+          "uploaded": "2025-07-01",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 50,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "Kb_nlLJ9704",
+          "title": "(FNC Vladi) Azir Top vs Swain - EUW Challenger Patch 26.10",
+          "rankClaim": "Challenger",
+          "patch": "26.10",
+          "durationSec": 1711,
+          "region": "EUW",
+          "player": "Vladi",
+          "team": "FNC",
+          "uploaded": "2026-05-21",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 54,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "An2csYdxLOE",
+          "title": "Azir Top vs Malphite - EUNE Challenger Patch 26.15",
+          "rankClaim": "Challenger",
+          "patch": "26.15",
+          "durationSec": 1484,
+          "region": "EUNE",
+          "uploaded": "2026-08-06",
+          "moments": []
+        },
+        {
+          "videoId": "fgSKiLrSKcY",
+          "title": "Azir Top vs Malphite - KR Master Patch 26.13",
+          "rankClaim": "Master",
+          "patch": "26.13",
+          "durationSec": 1844,
+          "region": "KR",
+          "uploaded": "2026-07-09",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 57,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "Ueal81X44KE",
+          "title": "Azir Top vs Maokai - KR Master Patch 25.22",
+          "rankClaim": "Master",
+          "patch": "25.22",
+          "durationSec": 1669,
+          "region": "KR",
+          "uploaded": "2025-11-17",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 58,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "GUuol2_sVuU",
+          "title": "Azir Top vs Renekton - KR Master Patch 26.19",
+          "rankClaim": "Master",
+          "patch": "26.19",
+          "durationSec": 1802,
+          "region": "KR",
+          "uploaded": "2026-10-05",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 61,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "M3IG63PBRHE",
+          "title": "Azir Mid vs Orianna - KR Master Patch 26.12",
+          "rankClaim": "Master",
+          "patch": "26.12",
+          "durationSec": 1481,
+          "region": "KR",
+          "uploaded": "2026-06-25",
+          "moments": []
+        },
+        {
+          "videoId": "qHzSGR5Dxbo",
+          "title": "Azir Mid vs Orianna - KR Challenger Patch 26.09",
+          "rankClaim": "Challenger",
+          "patch": "26.9",
+          "durationSec": 1623,
+          "region": "KR",
+          "uploaded": "2026-05-15",
+          "moments": []
+        },
+        {
+          "videoId": "nBr6FJC6aTo",
+          "title": "Azir Mid vs Orianna - KR Master Patch 26.04",
+          "rankClaim": "Master",
+          "patch": "26.4",
+          "durationSec": 1560,
+          "region": "KR",
+          "uploaded": "2026-02-23",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 241,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 460,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 575,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 709,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 758,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1051,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1125,
+              "label": "Get a Triple Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1163,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1235,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1333,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1347,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1360,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1371,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1386,
+              "label": "Take down The Inhibitor"
+            },
+            {
+              "atSec": 1484,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1549,
+              "label": "End credit"
+            }
+          ]
+        },
+        {
+          "videoId": "scxKJsp2x30",
+          "title": "Azir vs Orianna Mid - KR Challenger - Patch 25.23 Season 15",
+          "rankClaim": "Challenger",
+          "patch": "25.23",
+          "durationSec": 2476,
+          "region": "KR",
+          "uploaded": "2025-11-28",
+          "moments": []
+        },
+        {
+          "videoId": "CsuAU7LXns0",
+          "title": "DK ShowMaker Azir vs Orianna [ MID ] Korea Master Patch 25.13 ✅",
+          "rankClaim": "Master",
+          "patch": "25.13",
+          "durationSec": 1907,
+          "region": "KR",
+          "player": "ShowMaker",
+          "team": "DK",
+          "uploaded": "2025-07-14",
+          "moments": []
+        },
+        {
+          "videoId": "mQT9mHZkzFU",
+          "title": "Azir Mid vs Orianna - KR Challenger Patch 25.11",
+          "rankClaim": "Challenger",
+          "patch": "25.11",
+          "durationSec": 1905,
+          "region": "KR",
+          "uploaded": "2025-06-02",
+          "moments": []
+        },
+        {
+          "videoId": "Kg6JUPzhOng",
+          "title": "T1 Faker Azir vs Orianna MID [ Pentakill ] Patch 25.1 Ranked Korea ✅",
+          "rankClaim": "Master+",
+          "patch": "25.1",
+          "durationSec": 1551,
+          "region": "KR",
+          "player": "Faker",
+          "team": "T1",
+          "uploaded": "2025-01-09",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 68,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "Zjpfu0sKX0g",
+          "title": "Azir Top vs Rumble - NA Grandmaster Patch 25.11",
+          "rankClaim": "Grandmaster",
+          "patch": "25.11",
+          "durationSec": 1569,
+          "region": "NA",
+          "uploaded": "2025-06-09",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 69,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "xXlTR34aZMI",
+          "title": "Azir Mid vs Cassiopeia - KR Master Patch 25.24",
+          "rankClaim": "Master",
+          "patch": "25.24",
+          "durationSec": 1452,
+          "region": "KR",
+          "uploaded": "2025-12-31",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 151,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 253,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 316,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 520,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 606,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 689,
+              "label": "Get a Triple Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 718,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 837,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 851,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1015,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1049,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1092,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1111,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1255,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1310,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1368,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1401,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1413,
+              "label": "Take down The Inhibitor"
+            },
+            {
+              "atSec": 1424,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1441,
+              "label": "End credit"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 77,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "tk-CXKdKfn0",
+          "title": "Azir Top vs Udyr - NA Challenger Patch 25.05",
+          "rankClaim": "Challenger",
+          "patch": "25.5",
+          "durationSec": 1610,
+          "region": "NA",
+          "uploaded": "2025-03-17",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 402,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 837,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 910,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 984,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1156,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1234,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1285,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1443,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1469,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1534,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1553,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1569,
+              "label": "Take down The Inhibitor"
+            },
+            {
+              "atSec": 1579,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1589,
+              "label": "End credit"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 80,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "vtXG0tH0pwY",
+          "title": "Azir Mid vs Pantheon - KR Master Patch 26.03",
+          "rankClaim": "Master",
+          "patch": "26.3",
+          "durationSec": 1468,
+          "region": "KR",
+          "uploaded": "2026-02-10",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 106,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 188,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 404,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 482,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 599,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 722,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 749,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 838,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 935,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 961,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1048,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1072,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1211,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1240,
+              "label": "Take down The Inhibitor"
+            },
+            {
+              "atSec": 1264,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1406,
+              "label": "Get a PENTA KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1457,
+              "label": "End credit"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 84,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "FyiAnKlOp_s",
+          "title": "Azir Top vs Akali - NA Challenger Patch 25.04",
+          "rankClaim": "Challenger",
+          "patch": "25.4",
+          "durationSec": 1876,
+          "region": "NA",
+          "uploaded": "2025-03-04",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 91,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "_EvprYFZBUE",
+          "title": "Azir Mid vs Talon - KR Master Patch 26.02",
+          "rankClaim": "Master",
+          "patch": "26.2",
+          "durationSec": 1615,
+          "region": "KR",
+          "uploaded": "2026-01-27",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 98,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "cC2Pe9S46DE",
+          "title": "Azir Top vs Shen - KR Master Patch 25.10",
+          "rankClaim": "Master",
+          "patch": "25.10",
+          "durationSec": 1483,
+          "region": "KR",
+          "uploaded": "2025-05-24",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 103,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "N8L7kJ5P2H8",
+          "title": "T1 Faker Azir vs Ahri [ MID ] Korea Master Patch 26.3",
+          "rankClaim": "Master",
+          "patch": "26.3",
+          "durationSec": 2136,
+          "region": "KR",
+          "player": "Faker",
+          "team": "T1",
+          "uploaded": "2026-02-08",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 114,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "YU6p2RMY9T0",
+          "title": "Azir Top vs Fiora - KR Master Patch 26.09",
+          "rankClaim": "Master",
+          "patch": "26.9",
+          "durationSec": 1852,
+          "region": "KR",
+          "uploaded": "2026-05-08",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 122,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "V3gwZITLgJ0",
+          "title": "Azir Top vs Darius - NA Challenger Patch 25.24",
+          "rankClaim": "Challenger",
+          "patch": "25.24",
+          "durationSec": 1493,
+          "region": "NA",
+          "uploaded": "2025-12-23",
+          "moments": []
+        },
+        {
+          "videoId": "Gekrq-cTj8g",
+          "title": "Azir Top vs Darius - EUW Grandmaster Patch 25.19",
+          "rankClaim": "Grandmaster",
+          "patch": "25.19",
+          "durationSec": 1641,
+          "region": "EUW",
+          "uploaded": "2025-10-07",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 126,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "HfBPbgfr_yg",
+          "title": "Azir Mid vs Jayce - KR Challenger Patch 26.07",
+          "rankClaim": "Challenger",
+          "patch": "26.7",
+          "durationSec": 1468,
+          "region": "KR",
+          "uploaded": "2026-04-07",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 235,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 342,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 413,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 825,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 860,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1024,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1046,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1063,
+              "label": "Hunt The Dragon",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1118,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1254,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1280,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1290,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1305,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1358,
+              "label": "Get a Triple Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1384,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1407,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1423,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1457,
+              "label": "End credit"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 127,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "koq6GlOy9h8",
+          "title": "T1 Faker Azir vs Lissandra [ MID ] Korea Challenger 1839 LP | Patch 26.11",
+          "rankClaim": "Challenger",
+          "patch": "26.11",
+          "durationSec": 2001,
+          "region": "KR",
+          "player": "Faker",
+          "team": "T1",
+          "uploaded": "2026-06-04",
+          "moments": []
+        },
+        {
+          "videoId": "i0T44-McyaQ",
+          "title": "T1 Faker Azir vs Lissandra [ MID ] Patch 25.2 Korea Master ✅",
+          "rankClaim": "Master",
+          "patch": "25.2",
+          "durationSec": 1610,
+          "region": "KR",
+          "player": "Faker",
+          "team": "T1",
+          "uploaded": "2025-01-31",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 131,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "poQqQ8oDOSo",
+          "title": "Azir Mid vs Diana - KR Master Patch 26.18",
+          "rankClaim": "Master",
+          "patch": "26.18",
+          "durationSec": 1601,
+          "region": "KR",
+          "uploaded": "2026-09-17",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 134,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "XP2ZmQ9J_hg",
+          "title": "Azir Mid vs Syndra - KR Master Patch 26.17",
+          "rankClaim": "Master",
+          "patch": "26.17",
+          "durationSec": 1750,
+          "region": "KR",
+          "uploaded": "2026-09-11",
+          "moments": []
+        },
+        {
+          "videoId": "I276Ebu9A1Q",
+          "title": "Azir Mid vs Syndra - KR Challenger Patch 26.06",
+          "rankClaim": "Challenger",
+          "patch": "26.6",
+          "durationSec": 1788,
+          "region": "KR",
+          "uploaded": "2026-03-22",
+          "moments": []
+        },
+        {
+          "videoId": "-CoXBFYcci8",
+          "title": "Azir Mid vs Syndra - KR Challenger Patch 25.22",
+          "rankClaim": "Challenger",
+          "patch": "25.22",
+          "durationSec": 1631,
+          "region": "KR",
+          "uploaded": "2025-11-11",
+          "moments": []
+        },
+        {
+          "videoId": "EPz--68ItIw",
+          "title": "Azir Mid vs Syndra - KR Master Patch 25.04",
+          "rankClaim": "Master",
+          "patch": "25.4",
+          "durationSec": 1943,
+          "region": "KR",
+          "uploaded": "2025-02-27",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 142,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "OPjTbOsBM2A",
+          "title": "Azir Mid vs Zoe - KR Challenger Patch 26.20",
+          "rankClaim": "Challenger",
+          "patch": "26.20",
+          "durationSec": 1654,
+          "region": "KR",
+          "uploaded": "2026-10-14",
+          "result": "W",
+          "moments": [
+            {
+              "atSec": 318,
+              "label": "Kog'Maw Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 324,
+              "label": "Red takes 1st Dragon (Hextech)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 609,
+              "label": "Jarvan IV picks off Zoe"
+            },
+            {
+              "atSec": 646,
+              "label": "Red takes 2nd Dragon (Cloud)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 743,
+              "label": "Azir picks off Ambessa"
+            },
+            {
+              "atSec": 974,
+              "label": "Red takes 3rd Dragon (Infernal)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1077,
+              "label": "Kog'Maw Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1082,
+              "label": "Kog'Maw Triple Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1169,
+              "label": "Azir takes down Bard"
+            },
+            {
+              "atSec": 1283,
+              "label": "Blue takes 1st Dragon (Infernal)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1468,
+              "label": "Mid Inhibitor falls (Blue)"
+            },
+            {
+              "atSec": 1500,
+              "label": "Red takes Baron",
+              "kind": "baron"
+            },
+            {
+              "atSec": 1591,
+              "label": "Red takes 4th Dragon (Infernal)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1604,
+              "label": "Camille Double Kill",
+              "kind": "kill"
+            }
+          ]
+        },
+        {
+          "videoId": "0IM3tbYPLNA",
+          "title": "T1 Faker Azir vs Zoe [ MID ] Patch 25.24 Ranked Korea",
+          "rankClaim": "Master+",
+          "patch": "25.24",
+          "durationSec": 1816,
+          "region": "KR",
+          "player": "Faker",
+          "team": "T1",
+          "uploaded": "2026-01-04",
+          "moments": []
+        },
+        {
+          "videoId": "mRIdtb9qOXY",
+          "title": "Azir Mid vs Zoe - KR Grandmaster Patch 25.09",
+          "rankClaim": "Grandmaster",
+          "patch": "25.9",
+          "durationSec": 1633,
+          "region": "KR",
+          "uploaded": "2025-05-05",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 263,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 660,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 725,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 836,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 987,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1061,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1082,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1110,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1198,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1269,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1300,
+              "label": "Hunt The Dragon",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1407,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1438,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1466,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1492,
+              "label": "Take down The Inhibitor"
+            },
+            {
+              "atSec": 1560,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1601,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1612,
+              "label": "End credit"
+            }
+          ]
+        },
+        {
+          "videoId": "UDGTzVmuy1Q",
+          "title": "T1 Faker Azir vs Zoe [ MID ] Patch 25.6 Korea Master ✅",
+          "rankClaim": "Master",
+          "patch": "25.6",
+          "durationSec": 839,
+          "region": "KR",
+          "player": "Faker",
+          "team": "T1",
+          "uploaded": "2025-03-20",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 157,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "VgJJ3q7Me34",
+          "title": "(GEN Kemish) Azir Mid vs Yasuo - KR Challenger Patch 26.21",
+          "rankClaim": "Challenger",
+          "patch": "26.21",
+          "durationSec": 1699,
+          "region": "KR",
+          "player": "Kemish",
+          "team": "GEN",
+          "uploaded": "2026-10-27",
+          "result": "W",
+          "moments": [
+            {
+              "atSec": 340,
+              "label": "Rek'Sai picks off Yasuo"
+            },
+            {
+              "atSec": 438,
+              "label": "Azir takes down Yasuo"
+            },
+            {
+              "atSec": 587,
+              "label": "Blue takes 1st Dragon (Mountain)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 701,
+              "label": "Azir catches Yasuo again"
+            },
+            {
+              "atSec": 926,
+              "label": "Azir eliminates Yasuo"
+            },
+            {
+              "atSec": 954,
+              "label": "Blue takes 2nd Dragon (Hextech)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1003,
+              "label": "Zeri eliminates Lillia"
+            },
+            {
+              "atSec": 1137,
+              "label": "Azir Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1217,
+              "label": "Rek'Sai picks off Yasuo"
+            },
+            {
+              "atSec": 1274,
+              "label": "Tryndamere Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1279,
+              "label": "Blue takes 3rd Dragon (Chemtech)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1314,
+              "label": "Blue takes Baron",
+              "kind": "baron"
+            },
+            {
+              "atSec": 1391,
+              "label": "Rek'Sai picks off Yasuo"
+            },
+            {
+              "atSec": 1419,
+              "label": "Bot Inhibitor falls (Red)"
+            },
+            {
+              "atSec": 1545,
+              "label": "Tryndamere Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1601,
+              "label": "Blue takes 4th Dragon (Chemtech)",
+              "kind": "dragon"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 157,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "7clTrZFJALA",
+          "title": "Azir Top vs Yasuo - NA Challenger Patch 25.06",
+          "rankClaim": "Challenger",
+          "patch": "25.6",
+          "durationSec": 1591,
+          "region": "NA",
+          "uploaded": "2025-04-03",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 163,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "wuKBIM-xwWU",
+          "title": "(TSW Dire) Azir Mid vs Taliyah (DK ShowMaker) - KR Challenger Patch 26.15",
+          "rankClaim": "Challenger",
+          "patch": "26.15",
+          "durationSec": 1768,
+          "region": "KR",
+          "player": "ShowMaker",
+          "uploaded": "2026-08-08",
+          "moments": []
+        },
+        {
+          "videoId": "GIhtshbCFTE",
+          "title": "(DNS Clozer) Azir Mid vs Taliyah - KR Challenger Patch 26.10",
+          "rankClaim": "Challenger",
+          "patch": "26.10",
+          "durationSec": 1418,
+          "region": "KR",
+          "player": "Clozer",
+          "uploaded": "2026-05-24",
+          "moments": []
+        },
+        {
+          "videoId": "MCccrQuI_xY",
+          "title": "Azir Mid vs Taliyah - KR Grandmaster Patch 26.05",
+          "rankClaim": "Grandmaster",
+          "patch": "26.5",
+          "durationSec": 1519,
+          "region": "KR",
+          "uploaded": "2026-03-12",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 136,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 213,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 297,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 561,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 725,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 838,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 969,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1063,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1125,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1144,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1318,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1343,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1452,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1481,
+              "label": "Take down The Inhibitor"
+            },
+            {
+              "atSec": 1497,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1508,
+              "label": "End credit"
+            }
+          ]
+        },
+        {
+          "videoId": "GjHSLfbGD8c",
+          "title": "T1 Faker Azir vs Taliyah [ MID ] Patch 26.1 Ranked Korea",
+          "rankClaim": "Master+",
+          "patch": "26.1",
+          "durationSec": 1102,
+          "region": "KR",
+          "player": "Faker",
+          "team": "T1",
+          "uploaded": "2026-01-21",
+          "moments": []
+        },
+        {
+          "videoId": "rylAm2bTdNs",
+          "title": "Azir Mid vs Taliyah - KR Challenger Patch 25.13",
+          "rankClaim": "Challenger",
+          "patch": "25.13",
+          "durationSec": 1781,
+          "region": "KR",
+          "uploaded": "2025-07-02",
+          "moments": []
+        },
+        {
+          "videoId": "a5khyRLGpmI",
+          "title": "T1 Faker Azir vs Taliyah [ MID ] Patch 25.7 Korea Grandmaster ✅",
+          "rankClaim": "Grandmaster",
+          "patch": "25.7",
+          "durationSec": 2035,
+          "region": "KR",
+          "player": "Faker",
+          "team": "T1",
+          "uploaded": "2025-04-06",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 164,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "VbYdbuE_eXM",
+          "title": "Azir Top vs Camille - KR Master Patch 26.07",
+          "rankClaim": "Master",
+          "patch": "26.7",
+          "durationSec": 1744,
+          "region": "KR",
+          "uploaded": "2026-04-15",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 166,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "IoZ9xLyWkOY",
+          "title": "Azir Mid vs Akshan - KR Master Patch 25.12",
+          "rankClaim": "Master",
+          "patch": "25.12",
+          "durationSec": 1909,
+          "region": "KR",
+          "uploaded": "2025-06-14",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 238,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "taRqicsVLJU",
+          "title": "Azir Mid vs Zed - EUW Challenger Patch 25.16",
+          "rankClaim": "Challenger",
+          "patch": "25.16",
+          "durationSec": 1482,
+          "region": "EUW",
+          "uploaded": "2025-08-28",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 238,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "qEBFDh_i4cs",
+          "title": "Azir Top vs Zed - NA Grandmaster Patch 26.11",
+          "rankClaim": "Grandmaster",
+          "patch": "26.11",
+          "durationSec": 1602,
+          "region": "NA",
+          "uploaded": "2026-06-12",
+          "result": "W",
+          "moments": [
+            {
+              "atSec": 352,
+              "label": "Red takes 1st Dragon (Mountain)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 662,
+              "label": "First Blood — Shyvana kills Zed",
+              "kind": "kill"
+            },
+            {
+              "atSec": 818,
+              "label": "Azir catches Zed"
+            },
+            {
+              "atSec": 853,
+              "label": "Azir takes down Galio"
+            },
+            {
+              "atSec": 894,
+              "label": "Team fight (3 kills)",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 972,
+              "label": "Red takes 2nd Dragon (Infernal)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 983,
+              "label": "Azir picks off Caitlyn"
+            },
+            {
+              "atSec": 1103,
+              "label": "Azir picks off Caitlyn"
+            },
+            {
+              "atSec": 1182,
+              "label": "Blue takes Baron",
+              "kind": "baron"
+            },
+            {
+              "atSec": 1270,
+              "label": "Azir outduels Zed again"
+            },
+            {
+              "atSec": 1329,
+              "label": "Blue takes 1st Dragon (Ocean)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1361,
+              "label": "Azir outplays Zed (3rd time)"
+            },
+            {
+              "atSec": 1402,
+              "label": "Bot Inhibitor falls (Red)"
+            },
+            {
+              "atSec": 1445,
+              "label": "Mid Inhibitor falls (Red)"
+            },
+            {
+              "atSec": 1455,
+              "label": "Azir eliminates Zed"
+            },
+            {
+              "atSec": 1500,
+              "label": "Azir solo kills Caitlyn",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1514,
+              "label": "Top Inhibitor falls (Red)"
+            },
+            {
+              "atSec": 1526,
+              "label": "Vladimir picks off Kindred"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 245,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "JFIG_V9D2Ew",
+          "title": "(KRX AKaJe) Azir Mid vs Ekko - KR Challenger Patch 26.16",
+          "rankClaim": "Challenger",
+          "patch": "26.16",
+          "durationSec": 1599,
+          "region": "KR",
+          "player": "KRX AKaJe",
+          "uploaded": "2026-08-17",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 246,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "J95r2TKkNQE",
+          "title": "Azir Mid vs Qiyana - KR Grandmaster Patch 25.16",
+          "rankClaim": "Grandmaster",
+          "patch": "25.16",
+          "durationSec": 2009,
+          "region": "KR",
+          "uploaded": "2025-08-19",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 427,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "GzxzLImmcb4",
+          "title": "Azir Mid vs Ivern - EUW Grandmaster Patch 26.01",
+          "rankClaim": "Grandmaster",
+          "patch": "26.1",
+          "durationSec": 1610,
+          "region": "EUW",
+          "uploaded": "2026-01-22",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 186,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 371,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 685,
+              "label": "Hunt The Dragon",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 715,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 751,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 845,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1006,
+              "label": "Get a Triple Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1041,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1156,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1299,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1314,
+              "label": "Get a Triple Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1376,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1413,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1445,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1543,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1565,
+              "label": "Take down The Inhibitor"
+            },
+            {
+              "atSec": 1582,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1599,
+              "label": "End credit"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 516,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "Zs9Nt2Yqw0I",
+          "title": "Azir Top vs Ornn - NA Challenger Patch 25.09",
+          "rankClaim": "Challenger",
+          "patch": "25.9",
+          "durationSec": 1605,
+          "region": "NA",
+          "uploaded": "2025-05-15",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 296,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 766,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 869,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 902,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1046,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1082,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1242,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1288,
+              "label": "Hunt The Atakhan"
+            },
+            {
+              "atSec": 1331,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1369,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1443,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1479,
+              "label": "Take down The Inhibitor"
+            },
+            {
+              "atSec": 1538,
+              "label": "Get a Triple Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1569,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1584,
+              "label": "End credit"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 517,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "FLVDLSDKG_Q",
+          "title": "Azir Mid vs Sylas - KR Master Patch 26.01",
+          "rankClaim": "Master",
+          "patch": "26.1",
+          "durationSec": 1614,
+          "region": "KR",
+          "uploaded": "2026-01-16",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 153,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 322,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 460,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 534,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 711,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 739,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 974,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1069,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1091,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1142,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1223,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1255,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1284,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1390,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1417,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1546,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1580,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1603,
+              "label": "End credit"
+            }
+          ]
+        },
+        {
+          "videoId": "PxjJ3RUjV7c",
+          "title": "Azir Mid vs Sylas - KR Grandmaster Patch 25.24",
+          "rankClaim": "Grandmaster",
+          "patch": "25.24",
+          "durationSec": 1555,
+          "region": "KR",
+          "uploaded": "2025-12-18",
+          "moments": []
+        },
+        {
+          "videoId": "m8cFUpD-1Oc",
+          "title": "T1 Faker Azir vs Sylas [ MID ] Korea Grandmaster Patch 25.9 ✅",
+          "rankClaim": "Grandmaster",
+          "patch": "25.9",
+          "durationSec": 1968,
+          "region": "KR",
+          "player": "Faker",
+          "team": "T1",
+          "uploaded": "2025-05-13",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 777,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "9GzBdJmCfZs",
+          "title": "Azir Mid vs Yone - KR Master Patch 26.17",
+          "rankClaim": "Master",
+          "patch": "26.17",
+          "durationSec": 1634,
+          "region": "KR",
+          "uploaded": "2026-09-10",
+          "moments": []
+        },
+        {
+          "videoId": "HlJhIGf_xB0",
+          "title": "Azir Mid vs Yone - KR Challenger Patch 26.16",
+          "rankClaim": "Challenger",
+          "patch": "26.16",
+          "durationSec": 1867,
+          "region": "KR",
+          "uploaded": "2026-08-27",
+          "moments": []
+        },
+        {
+          "videoId": "9ocziTdIVSY",
+          "title": "(VIT Humanoid) Azir Mid vs Yone - EUW Grandmaster Patch 26.14",
+          "rankClaim": "Grandmaster",
+          "patch": "26.14",
+          "durationSec": 1704,
+          "region": "EUW",
+          "player": "VIT Humanoid",
+          "uploaded": "2026-07-20",
+          "moments": []
+        },
+        {
+          "videoId": "h7FrZZm2XMQ",
+          "title": "Azir vs Yone Mid - KR Challenger - Patch 16.07 Season 16",
+          "rankClaim": "Challenger",
+          "patch": "26.7",
+          "durationSec": 1511,
+          "region": "KR",
+          "uploaded": "2026-04-04",
+          "moments": []
+        },
+        {
+          "videoId": "GgYpefU-Z4U",
+          "title": "Azir Mid vs Yone - KR Challenger Patch 25.24",
+          "rankClaim": "Challenger",
+          "patch": "25.24",
+          "durationSec": 1564,
+          "region": "KR",
+          "uploaded": "2025-12-08",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 326,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 401,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 584,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 740,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 818,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 870,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 895,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 968,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 987,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1205,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1226,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1240,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1340,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1374,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1553,
+              "label": "End credit"
+            }
+          ]
+        },
+        {
+          "videoId": "qD_o_yQ5MoE",
+          "title": "Azir Mid vs Yone - KR Challenger Patch 25.23",
+          "rankClaim": "Challenger",
+          "patch": "25.23",
+          "durationSec": 1810,
+          "region": "KR",
+          "uploaded": "2025-11-26",
+          "moments": []
+        },
+        {
+          "videoId": "yEcN76K-KtA",
+          "title": "Azir Mid vs Yone - KR Grandmaster Patch 25.18",
+          "rankClaim": "Grandmaster",
+          "patch": "25.18",
+          "durationSec": 1809,
+          "region": "KR",
+          "uploaded": "2025-09-17",
+          "moments": []
+        },
+        {
+          "videoId": "xqnYHKEQroY",
+          "title": "T1 Faker Azir vs Yone [ MID ] Patch 25.17 Korea Grandmaster",
+          "rankClaim": "Grandmaster",
+          "patch": "25.17",
+          "durationSec": 1444,
+          "region": "KR",
+          "player": "Faker",
+          "team": "T1",
+          "uploaded": "2025-08-29",
+          "moments": []
+        },
+        {
+          "videoId": "g8D7fsYSm2s",
+          "title": "Azir Mid vs Yone - EUW Grandmaster Patch 25.13",
+          "rankClaim": "Grandmaster",
+          "patch": "25.13",
+          "durationSec": 1537,
+          "region": "EUW",
+          "uploaded": "2025-07-10",
+          "moments": []
+        },
+        {
+          "videoId": "NjR9E4lm5pk",
+          "title": "Azir Mid vs Yone - KR Challenger Patch 25.08",
+          "rankClaim": "Challenger",
+          "patch": "25.8",
+          "durationSec": 1747,
+          "region": "KR",
+          "uploaded": "2025-04-21",
+          "moments": []
+        },
+        {
+          "videoId": "lfwchC0N7Ac",
+          "title": "Azir vs Yone Mid - KR Challenger - Patch 25.6 Season 15",
+          "rankClaim": "Challenger",
+          "patch": "25.6",
+          "durationSec": 1906,
+          "region": "KR",
+          "uploaded": "2025-03-28",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 777,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "wxloabYOTFM",
+          "title": "Azir Top vs Yone - KR Grandmaster Patch 26.03",
+          "rankClaim": "Grandmaster",
+          "patch": "26.3",
+          "durationSec": 1845,
+          "region": "KR",
+          "uploaded": "2026-02-17",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 799,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "2pV_YdRlOYo",
+          "title": "Azir Top vs Ambessa - KR Master Patch 26.04",
+          "rankClaim": "Master",
+          "patch": "26.4",
+          "durationSec": 1698,
+          "region": "KR",
+          "uploaded": "2026-03-02",
+          "moments": []
+        },
+        {
+          "videoId": "XUYbaxoYRSI",
+          "title": "Azir Top vs Ambessa - NA Grandmaster Patch 25.24",
+          "rankClaim": "Grandmaster",
+          "patch": "25.24",
+          "durationSec": 1609,
+          "region": "NA",
+          "uploaded": "2026-01-10",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 893,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "SEQIlyTRMPo",
+          "title": "T1 Faker Azir vs Aurora [ MID ] Patch 25.24 Ranked Korea",
+          "rankClaim": "Master+",
+          "patch": "25.24",
+          "durationSec": 1364,
+          "region": "KR",
+          "player": "Faker",
+          "team": "T1",
+          "uploaded": "2026-01-07",
+          "moments": []
+        },
+        {
+          "videoId": "LXvazIhzCvE",
+          "title": "Azir Mid vs Aurora - KR Grandmaster Patch 25.17",
+          "rankClaim": "Grandmaster",
+          "patch": "25.17",
+          "durationSec": 1640,
+          "region": "KR",
+          "uploaded": "2025-09-03",
+          "moments": []
+        },
+        {
+          "videoId": "TWITgLyB3Jo",
+          "title": "Azir Mid vs Aurora - KR Grandmaster Patch 25.05",
+          "rankClaim": "Grandmaster",
+          "patch": "25.5",
+          "durationSec": 1790,
+          "region": "KR",
+          "uploaded": "2025-03-11",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 951,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1092,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1168,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1272,
+              "label": "Get a Triple Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1375,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1402,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1466,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1581,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1597,
+              "label": "Get a Triple Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1694,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1711,
+              "label": "Get a Triple Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1723,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1737,
+              "label": "Take down The Inhibitor"
+            },
+            {
+              "atSec": 1755,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1769,
+              "label": "End credit"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 897,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "XEexlfwHGOg",
+          "title": "Azir Top vs K'Sante - NA Grandmaster Patch 25.14",
+          "rankClaim": "Grandmaster",
+          "patch": "25.14",
+          "durationSec": 1800,
+          "region": "NA",
+          "uploaded": "2025-07-30",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 904,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "Q5Rg4II50ME",
+          "title": "Azir Top vs Zaahen - NA Grandmaster Patch 26.08",
+          "rankClaim": "Grandmaster",
+          "patch": "26.8",
+          "durationSec": 1468,
+          "region": "NA",
+          "uploaded": "2026-04-29",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 910,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "ireJ_vRDfss",
+          "title": "Azir Mid vs Hwei - KR Grandmaster Patch 25.10",
+          "rankClaim": "Grandmaster",
+          "patch": "25.10",
+          "durationSec": 1700,
+          "region": "KR",
+          "uploaded": "2025-05-18",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 950,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "K8r61HQrrLU",
+          "title": "Azir Mid vs Naafiri - KR Challenger Patch 25.07",
+          "rankClaim": "Challenger",
+          "patch": "25.7",
+          "durationSec": 1681,
+          "region": "KR",
+          "uploaded": "2025-04-08",
+          "moments": []
+        }
+      ]
+    }
+  ]
+}

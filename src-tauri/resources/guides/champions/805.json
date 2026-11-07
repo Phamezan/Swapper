@@ -1,0 +1,2162 @@
+{
+  "schema": 1,
+  "champion": 805,
+  "generatedAt": "2026-11-07T13:25:14.592Z",
+  "guides": [
+    {
+      "champion": 805,
+      "enemy": 103,
+      "lane": "mid",
+      "patch": "26.21",
+      "reviewed": false,
+      "difficulty": "Skill matchup",
+      "favoredWhen": "Skill lane you can win. Stack three nails, E in, and hold W for Charm.",
+      "keyTips": [
+        {
+          "text": "Skill lane you can win: three nails, E in to pop them and proc Electrocute, W out.",
+          "scope": "pair",
+          "sourceIds": [
+            "sephyrixx"
+          ],
+          "abilityKeys": [
+            {
+              "champion": 805,
+              "key": "Q"
+            },
+            {
+              "champion": 805,
+              "key": "E"
+            }
+          ]
+        },
+        {
+          "text": "Q her only when she is on your side: overextended nails never cash.",
+          "scope": "pair",
+          "sourceIds": [
+            "sephyrixx"
+          ],
+          "abilityKeys": [
+            {
+              "champion": 805,
+              "key": "Q"
+            }
+          ]
+        },
+        {
+          "text": "Pre-cast W a bit early on engage: the dodge slips her Charm.",
+          "scope": "pair",
+          "sourceIds": [
+            "sephyrixx"
+          ],
+          "abilityKeys": [
+            {
+              "champion": 805,
+              "key": "W"
+            },
+            {
+              "champion": 103,
+              "key": "E"
+            }
+          ]
+        }
+      ],
+      "enemyTips": {},
+      "sections": {
+        "overview": {
+          "tips": []
+        },
+        "early-lane": {
+          "tips": [
+            {
+              "text": "Level 1, do not trade: her W speed procs Electrocute on you.",
+              "scope": "pair",
+              "sourceIds": [
+                "sephyrixx"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 103,
+                  "key": "W"
+                }
+              ]
+            },
+            {
+              "text": "She spaces your nails and backs off as they stack: walk her down before the third lands.",
+              "scope": "pair",
+              "sourceIds": [
+                "penglocke"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 805,
+                  "key": "Q"
+                }
+              ]
+            }
+          ]
+        },
+        "mid-lane": {
+          "tips": [
+            {
+              "text": "She Ignites your Soul Ignition healing: expect it, bait it or power through.",
+              "scope": "pair",
+              "sourceIds": [
+                "penglocke"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 805,
+                  "key": "W"
+                }
+              ]
+            },
+            {
+              "text": "After 6 play with your jungler: you own the early, convert with help.",
+              "scope": "pair",
+              "sourceIds": [
+                "sephyrixx"
+              ]
+            }
+          ]
+        },
+        "win-condition": {
+          "tips": [
+            {
+              "text": "R-for-R is fine: yours returns sooner ({cd:805:R}), so trade ults and re-engage in the window.",
+              "scope": "pair",
+              "sourceIds": [
+                "sephyrixx"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 805,
+                  "key": "R"
+                },
+                {
+                  "champion": 103,
+                  "key": "R"
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "itemization": [],
+      "sources": [
+        {
+          "id": "sephyrixx",
+          "author": "Sephyrixx",
+          "rankClaim": "Diamond · Locke main",
+          "rank": "diamond",
+          "url": "https://www.mobafire.com/league-of-legends/build/the-only-locke-guide-youll-ever-need-lt-3-652592",
+          "kind": "mobafire"
+        },
+        {
+          "id": "penglocke",
+          "author": "Peng04",
+          "rankClaim": "13x Challenger · Ahri main",
+          "rank": "challenger",
+          "url": "https://www.youtube.com/watch?v=t1jT9CUjv1c",
+          "kind": "youtube"
+        }
+      ]
+    },
+    {
+      "champion": 805,
+      "enemy": 134,
+      "lane": "mid",
+      "patch": "26.21",
+      "reviewed": false,
+      "difficulty": "Easy",
+      "favoredWhen": "Stomp. Spam Q, blink the stun, and all-in at every stage.",
+      "keyTips": [
+        {
+          "text": "Stomp matchup: spam Q and blink her stun, then run the combo.",
+          "scope": "pair",
+          "sourceIds": [
+            "sephyrixx"
+          ],
+          "abilityKeys": [
+            {
+              "champion": 805,
+              "key": "Q"
+            }
+          ]
+        },
+        {
+          "text": "Simple E, QQQ, E2: the full rotation every time.",
+          "scope": "pair",
+          "sourceIds": [
+            "sephyrixx"
+          ],
+          "abilityKeys": [
+            {
+              "champion": 805,
+              "key": "E"
+            },
+            {
+              "champion": 805,
+              "key": "Q"
+            }
+          ]
+        },
+        {
+          "text": "Her stun cooldown is far longer than your E: punish after every E.",
+          "scope": "pair",
+          "sourceIds": [
+            "sephyrixx"
+          ],
+          "abilityKeys": [
+            {
+              "champion": 134,
+              "key": "E"
+            },
+            {
+              "champion": 805,
+              "key": "E"
+            }
+          ]
+        }
+      ],
+      "enemyTips": {},
+      "sections": {
+        "overview": {
+          "tips": []
+        },
+        "early-lane": {
+          "tips": [
+            {
+              "text": "Spam Q from level 1: nails stack while she cannot answer.",
+              "scope": "pair",
+              "sourceIds": [
+                "sephyrixx"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 805,
+                  "key": "Q"
+                }
+              ]
+            },
+            {
+              "text": "Your E goes over her stun: engage through it, never around.",
+              "scope": "pair",
+              "sourceIds": [
+                "shok"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 805,
+                  "key": "E"
+                },
+                {
+                  "champion": 134,
+                  "key": "E"
+                }
+              ]
+            }
+          ]
+        },
+        "mid-lane": {
+          "tips": [
+            {
+              "text": "All-in at every stage: no level is hers.",
+              "scope": "pair",
+              "sourceIds": [
+                "sephyrixx"
+              ]
+            },
+            {
+              "text": "She wants the long outscale lane: keep waves crashing so it never settles.",
+              "scope": "pair",
+              "sourceIds": [
+                "shok"
+              ]
+            }
+          ]
+        },
+        "win-condition": {
+          "tips": [
+            {
+              "text": "Stun blinked plus every stage all-inned: the Syndra who never holds you never wins.",
+              "scope": "pair",
+              "sourceIds": [
+                "sephyrixx"
+              ]
+            }
+          ]
+        }
+      },
+      "itemization": [],
+      "sources": [
+        {
+          "id": "sephyrixx",
+          "author": "Sephyrixx",
+          "rankClaim": "Diamond · Locke main",
+          "rank": "diamond",
+          "url": "https://www.mobafire.com/league-of-legends/build/the-only-locke-guide-youll-ever-need-lt-3-652592",
+          "kind": "mobafire"
+        },
+        {
+          "id": "shok",
+          "author": "ShokLoL",
+          "rankClaim": "Rank 1 Challenger · Syndra main",
+          "rank": "challenger",
+          "url": "https://www.mobafire.com/league-of-legends/build/26-17-shoks-rank-1-challenger-syndra-guide-602710",
+          "kind": "mobafire"
+        }
+      ]
+    },
+    {
+      "champion": 805,
+      "enemy": 238,
+      "lane": "mid",
+      "patch": "26.21",
+      "reviewed": false,
+      "difficulty": "Skill matchup",
+      "favoredWhen": "Even. Respect the triple-Q burst, answer jumps with double-W backwards, and Ignite before his W recast.",
+      "keyTips": [
+        {
+          "text": "Even matchup: respect his triple-Q burst, nothing more.",
+          "scope": "pair",
+          "sourceIds": [
+            "aikopanda"
+          ],
+          "abilityKeys": [
+            {
+              "champion": 805,
+              "key": "Q"
+            }
+          ]
+        },
+        {
+          "text": "When he jumps on you, double-W Q-E backwards: retreat while landing everything.",
+          "scope": "pair",
+          "sourceIds": [
+            "aikopanda"
+          ],
+          "abilityKeys": [
+            {
+              "champion": 805,
+              "key": "W"
+            },
+            {
+              "champion": 805,
+              "key": "Q"
+            }
+          ]
+        },
+        {
+          "text": "Ignite before his W recast: less healing means the trade sticks.",
+          "scope": "pair",
+          "sourceIds": [
+            "aikopanda"
+          ],
+          "abilityKeys": [
+            {
+              "champion": 805,
+              "key": "W"
+            }
+          ]
+        }
+      ],
+      "enemyTips": {
+        "early-lane": [
+          {
+            "text": "Zed often places Living Shadow before Death Mark so he can swap away from skillshots. Hold your crowd control until he has used the swap.",
+            "scope": "enemy",
+            "sourceIds": [
+              "aikopanda"
+            ],
+            "patch": "26.21",
+            "abilityKeys": [
+              {
+                "champion": 238,
+                "key": "W"
+              },
+              {
+                "champion": 238,
+                "key": "R"
+              }
+            ]
+          }
+        ],
+        "win-condition": [
+          {
+            "text": "Death Mark always lands Zed behind his target. Pre-aim crowd control and escapes behind you, not toward where he cast it.",
+            "scope": "enemy",
+            "sourceIds": [
+              "peng04"
+            ],
+            "patch": "26.21",
+            "abilityKeys": [
+              {
+                "champion": 238,
+                "key": "R"
+              }
+            ]
+          }
+        ]
+      },
+      "sections": {
+        "overview": {
+          "tips": []
+        },
+        "early-lane": {
+          "tips": [
+            {
+              "text": "Open with Q stacks: the burst threat starts the lane.",
+              "scope": "pair",
+              "sourceIds": [
+                "aikopanda"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 805,
+                  "key": "Q"
+                }
+              ]
+            },
+            {
+              "text": "Do not E into his shadows blindly: spent mobility is death.",
+              "scope": "pair",
+              "sourceIds": [
+                "aikopanda"
+              ]
+            }
+          ]
+        },
+        "mid-lane": {
+          "tips": [
+            {
+              "text": "His W is the engage tool: backwards combo every time he commits it.",
+              "scope": "pair",
+              "sourceIds": [
+                "aikopanda"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 238,
+                  "key": "W"
+                }
+              ]
+            },
+            {
+              "text": "Ignite timing decides trades: cast before the recast, never after.",
+              "scope": "pair",
+              "sourceIds": [
+                "aikopanda"
+              ]
+            },
+            {
+              "text": "Death Mark lands him behind you: pre-aim E behind yourself when he ults.",
+              "scope": "pair",
+              "sourceIds": [
+                "peng04"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 238,
+                  "key": "R"
+                },
+                {
+                  "champion": 805,
+                  "key": "E"
+                }
+              ]
+            }
+          ]
+        },
+        "win-condition": {
+          "tips": [
+            {
+              "text": "Burst respected plus backwards combos: the Zed who never dives you never wins.",
+              "scope": "pair",
+              "sourceIds": [
+                "aikopanda"
+              ]
+            }
+          ]
+        }
+      },
+      "itemization": [],
+      "sources": [
+        {
+          "id": "aikopanda",
+          "author": "AikoPanda",
+          "rankClaim": "Zed main",
+          "url": "https://www.mobafire.com/league-of-legends/build/26-20-video-guides-hidden-combos-all-matchups-zed-all-in-one-guide-652800",
+          "kind": "mobafire"
+        },
+        {
+          "id": "peng04",
+          "author": "Peng04",
+          "rankClaim": "Challenger · Ahri main",
+          "rank": "challenger",
+          "url": "https://www.mobafire.com/league-of-legends/build/26-20-pengs-ahri-guide-5-1mil-points-13x-challenger-648700",
+          "kind": "mobafire"
+        }
+      ]
+    }
+  ],
+  "general": [
+    {
+      "champion": 805,
+      "lane": "mid",
+      "patch": "26.21",
+      "reviewed": false,
+      "keyTips": [
+        {
+          "text": "Hold the wave near your side early instead of shoving, buying chase room and earlier gank vision.",
+          "scope": "champion",
+          "sourceIds": [
+            "mobalytics-locke-build"
+          ]
+        },
+        {
+          "text": "At level 6, spend the added R damage on kill pressure instead of staying passive.",
+          "scope": "champion",
+          "sourceIds": [
+            "mobalytics-locke"
+          ]
+        },
+        {
+          "text": "Reach backlines through fog and W without crossing the map alone into unknown enemies.",
+          "scope": "champion",
+          "sourceIds": [
+            "mobalytics-locke"
+          ]
+        }
+      ],
+      "sections": {
+        "overview": {
+          "tips": []
+        },
+        "early-lane": {
+          "tips": [
+            {
+              "text": "Play safely into levels and the first major spike; falling behind delays all-in threats.",
+              "scope": "champion",
+              "sourceIds": [
+                "mobalytics-locke"
+              ]
+            },
+            {
+              "text": "Test matchups for extended fighting; without it, farm into the next power spike.",
+              "scope": "champion",
+              "sourceIds": [
+                "mobalytics-locke"
+              ]
+            },
+            {
+              "text": "Against hard-to-kill lanes, roam strongly after level 6 to build pressure with allies.",
+              "scope": "champion",
+              "sourceIds": [
+                "mobalytics-locke-build"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 805,
+                  "key": "R"
+                }
+              ]
+            },
+            {
+              "text": "Contest harder once the first component lands and Q points stack trade damage.",
+              "scope": "champion",
+              "sourceIds": [
+                "mobalytics-locke"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 805,
+                  "key": "Q"
+                }
+              ]
+            }
+          ]
+        },
+        "mid-lane": {
+          "tips": [
+            {
+              "text": "Pick lone movers with R, then spend the numbers on an objective.",
+              "scope": "champion",
+              "sourceIds": [
+                "mobalytics-locke"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 805,
+                  "key": "R"
+                }
+              ]
+            },
+            {
+              "text": "After bot first tower, leave the old lane for side pressure.",
+              "scope": "champion",
+              "sourceIds": [
+                "mobalytics-locke"
+              ]
+            },
+            {
+              "text": "With several items done, group and spend R area damage around tight terrain.",
+              "scope": "champion",
+              "sourceIds": [
+                "mobalytics-locke"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 805,
+                  "key": "R"
+                }
+              ]
+            },
+            {
+              "text": "Wait out important enemy control before engaging, since hard lockdown ends Locke fast.",
+              "scope": "champion",
+              "sourceIds": [
+                "mobalytics-locke-build"
+              ]
+            }
+          ]
+        },
+        "win-condition": {
+          "tips": [
+            {
+              "text": "Start snowballs on isolated, overextended squishies and turn picks into Baron or map objectives.",
+              "scope": "champion",
+              "sourceIds": [
+                "mobalytics-locke"
+              ]
+            },
+            {
+              "text": "Never cross alone without enemy positions; one catch can donate Baron or end the game.",
+              "scope": "champion",
+              "sourceIds": [
+                "mobalytics-locke"
+              ]
+            },
+            {
+              "text": "Against grouped enemies, land R on several targets; his area damage favors grouped fights with a safe entry.",
+              "scope": "champion",
+              "sourceIds": [
+                "mobalytics-locke"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 805,
+                  "key": "R"
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "itemization": [
+        {
+          "text": "Run Flash and Ignite with Electrocute, Sudden Impact, Sixth Sense, and Ultimate Hunter plus Bone Plating and Revitalize on adaptive-force and health shards.",
+          "scope": "champion",
+          "sourceIds": [
+            "mobalytics-locke-build"
+          ]
+        },
+        {
+          "text": "Order Lich Bane, Sorcerer's Shoes, Shadowflame, Zhonya's Hourglass, Rabadon's Deathcap, and Void Staff while maxing Q, then E, then W.",
+          "scope": "champion",
+          "sourceIds": [
+            "mobalytics-locke-build"
+          ],
+          "abilityKeys": [
+            {
+              "champion": 805,
+              "key": "Q"
+            },
+            {
+              "champion": 805,
+              "key": "E"
+            },
+            {
+              "champion": 805,
+              "key": "W"
+            }
+          ],
+          "itemIds": [
+            3100,
+            3020,
+            4645,
+            3157,
+            3089,
+            3135
+          ]
+        },
+        {
+          "text": "Slot Banshee's Veil fourth defensively into burst or one key control spell.",
+          "scope": "champion",
+          "sourceIds": [
+            "mobalytics-locke-build"
+          ],
+          "itemIds": [
+            3102
+          ]
+        },
+        {
+          "text": "Keep the Stormraider's Surge alternative and the Conqueror off-meta setup as separate rune and build paths.",
+          "scope": "champion",
+          "sourceIds": [
+            "mobalytics-locke-build"
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "id": "mobalytics-locke",
+          "author": "Mobalytics",
+          "rankClaim": "No rank claim",
+          "url": "https://mobalytics.gg/lol/champions/locke/guide/mid",
+          "kind": "web"
+        },
+        {
+          "id": "mobalytics-locke-build",
+          "author": "Mobalytics",
+          "rankClaim": "No rank claim",
+          "url": "https://mobalytics.gg/lol/champions/locke/build",
+          "kind": "web"
+        }
+      ]
+    }
+  ],
+  "vods": [
+    {
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "gy1x7FLF6jg",
+          "title": "LOCKE IS S TIER RIGHT NOW",
+          "rankClaim": "Master+",
+          "patch": "26.13",
+          "durationSec": 1403,
+          "patchEstimated": true,
+          "player": "Sinerias",
+          "uploaded": "2026-07-05",
+          "format": "stream",
+          "cam": true,
+          "moments": []
+        },
+        {
+          "videoId": "EC8dZPZFh7E",
+          "title": "Locke Jungle Can EASILY Carry 3 Losing Lanes?!",
+          "rankClaim": "Master+",
+          "patch": "26.13",
+          "durationSec": 1978,
+          "patchEstimated": true,
+          "player": "Broxah",
+          "uploaded": "2026-07-04",
+          "format": "stream",
+          "cam": true,
+          "moments": []
+        },
+        {
+          "videoId": "tHzKbZrdQvk",
+          "title": "Broxah Tries LOCKE Jungle For The First Time!?",
+          "rankClaim": "Master+",
+          "patch": "26.13",
+          "durationSec": 1779,
+          "patchEstimated": true,
+          "player": "Broxah",
+          "uploaded": "2026-07-01",
+          "format": "stream",
+          "cam": true,
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 3,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "sffA8RPs3g4",
+          "title": "Locke vs Galio Mid - KR Challenger - Patch 16.17 Season 16",
+          "rankClaim": "Challenger",
+          "patch": "26.17",
+          "durationSec": 1426,
+          "region": "KR",
+          "uploaded": "2026-09-02",
+          "moments": []
+        },
+        {
+          "videoId": "wnPpsjk7yu4",
+          "title": "Locke vs Galio Mid - KR Challenger - Patch 16.16 Season 16",
+          "rankClaim": "Challenger",
+          "patch": "26.16",
+          "durationSec": 1620,
+          "region": "KR",
+          "uploaded": "2026-08-21",
+          "moments": []
+        },
+        {
+          "videoId": "EBkhrn_D5xk",
+          "title": "(KT Bdd) Locke Mid vs Galio - KR Challenger Patch 26.16",
+          "rankClaim": "Challenger",
+          "patch": "26.16",
+          "durationSec": 1526,
+          "region": "KR",
+          "player": "Bdd",
+          "team": "KT",
+          "uploaded": "2026-08-15",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 4,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "7WOFmZ3bHss",
+          "title": "(Sobek) Locke Mid vs Twisted Fate (FNC Vladi) - EUW Challenger Patch 26.19",
+          "rankClaim": "Challenger",
+          "patch": "26.19",
+          "durationSec": 1506,
+          "region": "EUW",
+          "player": "Sobek",
+          "uploaded": "2026-09-28",
+          "moments": []
+        },
+        {
+          "videoId": "U2rZKI4c-Vc",
+          "title": "Locke vs Twisted Fate Mid - KR Challenger - Patch 16.17 Season 16",
+          "rankClaim": "Challenger",
+          "patch": "26.17",
+          "durationSec": 1756,
+          "region": "KR",
+          "uploaded": "2026-09-04",
+          "moments": []
+        },
+        {
+          "videoId": "KPXZ6mh_DLQ",
+          "title": "T1 Faker Locke vs Twisted Fate [ MID ] Korea Grandmaster 1867 LP | Patch 26.16",
+          "rankClaim": "Grandmaster",
+          "patch": "26.16",
+          "durationSec": 1566,
+          "region": "KR",
+          "player": "Faker",
+          "team": "T1",
+          "uploaded": "2026-08-21",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 7,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "g7qS25fSOWo",
+          "title": "Locke vs LeBlanc Mid - KR Challenger - Patch 16.16 Season 16",
+          "rankClaim": "Challenger",
+          "patch": "26.16",
+          "durationSec": 1216,
+          "region": "KR",
+          "uploaded": "2026-08-26",
+          "moments": []
+        },
+        {
+          "videoId": "Y_YmQwzYk6s",
+          "title": "Locke vs LeBlanc Mid - KR Challenger - Patch 16.13 Season 16",
+          "rankClaim": "Challenger",
+          "patch": "26.13",
+          "durationSec": 1711,
+          "region": "KR",
+          "uploaded": "2026-07-08",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 8,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "eNZRYTGxo3M",
+          "title": "T1 Faker Locke vs Vladimir [ MID ] Korea Challenger 2121 LP | Patch 26.19",
+          "rankClaim": "Challenger",
+          "patch": "26.19",
+          "durationSec": 1406,
+          "region": "KR",
+          "player": "Faker",
+          "team": "T1",
+          "uploaded": "2026-09-24",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 11,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "-vvD98PL6P0",
+          "title": "(IG Wei) Locke Jungle vs Master Yi - KR Challenger Patch 26.13",
+          "rankClaim": "Challenger",
+          "patch": "26.13",
+          "durationSec": 1732,
+          "region": "KR",
+          "player": "Wei",
+          "team": "IG",
+          "uploaded": "2026-07-16",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 13,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "iQt-FuSBxBo",
+          "title": "Locke vs Ryze Mid - KR Grandmaster - Patch 16.20 Season 16",
+          "rankClaim": "Grandmaster",
+          "patch": "26.20",
+          "durationSec": 1711,
+          "region": "KR",
+          "uploaded": "2026-10-16",
+          "moments": []
+        },
+        {
+          "videoId": "rKdi6oHDG74",
+          "title": "Locke vs Ryze Mid - KR Challenger - Patch 16.19 Season 16",
+          "rankClaim": "Challenger",
+          "patch": "26.19",
+          "durationSec": 1830,
+          "region": "KR",
+          "uploaded": "2026-10-02",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 18,
+      "lane": "adc",
+      "videos": [
+        {
+          "videoId": "V_k_COVzgVo",
+          "title": "Locke vs Tristana ADC - KR Challenger - Patch 16.19 Season 16",
+          "rankClaim": "Challenger",
+          "patch": "26.19",
+          "durationSec": 1920,
+          "region": "KR",
+          "uploaded": "2026-10-03",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 18,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "4M2EAEgRTbI",
+          "title": "Locke vs Tristana Mid - KR Challenger - Patch 16.16 Season 16",
+          "rankClaim": "Challenger",
+          "patch": "26.16",
+          "durationSec": 1716,
+          "region": "KR",
+          "uploaded": "2026-08-15",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 23,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "BKRofE16xkc",
+          "title": "Locke vs Tryndamere Mid - KR Challenger - Patch 16.21 Season 16",
+          "rankClaim": "Challenger",
+          "patch": "26.21",
+          "durationSec": 1666,
+          "region": "KR",
+          "uploaded": "2026-11-02",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 59,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "bOZW2W-SwNs",
+          "title": "Locke vs Jarvan IV Jungle - KR Challenger - Patch 16.15 Season 16",
+          "rankClaim": "Challenger",
+          "patch": "26.15",
+          "durationSec": 1451,
+          "region": "KR",
+          "uploaded": "2026-08-04",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 61,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "i7SOkCUf3XY",
+          "title": "Zeka Locke vs Orianna Mid - NA Master - Patch 16.21 Season 16",
+          "rankClaim": "Master",
+          "patch": "26.21",
+          "durationSec": 1396,
+          "region": "NA",
+          "player": "Zeka",
+          "uploaded": "2026-10-24",
+          "moments": []
+        },
+        {
+          "videoId": "dQ8qBbaADV8",
+          "title": "(DK ShowMaker) Locke Mid vs Orianna - KR Challenger Patch 26.20",
+          "rankClaim": "Challenger",
+          "patch": "26.20",
+          "durationSec": 1784,
+          "region": "KR",
+          "player": "ShowMaker",
+          "team": "DK",
+          "uploaded": "2026-10-12",
+          "result": "L",
+          "moments": [
+            {
+              "atSec": 285,
+              "label": "First Blood — Locke kills Orianna",
+              "kind": "kill"
+            },
+            {
+              "atSec": 630,
+              "label": "Red takes 1st Dragon (Cloud)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 978,
+              "label": "Locke takes down Braum"
+            },
+            {
+              "atSec": 1039,
+              "label": "Red takes 2nd Dragon (Ocean)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1049,
+              "label": "Locke picks off Graves"
+            },
+            {
+              "atSec": 1074,
+              "label": "Locke Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1094,
+              "label": "Locke eliminates Orianna"
+            },
+            {
+              "atSec": 1168,
+              "label": "Team fight (3 kills)",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1199,
+              "label": "Blue takes Baron",
+              "kind": "baron"
+            },
+            {
+              "atSec": 1290,
+              "label": "Locke takes down Braum"
+            },
+            {
+              "atSec": 1355,
+              "label": "Red takes 3rd Dragon (Chemtech)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1491,
+              "label": "Locke kills Ezreal",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1508,
+              "label": "Bot Inhibitor falls (Blue)"
+            },
+            {
+              "atSec": 1616,
+              "label": "Mid Inhibitor falls (Blue)"
+            },
+            {
+              "atSec": 1631,
+              "label": "Locke takes down Yorick"
+            },
+            {
+              "atSec": 1666,
+              "label": "Red takes 4th Dragon (Chemtech)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1695,
+              "label": "Red takes Baron",
+              "kind": "baron"
+            },
+            {
+              "atSec": 1709,
+              "label": "Locke Double Kill",
+              "kind": "kill"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 64,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "nvAoQUiI_Nw",
+          "title": "(KRX Vincenzo) Locke Jungle vs Lee Sin (BFX Raptor) - KR Challenger Patch 26.14",
+          "rankClaim": "Challenger",
+          "patch": "26.14",
+          "durationSec": 1519,
+          "region": "KR",
+          "player": "KRX Vincenzo",
+          "uploaded": "2026-07-18",
+          "result": "L",
+          "moments": [
+            {
+              "atSec": 322,
+              "label": "First Blood — Locke kills Sylas",
+              "kind": "kill"
+            },
+            {
+              "atSec": 434,
+              "label": "Jayce kills Lee Sin",
+              "kind": "kill"
+            },
+            {
+              "atSec": 444,
+              "label": "Locke Triple Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 580,
+              "label": "Blue takes 1st Dragon (Chemtech)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 680,
+              "label": "Aurora eliminates Sylas"
+            },
+            {
+              "atSec": 778,
+              "label": "Locke picks off Sylas"
+            },
+            {
+              "atSec": 832,
+              "label": "Aurora eliminates Sylas"
+            },
+            {
+              "atSec": 891,
+              "label": "Locke eliminates Ezreal"
+            },
+            {
+              "atSec": 978,
+              "label": "Locke eliminates Ezreal"
+            },
+            {
+              "atSec": 1029,
+              "label": "Team fight (3 kills)",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1050,
+              "label": "Locke Triple Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1262,
+              "label": "Red takes 1st Dragon (Mountain)",
+              "kind": "dragon"
+            }
+          ]
+        },
+        {
+          "videoId": "ZAfI4Krh-uU",
+          "title": "(KRX Vincenzo) Locke Jungle vs Lee Sin (OMG Juhan) - KR Challenger Patch 26.13",
+          "rankClaim": "Challenger",
+          "patch": "26.13",
+          "durationSec": 1580,
+          "region": "KR",
+          "player": "KRX Vincenzo",
+          "uploaded": "2026-07-04",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 69,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "zfGmVwn6NgM",
+          "title": "Zeka Locke vs Cassiopeia Mid - NA Grandmaster - Patch 16.21 Season 16",
+          "rankClaim": "Grandmaster",
+          "patch": "26.21",
+          "durationSec": 1320,
+          "region": "NA",
+          "player": "Zeka",
+          "uploaded": "2026-10-26",
+          "moments": []
+        },
+        {
+          "videoId": "js7YGOVdWN4",
+          "title": "Locke vs Cassiopeia Mid - KR Challenger - Patch 16.20 Season 20",
+          "rankClaim": "Challenger",
+          "patch": "26.20",
+          "durationSec": 1861,
+          "region": "KR",
+          "uploaded": "2026-10-13",
+          "moments": []
+        },
+        {
+          "videoId": "evluPQxvNdk",
+          "title": "Locke vs Cassiopeia Mid - KR Challenger - Patch 16.20 Season 16",
+          "rankClaim": "Challenger",
+          "patch": "26.20",
+          "durationSec": 1510,
+          "region": "KR",
+          "uploaded": "2026-10-11",
+          "moments": []
+        },
+        {
+          "videoId": "XhHmx9gmPW0",
+          "title": "Locke vs Cassiopeia Mid - KR Challenger - Patch 16.14 Season 16",
+          "rankClaim": "Challenger",
+          "patch": "26.14",
+          "durationSec": 1991,
+          "region": "KR",
+          "uploaded": "2026-07-27",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 72,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "76UL4ETnzOk",
+          "title": "Locke Jungle vs Skarner - KR Master Patch 26.20",
+          "rankClaim": "Master",
+          "patch": "26.20",
+          "durationSec": 1707,
+          "region": "KR",
+          "uploaded": "2026-10-18",
+          "result": "W",
+          "moments": [
+            {
+              "atSec": 317,
+              "label": "Red takes 1st Dragon (Mountain)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 365,
+              "label": "First Blood — Locke kills Ryze",
+              "kind": "kill"
+            },
+            {
+              "atSec": 606,
+              "label": "Locke outduels Jayce"
+            },
+            {
+              "atSec": 644,
+              "label": "Locke Triple Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 666,
+              "label": "Red takes 2nd Dragon (Infernal)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 766,
+              "label": "Locke outplays Skarner"
+            },
+            {
+              "atSec": 801,
+              "label": "Locke outplays Jayce again"
+            },
+            {
+              "atSec": 978,
+              "label": "Red takes 3rd Dragon (Ocean)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1196,
+              "label": "Locke solo kills Jayce (3rd time)",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1210,
+              "label": "Locke kills Nautilus",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1252,
+              "label": "Red takes Baron",
+              "kind": "baron"
+            },
+            {
+              "atSec": 1302,
+              "label": "Team fight (3 kills)",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1308,
+              "label": "Locke Triple Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1345,
+              "label": "Mid Inhibitor falls (Blue)"
+            },
+            {
+              "atSec": 1352,
+              "label": "Red takes 4th Dragon (Ocean)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1419,
+              "label": "Team fight (3 kills)",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1461,
+              "label": "Bot Inhibitor falls (Blue)"
+            },
+            {
+              "atSec": 1670,
+              "label": "Locke Double Kill",
+              "kind": "kill"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 77,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "qHaAvU5Q3Eo",
+          "title": "(Dawi) Locke Jungle vs Udyr - EUW Grandmaster Patch 26.15",
+          "rankClaim": "Grandmaster",
+          "patch": "26.15",
+          "durationSec": 1746,
+          "region": "EUW",
+          "player": "Dawi",
+          "uploaded": "2026-08-07",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 84,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "yAxsIadNFtU",
+          "title": "Locke vs Akali Jungle - KR Challenger - Patch 16.20 Season 16",
+          "rankClaim": "Challenger",
+          "patch": "26.20",
+          "durationSec": 1891,
+          "region": "KR",
+          "uploaded": "2026-10-15",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 84,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "FVO_KCSg8mU",
+          "title": "(RNG Tangyuan) Locke Mid vs Akali - KR Challenger Patch 26.15",
+          "rankClaim": "Challenger",
+          "patch": "26.15",
+          "durationSec": 1620,
+          "region": "KR",
+          "player": "Tangyuan",
+          "uploaded": "2026-08-02",
+          "moments": []
+        },
+        {
+          "videoId": "PBDu0tMGJpw",
+          "title": "Locke vs Akali Mid - KR Challenger - Patch 16.13 Season 16",
+          "rankClaim": "Challenger",
+          "patch": "26.13",
+          "durationSec": 1711,
+          "region": "KR",
+          "uploaded": "2026-07-09",
+          "moments": []
+        },
+        {
+          "videoId": "cGWAGcD_t4g",
+          "title": "Locke vs Akali [ MID ] Lol Korea Grandmaster Patch 26.13 ✅",
+          "rankClaim": "Grandmaster",
+          "patch": "26.13",
+          "durationSec": 1396,
+          "region": "KR",
+          "uploaded": "2026-06-30",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 90,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "2ce9r3TNHKc",
+          "title": "T1 Faker Locke vs Malzahar [ MID ] Korea Challenger 2089 LP | Patch 26.18",
+          "rankClaim": "Challenger",
+          "patch": "26.18",
+          "durationSec": 1469,
+          "region": "KR",
+          "player": "Faker",
+          "team": "T1",
+          "uploaded": "2026-09-18",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 91,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "RGsnklSFnW4",
+          "title": "Locke vs Talon Mid - KR Challenger - Patch 16.16 Season 16",
+          "rankClaim": "Challenger",
+          "patch": "26.16",
+          "durationSec": 1801,
+          "region": "KR",
+          "uploaded": "2026-08-25",
+          "moments": []
+        },
+        {
+          "videoId": "mbve5z1RGjg",
+          "title": "(DNS Clozer) Locke Mid vs Talon - KR Challenger Patch 26.16",
+          "rankClaim": "Challenger",
+          "patch": "26.16",
+          "durationSec": 1779,
+          "region": "KR",
+          "player": "Clozer",
+          "uploaded": "2026-08-23",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 104,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "47R5gyFNx3Q",
+          "title": "Locke Jungle vs Graves - KR Grandmaster Patch 26.17",
+          "rankClaim": "Grandmaster",
+          "patch": "26.17",
+          "durationSec": 1734,
+          "region": "KR",
+          "uploaded": "2026-09-07",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 126,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "WEckI7J_sEs",
+          "title": "Locke Jungle vs Jayce - KR Master Patch 26.19",
+          "rankClaim": "Master",
+          "patch": "26.19",
+          "durationSec": 1850,
+          "region": "KR",
+          "uploaded": "2026-10-04",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 126,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "6vE6q-x4jC4",
+          "title": "(NS Scout) Locke Top vs Jayce - KR Grandmaster Patch 26.13",
+          "rankClaim": "Grandmaster",
+          "patch": "26.13",
+          "durationSec": 1676,
+          "region": "KR",
+          "player": "Scout",
+          "team": "NS",
+          "uploaded": "2026-07-10",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 131,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "uY77xK0-fu8",
+          "title": "Faker Locke vs Diana Mid - KR Grandmaster - Patch 16.16 Season 16",
+          "rankClaim": "Grandmaster",
+          "patch": "26.16",
+          "durationSec": 1486,
+          "region": "KR",
+          "player": "Faker",
+          "uploaded": "2026-08-05",
+          "moments": []
+        },
+        {
+          "videoId": "ESyyfaamdNM",
+          "title": "T1 Faker Locke vs Diana [ MID ] Korea Grandmaster 1606 LP | Patch 26.15",
+          "rankClaim": "Grandmaster",
+          "patch": "26.15",
+          "durationSec": 1306,
+          "region": "KR",
+          "player": "Faker",
+          "team": "T1",
+          "uploaded": "2026-08-04",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 134,
+      "lane": "adc",
+      "videos": [
+        {
+          "videoId": "ANv6FNcmGvY",
+          "title": "Locke vs Syndra ADC [ Gen.G Ruler ] Korea Challenger 2054 | Patch 26.15",
+          "rankClaim": "Challenger",
+          "patch": "26.15",
+          "durationSec": 1688,
+          "region": "KR",
+          "player": "Ruler",
+          "team": "Gen.G",
+          "uploaded": "2026-07-30",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 134,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "egjc6MLvMD8",
+          "title": "T1 Faker Locke vs Syndra Mid - NA Master - Patch 16.21 Season 16",
+          "rankClaim": "Master",
+          "patch": "26.21",
+          "durationSec": 1476,
+          "region": "NA",
+          "player": "Faker",
+          "team": "T1",
+          "uploaded": "2026-10-28",
+          "moments": []
+        },
+        {
+          "videoId": "Dhe6nh3n0Io",
+          "title": "T1 Faker Locke vs Syndra [ MID ] Ranked Master NA | Patch 26.21",
+          "rankClaim": "Master",
+          "patch": "26.21",
+          "durationSec": 1267,
+          "region": "NA",
+          "player": "Faker",
+          "team": "T1",
+          "uploaded": "2026-10-25",
+          "moments": []
+        },
+        {
+          "videoId": "p0gs3m7ZzCk",
+          "title": "Locke vs Syndra Mid - KR Grandmaster - Patch 16.19 Season 16",
+          "rankClaim": "Grandmaster",
+          "patch": "26.19",
+          "durationSec": 1846,
+          "region": "KR",
+          "uploaded": "2026-10-04",
+          "moments": []
+        },
+        {
+          "videoId": "nZdJ42TV6MI",
+          "title": "Faker Locke vs Syndra Mid - KR Challenger - Patch 16.17 Season 16",
+          "rankClaim": "Challenger",
+          "patch": "26.17",
+          "durationSec": 1201,
+          "region": "KR",
+          "player": "Faker",
+          "uploaded": "2026-09-08",
+          "moments": []
+        },
+        {
+          "videoId": "Au0ieOMZBUQ",
+          "title": "T1 Faker Locke vs Syndra [ MID ] Korea Challenger 1959 LP | Patch 26.17",
+          "rankClaim": "Challenger",
+          "patch": "26.17",
+          "durationSec": 1084,
+          "region": "KR",
+          "player": "Faker",
+          "team": "T1",
+          "uploaded": "2026-09-06",
+          "moments": []
+        },
+        {
+          "videoId": "ed0Qr6Ppb-w",
+          "title": "Locke vs Syndra MID [ Gen.G Chovy ] Patch 26.16 Korea Challenger 2214 LP",
+          "rankClaim": "Challenger",
+          "patch": "26.16",
+          "durationSec": 979,
+          "region": "KR",
+          "player": "Chovy",
+          "team": "Gen.G",
+          "uploaded": "2026-08-16",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 136,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "wPeEYgXTsCM",
+          "title": "Locke Mid vs Aurelion Sol - KR Challenger Patch 26.17",
+          "rankClaim": "Challenger",
+          "patch": "26.17",
+          "durationSec": 1729,
+          "region": "KR",
+          "uploaded": "2026-08-29",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 142,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "Jt4538AuYlo",
+          "title": "Locke vs Zoe Mid - KR Challenger - Patch 16.19 Season 16",
+          "rankClaim": "Challenger",
+          "patch": "26.19",
+          "durationSec": 2240,
+          "region": "KR",
+          "uploaded": "2026-10-06",
+          "moments": []
+        },
+        {
+          "videoId": "SI928nVYBsU",
+          "title": "T1 Faker Locke vs Zoe [ MID ] Patch 26.15 Korea Grandmaster 1636 LP",
+          "rankClaim": "Grandmaster",
+          "patch": "26.15",
+          "durationSec": 988,
+          "region": "KR",
+          "player": "Faker",
+          "team": "T1",
+          "uploaded": "2026-08-07",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 147,
+      "lane": "adc",
+      "videos": [
+        {
+          "videoId": "LP4-TN72cMA",
+          "title": "Locke vs Seraphine ADC - EUW Challenger - Patch 16.14 Season 16",
+          "rankClaim": "Challenger",
+          "patch": "26.14",
+          "durationSec": 1666,
+          "region": "EUW",
+          "uploaded": "2026-07-22",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 157,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "sJ0ysj5biV8",
+          "title": "Locke vs Yasuo Mid - KR Challenger - Patch 16.20 Season 16",
+          "rankClaim": "Challenger",
+          "patch": "26.20",
+          "durationSec": 1451,
+          "region": "KR",
+          "uploaded": "2026-10-17",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 166,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "VvCNKW8MLD8",
+          "title": "Locke Mid vs Akshan - KR Challenger Patch 26.21",
+          "rankClaim": "Challenger",
+          "patch": "26.21",
+          "durationSec": 1661,
+          "region": "KR",
+          "uploaded": "2026-10-27",
+          "result": "W",
+          "moments": [
+            {
+              "atSec": 458,
+              "label": "Red takes 1st Dragon (Cloud)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 717,
+              "label": "Locke outplays Anivia"
+            },
+            {
+              "atSec": 798,
+              "label": "Red takes 2nd Dragon (Ocean)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 927,
+              "label": "Locke eliminates Akshan"
+            },
+            {
+              "atSec": 1021,
+              "label": "Locke takes down Anivia"
+            },
+            {
+              "atSec": 1093,
+              "label": "Locke picks off Lee Sin"
+            },
+            {
+              "atSec": 1148,
+              "label": "Red takes 3rd Dragon (Hextech)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1220,
+              "label": "Locke takes down Camille"
+            },
+            {
+              "atSec": 1234,
+              "label": "Locke takes down Akshan"
+            },
+            {
+              "atSec": 1250,
+              "label": "Locke picks off Lee Sin"
+            },
+            {
+              "atSec": 1273,
+              "label": "Red takes Baron",
+              "kind": "baron"
+            },
+            {
+              "atSec": 1320,
+              "label": "Team fight (3 kills)",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1346,
+              "label": "Locke solo kills Anivia again",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1413,
+              "label": "Ambessa eliminates Camille"
+            },
+            {
+              "atSec": 1433,
+              "label": "Mid Inhibitor falls (Blue)"
+            },
+            {
+              "atSec": 1489,
+              "label": "Locke picks off Lee Sin"
+            },
+            {
+              "atSec": 1509,
+              "label": "Blue takes 1st Dragon (Hextech)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1598,
+              "label": "Team fight (3 kills)",
+              "kind": "teamfight"
+            }
+          ]
+        },
+        {
+          "videoId": "KbORnCRKxnU",
+          "title": "Locke vs Akshan Mid - EUW Challenger - Patch 16.14 Season 16",
+          "rankClaim": "Challenger",
+          "patch": "26.14",
+          "durationSec": 1426,
+          "region": "EUW",
+          "uploaded": "2026-07-21",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 238,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "oRU6QrOhSxo",
+          "title": "Locke vs Zed Mid - KR Challenger - Patch 16.16 Season 16",
+          "rankClaim": "Challenger",
+          "patch": "26.16",
+          "durationSec": 1261,
+          "region": "KR",
+          "uploaded": "2026-08-24",
+          "moments": []
+        },
+        {
+          "videoId": "s96LAT92SMc",
+          "title": "Locke vs Zed Mid - EUW Grandmaster - Patch 16.13 Season 16",
+          "rankClaim": "Grandmaster",
+          "patch": "26.13",
+          "durationSec": 1956,
+          "region": "EUW",
+          "uploaded": "2026-07-07",
+          "moments": []
+        },
+        {
+          "videoId": "TSvB9-oaeus",
+          "title": "Locke vs Zed [ MID ] Lol Korea Grandmaster Patch 26.13 ✅",
+          "rankClaim": "Grandmaster",
+          "patch": "26.13",
+          "durationSec": 1289,
+          "region": "KR",
+          "uploaded": "2026-07-03",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 246,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "vRMJPG9ojlo",
+          "title": "Locke vs Qiyana [ Jungle ] Lol Korea Grandmaster Patch 26.13 ✅",
+          "rankClaim": "Grandmaster",
+          "patch": "26.13",
+          "durationSec": 1446,
+          "region": "KR",
+          "uploaded": "2026-07-13",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 268,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "2cmBltt1U-0",
+          "title": "Locke vs Azir Mid - KR Challenger - Patch 16.17 Season 16",
+          "rankClaim": "Challenger",
+          "patch": "26.17",
+          "durationSec": 1571,
+          "region": "KR",
+          "uploaded": "2026-08-28",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 517,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "WSeJcuhz1zs",
+          "title": "Locke Jungle vs Sylas - VN Master Patch 26.18",
+          "rankClaim": "Master",
+          "patch": "26.18",
+          "durationSec": 1561,
+          "uploaded": "2026-09-21",
+          "moments": []
+        },
+        {
+          "videoId": "cXqvL1Vf3T8",
+          "title": "Locke vs Sylas [ Jungle ] Lol Korea Grandmaster Patch 26.13 ✅",
+          "rankClaim": "Grandmaster",
+          "patch": "26.13",
+          "durationSec": 1776,
+          "region": "KR",
+          "uploaded": "2026-07-10",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 517,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "MYwp-exLm_A",
+          "title": "(DNS Clozer) Locke Mid vs Sylas - KR Challenger Patch 26.18",
+          "rankClaim": "Challenger",
+          "patch": "26.18",
+          "durationSec": 1771,
+          "region": "KR",
+          "player": "Clozer",
+          "uploaded": "2026-09-14",
+          "moments": []
+        },
+        {
+          "videoId": "UXFa5VpQito",
+          "title": "Locke vs Sylas Mid - KR Grandmaster - Patch 16.17 Season 16",
+          "rankClaim": "Grandmaster",
+          "patch": "26.17",
+          "durationSec": 1741,
+          "region": "KR",
+          "uploaded": "2026-09-05",
+          "moments": []
+        },
+        {
+          "videoId": "UMdzhb3Cagg",
+          "title": "T1 Faker Locke vs Sylas [ MID ] Korea Grandmaster 1518 LP | Patch 26.15",
+          "rankClaim": "Grandmaster",
+          "patch": "26.15",
+          "durationSec": 1606,
+          "region": "KR",
+          "player": "Faker",
+          "team": "T1",
+          "uploaded": "2026-08-02",
+          "moments": []
+        },
+        {
+          "videoId": "krkR_lloHno",
+          "title": "(TES Creme) Locke Mid vs Sylas - KR Challenger Patch 26.14",
+          "rankClaim": "Challenger",
+          "patch": "26.14",
+          "durationSec": 1467,
+          "region": "KR",
+          "player": "Creme",
+          "team": "TES",
+          "uploaded": "2026-07-24",
+          "moments": []
+        },
+        {
+          "videoId": "mtLpyFLHeQ4",
+          "title": "Locke vs Sylas Mid - KR Challenger - Patch 16.13 Season 16",
+          "rankClaim": "Challenger",
+          "patch": "26.13",
+          "durationSec": 1306,
+          "region": "KR",
+          "uploaded": "2026-07-09",
+          "moments": []
+        },
+        {
+          "videoId": "BJKlObW_DPM",
+          "title": "DK ShowMaker Locke vs Sylas [ MID ] Korea Challenger 2587 LP | Patch 26.13",
+          "rankClaim": "Challenger",
+          "patch": "26.13",
+          "durationSec": 1355,
+          "region": "KR",
+          "player": "ShowMaker",
+          "team": "DK",
+          "uploaded": "2026-07-07",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 777,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "xdBPpVlcIy8",
+          "title": "Locke vs Yone Mid - KR Challenger - Patch 16.15 Season 16",
+          "rankClaim": "Challenger",
+          "patch": "26.15",
+          "durationSec": 1696,
+          "region": "KR",
+          "uploaded": "2026-08-07",
+          "moments": []
+        },
+        {
+          "videoId": "3mM_v0cdXEE",
+          "title": "(DK Siwoo) Locke Mid vs Yone - KR Challenger Patch 26.13",
+          "rankClaim": "Challenger",
+          "patch": "26.13",
+          "durationSec": 1608,
+          "region": "KR",
+          "player": "Siwoo",
+          "team": "DK",
+          "uploaded": "2026-06-26",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 799,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "JyIR9NyePkY",
+          "title": "(WBG Xiaohu) Locke Top vs Ambessa - KR Challenger Patch 26.14",
+          "rankClaim": "Challenger",
+          "patch": "26.14",
+          "durationSec": 1669,
+          "region": "KR",
+          "player": "Xiaohu",
+          "team": "WBG",
+          "uploaded": "2026-07-30",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 904,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "mn40cTke2AI",
+          "title": "Locke Jungle vs Zaahen - KR Grandmaster Patch 26.21",
+          "rankClaim": "Grandmaster",
+          "patch": "26.21",
+          "durationSec": 1769,
+          "region": "KR",
+          "uploaded": "2026-11-02",
+          "result": "W",
+          "moments": [
+            {
+              "atSec": 434,
+              "label": "Red takes 1st Dragon (Hextech)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 779,
+              "label": "Blue takes 1st Dragon (Ocean)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 887,
+              "label": "Locke takes down Zaahen"
+            },
+            {
+              "atSec": 971,
+              "label": "Talon picks off Zaahen"
+            },
+            {
+              "atSec": 1016,
+              "label": "Locke kills Pyke",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1105,
+              "label": "Blue takes 2nd Dragon (Infernal)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1138,
+              "label": "Locke picks off Lissandra"
+            },
+            {
+              "atSec": 1218,
+              "label": "Talon picks off Zaahen"
+            },
+            {
+              "atSec": 1247,
+              "label": "Blue takes Baron",
+              "kind": "baron"
+            },
+            {
+              "atSec": 1326,
+              "label": "Locke Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1406,
+              "label": "Locke takes down Zaahen"
+            },
+            {
+              "atSec": 1434,
+              "label": "Blue takes 3rd Dragon (Infernal)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1541,
+              "label": "Locke kills Zed",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1552,
+              "label": "Mid Inhibitor falls (Red)"
+            },
+            {
+              "atSec": 1617,
+              "label": "Red takes Baron",
+              "kind": "baron"
+            },
+            {
+              "atSec": 1724,
+              "label": "Locke kills Pyke",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1730,
+              "label": "Locke Triple Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1743,
+              "label": "Locke outduels Zed"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 910,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "iVO6TzIguGY",
+          "title": "Locke vs Hwei Mid - KR Grandmaster - Patch 16.20 Season 16",
+          "rankClaim": "Grandmaster",
+          "patch": "26.20",
+          "durationSec": 1846,
+          "region": "KR",
+          "uploaded": "2026-10-14",
+          "moments": []
+        },
+        {
+          "videoId": "5mwQxLgNQM8",
+          "title": "Locke vs Hwei Mid - KR Grandmaster - Patch 16.17 Season 16",
+          "rankClaim": "Grandmaster",
+          "patch": "26.17",
+          "durationSec": 1606,
+          "region": "KR",
+          "uploaded": "2026-09-07",
+          "moments": []
+        }
+      ]
+    }
+  ]
+}

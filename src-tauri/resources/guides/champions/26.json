@@ -1,0 +1,2805 @@
+{
+  "schema": 1,
+  "champion": 26,
+  "generatedAt": "2026-11-07T13:25:14.592Z",
+  "guides": [],
+  "general": [
+    {
+      "champion": 26,
+      "lane": "support",
+      "patch": "26.21",
+      "reviewed": false,
+      "keyTips": [
+        {
+          "text": "Treat early game as the weak phase: frequent spell use drains mana fast, with one full level-three combo costing roughly half the pool, so avoid forcing trades without a reason.",
+          "scope": "champion",
+          "sourceIds": [
+            "zileanaire"
+          ]
+        },
+        {
+          "text": "Look for early kills mainly with jungler help or when an opponent makes a major mistake; otherwise keep the lane controlled, defending well under turret especially once level-six Chronoshift can deter a dive.",
+          "scope": "champion",
+          "sourceIds": [
+            "zileanaire"
+          ],
+          "abilityKeys": [
+            {
+              "champion": 26,
+              "key": "R"
+            }
+          ]
+        },
+        {
+          "text": "Aim Chronoshift at the teammate most likely to carry the fight, usually waiting until the ally is close to dying but casting earlier when several opponents collapse and a late cast would not land.",
+          "scope": "champion",
+          "sourceIds": [
+            "zileanaire"
+          ],
+          "abilityKeys": [
+            {
+              "champion": 26,
+              "key": "R"
+            }
+          ]
+        }
+      ],
+      "sections": {
+        "overview": {
+          "tips": []
+        },
+        "early-lane": {
+          "tips": [
+            {
+              "text": "Max by lane need: Q max gives more poke, damage, and longer stuns into lanes where ranged poke can chip opponents down or force bad recalls, while E max gives stronger slows where locking down movement matters more.",
+              "scope": "champion",
+              "sourceIds": [
+                "zileanaire"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 26,
+                  "key": "Q"
+                },
+                {
+                  "champion": 26,
+                  "key": "E"
+                }
+              ]
+            },
+            {
+              "text": "When maxing Time Bomb first, max Rewind next; when maxing Time Warp first, max Rewind second.",
+              "scope": "champion",
+              "sourceIds": [
+                "zileanaire"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 26,
+                  "key": "Q"
+                },
+                {
+                  "champion": 26,
+                  "key": "E"
+                },
+                {
+                  "champion": 26,
+                  "key": "W"
+                }
+              ]
+            },
+            {
+              "text": "Run Summon Aery with Manaflow Band, Transcendence, Scorch, Deep Ward, and Relentless Hunter, with Flash and Heal.",
+              "scope": "champion",
+              "sourceIds": [
+                "zileanaire"
+              ]
+            }
+          ]
+        },
+        "mid-lane": {
+          "tips": [
+            {
+              "text": "Grow influential after level six with an item or two, when the crowd control and revive can create or deny plays across the map.",
+              "scope": "champion",
+              "sourceIds": [
+                "zileanaire"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 26,
+                  "key": "R"
+                }
+              ]
+            },
+            {
+              "text": "Speed allies toward vision, a roam, an objective, or a return from base with Time Warp, and slow an enemy to limit escape or engagement.",
+              "scope": "champion",
+              "sourceIds": [
+                "zileanaire"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 26,
+                  "key": "E"
+                }
+              ]
+            },
+            {
+              "text": "Stay at the back of fights so Zilean can speed allies or slow and stun enemies without being caught by crowd control.",
+              "scope": "champion",
+              "sourceIds": [
+                "zileanaire"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 26,
+                  "key": "E"
+                },
+                {
+                  "champion": 26,
+                  "key": "Q"
+                }
+              ]
+            },
+            {
+              "text": "Land Redemption from range to heal a fight or support a retreat, timing it shortly after Chronoshift revives an ally for extra sustain.",
+              "scope": "champion",
+              "sourceIds": [
+                "zileanaire"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 26,
+                  "key": "R"
+                }
+              ],
+              "itemIds": [
+                3107
+              ]
+            },
+            {
+              "text": "Pair Shurelya's Battlesong with Time Warp to accelerate an engage, chase, retreat, or objective rotation.",
+              "scope": "champion",
+              "sourceIds": [
+                "zileanaire"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 26,
+                  "key": "E"
+                }
+              ],
+              "itemIds": [
+                2065
+              ]
+            },
+            {
+              "text": "Hold Mikael's Blessing for a teammate caught by crowd control, remembering it cannot remove crowd control from Zilean himself.",
+              "scope": "champion",
+              "sourceIds": [
+                "zileanaire"
+              ],
+              "itemIds": [
+                3222
+              ]
+            }
+          ]
+        },
+        "win-condition": {
+          "tips": [
+            {
+              "text": "Accept an even lane as a favorable outcome: Zilean scales into a strong mid- and late-game control role for a team-dependent enabler.",
+              "scope": "champion",
+              "sourceIds": [
+                "zileanaire"
+              ]
+            },
+            {
+              "text": "When an ally revives in the middle of enemies, double-bomb their position so the stun disrupts opponents clustering around them.",
+              "scope": "champion",
+              "sourceIds": [
+                "zileanaire"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 26,
+                  "key": "Q"
+                }
+              ]
+            },
+            {
+              "text": "Guard Zilean's own position: dying early to crowd control costs the team both the control spells and the ultimate threat.",
+              "scope": "champion",
+              "sourceIds": [
+                "zileanaire"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 26,
+                  "key": "R"
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "itemization": [
+        {
+          "text": "Build the utility core of Solstice Sleigh, Ionian Boots of Lucidity, Bandlepipes, Redemption, and Shurelya's Battlesong, prioritizing ability haste throughout since a haste-focused Zilean can see the ultimate return during a long fight.",
+          "scope": "champion",
+          "sourceIds": [
+            "zileanaire"
+          ],
+          "abilityKeys": [
+            {
+              "champion": 26,
+              "key": "R"
+            }
+          ],
+          "itemIds": [
+            3876,
+            3158,
+            2524,
+            3107,
+            2065
+          ]
+        },
+        {
+          "text": "Solstice Sleigh is broadly useful, Bandlepipes is strong as a team buff, and Locket of the Iron Solari is early-defensive; add Morellonomicon with an early Oblivion Orb when enemy healing is significant, staying flexible across tank, mage, enchanter, or utility picks by game.",
+          "scope": "champion",
+          "sourceIds": [
+            "zileanaire"
+          ],
+          "itemIds": [
+            3876,
+            2524,
+            3190,
+            3165,
+            3916
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "id": "zileanaire",
+          "author": "Zileanaire",
+          "rankClaim": "Diamond (profile badge); author claims high-Diamond peak",
+          "rank": "diamond",
+          "url": "https://www.mobafire.com/league-of-legends/build/zilean-otp-in-depth-zilean-guide-2026-updated-may-644975",
+          "kind": "mobafire"
+        }
+      ]
+    }
+  ],
+  "vods": [
+    {
+      "enemy": 1,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "VskVgi7hKBM",
+          "title": "Zilean Mid vs Annie - KR Master Patch 26.07",
+          "rankClaim": "Master",
+          "patch": "26.7",
+          "durationSec": 1809,
+          "region": "KR",
+          "uploaded": "2026-04-14",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 4,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "WssA0fFxQX8",
+          "title": "Zilean Mid vs Twisted Fate - KR Grandmaster Patch 26.21",
+          "rankClaim": "Grandmaster",
+          "patch": "26.21",
+          "durationSec": 1585,
+          "region": "KR",
+          "uploaded": "2026-11-02",
+          "result": "W",
+          "moments": [
+            {
+              "atSec": 393,
+              "label": "Blue takes 1st Dragon (Cloud)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 489,
+              "label": "Lee Sin takes down Qiyana"
+            },
+            {
+              "atSec": 733,
+              "label": "Lee Sin Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 754,
+              "label": "Lee Sin picks off Twisted Fate"
+            },
+            {
+              "atSec": 772,
+              "label": "Zilean solo kills Qiyana",
+              "kind": "kill"
+            },
+            {
+              "atSec": 880,
+              "label": "Red takes 1st Dragon (Chemtech)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1019,
+              "label": "Lee Sin Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1094,
+              "label": "Zilean kills Kai'Sa",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1190,
+              "label": "Red takes 2nd Dragon (Ocean)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1203,
+              "label": "Lee Sin kills Tryndamere",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1272,
+              "label": "Team fight (3 kills)",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1318,
+              "label": "Red takes Baron",
+              "kind": "baron"
+            },
+            {
+              "atSec": 1426,
+              "label": "Bot Inhibitor falls (Blue)"
+            },
+            {
+              "atSec": 1450,
+              "label": "Lee Sin Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1477,
+              "label": "Mid Inhibitor falls (Blue)"
+            },
+            {
+              "atSec": 1536,
+              "label": "Blue takes 2nd Dragon (Ocean)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1570,
+              "label": "Yasuo takes down Kai'Sa"
+            }
+          ]
+        },
+        {
+          "videoId": "cQnMwWxqATs",
+          "title": "Zilean Mid vs Twisted Fate - KR Grandmaster Patch 25.24",
+          "rankClaim": "Grandmaster",
+          "patch": "25.24",
+          "durationSec": 1550,
+          "region": "KR",
+          "uploaded": "2025-12-16",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 43,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 159,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 604,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 816,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 847,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 878,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 931,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 987,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1114,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1179,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1270,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1362,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1497,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1539,
+              "label": "End credit"
+            }
+          ]
+        },
+        {
+          "videoId": "YDflrlZXVY8",
+          "title": "Zilean Mid vs Twisted Fate - EUW Challenger Patch 25.22",
+          "rankClaim": "Challenger",
+          "patch": "25.22",
+          "durationSec": 1625,
+          "region": "EUW",
+          "uploaded": "2025-11-18",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 6,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "8xWGj-s2nAk",
+          "title": "Zilean Top vs Urgot - NA Grandmaster Patch 25.19",
+          "rankClaim": "Grandmaster",
+          "patch": "25.19",
+          "durationSec": 1999,
+          "region": "NA",
+          "uploaded": "2025-10-04",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 7,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "zhmfYFOXVw0",
+          "title": "Zilean Mid vs LeBlanc - KR Master Patch 26.03",
+          "rankClaim": "Master",
+          "patch": "26.3",
+          "durationSec": 1962,
+          "region": "KR",
+          "uploaded": "2026-02-17",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 8,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "yX6jVOJFd9k",
+          "title": "Zilean Mid vs Vladimir - EUW Challenger Patch 25.06",
+          "rankClaim": "Challenger",
+          "patch": "25.6",
+          "durationSec": 1782,
+          "region": "EUW",
+          "uploaded": "2025-04-02",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 12,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "_VUxC8kmujo",
+          "title": "Zilean Support vs Alistar - KR Grandmaster Patch 25.16",
+          "rankClaim": "Grandmaster",
+          "patch": "25.16",
+          "durationSec": 1589,
+          "region": "KR",
+          "uploaded": "2025-08-19",
+          "moments": []
+        },
+        {
+          "videoId": "uYhxBkIZSnY",
+          "title": "Zilean Support vs Alistar - KR Master Patch 25.15",
+          "rankClaim": "Master",
+          "patch": "25.15",
+          "durationSec": 1938,
+          "region": "KR",
+          "uploaded": "2025-08-05",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 13,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "cYO2gBLyY9w",
+          "title": "Zilean Mid vs Ryze - EUW Grandmaster Patch 26.11",
+          "rankClaim": "Grandmaster",
+          "patch": "26.11",
+          "durationSec": 1567,
+          "region": "EUW",
+          "uploaded": "2026-06-05",
+          "moments": []
+        },
+        {
+          "videoId": "xAVOh25I_eM",
+          "title": "Zilean Mid vs Ryze - KR Master Patch 25.18",
+          "rankClaim": "Master",
+          "patch": "25.18",
+          "durationSec": 1882,
+          "region": "KR",
+          "uploaded": "2025-09-24",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 14,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "EMpg6Lvn3u0",
+          "title": "Zilean vs Sion 3/1/19 (Top) | EUW Challenger | Zilean OTP Replay",
+          "rankClaim": "Challenger",
+          "patch": "26.8",
+          "durationSec": 1697,
+          "region": "EUW",
+          "patchEstimated": true,
+          "uploaded": "2026-04-19",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 42,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "KikRgTgHKps",
+          "title": "Zilean Mid vs Corki - EUW Grandmaster Patch 26.02",
+          "rankClaim": "Grandmaster",
+          "patch": "26.2",
+          "durationSec": 1610,
+          "region": "EUW",
+          "uploaded": "2026-02-02",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 660,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 781,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 883,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1065,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1181,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1310,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1476,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1566,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1599,
+              "label": "End credit"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 43,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "WZVc8zxWiGs",
+          "title": "Zilean Support vs Karma - KR Master Patch 26.07",
+          "rankClaim": "Master",
+          "patch": "26.7",
+          "durationSec": 1545,
+          "region": "KR",
+          "uploaded": "2026-04-08",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 43,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "rbSzGXJTG-4",
+          "title": "(1M Syzyfek) Zilean Top vs Karma - EUW Grandmaster Patch 26.13",
+          "rankClaim": "Grandmaster",
+          "patch": "26.13",
+          "durationSec": 1521,
+          "region": "EUW",
+          "player": "1M Syzyfek",
+          "uploaded": "2026-07-02",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 45,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "FPFjndJhA5I",
+          "title": "Zilean Mid vs Veigar - KR Master Patch 25.17",
+          "rankClaim": "Master",
+          "patch": "25.17",
+          "durationSec": 1828,
+          "region": "KR",
+          "uploaded": "2025-09-09",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 48,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "0Hx7hA823Eo",
+          "title": "Zilean Support vs Trundle - KR Master Patch 26.05",
+          "rankClaim": "Master",
+          "patch": "26.5",
+          "durationSec": 1475,
+          "region": "KR",
+          "uploaded": "2026-03-19",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 214,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 308,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 421,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 669,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 868,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 928,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1001,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1033,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1164,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1269,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1349,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1368,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1406,
+              "label": "Take down The Inhibitor"
+            },
+            {
+              "atSec": 1417,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1430,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1464,
+              "label": "End credit"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 53,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "_kdp_sBBkl4",
+          "title": "Zilean Support vs Blitzcrank - KR Challenger Patch 25.21",
+          "rankClaim": "Challenger",
+          "patch": "25.21",
+          "durationSec": 1477,
+          "region": "KR",
+          "uploaded": "2025-10-30",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 61,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "K3_aB7CRpEI",
+          "title": "Zilean vs Orianna 5/0/22 (Mid) | EUW Grandmaster | Zilean OTP Replay",
+          "rankClaim": "Grandmaster",
+          "patch": "26.9",
+          "durationSec": 1670,
+          "region": "EUW",
+          "patchEstimated": true,
+          "uploaded": "2026-05-10",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 69,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "VwydKR1XrwM",
+          "title": "Zilean Mid vs Cassiopeia - EUW Challenger Patch 26.04",
+          "rankClaim": "Challenger",
+          "patch": "26.4",
+          "durationSec": 1502,
+          "region": "EUW",
+          "uploaded": "2026-03-04",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 75,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "N8uF8Wf-HlQ",
+          "title": "Zilean Mid vs Nasus - KR Master Patch 26.18",
+          "rankClaim": "Master",
+          "patch": "26.18",
+          "durationSec": 1763,
+          "region": "KR",
+          "uploaded": "2026-09-22",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 84,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "qCzR7zb0NrE",
+          "title": "Zilean Mid vs Akali - KR Master Patch 25.07",
+          "rankClaim": "Master",
+          "patch": "25.7",
+          "durationSec": 1874,
+          "region": "KR",
+          "uploaded": "2025-04-12",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 85,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "_gQnLtMw2FU",
+          "title": "Zilean Top vs Kennen - KR Master Patch 25.13",
+          "rankClaim": "Master",
+          "patch": "25.13",
+          "durationSec": 2003,
+          "region": "KR",
+          "uploaded": "2025-07-12",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 89,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "ZFaT2bj79ts",
+          "title": "Zilean Support vs Leona - KR Master Patch 26.08",
+          "rankClaim": "Master",
+          "patch": "26.8",
+          "durationSec": 1665,
+          "region": "KR",
+          "uploaded": "2026-04-22",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 92,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "nJJlt3mrj_E",
+          "title": "Zilean Mid vs Riven - NA Challenger Patch 25.23",
+          "rankClaim": "Challenger",
+          "patch": "25.23",
+          "durationSec": 1614,
+          "region": "NA",
+          "uploaded": "2025-11-24",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 92,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "XwjLo8GIyj8",
+          "title": "Zilean Top vs Riven - KR Master Patch 26.14",
+          "rankClaim": "Master",
+          "patch": "26.14",
+          "durationSec": 1883,
+          "region": "KR",
+          "uploaded": "2026-07-23",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 101,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "fnyAzFQ3_uY",
+          "title": "Zilean Mid vs Xerath - NA Grandmaster Patch 26.08",
+          "rankClaim": "Grandmaster",
+          "patch": "26.8",
+          "durationSec": 1703,
+          "region": "NA",
+          "uploaded": "2026-04-26",
+          "result": "W",
+          "moments": [
+            {
+              "atSec": 91,
+              "label": "First Blood — Kayn kills Sylas",
+              "kind": "kill"
+            },
+            {
+              "atSec": 380,
+              "label": "Draven kills Sylas",
+              "kind": "kill"
+            },
+            {
+              "atSec": 545,
+              "label": "Red takes 1st Dragon (Ocean)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 856,
+              "label": "Zilean solo kills Sylas",
+              "kind": "kill"
+            },
+            {
+              "atSec": 902,
+              "label": "Blue takes 1st Dragon (Cloud)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 982,
+              "label": "Team fight (3 kills)",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1216,
+              "label": "Blue takes 2nd Dragon (Infernal)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1294,
+              "label": "Kayn kills Ezreal",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1395,
+              "label": "Draven kills Sylas",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1439,
+              "label": "Mid Inhibitor falls (Red)"
+            },
+            {
+              "atSec": 1489,
+              "label": "Team fight (3 kills)",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1543,
+              "label": "Blue takes Baron",
+              "kind": "baron"
+            },
+            {
+              "atSec": 1585,
+              "label": "Blue takes 3rd Dragon (Infernal)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1620,
+              "label": "Kai'Sa takes down Seraphine"
+            },
+            {
+              "atSec": 1641,
+              "label": "Bot Inhibitor falls (Red)"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 103,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "Q0EFqdDfO1o",
+          "title": "Zilean vs Ahri 7/0/17 (Mid) | EUW Grandmaster | Zilean OTP Replay",
+          "rankClaim": "Grandmaster",
+          "patch": "26.10",
+          "durationSec": 1718,
+          "region": "EUW",
+          "patchEstimated": true,
+          "uploaded": "2026-05-19",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 111,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "Pe848wDT3gg",
+          "title": "Zilean Support vs Nautilus - KR Master Patch 26.17",
+          "rankClaim": "Master",
+          "patch": "26.17",
+          "durationSec": 1867,
+          "region": "KR",
+          "uploaded": "2026-09-02",
+          "moments": []
+        },
+        {
+          "videoId": "e9JsBki_y9E",
+          "title": "Zilean Support vs Nautilus - NA Challenger Patch 26.06",
+          "rankClaim": "Challenger",
+          "patch": "26.6",
+          "durationSec": 1581,
+          "region": "NA",
+          "uploaded": "2026-03-25",
+          "moments": []
+        },
+        {
+          "videoId": "y2wPzPqlYg8",
+          "title": "Zilean Support vs Nautilus - KR Master Patch 25.23",
+          "rankClaim": "Master",
+          "patch": "25.23",
+          "durationSec": 1431,
+          "region": "KR",
+          "uploaded": "2025-11-27",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 112,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "cuXsm2GL9ks",
+          "title": "Zilean vs Viktor 6/2/27 (Mid) | EUW Master | Zilean OTP Replay",
+          "rankClaim": "Master",
+          "patch": "26.7",
+          "durationSec": 1937,
+          "region": "EUW",
+          "patchEstimated": true,
+          "uploaded": "2026-04-12",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 113,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "mO_YxSbvTZk",
+          "title": "Zilean Top vs Sejuani - KR Master Patch 26.09",
+          "rankClaim": "Master",
+          "patch": "26.9",
+          "durationSec": 1750,
+          "region": "KR",
+          "uploaded": "2026-05-06",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 126,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "eemSo5eRVZ0",
+          "title": "Zilean Mid vs Jayce - KR Grandmaster Patch 25.21",
+          "rankClaim": "Grandmaster",
+          "patch": "25.21",
+          "durationSec": 1734,
+          "region": "KR",
+          "uploaded": "2025-11-05",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 126,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "OjrXCL7Ps1o",
+          "title": "Zilean Top vs Jayce - KR Master Patch 26.20",
+          "rankClaim": "Master",
+          "patch": "26.20",
+          "durationSec": 1508,
+          "region": "KR",
+          "uploaded": "2026-10-19",
+          "result": "W",
+          "moments": [
+            {
+              "atSec": 326,
+              "label": "First Blood — Rek'Sai kills Jayce",
+              "kind": "kill"
+            },
+            {
+              "atSec": 400,
+              "label": "Blue takes 1st Dragon (Cloud)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 744,
+              "label": "Red takes 1st Dragon (Chemtech)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 767,
+              "label": "Zilean catches Jayce"
+            },
+            {
+              "atSec": 900,
+              "label": "Rek'Sai picks off Karthus"
+            },
+            {
+              "atSec": 948,
+              "label": "Rek'Sai kills Neeko",
+              "kind": "kill"
+            },
+            {
+              "atSec": 971,
+              "label": "Veigar eliminates Karthus"
+            },
+            {
+              "atSec": 1042,
+              "label": "Team fight (4 kills)",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1072,
+              "label": "Blue takes 2nd Dragon (Ocean)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1157,
+              "label": "Zilean outplays Karthus"
+            },
+            {
+              "atSec": 1201,
+              "label": "Blue takes Baron",
+              "kind": "baron"
+            },
+            {
+              "atSec": 1290,
+              "label": "Kai'Sa Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1292,
+              "label": "Kai'Sa Triple Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1296,
+              "label": "Zilean kills Qiyana",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1356,
+              "label": "Zilean picks off Miss Fortune"
+            },
+            {
+              "atSec": 1394,
+              "label": "Kai'Sa picks off Jayce"
+            },
+            {
+              "atSec": 1422,
+              "label": "Mid Inhibitor falls (Red)"
+            },
+            {
+              "atSec": 1471,
+              "label": "Kai'Sa Double Kill",
+              "kind": "kill"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 134,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "WVl2ybxEW28",
+          "title": "Zilean Mid vs Syndra - EUW Challenger Patch 26.17",
+          "rankClaim": "Challenger",
+          "patch": "26.17",
+          "durationSec": 1703,
+          "region": "EUW",
+          "uploaded": "2026-09-08",
+          "moments": []
+        },
+        {
+          "videoId": "2tCmJeg05P4",
+          "title": "Zilean Mid vs Syndra - EUW Challenger Patch 25.14",
+          "rankClaim": "Challenger",
+          "patch": "25.14",
+          "durationSec": 2112,
+          "region": "EUW",
+          "uploaded": "2025-07-26",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 142,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "sqp33XQTf2E",
+          "title": "Zilean Mid vs Zoe - KR Master Patch 25.19",
+          "rankClaim": "Master",
+          "patch": "25.19",
+          "durationSec": 2073,
+          "region": "KR",
+          "uploaded": "2025-10-02",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 147,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "hiGorez3Y6Q",
+          "title": "Zilean Support vs Seraphine - KR Master Patch 26.16",
+          "rankClaim": "Master",
+          "patch": "26.16",
+          "durationSec": 1723,
+          "region": "KR",
+          "uploaded": "2026-08-26",
+          "result": "W",
+          "moments": [
+            {
+              "atSec": 279,
+              "label": "First Blood — Lee Sin kills Shyvana",
+              "kind": "kill"
+            },
+            {
+              "atSec": 489,
+              "label": "Blue takes 1st Dragon (Cloud)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 695,
+              "label": "Sett kills Shyvana",
+              "kind": "kill"
+            },
+            {
+              "atSec": 757,
+              "label": "Lux picks off Shyvana"
+            },
+            {
+              "atSec": 896,
+              "label": "Kai'Sa kills Ahri",
+              "kind": "kill"
+            },
+            {
+              "atSec": 907,
+              "label": "Red takes 1st Dragon (Hextech)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1006,
+              "label": "Kai'Sa kills Ahri",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1148,
+              "label": "Kai'Sa picks off Seraphine"
+            },
+            {
+              "atSec": 1184,
+              "label": "Blue takes Baron",
+              "kind": "baron"
+            },
+            {
+              "atSec": 1196,
+              "label": "Lee Sin eliminates Ezreal"
+            },
+            {
+              "atSec": 1222,
+              "label": "Red takes 2nd Dragon (Chemtech)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1232,
+              "label": "Kai'Sa eliminates Shyvana"
+            },
+            {
+              "atSec": 1268,
+              "label": "Kai'Sa Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1460,
+              "label": "Kai'Sa eliminates Shyvana"
+            },
+            {
+              "atSec": 1491,
+              "label": "Mid Inhibitor falls (Red)"
+            },
+            {
+              "atSec": 1532,
+              "label": "Blue takes 2nd Dragon (Chemtech)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1628,
+              "label": "Blue takes 2nd Baron",
+              "kind": "baron"
+            },
+            {
+              "atSec": 1650,
+              "label": "Lee Sin eliminates Ezreal"
+            }
+          ]
+        },
+        {
+          "videoId": "btxqJZud-po",
+          "title": "Zilean Support vs Seraphine - KR Grandmaster Patch 25.22",
+          "rankClaim": "Grandmaster",
+          "patch": "25.22",
+          "durationSec": 1522,
+          "region": "KR",
+          "uploaded": "2025-11-12",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 163,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "jhK-YK5PjLM",
+          "title": "Zilean Mid vs Taliyah - EUW Challenger Patch 25.09",
+          "rankClaim": "Challenger",
+          "patch": "25.9",
+          "durationSec": 2159,
+          "region": "EUW",
+          "uploaded": "2025-05-13",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 604,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 702,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 922,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1006,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1076,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1179,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1208,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1323,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1516,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1558,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1713,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1881,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1980,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 2008,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 2094,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 2138,
+              "label": "End credit"
+            }
+          ]
+        },
+        {
+          "videoId": "WpDCjifd83o",
+          "title": "Zilean Mid vs Taliyah - NA Grandmaster Patch 25.05",
+          "rankClaim": "Grandmaster",
+          "patch": "25.5",
+          "durationSec": 1672,
+          "region": "NA",
+          "uploaded": "2025-03-16",
+          "moments": []
+        },
+        {
+          "videoId": "t-Na4c6ndwE",
+          "title": "Zilean Mid vs Taliyah - KR Master Patch 25.04",
+          "rankClaim": "Master",
+          "patch": "25.4",
+          "durationSec": 2025,
+          "region": "KR",
+          "uploaded": "2025-02-28",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 164,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "bImiOuOTaIg",
+          "title": "Zilean Support vs Camille (MKOI Alvaro) - EUW Grandmaster Patch 26.18",
+          "rankClaim": "Grandmaster",
+          "patch": "26.18",
+          "durationSec": 1847,
+          "region": "EUW",
+          "uploaded": "2026-09-15",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 201,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "8EMHp8gh5Kw",
+          "title": "Zilean Support vs Braum - KR Master Patch 25.20",
+          "rankClaim": "Master",
+          "patch": "25.20",
+          "durationSec": 1978,
+          "region": "KR",
+          "uploaded": "2025-10-15",
+          "moments": []
+        },
+        {
+          "videoId": "2UbMy0psVZ4",
+          "title": "Zilean Support vs Braum - KR Challenger Patch 25.13",
+          "rankClaim": "Challenger",
+          "patch": "25.13",
+          "durationSec": 1551,
+          "region": "KR",
+          "uploaded": "2025-07-01",
+          "moments": []
+        },
+        {
+          "videoId": "0brkohlQvJY",
+          "title": "Zilean Support vs Braum - KR Grandmaster Patch 25.09",
+          "rankClaim": "Grandmaster",
+          "patch": "25.9",
+          "durationSec": 1504,
+          "region": "KR",
+          "uploaded": "2025-05-07",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 221,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "OH3QLbHPuOQ",
+          "title": "Zilean Mid vs Zeri - KR Master Patch 25.24",
+          "rankClaim": "Master",
+          "patch": "25.24",
+          "durationSec": 1495,
+          "region": "KR",
+          "uploaded": "2026-01-05",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 51,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 306,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 413,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 520,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 686,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 829,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1021,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1056,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1163,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1255,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1342,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1463,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1484,
+              "label": "End credit"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 235,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "uSMq05S9xvE",
+          "title": "Zilean Support vs Senna - KR Master Patch 26.04",
+          "rankClaim": "Master",
+          "patch": "26.4",
+          "durationSec": 1579,
+          "region": "KR",
+          "uploaded": "2026-02-24",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 238,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "pegSmS2OWvU",
+          "title": "(BDG Ronaldo) Zilean Mid vs Zed (Naru) - EUW Challenger Patch 26.13",
+          "rankClaim": "Challenger",
+          "patch": "26.13",
+          "durationSec": 1488,
+          "region": "EUW",
+          "player": "BDG Ronaldo",
+          "uploaded": "2026-07-08",
+          "moments": []
+        },
+        {
+          "videoId": "hCVO5KnyIWU",
+          "title": "(BDG Ronaldo) Zilean Mid vs Zed - EUW Challenger Patch 26.12",
+          "rankClaim": "Challenger",
+          "patch": "26.12",
+          "durationSec": 1627,
+          "region": "EUW",
+          "player": "BDG Ronaldo",
+          "uploaded": "2026-06-14",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 245,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "jRXa2xOwlfc",
+          "title": "Zilean Mid vs Ekko - EUW Challenger Patch 25.10",
+          "rankClaim": "Challenger",
+          "patch": "25.10",
+          "durationSec": 1862,
+          "region": "EUW",
+          "uploaded": "2025-05-26",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 246,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "c4lrQdsDyk8",
+          "title": "(BDG Ronaldo) Zilean Mid vs Qiyana - EUW Challenger Patch 26.14",
+          "rankClaim": "Challenger",
+          "patch": "26.14",
+          "durationSec": 1770,
+          "region": "EUW",
+          "player": "BDG Ronaldo",
+          "uploaded": "2026-07-26",
+          "result": "L",
+          "moments": [
+            {
+              "atSec": 288,
+              "label": "Red takes 1st Dragon (Infernal)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 305,
+              "label": "First Blood — Zilean kills Kai'Sa",
+              "kind": "kill"
+            },
+            {
+              "atSec": 571,
+              "label": "Hecarim picks off Qiyana"
+            },
+            {
+              "atSec": 617,
+              "label": "Red takes 2nd Dragon (Cloud)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 658,
+              "label": "Hecarim kills Twisted Fate",
+              "kind": "kill"
+            },
+            {
+              "atSec": 684,
+              "label": "Zilean eliminates Qiyana"
+            },
+            {
+              "atSec": 908,
+              "label": "Hecarim picks off Qiyana"
+            },
+            {
+              "atSec": 948,
+              "label": "Red takes 3rd Dragon (Hextech)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1055,
+              "label": "Zilean picks off Taliyah"
+            },
+            {
+              "atSec": 1173,
+              "label": "Blue takes Baron",
+              "kind": "baron"
+            },
+            {
+              "atSec": 1201,
+              "label": "Janna kills Taliyah",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1259,
+              "label": "Red takes 4th Dragon (Hextech)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1278,
+              "label": "Vayne picks off Twisted Fate"
+            },
+            {
+              "atSec": 1331,
+              "label": "Zilean picks off Taliyah"
+            },
+            {
+              "atSec": 1577,
+              "label": "Mid Inhibitor falls (Blue)"
+            },
+            {
+              "atSec": 1636,
+              "label": "Vayne picks off Twisted Fate"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 267,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "4hVC8EwHpkA",
+          "title": "Zilean Support vs Nami - NA Challenger Patch 25.24",
+          "rankClaim": "Challenger",
+          "patch": "25.24",
+          "durationSec": 1522,
+          "region": "NA",
+          "uploaded": "2025-12-27",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 198,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 346,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 605,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 640,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 845,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 933,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1041,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1164,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1288,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1354,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1445,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1511,
+              "label": "End credit"
+            }
+          ]
+        },
+        {
+          "videoId": "RG68e-DjSUg",
+          "title": "Zilean Support vs Nami - KR Master Patch 25.08",
+          "rankClaim": "Master",
+          "patch": "25.8",
+          "durationSec": 1809,
+          "region": "KR",
+          "uploaded": "2025-04-25",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 191,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 330,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 444,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 749,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 889,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 993,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1045,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1205,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1283,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1336,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1392,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1564,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1609,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1657,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1682,
+              "label": "Take down The Inhibitor"
+            },
+            {
+              "atSec": 1717,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1768,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1788,
+              "label": "End credit"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 268,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "wpgD3zu4MAA",
+          "title": "Zilean Mid vs Azir - EUW Challenger Patch 25.16",
+          "rankClaim": "Challenger",
+          "patch": "25.16",
+          "durationSec": 1657,
+          "region": "EUW",
+          "uploaded": "2025-08-27",
+          "moments": []
+        },
+        {
+          "videoId": "dzkKQ8DqAhU",
+          "title": "Zilean Mid vs Azir - VN Challenger Patch 25.12",
+          "rankClaim": "Challenger",
+          "patch": "25.12",
+          "durationSec": 1747,
+          "uploaded": "2025-06-22",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 412,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "hSxSwWiPQcw",
+          "title": "Zilean Support vs Thresh - KR Master Patch 26.01",
+          "rankClaim": "Master",
+          "patch": "26.1",
+          "durationSec": 1531,
+          "region": "KR",
+          "uploaded": "2026-01-16",
+          "moments": []
+        },
+        {
+          "videoId": "R5u8q1SrjFg",
+          "title": "Zilean Support vs Thresh - KR Master Patch 25.24",
+          "rankClaim": "Master",
+          "patch": "25.24",
+          "durationSec": 1583,
+          "region": "KR",
+          "uploaded": "2025-12-09",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 308,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 432,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 492,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 661,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 744,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 889,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 957,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1142,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1171,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1359,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1526,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1554,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1572,
+              "label": "End credit"
+            }
+          ]
+        },
+        {
+          "videoId": "47DbuYm9rbU",
+          "title": "Zilean Support vs Thresh - KR Master Patch 25.06",
+          "rankClaim": "Master",
+          "patch": "25.6",
+          "durationSec": 2028,
+          "region": "KR",
+          "uploaded": "2025-03-27",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 432,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "LunfyDkx-TA",
+          "title": "Zilean Support vs Bard - KR Grandmaster Patch 25.17",
+          "rankClaim": "Grandmaster",
+          "patch": "25.17",
+          "durationSec": 1745,
+          "region": "KR",
+          "uploaded": "2025-09-01",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 497,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "_d5WHFg93iM",
+          "title": "Zilean Support vs Rakan - KR Master Patch 26.20",
+          "rankClaim": "Master",
+          "patch": "26.20",
+          "durationSec": 1587,
+          "region": "KR",
+          "uploaded": "2026-10-13",
+          "result": "W",
+          "moments": [
+            {
+              "atSec": 33,
+              "label": "First Blood — Zilean kills Xayah",
+              "kind": "kill"
+            },
+            {
+              "atSec": 425,
+              "label": "Blue takes 1st Dragon (Chemtech)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 631,
+              "label": "Yunara picks off Rakan"
+            },
+            {
+              "atSec": 723,
+              "label": "Hwei Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 751,
+              "label": "Red takes 1st Dragon (Infernal)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 855,
+              "label": "Yunara Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 885,
+              "label": "Red takes Rift Herald",
+              "kind": "herald"
+            },
+            {
+              "atSec": 1058,
+              "label": "Yunara takes down Xayah"
+            },
+            {
+              "atSec": 1075,
+              "label": "Red takes 2nd Dragon (Mountain)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1134,
+              "label": "Team fight (3 kills)",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1305,
+              "label": "Fiora Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1339,
+              "label": "Red takes Baron",
+              "kind": "baron"
+            },
+            {
+              "atSec": 1415,
+              "label": "Mid Inhibitor falls (Blue)"
+            },
+            {
+              "atSec": 1449,
+              "label": "Red takes 3rd Dragon (Mountain)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1465,
+              "label": "Hwei takes down Jax"
+            },
+            {
+              "atSec": 1496,
+              "label": "Zilean picks off Xayah"
+            },
+            {
+              "atSec": 1530,
+              "label": "Yunara Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1533,
+              "label": "Yunara Triple Kill",
+              "kind": "kill"
+            }
+          ]
+        },
+        {
+          "videoId": "wQhv-W4B858",
+          "title": "Zilean Support vs Rakan - NA Challenger Patch 26.05",
+          "rankClaim": "Challenger",
+          "patch": "26.5",
+          "durationSec": 1496,
+          "region": "NA",
+          "uploaded": "2026-03-10",
+          "moments": []
+        },
+        {
+          "videoId": "R28SiKk3RRo",
+          "title": "Zilean Support vs Rakan - KR Grandmaster Patch 25.10",
+          "rankClaim": "Grandmaster",
+          "patch": "25.10",
+          "durationSec": 1447,
+          "region": "KR",
+          "uploaded": "2025-05-20",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 516,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "SWp6lVz0XnA",
+          "title": "Zilean Top vs Ornn - EUW Grandmaster Patch 26.15",
+          "rankClaim": "Grandmaster",
+          "patch": "26.15",
+          "durationSec": 1626,
+          "region": "EUW",
+          "uploaded": "2026-08-06",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 517,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "3yw6tW2UrIk",
+          "title": "Zilean Mid vs Sylas - KR Master Patch 26.01",
+          "rankClaim": "Master",
+          "patch": "26.1",
+          "durationSec": 1621,
+          "region": "KR",
+          "uploaded": "2026-01-21",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 517,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "GuMdWGDb9ew",
+          "title": "Zilean Top vs Sylas (FXF Creal) - EUW Grandmaster Patch 26.11",
+          "rankClaim": "Grandmaster",
+          "patch": "26.11",
+          "durationSec": 1760,
+          "region": "EUW",
+          "uploaded": "2026-06-08",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 518,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "vrqxo7WFuxA",
+          "title": "Zilean Support vs Neeko - NA Challenger Patch 25.07",
+          "rankClaim": "Challenger",
+          "patch": "25.7",
+          "durationSec": 1987,
+          "region": "NA",
+          "uploaded": "2025-04-07",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 526,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "whj2kkHEDTk",
+          "title": "Zilean Support vs Rell - EUW Master Patch 26.19",
+          "rankClaim": "Master",
+          "patch": "26.19",
+          "durationSec": 1635,
+          "region": "EUW",
+          "uploaded": "2026-09-29",
+          "moments": []
+        },
+        {
+          "videoId": "SrJm7shw7mM",
+          "title": "Zilean Support vs Rell - NA Challenger Patch 26.03",
+          "rankClaim": "Challenger",
+          "patch": "26.3",
+          "durationSec": 1598,
+          "region": "NA",
+          "uploaded": "2026-02-11",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 402,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 455,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 552,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 671,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 771,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 894,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1105,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1192,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1301,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1333,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1354,
+              "label": "Take down The Inhibitor"
+            },
+            {
+              "atSec": 1528,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1561,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1587,
+              "label": "End credit"
+            }
+          ]
+        },
+        {
+          "videoId": "gL973ODQjXM",
+          "title": "Zilean Support vs Rell - KR Grandmaster Patch 25.18",
+          "rankClaim": "Grandmaster",
+          "patch": "25.18",
+          "durationSec": 1513,
+          "region": "KR",
+          "uploaded": "2025-09-17",
+          "moments": []
+        },
+        {
+          "videoId": "DVK455yymjI",
+          "title": "Zilean Support vs Rell - KR Grandmaster Patch 25.14",
+          "rankClaim": "Grandmaster",
+          "patch": "25.14",
+          "durationSec": 1749,
+          "region": "KR",
+          "uploaded": "2025-07-22",
+          "moments": []
+        },
+        {
+          "videoId": "veGTYwz5VUE",
+          "title": "Zilean Support vs Rell - EUW Grandmaster Patch 25.11",
+          "rankClaim": "Grandmaster",
+          "patch": "25.11",
+          "durationSec": 1777,
+          "region": "EUW",
+          "uploaded": "2025-06-09",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 777,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "MKrFcvwSfdo",
+          "title": "(Opossos) Zilean Mid vs Yone (2deal) - EUW Challenger Patch 26.19",
+          "rankClaim": "Challenger",
+          "patch": "26.19",
+          "durationSec": 1411,
+          "region": "EUW",
+          "player": "Opossos",
+          "uploaded": "2026-10-05",
+          "moments": []
+        },
+        {
+          "videoId": "WoxLCMVSCfE",
+          "title": "Zilean Mid vs Yone - KR Master Patch 25.11",
+          "rankClaim": "Master",
+          "patch": "25.11",
+          "durationSec": 1590,
+          "region": "KR",
+          "uploaded": "2025-06-05",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 777,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "4Myg_QBTwV4",
+          "title": "Zilean Top vs Yone - KR Master Patch 26.12",
+          "rankClaim": "Master",
+          "patch": "26.12",
+          "durationSec": 1643,
+          "region": "KR",
+          "uploaded": "2026-06-23",
+          "moments": []
+        },
+        {
+          "videoId": "zST80fit4rQ",
+          "title": "Zilean Top vs Yone - KR Master Patch 26.10",
+          "rankClaim": "Master",
+          "patch": "26.10",
+          "durationSec": 1529,
+          "region": "KR",
+          "uploaded": "2026-05-20",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 799,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "kwb1Edu0kLk",
+          "title": "Zilean Top vs Ambessa - EUW Challenger Patch 26.16",
+          "rankClaim": "Challenger",
+          "patch": "26.16",
+          "durationSec": 1710,
+          "region": "EUW",
+          "uploaded": "2026-08-20",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 800,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "P0swPBJfdpg",
+          "title": "Zilean Mid vs Mel - KR Master Patch 26.06",
+          "rankClaim": "Master",
+          "patch": "26.6",
+          "durationSec": 1526,
+          "region": "KR",
+          "uploaded": "2026-03-31",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 340,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 463,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 608,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 693,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 776,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 909,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 999,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1069,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1132,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1196,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1228,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1451,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1490,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1515,
+              "label": "End credit"
+            }
+          ]
+        },
+        {
+          "videoId": "ZBhCtsxJG5o",
+          "title": "Zilean Mid vs Mel - EUW Grandmaster Patch 25.13",
+          "rankClaim": "Grandmaster",
+          "patch": "25.13",
+          "durationSec": 1815,
+          "region": "EUW",
+          "uploaded": "2025-07-07",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 888,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "0cNiP06yn9Q",
+          "title": "Zilean Support vs Renata Glasc - EUW Master Patch 26.21",
+          "rankClaim": "Master",
+          "patch": "26.21",
+          "durationSec": 1823,
+          "region": "EUW",
+          "uploaded": "2026-10-26",
+          "result": "W",
+          "moments": [
+            {
+              "atSec": 83,
+              "label": "First Blood — Yunara kills Kalista",
+              "kind": "kill"
+            },
+            {
+              "atSec": 303,
+              "label": "Red takes 1st Dragon (Mountain)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 661,
+              "label": "Red takes 2nd Dragon (Infernal)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1033,
+              "label": "Qiyana kills Rengar",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1046,
+              "label": "Locke Triple Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1049,
+              "label": "Locke Quadra Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1068,
+              "label": "Blue takes 1st Dragon (Hextech)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1177,
+              "label": "Qiyana picks off Kalista"
+            },
+            {
+              "atSec": 1229,
+              "label": "Qiyana takes down Fizz"
+            },
+            {
+              "atSec": 1357,
+              "label": "Qiyana picks off Kalista"
+            },
+            {
+              "atSec": 1386,
+              "label": "Red takes 3rd Dragon (Hextech)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1397,
+              "label": "Blue takes Baron",
+              "kind": "baron"
+            },
+            {
+              "atSec": 1452,
+              "label": "Yunara takes down Kalista"
+            },
+            {
+              "atSec": 1513,
+              "label": "Qiyana eliminates Dr. Mundo"
+            },
+            {
+              "atSec": 1602,
+              "label": "Yunara kills Fizz",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1635,
+              "label": "Mid Inhibitor falls (Red)"
+            },
+            {
+              "atSec": 1675,
+              "label": "Yunara Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1746,
+              "label": "Blue takes 2nd Dragon (Hextech)",
+              "kind": "dragon"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 893,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "FZub_oWZVgs",
+          "title": "Zilean Mid vs Aurora - EUW Grandmaster Patch 25.20",
+          "rankClaim": "Grandmaster",
+          "patch": "25.20",
+          "durationSec": 1785,
+          "region": "EUW",
+          "uploaded": "2025-10-21",
+          "moments": []
+        },
+        {
+          "videoId": "RAO_Uquy4DY",
+          "title": "Zilean Mid vs Aurora - EUW Challenger Patch 25.15",
+          "rankClaim": "Challenger",
+          "patch": "25.15",
+          "durationSec": 2126,
+          "region": "EUW",
+          "uploaded": "2025-08-11",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 901,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "RaAAUogbNxU",
+          "title": "(LR Baus) Zilean Mid vs Smolder - EUW Grandmaster Patch 26.10",
+          "rankClaim": "Grandmaster",
+          "patch": "26.10",
+          "durationSec": 1579,
+          "region": "EUW",
+          "player": "Thebausffs",
+          "uploaded": "2026-05-27",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 902,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "mySaGe4Clco",
+          "title": "Zilean Support vs Milio - KR Master Patch 25.05",
+          "rankClaim": "Master",
+          "patch": "25.5",
+          "durationSec": 1582,
+          "region": "KR",
+          "uploaded": "2025-03-13",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 910,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "ZqSpNoYc6PY",
+          "title": "Zilean Support vs Hwei - KR Grandmaster Patch 25.12",
+          "rankClaim": "Grandmaster",
+          "patch": "25.12",
+          "durationSec": 1612,
+          "region": "KR",
+          "uploaded": "2025-06-20",
+          "moments": []
+        }
+      ]
+    }
+  ]
+}

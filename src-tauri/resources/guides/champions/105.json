@@ -1,0 +1,4510 @@
+{
+  "schema": 1,
+  "champion": 105,
+  "generatedAt": "2026-11-07T13:25:14.592Z",
+  "guides": [
+    {
+      "champion": 105,
+      "enemy": 84,
+      "lane": "mid",
+      "patch": "26.21",
+      "reviewed": false,
+      "difficulty": "Skill matchup",
+      "favoredWhen": "Skill matchup, slightly hers. Time E on her E-down and trade only E-ready.",
+      "keyTips": [
+        {
+          "text": "Skill matchup, she is slightly favoured once learned: respect reps.",
+          "scope": "pair",
+          "sourceIds": [
+            "anguish"
+          ]
+        },
+        {
+          "text": "She trades hard while your E is down: never fight E-less.",
+          "scope": "pair",
+          "sourceIds": [
+            "anguish"
+          ],
+          "abilityKeys": [
+            {
+              "champion": 105,
+              "key": "E"
+            }
+          ]
+        },
+        {
+          "text": "Your R reveals her: mark before she shrouds.",
+          "scope": "pair",
+          "sourceIds": [
+            "anguish"
+          ],
+          "abilityKeys": [
+            {
+              "champion": 105,
+              "key": "R"
+            },
+            {
+              "champion": 84,
+              "key": "W"
+            }
+          ]
+        }
+      ],
+      "enemyTips": {},
+      "sections": {
+        "overview": {
+          "tips": []
+        },
+        "early-lane": {
+          "tips": [
+            {
+              "text": "She times her E around your Q+W: vary the combo.",
+              "scope": "pair",
+              "sourceIds": [
+                "anguish"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 84,
+                  "key": "E"
+                }
+              ]
+            },
+            {
+              "text": "She punishes pre-spike levels: survive to your all-in.",
+              "scope": "pair",
+              "sourceIds": [
+                "anguish"
+              ]
+            }
+          ]
+        },
+        "mid-lane": {
+          "tips": [
+            {
+              "text": "E-down is her engage: track it like a summoner.",
+              "scope": "pair",
+              "sourceIds": [
+                "anguish"
+              ]
+            },
+            {
+              "text": "Force her E first: no dash means free Qs.",
+              "scope": "pair",
+              "sourceIds": [
+                "anguish"
+              ]
+            }
+          ]
+        },
+        "win-condition": {
+          "tips": [
+            {
+              "text": "E held plus R landed: the Akali who never reaches you never wins.",
+              "scope": "pair",
+              "sourceIds": [
+                "anguish"
+              ]
+            }
+          ]
+        }
+      },
+      "itemization": [],
+      "sources": [
+        {
+          "id": "anguish",
+          "author": "Anguish333",
+          "rankClaim": "Master (profile badge; title claims 2000LP GrandMaster EUW and Challenger EUNE) · Akali main",
+          "rank": "master",
+          "url": "https://www.mobafire.com/league-of-legends/build/26-20-anguish-2000lp-grandmasters-euw-challenger-eune-akali-mid-top-s16-guide-every-matchup-item-rune-explained-625064",
+          "kind": "mobafire"
+        }
+      ]
+    },
+    {
+      "champion": 105,
+      "enemy": 103,
+      "lane": "mid",
+      "patch": "26.21",
+      "reviewed": false,
+      "difficulty": "Easy",
+      "favoredWhen": "Fizz-favoured. She baits E and Charms your Q, so E her damage, trade into Plating, and outscale.",
+      "keyTips": [
+        {
+          "text": "Fizz-favoured: she must answer your E, not the reverse.",
+          "scope": "pair",
+          "sourceIds": [
+            "spaceturtlez"
+          ]
+        },
+        {
+          "text": "She baits E by fake-stepping in: do not E the feint.",
+          "scope": "pair",
+          "sourceIds": [
+            "peng04"
+          ]
+        },
+        {
+          "text": "Her main cooldown to track is your E (about {cd:105:E}): spend it only to dodge or kill.",
+          "scope": "pair",
+          "sourceIds": [
+            "peng04"
+          ],
+          "abilityKeys": [
+            {
+              "champion": 105,
+              "key": "E"
+            }
+          ]
+        }
+      ],
+      "enemyTips": {},
+      "sections": {
+        "overview": {
+          "tips": []
+        },
+        "early-lane": {
+          "tips": [
+            {
+              "text": "She bullies levels 1-2, then lets the wave back: concede the first waves.",
+              "scope": "pair",
+              "sourceIds": [
+                "shok-ahri"
+              ]
+            },
+            {
+              "text": "Dodge her fox-fire W with E and trade her mana into your Bone Plating.",
+              "scope": "pair",
+              "sourceIds": [
+                "spaceturtlez"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 103,
+                  "key": "W"
+                },
+                {
+                  "champion": 105,
+                  "key": "E"
+                }
+              ]
+            }
+          ]
+        },
+        "mid-lane": {
+          "tips": [
+            {
+              "text": "If you commit an obvious Q she Charms mid-dash: Q only when her Charm is down.",
+              "scope": "pair",
+              "sourceIds": [
+                "peng04"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 105,
+                  "key": "Q"
+                },
+                {
+                  "champion": 103,
+                  "key": "E"
+                }
+              ]
+            },
+            {
+              "text": "She pushes by default: match the shove and outscale.",
+              "scope": "pair",
+              "sourceIds": [
+                "spaceturtlez"
+              ]
+            }
+          ]
+        },
+        "win-condition": {
+          "tips": [
+            {
+              "text": "E held plus Charm dodged: the Ahri who never catches you never wins.",
+              "scope": "pair",
+              "sourceIds": [
+                "peng04",
+                "spaceturtlez"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 103,
+                  "key": "E"
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "itemization": [],
+      "sources": [
+        {
+          "id": "peng04",
+          "author": "Peng04",
+          "rankClaim": "Challenger · Ahri main",
+          "rank": "challenger",
+          "url": "https://www.mobafire.com/league-of-legends/build/26-20-pengs-ahri-guide-5-1mil-points-13x-challenger-648700",
+          "kind": "mobafire"
+        },
+        {
+          "id": "spaceturtlez",
+          "author": "Spaceturtlez",
+          "rankClaim": "Master (profile badge) · Fizz main",
+          "rank": "master",
+          "url": "https://www.mobafire.com/league-of-legends/build/fizz-guide-for-fizz-mains-league-chat-patch-25-23-november-2025-650200",
+          "kind": "mobafire"
+        },
+        {
+          "id": "shok-ahri",
+          "author": "ShokLoL",
+          "rankClaim": "Rank 1 Challenger · Ahri main",
+          "rank": "challenger",
+          "url": "https://www.mobafire.com/league-of-legends/build/26-5-shoks-rank-1-challenger-ahri-guide-635065",
+          "kind": "mobafire"
+        }
+      ]
+    },
+    {
+      "champion": 105,
+      "enemy": 134,
+      "lane": "mid",
+      "patch": "26.21",
+      "reviewed": false,
+      "difficulty": "Hard",
+      "favoredWhen": "She bullies 1-2 and bans push-ups from 3. Crash pre-3, then dive with E.",
+      "keyTips": [
+        {
+          "text": "You are punishable at 1-2 and she is strong at 3 and 6: the lane flips on spikes.",
+          "scope": "pair",
+          "sourceIds": [
+            "shok"
+          ]
+        },
+        {
+          "text": "Take Bone Plating: it blunts her combo.",
+          "scope": "pair",
+          "sourceIds": [
+            "trisend3"
+          ]
+        },
+        {
+          "text": "Her E is trade tool and waveclear in one: bait it before diving.",
+          "scope": "pair",
+          "sourceIds": [
+            "shok"
+          ],
+          "abilityKeys": [
+            {
+              "champion": 134,
+              "key": "E"
+            }
+          ]
+        }
+      ],
+      "enemyTips": {},
+      "sections": {
+        "overview": {
+          "tips": []
+        },
+        "early-lane": {
+          "tips": [
+            {
+              "text": "Deny her crash: meet the wave before it breaks.",
+              "scope": "pair",
+              "sourceIds": [
+                "shok"
+              ]
+            },
+            {
+              "text": "Respect 3 and 6: her spikes are your stop signs.",
+              "scope": "pair",
+              "sourceIds": [
+                "shok"
+              ]
+            }
+          ]
+        },
+        "mid-lane": {
+          "tips": [
+            {
+              "text": "Dive with E when her E is down: troll pole beats scatter.",
+              "scope": "pair",
+              "sourceIds": [
+                "shok"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 105,
+                  "key": "E"
+                },
+                {
+                  "champion": 134,
+                  "key": "E"
+                }
+              ]
+            },
+            {
+              "text": "She takes Barrier, Exhaust or early Null-Magic: expect the defensive setup.",
+              "scope": "pair",
+              "sourceIds": [
+                "shok"
+              ]
+            }
+          ]
+        },
+        "win-condition": {
+          "tips": [
+            {
+              "text": "Spikes survived plus E dives: the Syndra who never zones you never wins.",
+              "scope": "pair",
+              "sourceIds": [
+                "shok",
+                "trisend3"
+              ]
+            }
+          ]
+        }
+      },
+      "itemization": [],
+      "sources": [
+        {
+          "id": "shok",
+          "author": "ShokLoL",
+          "rankClaim": "Rank 1 Challenger · Syndra main",
+          "rank": "challenger",
+          "url": "https://www.mobafire.com/league-of-legends/build/26-17-shoks-rank-1-challenger-syndra-guide-602710",
+          "kind": "mobafire"
+        },
+        {
+          "id": "trisend3",
+          "author": "Trisend3",
+          "rankClaim": "Challenger (title and profile badge) · Syndra main",
+          "rank": "challenger",
+          "url": "https://www.mobafire.com/league-of-legends/build/challenger-season-16-trisend3-syndra-guide-623459",
+          "kind": "mobafire"
+        }
+      ]
+    },
+    {
+      "champion": 105,
+      "enemy": 238,
+      "lane": "mid",
+      "patch": "26.21",
+      "reviewed": false,
+      "difficulty": "Hard",
+      "favoredWhen": "He answers your Q with backwards combos. Trade with Plating up, and dive only when his W is down.",
+      "keyTips": [
+        {
+          "text": "He takes Bone Plating and answers your Q-in with double-W backwards: respect the answer.",
+          "scope": "pair",
+          "sourceIds": [
+            "aikopanda"
+          ],
+          "abilityKeys": [
+            {
+              "champion": 105,
+              "key": "Q"
+            }
+          ]
+        },
+        {
+          "text": "Trade only with your Plating up: no Plating means no trade.",
+          "scope": "pair",
+          "sourceIds": [
+            "v222"
+          ]
+        },
+        {
+          "text": "Your E is the trade tool and the dive: spend it to kill, not to poke.",
+          "scope": "pair",
+          "sourceIds": [
+            "v222"
+          ],
+          "abilityKeys": [
+            {
+              "champion": 105,
+              "key": "E"
+            }
+          ]
+        }
+      ],
+      "enemyTips": {
+        "early-lane": [
+          {
+            "text": "Zed often places Living Shadow before Death Mark so he can swap away from skillshots. Hold your crowd control until he has used the swap.",
+            "scope": "enemy",
+            "sourceIds": [
+              "aikopanda"
+            ],
+            "patch": "26.21",
+            "abilityKeys": [
+              {
+                "champion": 238,
+                "key": "W"
+              },
+              {
+                "champion": 238,
+                "key": "R"
+              }
+            ]
+          }
+        ],
+        "win-condition": [
+          {
+            "text": "Death Mark always lands Zed behind his target. Pre-aim crowd control and escapes behind you, not toward where he cast it.",
+            "scope": "enemy",
+            "sourceIds": [
+              "peng04"
+            ],
+            "patch": "26.21",
+            "abilityKeys": [
+              {
+                "champion": 238,
+                "key": "R"
+              }
+            ]
+          }
+        ]
+      },
+      "sections": {
+        "overview": {
+          "tips": []
+        },
+        "early-lane": {
+          "tips": [
+            {
+              "text": "Poke, do not commit: his backwards combo punishes engages.",
+              "scope": "pair",
+              "sourceIds": [
+                "aikopanda"
+              ]
+            },
+            {
+              "text": "Q in only when his W is spent: shadow-down is your window.",
+              "scope": "pair",
+              "sourceIds": [
+                "aikopanda"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 238,
+                  "key": "W"
+                }
+              ]
+            }
+          ]
+        },
+        "mid-lane": {
+          "tips": [
+            {
+              "text": "Dive with E when his answers are down: troll pole beats shadows.",
+              "scope": "pair",
+              "sourceIds": [
+                "v222"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 105,
+                  "key": "E"
+                }
+              ]
+            },
+            {
+              "text": "Keep trading with Plating: the pattern never changes.",
+              "scope": "pair",
+              "sourceIds": [
+                "v222"
+              ]
+            },
+            {
+              "text": "Death Mark lands him behind you: E away from the exit when he ults.",
+              "scope": "pair",
+              "sourceIds": [
+                "peng04"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 238,
+                  "key": "R"
+                },
+                {
+                  "champion": 105,
+                  "key": "E"
+                }
+              ]
+            }
+          ]
+        },
+        "win-condition": {
+          "tips": [
+            {
+              "text": "Plating traded plus dives timed: the Zed who never catches you never wins.",
+              "scope": "pair",
+              "sourceIds": [
+                "aikopanda",
+                "v222"
+              ]
+            }
+          ]
+        }
+      },
+      "itemization": [],
+      "sources": [
+        {
+          "id": "aikopanda",
+          "author": "AikoPanda",
+          "rankClaim": "Zed main",
+          "url": "https://www.mobafire.com/league-of-legends/build/26-20-video-guides-hidden-combos-all-matchups-zed-all-in-one-guide-652800",
+          "kind": "mobafire"
+        },
+        {
+          "id": "v222",
+          "author": "V222",
+          "rankClaim": "Challenger EUW · Zed main",
+          "rank": "challenger",
+          "url": "https://www.mobafire.com/league-of-legends/build/all-matchups-26-14-zed-guide-2000lp-euw-challenger-652354",
+          "kind": "mobafire"
+        },
+        {
+          "id": "peng04",
+          "author": "Peng04",
+          "rankClaim": "Challenger · Ahri main",
+          "rank": "challenger",
+          "url": "https://www.mobafire.com/league-of-legends/build/26-20-pengs-ahri-guide-5-1mil-points-13x-challenger-648700",
+          "kind": "mobafire"
+        }
+      ]
+    }
+  ],
+  "general": [
+    {
+      "champion": 105,
+      "lane": "mid",
+      "patch": "26.21",
+      "reviewed": false,
+      "keyTips": [
+        {
+          "text": "Start E in most lanes and refuse trades until level 3, treating level-2 trades as matchup-only.",
+          "scope": "champion",
+          "sourceIds": [
+            "gladiore"
+          ],
+          "abilityKeys": [
+            {
+              "champion": 105,
+              "key": "E"
+            }
+          ]
+        },
+        {
+          "text": "Guard E as both damage and the main dodge or escape; casual casts delete all pressure until it returns.",
+          "scope": "champion",
+          "sourceIds": [
+            "gladiore"
+          ],
+          "abilityKeys": [
+            {
+              "champion": 105,
+              "key": "E"
+            }
+          ]
+        },
+        {
+          "text": "Throw max-range R for the biggest shark with stronger damage, slow, and teamfight disruption even without a kill.",
+          "scope": "champion",
+          "sourceIds": [
+            "gladiore"
+          ],
+          "abilityKeys": [
+            {
+              "champion": 105,
+              "key": "R"
+            }
+          ]
+        }
+      ],
+      "sections": {
+        "overview": {
+          "tips": []
+        },
+        "early-lane": {
+          "tips": [
+            {
+              "text": "Donate some of the first two waves against heavy poke to keep health for later trades.",
+              "scope": "champion",
+              "sourceIds": [
+                "gladiore"
+              ]
+            },
+            {
+              "text": "At level 1, last-hit melee minions with E while sparing the caster line, then let the opponent push in.",
+              "scope": "champion",
+              "sourceIds": [
+                "gladiore"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 105,
+                  "key": "E"
+                }
+              ]
+            },
+            {
+              "text": "Take W at level 2 and take only safe last-hits instead of eating free autos.",
+              "scope": "champion",
+              "sourceIds": [
+                "gladiore"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 105,
+                  "key": "W"
+                }
+              ]
+            },
+            {
+              "text": "When wave two crashes under tower, expect wave three back toward center with a chance at first level 3.",
+              "scope": "champion",
+              "sourceIds": [
+                "gladiore"
+              ]
+            },
+            {
+              "text": "Trade at level 3 with Q onto the enemy, auto plus W, keep hitting until they answer, then E away to dodge and slow.",
+              "scope": "champion",
+              "sourceIds": [
+                "gladiore"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 105,
+                  "key": "Q"
+                },
+                {
+                  "champion": 105,
+                  "key": "W"
+                },
+                {
+                  "champion": 105,
+                  "key": "E"
+                }
+              ]
+            },
+            {
+              "text": "After a good level-3 trade, shove fast for level 4 and crash the wave.",
+              "scope": "champion",
+              "sourceIds": [
+                "gladiore"
+              ]
+            },
+            {
+              "text": "At level 4, check kill range before all-inning with Flash, Q, W, and Ignite.",
+              "scope": "champion",
+              "sourceIds": [
+                "gladiore"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 105,
+                  "key": "Q"
+                },
+                {
+                  "champion": 105,
+                  "key": "W"
+                }
+              ]
+            },
+            {
+              "text": "For that level-4 commit, take a second W point over a second E point, then return to maxing E.",
+              "scope": "champion",
+              "sourceIds": [
+                "gladiore"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 105,
+                  "key": "W"
+                },
+                {
+                  "champion": 105,
+                  "key": "E"
+                }
+              ]
+            },
+            {
+              "text": "On level-4 dives, drop turret aggro with E instead of spending it purely for damage.",
+              "scope": "champion",
+              "sourceIds": [
+                "gladiore"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 105,
+                  "key": "E"
+                }
+              ]
+            }
+          ]
+        },
+        "mid-lane": {
+          "tips": [
+            {
+              "text": "Buy Dark Seal early, upgrading to Mejai's only past 10 stacks and when the stacks project to survive.",
+              "scope": "champion",
+              "sourceIds": [
+                "gladiore"
+              ],
+              "itemIds": [
+                1082
+              ]
+            },
+            {
+              "text": "Keep Zhonya's Hourglass second for safer engages, dives, and side duels.",
+              "scope": "champion",
+              "sourceIds": [
+                "gladiore"
+              ],
+              "itemIds": [
+                3157
+              ]
+            },
+            {
+              "text": "Q to a minion after E to finish the wave or land in a safer trade spot.",
+              "scope": "champion",
+              "sourceIds": [
+                "gladiore"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 105,
+                  "key": "Q"
+                },
+                {
+                  "champion": 105,
+                  "key": "E"
+                }
+              ]
+            }
+          ]
+        },
+        "win-condition": {
+          "tips": [
+            {
+              "text": "Land R on a backline carry to decide fights, accepting the hard execution cost.",
+              "scope": "champion",
+              "sourceIds": [
+                "gladiore"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 105,
+                  "key": "R"
+                }
+              ]
+            },
+            {
+              "text": "Hide the cast and stretch its reach with Q through a minion into an immediate R.",
+              "scope": "champion",
+              "sourceIds": [
+                "gladiore"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 105,
+                  "key": "Q"
+                },
+                {
+                  "champion": 105,
+                  "key": "R"
+                }
+              ]
+            },
+            {
+              "text": "Q onto a minion after E to apply W or exit safely rather than leaning on Q damage alone.",
+              "scope": "champion",
+              "sourceIds": [
+                "gladiore"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 105,
+                  "key": "Q"
+                },
+                {
+                  "champion": 105,
+                  "key": "E"
+                },
+                {
+                  "champion": 105,
+                  "key": "W"
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "itemization": [
+        {
+          "text": "Run Press the Attack with Triumph, Legend: Haste, and Coup de Grace, plus Manaflow Band and Transcendence, with Flash and Ignite.",
+          "scope": "champion",
+          "sourceIds": [
+            "gladiore"
+          ]
+        },
+        {
+          "text": "Recall first for Dark Seal with enough gold, upgrading to Mejai's at 10 stacks only when they project to live.",
+          "scope": "champion",
+          "sourceIds": [
+            "gladiore"
+          ],
+          "itemIds": [
+            1082
+          ]
+        },
+        {
+          "text": "Hold Zhonya's second and use its active to extend an engage or stall for the next rotation.",
+          "scope": "champion",
+          "sourceIds": [
+            "gladiore"
+          ]
+        },
+        {
+          "text": "Choose Lich Bane for all-in damage and movement speed, or Dusk and Dawn as the preferred teamfight spellblade.",
+          "scope": "champion",
+          "sourceIds": [
+            "gladiore"
+          ],
+          "itemIds": [
+            3100,
+            2510
+          ]
+        },
+        {
+          "text": "On Dusk and Dawn, trigger W before the first spellblade hit to double its on-hit effect, setting up with W then Q.",
+          "scope": "champion",
+          "sourceIds": [
+            "gladiore"
+          ],
+          "abilityKeys": [
+            {
+              "champion": 105,
+              "key": "W"
+            },
+            {
+              "champion": 105,
+              "key": "Q"
+            }
+          ],
+          "itemIds": [
+            2510
+          ]
+        },
+        {
+          "text": "Pair Press the Attack with the Dusk and Dawn route.",
+          "scope": "champion",
+          "sourceIds": [
+            "gladiore"
+          ],
+          "itemIds": [
+            2510
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "id": "gladiore",
+          "author": "Gladiore",
+          "rankClaim": "No rank claim",
+          "url": "https://www.mobafire.com/league-of-legends/build/gladiores-comprehensive-fizz-guide-for-patch-26-9-waiting-for-new-patch-before-continue-651987",
+          "kind": "mobafire"
+        }
+      ]
+    }
+  ],
+  "vods": [
+    {
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "zzdKWAquwcE",
+          "title": "Baicaiovo Top 2 Chinese Super Server Challenger Fizz Mid Lane Mechanics Breakdown Engsub",
+          "rankClaim": "Challenger",
+          "patch": "26.1",
+          "durationSec": 907,
+          "patchEstimated": true,
+          "player": "Baicaiovo",
+          "uploaded": "2026-01-08",
+          "format": "stream",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 1,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "qzI7kt0VqWs",
+          "title": "Fizz Mid vs Annie - EUW Challenger Patch 25.16",
+          "rankClaim": "Challenger",
+          "patch": "25.16",
+          "durationSec": 1576,
+          "region": "EUW",
+          "uploaded": "2025-08-29",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 3,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "sRCCEpmYmVk",
+          "title": "Fizz vs Galio [ MID ] Lol Korea Master Patch 25.20 ✅",
+          "rankClaim": "Master",
+          "patch": "25.20",
+          "durationSec": 1674,
+          "region": "KR",
+          "uploaded": "2025-10-21",
+          "moments": []
+        },
+        {
+          "videoId": "A9a4AJ9GeLY",
+          "title": "Fizz Mid vs Galio - NA Grandmaster Patch 25.10",
+          "rankClaim": "Grandmaster",
+          "patch": "25.10",
+          "durationSec": 1787,
+          "region": "NA",
+          "uploaded": "2025-05-20",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 4,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "nlFbGbaqwyI",
+          "title": "DK ShowMaker Fizz vs Twisted Fate [ MID ] Korea Challenger 2584 LP | Patch 26.13",
+          "rankClaim": "Challenger",
+          "patch": "26.13",
+          "durationSec": 2459,
+          "region": "KR",
+          "player": "ShowMaker",
+          "team": "DK",
+          "uploaded": "2026-06-27",
+          "moments": []
+        },
+        {
+          "videoId": "RgxwNTbQJ2I",
+          "title": "(ZYB Wao) Fizz Mid vs Twisted Fate - EUW Challenger Patch 26.12",
+          "rankClaim": "Challenger",
+          "patch": "26.12",
+          "durationSec": 1568,
+          "region": "EUW",
+          "player": "ZYB Wao",
+          "uploaded": "2026-06-17",
+          "moments": []
+        },
+        {
+          "videoId": "UCVmCSUquVU",
+          "title": "Fizz vs Twisted Fate  Mid - KR Challenger - Patch 16.08 Season 16",
+          "rankClaim": "Challenger",
+          "patch": "26.8",
+          "durationSec": 1636,
+          "region": "KR",
+          "uploaded": "2026-04-19",
+          "moments": []
+        },
+        {
+          "videoId": "0R1eU7Yx5tA",
+          "title": "Fizz Mid vs Twisted Fate - KR Grandmaster Patch 25.22",
+          "rankClaim": "Grandmaster",
+          "patch": "25.22",
+          "durationSec": 1591,
+          "region": "KR",
+          "uploaded": "2025-11-13",
+          "moments": []
+        },
+        {
+          "videoId": "itIF9H0nm3w",
+          "title": "Fizz Mid vs Twisted Fate - KR Master Patch 25.20",
+          "rankClaim": "Master",
+          "patch": "25.20",
+          "durationSec": 2075,
+          "region": "KR",
+          "uploaded": "2025-10-16",
+          "moments": []
+        },
+        {
+          "videoId": "hIEgxPx-k6c",
+          "title": "Fizz Mid vs Twisted Fate - KR Master Patch 25.16",
+          "rankClaim": "Master",
+          "patch": "25.16",
+          "durationSec": 2029,
+          "region": "KR",
+          "uploaded": "2025-08-23",
+          "moments": []
+        },
+        {
+          "videoId": "zU-NpXnMFDU",
+          "title": "Fizz Mid vs Twisted Fate - KR Master Patch 25.12",
+          "rankClaim": "Master",
+          "patch": "25.12",
+          "durationSec": 2096,
+          "region": "KR",
+          "uploaded": "2025-06-20",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 8,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "Sm5KZAkDwZ0",
+          "title": "Fizz Mid vs Vladimir - KR Master Patch 26.18",
+          "rankClaim": "Master",
+          "patch": "26.18",
+          "durationSec": 1652,
+          "region": "KR",
+          "uploaded": "2026-09-16",
+          "result": "W",
+          "moments": [
+            {
+              "atSec": 122,
+              "label": "First Blood — Fizz kills Vladimir",
+              "kind": "kill"
+            },
+            {
+              "atSec": 244,
+              "label": "Fizz takes down Sion"
+            },
+            {
+              "atSec": 343,
+              "label": "Red takes 1st Dragon (Ocean)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 483,
+              "label": "Team fight (3 kills)",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 585,
+              "label": "Fizz takes down Vladimir"
+            },
+            {
+              "atSec": 677,
+              "label": "Fizz Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 815,
+              "label": "Red takes 2nd Dragon (Infernal)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 856,
+              "label": "Fizz catches Vladimir again"
+            },
+            {
+              "atSec": 947,
+              "label": "Fizz outduels Vladimir (3rd time)"
+            },
+            {
+              "atSec": 1171,
+              "label": "Kai'Sa Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1205,
+              "label": "Red takes 3rd Dragon (Chemtech)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1262,
+              "label": "Fizz kills Corki",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1315,
+              "label": "Red takes Baron",
+              "kind": "baron"
+            },
+            {
+              "atSec": 1385,
+              "label": "Fizz Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1525,
+              "label": "Red takes 4th Dragon (Chemtech)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1578,
+              "label": "Fizz kills Corki",
+              "kind": "kill"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 11,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "SNqCfarS89g",
+          "title": "Fizz vs Master Yi Jungle - KR Challenger - Patch 16.06 Season 16",
+          "rankClaim": "Challenger",
+          "patch": "26.6",
+          "durationSec": 1891,
+          "region": "KR",
+          "uploaded": "2026-03-21",
+          "moments": []
+        },
+        {
+          "videoId": "iFWheNlYZlo",
+          "title": "Fizz Jungle vs Master Yi - EUW Challenger Patch 26.01",
+          "rankClaim": "Challenger",
+          "patch": "26.1",
+          "durationSec": 1520,
+          "region": "EUW",
+          "uploaded": "2026-01-20",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 220,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 366,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 402,
+              "label": "Hunt The Dragon",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 486,
+              "label": "Hunt The Void Grubs",
+              "kind": "grubs"
+            },
+            {
+              "atSec": 595,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 616,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 754,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 838,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 924,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 956,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1025,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1046,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1132,
+              "label": "Hunt The Dragon",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1276,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1327,
+              "label": "Hunt The Baron Nashor",
+              "kind": "baron"
+            },
+            {
+              "atSec": 1444,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1471,
+              "label": "Take down The Inhibitor"
+            },
+            {
+              "atSec": 1509,
+              "label": "End credit"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 13,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "CpB1sCX2OC8",
+          "title": "Fizz Mid vs Ryze - VN Challenger Patch 25.24",
+          "rankClaim": "Challenger",
+          "patch": "25.24",
+          "durationSec": 1547,
+          "uploaded": "2026-01-07",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 174,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 267,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 389,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 443,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 568,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 715,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 790,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 855,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 884,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 919,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 972,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 993,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1095,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1149,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1415,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1431,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1479,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1536,
+              "label": "End credit"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 13,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "5Q31_4CgnSw",
+          "title": "Fizz Top vs Ryze - KR Master Patch 25.22",
+          "rankClaim": "Master",
+          "patch": "25.22",
+          "durationSec": 1477,
+          "region": "KR",
+          "uploaded": "2025-11-19",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 18,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "ZypwqfoelPA",
+          "title": "Fizz Mid vs Tristana - KR Challenger Patch 26.16",
+          "rankClaim": "Challenger",
+          "patch": "26.16",
+          "durationSec": 1730,
+          "region": "KR",
+          "uploaded": "2026-08-26",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 20,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "eczkpfpmQdw",
+          "title": "Fizz Jungle vs Nunu & Willump - EUW Challenger Patch 25.23",
+          "rankClaim": "Challenger",
+          "patch": "25.23",
+          "durationSec": 1604,
+          "region": "EUW",
+          "uploaded": "2025-12-01",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 27,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "8cGVCFI6_JQ",
+          "title": "Fizz Top vs Singed - EUW Grandmaster Patch 25.05",
+          "rankClaim": "Grandmaster",
+          "patch": "25.5",
+          "durationSec": 1934,
+          "region": "EUW",
+          "uploaded": "2025-03-21",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 276,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 407,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 476,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 865,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1032,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1141,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1198,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1344,
+              "label": "Get a Triple Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1592,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1717,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1861,
+              "label": "Get a Quadra Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1898,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1913,
+              "label": "End credit"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 34,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "Ci1943GkNgE",
+          "title": "Fizz Mid vs Anivia - KR Master Patch 25.24",
+          "rankClaim": "Master",
+          "patch": "25.24",
+          "durationSec": 1503,
+          "region": "KR",
+          "uploaded": "2025-12-10",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 38,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "oVOrg8ei6eA",
+          "title": "Fizz Mid vs Kassadin - KR Master Patch 26.20",
+          "rankClaim": "Master",
+          "patch": "26.20",
+          "durationSec": 1650,
+          "region": "KR",
+          "uploaded": "2026-10-12",
+          "result": "W",
+          "moments": [
+            {
+              "atSec": 151,
+              "label": "First Blood — Cho'Gath kills Kassadin",
+              "kind": "kill"
+            },
+            {
+              "atSec": 336,
+              "label": "Fizz takes down Kassadin"
+            },
+            {
+              "atSec": 493,
+              "label": "Blue takes 1st Dragon (Ocean)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 505,
+              "label": "Fizz catches Kassadin again"
+            },
+            {
+              "atSec": 600,
+              "label": "Fizz outduels Kassadin (3rd time)"
+            },
+            {
+              "atSec": 764,
+              "label": "Fizz outplays Yone"
+            },
+            {
+              "atSec": 836,
+              "label": "Fizz outplays Kassadin (4th time)"
+            },
+            {
+              "atSec": 862,
+              "label": "Blue takes 2nd Dragon (Infernal)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1040,
+              "label": "Cho'Gath picks off Kassadin"
+            },
+            {
+              "atSec": 1164,
+              "label": "Fizz eliminates Kassadin"
+            },
+            {
+              "atSec": 1183,
+              "label": "Blue takes 3rd Dragon (Mountain)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1187,
+              "label": "Cho'Gath takes down Ekko"
+            },
+            {
+              "atSec": 1344,
+              "label": "Akali Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1435,
+              "label": "Akali Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1483,
+              "label": "Red takes Baron",
+              "kind": "baron"
+            },
+            {
+              "atSec": 1500,
+              "label": "Blue takes 4th Dragon (Mountain)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1555,
+              "label": "Fizz kills Yunara",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1585,
+              "label": "Mid Inhibitor falls (Blue)"
+            }
+          ]
+        },
+        {
+          "videoId": "8apJwLYLd-o",
+          "title": "Fizz Mid vs Kassadin - KR Master Patch 25.21",
+          "rankClaim": "Master",
+          "patch": "25.21",
+          "durationSec": 2001,
+          "region": "KR",
+          "uploaded": "2025-10-29",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 38,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "TEOfKv3oZoE",
+          "title": "Fizz Top vs Kassadin - KR Master Patch 26.15",
+          "rankClaim": "Master",
+          "patch": "26.15",
+          "durationSec": 1722,
+          "region": "KR",
+          "uploaded": "2026-08-12",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 39,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "OxWE-ie1tmg",
+          "title": "(DK ShowMaker) Fizz Mid vs Irelia - KR Challenger Patch 26.13",
+          "rankClaim": "Challenger",
+          "patch": "26.13",
+          "durationSec": 1712,
+          "region": "KR",
+          "player": "ShowMaker",
+          "team": "DK",
+          "uploaded": "2026-06-27",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 42,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "dVED5iU6dJs",
+          "title": "Fizz Mid vs Corki - KR Grandmaster Patch 25.07",
+          "rankClaim": "Grandmaster",
+          "patch": "25.7",
+          "durationSec": 1955,
+          "region": "KR",
+          "uploaded": "2025-04-11",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 382,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 584,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 701,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 792,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 847,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 871,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 919,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1034,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1066,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1091,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1235,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1328,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1756,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1775,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1785,
+              "label": "Take down The Inhibitor"
+            },
+            {
+              "atSec": 1903,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1934,
+              "label": "End credit"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 54,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "GIBSOSriY_o",
+          "title": "Fizz vs Malphite Mid - KR Challenger - Patch 16.05 Season 16",
+          "rankClaim": "Challenger",
+          "patch": "26.5",
+          "durationSec": 1456,
+          "region": "KR",
+          "uploaded": "2026-03-05",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 55,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "00ILPB_SPEU",
+          "title": "(LNG BuLLDoG) Fizz Mid vs Katarina - KR Challenger Patch 26.11",
+          "rankClaim": "Challenger",
+          "patch": "26.11",
+          "durationSec": 1620,
+          "region": "KR",
+          "player": "BuLLDoG",
+          "team": "LNG",
+          "uploaded": "2026-06-02",
+          "moments": []
+        },
+        {
+          "videoId": "BN9KsLe-xBw",
+          "title": "Fizz Mid vs Katarina - EUW Grandmaster Patch 25.17",
+          "rankClaim": "Grandmaster",
+          "patch": "25.17",
+          "durationSec": 2020,
+          "region": "EUW",
+          "uploaded": "2025-09-12",
+          "moments": []
+        },
+        {
+          "videoId": "luVBXvg08k4",
+          "title": "Fizz Mid vs Katarina - EUW Grandmaster Patch 25.15",
+          "rankClaim": "Grandmaster",
+          "patch": "25.15",
+          "durationSec": 1455,
+          "region": "EUW",
+          "uploaded": "2025-08-14",
+          "moments": []
+        },
+        {
+          "videoId": "DhmePwHM554",
+          "title": "Fizz Mid vs Katarina - KR Master Patch 25.14",
+          "rankClaim": "Master",
+          "patch": "25.14",
+          "durationSec": 1523,
+          "region": "KR",
+          "uploaded": "2025-07-24",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 59,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "6Ez3yBql648",
+          "title": "(Spirit) Fizz Jungle vs Jarvan IV - KR Master Patch 26.17",
+          "rankClaim": "Master",
+          "patch": "26.17",
+          "durationSec": 1686,
+          "region": "KR",
+          "player": "Spirit",
+          "uploaded": "2026-09-07",
+          "moments": []
+        },
+        {
+          "videoId": "ajUN2j1Eh_k",
+          "title": "Fizz Jungle vs Jarvan IV (AL Shanks) - KR Challenger Patch 26.16",
+          "rankClaim": "Challenger",
+          "patch": "26.16",
+          "durationSec": 1554,
+          "region": "KR",
+          "player": "Shanks",
+          "uploaded": "2026-08-19",
+          "moments": []
+        },
+        {
+          "videoId": "uD4eveM1jWQ",
+          "title": "(GMB Izo) Fizz Jungle vs Jarvan IV - EUW Grandmaster Patch 26.15",
+          "rankClaim": "Grandmaster",
+          "patch": "26.15",
+          "durationSec": 1594,
+          "region": "EUW",
+          "player": "GMB Izo",
+          "uploaded": "2026-08-05",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 60,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "Aw7vRO83mbM",
+          "title": "Fizz Jungle vs Elise - VN Challenger Patch 26.08",
+          "rankClaim": "Challenger",
+          "patch": "26.8",
+          "durationSec": 1615,
+          "uploaded": "2026-04-27",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 61,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "6Wp11yckSHI",
+          "title": "Fizz Mid vs Orianna - NA Challenger Patch 26.06",
+          "rankClaim": "Challenger",
+          "patch": "26.6",
+          "durationSec": 1706,
+          "region": "NA",
+          "uploaded": "2026-03-25",
+          "moments": []
+        },
+        {
+          "videoId": "YRJqM6731j0",
+          "title": "Fizz Mid vs Orianna - KR Master Patch 25.23",
+          "rankClaim": "Master",
+          "patch": "25.23",
+          "durationSec": 1768,
+          "region": "KR",
+          "uploaded": "2025-11-24",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 62,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "yUt8X9elsFM",
+          "title": "(Only Spatula) Fizz Jungle vs Wukong - EUW Grandmaster Patch 26.20",
+          "rankClaim": "Grandmaster",
+          "patch": "26.20",
+          "durationSec": 1740,
+          "region": "EUW",
+          "player": "Only Spatula",
+          "uploaded": "2026-10-19",
+          "result": "W",
+          "moments": [
+            {
+              "atSec": 307,
+              "label": "First Blood — Fizz kills Soraka",
+              "kind": "kill"
+            },
+            {
+              "atSec": 462,
+              "label": "Fizz catches Soraka"
+            },
+            {
+              "atSec": 554,
+              "label": "Blue takes 1st Dragon (Hextech)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 692,
+              "label": "Fizz outplays Wukong"
+            },
+            {
+              "atSec": 966,
+              "label": "Blue takes 2nd Dragon (Infernal)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1007,
+              "label": "Fizz solo kills Anivia",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1286,
+              "label": "Blue takes 3rd Dragon (Cloud)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1349,
+              "label": "Red takes Baron",
+              "kind": "baron"
+            },
+            {
+              "atSec": 1365,
+              "label": "Fizz takes down Wukong"
+            },
+            {
+              "atSec": 1408,
+              "label": "Mid Inhibitor falls (Red)"
+            },
+            {
+              "atSec": 1413,
+              "label": "Bot Inhibitor falls (Red)"
+            },
+            {
+              "atSec": 1502,
+              "label": "Fizz kills Soraka",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1610,
+              "label": "Red takes 1st Dragon (Cloud)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1657,
+              "label": "Fizz takes down Lucian"
+            },
+            {
+              "atSec": 1708,
+              "label": "Top Inhibitor falls (Red)"
+            },
+            {
+              "atSec": 1717,
+              "label": "Fizz kills Soraka",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1730,
+              "label": "Mid Inhibitor falls (Red)"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 64,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "II2oQB98JGI",
+          "title": "Fizz Jungle vs Lee Sin - BR Master Patch 26.19",
+          "rankClaim": "Master",
+          "patch": "26.19",
+          "durationSec": 1409,
+          "uploaded": "2026-10-08",
+          "result": "W",
+          "moments": [
+            {
+              "atSec": 144,
+              "label": "First Blood — Corki kills Lee Sin",
+              "kind": "kill"
+            },
+            {
+              "atSec": 351,
+              "label": "Blue takes 1st Dragon (Hextech)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 708,
+              "label": "Fizz picks off Kassadin"
+            },
+            {
+              "atSec": 739,
+              "label": "Blue takes 2nd Dragon (Ocean)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 771,
+              "label": "Camille kills Lee Sin",
+              "kind": "kill"
+            },
+            {
+              "atSec": 907,
+              "label": "Team fight (3 kills)",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 937,
+              "label": "Fizz catches Bard"
+            },
+            {
+              "atSec": 1003,
+              "label": "Team fight (4 kills)",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1045,
+              "label": "Fizz takes down Lee Sin"
+            },
+            {
+              "atSec": 1054,
+              "label": "Blue takes 3rd Dragon (Chemtech)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1109,
+              "label": "Team fight (4 kills)",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1152,
+              "label": "Fizz Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1180,
+              "label": "Blue takes Baron",
+              "kind": "baron"
+            },
+            {
+              "atSec": 1195,
+              "label": "Seraphine takes down Kassadin"
+            },
+            {
+              "atSec": 1255,
+              "label": "Fizz kills Bard",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1332,
+              "label": "Fizz takes down Lee Sin"
+            },
+            {
+              "atSec": 1378,
+              "label": "Mid Inhibitor falls (Red)"
+            },
+            {
+              "atSec": 1387,
+              "label": "Fizz takes down Lee Sin"
+            }
+          ]
+        },
+        {
+          "videoId": "IEn3fnjqHrE",
+          "title": "Fizz Jungle vs Lee Sin - KR Challenger Patch 26.04",
+          "rankClaim": "Challenger",
+          "patch": "26.4",
+          "durationSec": 1834,
+          "region": "KR",
+          "uploaded": "2026-02-24",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 69,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "IQplMMq-zlE",
+          "title": "(ZYB Wao) Fizz Mid vs Cassiopeia - EUW Grandmaster Patch 26.14",
+          "rankClaim": "Grandmaster",
+          "patch": "26.14",
+          "durationSec": 1853,
+          "region": "EUW",
+          "player": "ZYB Wao",
+          "uploaded": "2026-07-21",
+          "moments": []
+        },
+        {
+          "videoId": "0n2Hc9rsftc",
+          "title": "Fizz vs Cassiopeia [ MID ] Lol Korea Master Patch 25.2 ✅",
+          "rankClaim": "Master",
+          "patch": "25.2",
+          "durationSec": 1362,
+          "region": "KR",
+          "uploaded": "2025-01-29",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 75,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "mytltLQ-PtI",
+          "title": "Fizz Jungle vs Nasus - EUW Grandmaster Patch 25.24",
+          "rankClaim": "Grandmaster",
+          "patch": "25.24",
+          "durationSec": 1604,
+          "region": "EUW",
+          "uploaded": "2025-12-30",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 75,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "1q9A-Ye0f8I",
+          "title": "Fizz vs Nasus Mid - KR Challenger - Patch 16.17 Season 16",
+          "rankClaim": "Challenger",
+          "patch": "26.17",
+          "durationSec": 1731,
+          "region": "KR",
+          "uploaded": "2026-09-03",
+          "moments": []
+        },
+        {
+          "videoId": "TASUX1ScIo8",
+          "title": "Fizz Mid vs Nasus - KR Challenger Patch 26.17",
+          "rankClaim": "Challenger",
+          "patch": "26.17",
+          "durationSec": 1703,
+          "region": "KR",
+          "uploaded": "2026-09-02",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 76,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "mjpcNG28AqE",
+          "title": "Fizz Jungle vs Nidalee (Nuguri) - KR Master Patch 26.13",
+          "rankClaim": "Master",
+          "patch": "26.13",
+          "durationSec": 1487,
+          "region": "KR",
+          "uploaded": "2026-07-05",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 80,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "vpqJPrBSEhk",
+          "title": "Fizz Jungle vs Pantheon - KR Master Patch 26.09",
+          "rankClaim": "Master",
+          "patch": "26.9",
+          "durationSec": 1589,
+          "region": "KR",
+          "uploaded": "2026-05-06",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 84,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "s9ub03SUDjc",
+          "title": "Fizz vs Akali [ MID ] Korea Challenger 2010 LP | Patch 26.14 ✅",
+          "rankClaim": "Challenger",
+          "patch": "26.14",
+          "durationSec": 1564,
+          "region": "KR",
+          "uploaded": "2026-07-25",
+          "moments": []
+        },
+        {
+          "videoId": "qPcR5duWwC4",
+          "title": "Fizz vs Akali Mid - KR Challenger - Patch 16.08 Season 16",
+          "rankClaim": "Challenger",
+          "patch": "26.8",
+          "durationSec": 1471,
+          "region": "KR",
+          "uploaded": "2026-04-21",
+          "moments": []
+        },
+        {
+          "videoId": "vL-Gxf5hyzs",
+          "title": "Fizz Mid vs Akali - KR Master Patch 26.01",
+          "rankClaim": "Master",
+          "patch": "26.1",
+          "durationSec": 1582,
+          "region": "KR",
+          "uploaded": "2026-01-18",
+          "moments": []
+        },
+        {
+          "videoId": "DNFGivuRrps",
+          "title": "Fizz Mid vs Akali - KR Grandmaster Patch 25.13",
+          "rankClaim": "Grandmaster",
+          "patch": "25.13",
+          "durationSec": 1548,
+          "region": "KR",
+          "uploaded": "2025-07-05",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 84,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "KBGTH1dXoKc",
+          "title": "Fizz Top vs Akali - KR Master Patch 25.06",
+          "rankClaim": "Master",
+          "patch": "25.6",
+          "durationSec": 1506,
+          "region": "KR",
+          "uploaded": "2025-04-01",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 662,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 761,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 805,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 983,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1086,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1187,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1213,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1284,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1332,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1457,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1485,
+              "label": "End credit"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 90,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "8OVRF_pgXYM",
+          "title": "Fizz Mid vs Malzahar - EUW Grandmaster Patch 25.18",
+          "rankClaim": "Grandmaster",
+          "patch": "25.18",
+          "durationSec": 1679,
+          "region": "EUW",
+          "uploaded": "2025-09-26",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 91,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "GY8whweFi_M",
+          "title": "Fizz Jungle vs Talon - KR Master Patch 25.24",
+          "rankClaim": "Master",
+          "patch": "25.24",
+          "durationSec": 1592,
+          "region": "KR",
+          "uploaded": "2025-12-18",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 121,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 246,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 399,
+              "label": "Hunt The Dragon",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 474,
+              "label": "Hunt The Void Grubs",
+              "kind": "grubs"
+            },
+            {
+              "atSec": 502,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 512,
+              "label": "Hunt The Void Grubs",
+              "kind": "grubs"
+            },
+            {
+              "atSec": 587,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 623,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 735,
+              "label": "Hunt The Dragon",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 752,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 809,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 879,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 902,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1006,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1043,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1064,
+              "label": "Hunt The Dragon",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1101,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1239,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1333,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1368,
+              "label": "Hunt The Dragon",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1413,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1505,
+              "label": "Hunt The Baron Nashor",
+              "kind": "baron"
+            },
+            {
+              "atSec": 1535,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1581,
+              "label": "End credit"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 91,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "q3G_PbiFXlo",
+          "title": "Fizz Mid vs Talon - KR Master Patch 26.08",
+          "rankClaim": "Master",
+          "patch": "26.8",
+          "durationSec": 1687,
+          "region": "KR",
+          "uploaded": "2026-04-22",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 96,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "yww1PAzZGVw",
+          "title": "Fizz Mid vs Kog'Maw - VN Challenger Patch 26.07",
+          "rankClaim": "Challenger",
+          "patch": "26.7",
+          "durationSec": 1581,
+          "uploaded": "2026-04-08",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 101,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "X9U5jWqztUw",
+          "title": "Fizz Mid vs Xerath - KR Master Patch 25.10",
+          "rankClaim": "Master",
+          "patch": "25.10",
+          "durationSec": 2066,
+          "region": "KR",
+          "uploaded": "2025-05-29",
+          "moments": []
+        },
+        {
+          "videoId": "E5mRHHSwDfg",
+          "title": "Fizz Mid vs Xerath - EUW Grandmaster Patch 25.04",
+          "rankClaim": "Grandmaster",
+          "patch": "25.4",
+          "durationSec": 1799,
+          "region": "EUW",
+          "uploaded": "2025-02-26",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 102,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "HC9ZYY9jfrs",
+          "title": "Fizz Jungle vs Shyvana - VN Challenger Patch 26.06",
+          "rankClaim": "Challenger",
+          "patch": "26.6",
+          "durationSec": 1672,
+          "uploaded": "2026-03-31",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 327,
+              "label": "Hunt The Dragon",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 347,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 454,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 480,
+              "label": "Hunt The Void Grubs",
+              "kind": "grubs"
+            },
+            {
+              "atSec": 574,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 657,
+              "label": "Hunt The Dragon",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 748,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 806,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 912,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 961,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1009,
+              "label": "Hunt The Dragon",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1075,
+              "label": "Hunt The Rift Herald",
+              "kind": "herald"
+            },
+            {
+              "atSec": 1130,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1151,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1291,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1305,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1318,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1348,
+              "label": "Hunt The Dragon",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1395,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1437,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1452,
+              "label": "Take down The Inhibitor"
+            },
+            {
+              "atSec": 1503,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1661,
+              "label": "End credit"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 103,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "m5YKMvX48vY",
+          "title": "Fizz Mid vs Ahri - KR Master Patch 25.15",
+          "rankClaim": "Master",
+          "patch": "25.15",
+          "durationSec": 1914,
+          "region": "KR",
+          "uploaded": "2025-08-09",
+          "moments": []
+        },
+        {
+          "videoId": "HBOZjSHsPOo",
+          "title": "Fizz vs Ahri Mid - EUW Grandmaster - Patch 25.5 Season 15",
+          "rankClaim": "Grandmaster",
+          "patch": "25.5",
+          "durationSec": 1606,
+          "region": "EUW",
+          "uploaded": "2025-03-13",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 104,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "3KDLOwljdRo",
+          "title": "Fizz Jungle vs Graves - NA Grandmaster Patch 26.12",
+          "rankClaim": "Grandmaster",
+          "patch": "26.12",
+          "durationSec": 1637,
+          "region": "NA",
+          "uploaded": "2026-06-20",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 110,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "FZZx9HOd05I",
+          "title": "Fizz Top vs Varus - KR Master Patch 26.10",
+          "rankClaim": "Master",
+          "patch": "26.10",
+          "durationSec": 1685,
+          "region": "KR",
+          "uploaded": "2026-05-27",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 112,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "GhcZ6TTyuPo",
+          "title": "Fizz Mid vs Viktor - KR Master Patch 25.09",
+          "rankClaim": "Master",
+          "patch": "25.9",
+          "durationSec": 1761,
+          "region": "KR",
+          "uploaded": "2025-05-09",
+          "moments": []
+        },
+        {
+          "videoId": "wO-sIRvaJsM",
+          "title": "Fizz Mid vs Viktor - KR Master Patch 25.06",
+          "rankClaim": "Master",
+          "patch": "25.6",
+          "durationSec": 1879,
+          "region": "KR",
+          "uploaded": "2025-03-29",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 464,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 559,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 661,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1008,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1073,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1094,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1222,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1358,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1443,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1556,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1725,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1753,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1822,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1858,
+              "label": "End credit"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 126,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "13RtNcpBUsI",
+          "title": "Fizz Top vs Jayce - KR Master Patch 25.20",
+          "rankClaim": "Master",
+          "patch": "25.20",
+          "durationSec": 1862,
+          "region": "KR",
+          "uploaded": "2025-10-22",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 127,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "OTjaihRCl5M",
+          "title": "Fizz vs Lissandra Mid - KR Grandmaster - Patch 16.21 Season 16",
+          "rankClaim": "Grandmaster",
+          "patch": "26.21",
+          "durationSec": 1680,
+          "region": "KR",
+          "uploaded": "2026-11-02",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 131,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "ohOo8tmLNEc",
+          "title": "Fizz vs Diana Mid - KR Master - Patch 16.06 Season 16",
+          "rankClaim": "Master",
+          "patch": "26.6",
+          "durationSec": 1751,
+          "region": "KR",
+          "uploaded": "2026-03-26",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 134,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "Ir_zfeLcTGk",
+          "title": "Fizz Mid vs Syndra - KR Grandmaster Patch 26.21",
+          "rankClaim": "Grandmaster",
+          "patch": "26.21",
+          "durationSec": 1699,
+          "region": "KR",
+          "uploaded": "2026-10-27",
+          "result": "W",
+          "moments": [
+            {
+              "atSec": 212,
+              "label": "Fizz takes down Syndra"
+            },
+            {
+              "atSec": 573,
+              "label": "Blue takes 1st Dragon (Cloud)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 654,
+              "label": "Fizz catches Syndra again"
+            },
+            {
+              "atSec": 783,
+              "label": "Fizz catches Jhin"
+            },
+            {
+              "atSec": 838,
+              "label": "Fizz outduels Syndra (3rd time)"
+            },
+            {
+              "atSec": 895,
+              "label": "Red takes 1st Dragon (Mountain)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1014,
+              "label": "Tryndamere eliminates Nautilus"
+            },
+            {
+              "atSec": 1198,
+              "label": "Corki picks off Nautilus"
+            },
+            {
+              "atSec": 1238,
+              "label": "Blue takes 2nd Dragon (Ocean)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1281,
+              "label": "Fizz eliminates Syndra"
+            },
+            {
+              "atSec": 1369,
+              "label": "Team fight (3 kills)",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1444,
+              "label": "Fizz takes down Nautilus"
+            },
+            {
+              "atSec": 1468,
+              "label": "Red takes Baron",
+              "kind": "baron"
+            },
+            {
+              "atSec": 1550,
+              "label": "Blue takes 3rd Dragon (Ocean)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1641,
+              "label": "Corki Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1646,
+              "label": "Corki Triple Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1675,
+              "label": "Bot Inhibitor falls (Blue)"
+            },
+            {
+              "atSec": 1687,
+              "label": "Corki picks off Nautilus"
+            }
+          ]
+        },
+        {
+          "videoId": "ACFl14lLowY",
+          "title": "Fizz Mid vs Syndra - NA Grandmaster Patch 25.24",
+          "rankClaim": "Grandmaster",
+          "patch": "25.24",
+          "durationSec": 1559,
+          "region": "NA",
+          "uploaded": "2025-12-21",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 229,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 371,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 475,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 597,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 753,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 828,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1088,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1185,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1357,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1491,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1548,
+              "label": "End credit"
+            }
+          ]
+        },
+        {
+          "videoId": "MtwucOzZfJA",
+          "title": "Fizz Mid vs Syndra - EUW Challenger Patch 25.21",
+          "rankClaim": "Challenger",
+          "patch": "25.21",
+          "durationSec": 2057,
+          "region": "EUW",
+          "uploaded": "2025-11-06",
+          "moments": []
+        },
+        {
+          "videoId": "FPriviWNCJA",
+          "title": "Fizz vs Syndra Mid - EUW Challenger - Patch 25.21 Season 15",
+          "rankClaim": "Challenger",
+          "patch": "25.21",
+          "durationSec": 2071,
+          "region": "EUW",
+          "uploaded": "2025-10-30",
+          "moments": []
+        },
+        {
+          "videoId": "fq2D8lXvAmM",
+          "title": "Fizz Mid vs Syndra - KR Master Patch 25.18",
+          "rankClaim": "Master",
+          "patch": "25.18",
+          "durationSec": 2047,
+          "region": "KR",
+          "uploaded": "2025-09-16",
+          "moments": []
+        },
+        {
+          "videoId": "IUslmCVM260",
+          "title": "Fizz Mid vs Syndra - KR Master Patch 25.13",
+          "rankClaim": "Master",
+          "patch": "25.13",
+          "durationSec": 1607,
+          "region": "KR",
+          "uploaded": "2025-07-12",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 136,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "r5WDK8U2Z-k",
+          "title": "Fizz vs Aurelion Sol MID [ QuadraKill ] Korea Master Patch 25.8 ✅",
+          "rankClaim": "Master",
+          "patch": "25.8",
+          "durationSec": 1999,
+          "region": "KR",
+          "player": "QuadraKill",
+          "uploaded": "2025-04-29",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 141,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "sah1r0B8kOA",
+          "title": "Fizz Top vs Kayn - KR Master Patch 25.07",
+          "rankClaim": "Master",
+          "patch": "25.7",
+          "durationSec": 1469,
+          "region": "KR",
+          "uploaded": "2025-04-17",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 142,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "MxnBG8S79-0",
+          "title": "Fizz vs Zoe Mid - KR Challenger - Patch 16.09 Season 16",
+          "rankClaim": "Challenger",
+          "patch": "26.9",
+          "durationSec": 1816,
+          "region": "KR",
+          "uploaded": "2026-05-05",
+          "moments": []
+        },
+        {
+          "videoId": "4xOTfdPOs4I",
+          "title": "Fizz Mid vs Zoe - KR Master Patch 25.19",
+          "rankClaim": "Master",
+          "patch": "25.19",
+          "durationSec": 1481,
+          "region": "KR",
+          "uploaded": "2025-09-27",
+          "moments": []
+        },
+        {
+          "videoId": "ZpDLSvev71A",
+          "title": "Fizz vs Zoe [ MID ] Lol Korea Master Patch 25.13 ✅",
+          "rankClaim": "Master",
+          "patch": "25.13",
+          "durationSec": 1718,
+          "region": "KR",
+          "uploaded": "2025-07-14",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 154,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "puuslbzJIPU",
+          "title": "T1 Oner Fizz vs Zac [ Jungle ] Korea Challenger 2031 LP | Patch 26.17",
+          "rankClaim": "Challenger",
+          "patch": "26.17",
+          "durationSec": 1395,
+          "region": "KR",
+          "player": "Oner",
+          "team": "T1",
+          "uploaded": "2026-08-28",
+          "moments": []
+        },
+        {
+          "videoId": "IW-tK90KBuo",
+          "title": "Fizz Jungle vs Zac - VN Challenger Patch 26.05",
+          "rankClaim": "Challenger",
+          "patch": "26.5",
+          "durationSec": 1568,
+          "uploaded": "2026-03-17",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 162,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 389,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 484,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 501,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 552,
+              "label": "Hunt The Void Grubs",
+              "kind": "grubs"
+            },
+            {
+              "atSec": 613,
+              "label": "Hunt The Dragon",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 637,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 750,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 870,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 921,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 956,
+              "label": "Hunt The Dragon",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 987,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1075,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1176,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1293,
+              "label": "Hunt The Dragon",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1312,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1338,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1372,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1418,
+              "label": "Hunt The Baron Nashor",
+              "kind": "baron"
+            },
+            {
+              "atSec": 1557,
+              "label": "End credit"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 163,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "wGru3r4oSdo",
+          "title": "Fizz vs Taliyah Jungle [ Gen.G Canyon ] Korea Challenger Patch 26.4",
+          "rankClaim": "Challenger",
+          "patch": "26.4",
+          "durationSec": 1233,
+          "region": "KR",
+          "player": "Canyon",
+          "team": "Gen.G",
+          "uploaded": "2026-02-23",
+          "moments": []
+        },
+        {
+          "videoId": "6iiydHT9iRI",
+          "title": "Fizz Jungle vs Taliyah - KR Master Patch 26.02",
+          "rankClaim": "Master",
+          "patch": "26.2",
+          "durationSec": 1593,
+          "region": "KR",
+          "uploaded": "2026-02-02",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 117,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 317,
+              "label": "Hunt The Dragon",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 344,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 516,
+              "label": "Hunt The Void Grubs",
+              "kind": "grubs"
+            },
+            {
+              "atSec": 539,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 645,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 890,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 939,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 999,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1043,
+              "label": "Hunt The Dragon",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1170,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1194,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1310,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1399,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1423,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1436,
+              "label": "Take down The Inhibitor"
+            },
+            {
+              "atSec": 1490,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1582,
+              "label": "End credit"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 163,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "YAvyV6cLHg8",
+          "title": "Fizz Mid vs Taliyah - KR Master Patch 26.02",
+          "rankClaim": "Master",
+          "patch": "26.2",
+          "durationSec": 1465,
+          "region": "KR",
+          "uploaded": "2026-01-28",
+          "moments": []
+        },
+        {
+          "videoId": "BKgp9VsWknQ",
+          "title": "Fizz Mid vs Taliyah - NA Challenger Patch 25.13",
+          "rankClaim": "Challenger",
+          "patch": "25.13",
+          "durationSec": 1795,
+          "region": "NA",
+          "uploaded": "2025-07-18",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 166,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "xRLuxIb3tuA",
+          "title": "Fizz Mid vs Akshan - NA Challenger Patch 25.19",
+          "rankClaim": "Challenger",
+          "patch": "25.19",
+          "durationSec": 1831,
+          "region": "NA",
+          "uploaded": "2025-10-10",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 234,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "N7YWl8QffGo",
+          "title": "Fizz Jungle vs Viego - KR Master Patch 26.07",
+          "rankClaim": "Master",
+          "patch": "26.7",
+          "durationSec": 1922,
+          "region": "KR",
+          "uploaded": "2026-04-14",
+          "moments": []
+        },
+        {
+          "videoId": "nKRcaHSxrjc",
+          "title": "Fizz vs Viego Jungle - KR Challenger - Patch 16.06 Season 16",
+          "rankClaim": "Challenger",
+          "patch": "26.6",
+          "durationSec": 1606,
+          "region": "KR",
+          "uploaded": "2026-03-20",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 238,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "unY_28hVu54",
+          "title": "Fizz Jungle vs Zed - KR Master Patch 26.09",
+          "rankClaim": "Master",
+          "patch": "26.9",
+          "durationSec": 1699,
+          "region": "KR",
+          "uploaded": "2026-05-12",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 238,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "_SIikSKfBX4",
+          "title": "Fizz Mid vs Zed - NA Grandmaster Patch 26.03",
+          "rankClaim": "Grandmaster",
+          "patch": "26.3",
+          "durationSec": 1583,
+          "region": "NA",
+          "uploaded": "2026-02-11",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 161,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 383,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 501,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 854,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 912,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1054,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1178,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1210,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1241,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1434,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1453,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1464,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1572,
+              "label": "End credit"
+            }
+          ]
+        },
+        {
+          "videoId": "2OaRH0KsJnk",
+          "title": "Fizz Mid vs Zed - KR Master Patch 25.11",
+          "rankClaim": "Master",
+          "patch": "25.11",
+          "durationSec": 2053,
+          "region": "KR",
+          "uploaded": "2025-06-04",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 245,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "UjBvsOot8mE",
+          "title": "Fizz Jungle vs Ekko - KR Challenger Patch 26.05",
+          "rankClaim": "Challenger",
+          "patch": "26.5",
+          "durationSec": 1714,
+          "region": "KR",
+          "uploaded": "2026-03-10",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 119,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 287,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 374,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 446,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 699,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 873,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 926,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1031,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1060,
+              "label": "Hunt The Rift Herald",
+              "kind": "herald"
+            },
+            {
+              "atSec": 1082,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1129,
+              "label": "Hunt The Dragon",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1346,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1380,
+              "label": "Hunt The Baron Nashor",
+              "kind": "baron"
+            },
+            {
+              "atSec": 1455,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1481,
+              "label": "Hunt The Dragon",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1514,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1654,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1703,
+              "label": "End credit"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 246,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "ifrDXGzwUGM",
+          "title": "Fizz Jungle vs Qiyana - KR Challenger Patch 26.18",
+          "rankClaim": "Challenger",
+          "patch": "26.18",
+          "durationSec": 1449,
+          "region": "KR",
+          "uploaded": "2026-09-25",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 254,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "VYQ36MPM2lA",
+          "title": "Fizz Jungle vs Vi - KR Challenger Patch 26.11",
+          "rankClaim": "Challenger",
+          "patch": "26.11",
+          "durationSec": 1565,
+          "region": "KR",
+          "uploaded": "2026-06-09",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 268,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "KClGudLgwoM",
+          "title": "Fizz Mid vs Azir - KR Master Patch 25.17",
+          "rankClaim": "Master",
+          "patch": "25.17",
+          "durationSec": 1601,
+          "region": "KR",
+          "uploaded": "2025-09-05",
+          "moments": []
+        },
+        {
+          "videoId": "NbtVII4HGcA",
+          "title": "Fizz vs Azir Mid - KR Master - Patch 25.9 Season 15",
+          "rankClaim": "Master",
+          "patch": "25.9",
+          "durationSec": 1681,
+          "region": "KR",
+          "uploaded": "2025-05-13",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 421,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "ESRf5zN8ADc",
+          "title": "Fizz Jungle vs Rek'Sai - KR Grandmaster Patch 26.14",
+          "rankClaim": "Grandmaster",
+          "patch": "26.14",
+          "durationSec": 1649,
+          "region": "KR",
+          "uploaded": "2026-07-26",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 427,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "auEaI11vGDE",
+          "title": "Fizz Mid vs Ivern - EUW Challenger Patch 26.04",
+          "rankClaim": "Challenger",
+          "patch": "26.4",
+          "durationSec": 1486,
+          "region": "EUW",
+          "uploaded": "2026-03-01",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 517,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "Y1B8n_KHzWQ",
+          "title": "Fizz vs Sylas Mid - KR Grandmaster - Patch 16.06 Season 16",
+          "rankClaim": "Grandmaster",
+          "patch": "26.6",
+          "durationSec": 1741,
+          "region": "KR",
+          "uploaded": "2026-03-29",
+          "moments": []
+        },
+        {
+          "videoId": "0ZSupFBVpMk",
+          "title": "Fizz vs Sylas Mid - KR Grandmaster - Patch 25.24 Season 15",
+          "rankClaim": "Grandmaster",
+          "patch": "25.24",
+          "durationSec": 1756,
+          "region": "KR",
+          "uploaded": "2025-12-24",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 711,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "KjW4k09h7WY",
+          "title": "Fizz vs Vex [ MID ] Lol Korea Master Patch 25.22 ✅",
+          "rankClaim": "Master",
+          "patch": "25.22",
+          "durationSec": 1450,
+          "region": "KR",
+          "uploaded": "2025-11-18",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 777,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "u18hDVM7m74",
+          "title": "Fizz vs Yone [ MID ] Lol Korea Master Patch 25.17 ✅",
+          "rankClaim": "Master",
+          "patch": "25.17",
+          "durationSec": 1505,
+          "region": "KR",
+          "uploaded": "2025-09-07",
+          "moments": []
+        },
+        {
+          "videoId": "qzA7EIk_tw8",
+          "title": "Fizz Mid vs Yone - NA Grandmaster Patch 25.14",
+          "rankClaim": "Grandmaster",
+          "patch": "25.14",
+          "durationSec": 1850,
+          "region": "NA",
+          "uploaded": "2025-08-01",
+          "moments": []
+        },
+        {
+          "videoId": "azcqtr-8t6g",
+          "title": "Fizz Mid vs Yone - KR Grandmaster Patch 25.05",
+          "rankClaim": "Grandmaster",
+          "patch": "25.5",
+          "durationSec": 1918,
+          "region": "KR",
+          "uploaded": "2025-03-13",
+          "moments": []
+        },
+        {
+          "videoId": "A6m9LM_CKnw",
+          "title": "Fizz vs Yone Mid - EUW Grandmaster - Patch 15.4 Season 15",
+          "rankClaim": "Grandmaster",
+          "patch": "25.4",
+          "durationSec": 1591,
+          "region": "EUW",
+          "uploaded": "2025-03-03",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 799,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "lOMC0iab3fA",
+          "title": "Fizz Jungle vs Ambessa - KR Master Patch 26.10",
+          "rankClaim": "Master",
+          "patch": "26.10",
+          "durationSec": 1544,
+          "region": "KR",
+          "uploaded": "2026-05-21",
+          "moments": []
+        },
+        {
+          "videoId": "cDQM4oPdCCQ",
+          "title": "Fizz Jungle vs Ambessa - EUW Challenger Patch 26.03",
+          "rankClaim": "Challenger",
+          "patch": "26.3",
+          "durationSec": 1908,
+          "region": "EUW",
+          "uploaded": "2026-02-18",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 123,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 300,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 415,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 561,
+              "label": "Hunt The Void Grubs",
+              "kind": "grubs"
+            },
+            {
+              "atSec": 696,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 734,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 800,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 927,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 946,
+              "label": "Hunt The Dragon",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 970,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1027,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1050,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1146,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1199,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1225,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1363,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1501,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1581,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1644,
+              "label": "Hunt The Baron Nashor",
+              "kind": "baron"
+            },
+            {
+              "atSec": 1661,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1715,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1739,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1822,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1897,
+              "label": "End credit"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 799,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "NqgH6kc-Tjc",
+          "title": "Fizz vs Ambessa Mid - EUW Grandmaster - Patch 15.4 Season 15",
+          "rankClaim": "Grandmaster",
+          "patch": "25.4",
+          "durationSec": 1593,
+          "region": "EUW",
+          "uploaded": "2025-02-28",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 800,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "6avIu7-Lvj0",
+          "title": "Fizz Mid vs Mel - KR Master Patch 25.08",
+          "rankClaim": "Master",
+          "patch": "25.8",
+          "durationSec": 1510,
+          "region": "KR",
+          "uploaded": "2025-04-24",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 339,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 583,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 665,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 774,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 855,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 895,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1059,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1086,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1148,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1184,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1213,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1347,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1437,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1458,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1489,
+              "label": "End credit"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 805,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "F2QRZB-HU4k",
+          "title": "Fizz Mid vs Locke - KR Grandmaster Patch 26.19",
+          "rankClaim": "Grandmaster",
+          "patch": "26.19",
+          "durationSec": 1847,
+          "region": "KR",
+          "uploaded": "2026-09-30",
+          "result": "W",
+          "moments": [
+            {
+              "atSec": 91,
+              "label": "First Blood — Fizz kills Locke",
+              "kind": "kill"
+            },
+            {
+              "atSec": 269,
+              "label": "Rek'Sai kills Leona",
+              "kind": "kill"
+            },
+            {
+              "atSec": 313,
+              "label": "Fizz picks off Shaco"
+            },
+            {
+              "atSec": 443,
+              "label": "Rek'Sai takes down Shaco"
+            },
+            {
+              "atSec": 503,
+              "label": "Blue takes 1st Dragon (Ocean)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 574,
+              "label": "Fizz picks off Shaco"
+            },
+            {
+              "atSec": 667,
+              "label": "Fizz takes down Locke"
+            },
+            {
+              "atSec": 767,
+              "label": "Fizz catches Locke again"
+            },
+            {
+              "atSec": 829,
+              "label": "Rek'Sai kills Yasuo",
+              "kind": "kill"
+            },
+            {
+              "atSec": 861,
+              "label": "Blue takes 2nd Dragon (Infernal)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1133,
+              "label": "Fizz outplays Yasuo"
+            },
+            {
+              "atSec": 1175,
+              "label": "Red takes 1st Dragon (Cloud)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1418,
+              "label": "Fizz kills Yunara",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1488,
+              "label": "Red takes Baron",
+              "kind": "baron"
+            },
+            {
+              "atSec": 1578,
+              "label": "Fizz kills Yunara",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1591,
+              "label": "Blue takes 3rd Dragon (Cloud)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1758,
+              "label": "Team fight (3 kills)",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1786,
+              "label": "Mid Inhibitor falls (Blue)"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 893,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "f7fIJApQf20",
+          "title": "Fizz Top vs Aurora - EUW Grandmaster Patch 25.04",
+          "rankClaim": "Grandmaster",
+          "patch": "25.4",
+          "durationSec": 1491,
+          "region": "EUW",
+          "uploaded": "2025-03-02",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 904,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "u4UCMDgAqmY",
+          "title": "(FNC Razork) Fizz Jungle vs Zaahen - EUW Master Patch 26.13",
+          "rankClaim": "Master",
+          "patch": "26.13",
+          "durationSec": 1446,
+          "region": "EUW",
+          "player": "Razork",
+          "team": "FNC",
+          "uploaded": "2026-07-11",
+          "result": "L",
+          "moments": [
+            {
+              "atSec": 65,
+              "label": "First Blood — Fizz kills Zaahen",
+              "kind": "kill"
+            },
+            {
+              "atSec": 332,
+              "label": "Red takes 1st Dragon (Chemtech)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 655,
+              "label": "Red takes 2nd Dragon (Cloud)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 714,
+              "label": "Tristana eliminates Galio"
+            },
+            {
+              "atSec": 792,
+              "label": "Team fight (4 kills)",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 901,
+              "label": "Tristana picks off Zaahen"
+            },
+            {
+              "atSec": 933,
+              "label": "Red takes Rift Herald",
+              "kind": "herald"
+            },
+            {
+              "atSec": 967,
+              "label": "Fizz takes down Zaahen"
+            },
+            {
+              "atSec": 979,
+              "label": "Red takes 3rd Dragon (Infernal)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1027,
+              "label": "Fizz Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1136,
+              "label": "Fizz kills Darius",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1226,
+              "label": "Fizz kills Darius",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1257,
+              "label": "Tristana kills Brand",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1297,
+              "label": "Top Inhibitor falls (Blue)"
+            },
+            {
+              "atSec": 1333,
+              "label": "Red takes 4th Dragon (Infernal)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1368,
+              "label": "Team fight (3 kills)",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1386,
+              "label": "Mid Inhibitor falls (Blue)"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 910,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "hr-YqNdr4w8",
+          "title": "Fizz Mid vs Hwei - EUW Grandmaster Patch 25.09",
+          "rankClaim": "Grandmaster",
+          "patch": "25.9",
+          "durationSec": 1932,
+          "region": "EUW",
+          "uploaded": "2025-05-15",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 202,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 290,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 469,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 655,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 761,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 864,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 895,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 956,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1025,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1150,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1211,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1280,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1367,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1478,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1581,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1645,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1696,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1719,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1743,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1758,
+              "label": "Take down The Inhibitor"
+            },
+            {
+              "atSec": 1844,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1911,
+              "label": "End credit"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

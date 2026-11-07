@@ -1,0 +1,2239 @@
+{
+  "schema": 1,
+  "champion": 201,
+  "generatedAt": "2026-11-07T13:25:14.592Z",
+  "guides": [],
+  "general": [
+    {
+      "champion": 201,
+      "lane": "support",
+      "patch": "26.21",
+      "reviewed": false,
+      "keyTips": [
+        {
+          "text": "Look for a level-2 all-in with Q and W the moment the lane partner can follow.",
+          "scope": "champion",
+          "sourceIds": [
+            "mobalytics-braum"
+          ],
+          "abilityKeys": [
+            {
+              "champion": 201,
+              "key": "Q"
+            },
+            {
+              "champion": 201,
+              "key": "W"
+            }
+          ]
+        },
+        {
+          "text": "Save E for a meaningful threat; without it, both Braum and the ADC turn punishable.",
+          "scope": "champion",
+          "sourceIds": [
+            "mobalytics-braum"
+          ],
+          "abilityKeys": [
+            {
+              "champion": 201,
+              "key": "E"
+            }
+          ]
+        },
+        {
+          "text": "Accept the missing routine engage tool and start fights through an R pick or a Flash-assisted initiation.",
+          "scope": "champion",
+          "sourceIds": [
+            "mobalytics-braum"
+          ],
+          "abilityKeys": [
+            {
+              "champion": 201,
+              "key": "R"
+            }
+          ]
+        }
+      ],
+      "sections": {
+        "overview": {
+          "tips": []
+        },
+        "early-lane": {
+          "tips": [
+            {
+              "text": "Answer enemy engages with Q and the passive, especially against melee divers.",
+              "scope": "champion",
+              "sourceIds": [
+                "mobalytics-braum"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 201,
+                  "key": "Q"
+                }
+              ]
+            },
+            {
+              "text": "Position tightly into ranged lanes so poke never forces an early recall.",
+              "scope": "champion",
+              "sourceIds": [
+                "mobalytics-braum"
+              ]
+            },
+            {
+              "text": "At level 3, use the full basic kit for both defensive answers and extra lane pressure.",
+              "scope": "champion",
+              "sourceIds": [
+                "mobalytics-braum"
+              ]
+            },
+            {
+              "text": "At level 6, carry a pick and initiation threat by pairing R with Flash for a safe start.",
+              "scope": "champion",
+              "sourceIds": [
+                "mobalytics-braum"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 201,
+                  "key": "R"
+                }
+              ]
+            }
+          ]
+        },
+        "mid-lane": {
+          "tips": [
+            {
+              "text": "Roam with R ready to catch someone, then bring nearby allies to turn the pick into an objective.",
+              "scope": "champion",
+              "sourceIds": [
+                "mobalytics-braum"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 201,
+                  "key": "R"
+                }
+              ]
+            },
+            {
+              "text": "Cover mid and the ADC area with vision to cut down all-in risk.",
+              "scope": "champion",
+              "sourceIds": [
+                "mobalytics-braum"
+              ]
+            },
+            {
+              "text": "Stay with the ADC, since either lone member invites a collapse.",
+              "scope": "champion",
+              "sourceIds": [
+                "mobalytics-braum"
+              ]
+            },
+            {
+              "text": "Rush upgraded boots for earlier roams and first arrival at lane skirmishes.",
+              "scope": "champion",
+              "sourceIds": [
+                "mobalytics-braum"
+              ]
+            },
+            {
+              "text": "At level 9, use maxed Q and its lower cooldown for more catch attempts.",
+              "scope": "champion",
+              "sourceIds": [
+                "mobalytics-braum"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 201,
+                  "key": "Q"
+                }
+              ]
+            },
+            {
+              "text": "At level 11, press the second R rank for extra damage and a shorter cooldown as teams group.",
+              "scope": "champion",
+              "sourceIds": [
+                "mobalytics-braum"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 201,
+                  "key": "R"
+                }
+              ]
+            },
+            {
+              "text": "Break grouped opponents apart with the R area knock-up through mid-game fights.",
+              "scope": "champion",
+              "sourceIds": [
+                "mobalytics-braum"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 201,
+                  "key": "R"
+                }
+              ]
+            }
+          ]
+        },
+        "win-condition": {
+          "tips": [
+            {
+              "text": "Stay with the team late and shield carries with E and frontline presence.",
+              "scope": "champion",
+              "sourceIds": [
+                "mobalytics-braum"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 201,
+                  "key": "E"
+                }
+              ]
+            },
+            {
+              "text": "Spend R to disrupt a fight or catch someone in the jungle, then take the nearby objective with teammates.",
+              "scope": "champion",
+              "sourceIds": [
+                "mobalytics-braum"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 201,
+                  "key": "R"
+                }
+              ]
+            },
+            {
+              "text": "Never ward late alone; one catch hands the enemy numbers around an objective.",
+              "scope": "champion",
+              "sourceIds": [
+                "mobalytics-braum"
+              ]
+            },
+            {
+              "text": "Hold Baron and Dragon vision so the team keeps securing objectives and finding picks.",
+              "scope": "champion",
+              "sourceIds": [
+                "mobalytics-braum"
+              ]
+            },
+            {
+              "text": "At level 13, rely on maxed E for stronger carry protection.",
+              "scope": "champion",
+              "sourceIds": [
+                "mobalytics-braum"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 201,
+                  "key": "E"
+                }
+              ]
+            },
+            {
+              "text": "At level 16, use the third R rank as another teamfight spike with a shorter wait until the next cast.",
+              "scope": "champion",
+              "sourceIds": [
+                "mobalytics-braum"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 201,
+                  "key": "R"
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "itemization": [],
+      "sources": [
+        {
+          "id": "mobalytics-braum",
+          "author": "Mobalytics",
+          "rankClaim": "No rank claim",
+          "url": "https://mobalytics.gg/lol/champions/braum/guide",
+          "kind": "web"
+        }
+      ]
+    }
+  ],
+  "vods": [
+    {
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "-s0KFWGSGaY",
+          "title": "I PLAYED BRAUM TOP SO YOU DON'T HAVE TO...",
+          "rankClaim": "Master+",
+          "patch": "26.9",
+          "durationSec": 2079,
+          "patchEstimated": true,
+          "player": "Makkro",
+          "uploaded": "2026-04-30",
+          "format": "stream",
+          "cam": true,
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 1,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "3oCCWaTf7Wc",
+          "title": "(SK Mikyx) Braum Support vs Annie - EUW Challenger Patch 26.16",
+          "rankClaim": "Challenger",
+          "patch": "26.16",
+          "durationSec": 1573,
+          "region": "EUW",
+          "player": "SK Mikyx",
+          "uploaded": "2026-08-19",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 12,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "hE9aSm0gLSU",
+          "title": "Braum Support vs Alistar - KR Challenger Patch 26.08",
+          "rankClaim": "Challenger",
+          "patch": "26.8",
+          "durationSec": 1658,
+          "region": "KR",
+          "uploaded": "2026-04-30",
+          "moments": []
+        },
+        {
+          "videoId": "ounMUCS_g0s",
+          "title": "Braum Support vs Alistar - EUW Challenger Patch 26.06",
+          "rankClaim": "Challenger",
+          "patch": "26.6",
+          "durationSec": 1691,
+          "region": "EUW",
+          "uploaded": "2026-03-22",
+          "moments": []
+        },
+        {
+          "videoId": "A3OxEQToAGg",
+          "title": "Braum Support vs Alistar - EUW Challenger Patch 26.01",
+          "rankClaim": "Challenger",
+          "patch": "26.1",
+          "durationSec": 1507,
+          "region": "EUW",
+          "uploaded": "2026-01-22",
+          "moments": []
+        },
+        {
+          "videoId": "2nnJ9Rj60k0",
+          "title": "Braum Support vs Alistar - EUW Challenger Patch 25.18",
+          "rankClaim": "Challenger",
+          "patch": "25.18",
+          "durationSec": 1628,
+          "region": "EUW",
+          "uploaded": "2025-09-24",
+          "moments": []
+        },
+        {
+          "videoId": "rKSfFKv9Vzo",
+          "title": "Braum Support vs Alistar - EUW Challenger Patch 25.08",
+          "rankClaim": "Challenger",
+          "patch": "25.8",
+          "durationSec": 1993,
+          "region": "EUW",
+          "uploaded": "2025-05-02",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 16,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "Gch8HQDiPFQ",
+          "title": "Braum Support vs Soraka - KR Grandmaster Patch 25.05",
+          "rankClaim": "Grandmaster",
+          "patch": "25.5",
+          "durationSec": 1745,
+          "region": "KR",
+          "uploaded": "2025-03-08",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 35,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "946a4_2FSxg",
+          "title": "Braum Support vs Shaco - KR Master Patch 25.13",
+          "rankClaim": "Master",
+          "patch": "25.13",
+          "durationSec": 2049,
+          "region": "KR",
+          "uploaded": "2025-07-17",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 40,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "tHP6kys16l4",
+          "title": "(FK Targamas) Braum Support vs Janna - EUW Challenger Patch 26.11",
+          "rankClaim": "Challenger",
+          "patch": "26.11",
+          "durationSec": 1748,
+          "region": "EUW",
+          "player": "FK Targamas",
+          "uploaded": "2026-06-03",
+          "moments": []
+        },
+        {
+          "videoId": "blDR5MRA6ZM",
+          "title": "Braum Support vs Janna - TW Challenger Patch 25.24",
+          "rankClaim": "Challenger",
+          "patch": "25.24",
+          "durationSec": 1442,
+          "uploaded": "2026-01-09",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 43,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "V6ijoszJCrU",
+          "title": "(VITB Dekap) Braum Support vs Karma - EUW Challenger Patch 26.13",
+          "rankClaim": "Challenger",
+          "patch": "26.13",
+          "durationSec": 1786,
+          "region": "EUW",
+          "player": "VITB Dekap",
+          "uploaded": "2026-07-12",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 44,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "mEq6gj4pIt8",
+          "title": "Braum Support vs Taric - KR Challenger Patch 26.21",
+          "rankClaim": "Challenger",
+          "patch": "26.21",
+          "durationSec": 1871,
+          "region": "KR",
+          "uploaded": "2026-11-04",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 53,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "mlSWggw16eY",
+          "title": "Braum Support vs Blitzcrank - KR Master Patch 26.19",
+          "rankClaim": "Master",
+          "patch": "26.19",
+          "durationSec": 1834,
+          "region": "KR",
+          "uploaded": "2026-09-27",
+          "moments": []
+        },
+        {
+          "videoId": "vabwBJpzbbc",
+          "title": "(SK Mikyx) Braum Support vs Blitzcrank - EUW Grandmaster Patch 26.12",
+          "rankClaim": "Grandmaster",
+          "patch": "26.12",
+          "durationSec": 1572,
+          "region": "EUW",
+          "player": "SK Mikyx",
+          "uploaded": "2026-06-15",
+          "moments": []
+        },
+        {
+          "videoId": "5mo8KWVmKoI",
+          "title": "Braum Support vs Blitzcrank - EUW Challenger Patch 25.22",
+          "rankClaim": "Challenger",
+          "patch": "25.22",
+          "durationSec": 1713,
+          "region": "EUW",
+          "uploaded": "2025-11-20",
+          "moments": []
+        },
+        {
+          "videoId": "kQZiyy8R970",
+          "title": "Braum Support vs Blitzcrank - EUW Challenger Patch 25.19",
+          "rankClaim": "Challenger",
+          "patch": "25.19",
+          "durationSec": 1685,
+          "region": "EUW",
+          "uploaded": "2025-10-09",
+          "moments": []
+        },
+        {
+          "videoId": "s56IIMtJv0o",
+          "title": "Braum Support vs Blitzcrank - EUW Challenger Patch 25.12",
+          "rankClaim": "Challenger",
+          "patch": "25.12",
+          "durationSec": 1676,
+          "region": "EUW",
+          "uploaded": "2025-06-25",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 54,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "m11Zziu4Tus",
+          "title": "Braum Support vs Malphite - KR Master Patch 26.20",
+          "rankClaim": "Master",
+          "patch": "26.20",
+          "durationSec": 1640,
+          "region": "KR",
+          "uploaded": "2026-10-10",
+          "result": "W",
+          "moments": [
+            {
+              "atSec": 353,
+              "label": "Red takes 1st Dragon (Mountain)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 423,
+              "label": "First Blood — Caitlyn kills Malphite",
+              "kind": "kill"
+            },
+            {
+              "atSec": 460,
+              "label": "Lee Sin Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 673,
+              "label": "Caitlyn takes down Jhin"
+            },
+            {
+              "atSec": 743,
+              "label": "Lee Sin kills Malphite",
+              "kind": "kill"
+            },
+            {
+              "atSec": 824,
+              "label": "Fiora eliminates Pantheon"
+            },
+            {
+              "atSec": 841,
+              "label": "Red takes 2nd Dragon (Ocean)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 994,
+              "label": "Caitlyn picks off Malphite"
+            },
+            {
+              "atSec": 1118,
+              "label": "Lee Sin picks off Locke"
+            },
+            {
+              "atSec": 1178,
+              "label": "Red takes 3rd Dragon (Cloud)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1318,
+              "label": "Team fight (4 kills)",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1412,
+              "label": "Twisted Fate takes down Malphite"
+            },
+            {
+              "atSec": 1415,
+              "label": "Blue takes Baron",
+              "kind": "baron"
+            },
+            {
+              "atSec": 1460,
+              "label": "Mid Inhibitor falls (Red)"
+            },
+            {
+              "atSec": 1499,
+              "label": "Twisted Fate takes down Pantheon"
+            },
+            {
+              "atSec": 1517,
+              "label": "Top Inhibitor falls (Red)"
+            },
+            {
+              "atSec": 1535,
+              "label": "Red takes 4th Dragon (Cloud)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1599,
+              "label": "Team fight (5 kills)",
+              "kind": "teamfight"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 60,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "UlO8W7jl2ww",
+          "title": "(NR Jango) Braum Support vs Elise (Prime) - EUW Challenger Patch 26.19",
+          "rankClaim": "Challenger",
+          "patch": "26.19",
+          "durationSec": 1900,
+          "region": "EUW",
+          "player": "NR Jango",
+          "uploaded": "2026-10-07",
+          "result": "W",
+          "moments": [
+            {
+              "atSec": 492,
+              "label": "Red takes 1st Dragon (Ocean)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 672,
+              "label": "First Blood — Ashe kills Tristana",
+              "kind": "kill"
+            },
+            {
+              "atSec": 712,
+              "label": "Ashe kills Zoe",
+              "kind": "kill"
+            },
+            {
+              "atSec": 805,
+              "label": "Red takes 2nd Dragon (Hextech)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 859,
+              "label": "Yone takes down Jax"
+            },
+            {
+              "atSec": 902,
+              "label": "Yone kills Tristana",
+              "kind": "kill"
+            },
+            {
+              "atSec": 967,
+              "label": "Ornn eliminates Elise"
+            },
+            {
+              "atSec": 1161,
+              "label": "Blue takes 1st Dragon (Cloud)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1223,
+              "label": "Yone picks off Nunu & Willump"
+            },
+            {
+              "atSec": 1252,
+              "label": "Ashe takes down Tristana"
+            },
+            {
+              "atSec": 1437,
+              "label": "Yone kills Tristana",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1474,
+              "label": "Blue takes 2nd Dragon (Cloud)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1588,
+              "label": "Blue takes Baron",
+              "kind": "baron"
+            },
+            {
+              "atSec": 1664,
+              "label": "Ornn eliminates Elise"
+            },
+            {
+              "atSec": 1771,
+              "label": "Ashe picks off Elise"
+            },
+            {
+              "atSec": 1811,
+              "label": "Mid Inhibitor falls (Red)"
+            },
+            {
+              "atSec": 1817,
+              "label": "Bot Inhibitor falls (Red)"
+            },
+            {
+              "atSec": 1845,
+              "label": "Ornn Double Kill",
+              "kind": "kill"
+            }
+          ]
+        },
+        {
+          "videoId": "l3hAFiennew",
+          "title": "Braum Support vs Elise - EUW Challenger Patch 26.03",
+          "rankClaim": "Challenger",
+          "patch": "26.3",
+          "durationSec": 1560,
+          "region": "EUW",
+          "uploaded": "2026-02-20",
+          "moments": []
+        },
+        {
+          "videoId": "gNGPDuPMRmA",
+          "title": "Braum Support vs Elise - KR Challenger Patch 25.21",
+          "rankClaim": "Challenger",
+          "patch": "25.21",
+          "durationSec": 1569,
+          "region": "KR",
+          "uploaded": "2025-10-27",
+          "moments": []
+        },
+        {
+          "videoId": "c-Y_IEWfPkk",
+          "title": "Braum Support vs Elise - KR Grandmaster Patch 25.04",
+          "rankClaim": "Grandmaster",
+          "patch": "25.4",
+          "durationSec": 1665,
+          "region": "KR",
+          "uploaded": "2025-03-06",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 76,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "lZr4dxo22GA",
+          "title": "Braum Support vs Nidalee - KR Challenger Patch 26.08",
+          "rankClaim": "Challenger",
+          "patch": "26.8",
+          "durationSec": 1736,
+          "region": "KR",
+          "uploaded": "2026-04-20",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 78,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "U-7dvYPehks",
+          "title": "Braum Support vs Poppy - KR Master Patch 25.09",
+          "rankClaim": "Master",
+          "patch": "25.9",
+          "durationSec": 1610,
+          "region": "KR",
+          "uploaded": "2025-05-04",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 89,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "lPwHVhv66uY",
+          "title": "(ALMO CrabLord) Braum Support vs Leona (jesper) - EUW Master Patch 26.21",
+          "rankClaim": "Master",
+          "patch": "26.21",
+          "durationSec": 1680,
+          "region": "EUW",
+          "player": "ALMO CrabLord",
+          "uploaded": "2026-10-26",
+          "result": "W",
+          "moments": [
+            {
+              "atSec": 97,
+              "label": "First Blood — Jhin kills Leona",
+              "kind": "kill"
+            },
+            {
+              "atSec": 403,
+              "label": "Blue takes 1st Dragon (Infernal)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 635,
+              "label": "Viktor eliminates Aurora"
+            },
+            {
+              "atSec": 665,
+              "label": "Braum eliminates Leona"
+            },
+            {
+              "atSec": 736,
+              "label": "Blue takes 2nd Dragon (Mountain)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 826,
+              "label": "Jhin takes down Miss Fortune"
+            },
+            {
+              "atSec": 1024,
+              "label": "Jhin Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1029,
+              "label": "Jhin Triple Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1038,
+              "label": "Jhin Quadra Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1072,
+              "label": "Blue takes 3rd Dragon (Hextech)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1119,
+              "label": "Jhin eliminates Quinn"
+            },
+            {
+              "atSec": 1399,
+              "label": "Jhin picks off Leona"
+            },
+            {
+              "atSec": 1470,
+              "label": "Blue takes 4th Dragon (Hextech)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1550,
+              "label": "Blue takes Baron",
+              "kind": "baron"
+            },
+            {
+              "atSec": 1558,
+              "label": "Jhin picks off Ambessa"
+            },
+            {
+              "atSec": 1602,
+              "label": "Mid Inhibitor falls (Red)"
+            },
+            {
+              "atSec": 1629,
+              "label": "Ornn Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1639,
+              "label": "Ornn Triple Kill",
+              "kind": "kill"
+            }
+          ]
+        },
+        {
+          "videoId": "laaPZQwZ10U",
+          "title": "Braum Support vs Leona - KR Challenger Patch 26.15",
+          "rankClaim": "Challenger",
+          "patch": "26.15",
+          "durationSec": 1491,
+          "region": "KR",
+          "uploaded": "2026-08-09",
+          "moments": []
+        },
+        {
+          "videoId": "CGEeuG94DWY",
+          "title": "Braum Support vs Leona - KR Challenger Patch 26.04",
+          "rankClaim": "Challenger",
+          "patch": "26.4",
+          "durationSec": 1811,
+          "region": "KR",
+          "uploaded": "2026-02-22",
+          "moments": []
+        },
+        {
+          "videoId": "wc9fj49KZaQ",
+          "title": "Braum Support vs Leona - NA Grandmaster Patch 25.24",
+          "rankClaim": "Grandmaster",
+          "patch": "25.24",
+          "durationSec": 1550,
+          "region": "NA",
+          "uploaded": "2026-01-02",
+          "moments": []
+        },
+        {
+          "videoId": "_MhU23K0-P4",
+          "title": "Braum Support vs Leona - KR Challenger Patch 25.23",
+          "rankClaim": "Challenger",
+          "patch": "25.23",
+          "durationSec": 1853,
+          "region": "KR",
+          "uploaded": "2025-11-22",
+          "moments": []
+        },
+        {
+          "videoId": "_GQXk5rmlNE",
+          "title": "Braum Support vs Leona - KR Grandmaster Patch 25.08",
+          "rankClaim": "Grandmaster",
+          "patch": "25.8",
+          "durationSec": 1692,
+          "region": "KR",
+          "uploaded": "2025-04-20",
+          "moments": []
+        },
+        {
+          "videoId": "mwPSxjjzRLk",
+          "title": "Braum Support vs Leona - EUW Challenger Patch 25.05",
+          "rankClaim": "Challenger",
+          "patch": "25.5",
+          "durationSec": 1510,
+          "region": "EUW",
+          "uploaded": "2025-03-18",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 111,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "zonix3EklR4",
+          "title": "Braum Support vs Nautilus - KR Challenger Patch 26.20",
+          "rankClaim": "Challenger",
+          "patch": "26.20",
+          "durationSec": 1693,
+          "region": "KR",
+          "uploaded": "2026-10-21",
+          "result": "W",
+          "moments": [
+            {
+              "atSec": 296,
+              "label": "First Blood — Caitlyn kills Nidalee",
+              "kind": "kill"
+            },
+            {
+              "atSec": 473,
+              "label": "Red takes 1st Dragon (Cloud)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 706,
+              "label": "Gangplank Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 774,
+              "label": "Braum kills Nidalee",
+              "kind": "kill"
+            },
+            {
+              "atSec": 802,
+              "label": "Blue takes 1st Dragon (Infernal)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 928,
+              "label": "Kindred takes down Nidalee"
+            },
+            {
+              "atSec": 1118,
+              "label": "Blue takes 2nd Dragon (Chemtech)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1182,
+              "label": "Red takes Baron",
+              "kind": "baron"
+            },
+            {
+              "atSec": 1252,
+              "label": "Kindred kills Nautilus",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1340,
+              "label": "Caitlyn picks off Jayce"
+            },
+            {
+              "atSec": 1371,
+              "label": "Gangplank takes down Syndra"
+            },
+            {
+              "atSec": 1402,
+              "label": "Kindred kills Nautilus",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1430,
+              "label": "Blue takes 3rd Dragon (Chemtech)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1535,
+              "label": "Gangplank takes down Syndra"
+            },
+            {
+              "atSec": 1569,
+              "label": "Mid Inhibitor falls (Blue)"
+            },
+            {
+              "atSec": 1649,
+              "label": "Kindred Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1653,
+              "label": "Kindred Triple Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1670,
+              "label": "Mid Inhibitor falls (Red)"
+            }
+          ]
+        },
+        {
+          "videoId": "o7CFCwXWuOI",
+          "title": "Braum Support vs Nautilus - KR Challenger Patch 26.06",
+          "rankClaim": "Challenger",
+          "patch": "26.6",
+          "durationSec": 1599,
+          "region": "KR",
+          "uploaded": "2026-04-02",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 361,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 508,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 627,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 713,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 813,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 866,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1062,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1146,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1230,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1286,
+              "label": "Hunt The Baron Nashor",
+              "kind": "baron"
+            },
+            {
+              "atSec": 1424,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1588,
+              "label": "End credit"
+            }
+          ]
+        },
+        {
+          "videoId": "n3Q4KT89JP0",
+          "title": "Braum Support vs Nautilus - KR Master Patch 26.05",
+          "rankClaim": "Master",
+          "patch": "26.5",
+          "durationSec": 1546,
+          "region": "KR",
+          "uploaded": "2026-03-16",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 55,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 130,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 483,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 570,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 669,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 709,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 756,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 839,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 921,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1023,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1053,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1074,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1177,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1285,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1385,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1427,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1445,
+              "label": "Take down The Inhibitor"
+            },
+            {
+              "atSec": 1458,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1510,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1535,
+              "label": "End credit"
+            }
+          ]
+        },
+        {
+          "videoId": "Nesvn2kQCAA",
+          "title": "Braum Support vs Nautilus - EUW Grandmaster Patch 26.05",
+          "rankClaim": "Grandmaster",
+          "patch": "26.5",
+          "durationSec": 1481,
+          "region": "EUW",
+          "uploaded": "2026-03-07",
+          "moments": []
+        },
+        {
+          "videoId": "4LuNNq9QEBw",
+          "title": "Braum Support vs Nautilus - EUW Challenger Patch 26.04",
+          "rankClaim": "Challenger",
+          "patch": "26.4",
+          "durationSec": 1490,
+          "region": "EUW",
+          "uploaded": "2026-03-06",
+          "moments": []
+        },
+        {
+          "videoId": "r1N0GYDdSy0",
+          "title": "Braum Support vs Nautilus - EUW Grandmaster Patch 26.02",
+          "rankClaim": "Grandmaster",
+          "patch": "26.2",
+          "durationSec": 1469,
+          "region": "EUW",
+          "uploaded": "2026-02-06",
+          "moments": []
+        },
+        {
+          "videoId": "BlGZ_r3Nzi0",
+          "title": "Braum Support vs Nautilus - EUW Grandmaster Patch 25.21",
+          "rankClaim": "Grandmaster",
+          "patch": "25.21",
+          "durationSec": 1675,
+          "region": "EUW",
+          "uploaded": "2025-11-06",
+          "moments": []
+        },
+        {
+          "videoId": "FpxF-Oha-xM",
+          "title": "Braum Support vs Nautilus - KR Master Patch 25.16",
+          "rankClaim": "Master",
+          "patch": "25.16",
+          "durationSec": 1806,
+          "region": "KR",
+          "uploaded": "2025-08-16",
+          "moments": []
+        },
+        {
+          "videoId": "opcsEfa99fY",
+          "title": "Braum Support vs Nautilus - EUW Challenger Patch 25.13",
+          "rankClaim": "Challenger",
+          "patch": "25.13",
+          "durationSec": 1424,
+          "region": "EUW",
+          "uploaded": "2025-07-10",
+          "moments": []
+        },
+        {
+          "videoId": "dj0qO7hZx48",
+          "title": "Braum Support vs Nautilus - KR Grandmaster Patch 25.12",
+          "rankClaim": "Grandmaster",
+          "patch": "25.12",
+          "durationSec": 1432,
+          "region": "KR",
+          "uploaded": "2025-06-15",
+          "moments": []
+        },
+        {
+          "videoId": "3dPHzEl67-I",
+          "title": "Braum Support vs Nautilus - NA Challenger Patch 25.11",
+          "rankClaim": "Challenger",
+          "patch": "25.11",
+          "durationSec": 1717,
+          "region": "NA",
+          "uploaded": "2025-06-12",
+          "moments": []
+        },
+        {
+          "videoId": "AqBUIQrt2SE",
+          "title": "Braum Support vs Nautilus - EUW Challenger Patch 25.09",
+          "rankClaim": "Challenger",
+          "patch": "25.9",
+          "durationSec": 1694,
+          "region": "EUW",
+          "uploaded": "2025-05-13",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 166,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 364,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 576,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 703,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 852,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 986,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1089,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1228,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1356,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1384,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1477,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1560,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1589,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1607,
+              "label": "Take down The Inhibitor"
+            },
+            {
+              "atSec": 1623,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1652,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1663,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1673,
+              "label": "End credit"
+            }
+          ]
+        },
+        {
+          "videoId": "ng5zd_8KzHg",
+          "title": "Braum Support vs Nautilus - EUW Grandmaster Patch 25.07",
+          "rankClaim": "Grandmaster",
+          "patch": "25.7",
+          "durationSec": 1885,
+          "region": "EUW",
+          "uploaded": "2025-04-17",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 95,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 342,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 427,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 480,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 542,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 706,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 805,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 893,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 970,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 998,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1072,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1133,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1351,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1565,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1822,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1864,
+              "label": "End credit"
+            }
+          ]
+        },
+        {
+          "videoId": "k-f8IqzGiXo",
+          "title": "Braum Support vs Nautilus - KR Grandmaster Patch 25.06",
+          "rankClaim": "Grandmaster",
+          "patch": "25.6",
+          "durationSec": 1560,
+          "region": "KR",
+          "uploaded": "2025-03-22",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 224,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 278,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 390,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 466,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 632,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 824,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 951,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1041,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1070,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1302,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1377,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1408,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1419,
+              "label": "Take down The Inhibitor"
+            },
+            {
+              "atSec": 1488,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1523,
+              "label": "Take down The Inhibitor"
+            },
+            {
+              "atSec": 1539,
+              "label": "End credit"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 117,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "7OC_gw1VYpU",
+          "title": "Braum Support vs Lulu - EUW Challenger Patch 26.07",
+          "rankClaim": "Challenger",
+          "patch": "26.7",
+          "durationSec": 1604,
+          "region": "EUW",
+          "uploaded": "2026-04-16",
+          "moments": []
+        },
+        {
+          "videoId": "u8PMSKB5sXg",
+          "title": "Braum Support vs Lulu - KR Grandmaster Patch 25.20",
+          "rankClaim": "Grandmaster",
+          "patch": "25.20",
+          "durationSec": 1685,
+          "region": "KR",
+          "uploaded": "2025-10-13",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 147,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "K0-6lqdj5UQ",
+          "title": "Braum Support vs Seraphine - KR Grandmaster Patch 26.10",
+          "rankClaim": "Grandmaster",
+          "patch": "26.10",
+          "durationSec": 1507,
+          "region": "KR",
+          "uploaded": "2026-05-20",
+          "moments": []
+        },
+        {
+          "videoId": "o70lH8VxX6c",
+          "title": "Braum Support vs Seraphine - KR Grandmaster Patch 25.18",
+          "rankClaim": "Grandmaster",
+          "patch": "25.18",
+          "durationSec": 1473,
+          "region": "KR",
+          "uploaded": "2025-09-14",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 235,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "YG4FrVrY5dA",
+          "title": "Braum Support vs Senna - EUW Challenger Patch 26.17",
+          "rankClaim": "Challenger",
+          "patch": "26.17",
+          "durationSec": 1727,
+          "region": "EUW",
+          "uploaded": "2026-08-30",
+          "moments": []
+        },
+        {
+          "videoId": "EPH3ytid-KY",
+          "title": "Braum Support vs Senna - KR Master Patch 25.24",
+          "rankClaim": "Master",
+          "patch": "25.24",
+          "durationSec": 1452,
+          "region": "KR",
+          "uploaded": "2025-12-24",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 193,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 414,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 647,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 758,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 900,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 993,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1029,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1094,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1199,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1238,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1298,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1390,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1441,
+              "label": "End credit"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 245,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "DTGTBa3xTRU",
+          "title": "Braum Support vs Ekko - KR Grandmaster Patch 26.18",
+          "rankClaim": "Grandmaster",
+          "patch": "26.18",
+          "durationSec": 1602,
+          "region": "KR",
+          "uploaded": "2026-09-25",
+          "moments": []
+        },
+        {
+          "videoId": "2FPzsvqLOgg",
+          "title": "Braum Support vs Ekko - EUW Challenger Patch 25.04",
+          "rankClaim": "Challenger",
+          "patch": "25.4",
+          "durationSec": 1526,
+          "region": "EUW",
+          "uploaded": "2025-03-03",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 267,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "xnvRw9J1JF4",
+          "title": "Braum Support vs Nami - KR Master Patch 25.22",
+          "rankClaim": "Master",
+          "patch": "25.22",
+          "durationSec": 1664,
+          "region": "KR",
+          "uploaded": "2025-11-09",
+          "moments": []
+        },
+        {
+          "videoId": "zIRsb7et3Ks",
+          "title": "Braum Support vs Nami - KR Challenger Patch 25.14",
+          "rankClaim": "Challenger",
+          "patch": "25.14",
+          "durationSec": 1628,
+          "region": "KR",
+          "uploaded": "2025-07-19",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 412,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "BD4uzgUtM5o",
+          "title": "Braum Support vs Thresh - KR Master Patch 26.18",
+          "rankClaim": "Master",
+          "patch": "26.18",
+          "durationSec": 1484,
+          "region": "KR",
+          "uploaded": "2026-09-14",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 432,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "8e7TTLR0AI0",
+          "title": "Braum Support vs Bard - EUW Challenger Patch 25.24",
+          "rankClaim": "Challenger",
+          "patch": "25.24",
+          "durationSec": 1476,
+          "region": "EUW",
+          "uploaded": "2025-12-16",
+          "moments": []
+        },
+        {
+          "videoId": "06Q3YtZ0Rd4",
+          "title": "Braum Support vs Bard - EUW Challenger Patch 25.16",
+          "rankClaim": "Challenger",
+          "patch": "25.16",
+          "durationSec": 1601,
+          "region": "EUW",
+          "uploaded": "2025-08-28",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 497,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "xu_Ai2BxT5k",
+          "title": "Braum Support vs Rakan - KR Grandmaster Patch 25.24",
+          "rankClaim": "Grandmaster",
+          "patch": "25.24",
+          "durationSec": 1615,
+          "region": "KR",
+          "uploaded": "2025-12-08",
+          "moments": []
+        },
+        {
+          "videoId": "TFIvcZNoW4A",
+          "title": "Braum Support vs Rakan - KR Grandmaster Patch 25.19",
+          "rankClaim": "Grandmaster",
+          "patch": "25.19",
+          "durationSec": 1728,
+          "region": "KR",
+          "uploaded": "2025-09-27",
+          "moments": []
+        },
+        {
+          "videoId": "dFb0xn5A3i0",
+          "title": "Braum Support vs Rakan - KR Master Patch 25.15",
+          "rankClaim": "Master",
+          "patch": "25.15",
+          "durationSec": 1602,
+          "region": "KR",
+          "uploaded": "2025-08-02",
+          "moments": []
+        },
+        {
+          "videoId": "77SxaiJoxcA",
+          "title": "Braum Support vs Rakan - EUW Grandmaster Patch 25.14",
+          "rankClaim": "Grandmaster",
+          "patch": "25.14",
+          "durationSec": 1713,
+          "region": "EUW",
+          "uploaded": "2025-07-30",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 518,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "VoFwJWuxtVo",
+          "title": "Braum Support vs Neeko - KR Grandmaster Patch 26.09",
+          "rankClaim": "Grandmaster",
+          "patch": "26.9",
+          "durationSec": 1444,
+          "region": "KR",
+          "uploaded": "2026-05-04",
+          "moments": []
+        },
+        {
+          "videoId": "tc2r_HgMryM",
+          "title": "Braum Support vs Neeko - KR Challenger Patch 26.07",
+          "rankClaim": "Challenger",
+          "patch": "26.7",
+          "durationSec": 1838,
+          "region": "KR",
+          "uploaded": "2026-04-05",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 220,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 293,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 533,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 741,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 901,
+              "label": "Hunt The Dragon",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1075,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1182,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1285,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1326,
+              "label": "Hunt The Baron Nashor",
+              "kind": "baron"
+            },
+            {
+              "atSec": 1386,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1441,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1483,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1542,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1671,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1710,
+              "label": "Hunt The Baron Nashor",
+              "kind": "baron"
+            },
+            {
+              "atSec": 1774,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1790,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1803,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1827,
+              "label": "End credit"
+            }
+          ]
+        },
+        {
+          "videoId": "FtvEygmSQOw",
+          "title": "Braum Support vs Neeko - EUW Challenger Patch 25.15",
+          "rankClaim": "Challenger",
+          "patch": "25.15",
+          "durationSec": 1786,
+          "region": "EUW",
+          "uploaded": "2025-08-13",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 526,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "RuA4UvbK89s",
+          "title": "Braum Support vs Rell - KR Master Patch 26.17",
+          "rankClaim": "Master",
+          "patch": "26.17",
+          "durationSec": 1765,
+          "region": "KR",
+          "uploaded": "2026-09-10",
+          "moments": []
+        },
+        {
+          "videoId": "RbUq2sO2fD8",
+          "title": "Braum Support vs Rell - KR Grandmaster Patch 26.16",
+          "rankClaim": "Grandmaster",
+          "patch": "26.16",
+          "durationSec": 1704,
+          "region": "KR",
+          "uploaded": "2026-08-24",
+          "moments": []
+        },
+        {
+          "videoId": "FPEfRsRyIIM",
+          "title": "(SPXF Lelouch) Braum Support vs Rell - EUW Challenger Patch 26.14",
+          "rankClaim": "Challenger",
+          "patch": "26.14",
+          "durationSec": 1539,
+          "region": "EUW",
+          "player": "SPXF Lelouch",
+          "uploaded": "2026-07-22",
+          "moments": []
+        },
+        {
+          "videoId": "7jMhUUO-154",
+          "title": "(PAIN Kuri) Braum Support vs Rell - KR Master Patch 26.13",
+          "rankClaim": "Master",
+          "patch": "26.13",
+          "durationSec": 1699,
+          "region": "KR",
+          "player": "PAIN Kuri",
+          "uploaded": "2026-07-04",
+          "moments": []
+        },
+        {
+          "videoId": "Y7d26TqDbtw",
+          "title": "Braum Support vs Rell - KR Grandmaster Patch 26.02",
+          "rankClaim": "Grandmaster",
+          "patch": "26.2",
+          "durationSec": 1598,
+          "region": "KR",
+          "uploaded": "2026-01-24",
+          "moments": []
+        },
+        {
+          "videoId": "Yo41VUZim_Y",
+          "title": "Braum Support vs Rell - KR Grandmaster Patch 25.13",
+          "rankClaim": "Grandmaster",
+          "patch": "25.13",
+          "durationSec": 1422,
+          "region": "KR",
+          "uploaded": "2025-06-30",
+          "moments": []
+        },
+        {
+          "videoId": "s13NZcOR33k",
+          "title": "Braum Support vs Rell - KR Grandmaster Patch 25.11",
+          "rankClaim": "Grandmaster",
+          "patch": "25.11",
+          "durationSec": 1953,
+          "region": "KR",
+          "uploaded": "2025-06-01",
+          "moments": []
+        },
+        {
+          "videoId": "_wASbaPjaGE",
+          "title": "Braum Support vs Rell - EUW Grandmaster Patch 25.10",
+          "rankClaim": "Grandmaster",
+          "patch": "25.10",
+          "durationSec": 1731,
+          "region": "EUW",
+          "uploaded": "2025-05-27",
+          "moments": []
+        },
+        {
+          "videoId": "9pALsbAStnI",
+          "title": "Braum Support vs Rell - KR Challenger Patch 25.07",
+          "rankClaim": "Challenger",
+          "patch": "25.7",
+          "durationSec": 1629,
+          "region": "KR",
+          "uploaded": "2025-04-06",
+          "moments": []
+        },
+        {
+          "videoId": "RC7THb-BoO8",
+          "title": "Braum Support vs Rell - EUW Challenger Patch 25.06",
+          "rankClaim": "Challenger",
+          "patch": "25.6",
+          "durationSec": 1978,
+          "region": "EUW",
+          "uploaded": "2025-04-03",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 902,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "zYFF5zyA_m4",
+          "title": "Braum Support vs Milio - KR Master Patch 26.01",
+          "rankClaim": "Master",
+          "patch": "26.1",
+          "durationSec": 1596,
+          "region": "KR",
+          "uploaded": "2026-01-12",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 910,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "MSiPGM1bA-o",
+          "title": "Braum Support vs Hwei - KR Challenger Patch 25.10",
+          "rankClaim": "Challenger",
+          "patch": "25.10",
+          "durationSec": 1753,
+          "region": "KR",
+          "uploaded": "2025-05-17",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 468,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 660,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 840,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 936,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 961,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 978,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1111,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1295,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1375,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1426,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1516,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1543,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1558,
+              "label": "Take down The Inhibitor"
+            },
+            {
+              "atSec": 1574,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1681,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1721,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1732,
+              "label": "End credit"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

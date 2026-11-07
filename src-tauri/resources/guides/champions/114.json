@@ -1,0 +1,4517 @@
+{
+  "schema": 1,
+  "champion": 114,
+  "generatedAt": "2026-11-07T13:25:14.592Z",
+  "guides": [
+    {
+      "champion": 114,
+      "enemy": 24,
+      "lane": "top",
+      "patch": "26.21",
+      "reviewed": false,
+      "difficulty": "Skill matchup",
+      "favoredWhen": "Fiora wins extended trades once Counter Strike is down; Jax wins if he baits Riposte and lands the stun first.",
+      "keyTips": [
+        {
+          "text": "Take Q vital trades only while Counter Strike is unavailable, then leave at once. Extending into his ready stun flips a winning trade into his.",
+          "scope": "pair",
+          "sourceIds": [
+            "justsad42",
+            "ph45"
+          ],
+          "heading": "Trading rule",
+          "patch": "26.21",
+          "abilityKeys": [
+            {
+              "champion": 114,
+              "key": "Q"
+            },
+            {
+              "champion": 24,
+              "key": "E"
+            }
+          ]
+        },
+        {
+          "text": "Hold Riposte for his leap or empowered strike, not his stun by default. Parrying mid-leap and angling it sideways stuns him as he lands and opens the fight after his E ends.",
+          "scope": "pair",
+          "sourceIds": [
+            "justsad42"
+          ],
+          "heading": "Riposte discipline",
+          "abilityKeys": [
+            {
+              "champion": 114,
+              "key": "W"
+            },
+            {
+              "champion": 24,
+              "key": "Q"
+            }
+          ]
+        },
+        {
+          "text": "Never be the first to commit to a full fight when both cooldowns are up. The first engager usually loses this matchup, so force his Counter Strike or leap before committing yours.",
+          "scope": "pair",
+          "sourceIds": [
+            "justsad42"
+          ],
+          "heading": "Engagement rule",
+          "abilityKeys": [
+            {
+              "champion": 24,
+              "key": "E"
+            }
+          ]
+        }
+      ],
+      "enemyTips": {},
+      "sections": {
+        "overview": {
+          "tips": []
+        },
+        "early-lane": {
+          "tips": [
+            {
+              "text": "Hide the start of your Q by feinting in and out of range or last-hitting. Obvious Q approaches are easy for him to answer with a timed Counter Strike.",
+              "scope": "pair",
+              "sourceIds": [
+                "justsad42"
+              ],
+              "heading": "Concealing Q",
+              "abilityKeys": [
+                {
+                  "champion": 114,
+                  "key": "Q"
+                },
+                {
+                  "champion": 24,
+                  "key": "E"
+                }
+              ]
+            },
+            {
+              "text": "Match his Ignite if he takes it, or expect a much harder lane. Without your own Ignite you cannot answer his committed all-ins at low health.",
+              "scope": "pair",
+              "sourceIds": [
+                "justsad42"
+              ],
+              "heading": "Summoner check"
+            }
+          ]
+        },
+        "mid-lane": {
+          "tips": [
+            {
+              "text": "After his Counter Strike ends, that is your window to fight. Trade into the cooldown gap rather than testing Riposte against an unreadable stun timing.",
+              "scope": "pair",
+              "sourceIds": [
+                "justsad42",
+                "ph45"
+              ],
+              "heading": "Post-stun window",
+              "patch": "26.21",
+              "abilityKeys": [
+                {
+                  "champion": 114,
+                  "key": "W"
+                },
+                {
+                  "champion": 24,
+                  "key": "E"
+                }
+              ]
+            },
+            {
+              "text": "Crash waves and keep pressure so he cannot reset bad vitals for free. He gives up unfavorable vital positions through vision plays, so deny him the quiet resets.",
+              "scope": "pair",
+              "sourceIds": [
+                "ph45",
+                "justsad42"
+              ],
+              "heading": "Vital control",
+              "patch": "26.21",
+              "abilityKeys": [
+                {
+                  "champion": 24,
+                  "key": "E"
+                }
+              ]
+            }
+          ]
+        },
+        "win-condition": {
+          "tips": [
+            {
+              "text": "Take even fights and punish wasted Counter Strikes. When his stun misses or hits only the wave, he has no answer left for your full rotation.",
+              "scope": "pair",
+              "sourceIds": [
+                "ph45",
+                "justsad42"
+              ],
+              "heading": "Punish wasted E",
+              "patch": "26.21",
+              "abilityKeys": [
+                {
+                  "champion": 114,
+                  "key": "Q"
+                },
+                {
+                  "champion": 24,
+                  "key": "E"
+                }
+              ]
+            },
+            {
+              "text": "If he leaps onto someone else while using Counter Strike, Q into him and start your ult from that less predictable angle. His engage on a teammate is your cleanest R setup of the fight.",
+              "scope": "pair",
+              "sourceIds": [
+                "justsad42"
+              ],
+              "heading": "Teamfight entry",
+              "abilityKeys": [
+                {
+                  "champion": 114,
+                  "key": "Q"
+                },
+                {
+                  "champion": 114,
+                  "key": "R"
+                },
+                {
+                  "champion": 24,
+                  "key": "E"
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "itemization": [],
+      "sources": [
+        {
+          "id": "justsad42",
+          "author": "TTVJustSad42",
+          "rankClaim": "Challenger EUNE / Grandmaster EUW (self-claim, no badge) · Fiora main",
+          "rank": "challenger",
+          "url": "https://docs.google.com/spreadsheets/d/1g_YjX4jYcz15k8FZuOkhc4IWA1LLm28WinrVCGBXxLY/edit?gid=0#gid=0",
+          "kind": "sheet"
+        },
+        {
+          "id": "ph45",
+          "author": "PH45",
+          "rankClaim": "Master (profile badge; no title claim) · Jax main",
+          "rank": "master",
+          "url": "https://www.mobafire.com/league-of-legends/build/26-21-thisispatriks-in-depth-jax-guide-503356",
+          "kind": "mobafire"
+        }
+      ]
+    },
+    {
+      "champion": 114,
+      "enemy": 86,
+      "lane": "top",
+      "patch": "26.21",
+      "reviewed": false,
+      "difficulty": "Medium",
+      "favoredWhen": "Fiora wins by poking at max range and running down duels; Garen wins if he baits Riposte and lands silence into ult.",
+      "keyTips": [
+        {
+          "text": "Poke with max-range Q to a vital and leave at once. Q into melee range lets him answer with his spin, while max-range procs deal damage he cannot return.",
+          "scope": "pair",
+          "sourceIds": [
+            "justsad42"
+          ],
+          "heading": "Poke rule",
+          "abilityKeys": [
+            {
+              "champion": 114,
+              "key": "Q"
+            },
+            {
+              "champion": 86,
+              "key": "E"
+            }
+          ]
+        },
+        {
+          "text": "Bait out his spin before taking a longer trade. Committing into a held E wastes your health, so make him spend it on nothing first.",
+          "scope": "pair",
+          "sourceIds": [
+            "justsad42"
+          ],
+          "heading": "E bait",
+          "abilityKeys": [
+            {
+              "champion": 86,
+              "key": "E"
+            }
+          ]
+        },
+        {
+          "text": "Hold Riposte for his silence or ult, never spend it early. He fakes Q to draw your W, so answer only the committed Q or the ult itself.",
+          "scope": "pair",
+          "sourceIds": [
+            "yshuro13"
+          ],
+          "heading": "W discipline",
+          "abilityKeys": [
+            {
+              "champion": 114,
+              "key": "W"
+            },
+            {
+              "champion": 86,
+              "key": "Q"
+            },
+            {
+              "champion": 86,
+              "key": "R"
+            }
+          ]
+        }
+      ],
+      "enemyTips": {},
+      "sections": {
+        "overview": {
+          "tips": []
+        },
+        "early-lane": {
+          "tips": [
+            {
+              "text": "Use the vital's movement speed to exit his spin. Tanking the full spin makes the matchup far worse, so proc and leave the moment he commits.",
+              "scope": "pair",
+              "sourceIds": [
+                "justsad42"
+              ],
+              "heading": "Spin exits",
+              "abilityKeys": [
+                {
+                  "champion": 114,
+                  "key": "Q"
+                },
+                {
+                  "champion": 86,
+                  "key": "E"
+                }
+              ]
+            },
+            {
+              "text": "Expect him to cancel his spin early into a surprise Q. Do not overcommit on a shortened E, since the silence follow-up is the real threat.",
+              "scope": "pair",
+              "sourceIds": [
+                "yshuro13"
+              ],
+              "heading": "E-cancel watch",
+              "abilityKeys": [
+                {
+                  "champion": 86,
+                  "key": "E"
+                },
+                {
+                  "champion": 86,
+                  "key": "Q"
+                }
+              ]
+            }
+          ]
+        },
+        "mid-lane": {
+          "tips": [
+            {
+              "text": "With Conqueror and high health, run him down the lane. Your dueling at full health beats his, so keep the lane long and press the health advantage.",
+              "scope": "pair",
+              "sourceIds": [
+                "justsad42"
+              ],
+              "heading": "Run-down rule"
+            },
+            {
+              "text": "Take vitals on the open side when he walls off the marked angle. His wall positioning denies one side, so circle to the angle he cannot cover.",
+              "scope": "pair",
+              "sourceIds": [
+                "yshuro13"
+              ],
+              "heading": "Wall answer"
+            }
+          ]
+        },
+        "win-condition": {
+          "tips": [
+            {
+              "text": "Maintain pressure instead of yielding, from early through outscale. You are ahead at every point of the lane, so conceding waves gives him the one thing he needs: time.",
+              "scope": "pair",
+              "sourceIds": [
+                "justsad42"
+              ],
+              "heading": "Pressure rule"
+            },
+            {
+              "text": "Chase his split with your threat, but never into his team. Your split-push runs him down solo, while his numbers answer is the only thing that stops it.",
+              "scope": "pair",
+              "sourceIds": [
+                "justsad42",
+                "yshuro13"
+              ],
+              "heading": "Split threat"
+            }
+          ]
+        }
+      },
+      "itemization": [],
+      "sources": [
+        {
+          "id": "justsad42",
+          "author": "TTVJustSad42",
+          "rankClaim": "Challenger EUNE / Grandmaster EUW (self-claim, no badge) · Fiora main",
+          "rank": "challenger",
+          "url": "https://docs.google.com/spreadsheets/d/1g_YjX4jYcz15k8FZuOkhc4IWA1LLm28WinrVCGBXxLY/edit?gid=0#gid=0",
+          "kind": "sheet"
+        },
+        {
+          "id": "yshuro13",
+          "author": "Yshuro13",
+          "rankClaim": "Grandmaster (self-stated 800 LP+ peak) · Garen main",
+          "rank": "grandmaster",
+          "peak": true,
+          "url": "https://docs.google.com/spreadsheets/d/1GbCYcSJLSrSIdOja9EhNFWWSynM0Oin157plraoHO3s/edit?gid=522857221#gid=522857221",
+          "kind": "sheet"
+        }
+      ]
+    },
+    {
+      "champion": 114,
+      "enemy": 122,
+      "lane": "top",
+      "patch": "26.21",
+      "reviewed": false,
+      "difficulty": "Medium",
+      "favoredWhen": "Fiora wins by conceding levels 1–2, parrying W, and taking the side-lane 1v1; Darius wins if he lands an early all-in, holds Ghost for long kites, or reaches a five-stack reset.",
+      "keyTips": [
+        {
+          "text": "Concede levels 1–2 entirely, then open trading at 3. His level-1 all-in beats yours, so max-range Q pokes are the whole early plan until your kit comes online.",
+          "scope": "pair",
+          "sourceIds": [
+            "justsad42"
+          ],
+          "heading": "Level-3 rule",
+          "abilityKeys": [
+            {
+              "champion": 114,
+              "key": "Q"
+            }
+          ]
+        },
+        {
+          "text": "Parry his W rather than his E. The W read lands more consistently, and his held E exists to bait the greedy Riposte.",
+          "scope": "pair",
+          "sourceIds": [
+            "justsad42"
+          ],
+          "heading": "W over E",
+          "abilityKeys": [
+            {
+              "champion": 114,
+              "key": "W"
+            },
+            {
+              "champion": 122,
+              "key": "E"
+            },
+            {
+              "champion": 122,
+              "key": "W"
+            }
+          ]
+        },
+        {
+          "text": "Never start a long trade into a held Ghost without a cooldown opening. A skilled Darius holds E and W for exactly that kite, so force shorts until the summoner is spent.",
+          "scope": "pair",
+          "sourceIds": [
+            "justsad42",
+            "federals1-darius"
+          ],
+          "heading": "Ghost respect",
+          "abilityKeys": [
+            {
+              "champion": 122,
+              "key": "E"
+            },
+            {
+              "champion": 122,
+              "key": "W"
+            }
+          ]
+        }
+      ],
+      "enemyTips": {},
+      "sections": {
+        "overview": {
+          "tips": []
+        },
+        "early-lane": {
+          "tips": [
+            {
+              "text": "Touch him at level 1 only with max-range Q. Anything closer feeds the one all-in you lose, so poke the vital and leave.",
+              "scope": "pair",
+              "sourceIds": [
+                "justsad42"
+              ],
+              "heading": "Level-1 poke",
+              "abilityKeys": [
+                {
+                  "champion": 114,
+                  "key": "Q"
+                }
+              ]
+            },
+            {
+              "text": "Never throw Q at his spacing. He gives no vitals for free and answers committed dashes with W plus Q, so enter on his whiff, not on your cooldown.",
+              "scope": "pair",
+              "sourceIds": [
+                "federals1-darius"
+              ],
+              "heading": "No dry Qs",
+              "abilityKeys": [
+                {
+                  "champion": 122,
+                  "key": "Q"
+                },
+                {
+                  "champion": 122,
+                  "key": "W"
+                },
+                {
+                  "champion": 114,
+                  "key": "Q"
+                }
+              ]
+            }
+          ]
+        },
+        "mid-lane": {
+          "tips": [
+            {
+              "text": "Enter only after he spends Stridebreaker on the wave. The active guarantees his Q edge if you dash in blind, so let it resolve on minions first.",
+              "scope": "pair",
+              "sourceIds": [
+                "federals1-darius"
+              ],
+              "heading": "Stridebreaker window",
+              "abilityKeys": [
+                {
+                  "champion": 122,
+                  "key": "Q"
+                },
+                {
+                  "champion": 114,
+                  "key": "Q"
+                }
+              ],
+              "itemIds": [
+                6631
+              ]
+            },
+            {
+              "text": "Start Blade Waltz only with his back to open ground. A walled back denies a vital and kills both the proc and the healing zone.",
+              "scope": "pair",
+              "sourceIds": [
+                "federals1-darius"
+              ],
+              "heading": "R walls",
+              "abilityKeys": [
+                {
+                  "champion": 114,
+                  "key": "R"
+                }
+              ]
+            }
+          ]
+        },
+        "win-condition": {
+          "tips": [
+            {
+              "text": "Take the side-lane 1v1 once the early concede ends. That duel is yours when you pick the timing instead of answering his.",
+              "scope": "pair",
+              "sourceIds": [
+                "justsad42"
+              ],
+              "heading": "Side take",
+              "abilityKeys": [
+                {
+                  "champion": 114,
+                  "key": "R"
+                }
+              ]
+            },
+            {
+              "text": "Never fight him at five stacks without a team edge, even from ahead. His reset chain swings the fight off a single R, so disengage the stacked state.",
+              "scope": "pair",
+              "sourceIds": [
+                "justsad42"
+              ],
+              "heading": "Reset fear",
+              "abilityKeys": [
+                {
+                  "champion": 122,
+                  "key": "R"
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "itemization": [],
+      "sources": [
+        {
+          "id": "justsad42",
+          "author": "TTVJustSad42",
+          "rankClaim": "Challenger EUNE / Grandmaster EUW (self-claim, no badge) · Fiora main",
+          "rank": "challenger",
+          "url": "https://docs.google.com/spreadsheets/d/1g_YjX4jYcz15k8FZuOkhc4IWA1LLm28WinrVCGBXxLY/edit?gid=0#gid=0",
+          "kind": "sheet"
+        },
+        {
+          "id": "federals1-darius",
+          "author": "Federals1",
+          "rankClaim": "Challenger · Darius main",
+          "rank": "challenger",
+          "url": "https://www.mobafire.com/league-of-legends/build/26-20-challenger-darius-top-guide-636714",
+          "kind": "mobafire"
+        }
+      ]
+    },
+    {
+      "champion": 114,
+      "enemy": 164,
+      "lane": "top",
+      "patch": "26.21",
+      "reviewed": false,
+      "difficulty": "Medium",
+      "favoredWhen": "Fiora wins by answering shield trades with Riposte and punishing Hookshot; Camille wins if she baits W and lands undisturbed second Qs.",
+      "keyTips": [
+        {
+          "text": "Never stand in the outer ring of her sweep. Dodge into the inner cone or Q completely out, since the outer hit sets up the trade you cannot win.",
+          "scope": "pair",
+          "sourceIds": [
+            "justsad42"
+          ],
+          "heading": "Sweep positioning",
+          "abilityKeys": [
+            {
+              "champion": 114,
+              "key": "Q"
+            },
+            {
+              "champion": 164,
+              "key": "W"
+            }
+          ]
+        },
+        {
+          "text": "After her shield auto lands, Riposte the poke and Q away. Trading through her passive shield wastes damage, while the parry-plus-disengage turns her shield window into yours.",
+          "scope": "pair",
+          "sourceIds": [
+            "justsad42",
+            "raideru"
+          ],
+          "heading": "Shield answer",
+          "abilityKeys": [
+            {
+              "champion": 114,
+              "key": "W"
+            },
+            {
+              "champion": 114,
+              "key": "Q"
+            }
+          ]
+        },
+        {
+          "text": "If she does not misplay, wait for a clear Hookshot opening. Forcing into her terrain loses; patience for her E is the whole matchup.",
+          "scope": "pair",
+          "sourceIds": [
+            "justsad42"
+          ],
+          "heading": "Patience rule",
+          "abilityKeys": [
+            {
+              "champion": 164,
+              "key": "E"
+            }
+          ]
+        }
+      ],
+      "enemyTips": {},
+      "sections": {
+        "overview": {
+          "tips": []
+        },
+        "early-lane": {
+          "tips": [
+            {
+              "text": "Fight in the middle of the lane, never near walls. Her Hookshot needs terrain, so open ground starves her engage while your vitals stay contestable.",
+              "scope": "pair",
+              "sourceIds": [
+                "justsad42"
+              ],
+              "heading": "Terrain rule",
+              "abilityKeys": [
+                {
+                  "champion": 164,
+                  "key": "E"
+                }
+              ]
+            },
+            {
+              "text": "Spend Q and W on offense, not on dodging every ability. The more you burn defensively, the harder the next fight gets, so take some poke to keep answers ready.",
+              "scope": "pair",
+              "sourceIds": [
+                "justsad42"
+              ],
+              "heading": "Cooldown economy",
+              "abilityKeys": [
+                {
+                  "champion": 114,
+                  "key": "Q"
+                },
+                {
+                  "champion": 114,
+                  "key": "W"
+                }
+              ]
+            }
+          ]
+        },
+        "mid-lane": {
+          "tips": [
+            {
+              "text": "Bait her Hookshot in the open, then Flash Q W toward the wall she grapples to. The wall-bait turns her engage angle into your stun setup.",
+              "scope": "pair",
+              "sourceIds": [
+                "justsad42"
+              ],
+              "heading": "Hookshot bait",
+              "abilityKeys": [
+                {
+                  "champion": 114,
+                  "key": "W"
+                },
+                {
+                  "champion": 164,
+                  "key": "E"
+                }
+              ]
+            },
+            {
+              "text": "Save Riposte for her ult when a gank arrives. Blocking the lockdown lets you walk out of the dive instead of dying with W unused.",
+              "scope": "pair",
+              "sourceIds": [
+                "justsad42"
+              ],
+              "heading": "Gank answer",
+              "abilityKeys": [
+                {
+                  "champion": 114,
+                  "key": "W"
+                },
+                {
+                  "champion": 164,
+                  "key": "R"
+                }
+              ]
+            }
+          ]
+        },
+        "win-condition": {
+          "tips": [
+            {
+              "text": "Kite her second Q and sweep with vital and ult move speed. She needs the standing second proc, so never give her a stationary target once her Q1 lands.",
+              "scope": "pair",
+              "sourceIds": [
+                "justsad42"
+              ],
+              "heading": "Kiting Q2",
+              "abilityKeys": [
+                {
+                  "champion": 114,
+                  "key": "R"
+                },
+                {
+                  "champion": 164,
+                  "key": "Q"
+                }
+              ]
+            },
+            {
+              "text": "Vary your own Riposte timing since she varies Hookshot to bait it. She holds E waiting for your W, so show trades without parrying before spending it.",
+              "scope": "pair",
+              "sourceIds": [
+                "raideru"
+              ],
+              "heading": "Riposte mindgame",
+              "abilityKeys": [
+                {
+                  "champion": 114,
+                  "key": "W"
+                },
+                {
+                  "champion": 164,
+                  "key": "E"
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "itemization": [],
+      "sources": [
+        {
+          "id": "justsad42",
+          "author": "TTVJustSad42",
+          "rankClaim": "Challenger EUNE / Grandmaster EUW (self-claim, no badge) · Fiora main",
+          "rank": "challenger",
+          "url": "https://docs.google.com/spreadsheets/d/1g_YjX4jYcz15k8FZuOkhc4IWA1LLm28WinrVCGBXxLY/edit?gid=0#gid=0",
+          "kind": "sheet"
+        },
+        {
+          "id": "raideru",
+          "author": "Raideru",
+          "rankClaim": "Challenger · Camille main",
+          "rank": "challenger",
+          "url": "https://www.mobafire.com/league-of-legends/build/camille-challenger-guide-by-raider-matchups-643464",
+          "kind": "mobafire"
+        }
+      ]
+    },
+    {
+      "champion": 114,
+      "enemy": 266,
+      "lane": "top",
+      "patch": "26.21",
+      "reviewed": false,
+      "difficulty": "Skill matchup",
+      "favoredWhen": "Fiora wins by timing Riposte on his Q casts after E and reaching the one-item turn; Aatrox wins if he controls the early waves and baits every parry with E.",
+      "keyTips": [
+        {
+          "text": "Answer his Q cast with Q into W. As he swings, dash in and parry: the block eats the damage and the stun converts his swing into your trade.",
+          "scope": "pair",
+          "sourceIds": [
+            "justsad42"
+          ],
+          "heading": "Q-W answer",
+          "abilityKeys": [
+            {
+              "champion": 114,
+              "key": "Q"
+            },
+            {
+              "champion": 114,
+              "key": "W"
+            },
+            {
+              "champion": 266,
+              "key": "Q"
+            }
+          ]
+        },
+        {
+          "text": "Wait out his E, then parry the follow-up. Everything before the dash is bait, so hold Riposte for the Q knock-up or W pull that comes after it.",
+          "scope": "pair",
+          "sourceIds": [
+            "justsad42"
+          ],
+          "heading": "Post-E parry",
+          "abilityKeys": [
+            {
+              "champion": 114,
+              "key": "W"
+            },
+            {
+              "champion": 266,
+              "key": "E"
+            },
+            {
+              "champion": 266,
+              "key": "Q"
+            }
+          ]
+        },
+        {
+          "text": "Vary Riposte timing every trade. He refuses to dash into a held parry and hides his vitals, so a predictable W is one he plays around for free.",
+          "scope": "pair",
+          "sourceIds": [
+            "lilpicky"
+          ],
+          "heading": "Unreadable W",
+          "abilityKeys": [
+            {
+              "champion": 114,
+              "key": "W"
+            }
+          ]
+        }
+      ],
+      "enemyTips": {},
+      "sections": {
+        "overview": {
+          "tips": []
+        },
+        "early-lane": {
+          "tips": [
+            {
+              "text": "Let him hold the first waves. His sustain wins the opening, so farm without assuming you dictate and save challenges for windows he gives you.",
+              "scope": "pair",
+              "sourceIds": [
+                "justsad42"
+              ],
+              "heading": "Concede the open"
+            },
+            {
+              "text": "Re-angle when he walls off a vital. He pre-positions because he fears the proc, so Q to a new mark instead of tunneling a denied one.",
+              "scope": "pair",
+              "sourceIds": [
+                "lilpicky",
+                "justsad42"
+              ],
+              "heading": "Denied vitals",
+              "abilityKeys": [
+                {
+                  "champion": 114,
+                  "key": "Q"
+                }
+              ]
+            }
+          ]
+        },
+        "mid-lane": {
+          "tips": [
+            {
+              "text": "Leave chains with Q or movement speed and save W for damage. Spending the parry as an exit is exactly what his E-bait wants from you.",
+              "scope": "pair",
+              "sourceIds": [
+                "justsad42"
+              ],
+              "heading": "Exits without W",
+              "abilityKeys": [
+                {
+                  "champion": 114,
+                  "key": "Q"
+                },
+                {
+                  "champion": 114,
+                  "key": "W"
+                },
+                {
+                  "champion": 266,
+                  "key": "E"
+                }
+              ]
+            },
+            {
+              "text": "Never fire W at a non-damaging effect by habit. Each wasted parry makes the rest of the lane harder, so keep it holstered until a real cast starts.",
+              "scope": "pair",
+              "sourceIds": [
+                "justsad42"
+              ],
+              "heading": "Parry discipline",
+              "abilityKeys": [
+                {
+                  "champion": 114,
+                  "key": "W"
+                }
+              ]
+            }
+          ]
+        },
+        "win-condition": {
+          "tips": [
+            {
+              "text": "Parry his W pull only when the landing spot continues your fight. Refusing a bad pull denies his setup without spending your answer for nothing.",
+              "scope": "pair",
+              "sourceIds": [
+                "justsad42"
+              ],
+              "heading": "Pull position",
+              "abilityKeys": [
+                {
+                  "champion": 114,
+                  "key": "W"
+                },
+                {
+                  "champion": 266,
+                  "key": "W"
+                }
+              ]
+            },
+            {
+              "text": "Play for the item turn. At even gold your outscale arrives around one item, and from behind it waits until two, so force nothing before the spike lands.",
+              "scope": "pair",
+              "sourceIds": [
+                "justsad42"
+              ],
+              "heading": "Item timing",
+              "abilityKeys": [
+                {
+                  "champion": 114,
+                  "key": "R"
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "itemization": [],
+      "sources": [
+        {
+          "id": "justsad42",
+          "author": "TTVJustSad42",
+          "rankClaim": "Challenger EUNE / Grandmaster EUW (self-claim, no badge) · Fiora main",
+          "rank": "challenger",
+          "url": "https://docs.google.com/spreadsheets/d/1g_YjX4jYcz15k8FZuOkhc4IWA1LLm28WinrVCGBXxLY/edit?gid=0#gid=0",
+          "kind": "sheet"
+        },
+        {
+          "id": "lilpicky",
+          "author": "LilPicky",
+          "rankClaim": "Emerald · Aatrox main",
+          "rank": "emerald",
+          "url": "https://www.mobafire.com/league-of-legends/build/not-basic-aatrox-s16-guide-630818",
+          "kind": "mobafire"
+        }
+      ]
+    },
+    {
+      "champion": 114,
+      "enemy": 777,
+      "lane": "top",
+      "patch": "26.21",
+      "reviewed": false,
+      "difficulty": "Medium",
+      "favoredWhen": "Fiora wins extended trades and the side-lane 1v1 by answering Q3 and R with Riposte; Yone wins if he kites vitals on E movement or punishes chases at the spirit return.",
+      "keyTips": [
+        {
+          "text": "Parry his Q3 or R on commitment. When Yone dashes in on the third cast or fires his ultimate, answer with Riposte: the stun turns his engage into your trade.",
+          "scope": "pair",
+          "sourceIds": [
+            "justsad42"
+          ],
+          "heading": "Parry the commit",
+          "abilityKeys": [
+            {
+              "champion": 114,
+              "key": "W"
+            },
+            {
+              "champion": 777,
+              "key": "Q"
+            },
+            {
+              "champion": 777,
+              "key": "R"
+            }
+          ]
+        },
+        {
+          "text": "Take extended trades. His answers are max-range Q pokes or kiting on E movement while you work vitals, so start fights where neither escape is free.",
+          "scope": "pair",
+          "sourceIds": [
+            "justsad42"
+          ],
+          "heading": "Extendeds favor you",
+          "abilityKeys": [
+            {
+              "champion": 114,
+              "key": "Q"
+            },
+            {
+              "champion": 777,
+              "key": "E"
+            }
+          ]
+        },
+        {
+          "text": "Never force a heavy trade while his E offers a free return. Make him spend E for distance first, since a held E lets him dictate every exchange.",
+          "scope": "pair",
+          "sourceIds": [
+            "justsad42",
+            "zacheryzztop"
+          ],
+          "heading": "Respect held E",
+          "abilityKeys": [
+            {
+              "champion": 777,
+              "key": "E"
+            }
+          ]
+        }
+      ],
+      "enemyTips": {},
+      "sections": {
+        "overview": {
+          "tips": []
+        },
+        "early-lane": {
+          "tips": [
+            {
+              "text": "Trade back when he lands from E within reach. Take the free autos on his return instead of chasing into the escape window he just used.",
+              "scope": "pair",
+              "sourceIds": [
+                "justsad42"
+              ],
+              "heading": "E-return punish",
+              "abilityKeys": [
+                {
+                  "champion": 777,
+                  "key": "E"
+                },
+                {
+                  "champion": 114,
+                  "key": "Q"
+                }
+              ]
+            },
+            {
+              "text": "Match his first boots timing. He rushes boots to kite around your vitals, so complete yours on the same reset and his Q spacing never goes unanswered.",
+              "scope": "pair",
+              "sourceIds": [
+                "zacheryzztop"
+              ],
+              "heading": "Boots race"
+            },
+            {
+              "text": "Keep Riposte ready while he holds R after Q3. His outplay line is R behind a severe Q, and your held stun inverts it the moment he commits.",
+              "scope": "pair",
+              "sourceIds": [
+                "justsad42",
+                "zacheryzztop"
+              ],
+              "heading": "R behind Q3",
+              "abilityKeys": [
+                {
+                  "champion": 114,
+                  "key": "W"
+                },
+                {
+                  "champion": 777,
+                  "key": "Q"
+                },
+                {
+                  "champion": 777,
+                  "key": "R"
+                }
+              ]
+            }
+          ]
+        },
+        "mid-lane": {
+          "tips": [
+            {
+              "text": "Fire Riposte on his commit instead of holding it forever. He cannot cleanse the W stun with E, so waiting out the spirit form only wastes your best answer.",
+              "scope": "pair",
+              "sourceIds": [
+                "justsad42"
+              ],
+              "heading": "No cleanse",
+              "abilityKeys": [
+                {
+                  "champion": 114,
+                  "key": "W"
+                },
+                {
+                  "champion": 777,
+                  "key": "E"
+                }
+              ]
+            },
+            {
+              "text": "Read his escape before chasing. If his spirit is pulling back or he holds Q3 as an exit, either one ends your chase, so stop and reset instead of following into his return.",
+              "scope": "pair",
+              "sourceIds": [
+                "justsad42"
+              ],
+              "heading": "Chase rule",
+              "abilityKeys": [
+                {
+                  "champion": 777,
+                  "key": "E"
+                },
+                {
+                  "champion": 777,
+                  "key": "Q"
+                }
+              ]
+            }
+          ]
+        },
+        "win-condition": {
+          "tips": [
+            {
+              "text": "Take the side-lane 1v1. You are favored there once his two kite windows run out, so hold the side and let him come to you.",
+              "scope": "pair",
+              "sourceIds": [
+                "justsad42"
+              ],
+              "heading": "Side rule",
+              "abilityKeys": [
+                {
+                  "champion": 114,
+                  "key": "R"
+                }
+              ]
+            },
+            {
+              "text": "Start clean fights outside his kite windows. Never follow his E movement speed while he is still landing vitals; engage when the speed fades and the marks are yours.",
+              "scope": "pair",
+              "sourceIds": [
+                "justsad42"
+              ],
+              "heading": "Clean engages",
+              "abilityKeys": [
+                {
+                  "champion": 777,
+                  "key": "E"
+                },
+                {
+                  "champion": 114,
+                  "key": "Q"
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "itemization": [],
+      "sources": [
+        {
+          "id": "justsad42",
+          "author": "TTVJustSad42",
+          "rankClaim": "Challenger EUNE / Grandmaster EUW (self-claim, no badge) · Fiora main",
+          "rank": "challenger",
+          "url": "https://docs.google.com/spreadsheets/d/1g_YjX4jYcz15k8FZuOkhc4IWA1LLm28WinrVCGBXxLY/edit?gid=0#gid=0",
+          "kind": "sheet"
+        },
+        {
+          "id": "zacheryzztop",
+          "author": "ZacheryZZTOP",
+          "rankClaim": "Grandmaster (lolmatchups account tier, Riot-linked ZacheryZZTOP#TOP) · Yone main",
+          "rank": "grandmaster",
+          "url": "https://lolmatchups.gg/Yone/matchups?lane=TOP",
+          "kind": "web"
+        }
+      ]
+    },
+    {
+      "champion": 114,
+      "enemy": 875,
+      "lane": "top",
+      "patch": "26.21",
+      "reviewed": false,
+      "difficulty": "Medium",
+      "favoredWhen": "Fiora wins by refusing his Haymaker and fighting on her terms; Sett wins any full-grit extended trade he gets to start.",
+      "keyTips": [
+        {
+          "text": "Poke with max-range Q to a vital, then disengage before he answers. Giving him contact after the proc lets him stick with Q move speed and build the grit that wins him the trade.",
+          "scope": "pair",
+          "sourceIds": [
+            "justsad42"
+          ],
+          "heading": "Poke rule",
+          "abilityKeys": [
+            {
+              "champion": 114,
+              "key": "Q"
+            },
+            {
+              "champion": 875,
+              "key": "Q"
+            }
+          ]
+        },
+        {
+          "text": "Save Riposte for his Haymaker, not his pull. His W is the fight decider, so bait Facebreaker at max range and keep W until the true-damage center matters.",
+          "scope": "pair",
+          "sourceIds": [
+            "justsad42",
+            "autolykus"
+          ],
+          "heading": "Riposte discipline",
+          "abilityKeys": [
+            {
+              "champion": 114,
+              "key": "W"
+            },
+            {
+              "champion": 875,
+              "key": "W"
+            },
+            {
+              "champion": 875,
+              "key": "E"
+            }
+          ]
+        },
+        {
+          "text": "Leave before he builds grit or move the fight outside the minion wave. Fighting inside his stacked wave feeds his W while your vitals go unanswered.",
+          "scope": "pair",
+          "sourceIds": [
+            "justsad42"
+          ],
+          "heading": "Grit awareness",
+          "abilityKeys": [
+            {
+              "champion": 875,
+              "key": "W"
+            }
+          ]
+        }
+      ],
+      "enemyTips": {},
+      "sections": {
+        "overview": {
+          "tips": []
+        },
+        "early-lane": {
+          "tips": [
+            {
+              "text": "Contest level 1 only with a first auto Q from a bush. That opener wins the all-in, but a face-to-face level 1 without it belongs to him.",
+              "scope": "pair",
+              "sourceIds": [
+                "justsad42"
+              ],
+              "heading": "Level 1",
+              "abilityKeys": [
+                {
+                  "champion": 114,
+                  "key": "Q"
+                }
+              ]
+            },
+            {
+              "text": "If he uses Facebreaker early while he has no grit, take the heavier trade. With no W behind it his E is just an engage, and your saved Riposte answers the follow-up Haymaker.",
+              "scope": "pair",
+              "sourceIds": [
+                "justsad42",
+                "autolykus"
+              ],
+              "heading": "Punishing early E",
+              "abilityKeys": [
+                {
+                  "champion": 875,
+                  "key": "E"
+                },
+                {
+                  "champion": 875,
+                  "key": "W"
+                },
+                {
+                  "champion": 114,
+                  "key": "W"
+                }
+              ]
+            }
+          ]
+        },
+        "mid-lane": {
+          "tips": [
+            {
+              "text": "After level 6, stand behind him so his ult carries him away from your turret. When he grabs you under tower, the displacement throws him into a bad spot instead of you.",
+              "scope": "pair",
+              "sourceIds": [
+                "justsad42"
+              ],
+              "heading": "Beating his ult",
+              "abilityKeys": [
+                {
+                  "champion": 114,
+                  "key": "R"
+                },
+                {
+                  "champion": 875,
+                  "key": "R"
+                }
+              ]
+            },
+            {
+              "text": "Trigger your ult heal early enough to matter, or delay the proc until it executes him. Popping all four vitals without the heal timing just gives him a carried target.",
+              "scope": "pair",
+              "sourceIds": [
+                "justsad42"
+              ],
+              "heading": "Ult timing",
+              "abilityKeys": [
+                {
+                  "champion": 114,
+                  "key": "R"
+                }
+              ]
+            }
+          ]
+        },
+        "win-condition": {
+          "tips": [
+            {
+              "text": "Aim fights toward a wall so his ult cannot carry you out of your healing. The wall shortens his displacement and keeps you inside the ult zone you already started.",
+              "scope": "pair",
+              "sourceIds": [
+                "justsad42"
+              ],
+              "heading": "Positioning",
+              "abilityKeys": [
+                {
+                  "champion": 114,
+                  "key": "R"
+                },
+                {
+                  "champion": 875,
+                  "key": "R"
+                }
+              ]
+            },
+            {
+              "text": "Build early armor into his lane since the matchup stays volatile. Bramble and armor boots blunt his extended damage while your side-lane scaling takes over.",
+              "scope": "pair",
+              "sourceIds": [
+                "autolykus"
+              ],
+              "heading": "Item setup",
+              "patch": "26.20"
+            }
+          ]
+        }
+      },
+      "itemization": [],
+      "sources": [
+        {
+          "id": "justsad42",
+          "author": "TTVJustSad42",
+          "rankClaim": "Challenger EUNE / Grandmaster EUW (self-claim, no badge) · Fiora main",
+          "rank": "challenger",
+          "url": "https://docs.google.com/spreadsheets/d/1g_YjX4jYcz15k8FZuOkhc4IWA1LLm28WinrVCGBXxLY/edit?gid=0#gid=0",
+          "kind": "sheet"
+        },
+        {
+          "id": "autolykus",
+          "author": "Autolykus",
+          "rankClaim": "Grandmaster (profile badge; title claims Challenger) · Sett main",
+          "rank": "grandmaster",
+          "url": "https://www.mobafire.com/league-of-legends/build/26-20-autolykuss-challenger-sett-guide-594869",
+          "kind": "mobafire"
+        }
+      ]
+    }
+  ],
+  "general": [
+    {
+      "champion": 114,
+      "lane": "top",
+      "patch": "26.21",
+      "reviewed": false,
+      "keyTips": [
+        {
+          "text": "Run the aggressive setup of Press the Attack with Flash and Ignite for early duel pressure.",
+          "scope": "champion",
+          "sourceIds": [
+            "dracoiwnl"
+          ]
+        },
+        {
+          "text": "Spend Riposte as a damage trading tool too, blocking spikes like Riven R, Jax W, or Jayce Q when they threaten.",
+          "scope": "champion",
+          "sourceIds": [
+            "dracoiwnl"
+          ],
+          "abilityKeys": [
+            {
+              "champion": 114,
+              "key": "W"
+            }
+          ]
+        },
+        {
+          "text": "Split as the default win path and group only for clearly favorable teamfights.",
+          "scope": "champion",
+          "sourceIds": [
+            "dracoiwnl"
+          ]
+        }
+      ],
+      "sections": {
+        "overview": {
+          "tips": []
+        },
+        "early-lane": {
+          "tips": [
+            {
+              "text": "Treat most lanes as even or losing and hunt an outplay instead of assuming free wins.",
+              "scope": "champion",
+              "sourceIds": [
+                "dracoiwnl"
+              ]
+            },
+            {
+              "text": "Skip picking Fiora without confidence in her lane patterns.",
+              "scope": "champion",
+              "sourceIds": [
+                "dracoiwnl"
+              ]
+            },
+            {
+              "text": "Play for the two-item point, which usually passes the lane opponent; refuse risky early all-ins before it arrives.",
+              "scope": "champion",
+              "sourceIds": [
+                "dracoiwnl"
+              ]
+            }
+          ]
+        },
+        "mid-lane": {
+          "tips": [
+            {
+              "text": "After laning, take a standing top outer with Ravenous Hydra, spending R when an opponent contests.",
+              "scope": "champion",
+              "sourceIds": [
+                "dracoiwnl"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 114,
+                  "key": "R"
+                }
+              ],
+              "itemIds": [
+                3074
+              ]
+            },
+            {
+              "text": "Heal heavily with the Hydra active inside a wave, then take long trades while it sustains.",
+              "scope": "champion",
+              "sourceIds": [
+                "dracoiwnl"
+              ]
+            },
+            {
+              "text": "Once the outer falls, move to an inner-tower lane and keep banking gold and experience there.",
+              "scope": "champion",
+              "sourceIds": [
+                "dracoiwnl"
+              ]
+            },
+            {
+              "text": "Track who can stop the split, since opponents arriving before wave healing still win the trade.",
+              "scope": "champion",
+              "sourceIds": [
+                "dracoiwnl"
+              ]
+            }
+          ]
+        },
+        "win-condition": {
+          "tips": [
+            {
+              "text": "Farm sides and press towers until gold and experience outscale most top laners.",
+              "scope": "champion",
+              "sourceIds": [
+                "dracoiwnl"
+              ]
+            },
+            {
+              "text": "Land R on a fighter to raise the healing zone for Fiora and nearby teammates.",
+              "scope": "champion",
+              "sourceIds": [
+                "dracoiwnl"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 114,
+                  "key": "R"
+                }
+              ]
+            },
+            {
+              "text": "Make sure R actually fires in teamfights; dying first likely loses the fight.",
+              "scope": "champion",
+              "sourceIds": [
+                "dracoiwnl"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 114,
+                  "key": "R"
+                }
+              ]
+            },
+            {
+              "text": "With Death's Dance and Plated Steelcaps, play front-to-back more safely while Riposte stays up.",
+              "scope": "champion",
+              "sourceIds": [
+                "dracoiwnl"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 114,
+                  "key": "W"
+                }
+              ],
+              "itemIds": [
+                6333,
+                3047
+              ]
+            },
+            {
+              "text": "Flash onto a squishy or low-health finisher when it converts, keeping W ready against burst.",
+              "scope": "champion",
+              "sourceIds": [
+                "dracoiwnl"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 114,
+                  "key": "W"
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "itemization": [
+        {
+          "text": "Run Press the Attack with Triumph, Legend: Alacrity, and Last Stand, plus Biscuit Delivery and Jack of All Trades with two adaptive shards for stronger early trades.",
+          "scope": "champion",
+          "sourceIds": [
+            "dracoiwnl"
+          ]
+        },
+        {
+          "text": "Rush Ravenous Hydra first for waveclear, sustain, and taking the top turret.",
+          "scope": "champion",
+          "sourceIds": [
+            "dracoiwnl"
+          ],
+          "itemIds": [
+            3074
+          ]
+        },
+        {
+          "text": "Follow the example build of Trinity Force with Plated Steelcaps, Death's Dance, Spear of Shojin, and Endless Hunger.",
+          "scope": "champion",
+          "sourceIds": [
+            "dracoiwnl"
+          ],
+          "itemIds": [
+            3078,
+            3047,
+            6333,
+            3161,
+            2517
+          ]
+        },
+        {
+          "text": "Swap to Mercury's Treads and Maw of Malmortius against a strong AP threat, else keep Plated Steelcaps.",
+          "scope": "champion",
+          "sourceIds": [
+            "dracoiwnl"
+          ],
+          "itemIds": [
+            3111,
+            3156,
+            3047
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "id": "dracoiwnl",
+          "author": "dracoiwnl",
+          "rankClaim": "Rank 1 Fiora (guide title; no badge)",
+          "url": "https://www.mobafire.com/league-of-legends/build/rank-1-fiora-guide-by-draco-26-03-651248",
+          "kind": "mobafire"
+        }
+      ]
+    }
+  ],
+  "vods": [
+    {
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "I-qjploNiTM",
+          "title": "AVERAGE FIORA MATCHUP...",
+          "rankClaim": "Master+",
+          "patch": "26.19",
+          "durationSec": 1434,
+          "patchEstimated": true,
+          "player": "Makkro",
+          "uploaded": "2026-10-03",
+          "format": "stream",
+          "cam": true,
+          "moments": [
+            {
+              "atSec": 0,
+              "label": "Champion swap and laning"
+            },
+            {
+              "atSec": 381,
+              "label": "Ornn laning strategy"
+            },
+            {
+              "atSec": 792,
+              "label": "Itemization and meta talk"
+            },
+            {
+              "atSec": 1251,
+              "label": "Game state analysis"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 2,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "LbS9pMFCsZI",
+          "title": "Fiora Top vs Olaf (Jelly) - KR Grandmaster Patch 26.20",
+          "rankClaim": "Grandmaster",
+          "patch": "26.20",
+          "durationSec": 1590,
+          "region": "KR",
+          "uploaded": "2026-10-22",
+          "result": "W",
+          "moments": [
+            {
+              "atSec": 363,
+              "label": "Red takes 1st Dragon (Mountain)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 448,
+              "label": "First Blood — Fiora kills Olaf",
+              "kind": "kill"
+            },
+            {
+              "atSec": 475,
+              "label": "Fiora takes down Aurelion Sol"
+            },
+            {
+              "atSec": 699,
+              "label": "Sejuani takes down Olaf"
+            },
+            {
+              "atSec": 731,
+              "label": "Blue takes 1st Dragon (Ocean)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 761,
+              "label": "Team fight (3 kills)",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1075,
+              "label": "Red takes 2nd Dragon (Chemtech)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1094,
+              "label": "Fiora picks off Yasuo"
+            },
+            {
+              "atSec": 1268,
+              "label": "Blue takes Baron",
+              "kind": "baron"
+            },
+            {
+              "atSec": 1402,
+              "label": "Red takes 3rd Dragon (Chemtech)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1534,
+              "label": "Fiora picks off Yasuo"
+            },
+            {
+              "atSec": 1556,
+              "label": "Syndra Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1562,
+              "label": "Bot Inhibitor falls (Blue)"
+            }
+          ]
+        },
+        {
+          "videoId": "h5J1xXUoiRQ",
+          "title": "Fiora vs Olaf Top - KR Challenger - Patch 16.16 Season 16",
+          "rankClaim": "Challenger",
+          "patch": "26.16",
+          "durationSec": 2236,
+          "region": "KR",
+          "uploaded": "2026-08-23",
+          "moments": []
+        },
+        {
+          "videoId": "kD2Rg2dY7L0",
+          "title": "Fiora Top vs Olaf (BFX Clear) - KR Grandmaster Patch 26.15",
+          "rankClaim": "Grandmaster",
+          "patch": "26.15",
+          "durationSec": 1590,
+          "region": "KR",
+          "uploaded": "2026-08-09",
+          "moments": []
+        },
+        {
+          "videoId": "jjpUSaZvEzo",
+          "title": "Fiora Top vs Olaf - KR Grandmaster Patch 26.08",
+          "rankClaim": "Grandmaster",
+          "patch": "26.8",
+          "durationSec": 1520,
+          "region": "KR",
+          "uploaded": "2026-05-01",
+          "moments": []
+        },
+        {
+          "videoId": "ZYnYR3AsgZ0",
+          "title": "Fiora Top vs Olaf - NA Grandmaster Patch 26.02",
+          "rankClaim": "Grandmaster",
+          "patch": "26.2",
+          "durationSec": 1616,
+          "region": "NA",
+          "uploaded": "2026-02-03",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 532,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 624,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 722,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 775,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 888,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 918,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1021,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1128,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1216,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1338,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1435,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1538,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1569,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1605,
+              "label": "End credit"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 3,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "DDv1u8Db1FE",
+          "title": "Fiora Mid vs Galio - KR Master Patch 26.03",
+          "rankClaim": "Master",
+          "patch": "26.3",
+          "durationSec": 1632,
+          "region": "KR",
+          "uploaded": "2026-02-17",
+          "moments": []
+        },
+        {
+          "videoId": "VQJNsZ3Y0XA",
+          "title": "Fiora Mid vs Galio - EUW Challenger Patch 25.23",
+          "rankClaim": "Challenger",
+          "patch": "25.23",
+          "durationSec": 1638,
+          "region": "EUW",
+          "uploaded": "2025-11-30",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 5,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "SGauBdacfac",
+          "title": "(VITB Potent) Fiora Top vs Xin Zhao - EUW Grandmaster Patch 26.12",
+          "rankClaim": "Grandmaster",
+          "patch": "26.12",
+          "durationSec": 1419,
+          "region": "EUW",
+          "player": "VITB Potent",
+          "uploaded": "2026-06-14",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 6,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "HMNvXKRd_Sw",
+          "title": "Fiora vs Urgot Top - KR Grandmaster - Patch 25.5 Season 15",
+          "rankClaim": "Grandmaster",
+          "patch": "25.5",
+          "durationSec": 1981,
+          "region": "KR",
+          "uploaded": "2025-03-14",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 8,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "1eqavNxNjbg",
+          "title": "Fiora Top vs Vladimir - KR Master Patch 25.24",
+          "rankClaim": "Master",
+          "patch": "25.24",
+          "durationSec": 1595,
+          "region": "KR",
+          "uploaded": "2025-12-08",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 13,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "aT5LPTVIKR4",
+          "title": "Fiora vs Ryze Top - EUW Grandmaster - Patch 25.15 Season 15",
+          "rankClaim": "Grandmaster",
+          "patch": "25.15",
+          "durationSec": 2386,
+          "region": "EUW",
+          "uploaded": "2025-08-11",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 14,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "OtYNaB8Zk3Q",
+          "title": "Fiora Mid vs Sion - KR Master Patch 25.04",
+          "rankClaim": "Master",
+          "patch": "25.4",
+          "durationSec": 2039,
+          "region": "KR",
+          "uploaded": "2025-03-06",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 14,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "oz5k_p7_QyQ",
+          "title": "Fiora vs Sion Top - KR Challenger - Patch 25.22 Season 15",
+          "rankClaim": "Challenger",
+          "patch": "25.22",
+          "durationSec": 1871,
+          "region": "KR",
+          "uploaded": "2025-11-17",
+          "moments": []
+        },
+        {
+          "videoId": "mKvlioaoO3g",
+          "title": "Fiora vs Sion Top - KR Grandmaster - Patch 25.22 Season 15",
+          "rankClaim": "Grandmaster",
+          "patch": "25.22",
+          "durationSec": 1871,
+          "region": "KR",
+          "uploaded": "2025-11-13",
+          "moments": []
+        },
+        {
+          "videoId": "zT-lrghXo6U",
+          "title": "Fiora vs Sion Top - KR Challenger - Patch 25.19 Season 15",
+          "rankClaim": "Challenger",
+          "patch": "25.19",
+          "durationSec": 2131,
+          "region": "KR",
+          "uploaded": "2025-10-04",
+          "moments": []
+        },
+        {
+          "videoId": "sKhs7Mghvp8",
+          "title": "Fiora vs Sion Top - KR Challenger - Patch 25.12 Season 15",
+          "rankClaim": "Challenger",
+          "patch": "25.12",
+          "durationSec": 1266,
+          "region": "KR",
+          "uploaded": "2025-06-18",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 15,
+      "lane": "adc",
+      "videos": [
+        {
+          "videoId": "0oRXVsdP6io",
+          "title": "Fiora ADC vs Sivir - EUW Grandmaster Patch 25.07",
+          "rankClaim": "Grandmaster",
+          "patch": "25.7",
+          "durationSec": 1718,
+          "region": "EUW",
+          "uploaded": "2025-04-18",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 17,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "NxYs10xgCMg",
+          "title": "Fiora Top vs Teemo - KR Master Patch 26.21",
+          "rankClaim": "Master",
+          "patch": "26.21",
+          "durationSec": 1792,
+          "region": "KR",
+          "uploaded": "2026-10-24",
+          "result": "W",
+          "moments": [
+            {
+              "atSec": 53,
+              "label": "First Blood — Fiora kills Teemo",
+              "kind": "kill"
+            },
+            {
+              "atSec": 371,
+              "label": "Fiora catches Teemo"
+            },
+            {
+              "atSec": 485,
+              "label": "Fiora outduels Teemo again"
+            },
+            {
+              "atSec": 729,
+              "label": "Fiora outplays Teemo (3rd time)"
+            },
+            {
+              "atSec": 754,
+              "label": "Red takes 1st Dragon (Infernal)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1079,
+              "label": "Fiora Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1094,
+              "label": "Red takes 2nd Dragon (Hextech)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1190,
+              "label": "Fiora takes down Irelia"
+            },
+            {
+              "atSec": 1283,
+              "label": "Fiora solo kills Teemo (4th time)",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1399,
+              "label": "Xayah Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1420,
+              "label": "Red takes 3rd Dragon (Chemtech)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1494,
+              "label": "Team fight (4 kills)",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1536,
+              "label": "Mid Inhibitor falls (Blue)"
+            },
+            {
+              "atSec": 1589,
+              "label": "Fiora takes down Teemo (5th time)"
+            },
+            {
+              "atSec": 1613,
+              "label": "Fiora picks off Viktor"
+            },
+            {
+              "atSec": 1642,
+              "label": "Top Inhibitor falls (Blue)"
+            },
+            {
+              "atSec": 1744,
+              "label": "Zed Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1776,
+              "label": "Red takes 4th Dragon (Chemtech)",
+              "kind": "dragon"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 19,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "uF37Tb2U-mU",
+          "title": "Fiora vs Warwick Top - KR Grandmaster - Patch 25.18 Season 15",
+          "rankClaim": "Grandmaster",
+          "patch": "25.18",
+          "durationSec": 1696,
+          "region": "KR",
+          "uploaded": "2025-09-19",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 20,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "NOxZBldctkI",
+          "title": "Fiora Mid vs Nunu & Willump - KR Master Patch 25.13",
+          "rankClaim": "Master",
+          "patch": "25.13",
+          "durationSec": 1505,
+          "region": "KR",
+          "uploaded": "2025-07-14",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 24,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "H1STo74BTjg",
+          "title": "Fiora Top vs Jax - KR Master Patch 26.02",
+          "rankClaim": "Master",
+          "patch": "26.2",
+          "durationSec": 1520,
+          "region": "KR",
+          "uploaded": "2026-01-27",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 175,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 459,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 653,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 685,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 714,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 951,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1080,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1161,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1182,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1195,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1299,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1315,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1333,
+              "label": "Get a Triple Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1365,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1385,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1446,
+              "label": "Take down The Inhibitor"
+            },
+            {
+              "atSec": 1465,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1475,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1509,
+              "label": "End credit"
+            }
+          ]
+        },
+        {
+          "videoId": "waLS7udslgU",
+          "title": "Fiora Top vs Jax - KR Grandmaster Patch 25.19",
+          "rankClaim": "Grandmaster",
+          "patch": "25.19",
+          "durationSec": 1981,
+          "region": "KR",
+          "uploaded": "2025-09-29",
+          "moments": []
+        },
+        {
+          "videoId": "8SlyqG29HSA",
+          "title": "Fiora vs Jax Top - KR Grandmaster - Patch 25.16 Season 15",
+          "rankClaim": "Grandmaster",
+          "patch": "25.16",
+          "durationSec": 1981,
+          "region": "KR",
+          "uploaded": "2025-08-19",
+          "moments": []
+        },
+        {
+          "videoId": "kkk1zH8A8E4",
+          "title": "Fiora Top vs Jax - KR Master Patch 25.15",
+          "rankClaim": "Master",
+          "patch": "25.15",
+          "durationSec": 1479,
+          "region": "KR",
+          "uploaded": "2025-08-03",
+          "moments": []
+        },
+        {
+          "videoId": "rc6n8dfhx3M",
+          "title": "Fiora Top vs Jax - EUW Challenger Patch 25.13",
+          "rankClaim": "Challenger",
+          "patch": "25.13",
+          "durationSec": 1565,
+          "region": "EUW",
+          "uploaded": "2025-07-10",
+          "moments": []
+        },
+        {
+          "videoId": "-uA1eTD3gvU",
+          "title": "Fiora Top vs Jax - KR Master Patch 25.04",
+          "rankClaim": "Master",
+          "patch": "25.4",
+          "durationSec": 1875,
+          "region": "KR",
+          "uploaded": "2025-02-26",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 922,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1057,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1224,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1258,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1312,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1331,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1345,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1357,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1487,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1647,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1675,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1696,
+              "label": "Take down The Inhibitor"
+            },
+            {
+              "atSec": 1792,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1811,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1831,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1854,
+              "label": "End credit"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 27,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "TWJGcBr8hEQ",
+          "title": "Fiora Mid vs Singed - KR Master Patch 25.14",
+          "rankClaim": "Master",
+          "patch": "25.14",
+          "durationSec": 1929,
+          "region": "KR",
+          "uploaded": "2025-07-30",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 27,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "eT_lZgTzmVo",
+          "title": "Fiora vs Singed Top - EUW Challenger - Patch 25.21 Season 15",
+          "rankClaim": "Challenger",
+          "patch": "25.21",
+          "durationSec": 1891,
+          "region": "EUW",
+          "uploaded": "2025-10-28",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 36,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "W6h7EDPv6w4",
+          "title": "Fiora Top vs Dr. Mundo - KR Grandmaster Patch 26.14",
+          "rankClaim": "Grandmaster",
+          "patch": "26.14",
+          "durationSec": 1806,
+          "region": "KR",
+          "uploaded": "2026-07-22",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 39,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "tpIm7XEiNkg",
+          "title": "Fiora vs Irelia Top - KR Challenger - Patch 16.10 Season 16",
+          "rankClaim": "Challenger",
+          "patch": "26.10",
+          "durationSec": 2031,
+          "region": "KR",
+          "uploaded": "2026-05-20",
+          "moments": []
+        },
+        {
+          "videoId": "HADhVUZNtpA",
+          "title": "Fiora vs Irelia Top - KR Master - Patch 26.01 Season 16",
+          "rankClaim": "Master",
+          "patch": "26.1",
+          "durationSec": 1261,
+          "region": "KR",
+          "uploaded": "2026-01-10",
+          "moments": []
+        },
+        {
+          "videoId": "3O8niEIn42A",
+          "title": "Fiora Top vs Irelia - EUW Challenger Patch 25.17",
+          "rankClaim": "Challenger",
+          "patch": "25.17",
+          "durationSec": 1894,
+          "region": "EUW",
+          "uploaded": "2025-09-12",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 41,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "RbvZoIX77ww",
+          "title": "Fiora Top vs Gangplank - KR Challenger Patch 26.06",
+          "rankClaim": "Challenger",
+          "patch": "26.6",
+          "durationSec": 1782,
+          "region": "KR",
+          "uploaded": "2026-04-02",
+          "moments": []
+        },
+        {
+          "videoId": "7RZfcnYdwIY",
+          "title": "Fiora Top vs Gangplank - KR Master Patch 25.05",
+          "rankClaim": "Master",
+          "patch": "25.5",
+          "durationSec": 1604,
+          "region": "KR",
+          "uploaded": "2025-03-10",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 50,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "f6OYjqjtN1g",
+          "title": "Fiora Top vs Swain - KR Master Patch 25.22",
+          "rankClaim": "Master",
+          "patch": "25.22",
+          "durationSec": 1684,
+          "region": "KR",
+          "uploaded": "2025-11-10",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 54,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "f1sD5DCBMKs",
+          "title": "Fiora vs Malphite [ TOP ] Lol Korea Grandmaster 1353 LP | Patch 26.19 ✅",
+          "rankClaim": "Grandmaster",
+          "patch": "26.19",
+          "durationSec": 1326,
+          "region": "KR",
+          "uploaded": "2026-10-02",
+          "moments": []
+        },
+        {
+          "videoId": "FXjt9mkFwuI",
+          "title": "Fiora Top vs Malphite - KR Master Patch 26.16",
+          "rankClaim": "Master",
+          "patch": "26.16",
+          "durationSec": 1809,
+          "region": "KR",
+          "uploaded": "2026-08-25",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 58,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "jdrVe2UuJeQ",
+          "title": "(VITB Potent) Fiora Top vs Renekton - EUW Challenger Patch 26.16",
+          "rankClaim": "Challenger",
+          "patch": "26.16",
+          "durationSec": 1622,
+          "region": "EUW",
+          "player": "VITB Potent",
+          "uploaded": "2026-08-20",
+          "moments": []
+        },
+        {
+          "videoId": "FKTZaD8uqUk",
+          "title": "Fiora Top vs Renekton - BR Challenger Patch 25.24",
+          "rankClaim": "Challenger",
+          "patch": "25.24",
+          "durationSec": 1493,
+          "uploaded": "2026-01-02",
+          "moments": []
+        },
+        {
+          "videoId": "310eV4XlPGw",
+          "title": "Fiora vs Renekton Top - KR Challenger - Patch 25.19 Season 15",
+          "rankClaim": "Challenger",
+          "patch": "25.19",
+          "durationSec": 2281,
+          "region": "KR",
+          "uploaded": "2025-10-01",
+          "moments": []
+        },
+        {
+          "videoId": "mw_4ns59ZeI",
+          "title": "Fiora vs Renekton Top - KR Grandmaster - Patch 25.14 Season 15",
+          "rankClaim": "Grandmaster",
+          "patch": "25.14",
+          "durationSec": 1831,
+          "region": "KR",
+          "uploaded": "2025-07-25",
+          "moments": []
+        },
+        {
+          "videoId": "QkB-_3J85pc",
+          "title": "Fiora Top vs Renekton - KR Master Patch 25.09",
+          "rankClaim": "Master",
+          "patch": "25.9",
+          "durationSec": 1746,
+          "region": "KR",
+          "uploaded": "2025-05-06",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 61,
+      "lane": "adc",
+      "videos": [
+        {
+          "videoId": "vBawA4aqntA",
+          "title": "Fiora vs Orianna ADC - KR Challenger - Patch 16.15 Season 16",
+          "rankClaim": "Challenger",
+          "patch": "26.15",
+          "durationSec": 1561,
+          "region": "KR",
+          "uploaded": "2026-08-07",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 62,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "UXOS5FacT7Y",
+          "title": "Fiora vs Wukong Top - KR Grandmaster - Patch 25.8 Season 15",
+          "rankClaim": "Grandmaster",
+          "patch": "25.8",
+          "durationSec": 1966,
+          "region": "KR",
+          "uploaded": "2025-04-21",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 67,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "2hCiNpBp_Wg",
+          "title": "Fiora Top vs Vayne - KR Grandmaster Patch 26.17",
+          "rankClaim": "Grandmaster",
+          "patch": "26.17",
+          "durationSec": 1429,
+          "region": "KR",
+          "uploaded": "2026-08-31",
+          "moments": []
+        },
+        {
+          "videoId": "BGry9npjIkM",
+          "title": "Fiora Top vs Vayne - KR Challenger Patch 26.08",
+          "rankClaim": "Challenger",
+          "patch": "26.8",
+          "durationSec": 1833,
+          "region": "KR",
+          "uploaded": "2026-04-22",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 68,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "kTU5E1TBLpo",
+          "title": "Fiora Top vs Rumble (DK Jaehyuk) - KR Grandmaster Patch 26.19",
+          "rankClaim": "Grandmaster",
+          "patch": "26.19",
+          "durationSec": 1621,
+          "region": "KR",
+          "uploaded": "2026-09-27",
+          "moments": []
+        },
+        {
+          "videoId": "BSIfSOtEYaQ",
+          "title": "Fiora Top vs Rumble - KR Challenger Patch 26.09",
+          "rankClaim": "Challenger",
+          "patch": "26.9",
+          "durationSec": 1765,
+          "region": "KR",
+          "uploaded": "2026-05-06",
+          "moments": []
+        },
+        {
+          "videoId": "X5ll_kSotUU",
+          "title": "Fiora Top vs Rumble - KR Challenger Patch 26.07",
+          "rankClaim": "Challenger",
+          "patch": "26.7",
+          "durationSec": 1615,
+          "region": "KR",
+          "uploaded": "2026-04-06",
+          "moments": []
+        },
+        {
+          "videoId": "6VKgQO3_RrQ",
+          "title": "Fiora Top vs Rumble - NA Challenger Patch 26.01",
+          "rankClaim": "Challenger",
+          "patch": "26.1",
+          "durationSec": 1565,
+          "region": "NA",
+          "uploaded": "2026-01-22",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 69,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "sq2Oe4CO5-4",
+          "title": "Fiora Mid vs Cassiopeia - KR Master Patch 26.07",
+          "rankClaim": "Master",
+          "patch": "26.7",
+          "durationSec": 1624,
+          "region": "KR",
+          "uploaded": "2026-04-16",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 77,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "wBxkD1uOs_U",
+          "title": "Fiora Top vs Udyr - KR Master Patch 25.14",
+          "rankClaim": "Master",
+          "patch": "25.14",
+          "durationSec": 1906,
+          "region": "KR",
+          "uploaded": "2025-07-19",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 79,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "LMinFnU8x_A",
+          "title": "Fiora Top vs Gragas - KR Challenger Patch 25.21",
+          "rankClaim": "Challenger",
+          "patch": "25.21",
+          "durationSec": 1472,
+          "region": "KR",
+          "uploaded": "2025-10-27",
+          "moments": []
+        },
+        {
+          "videoId": "p8rbzNxFejA",
+          "title": "Fiora vs Gragas Top - KR Grandmaster - Patch 25.16 Season 15",
+          "rankClaim": "Grandmaster",
+          "patch": "25.16",
+          "durationSec": 1941,
+          "region": "KR",
+          "uploaded": "2025-08-23",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 80,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "OE54ji0BSEs",
+          "title": "Fiora Top vs Pantheon - KR Grandmaster Patch 26.05",
+          "rankClaim": "Grandmaster",
+          "patch": "26.5",
+          "durationSec": 1882,
+          "region": "KR",
+          "uploaded": "2026-03-17",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 81,
+      "lane": "adc",
+      "videos": [
+        {
+          "videoId": "i-hx3u0JBtI",
+          "title": "Fiora ADC vs Ezreal - EUW Grandmaster Patch 26.09",
+          "rankClaim": "Grandmaster",
+          "patch": "26.9",
+          "durationSec": 1562,
+          "region": "EUW",
+          "uploaded": "2026-05-12",
+          "moments": []
+        },
+        {
+          "videoId": "qcODDIUIihE",
+          "title": "Fiora ADC vs Ezreal - EUW Grandmaster Patch 25.13",
+          "rankClaim": "Grandmaster",
+          "patch": "25.13",
+          "durationSec": 1421,
+          "region": "EUW",
+          "uploaded": "2025-07-18",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 84,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "bbzsypHHNBE",
+          "title": "Fiora Mid vs Akali - KR Master Patch 25.20",
+          "rankClaim": "Master",
+          "patch": "25.20",
+          "durationSec": 1826,
+          "region": "KR",
+          "uploaded": "2025-10-20",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 84,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "mSrJvm69zck",
+          "title": "Fiora vs Akali Top - KR Grandmaster -Patch 16.17 Season 16",
+          "rankClaim": "Grandmaster",
+          "patch": "26.17",
+          "durationSec": 1981,
+          "region": "KR",
+          "uploaded": "2026-09-08",
+          "moments": []
+        },
+        {
+          "videoId": "AyoEKCcR5Wk",
+          "title": "Fiora Top vs Akali - EUW Grandmaster Patch 26.11",
+          "rankClaim": "Grandmaster",
+          "patch": "26.11",
+          "durationSec": 1747,
+          "region": "EUW",
+          "uploaded": "2026-06-03",
+          "moments": []
+        },
+        {
+          "videoId": "r2H_i-4Q3aU",
+          "title": "Fiora Top vs Akali - KR Grandmaster Patch 26.04",
+          "rankClaim": "Grandmaster",
+          "patch": "26.4",
+          "durationSec": 1797,
+          "region": "KR",
+          "uploaded": "2026-02-25",
+          "moments": []
+        },
+        {
+          "videoId": "7WR5cFL0HNE",
+          "title": "Fiora vs Akali Top - KR Grandmaster - Patch 25.13 Season 15",
+          "rankClaim": "Grandmaster",
+          "patch": "25.13",
+          "durationSec": 1620,
+          "region": "KR",
+          "uploaded": "2025-07-12",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 92,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "GBHrkiM_XoI",
+          "title": "Fiora Top vs Riven - KR Grandmaster Patch 25.08",
+          "rankClaim": "Grandmaster",
+          "patch": "25.8",
+          "durationSec": 1857,
+          "region": "KR",
+          "uploaded": "2025-04-21",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 98,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "0JiMKW-cgNQ",
+          "title": "Fiora Top vs Shen - KR Master Patch 26.01",
+          "rankClaim": "Master",
+          "patch": "26.1",
+          "durationSec": 1602,
+          "region": "KR",
+          "uploaded": "2026-01-14",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 266,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 670,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 704,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 741,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1081,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1157,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1228,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1278,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1300,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1373,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1412,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1459,
+              "label": "Get a PENTA KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1506,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1537,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1552,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1568,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1578,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1591,
+              "label": "End credit"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 105,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "g3-di4EK0BI",
+          "title": "Fiora Mid vs Fizz - KR Master Patch 25.15",
+          "rankClaim": "Master",
+          "patch": "25.15",
+          "durationSec": 1578,
+          "region": "KR",
+          "uploaded": "2025-08-10",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 106,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "2rVyYHzxVZI",
+          "title": "Fiora Top vs Volibear - KR Master Patch 26.19",
+          "rankClaim": "Master",
+          "patch": "26.19",
+          "durationSec": 1581,
+          "region": "KR",
+          "uploaded": "2026-10-07",
+          "result": "W",
+          "moments": [
+            {
+              "atSec": 36,
+              "label": "First Blood — Fiora kills Volibear",
+              "kind": "kill"
+            },
+            {
+              "atSec": 83,
+              "label": "Fiora catches Volibear"
+            },
+            {
+              "atSec": 190,
+              "label": "Fiora outduels Volibear again"
+            },
+            {
+              "atSec": 203,
+              "label": "Fiora outduels Sylas"
+            },
+            {
+              "atSec": 560,
+              "label": "Fiora outplays Volibear (3rd time)"
+            },
+            {
+              "atSec": 634,
+              "label": "Fiora solo kills Volibear (4th time)",
+              "kind": "kill"
+            },
+            {
+              "atSec": 740,
+              "label": "Fiora outplays Lucian"
+            },
+            {
+              "atSec": 819,
+              "label": "Fiora takes down Viktor"
+            },
+            {
+              "atSec": 873,
+              "label": "Red takes 1st Dragon (Mountain)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 899,
+              "label": "Aurora takes down Lucian"
+            },
+            {
+              "atSec": 1033,
+              "label": "Fiora solo kills Lucian again",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1072,
+              "label": "Fiora eliminates Viktor"
+            },
+            {
+              "atSec": 1191,
+              "label": "Red takes 2nd Dragon (Infernal)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1223,
+              "label": "Fiora eliminates Volibear"
+            },
+            {
+              "atSec": 1243,
+              "label": "Bot Inhibitor falls (Blue)"
+            },
+            {
+              "atSec": 1276,
+              "label": "Fiora catches Viktor again"
+            },
+            {
+              "atSec": 1285,
+              "label": "Fiora Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1480,
+              "label": "Team fight (4 kills)",
+              "kind": "teamfight"
+            }
+          ]
+        },
+        {
+          "videoId": "3lVTDumd730",
+          "title": "Fiora Top vs Volibear - EUW Grandmaster Patch 25.10",
+          "rankClaim": "Grandmaster",
+          "patch": "25.10",
+          "durationSec": 1648,
+          "region": "EUW",
+          "uploaded": "2025-05-28",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 107,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "UtcETFLwHko",
+          "title": "Fiora Top vs Rengar - KR Challenger Patch 26.20",
+          "rankClaim": "Challenger",
+          "patch": "26.20",
+          "durationSec": 1636,
+          "region": "KR",
+          "uploaded": "2026-10-11",
+          "result": "W",
+          "moments": [
+            {
+              "atSec": 261,
+              "label": "First Blood — Fiora kills Rengar",
+              "kind": "kill"
+            },
+            {
+              "atSec": 354,
+              "label": "Red takes 1st Dragon (Infernal)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 446,
+              "label": "Team fight (3 kills)",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 675,
+              "label": "Red takes 2nd Dragon (Hextech)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 709,
+              "label": "Lee Sin kills Rengar",
+              "kind": "kill"
+            },
+            {
+              "atSec": 979,
+              "label": "Fiora kills Jarvan IV",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1021,
+              "label": "Blue takes 1st Dragon (Ocean)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1186,
+              "label": "Alistar kills Jarvan IV",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1219,
+              "label": "Ryze takes down Rengar"
+            },
+            {
+              "atSec": 1354,
+              "label": "Blue takes 2nd Dragon (Ocean)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1405,
+              "label": "Red takes Baron",
+              "kind": "baron"
+            },
+            {
+              "atSec": 1609,
+              "label": "Fiora Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1613,
+              "label": "Mid Inhibitor falls (Blue)"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 110,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "9AbXOSNSkOc",
+          "title": "Fiora vs Varus Top - KR Master - Patch 25.11 Season 15",
+          "rankClaim": "Master",
+          "patch": "25.11",
+          "durationSec": 1561,
+          "region": "KR",
+          "uploaded": "2025-06-03",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 117,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "CfJGQyUpJjw",
+          "title": "Fiora Top vs Lulu - KR Master Patch 25.07",
+          "rankClaim": "Master",
+          "patch": "25.7",
+          "durationSec": 1668,
+          "region": "KR",
+          "uploaded": "2025-04-07",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 119,
+      "lane": "adc",
+      "videos": [
+        {
+          "videoId": "DNBgOn0CtkI",
+          "title": "(VITB Potent) Fiora ADC vs Draven - EUW Challenger Patch 26.15",
+          "rankClaim": "Challenger",
+          "patch": "26.15",
+          "durationSec": 1527,
+          "region": "EUW",
+          "player": "VITB Potent",
+          "uploaded": "2026-08-05",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 122,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "neeRyzoulPY",
+          "title": "Fiora Top vs Darius - KR Grandmaster Patch 25.24",
+          "rankClaim": "Grandmaster",
+          "patch": "25.24",
+          "durationSec": 1476,
+          "region": "KR",
+          "uploaded": "2026-01-09",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 126,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "mQLPbRBabBw",
+          "title": "Fiora vs Jayce Top - KR Challenger - Patch 25.14 Season 15",
+          "rankClaim": "Challenger",
+          "patch": "25.14",
+          "durationSec": 1620,
+          "region": "KR",
+          "uploaded": "2025-07-28",
+          "moments": []
+        },
+        {
+          "videoId": "bu8gbBnY9Ug",
+          "title": "Fiora Top vs Jayce - KR Grandmaster Patch 25.12",
+          "rankClaim": "Grandmaster",
+          "patch": "25.12",
+          "durationSec": 1430,
+          "region": "KR",
+          "uploaded": "2025-06-15",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 150,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "qbOKUXiTWXU",
+          "title": "Fiora Top vs Gnar - KR Challenger Patch 26.10",
+          "rankClaim": "Challenger",
+          "patch": "26.10",
+          "durationSec": 1580,
+          "region": "KR",
+          "uploaded": "2026-05-20",
+          "moments": []
+        },
+        {
+          "videoId": "oArT2PqYNaU",
+          "title": "Fiora Top vs Gnar - EUW Grandmaster Patch 25.24",
+          "rankClaim": "Grandmaster",
+          "patch": "25.24",
+          "durationSec": 1559,
+          "region": "EUW",
+          "uploaded": "2025-12-18",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 50,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 145,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 226,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 339,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 457,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 621,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 643,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 769,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 842,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 912,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 934,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1092,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1180,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1216,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1254,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1282,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1357,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1394,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1441,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1518,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1533,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1548,
+              "label": "End credit"
+            }
+          ]
+        },
+        {
+          "videoId": "mN2XI8icAck",
+          "title": "Fiora Top vs Gnar - EUW Grandmaster Patch 25.11",
+          "rankClaim": "Grandmaster",
+          "patch": "25.11",
+          "durationSec": 1655,
+          "region": "EUW",
+          "uploaded": "2025-06-12",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 157,
+      "lane": "adc",
+      "videos": [
+        {
+          "videoId": "6K_E88jrOYQ",
+          "title": "Fiora ADC vs Yasuo - EUW Grandmaster Patch 25.16",
+          "rankClaim": "Grandmaster",
+          "patch": "25.16",
+          "durationSec": 1715,
+          "region": "EUW",
+          "uploaded": "2025-08-23",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 157,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "m270DC-haTI",
+          "title": "Fiora vs Yasuo 13/2/5 (Top) | EUW Grandmaster | Fiora OTP Replay",
+          "rankClaim": "Grandmaster",
+          "patch": "26.7",
+          "durationSec": 1456,
+          "region": "EUW",
+          "patchEstimated": true,
+          "uploaded": "2026-04-07",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 161,
+      "lane": "adc",
+      "videos": [
+        {
+          "videoId": "4LGGU_xfw9M",
+          "title": "Fiora ADC vs Vel'Koz - EUW Grandmaster Patch 25.18",
+          "rankClaim": "Grandmaster",
+          "patch": "25.18",
+          "durationSec": 1775,
+          "region": "EUW",
+          "uploaded": "2025-09-24",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 164,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "qLDlPtddp0M",
+          "title": "Fiora Top vs Camille - NA Grandmaster Patch 26.06",
+          "rankClaim": "Grandmaster",
+          "patch": "26.6",
+          "durationSec": 1909,
+          "region": "NA",
+          "uploaded": "2026-03-23",
+          "moments": []
+        },
+        {
+          "videoId": "W4uSORcIIoQ",
+          "title": "Fiora Top vs Camille - KR Master Patch 25.20",
+          "rankClaim": "Master",
+          "patch": "25.20",
+          "durationSec": 1561,
+          "region": "KR",
+          "uploaded": "2025-10-12",
+          "moments": []
+        },
+        {
+          "videoId": "A1BmLZShPOg",
+          "title": "Fiora Top vs Camille - KR Challenger Patch 25.06",
+          "rankClaim": "Challenger",
+          "patch": "25.6",
+          "durationSec": 1707,
+          "region": "KR",
+          "uploaded": "2025-03-25",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 166,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "WKeu2dhEYUA",
+          "title": "Fiora Top vs Akshan - KR Master Patch 25.23",
+          "rankClaim": "Master",
+          "patch": "25.23",
+          "durationSec": 1632,
+          "region": "KR",
+          "uploaded": "2025-11-26",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 202,
+      "lane": "adc",
+      "videos": [
+        {
+          "videoId": "4YKU64ANgIQ",
+          "title": "Fiora ADC vs Jhin - KR Master Patch 26.14",
+          "rankClaim": "Master",
+          "patch": "26.14",
+          "durationSec": 1627,
+          "region": "KR",
+          "uploaded": "2026-07-28",
+          "moments": []
+        },
+        {
+          "videoId": "oV0lFo3Cuqs",
+          "title": "(VITB Potent) Fiora ADC vs Jhin - EUW Grandmaster Patch 26.10",
+          "rankClaim": "Grandmaster",
+          "patch": "26.10",
+          "durationSec": 1867,
+          "region": "EUW",
+          "player": "VITB Potent",
+          "uploaded": "2026-05-25",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 221,
+      "lane": "adc",
+      "videos": [
+        {
+          "videoId": "VACb3HW9P7A",
+          "title": "Fiora ADC vs Zeri (NBS Strode) - EUW Challenger Patch 26.13",
+          "rankClaim": "Challenger",
+          "patch": "26.13",
+          "durationSec": 1691,
+          "region": "EUW",
+          "uploaded": "2026-07-06",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 221,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "vvgOj90r38g",
+          "title": "Fiora Top vs Zeri - EUW Challenger Patch 25.19",
+          "rankClaim": "Challenger",
+          "patch": "25.19",
+          "durationSec": 1520,
+          "region": "EUW",
+          "uploaded": "2025-10-09",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 234,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "GvQYIO0sO40",
+          "title": "Fiora Top vs Viego - KR Grandmaster Patch 25.16",
+          "rankClaim": "Grandmaster",
+          "patch": "25.16",
+          "durationSec": 1635,
+          "region": "KR",
+          "uploaded": "2025-08-17",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 235,
+      "lane": "adc",
+      "videos": [
+        {
+          "videoId": "z75YJl5J0ww",
+          "title": "Fiora ADC vs Senna - EUW Challenger Patch 26.12",
+          "rankClaim": "Challenger",
+          "patch": "26.12",
+          "durationSec": 1575,
+          "region": "EUW",
+          "uploaded": "2026-06-23",
+          "moments": []
+        },
+        {
+          "videoId": "WjVSsyXfTuk",
+          "title": "(VITB Potent) Fiora ADC vs Senna - EUW Grandmaster Patch 26.11",
+          "rankClaim": "Grandmaster",
+          "patch": "26.11",
+          "durationSec": 1589,
+          "region": "EUW",
+          "player": "VITB Potent",
+          "uploaded": "2026-06-10",
+          "moments": []
+        },
+        {
+          "videoId": "NsD-bvmdUwg",
+          "title": "Fiora ADC vs Senna - EUW Challenger Patch 25.12",
+          "rankClaim": "Challenger",
+          "patch": "25.12",
+          "durationSec": 1744,
+          "region": "EUW",
+          "uploaded": "2025-06-22",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 240,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "FEL5U4f_8xw",
+          "title": "Fiora vs Kled Top - EUW Challenger - Patch 16.14 Season 16",
+          "rankClaim": "Challenger",
+          "patch": "26.14",
+          "durationSec": 1811,
+          "region": "EUW",
+          "uploaded": "2026-07-21",
+          "moments": []
+        },
+        {
+          "videoId": "4LSiJWkf-KY",
+          "title": "Fiora Top vs Kled - KR Master Patch 25.13",
+          "rankClaim": "Master",
+          "patch": "25.13",
+          "durationSec": 1436,
+          "region": "KR",
+          "uploaded": "2025-06-30",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 246,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "bo-HahaZpsc",
+          "title": "Fiora Mid vs Qiyana - KR Master Patch 25.06",
+          "rankClaim": "Master",
+          "patch": "25.6",
+          "durationSec": 1544,
+          "region": "KR",
+          "uploaded": "2025-04-03",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 28,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 298,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 365,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 397,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 533,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 679,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 735,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 795,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 847,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 875,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 967,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 995,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1061,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1248,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1273,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1302,
+              "label": "Take down The Inhibitor"
+            },
+            {
+              "atSec": 1402,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1472,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1495,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1523,
+              "label": "End credit"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 517,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "DrZRxXUw7vY",
+          "title": "T1 Faker Fiora MID vs Sylas - Patch 25.6 Korea Master ✅",
+          "rankClaim": "Master",
+          "patch": "25.6",
+          "durationSec": 1749,
+          "region": "KR",
+          "player": "Faker",
+          "team": "T1",
+          "uploaded": "2025-03-25",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 777,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "1bPUq6ROxfQ",
+          "title": "(RNG Tangyuan) Fiora Mid vs Yone (WE Karis) - KR Challenger Patch 26.13",
+          "rankClaim": "Challenger",
+          "patch": "26.13",
+          "durationSec": 1499,
+          "region": "KR",
+          "player": "Tangyuan",
+          "uploaded": "2026-07-12",
+          "moments": []
+        },
+        {
+          "videoId": "l8xNlQJ6h7g",
+          "title": "Fiora Mid vs Yone - KR Master Patch 26.04",
+          "rankClaim": "Master",
+          "patch": "26.4",
+          "durationSec": 1647,
+          "region": "KR",
+          "uploaded": "2026-03-06",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 138,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 260,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 361,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 422,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 482,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 558,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 590,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 613,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 748,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 773,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 855,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 983,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1076,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1150,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1228,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1312,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1407,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1438,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1456,
+              "label": "Take down The Inhibitor"
+            },
+            {
+              "atSec": 1636,
+              "label": "End credit"
+            }
+          ]
+        },
+        {
+          "videoId": "__MInBrCTjM",
+          "title": "Fiora Mid vs Yone - KR Grandmaster Patch 25.21",
+          "rankClaim": "Grandmaster",
+          "patch": "25.21",
+          "durationSec": 1821,
+          "region": "KR",
+          "uploaded": "2025-11-03",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 777,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "X4ABHIMXV_M",
+          "title": "Fiora vs Yone Top - KR Challenger - Patch 16.19 Season 16",
+          "rankClaim": "Challenger",
+          "patch": "26.19",
+          "durationSec": 1836,
+          "region": "KR",
+          "uploaded": "2026-10-01",
+          "moments": []
+        },
+        {
+          "videoId": "QAGHeopcsyo",
+          "title": "(CF Danilo) Fiora Top vs Yone (ESB Bobsik) - EUW Grandmaster Patch 26.13",
+          "rankClaim": "Grandmaster",
+          "patch": "26.13",
+          "durationSec": 1508,
+          "region": "EUW",
+          "player": "CF Danilo",
+          "uploaded": "2026-06-30",
+          "moments": []
+        },
+        {
+          "videoId": "lRl_t3z2dmw",
+          "title": "Fiora vs Yone Top - KR Grandmaster - Patch 16.07 Season 16",
+          "rankClaim": "Grandmaster",
+          "patch": "26.7",
+          "durationSec": 1921,
+          "region": "KR",
+          "uploaded": "2026-04-03",
+          "moments": []
+        },
+        {
+          "videoId": "r3z6ieom3AM",
+          "title": "Fiora vs Yone Top - KR Grandmaster - Patch 16.07 Season 16",
+          "rankClaim": "Grandmaster",
+          "patch": "26.7",
+          "durationSec": 2266,
+          "region": "KR",
+          "uploaded": "2026-04-02",
+          "moments": []
+        },
+        {
+          "videoId": "IlcAB2xtobc",
+          "title": "Fiora vs Yone Top - KR Grandmaster - Patch 16.05 Season 16",
+          "rankClaim": "Grandmaster",
+          "patch": "26.5",
+          "durationSec": 1546,
+          "region": "KR",
+          "uploaded": "2026-03-10",
+          "moments": []
+        },
+        {
+          "videoId": "t76gTrn6LaY",
+          "title": "Fiora vs Yone Top - EUW Grandmaster - Patch 26.01 Season 16",
+          "rankClaim": "Grandmaster",
+          "patch": "26.1",
+          "durationSec": 1861,
+          "region": "EUW",
+          "uploaded": "2026-01-13",
+          "moments": []
+        },
+        {
+          "videoId": "jqsoIvgnxaM",
+          "title": "Fiora Top vs Yone - KR Master Patch 25.18",
+          "rankClaim": "Master",
+          "patch": "25.18",
+          "durationSec": 1578,
+          "region": "KR",
+          "uploaded": "2025-09-13",
+          "moments": []
+        },
+        {
+          "videoId": "LrsI2Dx5byU",
+          "title": "Fiora Top vs Yone - KR Master Patch 25.10",
+          "rankClaim": "Master",
+          "patch": "25.10",
+          "durationSec": 1749,
+          "region": "KR",
+          "uploaded": "2025-05-20",
+          "moments": []
+        },
+        {
+          "videoId": "1X5lSZfOCHU",
+          "title": "Fiora Top vs Yone - NA Challenger Patch 25.08",
+          "rankClaim": "Challenger",
+          "patch": "25.8",
+          "durationSec": 1595,
+          "region": "NA",
+          "uploaded": "2025-04-30",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 392,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 489,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 674,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 727,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 777,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 908,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1081,
+              "label": "Get a Triple Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1121,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1152,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1231,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1251,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1261,
+              "label": "Take down The Inhibitor"
+            },
+            {
+              "atSec": 1282,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1394,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1412,
+              "label": "Take down The Inhibitor"
+            },
+            {
+              "atSec": 1440,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1574,
+              "label": "End credit"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 799,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "AUGAeIOAzyQ",
+          "title": "Fiora Top vs Ambessa - KR Challenger Patch 26.17",
+          "rankClaim": "Challenger",
+          "patch": "26.17",
+          "durationSec": 1402,
+          "region": "KR",
+          "uploaded": "2026-09-09",
+          "moments": []
+        },
+        {
+          "videoId": "Y0-FQcCz9n8",
+          "title": "Fiora vs Ambessa Top - KR Challenger - Patch 16.05 Season 16",
+          "rankClaim": "Challenger",
+          "patch": "26.5",
+          "durationSec": 2206,
+          "region": "KR",
+          "uploaded": "2026-03-18",
+          "moments": []
+        },
+        {
+          "videoId": "1Mr6gek740k",
+          "title": "Fiora Top vs Ambessa - KR Challenger Patch 26.05",
+          "rankClaim": "Challenger",
+          "patch": "26.5",
+          "durationSec": 1512,
+          "region": "KR",
+          "uploaded": "2026-03-10",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 875,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "ecXLxn1oq8E",
+          "title": "Fiora vs Sett Top - KR Grandmaster - Patch 16.09 Season 16",
+          "rankClaim": "Grandmaster",
+          "patch": "26.9",
+          "durationSec": 1366,
+          "region": "KR",
+          "uploaded": "2026-05-14",
+          "moments": []
+        },
+        {
+          "videoId": "QU1bGp31DKQ",
+          "title": "Fiora vs Sett Top - EUW Grandmaster - Patch 26.02 Season 16",
+          "rankClaim": "Grandmaster",
+          "patch": "26.2",
+          "durationSec": 1741,
+          "region": "EUW",
+          "uploaded": "2026-01-28",
+          "moments": []
+        },
+        {
+          "videoId": "6d633ojfCXM",
+          "title": "Fiora vs Sett Top - KR Challenger - Patch 25.6 Season 15",
+          "rankClaim": "Challenger",
+          "patch": "25.6",
+          "durationSec": 1661,
+          "region": "KR",
+          "uploaded": "2025-03-28",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 887,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "FFqSoUSuoso",
+          "title": "Fiora vs Gwen Top - NA Challenger - Patch 25.24 Season 15",
+          "rankClaim": "Challenger",
+          "patch": "25.24",
+          "durationSec": 1501,
+          "region": "NA",
+          "uploaded": "2025-12-06",
+          "moments": []
+        },
+        {
+          "videoId": "5xL11p1_NjI",
+          "title": "Fiora vs Gwen Top - KR Master - Patch 25.13 Season 15",
+          "rankClaim": "Master",
+          "patch": "25.13",
+          "durationSec": 2311,
+          "region": "KR",
+          "uploaded": "2025-07-11",
+          "moments": []
+        },
+        {
+          "videoId": "rG4jwAcftuk",
+          "title": "Fiora Top vs Gwen - KR Challenger Patch 25.11",
+          "rankClaim": "Challenger",
+          "patch": "25.11",
+          "durationSec": 1535,
+          "region": "KR",
+          "uploaded": "2025-06-03",
+          "moments": []
+        },
+        {
+          "videoId": "PiXh6bTKaEY",
+          "title": "Fiora vs Gwen Top - KR Challenger - Patch 25.11 Season 15",
+          "rankClaim": "Challenger",
+          "patch": "25.11",
+          "durationSec": 1541,
+          "region": "KR",
+          "uploaded": "2025-05-31",
+          "moments": []
+        },
+        {
+          "videoId": "kUvMDkrGlXE",
+          "title": "Fiora vs Gwen Top - KR Challenger - Patch 25.9 Season 15",
+          "rankClaim": "Challenger",
+          "patch": "25.9",
+          "durationSec": 1950,
+          "region": "KR",
+          "uploaded": "2025-05-12",
+          "moments": []
+        },
+        {
+          "videoId": "4Cq8dYSt470",
+          "title": "Fiora vs Gwen Top - KR Grandmaster - Patch 25.9 Season 15",
+          "rankClaim": "Grandmaster",
+          "patch": "25.9",
+          "durationSec": 1846,
+          "region": "KR",
+          "uploaded": "2025-05-10",
+          "moments": []
+        },
+        {
+          "videoId": "QtwvmH2T4Hs",
+          "title": "Zeus Fiora vs Gwen Top - KR Grandmaster - Patch 25.6 Season 15",
+          "rankClaim": "Grandmaster",
+          "patch": "25.6",
+          "durationSec": 1441,
+          "region": "KR",
+          "player": "Zeus",
+          "uploaded": "2025-03-27",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 897,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "WUlJj_dpNeA",
+          "title": "Fiora vs K'Sante [ TOP ] Lol Korea Master | Patch 26.20 ✅",
+          "rankClaim": "Master",
+          "patch": "26.20",
+          "durationSec": 1646,
+          "region": "KR",
+          "uploaded": "2026-10-09",
+          "moments": []
+        },
+        {
+          "videoId": "iboGVfTGb4E",
+          "title": "Fiora vs KSante Top - KR Challenger - Patch 16.20 Season 16",
+          "rankClaim": "Challenger",
+          "patch": "26.20",
+          "durationSec": 1816,
+          "region": "KR",
+          "uploaded": "2026-10-08",
+          "moments": []
+        },
+        {
+          "videoId": "3c1Fg6EyrqU",
+          "title": "HLE Zeus Fiora vs K'Sante [ TOP ] Korea Grandmaster 1358 LP | Patch 26.4",
+          "rankClaim": "Grandmaster",
+          "patch": "26.4",
+          "durationSec": 1203,
+          "region": "KR",
+          "player": "Zeus",
+          "team": "HLE",
+          "uploaded": "2026-03-02",
+          "moments": []
+        },
+        {
+          "videoId": "Qq2YGrzmksk",
+          "title": "Fiora Top vs K'Sante - EUW Challenger Patch 25.22",
+          "rankClaim": "Challenger",
+          "patch": "25.22",
+          "durationSec": 1726,
+          "region": "EUW",
+          "uploaded": "2025-11-19",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 901,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "2YW8gyaxz28",
+          "title": "Fiora Top vs Smolder - NA Challenger Patch 26.18",
+          "rankClaim": "Challenger",
+          "patch": "26.18",
+          "durationSec": 1757,
+          "region": "NA",
+          "uploaded": "2026-09-25",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 904,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "K96K80lrR-w",
+          "title": "Fiora Top vs Zaahen - EUW Grandmaster Patch 26.18",
+          "rankClaim": "Grandmaster",
+          "patch": "26.18",
+          "durationSec": 1868,
+          "region": "EUW",
+          "uploaded": "2026-09-13",
+          "moments": []
+        },
+        {
+          "videoId": "aiGiJj4DOEc",
+          "title": "Fiora Top vs Zaahen - KR Grandmaster Patch 26.03",
+          "rankClaim": "Grandmaster",
+          "patch": "26.3",
+          "durationSec": 1554,
+          "region": "KR",
+          "uploaded": "2026-02-10",
+          "moments": []
+        },
+        {
+          "videoId": "Fh4UVOht1Rc",
+          "title": "Fiora Top vs Zaahen - NA Challenger Patch 25.24",
+          "rankClaim": "Challenger",
+          "patch": "25.24",
+          "durationSec": 1605,
+          "region": "NA",
+          "uploaded": "2025-12-24",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 105,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 161,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 284,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 379,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 462,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 555,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 654,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 688,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 715,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 736,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 860,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 878,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 969,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1052,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1111,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1213,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1235,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1302,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1456,
+              "label": "Take down The Inhibitor"
+            },
+            {
+              "atSec": 1546,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1577,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1594,
+              "label": "End credit"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

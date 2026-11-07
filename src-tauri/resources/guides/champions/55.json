@@ -1,0 +1,5510 @@
+{
+  "schema": 1,
+  "champion": 55,
+  "generatedAt": "2026-11-07T13:25:14.592Z",
+  "guides": [
+    {
+      "champion": 55,
+      "enemy": 84,
+      "lane": "mid",
+      "patch": "26.21",
+      "reviewed": false,
+      "difficulty": "Skill matchup",
+      "favoredWhen": "Even. She dodges with E and waits in shroud, so dagger the shroud and all-in when it drops.",
+      "keyTips": [
+        {
+          "text": "Even skill lane: the E-dodge war decides it.",
+          "scope": "pair",
+          "sourceIds": [
+            "anguish"
+          ]
+        },
+        {
+          "text": "She stands behind minions at 1 against E: Q-bounce the wave onto her.",
+          "scope": "pair",
+          "sourceIds": [
+            "anguish"
+          ],
+          "abilityKeys": [
+            {
+              "champion": 55,
+              "key": "Q"
+            }
+          ]
+        },
+        {
+          "text": "She E-dodges your E and E2-interrupts dashes: throw E where her dash ends.",
+          "scope": "pair",
+          "sourceIds": [
+            "anguish"
+          ],
+          "abilityKeys": [
+            {
+              "champion": 84,
+              "key": "E"
+            },
+            {
+              "champion": 55,
+              "key": "E"
+            }
+          ]
+        }
+      ],
+      "enemyTips": {},
+      "sections": {
+        "overview": {
+          "tips": []
+        },
+        "early-lane": {
+          "tips": [
+            {
+              "text": "Her E2-plus-passive-plus-shroud is the full answer: never stand in the shroud.",
+              "scope": "pair",
+              "sourceIds": [
+                "anguish"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 84,
+                  "key": "W"
+                },
+                {
+                  "champion": 84,
+                  "key": "E"
+                }
+              ]
+            },
+            {
+              "text": "Dodge her Q2: the second blast is the damage.",
+              "scope": "pair",
+              "sourceIds": [
+                "anguish"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 84,
+                  "key": "Q"
+                }
+              ]
+            }
+          ]
+        },
+        "mid-lane": {
+          "tips": [
+            {
+              "text": "She waits in shroud: dagger the shroud, fight when it drops.",
+              "scope": "pair",
+              "sourceIds": [
+                "anguish"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 55,
+                  "key": "Q"
+                },
+                {
+                  "champion": 84,
+                  "key": "W"
+                }
+              ]
+            },
+            {
+              "text": "Deny her E1 mark: no mark means no E2 follow.",
+              "scope": "pair",
+              "sourceIds": [
+                "anguish"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 84,
+                  "key": "E"
+                }
+              ]
+            }
+          ]
+        },
+        "win-condition": {
+          "tips": [
+            {
+              "text": "Shroud daggered plus E-dodge won: the Akali who never hides never wins.",
+              "scope": "pair",
+              "sourceIds": [
+                "anguish"
+              ]
+            }
+          ]
+        }
+      },
+      "itemization": [],
+      "sources": [
+        {
+          "id": "anguish",
+          "author": "Anguish333",
+          "rankClaim": "Master (profile badge; title claims 2000LP GrandMaster EUW and Challenger EUNE) · Akali main",
+          "rank": "master",
+          "url": "https://www.mobafire.com/league-of-legends/build/26-20-anguish-2000lp-grandmasters-euw-challenger-eune-akali-mid-top-s16-guide-every-matchup-item-rune-explained-625064",
+          "kind": "mobafire"
+        }
+      ]
+    },
+    {
+      "champion": 55,
+      "enemy": 103,
+      "lane": "mid",
+      "patch": "26.21",
+      "reviewed": false,
+      "difficulty": "Skill matchup",
+      "favoredWhen": "Even skill lane. She holds Charm for your E, so dagger her from angles and roam when she cannot follow.",
+      "keyTips": [
+        {
+          "text": "Even skill lane: the Charm-on-E moment decides everything.",
+          "scope": "pair",
+          "sourceIds": [
+            "peng04"
+          ],
+          "abilityKeys": [
+            {
+              "champion": 103,
+              "key": "E"
+            },
+            {
+              "champion": 55,
+              "key": "E"
+            }
+          ]
+        },
+        {
+          "text": "Her Q runs about {cd:55:Q}: trade between cooldowns.",
+          "scope": "pair",
+          "sourceIds": [
+            "peng04"
+          ],
+          "abilityKeys": [
+            {
+              "champion": 55,
+              "key": "Q"
+            }
+          ]
+        },
+        {
+          "text": "She plays the lane slowly and holds Charm defensively: dictate the pace, do not wait.",
+          "scope": "pair",
+          "sourceIds": [
+            "shok-ahri"
+          ],
+          "abilityKeys": [
+            {
+              "champion": 103,
+              "key": "E"
+            }
+          ]
+        }
+      ],
+      "enemyTips": {},
+      "sections": {
+        "overview": {
+          "tips": []
+        },
+        "early-lane": {
+          "tips": [
+            {
+              "text": "After E to a dagger, expect immediate Charm: keep moving or Shunpo out.",
+              "scope": "pair",
+              "sourceIds": [
+                "peng04"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 55,
+                  "key": "E"
+                },
+                {
+                  "champion": 103,
+                  "key": "E"
+                }
+              ]
+            },
+            {
+              "text": "She avoids daggers: place them on her, not near her.",
+              "scope": "pair",
+              "sourceIds": [
+                "shok-ahri"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 55,
+                  "key": "Q"
+                }
+              ]
+            }
+          ]
+        },
+        "mid-lane": {
+          "tips": [
+            {
+              "text": "Post-6 she shoves to pin you: shove back and roam first.",
+              "scope": "pair",
+              "sourceIds": [
+                "shok-ahri"
+              ]
+            },
+            {
+              "text": "Her Charm gets patient when behind: ahead means bait before committing.",
+              "scope": "pair",
+              "sourceIds": [
+                "peng04"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 103,
+                  "key": "E"
+                }
+              ]
+            }
+          ]
+        },
+        "win-condition": {
+          "tips": [
+            {
+              "text": "Daggers placed plus roams taken: the Ahri who never holds you never wins.",
+              "scope": "pair",
+              "sourceIds": [
+                "peng04",
+                "shok-ahri"
+              ]
+            }
+          ]
+        }
+      },
+      "itemization": [],
+      "sources": [
+        {
+          "id": "peng04",
+          "author": "Peng04",
+          "rankClaim": "Challenger · Ahri main",
+          "rank": "challenger",
+          "url": "https://www.mobafire.com/league-of-legends/build/26-20-pengs-ahri-guide-5-1mil-points-13x-challenger-648700",
+          "kind": "mobafire"
+        },
+        {
+          "id": "shok-ahri",
+          "author": "ShokLoL",
+          "rankClaim": "Rank 1 Challenger · Ahri main",
+          "rank": "challenger",
+          "url": "https://www.mobafire.com/league-of-legends/build/26-5-shoks-rank-1-challenger-ahri-guide-635065",
+          "kind": "mobafire"
+        }
+      ]
+    },
+    {
+      "champion": 55,
+      "enemy": 134,
+      "lane": "mid",
+      "patch": "26.21",
+      "reviewed": false,
+      "difficulty": "Hard",
+      "favoredWhen": "She keeps E for your engages and punishes daggers. Bait E, then go.",
+      "keyTips": [
+        {
+          "text": "She keeps E, especially after 6, to break trades and cancel your R: the stun is the lane.",
+          "scope": "pair",
+          "sourceIds": [
+            "shok"
+          ],
+          "abilityKeys": [
+            {
+              "champion": 134,
+              "key": "E"
+            },
+            {
+              "champion": 55,
+              "key": "R"
+            }
+          ]
+        },
+        {
+          "text": "She refuses daggers: place them where she stands, not where she will be.",
+          "scope": "pair",
+          "sourceIds": [
+            "shok",
+            "trisend3"
+          ],
+          "abilityKeys": [
+            {
+              "champion": 55,
+              "key": "Q"
+            }
+          ]
+        },
+        {
+          "text": "Your level 2 and 6 are the windows: force them.",
+          "scope": "pair",
+          "sourceIds": [
+            "shok"
+          ]
+        }
+      ],
+      "enemyTips": {},
+      "sections": {
+        "overview": {
+          "tips": []
+        },
+        "early-lane": {
+          "tips": [
+            {
+              "text": "Outside your windows you are weak: concede, then strike at 2 and 6.",
+              "scope": "pair",
+              "sourceIds": [
+                "shok"
+              ]
+            },
+            {
+              "text": "Your roams are the pressure: shove and leave when she must answer.",
+              "scope": "pair",
+              "sourceIds": [
+                "shok"
+              ]
+            }
+          ]
+        },
+        "mid-lane": {
+          "tips": [
+            {
+              "text": "Do not get locked in: her lead comes from pinning your roams.",
+              "scope": "pair",
+              "sourceIds": [
+                "shok"
+              ]
+            },
+            {
+              "text": "Bait her E before R: no scatter means free Death Lotus.",
+              "scope": "pair",
+              "sourceIds": [
+                "shok"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 134,
+                  "key": "E"
+                },
+                {
+                  "champion": 55,
+                  "key": "R"
+                }
+              ]
+            }
+          ]
+        },
+        "win-condition": {
+          "tips": [
+            {
+              "text": "E baited plus roams taken: the Syndra who never pins you never wins.",
+              "scope": "pair",
+              "sourceIds": [
+                "shok",
+                "trisend3"
+              ]
+            }
+          ]
+        }
+      },
+      "itemization": [],
+      "sources": [
+        {
+          "id": "shok",
+          "author": "ShokLoL",
+          "rankClaim": "Rank 1 Challenger · Syndra main",
+          "rank": "challenger",
+          "url": "https://www.mobafire.com/league-of-legends/build/26-17-shoks-rank-1-challenger-syndra-guide-602710",
+          "kind": "mobafire"
+        },
+        {
+          "id": "trisend3",
+          "author": "Trisend3",
+          "rankClaim": "Challenger (title and profile badge) · Syndra main",
+          "rank": "challenger",
+          "url": "https://www.mobafire.com/league-of-legends/build/challenger-season-16-trisend3-syndra-guide-623459",
+          "kind": "mobafire"
+        }
+      ]
+    },
+    {
+      "champion": 55,
+      "enemy": 238,
+      "lane": "mid",
+      "patch": "26.21",
+      "reviewed": false,
+      "difficulty": "Hard",
+      "favoredWhen": "Zed-favoured. Daggers decide it, so place them where his shadows are not, and never Shunpo first.",
+      "keyTips": [
+        {
+          "text": "Zed-favoured: his poke and R answer outscale your engages.",
+          "scope": "pair",
+          "sourceIds": [
+            "aikopanda"
+          ]
+        },
+        {
+          "text": "He predicts Shunpo with Q: jump where his shurikens are not.",
+          "scope": "pair",
+          "sourceIds": [
+            "aikopanda"
+          ],
+          "abilityKeys": [
+            {
+              "champion": 238,
+              "key": "Q"
+            },
+            {
+              "champion": 55,
+              "key": "E"
+            }
+          ]
+        },
+        {
+          "text": "Do not R first unless it kills: his R answers yours and he Ws away.",
+          "scope": "pair",
+          "sourceIds": [
+            "aikopanda"
+          ],
+          "abilityKeys": [
+            {
+              "champion": 55,
+              "key": "R"
+            },
+            {
+              "champion": 238,
+              "key": "R"
+            }
+          ]
+        }
+      ],
+      "enemyTips": {
+        "early-lane": [
+          {
+            "text": "Zed often places Living Shadow before Death Mark so he can swap away from skillshots. Hold your crowd control until he has used the swap.",
+            "scope": "enemy",
+            "sourceIds": [
+              "aikopanda"
+            ],
+            "patch": "26.21",
+            "abilityKeys": [
+              {
+                "champion": 238,
+                "key": "W"
+              },
+              {
+                "champion": 238,
+                "key": "R"
+              }
+            ]
+          }
+        ],
+        "win-condition": [
+          {
+            "text": "Death Mark always lands Zed behind his target. Pre-aim crowd control and escapes behind you, not toward where he cast it.",
+            "scope": "enemy",
+            "sourceIds": [
+              "peng04"
+            ],
+            "patch": "26.21",
+            "abilityKeys": [
+              {
+                "champion": 238,
+                "key": "R"
+              }
+            ]
+          }
+        ]
+      },
+      "sections": {
+        "overview": {
+          "tips": []
+        },
+        "early-lane": {
+          "tips": [
+            {
+              "text": "Your early all-in is the window: he respects it, so use it.",
+              "scope": "pair",
+              "sourceIds": [
+                "aikopanda"
+              ]
+            },
+            {
+              "text": "Dodge his Qs: the prediction only works if you oblige.",
+              "scope": "pair",
+              "sourceIds": [
+                "aikopanda"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 238,
+                  "key": "Q"
+                }
+              ]
+            }
+          ]
+        },
+        "mid-lane": {
+          "tips": [
+            {
+              "text": "Force the melee: his plan is range, yours is daggers at feet.",
+              "scope": "pair",
+              "sourceIds": [
+                "aikopanda"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 55,
+                  "key": "W"
+                }
+              ]
+            },
+            {
+              "text": "His W-away answers your R: R only when shadows are spent.",
+              "scope": "pair",
+              "sourceIds": [
+                "aikopanda"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 238,
+                  "key": "W"
+                }
+              ]
+            },
+            {
+              "text": "Death Mark lands him behind you: Shunpo behind yourself when he ults.",
+              "scope": "pair",
+              "sourceIds": [
+                "peng04"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 238,
+                  "key": "R"
+                },
+                {
+                  "champion": 55,
+                  "key": "E"
+                }
+              ]
+            }
+          ]
+        },
+        "win-condition": {
+          "tips": [
+            {
+              "text": "Daggers placed plus R held: the Zed who never predicts you never wins.",
+              "scope": "pair",
+              "sourceIds": [
+                "aikopanda"
+              ]
+            }
+          ]
+        }
+      },
+      "itemization": [],
+      "sources": [
+        {
+          "id": "aikopanda",
+          "author": "AikoPanda",
+          "rankClaim": "Zed main",
+          "url": "https://www.mobafire.com/league-of-legends/build/26-20-video-guides-hidden-combos-all-matchups-zed-all-in-one-guide-652800",
+          "kind": "mobafire"
+        },
+        {
+          "id": "peng04",
+          "author": "Peng04",
+          "rankClaim": "Challenger · Ahri main",
+          "rank": "challenger",
+          "url": "https://www.mobafire.com/league-of-legends/build/26-20-pengs-ahri-guide-5-1mil-points-13x-challenger-648700",
+          "kind": "mobafire"
+        }
+      ]
+    }
+  ],
+  "general": [
+    {
+      "champion": 55,
+      "lane": "mid",
+      "patch": "26.21",
+      "reviewed": false,
+      "keyTips": [
+        {
+          "text": "Guard health at level 1 outside opponent attack and spell range; it stays her weakest stage.",
+          "scope": "champion",
+          "sourceIds": [
+            "prestigegalaxy"
+          ]
+        },
+        {
+          "text": "Roam from level 6 into other lanes and the jungle, since pre-6 kill and reset odds run lower.",
+          "scope": "champion",
+          "sourceIds": [
+            "prestigegalaxy"
+          ]
+        },
+        {
+          "text": "Enter late fights only after most enemy crowd control is spent, since control shuts her down fast.",
+          "scope": "champion",
+          "sourceIds": [
+            "prestigegalaxy"
+          ]
+        }
+      ],
+      "sections": {
+        "overview": {
+          "tips": []
+        },
+        "early-lane": {
+          "tips": [
+            {
+              "text": "Watch for invades pre-lane and note which lane leashes the enemy jungler to predict their path.",
+              "scope": "champion",
+              "sourceIds": [
+                "prestigegalaxy"
+              ]
+            },
+            {
+              "text": "Against an early-arriving jungler side, ward it around 2:30 to 3:00 and play toward the other side.",
+              "scope": "champion",
+              "sourceIds": [
+                "prestigegalaxy"
+              ]
+            },
+            {
+              "text": "Rush level 2 for E; the level-2 trade works only with a safe way back out.",
+              "scope": "champion",
+              "sourceIds": [
+                "prestigegalaxy"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 55,
+                  "key": "E"
+                }
+              ]
+            },
+            {
+              "text": "At level 3, Q the enemy or a minion, E to the dagger, auto once, cast W, then E to an allied minion and out.",
+              "scope": "champion",
+              "sourceIds": [
+                "prestigegalaxy"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 55,
+                  "key": "Q"
+                },
+                {
+                  "champion": 55,
+                  "key": "E"
+                },
+                {
+                  "champion": 55,
+                  "key": "W"
+                }
+              ]
+            },
+            {
+              "text": "Alternate with E first into W and Q, then E to the Q dagger.",
+              "scope": "champion",
+              "sourceIds": [
+                "prestigegalaxy"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 55,
+                  "key": "E"
+                },
+                {
+                  "champion": 55,
+                  "key": "W"
+                },
+                {
+                  "champion": 55,
+                  "key": "Q"
+                }
+              ]
+            },
+            {
+              "text": "Avoid early deaths, since falling behind strangles the snowball.",
+              "scope": "champion",
+              "sourceIds": [
+                "prestigegalaxy"
+              ]
+            },
+            {
+              "text": "When opponents leave, pick freezing, shoving for a crash and plates, or following the roam.",
+              "scope": "champion",
+              "sourceIds": [
+                "prestigegalaxy"
+              ]
+            }
+          ]
+        },
+        "mid-lane": {
+          "tips": [
+            {
+              "text": "Farm the side lane after bot rotates mid to keep gold and experience flowing instead of sharing mid waves.",
+              "scope": "champion",
+              "sourceIds": [
+                "prestigegalaxy"
+              ]
+            },
+            {
+              "text": "Rotate back the moment the team starts fighting; otherwise keep farming sides and building items.",
+              "scope": "champion",
+              "sourceIds": [
+                "prestigegalaxy"
+              ]
+            },
+            {
+              "text": "Past six Dark Seal stacks and a first item, upgrade to Mejai's while ahead to sharpen the snowball.",
+              "scope": "champion",
+              "sourceIds": [
+                "prestigegalaxy"
+              ],
+              "itemIds": [
+                1082
+              ]
+            },
+            {
+              "text": "Group at Dragon and other majors, where takedowns feed resets that help close games.",
+              "scope": "champion",
+              "sourceIds": [
+                "prestigegalaxy"
+              ]
+            }
+          ]
+        },
+        "win-condition": {
+          "tips": [
+            {
+              "text": "Chain fights through the passive, which cuts remaining cooldowns after damaged champions die.",
+              "scope": "champion",
+              "sourceIds": [
+                "prestigegalaxy"
+              ]
+            },
+            {
+              "text": "Route through picked-up daggers so each slash damages nearby enemies while repositioning.",
+              "scope": "champion",
+              "sourceIds": [
+                "prestigegalaxy"
+              ]
+            },
+            {
+              "text": "Stay patient at objectives and never force an early engage that strands the team in a 4v5.",
+              "scope": "champion",
+              "sourceIds": [
+                "prestigegalaxy"
+              ]
+            }
+          ]
+        }
+      },
+      "itemization": [
+        {
+          "text": "Take Electrocute for short lane trades and burst, Dark Harvest as the alternative, and Conqueror for longer fights and teamfights.",
+          "scope": "champion",
+          "sourceIds": [
+            "prestigegalaxy"
+          ]
+        },
+        {
+          "text": "Pair Sudden Impact with dashes, Grisly Mementos for shorter trinket cooldown, and Relentless Hunter for post-takedown lane moves.",
+          "scope": "champion",
+          "sourceIds": [
+            "prestigegalaxy"
+          ]
+        },
+        {
+          "text": "Add Triumph and Coup de Grace for survival and low-health finishes through reset chains.",
+          "scope": "champion",
+          "sourceIds": [
+            "prestigegalaxy"
+          ]
+        },
+        {
+          "text": "Start Second Wind with Doran's Shield into lane poke, plus Overgrowth for scaling health.",
+          "scope": "champion",
+          "sourceIds": [
+            "prestigegalaxy"
+          ],
+          "itemIds": [
+            1054
+          ]
+        },
+        {
+          "text": "Display Lich Bane, Spellslinger's Shoes, Shadowflame, Rabadon's Deathcap, Zhonya's Hourglass, and Void Staff on the Electrocute page with Flash and Ignite.",
+          "scope": "champion",
+          "sourceIds": [
+            "prestigegalaxy"
+          ],
+          "itemIds": [
+            3100,
+            3175,
+            4645,
+            3089,
+            3157,
+            3135
+          ]
+        },
+        {
+          "text": "Take Hextech Gunblade and Gluttonous Greaves into Nashor's Tooth, Zhonya's Hourglass, Shadowflame, Rabadon's Deathcap, and Void Staff as the alternate item set.",
+          "scope": "champion",
+          "sourceIds": [
+            "nyrolol"
+          ],
+          "itemIds": [
+            3146,
+            3008,
+            3115,
+            3157,
+            4645,
+            3089,
+            3135
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "id": "nyrolol",
+          "author": "Nyrolol",
+          "rankClaim": "Challenger (guide title; no badge)",
+          "rank": "challenger",
+          "url": "https://www.mobafire.com/league-of-legends/build/26-16-s16-nyro-challenger-katarina-build-guide-612060",
+          "kind": "mobafire"
+        },
+        {
+          "id": "prestigegalaxy",
+          "author": "PrestigeGalaxy",
+          "rankClaim": "Diamond (profile badge; no title claim)",
+          "rank": "diamond",
+          "url": "https://www.mobafire.com/league-of-legends/build/26-13-prestigegalaxys-7m-mastery-guide-to-katarina-584446",
+          "kind": "mobafire"
+        }
+      ]
+    }
+  ],
+  "vods": [
+    {
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "T674te4jT2o",
+          "title": "Baicaiovo Reaches Peak Mechanics with Unstoppable Katarina on Chinese Super Server Engsub",
+          "rankClaim": "Master+",
+          "patch": "26.1",
+          "durationSec": 1289,
+          "patchEstimated": true,
+          "player": "Baicaiovo",
+          "uploaded": "2026-01-10",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "mWIRIxDNXU8",
+          "title": "Baicaiovo Reaches Super Server Rank 2 With Flawless Katarina Teamfight Execution Engsub",
+          "rankClaim": "Master+",
+          "patch": "26.1",
+          "durationSec": 1855,
+          "patchEstimated": true,
+          "player": "Baicaiovo",
+          "uploaded": "2026-01-09",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "VU5Idi0Lm84",
+          "title": "Baicaiovo Chinese Super Server Rank 2 Katarina Flawless Challenger Mid Lane Masterclass Engsub",
+          "rankClaim": "Challenger",
+          "patch": "26.1",
+          "durationSec": 1572,
+          "patchEstimated": true,
+          "player": "Baicaiovo",
+          "uploaded": "2026-01-09",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "A8j8ib3fg7A",
+          "title": "Baicaiovo Perfects Katarina Mechanics in Challenger Chinese Super Server Gameplay Engsub",
+          "rankClaim": "Challenger",
+          "patch": "26.1",
+          "durationSec": 960,
+          "patchEstimated": true,
+          "player": "Baicaiovo",
+          "uploaded": "2026-01-09",
+          "format": "stream",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "e-UTgMCe6to",
+          "title": "Baicaiovo Reaches Top 2 Chinese Super Server with Flawless Katarina Mechanics Engsub",
+          "rankClaim": "Master+",
+          "patch": "26.1",
+          "durationSec": 1073,
+          "patchEstimated": true,
+          "player": "Baicaiovo",
+          "uploaded": "2026-01-10",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "AjeUDAHlmvI",
+          "title": "Baicaiovo Reaches Super Server Top 2 With Flawless Katarina Mid Lane Mechanics Engsub",
+          "rankClaim": "Master+",
+          "patch": "26.1",
+          "durationSec": 942,
+          "patchEstimated": true,
+          "player": "Baicaiovo",
+          "uploaded": "2026-01-09",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "KzV5MByeY1I",
+          "title": "Baicaiovo Top 2 Super Server Challenger Katarina Mid Lane Mechanics Engsub",
+          "rankClaim": "Challenger",
+          "patch": "26.1",
+          "durationSec": 1323,
+          "patchEstimated": true,
+          "player": "Baicaiovo",
+          "uploaded": "2026-01-09",
+          "format": "stream",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 1,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "vnHHrHoLyuI",
+          "title": "Katarina Mid vs Annie (G2 Caps) - EUW Challenger Patch 26.16",
+          "rankClaim": "Challenger",
+          "patch": "26.16",
+          "durationSec": 1640,
+          "region": "EUW",
+          "uploaded": "2026-08-23",
+          "moments": []
+        },
+        {
+          "videoId": "kgt3uxONelA",
+          "title": "Katarina vs Annie Mid - KR Challenger - Patch 16.16 Season 16",
+          "rankClaim": "Challenger",
+          "patch": "26.16",
+          "durationSec": 1516,
+          "region": "KR",
+          "uploaded": "2026-08-16",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 3,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "x3mRy9B4gTs",
+          "title": "Katarina vs Galio Mid - KR Grandmaster - Patch 25.19 Season 15",
+          "rankClaim": "Grandmaster",
+          "patch": "25.19",
+          "durationSec": 1876,
+          "region": "KR",
+          "uploaded": "2025-09-28",
+          "moments": []
+        },
+        {
+          "videoId": "kubaZDWabug",
+          "title": "Katarina vs Galio Mid - KR Grandmaster - Patch 25.18 Season 15",
+          "rankClaim": "Grandmaster",
+          "patch": "25.18",
+          "durationSec": 1636,
+          "region": "KR",
+          "uploaded": "2025-09-16",
+          "moments": []
+        },
+        {
+          "videoId": "FqB3VqOVuz8",
+          "title": "Katarina vs Galio Mid - KR Master - Patch 25.8 Season 15",
+          "rankClaim": "Master",
+          "patch": "25.8",
+          "durationSec": 1591,
+          "region": "KR",
+          "uploaded": "2025-04-17",
+          "moments": []
+        },
+        {
+          "videoId": "tuRRv_QT6Ro",
+          "title": "Katarina vs Galio Mid - KR Grandmaster - Patch 25.5 Season 15",
+          "rankClaim": "Grandmaster",
+          "patch": "25.5",
+          "durationSec": 1590,
+          "region": "KR",
+          "uploaded": "2025-03-15",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 4,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "JA882O3FrUE",
+          "title": "Katarina vs Twisted Fate Mid - KR Challenger - Patch 16.14 Season 16",
+          "rankClaim": "Challenger",
+          "patch": "26.14",
+          "durationSec": 1601,
+          "region": "KR",
+          "uploaded": "2026-07-22",
+          "moments": []
+        },
+        {
+          "videoId": "pe6ZkORHVwU",
+          "title": "Katarina Mid vs Twisted Fate - KR Master Patch 25.22",
+          "rankClaim": "Master",
+          "patch": "25.22",
+          "durationSec": 1922,
+          "region": "KR",
+          "uploaded": "2025-11-08",
+          "moments": []
+        },
+        {
+          "videoId": "onsjSlVpxjI",
+          "title": "Katarina vs Twisted Fate Mid - KR Grandmaster - Patch 25.17 Season 15",
+          "rankClaim": "Grandmaster",
+          "patch": "25.17",
+          "durationSec": 1576,
+          "region": "KR",
+          "uploaded": "2025-09-09",
+          "moments": []
+        },
+        {
+          "videoId": "RtDFx8-PPYY",
+          "title": "Katarina vs Twisted Fate Mid - KR Master - Patch 25.14 Season 15",
+          "rankClaim": "Master",
+          "patch": "25.14",
+          "durationSec": 1321,
+          "region": "KR",
+          "uploaded": "2025-07-28",
+          "moments": []
+        },
+        {
+          "videoId": "hz6HAK3XCug",
+          "title": "Katarina Mid vs Twisted Fate - KR Grandmaster Patch 25.13",
+          "rankClaim": "Grandmaster",
+          "patch": "25.13",
+          "durationSec": 1457,
+          "region": "KR",
+          "uploaded": "2025-06-30",
+          "moments": []
+        },
+        {
+          "videoId": "_rCCnKOYDB4",
+          "title": "Katarina vs Twisted Fate Mid - KR Master - Patch 25.12 Season 15",
+          "rankClaim": "Master",
+          "patch": "25.12",
+          "durationSec": 1726,
+          "region": "KR",
+          "uploaded": "2025-06-25",
+          "moments": []
+        },
+        {
+          "videoId": "ibTr8aGXf9U",
+          "title": "Katarina vs Twisted Fate  Mid - KR Grandmaster - Patch 25.6 Season 15",
+          "rankClaim": "Grandmaster",
+          "patch": "25.6",
+          "durationSec": 1891,
+          "region": "KR",
+          "uploaded": "2025-04-01",
+          "moments": []
+        },
+        {
+          "videoId": "8YHLKjGD0zo",
+          "title": "Katarina vs Twisted Fate Mid - KR Grandmaster - Patch 25.6 Season 15",
+          "rankClaim": "Grandmaster",
+          "patch": "25.6",
+          "durationSec": 1620,
+          "region": "KR",
+          "uploaded": "2025-03-20",
+          "moments": []
+        },
+        {
+          "videoId": "0WXSWtenWb0",
+          "title": "Katarina Mid vs Twisted Fate - KR Master Patch 25.04",
+          "rankClaim": "Master",
+          "patch": "25.4",
+          "durationSec": 1779,
+          "region": "KR",
+          "uploaded": "2025-02-23",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 5,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "nCGJfW2k1Fg",
+          "title": "Katarina Mid vs Xin Zhao - EUW Challenger Patch 26.07",
+          "rankClaim": "Challenger",
+          "patch": "26.7",
+          "durationSec": 1652,
+          "region": "EUW",
+          "uploaded": "2026-04-08",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 7,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "sHdXCkL0sb0",
+          "title": "Katarina Mid vs LeBlanc - EUW Challenger Patch 26.12",
+          "rankClaim": "Challenger",
+          "patch": "26.12",
+          "durationSec": 1509,
+          "region": "EUW",
+          "uploaded": "2026-06-22",
+          "moments": []
+        },
+        {
+          "videoId": "-EhslhXpi20",
+          "title": "Katarina Mid vs LeBlanc - EUW Challenger Patch 26.05",
+          "rankClaim": "Challenger",
+          "patch": "26.5",
+          "durationSec": 1787,
+          "region": "EUW",
+          "uploaded": "2026-03-18",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 111,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 218,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 235,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 426,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 595,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 662,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 686,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 770,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 801,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 832,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 938,
+              "label": "Get a Triple Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1133,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1211,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1239,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1271,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1315,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1380,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1412,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1436,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1536,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1622,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1746,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1776,
+              "label": "End credit"
+            }
+          ]
+        },
+        {
+          "videoId": "X8_Jsz2vdNc",
+          "title": "Katarina Mid vs LeBlanc - KR Master Patch 26.01",
+          "rankClaim": "Master",
+          "patch": "26.1",
+          "durationSec": 1571,
+          "region": "KR",
+          "uploaded": "2026-01-10",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 398,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 614,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 904,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1028,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1051,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1177,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1252,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1321,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1380,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1432,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1455,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1508,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1560,
+              "label": "End credit"
+            }
+          ]
+        },
+        {
+          "videoId": "v1yYl3sUbJ8",
+          "title": "OTP Katarina vs Leblanc [ MID ] Patch 25.19 Korea Master ✅",
+          "rankClaim": "Master",
+          "patch": "25.19",
+          "durationSec": 2013,
+          "region": "KR",
+          "player": "OTP",
+          "uploaded": "2025-10-04",
+          "moments": []
+        },
+        {
+          "videoId": "o4Oc6sdgUp4",
+          "title": "Katarina vs LeBlanc Mid - KR Master - Patch 25.12 Season 15",
+          "rankClaim": "Master",
+          "patch": "25.12",
+          "durationSec": 1751,
+          "region": "KR",
+          "uploaded": "2025-06-25",
+          "moments": []
+        },
+        {
+          "videoId": "CHdUU6fDPQc",
+          "title": "Katarina vs LeBlanc Mid - KR Master - Patch 25.12 Season 15",
+          "rankClaim": "Master",
+          "patch": "25.12",
+          "durationSec": 1516,
+          "region": "KR",
+          "uploaded": "2025-06-13",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 8,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "5TNrxusGHoY",
+          "title": "Katarina vs Vladimir 10/0/0 (Mid) | EUW Master | Katarina OTP Replay",
+          "rankClaim": "Master",
+          "patch": "26.9",
+          "durationSec": 932,
+          "region": "EUW",
+          "patchEstimated": true,
+          "uploaded": "2026-04-29",
+          "moments": []
+        },
+        {
+          "videoId": "QYxMJZbOZGE",
+          "title": "Katarina vs Vladimir Mid - EUW Grandmaster - Patch 16.05 Season 16",
+          "rankClaim": "Grandmaster",
+          "patch": "26.5",
+          "durationSec": 1561,
+          "region": "EUW",
+          "uploaded": "2026-03-10",
+          "moments": []
+        },
+        {
+          "videoId": "BYrJnt0Krsk",
+          "title": "Katarina vs Vladimir Mid - KR Grandmaster - Patch 25.14 Season 15",
+          "rankClaim": "Grandmaster",
+          "patch": "25.14",
+          "durationSec": 1996,
+          "region": "KR",
+          "uploaded": "2025-07-24",
+          "moments": []
+        },
+        {
+          "videoId": "skTLdha_1rU",
+          "title": "Katarina Mid vs Vladimir - KR Grandmaster Patch 25.14",
+          "rankClaim": "Grandmaster",
+          "patch": "25.14",
+          "durationSec": 2000,
+          "region": "KR",
+          "uploaded": "2025-07-24",
+          "moments": []
+        },
+        {
+          "videoId": "bpwxoIx_2PQ",
+          "title": "Katarina vs Vladimir Mid - KR Master - Patch 25.13 Season 15",
+          "rankClaim": "Master",
+          "patch": "25.13",
+          "durationSec": 1691,
+          "region": "KR",
+          "uploaded": "2025-06-28",
+          "moments": []
+        },
+        {
+          "videoId": "TEy4qlv0HfE",
+          "title": "Katarina vs Vladimir Mid - KR Grandmaster - Patch 25.5 Season 15",
+          "rankClaim": "Grandmaster",
+          "patch": "25.5",
+          "durationSec": 1626,
+          "region": "KR",
+          "uploaded": "2025-03-13",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 10,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "6t3LMfVy1KY",
+          "title": "Katarina vs Kayle Mid - EUW Grandmaster - Patch 25.20 Season 15",
+          "rankClaim": "Grandmaster",
+          "patch": "25.20",
+          "durationSec": 1846,
+          "region": "EUW",
+          "uploaded": "2025-10-16",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 11,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "IsFcMDvJomA",
+          "title": "Katarina Top vs Master Yi - KR Master Patch 26.12",
+          "rankClaim": "Master",
+          "patch": "26.12",
+          "durationSec": 1736,
+          "region": "KR",
+          "uploaded": "2026-06-17",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 13,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "W8jrySSjYdk",
+          "title": "Katarina Mid vs Ryze - KR Grandmaster Patch 26.17",
+          "rankClaim": "Grandmaster",
+          "patch": "26.17",
+          "durationSec": 1560,
+          "region": "KR",
+          "uploaded": "2026-08-31",
+          "moments": []
+        },
+        {
+          "videoId": "CZt2C7o747g",
+          "title": "Katarina vs Ryze Mid - EUW Challenger - Patch 16.05 Season 16",
+          "rankClaim": "Challenger",
+          "patch": "26.5",
+          "durationSec": 2056,
+          "region": "EUW",
+          "uploaded": "2026-03-13",
+          "moments": []
+        },
+        {
+          "videoId": "rzbCcO9RbKM",
+          "title": "Katarina vs Ryze Mid - KR Challenger - Patch 26.02 Season 16",
+          "rankClaim": "Challenger",
+          "patch": "26.2",
+          "durationSec": 2371,
+          "region": "KR",
+          "uploaded": "2026-02-03",
+          "moments": []
+        },
+        {
+          "videoId": "_tyggwvQLdA",
+          "title": "Katarina vs Ryze Mid - KR Challenger - Patch 26.02 Season 16",
+          "rankClaim": "Challenger",
+          "patch": "26.2",
+          "durationSec": 1816,
+          "region": "KR",
+          "uploaded": "2026-02-02",
+          "moments": []
+        },
+        {
+          "videoId": "D9ozwOLK2Gw",
+          "title": "Katarina vs Ryze Mid - KR Challenger - Patch 26.01 Season 16",
+          "rankClaim": "Challenger",
+          "patch": "26.1",
+          "durationSec": 1731,
+          "region": "KR",
+          "uploaded": "2026-01-23",
+          "moments": []
+        },
+        {
+          "videoId": "O3uhjYPxKJs",
+          "title": "Katarina vs Ryze [ MID ] Korea Grandmaster 1,052 LP | Patch 25.21 ✅",
+          "rankClaim": "Grandmaster",
+          "patch": "25.21",
+          "durationSec": 1481,
+          "region": "KR",
+          "uploaded": "2025-10-25",
+          "moments": []
+        },
+        {
+          "videoId": "MhcXJzNW7Kk",
+          "title": "Katarina Mid vs Ryze - KR Master Patch 25.19",
+          "rankClaim": "Master",
+          "patch": "25.19",
+          "durationSec": 2121,
+          "region": "KR",
+          "uploaded": "2025-09-28",
+          "moments": []
+        },
+        {
+          "videoId": "TVUgxaRt2Go",
+          "title": "Katarina vs Ryze Mid - EUW Grandmaster - Patch 25.18 Season 15",
+          "rankClaim": "Grandmaster",
+          "patch": "25.18",
+          "durationSec": 2056,
+          "region": "EUW",
+          "uploaded": "2025-09-11",
+          "moments": []
+        },
+        {
+          "videoId": "aIOBE41f82Q",
+          "title": "Katarina vs Ryze Mid - Grandmaster - Patch 25.11 Season 15",
+          "rankClaim": "Grandmaster",
+          "patch": "25.11",
+          "durationSec": 1441,
+          "uploaded": "2025-05-30",
+          "moments": []
+        },
+        {
+          "videoId": "xcVkNhMBnXc",
+          "title": "Katarina vs Ryze Mid - KR Master - Patch 25.7 Season 15",
+          "rankClaim": "Master",
+          "patch": "25.7",
+          "durationSec": 1691,
+          "region": "KR",
+          "uploaded": "2025-04-16",
+          "moments": []
+        },
+        {
+          "videoId": "qfHmPzf61is",
+          "title": "Katarina vs Ryze Mid - KR Grandmaster - Patch 25.7 Season 15",
+          "rankClaim": "Grandmaster",
+          "patch": "25.7",
+          "durationSec": 1966,
+          "region": "KR",
+          "uploaded": "2025-04-08",
+          "moments": []
+        },
+        {
+          "videoId": "YmgmbPyCy6I",
+          "title": "Katarina vs Ryze Mid - KR Master - Patch 25.7 Season 15",
+          "rankClaim": "Master",
+          "patch": "25.7",
+          "durationSec": 1726,
+          "region": "KR",
+          "uploaded": "2025-04-04",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 14,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "PWar6zGDR0I",
+          "title": "Katarina Top vs Sion - KR Master Patch 25.14",
+          "rankClaim": "Master",
+          "patch": "25.14",
+          "durationSec": 1778,
+          "region": "KR",
+          "uploaded": "2025-07-27",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 18,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "aBSYcTS7jf0",
+          "title": "Katarina vs Tristana Mid - KR Challenger - Patch 16.12 Season 16",
+          "rankClaim": "Challenger",
+          "patch": "26.12",
+          "durationSec": 1620,
+          "region": "KR",
+          "uploaded": "2026-06-11",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 20,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "BQsFSDvB7zw",
+          "title": "Katarina Jungle vs Nunu & Willump - KR Master Patch 26.11",
+          "rankClaim": "Master",
+          "patch": "26.11",
+          "durationSec": 1673,
+          "region": "KR",
+          "uploaded": "2026-06-08",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 23,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "W5atnhizYQI",
+          "title": "Katarina vs Tryndamere Mid - KR Grandmaster - Patch 25.6 Season 15",
+          "rankClaim": "Grandmaster",
+          "patch": "25.6",
+          "durationSec": 2070,
+          "region": "KR",
+          "uploaded": "2025-03-22",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 27,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "yX0BJxDwplo",
+          "title": "(AdyTheKid) Katarina Mid vs Singed - EUW Challenger Patch 26.13",
+          "rankClaim": "Challenger",
+          "patch": "26.13",
+          "durationSec": 1450,
+          "region": "EUW",
+          "player": "AdyTheKid",
+          "uploaded": "2026-07-13",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 30,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "bMbbJ1Vdg_I",
+          "title": "Katarina Mid vs Karthus - KR Grandmaster Patch 26.03",
+          "rankClaim": "Grandmaster",
+          "patch": "26.3",
+          "durationSec": 1581,
+          "region": "KR",
+          "uploaded": "2026-02-10",
+          "moments": []
+        },
+        {
+          "videoId": "ilJq1P3NSLE",
+          "title": "Katarina vs Karthus Mid - EUW Grandmaster - Patch 25.20 Season 15",
+          "rankClaim": "Grandmaster",
+          "patch": "25.20",
+          "durationSec": 1230,
+          "region": "EUW",
+          "uploaded": "2025-10-24",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 31,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "-IK5zkL0n7I",
+          "title": "Katarina Mid vs Cho'Gath - KR Challenger Patch 25.15",
+          "rankClaim": "Challenger",
+          "patch": "25.15",
+          "durationSec": 1469,
+          "region": "KR",
+          "uploaded": "2025-08-04",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 34,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "UeCuQml4dpg",
+          "title": "Katarina vs Anivia Mid - EUW Grandmaster - Patch 16.07 Season 16",
+          "rankClaim": "Grandmaster",
+          "patch": "26.7",
+          "durationSec": 1306,
+          "region": "EUW",
+          "uploaded": "2026-04-15",
+          "moments": []
+        },
+        {
+          "videoId": "dEkClygCVkY",
+          "title": "Katarina vs Anivia Mid - KR Grandmaster - Patch 25.22 Season 15",
+          "rankClaim": "Grandmaster",
+          "patch": "25.22",
+          "durationSec": 2146,
+          "region": "KR",
+          "uploaded": "2025-11-18",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 36,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "Wu6zZW6iDrY",
+          "title": "Katarina Top vs Dr. Mundo - KR Master Patch 26.15",
+          "rankClaim": "Master",
+          "patch": "26.15",
+          "durationSec": 1749,
+          "region": "KR",
+          "uploaded": "2026-08-10",
+          "moments": []
+        },
+        {
+          "videoId": "7ELylEiSGf0",
+          "title": "Katarina Top vs Dr. Mundo - VN Challenger Patch 26.14",
+          "rankClaim": "Challenger",
+          "patch": "26.14",
+          "durationSec": 1848,
+          "uploaded": "2026-07-23",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 38,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "SL1RfQWNsE0",
+          "title": "Katarina vs Kassadin Mid - KR Grandmaster - Patch 25.8 Season 15",
+          "rankClaim": "Grandmaster",
+          "patch": "25.8",
+          "durationSec": 1751,
+          "region": "KR",
+          "uploaded": "2025-04-25",
+          "moments": []
+        },
+        {
+          "videoId": "cg1fTjBupF8",
+          "title": "Katarina vs Kassadin [ MID ] Patch 25.2 Korea Master ✅",
+          "rankClaim": "Master",
+          "patch": "25.2",
+          "durationSec": 1291,
+          "region": "KR",
+          "uploaded": "2025-01-31",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 39,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "S8wHv_9ydvI",
+          "title": "Katarina vs Irelia Mid - KR Grandmaster - Patch 26.01 Season 16",
+          "rankClaim": "Grandmaster",
+          "patch": "26.1",
+          "durationSec": 1321,
+          "region": "KR",
+          "uploaded": "2026-01-17",
+          "moments": []
+        },
+        {
+          "videoId": "gECnqJHlbcU",
+          "title": "Katarina vs Irelia Mid - EUW Challenger - Patch 25.24 Season 15",
+          "rankClaim": "Challenger",
+          "patch": "25.24",
+          "durationSec": 1561,
+          "region": "EUW",
+          "uploaded": "2025-12-22",
+          "moments": []
+        },
+        {
+          "videoId": "VWRnHizkFMg",
+          "title": "Katarina vs Irelia Mid - KR Grandmaster - Patch 25.14 Season 15",
+          "rankClaim": "Grandmaster",
+          "patch": "25.14",
+          "durationSec": 1816,
+          "region": "KR",
+          "uploaded": "2025-07-23",
+          "moments": []
+        },
+        {
+          "videoId": "O49Ltc-0jsc",
+          "title": "Katarina vs Irelia Mid - KR Master - Patch 25.12 Season 15",
+          "rankClaim": "Master",
+          "patch": "25.12",
+          "durationSec": 1571,
+          "region": "KR",
+          "uploaded": "2025-06-16",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 42,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "apPLiXdW3o8",
+          "title": "Katarina Mid vs Corki - VN Challenger Patch 26.04",
+          "rankClaim": "Challenger",
+          "patch": "26.4",
+          "durationSec": 1816,
+          "uploaded": "2026-02-25",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 191,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 246,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 396,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 483,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 511,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 736,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1113,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1175,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1196,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1257,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1466,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1535,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1584,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1781,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1805,
+              "label": "End credit"
+            }
+          ]
+        },
+        {
+          "videoId": "_oRTFgZXX48",
+          "title": "Katarina Mid vs Corki - KR Challenger Patch 26.02",
+          "rankClaim": "Challenger",
+          "patch": "26.2",
+          "durationSec": 1556,
+          "region": "KR",
+          "uploaded": "2026-01-26",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 248,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 285,
+              "label": "Get a Triple Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 434,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 471,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 638,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 734,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 888,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 956,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 991,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1055,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1085,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1107,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1199,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1260,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1292,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1406,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1500,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1545,
+              "label": "End credit"
+            }
+          ]
+        },
+        {
+          "videoId": "CJtnmiYCbv0",
+          "title": "Katarina vs Corki Mid - KR Grandmaster - Patch 25.4 Season 15",
+          "rankClaim": "Grandmaster",
+          "patch": "25.4",
+          "durationSec": 1331,
+          "region": "KR",
+          "uploaded": "2025-03-05",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 43,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "dLWF781Ot6w",
+          "title": "Katarina Support vs Karma - KR Master Patch 25.06",
+          "rankClaim": "Master",
+          "patch": "25.6",
+          "durationSec": 1721,
+          "region": "KR",
+          "uploaded": "2025-03-30",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 45,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "cPU4FYtYfNs",
+          "title": "Katarina vs Veigar Mid - KR Challenger - Patch 16.20 Season 16",
+          "rankClaim": "Challenger",
+          "patch": "26.20",
+          "durationSec": 1606,
+          "region": "KR",
+          "uploaded": "2026-10-12",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 58,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "dq1yYnOeXK4",
+          "title": "Katarina vs Renekton Mid - KR Grandmaster - Patch 25.23 Season 15",
+          "rankClaim": "Grandmaster",
+          "patch": "25.23",
+          "durationSec": 1846,
+          "region": "KR",
+          "uploaded": "2025-12-01",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 61,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "HOATl5VspDQ",
+          "title": "Katarina vs Orianna Mid - KR Challenger - Patch 16.06 Season 16",
+          "rankClaim": "Challenger",
+          "patch": "26.6",
+          "durationSec": 1756,
+          "region": "KR",
+          "uploaded": "2026-03-30",
+          "moments": []
+        },
+        {
+          "videoId": "4OUA1zfWpr8",
+          "title": "Katarina vs Orianna Mid - KR Challenger - Patch 16.06 Season 16",
+          "rankClaim": "Challenger",
+          "patch": "26.6",
+          "durationSec": 1756,
+          "region": "KR",
+          "uploaded": "2026-03-26",
+          "moments": []
+        },
+        {
+          "videoId": "xOisdcnh5Cg",
+          "title": "Katarina Mid vs Orianna - KR Grandmaster Patch 25.24",
+          "rankClaim": "Grandmaster",
+          "patch": "25.24",
+          "durationSec": 1602,
+          "region": "KR",
+          "uploaded": "2025-12-07",
+          "moments": []
+        },
+        {
+          "videoId": "P3S2nrh7cC8",
+          "title": "Katarina vs Orianna Mid - EUW Challenger - Patch 25.23 Season 15",
+          "rankClaim": "Challenger",
+          "patch": "25.23",
+          "durationSec": 1741,
+          "region": "EUW",
+          "uploaded": "2025-11-24",
+          "moments": []
+        },
+        {
+          "videoId": "AZpfMagELcQ",
+          "title": "Katarina vs Orianna Mid - KR Challenger - Patch 25.22 Season 15",
+          "rankClaim": "Challenger",
+          "patch": "25.22",
+          "durationSec": 1966,
+          "region": "KR",
+          "uploaded": "2025-11-13",
+          "moments": []
+        },
+        {
+          "videoId": "TdIEf2GS0eM",
+          "title": "Katarina vs Orianna Mid - KR Grandmaster - Patch 25.20 Season 15",
+          "rankClaim": "Grandmaster",
+          "patch": "25.20",
+          "durationSec": 1361,
+          "region": "KR",
+          "uploaded": "2025-10-21",
+          "moments": []
+        },
+        {
+          "videoId": "M5uqUGHhhns",
+          "title": "Katarina Mid vs Orianna - EUW Challenger Patch 25.18",
+          "rankClaim": "Challenger",
+          "patch": "25.18",
+          "durationSec": 2054,
+          "region": "EUW",
+          "uploaded": "2025-09-26",
+          "moments": []
+        },
+        {
+          "videoId": "5LTjW20sL4Q",
+          "title": "Katarina Mid vs Orianna - KR Master Patch 25.17",
+          "rankClaim": "Master",
+          "patch": "25.17",
+          "durationSec": 1495,
+          "region": "KR",
+          "uploaded": "2025-09-04",
+          "moments": []
+        },
+        {
+          "videoId": "Te4vZl83FYE",
+          "title": "Katarina vs Orianna Mid - KR Master - Patch 25.17 Season 15",
+          "rankClaim": "Master",
+          "patch": "25.17",
+          "durationSec": 1801,
+          "region": "KR",
+          "uploaded": "2025-09-03",
+          "moments": []
+        },
+        {
+          "videoId": "31Jo4yJf5SA",
+          "title": "Katarina Mid vs Orianna - NA Challenger Patch 25.13",
+          "rankClaim": "Challenger",
+          "patch": "25.13",
+          "durationSec": 1547,
+          "region": "NA",
+          "uploaded": "2025-07-10",
+          "moments": []
+        },
+        {
+          "videoId": "1PZqszXNRpM",
+          "title": "Katarina Mid vs Orianna - KR Master Patch 25.12",
+          "rankClaim": "Master",
+          "patch": "25.12",
+          "durationSec": 2050,
+          "region": "KR",
+          "uploaded": "2025-06-14",
+          "moments": []
+        },
+        {
+          "videoId": "V9KCgSpKuX4",
+          "title": "Katarina vs Orianna Mid - KR Grandmaster - Patch 25.11 Season 15",
+          "rankClaim": "Grandmaster",
+          "patch": "25.11",
+          "durationSec": 1961,
+          "region": "KR",
+          "uploaded": "2025-06-02",
+          "moments": []
+        },
+        {
+          "videoId": "TSUyEEFrb60",
+          "title": "Katarina vs Orianna Mid - KR Grandmaster - Patch 25.5 Season 15",
+          "rankClaim": "Grandmaster",
+          "patch": "25.5",
+          "durationSec": 1876,
+          "region": "KR",
+          "uploaded": "2025-03-08",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 63,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "unK9nm70XLI",
+          "title": "Katarina vs Brand Mid - KR Master - Patch 25.16 Season 15",
+          "rankClaim": "Master",
+          "patch": "25.16",
+          "durationSec": 2056,
+          "region": "KR",
+          "uploaded": "2025-08-15",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 64,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "AyPrpVBpkRs",
+          "title": "Katarina vs Lee Sin Mid - KR Grandmaster - Patch 25.13 Season 15",
+          "rankClaim": "Grandmaster",
+          "patch": "25.13",
+          "durationSec": 1561,
+          "region": "KR",
+          "uploaded": "2025-07-14",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 69,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "PPwu_Ksu3Z0",
+          "title": "Katarina Mid vs Cassiopeia - KR Grandmaster Patch 26.19",
+          "rankClaim": "Grandmaster",
+          "patch": "26.19",
+          "durationSec": 1679,
+          "region": "KR",
+          "uploaded": "2026-09-29",
+          "moments": []
+        },
+        {
+          "videoId": "iSqDAVcUE_A",
+          "title": "Katarina vs Cassiopeia Mid - KR Challenger - Patch 16.16 Season 16",
+          "rankClaim": "Challenger",
+          "patch": "26.16",
+          "durationSec": 1546,
+          "region": "KR",
+          "uploaded": "2026-08-24",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 69,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "ro2C1B-QMyk",
+          "title": "Katarina Top vs Cassiopeia - KR Grandmaster Patch 25.23",
+          "rankClaim": "Grandmaster",
+          "patch": "25.23",
+          "durationSec": 1697,
+          "region": "KR",
+          "uploaded": "2025-12-01",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 76,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "5jElg262kSc",
+          "title": "Katarina Top vs Nidalee - KR Master Patch 25.24",
+          "rankClaim": "Master",
+          "patch": "25.24",
+          "durationSec": 1590,
+          "region": "KR",
+          "uploaded": "2026-01-04",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 319,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 512,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 909,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 971,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1071,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1170,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1268,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1348,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1418,
+              "label": "Get a Quadra Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1509,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1531,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1544,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1560,
+              "label": "Take down The Inhibitor"
+            },
+            {
+              "atSec": 1579,
+              "label": "End credit"
+            }
+          ]
+        },
+        {
+          "videoId": "7GZmrAF0FBA",
+          "title": "Katarina Top vs Nidalee - EUW Grandmaster Patch 25.11",
+          "rankClaim": "Grandmaster",
+          "patch": "25.11",
+          "durationSec": 1535,
+          "region": "EUW",
+          "uploaded": "2025-06-11",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 80,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "auWxbEGnNxk",
+          "title": "Katarina vs Pantheon Mid - KR Grandmaster - Patch 25.17 Season 15",
+          "rankClaim": "Grandmaster",
+          "patch": "25.17",
+          "durationSec": 2461,
+          "region": "KR",
+          "uploaded": "2025-09-10",
+          "moments": []
+        },
+        {
+          "videoId": "yWgrD4-kPgc",
+          "title": "Katarina vs Pantheon Mid - KR Master - Patch 25.17 Season 15",
+          "rankClaim": "Master",
+          "patch": "25.17",
+          "durationSec": 2026,
+          "region": "KR",
+          "uploaded": "2025-09-09",
+          "moments": []
+        },
+        {
+          "videoId": "yE61_NtZ0yY",
+          "title": "Katarina vs Pantheon Mid - KR Grandmaster - Patch 25.9 Season 15",
+          "rankClaim": "Grandmaster",
+          "patch": "25.9",
+          "durationSec": 1390,
+          "region": "KR",
+          "uploaded": "2025-05-10",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 84,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "FcyOaMeT29E",
+          "title": "Katarina vs Akali Mid - KR Challenger - Patch 16.20 Season 16",
+          "rankClaim": "Challenger",
+          "patch": "26.20",
+          "durationSec": 1726,
+          "region": "KR",
+          "uploaded": "2026-10-13",
+          "moments": []
+        },
+        {
+          "videoId": "CuIH2dZDMEU",
+          "title": "Katarina vs Akali 21/0/3 (Mid) | EUW Master | Katarina OTP Replay",
+          "rankClaim": "Master",
+          "patch": "26.10",
+          "durationSec": 1569,
+          "region": "EUW",
+          "patchEstimated": true,
+          "uploaded": "2026-05-16",
+          "moments": []
+        },
+        {
+          "videoId": "zMiYWBUCh94",
+          "title": "Katarina vs Akali Mid - KR Master - Patch 16.08 Season 16",
+          "rankClaim": "Master",
+          "patch": "26.8",
+          "durationSec": 1561,
+          "region": "KR",
+          "uploaded": "2026-04-21",
+          "moments": []
+        },
+        {
+          "videoId": "IhPIFqtOyuA",
+          "title": "Katarina vs Akali Mid - KR Grandmaster - Patch 16.07 Season 16",
+          "rankClaim": "Grandmaster",
+          "patch": "26.7",
+          "durationSec": 1516,
+          "region": "KR",
+          "uploaded": "2026-04-13",
+          "moments": []
+        },
+        {
+          "videoId": "-TIIfhBk5nw",
+          "title": "Katarina Mid vs Akali - KR Grandmaster Patch 25.18",
+          "rankClaim": "Grandmaster",
+          "patch": "25.18",
+          "durationSec": 1706,
+          "region": "KR",
+          "uploaded": "2025-09-18",
+          "moments": []
+        },
+        {
+          "videoId": "yomQSdKEytM",
+          "title": "Katarina vs Akali Mid - KR Grandmaster - Patch 25.18 Season 15",
+          "rankClaim": "Grandmaster",
+          "patch": "25.18",
+          "durationSec": 1711,
+          "region": "KR",
+          "uploaded": "2025-09-17",
+          "moments": []
+        },
+        {
+          "videoId": "g_TMC8s3qEU",
+          "title": "Katarina vs Akali Mid - KR Grandmaster - Patch 25.17 Season 15",
+          "rankClaim": "Grandmaster",
+          "patch": "25.17",
+          "durationSec": 1621,
+          "region": "KR",
+          "uploaded": "2025-09-08",
+          "moments": []
+        },
+        {
+          "videoId": "6CfVHN4nSXs",
+          "title": "Katarina Mid vs Akali - EUW Grandmaster Patch 25.09",
+          "rankClaim": "Grandmaster",
+          "patch": "25.9",
+          "durationSec": 1673,
+          "region": "EUW",
+          "uploaded": "2025-05-14",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 182,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 356,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 540,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 737,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 871,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 905,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 927,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1001,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1138,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1172,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1326,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1389,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1512,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1618,
+              "label": "Take down The Inhibitor"
+            },
+            {
+              "atSec": 1640,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1652,
+              "label": "End credit"
+            }
+          ]
+        },
+        {
+          "videoId": "hbbV_ZkYoWQ",
+          "title": "Katarina vs Akali Mid - KR Grandmaster - Patch 25.8 Season 15",
+          "rankClaim": "Grandmaster",
+          "patch": "25.8",
+          "durationSec": 1511,
+          "region": "KR",
+          "uploaded": "2025-04-27",
+          "moments": []
+        },
+        {
+          "videoId": "AbVwuBd1Qkg",
+          "title": "Katarina Mid vs Akali - KR Grandmaster Patch 25.07",
+          "rankClaim": "Grandmaster",
+          "patch": "25.7",
+          "durationSec": 2119,
+          "region": "KR",
+          "uploaded": "2025-04-08",
+          "moments": []
+        },
+        {
+          "videoId": "yGeWO3uSK60",
+          "title": "Katarina vs Akali Mid - KR Grandmaster - Patch 25.6 Season 15",
+          "rankClaim": "Grandmaster",
+          "patch": "25.6",
+          "durationSec": 1781,
+          "region": "KR",
+          "uploaded": "2025-03-25",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 86,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "fB2m3XhKscE",
+          "title": "Katarina vs Garen Mid - KR Grandmaster - Patch 25.5 Season 15",
+          "rankClaim": "Grandmaster",
+          "patch": "25.5",
+          "durationSec": 1596,
+          "region": "KR",
+          "uploaded": "2025-03-10",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 90,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "-2b4eavFjus",
+          "title": "Katarina Mid vs Malzahar - KR Master Patch 26.06",
+          "rankClaim": "Master",
+          "patch": "26.6",
+          "durationSec": 1505,
+          "region": "KR",
+          "uploaded": "2026-03-24",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 134,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 366,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 495,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 511,
+              "label": "Get a Triple Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 634,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 815,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 937,
+              "label": "Get a Triple Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1063,
+              "label": "Hunt The Rift Herald",
+              "kind": "herald"
+            },
+            {
+              "atSec": 1078,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1234,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1248,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1334,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1415,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1447,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1494,
+              "label": "End credit"
+            }
+          ]
+        },
+        {
+          "videoId": "-l-mIgi1qLo",
+          "title": "Katarina vs Malzahar [ MID ] Lol Korea Master Patch 25.15 ✅",
+          "rankClaim": "Master",
+          "patch": "25.15",
+          "durationSec": 1257,
+          "region": "KR",
+          "uploaded": "2025-08-01",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 90,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "N8mU1VbF4_o",
+          "title": "Katarina Top vs Malzahar - EUW Challenger Patch 26.13",
+          "rankClaim": "Challenger",
+          "patch": "26.13",
+          "durationSec": 1640,
+          "region": "EUW",
+          "uploaded": "2026-07-02",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 91,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "zStBwuF5fPA",
+          "title": "Katarina vs Talon Mid - KR Challenger - Patch 16.06 Season 16",
+          "rankClaim": "Challenger",
+          "patch": "26.6",
+          "durationSec": 1486,
+          "region": "KR",
+          "uploaded": "2026-03-25",
+          "moments": []
+        },
+        {
+          "videoId": "jGjQ7fnrS-8",
+          "title": "Katarina vs Talon Mid - KR Grandmaster - Patch 16.05 Season 16",
+          "rankClaim": "Grandmaster",
+          "patch": "26.5",
+          "durationSec": 1486,
+          "region": "KR",
+          "uploaded": "2026-03-07",
+          "moments": []
+        },
+        {
+          "videoId": "OtFK5RfmBC8",
+          "title": "OTP Katarina vs Talon [ MID ] Patch 25.6 Korea Master ✅",
+          "rankClaim": "Master",
+          "patch": "25.6",
+          "durationSec": 1369,
+          "region": "KR",
+          "player": "OTP",
+          "uploaded": "2025-04-01",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 92,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "OyD0ThGPvQ0",
+          "title": "Katarina vs Riven Mid - KR Grandmaster - Patch 25.14 Season 15",
+          "rankClaim": "Grandmaster",
+          "patch": "25.14",
+          "durationSec": 1560,
+          "region": "KR",
+          "uploaded": "2025-07-25",
+          "moments": []
+        },
+        {
+          "videoId": "GbeujL2dxQg",
+          "title": "Katarina vs Riven Mid - KR Grandmaster - Patch 25.5 Season 15",
+          "rankClaim": "Grandmaster",
+          "patch": "25.5",
+          "durationSec": 1681,
+          "region": "KR",
+          "uploaded": "2025-03-19",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 98,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "M_hDKTvmVJk",
+          "title": "Katarina Top vs Shen - KR Master Patch 25.20",
+          "rankClaim": "Master",
+          "patch": "25.20",
+          "durationSec": 1749,
+          "region": "KR",
+          "uploaded": "2025-10-23",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 101,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "Vr-Tr_HoOo0",
+          "title": "Katarina vs Xerath Mid - KR Master - Patch 25.16 Season 15",
+          "rankClaim": "Master",
+          "patch": "25.16",
+          "durationSec": 1391,
+          "region": "KR",
+          "uploaded": "2025-08-19",
+          "moments": []
+        },
+        {
+          "videoId": "IJ86lgZLPtc",
+          "title": "Katarina vs Xerath Mid - KR Grandmaster - Patch 25.13 Season 15",
+          "rankClaim": "Grandmaster",
+          "patch": "25.13",
+          "durationSec": 1990,
+          "region": "KR",
+          "uploaded": "2025-07-09",
+          "moments": []
+        },
+        {
+          "videoId": "zHEYbWkUR5U",
+          "title": "Katarina vs Xerath Mid - EUW Challenger - Patch 25.12 Season 15",
+          "rankClaim": "Challenger",
+          "patch": "25.12",
+          "durationSec": 1811,
+          "region": "EUW",
+          "uploaded": "2025-06-21",
+          "moments": []
+        },
+        {
+          "videoId": "nVEkbHZkC1g",
+          "title": "Katarina vs Xerath Mid - KR Grandmaster - Patch 25.11 Season 15",
+          "rankClaim": "Grandmaster",
+          "patch": "25.11",
+          "durationSec": 1801,
+          "region": "KR",
+          "uploaded": "2025-06-10",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 103,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "4e_c0EUlSmU",
+          "title": "(Raiko) Katarina Mid vs Ahri - EUW Challenger Patch 26.21",
+          "rankClaim": "Challenger",
+          "patch": "26.21",
+          "durationSec": 1733,
+          "region": "EUW",
+          "player": "Raiko",
+          "uploaded": "2026-10-28",
+          "result": "W",
+          "moments": [
+            {
+              "atSec": 188,
+              "label": "Qiyana picks off Ahri"
+            },
+            {
+              "atSec": 306,
+              "label": "Katarina takes down Ahri"
+            },
+            {
+              "atSec": 487,
+              "label": "Katarina picks off Pantheon"
+            },
+            {
+              "atSec": 592,
+              "label": "Katarina catches Ahri again"
+            },
+            {
+              "atSec": 756,
+              "label": "Katarina picks off Pantheon"
+            },
+            {
+              "atSec": 889,
+              "label": "Team fight (3 kills)",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 896,
+              "label": "Katarina Triple Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 977,
+              "label": "Red takes 1st Dragon (Cloud)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1144,
+              "label": "Katarina Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1276,
+              "label": "Qiyana eliminates Smolder"
+            },
+            {
+              "atSec": 1310,
+              "label": "Blue takes Baron",
+              "kind": "baron"
+            },
+            {
+              "atSec": 1329,
+              "label": "Blue takes 1st Dragon (Mountain)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1369,
+              "label": "Katarina catches Smolder"
+            },
+            {
+              "atSec": 1394,
+              "label": "Katarina eliminates Ahri"
+            },
+            {
+              "atSec": 1503,
+              "label": "Katarina eliminates Ahri"
+            },
+            {
+              "atSec": 1542,
+              "label": "Mid Inhibitor falls (Red)"
+            },
+            {
+              "atSec": 1646,
+              "label": "Red takes 2nd Dragon (Ocean)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1696,
+              "label": "Qiyana Triple Kill",
+              "kind": "kill"
+            }
+          ]
+        },
+        {
+          "videoId": "fxMnvX4Yeuw",
+          "title": "Katarina Mid vs Ahri - KR Grandmaster Patch 26.10",
+          "rankClaim": "Grandmaster",
+          "patch": "26.10",
+          "durationSec": 1521,
+          "region": "KR",
+          "uploaded": "2026-05-17",
+          "moments": []
+        },
+        {
+          "videoId": "neHYAWLTmEo",
+          "title": "Katarina vs Ahri Mid - EUW Grandmaster - Patch 16.09 Season 16",
+          "rankClaim": "Grandmaster",
+          "patch": "26.9",
+          "durationSec": 1636,
+          "region": "EUW",
+          "uploaded": "2026-05-10",
+          "moments": []
+        },
+        {
+          "videoId": "q0tO2ynvrbI",
+          "title": "Katarina vs Ahri 18/4/11 (Mid) | EUW Master | Katarina OTP Replay",
+          "rankClaim": "Master",
+          "patch": "26.7",
+          "durationSec": 1141,
+          "region": "EUW",
+          "patchEstimated": true,
+          "uploaded": "2026-04-12",
+          "moments": []
+        },
+        {
+          "videoId": "wIB35ZuCxFg",
+          "title": "Katarina vs Ahri Mid - KR Challenger - Patch 25.24 Season 15",
+          "rankClaim": "Challenger",
+          "patch": "25.24",
+          "durationSec": 2101,
+          "region": "KR",
+          "uploaded": "2025-12-16",
+          "moments": []
+        },
+        {
+          "videoId": "FXZiWw6rzyQ",
+          "title": "Katarina vs Ahri Mid - KR Grandmaster - Patch 25.23 Season 15",
+          "rankClaim": "Grandmaster",
+          "patch": "25.23",
+          "durationSec": 1471,
+          "region": "KR",
+          "uploaded": "2025-12-04",
+          "moments": []
+        },
+        {
+          "videoId": "kebfK95PsMw",
+          "title": "Katarina vs Ahri Mid - KR Grandmaster - Patch 25.23 Season 15",
+          "rankClaim": "Grandmaster",
+          "patch": "25.23",
+          "durationSec": 1696,
+          "region": "KR",
+          "uploaded": "2025-12-04",
+          "moments": []
+        },
+        {
+          "videoId": "20Td7600xcw",
+          "title": "Katarina vs Ahri Mid - KR Grandmaster - Patch 25.12 Season 15",
+          "rankClaim": "Grandmaster",
+          "patch": "25.12",
+          "durationSec": 1366,
+          "region": "KR",
+          "uploaded": "2025-06-14",
+          "moments": []
+        },
+        {
+          "videoId": "okPtMT8UImw",
+          "title": "Katarina vs Ahri Mid - KR Master - Patch 25.7 Season 15",
+          "rankClaim": "Master",
+          "patch": "25.7",
+          "durationSec": 1801,
+          "region": "KR",
+          "uploaded": "2025-04-05",
+          "moments": []
+        },
+        {
+          "videoId": "ETUKmHY-B0U",
+          "title": "Katarina vs Ahri Mid - EUW Challenger - Patch 25.5 Season 15",
+          "rankClaim": "Challenger",
+          "patch": "25.5",
+          "durationSec": 1381,
+          "region": "EUW",
+          "uploaded": "2025-03-19",
+          "moments": []
+        },
+        {
+          "videoId": "jAPVOxG24DE",
+          "title": "Katarina vs Ahri Mid - KR Grandmaster - Patch 25.4 Season 15",
+          "rankClaim": "Grandmaster",
+          "patch": "25.4",
+          "durationSec": 1476,
+          "region": "KR",
+          "uploaded": "2025-03-04",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 105,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "ntP1wM3ak3Y",
+          "title": "Katarina vs Fizz 15/3/2 (Mid) | EUW Master | Katarina OTP Replay",
+          "rankClaim": "Master",
+          "patch": "26.9",
+          "durationSec": 1434,
+          "region": "EUW",
+          "patchEstimated": true,
+          "uploaded": "2026-05-08",
+          "moments": []
+        },
+        {
+          "videoId": "Nz07cH-S4EY",
+          "title": "Katarina vs Fizz Mid - KR Grandmaster - Patch 25.24 Season 15",
+          "rankClaim": "Grandmaster",
+          "patch": "25.24",
+          "durationSec": 2131,
+          "region": "KR",
+          "uploaded": "2026-01-03",
+          "moments": []
+        },
+        {
+          "videoId": "TpAcFswyIro",
+          "title": "Katarina vs Fizz [ MID ] Korea Grandmaster 900 LP | Patch 25.24 ✅",
+          "rankClaim": "Grandmaster",
+          "patch": "25.24",
+          "durationSec": 1913,
+          "region": "KR",
+          "uploaded": "2026-01-02",
+          "moments": []
+        },
+        {
+          "videoId": "8gmymBZvcZc",
+          "title": "Katarina vs Fizz Mid - EUW Grandmaster - Patch 25.8 Season 15",
+          "rankClaim": "Grandmaster",
+          "patch": "25.8",
+          "durationSec": 1411,
+          "region": "EUW",
+          "uploaded": "2025-04-18",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 112,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "bn_IUk-S5wo",
+          "title": "Katarina vs Viktor [ MID ] Korea Grandmaster 1445 LP | Patch 26.12 ✅",
+          "rankClaim": "Grandmaster",
+          "patch": "26.12",
+          "durationSec": 1601,
+          "region": "KR",
+          "uploaded": "2026-06-19",
+          "moments": []
+        },
+        {
+          "videoId": "APmBrwWUjfA",
+          "title": "Katarina vs Viktor Mid - KR Challenger - Patch 16.10 Season 16",
+          "rankClaim": "Challenger",
+          "patch": "26.10",
+          "durationSec": 2341,
+          "region": "KR",
+          "uploaded": "2026-05-19",
+          "moments": []
+        },
+        {
+          "videoId": "8hL00zZvHhM",
+          "title": "Katarina vs Viktor Mid - KR Grandmaster - Patch 25.24 Season 15",
+          "rankClaim": "Grandmaster",
+          "patch": "25.24",
+          "durationSec": 1751,
+          "region": "KR",
+          "uploaded": "2025-12-23",
+          "moments": []
+        },
+        {
+          "videoId": "JNA8xT_r2_s",
+          "title": "Katarina vs Viktor Mid - KR Grandmaster - Patch 25.12 Season 15",
+          "rankClaim": "Grandmaster",
+          "patch": "25.12",
+          "durationSec": 1591,
+          "region": "KR",
+          "uploaded": "2025-06-19",
+          "moments": []
+        },
+        {
+          "videoId": "-UhOUrDHrkc",
+          "title": "Katarina vs Viktor Mid - KR Challenger - Patch 25.11 Season 15",
+          "rankClaim": "Challenger",
+          "patch": "25.11",
+          "durationSec": 1800,
+          "region": "KR",
+          "uploaded": "2025-06-04",
+          "moments": []
+        },
+        {
+          "videoId": "guyw18XdfbM",
+          "title": "Katarina vs Viktor Mid - KR Grandmaster - Patch 25.9 Season 15",
+          "rankClaim": "Grandmaster",
+          "patch": "25.9",
+          "durationSec": 1726,
+          "region": "KR",
+          "uploaded": "2025-05-09",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 114,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "Y8rqro1vTTA",
+          "title": "Katarina Top vs Fiora - KR Master Patch 25.12",
+          "rankClaim": "Master",
+          "patch": "25.12",
+          "durationSec": 1655,
+          "region": "KR",
+          "uploaded": "2025-06-22",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 115,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "MV6PUSoeiCo",
+          "title": "Katarina vs Ziggs Mid - EUW Grandmaster - Patch 25.21 Season 15",
+          "rankClaim": "Grandmaster",
+          "patch": "25.21",
+          "durationSec": 1381,
+          "region": "EUW",
+          "uploaded": "2025-10-30",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 126,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "Gc2UsK9hQeo",
+          "title": "Katarina vs Jayce Mid - KR Challenger - Patch 25.22 Season 15",
+          "rankClaim": "Challenger",
+          "patch": "25.22",
+          "durationSec": 1711,
+          "region": "KR",
+          "uploaded": "2025-11-07",
+          "moments": []
+        },
+        {
+          "videoId": "L0EnmPelaT4",
+          "title": "Katarina vs Jayce Mid - KR Grandmaster - Patch 25.8 Season 15",
+          "rankClaim": "Grandmaster",
+          "patch": "25.8",
+          "durationSec": 1380,
+          "region": "KR",
+          "uploaded": "2025-04-24",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 126,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "9FlNrHJ1WAw",
+          "title": "Katarina Top vs Jayce - EUW Grandmaster Patch 26.02",
+          "rankClaim": "Grandmaster",
+          "patch": "26.2",
+          "durationSec": 1471,
+          "region": "EUW",
+          "uploaded": "2026-02-01",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 127,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "YTRbmaFNPkY",
+          "title": "Katarina Mid vs Lissandra - KR Master Patch 25.06",
+          "rankClaim": "Master",
+          "patch": "25.6",
+          "durationSec": 1868,
+          "region": "KR",
+          "uploaded": "2025-03-21",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 131,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "omrplHtIc_o",
+          "title": "Katarina vs Diana Mid - KR Grandmaster - Patch 25.13 Season 15",
+          "rankClaim": "Grandmaster",
+          "patch": "25.13",
+          "durationSec": 1651,
+          "region": "KR",
+          "uploaded": "2025-07-07",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 133,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "oJlp06uSJ9k",
+          "title": "Katarina vs Quinn Mid - KR Challenger - Patch 16.03 Season 16",
+          "rankClaim": "Challenger",
+          "patch": "26.3",
+          "durationSec": 1471,
+          "region": "KR",
+          "uploaded": "2026-02-07",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 134,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "LImKf6lRYcs",
+          "title": "Katarina Mid vs Syndra - EUW Challenger Patch 25.24",
+          "rankClaim": "Challenger",
+          "patch": "25.24",
+          "durationSec": 1474,
+          "region": "EUW",
+          "uploaded": "2025-12-17",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 502,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 532,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 723,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 883,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 904,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 924,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1010,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1235,
+              "label": "Get a Triple Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1253,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1270,
+              "label": "Hunt The Atakhan"
+            },
+            {
+              "atSec": 1354,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1463,
+              "label": "End credit"
+            }
+          ]
+        },
+        {
+          "videoId": "4sqm_j30CRw",
+          "title": "Katarina vs Syndra Mid - KR Challenger - Patch 25.14 Season 15",
+          "rankClaim": "Challenger",
+          "patch": "25.14",
+          "durationSec": 1620,
+          "region": "KR",
+          "uploaded": "2025-07-29",
+          "moments": []
+        },
+        {
+          "videoId": "-TRqVFx4iNw",
+          "title": "Katarina vs Syndra Mid - KR Master - Patch 25.13 Season 15",
+          "rankClaim": "Master",
+          "patch": "25.13",
+          "durationSec": 1771,
+          "region": "KR",
+          "uploaded": "2025-07-12",
+          "moments": []
+        },
+        {
+          "videoId": "PlOmNx8uUjI",
+          "title": "Katarina vs Syndra Mid - KR Master - Patch 25.13 Season 15",
+          "rankClaim": "Master",
+          "patch": "25.13",
+          "durationSec": 1696,
+          "region": "KR",
+          "uploaded": "2025-07-11",
+          "moments": []
+        },
+        {
+          "videoId": "-cdq7Pj8DLU",
+          "title": "Katarina Mid vs Syndra - NA Grandmaster Patch 25.10",
+          "rankClaim": "Grandmaster",
+          "patch": "25.10",
+          "durationSec": 1587,
+          "region": "NA",
+          "uploaded": "2025-05-19",
+          "moments": []
+        },
+        {
+          "videoId": "tOA7giLyZ0E",
+          "title": "Katarina vs Syndra Mid - KR Grandmaster - Patch 25.9 Season 15",
+          "rankClaim": "Grandmaster",
+          "patch": "25.9",
+          "durationSec": 1666,
+          "region": "KR",
+          "uploaded": "2025-05-14",
+          "moments": []
+        },
+        {
+          "videoId": "VYsSH1BpUvs",
+          "title": "Katarina Mid vs Syndra - NA Challenger Patch 25.07",
+          "rankClaim": "Challenger",
+          "patch": "25.7",
+          "durationSec": 1453,
+          "region": "NA",
+          "uploaded": "2025-04-17",
+          "moments": []
+        },
+        {
+          "videoId": "3jPBF9zUCVI",
+          "title": "Katarina vs Syndra Mid - EUW Challenger - Patch 15.4 Season 15",
+          "rankClaim": "Challenger",
+          "patch": "25.4",
+          "durationSec": 1691,
+          "region": "EUW",
+          "uploaded": "2025-02-24",
+          "moments": []
+        },
+        {
+          "videoId": "kv9TiSGzz3s",
+          "title": "Katarina vs Syndra Mid - EUW Challenger - Patch 15.4 Season 15",
+          "rankClaim": "Challenger",
+          "patch": "25.4",
+          "durationSec": 1691,
+          "region": "EUW",
+          "uploaded": "2025-02-21",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 136,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "yyTQ6M2dip8",
+          "title": "Katarina Top vs Aurelion Sol - EUW Challenger Patch 26.11",
+          "rankClaim": "Challenger",
+          "patch": "26.11",
+          "durationSec": 1415,
+          "region": "EUW",
+          "uploaded": "2026-06-04",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 142,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "hToFkzXAryI",
+          "title": "Katarina vs Zoe Mid - KR Challenger - Patch 26.01 Season 16",
+          "rankClaim": "Challenger",
+          "patch": "26.1",
+          "durationSec": 1906,
+          "region": "KR",
+          "uploaded": "2026-01-22",
+          "moments": []
+        },
+        {
+          "videoId": "ldGdek5JuME",
+          "title": "Katarina vs Zoe Mid - KR Challenger - Patch 25.21 Season 15",
+          "rankClaim": "Challenger",
+          "patch": "25.21",
+          "durationSec": 1531,
+          "region": "KR",
+          "uploaded": "2025-10-28",
+          "moments": []
+        },
+        {
+          "videoId": "9OLQmMQTsx0",
+          "title": "Katarina vs Zoe Mid - KR Master - Patch 25.17 Season 15",
+          "rankClaim": "Master",
+          "patch": "25.17",
+          "durationSec": 1751,
+          "region": "KR",
+          "uploaded": "2025-09-04",
+          "moments": []
+        },
+        {
+          "videoId": "YpYk5QTNSzo",
+          "title": "Katarina vs Zoe Mid - KR Grandmaster - Patch 25.14 Season 15",
+          "rankClaim": "Grandmaster",
+          "patch": "25.14",
+          "durationSec": 1606,
+          "region": "KR",
+          "uploaded": "2025-07-19",
+          "moments": []
+        },
+        {
+          "videoId": "xi7xvVyTcI0",
+          "title": "Katarina vs Zoe Mid - KR Grandmaster - Patch 25.11 Season 15",
+          "rankClaim": "Grandmaster",
+          "patch": "25.11",
+          "durationSec": 1651,
+          "region": "KR",
+          "uploaded": "2025-06-09",
+          "moments": []
+        },
+        {
+          "videoId": "6gmVBE2eUmE",
+          "title": "Katarina Mid vs Zoe - KR Grandmaster Patch 25.05",
+          "rankClaim": "Grandmaster",
+          "patch": "25.5",
+          "durationSec": 1579,
+          "region": "KR",
+          "uploaded": "2025-03-11",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 157,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "szgBhQn2hq0",
+          "title": "Katarina vs Yasuo Mid - KR Challenger - Patch 16.09 Season 16",
+          "rankClaim": "Challenger",
+          "patch": "26.9",
+          "durationSec": 1301,
+          "region": "KR",
+          "uploaded": "2026-05-08",
+          "moments": []
+        },
+        {
+          "videoId": "YpyDfZ8n4sg",
+          "title": "Katarina Mid vs Yasuo - TW Challenger Patch 26.08",
+          "rankClaim": "Challenger",
+          "patch": "26.8",
+          "durationSec": 1513,
+          "uploaded": "2026-04-19",
+          "moments": []
+        },
+        {
+          "videoId": "8yBDlSSuwkc",
+          "title": "Katarina vs Yasuo [ MID ] Lol Korea Master Patch 26.5 ✅",
+          "rankClaim": "Master",
+          "patch": "26.5",
+          "durationSec": 1801,
+          "region": "KR",
+          "uploaded": "2026-03-08",
+          "moments": []
+        },
+        {
+          "videoId": "ArJZIc7BqOI",
+          "title": "Katarina vs Yasuo MID [ PentaKill ] Patch 25.23 Korea Grandmaster 903 LP",
+          "rankClaim": "Grandmaster",
+          "patch": "25.23",
+          "durationSec": 1869,
+          "region": "KR",
+          "player": "PentaKill",
+          "uploaded": "2025-11-25",
+          "moments": []
+        },
+        {
+          "videoId": "FUrlvbESJ2U",
+          "title": "Katarina vs Yasuo Mid - KR Master - Patch 25.9 Season 15",
+          "rankClaim": "Master",
+          "patch": "25.9",
+          "durationSec": 1380,
+          "region": "KR",
+          "uploaded": "2025-05-13",
+          "moments": []
+        },
+        {
+          "videoId": "jnL2mbdnPnc",
+          "title": "Katarina vs Yasuo Mid - KR Grandmaster - Patch 25.5 Season 15",
+          "rankClaim": "Grandmaster",
+          "patch": "25.5",
+          "durationSec": 1440,
+          "region": "KR",
+          "uploaded": "2025-03-19",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 157,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "RpIKAGPTY38",
+          "title": "Katarina Top vs Yasuo - KR Master Patch 25.24",
+          "rankClaim": "Master",
+          "patch": "25.24",
+          "durationSec": 1550,
+          "region": "KR",
+          "uploaded": "2025-12-22",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 161,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "bC-_iK6SGt8",
+          "title": "Katarina vs Vel'Koz Mid - EUW Grandmaster - Patch 25.15 Season 15",
+          "rankClaim": "Grandmaster",
+          "patch": "25.15",
+          "durationSec": 1450,
+          "region": "EUW",
+          "uploaded": "2025-08-06",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 163,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "6YeJZIiGB_g",
+          "title": "T1 Faker Katarina vs Taliyah [ MID ] Korea Master Patch 26.2",
+          "rankClaim": "Master",
+          "patch": "26.2",
+          "durationSec": 1279,
+          "region": "KR",
+          "player": "Faker",
+          "team": "T1",
+          "uploaded": "2026-01-28",
+          "moments": []
+        },
+        {
+          "videoId": "KimHXu2yswQ",
+          "title": "Katarina Mid vs Taliyah - KR Challenger Patch 25.23",
+          "rankClaim": "Challenger",
+          "patch": "25.23",
+          "durationSec": 1589,
+          "region": "KR",
+          "uploaded": "2025-11-24",
+          "moments": []
+        },
+        {
+          "videoId": "QVxPpO59Ryg",
+          "title": "Katarina vs Taliyah Mid - KR Grandmaster - Patch 25.21 Season 15",
+          "rankClaim": "Grandmaster",
+          "patch": "25.21",
+          "durationSec": 1681,
+          "region": "KR",
+          "uploaded": "2025-11-04",
+          "moments": []
+        },
+        {
+          "videoId": "ktPUX5JfAhU",
+          "title": "Katarina Mid vs Taliyah - KR Challenger Patch 25.21",
+          "rankClaim": "Challenger",
+          "patch": "25.21",
+          "durationSec": 1654,
+          "region": "KR",
+          "uploaded": "2025-10-27",
+          "moments": []
+        },
+        {
+          "videoId": "INiImLo4n-4",
+          "title": "DK ShowMaker Katarina vs Taliyah [ MID ] Korea Challenger Patch 25.16 ✅",
+          "rankClaim": "Challenger",
+          "patch": "25.16",
+          "durationSec": 1125,
+          "region": "KR",
+          "player": "ShowMaker",
+          "team": "DK",
+          "uploaded": "2025-08-22",
+          "moments": []
+        },
+        {
+          "videoId": "v5QB8pYfEUg",
+          "title": "T1 Faker Katarina vs Taliyah [ MID ] Korea Grandmaster Patch 25.9",
+          "rankClaim": "Grandmaster",
+          "patch": "25.9",
+          "durationSec": 1249,
+          "region": "KR",
+          "player": "Faker",
+          "team": "T1",
+          "uploaded": "2025-05-14",
+          "moments": []
+        },
+        {
+          "videoId": "oyXq0S39zHc",
+          "title": "Katarina vs Taliyah Mid - EUW Grandmaster - Patch 25.5 Season 15",
+          "rankClaim": "Grandmaster",
+          "patch": "25.5",
+          "durationSec": 1591,
+          "region": "EUW",
+          "uploaded": "2025-03-17",
+          "moments": []
+        },
+        {
+          "videoId": "UVp6iuJ8ZbY",
+          "title": "Katarina vs Taliyah Mid - EUW Grandmaster - Patch 15.4 Season 15",
+          "rankClaim": "Grandmaster",
+          "patch": "25.4",
+          "durationSec": 1871,
+          "region": "EUW",
+          "uploaded": "2025-02-28",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 166,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "G-vAb45HIEA",
+          "title": "Katarina Mid vs Akshan - EUW Grandmaster Patch 26.16",
+          "rankClaim": "Grandmaster",
+          "patch": "26.16",
+          "durationSec": 1707,
+          "region": "EUW",
+          "uploaded": "2026-08-19",
+          "moments": []
+        },
+        {
+          "videoId": "bIb6rdSeYDo",
+          "title": "Katarina vs Akshan Mid - KR Challenger - Patch 16.15 Season 16",
+          "rankClaim": "Challenger",
+          "patch": "26.15",
+          "durationSec": 1816,
+          "region": "KR",
+          "uploaded": "2026-08-11",
+          "moments": []
+        },
+        {
+          "videoId": "i05FwV_-KoU",
+          "title": "Katarina vs Akshan Mid - EUW Challenger - Patch 16.09 Season 16",
+          "rankClaim": "Challenger",
+          "patch": "26.9",
+          "durationSec": 1651,
+          "region": "EUW",
+          "uploaded": "2026-05-15",
+          "moments": []
+        },
+        {
+          "videoId": "E4SfR0TM-jU",
+          "title": "Katarina Mid vs Akshan - TW Challenger Patch 26.05",
+          "rankClaim": "Challenger",
+          "patch": "26.5",
+          "durationSec": 1682,
+          "uploaded": "2026-03-10",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 179,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 324,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 366,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 423,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 487,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 677,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1086,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1154,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1173,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1235,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1283,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1303,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1365,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1398,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1502,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1596,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1616,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1643,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1671,
+              "label": "End credit"
+            }
+          ]
+        },
+        {
+          "videoId": "_nu5Rmm_hAE",
+          "title": "Katarina vs Akshan Mid - EUW Grandmaster - Patch 25.17 Season 15",
+          "rankClaim": "Grandmaster",
+          "patch": "25.17",
+          "durationSec": 1651,
+          "region": "EUW",
+          "uploaded": "2025-08-29",
+          "moments": []
+        },
+        {
+          "videoId": "s4Bkxqw2sDM",
+          "title": "Katarina vs Akshan Mid - EUW Challenger - Patch 25.9 Season 15",
+          "rankClaim": "Challenger",
+          "patch": "25.9",
+          "durationSec": 1591,
+          "region": "EUW",
+          "uploaded": "2025-05-03",
+          "moments": []
+        },
+        {
+          "videoId": "sHkG2N-fhXI",
+          "title": "Katarina vs Akshan Mid - KR Grandmaster - Patch 25.7 Season 15",
+          "rankClaim": "Grandmaster",
+          "patch": "25.7",
+          "durationSec": 1626,
+          "region": "KR",
+          "uploaded": "2025-04-09",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 202,
+      "lane": "adc",
+      "videos": [
+        {
+          "videoId": "sCaeAbldQgU",
+          "title": "Katarina Bot vs Jhin (BLG Viper) - KR Challenger Patch 26.17",
+          "rankClaim": "Challenger",
+          "patch": "26.17",
+          "durationSec": 1481,
+          "region": "KR",
+          "player": "Viper",
+          "uploaded": "2026-09-07",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 236,
+      "lane": "adc",
+      "videos": [
+        {
+          "videoId": "uEIKL9uTg6I",
+          "title": "Katarina Bot vs Lucian - EUW Master Patch 26.21",
+          "rankClaim": "Master",
+          "patch": "26.21",
+          "durationSec": 1854,
+          "region": "EUW",
+          "uploaded": "2026-10-31",
+          "result": "W",
+          "moments": [
+            {
+              "atSec": 547,
+              "label": "Blue takes 1st Dragon (Cloud)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 734,
+              "label": "Katarina kills Locke",
+              "kind": "kill"
+            },
+            {
+              "atSec": 906,
+              "label": "Team fight (4 kills)",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 966,
+              "label": "Katarina picks off Gwen"
+            },
+            {
+              "atSec": 1007,
+              "label": "Red takes 1st Dragon (Hextech)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1021,
+              "label": "Katarina takes down Lucian"
+            },
+            {
+              "atSec": 1053,
+              "label": "Katarina kills Locke",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1110,
+              "label": "Katarina picks off Gwen"
+            },
+            {
+              "atSec": 1199,
+              "label": "Katarina eliminates Nocturne"
+            },
+            {
+              "atSec": 1324,
+              "label": "Red takes 2nd Dragon (Chemtech)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1329,
+              "label": "Katarina picks off Milio"
+            },
+            {
+              "atSec": 1368,
+              "label": "Viego eliminates Lucian"
+            },
+            {
+              "atSec": 1410,
+              "label": "Katarina kills Locke",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1568,
+              "label": "Katarina picks off Milio"
+            },
+            {
+              "atSec": 1708,
+              "label": "Red takes 3rd Dragon (Chemtech)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1791,
+              "label": "Team fight (3 kills)",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1823,
+              "label": "Mid Inhibitor falls (Blue)"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 238,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "tEAGNMl9hK4",
+          "title": "Katarina vs Zed Mid - KR Grandmaster - Patch 16.19 Season 16",
+          "rankClaim": "Grandmaster",
+          "patch": "26.19",
+          "durationSec": 2146,
+          "region": "KR",
+          "uploaded": "2026-10-05",
+          "moments": []
+        },
+        {
+          "videoId": "eZz68H9HIas",
+          "title": "Katarina Mid vs Zed - KR Grandmaster Patch 26.18",
+          "rankClaim": "Grandmaster",
+          "patch": "26.18",
+          "durationSec": 1476,
+          "region": "KR",
+          "uploaded": "2026-09-16",
+          "moments": []
+        },
+        {
+          "videoId": "jMT3nwU2GVs",
+          "title": "Katarina vs Zed MId - KR Challenger - Patch 16.17 Season 16",
+          "rankClaim": "Challenger",
+          "patch": "26.17",
+          "durationSec": 1590,
+          "region": "KR",
+          "uploaded": "2026-09-04",
+          "moments": []
+        },
+        {
+          "videoId": "hV-LRCDUvHE",
+          "title": "Katarina vs Zed Mid - EUW Challenger - Patch 16.05 Season 16",
+          "rankClaim": "Challenger",
+          "patch": "26.5",
+          "durationSec": 1906,
+          "region": "EUW",
+          "uploaded": "2026-03-11",
+          "moments": []
+        },
+        {
+          "videoId": "9U-Lhsqarvs",
+          "title": "Katarina vs Zed Mid - KR Grandmaster - Patch 26.01 Season 16",
+          "rankClaim": "Grandmaster",
+          "patch": "26.1",
+          "durationSec": 1741,
+          "region": "KR",
+          "uploaded": "2026-01-20",
+          "moments": []
+        },
+        {
+          "videoId": "tBqHfkDiJJQ",
+          "title": "Katarina vs Zed [ MID ] Korea Grandmaster 658 LP | Patch 26.1 ✅",
+          "rankClaim": "Grandmaster",
+          "patch": "26.1",
+          "durationSec": 1511,
+          "region": "KR",
+          "uploaded": "2026-01-20",
+          "moments": []
+        },
+        {
+          "videoId": "5EgL32slM_U",
+          "title": "Katarina vs Zed Mid - KR Grandmaster - Patch 25.16 Season 16",
+          "rankClaim": "Grandmaster",
+          "patch": "25.16",
+          "durationSec": 1756,
+          "region": "KR",
+          "uploaded": "2025-08-17",
+          "moments": []
+        },
+        {
+          "videoId": "3Jhfvdmuk88",
+          "title": "Katarina vs Zed Mid - KR Grandmaster - Patch 25.14 Season 15",
+          "rankClaim": "Grandmaster",
+          "patch": "25.14",
+          "durationSec": 1786,
+          "region": "KR",
+          "uploaded": "2025-07-23",
+          "moments": []
+        },
+        {
+          "videoId": "zY5SmSJbwGQ",
+          "title": "Katarina vs Zed Mid - KR Master - Patch 25.13 Season 15",
+          "rankClaim": "Master",
+          "patch": "25.13",
+          "durationSec": 1631,
+          "region": "KR",
+          "uploaded": "2025-07-03",
+          "moments": []
+        },
+        {
+          "videoId": "odjdsKypvD4",
+          "title": "Katarina vs Zed Mid - KR Grandmaster - Patch 25.6 Season 15",
+          "rankClaim": "Grandmaster",
+          "patch": "25.6",
+          "durationSec": 1380,
+          "region": "KR",
+          "uploaded": "2025-03-26",
+          "moments": []
+        },
+        {
+          "videoId": "06H6DQHIvXk",
+          "title": "Katarina vs Zed Mid - KR Grandmaster - Patch 25.5 Season 15",
+          "rankClaim": "Grandmaster",
+          "patch": "25.5",
+          "durationSec": 1750,
+          "region": "KR",
+          "uploaded": "2025-03-11",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 245,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "8mUnWigICS0",
+          "title": "Katarina vs Ekko Mid - KR Grandmaster - Patch 25.19 Season 15",
+          "rankClaim": "Grandmaster",
+          "patch": "25.19",
+          "durationSec": 1921,
+          "region": "KR",
+          "uploaded": "2025-09-29",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 246,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "1WdaVAwJ-YE",
+          "title": "Katarina vs Qiyana Mid - EUW Grandmaster - Patch 25.18 Season 15",
+          "rankClaim": "Grandmaster",
+          "patch": "25.18",
+          "durationSec": 1771,
+          "region": "EUW",
+          "uploaded": "2025-09-18",
+          "moments": []
+        },
+        {
+          "videoId": "4eMK2ClkBaU",
+          "title": "Katarina vs Qiyana Mid - KR Grandmaster - Patch 25.10 Season 15",
+          "rankClaim": "Grandmaster",
+          "patch": "25.10",
+          "durationSec": 1381,
+          "region": "KR",
+          "uploaded": "2025-05-21",
+          "moments": []
+        },
+        {
+          "videoId": "DOrdGmAhs-Q",
+          "title": "Katarina vs Qiyana Mid - KR Grandmaster - Patch 25.8 Season 15",
+          "rankClaim": "Grandmaster",
+          "patch": "25.8",
+          "durationSec": 1516,
+          "region": "KR",
+          "uploaded": "2025-04-29",
+          "moments": []
+        },
+        {
+          "videoId": "I7x_OiLtXH4",
+          "title": "Katarina vs Qiyana Mid - KR Grandmaster - Patch 25.6 Season 15",
+          "rankClaim": "Grandmaster",
+          "patch": "25.6",
+          "durationSec": 1651,
+          "region": "KR",
+          "uploaded": "2025-03-31",
+          "moments": []
+        },
+        {
+          "videoId": "b0gSXGSP2bU",
+          "title": "Katarina vs Qiyana Mid - KR Grandmaster - Patch 15.4 Season 15",
+          "rankClaim": "Grandmaster",
+          "patch": "25.4",
+          "durationSec": 1680,
+          "region": "KR",
+          "uploaded": "2025-02-23",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 254,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "Q0hZhV-rIys",
+          "title": "Katarina Jungle vs Vi - NA Grandmaster Patch 26.14",
+          "rankClaim": "Grandmaster",
+          "patch": "26.14",
+          "durationSec": 1486,
+          "region": "NA",
+          "uploaded": "2026-07-26",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 266,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "k8Q5O3hd7Pc",
+          "title": "Katarina Top vs Aatrox - EUW Grandmaster Patch 26.03",
+          "rankClaim": "Grandmaster",
+          "patch": "26.3",
+          "durationSec": 1770,
+          "region": "EUW",
+          "uploaded": "2026-02-17",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 144,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 245,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 324,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 510,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 803,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 835,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 864,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1123,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1145,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1282,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1339,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1468,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1485,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1505,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1588,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1611,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1633,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1759,
+              "label": "End credit"
+            }
+          ]
+        },
+        {
+          "videoId": "jDH2NMD5Owo",
+          "title": "Katarina Top vs Aatrox - KR Master Patch 25.10",
+          "rankClaim": "Master",
+          "patch": "25.10",
+          "durationSec": 1599,
+          "region": "KR",
+          "uploaded": "2025-05-25",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 268,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "KXt8cMQIxaI",
+          "title": "Katarina vs Azir Mid - KR Grandmaster - Patch 16.03 Season 16",
+          "rankClaim": "Grandmaster",
+          "patch": "26.3",
+          "durationSec": 1661,
+          "region": "KR",
+          "uploaded": "2026-02-09",
+          "moments": []
+        },
+        {
+          "videoId": "ZsSjbq3zAWI",
+          "title": "Katarina vs Azir Mid - EUW Challenger - Patch 25.24 Season 15",
+          "rankClaim": "Challenger",
+          "patch": "25.24",
+          "durationSec": 1631,
+          "region": "EUW",
+          "uploaded": "2025-12-10",
+          "moments": []
+        },
+        {
+          "videoId": "vlmUoqYbYNE",
+          "title": "Katarina vs Azir Mid - KR Challenger - Patch 25.10 Season 15",
+          "rankClaim": "Challenger",
+          "patch": "25.10",
+          "durationSec": 1631,
+          "region": "KR",
+          "uploaded": "2025-05-22",
+          "moments": []
+        },
+        {
+          "videoId": "b6KRQ3JdDT0",
+          "title": "Katarina vs Azir Mid - EUW Challenger - Patch 25.6 Season 15",
+          "rankClaim": "Challenger",
+          "patch": "25.6",
+          "durationSec": 2070,
+          "region": "EUW",
+          "uploaded": "2025-03-24",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 360,
+      "lane": "adc",
+      "videos": [
+        {
+          "videoId": "XpvlKDlUZxM",
+          "title": "(Etow) Katarina Bot vs Samira (HRTS Mercy9) - EUW Challenger Patch 26.19",
+          "rankClaim": "Challenger",
+          "patch": "26.19",
+          "durationSec": 1788,
+          "region": "EUW",
+          "player": "Etow",
+          "uploaded": "2026-10-04",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 420,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "g8ZIxw9Eogo",
+          "title": "Katarina Mid vs Illaoi - EUW Grandmaster Patch 25.20",
+          "rankClaim": "Grandmaster",
+          "patch": "25.20",
+          "durationSec": 2122,
+          "region": "EUW",
+          "uploaded": "2025-10-14",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 427,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "9aBM_0aznto",
+          "title": "Katarina vs Ivern Mid - KR Master - Patch 25.8 Season 15",
+          "rankClaim": "Master",
+          "patch": "25.8",
+          "durationSec": 2221,
+          "region": "KR",
+          "uploaded": "2025-04-28",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 517,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "3O9R-VFfjTk",
+          "title": "Katarina vs Sylas Mid - KR Grandmaster - Patch 16.18 Season 16",
+          "rankClaim": "Grandmaster",
+          "patch": "26.18",
+          "durationSec": 1296,
+          "region": "KR",
+          "uploaded": "2026-09-17",
+          "moments": []
+        },
+        {
+          "videoId": "a0x6FTpVztU",
+          "title": "Katarina vs Sylas Mid - EUW Challenger - Patch 16.10 Season 16",
+          "rankClaim": "Challenger",
+          "patch": "26.10",
+          "durationSec": 1711,
+          "region": "EUW",
+          "uploaded": "2026-05-24",
+          "moments": []
+        },
+        {
+          "videoId": "bML6YpEiOPk",
+          "title": "Katarina vs Sylas Mid - EUW Challenger - Patch 26.02 Season 16",
+          "rankClaim": "Challenger",
+          "patch": "26.2",
+          "durationSec": 1831,
+          "region": "EUW",
+          "uploaded": "2026-01-30",
+          "moments": []
+        },
+        {
+          "videoId": "5CJlmCEf7ms",
+          "title": "Katarina vs Sylas Mid - EUW Grandmaster - Patch 25.24 Season 15",
+          "rankClaim": "Grandmaster",
+          "patch": "25.24",
+          "durationSec": 1651,
+          "region": "EUW",
+          "uploaded": "2025-12-12",
+          "moments": []
+        },
+        {
+          "videoId": "cok7Cq6ZnSk",
+          "title": "Katarina vs Sylas Mid - EUW Grandmaster - Patch 25.18 Season 15",
+          "rankClaim": "Grandmaster",
+          "patch": "25.18",
+          "durationSec": 2146,
+          "region": "EUW",
+          "uploaded": "2025-09-24",
+          "moments": []
+        },
+        {
+          "videoId": "7YTHD0XQTEw",
+          "title": "Katarina vs Sylas Mid - KR Grandmaster - Patch 25.12 Season 15",
+          "rankClaim": "Grandmaster",
+          "patch": "25.12",
+          "durationSec": 1906,
+          "region": "KR",
+          "uploaded": "2025-06-14",
+          "moments": []
+        },
+        {
+          "videoId": "7AjIyYr4CEs",
+          "title": "Katarina vs Sylas Mid - KR Master - Patch 25.10 Season 15",
+          "rankClaim": "Master",
+          "patch": "25.10",
+          "durationSec": 1471,
+          "region": "KR",
+          "uploaded": "2025-05-19",
+          "moments": []
+        },
+        {
+          "videoId": "Hlkn4GXlznk",
+          "title": "Katarina vs Sylas Mid - KR Master - Patch 25.8 Season 15",
+          "rankClaim": "Master",
+          "patch": "25.8",
+          "durationSec": 1711,
+          "region": "KR",
+          "uploaded": "2025-04-27",
+          "moments": []
+        },
+        {
+          "videoId": "G6ZnDe7tOmM",
+          "title": "Katarina vs Sylas Mid - KR Grandmaster - Patch 25.8 Season 15",
+          "rankClaim": "Grandmaster",
+          "patch": "25.8",
+          "durationSec": 2091,
+          "region": "KR",
+          "uploaded": "2025-04-21",
+          "moments": []
+        },
+        {
+          "videoId": "9JF3rBsuXKM",
+          "title": "Katarina vs Sylas Mid - KR Challenger - Patch 25.7 Season 15",
+          "rankClaim": "Challenger",
+          "patch": "25.7",
+          "durationSec": 1601,
+          "region": "KR",
+          "uploaded": "2025-04-12",
+          "moments": []
+        },
+        {
+          "videoId": "ThOC-rAt6EI",
+          "title": "Katarina vs Sylas Mid - KR Grandmaster - Patch 25.6 Season 15",
+          "rankClaim": "Grandmaster",
+          "patch": "25.6",
+          "durationSec": 1441,
+          "region": "KR",
+          "uploaded": "2025-04-02",
+          "moments": []
+        },
+        {
+          "videoId": "zMkua8-rwz0",
+          "title": "Katarina vs Sylas Mid - KR Grandmaster - Patch 25.5 Season 15",
+          "rankClaim": "Grandmaster",
+          "patch": "25.5",
+          "durationSec": 1631,
+          "region": "KR",
+          "uploaded": "2025-03-12",
+          "moments": []
+        },
+        {
+          "videoId": "BQtRg-BOmZY",
+          "title": "Katarina vs Sylas Mid - KR Grandmaster - Patch 25.5 Season 15",
+          "rankClaim": "Grandmaster",
+          "patch": "25.5",
+          "durationSec": 1411,
+          "region": "KR",
+          "uploaded": "2025-03-09",
+          "moments": []
+        },
+        {
+          "videoId": "fNTN8amjivs",
+          "title": "Katarina vs Sylas Mid - KR Grandmaster - Patch 15.4 Season 15",
+          "rankClaim": "Grandmaster",
+          "patch": "25.4",
+          "durationSec": 1590,
+          "region": "KR",
+          "uploaded": "2025-02-26",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 523,
+      "lane": "adc",
+      "videos": [
+        {
+          "videoId": "7q2p3apym68",
+          "title": "Katarina Bot vs Aphelios - KR Grandmaster Patch 26.20",
+          "rankClaim": "Grandmaster",
+          "patch": "26.20",
+          "durationSec": 1546,
+          "region": "KR",
+          "uploaded": "2026-10-17",
+          "result": "W",
+          "moments": [
+            {
+              "atSec": 167,
+              "label": "First Blood — Zac kills Blitzcrank",
+              "kind": "kill"
+            },
+            {
+              "atSec": 181,
+              "label": "Katarina takes down Aphelios"
+            },
+            {
+              "atSec": 241,
+              "label": "Katarina takes down Aphelios"
+            },
+            {
+              "atSec": 351,
+              "label": "Katarina takes down Aphelios"
+            },
+            {
+              "atSec": 399,
+              "label": "Red takes 1st Dragon (Infernal)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 505,
+              "label": "Katarina outduels Aphelios"
+            },
+            {
+              "atSec": 560,
+              "label": "Katarina Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 678,
+              "label": "Katarina picks off Blitzcrank"
+            },
+            {
+              "atSec": 725,
+              "label": "Red takes 2nd Dragon (Cloud)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 840,
+              "label": "Katarina outplays Aphelios again"
+            },
+            {
+              "atSec": 959,
+              "label": "Katarina kills Yone",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1068,
+              "label": "Blue takes 1st Dragon (Ocean)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1120,
+              "label": "Team fight (3 kills)",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1332,
+              "label": "Katarina takes down Aphelios"
+            },
+            {
+              "atSec": 1381,
+              "label": "Mid Inhibitor falls (Blue)"
+            },
+            {
+              "atSec": 1407,
+              "label": "Red takes 3rd Dragon (Ocean)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1474,
+              "label": "Katarina takes down Aphelios"
+            },
+            {
+              "atSec": 1519,
+              "label": "Katarina takes down Aphelios"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 711,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "QksBOLFcL4c",
+          "title": "Katarina Mid vs Vex - KR Master Patch 26.20",
+          "rankClaim": "Master",
+          "patch": "26.20",
+          "durationSec": 1642,
+          "region": "KR",
+          "uploaded": "2026-10-12",
+          "result": "W",
+          "moments": [
+            {
+              "atSec": 145,
+              "label": "First Blood — Katarina kills Vex",
+              "kind": "kill"
+            },
+            {
+              "atSec": 424,
+              "label": "Red takes 1st Dragon (Chemtech)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 821,
+              "label": "Blue takes 1st Dragon (Infernal)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 831,
+              "label": "Katarina eliminates Vex"
+            },
+            {
+              "atSec": 1003,
+              "label": "Katarina kills Kai'Sa",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1033,
+              "label": "Katarina takes down Vex"
+            },
+            {
+              "atSec": 1037,
+              "label": "Katarina Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1090,
+              "label": "Katarina takes down Heimerdinger"
+            },
+            {
+              "atSec": 1159,
+              "label": "Katarina eliminates Vex"
+            },
+            {
+              "atSec": 1186,
+              "label": "Red takes 2nd Dragon (Ocean)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1224,
+              "label": "Blue takes Baron",
+              "kind": "baron"
+            },
+            {
+              "atSec": 1289,
+              "label": "Lucian Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1370,
+              "label": "Rumble eliminates Leona"
+            },
+            {
+              "atSec": 1495,
+              "label": "Katarina kills Kai'Sa",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1524,
+              "label": "Blue takes 2nd Dragon (Ocean)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1622,
+              "label": "Katarina Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1626,
+              "label": "Katarina Quadra Kill",
+              "kind": "kill"
+            }
+          ]
+        },
+        {
+          "videoId": "vlSg9A2usk4",
+          "title": "Katarina vs Vex Mid - EUW Grandmaster - Patch 16.09 Season 16",
+          "rankClaim": "Grandmaster",
+          "patch": "26.9",
+          "durationSec": 1606,
+          "region": "EUW",
+          "uploaded": "2026-05-11",
+          "moments": []
+        },
+        {
+          "videoId": "wWyYftJhDe0",
+          "title": "Katarina Mid vs Vex - KR Grandmaster Patch 25.11",
+          "rankClaim": "Grandmaster",
+          "patch": "25.11",
+          "durationSec": 1483,
+          "region": "KR",
+          "uploaded": "2025-06-04",
+          "moments": []
+        },
+        {
+          "videoId": "PaRi0TCuAgw",
+          "title": "Katarina Mid vs Vex - KR Challenger Patch 25.08",
+          "rankClaim": "Challenger",
+          "patch": "25.8",
+          "durationSec": 1562,
+          "region": "KR",
+          "uploaded": "2025-04-22",
+          "moments": []
+        },
+        {
+          "videoId": "_bsySnLr89o",
+          "title": "Katarina vs Vex Mid - KR Grandmaster - Patch 25.6 Season 15",
+          "rankClaim": "Grandmaster",
+          "patch": "25.6",
+          "durationSec": 1726,
+          "region": "KR",
+          "uploaded": "2025-03-20",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 777,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "b2a_LBzORFc",
+          "title": "Katarina vs Yone Mid - KR Grandmaster - Patch 16.19 Season 16",
+          "rankClaim": "Grandmaster",
+          "patch": "26.19",
+          "durationSec": 1666,
+          "region": "KR",
+          "uploaded": "2026-10-06",
+          "moments": []
+        },
+        {
+          "videoId": "rV1jmiAQGt8",
+          "title": "Katarina vs Yone [ MID ] Korea Grandmaster 1434 LP | Patch 26.18 ✅",
+          "rankClaim": "Grandmaster",
+          "patch": "26.18",
+          "durationSec": 1744,
+          "region": "KR",
+          "uploaded": "2026-09-20",
+          "moments": []
+        },
+        {
+          "videoId": "kYS1GCMx4dk",
+          "title": "Katarina vs Yone Mid - KR Grandmaster - Patch 16.18 Season 16",
+          "rankClaim": "Grandmaster",
+          "patch": "26.18",
+          "durationSec": 1471,
+          "region": "KR",
+          "uploaded": "2026-09-15",
+          "moments": []
+        },
+        {
+          "videoId": "x385D36u2Ss",
+          "title": "Katarina vs Yone Mid - KR Challenger - Patch 16.15 Season 16",
+          "rankClaim": "Challenger",
+          "patch": "26.15",
+          "durationSec": 1381,
+          "region": "KR",
+          "uploaded": "2026-08-06",
+          "moments": []
+        },
+        {
+          "videoId": "b7XZcgygxDE",
+          "title": "Katarina vs Yone Mid - KR Challenger - Patch 16.09 Season 16",
+          "rankClaim": "Challenger",
+          "patch": "26.9",
+          "durationSec": 1591,
+          "region": "KR",
+          "uploaded": "2026-05-14",
+          "moments": []
+        },
+        {
+          "videoId": "5A9NGjiKwBk",
+          "title": "Katarina vs Yone Mid - KR Grandmaster - Patch 16.05 Season 16",
+          "rankClaim": "Grandmaster",
+          "patch": "26.5",
+          "durationSec": 2101,
+          "region": "KR",
+          "uploaded": "2026-03-19",
+          "moments": []
+        },
+        {
+          "videoId": "e2YU_W_OFlI",
+          "title": "Katarina vs Yone Mid - KR Grandmaster - Patch 25.20 Season 15",
+          "rankClaim": "Grandmaster",
+          "patch": "25.20",
+          "durationSec": 1861,
+          "region": "KR",
+          "uploaded": "2025-10-09",
+          "moments": []
+        },
+        {
+          "videoId": "PU5WMkdnSo8",
+          "title": "Katarina vs Yone Mid - KR Master - Patch 25.12 Season 15",
+          "rankClaim": "Master",
+          "patch": "25.12",
+          "durationSec": 1871,
+          "region": "KR",
+          "uploaded": "2025-06-24",
+          "moments": []
+        },
+        {
+          "videoId": "eXH-IIK_TBI",
+          "title": "Katarina vs Yone Mid - KR Grandmaster - Patch 25.11 Season 15",
+          "rankClaim": "Grandmaster",
+          "patch": "25.11",
+          "durationSec": 2231,
+          "region": "KR",
+          "uploaded": "2025-06-01",
+          "moments": []
+        },
+        {
+          "videoId": "F8Lg69cNKaE",
+          "title": "Katarina vs Yone Mid - KR Challenger - Patch 25.10 Season 15",
+          "rankClaim": "Challenger",
+          "patch": "25.10",
+          "durationSec": 1486,
+          "region": "KR",
+          "uploaded": "2025-05-24",
+          "moments": []
+        },
+        {
+          "videoId": "9DfbGCFkkx4",
+          "title": "Katarina vs Yone Mid - KR Grandmaster - Patch 25.8 Season 15",
+          "rankClaim": "Grandmaster",
+          "patch": "25.8",
+          "durationSec": 1201,
+          "region": "KR",
+          "uploaded": "2025-04-22",
+          "moments": []
+        },
+        {
+          "videoId": "-RtxnNc-w38",
+          "title": "Katarina vs Yone Mid - KR Grandmaster - Patch 25.8 Season 15",
+          "rankClaim": "Grandmaster",
+          "patch": "25.8",
+          "durationSec": 1861,
+          "region": "KR",
+          "uploaded": "2025-04-21",
+          "moments": []
+        },
+        {
+          "videoId": "O59ENFFtnlE",
+          "title": "Katarina vs Yone Mid - KR Master - Patch 25.7 Season 15",
+          "rankClaim": "Master",
+          "patch": "25.7",
+          "durationSec": 1721,
+          "region": "KR",
+          "uploaded": "2025-04-15",
+          "moments": []
+        },
+        {
+          "videoId": "DU6U9QjrCSE",
+          "title": "Katarina vs Yone Mid - KR Grandmaster - Patch 25.7 Season 15",
+          "rankClaim": "Grandmaster",
+          "patch": "25.7",
+          "durationSec": 2221,
+          "region": "KR",
+          "uploaded": "2025-04-10",
+          "moments": []
+        },
+        {
+          "videoId": "wCz5xS1Kv-0",
+          "title": "Katarina vs Yone Mid - KR Master - Patch 25.7 Season 15",
+          "rankClaim": "Master",
+          "patch": "25.7",
+          "durationSec": 1671,
+          "region": "KR",
+          "uploaded": "2025-04-07",
+          "moments": []
+        },
+        {
+          "videoId": "WydT9yZHwXw",
+          "title": "Katarina vs Yone Mid - KR Grandmaster - Patch 25.6 Season 15",
+          "rankClaim": "Grandmaster",
+          "patch": "25.6",
+          "durationSec": 2231,
+          "region": "KR",
+          "uploaded": "2025-03-28",
+          "moments": []
+        },
+        {
+          "videoId": "7fXtc5fNmLY",
+          "title": "Katarina vs Yone Mid - EUW Grandmaster - Patch 25.6 Season 15",
+          "rankClaim": "Grandmaster",
+          "patch": "25.6",
+          "durationSec": 1510,
+          "region": "EUW",
+          "uploaded": "2025-03-27",
+          "moments": []
+        },
+        {
+          "videoId": "Td4NrMGOWZw",
+          "title": "Katarina vs Yone Mid - EUW Grandmaster - Patch 25.5 Season 15",
+          "rankClaim": "Grandmaster",
+          "patch": "25.5",
+          "durationSec": 1786,
+          "region": "EUW",
+          "uploaded": "2025-03-11",
+          "moments": []
+        },
+        {
+          "videoId": "o_XNvSzu72s",
+          "title": "Katarina vs Yone Mid - KR Challenger - Patch 25.5 Season 15",
+          "rankClaim": "Challenger",
+          "patch": "25.5",
+          "durationSec": 1411,
+          "region": "KR",
+          "uploaded": "2025-03-06",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 777,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "jsBMJrmly-E",
+          "title": "Katarina Top vs Yone - KR Master Patch 25.15",
+          "rankClaim": "Master",
+          "patch": "25.15",
+          "durationSec": 1526,
+          "region": "KR",
+          "uploaded": "2025-08-10",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 799,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "HRgKrKZ0_F4",
+          "title": "Katarina vs Ambessa Mid - EUW Grandmaster - Patch 25.8 Season 15",
+          "rankClaim": "Grandmaster",
+          "patch": "25.8",
+          "durationSec": 1441,
+          "region": "EUW",
+          "uploaded": "2025-04-20",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 800,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "NWx6kISW-UU",
+          "title": "Katarina Mid vs Mel - KR Challenger Patch 26.09",
+          "rankClaim": "Challenger",
+          "patch": "26.9",
+          "durationSec": 1615,
+          "region": "KR",
+          "uploaded": "2026-05-09",
+          "moments": []
+        },
+        {
+          "videoId": "b36X1AJ6K6M",
+          "title": "Katarina vs Mel Mid - KR Challenger - Patch 25.21 Season 15",
+          "rankClaim": "Challenger",
+          "patch": "25.21",
+          "durationSec": 1756,
+          "region": "KR",
+          "uploaded": "2025-11-05",
+          "moments": []
+        },
+        {
+          "videoId": "Ib4WA68-WJM",
+          "title": "Katarina vs Mel Mid - KR Grandmaster - Patch 25.8 Season 15",
+          "rankClaim": "Grandmaster",
+          "patch": "25.8",
+          "durationSec": 1396,
+          "region": "KR",
+          "uploaded": "2025-04-25",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 804,
+      "lane": "adc",
+      "videos": [
+        {
+          "videoId": "Yt23a-7-NP4",
+          "title": "Katarina Bot vs Yunara - BR Grandmaster Patch 26.18",
+          "rankClaim": "Grandmaster",
+          "patch": "26.18",
+          "durationSec": 1596,
+          "uploaded": "2026-09-25",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 805,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "dUkjrkF4Tps",
+          "title": "Katarina vs Locke Mid - KR Challenger - Patch 16.17 Season 16",
+          "rankClaim": "Challenger",
+          "patch": "26.17",
+          "durationSec": 1861,
+          "region": "KR",
+          "uploaded": "2026-09-02",
+          "moments": []
+        },
+        {
+          "videoId": "iafDHduNdwQ",
+          "title": "Katarina vs Locke Mid - KR Challenger - Patch 16.17 Season 16",
+          "rankClaim": "Challenger",
+          "patch": "26.17",
+          "durationSec": 1871,
+          "region": "KR",
+          "uploaded": "2026-08-28",
+          "moments": []
+        },
+        {
+          "videoId": "-3KrOH6Qkp4",
+          "title": "Katarina Mid vs Locke - KR Grandmaster Patch 26.15",
+          "rankClaim": "Grandmaster",
+          "patch": "26.15",
+          "durationSec": 1486,
+          "region": "KR",
+          "uploaded": "2026-08-05",
+          "moments": []
+        },
+        {
+          "videoId": "VU7BGvKwmqo",
+          "title": "Katarina vs Locke Mid - KR Challenger - Patch 16.15 Season 16",
+          "rankClaim": "Challenger",
+          "patch": "26.15",
+          "durationSec": 1861,
+          "region": "KR",
+          "uploaded": "2026-07-31",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 875,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "C6-TPwfzIG4",
+          "title": "Katarina vs Sett Mid - KR Grandmaster - Patch 15.4 Season 15",
+          "rankClaim": "Grandmaster",
+          "patch": "25.4",
+          "durationSec": 1441,
+          "region": "KR",
+          "uploaded": "2025-02-25",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 893,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "cEn2PAvSeNc",
+          "title": "Katarina vs Aurora Mid - KR Grandmaster - Patch 16.20 Season 16",
+          "rankClaim": "Grandmaster",
+          "patch": "26.20",
+          "durationSec": 1606,
+          "region": "KR",
+          "uploaded": "2026-10-08",
+          "moments": []
+        },
+        {
+          "videoId": "tZQibpKYV-M",
+          "title": "Katarina vs Aurora Mid - KR Challenger - Patch 16.10 Season 16",
+          "rankClaim": "Challenger",
+          "patch": "26.10",
+          "durationSec": 1801,
+          "region": "KR",
+          "uploaded": "2026-05-18",
+          "moments": []
+        },
+        {
+          "videoId": "if73qXBo7Fc",
+          "title": "Katarina vs Aurora Mid - KR Grandmaster - Patch 25.13 Season 15",
+          "rankClaim": "Grandmaster",
+          "patch": "25.13",
+          "durationSec": 1561,
+          "region": "KR",
+          "uploaded": "2025-07-01",
+          "moments": []
+        },
+        {
+          "videoId": "Em5Q-fJeTyU",
+          "title": "Katarina vs Aurora Mid - KR Grandmaster - Patch 25.5  Season 15",
+          "rankClaim": "Grandmaster",
+          "patch": "25.5",
+          "durationSec": 1231,
+          "region": "KR",
+          "uploaded": "2025-03-07",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 904,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "SorwlFZGB18",
+          "title": "OTP Katarina vs Zaahen [ MID ] Patch 25.24 Korea Master ✅",
+          "rankClaim": "Master",
+          "patch": "25.24",
+          "durationSec": 1397,
+          "region": "KR",
+          "player": "OTP",
+          "uploaded": "2025-12-14",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 910,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "rBDocFUImSQ",
+          "title": "Katarina vs Hwei Mid - KR Master - Patch 25.23 Season 15",
+          "rankClaim": "Master",
+          "patch": "25.23",
+          "durationSec": 1381,
+          "region": "KR",
+          "uploaded": "2025-12-03",
+          "moments": []
+        },
+        {
+          "videoId": "jX2iN9dVvyw",
+          "title": "Katarina Mid vs Hwei - EUW Grandmaster Patch 25.21",
+          "rankClaim": "Grandmaster",
+          "patch": "25.21",
+          "durationSec": 1984,
+          "region": "EUW",
+          "uploaded": "2025-11-05",
+          "moments": []
+        },
+        {
+          "videoId": "MWQof8Ud798",
+          "title": "Katarina vs Hwei Mid - EUW Grandmaster - Patch 25.21 Season 15",
+          "rankClaim": "Grandmaster",
+          "patch": "25.21",
+          "durationSec": 1651,
+          "region": "EUW",
+          "uploaded": "2025-10-30",
+          "moments": []
+        },
+        {
+          "videoId": "SzIZs71OF2A",
+          "title": "Katarina vs Hwei Mid - KR Grandmaster - Patch 25.19 Season 15",
+          "rankClaim": "Grandmaster",
+          "patch": "25.19",
+          "durationSec": 1801,
+          "region": "KR",
+          "uploaded": "2025-09-26",
+          "moments": []
+        },
+        {
+          "videoId": "Wl7bupI6AeA",
+          "title": "Katarina vs Hwei Mid - KR Master - Patch 25.13 Season 15",
+          "rankClaim": "Master",
+          "patch": "25.13",
+          "durationSec": 1861,
+          "region": "KR",
+          "uploaded": "2025-07-05",
+          "moments": []
+        },
+        {
+          "videoId": "OAIp42iW0PE",
+          "title": "DK ShowMaker Katarina vs Hwei [ MID ] Korea Challenger Patch 25.11 ✅",
+          "rankClaim": "Challenger",
+          "patch": "25.11",
+          "durationSec": 1049,
+          "region": "KR",
+          "player": "ShowMaker",
+          "team": "DK",
+          "uploaded": "2025-06-07",
+          "moments": []
+        },
+        {
+          "videoId": "J0QwJPDoZLg",
+          "title": "Katarina Mid vs Hwei - KR Master Patch 25.09",
+          "rankClaim": "Master",
+          "patch": "25.9",
+          "durationSec": 1676,
+          "region": "KR",
+          "uploaded": "2025-05-06",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 153,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 251,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 419,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 756,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 880,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1041,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1056,
+              "label": "Get a Triple Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1139,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1243,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1264,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1309,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1371,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1393,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1602,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1655,
+              "label": "End credit"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 950,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "bv1cXjkp19o",
+          "title": "Katarina vs Naafiri Mid - EUW Grandmaster - Patch 16.05 Season 16",
+          "rankClaim": "Grandmaster",
+          "patch": "26.5",
+          "durationSec": 1591,
+          "region": "EUW",
+          "uploaded": "2026-03-16",
+          "moments": []
+        },
+        {
+          "videoId": "zNlc4G1cOzo",
+          "title": "Katarina Mid vs Naafiri - KR Challenger Patch 25.16",
+          "rankClaim": "Challenger",
+          "patch": "25.16",
+          "durationSec": 1455,
+          "region": "KR",
+          "uploaded": "2025-08-21",
+          "moments": []
+        },
+        {
+          "videoId": "g6RD64Zhf4c",
+          "title": "Katarina vs Naafiri Mid - EUW Grandmaster - Patch 25.8 Season 15",
+          "rankClaim": "Grandmaster",
+          "patch": "25.8",
+          "durationSec": 1990,
+          "region": "EUW",
+          "uploaded": "2025-04-23",
+          "moments": []
+        }
+      ]
+    }
+  ]
+}

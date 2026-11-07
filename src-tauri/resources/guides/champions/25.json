@@ -1,0 +1,3415 @@
+{
+  "schema": 1,
+  "champion": 25,
+  "generatedAt": "2026-11-07T13:25:14.592Z",
+  "guides": [],
+  "general": [
+    {
+      "champion": 25,
+      "lane": "support",
+      "patch": "26.21",
+      "reviewed": false,
+      "keyTips": [
+        {
+          "text": "Poke to build a health advantage first, then commit only once the enemy is low enough for an all-in.",
+          "scope": "champion",
+          "sourceIds": [
+            "mobalytics-morgana-support"
+          ]
+        },
+        {
+          "text": "Throw Dark Binding only on a likely hit: account for minions blocking it and wait for a clear path or a target that has stepped out from behind the wave.",
+          "scope": "champion",
+          "sourceIds": [
+            "mobalytics-morgana-support"
+          ],
+          "abilityKeys": [
+            {
+              "champion": 25,
+              "key": "Q"
+            }
+          ]
+        },
+        {
+          "text": "After taking the bottom outer tower, rotate mid to help open the map and claim the next tower.",
+          "scope": "champion",
+          "sourceIds": [
+            "mobalytics-morgana-support"
+          ]
+        }
+      ],
+      "sections": {
+        "overview": {
+          "tips": []
+        },
+        "early-lane": {
+          "tips": [
+            {
+              "text": "Use Dark Binding for picks or favorable trades only when a hit is likely; a missed binding leaves the lane without pressure and Morgana exposed.",
+              "scope": "champion",
+              "sourceIds": [
+                "mobalytics-morgana-support"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 25,
+                  "key": "Q"
+                }
+              ]
+            },
+            {
+              "text": "Against a strong level-one engage support, start Black Shield instead of binding or pool so you can block the opening crowd control.",
+              "scope": "champion",
+              "sourceIds": [
+                "mobalytics-morgana-support"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 25,
+                  "key": "E"
+                }
+              ]
+            },
+            {
+              "text": "Level three is a spike because Morgana can then combine crowd control, damage, and ally protection.",
+              "scope": "champion",
+              "sourceIds": [
+                "mobalytics-morgana-support"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 25,
+                  "key": "Q"
+                },
+                {
+                  "champion": 25,
+                  "key": "W"
+                },
+                {
+                  "champion": 25,
+                  "key": "E"
+                }
+              ]
+            },
+            {
+              "text": "Save Black Shield for a carry who is about to be hit by hard crowd control instead of spending the shield without a clear threat.",
+              "scope": "champion",
+              "sourceIds": [
+                "mobalytics-morgana-support"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 25,
+                  "key": "E"
+                }
+              ]
+            },
+            {
+              "text": "At level six, shield the primary carry before entering range to use Soul Shackles in the stronger teamfight.",
+              "scope": "champion",
+              "sourceIds": [
+                "mobalytics-morgana-support"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 25,
+                  "key": "E"
+                },
+                {
+                  "champion": 25,
+                  "key": "R"
+                }
+              ]
+            }
+          ]
+        },
+        "mid-lane": {
+          "tips": [
+            {
+              "text": "Stay with teammates while moving around the map; solo warding and traveling alone make support Morgana easy to catch.",
+              "scope": "champion",
+              "sourceIds": [
+                "mobalytics-morgana-support"
+              ]
+            },
+            {
+              "text": "Set vision around the next major objective early and retreat to safety once the area is covered.",
+              "scope": "champion",
+              "sourceIds": [
+                "mobalytics-morgana-support"
+              ]
+            },
+            {
+              "text": "For picks, wait until a target uses its dash or escape before throwing Dark Binding; approaching to bait that mobility out first also works.",
+              "scope": "champion",
+              "sourceIds": [
+                "mobalytics-morgana-support"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 25,
+                  "key": "Q"
+                }
+              ]
+            },
+            {
+              "text": "Use Dark Binding from fog or a jungle brush to catch an immobile target, then convert the death timer into tower or objective pressure.",
+              "scope": "champion",
+              "sourceIds": [
+                "mobalytics-morgana-support"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 25,
+                  "key": "Q"
+                }
+              ]
+            },
+            {
+              "text": "A second point in Soul Shackles is a cooldown and fight-frequency spike, so coordinate fights around the availability of the ultimate.",
+              "scope": "champion",
+              "sourceIds": [
+                "mobalytics-morgana-support"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 25,
+                  "key": "R"
+                }
+              ]
+            }
+          ]
+        },
+        "win-condition": {
+          "tips": [
+            {
+              "text": "In late game, ward objectives and high-traffic paths so the team can see opponents moving or starting the objective.",
+              "scope": "champion",
+              "sourceIds": [
+                "mobalytics-morgana-support"
+              ]
+            },
+            {
+              "text": "Do not ward alone unless enemy positions are known; getting caught leaves the team to fight outnumbered.",
+              "scope": "champion",
+              "sourceIds": [
+                "mobalytics-morgana-support"
+              ]
+            },
+            {
+              "text": "Peel for allies to keep them alive, using Black Shield against hard crowd control and chaining Dark Binding into Soul Shackles onto a threat.",
+              "scope": "champion",
+              "sourceIds": [
+                "mobalytics-morgana-support"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 25,
+                  "key": "E"
+                },
+                {
+                  "champion": 25,
+                  "key": "Q"
+                },
+                {
+                  "champion": 25,
+                  "key": "R"
+                }
+              ]
+            },
+            {
+              "text": "Use Dark Binding picks to start a numbers advantage, then take an objective, a tower, or additional safe kills before the enemy respawns.",
+              "scope": "champion",
+              "sourceIds": [
+                "mobalytics-morgana-support"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 25,
+                  "key": "Q"
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "itemization": [
+        {
+          "text": "Follow the popular 26.21 setup of Arcane Comet, Manaflow Band, Transcendence, Scorch, Cheap Shot, and Ultimate Hunter, with Flash and Ignite.",
+          "scope": "champion",
+          "sourceIds": [
+            "mobalytics-morgana-support-build"
+          ]
+        },
+        {
+          "text": "Build the popular 26.21 sequence of Zaz'Zak's Realmspike, Lucidity boots, Liandry's Torment, Zhonya's Hourglass, Rylai's Crystal Scepter, and Morellonomicon.",
+          "scope": "champion",
+          "sourceIds": [
+            "mobalytics-morgana-support-build"
+          ],
+          "itemIds": [
+            3871,
+            6653,
+            3157,
+            3116,
+            3165
+          ]
+        },
+        {
+          "text": "Take Celestial Opposition with Heal as the alternative support setup with Zhonya's moved earlier; swap Blackfire Torch in for Zhonya's when the game calls for more damage rather than the defensive active.",
+          "scope": "champion",
+          "sourceIds": [
+            "mobalytics-morgana-support-build"
+          ],
+          "itemIds": [
+            3869,
+            2503
+          ]
+        },
+        {
+          "text": "Max Dark Binding first, then Tormented Shadow, then Black Shield, upgrading Soul Shackles whenever available.",
+          "scope": "champion",
+          "sourceIds": [
+            "mobalytics-morgana-support-build"
+          ],
+          "abilityKeys": [
+            {
+              "champion": 25,
+              "key": "Q"
+            },
+            {
+              "champion": 25,
+              "key": "W"
+            },
+            {
+              "champion": 25,
+              "key": "E"
+            },
+            {
+              "champion": 25,
+              "key": "R"
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "id": "mobalytics-morgana-support",
+          "author": "Mobalytics",
+          "rankClaim": "No rank claim",
+          "url": "https://mobalytics.gg/lol/champions/morgana/guide",
+          "kind": "web"
+        },
+        {
+          "id": "mobalytics-morgana-support-build",
+          "author": "Mobalytics",
+          "rankClaim": "No rank claim",
+          "url": "https://mobalytics.gg/lol/champions/morgana/build",
+          "kind": "web"
+        }
+      ]
+    }
+  ],
+  "vods": [
+    {
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "WszG505oA_I",
+          "title": "This is why Morgana Jungle will be my new main in 2026",
+          "rankClaim": "Master+",
+          "patch": "26.2",
+          "durationSec": 1791,
+          "patchEstimated": true,
+          "player": "Broxah",
+          "uploaded": "2026-02-03",
+          "format": "stream",
+          "cam": true,
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 1,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "VUDVMNsPenM",
+          "title": "(KT Bdd) Morgana Mid vs Annie - KR Challenger Patch 26.12",
+          "rankClaim": "Challenger",
+          "patch": "26.12",
+          "durationSec": 1895,
+          "region": "KR",
+          "player": "Bdd",
+          "team": "KT",
+          "uploaded": "2026-06-23",
+          "moments": []
+        },
+        {
+          "videoId": "CGyb_7YxDMg",
+          "title": "T1 Faker Morgana vs Annie [ MID ] Korea Grandmaster Patch 25.17",
+          "rankClaim": "Grandmaster",
+          "patch": "25.17",
+          "durationSec": 1238,
+          "region": "KR",
+          "player": "Faker",
+          "team": "T1",
+          "uploaded": "2025-09-09",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 4,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "2x-I0bsQVzQ",
+          "title": "Morgana Mid vs Twisted Fate - NA Master Patch 26.20",
+          "rankClaim": "Master",
+          "patch": "26.20",
+          "durationSec": 1625,
+          "region": "NA",
+          "uploaded": "2026-10-22",
+          "result": "W",
+          "moments": [
+            {
+              "atSec": 319,
+              "label": "First Blood — Morgana kills Twisted Fate",
+              "kind": "kill"
+            },
+            {
+              "atSec": 327,
+              "label": "Lee Sin kills Camille",
+              "kind": "kill"
+            },
+            {
+              "atSec": 482,
+              "label": "Morgana Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 583,
+              "label": "Red takes 1st Dragon (Cloud)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 757,
+              "label": "Lee Sin takes down Aatrox"
+            },
+            {
+              "atSec": 912,
+              "label": "Blue takes 1st Dragon (Infernal)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1007,
+              "label": "Lee Sin picks off Twisted Fate"
+            },
+            {
+              "atSec": 1113,
+              "label": "Kog'Maw kills Twisted Fate",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1247,
+              "label": "Kog'Maw eliminates Aatrox"
+            },
+            {
+              "atSec": 1295,
+              "label": "Blue takes Baron",
+              "kind": "baron"
+            },
+            {
+              "atSec": 1316,
+              "label": "Red takes 2nd Dragon (Mountain)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1372,
+              "label": "Mid Inhibitor falls (Red)"
+            },
+            {
+              "atSec": 1410,
+              "label": "Morgana takes down Camille"
+            },
+            {
+              "atSec": 1465,
+              "label": "Kog'Maw kills Twisted Fate",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1532,
+              "label": "Team fight (3 kills)",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1578,
+              "label": "Top Inhibitor falls (Red)"
+            }
+          ]
+        },
+        {
+          "videoId": "ZJz5UCHlvvM",
+          "title": "Morgana Mid vs Twisted Fate - KR Master Patch 26.18",
+          "rankClaim": "Master",
+          "patch": "26.18",
+          "durationSec": 1523,
+          "region": "KR",
+          "uploaded": "2026-09-22",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 7,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "hYhDZSrNuk4",
+          "title": "Morgana Mid vs LeBlanc - VN Master Patch 26.17",
+          "rankClaim": "Master",
+          "patch": "26.17",
+          "durationSec": 1835,
+          "uploaded": "2026-09-08",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 9,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "MoZPRg6Z_P8",
+          "title": "Morgana Support vs Fiddlesticks - KR Master Patch 25.24",
+          "rankClaim": "Master",
+          "patch": "25.24",
+          "durationSec": 1518,
+          "region": "KR",
+          "uploaded": "2026-01-04",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 12,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "56IuEyUyKLc",
+          "title": "Morgana Support vs Alistar - KR Grandmaster Patch 26.06",
+          "rankClaim": "Grandmaster",
+          "patch": "26.6",
+          "durationSec": 1530,
+          "region": "KR",
+          "uploaded": "2026-03-25",
+          "moments": []
+        },
+        {
+          "videoId": "AtyCUXw2eZ8",
+          "title": "Morgana Support vs Alistar - KR Master Patch 25.23",
+          "rankClaim": "Master",
+          "patch": "25.23",
+          "durationSec": 1429,
+          "region": "KR",
+          "uploaded": "2025-11-27",
+          "moments": []
+        },
+        {
+          "videoId": "n0InoI934d4",
+          "title": "Morgana Support vs Alistar - KR Master Patch 25.20",
+          "rankClaim": "Master",
+          "patch": "25.20",
+          "durationSec": 1599,
+          "region": "KR",
+          "uploaded": "2025-10-18",
+          "moments": []
+        },
+        {
+          "videoId": "2h1UcI4rI-4",
+          "title": "Morgana Support vs Alistar - KR Master Patch 25.15",
+          "rankClaim": "Master",
+          "patch": "25.15",
+          "durationSec": 2030,
+          "region": "KR",
+          "uploaded": "2025-08-06",
+          "moments": []
+        },
+        {
+          "videoId": "nUwWHWQrMWo",
+          "title": "Morgana Support vs Alistar - KR Grandmaster Patch 25.14",
+          "rankClaim": "Grandmaster",
+          "patch": "25.14",
+          "durationSec": 1421,
+          "region": "KR",
+          "uploaded": "2025-07-26",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 14,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "ep8sIXm5w6Q",
+          "title": "Morgana Mid vs Sion - EUW Challenger Patch 25.23",
+          "rankClaim": "Challenger",
+          "patch": "25.23",
+          "durationSec": 1749,
+          "region": "EUW",
+          "uploaded": "2025-12-02",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 18,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "Ivymv0N06To",
+          "title": "Morgana Mid vs Tristana - EUW Challenger Patch 25.18",
+          "rankClaim": "Challenger",
+          "patch": "25.18",
+          "durationSec": 1671,
+          "region": "EUW",
+          "uploaded": "2025-09-24",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 29,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "B0pOeQLXcvA",
+          "title": "Morgana Mid vs Twitch - EUW Grandmaster Patch 26.02",
+          "rankClaim": "Grandmaster",
+          "patch": "26.2",
+          "durationSec": 1591,
+          "region": "EUW",
+          "uploaded": "2026-02-01",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 291,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 634,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 758,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 891,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1038,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1215,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1379,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1404,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1417,
+              "label": "Take down The Inhibitor"
+            },
+            {
+              "atSec": 1428,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1439,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1528,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1548,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1561,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1580,
+              "label": "End credit"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 30,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "m-fYdXOxeZA",
+          "title": "Morgana Jungle vs Karthus - KR Master Patch 26.09",
+          "rankClaim": "Master",
+          "patch": "26.9",
+          "durationSec": 1850,
+          "region": "KR",
+          "uploaded": "2026-05-10",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 33,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "13vDa97iJHc",
+          "title": "Morgana Support vs Rammus - KR Master Patch 25.12",
+          "rankClaim": "Master",
+          "patch": "25.12",
+          "durationSec": 1643,
+          "region": "KR",
+          "uploaded": "2025-06-19",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 35,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "Wsi9ZCz5hEk",
+          "title": "Morgana Jungle vs Shaco - NA Challenger Patch 25.22",
+          "rankClaim": "Challenger",
+          "patch": "25.22",
+          "durationSec": 1879,
+          "region": "NA",
+          "uploaded": "2025-11-16",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 35,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "zvgYWti-0UM",
+          "title": "Morgana Support vs Shaco - KR Master Patch 26.08",
+          "rankClaim": "Master",
+          "patch": "26.8",
+          "durationSec": 1734,
+          "region": "KR",
+          "uploaded": "2026-04-22",
+          "result": "W",
+          "moments": [
+            {
+              "atSec": 23,
+              "label": "First Blood — Morgana kills Shaco",
+              "kind": "kill"
+            },
+            {
+              "atSec": 350,
+              "label": "Blue takes 1st Dragon (Cloud)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 705,
+              "label": "Morgana outplays Sivir"
+            },
+            {
+              "atSec": 719,
+              "label": "Red takes 1st Dragon (Chemtech)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 788,
+              "label": "Ashe takes down Sivir"
+            },
+            {
+              "atSec": 902,
+              "label": "Blue takes Rift Herald",
+              "kind": "herald"
+            },
+            {
+              "atSec": 1040,
+              "label": "Blue takes 2nd Dragon (Ocean)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1062,
+              "label": "Vayne Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1172,
+              "label": "Graves eliminates Sivir"
+            },
+            {
+              "atSec": 1232,
+              "label": "Ashe takes down Sivir"
+            },
+            {
+              "atSec": 1349,
+              "label": "Blue takes 3rd Dragon (Ocean)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1402,
+              "label": "Morgana eliminates Shaco"
+            },
+            {
+              "atSec": 1492,
+              "label": "Graves picks off Sylas"
+            },
+            {
+              "atSec": 1539,
+              "label": "Blue takes Baron",
+              "kind": "baron"
+            },
+            {
+              "atSec": 1628,
+              "label": "Ashe takes down Sivir"
+            },
+            {
+              "atSec": 1647,
+              "label": "Bot Inhibitor falls (Red)"
+            },
+            {
+              "atSec": 1660,
+              "label": "Mid Inhibitor falls (Red)"
+            },
+            {
+              "atSec": 1676,
+              "label": "Team fight (3 kills)",
+              "kind": "teamfight"
+            }
+          ]
+        },
+        {
+          "videoId": "dgPQdhWtqh4",
+          "title": "Morgana Support vs Shaco - KR Grandmaster Patch 25.19",
+          "rankClaim": "Grandmaster",
+          "patch": "25.19",
+          "durationSec": 1684,
+          "region": "KR",
+          "uploaded": "2025-10-01",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 37,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "gzhRRR5rFmY",
+          "title": "Morgana Support vs Sona - NA Grandmaster Patch 26.05",
+          "rankClaim": "Grandmaster",
+          "patch": "26.5",
+          "durationSec": 1623,
+          "region": "NA",
+          "uploaded": "2026-03-12",
+          "moments": []
+        },
+        {
+          "videoId": "-GET8ghsRlw",
+          "title": "Morgana Support vs Sona - NA Grandmaster Patch 25.17",
+          "rankClaim": "Grandmaster",
+          "patch": "25.17",
+          "durationSec": 1454,
+          "region": "NA",
+          "uploaded": "2025-09-08",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 43,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "vfX4zx5aFTA",
+          "title": "Morgana Support vs Karma - KR Master Patch 26.16",
+          "rankClaim": "Master",
+          "patch": "26.16",
+          "durationSec": 1562,
+          "region": "KR",
+          "uploaded": "2026-08-27",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 57,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "95zk7viScws",
+          "title": "Morgana Support vs Maokai - KR Master Patch 26.07",
+          "rankClaim": "Master",
+          "patch": "26.7",
+          "durationSec": 1900,
+          "region": "KR",
+          "uploaded": "2026-04-08",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 59,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "A8JBIQgfyCE",
+          "title": "Morgana vs Jarvan IV 7/4/27 (Jungle) | EUW Grandmaster | Morgana OTP Replay",
+          "rankClaim": "Grandmaster",
+          "patch": "26.8",
+          "durationSec": 1726,
+          "region": "EUW",
+          "patchEstimated": true,
+          "uploaded": "2026-04-24",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 60,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "lMy7CieephA",
+          "title": "Morgana Jungle vs Elise - KR Master Patch 26.19",
+          "rankClaim": "Master",
+          "patch": "26.19",
+          "durationSec": 1612,
+          "region": "KR",
+          "uploaded": "2026-10-05",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 61,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "AA8tGsnGR5E",
+          "title": "Morgana Mid vs Orianna - EUW Grandmaster Patch 25.16",
+          "rankClaim": "Grandmaster",
+          "patch": "25.16",
+          "durationSec": 1833,
+          "region": "EUW",
+          "uploaded": "2025-08-26",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 64,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "QcrkFe1G4jA",
+          "title": "Morgana Jungle vs Lee Sin - EUW Grandmaster Patch 26.14",
+          "rankClaim": "Grandmaster",
+          "patch": "26.14",
+          "durationSec": 1793,
+          "region": "EUW",
+          "uploaded": "2026-07-22",
+          "moments": []
+        },
+        {
+          "videoId": "rfGGNX_2ho8",
+          "title": "Morgana Jungle vs Lee Sin - KR Master Patch 26.13",
+          "rankClaim": "Master",
+          "patch": "26.13",
+          "durationSec": 1657,
+          "region": "KR",
+          "uploaded": "2026-07-01",
+          "moments": []
+        },
+        {
+          "videoId": "K6737sUBS4E",
+          "title": "Morgana Jungle vs Lee Sin - KR Master Patch 26.12",
+          "rankClaim": "Master",
+          "patch": "26.12",
+          "durationSec": 1782,
+          "region": "KR",
+          "uploaded": "2026-06-19",
+          "moments": []
+        },
+        {
+          "videoId": "PWArYUu-DUo",
+          "title": "Morgana Jungle vs Lee Sin - NA Challenger Patch 25.09",
+          "rankClaim": "Challenger",
+          "patch": "25.9",
+          "durationSec": 2025,
+          "region": "NA",
+          "uploaded": "2025-05-12",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 72,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "aAE8MozVJI4",
+          "title": "Morgana vs Skarner 3/0/7 (Jungle) | EUW Grandmaster | Morgana OTP Replay",
+          "rankClaim": "Grandmaster",
+          "patch": "26.9",
+          "durationSec": 919,
+          "region": "EUW",
+          "patchEstimated": true,
+          "uploaded": "2026-04-29",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 76,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "yfRR2XZaKXI",
+          "title": "Morgana Jungle vs Nidalee - KR Master Patch 26.11",
+          "rankClaim": "Master",
+          "patch": "26.11",
+          "durationSec": 1592,
+          "region": "KR",
+          "uploaded": "2026-06-05",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 80,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "iACrvwn1cGM",
+          "title": "Morgana vs Pantheon 7/0/8 (Jungle) | EUW Grandmaster | Morgana OTP Replay",
+          "rankClaim": "Grandmaster",
+          "patch": "26.7",
+          "durationSec": 1118,
+          "region": "EUW",
+          "patchEstimated": true,
+          "uploaded": "2026-04-06",
+          "moments": []
+        },
+        {
+          "videoId": "IzO7m2w0_iw",
+          "title": "Morgana Jungle vs Pantheon - TW Challenger Patch 25.10",
+          "rankClaim": "Challenger",
+          "patch": "25.10",
+          "durationSec": 1672,
+          "uploaded": "2025-05-27",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 80,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "oVy5RkO4EmQ",
+          "title": "Morgana Support vs Pantheon - NA Grandmaster Patch 26.19",
+          "rankClaim": "Grandmaster",
+          "patch": "26.19",
+          "durationSec": 1560,
+          "region": "NA",
+          "uploaded": "2026-09-30",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 81,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "N19JewuL6H8",
+          "title": "Morgana Mid vs Ezreal - NA Challenger Patch 26.03",
+          "rankClaim": "Challenger",
+          "patch": "26.3",
+          "durationSec": 1852,
+          "region": "NA",
+          "uploaded": "2026-02-18",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 84,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "xNgXnGqUmTk",
+          "title": "Morgana Mid vs Akali - EUW Grandmaster Patch 25.22",
+          "rankClaim": "Grandmaster",
+          "patch": "25.22",
+          "durationSec": 1513,
+          "region": "EUW",
+          "uploaded": "2025-11-21",
+          "moments": []
+        },
+        {
+          "videoId": "bbRFpgEtP08",
+          "title": "Morgana Mid vs Akali - KR Master Patch 25.04",
+          "rankClaim": "Master",
+          "patch": "25.4",
+          "durationSec": 1758,
+          "region": "KR",
+          "uploaded": "2025-03-04",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 89,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "RI2zYyWpOGY",
+          "title": "(SPXF Lelouch) Morgana Support vs Leona - EUW Grandmaster Patch 26.15",
+          "rankClaim": "Grandmaster",
+          "patch": "26.15",
+          "durationSec": 1553,
+          "region": "EUW",
+          "player": "SPXF Lelouch",
+          "uploaded": "2026-08-12",
+          "moments": []
+        },
+        {
+          "videoId": "eKSkOdR1ncs",
+          "title": "Morgana Support vs Leona - KR Master Patch 26.04",
+          "rankClaim": "Master",
+          "patch": "26.4",
+          "durationSec": 1441,
+          "region": "KR",
+          "uploaded": "2026-02-25",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 72,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 139,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 192,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 255,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 326,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 527,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 579,
+              "label": "Hunt The Dragon",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 597,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 690,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 751,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 958,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1108,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1157,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1205,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1272,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1284,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1374,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1406,
+              "label": "Take down The Inhibitor"
+            },
+            {
+              "atSec": 1418,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1430,
+              "label": "End credit"
+            }
+          ]
+        },
+        {
+          "videoId": "64ydifspAHc",
+          "title": "Morgana Support vs Leona - KR Master Patch 25.11",
+          "rankClaim": "Master",
+          "patch": "25.11",
+          "durationSec": 1480,
+          "region": "KR",
+          "uploaded": "2025-06-10",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 98,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "LLr8Uos-DcE",
+          "title": "Morgana Jungle vs Shen - KR Master Patch 25.17",
+          "rankClaim": "Master",
+          "patch": "25.17",
+          "durationSec": 2104,
+          "region": "KR",
+          "uploaded": "2025-09-02",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 101,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "vr_wSQQl62s",
+          "title": "Morgana Mid vs Xerath - VN Challenger Patch 26.04",
+          "rankClaim": "Challenger",
+          "patch": "26.4",
+          "durationSec": 1693,
+          "uploaded": "2026-03-04",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 188,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 393,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 482,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 557,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 811,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 828,
+              "label": "Get a Triple Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 933,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1024,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1056,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1299,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1318,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1382,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1516,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1648,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1682,
+              "label": "End credit"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 103,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "aXw5lBq4zvo",
+          "title": "Morgana Mid vs Ahri - KR Master Patch 26.09",
+          "rankClaim": "Master",
+          "patch": "26.9",
+          "durationSec": 1576,
+          "region": "KR",
+          "uploaded": "2026-05-07",
+          "moments": []
+        },
+        {
+          "videoId": "zMUlUsn41hs",
+          "title": "Morgana Mid vs Ahri - NA Grandmaster Patch 25.10",
+          "rankClaim": "Grandmaster",
+          "patch": "25.10",
+          "durationSec": 1772,
+          "region": "NA",
+          "uploaded": "2025-05-31",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 104,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "2cUKHz7HLsc",
+          "title": "Morgana Jungle vs Graves - KR Master Patch 26.10",
+          "rankClaim": "Master",
+          "patch": "26.10",
+          "durationSec": 1742,
+          "region": "KR",
+          "uploaded": "2026-05-25",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 111,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "Sw7BGxq_0n4",
+          "title": "Morgana Support vs Nautilus - KR Grandmaster Patch 26.01",
+          "rankClaim": "Grandmaster",
+          "patch": "26.1",
+          "durationSec": 1499,
+          "region": "KR",
+          "uploaded": "2026-01-21",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 108,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 270,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 529,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 653,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 721,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 802,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 955,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1004,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1085,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1220,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1253,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1313,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1402,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1473,
+              "label": "Take down The Inhibitor"
+            },
+            {
+              "atSec": 1488,
+              "label": "End credit"
+            }
+          ]
+        },
+        {
+          "videoId": "CptfVBuSVJI",
+          "title": "Morgana Support vs Nautilus - KR Master Patch 25.21",
+          "rankClaim": "Master",
+          "patch": "25.21",
+          "durationSec": 1648,
+          "region": "KR",
+          "uploaded": "2025-10-26",
+          "moments": []
+        },
+        {
+          "videoId": "GKTcih1oQek",
+          "title": "Morgana Support vs Nautilus - KR Master Patch 25.07",
+          "rankClaim": "Master",
+          "patch": "25.7",
+          "durationSec": 1772,
+          "region": "KR",
+          "uploaded": "2025-04-12",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 751,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 859,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 983,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1156,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1340,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1435,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1612,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1701,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1751,
+              "label": "End credit"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 113,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "JNzz_jAT9eI",
+          "title": "Morgana Jungle vs Sejuani - EUW Grandmaster Patch 25.07",
+          "rankClaim": "Grandmaster",
+          "patch": "25.7",
+          "durationSec": 2113,
+          "region": "EUW",
+          "uploaded": "2025-04-13",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 185,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 340,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 523,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 629,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 663,
+              "label": "Hunt The Void Grubs",
+              "kind": "grubs"
+            },
+            {
+              "atSec": 697,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 853,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 922,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 956,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 978,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1075,
+              "label": "Hunt The Dragon",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1136,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1213,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1466,
+              "label": "Hunt The Atakhan"
+            },
+            {
+              "atSec": 1567,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1584,
+              "label": "Take down The Inhibitor"
+            },
+            {
+              "atSec": 1637,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1718,
+              "label": "Hunt The Dragon",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1778,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1819,
+              "label": "Take down The Inhibitor"
+            },
+            {
+              "atSec": 1928,
+              "label": "Take down The Inhibitor"
+            },
+            {
+              "atSec": 2026,
+              "label": "Hunt The Dragon",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 2059,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 2080,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 2092,
+              "label": "End credit"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 120,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "r8D002PZ2O4",
+          "title": "Morgana Jungle vs Hecarim - NA Grandmaster Patch 25.04",
+          "rankClaim": "Grandmaster",
+          "patch": "25.4",
+          "durationSec": 1993,
+          "region": "NA",
+          "uploaded": "2025-02-27",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 134,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "ihnSdrdbmiQ",
+          "title": "Morgana Mid vs Syndra - EUW Master Patch 26.01",
+          "rankClaim": "Master",
+          "patch": "26.1",
+          "durationSec": 1618,
+          "region": "EUW",
+          "uploaded": "2026-01-14",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 337,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 581,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 659,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 799,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 905,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 988,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1074,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1409,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1450,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1555,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1587,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1607,
+              "label": "End credit"
+            }
+          ]
+        },
+        {
+          "videoId": "26__0cn4TPg",
+          "title": "Morgana Mid vs Syndra - EUW Grandmaster Patch 25.21",
+          "rankClaim": "Grandmaster",
+          "patch": "25.21",
+          "durationSec": 1888,
+          "region": "EUW",
+          "uploaded": "2025-11-03",
+          "moments": []
+        },
+        {
+          "videoId": "OD3MHgt5z3Y",
+          "title": "Morgana Mid vs Syndra - KR Grandmaster Patch 25.20",
+          "rankClaim": "Grandmaster",
+          "patch": "25.20",
+          "durationSec": 1731,
+          "region": "KR",
+          "uploaded": "2025-10-13",
+          "moments": []
+        },
+        {
+          "videoId": "gRDDKOg8z8Y",
+          "title": "Morgana Mid vs Syndra - EUW Grandmaster Patch 25.15",
+          "rankClaim": "Grandmaster",
+          "patch": "25.15",
+          "durationSec": 2093,
+          "region": "EUW",
+          "uploaded": "2025-08-14",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 142,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "in28OSOgC40",
+          "title": "Morgana Mid vs Zoe - KR Master Patch 26.07",
+          "rankClaim": "Master",
+          "patch": "26.7",
+          "durationSec": 1715,
+          "region": "KR",
+          "uploaded": "2026-04-15",
+          "moments": []
+        },
+        {
+          "videoId": "lIJvhYsejPo",
+          "title": "Morgana Mid vs Zoe - KR Master Patch 26.06",
+          "rankClaim": "Master",
+          "patch": "26.6",
+          "durationSec": 1896,
+          "region": "KR",
+          "uploaded": "2026-04-01",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 143,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "SAkIg1qY1Gc",
+          "title": "Morgana vs Zyra Jungle [ HLE Peanut ] Korea Grandmaster Patch 25.20 ✅",
+          "rankClaim": "Grandmaster",
+          "patch": "25.20",
+          "durationSec": 1574,
+          "region": "KR",
+          "player": "Peanut",
+          "team": "HLE",
+          "uploaded": "2025-10-10",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 147,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "8MaDsCH4K4w",
+          "title": "Morgana Support vs Seraphine - KR Master Patch 26.16",
+          "rankClaim": "Master",
+          "patch": "26.16",
+          "durationSec": 1802,
+          "region": "KR",
+          "uploaded": "2026-08-22",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 157,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "WfOiYSVcaY0",
+          "title": "Morgana Mid vs Yasuo - NA Challenger Patch 25.08",
+          "rankClaim": "Challenger",
+          "patch": "25.8",
+          "durationSec": 1540,
+          "region": "NA",
+          "uploaded": "2025-05-01",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 556,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 733,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 799,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 935,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1063,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1194,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1245,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1293,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1310,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1321,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1339,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1356,
+              "label": "Take down The Inhibitor"
+            },
+            {
+              "atSec": 1450,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1466,
+              "label": "Take down The Inhibitor"
+            },
+            {
+              "atSec": 1477,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1505,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1519,
+              "label": "End credit"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 161,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "j_s-V5-FKhw",
+          "title": "Morgana Mid vs Vel'Koz - KR Master Patch 25.24",
+          "rankClaim": "Master",
+          "patch": "25.24",
+          "durationSec": 1468,
+          "region": "KR",
+          "uploaded": "2025-12-16",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 476,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 555,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 578,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 763,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 795,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 876,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 952,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1012,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1050,
+              "label": "Hunt The Rift Herald",
+              "kind": "herald"
+            },
+            {
+              "atSec": 1125,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1220,
+              "label": "Get a Triple Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1238,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1328,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1457,
+              "label": "End credit"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 163,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "uBOzbNBNtOE",
+          "title": "(Chris) Morgana Jungle vs Taliyah (ESB Twight) - EUW Master Patch 26.21",
+          "rankClaim": "Master",
+          "patch": "26.21",
+          "durationSec": 1673,
+          "region": "EUW",
+          "player": "Chris",
+          "uploaded": "2026-11-01",
+          "result": "W",
+          "moments": [
+            {
+              "atSec": 114,
+              "label": "First Blood — Morgana kills Viktor",
+              "kind": "kill"
+            },
+            {
+              "atSec": 540,
+              "label": "Red takes 1st Dragon (Chemtech)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 588,
+              "label": "Morgana solo kills Viktor",
+              "kind": "kill"
+            },
+            {
+              "atSec": 786,
+              "label": "Morgana catches Bard"
+            },
+            {
+              "atSec": 858,
+              "label": "Red takes 2nd Dragon (Hextech)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 947,
+              "label": "Morgana outplays Taliyah"
+            },
+            {
+              "atSec": 1007,
+              "label": "Morgana eliminates Fiora"
+            },
+            {
+              "atSec": 1060,
+              "label": "Jayce takes down Viktor"
+            },
+            {
+              "atSec": 1126,
+              "label": "Morgana eliminates Fiora"
+            },
+            {
+              "atSec": 1173,
+              "label": "Red takes 3rd Dragon (Infernal)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1206,
+              "label": "Jhin picks off Irelia"
+            },
+            {
+              "atSec": 1292,
+              "label": "Jayce takes down Viktor"
+            },
+            {
+              "atSec": 1325,
+              "label": "Blue takes Baron",
+              "kind": "baron"
+            },
+            {
+              "atSec": 1371,
+              "label": "Morgana picks off Viktor"
+            },
+            {
+              "atSec": 1424,
+              "label": "Bot Inhibitor falls (Blue)"
+            },
+            {
+              "atSec": 1484,
+              "label": "Blue takes 1st Dragon (Infernal)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1642,
+              "label": "Camille kills Taliyah",
+              "kind": "kill"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 201,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "PCOn5_aklc8",
+          "title": "Morgana Support vs Braum - KR Master Patch 25.22",
+          "rankClaim": "Master",
+          "patch": "25.22",
+          "durationSec": 1460,
+          "region": "KR",
+          "uploaded": "2025-11-11",
+          "moments": []
+        },
+        {
+          "videoId": "LRJyY9qxhkU",
+          "title": "Morgana Support vs Braum - KR Master Patch 25.10",
+          "rankClaim": "Master",
+          "patch": "25.10",
+          "durationSec": 1452,
+          "region": "KR",
+          "uploaded": "2025-05-21",
+          "moments": []
+        },
+        {
+          "videoId": "4HhTB4-5Lk4",
+          "title": "Morgana Support vs Braum - KR Grandmaster Patch 25.09",
+          "rankClaim": "Grandmaster",
+          "patch": "25.9",
+          "durationSec": 1771,
+          "region": "KR",
+          "uploaded": "2025-05-08",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 157,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 398,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 694,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 768,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 788,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 899,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1013,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1289,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1438,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1517,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1700,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1732,
+              "label": "Take down The Inhibitor"
+            },
+            {
+              "atSec": 1750,
+              "label": "End credit"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 246,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "dh93QJYP9ZI",
+          "title": "Morgana Jungle vs Qiyana - KR Master Patch 25.13",
+          "rankClaim": "Master",
+          "patch": "25.13",
+          "durationSec": 1784,
+          "region": "KR",
+          "uploaded": "2025-07-14",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 254,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "WiDY0zhL-YM",
+          "title": "Morgana Jungle vs Vi - KR Master Patch 26.15",
+          "rankClaim": "Master",
+          "patch": "26.15",
+          "durationSec": 1646,
+          "region": "KR",
+          "uploaded": "2026-08-08",
+          "moments": []
+        },
+        {
+          "videoId": "h171_qtRBpg",
+          "title": "Morgana Jungle vs Vi - EUW Grandmaster Patch 25.05",
+          "rankClaim": "Grandmaster",
+          "patch": "25.5",
+          "durationSec": 2015,
+          "region": "EUW",
+          "uploaded": "2025-03-18",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 357,
+              "label": "Hunt The Void Grubs",
+              "kind": "grubs"
+            },
+            {
+              "atSec": 425,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 593,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 702,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 727,
+              "label": "Hunt The Dragon",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 861,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 913,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 949,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1018,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1223,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1346,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1402,
+              "label": "Hunt The Dragon",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1479,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1507,
+              "label": "Hunt The Baron Nashor",
+              "kind": "baron"
+            },
+            {
+              "atSec": 1567,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1659,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1761,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1930,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1980,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1994,
+              "label": "End credit"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 266,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "w371vzgRKUQ",
+          "title": "Morgana Top vs Aatrox - NA Grandmaster Patch 25.11",
+          "rankClaim": "Grandmaster",
+          "patch": "25.11",
+          "durationSec": 2080,
+          "region": "NA",
+          "uploaded": "2025-06-11",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 267,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "PULkQQPqiBs",
+          "title": "Morgana Support vs Nami - NA Grandmaster Patch 26.17",
+          "rankClaim": "Grandmaster",
+          "patch": "26.17",
+          "durationSec": 1577,
+          "region": "NA",
+          "uploaded": "2026-09-02",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 268,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "C1qD_c7BvyA",
+          "title": "Morgana Mid vs Azir - KR Grandmaster Patch 26.08",
+          "rankClaim": "Grandmaster",
+          "patch": "26.8",
+          "durationSec": 1881,
+          "region": "KR",
+          "uploaded": "2026-04-28",
+          "moments": []
+        },
+        {
+          "videoId": "C8wYCIcu5LY",
+          "title": "Morgana Mid vs Azir - NA Challenger Patch 25.12",
+          "rankClaim": "Challenger",
+          "patch": "25.12",
+          "durationSec": 2072,
+          "region": "NA",
+          "uploaded": "2025-06-24",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 412,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "XppvuSFFUEk",
+          "title": "Morgana Support vs Thresh - KR Master Patch 26.20",
+          "rankClaim": "Master",
+          "patch": "26.20",
+          "durationSec": 1673,
+          "region": "KR",
+          "uploaded": "2026-10-14",
+          "result": "W",
+          "moments": [
+            {
+              "atSec": 134,
+              "label": "First Blood — Rengar kills Jinx",
+              "kind": "kill"
+            },
+            {
+              "atSec": 303,
+              "label": "Red takes 1st Dragon (Infernal)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 594,
+              "label": "Morgana picks off Jinx"
+            },
+            {
+              "atSec": 637,
+              "label": "Ezreal picks off Thresh"
+            },
+            {
+              "atSec": 789,
+              "label": "Blue takes 1st Dragon (Chemtech)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 804,
+              "label": "Morgana eliminates Thresh"
+            },
+            {
+              "atSec": 918,
+              "label": "Team fight (3 kills)",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 983,
+              "label": "Ezreal Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1079,
+              "label": "Aurora eliminates Thresh"
+            },
+            {
+              "atSec": 1118,
+              "label": "Red takes 2nd Dragon (Cloud)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1179,
+              "label": "Ezreal takes down Jinx"
+            },
+            {
+              "atSec": 1249,
+              "label": "Rengar picks off Akshan"
+            },
+            {
+              "atSec": 1332,
+              "label": "Ezreal Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1340,
+              "label": "Ezreal Triple Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1438,
+              "label": "Blue takes 2nd Dragon (Cloud)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1510,
+              "label": "Red takes Baron",
+              "kind": "baron"
+            },
+            {
+              "atSec": 1578,
+              "label": "Rengar Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1612,
+              "label": "Top Inhibitor falls (Red)"
+            }
+          ]
+        },
+        {
+          "videoId": "p0cJaSHgRf0",
+          "title": "Morgana Support vs Thresh - KR Grandmaster Patch 26.03",
+          "rankClaim": "Grandmaster",
+          "patch": "26.3",
+          "durationSec": 1508,
+          "region": "KR",
+          "uploaded": "2026-02-11",
+          "moments": []
+        },
+        {
+          "videoId": "Rht1F_oytus",
+          "title": "Morgana Support vs Thresh - KR Master Patch 25.18",
+          "rankClaim": "Master",
+          "patch": "25.18",
+          "durationSec": 1434,
+          "region": "KR",
+          "uploaded": "2025-09-14",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 429,
+      "lane": "adc",
+      "videos": [
+        {
+          "videoId": "55ufiXB3RSE",
+          "title": "Morgana Bot vs Kalista - NA Master Patch 26.21",
+          "rankClaim": "Master",
+          "patch": "26.21",
+          "durationSec": 1576,
+          "region": "NA",
+          "uploaded": "2026-10-30",
+          "result": "W",
+          "moments": [
+            {
+              "atSec": 74,
+              "label": "First Blood — Morgana kills Rengar",
+              "kind": "kill"
+            },
+            {
+              "atSec": 337,
+              "label": "Blue takes 1st Dragon (Cloud)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 519,
+              "label": "Viego takes down Fiddlesticks"
+            },
+            {
+              "atSec": 559,
+              "label": "Morgana takes down Kalista"
+            },
+            {
+              "atSec": 624,
+              "label": "Morgana outduels Kalista"
+            },
+            {
+              "atSec": 666,
+              "label": "Blue takes 2nd Dragon (Mountain)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 701,
+              "label": "Viego eliminates Kalista"
+            },
+            {
+              "atSec": 813,
+              "label": "Viego eliminates Kalista"
+            },
+            {
+              "atSec": 994,
+              "label": "Red takes 1st Dragon (Infernal)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1098,
+              "label": "Viego takes down Fiddlesticks"
+            },
+            {
+              "atSec": 1118,
+              "label": "Morgana picks off Rengar"
+            },
+            {
+              "atSec": 1248,
+              "label": "Viego Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1253,
+              "label": "Viego Triple Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1305,
+              "label": "Blue takes 3rd Dragon (Infernal)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1339,
+              "label": "Viego Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1362,
+              "label": "Blue takes Baron",
+              "kind": "baron"
+            },
+            {
+              "atSec": 1441,
+              "label": "Mid Inhibitor falls (Red)"
+            },
+            {
+              "atSec": 1524,
+              "label": "Viego takes down Fiddlesticks"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 432,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "uRxVNfk8e5E",
+          "title": "Morgana Support vs Bard - BR Challenger Patch 26.18",
+          "rankClaim": "Challenger",
+          "patch": "26.18",
+          "durationSec": 1826,
+          "uploaded": "2026-09-15",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 497,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "VFw2InNPCZU",
+          "title": "Morgana Support vs Rakan (GSMC EscoX) - EUW Grandmaster Patch 26.13",
+          "rankClaim": "Grandmaster",
+          "patch": "26.13",
+          "durationSec": 1746,
+          "region": "EUW",
+          "uploaded": "2026-07-08",
+          "moments": []
+        },
+        {
+          "videoId": "6ajhW0ghEtI",
+          "title": "Morgana Support vs Rakan - KR Challenger Patch 25.13",
+          "rankClaim": "Challenger",
+          "patch": "25.13",
+          "durationSec": 1639,
+          "region": "KR",
+          "uploaded": "2025-07-02",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 517,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "LlDrEt2j4oM",
+          "title": "Morgana Jungle vs Sylas - NA Grandmaster Patch 25.24",
+          "rankClaim": "Grandmaster",
+          "patch": "25.24",
+          "durationSec": 1462,
+          "region": "NA",
+          "uploaded": "2025-12-20",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 236,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 337,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 447,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 483,
+              "label": "Hunt The Dragon",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 569,
+              "label": "Hunt The Void Grubs",
+              "kind": "grubs"
+            },
+            {
+              "atSec": 636,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 751,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 822,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 874,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 961,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1031,
+              "label": "Hunt The Dragon",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1052,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1134,
+              "label": "Hunt The Rift Herald",
+              "kind": "herald"
+            },
+            {
+              "atSec": 1225,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1251,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1266,
+              "label": "Hunt The Atakhan"
+            },
+            {
+              "atSec": 1314,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1424,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1451,
+              "label": "End credit"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 517,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "j17tBQbmzfM",
+          "title": "Morgana Mid vs Sylas - KR Master Patch 26.10",
+          "rankClaim": "Master",
+          "patch": "26.10",
+          "durationSec": 1636,
+          "region": "KR",
+          "uploaded": "2026-05-21",
+          "result": "L",
+          "moments": [
+            {
+              "atSec": 188,
+              "label": "First Blood — Lee Sin kills Sylas",
+              "kind": "kill"
+            },
+            {
+              "atSec": 421,
+              "label": "Red takes 1st Dragon (Mountain)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 541,
+              "label": "Lee Sin picks off Sylas"
+            },
+            {
+              "atSec": 758,
+              "label": "Red takes 2nd Dragon (Cloud)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 787,
+              "label": "Morgana eliminates Sylas"
+            },
+            {
+              "atSec": 825,
+              "label": "Morgana kills Teemo",
+              "kind": "kill"
+            },
+            {
+              "atSec": 930,
+              "label": "Smolder kills Sylas",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1118,
+              "label": "Red takes 3rd Dragon (Chemtech)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1138,
+              "label": "Smolder picks off Neeko"
+            },
+            {
+              "atSec": 1224,
+              "label": "Morgana eliminates Sylas"
+            },
+            {
+              "atSec": 1432,
+              "label": "Red takes 4th Dragon (Chemtech)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1454,
+              "label": "Smolder kills Sylas",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1465,
+              "label": "Red takes Baron",
+              "kind": "baron"
+            },
+            {
+              "atSec": 1489,
+              "label": "Lee Sin eliminates Teemo"
+            },
+            {
+              "atSec": 1581,
+              "label": "Smolder Double Kill",
+              "kind": "kill"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 518,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "Hit9lUAV1-0",
+          "title": "Morgana Support vs Neeko - KR Master Patch 25.05",
+          "rankClaim": "Master",
+          "patch": "25.5",
+          "durationSec": 1683,
+          "region": "KR",
+          "uploaded": "2025-03-13",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 526,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "i9oqtjNuOTs",
+          "title": "Morgana Support vs Rell - KR Master Patch 25.08",
+          "rankClaim": "Master",
+          "patch": "25.8",
+          "durationSec": 2115,
+          "region": "KR",
+          "uploaded": "2025-04-25",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 437,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 845,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1096,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1317,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1394,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1509,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1601,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1709,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1833,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1936,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 2034,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 2052,
+              "label": "Take down The Inhibitor"
+            },
+            {
+              "atSec": 2070,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 2094,
+              "label": "End credit"
+            }
+          ]
+        },
+        {
+          "videoId": "a_cj7LTkGGA",
+          "title": "Morgana Support vs Rell - KR Master Patch 25.06",
+          "rankClaim": "Master",
+          "patch": "25.6",
+          "durationSec": 1929,
+          "region": "KR",
+          "uploaded": "2025-03-28",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 432,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 490,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 662,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 688,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 701,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 967,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1129,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1404,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1591,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1734,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1821,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1873,
+              "label": "Take down The Inhibitor"
+            },
+            {
+              "atSec": 1889,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1908,
+              "label": "End credit"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 555,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "cav20HueVuI",
+          "title": "Morgana Support vs Pyke - KR Challenger Patch 26.02",
+          "rankClaim": "Challenger",
+          "patch": "26.2",
+          "durationSec": 1571,
+          "region": "KR",
+          "uploaded": "2026-01-28",
+          "moments": []
+        },
+        {
+          "videoId": "IhPthxNNI-k",
+          "title": "Morgana Support vs Pyke - KR Master Patch 25.16",
+          "rankClaim": "Master",
+          "patch": "25.16",
+          "durationSec": 1643,
+          "region": "KR",
+          "uploaded": "2025-08-22",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 777,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "6C-G6uxM2ko",
+          "title": "Morgana Top vs Yone - KR Master Patch 26.14",
+          "rankClaim": "Master",
+          "patch": "26.14",
+          "durationSec": 1416,
+          "region": "KR",
+          "uploaded": "2026-07-30",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 800,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "Xj8vNE0DSmU",
+          "title": "Morgana Support vs Mel - KR Master Patch 25.24",
+          "rankClaim": "Master",
+          "patch": "25.24",
+          "durationSec": 1564,
+          "region": "KR",
+          "uploaded": "2025-12-10",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 29,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 210,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 570,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 664,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 822,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 964,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1122,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1227,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1330,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1426,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1553,
+              "label": "End credit"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 887,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "99jMXHmpJyg",
+          "title": "Morgana Jungle vs Gwen - EUW Grandmaster Patch 25.06",
+          "rankClaim": "Grandmaster",
+          "patch": "25.6",
+          "durationSec": 1479,
+          "region": "EUW",
+          "uploaded": "2025-04-01",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 350,
+              "label": "Hunt The Void Grubs",
+              "kind": "grubs"
+            },
+            {
+              "atSec": 412,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 603,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 654,
+              "label": "Hunt The Dragon",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 673,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 797,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 829,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 848,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 954,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 976,
+              "label": "Hunt The Dragon",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1109,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1125,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1224,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1290,
+              "label": "Hunt The Dragon",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1305,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1438,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1458,
+              "label": "End credit"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 893,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "GviPOLrlYY4",
+          "title": "Morgana Mid vs Aurora - NA Challenger Patch 25.19",
+          "rankClaim": "Challenger",
+          "patch": "25.19",
+          "durationSec": 1794,
+          "region": "NA",
+          "uploaded": "2025-10-05",
+          "moments": []
+        },
+        {
+          "videoId": "qMeLSE8Ceis",
+          "title": "Morgana Mid vs Aurora - KR Grandmaster Patch 25.13",
+          "rankClaim": "Grandmaster",
+          "patch": "25.13",
+          "durationSec": 1547,
+          "region": "KR",
+          "uploaded": "2025-07-09",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 904,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "2VQV_e4ib4I",
+          "title": "Morgana vs Zaahen 12/4/20 (Jungle) | EUW Grandmaster | Morgana OTP Replay",
+          "rankClaim": "Grandmaster",
+          "patch": "26.7",
+          "durationSec": 2016,
+          "region": "EUW",
+          "patchEstimated": true,
+          "uploaded": "2026-04-11",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 950,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "0gMIrGKNrgs",
+          "title": "Morgana Jungle vs Naafiri - KR Master Patch 26.13",
+          "rankClaim": "Master",
+          "patch": "26.13",
+          "durationSec": 1775,
+          "region": "KR",
+          "uploaded": "2026-07-13",
+          "moments": []
+        }
+      ]
+    }
+  ]
+}

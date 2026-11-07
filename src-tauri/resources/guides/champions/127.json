@@ -1,0 +1,2848 @@
+{
+  "schema": 1,
+  "champion": 127,
+  "generatedAt": "2026-11-07T13:25:14.592Z",
+  "guides": [
+    {
+      "champion": 127,
+      "enemy": 84,
+      "lane": "mid",
+      "patch": "26.21",
+      "reviewed": false,
+      "difficulty": "Easy",
+      "favoredWhen": "Very easy. Q through the wave, hold W, and R her commits.",
+      "keyTips": [
+        {
+          "text": "She hides behind minions: your Q extends through them.",
+          "scope": "pair",
+          "sourceIds": [
+            "anguish"
+          ],
+          "abilityKeys": [
+            {
+              "champion": 127,
+              "key": "Q"
+            }
+          ]
+        },
+        {
+          "text": "She rushes Mercs: your root still decides every fight.",
+          "scope": "pair",
+          "sourceIds": [
+            "anguish"
+          ]
+        },
+        {
+          "text": "Your W is her death: she commits only when you misuse it.",
+          "scope": "pair",
+          "sourceIds": [
+            "anguish"
+          ],
+          "abilityKeys": [
+            {
+              "champion": 127,
+              "key": "W"
+            }
+          ]
+        }
+      ],
+      "enemyTips": {},
+      "sections": {
+        "overview": {
+          "tips": []
+        },
+        "early-lane": {
+          "tips": [
+            {
+              "text": "Spam Q from range: your poke beats her poke.",
+              "scope": "pair",
+              "sourceIds": [
+                "anguish"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 84,
+                  "key": "Q"
+                }
+              ]
+            },
+            {
+              "text": "She concedes the lane: take every CS she gives.",
+              "scope": "pair",
+              "sourceIds": [
+                "anguish"
+              ]
+            }
+          ]
+        },
+        "mid-lane": {
+          "tips": [
+            {
+              "text": "After your 6 she cannot force: hold R for her commits.",
+              "scope": "pair",
+              "sourceIds": [
+                "anguish"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 127,
+                  "key": "R"
+                }
+              ]
+            },
+            {
+              "text": "Hold W: a misused root is her only engage.",
+              "scope": "pair",
+              "sourceIds": [
+                "anguish"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 127,
+                  "key": "W"
+                }
+              ]
+            }
+          ]
+        },
+        "win-condition": {
+          "tips": [
+            {
+              "text": "Roots plus patience: the Akali who never touches you never kills you.",
+              "scope": "pair",
+              "sourceIds": [
+                "anguish"
+              ]
+            }
+          ]
+        }
+      },
+      "itemization": [],
+      "sources": [
+        {
+          "id": "anguish",
+          "author": "Anguish333",
+          "rankClaim": "Master (profile badge; title claims 2000LP GrandMaster EUW and Challenger EUNE) · Akali main",
+          "rank": "master",
+          "url": "https://www.mobafire.com/league-of-legends/build/26-20-anguish-2000lp-grandmasters-euw-challenger-eune-akali-mid-top-s16-guide-every-matchup-item-rune-explained-625064",
+          "kind": "mobafire"
+        }
+      ]
+    },
+    {
+      "champion": 127,
+      "enemy": 238,
+      "lane": "mid",
+      "patch": "26.21",
+      "reviewed": false,
+      "difficulty": "Easy",
+      "favoredWhen": "You are rarely killable. R plus jungle beats his all-ins, so take TP and win the map.",
+      "keyTips": [
+        {
+          "text": "He finds you rarely killable: your R plus jungle and support camping beats his all-ins.",
+          "scope": "pair",
+          "sourceIds": [
+            "aikopanda"
+          ],
+          "abilityKeys": [
+            {
+              "champion": 127,
+              "key": "R"
+            }
+          ]
+        },
+        {
+          "text": "Your Q extends through the wave: punish him when he lines up with it.",
+          "scope": "pair",
+          "sourceIds": [
+            "v222"
+          ],
+          "abilityKeys": [
+            {
+              "champion": 127,
+              "key": "Q"
+            }
+          ]
+        },
+        {
+          "text": "Good TP matchup for you: match his map pressure, never force the duel.",
+          "scope": "pair",
+          "sourceIds": [
+            "aikopanda"
+          ]
+        }
+      ],
+      "enemyTips": {
+        "early-lane": [
+          {
+            "text": "Zed often places Living Shadow before Death Mark so he can swap away from skillshots. Hold your crowd control until he has used the swap.",
+            "scope": "enemy",
+            "sourceIds": [
+              "aikopanda"
+            ],
+            "patch": "26.21",
+            "abilityKeys": [
+              {
+                "champion": 238,
+                "key": "W"
+              },
+              {
+                "champion": 238,
+                "key": "R"
+              }
+            ]
+          }
+        ],
+        "win-condition": [
+          {
+            "text": "Death Mark always lands Zed behind his target. Pre-aim crowd control and escapes behind you, not toward where he cast it.",
+            "scope": "enemy",
+            "sourceIds": [
+              "peng04"
+            ],
+            "patch": "26.21",
+            "abilityKeys": [
+              {
+                "champion": 238,
+                "key": "R"
+              }
+            ]
+          }
+        ]
+      },
+      "sections": {
+        "overview": {
+          "tips": []
+        },
+        "early-lane": {
+          "tips": [
+            {
+              "text": "When his W is down, E onto him: the window is yours.",
+              "scope": "pair",
+              "sourceIds": [
+                "v222"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 238,
+                  "key": "W"
+                },
+                {
+                  "champion": 127,
+                  "key": "E"
+                }
+              ]
+            },
+            {
+              "text": "He plays for TP, not kills: answer his shoves and hold your R.",
+              "scope": "pair",
+              "sourceIds": [
+                "aikopanda"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 127,
+                  "key": "R"
+                }
+              ]
+            }
+          ]
+        },
+        "mid-lane": {
+          "tips": [
+            {
+              "text": "Death Mark always lands Zed behind his target. Pre-aim crowd control and escapes behind you, not toward where he cast it.",
+              "scope": "pair",
+              "sourceIds": [
+                "peng04"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 238,
+                  "key": "R"
+                }
+              ]
+            },
+            {
+              "text": "When he shoves and roams, match: your R answers his plays.",
+              "scope": "pair",
+              "sourceIds": [
+                "aikopanda"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 127,
+                  "key": "R"
+                }
+              ]
+            }
+          ]
+        },
+        "win-condition": {
+          "tips": [
+            {
+              "text": "The 1v1 decides nothing: TP plays and roams decide it.",
+              "scope": "pair",
+              "sourceIds": [
+                "aikopanda"
+              ]
+            }
+          ]
+        }
+      },
+      "itemization": [],
+      "sources": [
+        {
+          "id": "aikopanda",
+          "author": "AikoPanda",
+          "rankClaim": "Zed main",
+          "url": "https://www.mobafire.com/league-of-legends/build/26-20-video-guides-hidden-combos-all-matchups-zed-all-in-one-guide-652800",
+          "kind": "mobafire"
+        },
+        {
+          "id": "v222",
+          "author": "V222",
+          "rankClaim": "Challenger EUW · Zed main",
+          "rank": "challenger",
+          "url": "https://www.mobafire.com/league-of-legends/build/all-matchups-26-14-zed-guide-2000lp-euw-challenger-652354",
+          "kind": "mobafire"
+        },
+        {
+          "id": "peng04",
+          "author": "Peng04",
+          "rankClaim": "Challenger · Ahri main",
+          "rank": "challenger",
+          "url": "https://www.mobafire.com/league-of-legends/build/26-20-pengs-ahri-guide-5-1mil-points-13x-challenger-648700",
+          "kind": "mobafire"
+        }
+      ]
+    }
+  ],
+  "vods": [
+    {
+      "enemy": 3,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "tMmUigNKOt4",
+          "title": "Lissandra Mid vs Galio - KR Challenger Patch 26.16",
+          "rankClaim": "Challenger",
+          "patch": "26.16",
+          "durationSec": 1657,
+          "region": "KR",
+          "uploaded": "2026-08-24",
+          "moments": []
+        },
+        {
+          "videoId": "zCMeR-UEcBQ",
+          "title": "Lissandra Mid vs Galio - KR Challenger Patch 26.02",
+          "rankClaim": "Challenger",
+          "patch": "26.2",
+          "durationSec": 1471,
+          "region": "KR",
+          "uploaded": "2026-01-27",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 169,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 479,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 563,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 588,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 681,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 787,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 908,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 935,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 958,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 979,
+              "label": "Hunt The Rift Herald",
+              "kind": "herald"
+            },
+            {
+              "atSec": 1010,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1131,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1153,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1214,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1295,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1398,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1438,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1460,
+              "label": "End credit"
+            }
+          ]
+        },
+        {
+          "videoId": "NEXHhsVQMKs",
+          "title": "Lissandra Mid vs Galio - KR Master Patch 25.14",
+          "rankClaim": "Master",
+          "patch": "25.14",
+          "durationSec": 1634,
+          "region": "KR",
+          "uploaded": "2025-07-25",
+          "moments": []
+        },
+        {
+          "videoId": "qR14JzlVF6I",
+          "title": "Lissandra Mid vs Galio - KR Grandmaster Patch 25.12",
+          "rankClaim": "Grandmaster",
+          "patch": "25.12",
+          "durationSec": 1660,
+          "region": "KR",
+          "uploaded": "2025-06-18",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 4,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "ZNGX7-hMV7E",
+          "title": "Lissandra Mid vs Twisted Fate - KR Challenger Patch 26.08",
+          "rankClaim": "Challenger",
+          "patch": "26.8",
+          "durationSec": 1550,
+          "region": "KR",
+          "uploaded": "2026-04-28",
+          "moments": []
+        },
+        {
+          "videoId": "4NShhoMZvqY",
+          "title": "Lissandra Mid vs Twisted Fate - KR Master Patch 25.07",
+          "rankClaim": "Master",
+          "patch": "25.7",
+          "durationSec": 1820,
+          "region": "KR",
+          "uploaded": "2025-04-09",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 222,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 519,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 538,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 652,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 776,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 945,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1108,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1128,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1145,
+              "label": "Take down The Inhibitor"
+            },
+            {
+              "atSec": 1208,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1326,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1443,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1610,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1701,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1779,
+              "label": "Take down The Inhibitor"
+            },
+            {
+              "atSec": 1799,
+              "label": "End credit"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 7,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "wfzSsSokJgw",
+          "title": "Lissandra Mid vs LeBlanc - EUW Challenger Patch 25.24",
+          "rankClaim": "Challenger",
+          "patch": "25.24",
+          "durationSec": 1576,
+          "region": "EUW",
+          "uploaded": "2025-12-25",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 355,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 547,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 695,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 789,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 856,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 880,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 894,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 910,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 934,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1090,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1124,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1157,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1292,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1337,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1360,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1461,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1489,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1542,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1565,
+              "label": "End credit"
+            }
+          ]
+        },
+        {
+          "videoId": "s9xqLzrx_iE",
+          "title": "Lissandra Mid vs LeBlanc - KR Grandmaster Patch 25.13",
+          "rankClaim": "Grandmaster",
+          "patch": "25.13",
+          "durationSec": 1637,
+          "region": "KR",
+          "uploaded": "2025-07-01",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 8,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "xnFa9lASbCs",
+          "title": "Lissandra Top vs Vladimir - KR Challenger Patch 26.17",
+          "rankClaim": "Challenger",
+          "patch": "26.17",
+          "durationSec": 1570,
+          "region": "KR",
+          "uploaded": "2026-09-07",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 9,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "rJR2OKKsLbY",
+          "title": "Lissandra Top vs Fiddlesticks - KR Challenger Patch 26.08",
+          "rankClaim": "Challenger",
+          "patch": "26.8",
+          "durationSec": 1601,
+          "region": "KR",
+          "uploaded": "2026-04-20",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 12,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "M7saJeVYpYU",
+          "title": "Lissandra Support vs Alistar - EUW Grandmaster Patch 25.10",
+          "rankClaim": "Grandmaster",
+          "patch": "25.10",
+          "durationSec": 1538,
+          "region": "EUW",
+          "uploaded": "2025-05-27",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 13,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "E1yv77POFRc",
+          "title": "Lissandra Mid vs Ryze (PAIN Keine) - KR Challenger Patch 26.17",
+          "rankClaim": "Challenger",
+          "patch": "26.17",
+          "durationSec": 1629,
+          "region": "KR",
+          "uploaded": "2026-09-11",
+          "moments": []
+        },
+        {
+          "videoId": "VIo-7KQARHU",
+          "title": "Lissandra Mid vs Ryze - KR Grandmaster Patch 26.05",
+          "rankClaim": "Grandmaster",
+          "patch": "26.5",
+          "durationSec": 1500,
+          "region": "KR",
+          "uploaded": "2026-03-19",
+          "moments": []
+        },
+        {
+          "videoId": "KDrHCV8A37Y",
+          "title": "Lissandra Mid vs Ryze - KR Grandmaster Patch 25.20",
+          "rankClaim": "Grandmaster",
+          "patch": "25.20",
+          "durationSec": 1894,
+          "region": "KR",
+          "uploaded": "2025-10-16",
+          "moments": []
+        },
+        {
+          "videoId": "Z4iOQDlS-18",
+          "title": "Lissandra Mid vs Ryze - KR Grandmaster Patch 25.17",
+          "rankClaim": "Grandmaster",
+          "patch": "25.17",
+          "durationSec": 1686,
+          "region": "KR",
+          "uploaded": "2025-09-03",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 14,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "iU-6F20QEMg",
+          "title": "Lissandra Top vs Sion - NA Grandmaster Patch 25.14",
+          "rankClaim": "Grandmaster",
+          "patch": "25.14",
+          "durationSec": 1680,
+          "region": "NA",
+          "uploaded": "2025-08-01",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 20,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "Jz8CZPtkwf4",
+          "title": "(KT Bdd) Lissandra Mid vs Nunu & Willump - KR Challenger Patch 26.13",
+          "rankClaim": "Challenger",
+          "patch": "26.13",
+          "durationSec": 1671,
+          "region": "KR",
+          "player": "Bdd",
+          "team": "KT",
+          "uploaded": "2026-07-04",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 27,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "aD6lWpSlpEI",
+          "title": "Lissandra Top vs Singed - KR Challenger Patch 26.01",
+          "rankClaim": "Challenger",
+          "patch": "26.1",
+          "durationSec": 1586,
+          "region": "KR",
+          "uploaded": "2026-01-21",
+          "moments": []
+        },
+        {
+          "videoId": "SByOgTPsm48",
+          "title": "Lissandra Top vs Singed - KR Master Patch 25.18",
+          "rankClaim": "Master",
+          "patch": "25.18",
+          "durationSec": 1566,
+          "region": "KR",
+          "uploaded": "2025-09-23",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 36,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "PgPXhTzHigk",
+          "title": "Lissandra Top vs Dr. Mundo - KR Challenger Patch 26.07",
+          "rankClaim": "Challenger",
+          "patch": "26.7",
+          "durationSec": 1705,
+          "region": "KR",
+          "uploaded": "2026-04-13",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 39,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "wA2zuXZEK40",
+          "title": "(Azhi) Lissandra Top vs Irelia - KR Master Patch 26.13",
+          "rankClaim": "Master",
+          "patch": "26.13",
+          "durationSec": 1806,
+          "region": "KR",
+          "player": "Azhi",
+          "uploaded": "2026-06-30",
+          "moments": []
+        },
+        {
+          "videoId": "mrg5I0KVm6s",
+          "title": "Lissandra Top vs Irelia - KR Master Patch 26.06",
+          "rankClaim": "Master",
+          "patch": "26.6",
+          "durationSec": 1691,
+          "region": "KR",
+          "uploaded": "2026-03-30",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 124,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 194,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 340,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 449,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 480,
+              "label": "Hunt The Void Grubs",
+              "kind": "grubs"
+            },
+            {
+              "atSec": 685,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 788,
+              "label": "Get a Triple Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 818,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 850,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 876,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 895,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 925,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 960,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 977,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 992,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1093,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1114,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1166,
+              "label": "Hunt The Dragon",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1243,
+              "label": "Hunt The Baron Nashor",
+              "kind": "baron"
+            },
+            {
+              "atSec": 1431,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1482,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1593,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1647,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1680,
+              "label": "End credit"
+            }
+          ]
+        },
+        {
+          "videoId": "nROjfxjU-MM",
+          "title": "Lissandra Top vs Irelia - KR Master Patch 25.22",
+          "rankClaim": "Master",
+          "patch": "25.22",
+          "durationSec": 1743,
+          "region": "KR",
+          "uploaded": "2025-11-18",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 42,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "enox1Ypdk3A",
+          "title": "Lissandra Mid vs Corki - KR Grandmaster Patch 25.19",
+          "rankClaim": "Grandmaster",
+          "patch": "25.19",
+          "durationSec": 1901,
+          "region": "KR",
+          "uploaded": "2025-09-30",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 45,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "FaCvUDAY0l0",
+          "title": "Lissandra Mid vs Veigar - KR Master Patch 26.17",
+          "rankClaim": "Master",
+          "patch": "26.17",
+          "durationSec": 1802,
+          "region": "KR",
+          "uploaded": "2026-09-01",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 54,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "g0XKXEP9CM8",
+          "title": "Lissandra Top vs Malphite - VN Master Patch 26.20",
+          "rankClaim": "Master",
+          "patch": "26.20",
+          "durationSec": 1626,
+          "uploaded": "2026-10-18",
+          "result": "W",
+          "moments": [
+            {
+              "atSec": 97,
+              "label": "First Blood — Vi kills Malphite",
+              "kind": "kill"
+            },
+            {
+              "atSec": 385,
+              "label": "Blue takes 1st Dragon (Cloud)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 394,
+              "label": "Lissandra outduels Talon"
+            },
+            {
+              "atSec": 602,
+              "label": "Lissandra catches Malphite"
+            },
+            {
+              "atSec": 701,
+              "label": "Red takes 1st Dragon (Ocean)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 737,
+              "label": "Lissandra takes down Camille"
+            },
+            {
+              "atSec": 1025,
+              "label": "Red takes 2nd Dragon (Chemtech)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1264,
+              "label": "Jhin Triple Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1268,
+              "label": "Lissandra picks off Caitlyn"
+            },
+            {
+              "atSec": 1355,
+              "label": "Lissandra eliminates Camille"
+            },
+            {
+              "atSec": 1365,
+              "label": "Lissandra Triple Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1369,
+              "label": "Lissandra Quadra Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1387,
+              "label": "Blue takes 2nd Dragon (Chemtech)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1476,
+              "label": "Lissandra kills Talon",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1481,
+              "label": "Blue takes Baron",
+              "kind": "baron"
+            },
+            {
+              "atSec": 1594,
+              "label": "Lissandra outplays Katarina"
+            }
+          ]
+        },
+        {
+          "videoId": "HZ7nFNnbVs4",
+          "title": "Lissandra Top vs Malphite - NA Grandmaster Patch 25.06",
+          "rankClaim": "Grandmaster",
+          "patch": "25.6",
+          "durationSec": 1885,
+          "region": "NA",
+          "uploaded": "2025-03-31",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 55,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "OfYRYF_9JDk",
+          "title": "(EDG Angel) Lissandra Mid vs Katarina - KR Challenger Patch 26.15",
+          "rankClaim": "Challenger",
+          "patch": "26.15",
+          "durationSec": 1604,
+          "region": "KR",
+          "player": "Angel",
+          "team": "EDG",
+          "uploaded": "2026-08-09",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 58,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "lJXRVIpBhBg",
+          "title": "Lissandra Top vs Renekton - KR Master Patch 25.11",
+          "rankClaim": "Master",
+          "patch": "25.11",
+          "durationSec": 1577,
+          "region": "KR",
+          "uploaded": "2025-06-11",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 61,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "hRILQ44mog8",
+          "title": "Lissandra Mid vs Orianna - KR Master Patch 26.01",
+          "rankClaim": "Master",
+          "patch": "26.1",
+          "durationSec": 1505,
+          "region": "KR",
+          "uploaded": "2026-01-14",
+          "moments": []
+        },
+        {
+          "videoId": "aSleF9zuTjA",
+          "title": "Lissandra Mid vs Orianna - KR Challenger Patch 25.08",
+          "rankClaim": "Challenger",
+          "patch": "25.8",
+          "durationSec": 1638,
+          "region": "KR",
+          "uploaded": "2025-04-23",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 61,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "VdgFOY-95B8",
+          "title": "Lissandra Top vs Orianna - KR Master Patch 25.05",
+          "rankClaim": "Master",
+          "patch": "25.5",
+          "durationSec": 1490,
+          "region": "KR",
+          "uploaded": "2025-03-17",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 62,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "YB8EdHPHZAo",
+          "title": "Lissandra Support vs Wukong - KR Master Patch 25.09",
+          "rankClaim": "Master",
+          "patch": "25.9",
+          "durationSec": 1492,
+          "region": "KR",
+          "uploaded": "2025-05-16",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 62,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "EGMP_79yFaI",
+          "title": "Lissandra Top vs Wukong - KR Master Patch 25.15",
+          "rankClaim": "Master",
+          "patch": "25.15",
+          "durationSec": 1691,
+          "region": "KR",
+          "uploaded": "2025-08-11",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 69,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "6qcx50fI1TQ",
+          "title": "Challenger Lissandra: Baicaiovo DELETES Cassiopeia on CN Super Server",
+          "rankClaim": "Challenger",
+          "patch": "26.12",
+          "durationSec": 1316,
+          "patchEstimated": true,
+          "player": "Baicaiovo",
+          "uploaded": "2026-06-15",
+          "format": "stream",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 77,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "y2Wy2vR3T08",
+          "title": "Lissandra Top vs Udyr - KR Master Patch 25.16",
+          "rankClaim": "Master",
+          "patch": "25.16",
+          "durationSec": 1842,
+          "region": "KR",
+          "uploaded": "2025-08-26",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 80,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "Js1A3OeumBw",
+          "title": "Lissandra Mid vs Pantheon - KR Grandmaster Patch 25.10",
+          "rankClaim": "Grandmaster",
+          "patch": "25.10",
+          "durationSec": 1457,
+          "region": "KR",
+          "uploaded": "2025-05-21",
+          "moments": []
+        },
+        {
+          "videoId": "r6s7EYdvMU4",
+          "title": "Lissandra Mid vs Pantheon - NA Challenger Patch 25.07",
+          "rankClaim": "Challenger",
+          "patch": "25.7",
+          "durationSec": 2112,
+          "region": "NA",
+          "uploaded": "2025-04-16",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 84,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "-jXZn1w1eC4",
+          "title": "(HRTS Mercy9) Lissandra Mid vs Akali (GL OMON) - EUW Grandmaster Patch 26.11",
+          "rankClaim": "Grandmaster",
+          "patch": "26.11",
+          "durationSec": 1763,
+          "region": "EUW",
+          "player": "HRTS Mercy9",
+          "uploaded": "2026-06-04",
+          "moments": []
+        },
+        {
+          "videoId": "Ooteyl26fTk",
+          "title": "Lissandra Mid vs Akali - TW Challenger Patch 26.07",
+          "rankClaim": "Challenger",
+          "patch": "26.7",
+          "durationSec": 1544,
+          "uploaded": "2026-04-06",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 84,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "-FArV3zkBNY",
+          "title": "(EWH Xi lai) Lissandra Top vs Akali - KR Master Patch 26.15",
+          "rankClaim": "Master",
+          "patch": "26.15",
+          "durationSec": 1726,
+          "region": "KR",
+          "player": "EWH Xi lai",
+          "uploaded": "2026-08-05",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 91,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "GFlAEyMao_Q",
+          "title": "Lissandra Mid vs Talon - KR Master Patch 25.22",
+          "rankClaim": "Master",
+          "patch": "25.22",
+          "durationSec": 1762,
+          "region": "KR",
+          "uploaded": "2025-11-13",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 92,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "Z9qXvqbISXg",
+          "title": "Lissandra Top vs Riven - KR Master Patch 26.03",
+          "rankClaim": "Master",
+          "patch": "26.3",
+          "durationSec": 1910,
+          "region": "KR",
+          "uploaded": "2026-02-17",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 250,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 453,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 590,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 679,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 775,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 811,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1000,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1082,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1156,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1207,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1288,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1389,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1462,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1548,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1634,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1767,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1860,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1880,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1899,
+              "label": "End credit"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 99,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "ZX0Dy9UheEw",
+          "title": "Lissandra vs Lux [ MID ] Lol Korea Master Patch 25.19 ✅",
+          "rankClaim": "Master",
+          "patch": "25.19",
+          "durationSec": 1633,
+          "region": "KR",
+          "uploaded": "2025-09-29",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 103,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "UeeJ7wQiebI",
+          "title": "Lissandra Mid vs Ahri - KR Challenger Patch 26.06",
+          "rankClaim": "Challenger",
+          "patch": "26.6",
+          "durationSec": 1572,
+          "region": "KR",
+          "uploaded": "2026-03-24",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 181,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 273,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 344,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 459,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 607,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 624,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 696,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 777,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 863,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 936,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1057,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1125,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1203,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1349,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1401,
+              "label": "Hunt The Baron Nashor",
+              "kind": "baron"
+            },
+            {
+              "atSec": 1423,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1481,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1534,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1561,
+              "label": "End credit"
+            }
+          ]
+        },
+        {
+          "videoId": "MoNRQg5NAVg",
+          "title": "Lissandra Mid vs Ahri - NA Challenger Patch 25.13",
+          "rankClaim": "Challenger",
+          "patch": "25.13",
+          "durationSec": 1804,
+          "region": "NA",
+          "uploaded": "2025-07-16",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 105,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "0zXFXg1eYqs",
+          "title": "Lissandra Mid vs Fizz - KR Grandmaster Patch 26.10",
+          "rankClaim": "Grandmaster",
+          "patch": "26.10",
+          "durationSec": 1566,
+          "region": "KR",
+          "uploaded": "2026-05-19",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 110,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "L2qT2iED1yM",
+          "title": "Lissandra Top vs Varus - KR Master Patch 26.18",
+          "rankClaim": "Master",
+          "patch": "26.18",
+          "durationSec": 1584,
+          "region": "KR",
+          "uploaded": "2026-09-22",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 114,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "G7nUuc2JEoY",
+          "title": "Lissandra Top vs Fiora (NS Kingen) - KR Grandmaster Patch 26.21",
+          "rankClaim": "Grandmaster",
+          "patch": "26.21",
+          "durationSec": 1870,
+          "region": "KR",
+          "player": "Kingen",
+          "uploaded": "2026-11-02",
+          "result": "W",
+          "moments": [
+            {
+              "atSec": 97,
+              "label": "Lissandra catches Fiora"
+            },
+            {
+              "atSec": 381,
+              "label": "Lissandra eliminates Fiora"
+            },
+            {
+              "atSec": 477,
+              "label": "Red takes 1st Dragon (Mountain)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 596,
+              "label": "Lissandra picks off Xayah"
+            },
+            {
+              "atSec": 641,
+              "label": "Team fight (3 kills)",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 757,
+              "label": "Zeri takes down Xayah"
+            },
+            {
+              "atSec": 879,
+              "label": "Red takes 2nd Dragon (Hextech)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 896,
+              "label": "Irelia takes down Fiora"
+            },
+            {
+              "atSec": 1095,
+              "label": "Zeri picks off Fiora"
+            },
+            {
+              "atSec": 1193,
+              "label": "Blue takes 1st Dragon (Chemtech)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1435,
+              "label": "Blue takes Baron",
+              "kind": "baron"
+            },
+            {
+              "atSec": 1533,
+              "label": "Nautilus eliminates Fiora"
+            },
+            {
+              "atSec": 1541,
+              "label": "Red takes 3rd Dragon (Chemtech)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1613,
+              "label": "Zeri Triple Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1818,
+              "label": "Blue takes 2nd Baron",
+              "kind": "baron"
+            },
+            {
+              "atSec": 1836,
+              "label": "Zeri Triple Kill",
+              "kind": "kill"
+            }
+          ]
+        },
+        {
+          "videoId": "xM919MO7FeI",
+          "title": "Lissandra Top vs Fiora - KR Master Patch 25.12",
+          "rankClaim": "Master",
+          "patch": "25.12",
+          "durationSec": 1759,
+          "region": "KR",
+          "uploaded": "2025-06-27",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 131,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "BFWlQov49Yw",
+          "title": "Lissandra Mid vs Diana - KR Master Patch 26.21",
+          "rankClaim": "Master",
+          "patch": "26.21",
+          "durationSec": 1651,
+          "region": "KR",
+          "uploaded": "2026-10-26",
+          "result": "W",
+          "moments": [
+            {
+              "atSec": 383,
+              "label": "Lissandra eliminates Diana"
+            },
+            {
+              "atSec": 399,
+              "label": "Blue takes 1st Dragon (Chemtech)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 714,
+              "label": "Lissandra takes down Diana"
+            },
+            {
+              "atSec": 731,
+              "label": "Lissandra picks off Master Yi"
+            },
+            {
+              "atSec": 797,
+              "label": "Blue takes 2nd Dragon (Infernal)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 894,
+              "label": "Team fight (3 kills)",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 994,
+              "label": "Kalista picks off Ambessa"
+            },
+            {
+              "atSec": 1076,
+              "label": "Jayce picks off Diana"
+            },
+            {
+              "atSec": 1109,
+              "label": "Red takes 1st Dragon (Mountain)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1151,
+              "label": "Team fight (3 kills)",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1305,
+              "label": "Blue takes Baron",
+              "kind": "baron"
+            },
+            {
+              "atSec": 1354,
+              "label": "Gwen kills Master Yi",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1429,
+              "label": "Red takes 2nd Dragon (Mountain)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1557,
+              "label": "Mid Inhibitor falls (Blue)"
+            },
+            {
+              "atSec": 1566,
+              "label": "Top Inhibitor falls (Blue)"
+            },
+            {
+              "atSec": 1607,
+              "label": "Lissandra kills Draven",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1609,
+              "label": "Lissandra Triple Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1613,
+              "label": "Lissandra Quadra Kill",
+              "kind": "kill"
+            }
+          ]
+        },
+        {
+          "videoId": "Tuj821OpJNI",
+          "title": "Lissandra Mid vs Diana - KR Master Patch 26.03",
+          "rankClaim": "Master",
+          "patch": "26.3",
+          "durationSec": 1521,
+          "region": "KR",
+          "uploaded": "2026-02-10",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 134,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "2Ex5JnMdzro",
+          "title": "Lissandra Mid vs Syndra - KR Master Patch 25.05",
+          "rankClaim": "Master",
+          "patch": "25.5",
+          "durationSec": 1818,
+          "region": "KR",
+          "uploaded": "2025-03-14",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 282,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 364,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 429,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 487,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 736,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 902,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1100,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1121,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1172,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1344,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1376,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1400,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1460,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1535,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1598,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1710,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1728,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1747,
+              "label": "Take down The Inhibitor"
+            },
+            {
+              "atSec": 1759,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1769,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1797,
+              "label": "End credit"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 136,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "pr6sXpeaXx0",
+          "title": "Lissandra Mid vs Aurelion Sol - KR Grandmaster Patch 25.16",
+          "rankClaim": "Grandmaster",
+          "patch": "25.16",
+          "durationSec": 1750,
+          "region": "KR",
+          "uploaded": "2025-08-20",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 142,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "GC0e7dRFmwo",
+          "title": "Lissandra Mid vs Zoe - KR Master Patch 26.19",
+          "rankClaim": "Master",
+          "patch": "26.19",
+          "durationSec": 1467,
+          "region": "KR",
+          "uploaded": "2026-09-29",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 150,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "jVCxuemlIjE",
+          "title": "Lissandra Top vs Gnar - KR Master Patch 26.09",
+          "rankClaim": "Master",
+          "patch": "26.9",
+          "durationSec": 1671,
+          "region": "KR",
+          "uploaded": "2026-05-05",
+          "moments": []
+        },
+        {
+          "videoId": "IzuHqEibXyc",
+          "title": "Lissandra Top vs Gnar - KR Master Patch 25.13",
+          "rankClaim": "Master",
+          "patch": "25.13",
+          "durationSec": 1831,
+          "region": "KR",
+          "uploaded": "2025-07-07",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 157,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "OylX0mJOjOA",
+          "title": "Lissandra Mid vs Yasuo - KR Grandmaster Patch 26.20",
+          "rankClaim": "Grandmaster",
+          "patch": "26.20",
+          "durationSec": 1631,
+          "region": "KR",
+          "uploaded": "2026-10-13",
+          "result": "W",
+          "moments": [
+            {
+              "atSec": 48,
+              "label": "First Blood — Lissandra kills Yasuo",
+              "kind": "kill"
+            },
+            {
+              "atSec": 124,
+              "label": "Viego Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 201,
+              "label": "Lissandra takes down Yasuo"
+            },
+            {
+              "atSec": 289,
+              "label": "Lissandra catches Yasuo again"
+            },
+            {
+              "atSec": 422,
+              "label": "Viego picks off Yasuo"
+            },
+            {
+              "atSec": 508,
+              "label": "Team fight (3 kills)",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 570,
+              "label": "Blue takes 1st Dragon (Hextech)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 579,
+              "label": "Lissandra Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 683,
+              "label": "Rakan kills Cho'Gath",
+              "kind": "kill"
+            },
+            {
+              "atSec": 801,
+              "label": "Xayah picks off Lulu"
+            },
+            {
+              "atSec": 896,
+              "label": "Red takes 1st Dragon (Infernal)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 914,
+              "label": "Blue takes Rift Herald",
+              "kind": "herald"
+            },
+            {
+              "atSec": 939,
+              "label": "Rumble takes down Yasuo"
+            },
+            {
+              "atSec": 1262,
+              "label": "Red takes 2nd Dragon (Ocean)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1298,
+              "label": "Blue takes Baron",
+              "kind": "baron"
+            },
+            {
+              "atSec": 1462,
+              "label": "Lissandra picks off Cho'Gath"
+            },
+            {
+              "atSec": 1559,
+              "label": "Xayah Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1580,
+              "label": "Mid Inhibitor falls (Red)"
+            }
+          ]
+        },
+        {
+          "videoId": "Bb6NY0yjDvQ",
+          "title": "(DNS Clozer) Lissandra Mid vs Yasuo - KR Challenger Patch 26.12",
+          "rankClaim": "Challenger",
+          "patch": "26.12",
+          "durationSec": 1478,
+          "region": "KR",
+          "player": "Clozer",
+          "uploaded": "2026-06-21",
+          "moments": []
+        },
+        {
+          "videoId": "WRHn_OINJxw",
+          "title": "Lissandra Mid vs Yasuo - KR Master Patch 25.24",
+          "rankClaim": "Master",
+          "patch": "25.24",
+          "durationSec": 1617,
+          "region": "KR",
+          "uploaded": "2025-12-19",
+          "moments": []
+        },
+        {
+          "videoId": "4lCbQ19fhKI",
+          "title": "Lissandra Mid vs Yasuo - KR Master Patch 25.21",
+          "rankClaim": "Master",
+          "patch": "25.21",
+          "durationSec": 1645,
+          "region": "KR",
+          "uploaded": "2025-10-30",
+          "moments": []
+        },
+        {
+          "videoId": "cAMN-5s-Pbs",
+          "title": "Lissandra Mid vs Yasuo - KR Grandmaster Patch 25.11",
+          "rankClaim": "Grandmaster",
+          "patch": "25.11",
+          "durationSec": 1605,
+          "region": "KR",
+          "uploaded": "2025-06-06",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 157,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "nSiIHdS-wuE",
+          "title": "Lissandra Top vs Yasuo - KR Challenger Patch 26.10",
+          "rankClaim": "Challenger",
+          "patch": "26.10",
+          "durationSec": 1594,
+          "region": "KR",
+          "uploaded": "2026-05-26",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 163,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "RlpQZMJXUWw",
+          "title": "Lissandra Mid vs Taliyah - KR Challenger Patch 25.24",
+          "rankClaim": "Challenger",
+          "patch": "25.24",
+          "durationSec": 1451,
+          "region": "KR",
+          "uploaded": "2025-12-11",
+          "moments": []
+        },
+        {
+          "videoId": "FCBpC-GyhaE",
+          "title": "Lissandra Mid vs Taliyah - KR Challenger Patch 25.18",
+          "rankClaim": "Challenger",
+          "patch": "25.18",
+          "durationSec": 1657,
+          "region": "KR",
+          "uploaded": "2025-09-17",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 164,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "nxKdn_MFgkI",
+          "title": "Lissandra Top vs Camille - KR Grandmaster Patch 25.23",
+          "rankClaim": "Grandmaster",
+          "patch": "25.23",
+          "durationSec": 1515,
+          "region": "KR",
+          "uploaded": "2025-12-02",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 201,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "JzAgZojDZb8",
+          "title": "(HLE Delight) Lissandra Support vs Braum - KR Grandmaster Patch 26.11",
+          "rankClaim": "Grandmaster",
+          "patch": "26.11",
+          "durationSec": 1441,
+          "region": "KR",
+          "player": "Delight",
+          "team": "HLE",
+          "uploaded": "2026-06-10",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 234,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "hac-IKtrkUY",
+          "title": "Lissandra Top vs Viego - KR Grandmaster Patch 26.19",
+          "rankClaim": "Grandmaster",
+          "patch": "26.19",
+          "durationSec": 1427,
+          "region": "KR",
+          "uploaded": "2026-10-04",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 238,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "EBMeCRF8A4s",
+          "title": "(S04E Zwyroo) Lissandra Mid vs Zed - EUW Challenger Patch 26.14",
+          "rankClaim": "Challenger",
+          "patch": "26.14",
+          "durationSec": 1476,
+          "region": "EUW",
+          "player": "S04E Zwyroo",
+          "uploaded": "2026-07-21",
+          "moments": []
+        },
+        {
+          "videoId": "Epmd9LE9l2Q",
+          "title": "Lissandra Mid vs Zed - KR Grandmaster Patch 26.04",
+          "rankClaim": "Grandmaster",
+          "patch": "26.4",
+          "durationSec": 1707,
+          "region": "KR",
+          "uploaded": "2026-02-24",
+          "moments": []
+        },
+        {
+          "videoId": "ls55SvxcLYo",
+          "title": "Lissandra Mid vs Zed - KR Master Patch 25.15",
+          "rankClaim": "Master",
+          "patch": "25.15",
+          "durationSec": 1794,
+          "region": "KR",
+          "uploaded": "2025-08-08",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 245,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "61mcwaZ5Vvs",
+          "title": "Lissandra Mid vs Ekko - KR Master Patch 26.18",
+          "rankClaim": "Master",
+          "patch": "26.18",
+          "durationSec": 1726,
+          "region": "KR",
+          "uploaded": "2026-09-16",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 245,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "J5OPYVT_Tgo",
+          "title": "(S04E Zwyroo) Lissandra Top vs Ekko - EUW Challenger Patch 26.16",
+          "rankClaim": "Challenger",
+          "patch": "26.16",
+          "durationSec": 1551,
+          "region": "EUW",
+          "player": "S04E Zwyroo",
+          "uploaded": "2026-08-18",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 266,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "_tZr6pkP22c",
+          "title": "Lissandra Top vs Aatrox - KR Master Patch 25.17",
+          "rankClaim": "Master",
+          "patch": "25.17",
+          "durationSec": 1723,
+          "region": "KR",
+          "uploaded": "2025-09-10",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 350,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "VaPaYG-3TOg",
+          "title": "Lissandra Support vs Yuumi - KR Master Patch 25.04",
+          "rankClaim": "Master",
+          "patch": "25.4",
+          "durationSec": 1760,
+          "region": "KR",
+          "uploaded": "2025-02-27",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 497,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "Cz8TWEtnjDk",
+          "title": "Lissandra Support vs Rakan - KR Master Patch 26.09",
+          "rankClaim": "Master",
+          "patch": "26.9",
+          "durationSec": 1458,
+          "region": "KR",
+          "uploaded": "2026-05-12",
+          "moments": []
+        },
+        {
+          "videoId": "cfLsp1HgnTY",
+          "title": "Lissandra Support vs Rakan - EUW Grandmaster Patch 26.04",
+          "rankClaim": "Grandmaster",
+          "patch": "26.4",
+          "durationSec": 1544,
+          "region": "EUW",
+          "uploaded": "2026-03-03",
+          "moments": []
+        },
+        {
+          "videoId": "iBzKumPQawM",
+          "title": "Lissandra Support vs Rakan - KR Master Patch 26.02",
+          "rankClaim": "Master",
+          "patch": "26.2",
+          "durationSec": 1567,
+          "region": "KR",
+          "uploaded": "2026-02-01",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 517,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "KTXH4M12Y4E",
+          "title": "Lissandra Top vs Sylas - KR Grandmaster Patch 25.04",
+          "rankClaim": "Grandmaster",
+          "patch": "25.4",
+          "durationSec": 1760,
+          "region": "KR",
+          "uploaded": "2025-03-04",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 395,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 693,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 896,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1061,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1158,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1195,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1304,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1328,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1452,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1543,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1689,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1726,
+              "label": "Take down The Inhibitor"
+            },
+            {
+              "atSec": 1739,
+              "label": "End credit"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 777,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "F07SFU0yTtw",
+          "title": "Lissandra Mid vs Yone - VN Challenger Patch 26.05",
+          "rankClaim": "Challenger",
+          "patch": "26.5",
+          "durationSec": 1471,
+          "uploaded": "2026-03-11",
+          "moments": []
+        },
+        {
+          "videoId": "D9DHZR-WPPY",
+          "title": "Lissandra Mid vs Yone - NA Grandmaster Patch 25.24",
+          "rankClaim": "Grandmaster",
+          "patch": "25.24",
+          "durationSec": 1482,
+          "region": "NA",
+          "uploaded": "2025-12-31",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 799,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "K49WtzA0E60",
+          "title": "(KRX Rich) Lissandra Top vs Ambessa - KR Challenger Patch 26.12",
+          "rankClaim": "Challenger",
+          "patch": "26.12",
+          "durationSec": 1578,
+          "region": "KR",
+          "player": "KRX Rich",
+          "uploaded": "2026-06-12",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 875,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "koU29ML5Wbc",
+          "title": "Lissandra Top vs Sett - NA Grandmaster Patch 25.20",
+          "rankClaim": "Grandmaster",
+          "patch": "25.20",
+          "durationSec": 1634,
+          "region": "NA",
+          "uploaded": "2025-10-22",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 893,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "yEbhg2gxUSg",
+          "title": "T1 Faker Lissandra vs Aurora [ MID ] Korea Challenger 1912 LP | Patch 26.10",
+          "rankClaim": "Challenger",
+          "patch": "26.10",
+          "durationSec": 969,
+          "region": "KR",
+          "player": "Faker",
+          "team": "T1",
+          "uploaded": "2026-05-27",
+          "moments": []
+        },
+        {
+          "videoId": "kZHagDiIMCg",
+          "title": "Lissandra Mid vs Aurora - EUW Grandmaster Patch 25.24",
+          "rankClaim": "Grandmaster",
+          "patch": "25.24",
+          "durationSec": 1620,
+          "region": "EUW",
+          "uploaded": "2026-01-09",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 156,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 588,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 686,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 789,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 988,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1127,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1145,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1158,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1197,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1278,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1300,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1414,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1466,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1525,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1585,
+              "label": "Take down The Inhibitor"
+            },
+            {
+              "atSec": 1609,
+              "label": "End credit"
+            }
+          ]
+        },
+        {
+          "videoId": "ienptAKwqEM",
+          "title": "Lissandra Mid vs Aurora - KR Master Patch 25.23",
+          "rankClaim": "Master",
+          "patch": "25.23",
+          "durationSec": 1672,
+          "region": "KR",
+          "uploaded": "2025-11-27",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 897,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "CZoSRtnPe6s",
+          "title": "Lissandra Mid vs K'Sante - KR Master Patch 25.06",
+          "rankClaim": "Master",
+          "patch": "25.6",
+          "durationSec": 2132,
+          "region": "KR",
+          "uploaded": "2025-03-25",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 225,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 339,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 457,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 613,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 750,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 850,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1028,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1137,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1156,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1217,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1336,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1381,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1573,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1693,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1859,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1892,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1931,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 2111,
+              "label": "End credit"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 904,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "9JugVO22z3s",
+          "title": "(Sw0rd) Lissandra Top vs Zaahen - KR Master Patch 26.14",
+          "rankClaim": "Master",
+          "patch": "26.14",
+          "durationSec": 1748,
+          "region": "KR",
+          "player": "Sw0rd",
+          "uploaded": "2026-07-25",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 950,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "tpbBK_Ooc-E",
+          "title": "Lissandra Mid vs Naafiri - KR Grandmaster Patch 25.09",
+          "rankClaim": "Grandmaster",
+          "patch": "25.9",
+          "durationSec": 1666,
+          "region": "KR",
+          "uploaded": "2025-05-07",
+          "moments": []
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,3748 @@
+{
+  "schema": 1,
+  "champion": 101,
+  "generatedAt": "2026-11-07T13:25:14.592Z",
+  "guides": [
+    {
+      "champion": 101,
+      "enemy": 84,
+      "lane": "mid",
+      "patch": "26.21",
+      "reviewed": false,
+      "difficulty": "Hard",
+      "favoredWhen": "She waits for a wasted E and dives. Hold E, vary volleys, turtle harder.",
+      "keyTips": [
+        {
+          "text": "You push and sit under tower: the lane comes to her.",
+          "scope": "pair",
+          "sourceIds": [
+            "anguish"
+          ]
+        },
+        {
+          "text": "She dodges spells: sidesteps are her whole defense, so lead targets.",
+          "scope": "pair",
+          "sourceIds": [
+            "anguish"
+          ]
+        },
+        {
+          "text": "A wasted E is a free kill for her: never throw E first.",
+          "scope": "pair",
+          "sourceIds": [
+            "anguish"
+          ],
+          "abilityKeys": [
+            {
+              "champion": 101,
+              "key": "E"
+            }
+          ]
+        }
+      ],
+      "enemyTips": {},
+      "sections": {
+        "overview": {
+          "tips": []
+        },
+        "early-lane": {
+          "tips": [
+            {
+              "text": "She farms under tower: your push sets up her all-in, so slow-push.",
+              "scope": "pair",
+              "sourceIds": [
+                "anguish"
+              ]
+            },
+            {
+              "text": "She pokes between volleys: never double-volley predictably.",
+              "scope": "pair",
+              "sourceIds": [
+                "anguish"
+              ]
+            }
+          ]
+        },
+        "mid-lane": {
+          "tips": [
+            {
+              "text": "Your R charges increase per rank: vary the beam count.",
+              "scope": "pair",
+              "sourceIds": [
+                "anguish"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 101,
+                  "key": "R"
+                }
+              ]
+            },
+            {
+              "text": "E-down dives: no stun means no answer, so hold E.",
+              "scope": "pair",
+              "sourceIds": [
+                "anguish"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 101,
+                  "key": "E"
+                }
+              ]
+            }
+          ]
+        },
+        "win-condition": {
+          "tips": [
+            {
+              "text": "Landed plus zoned: the Akali who never gets E never dives.",
+              "scope": "pair",
+              "sourceIds": [
+                "anguish"
+              ]
+            }
+          ]
+        }
+      },
+      "itemization": [],
+      "sources": [
+        {
+          "id": "anguish",
+          "author": "Anguish333",
+          "rankClaim": "Master (profile badge; title claims 2000LP GrandMaster EUW and Challenger EUNE) · Akali main",
+          "rank": "master",
+          "url": "https://www.mobafire.com/league-of-legends/build/26-20-anguish-2000lp-grandmasters-euw-challenger-eune-akali-mid-top-s16-guide-every-matchup-item-rune-explained-625064",
+          "kind": "mobafire"
+        }
+      ]
+    },
+    {
+      "champion": 101,
+      "enemy": 103,
+      "lane": "mid",
+      "patch": "26.21",
+      "reviewed": false,
+      "difficulty": "Hard",
+      "favoredWhen": "She dodges and baits every spell and sets up ganks after 6. Hit skillshots, hold E, track her jungler.",
+      "keyTips": [
+        {
+          "text": "She tracks your cooldowns and punishes each one: Q, W and E all open a window (about {cd:101:Q}).",
+          "scope": "pair",
+          "sourceIds": [
+            "peng04"
+          ],
+          "abilityKeys": [
+            {
+              "champion": 101,
+              "key": "Q"
+            },
+            {
+              "champion": 101,
+              "key": "W"
+            },
+            {
+              "champion": 101,
+              "key": "E"
+            }
+          ]
+        },
+        {
+          "text": "Her W speed bursts dodge your skillshots: lead the target.",
+          "scope": "pair",
+          "sourceIds": [
+            "peng04"
+          ],
+          "abilityKeys": [
+            {
+              "champion": 103,
+              "key": "W"
+            }
+          ]
+        },
+        {
+          "text": "She fakes autos to bait your spells: never throw the first spell.",
+          "scope": "pair",
+          "sourceIds": [
+            "peng04"
+          ]
+        }
+      ],
+      "enemyTips": {},
+      "sections": {
+        "overview": {
+          "tips": []
+        },
+        "early-lane": {
+          "tips": [
+            {
+              "text": "She forces the choice: poke her or push; push first, poke second.",
+              "scope": "pair",
+              "sourceIds": [
+                "shok-ahri"
+              ]
+            },
+            {
+              "text": "She baits first: hold spells until she walks in.",
+              "scope": "pair",
+              "sourceIds": [
+                "peng04"
+              ]
+            }
+          ]
+        },
+        "mid-lane": {
+          "tips": [
+            {
+              "text": "After 6 she calls her jungler: ward and hold E for ganks.",
+              "scope": "pair",
+              "sourceIds": [
+                "shok-ahri"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 101,
+                  "key": "E"
+                }
+              ]
+            },
+            {
+              "text": "You stand behind minions to block Charm: keep the wave between you.",
+              "scope": "pair",
+              "sourceIds": [
+                "hofibauer"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 103,
+                  "key": "E"
+                }
+              ]
+            }
+          ]
+        },
+        "win-condition": {
+          "tips": [
+            {
+              "text": "Deny her free engages all game: angles never stop mattering.",
+              "scope": "pair",
+              "sourceIds": [
+                "shok-ahri"
+              ]
+            }
+          ]
+        }
+      },
+      "itemization": [],
+      "sources": [
+        {
+          "id": "peng04",
+          "author": "Peng04",
+          "rankClaim": "Challenger · Ahri main",
+          "rank": "challenger",
+          "url": "https://www.mobafire.com/league-of-legends/build/26-20-pengs-ahri-guide-5-1mil-points-13x-challenger-648700",
+          "kind": "mobafire"
+        },
+        {
+          "id": "shok-ahri",
+          "author": "ShokLoL",
+          "rankClaim": "Rank 1 Challenger · Ahri main",
+          "rank": "challenger",
+          "url": "https://www.mobafire.com/league-of-legends/build/26-5-shoks-rank-1-challenger-ahri-guide-635065",
+          "kind": "mobafire"
+        },
+        {
+          "id": "hofibauer",
+          "author": "Hofibauer",
+          "rankClaim": "Rank 1 EUW/EUNE Xerath (title, no badge) · Xerath main",
+          "url": "https://www.mobafire.com/league-of-legends/build/rank-1-euw-eune-xerath-dominating-midlane-guide-646033",
+          "kind": "mobafire"
+        }
+      ]
+    },
+    {
+      "champion": 101,
+      "enemy": 134,
+      "lane": "mid",
+      "patch": "26.21",
+      "reviewed": false,
+      "difficulty": "Skill matchup",
+      "favoredWhen": "Another skillshot check. Keep range, punish her cooldowns, and respect her burst.",
+      "keyTips": [
+        {
+          "text": "You outrange her: keep the range, win the poke war.",
+          "scope": "pair",
+          "sourceIds": [
+            "trisend3"
+          ]
+        },
+        {
+          "text": "She rushes tier-2 boots: movement answers your Q, so vary it.",
+          "scope": "pair",
+          "sourceIds": [
+            "shok"
+          ],
+          "abilityKeys": [
+            {
+              "champion": 101,
+              "key": "Q"
+            }
+          ]
+        },
+        {
+          "text": "She takes Second Wind: your poke war needs mana to outlast sustain.",
+          "scope": "pair",
+          "sourceIds": [
+            "trisend3"
+          ]
+        }
+      ],
+      "enemyTips": {},
+      "sections": {
+        "overview": {
+          "tips": []
+        },
+        "early-lane": {
+          "tips": [
+            {
+              "text": "Her dodge-first laning beats predictable Qs: hold until she commits.",
+              "scope": "pair",
+              "sourceIds": [
+                "shok"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 101,
+                  "key": "Q"
+                }
+              ]
+            },
+            {
+              "text": "She waits for spent spells: never double-cast into her window.",
+              "scope": "pair",
+              "sourceIds": [
+                "shok"
+              ]
+            }
+          ]
+        },
+        "mid-lane": {
+          "tips": [
+            {
+              "text": "Your cooldowns are much longer: every wasted spell is her window.",
+              "scope": "pair",
+              "sourceIds": [
+                "shok"
+              ]
+            },
+            {
+              "text": "She walks at you when you waste spells: keep max range, never concede position.",
+              "scope": "pair",
+              "sourceIds": [
+                "shok"
+              ]
+            }
+          ]
+        },
+        "win-condition": {
+          "tips": [
+            {
+              "text": "Range plus mana: the range advantage is won on windows, not poke.",
+              "scope": "pair",
+              "sourceIds": [
+                "shok",
+                "trisend3"
+              ]
+            }
+          ]
+        }
+      },
+      "itemization": [],
+      "sources": [
+        {
+          "id": "shok",
+          "author": "ShokLoL",
+          "rankClaim": "Rank 1 Challenger · Syndra main",
+          "rank": "challenger",
+          "url": "https://www.mobafire.com/league-of-legends/build/26-17-shoks-rank-1-challenger-syndra-guide-602710",
+          "kind": "mobafire"
+        },
+        {
+          "id": "trisend3",
+          "author": "Trisend3",
+          "rankClaim": "Challenger (title and profile badge) · Syndra main",
+          "rank": "challenger",
+          "url": "https://www.mobafire.com/league-of-legends/build/challenger-season-16-trisend3-syndra-guide-623459",
+          "kind": "mobafire"
+        }
+      ]
+    },
+    {
+      "champion": 101,
+      "enemy": 238,
+      "lane": "mid",
+      "patch": "26.21",
+      "reviewed": false,
+      "difficulty": "Hard",
+      "favoredWhen": "Every gap-close is a kill and he brings junglers. Hold E, poke from max range, end it before Voltaic.",
+      "keyTips": [
+        {
+          "text": "Any gap-close is a kill: with no disengage you cannot shake his R.",
+          "scope": "pair",
+          "sourceIds": [
+            "aikopanda"
+          ],
+          "abilityKeys": [
+            {
+              "champion": 238,
+              "key": "R"
+            }
+          ]
+        },
+        {
+          "text": "He stands off-wave: Q both him and the wave.",
+          "scope": "pair",
+          "sourceIds": [
+            "v222"
+          ],
+          "abilityKeys": [
+            {
+              "champion": 101,
+              "key": "Q"
+            }
+          ]
+        },
+        {
+          "text": "Your E is your whole defense: a wasted E is his all-in signal.",
+          "scope": "pair",
+          "sourceIds": [
+            "v222"
+          ],
+          "abilityKeys": [
+            {
+              "champion": 101,
+              "key": "E"
+            }
+          ]
+        }
+      ],
+      "enemyTips": {
+        "early-lane": [
+          {
+            "text": "Zed often places Living Shadow before Death Mark so he can swap away from skillshots. Hold your crowd control until he has used the swap.",
+            "scope": "enemy",
+            "sourceIds": [
+              "aikopanda"
+            ],
+            "patch": "26.21",
+            "abilityKeys": [
+              {
+                "champion": 238,
+                "key": "W"
+              },
+              {
+                "champion": 238,
+                "key": "R"
+              }
+            ]
+          }
+        ],
+        "win-condition": [
+          {
+            "text": "Death Mark always lands Zed behind his target. Pre-aim crowd control and escapes behind you, not toward where he cast it.",
+            "scope": "enemy",
+            "sourceIds": [
+              "peng04"
+            ],
+            "patch": "26.21",
+            "abilityKeys": [
+              {
+                "champion": 238,
+                "key": "R"
+              }
+            ]
+          }
+        ]
+      },
+      "sections": {
+        "overview": {
+          "tips": []
+        },
+        "early-lane": {
+          "tips": [
+            {
+              "text": "He skips First Strike: your range denies his proc.",
+              "scope": "pair",
+              "sourceIds": [
+                "aikopanda"
+              ]
+            },
+            {
+              "text": "He buys early boots: every sidestepped Q is HP you never get.",
+              "scope": "pair",
+              "sourceIds": [
+                "v222"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 101,
+                  "key": "Q"
+                }
+              ]
+            }
+          ]
+        },
+        "mid-lane": {
+          "tips": [
+            {
+              "text": "Death Mark always lands Zed behind his target. Pre-aim crowd control and escapes behind you, not toward where he cast it.",
+              "scope": "pair",
+              "sourceIds": [
+                "peng04"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 238,
+                  "key": "R"
+                }
+              ]
+            },
+            {
+              "text": "After Voltaic he farms you: the spike ends your poke phase.",
+              "scope": "pair",
+              "sourceIds": [
+                "aikopanda"
+              ]
+            }
+          ]
+        },
+        "win-condition": {
+          "tips": [
+            {
+              "text": "Spellshield plus his R closes every fight: end it before his second item.",
+              "scope": "pair",
+              "sourceIds": [
+                "aikopanda"
+              ]
+            }
+          ]
+        }
+      },
+      "itemization": [],
+      "sources": [
+        {
+          "id": "aikopanda",
+          "author": "AikoPanda",
+          "rankClaim": "Zed main",
+          "url": "https://www.mobafire.com/league-of-legends/build/26-20-video-guides-hidden-combos-all-matchups-zed-all-in-one-guide-652800",
+          "kind": "mobafire"
+        },
+        {
+          "id": "v222",
+          "author": "V222",
+          "rankClaim": "Challenger EUW · Zed main",
+          "rank": "challenger",
+          "url": "https://www.mobafire.com/league-of-legends/build/all-matchups-26-14-zed-guide-2000lp-euw-challenger-652354",
+          "kind": "mobafire"
+        },
+        {
+          "id": "peng04",
+          "author": "Peng04",
+          "rankClaim": "Challenger · Ahri main",
+          "rank": "challenger",
+          "url": "https://www.mobafire.com/league-of-legends/build/26-20-pengs-ahri-guide-5-1mil-points-13x-challenger-648700",
+          "kind": "mobafire"
+        }
+      ]
+    }
+  ],
+  "general": [
+    {
+      "champion": 101,
+      "lane": "mid",
+      "patch": "26.21",
+      "reviewed": false,
+      "keyTips": [
+        {
+          "text": "Prioritize last hits over poke: take poke only when it costs no farm, and recover mana with passive autos, preferring safe champion hits for the larger return.",
+          "scope": "champion",
+          "sourceIds": [
+            "hofibauer"
+          ]
+        },
+        {
+          "text": "Recall toward a twelve-hundred gold first buy for Lost Chapter; when forced back earlier, take Dark Seal to begin collecting stacks.",
+          "scope": "champion",
+          "sourceIds": [
+            "hofibauer"
+          ],
+          "itemIds": [
+            3802,
+            1082
+          ]
+        },
+        {
+          "text": "In team fights, stay behind the frontline and poke low-health carries before using the ultimate to start or finish the fight, reaching the longer level-sixteen sequence to pressure isolated carries into defensive summoners or kills.",
+          "scope": "champion",
+          "sourceIds": [
+            "hofibauer"
+          ],
+          "abilityKeys": [
+            {
+              "champion": 101,
+              "key": "R"
+            }
+          ]
+        }
+      ],
+      "sections": {
+        "overview": {
+          "tips": []
+        },
+        "early-lane": {
+          "tips": [
+            {
+              "text": "Open Doran's Ring with two Health Potions as the standard setup.",
+              "scope": "champion",
+              "sourceIds": [
+                "hofibauer"
+              ],
+              "itemIds": [
+                1056
+              ]
+            },
+            {
+              "text": "At level six, look for nearby kills and objective fights with Rite of the Arcane while tracking the opposing mid laner.",
+              "scope": "champion",
+              "sourceIds": [
+                "hofibauer"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 101,
+                  "key": "R"
+                }
+              ]
+            }
+          ]
+        },
+        "mid-lane": {
+          "tips": [
+            {
+              "text": "Protect the mid tower with safe waveclear; the first mid tower gives important map control.",
+              "scope": "champion",
+              "sourceIds": [
+                "hofibauer"
+              ]
+            },
+            {
+              "text": "When another lane takes mid and Xerath moves to a side lane, clear waves on his own side of the map and rotate back toward mid.",
+              "scope": "champion",
+              "sourceIds": [
+                "hofibauer"
+              ]
+            },
+            {
+              "text": "Never roam alone through river while the enemy mid and jungler are missing; Xerath alone there is an easy catch.",
+              "scope": "champion",
+              "sourceIds": [
+                "hofibauer"
+              ]
+            },
+            {
+              "text": "Contribute to skirmishes from a safer position with the long-range ultimate, then return to lane without giving up unnecessary farm.",
+              "scope": "champion",
+              "sourceIds": [
+                "hofibauer"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 101,
+                  "key": "R"
+                }
+              ]
+            }
+          ]
+        },
+        "win-condition": {
+          "tips": [
+            {
+              "text": "Remember that E is the hard stun and its duration grows with the orb's travel distance; lead with longer-range casts for the longer lock.",
+              "scope": "champion",
+              "sourceIds": [
+                "hofibauer"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 101,
+                  "key": "E"
+                }
+              ]
+            },
+            {
+              "text": "Stay off extended side lanes: Xerath is immobile and weak alone, so never push where opponents can collapse on him.",
+              "scope": "champion",
+              "sourceIds": [
+                "hofibauer"
+              ]
+            },
+            {
+              "text": "Chip the frontline rather than forcing a risky dive when no carry angle is available, keeping the poke threat alive for the next ultimate window.",
+              "scope": "champion",
+              "sourceIds": [
+                "hofibauer"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 101,
+                  "key": "Q"
+                },
+                {
+                  "champion": 101,
+                  "key": "R"
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "itemization": [
+        {
+          "text": "Run Arcane Comet with Manaflow Band, Transcendence, and Scorch plus Cut Down and Presence of Mind, pairing Comet with the lane-poke plan and Presence of Mind with mana sustain.",
+          "scope": "champion",
+          "sourceIds": [
+            "hofibauer"
+          ]
+        },
+        {
+          "text": "Build Luden's Echo first for damage and waveclear, then Horizon Focus for cooldowns and reliable ultimate access, preferring Horizon Focus over Shadowflame in the standard route while keeping Shadowflame as the snowball purchase when ahead.",
+          "scope": "champion",
+          "sourceIds": [
+            "hofibauer"
+          ],
+          "abilityKeys": [
+            {
+              "champion": 101,
+              "key": "R"
+            }
+          ],
+          "itemIds": [
+            6655,
+            4628,
+            4645
+          ]
+        },
+        {
+          "text": "Into tank-heavy teams take the Blackfire Torch, Sorcerer's Shoes, Liandry's Torment, Void Staff, Rabadon's Deathcap alternative, with Shadowflame, Rabadon's Deathcap, Void Staff, and Sorcerer's Shoes as standard endgame options and Zhonya's Hourglass for survival.",
+          "scope": "champion",
+          "sourceIds": [
+            "hofibauer"
+          ],
+          "itemIds": [
+            2503,
+            3020,
+            6653,
+            3135,
+            3089,
+            4645,
+            3157
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "id": "hofibauer",
+          "author": "Hofibauer",
+          "rankClaim": "Rank 1 EUW/EUNE Xerath (title, no badge) · Xerath main",
+          "url": "https://www.mobafire.com/league-of-legends/build/rank-1-euw-eune-xerath-dominating-midlane-guide-646033",
+          "kind": "mobafire"
+        }
+      ]
+    },
+    {
+      "champion": 101,
+      "lane": "support",
+      "patch": "26.21",
+      "reviewed": false,
+      "keyTips": [
+        {
+          "text": "Harass with Arcanopulse and Eye of Destruction; the Eye of Destruction slow makes it easier to land Arcanopulse and Shocking Orb.",
+          "scope": "champion",
+          "sourceIds": [
+            "mobalytics-xerath-support"
+          ],
+          "abilityKeys": [
+            {
+              "champion": 101,
+              "key": "Q"
+            },
+            {
+              "champion": 101,
+              "key": "W"
+            },
+            {
+              "champion": 101,
+              "key": "E"
+            }
+          ]
+        },
+        {
+          "text": "Save Shocking Orb as self-peel rather than spending it carelessly; a missed stun can leave Xerath open to an all-in.",
+          "scope": "champion",
+          "sourceIds": [
+            "mobalytics-xerath-support"
+          ],
+          "abilityKeys": [
+            {
+              "champion": 101,
+              "key": "E"
+            }
+          ]
+        },
+        {
+          "text": "When Rite of the Arcane is ready, poke first and then use it to finish a low target from range; cast from a position that cannot be interrupted immediately.",
+          "scope": "champion",
+          "sourceIds": [
+            "mobalytics-xerath-support"
+          ],
+          "abilityKeys": [
+            {
+              "champion": 101,
+              "key": "R"
+            }
+          ]
+        }
+      ],
+      "sections": {
+        "overview": {
+          "tips": []
+        },
+        "early-lane": {
+          "tips": [
+            {
+              "text": "Xerath is immobile and his charged Arcanopulse can be interrupted, so do not channel where enemy crowd control can reach him.",
+              "scope": "champion",
+              "sourceIds": [
+                "mobalytics-xerath-support"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 101,
+                  "key": "Q"
+                }
+              ]
+            },
+            {
+              "text": "After bot tower falls, rotate mid, pressure the tower, and use poke to keep the defender away from objectives.",
+              "scope": "champion",
+              "sourceIds": [
+                "mobalytics-xerath-support"
+              ]
+            },
+            {
+              "text": "Against a healthy enemy pair, hold Shocking Orb for an approaching diver instead of throwing it into the wave.",
+              "scope": "champion",
+              "sourceIds": [
+                "mobalytics-xerath-support"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 101,
+                  "key": "E"
+                }
+              ]
+            }
+          ]
+        },
+        "mid-lane": {
+          "tips": [
+            {
+              "text": "Delay a full fight while Arcanopulse poke lowers targets, then join when the enemy is sufficiently softened.",
+              "scope": "champion",
+              "sourceIds": [
+                "mobalytics-xerath-support"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 101,
+                  "key": "Q"
+                }
+              ]
+            },
+            {
+              "text": "Track the next major objective and establish vision safely before retreating to the team.",
+              "scope": "champion",
+              "sourceIds": [
+                "mobalytics-xerath-support"
+              ]
+            },
+            {
+              "text": "Support Xerath is vulnerable while warding or moving alone, so take a teammate on routes through uncertain areas.",
+              "scope": "champion",
+              "sourceIds": [
+                "mobalytics-xerath-support"
+              ]
+            },
+            {
+              "text": "Level six gives long-range Rite of the Arcane access; level nine maxes Arcanopulse and increases poke threat.",
+              "scope": "champion",
+              "sourceIds": [
+                "mobalytics-xerath-support"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 101,
+                  "key": "R"
+                },
+                {
+                  "champion": 101,
+                  "key": "Q"
+                }
+              ]
+            },
+            {
+              "text": "The next ultimate point at level eleven improves cleanup, and Eye of Destruction reaches max rank at level thirteen for a stronger Arcanopulse follow-up.",
+              "scope": "champion",
+              "sourceIds": [
+                "mobalytics-xerath-support"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 101,
+                  "key": "R"
+                },
+                {
+                  "champion": 101,
+                  "key": "W"
+                },
+                {
+                  "champion": 101,
+                  "key": "Q"
+                }
+              ]
+            }
+          ]
+        },
+        "win-condition": {
+          "tips": [
+            {
+              "text": "Ward major objectives and high-traffic routes late to reveal enemy movement.",
+              "scope": "champion",
+              "sourceIds": [
+                "mobalytics-xerath-support"
+              ]
+            },
+            {
+              "text": "Do not ward alone without knowing enemy positions; a pick on Xerath leaves the team in a four-versus-five.",
+              "scope": "champion",
+              "sourceIds": [
+                "mobalytics-xerath-support"
+              ]
+            },
+            {
+              "text": "Peel for allies with Shocking Orb and slow threats with Eye of Destruction instead of trying to stand in front.",
+              "scope": "champion",
+              "sourceIds": [
+                "mobalytics-xerath-support"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 101,
+                  "key": "E"
+                },
+                {
+                  "champion": 101,
+                  "key": "W"
+                }
+              ]
+            },
+            {
+              "text": "Use range and fog to pressure squishies, but keep a safe position for the ultimate channel.",
+              "scope": "champion",
+              "sourceIds": [
+                "mobalytics-xerath-support"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 101,
+                  "key": "R"
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "itemization": [
+        {
+          "text": "Take Arcane Comet, Manaflow Band, Transcendence, and Scorch with Coup de Grace and Presence of Mind as the 16.21 rune page.",
+          "scope": "champion",
+          "sourceIds": [
+            "mobalytics-xerath-support-build"
+          ]
+        },
+        {
+          "text": "Build the popular path of Zaz'Zak's Realmspike, Sorcerer's Shoes, Luden's Echo, Shadowflame, and Rabadon's Deathcap.",
+          "scope": "champion",
+          "sourceIds": [
+            "mobalytics-xerath-support-build"
+          ],
+          "itemIds": [
+            3871,
+            3020,
+            6655,
+            4645,
+            3089
+          ]
+        },
+        {
+          "text": "Start with Health Potion, Amplifying Tome, and Stealth Ward.",
+          "scope": "champion",
+          "sourceIds": [
+            "mobalytics-xerath-support-build"
+          ],
+          "itemIds": [
+            2003,
+            1052,
+            3340
+          ]
+        },
+        {
+          "text": "Choose Horizon Focus to replace Shadowflame in the fourth slot for longer-range damage or against immobilized targets.",
+          "scope": "champion",
+          "sourceIds": [
+            "mobalytics-xerath-support-build"
+          ],
+          "itemIds": [
+            4628,
+            4645
+          ]
+        },
+        {
+          "text": "Max Q, then W, then E, taking Rite of the Arcane at levels six, eleven, and sixteen.",
+          "scope": "champion",
+          "sourceIds": [
+            "mobalytics-xerath-support-build"
+          ],
+          "abilityKeys": [
+            {
+              "champion": 101,
+              "key": "Q"
+            },
+            {
+              "champion": 101,
+              "key": "W"
+            },
+            {
+              "champion": 101,
+              "key": "E"
+            },
+            {
+              "champion": 101,
+              "key": "R"
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "id": "mobalytics-xerath-support",
+          "author": "Mobalytics",
+          "rankClaim": "No rank claim",
+          "url": "https://mobalytics.gg/lol/champions/xerath/guide/support",
+          "kind": "web"
+        },
+        {
+          "id": "mobalytics-xerath-support-build",
+          "author": "Mobalytics",
+          "rankClaim": "No rank claim",
+          "url": "https://mobalytics.gg/lol/champions/xerath/build/support",
+          "kind": "web"
+        }
+      ]
+    }
+  ],
+  "vods": [
+    {
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "E_GAoLkIgE8",
+          "title": "Baicaiovo Xerath: This CN Super Server Legend is CRUSHING Challenger Mid with DEVASTATING Snipes",
+          "rankClaim": "Challenger",
+          "patch": "26.8",
+          "durationSec": 1800,
+          "patchEstimated": true,
+          "player": "Baicaiovo",
+          "uploaded": "2026-04-15",
+          "format": "stream",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 4,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "3FCxk6_txUg",
+          "title": "Xerath Mid vs Twisted Fate - KR Grandmaster Patch 26.21",
+          "rankClaim": "Grandmaster",
+          "patch": "26.21",
+          "durationSec": 1499,
+          "region": "KR",
+          "uploaded": "2026-10-29",
+          "result": "W",
+          "moments": [
+            {
+              "atSec": 181,
+              "label": "Rakan takes down Twisted Fate"
+            },
+            {
+              "atSec": 348,
+              "label": "Rakan kills Taliyah",
+              "kind": "kill"
+            },
+            {
+              "atSec": 621,
+              "label": "Blue takes 1st Dragon (Infernal)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 780,
+              "label": "Xerath outplays Jayce"
+            },
+            {
+              "atSec": 862,
+              "label": "Xerath picks off Taliyah"
+            },
+            {
+              "atSec": 953,
+              "label": "Red takes 1st Dragon (Chemtech)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 958,
+              "label": "Xerath eliminates Twisted Fate"
+            },
+            {
+              "atSec": 1060,
+              "label": "Xerath takes down Twisted Fate"
+            },
+            {
+              "atSec": 1126,
+              "label": "Xerath solo kills Jayce again",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1159,
+              "label": "Qiyana takes down Taliyah"
+            },
+            {
+              "atSec": 1187,
+              "label": "Xerath kills Zeri",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1212,
+              "label": "Red takes Baron",
+              "kind": "baron"
+            },
+            {
+              "atSec": 1221,
+              "label": "Qiyana kills Lulu",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1270,
+              "label": "Xerath picks off Taliyah"
+            },
+            {
+              "atSec": 1307,
+              "label": "Red takes 2nd Dragon (Ocean)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1327,
+              "label": "Xerath kills Zeri",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1389,
+              "label": "Team fight (3 kills)",
+              "kind": "teamfight"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 10,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "JxuiDjr4Xfg",
+          "title": "Xerath vs Kayle Mid - KR Challenger - Patch 16.20 Season 16",
+          "rankClaim": "Challenger",
+          "patch": "26.20",
+          "durationSec": 1816,
+          "region": "KR",
+          "uploaded": "2026-10-15",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 12,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "i8rczc9yF5Y",
+          "title": "Xerath Support vs Alistar - KR Grandmaster Patch 26.02",
+          "rankClaim": "Grandmaster",
+          "patch": "26.2",
+          "durationSec": 1550,
+          "region": "KR",
+          "uploaded": "2026-01-31",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 294,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 425,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 507,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 574,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 606,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 665,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 814,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 845,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 866,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 923,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1052,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1276,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1401,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1496,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1514,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1539,
+              "label": "End credit"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 13,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "DahtithC05Q",
+          "title": "Xerath Mid vs Ryze - KR Master Patch 26.03",
+          "rankClaim": "Master",
+          "patch": "26.3",
+          "durationSec": 1441,
+          "region": "KR",
+          "uploaded": "2026-02-09",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 282,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 314,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 490,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 575,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 842,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1096,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1137,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1159,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1274,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1309,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1357,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1407,
+              "label": "Take down The Inhibitor"
+            },
+            {
+              "atSec": 1430,
+              "label": "End credit"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 18,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "SK4AGnXiV7c",
+          "title": "Xerath Mid vs Tristana - KR Challenger Patch 25.09",
+          "rankClaim": "Challenger",
+          "patch": "25.9",
+          "durationSec": 1894,
+          "region": "KR",
+          "uploaded": "2025-05-05",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 26,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "gfz2OHy3pmc",
+          "title": "Xerath Mid vs Zilean - KR Master Patch 26.05",
+          "rankClaim": "Master",
+          "patch": "26.5",
+          "durationSec": 1639,
+          "region": "KR",
+          "uploaded": "2026-03-08",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 432,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 625,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 944,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1191,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1216,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1292,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1319,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1383,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1461,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1540,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1570,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1601,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1628,
+              "label": "End credit"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 34,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "jsNS888YUPA",
+          "title": "Xerath Mid vs Anivia - KR Master Patch 26.02",
+          "rankClaim": "Master",
+          "patch": "26.2",
+          "durationSec": 1578,
+          "region": "KR",
+          "uploaded": "2026-01-25",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 34,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "Jv0EbeR-YGw",
+          "title": "Xerath Support vs Anivia - NA Grandmaster Patch 26.03",
+          "rankClaim": "Grandmaster",
+          "patch": "26.3",
+          "durationSec": 1466,
+          "region": "NA",
+          "uploaded": "2026-02-17",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 37,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "R3XPPpaJE7I",
+          "title": "Xerath Support vs Sona - NA Challenger Patch 26.08",
+          "rankClaim": "Challenger",
+          "patch": "26.8",
+          "durationSec": 1668,
+          "region": "NA",
+          "uploaded": "2026-04-25",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 39,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "1tv2kJsDbtQ",
+          "title": "Xerath Mid vs Irelia - KR Challenger Patch 26.16",
+          "rankClaim": "Challenger",
+          "patch": "26.16",
+          "durationSec": 1513,
+          "region": "KR",
+          "uploaded": "2026-08-25",
+          "moments": []
+        },
+        {
+          "videoId": "wNo-Tzyswz8",
+          "title": "Xerath Mid vs Irelia - KR Master Patch 25.22",
+          "rankClaim": "Master",
+          "patch": "25.22",
+          "durationSec": 1428,
+          "region": "KR",
+          "uploaded": "2025-11-11",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 42,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "Tt19laMJH58",
+          "title": "Xerath Mid vs Corki - KR Grandmaster Patch 26.07",
+          "rankClaim": "Grandmaster",
+          "patch": "26.7",
+          "durationSec": 1558,
+          "region": "KR",
+          "uploaded": "2026-04-04",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 343,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 443,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 838,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 901,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1056,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1096,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1203,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1243,
+              "label": "Hunt The Baron Nashor",
+              "kind": "baron"
+            },
+            {
+              "atSec": 1299,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1323,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1351,
+              "label": "Take down The Inhibitor"
+            },
+            {
+              "atSec": 1388,
+              "label": "Take down The Inhibitor"
+            },
+            {
+              "atSec": 1424,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1499,
+              "label": "Hunt The Dragon",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1547,
+              "label": "End credit"
+            }
+          ]
+        },
+        {
+          "videoId": "sIVwBW6WCX0",
+          "title": "Xerath Mid vs Corki - KR Challenger Patch 25.05",
+          "rankClaim": "Challenger",
+          "patch": "25.5",
+          "durationSec": 1657,
+          "region": "KR",
+          "uploaded": "2025-03-10",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 43,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "VqfyUT0ZJno",
+          "title": "Xerath Support vs Karma - KR Master Patch 25.10",
+          "rankClaim": "Master",
+          "patch": "25.10",
+          "durationSec": 1901,
+          "region": "KR",
+          "uploaded": "2025-05-31",
+          "moments": []
+        },
+        {
+          "videoId": "61uAywkq6B0",
+          "title": "Xerath Support vs Karma - EUW Grandmaster Patch 25.05",
+          "rankClaim": "Grandmaster",
+          "patch": "25.5",
+          "durationSec": 1811,
+          "region": "EUW",
+          "uploaded": "2025-03-16",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 196,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 297,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 374,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 656,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 946,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1015,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1179,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1284,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1375,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1474,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1586,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1639,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1749,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1790,
+              "label": "End credit"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 45,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "ewH2thYpM_U",
+          "title": "Xerath Top vs Veigar - KR Master Patch 25.12",
+          "rankClaim": "Master",
+          "patch": "25.12",
+          "durationSec": 1875,
+          "region": "KR",
+          "uploaded": "2025-06-17",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 51,
+      "lane": "adc",
+      "videos": [
+        {
+          "videoId": "0ByI_M9Zuyo",
+          "title": "HLE Gumayusi Xerath vs Caitlyn [ ADC ] Korea Challenger 2548 LP | Patch 26.13",
+          "rankClaim": "Challenger",
+          "patch": "26.13",
+          "durationSec": 1318,
+          "region": "KR",
+          "player": "Gumayusi",
+          "team": "HLE",
+          "uploaded": "2026-07-06",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 57,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "fEgyFwrq80U",
+          "title": "Xerath Support vs Maokai - KR Master Patch 25.23",
+          "rankClaim": "Master",
+          "patch": "25.23",
+          "durationSec": 1578,
+          "region": "KR",
+          "uploaded": "2025-12-02",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 60,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "rgWJE-SpkCU",
+          "title": "Xerath Support vs Elise - KR Master Patch 26.06",
+          "rankClaim": "Master",
+          "patch": "26.6",
+          "durationSec": 1589,
+          "region": "KR",
+          "uploaded": "2026-03-30",
+          "moments": []
+        },
+        {
+          "videoId": "YTiwX0f2blA",
+          "title": "Xerath Support vs Elise - KR Master Patch 25.20",
+          "rankClaim": "Master",
+          "patch": "25.20",
+          "durationSec": 1426,
+          "region": "KR",
+          "uploaded": "2025-10-21",
+          "moments": []
+        },
+        {
+          "videoId": "OBNHo-9re5E",
+          "title": "Xerath Support vs Elise - NA Grandmaster Patch 25.18",
+          "rankClaim": "Grandmaster",
+          "patch": "25.18",
+          "durationSec": 1546,
+          "region": "NA",
+          "uploaded": "2025-09-21",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 61,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "cRyrmTD4W-c",
+          "title": "Xerath Mid vs Orianna - KR Grandmaster Patch 25.23",
+          "rankClaim": "Grandmaster",
+          "patch": "25.23",
+          "durationSec": 1727,
+          "region": "KR",
+          "uploaded": "2025-11-25",
+          "moments": []
+        },
+        {
+          "videoId": "qQXwFo3cK24",
+          "title": "Xerath Mid vs Orianna - KR Master Patch 25.17",
+          "rankClaim": "Master",
+          "patch": "25.17",
+          "durationSec": 1725,
+          "region": "KR",
+          "uploaded": "2025-09-02",
+          "moments": []
+        },
+        {
+          "videoId": "8M3Ouz7E-18",
+          "title": "Xerath Mid vs Orianna - KR Master Patch 25.16",
+          "rankClaim": "Master",
+          "patch": "25.16",
+          "durationSec": 1734,
+          "region": "KR",
+          "uploaded": "2025-08-21",
+          "moments": []
+        },
+        {
+          "videoId": "RICToCRS52E",
+          "title": "Xerath Mid vs Orianna - KR Grandmaster Patch 25.14",
+          "rankClaim": "Grandmaster",
+          "patch": "25.14",
+          "durationSec": 1809,
+          "region": "KR",
+          "uploaded": "2025-07-23",
+          "moments": []
+        },
+        {
+          "videoId": "gCSyC37q7BM",
+          "title": "DK ShowMaker Xerath vs Orianna [ MID ] Korea Master Patch 25.13 ✅",
+          "rankClaim": "Master",
+          "patch": "25.13",
+          "durationSec": 1649,
+          "region": "KR",
+          "player": "ShowMaker",
+          "team": "DK",
+          "uploaded": "2025-07-04",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 63,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "1C5yYEmVVIo",
+          "title": "Xerath Mid vs Brand - NA Challenger Patch 25.24",
+          "rankClaim": "Challenger",
+          "patch": "25.24",
+          "durationSec": 1547,
+          "region": "NA",
+          "uploaded": "2025-12-30",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 69,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "EJgJUYbYzn0",
+          "title": "(CF CROmpir) Xerath Mid vs Cassiopeia - EUW Challenger Patch 26.13",
+          "rankClaim": "Challenger",
+          "patch": "26.13",
+          "durationSec": 1635,
+          "region": "EUW",
+          "player": "CF CROmpir",
+          "uploaded": "2026-07-01",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 84,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "Gkejc6QaH58",
+          "title": "Xerath Mid vs Akali - KR Master Patch 25.15",
+          "rankClaim": "Master",
+          "patch": "25.15",
+          "durationSec": 1811,
+          "region": "KR",
+          "uploaded": "2025-08-06",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 89,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "2p1e5MOUajw",
+          "title": "Xerath Support vs Leona - KR Master Patch 26.19",
+          "rankClaim": "Master",
+          "patch": "26.19",
+          "durationSec": 1731,
+          "region": "KR",
+          "uploaded": "2026-10-02",
+          "moments": []
+        },
+        {
+          "videoId": "EQ4MX-fxLCY",
+          "title": "Xerath Support vs Leona - KR Grandmaster Patch 26.01",
+          "rankClaim": "Grandmaster",
+          "patch": "26.1",
+          "durationSec": 1492,
+          "region": "KR",
+          "uploaded": "2026-01-19",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 152,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 350,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 401,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 514,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 546,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 566,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 661,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 724,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 778,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 864,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 914,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 934,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1067,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1243,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1415,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1481,
+              "label": "End credit"
+            }
+          ]
+        },
+        {
+          "videoId": "WcAcnw9bvsc",
+          "title": "Xerath Support vs Leona - NA Challenger Patch 25.15",
+          "rankClaim": "Challenger",
+          "patch": "25.15",
+          "durationSec": 1773,
+          "region": "NA",
+          "uploaded": "2025-08-10",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 111,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "wj1wWxcPcFY",
+          "title": "Xerath Support vs Nautilus - EUW Grandmaster Patch 25.09",
+          "rankClaim": "Grandmaster",
+          "patch": "25.9",
+          "durationSec": 1667,
+          "region": "EUW",
+          "uploaded": "2025-05-10",
+          "moments": []
+        },
+        {
+          "videoId": "bY22skONrSc",
+          "title": "Xerath Support vs Nautilus - KR Grandmaster Patch 25.08",
+          "rankClaim": "Grandmaster",
+          "patch": "25.8",
+          "durationSec": 1489,
+          "region": "KR",
+          "uploaded": "2025-04-28",
+          "moments": []
+        },
+        {
+          "videoId": "PElnc5DZSko",
+          "title": "Xerath Support vs Nautilus - NA Grandmaster Patch 25.06",
+          "rankClaim": "Grandmaster",
+          "patch": "25.6",
+          "durationSec": 2028,
+          "region": "NA",
+          "uploaded": "2025-03-30",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 76,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 218,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 443,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 573,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 700,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 878,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 941,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 985,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1009,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1102,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1223,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1312,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1438,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1484,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1551,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1701,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1818,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1849,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1876,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1890,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1901,
+              "label": "Take down The Inhibitor"
+            },
+            {
+              "atSec": 1954,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1982,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 2007,
+              "label": "End credit"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 112,
+      "lane": "adc",
+      "videos": [
+        {
+          "videoId": "mkM-HIyhSwM",
+          "title": "HLE Gumayusi Xerath vs Viktor [ ADC ] Korea Challenger 2559 LP | Patch 26.14",
+          "rankClaim": "Challenger",
+          "patch": "26.14",
+          "durationSec": 798,
+          "region": "KR",
+          "player": "Gumayusi",
+          "team": "HLE",
+          "uploaded": "2026-07-26",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 112,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "rRZTiXLcxEo",
+          "title": "Xerath Mid vs Viktor - KR Challenger Patch 26.06",
+          "rankClaim": "Challenger",
+          "patch": "26.6",
+          "durationSec": 1551,
+          "region": "KR",
+          "uploaded": "2026-03-23",
+          "moments": []
+        },
+        {
+          "videoId": "7TUDNEz1YPw",
+          "title": "Xerath Mid vs Viktor - KR Master Patch 25.11",
+          "rankClaim": "Master",
+          "patch": "25.11",
+          "durationSec": 1816,
+          "region": "KR",
+          "uploaded": "2025-06-06",
+          "moments": []
+        },
+        {
+          "videoId": "1YwRO_pmiqM",
+          "title": "Xerath Mid vs Viktor - KR Grandmaster Patch 25.07",
+          "rankClaim": "Grandmaster",
+          "patch": "25.7",
+          "durationSec": 1752,
+          "region": "KR",
+          "uploaded": "2025-04-07",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 380,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 519,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 744,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 821,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 871,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 997,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1141,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1174,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1203,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1218,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1321,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1460,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1476,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1528,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1667,
+              "label": "Take down The Inhibitor"
+            },
+            {
+              "atSec": 1696,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1715,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1731,
+              "label": "End credit"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 115,
+      "lane": "adc",
+      "videos": [
+        {
+          "videoId": "FFupezr3i0E",
+          "title": "Xerath Bot vs Ziggs (Racoon) - KR Challenger Patch 26.21",
+          "rankClaim": "Challenger",
+          "patch": "26.21",
+          "durationSec": 1914,
+          "region": "KR",
+          "uploaded": "2026-11-01",
+          "result": "W",
+          "moments": [
+            {
+              "atSec": 332,
+              "label": "Blue takes 1st Dragon (Infernal)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 371,
+              "label": "Xerath outduels Ziggs"
+            },
+            {
+              "atSec": 574,
+              "label": "Xerath outplays Ziggs again"
+            },
+            {
+              "atSec": 672,
+              "label": "Red takes 1st Dragon (Chemtech)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1003,
+              "label": "Red takes 2nd Dragon (Hextech)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1203,
+              "label": "Xerath solo kills Ziggs (3rd time)",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1314,
+              "label": "Blue takes 2nd Dragon (Hextech)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1391,
+              "label": "Red takes Baron",
+              "kind": "baron"
+            },
+            {
+              "atSec": 1500,
+              "label": "Xerath kills Viktor",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1561,
+              "label": "Xerath picks off Pyke"
+            },
+            {
+              "atSec": 1677,
+              "label": "Red takes 3rd Dragon (Hextech)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1735,
+              "label": "Xerath takes down Ziggs (4th time)"
+            },
+            {
+              "atSec": 1767,
+              "label": "Xerath eliminates Qiyana"
+            },
+            {
+              "atSec": 1774,
+              "label": "Xerath Triple Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1830,
+              "label": "Xerath catches Ziggs (5th time)"
+            },
+            {
+              "atSec": 1879,
+              "label": "Red takes 2nd Baron",
+              "kind": "baron"
+            },
+            {
+              "atSec": 1895,
+              "label": "Xerath Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1898,
+              "label": "Xerath Triple Kill",
+              "kind": "kill"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 117,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "QRgTgO5PO_Y",
+          "title": "Xerath Support vs Lulu - NA Challenger Patch 25.22",
+          "rankClaim": "Challenger",
+          "patch": "25.22",
+          "durationSec": 1782,
+          "region": "NA",
+          "uploaded": "2025-11-18",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 127,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "kxSTKPYKeng",
+          "title": "Xerath Mid vs Lissandra - KR Master Patch 26.19",
+          "rankClaim": "Master",
+          "patch": "26.19",
+          "durationSec": 1880,
+          "region": "KR",
+          "uploaded": "2026-10-01",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 134,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "bojmi_sMLiY",
+          "title": "Xerath Mid vs Syndra - KR Master Patch 26.18",
+          "rankClaim": "Master",
+          "patch": "26.18",
+          "durationSec": 1655,
+          "region": "KR",
+          "uploaded": "2026-09-18",
+          "moments": []
+        },
+        {
+          "videoId": "NBXLYD3Yyug",
+          "title": "Xerath Mid vs Syndra - KR Master Patch 26.17",
+          "rankClaim": "Master",
+          "patch": "26.17",
+          "durationSec": 1673,
+          "region": "KR",
+          "uploaded": "2026-09-03",
+          "result": "W",
+          "moments": [
+            {
+              "atSec": 143,
+              "label": "First Blood — Xerath kills Syndra",
+              "kind": "kill"
+            },
+            {
+              "atSec": 663,
+              "label": "Xerath takes down Thresh"
+            },
+            {
+              "atSec": 782,
+              "label": "Red takes 1st Dragon (Hextech)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 805,
+              "label": "Xerath takes down Syndra"
+            },
+            {
+              "atSec": 853,
+              "label": "Xerath outduels Thresh"
+            },
+            {
+              "atSec": 955,
+              "label": "Senna takes down Syndra"
+            },
+            {
+              "atSec": 982,
+              "label": "Senna eliminates Thresh"
+            },
+            {
+              "atSec": 1033,
+              "label": "Yone takes down Syndra"
+            },
+            {
+              "atSec": 1115,
+              "label": "Xerath kills Yunara",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1141,
+              "label": "Blue takes 1st Dragon (Mountain)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1230,
+              "label": "Senna picks off Yunara"
+            },
+            {
+              "atSec": 1347,
+              "label": "Senna picks off Yunara"
+            },
+            {
+              "atSec": 1387,
+              "label": "Mid Inhibitor falls (Red)"
+            },
+            {
+              "atSec": 1443,
+              "label": "Yone Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1482,
+              "label": "Red takes 2nd Dragon (Chemtech)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1557,
+              "label": "Team fight (4 kills)",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1576,
+              "label": "Red takes Baron",
+              "kind": "baron"
+            },
+            {
+              "atSec": 1606,
+              "label": "Xerath takes down Thresh"
+            }
+          ]
+        },
+        {
+          "videoId": "eiS6FPJ7ubU",
+          "title": "(BAN bbmuffin) Xerath Mid vs Syndra - EUW Challenger Patch 26.14",
+          "rankClaim": "Challenger",
+          "patch": "26.14",
+          "durationSec": 1568,
+          "region": "EUW",
+          "player": "BAN bbmuffin",
+          "uploaded": "2026-07-20",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 136,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "uT3Q88DocnA",
+          "title": "Xerath Mid vs Aurelion Sol - EUW Grandmaster Patch 26.05",
+          "rankClaim": "Grandmaster",
+          "patch": "26.5",
+          "durationSec": 1606,
+          "region": "EUW",
+          "uploaded": "2026-03-17",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 165,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 296,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 351,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 415,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 535,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 647,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 801,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 950,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 972,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1041,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1160,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1270,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1338,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1363,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1376,
+              "label": "Take down The Inhibitor"
+            },
+            {
+              "atSec": 1401,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1499,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1595,
+              "label": "End credit"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 142,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "w7llYiZkHeQ",
+          "title": "Xerath Mid vs Zoe - KR Challenger Patch 26.04",
+          "rankClaim": "Challenger",
+          "patch": "26.4",
+          "durationSec": 1724,
+          "region": "KR",
+          "uploaded": "2026-02-22",
+          "moments": []
+        },
+        {
+          "videoId": "qJOF9CJe3Rs",
+          "title": "Xerath Mid vs Zoe - KR Master Patch 26.01",
+          "rankClaim": "Master",
+          "patch": "26.1",
+          "durationSec": 1604,
+          "region": "KR",
+          "uploaded": "2026-01-13",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 190,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 339,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 406,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 623,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 775,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 907,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1022,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1051,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1132,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1222,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1352,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1386,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1537,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1558,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1573,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1593,
+              "label": "End credit"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 145,
+      "lane": "adc",
+      "videos": [
+        {
+          "videoId": "zca8XCiFS6k",
+          "title": "Xerath Bot vs Kai'Sa - KR Grandmaster Patch 26.18",
+          "rankClaim": "Grandmaster",
+          "patch": "26.18",
+          "durationSec": 1488,
+          "region": "KR",
+          "uploaded": "2026-09-21",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 147,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "OlX28vUc--w",
+          "title": "Xerath Support vs Seraphine - KR Master Patch 25.21",
+          "rankClaim": "Master",
+          "patch": "25.21",
+          "durationSec": 1539,
+          "region": "KR",
+          "uploaded": "2025-11-02",
+          "moments": []
+        },
+        {
+          "videoId": "T7mzUvW2tQw",
+          "title": "Xerath Support vs Seraphine - EUW Grandmaster Patch 25.16",
+          "rankClaim": "Grandmaster",
+          "patch": "25.16",
+          "durationSec": 2021,
+          "region": "EUW",
+          "uploaded": "2025-08-26",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 157,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "CiH1OL1Nenc",
+          "title": "Xerath Mid vs Yasuo - KR Master Patch 25.24",
+          "rankClaim": "Master",
+          "patch": "25.24",
+          "durationSec": 1532,
+          "region": "KR",
+          "uploaded": "2025-12-09",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 163,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "SXrOM077oI0",
+          "title": "Xerath Mid vs Taliyah - KR Master Patch 25.18",
+          "rankClaim": "Master",
+          "patch": "25.18",
+          "durationSec": 1990,
+          "region": "KR",
+          "uploaded": "2025-09-14",
+          "moments": []
+        },
+        {
+          "videoId": "2uojbNUIHeM",
+          "title": "Xerath vs Taliyah Mid - KR Challenger - Patch 25.5 Season 15",
+          "rankClaim": "Challenger",
+          "patch": "25.5",
+          "durationSec": 2290,
+          "region": "KR",
+          "uploaded": "2025-03-08",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 235,
+      "lane": "adc",
+      "videos": [
+        {
+          "videoId": "c_l4_vtSB9w",
+          "title": "T1 Gumayusi Xerath ADC vs Senna - Patch 25.11 Korea Challenger",
+          "rankClaim": "Challenger",
+          "patch": "25.11",
+          "durationSec": 1289,
+          "region": "KR",
+          "player": "Gumayusi",
+          "team": "T1",
+          "uploaded": "2025-06-08",
+          "moments": []
+        },
+        {
+          "videoId": "zjXLyfEEjbY",
+          "title": "T1 Gumayusi Xerath vs Senna [ ADC ] Korea Challenger Patch 25.11",
+          "rankClaim": "Challenger",
+          "patch": "25.11",
+          "durationSec": 1394,
+          "region": "KR",
+          "player": "Gumayusi",
+          "team": "T1",
+          "uploaded": "2025-06-02",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 238,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "zUYLnM7LolI",
+          "title": "Xerath Mid vs Zed - TW Challenger Patch 25.10",
+          "rankClaim": "Challenger",
+          "patch": "25.10",
+          "durationSec": 2011,
+          "uploaded": "2025-05-26",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 245,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "5tekTuLzTNw",
+          "title": "Xerath Mid vs Ekko - EUW Challenger Patch 25.12",
+          "rankClaim": "Challenger",
+          "patch": "25.12",
+          "durationSec": 1571,
+          "region": "EUW",
+          "uploaded": "2025-06-26",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 246,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "7EoLOdsFG80",
+          "title": "Xerath Mid vs Qiyana - KR Challenger Patch 25.04",
+          "rankClaim": "Challenger",
+          "patch": "25.4",
+          "durationSec": 2086,
+          "region": "KR",
+          "uploaded": "2025-02-23",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 409,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 771,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 867,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 895,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1036,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1090,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1229,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1303,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1449,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1557,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1664,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1917,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 2012,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 2052,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 2065,
+              "label": "End credit"
+            }
+          ]
+        },
+        {
+          "videoId": "GQmdhMI78aw",
+          "title": "T1 Faker Xerath vs Qiyana [ MID ] Korea Master Patch 25.1 ✅",
+          "rankClaim": "Master",
+          "patch": "25.1",
+          "durationSec": 1492,
+          "region": "KR",
+          "player": "Faker",
+          "team": "T1",
+          "uploaded": "2025-01-21",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 267,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "ik5sMlYEROQ",
+          "title": "Xerath Support vs Nami - KR Master Patch 26.20",
+          "rankClaim": "Master",
+          "patch": "26.20",
+          "durationSec": 1635,
+          "region": "KR",
+          "uploaded": "2026-10-17",
+          "result": "W",
+          "moments": [
+            {
+              "atSec": 125,
+              "label": "First Blood — Xerath kills Zed",
+              "kind": "kill"
+            },
+            {
+              "atSec": 414,
+              "label": "Yunara takes down Zed"
+            },
+            {
+              "atSec": 520,
+              "label": "Xerath outplays Zed"
+            },
+            {
+              "atSec": 551,
+              "label": "Red takes 1st Dragon (Chemtech)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 563,
+              "label": "Nasus eliminates Sylas"
+            },
+            {
+              "atSec": 715,
+              "label": "Lillia kills Nami",
+              "kind": "kill"
+            },
+            {
+              "atSec": 842,
+              "label": "Yunara takes down Zed"
+            },
+            {
+              "atSec": 901,
+              "label": "Red takes 2nd Dragon (Cloud)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 932,
+              "label": "Xerath solo kills Zed again",
+              "kind": "kill"
+            },
+            {
+              "atSec": 990,
+              "label": "Yunara Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1064,
+              "label": "Lillia kills Mordekaiser",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1188,
+              "label": "Yorick takes down Sylas"
+            },
+            {
+              "atSec": 1212,
+              "label": "Yunara Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1256,
+              "label": "Red takes 3rd Dragon (Ocean)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1374,
+              "label": "Xerath eliminates Mordekaiser"
+            },
+            {
+              "atSec": 1453,
+              "label": "Team fight (3 kills)",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1574,
+              "label": "Xerath eliminates Nami"
+            }
+          ]
+        },
+        {
+          "videoId": "sNGp3vAjCJk",
+          "title": "Xerath Support vs Nami - KR Master Patch 25.24",
+          "rankClaim": "Master",
+          "patch": "25.24",
+          "durationSec": 1592,
+          "region": "KR",
+          "uploaded": "2025-12-13",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 268,
+      "lane": "adc",
+      "videos": [
+        {
+          "videoId": "sMew_r44Qg8",
+          "title": "Xerath Bot vs Azir (KT FenRir) - KR Challenger Patch 26.17",
+          "rankClaim": "Challenger",
+          "patch": "26.17",
+          "durationSec": 1595,
+          "region": "KR",
+          "uploaded": "2026-09-09",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 268,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "xEP_bGFDxw4",
+          "title": "Xerath Mid vs Azir - KR Grandmaster Patch 25.20",
+          "rankClaim": "Grandmaster",
+          "patch": "25.20",
+          "durationSec": 1494,
+          "region": "KR",
+          "uploaded": "2025-10-14",
+          "moments": []
+        },
+        {
+          "videoId": "7BXT26fhvck",
+          "title": "Xerath Mid vs Azir - KR Master Patch 25.13",
+          "rankClaim": "Master",
+          "patch": "25.13",
+          "durationSec": 1506,
+          "region": "KR",
+          "uploaded": "2025-07-01",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 412,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "X81wqvm64rY",
+          "title": "Xerath Support vs Thresh - KR Master Patch 25.11",
+          "rankClaim": "Master",
+          "patch": "25.11",
+          "durationSec": 1700,
+          "region": "KR",
+          "uploaded": "2025-06-10",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 432,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "syhQn-_3E-I",
+          "title": "Xerath Support vs Bard - KR Master Patch 26.04",
+          "rankClaim": "Master",
+          "patch": "26.4",
+          "durationSec": 1830,
+          "region": "KR",
+          "uploaded": "2026-03-02",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 497,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "OdnuxfxZSWg",
+          "title": "Xerath Support vs Rakan - KR Master Patch 25.19",
+          "rankClaim": "Master",
+          "patch": "25.19",
+          "durationSec": 1813,
+          "region": "KR",
+          "uploaded": "2025-10-06",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 517,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "7-FCiiHGjHI",
+          "title": "Xerath Mid vs Sylas - KR Grandmaster Patch 25.21",
+          "rankClaim": "Grandmaster",
+          "patch": "25.21",
+          "durationSec": 1912,
+          "region": "KR",
+          "uploaded": "2025-10-27",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 518,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "8EY_AGT_2Lw",
+          "title": "(BDG Ronaldo) Xerath Mid vs Neeko - EUW Challenger Patch 26.11",
+          "rankClaim": "Challenger",
+          "patch": "26.11",
+          "durationSec": 1732,
+          "region": "EUW",
+          "player": "BDG Ronaldo",
+          "uploaded": "2026-06-07",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 518,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "NNa7ICOUNvE",
+          "title": "Xerath Support vs Neeko - KR Master Patch 25.14",
+          "rankClaim": "Master",
+          "patch": "25.14",
+          "durationSec": 1989,
+          "region": "KR",
+          "uploaded": "2025-07-28",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 526,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "lHdaScfmlQo",
+          "title": "Xerath Support vs Rell - NA Grandmaster Patch 25.13",
+          "rankClaim": "Grandmaster",
+          "patch": "25.13",
+          "durationSec": 1543,
+          "region": "NA",
+          "uploaded": "2025-07-06",
+          "moments": []
+        },
+        {
+          "videoId": "4JR-7Itxejg",
+          "title": "Xerath Support vs Rell - KR Master Patch 25.07",
+          "rankClaim": "Master",
+          "patch": "25.7",
+          "durationSec": 1761,
+          "region": "KR",
+          "uploaded": "2025-04-13",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 555,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "LlFHCfPm6zs",
+          "title": "Xerath Support vs Pyke - KR Challenger Patch 26.07",
+          "rankClaim": "Challenger",
+          "patch": "26.7",
+          "durationSec": 1901,
+          "region": "KR",
+          "uploaded": "2026-04-11",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 711,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "KZGkCeZM7cE",
+          "title": "Xerath Mid vs Vex - KR Challenger Patch 25.08",
+          "rankClaim": "Challenger",
+          "patch": "25.8",
+          "durationSec": 1656,
+          "region": "KR",
+          "uploaded": "2025-04-20",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 181,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 391,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 548,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 669,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 791,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 984,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1011,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1032,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1195,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1277,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1386,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1500,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1606,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1625,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1635,
+              "label": "End credit"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 777,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "Ewcg-at4FZA",
+          "title": "(NS Kingen) Xerath Mid vs Yone - KR Challenger Patch 26.15",
+          "rankClaim": "Challenger",
+          "patch": "26.15",
+          "durationSec": 1401,
+          "region": "KR",
+          "player": "Kingen",
+          "team": "NS",
+          "uploaded": "2026-08-11",
+          "moments": []
+        },
+        {
+          "videoId": "cgE9gOZ_x90",
+          "title": "Xerath Mid vs Yone - KR Master Patch 25.06",
+          "rankClaim": "Master",
+          "patch": "25.6",
+          "durationSec": 1863,
+          "region": "KR",
+          "uploaded": "2025-03-25",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 479,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 620,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 672,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 739,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 830,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1005,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1147,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1255,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1330,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1517,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1670,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1769,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1842,
+              "label": "End credit"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 800,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "DDDZi2E0mxw",
+          "title": "Xerath Support vs Mel - KR Master Patch 25.24",
+          "rankClaim": "Master",
+          "patch": "25.24",
+          "durationSec": 1558,
+          "region": "KR",
+          "uploaded": "2026-01-05",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 805,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "Dr8i4YvMq2w",
+          "title": "Xerath Mid vs Locke - KR Master Patch 26.20",
+          "rankClaim": "Master",
+          "patch": "26.20",
+          "durationSec": 1699,
+          "region": "KR",
+          "uploaded": "2026-10-16",
+          "result": "W",
+          "moments": [
+            {
+              "atSec": 114,
+              "label": "First Blood — Xerath kills Locke",
+              "kind": "kill"
+            },
+            {
+              "atSec": 179,
+              "label": "Nunu & Willump picks off Locke"
+            },
+            {
+              "atSec": 251,
+              "label": "Xerath takes down Locke"
+            },
+            {
+              "atSec": 467,
+              "label": "Red takes 1st Dragon (Hextech)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 611,
+              "label": "Nunu & Willump takes down Karthus"
+            },
+            {
+              "atSec": 749,
+              "label": "Xerath picks off Karthus"
+            },
+            {
+              "atSec": 850,
+              "label": "Red takes 2nd Dragon (Chemtech)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 862,
+              "label": "Nunu & Willump takes down Karthus"
+            },
+            {
+              "atSec": 1030,
+              "label": "Nunu & Willump kills Lulu",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1291,
+              "label": "Blue takes 1st Dragon (Cloud)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1330,
+              "label": "Azir kills Karthus",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1438,
+              "label": "Aphelios Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1501,
+              "label": "Blue takes Baron",
+              "kind": "baron"
+            },
+            {
+              "atSec": 1585,
+              "label": "Xerath solo kills Karthus",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1593,
+              "label": "Mid Inhibitor falls (Red)"
+            },
+            {
+              "atSec": 1631,
+              "label": "Aphelios Double Kill",
+              "kind": "kill"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 910,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "Zg6LDnrTvGY",
+          "title": "Xerath Mid vs Hwei - KR Grandmaster Patch 26.10",
+          "rankClaim": "Grandmaster",
+          "patch": "26.10",
+          "durationSec": 1578,
+          "region": "KR",
+          "uploaded": "2026-05-15",
+          "moments": []
+        },
+        {
+          "videoId": "iitkXrtVDeU",
+          "title": "Xerath Mid vs Hwei - KR Grandmaster Patch 26.09",
+          "rankClaim": "Grandmaster",
+          "patch": "26.9",
+          "durationSec": 1821,
+          "region": "KR",
+          "uploaded": "2026-05-10",
+          "moments": []
+        },
+        {
+          "videoId": "DPeLPv7AQ-M",
+          "title": "Xerath Mid vs Hwei - VN Challenger Patch 26.08",
+          "rankClaim": "Challenger",
+          "patch": "26.8",
+          "durationSec": 1833,
+          "uploaded": "2026-04-19",
+          "moments": []
+        },
+        {
+          "videoId": "-_iMkyXQCnE",
+          "title": "Xerath Mid vs Hwei - KR Grandmaster Patch 25.19",
+          "rankClaim": "Grandmaster",
+          "patch": "25.19",
+          "durationSec": 1726,
+          "region": "KR",
+          "uploaded": "2025-10-01",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 950,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "FEihK-rrzpU",
+          "title": "Xerath Mid vs Naafiri - EUW Challenger Patch 26.12",
+          "rankClaim": "Challenger",
+          "patch": "26.12",
+          "durationSec": 1574,
+          "region": "EUW",
+          "uploaded": "2026-06-19",
+          "moments": []
+        }
+      ]
+    }
+  ]
+}

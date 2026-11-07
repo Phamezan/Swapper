@@ -1,0 +1,6413 @@
+{
+  "schema": 1,
+  "champion": 246,
+  "generatedAt": "2026-11-07T13:25:14.592Z",
+  "guides": [
+    {
+      "champion": 246,
+      "enemy": 84,
+      "lane": "mid",
+      "patch": "26.21",
+      "reviewed": false,
+      "difficulty": "Easy",
+      "favoredWhen": "She dodges Qs, reads ice, and Es only when you E. Vary elements, E unpredictably.",
+      "keyTips": [
+        {
+          "text": "She dodges your Qs: the blades are the lane, so lead them.",
+          "scope": "pair",
+          "sourceIds": [
+            "anguish"
+          ],
+          "abilityKeys": [
+            {
+              "champion": 246,
+              "key": "Q"
+            }
+          ]
+        },
+        {
+          "text": "Ice signals gank or all-in: white blade means she backs off, so show it.",
+          "scope": "pair",
+          "sourceIds": [
+            "anguish"
+          ]
+        },
+        {
+          "text": "She never wastes E: she uses it when you E onto her, so E unpredictably.",
+          "scope": "pair",
+          "sourceIds": [
+            "anguish"
+          ],
+          "abilityKeys": [
+            {
+              "champion": 84,
+              "key": "E"
+            },
+            {
+              "champion": 246,
+              "key": "E"
+            }
+          ]
+        }
+      ],
+      "enemyTips": {},
+      "sections": {
+        "overview": {
+          "tips": []
+        },
+        "early-lane": {
+          "tips": [
+            {
+              "text": "She concedes the early: your burst out-trades hers, so press.",
+              "scope": "pair",
+              "sourceIds": [
+                "anguish"
+              ]
+            },
+            {
+              "text": "She sidesteps blades for free HP: hold Q until she commits.",
+              "scope": "pair",
+              "sourceIds": [
+                "anguish"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 246,
+                  "key": "Q"
+                }
+              ]
+            }
+          ]
+        },
+        "mid-lane": {
+          "tips": [
+            {
+              "text": "She answers your E with E: bait hers before dashing in.",
+              "scope": "pair",
+              "sourceIds": [
+                "anguish"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 84,
+                  "key": "E"
+                },
+                {
+                  "champion": 246,
+                  "key": "E"
+                }
+              ]
+            },
+            {
+              "text": "Ice up means she concedes: press with white blade.",
+              "scope": "pair",
+              "sourceIds": [
+                "anguish"
+              ]
+            }
+          ]
+        },
+        "win-condition": {
+          "tips": [
+            {
+              "text": "Blades landed plus Es unanswered: the Akali who always dodges never wins.",
+              "scope": "pair",
+              "sourceIds": [
+                "anguish"
+              ]
+            }
+          ]
+        }
+      },
+      "itemization": [],
+      "sources": [
+        {
+          "id": "anguish",
+          "author": "Anguish333",
+          "rankClaim": "Master (profile badge; title claims 2000LP GrandMaster EUW and Challenger EUNE) · Akali main",
+          "rank": "master",
+          "url": "https://www.mobafire.com/league-of-legends/build/26-20-anguish-2000lp-grandmasters-euw-challenger-eune-akali-mid-top-s16-guide-every-matchup-item-rune-explained-625064",
+          "kind": "mobafire"
+        }
+      ]
+    },
+    {
+      "champion": 246,
+      "enemy": 103,
+      "lane": "mid",
+      "patch": "26.21",
+      "reviewed": false,
+      "difficulty": "Hard",
+      "favoredWhen": "She bullies 1-2, holds Charm for your engage, and avoids walls after 6. Weather early, engage on Charm downtime.",
+      "keyTips": [
+        {
+          "text": "She bullies you very hard at levels 1-2 with autos and Q: you have no answer yet, so concede.",
+          "scope": "pair",
+          "sourceIds": [
+            "shok-ahri"
+          ],
+          "abilityKeys": [
+            {
+              "champion": 103,
+              "key": "Q"
+            }
+          ]
+        },
+        {
+          "text": "She holds Charm for your engage: bait it before all-inning pre-6.",
+          "scope": "pair",
+          "sourceIds": [
+            "peng04",
+            "shok-ahri"
+          ],
+          "abilityKeys": [
+            {
+              "champion": 103,
+              "key": "E"
+            }
+          ]
+        },
+        {
+          "text": "After 6 she keeps away from walls and holds Charm (about {cd:246:R}): fight away from walls.",
+          "scope": "pair",
+          "sourceIds": [
+            "shok-ahri"
+          ],
+          "abilityKeys": [
+            {
+              "champion": 103,
+              "key": "E"
+            },
+            {
+              "champion": 246,
+              "key": "R"
+            }
+          ]
+        }
+      ],
+      "enemyTips": {},
+      "sections": {
+        "overview": {
+          "tips": []
+        },
+        "early-lane": {
+          "tips": [
+            {
+              "text": "She abuses the first two levels, then sets the wave middle for your 3 spike: crash into it.",
+              "scope": "pair",
+              "sourceIds": [
+                "shok-ahri"
+              ]
+            },
+            {
+              "text": "She keeps the wave off your side: a long lane is your engage room, so stretch it.",
+              "scope": "pair",
+              "sourceIds": [
+                "peng04"
+              ]
+            }
+          ]
+        },
+        "mid-lane": {
+          "tips": [
+            {
+              "text": "From 6 she roams with priority: match or punish the crash.",
+              "scope": "pair",
+              "sourceIds": [
+                "peng04"
+              ]
+            },
+            {
+              "text": "She tracks your engage and answers with defensive Charm: engage only on downtime.",
+              "scope": "pair",
+              "sourceIds": [
+                "shok-ahri",
+                "peng04"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 103,
+                  "key": "E"
+                }
+              ]
+            }
+          ]
+        },
+        "win-condition": {
+          "tips": [
+            {
+              "text": "She roams with prio: her map pressure beats your duel, so never let her leave free.",
+              "scope": "pair",
+              "sourceIds": [
+                "peng04"
+              ]
+            }
+          ]
+        }
+      },
+      "itemization": [],
+      "sources": [
+        {
+          "id": "peng04",
+          "author": "Peng04",
+          "rankClaim": "Challenger · Ahri main",
+          "rank": "challenger",
+          "url": "https://www.mobafire.com/league-of-legends/build/26-20-pengs-ahri-guide-5-1mil-points-13x-challenger-648700",
+          "kind": "mobafire"
+        },
+        {
+          "id": "shok-ahri",
+          "author": "ShokLoL",
+          "rankClaim": "Rank 1 Challenger · Ahri main",
+          "rank": "challenger",
+          "url": "https://www.mobafire.com/league-of-legends/build/26-5-shoks-rank-1-challenger-ahri-guide-635065",
+          "kind": "mobafire"
+        }
+      ]
+    },
+    {
+      "champion": 246,
+      "enemy": 238,
+      "lane": "mid",
+      "patch": "26.21",
+      "reviewed": false,
+      "difficulty": "Easy",
+      "favoredWhen": "He stays off the wave, never Rs first, and answers engages backwards. Run him down, hold R for his.",
+      "keyTips": [
+        {
+          "text": "You out-damage him: take the straight trade.",
+          "scope": "pair",
+          "sourceIds": [
+            "aikopanda"
+          ]
+        },
+        {
+          "text": "He stays away from his wave: you E through it to reach him, so do.",
+          "scope": "pair",
+          "sourceIds": [
+            "aikopanda"
+          ],
+          "abilityKeys": [
+            {
+              "champion": 246,
+              "key": "E"
+            }
+          ]
+        },
+        {
+          "text": "He never Rs first: you R back and reverse it, so hold yours.",
+          "scope": "pair",
+          "sourceIds": [
+            "v222"
+          ],
+          "abilityKeys": [
+            {
+              "champion": 238,
+              "key": "R"
+            },
+            {
+              "champion": 246,
+              "key": "R"
+            }
+          ]
+        }
+      ],
+      "enemyTips": {
+        "early-lane": [
+          {
+            "text": "Zed often places Living Shadow before Death Mark so he can swap away from skillshots. Hold your crowd control until he has used the swap.",
+            "scope": "enemy",
+            "sourceIds": [
+              "aikopanda"
+            ],
+            "patch": "26.21",
+            "abilityKeys": [
+              {
+                "champion": 238,
+                "key": "W"
+              },
+              {
+                "champion": 238,
+                "key": "R"
+              }
+            ]
+          }
+        ],
+        "win-condition": [
+          {
+            "text": "Death Mark always lands Zed behind his target. Pre-aim crowd control and escapes behind you, not toward where he cast it.",
+            "scope": "enemy",
+            "sourceIds": [
+              "peng04"
+            ],
+            "patch": "26.21",
+            "abilityKeys": [
+              {
+                "champion": 238,
+                "key": "R"
+              }
+            ]
+          }
+        ]
+      },
+      "sections": {
+        "overview": {
+          "tips": []
+        },
+        "early-lane": {
+          "tips": [
+            {
+              "text": "He respects your level-2 burst: press at 2.",
+              "scope": "pair",
+              "sourceIds": [
+                "v222"
+              ]
+            },
+            {
+              "text": "He pokes with range and gives no openings: his damage must be free, so close.",
+              "scope": "pair",
+              "sourceIds": [
+                "v222"
+              ]
+            }
+          ]
+        },
+        "mid-lane": {
+          "tips": [
+            {
+              "text": "Death Mark always lands Zed behind his target. Pre-aim crowd control and escapes behind you, not toward where he cast it.",
+              "scope": "pair",
+              "sourceIds": [
+                "peng04"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 238,
+                  "key": "R"
+                }
+              ]
+            },
+            {
+              "text": "He needs W plus R: R alone gets countered by yours, so bait the shadow first.",
+              "scope": "pair",
+              "sourceIds": [
+                "aikopanda"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 238,
+                  "key": "W"
+                },
+                {
+                  "champion": 238,
+                  "key": "R"
+                },
+                {
+                  "champion": 246,
+                  "key": "R"
+                }
+              ]
+            }
+          ]
+        },
+        "win-condition": {
+          "tips": [
+            {
+              "text": "Sweeper plus Exhaust: play around his answers, never engage into them.",
+              "scope": "pair",
+              "sourceIds": [
+                "aikopanda",
+                "v222"
+              ]
+            }
+          ]
+        }
+      },
+      "itemization": [],
+      "sources": [
+        {
+          "id": "aikopanda",
+          "author": "AikoPanda",
+          "rankClaim": "Zed main",
+          "url": "https://www.mobafire.com/league-of-legends/build/26-20-video-guides-hidden-combos-all-matchups-zed-all-in-one-guide-652800",
+          "kind": "mobafire"
+        },
+        {
+          "id": "v222",
+          "author": "V222",
+          "rankClaim": "Challenger EUW · Zed main",
+          "rank": "challenger",
+          "url": "https://www.mobafire.com/league-of-legends/build/all-matchups-26-14-zed-guide-2000lp-euw-challenger-652354",
+          "kind": "mobafire"
+        },
+        {
+          "id": "peng04",
+          "author": "Peng04",
+          "rankClaim": "Challenger · Ahri main",
+          "rank": "challenger",
+          "url": "https://www.mobafire.com/league-of-legends/build/26-20-pengs-ahri-guide-5-1mil-points-13x-challenger-648700",
+          "kind": "mobafire"
+        }
+      ]
+    }
+  ],
+  "general": [
+    {
+      "champion": 246,
+      "lane": "mid",
+      "patch": "26.21",
+      "reviewed": false,
+      "keyTips": [
+        {
+          "text": "Prioritize farming and health through level two, then begin regular trades at level three rather than forcing damage early.",
+          "scope": "champion",
+          "sourceIds": [
+            "deylan"
+          ]
+        },
+        {
+          "text": "Always clear the wave before roaming: the cleared wave is the window for a kill or an objective, and leaving it uncleared wastes the turn.",
+          "scope": "champion",
+          "sourceIds": [
+            "deylan"
+          ],
+          "abilityKeys": [
+            {
+              "champion": 246,
+              "key": "Q"
+            }
+          ]
+        },
+        {
+          "text": "In teamfights, hunt a multi-target ultimate when enemies line up, with E-Flash-R as the main engage example; use water Q for the stun, grass Q for concealment, and stone Q for the execute hit.",
+          "scope": "champion",
+          "sourceIds": [
+            "deylan",
+            "allyooops"
+          ],
+          "abilityKeys": [
+            {
+              "champion": 246,
+              "key": "Q"
+            },
+            {
+              "champion": 246,
+              "key": "W"
+            },
+            {
+              "champion": 246,
+              "key": "E"
+            },
+            {
+              "champion": 246,
+              "key": "R"
+            }
+          ]
+        }
+      ],
+      "sections": {
+        "overview": {
+          "tips": []
+        },
+        "early-lane": {
+          "tips": [
+            {
+              "text": "Against a melee opponent with a weak level one, start W, dash in, and land an empowered auto to proc Electrocute; take this only when the early matchup allows it.",
+              "scope": "champion",
+              "sourceIds": [
+                "deylan"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 246,
+                  "key": "W"
+                }
+              ]
+            },
+            {
+              "text": "Use these openers: E into auto, grass Q, W, water Q, or water Q into W and stone Q; the full all-in adds autos and Ignite around stone Q into W and stone Q.",
+              "scope": "champion",
+              "sourceIds": [
+                "deylan"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 246,
+                  "key": "Q"
+                },
+                {
+                  "champion": 246,
+                  "key": "W"
+                },
+                {
+                  "champion": 246,
+                  "key": "E"
+                }
+              ]
+            },
+            {
+              "text": "Run Electrocute as the lane-pressure setup for early trades and pushing out squishy opponents; skip its defensive costs only when the burst plan fits.",
+              "scope": "champion",
+              "sourceIds": [
+                "allyooops"
+              ]
+            },
+            {
+              "text": "Take Conqueror for the longer level-two trade into opponents who stack health: W in, keep auto-attacking, then Q-W-Q for sustained damage over burst.",
+              "scope": "champion",
+              "sourceIds": [
+                "deylan"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 246,
+                  "key": "Q"
+                },
+                {
+                  "champion": 246,
+                  "key": "W"
+                }
+              ]
+            },
+            {
+              "text": "Chip opponents down and punish their mistakes rather than forcing a full-health one-shot the kit cannot reliably finish.",
+              "scope": "champion",
+              "sourceIds": [
+                "deylan"
+              ]
+            }
+          ]
+        },
+        "mid-lane": {
+          "tips": [
+            {
+              "text": "After clearing mid, turn toward a roam, a kill, or an objective instead of hovering on an empty lane.",
+              "scope": "champion",
+              "sourceIds": [
+                "deylan"
+              ]
+            },
+            {
+              "text": "Match the build path to the team's need: the assassin path for burst targets, the Conqueror cooldown path for extended fights, or the scaling path with Muramana, Profane Hydra, Death's Dance, and Serylda's Grudge into several tanks.",
+              "scope": "champion",
+              "sourceIds": [
+                "allyooops"
+              ],
+              "itemIds": [
+                6698,
+                6333,
+                6694
+              ]
+            }
+          ]
+        },
+        "win-condition": {
+          "tips": [
+            {
+              "text": "Enter with E-Flash-R onto a lined-up group, and when no group lines up, remove the enemy carry as the fight-deciding play even without a one-shot.",
+              "scope": "champion",
+              "sourceIds": [
+                "deylan",
+                "allyooops"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 246,
+                  "key": "E"
+                },
+                {
+                  "champion": 246,
+                  "key": "R"
+                }
+              ]
+            },
+            {
+              "text": "If a key squishy sits in execute range, prioritize that target over a flashier multi-target angle.",
+              "scope": "champion",
+              "sourceIds": [
+                "deylan"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 246,
+                  "key": "Q"
+                }
+              ]
+            },
+            {
+              "text": "Treat grass Q as the teamfight survival tool: its concealment hides Qiyana through the chaos so she can close and reposition between targets.",
+              "scope": "champion",
+              "sourceIds": [
+                "deylan"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 246,
+                  "key": "Q"
+                },
+                {
+                  "champion": 246,
+                  "key": "W"
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "itemization": [
+        {
+          "text": "Choose Electrocute with Sudden Impact, Grisly Mementos, Ultimate Hunter, Presence of Mind, and Last Stand for lane pressure and burst, or Conqueror for repeated autos and extended fights into health-stacking opponents.",
+          "scope": "champion",
+          "sourceIds": [
+            "allyooops",
+            "deylan"
+          ]
+        },
+        {
+          "text": "Start Doran's Blade with a potion and buy Long Sword, Serrated Dirk, boots, a Control Ward, and Oracle Lens at the first recall.",
+          "scope": "champion",
+          "sourceIds": [
+            "deylan"
+          ],
+          "itemIds": [
+            1055,
+            1036,
+            3134,
+            2055,
+            3364
+          ]
+        },
+        {
+          "text": "Build the assassin core of Profane Hydra, Voltaic Cyclosword, Axiom Arc, and Serylda's Grudge; on the Conqueror path start Hubris into Profane Hydra, with Edge of Night, Guardian Angel, Death's Dance, and The Collector as situational picks.",
+          "scope": "champion",
+          "sourceIds": [
+            "allyooops",
+            "deylan"
+          ],
+          "itemIds": [
+            6698,
+            6699,
+            6696,
+            6694,
+            6697,
+            3814,
+            3026,
+            6333,
+            6676
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "id": "allyooops",
+          "author": "Allyooops",
+          "rankClaim": "CHALLENGER; none",
+          "rank": "challenger",
+          "url": "https://www.mobafire.com/league-of-legends/build/s16-26-16-challenger-qiyana-mid-guide-yt-guides-at-end-622886",
+          "kind": "mobafire"
+        },
+        {
+          "id": "deylan",
+          "author": "Deylan",
+          "rankClaim": "Gold eune; none",
+          "rank": "gold",
+          "url": "https://www.mobafire.com/league-of-legends/build/im-not-arrogant-im-right-qiyana-26-16-guide-mid-jng-640016",
+          "kind": "mobafire"
+        }
+      ]
+    }
+  ],
+  "vods": [
+    {
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "UUqIIZBcJ60",
+          "title": "QIYANA IS ONE OF THE STRONGEST JUNGLERS RIGHT NOW",
+          "rankClaim": "Master+",
+          "patch": "26.20",
+          "durationSec": 1594,
+          "patchEstimated": true,
+          "player": "Sinerias",
+          "uploaded": "2026-10-17",
+          "format": "stream",
+          "cam": true,
+          "moments": [
+            {
+              "atSec": 0,
+              "label": "Early jungle pathing"
+            },
+            {
+              "atSec": 220,
+              "label": "Invading and securing drag"
+            },
+            {
+              "atSec": 390,
+              "label": "Mid-game macro adjustments"
+            },
+            {
+              "atSec": 556,
+              "label": "Snowballing the advantage"
+            },
+            {
+              "atSec": 751,
+              "label": "Mechanical skill testing"
+            },
+            {
+              "atSec": 940,
+              "label": "Itemization and decision"
+            },
+            {
+              "atSec": 1132,
+              "label": "Sieging and objective fights"
+            },
+            {
+              "atSec": 1344,
+              "label": "Closing out the game"
+            }
+          ]
+        },
+        {
+          "videoId": "M-37jwe2Svg",
+          "title": "I FIRST TIMED QIYANA IN MASTERS...HERE'S WHAT HAPPENED",
+          "rankClaim": "Master+",
+          "patch": "26.19",
+          "durationSec": 2513,
+          "patchEstimated": true,
+          "player": "Sinerias",
+          "uploaded": "2026-10-04",
+          "format": "stream",
+          "cam": true,
+          "moments": [
+            {
+              "atSec": 0,
+              "label": "Introduction to Qiyana"
+            },
+            {
+              "atSec": 31,
+              "label": "Early game and pathing"
+            },
+            {
+              "atSec": 232,
+              "label": "Mid game adjustments"
+            },
+            {
+              "atSec": 416,
+              "label": "Jungle invades and skirmishes"
+            },
+            {
+              "atSec": 627,
+              "label": "Mid game objectives"
+            },
+            {
+              "atSec": 846,
+              "label": "Identifying strengths"
+            },
+            {
+              "atSec": 1131,
+              "label": "Strategic team play"
+            },
+            {
+              "atSec": 1401,
+              "label": "Late game execution"
+            },
+            {
+              "atSec": 1823,
+              "label": "Final push and victory"
+            }
+          ]
+        },
+        {
+          "videoId": "mkmEa_Fswbs",
+          "title": "Baicaiovo Reaches Super Server Rank 2 with Flawless Qiyana Jungle Mechanics Engsub",
+          "rankClaim": "Master+",
+          "patch": "26.1",
+          "durationSec": 1438,
+          "patchEstimated": true,
+          "player": "Baicaiovo",
+          "uploaded": "2026-01-13",
+          "format": "stream",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 1,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "ACgKpY26PDI",
+          "title": "BeiFeng Qiyana vs Annie — Challenger CN Super Server — Engsub",
+          "rankClaim": "Challenger",
+          "patch": "26.10",
+          "durationSec": 1567,
+          "patchEstimated": true,
+          "player": "Beifeng",
+          "uploaded": "2026-05-15",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "jjPz-hivp5A",
+          "title": "Qiyana vs Annie Mid - KR Challenger - Patch 25.16 Season 15",
+          "rankClaim": "Challenger",
+          "patch": "25.16",
+          "durationSec": 1741,
+          "region": "KR",
+          "uploaded": "2025-08-21",
+          "moments": []
+        },
+        {
+          "videoId": "16A0iXpEPKc",
+          "title": "Qiyana vs Annie Mid - KR Challenger - Patch 25.13 Season 15",
+          "rankClaim": "Challenger",
+          "patch": "25.13",
+          "durationSec": 1741,
+          "region": "KR",
+          "uploaded": "2025-06-28",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 2,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "GmYSiVDVdlo",
+          "title": "BeiFeng Qiyana vs Olaf — Challenger CN Super Server — Engsub",
+          "rankClaim": "Challenger",
+          "patch": "26.12",
+          "durationSec": 2771,
+          "patchEstimated": true,
+          "player": "Beifeng",
+          "uploaded": "2026-06-13",
+          "format": "stream",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 3,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "WT5I_6bMllY",
+          "title": "BeiFeng Qiyana vs Galio — Challenger CN Super Server — Engsub",
+          "rankClaim": "Challenger",
+          "patch": "26.10",
+          "durationSec": 1433,
+          "patchEstimated": true,
+          "player": "Beifeng",
+          "uploaded": "2026-05-22",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "CnlA1HwQGyo",
+          "title": "Beifeng Qiyana vs Galio — Challenger CN Super Server",
+          "rankClaim": "Challenger",
+          "patch": "26.2",
+          "durationSec": 1546,
+          "patchEstimated": true,
+          "player": "Beifeng",
+          "uploaded": "2026-02-03",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "dWyw81fLG7k",
+          "title": "Qiyana Mid vs Galio - KR Challenger Patch 25.05",
+          "rankClaim": "Challenger",
+          "patch": "25.5",
+          "durationSec": 1673,
+          "region": "KR",
+          "uploaded": "2025-03-11",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 4,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "k6yX70JMwNc",
+          "title": "Qiyana Jungle vs Twisted Fate - VN Master Patch 26.01",
+          "rankClaim": "Master",
+          "patch": "26.1",
+          "durationSec": 1555,
+          "uploaded": "2026-01-11",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 4,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "BWx3XMGIl4Y",
+          "title": "BeiFeng Qiyana vs Twisted Fate — Challenger CN Super Server — Engsub",
+          "rankClaim": "Challenger",
+          "patch": "26.10",
+          "durationSec": 1758,
+          "patchEstimated": true,
+          "player": "Beifeng",
+          "uploaded": "2026-05-16",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "ZdF6PSQCiyM",
+          "title": "Beifeng Qiyana vs Twisted Fate — Challenger CN Super Server",
+          "rankClaim": "Challenger",
+          "patch": "26.6",
+          "durationSec": 887,
+          "patchEstimated": true,
+          "player": "Beifeng",
+          "uploaded": "2026-03-24",
+          "format": "stream",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 5,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "JsZ99lbm8T8",
+          "title": "Qiyana vs XinZhao Jungle - KR Challenger - Patch 26.02 Season 16",
+          "rankClaim": "Challenger",
+          "patch": "26.2",
+          "durationSec": 2110,
+          "region": "KR",
+          "uploaded": "2026-01-27",
+          "moments": []
+        },
+        {
+          "videoId": "mZBqAAzMO5E",
+          "title": "Qiyana Jungle vs Xin Zhao - KR Master Patch 25.24",
+          "rankClaim": "Master",
+          "patch": "25.24",
+          "durationSec": 1521,
+          "region": "KR",
+          "uploaded": "2025-12-22",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 229,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 260,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 343,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 466,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 488,
+              "label": "Hunt The Void Grubs",
+              "kind": "grubs"
+            },
+            {
+              "atSec": 516,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 584,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 690,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 809,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 927,
+              "label": "Hunt The Rift Herald",
+              "kind": "herald"
+            },
+            {
+              "atSec": 980,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1039,
+              "label": "Hunt The Dragon",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1139,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1264,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1283,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1341,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1373,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1393,
+              "label": "Hunt The Atakhan"
+            },
+            {
+              "atSec": 1416,
+              "label": "Hunt The Dragon",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1469,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1510,
+              "label": "End credit"
+            }
+          ]
+        },
+        {
+          "videoId": "Ei-AVmSEa2w",
+          "title": "Qiyana Jungle vs Xin Zhao - KR Challenger Patch 25.17",
+          "rankClaim": "Challenger",
+          "patch": "25.17",
+          "durationSec": 1466,
+          "region": "KR",
+          "uploaded": "2025-08-31",
+          "moments": []
+        },
+        {
+          "videoId": "i0cFcC6ieW0",
+          "title": "Qiyana Jungle vs Xin Zhao - EUW Challenger Patch 25.16",
+          "rankClaim": "Challenger",
+          "patch": "25.16",
+          "durationSec": 1757,
+          "region": "EUW",
+          "uploaded": "2025-08-22",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 7,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "0xDjOnaUGJ4",
+          "title": "BeiFeng Qiyana vs Leblanc — Challenger CN Super Server — Engsub",
+          "rankClaim": "Challenger",
+          "patch": "26.16",
+          "durationSec": 1581,
+          "patchEstimated": true,
+          "player": "Beifeng",
+          "uploaded": "2026-08-22",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "eUDYGFOD1sM",
+          "title": "BeiFeng Qiyana vs LeBlanc — Master CN Super Server — Engsub",
+          "rankClaim": "Master",
+          "patch": "26.9",
+          "durationSec": 2018,
+          "patchEstimated": true,
+          "player": "Beifeng",
+          "uploaded": "2026-05-05",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "4_ocJmmJeMA",
+          "title": "Qiyana Mid vs LeBlanc - KR Challenger Patch 26.04",
+          "rankClaim": "Challenger",
+          "patch": "26.4",
+          "durationSec": 1634,
+          "region": "KR",
+          "uploaded": "2026-02-23",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 8,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "l7KR4MSaUYE",
+          "title": "BeiFeng Qiyana vs Vladimir — Master CN  Server — Engsub",
+          "rankClaim": "Master",
+          "patch": "26.15",
+          "durationSec": 1633,
+          "patchEstimated": true,
+          "player": "Beifeng",
+          "uploaded": "2026-07-29",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "llLtTigdKfM",
+          "title": "Beifeng Qiyana vs Vladimir — Grandmaster KR Server",
+          "rankClaim": "Grandmaster",
+          "patch": "26.5",
+          "durationSec": 1255,
+          "region": "KR",
+          "patchEstimated": true,
+          "player": "Beifeng",
+          "uploaded": "2026-03-11",
+          "format": "stream",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 11,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "HJ7b2yCJP9U",
+          "title": "Qiyana vs Master Yi Jungle - KR Challenger - Patch 25.24 Season 15",
+          "rankClaim": "Challenger",
+          "patch": "25.24",
+          "durationSec": 1661,
+          "region": "KR",
+          "uploaded": "2025-12-12",
+          "moments": []
+        },
+        {
+          "videoId": "JF5TL2G9TJk",
+          "title": "Qiyana Jungle vs Master Yi - KR Challenger Patch 25.04",
+          "rankClaim": "Challenger",
+          "patch": "25.4",
+          "durationSec": 1940,
+          "region": "KR",
+          "uploaded": "2025-02-26",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 183,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 262,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 373,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 430,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 541,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 617,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 657,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 756,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 835,
+              "label": "Hunt The Void Grubs",
+              "kind": "grubs"
+            },
+            {
+              "atSec": 977,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1073,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1158,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1370,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1464,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1611,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1644,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1919,
+              "label": "End credit"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 11,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "kLk_Xhi1r24",
+          "title": "BeiFeng Qiyana vs Master Yi — Challenger CN Super Server — Engsub",
+          "rankClaim": "Master",
+          "patch": "26.9",
+          "durationSec": 1175,
+          "patchEstimated": true,
+          "player": "Beifeng",
+          "uploaded": "2026-05-12",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "kvrqUD5jC7o",
+          "title": "Beifeng Qiyana vs Master Yi — Grandmaster KR Server",
+          "rankClaim": "Master",
+          "patch": "26.5",
+          "durationSec": 867,
+          "region": "KR",
+          "patchEstimated": true,
+          "player": "Beifeng",
+          "uploaded": "2026-03-15",
+          "format": "stream",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 12,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "BwyZiPz7agg",
+          "title": "SUP — Beifeng Qiyana vs Alistar — Grandmaster KR Server",
+          "rankClaim": "Grandmaster",
+          "patch": "26.6",
+          "durationSec": 1516,
+          "region": "KR",
+          "patchEstimated": true,
+          "player": "Beifeng",
+          "uploaded": "2026-03-20",
+          "format": "stream",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 13,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "bf8gZw9CUQE",
+          "title": "BeiFeng Qiyana vs Ryze — Challenger CN Super Server — Engsub",
+          "rankClaim": "Challenger",
+          "patch": "26.18",
+          "durationSec": 1658,
+          "patchEstimated": true,
+          "player": "Beifeng",
+          "uploaded": "2026-09-17",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "iRLavKvKSv0",
+          "title": "(UP Saber) Qiyana Mid vs Ryze - KR Challenger Patch 26.11",
+          "rankClaim": "Challenger",
+          "patch": "26.11",
+          "durationSec": 1510,
+          "region": "KR",
+          "player": "UP Saber",
+          "uploaded": "2026-06-10",
+          "moments": []
+        },
+        {
+          "videoId": "5hMJDraRI0o",
+          "title": "Super carry！Beifeng Qiyana VS Ryze — Master KR Server",
+          "rankClaim": "Master",
+          "patch": "26.5",
+          "durationSec": 1282,
+          "region": "KR",
+          "patchEstimated": true,
+          "player": "Beifeng",
+          "uploaded": "2026-03-07",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "T6xZON6j444",
+          "title": "Beifeng Qiyana VS Ryze — Challenger CN Super Server",
+          "rankClaim": "Challenger",
+          "patch": "26.4",
+          "durationSec": 1466,
+          "patchEstimated": true,
+          "player": "Beifeng",
+          "uploaded": "2026-03-02",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "UUZqqdYSTtA",
+          "title": "Beifeng Qiyana vs Ryze — Challenger CN Super Server",
+          "rankClaim": "Challenger",
+          "patch": "26.2",
+          "durationSec": 1244,
+          "patchEstimated": true,
+          "player": "Beifeng",
+          "uploaded": "2026-02-01",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "jxd7yUJvMh0",
+          "title": "Qiyana vs Ryze Mid - KR Challenger - Patch 25.19 Season 15",
+          "rankClaim": "Challenger",
+          "patch": "25.19",
+          "durationSec": 1966,
+          "region": "KR",
+          "uploaded": "2025-09-25",
+          "moments": []
+        },
+        {
+          "videoId": "UnRKtL25gQk",
+          "title": "Qiyana Mid vs Ryze - KR Master Patch 25.07",
+          "rankClaim": "Master",
+          "patch": "25.7",
+          "durationSec": 1604,
+          "region": "KR",
+          "uploaded": "2025-04-09",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 14,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "L1UHJDebV4o",
+          "title": "BeiFeng Qiyana vs Sion — Challenger CN Super Server — Engsub",
+          "rankClaim": "Challenger",
+          "patch": "26.17",
+          "durationSec": 2072,
+          "patchEstimated": true,
+          "player": "Beifeng",
+          "uploaded": "2026-09-08",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "pPHppi2RzWg",
+          "title": "BeiFeng Qiyana vs Sion — Grandmaster CN Super Server — Engsub",
+          "rankClaim": "Grandmaster",
+          "patch": "26.9",
+          "durationSec": 1975,
+          "patchEstimated": true,
+          "player": "Beifeng",
+          "uploaded": "2026-05-09",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "c_KVatHBbWo",
+          "title": "Qiyana vs Sion 16/4/8 (Mid) | EUW Challenger | Qiyana OTP Replay",
+          "rankClaim": "Challenger",
+          "patch": "26.8",
+          "durationSec": 1488,
+          "region": "EUW",
+          "patchEstimated": true,
+          "uploaded": "2026-04-28",
+          "moments": []
+        },
+        {
+          "videoId": "YGxHmIt-ggU",
+          "title": "Beifeng Qiyana VS Sion— Challenger CN Super Server",
+          "rankClaim": "Challenger",
+          "patch": "26.3",
+          "durationSec": 1833,
+          "patchEstimated": true,
+          "player": "Beifeng",
+          "uploaded": "2026-02-11",
+          "format": "stream",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 18,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "c_PsC7Z6PxM",
+          "title": "BeiFeng Qiyana vs Tristana — Master CN Super Server — Engsub",
+          "rankClaim": "Master",
+          "patch": "26.9",
+          "durationSec": 1836,
+          "patchEstimated": true,
+          "player": "Beifeng",
+          "uploaded": "2026-05-06",
+          "format": "stream",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 20,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "BDqPR_6y1qo",
+          "title": "BeiFeng Qiyana vs Nunu — Master KR Server — Engsub",
+          "rankClaim": "Master",
+          "patch": "26.8",
+          "durationSec": 1563,
+          "region": "KR",
+          "patchEstimated": true,
+          "player": "Beifeng",
+          "uploaded": "2026-04-15",
+          "format": "stream",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 23,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "DjWMx2WE09Y",
+          "title": "BeiFeng Qiyana vs Tryndamere — Master CN Super Server — Engsub",
+          "rankClaim": "Master",
+          "patch": "26.15",
+          "durationSec": 1052,
+          "patchEstimated": true,
+          "player": "Beifeng",
+          "uploaded": "2026-08-10",
+          "format": "stream",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 24,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "_TtcUp7wR58",
+          "title": "BeiFeng Qiyana vs Jax — Challenger CN Super Server — Engsub",
+          "rankClaim": "Challenger",
+          "patch": "26.17",
+          "durationSec": 889,
+          "patchEstimated": true,
+          "player": "Beifeng",
+          "uploaded": "2026-09-03",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "zuilAGoe9ug",
+          "title": "BeiFeng Qiyana vs Jax — Master CN Super Server — Engsub",
+          "rankClaim": "Master",
+          "patch": "26.15",
+          "durationSec": 1186,
+          "patchEstimated": true,
+          "player": "Beifeng",
+          "uploaded": "2026-08-07",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "R2cLZzAV380",
+          "title": "BeiFeng Qiyana vs Jax — Challenger CN Super Server — Engsub",
+          "rankClaim": "Challenger",
+          "patch": "26.10",
+          "durationSec": 870,
+          "patchEstimated": true,
+          "player": "Beifeng",
+          "uploaded": "2026-05-15",
+          "format": "stream",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 27,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "7c_Mj389A34",
+          "title": "BeiFeng Qiyana vs Singed — Challenger CN Super Server — Engsub",
+          "rankClaim": "Challenger",
+          "patch": "26.13",
+          "durationSec": 1491,
+          "patchEstimated": true,
+          "player": "Beifeng",
+          "uploaded": "2026-07-07",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "eAUKJifVoiI",
+          "title": "(DFM Fisher) Qiyana Mid vs Singed - KR Master Patch 26.12",
+          "rankClaim": "Master",
+          "patch": "26.12",
+          "durationSec": 1435,
+          "region": "KR",
+          "player": "DFM Fisher",
+          "uploaded": "2026-06-20",
+          "moments": []
+        },
+        {
+          "videoId": "_UFdsasdd5U",
+          "title": "BeiFeng Qiyana vs Singed — Grandmaster CN Super Server — Engsub",
+          "rankClaim": "Grandmaster",
+          "patch": "26.9",
+          "durationSec": 1337,
+          "patchEstimated": true,
+          "player": "Beifeng",
+          "uploaded": "2026-05-07",
+          "format": "stream",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 32,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "vA4F5eG9TNI",
+          "title": "Qiyana vs Amumu Jungle - KR Challenger - Patch 25.24 Season 15",
+          "rankClaim": "Challenger",
+          "patch": "25.24",
+          "durationSec": 1681,
+          "region": "KR",
+          "uploaded": "2025-12-27",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 34,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "Kk374pIf578",
+          "title": "BeiFeng Qiyana vs Anivia — Challenger CN Super Server — Engsub",
+          "rankClaim": "Challenger",
+          "patch": "26.12",
+          "durationSec": 1777,
+          "patchEstimated": true,
+          "player": "Beifeng",
+          "uploaded": "2026-06-16",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "uvv2vi9AaWM",
+          "title": "Beifeng Qiyana VS Anivia — Master CN  Server",
+          "rankClaim": "Master",
+          "patch": "26.4",
+          "durationSec": 1259,
+          "patchEstimated": true,
+          "player": "Beifeng",
+          "uploaded": "2026-02-25",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "VUuMwpn1urU",
+          "title": "Qiyana Mid vs Anivia - EUW Grandmaster Patch 25.20",
+          "rankClaim": "Grandmaster",
+          "patch": "25.20",
+          "durationSec": 1570,
+          "region": "EUW",
+          "uploaded": "2025-10-17",
+          "moments": []
+        },
+        {
+          "videoId": "KYJOOEju4qc",
+          "title": "Qiyana Mid vs Anivia - KR Grandmaster Patch 25.16",
+          "rankClaim": "Grandmaster",
+          "patch": "25.16",
+          "durationSec": 2027,
+          "region": "KR",
+          "uploaded": "2025-08-16",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 38,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "H5paaWUEdnE",
+          "title": "Qiyana Mid vs Kassadin - KR Master Patch 25.15",
+          "rankClaim": "Master",
+          "patch": "25.15",
+          "durationSec": 1726,
+          "region": "KR",
+          "uploaded": "2025-08-04",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 39,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "bzipKIa-2SE",
+          "title": "Qiyana Mid vs Irelia - EUW Grandmaster Patch 25.23",
+          "rankClaim": "Grandmaster",
+          "patch": "25.23",
+          "durationSec": 1594,
+          "region": "EUW",
+          "uploaded": "2025-11-29",
+          "moments": []
+        },
+        {
+          "videoId": "uygEco7LxJ4",
+          "title": "Qiyana Mid vs Irelia - KR Grandmaster Patch 25.10",
+          "rankClaim": "Grandmaster",
+          "patch": "25.10",
+          "durationSec": 1690,
+          "region": "KR",
+          "uploaded": "2025-05-19",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 42,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "M6FUVfjzCCA",
+          "title": "Beifeng Qiyana VS Corki — Challenger CN Super Server",
+          "rankClaim": "Challenger",
+          "patch": "26.4",
+          "durationSec": 1833,
+          "patchEstimated": true,
+          "player": "Beifeng",
+          "uploaded": "2026-02-26",
+          "format": "stream",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 45,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "lw_LqMXlwik",
+          "title": "BeiFeng Qiyana vs Veigar — Challenger CN Super Server — Engsub",
+          "rankClaim": "Challenger",
+          "patch": "26.14",
+          "durationSec": 1069,
+          "patchEstimated": true,
+          "player": "Beifeng",
+          "uploaded": "2026-07-15",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "6Ez2Idt7RGs",
+          "title": "BeiFeng Qiyana vs Veigar — Challenger CN Super Server — Engsub",
+          "rankClaim": "Challenger",
+          "patch": "26.11",
+          "durationSec": 883,
+          "patchEstimated": true,
+          "player": "Beifeng",
+          "uploaded": "2026-06-09",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "eXCfwPwBR2U",
+          "title": "BeiFeng Qiyana vs Veigar — Challenger CN Super Server — Engsub",
+          "rankClaim": "Challenger",
+          "patch": "26.9",
+          "durationSec": 1233,
+          "patchEstimated": true,
+          "player": "Beifeng",
+          "uploaded": "2026-05-10",
+          "format": "stream",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 54,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "YnUSnM2J5TQ",
+          "title": "Beifeng Qiyana VS Malphite — Master KR Server",
+          "rankClaim": "Master",
+          "patch": "26.5",
+          "durationSec": 1974,
+          "region": "KR",
+          "patchEstimated": true,
+          "player": "Beifeng",
+          "uploaded": "2026-03-09",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "QTYKjiHMVKk",
+          "title": "Beifeng Qiyana VS Malphite — Master KR Server",
+          "rankClaim": "Master",
+          "patch": "26.5",
+          "durationSec": 1282,
+          "region": "KR",
+          "patchEstimated": true,
+          "player": "Beifeng",
+          "uploaded": "2026-03-05",
+          "format": "stream",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 55,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "0yyzq9zBwVw",
+          "title": "BeiFeng Qiyana vs Katarina — Challenger CN Super Server — Engsub",
+          "rankClaim": "Challenger",
+          "patch": "26.18",
+          "durationSec": 1473,
+          "patchEstimated": true,
+          "player": "Beifeng",
+          "uploaded": "2026-09-13",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "8GdqaHlEGvI",
+          "title": "BeiFeng Qiyana vs Katarina — Challenger CN Super Server — Engsub",
+          "rankClaim": "Challenger",
+          "patch": "26.17",
+          "durationSec": 1531,
+          "patchEstimated": true,
+          "player": "Beifeng",
+          "uploaded": "2026-09-01",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "B3yAzxgoRDY",
+          "title": "BeiFeng Qiyana vs Katarina — Challenger CN Super Server — Engsub",
+          "rankClaim": "Challenger",
+          "patch": "26.14",
+          "durationSec": 907,
+          "patchEstimated": true,
+          "player": "Beifeng",
+          "uploaded": "2026-07-16",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "LTsFxMgxoCA",
+          "title": "BeiFeng Qiyana vs Katarina — Challenger CN Super Server — Engsub",
+          "rankClaim": "Challenger",
+          "patch": "26.9",
+          "durationSec": 1080,
+          "patchEstimated": true,
+          "player": "Beifeng",
+          "uploaded": "2026-05-11",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "YebjiBqIw0M",
+          "title": "Qiyana vs Katarina Mid - KR Challenger - Patch 26.01 Season 16",
+          "rankClaim": "Challenger",
+          "patch": "26.1",
+          "durationSec": 2171,
+          "region": "KR",
+          "uploaded": "2026-01-17",
+          "moments": []
+        },
+        {
+          "videoId": "kPj_RI1KTw8",
+          "title": "Qiyana Mid vs Katarina - KR Grandmaster Patch 25.12",
+          "rankClaim": "Grandmaster",
+          "patch": "25.12",
+          "durationSec": 1761,
+          "region": "KR",
+          "uploaded": "2025-06-18",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 58,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "BlS30uJUCSg",
+          "title": "BeiFeng Qiyana vs Renekton — Grandmaster KR Server — Engsub",
+          "rankClaim": "Grandmaster",
+          "patch": "26.7",
+          "durationSec": 1540,
+          "region": "KR",
+          "patchEstimated": true,
+          "player": "Beifeng",
+          "uploaded": "2026-04-02",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "j4MMAmZj7kw",
+          "title": "Qiyana Mid vs Renekton - KR Challenger Patch 25.09",
+          "rankClaim": "Challenger",
+          "patch": "25.9",
+          "durationSec": 1832,
+          "region": "KR",
+          "uploaded": "2025-05-05",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 59,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "upDYfDItCPA",
+          "title": "(VIT Lyncas) Qiyana Jungle vs Jarvan IV (KC Yike) - EUW Challenger Patch 26.14",
+          "rankClaim": "Challenger",
+          "patch": "26.14",
+          "durationSec": 1534,
+          "region": "EUW",
+          "player": "VIT Lyncas",
+          "uploaded": "2026-07-28",
+          "moments": []
+        },
+        {
+          "videoId": "J8Vc9-yDZhU",
+          "title": "Qiyana vs Jarvan IV Jungle - KR Challenger - Patch 25.20 Season 15",
+          "rankClaim": "Challenger",
+          "patch": "25.20",
+          "durationSec": 1951,
+          "region": "KR",
+          "uploaded": "2025-10-20",
+          "moments": []
+        },
+        {
+          "videoId": "ctJlkIsGa8c",
+          "title": "Qiyana Jungle vs Jarvan IV - EUW Grandmaster Patch 25.06",
+          "rankClaim": "Grandmaster",
+          "patch": "25.6",
+          "durationSec": 1820,
+          "region": "EUW",
+          "uploaded": "2025-03-30",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 60,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "Iz-jAm7QPww",
+          "title": "Qiyana vs Elise Jungle - EUW Challenger - Patch 16.08 Season 16",
+          "rankClaim": "Challenger",
+          "patch": "26.8",
+          "durationSec": 2206,
+          "region": "EUW",
+          "uploaded": "2026-04-16",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 61,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "k4duy9yxurs",
+          "title": "Qiyana Mid vs Orianna - KR Master Patch 26.18",
+          "rankClaim": "Master",
+          "patch": "26.18",
+          "durationSec": 1630,
+          "region": "KR",
+          "uploaded": "2026-09-21",
+          "moments": []
+        },
+        {
+          "videoId": "L18DcZA8GKE",
+          "title": "BeiFeng Qiyana vs Orianna — Master KR Server — Engsub",
+          "rankClaim": "Master",
+          "patch": "26.7",
+          "durationSec": 1745,
+          "region": "KR",
+          "patchEstimated": true,
+          "player": "Beifeng",
+          "uploaded": "2026-04-14",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "CzY2Ig-yARY",
+          "title": "Qiyana Mid vs Orianna - EUW Grandmaster Patch 26.03",
+          "rankClaim": "Grandmaster",
+          "patch": "26.3",
+          "durationSec": 1452,
+          "region": "EUW",
+          "uploaded": "2026-02-15",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 64,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "JUIJ3XGNp3E",
+          "title": "Qiyana Jungle vs Lee Sin - KR Grandmaster Patch 26.19",
+          "rankClaim": "Grandmaster",
+          "patch": "26.19",
+          "durationSec": 1590,
+          "region": "KR",
+          "uploaded": "2026-10-01",
+          "moments": []
+        },
+        {
+          "videoId": "0kPsOOsEb9c",
+          "title": "(OTS qualzy) Qiyana Jungle vs Lee Sin (BIG Habubu) - EUW Grandmaster Patch 26.16",
+          "rankClaim": "Grandmaster",
+          "patch": "26.16",
+          "durationSec": 1631,
+          "region": "EUW",
+          "player": "OTS qualzy",
+          "uploaded": "2026-08-17",
+          "moments": []
+        },
+        {
+          "videoId": "DwJJSkGUq0M",
+          "title": "T1 Oner Qiyana vs Lee Sin [ Jungle ] Korea Challenger 2327 LP | Patch 26.14",
+          "rankClaim": "Challenger",
+          "patch": "26.14",
+          "durationSec": 1302,
+          "region": "KR",
+          "player": "Oner",
+          "team": "T1",
+          "uploaded": "2026-07-29",
+          "moments": []
+        },
+        {
+          "videoId": "qm5Rzwk5maw",
+          "title": "T1 Oner Qiyana vs Lee Sin [ Jungle ] Korea Challenger 2184 LP | Patch 26.13",
+          "rankClaim": "Challenger",
+          "patch": "26.13",
+          "durationSec": 800,
+          "region": "KR",
+          "player": "Oner",
+          "team": "T1",
+          "uploaded": "2026-07-04",
+          "moments": []
+        },
+        {
+          "videoId": "JPUwR90EQ00",
+          "title": "(T1 Oner) Qiyana Jungle vs Lee Sin - KR Challenger Patch 26.12",
+          "rankClaim": "Challenger",
+          "patch": "26.12",
+          "durationSec": 1859,
+          "region": "KR",
+          "player": "Oner",
+          "team": "T1",
+          "uploaded": "2026-06-13",
+          "moments": []
+        },
+        {
+          "videoId": "yvigpwLJY8k",
+          "title": "Qiyana Jungle vs Lee Sin - EUW Grandmaster Patch 26.08",
+          "rankClaim": "Grandmaster",
+          "patch": "26.8",
+          "durationSec": 1756,
+          "region": "EUW",
+          "uploaded": "2026-04-19",
+          "moments": []
+        },
+        {
+          "videoId": "4FBxZs3b2To",
+          "title": "Qiyana Jungle vs Lee Sin - KR Challenger Patch 26.02",
+          "rankClaim": "Challenger",
+          "patch": "26.2",
+          "durationSec": 1599,
+          "region": "KR",
+          "uploaded": "2026-01-24",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 197,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 349,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 423,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 538,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 667,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 701,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 813,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 922,
+              "label": "Hunt The Rift Herald",
+              "kind": "herald"
+            },
+            {
+              "atSec": 951,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 983,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1070,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1093,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1228,
+              "label": "Hunt The Dragon",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1336,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1530,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1588,
+              "label": "End credit"
+            }
+          ]
+        },
+        {
+          "videoId": "58g4AbXZYfs",
+          "title": "T1 Oner Qiyana vs Lee Sin [ Jungle ] Patch 26.1 Ranked Korea",
+          "rankClaim": "Master+",
+          "patch": "26.1",
+          "durationSec": 1695,
+          "region": "KR",
+          "player": "Oner",
+          "team": "T1",
+          "uploaded": "2026-01-12",
+          "moments": []
+        },
+        {
+          "videoId": "44N0JuwlzM0",
+          "title": "Qiyana vs Lee Sin [ Jungle ] Korea Challenger 1982 LP | Patch 25.23 ✅",
+          "rankClaim": "Challenger",
+          "patch": "25.23",
+          "durationSec": 1466,
+          "region": "KR",
+          "uploaded": "2025-11-29",
+          "moments": []
+        },
+        {
+          "videoId": "iNLbN6xHj28",
+          "title": "Qiyana vs Lee Sin Jungle - KR Challenger - Patch 25.21 Season 15",
+          "rankClaim": "Challenger",
+          "patch": "25.21",
+          "durationSec": 1576,
+          "region": "KR",
+          "uploaded": "2025-10-29",
+          "moments": []
+        },
+        {
+          "videoId": "C1apV-NI6WU",
+          "title": "Qiyana vs Lee Sin Jungle [ PentaKill ] Korea Challenger 1683 LP | Patch 25.20 ✅",
+          "rankClaim": "Challenger",
+          "patch": "25.20",
+          "durationSec": 1778,
+          "region": "KR",
+          "player": "PentaKill",
+          "uploaded": "2025-10-18",
+          "moments": []
+        },
+        {
+          "videoId": "JvFpnYDMnDA",
+          "title": "T1 Oner Qiyana Jungle vs Lee Sin - Patch 25.18 Korea Grandmaster",
+          "rankClaim": "Grandmaster",
+          "patch": "25.18",
+          "durationSec": 1439,
+          "region": "KR",
+          "player": "Oner",
+          "team": "T1",
+          "uploaded": "2025-09-20",
+          "moments": []
+        },
+        {
+          "videoId": "PZRxkwCtHs8",
+          "title": "T1 Oner Qiyana vs Lee Sin [ Jungle ] Patch 25.17 Korea Master",
+          "rankClaim": "Master",
+          "patch": "25.17",
+          "durationSec": 1930,
+          "region": "KR",
+          "player": "Oner",
+          "team": "T1",
+          "uploaded": "2025-09-06",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 69,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "m_-eHVv9RGQ",
+          "title": "BeiFeng Qiyana vs Cassiopeia — Challenger CN Super Server — Engsub",
+          "rankClaim": "Challenger",
+          "patch": "26.18",
+          "durationSec": 1931,
+          "patchEstimated": true,
+          "player": "Beifeng",
+          "uploaded": "2026-09-15",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "Foy9iaNeMS0",
+          "title": "BeiFeng Qiyana vs Cassiopeia — Master CN Super Server — Engsub",
+          "rankClaim": "Master",
+          "patch": "26.16",
+          "durationSec": 1744,
+          "patchEstimated": true,
+          "player": "Beifeng",
+          "uploaded": "2026-08-12",
+          "format": "stream",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 72,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "s2q9KaxApqs",
+          "title": "Qiyana vs Skarner Jungle - KR Challenger - Patch 16.19 Season 16",
+          "rankClaim": "Challenger",
+          "patch": "26.19",
+          "durationSec": 1996,
+          "region": "KR",
+          "uploaded": "2026-10-03",
+          "moments": []
+        },
+        {
+          "videoId": "NUu32cbCwnc",
+          "title": "(KT Sylvie) Qiyana Jungle vs Skarner (Racoon) - KR Challenger Patch 26.16",
+          "rankClaim": "Challenger",
+          "patch": "26.16",
+          "durationSec": 1699,
+          "region": "KR",
+          "player": "Sylvie",
+          "team": "KT",
+          "uploaded": "2026-08-24",
+          "moments": []
+        },
+        {
+          "videoId": "wbdvmSVA-ao",
+          "title": "Qiyana Jungle vs Skarner - KR Master Patch 26.07",
+          "rankClaim": "Master",
+          "patch": "26.7",
+          "durationSec": 1729,
+          "region": "KR",
+          "uploaded": "2026-04-12",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 164,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 278,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 349,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 433,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 512,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 543,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 573,
+              "label": "Hunt The Void Grubs",
+              "kind": "grubs"
+            },
+            {
+              "atSec": 666,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 722,
+              "label": "Hunt The Dragon",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 748,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1044,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1073,
+              "label": "Hunt The Dragon",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1291,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1325,
+              "label": "Hunt The Baron Nashor",
+              "kind": "baron"
+            },
+            {
+              "atSec": 1345,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1375,
+              "label": "Hunt The Dragon",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1461,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1603,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1689,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1718,
+              "label": "End credit"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 74,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "FfNICv4OmLM",
+          "title": "BeiFeng Qiyana vs Heimerdinger — Challenger CN Super Server — Engsub",
+          "rankClaim": "Challenger",
+          "patch": "26.17",
+          "durationSec": 1747,
+          "patchEstimated": true,
+          "player": "Beifeng",
+          "uploaded": "2026-08-31",
+          "format": "stream",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 76,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "XTfSGkIA3fw",
+          "title": "Qiyana vs Nidalee Jungle - KR Challenger - Patch 16.21 Season 16",
+          "rankClaim": "Challenger",
+          "patch": "26.21",
+          "durationSec": 1411,
+          "region": "KR",
+          "uploaded": "2026-11-04",
+          "moments": []
+        },
+        {
+          "videoId": "6WL_m7eCKrg",
+          "title": "Qiyana vs Nidalee Jungle - KR Challenger - Patch 16.20 Season 16",
+          "rankClaim": "Challenger",
+          "patch": "26.20",
+          "durationSec": 1666,
+          "region": "KR",
+          "uploaded": "2026-10-17",
+          "moments": []
+        },
+        {
+          "videoId": "e3us6k2rbqQ",
+          "title": "(VIT Lyncas) Qiyana Jungle vs Nidalee - EUW Challenger Patch 26.14",
+          "rankClaim": "Challenger",
+          "patch": "26.14",
+          "durationSec": 1548,
+          "region": "EUW",
+          "player": "VIT Lyncas",
+          "uploaded": "2026-07-19",
+          "moments": []
+        },
+        {
+          "videoId": "OsWuzwPVqyo",
+          "title": "Qiyana Jungle vs Nidalee - KR Challenger Patch 26.06",
+          "rankClaim": "Challenger",
+          "patch": "26.6",
+          "durationSec": 1872,
+          "region": "KR",
+          "uploaded": "2026-03-29",
+          "moments": []
+        },
+        {
+          "videoId": "EMtOqRtXBcA",
+          "title": "Qiyana vs Nidalee Jungle - KR Challenger - Patch 25.24 Season 15",
+          "rankClaim": "Challenger",
+          "patch": "25.24",
+          "durationSec": 1726,
+          "region": "KR",
+          "uploaded": "2025-12-19",
+          "moments": []
+        },
+        {
+          "videoId": "whtoCK3Dur4",
+          "title": "Qiyana vs Nidalee Jungle - KR Challenger - Patch 25.24 Season 15",
+          "rankClaim": "Challenger",
+          "patch": "25.24",
+          "durationSec": 2171,
+          "region": "KR",
+          "uploaded": "2025-12-17",
+          "moments": []
+        },
+        {
+          "videoId": "FLVm4d3zpLA",
+          "title": "Qiyana vs Nidalee Jungle - KR Challenger - Patch 25.18 Season 15",
+          "rankClaim": "Challenger",
+          "patch": "25.18",
+          "durationSec": 1306,
+          "region": "KR",
+          "uploaded": "2025-09-22",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 79,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "02IrEQGxGp0",
+          "title": "BeiFeng Qiyana vs Gragas — Challenger CN Super Server — Engsub",
+          "rankClaim": "Challenger",
+          "patch": "26.18",
+          "durationSec": 1500,
+          "patchEstimated": true,
+          "player": "Beifeng",
+          "uploaded": "2026-09-11",
+          "format": "stream",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 79,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "3vWOD8WVSjs",
+          "title": "Qiyana Top vs Gragas - VN Challenger Patch 25.12",
+          "rankClaim": "Challenger",
+          "patch": "25.12",
+          "durationSec": 1637,
+          "uploaded": "2025-06-23",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 80,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "tlYquusguO8",
+          "title": "(IG Wei) Qiyana Jungle vs Pantheon - KR Challenger Patch 26.13",
+          "rankClaim": "Challenger",
+          "patch": "26.13",
+          "durationSec": 1441,
+          "region": "KR",
+          "player": "Wei",
+          "team": "IG",
+          "uploaded": "2026-07-07",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 80,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "gxQYelVg-0g",
+          "title": "BeiFeng Qiyana vs Pantheon — Challenger CN Super Server — Engsub",
+          "rankClaim": "Challenger",
+          "patch": "26.18",
+          "durationSec": 1627,
+          "patchEstimated": true,
+          "player": "Beifeng",
+          "uploaded": "2026-09-14",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "C3qx7rCCNuk",
+          "title": "BeiFeng Qiyana vs Pantheon — Challenger CN Super Server — Engsub",
+          "rankClaim": "Challenger",
+          "patch": "26.17",
+          "durationSec": 1303,
+          "patchEstimated": true,
+          "player": "Beifeng",
+          "uploaded": "2026-08-26",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "sP0xgZrvJKg",
+          "title": "BeiFeng Qiyana vs Pantheon — Challenger CN Super Server — Engsub",
+          "rankClaim": "Challenger",
+          "patch": "26.13",
+          "durationSec": 1772,
+          "patchEstimated": true,
+          "player": "Beifeng",
+          "uploaded": "2026-07-08",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "QQrF-z0eyL8",
+          "title": "BeiFeng Qiyana vs Pantheon — Challenger CN Super Server — Engsub",
+          "rankClaim": "Challenger",
+          "patch": "26.11",
+          "durationSec": 1811,
+          "patchEstimated": true,
+          "player": "Beifeng",
+          "uploaded": "2026-05-28",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "t5do8Faw4ac",
+          "title": "Beifeng Qiyana vs Pantheon — Challenger CN Super Server",
+          "rankClaim": "Challenger",
+          "patch": "26.6",
+          "durationSec": 906,
+          "patchEstimated": true,
+          "player": "Beifeng",
+          "uploaded": "2026-03-22",
+          "format": "stream",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 84,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "4WdMLQ6A38A",
+          "title": "Qiyana Mid vs Akali - KR Challenger Patch 26.19",
+          "rankClaim": "Challenger",
+          "patch": "26.19",
+          "durationSec": 1734,
+          "region": "KR",
+          "uploaded": "2026-10-04",
+          "moments": []
+        },
+        {
+          "videoId": "IUVw1Mc4g8g",
+          "title": "YeQiuFeng Qiyana vs Akali（Beifeng) — Master CN Super Server",
+          "rankClaim": "Master",
+          "patch": "26.16",
+          "durationSec": 1441,
+          "patchEstimated": true,
+          "player": "Beifeng",
+          "uploaded": "2026-08-24",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "xs4MEf6Kdq0",
+          "title": "BeiFeng Qiyana vs Akali — Grandmaster CN Super Server — Engsub",
+          "rankClaim": "Grandmaster",
+          "patch": "26.16",
+          "durationSec": 1323,
+          "patchEstimated": true,
+          "player": "Beifeng",
+          "uploaded": "2026-08-15",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "kWwGWNxbJtM",
+          "title": "BeiFeng Qiyana vs Akali — Challenger CN Super Server — Engsub",
+          "rankClaim": "Challenger",
+          "patch": "26.14",
+          "durationSec": 1652,
+          "patchEstimated": true,
+          "player": "Beifeng",
+          "uploaded": "2026-07-17",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "7XawLtPIbLI",
+          "title": "BeiFeng Qiyana vs Akali — Master CN Super Server — Engsub",
+          "rankClaim": "Master",
+          "patch": "26.9",
+          "durationSec": 1377,
+          "patchEstimated": true,
+          "player": "Beifeng",
+          "uploaded": "2026-05-04",
+          "format": "stream",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 90,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "gyDBn31dV-U",
+          "title": "BeiFeng Qiyana vs Malzahar — Master KR Server — Engsub",
+          "rankClaim": "Master",
+          "patch": "26.7",
+          "durationSec": 1616,
+          "region": "KR",
+          "patchEstimated": true,
+          "player": "Beifeng",
+          "uploaded": "2026-04-13",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "hZ4FwijkKKQ",
+          "title": "Qiyana Mid vs Malzahar - EUW Grandmaster Patch 25.19",
+          "rankClaim": "Grandmaster",
+          "patch": "25.19",
+          "durationSec": 1764,
+          "region": "EUW",
+          "uploaded": "2025-10-04",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 91,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "jFdkHhAyRbE",
+          "title": "(GL HARPOON) Qiyana Jungle vs Talon (Casper ) - EUW Challenger Patch 26.20",
+          "rankClaim": "Challenger",
+          "patch": "26.20",
+          "durationSec": 1740,
+          "region": "EUW",
+          "player": "GL HARPOON",
+          "uploaded": "2026-10-14",
+          "result": "W",
+          "moments": [
+            {
+              "atSec": 77,
+              "label": "First Blood — Qiyana kills Urgot",
+              "kind": "kill"
+            },
+            {
+              "atSec": 350,
+              "label": "Red takes 1st Dragon (Mountain)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 527,
+              "label": "Qiyana outplays Talon"
+            },
+            {
+              "atSec": 697,
+              "label": "Red takes 2nd Dragon (Hextech)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 804,
+              "label": "Qiyana Triple Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1080,
+              "label": "Blue takes 1st Dragon (Chemtech)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1207,
+              "label": "Red takes Baron",
+              "kind": "baron"
+            },
+            {
+              "atSec": 1289,
+              "label": "Team fight (3 kills)",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1338,
+              "label": "Mid Inhibitor falls (Blue)"
+            },
+            {
+              "atSec": 1347,
+              "label": "Top Inhibitor falls (Blue)"
+            },
+            {
+              "atSec": 1386,
+              "label": "Red takes 3rd Dragon (Chemtech)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1449,
+              "label": "Bot Inhibitor falls (Blue)"
+            },
+            {
+              "atSec": 1451,
+              "label": "Qiyana kills Urgot",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1581,
+              "label": "Red takes 2nd Baron",
+              "kind": "baron"
+            },
+            {
+              "atSec": 1700,
+              "label": "Red takes 4th Dragon (Chemtech)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1710,
+              "label": "Qiyana solo kills Talon again",
+              "kind": "kill"
+            }
+          ]
+        },
+        {
+          "videoId": "et3nGc1JQPs",
+          "title": "Qiyana vs Talon Jungle [ DNS Pyosik ] Korea Grandmaster Patch 26.5",
+          "rankClaim": "Grandmaster",
+          "patch": "26.5",
+          "durationSec": 1755,
+          "region": "KR",
+          "player": "Pyosik",
+          "uploaded": "2026-03-13",
+          "moments": []
+        },
+        {
+          "videoId": "vznzBX7WW18",
+          "title": "Qiyana vs Talon Jungle - KR Challenger - Patch 25.24 Season 15",
+          "rankClaim": "Challenger",
+          "patch": "25.24",
+          "durationSec": 1726,
+          "region": "KR",
+          "uploaded": "2025-12-30",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 91,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "xMHzKbI03XA",
+          "title": "BeiFeng Qiyana vs Talon — Challenger CN Super Server — Engsub",
+          "rankClaim": "Challenger",
+          "patch": "26.17",
+          "durationSec": 1556,
+          "patchEstimated": true,
+          "player": "Beifeng",
+          "uploaded": "2026-09-09",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "tMpGgK1LnZM",
+          "title": "BeiFeng Qiyana vs Talon — Challenger CN Super Server — Engsub",
+          "rankClaim": "Challenger",
+          "patch": "26.17",
+          "durationSec": 1448,
+          "patchEstimated": true,
+          "player": "Beifeng",
+          "uploaded": "2026-08-28",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "ges1mdy05eU",
+          "title": "BeiFeng Qiyana vs Talon — Challenger CN Super Server — Engsub",
+          "rankClaim": "Challenger",
+          "patch": "26.16",
+          "durationSec": 2048,
+          "patchEstimated": true,
+          "player": "Beifeng",
+          "uploaded": "2026-08-25",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "SGd8xwUfEpE",
+          "title": "BeiFeng Qiyana vs Talon — Challenger CN Super Server — Engsub",
+          "rankClaim": "Challenger",
+          "patch": "26.12",
+          "durationSec": 1886,
+          "patchEstimated": true,
+          "player": "Beifeng",
+          "uploaded": "2026-06-10",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "eBCILoLBv0w",
+          "title": "Qiyana Mid vs Talon - NA Challenger Patch 26.06",
+          "rankClaim": "Challenger",
+          "patch": "26.6",
+          "durationSec": 1766,
+          "region": "NA",
+          "uploaded": "2026-03-21",
+          "moments": []
+        },
+        {
+          "videoId": "vXMTX8UHRNg",
+          "title": "Beifeng Qiyana VS Talon — Master KR Server",
+          "rankClaim": "Master",
+          "patch": "26.5",
+          "durationSec": 1557,
+          "region": "KR",
+          "patchEstimated": true,
+          "player": "Beifeng",
+          "uploaded": "2026-03-08",
+          "format": "stream",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 99,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "CZx1rl-zdz0",
+          "title": "Beifeng Qiyana VS Lux — Challenger CN Super Server",
+          "rankClaim": "Challenger",
+          "patch": "26.3",
+          "durationSec": 883,
+          "patchEstimated": true,
+          "player": "Beifeng",
+          "uploaded": "2026-02-08",
+          "format": "stream",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 101,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "JHPirgf1NtM",
+          "title": "Beifeng Qiyana VS Xerath — Master KR Server",
+          "rankClaim": "Master",
+          "patch": "26.5",
+          "durationSec": 902,
+          "region": "KR",
+          "patchEstimated": true,
+          "player": "Beifeng",
+          "uploaded": "2026-03-06",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "9BvijnLShxU",
+          "title": "Qiyana vs Xerath Mid - KR Challenger - Patch 16.03 Season 16",
+          "rankClaim": "Challenger",
+          "patch": "26.3",
+          "durationSec": 1861,
+          "region": "KR",
+          "uploaded": "2026-02-18",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 103,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "Of_jB7a1oeM",
+          "title": "BeiFeng Qiyana vs Ahri — Challenger CN Super Server — Engsub",
+          "rankClaim": "Challenger",
+          "patch": "26.18",
+          "durationSec": 922,
+          "patchEstimated": true,
+          "player": "Beifeng",
+          "uploaded": "2026-09-18",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "YYE_pHlrqEQ",
+          "title": "BeiFeng Qiyana vs Ahri — Challenger CN Super Server — Engsub",
+          "rankClaim": "Challenger",
+          "patch": "26.11",
+          "durationSec": 1582,
+          "patchEstimated": true,
+          "player": "Beifeng",
+          "uploaded": "2026-05-31",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "UvKFhv_fQGE",
+          "title": "BeiFeng Qiyana vs Ahri — Challenger CN Super Server — Engsub",
+          "rankClaim": "Challenger",
+          "patch": "26.10",
+          "durationSec": 1435,
+          "patchEstimated": true,
+          "player": "Beifeng",
+          "uploaded": "2026-05-24",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "jT4dzsrKMSk",
+          "title": "BeiFeng Qiyana vs Ahri — Challenger CN Super Server — Engsub",
+          "rankClaim": "Challenger",
+          "patch": "26.10",
+          "durationSec": 880,
+          "patchEstimated": true,
+          "player": "Beifeng",
+          "uploaded": "2026-05-13",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "tyXAPJD9Fts",
+          "title": "Qiyana vs Ahri 10/2/6 (Mid) | EUW Challenger | Qiyana OTP Replay",
+          "rankClaim": "Challenger",
+          "patch": "26.7",
+          "durationSec": 1504,
+          "region": "EUW",
+          "patchEstimated": true,
+          "uploaded": "2026-04-11",
+          "moments": []
+        },
+        {
+          "videoId": "RAm42CuMaqI",
+          "title": "Beifeng Qiyana VS Ahri — Master KR Server",
+          "rankClaim": "Master",
+          "patch": "26.5",
+          "durationSec": 885,
+          "region": "KR",
+          "patchEstimated": true,
+          "player": "Beifeng",
+          "uploaded": "2026-03-05",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "WAbBxMva6nM",
+          "title": "Beifeng Qiyana VS Ahri — Challenger CN Super Server",
+          "rankClaim": "Challenger",
+          "patch": "26.4",
+          "durationSec": 940,
+          "patchEstimated": true,
+          "player": "Beifeng",
+          "uploaded": "2026-03-01",
+          "format": "stream",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 104,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "4ieaa_VgAbo",
+          "title": "Qiyana Jungle vs Graves - NA Challenger Patch 25.13",
+          "rankClaim": "Challenger",
+          "patch": "25.13",
+          "durationSec": 1468,
+          "region": "NA",
+          "uploaded": "2025-07-09",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 105,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "DfDWf436H9Y",
+          "title": "YeQiuFeng Qiyana vs Fizz（Mango fish） — Challenger CN Super Server",
+          "rankClaim": "Challenger",
+          "patch": "26.17",
+          "durationSec": 1743,
+          "patchEstimated": true,
+          "player": "Mangofish",
+          "uploaded": "2026-09-08",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "FG8xx_5zFuo",
+          "title": "BeiFeng Qiyana vs Fizz — Challenger CN Super Server — Engsub",
+          "rankClaim": "Challenger",
+          "patch": "26.17",
+          "durationSec": 1452,
+          "patchEstimated": true,
+          "player": "Beifeng",
+          "uploaded": "2026-09-04",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "PkjLWff01F8",
+          "title": "BeiFeng Qiyana vs Fizz — Challenger CN Super Server — Engsub",
+          "rankClaim": "Challenger",
+          "patch": "26.16",
+          "durationSec": 2452,
+          "patchEstimated": true,
+          "player": "Beifeng",
+          "uploaded": "2026-08-20",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "ICvgcZk_XyA",
+          "title": "BeiFeng Qiyana vs Fizz — Challenger CN Super Server — Engsub",
+          "rankClaim": "Challenger",
+          "patch": "26.11",
+          "durationSec": 2053,
+          "patchEstimated": true,
+          "player": "Beifeng",
+          "uploaded": "2026-06-01",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "_3fyvu8HxJM",
+          "title": "BeiFeng Qiyana vs Fizz — Grandmaster CN Super Server — Engsub",
+          "rankClaim": "Grandmaster",
+          "patch": "26.9",
+          "durationSec": 946,
+          "patchEstimated": true,
+          "player": "Beifeng",
+          "uploaded": "2026-05-08",
+          "format": "stream",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 107,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "_yF2HHmxN-M",
+          "title": "(BLG Xun) Qiyana Jungle vs Rengar - KR Master Patch 26.15",
+          "rankClaim": "Master",
+          "patch": "26.15",
+          "durationSec": 1604,
+          "region": "KR",
+          "player": "Xun",
+          "team": "BLG",
+          "uploaded": "2026-08-11",
+          "moments": []
+        },
+        {
+          "videoId": "UhiVlSdkhWg",
+          "title": "Qiyana Jungle vs Rengar - KR Master Patch 26.10",
+          "rankClaim": "Master",
+          "patch": "26.10",
+          "durationSec": 1671,
+          "region": "KR",
+          "uploaded": "2026-05-17",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 112,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "Hb-rudr99P8",
+          "title": "BeiFeng Qiyana vs Viktor — Challenger CN Super Server — Engsub",
+          "rankClaim": "Challenger",
+          "patch": "26.16",
+          "durationSec": 1366,
+          "patchEstimated": true,
+          "player": "Beifeng",
+          "uploaded": "2026-08-24",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "8zuoIktFCns",
+          "title": "BeiFeng Qiyana vs Viktor — Challenger CN Super Server — Engsub",
+          "rankClaim": "Challenger",
+          "patch": "26.11",
+          "durationSec": 2167,
+          "patchEstimated": true,
+          "player": "Beifeng",
+          "uploaded": "2026-06-02",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "WZX110_jlOc",
+          "title": "BeiFeng Qiyana vs Viktor — Challenger CN Super Server — Engsub",
+          "rankClaim": "Challenger",
+          "patch": "26.10",
+          "durationSec": 883,
+          "patchEstimated": true,
+          "player": "Beifeng",
+          "uploaded": "2026-05-27",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "A2KLsOvLD9U",
+          "title": "BeiFeng Qiyana vs Viktor — Challenger CN Super Server — Engsub",
+          "rankClaim": "Challenger",
+          "patch": "26.10",
+          "durationSec": 1170,
+          "patchEstimated": true,
+          "player": "Beifeng",
+          "uploaded": "2026-05-19",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "QZU0Wl97SBo",
+          "title": "Qiyana Mid vs Viktor - EUW Grandmaster Patch 25.17",
+          "rankClaim": "Grandmaster",
+          "patch": "25.17",
+          "durationSec": 1565,
+          "region": "EUW",
+          "uploaded": "2025-09-05",
+          "moments": []
+        },
+        {
+          "videoId": "V8gN3K675yU",
+          "title": "Qiyana Mid vs Viktor - KR Challenger Patch 25.06",
+          "rankClaim": "Challenger",
+          "patch": "25.6",
+          "durationSec": 1582,
+          "region": "KR",
+          "uploaded": "2025-03-27",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 273,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 448,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 543,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 709,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 807,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 887,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 958,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1013,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1105,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1128,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1256,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1279,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1413,
+              "label": "Take down The Inhibitor"
+            },
+            {
+              "atSec": 1428,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1440,
+              "label": "Take down The Inhibitor"
+            },
+            {
+              "atSec": 1452,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1528,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1561,
+              "label": "End credit"
+            }
+          ]
+        },
+        {
+          "videoId": "gmOH8rpCYmE",
+          "title": "Qiyana vs Viktor Mid - KR Challenger - Patch 25.6 Season 15",
+          "rankClaim": "Challenger",
+          "patch": "25.6",
+          "durationSec": 1561,
+          "region": "KR",
+          "uploaded": "2025-03-25",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 113,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "YRbYUo_JDgc",
+          "title": "BeiFeng Qiyana vs Sejuani — Challenger CN Super Server — Engsub",
+          "rankClaim": "Challenger",
+          "patch": "26.16",
+          "durationSec": 1479,
+          "patchEstimated": true,
+          "player": "Beifeng",
+          "uploaded": "2026-08-19",
+          "format": "stream",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 114,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "pKFmZETtcV8",
+          "title": "BeiFeng Qiyana vs Fiora — Challenger CN Super Server — Engsub",
+          "rankClaim": "Challenger",
+          "patch": "26.17",
+          "durationSec": 1693,
+          "patchEstimated": true,
+          "player": "Beifeng",
+          "uploaded": "2026-09-02",
+          "format": "stream",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 115,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "8GAz45lxspo",
+          "title": "BeiFeng Qiyana vs Ziggs — Challenger CN Super Server — Engsub",
+          "rankClaim": "Challenger",
+          "patch": "26.11",
+          "durationSec": 1101,
+          "patchEstimated": true,
+          "player": "Beifeng",
+          "uploaded": "2026-05-30",
+          "format": "stream",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 120,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "6UT1FiTs9pQ",
+          "title": "T1 Oner Qiyana vs Hecarim [ Jungle ] Korea Challenger 2230 LP | Patch 26.18",
+          "rankClaim": "Challenger",
+          "patch": "26.18",
+          "durationSec": 834,
+          "region": "KR",
+          "player": "Oner",
+          "team": "T1",
+          "uploaded": "2026-09-21",
+          "moments": []
+        },
+        {
+          "videoId": "WRXJSx1jTXw",
+          "title": "T1 Oner Qiyana vs Hecarim [ Jungle ] Patch 26.13 Korea Challenger 2216 LP",
+          "rankClaim": "Challenger",
+          "patch": "26.13",
+          "durationSec": 1765,
+          "region": "KR",
+          "player": "Oner",
+          "team": "T1",
+          "uploaded": "2026-07-06",
+          "moments": []
+        },
+        {
+          "videoId": "3nFClJaKcEI",
+          "title": "Qiyana vs Hecarim [ Jungle ] Lol Korea Grandmaster Patch 26.4 ✅",
+          "rankClaim": "Grandmaster",
+          "patch": "26.4",
+          "durationSec": 1526,
+          "region": "KR",
+          "uploaded": "2026-02-24",
+          "moments": []
+        },
+        {
+          "videoId": "OcGR_68LpfQ",
+          "title": "Qiyana Jungle vs Hecarim - KR Challenger Patch 25.23",
+          "rankClaim": "Challenger",
+          "patch": "25.23",
+          "durationSec": 1815,
+          "region": "KR",
+          "uploaded": "2025-11-23",
+          "moments": []
+        },
+        {
+          "videoId": "j8CtINchkoY",
+          "title": "Qiyana vs Hercarim Jungle - EUW Grandmaster - Patch 25.18 Season 15",
+          "rankClaim": "Grandmaster",
+          "patch": "25.18",
+          "durationSec": 1451,
+          "region": "EUW",
+          "uploaded": "2025-09-24",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 121,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "0IL4QS13Fik",
+          "title": "Qiyana vs Kha'Zix Jungle [ Gen.G Canyon ] Ranked Master NA | Patch 26.21",
+          "rankClaim": "Master",
+          "patch": "26.21",
+          "durationSec": 1326,
+          "region": "NA",
+          "player": "Canyon",
+          "team": "Gen.G",
+          "uploaded": "2026-10-21",
+          "moments": []
+        },
+        {
+          "videoId": "kqnFErKtKBo",
+          "title": "Qiyana vs Kha'Zix Jungle - KR Challenger - Patch 25.23 Season 15",
+          "rankClaim": "Challenger",
+          "patch": "25.23",
+          "durationSec": 2101,
+          "region": "KR",
+          "uploaded": "2025-11-30",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 122,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "Yk0kv6kxMog",
+          "title": "Qiyana Jungle vs Darius - EUW Challenger Patch 26.04",
+          "rankClaim": "Challenger",
+          "patch": "26.4",
+          "durationSec": 1905,
+          "region": "EUW",
+          "uploaded": "2026-02-28",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 122,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "xG4FR1OWxxU",
+          "title": "Beifeng Qiyana VS Darius — Challenger CN Super Server",
+          "rankClaim": "Challenger",
+          "patch": "26.4",
+          "durationSec": 1410,
+          "patchEstimated": true,
+          "player": "Beifeng",
+          "uploaded": "2026-03-03",
+          "format": "stream",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 122,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "S6US_X7Kwdc",
+          "title": "Qiyana Top vs Darius - KR Master Patch 25.13",
+          "rankClaim": "Master",
+          "patch": "25.13",
+          "durationSec": 1718,
+          "region": "KR",
+          "uploaded": "2025-07-16",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 126,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "lV043lVNR_8",
+          "title": "Qiyana vs Jayce Jungle - KR Challenger - Patch 16.15 Season 16",
+          "rankClaim": "Challenger",
+          "patch": "26.15",
+          "durationSec": 1486,
+          "region": "KR",
+          "uploaded": "2026-08-05",
+          "moments": []
+        },
+        {
+          "videoId": "K5CDHJrLqik",
+          "title": "(VIT Lyncas) Qiyana Jungle vs Jayce - EUW Challenger Patch 26.13",
+          "rankClaim": "Challenger",
+          "patch": "26.13",
+          "durationSec": 1740,
+          "region": "EUW",
+          "player": "VIT Lyncas",
+          "uploaded": "2026-06-28",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 126,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "ALUoUIYFyYU",
+          "title": "BeiFeng Qiyana vs Jayce — Grandmaster CN Super Server — Engsub",
+          "rankClaim": "Grandmaster",
+          "patch": "26.16",
+          "durationSec": 1807,
+          "patchEstimated": true,
+          "player": "Beifeng",
+          "uploaded": "2026-08-16",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "nU4VBvSzwxg",
+          "title": "BeiFeng Qiyana vs Jayce — Challenger CN Super Server — Engsub",
+          "rankClaim": "Challenger",
+          "patch": "26.11",
+          "durationSec": 1586,
+          "patchEstimated": true,
+          "player": "Beifeng",
+          "uploaded": "2026-06-05",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "pjS2Bg8sMwI",
+          "title": "Beifeng Qiyana vs Jayce — Challenger CN Super Server",
+          "rankClaim": "Challenger",
+          "patch": "26.2",
+          "durationSec": 1810,
+          "patchEstimated": true,
+          "player": "Beifeng",
+          "uploaded": "2026-01-31",
+          "format": "stream",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 126,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "nNYfWjHWCcw",
+          "title": "Qiyana Top vs Jayce - KR Grandmaster Patch 25.04",
+          "rankClaim": "Grandmaster",
+          "patch": "25.4",
+          "durationSec": 1895,
+          "region": "KR",
+          "uploaded": "2025-03-03",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 85,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 323,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 397,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 466,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 746,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 855,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 883,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 946,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 983,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1025,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1127,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1151,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1170,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1248,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1408,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1536,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1735,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1787,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1811,
+              "label": "Take down The Inhibitor"
+            },
+            {
+              "atSec": 1824,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1841,
+              "label": "Get a Triple Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1862,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1874,
+              "label": "End credit"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 127,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "bVJFihWGnks",
+          "title": "BeiFeng Qiyana vs Lissandra — Challenger CN Super Server — Engsub",
+          "rankClaim": "Challenger",
+          "patch": "26.17",
+          "durationSec": 937,
+          "patchEstimated": true,
+          "player": "Beifeng",
+          "uploaded": "2026-09-05",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "DNv-ElqitAw",
+          "title": "Qiyana Mid vs Lissandra - EUW Challenger Patch 26.07",
+          "rankClaim": "Challenger",
+          "patch": "26.7",
+          "durationSec": 1742,
+          "region": "EUW",
+          "uploaded": "2026-04-06",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 131,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "WWpq0yY0bhA",
+          "title": "Qiyana Jungle vs Diana - EUW Challenger Patch 26.09",
+          "rankClaim": "Challenger",
+          "patch": "26.9",
+          "durationSec": 1685,
+          "region": "EUW",
+          "uploaded": "2026-05-03",
+          "moments": []
+        },
+        {
+          "videoId": "0_xsH2l3QpE",
+          "title": "Qiyana Jungle vs Diana - KR Challenger Patch 25.21",
+          "rankClaim": "Challenger",
+          "patch": "25.21",
+          "durationSec": 1737,
+          "region": "KR",
+          "uploaded": "2025-10-26",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 131,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "RVrisLqFrjI",
+          "title": "BeiFeng Qiyana vs Diana — Grandmaster CN Super Server — Engsub",
+          "rankClaim": "Grandmaster",
+          "patch": "26.16",
+          "durationSec": 1512,
+          "patchEstimated": true,
+          "player": "Beifeng",
+          "uploaded": "2026-08-17",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "5mRK5pHiLt0",
+          "title": "BeiFeng Qiyana vs Diana — Challenger CN Super Server — Engsub",
+          "rankClaim": "Challenger",
+          "patch": "26.10",
+          "durationSec": 1400,
+          "patchEstimated": true,
+          "player": "Beifeng",
+          "uploaded": "2026-05-16",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "_aBPdB-rGgY",
+          "title": "Qiyana Mid vs Diana - NA Grandmaster Patch 25.24",
+          "rankClaim": "Grandmaster",
+          "patch": "25.24",
+          "durationSec": 1523,
+          "region": "NA",
+          "uploaded": "2025-12-13",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 141,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "uYd9c7HsV1s",
+          "title": "Qiyana vs Kayn Jungle - KR Challenger - Patch 25.19 Season 15",
+          "rankClaim": "Challenger",
+          "patch": "25.19",
+          "durationSec": 1651,
+          "region": "KR",
+          "uploaded": "2025-10-08",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 142,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "bkvcZf_ugGA",
+          "title": "BeiFeng Qiyana vs Zoe — Challenger CN Super Server — Engsub",
+          "rankClaim": "Challenger",
+          "patch": "26.18",
+          "durationSec": 1739,
+          "patchEstimated": true,
+          "player": "Beifeng",
+          "uploaded": "2026-09-16",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "ovkgtBYbn0I",
+          "title": "BeiFeng Qiyana vs Zoe — Grandmaster CN Super Server — Engsub",
+          "rankClaim": "Grandmaster",
+          "patch": "26.16",
+          "durationSec": 1843,
+          "patchEstimated": true,
+          "player": "Beifeng",
+          "uploaded": "2026-08-14",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "u9YF2k2aLqo",
+          "title": "BeiFeng Qiyana vs Zoe — Challenger CN Super Server — Engsub",
+          "rankClaim": "Challenger",
+          "patch": "26.11",
+          "durationSec": 1447,
+          "patchEstimated": true,
+          "player": "Beifeng",
+          "uploaded": "2026-05-29",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "rcvkGcBkJ30",
+          "title": "Qiyana Mid vs Zoe - KR Challenger Patch 26.05",
+          "rankClaim": "Challenger",
+          "patch": "26.5",
+          "durationSec": 1804,
+          "region": "KR",
+          "uploaded": "2026-03-07",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 209,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 288,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 726,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 756,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 889,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1025,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1041,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1066,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1107,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1142,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1164,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1510,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1599,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1640,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1749,
+              "label": "Get a PENTA KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1793,
+              "label": "End credit"
+            }
+          ]
+        },
+        {
+          "videoId": "O1H107Yl4m4",
+          "title": "Qiyana vs Zoe Mid - KR Challenger - Patch 16.05 Season 16",
+          "rankClaim": "Challenger",
+          "patch": "26.5",
+          "durationSec": 1786,
+          "region": "KR",
+          "uploaded": "2026-03-05",
+          "moments": []
+        },
+        {
+          "videoId": "ujHa09BJyw8",
+          "title": "Qiyana Mid vs Zoe - NA Grandmaster Patch 25.24",
+          "rankClaim": "Grandmaster",
+          "patch": "25.24",
+          "durationSec": 1558,
+          "region": "NA",
+          "uploaded": "2025-12-28",
+          "moments": []
+        },
+        {
+          "videoId": "NZD3T2_YBzc",
+          "title": "Qiyana Mid vs Zoe - EUW Grandmaster Patch 25.21",
+          "rankClaim": "Grandmaster",
+          "patch": "25.21",
+          "durationSec": 1836,
+          "region": "EUW",
+          "uploaded": "2025-11-01",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 143,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "M-H24SkZZrI",
+          "title": "Qiyana Jungle vs Zyra (T1 Oner) - KR Challenger Patch 26.17",
+          "rankClaim": "Challenger",
+          "patch": "26.17",
+          "durationSec": 1556,
+          "region": "KR",
+          "player": "Oner",
+          "uploaded": "2026-08-29",
+          "moments": []
+        },
+        {
+          "videoId": "ul4PC7ybRuQ",
+          "title": "Qiyana vs Zyra Jungle - KR Challenger - Patch 25.4 Season 15",
+          "rankClaim": "Challenger",
+          "patch": "25.4",
+          "durationSec": 1981,
+          "region": "KR",
+          "uploaded": "2025-03-01",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 154,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "DziJNWgjJAE",
+          "title": "Qiyana vs Zac Jungle - KR Challenger - Patch 25.21 Season 15",
+          "rankClaim": "Challenger",
+          "patch": "25.21",
+          "durationSec": 1576,
+          "region": "KR",
+          "uploaded": "2025-10-28",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 157,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "SslQxMU4rkI",
+          "title": "BeiFeng Qiyana vs Yasuo — Challenger CN Super Server — Engsub",
+          "rankClaim": "Challenger",
+          "patch": "26.17",
+          "durationSec": 914,
+          "patchEstimated": true,
+          "player": "Beifeng",
+          "uploaded": "2026-08-29",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "Zr6Nckd4g0Q",
+          "title": "BeiFeng Qiyana vs Yasuo — Master CN Super Server — Engsub",
+          "rankClaim": "Master",
+          "patch": "26.16",
+          "durationSec": 884,
+          "patchEstimated": true,
+          "player": "Beifeng",
+          "uploaded": "2026-08-13",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "GnTZFsbHSSE",
+          "title": "BeiFeng Qiyana vs Yasuo — Challenger CN Super Server — Engsub",
+          "rankClaim": "Challenger",
+          "patch": "26.12",
+          "durationSec": 1358,
+          "patchEstimated": true,
+          "player": "Beifeng",
+          "uploaded": "2026-06-14",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "PzEl3GU0ejs",
+          "title": "Beifeng Qiyana VS Yasuo — Challenger CN Super Server",
+          "rankClaim": "Challenger",
+          "patch": "26.3",
+          "durationSec": 1339,
+          "patchEstimated": true,
+          "player": "Beifeng",
+          "uploaded": "2026-02-13",
+          "format": "stream",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 161,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "9pcNGQe6i_A",
+          "title": "BeiFeng Qiyana vs Velkoz — Challenger CN Super Server — Engsub",
+          "rankClaim": "Challenger",
+          "patch": "26.16",
+          "durationSec": 1607,
+          "patchEstimated": true,
+          "player": "Beifeng",
+          "uploaded": "2026-08-23",
+          "format": "stream",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 163,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "CtVQQDK5rfE",
+          "title": "Qiyana Jungle vs Taliyah - KR Grandmaster Patch 26.21",
+          "rankClaim": "Grandmaster",
+          "patch": "26.21",
+          "durationSec": 1727,
+          "region": "KR",
+          "uploaded": "2026-10-28",
+          "result": "W",
+          "moments": [
+            {
+              "atSec": 479,
+              "label": "Red takes 1st Dragon (Infernal)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 671,
+              "label": "Qiyana outduels Aatrox"
+            },
+            {
+              "atSec": 772,
+              "label": "Qiyana Triple Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 825,
+              "label": "Red takes 2nd Dragon (Ocean)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 961,
+              "label": "Gragas eliminates Aatrox"
+            },
+            {
+              "atSec": 1087,
+              "label": "Qiyana outplays Taliyah"
+            },
+            {
+              "atSec": 1131,
+              "label": "Blue takes 1st Dragon (Cloud)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1145,
+              "label": "Ezreal Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1238,
+              "label": "Ezreal Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1290,
+              "label": "Blue takes Baron",
+              "kind": "baron"
+            },
+            {
+              "atSec": 1353,
+              "label": "Qiyana kills Aatrox",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1421,
+              "label": "Syndra takes down Aatrox"
+            },
+            {
+              "atSec": 1447,
+              "label": "Blue takes 2nd Dragon (Cloud)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1561,
+              "label": "Mid Inhibitor falls (Blue)"
+            },
+            {
+              "atSec": 1680,
+              "label": "Ezreal Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1683,
+              "label": "Ezreal Triple Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1705,
+              "label": "Mid Inhibitor falls (Red)"
+            },
+            {
+              "atSec": 1710,
+              "label": "Qiyana eliminates Caitlyn"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 163,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "8k1vLUmYMss",
+          "title": "Qiyana Mid vs Taliyah - KR Master Patch 26.17",
+          "rankClaim": "Master",
+          "patch": "26.17",
+          "durationSec": 1621,
+          "region": "KR",
+          "uploaded": "2026-09-05",
+          "moments": []
+        },
+        {
+          "videoId": "VdbC_VrqFSE",
+          "title": "Qiyana Mid vs Taliyah - EUW Grandmaster Patch 26.02",
+          "rankClaim": "Grandmaster",
+          "patch": "26.2",
+          "durationSec": 1454,
+          "region": "EUW",
+          "uploaded": "2026-01-30",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 241,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 267,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 436,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 508,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 543,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 698,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 832,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 856,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 880,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1013,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1096,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1119,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1131,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1156,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1181,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1361,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1443,
+              "label": "End credit"
+            }
+          ]
+        },
+        {
+          "videoId": "vcJNPClirZ4",
+          "title": "Qiyana Mid vs Taliyah - KR Challenger Patch 26.01",
+          "rankClaim": "Challenger",
+          "patch": "26.1",
+          "durationSec": 1570,
+          "region": "KR",
+          "uploaded": "2026-01-17",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 164,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "3Us6bWRFCk4",
+          "title": "Penta Kill! Beifeng Qiyana VS Camille — Master KR Server",
+          "rankClaim": "Master",
+          "patch": "26.4",
+          "durationSec": 1380,
+          "region": "KR",
+          "patchEstimated": true,
+          "player": "Beifeng",
+          "uploaded": "2026-03-01",
+          "format": "stream",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 166,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "-tscaZuSRl0",
+          "title": "BeiFeng Qiyana vs Akshan — Challenger CN Super Server — Engsub",
+          "rankClaim": "Challenger",
+          "patch": "26.13",
+          "durationSec": 1330,
+          "patchEstimated": true,
+          "player": "Beifeng",
+          "uploaded": "2026-07-04",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "6F2c1PPMSMs",
+          "title": "Super carry！Beifeng Qiyana VS Akshan — Master KR Server",
+          "rankClaim": "Master",
+          "patch": "26.5",
+          "durationSec": 1925,
+          "region": "KR",
+          "patchEstimated": true,
+          "player": "Beifeng",
+          "uploaded": "2026-03-07",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "2FI3HIX2DdA",
+          "title": "Qiyana Mid vs Akshan - KR Grandmaster Patch 25.13",
+          "rankClaim": "Grandmaster",
+          "patch": "25.13",
+          "durationSec": 1912,
+          "region": "KR",
+          "uploaded": "2025-07-04",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 200,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "fTS1BVWTHzk",
+          "title": "Qiyana vs BelVeth Jungle - KR Challenger - Patch 25.22 Season 15",
+          "rankClaim": "Challenger",
+          "patch": "25.22",
+          "durationSec": 1606,
+          "region": "KR",
+          "uploaded": "2025-11-12",
+          "moments": []
+        },
+        {
+          "videoId": "kZxDL37aelU",
+          "title": "Qiyana vs Bel'Veth [ Jungle ] Lol Korea Master Patch 25.22",
+          "rankClaim": "Master",
+          "patch": "25.22",
+          "durationSec": 1471,
+          "region": "KR",
+          "uploaded": "2025-11-11",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 202,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "z0NiWO6tV40",
+          "title": "BeiFeng Qiyana vs Jhin — Challenger CN Super Server — Engsub",
+          "rankClaim": "Challenger",
+          "patch": "26.11",
+          "durationSec": 899,
+          "patchEstimated": true,
+          "player": "Beifeng",
+          "uploaded": "2026-06-06",
+          "format": "stream",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 203,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "YNfizi1pN-M",
+          "title": "(Oguzkhan) Qiyana Jungle vs Kindred - EUW Grandmaster Patch 26.11",
+          "rankClaim": "Grandmaster",
+          "patch": "26.11",
+          "durationSec": 1828,
+          "region": "EUW",
+          "player": "Oguzkhan",
+          "uploaded": "2026-06-03",
+          "moments": []
+        },
+        {
+          "videoId": "FHQSSq2jYgw",
+          "title": "Qiyana Jungle vs Kindred - NA Grandmaster Patch 25.07",
+          "rankClaim": "Grandmaster",
+          "patch": "25.7",
+          "durationSec": 1772,
+          "region": "NA",
+          "uploaded": "2025-04-12",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 234,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "pheMSl-QwEQ",
+          "title": "Qiyana vs Viego Jungle [ Gen.G Canyon ] Korea Challengerr 2509 LP | Patch 26.18",
+          "rankClaim": "Challenger",
+          "patch": "26.18",
+          "durationSec": 1451,
+          "region": "KR",
+          "player": "Canyon",
+          "team": "Gen.G",
+          "uploaded": "2026-09-19",
+          "moments": []
+        },
+        {
+          "videoId": "da-cp7HfAXk",
+          "title": "Qiyana Jungle vs Viego - NA Challenger Patch 26.18",
+          "rankClaim": "Challenger",
+          "patch": "26.18",
+          "durationSec": 1739,
+          "region": "NA",
+          "uploaded": "2026-09-18",
+          "moments": []
+        },
+        {
+          "videoId": "_9ntP6oNtjU",
+          "title": "Qiyana Jungle vs Viego - KR Grandmaster Patch 26.09",
+          "rankClaim": "Grandmaster",
+          "patch": "26.9",
+          "durationSec": 1562,
+          "region": "KR",
+          "uploaded": "2026-05-11",
+          "moments": []
+        },
+        {
+          "videoId": "UTckGLsSdac",
+          "title": "Qiyana vs Viego [ Jungle ] Lol Korea Challenger Patch 26.2 ✅",
+          "rankClaim": "Challenger",
+          "patch": "26.2",
+          "durationSec": 1896,
+          "region": "KR",
+          "uploaded": "2026-01-24",
+          "moments": []
+        },
+        {
+          "videoId": "UlGejuPx1gM",
+          "title": "Qiyana vs Viego Jungle - KR Challenger - Patch 25.23 Season 15",
+          "rankClaim": "Challenger",
+          "patch": "25.23",
+          "durationSec": 1711,
+          "region": "KR",
+          "uploaded": "2025-12-03",
+          "moments": []
+        },
+        {
+          "videoId": "DNyyiPxQPfA",
+          "title": "Qiyana vs Viego Jungle - KR Challenger - Patch 25.23 Season 15",
+          "rankClaim": "Challenger",
+          "patch": "25.23",
+          "durationSec": 1651,
+          "region": "KR",
+          "uploaded": "2025-12-02",
+          "moments": []
+        },
+        {
+          "videoId": "JBKbXNCCoJI",
+          "title": "Qiyana vs Viego Jungle - KR Challenger - Patch 25.20 Season 15",
+          "rankClaim": "Challenger",
+          "patch": "25.20",
+          "durationSec": 1481,
+          "region": "KR",
+          "uploaded": "2025-10-22",
+          "moments": []
+        },
+        {
+          "videoId": "ZGMhsUA_8V0",
+          "title": "Qiyana vs Viego Jungle - KR Challenger - Patch 25.19 Season 15",
+          "rankClaim": "Challenger",
+          "patch": "25.19",
+          "durationSec": 2071,
+          "region": "KR",
+          "uploaded": "2025-10-09",
+          "moments": []
+        },
+        {
+          "videoId": "KFyikjaCKik",
+          "title": "Qiyana Jungle vs Viego - KR Challenger Patch 25.19",
+          "rankClaim": "Challenger",
+          "patch": "25.19",
+          "durationSec": 1565,
+          "region": "KR",
+          "uploaded": "2025-09-26",
+          "moments": []
+        },
+        {
+          "videoId": "lUwKSvp_jaI",
+          "title": "Qiyana vs Viego Jungle - KR Challenger - Patch 25.18 Season 15",
+          "rankClaim": "Challenger",
+          "patch": "25.18",
+          "durationSec": 1831,
+          "region": "KR",
+          "uploaded": "2025-09-22",
+          "moments": []
+        },
+        {
+          "videoId": "bPS0MqeeHrA",
+          "title": "Qiyana Jungle vs Viego - EUW Challenger Patch 25.14",
+          "rankClaim": "Challenger",
+          "patch": "25.14",
+          "durationSec": 1619,
+          "region": "EUW",
+          "uploaded": "2025-07-27",
+          "moments": []
+        },
+        {
+          "videoId": "SZ5NNBnIO24",
+          "title": "Qiyana vs Viego Jungle - KR Challenger - Patch 25.13 Season 15",
+          "rankClaim": "Challenger",
+          "patch": "25.13",
+          "durationSec": 1861,
+          "region": "KR",
+          "uploaded": "2025-06-26",
+          "moments": []
+        },
+        {
+          "videoId": "4wQkqS8Okjc",
+          "title": "Qiyana Jungle vs Viego - EUW Grandmaster Patch 25.09",
+          "rankClaim": "Grandmaster",
+          "patch": "25.9",
+          "durationSec": 1660,
+          "region": "EUW",
+          "uploaded": "2025-05-12",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 206,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 328,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 418,
+              "label": "Hunt The Dragon",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 440,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 510,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 705,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 747,
+              "label": "Hunt The Dragon",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 785,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 897,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 975,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1040,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1097,
+              "label": "Hunt The Dragon",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1139,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1188,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1218,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1328,
+              "label": "Hunt The Atakhan"
+            },
+            {
+              "atSec": 1355,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1414,
+              "label": "Hunt The Dragon",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1449,
+              "label": "Take down The Inhibitor"
+            },
+            {
+              "atSec": 1582,
+              "label": "Hunt The Baron Nashor",
+              "kind": "baron"
+            },
+            {
+              "atSec": 1607,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1639,
+              "label": "End credit"
+            }
+          ]
+        },
+        {
+          "videoId": "ebmrU9le9n4",
+          "title": "Qiyana vs Viego Jungle - KR Grandmaster - Patch 25.6 Season 15",
+          "rankClaim": "Grandmaster",
+          "patch": "25.6",
+          "durationSec": 1600,
+          "region": "KR",
+          "uploaded": "2025-03-22",
+          "moments": []
+        },
+        {
+          "videoId": "ocB6ohMUT7k",
+          "title": "Qiyana Jungle vs Viego - EUW Grandmaster Patch 25.05",
+          "rankClaim": "Grandmaster",
+          "patch": "25.5",
+          "durationSec": 1550,
+          "region": "EUW",
+          "uploaded": "2025-03-19",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 202,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 336,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 544,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 593,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 632,
+              "label": "Hunt The Void Grubs",
+              "kind": "grubs"
+            },
+            {
+              "atSec": 705,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 756,
+              "label": "Hunt The Dragon",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 822,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 920,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 937,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 961,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 994,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1088,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1106,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1157,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1221,
+              "label": "Hunt The Atakhan"
+            },
+            {
+              "atSec": 1318,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1379,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1467,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1505,
+              "label": "Take down The Inhibitor"
+            },
+            {
+              "atSec": 1518,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1529,
+              "label": "End credit"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 234,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "uFfbYSCdusg",
+          "title": "BeiFeng Qiyana vs Viego — Challenger CN Super Server — Engsub",
+          "rankClaim": "Challenger",
+          "patch": "26.18",
+          "durationSec": 2754,
+          "patchEstimated": true,
+          "player": "Beifeng",
+          "uploaded": "2026-09-20",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "rlmX1JPdS0w",
+          "title": "Qiyana Mid vs Viego - NA Challenger Patch 26.05",
+          "rankClaim": "Challenger",
+          "patch": "26.5",
+          "durationSec": 1572,
+          "region": "NA",
+          "uploaded": "2026-03-16",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 238,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "fh4yNdWvFIo",
+          "title": "HLE Kanavi Qiyana vs Zed [ Jungle ] Korea Grandmaster 1135 LP | Patch 26.4",
+          "rankClaim": "Grandmaster",
+          "patch": "26.4",
+          "durationSec": 1528,
+          "region": "KR",
+          "player": "Kanavi",
+          "team": "HLE",
+          "uploaded": "2026-03-04",
+          "moments": []
+        },
+        {
+          "videoId": "KVsokFjrxkM",
+          "title": "Qiyana vs Zed [ Jungle ] Korea Challenger 1900 LP | Patch 25.21 ✅",
+          "rankClaim": "Challenger",
+          "patch": "25.21",
+          "durationSec": 1564,
+          "region": "KR",
+          "uploaded": "2025-10-26",
+          "moments": []
+        },
+        {
+          "videoId": "bYdEHW9vU_0",
+          "title": "Qiyana Jungle vs Zed - NA Challenger Patch 25.10",
+          "rankClaim": "Challenger",
+          "patch": "25.10",
+          "durationSec": 1479,
+          "region": "NA",
+          "uploaded": "2025-05-28",
+          "moments": []
+        },
+        {
+          "videoId": "Bg_7DaqiVpU",
+          "title": "Qiyana Jungle vs Zed - EUW Grandmaster Patch 25.08",
+          "rankClaim": "Grandmaster",
+          "patch": "25.8",
+          "durationSec": 1549,
+          "region": "EUW",
+          "uploaded": "2025-04-30",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 313,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 521,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 638,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 679,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 719,
+              "label": "Hunt The Void Grubs",
+              "kind": "grubs"
+            },
+            {
+              "atSec": 751,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 852,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 918,
+              "label": "Hunt The Void Grubs",
+              "kind": "grubs"
+            },
+            {
+              "atSec": 943,
+              "label": "Get a Triple Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1045,
+              "label": "Hunt The Dragon",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1138,
+              "label": "Hunt The Rift Herald",
+              "kind": "herald"
+            },
+            {
+              "atSec": 1211,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1311,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1366,
+              "label": "Hunt The Dragon",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1388,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1408,
+              "label": "Take down The Inhibitor"
+            },
+            {
+              "atSec": 1431,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1494,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1513,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1528,
+              "label": "End credit"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 238,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "8u2VmgRbeFk",
+          "title": "BeiFeng Qiyana vs Zed — Challenger CN Super Server — Engsub",
+          "rankClaim": "Challenger",
+          "patch": "26.18",
+          "durationSec": 1836,
+          "patchEstimated": true,
+          "player": "Beifeng",
+          "uploaded": "2026-09-10",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "0P8PJmO7Ac8",
+          "title": "BeiFeng Qiyana vs Zed — Challenger CN Super Server — Engsub",
+          "rankClaim": "Challenger",
+          "patch": "26.16",
+          "durationSec": 1529,
+          "patchEstimated": true,
+          "player": "Beifeng",
+          "uploaded": "2026-08-18",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "dx2SB2iBvb8",
+          "title": "BeiFeng Qiyana vs Zed — Challenger CN Super Server — Engsub",
+          "rankClaim": "Challenger",
+          "patch": "26.11",
+          "durationSec": 1573,
+          "patchEstimated": true,
+          "player": "Beifeng",
+          "uploaded": "2026-06-04",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "S9nzVLXcULk",
+          "title": "BeiFeng Qiyana vs Zed(Rank 1 Zed) — Challenger CN Super Server — Engsub",
+          "rankClaim": "Challenger",
+          "patch": "26.10",
+          "durationSec": 1117,
+          "patchEstimated": true,
+          "player": "Beifeng",
+          "uploaded": "2026-05-23",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "Q1NG4R-xi3A",
+          "title": "BeiFeng Qiyana vs Zed — Challenger CN Super Server — Engsub",
+          "rankClaim": "Challenger",
+          "patch": "26.10",
+          "durationSec": 1607,
+          "patchEstimated": true,
+          "player": "Beifeng",
+          "uploaded": "2026-05-14",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "RyCjukIZe7g",
+          "title": "Qiyana Mid vs Zed - NA Challenger Patch 26.08",
+          "rankClaim": "Challenger",
+          "patch": "26.8",
+          "durationSec": 1783,
+          "region": "NA",
+          "uploaded": "2026-04-28",
+          "moments": []
+        },
+        {
+          "videoId": "Gey5wTS338g",
+          "title": "BeiFeng Qiyana vs Zed — Grandmaster KR Server — Engsub",
+          "rankClaim": "Grandmaster",
+          "patch": "26.7",
+          "durationSec": 1709,
+          "region": "KR",
+          "patchEstimated": true,
+          "player": "Beifeng",
+          "uploaded": "2026-04-01",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "ViMEdm-XvJs",
+          "title": "Beifeng Qiyana VS Zed — Challenger CN Super Server",
+          "rankClaim": "Challenger",
+          "patch": "26.4",
+          "durationSec": 1165,
+          "patchEstimated": true,
+          "player": "Beifeng",
+          "uploaded": "2026-02-28",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "8PyVZkmE408",
+          "title": "Qiyana Mid vs Zed - TW Challenger Patch 25.18",
+          "rankClaim": "Challenger",
+          "patch": "25.18",
+          "durationSec": 1660,
+          "uploaded": "2025-09-21",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 240,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "4NvrTUByn9A",
+          "title": "Beifeng Qiyana vs Kled — Challenger CN Super Server",
+          "rankClaim": "Challenger",
+          "patch": "26.3",
+          "durationSec": 893,
+          "patchEstimated": true,
+          "player": "Beifeng",
+          "uploaded": "2026-02-07",
+          "format": "stream",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 245,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "b75JZn5n8mI",
+          "title": "Qiyana vs Ekko Jungle - KR Challenger - Patch 16.18 Season 16",
+          "rankClaim": "Challenger",
+          "patch": "26.18",
+          "durationSec": 1576,
+          "region": "KR",
+          "uploaded": "2026-09-17",
+          "moments": []
+        },
+        {
+          "videoId": "Kr2PXsJq_lg",
+          "title": "Qiyana vs Ekko [ Jungle ] Korea Grandmaster 951 LP | Patch 25.24 ✅",
+          "rankClaim": "Grandmaster",
+          "patch": "25.24",
+          "durationSec": 1607,
+          "region": "KR",
+          "uploaded": "2025-12-25",
+          "moments": []
+        },
+        {
+          "videoId": "RDkfCyd3xKs",
+          "title": "Qiyana Jungle vs Ekko - KR Challenger Patch 25.22",
+          "rankClaim": "Challenger",
+          "patch": "25.22",
+          "durationSec": 1816,
+          "region": "KR",
+          "uploaded": "2025-11-08",
+          "moments": []
+        },
+        {
+          "videoId": "EnuGXAVT8Xs",
+          "title": "Qiyana Jungle vs Ekko - KR Challenger Patch 25.20",
+          "rankClaim": "Challenger",
+          "patch": "25.20",
+          "durationSec": 1437,
+          "region": "KR",
+          "uploaded": "2025-10-12",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 245,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "YrVVYXUO6ak",
+          "title": "BeiFeng Qiyana vs Ekko — Challenger CN Super Server — Engsub",
+          "rankClaim": "Challenger",
+          "patch": "26.10",
+          "durationSec": 907,
+          "patchEstimated": true,
+          "player": "Beifeng",
+          "uploaded": "2026-05-21",
+          "format": "stream",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 254,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "kvljSrFaDhU",
+          "title": "Qiyana vs Vi Jungle - KR Challenger - Patch 25.18 Season 15",
+          "rankClaim": "Challenger",
+          "patch": "25.18",
+          "durationSec": 1681,
+          "region": "KR",
+          "uploaded": "2025-09-17",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 266,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "HE0rFZOSatA",
+          "title": "Qiyana Jungle vs Aatrox - EUW Challenger Patch 25.24",
+          "rankClaim": "Challenger",
+          "patch": "25.24",
+          "durationSec": 1610,
+          "region": "EUW",
+          "uploaded": "2026-01-06",
+          "moments": []
+        },
+        {
+          "videoId": "hEfisR6bET0",
+          "title": "Qiyana vs Aatrox Jungle - KR Challenger - Patch 25.24 Season 15",
+          "rankClaim": "Challenger",
+          "patch": "25.24",
+          "durationSec": 1651,
+          "region": "KR",
+          "uploaded": "2025-12-15",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 421,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "WTUacrf0z5g",
+          "title": "Qiyana Jungle vs Rek'Sai - KR Grandmaster Patch 25.18",
+          "rankClaim": "Grandmaster",
+          "patch": "25.18",
+          "durationSec": 1724,
+          "region": "KR",
+          "uploaded": "2025-09-13",
+          "moments": []
+        },
+        {
+          "videoId": "CD6zZp1U3Vs",
+          "title": "Qiyana Jungle vs Rek'Sai - EUW Challenger Patch 25.15",
+          "rankClaim": "Challenger",
+          "patch": "25.15",
+          "durationSec": 1507,
+          "region": "EUW",
+          "uploaded": "2025-08-12",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 427,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "pHzIeyDTWR4",
+          "title": "Qiyana vs Ivern Mid - KR Challenger - Patch 25.13 Season 15",
+          "rankClaim": "Challenger",
+          "patch": "25.13",
+          "durationSec": 1991,
+          "region": "KR",
+          "uploaded": "2025-07-09",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 516,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "--8JE_t2dC4",
+          "title": "Qiyana Mid vs Ornn - KR Master Patch 25.14",
+          "rankClaim": "Master",
+          "patch": "25.14",
+          "durationSec": 1487,
+          "region": "KR",
+          "uploaded": "2025-07-23",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 517,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "Xv-ZpHz2wzo",
+          "title": "Qiyana vs Sylas Junlge - KR Challenger - Patch 25.21 Season 15",
+          "rankClaim": "Challenger",
+          "patch": "25.21",
+          "durationSec": 1756,
+          "region": "KR",
+          "uploaded": "2025-11-03",
+          "moments": []
+        },
+        {
+          "videoId": "uQ1C3fblv08",
+          "title": "Qiyana vs Sylas Jungle - KR Challenger - Patch 25.19 Season 15",
+          "rankClaim": "Challenger",
+          "patch": "25.19",
+          "durationSec": 1921,
+          "region": "KR",
+          "uploaded": "2025-09-29",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 517,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "s0MUNGvlj5c",
+          "title": "BeiFeng Qiyana vs Sylas — Challenger CN Super Server — Engsub",
+          "rankClaim": "Challenger",
+          "patch": "26.10",
+          "durationSec": 1452,
+          "patchEstimated": true,
+          "player": "Beifeng",
+          "uploaded": "2026-05-18",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "Ofy3BU18yDk",
+          "title": "BeiFeng Qiyana vs Sylas — Challenger CN Super Server — Engsub",
+          "rankClaim": "Challenger",
+          "patch": "26.6",
+          "durationSec": 1330,
+          "patchEstimated": true,
+          "player": "Beifeng",
+          "uploaded": "2026-03-25",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "k3L1zj4oCFM",
+          "title": "Qiyana Mid vs Sylas - KR Master Patch 25.08",
+          "rankClaim": "Master",
+          "patch": "25.8",
+          "durationSec": 1678,
+          "region": "KR",
+          "uploaded": "2025-04-21",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 127,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 257,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 355,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 696,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 822,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 899,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 929,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 962,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1114,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1248,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1362,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1469,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1628,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1657,
+              "label": "End credit"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 517,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "gjdTh_44LI8",
+          "title": "Qiyana Top vs Sylas - KR Master Patch 25.10",
+          "rankClaim": "Master",
+          "patch": "25.10",
+          "durationSec": 1785,
+          "region": "KR",
+          "uploaded": "2025-05-30",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 518,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "GKVX8w-f5hQ",
+          "title": "BeiFeng Qiyana vs Neeko — Challenger CN Super Server — Engsub",
+          "rankClaim": "Challenger",
+          "patch": "26.11",
+          "durationSec": 908,
+          "patchEstimated": true,
+          "player": "Beifeng",
+          "uploaded": "2026-06-08",
+          "format": "stream",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 523,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "b6mKMIF78jk",
+          "title": "BeiFeng Qiyana vs Aphelios — Challenger CN Super Server — Engsub",
+          "rankClaim": "Challenger",
+          "patch": "26.12",
+          "durationSec": 2159,
+          "patchEstimated": true,
+          "player": "Beifeng",
+          "uploaded": "2026-06-12",
+          "format": "stream",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 555,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "PbeNI8jxZRY",
+          "title": "SUP — Beifeng Qiyana vs Pyke — Grandmaster KR Server",
+          "rankClaim": "Grandmaster",
+          "patch": "26.5",
+          "durationSec": 908,
+          "region": "KR",
+          "patchEstimated": true,
+          "player": "Beifeng",
+          "uploaded": "2026-03-11",
+          "format": "stream",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 711,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "bxmeGh5h64A",
+          "title": "Qiyana Mid vs Vex - EUW Master Patch 26.21",
+          "rankClaim": "Master",
+          "patch": "26.21",
+          "durationSec": 1703,
+          "region": "EUW",
+          "uploaded": "2026-11-01",
+          "result": "W",
+          "moments": [
+            {
+              "atSec": 109,
+              "label": "First Blood — Qiyana kills Vex",
+              "kind": "kill"
+            },
+            {
+              "atSec": 212,
+              "label": "Qiyana takes down Vex"
+            },
+            {
+              "atSec": 375,
+              "label": "Blue takes 1st Dragon (Cloud)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 526,
+              "label": "Qiyana solo kills Sylas",
+              "kind": "kill"
+            },
+            {
+              "atSec": 853,
+              "label": "Blue takes 2nd Dragon (Mountain)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 860,
+              "label": "Qiyana catches Vex again"
+            },
+            {
+              "atSec": 915,
+              "label": "Diana picks off Vex"
+            },
+            {
+              "atSec": 1087,
+              "label": "Qiyana outduels Vex (3rd time)"
+            },
+            {
+              "atSec": 1172,
+              "label": "Blue takes 3rd Dragon (Ocean)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1235,
+              "label": "Red takes Baron",
+              "kind": "baron"
+            },
+            {
+              "atSec": 1240,
+              "label": "Jax takes down Vex"
+            },
+            {
+              "atSec": 1334,
+              "label": "Diana Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1484,
+              "label": "Red takes 1st Dragon (Ocean)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1493,
+              "label": "Qiyana takes down Rakan"
+            },
+            {
+              "atSec": 1518,
+              "label": "Qiyana takes down Sylas again"
+            },
+            {
+              "atSec": 1653,
+              "label": "Diana Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1658,
+              "label": "Diana Triple Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1683,
+              "label": "Mid Inhibitor falls (Red)"
+            }
+          ]
+        },
+        {
+          "videoId": "F9Tx5TWOJsg",
+          "title": "BeiFeng Qiyana vs Vex — Challenger CN Super Server — Engsub",
+          "rankClaim": "Challenger",
+          "patch": "26.13",
+          "durationSec": 901,
+          "patchEstimated": true,
+          "player": "Beifeng",
+          "uploaded": "2026-07-10",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "nIKFUrmarCw",
+          "title": "BeiFeng Qiyana vs Vex — Challenger CN Super Server — Engsub",
+          "rankClaim": "Challenger",
+          "patch": "26.12",
+          "durationSec": 2375,
+          "patchEstimated": true,
+          "player": "Beifeng",
+          "uploaded": "2026-06-11",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "XYmtl6w3YEA",
+          "title": "BeiFeng Qiyana vs Vex — CN Super Server — Engsub",
+          "rankClaim": "Master+",
+          "patch": "26.9",
+          "durationSec": 926,
+          "patchEstimated": true,
+          "player": "Beifeng",
+          "uploaded": "2026-04-30",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "l-OxcRO5MQw",
+          "title": "BeiFeng Qiyana vs Vex — Challenger CN Super Server—Losing Lane Game",
+          "rankClaim": "Challenger",
+          "patch": "26.8",
+          "durationSec": 1685,
+          "patchEstimated": true,
+          "player": "Beifeng",
+          "uploaded": "2026-04-28",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "TzCIILk6ONc",
+          "title": "Super carry！ Beifeng Qiyana VS Vex — Master KR Server",
+          "rankClaim": "Master",
+          "patch": "26.5",
+          "durationSec": 1729,
+          "region": "KR",
+          "patchEstimated": true,
+          "player": "Beifeng",
+          "uploaded": "2026-03-06",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "03iVCfX0On0",
+          "title": "Beifeng Qiyana VS Vex — Challenger CN Super Server",
+          "rankClaim": "Challenger",
+          "patch": "26.3",
+          "durationSec": 1968,
+          "patchEstimated": true,
+          "player": "Beifeng",
+          "uploaded": "2026-02-15",
+          "format": "stream",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 777,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "wSC51swmk9M",
+          "title": "BeiFeng Qiyana vs Yone — Master CN  Server — Engsub",
+          "rankClaim": "Master",
+          "patch": "26.15",
+          "durationSec": 1898,
+          "patchEstimated": true,
+          "player": "Beifeng",
+          "uploaded": "2026-07-30",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "bdnRQRHJHbI",
+          "title": "Qiyana Mid vs Yone - EUW Grandmaster Patch 25.22",
+          "rankClaim": "Grandmaster",
+          "patch": "25.22",
+          "durationSec": 1487,
+          "region": "EUW",
+          "uploaded": "2025-11-15",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 799,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "H2QZkab8eMs",
+          "title": "(CKZ Ano) Qiyana Jungle vs Ambessa (IJC Kaboom) - EUW Challenger Patch 26.15",
+          "rankClaim": "Challenger",
+          "patch": "26.15",
+          "durationSec": 1775,
+          "region": "EUW",
+          "player": "CKZ Ano",
+          "uploaded": "2026-08-02",
+          "moments": []
+        },
+        {
+          "videoId": "-d_ks4NWUBY",
+          "title": "Qiyana Jungle vs Ambessa - KR Challenger Patch 26.05",
+          "rankClaim": "Challenger",
+          "patch": "26.5",
+          "durationSec": 1883,
+          "region": "KR",
+          "uploaded": "2026-03-15",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 182,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 349,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 427,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 540,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 564,
+              "label": "Hunt The Void Grubs",
+              "kind": "grubs"
+            },
+            {
+              "atSec": 605,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 717,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 799,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 894,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 939,
+              "label": "Hunt The Rift Herald",
+              "kind": "herald"
+            },
+            {
+              "atSec": 979,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1153,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1189,
+              "label": "Hunt The Dragon",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1259,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1379,
+              "label": "Hunt The Baron Nashor",
+              "kind": "baron"
+            },
+            {
+              "atSec": 1417,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1519,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1546,
+              "label": "Hunt The Dragon",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1573,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1595,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1617,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1653,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1808,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1872,
+              "label": "End credit"
+            }
+          ]
+        },
+        {
+          "videoId": "KP64jEWCHr4",
+          "title": "Qiyana Jungle vs Ambessa - KR Master Patch 26.03",
+          "rankClaim": "Master",
+          "patch": "26.3",
+          "durationSec": 1568,
+          "region": "KR",
+          "uploaded": "2026-02-08",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 175,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 321,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 534,
+              "label": "Hunt The Void Grubs",
+              "kind": "grubs"
+            },
+            {
+              "atSec": 562,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 630,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 834,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 911,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1007,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1081,
+              "label": "Hunt The Rift Herald",
+              "kind": "herald"
+            },
+            {
+              "atSec": 1118,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1162,
+              "label": "Hunt The Dragon",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1259,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1279,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1390,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1417,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1435,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1482,
+              "label": "Hunt The Dragon",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1505,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1557,
+              "label": "End credit"
+            }
+          ]
+        },
+        {
+          "videoId": "sdb_8yoDhjc",
+          "title": "Qiyana vs Ambessa Jungle - KR Challenger - Patch 25.24 Season 15",
+          "rankClaim": "Challenger",
+          "patch": "25.24",
+          "durationSec": 1650,
+          "region": "KR",
+          "uploaded": "2025-12-09",
+          "moments": []
+        },
+        {
+          "videoId": "fVHCSCTUFDI",
+          "title": "Qiyana Jungle vs Ambessa - KR Challenger Patch 25.24",
+          "rankClaim": "Challenger",
+          "patch": "25.24",
+          "durationSec": 1472,
+          "region": "KR",
+          "uploaded": "2025-12-06",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 232,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 363,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 481,
+              "label": "Hunt The Void Grubs",
+              "kind": "grubs"
+            },
+            {
+              "atSec": 507,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 598,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 659,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 708,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 840,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 866,
+              "label": "Hunt The Dragon",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 939,
+              "label": "Hunt The Rift Herald",
+              "kind": "herald"
+            },
+            {
+              "atSec": 972,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1001,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1020,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1105,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1170,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1239,
+              "label": "Hunt The Atakhan"
+            },
+            {
+              "atSec": 1272,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1325,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1392,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1438,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1461,
+              "label": "End credit"
+            }
+          ]
+        },
+        {
+          "videoId": "_-PXOKBtOOc",
+          "title": "Qiyana Jungle vs Ambessa - NA Challenger Patch 25.11",
+          "rankClaim": "Challenger",
+          "patch": "25.11",
+          "durationSec": 1869,
+          "region": "NA",
+          "uploaded": "2025-06-09",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 799,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "taXaKlQVeWE",
+          "title": "(UP Saber) Qiyana Mid vs Ambessa - KR Challenger Patch 26.13",
+          "rankClaim": "Challenger",
+          "patch": "26.13",
+          "durationSec": 1620,
+          "region": "KR",
+          "player": "UP Saber",
+          "uploaded": "2026-07-12",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 805,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "JMWn9ofxinI",
+          "title": "Qiyana vs Locke [ MID ] Lol Korea Master Patch 26.13 ✅",
+          "rankClaim": "Master",
+          "patch": "26.13",
+          "durationSec": 1895,
+          "region": "KR",
+          "uploaded": "2026-07-02",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 893,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "Hhmdcf5RX-E",
+          "title": "BeiFeng Qiyana vs Aurora — Challenger CN Super Server — Engsub",
+          "rankClaim": "Challenger",
+          "patch": "26.17",
+          "durationSec": 2104,
+          "patchEstimated": true,
+          "player": "Beifeng",
+          "uploaded": "2026-09-07",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "-lQVDmsvH4k",
+          "title": "BeiFeng Qiyana vs Aurora — Challenger CN Super Server — Engsub",
+          "rankClaim": "Challenger",
+          "patch": "26.11",
+          "durationSec": 1529,
+          "patchEstimated": true,
+          "player": "Beifeng",
+          "uploaded": "2026-06-03",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "drJ9OAa60zs",
+          "title": "Qiyana Mid vs Aurora - KR Grandmaster Patch 25.11",
+          "rankClaim": "Grandmaster",
+          "patch": "25.11",
+          "durationSec": 1782,
+          "region": "KR",
+          "uploaded": "2025-06-05",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 901,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "q82MKcJ2XpQ",
+          "title": "BeiFeng Qiyana vs Smolder — Master CN Server — Engsub",
+          "rankClaim": "Master",
+          "patch": "26.6",
+          "durationSec": 1498,
+          "patchEstimated": true,
+          "player": "Beifeng",
+          "uploaded": "2026-03-28",
+          "format": "stream",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 910,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "r6Efj9JWdyw",
+          "title": "Qiyana Mid vs Hwei - KR Grandmaster Patch 26.20",
+          "rankClaim": "Grandmaster",
+          "patch": "26.20",
+          "durationSec": 1776,
+          "region": "KR",
+          "uploaded": "2026-10-18",
+          "result": "W",
+          "moments": [
+            {
+              "atSec": 115,
+              "label": "First Blood — Qiyana kills Hwei",
+              "kind": "kill"
+            },
+            {
+              "atSec": 234,
+              "label": "Qiyana takes down Hwei"
+            },
+            {
+              "atSec": 285,
+              "label": "Red takes 1st Dragon (Infernal)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 356,
+              "label": "Qiyana catches Hwei again"
+            },
+            {
+              "atSec": 383,
+              "label": "Qiyana solo kills Lee Sin",
+              "kind": "kill"
+            },
+            {
+              "atSec": 484,
+              "label": "Qiyana outduels Rakan"
+            },
+            {
+              "atSec": 545,
+              "label": "Qiyana outduels Hwei (3rd time)"
+            },
+            {
+              "atSec": 561,
+              "label": "Qiyana takes down Lee Sin again"
+            },
+            {
+              "atSec": 609,
+              "label": "Red takes 2nd Dragon (Hextech)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 932,
+              "label": "Red takes 3rd Dragon (Mountain)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 988,
+              "label": "Qiyana outplays Hwei (4th time)"
+            },
+            {
+              "atSec": 1213,
+              "label": "Blue takes Baron",
+              "kind": "baron"
+            },
+            {
+              "atSec": 1284,
+              "label": "Qiyana solo kills Hwei (5th time)",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1310,
+              "label": "Mid Inhibitor falls (Blue)"
+            },
+            {
+              "atSec": 1313,
+              "label": "Red takes 4th Dragon (Mountain)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1495,
+              "label": "Qiyana Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1639,
+              "label": "Mid Inhibitor falls (Blue)"
+            },
+            {
+              "atSec": 1740,
+              "label": "Varus Double Kill",
+              "kind": "kill"
+            }
+          ]
+        },
+        {
+          "videoId": "199AAmySf_E",
+          "title": "BeiFeng Qiyana vs Hwei — Challenger CN Super Server — Engsub",
+          "rankClaim": "Challenger",
+          "patch": "26.11",
+          "durationSec": 1075,
+          "patchEstimated": true,
+          "player": "Beifeng",
+          "uploaded": "2026-06-07",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "PAk6jChLY2s",
+          "title": "Beifeng Qiyana VS Hwei — Master KR Server",
+          "rankClaim": "Master",
+          "patch": "26.5",
+          "durationSec": 1875,
+          "region": "KR",
+          "patchEstimated": true,
+          "player": "Beifeng",
+          "uploaded": "2026-03-09",
+          "format": "stream",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 950,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "mnP-zP3Zclg",
+          "title": "Qiyana Jungle vs Naafiri - KR Challenger Patch 26.10",
+          "rankClaim": "Challenger",
+          "patch": "26.10",
+          "durationSec": 1818,
+          "region": "KR",
+          "uploaded": "2026-05-26",
+          "moments": []
+        },
+        {
+          "videoId": "I0i_eI1u_B0",
+          "title": "Qiyana vs Naafiri Jungle - KR Challenger - Patch 25.24 Season 15",
+          "rankClaim": "Challenger",
+          "patch": "25.24",
+          "durationSec": 1591,
+          "region": "KR",
+          "uploaded": "2025-12-07",
+          "moments": []
+        }
+      ]
+    }
+  ]
+}

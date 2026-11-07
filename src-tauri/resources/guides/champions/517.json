@@ -1,0 +1,4420 @@
+{
+  "schema": 1,
+  "champion": 517,
+  "generatedAt": "2026-11-07T13:25:14.592Z",
+  "guides": [
+    {
+      "champion": 517,
+      "enemy": 84,
+      "lane": "mid",
+      "patch": "26.21",
+      "reviewed": false,
+      "difficulty": "Skill matchup",
+      "favoredWhen": "Even. She dodges with E and denies heals, so vary the chain and all-in after you hold her R.",
+      "keyTips": [
+        {
+          "text": "Even lane: she plays around your E, so vary it.",
+          "scope": "pair",
+          "sourceIds": [
+            "anguish"
+          ],
+          "abilityKeys": [
+            {
+              "champion": 517,
+              "key": "E"
+            }
+          ]
+        },
+        {
+          "text": "She stands behind minions at 1 against E: open with Q poke instead.",
+          "scope": "pair",
+          "sourceIds": [
+            "anguish"
+          ],
+          "abilityKeys": [
+            {
+              "champion": 517,
+              "key": "Q"
+            }
+          ]
+        },
+        {
+          "text": "She Ignites before your heals and denies W healing: commit through, not into, the Ignite.",
+          "scope": "pair",
+          "sourceIds": [
+            "anguish"
+          ],
+          "abilityKeys": [
+            {
+              "champion": 517,
+              "key": "W"
+            }
+          ]
+        }
+      ],
+      "enemyTips": {},
+      "sections": {
+        "overview": {
+          "tips": []
+        },
+        "early-lane": {
+          "tips": [
+            {
+              "text": "She E-dodges your E: hold the chain until her dash is spent.",
+              "scope": "pair",
+              "sourceIds": [
+                "anguish"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 84,
+                  "key": "E"
+                },
+                {
+                  "champion": 517,
+                  "key": "E"
+                }
+              ]
+            },
+            {
+              "text": "She dodges Q2: lead the second blast.",
+              "scope": "pair",
+              "sourceIds": [
+                "anguish"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 517,
+                  "key": "Q"
+                }
+              ]
+            }
+          ]
+        },
+        "mid-lane": {
+          "tips": [
+            {
+              "text": "Her E2 interrupts your dashes: E once, then walk.",
+              "scope": "pair",
+              "sourceIds": [
+                "anguish"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 84,
+                  "key": "E"
+                }
+              ]
+            },
+            {
+              "text": "Hold the stolen R for her engage: the later R wins.",
+              "scope": "pair",
+              "sourceIds": [
+                "anguish"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 84,
+                  "key": "R"
+                }
+              ]
+            }
+          ]
+        },
+        "win-condition": {
+          "tips": [
+            {
+              "text": "E varied plus stolen-R held: the Akali who never dodges everything never wins.",
+              "scope": "pair",
+              "sourceIds": [
+                "anguish"
+              ]
+            }
+          ]
+        }
+      },
+      "itemization": [],
+      "sources": [
+        {
+          "id": "anguish",
+          "author": "Anguish333",
+          "rankClaim": "Master (profile badge; title claims 2000LP GrandMaster EUW and Challenger EUNE) · Akali main",
+          "rank": "master",
+          "url": "https://www.mobafire.com/league-of-legends/build/26-20-anguish-2000lp-grandmasters-euw-challenger-eune-akali-mid-top-s16-guide-every-matchup-item-rune-explained-625064",
+          "kind": "mobafire"
+        }
+      ]
+    },
+    {
+      "champion": 517,
+      "enemy": 103,
+      "lane": "mid",
+      "patch": "26.21",
+      "reviewed": false,
+      "difficulty": "Skill matchup",
+      "favoredWhen": "Even. The lane revolves around your chain. Land E and it hurts, miss it and she punishes.",
+      "keyTips": [
+        {
+          "text": "Even lane that revolves around your chain: landings decide everything.",
+          "scope": "pair",
+          "sourceIds": [
+            "shok-ahri"
+          ],
+          "abilityKeys": [
+            {
+              "champion": 517,
+              "key": "E"
+            }
+          ]
+        },
+        {
+          "text": "She trades when your E is down (about {cd:517:E}): the cooldown is the lane.",
+          "scope": "pair",
+          "sourceIds": [
+            "peng04"
+          ],
+          "abilityKeys": [
+            {
+              "champion": 517,
+              "key": "E"
+            }
+          ]
+        },
+        {
+          "text": "She buffers Charm through E2 and times Charm to cancel the chain: expect the answer.",
+          "scope": "pair",
+          "sourceIds": [
+            "peng04",
+            "shok-ahri"
+          ],
+          "abilityKeys": [
+            {
+              "champion": 103,
+              "key": "E"
+            },
+            {
+              "champion": 517,
+              "key": "E"
+            }
+          ]
+        }
+      ],
+      "enemyTips": {},
+      "sections": {
+        "overview": {
+          "tips": []
+        },
+        "early-lane": {
+          "tips": [
+            {
+              "text": "Do not eat free poke: her Qs set up Charm-cancels.",
+              "scope": "pair",
+              "sourceIds": [
+                "shok-ahri"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 103,
+                  "key": "Q"
+                },
+                {
+                  "champion": 103,
+                  "key": "E"
+                }
+              ]
+            },
+            {
+              "text": "Landings hurt badly: one E2 is the whole trade.",
+              "scope": "pair",
+              "sourceIds": [
+                "shok-ahri"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 517,
+                  "key": "E"
+                }
+              ]
+            }
+          ]
+        },
+        "mid-lane": {
+          "tips": [
+            {
+              "text": "After 6, steal her R to chase her down the lane.",
+              "scope": "pair",
+              "sourceIds": [
+                "shok-ahri"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 517,
+                  "key": "R"
+                },
+                {
+                  "champion": 103,
+                  "key": "R"
+                }
+              ]
+            },
+            {
+              "text": "She calls ganks: track her jungler when you commit.",
+              "scope": "pair",
+              "sourceIds": [
+                "shok-ahri"
+              ]
+            }
+          ]
+        },
+        "win-condition": {
+          "tips": [
+            {
+              "text": "Chain landed plus stolen-R chase: the Ahri who never dodges never wins.",
+              "scope": "pair",
+              "sourceIds": [
+                "peng04",
+                "shok-ahri"
+              ]
+            }
+          ]
+        }
+      },
+      "itemization": [],
+      "sources": [
+        {
+          "id": "peng04",
+          "author": "Peng04",
+          "rankClaim": "Challenger · Ahri main",
+          "rank": "challenger",
+          "url": "https://www.mobafire.com/league-of-legends/build/26-20-pengs-ahri-guide-5-1mil-points-13x-challenger-648700",
+          "kind": "mobafire"
+        },
+        {
+          "id": "shok-ahri",
+          "author": "ShokLoL",
+          "rankClaim": "Rank 1 Challenger · Ahri main",
+          "rank": "challenger",
+          "url": "https://www.mobafire.com/league-of-legends/build/26-5-shoks-rank-1-challenger-ahri-guide-635065",
+          "kind": "mobafire"
+        }
+      ]
+    },
+    {
+      "champion": 517,
+      "enemy": 134,
+      "lane": "mid",
+      "patch": "26.21",
+      "reviewed": false,
+      "difficulty": "Hard",
+      "favoredWhen": "Her E2 decides every trade. Dodge it and punish hard, eat it and lose.",
+      "keyTips": [
+        {
+          "text": "Her E2 decides every trade: hit means you lose, miss means you punish hard.",
+          "scope": "pair",
+          "sourceIds": [
+            "shok"
+          ],
+          "abilityKeys": [
+            {
+              "champion": 134,
+              "key": "E"
+            }
+          ]
+        },
+        {
+          "text": "Take Bone Plating: it covers the trade you fail to dodge.",
+          "scope": "pair",
+          "sourceIds": [
+            "trisend3"
+          ]
+        },
+        {
+          "text": "Stand near creeps: her E turns awkward, but not where her Q hits you and the wave.",
+          "scope": "pair",
+          "sourceIds": [
+            "shok"
+          ],
+          "abilityKeys": [
+            {
+              "champion": 134,
+              "key": "Q"
+            }
+          ]
+        }
+      ],
+      "enemyTips": {},
+      "sections": {
+        "overview": {
+          "tips": []
+        },
+        "early-lane": {
+          "tips": [
+            {
+              "text": "Deny her the snowball: your E2 is the only trade she fears.",
+              "scope": "pair",
+              "sourceIds": [
+                "shok"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 517,
+                  "key": "E"
+                }
+              ]
+            },
+            {
+              "text": "Farm behind offset creeps: awkward angles cut her accuracy.",
+              "scope": "pair",
+              "sourceIds": [
+                "shok"
+              ]
+            }
+          ]
+        },
+        "mid-lane": {
+          "tips": [
+            {
+              "text": "Do not let her keep the wave on her side for free: crash to deny the setup.",
+              "scope": "pair",
+              "sourceIds": [
+                "shok"
+              ]
+            },
+            {
+              "text": "Engage only when her E is spent: no scatter means no answer.",
+              "scope": "pair",
+              "sourceIds": [
+                "shok"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 134,
+                  "key": "E"
+                }
+              ]
+            }
+          ]
+        },
+        "win-condition": {
+          "tips": [
+            {
+              "text": "E2 dodged plus Plating held: the Syndra who never lands E never wins.",
+              "scope": "pair",
+              "sourceIds": [
+                "shok",
+                "trisend3"
+              ]
+            }
+          ]
+        }
+      },
+      "itemization": [],
+      "sources": [
+        {
+          "id": "shok",
+          "author": "ShokLoL",
+          "rankClaim": "Rank 1 Challenger · Syndra main",
+          "rank": "challenger",
+          "url": "https://www.mobafire.com/league-of-legends/build/26-17-shoks-rank-1-challenger-syndra-guide-602710",
+          "kind": "mobafire"
+        },
+        {
+          "id": "trisend3",
+          "author": "Trisend3",
+          "rankClaim": "Challenger (title and profile badge) · Syndra main",
+          "rank": "challenger",
+          "url": "https://www.mobafire.com/league-of-legends/build/challenger-season-16-trisend3-syndra-guide-623459",
+          "kind": "mobafire"
+        }
+      ]
+    },
+    {
+      "champion": 517,
+      "enemy": 238,
+      "lane": "mid",
+      "patch": "26.21",
+      "reviewed": false,
+      "difficulty": "Hard",
+      "favoredWhen": "Zed-favoured. Force early before Voltaic, and hold your steal for his commit.",
+      "keyTips": [
+        {
+          "text": "Zed-favoured: he outranges and outscales your windows.",
+          "scope": "pair",
+          "sourceIds": [
+            "aikopanda"
+          ]
+        },
+        {
+          "text": "He refuses trades before Voltaic: your window is the pre-spike lane.",
+          "scope": "pair",
+          "sourceIds": [
+            "aikopanda"
+          ]
+        },
+        {
+          "text": "He plays to deny your R steal with R-first: hold your steal for his commit.",
+          "scope": "pair",
+          "sourceIds": [
+            "aikopanda"
+          ],
+          "abilityKeys": [
+            {
+              "champion": 517,
+              "key": "R"
+            },
+            {
+              "champion": 238,
+              "key": "R"
+            }
+          ]
+        }
+      ],
+      "enemyTips": {
+        "early-lane": [
+          {
+            "text": "Zed often places Living Shadow before Death Mark so he can swap away from skillshots. Hold your crowd control until he has used the swap.",
+            "scope": "enemy",
+            "sourceIds": [
+              "aikopanda"
+            ],
+            "patch": "26.21",
+            "abilityKeys": [
+              {
+                "champion": 238,
+                "key": "W"
+              },
+              {
+                "champion": 238,
+                "key": "R"
+              }
+            ]
+          }
+        ],
+        "win-condition": [
+          {
+            "text": "Death Mark always lands Zed behind his target. Pre-aim crowd control and escapes behind you, not toward where he cast it.",
+            "scope": "enemy",
+            "sourceIds": [
+              "peng04"
+            ],
+            "patch": "26.21",
+            "abilityKeys": [
+              {
+                "champion": 238,
+                "key": "R"
+              }
+            ]
+          }
+        ]
+      },
+      "sections": {
+        "overview": {
+          "tips": []
+        },
+        "early-lane": {
+          "tips": [
+            {
+              "text": "Force before Voltaic: poke and E2 while his shadows are weak.",
+              "scope": "pair",
+              "sourceIds": [
+                "aikopanda"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 517,
+                  "key": "E"
+                }
+              ]
+            },
+            {
+              "text": "He positions inside the wave or far back: E the wave-stander, Q the farmer.",
+              "scope": "pair",
+              "sourceIds": [
+                "aikopanda"
+              ]
+            }
+          ]
+        },
+        "mid-lane": {
+          "tips": [
+            {
+              "text": "After Voltaic his poke finds you: track shadows before engaging.",
+              "scope": "pair",
+              "sourceIds": [
+                "aikopanda"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 238,
+                  "key": "W"
+                }
+              ]
+            },
+            {
+              "text": "Track his W cooldown: shadow-down is your engage.",
+              "scope": "pair",
+              "sourceIds": [
+                "aikopanda"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 238,
+                  "key": "W"
+                }
+              ]
+            },
+            {
+              "text": "Death Mark lands him behind you: pre-aim E at the exit when he ults.",
+              "scope": "pair",
+              "sourceIds": [
+                "peng04"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 238,
+                  "key": "R"
+                },
+                {
+                  "champion": 517,
+                  "key": "E"
+                }
+              ]
+            }
+          ]
+        },
+        "win-condition": {
+          "tips": [
+            {
+              "text": "Pre-spike banked plus steal held: the Zed who never snowballed never wins.",
+              "scope": "pair",
+              "sourceIds": [
+                "aikopanda"
+              ]
+            }
+          ]
+        }
+      },
+      "itemization": [],
+      "sources": [
+        {
+          "id": "aikopanda",
+          "author": "AikoPanda",
+          "rankClaim": "Zed main",
+          "url": "https://www.mobafire.com/league-of-legends/build/26-20-video-guides-hidden-combos-all-matchups-zed-all-in-one-guide-652800",
+          "kind": "mobafire"
+        },
+        {
+          "id": "peng04",
+          "author": "Peng04",
+          "rankClaim": "Challenger · Ahri main",
+          "rank": "challenger",
+          "url": "https://www.mobafire.com/league-of-legends/build/26-20-pengs-ahri-guide-5-1mil-points-13x-challenger-648700",
+          "kind": "mobafire"
+        }
+      ]
+    }
+  ],
+  "vods": [
+    {
+      "lane": "adc",
+      "videos": [
+        {
+          "videoId": "Y6C-Rql0x_8",
+          "title": "T1 PEYZ : His SYLAS ADC IS DESTROYING KR CHALLENGER ELO",
+          "rankClaim": "Challenger",
+          "patch": "26.16",
+          "durationSec": 958,
+          "region": "KR",
+          "patchEstimated": true,
+          "player": "Peyz",
+          "uploaded": "2026-08-22",
+          "format": "stream",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "CZ7OMDWNgag",
+          "title": "HOW TO CLIMB LOW ELO WITH SYLAS",
+          "rankClaim": "Master+",
+          "patch": "26.19",
+          "durationSec": 1584,
+          "patchEstimated": true,
+          "player": "Sinerias",
+          "uploaded": "2026-09-23",
+          "format": "stream",
+          "cam": true,
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 3,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "p4SwPIJEaiM",
+          "title": "Sylas Mid vs Galio - KR Grandmaster Patch 26.17",
+          "rankClaim": "Grandmaster",
+          "patch": "26.17",
+          "durationSec": 1803,
+          "region": "KR",
+          "uploaded": "2026-08-28",
+          "moments": []
+        },
+        {
+          "videoId": "wPAFtEJRvF0",
+          "title": "Sylas Mid vs Galio - KR Challenger Patch 26.08",
+          "rankClaim": "Challenger",
+          "patch": "26.8",
+          "durationSec": 1516,
+          "region": "KR",
+          "uploaded": "2026-04-18",
+          "moments": []
+        },
+        {
+          "videoId": "Vmt1meOq5pI",
+          "title": "T1 Faker Sylas vs Galio [ MID ] Patch 25.15 Korea Master",
+          "rankClaim": "Master",
+          "patch": "25.15",
+          "durationSec": 1198,
+          "region": "KR",
+          "player": "Faker",
+          "team": "T1",
+          "uploaded": "2025-08-05",
+          "moments": []
+        },
+        {
+          "videoId": "FkzwDLMghYU",
+          "title": "Sylas Mid vs Galio - KR Challenger Patch 25.04",
+          "rankClaim": "Challenger",
+          "patch": "25.4",
+          "durationSec": 1470,
+          "region": "KR",
+          "uploaded": "2025-02-25",
+          "moments": []
+        },
+        {
+          "videoId": "sd6AxacpUy4",
+          "title": "T1 Faker Sylas vs Galio [ MID ] Patch 25.3 Korea Master ✅",
+          "rankClaim": "Master",
+          "patch": "25.3",
+          "durationSec": 2287,
+          "region": "KR",
+          "player": "Faker",
+          "team": "T1",
+          "uploaded": "2025-02-06",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 4,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "rzrISI3PE3k",
+          "title": "Sylas vs Twisted Fate Mid - KR Challenger - Patch 25.20 Season 15",
+          "rankClaim": "Challenger",
+          "patch": "25.20",
+          "durationSec": 2071,
+          "region": "KR",
+          "uploaded": "2025-10-14",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 5,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "X7TGKKSQoo0",
+          "title": "Sylas Jungle vs Xin Zhao (T1 Carim) - KR Challenger Patch 26.21",
+          "rankClaim": "Challenger",
+          "patch": "26.21",
+          "durationSec": 1754,
+          "region": "KR",
+          "uploaded": "2026-10-31",
+          "result": "W",
+          "moments": [
+            {
+              "atSec": 150,
+              "label": "Sylas picks off Galio"
+            },
+            {
+              "atSec": 338,
+              "label": "Red takes 1st Dragon (Ocean)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 446,
+              "label": "Zoe picks off Xin Zhao"
+            },
+            {
+              "atSec": 585,
+              "label": "Zoe eliminates Galio"
+            },
+            {
+              "atSec": 704,
+              "label": "Blue takes 1st Dragon (Cloud)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 767,
+              "label": "Sylas picks off Galio"
+            },
+            {
+              "atSec": 925,
+              "label": "Sylas eliminates Xayah"
+            },
+            {
+              "atSec": 1067,
+              "label": "Blue takes 2nd Dragon (Infernal)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1159,
+              "label": "Zoe takes down Elise"
+            },
+            {
+              "atSec": 1186,
+              "label": "Blue takes Baron",
+              "kind": "baron"
+            },
+            {
+              "atSec": 1253,
+              "label": "Sylas kills Elise",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1303,
+              "label": "Team fight (3 kills)",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1374,
+              "label": "Zoe takes down Yasuo"
+            },
+            {
+              "atSec": 1395,
+              "label": "Red takes 2nd Dragon (Infernal)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1585,
+              "label": "Red takes Baron",
+              "kind": "baron"
+            },
+            {
+              "atSec": 1606,
+              "label": "Zoe Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1716,
+              "label": "Zoe Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1733,
+              "label": "Mid Inhibitor falls (Blue)"
+            }
+          ]
+        },
+        {
+          "videoId": "WnKCemVCmws",
+          "title": "Sylas Jungle vs Xin Zhao (NS SeTab) - KR Challenger Patch 26.17",
+          "rankClaim": "Challenger",
+          "patch": "26.17",
+          "durationSec": 1516,
+          "region": "KR",
+          "uploaded": "2026-09-04",
+          "moments": []
+        },
+        {
+          "videoId": "jPO2F4MX3xY",
+          "title": "Sylas Jungle vs Xin Zhao - EUW Challenger Patch 26.03",
+          "rankClaim": "Challenger",
+          "patch": "26.3",
+          "durationSec": 1443,
+          "region": "EUW",
+          "uploaded": "2026-02-14",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 153,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 246,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 447,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 527,
+              "label": "Hunt The Dragon",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 584,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 695,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 787,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 808,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 847,
+              "label": "Hunt The Dragon",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 959,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1040,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1118,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1225,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1289,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1304,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1323,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1348,
+              "label": "Hunt The Baron Nashor",
+              "kind": "baron"
+            },
+            {
+              "atSec": 1364,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1432,
+              "label": "End credit"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 7,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "CkhcvIx67Ag",
+          "title": "Sylas vs LeBlanc Mid - KR Challenger - Patch 25.6 Season 15",
+          "rankClaim": "Challenger",
+          "patch": "25.6",
+          "durationSec": 1801,
+          "region": "KR",
+          "uploaded": "2025-03-24",
+          "moments": []
+        },
+        {
+          "videoId": "kHVZ9KHOEoU",
+          "title": "Sylas vs LeBlanc Mid - KR Grandmaster - Patch 25.5 Season 15",
+          "rankClaim": "Grandmaster",
+          "patch": "25.5",
+          "durationSec": 1890,
+          "region": "KR",
+          "uploaded": "2025-03-19",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 11,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "WzZFOqeEBBY",
+          "title": "Sylas vs Master Yi Jungle - KR Challenger - Patch 25.21 Season 15",
+          "rankClaim": "Challenger",
+          "patch": "25.21",
+          "durationSec": 1876,
+          "region": "KR",
+          "uploaded": "2025-11-03",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 12,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "s3m472raUMA",
+          "title": "Sylas Support vs Alistar - NA Challenger Patch 25.15",
+          "rankClaim": "Challenger",
+          "patch": "25.15",
+          "durationSec": 1713,
+          "region": "NA",
+          "uploaded": "2025-08-08",
+          "moments": []
+        },
+        {
+          "videoId": "LDW4T2kW6WQ",
+          "title": "Sylas Support vs Alistar - KR Challenger Patch 25.13",
+          "rankClaim": "Challenger",
+          "patch": "25.13",
+          "durationSec": 1695,
+          "region": "KR",
+          "uploaded": "2025-07-11",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 13,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "Ck8xoLPjMmI",
+          "title": "Sylas Mid vs Ryze - KR Grandmaster Patch 26.21",
+          "rankClaim": "Grandmaster",
+          "patch": "26.21",
+          "durationSec": 1715,
+          "region": "KR",
+          "uploaded": "2026-10-31",
+          "result": "W",
+          "moments": [
+            {
+              "atSec": 280,
+              "label": "Sylas takes down Seraphine"
+            },
+            {
+              "atSec": 350,
+              "label": "Blue takes 1st Dragon (Hextech)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 462,
+              "label": "Viego takes down Lee Sin"
+            },
+            {
+              "atSec": 633,
+              "label": "Sylas kills Varus",
+              "kind": "kill"
+            },
+            {
+              "atSec": 736,
+              "label": "Sylas eliminates Ryze"
+            },
+            {
+              "atSec": 901,
+              "label": "Blue takes 2nd Dragon (Cloud)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1000,
+              "label": "Blue takes Rift Herald",
+              "kind": "herald"
+            },
+            {
+              "atSec": 1133,
+              "label": "Caitlyn eliminates Lee Sin"
+            },
+            {
+              "atSec": 1185,
+              "label": "Team fight (3 kills)",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1231,
+              "label": "Blue takes Baron",
+              "kind": "baron"
+            },
+            {
+              "atSec": 1291,
+              "label": "Blue takes 3rd Dragon (Mountain)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1513,
+              "label": "Caitlyn picks off Pantheon"
+            },
+            {
+              "atSec": 1549,
+              "label": "Sylas kills Varus",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1577,
+              "label": "Mid Inhibitor falls (Red)"
+            },
+            {
+              "atSec": 1607,
+              "label": "Blue takes 4th Dragon (Mountain)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1665,
+              "label": "Caitlyn Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1670,
+              "label": "Viego Triple Kill",
+              "kind": "kill"
+            }
+          ]
+        },
+        {
+          "videoId": "RrSOyQFUOtM",
+          "title": "Beifeng Sylas vs Ryze — Grandmaster KR Server",
+          "rankClaim": "Grandmaster",
+          "patch": "26.6",
+          "durationSec": 1145,
+          "region": "KR",
+          "patchEstimated": true,
+          "player": "Beifeng",
+          "uploaded": "2026-03-20",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "qsxsGmtxzrc",
+          "title": "Sylas Mid vs Ryze - EUW Grandmaster Patch 25.17",
+          "rankClaim": "Grandmaster",
+          "patch": "25.17",
+          "durationSec": 1969,
+          "region": "EUW",
+          "uploaded": "2025-09-05",
+          "moments": []
+        },
+        {
+          "videoId": "14I3tdxrxWU",
+          "title": "DK ShowMaker Sylas vs Ryze [ MID ] Patch 25.5 Korea Master ✅",
+          "rankClaim": "Master",
+          "patch": "25.5",
+          "durationSec": 1075,
+          "region": "KR",
+          "player": "ShowMaker",
+          "team": "DK",
+          "uploaded": "2025-03-11",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 14,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "muwnvWglBm0",
+          "title": "Sylas vs Sion 15/3/7 (Top) | EUW Challenger | Sylas OTP Replay",
+          "rankClaim": "Challenger",
+          "patch": "26.8",
+          "durationSec": 1484,
+          "region": "EUW",
+          "patchEstimated": true,
+          "uploaded": "2026-04-26",
+          "moments": []
+        },
+        {
+          "videoId": "OVovmaaO9Zw",
+          "title": "Sylas vs Sion 9/1/10 (Top) | EUW Challenger | Sylas OTP Replay",
+          "rankClaim": "Challenger",
+          "patch": "26.8",
+          "durationSec": 1319,
+          "region": "EUW",
+          "patchEstimated": true,
+          "uploaded": "2026-04-26",
+          "moments": []
+        },
+        {
+          "videoId": "0v2ZFEedm5A",
+          "title": "Sylas Top vs Sion - KR Grandmaster Patch 25.05",
+          "rankClaim": "Grandmaster",
+          "patch": "25.5",
+          "durationSec": 1670,
+          "region": "KR",
+          "uploaded": "2025-03-17",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 219,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 404,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 491,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 612,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 720,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 815,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 841,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 916,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 932,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1022,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1139,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1285,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1373,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1397,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1430,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1468,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1488,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1544,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1582,
+              "label": "Take down The Inhibitor"
+            },
+            {
+              "atSec": 1649,
+              "label": "End credit"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 18,
+      "lane": "adc",
+      "videos": [
+        {
+          "videoId": "EOhgc7hZ74g",
+          "title": "Sylas vs Tristana ADC - KR Challenger - Patch 25.19 Season 15",
+          "rankClaim": "Challenger",
+          "patch": "25.19",
+          "durationSec": 2161,
+          "region": "KR",
+          "uploaded": "2025-10-07",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 20,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "SvpCZaHI4Hc",
+          "title": "Sylas Mid vs Nunu & Willump - KR Master Patch 25.07",
+          "rankClaim": "Master",
+          "patch": "25.7",
+          "durationSec": 1617,
+          "region": "KR",
+          "uploaded": "2025-04-04",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 24,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "rbYsLAWuiI8",
+          "title": "Sylas Top vs Jax - KR Grandmaster Patch 25.14",
+          "rankClaim": "Grandmaster",
+          "patch": "25.14",
+          "durationSec": 1605,
+          "region": "KR",
+          "uploaded": "2025-07-25",
+          "moments": []
+        },
+        {
+          "videoId": "GvDedCQMCeA",
+          "title": "Sylas Top vs Jax - KR Master Patch 25.06",
+          "rankClaim": "Master",
+          "patch": "25.6",
+          "durationSec": 1660,
+          "region": "KR",
+          "uploaded": "2025-03-30",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 30,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "ctAAQ4xSagg",
+          "title": "Sylas Jungle vs Karthus - KR Challenger Patch 25.19",
+          "rankClaim": "Challenger",
+          "patch": "25.19",
+          "durationSec": 1554,
+          "region": "KR",
+          "uploaded": "2025-09-27",
+          "moments": []
+        },
+        {
+          "videoId": "jmVGjSx0soU",
+          "title": "T1 Oner Sylas vs Karthus [ Jungle ] Patch 25.18 Korea Grandmaster",
+          "rankClaim": "Grandmaster",
+          "patch": "25.18",
+          "durationSec": 1513,
+          "region": "KR",
+          "player": "Oner",
+          "team": "T1",
+          "uploaded": "2025-09-12",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 33,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "ShSAIeB2-i4",
+          "title": "Sylas Jungle vs Rammus - KR Master Patch 26.18",
+          "rankClaim": "Master",
+          "patch": "26.18",
+          "durationSec": 1511,
+          "region": "KR",
+          "uploaded": "2026-09-18",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 35,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "JroiLPiOI2w",
+          "title": "Sylas Support vs Shaco - KR Master Patch 25.17",
+          "rankClaim": "Master",
+          "patch": "25.17",
+          "durationSec": 1619,
+          "region": "KR",
+          "uploaded": "2025-09-11",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 39,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "RqXUlG4mZbE",
+          "title": "Sylas Mid vs Irelia - EUW Grandmaster Patch 25.18",
+          "rankClaim": "Grandmaster",
+          "patch": "25.18",
+          "durationSec": 1728,
+          "region": "EUW",
+          "uploaded": "2025-09-19",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 42,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "_SqUJYWRb4Y",
+          "title": "Sylas Mid vs Corki - KR Grandmaster Patch 25.12",
+          "rankClaim": "Grandmaster",
+          "patch": "25.12",
+          "durationSec": 1586,
+          "region": "KR",
+          "uploaded": "2025-06-14",
+          "moments": []
+        },
+        {
+          "videoId": "ryHRHOuTFkE",
+          "title": "Sylas Mid vs Corki - KR Master Patch 25.08",
+          "rankClaim": "Master",
+          "patch": "25.8",
+          "durationSec": 1540,
+          "region": "KR",
+          "uploaded": "2025-04-18",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 43,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "U5roSeBxZCk",
+          "title": "Sylas Support vs Karma - KR Master Patch 25.05",
+          "rankClaim": "Master",
+          "patch": "25.5",
+          "durationSec": 1758,
+          "region": "KR",
+          "uploaded": "2025-03-21",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 45,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "TWMUetwR5xs",
+          "title": "Sylas Mid vs Veigar - EUW Challenger Patch 25.16",
+          "rankClaim": "Challenger",
+          "patch": "25.16",
+          "durationSec": 1580,
+          "region": "EUW",
+          "uploaded": "2025-08-22",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 54,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "uPqyrQpjTWo",
+          "title": "(Philip) Sylas Top vs Malphite - NA Challenger Patch 26.13",
+          "rankClaim": "Challenger",
+          "patch": "26.13",
+          "durationSec": 1686,
+          "region": "NA",
+          "player": "Philip",
+          "uploaded": "2026-07-11",
+          "moments": []
+        },
+        {
+          "videoId": "URswcILNikA",
+          "title": "(LNG BuLLDoG) Sylas Top vs Malphite - KR Challenger Patch 26.10",
+          "rankClaim": "Challenger",
+          "patch": "26.10",
+          "durationSec": 1548,
+          "region": "KR",
+          "player": "BuLLDoG",
+          "team": "LNG",
+          "uploaded": "2026-05-23",
+          "moments": []
+        },
+        {
+          "videoId": "c56Mk-3qFmM",
+          "title": "Sylas Top vs Malphite - KR Challenger Patch 25.10",
+          "rankClaim": "Challenger",
+          "patch": "25.10",
+          "durationSec": 1526,
+          "region": "KR",
+          "uploaded": "2025-05-24",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 50,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 288,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 388,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 410,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 482,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 501,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 515,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 605,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 691,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 967,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1100,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1122,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1140,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1189,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1220,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1244,
+              "label": "Take down The Inhibitor"
+            },
+            {
+              "atSec": 1323,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1455,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1484,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1505,
+              "label": "End credit"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 55,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "KAJN1elcoe4",
+          "title": "Sylas vs Katarina Mid - KR Challenger - Patch 25.19 Season 15",
+          "rankClaim": "Challenger",
+          "patch": "25.19",
+          "durationSec": 2251,
+          "region": "KR",
+          "uploaded": "2025-10-01",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 59,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "edjOyczZl40",
+          "title": "Sylas Jungle vs Jarvan IV - KR Challenger Patch 26.10",
+          "rankClaim": "Challenger",
+          "patch": "26.10",
+          "durationSec": 1651,
+          "region": "KR",
+          "uploaded": "2026-05-16",
+          "moments": []
+        },
+        {
+          "videoId": "MP02Tvdcxqs",
+          "title": "Sylas Jungle vs Jarvan IV - EUW Challenger Patch 26.08",
+          "rankClaim": "Challenger",
+          "patch": "26.8",
+          "durationSec": 1690,
+          "region": "EUW",
+          "uploaded": "2026-04-25",
+          "moments": []
+        },
+        {
+          "videoId": "p8HsM4ry1us",
+          "title": "Sylas Jungle vs Jarvan IV - KR Challenger Patch 25.22",
+          "rankClaim": "Challenger",
+          "patch": "25.22",
+          "durationSec": 1522,
+          "region": "KR",
+          "uploaded": "2025-11-09",
+          "moments": []
+        },
+        {
+          "videoId": "5FV2ShLzvBY",
+          "title": "Sylas vs Jarvan IV Jungle - EUW Grandmaster - Patch 25.20 Season 15",
+          "rankClaim": "Grandmaster",
+          "patch": "25.20",
+          "durationSec": 1771,
+          "region": "EUW",
+          "uploaded": "2025-10-16",
+          "moments": []
+        },
+        {
+          "videoId": "hsqJg6WkAKw",
+          "title": "Sylas vs Jarvan IV Jungle - KR Challenger - Patch 25.19 Season 15",
+          "rankClaim": "Challenger",
+          "patch": "25.19",
+          "durationSec": 1831,
+          "region": "KR",
+          "uploaded": "2025-10-01",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 61,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "gLmJVAuNQLE",
+          "title": "(KC kyeahoo) Sylas Mid vs Orianna (ZENA JayJay) - EUW Grandmaster Patch 26.15",
+          "rankClaim": "Grandmaster",
+          "patch": "26.15",
+          "durationSec": 1584,
+          "region": "EUW",
+          "player": "kyeahoo",
+          "team": "KC",
+          "uploaded": "2026-08-09",
+          "moments": []
+        },
+        {
+          "videoId": "gT1n6NemsVI",
+          "title": "Sylas vs Orianna 18/3/16 (Mid) | EUW Master | Sylas OTP Replay",
+          "rankClaim": "Master",
+          "patch": "26.9",
+          "durationSec": 1752,
+          "region": "EUW",
+          "patchEstimated": true,
+          "uploaded": "2026-05-07",
+          "moments": []
+        },
+        {
+          "videoId": "eDlNdYf3PsM",
+          "title": "Sylas vs Orianna 24/0/2 (Mid) | EUW Challenger | Sylas OTP Replay",
+          "rankClaim": "Challenger",
+          "patch": "26.8",
+          "durationSec": 1411,
+          "region": "EUW",
+          "patchEstimated": true,
+          "uploaded": "2026-04-27",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 62,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "I80pGKm5mnw",
+          "title": "T1 Oner Sylas vs Wukong [ Jungle ] Korea Master Patch 25.16",
+          "rankClaim": "Master",
+          "patch": "25.16",
+          "durationSec": 1257,
+          "region": "KR",
+          "player": "Oner",
+          "team": "T1",
+          "uploaded": "2025-08-26",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 64,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "GS4-H7X3oKA",
+          "title": "Sylas Jungle vs Lee Sin - KR Grandmaster Patch 26.20",
+          "rankClaim": "Grandmaster",
+          "patch": "26.20",
+          "durationSec": 1812,
+          "region": "KR",
+          "uploaded": "2026-10-16",
+          "result": "W",
+          "moments": [
+            {
+              "atSec": 406,
+              "label": "First Blood — Sylas kills Gwen",
+              "kind": "kill"
+            },
+            {
+              "atSec": 418,
+              "label": "Blue takes 1st Dragon (Cloud)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 641,
+              "label": "Talon eliminates Akali"
+            },
+            {
+              "atSec": 683,
+              "label": "Leona eliminates Gwen"
+            },
+            {
+              "atSec": 742,
+              "label": "Blue takes 2nd Dragon (Chemtech)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 994,
+              "label": "Sylas kills Gwen",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1087,
+              "label": "Talon Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1203,
+              "label": "Blue takes 3rd Dragon (Hextech)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1256,
+              "label": "Team fight (3 kills)",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1352,
+              "label": "Blue takes Baron",
+              "kind": "baron"
+            },
+            {
+              "atSec": 1409,
+              "label": "Talon Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1411,
+              "label": "Talon Triple Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1430,
+              "label": "Talon eliminates Akali"
+            },
+            {
+              "atSec": 1509,
+              "label": "Team fight (3 kills)",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1531,
+              "label": "Red takes 1st Dragon (Hextech)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1557,
+              "label": "Mid Inhibitor falls (Blue)"
+            },
+            {
+              "atSec": 1741,
+              "label": "Team fight (3 kills)",
+              "kind": "teamfight"
+            }
+          ]
+        },
+        {
+          "videoId": "KVq3WGQw_Kg",
+          "title": "Sylas Jungle vs Lee Sin - KR Challenger Patch 26.09",
+          "rankClaim": "Challenger",
+          "patch": "26.9",
+          "durationSec": 1552,
+          "region": "KR",
+          "uploaded": "2026-05-02",
+          "moments": []
+        },
+        {
+          "videoId": "SwJJvA8IDtI",
+          "title": "Sylas vs Lee Sin Jungle - KR Challenger - Patch 25.19 Season 15",
+          "rankClaim": "Challenger",
+          "patch": "25.19",
+          "durationSec": 1531,
+          "region": "KR",
+          "uploaded": "2025-09-29",
+          "moments": []
+        },
+        {
+          "videoId": "u-Xg0cwFc2E",
+          "title": "Sylas Jungle vs Lee Sin - KR Grandmaster Patch 25.16",
+          "rankClaim": "Grandmaster",
+          "patch": "25.16",
+          "durationSec": 1610,
+          "region": "KR",
+          "uploaded": "2025-08-16",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 64,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "K31dZRmTZE8",
+          "title": "Sylas Mid vs Lee Sin - EUW Grandmaster Patch 25.24",
+          "rankClaim": "Grandmaster",
+          "patch": "25.24",
+          "durationSec": 1480,
+          "region": "EUW",
+          "uploaded": "2026-01-09",
+          "moments": []
+        },
+        {
+          "videoId": "5fq6tbp6kUc",
+          "title": "Sylas Mid vs Lee Sin - KR Grandmaster Patch 25.15",
+          "rankClaim": "Grandmaster",
+          "patch": "25.15",
+          "durationSec": 1609,
+          "region": "KR",
+          "uploaded": "2025-08-03",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 68,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "Pgn_nm_OFY0",
+          "title": "Sylas Top vs Rumble - KR Master Patch 25.24",
+          "rankClaim": "Master",
+          "patch": "25.24",
+          "durationSec": 1541,
+          "region": "KR",
+          "uploaded": "2025-12-26",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 69,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "MIOd3nl7bko",
+          "title": "Sylas Mid vs Cassiopeia - EUW Grandmaster Patch 25.20",
+          "rankClaim": "Grandmaster",
+          "patch": "25.20",
+          "durationSec": 2057,
+          "region": "EUW",
+          "uploaded": "2025-10-17",
+          "moments": []
+        },
+        {
+          "videoId": "8r5gWOv699E",
+          "title": "Sylas Mid vs Cassiopeia - KR Grandmaster Patch 25.06",
+          "rankClaim": "Grandmaster",
+          "patch": "25.6",
+          "durationSec": 1710,
+          "region": "KR",
+          "uploaded": "2025-03-22",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 76,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "76XTA721lCs",
+          "title": "Sylas Jungle vs Nidalee - EUW Challenger Patch 25.13",
+          "rankClaim": "Challenger",
+          "patch": "25.13",
+          "durationSec": 1712,
+          "region": "EUW",
+          "uploaded": "2025-07-18",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 76,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "e87FwJoRcgA",
+          "title": "Sylas Top vs Nidalee - EUW Grandmaster Patch 25.11",
+          "rankClaim": "Grandmaster",
+          "patch": "25.11",
+          "durationSec": 1670,
+          "region": "EUW",
+          "uploaded": "2025-06-07",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 77,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "o7D7DVJwXdU",
+          "title": "Sylas vs Udyr Mid - KR Challenger - Patch 16.15 Season 16",
+          "rankClaim": "Challenger",
+          "patch": "26.15",
+          "durationSec": 1561,
+          "region": "KR",
+          "uploaded": "2026-08-07",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 80,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "2Pl5rZbh7OY",
+          "title": "T1 Oner Sylas vs Pantheon Jungle [ QuadraKill ] Korea Master Patch 25.17",
+          "rankClaim": "Master",
+          "patch": "25.17",
+          "durationSec": 1438,
+          "region": "KR",
+          "player": "Oner",
+          "team": "T1",
+          "uploaded": "2025-08-30",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 80,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "Br2reniuHLk",
+          "title": "Sylas vs Pantheon Mid - KR Challenger - Patch 25.21 Season 15",
+          "rankClaim": "Challenger",
+          "patch": "25.21",
+          "durationSec": 1846,
+          "region": "KR",
+          "uploaded": "2025-10-28",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 81,
+      "lane": "adc",
+      "videos": [
+        {
+          "videoId": "8xaiLSpEBd0",
+          "title": "T1 Peyz Sylas vs Ezreal [ ADC ] Korea Challenger 2409 LP | Patch 26.13",
+          "rankClaim": "Challenger",
+          "patch": "26.13",
+          "durationSec": 1485,
+          "region": "KR",
+          "player": "Peyz",
+          "team": "T1",
+          "uploaded": "2026-07-12",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 84,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "o-nSFoYR_wI",
+          "title": "(BIG Reeker) Sylas Mid vs Akali - EUW Grandmaster Patch 26.11",
+          "rankClaim": "Grandmaster",
+          "patch": "26.11",
+          "durationSec": 1885,
+          "region": "EUW",
+          "player": "BIG Reeker",
+          "uploaded": "2026-06-06",
+          "moments": []
+        },
+        {
+          "videoId": "ZqN9H7Vg-vY",
+          "title": "Sylas Mid vs Akali - KR Master Patch 25.10",
+          "rankClaim": "Master",
+          "patch": "25.10",
+          "durationSec": 1543,
+          "region": "KR",
+          "uploaded": "2025-05-16",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 90,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "n4SseT9HQN8",
+          "title": "T1 Faker Sylas vs Malzahar [ MID ] Patch 25.9 Korea Grandmaster ✅",
+          "rankClaim": "Grandmaster",
+          "patch": "25.9",
+          "durationSec": 1335,
+          "region": "KR",
+          "player": "Faker",
+          "team": "T1",
+          "uploaded": "2025-05-06",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 91,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "C30DmWkc2j0",
+          "title": "(WBG Jiejie) Sylas Jungle vs Talon - KR Challenger Patch 26.13",
+          "rankClaim": "Challenger",
+          "patch": "26.13",
+          "durationSec": 1826,
+          "region": "KR",
+          "player": "Jiejie",
+          "team": "WBG",
+          "uploaded": "2026-06-29",
+          "moments": []
+        },
+        {
+          "videoId": "KE-gmauwE4g",
+          "title": "Sylas Jungle vs Talon - EUW Challenger Patch 26.04",
+          "rankClaim": "Challenger",
+          "patch": "26.4",
+          "durationSec": 1648,
+          "region": "EUW",
+          "uploaded": "2026-02-28",
+          "moments": []
+        },
+        {
+          "videoId": "oWq7NR8DhnQ",
+          "title": "Sylas vs Talon Jungle - KR Challenger - Patch 25.16 Season 15",
+          "rankClaim": "Challenger",
+          "patch": "25.16",
+          "durationSec": 2431,
+          "region": "KR",
+          "uploaded": "2025-08-21",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 98,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "sy0bCf8msf0",
+          "title": "(SR Fudge) Sylas Top vs Shen - NA Grandmaster Patch 26.12",
+          "rankClaim": "Grandmaster",
+          "patch": "26.12",
+          "durationSec": 1639,
+          "region": "NA",
+          "player": "SR Fudge",
+          "uploaded": "2026-06-19",
+          "moments": []
+        },
+        {
+          "videoId": "yVXYgQNc_O4",
+          "title": "Sylas Top vs Shen - KR Challenger Patch 26.09",
+          "rankClaim": "Challenger",
+          "patch": "26.9",
+          "durationSec": 1679,
+          "region": "KR",
+          "uploaded": "2026-05-10",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 99,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "cpMuExNi5lo",
+          "title": "Sylas Mid vs Lux - VN Master Patch 26.01",
+          "rankClaim": "Master",
+          "patch": "26.1",
+          "durationSec": 1571,
+          "uploaded": "2026-01-13",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 187,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 255,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 287,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 501,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 605,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 707,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 743,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 767,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 790,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 832,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 989,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1049,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1109,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1266,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1341,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1373,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1395,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1408,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1474,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1560,
+              "label": "End credit"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 101,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "mZAjL0zVBV4",
+          "title": "Sylas Support vs Xerath - KR Master Patch 25.24",
+          "rankClaim": "Master",
+          "patch": "25.24",
+          "durationSec": 1541,
+          "region": "KR",
+          "uploaded": "2025-12-19",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 187,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 468,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 492,
+              "label": "Hunt The Void Grubs",
+              "kind": "grubs"
+            },
+            {
+              "atSec": 517,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 586,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 721,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 882,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1020,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1123,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1222,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1277,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1471,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1530,
+              "label": "End credit"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 102,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "4d2nB34xJAY",
+          "title": "(KT Cuzz) Sylas Jungle vs Shyvana (T1 Oner) - KR Grandmaster Patch 26.16",
+          "rankClaim": "Grandmaster",
+          "patch": "26.16",
+          "durationSec": 1582,
+          "region": "KR",
+          "player": "Cuzz",
+          "team": "KT",
+          "uploaded": "2026-08-15",
+          "moments": []
+        },
+        {
+          "videoId": "oM6HbBmkfT8",
+          "title": "Sylas Jungle vs Shyvana - KR Challenger Patch 26.09",
+          "rankClaim": "Challenger",
+          "patch": "26.9",
+          "durationSec": 1526,
+          "region": "KR",
+          "uploaded": "2026-05-14",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 103,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "QbDjfuJqzGE",
+          "title": "(GSMC Alix) Sylas Mid vs Ahri - EUW Challenger Patch 26.18",
+          "rankClaim": "Challenger",
+          "patch": "26.18",
+          "durationSec": 1644,
+          "region": "EUW",
+          "player": "GSMC Alix",
+          "uploaded": "2026-09-20",
+          "moments": []
+        },
+        {
+          "videoId": "0wxo6kKyJAM",
+          "title": "(FNC Vladi) Sylas Mid vs Ahri (Mentos) - EUW Challenger Patch 26.14",
+          "rankClaim": "Challenger",
+          "patch": "26.14",
+          "durationSec": 1854,
+          "region": "EUW",
+          "player": "Vladi",
+          "team": "FNC",
+          "uploaded": "2026-07-25",
+          "moments": []
+        },
+        {
+          "videoId": "nYMTpooeQyY",
+          "title": "T1 Faker Sylas vs Ahri [ MID ] Korea Grandmaster 1707 LP | Patch 26.13",
+          "rankClaim": "Grandmaster",
+          "patch": "26.13",
+          "durationSec": 2176,
+          "region": "KR",
+          "player": "Faker",
+          "team": "T1",
+          "uploaded": "2026-07-04",
+          "moments": []
+        },
+        {
+          "videoId": "diStPe_XzNE",
+          "title": "Sylas Mid vs Ahri - EUW Challenger Patch 26.07",
+          "rankClaim": "Challenger",
+          "patch": "26.7",
+          "durationSec": 1827,
+          "region": "EUW",
+          "uploaded": "2026-04-04",
+          "moments": []
+        },
+        {
+          "videoId": "u9e0RTjJolM",
+          "title": "Sylas Mid vs Ahri - KR Master Patch 26.03",
+          "rankClaim": "Master",
+          "patch": "26.3",
+          "durationSec": 1599,
+          "region": "KR",
+          "uploaded": "2026-02-07",
+          "moments": []
+        },
+        {
+          "videoId": "OaUBVQBAxtY",
+          "title": "Sylas Mid vs Ahri - EUW Grandmaster Patch 25.22",
+          "rankClaim": "Grandmaster",
+          "patch": "25.22",
+          "durationSec": 1823,
+          "region": "EUW",
+          "uploaded": "2025-11-14",
+          "moments": []
+        },
+        {
+          "videoId": "Q7SYRwc-Zjw",
+          "title": "Sylas Mid vs Ahri - KR Grandmaster Patch 25.13",
+          "rankClaim": "Grandmaster",
+          "patch": "25.13",
+          "durationSec": 1510,
+          "region": "KR",
+          "uploaded": "2025-06-29",
+          "moments": []
+        },
+        {
+          "videoId": "M9FE1kUHw8M",
+          "title": "Sylas vs Ahri Mid - KR Challenger - Patch 25.10 Season 15",
+          "rankClaim": "Challenger",
+          "patch": "25.10",
+          "durationSec": 1471,
+          "region": "KR",
+          "uploaded": "2025-05-26",
+          "moments": []
+        },
+        {
+          "videoId": "c89CfDJ7Ncw",
+          "title": "T1 Faker Sylas vs Ahri [ MID ] Korea Challenger Patch 25.10",
+          "rankClaim": "Challenger",
+          "patch": "25.10",
+          "durationSec": 1583,
+          "region": "KR",
+          "player": "Faker",
+          "team": "T1",
+          "uploaded": "2025-05-26",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 104,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "czMf4KkcNzw",
+          "title": "Sylas Jungle vs Graves - KR Challenger Patch 25.20",
+          "rankClaim": "Challenger",
+          "patch": "25.20",
+          "durationSec": 1527,
+          "region": "KR",
+          "uploaded": "2025-10-11",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 107,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "RlAPRos2I80",
+          "title": "Sylas vs Rengar Jungle - KR Challenger - Patch 25.20 Season 15",
+          "rankClaim": "Challenger",
+          "patch": "25.20",
+          "durationSec": 1831,
+          "region": "KR",
+          "uploaded": "2025-10-19",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 110,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "l1YRbeZdykw",
+          "title": "Sylas Top vs Varus - VN Challenger Patch 26.02",
+          "rankClaim": "Challenger",
+          "patch": "26.2",
+          "durationSec": 1530,
+          "uploaded": "2026-02-05",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 112,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "gBRERbDM51g",
+          "title": "T1 Faker Sylas vs Viktor [ MID ] Korea Grandmaster Patch 25.7 ✅",
+          "rankClaim": "Grandmaster",
+          "patch": "25.7",
+          "durationSec": 1633,
+          "region": "KR",
+          "player": "Faker",
+          "team": "T1",
+          "uploaded": "2025-04-15",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 114,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "pNstwNPeA60",
+          "title": "Sylas Top vs Fiora - KR Master Patch 25.13",
+          "rankClaim": "Master",
+          "patch": "25.13",
+          "durationSec": 1733,
+          "region": "KR",
+          "uploaded": "2025-07-03",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 117,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "_YnHv2EW6co",
+          "title": "Sylas Support vs Lulu - KR Master Patch 25.07",
+          "rankClaim": "Master",
+          "patch": "25.7",
+          "durationSec": 1542,
+          "region": "KR",
+          "uploaded": "2025-04-18",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 212,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 268,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 326,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 428,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 600,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 655,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 762,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 798,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 867,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 924,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1046,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1187,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1360,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1521,
+              "label": "End credit"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 121,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "GvhF43pFT4A",
+          "title": "(SU RAMES) Sylas Jungle vs Kha'Zix - EUW Grandmaster Patch 26.12",
+          "rankClaim": "Grandmaster",
+          "patch": "26.12",
+          "durationSec": 1713,
+          "region": "EUW",
+          "player": "SU RAMES",
+          "uploaded": "2026-06-13",
+          "result": "L",
+          "moments": [
+            {
+              "atSec": 306,
+              "label": "First Blood — Thresh kills Seraphine",
+              "kind": "kill"
+            },
+            {
+              "atSec": 384,
+              "label": "Blue takes 1st Dragon (Mountain)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 426,
+              "label": "Sylas outplays Kha'Zix"
+            },
+            {
+              "atSec": 691,
+              "label": "Sylas takes down Kha'Zix"
+            },
+            {
+              "atSec": 744,
+              "label": "Team fight (3 kills)",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 772,
+              "label": "Red takes 1st Dragon (Infernal)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 831,
+              "label": "Jayce Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 863,
+              "label": "Sylas kills Bard",
+              "kind": "kill"
+            },
+            {
+              "atSec": 901,
+              "label": "Sylas eliminates Seraphine"
+            },
+            {
+              "atSec": 915,
+              "label": "Sylas catches Bard"
+            },
+            {
+              "atSec": 961,
+              "label": "Red takes Rift Herald",
+              "kind": "herald"
+            },
+            {
+              "atSec": 1033,
+              "label": "Sylas kills Tryndamere",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1081,
+              "label": "Sylas takes down Kha'Zix"
+            },
+            {
+              "atSec": 1238,
+              "label": "Red takes 2nd Dragon (Cloud)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1258,
+              "label": "Blue takes Baron",
+              "kind": "baron"
+            },
+            {
+              "atSec": 1557,
+              "label": "Red takes 3rd Dragon (Cloud)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1649,
+              "label": "Mid Inhibitor falls (Blue)"
+            },
+            {
+              "atSec": 1663,
+              "label": "Sylas eliminates Seraphine"
+            }
+          ]
+        },
+        {
+          "videoId": "poFkd2PNfwM",
+          "title": "(G2 SkewMond) Sylas Jungle vs Kha'Zix - EUW Challenger Patch 26.11",
+          "rankClaim": "Challenger",
+          "patch": "26.11",
+          "durationSec": 1634,
+          "region": "EUW",
+          "player": "SkewMond",
+          "team": "G2",
+          "uploaded": "2026-05-31",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 122,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "Jl0bhxTK1Zc",
+          "title": "Sylas Top vs Darius - KR Master Patch 25.12",
+          "rankClaim": "Master",
+          "patch": "25.12",
+          "durationSec": 1750,
+          "region": "KR",
+          "uploaded": "2025-06-21",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 126,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "t0vrK1VgM1U",
+          "title": "Sylas Mid vs Jayce - KR Challenger Patch 25.11",
+          "rankClaim": "Challenger",
+          "patch": "25.11",
+          "durationSec": 1666,
+          "region": "KR",
+          "uploaded": "2025-06-01",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 131,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "6ntqN2mEsTU",
+          "title": "Sylas Jungle vs Diana - EUW Challenger Patch 26.02",
+          "rankClaim": "Challenger",
+          "patch": "26.2",
+          "durationSec": 1613,
+          "region": "EUW",
+          "uploaded": "2026-02-03",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 134,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "beUMLx88jKk",
+          "title": "Sylas Mid vs Syndra - EUW Challenger Patch 26.06",
+          "rankClaim": "Challenger",
+          "patch": "26.6",
+          "durationSec": 1479,
+          "region": "EUW",
+          "uploaded": "2026-03-21",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 119,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 325,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 476,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 555,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 682,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 771,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 841,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 892,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 982,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1214,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1248,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1266,
+              "label": "Hunt The Baron Nashor",
+              "kind": "baron"
+            },
+            {
+              "atSec": 1328,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1354,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1382,
+              "label": "Take down The Inhibitor"
+            },
+            {
+              "atSec": 1402,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1468,
+              "label": "End credit"
+            }
+          ]
+        },
+        {
+          "videoId": "VgEU4bZYCaM",
+          "title": "Sylas Mid vs Syndra - EUW Challenger Patch 25.24",
+          "rankClaim": "Challenger",
+          "patch": "25.24",
+          "durationSec": 1590,
+          "region": "EUW",
+          "uploaded": "2025-12-12",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 472,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 607,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 682,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 814,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 965,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1127,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1262,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1277,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1305,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1329,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1386,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1527,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1579,
+              "label": "End credit"
+            }
+          ]
+        },
+        {
+          "videoId": "9yAmYShhDhU",
+          "title": "Sylas vs Syndra MId - KR Challenger - Patch 25.21 Season 15",
+          "rankClaim": "Challenger",
+          "patch": "25.21",
+          "durationSec": 2101,
+          "region": "KR",
+          "uploaded": "2025-10-29",
+          "moments": []
+        },
+        {
+          "videoId": "dUdKjWdq7r4",
+          "title": "T1 Faker Sylas vs Syndra [ MID ] Patch 25.11 Korea Challenger",
+          "rankClaim": "Challenger",
+          "patch": "25.11",
+          "durationSec": 1810,
+          "region": "KR",
+          "player": "Faker",
+          "team": "T1",
+          "uploaded": "2025-06-02",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 142,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "cOvqCgpJ7NQ",
+          "title": "Sylas Mid vs Zoe - KR Grandmaster Patch 26.19",
+          "rankClaim": "Grandmaster",
+          "patch": "26.19",
+          "durationSec": 1695,
+          "region": "KR",
+          "uploaded": "2026-10-03",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 150,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "9qqaivaW8eg",
+          "title": "Sylas Top vs Gnar - KR Master Patch 25.09",
+          "rankClaim": "Master",
+          "patch": "25.9",
+          "durationSec": 1678,
+          "region": "KR",
+          "uploaded": "2025-05-12",
+          "moments": []
+        },
+        {
+          "videoId": "RdsMod669OE",
+          "title": "Sylas Top vs Gnar - EUW Challenger Patch 25.08",
+          "rankClaim": "Challenger",
+          "patch": "25.8",
+          "durationSec": 1581,
+          "region": "EUW",
+          "uploaded": "2025-04-24",
+          "moments": []
+        },
+        {
+          "videoId": "jt_co57uY2M",
+          "title": "Sylas Top vs Gnar - KR Grandmaster Patch 25.07",
+          "rankClaim": "Grandmaster",
+          "patch": "25.7",
+          "durationSec": 1748,
+          "region": "KR",
+          "uploaded": "2025-04-11",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 154,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "qgMvvfD2kiU",
+          "title": "Sylas vs Zac [ Jungle ] Korea Challenger 1827 LP | Patch 25.21 ✅",
+          "rankClaim": "Challenger",
+          "patch": "25.21",
+          "durationSec": 1279,
+          "region": "KR",
+          "uploaded": "2025-11-01",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 157,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "up5oFrQAmqM",
+          "title": "Sylas vs Yasuo Mid - KR Challenger - Patch 26.01 Season 16",
+          "rankClaim": "Challenger",
+          "patch": "26.1",
+          "durationSec": 1756,
+          "region": "KR",
+          "uploaded": "2026-01-22",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 163,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "AS5Yik6PONw",
+          "title": "Sylas Jungle vs Taliyah - KR Challenger Patch 25.18",
+          "rankClaim": "Challenger",
+          "patch": "25.18",
+          "durationSec": 1531,
+          "region": "KR",
+          "uploaded": "2025-09-14",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 163,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "END5CYvZBoY",
+          "title": "Sylas Mid vs Taliyah - VN Challenger Patch 26.05",
+          "rankClaim": "Challenger",
+          "patch": "26.5",
+          "durationSec": 1790,
+          "uploaded": "2026-03-06",
+          "moments": []
+        },
+        {
+          "videoId": "JpvSranL2us",
+          "title": "Sylas Mid vs Taliyah - KR Grandmaster Patch 26.04",
+          "rankClaim": "Grandmaster",
+          "patch": "26.4",
+          "durationSec": 1516,
+          "region": "KR",
+          "uploaded": "2026-02-20",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 90,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 165,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 585,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 687,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 770,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 789,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 899,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1072,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1120,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1214,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1299,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1314,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1392,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1439,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1463,
+              "label": "Take down The Inhibitor"
+            },
+            {
+              "atSec": 1481,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1505,
+              "label": "End credit"
+            }
+          ]
+        },
+        {
+          "videoId": "HLExJkYjWV4",
+          "title": "Faker Sylas vs Taliyah Mid - KR Master - Patch 25.24 Season 115",
+          "rankClaim": "Master",
+          "patch": "25.24",
+          "durationSec": 1956,
+          "region": "KR",
+          "player": "Faker",
+          "uploaded": "2025-12-14",
+          "moments": []
+        },
+        {
+          "videoId": "uVrBw1btnvA",
+          "title": "T1 Faker Sylas vs Taliyah [ MID ] Patch 25.24 Ranked Korea",
+          "rankClaim": "Master+",
+          "patch": "25.24",
+          "durationSec": 1723,
+          "region": "KR",
+          "player": "Faker",
+          "team": "T1",
+          "uploaded": "2025-12-12",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 166,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "Cg8peqDJcbs",
+          "title": "Sylas vs Akshan 12/0/11 (Mid) | EUW Challenger | Sylas OTP Replay",
+          "rankClaim": "Challenger",
+          "patch": "26.7",
+          "durationSec": 1384,
+          "region": "EUW",
+          "patchEstimated": true,
+          "uploaded": "2026-04-06",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 201,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "J4sF2bjq35A",
+          "title": "Sylas Support vs Braum - NA Grandmaster Patch 25.12",
+          "rankClaim": "Grandmaster",
+          "patch": "25.12",
+          "durationSec": 1586,
+          "region": "NA",
+          "uploaded": "2025-06-27",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 233,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "7JJLVyE2Dsc",
+          "title": "(ZENA Jekko) Sylas Jungle vs Briar (Ahsoka) - EUW Challenger Patch 26.19",
+          "rankClaim": "Challenger",
+          "patch": "26.19",
+          "durationSec": 1637,
+          "region": "EUW",
+          "player": "ZENA Jekko",
+          "uploaded": "2026-10-03",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 234,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "MMaqSM-dLYs",
+          "title": "(ESB qualzy) Sylas Jungle vs Viego - EUW Grandmaster Patch 26.15",
+          "rankClaim": "Grandmaster",
+          "patch": "26.15",
+          "durationSec": 1447,
+          "region": "EUW",
+          "player": "ESB qualzy",
+          "uploaded": "2026-08-03",
+          "moments": []
+        },
+        {
+          "videoId": "p0cZigscuns",
+          "title": "Sylas Jungle vs Viego - KR Challenger Patch 26.01",
+          "rankClaim": "Challenger",
+          "patch": "26.1",
+          "durationSec": 1480,
+          "region": "KR",
+          "uploaded": "2026-01-17",
+          "moments": []
+        },
+        {
+          "videoId": "SQhvRveFQ2s",
+          "title": "Sylas Jungle vs Viego - KR Challenger Patch 25.23",
+          "rankClaim": "Challenger",
+          "patch": "25.23",
+          "durationSec": 1463,
+          "region": "KR",
+          "uploaded": "2025-11-23",
+          "moments": []
+        },
+        {
+          "videoId": "N1R9Zy7dqlo",
+          "title": "Sylas vs Viego [ Jungle ] Korea Challenger 1665 LP | Patch 25.22 ✅",
+          "rankClaim": "Challenger",
+          "patch": "25.22",
+          "durationSec": 1323,
+          "region": "KR",
+          "uploaded": "2025-11-15",
+          "moments": []
+        },
+        {
+          "videoId": "IkP5crfziFY",
+          "title": "Sylas vs Viego Jungle - KR Challenger - Patch 25.20 Season 15",
+          "rankClaim": "Challenger",
+          "patch": "25.20",
+          "durationSec": 1571,
+          "region": "KR",
+          "uploaded": "2025-10-13",
+          "moments": []
+        },
+        {
+          "videoId": "SUzpefTvAXQ",
+          "title": "Sylas Jungle vs Viego - KR Challenger Patch 25.17",
+          "rankClaim": "Challenger",
+          "patch": "25.17",
+          "durationSec": 1749,
+          "region": "KR",
+          "uploaded": "2025-08-30",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 236,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "PgxPWJBs3HM",
+          "title": "Sylas Mid vs Lucian - KR Challenger Patch 25.05",
+          "rankClaim": "Challenger",
+          "patch": "25.5",
+          "durationSec": 1685,
+          "region": "KR",
+          "uploaded": "2025-03-07",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 326,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 437,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 574,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 812,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 952,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 967,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1118,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1135,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1550,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1604,
+              "label": "Hunt The Baron Nashor",
+              "kind": "baron"
+            },
+            {
+              "atSec": 1636,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1664,
+              "label": "End credit"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 238,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "9XCIaAkqoFo",
+          "title": "Sylas vs Zed Jungle - KR Grandmaster - Patch 25.16 Season 15",
+          "rankClaim": "Grandmaster",
+          "patch": "25.16",
+          "durationSec": 1651,
+          "region": "KR",
+          "uploaded": "2025-08-26",
+          "moments": []
+        },
+        {
+          "videoId": "oberDz6GXGk",
+          "title": "T1 Oner Sylas vs Zed [ Jungle ] Patch 25.16 Korea Master",
+          "rankClaim": "Master",
+          "patch": "25.16",
+          "durationSec": 1002,
+          "region": "KR",
+          "player": "Oner",
+          "team": "T1",
+          "uploaded": "2025-08-21",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 245,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "HiL_DyFxbS4",
+          "title": "Sylas Jungle vs Ekko - KR Challenger Patch 25.21",
+          "rankClaim": "Challenger",
+          "patch": "25.21",
+          "durationSec": 1576,
+          "region": "KR",
+          "uploaded": "2025-10-26",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 245,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "4-ldfBJcsEs",
+          "title": "Sylas Mid vs Ekko - EUW Grandmaster Patch 25.23",
+          "rankClaim": "Grandmaster",
+          "patch": "25.23",
+          "durationSec": 1468,
+          "region": "EUW",
+          "uploaded": "2025-11-28",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 246,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "zgHunxsoYSk",
+          "title": "(FOXA Panda) Sylas Jungle vs Qiyana - EUW Grandmaster Patch 26.13",
+          "rankClaim": "Grandmaster",
+          "patch": "26.13",
+          "durationSec": 1501,
+          "region": "EUW",
+          "player": "FOXA Panda",
+          "uploaded": "2026-07-16",
+          "moments": []
+        },
+        {
+          "videoId": "M8-jktaXoPo",
+          "title": "Sylas vs Qiyana Jungle - KR Challenger - Patch 25.22 Season 15",
+          "rankClaim": "Challenger",
+          "patch": "25.22",
+          "durationSec": 1751,
+          "region": "KR",
+          "uploaded": "2025-11-09",
+          "moments": []
+        },
+        {
+          "videoId": "2q2Oin2kDjs",
+          "title": "Sylas vs Qiyana Jungle - KR Challenger - Patch 25.20 Season 15",
+          "rankClaim": "Challenger",
+          "patch": "25.20",
+          "durationSec": 1516,
+          "region": "KR",
+          "uploaded": "2025-10-20",
+          "moments": []
+        },
+        {
+          "videoId": "Du7gW_MSklo",
+          "title": "Sylas vs Qiyana Jungle - KR Challenger - Patch 25.19 Season 15",
+          "rankClaim": "Challenger",
+          "patch": "25.19",
+          "durationSec": 1771,
+          "region": "KR",
+          "uploaded": "2025-10-08",
+          "moments": []
+        },
+        {
+          "videoId": "vkusEoMNYI8",
+          "title": "Sylas vs Qiyana Jungle - KR Challenger - Patch 25.19 Season 15",
+          "rankClaim": "Challenger",
+          "patch": "25.19",
+          "durationSec": 1841,
+          "region": "KR",
+          "uploaded": "2025-10-06",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 246,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "ibH3703xuZI",
+          "title": "Sylas Mid vs Qiyana - KR Challenger Patch 26.02",
+          "rankClaim": "Challenger",
+          "patch": "26.2",
+          "durationSec": 1559,
+          "region": "KR",
+          "uploaded": "2026-01-24",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 254,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "1EYO-D7Gqnc",
+          "title": "T1 Peyz Sylas vs Vi [ Jungle ] Korea Challenger 2191 LP | Patch 26.19",
+          "rankClaim": "Challenger",
+          "patch": "26.19",
+          "durationSec": 1355,
+          "region": "KR",
+          "player": "Peyz",
+          "team": "T1",
+          "uploaded": "2026-10-02",
+          "moments": []
+        },
+        {
+          "videoId": "M1AtC77F1ek",
+          "title": "Sylas Jungle vs Vi - KR Challenger Patch 26.05",
+          "rankClaim": "Challenger",
+          "patch": "26.5",
+          "durationSec": 1534,
+          "region": "KR",
+          "uploaded": "2026-03-14",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 120,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 330,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 363,
+              "label": "Hunt The Dragon",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 444,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 506,
+              "label": "Hunt The Void Grubs",
+              "kind": "grubs"
+            },
+            {
+              "atSec": 680,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 765,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 787,
+              "label": "Hunt The Dragon",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 831,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 978,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1097,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1252,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1284,
+              "label": "Hunt The Baron Nashor",
+              "kind": "baron"
+            },
+            {
+              "atSec": 1377,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1405,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1423,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1489,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1523,
+              "label": "End credit"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 266,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "RHraRCZwVUk",
+          "title": "Sylas Jungle vs Aatrox - KR Grandmaster Patch 25.24",
+          "rankClaim": "Grandmaster",
+          "patch": "25.24",
+          "durationSec": 1598,
+          "region": "KR",
+          "uploaded": "2025-12-06",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 355,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 464,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 504,
+              "label": "Hunt The Dragon",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 679,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 825,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 888,
+              "label": "Hunt The Dragon",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 916,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1046,
+              "label": "Get a Quadra Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1117,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1206,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1261,
+              "label": "Hunt The Atakhan"
+            },
+            {
+              "atSec": 1345,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1390,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1559,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1587,
+              "label": "End credit"
+            }
+          ]
+        },
+        {
+          "videoId": "EiTywehj2RY",
+          "title": "Sylas vs Aatrox Jungle - KR Challenger - Patch 25.23 Season 15",
+          "rankClaim": "Challenger",
+          "patch": "25.23",
+          "durationSec": 1471,
+          "region": "KR",
+          "uploaded": "2025-11-29",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 268,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "iKU12geqGo4",
+          "title": "Sylas Mid vs Azir - KR Challenger Patch 25.14",
+          "rankClaim": "Challenger",
+          "patch": "25.14",
+          "durationSec": 1912,
+          "region": "KR",
+          "uploaded": "2025-07-19",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 421,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "FPNXsABtu88",
+          "title": "T1 Oner Sylas vs Rek'Sai [ Jungle ] Ranked Master NA | Patch 26.21",
+          "rankClaim": "Master",
+          "patch": "26.21",
+          "durationSec": 1562,
+          "region": "NA",
+          "player": "Oner",
+          "team": "T1",
+          "uploaded": "2026-10-31",
+          "moments": []
+        },
+        {
+          "videoId": "1XsxpiJ6Kvg",
+          "title": "(PXS Ferret) Sylas Jungle vs Rek'Sai - EUW Grandmaster Patch 26.14",
+          "rankClaim": "Grandmaster",
+          "patch": "26.14",
+          "durationSec": 1552,
+          "region": "EUW",
+          "player": "PXS Ferret",
+          "uploaded": "2026-07-19",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 518,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "thQFqFBiR5o",
+          "title": "Sylas vs Neeko 7/7/13 (Mid) | EUW Challenger | Sylas OTP Replay",
+          "rankClaim": "Challenger",
+          "patch": "26.8",
+          "durationSec": 1691,
+          "region": "EUW",
+          "patchEstimated": true,
+          "uploaded": "2026-04-26",
+          "moments": []
+        },
+        {
+          "videoId": "-tEhml3yJRY",
+          "title": "Sylas Mid vs Neeko - EUW Grandmaster Patch 25.19",
+          "rankClaim": "Grandmaster",
+          "patch": "25.19",
+          "durationSec": 1521,
+          "region": "EUW",
+          "uploaded": "2025-10-04",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 555,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "tM23nA1uQOU",
+          "title": "Sylas Support vs Pyke - KR Master Patch 25.16",
+          "rankClaim": "Master",
+          "patch": "25.16",
+          "durationSec": 1866,
+          "region": "KR",
+          "uploaded": "2025-08-28",
+          "moments": []
+        },
+        {
+          "videoId": "3xNDfCBu-DI",
+          "title": "Sylas Support vs Pyke - EUW Challenger Patch 25.06",
+          "rankClaim": "Challenger",
+          "patch": "25.6",
+          "durationSec": 1637,
+          "region": "EUW",
+          "uploaded": "2025-04-03",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 288,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 329,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 381,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 532,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 558,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 698,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 767,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 826,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 879,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 951,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1026,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1042,
+              "label": "Get a Triple Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1063,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1120,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1215,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1230,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1305,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1392,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1416,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1435,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1507,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1616,
+              "label": "End credit"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 777,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "DqTWcw5-BZ0",
+          "title": "Sylas Mid vs Yone - KR Challenger Patch 26.20",
+          "rankClaim": "Challenger",
+          "patch": "26.20",
+          "durationSec": 1561,
+          "region": "KR",
+          "uploaded": "2026-10-16",
+          "result": "W",
+          "moments": [
+            {
+              "atSec": 213,
+              "label": "First Blood — Sion kills Yone",
+              "kind": "kill"
+            },
+            {
+              "atSec": 379,
+              "label": "Nidalee picks off Yone"
+            },
+            {
+              "atSec": 466,
+              "label": "Nidalee picks off Yone"
+            },
+            {
+              "atSec": 565,
+              "label": "Nidalee kills Shen",
+              "kind": "kill"
+            },
+            {
+              "atSec": 621,
+              "label": "Red takes 1st Dragon (Infernal)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 809,
+              "label": "Team fight (3 kills)",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 972,
+              "label": "Nidalee picks off Yone"
+            },
+            {
+              "atSec": 1053,
+              "label": "Team fight (3 kills)",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1107,
+              "label": "Nidalee Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1134,
+              "label": "Red takes 2nd Dragon (Hextech)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1161,
+              "label": "Sion takes down Yone"
+            },
+            {
+              "atSec": 1293,
+              "label": "Sylas eliminates Yone"
+            },
+            {
+              "atSec": 1336,
+              "label": "Red takes Baron",
+              "kind": "baron"
+            },
+            {
+              "atSec": 1385,
+              "label": "Top Inhibitor falls (Blue)"
+            },
+            {
+              "atSec": 1449,
+              "label": "Mid Inhibitor falls (Blue)"
+            },
+            {
+              "atSec": 1483,
+              "label": "Blue takes 1st Dragon (Cloud)",
+              "kind": "dragon"
+            }
+          ]
+        },
+        {
+          "videoId": "ZwxGTIhz3-k",
+          "title": "(HLE Cracker) Sylas Mid vs Yone - KR Challenger Patch 26.16",
+          "rankClaim": "Challenger",
+          "patch": "26.16",
+          "durationSec": 1636,
+          "region": "KR",
+          "player": "Cracker",
+          "team": "HLE",
+          "uploaded": "2026-08-22",
+          "moments": []
+        },
+        {
+          "videoId": "bTdchOY89Ik",
+          "title": "Sylas Mid vs Yone - EUW Grandmaster Patch 25.21",
+          "rankClaim": "Grandmaster",
+          "patch": "25.21",
+          "durationSec": 1460,
+          "region": "EUW",
+          "uploaded": "2025-11-01",
+          "moments": []
+        },
+        {
+          "videoId": "adf5915OF8I",
+          "title": "T1 Faker Sylas vs Yone [ MID ] Patch 25.1 Ranked Korea ✅",
+          "rankClaim": "Master+",
+          "patch": "25.1",
+          "durationSec": 1381,
+          "region": "KR",
+          "player": "Faker",
+          "team": "T1",
+          "uploaded": "2025-01-12",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 799,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "8fLa5hJWP54",
+          "title": "Sylas Jungle vs Ambessa - KR Challenger Patch 26.07",
+          "rankClaim": "Challenger",
+          "patch": "26.7",
+          "durationSec": 1861,
+          "region": "KR",
+          "uploaded": "2026-04-11",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 28,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 111,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 319,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 368,
+              "label": "Hunt The Dragon",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 398,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 445,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 481,
+              "label": "Hunt The Void Grubs",
+              "kind": "grubs"
+            },
+            {
+              "atSec": 536,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 705,
+              "label": "Hunt The Dragon",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 724,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 863,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 900,
+              "label": "Hunt The Rift Herald",
+              "kind": "herald"
+            },
+            {
+              "atSec": 998,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1021,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1049,
+              "label": "Hunt The Dragon",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1194,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1278,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1375,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1402,
+              "label": "Hunt The Dragon",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1468,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1560,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1850,
+              "label": "End credit"
+            }
+          ]
+        },
+        {
+          "videoId": "TedY3rTTBqY",
+          "title": "Sylas Jungle vs Ambessa - KR Challenger Patch 26.06",
+          "rankClaim": "Challenger",
+          "patch": "26.6",
+          "durationSec": 1735,
+          "region": "KR",
+          "uploaded": "2026-03-28",
+          "moments": []
+        },
+        {
+          "videoId": "nhOiW8_NmWQ",
+          "title": "Sylas Jungle vs Ambessa - NA Challenger Patch 25.24",
+          "rankClaim": "Challenger",
+          "patch": "25.24",
+          "durationSec": 1451,
+          "region": "NA",
+          "uploaded": "2026-01-02",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 805,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "OqYiKRJnRVo",
+          "title": "T1 Faker Sylas vs Locke [ MID ] Ranked Master NA | Patch 26.21",
+          "rankClaim": "Master",
+          "patch": "26.21",
+          "durationSec": 1291,
+          "region": "NA",
+          "player": "Faker",
+          "team": "T1",
+          "uploaded": "2026-10-28",
+          "moments": []
+        },
+        {
+          "videoId": "YyD3RtIS7HY",
+          "title": "(FLY Quad) Sylas Mid vs Locke - KR Master Patch 26.13",
+          "rankClaim": "Master",
+          "patch": "26.13",
+          "durationSec": 1538,
+          "region": "KR",
+          "player": "Quad",
+          "team": "FLY",
+          "uploaded": "2026-07-04",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 876,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "fEKkDUdsXww",
+          "title": "(FSK XnS) Sylas Jungle vs Lillia - EUW Grandmaster Patch 26.10",
+          "rankClaim": "Grandmaster",
+          "patch": "26.10",
+          "durationSec": 1480,
+          "region": "EUW",
+          "player": "FSK XnS",
+          "uploaded": "2026-05-29",
+          "moments": []
+        },
+        {
+          "videoId": "1fk7pezaUec",
+          "title": "Sylas Jungle vs Lillia - KR Master Patch 25.04",
+          "rankClaim": "Master",
+          "patch": "25.4",
+          "durationSec": 1805,
+          "region": "KR",
+          "uploaded": "2025-03-02",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 893,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "ZTF7zwxdYOA",
+          "title": "Sylas vs Aurora Mid - KR Challenger - Patch 15.4 Season 15",
+          "rankClaim": "Challenger",
+          "patch": "25.4",
+          "durationSec": 1561,
+          "region": "KR",
+          "uploaded": "2025-02-27",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 893,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "i3aNu84OpLg",
+          "title": "Sylas Top vs Aurora - KR Master Patch 25.15",
+          "rankClaim": "Master",
+          "patch": "25.15",
+          "durationSec": 1630,
+          "region": "KR",
+          "uploaded": "2025-08-14",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 897,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "bdtpjOp7bmk",
+          "title": "Sylas vs K'Sante 13/1/10 (Mid) | EUW Challenger | Sylas OTP Replay",
+          "rankClaim": "Challenger",
+          "patch": "26.7",
+          "durationSec": 1359,
+          "region": "EUW",
+          "patchEstimated": true,
+          "uploaded": "2026-04-13",
+          "moments": []
+        }
+      ]
+    }
+  ]
+}

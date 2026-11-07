@@ -1,0 +1,3539 @@
+{
+  "schema": 1,
+  "champion": 154,
+  "generatedAt": "2026-11-07T13:25:14.592Z",
+  "guides": [],
+  "general": [
+    {
+      "champion": 154,
+      "lane": "jungle",
+      "patch": "26.21",
+      "reviewed": false,
+      "keyTips": [
+        {
+          "text": "Choose the route from lane composition and likely gank access instead of one fixed opening: Red, Krugs, Raptors by default, or Blue, Gromp, Wolves when the allied bot lane offers an easy early gank.",
+          "scope": "champion",
+          "sourceIds": [
+            "stean"
+          ]
+        },
+        {
+          "text": "Respect the weak early Scuttle fight: contest only with lane help, arrive before the enemy jungler, or take the other side instead of forcing it.",
+          "scope": "champion",
+          "sourceIds": [
+            "stean"
+          ]
+        },
+        {
+          "text": "Be patient around targets whose crowd control can interrupt E; commit the jump only when the landing is likely to connect.",
+          "scope": "champion",
+          "sourceIds": [
+            "stean"
+          ],
+          "abilityKeys": [
+            {
+              "champion": 154,
+              "key": "E"
+            }
+          ]
+        }
+      ],
+      "sections": {
+        "overview": {
+          "tips": []
+        },
+        "early-lane": {
+          "tips": [
+            {
+              "text": "When the enemy takes the opposite half of Zac's jungle and allies are watching, trade into the enemy jungle and look for a lane gank rather than conceding both sides.",
+              "scope": "champion",
+              "sourceIds": [
+                "stean"
+              ]
+            },
+            {
+              "text": "When a camp loss is noticed late, look for a gank or a Scuttle contest with lane support instead of chasing the stolen camp blindly.",
+              "scope": "champion",
+              "sourceIds": [
+                "stean"
+              ]
+            },
+            {
+              "text": "From around level seven, E range gives Zac more room to threaten a gank; keep vision on the jungle so farming never leaves the team open to counterplay.",
+              "scope": "champion",
+              "sourceIds": [
+                "stean"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 154,
+                  "key": "E"
+                }
+              ]
+            },
+            {
+              "text": "Take neutral objectives when the map allows it, but never treat the objective call as automatic when the team cannot support it.",
+              "scope": "champion",
+              "sourceIds": [
+                "stean"
+              ]
+            }
+          ]
+        },
+        "mid-lane": {
+          "tips": [
+            {
+              "text": "Fight the basic sequence as Q two nearby enemies, E into the space between them, then R with repeated W casts while collecting blobs.",
+              "scope": "champion",
+              "sourceIds": [
+                "stean"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 154,
+                  "key": "Q"
+                },
+                {
+                  "champion": 154,
+                  "key": "E"
+                },
+                {
+                  "champion": 154,
+                  "key": "R"
+                },
+                {
+                  "champion": 154,
+                  "key": "W"
+                }
+              ]
+            },
+            {
+              "text": "Add Q plus Flash as the unexpected catch variant when the standard angle is covered.",
+              "scope": "champion",
+              "sourceIds": [
+                "stean"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 154,
+                  "key": "Q"
+                }
+              ]
+            },
+            {
+              "text": "Fly E across the dragon pit and pair it with Smite midair for the steal, using the travel time to stay unseen when the route permits.",
+              "scope": "champion",
+              "sourceIds": [
+                "stean"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 154,
+                  "key": "E"
+                }
+              ]
+            }
+          ]
+        },
+        "win-condition": {
+          "tips": [
+            {
+              "text": "Play the preferred late-game job: engage onto a backline carry and hold them with crowd control while allies follow.",
+              "scope": "champion",
+              "sourceIds": [
+                "stean"
+              ]
+            },
+            {
+              "text": "Stay with the team when behind; isolated play is a poor risk unless Zac is already ahead.",
+              "scope": "champion",
+              "sourceIds": [
+                "stean"
+              ]
+            }
+          ]
+        }
+      },
+      "itemization": [
+        {
+          "text": "Take Unending Despair, and take Frozen Heart when the team lacks that attack-speed defense.",
+          "scope": "champion",
+          "sourceIds": [
+            "stean"
+          ],
+          "itemIds": [
+            2502,
+            3110
+          ]
+        },
+        {
+          "text": "Hold Dark Seal without upgrading while the team is not ahead, and buy Mejai's Soulstealer only when the lead looks secure enough to preserve its stacks; take Protoplasm Harness against heavy burst and skip it when the enemy lacks that damage.",
+          "scope": "champion",
+          "sourceIds": [
+            "stean"
+          ],
+          "itemIds": [
+            1082,
+            3041,
+            2525
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "id": "stean",
+          "author": "Stean",
+          "rankClaim": "No current profile badge verified (author says they reached Master before Mythic items)",
+          "rank": "master",
+          "peak": true,
+          "url": "https://www.mobafire.com/league-of-legends/build/zac-build-for-anyone-651849",
+          "kind": "mobafire"
+        }
+      ]
+    }
+  ],
+  "vods": [
+    {
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "4OUWorsoohU",
+          "title": "FULL EDUCATIONAL ZAC GAMEPLAY | FREE GUIDE",
+          "rankClaim": "Master+",
+          "patch": "26.19",
+          "durationSec": 1609,
+          "patchEstimated": true,
+          "player": "Sinerias",
+          "uploaded": "2026-10-03",
+          "format": "stream",
+          "cam": true,
+          "moments": [
+            {
+              "atSec": 0,
+              "label": "Zac jungle build setup"
+            },
+            {
+              "atSec": 14,
+              "label": "Blob mechanics and kiting"
+            },
+            {
+              "atSec": 62,
+              "label": "Optimizing jungle clear"
+            },
+            {
+              "atSec": 146,
+              "label": "Combat and invades"
+            },
+            {
+              "atSec": 236,
+              "label": "Strategic itemization"
+            },
+            {
+              "atSec": 357,
+              "label": "Disengage and positioning"
+            },
+            {
+              "atSec": 446,
+              "label": "Team role and scaling"
+            },
+            {
+              "atSec": 575,
+              "label": "Bot lane focus"
+            },
+            {
+              "atSec": 686,
+              "label": "Self-reflection on gameplay"
+            },
+            {
+              "atSec": 846,
+              "label": "Tank power spikes"
+            },
+            {
+              "atSec": 1056,
+              "label": "Team coordination issues"
+            },
+            {
+              "atSec": 1181,
+              "label": "Late game team fighting"
+            },
+            {
+              "atSec": 1375,
+              "label": "Final push and victory"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 1,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "orIGpqGBhmA",
+          "title": "Zac Mid vs Annie - NA Grandmaster Patch 25.12",
+          "rankClaim": "Grandmaster",
+          "patch": "25.12",
+          "durationSec": 1825,
+          "region": "NA",
+          "uploaded": "2025-06-26",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 5,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "HdAUMn9-Yss",
+          "title": "Zac Jungle vs Xin Zhao - KR Challenger Patch 25.08",
+          "rankClaim": "Challenger",
+          "patch": "25.8",
+          "durationSec": 1600,
+          "region": "KR",
+          "uploaded": "2025-04-21",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 387,
+              "label": "Hunt The Dragon",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 462,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 587,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 650,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 745,
+              "label": "Hunt The Dragon",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 817,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 883,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1045,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1089,
+              "label": "Hunt The Rift Herald",
+              "kind": "herald"
+            },
+            {
+              "atSec": 1129,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1170,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1186,
+              "label": "Hunt The Dragon",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1274,
+              "label": "Hunt The Atakhan"
+            },
+            {
+              "atSec": 1292,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1312,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1448,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1531,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1579,
+              "label": "End credit"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 6,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "bAy_w6eXrNc",
+          "title": "Zac Top vs Urgot - KR Grandmaster Patch 25.16",
+          "rankClaim": "Grandmaster",
+          "patch": "25.16",
+          "durationSec": 1626,
+          "region": "KR",
+          "uploaded": "2025-08-24",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 9,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "XKLMPe3k_RI",
+          "title": "(AL Tarzan) Zac Jungle vs Fiddlesticks - KR Challenger Patch 26.12",
+          "rankClaim": "Challenger",
+          "patch": "26.12",
+          "durationSec": 1697,
+          "region": "KR",
+          "player": "Tarzan",
+          "team": "AL",
+          "uploaded": "2026-06-24",
+          "moments": []
+        },
+        {
+          "videoId": "NgvsWrbmUPM",
+          "title": "Zac Jungle vs Fiddlesticks - KR Grandmaster Patch 25.19",
+          "rankClaim": "Grandmaster",
+          "patch": "25.19",
+          "durationSec": 1866,
+          "region": "KR",
+          "uploaded": "2025-10-01",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 20,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "Vdweq8dlxFc",
+          "title": "Zac Jungle vs Nunu & Willump - EUW Challenger Patch 26.06",
+          "rankClaim": "Challenger",
+          "patch": "26.6",
+          "durationSec": 1538,
+          "region": "EUW",
+          "uploaded": "2026-03-24",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 24,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "hzpDIVI10Dw",
+          "title": "Zac Top vs Jax - KR Master Patch 26.06",
+          "rankClaim": "Master",
+          "patch": "26.6",
+          "durationSec": 1531,
+          "region": "KR",
+          "uploaded": "2026-03-29",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 504,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 788,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 871,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 887,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 930,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1019,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1040,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1062,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1128,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1145,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1161,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1265,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1294,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1331,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1384,
+              "label": "Take down The Inhibitor"
+            },
+            {
+              "atSec": 1396,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1457,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1520,
+              "label": "End credit"
+            }
+          ]
+        },
+        {
+          "videoId": "mcwOiTwrfTY",
+          "title": "Zac Top vs Jax - KR Master Patch 25.12",
+          "rankClaim": "Master",
+          "patch": "25.12",
+          "durationSec": 1668,
+          "region": "KR",
+          "uploaded": "2025-06-22",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 27,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "l9AmSqGI5zQ",
+          "title": "Zac Support vs Singed - VN Challenger Patch 25.06",
+          "rankClaim": "Challenger",
+          "patch": "25.6",
+          "durationSec": 1587,
+          "uploaded": "2025-04-04",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 179,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 210,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1000,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1131,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1353,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1388,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1406,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1539,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1566,
+              "label": "End credit"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 27,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "xSfNT5QOlu8",
+          "title": "Zac Top vs Singed - EUW Grandmaster Patch 25.17",
+          "rankClaim": "Grandmaster",
+          "patch": "25.17",
+          "durationSec": 1525,
+          "region": "EUW",
+          "uploaded": "2025-09-07",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 30,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "5L5PX9xnBpA",
+          "title": "Zac Jungle vs Karthus - EUW Master Patch 26.21",
+          "rankClaim": "Master",
+          "patch": "26.21",
+          "durationSec": 1700,
+          "region": "EUW",
+          "uploaded": "2026-10-29",
+          "result": "W",
+          "moments": [
+            {
+              "atSec": 351,
+              "label": "Kai'Sa takes down Yasuo"
+            },
+            {
+              "atSec": 383,
+              "label": "Blue takes 1st Dragon (Ocean)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 545,
+              "label": "Irelia kills Yasuo",
+              "kind": "kill"
+            },
+            {
+              "atSec": 646,
+              "label": "Irelia eliminates Sett"
+            },
+            {
+              "atSec": 712,
+              "label": "Blue takes 2nd Dragon (Chemtech)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 821,
+              "label": "Zac kills Shaco",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1024,
+              "label": "Red takes 1st Dragon (Hextech)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1088,
+              "label": "Malphite picks off Yasuo"
+            },
+            {
+              "atSec": 1187,
+              "label": "Malphite Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1194,
+              "label": "Malphite Triple Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1218,
+              "label": "Blue takes Baron",
+              "kind": "baron"
+            },
+            {
+              "atSec": 1225,
+              "label": "Malphite kills Karthus",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1274,
+              "label": "Team fight (4 kills)",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1346,
+              "label": "Blue takes 3rd Dragon (Hextech)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1461,
+              "label": "Kai'Sa picks off Shaco"
+            },
+            {
+              "atSec": 1516,
+              "label": "Kai'Sa Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1536,
+              "label": "Mid Inhibitor falls (Red)"
+            },
+            {
+              "atSec": 1644,
+              "label": "Kai'Sa Double Kill",
+              "kind": "kill"
+            }
+          ]
+        },
+        {
+          "videoId": "vyTchQRpqsA",
+          "title": "Zac Jungle vs Karthus - TW Challenger Patch 26.07",
+          "rankClaim": "Challenger",
+          "patch": "26.7",
+          "durationSec": 1508,
+          "uploaded": "2026-04-09",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 302,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 370,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 476,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 501,
+              "label": "Hunt The Void Grubs",
+              "kind": "grubs"
+            },
+            {
+              "atSec": 596,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 745,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 888,
+              "label": "Hunt The Dragon",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 918,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 952,
+              "label": "Hunt The Rift Herald",
+              "kind": "herald"
+            },
+            {
+              "atSec": 1047,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1138,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1212,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1239,
+              "label": "Hunt The Dragon",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1347,
+              "label": "Hunt The Baron Nashor",
+              "kind": "baron"
+            },
+            {
+              "atSec": 1497,
+              "label": "End credit"
+            }
+          ]
+        },
+        {
+          "videoId": "fo0Nz44I6jA",
+          "title": "Zac Jungle vs Karthus - KR Master Patch 25.16",
+          "rankClaim": "Master",
+          "patch": "25.16",
+          "durationSec": 1816,
+          "region": "KR",
+          "uploaded": "2025-08-18",
+          "moments": []
+        },
+        {
+          "videoId": "wu8LcfxZzsw",
+          "title": "Zac Jungle vs Karthus - KR Challenger Patch 25.11",
+          "rankClaim": "Challenger",
+          "patch": "25.11",
+          "durationSec": 1729,
+          "region": "KR",
+          "uploaded": "2025-06-02",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 39,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "DjbaBfsO8wI",
+          "title": "Zac Top vs Irelia - KR Master Patch 25.23",
+          "rankClaim": "Master",
+          "patch": "25.23",
+          "durationSec": 1653,
+          "region": "KR",
+          "uploaded": "2025-12-01",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 44,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "BnOFi12Dc10",
+          "title": "Zac Top vs Taric - BR Challenger Patch 25.24",
+          "rankClaim": "Challenger",
+          "patch": "25.24",
+          "durationSec": 1591,
+          "uploaded": "2026-01-05",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 73,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 587,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 736,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 845,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 872,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 932,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 949,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1068,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1191,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1224,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1243,
+              "label": "Hunt The Dragon",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1294,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1318,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1397,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1458,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1560,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1580,
+              "label": "End credit"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 48,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "vRTyTbNHyUM",
+          "title": "Zac Jungle vs Trundle - KR Master Patch 25.17",
+          "rankClaim": "Master",
+          "patch": "25.17",
+          "durationSec": 1628,
+          "region": "KR",
+          "uploaded": "2025-09-03",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 56,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "3SMgU5vCkRI",
+          "title": "Zac Jungle vs Nocturne - KR Grandmaster Patch 26.08",
+          "rankClaim": "Grandmaster",
+          "patch": "26.8",
+          "durationSec": 1596,
+          "region": "KR",
+          "uploaded": "2026-04-22",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 56,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "RvNIN9oahCY",
+          "title": "Zac Top vs Nocturne - KR Master Patch 25.15",
+          "rankClaim": "Master",
+          "patch": "25.15",
+          "durationSec": 1959,
+          "region": "KR",
+          "uploaded": "2025-08-09",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 59,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "tyAZ_sSH45s",
+          "title": "Zac Jungle vs Jarvan IV - NA Grandmaster Patch 25.21",
+          "rankClaim": "Grandmaster",
+          "patch": "25.21",
+          "durationSec": 1955,
+          "region": "NA",
+          "uploaded": "2025-10-31",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 61,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "YeBnIqTNPAY",
+          "title": "Zac Mid vs Orianna - KR Master Patch 25.24",
+          "rankClaim": "Master",
+          "patch": "25.24",
+          "durationSec": 1583,
+          "region": "KR",
+          "uploaded": "2025-12-26",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 62,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "nFmxA8QINxs",
+          "title": "Zac Jungle vs Wukong - KR Grandmaster Patch 25.15",
+          "rankClaim": "Grandmaster",
+          "patch": "25.15",
+          "durationSec": 1698,
+          "region": "KR",
+          "uploaded": "2025-08-05",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 64,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "SFiALYrnc0E",
+          "title": "T1 Oner Zac vs Lee Sin [ Jungle ] Korea Challenger 2016 LP | Patch 26.16",
+          "rankClaim": "Challenger",
+          "patch": "26.16",
+          "durationSec": 1251,
+          "region": "KR",
+          "player": "Oner",
+          "team": "T1",
+          "uploaded": "2026-08-18",
+          "moments": []
+        },
+        {
+          "videoId": "ihTBoIscitE",
+          "title": "Zac Jungle vs Lee Sin - KR Challenger Patch 26.11",
+          "rankClaim": "Challenger",
+          "patch": "26.11",
+          "durationSec": 1649,
+          "region": "KR",
+          "uploaded": "2026-06-05",
+          "moments": []
+        },
+        {
+          "videoId": "Zm7kPWExYyY",
+          "title": "Zac Jungle vs Lee Sin - KR Challenger Patch 26.03",
+          "rankClaim": "Challenger",
+          "patch": "26.3",
+          "durationSec": 1574,
+          "region": "KR",
+          "uploaded": "2026-02-09",
+          "moments": []
+        },
+        {
+          "videoId": "-RaQyXikjas",
+          "title": "Zac Jungle vs Lee Sin - KR Master Patch 26.01",
+          "rankClaim": "Master",
+          "patch": "26.1",
+          "durationSec": 1505,
+          "region": "KR",
+          "uploaded": "2026-01-13",
+          "moments": []
+        },
+        {
+          "videoId": "0sN3ucuiAEo",
+          "title": "Zac Jungle vs Lee Sin - KR Challenger Patch 25.10",
+          "rankClaim": "Challenger",
+          "patch": "25.10",
+          "durationSec": 1829,
+          "region": "KR",
+          "uploaded": "2025-05-22",
+          "moments": []
+        },
+        {
+          "videoId": "Pm88q-Cw9xg",
+          "title": "Zac Jungle vs Lee Sin - KR Grandmaster Patch 25.07",
+          "rankClaim": "Grandmaster",
+          "patch": "25.7",
+          "durationSec": 1796,
+          "region": "KR",
+          "uploaded": "2025-04-07",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 198,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 288,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 362,
+              "label": "Hunt The Void Grubs",
+              "kind": "grubs"
+            },
+            {
+              "atSec": 387,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 404,
+              "label": "Hunt The Void Grubs",
+              "kind": "grubs"
+            },
+            {
+              "atSec": 458,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 591,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 647,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 700,
+              "label": "Hunt The Void Grubs",
+              "kind": "grubs"
+            },
+            {
+              "atSec": 741,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 805,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 888,
+              "label": "Hunt The Dragon",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 982,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1018,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1133,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1218,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1323,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1440,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1473,
+              "label": "Take down The Inhibitor"
+            },
+            {
+              "atSec": 1504,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1721,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1754,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1775,
+              "label": "End credit"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 67,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "gAfgKyYF2z0",
+          "title": "Zac Top vs Vayne - KR Master Patch 26.08",
+          "rankClaim": "Master",
+          "patch": "26.8",
+          "durationSec": 1565,
+          "region": "KR",
+          "uploaded": "2026-04-29",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 68,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "th6c0qkJjHU",
+          "title": "Zac Top vs Rumble - KR Master Patch 26.18",
+          "rankClaim": "Master",
+          "patch": "26.18",
+          "durationSec": 1730,
+          "region": "KR",
+          "uploaded": "2026-09-21",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 76,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "eRUSexBVqk0",
+          "title": "(T1 Oner) Zac Jungle vs Nidalee - KR Challenger Patch 26.13",
+          "rankClaim": "Challenger",
+          "patch": "26.13",
+          "durationSec": 1783,
+          "region": "KR",
+          "player": "Oner",
+          "team": "T1",
+          "uploaded": "2026-06-27",
+          "moments": []
+        },
+        {
+          "videoId": "MCOR7iwHzrY",
+          "title": "Zac Jungle vs Nidalee - KR Challenger Patch 26.12",
+          "rankClaim": "Challenger",
+          "patch": "26.12",
+          "durationSec": 1743,
+          "region": "KR",
+          "uploaded": "2026-06-17",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 78,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "VleklZCMKX0",
+          "title": "(KRX Vincenzo) Zac Jungle vs Poppy (FLA Geum go) - KR Challenger Patch 26.13",
+          "rankClaim": "Challenger",
+          "patch": "26.13",
+          "durationSec": 1677,
+          "region": "KR",
+          "player": "KRX Vincenzo",
+          "uploaded": "2026-07-08",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 79,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "J8M9utqJb3M",
+          "title": "Zac Top vs Gragas - KR Master Patch 25.04",
+          "rankClaim": "Master",
+          "patch": "25.4",
+          "durationSec": 2123,
+          "region": "KR",
+          "uploaded": "2025-02-24",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 749,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 865,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 941,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1102,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1209,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1309,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1544,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1801,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1845,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1882,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1924,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 2008,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 2059,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 2102,
+              "label": "End credit"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 80,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "qXai21Txk-Q",
+          "title": "Zac vs Pantheon Top - KR Challenger - Patch 16.19 Season 16",
+          "rankClaim": "Challenger",
+          "patch": "26.19",
+          "durationSec": 1921,
+          "region": "KR",
+          "uploaded": "2026-10-04",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 84,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "h3CdYff5OhY",
+          "title": "Zac Mid vs Akali - EUW Grandmaster Patch 26.01",
+          "rankClaim": "Grandmaster",
+          "patch": "26.1",
+          "durationSec": 1464,
+          "region": "EUW",
+          "uploaded": "2026-01-18",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 148,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 362,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 586,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 676,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1055,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1166,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1192,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1222,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1254,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1324,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1349,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1363,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1375,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1428,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1453,
+              "label": "End credit"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 92,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "T9PnJZgEYmY",
+          "title": "Zac Top vs Riven - KR Master Patch 25.21",
+          "rankClaim": "Master",
+          "patch": "25.21",
+          "durationSec": 1969,
+          "region": "KR",
+          "uploaded": "2025-10-26",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 102,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "7pGbdeCKeIk",
+          "title": "Zac Jungle vs Shyvana - KR Master Patch 26.16",
+          "rankClaim": "Master",
+          "patch": "26.16",
+          "durationSec": 1833,
+          "region": "KR",
+          "uploaded": "2026-08-26",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 106,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "NZIzDaEAqH0",
+          "title": "Zac Top vs Volibear - KR Master Patch 26.20",
+          "rankClaim": "Master",
+          "patch": "26.20",
+          "durationSec": 1789,
+          "region": "KR",
+          "uploaded": "2026-10-18",
+          "result": "W",
+          "moments": [
+            {
+              "atSec": 108,
+              "label": "First Blood — Zac kills Volibear",
+              "kind": "kill"
+            },
+            {
+              "atSec": 442,
+              "label": "Red takes 1st Dragon (Chemtech)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 629,
+              "label": "Zac catches Volibear"
+            },
+            {
+              "atSec": 740,
+              "label": "Zac outduels Volibear again"
+            },
+            {
+              "atSec": 836,
+              "label": "Red takes 2nd Dragon (Ocean)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 842,
+              "label": "Akali takes down Volibear"
+            },
+            {
+              "atSec": 949,
+              "label": "Zac solo kills Corki",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1021,
+              "label": "Zac outplays Volibear (3rd time)"
+            },
+            {
+              "atSec": 1033,
+              "label": "Akali picks off Jarvan IV"
+            },
+            {
+              "atSec": 1153,
+              "label": "Zac solo kills Volibear (4th time)",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1177,
+              "label": "Zac eliminates Taric"
+            },
+            {
+              "atSec": 1206,
+              "label": "Blue takes 1st Dragon (Mountain)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1262,
+              "label": "Team fight (3 kills)",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1330,
+              "label": "Kai'Sa takes down Corki"
+            },
+            {
+              "atSec": 1390,
+              "label": "Red takes Baron",
+              "kind": "baron"
+            },
+            {
+              "atSec": 1535,
+              "label": "Red takes 3rd Dragon (Mountain)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1736,
+              "label": "Akali kills Corki",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1763,
+              "label": "Mid Inhibitor falls (Red)"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 107,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "8Yfgg5Ou_Rc",
+          "title": "Zac Jungle vs Rengar - KR Challenger Patch 26.10",
+          "rankClaim": "Challenger",
+          "patch": "26.10",
+          "durationSec": 1586,
+          "region": "KR",
+          "uploaded": "2026-05-22",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 110,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "i1rMAEsvnOw",
+          "title": "(Alaric) Zac Top vs Varus (BAR Legolas) - EUW Grandmaster Patch 26.21",
+          "rankClaim": "Grandmaster",
+          "patch": "26.21",
+          "durationSec": 1861,
+          "region": "EUW",
+          "player": "Alaric",
+          "uploaded": "2026-11-01",
+          "result": "W",
+          "moments": [
+            {
+              "atSec": 326,
+              "label": "Red takes 1st Dragon (Chemtech)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 571,
+              "label": "Zac catches Varus"
+            },
+            {
+              "atSec": 646,
+              "label": "Zac outduels Varus again"
+            },
+            {
+              "atSec": 651,
+              "label": "Red takes 2nd Dragon (Mountain)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 731,
+              "label": "Zac outplays Varus (3rd time)"
+            },
+            {
+              "atSec": 844,
+              "label": "Zac solo kills Varus (4th time)",
+              "kind": "kill"
+            },
+            {
+              "atSec": 985,
+              "label": "Red takes 3rd Dragon (Cloud)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1018,
+              "label": "Ambessa kills Varus",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1180,
+              "label": "Kai'Sa eliminates Lee Sin"
+            },
+            {
+              "atSec": 1224,
+              "label": "Ambessa kills Senna",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1269,
+              "label": "Red takes Baron",
+              "kind": "baron"
+            },
+            {
+              "atSec": 1311,
+              "label": "Red takes 4th Dragon (Cloud)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1370,
+              "label": "Ambessa Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1667,
+              "label": "Kai'Sa Triple Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1700,
+              "label": "Blue takes Elder Dragon",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1731,
+              "label": "Blue takes Baron",
+              "kind": "baron"
+            },
+            {
+              "atSec": 1809,
+              "label": "Mid Inhibitor falls (Red)"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 111,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "2n5ztpydwL8",
+          "title": "Zac Support vs Nautilus - VN Challenger Patch 25.13",
+          "rankClaim": "Challenger",
+          "patch": "25.13",
+          "durationSec": 1691,
+          "uploaded": "2025-07-11",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 114,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "HUr_wrxknw0",
+          "title": "Zac Top vs Fiora - NA Grandmaster Patch 26.03",
+          "rankClaim": "Grandmaster",
+          "patch": "26.3",
+          "durationSec": 2013,
+          "region": "NA",
+          "uploaded": "2026-02-16",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 151,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 582,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 979,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 999,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1063,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1152,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1222,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1318,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1448,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1597,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1618,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1628,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1647,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1749,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1771,
+              "label": "Take down The Inhibitor"
+            },
+            {
+              "atSec": 1782,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1805,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1864,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1944,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1975,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 2002,
+              "label": "End credit"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 120,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "ppv4Bv985zw",
+          "title": "Zac Jungle vs Hecarim - KR Grandmaster Patch 26.09",
+          "rankClaim": "Grandmaster",
+          "patch": "26.9",
+          "durationSec": 1527,
+          "region": "KR",
+          "uploaded": "2026-05-06",
+          "moments": []
+        },
+        {
+          "videoId": "EONcIb3l54g",
+          "title": "Zac Jungle vs Hecarim - KR Challenger Patch 25.06",
+          "rankClaim": "Challenger",
+          "patch": "25.6",
+          "durationSec": 1661,
+          "region": "KR",
+          "uploaded": "2025-03-25",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 121,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "JPmpgTePni8",
+          "title": "Zac vs Kha'Zix 7/1/9 (Jungle) | EUW Master | Zac OTP Replay",
+          "rankClaim": "Master",
+          "patch": "26.9",
+          "durationSec": 1559,
+          "region": "EUW",
+          "patchEstimated": true,
+          "uploaded": "2026-05-08",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 122,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "rrIl6RmdSKM",
+          "title": "Zac Top vs Darius - KR Master Patch 26.02",
+          "rankClaim": "Master",
+          "patch": "26.2",
+          "durationSec": 1600,
+          "region": "KR",
+          "uploaded": "2026-01-31",
+          "moments": []
+        },
+        {
+          "videoId": "9XCR3rLvt9w",
+          "title": "Zac Top vs Darius - KR Master Patch 25.05",
+          "rankClaim": "Master",
+          "patch": "25.5",
+          "durationSec": 1813,
+          "region": "KR",
+          "uploaded": "2025-03-16",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 189,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 365,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 416,
+              "label": "Hunt The Void Grubs",
+              "kind": "grubs"
+            },
+            {
+              "atSec": 464,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 540,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 734,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 752,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 952,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1004,
+              "label": "Hunt The Rift Herald",
+              "kind": "herald"
+            },
+            {
+              "atSec": 1146,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1178,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1315,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1391,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1433,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1484,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1571,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1743,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1792,
+              "label": "End credit"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 126,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "oBZYIoB3LKo",
+          "title": "Zac Jungle vs Jayce - KR Master Patch 26.18",
+          "rankClaim": "Master",
+          "patch": "26.18",
+          "durationSec": 1847,
+          "region": "KR",
+          "uploaded": "2026-09-17",
+          "moments": []
+        },
+        {
+          "videoId": "yjLzP6cBwkc",
+          "title": "Zac Jungle vs Jayce - EUW Challenger Patch 26.04",
+          "rankClaim": "Challenger",
+          "patch": "26.4",
+          "durationSec": 1518,
+          "region": "EUW",
+          "uploaded": "2026-02-24",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 156,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 316,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 334,
+              "label": "Hunt The Dragon",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 524,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 550,
+              "label": "Hunt The Void Grubs",
+              "kind": "grubs"
+            },
+            {
+              "atSec": 687,
+              "label": "Hunt The Dragon",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 707,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 844,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 908,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 938,
+              "label": "Hunt The Rift Herald",
+              "kind": "herald"
+            },
+            {
+              "atSec": 1072,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1096,
+              "label": "Hunt The Dragon",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1107,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1127,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1160,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1200,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1235,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1270,
+              "label": "Hunt The Baron Nashor",
+              "kind": "baron"
+            },
+            {
+              "atSec": 1404,
+              "label": "Hunt The Dragon",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1438,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1507,
+              "label": "End credit"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 131,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "xCeE4H6e_nk",
+          "title": "Zac Mid vs Diana - EUW Grandmaster Patch 25.18",
+          "rankClaim": "Grandmaster",
+          "patch": "25.18",
+          "durationSec": 1568,
+          "region": "EUW",
+          "uploaded": "2025-09-22",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 133,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "KgqWvwRi9_o",
+          "title": "Zac Top vs Quinn - NA Grandmaster Patch 25.24",
+          "rankClaim": "Grandmaster",
+          "patch": "25.24",
+          "durationSec": 1506,
+          "region": "NA",
+          "uploaded": "2025-12-14",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 592,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 720,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 796,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 894,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1051,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1076,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1089,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1110,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1208,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1265,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1344,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1376,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1413,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1469,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1495,
+              "label": "End credit"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 141,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "OVVBY29Fm_Q",
+          "title": "Zac Jungle vs Kayn - KR Grandmaster Patch 25.13",
+          "rankClaim": "Grandmaster",
+          "patch": "25.13",
+          "durationSec": 1492,
+          "region": "KR",
+          "uploaded": "2025-06-29",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 143,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "T6yMTy4slG0",
+          "title": "Zac Jungle vs Zyra - KR Master Patch 26.17",
+          "rankClaim": "Master",
+          "patch": "26.17",
+          "durationSec": 1726,
+          "region": "KR",
+          "uploaded": "2026-09-02",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 150,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "ksyyBC7Romw",
+          "title": "Zac Top vs Gnar - NA Grandmaster Patch 25.20",
+          "rankClaim": "Grandmaster",
+          "patch": "25.20",
+          "durationSec": 1636,
+          "region": "NA",
+          "uploaded": "2025-10-19",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 233,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "qvLqVYp_VOk",
+          "title": "Zac Jungle vs Briar - KR Master Patch 26.20",
+          "rankClaim": "Master",
+          "patch": "26.20",
+          "durationSec": 1821,
+          "region": "KR",
+          "uploaded": "2026-10-15",
+          "result": "W",
+          "moments": [
+            {
+              "atSec": 196,
+              "label": "First Blood — Aatrox kills Diana",
+              "kind": "kill"
+            },
+            {
+              "atSec": 703,
+              "label": "Red takes 1st Dragon (Hextech)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 939,
+              "label": "Zac outduels Malphite"
+            },
+            {
+              "atSec": 972,
+              "label": "Aatrox kills Briar",
+              "kind": "kill"
+            },
+            {
+              "atSec": 980,
+              "label": "Aatrox Triple Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1030,
+              "label": "Red takes 2nd Dragon (Mountain)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1052,
+              "label": "Aphelios kills Diana",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1073,
+              "label": "Ahri Triple Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1231,
+              "label": "Zac eliminates Yasuo"
+            },
+            {
+              "atSec": 1334,
+              "label": "Red takes Baron",
+              "kind": "baron"
+            },
+            {
+              "atSec": 1342,
+              "label": "Zac Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1367,
+              "label": "Zac picks off Diana"
+            },
+            {
+              "atSec": 1421,
+              "label": "Blue takes 1st Dragon (Chemtech)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1423,
+              "label": "Aphelios eliminates Briar"
+            },
+            {
+              "atSec": 1450,
+              "label": "Mid Inhibitor falls (Blue)"
+            },
+            {
+              "atSec": 1602,
+              "label": "Zac kills Rell",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1730,
+              "label": "Team fight (3 kills)",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1783,
+              "label": "Mid Inhibitor falls (Blue)"
+            }
+          ]
+        },
+        {
+          "videoId": "h86o3wV2KNI",
+          "title": "Zac Jungle vs Briar - TW Challenger Patch 26.05",
+          "rankClaim": "Challenger",
+          "patch": "26.5",
+          "durationSec": 1844,
+          "uploaded": "2026-03-18",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 305,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 471,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 500,
+              "label": "Hunt The Dragon",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 648,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 672,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 785,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 822,
+              "label": "Hunt The Dragon",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 878,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1372,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1411,
+              "label": "Hunt The Baron Nashor",
+              "kind": "baron"
+            },
+            {
+              "atSec": 1476,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1580,
+              "label": "Hunt The Dragon",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1683,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1716,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1787,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1813,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1833,
+              "label": "End credit"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 234,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "qa31Kt38HII",
+          "title": "Zac Jungle vs Viego - KR Master Patch 26.19",
+          "rankClaim": "Master",
+          "patch": "26.19",
+          "durationSec": 1756,
+          "region": "KR",
+          "uploaded": "2026-09-30",
+          "moments": []
+        },
+        {
+          "videoId": "xDZOG80UZIY",
+          "title": "Zac Jungle vs Viego - KR Challenger Patch 25.20",
+          "rankClaim": "Challenger",
+          "patch": "25.20",
+          "durationSec": 1618,
+          "region": "KR",
+          "uploaded": "2025-10-14",
+          "moments": []
+        },
+        {
+          "videoId": "K1tVvV1w-fw",
+          "title": "Zac vs Viego Jungle - KR Challenger - Patch 25.12 Season 15",
+          "rankClaim": "Challenger",
+          "patch": "25.12",
+          "durationSec": 1831,
+          "region": "KR",
+          "uploaded": "2025-06-17",
+          "moments": []
+        },
+        {
+          "videoId": "RTzPpmW0xRY",
+          "title": "Zac Jungle vs Viego - KR Challenger Patch 25.12",
+          "rankClaim": "Challenger",
+          "patch": "25.12",
+          "durationSec": 1831,
+          "region": "KR",
+          "uploaded": "2025-06-17",
+          "moments": []
+        },
+        {
+          "videoId": "72kE_r3A3aE",
+          "title": "Zac Jungle vs Viego - KR Master Patch 25.05",
+          "rankClaim": "Master",
+          "patch": "25.5",
+          "durationSec": 1762,
+          "region": "KR",
+          "uploaded": "2025-03-11",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 240,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "1bs2jQUJ2v8",
+          "title": "(G2 BrokenBlade) Zac Top vs Kled - EUW Master Patch 26.15",
+          "rankClaim": "Master",
+          "patch": "26.15",
+          "durationSec": 1549,
+          "region": "EUW",
+          "player": "BrokenBlade",
+          "team": "G2",
+          "uploaded": "2026-08-02",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 245,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "_o9XSnMfebg",
+          "title": "Zac vs Ekko 18/0/12 (Jungle) | EUW Master | Zac OTP Replay",
+          "rankClaim": "Master",
+          "patch": "26.9",
+          "durationSec": 1670,
+          "region": "EUW",
+          "patchEstimated": true,
+          "uploaded": "2026-05-04",
+          "moments": []
+        },
+        {
+          "videoId": "do7OOt3-z4M",
+          "title": "Zac Jungle vs Ekko - KR Challenger Patch 25.18",
+          "rankClaim": "Challenger",
+          "patch": "25.18",
+          "durationSec": 1646,
+          "region": "KR",
+          "uploaded": "2025-09-15",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 246,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "aKEzzIAueCY",
+          "title": "Zac Jungle vs Qiyana (TSW Hizto) - KR Grandmaster Patch 26.15",
+          "rankClaim": "Grandmaster",
+          "patch": "26.15",
+          "durationSec": 1807,
+          "region": "KR",
+          "uploaded": "2026-08-07",
+          "moments": []
+        },
+        {
+          "videoId": "9fcWeFdeyn8",
+          "title": "Zac Jungle vs Qiyana - KR Grandmaster Patch 25.23",
+          "rankClaim": "Grandmaster",
+          "patch": "25.23",
+          "durationSec": 1853,
+          "region": "KR",
+          "uploaded": "2025-11-27",
+          "moments": []
+        },
+        {
+          "videoId": "ibCeULFpm44",
+          "title": "Zac Jungle vs Qiyana - KR Challenger Patch 25.22",
+          "rankClaim": "Challenger",
+          "patch": "25.22",
+          "durationSec": 1573,
+          "region": "KR",
+          "uploaded": "2025-11-10",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 254,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "XFGUb3xCuyc",
+          "title": "Zac Jungle vs Vi - KR Master Patch 26.16",
+          "rankClaim": "Master",
+          "patch": "26.16",
+          "durationSec": 1716,
+          "region": "KR",
+          "uploaded": "2026-08-20",
+          "moments": []
+        },
+        {
+          "videoId": "EVtZqEqVLHo",
+          "title": "Zac vs Vi Jungle - KR Challenger - Patch 25.5 Season 15",
+          "rankClaim": "Challenger",
+          "patch": "25.5",
+          "durationSec": 1570,
+          "region": "KR",
+          "uploaded": "2025-03-17",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 266,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "_63UYv3uTMo",
+          "title": "Zac Jungle vs Aatrox - KR Master Patch 25.24",
+          "rankClaim": "Master",
+          "patch": "25.24",
+          "durationSec": 1557,
+          "region": "KR",
+          "uploaded": "2025-12-10",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 266,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "Qcdyzwd_YTw",
+          "title": "Zac Top vs Aatrox - VN Challenger Patch 26.07",
+          "rankClaim": "Challenger",
+          "patch": "26.7",
+          "durationSec": 1674,
+          "uploaded": "2026-04-15",
+          "moments": []
+        },
+        {
+          "videoId": "Q5vNrTh07Wg",
+          "title": "Zac Top vs Aatrox - EUW Grandmaster Patch 25.08",
+          "rankClaim": "Grandmaster",
+          "patch": "25.8",
+          "durationSec": 1598,
+          "region": "EUW",
+          "uploaded": "2025-04-28",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 240,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 329,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 446,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 548,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 723,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 750,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 783,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 870,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 971,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1150,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1170,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1208,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1273,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1381,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1418,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1441,
+              "label": "Take down The Inhibitor"
+            },
+            {
+              "atSec": 1503,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1534,
+              "label": "Take down The Inhibitor"
+            },
+            {
+              "atSec": 1546,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1560,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1577,
+              "label": "End credit"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 268,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "lDe58-N4nvY",
+          "title": "Zac Mid vs Azir - NA Grandmaster Patch 25.05",
+          "rankClaim": "Grandmaster",
+          "patch": "25.5",
+          "durationSec": 1515,
+          "region": "NA",
+          "uploaded": "2025-03-21",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 220,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 309,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 431,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 485,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 599,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 632,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 703,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 770,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 841,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 944,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 974,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1070,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1149,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1184,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1248,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1283,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1319,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1433,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1466,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1494,
+              "label": "End credit"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 420,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "u9oRbFjTCKg",
+          "title": "Zac Top vs Illaoi - KR Grandmaster Patch 26.13",
+          "rankClaim": "Grandmaster",
+          "patch": "26.13",
+          "durationSec": 1689,
+          "region": "KR",
+          "uploaded": "2026-07-15",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 421,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "K_XiiL2bWcE",
+          "title": "Zac Jungle vs Rek'Sai - KR Grandmaster Patch 26.02",
+          "rankClaim": "Grandmaster",
+          "patch": "26.2",
+          "durationSec": 1580,
+          "region": "KR",
+          "uploaded": "2026-01-25",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 427,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "8jet1FeAdqE",
+          "title": "Zac Jungle vs Ivern - KR Grandmaster Patch 25.14",
+          "rankClaim": "Grandmaster",
+          "patch": "25.14",
+          "durationSec": 1619,
+          "region": "KR",
+          "uploaded": "2025-07-22",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 432,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "OTiA7xVL6k0",
+          "title": "Zac Support vs Bard - KR Grandmaster Patch 25.24",
+          "rankClaim": "Grandmaster",
+          "patch": "25.24",
+          "durationSec": 1516,
+          "region": "KR",
+          "uploaded": "2025-12-20",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 516,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "qZPAKOMMdho",
+          "title": "Zac Top vs Ornn - EUW Grandmaster Patch 26.10",
+          "rankClaim": "Grandmaster",
+          "patch": "26.10",
+          "durationSec": 1767,
+          "region": "EUW",
+          "uploaded": "2026-05-27",
+          "moments": []
+        },
+        {
+          "videoId": "ewZGSL9uDbI",
+          "title": "Zac Top vs Ornn - KR Master Patch 26.04",
+          "rankClaim": "Master",
+          "patch": "26.4",
+          "durationSec": 1715,
+          "region": "KR",
+          "uploaded": "2026-03-02",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 110,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 599,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1103,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1225,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1350,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1394,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1451,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1480,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1657,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1704,
+              "label": "End credit"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 517,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "lOZvk8ZyGhk",
+          "title": "Zac Jungle vs Sylas - KR Grandmaster Patch 26.14",
+          "rankClaim": "Grandmaster",
+          "patch": "26.14",
+          "durationSec": 1408,
+          "region": "KR",
+          "uploaded": "2026-07-22",
+          "moments": []
+        },
+        {
+          "videoId": "Kd_9_6D0f3Y",
+          "title": "Zac Jungle vs Sylas - KR Master Patch 26.05",
+          "rankClaim": "Master",
+          "patch": "26.5",
+          "durationSec": 1779,
+          "region": "KR",
+          "uploaded": "2026-03-09",
+          "moments": []
+        },
+        {
+          "videoId": "tEru5nfBhIs",
+          "title": "Zac vs Sylas [ Jungle ] Korea Challenger 1137 LP | Patch 25.21 ✅",
+          "rankClaim": "Challenger",
+          "patch": "25.21",
+          "durationSec": 1599,
+          "region": "KR",
+          "uploaded": "2025-11-03",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 555,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "h1edjLT6P1w",
+          "title": "Zac Support vs Pyke - EUW Grandmaster Patch 25.10",
+          "rankClaim": "Grandmaster",
+          "patch": "25.10",
+          "durationSec": 1511,
+          "region": "EUW",
+          "uploaded": "2025-05-22",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 799,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "6xTRS651BNw",
+          "title": "Zac vs Ambessa 11/1/24 (Jungle) | EUW Master | Zac OTP Replay",
+          "rankClaim": "Master",
+          "patch": "26.9",
+          "durationSec": 2027,
+          "region": "EUW",
+          "patchEstimated": true,
+          "uploaded": "2026-05-07",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 799,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "8wWJvauZvUY",
+          "title": "Zac Mid vs Ambessa - NA Grandmaster Patch 25.22",
+          "rankClaim": "Grandmaster",
+          "patch": "25.22",
+          "durationSec": 1738,
+          "region": "NA",
+          "uploaded": "2025-11-14",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 799,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "ZaztkHOItlU",
+          "title": "Zac Top vs Ambessa - KR Master Patch 25.19",
+          "rankClaim": "Master",
+          "patch": "25.19",
+          "durationSec": 1667,
+          "region": "KR",
+          "uploaded": "2025-10-07",
+          "moments": []
+        },
+        {
+          "videoId": "es0GuEZKsC4",
+          "title": "Zac Top vs Ambessa - KR Master Patch 25.14",
+          "rankClaim": "Master",
+          "patch": "25.14",
+          "durationSec": 2107,
+          "region": "KR",
+          "uploaded": "2025-07-27",
+          "moments": []
+        },
+        {
+          "videoId": "H86jeqnQtb4",
+          "title": "Zac Top vs Ambessa - KR Master Patch 25.13",
+          "rankClaim": "Master",
+          "patch": "25.13",
+          "durationSec": 1716,
+          "region": "KR",
+          "uploaded": "2025-07-08",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 875,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "AU7hUE_AmUw",
+          "title": "Zac Top vs Sett - KR Master Patch 25.09",
+          "rankClaim": "Master",
+          "patch": "25.9",
+          "durationSec": 2058,
+          "region": "KR",
+          "uploaded": "2025-05-10",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 876,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "jKRXJoQP55s",
+          "title": "Zac Jungle vs Lillia - KR Grandmaster Patch 26.09",
+          "rankClaim": "Grandmaster",
+          "patch": "26.9",
+          "durationSec": 1462,
+          "region": "KR",
+          "uploaded": "2026-05-13",
+          "moments": []
+        },
+        {
+          "videoId": "9OGE2dKREgA",
+          "title": "Zac Jungle vs Lillia - KR Challenger Patch 25.09",
+          "rankClaim": "Challenger",
+          "patch": "25.9",
+          "durationSec": 1763,
+          "region": "KR",
+          "uploaded": "2025-05-05",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 887,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "jWemDoI5alY",
+          "title": "Zac vs Gwen Jungle [ 59% Win Rate  ] Lol Korea Master Patch 25.21 ✅",
+          "rankClaim": "Master",
+          "patch": "25.21",
+          "durationSec": 1526,
+          "region": "KR",
+          "player": "59% Win Rate",
+          "uploaded": "2025-10-23",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 887,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "H3tneyPswWs",
+          "title": "Zac Top vs Gwen - KR Master Patch 26.19",
+          "rankClaim": "Master",
+          "patch": "26.19",
+          "durationSec": 1507,
+          "region": "KR",
+          "uploaded": "2026-10-04",
+          "moments": []
+        },
+        {
+          "videoId": "rNA8K2unQt0",
+          "title": "Zac Top vs Gwen - KR Master Patch 25.06",
+          "rankClaim": "Master",
+          "patch": "25.6",
+          "durationSec": 1743,
+          "region": "KR",
+          "uploaded": "2025-03-28",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 136,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 240,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 367,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 393,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 407,
+              "label": "Hunt The Void Grubs",
+              "kind": "grubs"
+            },
+            {
+              "atSec": 487,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 570,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 666,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 860,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 878,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 922,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 981,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1003,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1078,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1185,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1354,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1386,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1538,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1587,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1677,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1722,
+              "label": "End credit"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 893,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "1EzTYFYSxbo",
+          "title": "Zac Top vs Aurora - KR Challenger Patch 25.07",
+          "rankClaim": "Challenger",
+          "patch": "25.7",
+          "durationSec": 1994,
+          "region": "KR",
+          "uploaded": "2025-04-13",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 897,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "GyRADKu7kLE",
+          "title": "Zac Top vs K'Sante - KR Master Patch 25.11",
+          "rankClaim": "Master",
+          "patch": "25.11",
+          "durationSec": 1714,
+          "region": "KR",
+          "uploaded": "2025-06-13",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 902,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "kvSt8OTp0nU",
+          "title": "Zac Support vs Milio - VN Challenger Patch 26.17",
+          "rankClaim": "Challenger",
+          "patch": "26.17",
+          "durationSec": 1764,
+          "uploaded": "2026-09-06",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 904,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "T4o2meH3eB8",
+          "title": "Zac Top vs Zaahen - KR Grandmaster Patch 26.14",
+          "rankClaim": "Grandmaster",
+          "patch": "26.14",
+          "durationSec": 1530,
+          "region": "KR",
+          "uploaded": "2026-07-30",
+          "moments": []
+        }
+      ]
+    }
+  ]
+}

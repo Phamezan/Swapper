@@ -1,0 +1,2994 @@
+{
+  "schema": 1,
+  "champion": 904,
+  "generatedAt": "2026-11-07T13:25:14.592Z",
+  "guides": [],
+  "general": [
+    {
+      "champion": 904,
+      "lane": "top",
+      "patch": "26.21",
+      "reviewed": false,
+      "keyTips": [
+        {
+          "text": "Protect health at level one: losing too much early can make the lane unplayable, so yield early priority in many lanes and collect safe farm while the second or third wave crashes.",
+          "scope": "champion",
+          "sourceIds": [
+            "ozneviik"
+          ]
+        },
+        {
+          "text": "Treat level three as the useful spike and level four as the common all-in timing, especially when the opponent is still level three and the wave allows a chase, but skip any all-in a lost fight would leave pushing away.",
+          "scope": "champion",
+          "sourceIds": [
+            "ozneviik"
+          ]
+        },
+        {
+          "text": "Trade safe near your side with W into E and the second Q knock-up, then disengage without growing the wave into an unfavorable long trade; before an apparently easy one-versus-one, confirm where the enemy jungler is.",
+          "scope": "champion",
+          "sourceIds": [
+            "ozneviik"
+          ],
+          "abilityKeys": [
+            {
+              "champion": 904,
+              "key": "W"
+            },
+            {
+              "champion": 904,
+              "key": "E"
+            },
+            {
+              "champion": 904,
+              "key": "Q"
+            }
+          ]
+        }
+      ],
+      "sections": {
+        "overview": {
+          "tips": []
+        },
+        "early-lane": {
+          "tips": [
+            {
+              "text": "Never commit while the opponent holds a large minion advantage: in the first five levels Zaahen may not have time to build the revive passive during that fight.",
+              "scope": "champion",
+              "sourceIds": [
+                "ozneviik"
+              ]
+            },
+            {
+              "text": "Take the level-four all-in when the wave sits on your side, but pass when the wave state turns against the chase.",
+              "scope": "champion",
+              "sourceIds": [
+                "ozneviik"
+              ]
+            },
+            {
+              "text": "Land abilities into the level-six all-in with the passive ready, but never fight it without a favorable wave.",
+              "scope": "champion",
+              "sourceIds": [
+                "ozneviik"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 904,
+                  "key": "R"
+                }
+              ]
+            },
+            {
+              "text": "Open Doran's Blade by default, with Doran's Shield for poke and Doran's Helm as the situational start, and run Flash with Ignite.",
+              "scope": "champion",
+              "sourceIds": [
+                "ozneviik"
+              ],
+              "itemIds": [
+                1055,
+                1054,
+                1120
+              ]
+            }
+          ]
+        },
+        "mid-lane": {
+          "tips": [
+            {
+              "text": "When ahead, shove toward the tier-two tower and roam mid or into the enemy jungle, but only push where vision covers the move.",
+              "scope": "champion",
+              "sourceIds": [
+                "ozneviik"
+              ]
+            },
+            {
+              "text": "When pushed in and unable to fight, clear waves safely and warn teammates when the opponent leaves lane.",
+              "scope": "champion",
+              "sourceIds": [
+                "ozneviik"
+              ]
+            },
+            {
+              "text": "Repeat the push top, roam for a play, push again, then recall while preserving time to catch the next wave.",
+              "scope": "champion",
+              "sourceIds": [
+                "ozneviik"
+              ]
+            },
+            {
+              "text": "For an objective, push first and then roam or Teleport by distance and urgency; after a long fight, reset and catch the wave at the tower.",
+              "scope": "champion",
+              "sourceIds": [
+                "ozneviik"
+              ]
+            },
+            {
+              "text": "Note that Stridebreaker makes freezing harder, but use its edge radius to last-hit a single minion without hitting the rest of the wave.",
+              "scope": "champion",
+              "sourceIds": [
+                "ozneviik"
+              ],
+              "itemIds": [
+                6631
+              ]
+            }
+          ]
+        },
+        "win-condition": {
+          "tips": [
+            {
+              "text": "Spike on Stridebreaker first: Zaahen is especially strong with two items and increasingly threatening with a timely third or fourth.",
+              "scope": "champion",
+              "sourceIds": [
+                "ozneviik"
+              ],
+              "itemIds": [
+                6631
+              ]
+            },
+            {
+              "text": "Late game, either push a side wave and Teleport to the fight or group near objectives, preferring the group when the team needs direction.",
+              "scope": "champion",
+              "sourceIds": [
+                "ozneviik"
+              ]
+            },
+            {
+              "text": "In a teamfight, build passive stacks on one exposed enemy before entering the rest of the fight, arriving with the revive available.",
+              "scope": "champion",
+              "sourceIds": [
+                "ozneviik"
+              ]
+            },
+            {
+              "text": "While ahead, skip unnecessary high-risk fights without tracking the enemy team; holding the lead with lower-risk plays beats forcing a one-versus-two or one-versus-three.",
+              "scope": "champion",
+              "sourceIds": [
+                "ozneviik"
+              ]
+            }
+          ]
+        }
+      },
+      "itemization": [
+        {
+          "text": "Run Conqueror with Triumph, Legend: Haste, and Last Stand plus Second Wind and Overgrowth, with attack speed, adaptive force, and scaling health shards.",
+          "scope": "champion",
+          "sourceIds": [
+            "ozneviik"
+          ]
+        },
+        {
+          "text": "Build Stridebreaker, Death's Dance, Maw of Malmortius, Endless Hunger, and Overlord's Bloodmail, prioritizing Stridebreaker for movement speed and access, then Death's Dance and Maw for resistances alongside damage; take Plated Steelcaps or Mercury's Treads by game with Cloth Armor, Long Sword, Boots, Refillable Potion, and Dagger as early components.",
+          "scope": "champion",
+          "sourceIds": [
+            "ozneviik"
+          ],
+          "itemIds": [
+            6631,
+            6333,
+            3156,
+            2517,
+            2501,
+            3047,
+            3111,
+            1029,
+            1036,
+            2031,
+            1042
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "id": "ozneviik",
+          "author": "ozneviik",
+          "rankClaim": "Challenger (title); none shown",
+          "rank": "challenger",
+          "url": "https://www.mobafire.com/league-of-legends/build/season-16-challenger-zaahen-guide-653093",
+          "kind": "mobafire"
+        }
+      ]
+    }
+  ],
+  "vods": [
+    {
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "YRPCCJ4-zYA",
+          "title": "THIS IS HOW TO PLAY ZAAHEN JUNGLE",
+          "rankClaim": "Master+",
+          "patch": "26.3",
+          "durationSec": 905,
+          "patchEstimated": true,
+          "player": "Sinerias",
+          "uploaded": "2026-02-13",
+          "format": "stream",
+          "cam": true,
+          "moments": []
+        }
+      ]
+    },
+    {
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "k5ZkZ12WOrw",
+          "title": "Rank 1 Zaahen : This CN Super Server MONSTER is DEVASTATING Every Lane - Engsub",
+          "rankClaim": "Master+",
+          "patch": "26.7",
+          "durationSec": 1669,
+          "patchEstimated": true,
+          "player": "Baicaiovo",
+          "uploaded": "2026-04-07",
+          "format": "stream",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 1,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "ByeDZi9ga6s",
+          "title": "(OLE Flakked) Zaahen Top vs Annie - EUW Challenger Patch 26.12",
+          "rankClaim": "Challenger",
+          "patch": "26.12",
+          "durationSec": 1726,
+          "region": "EUW",
+          "player": "OLE Flakked",
+          "uploaded": "2026-06-15",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 2,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "VHsFySFEh5Q",
+          "title": "Zaahen Top vs Olaf - KR Master Patch 26.17",
+          "rankClaim": "Master",
+          "patch": "26.17",
+          "durationSec": 1863,
+          "region": "KR",
+          "uploaded": "2026-09-01",
+          "moments": []
+        },
+        {
+          "videoId": "0YrJYpjpgDE",
+          "title": "Zaahen vs Olaf Top - KR Grandmaster - Patch 25.24 Season 15",
+          "rankClaim": "Grandmaster",
+          "patch": "25.24",
+          "durationSec": 1666,
+          "region": "KR",
+          "uploaded": "2025-12-24",
+          "moments": []
+        },
+        {
+          "videoId": "4ySkCe-nbrs",
+          "title": "Zaahen vs Olaf Top - KR Grandmaster - Patch 25.23 Season 15",
+          "rankClaim": "Grandmaster",
+          "patch": "25.23",
+          "durationSec": 1481,
+          "region": "KR",
+          "uploaded": "2025-11-24",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 5,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "XbX9oFAmhE0",
+          "title": "Zaahen Jungle vs Xin Zhao - KR Master Patch 26.09",
+          "rankClaim": "Master",
+          "patch": "26.9",
+          "durationSec": 1594,
+          "region": "KR",
+          "uploaded": "2026-05-06",
+          "moments": []
+        },
+        {
+          "videoId": "5PEP73vlA2U",
+          "title": "Zaahen Jungle vs Xin Zhao - KR Master Patch 26.08",
+          "rankClaim": "Master",
+          "patch": "26.8",
+          "durationSec": 1468,
+          "region": "KR",
+          "uploaded": "2026-04-27",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 7,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "Xc1gHSotj2g",
+          "title": "Zaahen vs LeBlanc Mid - NA Challenger - Patch 25.24 Season 15",
+          "rankClaim": "Challenger",
+          "patch": "25.24",
+          "durationSec": 1621,
+          "region": "NA",
+          "uploaded": "2025-12-09",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 8,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "WTDHvbgq9HE",
+          "title": "Zaahen vs Vladimir Top - KR Master - Patch 25.23 Season 15",
+          "rankClaim": "Master",
+          "patch": "25.23",
+          "durationSec": 1531,
+          "region": "KR",
+          "uploaded": "2025-12-03",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 10,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "qNPf_9p9EpI",
+          "title": "Zaahen Top vs Kayle - KR Master Patch 26.18",
+          "rankClaim": "Master",
+          "patch": "26.18",
+          "durationSec": 1498,
+          "region": "KR",
+          "uploaded": "2026-09-16",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 11,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "Sv8FoRAgnvE",
+          "title": "Challenger Zaahen : This CN Super Server Legend is CRUSHING Master Yi with INSANE Damage - Engsub",
+          "rankClaim": "Challenger",
+          "patch": "26.5",
+          "durationSec": 1598,
+          "patchEstimated": true,
+          "player": "Baicaiovo",
+          "uploaded": "2026-03-16",
+          "format": "stream",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 14,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "GQX28CI2XhI",
+          "title": "Zaahen Top vs Sion - NA Challenger Patch 26.21",
+          "rankClaim": "Challenger",
+          "patch": "26.21",
+          "durationSec": 1840,
+          "region": "NA",
+          "uploaded": "2026-10-27",
+          "result": "W",
+          "moments": [
+            {
+              "atSec": 121,
+              "label": "Zaahen catches Sion"
+            },
+            {
+              "atSec": 528,
+              "label": "Red takes 1st Dragon (Ocean)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 822,
+              "label": "Zaahen outduels Sion again"
+            },
+            {
+              "atSec": 864,
+              "label": "Red takes 2nd Dragon (Mountain)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 964,
+              "label": "Zaahen kills Qiyana",
+              "kind": "kill"
+            },
+            {
+              "atSec": 989,
+              "label": "Zaahen picks off Miss Fortune"
+            },
+            {
+              "atSec": 1235,
+              "label": "Azir eliminates Sylas"
+            },
+            {
+              "atSec": 1297,
+              "label": "Blue takes 1st Dragon (Chemtech)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1365,
+              "label": "Zaahen eliminates Zoe"
+            },
+            {
+              "atSec": 1411,
+              "label": "Team fight (4 kills)",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1478,
+              "label": "Red takes Baron",
+              "kind": "baron"
+            },
+            {
+              "atSec": 1563,
+              "label": "Zaahen kills Qiyana",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1573,
+              "label": "Mid Inhibitor falls (Blue)"
+            },
+            {
+              "atSec": 1607,
+              "label": "Red takes 3rd Dragon (Chemtech)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1724,
+              "label": "Talon picks off Sylas"
+            },
+            {
+              "atSec": 1831,
+              "label": "Zaahen Double Kill",
+              "kind": "kill"
+            }
+          ]
+        },
+        {
+          "videoId": "V_HrbEUGgto",
+          "title": "Zaahen vs Sion Top - KR Master - Patch 25.23 Season 15",
+          "rankClaim": "Master",
+          "patch": "25.23",
+          "durationSec": 1381,
+          "region": "KR",
+          "uploaded": "2025-11-25",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 19,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "SaO18fPb0Sk",
+          "title": "Zaahen Jungle vs Warwick - EUW Challenger Patch 26.03",
+          "rankClaim": "Challenger",
+          "patch": "26.3",
+          "durationSec": 1459,
+          "region": "EUW",
+          "uploaded": "2026-02-13",
+          "moments": []
+        },
+        {
+          "videoId": "gNAd0eQG6r0",
+          "title": "Zaahen vs Warwick Jungle - KR Master - Patch 25.23 Season 15",
+          "rankClaim": "Master",
+          "patch": "25.23",
+          "durationSec": 1351,
+          "region": "KR",
+          "uploaded": "2025-11-23",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 19,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "ozMEWtrGWRw",
+          "title": "Zaahen vs Warwick Top - KR Master - Patch 25.23 Season 15",
+          "rankClaim": "Master",
+          "patch": "25.23",
+          "durationSec": 1596,
+          "region": "KR",
+          "uploaded": "2025-11-29",
+          "moments": []
+        },
+        {
+          "videoId": "kt59VgazkTI",
+          "title": "Zaahen vs Warwick Top - EUW Grandmaster - Patch 25.23 Season 15",
+          "rankClaim": "Grandmaster",
+          "patch": "25.23",
+          "durationSec": 1606,
+          "region": "EUW",
+          "uploaded": "2025-11-25",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 23,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "XDOLgi6ibrY",
+          "title": "Zaahen Top vs Tryndamere - EUW Grandmaster Patch 26.16",
+          "rankClaim": "Grandmaster",
+          "patch": "26.16",
+          "durationSec": 1645,
+          "region": "EUW",
+          "uploaded": "2026-08-25",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 24,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "GhHBctwwCfk",
+          "title": "Zaahen Top vs Jax - KR Challenger Patch 26.04",
+          "rankClaim": "Challenger",
+          "patch": "26.4",
+          "durationSec": 1661,
+          "region": "KR",
+          "uploaded": "2026-02-28",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 540,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 633,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 717,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 864,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 987,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1107,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1251,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1332,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1430,
+              "label": "Get a Triple Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1454,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1619,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1639,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1650,
+              "label": "End credit"
+            }
+          ]
+        },
+        {
+          "videoId": "le9qqjGHkUI",
+          "title": "Zaahen vs Jax Top - NA Challenger - Patch 25.24 Season 15",
+          "rankClaim": "Challenger",
+          "patch": "25.24",
+          "durationSec": 1741,
+          "region": "NA",
+          "uploaded": "2025-12-18",
+          "moments": []
+        },
+        {
+          "videoId": "AxUN9TyxeJ8",
+          "title": "Zaahen vs Jax Top - KR Grandmaster - Patch 25.24 Season 15",
+          "rankClaim": "Grandmaster",
+          "patch": "25.24",
+          "durationSec": 1711,
+          "region": "KR",
+          "uploaded": "2025-12-11",
+          "moments": []
+        },
+        {
+          "videoId": "nBsJ3lff1d0",
+          "title": "Zaahen vs Jax Top - KR Master - Patch 25.23 Season 15",
+          "rankClaim": "Master",
+          "patch": "25.23",
+          "durationSec": 1711,
+          "region": "KR",
+          "uploaded": "2025-12-03",
+          "moments": []
+        },
+        {
+          "videoId": "f1YeUJZzVuY",
+          "title": "Zaahen vs Jax Top - KR Master - Patch 25.23 Season 15",
+          "rankClaim": "Master",
+          "patch": "25.23",
+          "durationSec": 1591,
+          "region": "KR",
+          "uploaded": "2025-12-02",
+          "moments": []
+        },
+        {
+          "videoId": "olRkzad0zC0",
+          "title": "Zaahen vs Jax [ TOP ] Patch 25.23 Korea Challenger 1507 LP",
+          "rankClaim": "Challenger",
+          "patch": "25.23",
+          "durationSec": 1611,
+          "region": "KR",
+          "uploaded": "2025-11-22",
+          "moments": []
+        },
+        {
+          "videoId": "a2q5Xdu8M5w",
+          "title": "Zaahen Top vs Jax - KR Challenger Patch 25.23",
+          "rankClaim": "Challenger",
+          "patch": "25.23",
+          "durationSec": 1867,
+          "region": "KR",
+          "uploaded": "2025-11-22",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 27,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "mfygy-dU0Eg",
+          "title": "Zaahen vs Singed Top - KR Challenger - Patch 25.24 Season 15",
+          "rankClaim": "Challenger",
+          "patch": "25.24",
+          "durationSec": 1981,
+          "region": "KR",
+          "uploaded": "2025-12-19",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 39,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "HPz-nxh6Wu8",
+          "title": "Zaahen vs Irelia Top - EUW Grandmaster - Patch 16.07 Season 16",
+          "rankClaim": "Grandmaster",
+          "patch": "26.7",
+          "durationSec": 1651,
+          "region": "EUW",
+          "uploaded": "2026-04-10",
+          "moments": []
+        },
+        {
+          "videoId": "9c9FUMT8WfA",
+          "title": "Zaahen Top vs Irelia - KR Challenger Patch 26.03",
+          "rankClaim": "Challenger",
+          "patch": "26.3",
+          "durationSec": 1455,
+          "region": "KR",
+          "uploaded": "2026-02-07",
+          "moments": []
+        },
+        {
+          "videoId": "zINysV_PykI",
+          "title": "Zaahen vs Irelia Top - KR Grandmaster - Patch 25.24 Season 15",
+          "rankClaim": "Grandmaster",
+          "patch": "25.24",
+          "durationSec": 1531,
+          "region": "KR",
+          "uploaded": "2025-12-30",
+          "moments": []
+        },
+        {
+          "videoId": "aKQ-Se3PxfE",
+          "title": "HLE Zeus Zaahen vs Irelia [ TOP ] Patch 25.24 Ranked Korea",
+          "rankClaim": "Master+",
+          "patch": "25.24",
+          "durationSec": 1311,
+          "region": "KR",
+          "player": "Zeus",
+          "team": "HLE",
+          "uploaded": "2025-12-27",
+          "moments": []
+        },
+        {
+          "videoId": "IpNLWtPLdQs",
+          "title": "Zaahen vs Irelia Top - KR Master - Patch 25.23 Season 15",
+          "rankClaim": "Master",
+          "patch": "25.23",
+          "durationSec": 1651,
+          "region": "KR",
+          "uploaded": "2025-12-01",
+          "moments": []
+        },
+        {
+          "videoId": "aN6CGx4kxO0",
+          "title": "Zaahen vs Irelia Top - KR Master - Patch 25.23 Season 15",
+          "rankClaim": "Master",
+          "patch": "25.23",
+          "durationSec": 1561,
+          "region": "KR",
+          "uploaded": "2025-11-21",
+          "moments": []
+        },
+        {
+          "videoId": "NND3q27n0Jg",
+          "title": "Zaahen vs Irelia Top - KR Master - Patch 25.23 Season 15",
+          "rankClaim": "Master",
+          "patch": "25.23",
+          "durationSec": 1830,
+          "region": "KR",
+          "uploaded": "2025-11-20",
+          "moments": []
+        },
+        {
+          "videoId": "izDjWLDi6dE",
+          "title": "Zaahen vs Irelia TOP [ TripleKill ] Patch 25.23 Korea Master ✅",
+          "rankClaim": "Master",
+          "patch": "25.23",
+          "durationSec": 1363,
+          "region": "KR",
+          "player": "TripleKill",
+          "uploaded": "2025-11-20",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 41,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "o97ZmSQtVCg",
+          "title": "(DNS DuDu) Zaahen Top vs Gangplank - KR Master Patch 26.10",
+          "rankClaim": "Master",
+          "patch": "26.10",
+          "durationSec": 1608,
+          "region": "KR",
+          "player": "DNS DuDu",
+          "uploaded": "2026-05-21",
+          "moments": []
+        },
+        {
+          "videoId": "Gjdcdfj-PKM",
+          "title": "Zaahen vs GangPlank Top - BR Challenger - Patch 25.23 Season 15",
+          "rankClaim": "Challenger",
+          "patch": "25.23",
+          "durationSec": 1681,
+          "uploaded": "2025-11-24",
+          "moments": []
+        },
+        {
+          "videoId": "NPWS88BDuTU",
+          "title": "Zaahen vs GangPlank Top - KR Master - Patch 25.23 Season 15",
+          "rankClaim": "Master",
+          "patch": "25.23",
+          "durationSec": 1691,
+          "region": "KR",
+          "uploaded": "2025-11-20",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 48,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "d-c76au5VaA",
+          "title": "Zaahen vs Trundle Jungle - KR Master - Patch 25.24 Season 15",
+          "rankClaim": "Master",
+          "patch": "25.24",
+          "durationSec": 1896,
+          "region": "KR",
+          "uploaded": "2025-12-08",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 48,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "KEuc0dfjIVA",
+          "title": "Zaahen Top vs Trundle - KR Master Patch 26.19",
+          "rankClaim": "Master",
+          "patch": "26.19",
+          "durationSec": 1764,
+          "region": "KR",
+          "uploaded": "2026-09-28",
+          "result": "W",
+          "moments": [
+            {
+              "atSec": 13,
+              "label": "First Blood — Camille kills Trundle",
+              "kind": "kill"
+            },
+            {
+              "atSec": 121,
+              "label": "Nidalee kills Trundle",
+              "kind": "kill"
+            },
+            {
+              "atSec": 217,
+              "label": "Zaahen eliminates Trundle"
+            },
+            {
+              "atSec": 302,
+              "label": "Zaahen eliminates Trundle"
+            },
+            {
+              "atSec": 334,
+              "label": "Zaahen kills Jayce",
+              "kind": "kill"
+            },
+            {
+              "atSec": 505,
+              "label": "Nidalee kills Trundle",
+              "kind": "kill"
+            },
+            {
+              "atSec": 575,
+              "label": "Red takes 1st Dragon (Ocean)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 616,
+              "label": "Nidalee kills Trundle",
+              "kind": "kill"
+            },
+            {
+              "atSec": 739,
+              "label": "Zaahen eliminates Poppy"
+            },
+            {
+              "atSec": 907,
+              "label": "Zaahen eliminates Poppy"
+            },
+            {
+              "atSec": 985,
+              "label": "Red takes 2nd Dragon (Cloud)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1076,
+              "label": "Team fight (3 kills)",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1217,
+              "label": "Zaahen catches Trundle"
+            },
+            {
+              "atSec": 1253,
+              "label": "Red takes Baron",
+              "kind": "baron"
+            },
+            {
+              "atSec": 1270,
+              "label": "Zaahen picks off Kai'Sa"
+            },
+            {
+              "atSec": 1350,
+              "label": "Red takes 3rd Dragon (Hextech)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1421,
+              "label": "Mid Inhibitor falls (Blue)"
+            },
+            {
+              "atSec": 1665,
+              "label": "Red takes 4th Dragon (Hextech)",
+              "kind": "dragon"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 54,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "cSwOV1b3mhc",
+          "title": "Zaahen vs Malphite Top - KR Master - Patch 25.23 Season 15",
+          "rankClaim": "Master",
+          "patch": "25.23",
+          "durationSec": 1801,
+          "region": "KR",
+          "uploaded": "2025-11-30",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 59,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "w5DTrOAd6QI",
+          "title": "Zaahen Jungle vs Jarvan IV - EUW Challenger Patch 26.06",
+          "rankClaim": "Challenger",
+          "patch": "26.6",
+          "durationSec": 1584,
+          "region": "EUW",
+          "uploaded": "2026-03-29",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 109,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 167,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 359,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 487,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 517,
+              "label": "Hunt The Void Grubs",
+              "kind": "grubs"
+            },
+            {
+              "atSec": 646,
+              "label": "Hunt The Dragon",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 667,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 829,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 922,
+              "label": "Hunt The Rift Herald",
+              "kind": "herald"
+            },
+            {
+              "atSec": 951,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 985,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1004,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1041,
+              "label": "Hunt The Dragon",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1090,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1163,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1298,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1331,
+              "label": "Hunt The Baron Nashor",
+              "kind": "baron"
+            },
+            {
+              "atSec": 1369,
+              "label": "Hunt The Dragon",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1409,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1431,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1454,
+              "label": "Take down The Inhibitor"
+            },
+            {
+              "atSec": 1527,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1573,
+              "label": "End credit"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 60,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "M0-YVJlZtv0",
+          "title": "Zaahen Jungle vs Elise - KR Master Patch 26.01",
+          "rankClaim": "Master",
+          "patch": "26.1",
+          "durationSec": 1535,
+          "region": "KR",
+          "uploaded": "2026-01-19",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 62,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "c9_Eo_sc3Xg",
+          "title": "Zaahen vs Wukong Top - EUW Grandmaster - Patch 25.23 Season 15",
+          "rankClaim": "Grandmaster",
+          "patch": "25.23",
+          "durationSec": 1666,
+          "region": "EUW",
+          "uploaded": "2025-11-24",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 64,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "UQuvvQ7WS90",
+          "title": "Zaahen Jungle vs Lee Sin - EUW Challenger Patch 26.11",
+          "rankClaim": "Challenger",
+          "patch": "26.11",
+          "durationSec": 1493,
+          "region": "EUW",
+          "uploaded": "2026-06-06",
+          "moments": []
+        },
+        {
+          "videoId": "kshFP63iarQ",
+          "title": "Zaahen Jungle vs Lee Sin - KR Master Patch 26.10",
+          "rankClaim": "Master",
+          "patch": "26.10",
+          "durationSec": 1406,
+          "region": "KR",
+          "uploaded": "2026-05-24",
+          "moments": []
+        },
+        {
+          "videoId": "AApDAVCb8yY",
+          "title": "Zaahen Jungle vs Lee Sin - KR Grandmaster Patch 26.09",
+          "rankClaim": "Grandmaster",
+          "patch": "26.9",
+          "durationSec": 1529,
+          "region": "KR",
+          "uploaded": "2026-05-13",
+          "moments": []
+        },
+        {
+          "videoId": "iBA0jSX7BwI",
+          "title": "Zaahen vs Lee Sin Jungle - KR Grandmaster - Patch 16.07 Season 16",
+          "rankClaim": "Grandmaster",
+          "patch": "26.7",
+          "durationSec": 2041,
+          "region": "KR",
+          "uploaded": "2026-04-06",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 67,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "_vYSZYXCOgA",
+          "title": "T1 Doran Zaahen vs Vayne [ TOP ] Patch 26.5 Korea Grandmaster",
+          "rankClaim": "Grandmaster",
+          "patch": "26.5",
+          "durationSec": 1392,
+          "region": "KR",
+          "player": "Doran",
+          "team": "T1",
+          "uploaded": "2026-03-14",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 68,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "er7-6tCHt3M",
+          "title": "T1 Doran Zaahen vs Rumble [ TOP ] Patch 26.1 Ranked Korea",
+          "rankClaim": "Master+",
+          "patch": "26.1",
+          "durationSec": 1440,
+          "region": "KR",
+          "player": "Doran",
+          "team": "T1",
+          "uploaded": "2026-01-17",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 72,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "WwP3pDglGUc",
+          "title": "(JL Shift) Zaahen Jungle vs Skarner - EUW Challenger Patch 26.13",
+          "rankClaim": "Challenger",
+          "patch": "26.13",
+          "durationSec": 1772,
+          "region": "EUW",
+          "player": "JL Shift",
+          "uploaded": "2026-06-28",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 74,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "eqjYsrJAkf0",
+          "title": "Challenger Zaahen : This CN Super Server Legend is CRUSHING Heimerdinger with INSANE Mechanics",
+          "rankClaim": "Challenger",
+          "patch": "26.5",
+          "durationSec": 1777,
+          "patchEstimated": true,
+          "player": "Baicaiovo",
+          "uploaded": "2026-03-14",
+          "format": "stream",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 75,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "CTO3v3dU0xI",
+          "title": "Zaahen vs Nasus Top - KR Master - Patch 25.23 Season 15",
+          "rankClaim": "Master",
+          "patch": "25.23",
+          "durationSec": 2071,
+          "region": "KR",
+          "uploaded": "2025-11-20",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 78,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "Yh5LWvpxDyE",
+          "title": "Zaahen Jungle vs Poppy (ASES Easylove) - KR Master Patch 26.14",
+          "rankClaim": "Master",
+          "patch": "26.14",
+          "durationSec": 1534,
+          "region": "KR",
+          "uploaded": "2026-07-25",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 79,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "lphTCVMX6IM",
+          "title": "Zaahen Top vs Gragas - NA Challenger Patch 26.08",
+          "rankClaim": "Challenger",
+          "patch": "26.8",
+          "durationSec": 1702,
+          "region": "NA",
+          "uploaded": "2026-04-21",
+          "moments": []
+        },
+        {
+          "videoId": "y5XrbMRbprQ",
+          "title": "Zaahen vs Gragas Top - KR Master - Patch 25.23 Season 15",
+          "rankClaim": "Master",
+          "patch": "25.23",
+          "durationSec": 1811,
+          "region": "KR",
+          "uploaded": "2025-11-20",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 80,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "4oLmluE15eI",
+          "title": "Zaahen Top vs Pantheon - KR Master Patch 25.24",
+          "rankClaim": "Master",
+          "patch": "25.24",
+          "durationSec": 1688,
+          "region": "KR",
+          "uploaded": "2025-12-06",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 209,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 395,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 568,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 656,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 796,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 825,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1035,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1072,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1259,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1296,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1344,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1677,
+              "label": "End credit"
+            }
+          ]
+        },
+        {
+          "videoId": "Pk6vG7G_7Es",
+          "title": "Zaahen vs Pantheon Top - KR Master - Patch 25.23 Season 15",
+          "rankClaim": "Master",
+          "patch": "25.23",
+          "durationSec": 1921,
+          "region": "KR",
+          "uploaded": "2025-11-21",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 82,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "AHR78AQ-t6Q",
+          "title": "Zaahen vs Mordekaiser Top - KR Master - Patch 25.24 Season 15",
+          "rankClaim": "Master",
+          "patch": "25.24",
+          "durationSec": 1546,
+          "region": "KR",
+          "uploaded": "2025-12-08",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 85,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "CkbZJK05hmE",
+          "title": "Zaahen vs Kennen Top - KR Challenger - Patch 25.24 Season 15",
+          "rankClaim": "Challenger",
+          "patch": "25.24",
+          "durationSec": 1811,
+          "region": "KR",
+          "uploaded": "2026-01-06",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 86,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "iF5f4hCbMzs",
+          "title": "(Kingsblade) Zaahen Top vs Garen - EUW Master Patch 26.20",
+          "rankClaim": "Master",
+          "patch": "26.20",
+          "durationSec": 1718,
+          "region": "EUW",
+          "player": "Kingsblade",
+          "uploaded": "2026-10-12",
+          "result": "W",
+          "moments": [
+            {
+              "atSec": 476,
+              "label": "Red takes 1st Dragon (Ocean)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 559,
+              "label": "First Blood — Wukong kills Viego",
+              "kind": "kill"
+            },
+            {
+              "atSec": 566,
+              "label": "Zaahen eliminates Garen"
+            },
+            {
+              "atSec": 726,
+              "label": "Zaahen catches Garen"
+            },
+            {
+              "atSec": 798,
+              "label": "Lissandra kills Varus",
+              "kind": "kill"
+            },
+            {
+              "atSec": 841,
+              "label": "Zaahen kills Viego",
+              "kind": "kill"
+            },
+            {
+              "atSec": 914,
+              "label": "Red takes 2nd Dragon (Mountain)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 955,
+              "label": "Wukong takes down Viego"
+            },
+            {
+              "atSec": 1204,
+              "label": "Kalista Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1227,
+              "label": "Blue takes 1st Dragon (Hextech)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1495,
+              "label": "Wukong kills Garen",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1551,
+              "label": "Red takes 3rd Dragon (Hextech)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1609,
+              "label": "Mid Inhibitor falls (Red)"
+            },
+            {
+              "atSec": 1666,
+              "label": "Blue takes Baron",
+              "kind": "baron"
+            },
+            {
+              "atSec": 1670,
+              "label": "Kalista picks off Garen"
+            }
+          ]
+        },
+        {
+          "videoId": "fqhJiKehqB4",
+          "title": "Zaahen vs Garen Top - KR Master - Patch 25.23 Season 15",
+          "rankClaim": "Master",
+          "patch": "25.23",
+          "durationSec": 1666,
+          "region": "KR",
+          "uploaded": "2025-12-02",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 92,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "OAJueSqK6BI",
+          "title": "Zaahen vs Riven Top - KR Master - Patch 25.23 Season 15",
+          "rankClaim": "Master",
+          "patch": "25.23",
+          "durationSec": 2076,
+          "region": "KR",
+          "uploaded": "2025-12-01",
+          "moments": []
+        },
+        {
+          "videoId": "emJuXdBDwxc",
+          "title": "Zaahen vs Riven Top - KR Master - Patch 25.23 Season 15",
+          "rankClaim": "Master",
+          "patch": "25.23",
+          "durationSec": 1751,
+          "region": "KR",
+          "uploaded": "2025-11-25",
+          "moments": []
+        },
+        {
+          "videoId": "8m0Je69n_44",
+          "title": "Zaahen vs Riven Top - BR Challenger - Patch 25.23 Season 15",
+          "rankClaim": "Challenger",
+          "patch": "25.23",
+          "durationSec": 1591,
+          "uploaded": "2025-11-24",
+          "moments": []
+        },
+        {
+          "videoId": "sHBl0SxhneU",
+          "title": "Zaahen vs Riven TOP [ QuadraKill ] Patch 25.23 Korea Master ✅",
+          "rankClaim": "Master",
+          "patch": "25.23",
+          "durationSec": 1518,
+          "region": "KR",
+          "player": "QuadraKill",
+          "uploaded": "2025-11-24",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 98,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "ItwVmvVuKSg",
+          "title": "Zaahen vs Shen Top - EUW Grandmaster - Patch 25.24 Season 15",
+          "rankClaim": "Grandmaster",
+          "patch": "25.24",
+          "durationSec": 1831,
+          "region": "EUW",
+          "uploaded": "2025-12-05",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 104,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "hBncEQXfnxw",
+          "title": "Canyon Zaahen vs Graves Jungle - KR Challenger - Patch 16.04 Season 16",
+          "rankClaim": "Challenger",
+          "patch": "26.4",
+          "durationSec": 2086,
+          "region": "KR",
+          "player": "Canyon",
+          "uploaded": "2026-02-22",
+          "moments": []
+        },
+        {
+          "videoId": "StUJwz41w8Q",
+          "title": "Zaahen Jungle vs Graves - KR Challenger Patch 26.04",
+          "rankClaim": "Challenger",
+          "patch": "26.4",
+          "durationSec": 1460,
+          "region": "KR",
+          "uploaded": "2026-02-21",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 106,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "MeU5dPgbuy0",
+          "title": "Zaahen Top vs Volibear - KR Master Patch 26.19",
+          "rankClaim": "Master",
+          "patch": "26.19",
+          "durationSec": 1691,
+          "region": "KR",
+          "uploaded": "2026-10-08",
+          "result": "W",
+          "moments": [
+            {
+              "atSec": 172,
+              "label": "First Blood — Zaahen kills Volibear",
+              "kind": "kill"
+            },
+            {
+              "atSec": 412,
+              "label": "Red takes 1st Dragon (Hextech)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 449,
+              "label": "Zaahen catches Volibear"
+            },
+            {
+              "atSec": 630,
+              "label": "Zaahen outduels Volibear again"
+            },
+            {
+              "atSec": 832,
+              "label": "Blue takes 1st Dragon (Chemtech)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 946,
+              "label": "Zaahen outplays Yasuo"
+            },
+            {
+              "atSec": 1153,
+              "label": "Blue takes 2nd Dragon (Mountain)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1235,
+              "label": "Zaahen picks off Yunara"
+            },
+            {
+              "atSec": 1283,
+              "label": "Blue takes Baron",
+              "kind": "baron"
+            },
+            {
+              "atSec": 1325,
+              "label": "Zaahen solo kills Yasuo again",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1413,
+              "label": "Zaahen outplays Volibear (3rd time)"
+            },
+            {
+              "atSec": 1435,
+              "label": "Zaahen takes down Yasuo"
+            },
+            {
+              "atSec": 1449,
+              "label": "Zaahen Triple Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1481,
+              "label": "Zaahen solo kills Volibear (4th time)",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1484,
+              "label": "Blue takes 3rd Dragon (Mountain)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1537,
+              "label": "Bot Inhibitor falls (Red)"
+            },
+            {
+              "atSec": 1550,
+              "label": "Mid Inhibitor falls (Red)"
+            },
+            {
+              "atSec": 1660,
+              "label": "Lee Sin kills Lulu",
+              "kind": "kill"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 107,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "Y4bJS4fsuZc",
+          "title": "(7REX Hirotto) Zaahen Jungle vs Rengar - BR Challenger Patch 26.21",
+          "rankClaim": "Challenger",
+          "patch": "26.21",
+          "durationSec": 1724,
+          "player": "7REX Hirotto",
+          "uploaded": "2026-11-02",
+          "result": "W",
+          "moments": [
+            {
+              "atSec": 181,
+              "label": "Zaahen kills Nautilus",
+              "kind": "kill"
+            },
+            {
+              "atSec": 337,
+              "label": "Red takes 1st Dragon (Hextech)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 394,
+              "label": "Team fight (3 kills)",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 559,
+              "label": "Team fight (4 kills)",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 644,
+              "label": "Zaahen catches Nautilus"
+            },
+            {
+              "atSec": 655,
+              "label": "Zaahen outplays Rengar"
+            },
+            {
+              "atSec": 713,
+              "label": "Red takes 2nd Dragon (Ocean)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 865,
+              "label": "Zaahen kills Nautilus",
+              "kind": "kill"
+            },
+            {
+              "atSec": 923,
+              "label": "Syndra takes down Ezreal"
+            },
+            {
+              "atSec": 1050,
+              "label": "Red takes 3rd Dragon (Cloud)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1187,
+              "label": "Team fight (3 kills)",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1203,
+              "label": "Zaahen Triple Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1375,
+              "label": "Blue takes 1st Dragon (Cloud)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1425,
+              "label": "Red takes Baron",
+              "kind": "baron"
+            },
+            {
+              "atSec": 1484,
+              "label": "Pantheon Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1516,
+              "label": "Mid Inhibitor falls (Blue)"
+            },
+            {
+              "atSec": 1529,
+              "label": "Top Inhibitor falls (Blue)"
+            },
+            {
+              "atSec": 1673,
+              "label": "Team fight (3 kills)",
+              "kind": "teamfight"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 112,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "nymSuLJZuyA",
+          "title": "Zaahen vs Viktor Mid - KR Master - Patch 25.23 Season 15",
+          "rankClaim": "Master",
+          "patch": "25.23",
+          "durationSec": 2131,
+          "region": "KR",
+          "uploaded": "2025-11-21",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 113,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "oBl8eRY4L-E",
+          "title": "(GL Thayger) Zaahen Jungle vs Sejuani (BOOM adi1) - EUW Grandmaster Patch 26.16",
+          "rankClaim": "Grandmaster",
+          "patch": "26.16",
+          "durationSec": 1763,
+          "region": "EUW",
+          "player": "GL Thayger",
+          "uploaded": "2026-08-19",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 113,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "LVSz4of6ufg",
+          "title": "Zaahen Top vs Sejuani - KR Master Patch 26.01",
+          "rankClaim": "Master",
+          "patch": "26.1",
+          "durationSec": 1475,
+          "region": "KR",
+          "uploaded": "2026-01-12",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 114,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "0BL8itGF9ps",
+          "title": "T1 Doran Zaahen vs Fiora [ TOP ] Patch 26.6 Ranked Korea",
+          "rankClaim": "Master+",
+          "patch": "26.6",
+          "durationSec": 1245,
+          "region": "KR",
+          "player": "Doran",
+          "team": "T1",
+          "uploaded": "2026-03-23",
+          "moments": []
+        },
+        {
+          "videoId": "TKfKIpp6kWU",
+          "title": "Zaahen vs Fiora Top - KR Master - Patch 25.23 Season 15",
+          "rankClaim": "Master",
+          "patch": "25.23",
+          "durationSec": 1636,
+          "region": "KR",
+          "uploaded": "2025-12-03",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 120,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "iwroAPTYvCk",
+          "title": "Zaahen Jungle vs Hecarim - EUNE Grandmaster Patch 26.20",
+          "rankClaim": "Grandmaster",
+          "patch": "26.20",
+          "durationSec": 1567,
+          "region": "EUNE",
+          "uploaded": "2026-10-19",
+          "result": "W",
+          "moments": [
+            {
+              "atSec": 299,
+              "label": "First Blood — Zaahen kills Malphite",
+              "kind": "kill"
+            },
+            {
+              "atSec": 443,
+              "label": "Red takes 1st Dragon (Hextech)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 608,
+              "label": "Team fight (3 kills)",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 680,
+              "label": "Zaahen kills Malphite",
+              "kind": "kill"
+            },
+            {
+              "atSec": 756,
+              "label": "Blue takes 1st Dragon (Mountain)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 784,
+              "label": "Zaahen eliminates Kai'Sa"
+            },
+            {
+              "atSec": 882,
+              "label": "Red takes Rift Herald",
+              "kind": "herald"
+            },
+            {
+              "atSec": 973,
+              "label": "Zaahen takes down Hecarim"
+            },
+            {
+              "atSec": 1091,
+              "label": "Red takes 2nd Dragon (Infernal)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1109,
+              "label": "Jinx picks off Thresh"
+            },
+            {
+              "atSec": 1330,
+              "label": "Zaahen picks off Syndra"
+            },
+            {
+              "atSec": 1417,
+              "label": "Red takes 3rd Dragon (Infernal)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1437,
+              "label": "Zaahen Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1441,
+              "label": "Zaahen Triple Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1487,
+              "label": "Red takes Baron",
+              "kind": "baron"
+            },
+            {
+              "atSec": 1525,
+              "label": "Zaahen Triple Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1539,
+              "label": "Mid Inhibitor falls (Blue)"
+            }
+          ]
+        },
+        {
+          "videoId": "3wjHoga5Xjk",
+          "title": "Zaahen vs Hercarim Jungle - EUW Challenger - Patch 16.04 Season 16",
+          "rankClaim": "Challenger",
+          "patch": "26.4",
+          "durationSec": 1321,
+          "region": "EUW",
+          "uploaded": "2026-03-03",
+          "moments": []
+        },
+        {
+          "videoId": "7pElYflPJpU",
+          "title": "T1 Oner Zaahen vs Hecarim [ Jungle ] Korea Master Patch 26.3",
+          "rankClaim": "Master",
+          "patch": "26.3",
+          "durationSec": 1230,
+          "region": "KR",
+          "player": "Oner",
+          "team": "T1",
+          "uploaded": "2026-02-14",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 121,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "z174lVHsISs",
+          "title": "Zaahen vs Kha'Zix Jungle - KR Grandmaster - Patch 25.23 Season 15",
+          "rankClaim": "Grandmaster",
+          "patch": "25.23",
+          "durationSec": 1771,
+          "region": "KR",
+          "uploaded": "2025-11-26",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 122,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "_KloDhqzd8Q",
+          "title": "T1 Doran Zaahen vs Darius [ TOP ] Patch 26.1 Ranked Korea",
+          "rankClaim": "Master+",
+          "patch": "26.1",
+          "durationSec": 1831,
+          "region": "KR",
+          "player": "Doran",
+          "team": "T1",
+          "uploaded": "2026-01-09",
+          "moments": []
+        },
+        {
+          "videoId": "8egkBH51H_k",
+          "title": "Zaahen vs Darius [ TOP ] Korea Grandmaster 1074 LP | Patch 25.24 ✅",
+          "rankClaim": "Grandmaster",
+          "patch": "25.24",
+          "durationSec": 1731,
+          "region": "KR",
+          "uploaded": "2025-12-24",
+          "moments": []
+        },
+        {
+          "videoId": "o5V2CCEwv0k",
+          "title": "Zaahen vs Darius Top - KR Challenger - Patch 25.24 Season 15",
+          "rankClaim": "Challenger",
+          "patch": "25.24",
+          "durationSec": 1381,
+          "region": "KR",
+          "uploaded": "2025-12-17",
+          "moments": []
+        },
+        {
+          "videoId": "SDf7FUQH7Vg",
+          "title": "Zaahen vs Darius Top - KR Grandmaster - Patch 25.23 Season 15",
+          "rankClaim": "Grandmaster",
+          "patch": "25.23",
+          "durationSec": 1591,
+          "region": "KR",
+          "uploaded": "2025-11-28",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 126,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "pBgkrvQ_jKA",
+          "title": "(DINO Shogun) Zaahen Top vs Jayce - KR Master Patch 26.15",
+          "rankClaim": "Master",
+          "patch": "26.15",
+          "durationSec": 1821,
+          "region": "KR",
+          "player": "DINO Shogun",
+          "uploaded": "2026-08-06",
+          "moments": []
+        },
+        {
+          "videoId": "YWNgZZgYcf0",
+          "title": "Zaahen vs Jayce Top - KR Master - Patch 25.23 Season 15",
+          "rankClaim": "Master",
+          "patch": "25.23",
+          "durationSec": 1636,
+          "region": "KR",
+          "uploaded": "2025-11-27",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 131,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "4SCrLlnzCo0",
+          "title": "Zaahen vs Diana Jungle - KR Challenger - Patch 25.24 Season 15",
+          "rankClaim": "Challenger",
+          "patch": "25.24",
+          "durationSec": 1906,
+          "region": "KR",
+          "uploaded": "2025-12-26",
+          "moments": []
+        },
+        {
+          "videoId": "8LZ3sTUuK6A",
+          "title": "Zaahen vs Diana Jungle - EUW Grandmaster - Patch 25.24 Season 15",
+          "rankClaim": "Grandmaster",
+          "patch": "25.24",
+          "durationSec": 1516,
+          "region": "EUW",
+          "uploaded": "2025-12-15",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 131,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "3W531LGEl9k",
+          "title": "Zaahen Mid vs Diana - EUW Challenger Patch 25.24",
+          "rankClaim": "Challenger",
+          "patch": "25.24",
+          "durationSec": 1479,
+          "region": "EUW",
+          "uploaded": "2025-12-21",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 118,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 336,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 434,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 543,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 675,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 867,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 920,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 975,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1054,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1080,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1102,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1240,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1274,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1292,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1372,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1405,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1422,
+              "label": "Take down The Inhibitor"
+            },
+            {
+              "atSec": 1434,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1450,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1468,
+              "label": "End credit"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 141,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "ZQnFhC3DGHM",
+          "title": "Zaahen vs Kayn Jungle - KR Master - Patch 25.23 Season 15",
+          "rankClaim": "Master",
+          "patch": "25.23",
+          "durationSec": 1500,
+          "region": "KR",
+          "uploaded": "2025-11-20",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 145,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "TW7oDPDYULg",
+          "title": "Zaahen vs Kai'Sa Top - KR Master - Patch 25.23 Season 15",
+          "rankClaim": "Master",
+          "patch": "25.23",
+          "durationSec": 1441,
+          "region": "KR",
+          "uploaded": "2025-11-27",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 150,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "1NR0eqQ7uw4",
+          "title": "HLE Zeus Zaahen vs Gnar [ TOP ] Korea Challenger 2064 LP | Patch 26.13",
+          "rankClaim": "Challenger",
+          "patch": "26.13",
+          "durationSec": 1238,
+          "region": "KR",
+          "player": "Zeus",
+          "team": "HLE",
+          "uploaded": "2026-07-10",
+          "moments": []
+        },
+        {
+          "videoId": "072GNMr7QLI",
+          "title": "Zaahen vs Gnar Top - EUW Grandmaster - Patch 25.24 Season 15",
+          "rankClaim": "Grandmaster",
+          "patch": "25.24",
+          "durationSec": 1681,
+          "region": "EUW",
+          "uploaded": "2025-12-10",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 154,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "qxB_b1gRdxQ",
+          "title": "Zaahen Top vs Zac - NA Challenger Patch 26.06",
+          "rankClaim": "Challenger",
+          "patch": "26.6",
+          "durationSec": 1599,
+          "region": "NA",
+          "uploaded": "2026-03-22",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 157,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "gIWzSB_vDbk",
+          "title": "Zaahen vs Yasuo Top - KR Challenger - Patch 16.06 Season 16",
+          "rankClaim": "Challenger",
+          "patch": "26.6",
+          "durationSec": 1651,
+          "region": "KR",
+          "uploaded": "2026-03-27",
+          "moments": []
+        },
+        {
+          "videoId": "nNxYmjtOmBM",
+          "title": "Zaahen Top vs Yasuo - BR Challenger Patch 25.24",
+          "rankClaim": "Challenger",
+          "patch": "25.24",
+          "durationSec": 1599,
+          "uploaded": "2026-01-02",
+          "moments": []
+        },
+        {
+          "videoId": "WsS6OM45r6s",
+          "title": "Zaahen vs Yasuo Top - EUW Grandmaster - Patch 25.24 Season 15",
+          "rankClaim": "Grandmaster",
+          "patch": "25.24",
+          "durationSec": 1661,
+          "region": "EUW",
+          "uploaded": "2025-12-21",
+          "moments": []
+        },
+        {
+          "videoId": "xibbGY-qESA",
+          "title": "Zaahen vs Yasuo Top - EUW Master - Patch 25.23 Season 15",
+          "rankClaim": "Master",
+          "patch": "25.23",
+          "durationSec": 1756,
+          "region": "EUW",
+          "uploaded": "2025-11-21",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 238,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "EQWEKhc_qJU",
+          "title": "Zaahen Jungle vs Zed - NA Challenger Patch 26.02",
+          "rankClaim": "Challenger",
+          "patch": "26.2",
+          "durationSec": 1446,
+          "region": "NA",
+          "uploaded": "2026-02-01",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 245,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "34-Hp5jbWVw",
+          "title": "Zaahen Jungle vs Ekko - BR Master Patch 26.18",
+          "rankClaim": "Master",
+          "patch": "26.18",
+          "durationSec": 1473,
+          "uploaded": "2026-09-22",
+          "moments": []
+        },
+        {
+          "videoId": "b8rUnylDkUo",
+          "title": "Zaahen Jungle vs Ekko - KR Master Patch 26.15",
+          "rankClaim": "Master",
+          "patch": "26.15",
+          "durationSec": 1865,
+          "region": "KR",
+          "uploaded": "2026-08-09",
+          "moments": []
+        },
+        {
+          "videoId": "jLncn_hIUok",
+          "title": "Zaahen vs Ekko Jungle - KR Grandmaster - Patch 25.24 Season 15",
+          "rankClaim": "Grandmaster",
+          "patch": "25.24",
+          "durationSec": 1711,
+          "region": "KR",
+          "uploaded": "2025-12-22",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 246,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "k0UUL5EoPlQ",
+          "title": "Zaahen Jungle vs Qiyana - EUW Master Patch 26.17",
+          "rankClaim": "Master",
+          "patch": "26.17",
+          "durationSec": 1406,
+          "region": "EUW",
+          "uploaded": "2026-09-07",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 254,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "wrv0QbMnZAw",
+          "title": "Zaahen Jungle vs Vi - KR Master Patch 26.07",
+          "rankClaim": "Master",
+          "patch": "26.7",
+          "durationSec": 1636,
+          "region": "KR",
+          "uploaded": "2026-04-12",
+          "moments": []
+        },
+        {
+          "videoId": "UaqfZqvpYj4",
+          "title": "Zaahen Jungle vs Vi - KR Challenger Patch 26.05",
+          "rankClaim": "Challenger",
+          "patch": "26.5",
+          "durationSec": 1778,
+          "region": "KR",
+          "uploaded": "2026-03-14",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 266,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "9x_WKS_URaQ",
+          "title": "Zaahen Jungle vs Aatrox - NA Grandmaster Patch 25.24",
+          "rankClaim": "Grandmaster",
+          "patch": "25.24",
+          "durationSec": 1536,
+          "region": "NA",
+          "uploaded": "2025-12-13",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 375,
+              "label": "Hunt The Dragon",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 556,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 677,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 709,
+              "label": "Hunt The Dragon",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 894,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 939,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1030,
+              "label": "Hunt The Dragon",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1081,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1198,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1238,
+              "label": "Hunt The Atakhan"
+            },
+            {
+              "atSec": 1291,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1310,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1381,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1422,
+              "label": "Hunt The Dragon",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1492,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1525,
+              "label": "End credit"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 266,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "fqJj8KjgJxc",
+          "title": "(AL Flandre) Zaahen Top vs Aatrox - KR Grandmaster Patch 26.13",
+          "rankClaim": "Grandmaster",
+          "patch": "26.13",
+          "durationSec": 1515,
+          "region": "KR",
+          "player": "Flandre",
+          "team": "AL",
+          "uploaded": "2026-07-03",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 267,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "Czj3Ti5ve7Y",
+          "title": "Zaahen Support vs Nami - KR Master Patch 25.24",
+          "rankClaim": "Master",
+          "patch": "25.24",
+          "durationSec": 1553,
+          "region": "KR",
+          "uploaded": "2025-12-27",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 420,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "yn7ZDDnLf0k",
+          "title": "Zaahen vs Illaoi Top - EUNE Master - Patch 25.23 Season 15",
+          "rankClaim": "Master",
+          "patch": "25.23",
+          "durationSec": 1381,
+          "region": "EUNE",
+          "uploaded": "2025-11-27",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 427,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "F7qK_3KAbgU",
+          "title": "Zaahen vs Ivern Jungle [ Gen.G Canyon ] Korea Challengerr 2534 LP | Patch 26.15",
+          "rankClaim": "Challenger",
+          "patch": "26.15",
+          "durationSec": 1762,
+          "region": "KR",
+          "player": "Canyon",
+          "team": "Gen.G",
+          "uploaded": "2026-08-10",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 516,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "XfsUKrunmfM",
+          "title": "Zaahen vs Ornn Top - BR Grandmaster - Patch 25.23 Season 15",
+          "rankClaim": "Grandmaster",
+          "patch": "25.23",
+          "durationSec": 1801,
+          "uploaded": "2025-11-24",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 517,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "Ykz8Jlbbng4",
+          "title": "(GOAL Elix1r) Zaahen Jungle vs Sylas - EUW Grandmaster Patch 26.13",
+          "rankClaim": "Grandmaster",
+          "patch": "26.13",
+          "durationSec": 1603,
+          "region": "EUW",
+          "player": "GOAL Elix1r",
+          "uploaded": "2026-07-11",
+          "moments": []
+        },
+        {
+          "videoId": "wn7i-64p7KY",
+          "title": "Zaahen Jungle vs Sylas - KR Master Patch 26.12",
+          "rankClaim": "Master",
+          "patch": "26.12",
+          "durationSec": 1848,
+          "region": "KR",
+          "uploaded": "2026-06-21",
+          "moments": []
+        },
+        {
+          "videoId": "FfQ4trClQ0w",
+          "title": "Zaahen Jungle vs Sylas - EUW Grandmaster Patch 25.24",
+          "rankClaim": "Grandmaster",
+          "patch": "25.24",
+          "durationSec": 1568,
+          "region": "EUW",
+          "uploaded": "2026-01-09",
+          "moments": []
+        },
+        {
+          "videoId": "BqZhIs--igQ",
+          "title": "Zaahen Jungle vs Sylas - EUW Grandmaster Patch 25.23",
+          "rankClaim": "Grandmaster",
+          "patch": "25.23",
+          "durationSec": 1534,
+          "region": "EUW",
+          "uploaded": "2025-11-28",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 777,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "rIaa4cYhaAU",
+          "title": "Zaahen Top vs Yone - KR Master Patch 26.02",
+          "rankClaim": "Master",
+          "patch": "26.2",
+          "durationSec": 1529,
+          "region": "KR",
+          "uploaded": "2026-01-25",
+          "moments": []
+        },
+        {
+          "videoId": "grhH-d_9cPc",
+          "title": "Zaahen vs Yone Top - NA Challenger - Patch 25.24 Season 15",
+          "rankClaim": "Challenger",
+          "patch": "25.24",
+          "durationSec": 1411,
+          "region": "NA",
+          "uploaded": "2025-12-25",
+          "moments": []
+        },
+        {
+          "videoId": "xA9dOEl-I0A",
+          "title": "Zaahen vs Yone Top - KR Grandmaster - Patch 25.23 Season 15",
+          "rankClaim": "Grandmaster",
+          "patch": "25.23",
+          "durationSec": 1651,
+          "region": "KR",
+          "uploaded": "2025-11-28",
+          "moments": []
+        },
+        {
+          "videoId": "py9htGlLgLU",
+          "title": "Zaahen vs Yone Top - KR Master - Patch 25.23 Season 15",
+          "rankClaim": "Master",
+          "patch": "25.23",
+          "durationSec": 1271,
+          "region": "KR",
+          "uploaded": "2025-11-21",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 799,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "pWjLuCJxlhg",
+          "title": "Zaahen vs Ambessa Jungle - KR Master - Patch 25.23 Season 15",
+          "rankClaim": "Master",
+          "patch": "25.23",
+          "durationSec": 1691,
+          "region": "KR",
+          "uploaded": "2025-11-27",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 799,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "TzdbjJqiUT4",
+          "title": "(DNS DuDu) Zaahen Top vs Ambessa - KR Grandmaster Patch 26.14",
+          "rankClaim": "Grandmaster",
+          "patch": "26.14",
+          "durationSec": 1777,
+          "region": "KR",
+          "player": "DNS DuDu",
+          "uploaded": "2026-07-19",
+          "moments": []
+        },
+        {
+          "videoId": "HMVG24n5jFo",
+          "title": "Zaahen Top vs Ambessa - KR Master Patch 26.07",
+          "rankClaim": "Master",
+          "patch": "26.7",
+          "durationSec": 1680,
+          "region": "KR",
+          "uploaded": "2026-04-06",
+          "moments": []
+        },
+        {
+          "videoId": "gpqB58_LDIA",
+          "title": "Zaahen vs Ambessa Top - KR Challenger - Patch 25.24 Season 15",
+          "rankClaim": "Challenger",
+          "patch": "25.24",
+          "durationSec": 1476,
+          "region": "KR",
+          "uploaded": "2025-12-09",
+          "moments": []
+        },
+        {
+          "videoId": "cr_88tKSdj0",
+          "title": "Zaahen vs Ambessa Top - KR Grandmaster - Patch 25.23 Season 15",
+          "rankClaim": "Grandmaster",
+          "patch": "25.23",
+          "durationSec": 1391,
+          "region": "KR",
+          "uploaded": "2025-11-29",
+          "moments": []
+        },
+        {
+          "videoId": "M8zMusaomVw",
+          "title": "Zaahen vs Ambessa Top - KR Challenger - Patch 25.23 Season 15",
+          "rankClaim": "Challenger",
+          "patch": "25.23",
+          "durationSec": 1951,
+          "region": "KR",
+          "uploaded": "2025-11-25",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 875,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "PxDEy8cWv2Y",
+          "title": "Zaahen vs Sett Top - NA Challenger - Patch 25.23 Season 15",
+          "rankClaim": "Challenger",
+          "patch": "25.23",
+          "durationSec": 2251,
+          "region": "NA",
+          "uploaded": "2025-12-01",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 887,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "ujpn4lRq4ho",
+          "title": "T1 Faker Zaahen vs Gwen [ TOP ] Patch 26.1 Ranked Korea",
+          "rankClaim": "Master+",
+          "patch": "26.1",
+          "durationSec": 1228,
+          "region": "KR",
+          "player": "Faker",
+          "team": "T1",
+          "uploaded": "2026-01-19",
+          "moments": []
+        },
+        {
+          "videoId": "pAJo_HecrVg",
+          "title": "Zaahen vs Gwen Top - KR Grandmaster - Patch 25.24 Season 15",
+          "rankClaim": "Grandmaster",
+          "patch": "25.24",
+          "durationSec": 1681,
+          "region": "KR",
+          "uploaded": "2025-12-16",
+          "moments": []
+        },
+        {
+          "videoId": "iOA6pr_c0Gw",
+          "title": "Zaahen vs Gwen Top - KR Grandmaster - Patch 25.23 Season 15",
+          "rankClaim": "Grandmaster",
+          "patch": "25.23",
+          "durationSec": 1501,
+          "region": "KR",
+          "uploaded": "2025-11-28",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 897,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "_w2f-sLtSs4",
+          "title": "(T1 Doran) Zaahen Top vs K'Sante - KR Grandmaster Patch 26.11",
+          "rankClaim": "Grandmaster",
+          "patch": "26.11",
+          "durationSec": 1492,
+          "region": "KR",
+          "player": "Doran",
+          "team": "T1",
+          "uploaded": "2026-06-09",
+          "moments": []
+        },
+        {
+          "videoId": "p6mz0Ienj0w",
+          "title": "Zaahen Top vs K'Sante - VN Challenger Patch 26.05",
+          "rankClaim": "Challenger",
+          "patch": "26.5",
+          "durationSec": 1516,
+          "uploaded": "2026-03-08",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 274,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 628,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 760,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1034,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1061,
+              "label": "Hunt The Dragon",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1137,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1201,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1271,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1293,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1304,
+              "label": "Get a Triple Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1377,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1414,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1453,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1492,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1505,
+              "label": "End credit"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

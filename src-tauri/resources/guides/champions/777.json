@@ -1,0 +1,4032 @@
+{
+  "schema": 1,
+  "champion": 777,
+  "generatedAt": "2026-11-07T13:25:14.592Z",
+  "guides": [
+    {
+      "champion": 777,
+      "enemy": 103,
+      "lane": "mid",
+      "patch": "26.21",
+      "reviewed": false,
+      "difficulty": "Hard",
+      "favoredWhen": "Respect her Charm windows, track her cooldowns, and run her down when Charm is spent.",
+      "keyTips": [
+        {
+          "text": "Do not Q3 predictably: she plays around its knockup, so vary the timing.",
+          "scope": "pair",
+          "sourceIds": [
+            "peng04"
+          ],
+          "abilityKeys": [
+            {
+              "champion": 777,
+              "key": "Q"
+            }
+          ]
+        },
+        {
+          "text": "Commit E only when her Charm is down; her whole lane is holding it for your engage.",
+          "scope": "pair",
+          "sourceIds": [
+            "shok-ahri"
+          ],
+          "abilityKeys": [
+            {
+              "champion": 777,
+              "key": "E"
+            },
+            {
+              "champion": 103,
+              "key": "E"
+            }
+          ]
+        },
+        {
+          "text": "Concede level 1: do not take free harass for CS you cannot win yet.",
+          "scope": "pair",
+          "sourceIds": [
+            "sjorry"
+          ]
+        }
+      ],
+      "enemyTips": {},
+      "sections": {
+        "overview": {
+          "tips": []
+        },
+        "early-lane": {
+          "tips": [
+            {
+              "text": "Respect her Q3 and E windows: back off when they are ready.",
+              "scope": "pair",
+              "sourceIds": [
+                "shok-ahri"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 777,
+                  "key": "Q"
+                },
+                {
+                  "champion": 777,
+                  "key": "E"
+                }
+              ]
+            },
+            {
+              "text": "Give ground on her poke and trade back after, not into it.",
+              "scope": "pair",
+              "sourceIds": [
+                "peng04",
+                "shok-ahri"
+              ]
+            }
+          ]
+        },
+        "mid-lane": {
+          "tips": [
+            {
+              "text": "Ult onto her when Charm is down; expect the behind-her Charm if it is up.",
+              "scope": "pair",
+              "sourceIds": [
+                "peng04"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 777,
+                  "key": "R"
+                },
+                {
+                  "champion": 103,
+                  "key": "E"
+                }
+              ]
+            },
+            {
+              "text": "Track her jungler: her game is gank setup, so do not overextend for run-downs.",
+              "scope": "pair",
+              "sourceIds": [
+                "shok-ahri"
+              ]
+            }
+          ]
+        },
+        "win-condition": {
+          "tips": [
+            {
+              "text": "Close through E and ult commits when Charm is down.",
+              "scope": "pair",
+              "sourceIds": [
+                "shok-ahri"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 777,
+                  "key": "E"
+                },
+                {
+                  "champion": 777,
+                  "key": "R"
+                },
+                {
+                  "champion": 103,
+                  "key": "E"
+                }
+              ]
+            },
+            {
+              "text": "Do not chase into fog or river without vision: her game is picks and ganks.",
+              "scope": "pair",
+              "sourceIds": [
+                "shok-ahri",
+                "sjorry"
+              ]
+            }
+          ]
+        }
+      },
+      "itemization": [],
+      "sources": [
+        {
+          "id": "peng04",
+          "author": "Peng04",
+          "rankClaim": "Challenger · Ahri main",
+          "rank": "challenger",
+          "url": "https://www.mobafire.com/league-of-legends/build/26-20-pengs-ahri-guide-5-1mil-points-13x-challenger-648700",
+          "kind": "mobafire"
+        },
+        {
+          "id": "shok-ahri",
+          "author": "ShokLoL",
+          "rankClaim": "Rank 1 Challenger · Ahri main",
+          "rank": "challenger",
+          "url": "https://www.mobafire.com/league-of-legends/build/26-5-shoks-rank-1-challenger-ahri-guide-635065",
+          "kind": "mobafire"
+        },
+        {
+          "id": "sjorry",
+          "author": "Sjorry",
+          "rankClaim": "Former Rank 1 Ahri NA; challenger most seasons (video intro) · Ahri main",
+          "rank": "challenger",
+          "peak": true,
+          "url": "https://www.youtube.com/watch?v=HogChD8fsdo&t=55s",
+          "kind": "youtube"
+        }
+      ]
+    },
+    {
+      "champion": 777,
+      "enemy": 157,
+      "lane": "mid",
+      "patch": "26.21",
+      "reviewed": false,
+      "difficulty": "Skill matchup",
+      "favoredWhen": "Survive his levels 1–2, proc his shield before trading, and take over once level 6 and Blade of the Ruined King components land.",
+      "keyTips": [
+        {
+          "text": "Concede levels 1–2. His passive shield plus his dashes let him choose every early fight, so do not walk up for the wave into his level 2; play safe until level 3, when the lane becomes a real matchup.",
+          "scope": "pair",
+          "sourceIds": [
+            "dennissuarez69"
+          ],
+          "abilityKeys": [
+            {
+              "champion": 157,
+              "key": "P"
+            }
+          ]
+        },
+        {
+          "text": "Pop his passive shield with Spirit Cleave before every trade, and only commit while your shield is up and his is down. Your shield is on demand and his is not, which is what turns trades winning.",
+          "scope": "pair",
+          "sourceIds": [
+            "dennissuarez69",
+            "nicolaslamelas"
+          ],
+          "abilityKeys": [
+            {
+              "champion": 777,
+              "key": "W"
+            }
+          ]
+        },
+        {
+          "text": "Release Fate Sealed at close range. From far away his Wind Wall ({cd:157:W}) eats the wave, but the point-blank knockup lands before the wall matters, so step in before casting it.",
+          "scope": "pair",
+          "sourceIds": [
+            "dennissuarez69"
+          ],
+          "abilityKeys": [
+            {
+              "champion": 777,
+              "key": "Q"
+            },
+            {
+              "champion": 157,
+              "key": "W"
+            },
+            {
+              "champion": 777,
+              "key": "R"
+            }
+          ]
+        }
+      ],
+      "enemyTips": {},
+      "sections": {
+        "overview": {
+          "tips": []
+        },
+        "early-lane": {
+          "tips": [
+            {
+              "text": "Start Doran's Blade, not anything greedy: without its stats he simply walks over you in the opening trades.",
+              "scope": "pair",
+              "sourceIds": [
+                "dennissuarez69"
+              ],
+              "itemIds": [
+                1055
+              ]
+            },
+            {
+              "text": "Take Second Wind and Shield Bash second. He procs Bone Plating for free with a passing Q and disengages before you can answer, which wastes the rune; Second Wind keeps working through his poke pattern.",
+              "scope": "pair",
+              "sourceIds": [
+                "dennissuarez69"
+              ]
+            },
+            {
+              "text": "Take Exhaust. It cripples his committed all-in far more than Ignite punishes him, and if he takes Exhaust while you take Ignite you lose the duel on summoners alone.",
+              "scope": "pair",
+              "sourceIds": [
+                "dennissuarez69"
+              ]
+            }
+          ]
+        },
+        "mid-lane": {
+          "tips": [
+            {
+              "text": "From level 6 with Blade components, E-trade him every window. Stack Lethal Tempo first, then Q him in the face as he dashes to one of your minions and cast Soul Unbound while the stacks hold.",
+              "scope": "pair",
+              "sourceIds": [
+                "dennissuarez69"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 777,
+                  "key": "E"
+                },
+                {
+                  "champion": 157,
+                  "key": "E"
+                }
+              ]
+            },
+            {
+              "text": "Answer his last-Q knockup with your E snapback instead of eating it, and never cast a ranged Q3 through a ready Wind Wall: the wave dies and you stand exposed through its full cooldown ({cd:157:W}).",
+              "scope": "pair",
+              "sourceIds": [
+                "mmjyn"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 777,
+                  "key": "E"
+                },
+                {
+                  "champion": 777,
+                  "key": "Q"
+                },
+                {
+                  "champion": 157,
+                  "key": "W"
+                }
+              ]
+            },
+            {
+              "text": "Rush attack speed first: Berserker's plus Recurve Bow. The movement speed dodges his Qs and the attack speed stacks Tempo so you out-damage him once both shields are down.",
+              "scope": "pair",
+              "sourceIds": [
+                "dennissuarez69"
+              ],
+              "itemIds": [
+                1043
+              ]
+            }
+          ]
+        },
+        "win-condition": {
+          "tips": [
+            {
+              "text": "Finish Blade of the Ruined King and the lane flips. Past that item your E trades win every time and he becomes a non-factor in the duel, so stop respecting him and start running at him.",
+              "scope": "pair",
+              "sourceIds": [
+                "dennissuarez69",
+                "nicolaslamelas"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 777,
+                  "key": "E"
+                }
+              ]
+            },
+            {
+              "text": "Play for the scale, not the kill. Your shield is available on demand through W and E while his passive comes back on its own timer, so every even minute that passes favors you.",
+              "scope": "pair",
+              "sourceIds": [
+                "nicolaslamelas"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 777,
+                  "key": "W"
+                },
+                {
+                  "champion": 777,
+                  "key": "E"
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "itemization": [
+        {
+          "text": "Rush Blade of the Ruined King. It is the only first item with the dueling stats to match him, and both the components and the completion are powerspikes in this lane.",
+          "scope": "pair",
+          "sourceIds": [
+            "mmjyn",
+            "nicolaslamelas",
+            "dennissuarez69"
+          ],
+          "itemIds": [
+            3124
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "id": "mauro2347",
+          "author": "mauro2347",
+          "rankClaim": "Master 260 LP (stated in post) · Yone main",
+          "rank": "master",
+          "url": "https://www.reddit.com/r/YoneMains/comments/1q1wnaz/my_personal_yone_mid_matchup_tierlistmid_to_high/",
+          "kind": "web"
+        },
+        {
+          "id": "mmjyn",
+          "author": "mmjyn",
+          "rankClaim": "Master (stated in post) · Yone main",
+          "rank": "master",
+          "url": "https://www.reddit.com/r/YoneMains/comments/1sms1wy/i_find_the_yasuo_matchup_unplayable/",
+          "kind": "web"
+        },
+        {
+          "id": "dennissuarez69",
+          "author": "Dennissuarez69",
+          "rankClaim": "Diamond 1 OTP Yasuo (stated in comment)",
+          "rank": "diamond",
+          "url": "https://www.reddit.com/r/YoneMains/comments/1sms1wy/i_find_the_yasuo_matchup_unplayable/",
+          "kind": "web"
+        },
+        {
+          "id": "nicolaslamelas",
+          "author": "nicolas_lamelas17",
+          "rankClaim": "Diamond (4) Yone OTP (stated in comment)",
+          "rank": "diamond",
+          "url": "https://www.reddit.com/r/YoneMains/comments/1sms1wy/i_find_the_yasuo_matchup_unplayable/",
+          "kind": "web"
+        }
+      ]
+    },
+    {
+      "champion": 777,
+      "enemy": 266,
+      "lane": "top",
+      "patch": "26.21",
+      "reviewed": false,
+      "difficulty": "Skill matchup",
+      "favoredWhen": "Yone wins by moving E around Q swings, baiting E before R, and pressing side lanes ahead; Aatrox wins if he contests bad waves, all-ins ultimate-down windows, and outsustains poke trades.",
+      "keyTips": [
+        {
+          "text": "Move E around his Q swings instead of through them. A dodge that becomes a trade wins the exchange his Q started, since he cannot track the reposition.",
+          "scope": "pair",
+          "sourceIds": [
+            "zacheryzztop"
+          ],
+          "heading": "E angles",
+          "abilityKeys": [
+            {
+              "champion": 777,
+              "key": "E"
+            },
+            {
+              "champion": 266,
+              "key": "Q"
+            }
+          ]
+        },
+        {
+          "text": "Bait his E with Q3, then cast R after it fades. He holds the dash for your instant post-Q3 ult, so spend the knock-up first and ult the window it leaves.",
+          "scope": "pair",
+          "sourceIds": [
+            "zacheryzztop",
+            "godkingaatrox"
+          ],
+          "heading": "R bait",
+          "abilityKeys": [
+            {
+              "champion": 777,
+              "key": "R"
+            },
+            {
+              "champion": 777,
+              "key": "Q"
+            },
+            {
+              "champion": 266,
+              "key": "E"
+            }
+          ]
+        },
+        {
+          "text": "Give ground while your ultimate is down. You become his all-in target at any approach angle without it, so concede space until it returns.",
+          "scope": "pair",
+          "sourceIds": [
+            "naayil"
+          ],
+          "heading": "R-down defense",
+          "abilityKeys": [
+            {
+              "champion": 777,
+              "key": "R"
+            }
+          ]
+        }
+      ],
+      "enemyTips": {},
+      "sections": {
+        "overview": {
+          "tips": []
+        },
+        "early-lane": {
+          "tips": [
+            {
+              "text": "Rush boots before anything else. The kite around every Q zone starts with movement, and without it his sweet spots land for free.",
+              "scope": "pair",
+              "sourceIds": [
+                "zacheryzztop"
+              ],
+              "heading": "Boots first"
+            },
+            {
+              "text": "Never trade on a stacked-against-you wave. He contests bad wave states first, so fix the wave, then look for the exchange.",
+              "scope": "pair",
+              "sourceIds": [
+                "naayil"
+              ],
+              "heading": "Wave first"
+            }
+          ]
+        },
+        "mid-lane": {
+          "tips": [
+            {
+              "text": "Refuse the spacing poke war. He outsustains short trades, so take only committed all-ins where you land first and leave after your combo.",
+              "scope": "pair",
+              "sourceIds": [
+                "godkingaatrox"
+              ],
+              "heading": "No poke war",
+              "abilityKeys": [
+                {
+                  "champion": 777,
+                  "key": "Q"
+                }
+              ]
+            },
+            {
+              "text": "Shove out a stacked wave before leaving it. If you must go while minions pile against you, expect the full crash and a level gap on return.",
+              "scope": "pair",
+              "sourceIds": [
+                "naayil"
+              ],
+              "heading": "Crash answer"
+            }
+          ]
+        },
+        "win-condition": {
+          "tips": [
+            {
+              "text": "Hold the side lane once ahead and join fights on your terms. From behind he has no answer in either setting, so keep the pressure split.",
+              "scope": "pair",
+              "sourceIds": [
+                "zacheryzztop"
+              ],
+              "heading": "Side press"
+            },
+            {
+              "text": "Shove the side wave before each Dragon, then rotate to the fight. The shove is what lets you leave without donating plates for the objective.",
+              "scope": "pair",
+              "sourceIds": [
+                "naayil"
+              ],
+              "heading": "Objective shove"
+            }
+          ]
+        }
+      },
+      "itemization": [],
+      "sources": [
+        {
+          "id": "zacheryzztop",
+          "author": "ZacheryZZTOP",
+          "rankClaim": "Grandmaster (lolmatchups account tier, Riot-linked ZacheryZZTOP#TOP) · Yone main",
+          "rank": "grandmaster",
+          "url": "https://lolmatchups.gg/Yone/matchups?lane=TOP",
+          "kind": "web"
+        },
+        {
+          "id": "godkingaatrox",
+          "author": "GodKingAatrox",
+          "rankClaim": "Master (lolmatchups account tier, Riot-linked GodKingAatrox#NA1) · Aatrox main",
+          "rank": "master",
+          "url": "https://lolmatchups.gg/tips/Aatrox-Yone?languageCode=en",
+          "kind": "web"
+        },
+        {
+          "id": "naayil",
+          "author": "Naayil",
+          "rankClaim": "Challenger (video description tag) · Aatrox main",
+          "rank": "challenger",
+          "url": "https://www.youtube.com/watch?v=DN_GEYD6YEM&t=141s",
+          "kind": "youtube"
+        }
+      ]
+    },
+    {
+      "champion": 777,
+      "enemy": 517,
+      "lane": "mid",
+      "patch": "26.21",
+      "reviewed": false,
+      "difficulty": "Medium",
+      "favoredWhen": "Yone-favored with the anti-burst setup and Ignite: blunt his opener, chase the long trade, and close with Shieldbow.",
+      "keyTips": [
+        {
+          "text": "Run Lethal Tempo with Bone Plating, one more offensive rune from Resolve, and the flat-health shard instead of scaling health. Plating turns his short burst from half-health chunks into trades you win.",
+          "scope": "pair",
+          "sourceIds": [
+            "mauro2347"
+          ]
+        },
+        {
+          "text": "Answer his level 1 directly. Most Sylas players open E plus two autos and run; tank it on Plating, keep autoing with Q through Lethal Tempo, and with Ignite up he is dead if he stays instead of retreating under tower.",
+          "scope": "pair",
+          "sourceIds": [
+            "mauro2347"
+          ],
+          "abilityKeys": [
+            {
+              "champion": 777,
+              "key": "Q"
+            },
+            {
+              "champion": 517,
+              "key": "E"
+            }
+          ]
+        },
+        {
+          "text": "Take Ignite. He heals through your kill window without it, and this lane only swings on real kill pressure since it snowballs for both sides.",
+          "scope": "pair",
+          "sourceIds": [
+            "mauro2347"
+          ]
+        }
+      ],
+      "enemyTips": {},
+      "sections": {
+        "overview": {
+          "tips": []
+        },
+        "early-lane": {
+          "tips": [
+            {
+              "text": "Fight him after his rotation ends, not during it. Chase with Soul Unbound once he has spent his burst: you destroy him in the long trade, so the extended fight is always yours.",
+              "scope": "pair",
+              "sourceIds": [
+                "mauro2347"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 777,
+                  "key": "E"
+                }
+              ]
+            },
+            {
+              "text": "Only take his short trades while Bone Plating holds. Without it he chunks half your health bar for free, so respect its cooldown and give ground until it returns.",
+              "scope": "pair",
+              "sourceIds": [
+                "mauro2347"
+              ]
+            }
+          ]
+        },
+        "mid-lane": {
+          "tips": [
+            {
+              "text": "Never hand him free Kingslayer heals. Do not poke him behind his tower, where he takes your poke and heals it back with W before walking away even.",
+              "scope": "pair",
+              "sourceIds": [
+                "mauro2347"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 517,
+                  "key": "W"
+                }
+              ]
+            },
+            {
+              "text": "Keep the same rule past the opener: let him start his trade, then run him down with E while his cooldowns are gone. He has no disengage without his E, which is a large part of his early damage.",
+              "scope": "pair",
+              "sourceIds": [
+                "mauro2347"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 777,
+                  "key": "E"
+                },
+                {
+                  "champion": 517,
+                  "key": "E"
+                }
+              ]
+            }
+          ]
+        },
+        "win-condition": {
+          "tips": [
+            {
+              "text": "Build Immortal Shieldbow first. Once it lands, the 1v1 is over for him unless he already got fed, so force the duel instead of waiting.",
+              "scope": "pair",
+              "sourceIds": [
+                "mauro2347"
+              ],
+              "itemIds": [
+                3133,
+                6673
+              ]
+            },
+            {
+              "text": "Treat the lane as a snowball matchup for both sides. Meet the setup requirements, stay even, and your scaling wins; fall behind and he melts you, so take no coinflip fights from behind.",
+              "scope": "pair",
+              "sourceIds": [
+                "mauro2347"
+              ]
+            }
+          ]
+        }
+      },
+      "itemization": [
+        {
+          "text": "First item is Immortal Shieldbow for the duel: it ends his 1v1 chances and converts your even lane into a won one.",
+          "scope": "pair",
+          "sourceIds": [
+            "mauro2347"
+          ],
+          "itemIds": [
+            3133,
+            6673
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "id": "mauro2347",
+          "author": "mauro2347",
+          "rankClaim": "Master 260 LP (stated in post) · Yone main",
+          "rank": "master",
+          "url": "https://www.reddit.com/r/YoneMains/comments/1q1wnaz/my_personal_yone_mid_matchup_tierlistmid_to_high/",
+          "kind": "web"
+        }
+      ]
+    }
+  ],
+  "vods": [
+    {
+      "enemy": 1,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "iFeJuMrlFng",
+          "title": "Yone Mid vs Annie - EUW Challenger Patch 25.13",
+          "rankClaim": "Challenger",
+          "patch": "25.13",
+          "durationSec": 1564,
+          "region": "EUW",
+          "uploaded": "2025-07-17",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 2,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "1FHU34kC91c",
+          "title": "Yone Top vs Olaf - KR Grandmaster Patch 26.20",
+          "rankClaim": "Grandmaster",
+          "patch": "26.20",
+          "durationSec": 1607,
+          "region": "KR",
+          "uploaded": "2026-10-15",
+          "result": "W",
+          "moments": [
+            {
+              "atSec": 148,
+              "label": "First Blood — Yone kills Nidalee",
+              "kind": "kill"
+            },
+            {
+              "atSec": 152,
+              "label": "Viego kills Olaf",
+              "kind": "kill"
+            },
+            {
+              "atSec": 542,
+              "label": "Blue takes 1st Dragon (Cloud)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 629,
+              "label": "Yone outplays Sion"
+            },
+            {
+              "atSec": 698,
+              "label": "Rell kills Nidalee",
+              "kind": "kill"
+            },
+            {
+              "atSec": 853,
+              "label": "Viego eliminates Lucian"
+            },
+            {
+              "atSec": 882,
+              "label": "Jhin kills Sion",
+              "kind": "kill"
+            },
+            {
+              "atSec": 890,
+              "label": "Blue takes 2nd Dragon (Hextech)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 895,
+              "label": "Yone eliminates Braum"
+            },
+            {
+              "atSec": 955,
+              "label": "Yone picks off Lucian"
+            },
+            {
+              "atSec": 1079,
+              "label": "Yone catches Olaf"
+            },
+            {
+              "atSec": 1154,
+              "label": "Team fight (3 kills)",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1174,
+              "label": "Yone Triple Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1219,
+              "label": "Blue takes 3rd Dragon (Mountain)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1326,
+              "label": "Red takes Baron",
+              "kind": "baron"
+            },
+            {
+              "atSec": 1378,
+              "label": "Rell eliminates Olaf"
+            },
+            {
+              "atSec": 1537,
+              "label": "Red takes 1st Dragon (Mountain)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1579,
+              "label": "Mid Inhibitor falls (Red)"
+            }
+          ]
+        },
+        {
+          "videoId": "syGxpKT_v7U",
+          "title": "Yone vs Olaf Top - KR Grandmaster - Patch 16.09 Season 16",
+          "rankClaim": "Grandmaster",
+          "patch": "26.9",
+          "durationSec": 1591,
+          "region": "KR",
+          "uploaded": "2026-05-09",
+          "moments": []
+        },
+        {
+          "videoId": "uTtHWRV3v_s",
+          "title": "Yone vs Olaf Top - KR Grandmaster - Patch 25.12 Season 15",
+          "rankClaim": "Grandmaster",
+          "patch": "25.12",
+          "durationSec": 1741,
+          "region": "KR",
+          "uploaded": "2025-06-24",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 3,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "tLPMTjPLkBI",
+          "title": "Yone Mid vs Galio - KR Master Patch 26.05",
+          "rankClaim": "Master",
+          "patch": "26.5",
+          "durationSec": 1492,
+          "region": "KR",
+          "uploaded": "2026-03-07",
+          "moments": []
+        },
+        {
+          "videoId": "GdmixVcjoUM",
+          "title": "T1 Faker Yone vs Galio [ MID ] Patch 26.1 Ranked Korea",
+          "rankClaim": "Master+",
+          "patch": "26.1",
+          "durationSec": 1075,
+          "region": "KR",
+          "player": "Faker",
+          "team": "T1",
+          "uploaded": "2026-01-15",
+          "moments": []
+        },
+        {
+          "videoId": "ZhyOCpwVaEw",
+          "title": "Yone Mid vs Galio - KR Grandmaster Patch 26.01",
+          "rankClaim": "Grandmaster",
+          "patch": "26.1",
+          "durationSec": 1484,
+          "region": "KR",
+          "uploaded": "2026-01-14",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 97,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 157,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 319,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 476,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 926,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1071,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1106,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1139,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1168,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1257,
+              "label": "Get a Triple Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1277,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1343,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1386,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1404,
+              "label": "Take down The Inhibitor"
+            },
+            {
+              "atSec": 1420,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1447,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1461,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1473,
+              "label": "End credit"
+            }
+          ]
+        },
+        {
+          "videoId": "KSneBgFmOKU",
+          "title": "Yone Mid vs Galio - KR Grandmaster Patch 25.23",
+          "rankClaim": "Grandmaster",
+          "patch": "25.23",
+          "durationSec": 1553,
+          "region": "KR",
+          "uploaded": "2025-11-22",
+          "moments": []
+        },
+        {
+          "videoId": "VKZ4VYKCa88",
+          "title": "Yone Mid vs Galio - KR Grandmaster Patch 25.22",
+          "rankClaim": "Grandmaster",
+          "patch": "25.22",
+          "durationSec": 2118,
+          "region": "KR",
+          "uploaded": "2025-11-09",
+          "moments": []
+        },
+        {
+          "videoId": "DrNUiKW5cQI",
+          "title": "Yone Mid vs Galio - KR Grandmaster Patch 25.04",
+          "rankClaim": "Grandmaster",
+          "patch": "25.4",
+          "durationSec": 1903,
+          "region": "KR",
+          "uploaded": "2025-02-26",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 4,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "wROJgaSKV78",
+          "title": "Yone Mid vs Twisted Fate - KR Grandmaster Patch 25.07",
+          "rankClaim": "Grandmaster",
+          "patch": "25.7",
+          "durationSec": 1550,
+          "region": "KR",
+          "uploaded": "2025-04-05",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 214,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 512,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 539,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 922,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 959,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1003,
+              "label": "Hunt The Dragon",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1034,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1171,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1221,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1321,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1359,
+              "label": "Hunt The Dragon",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1452,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1471,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1499,
+              "label": "Take down The Inhibitor"
+            },
+            {
+              "atSec": 1529,
+              "label": "End credit"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 8,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "gIp3RCjLeKM",
+          "title": "T1 Faker Yone vs Vladimir [ MID ] Korea Master Patch 26.3",
+          "rankClaim": "Master",
+          "patch": "26.3",
+          "durationSec": 1162,
+          "region": "KR",
+          "player": "Faker",
+          "team": "T1",
+          "uploaded": "2026-02-11",
+          "moments": []
+        },
+        {
+          "videoId": "JIjV1nOXHVY",
+          "title": "Yone vs Vladimir Mid - KR Challenger - Patch 25.20 Season 15",
+          "rankClaim": "Challenger",
+          "patch": "25.20",
+          "durationSec": 1651,
+          "region": "KR",
+          "uploaded": "2025-10-22",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 13,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "NEQZd3kVWUM",
+          "title": "Faker Yone vs Ryze Mid - KR Challenger - Patch 16.18 Season 16",
+          "rankClaim": "Challenger",
+          "patch": "26.18",
+          "durationSec": 2281,
+          "region": "KR",
+          "player": "Faker",
+          "uploaded": "2026-09-22",
+          "moments": []
+        },
+        {
+          "videoId": "2qCUv-V10Qw",
+          "title": "Yone Mid vs Ryze (BDG Ronaldo) - EUW Challenger Patch 26.18",
+          "rankClaim": "Challenger",
+          "patch": "26.18",
+          "durationSec": 1704,
+          "region": "EUW",
+          "uploaded": "2026-09-19",
+          "moments": []
+        },
+        {
+          "videoId": "qzTRXW9vnMY",
+          "title": "T1 Faker Yone vs Ryze [ MID ] Korea Challenger 2089 LP | Patch 26.18",
+          "rankClaim": "Challenger",
+          "patch": "26.18",
+          "durationSec": 2130,
+          "region": "KR",
+          "player": "Faker",
+          "team": "T1",
+          "uploaded": "2026-09-16",
+          "moments": []
+        },
+        {
+          "videoId": "IHkVP6bKK2c",
+          "title": "Yone Mid vs Ryze - KR Challenger Patch 26.06",
+          "rankClaim": "Challenger",
+          "patch": "26.6",
+          "durationSec": 1709,
+          "region": "KR",
+          "uploaded": "2026-03-21",
+          "moments": []
+        },
+        {
+          "videoId": "3Q88cU0mBXY",
+          "title": "DK ShowMaker Yone vs Ryze [ MID ] Rank #4 Korea Challenger | Patch 25.17",
+          "rankClaim": "Challenger",
+          "patch": "25.17",
+          "durationSec": 1615,
+          "region": "KR",
+          "player": "ShowMaker",
+          "team": "DK",
+          "uploaded": "2025-09-04",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 13,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "QyO8UUj5Nyc",
+          "title": "Yone Top vs Ryze - NA Challenger Patch 25.11",
+          "rankClaim": "Challenger",
+          "patch": "25.11",
+          "durationSec": 1714,
+          "region": "NA",
+          "uploaded": "2025-06-08",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 14,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "YohUFtisdvY",
+          "title": "(JDG Xiaoxu) Yone Mid vs Sion - KR Master Patch 26.14",
+          "rankClaim": "Master",
+          "patch": "26.14",
+          "durationSec": 1824,
+          "region": "KR",
+          "player": "Xiaoxu",
+          "team": "JDG",
+          "uploaded": "2026-07-17",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 14,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "j_JZ-urf1c8",
+          "title": "(DK Siwoo) Yone Top vs Sion - KR Challenger Patch 26.11",
+          "rankClaim": "Challenger",
+          "patch": "26.11",
+          "durationSec": 1734,
+          "region": "KR",
+          "player": "Siwoo",
+          "team": "DK",
+          "uploaded": "2026-06-07",
+          "moments": []
+        },
+        {
+          "videoId": "OSp-_HZRM6E",
+          "title": "Yone Top vs Sion - EUW Challenger Patch 26.06",
+          "rankClaim": "Challenger",
+          "patch": "26.6",
+          "durationSec": 1881,
+          "region": "EUW",
+          "uploaded": "2026-03-28",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 24,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "-fpd_IHk1Sg",
+          "title": "Yone Top vs Jax - KR Master Patch 26.08",
+          "rankClaim": "Master",
+          "patch": "26.8",
+          "durationSec": 1515,
+          "region": "KR",
+          "uploaded": "2026-04-24",
+          "moments": []
+        },
+        {
+          "videoId": "77Mh7NHJaOE",
+          "title": "Yone Top vs Jax - EUW Grandmaster Patch 25.16",
+          "rankClaim": "Grandmaster",
+          "patch": "25.16",
+          "durationSec": 1697,
+          "region": "EUW",
+          "uploaded": "2025-08-25",
+          "moments": []
+        },
+        {
+          "videoId": "j-DOUd1prDo",
+          "title": "Yone vs Jax Top - EWU Challenger - Patch 25.5 Season 15",
+          "rankClaim": "Challenger",
+          "patch": "25.5",
+          "durationSec": 2031,
+          "uploaded": "2025-03-08",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 27,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "efWi6iFQNO4",
+          "title": "(CN1 TheShy) Yone Top vs Singed - KR Master Patch 26.14",
+          "rankClaim": "Master",
+          "patch": "26.14",
+          "durationSec": 1511,
+          "region": "KR",
+          "player": "TheShy",
+          "uploaded": "2026-07-25",
+          "moments": []
+        },
+        {
+          "videoId": "YOM3bkXmUUs",
+          "title": "(ANB Boda) Yone Top vs Singed - EUW Challenger Patch 26.13",
+          "rankClaim": "Challenger",
+          "patch": "26.13",
+          "durationSec": 1510,
+          "region": "EUW",
+          "player": "ANB Boda",
+          "uploaded": "2026-07-05",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 38,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "wjBaPeaL_PE",
+          "title": "Yone Mid vs Kassadin - KR Grandmaster Patch 25.14",
+          "rankClaim": "Grandmaster",
+          "patch": "25.14",
+          "durationSec": 1574,
+          "region": "KR",
+          "uploaded": "2025-07-20",
+          "moments": []
+        },
+        {
+          "videoId": "29FelLfmEs8",
+          "title": "Yone Mid vs Kassadin - KR Challenger Patch 25.12",
+          "rankClaim": "Challenger",
+          "patch": "25.12",
+          "durationSec": 1669,
+          "region": "KR",
+          "uploaded": "2025-06-14",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 39,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "EstFCN5EhDE",
+          "title": "Yone vs Irelia Mid - EUW CHallenger - Patch 16.06 Season 16",
+          "rankClaim": "Challenger",
+          "patch": "26.6",
+          "durationSec": 1396,
+          "region": "EUW",
+          "uploaded": "2026-03-26",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 39,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "jgSweBDRfB8",
+          "title": "Yone Top vs Irelia - NA Challenger Patch 26.05",
+          "rankClaim": "Challenger",
+          "patch": "26.5",
+          "durationSec": 1770,
+          "region": "NA",
+          "uploaded": "2026-03-14",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 41,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "vRW_ca0Ql0Y",
+          "title": "Yone Top vs Gangplank - EUW Challenger Patch 25.08",
+          "rankClaim": "Challenger",
+          "patch": "25.8",
+          "durationSec": 1941,
+          "region": "EUW",
+          "uploaded": "2025-04-25",
+          "moments": []
+        },
+        {
+          "videoId": "Z65b-40zvDI",
+          "title": "Yone vs GangPlank Top - KR Challenger - Patch 25.8 Season 15",
+          "rankClaim": "Challenger",
+          "patch": "25.8",
+          "durationSec": 1366,
+          "region": "KR",
+          "uploaded": "2025-04-20",
+          "moments": []
+        },
+        {
+          "videoId": "XRvLASITy98",
+          "title": "Yone Top vs Gangplank - KR Master Patch 25.07",
+          "rankClaim": "Master",
+          "patch": "25.7",
+          "durationSec": 1610,
+          "region": "KR",
+          "uploaded": "2025-04-16",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 685,
+              "label": "Get a Triple Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 747,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 822,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 927,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1070,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1091,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1208,
+              "label": "Hunt The Atakhan"
+            },
+            {
+              "atSec": 1428,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1519,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1589,
+              "label": "End credit"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 43,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "aM_W4rh1pgY",
+          "title": "Yone Top vs Karma - EUW Grandmaster Patch 26.21",
+          "rankClaim": "Grandmaster",
+          "patch": "26.21",
+          "durationSec": 1674,
+          "region": "EUW",
+          "uploaded": "2026-10-29",
+          "result": "W",
+          "moments": [
+            {
+              "atSec": 321,
+              "label": "Yone catches Karma"
+            },
+            {
+              "atSec": 663,
+              "label": "Blue takes 1st Dragon (Mountain)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 689,
+              "label": "Locke kills Karma",
+              "kind": "kill"
+            },
+            {
+              "atSec": 742,
+              "label": "Yone takes down Yasuo"
+            },
+            {
+              "atSec": 833,
+              "label": "Locke takes down Sylas"
+            },
+            {
+              "atSec": 913,
+              "label": "Yone outduels Karma again"
+            },
+            {
+              "atSec": 965,
+              "label": "Kalista eliminates Sylas"
+            },
+            {
+              "atSec": 1008,
+              "label": "Red takes 1st Dragon (Infernal)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1175,
+              "label": "Locke Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1183,
+              "label": "Locke Quadra Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1215,
+              "label": "Red takes Baron",
+              "kind": "baron"
+            },
+            {
+              "atSec": 1251,
+              "label": "Locke takes down Sylas"
+            },
+            {
+              "atSec": 1341,
+              "label": "Red takes 2nd Dragon (Hextech)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1417,
+              "label": "Yone outplays Yasuo"
+            },
+            {
+              "atSec": 1546,
+              "label": "Yone eliminates Alistar"
+            },
+            {
+              "atSec": 1595,
+              "label": "Red takes 2nd Baron",
+              "kind": "baron"
+            },
+            {
+              "atSec": 1655,
+              "label": "Locke Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1658,
+              "label": "Locke Triple Kill",
+              "kind": "kill"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 50,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "o4pr6kiqR4E",
+          "title": "Yone Mid vs Swain - KR Master Patch 26.02",
+          "rankClaim": "Master",
+          "patch": "26.2",
+          "durationSec": 1504,
+          "region": "KR",
+          "uploaded": "2026-01-25",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 54,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "lXmmgJUS7-8",
+          "title": "Yone Top vs Malphite - EUW Challenger Patch 25.10",
+          "rankClaim": "Challenger",
+          "patch": "25.10",
+          "durationSec": 1461,
+          "region": "EUW",
+          "uploaded": "2025-05-23",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 55,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "GXCuoR6VTm4",
+          "title": "Yone vs Katarina Mid - KR Grandmaster - Patch 16.10 Season 16",
+          "rankClaim": "Grandmaster",
+          "patch": "26.10",
+          "durationSec": 2071,
+          "region": "KR",
+          "uploaded": "2026-05-20",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 58,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "i7_VGfNsz5c",
+          "title": "Yone Top vs Renekton - NA Grandmaster Patch 25.24",
+          "rankClaim": "Grandmaster",
+          "patch": "25.24",
+          "durationSec": 1541,
+          "region": "NA",
+          "uploaded": "2025-12-13",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 61,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "TaIc9wvDAGo",
+          "title": "Yone Mid vs Orianna - KR Grandmaster Patch 25.20",
+          "rankClaim": "Grandmaster",
+          "patch": "25.20",
+          "durationSec": 1634,
+          "region": "KR",
+          "uploaded": "2025-10-10",
+          "moments": []
+        },
+        {
+          "videoId": "7MgYE78EzLk",
+          "title": "Yone vs Orianna Mid - KR Challenger - Patch 25.14 Season 15",
+          "rankClaim": "Challenger",
+          "patch": "25.14",
+          "durationSec": 1931,
+          "region": "KR",
+          "uploaded": "2025-07-28",
+          "moments": []
+        },
+        {
+          "videoId": "kyl-YiiSEhY",
+          "title": "Faker Yone vs Orianna Mid - KR Challenger - Patch 25.10 Season 15",
+          "rankClaim": "Challenger",
+          "patch": "25.10",
+          "durationSec": 2086,
+          "region": "KR",
+          "player": "Faker",
+          "uploaded": "2025-05-21",
+          "moments": []
+        },
+        {
+          "videoId": "t7S45cmHFLE",
+          "title": "T1 Faker Yone vs Orianna [ MID ] Korea Grandmaster Patch 25.10",
+          "rankClaim": "Grandmaster",
+          "patch": "25.10",
+          "durationSec": 1827,
+          "region": "KR",
+          "player": "Faker",
+          "team": "T1",
+          "uploaded": "2025-05-20",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 68,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "VLLS7gNVBu8",
+          "title": "Yone Top vs Rumble - KR Master Patch 26.09",
+          "rankClaim": "Master",
+          "patch": "26.9",
+          "durationSec": 1677,
+          "region": "KR",
+          "uploaded": "2026-05-02",
+          "moments": []
+        },
+        {
+          "videoId": "m1JZISkqGVQ",
+          "title": "Yone Top vs Rumble - EUW Challenger Patch 26.01",
+          "rankClaim": "Challenger",
+          "patch": "26.1",
+          "durationSec": 1612,
+          "region": "EUW",
+          "uploaded": "2026-01-18",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 69,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "TlLVrRL2H_8",
+          "title": "(HLE Zeka) Yone Mid vs Cassiopeia - KR Challenger Patch 26.13",
+          "rankClaim": "Challenger",
+          "patch": "26.13",
+          "durationSec": 1731,
+          "region": "KR",
+          "player": "Zeka",
+          "team": "HLE",
+          "uploaded": "2026-06-28",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 79,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "ENeRB7-t_sU",
+          "title": "Yone Top vs Gragas - KR Master Patch 26.10",
+          "rankClaim": "Master",
+          "patch": "26.10",
+          "durationSec": 1620,
+          "region": "KR",
+          "uploaded": "2026-05-15",
+          "moments": []
+        },
+        {
+          "videoId": "yNmCt-tf4U0",
+          "title": "Yone Top vs Gragas - KR Master Patch 25.24",
+          "rankClaim": "Master",
+          "patch": "25.24",
+          "durationSec": 1581,
+          "region": "KR",
+          "uploaded": "2026-01-02",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 304,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 511,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 655,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 738,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 864,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 988,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1013,
+              "label": "Get a Triple Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1038,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1134,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1168,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1545,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1570,
+              "label": "End credit"
+            }
+          ]
+        },
+        {
+          "videoId": "gohBDlwcLck",
+          "title": "Yone Top vs Gragas - EUW Challenger Patch 25.18",
+          "rankClaim": "Challenger",
+          "patch": "25.18",
+          "durationSec": 1635,
+          "region": "EUW",
+          "uploaded": "2025-09-20",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 82,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "N8s6GLAiGkA",
+          "title": "Yone Top vs Mordekaiser - KR Master Patch 25.15",
+          "rankClaim": "Master",
+          "patch": "25.15",
+          "durationSec": 1736,
+          "region": "KR",
+          "uploaded": "2025-08-08",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 83,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "8WMdro8aCTk",
+          "title": "Yone Top vs Yorick - KR Master Patch 26.03",
+          "rankClaim": "Master",
+          "patch": "26.3",
+          "durationSec": 1585,
+          "region": "KR",
+          "uploaded": "2026-02-14",
+          "moments": []
+        },
+        {
+          "videoId": "Kh9pmbfpwnk",
+          "title": "Yone vs Yorick Top - KR Grandmaster - Patch 25.19 Season 15",
+          "rankClaim": "Grandmaster",
+          "patch": "25.19",
+          "durationSec": 1531,
+          "region": "KR",
+          "uploaded": "2025-09-26",
+          "moments": []
+        },
+        {
+          "videoId": "Zu7ncGwfVL0",
+          "title": "Yone vs Yorick Top - KR Grandmaster - Patch 25.11 Season 15",
+          "rankClaim": "Grandmaster",
+          "patch": "25.11",
+          "durationSec": 1501,
+          "region": "KR",
+          "uploaded": "2025-05-31",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 84,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "mudFP_EGbyI",
+          "title": "Yone vs akali Mid - KR Grandmaster - Patch 16.20 Season 20",
+          "rankClaim": "Grandmaster",
+          "patch": "26.20",
+          "durationSec": 2221,
+          "region": "KR",
+          "uploaded": "2026-10-13",
+          "moments": []
+        },
+        {
+          "videoId": "acf1xt5W1XM",
+          "title": "Yone Mid vs Akali - KR Master Patch 26.19",
+          "rankClaim": "Master",
+          "patch": "26.19",
+          "durationSec": 1464,
+          "region": "KR",
+          "uploaded": "2026-10-02",
+          "moments": []
+        },
+        {
+          "videoId": "Y2hLgHpzsgE",
+          "title": "Yone Mid vs Akali - NA Challenger Patch 26.17",
+          "rankClaim": "Challenger",
+          "patch": "26.17",
+          "durationSec": 1493,
+          "region": "NA",
+          "uploaded": "2026-09-05",
+          "moments": []
+        },
+        {
+          "videoId": "aPUuIqwQZFQ",
+          "title": "Yone Mid vs Akali - KR Master Patch 26.07",
+          "rankClaim": "Master",
+          "patch": "26.7",
+          "durationSec": 1542,
+          "region": "KR",
+          "uploaded": "2026-04-04",
+          "moments": []
+        },
+        {
+          "videoId": "psV1PCVXq6o",
+          "title": "Yone Mid vs Akali - KR Master Patch 25.09",
+          "rankClaim": "Master",
+          "patch": "25.9",
+          "durationSec": 1844,
+          "region": "KR",
+          "uploaded": "2025-05-03",
+          "moments": []
+        },
+        {
+          "videoId": "ivRBbPCTryI",
+          "title": "Yone Mid vs Akali - KR Grandmaster Patch 25.05",
+          "rankClaim": "Grandmaster",
+          "patch": "25.5",
+          "durationSec": 1581,
+          "region": "KR",
+          "uploaded": "2025-03-08",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 190,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 240,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 663,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 827,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 847,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 935,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 950,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1022,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1136,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1168,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1197,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1280,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1296,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1312,
+              "label": "Hunt The Dragon",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1560,
+              "label": "End credit"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 84,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "aAYZmxil7-o",
+          "title": "Yone vs Akali Top - EUW Master - Patch 25.8 Season 15",
+          "rankClaim": "Master",
+          "patch": "25.8",
+          "durationSec": 1620,
+          "region": "EUW",
+          "uploaded": "2025-04-26",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 86,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "zvZsR0sHCIU",
+          "title": "Yone Top vs Garen - NA Challenger Patch 25.23",
+          "rankClaim": "Challenger",
+          "patch": "25.23",
+          "durationSec": 1644,
+          "region": "NA",
+          "uploaded": "2025-11-29",
+          "moments": []
+        },
+        {
+          "videoId": "OS2cs_olA1M",
+          "title": "Yone Top vs Garen - EUW Grandmaster Patch 25.12",
+          "rankClaim": "Grandmaster",
+          "patch": "25.12",
+          "durationSec": 1538,
+          "region": "EUW",
+          "uploaded": "2025-06-21",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 91,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "HvbvvlschBM",
+          "title": "Yone Mid vs Talon - EUW Grandmaster Patch 26.04",
+          "rankClaim": "Grandmaster",
+          "patch": "26.4",
+          "durationSec": 1480,
+          "region": "EUW",
+          "uploaded": "2026-02-21",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 92,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "nECHgcSB9bY",
+          "title": "Yone Top vs Riven - KR Master Patch 25.13",
+          "rankClaim": "Master",
+          "patch": "25.13",
+          "durationSec": 1743,
+          "region": "KR",
+          "uploaded": "2025-07-05",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 98,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "x5E6wiIkhYo",
+          "title": "Yone vs Shen Top - EUW Master - Patch 25.8 Season 15",
+          "rankClaim": "Master",
+          "patch": "25.8",
+          "durationSec": 2071,
+          "region": "EUW",
+          "uploaded": "2025-04-28",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 101,
+      "lane": "adc",
+      "videos": [
+        {
+          "videoId": "uT2TNEKyUuc",
+          "title": "T1 Peyz Yone vs HLE Gumayusi Xerath [ ADC ] Korea Challenger 2557 LP | Patch 26.15",
+          "rankClaim": "Challenger",
+          "patch": "26.15",
+          "durationSec": 809,
+          "region": "KR",
+          "player": "Peyz",
+          "team": "T1",
+          "uploaded": "2026-08-02",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 101,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "3Qss3MuOsmg",
+          "title": "T1 Faker Yone vs Xerath [ MID ] Ranked Master NA | Patch 26.21",
+          "rankClaim": "Master",
+          "patch": "26.21",
+          "durationSec": 1410,
+          "region": "NA",
+          "player": "Faker",
+          "team": "T1",
+          "uploaded": "2026-11-01",
+          "moments": []
+        },
+        {
+          "videoId": "L85y3hQV9CU",
+          "title": "(F0X Improver) Yone Mid vs Xerath - EUW Grandmaster Patch 26.16",
+          "rankClaim": "Grandmaster",
+          "patch": "26.16",
+          "durationSec": 1448,
+          "region": "EUW",
+          "player": "F0X Improver",
+          "uploaded": "2026-08-19",
+          "moments": []
+        },
+        {
+          "videoId": "Ar1t-Vcpa2Y",
+          "title": "(LNG BuLLDoG) Yone Mid vs Xerath - KR Challenger Patch 26.10",
+          "rankClaim": "Challenger",
+          "patch": "26.10",
+          "durationSec": 1808,
+          "region": "KR",
+          "player": "BuLLDoG",
+          "team": "LNG",
+          "uploaded": "2026-05-23",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 103,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "42Z1KhX58aM",
+          "title": "Rank 1 Yone: He DELETED Ahri on CN Super Server",
+          "rankClaim": "Master+",
+          "patch": "26.13",
+          "durationSec": 1357,
+          "patchEstimated": true,
+          "player": "Baicaiovo",
+          "uploaded": "2026-07-06",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "pL-x2ztY8K0",
+          "title": "Yone vs Ahri Mid - KR Challenger - Patch 16.09 Season 16",
+          "rankClaim": "Challenger",
+          "patch": "26.9",
+          "durationSec": 1636,
+          "region": "KR",
+          "uploaded": "2026-05-08",
+          "moments": []
+        },
+        {
+          "videoId": "3hypV9q_D78",
+          "title": "Yone Mid vs Ahri - KR Challenger Patch 25.24",
+          "rankClaim": "Challenger",
+          "patch": "25.24",
+          "durationSec": 1501,
+          "region": "KR",
+          "uploaded": "2025-12-28",
+          "moments": []
+        },
+        {
+          "videoId": "YfLIbW9hpfU",
+          "title": "Yone Mid vs Ahri - KR Grandmaster Patch 25.13",
+          "rankClaim": "Grandmaster",
+          "patch": "25.13",
+          "durationSec": 1850,
+          "region": "KR",
+          "uploaded": "2025-06-29",
+          "moments": []
+        },
+        {
+          "videoId": "CvARrYsFet0",
+          "title": "Yone Mid vs Ahri - KR Grandmaster Patch 25.11",
+          "rankClaim": "Grandmaster",
+          "patch": "25.11",
+          "durationSec": 1531,
+          "region": "KR",
+          "uploaded": "2025-06-01",
+          "moments": []
+        },
+        {
+          "videoId": "N1tx1Nsvazw",
+          "title": "Yone Mid vs Ahri - KR Master Patch 25.06",
+          "rankClaim": "Master",
+          "patch": "25.6",
+          "durationSec": 1998,
+          "region": "KR",
+          "uploaded": "2025-03-23",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 353,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 485,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 646,
+              "label": "Hunt The Void Grubs",
+              "kind": "grubs"
+            },
+            {
+              "atSec": 703,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 957,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1067,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1090,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1264,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1377,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1668,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1699,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1723,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1809,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1930,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1954,
+              "label": "Take down The Inhibitor"
+            },
+            {
+              "atSec": 1966,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1977,
+              "label": "End credit"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 105,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "ufH3z-Y3RDA",
+          "title": "Yone Top vs Fizz - NA Grandmaster Patch 26.12",
+          "rankClaim": "Grandmaster",
+          "patch": "26.12",
+          "durationSec": 1716,
+          "region": "NA",
+          "uploaded": "2026-06-20",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 106,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "DuVhhKcIx_g",
+          "title": "Yone Top vs Volibear - KR Master Patch 26.07",
+          "rankClaim": "Master",
+          "patch": "26.7",
+          "durationSec": 1828,
+          "region": "KR",
+          "uploaded": "2026-04-10",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 107,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "rULkxY-t-sk",
+          "title": "Yone Top vs Rengar - KR Master Patch 26.02",
+          "rankClaim": "Master",
+          "patch": "26.2",
+          "durationSec": 1494,
+          "region": "KR",
+          "uploaded": "2026-01-31",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 112,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "jg6pgLW6TX8",
+          "title": "Yone Mid vs Viktor - KR Master Patch 26.08",
+          "rankClaim": "Master",
+          "patch": "26.8",
+          "durationSec": 1834,
+          "region": "KR",
+          "uploaded": "2026-04-18",
+          "moments": []
+        },
+        {
+          "videoId": "415_3GdmipA",
+          "title": "Yone vs Viktor MID [ Doinb ] Patch 25.1 Korea Master ✅",
+          "rankClaim": "Master",
+          "patch": "25.1",
+          "durationSec": 1891,
+          "region": "KR",
+          "player": "Doinb",
+          "uploaded": "2025-01-18",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 122,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "M0NjayrI5sw",
+          "title": "Yone Top vs Darius - EUW Challenger Patch 25.22",
+          "rankClaim": "Challenger",
+          "patch": "25.22",
+          "durationSec": 1522,
+          "region": "EUW",
+          "uploaded": "2025-11-15",
+          "moments": []
+        },
+        {
+          "videoId": "44TjMrKcp9k",
+          "title": "Yone vs Darius Top - EUW Grandmaster - Patch 25.14 Season 15",
+          "rankClaim": "Grandmaster",
+          "patch": "25.14",
+          "durationSec": 2200,
+          "region": "EUW",
+          "uploaded": "2025-07-22",
+          "moments": []
+        },
+        {
+          "videoId": "HDdZonx5wOQ",
+          "title": "Yone vs Darius Top - KR Grandmaster - Patch 25.6 Season 15",
+          "rankClaim": "Grandmaster",
+          "patch": "25.6",
+          "durationSec": 1721,
+          "region": "KR",
+          "uploaded": "2025-03-24",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 126,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "v7DoOQOXs0I",
+          "title": "Faker Yone vs Jayce Mid - KR Grandmaster - Patch 25.8 Season 15",
+          "rankClaim": "Grandmaster",
+          "patch": "25.8",
+          "durationSec": 1771,
+          "region": "KR",
+          "player": "Faker",
+          "uploaded": "2025-04-27",
+          "moments": []
+        },
+        {
+          "videoId": "LN5_RHl3E7w",
+          "title": "T1 Faker Yone MID vs Jayce - Patch 25.8 Korea Grandmaster ✅",
+          "rankClaim": "Grandmaster",
+          "patch": "25.8",
+          "durationSec": 1510,
+          "region": "KR",
+          "player": "Faker",
+          "team": "T1",
+          "uploaded": "2025-04-27",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 126,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "ZwCXqdNekxM",
+          "title": "Yone Top vs Jayce - KR Master Patch 25.17",
+          "rankClaim": "Master",
+          "patch": "25.17",
+          "durationSec": 1558,
+          "region": "KR",
+          "uploaded": "2025-09-07",
+          "moments": []
+        },
+        {
+          "videoId": "W82g6HA3u24",
+          "title": "Yone Top vs Jayce - EUW Challenger Patch 25.09",
+          "rankClaim": "Challenger",
+          "patch": "25.9",
+          "durationSec": 1933,
+          "region": "EUW",
+          "uploaded": "2025-05-10",
+          "moments": []
+        },
+        {
+          "videoId": "mOCvVRe7FSc",
+          "title": "PzZZang Yone vs Jayce Top - KR Challenger - Patch 25.9 Season 15",
+          "rankClaim": "Challenger",
+          "patch": "25.9",
+          "durationSec": 1681,
+          "region": "KR",
+          "player": "PzZZang",
+          "uploaded": "2025-05-02",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 136,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "g1Tj4DOHD_0",
+          "title": "Yone vs Aurelion Sol Mid - KR Grandmaster - Patch 25.4 Season 15",
+          "rankClaim": "Grandmaster",
+          "patch": "25.4",
+          "durationSec": 1831,
+          "region": "KR",
+          "uploaded": "2025-03-02",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 142,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "0MO8XsZhtbo",
+          "title": "Yone Mid vs Zoe - KR Grandmaster Patch 26.03",
+          "rankClaim": "Grandmaster",
+          "patch": "26.3",
+          "durationSec": 1446,
+          "region": "KR",
+          "uploaded": "2026-02-08",
+          "moments": []
+        },
+        {
+          "videoId": "HX3chC-ypUA",
+          "title": "T1 Faker Yone vs Zoe [ MID ] Patch 25.8 Korea Grandmaster ✅",
+          "rankClaim": "Grandmaster",
+          "patch": "25.8",
+          "durationSec": 1566,
+          "region": "KR",
+          "player": "Faker",
+          "team": "T1",
+          "uploaded": "2025-04-20",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 145,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "4yqzRwf85Y0",
+          "title": "(DNS Revenge) Yone Top vs Kai'Sa - KR Master Patch 26.19",
+          "rankClaim": "Master",
+          "patch": "26.19",
+          "durationSec": 1593,
+          "region": "KR",
+          "player": "DNS Revenge",
+          "uploaded": "2026-10-02",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 157,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "sdZjoINHxWk",
+          "title": "T1 Faker Yone vs Yasuo [ MID ] Korea Challenger 1847 LP | Patch 26.17",
+          "rankClaim": "Challenger",
+          "patch": "26.17",
+          "durationSec": 1055,
+          "region": "KR",
+          "player": "Faker",
+          "team": "T1",
+          "uploaded": "2026-09-01",
+          "moments": []
+        },
+        {
+          "videoId": "P4WZQaE1WW8",
+          "title": "Rank 1 Yone : DEVASTATING Challenger Yasuo on CN Super Server",
+          "rankClaim": "Challenger",
+          "patch": "26.12",
+          "durationSec": 921,
+          "patchEstimated": true,
+          "player": "Baicaiovo",
+          "uploaded": "2026-06-17",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "Byo1__Jpyws",
+          "title": "Yone vs Yasuo Mid - KR Challenger - Patch 16.07 Season 16",
+          "rankClaim": "Challenger",
+          "patch": "26.7",
+          "durationSec": 2146,
+          "region": "KR",
+          "uploaded": "2026-04-08",
+          "moments": []
+        },
+        {
+          "videoId": "0FNcmzEfoFU",
+          "title": "Yone Mid vs Yasuo - KR Master Patch 25.19",
+          "rankClaim": "Master",
+          "patch": "25.19",
+          "durationSec": 1471,
+          "region": "KR",
+          "uploaded": "2025-09-27",
+          "moments": []
+        },
+        {
+          "videoId": "Qx7y2g7mFrM",
+          "title": "Yone vs Yasuo Mid - EUW Master - Patch 25.18 Season 15",
+          "rankClaim": "Master",
+          "patch": "25.18",
+          "durationSec": 1951,
+          "region": "EUW",
+          "uploaded": "2025-09-23",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 157,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "lWhLVGcjbes",
+          "title": "Yone vs Yasuo Top - KR Grandmaster - Patch 16.17 Season 16",
+          "rankClaim": "Grandmaster",
+          "patch": "26.17",
+          "durationSec": 2160,
+          "region": "KR",
+          "uploaded": "2026-09-08",
+          "moments": []
+        },
+        {
+          "videoId": "7wA-ixgretM",
+          "title": "Yone vs Yasuo Top - EUW Grandmaster - Patch 16.15 Season 16",
+          "rankClaim": "Grandmaster",
+          "patch": "26.15",
+          "durationSec": 1476,
+          "region": "EUW",
+          "uploaded": "2026-08-04",
+          "moments": []
+        },
+        {
+          "videoId": "cN9KPPG0t6M",
+          "title": "Yone vs Yasuo Top - NA Challenger - Patch 25.24 Season 15",
+          "rankClaim": "Challenger",
+          "patch": "25.24",
+          "durationSec": 1631,
+          "region": "NA",
+          "uploaded": "2025-12-13",
+          "moments": []
+        },
+        {
+          "videoId": "ALFfLxRREcE",
+          "title": "Yone vs Yasuo Top - EUW Grandmaster - Patch 25.18 Season 15",
+          "rankClaim": "Grandmaster",
+          "patch": "25.18",
+          "durationSec": 1721,
+          "region": "EUW",
+          "uploaded": "2025-09-23",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 163,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "8NW7DPqsJ9Y",
+          "title": "Yone Mid vs Taliyah - KR Grandmaster Patch 25.10",
+          "rankClaim": "Grandmaster",
+          "patch": "25.10",
+          "durationSec": 1890,
+          "region": "KR",
+          "uploaded": "2025-05-17",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 164,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "pjBGYsuz3VM",
+          "title": "Yone Top vs Camille - KR Master Patch 26.18",
+          "rankClaim": "Master",
+          "patch": "26.18",
+          "durationSec": 1678,
+          "region": "KR",
+          "uploaded": "2026-09-19",
+          "moments": []
+        },
+        {
+          "videoId": "7VfoXsE5AL0",
+          "title": "Yone Top vs Camille - KR Grandmaster Patch 26.17",
+          "rankClaim": "Grandmaster",
+          "patch": "26.17",
+          "durationSec": 1800,
+          "region": "KR",
+          "uploaded": "2026-08-28",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 200,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "93tpnuh67Aw",
+          "title": "Yone Jungle vs Bel'Veth - KR Master Patch 26.13",
+          "rankClaim": "Master",
+          "patch": "26.13",
+          "durationSec": 1444,
+          "region": "KR",
+          "uploaded": "2026-07-17",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 234,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "SPBbHt86xVI",
+          "title": "Yone Jungle vs Viego - EUW Grandmaster Patch 26.15",
+          "rankClaim": "Grandmaster",
+          "patch": "26.15",
+          "durationSec": 1475,
+          "region": "EUW",
+          "uploaded": "2026-08-08",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 234,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "V9DNbr4bwE4",
+          "title": "Yone Mid vs Viego - KR Grandmaster Patch 25.17",
+          "rankClaim": "Grandmaster",
+          "patch": "25.17",
+          "durationSec": 1517,
+          "region": "KR",
+          "uploaded": "2025-08-30",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 236,
+      "lane": "adc",
+      "videos": [
+        {
+          "videoId": "pbOBi4Qv3sc",
+          "title": "Yone ADC vs Lucian - NA Grandmaster Patch 25.24",
+          "rankClaim": "Grandmaster",
+          "patch": "25.24",
+          "durationSec": 1575,
+          "region": "NA",
+          "uploaded": "2025-12-21",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 632,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 713,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 769,
+              "label": "Hunt The Dragon",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 867,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 899,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 927,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1042,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1169,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1192,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1212,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1316,
+              "label": "Get a Triple Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1338,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1419,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1439,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1498,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1514,
+              "label": "Take down The Inhibitor"
+            },
+            {
+              "atSec": 1526,
+              "label": "Get a Triple Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1548,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1564,
+              "label": "End credit"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 236,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "UsuRsN3Evqo",
+          "title": "Yone vs Lucian Mid - KR Challenger - Patch 16.20 Season 16",
+          "rankClaim": "Challenger",
+          "patch": "26.20",
+          "durationSec": 1456,
+          "region": "KR",
+          "uploaded": "2026-10-09",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 238,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "B6L6-82Tti4",
+          "title": "Yone Top vs Zed - KR Grandmaster Patch 26.16",
+          "rankClaim": "Grandmaster",
+          "patch": "26.16",
+          "durationSec": 1532,
+          "region": "KR",
+          "uploaded": "2026-08-22",
+          "moments": []
+        },
+        {
+          "videoId": "c6pMuI25d0c",
+          "title": "Yone vs Zed Top - EUW Grandmaster - Patch 25.17 Season 15",
+          "rankClaim": "Grandmaster",
+          "patch": "25.17",
+          "durationSec": 2071,
+          "region": "EUW",
+          "uploaded": "2025-08-29",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 246,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "Kjgebajj7C0",
+          "title": "Yone Top vs Qiyana - KR Master Patch 25.14",
+          "rankClaim": "Master",
+          "patch": "25.14",
+          "durationSec": 1632,
+          "region": "KR",
+          "uploaded": "2025-07-30",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 266,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "6blAacoF_5M",
+          "title": "Yone Top vs Aatrox - EUW Challenger Patch 25.20",
+          "rankClaim": "Challenger",
+          "patch": "25.20",
+          "durationSec": 1649,
+          "region": "EUW",
+          "uploaded": "2025-10-20",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 427,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "64lnJzVgS90",
+          "title": "Yone Mid vs Ivern - KR Grandmaster Patch 25.08",
+          "rankClaim": "Grandmaster",
+          "patch": "25.8",
+          "durationSec": 1852,
+          "region": "KR",
+          "uploaded": "2025-04-18",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 408,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 538,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 669,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 787,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 954,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1106,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1138,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1212,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1257,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1373,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1435,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1580,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1766,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1831,
+              "label": "End credit"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 516,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "fzSGen82cCY",
+          "title": "Yone vs Ornn Top - KR Grandmaster - Patch 25.11 Season 15",
+          "rankClaim": "Grandmaster",
+          "patch": "25.11",
+          "durationSec": 1816,
+          "region": "KR",
+          "uploaded": "2025-06-04",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 517,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "TDnQkwADrYs",
+          "title": "T1 Faker Yone vs Sylas [ MID ] Korea Challenger 2121 LP | Patch 26.18",
+          "rankClaim": "Challenger",
+          "patch": "26.18",
+          "durationSec": 1165,
+          "region": "KR",
+          "player": "Faker",
+          "team": "T1",
+          "uploaded": "2026-09-21",
+          "moments": []
+        },
+        {
+          "videoId": "16Nw8KnGd-M",
+          "title": "T1 Faker Yone vs Sylas [ MID ] Korea Grandmaster 1620 LP | Patch 26.13",
+          "rankClaim": "Grandmaster",
+          "patch": "26.13",
+          "durationSec": 1880,
+          "region": "KR",
+          "player": "Faker",
+          "team": "T1",
+          "uploaded": "2026-06-27",
+          "moments": []
+        },
+        {
+          "videoId": "rYSMtOEiJZo",
+          "title": "(FXF Creal) Yone Mid vs Sylas (BGT iwanan) - EUW Challenger Patch 26.12",
+          "rankClaim": "Challenger",
+          "patch": "26.12",
+          "durationSec": 1601,
+          "region": "EUW",
+          "player": "FXF Creal",
+          "uploaded": "2026-06-15",
+          "moments": []
+        },
+        {
+          "videoId": "8IXZBzsyInU",
+          "title": "(JDG Xiaoxu) Yone Mid vs Sylas - KR Master Patch 26.11",
+          "rankClaim": "Master",
+          "patch": "26.11",
+          "durationSec": 1474,
+          "region": "KR",
+          "player": "Xiaoxu",
+          "team": "JDG",
+          "uploaded": "2026-06-01",
+          "moments": []
+        },
+        {
+          "videoId": "QbwpSZqTRMs",
+          "title": "Yone vs Sylas Mid - KR Challenger - Patch 25.22 Season 15",
+          "rankClaim": "Challenger",
+          "patch": "25.22",
+          "durationSec": 1171,
+          "region": "KR",
+          "uploaded": "2025-11-10",
+          "moments": []
+        },
+        {
+          "videoId": "6-MDQhOt2zg",
+          "title": "Yone Mid vs Sylas - KR Master Patch 25.16",
+          "rankClaim": "Master",
+          "patch": "25.16",
+          "durationSec": 1588,
+          "region": "KR",
+          "uploaded": "2025-08-17",
+          "moments": []
+        },
+        {
+          "videoId": "QS3cm-O7PPA",
+          "title": "T1 Faker Yone MID vs Sylas - Patch 25.1 Korea Master ✅",
+          "rankClaim": "Master",
+          "patch": "25.1",
+          "durationSec": 1967,
+          "region": "KR",
+          "player": "Faker",
+          "team": "T1",
+          "uploaded": "2025-01-21",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 800,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "ULJGmJpM7Uk",
+          "title": "Yone Mid vs Mel - KR Master Patch 25.24",
+          "rankClaim": "Master",
+          "patch": "25.24",
+          "durationSec": 1458,
+          "region": "KR",
+          "uploaded": "2025-12-06",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 78,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 359,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 575,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 678,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 737,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 778,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 942,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 995,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1080,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1102,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1130,
+              "label": "Hunt The Dragon",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1154,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1198,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1269,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1447,
+              "label": "End credit"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 805,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "XpzAwS3mDSo",
+          "title": "Yone Mid vs Locke - KR Challenger Patch 26.21",
+          "rankClaim": "Challenger",
+          "patch": "26.21",
+          "durationSec": 1831,
+          "region": "KR",
+          "uploaded": "2026-10-31",
+          "result": "W",
+          "moments": [
+            {
+              "atSec": 205,
+              "label": "Yone takes down Locke"
+            },
+            {
+              "atSec": 493,
+              "label": "Red takes 1st Dragon (Chemtech)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 695,
+              "label": "Yone catches Kai'Sa"
+            },
+            {
+              "atSec": 814,
+              "label": "Xayah Triple Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 890,
+              "label": "Blue takes 1st Dragon (Cloud)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1105,
+              "label": "Yone catches Locke again"
+            },
+            {
+              "atSec": 1125,
+              "label": "Yone outduels Kai'Sa again"
+            },
+            {
+              "atSec": 1220,
+              "label": "Red takes 2nd Dragon (Infernal)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1276,
+              "label": "Blue takes Baron",
+              "kind": "baron"
+            },
+            {
+              "atSec": 1376,
+              "label": "Yone eliminates Locke"
+            },
+            {
+              "atSec": 1470,
+              "label": "Yone outduels Poppy"
+            },
+            {
+              "atSec": 1489,
+              "label": "Shaco eliminates Kai'Sa"
+            },
+            {
+              "atSec": 1541,
+              "label": "Red takes 3rd Dragon (Infernal)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1637,
+              "label": "Yone picks off Cho'Gath"
+            },
+            {
+              "atSec": 1652,
+              "label": "Red takes Baron",
+              "kind": "baron"
+            },
+            {
+              "atSec": 1763,
+              "label": "Mid Inhibitor falls (Blue)"
+            },
+            {
+              "atSec": 1782,
+              "label": "Yone picks off Cho'Gath"
+            },
+            {
+              "atSec": 1803,
+              "label": "Yone Double Kill",
+              "kind": "kill"
+            }
+          ]
+        },
+        {
+          "videoId": "oxWuWMub_PU",
+          "title": "Yone Mid vs Locke - KR Grandmaster Patch 26.20",
+          "rankClaim": "Grandmaster",
+          "patch": "26.20",
+          "durationSec": 1824,
+          "region": "KR",
+          "uploaded": "2026-10-16",
+          "result": "W",
+          "moments": [
+            {
+              "atSec": 138,
+              "label": "First Blood — Tristana kills Jarvan IV",
+              "kind": "kill"
+            },
+            {
+              "atSec": 265,
+              "label": "Yone takes down Locke"
+            },
+            {
+              "atSec": 321,
+              "label": "Red takes 1st Dragon (Hextech)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 349,
+              "label": "Yone catches Locke again"
+            },
+            {
+              "atSec": 646,
+              "label": "Yone outduels Locke (3rd time)"
+            },
+            {
+              "atSec": 681,
+              "label": "Blue takes 1st Dragon (Ocean)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 996,
+              "label": "Yone outplays K'Sante"
+            },
+            {
+              "atSec": 1143,
+              "label": "Yone outplays Locke (4th time)"
+            },
+            {
+              "atSec": 1270,
+              "label": "Yone outduels Thresh"
+            },
+            {
+              "atSec": 1354,
+              "label": "Blue takes 3rd Dragon (Infernal)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1421,
+              "label": "Blue takes Baron",
+              "kind": "baron"
+            },
+            {
+              "atSec": 1554,
+              "label": "Bot Inhibitor falls (Red)"
+            },
+            {
+              "atSec": 1612,
+              "label": "Yone catches Lucian"
+            },
+            {
+              "atSec": 1646,
+              "label": "Mid Inhibitor falls (Red)"
+            },
+            {
+              "atSec": 1718,
+              "label": "Blue takes 4th Dragon (Infernal)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1792,
+              "label": "Team fight (3 kills)",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1796,
+              "label": "Blue takes 2nd Baron",
+              "kind": "baron"
+            }
+          ]
+        },
+        {
+          "videoId": "pGTKrjX-QzQ",
+          "title": "Yone vs Locke Mid - KR Challenger - Patch 16.15 Season 16",
+          "rankClaim": "Challenger",
+          "patch": "26.15",
+          "durationSec": 1681,
+          "region": "KR",
+          "uploaded": "2026-08-03",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 875,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "ERh7I0pPsqY",
+          "title": "Yone Top vs Sett - EUW Grandmaster Patch 25.06",
+          "rankClaim": "Grandmaster",
+          "patch": "25.6",
+          "durationSec": 1719,
+          "region": "EUW",
+          "uploaded": "2025-03-28",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 99,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 209,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 364,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 449,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 580,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 661,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 686,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 759,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 826,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 912,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 976,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1112,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1231,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1432,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1456,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1467,
+              "label": "Take down The Inhibitor"
+            },
+            {
+              "atSec": 1509,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1529,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1624,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1647,
+              "label": "Take down The Inhibitor"
+            },
+            {
+              "atSec": 1667,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1678,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1698,
+              "label": "End credit"
+            }
+          ]
+        },
+        {
+          "videoId": "rWimKjt33aQ",
+          "title": "Yone Top vs Sett - EUW Challenger Patch 25.05",
+          "rankClaim": "Challenger",
+          "patch": "25.5",
+          "durationSec": 1665,
+          "region": "EUW",
+          "uploaded": "2025-03-15",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 200,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 304,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 407,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 433,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 606,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 813,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1056,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1163,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1255,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1282,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1410,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1452,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1482,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1569,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1583,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1644,
+              "label": "End credit"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 887,
+      "lane": "adc",
+      "videos": [
+        {
+          "videoId": "vks19gYJlyQ",
+          "title": "Yone ADC vs Gwen - EUW Challenger Patch 26.13",
+          "rankClaim": "Challenger",
+          "patch": "26.13",
+          "durationSec": 1616,
+          "region": "EUW",
+          "uploaded": "2026-07-14",
+          "result": "L",
+          "moments": [
+            {
+              "atSec": 11,
+              "label": "First Blood — Yone kills Gwen",
+              "kind": "kill"
+            },
+            {
+              "atSec": 524,
+              "label": "Red takes 1st Dragon (Hextech)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 645,
+              "label": "Yone eliminates Nunu & Willump"
+            },
+            {
+              "atSec": 784,
+              "label": "Yone outplays Pyke"
+            },
+            {
+              "atSec": 872,
+              "label": "Red takes 2nd Dragon (Cloud)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 882,
+              "label": "Yone takes down Gwen"
+            },
+            {
+              "atSec": 895,
+              "label": "Yone Triple Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1023,
+              "label": "Yone catches Jayce"
+            },
+            {
+              "atSec": 1110,
+              "label": "Yone picks off Pyke"
+            },
+            {
+              "atSec": 1182,
+              "label": "Team fight (4 kills)",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1201,
+              "label": "Red takes 3rd Dragon (Mountain)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1282,
+              "label": "Yone picks off Pyke"
+            },
+            {
+              "atSec": 1409,
+              "label": "Sion eliminates Gragas"
+            },
+            {
+              "atSec": 1436,
+              "label": "Red takes Baron",
+              "kind": "baron"
+            },
+            {
+              "atSec": 1519,
+              "label": "Team fight (3 kills)",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1533,
+              "label": "Red takes 4th Dragon (Mountain)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1555,
+              "label": "Mid Inhibitor falls (Blue)"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 887,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "dyZlC-tQDzs",
+          "title": "Yone Top vs Gwen - TW Challenger Patch 26.04",
+          "rankClaim": "Challenger",
+          "patch": "26.4",
+          "durationSec": 1794,
+          "uploaded": "2026-02-28",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 159,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 211,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 248,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 506,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 601,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 657,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 676,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 860,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 879,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 925,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1032,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1051,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1124,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1153,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1184,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1208,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1449,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1509,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1579,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1680,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1756,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1783,
+              "label": "End credit"
+            }
+          ]
+        },
+        {
+          "videoId": "KUr5RPOUxeI",
+          "title": "Yone vs Gwen Top - KR Grandmaster - Patch 25.6 Season 15",
+          "rankClaim": "Grandmaster",
+          "patch": "25.6",
+          "durationSec": 1770,
+          "region": "KR",
+          "uploaded": "2025-03-21",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 893,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "pTsnPMo589g",
+          "title": "(IN5 Alix) Yone Mid vs Aurora (NBS Vasco) - EUW Challenger Patch 26.15",
+          "rankClaim": "Challenger",
+          "patch": "26.15",
+          "durationSec": 1591,
+          "region": "EUW",
+          "player": "IN5 Alix",
+          "uploaded": "2026-08-03",
+          "moments": []
+        },
+        {
+          "videoId": "rI1B0fg0ZIY",
+          "title": "Faker Yone vs Aurora Mid - KR Grandmaster - Patch 25.7 Season 15",
+          "rankClaim": "Grandmaster",
+          "patch": "25.7",
+          "durationSec": 2041,
+          "region": "KR",
+          "player": "Faker",
+          "uploaded": "2025-04-09",
+          "moments": []
+        },
+        {
+          "videoId": "rqXw0vwgNZ0",
+          "title": "T1 Faker Yone vs Aurora [ MID ] Patch 25.7 Korea Grandmaster ✅",
+          "rankClaim": "Grandmaster",
+          "patch": "25.7",
+          "durationSec": 1809,
+          "region": "KR",
+          "player": "Faker",
+          "team": "T1",
+          "uploaded": "2025-04-08",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 893,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "N2CE0uXKJcU",
+          "title": "Yone Top vs Aurora - EUW Grandmaster Patch 25.19",
+          "rankClaim": "Grandmaster",
+          "patch": "25.19",
+          "durationSec": 1843,
+          "region": "EUW",
+          "uploaded": "2025-10-04",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 897,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "_Y557rjiRak",
+          "title": "Yone Top vs K'Sante - NA Grandmaster Patch 25.21",
+          "rankClaim": "Grandmaster",
+          "patch": "25.21",
+          "durationSec": 1657,
+          "region": "NA",
+          "uploaded": "2025-11-02",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 910,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "UJBOcYdt0yc",
+          "title": "Yone Mid vs Hwei - KR Challenger Patch 25.21",
+          "rankClaim": "Challenger",
+          "patch": "25.21",
+          "durationSec": 1611,
+          "region": "KR",
+          "uploaded": "2025-10-24",
+          "moments": []
+        },
+        {
+          "videoId": "85V-RUFBvQ4",
+          "title": "Yone Mid vs Hwei - KR Master Patch 25.18",
+          "rankClaim": "Master",
+          "patch": "25.18",
+          "durationSec": 1433,
+          "region": "KR",
+          "uploaded": "2025-09-15",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 950,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "b35kSl7_298",
+          "title": "Yone Jungle vs Naafiri - KR Master Patch 26.09",
+          "rankClaim": "Master",
+          "patch": "26.9",
+          "durationSec": 1539,
+          "region": "KR",
+          "uploaded": "2026-05-08",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 950,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "oZ93hEm0yEE",
+          "title": "Yone Mid vs Naafiri - KR Grandmaster Patch 25.15",
+          "rankClaim": "Grandmaster",
+          "patch": "25.15",
+          "durationSec": 1788,
+          "region": "KR",
+          "uploaded": "2025-08-03",
+          "moments": []
+        }
+      ]
+    }
+  ]
+}

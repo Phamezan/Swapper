@@ -1,0 +1,2854 @@
+{
+  "schema": 1,
+  "champion": 412,
+  "generatedAt": "2026-11-07T13:25:14.592Z",
+  "guides": [
+    {
+      "champion": 412,
+      "enemy": 111,
+      "lane": "support",
+      "patch": "26.21",
+      "reviewed": false,
+      "difficulty": "Hard",
+      "favoredWhen": "Respect his faster hook and ult windows; poke him down early and keep your roams short.",
+      "keyTips": [
+        {
+          "text": "His hook travels faster than yours, so never hook first into him: he can answer yours on reaction and turn it around.",
+          "scope": "pair",
+          "sourceIds": [
+            "razing42"
+          ],
+          "abilityKeys": [
+            {
+              "champion": 111,
+              "key": "Q"
+            },
+            {
+              "champion": 412,
+              "key": "Q"
+            }
+          ]
+        },
+        {
+          "text": "He has real kill pressure on your carry, so keep your roams short and return before he punishes your absence.",
+          "scope": "pair",
+          "sourceIds": [
+            "razing42"
+          ]
+        },
+        {
+          "text": "Poke him out at level 1 from behind your wave, so he cannot take his level-2 all-in at full strength.",
+          "scope": "pair",
+          "sourceIds": [
+            "henry"
+          ]
+        }
+      ],
+      "enemyTips": {},
+      "sections": {
+        "overview": {
+          "tips": []
+        },
+        "early-lane": {
+          "tips": [
+            {
+              "text": "Contest level 1 with autos and spells through the wave: every bit of health he loses weakens his level-2 spike.",
+              "scope": "pair",
+              "sourceIds": [
+                "henry"
+              ]
+            },
+            {
+              "text": "Never get hooked while the wave crashes into you: hooked under your own tower is the one place his engage kills.",
+              "scope": "pair",
+              "sourceIds": [
+                "henry"
+              ]
+            }
+          ]
+        },
+        "mid-lane": {
+          "tips": [
+            {
+              "text": "Track his ult ({cd:111:R}) and give ground while it is up; take the fight only after he has spent it.",
+              "scope": "pair",
+              "sourceIds": [
+                "henry"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 111,
+                  "key": "R"
+                }
+              ]
+            },
+            {
+              "text": "Rotate behind terrain instead of through open river: walls break his hook angles, and he hooks whatever walks into his lane.",
+              "scope": "pair",
+              "sourceIds": [
+                "henry"
+              ]
+            }
+          ]
+        },
+        "win-condition": {
+          "tips": [
+            {
+              "text": "Force out his ult without committing, then turn and zone him while it is down for its full cooldown.",
+              "scope": "pair",
+              "sourceIds": [
+                "henry"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 111,
+                  "key": "R"
+                }
+              ]
+            },
+            {
+              "text": "When he hooks your carry, answer with the lantern shield instead of engaging back: surviving his window wins you the fight.",
+              "scope": "pair",
+              "sourceIds": [
+                "razing42",
+                "henry"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 412,
+                  "key": "W"
+                },
+                {
+                  "champion": 111,
+                  "key": "Q"
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "itemization": [],
+      "sources": [
+        {
+          "id": "razing42",
+          "author": "Razing42",
+          "rankClaim": "Emerald (profile badge; no title claim) · Thresh main",
+          "rank": "emerald",
+          "url": "https://www.mobafire.com/league-of-legends/build/the-chain-warden-of-botlane-623203",
+          "kind": "mobafire"
+        },
+        {
+          "id": "henry",
+          "author": "needyhenry",
+          "rankClaim": "Grandmaster (video claims grandmaster-or-challenger on any server; modest reading) · Soraka main",
+          "rank": "grandmaster",
+          "url": "https://www.youtube.com/watch?v=5DFoZ6eOdy0",
+          "kind": "youtube"
+        }
+      ]
+    },
+    {
+      "champion": 412,
+      "enemy": 201,
+      "lane": "support",
+      "patch": "26.21",
+      "reviewed": false,
+      "difficulty": "Skill matchup",
+      "favoredWhen": "Punish his spent shield and decide the lane through your carry instead of hook fishing.",
+      "keyTips": [
+        {
+          "text": "Punish him when he spends his shield on trades: without it he cannot stand in front of his carry.",
+          "scope": "pair",
+          "sourceIds": [
+            "razing42"
+          ],
+          "abilityKeys": [
+            {
+              "champion": 201,
+              "key": "E"
+            }
+          ]
+        },
+        {
+          "text": "A first-hook kill attempt is a valid early call: go when the wave and your carry let you collapse on him.",
+          "scope": "pair",
+          "sourceIds": [
+            "rhino-braum"
+          ],
+          "abilityKeys": [
+            {
+              "champion": 412,
+              "key": "Q"
+            }
+          ]
+        },
+        {
+          "text": "Read the duo at load-in, not just him: hard-engage carries with Braum out-threaten poke duos, and that decides whether the lane stays quiet or turns bloody.",
+          "scope": "pair",
+          "sourceIds": [
+            "razing42",
+            "rhino-braum"
+          ]
+        }
+      ],
+      "enemyTips": {},
+      "sections": {
+        "overview": {
+          "tips": []
+        },
+        "early-lane": {
+          "tips": [
+            {
+              "text": "Look for the early hook kill before his defensive line settles: do not wait for a perfect later angle that never comes.",
+              "scope": "pair",
+              "sourceIds": [
+                "rhino-braum"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 412,
+                  "key": "Q"
+                }
+              ]
+            },
+            {
+              "text": "Trade into him while his shield is down ({cd:201:E}): that is when your autos and spells actually stick.",
+              "scope": "pair",
+              "sourceIds": [
+                "razing42"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 201,
+                  "key": "E"
+                },
+                {
+                  "champion": 412,
+                  "key": "Q"
+                }
+              ]
+            }
+          ]
+        },
+        "mid-lane": {
+          "tips": [
+            {
+              "text": "When your carries are ahead, play for lantern over forcing hooks: repositioning them wins more than fishing for catches.",
+              "scope": "pair",
+              "sourceIds": [
+                "rhino-braum"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 412,
+                  "key": "W"
+                }
+              ]
+            },
+            {
+              "text": "Ward only where the wave lets you defend the ward: a dead ward is worse than a late one.",
+              "scope": "pair",
+              "sourceIds": [
+                "rhino-braum"
+              ]
+            }
+          ]
+        },
+        "win-condition": {
+          "tips": [
+            {
+              "text": "Stop frontlining for hooks once fights start: peel with lantern and Flay so your carry plays the fight instead of watching you fish.",
+              "scope": "pair",
+              "sourceIds": [
+                "rhino-braum"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 412,
+                  "key": "W"
+                },
+                {
+                  "champion": 412,
+                  "key": "E"
+                }
+              ]
+            },
+            {
+              "text": "If their carry outscales yours, force the bloody version of the lane early: quiet even lanes favor Braum's wall.",
+              "scope": "pair",
+              "sourceIds": [
+                "razing42"
+              ]
+            }
+          ]
+        }
+      },
+      "itemization": [],
+      "sources": [
+        {
+          "id": "razing42",
+          "author": "Razing42",
+          "rankClaim": "Emerald (profile badge; no title claim) · Thresh main",
+          "rank": "emerald",
+          "url": "https://www.mobafire.com/league-of-legends/build/the-chain-warden-of-botlane-623203",
+          "kind": "mobafire"
+        },
+        {
+          "id": "rhino-braum",
+          "author": "Pocket Rhino",
+          "rankClaim": "Multi-year NA Challenger and former professional support player (channel claim)",
+          "rank": "challenger",
+          "url": "https://www.youtube.com/watch?v=gbSt7wdkHro",
+          "kind": "youtube"
+        }
+      ]
+    },
+    {
+      "champion": 412,
+      "enemy": 267,
+      "lane": "support",
+      "patch": "26.21",
+      "reviewed": false,
+      "difficulty": "Hard",
+      "favoredWhen": "Punish missed bubbles while she has no early heal, but never overcommit into her slows.",
+      "keyTips": [
+        {
+          "text": "She has no early heal, so hook her and lantern out: start the fight with Q and leave with W before she can turn it.",
+          "scope": "pair",
+          "sourceIds": [
+            "rhino-nami"
+          ],
+          "abilityKeys": [
+            {
+              "champion": 412,
+              "key": "Q"
+            },
+            {
+              "champion": 412,
+              "key": "W"
+            }
+          ]
+        },
+        {
+          "text": "Punish a missed bubble, but do not overcommit: her slows let her carry chase you down after a long chase.",
+          "scope": "pair",
+          "sourceIds": [
+            "razing42"
+          ],
+          "abilityKeys": [
+            {
+              "champion": 267,
+              "key": "Q"
+            }
+          ]
+        },
+        {
+          "text": "Check summoners at load-in: if she skipped Heal, every landed hook is a kill angle because she has no save for herself.",
+          "scope": "pair",
+          "sourceIds": [
+            "rhino-nami"
+          ],
+          "abilityKeys": [
+            {
+              "champion": 412,
+              "key": "Q"
+            }
+          ]
+        }
+      ],
+      "enemyTips": {},
+      "sections": {
+        "overview": {
+          "tips": []
+        },
+        "early-lane": {
+          "tips": [
+            {
+              "text": "Force plays early while she has no heal and no Mikael's: this window before her first sustain item is the strongest part of your lane.",
+              "scope": "pair",
+              "sourceIds": [
+                "razing42",
+                "rhino-nami"
+              ]
+            },
+            {
+              "text": "Throw the hook the moment her bubble misses ({cd:267:Q}): patient hooks land, while forced attempts feed straight into her disengage.",
+              "scope": "pair",
+              "sourceIds": [
+                "razing42",
+                "rhino-nami"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 267,
+                  "key": "Q"
+                },
+                {
+                  "champion": 412,
+                  "key": "Q"
+                }
+              ]
+            }
+          ]
+        },
+        "mid-lane": {
+          "tips": [
+            {
+              "text": "Set dragon vision on your item timing, and only place wards where the wave lets you defend them.",
+              "scope": "pair",
+              "sourceIds": [
+                "rhino-nami"
+              ]
+            },
+            {
+              "text": "Once she completes Mikael's, full hook combos stop working on her carry: switch to picks elsewhere instead of repeating the same play.",
+              "scope": "pair",
+              "sourceIds": [
+                "rhino-nami"
+              ]
+            }
+          ]
+        },
+        "win-condition": {
+          "tips": [
+            {
+              "text": "Kill Nami first in fights: without her, the enemy duo loses both its sustain and its disengage.",
+              "scope": "pair",
+              "sourceIds": [
+                "rhino-nami"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 412,
+                  "key": "Q"
+                },
+                {
+                  "champion": 412,
+                  "key": "R"
+                }
+              ]
+            },
+            {
+              "text": "End the lane phase ahead: once her duo finishes its first items and levels, her peel outscales your pick potential.",
+              "scope": "pair",
+              "sourceIds": [
+                "rhino-nami"
+              ]
+            }
+          ]
+        }
+      },
+      "itemization": [],
+      "sources": [
+        {
+          "id": "razing42",
+          "author": "Razing42",
+          "rankClaim": "Emerald (profile badge; no title claim) · Thresh main",
+          "rank": "emerald",
+          "url": "https://www.mobafire.com/league-of-legends/build/the-chain-warden-of-botlane-623203",
+          "kind": "mobafire"
+        },
+        {
+          "id": "rhino-nami",
+          "author": "Pocket Rhino",
+          "rankClaim": "Multi-year NA Challenger and former professional support player (channel claim)",
+          "rank": "challenger",
+          "url": "https://www.youtube.com/watch?v=H80f4xIYR-I",
+          "kind": "youtube"
+        }
+      ]
+    }
+  ],
+  "general": [
+    {
+      "champion": 412,
+      "lane": "support",
+      "patch": "26.21",
+      "reviewed": false,
+      "keyTips": [
+        {
+          "text": "Thresh is strong early but has no sustain: skip the long-range poke lane when you cannot reach the brush or create an opening, and only fight with a real path in.",
+          "scope": "champion",
+          "sourceIds": [
+            "razing42"
+          ]
+        },
+        {
+          "text": "Aim hooks at the opponent's likely dodge direction, tracking whether the ADC or the support tends to evade left or right before throwing.",
+          "scope": "champion",
+          "sourceIds": [
+            "razing42"
+          ],
+          "abilityKeys": [
+            {
+              "champion": 412,
+              "key": "Q"
+            }
+          ]
+        },
+        {
+          "text": "Create picks from fog with Death Sentence, then lantern an ally into the play or carry one out of danger, keeping Flay ready to peel or interrupt the next dash.",
+          "scope": "champion",
+          "sourceIds": [
+            "razing42"
+          ],
+          "abilityKeys": [
+            {
+              "champion": 412,
+              "key": "Q"
+            },
+            {
+              "champion": 412,
+              "key": "W"
+            },
+            {
+              "champion": 412,
+              "key": "E"
+            }
+          ]
+        }
+      ],
+      "sections": {
+        "overview": {
+          "tips": []
+        },
+        "early-lane": {
+          "tips": [
+            {
+              "text": "After pushing a wave into the enemy tower, choose between a reset, a plate attempt, poke or a possible dive, or a roam; when roaming, never leave the ADC exposed.",
+              "scope": "champion",
+              "sourceIds": [
+                "razing42"
+              ]
+            },
+            {
+              "text": "A crashed wave opens a brief roam window before the next wave is likely to reach your tower; return before it dies if the ADC has not pushed it back out.",
+              "scope": "champion",
+              "sourceIds": [
+                "razing42"
+              ]
+            },
+            {
+              "text": "Leave plate gold for the ADC when safe, and threaten poke or a dive with the hook while the opponent sits under tower.",
+              "scope": "champion",
+              "sourceIds": [
+                "razing42"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 412,
+                  "key": "Q"
+                }
+              ]
+            },
+            {
+              "text": "Against Cleanse, hold Ignite until after the opponent uses it on Death Sentence so both effects are not removed together.",
+              "scope": "champion",
+              "sourceIds": [
+                "razing42"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 412,
+                  "key": "Q"
+                }
+              ]
+            }
+          ]
+        },
+        "mid-lane": {
+          "tips": [
+            {
+              "text": "Place the lantern in the direction the teammate is already moving to make it easier to click, repositioning allies for follow-up or peel.",
+              "scope": "champion",
+              "sourceIds": [
+                "razing42"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 412,
+                  "key": "W"
+                }
+              ]
+            },
+            {
+              "text": "Use the lantern to check a bush or cross a wall instead of face-checking, but keep it available when a gank may be coming.",
+              "scope": "champion",
+              "sourceIds": [
+                "razing42"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 412,
+                  "key": "W"
+                }
+              ]
+            },
+            {
+              "text": "Remember the lantern has unit collision: it can obstruct an enemy's path but can also accidentally block teammates, so place it deliberately.",
+              "scope": "champion",
+              "sourceIds": [
+                "razing42"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 412,
+                  "key": "W"
+                }
+              ]
+            },
+            {
+              "text": "Save Flay to peel or interrupt a dash, and against an opponent who escapes right as the hook ends, hold Flay for that exact moment.",
+              "scope": "champion",
+              "sourceIds": [
+                "razing42"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 412,
+                  "key": "Q"
+                },
+                {
+                  "champion": 412,
+                  "key": "E"
+                }
+              ]
+            },
+            {
+              "text": "Land Death Sentence, place The Box during its crowd control, and push the target into a wall with Flay for the stronger slow.",
+              "scope": "champion",
+              "sourceIds": [
+                "razing42"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 412,
+                  "key": "Q"
+                },
+                {
+                  "champion": 412,
+                  "key": "R"
+                },
+                {
+                  "champion": 412,
+                  "key": "E"
+                }
+              ]
+            },
+            {
+              "text": "Ward while moving through fog and before objectives, adapting depth to enemy jungle mobility and the changed terrain around the third dragon and Baron; practice placements in Practice Tool until each ward lands repeatably.",
+              "scope": "champion",
+              "sourceIds": [
+                "razing42"
+              ]
+            }
+          ]
+        },
+        "win-condition": {
+          "tips": [
+            {
+              "text": "Convert a pushed bot wave into a safe reset, tower pressure, a dive threat, or a short roam, always returning in time to protect the ADC's experience.",
+              "scope": "champion",
+              "sourceIds": [
+                "razing42"
+              ]
+            },
+            {
+              "text": "In teamfights, flex between engage and disengage: follow a pick with The Box, but preserve lantern and Flay when a teammate needs protection.",
+              "scope": "champion",
+              "sourceIds": [
+                "razing42"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 412,
+                  "key": "R"
+                },
+                {
+                  "champion": 412,
+                  "key": "W"
+                },
+                {
+                  "champion": 412,
+                  "key": "E"
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "itemization": [
+        {
+          "text": "Follow the patch 26.21 default of Ionian Boots of Lucidity, Solstice Sleigh, Locket of the Iron Solari, Knight's Vow, Redemption, and Bandlepipes, favoring Locket as the broadly useful first core.",
+          "scope": "champion",
+          "sourceIds": [
+            "razing42"
+          ],
+          "itemIds": [
+            3158,
+            3876,
+            3190,
+            3109,
+            3107,
+            2524
+          ]
+        },
+        {
+          "text": "Take Knight's Vow for single-target damage, Redemption for slower front-to-back fights, and Bandlepipes with several auto attackers; choose Second Wind into poke, Bone Plating into early trading, Unflinching into trade-pattern crowd control, Aftershock into engage lanes or solo-frontline games, and Glacial Augment into double-ranged or dive-heavy opponents.",
+          "scope": "champion",
+          "sourceIds": [
+            "razing42"
+          ],
+          "itemIds": [
+            3109,
+            3107,
+            2524
+          ]
+        },
+        {
+          "text": "Round out defenses by threat: Frozen Heart against auto-attack damage, Thornmail for grievous wounds, Abyssal Mask with AP teammates, and Kaenic Rookern for more magic resistance.",
+          "scope": "champion",
+          "sourceIds": [
+            "razing42"
+          ],
+          "itemIds": [
+            3110,
+            3075,
+            8020,
+            2504
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "id": "razing42",
+          "author": "Razing42",
+          "rankClaim": "Emerald (profile badge; no title claim) · Thresh main",
+          "rank": "emerald",
+          "url": "https://www.mobafire.com/league-of-legends/build/the-chain-warden-of-botlane-623203",
+          "kind": "mobafire"
+        }
+      ]
+    }
+  ],
+  "vods": [
+    {
+      "enemy": 12,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "uoMxeG3Kwj4",
+          "title": "Thresh Support vs Alistar - KR Grandmaster Patch 26.20",
+          "rankClaim": "Grandmaster",
+          "patch": "26.20",
+          "durationSec": 1898,
+          "region": "KR",
+          "uploaded": "2026-10-09",
+          "result": "W",
+          "moments": [
+            {
+              "atSec": 480,
+              "label": "Red takes 1st Dragon (Ocean)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 517,
+              "label": "First Blood — Zaahen kills Zeri",
+              "kind": "kill"
+            },
+            {
+              "atSec": 828,
+              "label": "Blue takes 1st Dragon (Chemtech)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1149,
+              "label": "Blue takes 2nd Dragon (Mountain)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1275,
+              "label": "Yunara eliminates Naafiri"
+            },
+            {
+              "atSec": 1283,
+              "label": "Yunara Triple Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1289,
+              "label": "Yunara Quadra Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1317,
+              "label": "Blue takes Baron",
+              "kind": "baron"
+            },
+            {
+              "atSec": 1396,
+              "label": "Zoe takes down Malphite"
+            },
+            {
+              "atSec": 1419,
+              "label": "Zoe kills Zeri",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1424,
+              "label": "Mid Inhibitor falls (Red)"
+            },
+            {
+              "atSec": 1529,
+              "label": "Red takes 2nd Dragon (Mountain)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1719,
+              "label": "Blue takes 2nd Baron",
+              "kind": "baron"
+            },
+            {
+              "atSec": 1731,
+              "label": "Yunara Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1736,
+              "label": "Yunara Triple Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1775,
+              "label": "Mid Inhibitor falls (Red)"
+            },
+            {
+              "atSec": 1831,
+              "label": "Team fight (3 kills)",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1837,
+              "label": "Yunara Triple Kill",
+              "kind": "kill"
+            }
+          ]
+        },
+        {
+          "videoId": "T0tJ66dulp4",
+          "title": "Thresh Support vs Alistar - KR Challenger Patch 26.03",
+          "rankClaim": "Challenger",
+          "patch": "26.3",
+          "durationSec": 1682,
+          "region": "KR",
+          "uploaded": "2026-02-20",
+          "moments": []
+        },
+        {
+          "videoId": "Cxen4hhPPxM",
+          "title": "Thresh Support vs Alistar - NA Grandmaster Patch 25.13",
+          "rankClaim": "Grandmaster",
+          "patch": "25.13",
+          "durationSec": 1770,
+          "region": "NA",
+          "uploaded": "2025-07-17",
+          "moments": []
+        },
+        {
+          "videoId": "HfXGxQBj3eI",
+          "title": "Thresh Support vs Alistar - NA Challenger Patch 25.07",
+          "rankClaim": "Challenger",
+          "patch": "25.7",
+          "durationSec": 1475,
+          "region": "NA",
+          "uploaded": "2025-04-16",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 16,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "TLLOOaT47AU",
+          "title": "Thresh Support vs Soraka - EUW Challenger Patch 25.24",
+          "rankClaim": "Challenger",
+          "patch": "25.24",
+          "durationSec": 1539,
+          "region": "EUW",
+          "uploaded": "2025-12-17",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 26,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "ZSRH7-7Fq1E",
+          "title": "Thresh Support vs Zilean - EUW Grandmaster Patch 25.04",
+          "rankClaim": "Grandmaster",
+          "patch": "25.4",
+          "durationSec": 2077,
+          "region": "EUW",
+          "uploaded": "2025-03-07",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 41,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 372,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 547,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 611,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 758,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 811,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 837,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 924,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 977,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1069,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1135,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1377,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1442,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1565,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1791,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1861,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1944,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 2056,
+              "label": "End credit"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 37,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "q_Wu8fb3R1I",
+          "title": "(SHFT Stend) Thresh Support vs Sona - EUW Grandmaster Patch 26.16",
+          "rankClaim": "Grandmaster",
+          "patch": "26.16",
+          "durationSec": 1547,
+          "region": "EUW",
+          "player": "SHFT Stend",
+          "uploaded": "2026-08-21",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 40,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "gTS6WJ_-9hI",
+          "title": "Thresh Support vs Janna - KR Challenger Patch 26.05",
+          "rankClaim": "Challenger",
+          "patch": "26.5",
+          "durationSec": 1463,
+          "region": "KR",
+          "uploaded": "2026-03-07",
+          "moments": []
+        },
+        {
+          "videoId": "gMiGqx5cyEs",
+          "title": "Thresh Support vs Janna - VN Challenger Patch 26.04",
+          "rankClaim": "Challenger",
+          "patch": "26.4",
+          "durationSec": 1704,
+          "uploaded": "2026-02-20",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 94,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 243,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 476,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 562,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 664,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 796,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 822,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1067,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1289,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1398,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1502,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1629,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1665,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1678,
+              "label": "Take down The Inhibitor"
+            },
+            {
+              "atSec": 1693,
+              "label": "End credit"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 43,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "RQJTgi2J2eU",
+          "title": "Thresh Support vs Karma - EUW Grandmaster Patch 26.12",
+          "rankClaim": "Grandmaster",
+          "patch": "26.12",
+          "durationSec": 1515,
+          "region": "EUW",
+          "uploaded": "2026-06-21",
+          "moments": []
+        },
+        {
+          "videoId": "4JpnKmXD5hQ",
+          "title": "Thresh Support vs Karma - EUW Grandmaster Patch 25.22",
+          "rankClaim": "Grandmaster",
+          "patch": "25.22",
+          "durationSec": 1694,
+          "region": "EUW",
+          "uploaded": "2025-11-19",
+          "moments": []
+        },
+        {
+          "videoId": "_Dqizvk_Xpo",
+          "title": "Thresh Support vs Karma - EUW Grandmaster Patch 25.15",
+          "rankClaim": "Grandmaster",
+          "patch": "25.15",
+          "durationSec": 1597,
+          "region": "EUW",
+          "uploaded": "2025-08-13",
+          "moments": []
+        },
+        {
+          "videoId": "FFL0JWLzTDE",
+          "title": "Thresh Support vs Karma - KR Master Patch 25.13",
+          "rankClaim": "Master",
+          "patch": "25.13",
+          "durationSec": 1549,
+          "region": "KR",
+          "uploaded": "2025-06-30",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 44,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "Ft3JTrdCBLc",
+          "title": "Thresh Support vs Taric - KR Grandmaster Patch 26.02",
+          "rankClaim": "Grandmaster",
+          "patch": "26.2",
+          "durationSec": 1487,
+          "region": "KR",
+          "uploaded": "2026-01-24",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 686,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 854,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 888,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 985,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1049,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1161,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1231,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1298,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1420,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1449,
+              "label": "Take down The Inhibitor"
+            },
+            {
+              "atSec": 1476,
+              "label": "End credit"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 53,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "NQBWCAk2508",
+          "title": "Thresh Support vs Blitzcrank - EUW Challenger Patch 25.20",
+          "rankClaim": "Challenger",
+          "patch": "25.20",
+          "durationSec": 1704,
+          "region": "EUW",
+          "uploaded": "2025-10-23",
+          "moments": []
+        },
+        {
+          "videoId": "hOYFuxjI2Zc",
+          "title": "Thresh Support vs Blitzcrank - KR Master Patch 25.18",
+          "rankClaim": "Master",
+          "patch": "25.18",
+          "durationSec": 1457,
+          "region": "KR",
+          "uploaded": "2025-09-13",
+          "moments": []
+        },
+        {
+          "videoId": "eL-VPgysPXw",
+          "title": "Thresh Support vs Blitzcrank - EUW Challenger Patch 25.17",
+          "rankClaim": "Challenger",
+          "patch": "25.17",
+          "durationSec": 1834,
+          "region": "EUW",
+          "uploaded": "2025-09-11",
+          "moments": []
+        },
+        {
+          "videoId": "C1KQZ8FBS10",
+          "title": "Thresh Support vs Blitzcrank - EUW Challenger Patch 25.16",
+          "rankClaim": "Challenger",
+          "patch": "25.16",
+          "durationSec": 1842,
+          "region": "EUW",
+          "uploaded": "2025-08-27",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 54,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "nZGwIvXxbfs",
+          "title": "Thresh Support vs Malphite - KR Grandmaster Patch 25.17",
+          "rankClaim": "Grandmaster",
+          "patch": "25.17",
+          "durationSec": 1577,
+          "region": "KR",
+          "uploaded": "2025-08-29",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 60,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "Fm49QkxD_Yc",
+          "title": "(SHFT Trymbi) Thresh Support vs Elise (JENS) - EUW Grandmaster Patch 26.14",
+          "rankClaim": "Grandmaster",
+          "patch": "26.14",
+          "durationSec": 1647,
+          "region": "EUW",
+          "player": "SHFT Trymbi",
+          "uploaded": "2026-07-23",
+          "moments": []
+        },
+        {
+          "videoId": "69F7ax04Tms",
+          "title": "Thresh Support vs Elise - EUW Challenger Patch 26.07",
+          "rankClaim": "Challenger",
+          "patch": "26.7",
+          "durationSec": 1471,
+          "region": "EUW",
+          "uploaded": "2026-04-03",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 63,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "brLBufJvGEk",
+          "title": "Thresh Support vs Brand - EUW Grandmaster Patch 25.09",
+          "rankClaim": "Grandmaster",
+          "patch": "25.9",
+          "durationSec": 1678,
+          "region": "EUW",
+          "uploaded": "2025-05-13",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 64,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "gBQa4R0SMCU",
+          "title": "Thresh Support vs Lee Sin - KR Master Patch 25.20",
+          "rankClaim": "Master",
+          "patch": "25.20",
+          "durationSec": 1612,
+          "region": "KR",
+          "uploaded": "2025-10-11",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 72,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "Dv5eEhLBbYA",
+          "title": "Thresh Support vs Skarner - KR Challenger Patch 25.04",
+          "rankClaim": "Challenger",
+          "patch": "25.4",
+          "durationSec": 1878,
+          "region": "KR",
+          "uploaded": "2025-03-04",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 78,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "FpTrDGxO8Z8",
+          "title": "Thresh Support vs Poppy - NA Grandmaster Patch 25.24",
+          "rankClaim": "Grandmaster",
+          "patch": "25.24",
+          "durationSec": 1583,
+          "region": "NA",
+          "uploaded": "2025-12-24",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 101,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 216,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 342,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 390,
+              "label": "Hunt The Dragon",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 423,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 786,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 972,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 995,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1073,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1249,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1401,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1424,
+              "label": "Take down The Inhibitor"
+            },
+            {
+              "atSec": 1507,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1572,
+              "label": "End credit"
+            }
+          ]
+        },
+        {
+          "videoId": "7CxpuQKUsZM",
+          "title": "Thresh Support vs Poppy - KR Master Patch 25.10",
+          "rankClaim": "Master",
+          "patch": "25.10",
+          "durationSec": 1453,
+          "region": "KR",
+          "uploaded": "2025-05-18",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 79,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "1oSPU3VZLug",
+          "title": "Thresh Support vs Gragas - KR Challenger Patch 26.04",
+          "rankClaim": "Challenger",
+          "patch": "26.4",
+          "durationSec": 1685,
+          "region": "KR",
+          "uploaded": "2026-03-05",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 158,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 421,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 759,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 820,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1137,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1270,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1379,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1406,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1479,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1504,
+              "label": "Take down The Inhibitor"
+            },
+            {
+              "atSec": 1530,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1633,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1674,
+              "label": "End credit"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 80,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "yMncIFdpHrs",
+          "title": "Thresh Support vs Pantheon - KR Master Patch 25.23",
+          "rankClaim": "Master",
+          "patch": "25.23",
+          "durationSec": 1669,
+          "region": "KR",
+          "uploaded": "2025-11-23",
+          "moments": []
+        },
+        {
+          "videoId": "XTOtmWt_10Q",
+          "title": "Thresh Support vs Pantheon - EUW Challenger Patch 25.12",
+          "rankClaim": "Challenger",
+          "patch": "25.12",
+          "durationSec": 2006,
+          "region": "EUW",
+          "uploaded": "2025-06-26",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 89,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "XDo-W1LExi8",
+          "title": "Thresh Support vs Leona - VN Challenger Patch 26.06",
+          "rankClaim": "Challenger",
+          "patch": "26.6",
+          "durationSec": 1531,
+          "uploaded": "2026-03-21",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 111,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "iwEE5gmvjmU",
+          "title": "Thresh Support vs Nautilus - KR Master Patch 26.19",
+          "rankClaim": "Master",
+          "patch": "26.19",
+          "durationSec": 1561,
+          "region": "KR",
+          "uploaded": "2026-09-26",
+          "moments": []
+        },
+        {
+          "videoId": "t-R5Mzi0QMY",
+          "title": "Thresh Support vs Nautilus - KR Master Patch 26.18",
+          "rankClaim": "Master",
+          "patch": "26.18",
+          "durationSec": 1489,
+          "region": "KR",
+          "uploaded": "2026-09-15",
+          "moments": []
+        },
+        {
+          "videoId": "yTRei8HURYU",
+          "title": "Thresh Support vs Nautilus - EUW Challenger Patch 26.17",
+          "rankClaim": "Challenger",
+          "patch": "26.17",
+          "durationSec": 1556,
+          "region": "EUW",
+          "uploaded": "2026-09-10",
+          "moments": []
+        },
+        {
+          "videoId": "wyhy8ZOIxOc",
+          "title": "(LNG MISSING) Thresh Support vs Nautilus - KR Challenger Patch 26.13",
+          "rankClaim": "Challenger",
+          "patch": "26.13",
+          "durationSec": 1681,
+          "region": "KR",
+          "player": "MISSING",
+          "team": "LNG",
+          "uploaded": "2026-07-01",
+          "moments": []
+        },
+        {
+          "videoId": "Dy24ayNZhVE",
+          "title": "Thresh Support vs Nautilus - KR Master Patch 26.09",
+          "rankClaim": "Master",
+          "patch": "26.9",
+          "durationSec": 1750,
+          "region": "KR",
+          "uploaded": "2026-05-03",
+          "moments": []
+        },
+        {
+          "videoId": "1K1BPIIBEDs",
+          "title": "Thresh Support vs Nautilus - KR Grandmaster Patch 26.08",
+          "rankClaim": "Grandmaster",
+          "patch": "26.8",
+          "durationSec": 1769,
+          "region": "KR",
+          "uploaded": "2026-04-29",
+          "moments": []
+        },
+        {
+          "videoId": "3zvd_fdIqxg",
+          "title": "Thresh Support vs Nautilus - KR Challenger Patch 25.19",
+          "rankClaim": "Challenger",
+          "patch": "25.19",
+          "durationSec": 1479,
+          "region": "KR",
+          "uploaded": "2025-09-27",
+          "moments": []
+        },
+        {
+          "videoId": "sErUqK4imXU",
+          "title": "Thresh Support vs Nautilus - EUW Grandmaster Patch 25.06",
+          "rankClaim": "Grandmaster",
+          "patch": "25.6",
+          "durationSec": 1540,
+          "region": "EUW",
+          "uploaded": "2025-04-01",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 117,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "mUDjAjk63fY",
+          "title": "Thresh Support vs Lulu - KR Challenger Patch 26.16",
+          "rankClaim": "Challenger",
+          "patch": "26.16",
+          "durationSec": 1544,
+          "region": "KR",
+          "uploaded": "2026-08-22",
+          "moments": []
+        },
+        {
+          "videoId": "JkIq9c1nCJ4",
+          "title": "Thresh Support vs Lulu - EUW Grandmaster Patch 26.02",
+          "rankClaim": "Grandmaster",
+          "patch": "26.2",
+          "durationSec": 1619,
+          "region": "EUW",
+          "uploaded": "2026-02-03",
+          "moments": []
+        },
+        {
+          "videoId": "iLGYU7klbrU",
+          "title": "Thresh Support vs Lulu - KR Challenger Patch 26.01",
+          "rankClaim": "Challenger",
+          "patch": "26.1",
+          "durationSec": 1612,
+          "region": "KR",
+          "uploaded": "2026-01-23",
+          "moments": []
+        },
+        {
+          "videoId": "fP3wh1krhaw",
+          "title": "Thresh Support vs Lulu - KR Grandmaster Patch 25.16",
+          "rankClaim": "Grandmaster",
+          "patch": "25.16",
+          "durationSec": 1724,
+          "region": "KR",
+          "uploaded": "2025-08-17",
+          "moments": []
+        },
+        {
+          "videoId": "g7HhBp8XBvg",
+          "title": "Thresh Support vs Lulu - KR Master Patch 25.12",
+          "rankClaim": "Master",
+          "patch": "25.12",
+          "durationSec": 1531,
+          "region": "KR",
+          "uploaded": "2025-06-13",
+          "moments": []
+        },
+        {
+          "videoId": "gyTpKMMwv9o",
+          "title": "Thresh Support vs Lulu - KR Master Patch 25.05",
+          "rankClaim": "Master",
+          "patch": "25.5",
+          "durationSec": 1901,
+          "region": "KR",
+          "uploaded": "2025-03-08",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 142,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "QeZzkjkTqBg",
+          "title": "(ZYB Stend) Thresh Support vs Zoe - EUW Challenger Patch 26.11",
+          "rankClaim": "Challenger",
+          "patch": "26.11",
+          "durationSec": 1804,
+          "region": "EUW",
+          "player": "ZYB Stend",
+          "uploaded": "2026-06-05",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 143,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "Ssy2nv4J3bg",
+          "title": "Thresh Support vs Zyra - KR Grandmaster Patch 26.19",
+          "rankClaim": "Grandmaster",
+          "patch": "26.19",
+          "durationSec": 1501,
+          "region": "KR",
+          "uploaded": "2026-10-06",
+          "result": "W",
+          "moments": [
+            {
+              "atSec": 113,
+              "label": "First Blood — Aphelios kills Zyra",
+              "kind": "kill"
+            },
+            {
+              "atSec": 179,
+              "label": "Lee Sin picks off Galio"
+            },
+            {
+              "atSec": 229,
+              "label": "Aphelios picks off Zyra"
+            },
+            {
+              "atSec": 356,
+              "label": "Blue takes 1st Dragon (Infernal)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 362,
+              "label": "Aphelios picks off Zyra"
+            },
+            {
+              "atSec": 443,
+              "label": "Aphelios takes down Caitlyn"
+            },
+            {
+              "atSec": 515,
+              "label": "Aphelios takes down Caitlyn"
+            },
+            {
+              "atSec": 676,
+              "label": "Aphelios picks off Zyra"
+            },
+            {
+              "atSec": 679,
+              "label": "Blue takes 2nd Dragon (Ocean)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 712,
+              "label": "Aphelios takes down Caitlyn"
+            },
+            {
+              "atSec": 798,
+              "label": "Lee Sin kills Zyra",
+              "kind": "kill"
+            },
+            {
+              "atSec": 893,
+              "label": "Team fight (4 kills)",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1056,
+              "label": "Blue takes 3rd Dragon (Mountain)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1063,
+              "label": "Dr. Mundo kills Hecarim",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1200,
+              "label": "Aphelios takes down Caitlyn"
+            },
+            {
+              "atSec": 1304,
+              "label": "Blue takes Baron",
+              "kind": "baron"
+            },
+            {
+              "atSec": 1351,
+              "label": "Aphelios eliminates Hecarim"
+            },
+            {
+              "atSec": 1412,
+              "label": "Blue takes 4th Dragon (Mountain)",
+              "kind": "dragon"
+            }
+          ]
+        },
+        {
+          "videoId": "W-pSqUfhU9Q",
+          "title": "Thresh Support vs Zyra - KR Master Patch 25.22",
+          "rankClaim": "Master",
+          "patch": "25.22",
+          "durationSec": 1646,
+          "region": "KR",
+          "uploaded": "2025-11-07",
+          "moments": []
+        },
+        {
+          "videoId": "Tqg2spZnNHk",
+          "title": "Thresh Support vs Zyra - KR Master Patch 25.06",
+          "rankClaim": "Master",
+          "patch": "25.6",
+          "durationSec": 1590,
+          "region": "KR",
+          "uploaded": "2025-03-22",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 198,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 377,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 404,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 566,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 676,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 860,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 973,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1009,
+              "label": "Hunt The Rift Herald",
+              "kind": "herald"
+            },
+            {
+              "atSec": 1029,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1043,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1292,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1357,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1380,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1465,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1569,
+              "label": "End credit"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 147,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "oA5qnmKFy08",
+          "title": "Thresh Support vs Seraphine - EUW Grandmaster Patch 25.19",
+          "rankClaim": "Grandmaster",
+          "patch": "25.19",
+          "durationSec": 1588,
+          "region": "EUW",
+          "uploaded": "2025-10-09",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 201,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "PQkCs4KSJzc",
+          "title": "(IN5 Nikiyas) Thresh Support vs Braum - EUW Grandmaster Patch 26.13",
+          "rankClaim": "Grandmaster",
+          "patch": "26.13",
+          "durationSec": 1685,
+          "region": "EUW",
+          "player": "IN5 Nikiyas",
+          "uploaded": "2026-07-14",
+          "moments": []
+        },
+        {
+          "videoId": "LBe9jBUOjXs",
+          "title": "Thresh Support vs Braum - KR Master Patch 25.14",
+          "rankClaim": "Master",
+          "patch": "25.14",
+          "durationSec": 1537,
+          "region": "KR",
+          "uploaded": "2025-07-19",
+          "moments": []
+        },
+        {
+          "videoId": "GGrRb0abWkk",
+          "title": "Thresh Support vs Braum - KR Master Patch 25.08",
+          "rankClaim": "Master",
+          "patch": "25.8",
+          "durationSec": 1871,
+          "region": "KR",
+          "uploaded": "2025-04-20",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 223,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "KWvj9QP1RmM",
+          "title": "Thresh Support vs Tahm Kench - EUW Challenger Patch 25.14",
+          "rankClaim": "Challenger",
+          "patch": "25.14",
+          "durationSec": 1765,
+          "region": "EUW",
+          "uploaded": "2025-08-01",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 235,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "zsCbHi8Esr4",
+          "title": "(Cribob) Thresh Support vs Senna - EUW Challenger Patch 26.21",
+          "rankClaim": "Challenger",
+          "patch": "26.21",
+          "durationSec": 1686,
+          "region": "EUW",
+          "player": "Cribob",
+          "uploaded": "2026-11-03",
+          "moments": []
+        },
+        {
+          "videoId": "C-0lMsB8ohM",
+          "title": "Thresh Support vs Senna - KR Master Patch 26.17",
+          "rankClaim": "Master",
+          "patch": "26.17",
+          "durationSec": 1632,
+          "region": "KR",
+          "uploaded": "2026-08-29",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 246,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "wuzwau__7lY",
+          "title": "Thresh Support vs Qiyana - KR Challenger Patch 26.20",
+          "rankClaim": "Challenger",
+          "patch": "26.20",
+          "durationSec": 1624,
+          "region": "KR",
+          "uploaded": "2026-10-22",
+          "result": "W",
+          "moments": [
+            {
+              "atSec": 93,
+              "label": "First Blood — Thresh kills Vi",
+              "kind": "kill"
+            },
+            {
+              "atSec": 180,
+              "label": "Thresh eliminates Qiyana"
+            },
+            {
+              "atSec": 222,
+              "label": "Lee Sin eliminates Jhin"
+            },
+            {
+              "atSec": 398,
+              "label": "Lee Sin kills Qiyana",
+              "kind": "kill"
+            },
+            {
+              "atSec": 448,
+              "label": "Cassiopeia takes down Qiyana"
+            },
+            {
+              "atSec": 472,
+              "label": "Lee Sin takes down Vi"
+            },
+            {
+              "atSec": 721,
+              "label": "Aphelios picks off Qiyana"
+            },
+            {
+              "atSec": 751,
+              "label": "Blue takes 1st Dragon (Mountain)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 947,
+              "label": "Team fight (3 kills)",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1009,
+              "label": "Blue takes Rift Herald",
+              "kind": "herald"
+            },
+            {
+              "atSec": 1078,
+              "label": "Aphelios eliminates Vi"
+            },
+            {
+              "atSec": 1103,
+              "label": "Blue takes 2nd Dragon (Chemtech)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1250,
+              "label": "Blue takes Baron",
+              "kind": "baron"
+            },
+            {
+              "atSec": 1409,
+              "label": "Aphelios picks off Qiyana"
+            },
+            {
+              "atSec": 1426,
+              "label": "Cassiopeia Triple Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1450,
+              "label": "Blue takes 3rd Dragon (Hextech)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1532,
+              "label": "Aphelios takes down Jhin"
+            },
+            {
+              "atSec": 1568,
+              "label": "Aphelios Double Kill",
+              "kind": "kill"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 267,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "nx95_2-Ywbg",
+          "title": "Thresh Support vs Nami - EUNE Challenger Patch 26.08",
+          "rankClaim": "Challenger",
+          "patch": "26.8",
+          "durationSec": 1784,
+          "region": "EUNE",
+          "uploaded": "2026-04-17",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 432,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "wn02C-mPdOs",
+          "title": "Thresh Support vs Bard - KR Challenger Patch 26.06",
+          "rankClaim": "Challenger",
+          "patch": "26.6",
+          "durationSec": 1491,
+          "region": "KR",
+          "uploaded": "2026-04-02",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 150,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 420,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 505,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 595,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 700,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 754,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1109,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1307,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1415,
+              "label": "Hunt The Dragon",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1432,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1480,
+              "label": "End credit"
+            }
+          ]
+        },
+        {
+          "videoId": "8AepYW0z0GY",
+          "title": "Thresh Support vs Bard - KR Grandmaster Patch 26.03",
+          "rankClaim": "Grandmaster",
+          "patch": "26.3",
+          "durationSec": 1620,
+          "region": "KR",
+          "uploaded": "2026-02-06",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 229,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 284,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 434,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 611,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 706,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 872,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 986,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1002,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1164,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1269,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1352,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1429,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1570,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1596,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1609,
+              "label": "End credit"
+            }
+          ]
+        },
+        {
+          "videoId": "LlvmyD5myic",
+          "title": "Thresh Support vs Bard - KR Master Patch 25.24",
+          "rankClaim": "Master",
+          "patch": "25.24",
+          "durationSec": 1503,
+          "region": "KR",
+          "uploaded": "2025-12-07",
+          "moments": []
+        },
+        {
+          "videoId": "P9WykuSEwtM",
+          "title": "Thresh Support vs Bard - EUW Challenger Patch 25.23",
+          "rankClaim": "Challenger",
+          "patch": "25.23",
+          "durationSec": 1670,
+          "region": "EUW",
+          "uploaded": "2025-12-04",
+          "moments": []
+        },
+        {
+          "videoId": "ozrVrgRXeeM",
+          "title": "Thresh Support vs Bard - KR Grandmaster Patch 25.21",
+          "rankClaim": "Grandmaster",
+          "patch": "25.21",
+          "durationSec": 1830,
+          "region": "KR",
+          "uploaded": "2025-10-25",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 497,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "E8M1i2RkPYI",
+          "title": "(TOG Lilipp) Thresh Support vs Rakan - EUW Grandmaster Patch 26.15",
+          "rankClaim": "Grandmaster",
+          "patch": "26.15",
+          "durationSec": 1624,
+          "region": "EUW",
+          "player": "TOG Lilipp",
+          "uploaded": "2026-08-09",
+          "moments": []
+        },
+        {
+          "videoId": "Cntj8wWBfiw",
+          "title": "Thresh Support vs Rakan - KR Grandmaster Patch 25.24",
+          "rankClaim": "Grandmaster",
+          "patch": "25.24",
+          "durationSec": 1543,
+          "region": "KR",
+          "uploaded": "2026-01-09",
+          "moments": []
+        },
+        {
+          "videoId": "T8Qu9QnjqK0",
+          "title": "Thresh Support vs Rakan - EUW Challenger Patch 25.21",
+          "rankClaim": "Challenger",
+          "patch": "25.21",
+          "durationSec": 1679,
+          "region": "EUW",
+          "uploaded": "2025-11-06",
+          "moments": []
+        },
+        {
+          "videoId": "gJOr7nD3ztM",
+          "title": "Thresh Support vs Rakan - EUW Challenger Patch 25.13",
+          "rankClaim": "Challenger",
+          "patch": "25.13",
+          "durationSec": 1659,
+          "region": "EUW",
+          "uploaded": "2025-07-10",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 518,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "yHmrlFMs-dE",
+          "title": "Thresh Support vs Neeko - KR Challenger Patch 26.05",
+          "rankClaim": "Challenger",
+          "patch": "26.5",
+          "durationSec": 1752,
+          "region": "KR",
+          "uploaded": "2026-03-16",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 276,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 635,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 698,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 826,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 855,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1241,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1343,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1476,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1587,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1694,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1741,
+              "label": "End credit"
+            }
+          ]
+        },
+        {
+          "videoId": "cs-EHuu3g7Y",
+          "title": "Thresh Support vs Neeko - EUW Grandmaster Patch 25.10",
+          "rankClaim": "Grandmaster",
+          "patch": "25.10",
+          "durationSec": 1669,
+          "region": "EUW",
+          "uploaded": "2025-05-28",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 526,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "QC15-Tgj8rE",
+          "title": "Thresh Support vs Rell - KR Grandmaster Patch 26.10",
+          "rankClaim": "Grandmaster",
+          "patch": "26.10",
+          "durationSec": 1478,
+          "region": "KR",
+          "uploaded": "2026-05-16",
+          "moments": []
+        },
+        {
+          "videoId": "HHp2WhoSRxI",
+          "title": "Thresh Support vs Rell - KR Challenger Patch 25.15",
+          "rankClaim": "Challenger",
+          "patch": "25.15",
+          "durationSec": 1620,
+          "region": "KR",
+          "uploaded": "2025-08-02",
+          "moments": []
+        },
+        {
+          "videoId": "dPhKc2qlxKA",
+          "title": "Thresh Support vs Rell - VN Challenger Patch 25.11",
+          "rankClaim": "Challenger",
+          "patch": "25.11",
+          "durationSec": 2032,
+          "uploaded": "2025-06-12",
+          "moments": []
+        },
+        {
+          "videoId": "iA-lFxzKRMI",
+          "title": "Thresh Support vs Rell - KR Grandmaster Patch 25.07",
+          "rankClaim": "Grandmaster",
+          "patch": "25.7",
+          "durationSec": 1496,
+          "region": "KR",
+          "uploaded": "2025-04-05",
+          "moments": []
+        },
+        {
+          "videoId": "9kaqaVfnEHc",
+          "title": "Thresh Support vs Rell - EUW Grandmaster Patch 25.05",
+          "rankClaim": "Grandmaster",
+          "patch": "25.5",
+          "durationSec": 1727,
+          "region": "EUW",
+          "uploaded": "2025-03-19",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 555,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "WWWQAsL8C0c",
+          "title": "Thresh Support vs Pyke (C9 Thanatos) - KR Challenger Patch 26.21",
+          "rankClaim": "Challenger",
+          "patch": "26.21",
+          "durationSec": 1744,
+          "region": "KR",
+          "uploaded": "2026-10-24",
+          "result": "W",
+          "moments": [
+            {
+              "atSec": 529,
+              "label": "Xin Zhao kills Pyke",
+              "kind": "kill"
+            },
+            {
+              "atSec": 644,
+              "label": "Blue takes 1st Dragon (Infernal)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 899,
+              "label": "Team fight (3 kills)",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 961,
+              "label": "Blue takes 2nd Dragon (Hextech)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1005,
+              "label": "Thresh eliminates Yasuo"
+            },
+            {
+              "atSec": 1172,
+              "label": "Thresh eliminates Pyke"
+            },
+            {
+              "atSec": 1240,
+              "label": "Blue takes Baron",
+              "kind": "baron"
+            },
+            {
+              "atSec": 1307,
+              "label": "Blue takes 3rd Dragon (Cloud)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1314,
+              "label": "Aphelios eliminates Nidalee"
+            },
+            {
+              "atSec": 1442,
+              "label": "Gnar picks off Tristana"
+            },
+            {
+              "atSec": 1501,
+              "label": "Aphelios kills Yone",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1584,
+              "label": "Aphelios picks off Pyke"
+            },
+            {
+              "atSec": 1592,
+              "label": "Aphelios Triple Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1596,
+              "label": "Aphelios Quadra Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1617,
+              "label": "Blue takes 2nd Baron",
+              "kind": "baron"
+            },
+            {
+              "atSec": 1638,
+              "label": "Blue takes 4th Dragon (Cloud)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1689,
+              "label": "Mid Inhibitor falls (Red)"
+            },
+            {
+              "atSec": 1721,
+              "label": "Aphelios picks off Pyke"
+            }
+          ]
+        },
+        {
+          "videoId": "fPngHtF2JV0",
+          "title": "Thresh Support vs Pyke - KR Challenger Patch 26.07",
+          "rankClaim": "Challenger",
+          "patch": "26.7",
+          "durationSec": 1681,
+          "region": "KR",
+          "uploaded": "2026-04-17",
+          "moments": []
+        },
+        {
+          "videoId": "DrGUwJJbiAI",
+          "title": "Thresh Support vs Pyke - EUW Grandmaster Patch 25.18",
+          "rankClaim": "Grandmaster",
+          "patch": "25.18",
+          "durationSec": 1571,
+          "region": "EUW",
+          "uploaded": "2025-09-25",
+          "moments": []
+        },
+        {
+          "videoId": "ZSFsAlr5tlw",
+          "title": "Thresh Support vs Pyke - KR Master Patch 25.09",
+          "rankClaim": "Master",
+          "patch": "25.9",
+          "durationSec": 1802,
+          "region": "KR",
+          "uploaded": "2025-05-02",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 123,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 313,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 391,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 485,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 582,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 712,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 824,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1018,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1160,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1224,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1308,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1353,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1378,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1398,
+              "label": "Take down The Inhibitor"
+            },
+            {
+              "atSec": 1421,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1509,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1535,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1603,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1721,
+              "label": "Take down The Inhibitor"
+            },
+            {
+              "atSec": 1739,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1781,
+              "label": "End credit"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 800,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "jYV14U7y53o",
+          "title": "Thresh Support vs Mel - KR Grandmaster Patch 25.11",
+          "rankClaim": "Grandmaster",
+          "patch": "25.11",
+          "durationSec": 1674,
+          "region": "KR",
+          "uploaded": "2025-05-31",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 888,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "wtLQqm0W310",
+          "title": "Thresh Support vs Renata Glasc (LOUD Bull) - KR Challenger Patch 26.18",
+          "rankClaim": "Challenger",
+          "patch": "26.18",
+          "durationSec": 1579,
+          "region": "KR",
+          "uploaded": "2026-09-23",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 902,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "C9fkGPTmL8Q",
+          "title": "Thresh Support vs Milio - EUW Master Patch 26.01",
+          "rankClaim": "Master",
+          "patch": "26.1",
+          "durationSec": 1475,
+          "region": "EUW",
+          "uploaded": "2026-01-11",
+          "moments": []
+        },
+        {
+          "videoId": "U23WIZFyVLE",
+          "title": "Thresh Support vs Milio - VN Challenger Patch 25.24",
+          "rankClaim": "Challenger",
+          "patch": "25.24",
+          "durationSec": 1551,
+          "uploaded": "2026-01-01",
+          "moments": []
+        }
+      ]
+    }
+  ]
+}

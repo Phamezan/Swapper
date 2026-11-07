@@ -1,0 +1,2415 @@
+{
+  "schema": 1,
+  "champion": 75,
+  "generatedAt": "2026-11-07T13:25:14.592Z",
+  "guides": [],
+  "general": [
+    {
+      "champion": 75,
+      "lane": "top",
+      "patch": "26.21",
+      "reviewed": false,
+      "keyTips": [
+        {
+          "text": "Nasus is weak early, so avoid trading until you have several levels or a clear opening and prioritize safe farming instead.",
+          "scope": "champion",
+          "sourceIds": [
+            "mobalytics-nasus-top"
+          ]
+        },
+        {
+          "text": "Collect Siphoning Strike stacks steadily because they drive his later damage, but do not risk health for a stack when the trade is unsafe.",
+          "scope": "champion",
+          "sourceIds": [
+            "mobalytics-nasus-top"
+          ],
+          "abilityKeys": [
+            {
+              "champion": 75,
+              "key": "Q"
+            }
+          ]
+        },
+        {
+          "text": "Level six is the first major dueling spike because Fury of the Sands gives him the tools to run down an overextended lane opponent.",
+          "scope": "champion",
+          "sourceIds": [
+            "mobalytics-nasus-top"
+          ],
+          "abilityKeys": [
+            {
+              "champion": 75,
+              "key": "R"
+            }
+          ]
+        }
+      ],
+      "sections": {
+        "overview": {
+          "tips": []
+        },
+        "early-lane": {
+          "tips": [
+            {
+              "text": "Keep collecting Siphoning Strike stacks without taking bad trades, since falling behind on stacks weakens the whole game plan.",
+              "scope": "champion",
+              "sourceIds": [
+                "mobalytics-nasus-top"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 75,
+                  "key": "Q"
+                }
+              ]
+            },
+            {
+              "text": "Completing the first item improves damage and survivability, but keep farming stacks rather than treating the purchase as a reason to force every fight.",
+              "scope": "champion",
+              "sourceIds": [
+                "mobalytics-nasus-top"
+              ]
+            },
+            {
+              "text": "Keep the wave in a safe spot and concede contested last hits early instead of trading health for farm you cannot take for free.",
+              "scope": "champion",
+              "sourceIds": [
+                "mobalytics-nasus-top"
+              ]
+            },
+            {
+              "text": "If bot lane takes its outer tower and rotates top, move around the map to play with the team rather than staying alone in a stale lane.",
+              "scope": "champion",
+              "sourceIds": [
+                "mobalytics-nasus-top"
+              ]
+            }
+          ]
+        },
+        "mid-lane": {
+          "tips": [
+            {
+              "text": "Keep stacking Siphoning Strike as the game moves toward larger fights so Nasus does not fall behind on damage.",
+              "scope": "champion",
+              "sourceIds": [
+                "mobalytics-nasus-top"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 75,
+                  "key": "Q"
+                }
+              ]
+            },
+            {
+              "text": "Rotate to assist teammates when needed, but do not abandon a safe objective or overcommit to a low-value chase.",
+              "scope": "champion",
+              "sourceIds": [
+                "mobalytics-nasus-top"
+              ]
+            },
+            {
+              "text": "Draw opponents to your side of the map while allies siege an objective elsewhere.",
+              "scope": "champion",
+              "sourceIds": [
+                "mobalytics-nasus-top"
+              ]
+            },
+            {
+              "text": "At level eleven, the second rank of Fury of the Sands is a power spike for both durability and kill pressure.",
+              "scope": "champion",
+              "sourceIds": [
+                "mobalytics-nasus-top"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 75,
+                  "key": "R"
+                }
+              ]
+            },
+            {
+              "text": "Max Siphoning Strike first, then Wither, then Spirit Fire, upgrading Fury of the Sands at levels six, eleven, and sixteen.",
+              "scope": "champion",
+              "sourceIds": [
+                "mobalytics-nasus-top-build"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 75,
+                  "key": "Q"
+                },
+                {
+                  "champion": 75,
+                  "key": "W"
+                },
+                {
+                  "champion": 75,
+                  "key": "E"
+                },
+                {
+                  "champion": 75,
+                  "key": "R"
+                }
+              ]
+            }
+          ]
+        },
+        "win-condition": {
+          "tips": [
+            {
+              "text": "In late game, split push for towers while teammates group elsewhere; pressure on your lane can open the map for them.",
+              "scope": "champion",
+              "sourceIds": [
+                "mobalytics-nasus-top"
+              ]
+            },
+            {
+              "text": "Group when there is no safe objective left to take alone or the team needs Nasus to frontline.",
+              "scope": "champion",
+              "sourceIds": [
+                "mobalytics-nasus-top"
+              ]
+            },
+            {
+              "text": "In teamfights, Wither the approaching frontline and focus the nearest enemy while peeling for the carries.",
+              "scope": "champion",
+              "sourceIds": [
+                "mobalytics-nasus-top"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 75,
+                  "key": "W"
+                }
+              ]
+            },
+            {
+              "text": "High Siphoning Strike stacks let Nasus threaten unprotected carries, so use that threat to force the enemy to respond before the team takes objectives elsewhere.",
+              "scope": "champion",
+              "sourceIds": [
+                "mobalytics-nasus-top"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 75,
+                  "key": "Q"
+                }
+              ]
+            },
+            {
+              "text": "Keep stacking and building rather than forcing early fights, since his strongest carry window is late game.",
+              "scope": "champion",
+              "sourceIds": [
+                "mobalytics-nasus-top"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 75,
+                  "key": "Q"
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "itemization": [
+        {
+          "text": "Build the popular 26.21 core of Trinity Force, Lucidity boots, Frozen Heart, Spirit Visage, and Thornmail.",
+          "scope": "champion",
+          "sourceIds": [
+            "mobalytics-nasus-top-build"
+          ],
+          "itemIds": [
+            3078,
+            3110,
+            3065,
+            3075
+          ]
+        },
+        {
+          "text": "Take Fleet Footwork, Triumph, Legend: Haste, Last Stand, Second Wind, and Unflinching as the standard rune page.",
+          "scope": "champion",
+          "sourceIds": [
+            "mobalytics-nasus-top-build"
+          ]
+        },
+        {
+          "text": "Choose Randuin's Omen over Spirit Visage when the enemy has heavy physical damage or critical-strike attackers.",
+          "scope": "champion",
+          "sourceIds": [
+            "mobalytics-nasus-top-build"
+          ],
+          "itemIds": [
+            3143,
+            3065
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "id": "mobalytics-nasus-top",
+          "author": "Mobalytics",
+          "rankClaim": "No rank claim",
+          "url": "https://mobalytics.gg/lol/champions/nasus/guide",
+          "kind": "web"
+        },
+        {
+          "id": "mobalytics-nasus-top-build",
+          "author": "Mobalytics",
+          "rankClaim": "No rank claim",
+          "url": "https://mobalytics.gg/lol/champions/nasus/build",
+          "kind": "web"
+        }
+      ]
+    }
+  ],
+  "vods": [
+    {
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "Gqm1vDMg3cs",
+          "title": "PUTTING NASUS ON A LEASH",
+          "rankClaim": "Master+",
+          "patch": "26.17",
+          "durationSec": 1617,
+          "patchEstimated": true,
+          "player": "Makkro",
+          "uploaded": "2026-08-30",
+          "format": "stream",
+          "cam": true,
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 1,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "hDzj-0R5j68",
+          "title": "(Omar) Nasus Mid vs Annie - EUW Master Patch 26.19",
+          "rankClaim": "Master",
+          "patch": "26.19",
+          "durationSec": 1529,
+          "region": "EUW",
+          "player": "Omar",
+          "uploaded": "2026-10-04",
+          "moments": []
+        },
+        {
+          "videoId": "pFx19S24knc",
+          "title": "Nasus Mid vs Annie - EUW Challenger Patch 26.09",
+          "rankClaim": "Challenger",
+          "patch": "26.9",
+          "durationSec": 1511,
+          "region": "EUW",
+          "uploaded": "2026-05-07",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 3,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "wUN18_53S4w",
+          "title": "Nasus Mid vs Galio - TW Challenger Patch 26.06",
+          "rankClaim": "Challenger",
+          "patch": "26.6",
+          "durationSec": 1535,
+          "uploaded": "2026-03-31",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 217,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 460,
+              "label": "Get a Triple Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 530,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 659,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 727,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 806,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 835,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 940,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 970,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1001,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1178,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1211,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1229,
+              "label": "Take down The Inhibitor"
+            },
+            {
+              "atSec": 1355,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1372,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1383,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1472,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1524,
+              "label": "End credit"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 5,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "AN9cYaWmTDM",
+          "title": "(LEV Booki) Nasus Jungle vs Xin Zhao - BR Challenger Patch 26.11",
+          "rankClaim": "Challenger",
+          "patch": "26.11",
+          "durationSec": 1834,
+          "player": "LEV Booki",
+          "uploaded": "2026-06-11",
+          "moments": []
+        },
+        {
+          "videoId": "0mHSO_ofcUU",
+          "title": "Nasus vs Xin Zhao [ Jungle ] Lol Korea Master Patch 25.12",
+          "rankClaim": "Master",
+          "patch": "25.12",
+          "durationSec": 1517,
+          "region": "KR",
+          "uploaded": "2025-06-17",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 7,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "TMQkv3Gc1Yk",
+          "title": "Nasus Mid vs LeBlanc - NA Challenger Patch 26.18",
+          "rankClaim": "Challenger",
+          "patch": "26.18",
+          "durationSec": 1863,
+          "region": "NA",
+          "uploaded": "2026-09-21",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 8,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "LaUqmdimpQk",
+          "title": "Nasus Top vs Vladimir - KR Master Patch 25.19",
+          "rankClaim": "Master",
+          "patch": "25.19",
+          "durationSec": 1596,
+          "region": "KR",
+          "uploaded": "2025-10-03",
+          "moments": []
+        },
+        {
+          "videoId": "ykorBDzRdHY",
+          "title": "Nasus Top vs Vladimir - KR Master Patch 25.07",
+          "rankClaim": "Master",
+          "patch": "25.7",
+          "durationSec": 1674,
+          "region": "KR",
+          "uploaded": "2025-04-11",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 10,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "xqZtYq0Ewas",
+          "title": "Nasus vs Kayle [ TOP ] Korea Master 394 LP | Patch 26.14 ✅",
+          "rankClaim": "Master",
+          "patch": "26.14",
+          "durationSec": 1453,
+          "region": "KR",
+          "uploaded": "2026-07-21",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 13,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "wYeLPsbWGdk",
+          "title": "Nasus Top vs Ryze - EUW Master Patch 26.02",
+          "rankClaim": "Master",
+          "patch": "26.2",
+          "durationSec": 1618,
+          "region": "EUW",
+          "uploaded": "2026-02-03",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 14,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "9YM_TQfLfk4",
+          "title": "Nasus Top vs Sion - KR Master Patch 25.23",
+          "rankClaim": "Master",
+          "patch": "25.23",
+          "durationSec": 1706,
+          "region": "KR",
+          "uploaded": "2025-12-04",
+          "moments": []
+        },
+        {
+          "videoId": "oiXjdOGNj58",
+          "title": "Nasus Top vs Sion - KR Master Patch 25.18",
+          "rankClaim": "Master",
+          "patch": "25.18",
+          "durationSec": 1801,
+          "region": "KR",
+          "uploaded": "2025-09-18",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 19,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "NbA-9LsYdXw",
+          "title": "Nasus Jungle vs Warwick - EUW Grandmaster Patch 25.10",
+          "rankClaim": "Grandmaster",
+          "patch": "25.10",
+          "durationSec": 1507,
+          "region": "EUW",
+          "uploaded": "2025-05-29",
+          "moments": []
+        },
+        {
+          "videoId": "z_Zj95kPDBM",
+          "title": "Nasus vs Warwick Jungle - KR Master - Patch 25.10 Season 15",
+          "rankClaim": "Master",
+          "patch": "25.10",
+          "durationSec": 1321,
+          "region": "KR",
+          "uploaded": "2025-05-24",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 19,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "D7DSNrDmvhA",
+          "title": "Nasus Top vs Warwick - KR Master Patch 26.18",
+          "rankClaim": "Master",
+          "patch": "26.18",
+          "durationSec": 1846,
+          "region": "KR",
+          "uploaded": "2026-09-17",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 30,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "Onrm5yotCEI",
+          "title": "Nasus Jungle vs Karthus - EUW Grandmaster Patch 25.24",
+          "rankClaim": "Grandmaster",
+          "patch": "25.24",
+          "durationSec": 1581,
+          "region": "EUW",
+          "uploaded": "2025-12-20",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 404,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 581,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 639,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 694,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 844,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 940,
+              "label": "Hunt The Rift Herald",
+              "kind": "herald"
+            },
+            {
+              "atSec": 971,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 998,
+              "label": "Hunt The Dragon",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1015,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1029,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1118,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1230,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1256,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1287,
+              "label": "Hunt The Atakhan"
+            },
+            {
+              "atSec": 1309,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1374,
+              "label": "Hunt The Dragon",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1392,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1570,
+              "label": "End credit"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 31,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "cwIe4I6OI2w",
+          "title": "Nasus Mid vs Cho'Gath - NA Grandmaster Patch 26.01",
+          "rankClaim": "Grandmaster",
+          "patch": "26.1",
+          "durationSec": 1496,
+          "region": "NA",
+          "uploaded": "2026-01-17",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 382,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 673,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 810,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 853,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 941,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 973,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1095,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1116,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1129,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1143,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1160,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1268,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1311,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1330,
+              "label": "Take down The Inhibitor"
+            },
+            {
+              "atSec": 1401,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1466,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1485,
+              "label": "End credit"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 36,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "1IZxFJKhZrE",
+          "title": "Nasus Top vs Dr. Mundo - KR Master Patch 26.20",
+          "rankClaim": "Master",
+          "patch": "26.20",
+          "durationSec": 1847,
+          "region": "KR",
+          "uploaded": "2026-10-14",
+          "result": "W",
+          "moments": [
+            {
+              "atSec": 185,
+              "label": "First Blood — Nasus kills Dr. Mundo",
+              "kind": "kill"
+            },
+            {
+              "atSec": 276,
+              "label": "Nasus catches Dr. Mundo"
+            },
+            {
+              "atSec": 415,
+              "label": "Blue takes 1st Dragon (Mountain)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 818,
+              "label": "Blue takes 2nd Dragon (Chemtech)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 958,
+              "label": "Nasus solo kills Xayah",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1157,
+              "label": "Blue takes 3rd Dragon (Infernal)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1266,
+              "label": "Viktor eliminates Ekko"
+            },
+            {
+              "atSec": 1289,
+              "label": "Kai'Sa picks off Dr. Mundo"
+            },
+            {
+              "atSec": 1324,
+              "label": "Blue takes Baron",
+              "kind": "baron"
+            },
+            {
+              "atSec": 1467,
+              "label": "Lillia picks off Ekko"
+            },
+            {
+              "atSec": 1489,
+              "label": "Red takes 1st Dragon (Infernal)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1578,
+              "label": "Kai'Sa kills Ekko",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1697,
+              "label": "Blue takes 2nd Baron",
+              "kind": "baron"
+            },
+            {
+              "atSec": 1746,
+              "label": "Mid Inhibitor falls (Blue)"
+            },
+            {
+              "atSec": 1792,
+              "label": "Top Inhibitor falls (Red)"
+            }
+          ]
+        },
+        {
+          "videoId": "sE-k2h7KFG8",
+          "title": "Nasus vs Dr Mundo [ TOP ] Lol Korea Master Patch 25.4 ✅",
+          "rankClaim": "Master",
+          "patch": "25.4",
+          "durationSec": 1657,
+          "region": "KR",
+          "uploaded": "2025-03-02",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 39,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "RxLOXmPjRzk",
+          "title": "Nasus vs Irelia [ TOP ] Lol Korea Master Patch 25.19 ✅",
+          "rankClaim": "Master",
+          "patch": "25.19",
+          "durationSec": 1426,
+          "region": "KR",
+          "uploaded": "2025-09-30",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 41,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "XUb2GPVTNfM",
+          "title": "Nasus Top vs Gangplank - KR Master Patch 25.06",
+          "rankClaim": "Master",
+          "patch": "25.6",
+          "durationSec": 1880,
+          "region": "KR",
+          "uploaded": "2025-03-27",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 56,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "CcaJ2TU23sc",
+          "title": "T1 Oner Nasus vs Nocturne [ Jungle ] Korea Challenger 2252 LP | Patch 26.13",
+          "rankClaim": "Challenger",
+          "patch": "26.13",
+          "durationSec": 1280,
+          "region": "KR",
+          "player": "Oner",
+          "team": "T1",
+          "uploaded": "2026-07-08",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 58,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "NTsDPxL7N98",
+          "title": "Nasus Top vs Renekton - KR Master Patch 25.16",
+          "rankClaim": "Master",
+          "patch": "25.16",
+          "durationSec": 1741,
+          "region": "KR",
+          "uploaded": "2025-08-22",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 59,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "vKq6TMra-04",
+          "title": "Nasus Jungle vs Jarvan IV - KR Grandmaster Patch 26.09",
+          "rankClaim": "Grandmaster",
+          "patch": "26.9",
+          "durationSec": 1620,
+          "region": "KR",
+          "uploaded": "2026-05-11",
+          "moments": []
+        },
+        {
+          "videoId": "hVSCV5m3BNY",
+          "title": "Nasus Jungle vs Jarvan IV - EUNE Challenger Patch 26.08",
+          "rankClaim": "Challenger",
+          "patch": "26.8",
+          "durationSec": 1614,
+          "region": "EUNE",
+          "uploaded": "2026-04-27",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 60,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "EVkJ-0splwI",
+          "title": "Nasus Jungle vs Elise - EUW Grandmaster Patch 25.24",
+          "rankClaim": "Grandmaster",
+          "patch": "25.24",
+          "durationSec": 1514,
+          "region": "EUW",
+          "uploaded": "2025-12-24",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 61,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "sDxVu6NjwVQ",
+          "title": "(Beichuan) Nasus Mid vs Orianna (PAIN Keine) - KR Challenger Patch 26.17",
+          "rankClaim": "Challenger",
+          "patch": "26.17",
+          "durationSec": 1794,
+          "region": "KR",
+          "player": "Beichuan",
+          "uploaded": "2026-09-06",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 64,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "lotcev-qbJc",
+          "title": "(ZYB Manaty) Nasus Jungle vs Lee Sin (PHX Fluffy) - EUW Grandmaster Patch 26.14",
+          "rankClaim": "Grandmaster",
+          "patch": "26.14",
+          "durationSec": 1820,
+          "region": "EUW",
+          "player": "ZYB Manaty",
+          "uploaded": "2026-07-20",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 67,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "yzn1k_WkKDo",
+          "title": "(SK SlowQ) Nasus Top vs Vayne - EUW Challenger Patch 26.16",
+          "rankClaim": "Challenger",
+          "patch": "26.16",
+          "durationSec": 1503,
+          "region": "EUW",
+          "player": "SK SlowQ",
+          "uploaded": "2026-08-23",
+          "result": "W",
+          "moments": [
+            {
+              "atSec": 248,
+              "label": "First Blood — Vi kills Vayne",
+              "kind": "kill"
+            },
+            {
+              "atSec": 303,
+              "label": "Nasus eliminates Vayne"
+            },
+            {
+              "atSec": 531,
+              "label": "Red takes 1st Dragon (Infernal)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 549,
+              "label": "Nasus eliminates Vayne"
+            },
+            {
+              "atSec": 840,
+              "label": "Nasus catches Vayne"
+            },
+            {
+              "atSec": 959,
+              "label": "Red takes 2nd Dragon (Mountain)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1237,
+              "label": "Nasus picks off Yunara"
+            },
+            {
+              "atSec": 1292,
+              "label": "Red takes 3rd Dragon (Ocean)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1310,
+              "label": "Nasus solo kills Yunara",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1343,
+              "label": "Blue takes Baron",
+              "kind": "baron"
+            },
+            {
+              "atSec": 1417,
+              "label": "Top Inhibitor falls (Red)"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 76,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "HHwwv6dzFVY",
+          "title": "HLE Kanavi Nasus vs Nidalee [ Jungle ] Korea Grandmaster 1670 LP | Patch 26.13",
+          "rankClaim": "Grandmaster",
+          "patch": "26.13",
+          "durationSec": 1132,
+          "region": "KR",
+          "player": "Kanavi",
+          "team": "HLE",
+          "uploaded": "2026-07-07",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 80,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "AoJAqeoj_ng",
+          "title": "Nasus Top vs Pantheon - KR Master Patch 25.11",
+          "rankClaim": "Master",
+          "patch": "25.11",
+          "durationSec": 2098,
+          "region": "KR",
+          "uploaded": "2025-06-06",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 83,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "cNK95bve2wk",
+          "title": "Nasus Jungle vs Yorick - NA Grandmaster Patch 25.13",
+          "rankClaim": "Grandmaster",
+          "patch": "25.13",
+          "durationSec": 1690,
+          "region": "NA",
+          "uploaded": "2025-07-12",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 84,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "VfUi8vSuKfo",
+          "title": "Nasus Top vs Akali - KR Master Patch 26.08",
+          "rankClaim": "Master",
+          "patch": "26.8",
+          "durationSec": 1646,
+          "region": "KR",
+          "uploaded": "2026-04-23",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 85,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "LwNpjNSnl60",
+          "title": "Nasus Top vs Kennen - NA Challenger Patch 26.06",
+          "rankClaim": "Challenger",
+          "patch": "26.6",
+          "durationSec": 1736,
+          "region": "NA",
+          "uploaded": "2026-03-27",
+          "moments": []
+        },
+        {
+          "videoId": "VwH6faoWVdk",
+          "title": "Nasus Top vs Kennen - EUW Challenger Patch 26.01",
+          "rankClaim": "Challenger",
+          "patch": "26.1",
+          "durationSec": 1558,
+          "region": "EUW",
+          "uploaded": "2026-01-20",
+          "moments": []
+        },
+        {
+          "videoId": "7b1uFj03oIQ",
+          "title": "Nasus Top vs Kennen - KR Master Patch 25.08",
+          "rankClaim": "Master",
+          "patch": "25.8",
+          "durationSec": 1725,
+          "region": "KR",
+          "uploaded": "2025-04-28",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 242,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 423,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 543,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 709,
+              "label": "Hunt The Void Grubs",
+              "kind": "grubs"
+            },
+            {
+              "atSec": 730,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 811,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 904,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 933,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 995,
+              "label": "Hunt The Rift Herald",
+              "kind": "herald"
+            },
+            {
+              "atSec": 1234,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1304,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1431,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1510,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1544,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1578,
+              "label": "Hunt The Baron Nashor",
+              "kind": "baron"
+            },
+            {
+              "atSec": 1676,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1692,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1704,
+              "label": "End credit"
+            }
+          ]
+        },
+        {
+          "videoId": "o04zKsFFmGk",
+          "title": "Nasus Top vs Kennen - KR Master Patch 25.05",
+          "rankClaim": "Master",
+          "patch": "25.5",
+          "durationSec": 1675,
+          "region": "KR",
+          "uploaded": "2025-03-13",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 381,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 497,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 817,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 892,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 925,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1034,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1135,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1240,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1322,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1363,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1447,
+              "label": "Get a Triple Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1476,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1603,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1622,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1640,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1654,
+              "label": "End credit"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 86,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "mD5klN55Slk",
+          "title": "Nasus Top vs Garen - KR Master Patch 26.03",
+          "rankClaim": "Master",
+          "patch": "26.3",
+          "durationSec": 1489,
+          "region": "KR",
+          "uploaded": "2026-02-12",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 90,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "qmABmCrFrcc",
+          "title": "Nasus Top vs Malzahar - KR Master Patch 25.12",
+          "rankClaim": "Master",
+          "patch": "25.12",
+          "durationSec": 1925,
+          "region": "KR",
+          "uploaded": "2025-06-19",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 98,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "r8QhKMoxhmM",
+          "title": "Nasus Top vs Shen - KR Master Patch 25.13",
+          "rankClaim": "Master",
+          "patch": "25.13",
+          "durationSec": 1924,
+          "region": "KR",
+          "uploaded": "2025-07-02",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 105,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "hy_uvibAXOs",
+          "title": "Nasus Mid vs Fizz - TW Challenger Patch 26.03",
+          "rankClaim": "Challenger",
+          "patch": "26.3",
+          "durationSec": 1472,
+          "uploaded": "2026-02-15",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 106,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "PtIlOYv9DL0",
+          "title": "Nasus Jungle vs Volibear - EUW Grandmaster Patch 25.20",
+          "rankClaim": "Grandmaster",
+          "patch": "25.20",
+          "durationSec": 1526,
+          "region": "EUW",
+          "uploaded": "2025-10-16",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 110,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "-3KAgmuvqmc",
+          "title": "Nasus Top vs Varus - KR Master Patch 25.04",
+          "rankClaim": "Master",
+          "patch": "25.4",
+          "durationSec": 1664,
+          "region": "KR",
+          "uploaded": "2025-03-01",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 374,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 465,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 662,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 945,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1067,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1183,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1286,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1390,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1476,
+              "label": "Get a Triple Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1643,
+              "label": "End credit"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 112,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "_DuwhIq3wSw",
+          "title": "I'M TAKING CORKI AIRLINES TO ESCAPE MASTERS",
+          "rankClaim": "Master+",
+          "patch": "26.8",
+          "durationSec": 25090,
+          "patchEstimated": true,
+          "player": "Alois",
+          "uploaded": "2026-04-21",
+          "format": "stream",
+          "cam": true,
+          "startSec": 17607,
+          "endSec": 19583,
+          "moments": []
+        },
+        {
+          "videoId": "H3GT02NopVc",
+          "title": "Nasus Mid vs Viktor - KR Master Patch 25.18",
+          "rankClaim": "Master",
+          "patch": "25.18",
+          "durationSec": 1707,
+          "region": "KR",
+          "uploaded": "2025-09-23",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 113,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "YQHeQGXWJdw",
+          "title": "(G2 SkewMond) Nasus Jungle vs Sejuani - EUW Challenger Patch 26.10",
+          "rankClaim": "Challenger",
+          "patch": "26.10",
+          "durationSec": 1737,
+          "region": "EUW",
+          "player": "SkewMond",
+          "team": "G2",
+          "uploaded": "2026-05-20",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 114,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "c_s7srC9eyA",
+          "title": "Nasus Top vs Fiora - NA Challenger Patch 26.21",
+          "rankClaim": "Challenger",
+          "patch": "26.21",
+          "durationSec": 1830,
+          "region": "NA",
+          "uploaded": "2026-10-28",
+          "result": "W",
+          "moments": [
+            {
+              "atSec": 506,
+              "label": "Red takes 1st Dragon (Cloud)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 569,
+              "label": "Nasus catches Fiora"
+            },
+            {
+              "atSec": 691,
+              "label": "Nasus outduels Fiora again"
+            },
+            {
+              "atSec": 837,
+              "label": "Xerath kills Syndra",
+              "kind": "kill"
+            },
+            {
+              "atSec": 948,
+              "label": "Blue takes 1st Dragon (Chemtech)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1054,
+              "label": "Pantheon kills Rell",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1074,
+              "label": "Nasus eliminates Fiora"
+            },
+            {
+              "atSec": 1282,
+              "label": "Nasus outplays Fiora (3rd time)"
+            },
+            {
+              "atSec": 1345,
+              "label": "Nasus outplays Syndra"
+            },
+            {
+              "atSec": 1353,
+              "label": "Xerath takes down Kai'Sa"
+            },
+            {
+              "atSec": 1422,
+              "label": "Blue takes 2nd Dragon (Infernal)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1465,
+              "label": "Vladimir kills Kai'Sa",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1602,
+              "label": "Blue takes Baron",
+              "kind": "baron"
+            },
+            {
+              "atSec": 1615,
+              "label": "Xerath takes down Kai'Sa"
+            },
+            {
+              "atSec": 1664,
+              "label": "Mid Inhibitor falls (Red)"
+            },
+            {
+              "atSec": 1736,
+              "label": "Blue takes 3rd Dragon (Infernal)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1768,
+              "label": "Nasus picks off Kai'Sa"
+            },
+            {
+              "atSec": 1813,
+              "label": "Vladimir eliminates Syndra"
+            }
+          ]
+        },
+        {
+          "videoId": "DePCuH6yICM",
+          "title": "Nasus vs Fiora [ TOP ] Lol Korea Master Patch 25.15 ✅",
+          "rankClaim": "Master",
+          "patch": "25.15",
+          "durationSec": 1331,
+          "region": "KR",
+          "uploaded": "2025-08-01",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 120,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "l8YPE0KVWrQ",
+          "title": "Nasus Jungle vs Hecarim - EUW Challenger Patch 25.05",
+          "rankClaim": "Challenger",
+          "patch": "25.5",
+          "durationSec": 1912,
+          "region": "EUW",
+          "uploaded": "2025-03-19",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 122,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "o1RxJoL1JWQ",
+          "title": "(WBG Elk) Nasus Jungle vs Darius - KR Challenger Patch 26.12",
+          "rankClaim": "Challenger",
+          "patch": "26.12",
+          "durationSec": 1628,
+          "region": "KR",
+          "player": "Elk",
+          "team": "WBG",
+          "uploaded": "2026-06-14",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 122,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "mxt3Spgj14A",
+          "title": "Nasus vs Darius [ TOP ] Lol Korea Master Patch 25.11 ✅",
+          "rankClaim": "Master",
+          "patch": "25.11",
+          "durationSec": 1446,
+          "region": "KR",
+          "uploaded": "2025-06-02",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 126,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "4Bemmze3PNg",
+          "title": "(JDG Xiaoxu) Nasus Jungle vs Jayce (SHG Aria) - KR Master Patch 26.10",
+          "rankClaim": "Master",
+          "patch": "26.10",
+          "durationSec": 1597,
+          "region": "KR",
+          "player": "Xiaoxu",
+          "team": "JDG",
+          "uploaded": "2026-05-26",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 126,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "kTu-T7b1wl8",
+          "title": "Nasus Top vs Jayce - KR Grandmaster Patch 26.19",
+          "rankClaim": "Grandmaster",
+          "patch": "26.19",
+          "durationSec": 1781,
+          "region": "KR",
+          "uploaded": "2026-10-01",
+          "moments": []
+        },
+        {
+          "videoId": "4OLehzhKvKs",
+          "title": "Nasus Top vs Jayce - KR Master Patch 25.14",
+          "rankClaim": "Master",
+          "patch": "25.14",
+          "durationSec": 1593,
+          "region": "KR",
+          "uploaded": "2025-07-23",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 133,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "yDXTdt2Hm6Q",
+          "title": "Nasus Mid vs Quinn - KR Master Patch 25.07",
+          "rankClaim": "Master",
+          "patch": "25.7",
+          "durationSec": 1730,
+          "region": "KR",
+          "uploaded": "2025-04-15",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 136,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "2U4sEiYmRzE",
+          "title": "Nasus Mid vs Aurelion Sol - NA Challenger Patch 26.04",
+          "rankClaim": "Challenger",
+          "patch": "26.4",
+          "durationSec": 1916,
+          "region": "NA",
+          "uploaded": "2026-03-04",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 150,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "JR2kdVgvkz4",
+          "title": "Nasus Top vs Gnar - KR Master Patch 26.05",
+          "rankClaim": "Master",
+          "patch": "26.5",
+          "durationSec": 1701,
+          "region": "KR",
+          "uploaded": "2026-03-12",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 154,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "V9N0ZSFthI4",
+          "title": "(KT Cuzz) Nasus Jungle vs Zac - KR Master Patch 26.14",
+          "rankClaim": "Master",
+          "patch": "26.14",
+          "durationSec": 1766,
+          "region": "KR",
+          "player": "Cuzz",
+          "team": "KT",
+          "uploaded": "2026-07-29",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 157,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "vctj9DzDRig",
+          "title": "Nasus Mid vs Yasuo - EUNE Challenger Patch 26.20",
+          "rankClaim": "Challenger",
+          "patch": "26.20",
+          "durationSec": 1734,
+          "region": "EUNE",
+          "uploaded": "2026-10-17",
+          "result": "W",
+          "moments": [
+            {
+              "atSec": 275,
+              "label": "First Blood — Nasus kills Yasuo",
+              "kind": "kill"
+            },
+            {
+              "atSec": 454,
+              "label": "Nasus takes down Yasuo"
+            },
+            {
+              "atSec": 568,
+              "label": "Red takes 1st Dragon (Infernal)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 571,
+              "label": "Nasus solo kills Wukong",
+              "kind": "kill"
+            },
+            {
+              "atSec": 706,
+              "label": "Nasus eliminates Yasuo"
+            },
+            {
+              "atSec": 868,
+              "label": "Nasus outduels Janna"
+            },
+            {
+              "atSec": 888,
+              "label": "Red takes 2nd Dragon (Chemtech)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 981,
+              "label": "Twitch kills Yasuo",
+              "kind": "kill"
+            },
+            {
+              "atSec": 991,
+              "label": "Olaf Triple Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1196,
+              "label": "Nasus picks off Wukong"
+            },
+            {
+              "atSec": 1240,
+              "label": "Red takes 3rd Dragon (Mountain)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1361,
+              "label": "Nasus takes down Janna"
+            },
+            {
+              "atSec": 1392,
+              "label": "Blue takes Baron",
+              "kind": "baron"
+            },
+            {
+              "atSec": 1506,
+              "label": "Nasus kills Aphelios",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1516,
+              "label": "Nasus Triple Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1567,
+              "label": "Red takes 4th Dragon (Mountain)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1665,
+              "label": "Team fight (3 kills)",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1714,
+              "label": "Mid Inhibitor falls (Blue)"
+            }
+          ]
+        },
+        {
+          "videoId": "AxpFKd0rGis",
+          "title": "Nasus Mid vs Yasuo - KR Master Patch 25.19",
+          "rankClaim": "Master",
+          "patch": "25.19",
+          "durationSec": 1508,
+          "region": "KR",
+          "uploaded": "2025-10-08",
+          "moments": []
+        },
+        {
+          "videoId": "HlyHiu6aJag",
+          "title": "Nasus Mid vs Yasuo - KR Master Patch 25.13",
+          "rankClaim": "Master",
+          "patch": "25.13",
+          "durationSec": 2078,
+          "region": "KR",
+          "uploaded": "2025-07-08",
+          "moments": []
+        },
+        {
+          "videoId": "nL58rQCp6bU",
+          "title": "Nasus Mid vs Yasuo - KR Master Patch 25.12",
+          "rankClaim": "Master",
+          "patch": "25.12",
+          "durationSec": 1619,
+          "region": "KR",
+          "uploaded": "2025-06-25",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 157,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "MA-WtIUU_cE",
+          "title": "Nasus Top vs Yasuo - NA Challenger Patch 26.15",
+          "rankClaim": "Challenger",
+          "patch": "26.15",
+          "durationSec": 1775,
+          "region": "NA",
+          "uploaded": "2026-08-12",
+          "moments": []
+        },
+        {
+          "videoId": "9SSxRFcjEG4",
+          "title": "Nasus Top vs Yasuo - KR Master Patch 25.24",
+          "rankClaim": "Master",
+          "patch": "25.24",
+          "durationSec": 1533,
+          "region": "KR",
+          "uploaded": "2025-12-21",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 321,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 455,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 700,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1028,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1128,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1155,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1223,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1248,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1339,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1368,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1442,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1522,
+              "label": "End credit"
+            }
+          ]
+        },
+        {
+          "videoId": "VdTQSqHqa6w",
+          "title": "Nasus Top vs Yasuo - KR Master Patch 25.09",
+          "rankClaim": "Master",
+          "patch": "25.9",
+          "durationSec": 1650,
+          "region": "KR",
+          "uploaded": "2025-05-10",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 164,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "cVH6Ikz8TF4",
+          "title": "Nasus Top vs Camille - KR Master Patch 25.22",
+          "rankClaim": "Master",
+          "patch": "25.22",
+          "durationSec": 1697,
+          "region": "KR",
+          "uploaded": "2025-11-14",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 202,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "daVKnp1Un9w",
+          "title": "Baicaiovo Nasus : Jhin DELETED, Challenger MID LANE DOMINANCE",
+          "rankClaim": "Challenger",
+          "patch": "26.13",
+          "durationSec": 2277,
+          "patchEstimated": true,
+          "player": "Baicaiovo",
+          "uploaded": "2026-07-08",
+          "format": "stream",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 234,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "jIoZF1N3KjE",
+          "title": "Nasus vs Viego [ Jungle ] Lol Korea Master Patch 25.8 ✅",
+          "rankClaim": "Master",
+          "patch": "25.8",
+          "durationSec": 1506,
+          "region": "KR",
+          "uploaded": "2025-04-30",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 238,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "qcc0EUBrRD0",
+          "title": "Nasus Mid vs Zed - KR Master Patch 25.22",
+          "rankClaim": "Master",
+          "patch": "25.22",
+          "durationSec": 1607,
+          "region": "KR",
+          "uploaded": "2025-11-19",
+          "moments": []
+        },
+        {
+          "videoId": "52p4YiDKCvc",
+          "title": "Nasus Mid vs Zed - NA Challenger Patch 25.10",
+          "rankClaim": "Challenger",
+          "patch": "25.10",
+          "durationSec": 1872,
+          "region": "NA",
+          "uploaded": "2025-05-25",
+          "moments": []
+        },
+        {
+          "videoId": "KwOYDlKnq4s",
+          "title": "Nasus Mid vs Zed - NA Challenger Patch 25.08",
+          "rankClaim": "Challenger",
+          "patch": "25.8",
+          "durationSec": 2148,
+          "region": "NA",
+          "uploaded": "2025-04-30",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 245,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "uqcg7KfLyxA",
+          "title": "Nasus Mid vs Ekko - KR Master Patch 25.23",
+          "rankClaim": "Master",
+          "patch": "25.23",
+          "durationSec": 1757,
+          "region": "KR",
+          "uploaded": "2025-11-30",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 254,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "ngJIyQxlCOY",
+          "title": "(G2 SkewMond) Nasus Jungle vs Vi (VIT Lyncas) - EUW Grandmaster Patch 26.15",
+          "rankClaim": "Grandmaster",
+          "patch": "26.15",
+          "durationSec": 1452,
+          "region": "EUW",
+          "player": "SkewMond",
+          "team": "G2",
+          "uploaded": "2026-08-03",
+          "moments": []
+        },
+        {
+          "videoId": "ex_gb85xEBE",
+          "title": "(NRG Spica) Nasus Jungle vs Vi - NA Grandmaster Patch 26.11",
+          "rankClaim": "Grandmaster",
+          "patch": "26.11",
+          "durationSec": 1621,
+          "region": "NA",
+          "player": "NRG Spica",
+          "uploaded": "2026-06-02",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 266,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "Ihzqi4tT-Q0",
+          "title": "Nasus Jungle vs Aatrox - KR Master Patch 26.07",
+          "rankClaim": "Master",
+          "patch": "26.7",
+          "durationSec": 1895,
+          "region": "KR",
+          "uploaded": "2026-04-14",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 266,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "jtcdtzox8C4",
+          "title": "(EDG Angel) Nasus Top vs Aatrox - KR Challenger Patch 26.16",
+          "rankClaim": "Challenger",
+          "patch": "26.16",
+          "durationSec": 1735,
+          "region": "KR",
+          "player": "Angel",
+          "team": "EDG",
+          "uploaded": "2026-08-19",
+          "moments": []
+        },
+        {
+          "videoId": "lkJURnzgNmE",
+          "title": "Nasus Top vs Aatrox - KR Master Patch 26.13",
+          "rankClaim": "Master",
+          "patch": "26.13",
+          "durationSec": 1723,
+          "region": "KR",
+          "uploaded": "2026-07-13",
+          "moments": []
+        },
+        {
+          "videoId": "mBKn_TLYzro",
+          "title": "Nasus Top vs Aatrox - KR Master Patch 25.17",
+          "rankClaim": "Master",
+          "patch": "25.17",
+          "durationSec": 1826,
+          "region": "KR",
+          "uploaded": "2025-09-05",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 421,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "i_obd2aiRhQ",
+          "title": "(TSS Aegis) Nasus Jungle vs Rek'Sai - BR Challenger Patch 26.13",
+          "rankClaim": "Challenger",
+          "patch": "26.13",
+          "durationSec": 1752,
+          "player": "TSS Aegis",
+          "uploaded": "2026-07-08",
+          "moments": []
+        },
+        {
+          "videoId": "k-2c5DPTSpA",
+          "title": "(DNS Pyosik) Nasus Jungle vs Rek'Sai - KR Grandmaster Patch 26.12",
+          "rankClaim": "Grandmaster",
+          "patch": "26.12",
+          "durationSec": 1525,
+          "region": "KR",
+          "player": "Pyosik",
+          "uploaded": "2026-06-22",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 516,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "I0h66WSxcUI",
+          "title": "(JDG Vampire) Nasus Top vs Ornn (AL Kael) - KR Challenger Patch 26.17",
+          "rankClaim": "Challenger",
+          "patch": "26.17",
+          "durationSec": 1653,
+          "region": "KR",
+          "player": "Vampire",
+          "team": "JDG",
+          "uploaded": "2026-09-03",
+          "moments": []
+        },
+        {
+          "videoId": "M-6dPgV2iDY",
+          "title": "Nasus Top vs Ornn - VN Challenger Patch 25.20",
+          "rankClaim": "Challenger",
+          "patch": "25.20",
+          "durationSec": 1881,
+          "uploaded": "2025-10-22",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 799,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "BGc8xan74-Q",
+          "title": "Nasus Top vs Ambessa - VN Challenger Patch 26.07",
+          "rankClaim": "Challenger",
+          "patch": "26.7",
+          "durationSec": 1696,
+          "uploaded": "2026-04-09",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 887,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "bD90pudslOk",
+          "title": "Nasus vs Gwen [ TOP ] Lol Korea Master Patch 26.2 ✅",
+          "rankClaim": "Master",
+          "patch": "26.2",
+          "durationSec": 1515,
+          "region": "KR",
+          "uploaded": "2026-01-25",
+          "moments": []
+        },
+        {
+          "videoId": "sd4rbwjJ7jU",
+          "title": "Nasus Top vs Gwen - KR Master Patch 25.21",
+          "rankClaim": "Master",
+          "patch": "25.21",
+          "durationSec": 1701,
+          "region": "KR",
+          "uploaded": "2025-10-31",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 904,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "WJKGO1_8m8Y",
+          "title": "Nasus Top vs Zaahen - NA Grandmaster Patch 26.04",
+          "rankClaim": "Grandmaster",
+          "patch": "26.4",
+          "durationSec": 1804,
+          "region": "NA",
+          "uploaded": "2026-02-27",
+          "moments": []
+        },
+        {
+          "videoId": "bcrDhytUrpg",
+          "title": "Nasus vs Zaahen [ TOP ] Korea Master 716 LP | Patch 25.24 ✅",
+          "rankClaim": "Master",
+          "patch": "25.24",
+          "durationSec": 1721,
+          "region": "KR",
+          "uploaded": "2025-12-27",
+          "moments": []
+        },
+        {
+          "videoId": "x9rFdc8SIC0",
+          "title": "Nasus vs Zaahen [ TOP ] Lol Korea Master Patch 25.23 ✅",
+          "rankClaim": "Master",
+          "patch": "25.23",
+          "durationSec": 1419,
+          "region": "KR",
+          "uploaded": "2025-12-02",
+          "moments": []
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,5253 @@
+{
+  "schema": 1,
+  "champion": 24,
+  "generatedAt": "2026-11-07T13:25:14.592Z",
+  "guides": [
+    {
+      "champion": 24,
+      "enemy": 39,
+      "lane": "top",
+      "patch": "26.21",
+      "reviewed": false,
+      "difficulty": "Easy",
+      "favoredWhen": "Jax wins by dodging the stun and tracking passive stacks; Irelia wins if she baits Counter Strike and fights fully stacked.",
+      "keyTips": [
+        {
+          "text": "Dodge her stun above all else. Never leap or trade into the setup; the landed stun starts everything she does.",
+          "scope": "pair",
+          "sourceIds": [
+            "ph45"
+          ],
+          "heading": "Stun respect",
+          "abilityKeys": [
+            {
+              "champion": 39,
+              "key": "E"
+            }
+          ]
+        },
+        {
+          "text": "Track her passive stacks and Q resets. A fully stacked passive deals heavy damage, so count dashes and leave before the peak.",
+          "scope": "pair",
+          "sourceIds": [
+            "ph45"
+          ],
+          "heading": "Stack tracking",
+          "abilityKeys": [
+            {
+              "champion": 39,
+              "key": "Q"
+            }
+          ]
+        },
+        {
+          "text": "Hold Counter Strike until she commits. She sets up minions to bait E, so stun only the committed dash, never the feint.",
+          "scope": "pair",
+          "sourceIds": [
+            "houcs",
+            "ph45"
+          ],
+          "heading": "E patience",
+          "abilityKeys": [
+            {
+              "champion": 24,
+              "key": "E"
+            }
+          ]
+        }
+      ],
+      "enemyTips": {},
+      "sections": {
+        "overview": {
+          "tips": []
+        },
+        "early-lane": {
+          "tips": [
+            {
+              "text": "Take short trades and reset. The matchup favors you, but extended fights let her stack for free, so hit inside E and step out.",
+              "scope": "pair",
+              "sourceIds": [
+                "ph45"
+              ],
+              "heading": "Short trades",
+              "abilityKeys": [
+                {
+                  "champion": 24,
+                  "key": "E"
+                }
+              ]
+            },
+            {
+              "text": "Punish her dash-ins with E when no exit minion remains. If she dashes without a way back, the stun locks her in the exchange she cannot leave.",
+              "scope": "pair",
+              "sourceIds": [
+                "houcs"
+              ],
+              "heading": "Trap the dash",
+              "abilityKeys": [
+                {
+                  "champion": 24,
+                  "key": "E"
+                },
+                {
+                  "champion": 39,
+                  "key": "Q"
+                }
+              ]
+            }
+          ]
+        },
+        "mid-lane": {
+          "tips": [
+            {
+              "text": "Count Q resets across the fight. Each dash refreshes on a new target, so track the minion wave as her second resource bar.",
+              "scope": "pair",
+              "sourceIds": [
+                "ph45"
+              ],
+              "heading": "Reset counting",
+              "abilityKeys": [
+                {
+                  "champion": 39,
+                  "key": "Q"
+                }
+              ]
+            },
+            {
+              "text": "Vary the stun because she baits it. She wants E spent before committing, so hold longer on some trades and release early on others.",
+              "scope": "pair",
+              "sourceIds": [
+                "houcs",
+                "ph45"
+              ],
+              "heading": "Unreadable E",
+              "abilityKeys": [
+                {
+                  "champion": 24,
+                  "key": "E"
+                }
+              ]
+            }
+          ]
+        },
+        "win-condition": {
+          "tips": [
+            {
+              "text": "Disengage at full stacks. When the passive peaks, give ground and re-engage as it falls instead of fighting the stacked duelist.",
+              "scope": "pair",
+              "sourceIds": [
+                "ph45"
+              ],
+              "heading": "Peak respect"
+            },
+            {
+              "text": "Finish when her Q targets and stun are down. Without resets and setup, her commit has no damage and no exit.",
+              "scope": "pair",
+              "sourceIds": [
+                "houcs",
+                "ph45"
+              ],
+              "heading": "Finish window",
+              "abilityKeys": [
+                {
+                  "champion": 39,
+                  "key": "Q"
+                },
+                {
+                  "champion": 39,
+                  "key": "E"
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "itemization": [],
+      "sources": [
+        {
+          "id": "ph45",
+          "author": "PH45",
+          "rankClaim": "Master (profile badge; no title claim) · Jax main",
+          "rank": "master",
+          "url": "https://www.mobafire.com/league-of-legends/build/26-21-thisispatriks-in-depth-jax-guide-503356",
+          "kind": "mobafire"
+        },
+        {
+          "id": "houcs",
+          "author": "Houcs",
+          "rankClaim": "Master (profile badge; title claims Challenger Irelia OTP) · Irelia main",
+          "rank": "master",
+          "url": "https://www.mobafire.com/league-of-legends/build/season-16-split-3-irelia-guide-challenger-irelia-otp-649210",
+          "kind": "mobafire"
+        }
+      ]
+    },
+    {
+      "champion": 24,
+      "enemy": 80,
+      "lane": "top",
+      "patch": "26.21",
+      "reviewed": false,
+      "difficulty": "Hard",
+      "favoredWhen": "Jax wins by surviving to Lethal Tempo scaling and punishing wasted W; Pantheon wins early poke and roam punishment.",
+      "keyTips": [
+        {
+          "text": "Survive the early lane on Lethal Tempo. His Q poke rules the opening levels, so farm through it and scale past him instead of forcing back.",
+          "scope": "pair",
+          "sourceIds": [
+            "ph45"
+          ],
+          "heading": "Survive first"
+        },
+        {
+          "text": "Punish a wasted W when healthy. If he stuns nothing and you hold health, the spent shield-bypass is your kill window.",
+          "scope": "pair",
+          "sourceIds": [
+            "ph45"
+          ],
+          "heading": "Punish window",
+          "abilityKeys": [
+            {
+              "champion": 80,
+              "key": "W"
+            }
+          ]
+        },
+        {
+          "text": "Hold Counter Strike against stun-and-retreat. His pattern pokes, stuns, and leaves before E catches him, so never throw E at the retreat.",
+          "scope": "pair",
+          "sourceIds": [
+            "ph45"
+          ],
+          "heading": "E patience",
+          "abilityKeys": [
+            {
+              "champion": 24,
+              "key": "E"
+            }
+          ]
+        }
+      ],
+      "enemyTips": {},
+      "sections": {
+        "overview": {
+          "tips": []
+        },
+        "early-lane": {
+          "tips": [
+            {
+              "text": "Farm under Q pressure without answering. Each answered poke extends his winning pattern, so take the CS and concede the trade.",
+              "scope": "pair",
+              "sourceIds": [
+                "ph45",
+                "procatking"
+              ],
+              "heading": "Farm focus",
+              "abilityKeys": [
+                {
+                  "champion": 80,
+                  "key": "Q"
+                }
+              ]
+            },
+            {
+              "text": "Jump without stunning into his held E. He keeps E ready to block the jump-stun, so vary the engage and never stun on pattern.",
+              "scope": "pair",
+              "sourceIds": [
+                "procatking"
+              ],
+              "heading": "Engage variety",
+              "abilityKeys": [
+                {
+                  "champion": 24,
+                  "key": "Q"
+                },
+                {
+                  "champion": 80,
+                  "key": "E"
+                }
+              ]
+            }
+          ]
+        },
+        "mid-lane": {
+          "tips": [
+            {
+              "text": "Fight at level 6 instead of matching roams. Your combat ultimate beats his map-movement R, so take the duel while he looks elsewhere.",
+              "scope": "pair",
+              "sourceIds": [
+                "ph45"
+              ],
+              "heading": "Level-6 turn",
+              "abilityKeys": [
+                {
+                  "champion": 24,
+                  "key": "R"
+                },
+                {
+                  "champion": 80,
+                  "key": "R"
+                }
+              ]
+            },
+            {
+              "text": "Take Exhaust for committed all-ins. The summoner answers his burst window and turns his engage into your kill.",
+              "scope": "pair",
+              "sourceIds": [
+                "ph45"
+              ],
+              "heading": "Summoner call"
+            }
+          ]
+        },
+        "win-condition": {
+          "tips": [
+            {
+              "text": "All-in when his W and E are both down. Without the stun and the block, his kit has no answer to your sustained damage.",
+              "scope": "pair",
+              "sourceIds": [
+                "ph45",
+                "procatking"
+              ],
+              "heading": "Combo window",
+              "abilityKeys": [
+                {
+                  "champion": 80,
+                  "key": "W"
+                },
+                {
+                  "champion": 80,
+                  "key": "E"
+                }
+              ]
+            },
+            {
+              "text": "Push when he roams with R. Every departure costs him a wave, so shove hard and convert the lost farm into plates.",
+              "scope": "pair",
+              "sourceIds": [
+                "ph45"
+              ],
+              "heading": "Roam punish",
+              "abilityKeys": [
+                {
+                  "champion": 80,
+                  "key": "R"
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "itemization": [],
+      "sources": [
+        {
+          "id": "ph45",
+          "author": "PH45",
+          "rankClaim": "Master (profile badge; no title claim) · Jax main",
+          "rank": "master",
+          "url": "https://www.mobafire.com/league-of-legends/build/26-21-thisispatriks-in-depth-jax-guide-503356",
+          "kind": "mobafire"
+        },
+        {
+          "id": "procatking",
+          "author": "procatking",
+          "rankClaim": "Emerald (badge, no title claim) · Pantheon main",
+          "rank": "emerald",
+          "url": "https://www.mobafire.com/league-of-legends/build/pantheons-what-to-do-list-for-top-lane-26-7-634392",
+          "kind": "mobafire"
+        }
+      ]
+    },
+    {
+      "champion": 24,
+      "enemy": 82,
+      "lane": "top",
+      "patch": "26.21",
+      "reviewed": false,
+      "difficulty": "Skill matchup",
+      "favoredWhen": "Jax wins by baiting the pull and stacking extended trades; Mordekaiser wins if he lands Q on commits and pushes off every jump.",
+      "keyTips": [
+        {
+          "text": "Dodge his E and Q, never walk into both. The pull sets up everything he does, so sidestep the E first and the Q never gets its angle.",
+          "scope": "pair",
+          "sourceIds": [
+            "ph45"
+          ],
+          "heading": "Dodge rule",
+          "patch": "26.21",
+          "abilityKeys": [
+            {
+              "champion": 24,
+              "key": "E"
+            },
+            {
+              "champion": 82,
+              "key": "E"
+            },
+            {
+              "champion": 82,
+              "key": "Q"
+            }
+          ]
+        },
+        {
+          "text": "Track his shield and commit only when it is down. Trading into a held shield wastes your burst and hands him the extended fight.",
+          "scope": "pair",
+          "sourceIds": [
+            "ph45"
+          ],
+          "heading": "Shield respect",
+          "patch": "26.21"
+        },
+        {
+          "text": "Activate your ultimate after his to limit what the realm steals. His R first means fewer stolen resistances and a duel you can actually finish.",
+          "scope": "pair",
+          "sourceIds": [
+            "ph45"
+          ],
+          "heading": "Ult order",
+          "patch": "26.21",
+          "abilityKeys": [
+            {
+              "champion": 24,
+              "key": "R"
+            },
+            {
+              "champion": 82,
+              "key": "R"
+            }
+          ]
+        }
+      ],
+      "enemyTips": {},
+      "sections": {
+        "overview": {
+          "tips": []
+        },
+        "early-lane": {
+          "tips": [
+            {
+              "text": "Bait his E before jumping in. He pushes off every bare leap, so show pressure until the pull is spent, then leap onto the cooldown gap.",
+              "scope": "pair",
+              "sourceIds": [
+                "dreadknight"
+              ],
+              "heading": "E bait",
+              "abilityKeys": [
+                {
+                  "champion": 24,
+                  "key": "Q"
+                },
+                {
+                  "champion": 82,
+                  "key": "E"
+                }
+              ]
+            },
+            {
+              "text": "Punish a missed Q at once. His all-in depends on the Q landing, so the whiff is your commit signal for the extended trade.",
+              "scope": "pair",
+              "sourceIds": [
+                "dreadknight"
+              ],
+              "heading": "Punish Q miss",
+              "abilityKeys": [
+                {
+                  "champion": 82,
+                  "key": "Q"
+                }
+              ]
+            }
+          ]
+        },
+        "mid-lane": {
+          "tips": [
+            {
+              "text": "Re-engage after his E peel instead of accepting the reset. Each disengage costs you the stack-up, so stick back on once the pull is down.",
+              "scope": "pair",
+              "sourceIds": [
+                "dreadknight"
+              ],
+              "heading": "Re-engage rule",
+              "abilityKeys": [
+                {
+                  "champion": 82,
+                  "key": "E"
+                }
+              ]
+            },
+            {
+              "text": "Keep the wave off his tower so his short-trade pattern never sets. His safe shorts need his turret nearby; mid-lane extended trades are yours.",
+              "scope": "pair",
+              "sourceIds": [
+                "dreadknight"
+              ],
+              "heading": "Wave position"
+            }
+          ]
+        },
+        "win-condition": {
+          "tips": [
+            {
+              "text": "Force short favorable trades before his level 6 spike. Once the realm is online on even terms, his duel math turns against you.",
+              "scope": "pair",
+              "sourceIds": [
+                "dreadknight"
+              ],
+              "heading": "Pre-6 window",
+              "abilityKeys": [
+                {
+                  "champion": 82,
+                  "key": "R"
+                }
+              ]
+            },
+            {
+              "text": "Build a lead before he goes even or ahead. His matchup eases from parity, so the early kill or plate is what keeps the duel yours.",
+              "scope": "pair",
+              "sourceIds": [
+                "dreadknight"
+              ],
+              "heading": "Lead rule"
+            }
+          ]
+        }
+      },
+      "itemization": [],
+      "sources": [
+        {
+          "id": "ph45",
+          "author": "PH45",
+          "rankClaim": "Master (profile badge; no title claim) · Jax main",
+          "rank": "master",
+          "url": "https://www.mobafire.com/league-of-legends/build/26-21-thisispatriks-in-depth-jax-guide-503356",
+          "kind": "mobafire"
+        },
+        {
+          "id": "dreadknight",
+          "author": "Dreadknight_EUW",
+          "rankClaim": "Former Rank 1 Mordekaiser (self-report, 1,148 LP peak EUW) · Mordekaiser main",
+          "url": "https://docs.google.com/spreadsheets/d/117W-tymfna-J8tbp7r-3GC24uZgyyAHhFuX0AfAZ8Fo/edit?gid=0#gid=0",
+          "kind": "sheet"
+        }
+      ]
+    },
+    {
+      "champion": 24,
+      "enemy": 84,
+      "lane": "top",
+      "patch": "26.21",
+      "reviewed": false,
+      "difficulty": "Medium",
+      "favoredWhen": "Jax wins by blocking the empowered auto, sidestepping E, and holding the stun through her dashes; Akali wins if she pokes for free and escapes commits with E.",
+      "keyTips": [
+        {
+          "text": "Contest level 1. Walk up with E to block her empowered auto, or open Q-start for the early Grasp chunk; never concede the wave for free.",
+          "scope": "pair",
+          "sourceIds": [
+            "ph45"
+          ],
+          "heading": "Level-1 contest",
+          "abilityKeys": [
+            {
+              "champion": 24,
+              "key": "E"
+            }
+          ]
+        },
+        {
+          "text": "Sidestep her E and disengage at shroud. Her dash commits her to a line you can leave, and the shroud hides nothing worth chasing into.",
+          "scope": "pair",
+          "sourceIds": [
+            "ph45"
+          ],
+          "heading": "E discipline",
+          "abilityKeys": [
+            {
+              "champion": 84,
+              "key": "E"
+            }
+          ]
+        },
+        {
+          "text": "Force her E before committing the stun. She saves it to answer Counter Strike, so threaten first and stun once the escape is gone.",
+          "scope": "pair",
+          "sourceIds": [
+            "anguish",
+            "ph45"
+          ],
+          "heading": "Stun setup",
+          "abilityKeys": [
+            {
+              "champion": 24,
+              "key": "E"
+            },
+            {
+              "champion": 84,
+              "key": "E"
+            }
+          ]
+        }
+      ],
+      "enemyTips": {},
+      "sections": {
+        "overview": {
+          "tips": []
+        },
+        "early-lane": {
+          "tips": [
+            {
+              "text": "Match her farm against your E start. She takes Q to poke when you open E, so hold position and refuse the chase her poke invites.",
+              "scope": "pair",
+              "sourceIds": [
+                "anguish"
+              ],
+              "heading": "E-start answer",
+              "abilityKeys": [
+                {
+                  "champion": 84,
+                  "key": "Q"
+                }
+              ]
+            },
+            {
+              "text": "Hold Q when she opens Q-start. She takes E to escape your engage, so threaten the leap without spending it until her exit is gone.",
+              "scope": "pair",
+              "sourceIds": [
+                "anguish"
+              ],
+              "heading": "Q-start answer",
+              "abilityKeys": [
+                {
+                  "champion": 24,
+                  "key": "Q"
+                },
+                {
+                  "champion": 84,
+                  "key": "E"
+                }
+              ]
+            }
+          ]
+        },
+        "mid-lane": {
+          "tips": [
+            {
+              "text": "Hold the stun through all three level-6 dashes. She chains dashes to dodge Counter Strike, so wait for the last one before firing.",
+              "scope": "pair",
+              "sourceIds": [
+                "ph45"
+              ],
+              "heading": "Post-6 patience",
+              "abilityKeys": [
+                {
+                  "champion": 24,
+                  "key": "E"
+                }
+              ]
+            },
+            {
+              "text": "Use the early ultimate to zone, not to chase. She backs off when you commit R early, so take the territory instead of diving after her.",
+              "scope": "pair",
+              "sourceIds": [
+                "anguish"
+              ],
+              "heading": "Ult zoning",
+              "abilityKeys": [
+                {
+                  "champion": 24,
+                  "key": "R"
+                }
+              ]
+            }
+          ]
+        },
+        "win-condition": {
+          "tips": [
+            {
+              "text": "Win Grasp short-trade attrition. Repeated blocked-auto exchanges favor you, so stack small wins instead of forcing one big fight.",
+              "scope": "pair",
+              "sourceIds": [
+                "ph45"
+              ],
+              "heading": "Attrition plan"
+            },
+            {
+              "text": "Finish when her E and shroud are down. Without the escape and the cover, her commit has no exit and your stun decides the duel.",
+              "scope": "pair",
+              "sourceIds": [
+                "anguish",
+                "ph45"
+              ],
+              "heading": "Finish window",
+              "abilityKeys": [
+                {
+                  "champion": 84,
+                  "key": "E"
+                },
+                {
+                  "champion": 24,
+                  "key": "E"
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "itemization": [],
+      "sources": [
+        {
+          "id": "ph45",
+          "author": "PH45",
+          "rankClaim": "Master (profile badge; no title claim) · Jax main",
+          "rank": "master",
+          "url": "https://www.mobafire.com/league-of-legends/build/26-21-thisispatriks-in-depth-jax-guide-503356",
+          "kind": "mobafire"
+        },
+        {
+          "id": "anguish",
+          "author": "Anguish333",
+          "rankClaim": "Master (profile badge; title claims 2000LP GrandMaster EUW and Challenger EUNE) · Akali main",
+          "rank": "master",
+          "url": "https://www.mobafire.com/league-of-legends/build/26-20-anguish-2000lp-grandmasters-euw-challenger-eune-akali-mid-top-s16-guide-every-matchup-item-rune-explained-625064",
+          "kind": "mobafire"
+        }
+      ]
+    },
+    {
+      "champion": 24,
+      "enemy": 86,
+      "lane": "top",
+      "patch": "26.21",
+      "reviewed": false,
+      "difficulty": "Hard",
+      "favoredWhen": "Jax wins by surviving the level 6 to mid-game window and outscaling; Garen wins if he converts short trades into an execute.",
+      "keyTips": [
+        {
+          "text": "Block his Q and never sit inside his spin. The silence starts his combo and the spin out-damages your autos, so answer the Q and exit the E.",
+          "scope": "pair",
+          "sourceIds": [
+            "ph45"
+          ],
+          "heading": "Combo defense",
+          "patch": "26.21",
+          "abilityKeys": [
+            {
+              "champion": 24,
+              "key": "E"
+            },
+            {
+              "champion": 86,
+              "key": "Q"
+            },
+            {
+              "champion": 86,
+              "key": "E"
+            }
+          ]
+        },
+        {
+          "text": "Respect the level 6 execute in every low-health trade. His ult range bends the whole exchange, so leave before you enter the health where it finishes you.",
+          "scope": "pair",
+          "sourceIds": [
+            "ph45"
+          ],
+          "heading": "Execute respect",
+          "patch": "26.21",
+          "abilityKeys": [
+            {
+              "champion": 86,
+              "key": "R"
+            }
+          ]
+        },
+        {
+          "text": "Re-trade to keep his passive down. His recovery needs quiet time, so short returns stop him healing back between your engages.",
+          "scope": "pair",
+          "sourceIds": [
+            "ph45"
+          ],
+          "heading": "Regen denial",
+          "patch": "26.21"
+        }
+      ],
+      "enemyTips": {},
+      "sections": {
+        "overview": {
+          "tips": []
+        },
+        "early-lane": {
+          "tips": [
+            {
+              "text": "Never leap bare into his spin start. He opens E and shields the jump, so activate Counter Strike before leaping or hold the jump entirely.",
+              "scope": "pair",
+              "sourceIds": [
+                "yshuro13"
+              ],
+              "heading": "Leap setup",
+              "abilityKeys": [
+                {
+                  "champion": 24,
+                  "key": "Q"
+                },
+                {
+                  "champion": 24,
+                  "key": "E"
+                },
+                {
+                  "champion": 86,
+                  "key": "E"
+                }
+              ]
+            },
+            {
+              "text": "Vary the stun so his Q-as-stun-ends timing fails. He lands Q right after a predictable E, and an unreadable stun wastes his whole punish.",
+              "scope": "pair",
+              "sourceIds": [
+                "yshuro13"
+              ],
+              "heading": "Stun variation",
+              "abilityKeys": [
+                {
+                  "champion": 24,
+                  "key": "E"
+                },
+                {
+                  "champion": 86,
+                  "key": "Q"
+                }
+              ]
+            }
+          ]
+        },
+        "mid-lane": {
+          "tips": [
+            {
+              "text": "Save your ultimate for the committed all-in, not the short trades. He chips before engaging so your R has less to decide, so hold it for his real commit.",
+              "scope": "pair",
+              "sourceIds": [
+                "yshuro13"
+              ],
+              "heading": "Ult patience",
+              "abilityKeys": [
+                {
+                  "champion": 24,
+                  "key": "R"
+                }
+              ]
+            },
+            {
+              "text": "Follow his spin with your own engage instead of letting him disengage free. His pattern is E then out, so stick with the leap once his spin ends.",
+              "scope": "pair",
+              "sourceIds": [
+                "yshuro13"
+              ],
+              "heading": "Chasing E",
+              "abilityKeys": [
+                {
+                  "champion": 24,
+                  "key": "Q"
+                },
+                {
+                  "champion": 86,
+                  "key": "E"
+                }
+              ]
+            }
+          ]
+        },
+        "win-condition": {
+          "tips": [
+            {
+              "text": "Survive the level 6 through mid-game window and scale past him. His advantage lives in that stretch, while your late dueling matches and beats his.",
+              "scope": "pair",
+              "sourceIds": [
+                "yshuro13"
+              ],
+              "heading": "Outscale plan"
+            },
+            {
+              "text": "Hold Counter Strike for his Q silence into ult at low health. When he Qs toward you in kill range, the stun on the silence window breaks his execute setup.",
+              "scope": "pair",
+              "sourceIds": [
+                "yshuro13"
+              ],
+              "heading": "Execute answer",
+              "abilityKeys": [
+                {
+                  "champion": 24,
+                  "key": "E"
+                },
+                {
+                  "champion": 86,
+                  "key": "Q"
+                },
+                {
+                  "champion": 86,
+                  "key": "R"
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "itemization": [],
+      "sources": [
+        {
+          "id": "ph45",
+          "author": "PH45",
+          "rankClaim": "Master (profile badge; no title claim) · Jax main",
+          "rank": "master",
+          "url": "https://www.mobafire.com/league-of-legends/build/26-21-thisispatriks-in-depth-jax-guide-503356",
+          "kind": "mobafire"
+        },
+        {
+          "id": "yshuro13",
+          "author": "Yshuro13",
+          "rankClaim": "Grandmaster (self-stated 800 LP+ peak) · Garen main",
+          "rank": "grandmaster",
+          "peak": true,
+          "url": "https://docs.google.com/spreadsheets/d/1GbCYcSJLSrSIdOja9EhNFWWSynM0Oin157plraoHO3s/edit?gid=522857221#gid=522857221",
+          "kind": "sheet"
+        }
+      ]
+    },
+    {
+      "champion": 24,
+      "enemy": 106,
+      "lane": "top",
+      "patch": "26.21",
+      "reviewed": false,
+      "difficulty": "Easy",
+      "favoredWhen": "Jax wins by blocking Q plus W and fighting around mark expiry; Volibear wins early all-ins and tower dives.",
+      "keyTips": [
+        {
+          "text": "Meet his engages with Counter Strike. E blocks both Q and W, so answer the dash with the shield instead of trading through the stun.",
+          "scope": "pair",
+          "sourceIds": [
+            "ph45"
+          ],
+          "heading": "Engage answer",
+          "abilityKeys": [
+            {
+              "champion": 24,
+              "key": "E"
+            },
+            {
+              "champion": 106,
+              "key": "Q"
+            },
+            {
+              "champion": 106,
+              "key": "W"
+            }
+          ]
+        },
+        {
+          "text": "Stay out of his E circle. The marked zone is the whole engage, so leave it on sight and re-enter only after it fades.",
+          "scope": "pair",
+          "sourceIds": [
+            "ph45"
+          ],
+          "heading": "E escape",
+          "abilityKeys": [
+            {
+              "champion": 106,
+              "key": "E"
+            }
+          ]
+        },
+        {
+          "text": "Let his W mark expire before re-engaging. Unless the kill is certain, break contact at the mark and deny the second-hit heal.",
+          "scope": "pair",
+          "sourceIds": [
+            "ph45"
+          ],
+          "heading": "Mark discipline",
+          "abilityKeys": [
+            {
+              "champion": 106,
+              "key": "W"
+            }
+          ]
+        }
+      ],
+      "enemyTips": {},
+      "sections": {
+        "overview": {
+          "tips": []
+        },
+        "early-lane": {
+          "tips": [
+            {
+              "text": "Take short trades into his resistances. His bulk wins long exchanges, so hit inside E and step out before the return damage lands.",
+              "scope": "pair",
+              "sourceIds": [
+                "federals1-volibear"
+              ],
+              "heading": "Short trades",
+              "abilityKeys": [
+                {
+                  "champion": 24,
+                  "key": "E"
+                }
+              ]
+            },
+            {
+              "text": "Threaten with a held E to zone him. He avoids committing into the shield, so the unspent Counter Strike holds him off the wave.",
+              "scope": "pair",
+              "sourceIds": [
+                "federals1-volibear"
+              ],
+              "heading": "Shield threat",
+              "abilityKeys": [
+                {
+                  "champion": 24,
+                  "key": "E"
+                }
+              ]
+            }
+          ]
+        },
+        "mid-lane": {
+          "tips": [
+            {
+              "text": "Stop relying on the tower after level 6. His ultimate dive disables it, so keep the lane in open ground instead of turtling low.",
+              "scope": "pair",
+              "sourceIds": [
+                "ph45"
+              ],
+              "heading": "Dive respect",
+              "abilityKeys": [
+                {
+                  "champion": 106,
+                  "key": "R"
+                }
+              ]
+            },
+            {
+              "text": "Re-engage as the mark expires. The expiry is your window back in, since his combo loses the heal threat without it.",
+              "scope": "pair",
+              "sourceIds": [
+                "ph45"
+              ],
+              "heading": "Re-entry timing",
+              "abilityKeys": [
+                {
+                  "champion": 106,
+                  "key": "W"
+                }
+              ]
+            }
+          ]
+        },
+        "win-condition": {
+          "tips": [
+            {
+              "text": "Win the extended duel after mark expiry. Without the second-hit threat, your sustained damage outlasts his combo pattern.",
+              "scope": "pair",
+              "sourceIds": [
+                "ph45"
+              ],
+              "heading": "Duel plan",
+              "abilityKeys": [
+                {
+                  "champion": 106,
+                  "key": "W"
+                }
+              ]
+            },
+            {
+              "text": "Hold E for his committed all-in. The shield that answers the full Q-plus-W decides the late duel, so never spend it on poke.",
+              "scope": "pair",
+              "sourceIds": [
+                "federals1-volibear",
+                "ph45"
+              ],
+              "heading": "E discipline",
+              "abilityKeys": [
+                {
+                  "champion": 24,
+                  "key": "E"
+                },
+                {
+                  "champion": 106,
+                  "key": "Q"
+                },
+                {
+                  "champion": 106,
+                  "key": "W"
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "itemization": [],
+      "sources": [
+        {
+          "id": "ph45",
+          "author": "PH45",
+          "rankClaim": "Master (profile badge; no title claim) · Jax main",
+          "rank": "master",
+          "url": "https://www.mobafire.com/league-of-legends/build/26-21-thisispatriks-in-depth-jax-guide-503356",
+          "kind": "mobafire"
+        },
+        {
+          "id": "federals1-volibear",
+          "author": "Federals1",
+          "rankClaim": "Challenger · Volibear main",
+          "rank": "challenger",
+          "url": "https://www.mobafire.com/league-of-legends/build/26-20-challenger-volibear-top-guide-609641",
+          "kind": "mobafire"
+        }
+      ]
+    },
+    {
+      "champion": 24,
+      "enemy": 114,
+      "lane": "top",
+      "patch": "26.21",
+      "reviewed": false,
+      "difficulty": "Skill matchup",
+      "favoredWhen": "Jax wins by varying Counter Strike timing to beat Riposte and fighting on good vitals; Fiora wins any extended trade where she stuns him first.",
+      "keyTips": [
+        {
+          "text": "Vary Counter Strike timing every trade so Riposte cannot predict it. A telegraphed stun gets parried and stunned back, which loses the fight on the spot.",
+          "scope": "pair",
+          "sourceIds": [
+            "ph45"
+          ],
+          "heading": "Stun timing",
+          "patch": "26.21",
+          "abilityKeys": [
+            {
+              "champion": 24,
+              "key": "E"
+            },
+            {
+              "champion": 114,
+              "key": "W"
+            }
+          ]
+        },
+        {
+          "text": "Reset unfavorable vitals through vision before fighting. Give up bad positions and re-engage on a vital you can defend rather than dueling into her best angle.",
+          "scope": "pair",
+          "sourceIds": [
+            "ph45"
+          ],
+          "heading": "Vital control",
+          "patch": "26.21",
+          "abilityKeys": [
+            {
+              "champion": 24,
+              "key": "E"
+            }
+          ]
+        },
+        {
+          "text": "Never open a full fight first when her Riposte is up. The first engager usually loses, so show pressure and force her parry before committing your leap and stun.",
+          "scope": "pair",
+          "sourceIds": [
+            "justsad42",
+            "ph45"
+          ],
+          "heading": "Engagement rule",
+          "patch": "26.21",
+          "abilityKeys": [
+            {
+              "champion": 114,
+              "key": "W"
+            }
+          ]
+        }
+      ],
+      "enemyTips": {},
+      "sections": {
+        "overview": {
+          "tips": []
+        },
+        "early-lane": {
+          "tips": [
+            {
+              "text": "Leap in behind an active Counter Strike rather than jumping bare. She parries predictable leaps mid-animation, so the stun must already be running when you land on her.",
+              "scope": "pair",
+              "sourceIds": [
+                "justsad42",
+                "ph45"
+              ],
+              "heading": "Leap setup",
+              "patch": "26.21",
+              "abilityKeys": [
+                {
+                  "champion": 24,
+                  "key": "Q"
+                },
+                {
+                  "champion": 24,
+                  "key": "E"
+                },
+                {
+                  "champion": 114,
+                  "key": "W"
+                }
+              ]
+            },
+            {
+              "text": "Trade short Q auto combos and back off before she extends. Her extended trades beat yours, so chip and leave instead of standing in her vital line.",
+              "scope": "pair",
+              "sourceIds": [
+                "justsad42"
+              ],
+              "heading": "Short trades"
+            }
+          ]
+        },
+        "mid-lane": {
+          "tips": [
+            {
+              "text": "Fight after her Riposte is spent, not into it. When she uses W on the wave or a gank, that missing parry is your commit window for the full combo.",
+              "scope": "pair",
+              "sourceIds": [
+                "justsad42",
+                "ph45"
+              ],
+              "heading": "Parry downtime",
+              "patch": "26.21",
+              "abilityKeys": [
+                {
+                  "champion": 114,
+                  "key": "W"
+                }
+              ]
+            },
+            {
+              "text": "Take Ignite if she matches nothing, since the matchup swings hard on summoners. Without her Ignite to answer yours, your committed all-ins stick at low health.",
+              "scope": "pair",
+              "sourceIds": [
+                "justsad42"
+              ],
+              "heading": "Summoner edge"
+            }
+          ]
+        },
+        "win-condition": {
+          "tips": [
+            {
+              "text": "Position near a wall when she commits her ult. The terrain cuts off her vital angles and limits the full-proc healing she needs to win the duel.",
+              "scope": "pair",
+              "sourceIds": [
+                "ph45"
+              ],
+              "heading": "Ult answer",
+              "patch": "26.21",
+              "abilityKeys": [
+                {
+                  "champion": 24,
+                  "key": "E"
+                },
+                {
+                  "champion": 114,
+                  "key": "R"
+                }
+              ]
+            },
+            {
+              "text": "Peel her off your backline rather than dueling her head-on late. If she saves Riposte for your stun, your team gets more from your counter-engage than from a solo all-in you lose.",
+              "scope": "pair",
+              "sourceIds": [
+                "justsad42"
+              ],
+              "heading": "Teamfight role",
+              "abilityKeys": [
+                {
+                  "champion": 114,
+                  "key": "W"
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "itemization": [],
+      "sources": [
+        {
+          "id": "ph45",
+          "author": "PH45",
+          "rankClaim": "Master (profile badge; no title claim) · Jax main",
+          "rank": "master",
+          "url": "https://www.mobafire.com/league-of-legends/build/26-21-thisispatriks-in-depth-jax-guide-503356",
+          "kind": "mobafire"
+        },
+        {
+          "id": "justsad42",
+          "author": "TTVJustSad42",
+          "rankClaim": "Challenger EUNE / Grandmaster EUW (self-claim, no badge) · Fiora main",
+          "rank": "challenger",
+          "url": "https://docs.google.com/spreadsheets/d/1g_YjX4jYcz15k8FZuOkhc4IWA1LLm28WinrVCGBXxLY/edit?gid=0#gid=0",
+          "kind": "sheet"
+        }
+      ]
+    },
+    {
+      "champion": 24,
+      "enemy": 122,
+      "lane": "top",
+      "patch": "26.21",
+      "reviewed": false,
+      "difficulty": "Easy",
+      "favoredWhen": "Jax wins by blocking Crippling Strike, managing the Decimate ring, and all-inning after a missed Apprehend; Darius wins if he stacks Hemorrhage freely and runs Jax down with Ghost after Counter Strike ends.",
+      "keyTips": [
+        {
+          "text": "Block Crippling Strike with Counter Strike and never let five stacks build. Answer his W with E, then leave before the passive maxes instead of extending into full stacks.",
+          "scope": "pair",
+          "sourceIds": [
+            "ph45"
+          ],
+          "heading": "Stack denial",
+          "abilityKeys": [
+            {
+              "champion": 24,
+              "key": "E"
+            },
+            {
+              "champion": 122,
+              "key": "W"
+            }
+          ]
+        },
+        {
+          "text": "Manage the Decimate ring. Hold outside its outer edge by default; if you cannot leave the edge, leap onto him into the inner ring to deny the heal, the bleed stack, and the bonus damage.",
+          "scope": "pair",
+          "sourceIds": [
+            "ph45"
+          ],
+          "heading": "Ring control",
+          "abilityKeys": [
+            {
+              "champion": 24,
+              "key": "Q"
+            },
+            {
+              "champion": 122,
+              "key": "Q"
+            }
+          ]
+        },
+        {
+          "text": "All-in after he misses Apprehend, but account for Ghost. A missed E is your window, yet he still runs you down once Counter Strike ends, so commit only when you can finish inside the window.",
+          "scope": "pair",
+          "sourceIds": [
+            "ph45",
+            "federals1-darius"
+          ],
+          "heading": "Punish window",
+          "abilityKeys": [
+            {
+              "champion": 122,
+              "key": "E"
+            },
+            {
+              "champion": 24,
+              "key": "E"
+            }
+          ]
+        }
+      ],
+      "enemyTips": {},
+      "sections": {
+        "overview": {
+          "tips": []
+        },
+        "early-lane": {
+          "tips": [
+            {
+              "text": "Trade only with Counter Strike available. His spacing sits at W outer edge beyond your W range, so close with the leap only when E is ready to block the W answer.",
+              "scope": "pair",
+              "sourceIds": [
+                "federals1-darius",
+                "ph45"
+              ],
+              "heading": "Engage rule",
+              "abilityKeys": [
+                {
+                  "champion": 24,
+                  "key": "Q"
+                },
+                {
+                  "champion": 24,
+                  "key": "E"
+                },
+                {
+                  "champion": 122,
+                  "key": "W"
+                }
+              ]
+            },
+            {
+              "text": "Refuse his short-trade bait before you have E. He wants W-plus-Q contact without answering your stun, so give ground until E is up rather than conceding free stacks.",
+              "scope": "pair",
+              "sourceIds": [
+                "federals1-darius",
+                "ph45"
+              ],
+              "heading": "Patience",
+              "abilityKeys": [
+                {
+                  "champion": 24,
+                  "key": "E"
+                }
+              ]
+            }
+          ]
+        },
+        "mid-lane": {
+          "tips": [
+            {
+              "text": "Vary the stun because he predicts it. He times his W to land as the dodge ends, so hold Counter Strike longer on some trades and release early on others.",
+              "scope": "pair",
+              "sourceIds": [
+                "federals1-darius"
+              ],
+              "heading": "Unreadable E",
+              "abilityKeys": [
+                {
+                  "champion": 24,
+                  "key": "E"
+                },
+                {
+                  "champion": 122,
+                  "key": "W"
+                }
+              ]
+            },
+            {
+              "text": "Hold Ignite for his Decimate heal moment. Ignite limits his recovery, so apply it as he commits Q in the all-in rather than spending it on the opening trade.",
+              "scope": "pair",
+              "sourceIds": [
+                "ph45"
+              ],
+              "heading": "Ignite timing",
+              "abilityKeys": [
+                {
+                  "champion": 122,
+                  "key": "Q"
+                }
+              ]
+            }
+          ]
+        },
+        "win-condition": {
+          "tips": [
+            {
+              "text": "Disengage when Counter Strike ends if his Ghost is up. He deliberately lets E finish before Ghosting, so step out at E expiry instead of offering the chase.",
+              "scope": "pair",
+              "sourceIds": [
+                "federals1-darius"
+              ],
+              "heading": "Respect Ghost",
+              "abilityKeys": [
+                {
+                  "champion": 24,
+                  "key": "E"
+                }
+              ]
+            },
+            {
+              "text": "End fights before five stacks once Spear of Shojin is done. After that spike he looks for five stacks into the ultimate, so keep trades short and never offer the extended duel.",
+              "scope": "pair",
+              "sourceIds": [
+                "federals1-darius"
+              ],
+              "heading": "Post-Shojin rule",
+              "abilityKeys": [
+                {
+                  "champion": 122,
+                  "key": "R"
+                }
+              ],
+              "itemIds": [
+                3161
+              ]
+            }
+          ]
+        }
+      },
+      "itemization": [
+        {
+          "text": "Take Flash and Ignite. Ignite answers his Decimate healing in all-ins, and the extra kill pressure fits a lane you are supposed to win.",
+          "scope": "pair",
+          "sourceIds": [
+            "ph45"
+          ],
+          "abilityKeys": [
+            {
+              "champion": 122,
+              "key": "Q"
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "id": "ph45",
+          "author": "PH45",
+          "rankClaim": "Master (profile badge; no title claim) · Jax main",
+          "rank": "master",
+          "url": "https://www.mobafire.com/league-of-legends/build/26-21-thisispatriks-in-depth-jax-guide-503356",
+          "kind": "mobafire"
+        },
+        {
+          "id": "federals1-darius",
+          "author": "Federals1",
+          "rankClaim": "Challenger · Darius main",
+          "rank": "challenger",
+          "url": "https://www.mobafire.com/league-of-legends/build/26-20-challenger-darius-top-guide-636714",
+          "kind": "mobafire"
+        }
+      ]
+    },
+    {
+      "champion": 24,
+      "enemy": 164,
+      "lane": "top",
+      "patch": "26.21",
+      "reviewed": false,
+      "difficulty": "Skill matchup",
+      "favoredWhen": "Jax wins by blocking Q, denying W, and stunning the E dash; Camille wins if she baits Counter Strike and dodges the stun with her ultimate.",
+      "keyTips": [
+        {
+          "text": "Block her Q, especially the true-damage cast. Meet each Q step-in with Counter Strike rather than trading through the empowered damage.",
+          "scope": "pair",
+          "sourceIds": [
+            "ph45"
+          ],
+          "heading": "Q answer",
+          "abilityKeys": [
+            {
+              "champion": 24,
+              "key": "E"
+            },
+            {
+              "champion": 164,
+              "key": "Q"
+            }
+          ]
+        },
+        {
+          "text": "Move toward her or Q onto her W. Closing the distance denies both the heal and the slow, turning her spacing tool into your engage.",
+          "scope": "pair",
+          "sourceIds": [
+            "ph45"
+          ],
+          "heading": "W denial",
+          "abilityKeys": [
+            {
+              "champion": 24,
+              "key": "Q"
+            },
+            {
+              "champion": 164,
+              "key": "W"
+            }
+          ]
+        },
+        {
+          "text": "Stun her E dash as it starts at a wall. The cancel stops the engage cold, so hold E for the hookshot sound rather than spending it early.",
+          "scope": "pair",
+          "sourceIds": [
+            "ph45"
+          ],
+          "heading": "Dash cancel",
+          "abilityKeys": [
+            {
+              "champion": 24,
+              "key": "E"
+            },
+            {
+              "champion": 164,
+              "key": "E"
+            }
+          ]
+        }
+      ],
+      "enemyTips": {},
+      "sections": {
+        "overview": {
+          "tips": []
+        },
+        "early-lane": {
+          "tips": [
+            {
+              "text": "Keep trades short. Her plan is Q damage then E away, so answer the Q and let her leave instead of chasing into the second rotation.",
+              "scope": "pair",
+              "sourceIds": [
+                "ph45",
+                "raideru"
+              ],
+              "heading": "Trade length",
+              "abilityKeys": [
+                {
+                  "champion": 164,
+                  "key": "Q"
+                },
+                {
+                  "champion": 164,
+                  "key": "E"
+                }
+              ]
+            },
+            {
+              "text": "Bait her E before the jungler ganks. A spent hookshot means no escape, so threaten first and call the gank once it is down.",
+              "scope": "pair",
+              "sourceIds": [
+                "ph45"
+              ],
+              "heading": "Gank setup",
+              "abilityKeys": [
+                {
+                  "champion": 164,
+                  "key": "E"
+                }
+              ]
+            }
+          ]
+        },
+        "mid-lane": {
+          "tips": [
+            {
+              "text": "Beware her R dodging your stun at level 6. Once her ultimate is up, delay the stun until she commits it elsewhere or you can guarantee the lock.",
+              "scope": "pair",
+              "sourceIds": [
+                "ph45"
+              ],
+              "heading": "Ult respect",
+              "abilityKeys": [
+                {
+                  "champion": 24,
+                  "key": "E"
+                },
+                {
+                  "champion": 164,
+                  "key": "R"
+                }
+              ]
+            },
+            {
+              "text": "Vary the stun because she saves R for executes. An unreadable Counter Strike beats both the dodge and the all-in answer.",
+              "scope": "pair",
+              "sourceIds": [
+                "raideru",
+                "ph45"
+              ],
+              "heading": "Unreadable E",
+              "abilityKeys": [
+                {
+                  "champion": 24,
+                  "key": "E"
+                }
+              ]
+            }
+          ]
+        },
+        "win-condition": {
+          "tips": [
+            {
+              "text": "Start the run-down only when her R and E are down. She saves the ultimate to dodge and avoids Ghost chases, so commit once both mobility tools are spent.",
+              "scope": "pair",
+              "sourceIds": [
+                "raideru"
+              ],
+              "heading": "Commit window",
+              "abilityKeys": [
+                {
+                  "champion": 164,
+                  "key": "R"
+                },
+                {
+                  "champion": 164,
+                  "key": "E"
+                }
+              ]
+            },
+            {
+              "text": "Punish after her ultimate expires. The spent R removes her dodge threat, opening the extended duel you win.",
+              "scope": "pair",
+              "sourceIds": [
+                "ph45",
+                "raideru"
+              ],
+              "heading": "Post-ult punish",
+              "abilityKeys": [
+                {
+                  "champion": 164,
+                  "key": "R"
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "itemization": [],
+      "sources": [
+        {
+          "id": "ph45",
+          "author": "PH45",
+          "rankClaim": "Master (profile badge; no title claim) · Jax main",
+          "rank": "master",
+          "url": "https://www.mobafire.com/league-of-legends/build/26-21-thisispatriks-in-depth-jax-guide-503356",
+          "kind": "mobafire"
+        },
+        {
+          "id": "raideru",
+          "author": "Raideru",
+          "rankClaim": "Challenger · Camille main",
+          "rank": "challenger",
+          "url": "https://www.mobafire.com/league-of-legends/build/camille-challenger-guide-by-raider-matchups-643464",
+          "kind": "mobafire"
+        }
+      ]
+    },
+    {
+      "champion": 24,
+      "enemy": 875,
+      "lane": "top",
+      "patch": "26.21",
+      "reviewed": false,
+      "difficulty": "Easy",
+      "favoredWhen": "Jax wins by blocking Q, sidestepping the W center, and avoiding the level-6 throw; Sett wins early brawls and any fight where Haymaker lands centered.",
+      "keyTips": [
+        {
+          "text": "Block his Q with Counter Strike. His opener dies on the shield, so meet every Q step-in with E rather than trading through it.",
+          "scope": "pair",
+          "sourceIds": [
+            "ph45"
+          ],
+          "heading": "Q answer",
+          "abilityKeys": [
+            {
+              "champion": 24,
+              "key": "E"
+            },
+            {
+              "champion": 875,
+              "key": "Q"
+            }
+          ]
+        },
+        {
+          "text": "Move behind or to the side as he casts W, then punish. Never stand in the true-damage center; the sidestep turns his kill tool into your window.",
+          "scope": "pair",
+          "sourceIds": [
+            "ph45"
+          ],
+          "heading": "W footwork",
+          "abilityKeys": [
+            {
+              "champion": 875,
+              "key": "W"
+            }
+          ]
+        },
+        {
+          "text": "Vary the stun because he times W for its expiry. Hold Counter Strike longer on some trades and release early on others so his Haymaker never lands clean.",
+          "scope": "pair",
+          "sourceIds": [
+            "autolykus"
+          ],
+          "heading": "Unreadable E",
+          "abilityKeys": [
+            {
+              "champion": 24,
+              "key": "E"
+            },
+            {
+              "champion": 875,
+              "key": "W"
+            }
+          ]
+        }
+      ],
+      "enemyTips": {},
+      "sections": {
+        "overview": {
+          "tips": []
+        },
+        "early-lane": {
+          "tips": [
+            {
+              "text": "Concede extended early brawls. He is bulky and hits hard before your timings come online, so take only E-answered shorts and give ground otherwise.",
+              "scope": "pair",
+              "sourceIds": [
+                "ph45"
+              ],
+              "heading": "Early respect",
+              "abilityKeys": [
+                {
+                  "champion": 24,
+                  "key": "E"
+                }
+              ]
+            },
+            {
+              "text": "Keep trades short and reset. His autos win the long exchange, so hit inside E and step out instead of standing in his damage.",
+              "scope": "pair",
+              "sourceIds": [
+                "ph45"
+              ],
+              "heading": "Short trades"
+            }
+          ]
+        },
+        "mid-lane": {
+          "tips": [
+            {
+              "text": "Trade only while W is down. With W maxed, every cast is the exchange, so engage into the cooldown gap and leave before it returns.",
+              "scope": "pair",
+              "sourceIds": [
+                "autolykus"
+              ],
+              "heading": "W windows",
+              "abilityKeys": [
+                {
+                  "champion": 875,
+                  "key": "W"
+                }
+              ]
+            },
+            {
+              "text": "Space the tower line after level 6. Never fight clumped near his tower, where R throws you under it for the kill.",
+              "scope": "pair",
+              "sourceIds": [
+                "ph45"
+              ],
+              "heading": "Throw respect",
+              "abilityKeys": [
+                {
+                  "champion": 875,
+                  "key": "R"
+                }
+              ]
+            }
+          ]
+        },
+        "win-condition": {
+          "tips": [
+            {
+              "text": "All-in after W fires. The spent Haymaker is your extended-trade window, so commit once the true damage is gone.",
+              "scope": "pair",
+              "sourceIds": [
+                "ph45",
+                "autolykus"
+              ],
+              "heading": "Punish window",
+              "abilityKeys": [
+                {
+                  "champion": 875,
+                  "key": "W"
+                }
+              ]
+            },
+            {
+              "text": "Force fights in open ground. Away from his tower the ultimate loses its setup, and your sustained dueling takes over.",
+              "scope": "pair",
+              "sourceIds": [
+                "ph45"
+              ],
+              "heading": "Open ground",
+              "abilityKeys": [
+                {
+                  "champion": 875,
+                  "key": "R"
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "itemization": [],
+      "sources": [
+        {
+          "id": "ph45",
+          "author": "PH45",
+          "rankClaim": "Master (profile badge; no title claim) · Jax main",
+          "rank": "master",
+          "url": "https://www.mobafire.com/league-of-legends/build/26-21-thisispatriks-in-depth-jax-guide-503356",
+          "kind": "mobafire"
+        },
+        {
+          "id": "autolykus",
+          "author": "Autolykus",
+          "rankClaim": "Grandmaster (profile badge; title claims Challenger) · Sett main",
+          "rank": "grandmaster",
+          "url": "https://www.mobafire.com/league-of-legends/build/26-20-autolykuss-challenger-sett-guide-594869",
+          "kind": "mobafire"
+        }
+      ]
+    }
+  ],
+  "general": [
+    {
+      "champion": 24,
+      "lane": "top",
+      "patch": "26.21",
+      "reviewed": false,
+      "keyTips": [
+        {
+          "text": "At level 1 into melee, walk into their wave, keep swinging, then raise Counter Strike to dodge attacks and boost its return damage.",
+          "scope": "champion",
+          "sourceIds": [
+            "ph45"
+          ],
+          "abilityKeys": [
+            {
+              "champion": 24,
+              "key": "E"
+            }
+          ]
+        },
+        {
+          "text": "At level 6, stack two attacks on minions, leap with Q, then auto plus W to stack the third-hit R passive on the reset.",
+          "scope": "champion",
+          "sourceIds": [
+            "ph45"
+          ],
+          "abilityKeys": [
+            {
+              "champion": 24,
+              "key": "Q"
+            },
+            {
+              "champion": 24,
+              "key": "W"
+            },
+            {
+              "champion": 24,
+              "key": "R"
+            }
+          ]
+        },
+        {
+          "text": "Split to drag enemies off the team, letting allies spend the numbers edge on objectives.",
+          "scope": "champion",
+          "sourceIds": [
+            "ph45"
+          ]
+        }
+      ],
+      "sections": {
+        "overview": {
+          "tips": []
+        },
+        "early-lane": {
+          "tips": [
+            {
+              "text": "Swing at minions before engaging to bank attack-speed passive stacks.",
+              "scope": "champion",
+              "sourceIds": [
+                "ph45"
+              ]
+            },
+            {
+              "text": "Blunt auto trades with Counter Strike, whose reactivation stuns nearby enemies.",
+              "scope": "champion",
+              "sourceIds": [
+                "ph45"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 24,
+                  "key": "E"
+                }
+              ]
+            },
+            {
+              "text": "Attack first and press W right after the hit, since Empower resets the basic attack for a fast trade.",
+              "scope": "champion",
+              "sourceIds": [
+                "ph45"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 24,
+                  "key": "W"
+                }
+              ]
+            },
+            {
+              "text": "Cast W before Q as well so its bonus damage lands with Leap Strike.",
+              "scope": "champion",
+              "sourceIds": [
+                "ph45"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 24,
+                  "key": "W"
+                },
+                {
+                  "champion": 24,
+                  "key": "Q"
+                }
+              ]
+            },
+            {
+              "text": "Keep a Stealth Ward ready for Q ward-hops into or out of fights.",
+              "scope": "champion",
+              "sourceIds": [
+                "ph45"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 24,
+                  "key": "Q"
+                }
+              ],
+              "itemIds": [
+                3340
+              ]
+            },
+            {
+              "text": "Default to Grasp for safer lanes, or Lethal Tempo for stat-checks like Darius, Yone, Yasuo, Yorick, or Olaf.",
+              "scope": "champion",
+              "sourceIds": [
+                "ph45"
+              ]
+            },
+            {
+              "text": "Bait movement before Flash plus Q finishes, since the combo reads predictably.",
+              "scope": "champion",
+              "sourceIds": [
+                "ph45"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 24,
+                  "key": "Q"
+                }
+              ]
+            }
+          ]
+        },
+        "mid-lane": {
+          "tips": [
+            {
+              "text": "Rush Trinity Force first for its health, attack speed, Sheen proc, damage, and on-hit movement.",
+              "scope": "champion",
+              "sourceIds": [
+                "ph45"
+              ],
+              "itemIds": [
+                3078,
+                3057
+              ]
+            },
+            {
+              "text": "Vision the side lane and watch the minimap, backing off the moment unseen enemies can collapse.",
+              "scope": "champion",
+              "sourceIds": [
+                "ph45"
+              ]
+            },
+            {
+              "text": "When enemies leave to fight, push hard only while the team disengages safely; otherwise reset and hold objective vision.",
+              "scope": "champion",
+              "sourceIds": [
+                "ph45"
+              ]
+            },
+            {
+              "text": "Teleport into fights the team can stall until arrival with a surprising flank.",
+              "scope": "champion",
+              "sourceIds": [
+                "ph45"
+              ]
+            },
+            {
+              "text": "Ward-hop over walls to escape multi-enemy side rotations.",
+              "scope": "champion",
+              "sourceIds": [
+                "ph45"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 24,
+                  "key": "Q"
+                }
+              ]
+            },
+            {
+              "text": "Clear rough lanes with Titanic Hydra waves, accepting it sits outside the standard build.",
+              "scope": "champion",
+              "sourceIds": [
+                "ph45"
+              ],
+              "itemIds": [
+                3748
+              ]
+            }
+          ]
+        },
+        "win-condition": {
+          "tips": [
+            {
+              "text": "Convert side pressure into fast towers whenever enemies leave Jax unattended.",
+              "scope": "champion",
+              "sourceIds": [
+                "ph45"
+              ]
+            },
+            {
+              "text": "Split or join by objective state and whether the team survives a 4v5.",
+              "scope": "champion",
+              "sourceIds": [
+                "ph45"
+              ]
+            },
+            {
+              "text": "Skip entries with no route to targets into heavy control and disengage.",
+              "scope": "champion",
+              "sourceIds": [
+                "ph45"
+              ]
+            },
+            {
+              "text": "Hold Q as the ward-hop escape while splitting deep.",
+              "scope": "champion",
+              "sourceIds": [
+                "ph45"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 24,
+                  "key": "Q"
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "itemization": [
+        {
+          "text": "Run Grasp with Demolish, Second Wind or Conditioning, and Overgrowth plus Triple Tonic and Jack of All Trades for safe trades and scaling.",
+          "scope": "champion",
+          "sourceIds": [
+            "ph45"
+          ]
+        },
+        {
+          "text": "Swap Lethal Tempo with Triumph, Legend: Haste, and Last Stand for matchups demanding attack speed in long all-ins.",
+          "scope": "champion",
+          "sourceIds": [
+            "ph45"
+          ]
+        },
+        {
+          "text": "Start Doran's Shield for safety, with Doran's Bow as the other setup.",
+          "scope": "champion",
+          "sourceIds": [
+            "ph45"
+          ],
+          "itemIds": [
+            1054,
+            1086
+          ]
+        },
+        {
+          "text": "Build Trinity Force usual first, or Dusk and Dawn as the Sheen start for AP-bruiser Jax.",
+          "scope": "champion",
+          "sourceIds": [
+            "ph45"
+          ],
+          "itemIds": [
+            3078,
+            2510,
+            3057
+          ]
+        },
+        {
+          "text": "Add Spear of Shojin for health, damage, and haste into more frequent ability use.",
+          "scope": "champion",
+          "sourceIds": [
+            "ph45"
+          ],
+          "itemIds": [
+            3161
+          ]
+        },
+        {
+          "text": "Rush Blade of the Ruined King into Dr. Mundo builds, accepting weaker early health.",
+          "scope": "champion",
+          "sourceIds": [
+            "ph45"
+          ]
+        },
+        {
+          "text": "Pick Ionian Boots for cooldowns, Mercury's Treads into heavy control, Plated Steelcaps while far behind into autos, Swiftness Boots into slows, Wit's End for resistance plus tenacity, Randuin's Omen into crit teams, and Zhonya's Hourglass to stall burst for the Counter Strike return.",
+          "scope": "champion",
+          "sourceIds": [
+            "ph45"
+          ],
+          "abilityKeys": [
+            {
+              "champion": 24,
+              "key": "E"
+            }
+          ],
+          "itemIds": [
+            3111,
+            3047,
+            3091,
+            3143,
+            3157
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "id": "ph45",
+          "author": "PH45",
+          "rankClaim": "Master (profile badge; no title claim) · Jax main",
+          "rank": "master",
+          "url": "https://www.mobafire.com/league-of-legends/build/26-21-thisispatriks-in-depth-jax-guide-503356",
+          "kind": "mobafire"
+        }
+      ]
+    }
+  ],
+  "vods": [
+    {
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "il81GtJxN9s",
+          "title": "Low Cortisol JAX Jungle Gameplay",
+          "rankClaim": "Master+",
+          "patch": "26.8",
+          "durationSec": 1700,
+          "patchEstimated": true,
+          "player": "Sinerias",
+          "uploaded": "2026-04-23",
+          "format": "stream",
+          "cam": true,
+          "moments": []
+        },
+        {
+          "videoId": "tk78c6rmAOQ",
+          "title": "FULL EDUCATIONAL JAX JUNGLE GAMEPLAY",
+          "rankClaim": "Master+",
+          "patch": "26.7",
+          "durationSec": 1670,
+          "patchEstimated": true,
+          "player": "Sinerias",
+          "uploaded": "2026-04-12",
+          "format": "stream",
+          "cam": true,
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 2,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "biKC8cfghRk",
+          "title": "Jax Jungle vs Olaf - EUW Grandmaster Patch 25.14",
+          "rankClaim": "Grandmaster",
+          "patch": "25.14",
+          "durationSec": 1640,
+          "region": "EUW",
+          "uploaded": "2025-07-30",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 2,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "KxxGngRBySs",
+          "title": "(Comp) Jax Top vs Olaf (Tykez) - EUW Challenger Patch 26.21",
+          "rankClaim": "Challenger",
+          "patch": "26.21",
+          "durationSec": 1698,
+          "region": "EUW",
+          "player": "Comp",
+          "uploaded": "2026-10-26",
+          "result": "W",
+          "moments": [
+            {
+              "atSec": 50,
+              "label": "First Blood — Jax kills Olaf",
+              "kind": "kill"
+            },
+            {
+              "atSec": 335,
+              "label": "Red takes 1st Dragon (Ocean)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 459,
+              "label": "Jax catches Olaf"
+            },
+            {
+              "atSec": 550,
+              "label": "Jax outduels Olaf again"
+            },
+            {
+              "atSec": 666,
+              "label": "Jax eliminates Olaf"
+            },
+            {
+              "atSec": 730,
+              "label": "Red takes 2nd Dragon (Mountain)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 772,
+              "label": "Jax kills Graves",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1079,
+              "label": "Varus Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1110,
+              "label": "Red takes 3rd Dragon (Cloud)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1245,
+              "label": "Jax eliminates Alistar"
+            },
+            {
+              "atSec": 1262,
+              "label": "Red takes Baron",
+              "kind": "baron"
+            },
+            {
+              "atSec": 1328,
+              "label": "Jax takes down Akali"
+            },
+            {
+              "atSec": 1372,
+              "label": "Jax solo kills Katarina",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1422,
+              "label": "Red takes 4th Dragon (Cloud)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1520,
+              "label": "Varus Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1559,
+              "label": "Mid Inhibitor falls (Blue)"
+            },
+            {
+              "atSec": 1651,
+              "label": "Jax kills Graves",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1657,
+              "label": "Quinn Triple Kill",
+              "kind": "kill"
+            }
+          ]
+        },
+        {
+          "videoId": "g3UcAcxx-hw",
+          "title": "T1 Doran Jax vs Olaf [ TOP ] Korea Grandmaster 1498 LP | Patch 26.15",
+          "rankClaim": "Grandmaster",
+          "patch": "26.15",
+          "durationSec": 1181,
+          "region": "KR",
+          "player": "Doran",
+          "team": "T1",
+          "uploaded": "2026-08-05",
+          "moments": []
+        },
+        {
+          "videoId": "-u89u7D69GM",
+          "title": "Jax Top vs Olaf - KR Master Patch 25.18",
+          "rankClaim": "Master",
+          "patch": "25.18",
+          "durationSec": 1687,
+          "region": "KR",
+          "uploaded": "2025-09-14",
+          "moments": []
+        },
+        {
+          "videoId": "3FoPovAgnvg",
+          "title": "Jax Top vs Olaf - KR Grandmaster Patch 25.17",
+          "rankClaim": "Grandmaster",
+          "patch": "25.17",
+          "durationSec": 1843,
+          "region": "KR",
+          "uploaded": "2025-08-30",
+          "moments": []
+        },
+        {
+          "videoId": "A27WDykCAc4",
+          "title": "Jax vs Olaf Top - KR Challenger - Patch 25.15 Season 15",
+          "rankClaim": "Challenger",
+          "patch": "25.15",
+          "durationSec": 1696,
+          "region": "KR",
+          "uploaded": "2025-08-01",
+          "moments": []
+        },
+        {
+          "videoId": "DmMQA7Quq5s",
+          "title": "Jax vs Olaf [ TOP ] Lol Korea Master Patch 25.13 ✅",
+          "rankClaim": "Master",
+          "patch": "25.13",
+          "durationSec": 1149,
+          "region": "KR",
+          "uploaded": "2025-07-12",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 5,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "VdR9EZpUJ1w",
+          "title": "(Racoon) Jax Jungle vs Xin Zhao - KR Challenger Patch 26.13",
+          "rankClaim": "Challenger",
+          "patch": "26.13",
+          "durationSec": 1700,
+          "region": "KR",
+          "player": "Racoon",
+          "uploaded": "2026-07-01",
+          "moments": []
+        },
+        {
+          "videoId": "YyPvmOXA3zw",
+          "title": "Jax Jungle vs Xin Zhao - EUW Grandmaster Patch 26.06",
+          "rankClaim": "Grandmaster",
+          "patch": "26.6",
+          "durationSec": 1707,
+          "region": "EUW",
+          "uploaded": "2026-03-28",
+          "moments": []
+        },
+        {
+          "videoId": "UICX-RsZ0vc",
+          "title": "Jax Jungle vs Xin Zhao - KR Challenger Patch 26.04",
+          "rankClaim": "Challenger",
+          "patch": "26.4",
+          "durationSec": 1445,
+          "region": "KR",
+          "uploaded": "2026-02-28",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 117,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 214,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 264,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 409,
+              "label": "Hunt The Dragon",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 492,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 546,
+              "label": "Hunt The Void Grubs",
+              "kind": "grubs"
+            },
+            {
+              "atSec": 671,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 791,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 868,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 903,
+              "label": "Hunt The Rift Herald",
+              "kind": "herald"
+            },
+            {
+              "atSec": 938,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 974,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1005,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1154,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1380,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1434,
+              "label": "End credit"
+            }
+          ]
+        },
+        {
+          "videoId": "fQZj-penI_E",
+          "title": "Jax Jungle vs Xin Zhao - EUW Grandmaster Patch 25.20",
+          "rankClaim": "Grandmaster",
+          "patch": "25.20",
+          "durationSec": 1870,
+          "region": "EUW",
+          "uploaded": "2025-10-18",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 10,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "exczLtFHSK4",
+          "title": "Jax vs Kayle Top - KR Challenger - Patch 25.22 Season 15",
+          "rankClaim": "Challenger",
+          "patch": "25.22",
+          "durationSec": 1351,
+          "region": "KR",
+          "uploaded": "2025-11-10",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 11,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "2ELIVmf6UMA",
+          "title": "(BRO DDahyuk) Jax Jungle vs Master Yi - KR Grandmaster Patch 26.11",
+          "rankClaim": "Grandmaster",
+          "patch": "26.11",
+          "durationSec": 1507,
+          "region": "KR",
+          "player": "DDahyuk",
+          "team": "BRO",
+          "uploaded": "2026-06-03",
+          "moments": []
+        },
+        {
+          "videoId": "ita66oNpxW0",
+          "title": "Jax Jungle vs Master Yi - KR Master Patch 26.09",
+          "rankClaim": "Master",
+          "patch": "26.9",
+          "durationSec": 1462,
+          "region": "KR",
+          "uploaded": "2026-05-03",
+          "moments": []
+        },
+        {
+          "videoId": "X78gms-so_c",
+          "title": "Jax Jungle vs Master Yi - EUW Challenger Patch 26.07",
+          "rankClaim": "Challenger",
+          "patch": "26.7",
+          "durationSec": 1916,
+          "region": "EUW",
+          "uploaded": "2026-04-12",
+          "moments": []
+        },
+        {
+          "videoId": "vSNokAJh_7Q",
+          "title": "T1 Oner Jax vs Master Yi [ Jungle ] Korea Master Patch 26.3",
+          "rankClaim": "Master",
+          "patch": "26.3",
+          "durationSec": 1478,
+          "region": "KR",
+          "player": "Oner",
+          "team": "T1",
+          "uploaded": "2026-02-12",
+          "moments": []
+        },
+        {
+          "videoId": "-51m8gkP8oc",
+          "title": "Jax Jungle vs Master Yi - NA Grandmaster Patch 25.09",
+          "rankClaim": "Grandmaster",
+          "patch": "25.9",
+          "durationSec": 1842,
+          "region": "NA",
+          "uploaded": "2025-05-11",
+          "moments": []
+        },
+        {
+          "videoId": "XrYbfdF6nC0",
+          "title": "Jax Jungle vs Master Yi - KR Master Patch 25.08",
+          "rankClaim": "Master",
+          "patch": "25.8",
+          "durationSec": 1677,
+          "region": "KR",
+          "uploaded": "2025-04-27",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 13,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "6onJcL01caA",
+          "title": "Jax Top vs Ryze - KR Grandmaster Patch 26.18",
+          "rankClaim": "Grandmaster",
+          "patch": "26.18",
+          "durationSec": 1743,
+          "region": "KR",
+          "uploaded": "2026-09-16",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 14,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "QOaLpToXt28",
+          "title": "Jax Top vs Sion - KR Master Patch 25.13",
+          "rankClaim": "Master",
+          "patch": "25.13",
+          "durationSec": 1445,
+          "region": "KR",
+          "uploaded": "2025-06-28",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 23,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "2dTEeRuG2PA",
+          "title": "(GZ 1Jiang) Jax Top vs Tryndamere - KR Master Patch 26.15",
+          "rankClaim": "Master",
+          "patch": "26.15",
+          "durationSec": 1646,
+          "region": "KR",
+          "player": "GZ 1Jiang",
+          "uploaded": "2026-08-03",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 27,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "1y3YTLm9zwc",
+          "title": "Jax Top vs Singed - KR Master Patch 25.20",
+          "rankClaim": "Master",
+          "patch": "25.20",
+          "durationSec": 2030,
+          "region": "KR",
+          "uploaded": "2025-10-11",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 35,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "DiNeQr1n0bY",
+          "title": "Jax Jungle vs Shaco - EUW Grandmaster Patch 25.21",
+          "rankClaim": "Grandmaster",
+          "patch": "25.21",
+          "durationSec": 1736,
+          "region": "EUW",
+          "uploaded": "2025-11-02",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 36,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "lqqBB-HNtzY",
+          "title": "(Jelly) Jax Top vs Dr. Mundo - KR Grandmaster Patch 26.20",
+          "rankClaim": "Grandmaster",
+          "patch": "26.20",
+          "durationSec": 1837,
+          "region": "KR",
+          "player": "Jelly",
+          "uploaded": "2026-10-22",
+          "result": "W",
+          "moments": [
+            {
+              "atSec": 125,
+              "label": "First Blood — Jax kills Dr. Mundo",
+              "kind": "kill"
+            },
+            {
+              "atSec": 285,
+              "label": "Red takes 1st Dragon (Ocean)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 715,
+              "label": "Blue takes 1st Dragon (Cloud)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1042,
+              "label": "Red takes 2nd Dragon (Infernal)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1148,
+              "label": "Team fight (3 kills)",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1195,
+              "label": "Blue takes Baron",
+              "kind": "baron"
+            },
+            {
+              "atSec": 1352,
+              "label": "Diana Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1354,
+              "label": "Diana Triple Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1390,
+              "label": "Blue takes 2nd Dragon (Infernal)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1433,
+              "label": "Jax picks off Kai'Sa"
+            },
+            {
+              "atSec": 1475,
+              "label": "Evelynn picks off Twisted Fate"
+            },
+            {
+              "atSec": 1593,
+              "label": "Red takes Baron",
+              "kind": "baron"
+            },
+            {
+              "atSec": 1601,
+              "label": "Jax Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1688,
+              "label": "Jax picks off Kai'Sa"
+            },
+            {
+              "atSec": 1724,
+              "label": "Red takes 3rd Dragon (Infernal)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1788,
+              "label": "Jax picks off Kai'Sa"
+            },
+            {
+              "atSec": 1820,
+              "label": "Diana eliminates Twisted Fate"
+            },
+            {
+              "atSec": 1823,
+              "label": "Mid Inhibitor falls (Red)"
+            }
+          ]
+        },
+        {
+          "videoId": "Y0U5kRy52XI",
+          "title": "Jax vs Dr Mundo Top - KR Grandmaster - Patch 25.9 Season 15",
+          "rankClaim": "Grandmaster",
+          "patch": "25.9",
+          "durationSec": 2250,
+          "region": "KR",
+          "uploaded": "2025-05-13",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 39,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "nhU7StOit88",
+          "title": "Jax Mid vs Irelia - NA Grandmaster Patch 25.13",
+          "rankClaim": "Grandmaster",
+          "patch": "25.13",
+          "durationSec": 1995,
+          "region": "NA",
+          "uploaded": "2025-07-12",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 39,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "pdivYX2ByEI",
+          "title": "OTP Jax vs Irelia [ TOP ] Patch 25.10 Korea Master ✅",
+          "rankClaim": "Master",
+          "patch": "25.10",
+          "durationSec": 1479,
+          "region": "KR",
+          "player": "OTP",
+          "uploaded": "2025-05-24",
+          "moments": []
+        },
+        {
+          "videoId": "P6pxj3HOHek",
+          "title": "Jax vs Irelia Top - EUW Grandmaster - Patch 25.5 Season 15",
+          "rankClaim": "Grandmaster",
+          "patch": "25.5",
+          "durationSec": 2311,
+          "region": "EUW",
+          "uploaded": "2025-03-11",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 41,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "0KZjaG4FhJo",
+          "title": "OTP Jax vs Gangplank [ TOP ] Lol Korea Master Patch 26.12 ✅",
+          "rankClaim": "Master",
+          "patch": "26.12",
+          "durationSec": 1873,
+          "region": "KR",
+          "player": "OTP",
+          "uploaded": "2026-06-18",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 48,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "7BIc4ql3w-Q",
+          "title": "Jax Top vs Trundle - KR Master Patch 26.05",
+          "rankClaim": "Master",
+          "patch": "26.5",
+          "durationSec": 1602,
+          "region": "KR",
+          "uploaded": "2026-03-08",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 51,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 442,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 561,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 648,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 750,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 931,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 984,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1013,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1157,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1255,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1281,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1334,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1415,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1441,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1454,
+              "label": "Take down The Inhibitor"
+            },
+            {
+              "atSec": 1520,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1591,
+              "label": "End credit"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 56,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "zZYVLo6Pur8",
+          "title": "Jax Jungle vs Nocturne - EUW Grandmaster Patch 25.16",
+          "rankClaim": "Grandmaster",
+          "patch": "25.16",
+          "durationSec": 1776,
+          "region": "EUW",
+          "uploaded": "2025-08-25",
+          "moments": []
+        },
+        {
+          "videoId": "8hN-uOjzpms",
+          "title": "Jax Jungle vs Nocturne - EUW Grandmaster Patch 25.15",
+          "rankClaim": "Grandmaster",
+          "patch": "25.15",
+          "durationSec": 1791,
+          "region": "EUW",
+          "uploaded": "2025-08-10",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 58,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "LHe1fg_BpIs",
+          "title": "Jax Top vs Renekton - KR Master Patch 25.10",
+          "rankClaim": "Master",
+          "patch": "25.10",
+          "durationSec": 1843,
+          "region": "KR",
+          "uploaded": "2025-05-19",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 198,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 499,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 619,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 719,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 751,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 911,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1066,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1172,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1252,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1296,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1361,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1479,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1652,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1676,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1764,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1785,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1800,
+              "label": "Take down The Inhibitor"
+            },
+            {
+              "atSec": 1812,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1822,
+              "label": "End credit"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 59,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "DaDAHuSdQZc",
+          "title": "(MKF XnS) Jax Jungle vs Jarvan IV (Agurin) - EUW Challenger Patch 26.15",
+          "rankClaim": "Challenger",
+          "patch": "26.15",
+          "durationSec": 1670,
+          "region": "EUW",
+          "player": "Agurin",
+          "uploaded": "2026-08-08",
+          "moments": []
+        },
+        {
+          "videoId": "-eZejfYyr3k",
+          "title": "Jax Jungle vs Jarvan IV - EUW Grandmaster Patch 26.10",
+          "rankClaim": "Grandmaster",
+          "patch": "26.10",
+          "durationSec": 1590,
+          "region": "EUW",
+          "uploaded": "2026-05-17",
+          "moments": []
+        },
+        {
+          "videoId": "gd6OJ7rZLq0",
+          "title": "Jax Jungle vs Jarvan IV - EUW Challenger Patch 25.17",
+          "rankClaim": "Challenger",
+          "patch": "25.17",
+          "durationSec": 1660,
+          "region": "EUW",
+          "uploaded": "2025-09-07",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 64,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "8mDYR3lgdQY",
+          "title": "(NERD Drakehero) Jax Jungle vs Lee Sin - BR Challenger Patch 26.17",
+          "rankClaim": "Challenger",
+          "patch": "26.17",
+          "durationSec": 1701,
+          "player": "NERD Drakehero",
+          "uploaded": "2026-09-06",
+          "moments": []
+        },
+        {
+          "videoId": "OESM1eau0XA",
+          "title": "Jax Jungle vs Lee Sin - EUW Grandmaster Patch 25.19",
+          "rankClaim": "Grandmaster",
+          "patch": "25.19",
+          "durationSec": 1555,
+          "region": "EUW",
+          "uploaded": "2025-10-03",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 67,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "IQpKumKvQnY",
+          "title": "(JDG Xiaoxu) Jax Top vs Vayne - KR Master Patch 26.10",
+          "rankClaim": "Master",
+          "patch": "26.10",
+          "durationSec": 1486,
+          "region": "KR",
+          "player": "Xiaoxu",
+          "team": "JDG",
+          "uploaded": "2026-05-25",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 68,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "ZvgvdjV1HmM",
+          "title": "(GZ 1Jiang) Jax Top vs Rumble - KR Grandmaster Patch 26.12",
+          "rankClaim": "Grandmaster",
+          "patch": "26.12",
+          "durationSec": 1866,
+          "region": "KR",
+          "player": "GZ 1Jiang",
+          "uploaded": "2026-06-12",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 72,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "OuHkkH9Z4u8",
+          "title": "Jax Top vs Skarner - KR Grandmaster Patch 25.22",
+          "rankClaim": "Grandmaster",
+          "patch": "25.22",
+          "durationSec": 1627,
+          "region": "KR",
+          "uploaded": "2025-11-07",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 74,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "ms2p2e-HZ5M",
+          "title": "Jax Top vs Heimerdinger - KR Grandmaster Patch 25.08",
+          "rankClaim": "Grandmaster",
+          "patch": "25.8",
+          "durationSec": 1882,
+          "region": "KR",
+          "uploaded": "2025-04-21",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 75,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "WtvDgc-vWyE",
+          "title": "Jax Jungle vs Nasus - EUW Grandmaster Patch 26.02",
+          "rankClaim": "Grandmaster",
+          "patch": "26.2",
+          "durationSec": 1556,
+          "region": "EUW",
+          "uploaded": "2026-01-30",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 75,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "KVcweU6s-qg",
+          "title": "Jax Top vs Nasus - KR Master Patch 25.05",
+          "rankClaim": "Master",
+          "patch": "25.5",
+          "durationSec": 1719,
+          "region": "KR",
+          "uploaded": "2025-03-10",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 77,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "fl7YbGdGR0g",
+          "title": "Jax Top vs Udyr - VN Challenger Patch 25.24",
+          "rankClaim": "Challenger",
+          "patch": "25.24",
+          "durationSec": 1568,
+          "uploaded": "2026-01-06",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 98,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 213,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 331,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 570,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 898,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 921,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 936,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1146,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1226,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1325,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1491,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1506,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1557,
+              "label": "End credit"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 79,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "XkV9YbvUPYM",
+          "title": "T1 Doran Jax vs Gragas [ TOP ] Korea Master Patch 25.1 ✅",
+          "rankClaim": "Master",
+          "patch": "25.1",
+          "durationSec": 1639,
+          "region": "KR",
+          "player": "Doran",
+          "team": "T1",
+          "uploaded": "2025-01-17",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 80,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "LWOW2-pJ8b4",
+          "title": "Jax vs Pantheon Top - KR Challenger - Patch 16.20 Season 16",
+          "rankClaim": "Challenger",
+          "patch": "26.20",
+          "durationSec": 2049,
+          "region": "KR",
+          "uploaded": "2026-10-14",
+          "moments": []
+        },
+        {
+          "videoId": "GONbt4-E-CE",
+          "title": "T1 Faker Jax vs Pantheon [ TOP ] Patch 25.24 Ranked Korea",
+          "rankClaim": "Master+",
+          "patch": "25.24",
+          "durationSec": 1682,
+          "region": "KR",
+          "player": "Faker",
+          "team": "T1",
+          "uploaded": "2026-01-05",
+          "moments": []
+        },
+        {
+          "videoId": "D6pth50j3SI",
+          "title": "Jax Top vs Pantheon - KR Master Patch 25.23",
+          "rankClaim": "Master",
+          "patch": "25.23",
+          "durationSec": 1636,
+          "region": "KR",
+          "uploaded": "2025-11-24",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 82,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "nvzmYFOqb4g",
+          "title": "Jax Top vs Mordekaiser - TW Challenger Patch 26.06",
+          "rankClaim": "Challenger",
+          "patch": "26.6",
+          "durationSec": 1536,
+          "uploaded": "2026-03-21",
+          "moments": []
+        },
+        {
+          "videoId": "8uSs_wY22Es",
+          "title": "Jax vs Mordekaiser Top - EUW Challenger - Patch 25.13 Seaosn 15",
+          "rankClaim": "Challenger",
+          "patch": "25.13",
+          "durationSec": 1876,
+          "region": "EUW",
+          "uploaded": "2025-07-03",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 83,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "EhYcL8gsJ2c",
+          "title": "(TH Tracyn) Jax Top vs Yorick - EUW Challenger Patch 26.14",
+          "rankClaim": "Challenger",
+          "patch": "26.14",
+          "durationSec": 1844,
+          "region": "EUW",
+          "player": "TH Tracyn",
+          "uploaded": "2026-07-21",
+          "moments": []
+        },
+        {
+          "videoId": "usd2DvcWgxA",
+          "title": "Jax Top vs Yorick - KR Master Patch 26.07",
+          "rankClaim": "Master",
+          "patch": "26.7",
+          "durationSec": 1573,
+          "region": "KR",
+          "uploaded": "2026-04-05",
+          "moments": []
+        },
+        {
+          "videoId": "Bbs8QPoTSsM",
+          "title": "Jax Top vs Yorick - KR Challenger Patch 25.15",
+          "rankClaim": "Challenger",
+          "patch": "25.15",
+          "durationSec": 1874,
+          "region": "KR",
+          "uploaded": "2025-08-03",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 84,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "wFN9NKB-igg",
+          "title": "Jax Top vs Akali - EUW Master Patch 26.01",
+          "rankClaim": "Master",
+          "patch": "26.1",
+          "durationSec": 1502,
+          "region": "EUW",
+          "uploaded": "2026-01-14",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 85,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "SimedL5sbyk",
+          "title": "Jax Top vs Kennen - KR Grandmaster Patch 26.17",
+          "rankClaim": "Grandmaster",
+          "patch": "26.17",
+          "durationSec": 1630,
+          "region": "KR",
+          "uploaded": "2026-09-02",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 86,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "QMW3fYnHkH8",
+          "title": "Jax vs Garen [ TOP ] Lol Korea Master Patch 25.18",
+          "rankClaim": "Master",
+          "patch": "25.18",
+          "durationSec": 1021,
+          "region": "KR",
+          "uploaded": "2025-09-21",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 98,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "5nrAqPv4CVk",
+          "title": "Jax Top vs Shen - KR Master Patch 25.24",
+          "rankClaim": "Master",
+          "patch": "25.24",
+          "durationSec": 1614,
+          "region": "KR",
+          "uploaded": "2025-12-07",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 580,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 742,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 824,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 929,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1017,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1053,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1140,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1222,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1252,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1277,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1307,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1333,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1346,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1577,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1603,
+              "label": "End credit"
+            }
+          ]
+        },
+        {
+          "videoId": "wMPu-q1j-dQ",
+          "title": "Jax Top vs Shen - KR Master Patch 25.07",
+          "rankClaim": "Master",
+          "patch": "25.7",
+          "durationSec": 1640,
+          "region": "KR",
+          "uploaded": "2025-04-07",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 248,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 668,
+              "label": "Hunt The Void Grubs",
+              "kind": "grubs"
+            },
+            {
+              "atSec": 695,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 723,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 883,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 909,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1057,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1090,
+              "label": "Get a Triple Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1260,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1443,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1583,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1619,
+              "label": "End credit"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 102,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "A_p249HZtMY",
+          "title": "(BW Elramir) Jax Jungle vs Shyvana - EUW Grandmaster Patch 26.12",
+          "rankClaim": "Grandmaster",
+          "patch": "26.12",
+          "durationSec": 1522,
+          "region": "EUW",
+          "player": "BW Elramir",
+          "uploaded": "2026-06-19",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 104,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "XGoUNqudxBo",
+          "title": "(GEN Canyon) Jax Jungle vs Graves - KR Challenger Patch 26.19",
+          "rankClaim": "Challenger",
+          "patch": "26.19",
+          "durationSec": 1598,
+          "region": "KR",
+          "player": "Canyon",
+          "team": "GEN",
+          "uploaded": "2026-10-09",
+          "result": "W",
+          "moments": [
+            {
+              "atSec": 124,
+              "label": "First Blood — Jax kills K'Sante",
+              "kind": "kill"
+            },
+            {
+              "atSec": 373,
+              "label": "Red takes 1st Dragon (Cloud)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 667,
+              "label": "Jax takes down Graves"
+            },
+            {
+              "atSec": 696,
+              "label": "Red takes 2nd Dragon (Mountain)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 762,
+              "label": "Jax eliminates Aphelios"
+            },
+            {
+              "atSec": 917,
+              "label": "Jax eliminates Aphelios"
+            },
+            {
+              "atSec": 1008,
+              "label": "Blue takes 1st Dragon (Chemtech)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1034,
+              "label": "Jinx takes down Aphelios"
+            },
+            {
+              "atSec": 1050,
+              "label": "Orianna Triple Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1141,
+              "label": "Jax kills Nautilus",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1279,
+              "label": "Blue takes Baron",
+              "kind": "baron"
+            },
+            {
+              "atSec": 1282,
+              "label": "Orianna Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1325,
+              "label": "Blue takes 2nd Dragon (Chemtech)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1384,
+              "label": "Jax picks off Twisted Fate"
+            },
+            {
+              "atSec": 1476,
+              "label": "Bot Inhibitor falls (Blue)"
+            }
+          ]
+        },
+        {
+          "videoId": "ZcefH_ezxPo",
+          "title": "Jax vs Graves [ Jungle ] Lol Korea Master Patch 26.13 ✅",
+          "rankClaim": "Master",
+          "patch": "26.13",
+          "durationSec": 2274,
+          "region": "KR",
+          "uploaded": "2026-07-14",
+          "moments": []
+        },
+        {
+          "videoId": "9V07J0SxgQI",
+          "title": "Jax Jungle vs Graves - EUW Challenger Patch 25.22",
+          "rankClaim": "Challenger",
+          "patch": "25.22",
+          "durationSec": 1862,
+          "region": "EUW",
+          "uploaded": "2025-11-14",
+          "moments": []
+        },
+        {
+          "videoId": "1xnVAeqdPKI",
+          "title": "Jax vs Graves Jungle - KR Challenger - Patch 25.22 Season 15",
+          "rankClaim": "Challenger",
+          "patch": "25.22",
+          "durationSec": 1561,
+          "region": "KR",
+          "uploaded": "2025-11-08",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 105,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "Wf4sikkJO-Q",
+          "title": "Jax Jungle vs Fizz - VN Challenger Patch 25.23",
+          "rankClaim": "Challenger",
+          "patch": "25.23",
+          "durationSec": 1473,
+          "uploaded": "2025-11-30",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 106,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "3Y3eOW_WUY4",
+          "title": "Jax vs Volibear Top - KR Challenger - Patch 25.7 Season 15",
+          "rankClaim": "Challenger",
+          "patch": "25.7",
+          "durationSec": 1656,
+          "region": "KR",
+          "uploaded": "2025-04-08",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 107,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "-Ot0j9RgJAU",
+          "title": "Jax Jungle vs Rengar - KR Grandmaster Patch 26.05",
+          "rankClaim": "Grandmaster",
+          "patch": "26.5",
+          "durationSec": 1835,
+          "region": "KR",
+          "uploaded": "2026-03-15",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 183,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 332,
+              "label": "Hunt The Dragon",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 387,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 473,
+              "label": "Hunt The Void Grubs",
+              "kind": "grubs"
+            },
+            {
+              "atSec": 759,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 779,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 886,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 920,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 984,
+              "label": "Hunt The Rift Herald",
+              "kind": "herald"
+            },
+            {
+              "atSec": 1023,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1184,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1362,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1398,
+              "label": "Hunt The Dragon",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1459,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1484,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1547,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1629,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1657,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1672,
+              "label": "Take down The Inhibitor"
+            },
+            {
+              "atSec": 1756,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1784,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1804,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1824,
+              "label": "End credit"
+            }
+          ]
+        },
+        {
+          "videoId": "D52L53IajsM",
+          "title": "Jax Jungle vs Rengar - KR Grandmaster Patch 25.24",
+          "rankClaim": "Grandmaster",
+          "patch": "25.24",
+          "durationSec": 1545,
+          "region": "KR",
+          "uploaded": "2025-12-12",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 110,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "NVPzyaTfbgk",
+          "title": "(CFO Rest) Jax Top vs Varus - KR Master Patch 26.13",
+          "rankClaim": "Master",
+          "patch": "26.13",
+          "durationSec": 1507,
+          "region": "KR",
+          "player": "CFO Rest",
+          "uploaded": "2026-07-04",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 112,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "CxU-jEn1iB8",
+          "title": "(ZYB Wao) Jax Mid vs Viktor (KKT) - EUW Grandmaster Patch 26.13",
+          "rankClaim": "Grandmaster",
+          "patch": "26.13",
+          "durationSec": 1417,
+          "region": "EUW",
+          "player": "ZYB Wao",
+          "uploaded": "2026-07-13",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 114,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "NovXqR0kyu0",
+          "title": "Jax vs Fiora Top - EUW Challenger - Patch 16.03 Season 16",
+          "rankClaim": "Challenger",
+          "patch": "26.3",
+          "durationSec": 1666,
+          "region": "EUW",
+          "uploaded": "2026-02-10",
+          "moments": []
+        },
+        {
+          "videoId": "N-ZeqXPKTZ4",
+          "title": "Jax Top vs Fiora - KR Master Patch 25.19",
+          "rankClaim": "Master",
+          "patch": "25.19",
+          "durationSec": 1691,
+          "region": "KR",
+          "uploaded": "2025-09-26",
+          "moments": []
+        },
+        {
+          "videoId": "dZNrsmRFpLU",
+          "title": "Jax Top vs Fiora - KR Master Patch 25.16",
+          "rankClaim": "Master",
+          "patch": "25.16",
+          "durationSec": 1449,
+          "region": "KR",
+          "uploaded": "2025-08-17",
+          "moments": []
+        },
+        {
+          "videoId": "QzI_ymsehkg",
+          "title": "Jax vs Fiora Top - KR Challenger - Patch 25.12 Season 15",
+          "rankClaim": "Challenger",
+          "patch": "25.12",
+          "durationSec": 1411,
+          "region": "KR",
+          "uploaded": "2025-06-17",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 121,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "DvPI0TrxKSE",
+          "title": "Challenger Jax : CN Super Server Rank 1 is CRUSHING KhaZix with DEVASTATING Mechanics - Engsub",
+          "rankClaim": "Challenger",
+          "patch": "26.5",
+          "durationSec": 1383,
+          "patchEstimated": true,
+          "player": "Baicaiovo",
+          "uploaded": "2026-03-16",
+          "format": "stream",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 122,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "zVlWq6zLu7U",
+          "title": "Jax vs Darius [ TOP ] Lol Korea Master Patch 25.4 ✅",
+          "rankClaim": "Master",
+          "patch": "25.4",
+          "durationSec": 1389,
+          "region": "KR",
+          "uploaded": "2025-03-01",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 126,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "zijH9Hj8CJ0",
+          "title": "Jax vs Jayce [ TOP ] Korea Grandmaster 1704 LP | Patch 26.16 ✅",
+          "rankClaim": "Grandmaster",
+          "patch": "26.16",
+          "durationSec": 1556,
+          "region": "KR",
+          "uploaded": "2026-08-23",
+          "moments": []
+        },
+        {
+          "videoId": "PK1TEsWQAK8",
+          "title": "Jax vs Jayce TOP [ TripleKill ] Korea Master Patch 25.22 ✅",
+          "rankClaim": "Master",
+          "patch": "25.22",
+          "durationSec": 1567,
+          "region": "KR",
+          "player": "TripleKill",
+          "uploaded": "2025-11-08",
+          "moments": []
+        },
+        {
+          "videoId": "59q_7TTNMgw",
+          "title": "Jax vs Jayce TOP [ HLE Zeus ] Patch 25.3 Korea Grandmaster ✅",
+          "rankClaim": "Grandmaster",
+          "patch": "25.3",
+          "durationSec": 1256,
+          "region": "KR",
+          "player": "Zeus",
+          "team": "HLE",
+          "uploaded": "2025-02-16",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 143,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "W9dhTrAlKok",
+          "title": "Jax Jungle vs Zyra - KR Grandmaster Patch 26.01",
+          "rankClaim": "Grandmaster",
+          "patch": "26.1",
+          "durationSec": 1553,
+          "region": "KR",
+          "uploaded": "2026-01-17",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 169,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 327,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 456,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 482,
+              "label": "Hunt The Dragon",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 575,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 678,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 863,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 884,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 906,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 988,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1021,
+              "label": "Hunt The Rift Herald",
+              "kind": "herald"
+            },
+            {
+              "atSec": 1048,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1114,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1177,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1353,
+              "label": "Hunt The Baron Nashor",
+              "kind": "baron"
+            },
+            {
+              "atSec": 1379,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1423,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1453,
+              "label": "Take down The Inhibitor"
+            },
+            {
+              "atSec": 1503,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1542,
+              "label": "End credit"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 157,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "QxG9t3apvKk",
+          "title": "Jax vs Yasuo Top - NA Challenger - Patch 16.04 Season 16",
+          "rankClaim": "Challenger",
+          "patch": "26.4",
+          "durationSec": 1321,
+          "region": "NA",
+          "uploaded": "2026-02-27",
+          "moments": []
+        },
+        {
+          "videoId": "3QB4rg-zcvE",
+          "title": "Jax vs Yasuo Top - KR Challenger - Patch 25.24 Season 15",
+          "rankClaim": "Challenger",
+          "patch": "25.24",
+          "durationSec": 1721,
+          "region": "KR",
+          "uploaded": "2025-12-16",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 163,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "DqevapuQEyo",
+          "title": "Jax Jungle vs Taliyah - KR Grandmaster Patch 25.06",
+          "rankClaim": "Grandmaster",
+          "patch": "25.6",
+          "durationSec": 1598,
+          "region": "KR",
+          "uploaded": "2025-03-28",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 164,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "QdpxG9o7d2Q",
+          "title": "(BIG Irrelevant) Jax Top vs Camille (FK Adam) - EUW Challenger Patch 26.16",
+          "rankClaim": "Challenger",
+          "patch": "26.16",
+          "durationSec": 1587,
+          "region": "EUW",
+          "player": "BIG Irrelevant",
+          "uploaded": "2026-08-23",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 200,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "YM77tXaGhZI",
+          "title": "Jax vs Bel'Veth [ Jungle ] Lol Korea Master Patch 26.18 ✅",
+          "rankClaim": "Master",
+          "patch": "26.18",
+          "durationSec": 1621,
+          "region": "KR",
+          "uploaded": "2026-09-17",
+          "moments": []
+        },
+        {
+          "videoId": "FxdD5WzUGNs",
+          "title": "Jax Jungle vs Bel'Veth - EUW Grandmaster Patch 25.18",
+          "rankClaim": "Grandmaster",
+          "patch": "25.18",
+          "durationSec": 1500,
+          "region": "EUW",
+          "uploaded": "2025-09-23",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 203,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "dTHaCgvDrZg",
+          "title": "Jax vs Kindred Jungle [ Gen.G Canyon ] Korea Challenger 1892 LP | Patch 26.8",
+          "rankClaim": "Challenger",
+          "patch": "26.8",
+          "durationSec": 1246,
+          "region": "KR",
+          "player": "Canyon",
+          "team": "Gen.G",
+          "uploaded": "2026-04-26",
+          "moments": []
+        },
+        {
+          "videoId": "g6cqY338fak",
+          "title": "Jax Jungle vs Kindred - EUW Challenger Patch 25.05",
+          "rankClaim": "Challenger",
+          "patch": "25.5",
+          "durationSec": 1720,
+          "region": "EUW",
+          "uploaded": "2025-03-16",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 234,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "HuyTwhkCJyc",
+          "title": "(LOS Drakehero) Jax Jungle vs Viego - BR Challenger Patch 26.13",
+          "rankClaim": "Challenger",
+          "patch": "26.13",
+          "durationSec": 1465,
+          "player": "LOS Drakehero",
+          "uploaded": "2026-07-17",
+          "moments": []
+        },
+        {
+          "videoId": "YHZoHVllhq4",
+          "title": "Jax Jungle vs Viego - EUW Challenger Patch 26.08",
+          "rankClaim": "Challenger",
+          "patch": "26.8",
+          "durationSec": 1655,
+          "region": "EUW",
+          "uploaded": "2026-04-26",
+          "moments": []
+        },
+        {
+          "videoId": "YULUFVi0_F8",
+          "title": "Jax Jungle vs Viego - EUW Challenger Patch 25.13",
+          "rankClaim": "Challenger",
+          "patch": "25.13",
+          "durationSec": 1892,
+          "region": "EUW",
+          "uploaded": "2025-07-04",
+          "moments": []
+        },
+        {
+          "videoId": "1K03SQBJpqI",
+          "title": "Jax Jungle vs Viego - EUW Grandmaster Patch 25.12",
+          "rankClaim": "Grandmaster",
+          "patch": "25.12",
+          "durationSec": 1620,
+          "region": "EUW",
+          "uploaded": "2025-06-23",
+          "moments": []
+        },
+        {
+          "videoId": "JJEobtwKlys",
+          "title": "Jax Jungle vs Viego - KR Master Patch 25.11",
+          "rankClaim": "Master",
+          "patch": "25.11",
+          "durationSec": 1458,
+          "region": "KR",
+          "uploaded": "2025-06-09",
+          "moments": []
+        },
+        {
+          "videoId": "7QAtYpSgbL0",
+          "title": "Jax Jungle vs Viego - KR Challenger Patch 25.10",
+          "rankClaim": "Challenger",
+          "patch": "25.10",
+          "durationSec": 1776,
+          "region": "KR",
+          "uploaded": "2025-05-25",
+          "moments": []
+        },
+        {
+          "videoId": "tm1DXLf1E0E",
+          "title": "Jax Jungle vs Viego - KR Challenger Patch 25.04",
+          "rankClaim": "Challenger",
+          "patch": "25.4",
+          "durationSec": 1783,
+          "region": "KR",
+          "uploaded": "2025-02-23",
+          "moments": []
+        },
+        {
+          "videoId": "JrrERedHlrA",
+          "title": "Jax vs Viego Jungle - KR Challenger - Patch 15.4 Season 15",
+          "rankClaim": "Challenger",
+          "patch": "25.4",
+          "durationSec": 1756,
+          "region": "KR",
+          "uploaded": "2025-02-22",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 240,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "BfvtAyBcXP0",
+          "title": "Jax Top vs Kled - EUW Grandmaster Patch 26.03",
+          "rankClaim": "Grandmaster",
+          "patch": "26.3",
+          "durationSec": 1547,
+          "region": "EUW",
+          "uploaded": "2026-02-13",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 519,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 603,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 862,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 898,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 959,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 981,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1028,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1105,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1289,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1307,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1383,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1409,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1477,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1536,
+              "label": "End credit"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 266,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "N9J5K21YVZU",
+          "title": "Jax Jungle vs Aatrox - NA Grandmaster Patch 25.24",
+          "rankClaim": "Grandmaster",
+          "patch": "25.24",
+          "durationSec": 1563,
+          "region": "NA",
+          "uploaded": "2025-12-28",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 266,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "agXI_kEpbqg",
+          "title": "Jax Top vs Aatrox - KR Master Patch 25.06",
+          "rankClaim": "Master",
+          "patch": "25.6",
+          "durationSec": 1528,
+          "region": "KR",
+          "uploaded": "2025-03-22",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 415,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 620,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 710,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 806,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 907,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 925,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1008,
+              "label": "Get a PENTA KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1107,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1128,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1141,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1237,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1357,
+              "label": "Get a Triple Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1384,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1395,
+              "label": "Take down The Inhibitor"
+            },
+            {
+              "atSec": 1405,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1475,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1495,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1507,
+              "label": "End credit"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 517,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "YfZlxlD0JCs",
+          "title": "Jax Jungle vs Sylas - KR Challenger Patch 26.14",
+          "rankClaim": "Challenger",
+          "patch": "26.14",
+          "durationSec": 1873,
+          "region": "KR",
+          "uploaded": "2026-07-26",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 777,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "WH6g7nZWt4Y",
+          "title": "Jax Top vs Yone - KR Grandmaster Patch 26.19",
+          "rankClaim": "Grandmaster",
+          "patch": "26.19",
+          "durationSec": 1485,
+          "region": "KR",
+          "uploaded": "2026-09-28",
+          "moments": []
+        },
+        {
+          "videoId": "qXA-kTtJP-w",
+          "title": "(ZYB Wao) Jax Top vs Yone - EUW Grandmaster Patch 26.11",
+          "rankClaim": "Grandmaster",
+          "patch": "26.11",
+          "durationSec": 1810,
+          "region": "EUW",
+          "player": "ZYB Wao",
+          "uploaded": "2026-06-09",
+          "moments": []
+        },
+        {
+          "videoId": "-XFkSzYaz1U",
+          "title": "Jax Top vs Yone - KR Grandmaster Patch 25.11",
+          "rankClaim": "Grandmaster",
+          "patch": "25.11",
+          "durationSec": 1515,
+          "region": "KR",
+          "uploaded": "2025-06-03",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 799,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "cjq8NKPU3Us",
+          "title": "T1 Doran Jax vs Ambessa [ TOP ] Korea Grandmaster 1632 LP | Patch 26.17",
+          "rankClaim": "Grandmaster",
+          "patch": "26.17",
+          "durationSec": 1571,
+          "region": "KR",
+          "player": "Doran",
+          "team": "T1",
+          "uploaded": "2026-08-30",
+          "moments": []
+        },
+        {
+          "videoId": "CfwFSE4MueI",
+          "title": "(T1 Doran) Jax Top vs Ambessa (HLE Panther) - KR Grandmaster Patch 26.16",
+          "rankClaim": "Grandmaster",
+          "patch": "26.16",
+          "durationSec": 1731,
+          "region": "KR",
+          "player": "Doran",
+          "team": "T1",
+          "uploaded": "2026-08-18",
+          "moments": []
+        },
+        {
+          "videoId": "64kxC2FCHMs",
+          "title": "Jax Top vs Ambessa - NA Challenger Patch 26.04",
+          "rankClaim": "Challenger",
+          "patch": "26.4",
+          "durationSec": 1885,
+          "region": "NA",
+          "uploaded": "2026-02-22",
+          "moments": []
+        },
+        {
+          "videoId": "fXVJdfN6fRU",
+          "title": "Jax Top vs Ambessa - KR Master Patch 26.02",
+          "rankClaim": "Master",
+          "patch": "26.2",
+          "durationSec": 1469,
+          "region": "KR",
+          "uploaded": "2026-01-24",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 481,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 810,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 829,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 857,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 892,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1071,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1275,
+              "label": "Get a PENTA KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1313,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1369,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1385,
+              "label": "Take down The Inhibitor"
+            },
+            {
+              "atSec": 1395,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1407,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1458,
+              "label": "End credit"
+            }
+          ]
+        },
+        {
+          "videoId": "DQvPSWZtcUQ",
+          "title": "Jax vs Ambessa [ TOP ] Korea Challenger 1630 LP | Patch 25.21",
+          "rankClaim": "Challenger",
+          "patch": "25.21",
+          "durationSec": 1604,
+          "region": "KR",
+          "uploaded": "2025-10-27",
+          "moments": []
+        },
+        {
+          "videoId": "hy52kfXZ7CI",
+          "title": "Jax Top vs Ambessa - KR Challenger Patch 25.21",
+          "rankClaim": "Challenger",
+          "patch": "25.21",
+          "durationSec": 1450,
+          "region": "KR",
+          "uploaded": "2025-10-24",
+          "moments": []
+        },
+        {
+          "videoId": "mWZuquGjyDA",
+          "title": "Jax vs Ambessa Top - KR Challenger - Patch 25.19 Season 15",
+          "rankClaim": "Challenger",
+          "patch": "25.19",
+          "durationSec": 2236,
+          "region": "KR",
+          "uploaded": "2025-09-27",
+          "moments": []
+        },
+        {
+          "videoId": "R2hoPZdtzKo",
+          "title": "Jax Top vs Ambessa - KR Challenger Patch 25.14",
+          "rankClaim": "Challenger",
+          "patch": "25.14",
+          "durationSec": 1573,
+          "region": "KR",
+          "uploaded": "2025-07-18",
+          "moments": []
+        },
+        {
+          "videoId": "ApG2EsWCPTQ",
+          "title": "HLE Zeus Jax vs Ambessa TOP [ Quadra Kill ] Korea Challenger Patch 25.11",
+          "rankClaim": "Challenger",
+          "patch": "25.11",
+          "durationSec": 1319,
+          "region": "KR",
+          "player": "Zeus",
+          "team": "HLE",
+          "uploaded": "2025-06-11",
+          "moments": []
+        },
+        {
+          "videoId": "3X6JZK_UCd8",
+          "title": "Zeus Jax vs Ambessa Top - KR Challenger - Patch 25.11 Season 15",
+          "rankClaim": "Challenger",
+          "patch": "25.11",
+          "durationSec": 1561,
+          "region": "KR",
+          "player": "Zeus",
+          "uploaded": "2025-06-10",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 875,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "6Txq9HKjohg",
+          "title": "Jax Top vs Sett - EUW Grandmaster Patch 25.04",
+          "rankClaim": "Grandmaster",
+          "patch": "25.4",
+          "durationSec": 1904,
+          "region": "EUW",
+          "uploaded": "2025-03-05",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 887,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "D5JOTtup9aI",
+          "title": "Jax vs Gwen Top - KR Challenger - Patch 25.22 Season 15",
+          "rankClaim": "Challenger",
+          "patch": "25.22",
+          "durationSec": 2281,
+          "region": "KR",
+          "uploaded": "2025-11-15",
+          "moments": []
+        },
+        {
+          "videoId": "k_C-VsgiAMA",
+          "title": "Jax vs Gwen Top - KR Grandmaster - Patch 25.16 Season 15",
+          "rankClaim": "Grandmaster",
+          "patch": "25.16",
+          "durationSec": 1681,
+          "region": "KR",
+          "uploaded": "2025-08-23",
+          "moments": []
+        },
+        {
+          "videoId": "YBm9aVL_egY",
+          "title": "Jax Top vs Gwen - KR Challenger Patch 25.12",
+          "rankClaim": "Challenger",
+          "patch": "25.12",
+          "durationSec": 1463,
+          "region": "KR",
+          "uploaded": "2025-06-15",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 897,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "574nGkuiDfo",
+          "title": "Jax Top vs K'Sante - KR Challenger Patch 26.20",
+          "rankClaim": "Challenger",
+          "patch": "26.20",
+          "durationSec": 1652,
+          "region": "KR",
+          "uploaded": "2026-10-12",
+          "result": "W",
+          "moments": [
+            {
+              "atSec": 806,
+              "label": "First Blood — Jax kills Naafiri",
+              "kind": "kill"
+            },
+            {
+              "atSec": 827,
+              "label": "Kalista takes down Zeri"
+            },
+            {
+              "atSec": 876,
+              "label": "Red takes 1st Dragon (Cloud)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1058,
+              "label": "Team fight (3 kills)",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1166,
+              "label": "Locke Triple Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1220,
+              "label": "Blue takes 1st Dragon (Mountain)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1293,
+              "label": "Blue takes Baron",
+              "kind": "baron"
+            },
+            {
+              "atSec": 1378,
+              "label": "Jax picks off Zeri"
+            },
+            {
+              "atSec": 1520,
+              "label": "Lee Sin eliminates Zeri"
+            },
+            {
+              "atSec": 1534,
+              "label": "Blue takes 2nd Dragon (Infernal)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1595,
+              "label": "Kalista picks off Renata Glasc"
+            },
+            {
+              "atSec": 1630,
+              "label": "Mid Inhibitor falls (Red)"
+            }
+          ]
+        },
+        {
+          "videoId": "228BSpxoagc",
+          "title": "Jax vs KSante Top - KR Challenger - Patch 25.22 Season 15",
+          "rankClaim": "Challenger",
+          "patch": "25.22",
+          "durationSec": 1846,
+          "region": "KR",
+          "uploaded": "2025-11-12",
+          "moments": []
+        },
+        {
+          "videoId": "9rmldTxpxWU",
+          "title": "Jax Top vs K'Sante - KR Challenger Patch 25.09",
+          "rankClaim": "Challenger",
+          "patch": "25.9",
+          "durationSec": 1605,
+          "region": "KR",
+          "uploaded": "2025-05-05",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 671,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 806,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 960,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1003,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1175,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1285,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1363,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1381,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1391,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1401,
+              "label": "Take down The Inhibitor"
+            },
+            {
+              "atSec": 1448,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1466,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1558,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1584,
+              "label": "End credit"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 904,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "KsY-YJz1wn8",
+          "title": "Jax Top vs Zaahen - KR Challenger Patch 26.09",
+          "rankClaim": "Challenger",
+          "patch": "26.9",
+          "durationSec": 1866,
+          "region": "KR",
+          "uploaded": "2026-05-10",
+          "moments": []
+        },
+        {
+          "videoId": "33PdBUzyKYY",
+          "title": "Jax Top vs Zaahen - KR Master Patch 26.08",
+          "rankClaim": "Master",
+          "patch": "26.8",
+          "durationSec": 1527,
+          "region": "KR",
+          "uploaded": "2026-04-19",
+          "moments": []
+        },
+        {
+          "videoId": "Lcs6KRSJrLM",
+          "title": "Jax vs Zaahen [ TOP ] Korea Grandmaster 941 LP | Patch 26.2",
+          "rankClaim": "Grandmaster",
+          "patch": "26.2",
+          "durationSec": 1261,
+          "region": "KR",
+          "uploaded": "2026-02-01",
+          "moments": []
+        },
+        {
+          "videoId": "1pXICa54H9A",
+          "title": "Jax Top vs Zaahen - EUW Challenger Patch 25.24",
+          "rankClaim": "Challenger",
+          "patch": "25.24",
+          "durationSec": 1521,
+          "region": "EUW",
+          "uploaded": "2025-12-22",
+          "moments": []
+        },
+        {
+          "videoId": "pV8jH9eUmiI",
+          "title": "HLE Zeus Jax vs Zaahen [ TOP ] Patch 25.24 Korea Master",
+          "rankClaim": "Master",
+          "patch": "25.24",
+          "durationSec": 1690,
+          "region": "KR",
+          "player": "Zeus",
+          "team": "HLE",
+          "uploaded": "2025-12-09",
+          "moments": []
+        },
+        {
+          "videoId": "UJPXvkpLlH8",
+          "title": "Jax vs Zaahen TOP [ QuadraKill ] Patch 25.23 Korea Grandmaster 1028 LP",
+          "rankClaim": "Grandmaster",
+          "patch": "25.23",
+          "durationSec": 1459,
+          "region": "KR",
+          "player": "QuadraKill",
+          "uploaded": "2025-11-28",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 950,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "uO6xRB_6eKY",
+          "title": "Jax Jungle vs Naafiri - NA Grandmaster Patch 25.07",
+          "rankClaim": "Grandmaster",
+          "patch": "25.7",
+          "durationSec": 1682,
+          "region": "NA",
+          "uploaded": "2025-04-15",
+          "moments": []
+        }
+      ]
+    }
+  ]
+}

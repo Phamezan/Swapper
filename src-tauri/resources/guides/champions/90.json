@@ -1,0 +1,3047 @@
+{
+  "schema": 1,
+  "champion": 90,
+  "generatedAt": "2026-11-07T13:25:14.592Z",
+  "guides": [
+    {
+      "champion": 90,
+      "enemy": 84,
+      "lane": "mid",
+      "patch": "26.21",
+      "reviewed": false,
+      "difficulty": "Skill matchup",
+      "favoredWhen": "Even. She dodges with E and waits in shroud. Shield the E, punish the drop.",
+      "keyTips": [
+        {
+          "text": "Even skill lane: the E-dodge war decides it.",
+          "scope": "pair",
+          "sourceIds": [
+            "anguish"
+          ]
+        },
+        {
+          "text": "Silence her E1 mark: no mark means no follow-up.",
+          "scope": "pair",
+          "sourceIds": [
+            "anguish"
+          ],
+          "abilityKeys": [
+            {
+              "champion": 90,
+              "key": "Q"
+            },
+            {
+              "champion": 84,
+              "key": "E"
+            }
+          ]
+        },
+        {
+          "text": "Keep your spell shield for her engage: the passive eats the opener.",
+          "scope": "pair",
+          "sourceIds": [
+            "anguish"
+          ]
+        }
+      ],
+      "enemyTips": {},
+      "sections": {
+        "overview": {
+          "tips": []
+        },
+        "early-lane": {
+          "tips": [
+            {
+              "text": "She E-dodges: hold Q until her dash is spent.",
+              "scope": "pair",
+              "sourceIds": [
+                "anguish"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 90,
+                  "key": "Q"
+                },
+                {
+                  "champion": 84,
+                  "key": "E"
+                }
+              ]
+            },
+            {
+              "text": "Dodge her Q2: the second blast is the damage.",
+              "scope": "pair",
+              "sourceIds": [
+                "anguish"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 84,
+                  "key": "Q"
+                }
+              ]
+            }
+          ]
+        },
+        "mid-lane": {
+          "tips": [
+            {
+              "text": "Never R a shrouded Akali: hold ult for the visible.",
+              "scope": "pair",
+              "sourceIds": [
+                "anguish"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 90,
+                  "key": "R"
+                },
+                {
+                  "champion": 84,
+                  "key": "W"
+                }
+              ]
+            },
+            {
+              "text": "After 6 R the drop: shroud-down is ult-now.",
+              "scope": "pair",
+              "sourceIds": [
+                "anguish"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 90,
+                  "key": "R"
+                }
+              ]
+            }
+          ]
+        },
+        "win-condition": {
+          "tips": [
+            {
+              "text": "Shield tracked plus ult held: the Akali who never touches you never wins.",
+              "scope": "pair",
+              "sourceIds": [
+                "anguish"
+              ]
+            }
+          ]
+        }
+      },
+      "itemization": [],
+      "sources": [
+        {
+          "id": "anguish",
+          "author": "Anguish333",
+          "rankClaim": "Master (profile badge; title claims 2000LP GrandMaster EUW and Challenger EUNE) · Akali main",
+          "rank": "master",
+          "url": "https://www.mobafire.com/league-of-legends/build/26-20-anguish-2000lp-grandmasters-euw-challenger-eune-akali-mid-top-s16-guide-every-matchup-item-rune-explained-625064",
+          "kind": "mobafire"
+        }
+      ]
+    },
+    {
+      "champion": 90,
+      "enemy": 103,
+      "lane": "mid",
+      "patch": "26.21",
+      "reviewed": false,
+      "difficulty": "Hard",
+      "favoredWhen": "She bullies early and holds Charm for your shield and R. Survive, hide, and scale with jungle.",
+      "keyTips": [
+        {
+          "text": "She has strong early kill pressure and matches your push: concede the early.",
+          "scope": "pair",
+          "sourceIds": [
+            "xblademojo"
+          ]
+        },
+        {
+          "text": "Track her Charm and stand behind minions: the wave blocks it.",
+          "scope": "pair",
+          "sourceIds": [
+            "xblademojo"
+          ],
+          "abilityKeys": [
+            {
+              "champion": 103,
+              "key": "E"
+            }
+          ]
+        },
+        {
+          "text": "Keep your spell shield for her Charm timing: no shield means no walk-up.",
+          "scope": "pair",
+          "sourceIds": [
+            "peng04"
+          ],
+          "abilityKeys": [
+            {
+              "champion": 103,
+              "key": "E"
+            }
+          ]
+        }
+      ],
+      "enemyTips": {},
+      "sections": {
+        "overview": {
+          "tips": []
+        },
+        "early-lane": {
+          "tips": [
+            {
+              "text": "You are among the weakest early: almost no trading tools, so farm, do not fight.",
+              "scope": "pair",
+              "sourceIds": [
+                "shok-ahri"
+              ]
+            },
+            {
+              "text": "Protect your voidlings: she kills them on spawn to manage the wave.",
+              "scope": "pair",
+              "sourceIds": [
+                "shok-ahri"
+              ]
+            }
+          ]
+        },
+        "mid-lane": {
+          "tips": [
+            {
+              "text": "After 6 she plays with her jungler: ward and never step without cover.",
+              "scope": "pair",
+              "sourceIds": [
+                "shok-ahri"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 103,
+                  "key": "R"
+                }
+              ]
+            },
+            {
+              "text": "Cast R only when her Charm is down: she times Charm on your cast.",
+              "scope": "pair",
+              "sourceIds": [
+                "peng04"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 90,
+                  "key": "R"
+                },
+                {
+                  "champion": 103,
+                  "key": "E"
+                }
+              ]
+            }
+          ]
+        },
+        "win-condition": {
+          "tips": [
+            {
+              "text": "Early respected plus shield tracked: the Ahri who never catches you never wins.",
+              "scope": "pair",
+              "sourceIds": [
+                "xblademojo",
+                "peng04"
+              ]
+            }
+          ]
+        }
+      },
+      "itemization": [],
+      "sources": [
+        {
+          "id": "xblademojo",
+          "author": "xblademojo",
+          "rankClaim": "Rank 1 (title); Challenger (profile badge) · Malzahar main",
+          "rank": "challenger",
+          "url": "https://www.mobafire.com/league-of-legends/build/s16-rank-1-malzahar-complete-guide-by-coach-xblademojo-608062",
+          "kind": "mobafire"
+        },
+        {
+          "id": "peng04",
+          "author": "Peng04",
+          "rankClaim": "Challenger · Ahri main",
+          "rank": "challenger",
+          "url": "https://www.mobafire.com/league-of-legends/build/26-20-pengs-ahri-guide-5-1mil-points-13x-challenger-648700",
+          "kind": "mobafire"
+        },
+        {
+          "id": "shok-ahri",
+          "author": "ShokLoL",
+          "rankClaim": "Rank 1 Challenger · Ahri main",
+          "rank": "challenger",
+          "url": "https://www.mobafire.com/league-of-legends/build/26-5-shoks-rank-1-challenger-ahri-guide-635065",
+          "kind": "mobafire"
+        }
+      ]
+    },
+    {
+      "champion": 90,
+      "enemy": 134,
+      "lane": "mid",
+      "patch": "26.21",
+      "reviewed": false,
+      "difficulty": "Hard",
+      "favoredWhen": "She bullies all game and kills your voidlings. Ward after 6 and survive the poke.",
+      "keyTips": [
+        {
+          "text": "She bullies you all game: accept the pressure lane.",
+          "scope": "pair",
+          "sourceIds": [
+            "shok"
+          ]
+        },
+        {
+          "text": "Her Q kills your voidlings so you cannot push: protect the wave.",
+          "scope": "pair",
+          "sourceIds": [
+            "shok"
+          ],
+          "abilityKeys": [
+            {
+              "champion": 134,
+              "key": "Q"
+            }
+          ]
+        },
+        {
+          "text": "Your R needs setup: gank with jungle, never alone.",
+          "scope": "pair",
+          "sourceIds": [
+            "shok"
+          ],
+          "abilityKeys": [
+            {
+              "champion": 90,
+              "key": "R"
+            }
+          ]
+        }
+      ],
+      "enemyTips": {},
+      "sections": {
+        "overview": {
+          "tips": []
+        },
+        "early-lane": {
+          "tips": [
+            {
+              "text": "Farm under tower: her Q breaks your push.",
+              "scope": "pair",
+              "sourceIds": [
+                "shok"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 134,
+                  "key": "Q"
+                }
+              ]
+            },
+            {
+              "text": "Trade nothing early: her range wins every exchange.",
+              "scope": "pair",
+              "sourceIds": [
+                "shok"
+              ]
+            }
+          ]
+        },
+        "mid-lane": {
+          "tips": [
+            {
+              "text": "Track her Q cooldown: voidlings live when Q is down.",
+              "scope": "pair",
+              "sourceIds": [
+                "shok"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 134,
+                  "key": "Q"
+                }
+              ]
+            },
+            {
+              "text": "After 6, R with jungle cover: solo Rs die to her team.",
+              "scope": "pair",
+              "sourceIds": [
+                "shok"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 90,
+                  "key": "R"
+                }
+              ]
+            }
+          ]
+        },
+        "win-condition": {
+          "tips": [
+            {
+              "text": "Pushed in but alive: the Syndra who never dove you never wins.",
+              "scope": "pair",
+              "sourceIds": [
+                "shok"
+              ]
+            }
+          ]
+        }
+      },
+      "itemization": [],
+      "sources": [
+        {
+          "id": "shok",
+          "author": "ShokLoL",
+          "rankClaim": "Rank 1 Challenger · Syndra main",
+          "rank": "challenger",
+          "url": "https://www.mobafire.com/league-of-legends/build/26-17-shoks-rank-1-challenger-syndra-guide-602710",
+          "kind": "mobafire"
+        }
+      ]
+    },
+    {
+      "champion": 90,
+      "enemy": 238,
+      "lane": "mid",
+      "patch": "26.21",
+      "reviewed": false,
+      "difficulty": "Hard",
+      "favoredWhen": "He outranges and wins the lane. Survive on shield discipline, and play with your team.",
+      "keyTips": [
+        {
+          "text": "He outranges you and wins the lane: play for survival and jungle.",
+          "scope": "pair",
+          "sourceIds": [
+            "aikopanda"
+          ]
+        },
+        {
+          "text": "His team plays around his R: track the jungler before 6.",
+          "scope": "pair",
+          "sourceIds": [
+            "aikopanda"
+          ],
+          "abilityKeys": [
+            {
+              "champion": 238,
+              "key": "R"
+            }
+          ]
+        },
+        {
+          "text": "Keep your shield up through his Q: poke Qs strip it before the combo.",
+          "scope": "pair",
+          "sourceIds": [
+            "v222"
+          ]
+        }
+      ],
+      "enemyTips": {
+        "early-lane": [
+          {
+            "text": "Zed often places Living Shadow before Death Mark so he can swap away from skillshots. Hold your crowd control until he has used the swap.",
+            "scope": "enemy",
+            "sourceIds": [
+              "aikopanda"
+            ],
+            "patch": "26.21",
+            "abilityKeys": [
+              {
+                "champion": 238,
+                "key": "W"
+              },
+              {
+                "champion": 238,
+                "key": "R"
+              }
+            ]
+          }
+        ],
+        "win-condition": [
+          {
+            "text": "Death Mark always lands Zed behind his target. Pre-aim crowd control and escapes behind you, not toward where he cast it.",
+            "scope": "enemy",
+            "sourceIds": [
+              "peng04"
+            ],
+            "patch": "26.21",
+            "abilityKeys": [
+              {
+                "champion": 238,
+                "key": "R"
+              }
+            ]
+          }
+        ]
+      },
+      "sections": {
+        "overview": {
+          "tips": []
+        },
+        "early-lane": {
+          "tips": [
+            {
+              "text": "He combos when you E the wave: spend E carefully.",
+              "scope": "pair",
+              "sourceIds": [
+                "v222"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 90,
+                  "key": "E"
+                }
+              ]
+            },
+            {
+              "text": "Farm from max range: his Q out-trades yours.",
+              "scope": "pair",
+              "sourceIds": [
+                "aikopanda"
+              ]
+            }
+          ]
+        },
+        "mid-lane": {
+          "tips": [
+            {
+              "text": "Ward and play with your team: his R decides fights, not lane.",
+              "scope": "pair",
+              "sourceIds": [
+                "aikopanda"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 238,
+                  "key": "R"
+                }
+              ]
+            },
+            {
+              "text": "Punish spent shadows: W-down is your only window.",
+              "scope": "pair",
+              "sourceIds": [
+                "aikopanda"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 238,
+                  "key": "W"
+                }
+              ]
+            },
+            {
+              "text": "Death Mark lands him behind you: face the exit when he ults.",
+              "scope": "pair",
+              "sourceIds": [
+                "peng04"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 238,
+                  "key": "R"
+                }
+              ]
+            }
+          ]
+        },
+        "win-condition": {
+          "tips": [
+            {
+              "text": "Survived plus warded: the Zed who never snowballed never kills you.",
+              "scope": "pair",
+              "sourceIds": [
+                "aikopanda",
+                "v222"
+              ]
+            }
+          ]
+        }
+      },
+      "itemization": [],
+      "sources": [
+        {
+          "id": "aikopanda",
+          "author": "AikoPanda",
+          "rankClaim": "Zed main",
+          "url": "https://www.mobafire.com/league-of-legends/build/26-20-video-guides-hidden-combos-all-matchups-zed-all-in-one-guide-652800",
+          "kind": "mobafire"
+        },
+        {
+          "id": "v222",
+          "author": "V222",
+          "rankClaim": "Challenger EUW · Zed main",
+          "rank": "challenger",
+          "url": "https://www.mobafire.com/league-of-legends/build/all-matchups-26-14-zed-guide-2000lp-euw-challenger-652354",
+          "kind": "mobafire"
+        },
+        {
+          "id": "peng04",
+          "author": "Peng04",
+          "rankClaim": "Challenger · Ahri main",
+          "rank": "challenger",
+          "url": "https://www.mobafire.com/league-of-legends/build/26-20-pengs-ahri-guide-5-1mil-points-13x-challenger-648700",
+          "kind": "mobafire"
+        }
+      ]
+    }
+  ],
+  "general": [
+    {
+      "champion": 90,
+      "lane": "mid",
+      "patch": "26.21",
+      "reviewed": false,
+      "keyTips": [
+        {
+          "text": "Play the first levels cautiously, fighting only on clear edges while guarding health behind the passive shield.",
+          "scope": "champion",
+          "sourceIds": [
+            "mobalytics-malzahar"
+          ]
+        },
+        {
+          "text": "At level 6, bring the jungler to convert Nether Grasp into a kill, and roam with R ready.",
+          "scope": "champion",
+          "sourceIds": [
+            "mobalytics-malzahar"
+          ],
+          "abilityKeys": [
+            {
+              "champion": 90,
+              "key": "R"
+            }
+          ]
+        },
+        {
+          "text": "Refuse late commits without R available, since its suppression carries his teamfight control.",
+          "scope": "champion",
+          "sourceIds": [
+            "mobalytics-malzahar"
+          ],
+          "abilityKeys": [
+            {
+              "champion": 90,
+              "key": "R"
+            }
+          ]
+        }
+      ],
+      "sections": {
+        "overview": {
+          "tips": []
+        },
+        "early-lane": {
+          "tips": [
+            {
+              "text": "Take longer trades once a few levels bank instead of only short poke.",
+              "scope": "champion",
+              "sourceIds": [
+                "mobalytics-malzahar"
+              ]
+            },
+            {
+              "text": "Respect every all-in threat while the passive shield sits down early on its long cooldown.",
+              "scope": "champion",
+              "sourceIds": [
+                "mobalytics-malzahar"
+              ]
+            },
+            {
+              "text": "Without a likely lane kill, clear the wave and carry the ultimate to a play elsewhere.",
+              "scope": "champion",
+              "sourceIds": [
+                "mobalytics-malzahar"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 90,
+                  "key": "R"
+                }
+              ]
+            }
+          ]
+        },
+        "mid-lane": {
+          "tips": [
+            {
+              "text": "Farm a side lane for gold and experience whenever no fight brews.",
+              "scope": "champion",
+              "sourceIds": [
+                "mobalytics-malzahar"
+              ]
+            },
+            {
+              "text": "Swap to the open side once bot rotates mid to keep earning without contest.",
+              "scope": "champion",
+              "sourceIds": [
+                "mobalytics-malzahar"
+              ]
+            },
+            {
+              "text": "Track the minimap, objectives, and enemy jungler under mid pressure, forcing the opposing mid to answer instead of roaming free.",
+              "scope": "champion",
+              "sourceIds": [
+                "mobalytics-malzahar"
+              ]
+            },
+            {
+              "text": "With R up, hunt isolated or overextended targets; each pick opens Baron or a nearby tower.",
+              "scope": "champion",
+              "sourceIds": [
+                "mobalytics-malzahar"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 90,
+                  "key": "R"
+                }
+              ]
+            },
+            {
+              "text": "Against late or unsafe enemy-mid arrivals, shove for plates and ping the missing opponent to both sides.",
+              "scope": "champion",
+              "sourceIds": [
+                "mobalytics-malzahar"
+              ]
+            }
+          ]
+        },
+        "win-condition": {
+          "tips": [
+            {
+              "text": "Drop R on a lone overstepper, adding Flash plus R to catch exposed targets the team follows.",
+              "scope": "champion",
+              "sourceIds": [
+                "mobalytics-malzahar"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 90,
+                  "key": "R"
+                }
+              ]
+            },
+            {
+              "text": "Into enemy engages, suppress the closest threat off the backline, or lock the highest-priority target instead.",
+              "scope": "champion",
+              "sourceIds": [
+                "mobalytics-malzahar"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 90,
+                  "key": "R"
+                }
+              ]
+            },
+            {
+              "text": "Peel carries so their damage never stops; losing them early ends winning chances.",
+              "scope": "champion",
+              "sourceIds": [
+                "mobalytics-malzahar"
+              ]
+            },
+            {
+              "text": "Value picks and wave-clear over solo-kill chasing, turning each pick into an objective or tower.",
+              "scope": "champion",
+              "sourceIds": [
+                "mobalytics-malzahar"
+              ]
+            }
+          ]
+        }
+      },
+      "itemization": [
+        {
+          "text": "Run Flash and Teleport with Deathfire Touch, Manaflow Band, Transcendence, and Scorch plus Magical Footwear and Cosmic Insight.",
+          "scope": "champion",
+          "sourceIds": [
+            "mobalytics-malzahar-build"
+          ]
+        },
+        {
+          "text": "Order Blackfire Torch first and Sorcerer's Shoes second, then Liandry's, Rylai's, Zhonya's, and Rabadon's in the popular build.",
+          "scope": "champion",
+          "sourceIds": [
+            "mobalytics-malzahar-build"
+          ],
+          "itemIds": [
+            2503,
+            3020
+          ]
+        },
+        {
+          "text": "Slot Shadowflame fourth against healing- and shield-reliant teams.",
+          "scope": "champion",
+          "sourceIds": [
+            "mobalytics-malzahar-build"
+          ],
+          "itemIds": [
+            4645
+          ]
+        },
+        {
+          "text": "Level E, W, Q first while prioritizing E, Q, and W after; ride the first-component spell frequency plus later cores and R ranks into stronger picks and teamfights.",
+          "scope": "champion",
+          "sourceIds": [
+            "mobalytics-malzahar-build"
+          ],
+          "abilityKeys": [
+            {
+              "champion": 90,
+              "key": "E"
+            },
+            {
+              "champion": 90,
+              "key": "W"
+            },
+            {
+              "champion": 90,
+              "key": "Q"
+            },
+            {
+              "champion": 90,
+              "key": "R"
+            }
+          ]
+        },
+        {
+          "text": "Bend the defensive rune shard between armor and magic resistance by lane opponent.",
+          "scope": "champion",
+          "sourceIds": [
+            "mobalytics-malzahar-build"
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "id": "mobalytics-malzahar",
+          "author": "Mobalytics",
+          "rankClaim": "No rank claim",
+          "url": "https://mobalytics.gg/lol/champions/malzahar/guide",
+          "kind": "web"
+        },
+        {
+          "id": "mobalytics-malzahar-build",
+          "author": "Mobalytics",
+          "rankClaim": "No rank claim",
+          "url": "https://mobalytics.gg/lol/champions/malzahar/build",
+          "kind": "web"
+        }
+      ]
+    }
+  ],
+  "vods": [
+    {
+      "enemy": 3,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "AdvPBJAE5uI",
+          "title": "Malzahar Mid vs Galio - KR Master Patch 25.17",
+          "rankClaim": "Master",
+          "patch": "25.17",
+          "durationSec": 1946,
+          "region": "KR",
+          "uploaded": "2025-09-06",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 4,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "J-_8_M3HKQI",
+          "title": "Malzahar Mid vs Twisted Fate - KR Master Patch 26.15",
+          "rankClaim": "Master",
+          "patch": "26.15",
+          "durationSec": 1765,
+          "region": "KR",
+          "uploaded": "2026-08-07",
+          "moments": []
+        },
+        {
+          "videoId": "Qm84Amybj1U",
+          "title": "Malzahar vs Twisted Fate [ MID ] Lol Korea Master Patch 25.22 ✅",
+          "rankClaim": "Master",
+          "patch": "25.22",
+          "durationSec": 1843,
+          "region": "KR",
+          "uploaded": "2025-11-17",
+          "moments": []
+        },
+        {
+          "videoId": "gSMXCYACCRs",
+          "title": "Malzahar Mid vs Twisted Fate - KR Master Patch 25.10",
+          "rankClaim": "Master",
+          "patch": "25.10",
+          "durationSec": 1591,
+          "region": "KR",
+          "uploaded": "2025-05-20",
+          "moments": []
+        },
+        {
+          "videoId": "MwDQbqvR4IA",
+          "title": "Malzahar Mid vs Twisted Fate - KR Master Patch 25.08",
+          "rankClaim": "Master",
+          "patch": "25.8",
+          "durationSec": 1773,
+          "region": "KR",
+          "uploaded": "2025-04-24",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 7,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "a6leb7HpoY4",
+          "title": "Malzahar Mid vs LeBlanc - NA Master Patch 26.19",
+          "rankClaim": "Master",
+          "patch": "26.19",
+          "durationSec": 1444,
+          "region": "NA",
+          "uploaded": "2026-09-27",
+          "moments": []
+        },
+        {
+          "videoId": "fRHoPXA8nLA",
+          "title": "Malzahar Mid vs LeBlanc - EUW Challenger Patch 26.07",
+          "rankClaim": "Challenger",
+          "patch": "26.7",
+          "durationSec": 1780,
+          "region": "EUW",
+          "uploaded": "2026-04-08",
+          "moments": []
+        },
+        {
+          "videoId": "xmqExAb-iJI",
+          "title": "Malzahar Mid vs LeBlanc - KR Grandmaster Patch 25.06",
+          "rankClaim": "Grandmaster",
+          "patch": "25.6",
+          "durationSec": 1724,
+          "region": "KR",
+          "uploaded": "2025-03-28",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 8,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "Q_L_XHFZxQk",
+          "title": "Malzahar Mid vs Vladimir - KR Master Patch 25.16",
+          "rankClaim": "Master",
+          "patch": "25.16",
+          "durationSec": 2079,
+          "region": "KR",
+          "uploaded": "2025-08-20",
+          "moments": []
+        },
+        {
+          "videoId": "l7mo9MDNnzI",
+          "title": "Malzahar Mid vs Vladimir - KR Master Patch 25.04",
+          "rankClaim": "Master",
+          "patch": "25.4",
+          "durationSec": 1630,
+          "region": "KR",
+          "uploaded": "2025-03-06",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 8,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "FrXIL9hQiCM",
+          "title": "Malzahar Top vs Vladimir - KR Master Patch 25.22",
+          "rankClaim": "Master",
+          "patch": "25.22",
+          "durationSec": 1848,
+          "region": "KR",
+          "uploaded": "2025-11-19",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 13,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "xIL0CAk5RUk",
+          "title": "Malzahar Mid vs Ryze - KR Challenger Patch 26.17",
+          "rankClaim": "Challenger",
+          "patch": "26.17",
+          "durationSec": 1744,
+          "region": "KR",
+          "uploaded": "2026-09-11",
+          "moments": []
+        },
+        {
+          "videoId": "MFQZb_zz7sc",
+          "title": "Malzahar Mid vs Ryze - KR Challenger Patch 26.09",
+          "rankClaim": "Challenger",
+          "patch": "26.9",
+          "durationSec": 1622,
+          "region": "KR",
+          "uploaded": "2026-05-15",
+          "moments": []
+        },
+        {
+          "videoId": "0Og6YgYJqhE",
+          "title": "Malzahar Mid vs Ryze - KR Master Patch 26.08",
+          "rankClaim": "Master",
+          "patch": "26.8",
+          "durationSec": 1809,
+          "region": "KR",
+          "uploaded": "2026-04-22",
+          "moments": []
+        },
+        {
+          "videoId": "H_0vQKx9Ey0",
+          "title": "Malzahar Mid vs Ryze - NA Grandmaster Patch 25.15",
+          "rankClaim": "Grandmaster",
+          "patch": "25.15",
+          "durationSec": 2024,
+          "region": "NA",
+          "uploaded": "2025-08-15",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 14,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "okwHeb_MVI0",
+          "title": "Malzahar Mid vs Sion - KR Master Patch 26.16",
+          "rankClaim": "Master",
+          "patch": "26.16",
+          "durationSec": 1821,
+          "region": "KR",
+          "uploaded": "2026-08-26",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 18,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "KzAqAy4gaT0",
+          "title": "Malzahar Mid vs Tristana (SPXF Lelouch) - EUW Challenger Patch 26.13",
+          "rankClaim": "Challenger",
+          "patch": "26.13",
+          "durationSec": 1765,
+          "region": "EUW",
+          "uploaded": "2026-07-03",
+          "moments": []
+        },
+        {
+          "videoId": "ONizVGhSAUY",
+          "title": "Malzahar Mid vs Tristana - EUW Challenger Patch 26.02",
+          "rankClaim": "Challenger",
+          "patch": "26.2",
+          "durationSec": 1486,
+          "region": "EUW",
+          "uploaded": "2026-02-05",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 303,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 459,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 654,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 714,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 872,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 976,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1003,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1027,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1094,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1214,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1297,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1356,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1369,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1383,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1455,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1475,
+              "label": "End credit"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 19,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "2tWBZA634yg",
+          "title": "Malzahar Top vs Warwick - KR Master Patch 25.12",
+          "rankClaim": "Master",
+          "patch": "25.12",
+          "durationSec": 1796,
+          "region": "KR",
+          "uploaded": "2025-06-23",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 31,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "CH8ZsdRktLk",
+          "title": "Malzahar Mid vs Cho'Gath - KR Master Patch 26.01",
+          "rankClaim": "Master",
+          "patch": "26.1",
+          "durationSec": 1616,
+          "region": "KR",
+          "uploaded": "2026-01-16",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 38,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "VeDVT9AzrOo",
+          "title": "Malzahar vs Kassadin [ MID ] Lol Korea Master Patch 25.20 ✅",
+          "rankClaim": "Master",
+          "patch": "25.20",
+          "durationSec": 1793,
+          "region": "KR",
+          "uploaded": "2025-10-14",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 39,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "WE4C4Y8Vx34",
+          "title": "Malzahar Top vs Irelia - KR Master Patch 26.07",
+          "rankClaim": "Master",
+          "patch": "26.7",
+          "durationSec": 1685,
+          "region": "KR",
+          "uploaded": "2026-04-13",
+          "moments": []
+        },
+        {
+          "videoId": "wT05AoULmqg",
+          "title": "Malzahar Top vs Irelia - KR Master Patch 25.08",
+          "rankClaim": "Master",
+          "patch": "25.8",
+          "durationSec": 2005,
+          "region": "KR",
+          "uploaded": "2025-04-28",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 43,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "yGs6gg3MBoc",
+          "title": "Malzahar Top vs Karma - KR Master Patch 25.11",
+          "rankClaim": "Master",
+          "patch": "25.11",
+          "durationSec": 1801,
+          "region": "KR",
+          "uploaded": "2025-06-12",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 54,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "u7tvCPIHQZk",
+          "title": "Malzahar Top vs Malphite - KR Master Patch 26.11",
+          "rankClaim": "Master",
+          "patch": "26.11",
+          "durationSec": 1725,
+          "region": "KR",
+          "uploaded": "2026-06-12",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 55,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "0ZpD_oFa_tA",
+          "title": "(IJC Dajor) Malzahar Mid vs Katarina - EUW Challenger Patch 26.10",
+          "rankClaim": "Challenger",
+          "patch": "26.10",
+          "durationSec": 1778,
+          "region": "EUW",
+          "player": "IJC Dajor",
+          "uploaded": "2026-05-27",
+          "result": "L",
+          "moments": [
+            {
+              "atSec": 380,
+              "label": "First Blood — Malzahar kills Lee Sin",
+              "kind": "kill"
+            },
+            {
+              "atSec": 514,
+              "label": "Malzahar outduels Pyke"
+            },
+            {
+              "atSec": 656,
+              "label": "Malzahar outplays K'Sante"
+            },
+            {
+              "atSec": 668,
+              "label": "Malzahar outplays Pyke again"
+            },
+            {
+              "atSec": 879,
+              "label": "Blue takes 1st Dragon (Cloud)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 992,
+              "label": "Sylas kills Pyke",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1138,
+              "label": "Sylas kills K'Sante",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1178,
+              "label": "Red takes Baron",
+              "kind": "baron"
+            },
+            {
+              "atSec": 1224,
+              "label": "Red takes 1st Dragon (Infernal)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1234,
+              "label": "Lucian Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1266,
+              "label": "Mid Inhibitor falls (Blue)"
+            },
+            {
+              "atSec": 1343,
+              "label": "Sylas kills Pyke",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1372,
+              "label": "Zed takes down Katarina"
+            },
+            {
+              "atSec": 1553,
+              "label": "Lucian picks off Pyke"
+            },
+            {
+              "atSec": 1584,
+              "label": "Blue takes 2nd Dragon (Ocean)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1665,
+              "label": "Malzahar catches Caitlyn"
+            },
+            {
+              "atSec": 1677,
+              "label": "Red takes 2nd Baron",
+              "kind": "baron"
+            },
+            {
+              "atSec": 1738,
+              "label": "Mid Inhibitor falls (Blue)"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 61,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "t2Eip8GlDow",
+          "title": "Malzahar Mid vs Orianna - KR Grandmaster Patch 25.22",
+          "rankClaim": "Grandmaster",
+          "patch": "25.22",
+          "durationSec": 1681,
+          "region": "KR",
+          "uploaded": "2025-11-14",
+          "moments": []
+        },
+        {
+          "videoId": "WPcZLTEPVlk",
+          "title": "Malzahar Mid vs Orianna - KR Master Patch 25.05",
+          "rankClaim": "Master",
+          "patch": "25.5",
+          "durationSec": 2131,
+          "region": "KR",
+          "uploaded": "2025-03-14",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 388,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 534,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 598,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 633,
+              "label": "Hunt The Void Grubs",
+              "kind": "grubs"
+            },
+            {
+              "atSec": 737,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 867,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 974,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1064,
+              "label": "Hunt The Rift Herald",
+              "kind": "herald"
+            },
+            {
+              "atSec": 1196,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1466,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1489,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1519,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1778,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1894,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 2035,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 2082,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 2110,
+              "label": "End credit"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 64,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "U_GAKoniPsw",
+          "title": "Malzahar Mid vs Lee Sin - KR Grandmaster Patch 25.21",
+          "rankClaim": "Grandmaster",
+          "patch": "25.21",
+          "durationSec": 1508,
+          "region": "KR",
+          "uploaded": "2025-10-31",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 69,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "hYdzDT5Pm04",
+          "title": "Malzahar Mid vs Cassiopeia - KR Challenger Patch 26.17",
+          "rankClaim": "Challenger",
+          "patch": "26.17",
+          "durationSec": 1623,
+          "region": "KR",
+          "uploaded": "2026-09-02",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 75,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "cTKPvNJIK6U",
+          "title": "Malzahar Mid vs Nasus - KR Master Patch 26.18",
+          "rankClaim": "Master",
+          "patch": "26.18",
+          "durationSec": 1646,
+          "region": "KR",
+          "uploaded": "2026-09-17",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 77,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "FLSQpGEwCXo",
+          "title": "Malzahar Top vs Udyr - KR Master Patch 25.07",
+          "rankClaim": "Master",
+          "patch": "25.7",
+          "durationSec": 2028,
+          "region": "KR",
+          "uploaded": "2025-04-13",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 225,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 593,
+              "label": "Hunt The Void Grubs",
+              "kind": "grubs"
+            },
+            {
+              "atSec": 650,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 962,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1062,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1271,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1298,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1317,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1335,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1360,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1450,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1617,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1701,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1817,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1948,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1966,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1993,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 2007,
+              "label": "End credit"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 78,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "5JDM2s35ecw",
+          "title": "Malzahar Top vs Poppy - KR Master Patch 25.24",
+          "rankClaim": "Master",
+          "patch": "25.24",
+          "durationSec": 1541,
+          "region": "KR",
+          "uploaded": "2025-12-30",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 80,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "ALrvig_OQAU",
+          "title": "Malzahar Top vs Pantheon - EUW Grandmaster Patch 25.19",
+          "rankClaim": "Grandmaster",
+          "patch": "25.19",
+          "durationSec": 1744,
+          "region": "EUW",
+          "uploaded": "2025-10-07",
+          "moments": []
+        },
+        {
+          "videoId": "DoHemJj5bRk",
+          "title": "Malzahar Top vs Pantheon - KR Master Patch 25.13",
+          "rankClaim": "Master",
+          "patch": "25.13",
+          "durationSec": 1692,
+          "region": "KR",
+          "uploaded": "2025-07-15",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 84,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "ET_K8eH5-6A",
+          "title": "Malzahar Mid vs Akali - BR Grandmaster Patch 26.20",
+          "rankClaim": "Grandmaster",
+          "patch": "26.20",
+          "durationSec": 1693,
+          "uploaded": "2026-10-11",
+          "result": "W",
+          "moments": [
+            {
+              "atSec": 428,
+              "label": "First Blood — Malzahar kills Kai'Sa",
+              "kind": "kill"
+            },
+            {
+              "atSec": 489,
+              "label": "Red takes 1st Dragon (Ocean)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 892,
+              "label": "Red takes 2nd Dragon (Mountain)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1198,
+              "label": "Malphite eliminates Irelia"
+            },
+            {
+              "atSec": 1207,
+              "label": "Blue takes Baron",
+              "kind": "baron"
+            },
+            {
+              "atSec": 1238,
+              "label": "Red takes 3rd Dragon (Hextech)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1331,
+              "label": "Malzahar Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1465,
+              "label": "Karma eliminates Irelia"
+            },
+            {
+              "atSec": 1468,
+              "label": "Bot Inhibitor falls (Red)"
+            },
+            {
+              "atSec": 1501,
+              "label": "Malzahar Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1564,
+              "label": "Ezreal Triple Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1568,
+              "label": "Ezreal Quadra Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1603,
+              "label": "Red takes Baron",
+              "kind": "baron"
+            },
+            {
+              "atSec": 1662,
+              "label": "Mid Inhibitor falls (Blue)"
+            },
+            {
+              "atSec": 1671,
+              "label": "Ezreal Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1674,
+              "label": "Top Inhibitor falls (Red)"
+            }
+          ]
+        },
+        {
+          "videoId": "n3Kt2L2gKe8",
+          "title": "Malzahar Mid vs Akali - EUW Challenger Patch 26.04",
+          "rankClaim": "Challenger",
+          "patch": "26.4",
+          "durationSec": 1591,
+          "region": "EUW",
+          "uploaded": "2026-02-26",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 647,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 752,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 796,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 866,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1064,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1096,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1270,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1347,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1369,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1379,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1398,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1489,
+              "label": "Hunt The Dragon",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1524,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1580,
+              "label": "End credit"
+            }
+          ]
+        },
+        {
+          "videoId": "9Cg1gbt_QsY",
+          "title": "Malzahar vs Akali [ MID ] Lol Korea Master Patch 25.24 ✅",
+          "rankClaim": "Master",
+          "patch": "25.24",
+          "durationSec": 1537,
+          "region": "KR",
+          "uploaded": "2025-12-15",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 92,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "PzAJ_5YWnV8",
+          "title": "Malzahar Top vs Riven - KR Master Patch 25.06",
+          "rankClaim": "Master",
+          "patch": "25.6",
+          "durationSec": 1663,
+          "region": "KR",
+          "uploaded": "2025-03-31",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 101,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "crvtWA3-daM",
+          "title": "Malzahar Mid vs Xerath - KR Master Patch 25.18",
+          "rankClaim": "Master",
+          "patch": "25.18",
+          "durationSec": 1898,
+          "region": "KR",
+          "uploaded": "2025-09-17",
+          "moments": []
+        },
+        {
+          "videoId": "H950wQLWuAA",
+          "title": "Malzahar Mid vs Xerath - KR Master Patch 25.13",
+          "rankClaim": "Master",
+          "patch": "25.13",
+          "durationSec": 1853,
+          "region": "KR",
+          "uploaded": "2025-07-03",
+          "moments": []
+        },
+        {
+          "videoId": "iFnY-JZiMrw",
+          "title": "Malzahar Mid vs Xerath - KR Master Patch 25.07",
+          "rankClaim": "Master",
+          "patch": "25.7",
+          "durationSec": 1807,
+          "region": "KR",
+          "uploaded": "2025-04-09",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 165,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 328,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 458,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 781,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1047,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1118,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1215,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1252,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1335,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1367,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1523,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1552,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1569,
+              "label": "Hunt The Baron Nashor",
+              "kind": "baron"
+            },
+            {
+              "atSec": 1636,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1661,
+              "label": "Take down The Inhibitor"
+            },
+            {
+              "atSec": 1758,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1786,
+              "label": "End credit"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 103,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "bhrpitBMWpQ",
+          "title": "Malzahar Mid vs Ahri - NA Grandmaster Patch 25.14",
+          "rankClaim": "Grandmaster",
+          "patch": "25.14",
+          "durationSec": 1648,
+          "region": "NA",
+          "uploaded": "2025-08-01",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 112,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "Ejh9e8acEYs",
+          "title": "Malzahar Mid vs Viktor - KR Grandmaster Patch 25.04",
+          "rankClaim": "Grandmaster",
+          "patch": "25.4",
+          "durationSec": 1668,
+          "region": "KR",
+          "uploaded": "2025-03-02",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 112,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "yQO16XV4w4Q",
+          "title": "Malzahar Top vs Viktor - KR Master Patch 26.10",
+          "rankClaim": "Master",
+          "patch": "26.10",
+          "durationSec": 1449,
+          "region": "KR",
+          "uploaded": "2026-05-18",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 126,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "I07U_Qy4Pyw",
+          "title": "Malzahar Mid vs Jayce - EUW Challenger Patch 25.23",
+          "rankClaim": "Challenger",
+          "patch": "25.23",
+          "durationSec": 1745,
+          "region": "EUW",
+          "uploaded": "2025-12-05",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 131,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "BF0R8sDxyd8",
+          "title": "Malzahar Mid vs Diana - VN Master Patch 26.21",
+          "rankClaim": "Master",
+          "patch": "26.21",
+          "durationSec": 1438,
+          "uploaded": "2026-10-26",
+          "result": "W",
+          "moments": [
+            {
+              "atSec": 137,
+              "label": "Malzahar takes down Diana"
+            },
+            {
+              "atSec": 295,
+              "label": "Malzahar catches Diana again"
+            },
+            {
+              "atSec": 553,
+              "label": "Skarner takes down Cho'Gath"
+            },
+            {
+              "atSec": 563,
+              "label": "Blue takes 1st Dragon (Ocean)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 702,
+              "label": "Malzahar takes down Lux"
+            },
+            {
+              "atSec": 816,
+              "label": "Malzahar Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 823,
+              "label": "Malzahar Triple Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 882,
+              "label": "Blue takes 2nd Dragon (Hextech)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 893,
+              "label": "Malphite picks off Kog'Maw"
+            },
+            {
+              "atSec": 958,
+              "label": "Malphite takes down Diana"
+            },
+            {
+              "atSec": 991,
+              "label": "Malzahar catches Kog'Maw"
+            },
+            {
+              "atSec": 1071,
+              "label": "Team fight (4 kills)",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1172,
+              "label": "Team fight (3 kills)",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1207,
+              "label": "Blue takes 3rd Dragon (Chemtech)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1277,
+              "label": "Kai'Sa picks off Nasus"
+            },
+            {
+              "atSec": 1294,
+              "label": "Blue takes Baron",
+              "kind": "baron"
+            },
+            {
+              "atSec": 1336,
+              "label": "Malzahar eliminates Diana"
+            },
+            {
+              "atSec": 1388,
+              "label": "Malzahar kills Kog'Maw",
+              "kind": "kill"
+            }
+          ]
+        },
+        {
+          "videoId": "FKNHX9J-hME",
+          "title": "Malzahar Mid vs Diana - NA Challenger Patch 26.03",
+          "rankClaim": "Challenger",
+          "patch": "26.3",
+          "durationSec": 1541,
+          "region": "NA",
+          "uploaded": "2026-02-11",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 133,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "x7s6gz0ZA3E",
+          "title": "Malzahar Mid vs Quinn - KR Challenger Patch 26.06",
+          "rankClaim": "Challenger",
+          "patch": "26.6",
+          "durationSec": 1595,
+          "region": "KR",
+          "uploaded": "2026-03-26",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 142,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "wr04xl-BmcY",
+          "title": "Malzahar Mid vs Zoe - KR Master Patch 26.19",
+          "rankClaim": "Master",
+          "patch": "26.19",
+          "durationSec": 1857,
+          "region": "KR",
+          "uploaded": "2026-10-09",
+          "result": "W",
+          "moments": [
+            {
+              "atSec": 283,
+              "label": "Blue takes 1st Dragon (Cloud)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 307,
+              "label": "First Blood — Malzahar kills Zoe",
+              "kind": "kill"
+            },
+            {
+              "atSec": 468,
+              "label": "Malzahar takes down Zoe"
+            },
+            {
+              "atSec": 610,
+              "label": "Malzahar catches Zoe again"
+            },
+            {
+              "atSec": 671,
+              "label": "Red takes 1st Dragon (Ocean)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 849,
+              "label": "Malzahar outplays Jax"
+            },
+            {
+              "atSec": 1010,
+              "label": "Blue takes 2nd Dragon (Mountain)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1129,
+              "label": "Malzahar solo kills Jax again",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1253,
+              "label": "Malzahar outduels Zoe (3rd time)"
+            },
+            {
+              "atSec": 1297,
+              "label": "Red takes Baron",
+              "kind": "baron"
+            },
+            {
+              "atSec": 1324,
+              "label": "Blue takes 3rd Dragon (Mountain)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1654,
+              "label": "Malzahar Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1656,
+              "label": "Malzahar Triple Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1685,
+              "label": "Mid Inhibitor falls (Blue)"
+            },
+            {
+              "atSec": 1716,
+              "label": "Red takes 2nd Baron",
+              "kind": "baron"
+            },
+            {
+              "atSec": 1732,
+              "label": "Blue takes 4th Dragon (Mountain)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1767,
+              "label": "Yunara eliminates Lee Sin"
+            },
+            {
+              "atSec": 1777,
+              "label": "Yunara Triple Kill",
+              "kind": "kill"
+            }
+          ]
+        },
+        {
+          "videoId": "XO6n_hlaRKo",
+          "title": "(CF CROmpir) Malzahar Mid vs Zoe - EUW Grandmaster Patch 26.14",
+          "rankClaim": "Grandmaster",
+          "patch": "26.14",
+          "durationSec": 1728,
+          "region": "EUW",
+          "player": "CF CROmpir",
+          "uploaded": "2026-07-20",
+          "moments": []
+        },
+        {
+          "videoId": "qfU24KNriks",
+          "title": "Malzahar Mid vs Zoe - KR Grandmaster Patch 26.09",
+          "rankClaim": "Grandmaster",
+          "patch": "26.9",
+          "durationSec": 1450,
+          "region": "KR",
+          "uploaded": "2026-05-03",
+          "moments": []
+        },
+        {
+          "videoId": "xYKOsH8QKNw",
+          "title": "Malzahar Mid vs Zoe - KR Challenger Patch 26.05",
+          "rankClaim": "Challenger",
+          "patch": "26.5",
+          "durationSec": 1655,
+          "region": "KR",
+          "uploaded": "2026-03-11",
+          "moments": []
+        },
+        {
+          "videoId": "c-qe4iuqIB8",
+          "title": "Malzahar Mid vs Zoe - KR Grandmaster Patch 25.11",
+          "rankClaim": "Grandmaster",
+          "patch": "25.11",
+          "durationSec": 1676,
+          "region": "KR",
+          "uploaded": "2025-06-05",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 157,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "RCk_hfwRuEY",
+          "title": "(RXCF CROmpir) Malzahar Mid vs Yasuo - EUW Grandmaster Patch 26.16",
+          "rankClaim": "Grandmaster",
+          "patch": "26.16",
+          "durationSec": 1880,
+          "region": "EUW",
+          "player": "RXCF CROmpir",
+          "uploaded": "2026-08-19",
+          "moments": []
+        },
+        {
+          "videoId": "tPiPtpQRVcA",
+          "title": "Malzahar Mid vs Yasuo - EUW Challenger Patch 26.11",
+          "rankClaim": "Challenger",
+          "patch": "26.11",
+          "durationSec": 1750,
+          "region": "EUW",
+          "uploaded": "2026-06-05",
+          "moments": []
+        },
+        {
+          "videoId": "CdFeWdL4n1Y",
+          "title": "Malzahar Mid vs Yasuo - EUW Challenger Patch 26.05",
+          "rankClaim": "Challenger",
+          "patch": "26.5",
+          "durationSec": 1673,
+          "region": "EUW",
+          "uploaded": "2026-03-19",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 166,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "5wM9SdGf0rI",
+          "title": "Malzahar Mid vs Akshan - KR Master Patch 26.02",
+          "rankClaim": "Master",
+          "patch": "26.2",
+          "durationSec": 1596,
+          "region": "KR",
+          "uploaded": "2026-01-28",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 348,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 556,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 933,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1000,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1099,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1185,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1209,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1282,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1319,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1340,
+              "label": "Take down The Inhibitor"
+            },
+            {
+              "atSec": 1424,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1457,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1549,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1568,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1585,
+              "label": "End credit"
+            }
+          ]
+        },
+        {
+          "videoId": "9D0Mab7MvwA",
+          "title": "Malzahar Mid vs Akshan - KR Master Patch 25.23",
+          "rankClaim": "Master",
+          "patch": "25.23",
+          "durationSec": 1863,
+          "region": "KR",
+          "uploaded": "2025-11-25",
+          "moments": []
+        },
+        {
+          "videoId": "NDZ3qLMMskw",
+          "title": "Malzahar Mid vs Akshan - KR Master Patch 25.20",
+          "rankClaim": "Master",
+          "patch": "25.20",
+          "durationSec": 1971,
+          "region": "KR",
+          "uploaded": "2025-10-14",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 245,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "je5JxZ7HDdg",
+          "title": "Malzahar Mid vs Ekko - EUW Challenger Patch 25.24",
+          "rankClaim": "Challenger",
+          "patch": "25.24",
+          "durationSec": 1534,
+          "region": "EUW",
+          "uploaded": "2026-01-06",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 266,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "Ve8Rkbg1t3M",
+          "title": "Malzahar Top vs Aatrox - KR Master Patch 25.17",
+          "rankClaim": "Master",
+          "patch": "25.17",
+          "durationSec": 1787,
+          "region": "KR",
+          "uploaded": "2025-09-10",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 516,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "DAxUL9hk2FM",
+          "title": "Malzahar Top vs Ornn - KR Master Patch 26.03",
+          "rankClaim": "Master",
+          "patch": "26.3",
+          "durationSec": 1810,
+          "region": "KR",
+          "uploaded": "2026-02-19",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 517,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "GGa1w9z-uSc",
+          "title": "Malzahar vs Sylas [ MID ] Korea Grandmaster Patch 25.13 ✅",
+          "rankClaim": "Grandmaster",
+          "patch": "25.13",
+          "durationSec": 1606,
+          "region": "KR",
+          "uploaded": "2025-07-13",
+          "moments": []
+        },
+        {
+          "videoId": "u0u3HdPFMec",
+          "title": "Malzahar Mid vs Sylas - NA Grandmaster Patch 25.09",
+          "rankClaim": "Grandmaster",
+          "patch": "25.9",
+          "durationSec": 1750,
+          "region": "NA",
+          "uploaded": "2025-05-16",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 555,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "7YR_yA-6fqA",
+          "title": "Malzahar Support vs Pyke - KR Master Patch 26.01",
+          "rankClaim": "Master",
+          "patch": "26.1",
+          "durationSec": 1612,
+          "region": "KR",
+          "uploaded": "2026-01-23",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 385,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 461,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 495,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 654,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 693,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 746,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 809,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 890,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 927,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 974,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1052,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1179,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1260,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1422,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1507,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1549,
+              "label": "Take down The Inhibitor"
+            },
+            {
+              "atSec": 1559,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1572,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1601,
+              "label": "End credit"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 711,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "ZaL1kRD0s8U",
+          "title": "Malzahar Mid vs Vex - KR Master Patch 25.09",
+          "rankClaim": "Master",
+          "patch": "25.9",
+          "durationSec": 2146,
+          "region": "KR",
+          "uploaded": "2025-05-06",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 777,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "4a4EZxArjfo",
+          "title": "Malzahar Mid vs Yone - NA Grandmaster Patch 25.24",
+          "rankClaim": "Grandmaster",
+          "patch": "25.24",
+          "durationSec": 1441,
+          "region": "NA",
+          "uploaded": "2025-12-18",
+          "moments": []
+        },
+        {
+          "videoId": "nz5krkCjk1Y",
+          "title": "Malzahar vs Yone [ MID ] Lol Korea Master Patch 25.23 ✅",
+          "rankClaim": "Master",
+          "patch": "25.23",
+          "durationSec": 1829,
+          "region": "KR",
+          "uploaded": "2025-12-02",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 893,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "T51t1gihE08",
+          "title": "Malzahar Mid vs Aurora - KR Master Patch 25.24",
+          "rankClaim": "Master",
+          "patch": "25.24",
+          "durationSec": 1593,
+          "region": "KR",
+          "uploaded": "2025-12-13",
+          "moments": []
+        },
+        {
+          "videoId": "12AcdBfRnH4",
+          "title": "Malzahar Mid vs Aurora - KR Master Patch 25.15",
+          "rankClaim": "Master",
+          "patch": "25.15",
+          "durationSec": 1784,
+          "region": "KR",
+          "uploaded": "2025-08-08",
+          "moments": []
+        },
+        {
+          "videoId": "lxjrcNqcLSY",
+          "title": "Malzahar Mid vs Aurora - KR Master Patch 25.12",
+          "rankClaim": "Master",
+          "patch": "25.12",
+          "durationSec": 1652,
+          "region": "KR",
+          "uploaded": "2025-06-21",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 897,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "lusGt4OKsPc",
+          "title": "Malzahar Top vs K'Sante - KR Master Patch 26.13",
+          "rankClaim": "Master",
+          "patch": "26.13",
+          "durationSec": 1705,
+          "region": "KR",
+          "uploaded": "2026-07-16",
+          "moments": []
+        },
+        {
+          "videoId": "2A50gVwZldI",
+          "title": "Malzahar Top vs K'Sante - KR Master Patch 26.06",
+          "rankClaim": "Master",
+          "patch": "26.6",
+          "durationSec": 1521,
+          "region": "KR",
+          "uploaded": "2026-03-30",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 421,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 688,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 715,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 844,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 895,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1039,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1096,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1141,
+              "label": "Hunt The Dragon",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1247,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1288,
+              "label": "Hunt The Baron Nashor",
+              "kind": "baron"
+            },
+            {
+              "atSec": 1315,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1388,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1420,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1444,
+              "label": "Take down The Inhibitor"
+            },
+            {
+              "atSec": 1456,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1488,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1510,
+              "label": "End credit"
+            }
+          ]
+        },
+        {
+          "videoId": "ay10O_EIoeo",
+          "title": "Malzahar Top vs K'Sante - KR Master Patch 26.04",
+          "rankClaim": "Master",
+          "patch": "26.4",
+          "durationSec": 1808,
+          "region": "KR",
+          "uploaded": "2026-03-03",
+          "moments": []
+        },
+        {
+          "videoId": "na1EmynqwsU",
+          "title": "Malzahar Top vs K'Sante - KR Master Patch 25.16",
+          "rankClaim": "Master",
+          "patch": "25.16",
+          "durationSec": 2051,
+          "region": "KR",
+          "uploaded": "2025-08-28",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 901,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "yajrZFQvlS4",
+          "title": "Malzahar vs Smolder [ MID ] Korea Master 445 LP | Patch 26.14 ✅",
+          "rankClaim": "Master",
+          "patch": "26.14",
+          "durationSec": 1703,
+          "region": "KR",
+          "uploaded": "2026-07-22",
+          "moments": []
+        },
+        {
+          "videoId": "KY72WNKMSwo",
+          "title": "Malzahar Mid vs Smolder - EUW Challenger Patch 26.12",
+          "rankClaim": "Challenger",
+          "patch": "26.12",
+          "durationSec": 1639,
+          "region": "EUW",
+          "uploaded": "2026-06-19",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 904,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "81vu_VCULOw",
+          "title": "Malzahar Top vs Zaahen - BR Master Patch 26.20",
+          "rankClaim": "Master",
+          "patch": "26.20",
+          "durationSec": 1584,
+          "uploaded": "2026-10-21",
+          "result": "W",
+          "moments": [
+            {
+              "atSec": 179,
+              "label": "First Blood — Rengar kills Rumble",
+              "kind": "kill"
+            },
+            {
+              "atSec": 183,
+              "label": "Rengar Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 304,
+              "label": "Malzahar catches Zaahen"
+            },
+            {
+              "atSec": 446,
+              "label": "Red takes 1st Dragon (Infernal)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 725,
+              "label": "Rengar kills Zaahen",
+              "kind": "kill"
+            },
+            {
+              "atSec": 775,
+              "label": "Rengar kills Zaahen",
+              "kind": "kill"
+            },
+            {
+              "atSec": 787,
+              "label": "Blue takes 1st Dragon (Mountain)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1047,
+              "label": "Bard kills Rumble",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1099,
+              "label": "Red takes 2nd Dragon (Ocean)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1154,
+              "label": "Ezreal picks off Soraka"
+            },
+            {
+              "atSec": 1204,
+              "label": "Corki Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1306,
+              "label": "Blue takes Baron",
+              "kind": "baron"
+            },
+            {
+              "atSec": 1350,
+              "label": "Mid Inhibitor falls (Blue)"
+            },
+            {
+              "atSec": 1389,
+              "label": "Malzahar picks off Jinx"
+            },
+            {
+              "atSec": 1451,
+              "label": "Red takes 3rd Dragon (Ocean)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1521,
+              "label": "Team fight (3 kills)",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1553,
+              "label": "Top Inhibitor falls (Blue)"
+            }
+          ]
+        },
+        {
+          "videoId": "WAEMMkTjZ2c",
+          "title": "Malzahar Top vs Zaahen - KR Master Patch 26.15",
+          "rankClaim": "Master",
+          "patch": "26.15",
+          "durationSec": 1405,
+          "region": "KR",
+          "uploaded": "2026-08-12",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 910,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "jyJQjGUEgmM",
+          "title": "Malzahar Mid vs Hwei - KR Master Patch 25.19",
+          "rankClaim": "Master",
+          "patch": "25.19",
+          "durationSec": 2068,
+          "region": "KR",
+          "uploaded": "2025-09-30",
+          "moments": []
+        },
+        {
+          "videoId": "B_GDu67nm7Q",
+          "title": "Malzahar Mid vs Hwei - KR Master Patch 25.14",
+          "rankClaim": "Master",
+          "patch": "25.14",
+          "durationSec": 1861,
+          "region": "KR",
+          "uploaded": "2025-07-22",
+          "moments": []
+        }
+      ]
+    }
+  ]
+}

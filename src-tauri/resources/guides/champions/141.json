@@ -1,0 +1,3864 @@
+{
+  "schema": 1,
+  "champion": 141,
+  "generatedAt": "2026-11-07T13:25:14.592Z",
+  "guides": [],
+  "general": [
+    {
+      "champion": 141,
+      "lane": "jungle",
+      "patch": "26.21",
+      "reviewed": false,
+      "keyTips": [
+        {
+          "text": "Choose the form before the game: Shadow Assassin into several reachable squishies, Rhaast for frontline, sustain, and long fights.",
+          "scope": "champion",
+          "sourceIds": [
+            "ractickttv"
+          ]
+        },
+        {
+          "text": "Respect early vulnerability with clean farm and realistic ganks, never forcing bad fights for form orbs.",
+          "scope": "champion",
+          "sourceIds": [
+            "ractickttv"
+          ]
+        },
+        {
+          "text": "After unlocking form, convert the early lead into ganks, picks, objective pressure, and farm between plays.",
+          "scope": "champion",
+          "sourceIds": [
+            "ractickttv"
+          ]
+        }
+      ],
+      "sections": {
+        "overview": {
+          "tips": []
+        },
+        "early-lane": {
+          "tips": [
+            {
+              "text": "Open reliably with a full clear, contesting Scuttle when right before the first real gank or invade window.",
+              "scope": "champion",
+              "sourceIds": [
+                "ractickttv"
+              ]
+            },
+            {
+              "text": "Start three or four camps fast when nearby lanes offer control, kill pressure, or a volatile matchup worth touching early.",
+              "scope": "champion",
+              "sourceIds": [
+                "ractickttv"
+              ]
+            },
+            {
+              "text": "Check nearby lane priority before invading; even winning jungle duels fail when lanes cannot move first.",
+              "scope": "champion",
+              "sourceIds": [
+                "ractickttv"
+              ]
+            },
+            {
+              "text": "After Scuttle with nothing on, take a safe respawning camp or recall instead of forcing a low-odds gank.",
+              "scope": "champion",
+              "sourceIds": [
+                "ractickttv"
+              ]
+            },
+            {
+              "text": "Keep clearing respawns after the first recall while watching for real gank windows; powerfarming beats risky form chasing.",
+              "scope": "champion",
+              "sourceIds": [
+                "ractickttv"
+              ]
+            },
+            {
+              "text": "Drop the stealth ward before the first recall and usually swap to Oracle Lens after, keeping yellow only for a planned invade.",
+              "scope": "champion",
+              "sourceIds": [
+                "ractickttv"
+              ],
+              "itemIds": [
+                3364
+              ]
+            },
+            {
+              "text": "Skill three early Q points into maxed W, then finish Q and max E last; Rhaast may prioritize Q sooner into tankier teams for its max-health damage.",
+              "scope": "champion",
+              "sourceIds": [
+                "ractickttv"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 141,
+                  "key": "Q"
+                },
+                {
+                  "champion": 141,
+                  "key": "W"
+                },
+                {
+                  "champion": 141,
+                  "key": "E"
+                }
+              ]
+            },
+            {
+              "text": "Hold W briefly to land it more often, and aim Q into terrain to shorten its animation in clears and fights.",
+              "scope": "champion",
+              "sourceIds": [
+                "ractickttv"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 141,
+                  "key": "W"
+                },
+                {
+                  "champion": 141,
+                  "key": "Q"
+                }
+              ]
+            },
+            {
+              "text": "Stretch E exits with Q as Shadow Step expires to land on the intended terrain side.",
+              "scope": "champion",
+              "sourceIds": [
+                "ractickttv"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 141,
+                  "key": "Q"
+                },
+                {
+                  "champion": 141,
+                  "key": "E"
+                }
+              ]
+            }
+          ]
+        },
+        "mid-lane": {
+          "tips": [
+            {
+              "text": "Flank or reach isolated carries with Shadow Assassin E, then push the lead through picks, objectives, and enemy-jungle pressure.",
+              "scope": "champion",
+              "sourceIds": [
+                "ractickttv"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 141,
+                  "key": "E"
+                }
+              ]
+            },
+            {
+              "text": "Approach blue-form teamfights from the side or backline, scouting and poking late with E and W before committing.",
+              "scope": "champion",
+              "sourceIds": [
+                "ractickttv"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 141,
+                  "key": "E"
+                },
+                {
+                  "champion": 141,
+                  "key": "W"
+                }
+              ]
+            },
+            {
+              "text": "Hunt 3v3 and 4v4 skirmishes and objective fights on Rhaast where area damage, knock-up, and healing hit several enemies.",
+              "scope": "champion",
+              "sourceIds": [
+                "ractickttv"
+              ]
+            },
+            {
+              "text": "Disrupt groups with Rhaast W while cycling Q and sustaining through the fight.",
+              "scope": "champion",
+              "sourceIds": [
+                "ractickttv"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 141,
+                  "key": "W"
+                },
+                {
+                  "champion": 141,
+                  "key": "Q"
+                }
+              ]
+            },
+            {
+              "text": "Hold Rhaast R for peak value: low health or a high-health target for bigger healing, a key ability dodge, and a live return.",
+              "scope": "champion",
+              "sourceIds": [
+                "ractickttv"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 141,
+                  "key": "R"
+                }
+              ]
+            },
+            {
+              "text": "Match every mid and late plan to the form: high-value plays, objectives, farm between chances.",
+              "scope": "champion",
+              "sourceIds": [
+                "ractickttv"
+              ]
+            }
+          ]
+        },
+        "win-condition": {
+          "tips": [
+            {
+              "text": "Snowball reachable squishies fast on blue before defensive items blunt the picks.",
+              "scope": "champion",
+              "sourceIds": [
+                "ractickttv"
+              ]
+            },
+            {
+              "text": "Grind extended fights on red against melee or tankier teams with repeated Q and W damage plus healing.",
+              "scope": "champion",
+              "sourceIds": [
+                "ractickttv"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 141,
+                  "key": "Q"
+                },
+                {
+                  "champion": 141,
+                  "key": "W"
+                }
+              ]
+            },
+            {
+              "text": "Keep form aligned to access and need: blue for squishy carries, red for frontline and sustained teamfighting.",
+              "scope": "champion",
+              "sourceIds": [
+                "ractickttv"
+              ]
+            },
+            {
+              "text": "While behind or gank-less, farm into the form and refuse shutdown donations through forced plays.",
+              "scope": "champion",
+              "sourceIds": [
+                "ractickttv"
+              ]
+            }
+          ]
+        }
+      },
+      "itemization": [
+        {
+          "text": "Run blue form on Dark Harvest with Sudden Impact, Grisly Mementos, and Treasure Hunter plus Cash Back and Cosmic Insight.",
+          "scope": "champion",
+          "sourceIds": [
+            "ractickttv"
+          ]
+        },
+        {
+          "text": "Run red on Conqueror with Triumph, Legend: Haste, and Last Stand plus Axiom Arcanist and Transcendence for long fights and ultimate value.",
+          "scope": "champion",
+          "sourceIds": [
+            "ractickttv"
+          ],
+          "abilityKeys": [
+            {
+              "champion": 141,
+              "key": "R"
+            }
+          ]
+        },
+        {
+          "text": "Take Flash plus Smite default, treating Smite as mandatory for clearing and objectives.",
+          "scope": "champion",
+          "sourceIds": [
+            "ractickttv"
+          ]
+        },
+        {
+          "text": "Pet Gustwalker for Assassin movement, Mosstomper for Rhaast defense, and Scorchclaw as the offensive alternative.",
+          "scope": "champion",
+          "sourceIds": [
+            "ractickttv"
+          ]
+        },
+        {
+          "text": "Spend blue gold on early-lead Hubris into Voltaic Cyclosword, Youmuu's Ghostblade, Serylda's Grudge, Edge of Night, Axiom Arc, or Eclipse by game.",
+          "scope": "champion",
+          "sourceIds": [
+            "ractickttv"
+          ],
+          "itemIds": [
+            6697,
+            6699,
+            3142,
+            6694,
+            3814,
+            6696,
+            6692
+          ]
+        },
+        {
+          "text": "Start red on Voltaic Cyclosword into Black Cleaver or Spear of Shojin, defending through Death's Dance, Maw of Malmortius, Kaenic Rookern, or Randuin's Omen by threat.",
+          "scope": "champion",
+          "sourceIds": [
+            "ractickttv"
+          ],
+          "itemIds": [
+            6699,
+            3071,
+            3161,
+            6333,
+            3156,
+            2504,
+            3143
+          ]
+        },
+        {
+          "text": "Boot Ionian for Assassin duty and Plated Steelcaps or Mercury's Treads for Rhaast around role, damage, and control.",
+          "scope": "champion",
+          "sourceIds": [
+            "ractickttv"
+          ],
+          "itemIds": [
+            3047,
+            3111
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "id": "ractickttv",
+          "author": "RactickTTV",
+          "rankClaim": "Diamond (profile badge; no title claim)",
+          "rank": "diamond",
+          "url": "https://www.mobafire.com/league-of-legends/build/racticks-1m-mastery-s26-20-detailed-guide-for-all-situation-589676",
+          "kind": "mobafire"
+        }
+      ]
+    }
+  ],
+  "vods": [
+    {
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "57lgWhTZwF0",
+          "title": "How To Play ASSASSIN KAYN Correctly!",
+          "rankClaim": "Master+",
+          "patch": "26.21",
+          "durationSec": 1765,
+          "patchEstimated": true,
+          "player": "Sinerias",
+          "uploaded": "2026-10-23",
+          "format": "stream",
+          "cam": true,
+          "moments": []
+        },
+        {
+          "videoId": "3uaI7MIp4K4",
+          "title": "HOW TO CLIMB LOW ELO WITH KAYN",
+          "rankClaim": "Master+",
+          "patch": "26.19",
+          "durationSec": 1846,
+          "patchEstimated": true,
+          "player": "Sinerias",
+          "uploaded": "2026-09-27",
+          "format": "stream",
+          "cam": true,
+          "moments": []
+        },
+        {
+          "videoId": "AGXNCSMzhYE",
+          "title": "BLUE KAYN IS BROKEN THIS PATCH",
+          "rankClaim": "Master+",
+          "patch": "26.5",
+          "durationSec": 2170,
+          "patchEstimated": true,
+          "player": "Sinerias",
+          "uploaded": "2026-03-14",
+          "format": "stream",
+          "cam": true,
+          "moments": []
+        },
+        {
+          "videoId": "fsCgTNi2MZk",
+          "title": "HUBRIS IS GETTING BUFFED | FULL EDUCATIONAL KAYN GAME",
+          "rankClaim": "Master+",
+          "patch": "26.4",
+          "durationSec": 1532,
+          "patchEstimated": true,
+          "player": "Sinerias",
+          "uploaded": "2026-03-01",
+          "format": "stream",
+          "cam": true,
+          "moments": []
+        },
+        {
+          "videoId": "JX5jRhbJeN8",
+          "title": "FULL EDUCATIONAL BLUE KAYN GAMEPLAY",
+          "rankClaim": "Master+",
+          "patch": "26.3",
+          "durationSec": 2001,
+          "patchEstimated": true,
+          "player": "Sinerias",
+          "uploaded": "2026-02-08",
+          "format": "stream",
+          "cam": true,
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 5,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "HQYgAhjM89I",
+          "title": "Kayn Jungle vs Xin Zhao (PAIN CarioK) - BR Challenger Patch 26.11",
+          "rankClaim": "Challenger",
+          "patch": "26.11",
+          "durationSec": 1616,
+          "uploaded": "2026-06-12",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 9,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "pygSr7bFbd4",
+          "title": "Kayn vs Fiddlesticks [ Jungle ] Korea Grandmaster 883 LP | Patch 25.22 ✅",
+          "rankClaim": "Grandmaster",
+          "patch": "25.22",
+          "durationSec": 1646,
+          "region": "KR",
+          "uploaded": "2025-11-10",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 14,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "1Mql--OOWhU",
+          "title": "Kayn Top vs Sion - KR Master Patch 25.20",
+          "rankClaim": "Master",
+          "patch": "25.20",
+          "durationSec": 1546,
+          "region": "KR",
+          "uploaded": "2025-10-22",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 19,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "wYsjRFb0QWo",
+          "title": "Kayn Top vs Warwick - KR Master Patch 25.07",
+          "rankClaim": "Master",
+          "patch": "25.7",
+          "durationSec": 1531,
+          "region": "KR",
+          "uploaded": "2025-04-16",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 229,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 253,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 334,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 455,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 675,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 821,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 989,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1005,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1025,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1093,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1157,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1180,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1196,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1206,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1296,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1351,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1382,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1446,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1510,
+              "label": "End credit"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 20,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "bg_nF4inyTE",
+          "title": "Kayn Jungle vs Nunu & Willump - KR Challenger Patch 26.01",
+          "rankClaim": "Challenger",
+          "patch": "26.1",
+          "durationSec": 1532,
+          "region": "KR",
+          "uploaded": "2026-01-15",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 371,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 459,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 542,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 675,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 795,
+              "label": "Hunt The Dragon",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 848,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 978,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1002,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1097,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1123,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1150,
+              "label": "Hunt The Dragon",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1227,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1248,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1268,
+              "label": "Hunt The Baron Nashor",
+              "kind": "baron"
+            },
+            {
+              "atSec": 1366,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1468,
+              "label": "Hunt The Dragon",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1521,
+              "label": "End credit"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 24,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "EaU50vQu6U0",
+          "title": "Kayn Top vs Jax - KR Master Patch 25.23",
+          "rankClaim": "Master",
+          "patch": "25.23",
+          "durationSec": 1677,
+          "region": "KR",
+          "uploaded": "2025-12-03",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 30,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "oMjpQ8f8Z6A",
+          "title": "Kayn Jungle vs Karthus - KR Grandmaster Patch 25.16",
+          "rankClaim": "Grandmaster",
+          "patch": "25.16",
+          "durationSec": 1714,
+          "region": "KR",
+          "uploaded": "2025-08-21",
+          "moments": []
+        },
+        {
+          "videoId": "WrWi-UySBrY",
+          "title": "Kayn vs Karthus Jungle - KR Challenger - Patch 25.5 Season 15",
+          "rankClaim": "Challenger",
+          "patch": "25.5",
+          "durationSec": 1666,
+          "region": "KR",
+          "uploaded": "2025-03-10",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 31,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "UroBwgsqQag",
+          "title": "Kayn Top vs Cho'Gath - KR Master Patch 26.04",
+          "rankClaim": "Master",
+          "patch": "26.4",
+          "durationSec": 1859,
+          "region": "KR",
+          "uploaded": "2026-03-05",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 123,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 404,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 454,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 722,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 869,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 999,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1027,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1209,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1268,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1295,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1462,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1618,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1651,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1671,
+              "label": "Take down The Inhibitor"
+            },
+            {
+              "atSec": 1793,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1848,
+              "label": "End credit"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 35,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "lSKcJEBkS_g",
+          "title": "Kayn vs Shaco Jungle - NA Challenger - Patch 25.24 Season 15",
+          "rankClaim": "Challenger",
+          "patch": "25.24",
+          "durationSec": 1921,
+          "region": "NA",
+          "uploaded": "2025-12-20",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 36,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "fJbwtC1w0MM",
+          "title": "Kayn Top vs Dr. Mundo - KR Master Patch 25.15",
+          "rankClaim": "Master",
+          "patch": "25.15",
+          "durationSec": 1783,
+          "region": "KR",
+          "uploaded": "2025-08-15",
+          "moments": []
+        },
+        {
+          "videoId": "3S1d2BA8ZQM",
+          "title": "Kayn Top vs Dr. Mundo - KR Master Patch 25.08",
+          "rankClaim": "Master",
+          "patch": "25.8",
+          "durationSec": 1575,
+          "region": "KR",
+          "uploaded": "2025-04-29",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 38,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "Lh3z_zjfIBQ",
+          "title": "Kayn Jungle vs Kassadin - KR Master Patch 26.04",
+          "rankClaim": "Master",
+          "patch": "26.4",
+          "durationSec": 1483,
+          "region": "KR",
+          "uploaded": "2026-02-26",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 92,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 169,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 405,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 443,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 512,
+              "label": "Hunt The Dragon",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 532,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 601,
+              "label": "Hunt The Void Grubs",
+              "kind": "grubs"
+            },
+            {
+              "atSec": 650,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 814,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 880,
+              "label": "Hunt The Dragon",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1029,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1130,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1158,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1199,
+              "label": "Hunt The Dragon",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1299,
+              "label": "Hunt The Baron Nashor",
+              "kind": "baron"
+            },
+            {
+              "atSec": 1330,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1439,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1458,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1472,
+              "label": "End credit"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 58,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "EztqqraFLdQ",
+          "title": "Kayn Top vs Renekton - KR Master Patch 26.09",
+          "rankClaim": "Master",
+          "patch": "26.9",
+          "durationSec": 1450,
+          "region": "KR",
+          "uploaded": "2026-05-11",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 59,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "2dAeMGOXPXM",
+          "title": "Kayn Jungle vs Jarvan IV - KR Master Patch 25.24",
+          "rankClaim": "Master",
+          "patch": "25.24",
+          "durationSec": 1455,
+          "region": "KR",
+          "uploaded": "2026-01-01",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 139,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 332,
+              "label": "Hunt The Dragon",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 354,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 475,
+              "label": "Hunt The Void Grubs",
+              "kind": "grubs"
+            },
+            {
+              "atSec": 514,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 596,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 737,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 802,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 837,
+              "label": "Hunt The Dragon",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 947,
+              "label": "Hunt The Rift Herald",
+              "kind": "herald"
+            },
+            {
+              "atSec": 1011,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1118,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1158,
+              "label": "Hunt The Dragon",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1222,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1297,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1420,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1444,
+              "label": "End credit"
+            }
+          ]
+        },
+        {
+          "videoId": "tkTV1j2gUlg",
+          "title": "Kayn vs Jarvan IV Jungle - NA Challenger - Patch 25.24 Season 15",
+          "rankClaim": "Challenger",
+          "patch": "25.24",
+          "durationSec": 1711,
+          "region": "NA",
+          "uploaded": "2025-12-17",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 60,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "JTtSVJsCGn0",
+          "title": "Kayn Jungle vs Elise - EUNE Challenger Patch 26.19",
+          "rankClaim": "Challenger",
+          "patch": "26.19",
+          "durationSec": 1695,
+          "region": "EUNE",
+          "uploaded": "2026-09-28",
+          "moments": []
+        },
+        {
+          "videoId": "W4qghRt2rB0",
+          "title": "Kayn Jungle vs Elise - NA Challenger Patch 26.02",
+          "rankClaim": "Challenger",
+          "patch": "26.2",
+          "durationSec": 1464,
+          "region": "NA",
+          "uploaded": "2026-02-05",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 64,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "QYjjFi5noik",
+          "title": "Kayn Jungle vs Lee Sin - KR Grandmaster Patch 26.18",
+          "rankClaim": "Grandmaster",
+          "patch": "26.18",
+          "durationSec": 1692,
+          "region": "KR",
+          "uploaded": "2026-09-24",
+          "moments": []
+        },
+        {
+          "videoId": "4bTbo4wI_vA",
+          "title": "Kayn Jungle vs Lee Sin - KR Grandmaster Patch 26.13",
+          "rankClaim": "Grandmaster",
+          "patch": "26.13",
+          "durationSec": 1528,
+          "region": "KR",
+          "uploaded": "2026-07-09",
+          "moments": []
+        },
+        {
+          "videoId": "zsBzL14LN2A",
+          "title": "Kayn Jungle vs Lee Sin (HRTS Lurox) - EUW Challenger Patch 26.11",
+          "rankClaim": "Challenger",
+          "patch": "26.11",
+          "durationSec": 1470,
+          "region": "EUW",
+          "uploaded": "2026-06-04",
+          "moments": []
+        },
+        {
+          "videoId": "tpdO6t_FQRQ",
+          "title": "Kayn Jungle vs Lee Sin - KR Grandmaster Patch 26.09",
+          "rankClaim": "Grandmaster",
+          "patch": "26.9",
+          "durationSec": 1859,
+          "region": "KR",
+          "uploaded": "2026-05-05",
+          "moments": []
+        },
+        {
+          "videoId": "dlyWXWxMzcc",
+          "title": "Kayn Jungle vs Lee Sin - NA Challenger Patch 26.05",
+          "rankClaim": "Challenger",
+          "patch": "26.5",
+          "durationSec": 1469,
+          "region": "NA",
+          "uploaded": "2026-03-13",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 146,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 359,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 440,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 502,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 556,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 813,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 883,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 970,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 999,
+              "label": "Hunt The Dragon",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1019,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1105,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1201,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1255,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1277,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1301,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1330,
+              "label": "Hunt The Dragon",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1418,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1458,
+              "label": "End credit"
+            }
+          ]
+        },
+        {
+          "videoId": "hT1eCTFJQfU",
+          "title": "Kayn vs Lee Sin Jungle - EUW Challenger - Patch 25.9 Season 15",
+          "rankClaim": "Challenger",
+          "patch": "25.9",
+          "durationSec": 1816,
+          "region": "EUW",
+          "uploaded": "2025-05-03",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 74,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "oz7UFeYDaZA",
+          "title": "Kayn Top vs Heimerdinger - NA Grandmaster Patch 25.18",
+          "rankClaim": "Grandmaster",
+          "patch": "25.18",
+          "durationSec": 1625,
+          "region": "NA",
+          "uploaded": "2025-09-23",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 76,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "YLBKkCOH9Ks",
+          "title": "Kayn Jungle vs Nidalee (SK Skeanz) - EUW Challenger Patch 26.12",
+          "rankClaim": "Challenger",
+          "patch": "26.12",
+          "durationSec": 1568,
+          "region": "EUW",
+          "uploaded": "2026-06-18",
+          "moments": []
+        },
+        {
+          "videoId": "eDTZmFJ9Im0",
+          "title": "Kayn Jungle vs Nidalee - KR Grandmaster Patch 25.20",
+          "rankClaim": "Grandmaster",
+          "patch": "25.20",
+          "durationSec": 1433,
+          "region": "KR",
+          "uploaded": "2025-10-16",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 79,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "pYbGgR_0-s0",
+          "title": "Kayn Jungle vs Gragas - VN Challenger Patch 25.13",
+          "rankClaim": "Challenger",
+          "patch": "25.13",
+          "durationSec": 1787,
+          "uploaded": "2025-07-17",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 80,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "F5hg2fBhx5Q",
+          "title": "(Kurama Cat) Kayn Jungle vs Pantheon (OTS qualzy) - EUW Challenger Patch 26.16",
+          "rankClaim": "Challenger",
+          "patch": "26.16",
+          "durationSec": 1622,
+          "region": "EUW",
+          "player": "Kurama Cat",
+          "uploaded": "2026-08-24",
+          "moments": []
+        },
+        {
+          "videoId": "ozx1iXKJGRo",
+          "title": "Kayn Jungle vs Pantheon - KR Grandmaster Patch 25.21",
+          "rankClaim": "Grandmaster",
+          "patch": "25.21",
+          "durationSec": 1553,
+          "region": "KR",
+          "uploaded": "2025-10-29",
+          "moments": []
+        },
+        {
+          "videoId": "TTbMWIkyl8A",
+          "title": "Kayn vs Pantheon Jungle - KR Challenger - Patch 25.13 Season 15",
+          "rankClaim": "Challenger",
+          "patch": "25.13",
+          "durationSec": 1651,
+          "region": "KR",
+          "uploaded": "2025-06-28",
+          "moments": []
+        },
+        {
+          "videoId": "QWFVizllflI",
+          "title": "Kayn vs Pantheon Jungle - KR Challenger - Patch 25.13 Season 15",
+          "rankClaim": "Challenger",
+          "patch": "25.13",
+          "durationSec": 2161,
+          "region": "KR",
+          "uploaded": "2025-06-27",
+          "moments": []
+        },
+        {
+          "videoId": "UPQvSS5bLHY",
+          "title": "Kayn Jungle vs Pantheon - KR Grandmaster Patch 25.12",
+          "rankClaim": "Grandmaster",
+          "patch": "25.12",
+          "durationSec": 1744,
+          "region": "KR",
+          "uploaded": "2025-06-17",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 91,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "Tk-aKwD4i98",
+          "title": "Kayn Jungle vs Talon - KR Challenger Patch 26.21",
+          "rankClaim": "Challenger",
+          "patch": "26.21",
+          "durationSec": 1601,
+          "region": "KR",
+          "uploaded": "2026-10-24",
+          "result": "W",
+          "moments": [
+            {
+              "atSec": 172,
+              "label": "First Blood — Jayce kills Galio",
+              "kind": "kill"
+            },
+            {
+              "atSec": 339,
+              "label": "Red takes 1st Dragon (Hextech)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 516,
+              "label": "Jhin kills Galio",
+              "kind": "kill"
+            },
+            {
+              "atSec": 759,
+              "label": "Team fight (3 kills)",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 790,
+              "label": "Red takes 2nd Dragon (Infernal)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 834,
+              "label": "Jhin kills Galio",
+              "kind": "kill"
+            },
+            {
+              "atSec": 989,
+              "label": "Kayn eliminates Kai'Sa"
+            },
+            {
+              "atSec": 1087,
+              "label": "Kayn outplays Talon"
+            },
+            {
+              "atSec": 1131,
+              "label": "Blue takes 1st Dragon (Cloud)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1158,
+              "label": "Ryze takes down Galio"
+            },
+            {
+              "atSec": 1213,
+              "label": "Jhin Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1394,
+              "label": "Jhin Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1419,
+              "label": "Red takes Baron",
+              "kind": "baron"
+            },
+            {
+              "atSec": 1451,
+              "label": "Red takes 3rd Dragon (Cloud)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1495,
+              "label": "Jhin kills Galio",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1536,
+              "label": "Bot Inhibitor falls (Blue)"
+            }
+          ]
+        },
+        {
+          "videoId": "LfPMXm204H8",
+          "title": "Kayn Jungle vs Talon - KR Master Patch 26.19",
+          "rankClaim": "Master",
+          "patch": "26.19",
+          "durationSec": 1588,
+          "region": "KR",
+          "uploaded": "2026-10-09",
+          "result": "W",
+          "moments": [
+            {
+              "atSec": 35,
+              "label": "First Blood — Singed kills Cho'Gath",
+              "kind": "kill"
+            },
+            {
+              "atSec": 471,
+              "label": "Orianna takes down Cho'Gath"
+            },
+            {
+              "atSec": 487,
+              "label": "Blue takes 1st Dragon (Infernal)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 643,
+              "label": "Kayn takes down Talon"
+            },
+            {
+              "atSec": 769,
+              "label": "Kayn picks off Galio"
+            },
+            {
+              "atSec": 848,
+              "label": "Blue takes 2nd Dragon (Cloud)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 899,
+              "label": "Red takes Rift Herald",
+              "kind": "herald"
+            },
+            {
+              "atSec": 1001,
+              "label": "Singed eliminates Cho'Gath"
+            },
+            {
+              "atSec": 1069,
+              "label": "Singed Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1119,
+              "label": "Kayn takes down Talon"
+            },
+            {
+              "atSec": 1166,
+              "label": "Red takes 1st Dragon (Ocean)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1214,
+              "label": "Kayn kills Cho'Gath",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1274,
+              "label": "Red takes Baron",
+              "kind": "baron"
+            },
+            {
+              "atSec": 1422,
+              "label": "Kayn outduels Cho'Gath"
+            },
+            {
+              "atSec": 1480,
+              "label": "Red takes 2nd Dragon (Ocean)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1516,
+              "label": "Kayn Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1537,
+              "label": "Mid Inhibitor falls (Blue)"
+            }
+          ]
+        },
+        {
+          "videoId": "x4dQXfn-otM",
+          "title": "Kayn vs Talon Jungle - KR Challenger - Patch 25.5 Season 15",
+          "rankClaim": "Challenger",
+          "patch": "25.5",
+          "durationSec": 1291,
+          "region": "KR",
+          "uploaded": "2025-03-11",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 98,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "1w5O2WH5CjE",
+          "title": "Kayn Top vs Shen - KR Master Patch 26.12",
+          "rankClaim": "Master",
+          "patch": "26.12",
+          "durationSec": 1529,
+          "region": "KR",
+          "uploaded": "2026-06-24",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 102,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "8KGZolDQhz4",
+          "title": "Kayn vs Shyvana Jungle - KR Challenger - Patch 25.19 Season 15",
+          "rankClaim": "Challenger",
+          "patch": "25.19",
+          "durationSec": 1936,
+          "region": "KR",
+          "uploaded": "2025-09-27",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 104,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "mKlYVju1PpA",
+          "title": "Kayn Jungle vs Graves - EUW Grandmaster Patch 26.14",
+          "rankClaim": "Grandmaster",
+          "patch": "26.14",
+          "durationSec": 1781,
+          "region": "EUW",
+          "uploaded": "2026-07-22",
+          "moments": []
+        },
+        {
+          "videoId": "2jRnGiQ5lis",
+          "title": "Kayn vs Graves Jungle - KR Grandmaster - Patch 16.10 Season 16",
+          "rankClaim": "Grandmaster",
+          "patch": "26.10",
+          "durationSec": 1606,
+          "region": "KR",
+          "uploaded": "2026-05-18",
+          "moments": []
+        },
+        {
+          "videoId": "cdi-S7AiHZs",
+          "title": "Kayn Jungle vs Graves - KR Master Patch 26.10",
+          "rankClaim": "Master",
+          "patch": "26.10",
+          "durationSec": 1581,
+          "region": "KR",
+          "uploaded": "2026-05-18",
+          "moments": []
+        },
+        {
+          "videoId": "CcC6fVH31xY",
+          "title": "Kayn vs Graves Jungle - KR Challenger - Patch 25.5 Season 15",
+          "rankClaim": "Challenger",
+          "patch": "25.5",
+          "durationSec": 1710,
+          "region": "KR",
+          "uploaded": "2025-03-09",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 110,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "sWjTtE0BrBs",
+          "title": "Kayn Top vs Varus - KR Master Patch 25.14",
+          "rankClaim": "Master",
+          "patch": "25.14",
+          "durationSec": 1656,
+          "region": "KR",
+          "uploaded": "2025-07-30",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 114,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "SJUHN2DUo2Q",
+          "title": "Kayn Top vs Fiora - KR Master Patch 25.16",
+          "rankClaim": "Master",
+          "patch": "25.16",
+          "durationSec": 1923,
+          "region": "KR",
+          "uploaded": "2025-08-28",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 121,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "Abdyh_30gjA",
+          "title": "(DP Typhoon) Kayn Jungle vs Kha'Zix - EUW Grandmaster Patch 26.17",
+          "rankClaim": "Grandmaster",
+          "patch": "26.17",
+          "durationSec": 1825,
+          "region": "EUW",
+          "player": "DP Typhoon",
+          "uploaded": "2026-09-10",
+          "moments": []
+        },
+        {
+          "videoId": "rYWAJCrcROk",
+          "title": "Kayn Jungle vs Kha'Zix - BR Challenger Patch 26.15",
+          "rankClaim": "Challenger",
+          "patch": "26.15",
+          "durationSec": 1746,
+          "uploaded": "2026-08-05",
+          "moments": []
+        },
+        {
+          "videoId": "gEzkOpTp0tU",
+          "title": "Kayn vs KHa'Zix Jungle - NA Challenger - Patch 16.08 Season 16",
+          "rankClaim": "Challenger",
+          "patch": "26.8",
+          "durationSec": 1966,
+          "region": "NA",
+          "uploaded": "2026-04-26",
+          "moments": []
+        },
+        {
+          "videoId": "a3kgZMasou4",
+          "title": "Kayn vs Khazix [ Jungle ] Lol Korea Master Patch 25.19",
+          "rankClaim": "Master",
+          "patch": "25.19",
+          "durationSec": 1291,
+          "region": "KR",
+          "uploaded": "2025-09-27",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 122,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "QWLVxbrzcd0",
+          "title": "Kayn Jungle vs Darius - NA Grandmaster Patch 25.05",
+          "rankClaim": "Grandmaster",
+          "patch": "25.5",
+          "durationSec": 2142,
+          "region": "NA",
+          "uploaded": "2025-03-10",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 291,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 453,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 735,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 826,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 883,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1051,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1110,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1194,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1384,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1405,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1764,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1851,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1862,
+              "label": "Take down The Inhibitor"
+            },
+            {
+              "atSec": 1988,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 2022,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 2085,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 2121,
+              "label": "End credit"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 131,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "BbnH29XAd2s",
+          "title": "Kayn Jungle vs Diana - KR Master Patch 26.20",
+          "rankClaim": "Master",
+          "patch": "26.20",
+          "durationSec": 1549,
+          "region": "KR",
+          "uploaded": "2026-10-12",
+          "result": "W",
+          "moments": [
+            {
+              "atSec": 287,
+              "label": "First Blood — Viego kills Pantheon",
+              "kind": "kill"
+            },
+            {
+              "atSec": 501,
+              "label": "Blue takes 1st Dragon (Infernal)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 760,
+              "label": "Viego eliminates Diana"
+            },
+            {
+              "atSec": 834,
+              "label": "Red takes 1st Dragon (Mountain)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 844,
+              "label": "Kayn takes down Diana"
+            },
+            {
+              "atSec": 912,
+              "label": "Team fight (3 kills)",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 997,
+              "label": "Kayn picks off Yasuo"
+            },
+            {
+              "atSec": 1088,
+              "label": "Team fight (3 kills)",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1152,
+              "label": "Red takes 2nd Dragon (Ocean)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1179,
+              "label": "Blue takes Baron",
+              "kind": "baron"
+            },
+            {
+              "atSec": 1197,
+              "label": "Viego Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1214,
+              "label": "Kayn catches Pantheon"
+            },
+            {
+              "atSec": 1278,
+              "label": "Viego takes down Kai'Sa"
+            },
+            {
+              "atSec": 1288,
+              "label": "Viego Triple Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1294,
+              "label": "Viego Quadra Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1405,
+              "label": "Xerath eliminates Yasuo"
+            },
+            {
+              "atSec": 1471,
+              "label": "Team fight (3 kills)",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1488,
+              "label": "Mid Inhibitor falls (Blue)"
+            }
+          ]
+        },
+        {
+          "videoId": "Afk0f9cFbyY",
+          "title": "Kayn Jungle vs Diana - EUW Grandmaster Patch 25.24",
+          "rankClaim": "Grandmaster",
+          "patch": "25.24",
+          "durationSec": 1457,
+          "region": "EUW",
+          "uploaded": "2026-01-10",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 27,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 179,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 303,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 441,
+              "label": "Hunt The Dragon",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 457,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 476,
+              "label": "Hunt The Void Grubs",
+              "kind": "grubs"
+            },
+            {
+              "atSec": 545,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 624,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 663,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 768,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 894,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 956,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1072,
+              "label": "Hunt The Rift Herald",
+              "kind": "herald"
+            },
+            {
+              "atSec": 1108,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1173,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1240,
+              "label": "Hunt The Dragon",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1265,
+              "label": "Hunt The Atakhan"
+            },
+            {
+              "atSec": 1290,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1316,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1393,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1426,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1446,
+              "label": "End credit"
+            }
+          ]
+        },
+        {
+          "videoId": "RhqtQxGO9V4",
+          "title": "Kayn Jungle vs Diana - KR Grandmaster Patch 25.07",
+          "rankClaim": "Grandmaster",
+          "patch": "25.7",
+          "durationSec": 1732,
+          "region": "KR",
+          "uploaded": "2025-04-11",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 143,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "WrjTk2TxEiU",
+          "title": "Kayn Jungle vs Zyra - BR Challenger Patch 26.16",
+          "rankClaim": "Challenger",
+          "patch": "26.16",
+          "durationSec": 1670,
+          "uploaded": "2026-08-20",
+          "moments": []
+        },
+        {
+          "videoId": "wpdpv9Y1Bqo",
+          "title": "Kayn Jungle vs Zyra - KR Master Patch 26.03",
+          "rankClaim": "Master",
+          "patch": "26.3",
+          "durationSec": 1866,
+          "region": "KR",
+          "uploaded": "2026-02-19",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 154,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "RzIhrh-bvzo",
+          "title": "Kayn Jungle vs Zac - KR Master Patch 25.13",
+          "rankClaim": "Master",
+          "patch": "25.13",
+          "durationSec": 1490,
+          "region": "KR",
+          "uploaded": "2025-07-03",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 163,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "t07b6EUYY94",
+          "title": "Kayn Jungle vs Taliyah - NA Grandmaster Patch 25.24",
+          "rankClaim": "Grandmaster",
+          "patch": "25.24",
+          "durationSec": 1534,
+          "region": "NA",
+          "uploaded": "2025-12-17",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 86,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 178,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 402,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 423,
+              "label": "Hunt The Dragon",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 493,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 513,
+              "label": "Hunt The Void Grubs",
+              "kind": "grubs"
+            },
+            {
+              "atSec": 608,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 736,
+              "label": "Hunt The Dragon",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 872,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 973,
+              "label": "Hunt The Rift Herald",
+              "kind": "herald"
+            },
+            {
+              "atSec": 1009,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1044,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1153,
+              "label": "Hunt The Dragon",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1177,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1217,
+              "label": "Hunt The Atakhan"
+            },
+            {
+              "atSec": 1314,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1466,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1523,
+              "label": "End credit"
+            }
+          ]
+        },
+        {
+          "videoId": "Iz60DM2dxuc",
+          "title": "Kayn Jungle vs Taliyah - KR Master Patch 25.10",
+          "rankClaim": "Master",
+          "patch": "25.10",
+          "durationSec": 1684,
+          "region": "KR",
+          "uploaded": "2025-05-22",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 363,
+              "label": "Hunt The Dragon",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 678,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 726,
+              "label": "Hunt The Dragon",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 737,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 922,
+              "label": "Hunt The Rift Herald",
+              "kind": "herald"
+            },
+            {
+              "atSec": 957,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1058,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1074,
+              "label": "Hunt The Dragon",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1180,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1229,
+              "label": "Hunt The Atakhan"
+            },
+            {
+              "atSec": 1284,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1402,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1437,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1560,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1580,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1603,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1626,
+              "label": "Take down The Inhibitor"
+            },
+            {
+              "atSec": 1644,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1663,
+              "label": "End credit"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 203,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "-UWefxtOeuc",
+          "title": "Kayn Jungle vs Kindred - KR Grandmaster Patch 26.20",
+          "rankClaim": "Grandmaster",
+          "patch": "26.20",
+          "durationSec": 1548,
+          "region": "KR",
+          "uploaded": "2026-10-22",
+          "result": "W",
+          "moments": [
+            {
+              "atSec": 87,
+              "label": "First Blood — Kayn kills Aphelios",
+              "kind": "kill"
+            },
+            {
+              "atSec": 342,
+              "label": "Kayn takes down Aphelios"
+            },
+            {
+              "atSec": 416,
+              "label": "Red takes 1st Dragon (Infernal)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 671,
+              "label": "Kalista eliminates Kindred"
+            },
+            {
+              "atSec": 733,
+              "label": "Team fight (4 kills)",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 838,
+              "label": "Team fight (3 kills)",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 997,
+              "label": "Red takes 2nd Dragon (Mountain)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1006,
+              "label": "Taliyah takes down Yasuo"
+            },
+            {
+              "atSec": 1032,
+              "label": "Kayn catches Aphelios again"
+            },
+            {
+              "atSec": 1044,
+              "label": "Kayn picks off Galio"
+            },
+            {
+              "atSec": 1087,
+              "label": "Leona eliminates Yasuo"
+            },
+            {
+              "atSec": 1126,
+              "label": "Kayn picks off Galio"
+            },
+            {
+              "atSec": 1186,
+              "label": "Blue takes Baron",
+              "kind": "baron"
+            },
+            {
+              "atSec": 1205,
+              "label": "Kayn eliminates Aphelios"
+            },
+            {
+              "atSec": 1266,
+              "label": "Mid Inhibitor falls (Red)"
+            },
+            {
+              "atSec": 1303,
+              "label": "Kalista picks off Yasuo"
+            },
+            {
+              "atSec": 1329,
+              "label": "Red takes 3rd Dragon (Chemtech)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1456,
+              "label": "Kayn kills Yasuo",
+              "kind": "kill"
+            }
+          ]
+        },
+        {
+          "videoId": "tjBl9eEJMMA",
+          "title": "Kayn Jungle vs Kindred - EUW Grandmaster Patch 25.13",
+          "rankClaim": "Grandmaster",
+          "patch": "25.13",
+          "durationSec": 1780,
+          "region": "EUW",
+          "uploaded": "2025-07-10",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 234,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "JqzqveGRjVo",
+          "title": "Kayn Jungle vs Viego - NA Grandmaster Patch 26.14",
+          "rankClaim": "Grandmaster",
+          "patch": "26.14",
+          "durationSec": 1614,
+          "region": "NA",
+          "uploaded": "2026-07-31",
+          "moments": []
+        },
+        {
+          "videoId": "nqUY4xQLlKg",
+          "title": "Kayn Jungle vs Viego - EUW Challenger Patch 26.08",
+          "rankClaim": "Challenger",
+          "patch": "26.8",
+          "durationSec": 1496,
+          "region": "EUW",
+          "uploaded": "2026-04-23",
+          "moments": []
+        },
+        {
+          "videoId": "UNqKk6MWC7w",
+          "title": "Kayn Jungle vs Viego - KR Challenger Patch 26.07",
+          "rankClaim": "Challenger",
+          "patch": "26.7",
+          "durationSec": 1626,
+          "region": "KR",
+          "uploaded": "2026-04-09",
+          "moments": []
+        },
+        {
+          "videoId": "edB0Ap0tx_Y",
+          "title": "Kayn Jungle vs Viego - NA Challenger Patch 26.06",
+          "rankClaim": "Challenger",
+          "patch": "26.6",
+          "durationSec": 1773,
+          "region": "NA",
+          "uploaded": "2026-03-26",
+          "moments": []
+        },
+        {
+          "videoId": "4Fnf4OgxBms",
+          "title": "Kayn Jungle vs Viego - KR Master Patch 25.24",
+          "rankClaim": "Master",
+          "patch": "25.24",
+          "durationSec": 1479,
+          "region": "KR",
+          "uploaded": "2025-12-08",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 164,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 358,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 542,
+              "label": "Hunt The Dragon",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 715,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 791,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 899,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 918,
+              "label": "Hunt The Dragon",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1146,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1166,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1189,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1225,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1259,
+              "label": "Hunt The Atakhan"
+            },
+            {
+              "atSec": 1378,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1435,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1468,
+              "label": "End credit"
+            }
+          ]
+        },
+        {
+          "videoId": "6fH3D-XvAM0",
+          "title": "Kayn Jungle vs Viego - KR Challenger Patch 25.22",
+          "rankClaim": "Challenger",
+          "patch": "25.22",
+          "durationSec": 1851,
+          "region": "KR",
+          "uploaded": "2025-11-12",
+          "moments": []
+        },
+        {
+          "videoId": "NleS24qWPpI",
+          "title": "Kayn Jungle vs Viego - KR Master Patch 25.18",
+          "rankClaim": "Master",
+          "patch": "25.18",
+          "durationSec": 1640,
+          "region": "KR",
+          "uploaded": "2025-09-17",
+          "moments": []
+        },
+        {
+          "videoId": "cJjigmT7Zsg",
+          "title": "Kayn Jungle vs Viego - KR Challenger Patch 25.08",
+          "rankClaim": "Challenger",
+          "patch": "25.8",
+          "durationSec": 1606,
+          "region": "KR",
+          "uploaded": "2025-04-24",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 32,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 219,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 364,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 437,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 573,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 655,
+              "label": "Hunt The Void Grubs",
+              "kind": "grubs"
+            },
+            {
+              "atSec": 884,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 901,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1091,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1254,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1310,
+              "label": "Hunt The Atakhan"
+            },
+            {
+              "atSec": 1380,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1403,
+              "label": "Hunt The Dragon",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1437,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1561,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1585,
+              "label": "End credit"
+            }
+          ]
+        },
+        {
+          "videoId": "rxLGl28AMCk",
+          "title": "Kayn Jungle vs Viego - KR Grandmaster Patch 25.06",
+          "rankClaim": "Grandmaster",
+          "patch": "25.6",
+          "durationSec": 1757,
+          "region": "KR",
+          "uploaded": "2025-03-27",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 238,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "86H56qc4I9c",
+          "title": "Kayn vs Zed Jungle - KR Grandmaster - Patch 26.01 Season 16",
+          "rankClaim": "Grandmaster",
+          "patch": "26.1",
+          "durationSec": 2041,
+          "region": "KR",
+          "uploaded": "2026-01-12",
+          "moments": []
+        },
+        {
+          "videoId": "uQ812-JmR2I",
+          "title": "Kayn Jungle vs Zed - EUW Grandmaster Patch 25.24",
+          "rankClaim": "Grandmaster",
+          "patch": "25.24",
+          "durationSec": 1484,
+          "region": "EUW",
+          "uploaded": "2025-12-26",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 236,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 391,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 441,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 523,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 626,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 710,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 839,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 923,
+              "label": "Hunt The Rift Herald",
+              "kind": "herald"
+            },
+            {
+              "atSec": 956,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1016,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1116,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1267,
+              "label": "Hunt The Dragon",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1300,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1327,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1352,
+              "label": "Hunt The Atakhan"
+            },
+            {
+              "atSec": 1473,
+              "label": "End credit"
+            }
+          ]
+        },
+        {
+          "videoId": "-g6OAL4aY7g",
+          "title": "Kayn Jungle vs Zed - NA Grandmaster Patch 25.22",
+          "rankClaim": "Grandmaster",
+          "patch": "25.22",
+          "durationSec": 1854,
+          "region": "NA",
+          "uploaded": "2025-11-20",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 245,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "Y9xwFezSWb8",
+          "title": "Kayn Jungle vs Ekko - KR Master Patch 26.03",
+          "rankClaim": "Master",
+          "patch": "26.3",
+          "durationSec": 1520,
+          "region": "KR",
+          "uploaded": "2026-02-12",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 171,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 242,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 414,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 481,
+              "label": "Hunt The Void Grubs",
+              "kind": "grubs"
+            },
+            {
+              "atSec": 565,
+              "label": "Hunt The Dragon",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 621,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 673,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 772,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 844,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 899,
+              "label": "Hunt The Dragon",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 932,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1051,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1146,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1187,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1259,
+              "label": "Hunt The Dragon",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1291,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1319,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1382,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1496,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1509,
+              "label": "End credit"
+            }
+          ]
+        },
+        {
+          "videoId": "Ox8qAZ6s2KE",
+          "title": "Kayn vs Ekko Jungle - KR Challenger - Patch 26.01 Season 16",
+          "rankClaim": "Challenger",
+          "patch": "26.1",
+          "durationSec": 1576,
+          "region": "KR",
+          "uploaded": "2026-01-21",
+          "moments": []
+        },
+        {
+          "videoId": "xZBnap6eT-8",
+          "title": "Kayn Jungle vs Ekko - NA Grandmaster Patch 25.19",
+          "rankClaim": "Grandmaster",
+          "patch": "25.19",
+          "durationSec": 1677,
+          "region": "NA",
+          "uploaded": "2025-10-04",
+          "moments": []
+        },
+        {
+          "videoId": "3NjGSY5JxGI",
+          "title": "Kayn Jungle vs Ekko - KR Master Patch 25.04",
+          "rankClaim": "Master",
+          "patch": "25.4",
+          "durationSec": 2144,
+          "region": "KR",
+          "uploaded": "2025-03-01",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 154,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 441,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 526,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 672,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 771,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 803,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 828,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 952,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 985,
+              "label": "Hunt The Rift Herald",
+              "kind": "herald"
+            },
+            {
+              "atSec": 1065,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1139,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1382,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1439,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1492,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1521,
+              "label": "Hunt The Dragon",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1611,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1714,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1731,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1807,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1826,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1848,
+              "label": "Hunt The Dragon",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1878,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1943,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1968,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 2055,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 2071,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 2096,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 2123,
+              "label": "End credit"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 246,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "_MwN-54YnO0",
+          "title": "Kayn Jungle vs Qiyana (TT Junhao) - KR Challenger Patch 26.13",
+          "rankClaim": "Challenger",
+          "patch": "26.13",
+          "durationSec": 1600,
+          "region": "KR",
+          "uploaded": "2026-07-02",
+          "moments": []
+        },
+        {
+          "videoId": "h95d-Rw3zk8",
+          "title": "Kayn Jungle vs Qiyana - KR Master Patch 26.02",
+          "rankClaim": "Master",
+          "patch": "26.2",
+          "durationSec": 1506,
+          "region": "KR",
+          "uploaded": "2026-02-04",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 254,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "IIc7lV6m7Qg",
+          "title": "Kayn Jungle vs Vi - KR Master Patch 25.14",
+          "rankClaim": "Master",
+          "patch": "25.14",
+          "durationSec": 1721,
+          "region": "KR",
+          "uploaded": "2025-07-24",
+          "moments": []
+        },
+        {
+          "videoId": "vWN3xJuaB_8",
+          "title": "Kayn Jungle vs Vi - KR Grandmaster Patch 25.11",
+          "rankClaim": "Grandmaster",
+          "patch": "25.11",
+          "durationSec": 1443,
+          "region": "KR",
+          "uploaded": "2025-06-04",
+          "moments": []
+        },
+        {
+          "videoId": "KTw1_z_KS2o",
+          "title": "Kayn vs Vi Jungle [ TripleKill ] Patch 25.2 Korea Master ✅",
+          "rankClaim": "Master",
+          "patch": "25.2",
+          "durationSec": 1521,
+          "region": "KR",
+          "player": "TripleKill",
+          "uploaded": "2025-02-02",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 266,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "YOnJD5m2Iw8",
+          "title": "Kayn Jungle vs Aatrox - KR Master Patch 25.23",
+          "rankClaim": "Master",
+          "patch": "25.23",
+          "durationSec": 1645,
+          "region": "KR",
+          "uploaded": "2025-11-27",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 266,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "ttlrzqV6OTU",
+          "title": "Kayn Top vs Aatrox - KR Master Patch 26.15",
+          "rankClaim": "Master",
+          "patch": "26.15",
+          "durationSec": 1598,
+          "region": "KR",
+          "uploaded": "2026-08-12",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 267,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "Gy51W-s5GNs",
+          "title": "Kayn Support vs Nami - KR Master Patch 26.07",
+          "rankClaim": "Master",
+          "patch": "26.7",
+          "durationSec": 1746,
+          "region": "KR",
+          "uploaded": "2026-04-14",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 264,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 621,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 957,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1060,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1085,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1102,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1117,
+              "label": "Hunt The Dragon",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1150,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1264,
+              "label": "Get a Triple Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1294,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1311,
+              "label": "Hunt The Baron Nashor",
+              "kind": "baron"
+            },
+            {
+              "atSec": 1389,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1424,
+              "label": "Hunt The Dragon",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1508,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1567,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1585,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1631,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1710,
+              "label": "Take down The Inhibitor"
+            },
+            {
+              "atSec": 1735,
+              "label": "End credit"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 517,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "cVRr3dHY_3A",
+          "title": "Kayn Jungle vs Sylas - VN Master Patch 26.18",
+          "rankClaim": "Master",
+          "patch": "26.18",
+          "durationSec": 1569,
+          "uploaded": "2026-09-15",
+          "result": "W",
+          "moments": [
+            {
+              "atSec": 178,
+              "label": "First Blood — Kayn kills Swain",
+              "kind": "kill"
+            },
+            {
+              "atSec": 460,
+              "label": "Blue takes 1st Dragon (Ocean)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 608,
+              "label": "Kayn kills Shen",
+              "kind": "kill"
+            },
+            {
+              "atSec": 658,
+              "label": "Kayn takes down Sylas"
+            },
+            {
+              "atSec": 714,
+              "label": "Kayn kills Shen",
+              "kind": "kill"
+            },
+            {
+              "atSec": 804,
+              "label": "Kayn kills Urgot",
+              "kind": "kill"
+            },
+            {
+              "atSec": 819,
+              "label": "Blue takes 2nd Dragon (Hextech)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 935,
+              "label": "Sett eliminates Shen"
+            },
+            {
+              "atSec": 989,
+              "label": "Kayn takes down Sylas"
+            },
+            {
+              "atSec": 1029,
+              "label": "Sett picks off Swain"
+            },
+            {
+              "atSec": 1056,
+              "label": "Sett eliminates Shen"
+            },
+            {
+              "atSec": 1107,
+              "label": "Camille eliminates Urgot"
+            },
+            {
+              "atSec": 1127,
+              "label": "Blue takes 3rd Dragon (Infernal)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1246,
+              "label": "Kayn Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1301,
+              "label": "Team fight (3 kills)",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1399,
+              "label": "Viktor kills Swain",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1435,
+              "label": "Red takes 1st Dragon (Infernal)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1516,
+              "label": "Kayn eliminates Swain"
+            }
+          ]
+        },
+        {
+          "videoId": "Ya7c5HGx7ZY",
+          "title": "Kayn Jungle vs Sylas - KR Master Patch 25.17",
+          "rankClaim": "Master",
+          "patch": "25.17",
+          "durationSec": 1940,
+          "region": "KR",
+          "uploaded": "2025-09-04",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 777,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "3Cl5NBATSfM",
+          "title": "Kayn Top vs Yone - KR Master Patch 26.10",
+          "rankClaim": "Master",
+          "patch": "26.10",
+          "durationSec": 1547,
+          "region": "KR",
+          "uploaded": "2026-05-29",
+          "moments": []
+        },
+        {
+          "videoId": "b3fX6mFmJJI",
+          "title": "Kayn Top vs Yone - KR Master Patch 25.21",
+          "rankClaim": "Master",
+          "patch": "25.21",
+          "durationSec": 1652,
+          "region": "KR",
+          "uploaded": "2025-11-05",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 799,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "g0yji8BC_t8",
+          "title": "Kayn vs Ambessa [ Jungle ] Lol Korea Master Patch 25.17",
+          "rankClaim": "Master",
+          "patch": "25.17",
+          "durationSec": 1544,
+          "region": "KR",
+          "uploaded": "2025-09-03",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 799,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "ZdhItc5neOg",
+          "title": "Kayn Top vs Ambessa - KR Master Patch 25.19",
+          "rankClaim": "Master",
+          "patch": "25.19",
+          "durationSec": 2041,
+          "region": "KR",
+          "uploaded": "2025-09-28",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 887,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "ipkCyI6Iu_A",
+          "title": "Kayn Top vs Gwen - KR Master Patch 26.13",
+          "rankClaim": "Master",
+          "patch": "26.13",
+          "durationSec": 1455,
+          "region": "KR",
+          "uploaded": "2026-07-14",
+          "result": "L",
+          "moments": [
+            {
+              "atSec": 85,
+              "label": "First Blood — Kayn kills Gwen",
+              "kind": "kill"
+            },
+            {
+              "atSec": 166,
+              "label": "Kayn catches Gwen"
+            },
+            {
+              "atSec": 244,
+              "label": "Kayn outduels Gwen again"
+            },
+            {
+              "atSec": 322,
+              "label": "Red takes 1st Dragon (Infernal)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 368,
+              "label": "Kayn outplays Gwen (3rd time)"
+            },
+            {
+              "atSec": 486,
+              "label": "Kayn outduels Qiyana"
+            },
+            {
+              "atSec": 583,
+              "label": "Kayn solo kills Gwen (4th time)",
+              "kind": "kill"
+            },
+            {
+              "atSec": 650,
+              "label": "Red takes 2nd Dragon (Chemtech)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 681,
+              "label": "Kayn takes down Gwen (5th time)"
+            },
+            {
+              "atSec": 778,
+              "label": "Kayn solo kills Jhin",
+              "kind": "kill"
+            },
+            {
+              "atSec": 963,
+              "label": "Red takes 3rd Dragon (Hextech)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1016,
+              "label": "Kayn catches Gwen (6th time)"
+            },
+            {
+              "atSec": 1074,
+              "label": "Kayn outduels Gwen (7th time)"
+            },
+            {
+              "atSec": 1183,
+              "label": "Kayn outplays Qiyana again"
+            },
+            {
+              "atSec": 1215,
+              "label": "Red takes Baron",
+              "kind": "baron"
+            },
+            {
+              "atSec": 1296,
+              "label": "Red takes 4th Dragon (Hextech)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1373,
+              "label": "Kayn kills Qiyana",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1399,
+              "label": "Udyr kills Rell",
+              "kind": "kill"
+            }
+          ]
+        },
+        {
+          "videoId": "xGIU_NVzxDE",
+          "title": "Kayn Top vs Gwen - NA Challenger Patch 25.10",
+          "rankClaim": "Challenger",
+          "patch": "25.10",
+          "durationSec": 2037,
+          "region": "NA",
+          "uploaded": "2025-05-29",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 897,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "Ok9oMLbzwTk",
+          "title": "Kayn Top vs K'Sante - KR Master Patch 25.17",
+          "rankClaim": "Master",
+          "patch": "25.17",
+          "durationSec": 1897,
+          "region": "KR",
+          "uploaded": "2025-09-10",
+          "moments": []
+        },
+        {
+          "videoId": "4y-MZH2v9Ok",
+          "title": "Kayn Top vs K'Sante - KR Master Patch 25.04",
+          "rankClaim": "Master",
+          "patch": "25.4",
+          "durationSec": 1801,
+          "region": "KR",
+          "uploaded": "2025-03-02",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 904,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "LepJxSZross",
+          "title": "Kayn vs Zaahen Jungle - EUW Challenger - Patch 16.03 Season 16",
+          "rankClaim": "Challenger",
+          "patch": "26.3",
+          "durationSec": 1441,
+          "region": "EUW",
+          "uploaded": "2026-02-10",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 950,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "4kX9MXlBFOA",
+          "title": "Kayn Jungle vs Naafiri - KR Master Patch 26.17",
+          "rankClaim": "Master",
+          "patch": "26.17",
+          "durationSec": 1455,
+          "region": "KR",
+          "uploaded": "2026-08-31",
+          "moments": []
+        },
+        {
+          "videoId": "4xNesf15geY",
+          "title": "Kayn Jungle vs Naafiri - KR Grandmaster Patch 25.09",
+          "rankClaim": "Grandmaster",
+          "patch": "25.9",
+          "durationSec": 1575,
+          "region": "KR",
+          "uploaded": "2025-05-08",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 90,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 176,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 236,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 352,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 501,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 564,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 589,
+              "label": "Hunt The Void Grubs",
+              "kind": "grubs"
+            },
+            {
+              "atSec": 603,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 622,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 714,
+              "label": "Get a Triple Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 746,
+              "label": "Hunt The Dragon",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 813,
+              "label": "Get a Quadra Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 848,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 911,
+              "label": "Hunt The Rift Herald",
+              "kind": "herald"
+            },
+            {
+              "atSec": 942,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 965,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1092,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1155,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1203,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1220,
+              "label": "Get a Triple Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1237,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1249,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1265,
+              "label": "Take down The Inhibitor"
+            },
+            {
+              "atSec": 1293,
+              "label": "Hunt The Atakhan"
+            },
+            {
+              "atSec": 1377,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1396,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1493,
+              "label": "Hunt The Baron Nashor",
+              "kind": "baron"
+            },
+            {
+              "atSec": 1525,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1554,
+              "label": "End credit"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 950,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "ZJ70UdyW8ck",
+          "title": "Kayn Mid vs Naafiri - KR Master Patch 26.08",
+          "rankClaim": "Master",
+          "patch": "26.8",
+          "durationSec": 1728,
+          "region": "KR",
+          "uploaded": "2026-04-29",
+          "moments": []
+        }
+      ]
+    }
+  ]
+}

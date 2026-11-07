@@ -1,0 +1,5121 @@
+{
+  "schema": 1,
+  "champion": 157,
+  "generatedAt": "2026-11-07T13:25:14.592Z",
+  "guides": [
+    {
+      "champion": 157,
+      "enemy": 84,
+      "lane": "mid",
+      "patch": "26.21",
+      "reviewed": false,
+      "difficulty": "Skill matchup",
+      "favoredWhen": "Abuse levels 1-5 with Grasp and Ignite, and hold Wind Wall for her engage.",
+      "keyTips": [
+        {
+          "text": "You are stronger in levels 1-5: force trades before 6, because her all-in wins away from your tower after 6.",
+          "scope": "pair",
+          "sourceIds": [
+            "v222yasuo"
+          ],
+          "abilityKeys": [
+            {
+              "champion": 157,
+              "key": "E"
+            }
+          ]
+        },
+        {
+          "text": "Hold Wind Wall for her E engage: without it you are her kill.",
+          "scope": "pair",
+          "sourceIds": [
+            "anguish"
+          ],
+          "abilityKeys": [
+            {
+              "champion": 157,
+              "key": "W"
+            },
+            {
+              "champion": 84,
+              "key": "E"
+            }
+          ]
+        },
+        {
+          "text": "Punish her when she walks up without shroud ready.",
+          "scope": "pair",
+          "sourceIds": [
+            "anguish"
+          ]
+        }
+      ],
+      "enemyTips": {},
+      "sections": {
+        "overview": {
+          "tips": []
+        },
+        "early-lane": {
+          "tips": [
+            {
+              "text": "Force early trades and deny free farming: your window closes at 6.",
+              "scope": "pair",
+              "sourceIds": [
+                "v222yasuo"
+              ]
+            },
+            {
+              "text": "Take Grasp procs with E and commit to pre-6 all-ins, not pokes.",
+              "scope": "pair",
+              "sourceIds": [
+                "v222yasuo"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 157,
+                  "key": "E"
+                }
+              ]
+            }
+          ]
+        },
+        "mid-lane": {
+          "tips": [
+            {
+              "text": "After 6, fight only near your tower or with Wind Wall ready.",
+              "scope": "pair",
+              "sourceIds": [
+                "v222yasuo",
+                "anguish"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 157,
+                  "key": "W"
+                }
+              ]
+            },
+            {
+              "text": "Respect her post-6 all-in: give ground without Wind Wall.",
+              "scope": "pair",
+              "sourceIds": [
+                "v222yasuo",
+                "anguish"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 157,
+                  "key": "W"
+                },
+                {
+                  "champion": 84,
+                  "key": "R"
+                }
+              ]
+            }
+          ]
+        },
+        "win-condition": {
+          "tips": [
+            {
+              "text": "Close before her all-in outscales your early edge.",
+              "scope": "pair",
+              "sourceIds": [
+                "v222yasuo"
+              ]
+            },
+            {
+              "text": "Take fights on your terms around Wind Wall uptime.",
+              "scope": "pair",
+              "sourceIds": [
+                "anguish"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 157,
+                  "key": "W"
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "itemization": [],
+      "sources": [
+        {
+          "id": "v222yasuo",
+          "author": "V222",
+          "rankClaim": "Diamond (profile badge; title claims Challenger EUW) · Yasuo main",
+          "rank": "diamond",
+          "url": "https://www.mobafire.com/league-of-legends/build/all-matchups-26-14-challenger-yasuo-guide-651917",
+          "kind": "mobafire"
+        },
+        {
+          "id": "anguish",
+          "author": "Anguish333",
+          "rankClaim": "Master (profile badge; title claims 2000LP GrandMaster EUW and Challenger EUNE) · Akali main",
+          "rank": "master",
+          "url": "https://www.mobafire.com/league-of-legends/build/26-20-anguish-2000lp-grandmasters-euw-challenger-eune-akali-mid-top-s16-guide-every-matchup-item-rune-explained-625064",
+          "kind": "mobafire"
+        }
+      ]
+    },
+    {
+      "champion": 157,
+      "enemy": 103,
+      "lane": "mid",
+      "patch": "26.21",
+      "reviewed": false,
+      "difficulty": "Hard",
+      "favoredWhen": "Respect her Charm angles, play Wind Wall windows, and win through dashes, not duels.",
+      "keyTips": [
+        {
+          "text": "Take dash angles that do not cross her: she aims Charm where you will be, so vary every E path.",
+          "scope": "pair",
+          "sourceIds": [
+            "peng04"
+          ],
+          "abilityKeys": [
+            {
+              "champion": 157,
+              "key": "E"
+            },
+            {
+              "champion": 103,
+              "key": "E"
+            }
+          ]
+        },
+        {
+          "text": "Wind Wall her Charm, then go in while it is down ({cd:157:W}).",
+          "scope": "pair",
+          "sourceIds": [
+            "peng04"
+          ],
+          "abilityKeys": [
+            {
+              "champion": 157,
+              "key": "W"
+            },
+            {
+              "champion": 103,
+              "key": "E"
+            }
+          ]
+        },
+        {
+          "text": "Do not give her gank setup: track her jungler instead of overpushing blindly.",
+          "scope": "pair",
+          "sourceIds": [
+            "shok-ahri"
+          ]
+        }
+      ],
+      "enemyTips": {},
+      "sections": {
+        "overview": {
+          "tips": []
+        },
+        "early-lane": {
+          "tips": [
+            {
+              "text": "E through minions to dodge: never dash predictably while in Charm range.",
+              "scope": "pair",
+              "sourceIds": [
+                "peng04"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 157,
+                  "key": "E"
+                },
+                {
+                  "champion": 103,
+                  "key": "E"
+                }
+              ]
+            },
+            {
+              "text": "After dashing through a minion that path is closed for a while, so plan the next dash.",
+              "scope": "pair",
+              "sourceIds": [
+                "peng04"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 157,
+                  "key": "E"
+                }
+              ]
+            }
+          ]
+        },
+        "mid-lane": {
+          "tips": [
+            {
+              "text": "Bait Charm with E movement, then commit once it is down.",
+              "scope": "pair",
+              "sourceIds": [
+                "peng04"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 157,
+                  "key": "E"
+                },
+                {
+                  "champion": 103,
+                  "key": "E"
+                }
+              ]
+            },
+            {
+              "text": "Play around Wind Wall uptime: engage with it up, disengage without it.",
+              "scope": "pair",
+              "sourceIds": [
+                "peng04"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 157,
+                  "key": "W"
+                }
+              ]
+            }
+          ]
+        },
+        "win-condition": {
+          "tips": [
+            {
+              "text": "Finish by chaining dashes: she gets one Charm, so make her spend it on the wrong dash.",
+              "scope": "pair",
+              "sourceIds": [
+                "peng04"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 157,
+                  "key": "E"
+                },
+                {
+                  "champion": 103,
+                  "key": "E"
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "itemization": [],
+      "sources": [
+        {
+          "id": "peng04",
+          "author": "Peng04",
+          "rankClaim": "Challenger · Ahri main",
+          "rank": "challenger",
+          "url": "https://www.mobafire.com/league-of-legends/build/26-20-pengs-ahri-guide-5-1mil-points-13x-challenger-648700",
+          "kind": "mobafire"
+        },
+        {
+          "id": "shok-ahri",
+          "author": "ShokLoL",
+          "rankClaim": "Rank 1 Challenger · Ahri main",
+          "rank": "challenger",
+          "url": "https://www.mobafire.com/league-of-legends/build/26-5-shoks-rank-1-challenger-ahri-guide-635065",
+          "kind": "mobafire"
+        }
+      ]
+    },
+    {
+      "champion": 157,
+      "enemy": 134,
+      "lane": "mid",
+      "patch": "26.21",
+      "reviewed": false,
+      "difficulty": "Easy",
+      "favoredWhen": "Dodge Q with E, save Wind Wall for her E, and kill her early and in the sidelane.",
+      "keyTips": [
+        {
+          "text": "Dodge her Q with E and trade: every missed spell is your window.",
+          "scope": "pair",
+          "sourceIds": [
+            "v222yasuo",
+            "shok"
+          ],
+          "abilityKeys": [
+            {
+              "champion": 157,
+              "key": "E"
+            },
+            {
+              "champion": 134,
+              "key": "Q"
+            }
+          ]
+        },
+        {
+          "text": "Save Wind Wall for her E stun; never waste it on poke.",
+          "scope": "pair",
+          "sourceIds": [
+            "v222yasuo"
+          ],
+          "abilityKeys": [
+            {
+              "champion": 157,
+              "key": "W"
+            },
+            {
+              "champion": 134,
+              "key": "E"
+            }
+          ]
+        },
+        {
+          "text": "Kill her early and in the sidelane; do not let her scale into teamfights.",
+          "scope": "pair",
+          "sourceIds": [
+            "v222yasuo"
+          ]
+        }
+      ],
+      "enemyTips": {},
+      "sections": {
+        "overview": {
+          "tips": []
+        },
+        "early-lane": {
+          "tips": [
+            {
+              "text": "Start E and run her down when she wastes mana.",
+              "scope": "pair",
+              "sourceIds": [
+                "v222yasuo"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 157,
+                  "key": "E"
+                }
+              ]
+            },
+            {
+              "text": "Force spells out of her: only her sure-thing spells threaten you.",
+              "scope": "pair",
+              "sourceIds": [
+                "shok"
+              ]
+            }
+          ]
+        },
+        "mid-lane": {
+          "tips": [
+            {
+              "text": "After her mana and boots come online, play for jungle and map instead of forcing.",
+              "scope": "pair",
+              "sourceIds": [
+                "v222yasuo"
+              ]
+            },
+            {
+              "text": "Track her jungler: her lane gets much harder with gank setup behind it.",
+              "scope": "pair",
+              "sourceIds": [
+                "shok"
+              ]
+            }
+          ]
+        },
+        "win-condition": {
+          "tips": [
+            {
+              "text": "Sidelane kills are your win condition; group only when ahead.",
+              "scope": "pair",
+              "sourceIds": [
+                "v222yasuo"
+              ]
+            }
+          ]
+        }
+      },
+      "itemization": [],
+      "sources": [
+        {
+          "id": "v222yasuo",
+          "author": "V222",
+          "rankClaim": "Diamond (profile badge; title claims Challenger EUW) · Yasuo main",
+          "rank": "diamond",
+          "url": "https://www.mobafire.com/league-of-legends/build/all-matchups-26-14-challenger-yasuo-guide-651917",
+          "kind": "mobafire"
+        },
+        {
+          "id": "shok",
+          "author": "ShokLoL",
+          "rankClaim": "Rank 1 Challenger · Syndra main",
+          "rank": "challenger",
+          "url": "https://www.mobafire.com/league-of-legends/build/26-17-shoks-rank-1-challenger-syndra-guide-602710",
+          "kind": "mobafire"
+        }
+      ]
+    }
+  ],
+  "general": [
+    {
+      "champion": 157,
+      "lane": "adc",
+      "patch": "26.21",
+      "reviewed": false,
+      "keyTips": [
+        {
+          "text": "Treat Yasuo bot as weak before level three: prioritize experience and health, accept missing early CS over repeated poke, and hold the wave near the turret while building a slow push to reach three first.",
+          "scope": "champion",
+          "sourceIds": [
+            "visionsofv"
+          ]
+        },
+        {
+          "text": "When one minion remains before level three, take W on level-up, dash in with Exhaust while the support follows, and commit only when the positioning supports the all-in.",
+          "scope": "champion",
+          "sourceIds": [
+            "visionsofv"
+          ],
+          "abilityKeys": [
+            {
+              "champion": 157,
+              "key": "W"
+            }
+          ]
+        },
+        {
+          "text": "After a successful trade or kill, shove the wave and reset: take Recurve Bow after a kill, or Cull and a Control Ward when the fight yields no kill.",
+          "scope": "champion",
+          "sourceIds": [
+            "visionsofv"
+          ],
+          "itemIds": [
+            1043,
+            2055
+          ]
+        }
+      ],
+      "sections": {
+        "overview": {
+          "tips": []
+        },
+        "early-lane": {
+          "tips": [
+            {
+              "text": "Ward the middle bot-lane brush before minions meet; when opponents zone from the first lane brush, ask the support to ward it so the pressure stays visible and the wave stays manageable.",
+              "scope": "champion",
+              "sourceIds": [
+                "visionsofv"
+              ]
+            },
+            {
+              "text": "Collect minions from range with Q while setting up the level-three window rather than trading into the stronger early enemy.",
+              "scope": "champion",
+              "sourceIds": [
+                "visionsofv"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 157,
+                  "key": "Q"
+                }
+              ]
+            },
+            {
+              "text": "Run Lethal Tempo with Triumph, Legend: Alacrity, Cut Down, Second Wind, and Revitalize, with attack speed, adaptive force, and scaling health shards; prefer Fleet Footwork when heavy poke or control makes extended fights difficult.",
+              "scope": "champion",
+              "sourceIds": [
+                "visionsofv"
+              ]
+            }
+          ]
+        },
+        "mid-lane": {
+          "tips": [
+            {
+              "text": "When ahead, coordinate with the jungler around Dragon and other bot-side objectives; when even, first ward or track enemy jungle and mid positions before looking for the all-in.",
+              "scope": "champion",
+              "sourceIds": [
+                "visionsofv"
+              ]
+            },
+            {
+              "text": "Keep the wave near the turret when seeking a fight, then use Exhaust and dash access to close distance while holding the tornado threat as pressure.",
+              "scope": "champion",
+              "sourceIds": [
+                "visionsofv"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 157,
+                  "key": "Q"
+                },
+                {
+                  "champion": 157,
+                  "key": "E"
+                }
+              ]
+            },
+            {
+              "text": "When behind, wait for enemy mistakes or jungle and mid-lane assistance instead of forcing a fight without a setup.",
+              "scope": "champion",
+              "sourceIds": [
+                "visionsofv"
+              ]
+            },
+            {
+              "text": "Before major late-game objectives, seek a pick and establish vision with Control Wards in high-traffic areas.",
+              "scope": "champion",
+              "sourceIds": [
+                "visionsofv"
+              ]
+            },
+            {
+              "text": "Treat Wind Wall timing as the fight skill: denying projectile abilities at the right moment protects the carry or opens the pick.",
+              "scope": "champion",
+              "sourceIds": [
+                "visionsofv"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 157,
+                  "key": "W"
+                }
+              ]
+            }
+          ]
+        },
+        "win-condition": {
+          "tips": [
+            {
+              "text": "Convert the level-three lane window and support-assisted pressure into a lead, then turn that lead into objective control and picks.",
+              "scope": "champion",
+              "sourceIds": [
+                "visionsofv"
+              ]
+            },
+            {
+              "text": "In late fights, read the game state to choose the role: deal damage, peel for the team's strongest player, or initiate when the team needs it.",
+              "scope": "champion",
+              "sourceIds": [
+                "visionsofv"
+              ]
+            }
+          ]
+        }
+      },
+      "itemization": [
+        {
+          "text": "Build Kraken Slayer, Berserker's Greaves, Immortal Shieldbow, Death's Dance, Infinity Edge, Guardian Angel, and Bloodthirster as the standard line; the snowball example runs Stormrazor, Berserker's Greaves, Immortal Shieldbow, The Collector, Infinity Edge, Blade of the Ruined King, Lord Dominik's Regards, and Death's Dance.",
+          "scope": "champion",
+          "sourceIds": [
+            "visionsofv"
+          ],
+          "itemIds": [
+            6672,
+            3006,
+            6673,
+            6333,
+            3031,
+            3026,
+            3072,
+            3095,
+            6676,
+            3036
+          ]
+        },
+        {
+          "text": "Open Doran's Bow, Doran's Blade, or Doran's Shield by lane, and keep Flash with Exhaust as the core summoners.",
+          "scope": "champion",
+          "sourceIds": [
+            "visionsofv"
+          ],
+          "itemIds": [
+            1086,
+            1055,
+            1054
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "id": "visionsofv",
+          "author": "VisionsOfV",
+          "rankClaim": "Grandmaster, 1025 LP peak (author claim); none shown",
+          "rank": "grandmaster",
+          "peak": true,
+          "url": "https://www.mobafire.com/league-of-legends/build/the-complete-yasuo-adc-guide-652077",
+          "kind": "mobafire"
+        }
+      ]
+    },
+    {
+      "champion": 157,
+      "lane": "mid",
+      "patch": "26.21",
+      "reviewed": false,
+      "keyTips": [
+        {
+          "text": "Trade behind the passive shield and deny opponents free pops: avoid positions where they remove it with poke while taking no return trade.",
+          "scope": "champion",
+          "sourceIds": [
+            "wayofthetempesst"
+          ]
+        },
+        {
+          "text": "Balance early aggression against ganks: pressuring and shoving is fine, but drawing jungle attention only helps when the play survives it.",
+          "scope": "champion",
+          "sourceIds": [
+            "wayofthetempesst"
+          ]
+        },
+        {
+          "text": "When carrying, wait for major enemy crowd control to be spent before entering, blunting the return damage with Wind Wall; otherwise follow up the engage and start with Last Breath only when teammates can capitalize.",
+          "scope": "champion",
+          "sourceIds": [
+            "wayofthetempesst"
+          ],
+          "abilityKeys": [
+            {
+              "champion": 157,
+              "key": "W"
+            },
+            {
+              "champion": 157,
+              "key": "R"
+            }
+          ]
+        }
+      ],
+      "sections": {
+        "overview": {
+          "tips": []
+        },
+        "early-lane": {
+          "tips": [
+            {
+              "text": "Build lane priority and place control wards around Scuttle to help the jungler win the early river fight.",
+              "scope": "champion",
+              "sourceIds": [
+                "wayofthetempesst"
+              ]
+            },
+            {
+              "text": "Track the tornado stacks and never force an all-in just after the knock-up expires, when the engage and ultimate setup are gone.",
+              "scope": "champion",
+              "sourceIds": [
+                "wayofthetempesst"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 157,
+                  "key": "Q"
+                },
+                {
+                  "champion": 157,
+                  "key": "R"
+                }
+              ]
+            },
+            {
+              "text": "Step through minions with E before committing to the champion, building dash damage and keeping chase options open.",
+              "scope": "champion",
+              "sourceIds": [
+                "wayofthetempesst"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 157,
+                  "key": "E"
+                }
+              ]
+            },
+            {
+              "text": "Skip roaming for its own sake: favor lane pressure, plates, and solo kills, diving side lanes mainly when the jungler can help.",
+              "scope": "champion",
+              "sourceIds": [
+                "wayofthetempesst"
+              ]
+            }
+          ]
+        },
+        "mid-lane": {
+          "tips": [
+            {
+              "text": "Once the first towers fall around twelve to fifteen minutes, move to a side lane to collect gold and use the dueling strength against mages.",
+              "scope": "champion",
+              "sourceIds": [
+                "wayofthetempesst"
+              ]
+            },
+            {
+              "text": "Without Teleport, take the side lane nearest the next objective and let the top laner with Teleport cover the opposite side.",
+              "scope": "champion",
+              "sourceIds": [
+                "wayofthetempesst"
+              ]
+            },
+            {
+              "text": "Push the side wave toward the enemy tier-two tower, then take nearby enemy camps for experience while denying it to the other team.",
+              "scope": "champion",
+              "sourceIds": [
+                "wayofthetempesst"
+              ]
+            },
+            {
+              "text": "Keep control wards down and clear enemy vision while pressuring the side lane, so the objective join never walks into unseen opponents.",
+              "scope": "champion",
+              "sourceIds": [
+                "wayofthetempesst"
+              ]
+            }
+          ]
+        },
+        "win-condition": {
+          "tips": [
+            {
+              "text": "When a fed ally carries the main damage and Yasuo is behind, peel instead: block threats with Wind Wall and knock up enemies that reach the carry.",
+              "scope": "champion",
+              "sourceIds": [
+                "wayofthetempesst"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 157,
+                  "key": "W"
+                }
+              ]
+            },
+            {
+              "text": "In disruption duty, save Wind Wall for high-value projectiles or ultimates and buy time with repeated knock-ups for allied damage dealers.",
+              "scope": "champion",
+              "sourceIds": [
+                "wayofthetempesst"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 157,
+                  "key": "W"
+                },
+                {
+                  "champion": 157,
+                  "key": "Q"
+                }
+              ]
+            },
+            {
+              "text": "When ahead, contest vision around Baron and force the fight from that control; when behind, defend the objective and deny enemy vision rather than taking an isolated fight.",
+              "scope": "champion",
+              "sourceIds": [
+                "wayofthetempesst"
+              ]
+            }
+          ]
+        }
+      },
+      "itemization": [
+        {
+          "text": "Open Doran's Blade into melee lanes and Doran's Shield with Second Wind into ranged poke; run Lethal Tempo, Absorb Life, Legend: Alacrity, Cut Down, Second Wind, and Overgrowth.",
+          "scope": "champion",
+          "sourceIds": [
+            "wayofthetempesst"
+          ],
+          "itemIds": [
+            1055,
+            1054
+          ]
+        },
+        {
+          "text": "Build Berserker's Greaves, Blade of the Ruined King, Infinity Edge, Immortal Shieldbow, Death's Dance, and Mercurial Scimitar, valuing Blade of the Ruined King first for damage and chase, Infinity Edge for damage, and Shieldbow against burst; swap Plated Steelcaps with Death's Dance or Randuin's Omen into physical damage and Mercury's Treads with Spirit Visage, Force of Nature, or Wit's End into magic damage or crowd control.",
+          "scope": "champion",
+          "sourceIds": [
+            "wayofthetempesst"
+          ],
+          "itemIds": [
+            3006,
+            3031,
+            6673,
+            6333,
+            3139,
+            3047,
+            3143,
+            3111,
+            3065,
+            4401,
+            3091
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "id": "wayofthetempesst",
+          "author": "WayOfTheTempesst",
+          "rankClaim": "Challenger (title); none shown",
+          "rank": "challenger",
+          "url": "https://www.mobafire.com/league-of-legends/build/16-6-tempests-challenger-yasuo-guide-in-depth-541576",
+          "kind": "mobafire"
+        }
+      ]
+    },
+    {
+      "champion": 157,
+      "lane": "top",
+      "patch": "26.21",
+      "reviewed": false,
+      "keyTips": [
+        {
+          "text": "Start with the wave close to the turret and let the opponent push; the long top lane gives Yasuo a safer chase if they overextend.",
+          "scope": "champion",
+          "sourceIds": [
+            "wayofthetempesst"
+          ]
+        },
+        {
+          "text": "Avoid losing too much health to poke before level three; if the opponent is extended and the wave is set, Yasuo can look for an all-in around that spike.",
+          "scope": "champion",
+          "sourceIds": [
+            "wayofthetempesst"
+          ]
+        },
+        {
+          "text": "Do not fight without checking the Steel Tempest tornado and passive shield timing; a trade after the tornado expires leaves Yasuo without knock-up or ultimate setup.",
+          "scope": "champion",
+          "sourceIds": [
+            "wayofthetempesst"
+          ],
+          "abilityKeys": [
+            {
+              "champion": 157,
+              "key": "Q"
+            }
+          ]
+        }
+      ],
+      "sections": {
+        "overview": {
+          "tips": []
+        },
+        "early-lane": {
+          "tips": [
+            {
+              "text": "Fake a leash or let the opponent hit Yasuo through the minions to help the wave move toward the turret.",
+              "scope": "champion",
+              "sourceIds": [
+                "wayofthetempesst"
+              ]
+            },
+            {
+              "text": "If Wind Wall is not useful against the lane opponent, use it to block ranged minion attacks and help hold the freeze.",
+              "scope": "champion",
+              "sourceIds": [
+                "wayofthetempesst"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 157,
+                  "key": "W"
+                }
+              ]
+            },
+            {
+              "text": "Contest only farm that does not cost most of the health bar before level three; preserve enough health to threaten the all-in window.",
+              "scope": "champion",
+              "sourceIds": [
+                "wayofthetempesst"
+              ]
+            }
+          ]
+        },
+        "mid-lane": {
+          "tips": [
+            {
+              "text": "Play the side lane near the next objective; use Teleport from top to affect Baron or Dragon rather than arriving late.",
+              "scope": "champion",
+              "sourceIds": [
+                "wayofthetempesst"
+              ]
+            },
+            {
+              "text": "After pushing a side wave toward the enemy tier-two tower, take nearby camps when safe to build the lead and deny experience.",
+              "scope": "champion",
+              "sourceIds": [
+                "wayofthetempesst"
+              ]
+            },
+            {
+              "text": "Use control wards and clear enemy vision while extending into their jungle; back off when the next wave or objective is unsafe.",
+              "scope": "champion",
+              "sourceIds": [
+                "wayofthetempesst"
+              ]
+            }
+          ]
+        },
+        "win-condition": {
+          "tips": [
+            {
+              "text": "If Yasuo is the main carry, wait for key enemy crowd control to be used before entering and use Wind Wall to block burst.",
+              "scope": "champion",
+              "sourceIds": [
+                "wayofthetempesst"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 157,
+                  "key": "W"
+                }
+              ]
+            },
+            {
+              "text": "Engage only when the team is close enough to follow; Yasuo is better as follow-up than as a blind initiator.",
+              "scope": "champion",
+              "sourceIds": [
+                "wayofthetempesst"
+              ]
+            },
+            {
+              "text": "If even or behind while an ally is carrying, peel for that ally with Wind Wall and knock-ups instead of forcing a solo highlight play.",
+              "scope": "champion",
+              "sourceIds": [
+                "wayofthetempesst"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 157,
+                  "key": "W"
+                },
+                {
+                  "champion": 157,
+                  "key": "Q"
+                }
+              ]
+            },
+            {
+              "text": "Against key projectiles, keep Wind Wall for the enemy ability that would otherwise decide the fight.",
+              "scope": "champion",
+              "sourceIds": [
+                "wayofthetempesst"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 157,
+                  "key": "W"
+                }
+              ]
+            },
+            {
+              "text": "Build more durability when the team needs a frontline; take Randuin's Omen or Spirit Visage based on the opposing damage.",
+              "scope": "champion",
+              "sourceIds": [
+                "wayofthetempesst"
+              ],
+              "itemIds": [
+                3143,
+                3065
+              ]
+            }
+          ]
+        }
+      },
+      "itemization": [
+        {
+          "text": "Take Lethal Tempo, Absorb Life, Legend: Alacrity, and Cut Down with Second Wind and Overgrowth.",
+          "scope": "champion",
+          "sourceIds": [
+            "wayofthetempesst"
+          ]
+        },
+        {
+          "text": "Take Flash and Ignite as the usual lane spells; consider Teleport for top-lane objective pressure, Cleanse into heavy hard crowd control, or Exhaust against burst.",
+          "scope": "champion",
+          "sourceIds": [
+            "wayofthetempesst"
+          ]
+        },
+        {
+          "text": "Max Q, then E, then W, taking Last Breath at levels six, eleven, and sixteen.",
+          "scope": "champion",
+          "sourceIds": [
+            "wayofthetempesst"
+          ],
+          "abilityKeys": [
+            {
+              "champion": 157,
+              "key": "Q"
+            },
+            {
+              "champion": 157,
+              "key": "E"
+            },
+            {
+              "champion": 157,
+              "key": "W"
+            },
+            {
+              "champion": 157,
+              "key": "R"
+            }
+          ]
+        },
+        {
+          "text": "Build Berserker's Greaves, Blade of the Ruined King, Infinity Edge, Immortal Shieldbow, Death's Dance, and Mercurial Scimitar as the main path.",
+          "scope": "champion",
+          "sourceIds": [
+            "wayofthetempesst"
+          ],
+          "itemIds": [
+            3006,
+            3031,
+            6673,
+            6333,
+            3139
+          ]
+        },
+        {
+          "text": "Swap toward armor or magic resistance when needed, listing Randuin's Omen and Thornmail against physical threats and Spirit Visage or Force of Nature against heavy ability power.",
+          "scope": "champion",
+          "sourceIds": [
+            "wayofthetempesst"
+          ],
+          "itemIds": [
+            3143,
+            3075,
+            3065,
+            4401
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "id": "wayofthetempesst",
+          "author": "WayOfTheTempesst",
+          "rankClaim": "Challenger (title); none shown",
+          "rank": "challenger",
+          "url": "https://www.mobafire.com/league-of-legends/build/16-6-tempests-challenger-yasuo-guide-in-depth-541576",
+          "kind": "mobafire"
+        }
+      ]
+    }
+  ],
+  "vods": [
+    {
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "9qOzWo3lkkc",
+          "title": "Baicaiovo Yasuo : DELETING Super Server - Making Challenger Look Like Bots",
+          "rankClaim": "Challenger",
+          "patch": "26.10",
+          "durationSec": 1846,
+          "patchEstimated": true,
+          "player": "Baicaiovo",
+          "uploaded": "2026-05-20",
+          "format": "stream",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 2,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "wztLLajwkO4",
+          "title": "Yasuo Top vs Olaf - KR Master Patch 26.13",
+          "rankClaim": "Master",
+          "patch": "26.13",
+          "durationSec": 1807,
+          "region": "KR",
+          "uploaded": "2026-07-02",
+          "moments": []
+        },
+        {
+          "videoId": "wZ5v6VMZ3cA",
+          "title": "Pz ZZang Yasuo vs Olaf Top - KR Master - Patch 25.4 Season 15",
+          "rankClaim": "Master",
+          "patch": "25.4",
+          "durationSec": 1441,
+          "region": "KR",
+          "player": "Pz ZZang",
+          "uploaded": "2025-03-04",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 3,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "-mbpFvTUy8s",
+          "title": "Yasuo Mid vs Galio - KR Grandmaster Patch 25.20",
+          "rankClaim": "Grandmaster",
+          "patch": "25.20",
+          "durationSec": 1671,
+          "region": "KR",
+          "uploaded": "2025-10-10",
+          "moments": []
+        },
+        {
+          "videoId": "sco9Mpu9qfE",
+          "title": "Yasuo Mid vs Galio - KR Master Patch 25.12",
+          "rankClaim": "Master",
+          "patch": "25.12",
+          "durationSec": 1595,
+          "region": "KR",
+          "uploaded": "2025-06-16",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 4,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "pEEd_8x_y34",
+          "title": "Yasuo vs Twisted Fate Mid - KR Challenger - Patch 16.09 Season 16",
+          "rankClaim": "Challenger",
+          "patch": "26.9",
+          "durationSec": 1621,
+          "region": "KR",
+          "uploaded": "2026-05-13",
+          "moments": []
+        },
+        {
+          "videoId": "TzUXW9ukeP0",
+          "title": "Yasuo Mid vs Twisted Fate - KR Challenger Patch 26.02",
+          "rankClaim": "Challenger",
+          "patch": "26.2",
+          "durationSec": 1552,
+          "region": "KR",
+          "uploaded": "2026-01-24",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 6,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "s6QSeCB_BEY",
+          "title": "Dzukill Yasuo vs Urgot Top - EUW Grandmaster - Patch 16.11 Season 16",
+          "rankClaim": "Grandmaster",
+          "patch": "26.11",
+          "durationSec": 1531,
+          "region": "EUW",
+          "player": "Dzukill",
+          "uploaded": "2026-06-10",
+          "moments": []
+        },
+        {
+          "videoId": "HEq-eJaACaQ",
+          "title": "Dzukill Yasuo vs Urgot TOp - EUW Grandmaster - Patch 26.01 Season 16",
+          "rankClaim": "Grandmaster",
+          "patch": "26.1",
+          "durationSec": 1621,
+          "region": "EUW",
+          "player": "Dzukill",
+          "uploaded": "2026-01-14",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 13,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "4xaIsqJwvao",
+          "title": "Yasuo Mid vs Ryze - VN Challenger Patch 26.18",
+          "rankClaim": "Challenger",
+          "patch": "26.18",
+          "durationSec": 1481,
+          "uploaded": "2026-09-19",
+          "moments": []
+        },
+        {
+          "videoId": "UU1PpdeP8iE",
+          "title": "Yasuo Mid vs Ryze - KR Master Patch 26.05",
+          "rankClaim": "Master",
+          "patch": "26.5",
+          "durationSec": 1747,
+          "region": "KR",
+          "uploaded": "2026-03-16",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 273,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 512,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 674,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 769,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 877,
+              "label": "Get a Triple Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 950,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1037,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1070,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1174,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1272,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1351,
+              "label": "Get a Quadra Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1391,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1475,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1513,
+              "label": "Take down The Inhibitor"
+            },
+            {
+              "atSec": 1698,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1736,
+              "label": "End credit"
+            }
+          ]
+        },
+        {
+          "videoId": "5Qc7N0fYe4k",
+          "title": "Hansuo Yasuo vs Ryze Mid - EUW Grandmaster - Patch 25.19 Season 15",
+          "rankClaim": "Grandmaster",
+          "patch": "25.19",
+          "durationSec": 1471,
+          "region": "EUW",
+          "player": "Hansuo",
+          "uploaded": "2025-09-25",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 14,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "-daeWaftIAw",
+          "title": "Yasuo Top vs Sion - KR Master Patch 26.20",
+          "rankClaim": "Master",
+          "patch": "26.20",
+          "durationSec": 1763,
+          "region": "KR",
+          "uploaded": "2026-10-17",
+          "result": "W",
+          "moments": [
+            {
+              "atSec": 539,
+              "label": "First Blood — Bard kills Talon",
+              "kind": "kill"
+            },
+            {
+              "atSec": 746,
+              "label": "Yasuo catches Sion"
+            },
+            {
+              "atSec": 832,
+              "label": "Red takes 1st Dragon (Mountain)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 936,
+              "label": "Yasuo picks off Corki"
+            },
+            {
+              "atSec": 962,
+              "label": "Blue takes Rift Herald",
+              "kind": "herald"
+            },
+            {
+              "atSec": 1092,
+              "label": "Yasuo Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1201,
+              "label": "Yasuo Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1211,
+              "label": "Blue takes 1st Dragon (Hextech)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1243,
+              "label": "Nunu & Willump picks off Talon"
+            },
+            {
+              "atSec": 1336,
+              "label": "Team fight (3 kills)",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1347,
+              "label": "Zeri Triple Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1401,
+              "label": "Nunu & Willump Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1436,
+              "label": "Mid Inhibitor falls (Red)"
+            },
+            {
+              "atSec": 1540,
+              "label": "Blue takes 2nd Dragon (Chemtech)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1560,
+              "label": "Zeri picks off Nautilus"
+            },
+            {
+              "atSec": 1643,
+              "label": "Yasuo eliminates Nautilus"
+            },
+            {
+              "atSec": 1704,
+              "label": "Yasuo Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1742,
+              "label": "Mid Inhibitor falls (Red)"
+            }
+          ]
+        },
+        {
+          "videoId": "0hlE8ap5JZ4",
+          "title": "PzZZang Yasuo vs Sion Top - KR Challenger - Patch 25.20 Season 15",
+          "rankClaim": "Challenger",
+          "patch": "25.20",
+          "durationSec": 1650,
+          "region": "KR",
+          "player": "PzZZang",
+          "uploaded": "2025-10-09",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 17,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "7NigJ9NFvM8",
+          "title": "Yasuo Top vs Teemo - KR Master Patch 25.10",
+          "rankClaim": "Master",
+          "patch": "25.10",
+          "durationSec": 1703,
+          "region": "KR",
+          "uploaded": "2025-05-17",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 18,
+      "lane": "adc",
+      "videos": [
+        {
+          "videoId": "msg3YALNw8U",
+          "title": "Yasuo ADC vs Tristana - EUW Grandmaster Patch 25.24",
+          "rankClaim": "Grandmaster",
+          "patch": "25.24",
+          "durationSec": 1550,
+          "region": "EUW",
+          "uploaded": "2025-12-21",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 486,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 555,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 587,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 673,
+              "label": "Get a Triple Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 833,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 863,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 883,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 990,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1219,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1305,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1328,
+              "label": "Hunt The Atakhan"
+            },
+            {
+              "atSec": 1354,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1497,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1539,
+              "label": "End credit"
+            }
+          ]
+        },
+        {
+          "videoId": "nV5iRI7cxCw",
+          "title": "Yasuo ADC vs Tristana - EUW Challenger Patch 25.05",
+          "rankClaim": "Challenger",
+          "patch": "25.5",
+          "durationSec": 1657,
+          "region": "EUW",
+          "uploaded": "2025-03-21",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 18,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "ZR99WRS2MMw",
+          "title": "Yasuo vs Tristana Mid - KR Grandmaster - Patch 16.18 Season 16",
+          "rankClaim": "Grandmaster",
+          "patch": "26.18",
+          "durationSec": 1320,
+          "region": "KR",
+          "uploaded": "2026-09-17",
+          "moments": []
+        },
+        {
+          "videoId": "uQKCWk8YLGM",
+          "title": "Yasuo Mid vs Tristana - KR Master Patch 25.18",
+          "rankClaim": "Master",
+          "patch": "25.18",
+          "durationSec": 1451,
+          "region": "KR",
+          "uploaded": "2025-09-13",
+          "moments": []
+        },
+        {
+          "videoId": "1py21wriG0Q",
+          "title": "Yasuo Mid vs Tristana - NA Grandmaster Patch 25.10",
+          "rankClaim": "Grandmaster",
+          "patch": "25.10",
+          "durationSec": 1490,
+          "region": "NA",
+          "uploaded": "2025-05-24",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 19,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "YXEzWV11ViQ",
+          "title": "Yasuo Top vs Warwick - EUW Grandmaster Patch 26.06",
+          "rankClaim": "Grandmaster",
+          "patch": "26.6",
+          "durationSec": 1736,
+          "region": "EUW",
+          "uploaded": "2026-03-28",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 55,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 162,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 366,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 452,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 528,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 635,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 663,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 754,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 840,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 896,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 914,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 966,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 993,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1124,
+              "label": "Hunt The Dragon",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1141,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1225,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1259,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1286,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1304,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1324,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1342,
+              "label": "Hunt The Baron Nashor",
+              "kind": "baron"
+            },
+            {
+              "atSec": 1363,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1461,
+              "label": "Hunt The Dragon",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1498,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1528,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1568,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1670,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1704,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1715,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1725,
+              "label": "End credit"
+            }
+          ]
+        },
+        {
+          "videoId": "R9r3OfnqA3s",
+          "title": "Yasuo Top vs Warwick - KR Master Patch 25.08",
+          "rankClaim": "Master",
+          "patch": "25.8",
+          "durationSec": 1766,
+          "region": "KR",
+          "uploaded": "2025-04-26",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 20,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "7ykEqpWMWLQ",
+          "title": "Yasuo Mid vs Nunu & Willump - KR Grandmaster Patch 25.07",
+          "rankClaim": "Grandmaster",
+          "patch": "25.7",
+          "durationSec": 1701,
+          "region": "KR",
+          "uploaded": "2025-04-07",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 24,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "2PCF-Yq1HKQ",
+          "title": "Yasuo vs Jax Top - EUW Grandmaster - Patch 25.22 Season 15",
+          "rankClaim": "Grandmaster",
+          "patch": "25.22",
+          "durationSec": 1621,
+          "region": "EUW",
+          "uploaded": "2025-11-15",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 27,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "whJLfwE8j1o",
+          "title": "Yasuo Top vs Singed - KR Master Patch 25.09",
+          "rankClaim": "Master",
+          "patch": "25.9",
+          "durationSec": 1753,
+          "region": "KR",
+          "uploaded": "2025-05-16",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 33,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "4Bw5Ahj8rzU",
+          "title": "Yasuo Top vs Rammus - KR Master Patch 26.04",
+          "rankClaim": "Master",
+          "patch": "26.4",
+          "durationSec": 1648,
+          "region": "KR",
+          "uploaded": "2026-02-28",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 34,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "CTo3DJSQkaI",
+          "title": "(PCF FireAscept) Yasuo Mid vs Anivia - EUW Grandmaster Patch 26.16",
+          "rankClaim": "Grandmaster",
+          "patch": "26.16",
+          "durationSec": 1759,
+          "region": "EUW",
+          "player": "PCF FireAscept",
+          "uploaded": "2026-08-20",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 34,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "zVpc0e6sMlc",
+          "title": "THE BATTLE BEGINS: ALOIS VS DRUTUTT  |  KOREA DAY 1",
+          "rankClaim": "Master+",
+          "patch": "26.11",
+          "durationSec": 20356,
+          "patchEstimated": true,
+          "player": "Alois",
+          "uploaded": "2026-06-06",
+          "format": "stream",
+          "cam": true,
+          "startSec": 3311,
+          "endSec": 4848,
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 38,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "KwiKr7BS41E",
+          "title": "Yasuo Top vs Kassadin - KR Master Patch 26.18",
+          "rankClaim": "Master",
+          "patch": "26.18",
+          "durationSec": 1426,
+          "region": "KR",
+          "uploaded": "2026-09-21",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 39,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "0QGoi1Ee3n4",
+          "title": "Yasuo vs Irelia Mid - EUW Grandmaster - Patch 16.08 Season 16",
+          "rankClaim": "Grandmaster",
+          "patch": "26.8",
+          "durationSec": 1561,
+          "region": "EUW",
+          "uploaded": "2026-04-25",
+          "moments": []
+        },
+        {
+          "videoId": "lQh9uEPJMQk",
+          "title": "Yasuo vs Irelia Mid - EUW Grandmaster - Patch 25.18 Season 15",
+          "rankClaim": "Grandmaster",
+          "patch": "25.18",
+          "durationSec": 1811,
+          "region": "EUW",
+          "uploaded": "2025-09-23",
+          "moments": []
+        },
+        {
+          "videoId": "uyw25c7RQWQ",
+          "title": "Yasuo Mid vs Irelia - KR Master Patch 25.14",
+          "rankClaim": "Master",
+          "patch": "25.14",
+          "durationSec": 2049,
+          "region": "KR",
+          "uploaded": "2025-07-20",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 39,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "upFVZ88jX6s",
+          "title": "(ZYB Jezu) Yasuo Top vs Irelia (GSMC Alix) - EUW Challenger Patch 26.19",
+          "rankClaim": "Challenger",
+          "patch": "26.19",
+          "durationSec": 1415,
+          "region": "EUW",
+          "player": "ZYB Jezu",
+          "uploaded": "2026-10-03",
+          "moments": []
+        },
+        {
+          "videoId": "fr4lHcGVHvw",
+          "title": "Dzukill Yasuo vs Irelia Top - EUW Grandmaster - Patch 16.11 Season 16",
+          "rankClaim": "Grandmaster",
+          "patch": "26.11",
+          "durationSec": 1411,
+          "region": "EUW",
+          "player": "Dzukill",
+          "uploaded": "2026-06-11",
+          "moments": []
+        },
+        {
+          "videoId": "48wvGLb8gck",
+          "title": "Dzukill Yasuo vs Irelia Top - EUW Grandmaster - Patch 25.21 Season 15",
+          "rankClaim": "Grandmaster",
+          "patch": "25.21",
+          "durationSec": 1701,
+          "region": "EUW",
+          "player": "Dzukill",
+          "uploaded": "2025-10-29",
+          "moments": []
+        },
+        {
+          "videoId": "lI_sFOfzICU",
+          "title": "Yasuo Top vs Irelia - KR Master Patch 25.13",
+          "rankClaim": "Master",
+          "patch": "25.13",
+          "durationSec": 1427,
+          "region": "KR",
+          "uploaded": "2025-07-05",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 42,
+      "lane": "adc",
+      "videos": [
+        {
+          "videoId": "2Lw4v-eZFcI",
+          "title": "Yasuo ADC vs Corki - KR Master Patch 25.07",
+          "rankClaim": "Master",
+          "patch": "25.7",
+          "durationSec": 1775,
+          "region": "KR",
+          "uploaded": "2025-04-17",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 42,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "ehygR18dxHk",
+          "title": "Yasuo vs Corki Mid - KR Challenger - Patch 26.01 Season 16",
+          "rankClaim": "Challenger",
+          "patch": "26.1",
+          "durationSec": 1501,
+          "region": "KR",
+          "uploaded": "2026-01-19",
+          "moments": []
+        },
+        {
+          "videoId": "JKzXyV0zVcY",
+          "title": "Yasuo Mid vs Corki - KR Master Patch 25.15",
+          "rankClaim": "Master",
+          "patch": "25.15",
+          "durationSec": 1572,
+          "region": "KR",
+          "uploaded": "2025-08-03",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 51,
+      "lane": "adc",
+      "videos": [
+        {
+          "videoId": "Wcx3df3rfP0",
+          "title": "(OLE Flakked) Yasuo ADC vs Caitlyn - EUW Challenger Patch 26.10",
+          "rankClaim": "Challenger",
+          "patch": "26.10",
+          "durationSec": 1653,
+          "region": "EUW",
+          "player": "OLE Flakked",
+          "uploaded": "2026-05-24",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 56,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "hz9rx-kL1wc",
+          "title": "Yasuo Mid vs Nocturne - KR Challenger Patch 26.09",
+          "rankClaim": "Challenger",
+          "patch": "26.9",
+          "durationSec": 1903,
+          "region": "KR",
+          "uploaded": "2026-05-09",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 61,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "fbZ4iOegvA8",
+          "title": "Yasuo Mid vs Orianna - KR Challenger Patch 26.17",
+          "rankClaim": "Challenger",
+          "patch": "26.17",
+          "durationSec": 1534,
+          "region": "KR",
+          "uploaded": "2026-09-04",
+          "result": "W",
+          "moments": [
+            {
+              "atSec": 302,
+              "label": "Red takes 1st Dragon (Infernal)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 439,
+              "label": "First Blood — Talon kills Jayce",
+              "kind": "kill"
+            },
+            {
+              "atSec": 645,
+              "label": "Yasuo outduels Braum"
+            },
+            {
+              "atSec": 659,
+              "label": "Yasuo takes down Orianna"
+            },
+            {
+              "atSec": 688,
+              "label": "Red takes 2nd Dragon (Ocean)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 706,
+              "label": "Kennen Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 894,
+              "label": "Yasuo picks off Jayce"
+            },
+            {
+              "atSec": 965,
+              "label": "Yasuo picks off Jayce"
+            },
+            {
+              "atSec": 1118,
+              "label": "Yasuo picks off Jayce"
+            },
+            {
+              "atSec": 1144,
+              "label": "Red takes 3rd Dragon (Hextech)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1273,
+              "label": "Kennen eliminates Braum"
+            },
+            {
+              "atSec": 1385,
+              "label": "Talon Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1457,
+              "label": "Team fight (3 kills)",
+              "kind": "teamfight"
+            }
+          ]
+        },
+        {
+          "videoId": "gG9DU6P-V1o",
+          "title": "Yasuo vs Orianna Mid - KR Grandmaster - Patch 25.22 Season 15",
+          "rankClaim": "Grandmaster",
+          "patch": "25.22",
+          "durationSec": 1931,
+          "region": "KR",
+          "uploaded": "2025-11-07",
+          "moments": []
+        },
+        {
+          "videoId": "9oy5AZQS51s",
+          "title": "Yasuo vs Orianna [ MID ] Lol Korea Master Patch 25.12",
+          "rankClaim": "Master",
+          "patch": "25.12",
+          "durationSec": 1559,
+          "region": "KR",
+          "uploaded": "2025-06-18",
+          "moments": []
+        },
+        {
+          "videoId": "v3hjhDCv7F8",
+          "title": "Yasuo vs Orianna Mid - KR Challenger - Patch 25.8 Season 15",
+          "rankClaim": "Challenger",
+          "patch": "25.8",
+          "durationSec": 1501,
+          "region": "KR",
+          "uploaded": "2025-04-30",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 64,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "CaSWEXI_1Zs",
+          "title": "Yasuo Top vs Lee Sin - KR Master Patch 26.10",
+          "rankClaim": "Master",
+          "patch": "26.10",
+          "durationSec": 1728,
+          "region": "KR",
+          "uploaded": "2026-05-16",
+          "moments": []
+        },
+        {
+          "videoId": "Bud8e4wY1as",
+          "title": "Yasuo Top vs Lee Sin - NA Challenger Patch 25.12",
+          "rankClaim": "Challenger",
+          "patch": "25.12",
+          "durationSec": 1545,
+          "region": "NA",
+          "uploaded": "2025-06-21",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 67,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "oHgcYBzwozQ",
+          "title": "(DNS Clozer) Yasuo Top vs Vayne (BRO Pungyeon) - KR Challenger Patch 26.15",
+          "rankClaim": "Challenger",
+          "patch": "26.15",
+          "durationSec": 1686,
+          "region": "KR",
+          "player": "Clozer",
+          "uploaded": "2026-08-06",
+          "moments": []
+        },
+        {
+          "videoId": "sfgMfiwNxJk",
+          "title": "Yasuo Top vs Vayne - EUW Challenger Patch 25.20",
+          "rankClaim": "Challenger",
+          "patch": "25.20",
+          "durationSec": 1961,
+          "region": "EUW",
+          "uploaded": "2025-10-18",
+          "moments": []
+        },
+        {
+          "videoId": "__5ioBYo9yc",
+          "title": "Dzukill Yasuo vs Vayne Top - EUW Master - Patch 25.20 Season 15",
+          "rankClaim": "Master",
+          "patch": "25.20",
+          "durationSec": 1531,
+          "region": "EUW",
+          "player": "Dzukill",
+          "uploaded": "2025-10-14",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 69,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "HVD6p8SUVOU",
+          "title": "Yasuo Mid vs Cassiopeia - KR Master Patch 25.24",
+          "rankClaim": "Master",
+          "patch": "25.24",
+          "durationSec": 1548,
+          "region": "KR",
+          "uploaded": "2025-12-08",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 69,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "RN2YlMrTN1s",
+          "title": "Yasuo vs Cassiopeia Top - KR Master - Patch 26.01 Season 16",
+          "rankClaim": "Master",
+          "patch": "26.1",
+          "durationSec": 1951,
+          "region": "KR",
+          "uploaded": "2026-01-12",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 76,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "xkW0izXV5n0",
+          "title": "Yasuo Top vs Nidalee - KR Grandmaster Patch 25.11",
+          "rankClaim": "Grandmaster",
+          "patch": "25.11",
+          "durationSec": 1528,
+          "region": "KR",
+          "uploaded": "2025-06-08",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 80,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "kGGP4QB_d7Y",
+          "title": "(TT Feather) Yasuo Mid vs Pantheon - KR Grandmaster Patch 26.12",
+          "rankClaim": "Grandmaster",
+          "patch": "26.12",
+          "durationSec": 1689,
+          "region": "KR",
+          "player": "TT Feather",
+          "uploaded": "2026-06-16",
+          "moments": []
+        },
+        {
+          "videoId": "7SwvQt08ag4",
+          "title": "Yasuo Mid vs Pantheon - KR Grandmaster Patch 26.04",
+          "rankClaim": "Grandmaster",
+          "patch": "26.4",
+          "durationSec": 1739,
+          "region": "KR",
+          "uploaded": "2026-02-22",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 203,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 565,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 619,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 749,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 853,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 876,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1132,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1247,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1263,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1416,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1439,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1515,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1545,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1606,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1679,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1728,
+              "label": "End credit"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 81,
+      "lane": "adc",
+      "videos": [
+        {
+          "videoId": "j-8c92UchDg",
+          "title": "Yasuo ADC vs Ezreal - KR Challenger Patch 26.01",
+          "rankClaim": "Challenger",
+          "patch": "26.1",
+          "durationSec": 1611,
+          "region": "KR",
+          "uploaded": "2026-01-17",
+          "moments": []
+        },
+        {
+          "videoId": "MEEHBSlxHT0",
+          "title": "Yasuo ADC vs Ezreal - NA Grandmaster Patch 25.18",
+          "rankClaim": "Grandmaster",
+          "patch": "25.18",
+          "durationSec": 2047,
+          "region": "NA",
+          "uploaded": "2025-09-20",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 82,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "KxbtsJw5hkI",
+          "title": "Yasuo Mid vs Mordekaiser - KR Master Patch 26.01",
+          "rankClaim": "Master",
+          "patch": "26.1",
+          "durationSec": 1454,
+          "region": "KR",
+          "uploaded": "2026-01-10",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 84,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "hUABbjfAaCU",
+          "title": "Yasuo Mid vs Akali - KR Grandmaster Patch 26.05",
+          "rankClaim": "Grandmaster",
+          "patch": "26.5",
+          "durationSec": 1486,
+          "region": "KR",
+          "uploaded": "2026-03-08",
+          "moments": []
+        },
+        {
+          "videoId": "l5McQj1I_Fc",
+          "title": "Yasuo vs Akali Mid - EUW Grandmaster - Patch 25.24 Season 15",
+          "rankClaim": "Grandmaster",
+          "patch": "25.24",
+          "durationSec": 1636,
+          "region": "EUW",
+          "uploaded": "2025-12-09",
+          "moments": []
+        },
+        {
+          "videoId": "opXJOgBZzYA",
+          "title": "Yasuo Mid vs Akali - KR Master Patch 25.13",
+          "rankClaim": "Master",
+          "patch": "25.13",
+          "durationSec": 1714,
+          "region": "KR",
+          "uploaded": "2025-06-28",
+          "moments": []
+        },
+        {
+          "videoId": "3K96GUy6tCc",
+          "title": "Yasuo Mid vs Akali - KR Master Patch 25.11",
+          "rankClaim": "Master",
+          "patch": "25.11",
+          "durationSec": 1458,
+          "region": "KR",
+          "uploaded": "2025-06-01",
+          "moments": []
+        },
+        {
+          "videoId": "rMo-I4AKbSI",
+          "title": "Yasuo vs Akali Mid - EUW Grandmaster - Patch 15.4 Season 15",
+          "rankClaim": "Grandmaster",
+          "patch": "25.4",
+          "durationSec": 1521,
+          "region": "EUW",
+          "uploaded": "2025-02-27",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 84,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "2NyhDfrNuhw",
+          "title": "Yasuo Top vs Akali - EUW Grandmaster Patch 26.02",
+          "rankClaim": "Grandmaster",
+          "patch": "26.2",
+          "durationSec": 1597,
+          "region": "EUW",
+          "uploaded": "2026-01-31",
+          "moments": []
+        },
+        {
+          "videoId": "VE_EkNLRt38",
+          "title": "PzZZang Yasuo vs Akali Top - KR Grandmaster - Patch 25.5 Season 15",
+          "rankClaim": "Grandmaster",
+          "patch": "25.5",
+          "durationSec": 2146,
+          "region": "KR",
+          "player": "PzZZang",
+          "uploaded": "2025-03-07",
+          "moments": []
+        },
+        {
+          "videoId": "jy8j5N16Evw",
+          "title": "Yasuo Top vs Akali - EUW Grandmaster Patch 25.04",
+          "rankClaim": "Grandmaster",
+          "patch": "25.4",
+          "durationSec": 2168,
+          "region": "EUW",
+          "uploaded": "2025-02-23",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 110,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 187,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1028,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1166,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1189,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1333,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1401,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1513,
+              "label": "Get a PENTA KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1582,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1606,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1629,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1644,
+              "label": "Take down The Inhibitor"
+            },
+            {
+              "atSec": 1658,
+              "label": "Hunt The Dragon",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1803,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1991,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 2114,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 2147,
+              "label": "End credit"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 91,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "Qz-X6iW5rxM",
+          "title": "Yasuo Mid vs Talon - KR Master Patch 25.23",
+          "rankClaim": "Master",
+          "patch": "25.23",
+          "durationSec": 1564,
+          "region": "KR",
+          "uploaded": "2025-11-21",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 99,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "UwfwYb6m_7Q",
+          "title": "Yasuo Mid vs Lux - KR Master Patch 25.08",
+          "rankClaim": "Master",
+          "patch": "25.8",
+          "durationSec": 1677,
+          "region": "KR",
+          "uploaded": "2025-04-20",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 295,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 720,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 759,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 823,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 920,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1004,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1101,
+              "label": "Hunt The Dragon",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1125,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1155,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1225,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1407,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1497,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1629,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1656,
+              "label": "End credit"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 103,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "9lBWJCSc71I",
+          "title": "Yasuo vs Ahri 9/5/9 (Mid) | EUW Challenger | Yasuo OTP Replay",
+          "rankClaim": "Challenger",
+          "patch": "26.10",
+          "durationSec": 1935,
+          "region": "EUW",
+          "patchEstimated": true,
+          "uploaded": "2026-05-15",
+          "moments": []
+        },
+        {
+          "videoId": "ek9HBl3V50s",
+          "title": "Yasuo Mid vs Ahri - KR Master Patch 25.06",
+          "rankClaim": "Master",
+          "patch": "25.6",
+          "durationSec": 1992,
+          "region": "KR",
+          "uploaded": "2025-03-23",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 313,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 443,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 735,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 965,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1103,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1194,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1300,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1365,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1537,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1593,
+              "label": "Hunt The Dragon",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1763,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1802,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1815,
+              "label": "Take down The Inhibitor"
+            },
+            {
+              "atSec": 1909,
+              "label": "Get a Triple Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1943,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1960,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1971,
+              "label": "End credit"
+            }
+          ]
+        },
+        {
+          "videoId": "wCCHFA_5LA0",
+          "title": "Yasuo vs Ahri Mid - KR Master - Patch 25.6 Season 15",
+          "rankClaim": "Master",
+          "patch": "25.6",
+          "durationSec": 1290,
+          "region": "KR",
+          "uploaded": "2025-03-22",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 105,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "3uIRWuk2Oio",
+          "title": "DK ShowMaker Yasuo vs Fizz [ MID ] Korea Challenger 2600 LP | Patch 26.13",
+          "rankClaim": "Challenger",
+          "patch": "26.13",
+          "durationSec": 1486,
+          "region": "KR",
+          "player": "ShowMaker",
+          "team": "DK",
+          "uploaded": "2026-07-04",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 112,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "4joguhsiMSU",
+          "title": "Yasuo Mid vs Viktor - EUW Challenger Patch 26.07",
+          "rankClaim": "Challenger",
+          "patch": "26.7",
+          "durationSec": 1516,
+          "region": "EUW",
+          "uploaded": "2026-04-05",
+          "moments": []
+        },
+        {
+          "videoId": "t0DdxBHyiBc",
+          "title": "Yasuo vs Viktor Mid - KR Grandmaster - Patch 16.05 Season 16",
+          "rankClaim": "Grandmaster",
+          "patch": "26.5",
+          "durationSec": 1591,
+          "region": "KR",
+          "uploaded": "2026-03-13",
+          "moments": []
+        },
+        {
+          "videoId": "Kqqa0DajIQY",
+          "title": "Yasuo Mid vs Viktor - KR Master Patch 25.09",
+          "rankClaim": "Master",
+          "patch": "25.9",
+          "durationSec": 1568,
+          "region": "KR",
+          "uploaded": "2025-05-04",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 228,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 363,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 491,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 594,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 747,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 823,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 885,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 961,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1038,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1057,
+              "label": "Get a Triple Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1076,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1137,
+              "label": "Get a Triple Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1165,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1178,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1190,
+              "label": "Take down The Inhibitor"
+            },
+            {
+              "atSec": 1257,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1371,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1440,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1468,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1488,
+              "label": "Take down The Inhibitor"
+            },
+            {
+              "atSec": 1504,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1518,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1547,
+              "label": "End credit"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 113,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "fzt1wXQPb2w",
+          "title": "Yasuo Mid vs Sejuani - KR Challenger Patch 26.21",
+          "rankClaim": "Challenger",
+          "patch": "26.21",
+          "durationSec": 1556,
+          "region": "KR",
+          "uploaded": "2026-10-30",
+          "result": "W",
+          "moments": [
+            {
+              "atSec": 245,
+              "label": "Yasuo eliminates Sejuani"
+            },
+            {
+              "atSec": 328,
+              "label": "Yasuo eliminates Sejuani"
+            },
+            {
+              "atSec": 509,
+              "label": "Blue takes 1st Dragon (Cloud)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 864,
+              "label": "Red takes 1st Dragon (Chemtech)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 918,
+              "label": "Team fight (3 kills)",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1012,
+              "label": "Yasuo takes down Ryze"
+            },
+            {
+              "atSec": 1201,
+              "label": "Cho'Gath takes down Trundle"
+            },
+            {
+              "atSec": 1238,
+              "label": "Red takes 2nd Dragon (Ocean)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1281,
+              "label": "Yasuo picks off Trundle"
+            },
+            {
+              "atSec": 1336,
+              "label": "Team fight (4 kills)",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1357,
+              "label": "Yasuo Triple Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1384,
+              "label": "Blue takes Baron",
+              "kind": "baron"
+            },
+            {
+              "atSec": 1483,
+              "label": "Rumble eliminates Ryze"
+            },
+            {
+              "atSec": 1515,
+              "label": "Yasuo catches Zeri"
+            },
+            {
+              "atSec": 1517,
+              "label": "Yasuo Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1530,
+              "label": "Mid Inhibitor falls (Red)"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 114,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "6gtizzJinFc",
+          "title": "PzZZang Yasuo vs Fiora Top - KR Grandmaster - Patch 25.8 Season 15",
+          "rankClaim": "Grandmaster",
+          "patch": "25.8",
+          "durationSec": 1531,
+          "region": "KR",
+          "player": "PzZZang",
+          "uploaded": "2025-04-28",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 122,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "OpyQ9Opitf0",
+          "title": "Yasuo vs Darius Top - KR Challenger - Patch 16.09 Season 16",
+          "rankClaim": "Challenger",
+          "patch": "26.9",
+          "durationSec": 1681,
+          "region": "KR",
+          "uploaded": "2026-05-07",
+          "moments": []
+        },
+        {
+          "videoId": "XO_2naHv1kw",
+          "title": "Yasuo Top vs Darius - NA Grandmaster Patch 25.24",
+          "rankClaim": "Grandmaster",
+          "patch": "25.24",
+          "durationSec": 1542,
+          "region": "NA",
+          "uploaded": "2025-12-14",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 126,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "viMl1S1s6Ak",
+          "title": "Yasuo Top vs Jayce - KR Master Patch 26.17",
+          "rankClaim": "Master",
+          "patch": "26.17",
+          "durationSec": 1528,
+          "region": "KR",
+          "uploaded": "2026-09-05",
+          "moments": []
+        },
+        {
+          "videoId": "EngH723pOTw",
+          "title": "Dzukill Yasuo vs Jayce Top - EUW Challenger - Patch 25.10 Season 15",
+          "rankClaim": "Challenger",
+          "patch": "25.10",
+          "durationSec": 1666,
+          "region": "EUW",
+          "player": "Dzukill",
+          "uploaded": "2025-05-20",
+          "moments": []
+        },
+        {
+          "videoId": "5A8LTBTQfSI",
+          "title": "PzZzang Yasuo vs Jayce Top - KR Grandmaster - Patch 25.8 Season 15",
+          "rankClaim": "Grandmaster",
+          "patch": "25.8",
+          "durationSec": 2776,
+          "region": "KR",
+          "player": "PzZzang",
+          "uploaded": "2025-04-26",
+          "moments": []
+        },
+        {
+          "videoId": "L89za7KeEJQ",
+          "title": "Yasuo Top vs Jayce - EUW Challenger Patch 25.06",
+          "rankClaim": "Challenger",
+          "patch": "25.6",
+          "durationSec": 1693,
+          "region": "EUW",
+          "uploaded": "2025-03-29",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 137,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 233,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 347,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 400,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 503,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 677,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 723,
+              "label": "Hunt The Void Grubs",
+              "kind": "grubs"
+            },
+            {
+              "atSec": 872,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 947,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1019,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1087,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1174,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1291,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1317,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1344,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1404,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1506,
+              "label": "Hunt The Dragon",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1535,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1635,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1672,
+              "label": "End credit"
+            }
+          ]
+        },
+        {
+          "videoId": "EL00ERpVcp0",
+          "title": "Yasuo Top vs Jayce - KR Master Patch 25.05",
+          "rankClaim": "Master",
+          "patch": "25.5",
+          "durationSec": 1768,
+          "region": "KR",
+          "uploaded": "2025-03-15",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 131,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 244,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 324,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 371,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 480,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 547,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 672,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 835,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 924,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 944,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1123,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1155,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1179,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1355,
+              "label": "Get a Triple Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1387,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1456,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1488,
+              "label": "Hunt The Dragon",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1604,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1705,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1747,
+              "label": "End credit"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 127,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "mmWnUQeqlW8",
+          "title": "Yasuo Mid vs Lissandra (KT Hwichan) - KR Challenger Patch 26.16",
+          "rankClaim": "Challenger",
+          "patch": "26.16",
+          "durationSec": 1811,
+          "region": "KR",
+          "uploaded": "2026-08-23",
+          "moments": []
+        },
+        {
+          "videoId": "RanKpMtZ3hE",
+          "title": "Yasuo Mid vs Lissandra - KR Grandmaster Patch 26.06",
+          "rankClaim": "Grandmaster",
+          "patch": "26.6",
+          "durationSec": 1830,
+          "region": "KR",
+          "uploaded": "2026-03-20",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 163,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 259,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 386,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 407,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 495,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 583,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 647,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 787,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 862,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 919,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1028,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1243,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1304,
+              "label": "Hunt The Dragon",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1425,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1599,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1642,
+              "label": "Hunt The Dragon",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1670,
+              "label": "Hunt The Baron Nashor",
+              "kind": "baron"
+            },
+            {
+              "atSec": 1819,
+              "label": "End credit"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 131,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "6Lfd8WVUAZE",
+          "title": "Yasuo Mid vs Diana - KR Master Patch 25.16",
+          "rankClaim": "Master",
+          "patch": "25.16",
+          "durationSec": 1476,
+          "region": "KR",
+          "uploaded": "2025-08-16",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 133,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "Gq81o1nA7YI",
+          "title": "PzZZang Yasuo vs Quinn Top - KR Grandmaster - Patch 25.24 Season 15",
+          "rankClaim": "Grandmaster",
+          "patch": "25.24",
+          "durationSec": 2026,
+          "region": "KR",
+          "player": "PzZZang",
+          "uploaded": "2025-12-20",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 134,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "NN9b1fxdunE",
+          "title": "Yasuo vs Syndra Mid - KR Grandmaster - Patch 25.5 Season 15",
+          "rankClaim": "Grandmaster",
+          "patch": "25.5",
+          "durationSec": 1890,
+          "region": "KR",
+          "uploaded": "2025-03-18",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 145,
+      "lane": "adc",
+      "videos": [
+        {
+          "videoId": "zDC8eFSo57Y",
+          "title": "Yasuo ADC vs Kai'Sa - NA Challenger Patch 25.13",
+          "rankClaim": "Challenger",
+          "patch": "25.13",
+          "durationSec": 2078,
+          "region": "NA",
+          "uploaded": "2025-07-12",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 150,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "GrZLNw-0WUI",
+          "title": "Yasuo Top vs Gnar - KR Challenger Patch 26.08",
+          "rankClaim": "Challenger",
+          "patch": "26.8",
+          "durationSec": 1588,
+          "region": "KR",
+          "uploaded": "2026-04-24",
+          "moments": []
+        },
+        {
+          "videoId": "Mhn5rzQWLZk",
+          "title": "Yasuo vs Gnar Top - KR Challenger - Patch 16.08 Season 16",
+          "rankClaim": "Challenger",
+          "patch": "26.8",
+          "durationSec": 1621,
+          "region": "KR",
+          "uploaded": "2026-04-20",
+          "moments": []
+        },
+        {
+          "videoId": "l5Q6_4WoxJo",
+          "title": "Yasuo Top vs Gnar - EUW Challenger Patch 25.07",
+          "rankClaim": "Challenger",
+          "patch": "25.7",
+          "durationSec": 1693,
+          "region": "EUW",
+          "uploaded": "2025-04-12",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 212,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 403,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 836,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 903,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 926,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1033,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1068,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1087,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1186,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1401,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1490,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1607,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1632,
+              "label": "Take down The Inhibitor"
+            },
+            {
+              "atSec": 1643,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1658,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1672,
+              "label": "End credit"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 154,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "bjVBBChs6hw",
+          "title": "Dzukill Yasuo vs Zac MId - EUW Grandmaster - Patch 25.24 Season 15",
+          "rankClaim": "Grandmaster",
+          "patch": "25.24",
+          "durationSec": 2011,
+          "region": "EUW",
+          "player": "Dzukill",
+          "uploaded": "2025-12-29",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 161,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "eKxwxRY8RMY",
+          "title": "Yasuo vs Velkoz 22/4/5 (Mid) | EUW Master | Yasuo OTP Replay",
+          "rankClaim": "Master",
+          "patch": "26.9",
+          "durationSec": 1239,
+          "region": "EUW",
+          "patchEstimated": true,
+          "uploaded": "2026-05-05",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 163,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "lN53mEYVQKI",
+          "title": "Yasuo Mid vs Taliyah - KR Master Patch 26.20",
+          "rankClaim": "Master",
+          "patch": "26.20",
+          "durationSec": 1841,
+          "region": "KR",
+          "uploaded": "2026-10-16",
+          "result": "W",
+          "moments": [
+            {
+              "atSec": 38,
+              "label": "First Blood — Yasuo kills Taliyah",
+              "kind": "kill"
+            },
+            {
+              "atSec": 367,
+              "label": "Yasuo takes down Taliyah"
+            },
+            {
+              "atSec": 474,
+              "label": "Yasuo catches Taliyah again"
+            },
+            {
+              "atSec": 533,
+              "label": "Yasuo outduels Taliyah (3rd time)"
+            },
+            {
+              "atSec": 549,
+              "label": "Red takes 1st Dragon (Cloud)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 844,
+              "label": "Yasuo outplays Taliyah (4th time)"
+            },
+            {
+              "atSec": 878,
+              "label": "Blue takes 1st Dragon (Chemtech)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1208,
+              "label": "Blue takes 2nd Dragon (Infernal)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1242,
+              "label": "Blue takes Baron",
+              "kind": "baron"
+            },
+            {
+              "atSec": 1253,
+              "label": "Yasuo Triple Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1368,
+              "label": "Yasuo Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1387,
+              "label": "Bot Inhibitor falls (Red)"
+            },
+            {
+              "atSec": 1521,
+              "label": "Blue takes 3rd Dragon (Infernal)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1608,
+              "label": "Tristana Triple Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1682,
+              "label": "Mid Inhibitor falls (Red)"
+            },
+            {
+              "atSec": 1743,
+              "label": "Red takes Baron",
+              "kind": "baron"
+            },
+            {
+              "atSec": 1785,
+              "label": "Yasuo picks off Rengar"
+            },
+            {
+              "atSec": 1794,
+              "label": "Tristana Triple Kill",
+              "kind": "kill"
+            }
+          ]
+        },
+        {
+          "videoId": "3N0pjJCbZ5o",
+          "title": "Yasuo vs Taliyah MId - KR Challenger - Patch 16.19 Season 16",
+          "rankClaim": "Challenger",
+          "patch": "26.19",
+          "durationSec": 1441,
+          "region": "KR",
+          "uploaded": "2026-10-06",
+          "moments": []
+        },
+        {
+          "videoId": "2hq7SVA0qAw",
+          "title": "Yasuo vs Taliyah Mid - KR Challenger - Patch 16.19 Season 16",
+          "rankClaim": "Challenger",
+          "patch": "26.19",
+          "durationSec": 1920,
+          "region": "KR",
+          "uploaded": "2026-10-04",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 166,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "-QH3HI1IRzk",
+          "title": "(G2 SkewMond) Yasuo Mid vs Akshan - EUW Challenger Patch 26.10",
+          "rankClaim": "Challenger",
+          "patch": "26.10",
+          "durationSec": 1745,
+          "region": "EUW",
+          "player": "SkewMond",
+          "team": "G2",
+          "uploaded": "2026-05-30",
+          "moments": []
+        },
+        {
+          "videoId": "M7ZT76whwhk",
+          "title": "Pz ZZang Yasuo vs AkShan Mid - KR Grandmaster - Patch 16.05 Season 16",
+          "rankClaim": "Grandmaster",
+          "patch": "26.5",
+          "durationSec": 1531,
+          "region": "KR",
+          "player": "Pz ZZang",
+          "uploaded": "2026-03-09",
+          "moments": []
+        },
+        {
+          "videoId": "A97dAOgygvk",
+          "title": "Yasuo Mid vs Akshan - EUW Grandmaster Patch 25.21",
+          "rankClaim": "Grandmaster",
+          "patch": "25.21",
+          "durationSec": 1690,
+          "region": "EUW",
+          "uploaded": "2025-10-31",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 202,
+      "lane": "adc",
+      "videos": [
+        {
+          "videoId": "Xjfj6EVOayw",
+          "title": "(KCB Kamiloo) Yasuo ADC vs Jhin (TOG Sajator) - EUW Master Patch 26.14",
+          "rankClaim": "Master",
+          "patch": "26.14",
+          "durationSec": 1581,
+          "region": "EUW",
+          "player": "KCB Kamiloo",
+          "uploaded": "2026-07-18",
+          "moments": []
+        },
+        {
+          "videoId": "f292DWNF2NQ",
+          "title": "T1 Gumayusi Yasuo vs Jhin [ ADC ] Patch 25.5 Korea Challenger",
+          "rankClaim": "Challenger",
+          "patch": "25.5",
+          "durationSec": 1161,
+          "region": "KR",
+          "player": "Gumayusi",
+          "team": "T1",
+          "uploaded": "2025-03-16",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 221,
+      "lane": "adc",
+      "videos": [
+        {
+          "videoId": "RjHNUYHi48U",
+          "title": "Yasuo ADC vs Zeri - EUW Challenger Patch 26.15",
+          "rankClaim": "Challenger",
+          "patch": "26.15",
+          "durationSec": 1501,
+          "region": "EUW",
+          "uploaded": "2026-08-11",
+          "moments": []
+        },
+        {
+          "videoId": "DK4cBB47NLs",
+          "title": "Yasuo ADC vs Zeri - EUW Grandmaster Patch 25.12",
+          "rankClaim": "Grandmaster",
+          "patch": "25.12",
+          "durationSec": 1842,
+          "region": "EUW",
+          "uploaded": "2025-06-27",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 222,
+      "lane": "adc",
+      "videos": [
+        {
+          "videoId": "ByCbli27kR0",
+          "title": "Yasuo ADC vs Jinx - EUW Grandmaster Patch 25.10",
+          "rankClaim": "Grandmaster",
+          "patch": "25.10",
+          "durationSec": 1592,
+          "region": "EUW",
+          "uploaded": "2025-05-30",
+          "moments": []
+        },
+        {
+          "videoId": "Uggx0sYiehg",
+          "title": "Yasuo ADC vs Jinx - KR Master Patch 25.04",
+          "rankClaim": "Master",
+          "patch": "25.4",
+          "durationSec": 1502,
+          "region": "KR",
+          "uploaded": "2025-03-04",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 236,
+      "lane": "adc",
+      "videos": [
+        {
+          "videoId": "ohz1MKQBcsM",
+          "title": "Doggo : His YASUO ADC is Dominating KR Challenger Botlane - Engsub (Yasuon vs Lucian)",
+          "rankClaim": "Challenger",
+          "patch": "26.14",
+          "durationSec": 956,
+          "region": "KR",
+          "patchEstimated": true,
+          "uploaded": "2026-07-26",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "ZuFrKWu5lOY",
+          "title": "Yasuo ADC vs Lucian - NA Grandmaster Patch 25.09",
+          "rankClaim": "Grandmaster",
+          "patch": "25.9",
+          "durationSec": 1497,
+          "region": "NA",
+          "uploaded": "2025-05-09",
+          "moments": []
+        },
+        {
+          "videoId": "-KBu72FUEE8",
+          "title": "Yasuo ADC vs Lucian - NA Grandmaster Patch 25.06",
+          "rankClaim": "Grandmaster",
+          "patch": "25.6",
+          "durationSec": 1534,
+          "region": "NA",
+          "uploaded": "2025-04-04",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 268,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 402,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 567,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 743,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 770,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 987,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1011,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1031,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1230,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1429,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1455,
+              "label": "Take down The Inhibitor"
+            },
+            {
+              "atSec": 1475,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1488,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1500,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1513,
+              "label": "End credit"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 238,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "iV7MVJLLwcg",
+          "title": "Yasuo vs Zed Top - KR Grandmaster - Patch 16.21 Season 16",
+          "rankClaim": "Grandmaster",
+          "patch": "26.21",
+          "durationSec": 2370,
+          "region": "KR",
+          "uploaded": "2026-11-03",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 240,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "eq2pn6YY0fo",
+          "title": "Yasuo Top vs Kled - KR Master Patch 25.14",
+          "rankClaim": "Master",
+          "patch": "25.14",
+          "durationSec": 1678,
+          "region": "KR",
+          "uploaded": "2025-07-25",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 245,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "-Zq3L7H_as4",
+          "title": "Yasuo vs Ekko Mid - KR Grandmaster - Patch 26.02 Season 16",
+          "rankClaim": "Grandmaster",
+          "patch": "26.2",
+          "durationSec": 1741,
+          "region": "KR",
+          "uploaded": "2026-01-29",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 266,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "6sWIlp6MNK0",
+          "title": "T1 Doran Yasuo vs Aatrox [ TOP ] Korea Grandmaster 1483 LP | Patch 26.13",
+          "rankClaim": "Grandmaster",
+          "patch": "26.13",
+          "durationSec": 1628,
+          "region": "KR",
+          "player": "Doran",
+          "team": "T1",
+          "uploaded": "2026-07-13",
+          "moments": []
+        },
+        {
+          "videoId": "dTEQHs5gcOg",
+          "title": "Yasuo Top vs Aatrox - KR Challenger Patch 25.19",
+          "rankClaim": "Challenger",
+          "patch": "25.19",
+          "durationSec": 1526,
+          "region": "KR",
+          "uploaded": "2025-10-04",
+          "moments": []
+        },
+        {
+          "videoId": "auEJNV2RFZQ",
+          "title": "Yasuo Top vs Aatrox - VN Challenger Patch 25.15",
+          "rankClaim": "Challenger",
+          "patch": "25.15",
+          "durationSec": 1837,
+          "uploaded": "2025-08-14",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 268,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "CZIgC1Cx90M",
+          "title": "Yasuo Mid vs Azir - NA Challenger Patch 26.19",
+          "rankClaim": "Challenger",
+          "patch": "26.19",
+          "durationSec": 1636,
+          "region": "NA",
+          "uploaded": "2026-10-02",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 268,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "HpWspAr9O0g",
+          "title": "Yasuo Top vs Azir - KR Master Patch 26.07",
+          "rankClaim": "Master",
+          "patch": "26.7",
+          "durationSec": 1680,
+          "region": "KR",
+          "uploaded": "2026-04-10",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 201,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 283,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 388,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 504,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 658,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 834,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 907,
+              "label": "Hunt The Rift Herald",
+              "kind": "herald"
+            },
+            {
+              "atSec": 922,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 979,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1015,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1039,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1070,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1097,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1107,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1215,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1245,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1330,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1393,
+              "label": "Hunt The Dragon",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1596,
+              "label": "Hunt The Baron Nashor",
+              "kind": "baron"
+            },
+            {
+              "atSec": 1621,
+              "label": "Get a Quadra Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1651,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1669,
+              "label": "End credit"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 360,
+      "lane": "adc",
+      "videos": [
+        {
+          "videoId": "wnukEdJo6rM",
+          "title": "(OLE Flakked) Yasuo ADC vs Samira - EUW Challenger Patch 26.11",
+          "rankClaim": "Challenger",
+          "patch": "26.11",
+          "durationSec": 1446,
+          "region": "EUW",
+          "player": "OLE Flakked",
+          "uploaded": "2026-06-10",
+          "moments": []
+        },
+        {
+          "videoId": "5T6CYuuXWHg",
+          "title": "Yasuo ADC vs Samira - NA Challenger Patch 25.22",
+          "rankClaim": "Challenger",
+          "patch": "25.22",
+          "durationSec": 1556,
+          "region": "NA",
+          "uploaded": "2025-11-20",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 517,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "oEUP0dPMV4I",
+          "title": "Yasuo Mid vs Sylas - EUW Challenger Patch 25.24",
+          "rankClaim": "Challenger",
+          "patch": "25.24",
+          "durationSec": 1616,
+          "region": "EUW",
+          "uploaded": "2025-12-29",
+          "moments": []
+        },
+        {
+          "videoId": "CwDj4QU2TYw",
+          "title": "Yasuo vs Sylas MID [ QuadraKill ] Lol Korea Grandmaster Patch 25.18",
+          "rankClaim": "Grandmaster",
+          "patch": "25.18",
+          "durationSec": 1327,
+          "region": "KR",
+          "player": "QuadraKill",
+          "uploaded": "2025-09-22",
+          "moments": []
+        },
+        {
+          "videoId": "88ptHb6K2b4",
+          "title": "Yasuo vs Sylas MID [ Quadrakill ] Lol Korea Master Patch 25.14",
+          "rankClaim": "Master",
+          "patch": "25.14",
+          "durationSec": 1116,
+          "region": "KR",
+          "player": "Quadrakill",
+          "uploaded": "2025-07-23",
+          "moments": []
+        },
+        {
+          "videoId": "UrgXlMnr9x0",
+          "title": "Yasuo vs Sylas Mid - EUW Grandmaster - Patch 25.13 Season 15",
+          "rankClaim": "Grandmaster",
+          "patch": "25.13",
+          "durationSec": 1461,
+          "region": "EUW",
+          "uploaded": "2025-07-02",
+          "moments": []
+        },
+        {
+          "videoId": "Y_ohQyrASTI",
+          "title": "Faker Yasuo vs Sylas Mid - KR Challenger - Patch 25.11 Season 15",
+          "rankClaim": "Challenger",
+          "patch": "25.11",
+          "durationSec": 1721,
+          "region": "KR",
+          "player": "Faker",
+          "uploaded": "2025-06-04",
+          "moments": []
+        },
+        {
+          "videoId": "3RuY8tLcgGE",
+          "title": "T1 Faker Yasuo vs Sylas [ MID ] Patch 25.11 Korea Challenger",
+          "rankClaim": "Challenger",
+          "patch": "25.11",
+          "durationSec": 1514,
+          "region": "KR",
+          "player": "Faker",
+          "team": "T1",
+          "uploaded": "2025-06-03",
+          "moments": []
+        },
+        {
+          "videoId": "sBt9m9ouru0",
+          "title": "PzZZang Yasuo vs Sylas Mid - KR Grandmaster - Patch 25.9 Season 15",
+          "rankClaim": "Grandmaster",
+          "patch": "25.9",
+          "durationSec": 1530,
+          "region": "KR",
+          "player": "PzZZang",
+          "uploaded": "2025-05-10",
+          "moments": []
+        },
+        {
+          "videoId": "pjgtb6nu-Ug",
+          "title": "Yasuo vs Sylas Mid - KR Grandmaster - Patch 25.8 Season 15",
+          "rankClaim": "Grandmaster",
+          "patch": "25.8",
+          "durationSec": 1781,
+          "region": "KR",
+          "uploaded": "2025-04-30",
+          "moments": []
+        },
+        {
+          "videoId": "KYCUm7wb588",
+          "title": "Yasuo vs Sylas Mid - KR Grandmaster - Patch 25.5 Season 15",
+          "rankClaim": "Grandmaster",
+          "patch": "25.5",
+          "durationSec": 1540,
+          "region": "KR",
+          "uploaded": "2025-03-19",
+          "moments": []
+        },
+        {
+          "videoId": "ZKLiPpQhKXU",
+          "title": "Yasuo Mid vs Sylas - KR Master Patch 25.05",
+          "rankClaim": "Master",
+          "patch": "25.5",
+          "durationSec": 1720,
+          "region": "KR",
+          "uploaded": "2025-03-09",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 711,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "2vhlidl-PHo",
+          "title": "Yasuo Mid vs Vex - KR Master Patch 25.19",
+          "rankClaim": "Master",
+          "patch": "25.19",
+          "durationSec": 1608,
+          "region": "KR",
+          "uploaded": "2025-09-28",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 777,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "y0PoAo4aP9A",
+          "title": "Yasuo Mid vs Yone - KR Master Patch 26.08",
+          "rankClaim": "Master",
+          "patch": "26.8",
+          "durationSec": 1666,
+          "region": "KR",
+          "uploaded": "2026-04-18",
+          "result": "L",
+          "moments": [
+            {
+              "atSec": 185,
+              "label": "First Blood — Yasuo kills Yone",
+              "kind": "kill"
+            },
+            {
+              "atSec": 335,
+              "label": "Red takes 1st Dragon (Ocean)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 727,
+              "label": "Blue takes 1st Dragon (Hextech)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 769,
+              "label": "Yasuo eliminates Yone"
+            },
+            {
+              "atSec": 817,
+              "label": "Lee Sin takes down Sylas"
+            },
+            {
+              "atSec": 864,
+              "label": "Yasuo takes down Yone"
+            },
+            {
+              "atSec": 923,
+              "label": "Yasuo picks off Sylas"
+            },
+            {
+              "atSec": 1044,
+              "label": "Mordekaiser Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1096,
+              "label": "Blue takes 2nd Dragon (Cloud)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1136,
+              "label": "Yasuo eliminates Yone"
+            },
+            {
+              "atSec": 1228,
+              "label": "Yasuo takes down Renekton"
+            },
+            {
+              "atSec": 1375,
+              "label": "Yasuo takes down Thresh"
+            },
+            {
+              "atSec": 1406,
+              "label": "Red takes Baron",
+              "kind": "baron"
+            },
+            {
+              "atSec": 1438,
+              "label": "Red takes 2nd Dragon (Cloud)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1502,
+              "label": "Yasuo eliminates Yone"
+            },
+            {
+              "atSec": 1528,
+              "label": "Bot Inhibitor falls (Blue)"
+            },
+            {
+              "atSec": 1562,
+              "label": "Mid Inhibitor falls (Blue)"
+            },
+            {
+              "atSec": 1594,
+              "label": "Team fight (3 kills)",
+              "kind": "teamfight"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 777,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "ZMUl5gnwgeo",
+          "title": "Yasuo Top vs Yone - KR Grandmaster Patch 26.09",
+          "rankClaim": "Grandmaster",
+          "patch": "26.9",
+          "durationSec": 1478,
+          "region": "KR",
+          "uploaded": "2026-05-01",
+          "moments": []
+        },
+        {
+          "videoId": "3B-BICkMpn8",
+          "title": "Yasuo Top vs Yone - KR Master Patch 25.22",
+          "rankClaim": "Master",
+          "patch": "25.22",
+          "durationSec": 1819,
+          "region": "KR",
+          "uploaded": "2025-11-18",
+          "moments": []
+        },
+        {
+          "videoId": "EMFSLq1Ebqw",
+          "title": "Yasuo Top vs Yone - KR Master Patch 25.21",
+          "rankClaim": "Master",
+          "patch": "25.21",
+          "durationSec": 1917,
+          "region": "KR",
+          "uploaded": "2025-10-26",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 799,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "Sb1pShIsaPI",
+          "title": "Yasuo Top vs Ambessa - KR Master Patch 26.14",
+          "rankClaim": "Master",
+          "patch": "26.14",
+          "durationSec": 1844,
+          "region": "KR",
+          "uploaded": "2026-07-28",
+          "moments": []
+        },
+        {
+          "videoId": "Bgf8aPrcMS4",
+          "title": "Yasuo Top vs Ambessa - KR Grandmaster Patch 26.12",
+          "rankClaim": "Grandmaster",
+          "patch": "26.12",
+          "durationSec": 1642,
+          "region": "KR",
+          "uploaded": "2026-06-22",
+          "moments": []
+        },
+        {
+          "videoId": "abBMFRc7IZc",
+          "title": "PzZZang Yasuo vs Ambessa Top - KR Challenger - Patch 16.05 Season 16",
+          "rankClaim": "Challenger",
+          "patch": "26.5",
+          "durationSec": 1381,
+          "region": "KR",
+          "player": "PzZZang",
+          "uploaded": "2026-03-17",
+          "moments": []
+        },
+        {
+          "videoId": "6FY48tifbHI",
+          "title": "Yasuo Top vs Ambessa - KR Master Patch 26.05",
+          "rankClaim": "Master",
+          "patch": "26.5",
+          "durationSec": 1659,
+          "region": "KR",
+          "uploaded": "2026-03-13",
+          "moments": []
+        },
+        {
+          "videoId": "EEF0PFQuIrU",
+          "title": "Yasuo Top vs Ambessa - EUW Grandmaster Patch 25.23",
+          "rankClaim": "Grandmaster",
+          "patch": "25.23",
+          "durationSec": 1645,
+          "region": "EUW",
+          "uploaded": "2025-11-30",
+          "moments": []
+        },
+        {
+          "videoId": "Djd_4xLRYEs",
+          "title": "Yasuo vs Ambessa Top - EUW Grandmaster - Patch 25.17 Season 15",
+          "rankClaim": "Grandmaster",
+          "patch": "25.17",
+          "durationSec": 1781,
+          "region": "EUW",
+          "uploaded": "2025-08-29",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 800,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "os-i_uIYk8U",
+          "title": "(ZYB Jezu) Yasuo Mid vs Mel - EUW Challenger Patch 26.13",
+          "rankClaim": "Challenger",
+          "patch": "26.13",
+          "durationSec": 1789,
+          "region": "EUW",
+          "player": "ZYB Jezu",
+          "uploaded": "2026-07-11",
+          "moments": []
+        },
+        {
+          "videoId": "riL1yB1uYJI",
+          "title": "(SK LIDER) Yasuo Mid vs Mel - EUW Challenger Patch 26.11",
+          "rankClaim": "Challenger",
+          "patch": "26.11",
+          "durationSec": 1604,
+          "region": "EUW",
+          "player": "SK LIDER",
+          "uploaded": "2026-06-03",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 804,
+      "lane": "adc",
+      "videos": [
+        {
+          "videoId": "KOPhrNqMYPw",
+          "title": "Yasuo ADC vs Yunara - NA Challenger Patch 25.21",
+          "rankClaim": "Challenger",
+          "patch": "25.21",
+          "durationSec": 1867,
+          "region": "NA",
+          "uploaded": "2025-11-06",
+          "moments": []
+        },
+        {
+          "videoId": "q3i4utI70HU",
+          "title": "Yasuo ADC vs Yunara - NA Grandmaster Patch 25.15",
+          "rankClaim": "Grandmaster",
+          "patch": "25.15",
+          "durationSec": 2046,
+          "region": "NA",
+          "uploaded": "2025-08-09",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 887,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "cHeM_kgUtm8",
+          "title": "Yasuo Top vs Gwen - KR Master Patch 26.03",
+          "rankClaim": "Master",
+          "patch": "26.3",
+          "durationSec": 1598,
+          "region": "KR",
+          "uploaded": "2026-02-14",
+          "moments": []
+        },
+        {
+          "videoId": "8MxFZIRhDWE",
+          "title": "Pz ZZang Yasuo vs Gwen Top - KR Grandmaster - Patch 25.14 Season 15",
+          "rankClaim": "Grandmaster",
+          "patch": "25.14",
+          "durationSec": 1920,
+          "region": "KR",
+          "player": "Pz ZZang",
+          "uploaded": "2025-07-23",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 893,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "SxSAlNyX4aQ",
+          "title": "Yasuo Mid vs Aurora - KR Grandmaster Patch 25.22",
+          "rankClaim": "Grandmaster",
+          "patch": "25.22",
+          "durationSec": 1672,
+          "region": "KR",
+          "uploaded": "2025-11-10",
+          "moments": []
+        },
+        {
+          "videoId": "YHPVZSkisRI",
+          "title": "Yasuo vs Aurora Mid - KR Challenger - Patch 25.21 Season 15",
+          "rankClaim": "Challenger",
+          "patch": "25.21",
+          "durationSec": 1666,
+          "region": "KR",
+          "uploaded": "2025-10-25",
+          "moments": []
+        },
+        {
+          "videoId": "MvMgAyIJIPk",
+          "title": "Pz ZZang Yasuo vs Aurora Mid - KR Challenger - Patch 25.13 Season 15",
+          "rankClaim": "Challenger",
+          "patch": "25.13",
+          "durationSec": 1981,
+          "region": "KR",
+          "player": "Pz ZZang",
+          "uploaded": "2025-07-14",
+          "moments": []
+        },
+        {
+          "videoId": "4SCEBjdPlDQ",
+          "title": "Yasuo vs Aurora MID [ Doinb ] Patch 25.3 Korea Master ✅",
+          "rankClaim": "Master",
+          "patch": "25.3",
+          "durationSec": 1281,
+          "region": "KR",
+          "player": "Doinb",
+          "uploaded": "2025-02-19",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 893,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "oc8RmP8r0po",
+          "title": "Yasuo Top vs Aurora - KR Grandmaster Patch 25.17",
+          "rankClaim": "Grandmaster",
+          "patch": "25.17",
+          "durationSec": 1748,
+          "region": "KR",
+          "uploaded": "2025-09-05",
+          "moments": []
+        },
+        {
+          "videoId": "Z6vxyuPntXo",
+          "title": "Yasuo Top vs Aurora - EUW Grandmaster Patch 25.16",
+          "rankClaim": "Grandmaster",
+          "patch": "25.16",
+          "durationSec": 2092,
+          "region": "EUW",
+          "uploaded": "2025-08-22",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 897,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "yhyMtyRCC1s",
+          "title": "PzZZang Yasuo vs K'Sante Top - KR Challenger - Patch 25.12 Season 15",
+          "rankClaim": "Challenger",
+          "patch": "25.12",
+          "durationSec": 1351,
+          "region": "KR",
+          "player": "PzZZang",
+          "uploaded": "2025-06-23",
+          "moments": []
+        },
+        {
+          "videoId": "es5m36y_tLI",
+          "title": "PzZZang Yasuo vs K'Sante Top - KR Challenger - Patch 25.11 Season 15",
+          "rankClaim": "Challenger",
+          "patch": "25.11",
+          "durationSec": 1681,
+          "region": "KR",
+          "player": "PzZZang",
+          "uploaded": "2025-06-05",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 904,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "pNdQBI7X_2U",
+          "title": "Yasuo Top vs Zaahen - KR Challenger Patch 26.21",
+          "rankClaim": "Challenger",
+          "patch": "26.21",
+          "durationSec": 1711,
+          "region": "KR",
+          "uploaded": "2026-11-01",
+          "result": "W",
+          "moments": [
+            {
+              "atSec": 337,
+              "label": "Red takes 1st Dragon (Mountain)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 382,
+              "label": "Team fight (3 kills)",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 657,
+              "label": "Red takes 2nd Dragon (Ocean)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 732,
+              "label": "Zoe takes down Zaahen"
+            },
+            {
+              "atSec": 829,
+              "label": "Zoe takes down Zaahen"
+            },
+            {
+              "atSec": 968,
+              "label": "Red takes 3rd Dragon (Cloud)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1287,
+              "label": "Red takes 4th Dragon (Cloud)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1299,
+              "label": "Yasuo eliminates Lulu"
+            },
+            {
+              "atSec": 1374,
+              "label": "Blue takes Baron",
+              "kind": "baron"
+            },
+            {
+              "atSec": 1556,
+              "label": "Kalista picks off Zaahen"
+            },
+            {
+              "atSec": 1584,
+              "label": "Mid Inhibitor falls (Blue)"
+            },
+            {
+              "atSec": 1659,
+              "label": "Red takes Elder Dragon",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1667,
+              "label": "Zoe Double Kill",
+              "kind": "kill"
+            }
+          ]
+        },
+        {
+          "videoId": "sinbCnDjYLI",
+          "title": "Yasuo Top vs Zaahen - KR Master Patch 25.24",
+          "rankClaim": "Master",
+          "patch": "25.24",
+          "durationSec": 1556,
+          "region": "KR",
+          "uploaded": "2026-01-03",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 128,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 242,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 326,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 431,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 492,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 519,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 576,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 701,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 737,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 781,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 819,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1059,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1091,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1178,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1239,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1265,
+              "label": "Get a Triple Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1294,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1395,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1433,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1469,
+              "label": "Take down The Inhibitor"
+            },
+            {
+              "atSec": 1518,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1545,
+              "label": "End credit"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 910,
+      "lane": "adc",
+      "videos": [
+        {
+          "videoId": "RBE9A7IhMXs",
+          "title": "(ES xKenzuke) Yasuo ADC vs Hwei - EUW Grandmaster Patch 26.13",
+          "rankClaim": "Grandmaster",
+          "patch": "26.13",
+          "durationSec": 1625,
+          "region": "EUW",
+          "player": "ES xKenzuke",
+          "uploaded": "2026-07-04",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 910,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "tqButR2oNEU",
+          "title": "Yasuo Mid vs Hwei - KR Master Patch 25.17",
+          "rankClaim": "Master",
+          "patch": "25.17",
+          "durationSec": 1459,
+          "region": "KR",
+          "uploaded": "2025-08-31",
+          "moments": []
+        }
+      ]
+    }
+  ]
+}

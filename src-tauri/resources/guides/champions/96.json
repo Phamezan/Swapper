@@ -1,0 +1,3112 @@
+{
+  "schema": 1,
+  "champion": 96,
+  "generatedAt": "2026-11-07T13:25:14.592Z",
+  "guides": [],
+  "general": [
+    {
+      "champion": 96,
+      "lane": "adc",
+      "patch": "26.21",
+      "reviewed": false,
+      "keyTips": [
+        {
+          "text": "Respect early vulnerability with farm and experience first, skipping extended fights in the opening levels.",
+          "scope": "champion",
+          "sourceIds": [
+            "mobalytics-kogmaw"
+          ]
+        },
+        {
+          "text": "Gate aggression on W: each point improves the damage window, so trade only with W up and a range edge, longer over short after the first item.",
+          "scope": "champion",
+          "sourceIds": [
+            "mobalytics-kogmaw-build"
+          ],
+          "abilityKeys": [
+            {
+              "champion": 96,
+              "key": "W"
+            }
+          ]
+        },
+        {
+          "text": "Stay grouped by the support at all times; peel converts directly into damage while isolation means death.",
+          "scope": "champion",
+          "sourceIds": [
+            "mobalytics-kogmaw"
+          ]
+        }
+      ],
+      "sections": {
+        "overview": {
+          "tips": []
+        },
+        "early-lane": {
+          "tips": [
+            {
+              "text": "At level 6, soften low-health targets with long-range R poke, conserving mana since the AD setup rates its combat value limited.",
+              "scope": "champion",
+              "sourceIds": [
+                "mobalytics-kogmaw"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 96,
+                  "key": "R"
+                }
+              ]
+            },
+            {
+              "text": "Check suspicious bushes with R instead of face-checking them on foot.",
+              "scope": "champion",
+              "sourceIds": [
+                "mobalytics-kogmaw-build"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 96,
+                  "key": "R"
+                }
+              ]
+            },
+            {
+              "text": "After the bot outer turret, rotate mid and pressure that tower for safer map movement.",
+              "scope": "champion",
+              "sourceIds": [
+                "mobalytics-kogmaw"
+              ]
+            }
+          ]
+        },
+        "mid-lane": {
+          "tips": [
+            {
+              "text": "Force nothing while behind, especially with Baron open for the enemy.",
+              "scope": "champion",
+              "sourceIds": [
+                "mobalytics-kogmaw"
+              ]
+            },
+            {
+              "text": "Commit to aggression only with nearby allies ready to respond and protect.",
+              "scope": "champion",
+              "sourceIds": [
+                "mobalytics-kogmaw"
+              ]
+            },
+            {
+              "text": "Hold behind the frontline and support instead of walking forward to extend chases.",
+              "scope": "champion",
+              "sourceIds": [
+                "mobalytics-kogmaw"
+              ]
+            }
+          ]
+        },
+        "win-condition": {
+          "tips": [
+            {
+              "text": "Fight late at maximum attack range while moving with the team, dealing damage without isolation.",
+              "scope": "champion",
+              "sourceIds": [
+                "mobalytics-kogmaw"
+              ]
+            },
+            {
+              "text": "Shave enemies pre-fight with W range and R poke from safe positions.",
+              "scope": "champion",
+              "sourceIds": [
+                "mobalytics-kogmaw"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 96,
+                  "key": "W"
+                },
+                {
+                  "champion": 96,
+                  "key": "R"
+                }
+              ]
+            },
+            {
+              "text": "Start nothing without peel against engage and control.",
+              "scope": "champion",
+              "sourceIds": [
+                "mobalytics-kogmaw"
+              ]
+            }
+          ]
+        }
+      },
+      "itemization": [
+        {
+          "text": "Run Flash and Barrier with Lethal Tempo, Triumph, Legend: Bloodline, and Last Stand plus Conditioning and Overgrowth on attack-speed, adaptive-force, and health-scaling shards.",
+          "scope": "champion",
+          "sourceIds": [
+            "mobalytics-kogmaw-build"
+          ]
+        },
+        {
+          "text": "Order Guinsoo's Rageblade, Berserker's Greaves, Navori Flickerblade, Terminus, Jak'Sho, and Runaan's Hurricane while maxing W, then Q, then E.",
+          "scope": "champion",
+          "sourceIds": [
+            "mobalytics-kogmaw-build"
+          ],
+          "abilityKeys": [
+            {
+              "champion": 96,
+              "key": "W"
+            },
+            {
+              "champion": 96,
+              "key": "Q"
+            },
+            {
+              "champion": 96,
+              "key": "E"
+            }
+          ],
+          "itemIds": [
+            3124,
+            3006,
+            6675,
+            3302,
+            3085
+          ]
+        },
+        {
+          "text": "Open Blade of the Ruined King early for sustain and high-health targets, pairing it later with Guinsoo's, Runaan's, Terminus, and Jak'Sho.",
+          "scope": "champion",
+          "sourceIds": [
+            "mobalytics-kogmaw-build"
+          ],
+          "itemIds": [
+            3302
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "id": "mobalytics-kogmaw",
+          "author": "Mobalytics",
+          "rankClaim": "No rank claim",
+          "url": "https://mobalytics.gg/lol/champions/kogmaw/guide/adc",
+          "kind": "web"
+        },
+        {
+          "id": "mobalytics-kogmaw-build",
+          "author": "Mobalytics",
+          "rankClaim": "No rank claim",
+          "url": "https://mobalytics.gg/lol/champions/kogmaw/build",
+          "kind": "web"
+        }
+      ]
+    }
+  ],
+  "vods": [
+    {
+      "lane": "adc",
+      "videos": [
+        {
+          "videoId": "NkS69drUVsU",
+          "title": "\"Jz\" 2000LP Kog'maw : This Dude is a Unstoppable Machine Gun \" 2v8 Dominating in HighElo \" Engsub",
+          "rankClaim": "Master+",
+          "patch": "26.17",
+          "durationSec": 895,
+          "patchEstimated": true,
+          "player": "Jz",
+          "uploaded": "2026-09-05",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "NRwQEe-Mjhs",
+          "title": "T1 PEYZ : This is What Machine Gun Kog'maw Look Like",
+          "rankClaim": "Master+",
+          "patch": "26.16",
+          "durationSec": 1317,
+          "patchEstimated": true,
+          "player": "Peyz",
+          "uploaded": "2026-08-19",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "f8hsigX21co",
+          "title": "Gumayusi : This is What Machine Gun Kog'maw Look Like, Insane Comeback of History - Engsub",
+          "rankClaim": "Master+",
+          "patch": "26.11",
+          "durationSec": 913,
+          "patchEstimated": true,
+          "player": "Gumayusi",
+          "uploaded": "2026-05-31",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "rU4oyBApnI0",
+          "title": "Smash : His Kog'maw is Damage is INSANITY - Engsub",
+          "rankClaim": "Master+",
+          "patch": "26.2",
+          "durationSec": 895,
+          "patchEstimated": true,
+          "player": "Smash",
+          "uploaded": "2026-01-26",
+          "format": "stream",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 3,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "JMKoc8_pVtw",
+          "title": "Kog'Maw Mid vs Galio - KR Master Patch 26.12",
+          "rankClaim": "Master",
+          "patch": "26.12",
+          "durationSec": 1622,
+          "region": "KR",
+          "uploaded": "2026-06-22",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 4,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "ZrdswvxNx2E",
+          "title": "Kog'Maw Mid vs Twisted Fate - KR Master Patch 25.13",
+          "rankClaim": "Master",
+          "patch": "25.13",
+          "durationSec": 1668,
+          "region": "KR",
+          "uploaded": "2025-07-09",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 14,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "qwlVmgQe7BE",
+          "title": "Kog'Maw Mid vs Sion - EUW Grandmaster Patch 25.17",
+          "rankClaim": "Grandmaster",
+          "patch": "25.17",
+          "durationSec": 2047,
+          "region": "EUW",
+          "uploaded": "2025-09-08",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 15,
+      "lane": "adc",
+      "videos": [
+        {
+          "videoId": "MYOGGfyg__Q",
+          "title": "Kog'Maw ADC vs Sivir - EUW Challenger Patch 26.11",
+          "rankClaim": "Challenger",
+          "patch": "26.11",
+          "durationSec": 1435,
+          "region": "EUW",
+          "uploaded": "2026-06-09",
+          "moments": []
+        },
+        {
+          "videoId": "Bgfb3MfO1PQ",
+          "title": "Kog'Maw vs Sivir [ ADC ] Lol Korea Master Patch 25.23 ✅",
+          "rankClaim": "Master",
+          "patch": "25.23",
+          "durationSec": 1416,
+          "region": "KR",
+          "uploaded": "2025-12-03",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 18,
+      "lane": "adc",
+      "videos": [
+        {
+          "videoId": "gajoxfdI3wA",
+          "title": "Kog'Maw ADC vs Tristana - EUW Challenger Patch 26.06",
+          "rankClaim": "Challenger",
+          "patch": "26.6",
+          "durationSec": 1580,
+          "region": "EUW",
+          "uploaded": "2026-03-26",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 213,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 422,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 574,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 657,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 825,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 846,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 920,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 949,
+              "label": "Hunt The Rift Herald",
+              "kind": "herald"
+            },
+            {
+              "atSec": 965,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1151,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1169,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1210,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1381,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1400,
+              "label": "Get a Triple Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1427,
+              "label": "Hunt The Dragon",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1472,
+              "label": "Hunt The Baron Nashor",
+              "kind": "baron"
+            },
+            {
+              "atSec": 1501,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1540,
+              "label": "Get a Quadra Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1569,
+              "label": "End credit"
+            }
+          ]
+        },
+        {
+          "videoId": "n5ZtL0bKzsw",
+          "title": "Kog'Maw ADC vs Tristana - KR Master Patch 25.13",
+          "rankClaim": "Master",
+          "patch": "25.13",
+          "durationSec": 1835,
+          "region": "KR",
+          "uploaded": "2025-07-04",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 21,
+      "lane": "adc",
+      "videos": [
+        {
+          "videoId": "fJ6I0-VDwT0",
+          "title": "Kog'Maw ADC vs Miss Fortune - KR Master Patch 26.20",
+          "rankClaim": "Master",
+          "patch": "26.20",
+          "durationSec": 1503,
+          "region": "KR",
+          "uploaded": "2026-10-14",
+          "result": "W",
+          "moments": [
+            {
+              "atSec": 205,
+              "label": "First Blood — Lee Sin kills Miss Fortune",
+              "kind": "kill"
+            },
+            {
+              "atSec": 333,
+              "label": "Red takes 1st Dragon (Ocean)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 484,
+              "label": "Kog'Maw picks off Nautilus"
+            },
+            {
+              "atSec": 649,
+              "label": "Kog'Maw kills Orianna",
+              "kind": "kill"
+            },
+            {
+              "atSec": 688,
+              "label": "Red takes 2nd Dragon (Hextech)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 794,
+              "label": "Kog'Maw picks off Nautilus"
+            },
+            {
+              "atSec": 1023,
+              "label": "Blue takes 1st Dragon (Mountain)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1025,
+              "label": "Lee Sin takes down Qiyana"
+            },
+            {
+              "atSec": 1055,
+              "label": "Lee Sin kills Pantheon",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1087,
+              "label": "Ambessa picks off Miss Fortune"
+            },
+            {
+              "atSec": 1138,
+              "label": "Kog'Maw eliminates Qiyana"
+            },
+            {
+              "atSec": 1247,
+              "label": "Lee Sin kills Nautilus",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1295,
+              "label": "Red takes Baron",
+              "kind": "baron"
+            },
+            {
+              "atSec": 1345,
+              "label": "Kog'Maw Triple Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1378,
+              "label": "Red takes 3rd Dragon (Mountain)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1418,
+              "label": "Lee Sin Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1436,
+              "label": "Mid Inhibitor falls (Blue)"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 22,
+      "lane": "adc",
+      "videos": [
+        {
+          "videoId": "03EbLJiXHsg",
+          "title": "Kog'Maw vs Ashe [ ADC ] Korea Master 488 LP | Patch 26.4",
+          "rankClaim": "Master",
+          "patch": "26.4",
+          "durationSec": 1513,
+          "region": "KR",
+          "uploaded": "2026-03-01",
+          "moments": []
+        },
+        {
+          "videoId": "XUVuJ3snthA",
+          "title": "KogMaw vs Ashe [ ADC ] Lol Korea Master Patch 25.18",
+          "rankClaim": "Master",
+          "patch": "25.18",
+          "durationSec": 1449,
+          "region": "KR",
+          "uploaded": "2025-09-21",
+          "moments": []
+        },
+        {
+          "videoId": "lHwNjTcemzs",
+          "title": "Kog'Maw ADC vs Ashe - KR Master Patch 25.05",
+          "rankClaim": "Master",
+          "patch": "25.5",
+          "durationSec": 1571,
+          "region": "KR",
+          "uploaded": "2025-03-14",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 197,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 394,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 721,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 884,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 986,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1103,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1161,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1268,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1365,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1403,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1432,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1449,
+              "label": "Get a Triple Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1524,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1550,
+              "label": "End credit"
+            }
+          ]
+        },
+        {
+          "videoId": "CdWD-zc2vL8",
+          "title": "Kog'Maw ADC vs Ashe - NA Challenger Patch 25.04",
+          "rankClaim": "Challenger",
+          "patch": "25.4",
+          "durationSec": 1987,
+          "region": "NA",
+          "uploaded": "2025-03-01",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 26,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "wOLKElnm31s",
+          "title": "Kog'Maw Mid vs Zilean - EUW Challenger Patch 25.19",
+          "rankClaim": "Challenger",
+          "patch": "25.19",
+          "durationSec": 1925,
+          "region": "EUW",
+          "uploaded": "2025-10-07",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 27,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "hR0zZL1xFIA",
+          "title": "Kog'Maw vs Singed 16/0/5 (Top) | EUW Grandmaster | Kog'Maw OTP Replay",
+          "rankClaim": "Grandmaster",
+          "patch": "26.10",
+          "durationSec": 1856,
+          "region": "EUW",
+          "patchEstimated": true,
+          "uploaded": "2026-05-15",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 42,
+      "lane": "adc",
+      "videos": [
+        {
+          "videoId": "emeiT6gfw74",
+          "title": "Kog'Maw ADC vs Corki - KR Master Patch 25.24",
+          "rankClaim": "Master",
+          "patch": "25.24",
+          "durationSec": 1619,
+          "region": "KR",
+          "uploaded": "2025-12-11",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 42,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "VzVHCX2YB8c",
+          "title": "Kog'Maw Mid vs Corki - KR Grandmaster Patch 26.21",
+          "rankClaim": "Grandmaster",
+          "patch": "26.21",
+          "durationSec": 1775,
+          "region": "KR",
+          "uploaded": "2026-11-01",
+          "result": "W",
+          "moments": [
+            {
+              "atSec": 93,
+              "label": "Kog'Maw takes down Corki"
+            },
+            {
+              "atSec": 391,
+              "label": "Red takes 1st Dragon (Hextech)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 646,
+              "label": "Kog'Maw catches Corki again"
+            },
+            {
+              "atSec": 802,
+              "label": "Blue takes 1st Dragon (Chemtech)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 900,
+              "label": "Kog'Maw outplays Kennen"
+            },
+            {
+              "atSec": 981,
+              "label": "Kog'Maw takes down Kennen"
+            },
+            {
+              "atSec": 1089,
+              "label": "Kog'Maw takes down Maokai"
+            },
+            {
+              "atSec": 1213,
+              "label": "Blue takes 2nd Dragon (Infernal)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1264,
+              "label": "Lee Sin Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1299,
+              "label": "Red takes Baron",
+              "kind": "baron"
+            },
+            {
+              "atSec": 1362,
+              "label": "Kog'Maw outduels Corki (3rd time)"
+            },
+            {
+              "atSec": 1373,
+              "label": "Lee Sin takes down Pantheon"
+            },
+            {
+              "atSec": 1530,
+              "label": "Red takes 2nd Dragon (Infernal)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1539,
+              "label": "Kog'Maw eliminates Corki"
+            },
+            {
+              "atSec": 1631,
+              "label": "Kog'Maw Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1678,
+              "label": "Red takes 2nd Baron",
+              "kind": "baron"
+            },
+            {
+              "atSec": 1743,
+              "label": "Mid Inhibitor falls (Blue)"
+            },
+            {
+              "atSec": 1756,
+              "label": "Kog'Maw kills Kai'Sa",
+              "kind": "kill"
+            }
+          ]
+        },
+        {
+          "videoId": "GTSnVNvF-Mc",
+          "title": "Kog'Maw Mid vs Corki - NA Challenger Patch 25.18",
+          "rankClaim": "Challenger",
+          "patch": "25.18",
+          "durationSec": 1837,
+          "region": "NA",
+          "uploaded": "2025-09-24",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 43,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "3OXDWGazfmE",
+          "title": "(CCG Cody Sun) Kog'Maw Mid vs Karma - NA Challenger Patch 26.15",
+          "rankClaim": "Challenger",
+          "patch": "26.15",
+          "durationSec": 1886,
+          "region": "NA",
+          "player": "CCG Cody Sun",
+          "uploaded": "2026-08-04",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 51,
+      "lane": "adc",
+      "videos": [
+        {
+          "videoId": "b2TyvEteGJQ",
+          "title": "Kog'Maw ADC vs Caitlyn - KR Grandmaster Patch 26.03",
+          "rankClaim": "Grandmaster",
+          "patch": "26.3",
+          "durationSec": 1559,
+          "region": "KR",
+          "uploaded": "2026-02-13",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 390,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 507,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 697,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 811,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 924,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1016,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1054,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1064,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1127,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1201,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1245,
+              "label": "Hunt The Baron Nashor",
+              "kind": "baron"
+            },
+            {
+              "atSec": 1333,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1359,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1383,
+              "label": "Take down The Inhibitor"
+            },
+            {
+              "atSec": 1548,
+              "label": "End credit"
+            }
+          ]
+        },
+        {
+          "videoId": "6jUDARtVWyY",
+          "title": "Kog'Maw ADC vs Caitlyn - NA Grandmaster Patch 25.24",
+          "rankClaim": "Grandmaster",
+          "patch": "25.24",
+          "durationSec": 1564,
+          "region": "NA",
+          "uploaded": "2025-12-23",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 73,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 338,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 500,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 557,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 616,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 674,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 764,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 839,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 871,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1081,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1144,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1318,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1347,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1553,
+              "label": "End credit"
+            }
+          ]
+        },
+        {
+          "videoId": "2aVqd4racnc",
+          "title": "Kog'Maw vs Caitlyn [ ADC ] Lol Korea Master Patch 25.22 ✅",
+          "rankClaim": "Master",
+          "patch": "25.22",
+          "durationSec": 1703,
+          "region": "KR",
+          "uploaded": "2025-11-14",
+          "moments": []
+        },
+        {
+          "videoId": "qppnCjH8a_g",
+          "title": "Kog'Maw ADC vs Caitlyn - EUW Grandmaster Patch 25.21",
+          "rankClaim": "Grandmaster",
+          "patch": "25.21",
+          "durationSec": 1743,
+          "region": "EUW",
+          "uploaded": "2025-10-29",
+          "moments": []
+        },
+        {
+          "videoId": "ONKWJ5pl8e0",
+          "title": "Kog'Maw ADC vs Caitlyn - KR Master Patch 25.15",
+          "rankClaim": "Master",
+          "patch": "25.15",
+          "durationSec": 1852,
+          "region": "KR",
+          "uploaded": "2025-08-09",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 54,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "HiwjGJ8ivxg",
+          "title": "Kog'Maw Top vs Malphite - EUW Grandmaster Patch 26.13",
+          "rankClaim": "Grandmaster",
+          "patch": "26.13",
+          "durationSec": 1864,
+          "region": "EUW",
+          "uploaded": "2026-07-02",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 55,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "5n8iuI2PwsU",
+          "title": "(CJJ Jensen) Kog'Maw Mid vs Katarina - EUW Grandmaster Patch 26.13",
+          "rankClaim": "Grandmaster",
+          "patch": "26.13",
+          "durationSec": 1865,
+          "region": "EUW",
+          "player": "CJJ Jensen",
+          "uploaded": "2026-07-06",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 68,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "6q-f1hBzdps",
+          "title": "Kog'Maw Top vs Rumble - KR Master Patch 26.14",
+          "rankClaim": "Master",
+          "patch": "26.14",
+          "durationSec": 1564,
+          "region": "KR",
+          "uploaded": "2026-07-23",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 69,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "COEEKzcJzrI",
+          "title": "(NERD Drakehero) Kog'Maw Mid vs Cassiopeia - BR Challenger Patch 26.19",
+          "rankClaim": "Challenger",
+          "patch": "26.19",
+          "durationSec": 1614,
+          "player": "NERD Drakehero",
+          "uploaded": "2026-10-04",
+          "moments": []
+        },
+        {
+          "videoId": "54UrP3V2WSI",
+          "title": "(DK ShowMaker) Kog'Maw Mid vs Cassiopeia - KR Challenger Patch 26.10",
+          "rankClaim": "Challenger",
+          "patch": "26.10",
+          "durationSec": 1544,
+          "region": "KR",
+          "player": "ShowMaker",
+          "team": "DK",
+          "uploaded": "2026-05-20",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 74,
+      "lane": "adc",
+      "videos": [
+        {
+          "videoId": "jlwt3uxV6n4",
+          "title": "Kog'Maw ADC vs Heimerdinger - KR Grandmaster Patch 25.09",
+          "rankClaim": "Grandmaster",
+          "patch": "25.9",
+          "durationSec": 1558,
+          "region": "KR",
+          "uploaded": "2025-05-09",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 79,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "tnEz1jZkGuA",
+          "title": "Kog'Maw Mid vs Gragas - EUW Challenger Patch 26.07",
+          "rankClaim": "Challenger",
+          "patch": "26.7",
+          "durationSec": 1567,
+          "region": "EUW",
+          "uploaded": "2026-04-15",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 81,
+      "lane": "adc",
+      "videos": [
+        {
+          "videoId": "pdIxzFaxxxw",
+          "title": "(DYN bakisa) Kog'Maw ADC vs Ezreal - EUW Grandmaster Patch 26.16",
+          "rankClaim": "Grandmaster",
+          "patch": "26.16",
+          "durationSec": 1699,
+          "region": "EUW",
+          "player": "DYN bakisa",
+          "uploaded": "2026-08-19",
+          "moments": []
+        },
+        {
+          "videoId": "z6XYgFItXcw",
+          "title": "Kog'Maw ADC vs Ezreal - EUW Challenger Patch 26.04",
+          "rankClaim": "Challenger",
+          "patch": "26.4",
+          "durationSec": 1450,
+          "region": "EUW",
+          "uploaded": "2026-02-27",
+          "moments": []
+        },
+        {
+          "videoId": "Au5muXlbqQ4",
+          "title": "Kog'Maw ADC vs Ezreal - KR Master Patch 25.17",
+          "rankClaim": "Master",
+          "patch": "25.17",
+          "durationSec": 1529,
+          "region": "KR",
+          "uploaded": "2025-09-03",
+          "moments": []
+        },
+        {
+          "videoId": "iasB5wlRWPg",
+          "title": "Kog'Maw ADC vs Ezreal - KR Master Patch 25.07",
+          "rankClaim": "Master",
+          "patch": "25.7",
+          "durationSec": 1968,
+          "region": "KR",
+          "uploaded": "2025-04-12",
+          "moments": []
+        },
+        {
+          "videoId": "sEBPcuirr-I",
+          "title": "KogMaw vs Ezreal [ ADC ] Lol Korea Master Patch 25.2 ✅",
+          "rankClaim": "Master",
+          "patch": "25.2",
+          "durationSec": 1665,
+          "region": "KR",
+          "uploaded": "2025-01-28",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 90,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "uW5o4q-zS4E",
+          "title": "Kog'Maw Mid vs Malzahar - KR Master Patch 25.24",
+          "rankClaim": "Master",
+          "patch": "25.24",
+          "durationSec": 1557,
+          "region": "KR",
+          "uploaded": "2025-12-15",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 344,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 412,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 534,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 618,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 640,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 804,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 837,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1058,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1114,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1162,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1243,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1267,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1289,
+              "label": "Hunt The Atakhan"
+            },
+            {
+              "atSec": 1329,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1363,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1386,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1401,
+              "label": "Take down The Inhibitor"
+            },
+            {
+              "atSec": 1421,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1520,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1546,
+              "label": "End credit"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 101,
+      "lane": "adc",
+      "videos": [
+        {
+          "videoId": "XOhljGJwaH4",
+          "title": "Kog'Maw ADC vs Xerath - EUW Grandmaster Patch 26.14",
+          "rankClaim": "Grandmaster",
+          "patch": "26.14",
+          "durationSec": 1451,
+          "region": "EUW",
+          "uploaded": "2026-07-29",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 105,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "n0G9Hls2lu8",
+          "title": "(Kapi) Kog'Maw Mid vs Fizz - EUW Master Patch 26.20",
+          "rankClaim": "Master",
+          "patch": "26.20",
+          "durationSec": 1807,
+          "region": "EUW",
+          "player": "Kapi",
+          "uploaded": "2026-10-17",
+          "result": "W",
+          "moments": [
+            {
+              "atSec": 221,
+              "label": "First Blood — Kog'Maw kills Fizz",
+              "kind": "kill"
+            },
+            {
+              "atSec": 286,
+              "label": "Kog'Maw takes down Fizz"
+            },
+            {
+              "atSec": 510,
+              "label": "Kog'Maw outplays Zaahen"
+            },
+            {
+              "atSec": 594,
+              "label": "Blue takes 1st Dragon (Infernal)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 627,
+              "label": "Kog'Maw catches Fizz again"
+            },
+            {
+              "atSec": 917,
+              "label": "Blue takes 2nd Dragon (Cloud)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1060,
+              "label": "Kog'Maw solo kills Zaahen again",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1100,
+              "label": "Kog'Maw outduels Alistar"
+            },
+            {
+              "atSec": 1113,
+              "label": "Kog'Maw Triple Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1262,
+              "label": "Kog'Maw Triple Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1296,
+              "label": "Red takes 1st Dragon (Ocean)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1367,
+              "label": "Kog'Maw Triple Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1461,
+              "label": "Blue takes Baron",
+              "kind": "baron"
+            },
+            {
+              "atSec": 1576,
+              "label": "Kog'Maw Triple Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1633,
+              "label": "Red takes 2nd Dragon (Ocean)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1744,
+              "label": "Kog'Maw takes down Alistar"
+            },
+            {
+              "atSec": 1768,
+              "label": "Cho'Gath picks off Kalista"
+            },
+            {
+              "atSec": 1780,
+              "label": "Mid Inhibitor falls (Blue)"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 110,
+      "lane": "adc",
+      "videos": [
+        {
+          "videoId": "iiJjmq5EbSY",
+          "title": "Kog'Maw ADC vs Varus - KR Master Patch 26.09",
+          "rankClaim": "Master",
+          "patch": "26.9",
+          "durationSec": 1659,
+          "region": "KR",
+          "uploaded": "2026-05-07",
+          "moments": []
+        },
+        {
+          "videoId": "KV8IwZ318Fc",
+          "title": "Kog'Maw ADC vs Varus - KR Master Patch 25.06",
+          "rankClaim": "Master",
+          "patch": "25.6",
+          "durationSec": 1902,
+          "region": "KR",
+          "uploaded": "2025-03-27",
+          "moments": []
+        },
+        {
+          "videoId": "9rnnCIauILg",
+          "title": "KogMaw vs Varus [ ADC ] Lol Korea Master Patch 25.4 ✅",
+          "rankClaim": "Master",
+          "patch": "25.4",
+          "durationSec": 1503,
+          "region": "KR",
+          "uploaded": "2025-03-03",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 110,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "P-z3NfSBMBA",
+          "title": "CLIMBING THROUGH THE DIAMOND LADDER ON AD CARRY",
+          "rankClaim": "Master+",
+          "patch": "26.5",
+          "durationSec": 27755,
+          "patchEstimated": true,
+          "player": "Alois",
+          "uploaded": "2026-03-16",
+          "format": "stream",
+          "cam": true,
+          "startSec": 3805,
+          "endSec": 5994,
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 112,
+      "lane": "adc",
+      "videos": [
+        {
+          "videoId": "Y6Wkg-ALGcs",
+          "title": "(CNV Cody Sun) Kog'Maw ADC vs Viktor - NA Challenger Patch 26.15",
+          "rankClaim": "Challenger",
+          "patch": "26.15",
+          "durationSec": 1823,
+          "region": "NA",
+          "player": "CNV Cody Sun",
+          "uploaded": "2026-08-09",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 115,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "3Efr1N-HBIE",
+          "title": "Kog'Maw Mid vs Ziggs - EUW Grandmaster Patch 26.04",
+          "rankClaim": "Grandmaster",
+          "patch": "26.4",
+          "durationSec": 1495,
+          "region": "EUW",
+          "uploaded": "2026-03-04",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 117,
+      "lane": "adc",
+      "videos": [
+        {
+          "videoId": "dbH4ktsXcyo",
+          "title": "T1 Peyz : His Kog'maw is UNSTOPPABLE MONSTER ( Duo with T1 Keria Lulu )",
+          "rankClaim": "Master+",
+          "patch": "26.7",
+          "durationSec": 917,
+          "patchEstimated": true,
+          "uploaded": "2026-04-09",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "4eZkcM0UMlw",
+          "title": "Rank 1 Kog'maw : This Duo Kog'maw + Lulu Combo is Too Overpowered - Engsub",
+          "rankClaim": "Master+",
+          "patch": "26.4",
+          "durationSec": 1026,
+          "patchEstimated": true,
+          "uploaded": "2026-02-25",
+          "format": "stream",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 119,
+      "lane": "adc",
+      "videos": [
+        {
+          "videoId": "XZ6dW2RhKpY",
+          "title": "T1 Peyz Kog'Maw vs Draven [ ADC ] Korea Challenger 2448 LP | Patch 26.11",
+          "rankClaim": "Challenger",
+          "patch": "26.11",
+          "durationSec": 717,
+          "region": "KR",
+          "player": "Peyz",
+          "team": "T1",
+          "uploaded": "2026-06-06",
+          "moments": []
+        },
+        {
+          "videoId": "9rcZX61LJw8",
+          "title": "HLE Gumayusi Kog'Maw vs Draven [ ADC ] Patch 26.11 Korea Challenger 2585 LP",
+          "rankClaim": "Challenger",
+          "patch": "26.11",
+          "durationSec": 1145,
+          "region": "KR",
+          "player": "Gumayusi",
+          "team": "HLE",
+          "uploaded": "2026-05-29",
+          "moments": []
+        },
+        {
+          "videoId": "jeQ3EMy7HZg",
+          "title": "Kog'Maw ADC vs Draven - KR Master Patch 25.10",
+          "rankClaim": "Master",
+          "patch": "25.10",
+          "durationSec": 1802,
+          "region": "KR",
+          "uploaded": "2025-05-22",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 126,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "2Vl_sRMJRAY",
+          "title": "Kog'Maw Mid vs Jayce - VN Challenger Patch 25.23",
+          "rankClaim": "Challenger",
+          "patch": "25.23",
+          "durationSec": 1711,
+          "uploaded": "2025-12-02",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 131,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "HYVaf29wfEE",
+          "title": "(BGT iwanan) Kog'Maw Mid vs Diana - EUW Challenger Patch 26.11",
+          "rankClaim": "Challenger",
+          "patch": "26.11",
+          "durationSec": 1719,
+          "region": "EUW",
+          "player": "BGT iwanan",
+          "uploaded": "2026-06-04",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 134,
+      "lane": "adc",
+      "videos": [
+        {
+          "videoId": "Vq_Z1OOu5sw",
+          "title": "T1 Peyz Kog'Maw vs Syndra [ ADC ] Korea Challenger 2372 LP| Patch 26.15",
+          "rankClaim": "Challenger",
+          "patch": "26.15",
+          "durationSec": 1951,
+          "region": "KR",
+          "player": "Peyz",
+          "team": "T1",
+          "uploaded": "2026-08-09",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 145,
+      "lane": "adc",
+      "videos": [
+        {
+          "videoId": "_hd7PVyfweM",
+          "title": "Kog'Maw ADC vs Kai'Sa (APM Eune) - EUW Challenger Patch 26.13",
+          "rankClaim": "Challenger",
+          "patch": "26.13",
+          "durationSec": 1632,
+          "region": "EUNE",
+          "uploaded": "2026-07-12",
+          "moments": []
+        },
+        {
+          "videoId": "e8AEPKJOOM4",
+          "title": "Kog'Maw ADC vs Kai'Sa - EUW Challenger Patch 26.08",
+          "rankClaim": "Challenger",
+          "patch": "26.8",
+          "durationSec": 1771,
+          "region": "EUW",
+          "uploaded": "2026-04-24",
+          "moments": []
+        },
+        {
+          "videoId": "L6glin9tLOk",
+          "title": "Kog'Maw ADC vs Kai'Sa - KR Challenger Patch 26.05",
+          "rankClaim": "Challenger",
+          "patch": "26.5",
+          "durationSec": 1866,
+          "region": "KR",
+          "uploaded": "2026-03-13",
+          "moments": []
+        },
+        {
+          "videoId": "c-VCxbAgG7c",
+          "title": "Kog'Maw ADC vs Kai'Sa - VN Challenger Patch 25.24",
+          "rankClaim": "Challenger",
+          "patch": "25.24",
+          "durationSec": 1501,
+          "uploaded": "2026-01-06",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 152,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 629,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 798,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 879,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 910,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 996,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1048,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1172,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1398,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1419,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1439,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1451,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1490,
+              "label": "End credit"
+            }
+          ]
+        },
+        {
+          "videoId": "2roiNL1w_NA",
+          "title": "Kog'Maw vs Kai'Sa [ ADC ] Lol Korea Master Patch 25.20 ✅",
+          "rankClaim": "Master",
+          "patch": "25.20",
+          "durationSec": 1767,
+          "region": "KR",
+          "uploaded": "2025-10-14",
+          "moments": []
+        },
+        {
+          "videoId": "i7mByMAu_bA",
+          "title": "Kog'Maw ADC vs Kai'Sa - KR Master Patch 25.18",
+          "rankClaim": "Master",
+          "patch": "25.18",
+          "durationSec": 1511,
+          "region": "KR",
+          "uploaded": "2025-09-19",
+          "moments": []
+        },
+        {
+          "videoId": "hj7rdo-K_Mo",
+          "title": "KogMaw vs Kaisa [ ADC ] Lol Korea Master Patch 25.15",
+          "rankClaim": "Master",
+          "patch": "25.15",
+          "durationSec": 1797,
+          "region": "KR",
+          "uploaded": "2025-08-08",
+          "moments": []
+        },
+        {
+          "videoId": "MZH8UspC06s",
+          "title": "KogMaw vs Kaisa [ ADC ] Lol Korea Master Patch 25.13",
+          "rankClaim": "Master",
+          "patch": "25.13",
+          "durationSec": 1918,
+          "region": "KR",
+          "uploaded": "2025-07-15",
+          "moments": []
+        },
+        {
+          "videoId": "yKMAe5aGTUY",
+          "title": "Kog'Maw ADC vs Kai'Sa - KR Master Patch 25.12",
+          "rankClaim": "Master",
+          "patch": "25.12",
+          "durationSec": 1701,
+          "region": "KR",
+          "uploaded": "2025-06-19",
+          "moments": []
+        },
+        {
+          "videoId": "BQXtI8ZwXOw",
+          "title": "Kog'Maw ADC vs Kai'Sa - EUW Challenger Patch 25.08",
+          "rankClaim": "Challenger",
+          "patch": "25.8",
+          "durationSec": 1477,
+          "region": "EUW",
+          "uploaded": "2025-04-30",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 331,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 395,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 540,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 571,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 593,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 700,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 761,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 787,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 839,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 891,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 980,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1009,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1025,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1101,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1131,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1155,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1271,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1360,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1398,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1456,
+              "label": "End credit"
+            }
+          ]
+        },
+        {
+          "videoId": "3uYtczLKW50",
+          "title": "Kog'Maw ADC vs Kai'Sa - EUW Challenger Patch 25.07",
+          "rankClaim": "Challenger",
+          "patch": "25.7",
+          "durationSec": 1495,
+          "region": "EUW",
+          "uploaded": "2025-04-16",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 565,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 641,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 779,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 829,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 878,
+              "label": "Get a Triple Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1003,
+              "label": "Hunt The Dragon",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1119,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1261,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1291,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1322,
+              "label": "Hunt The Dragon",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1350,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1445,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1474,
+              "label": "End credit"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 161,
+      "lane": "adc",
+      "videos": [
+        {
+          "videoId": "wLhVNYLhw5Q",
+          "title": "Kog'Maw ADC vs Vel'Koz - EUW Challenger Patch 25.22",
+          "rankClaim": "Challenger",
+          "patch": "25.22",
+          "durationSec": 1564,
+          "region": "EUW",
+          "uploaded": "2025-11-20",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 163,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "76UP6ngbcyc",
+          "title": "Kog'Maw Jungle vs Taliyah - NA Grandmaster Patch 25.21",
+          "rankClaim": "Grandmaster",
+          "patch": "25.21",
+          "durationSec": 1656,
+          "region": "NA",
+          "uploaded": "2025-11-05",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 202,
+      "lane": "adc",
+      "videos": [
+        {
+          "videoId": "FfdQ6DwiqKU",
+          "title": "(EDG BuLLDoG) Kog'Maw ADC vs Jhin - KR Challenger Patch 26.21",
+          "rankClaim": "Challenger",
+          "patch": "26.21",
+          "durationSec": 1769,
+          "region": "KR",
+          "player": "BuLLDoG",
+          "team": "EDG",
+          "uploaded": "2026-10-28",
+          "result": "W",
+          "moments": [
+            {
+              "atSec": 178,
+              "label": "Team fight (3 kills)",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 365,
+              "label": "Nidalee eliminates Jhin"
+            },
+            {
+              "atSec": 541,
+              "label": "Kog'Maw outduels Jhin"
+            },
+            {
+              "atSec": 590,
+              "label": "Kog'Maw picks off Pantheon"
+            },
+            {
+              "atSec": 625,
+              "label": "Red takes 1st Dragon (Infernal)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 852,
+              "label": "Kog'Maw takes down Jhin"
+            },
+            {
+              "atSec": 877,
+              "label": "Kog'Maw picks off Singed"
+            },
+            {
+              "atSec": 909,
+              "label": "Camille eliminates Pantheon"
+            },
+            {
+              "atSec": 944,
+              "label": "Red takes 2nd Dragon (Ocean)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 965,
+              "label": "Kog'Maw outplays Jhin again"
+            },
+            {
+              "atSec": 1054,
+              "label": "Kog'Maw takes down Jhin"
+            },
+            {
+              "atSec": 1190,
+              "label": "Kog'Maw kills Yone",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1296,
+              "label": "Red takes 3rd Dragon (Mountain)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1362,
+              "label": "Blue takes Baron",
+              "kind": "baron"
+            },
+            {
+              "atSec": 1608,
+              "label": "Kog'Maw picks off Pantheon"
+            },
+            {
+              "atSec": 1629,
+              "label": "Red takes 4th Dragon (Mountain)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1752,
+              "label": "Kog'Maw Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1760,
+              "label": "Mid Inhibitor falls (Blue)"
+            }
+          ]
+        },
+        {
+          "videoId": "nGrsJzAd0ec",
+          "title": "Kog'Maw ADC vs Jhin - KR Grandmaster Patch 26.17",
+          "rankClaim": "Grandmaster",
+          "patch": "26.17",
+          "durationSec": 1755,
+          "region": "KR",
+          "uploaded": "2026-09-02",
+          "moments": []
+        },
+        {
+          "videoId": "w1igrXn6Wn8",
+          "title": "Kog'Maw ADC vs Jhin - KR Master Patch 25.19",
+          "rankClaim": "Master",
+          "patch": "25.19",
+          "durationSec": 2051,
+          "region": "KR",
+          "uploaded": "2025-10-04",
+          "moments": []
+        },
+        {
+          "videoId": "a6YSLew2J1M",
+          "title": "Kog'Maw vs Jhin [ ADC ] Lol Korea Master Patch 25.17 ✅",
+          "rankClaim": "Master",
+          "patch": "25.17",
+          "durationSec": 1656,
+          "region": "KR",
+          "uploaded": "2025-08-28",
+          "moments": []
+        },
+        {
+          "videoId": "pJXUgxmRujE",
+          "title": "KogMaw vs Jhin [ ADC ] Lol Korea Master Patch 25.12",
+          "rankClaim": "Master",
+          "patch": "25.12",
+          "durationSec": 1714,
+          "region": "KR",
+          "uploaded": "2025-06-23",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 221,
+      "lane": "adc",
+      "videos": [
+        {
+          "videoId": "_iitEDbXRs4",
+          "title": "Kog'Maw ADC vs Zeri - NA Challenger Patch 26.19",
+          "rankClaim": "Challenger",
+          "patch": "26.19",
+          "durationSec": 1854,
+          "region": "NA",
+          "uploaded": "2026-09-30",
+          "moments": []
+        },
+        {
+          "videoId": "PmK-0vc3Gt0",
+          "title": "Kog'Maw vs Zeri [ ADC ] Lol Korea Master Patch 25.24 ✅",
+          "rankClaim": "Master",
+          "patch": "25.24",
+          "durationSec": 1608,
+          "region": "KR",
+          "uploaded": "2025-12-18",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 222,
+      "lane": "adc",
+      "videos": [
+        {
+          "videoId": "pbWUmZ8yD-Q",
+          "title": "Kog'Maw ADC vs Jinx - KR Master Patch 26.02",
+          "rankClaim": "Master",
+          "patch": "26.2",
+          "durationSec": 1474,
+          "region": "KR",
+          "uploaded": "2026-01-25",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 133,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 334,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 478,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 613,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 818,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 961,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1070,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1089,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1237,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1320,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1337,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1347,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1425,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1463,
+              "label": "End credit"
+            }
+          ]
+        },
+        {
+          "videoId": "uq1BsKarjL0",
+          "title": "Kog'Maw ADC vs Jinx - KR Master Patch 25.20",
+          "rankClaim": "Master",
+          "patch": "25.20",
+          "durationSec": 1730,
+          "region": "KR",
+          "uploaded": "2025-10-18",
+          "moments": []
+        },
+        {
+          "videoId": "iXfGtGNp5fA",
+          "title": "KogMaw vs Jinx ADC [ Quadrakill ] Korea Master Patch 25.19 ✅",
+          "rankClaim": "Master",
+          "patch": "25.19",
+          "durationSec": 1494,
+          "region": "KR",
+          "player": "Quadrakill",
+          "uploaded": "2025-10-02",
+          "moments": []
+        },
+        {
+          "videoId": "QHE9Xa42Oig",
+          "title": "Kog'Maw ADC vs Jinx - KR Master Patch 25.08",
+          "rankClaim": "Master",
+          "patch": "25.8",
+          "durationSec": 2141,
+          "region": "KR",
+          "uploaded": "2025-04-24",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 784,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 912,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 937,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1310,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1339,
+              "label": "Hunt The Atakhan"
+            },
+            {
+              "atSec": 1360,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1422,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1465,
+              "label": "Hunt The Dragon",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1481,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1569,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1590,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1604,
+              "label": "Hunt The Baron Nashor",
+              "kind": "baron"
+            },
+            {
+              "atSec": 1709,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1741,
+              "label": "Take down The Inhibitor"
+            },
+            {
+              "atSec": 1756,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1769,
+              "label": "Take down The Inhibitor"
+            },
+            {
+              "atSec": 1893,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1988,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 2090,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 2120,
+              "label": "End credit"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 235,
+      "lane": "adc",
+      "videos": [
+        {
+          "videoId": "vtKaI8trAS8",
+          "title": "HLE Gumayusi Kog'Maw vs Senna [ ADC ] Korea Challenger 2679 LP | Patch 26.10",
+          "rankClaim": "Challenger",
+          "patch": "26.10",
+          "durationSec": 1492,
+          "region": "KR",
+          "player": "Gumayusi",
+          "team": "HLE",
+          "uploaded": "2026-05-20",
+          "moments": [
+            {
+              "atSec": 0,
+              "label": "Early game laning phase"
+            },
+            {
+              "atSec": 267,
+              "label": "Mid-game skirmishes"
+            },
+            {
+              "atSec": 566,
+              "label": "Objective control and map pressure"
+            },
+            {
+              "atSec": 841,
+              "label": "Team fights and rotations",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1213,
+              "label": "Late game siege and victory"
+            }
+          ]
+        },
+        {
+          "videoId": "19QGwFXzjPk",
+          "title": "Kog'Maw ADC vs Senna - EUW Challenger Patch 26.07",
+          "rankClaim": "Challenger",
+          "patch": "26.7",
+          "durationSec": 1663,
+          "region": "EUW",
+          "uploaded": "2026-04-10",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 426,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 509,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 601,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1010,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1264,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1344,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1430,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1445,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1457,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1562,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1584,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1595,
+              "label": "Take down The Inhibitor"
+            },
+            {
+              "atSec": 1606,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1617,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1637,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1652,
+              "label": "End credit"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 236,
+      "lane": "adc",
+      "videos": [
+        {
+          "videoId": "71FDEQ5iJ_Q",
+          "title": "Kog'Maw vs Lucian [ ADC ] Korea Master 374 LP | Patch 26.9",
+          "rankClaim": "Master",
+          "patch": "26.9",
+          "durationSec": 1689,
+          "region": "KR",
+          "uploaded": "2026-05-04",
+          "moments": []
+        },
+        {
+          "videoId": "8b9WtIomJJI",
+          "title": "Kog'Maw ADC vs Lucian - EUW Grandmaster Patch 25.12",
+          "rankClaim": "Grandmaster",
+          "patch": "25.12",
+          "durationSec": 2135,
+          "region": "EUW",
+          "uploaded": "2025-06-26",
+          "moments": []
+        },
+        {
+          "videoId": "95opBUZGSsE",
+          "title": "Kog'Maw ADC vs Lucian - KR Challenger Patch 25.11",
+          "rankClaim": "Challenger",
+          "patch": "25.11",
+          "durationSec": 1746,
+          "region": "KR",
+          "uploaded": "2025-06-11",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 238,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "EW2QXDuWPqg",
+          "title": "Kog'Maw Mid vs Zed - EUW Master Patch 26.17",
+          "rankClaim": "Master",
+          "patch": "26.17",
+          "durationSec": 1860,
+          "region": "EUW",
+          "uploaded": "2026-09-06",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 268,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "KSs3UTggOms",
+          "title": "Kog'Maw Mid vs Azir - EUW Grandmaster Patch 25.20",
+          "rankClaim": "Grandmaster",
+          "patch": "25.20",
+          "durationSec": 1645,
+          "region": "EUW",
+          "uploaded": "2025-10-22",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 429,
+      "lane": "adc",
+      "videos": [
+        {
+          "videoId": "UOPXX-ZAQoA",
+          "title": "Kog'Maw ADC vs Kalista - EUW Master Patch 26.18",
+          "rankClaim": "Master",
+          "patch": "26.18",
+          "durationSec": 1848,
+          "region": "EUW",
+          "uploaded": "2026-09-17",
+          "moments": []
+        },
+        {
+          "videoId": "gWz650BBsKU",
+          "title": "Kog'Maw ADC vs Kalista - EUW Challenger Patch 26.12",
+          "rankClaim": "Challenger",
+          "patch": "26.12",
+          "durationSec": 1720,
+          "region": "EUW",
+          "uploaded": "2026-06-18",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 432,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "QeWP6lmZISU",
+          "title": "Kog'Maw Support vs Bard - KR Master Patch 25.16",
+          "rankClaim": "Master",
+          "patch": "25.16",
+          "durationSec": 1657,
+          "region": "KR",
+          "uploaded": "2025-08-28",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 497,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "cldDTWdlXRc",
+          "title": "Kog'Maw Support vs Rakan - KR Master Patch 25.13",
+          "rankClaim": "Master",
+          "patch": "25.13",
+          "durationSec": 1583,
+          "region": "KR",
+          "uploaded": "2025-07-14",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 517,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "2JL0nx63GO0",
+          "title": "Kog'Maw Mid vs Sylas - KR Master Patch 26.03",
+          "rankClaim": "Master",
+          "patch": "26.3",
+          "durationSec": 1868,
+          "region": "KR",
+          "uploaded": "2026-02-19",
+          "moments": []
+        },
+        {
+          "videoId": "Xdak13BtjYo",
+          "title": "Kog'Maw Mid vs Sylas - KR Master Patch 25.24",
+          "rankClaim": "Master",
+          "patch": "25.24",
+          "durationSec": 1596,
+          "region": "KR",
+          "uploaded": "2026-01-01",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 293,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 412,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 569,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 595,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1014,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1080,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1102,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1129,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1323,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1402,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1454,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1513,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1585,
+              "label": "End credit"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 523,
+      "lane": "adc",
+      "videos": [
+        {
+          "videoId": "jNJYJ44ougc",
+          "title": "Kog'Maw ADC vs Aphelios - KR Grandmaster Patch 26.01",
+          "rankClaim": "Grandmaster",
+          "patch": "26.1",
+          "durationSec": 1521,
+          "region": "KR",
+          "uploaded": "2026-01-17",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 777,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "gQBdO0GEFl0",
+          "title": "Kog'Maw Mid vs Yone - KR Master Patch 26.09",
+          "rankClaim": "Master",
+          "patch": "26.9",
+          "durationSec": 1576,
+          "region": "KR",
+          "uploaded": "2026-05-15",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 804,
+      "lane": "adc",
+      "videos": [
+        {
+          "videoId": "UH79H09v0DI",
+          "title": "Kog'Maw ADC vs Yunara - NA Challenger Patch 26.16",
+          "rankClaim": "Challenger",
+          "patch": "26.16",
+          "durationSec": 1606,
+          "region": "NA",
+          "uploaded": "2026-08-27",
+          "moments": []
+        },
+        {
+          "videoId": "d0iuE-tbPxs",
+          "title": "Doggo : This is What Super Machine Gun Kog'maw Look Like - Engsub ( vs Yunara )",
+          "rankClaim": "Master+",
+          "patch": "26.16",
+          "durationSec": 953,
+          "patchEstimated": true,
+          "uploaded": "2026-08-25",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "dl8YZ5Ow9bM",
+          "title": "(HLE Gumayusi) Kog'Maw ADC vs Yunara - KR Challenger Patch 26.10",
+          "rankClaim": "Challenger",
+          "patch": "26.10",
+          "durationSec": 1851,
+          "region": "KR",
+          "player": "Gumayusi",
+          "team": "HLE",
+          "uploaded": "2026-05-22",
+          "moments": []
+        },
+        {
+          "videoId": "BoSIaiR_juU",
+          "title": "Gumayusi : This is What Machine Gun Kog'maw Look Like - Engsub ( Kog'maw vs Yunara )",
+          "rankClaim": "Master+",
+          "patch": "26.10",
+          "durationSec": 1252,
+          "patchEstimated": true,
+          "player": "Gumayusi",
+          "uploaded": "2026-05-17",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "qLbSbx_hP18",
+          "title": "HLE Gumayusi Kog'Maw vs Yunara [ ADC ] Patch 26.10 Korea Challenger 2569 LP",
+          "rankClaim": "Challenger",
+          "patch": "26.10",
+          "durationSec": 1656,
+          "region": "KR",
+          "player": "Gumayusi",
+          "team": "HLE",
+          "uploaded": "2026-05-14",
+          "moments": []
+        },
+        {
+          "videoId": "PlXaLThltfQ",
+          "title": "T1 Peyz Kog'Maw vs Yunara [ ADC ] Korea Challenger 2462 LP | Patch 26.7",
+          "rankClaim": "Challenger",
+          "patch": "26.7",
+          "durationSec": 1604,
+          "region": "KR",
+          "player": "Peyz",
+          "team": "T1",
+          "uploaded": "2026-04-06",
+          "moments": []
+        },
+        {
+          "videoId": "0SPDM7fSYtM",
+          "title": "Kog'Maw ADC vs Yunara - KR Grandmaster Patch 25.22",
+          "rankClaim": "Grandmaster",
+          "patch": "25.22",
+          "durationSec": 1761,
+          "region": "KR",
+          "uploaded": "2025-11-15",
+          "moments": []
+        },
+        {
+          "videoId": "AKx4kM-zrnM",
+          "title": "Kog'Maw vs Yunara [ ADC ] Lol Korea Master Patch 25.21 ✅",
+          "rankClaim": "Master",
+          "patch": "25.21",
+          "durationSec": 1199,
+          "region": "KR",
+          "uploaded": "2025-10-28",
+          "moments": []
+        },
+        {
+          "videoId": "2DbfQNgZ73U",
+          "title": "Kog'Maw ADC vs Yunara - EUW Grandmaster Patch 25.16",
+          "rankClaim": "Grandmaster",
+          "patch": "25.16",
+          "durationSec": 2010,
+          "region": "EUW",
+          "uploaded": "2025-08-20",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 805,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "nRD_N0c_pA0",
+          "title": "Kog'Maw Mid vs Locke - KR Grandmaster Patch 26.18",
+          "rankClaim": "Grandmaster",
+          "patch": "26.18",
+          "durationSec": 1851,
+          "region": "KR",
+          "uploaded": "2026-09-21",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 893,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "p8vc5-Z0Xfo",
+          "title": "Kog'Maw vs Aurora 8/3/12 (Mid) | EUW Challenger | Kog'Maw OTP Replay",
+          "rankClaim": "Challenger",
+          "patch": "26.7",
+          "durationSec": 1846,
+          "region": "EUW",
+          "patchEstimated": true,
+          "uploaded": "2026-04-14",
+          "moments": []
+        },
+        {
+          "videoId": "XxJGy3qktkE",
+          "title": "Kog'Maw Mid vs Aurora - EUW Grandmaster Patch 26.06",
+          "rankClaim": "Grandmaster",
+          "patch": "26.6",
+          "durationSec": 1608,
+          "region": "EUW",
+          "uploaded": "2026-03-31",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 193,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 762,
+              "label": "Get a Triple Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1061,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1186,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1288,
+              "label": "Hunt The Baron Nashor",
+              "kind": "baron"
+            },
+            {
+              "atSec": 1390,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1410,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1461,
+              "label": "Hunt The Dragon",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1476,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1535,
+              "label": "Take down The Inhibitor"
+            },
+            {
+              "atSec": 1556,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1574,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1597,
+              "label": "End credit"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 901,
+      "lane": "adc",
+      "videos": [
+        {
+          "videoId": "LNl-u_2P9UQ",
+          "title": "Kog'Maw vs Smolder [ ADC ] Korea Master 779 LP | Patch 26.13",
+          "rankClaim": "Master",
+          "patch": "26.13",
+          "durationSec": 1544,
+          "region": "KR",
+          "uploaded": "2026-07-14",
+          "moments": []
+        },
+        {
+          "videoId": "oVRuyADfM1A",
+          "title": "Kog'Maw ADC vs Smolder - KR Master Patch 25.23",
+          "rankClaim": "Master",
+          "patch": "25.23",
+          "durationSec": 1619,
+          "region": "KR",
+          "uploaded": "2025-11-29",
+          "moments": []
+        },
+        {
+          "videoId": "0mR-1wuxXh4",
+          "title": "Kog'Maw ADC vs Smolder - KR Master Patch 25.14",
+          "rankClaim": "Master",
+          "patch": "25.14",
+          "durationSec": 1924,
+          "region": "KR",
+          "uploaded": "2025-07-24",
+          "moments": []
+        },
+        {
+          "videoId": "dJDTfvZ3vzQ",
+          "title": "Kog'Maw ADC vs Smolder - NA Grandmaster Patch 25.10",
+          "rankClaim": "Grandmaster",
+          "patch": "25.10",
+          "durationSec": 1987,
+          "region": "NA",
+          "uploaded": "2025-05-31",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 910,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "BzDSa8y3hBo",
+          "title": "Kog'Maw Mid vs Hwei - VN Challenger Patch 26.08",
+          "rankClaim": "Challenger",
+          "patch": "26.8",
+          "durationSec": 1671,
+          "uploaded": "2026-04-30",
+          "moments": []
+        }
+      ]
+    }
+  ]
+}

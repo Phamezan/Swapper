@@ -1,0 +1,3739 @@
+{
+  "schema": 1,
+  "champion": 711,
+  "generatedAt": "2026-11-07T13:25:14.592Z",
+  "guides": [
+    {
+      "champion": 711,
+      "enemy": 7,
+      "lane": "mid",
+      "patch": "26.21",
+      "reviewed": false,
+      "difficulty": "Easy",
+      "favoredWhen": "Built to counter her. Hold passive for Q+W, match TP, punish chains.",
+      "keyTips": [
+        {
+          "text": "You are built to counter her: respect the player, not just the pick.",
+          "scope": "pair",
+          "sourceIds": [
+            "pumptm"
+          ]
+        },
+        {
+          "text": "She never Q+Ws into a full passive bar: your empowered spell cancels her dash, so hold it.",
+          "scope": "pair",
+          "sourceIds": [
+            "pumptm"
+          ],
+          "abilityKeys": [
+            {
+              "champion": 7,
+              "key": "Q"
+            },
+            {
+              "champion": 7,
+              "key": "W"
+            }
+          ]
+        },
+        {
+          "text": "She spaces with chain: ranged harass is her only safe damage, so dodge laterally.",
+          "scope": "pair",
+          "sourceIds": [
+            "pumptm"
+          ],
+          "abilityKeys": [
+            {
+              "champion": 7,
+              "key": "E"
+            }
+          ]
+        }
+      ],
+      "enemyTips": {},
+      "sections": {
+        "overview": {
+          "tips": []
+        },
+        "early-lane": {
+          "tips": [
+            {
+              "text": "She takes TP and desyncs backs: stay healthier than her, match the timer.",
+              "scope": "pair",
+              "sourceIds": [
+                "pumptm"
+              ]
+            },
+            {
+              "text": "She baits your spells before trading: no spells means no counter, so hold one.",
+              "scope": "pair",
+              "sourceIds": [
+                "pumptm"
+              ]
+            }
+          ]
+        },
+        "mid-lane": {
+          "tips": [
+            {
+              "text": "She tracks your passive bar: full means she backs off, so fake with it.",
+              "scope": "pair",
+              "sourceIds": [
+                "pumptm"
+              ]
+            },
+            {
+              "text": "She punishes spent passives: the window is short, so hide it.",
+              "scope": "pair",
+              "sourceIds": [
+                "pumptm"
+              ]
+            }
+          ]
+        },
+        "win-condition": {
+          "tips": [
+            {
+              "text": "Passive held plus backs synced: the LeBlanc who never dodges never wins.",
+              "scope": "pair",
+              "sourceIds": [
+                "pumptm"
+              ]
+            }
+          ]
+        }
+      },
+      "itemization": [],
+      "sources": [
+        {
+          "id": "pumptm",
+          "author": "pumpTM",
+          "rankClaim": "Rank 1 LeBlanc, 2941LP Challenger (title); Challenger (profile badge) · LeBlanc main",
+          "rank": "challenger",
+          "url": "https://www.mobafire.com/league-of-legends/build/26-17-2941lp-challenger-rank-1-leblancs-gunblade-1v9-build-653268",
+          "kind": "mobafire"
+        }
+      ]
+    },
+    {
+      "champion": 711,
+      "enemy": 84,
+      "lane": "mid",
+      "patch": "26.21",
+      "reviewed": false,
+      "difficulty": "Easy",
+      "favoredWhen": "Her dashes feed your passive. Hold fear for Es, never waste passive on waves.",
+      "keyTips": [
+        {
+          "text": "Her dashes refill your passive: every E feeds your fear.",
+          "scope": "pair",
+          "sourceIds": [
+            "anguish"
+          ],
+          "abilityKeys": [
+            {
+              "champion": 84,
+              "key": "E"
+            }
+          ]
+        },
+        {
+          "text": "She dodges spells, especially fear on red: marked means death, so mark her.",
+          "scope": "pair",
+          "sourceIds": [
+            "anguish"
+          ]
+        },
+        {
+          "text": "When stacked, your W cancels dashes: hold it for her E.",
+          "scope": "pair",
+          "sourceIds": [
+            "anguish"
+          ],
+          "abilityKeys": [
+            {
+              "champion": 711,
+              "key": "W"
+            },
+            {
+              "champion": 84,
+              "key": "E"
+            }
+          ]
+        }
+      ],
+      "enemyTips": {},
+      "sections": {
+        "overview": {
+          "tips": []
+        },
+        "early-lane": {
+          "tips": [
+            {
+              "text": "She pokes without dashing: Qs do not feed the mark, so answer the Qs.",
+              "scope": "pair",
+              "sourceIds": [
+                "anguish"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 84,
+                  "key": "Q"
+                }
+              ]
+            },
+            {
+              "text": "She plays feet-first early: walk her down before blades.",
+              "scope": "pair",
+              "sourceIds": [
+                "anguish"
+              ]
+            }
+          ]
+        },
+        "mid-lane": {
+          "tips": [
+            {
+              "text": "Never waste passive on waves: empty marks invite engages.",
+              "scope": "pair",
+              "sourceIds": [
+                "anguish"
+              ]
+            },
+            {
+              "text": "She tracks the red glow: passive-up means she backs off, so cast to zone.",
+              "scope": "pair",
+              "sourceIds": [
+                "anguish"
+              ]
+            }
+          ]
+        },
+        "win-condition": {
+          "tips": [
+            {
+              "text": "Passive fed plus dashes punished: the Akali who always fears you never wins.",
+              "scope": "pair",
+              "sourceIds": [
+                "anguish"
+              ]
+            }
+          ]
+        }
+      },
+      "itemization": [],
+      "sources": [
+        {
+          "id": "anguish",
+          "author": "Anguish333",
+          "rankClaim": "Master (profile badge; title claims 2000LP GrandMaster EUW and Challenger EUNE) · Akali main",
+          "rank": "master",
+          "url": "https://www.mobafire.com/league-of-legends/build/26-20-anguish-2000lp-grandmasters-euw-challenger-eune-akali-mid-top-s16-guide-every-matchup-item-rune-explained-625064",
+          "kind": "mobafire"
+        }
+      ]
+    },
+    {
+      "champion": 711,
+      "enemy": 103,
+      "lane": "mid",
+      "patch": "26.21",
+      "reviewed": false,
+      "difficulty": "Easy",
+      "favoredWhen": "She dodges E with W and never dashes into fear. Vary E, hold fear for commits, answer Charm.",
+      "keyTips": [
+        {
+          "text": "She dodges E with W speed (about {cd:711:E}): cast where she lands.",
+          "scope": "pair",
+          "sourceIds": [
+            "peng04",
+            "shok-ahri"
+          ],
+          "abilityKeys": [
+            {
+              "champion": 103,
+              "key": "W"
+            },
+            {
+              "champion": 711,
+              "key": "E"
+            }
+          ]
+        },
+        {
+          "text": "She never dashes in while fear is up: every ult dash procs passive into fear, so hold it.",
+          "scope": "pair",
+          "sourceIds": [
+            "shok-ahri",
+            "irdefender"
+          ],
+          "abilityKeys": [
+            {
+              "champion": 103,
+              "key": "R"
+            },
+            {
+              "champion": 711,
+              "key": "P"
+            }
+          ]
+        },
+        {
+          "text": "She pokes with Q on wasted cooldowns: never show the full rotation.",
+          "scope": "pair",
+          "sourceIds": [
+            "peng04",
+            "shok-ahri"
+          ],
+          "abilityKeys": [
+            {
+              "champion": 103,
+              "key": "Q"
+            }
+          ]
+        }
+      ],
+      "enemyTips": {},
+      "sections": {
+        "overview": {
+          "tips": []
+        },
+        "early-lane": {
+          "tips": [
+            {
+              "text": "She plays around your E and W answers it: change the angle.",
+              "scope": "pair",
+              "sourceIds": [
+                "peng04"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 711,
+                  "key": "E"
+                },
+                {
+                  "champion": 103,
+                  "key": "W"
+                }
+              ]
+            },
+            {
+              "text": "Your Q poke outranges hers: press range, deny answers.",
+              "scope": "pair",
+              "sourceIds": [
+                "irdefender",
+                "peng04"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 711,
+                  "key": "Q"
+                }
+              ]
+            }
+          ]
+        },
+        "mid-lane": {
+          "tips": [
+            {
+              "text": "From 6 she secures vision and plays fog: sweep and hold fear.",
+              "scope": "pair",
+              "sourceIds": [
+                "peng04"
+              ]
+            },
+            {
+              "text": "You hold fear for her commits: never show it early.",
+              "scope": "pair",
+              "sourceIds": [
+                "irdefender"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 711,
+                  "key": "W"
+                }
+              ]
+            }
+          ]
+        },
+        "win-condition": {
+          "tips": [
+            {
+              "text": "Commits answered with fear plus shield: the Ahri who always dashes blind never wins.",
+              "scope": "pair",
+              "sourceIds": [
+                "irdefender"
+              ]
+            }
+          ]
+        }
+      },
+      "itemization": [],
+      "sources": [
+        {
+          "id": "peng04",
+          "author": "Peng04",
+          "rankClaim": "Challenger · Ahri main",
+          "rank": "challenger",
+          "url": "https://www.mobafire.com/league-of-legends/build/26-20-pengs-ahri-guide-5-1mil-points-13x-challenger-648700",
+          "kind": "mobafire"
+        },
+        {
+          "id": "shok-ahri",
+          "author": "ShokLoL",
+          "rankClaim": "Rank 1 Challenger · Ahri main",
+          "rank": "challenger",
+          "url": "https://www.mobafire.com/league-of-legends/build/26-5-shoks-rank-1-challenger-ahri-guide-635065",
+          "kind": "mobafire"
+        },
+        {
+          "id": "irdefender",
+          "author": "Ir.Defender",
+          "rankClaim": "Grandmaster (profile badge, no title claim) · Vex main",
+          "rank": "grandmaster",
+          "url": "https://www.mobafire.com/league-of-legends/build/vex-have-some-misery-651014",
+          "kind": "mobafire"
+        }
+      ]
+    },
+    {
+      "champion": 711,
+      "enemy": 134,
+      "lane": "mid",
+      "patch": "26.21",
+      "reviewed": false,
+      "difficulty": "Hard",
+      "favoredWhen": "She heavily outranges you and dodges simple spells. Close range once, land R.",
+      "keyTips": [
+        {
+          "text": "Hard matchup: your spells are easy to dodge and she heavily outranges you.",
+          "scope": "pair",
+          "sourceIds": [
+            "shok"
+          ]
+        },
+        {
+          "text": "She holds max range: outspacing is her whole plan, so break it once.",
+          "scope": "pair",
+          "sourceIds": [
+            "shok"
+          ]
+        },
+        {
+          "text": "Your level 6 burst: an R hit can kill, so set it up.",
+          "scope": "pair",
+          "sourceIds": [
+            "shok"
+          ],
+          "abilityKeys": [
+            {
+              "champion": 711,
+              "key": "R"
+            }
+          ]
+        }
+      ],
+      "enemyTips": {},
+      "sections": {
+        "overview": {
+          "tips": []
+        },
+        "early-lane": {
+          "tips": [
+            {
+              "text": "She dodges and pokes from range: simple spells, simple sidesteps, so vary yours.",
+              "scope": "pair",
+              "sourceIds": [
+                "shok"
+              ]
+            },
+            {
+              "text": "She buys Mercs: tenacity covers one fear, so land the second.",
+              "scope": "pair",
+              "sourceIds": [
+                "shok"
+              ]
+            }
+          ]
+        },
+        "mid-lane": {
+          "tips": [
+            {
+              "text": "Post-6 she never stands still: R range is death range, so cut it off.",
+              "scope": "pair",
+              "sourceIds": [
+                "shok"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 711,
+                  "key": "R"
+                }
+              ]
+            },
+            {
+              "text": "She keeps the range: you cannot answer what you cannot reach, so close once.",
+              "scope": "pair",
+              "sourceIds": [
+                "shok"
+              ]
+            }
+          ]
+        },
+        "win-condition": {
+          "tips": [
+            {
+              "text": "Range closed plus burst landed: the Syndra who never respects R never wins.",
+              "scope": "pair",
+              "sourceIds": [
+                "shok"
+              ]
+            }
+          ]
+        }
+      },
+      "itemization": [],
+      "sources": [
+        {
+          "id": "shok",
+          "author": "ShokLoL",
+          "rankClaim": "Rank 1 Challenger · Syndra main",
+          "rank": "challenger",
+          "url": "https://www.mobafire.com/league-of-legends/build/26-17-shoks-rank-1-challenger-syndra-guide-602710",
+          "kind": "mobafire"
+        }
+      ]
+    },
+    {
+      "champion": 711,
+      "enemy": 238,
+      "lane": "mid",
+      "patch": "26.21",
+      "reviewed": false,
+      "difficulty": "Skill matchup",
+      "favoredWhen": "He never engages into fear and all-ins when fear and E are spent. Hold one, punish shadows.",
+      "keyTips": [
+        {
+          "text": "He never engages into fear: your mark wins every contested trade, so show it.",
+          "scope": "pair",
+          "sourceIds": [
+            "aikopanda"
+          ]
+        },
+        {
+          "text": "He punishes spent fear after 6: the window opens when the mark fades, so hide it.",
+          "scope": "pair",
+          "sourceIds": [
+            "aikopanda"
+          ]
+        },
+        {
+          "text": "Fear down plus E wasted is his all-in: never show both down.",
+          "scope": "pair",
+          "sourceIds": [
+            "v222"
+          ]
+        }
+      ],
+      "enemyTips": {
+        "early-lane": [
+          {
+            "text": "Zed often places Living Shadow before Death Mark so he can swap away from skillshots. Hold your crowd control until he has used the swap.",
+            "scope": "enemy",
+            "sourceIds": [
+              "aikopanda"
+            ],
+            "patch": "26.21",
+            "abilityKeys": [
+              {
+                "champion": 238,
+                "key": "W"
+              },
+              {
+                "champion": 238,
+                "key": "R"
+              }
+            ]
+          }
+        ],
+        "win-condition": [
+          {
+            "text": "Death Mark always lands Zed behind his target. Pre-aim crowd control and escapes behind you, not toward where he cast it.",
+            "scope": "enemy",
+            "sourceIds": [
+              "peng04"
+            ],
+            "patch": "26.21",
+            "abilityKeys": [
+              {
+                "champion": 238,
+                "key": "R"
+              }
+            ]
+          }
+        ]
+      },
+      "sections": {
+        "overview": {
+          "tips": []
+        },
+        "early-lane": {
+          "tips": [
+            {
+              "text": "He out-pokes early: shadow Qs cost HP for free, so dodge laterally.",
+              "scope": "pair",
+              "sourceIds": [
+                "aikopanda"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 238,
+                  "key": "Q"
+                }
+              ]
+            },
+            {
+              "text": "His W swap dodges empowered fear: hold fear until he lands.",
+              "scope": "pair",
+              "sourceIds": [
+                "v222"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 238,
+                  "key": "W"
+                }
+              ]
+            }
+          ]
+        },
+        "mid-lane": {
+          "tips": [
+            {
+              "text": "Death Mark always lands Zed behind his target. Pre-aim crowd control and escapes behind you, not toward where he cast it.",
+              "scope": "pair",
+              "sourceIds": [
+                "peng04"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 238,
+                  "key": "R"
+                }
+              ]
+            },
+            {
+              "text": "Post-6 he tracks fear like a summoner: its absence is his engage timer, so fake it.",
+              "scope": "pair",
+              "sourceIds": [
+                "aikopanda"
+              ]
+            }
+          ]
+        },
+        "win-condition": {
+          "tips": [
+            {
+              "text": "Fear held into burst: patience with marks beats his shadow windows.",
+              "scope": "pair",
+              "sourceIds": [
+                "aikopanda",
+                "v222"
+              ]
+            }
+          ]
+        }
+      },
+      "itemization": [],
+      "sources": [
+        {
+          "id": "aikopanda",
+          "author": "AikoPanda",
+          "rankClaim": "Zed main",
+          "url": "https://www.mobafire.com/league-of-legends/build/26-20-video-guides-hidden-combos-all-matchups-zed-all-in-one-guide-652800",
+          "kind": "mobafire"
+        },
+        {
+          "id": "v222",
+          "author": "V222",
+          "rankClaim": "Challenger EUW · Zed main",
+          "rank": "challenger",
+          "url": "https://www.mobafire.com/league-of-legends/build/all-matchups-26-14-zed-guide-2000lp-euw-challenger-652354",
+          "kind": "mobafire"
+        },
+        {
+          "id": "peng04",
+          "author": "Peng04",
+          "rankClaim": "Challenger · Ahri main",
+          "rank": "challenger",
+          "url": "https://www.mobafire.com/league-of-legends/build/26-20-pengs-ahri-guide-5-1mil-points-13x-challenger-648700",
+          "kind": "mobafire"
+        }
+      ]
+    }
+  ],
+  "general": [
+    {
+      "champion": 711,
+      "lane": "mid",
+      "patch": "26.21",
+      "reviewed": false,
+      "keyTips": [
+        {
+          "text": "Play around Doom calling fear as both a trade tool and protection; check whether the passive is ready before stepping into danger.",
+          "scope": "champion",
+          "sourceIds": [
+            "izianni"
+          ],
+          "abilityKeys": [
+            {
+              "champion": 711,
+              "key": "P"
+            }
+          ]
+        },
+        {
+          "text": "Keep trades short and built around cooldowns until the ultimate is available; pair a short trade with Ignite as the kill threat once it unlocks.",
+          "scope": "champion",
+          "sourceIds": [
+            "izianni"
+          ],
+          "abilityKeys": [
+            {
+              "champion": 711,
+              "key": "R"
+            }
+          ]
+        },
+        {
+          "text": "In ranged matchups, use the range advantage to pressure a last-hit window and avoid extended trades if the opponent's burst cooldowns are ready.",
+          "scope": "champion",
+          "sourceIds": [
+            "izianni"
+          ]
+        }
+      ],
+      "sections": {
+        "overview": {
+          "tips": []
+        },
+        "early-lane": {
+          "tips": [
+            {
+              "text": "Into melee lanes, keep wave control and look for a Mistral Bolt with an attack, Looming Darkness, Mistral Bolt, and attack trade before backing away.",
+              "scope": "champion",
+              "sourceIds": [
+                "izianni"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 711,
+                  "key": "W"
+                },
+                {
+                  "champion": 711,
+                  "key": "E"
+                },
+                {
+                  "champion": 711,
+                  "key": "Q"
+                }
+              ]
+            },
+            {
+              "text": "When the matchup is unsafe, clear with Mistral Bolt from range until level six instead of forcing a fight.",
+              "scope": "champion",
+              "sourceIds": [
+                "izianni"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 711,
+                  "key": "Q"
+                }
+              ]
+            },
+            {
+              "text": "Pressure the opponent's last hits with superior range in ranged lanes, then step out before their burst window opens.",
+              "scope": "champion",
+              "sourceIds": [
+                "izianni"
+              ]
+            },
+            {
+              "text": "Keep vision around mid and avoid dying to ganks; losing gold and experience undermines the lane lead.",
+              "scope": "champion",
+              "sourceIds": [
+                "izianni"
+              ]
+            },
+            {
+              "text": "At level six, the stronger Shadow Surge plus Ignite combination is the main kill threat, so set up the all-in rather than poking aimlessly.",
+              "scope": "champion",
+              "sourceIds": [
+                "izianni"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 711,
+                  "key": "R"
+                }
+              ]
+            }
+          ]
+        },
+        "mid-lane": {
+          "tips": [
+            {
+              "text": "Once mid priority is established, extend vision into enemy territory and use it to choose jungle skirmishes or objective pressure.",
+              "scope": "champion",
+              "sourceIds": [
+                "izianni"
+              ]
+            },
+            {
+              "text": "Push a wave before roaming; weak control and poor mobility away from minions make unplanned roams less reliable.",
+              "scope": "champion",
+              "sourceIds": [
+                "izianni"
+              ]
+            },
+            {
+              "text": "Use Shadow Surge to reach a high-value target and snowball a skirmish when the team can follow.",
+              "scope": "champion",
+              "sourceIds": [
+                "izianni"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 711,
+                  "key": "R"
+                }
+              ]
+            }
+          ]
+        },
+        "win-condition": {
+          "tips": [
+            {
+              "text": "Pick Vex into squishy teams with dashes, where her fear can interrupt their approach and the ultimate can threaten the backline.",
+              "scope": "champion",
+              "sourceIds": [
+                "izianni"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 711,
+                  "key": "R"
+                }
+              ]
+            },
+            {
+              "text": "If the matchup is difficult, play for waveclear through level six and then use the ultimate to create map pressure.",
+              "scope": "champion",
+              "sourceIds": [
+                "izianni"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 711,
+                  "key": "R"
+                }
+              ]
+            },
+            {
+              "text": "Use wards and lane priority to guide which objective or jungle fight the team takes; do not chase low-value fights without vision.",
+              "scope": "champion",
+              "sourceIds": [
+                "izianni"
+              ]
+            },
+            {
+              "text": "When the enemy burns key crowd control, look for a follow-up engage; otherwise use fear defensively to protect Vex and the allies.",
+              "scope": "champion",
+              "sourceIds": [
+                "izianni"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 711,
+                  "key": "P"
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "itemization": [],
+      "sources": [
+        {
+          "id": "izianni",
+          "author": "iZianni",
+          "rankClaim": "No rank claim",
+          "url": "https://www.mobafire.com/league-of-legends/build/ziannis-vex-guide-603903",
+          "kind": "mobafire"
+        }
+      ]
+    }
+  ],
+  "vods": [
+    {
+      "enemy": 3,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "Q9zWP7B-OfY",
+          "title": "Vex Mid vs Galio - NA Grandmaster Patch 25.22",
+          "rankClaim": "Grandmaster",
+          "patch": "25.22",
+          "durationSec": 1677,
+          "region": "NA",
+          "uploaded": "2025-11-20",
+          "moments": []
+        },
+        {
+          "videoId": "4TidN16lOg8",
+          "title": "Vex Mid vs Galio - EUW Grandmaster Patch 25.20",
+          "rankClaim": "Grandmaster",
+          "patch": "25.20",
+          "durationSec": 1863,
+          "region": "EUW",
+          "uploaded": "2025-10-24",
+          "moments": []
+        },
+        {
+          "videoId": "JGQIaQ1zM5k",
+          "title": "Vex Mid vs Galio - KR Master Patch 25.14",
+          "rankClaim": "Master",
+          "patch": "25.14",
+          "durationSec": 1431,
+          "region": "KR",
+          "uploaded": "2025-07-22",
+          "moments": []
+        },
+        {
+          "videoId": "4HLp8wtYgsc",
+          "title": "Vex Mid vs Galio - KR Challenger Patch 25.13",
+          "rankClaim": "Challenger",
+          "patch": "25.13",
+          "durationSec": 1558,
+          "region": "KR",
+          "uploaded": "2025-07-13",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 4,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "bJ8ec6bXm8g",
+          "title": "Vex Mid vs Twisted Fate - KR Master Patch 25.11",
+          "rankClaim": "Master",
+          "patch": "25.11",
+          "durationSec": 2120,
+          "region": "KR",
+          "uploaded": "2025-06-03",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 7,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "btFGd_Q74p4",
+          "title": "T1 Faker Vex vs Leblanc [ MID ] Korea Challenger 2089 LP | Patch 26.20",
+          "rankClaim": "Challenger",
+          "patch": "26.20",
+          "durationSec": 1265,
+          "region": "KR",
+          "player": "Faker",
+          "team": "T1",
+          "uploaded": "2026-10-11",
+          "moments": []
+        },
+        {
+          "videoId": "A-AWLEsmI6Y",
+          "title": "Vex Mid vs LeBlanc - KR Challenger Patch 26.05",
+          "rankClaim": "Challenger",
+          "patch": "26.5",
+          "durationSec": 1814,
+          "region": "KR",
+          "uploaded": "2026-03-11",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 13,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "dPoOg85Vtro",
+          "title": "Vex Mid vs Ryze - KR Challenger Patch 26.06",
+          "rankClaim": "Challenger",
+          "patch": "26.6",
+          "durationSec": 1460,
+          "region": "KR",
+          "uploaded": "2026-03-24",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 105,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 186,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 271,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 448,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 544,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 770,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 865,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 899,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 984,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1076,
+              "label": "Get a PENTA KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1160,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1186,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1291,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1324,
+              "label": "Hunt The Baron Nashor",
+              "kind": "baron"
+            },
+            {
+              "atSec": 1399,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1449,
+              "label": "End credit"
+            }
+          ]
+        },
+        {
+          "videoId": "JkUMpuuA-Ew",
+          "title": "Vex Mid vs Ryze - KR Grandmaster Patch 25.21",
+          "rankClaim": "Grandmaster",
+          "patch": "25.21",
+          "durationSec": 1534,
+          "region": "KR",
+          "uploaded": "2025-10-29",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 18,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "vxo_gbbPcuQ",
+          "title": "Vex vs Tristana Mid - KR Challenger - Patch 25.19 Season 15",
+          "rankClaim": "Challenger",
+          "patch": "25.19",
+          "durationSec": 1681,
+          "region": "KR",
+          "uploaded": "2025-10-01",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 34,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "lGBNXoeVLf0",
+          "title": "Vex Mid vs Anivia - KR Grandmaster Patch 25.24",
+          "rankClaim": "Grandmaster",
+          "patch": "25.24",
+          "durationSec": 1540,
+          "region": "KR",
+          "uploaded": "2025-12-26",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 39,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "qqI0m3DjtP4",
+          "title": "Vex Mid vs Irelia - KR Master Patch 26.18",
+          "rankClaim": "Master",
+          "patch": "26.18",
+          "durationSec": 1646,
+          "region": "KR",
+          "uploaded": "2026-09-25",
+          "moments": []
+        },
+        {
+          "videoId": "xLWNpYk38vQ",
+          "title": "Vex Mid vs Irelia - KR Grandmaster Patch 26.03",
+          "rankClaim": "Grandmaster",
+          "patch": "26.3",
+          "durationSec": 1598,
+          "region": "KR",
+          "uploaded": "2026-02-11",
+          "moments": []
+        },
+        {
+          "videoId": "gZGureJFlqo",
+          "title": "DK ShowMaker Vex vs Irelia [ MID ] Korea Challenger Patch 25.24",
+          "rankClaim": "Challenger",
+          "patch": "25.24",
+          "durationSec": 1499,
+          "region": "KR",
+          "player": "ShowMaker",
+          "team": "DK",
+          "uploaded": "2026-01-01",
+          "moments": []
+        },
+        {
+          "videoId": "SuDFNPQhT8w",
+          "title": "Vex Mid vs Irelia - NA Challenger Patch 25.21",
+          "rankClaim": "Challenger",
+          "patch": "25.21",
+          "durationSec": 1961,
+          "region": "NA",
+          "uploaded": "2025-11-06",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 42,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "RLoeaoIjT8E",
+          "title": "Vex Mid vs Corki - NA Grandmaster Patch 25.23",
+          "rankClaim": "Grandmaster",
+          "patch": "25.23",
+          "durationSec": 1638,
+          "region": "NA",
+          "uploaded": "2025-11-27",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 59,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "5AfTzAMczXc",
+          "title": "Vex Mid vs Jarvan IV - EUW Grandmaster Patch 25.16",
+          "rankClaim": "Grandmaster",
+          "patch": "25.16",
+          "durationSec": 2010,
+          "region": "EUW",
+          "uploaded": "2025-08-29",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 61,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "K08XdVqekKY",
+          "title": "Vex Mid vs Orianna - KR Master Patch 26.17",
+          "rankClaim": "Master",
+          "patch": "26.17",
+          "durationSec": 1747,
+          "region": "KR",
+          "uploaded": "2026-08-30",
+          "moments": []
+        },
+        {
+          "videoId": "OfeHD107ndE",
+          "title": "Vex Mid vs Orianna - KR Master Patch 25.12",
+          "rankClaim": "Master",
+          "patch": "25.12",
+          "durationSec": 2086,
+          "region": "KR",
+          "uploaded": "2025-06-16",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 68,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "KM3QIltnnS0",
+          "title": "Vex Top vs Rumble - NA Grandmaster Patch 26.15",
+          "rankClaim": "Grandmaster",
+          "patch": "26.15",
+          "durationSec": 1755,
+          "region": "NA",
+          "uploaded": "2026-08-12",
+          "result": "W",
+          "moments": [
+            {
+              "atSec": 16,
+              "label": "First Blood — Janna kills Zed",
+              "kind": "kill"
+            },
+            {
+              "atSec": 200,
+              "label": "Vex picks off Riven"
+            },
+            {
+              "atSec": 415,
+              "label": "Nocturne kills Rumble",
+              "kind": "kill"
+            },
+            {
+              "atSec": 743,
+              "label": "Vex kills Graves",
+              "kind": "kill"
+            },
+            {
+              "atSec": 874,
+              "label": "Red takes 1st Dragon (Chemtech)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 943,
+              "label": "Vex outplays Zed"
+            },
+            {
+              "atSec": 1006,
+              "label": "Smolder takes down Riven"
+            },
+            {
+              "atSec": 1166,
+              "label": "Vex takes down Zed"
+            },
+            {
+              "atSec": 1221,
+              "label": "Vex eliminates Thresh"
+            },
+            {
+              "atSec": 1269,
+              "label": "Blue takes 1st Dragon (Ocean)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1433,
+              "label": "Mid Inhibitor falls (Red)"
+            },
+            {
+              "atSec": 1460,
+              "label": "Top Inhibitor falls (Red)"
+            },
+            {
+              "atSec": 1528,
+              "label": "Vex eliminates Rumble"
+            },
+            {
+              "atSec": 1603,
+              "label": "Vex kills Graves",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1626,
+              "label": "Blue takes Baron",
+              "kind": "baron"
+            },
+            {
+              "atSec": 1685,
+              "label": "Red takes 2nd Dragon (Infernal)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1699,
+              "label": "Smolder Double Kill",
+              "kind": "kill"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 74,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "24DII5kxX3Q",
+          "title": "Vex Mid vs Heimerdinger - KR Master Patch 26.14",
+          "rankClaim": "Master",
+          "patch": "26.14",
+          "durationSec": 1718,
+          "region": "KR",
+          "uploaded": "2026-07-29",
+          "result": "W",
+          "moments": [
+            {
+              "atSec": 206,
+              "label": "First Blood — Vex kills Vayne",
+              "kind": "kill"
+            },
+            {
+              "atSec": 284,
+              "label": "Vex outplays Corki"
+            },
+            {
+              "atSec": 399,
+              "label": "Vex solo kills Vayne",
+              "kind": "kill"
+            },
+            {
+              "atSec": 590,
+              "label": "Vex outduels Pyke"
+            },
+            {
+              "atSec": 736,
+              "label": "Blue takes 1st Dragon (Ocean)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 759,
+              "label": "Vex takes down Heimerdinger"
+            },
+            {
+              "atSec": 879,
+              "label": "Vex catches Zoe"
+            },
+            {
+              "atSec": 1056,
+              "label": "Red takes 1st Dragon (Hextech)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1095,
+              "label": "Vex picks off Vayne"
+            },
+            {
+              "atSec": 1197,
+              "label": "Vex catches Heimerdinger again"
+            },
+            {
+              "atSec": 1225,
+              "label": "Blue takes Baron",
+              "kind": "baron"
+            },
+            {
+              "atSec": 1288,
+              "label": "Vex picks off Vayne"
+            },
+            {
+              "atSec": 1381,
+              "label": "Vex takes down Vayne again"
+            },
+            {
+              "atSec": 1394,
+              "label": "Blue takes 2nd Dragon (Chemtech)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1517,
+              "label": "Vex picks off Vayne"
+            },
+            {
+              "atSec": 1610,
+              "label": "Vex outduels Zoe again"
+            },
+            {
+              "atSec": 1633,
+              "label": "Vex takes down Corki"
+            },
+            {
+              "atSec": 1656,
+              "label": "Mid Inhibitor falls (Red)"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 79,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "u42PkCPGgnA",
+          "title": "Vex Mid vs Gragas - EUW Grandmaster Patch 26.01",
+          "rankClaim": "Grandmaster",
+          "patch": "26.1",
+          "durationSec": 1593,
+          "region": "EUW",
+          "uploaded": "2026-01-14",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 80,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "3QGdcmS5Nz4",
+          "title": "Vex Mid vs Pantheon - KR Master Patch 25.23",
+          "rankClaim": "Master",
+          "patch": "25.23",
+          "durationSec": 1633,
+          "region": "KR",
+          "uploaded": "2025-12-03",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 84,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "_byR55oW6z4",
+          "title": "Vex Mid vs Akali - KR Master Patch 25.13",
+          "rankClaim": "Master",
+          "patch": "25.13",
+          "durationSec": 1889,
+          "region": "KR",
+          "uploaded": "2025-07-18",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 89,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "LbWmuEQL5NU",
+          "title": "Vex Support vs Leona - NA Grandmaster Patch 26.02",
+          "rankClaim": "Grandmaster",
+          "patch": "26.2",
+          "durationSec": 1573,
+          "region": "NA",
+          "uploaded": "2026-01-31",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 163,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 237,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 420,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 511,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 528,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 620,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 646,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 711,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 727,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 870,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 929,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1019,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1092,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1240,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1331,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1432,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1531,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1562,
+              "label": "End credit"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 91,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "d7TXgueP5WY",
+          "title": "Vex vs Talon Mid - KR Challenger - Patch 16.05 Season 16",
+          "rankClaim": "Challenger",
+          "patch": "26.5",
+          "durationSec": 2221,
+          "region": "KR",
+          "uploaded": "2026-03-05",
+          "moments": []
+        },
+        {
+          "videoId": "h9OlZCEfxgA",
+          "title": "Vex Mid vs Talon - KR Master Patch 25.06",
+          "rankClaim": "Master",
+          "patch": "25.6",
+          "durationSec": 1541,
+          "region": "KR",
+          "uploaded": "2025-04-04",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 121,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 312,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 599,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 802,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 907,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 956,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1062,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1112,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1228,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1312,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1470,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1492,
+              "label": "Take down The Inhibitor"
+            },
+            {
+              "atSec": 1520,
+              "label": "End credit"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 92,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "Am-ic3vobRc",
+          "title": "Vex Mid vs Riven - KR Grandmaster Patch 25.10",
+          "rankClaim": "Grandmaster",
+          "patch": "25.10",
+          "durationSec": 1549,
+          "region": "KR",
+          "uploaded": "2025-05-21",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 101,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "AkC2YGxpHjk",
+          "title": "Vex vs Xerath Mid - KR Challenger - Patch 25.9 Season 15",
+          "rankClaim": "Challenger",
+          "patch": "25.9",
+          "durationSec": 1786,
+          "region": "KR",
+          "uploaded": "2025-05-02",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 103,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "Z1Xd0qfqC8A",
+          "title": "Vex Mid vs Ahri - EUW Grandmaster Patch 25.07",
+          "rankClaim": "Grandmaster",
+          "patch": "25.7",
+          "durationSec": 2164,
+          "region": "EUW",
+          "uploaded": "2025-04-16",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 91,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 107,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 405,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 537,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 717,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 831,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1019,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1331,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1348,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1503,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1541,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1626,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1682,
+              "label": "Hunt The Dragon",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1721,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1829,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1936,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1962,
+              "label": "Hunt The Baron Nashor",
+              "kind": "baron"
+            },
+            {
+              "atSec": 2061,
+              "label": "Take down The Inhibitor"
+            },
+            {
+              "atSec": 2094,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 2120,
+              "label": "Get a Triple Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 2143,
+              "label": "End credit"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 112,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "_J0fCP9iyl4",
+          "title": "(Pullbae) Vex Mid vs Viktor - KR Master Patch 26.15",
+          "rankClaim": "Master",
+          "patch": "26.15",
+          "durationSec": 1634,
+          "region": "KR",
+          "player": "Pullbae",
+          "uploaded": "2026-08-05",
+          "moments": []
+        },
+        {
+          "videoId": "CLp6-tCWSvk",
+          "title": "(FWS Betty) Vex Mid vs Viktor - KR Master Patch 26.13",
+          "rankClaim": "Master",
+          "patch": "26.13",
+          "durationSec": 1697,
+          "region": "KR",
+          "player": "FWS Betty",
+          "uploaded": "2026-06-30",
+          "moments": []
+        },
+        {
+          "videoId": "JJFOmpOykFE",
+          "title": "(FWS Betty) Vex Mid vs Viktor - KR Master Patch 26.11",
+          "rankClaim": "Master",
+          "patch": "26.11",
+          "durationSec": 1695,
+          "region": "KR",
+          "player": "FWS Betty",
+          "uploaded": "2026-06-04",
+          "result": "L",
+          "moments": [
+            {
+              "atSec": 443,
+              "label": "First Blood — Jayce kills Viktor",
+              "kind": "kill"
+            },
+            {
+              "atSec": 483,
+              "label": "Blue takes 1st Dragon (Chemtech)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 640,
+              "label": "Vex eliminates Viktor"
+            },
+            {
+              "atSec": 803,
+              "label": "Vex picks off Jarvan IV"
+            },
+            {
+              "atSec": 843,
+              "label": "Vex Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 876,
+              "label": "Blue takes 2nd Dragon (Hextech)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 985,
+              "label": "Vex eliminates Viktor"
+            },
+            {
+              "atSec": 1008,
+              "label": "Red takes Rift Herald",
+              "kind": "herald"
+            },
+            {
+              "atSec": 1128,
+              "label": "Pantheon Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1200,
+              "label": "Vex takes down Poppy"
+            },
+            {
+              "atSec": 1215,
+              "label": "Red takes 1st Dragon (Cloud)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1250,
+              "label": "Red takes Baron",
+              "kind": "baron"
+            },
+            {
+              "atSec": 1325,
+              "label": "Vex takes down Viktor"
+            },
+            {
+              "atSec": 1534,
+              "label": "Pantheon Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1564,
+              "label": "Red takes 2nd Dragon (Cloud)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1629,
+              "label": "Pantheon Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1639,
+              "label": "Pantheon Triple Kill",
+              "kind": "kill"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 126,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "-jCTj27djoc",
+          "title": "Vex Mid vs Jayce - EUW Grandmaster Patch 25.24",
+          "rankClaim": "Grandmaster",
+          "patch": "25.24",
+          "durationSec": 1570,
+          "region": "EUW",
+          "uploaded": "2026-01-02",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 192,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 497,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 595,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 721,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 789,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 863,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 902,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 987,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1007,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1111,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1296,
+              "label": "Get a Triple Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1316,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1334,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1388,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1490,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1506,
+              "label": "Take down The Inhibitor"
+            },
+            {
+              "atSec": 1516,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1547,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1559,
+              "label": "End credit"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 131,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "tHkZBfMKyrI",
+          "title": "Vex Mid vs Diana - KR Master Patch 26.21",
+          "rankClaim": "Master",
+          "patch": "26.21",
+          "durationSec": 1725,
+          "region": "KR",
+          "uploaded": "2026-10-24",
+          "result": "W",
+          "moments": [
+            {
+              "atSec": 584,
+              "label": "Red takes 1st Dragon (Chemtech)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 598,
+              "label": "Vex eliminates Diana"
+            },
+            {
+              "atSec": 711,
+              "label": "Vex eliminates Diana"
+            },
+            {
+              "atSec": 823,
+              "label": "Team fight (4 kills)",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 912,
+              "label": "Xin Zhao eliminates Kai'Sa"
+            },
+            {
+              "atSec": 955,
+              "label": "Red takes 2nd Dragon (Mountain)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1003,
+              "label": "Xin Zhao picks off Diana"
+            },
+            {
+              "atSec": 1081,
+              "label": "Vex solo kills Sylas",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1271,
+              "label": "Red takes 3rd Dragon (Ocean)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1383,
+              "label": "Vex Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1420,
+              "label": "Red takes Baron",
+              "kind": "baron"
+            },
+            {
+              "atSec": 1455,
+              "label": "Team fight (4 kills)",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1469,
+              "label": "Vex Triple Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1510,
+              "label": "Mid Inhibitor falls (Blue)"
+            },
+            {
+              "atSec": 1599,
+              "label": "Red takes 4th Dragon (Ocean)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1601,
+              "label": "Vex takes down Sylas again"
+            },
+            {
+              "atSec": 1680,
+              "label": "Vex catches Kai'Sa"
+            }
+          ]
+        },
+        {
+          "videoId": "3dHtQ4mp03Q",
+          "title": "Vex Mid vs Diana - KR Master Patch 26.20",
+          "rankClaim": "Master",
+          "patch": "26.20",
+          "durationSec": 1756,
+          "region": "KR",
+          "uploaded": "2026-10-23",
+          "result": "W",
+          "moments": [
+            {
+              "atSec": 310,
+              "label": "First Blood — Vex kills Diana",
+              "kind": "kill"
+            },
+            {
+              "atSec": 360,
+              "label": "Vex outplays Singed"
+            },
+            {
+              "atSec": 497,
+              "label": "Red takes 1st Dragon (Chemtech)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 573,
+              "label": "Vex solo kills Viego",
+              "kind": "kill"
+            },
+            {
+              "atSec": 655,
+              "label": "Vex kills Tristana",
+              "kind": "kill"
+            },
+            {
+              "atSec": 756,
+              "label": "Vex takes down Diana"
+            },
+            {
+              "atSec": 889,
+              "label": "Red takes 2nd Dragon (Mountain)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1207,
+              "label": "Team fight (3 kills)",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1211,
+              "label": "Vex Triple Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1234,
+              "label": "Blue takes 1st Dragon (Cloud)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1329,
+              "label": "Jinx Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1435,
+              "label": "Vex catches Tristana"
+            },
+            {
+              "atSec": 1442,
+              "label": "Vex Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1469,
+              "label": "Blue takes Baron",
+              "kind": "baron"
+            },
+            {
+              "atSec": 1556,
+              "label": "Lee Sin kills Singed",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1588,
+              "label": "Blue takes 2nd Dragon (Cloud)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1651,
+              "label": "Jinx eliminates Viego"
+            },
+            {
+              "atSec": 1697,
+              "label": "Mid Inhibitor falls (Red)"
+            }
+          ]
+        },
+        {
+          "videoId": "kt0CiWhkAPs",
+          "title": "Vex Mid vs Diana - KR Master Patch 26.19",
+          "rankClaim": "Master",
+          "patch": "26.19",
+          "durationSec": 1523,
+          "region": "KR",
+          "uploaded": "2026-09-28",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 134,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "pHEXck0cHXQ",
+          "title": "Vex Mid vs Syndra - EUW Master Patch 26.20",
+          "rankClaim": "Master",
+          "patch": "26.20",
+          "durationSec": 1657,
+          "region": "EUW",
+          "uploaded": "2026-10-10",
+          "result": "W",
+          "moments": [
+            {
+              "atSec": 90,
+              "label": "First Blood — Vex kills Syndra",
+              "kind": "kill"
+            },
+            {
+              "atSec": 422,
+              "label": "Vex outplays Udyr"
+            },
+            {
+              "atSec": 438,
+              "label": "Vex solo kills Ekko",
+              "kind": "kill"
+            },
+            {
+              "atSec": 440,
+              "label": "Blue takes 1st Dragon (Cloud)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 500,
+              "label": "Vex takes down Ekko again"
+            },
+            {
+              "atSec": 522,
+              "label": "Vex takes down Syndra"
+            },
+            {
+              "atSec": 635,
+              "label": "Vex catches Syndra again"
+            },
+            {
+              "atSec": 649,
+              "label": "Vex catches Ekko (3rd time)"
+            },
+            {
+              "atSec": 747,
+              "label": "Vex catches Lucian"
+            },
+            {
+              "atSec": 779,
+              "label": "Blue takes 2nd Dragon (Infernal)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 803,
+              "label": "Vex outduels Lucian again"
+            },
+            {
+              "atSec": 1074,
+              "label": "Vex outduels Syndra (3rd time)"
+            },
+            {
+              "atSec": 1097,
+              "label": "Blue takes 3rd Dragon (Ocean)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1258,
+              "label": "Vex outplays Lucian (3rd time)"
+            },
+            {
+              "atSec": 1428,
+              "label": "Vex Triple Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1456,
+              "label": "Blue takes 4th Dragon (Ocean)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1489,
+              "label": "Blue takes Baron",
+              "kind": "baron"
+            },
+            {
+              "atSec": 1544,
+              "label": "Vex solo kills Lucian (4th time)",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1560,
+              "label": "Vex outduels Nami"
+            },
+            {
+              "atSec": 1590,
+              "label": "Top Inhibitor falls (Red)"
+            }
+          ]
+        },
+        {
+          "videoId": "cw7cTRU-LiE",
+          "title": "Vex Mid vs Syndra - KR Master Patch 26.09",
+          "rankClaim": "Master",
+          "patch": "26.9",
+          "durationSec": 1729,
+          "region": "KR",
+          "uploaded": "2026-05-08",
+          "moments": []
+        },
+        {
+          "videoId": "FMqU1ciiui8",
+          "title": "Vex Mid vs Syndra - NA Challenger Patch 25.24",
+          "rankClaim": "Challenger",
+          "patch": "25.24",
+          "durationSec": 1467,
+          "region": "NA",
+          "uploaded": "2026-01-10",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 66,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 227,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 431,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 454,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 513,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 696,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 740,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 813,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 916,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1067,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1168,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1282,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1423,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1445,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1456,
+              "label": "End credit"
+            }
+          ]
+        },
+        {
+          "videoId": "uWHjnsov_6w",
+          "title": "Vex Mid vs Syndra - KR Challenger Patch 25.22",
+          "rankClaim": "Challenger",
+          "patch": "25.22",
+          "durationSec": 1737,
+          "region": "KR",
+          "uploaded": "2025-11-13",
+          "moments": []
+        },
+        {
+          "videoId": "LiK6BpV3jXQ",
+          "title": "Vex Mid vs Syndra - KR Master Patch 25.19",
+          "rankClaim": "Master",
+          "patch": "25.19",
+          "durationSec": 1720,
+          "region": "KR",
+          "uploaded": "2025-10-01",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 142,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "7RWSitWp0P4",
+          "title": "Vex Mid vs Zoe - KR Challenger Patch 26.07",
+          "rankClaim": "Challenger",
+          "patch": "26.7",
+          "durationSec": 1581,
+          "region": "KR",
+          "uploaded": "2026-04-10",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 150,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 177,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 407,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 686,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 707,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 790,
+              "label": "Hunt The Dragon",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 810,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 931,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1010,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1036,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1246,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1261,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1287,
+              "label": "Hunt The Baron Nashor",
+              "kind": "baron"
+            },
+            {
+              "atSec": 1385,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1417,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1508,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1570,
+              "label": "End credit"
+            }
+          ]
+        },
+        {
+          "videoId": "Hy_zX7yQRBc",
+          "title": "Vex Mid vs Zoe - KR Master Patch 25.24",
+          "rankClaim": "Master",
+          "patch": "25.24",
+          "durationSec": 1494,
+          "region": "KR",
+          "uploaded": "2025-12-10",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 157,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "BWxfysex8tE",
+          "title": "Vex Mid vs Yasuo - KR Master Patch 26.17",
+          "rankClaim": "Master",
+          "patch": "26.17",
+          "durationSec": 1731,
+          "region": "KR",
+          "uploaded": "2026-09-11",
+          "moments": []
+        },
+        {
+          "videoId": "OWZHY_RznYA",
+          "title": "Vex Mid vs Yasuo - KR Challenger Patch 26.16",
+          "rankClaim": "Challenger",
+          "patch": "26.16",
+          "durationSec": 1649,
+          "region": "KR",
+          "uploaded": "2026-08-28",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 163,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "uZuQBGGgwAE",
+          "title": "Vex Mid vs Taliyah - KR Master Patch 26.04",
+          "rankClaim": "Master",
+          "patch": "26.4",
+          "durationSec": 1649,
+          "region": "KR",
+          "uploaded": "2026-02-23",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 98,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 588,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 686,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 812,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 905,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1072,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1097,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1226,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1330,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1458,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1481,
+              "label": "Take down The Inhibitor"
+            },
+            {
+              "atSec": 1497,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1519,
+              "label": "Take down The Inhibitor"
+            },
+            {
+              "atSec": 1612,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1638,
+              "label": "End credit"
+            }
+          ]
+        },
+        {
+          "videoId": "w9W7YHyHH8A",
+          "title": "Vex Mid vs Taliyah - EUW Challenger Patch 25.24",
+          "rankClaim": "Challenger",
+          "patch": "25.24",
+          "durationSec": 1510,
+          "region": "EUW",
+          "uploaded": "2025-12-18",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 245,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 473,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 573,
+              "label": "Hunt The Void Grubs",
+              "kind": "grubs"
+            },
+            {
+              "atSec": 606,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 829,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 862,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 959,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 986,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1001,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1083,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1230,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1279,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1312,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1443,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1471,
+              "label": "Take down The Inhibitor"
+            },
+            {
+              "atSec": 1484,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1499,
+              "label": "End credit"
+            }
+          ]
+        },
+        {
+          "videoId": "Ww_p9o5hYCI",
+          "title": "Vex vs Taliyah Mid - KR Challenger - Patch 25.5 Season 15",
+          "rankClaim": "Challenger",
+          "patch": "25.5",
+          "durationSec": 2081,
+          "region": "KR",
+          "uploaded": "2025-03-10",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 166,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "tz2CfAttMMc",
+          "title": "Vex Mid vs Akshan - KR Challenger Patch 26.02",
+          "rankClaim": "Challenger",
+          "patch": "26.2",
+          "durationSec": 1581,
+          "region": "KR",
+          "uploaded": "2026-01-31",
+          "moments": []
+        },
+        {
+          "videoId": "K3iMU0AZLAo",
+          "title": "Vex Mid vs Akshan - NA Challenger Patch 25.18",
+          "rankClaim": "Challenger",
+          "patch": "25.18",
+          "durationSec": 1586,
+          "region": "NA",
+          "uploaded": "2025-09-25",
+          "moments": []
+        },
+        {
+          "videoId": "LVG39uIrCXI",
+          "title": "Vex Mid vs Akshan - KR Master Patch 25.15",
+          "rankClaim": "Master",
+          "patch": "25.15",
+          "durationSec": 2105,
+          "region": "KR",
+          "uploaded": "2025-08-07",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 166,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "TROsNkUB7T0",
+          "title": "Vex Top vs Akshan - EUW Grandmaster Patch 26.12",
+          "rankClaim": "Grandmaster",
+          "patch": "26.12",
+          "durationSec": 1515,
+          "region": "EUW",
+          "uploaded": "2026-06-18",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 238,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "gTmHNSxCkXw",
+          "title": "Vex Mid vs Zed - KR Master Patch 26.16",
+          "rankClaim": "Master",
+          "patch": "26.16",
+          "durationSec": 1562,
+          "region": "KR",
+          "uploaded": "2026-08-21",
+          "moments": []
+        },
+        {
+          "videoId": "DQJ4g2rCQXs",
+          "title": "(HRTS Mercy9) Vex Mid vs Zed (Perkz) - EUW Challenger Patch 26.10",
+          "rankClaim": "Challenger",
+          "patch": "26.10",
+          "durationSec": 1600,
+          "region": "EUW",
+          "player": "HRTS Mercy9",
+          "uploaded": "2026-05-21",
+          "moments": []
+        },
+        {
+          "videoId": "Tf7ozs4gP60",
+          "title": "Vex Mid vs Zed - KR Grandmaster Patch 25.05",
+          "rankClaim": "Grandmaster",
+          "patch": "25.5",
+          "durationSec": 1745,
+          "region": "KR",
+          "uploaded": "2025-03-11",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 213,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 356,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 866,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 975,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1153,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1218,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1367,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1387,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1509,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1529,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1586,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1605,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1698,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1724,
+              "label": "End credit"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 245,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "lpe1ayfzSQk",
+          "title": "Vex Mid vs Ekko - KR Grandmaster Patch 25.18",
+          "rankClaim": "Grandmaster",
+          "patch": "25.18",
+          "durationSec": 1696,
+          "region": "KR",
+          "uploaded": "2025-09-19",
+          "moments": []
+        },
+        {
+          "videoId": "DULyy1-S5Ig",
+          "title": "Vex Mid vs Ekko - KR Grandmaster Patch 25.13",
+          "rankClaim": "Grandmaster",
+          "patch": "25.13",
+          "durationSec": 1768,
+          "region": "KR",
+          "uploaded": "2025-07-03",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 246,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "wwEy4ppzYYQ",
+          "title": "Vex Mid vs Qiyana - EUW Grandmaster Patch 25.17",
+          "rankClaim": "Grandmaster",
+          "patch": "25.17",
+          "durationSec": 1813,
+          "region": "EUW",
+          "uploaded": "2025-09-11",
+          "moments": []
+        },
+        {
+          "videoId": "ox9smWSKJqk",
+          "title": "Vex Mid vs Qiyana - KR Master Patch 25.16",
+          "rankClaim": "Master",
+          "patch": "25.16",
+          "durationSec": 2054,
+          "region": "KR",
+          "uploaded": "2025-08-22",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 266,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "5FPvy-t2D3w",
+          "title": "Vex Mid vs Aatrox - KR Master Patch 25.17",
+          "rankClaim": "Master",
+          "patch": "25.17",
+          "durationSec": 2106,
+          "region": "KR",
+          "uploaded": "2025-09-04",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 517,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "H62rooGzrTk",
+          "title": "Vex Mid vs Sylas - NA Challenger Patch 26.19",
+          "rankClaim": "Challenger",
+          "patch": "26.19",
+          "durationSec": 1532,
+          "region": "NA",
+          "uploaded": "2026-10-08",
+          "result": "W",
+          "moments": [
+            {
+              "atSec": 101,
+              "label": "First Blood — Vex kills Sylas",
+              "kind": "kill"
+            },
+            {
+              "atSec": 397,
+              "label": "Red takes 1st Dragon (Ocean)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 593,
+              "label": "Aatrox Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 707,
+              "label": "Team fight (3 kills)",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 732,
+              "label": "Red takes 2nd Dragon (Cloud)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 851,
+              "label": "Rell eliminates Pantheon"
+            },
+            {
+              "atSec": 996,
+              "label": "Vex takes down Pantheon"
+            },
+            {
+              "atSec": 1055,
+              "label": "Blue takes 1st Dragon (Infernal)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1178,
+              "label": "Vex takes down Pantheon"
+            },
+            {
+              "atSec": 1245,
+              "label": "Team fight (4 kills)",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1287,
+              "label": "Vex Triple Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1309,
+              "label": "Vex catches Locke"
+            },
+            {
+              "atSec": 1314,
+              "label": "Red takes Baron",
+              "kind": "baron"
+            },
+            {
+              "atSec": 1387,
+              "label": "Red takes 3rd Dragon (Infernal)",
+              "kind": "dragon"
+            }
+          ]
+        },
+        {
+          "videoId": "w0GKkI6VqQc",
+          "title": "Vex Mid vs Sylas - EUW Challenger Patch 25.14",
+          "rankClaim": "Challenger",
+          "patch": "25.14",
+          "durationSec": 1421,
+          "region": "EUW",
+          "uploaded": "2025-08-01",
+          "moments": []
+        },
+        {
+          "videoId": "5T_gCJSz6-Q",
+          "title": "Vex Mid vs Sylas - TW Challenger Patch 25.10",
+          "rankClaim": "Challenger",
+          "patch": "25.10",
+          "durationSec": 1543,
+          "uploaded": "2025-05-30",
+          "moments": []
+        },
+        {
+          "videoId": "Ug4y7uVQKac",
+          "title": "Vex Mid vs Sylas - KR Challenger Patch 25.08",
+          "rankClaim": "Challenger",
+          "patch": "25.8",
+          "durationSec": 1756,
+          "region": "KR",
+          "uploaded": "2025-04-25",
+          "moments": []
+        },
+        {
+          "videoId": "EmSTiqwuduA",
+          "title": "Vex vs Sylas Mid - KR Challenger - Patch 15.4 Season 15",
+          "rankClaim": "Challenger",
+          "patch": "25.4",
+          "durationSec": 2011,
+          "region": "KR",
+          "uploaded": "2025-02-27",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 518,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "zVoih-E25nc",
+          "title": "Vex Mid vs Neeko - KR Challenger Patch 25.09",
+          "rankClaim": "Challenger",
+          "patch": "25.9",
+          "durationSec": 1668,
+          "region": "KR",
+          "uploaded": "2025-05-06",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 777,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "tKd5OdMh29U",
+          "title": "Vex Mid vs Yone - KR Challenger Patch 26.18",
+          "rankClaim": "Challenger",
+          "patch": "26.18",
+          "durationSec": 1718,
+          "region": "KR",
+          "uploaded": "2026-09-15",
+          "moments": []
+        },
+        {
+          "videoId": "fkYkzAMuRF0",
+          "title": "T1 Faker Vex vs Yone [ MID ] Korea Grandmaster 1788 LP | Patch 26.16",
+          "rankClaim": "Grandmaster",
+          "patch": "26.16",
+          "durationSec": 843,
+          "region": "KR",
+          "player": "Faker",
+          "team": "T1",
+          "uploaded": "2026-08-16",
+          "moments": []
+        },
+        {
+          "videoId": "2N6oibEjJgI",
+          "title": "T1 Faker Vex vs Yone [ MID ] Korea Grandmaster 1137 LP | Patch 26.3",
+          "rankClaim": "Grandmaster",
+          "patch": "26.3",
+          "durationSec": 1697,
+          "region": "KR",
+          "player": "Faker",
+          "team": "T1",
+          "uploaded": "2026-02-19",
+          "moments": []
+        },
+        {
+          "videoId": "BtwhsLp2FfU",
+          "title": "Vex vs Yone Mid - KR Challenger - Patch 25.22 Season 15",
+          "rankClaim": "Challenger",
+          "patch": "25.22",
+          "durationSec": 1831,
+          "region": "KR",
+          "uploaded": "2025-11-18",
+          "moments": []
+        },
+        {
+          "videoId": "6VBuY2qRMYs",
+          "title": "Vex Mid vs Yone - EUW Grandmaster Patch 25.08",
+          "rankClaim": "Grandmaster",
+          "patch": "25.8",
+          "durationSec": 1753,
+          "region": "EUW",
+          "uploaded": "2025-05-01",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 148,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 228,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 535,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 647,
+              "label": "Get a Triple Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 755,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 835,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 861,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 915,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 982,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1041,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1140,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1166,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1201,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1258,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1375,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1491,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1596,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1677,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1704,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1732,
+              "label": "End credit"
+            }
+          ]
+        },
+        {
+          "videoId": "QlnL34a2vQ8",
+          "title": "Vex Mid vs Yone - KR Challenger Patch 25.07",
+          "rankClaim": "Challenger",
+          "patch": "25.7",
+          "durationSec": 1630,
+          "region": "KR",
+          "uploaded": "2025-04-09",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 641,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 676,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 780,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 910,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 975,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1052,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1083,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1107,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1176,
+              "label": "Get a Triple Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1286,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1308,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1318,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1398,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1516,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1554,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1580,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1609,
+              "label": "End credit"
+            }
+          ]
+        },
+        {
+          "videoId": "bmw8-61IWa0",
+          "title": "Vex Mid vs Yone - KR Grandmaster Patch 25.06",
+          "rankClaim": "Grandmaster",
+          "patch": "25.6",
+          "durationSec": 1686,
+          "region": "KR",
+          "uploaded": "2025-03-26",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 777,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "dtkzt4_0kbk",
+          "title": "Vex Top vs Yone - KR Master Patch 26.11",
+          "rankClaim": "Master",
+          "patch": "26.11",
+          "durationSec": 1540,
+          "region": "KR",
+          "uploaded": "2026-06-12",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 799,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "pmaVHB0ryb0",
+          "title": "(FK Adam) Vex Top vs Ambessa - EUW Grandmaster Patch 26.14",
+          "rankClaim": "Grandmaster",
+          "patch": "26.14",
+          "durationSec": 1522,
+          "region": "EUW",
+          "player": "FK Adam",
+          "uploaded": "2026-07-23",
+          "moments": []
+        },
+        {
+          "videoId": "CDpcJZryjZc",
+          "title": "Vex Top vs Ambessa - KR Master Patch 26.13",
+          "rankClaim": "Master",
+          "patch": "26.13",
+          "durationSec": 1732,
+          "region": "KR",
+          "uploaded": "2026-07-16",
+          "moments": []
+        },
+        {
+          "videoId": "tURMoHK_ixo",
+          "title": "Vex Top vs Ambessa - NA Grandmaster Patch 25.15",
+          "rankClaim": "Grandmaster",
+          "patch": "25.15",
+          "durationSec": 1635,
+          "region": "NA",
+          "uploaded": "2025-08-13",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 893,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "0dU2yNGyRJk",
+          "title": "Vex Mid vs Aurora - KR Challenger Patch 26.08",
+          "rankClaim": "Challenger",
+          "patch": "26.8",
+          "durationSec": 1679,
+          "region": "KR",
+          "uploaded": "2026-04-24",
+          "result": "W",
+          "moments": [
+            {
+              "atSec": 75,
+              "label": "First Blood — Vex kills Aurora",
+              "kind": "kill"
+            },
+            {
+              "atSec": 475,
+              "label": "Vex takes down Gwen"
+            },
+            {
+              "atSec": 522,
+              "label": "Vex eliminates Aurora"
+            },
+            {
+              "atSec": 700,
+              "label": "Red takes 1st Dragon (Ocean)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 723,
+              "label": "Vex takes down Gwen"
+            },
+            {
+              "atSec": 808,
+              "label": "Vex eliminates Aurora"
+            },
+            {
+              "atSec": 937,
+              "label": "Corki picks off Bard"
+            },
+            {
+              "atSec": 1047,
+              "label": "Red takes 2nd Dragon (Mountain)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1074,
+              "label": "Nunu & Willump kills Bard",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1203,
+              "label": "Vex takes down Gwen"
+            },
+            {
+              "atSec": 1288,
+              "label": "Vex catches Jhin"
+            },
+            {
+              "atSec": 1315,
+              "label": "Blue takes Baron",
+              "kind": "baron"
+            },
+            {
+              "atSec": 1373,
+              "label": "Blue takes 1st Dragon (Cloud)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1479,
+              "label": "Vex Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1523,
+              "label": "Vex eliminates Aurora"
+            },
+            {
+              "atSec": 1574,
+              "label": "Vex Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1603,
+              "label": "Mid Inhibitor falls (Red)"
+            },
+            {
+              "atSec": 1626,
+              "label": "Vex kills Jhin",
+              "kind": "kill"
+            }
+          ]
+        },
+        {
+          "videoId": "plGOG9bP1uE",
+          "title": "Vex Mid vs Aurora - NA Grandmaster Patch 25.04",
+          "rankClaim": "Grandmaster",
+          "patch": "25.4",
+          "durationSec": 2093,
+          "region": "NA",
+          "uploaded": "2025-02-24",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 35,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 215,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 605,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 671,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 910,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1052,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1086,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1116,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1144,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1378,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1655,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1682,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1730,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1868,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 2004,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 2037,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 2058,
+              "label": "Take down The Inhibitor"
+            },
+            {
+              "atSec": 2072,
+              "label": "End credit"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 910,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "GnNvXTKaaz0",
+          "title": "Vex Mid vs Hwei - KR Challenger Patch 25.20",
+          "rankClaim": "Challenger",
+          "patch": "25.20",
+          "durationSec": 1935,
+          "region": "KR",
+          "uploaded": "2025-10-16",
+          "moments": []
+        }
+      ]
+    }
+  ]
+}

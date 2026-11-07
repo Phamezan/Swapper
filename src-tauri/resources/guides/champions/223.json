@@ -1,0 +1,3153 @@
+{
+  "schema": 1,
+  "champion": 223,
+  "generatedAt": "2026-11-07T13:25:14.592Z",
+  "guides": [],
+  "general": [
+    {
+      "champion": 223,
+      "lane": "support",
+      "patch": "26.21",
+      "reviewed": false,
+      "keyTips": [
+        {
+          "text": "Avoid fighting through the first three levels; look for an all-in only after Tahm has his basic tools.",
+          "scope": "champion",
+          "sourceIds": [
+            "luffrey"
+          ]
+        },
+        {
+          "text": "At level three, use Abyssal Voyage to start a trade when the enemy is vulnerable and the carry can follow; add Tongue Lash and Thick Skin to finish the short fight safely.",
+          "scope": "champion",
+          "sourceIds": [
+            "luffrey"
+          ],
+          "abilityKeys": [
+            {
+              "champion": 223,
+              "key": "W"
+            },
+            {
+              "champion": 223,
+              "key": "Q"
+            },
+            {
+              "champion": 223,
+              "key": "E"
+            }
+          ]
+        },
+        {
+          "text": "In a fight, use Abyssal Voyage to reach the enemy carry, then use Devour to hold the target while the team follows up.",
+          "scope": "champion",
+          "sourceIds": [
+            "luffrey"
+          ],
+          "abilityKeys": [
+            {
+              "champion": 223,
+              "key": "W"
+            },
+            {
+              "champion": 223,
+              "key": "R"
+            }
+          ]
+        }
+      ],
+      "sections": {
+        "overview": {
+          "tips": []
+        },
+        "early-lane": {
+          "tips": [
+            {
+              "text": "The example combo is Abyssal Voyage, three attacks, Tongue Lash, three attacks, then Devour to finish the target.",
+              "scope": "champion",
+              "sourceIds": [
+                "luffrey"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 223,
+                  "key": "W"
+                },
+                {
+                  "champion": 223,
+                  "key": "Q"
+                },
+                {
+                  "champion": 223,
+                  "key": "R"
+                }
+              ]
+            },
+            {
+              "text": "Build tank, because opponents can underestimate Tahm Kench's damage and durability.",
+              "scope": "champion",
+              "sourceIds": [
+                "luffrey"
+              ]
+            },
+            {
+              "text": "Commit to the level-three engage only when the carry is positioned to join; the engage is much less useful without follow-up.",
+              "scope": "champion",
+              "sourceIds": [
+                "luffrey"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 223,
+                  "key": "W"
+                }
+              ]
+            }
+          ]
+        },
+        "mid-lane": {
+          "tips": [
+            {
+              "text": "In a team fight, either approach on foot before committing Abyssal Voyage or begin with it when it gives a reliable entry.",
+              "scope": "champion",
+              "sourceIds": [
+                "luffrey"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 223,
+                  "key": "W"
+                }
+              ]
+            },
+            {
+              "text": "If the carry is unhelpful, roam and look for a two-versus-one opportunity on bot lane.",
+              "scope": "champion",
+              "sourceIds": [
+                "luffrey"
+              ]
+            },
+            {
+              "text": "Use the normal item set of Heartsteel, Thornmail, Spirit Visage, and Unending Despair.",
+              "scope": "champion",
+              "sourceIds": [
+                "luffrey"
+              ],
+              "itemIds": [
+                3084,
+                3075,
+                3065,
+                2502
+              ]
+            },
+            {
+              "text": "Against three or four ability-power enemies, start Null-Magic Mantle and Spectre's Cowl, then take Mercury's Treads and Spirit Visage before the main tank items.",
+              "scope": "champion",
+              "sourceIds": [
+                "luffrey"
+              ],
+              "itemIds": [
+                1033,
+                3211,
+                3111,
+                3065
+              ]
+            },
+            {
+              "text": "Against three or four attack-damage enemies, start Cloth Armor and Bramble Vest, then take Plated Steelcaps before Heartsteel and Thornmail.",
+              "scope": "champion",
+              "sourceIds": [
+                "luffrey"
+              ],
+              "itemIds": [
+                1029,
+                3076,
+                3047,
+                3084,
+                3075
+              ]
+            }
+          ]
+        },
+        "win-condition": {
+          "tips": [
+            {
+              "text": "Tahm's level-three Abyssal Voyage engage relies on his durability and damage to threaten a kill when the carry follows.",
+              "scope": "champion",
+              "sourceIds": [
+                "luffrey"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 223,
+                  "key": "W"
+                }
+              ]
+            },
+            {
+              "text": "Hold Devour for the enemy carry during the fight and keep the target held while allies collapse.",
+              "scope": "champion",
+              "sourceIds": [
+                "luffrey"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 223,
+                  "key": "R"
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "itemization": [
+        {
+          "text": "Take Grasp of the Undying, Shield Bash, Second Wind, Unflinching, Triumph, and Legend: Alacrity as the standard rune page.",
+          "scope": "champion",
+          "sourceIds": [
+            "luffrey"
+          ]
+        },
+        {
+          "text": "Take Flash and Ignite as summoner spells.",
+          "scope": "champion",
+          "sourceIds": [
+            "luffrey"
+          ]
+        },
+        {
+          "text": "Against heavy attack damage, add Unending Despair, Spirit Visage, Dusk and Dawn, and Rabadon's Deathcap after armor and tank items.",
+          "scope": "champion",
+          "sourceIds": [
+            "luffrey"
+          ],
+          "itemIds": [
+            2502,
+            3065,
+            2510,
+            3089
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "id": "luffrey",
+          "author": "luffrey",
+          "rankClaim": "No rank claim",
+          "url": "https://www.mobafire.com/league-of-legends/build/tahm-kench-support-best-guide-652866",
+          "kind": "mobafire"
+        }
+      ]
+    }
+  ],
+  "vods": [
+    {
+      "enemy": 1,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "7vDru4J_Yok",
+          "title": "Tahm Kench Mid vs Annie - EUW Grandmaster Patch 26.12",
+          "rankClaim": "Grandmaster",
+          "patch": "26.12",
+          "durationSec": 1741,
+          "region": "EUW",
+          "uploaded": "2026-06-18",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 8,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "jg50gv7YIik",
+          "title": "Tahm Kench Top vs Vladimir - KR Grandmaster Patch 25.23",
+          "rankClaim": "Grandmaster",
+          "patch": "25.23",
+          "durationSec": 1692,
+          "region": "KR",
+          "uploaded": "2025-12-05",
+          "moments": []
+        },
+        {
+          "videoId": "RDY4CgSBlmE",
+          "title": "Tahm Kench Top vs Vladimir - KR Master Patch 25.22",
+          "rankClaim": "Master",
+          "patch": "25.22",
+          "durationSec": 1783,
+          "region": "KR",
+          "uploaded": "2025-11-20",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 9,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "iRmsXOM3GOw",
+          "title": "Tahm Kench Support vs Fiddlesticks - KR Master Patch 25.12",
+          "rankClaim": "Master",
+          "patch": "25.12",
+          "durationSec": 1710,
+          "region": "KR",
+          "uploaded": "2025-06-19",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 12,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "ZDco_BhH9sc",
+          "title": "Tahm Kench Support vs Alistar - KR Master Patch 26.02",
+          "rankClaim": "Master",
+          "patch": "26.2",
+          "durationSec": 1562,
+          "region": "KR",
+          "uploaded": "2026-01-30",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 373,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 537,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 621,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 871,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 988,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1168,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1302,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1397,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1432,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1494,
+              "label": "Hunt The Dragon",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1513,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1551,
+              "label": "End credit"
+            }
+          ]
+        },
+        {
+          "videoId": "9oDNzF6jlYY",
+          "title": "Tahm Kench Support vs Alistar - KR Grandmaster Patch 25.14",
+          "rankClaim": "Grandmaster",
+          "patch": "25.14",
+          "durationSec": 1763,
+          "region": "KR",
+          "uploaded": "2025-07-24",
+          "moments": []
+        },
+        {
+          "videoId": "93cwUJdL0bs",
+          "title": "Tahm Kench Support vs Alistar - KR Master Patch 25.08",
+          "rankClaim": "Master",
+          "patch": "25.8",
+          "durationSec": 1686,
+          "region": "KR",
+          "uploaded": "2025-04-24",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 193,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 362,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 555,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 651,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 777,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 907,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1078,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1160,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1487,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1665,
+              "label": "End credit"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 14,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "HJZn3E_hU88",
+          "title": "Tahm Kench Top vs Sion - KR Master Patch 25.19",
+          "rankClaim": "Master",
+          "patch": "25.19",
+          "durationSec": 2028,
+          "region": "KR",
+          "uploaded": "2025-10-09",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 16,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "m7fxJ7EjkX4",
+          "title": "Tahm Kench Support vs Soraka - KR Master Patch 25.21",
+          "rankClaim": "Master",
+          "patch": "25.21",
+          "durationSec": 1485,
+          "region": "KR",
+          "uploaded": "2025-11-01",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 19,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "jgGBft5lDO4",
+          "title": "Tahm Kench Top vs Warwick - KR Master Patch 25.12",
+          "rankClaim": "Master",
+          "patch": "25.12",
+          "durationSec": 1548,
+          "region": "KR",
+          "uploaded": "2025-06-24",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 23,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "ED9hligKK8I",
+          "title": "Tahm Kench Top vs Tryndamere - KR Master Patch 25.18",
+          "rankClaim": "Master",
+          "patch": "25.18",
+          "durationSec": 1994,
+          "region": "KR",
+          "uploaded": "2025-09-23",
+          "moments": []
+        },
+        {
+          "videoId": "XQIHeR4rdoA",
+          "title": "Tahm Kench Top vs Tryndamere - KR Master Patch 25.08",
+          "rankClaim": "Master",
+          "patch": "25.8",
+          "durationSec": 1632,
+          "region": "KR",
+          "uploaded": "2025-04-30",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 183,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 297,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 359,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 761,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 839,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 901,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 923,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1014,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1070,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1278,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1363,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1404,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1486,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1611,
+              "label": "End credit"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 26,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "uZWyxDeK4_E",
+          "title": "Tahm Kench Support vs Zilean - KR Master Patch 26.04",
+          "rankClaim": "Master",
+          "patch": "26.4",
+          "durationSec": 1788,
+          "region": "KR",
+          "uploaded": "2026-02-26",
+          "moments": []
+        },
+        {
+          "videoId": "vKaOMmkuaug",
+          "title": "Tahm Kench Support vs Zilean - KR Master Patch 25.16",
+          "rankClaim": "Master",
+          "patch": "25.16",
+          "durationSec": 1522,
+          "region": "KR",
+          "uploaded": "2025-08-21",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 27,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "j8SD8PO9VOM",
+          "title": "Tahm Kench Top vs Singed - KR Master Patch 25.17",
+          "rankClaim": "Master",
+          "patch": "25.17",
+          "durationSec": 1675,
+          "region": "KR",
+          "uploaded": "2025-09-09",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 32,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "JqdQlmB-Pvc",
+          "title": "Tahm Kench Support vs Amumu - KR Master Patch 26.07",
+          "rankClaim": "Master",
+          "patch": "26.7",
+          "durationSec": 1828,
+          "region": "KR",
+          "uploaded": "2026-04-09",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 36,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "3V0qjrUXxBw",
+          "title": "Tahm Kench Top vs Dr. Mundo - KR Master Patch 25.06",
+          "rankClaim": "Master",
+          "patch": "25.6",
+          "durationSec": 1515,
+          "region": "KR",
+          "uploaded": "2025-04-03",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 39,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "Ki-bnK_ajoo",
+          "title": "Tahm Kench Top vs Irelia - KR Master Patch 26.20",
+          "rankClaim": "Master",
+          "patch": "26.20",
+          "durationSec": 1855,
+          "region": "KR",
+          "uploaded": "2026-10-16",
+          "result": "W",
+          "moments": [
+            {
+              "atSec": 182,
+              "label": "First Blood — Tahm Kench kills Irelia",
+              "kind": "kill"
+            },
+            {
+              "atSec": 454,
+              "label": "Blue takes 1st Dragon (Ocean)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 724,
+              "label": "Tahm Kench catches Irelia"
+            },
+            {
+              "atSec": 795,
+              "label": "Blue takes 2nd Dragon (Mountain)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1129,
+              "label": "Blue takes 3rd Dragon (Hextech)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1322,
+              "label": "Bot Inhibitor falls (Red)"
+            },
+            {
+              "atSec": 1370,
+              "label": "Red takes Baron",
+              "kind": "baron"
+            },
+            {
+              "atSec": 1431,
+              "label": "Tahm Kench Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1446,
+              "label": "Red takes 1st Dragon (Hextech)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1573,
+              "label": "Tahm Kench eliminates Pyke"
+            },
+            {
+              "atSec": 1614,
+              "label": "Mid Inhibitor falls (Blue)"
+            },
+            {
+              "atSec": 1680,
+              "label": "Tahm Kench eliminates Irelia"
+            },
+            {
+              "atSec": 1739,
+              "label": "Red takes 2nd Baron",
+              "kind": "baron"
+            },
+            {
+              "atSec": 1766,
+              "label": "Yone takes down Pyke"
+            },
+            {
+              "atSec": 1769,
+              "label": "Red takes 2nd Dragon (Hextech)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1802,
+              "label": "Cho'Gath eliminates Graves"
+            },
+            {
+              "atSec": 1806,
+              "label": "Tahm Kench kills Sylas",
+              "kind": "kill"
+            }
+          ]
+        },
+        {
+          "videoId": "i9xuPdMZ4RA",
+          "title": "Tahm Kench Top vs Irelia - KR Master Patch 26.13",
+          "rankClaim": "Master",
+          "patch": "26.13",
+          "durationSec": 1785,
+          "region": "KR",
+          "uploaded": "2026-07-17",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 40,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "p1nyS409Lc4",
+          "title": "Tahm Kench Support vs Janna - KR Master Patch 25.13",
+          "rankClaim": "Master",
+          "patch": "25.13",
+          "durationSec": 1614,
+          "region": "KR",
+          "uploaded": "2025-07-03",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 41,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "nWbhJpkcQNc",
+          "title": "Tahm Kench Top vs Gangplank - KR Master Patch 26.21",
+          "rankClaim": "Master",
+          "patch": "26.21",
+          "durationSec": 1532,
+          "region": "KR",
+          "uploaded": "2026-10-31",
+          "result": "W",
+          "moments": [
+            {
+              "atSec": 450,
+              "label": "Tahm Kench catches Gangplank"
+            },
+            {
+              "atSec": 468,
+              "label": "Blue takes 1st Dragon (Chemtech)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 580,
+              "label": "Tahm Kench outduels Gangplank again"
+            },
+            {
+              "atSec": 688,
+              "label": "Tahm Kench outplays Gangplank (3rd time)"
+            },
+            {
+              "atSec": 761,
+              "label": "Viego kills Gangplank",
+              "kind": "kill"
+            },
+            {
+              "atSec": 824,
+              "label": "Red takes 1st Dragon (Ocean)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 892,
+              "label": "Taliyah kills Nocturne",
+              "kind": "kill"
+            },
+            {
+              "atSec": 925,
+              "label": "Tahm Kench takes down Galio"
+            },
+            {
+              "atSec": 1039,
+              "label": "Tahm Kench solo kills Gangplank (4th time)",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1148,
+              "label": "Viego Quadra Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1164,
+              "label": "Red takes 2nd Dragon (Infernal)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1299,
+              "label": "Team fight (3 kills)",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1305,
+              "label": "Lissandra Triple Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1370,
+              "label": "Lissandra picks off Nocturne"
+            },
+            {
+              "atSec": 1447,
+              "label": "Red takes Baron",
+              "kind": "baron"
+            },
+            {
+              "atSec": 1472,
+              "label": "Viego eliminates Kalista"
+            },
+            {
+              "atSec": 1504,
+              "label": "Mid Inhibitor falls (Blue)"
+            }
+          ]
+        },
+        {
+          "videoId": "bHiP68gB7BA",
+          "title": "Tahm Kench Top vs Gangplank - KR Master Patch 25.13",
+          "rankClaim": "Master",
+          "patch": "25.13",
+          "durationSec": 1748,
+          "region": "KR",
+          "uploaded": "2025-07-09",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 42,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "2817caimTvo",
+          "title": "Tahm Kench Top vs Corki - KR Master Patch 25.21",
+          "rankClaim": "Master",
+          "patch": "25.21",
+          "durationSec": 1687,
+          "region": "KR",
+          "uploaded": "2025-11-07",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 43,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "p2FTwEKL0Sw",
+          "title": "Tahm Kench Support vs Karma - EUW Grandmaster Patch 25.24",
+          "rankClaim": "Grandmaster",
+          "patch": "25.24",
+          "durationSec": 1497,
+          "region": "EUW",
+          "uploaded": "2025-12-23",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 125,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 322,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 376,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 400,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 446,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 496,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 559,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 612,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 676,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 746,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 799,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 849,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 875,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 900,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1026,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1135,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1177,
+              "label": "Hunt The Dragon",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1230,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1302,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1422,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1462,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1486,
+              "label": "End credit"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 50,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "iKHTleYlWyo",
+          "title": "Tahm Kench Support vs Swain - KR Master Patch 26.03",
+          "rankClaim": "Master",
+          "patch": "26.3",
+          "durationSec": 1598,
+          "region": "KR",
+          "uploaded": "2026-02-13",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 223,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 336,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 387,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 599,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 867,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1017,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1092,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1181,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1268,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1320,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1403,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1457,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1528,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1550,
+              "label": "Take down The Inhibitor"
+            },
+            {
+              "atSec": 1575,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1587,
+              "label": "End credit"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 53,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "wuLZoiefbbs",
+          "title": "Tahm Kench Support vs Blitzcrank - KR Master Patch 25.24",
+          "rankClaim": "Master",
+          "patch": "25.24",
+          "durationSec": 1461,
+          "region": "KR",
+          "uploaded": "2025-12-31",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 472,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 538,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 659,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 760,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 876,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 957,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1010,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1150,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1229,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1324,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1424,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1450,
+              "label": "End credit"
+            }
+          ]
+        },
+        {
+          "videoId": "GlemuEm_TPA",
+          "title": "Tahm Kench Support vs Blitzcrank - KR Master Patch 25.23",
+          "rankClaim": "Master",
+          "patch": "25.23",
+          "durationSec": 1434,
+          "region": "KR",
+          "uploaded": "2025-11-28",
+          "moments": []
+        },
+        {
+          "videoId": "IemBAlTw4xo",
+          "title": "Tahm Kench Support vs Blitzcrank - KR Master Patch 25.10",
+          "rankClaim": "Master",
+          "patch": "25.10",
+          "durationSec": 1907,
+          "region": "KR",
+          "uploaded": "2025-05-23",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 88,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 239,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1021,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1038,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1127,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1158,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1225,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1414,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1533,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1645,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1839,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1857,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1867,
+              "label": "Take down The Inhibitor"
+            },
+            {
+              "atSec": 1886,
+              "label": "End credit"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 54,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "MdaxYF7cqps",
+          "title": "Tahm Kench Top vs Malphite - KR Master Patch 26.07",
+          "rankClaim": "Master",
+          "patch": "26.7",
+          "durationSec": 1757,
+          "region": "KR",
+          "uploaded": "2026-04-15",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 56,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "5qiKj_xSZA0",
+          "title": "Tahm Kench Top vs Nocturne - KR Master Patch 26.18",
+          "rankClaim": "Master",
+          "patch": "26.18",
+          "durationSec": 1627,
+          "region": "KR",
+          "uploaded": "2026-09-18",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 57,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "NarG9h8cDYI",
+          "title": "Tahm Kench Support vs Maokai - KR Master Patch 25.18",
+          "rankClaim": "Master",
+          "patch": "25.18",
+          "durationSec": 1648,
+          "region": "KR",
+          "uploaded": "2025-09-19",
+          "moments": []
+        },
+        {
+          "videoId": "6FlfFXbutME",
+          "title": "Tahm Kench Support vs Maokai - KR Master Patch 25.06",
+          "rankClaim": "Master",
+          "patch": "25.6",
+          "durationSec": 1758,
+          "region": "KR",
+          "uploaded": "2025-03-26",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 203,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 285,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 320,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 575,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 658,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 695,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 772,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 803,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 959,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1059,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1171,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1294,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1412,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1471,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1544,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1679,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1726,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1737,
+              "label": "End credit"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 58,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "5K5wn7h6FRQ",
+          "title": "Tahm Kench Top vs Renekton - KR Master Patch 25.16",
+          "rankClaim": "Master",
+          "patch": "25.16",
+          "durationSec": 2044,
+          "region": "KR",
+          "uploaded": "2025-08-26",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 60,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "nVI57QHwxmc",
+          "title": "Tahm Kench Support vs Elise - KR Master Patch 26.10",
+          "rankClaim": "Master",
+          "patch": "26.10",
+          "durationSec": 1578,
+          "region": "KR",
+          "uploaded": "2026-05-23",
+          "moments": []
+        },
+        {
+          "videoId": "F7daVy5L0Gw",
+          "title": "Tahm Kench Support vs Elise - KR Grandmaster Patch 25.19",
+          "rankClaim": "Grandmaster",
+          "patch": "25.19",
+          "durationSec": 1698,
+          "region": "KR",
+          "uploaded": "2025-10-02",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 75,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "c8QTPKw_4uU",
+          "title": "Tahm Kench Top vs Nasus - VN Master Patch 26.19",
+          "rankClaim": "Master",
+          "patch": "26.19",
+          "durationSec": 1646,
+          "uploaded": "2026-10-03",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 80,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "6Zxgy8Yfr4c",
+          "title": "Tahm Kench Support vs Pantheon - KR Challenger Patch 26.06",
+          "rankClaim": "Challenger",
+          "patch": "26.6",
+          "durationSec": 1621,
+          "region": "KR",
+          "uploaded": "2026-03-26",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 82,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "ClbQPTWfEw4",
+          "title": "Tahm Kench Top vs Mordekaiser (JDG Xiaoxu) - KR Master Patch 26.14",
+          "rankClaim": "Master",
+          "patch": "26.14",
+          "durationSec": 1498,
+          "region": "KR",
+          "player": "Xiaoxu",
+          "uploaded": "2026-07-23",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 85,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "yHxLoe0N0XE",
+          "title": "Tahm Kench Top vs Kennen - KR Master Patch 26.08",
+          "rankClaim": "Master",
+          "patch": "26.8",
+          "durationSec": 1593,
+          "region": "KR",
+          "uploaded": "2026-04-30",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 89,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "Hh9hR2X_xnY",
+          "title": "Tahm Kench Support vs Leona - KR Master Patch 26.20",
+          "rankClaim": "Master",
+          "patch": "26.20",
+          "durationSec": 1867,
+          "region": "KR",
+          "uploaded": "2026-10-18",
+          "result": "W",
+          "moments": [
+            {
+              "atSec": 313,
+              "label": "First Blood — Aphelios kills Leona",
+              "kind": "kill"
+            },
+            {
+              "atSec": 484,
+              "label": "Blue takes 1st Dragon (Mountain)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 802,
+              "label": "Red takes 1st Dragon (Hextech)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1154,
+              "label": "Top Inhibitor falls (Blue)"
+            },
+            {
+              "atSec": 1230,
+              "label": "Blue takes 2nd Dragon (Chemtech)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1242,
+              "label": "Red takes Baron",
+              "kind": "baron"
+            },
+            {
+              "atSec": 1295,
+              "label": "Team fight (3 kills)",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1332,
+              "label": "Aphelios Triple Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1334,
+              "label": "Tahm Kench outduels Viktor"
+            },
+            {
+              "atSec": 1430,
+              "label": "Aphelios Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1439,
+              "label": "Aphelios Triple Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1453,
+              "label": "Aphelios kills Viktor",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1545,
+              "label": "Aphelios eliminates Kayn"
+            },
+            {
+              "atSec": 1556,
+              "label": "Blue takes 3rd Dragon (Chemtech)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1625,
+              "label": "Red takes 2nd Baron",
+              "kind": "baron"
+            },
+            {
+              "atSec": 1677,
+              "label": "Mid Inhibitor falls (Red)"
+            },
+            {
+              "atSec": 1759,
+              "label": "Team fight (4 kills)",
+              "kind": "teamfight"
+            }
+          ]
+        },
+        {
+          "videoId": "vD-ghhx-gYA",
+          "title": "Tahm Kench Support vs Leona - NA Grandmaster Patch 25.13",
+          "rankClaim": "Grandmaster",
+          "patch": "25.13",
+          "durationSec": 2037,
+          "region": "NA",
+          "uploaded": "2025-07-16",
+          "moments": []
+        },
+        {
+          "videoId": "pn0BrXYEu6g",
+          "title": "Tahm Kench Support vs Leona - KR Master Patch 25.05",
+          "rankClaim": "Master",
+          "patch": "25.5",
+          "durationSec": 1981,
+          "region": "KR",
+          "uploaded": "2025-03-12",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 86,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 578,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 731,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 981,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1227,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1273,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1335,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1554,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1754,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1905,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1923,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1960,
+              "label": "End credit"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 92,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "iHEmTSqiNYs",
+          "title": "Tahm Kench Top vs Riven - KR Master Patch 26.15",
+          "rankClaim": "Master",
+          "patch": "26.15",
+          "durationSec": 1517,
+          "region": "KR",
+          "uploaded": "2026-08-13",
+          "moments": []
+        },
+        {
+          "videoId": "hygpPigcDNw",
+          "title": "Tahm Kench Top vs Riven - KR Grandmaster Patch 25.09",
+          "rankClaim": "Grandmaster",
+          "patch": "25.9",
+          "durationSec": 2039,
+          "region": "KR",
+          "uploaded": "2025-05-12",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 277,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 719,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 955,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1092,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1189,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1240,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1290,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1382,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1511,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1541,
+              "label": "Hunt The Baron Nashor",
+              "kind": "baron"
+            },
+            {
+              "atSec": 1592,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1620,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1651,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1682,
+              "label": "Take down The Inhibitor"
+            },
+            {
+              "atSec": 1831,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1950,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 2018,
+              "label": "End credit"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 106,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "fyBYsfa2-4s",
+          "title": "Tahm Kench Top vs Volibear - KR Master Patch 26.09",
+          "rankClaim": "Master",
+          "patch": "26.9",
+          "durationSec": 1431,
+          "region": "KR",
+          "uploaded": "2026-05-12",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 111,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "2gS4o9xf6FA",
+          "title": "Tahm Kench Support vs Nautilus - KR Grandmaster Patch 26.01",
+          "rankClaim": "Grandmaster",
+          "patch": "26.1",
+          "durationSec": 1503,
+          "region": "KR",
+          "uploaded": "2026-01-20",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 436,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 606,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 713,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 776,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 838,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 933,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1058,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1165,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1379,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1465,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1492,
+              "label": "End credit"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 114,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "UaEGz14gBNo",
+          "title": "Tahm Kench Top vs Fiora - KR Master Patch 25.07",
+          "rankClaim": "Master",
+          "patch": "25.7",
+          "durationSec": 1702,
+          "region": "KR",
+          "uploaded": "2025-04-15",
+          "moments": []
+        },
+        {
+          "videoId": "3o-RdKfrrbU",
+          "title": "Tahm Kench Top vs Fiora - KR Master Patch 25.04",
+          "rankClaim": "Master",
+          "patch": "25.4",
+          "durationSec": 2165,
+          "region": "KR",
+          "uploaded": "2025-03-05",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 416,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 436,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 805,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 839,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1015,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1040,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1124,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1150,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1170,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1316,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1427,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1469,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1507,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1532,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1546,
+              "label": "Take down The Inhibitor"
+            },
+            {
+              "atSec": 1643,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1687,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1718,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 2090,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 2144,
+              "label": "End credit"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 117,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "M0FwqUo20wo",
+          "title": "(G2 Labrov) Tahm Kench Support vs Lulu (FK Targamas) - EUW Challenger Patch 26.11",
+          "rankClaim": "Challenger",
+          "patch": "26.11",
+          "durationSec": 1611,
+          "region": "EUW",
+          "player": "Labrov",
+          "team": "G2",
+          "uploaded": "2026-05-31",
+          "result": "L",
+          "moments": [
+            {
+              "atSec": 73,
+              "label": "First Blood — Senna kills Lulu",
+              "kind": "kill"
+            },
+            {
+              "atSec": 351,
+              "label": "Senna eliminates Lee Sin"
+            },
+            {
+              "atSec": 514,
+              "label": "Nidalee takes down Lee Sin"
+            },
+            {
+              "atSec": 552,
+              "label": "Red takes 1st Dragon (Ocean)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 595,
+              "label": "Senna takes down Zeri"
+            },
+            {
+              "atSec": 633,
+              "label": "Tahm Kench kills Lee Sin",
+              "kind": "kill"
+            },
+            {
+              "atSec": 845,
+              "label": "Zed takes down Lulu"
+            },
+            {
+              "atSec": 894,
+              "label": "Nidalee eliminates Zeri"
+            },
+            {
+              "atSec": 1017,
+              "label": "Red takes 2nd Dragon (Chemtech)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1076,
+              "label": "Nidalee kills Sion",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1255,
+              "label": "Nidalee kills Lulu",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1339,
+              "label": "Red takes 3rd Dragon (Cloud)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1351,
+              "label": "Nidalee takes down Lee Sin"
+            },
+            {
+              "atSec": 1388,
+              "label": "Senna picks off Sion"
+            },
+            {
+              "atSec": 1462,
+              "label": "Nidalee kills Lulu",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1476,
+              "label": "Nidalee Triple Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1503,
+              "label": "Red takes Baron",
+              "kind": "baron"
+            },
+            {
+              "atSec": 1550,
+              "label": "Team fight (3 kills)",
+              "kind": "teamfight"
+            }
+          ]
+        },
+        {
+          "videoId": "ToTyJb7Jc28",
+          "title": "Tahm Kench Support vs Lulu - KR Master Patch 25.09",
+          "rankClaim": "Master",
+          "patch": "25.9",
+          "durationSec": 1935,
+          "region": "KR",
+          "uploaded": "2025-05-07",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 122,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "GO-GSGJWZUY",
+          "title": "Tahm Kench Top vs Darius - KR Master Patch 26.06",
+          "rankClaim": "Master",
+          "patch": "26.6",
+          "durationSec": 1889,
+          "region": "KR",
+          "uploaded": "2026-04-02",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 244,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 327,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 392,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 500,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 682,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 718,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 921,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 984,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1091,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1159,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1189,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1251,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1369,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1398,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1516,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1577,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1719,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1827,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1878,
+              "label": "End credit"
+            }
+          ]
+        },
+        {
+          "videoId": "EXaw24Nnf8Q",
+          "title": "Tahm Kench Top vs Darius - KR Master Patch 25.11",
+          "rankClaim": "Master",
+          "patch": "25.11",
+          "durationSec": 1746,
+          "region": "KR",
+          "uploaded": "2025-06-06",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 126,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "n-s2Irb0hpI",
+          "title": "Tahm Kench Top vs Jayce - KR Master Patch 26.04",
+          "rankClaim": "Master",
+          "patch": "26.4",
+          "durationSec": 1863,
+          "region": "KR",
+          "uploaded": "2026-03-05",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 287,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 458,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 540,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 601,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 727,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 984,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1066,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1164,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1346,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1414,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1471,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1486,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1496,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1507,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1693,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1808,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1852,
+              "label": "End credit"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 157,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "4fmpopTeVA0",
+          "title": "Tahm Kench Top vs Yasuo - NA Master Patch 26.17",
+          "rankClaim": "Master",
+          "patch": "26.17",
+          "durationSec": 1715,
+          "region": "NA",
+          "uploaded": "2026-09-03",
+          "moments": []
+        },
+        {
+          "videoId": "MadWLq895GM",
+          "title": "Tahm Kench Top vs Yasuo - KR Master Patch 26.03",
+          "rankClaim": "Master",
+          "patch": "26.3",
+          "durationSec": 1880,
+          "region": "KR",
+          "uploaded": "2026-02-19",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 201,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "W9rQ8lrog38",
+          "title": "Tahm Kench Support vs Braum - KR Master Patch 26.19",
+          "rankClaim": "Master",
+          "patch": "26.19",
+          "durationSec": 1847,
+          "region": "KR",
+          "uploaded": "2026-10-02",
+          "moments": []
+        },
+        {
+          "videoId": "MPetFPyuWGw",
+          "title": "Tahm Kench Support vs Braum - KR Master Patch 25.22",
+          "rankClaim": "Master",
+          "patch": "25.22",
+          "durationSec": 1520,
+          "region": "KR",
+          "uploaded": "2025-11-13",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 240,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "DZOQrbQ0L4Q",
+          "title": "Tahm Kench Top vs Kled - KR Master Patch 25.14",
+          "rankClaim": "Master",
+          "patch": "25.14",
+          "durationSec": 1672,
+          "region": "KR",
+          "uploaded": "2025-07-31",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 266,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "Lgfb5lUjIEI",
+          "title": "Tahm Kench Top vs Aatrox - KR Master Patch 26.13",
+          "rankClaim": "Master",
+          "patch": "26.13",
+          "durationSec": 1706,
+          "region": "KR",
+          "uploaded": "2026-07-09",
+          "moments": []
+        },
+        {
+          "videoId": "2AQFtdwwQl4",
+          "title": "Tahm Kench Top vs Aatrox - KR Master Patch 25.20",
+          "rankClaim": "Master",
+          "patch": "25.20",
+          "durationSec": 1635,
+          "region": "KR",
+          "uploaded": "2025-10-22",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 350,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "f-XoDFnmBOs",
+          "title": "Tahm Kench Support vs Yuumi - EUW Grandmaster Patch 26.05",
+          "rankClaim": "Grandmaster",
+          "patch": "26.5",
+          "durationSec": 1765,
+          "region": "EUW",
+          "uploaded": "2026-03-12",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 273,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 359,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 424,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 543,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 612,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 696,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 720,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 788,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 842,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 894,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 994,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1130,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1204,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1310,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1338,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1356,
+              "label": "Take down The Inhibitor"
+            },
+            {
+              "atSec": 1404,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1423,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1510,
+              "label": "Take down The Inhibitor"
+            },
+            {
+              "atSec": 1574,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1726,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1754,
+              "label": "End credit"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 412,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "hW979LlbUHU",
+          "title": "Tahm Kench Support vs Thresh - VN Grandmaster Patch 26.17",
+          "rankClaim": "Grandmaster",
+          "patch": "26.17",
+          "durationSec": 1639,
+          "uploaded": "2026-09-05",
+          "result": "W",
+          "moments": [
+            {
+              "atSec": 25,
+              "label": "First Blood — Aurelion Sol kills Jinx",
+              "kind": "kill"
+            },
+            {
+              "atSec": 354,
+              "label": "Red takes 1st Dragon (Infernal)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 589,
+              "label": "Tahm Kench picks off Jinx"
+            },
+            {
+              "atSec": 606,
+              "label": "Tahm Kench solo kills Thresh",
+              "kind": "kill"
+            },
+            {
+              "atSec": 673,
+              "label": "Wukong takes down Rengar"
+            },
+            {
+              "atSec": 731,
+              "label": "Blue takes 1st Dragon (Cloud)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 879,
+              "label": "Wukong takes down Rengar"
+            },
+            {
+              "atSec": 914,
+              "label": "Blue takes Rift Herald",
+              "kind": "herald"
+            },
+            {
+              "atSec": 1095,
+              "label": "Team fight (3 kills)",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1109,
+              "label": "Red takes 2nd Dragon (Chemtech)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1151,
+              "label": "Tahm Kench takes down Thresh again"
+            },
+            {
+              "atSec": 1210,
+              "label": "Aurelion Sol picks off Thresh"
+            },
+            {
+              "atSec": 1254,
+              "label": "Blue takes Baron",
+              "kind": "baron"
+            },
+            {
+              "atSec": 1315,
+              "label": "Aurelion Sol takes down Jinx"
+            },
+            {
+              "atSec": 1346,
+              "label": "Mid Inhibitor falls (Red)"
+            },
+            {
+              "atSec": 1427,
+              "label": "Team fight (3 kills)",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1443,
+              "label": "Blue takes 2nd Dragon (Chemtech)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1571,
+              "label": "Team fight (3 kills)",
+              "kind": "teamfight"
+            }
+          ]
+        },
+        {
+          "videoId": "dA0WLaB7LEs",
+          "title": "Tahm Kench Support vs Thresh - KR Master Patch 25.07",
+          "rankClaim": "Master",
+          "patch": "25.7",
+          "durationSec": 1743,
+          "region": "KR",
+          "uploaded": "2025-04-09",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 432,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "Bo1Kqpmqt_c",
+          "title": "Tahm Kench Support vs Bard - KR Master Patch 25.20",
+          "rankClaim": "Master",
+          "patch": "25.20",
+          "durationSec": 1652,
+          "region": "KR",
+          "uploaded": "2025-10-18",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 497,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "QwXh3gn00LE",
+          "title": "Tahm Kench Support vs Rakan - KR Grandmaster Patch 26.08",
+          "rankClaim": "Grandmaster",
+          "patch": "26.8",
+          "durationSec": 1562,
+          "region": "KR",
+          "uploaded": "2026-04-23",
+          "moments": []
+        },
+        {
+          "videoId": "3rlkcjAbBWk",
+          "title": "Tahm Kench Support vs Rakan - KR Grandmaster Patch 25.24",
+          "rankClaim": "Grandmaster",
+          "patch": "25.24",
+          "durationSec": 1497,
+          "region": "KR",
+          "uploaded": "2025-12-11",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 186,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 270,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 343,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 503,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 575,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 833,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 962,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1041,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1172,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1248,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1336,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1456,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1486,
+              "label": "End credit"
+            }
+          ]
+        },
+        {
+          "videoId": "3UdfLmsFhOY",
+          "title": "Tahm Kench Support vs Rakan - KR Master Patch 25.15",
+          "rankClaim": "Master",
+          "patch": "25.15",
+          "durationSec": 1626,
+          "region": "KR",
+          "uploaded": "2025-08-06",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 526,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "2gEejto9Fds",
+          "title": "Tahm Kench Support vs Rell - BR Challenger Patch 26.18",
+          "rankClaim": "Challenger",
+          "patch": "26.18",
+          "durationSec": 1633,
+          "uploaded": "2026-09-24",
+          "moments": []
+        },
+        {
+          "videoId": "EDwQi73n4nc",
+          "title": "Tahm Kench Support vs Rell - KR Master Patch 25.24",
+          "rankClaim": "Master",
+          "patch": "25.24",
+          "durationSec": 1608,
+          "region": "KR",
+          "uploaded": "2026-01-07",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 71,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 184,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 312,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 467,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 665,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 849,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 903,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 933,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1036,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1136,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1216,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1464,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1555,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1572,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1597,
+              "label": "End credit"
+            }
+          ]
+        },
+        {
+          "videoId": "b-szX1ZLHWg",
+          "title": "Tahm Kench Support vs Rell - NA Grandmaster Patch 25.11",
+          "rankClaim": "Grandmaster",
+          "patch": "25.11",
+          "durationSec": 1876,
+          "region": "NA",
+          "uploaded": "2025-06-11",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 777,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "nxpyQjHsCoE",
+          "title": "Tahm Kench Top vs Yone - KR Master Patch 25.15",
+          "rankClaim": "Master",
+          "patch": "25.15",
+          "durationSec": 1544,
+          "region": "KR",
+          "uploaded": "2025-08-13",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 799,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "0ScwWz8zX_I",
+          "title": "Tahm Kench Top vs Ambessa - KR Master Patch 25.24",
+          "rankClaim": "Master",
+          "patch": "25.24",
+          "durationSec": 1525,
+          "region": "KR",
+          "uploaded": "2025-12-16",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 800,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "XipHn03YDO8",
+          "title": "Tahm Kench Support vs Mel - KR Master Patch 25.17",
+          "rankClaim": "Master",
+          "patch": "25.17",
+          "durationSec": 1630,
+          "region": "KR",
+          "uploaded": "2025-09-04",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 893,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "X5tDjUKTfo0",
+          "title": "Tahm Kench Top vs Aurora - NA Grandmaster Patch 25.05",
+          "rankClaim": "Grandmaster",
+          "patch": "25.5",
+          "durationSec": 1823,
+          "region": "NA",
+          "uploaded": "2025-03-18",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 401,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 466,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 581,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 639,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 897,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1078,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1390,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1420,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1496,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1532,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1622,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1647,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1660,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1778,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1802,
+              "label": "End credit"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

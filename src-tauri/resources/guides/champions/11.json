@@ -1,0 +1,3901 @@
+{
+  "schema": 1,
+  "champion": 11,
+  "generatedAt": "2026-11-07T13:25:14.592Z",
+  "guides": [],
+  "general": [
+    {
+      "champion": 11,
+      "lane": "jungle",
+      "patch": "26.21",
+      "reviewed": false,
+      "keyTips": [
+        {
+          "text": "Stack the passive before duels so the opening attacks trigger Double Strike sooner.",
+          "scope": "champion",
+          "sourceIds": [
+            "bobthedodo"
+          ],
+          "abilityKeys": [
+            {
+              "champion": 11,
+              "key": "P"
+            }
+          ]
+        },
+        {
+          "text": "Bank Alpha Strike against important enemy control, dodging it or following once the threat burns.",
+          "scope": "champion",
+          "sourceIds": [
+            "bobthedodo"
+          ],
+          "abilityKeys": [
+            {
+              "champion": 11,
+              "key": "Q"
+            }
+          ]
+        },
+        {
+          "text": "Ride Highlander for chases and retreats with attack speed and slow immunity, extended by takedowns onto reachable first targets.",
+          "scope": "champion",
+          "sourceIds": [
+            "bobthedodo"
+          ],
+          "abilityKeys": [
+            {
+              "champion": 11,
+              "key": "R"
+            }
+          ]
+        }
+      ],
+      "sections": {
+        "overview": {
+          "tips": []
+        },
+        "early-lane": {
+          "tips": [
+            {
+              "text": "Spend Alpha Strike as the gap closer on escaping targets, but never auto-spend protection that could negate damage.",
+              "scope": "champion",
+              "sourceIds": [
+                "bobthedodo"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 11,
+                  "key": "Q"
+                }
+              ]
+            },
+            {
+              "text": "Dive by targeting the champion with Alpha Strike to dodge turret shots through its untargetable travel.",
+              "scope": "champion",
+              "sourceIds": [
+                "bobthedodo"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 11,
+                  "key": "Q"
+                }
+              ]
+            },
+            {
+              "text": "Cut incoming damage with Meditate, including turret hits, to stall for allies or basic-ability cooldowns in bad fights.",
+              "scope": "champion",
+              "sourceIds": [
+                "bobthedodo"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 11,
+                  "key": "W"
+                }
+              ]
+            },
+            {
+              "text": "Hold Meditate to bank Double Strike stacks too, staging a follow-up attack while stalling.",
+              "scope": "champion",
+              "sourceIds": [
+                "bobthedodo"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 11,
+                  "key": "W"
+                },
+                {
+                  "champion": 11,
+                  "key": "P"
+                }
+              ]
+            },
+            {
+              "text": "Commit with Wuju Style active for true damage on every attack.",
+              "scope": "champion",
+              "sourceIds": [
+                "bobthedodo"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 11,
+                  "key": "E"
+                }
+              ]
+            },
+            {
+              "text": "Respect heavy control and untargetable answers as the main disruptors, keeping Alpha Strike banked for key spells where possible.",
+              "scope": "champion",
+              "sourceIds": [
+                "bobthedodo"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 11,
+                  "key": "Q"
+                }
+              ]
+            }
+          ]
+        },
+        "mid-lane": {
+          "tips": [
+            {
+              "text": "Clear by lane states without a dependable first-clear route, ignoring rigid red-start rules as law.",
+              "scope": "champion",
+              "sourceIds": [
+                "bobthedodo"
+              ]
+            },
+            {
+              "text": "Pick exposed squishy targets as the easiest Yi kills.",
+              "scope": "champion",
+              "sourceIds": [
+                "bobthedodo"
+              ]
+            },
+            {
+              "text": "Into multiple tanks, fight sustained front-to-back with Lethal Tempo instead of diving past the line.",
+              "scope": "champion",
+              "sourceIds": [
+                "bobthedodo"
+              ]
+            },
+            {
+              "text": "Farm into item spikes with no safe target around.",
+              "scope": "champion",
+              "sourceIds": [
+                "bobthedodo"
+              ]
+            },
+            {
+              "text": "While losing, skip forced isolated duels into control and keep the standard build over the snowball-only crit route.",
+              "scope": "champion",
+              "sourceIds": [
+                "bobthedodo"
+              ]
+            }
+          ]
+        },
+        "win-condition": {
+          "tips": [
+            {
+              "text": "Open on Highlander for a first target and ride refreshed duration only while the fight stays favorable.",
+              "scope": "champion",
+              "sourceIds": [
+                "bobthedodo"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 11,
+                  "key": "R"
+                }
+              ]
+            },
+            {
+              "text": "Dodge dangerous spells with Alpha Strike and return damage rather than leading every fight on it.",
+              "scope": "champion",
+              "sourceIds": [
+                "bobthedodo"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 11,
+                  "key": "Q"
+                }
+              ]
+            },
+            {
+              "text": "Take accessible carries against squishy teams, or grind frontlines with sustained damage into several tanks.",
+              "scope": "champion",
+              "sourceIds": [
+                "bobthedodo"
+              ]
+            },
+            {
+              "text": "Start nothing into layered control or untargetable enemies unless Alpha Strike covers the key response.",
+              "scope": "champion",
+              "sourceIds": [
+                "bobthedodo"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 11,
+                  "key": "Q"
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "itemization": [
+        {
+          "text": "Run Hail of Blades with Sudden Impact, Grisly Mementos, and Treasure Hunter plus Legend: Alacrity and Coup de Grace standard.",
+          "scope": "champion",
+          "sourceIds": [
+            "bobthedodo"
+          ]
+        },
+        {
+          "text": "Start Kraken Slayer into Guinsoo's Rageblade as the main consistent-damage spike.",
+          "scope": "champion",
+          "sourceIds": [
+            "bobthedodo"
+          ],
+          "itemIds": [
+            6672,
+            3124
+          ]
+        },
+        {
+          "text": "Adapt later buys across Experimental Hexplate, Blade of the Ruined King, Lord Dominik's Regards, Terminus, and Death's Dance instead of buying every option in order.",
+          "scope": "champion",
+          "sourceIds": [
+            "bobthedodo"
+          ],
+          "itemIds": [
+            3073,
+            3036,
+            3302,
+            6333
+          ]
+        },
+        {
+          "text": "Keep crit as the snowball-only option; falling behind strands its fragile recovery.",
+          "scope": "champion",
+          "sourceIds": [
+            "bobthedodo"
+          ]
+        },
+        {
+          "text": "Avoid Blade of the Ruined King first.",
+          "scope": "champion",
+          "sourceIds": [
+            "bobthedodo"
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "id": "bobthedodo",
+          "author": "Bobthedodo",
+          "rankClaim": "No rank claim",
+          "url": "https://www.mobafire.com/league-of-legends/build/miseryi-651559",
+          "kind": "mobafire"
+        }
+      ]
+    }
+  ],
+  "vods": [
+    {
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "R-8brYNhmAE",
+          "title": "FULL EDUCATIONAL ON-HIT MASTER YI GAMEPLAY | FREE GUIDE",
+          "rankClaim": "Master",
+          "patch": "26.21",
+          "durationSec": 1731,
+          "patchEstimated": true,
+          "player": "Sinerias",
+          "uploaded": "2026-10-26",
+          "format": "stream",
+          "cam": true,
+          "moments": [
+            {
+              "atSec": 0,
+              "label": "Introduction and setup"
+            },
+            {
+              "atSec": 25,
+              "label": "Master Yi itemization"
+            },
+            {
+              "atSec": 120,
+              "label": "Early game pathing and invades"
+            },
+            {
+              "atSec": 216,
+              "label": "Jungle fundamentals and communication"
+            },
+            {
+              "atSec": 305,
+              "label": "Macro play in diamond elo"
+            },
+            {
+              "atSec": 423,
+              "label": "Addressing low elo concerns"
+            },
+            {
+              "atSec": 516,
+              "label": "Power spikes and itemization"
+            },
+            {
+              "atSec": 631,
+              "label": "Diving and objective control"
+            },
+            {
+              "atSec": 756,
+              "label": "Avoiding over-greed and blunders"
+            },
+            {
+              "atSec": 938,
+              "label": "Win condition management"
+            },
+            {
+              "atSec": 1086,
+              "label": "Team fighting and positioning"
+            },
+            {
+              "atSec": 1251,
+              "label": "Split pushing strategy"
+            },
+            {
+              "atSec": 1422,
+              "label": "Late game macro and positioning"
+            },
+            {
+              "atSec": 1602,
+              "label": "Final team fight analysis",
+              "kind": "teamfight"
+            }
+          ]
+        },
+        {
+          "videoId": "UpuEceirRDs",
+          "title": "HOW TO PLAY CRIT MASTER YI FROM BEHIND",
+          "rankClaim": "Master",
+          "patch": "26.21",
+          "durationSec": 2242,
+          "patchEstimated": true,
+          "player": "Sinerias",
+          "uploaded": "2026-10-24",
+          "format": "stream",
+          "cam": true,
+          "moments": []
+        },
+        {
+          "videoId": "UoSqeB94qzo",
+          "title": "HOW TO WIN YOUR GAMES WITH ON-HIT MASTER YI",
+          "rankClaim": "Master",
+          "patch": "26.20",
+          "durationSec": 1460,
+          "patchEstimated": true,
+          "player": "Sinerias",
+          "uploaded": "2026-10-15",
+          "format": "stream",
+          "cam": true,
+          "moments": [
+            {
+              "atSec": 0,
+              "label": "Game intro and jungle start"
+            },
+            {
+              "atSec": 36,
+              "label": "Early jungle pathing logic"
+            },
+            {
+              "atSec": 115,
+              "label": "Tracking enemy movement"
+            },
+            {
+              "atSec": 271,
+              "label": "Managing risk and ganking"
+            },
+            {
+              "atSec": 447,
+              "label": "Fundamentals of efficiency"
+            },
+            {
+              "atSec": 687,
+              "label": "The role of coaching"
+            },
+            {
+              "atSec": 882,
+              "label": "Strategic objective control"
+            },
+            {
+              "atSec": 1041,
+              "label": "Team fight mechanics",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1207,
+              "label": "Closing out the game"
+            }
+          ]
+        },
+        {
+          "videoId": "wIZeLgGWBF4",
+          "title": "THIS IS HOW TO PLAY MASTER YI FROM BEHIND",
+          "rankClaim": "Master",
+          "patch": "26.20",
+          "durationSec": 2181,
+          "patchEstimated": true,
+          "player": "Sinerias",
+          "uploaded": "2026-10-12",
+          "format": "stream",
+          "cam": true,
+          "moments": []
+        },
+        {
+          "videoId": "L97nWqm2E7A",
+          "title": "MASTER YI IS S+ TIER TO CLIMB NOW",
+          "rankClaim": "Master",
+          "patch": "26.19",
+          "durationSec": 1820,
+          "patchEstimated": true,
+          "player": "Sinerias",
+          "uploaded": "2026-10-06",
+          "format": "stream",
+          "cam": true,
+          "moments": [
+            {
+              "atSec": 0,
+              "label": "Master Yi build strategy"
+            },
+            {
+              "atSec": 98,
+              "label": "Early game pathing and tempo"
+            },
+            {
+              "atSec": 285,
+              "label": "Resource management"
+            },
+            {
+              "atSec": 441,
+              "label": "Adaptable game planning"
+            },
+            {
+              "atSec": 639,
+              "label": "Mid-game macro and pressure"
+            },
+            {
+              "atSec": 846,
+              "label": "Objective control"
+            },
+            {
+              "atSec": 1084,
+              "label": "Reviewing performance"
+            },
+            {
+              "atSec": 1306,
+              "label": "Advanced skirmishing tactics"
+            },
+            {
+              "atSec": 1477,
+              "label": "Late game macro focus"
+            },
+            {
+              "atSec": 1612,
+              "label": "Closing the game"
+            }
+          ]
+        },
+        {
+          "videoId": "cw1KahuS-sg",
+          "title": "FULL TRYHARD CRIT MASTER YI GAMEPLAY",
+          "rankClaim": "Master",
+          "patch": "26.16",
+          "durationSec": 2165,
+          "patchEstimated": true,
+          "player": "Sinerias",
+          "uploaded": "2026-08-15",
+          "format": "stream",
+          "cam": true,
+          "moments": []
+        },
+        {
+          "videoId": "SEkZSuwsrYI",
+          "title": "RANK 1 MASTER YI GAMEPLAY IN HIGH CHALLENGER",
+          "rankClaim": "Master",
+          "patch": "26.15",
+          "durationSec": 1137,
+          "patchEstimated": true,
+          "player": "Sinerias",
+          "uploaded": "2026-08-04",
+          "format": "stream",
+          "cam": true,
+          "moments": []
+        },
+        {
+          "videoId": "aVI1x6LgN74",
+          "title": "THE TANK MASTER YI EXPERIENCE",
+          "rankClaim": "Master",
+          "patch": "26.9",
+          "durationSec": 2130,
+          "patchEstimated": true,
+          "player": "Sinerias",
+          "uploaded": "2026-05-06",
+          "format": "stream",
+          "cam": true,
+          "moments": []
+        },
+        {
+          "videoId": "U8tiDLKRM64",
+          "title": "HOW TO PLAY MASTER YI AFTER LOSING EARLY GAME",
+          "rankClaim": "Master",
+          "patch": "26.8",
+          "durationSec": 1754,
+          "patchEstimated": true,
+          "player": "Sinerias",
+          "uploaded": "2026-04-28",
+          "format": "stream",
+          "cam": true,
+          "moments": []
+        },
+        {
+          "videoId": "FIu8XAapw18",
+          "title": "LEARN HOW TO PLAY ON-HIT MASTER YI",
+          "rankClaim": "Master",
+          "patch": "26.8",
+          "durationSec": 1640,
+          "patchEstimated": true,
+          "player": "Sinerias",
+          "uploaded": "2026-04-22",
+          "format": "stream",
+          "cam": true,
+          "moments": []
+        },
+        {
+          "videoId": "lmdmvS_W4Pg",
+          "title": "THIS ITEM MAKES CRIT MASTER YI UNSTOPPABLE",
+          "rankClaim": "Master",
+          "patch": "26.7",
+          "durationSec": 1425,
+          "patchEstimated": true,
+          "player": "Sinerias",
+          "uploaded": "2026-04-14",
+          "format": "stream",
+          "cam": true,
+          "moments": []
+        },
+        {
+          "videoId": "GJ7mjb-mXe8",
+          "title": "RANK 1 MASTER YI VS VLADI + BROKENBLADE DUOQ",
+          "rankClaim": "Master",
+          "patch": "26.7",
+          "durationSec": 1455,
+          "patchEstimated": true,
+          "player": "Sinerias",
+          "uploaded": "2026-04-13",
+          "format": "stream",
+          "cam": true,
+          "moments": []
+        },
+        {
+          "videoId": "JZ8DGX36Ulo",
+          "title": "RANK 1 MASTER YI CHALLENGER GAMEPLAY",
+          "rankClaim": "Master",
+          "patch": "26.7",
+          "durationSec": 1692,
+          "patchEstimated": true,
+          "player": "Sinerias",
+          "uploaded": "2026-04-08",
+          "format": "stream",
+          "cam": true,
+          "moments": []
+        },
+        {
+          "videoId": "9LcOiMBiEg4",
+          "title": "GLASS CANNON ONE SHOT FULL CRIT MASTER YI",
+          "rankClaim": "Master",
+          "patch": "26.6",
+          "durationSec": 1845,
+          "patchEstimated": true,
+          "player": "Sinerias",
+          "uploaded": "2026-03-31",
+          "format": "stream",
+          "cam": true,
+          "moments": []
+        },
+        {
+          "videoId": "huqjeuFVfNo",
+          "title": "BEST MASTER YI WORLD VS MASTER PLAYERS",
+          "rankClaim": "Master",
+          "patch": "26.6",
+          "durationSec": 1981,
+          "patchEstimated": true,
+          "player": "Sinerias",
+          "uploaded": "2026-03-30",
+          "format": "stream",
+          "cam": true,
+          "moments": []
+        },
+        {
+          "videoId": "Ci9D9MyKtYw",
+          "title": "RANK 1 MASTER YI TRY HARDS IN SOLOQ",
+          "rankClaim": "Master",
+          "patch": "26.5",
+          "durationSec": 2503,
+          "patchEstimated": true,
+          "player": "Sinerias",
+          "uploaded": "2026-03-10",
+          "format": "stream",
+          "cam": true,
+          "moments": []
+        },
+        {
+          "videoId": "MvmkTy0FuPA",
+          "title": "HOW TO DOMINATE DIAMOND SOLOQ AS MASTER YI",
+          "rankClaim": "Master",
+          "patch": "26.5",
+          "durationSec": 1664,
+          "patchEstimated": true,
+          "player": "Sinerias",
+          "uploaded": "2026-03-04",
+          "format": "stream",
+          "cam": true,
+          "moments": []
+        },
+        {
+          "videoId": "4BZNQKaY8TM",
+          "title": "DO NOT TRY THIS CRITICAL MASTER YI BUILD",
+          "rankClaim": "Master",
+          "patch": "26.3",
+          "durationSec": 1759,
+          "patchEstimated": true,
+          "player": "Sinerias",
+          "uploaded": "2026-02-12",
+          "format": "stream",
+          "cam": true,
+          "moments": []
+        },
+        {
+          "videoId": "lqiXVVUTsOk",
+          "title": "THIS IS HOW TO DOMINATE GAMES WITH MASTER YI",
+          "rankClaim": "Master",
+          "patch": "26.3",
+          "durationSec": 2144,
+          "patchEstimated": true,
+          "player": "Sinerias",
+          "uploaded": "2026-02-10",
+          "format": "stream",
+          "cam": true,
+          "moments": []
+        },
+        {
+          "videoId": "Jz9TIV4gZ50",
+          "title": "HOW TO ESCAPE LOW ELO USING MASTER YI",
+          "rankClaim": "Master",
+          "patch": "26.2",
+          "durationSec": 1209,
+          "patchEstimated": true,
+          "player": "Sinerias",
+          "uploaded": "2026-01-31",
+          "format": "stream",
+          "cam": true,
+          "moments": []
+        }
+      ]
+    },
+    {
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "3JQjWLZNubo",
+          "title": "Baicaiovo Master Yi : His DAMAGE is INSANE on CN Super Server",
+          "rankClaim": "Master",
+          "patch": "26.13",
+          "durationSec": 2088,
+          "patchEstimated": true,
+          "player": "Baicaiovo",
+          "uploaded": "2026-06-24",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "g0XRECOp4ZA",
+          "title": "Baicaiovo Master Yi : This CN Super Server Legend is CRUSHING Challenger with INSANE Mechanics",
+          "rankClaim": "Master",
+          "patch": "26.8",
+          "durationSec": 1773,
+          "patchEstimated": true,
+          "player": "Baicaiovo",
+          "uploaded": "2026-04-23",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "zEjpeEX_Ciw",
+          "title": "Baicaiovo Master Yi : This CN Super Server Legend is CRUSHING Challenger Elo - Engsub",
+          "rankClaim": "Master",
+          "patch": "26.5",
+          "durationSec": 1679,
+          "patchEstimated": true,
+          "player": "Baicaiovo",
+          "uploaded": "2026-03-15",
+          "format": "stream",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "DTQXDdNxers",
+          "title": "How to play Master Yi TOP LANE",
+          "rankClaim": "Master",
+          "patch": "26.17",
+          "durationSec": 1594,
+          "patchEstimated": true,
+          "player": "Sinerias",
+          "uploaded": "2026-08-26",
+          "format": "stream",
+          "cam": true,
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 2,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "9pbKwQLxK80",
+          "title": "OTP Master Yi vs Olaf [ Jungle ] Lol Korea Grandmaster Patch 26.16 ✅",
+          "rankClaim": "Grandmaster",
+          "patch": "26.16",
+          "durationSec": 1371,
+          "region": "KR",
+          "player": "OTP",
+          "uploaded": "2026-08-22",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 5,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "yXC1CtRGy2U",
+          "title": "Master Yi vs Xin Zhao Jungle [ Pentakill ] Lol Korea Master Patch 25.17 ✅",
+          "rankClaim": "Master",
+          "patch": "25.17",
+          "durationSec": 1371,
+          "region": "KR",
+          "player": "Pentakill",
+          "uploaded": "2025-08-31",
+          "moments": []
+        },
+        {
+          "videoId": "CjDeHxtRW0o",
+          "title": "Master Yi Jungle vs Xin Zhao - KR Grandmaster Patch 25.10",
+          "rankClaim": "Grandmaster",
+          "patch": "25.10",
+          "durationSec": 1881,
+          "region": "KR",
+          "uploaded": "2025-05-21",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 7,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "Q7ERSqqPVB4",
+          "title": "Master Yi Mid vs LeBlanc - KR Master Patch 25.24",
+          "rankClaim": "Master",
+          "patch": "25.24",
+          "durationSec": 1545,
+          "region": "KR",
+          "uploaded": "2025-12-30",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 13,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "uRf5unV82Pg",
+          "title": "Master Yi Mid vs Ryze - KR Grandmaster Patch 26.03",
+          "rankClaim": "Grandmaster",
+          "patch": "26.3",
+          "durationSec": 1803,
+          "region": "KR",
+          "uploaded": "2026-02-17",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 309,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 386,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 544,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 616,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 686,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 910,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1038,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1134,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1279,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1407,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1532,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1660,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1681,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1756,
+              "label": "Get a Triple Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1792,
+              "label": "End credit"
+            }
+          ]
+        },
+        {
+          "videoId": "HgsVgYLisNg",
+          "title": "Master Yi Mid vs Ryze - KR Master Patch 25.17",
+          "rankClaim": "Master",
+          "patch": "25.17",
+          "durationSec": 1482,
+          "region": "KR",
+          "uploaded": "2025-09-12",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 13,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "TLj3o6t8_K4",
+          "title": "Master Yi Top vs Ryze - KR Master Patch 26.09",
+          "rankClaim": "Master",
+          "patch": "26.9",
+          "durationSec": 1626,
+          "region": "KR",
+          "uploaded": "2026-05-11",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 17,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "iJwKsKPtKiw",
+          "title": "Master Yi vs Teemo Jungle - EUW Challenger - Patch 16.10 Season 16",
+          "rankClaim": "Challenger",
+          "patch": "26.10",
+          "durationSec": 1396,
+          "region": "EUW",
+          "uploaded": "2026-05-22",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 23,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "303DYHKc4MQ",
+          "title": "Master Yi Top vs Tryndamere - EUW Master Patch 26.19",
+          "rankClaim": "Master",
+          "patch": "26.19",
+          "durationSec": 1817,
+          "region": "EUW",
+          "uploaded": "2026-10-05",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 24,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "bBDSFk2EmKw",
+          "title": "Master Yi vs Jax Jungle - KR Grandmaster - Patch 25.7 Season 15",
+          "rankClaim": "Grandmaster",
+          "patch": "25.7",
+          "durationSec": 1846,
+          "region": "KR",
+          "uploaded": "2025-04-16",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 24,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "X5QDaU69bK8",
+          "title": "Master Yi Top vs Jax - KR Master Patch 25.07",
+          "rankClaim": "Master",
+          "patch": "25.7",
+          "durationSec": 1682,
+          "region": "KR",
+          "uploaded": "2025-04-17",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 240,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 278,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 376,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 415,
+              "label": "Hunt The Void Grubs",
+              "kind": "grubs"
+            },
+            {
+              "atSec": 484,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 643,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 717,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 766,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 895,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 963,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1018,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1050,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1086,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1189,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1317,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1374,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1510,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1530,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1544,
+              "label": "Take down The Inhibitor"
+            },
+            {
+              "atSec": 1602,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1637,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1661,
+              "label": "End credit"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 27,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "LVR0iUKj0mA",
+          "title": "Master Yi Top vs Singed - KR Master Patch 26.17",
+          "rankClaim": "Master",
+          "patch": "26.17",
+          "durationSec": 1824,
+          "region": "KR",
+          "uploaded": "2026-09-10",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 33,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "Bzt831mPuZw",
+          "title": "Master Yi Jungle vs Rammus - EUW Grandmaster Patch 25.08",
+          "rankClaim": "Grandmaster",
+          "patch": "25.8",
+          "durationSec": 1692,
+          "region": "EUW",
+          "uploaded": "2025-04-30",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 39,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "_NS9a30aTuw",
+          "title": "Master Yi Mid vs Irelia - KR Master Patch 26.04",
+          "rankClaim": "Master",
+          "patch": "26.4",
+          "durationSec": 1501,
+          "region": "KR",
+          "uploaded": "2026-03-04",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 27,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 63,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 131,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 190,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 322,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 347,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 430,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 467,
+              "label": "Hunt The Void Grubs",
+              "kind": "grubs"
+            },
+            {
+              "atSec": 501,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 617,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 679,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 897,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 982,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1032,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1144,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1251,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1347,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1414,
+              "label": "Get a Quadra Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1444,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1490,
+              "label": "End credit"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 39,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "5lYTBoOKD14",
+          "title": "Master Yi vs Irelia 14/4/4 (Top) | EUW Master | Master Yi OTP Replay",
+          "rankClaim": "Master",
+          "patch": "26.8",
+          "durationSec": 1850,
+          "region": "EUW",
+          "patchEstimated": true,
+          "uploaded": "2026-04-18",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 48,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "GzemeQ9NAnQ",
+          "title": "Master Yi Jungle vs Trundle - KR Grandmaster Patch 25.15",
+          "rankClaim": "Grandmaster",
+          "patch": "25.15",
+          "durationSec": 1691,
+          "region": "KR",
+          "uploaded": "2025-08-08",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 54,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "leQs71cwCvk",
+          "title": "Master Yi Top vs Malphite - EUW Grandmaster Patch 26.02",
+          "rankClaim": "Grandmaster",
+          "patch": "26.2",
+          "durationSec": 1562,
+          "region": "EUW",
+          "uploaded": "2026-02-02",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 115,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 200,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 297,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 406,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 714,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 744,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 856,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 926,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1131,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1264,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1551,
+              "label": "End credit"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 56,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "CSV0GMBkOU0",
+          "title": "(Sinerias) Master Yi Jungle vs Nocturne (UCAM bluerzor) - EUW Challenger Patch 26.20",
+          "rankClaim": "Challenger",
+          "patch": "26.20",
+          "durationSec": 1521,
+          "region": "EUW",
+          "player": "Sinerias",
+          "uploaded": "2026-10-12",
+          "result": "W",
+          "moments": [
+            {
+              "atSec": 63,
+              "label": "First Blood — Master Yi kills Jinx",
+              "kind": "kill"
+            },
+            {
+              "atSec": 366,
+              "label": "Blue takes 1st Dragon (Mountain)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 448,
+              "label": "Master Yi kills Janna",
+              "kind": "kill"
+            },
+            {
+              "atSec": 687,
+              "label": "Blue takes 2nd Dragon (Chemtech)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 698,
+              "label": "Master Yi kills Janna",
+              "kind": "kill"
+            },
+            {
+              "atSec": 704,
+              "label": "Master Yi Triple Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 748,
+              "label": "Viktor takes down Jinx"
+            },
+            {
+              "atSec": 901,
+              "label": "Blue takes Rift Herald",
+              "kind": "herald"
+            },
+            {
+              "atSec": 933,
+              "label": "Master Yi outduels K'Sante"
+            },
+            {
+              "atSec": 1034,
+              "label": "Blue takes 3rd Dragon (Cloud)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1045,
+              "label": "Master Yi eliminates Jinx"
+            },
+            {
+              "atSec": 1132,
+              "label": "Master Yi eliminates Jinx"
+            },
+            {
+              "atSec": 1205,
+              "label": "Master Yi kills Janna",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1296,
+              "label": "Master Yi outplays K'Sante again"
+            },
+            {
+              "atSec": 1349,
+              "label": "Blue takes 4th Dragon (Cloud)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1402,
+              "label": "Master Yi takes down Jinx"
+            },
+            {
+              "atSec": 1503,
+              "label": "Master Yi Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1505,
+              "label": "Master Yi Triple Kill",
+              "kind": "kill"
+            }
+          ]
+        },
+        {
+          "videoId": "zIBrT7SuvqU",
+          "title": "Master Yi Jungle vs Nocturne - KR Master Patch 25.17",
+          "rankClaim": "Master",
+          "patch": "25.17",
+          "durationSec": 1622,
+          "region": "KR",
+          "uploaded": "2025-09-03",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 56,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "x4Mo8FVlBEc",
+          "title": "Master Yi Mid vs Nocturne - KR Master Patch 25.13",
+          "rankClaim": "Master",
+          "patch": "25.13",
+          "durationSec": 2102,
+          "region": "KR",
+          "uploaded": "2025-07-11",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 58,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "v3RTzHLq7w0",
+          "title": "Master Yi Top vs Renekton - KR Master Patch 25.19",
+          "rankClaim": "Master",
+          "patch": "25.19",
+          "durationSec": 1424,
+          "region": "KR",
+          "uploaded": "2025-10-10",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 59,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "RzyYfsGRYDY",
+          "title": "(KC Yike) Master Yi Jungle vs Jarvan IV - EUW Challenger Patch 26.13",
+          "rankClaim": "Challenger",
+          "patch": "26.13",
+          "durationSec": 1444,
+          "region": "EUW",
+          "player": "Yike",
+          "team": "KC",
+          "uploaded": "2026-07-13",
+          "moments": []
+        },
+        {
+          "videoId": "tXQZNydtSAo",
+          "title": "Master Yi Jungle vs Jarvan IV - KR Master Patch 26.13",
+          "rankClaim": "Master",
+          "patch": "26.13",
+          "durationSec": 1522,
+          "region": "KR",
+          "uploaded": "2026-07-01",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 60,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "llYVwjc3n3s",
+          "title": "Master Yi vs Elise [ Jungle ] Lol Korea Challenger Patch 26.13 ✅",
+          "rankClaim": "Challenger",
+          "patch": "26.13",
+          "durationSec": 1627,
+          "region": "KR",
+          "uploaded": "2026-07-12",
+          "moments": []
+        },
+        {
+          "videoId": "AroEPPyWPyg",
+          "title": "Master Yi Jungle vs Elise - EUW Grandmaster Patch 26.04",
+          "rankClaim": "Grandmaster",
+          "patch": "26.4",
+          "durationSec": 1531,
+          "region": "EUW",
+          "uploaded": "2026-02-26",
+          "moments": []
+        },
+        {
+          "videoId": "XwClGHwNcuo",
+          "title": "Master Yi Jungle vs Elise - KR Master Patch 25.09",
+          "rankClaim": "Master",
+          "patch": "25.9",
+          "durationSec": 1482,
+          "region": "KR",
+          "uploaded": "2025-05-06",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 224,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 461,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 486,
+              "label": "Hunt The Void Grubs",
+              "kind": "grubs"
+            },
+            {
+              "atSec": 619,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 664,
+              "label": "Hunt The Dragon",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 819,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 932,
+              "label": "Hunt The Rift Herald",
+              "kind": "herald"
+            },
+            {
+              "atSec": 966,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 989,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1001,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1018,
+              "label": "Hunt The Dragon",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1051,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1135,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1161,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1280,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1311,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1414,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1461,
+              "label": "End credit"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 62,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "K0SCqZUXUtI",
+          "title": "Master Yi Jungle vs Wukong - NA Challenger Patch 26.21",
+          "rankClaim": "Challenger",
+          "patch": "26.21",
+          "durationSec": 1774,
+          "region": "NA",
+          "uploaded": "2026-10-26",
+          "result": "W",
+          "moments": [
+            {
+              "atSec": 352,
+              "label": "Blue takes 1st Dragon (Hextech)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 690,
+              "label": "Red takes 1st Dragon (Infernal)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 859,
+              "label": "Aurelion Sol eliminates Xerath"
+            },
+            {
+              "atSec": 1008,
+              "label": "Blue takes 2nd Dragon (Cloud)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1015,
+              "label": "Red takes Rift Herald",
+              "kind": "herald"
+            },
+            {
+              "atSec": 1087,
+              "label": "Master Yi solo kills Xerath",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1173,
+              "label": "Master Yi eliminates Ezreal"
+            },
+            {
+              "atSec": 1276,
+              "label": "Master Yi kills Jayce",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1327,
+              "label": "Red takes Baron",
+              "kind": "baron"
+            },
+            {
+              "atSec": 1329,
+              "label": "Blue takes 3rd Dragon (Cloud)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1538,
+              "label": "Team fight (3 kills)",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1552,
+              "label": "Master Yi Triple Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1580,
+              "label": "Mid Inhibitor falls (Blue)"
+            },
+            {
+              "atSec": 1636,
+              "label": "Red takes 2nd Dragon (Cloud)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1676,
+              "label": "Master Yi kills Nautilus",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1717,
+              "label": "Red takes 2nd Baron",
+              "kind": "baron"
+            },
+            {
+              "atSec": 1744,
+              "label": "Master Yi Triple Kill",
+              "kind": "kill"
+            }
+          ]
+        },
+        {
+          "videoId": "3UVBtRVXJiI",
+          "title": "Master Yi vs Wukong Jungle - KR Challenger - Patch 25.5 Season 15",
+          "rankClaim": "Challenger",
+          "patch": "25.5",
+          "durationSec": 1876,
+          "region": "KR",
+          "uploaded": "2025-03-15",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 64,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "5kK5B_A_NYs",
+          "title": "Master Yi Jungle vs Lee Sin - KR Grandmaster Patch 26.16",
+          "rankClaim": "Grandmaster",
+          "patch": "26.16",
+          "durationSec": 1453,
+          "region": "KR",
+          "uploaded": "2026-08-18",
+          "moments": []
+        },
+        {
+          "videoId": "YS5m_CJa0Ik",
+          "title": "Master Yi Jungle vs Lee Sin (HRTS Lurox) - EUW Challenger Patch 26.11",
+          "rankClaim": "Challenger",
+          "patch": "26.11",
+          "durationSec": 1792,
+          "region": "EUW",
+          "uploaded": "2026-06-04",
+          "moments": []
+        },
+        {
+          "videoId": "BiH8Fk5AGlM",
+          "title": "Master Yi Jungle vs Lee Sin - NA Grandmaster Patch 25.18",
+          "rankClaim": "Grandmaster",
+          "patch": "25.18",
+          "durationSec": 1519,
+          "region": "NA",
+          "uploaded": "2025-09-25",
+          "moments": []
+        },
+        {
+          "videoId": "tjRGroJ6ZWU",
+          "title": "Master Yi vs Lee Sin [ Jungle ] Lol Korea Master Patch 25.18 ✅",
+          "rankClaim": "Master",
+          "patch": "25.18",
+          "durationSec": 1233,
+          "region": "KR",
+          "uploaded": "2025-09-13",
+          "moments": []
+        },
+        {
+          "videoId": "FSdh2nyU7PI",
+          "title": "Master Yi Jungle vs Lee Sin - KR Grandmaster Patch 25.06",
+          "rankClaim": "Grandmaster",
+          "patch": "25.6",
+          "durationSec": 2055,
+          "region": "KR",
+          "uploaded": "2025-03-26",
+          "moments": []
+        },
+        {
+          "videoId": "P2KV_8VzhYg",
+          "title": "Master Yi vs Lee Sin Jungle - KR Grandmaster - Patch 25.4 Season 15",
+          "rankClaim": "Grandmaster",
+          "patch": "25.4",
+          "durationSec": 1440,
+          "region": "KR",
+          "uploaded": "2025-03-05",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 67,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "qCeHaIvnZPY",
+          "title": "Master Yi Top vs Vayne - KR Master Patch 26.08",
+          "rankClaim": "Master",
+          "patch": "26.8",
+          "durationSec": 1785,
+          "region": "KR",
+          "uploaded": "2026-04-27",
+          "moments": []
+        },
+        {
+          "videoId": "1iniiQUlH5w",
+          "title": "Master Yi vs Vayne 19/4/7 (Top) | EUW Master | Master Yi OTP Replay",
+          "rankClaim": "Master",
+          "patch": "26.8",
+          "durationSec": 1927,
+          "region": "EUW",
+          "patchEstimated": true,
+          "uploaded": "2026-04-18",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 72,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "uV7YPvczm5k",
+          "title": "Master Yi Jungle vs Skarner - KR Grandmaster Patch 26.15",
+          "rankClaim": "Grandmaster",
+          "patch": "26.15",
+          "durationSec": 1773,
+          "region": "KR",
+          "uploaded": "2026-08-04",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 76,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "WzeCPKCsuII",
+          "title": "Master Yi Jungle vs Nidalee - KR Grandmaster Patch 26.10",
+          "rankClaim": "Grandmaster",
+          "patch": "26.10",
+          "durationSec": 1595,
+          "region": "KR",
+          "uploaded": "2026-05-17",
+          "moments": []
+        },
+        {
+          "videoId": "5USI6KHbA4s",
+          "title": "Master Yi Jungle vs Nidalee - KR Grandmaster Patch 26.09",
+          "rankClaim": "Grandmaster",
+          "patch": "26.9",
+          "durationSec": 1497,
+          "region": "KR",
+          "uploaded": "2026-05-04",
+          "moments": []
+        },
+        {
+          "videoId": "2uxYT8U2hyA",
+          "title": "Master Yi Jungle vs Nidalee - KR Challenger Patch 25.21",
+          "rankClaim": "Challenger",
+          "patch": "25.21",
+          "durationSec": 1426,
+          "region": "KR",
+          "uploaded": "2025-10-28",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 80,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "i0LEvmsbOhw",
+          "title": "Master Yi Jungle vs Pantheon - KR Challenger Patch 26.07",
+          "rankClaim": "Challenger",
+          "patch": "26.7",
+          "durationSec": 1818,
+          "region": "KR",
+          "uploaded": "2026-04-07",
+          "moments": []
+        },
+        {
+          "videoId": "NOcf0MJxEBs",
+          "title": "Master Yi Jungle vs Pantheon - KR Master Patch 25.13",
+          "rankClaim": "Master",
+          "patch": "25.13",
+          "durationSec": 2129,
+          "region": "KR",
+          "uploaded": "2025-07-03",
+          "moments": []
+        },
+        {
+          "videoId": "FYBotZKHt68",
+          "title": "Master Yi Jungle vs Pantheon - KR Grandmaster Patch 25.12",
+          "rankClaim": "Grandmaster",
+          "patch": "25.12",
+          "durationSec": 1557,
+          "region": "KR",
+          "uploaded": "2025-06-18",
+          "moments": []
+        },
+        {
+          "videoId": "liBCZbjU5cs",
+          "title": "Master Yi vs Pantheon Jungle [ QuadraKill ] Korea Master Patch 25.10 ✅",
+          "rankClaim": "Master",
+          "patch": "25.10",
+          "durationSec": 1226,
+          "region": "KR",
+          "player": "QuadraKill",
+          "uploaded": "2025-05-21",
+          "moments": []
+        },
+        {
+          "videoId": "nANPh85TAmY",
+          "title": "Master Yi Jungle vs Pantheon - NA Challenger Patch 25.05",
+          "rankClaim": "Challenger",
+          "patch": "25.5",
+          "durationSec": 1522,
+          "region": "NA",
+          "uploaded": "2025-03-19",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 215,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 378,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 559,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 741,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 916,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 933,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 957,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1012,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1078,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1109,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1119,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1256,
+              "label": "Get a Quadra Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1501,
+              "label": "End credit"
+            }
+          ]
+        },
+        {
+          "videoId": "MoHCXxyTq_Y",
+          "title": "Master Yi Jungle vs Pantheon - KR Master Patch 25.04",
+          "rankClaim": "Master",
+          "patch": "25.4",
+          "durationSec": 2131,
+          "region": "KR",
+          "uploaded": "2025-02-25",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 90,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "m1XjCSl3NMg",
+          "title": "Master Yi Top vs Malzahar - KR Master Patch 25.15",
+          "rankClaim": "Master",
+          "patch": "25.15",
+          "durationSec": 1489,
+          "region": "KR",
+          "uploaded": "2025-08-12",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 91,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "mVCFk7MjXdA",
+          "title": "Master Yi vs Talon Jungle - KR Challenger - Patch 16.17 Season 16",
+          "rankClaim": "Challenger",
+          "patch": "26.17",
+          "durationSec": 1431,
+          "region": "KR",
+          "uploaded": "2026-09-07",
+          "moments": []
+        },
+        {
+          "videoId": "JTREU93zhCw",
+          "title": "(KRX Willer) Master Yi Jungle vs Talon - KR Challenger Patch 26.12",
+          "rankClaim": "Challenger",
+          "patch": "26.12",
+          "durationSec": 1526,
+          "region": "KR",
+          "player": "KRX Willer",
+          "uploaded": "2026-06-18",
+          "moments": []
+        },
+        {
+          "videoId": "e4zbrKrgCiE",
+          "title": "Master Yi vs Talon Jungle - KR Challenger - Patch 16.08 Season 16",
+          "rankClaim": "Challenger",
+          "patch": "26.8",
+          "durationSec": 2311,
+          "region": "KR",
+          "uploaded": "2026-04-20",
+          "moments": []
+        },
+        {
+          "videoId": "U7amq1ugpEE",
+          "title": "Master Yi vs Talon Jungle - KR Challenger - Patch 25.21 Season 15",
+          "rankClaim": "Challenger",
+          "patch": "25.21",
+          "durationSec": 1411,
+          "region": "KR",
+          "uploaded": "2025-10-26",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 91,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "bwKeqnmp6tM",
+          "title": "Master Yi Mid vs Talon - KR Master Patch 25.21",
+          "rankClaim": "Master",
+          "patch": "25.21",
+          "durationSec": 1505,
+          "region": "KR",
+          "uploaded": "2025-11-05",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 104,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "NjDfFv5VWNM",
+          "title": "Master Yi vs Graves Jungle - KR Challenger - Patch 16.05 Season 16",
+          "rankClaim": "Challenger",
+          "patch": "26.5",
+          "durationSec": 1711,
+          "region": "KR",
+          "uploaded": "2026-03-19",
+          "moments": []
+        },
+        {
+          "videoId": "T-wB072gm4s",
+          "title": "Master Yi Jungle vs Graves - KR Challenger Patch 26.05",
+          "rankClaim": "Challenger",
+          "patch": "26.5",
+          "durationSec": 1720,
+          "region": "KR",
+          "uploaded": "2026-03-19",
+          "moments": []
+        },
+        {
+          "videoId": "fgudtvezSPI",
+          "title": "Master Yi vs Graves Jungle - KR Challenger - Patch 25.21 Season 15",
+          "rankClaim": "Challenger",
+          "patch": "25.21",
+          "durationSec": 1576,
+          "region": "KR",
+          "uploaded": "2025-10-28",
+          "moments": []
+        },
+        {
+          "videoId": "x0iiDn61NMA",
+          "title": "Master Yi vs Graves Jungle - KR Challenger - Patch 25.6 Season 15",
+          "rankClaim": "Challenger",
+          "patch": "25.6",
+          "durationSec": 1330,
+          "region": "KR",
+          "uploaded": "2025-03-24",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 107,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "6jr3uvn01eI",
+          "title": "Master Yi vs Rengar Jungle - KR Challenger - Patch 25.23 Season 15",
+          "rankClaim": "Challenger",
+          "patch": "25.23",
+          "durationSec": 1756,
+          "region": "KR",
+          "uploaded": "2025-12-01",
+          "moments": []
+        },
+        {
+          "videoId": "QyvU8Yldo9s",
+          "title": "Master Yi Jungle vs Rengar - KR Grandmaster Patch 25.05",
+          "rankClaim": "Grandmaster",
+          "patch": "25.5",
+          "durationSec": 2086,
+          "region": "KR",
+          "uploaded": "2025-03-12",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 228,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 393,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 553,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 646,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 669,
+              "label": "Hunt The Void Grubs",
+              "kind": "grubs"
+            },
+            {
+              "atSec": 729,
+              "label": "Hunt The Dragon",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 762,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 883,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 955,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1031,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1058,
+              "label": "Hunt The Dragon",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1083,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1178,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1218,
+              "label": "Hunt The Atakhan"
+            },
+            {
+              "atSec": 1382,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1416,
+              "label": "Hunt The Dragon",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1448,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1583,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1689,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1794,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1813,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1828,
+              "label": "Hunt The Dragon",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1898,
+              "label": "Hunt The Baron Nashor",
+              "kind": "baron"
+            },
+            {
+              "atSec": 1935,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1970,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1983,
+              "label": "Take down The Inhibitor"
+            },
+            {
+              "atSec": 2004,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 2033,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 2054,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 2065,
+              "label": "End credit"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 110,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "WW5q4WDDADw",
+          "title": "Master Yi Top vs Varus - KR Master Patch 25.22",
+          "rankClaim": "Master",
+          "patch": "25.22",
+          "durationSec": 1671,
+          "region": "KR",
+          "uploaded": "2025-11-17",
+          "moments": []
+        },
+        {
+          "videoId": "kPu-4aycXrM",
+          "title": "Master Yi Top vs Varus - KR Master Patch 25.20",
+          "rankClaim": "Master",
+          "patch": "25.20",
+          "durationSec": 1536,
+          "region": "KR",
+          "uploaded": "2025-10-23",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 119,
+      "lane": "adc",
+      "videos": [
+        {
+          "videoId": "OMyb0ta2cso",
+          "title": "Master Yi ADC vs Draven - EUW Grandmaster Patch 26.15",
+          "rankClaim": "Grandmaster",
+          "patch": "26.15",
+          "durationSec": 1585,
+          "region": "EUW",
+          "uploaded": "2026-08-11",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 121,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "mlSCKhmKoao",
+          "title": "Master Yi Jungle vs Kha'Zix - EUW Master Patch 26.17",
+          "rankClaim": "Master",
+          "patch": "26.17",
+          "durationSec": 1701,
+          "region": "EUW",
+          "uploaded": "2026-09-12",
+          "moments": []
+        },
+        {
+          "videoId": "wAVvK80FwPM",
+          "title": "Master Yi Jungle vs Kha'Zix - VN Challenger Patch 25.06",
+          "rankClaim": "Challenger",
+          "patch": "25.6",
+          "durationSec": 1462,
+          "uploaded": "2025-04-03",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 357,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 380,
+              "label": "Hunt The Void Grubs",
+              "kind": "grubs"
+            },
+            {
+              "atSec": 469,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 644,
+              "label": "Hunt The Void Grubs",
+              "kind": "grubs"
+            },
+            {
+              "atSec": 887,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 958,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 977,
+              "label": "Hunt The Rift Herald",
+              "kind": "herald"
+            },
+            {
+              "atSec": 1001,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1100,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1205,
+              "label": "Hunt The Atakhan"
+            },
+            {
+              "atSec": 1278,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1302,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1380,
+              "label": "Hunt The Dragon",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1412,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1441,
+              "label": "End credit"
+            }
+          ]
+        },
+        {
+          "videoId": "vHLxLbvfCeM",
+          "title": "Master Yi vs Khazix [ Jungle ] Korea Grandmaster Patch 25.2 ✅",
+          "rankClaim": "Grandmaster",
+          "patch": "25.2",
+          "durationSec": 1436,
+          "region": "KR",
+          "uploaded": "2025-01-25",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 126,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "9tlxa-guuEs",
+          "title": "Master Yi Jungle vs Jayce (Karsa) - KR Grandmaster Patch 26.18",
+          "rankClaim": "Grandmaster",
+          "patch": "26.18",
+          "durationSec": 1674,
+          "region": "KR",
+          "uploaded": "2026-09-15",
+          "moments": []
+        },
+        {
+          "videoId": "9gIdx9fCpw8",
+          "title": "Master Yi vs Jayce Jungle [ PentaKill ] Korea Grandmaster 1701 LP | Patch 26.18 ✅",
+          "rankClaim": "Grandmaster",
+          "patch": "26.18",
+          "durationSec": 1536,
+          "region": "KR",
+          "player": "PentaKill",
+          "uploaded": "2026-09-13",
+          "moments": []
+        },
+        {
+          "videoId": "o3OgObscHKQ",
+          "title": "Master Yi Jungle vs Jayce - KR Challenger Patch 26.16",
+          "rankClaim": "Challenger",
+          "patch": "26.16",
+          "durationSec": 1449,
+          "region": "KR",
+          "uploaded": "2026-08-24",
+          "moments": []
+        },
+        {
+          "videoId": "myrj5VLNsh4",
+          "title": "Master Yi vs Jayce Jungle - KR Challenger - Patch 16.04 Season 16",
+          "rankClaim": "Challenger",
+          "patch": "26.4",
+          "durationSec": 1741,
+          "region": "KR",
+          "uploaded": "2026-02-24",
+          "moments": []
+        },
+        {
+          "videoId": "MMXa11v2drg",
+          "title": "Master Yi vs Jayce Jungle - KR Challenger - Patch 25.24 Season 15",
+          "rankClaim": "Challenger",
+          "patch": "25.24",
+          "durationSec": 1830,
+          "region": "KR",
+          "uploaded": "2025-12-08",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 126,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "7zAypxyKSAw",
+          "title": "Master Yi Top vs Jayce - KR Master Patch 26.12",
+          "rankClaim": "Master",
+          "patch": "26.12",
+          "durationSec": 1690,
+          "region": "KR",
+          "uploaded": "2026-06-22",
+          "moments": []
+        },
+        {
+          "videoId": "ZBd6TOK5SDU",
+          "title": "Master Yi Top vs Jayce - KR Master Patch 25.16",
+          "rankClaim": "Master",
+          "patch": "25.16",
+          "durationSec": 1525,
+          "region": "KR",
+          "uploaded": "2025-08-24",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 134,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "sFo1U4Mjl8w",
+          "title": "Master Yi Mid vs Syndra - KR Master Patch 25.23",
+          "rankClaim": "Master",
+          "patch": "25.23",
+          "durationSec": 1536,
+          "region": "KR",
+          "uploaded": "2025-12-04",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 143,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "MWkPzyQ5vq8",
+          "title": "Master Yi Jungle vs Zyra - KR Master Patch 25.24",
+          "rankClaim": "Master",
+          "patch": "25.24",
+          "durationSec": 1620,
+          "region": "KR",
+          "uploaded": "2025-12-26",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 154,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "3y5OqJY276U",
+          "title": "Master Yi vs Zac Jungle [ PentaKill ] Korea Master 468 LP | Patch 26.19 ✅",
+          "rankClaim": "Master",
+          "patch": "26.19",
+          "durationSec": 1429,
+          "region": "KR",
+          "player": "PentaKill",
+          "uploaded": "2026-10-06",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 157,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "Rvsn7dejHDA",
+          "title": "Master Yi Mid vs Yasuo - KR Master Patch 26.07",
+          "rankClaim": "Master",
+          "patch": "26.7",
+          "durationSec": 1790,
+          "region": "KR",
+          "uploaded": "2026-04-14",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 163,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "XrNttfUyoTM",
+          "title": "RANK 1 MASTER YI VS RANK 1 TALIYAH",
+          "rankClaim": "Master",
+          "patch": "26.5",
+          "durationSec": 1998,
+          "patchEstimated": true,
+          "player": "Sinerias",
+          "uploaded": "2026-03-16",
+          "format": "stream",
+          "cam": true,
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 200,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "Zqf77Ym7m_U",
+          "title": "Master Yi Jungle vs Bel'Veth - EUW Challenger Patch 25.11",
+          "rankClaim": "Challenger",
+          "patch": "25.11",
+          "durationSec": 1919,
+          "region": "EUW",
+          "uploaded": "2025-06-03",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 203,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "LRdqI72hbQ4",
+          "title": "Master Yi vs Kindred [ Jungle ] Korea Grandmaster 915 LP | Patch 25.24 ✅",
+          "rankClaim": "Grandmaster",
+          "patch": "25.24",
+          "durationSec": 1451,
+          "region": "KR",
+          "uploaded": "2026-01-01",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 234,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "pBcxoHenYH8",
+          "title": "Master Yi Jungle vs Viego - KR Challenger Patch 26.05",
+          "rankClaim": "Challenger",
+          "patch": "26.5",
+          "durationSec": 1574,
+          "region": "KR",
+          "uploaded": "2026-03-11",
+          "moments": []
+        },
+        {
+          "videoId": "jokpaW7nC7Q",
+          "title": "Master Yi Jungle vs Viego - KR Grandmaster Patch 25.23",
+          "rankClaim": "Grandmaster",
+          "patch": "25.23",
+          "durationSec": 1439,
+          "region": "KR",
+          "uploaded": "2025-11-27",
+          "moments": []
+        },
+        {
+          "videoId": "ApkVG5amNE8",
+          "title": "Master Yi Jungle vs Viego - KR Master Patch 25.22",
+          "rankClaim": "Master",
+          "patch": "25.22",
+          "durationSec": 1977,
+          "region": "KR",
+          "uploaded": "2025-11-12",
+          "moments": []
+        },
+        {
+          "videoId": "awk4o7jpp6o",
+          "title": "Master Yi vs Viego Jungle - KR Challenger - Patch 25.21 Season 15",
+          "rankClaim": "Challenger",
+          "patch": "25.21",
+          "durationSec": 1276,
+          "region": "KR",
+          "uploaded": "2025-10-30",
+          "moments": []
+        },
+        {
+          "videoId": "HyriSk6Xqcs",
+          "title": "Master Yi vs Viego [ Jungle ] Lol Korea Master Patch 25.15 ✅",
+          "rankClaim": "Master",
+          "patch": "25.15",
+          "durationSec": 1346,
+          "region": "KR",
+          "uploaded": "2025-08-13",
+          "moments": []
+        },
+        {
+          "videoId": "zkxx4I2T81Q",
+          "title": "Master Yi Jungle vs Viego - KR Challenger Patch 25.14",
+          "rankClaim": "Challenger",
+          "patch": "25.14",
+          "durationSec": 1575,
+          "region": "KR",
+          "uploaded": "2025-07-22",
+          "moments": []
+        },
+        {
+          "videoId": "iUwxIQT_Wwc",
+          "title": "Master Yi vs Viego Jungle - EUW Challenger - Patch 25.14 Season 15",
+          "rankClaim": "Challenger",
+          "patch": "25.14",
+          "durationSec": 1511,
+          "region": "EUW",
+          "uploaded": "2025-07-19",
+          "moments": []
+        },
+        {
+          "videoId": "ArQ8Irh_aCM",
+          "title": "Master Yi vs Viego Jungle [ Quadra Kill ] Lol Korea Master Patch 25.7 ✅",
+          "rankClaim": "Master",
+          "patch": "25.7",
+          "durationSec": 1504,
+          "region": "KR",
+          "player": "Quadra Kill",
+          "uploaded": "2025-04-04",
+          "moments": []
+        },
+        {
+          "videoId": "UG00KlqzW3Y",
+          "title": "Master Yi vs Viego Jungle [ TripleKill ] Lol Korea Master Patch 25.6 ✅",
+          "rankClaim": "Master",
+          "patch": "25.6",
+          "durationSec": 1421,
+          "region": "KR",
+          "player": "TripleKill",
+          "uploaded": "2025-03-23",
+          "moments": []
+        },
+        {
+          "videoId": "K_tb--MfnrE",
+          "title": "Master Yi vs Viego Jungle - KR Grandmaster - Patch 25.5 Season 15",
+          "rankClaim": "Grandmaster",
+          "patch": "25.5",
+          "durationSec": 1621,
+          "region": "KR",
+          "uploaded": "2025-03-16",
+          "moments": []
+        },
+        {
+          "videoId": "Ij74SVcCEMI",
+          "title": "Master Yi vs Viego Jungle - KR Grandmaster -Patch 15.4 Season 15",
+          "rankClaim": "Grandmaster",
+          "patch": "25.4",
+          "durationSec": 1666,
+          "region": "KR",
+          "uploaded": "2025-02-26",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 238,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "EHHZsd1EQwI",
+          "title": "Master Yi vs Zed [ Jungle ] Lol Korea Master Patch 25.13 ✅",
+          "rankClaim": "Master",
+          "patch": "25.13",
+          "durationSec": 1547,
+          "region": "KR",
+          "uploaded": "2025-07-15",
+          "moments": []
+        },
+        {
+          "videoId": "1hq0P9eRbDs",
+          "title": "Master Yi vs Zed Jungle [ Pentakill ] Korea Master Patch 25.8 ✅",
+          "rankClaim": "Master",
+          "patch": "25.8",
+          "durationSec": 1216,
+          "region": "KR",
+          "player": "Pentakill",
+          "uploaded": "2025-04-17",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 240,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "_exjgjljy8Y",
+          "title": "Master Yi Top vs Kled - EUW Grandmaster Patch 25.24",
+          "rankClaim": "Grandmaster",
+          "patch": "25.24",
+          "durationSec": 1556,
+          "region": "EUW",
+          "uploaded": "2026-01-05",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 151,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 259,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 347,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 499,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 571,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 728,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 754,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 994,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1187,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1268,
+              "label": "Get a Quadra Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1304,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1413,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1442,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1454,
+              "label": "Take down The Inhibitor"
+            },
+            {
+              "atSec": 1465,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1515,
+              "label": "Get a Triple Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1545,
+              "label": "End credit"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 245,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "aIQ4qNUzTho",
+          "title": "Master Yi vs Ekko Jungle - KR Challenger - Patch 16.08 Season 16",
+          "rankClaim": "Challenger",
+          "patch": "26.8",
+          "durationSec": 1831,
+          "region": "KR",
+          "uploaded": "2026-04-21",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 245,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "p7KNAcT0BZc",
+          "title": "Master Yi Top vs Ekko - KR Master Patch 26.20",
+          "rankClaim": "Master",
+          "patch": "26.20",
+          "durationSec": 1454,
+          "region": "KR",
+          "uploaded": "2026-10-20",
+          "result": "W",
+          "moments": [
+            {
+              "atSec": 88,
+              "label": "First Blood — Master Yi kills Ekko",
+              "kind": "kill"
+            },
+            {
+              "atSec": 226,
+              "label": "Master Yi catches Ekko"
+            },
+            {
+              "atSec": 299,
+              "label": "Master Yi outduels Ekko again"
+            },
+            {
+              "atSec": 540,
+              "label": "Blue takes 1st Dragon (Hextech)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 593,
+              "label": "Master Yi kills Lee Sin",
+              "kind": "kill"
+            },
+            {
+              "atSec": 878,
+              "label": "Red takes 1st Dragon (Infernal)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 907,
+              "label": "Master Yi eliminates Ekko"
+            },
+            {
+              "atSec": 1206,
+              "label": "Red takes 2nd Dragon (Ocean)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1239,
+              "label": "Red takes Baron",
+              "kind": "baron"
+            },
+            {
+              "atSec": 1304,
+              "label": "Master Yi picks off Tristana"
+            },
+            {
+              "atSec": 1343,
+              "label": "Master Yi outduels Lee Sin"
+            },
+            {
+              "atSec": 1347,
+              "label": "Team fight (3 kills)",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1390,
+              "label": "Mid Inhibitor falls (Blue)"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 246,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "xCXlite1ph4",
+          "title": "Master Yi Jungle vs Qiyana - KR Grandmaster Patch 26.19",
+          "rankClaim": "Grandmaster",
+          "patch": "26.19",
+          "durationSec": 1472,
+          "region": "KR",
+          "uploaded": "2026-09-28",
+          "moments": []
+        },
+        {
+          "videoId": "Wa5YCaUIJls",
+          "title": "Master Yi Jungle vs Qiyana - KR Challenger Patch 26.17",
+          "rankClaim": "Challenger",
+          "patch": "26.17",
+          "durationSec": 1850,
+          "region": "KR",
+          "uploaded": "2026-09-01",
+          "moments": []
+        },
+        {
+          "videoId": "GgXa6cy5QZk",
+          "title": "Master Yi Jungle vs Qiyana - KR Challenger Patch 26.02",
+          "rankClaim": "Challenger",
+          "patch": "26.2",
+          "durationSec": 1553,
+          "region": "KR",
+          "uploaded": "2026-01-26",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 306,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 417,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 498,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 547,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 610,
+              "label": "Hunt The Void Grubs",
+              "kind": "grubs"
+            },
+            {
+              "atSec": 698,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 759,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 845,
+              "label": "Hunt The Dragon",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 939,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1058,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1153,
+              "label": "Hunt The Dragon",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1207,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1231,
+              "label": "Hunt The Baron Nashor",
+              "kind": "baron"
+            },
+            {
+              "atSec": 1320,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1473,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1542,
+              "label": "End credit"
+            }
+          ]
+        },
+        {
+          "videoId": "6_QhOvjPcvs",
+          "title": "Master Yi Jungle vs Qiyana - KR Grandmaster Patch 25.24",
+          "rankClaim": "Grandmaster",
+          "patch": "25.24",
+          "durationSec": 1519,
+          "region": "KR",
+          "uploaded": "2025-12-10",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 386,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 417,
+              "label": "Hunt The Dragon",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 436,
+              "label": "Get a Triple Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 491,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 629,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 686,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 767,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 876,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 903,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 949,
+              "label": "Hunt The Dragon",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 982,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1016,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1069,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1092,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1139,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1209,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1230,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1245,
+              "label": "Hunt The Atakhan"
+            },
+            {
+              "atSec": 1262,
+              "label": "Hunt The Dragon",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1314,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1334,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1353,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1370,
+              "label": "Take down The Inhibitor"
+            },
+            {
+              "atSec": 1384,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1462,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1487,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1508,
+              "label": "End credit"
+            }
+          ]
+        },
+        {
+          "videoId": "z_2zgfCrLkA",
+          "title": "Master Yi vs Qiyana Jungle - KR Challenger - Patch 25.23 Season 15",
+          "rankClaim": "Challenger",
+          "patch": "25.23",
+          "durationSec": 2051,
+          "region": "KR",
+          "uploaded": "2025-12-02",
+          "moments": []
+        },
+        {
+          "videoId": "jBlnDcEhyOM",
+          "title": "Master Yi Jungle vs Qiyana - KR Master Patch 25.20",
+          "rankClaim": "Master",
+          "patch": "25.20",
+          "durationSec": 1609,
+          "region": "KR",
+          "uploaded": "2025-10-15",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 254,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "8Kl36R2axtg",
+          "title": "Master Yi Jungle vs Vi - KR Master Patch 26.10",
+          "rankClaim": "Master",
+          "patch": "26.10",
+          "durationSec": 1633,
+          "region": "KR",
+          "uploaded": "2026-05-28",
+          "moments": []
+        },
+        {
+          "videoId": "PYrUvCPJXEI",
+          "title": "Master Yi Jungle vs Vi - KR Challenger Patch 26.06",
+          "rankClaim": "Challenger",
+          "patch": "26.6",
+          "durationSec": 1530,
+          "region": "KR",
+          "uploaded": "2026-03-25",
+          "moments": []
+        },
+        {
+          "videoId": "ou0fXXvF8JQ",
+          "title": "Master Yi vs Vi Jungle - KR Challenger - Patch 25.8 Season 15",
+          "rankClaim": "Challenger",
+          "patch": "25.8",
+          "durationSec": 1711,
+          "region": "KR",
+          "uploaded": "2025-04-19",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 517,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "0Qi9Pae3zQA",
+          "title": "Master Yi Jungle vs Sylas - KR Master Patch 26.01",
+          "rankClaim": "Master",
+          "patch": "26.1",
+          "durationSec": 1467,
+          "region": "KR",
+          "uploaded": "2026-01-16",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 777,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "dXGY3d4oiM0",
+          "title": "Master Yi Mid vs Yone - KR Master Patch 25.14",
+          "rankClaim": "Master",
+          "patch": "25.14",
+          "durationSec": 1676,
+          "region": "KR",
+          "uploaded": "2025-07-29",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 777,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "ol8oFvyXImg",
+          "title": "Master Yi Top vs Yone - KR Master Patch 26.18",
+          "rankClaim": "Master",
+          "patch": "26.18",
+          "durationSec": 1450,
+          "region": "KR",
+          "uploaded": "2026-09-23",
+          "moments": []
+        },
+        {
+          "videoId": "INdXdslaIXw",
+          "title": "Master Yi Top vs Yone - KR Master Patch 26.11",
+          "rankClaim": "Master",
+          "patch": "26.11",
+          "durationSec": 1753,
+          "region": "KR",
+          "uploaded": "2026-06-11",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 799,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "J1GIq_fOec0",
+          "title": "Master Yi vs Ambessa Jungle - KR Challenger - Patch 16.08 Season 16",
+          "rankClaim": "Challenger",
+          "patch": "26.8",
+          "durationSec": 1681,
+          "region": "KR",
+          "uploaded": "2026-04-22",
+          "moments": []
+        },
+        {
+          "videoId": "4j7ipWpUL8Y",
+          "title": "Master Yi Jungle vs Ambessa - KR Challenger Patch 26.08",
+          "rankClaim": "Challenger",
+          "patch": "26.8",
+          "durationSec": 1681,
+          "region": "KR",
+          "uploaded": "2026-04-20",
+          "moments": []
+        },
+        {
+          "videoId": "9y2GpUnaqho",
+          "title": "Master Yi vs Ambessa Jungle - KR Challenger - Patch 16.05 Season 16",
+          "rankClaim": "Challenger",
+          "patch": "26.5",
+          "durationSec": 1726,
+          "region": "KR",
+          "uploaded": "2026-03-16",
+          "moments": []
+        },
+        {
+          "videoId": "gbOdVgXBatw",
+          "title": "Master Yi Jungle vs Ambessa - KR Challenger Patch 25.24",
+          "rankClaim": "Challenger",
+          "patch": "25.24",
+          "durationSec": 1547,
+          "region": "KR",
+          "uploaded": "2025-12-18",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 97,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 210,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 531,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 594,
+              "label": "Hunt The Void Grubs",
+              "kind": "grubs"
+            },
+            {
+              "atSec": 714,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 764,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 825,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 923,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1011,
+              "label": "Hunt The Rift Herald",
+              "kind": "herald"
+            },
+            {
+              "atSec": 1043,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1074,
+              "label": "Hunt The Dragon",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1141,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1263,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1285,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1353,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1370,
+              "label": "Get a Triple Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1382,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1445,
+              "label": "Hunt The Dragon",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1536,
+              "label": "End credit"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 875,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "3P4O2gG13V8",
+          "title": "Master Yi Mid vs Sett - KR Master Patch 25.04",
+          "rankClaim": "Master",
+          "patch": "25.4",
+          "durationSec": 1553,
+          "region": "KR",
+          "uploaded": "2025-03-06",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 876,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "M1yeCgv4qls",
+          "title": "Master Yi Jungle vs Lillia - KR Master Patch 25.19",
+          "rankClaim": "Master",
+          "patch": "25.19",
+          "durationSec": 1916,
+          "region": "KR",
+          "uploaded": "2025-10-02",
+          "moments": []
+        },
+        {
+          "videoId": "bqHUYluv4iU",
+          "title": "Master Yi Jungle vs Lillia - KR Challenger Patch 25.08",
+          "rankClaim": "Challenger",
+          "patch": "25.8",
+          "durationSec": 1567,
+          "region": "KR",
+          "uploaded": "2025-04-23",
+          "moments": []
+        },
+        {
+          "videoId": "pSuRgQiqg1s",
+          "title": "Master Yi vs Lillia Jungle - KR Challenger - Patch 25.7 Season 15",
+          "rankClaim": "Challenger",
+          "patch": "25.7",
+          "durationSec": 1366,
+          "region": "KR",
+          "uploaded": "2025-04-17",
+          "moments": []
+        },
+        {
+          "videoId": "EreqpcXYqY4",
+          "title": "Master Yi vs Lillia Jungle [ TripleKill ] Lol Korea Master Patch 25.4 ✅",
+          "rankClaim": "Master",
+          "patch": "25.4",
+          "durationSec": 2101,
+          "region": "KR",
+          "player": "TripleKill",
+          "uploaded": "2025-03-02",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 887,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "ZqJXwDMa-IA",
+          "title": "Master Yi Jungle vs Gwen - KR Master Patch 26.03",
+          "rankClaim": "Master",
+          "patch": "26.3",
+          "durationSec": 1613,
+          "region": "KR",
+          "uploaded": "2026-02-10",
+          "moments": []
+        },
+        {
+          "videoId": "4m2V2A6yxvI",
+          "title": "Master Yi Jungle vs Gwen - KR Challenger Patch 25.16",
+          "rankClaim": "Challenger",
+          "patch": "25.16",
+          "durationSec": 1579,
+          "region": "KR",
+          "uploaded": "2025-08-20",
+          "moments": []
+        },
+        {
+          "videoId": "ROteMookJKE",
+          "title": "Master Yi Jungle vs Gwen - KR Master Patch 25.07",
+          "rankClaim": "Master",
+          "patch": "25.7",
+          "durationSec": 1839,
+          "region": "KR",
+          "uploaded": "2025-04-09",
+          "moments": []
+        },
+        {
+          "videoId": "PexrsfZi_oc",
+          "title": "Master Yi vs Gwen Jungle - KR Challenger - Patch 15.4 Season 15",
+          "rankClaim": "Challenger",
+          "patch": "25.4",
+          "durationSec": 1571,
+          "region": "KR",
+          "uploaded": "2025-02-28",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 887,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "djdE2CfrV8s",
+          "title": "Master Yi Top vs Gwen - KR Master Patch 26.14",
+          "rankClaim": "Master",
+          "patch": "26.14",
+          "durationSec": 1710,
+          "region": "KR",
+          "uploaded": "2026-07-29",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 893,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "garbJOwvoF8",
+          "title": "Master Yi Top vs Aurora - KR Master Patch 26.01",
+          "rankClaim": "Master",
+          "patch": "26.1",
+          "durationSec": 1572,
+          "region": "KR",
+          "uploaded": "2026-01-23",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 95,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 261,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 709,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 732,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 883,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1008,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1026,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1066,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1101,
+              "label": "Get a Quadra Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1132,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1212,
+              "label": "Get a PENTA KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1240,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1331,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1420,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1444,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1456,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1510,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1538,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1561,
+              "label": "End credit"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 897,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "Dmu_w9FAzNY",
+          "title": "Master Yi Top vs K'Sante - KR Master Patch 26.13",
+          "rankClaim": "Master",
+          "patch": "26.13",
+          "durationSec": 1715,
+          "region": "KR",
+          "uploaded": "2026-07-08",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 904,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "nz9Blc4-Nkk",
+          "title": "Master Yi vs Zaahen 18/3/5 (Top) | EUW Master | Master Yi OTP Replay",
+          "rankClaim": "Master",
+          "patch": "26.7",
+          "durationSec": 1438,
+          "region": "EUW",
+          "patchEstimated": true,
+          "uploaded": "2026-04-08",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 950,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "pXie4Q-Df9c",
+          "title": "Master Yi Jungle vs Naafiri - KR Master Patch 26.14",
+          "rankClaim": "Master",
+          "patch": "26.14",
+          "durationSec": 1490,
+          "region": "KR",
+          "uploaded": "2026-07-23",
+          "moments": []
+        },
+        {
+          "videoId": "YhA6bvNsqh0",
+          "title": "Master Yi vs Naafiri Jungle [ TripleKill ] Korea Master Patch 25.22",
+          "rankClaim": "Master",
+          "patch": "25.22",
+          "durationSec": 1907,
+          "region": "KR",
+          "player": "TripleKill",
+          "uploaded": "2025-11-06",
+          "moments": []
+        },
+        {
+          "videoId": "hzYuo81NBrk",
+          "title": "Master Yi Jungle vs Naafiri - KR Challenger Patch 25.18",
+          "rankClaim": "Challenger",
+          "patch": "25.18",
+          "durationSec": 1784,
+          "region": "KR",
+          "uploaded": "2025-09-16",
+          "moments": []
+        }
+      ]
+    }
+  ]
+}

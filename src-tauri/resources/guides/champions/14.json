@@ -1,0 +1,2871 @@
+{
+  "schema": 1,
+  "champion": 14,
+  "generatedAt": "2026-11-07T13:25:14.592Z",
+  "guides": [],
+  "general": [
+    {
+      "champion": 14,
+      "lane": "top",
+      "patch": "26.21",
+      "reviewed": false,
+      "keyTips": [
+        {
+          "text": "Keep trades short: land one or two attacks, then back away rather than extending into a long exchange.",
+          "scope": "champion",
+          "sourceIds": [
+            "darkoey"
+          ]
+        },
+        {
+          "text": "Freeze near the turret to make quick trades safer and create a good angle for a charged Decimating Smash from fog of war.",
+          "scope": "champion",
+          "sourceIds": [
+            "darkoey"
+          ],
+          "abilityKeys": [
+            {
+              "champion": 14,
+              "key": "Q"
+            }
+          ]
+        },
+        {
+          "text": "Proxy when the matchup allows it; dying to clear the wave can break a freeze against opponents Sion cannot beat in a straight duel.",
+          "scope": "champion",
+          "sourceIds": [
+            "darkoey"
+          ]
+        }
+      ],
+      "sections": {
+        "overview": {
+          "tips": []
+        },
+        "early-lane": {
+          "tips": [
+            {
+              "text": "After shoving a wave with nothing else to do, look for a Decimating Smash charge from a bush or fogged approach.",
+              "scope": "champion",
+              "sourceIds": [
+                "darkoey"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 14,
+                  "key": "Q"
+                }
+              ]
+            },
+            {
+              "text": "Use Roar of the Slayer to slow enemies before charging Decimating Smash, casting Unstoppable Onslaught, or committing to a passive trade.",
+              "scope": "champion",
+              "sourceIds": [
+                "darkoey"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 14,
+                  "key": "E"
+                },
+                {
+                  "champion": 14,
+                  "key": "Q"
+                },
+                {
+                  "champion": 14,
+                  "key": "R"
+                }
+              ]
+            },
+            {
+              "text": "Concede extended fights against stronger duelists and use freezes, fog charges, and proxy breaks instead of forcing head-on trades.",
+              "scope": "champion",
+              "sourceIds": [
+                "darkoey"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 14,
+                  "key": "Q"
+                }
+              ]
+            }
+          ]
+        },
+        "mid-lane": {
+          "tips": [
+            {
+              "text": "Spend mid game in side lanes to collect solo experience and farm rather than grouping without a reason.",
+              "scope": "champion",
+              "sourceIds": [
+                "darkoey"
+              ]
+            },
+            {
+              "text": "Catch side waves consistently, then use the fog of war to threaten a fully charged Decimating Smash pick.",
+              "scope": "champion",
+              "sourceIds": [
+                "darkoey"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 14,
+                  "key": "Q"
+                }
+              ]
+            },
+            {
+              "text": "Tank Sion should group with the team and occupy the frontline when fights are needed.",
+              "scope": "champion",
+              "sourceIds": [
+                "darkoey"
+              ]
+            },
+            {
+              "text": "AD Sion can keep pressure in a side lane and rotate quickly with Unstoppable Onslaught to create a numbers advantage elsewhere.",
+              "scope": "champion",
+              "sourceIds": [
+                "darkoey"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 14,
+                  "key": "R"
+                }
+              ]
+            }
+          ]
+        },
+        "win-condition": {
+          "tips": [
+            {
+              "text": "Tank Sion contributes by frontlining for teammates; AD Sion pressures structures and uses fast ultimate rotations to join favorable fights.",
+              "scope": "champion",
+              "sourceIds": [
+                "darkoey"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 14,
+                  "key": "R"
+                }
+              ]
+            },
+            {
+              "text": "In Glory in Death, use movement between attacks to reach targets and clear waves while the temporary form is active.",
+              "scope": "champion",
+              "sourceIds": [
+                "darkoey"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 14,
+                  "key": "P"
+                }
+              ]
+            },
+            {
+              "text": "Fully charge Decimating Smash when the position is safe; playing from fog gives opponents less warning.",
+              "scope": "champion",
+              "sourceIds": [
+                "darkoey"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 14,
+                  "key": "Q"
+                }
+              ]
+            },
+            {
+              "text": "Use Soul Furnace to absorb damage before the shield breaks while still looking for its damage opportunity.",
+              "scope": "champion",
+              "sourceIds": [
+                "darkoey"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 14,
+                  "key": "W"
+                }
+              ]
+            },
+            {
+              "text": "Recast Unstoppable Onslaught just before impact to increase its hit area and damage zone.",
+              "scope": "champion",
+              "sourceIds": [
+                "darkoey"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 14,
+                  "key": "R"
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "itemization": [],
+      "sources": [
+        {
+          "id": "darkoey",
+          "author": "Darkoey",
+          "rankClaim": "No rank claim",
+          "url": "https://www.mobafire.com/league-of-legends/build/thebausffs-sion-build-for-season-15-636728",
+          "kind": "mobafire"
+        }
+      ]
+    }
+  ],
+  "vods": [
+    {
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "OWw12menXSc",
+          "title": "THE BEST SION GAME IVE EVER HAD (10K HP, 400 AD)",
+          "rankClaim": "Master+",
+          "patch": "26.21",
+          "durationSec": 1859,
+          "patchEstimated": true,
+          "player": "Makkro",
+          "uploaded": "2026-10-29",
+          "format": "stream",
+          "cam": true,
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 2,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "PBoj4a4SXJc",
+          "title": "Sion Top vs Olaf - KR Challenger Patch 25.18",
+          "rankClaim": "Challenger",
+          "patch": "25.18",
+          "durationSec": 1599,
+          "region": "KR",
+          "uploaded": "2025-09-13",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 3,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "Tn1IqZUiPQg",
+          "title": "Sion Mid vs Galio - KR Master Patch 25.17",
+          "rankClaim": "Master",
+          "patch": "25.17",
+          "durationSec": 1656,
+          "region": "KR",
+          "uploaded": "2025-09-09",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 4,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "QeR_HaWz8A0",
+          "title": "Sion Mid vs Twisted Fate - EUW Grandmaster Patch 25.14",
+          "rankClaim": "Grandmaster",
+          "patch": "25.14",
+          "durationSec": 1454,
+          "region": "EUW",
+          "uploaded": "2025-07-28",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 5,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "40xd4cXJPCg",
+          "title": "Sion Jungle vs Xin Zhao - KR Master Patch 25.10",
+          "rankClaim": "Master",
+          "patch": "25.10",
+          "durationSec": 1554,
+          "region": "KR",
+          "uploaded": "2025-05-31",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 6,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "XL0zDc1VuO0",
+          "title": "(CN1 TheShy) Sion Top vs Urgot - KR Master Patch 26.14",
+          "rankClaim": "Master",
+          "patch": "26.14",
+          "durationSec": 1640,
+          "region": "KR",
+          "player": "TheShy",
+          "uploaded": "2026-07-20",
+          "result": "L",
+          "moments": [
+            {
+              "atSec": 331,
+              "label": "Red takes 1st Dragon (Hextech)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 662,
+              "label": "Red takes 2nd Dragon (Mountain)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 690,
+              "label": "First Blood — Sion kills Urgot",
+              "kind": "kill"
+            },
+            {
+              "atSec": 899,
+              "label": "Karma eliminates Rakan"
+            },
+            {
+              "atSec": 979,
+              "label": "Red takes 3rd Dragon (Cloud)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1171,
+              "label": "Qiyana picks off Yasuo"
+            },
+            {
+              "atSec": 1285,
+              "label": "Zoe Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1422,
+              "label": "Red takes 4th Dragon (Cloud)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1489,
+              "label": "Sivir picks off Urgot"
+            },
+            {
+              "atSec": 1511,
+              "label": "Qiyana picks off Yasuo"
+            },
+            {
+              "atSec": 1573,
+              "label": "Zoe kills Syndra",
+              "kind": "kill"
+            }
+          ]
+        },
+        {
+          "videoId": "BwBEdppyX08",
+          "title": "Sion Top vs Urgot - KR Grandmaster Patch 25.22",
+          "rankClaim": "Grandmaster",
+          "patch": "25.22",
+          "durationSec": 1756,
+          "region": "KR",
+          "uploaded": "2025-11-09",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 7,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "sQ373TO7Dsc",
+          "title": "Sion Mid vs LeBlanc - EUW Challenger Patch 25.12",
+          "rankClaim": "Challenger",
+          "patch": "25.12",
+          "durationSec": 1642,
+          "region": "EUW",
+          "uploaded": "2025-06-21",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 11,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "wsq1kjxlkew",
+          "title": "T1 Faker Sion vs Master Yi [ MID ] Korea Grandmaster Patch 25.8 ✅",
+          "rankClaim": "Grandmaster",
+          "patch": "25.8",
+          "durationSec": 1185,
+          "region": "KR",
+          "player": "Faker",
+          "team": "T1",
+          "uploaded": "2025-04-21",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 13,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "X9fcnP0DjIU",
+          "title": "Sion Mid vs Ryze - KR Master Patch 26.18",
+          "rankClaim": "Master",
+          "patch": "26.18",
+          "durationSec": 1604,
+          "region": "KR",
+          "uploaded": "2026-09-22",
+          "moments": []
+        },
+        {
+          "videoId": "HcoBRzo-8SI",
+          "title": "(BIG Irrelevant) Sion Mid vs Ryze (VLR Unkn0wn) - EUW Challenger Patch 26.17",
+          "rankClaim": "Challenger",
+          "patch": "26.17",
+          "durationSec": 1780,
+          "region": "EUW",
+          "player": "BIG Irrelevant",
+          "uploaded": "2026-09-10",
+          "result": "W",
+          "moments": [
+            {
+              "atSec": 110,
+              "label": "First Blood — Kha'Zix kills Ryze",
+              "kind": "kill"
+            },
+            {
+              "atSec": 342,
+              "label": "Red takes 1st Dragon (Chemtech)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 376,
+              "label": "Pantheon takes down Ryze"
+            },
+            {
+              "atSec": 464,
+              "label": "Kha'Zix picks off Ryze"
+            },
+            {
+              "atSec": 552,
+              "label": "Kha'Zix picks off Ryze"
+            },
+            {
+              "atSec": 579,
+              "label": "Sion takes down Nautilus"
+            },
+            {
+              "atSec": 704,
+              "label": "Kha'Zix Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 726,
+              "label": "Sion takes down Nautilus"
+            },
+            {
+              "atSec": 944,
+              "label": "Red takes 2nd Dragon (Ocean)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1088,
+              "label": "Kha'Zix Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1236,
+              "label": "Sion kills Tristana",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1317,
+              "label": "Pantheon Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1339,
+              "label": "Blue takes 1st Dragon (Infernal)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1414,
+              "label": "Kha'Zix kills Nautilus",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1453,
+              "label": "Blue takes Baron",
+              "kind": "baron"
+            },
+            {
+              "atSec": 1552,
+              "label": "Bot Inhibitor falls (Red)"
+            },
+            {
+              "atSec": 1647,
+              "label": "Red takes 3rd Dragon (Infernal)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1701,
+              "label": "Pantheon Double Kill",
+              "kind": "kill"
+            }
+          ]
+        },
+        {
+          "videoId": "S13Y6o3e6t0",
+          "title": "Sion Mid vs Ryze - KR Grandmaster Patch 25.16",
+          "rankClaim": "Grandmaster",
+          "patch": "25.16",
+          "durationSec": 1995,
+          "region": "KR",
+          "uploaded": "2025-08-24",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 17,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "dgD9B2paU64",
+          "title": "Sion Top vs Teemo - KR Master Patch 26.17",
+          "rankClaim": "Master",
+          "patch": "26.17",
+          "durationSec": 1580,
+          "region": "KR",
+          "uploaded": "2026-09-02",
+          "moments": []
+        },
+        {
+          "videoId": "dL_7VhMzHTA",
+          "title": "Sion Top vs Teemo - KR Master Patch 26.09",
+          "rankClaim": "Master",
+          "patch": "26.9",
+          "durationSec": 1622,
+          "region": "KR",
+          "uploaded": "2026-05-02",
+          "moments": []
+        },
+        {
+          "videoId": "yj1lCJvH254",
+          "title": "Sion Top vs Teemo - KR Master Patch 25.23",
+          "rankClaim": "Master",
+          "patch": "25.23",
+          "durationSec": 1644,
+          "region": "KR",
+          "uploaded": "2025-11-21",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 23,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "4pL1mzN-lGk",
+          "title": "(Kubuś) Sion Top vs Tryndamere - EUW Grandmaster Patch 26.19",
+          "rankClaim": "Grandmaster",
+          "patch": "26.19",
+          "durationSec": 1749,
+          "region": "EUW",
+          "player": "Kubuś",
+          "uploaded": "2026-09-29",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 29,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "cBFQESi2EBI",
+          "title": "(ROSS c0st0m) Sion Top vs Twitch - EUW Challenger Patch 26.15",
+          "rankClaim": "Challenger",
+          "patch": "26.15",
+          "durationSec": 1615,
+          "region": "EUW",
+          "player": "ROSS c0st0m",
+          "uploaded": "2026-08-05",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 31,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "5nYM1BTu-uQ",
+          "title": "Sion Top vs Cho'Gath - EUW Grandmaster Patch 25.24",
+          "rankClaim": "Grandmaster",
+          "patch": "25.24",
+          "durationSec": 1587,
+          "region": "EUW",
+          "uploaded": "2025-12-28",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 173,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 260,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 373,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 508,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 595,
+              "label": "Hunt The Void Grubs",
+              "kind": "grubs"
+            },
+            {
+              "atSec": 645,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 909,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 958,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 988,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1091,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1114,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1162,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1317,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1377,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1435,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1505,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1531,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1545,
+              "label": "Take down The Inhibitor"
+            },
+            {
+              "atSec": 1559,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1576,
+              "label": "End credit"
+            }
+          ]
+        },
+        {
+          "videoId": "SiwRkB9UQdQ",
+          "title": "Sion Top vs Cho'Gath - KR Grandmaster Patch 25.10",
+          "rankClaim": "Grandmaster",
+          "patch": "25.10",
+          "durationSec": 1700,
+          "region": "KR",
+          "uploaded": "2025-05-18",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 39,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "7pBOhIE-ilE",
+          "title": "Sion Mid vs Irelia - KR Challenger Patch 26.06",
+          "rankClaim": "Challenger",
+          "patch": "26.6",
+          "durationSec": 1644,
+          "region": "KR",
+          "uploaded": "2026-03-29",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 39,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "f862RK6vV0U",
+          "title": "Sion Top vs Irelia - KR Master Patch 25.17",
+          "rankClaim": "Master",
+          "patch": "25.17",
+          "durationSec": 1580,
+          "region": "KR",
+          "uploaded": "2025-08-31",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 41,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "9TECzr1M8Fw",
+          "title": "Sion Top vs Gangplank - KR Challenger Patch 26.21",
+          "rankClaim": "Challenger",
+          "patch": "26.21",
+          "durationSec": 1518,
+          "region": "KR",
+          "uploaded": "2026-10-28",
+          "result": "W",
+          "moments": [
+            {
+              "atSec": 225,
+              "label": "Sion catches Gangplank"
+            },
+            {
+              "atSec": 395,
+              "label": "Blue takes 1st Dragon (Chemtech)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 505,
+              "label": "Sion takes down Darius"
+            },
+            {
+              "atSec": 615,
+              "label": "Sion outduels Gangplank again"
+            },
+            {
+              "atSec": 726,
+              "label": "Red takes 1st Dragon (Cloud)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 971,
+              "label": "Aphelios Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1057,
+              "label": "Blue takes 2nd Dragon (Infernal)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1187,
+              "label": "Red takes Baron",
+              "kind": "baron"
+            },
+            {
+              "atSec": 1202,
+              "label": "Sion picks off Corki"
+            },
+            {
+              "atSec": 1373,
+              "label": "Red takes 2nd Dragon (Infernal)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1404,
+              "label": "Aphelios picks off Maokai"
+            },
+            {
+              "atSec": 1463,
+              "label": "Aphelios Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1465,
+              "label": "Aphelios Triple Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1490,
+              "label": "Mid Inhibitor falls (Blue)"
+            }
+          ]
+        },
+        {
+          "videoId": "n524yQb4LWE",
+          "title": "Sion Top vs Gangplank - KR Master Patch 25.11",
+          "rankClaim": "Master",
+          "patch": "25.11",
+          "durationSec": 1767,
+          "region": "KR",
+          "uploaded": "2025-06-01",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 48,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "pbPei-NY1GE",
+          "title": "(DK ShowMaker) Sion Top vs Trundle (JDG JunJia) - KR Challenger Patch 26.13",
+          "rankClaim": "Challenger",
+          "patch": "26.13",
+          "durationSec": 1678,
+          "region": "KR",
+          "player": "ShowMaker",
+          "team": "DK",
+          "uploaded": "2026-06-27",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 58,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "CI8ohpDsqHo",
+          "title": "Sion Top vs Renekton - KR Challenger Patch 25.24",
+          "rankClaim": "Challenger",
+          "patch": "25.24",
+          "durationSec": 1676,
+          "region": "KR",
+          "uploaded": "2025-12-09",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 596,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1082,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1200,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1222,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1287,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1357,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1382,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1429,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1514,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1641,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1665,
+              "label": "End credit"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 61,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "GdvHXrPWx58",
+          "title": "Sion Mid vs Orianna - EUW Challenger Patch 25.24",
+          "rankClaim": "Challenger",
+          "patch": "25.24",
+          "durationSec": 1462,
+          "region": "EUW",
+          "uploaded": "2026-01-03",
+          "moments": []
+        },
+        {
+          "videoId": "snv1KVCTH80",
+          "title": "Sion Mid vs Orianna - KR Master Patch 25.13",
+          "rankClaim": "Master",
+          "patch": "25.13",
+          "durationSec": 1507,
+          "region": "KR",
+          "uploaded": "2025-07-05",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 64,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "okRigiBQtIM",
+          "title": "Sion Jungle vs Lee Sin - KR Master Patch 25.24",
+          "rankClaim": "Master",
+          "patch": "25.24",
+          "durationSec": 1559,
+          "region": "KR",
+          "uploaded": "2025-12-19",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 194,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 249,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 529,
+              "label": "Hunt The Dragon",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 732,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 755,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 903,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 934,
+              "label": "Hunt The Dragon",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 953,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1013,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1036,
+              "label": "Hunt The Rift Herald",
+              "kind": "herald"
+            },
+            {
+              "atSec": 1055,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1228,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1315,
+              "label": "Hunt The Atakhan"
+            },
+            {
+              "atSec": 1327,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1429,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1481,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1548,
+              "label": "End credit"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 64,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "tXdbsWVTkOk",
+          "title": "(KT PerfecT) Sion Top vs Lee Sin - KR Grandmaster Patch 26.10",
+          "rankClaim": "Grandmaster",
+          "patch": "26.10",
+          "durationSec": 1806,
+          "region": "KR",
+          "player": "PerfecT",
+          "team": "KT",
+          "uploaded": "2026-05-23",
+          "moments": []
+        },
+        {
+          "videoId": "YxyM-5iZBD8",
+          "title": "Sion Top vs Lee Sin - KR Master Patch 25.20",
+          "rankClaim": "Master",
+          "patch": "25.20",
+          "durationSec": 1659,
+          "region": "KR",
+          "uploaded": "2025-10-13",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 78,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "Qjd3rBxhnYE",
+          "title": "Sion Top vs Poppy - KR Master Patch 26.04",
+          "rankClaim": "Master",
+          "patch": "26.4",
+          "durationSec": 1469,
+          "region": "KR",
+          "uploaded": "2026-02-22",
+          "moments": []
+        },
+        {
+          "videoId": "5TWTgCTYKf0",
+          "title": "Sion Top vs Poppy - KR Master Patch 25.08",
+          "rankClaim": "Master",
+          "patch": "25.8",
+          "durationSec": 1623,
+          "region": "KR",
+          "uploaded": "2025-04-21",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 80,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "-9I4ycSIyiw",
+          "title": "Sion Jungle vs Pantheon - KR Master Patch 26.12",
+          "rankClaim": "Master",
+          "patch": "26.12",
+          "durationSec": 1761,
+          "region": "KR",
+          "uploaded": "2026-06-22",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 84,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "7NME-IJKG4E",
+          "title": "(CLA Kiki) Sion Mid vs Akali (FSK XnS) - EUW Challenger Patch 26.13",
+          "rankClaim": "Challenger",
+          "patch": "26.13",
+          "durationSec": 1754,
+          "region": "EUW",
+          "player": "CLA Kiki",
+          "uploaded": "2026-07-06",
+          "moments": []
+        },
+        {
+          "videoId": "zR6YOAu-NRU",
+          "title": "Sion Mid vs Akali - KR Grandmaster Patch 25.11",
+          "rankClaim": "Grandmaster",
+          "patch": "25.11",
+          "durationSec": 1560,
+          "region": "KR",
+          "uploaded": "2025-06-08",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 85,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "L2qW6M4mWtE",
+          "title": "Sion Top vs Kennen - KR Master Patch 25.06",
+          "rankClaim": "Master",
+          "patch": "25.6",
+          "durationSec": 2066,
+          "region": "KR",
+          "uploaded": "2025-03-21",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 91,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "3nzHuJcn1H0",
+          "title": "Sion Mid vs Talon - KR Grandmaster Patch 25.04",
+          "rankClaim": "Grandmaster",
+          "patch": "25.4",
+          "durationSec": 1458,
+          "region": "KR",
+          "uploaded": "2025-02-28",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 92,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "gx-6fDUjzlg",
+          "title": "Sion Mid vs Riven - NA Challenger Patch 25.23",
+          "rankClaim": "Challenger",
+          "patch": "25.23",
+          "durationSec": 1689,
+          "region": "NA",
+          "uploaded": "2025-11-28",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 98,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "1aUoDvrIMww",
+          "title": "Sion Mid vs Shen - EUW Challenger Patch 25.20",
+          "rankClaim": "Challenger",
+          "patch": "25.20",
+          "durationSec": 1657,
+          "region": "EUW",
+          "uploaded": "2025-10-19",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 98,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "DVdnZD0B__0",
+          "title": "Sion Top vs Shen - NA Challenger Patch 26.20",
+          "rankClaim": "Challenger",
+          "patch": "26.20",
+          "durationSec": 1623,
+          "region": "NA",
+          "uploaded": "2026-10-14",
+          "result": "W",
+          "moments": [
+            {
+              "atSec": 490,
+              "label": "First Blood — Pantheon kills Zyra",
+              "kind": "kill"
+            },
+            {
+              "atSec": 576,
+              "label": "Neeko takes down Shen"
+            },
+            {
+              "atSec": 616,
+              "label": "Sion picks off Jhin"
+            },
+            {
+              "atSec": 618,
+              "label": "Red takes 1st Dragon (Hextech)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 623,
+              "label": "Sion Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 934,
+              "label": "Red takes 2nd Dragon (Cloud)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1189,
+              "label": "Red takes Baron",
+              "kind": "baron"
+            },
+            {
+              "atSec": 1260,
+              "label": "Red takes 3rd Dragon (Chemtech)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1333,
+              "label": "Team fight (4 kills)",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1453,
+              "label": "Pantheon Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1488,
+              "label": "Mid Inhibitor falls (Red)"
+            },
+            {
+              "atSec": 1577,
+              "label": "Lucian Double Kill",
+              "kind": "kill"
+            }
+          ]
+        },
+        {
+          "videoId": "-BZV1qEFgog",
+          "title": "Sion Top vs Shen - KR Master Patch 25.12",
+          "rankClaim": "Master",
+          "patch": "25.12",
+          "durationSec": 2000,
+          "region": "KR",
+          "uploaded": "2025-06-14",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 102,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "PGZF7ga1l1Y",
+          "title": "Sion Jungle vs Shyvana - NA Grandmaster Patch 26.10",
+          "rankClaim": "Grandmaster",
+          "patch": "26.10",
+          "durationSec": 1857,
+          "region": "NA",
+          "uploaded": "2026-05-18",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 103,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "GdepY2hgYT4",
+          "title": "Sion Mid vs Ahri - KR Master Patch 26.20",
+          "rankClaim": "Master",
+          "patch": "26.20",
+          "durationSec": 1552,
+          "region": "KR",
+          "uploaded": "2026-10-18",
+          "result": "W",
+          "moments": [
+            {
+              "atSec": 303,
+              "label": "Blue takes 1st Dragon (Chemtech)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 645,
+              "label": "First Blood — Lee Sin kills Nautilus",
+              "kind": "kill"
+            },
+            {
+              "atSec": 676,
+              "label": "Red takes 1st Dragon (Mountain)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 785,
+              "label": "Rumble Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 812,
+              "label": "Sion catches Yunara"
+            },
+            {
+              "atSec": 886,
+              "label": "Rumble kills Vi",
+              "kind": "kill"
+            },
+            {
+              "atSec": 955,
+              "label": "Lee Sin Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1024,
+              "label": "Red takes 2nd Dragon (Hextech)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1041,
+              "label": "Sion takes down Jayce"
+            },
+            {
+              "atSec": 1138,
+              "label": "Team fight (3 kills)",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1211,
+              "label": "Red takes Baron",
+              "kind": "baron"
+            },
+            {
+              "atSec": 1268,
+              "label": "Mid Inhibitor falls (Blue)"
+            },
+            {
+              "atSec": 1340,
+              "label": "Blue takes 2nd Dragon (Hextech)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1381,
+              "label": "Rumble Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1406,
+              "label": "Bot Inhibitor falls (Blue)"
+            },
+            {
+              "atSec": 1416,
+              "label": "Lee Sin eliminates Yunara"
+            },
+            {
+              "atSec": 1527,
+              "label": "Team fight (3 kills)",
+              "kind": "teamfight"
+            }
+          ]
+        },
+        {
+          "videoId": "4LxCGbUaihI",
+          "title": "Sion Mid vs Ahri - KR Challenger Patch 26.05",
+          "rankClaim": "Challenger",
+          "patch": "26.5",
+          "durationSec": 1773,
+          "region": "KR",
+          "uploaded": "2026-03-15",
+          "moments": []
+        },
+        {
+          "videoId": "wOAbujnL5mg",
+          "title": "Sion Mid vs Ahri - EUW Challenger Patch 25.22",
+          "rankClaim": "Challenger",
+          "patch": "25.22",
+          "durationSec": 1728,
+          "region": "EUW",
+          "uploaded": "2025-11-16",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 104,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "nDGSgXrCaZE",
+          "title": "Sion Mid vs Graves - NA Challenger Patch 26.04",
+          "rankClaim": "Challenger",
+          "patch": "26.4",
+          "durationSec": 1743,
+          "region": "NA",
+          "uploaded": "2026-02-28",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 105,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "JBZXO_tAvTs",
+          "title": "Sion Mid vs Fizz - KR Challenger Patch 26.09",
+          "rankClaim": "Challenger",
+          "patch": "26.9",
+          "durationSec": 1824,
+          "region": "KR",
+          "uploaded": "2026-05-11",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 112,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "sBAEg9A3VIk",
+          "title": "Sion Mid vs Viktor - VN Challenger Patch 26.08",
+          "rankClaim": "Challenger",
+          "patch": "26.8",
+          "durationSec": 1796,
+          "uploaded": "2026-04-26",
+          "moments": []
+        },
+        {
+          "videoId": "pa__YPtmbYE",
+          "title": "Sion Mid vs Viktor - NA Grandmaster Patch 25.08",
+          "rankClaim": "Grandmaster",
+          "patch": "25.8",
+          "durationSec": 1743,
+          "region": "NA",
+          "uploaded": "2025-04-26",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 114,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "rBwqQ6AMc1s",
+          "title": "Sion vs Fiora [ TOP ] Lol Korea Master Patch 25.16",
+          "rankClaim": "Master",
+          "patch": "25.16",
+          "durationSec": 1335,
+          "region": "KR",
+          "uploaded": "2025-08-20",
+          "moments": []
+        },
+        {
+          "videoId": "IoIU0g7tnv0",
+          "title": "Sion Top vs Fiora - KR Master Patch 25.09",
+          "rankClaim": "Master",
+          "patch": "25.9",
+          "durationSec": 1768,
+          "region": "KR",
+          "uploaded": "2025-05-04",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 128,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 214,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 505,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 571,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 725,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 807,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 837,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 868,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 960,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1233,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1267,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1364,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1491,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1543,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1664,
+              "label": "Take down The Inhibitor"
+            },
+            {
+              "atSec": 1717,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1734,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1747,
+              "label": "End credit"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 126,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "F9LpsNLo0ik",
+          "title": "Sion Jungle vs Jayce - KR Master Patch 26.13",
+          "rankClaim": "Master",
+          "patch": "26.13",
+          "durationSec": 1658,
+          "region": "KR",
+          "uploaded": "2026-07-10",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 126,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "QOMProdx-oo",
+          "title": "Sion Mid vs Jayce - KR Master Patch 25.05",
+          "rankClaim": "Master",
+          "patch": "25.5",
+          "durationSec": 1540,
+          "region": "KR",
+          "uploaded": "2025-03-17",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 126,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "4JeB0u4VaXI",
+          "title": "Sion Top vs Jayce - KR Challenger Patch 26.05",
+          "rankClaim": "Challenger",
+          "patch": "26.5",
+          "durationSec": 1653,
+          "region": "KR",
+          "uploaded": "2026-03-17",
+          "moments": []
+        },
+        {
+          "videoId": "6pwVpfEjLjY",
+          "title": "Sion Top vs Jayce - KR Master Patch 26.05",
+          "rankClaim": "Master",
+          "patch": "26.5",
+          "durationSec": 1693,
+          "region": "KR",
+          "uploaded": "2026-03-08",
+          "moments": []
+        },
+        {
+          "videoId": "DtAHNfBSTNw",
+          "title": "Sion Top vs Jayce - KR Master Patch 26.02",
+          "rankClaim": "Master",
+          "patch": "26.2",
+          "durationSec": 1606,
+          "region": "KR",
+          "uploaded": "2026-01-26",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 179,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 298,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 520,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 650,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 884,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 916,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 947,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1002,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1034,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1115,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1180,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1221,
+              "label": "Hunt The Baron Nashor",
+              "kind": "baron"
+            },
+            {
+              "atSec": 1252,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1293,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1316,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1427,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1545,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1576,
+              "label": "Take down The Inhibitor"
+            },
+            {
+              "atSec": 1595,
+              "label": "End credit"
+            }
+          ]
+        },
+        {
+          "videoId": "V_zIZTrfEDo",
+          "title": "Sion Top vs Jayce - KR Grandmaster Patch 25.15",
+          "rankClaim": "Grandmaster",
+          "patch": "25.15",
+          "durationSec": 1688,
+          "region": "KR",
+          "uploaded": "2025-08-03",
+          "moments": []
+        },
+        {
+          "videoId": "nmpoZjF5Uw0",
+          "title": "Sion Top vs Jayce - KR Master Patch 25.14",
+          "rankClaim": "Master",
+          "patch": "25.14",
+          "durationSec": 1594,
+          "region": "KR",
+          "uploaded": "2025-07-20",
+          "moments": []
+        },
+        {
+          "videoId": "vh6MHCxfWi4",
+          "title": "Sion Top vs Jayce - KR Grandmaster Patch 25.07",
+          "rankClaim": "Grandmaster",
+          "patch": "25.7",
+          "durationSec": 1705,
+          "region": "KR",
+          "uploaded": "2025-04-08",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 184,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 303,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 393,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 672,
+              "label": "Hunt The Void Grubs",
+              "kind": "grubs"
+            },
+            {
+              "atSec": 924,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 956,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1026,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1076,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1147,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1202,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1239,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1345,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1417,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1453,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1463,
+              "label": "Take down The Inhibitor"
+            },
+            {
+              "atSec": 1563,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1648,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1684,
+              "label": "End credit"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 127,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "4i3l-LaSLY4",
+          "title": "Sion Mid vs Lissandra - NA Challenger Patch 25.07",
+          "rankClaim": "Challenger",
+          "patch": "25.7",
+          "durationSec": 1513,
+          "region": "NA",
+          "uploaded": "2025-04-16",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 154,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "41NpF5YdoEs",
+          "title": "Sion Top vs Zac - KR Grandmaster Patch 25.05",
+          "rankClaim": "Grandmaster",
+          "patch": "25.5",
+          "durationSec": 1541,
+          "region": "KR",
+          "uploaded": "2025-03-12",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 239,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 277,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 662,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 689,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 713,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 853,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 908,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 918,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 997,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1016,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1093,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1119,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1180,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1279,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1299,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1435,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1501,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1520,
+              "label": "End credit"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 157,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "WZuF52JK1aM",
+          "title": "Sion Mid vs Yasuo - KR Challenger Patch 26.03",
+          "rankClaim": "Challenger",
+          "patch": "26.3",
+          "durationSec": 1489,
+          "region": "KR",
+          "uploaded": "2026-02-14",
+          "moments": []
+        },
+        {
+          "videoId": "hRPNQMwNi7s",
+          "title": "Sion Mid vs Yasuo - KR Grandmaster Patch 26.02",
+          "rankClaim": "Grandmaster",
+          "patch": "26.2",
+          "durationSec": 1569,
+          "region": "KR",
+          "uploaded": "2026-01-30",
+          "moments": []
+        },
+        {
+          "videoId": "yk3U5twvWbc",
+          "title": "Sion Mid vs Yasuo - KR Master Patch 25.21",
+          "rankClaim": "Master",
+          "patch": "25.21",
+          "durationSec": 1710,
+          "region": "KR",
+          "uploaded": "2025-11-02",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 166,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "SoA_MaL-LIs",
+          "title": "Sion Mid vs Akshan - KR Master Patch 25.15",
+          "rankClaim": "Master",
+          "patch": "25.15",
+          "durationSec": 1501,
+          "region": "KR",
+          "uploaded": "2025-08-10",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 203,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "0DB1X4AAY9w",
+          "title": "Sion Jungle vs Kindred - NA Challenger Patch 25.04",
+          "rankClaim": "Challenger",
+          "patch": "25.4",
+          "durationSec": 2103,
+          "region": "NA",
+          "uploaded": "2025-03-05",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 238,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "Q2pRKa1JVg4",
+          "title": "Sion Mid vs Zed - KR Master Patch 25.10",
+          "rankClaim": "Master",
+          "patch": "25.10",
+          "durationSec": 1748,
+          "region": "KR",
+          "uploaded": "2025-05-25",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 238,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "abHSqSKHK_c",
+          "title": "(UCAM ANDARIEL) Sion Top vs Zed - EUW Challenger Patch 26.16",
+          "rankClaim": "Challenger",
+          "patch": "26.16",
+          "durationSec": 1769,
+          "region": "EUW",
+          "player": "UCAM ANDARIEL",
+          "uploaded": "2026-08-19",
+          "moments": []
+        },
+        {
+          "videoId": "j4Y8rd3i8yI",
+          "title": "Sion Top vs Zed - KR Challenger Patch 25.19",
+          "rankClaim": "Challenger",
+          "patch": "25.19",
+          "durationSec": 1691,
+          "region": "KR",
+          "uploaded": "2025-09-29",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 350,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "ApQa53LJYmA",
+          "title": "Sion Support vs Yuumi - VN Challenger Patch 25.13",
+          "rankClaim": "Challenger",
+          "patch": "25.13",
+          "durationSec": 1472,
+          "uploaded": "2025-07-11",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 421,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "te97OGdfWO4",
+          "title": "(CLA Kiki) Sion Jungle vs Rek'Sai - EUW Grandmaster Patch 26.11",
+          "rankClaim": "Grandmaster",
+          "patch": "26.11",
+          "durationSec": 1659,
+          "region": "EUW",
+          "player": "CLA Kiki",
+          "uploaded": "2026-06-07",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 516,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "WUTNuc-zlH8",
+          "title": "SION AND ORNN ARE THE MOST OP TANKS EVER",
+          "rankClaim": "Master+",
+          "patch": "26.20",
+          "durationSec": 1714,
+          "patchEstimated": true,
+          "player": "Makkro",
+          "uploaded": "2026-10-19",
+          "format": "stream",
+          "cam": true,
+          "moments": [
+            {
+              "atSec": 0,
+              "label": "Top lane strategy"
+            },
+            {
+              "atSec": 78,
+              "label": "Teleport vs Ignite"
+            },
+            {
+              "atSec": 207,
+              "label": "Champion stat analysis"
+            },
+            {
+              "atSec": 306,
+              "label": "Maokai and champion bugs"
+            },
+            {
+              "atSec": 425,
+              "label": "Tactical gameplay choices"
+            },
+            {
+              "atSec": 637,
+              "label": "LP gain and ranking system"
+            },
+            {
+              "atSec": 813,
+              "label": "Matchups and laning phases"
+            },
+            {
+              "atSec": 1205,
+              "label": "Late game team fighting"
+            }
+          ]
+        },
+        {
+          "videoId": "QjXMpBj1V78",
+          "title": "SION IS THE ORNN COUNTER",
+          "rankClaim": "Master+",
+          "patch": "26.19",
+          "durationSec": 1324,
+          "patchEstimated": true,
+          "player": "Makkro",
+          "uploaded": "2026-09-23",
+          "format": "stream",
+          "cam": true,
+          "moments": [
+            {
+              "atSec": 0,
+              "label": "Game setup and strategy"
+            },
+            {
+              "atSec": 83,
+              "label": "Early game laning phase"
+            },
+            {
+              "atSec": 208,
+              "label": "Mid-game item power spikes"
+            },
+            {
+              "atSec": 422,
+              "label": "Combat and positioning"
+            },
+            {
+              "atSec": 558,
+              "label": "Champion balance discussion"
+            },
+            {
+              "atSec": 748,
+              "label": "Interaction with chat"
+            },
+            {
+              "atSec": 853,
+              "label": "Optimizing boots and items"
+            },
+            {
+              "atSec": 1032,
+              "label": "Late game dominance"
+            }
+          ]
+        },
+        {
+          "videoId": "haSWGDVcdx4",
+          "title": "Sion Top vs Ornn - KR Grandmaster Patch 25.13",
+          "rankClaim": "Grandmaster",
+          "patch": "25.13",
+          "durationSec": 2032,
+          "region": "KR",
+          "uploaded": "2025-06-28",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 517,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "Mnea0udXiN4",
+          "title": "Sion Mid vs Sylas - KR Master Patch 26.01",
+          "rankClaim": "Master",
+          "patch": "26.1",
+          "durationSec": 1612,
+          "region": "KR",
+          "uploaded": "2026-01-21",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 517,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "ZOVaarUgXhw",
+          "title": "Sion Top vs Sylas - EUW Grandmaster Patch 26.08",
+          "rankClaim": "Grandmaster",
+          "patch": "26.8",
+          "durationSec": 1895,
+          "region": "EUW",
+          "uploaded": "2026-04-19",
+          "moments": []
+        },
+        {
+          "videoId": "rbKRSf7STOw",
+          "title": "Sion Top vs Sylas - KR Master Patch 25.16",
+          "rankClaim": "Master",
+          "patch": "25.16",
+          "durationSec": 1586,
+          "region": "KR",
+          "uploaded": "2025-08-16",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 523,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "2hyIxjQuPAM",
+          "title": "Sion Top vs Aphelios - EUW Challenger Patch 26.01",
+          "rankClaim": "Challenger",
+          "patch": "26.1",
+          "durationSec": 1489,
+          "region": "EUW",
+          "uploaded": "2026-01-17",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 711,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "JudrWpY1KZU",
+          "title": "(DFM Woody) Sion Mid vs Vex - KR Grandmaster Patch 26.15",
+          "rankClaim": "Grandmaster",
+          "patch": "26.15",
+          "durationSec": 1725,
+          "region": "KR",
+          "player": "DFM Woody",
+          "uploaded": "2026-08-11",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 777,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "-Vdo35xJMdQ",
+          "title": "Sion Mid vs Yone - KR Master Patch 25.24",
+          "rankClaim": "Master",
+          "patch": "25.24",
+          "durationSec": 1503,
+          "region": "KR",
+          "uploaded": "2025-12-14",
+          "moments": []
+        },
+        {
+          "videoId": "z7QTIRAQBL8",
+          "title": "Sion Mid vs Yone - KR Master Patch 25.19",
+          "rankClaim": "Master",
+          "patch": "25.19",
+          "durationSec": 1755,
+          "region": "KR",
+          "uploaded": "2025-10-05",
+          "moments": []
+        },
+        {
+          "videoId": "mXvKkUqH7ZE",
+          "title": "Sion Mid vs Yone - EUW Grandmaster Patch 25.18",
+          "rankClaim": "Grandmaster",
+          "patch": "25.18",
+          "durationSec": 1809,
+          "region": "EUW",
+          "uploaded": "2025-09-21",
+          "moments": []
+        },
+        {
+          "videoId": "DATKMmbE1o4",
+          "title": "Sion Mid vs Yone - NA Challenger Patch 25.09",
+          "rankClaim": "Challenger",
+          "patch": "25.9",
+          "durationSec": 1847,
+          "region": "NA",
+          "uploaded": "2025-05-11",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 777,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "D6T8bYh-kVI",
+          "title": "Sion Top vs Yone - KR Master Patch 26.03",
+          "rankClaim": "Master",
+          "patch": "26.3",
+          "durationSec": 1441,
+          "region": "KR",
+          "uploaded": "2026-02-08",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 141,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 218,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 342,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 449,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 478,
+              "label": "Hunt The Void Grubs",
+              "kind": "grubs"
+            },
+            {
+              "atSec": 598,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 726,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 774,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 862,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 893,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 921,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1042,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1170,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1232,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1264,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1333,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1359,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1406,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1430,
+              "label": "End credit"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 799,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "_Jud0reJ7jI",
+          "title": "(DNS Quantum ) Sion Top vs Ambessa - KR Challenger Patch 26.16",
+          "rankClaim": "Challenger",
+          "patch": "26.16",
+          "durationSec": 1645,
+          "region": "KR",
+          "player": "DNS Quantum",
+          "uploaded": "2026-08-26",
+          "moments": []
+        },
+        {
+          "videoId": "uStXEOB1GzU",
+          "title": "(BW Elramir) Sion Top vs Ambessa - EUW Challenger Patch 26.12",
+          "rankClaim": "Challenger",
+          "patch": "26.12",
+          "durationSec": 1749,
+          "region": "EUW",
+          "player": "BW Elramir",
+          "uploaded": "2026-06-15",
+          "moments": []
+        },
+        {
+          "videoId": "xsedb-55ZaY",
+          "title": "(DK ShowMaker) Sion Top vs Ambessa - KR Challenger Patch 26.11",
+          "rankClaim": "Challenger",
+          "patch": "26.11",
+          "durationSec": 1677,
+          "region": "KR",
+          "player": "ShowMaker",
+          "team": "DK",
+          "uploaded": "2026-05-31",
+          "moments": []
+        },
+        {
+          "videoId": "ynwFzGIbFN4",
+          "title": "Sion Top vs Ambessa - KR Grandmaster Patch 25.21",
+          "rankClaim": "Grandmaster",
+          "patch": "25.21",
+          "durationSec": 1442,
+          "region": "KR",
+          "uploaded": "2025-10-27",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 805,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "lHTP19za5KA",
+          "title": "Sion Mid vs Locke - KR Master Patch 26.21",
+          "rankClaim": "Master",
+          "patch": "26.21",
+          "durationSec": 1587,
+          "region": "KR",
+          "uploaded": "2026-11-01",
+          "result": "W",
+          "moments": [
+            {
+              "atSec": 10,
+              "label": "First Blood — Viktor kills Locke",
+              "kind": "kill"
+            },
+            {
+              "atSec": 514,
+              "label": "Red takes 1st Dragon (Cloud)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 616,
+              "label": "Sion solo kills Taliyah",
+              "kind": "kill"
+            },
+            {
+              "atSec": 795,
+              "label": "Team fight (4 kills)",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 837,
+              "label": "Red takes 2nd Dragon (Ocean)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 929,
+              "label": "Sion takes down Locke"
+            },
+            {
+              "atSec": 1000,
+              "label": "Xin Zhao kills Pantheon",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1043,
+              "label": "Sion picks off Taliyah"
+            },
+            {
+              "atSec": 1147,
+              "label": "Red takes 3rd Dragon (Hextech)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1204,
+              "label": "Xayah kills Locke",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1260,
+              "label": "Team fight (4 kills)",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1360,
+              "label": "Xayah takes down Smolder"
+            },
+            {
+              "atSec": 1391,
+              "label": "Mid Inhibitor falls (Blue)"
+            },
+            {
+              "atSec": 1430,
+              "label": "Viktor takes down Locke"
+            },
+            {
+              "atSec": 1472,
+              "label": "Blue takes 1st Dragon (Hextech)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1499,
+              "label": "Red takes Baron",
+              "kind": "baron"
+            },
+            {
+              "atSec": 1565,
+              "label": "Top Inhibitor falls (Blue)"
+            },
+            {
+              "atSec": 1574,
+              "label": "Sion Double Kill",
+              "kind": "kill"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 887,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "tmyeZw81GQw",
+          "title": "Sion Top vs Gwen - KR Master Patch 26.18",
+          "rankClaim": "Master",
+          "patch": "26.18",
+          "durationSec": 1845,
+          "region": "KR",
+          "uploaded": "2026-09-16",
+          "moments": []
+        },
+        {
+          "videoId": "YgXBycUHyw8",
+          "title": "Sion Top vs Gwen - EUW Grandmaster Patch 26.06",
+          "rankClaim": "Grandmaster",
+          "patch": "26.6",
+          "durationSec": 1857,
+          "region": "EUW",
+          "uploaded": "2026-03-23",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 139,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 233,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 373,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 494,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 663,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 838,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 853,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 941,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1150,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1291,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1312,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1453,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1501,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1535,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1557,
+              "label": "Take down The Inhibitor"
+            },
+            {
+              "atSec": 1577,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1787,
+              "label": "Take down The Inhibitor"
+            },
+            {
+              "atSec": 1818,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1846,
+              "label": "End credit"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 893,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "BUZw-qDGwDo",
+          "title": "Sion Mid vs Aurora - EUW Challenger Patch 26.07",
+          "rankClaim": "Challenger",
+          "patch": "26.7",
+          "durationSec": 1766,
+          "region": "EUW",
+          "uploaded": "2026-04-12",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 904,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "VVKfvqvtDFM",
+          "title": "Sion Top vs Zaahen - KR Master Patch 26.07",
+          "rankClaim": "Master",
+          "patch": "26.7",
+          "durationSec": 1758,
+          "region": "KR",
+          "uploaded": "2026-04-04",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 910,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "u-1V5WrDyyU",
+          "title": "(LEO Furby) Sion Mid vs Hwei - EUW Grandmaster Patch 26.14",
+          "rankClaim": "Grandmaster",
+          "patch": "26.14",
+          "durationSec": 1815,
+          "region": "EUW",
+          "player": "LEO Furby",
+          "uploaded": "2026-07-26",
+          "moments": []
+        }
+      ]
+    }
+  ]
+}

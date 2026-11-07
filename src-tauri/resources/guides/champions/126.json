@@ -1,0 +1,4040 @@
+{
+  "schema": 1,
+  "champion": 126,
+  "generatedAt": "2026-11-07T13:25:14.592Z",
+  "guides": [],
+  "general": [
+    {
+      "champion": 126,
+      "lane": "top",
+      "patch": "26.21",
+      "reviewed": false,
+      "keyTips": [
+        {
+          "text": "After a few levels, spend ranged and melee stances on extended trades the lane allows.",
+          "scope": "champion",
+          "sourceIds": [
+            "mobalytics-jayce"
+          ]
+        },
+        {
+          "text": "At level 6, respect gaining no ultimate rank while most top laners spike; space and harass from range instead of forcing it.",
+          "scope": "champion",
+          "sourceIds": [
+            "mobalytics-jayce"
+          ]
+        },
+        {
+          "text": "Fire E then Q from fog before fights to bank the team an early advantage.",
+          "scope": "champion",
+          "sourceIds": [
+            "mobalytics-jayce"
+          ],
+          "abilityKeys": [
+            {
+              "champion": 126,
+              "key": "E"
+            },
+            {
+              "champion": 126,
+              "key": "Q"
+            }
+          ]
+        }
+      ],
+      "sections": {
+        "overview": {
+          "tips": []
+        },
+        "early-lane": {
+          "tips": [
+            {
+              "text": "Hold Q poke up and weave autos as opponents step in for last-hits.",
+              "scope": "champion",
+              "sourceIds": [
+                "mobalytics-jayce"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 126,
+                  "key": "Q"
+                }
+              ]
+            },
+            {
+              "text": "Lower opponents with E then Q poke before attempting an all-in finish.",
+              "scope": "champion",
+              "sourceIds": [
+                "mobalytics-jayce"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 126,
+                  "key": "E"
+                },
+                {
+                  "champion": 126,
+                  "key": "Q"
+                }
+              ]
+            },
+            {
+              "text": "Treat the first item component as an early damage spike, threatening short burst after landed E then Q poke.",
+              "scope": "champion",
+              "sourceIds": [
+                "mobalytics-jayce"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 126,
+                  "key": "E"
+                },
+                {
+                  "champion": 126,
+                  "key": "Q"
+                }
+              ]
+            }
+          ]
+        },
+        "mid-lane": {
+          "tips": [
+            {
+              "text": "Delay full fights while Q softens opponents first.",
+              "scope": "champion",
+              "sourceIds": [
+                "mobalytics-jayce"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 126,
+                  "key": "Q"
+                }
+              ]
+            },
+            {
+              "text": "Farm sides and nearby towers first, joining teamfights only with no close tower to take.",
+              "scope": "champion",
+              "sourceIds": [
+                "mobalytics-jayce"
+              ]
+            },
+            {
+              "text": "Duel anyone contesting the side push with strong dueling.",
+              "scope": "champion",
+              "sourceIds": [
+                "mobalytics-jayce"
+              ]
+            },
+            {
+              "text": "At level 9, raise poke damage with maxed Q and set fog E then Q traps for unsuspecting squishies.",
+              "scope": "champion",
+              "sourceIds": [
+                "mobalytics-jayce"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 126,
+                  "key": "Q"
+                },
+                {
+                  "champion": 126,
+                  "key": "E"
+                }
+              ]
+            }
+          ]
+        },
+        "win-condition": {
+          "tips": [
+            {
+              "text": "Stay with the team late so enemies isolate neither Jayce nor a 4v5 opening.",
+              "scope": "champion",
+              "sourceIds": [
+                "mobalytics-jayce"
+              ]
+            },
+            {
+              "text": "While weak, peel for carries on the nearest enemy; while ahead, flank for the backline.",
+              "scope": "champion",
+              "sourceIds": [
+                "mobalytics-jayce"
+              ]
+            },
+            {
+              "text": "Spread poke across as many enemies as positioning permits with pre-fight E then Q.",
+              "scope": "champion",
+              "sourceIds": [
+                "mobalytics-jayce"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 126,
+                  "key": "E"
+                },
+                {
+                  "champion": 126,
+                  "key": "Q"
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "itemization": [
+        {
+          "text": "Track rising poke strength with item components while watching mana needs.",
+          "scope": "champion",
+          "sourceIds": [
+            "mobalytics-jayce"
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "id": "mobalytics-jayce",
+          "author": "Mobalytics",
+          "rankClaim": "No rank claim",
+          "url": "https://mobalytics.gg/lol/champions/jayce/guide",
+          "kind": "web"
+        }
+      ]
+    }
+  ],
+  "vods": [
+    {
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "ASi2sSX3iwk",
+          "title": "Baicaiovo Jayce : His Jayce is a DEADLY MACHINE - CN Super Server",
+          "rankClaim": "Master+",
+          "patch": "26.13",
+          "durationSec": 2044,
+          "patchEstimated": true,
+          "player": "Baicaiovo",
+          "uploaded": "2026-06-27",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "6Ok3QVqRI04",
+          "title": "Rank 1 Jayce : Baicaiovo JAYCE DEVASTATES Challenger Super Server",
+          "rankClaim": "Challenger",
+          "patch": "26.11",
+          "durationSec": 1866,
+          "patchEstimated": true,
+          "player": "Baicaiovo",
+          "uploaded": "2026-06-07",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "zCbxYlKktn0",
+          "title": "Baicaiovo Unlocks High Level Jayce Mechanics on Chinese Super Server Challenger Rank Engsub",
+          "rankClaim": "Challenger",
+          "patch": "26.1",
+          "durationSec": 1553,
+          "patchEstimated": true,
+          "player": "Baicaiovo",
+          "uploaded": "2026-01-09",
+          "format": "stream",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "kDrqeeKtW_M",
+          "title": "Baicaiovo Unleashes Top 2 Chinese Super Server Challenger Jayce Jungle Tactics Engsub",
+          "rankClaim": "Challenger",
+          "patch": "26.1",
+          "durationSec": 1267,
+          "patchEstimated": true,
+          "player": "Baicaiovo",
+          "uploaded": "2026-01-09",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "32zjq9ivL9s",
+          "title": "Baicaiovo Unleashes Top 2 Challenger Jayce Jungle Pathing and Mechanics Engsub",
+          "rankClaim": "Challenger",
+          "patch": "26.1",
+          "durationSec": 1627,
+          "patchEstimated": true,
+          "player": "Baicaiovo",
+          "uploaded": "2026-01-09",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "GmcM6H9oGp4",
+          "title": "Baicaiovo Top 2 Super Server Jayce Mechanics Breakdown Challenger Gameplay Engsub",
+          "rankClaim": "Challenger",
+          "patch": "26.1",
+          "durationSec": 1639,
+          "patchEstimated": true,
+          "player": "Baicaiovo",
+          "uploaded": "2026-01-09",
+          "format": "stream",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 2,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "8cN5ri7mEo4",
+          "title": "Jayce vs Olaf Jungle - KR Challenger - Patch 16.10 Season 16",
+          "rankClaim": "Challenger",
+          "patch": "26.10",
+          "durationSec": 1666,
+          "region": "KR",
+          "uploaded": "2026-05-16",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 2,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "xztxiJkQ6WA",
+          "title": "(LNG sheer) Jayce Top vs Olaf (NS Kingen) - KR Challenger Patch 26.14",
+          "rankClaim": "Challenger",
+          "patch": "26.14",
+          "durationSec": 1899,
+          "region": "KR",
+          "player": "Kingen",
+          "team": "LNG",
+          "uploaded": "2026-07-25",
+          "moments": []
+        },
+        {
+          "videoId": "WF0lsdut7qg",
+          "title": "Jayce vs Olaf Top - KR Challenger - Patch 25.13 Season 15",
+          "rankClaim": "Challenger",
+          "patch": "25.13",
+          "durationSec": 1711,
+          "region": "KR",
+          "uploaded": "2025-07-06",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 4,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "Ykvk3k-ARg0",
+          "title": "Jayce vs Twisted Fate Mid - KR Challenger - Patch 25.10 Season 15",
+          "rankClaim": "Challenger",
+          "patch": "25.10",
+          "durationSec": 1381,
+          "region": "KR",
+          "uploaded": "2025-05-23",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 5,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "_4IaY3yV2MQ",
+          "title": "Jayce Jungle vs Xin Zhao - KR Master Patch 26.07",
+          "rankClaim": "Master",
+          "patch": "26.7",
+          "durationSec": 1910,
+          "region": "KR",
+          "uploaded": "2026-04-11",
+          "moments": []
+        },
+        {
+          "videoId": "hD3TblamHAA",
+          "title": "Jayce Jungle vs Xin Zhao - VN Challenger Patch 25.04",
+          "rankClaim": "Challenger",
+          "patch": "25.4",
+          "durationSec": 1986,
+          "uploaded": "2025-02-28",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 6,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "9ayBK2diWbI",
+          "title": "HLE Zeus Jayce vs Urgot TOP [ Pentakill ] Patch 25.3 Korea Grandmaster ✅",
+          "rankClaim": "Grandmaster",
+          "patch": "25.3",
+          "durationSec": 1666,
+          "region": "KR",
+          "player": "Zeus",
+          "team": "HLE",
+          "uploaded": "2025-02-14",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 8,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "gdj7v-RCDfo",
+          "title": "Jayce Mid vs Vladimir - NA Challenger Patch 25.19",
+          "rankClaim": "Challenger",
+          "patch": "25.19",
+          "durationSec": 2120,
+          "region": "NA",
+          "uploaded": "2025-10-03",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 8,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "flkAFAeANu4",
+          "title": "Jayce vs Vladimir Top - KR Challenger - Patch 25.5 Season 15",
+          "rankClaim": "Challenger",
+          "patch": "25.5",
+          "durationSec": 1846,
+          "region": "KR",
+          "uploaded": "2025-03-08",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 9,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "bwjXlutlxy4",
+          "title": "Kanavi Jayce vs Fiddlesticks Jungle - KR Grandmaster - Patch 25.24 Season 15",
+          "rankClaim": "Grandmaster",
+          "patch": "25.24",
+          "durationSec": 1591,
+          "region": "KR",
+          "player": "Kanavi",
+          "uploaded": "2025-12-30",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 9,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "HzgnwmMj_sQ",
+          "title": "Jayce Top vs Fiddlesticks - KR Grandmaster Patch 25.08",
+          "rankClaim": "Grandmaster",
+          "patch": "25.8",
+          "durationSec": 1908,
+          "region": "KR",
+          "uploaded": "2025-04-19",
+          "moments": []
+        },
+        {
+          "videoId": "nr1PcVZ6l6k",
+          "title": "Jayce vs Fiddlesticks Top - KR Grandmaster - Patch 25.8 Season 15",
+          "rankClaim": "Grandmaster",
+          "patch": "25.8",
+          "durationSec": 1891,
+          "region": "KR",
+          "uploaded": "2025-04-17",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 13,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "wi_0tD_6RPs",
+          "title": "Jayce Mid vs Ryze - EUW Challenger Patch 25.21",
+          "rankClaim": "Challenger",
+          "patch": "25.21",
+          "durationSec": 1432,
+          "region": "EUW",
+          "uploaded": "2025-11-01",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 13,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "w-d2NmSVT-E",
+          "title": "Jayce vs Ryze Top - KR Grandmaster - Patch 25.11 Season 15",
+          "rankClaim": "Grandmaster",
+          "patch": "25.11",
+          "durationSec": 1661,
+          "region": "KR",
+          "uploaded": "2025-06-02",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 14,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "73Aiq4sgeNQ",
+          "title": "(KT PerfecT) Jayce Top vs Sion (DK Siwoo) - KR Grandmaster Patch 26.10",
+          "rankClaim": "Grandmaster",
+          "patch": "26.10",
+          "durationSec": 1477,
+          "region": "KR",
+          "player": "PerfecT",
+          "team": "KT",
+          "uploaded": "2026-05-23",
+          "moments": []
+        },
+        {
+          "videoId": "3vDHi7Y_bho",
+          "title": "Jayce vs Sion Top - KR Challenger - Patch 16.04 Season 16",
+          "rankClaim": "Challenger",
+          "patch": "26.4",
+          "durationSec": 1636,
+          "region": "KR",
+          "uploaded": "2026-02-26",
+          "moments": []
+        },
+        {
+          "videoId": "ity68-d8hJk",
+          "title": "Jayce Top vs Sion - KR Master Patch 25.24",
+          "rankClaim": "Master",
+          "patch": "25.24",
+          "durationSec": 1447,
+          "region": "KR",
+          "uploaded": "2025-12-05",
+          "moments": []
+        },
+        {
+          "videoId": "tyQDaPamIYI",
+          "title": "Jayce vs Sion Top - KR Challenger - Patch 25.19 Season 15",
+          "rankClaim": "Challenger",
+          "patch": "25.19",
+          "durationSec": 1476,
+          "region": "KR",
+          "uploaded": "2025-10-02",
+          "moments": []
+        },
+        {
+          "videoId": "SwEezAMHbxY",
+          "title": "Jayce Top vs Sion - KR Grandmaster Patch 25.18",
+          "rankClaim": "Grandmaster",
+          "patch": "25.18",
+          "durationSec": 1781,
+          "region": "KR",
+          "uploaded": "2025-09-13",
+          "moments": []
+        },
+        {
+          "videoId": "AGYdCGpJtio",
+          "title": "Jayce Top vs Sion - KR Grandmaster Patch 25.17",
+          "rankClaim": "Grandmaster",
+          "patch": "25.17",
+          "durationSec": 1579,
+          "region": "KR",
+          "uploaded": "2025-08-30",
+          "moments": []
+        },
+        {
+          "videoId": "HtT1P1_hSAU",
+          "title": "Jayce Top vs Sion - KR Grandmaster Patch 25.11",
+          "rankClaim": "Grandmaster",
+          "patch": "25.11",
+          "durationSec": 1598,
+          "region": "KR",
+          "uploaded": "2025-06-01",
+          "moments": []
+        },
+        {
+          "videoId": "19gSvVriyn4",
+          "title": "Jayce Top vs Sion - KR Challenger Patch 25.09",
+          "rankClaim": "Challenger",
+          "patch": "25.9",
+          "durationSec": 1941,
+          "region": "KR",
+          "uploaded": "2025-05-03",
+          "moments": []
+        },
+        {
+          "videoId": "bBBnWY-fHsQ",
+          "title": "Jayce vs Sion Top - EUW Challenger - Patch 25.8 Season 15",
+          "rankClaim": "Challenger",
+          "patch": "25.8",
+          "durationSec": 1546,
+          "region": "EUW",
+          "uploaded": "2025-04-25",
+          "moments": []
+        },
+        {
+          "videoId": "uuVJOB1EHFg",
+          "title": "Jayce vs Sion Top - KR Challenger - Patch 25.7 Season 15",
+          "rankClaim": "Challenger",
+          "patch": "25.7",
+          "durationSec": 1951,
+          "region": "KR",
+          "uploaded": "2025-04-10",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 15,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "qQQhAcX94xE",
+          "title": "Jayce Mid vs Sivir - NA Challenger Patch 25.15",
+          "rankClaim": "Challenger",
+          "patch": "25.15",
+          "durationSec": 1580,
+          "region": "NA",
+          "uploaded": "2025-08-08",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 20,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "h93SOVALCUE",
+          "title": "Jayce Jungle vs Nunu & Willump - KR Grandmaster Patch 26.10",
+          "rankClaim": "Grandmaster",
+          "patch": "26.10",
+          "durationSec": 1713,
+          "region": "KR",
+          "uploaded": "2026-05-16",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 23,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "pCKdj4K_kGU",
+          "title": "Jayce Top vs Tryndamere - KR Master Patch 26.01",
+          "rankClaim": "Master",
+          "patch": "26.1",
+          "durationSec": 1545,
+          "region": "KR",
+          "uploaded": "2026-01-18",
+          "moments": []
+        },
+        {
+          "videoId": "bJAtVkk0fpM",
+          "title": "Jayce vs Tryndamere Top - KR Master - Patch 25.11 Season 15",
+          "rankClaim": "Master",
+          "patch": "25.11",
+          "durationSec": 1966,
+          "region": "KR",
+          "uploaded": "2025-06-03",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 31,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "Tk1dfR19Ybo",
+          "title": "Jayce vs Cho'Gatch Jungle - KR Challenger - Patch 16.20 Season 16",
+          "rankClaim": "Challenger",
+          "patch": "26.20",
+          "durationSec": 1500,
+          "region": "KR",
+          "uploaded": "2026-10-15",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 31,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "ICwN8CnZMts",
+          "title": "Jayce Top vs Cho'Gath - VN Challenger Patch 26.05",
+          "rankClaim": "Challenger",
+          "patch": "26.5",
+          "durationSec": 1698,
+          "uploaded": "2026-03-07",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 34,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "c2uncjEjAy0",
+          "title": "Jayce Top vs Anivia - KR Grandmaster Patch 25.22",
+          "rankClaim": "Grandmaster",
+          "patch": "25.22",
+          "durationSec": 1426,
+          "region": "KR",
+          "uploaded": "2025-11-09",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 36,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "wxGISQEcxRY",
+          "title": "Jayce Jungle vs Dr. Mundo - KR Challenger Patch 26.05",
+          "rankClaim": "Challenger",
+          "patch": "26.5",
+          "durationSec": 1556,
+          "region": "KR",
+          "uploaded": "2026-03-14",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 36,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "k-8dNrDcHv0",
+          "title": "Jayce Top vs Dr. Mundo - KR Challenger Patch 26.03",
+          "rankClaim": "Challenger",
+          "patch": "26.3",
+          "durationSec": 1492,
+          "region": "KR",
+          "uploaded": "2026-02-06",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 39,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "4MQMV8mj4hs",
+          "title": "(DNS Clozer) Jayce Mid vs Irelia - KR Challenger Patch 26.14",
+          "rankClaim": "Challenger",
+          "patch": "26.14",
+          "durationSec": 1505,
+          "region": "KR",
+          "player": "Clozer",
+          "uploaded": "2026-07-31",
+          "moments": []
+        },
+        {
+          "videoId": "HN1ooHcjFLU",
+          "title": "Jayce Mid vs Irelia - EUW Challenger Patch 25.16",
+          "rankClaim": "Challenger",
+          "patch": "25.16",
+          "durationSec": 1795,
+          "region": "EUW",
+          "uploaded": "2025-08-22",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 39,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "EmANVbhyGk0",
+          "title": "(KHK Venour) Jayce Top vs Irelia (Kaori) - EUW Challenger Patch 26.19",
+          "rankClaim": "Challenger",
+          "patch": "26.19",
+          "durationSec": 1715,
+          "region": "EUW",
+          "player": "KHK Venour",
+          "uploaded": "2026-10-01",
+          "result": "W",
+          "moments": [
+            {
+              "atSec": 239,
+              "label": "First Blood — Jayce kills Irelia",
+              "kind": "kill"
+            },
+            {
+              "atSec": 335,
+              "label": "Blue takes 1st Dragon (Hextech)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 469,
+              "label": "Jayce catches Irelia"
+            },
+            {
+              "atSec": 530,
+              "label": "Jayce outduels Irelia again"
+            },
+            {
+              "atSec": 672,
+              "label": "Blue takes 2nd Dragon (Mountain)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 972,
+              "label": "Locke takes down Irelia"
+            },
+            {
+              "atSec": 1026,
+              "label": "Locke kills Zeri",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1042,
+              "label": "Red takes 1st Dragon (Ocean)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1151,
+              "label": "Jayce takes down Syndra"
+            },
+            {
+              "atSec": 1173,
+              "label": "Blue takes Baron",
+              "kind": "baron"
+            },
+            {
+              "atSec": 1249,
+              "label": "Jayce outplays Irelia (3rd time)"
+            },
+            {
+              "atSec": 1381,
+              "label": "Red takes 2nd Dragon (Ocean)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1392,
+              "label": "Tristana eliminates Zyra"
+            },
+            {
+              "atSec": 1431,
+              "label": "Mid Inhibitor falls (Red)"
+            },
+            {
+              "atSec": 1566,
+              "label": "Red takes Baron",
+              "kind": "baron"
+            },
+            {
+              "atSec": 1620,
+              "label": "Zac picks off Zeri"
+            },
+            {
+              "atSec": 1643,
+              "label": "Top Inhibitor falls (Red)"
+            },
+            {
+              "atSec": 1658,
+              "label": "Tristana picks off Rell"
+            }
+          ]
+        },
+        {
+          "videoId": "la3NSF1Fus4",
+          "title": "Jayce Top vs Irelia - KR Challenger Patch 26.06",
+          "rankClaim": "Challenger",
+          "patch": "26.6",
+          "durationSec": 1441,
+          "region": "KR",
+          "uploaded": "2026-03-21",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 95,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 157,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 223,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 293,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 543,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 809,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 871,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 945,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1004,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1071,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1103,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1135,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1162,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1191,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1258,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1277,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1299,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1395,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1410,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1430,
+              "label": "End credit"
+            }
+          ]
+        },
+        {
+          "videoId": "7PKXWD4k1oE",
+          "title": "HLE Zeus Jayce vs Irelia [ TOP ] Korea Grandmaster 1123 LP | Patch 26.4",
+          "rankClaim": "Grandmaster",
+          "patch": "26.4",
+          "durationSec": 1642,
+          "region": "KR",
+          "player": "Zeus",
+          "team": "HLE",
+          "uploaded": "2026-02-24",
+          "moments": []
+        },
+        {
+          "videoId": "fFqGEj2NdIc",
+          "title": "Jayce Top vs Irelia - KR Master Patch 25.23",
+          "rankClaim": "Master",
+          "patch": "25.23",
+          "durationSec": 1582,
+          "region": "KR",
+          "uploaded": "2025-11-22",
+          "moments": []
+        },
+        {
+          "videoId": "g6RrBOGD_iQ",
+          "title": "Jayce Top vs Irelia - KR Master Patch 25.19",
+          "rankClaim": "Master",
+          "patch": "25.19",
+          "durationSec": 1967,
+          "region": "KR",
+          "uploaded": "2025-09-27",
+          "moments": []
+        },
+        {
+          "videoId": "VRAouOPkgZ4",
+          "title": "Jayce vs Irelia Top - KR CHallenger - Patch 25.5 Season 15",
+          "rankClaim": "Challenger",
+          "patch": "25.5",
+          "durationSec": 1876,
+          "region": "KR",
+          "uploaded": "2025-03-14",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 42,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "sD2mqlRiGcM",
+          "title": "DK ShowMaker Jayce vs Corki [ MID ] Korea Grandmaster Patch 25.14 ✅",
+          "rankClaim": "Grandmaster",
+          "patch": "25.14",
+          "durationSec": 1469,
+          "region": "KR",
+          "player": "ShowMaker",
+          "team": "DK",
+          "uploaded": "2025-07-25",
+          "moments": []
+        },
+        {
+          "videoId": "mR7OcTUo8TA",
+          "title": "Jayce Mid vs Corki - EUW Grandmaster Patch 25.13",
+          "rankClaim": "Grandmaster",
+          "patch": "25.13",
+          "durationSec": 1510,
+          "region": "EUW",
+          "uploaded": "2025-07-05",
+          "moments": []
+        },
+        {
+          "videoId": "9MUQO2-RSVY",
+          "title": "T1 Faker Jayce vs Corki [ MID ] Patch 25.6 Korea Master ✅",
+          "rankClaim": "Master",
+          "patch": "25.6",
+          "durationSec": 1805,
+          "region": "KR",
+          "player": "Faker",
+          "team": "T1",
+          "uploaded": "2025-03-24",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 54,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "R3K38zzK9yU",
+          "title": "Jayce Top vs Malphite - KR Challenger Patch 26.20",
+          "rankClaim": "Challenger",
+          "patch": "26.20",
+          "durationSec": 1748,
+          "region": "KR",
+          "uploaded": "2026-10-15",
+          "result": "W",
+          "moments": [
+            {
+              "atSec": 395,
+              "label": "Red takes 1st Dragon (Hextech)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 799,
+              "label": "Red takes 2nd Dragon (Chemtech)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 847,
+              "label": "First Blood — Jayce kills Viego",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1136,
+              "label": "Red takes 3rd Dragon (Mountain)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1174,
+              "label": "Mid Inhibitor falls (Blue)"
+            },
+            {
+              "atSec": 1229,
+              "label": "Blue takes Baron",
+              "kind": "baron"
+            },
+            {
+              "atSec": 1236,
+              "label": "Hecarim eliminates Jhin"
+            },
+            {
+              "atSec": 1343,
+              "label": "Hecarim Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1430,
+              "label": "Team fight (3 kills)",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1491,
+              "label": "Blue takes 1st Dragon (Mountain)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1697,
+              "label": "Jayce Double Kill",
+              "kind": "kill"
+            }
+          ]
+        },
+        {
+          "videoId": "NSuqUEE2vBc",
+          "title": "(BRO Pungyeon) Jayce Top vs Malphite - KR Challenger Patch 26.18",
+          "rankClaim": "Challenger",
+          "patch": "26.18",
+          "durationSec": 1597,
+          "region": "KR",
+          "player": "Pungyeon",
+          "team": "BRO",
+          "uploaded": "2026-09-18",
+          "moments": []
+        },
+        {
+          "videoId": "PLXnusEzkjs",
+          "title": "(AL Flandre) Jayce Top vs Malphite - KR Grandmaster Patch 26.15",
+          "rankClaim": "Grandmaster",
+          "patch": "26.15",
+          "durationSec": 1683,
+          "region": "KR",
+          "player": "Flandre",
+          "team": "AL",
+          "uploaded": "2026-07-31",
+          "moments": []
+        },
+        {
+          "videoId": "e3fNvF_Pyaw",
+          "title": "T1 Doran Jayce vs Malphite [ TOP ] Patch 26.8 Korea Challenger 1774 LP",
+          "rankClaim": "Challenger",
+          "patch": "26.8",
+          "durationSec": 1249,
+          "region": "KR",
+          "player": "Doran",
+          "team": "T1",
+          "uploaded": "2026-04-21",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 55,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "LtAKz8fmYFE",
+          "title": "Jayce Mid vs Katarina - EUW Grandmaster Patch 25.14",
+          "rankClaim": "Grandmaster",
+          "patch": "25.14",
+          "durationSec": 1518,
+          "region": "EUW",
+          "uploaded": "2025-07-28",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 61,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "g4iAPPeXZsE",
+          "title": "Jayce vs Orianna MID [ Doinb ] Patch 25.7 Korea Master ✅",
+          "rankClaim": "Master",
+          "patch": "25.7",
+          "durationSec": 1445,
+          "region": "KR",
+          "player": "Doinb",
+          "uploaded": "2025-04-05",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 62,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "iSszHpXEoEI",
+          "title": "Jayce vs Wukong Top - KR Challenger - Patch 25.5 Season 15",
+          "rankClaim": "Challenger",
+          "patch": "25.5",
+          "durationSec": 1660,
+          "region": "KR",
+          "uploaded": "2025-03-18",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 64,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "IKrlw3tdg6Q",
+          "title": "T1 Oner Jayce vs Lee Sin [ Jungle ] Korea Challenger 2134 LP | Patch 26.16",
+          "rankClaim": "Challenger",
+          "patch": "26.16",
+          "durationSec": 1412,
+          "region": "KR",
+          "player": "Oner",
+          "team": "T1",
+          "uploaded": "2026-08-14",
+          "moments": []
+        },
+        {
+          "videoId": "0aWtt0NFtSs",
+          "title": "(GEN Canyon) Jayce Jungle vs Lee Sin - KR Challenger Patch 26.15",
+          "rankClaim": "Challenger",
+          "patch": "26.15",
+          "durationSec": 1491,
+          "region": "KR",
+          "player": "Canyon",
+          "team": "GEN",
+          "uploaded": "2026-08-14",
+          "moments": []
+        },
+        {
+          "videoId": "qS7gbzVZmZE",
+          "title": "Jayce vs Lee Sin Jungle [ Gen.G Canyon ] Korea Challenger Patch 26.9",
+          "rankClaim": "Challenger",
+          "patch": "26.9",
+          "durationSec": 1317,
+          "region": "KR",
+          "player": "Canyon",
+          "team": "Gen.G",
+          "uploaded": "2026-05-06",
+          "moments": []
+        },
+        {
+          "videoId": "r-g11ZeJIgc",
+          "title": "T1 Oner Jayce vs Lee Sin [ Jungle ] Patch 26.8 Korea Challenger 2473 LP",
+          "rankClaim": "Challenger",
+          "patch": "26.8",
+          "durationSec": 1114,
+          "region": "KR",
+          "player": "Oner",
+          "team": "T1",
+          "uploaded": "2026-04-19",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 67,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "pDXlyxrrQus",
+          "title": "HLE Zeus Jayce vs Vayne [ TOP ] Korea Challenger 2119 LP | Patch 26.13",
+          "rankClaim": "Challenger",
+          "patch": "26.13",
+          "durationSec": 1209,
+          "region": "KR",
+          "player": "Zeus",
+          "team": "HLE",
+          "uploaded": "2026-07-11",
+          "moments": []
+        },
+        {
+          "videoId": "im-Zi7m0-nA",
+          "title": "Jayce vs Vayne Top - KR Challenger - Patch 16.08 Season 16",
+          "rankClaim": "Challenger",
+          "patch": "26.8",
+          "durationSec": 1560,
+          "region": "KR",
+          "uploaded": "2026-04-22",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 68,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "iarV-ao3DQg",
+          "title": "(MKOI Elyoya) Jayce Jungle vs Rumble - EUW Grandmaster Patch 26.11",
+          "rankClaim": "Grandmaster",
+          "patch": "26.11",
+          "durationSec": 1896,
+          "region": "EUW",
+          "player": "MKOI Elyoya",
+          "uploaded": "2026-06-07",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 68,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "eN1I6MAVQjU",
+          "title": "HLE Zeus Jayce vs Rumble [ TOP ] Korea Grandmaster 1384 LP | Patch 26.6",
+          "rankClaim": "Grandmaster",
+          "patch": "26.6",
+          "durationSec": 1468,
+          "region": "KR",
+          "player": "Zeus",
+          "team": "HLE",
+          "uploaded": "2026-03-20",
+          "moments": []
+        },
+        {
+          "videoId": "9OlhH4_mtTs",
+          "title": "Jayce Top vs Rumble - KR Challenger Patch 25.10",
+          "rankClaim": "Challenger",
+          "patch": "25.10",
+          "durationSec": 1865,
+          "region": "KR",
+          "uploaded": "2025-05-17",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 72,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "578iwy-hOEU",
+          "title": "(Karsa) Jayce Jungle vs Skarner - KR Master Patch 26.12",
+          "rankClaim": "Master",
+          "patch": "26.12",
+          "durationSec": 1845,
+          "region": "KR",
+          "player": "Karsa",
+          "uploaded": "2026-06-12",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 74,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "WjistVEr5DY",
+          "title": "Jayce Mid vs Heimerdinger - NA Challenger Patch 25.06",
+          "rankClaim": "Challenger",
+          "patch": "25.6",
+          "durationSec": 2080,
+          "region": "NA",
+          "uploaded": "2025-03-28",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 74,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "0WJ--L0-yJE",
+          "title": "Jayce vs Heimerdinger Top - EUW Challenger - Patch 25.6 Season 15",
+          "rankClaim": "Challenger",
+          "patch": "25.6",
+          "durationSec": 2956,
+          "region": "EUW",
+          "uploaded": "2025-04-02",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 76,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "KYnr_7stcwk",
+          "title": "(DK Lucid) Jayce Jungle vs Nidalee - KR Challenger Patch 26.13",
+          "rankClaim": "Challenger",
+          "patch": "26.13",
+          "durationSec": 1816,
+          "region": "KR",
+          "player": "Lucid",
+          "team": "DK",
+          "uploaded": "2026-07-02",
+          "moments": []
+        },
+        {
+          "videoId": "hk2sJHAFZHg",
+          "title": "T1 Oner Jayce vs Nidalee [ Jungle ] Patch 25.24 Ranked Korea",
+          "rankClaim": "Master+",
+          "patch": "25.24",
+          "durationSec": 1024,
+          "region": "KR",
+          "player": "Oner",
+          "team": "T1",
+          "uploaded": "2025-12-13",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 79,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "b5Bm96DpGRY",
+          "title": "Jayce Top vs Gragas - KR Challenger Patch 26.09",
+          "rankClaim": "Challenger",
+          "patch": "26.9",
+          "durationSec": 1482,
+          "region": "KR",
+          "uploaded": "2026-05-15",
+          "moments": []
+        },
+        {
+          "videoId": "BFrYfyUKYV8",
+          "title": "T1 Doran Jayce vs Gragas [ TOP ] Korea Challenger 1817 LP | Patch 26.9",
+          "rankClaim": "Challenger",
+          "patch": "26.9",
+          "durationSec": 1461,
+          "region": "KR",
+          "player": "Doran",
+          "team": "T1",
+          "uploaded": "2026-05-11",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 80,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "4VageAgza2c",
+          "title": "T1 Oner Jayce vs Pantheon [ Jungle ] Korea Challenger 2338 LP | Patch 26.10",
+          "rankClaim": "Challenger",
+          "patch": "26.10",
+          "durationSec": 1608,
+          "region": "KR",
+          "player": "Oner",
+          "team": "T1",
+          "uploaded": "2026-05-27",
+          "moments": []
+        },
+        {
+          "videoId": "CJHJ9v1adog",
+          "title": "Jayce Jungle vs Pantheon - KR Challenger Patch 26.09",
+          "rankClaim": "Challenger",
+          "patch": "26.9",
+          "durationSec": 1562,
+          "region": "KR",
+          "uploaded": "2026-05-09",
+          "moments": []
+        },
+        {
+          "videoId": "OfHq8UfvkEA",
+          "title": "Jayce vs Pantheon Jungle - KR Challenger - Patch 16.09 Season 16",
+          "rankClaim": "Challenger",
+          "patch": "26.9",
+          "durationSec": 1576,
+          "region": "KR",
+          "uploaded": "2026-05-05",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 80,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "FumnonsNWcY",
+          "title": "Jayce vs Pantheon Top - KR Challenger - Patch 25.10 Season 15",
+          "rankClaim": "Challenger",
+          "patch": "25.10",
+          "durationSec": 2011,
+          "region": "KR",
+          "uploaded": "2025-05-19",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 81,
+      "lane": "adc",
+      "videos": [
+        {
+          "videoId": "i5aP9vccL58",
+          "title": "T1 Peyz Jayce vs Ezreal [ ADC ] Korea Challenger 2389 LP | Patch 26.13",
+          "rankClaim": "Challenger",
+          "patch": "26.13",
+          "durationSec": 1098,
+          "region": "KR",
+          "player": "Peyz",
+          "team": "T1",
+          "uploaded": "2026-07-06",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 83,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "54qBiIfK0Dw",
+          "title": "(T1 Guardian) Jayce Top vs Yorick (T1 Haetae) - KR Challenger Patch 26.17",
+          "rankClaim": "Challenger",
+          "patch": "26.17",
+          "durationSec": 1645,
+          "region": "KR",
+          "player": "Guardian",
+          "team": "T1",
+          "uploaded": "2026-08-29",
+          "moments": []
+        },
+        {
+          "videoId": "7z5LeDqzaBk",
+          "title": "T1 Doran Jayce vs Yorick [ TOP ] Korea Grandmaster 1763 LP | Patch 26.13",
+          "rankClaim": "Grandmaster",
+          "patch": "26.13",
+          "durationSec": 1341,
+          "region": "KR",
+          "player": "Doran",
+          "team": "T1",
+          "uploaded": "2026-06-28",
+          "moments": []
+        },
+        {
+          "videoId": "JVbttId_7gQ",
+          "title": "Faker Jayce vs Yorick Top - KR Grandmaster - Patch 25.8 Season 15",
+          "rankClaim": "Grandmaster",
+          "patch": "25.8",
+          "durationSec": 2401,
+          "region": "KR",
+          "player": "Faker",
+          "uploaded": "2025-04-26",
+          "moments": []
+        },
+        {
+          "videoId": "XNZcidXVYmQ",
+          "title": "T1 Faker Jayce vs Yorick [ TOP ] Patch 25.8 Korea Grandmaster ✅",
+          "rankClaim": "Grandmaster",
+          "patch": "25.8",
+          "durationSec": 2052,
+          "region": "KR",
+          "player": "Faker",
+          "team": "T1",
+          "uploaded": "2025-04-25",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 84,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "EV_DCFm37dE",
+          "title": "T1 Faker Jayce vs Akali [ TOP ] Ranked Master NA | Patch 26.21",
+          "rankClaim": "Master",
+          "patch": "26.21",
+          "durationSec": 1097,
+          "region": "NA",
+          "player": "Faker",
+          "team": "T1",
+          "uploaded": "2026-10-25",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 85,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "29zzpWREmiM",
+          "title": "T1 Faker Jayce vs Kennen [ TOP ] Patch 25.13 Ranked NA",
+          "rankClaim": "Master+",
+          "patch": "25.13",
+          "durationSec": 1248,
+          "region": "NA",
+          "player": "Faker",
+          "team": "T1",
+          "uploaded": "2025-07-01",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 86,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "Q0V8G1pJxLA",
+          "title": "Jayce vs Garen TOp - KR Challenger - Patch 25.24 Season 15",
+          "rankClaim": "Challenger",
+          "patch": "25.24",
+          "durationSec": 2146,
+          "region": "KR",
+          "uploaded": "2026-01-01",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 91,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "ugwrMzS5y8w",
+          "title": "(NIP Guwon) Jayce Jungle vs Talon - KR Challenger Patch 26.20",
+          "rankClaim": "Challenger",
+          "patch": "26.20",
+          "durationSec": 1810,
+          "region": "KR",
+          "player": "Guwon",
+          "team": "NIP",
+          "uploaded": "2026-10-18",
+          "result": "W",
+          "moments": [
+            {
+              "atSec": 23,
+              "label": "First Blood — Viktor kills Talon",
+              "kind": "kill"
+            },
+            {
+              "atSec": 472,
+              "label": "Jayce outplays Talon"
+            },
+            {
+              "atSec": 584,
+              "label": "Jayce solo kills Talon again",
+              "kind": "kill"
+            },
+            {
+              "atSec": 613,
+              "label": "Jayce outduels Vayne"
+            },
+            {
+              "atSec": 658,
+              "label": "Red takes 1st Dragon (Mountain)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 848,
+              "label": "Team fight (3 kills)",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1020,
+              "label": "Red takes 2nd Dragon (Chemtech)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1081,
+              "label": "Jayce takes down Talon"
+            },
+            {
+              "atSec": 1102,
+              "label": "Jayce picks off Galio"
+            },
+            {
+              "atSec": 1302,
+              "label": "Jayce eliminates Kai'Sa"
+            },
+            {
+              "atSec": 1337,
+              "label": "Red takes 3rd Dragon (Ocean)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1349,
+              "label": "Blue takes Baron",
+              "kind": "baron"
+            },
+            {
+              "atSec": 1403,
+              "label": "Jayce kills Alistar",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1569,
+              "label": "Jayce kills Vayne",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1643,
+              "label": "Blue takes 1st Dragon (Ocean)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1669,
+              "label": "Mid Inhibitor falls (Red)"
+            },
+            {
+              "atSec": 1736,
+              "label": "Team fight (3 kills)",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1797,
+              "label": "Viktor Double Kill",
+              "kind": "kill"
+            }
+          ]
+        },
+        {
+          "videoId": "BdMe4ZCg_lU",
+          "title": "Jayce Jungle vs Talon - KR Master Patch 26.19",
+          "rankClaim": "Master",
+          "patch": "26.19",
+          "durationSec": 1575,
+          "region": "KR",
+          "uploaded": "2026-10-03",
+          "moments": []
+        },
+        {
+          "videoId": "hx4ARhUbxoo",
+          "title": "Jayce vs Talon Jungle - KR Challenger - Patch 16.10 Season 16",
+          "rankClaim": "Challenger",
+          "patch": "26.10",
+          "durationSec": 1786,
+          "region": "KR",
+          "uploaded": "2026-05-18",
+          "moments": []
+        },
+        {
+          "videoId": "-Jrgt7hiOuU",
+          "title": "Jayce vs Talon Jungle [ Gen.G Canyon ] Korea Challenger Patch 26.10",
+          "rankClaim": "Challenger",
+          "patch": "26.10",
+          "durationSec": 1645,
+          "region": "KR",
+          "player": "Canyon",
+          "team": "Gen.G",
+          "uploaded": "2026-05-14",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 98,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "Eklg5vj1euE",
+          "title": "Jayce vs Shen Top - KR Challenger - Patch 16.09 Season 16",
+          "rankClaim": "Challenger",
+          "patch": "26.9",
+          "durationSec": 1681,
+          "region": "KR",
+          "uploaded": "2026-05-07",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 101,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "gLGIG9CKZ-s",
+          "title": "Jayce vs Xerath Mid - KR Challenger - Patch 25.5 Season 15",
+          "rankClaim": "Challenger",
+          "patch": "25.5",
+          "durationSec": 1891,
+          "region": "KR",
+          "uploaded": "2025-03-06",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 102,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "C81aY0O-4Eg",
+          "title": "Jayce Jungle vs Shyvana - EUW Master Patch 26.18",
+          "rankClaim": "Master",
+          "patch": "26.18",
+          "durationSec": 1777,
+          "region": "EUW",
+          "uploaded": "2026-09-20",
+          "moments": []
+        },
+        {
+          "videoId": "bMNjfS48Kbg",
+          "title": "(WBG Jiejie) Jayce Jungle vs Shyvana - KR Challenger Patch 26.12",
+          "rankClaim": "Challenger",
+          "patch": "26.12",
+          "durationSec": 1756,
+          "region": "KR",
+          "player": "Jiejie",
+          "team": "WBG",
+          "uploaded": "2026-06-26",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 103,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "JuPIUwcqiNc",
+          "title": "Jayce Mid vs Ahri - NA Grandmaster Patch 25.23",
+          "rankClaim": "Grandmaster",
+          "patch": "25.23",
+          "durationSec": 1760,
+          "region": "NA",
+          "uploaded": "2025-12-04",
+          "moments": []
+        },
+        {
+          "videoId": "WWbwRw3nBEE",
+          "title": "Jayce Mid vs Ahri - EUW Challenger Patch 25.11",
+          "rankClaim": "Challenger",
+          "patch": "25.11",
+          "durationSec": 2080,
+          "region": "EUW",
+          "uploaded": "2025-06-08",
+          "moments": []
+        },
+        {
+          "videoId": "X97rruSgh8k",
+          "title": "Jayce Mid vs Ahri - EUW Grandmaster Patch 25.07",
+          "rankClaim": "Grandmaster",
+          "patch": "25.7",
+          "durationSec": 1823,
+          "region": "EUW",
+          "uploaded": "2025-04-12",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 104,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "TPIpcEDJG_U",
+          "title": "T1 Oner Jayce vs Graves [ Jungle ] Korea Challenger 2084 LP | Patch 26.20",
+          "rankClaim": "Challenger",
+          "patch": "26.20",
+          "durationSec": 814,
+          "region": "KR",
+          "player": "Oner",
+          "team": "T1",
+          "uploaded": "2026-10-08",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 106,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "4b-ai4Oz7Js",
+          "title": "(DNS DuDu) Jayce Top vs Volibear - KR Grandmaster Patch 26.13",
+          "rankClaim": "Grandmaster",
+          "patch": "26.13",
+          "durationSec": 1465,
+          "region": "KR",
+          "player": "DNS DuDu",
+          "uploaded": "2026-06-27",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 107,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "5oX_DBA7yAk",
+          "title": "Jayce Jungle vs Rengar - KR Master Patch 26.01",
+          "rankClaim": "Master",
+          "patch": "26.1",
+          "durationSec": 1485,
+          "region": "KR",
+          "uploaded": "2026-01-11",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 256,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 354,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 438,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 504,
+              "label": "Hunt The Void Grubs",
+              "kind": "grubs"
+            },
+            {
+              "atSec": 528,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 544,
+              "label": "Hunt The Void Grubs",
+              "kind": "grubs"
+            },
+            {
+              "atSec": 669,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 769,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 907,
+              "label": "Hunt The Rift Herald",
+              "kind": "herald"
+            },
+            {
+              "atSec": 928,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1020,
+              "label": "Get a Triple Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1054,
+              "label": "Hunt The Dragon",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1143,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1160,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1170,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1266,
+              "label": "Hunt The Baron Nashor",
+              "kind": "baron"
+            },
+            {
+              "atSec": 1289,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1313,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1335,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1356,
+              "label": "Take down The Inhibitor"
+            },
+            {
+              "atSec": 1382,
+              "label": "Hunt The Dragon",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1423,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1452,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1474,
+              "label": "End credit"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 110,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "CflAPK6UPK8",
+          "title": "(KT Sero) Jayce Top vs Varus (DIG Photon) - KR Challenger Patch 26.21",
+          "rankClaim": "Challenger",
+          "patch": "26.21",
+          "durationSec": 1774,
+          "region": "KR",
+          "player": "Sero",
+          "team": "KT",
+          "uploaded": "2026-10-29",
+          "result": "W",
+          "moments": [
+            {
+              "atSec": 131,
+              "label": "Jayce catches Varus"
+            },
+            {
+              "atSec": 194,
+              "label": "Jayce outduels Varus again"
+            },
+            {
+              "atSec": 327,
+              "label": "Red takes 1st Dragon (Chemtech)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 442,
+              "label": "Jayce eliminates Varus"
+            },
+            {
+              "atSec": 499,
+              "label": "Syndra picks off Viego"
+            },
+            {
+              "atSec": 649,
+              "label": "Blue takes 1st Dragon (Infernal)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 963,
+              "label": "Blue takes 2nd Dragon (Ocean)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1011,
+              "label": "Karthus kills Brand",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1063,
+              "label": "Miss Fortune takes down Ezreal"
+            },
+            {
+              "atSec": 1319,
+              "label": "Blue takes 3rd Dragon (Ocean)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1339,
+              "label": "Team fight (3 kills)",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1366,
+              "label": "Red takes Baron",
+              "kind": "baron"
+            },
+            {
+              "atSec": 1373,
+              "label": "Syndra Triple Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1488,
+              "label": "Miss Fortune kills Zed",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1541,
+              "label": "Karthus kills Brand",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1630,
+              "label": "Red takes 2nd Dragon (Ocean)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1726,
+              "label": "Jayce kills Viego",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1748,
+              "label": "Mid Inhibitor falls (Red)"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 113,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "aly7DipUdDQ",
+          "title": "Jayce Jungle vs Sejuani - KR Challenger Patch 26.04",
+          "rankClaim": "Challenger",
+          "patch": "26.4",
+          "durationSec": 1611,
+          "region": "KR",
+          "uploaded": "2026-02-28",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 113,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "QeS4vyha6j4",
+          "title": "Jayce Mid vs Sejuani - KR Challenger Patch 25.24",
+          "rankClaim": "Challenger",
+          "patch": "25.24",
+          "durationSec": 1583,
+          "region": "KR",
+          "uploaded": "2025-12-19",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 114,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "Bc_sZ74upJ4",
+          "title": "Jayce vs Fiora Top - KR Master - Patch 25.11 Season 15",
+          "rankClaim": "Master",
+          "patch": "25.11",
+          "durationSec": 1306,
+          "region": "KR",
+          "uploaded": "2025-05-30",
+          "moments": []
+        },
+        {
+          "videoId": "vWlefz8-4Nk",
+          "title": "Jayce vs Fiora Top - KR Challenger - Patch 25.7 Season 15",
+          "rankClaim": "Challenger",
+          "patch": "25.7",
+          "durationSec": 1451,
+          "region": "KR",
+          "uploaded": "2025-04-15",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 122,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "3lbFfnq4yDQ",
+          "title": "(GZ 1Jiang) Jayce Top vs Darius - KR Challenger Patch 26.11",
+          "rankClaim": "Challenger",
+          "patch": "26.11",
+          "durationSec": 1586,
+          "region": "KR",
+          "player": "GZ 1Jiang",
+          "uploaded": "2026-05-30",
+          "moments": []
+        },
+        {
+          "videoId": "Y05SCfmpil0",
+          "title": "PLAYING VARIETY CHAMPIONS IS SO FUN",
+          "rankClaim": "Master+",
+          "patch": "26.10",
+          "durationSec": 23100,
+          "patchEstimated": true,
+          "player": "Alois",
+          "uploaded": "2026-05-27",
+          "format": "stream",
+          "cam": true,
+          "startSec": 13179,
+          "endSec": 16258,
+          "moments": []
+        },
+        {
+          "videoId": "tuWSYGppLb4",
+          "title": "Jayce Top vs Darius - EUW Grandmaster Patch 25.24",
+          "rankClaim": "Grandmaster",
+          "patch": "25.24",
+          "durationSec": 1569,
+          "region": "EUW",
+          "uploaded": "2026-01-03",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 131,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "jddlLxlLkrs",
+          "title": "Jayce Top vs Diana - KR Master Patch 26.08",
+          "rankClaim": "Master",
+          "patch": "26.8",
+          "durationSec": 1698,
+          "region": "KR",
+          "uploaded": "2026-04-17",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 133,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "1jT2eNQ0Th8",
+          "title": "Jayce Top vs Quinn - KR Challenger Patch 25.14",
+          "rankClaim": "Challenger",
+          "patch": "25.14",
+          "durationSec": 1736,
+          "region": "KR",
+          "uploaded": "2025-07-19",
+          "moments": []
+        },
+        {
+          "videoId": "JW-Ays0hP60",
+          "title": "Jayce Top vs Quinn - KR Challenger Patch 25.12",
+          "rankClaim": "Challenger",
+          "patch": "25.12",
+          "durationSec": 1820,
+          "region": "KR",
+          "uploaded": "2025-06-14",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 134,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "isTkR1uxvHo",
+          "title": "(DK ShowMaker) Jayce Mid vs Syndra - KR Challenger Patch 26.13",
+          "rankClaim": "Challenger",
+          "patch": "26.13",
+          "durationSec": 1483,
+          "region": "KR",
+          "player": "ShowMaker",
+          "team": "DK",
+          "uploaded": "2026-07-09",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 136,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "63dwJi8MLTY",
+          "title": "Jayce Mid vs Aurelion Sol - EUW Grandmaster Patch 25.12",
+          "rankClaim": "Grandmaster",
+          "patch": "25.12",
+          "durationSec": 1577,
+          "region": "EUW",
+          "uploaded": "2025-06-21",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 142,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "uHGO_lfLWa4",
+          "title": "Jayce Mid vs Zoe - KR Challenger Patch 26.08",
+          "rankClaim": "Challenger",
+          "patch": "26.8",
+          "durationSec": 1498,
+          "region": "KR",
+          "uploaded": "2026-04-25",
+          "moments": []
+        },
+        {
+          "videoId": "TpiasrH58Q8",
+          "title": "T1 Faker Jayce vs Zoe [ MID ] Patch 25.20 Korea Challenger 1113 LP",
+          "rankClaim": "Challenger",
+          "patch": "25.20",
+          "durationSec": 1074,
+          "region": "KR",
+          "player": "Faker",
+          "team": "T1",
+          "uploaded": "2025-10-09",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 143,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "qbaSZG07YMU",
+          "title": "(RNG Tangyuan) Jayce Jungle vs Zyra (Racoon) - KR Master Patch 26.13",
+          "rankClaim": "Master",
+          "patch": "26.13",
+          "durationSec": 1751,
+          "region": "KR",
+          "player": "Tangyuan",
+          "uploaded": "2026-07-15",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 150,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "y_ZuVh3T-gc",
+          "title": "Jayce vs Gnar Top - KR Challenger - Patch 16.07 Season 16",
+          "rankClaim": "Challenger",
+          "patch": "26.7",
+          "durationSec": 1501,
+          "region": "KR",
+          "uploaded": "2026-04-07",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 154,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "xPPBLEfscqc",
+          "title": "(DK Jaehyuk) Jayce Jungle vs Zac (OMG re0) - KR Challenger Patch 26.21",
+          "rankClaim": "Challenger",
+          "patch": "26.21",
+          "durationSec": 1794,
+          "region": "KR",
+          "player": "Jaehyuk",
+          "team": "DK",
+          "uploaded": "2026-11-01",
+          "result": "W",
+          "moments": [
+            {
+              "atSec": 343,
+              "label": "Blue takes 1st Dragon (Ocean)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 710,
+              "label": "Blue takes 2nd Dragon (Infernal)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 988,
+              "label": "Jayce takes down Zac"
+            },
+            {
+              "atSec": 1014,
+              "label": "Red takes 1st Dragon (Hextech)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1221,
+              "label": "Blue takes Baron",
+              "kind": "baron"
+            },
+            {
+              "atSec": 1305,
+              "label": "Ezreal kills Lucian",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1330,
+              "label": "Jayce eliminates Kai'Sa"
+            },
+            {
+              "atSec": 1340,
+              "label": "Red takes 2nd Dragon (Hextech)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1551,
+              "label": "Jayce Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1555,
+              "label": "Jayce Triple Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1598,
+              "label": "Red takes Baron",
+              "kind": "baron"
+            },
+            {
+              "atSec": 1645,
+              "label": "Jayce kills Nautilus",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1686,
+              "label": "Blue takes 3rd Dragon (Hextech)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1753,
+              "label": "Jayce Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1757,
+              "label": "Jayce Triple Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1760,
+              "label": "Jayce Quadra Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1770,
+              "label": "Mid Inhibitor falls (Blue)"
+            },
+            {
+              "atSec": 1776,
+              "label": "Ezreal kills Lucian",
+              "kind": "kill"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 157,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "JMdwafDR8t0",
+          "title": "Jayce Mid vs Yasuo - NA Challenger Patch 25.08",
+          "rankClaim": "Challenger",
+          "patch": "25.8",
+          "durationSec": 1903,
+          "region": "NA",
+          "uploaded": "2025-04-27",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 143,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 349,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 463,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 739,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 934,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 954,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1102,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1154,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1320,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1342,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1442,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1537,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1567,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1661,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1743,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1847,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1882,
+              "label": "End credit"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 163,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "jEQP8sSDE-M",
+          "title": "T1 Faker Jayce vs Taliyah [ MID ] Korea Master Patch 26.3",
+          "rankClaim": "Master",
+          "patch": "26.3",
+          "durationSec": 1406,
+          "region": "KR",
+          "player": "Faker",
+          "team": "T1",
+          "uploaded": "2026-02-07",
+          "moments": []
+        },
+        {
+          "videoId": "4BBPkE4I47Y",
+          "title": "Jayce vs Taliyah Mid - KR Challenger - Patch 25.15 Season 15",
+          "rankClaim": "Challenger",
+          "patch": "25.15",
+          "durationSec": 1811,
+          "region": "KR",
+          "uploaded": "2025-08-03",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 164,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "-VMm6Y5xnOg",
+          "title": "(GZ 1Jiang) Jayce Top vs Camille - KR Grandmaster Patch 26.12",
+          "rankClaim": "Grandmaster",
+          "patch": "26.12",
+          "durationSec": 1776,
+          "region": "KR",
+          "player": "GZ 1Jiang",
+          "uploaded": "2026-06-19",
+          "moments": []
+        },
+        {
+          "videoId": "5Hrh4urN3rw",
+          "title": "T1 Doran Jayce vs Camille [ TOP ] Korea Challenger Patch 25.10 ✅",
+          "rankClaim": "Challenger",
+          "patch": "25.10",
+          "durationSec": 1445,
+          "region": "KR",
+          "player": "Doran",
+          "team": "T1",
+          "uploaded": "2025-05-28",
+          "moments": []
+        },
+        {
+          "videoId": "mb-t14pPp6s",
+          "title": "Jayce vs Camille Top - EUW Challenger - Patch 25.9 Season 15",
+          "rankClaim": "Challenger",
+          "patch": "25.9",
+          "durationSec": 1546,
+          "region": "EUW",
+          "uploaded": "2025-05-02",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 201,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "mONlNoy24Qk",
+          "title": "Jayce Support vs Braum - KR Grandmaster Patch 25.13",
+          "rankClaim": "Grandmaster",
+          "patch": "25.13",
+          "durationSec": 1546,
+          "region": "KR",
+          "uploaded": "2025-07-12",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 234,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "3Fc3H8IKCVQ",
+          "title": "T1 Oner Jayce vs Viego [ Jungle ] Ranked Master NA | Patch 26.21",
+          "rankClaim": "Master",
+          "patch": "26.21",
+          "durationSec": 1374,
+          "region": "NA",
+          "player": "Oner",
+          "team": "T1",
+          "uploaded": "2026-10-22",
+          "moments": []
+        },
+        {
+          "videoId": "v8vkZrmRoGk",
+          "title": "Jayce Jungle vs Viego - EUW Challenger Patch 26.03",
+          "rankClaim": "Challenger",
+          "patch": "26.3",
+          "durationSec": 1441,
+          "region": "EUW",
+          "uploaded": "2026-02-13",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 234,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "yyhI3WTIn5o",
+          "title": "Jayce Top vs Viego - KR Grandmaster Patch 25.16",
+          "rankClaim": "Grandmaster",
+          "patch": "25.16",
+          "durationSec": 1679,
+          "region": "KR",
+          "uploaded": "2025-08-16",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 236,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "EZN7Ek43Y2A",
+          "title": "Jayce vs Lucian Top - KR Challenger - Patch 16.06 Season 16",
+          "rankClaim": "Challenger",
+          "patch": "26.6",
+          "durationSec": 2026,
+          "region": "KR",
+          "uploaded": "2026-03-30",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 238,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "J8tezlcwLJM",
+          "title": "Jayce Mid vs Zed - EUW Challenger Patch 26.06",
+          "rankClaim": "Challenger",
+          "patch": "26.6",
+          "durationSec": 1500,
+          "region": "EUW",
+          "uploaded": "2026-03-28",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 238,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "XoDglW_KDnM",
+          "title": "Jayce Top vs Zed - KR Master Patch 25.21",
+          "rankClaim": "Master",
+          "patch": "25.21",
+          "durationSec": 1721,
+          "region": "KR",
+          "uploaded": "2025-10-25",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 246,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "JmwXngO74V4",
+          "title": "Jayce Jungle vs Qiyana - KR Grandmaster Patch 26.17",
+          "rankClaim": "Grandmaster",
+          "patch": "26.17",
+          "durationSec": 1551,
+          "region": "KR",
+          "uploaded": "2026-09-05",
+          "moments": []
+        },
+        {
+          "videoId": "jG3nzo1NhHE",
+          "title": "(HLE Kanavi) Jayce Jungle vs Qiyana - KR Challenger Patch 26.16",
+          "rankClaim": "Challenger",
+          "patch": "26.16",
+          "durationSec": 1517,
+          "region": "KR",
+          "player": "Kanavi",
+          "team": "HLE",
+          "uploaded": "2026-08-15",
+          "moments": []
+        },
+        {
+          "videoId": "JuM2LRwZjI0",
+          "title": "Jayce vs Qiyana Jungle - KR Challenger - Patch 25.24 Season 15",
+          "rankClaim": "Challenger",
+          "patch": "25.24",
+          "durationSec": 1576,
+          "region": "KR",
+          "uploaded": "2026-01-05",
+          "moments": []
+        },
+        {
+          "videoId": "eRclRGhPUPM",
+          "title": "Jayce Jungle vs Qiyana - EUW Grandmaster Patch 25.24",
+          "rankClaim": "Grandmaster",
+          "patch": "25.24",
+          "durationSec": 1553,
+          "region": "EUW",
+          "uploaded": "2025-12-12",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 274,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 373,
+              "label": "Hunt The Dragon",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 438,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 527,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 594,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 719,
+              "label": "Hunt The Dragon",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 821,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 845,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 873,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 914,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 927,
+              "label": "Hunt The Rift Herald",
+              "kind": "herald"
+            },
+            {
+              "atSec": 973,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1003,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1097,
+              "label": "Hunt The Dragon",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1152,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1217,
+              "label": "Hunt The Atakhan"
+            },
+            {
+              "atSec": 1310,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1371,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1508,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1542,
+              "label": "End credit"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 254,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "aQsqdWLKVo0",
+          "title": "Jayce vs Vi Jungle [ Gen.G Canyon ] Korea Master 1207 LP | Patch 26.7",
+          "rankClaim": "Master",
+          "patch": "26.7",
+          "durationSec": 1530,
+          "region": "KR",
+          "player": "Canyon",
+          "team": "Gen.G",
+          "uploaded": "2026-04-08",
+          "moments": []
+        },
+        {
+          "videoId": "6RMbQBhRlkQ",
+          "title": "Jayce vs Vi Jungle - KR Challenger - Patch 16.05 Season 16",
+          "rankClaim": "Challenger",
+          "patch": "26.5",
+          "durationSec": 1591,
+          "region": "KR",
+          "uploaded": "2026-03-06",
+          "moments": []
+        },
+        {
+          "videoId": "1-H1G4wDXtU",
+          "title": "Jayce vs Vi Jungle - KR Challenger - Patch 26.02 Season 16",
+          "rankClaim": "Challenger",
+          "patch": "26.2",
+          "durationSec": 1786,
+          "region": "KR",
+          "uploaded": "2026-02-02",
+          "moments": []
+        },
+        {
+          "videoId": "cy9ZHA6PVQk",
+          "title": "T1 Oner Jayce vs Vi [ Jungle ] Korea Master Patch 26.2",
+          "rankClaim": "Master",
+          "patch": "26.2",
+          "durationSec": 1787,
+          "region": "KR",
+          "player": "Oner",
+          "team": "T1",
+          "uploaded": "2026-01-25",
+          "moments": []
+        },
+        {
+          "videoId": "vwre3YvZhHA",
+          "title": "Jayce vs Vi Jungle - KR Challenger - Patch 25.24 Season 15",
+          "rankClaim": "Challenger",
+          "patch": "25.24",
+          "durationSec": 1621,
+          "region": "KR",
+          "uploaded": "2025-12-24",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 266,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "JUC_64ZRP-U",
+          "title": "Jayce Jungle vs Aatrox - NA Challenger Patch 25.24",
+          "rankClaim": "Challenger",
+          "patch": "25.24",
+          "durationSec": 1491,
+          "region": "NA",
+          "uploaded": "2025-12-27",
+          "moments": []
+        },
+        {
+          "videoId": "9R2Lr4yvyrM",
+          "title": "Jayce vs Aatrox Jungle - KR Challenger - Patch 25.24 Season 15",
+          "rankClaim": "Challenger",
+          "patch": "25.24",
+          "durationSec": 1651,
+          "region": "KR",
+          "uploaded": "2025-12-05",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 266,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "fqv4RPkb_0M",
+          "title": "Jayce Top vs Aatrox - KR Grandmaster Patch 25.15",
+          "rankClaim": "Grandmaster",
+          "patch": "25.15",
+          "durationSec": 1559,
+          "region": "KR",
+          "uploaded": "2025-08-01",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 268,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "jvSwG76YFXE",
+          "title": "Jayce Mid vs Azir - KR Master Patch 25.24",
+          "rankClaim": "Master",
+          "patch": "25.24",
+          "durationSec": 1605,
+          "region": "KR",
+          "uploaded": "2026-01-08",
+          "moments": []
+        },
+        {
+          "videoId": "Rqg3R40gy1E",
+          "title": "Jayce Mid vs Azir - EUW Grandmaster Patch 25.09",
+          "rankClaim": "Grandmaster",
+          "patch": "25.9",
+          "durationSec": 1997,
+          "region": "EUW",
+          "uploaded": "2025-05-08",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 105,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 235,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 861,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 913,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1056,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1171,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1264,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1404,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1560,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1628,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1752,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1825,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1849,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1861,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1915,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1955,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1976,
+              "label": "End credit"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 412,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "kBpzzgxHROs",
+          "title": "Jayce Support vs Thresh - KR Master Patch 25.05",
+          "rankClaim": "Master",
+          "patch": "25.5",
+          "durationSec": 1884,
+          "region": "KR",
+          "uploaded": "2025-03-20",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 516,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "27nTnJUL2ZY",
+          "title": "Jayce Jungle vs Ornn - EUW Challenger Patch 25.23",
+          "rankClaim": "Challenger",
+          "patch": "25.23",
+          "durationSec": 1666,
+          "region": "EUW",
+          "uploaded": "2025-11-29",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 517,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "D9SpHJexUZw",
+          "title": "(T1 Oner) Jayce Jungle vs Sylas - KR Challenger Patch 26.15",
+          "rankClaim": "Challenger",
+          "patch": "26.15",
+          "durationSec": 1610,
+          "region": "KR",
+          "player": "Oner",
+          "team": "T1",
+          "uploaded": "2026-08-07",
+          "moments": []
+        },
+        {
+          "videoId": "ca4FUdPhdgY",
+          "title": "T1 Oner Jayce vs Sylas [ Jungle ] Korea Challenger 2277 LP | Patch 26.15",
+          "rankClaim": "Challenger",
+          "patch": "26.15",
+          "durationSec": 1475,
+          "region": "KR",
+          "player": "Oner",
+          "team": "T1",
+          "uploaded": "2026-08-05",
+          "moments": []
+        },
+        {
+          "videoId": "OFUxYfO-E6s",
+          "title": "(SSG Tianzhen) Jayce Jungle vs Sylas - KR Grandmaster Patch 26.14",
+          "rankClaim": "Grandmaster",
+          "patch": "26.14",
+          "durationSec": 1489,
+          "region": "KR",
+          "player": "SSG Tianzhen",
+          "uploaded": "2026-07-17",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 517,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "E-nHdwQMh9k",
+          "title": "Jayce Mid vs Sylas - EUW Challenger Patch 25.22",
+          "rankClaim": "Challenger",
+          "patch": "25.22",
+          "durationSec": 1671,
+          "region": "EUW",
+          "uploaded": "2025-11-14",
+          "moments": []
+        },
+        {
+          "videoId": "G9lyLlJIvh8",
+          "title": "Jayce Mid vs Sylas - NA Grandmaster Patch 25.05",
+          "rankClaim": "Grandmaster",
+          "patch": "25.5",
+          "durationSec": 1599,
+          "region": "NA",
+          "uploaded": "2025-03-13",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 241,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 292,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 694,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 789,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 857,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 882,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1081,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1113,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1125,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1159,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1261,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1326,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1391,
+              "label": "Take down The Inhibitor"
+            },
+            {
+              "atSec": 1404,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1431,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1445,
+              "label": "Take down The Inhibitor"
+            },
+            {
+              "atSec": 1456,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1530,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1553,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1563,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1578,
+              "label": "End credit"
+            }
+          ]
+        },
+        {
+          "videoId": "VjbADSl4V3k",
+          "title": "Jayce Mid vs Sylas - KR Challenger Patch 25.04",
+          "rankClaim": "Challenger",
+          "patch": "25.4",
+          "durationSec": 1806,
+          "region": "KR",
+          "uploaded": "2025-02-24",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 777,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "Ic0btwZCGPg",
+          "title": "Jayce Mid vs Yone - EUW Challenger Patch 25.18",
+          "rankClaim": "Challenger",
+          "patch": "25.18",
+          "durationSec": 1589,
+          "region": "EUW",
+          "uploaded": "2025-09-20",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 777,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "FT_il_pD-VU",
+          "title": "Jayce Top vs Yone - KR Grandmaster Patch 25.06",
+          "rankClaim": "Grandmaster",
+          "patch": "25.6",
+          "durationSec": 1531,
+          "region": "KR",
+          "uploaded": "2025-03-22",
+          "moments": []
+        },
+        {
+          "videoId": "R1Zw4VgL3NE",
+          "title": "Jayce vs Yone Top - KR Grandmaster - Patch 25.4 Season 15",
+          "rankClaim": "Grandmaster",
+          "patch": "25.4",
+          "durationSec": 1750,
+          "region": "KR",
+          "uploaded": "2025-03-03",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 799,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "vWZ86SSartc",
+          "title": "Jayce vs Ambessa Jungle [ Gen.G Canyon ] Korea Grandmaster 1337 LP | Patch 26.7",
+          "rankClaim": "Grandmaster",
+          "patch": "26.7",
+          "durationSec": 1772,
+          "region": "KR",
+          "player": "Canyon",
+          "team": "Gen.G",
+          "uploaded": "2026-04-12",
+          "moments": []
+        },
+        {
+          "videoId": "gYQHS1VaYdg",
+          "title": "Jayce Jungle vs Ambessa - KR Challenger Patch 26.02",
+          "rankClaim": "Challenger",
+          "patch": "26.2",
+          "durationSec": 1565,
+          "region": "KR",
+          "uploaded": "2026-01-23",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 178,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 442,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 486,
+              "label": "Hunt The Dragon",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 510,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 663,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 718,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 794,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 831,
+              "label": "Hunt The Dragon",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 912,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 950,
+              "label": "Hunt The Rift Herald",
+              "kind": "herald"
+            },
+            {
+              "atSec": 987,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1044,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1093,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1115,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1228,
+              "label": "Hunt The Dragon",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1263,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1357,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1494,
+              "label": "Hunt The Baron Nashor",
+              "kind": "baron"
+            },
+            {
+              "atSec": 1527,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1554,
+              "label": "End credit"
+            }
+          ]
+        },
+        {
+          "videoId": "ug3Q8r6YPgc",
+          "title": "T1 Oner Jayce vs Ambessa [ Jungle ] Korea Master Patch 26.1",
+          "rankClaim": "Master",
+          "patch": "26.1",
+          "durationSec": 1411,
+          "region": "KR",
+          "player": "Oner",
+          "team": "T1",
+          "uploaded": "2026-01-16",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 799,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "xTqPCnQejuE",
+          "title": "Jayce vs Ambessa Mid - KR Grandmaster - Patch 25.4 Season 15",
+          "rankClaim": "Grandmaster",
+          "patch": "25.4",
+          "durationSec": 2056,
+          "region": "KR",
+          "uploaded": "2025-03-01",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 799,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "_jbDzlVaSzQ",
+          "title": "Bin Jayce vs Ambessa Top - NA Grandmaster - Patch 16.21 Season 16",
+          "rankClaim": "Grandmaster",
+          "patch": "26.21",
+          "durationSec": 1531,
+          "region": "NA",
+          "player": "Bin",
+          "uploaded": "2026-11-04",
+          "moments": []
+        },
+        {
+          "videoId": "L6fh0rSzfdg",
+          "title": "(DK Career) Jayce Top vs Ambessa (Jzr) - KR Challenger Patch 26.16",
+          "rankClaim": "Challenger",
+          "patch": "26.16",
+          "durationSec": 1683,
+          "region": "KR",
+          "player": "Career",
+          "team": "DK",
+          "uploaded": "2026-08-21",
+          "moments": []
+        },
+        {
+          "videoId": "tVCXznToPwQ",
+          "title": "Jayce vs Ambessa Top - KR Challenger - Patch 16.07 Season 16",
+          "rankClaim": "Challenger",
+          "patch": "26.7",
+          "durationSec": 2326,
+          "region": "KR",
+          "uploaded": "2026-04-03",
+          "moments": []
+        },
+        {
+          "videoId": "CMyXKsglfOA",
+          "title": "HLE Zeus Jayce vs Ambessa [ TOP ] Patch 25.24 Korea Master",
+          "rankClaim": "Master",
+          "patch": "25.24",
+          "durationSec": 1314,
+          "region": "KR",
+          "player": "Zeus",
+          "team": "HLE",
+          "uploaded": "2025-12-07",
+          "moments": []
+        },
+        {
+          "videoId": "Iq366gjf3J0",
+          "title": "Jayce Top vs Ambessa - KR Grandmaster Patch 25.20",
+          "rankClaim": "Grandmaster",
+          "patch": "25.20",
+          "durationSec": 1545,
+          "region": "KR",
+          "uploaded": "2025-10-10",
+          "moments": []
+        },
+        {
+          "videoId": "rCdTez2PHPk",
+          "title": "Jayce vs Ambessa Top - KR Challenger - Patch 25.16 Season 15",
+          "rankClaim": "Challenger",
+          "patch": "25.16",
+          "durationSec": 1721,
+          "region": "KR",
+          "uploaded": "2025-08-18",
+          "moments": []
+        },
+        {
+          "videoId": "_y2c_B7w1NQ",
+          "title": "HLE Zeus Jayce vs Ambessa [ TOP ] Patch 25.1 Korea Grandmaster ✅",
+          "rankClaim": "Grandmaster",
+          "patch": "25.1",
+          "durationSec": 1312,
+          "region": "KR",
+          "player": "Zeus",
+          "team": "HLE",
+          "uploaded": "2025-01-22",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 800,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "q2u3AKOdWGk",
+          "title": "Jayce Mid vs Mel - EUW Challenger Patch 25.20",
+          "rankClaim": "Challenger",
+          "patch": "25.20",
+          "durationSec": 1687,
+          "region": "EUW",
+          "uploaded": "2025-10-18",
+          "moments": []
+        },
+        {
+          "videoId": "cv-6q6hB3bc",
+          "title": "Jayce vs Mel Mid - KR Grandmaster - Patch 15.4 Season 15",
+          "rankClaim": "Grandmaster",
+          "patch": "25.4",
+          "durationSec": 1981,
+          "region": "KR",
+          "uploaded": "2025-02-26",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 887,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "Rg8a0WBsQws",
+          "title": "Jayce vs Gwen Top - EUW Grandmaster - Patch 16.03 Season 16",
+          "rankClaim": "Grandmaster",
+          "patch": "26.3",
+          "durationSec": 1501,
+          "region": "EUW",
+          "uploaded": "2026-02-14",
+          "moments": []
+        },
+        {
+          "videoId": "vqUT8wsMBy8",
+          "title": "T1 Doran Jayce vs Gwen [ TOP ] Korea Grandmaster Patch 25.17",
+          "rankClaim": "Grandmaster",
+          "patch": "25.17",
+          "durationSec": 1649,
+          "region": "KR",
+          "player": "Doran",
+          "team": "T1",
+          "uploaded": "2025-08-30",
+          "moments": []
+        },
+        {
+          "videoId": "SA1DmNsym14",
+          "title": "Jayce Top vs Gwen - KR Challenger Patch 25.13",
+          "rankClaim": "Challenger",
+          "patch": "25.13",
+          "durationSec": 1551,
+          "region": "KR",
+          "uploaded": "2025-06-29",
+          "moments": []
+        },
+        {
+          "videoId": "cbhO5cWiyP8",
+          "title": "Jayce Top vs Gwen - KR Challenger Patch 25.07",
+          "rankClaim": "Challenger",
+          "patch": "25.7",
+          "durationSec": 1527,
+          "region": "KR",
+          "uploaded": "2025-04-05",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 893,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "UUBPnvUY-Wk",
+          "title": "Jayce Mid vs Aurora - EUW Grandmaster Patch 25.10",
+          "rankClaim": "Grandmaster",
+          "patch": "25.10",
+          "durationSec": 1735,
+          "region": "EUW",
+          "uploaded": "2025-05-24",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 893,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "Kwt2Xzqnb6M",
+          "title": "Jayce Top vs Aurora - EUW Challenger Patch 26.07",
+          "rankClaim": "Challenger",
+          "patch": "26.7",
+          "durationSec": 1697,
+          "region": "EUW",
+          "uploaded": "2026-04-04",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 568,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 657,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 738,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1085,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1248,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1263,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1285,
+              "label": "Hunt The Baron Nashor",
+              "kind": "baron"
+            },
+            {
+              "atSec": 1353,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1374,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1440,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1526,
+              "label": "Take down The Inhibitor"
+            },
+            {
+              "atSec": 1616,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1639,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1660,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1675,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1686,
+              "label": "End credit"
+            }
+          ]
+        },
+        {
+          "videoId": "bHs3nyp6uJA",
+          "title": "Jayce vs Aurora Top - KR Challenger - Patch 25.13 Season 15",
+          "rankClaim": "Challenger",
+          "patch": "25.13",
+          "durationSec": 1801,
+          "region": "KR",
+          "uploaded": "2025-07-11",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 897,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "hXzKkczqUw4",
+          "title": "Jayce Mid vs K'Sante - EUW Challenger Patch 25.17",
+          "rankClaim": "Challenger",
+          "patch": "25.17",
+          "durationSec": 1708,
+          "region": "EUW",
+          "uploaded": "2025-09-05",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 897,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "nk6GQgQ77XU",
+          "title": "Jayce Top vs K'Sante - KR Challenger Patch 25.05",
+          "rankClaim": "Challenger",
+          "patch": "25.5",
+          "durationSec": 1762,
+          "region": "KR",
+          "uploaded": "2025-03-07",
+          "moments": []
+        },
+        {
+          "videoId": "5xf7DcAiPLQ",
+          "title": "Jayce vs K'Sante Top - KR Challenger - Patch 15.4 Season 15",
+          "rankClaim": "Challenger",
+          "patch": "25.4",
+          "durationSec": 1631,
+          "region": "KR",
+          "uploaded": "2025-02-28",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 904,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "rvYd3MSAt98",
+          "title": "Jayce Top vs Zaahen - KR Challenger Patch 26.04",
+          "rankClaim": "Challenger",
+          "patch": "26.4",
+          "durationSec": 1640,
+          "region": "KR",
+          "uploaded": "2026-02-21",
+          "moments": []
+        },
+        {
+          "videoId": "Sr5N1d8hdDw",
+          "title": "Jayce Top vs Zaahen - EUW Master Patch 26.02",
+          "rankClaim": "Master",
+          "patch": "26.2",
+          "durationSec": 1574,
+          "region": "EUW",
+          "uploaded": "2026-02-04",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 145,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 212,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 463,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 494,
+              "label": "Hunt The Void Grubs",
+              "kind": "grubs"
+            },
+            {
+              "atSec": 533,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 573,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 660,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 710,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 762,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 789,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 838,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 887,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 996,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1278,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1430,
+              "label": "Get a Triple Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1513,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1535,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1563,
+              "label": "End credit"
+            }
+          ]
+        },
+        {
+          "videoId": "VaWAWbGs54M",
+          "title": "Jayce vs Zaahen Top - NA Challenger - Patch 25.24 Season 15",
+          "rankClaim": "Challenger",
+          "patch": "25.24",
+          "durationSec": 1861,
+          "region": "NA",
+          "uploaded": "2025-12-08",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 910,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "kHmBpFsLFbw",
+          "title": "Jayce Mid vs Hwei - KR Challenger Patch 26.09",
+          "rankClaim": "Challenger",
+          "patch": "26.9",
+          "durationSec": 1694,
+          "region": "KR",
+          "uploaded": "2026-05-02",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 950,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "iGpEwvMKZPk",
+          "title": "T1 Oner Jayce vs Naafiri [ Jungle ] Korea Challenger 2231 LP | Patch 26.13",
+          "rankClaim": "Challenger",
+          "patch": "26.13",
+          "durationSec": 1716,
+          "region": "KR",
+          "player": "Oner",
+          "team": "T1",
+          "uploaded": "2026-07-02",
+          "moments": []
+        }
+      ]
+    }
+  ]
+}

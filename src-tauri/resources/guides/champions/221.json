@@ -1,0 +1,4444 @@
+{
+  "schema": 1,
+  "champion": 221,
+  "generatedAt": "2026-11-07T13:25:14.592Z",
+  "guides": [
+    {
+      "champion": 221,
+      "enemy": 202,
+      "lane": "adc",
+      "patch": "26.21",
+      "reviewed": false,
+      "difficulty": "Medium",
+      "favoredWhen": "Force extended trades; never let him keep it short or bully you out early.",
+      "keyTips": [
+        {
+          "text": "You win extended trades. He must avoid the 1v1, so chase every trade past his comfort point instead of letting him hit and leave.",
+          "scope": "pair",
+          "sourceIds": [
+            "yunfang"
+          ],
+          "patch": "26.20"
+        },
+        {
+          "text": "He bullies the lane early. Respect his fourth-shot poke while farming, and answer only with full combos rather than standing trades.",
+          "scope": "pair",
+          "sourceIds": [
+            "antiwis"
+          ],
+          "patch": "26.21",
+          "abilityKeys": [
+            {
+              "champion": 202,
+              "key": "Q"
+            }
+          ]
+        },
+        {
+          "text": "Scaling is roughly even. Neither side gets a free clock, so the lane winner keeps the edge — do not hand him an early lead for nothing.",
+          "scope": "pair",
+          "sourceIds": [
+            "antiwis"
+          ],
+          "patch": "26.21"
+        }
+      ],
+      "enemyTips": {
+        "early-lane": [
+          {
+            "text": "Jhin loads his fourth shot on a minion and holds it to zone you off the wave. Trade while it is spent and give ground while it is held.",
+            "scope": "enemy",
+            "sourceIds": [
+              "omibro"
+            ],
+            "patch": "26.19",
+            "abilityKeys": [
+              {
+                "champion": 202,
+                "key": "Q"
+              }
+            ]
+          },
+          {
+            "text": "Deadly Flourish is a follow-up for support crowd control, not dry poke. A wasted W is your window to walk up.",
+            "scope": "enemy",
+            "sourceIds": [
+              "omibro"
+            ],
+            "patch": "26.19",
+            "abilityKeys": [
+              {
+                "champion": 202,
+                "key": "W"
+              }
+            ]
+          }
+        ],
+        "win-condition": [
+          {
+            "text": "A landed Deadly Flourish sets up a guaranteed first Curtain Call shot when fired instantly. Break vision lines and stay mobile once it connects.",
+            "scope": "enemy",
+            "sourceIds": [
+              "omibro"
+            ],
+            "patch": "26.19",
+            "abilityKeys": [
+              {
+                "champion": 202,
+                "key": "W"
+              },
+              {
+                "champion": 202,
+                "key": "R"
+              }
+            ]
+          }
+        ]
+      },
+      "sections": {
+        "overview": {
+          "tips": []
+        },
+        "early-lane": {
+          "tips": [
+            {
+              "text": "Trade while his fourth shot is spent and give ground while he holds it. The loaded shot zones you off the wave even without firing.",
+              "scope": "pair",
+              "sourceIds": [
+                "omibro"
+              ],
+              "patch": "26.21",
+              "abilityKeys": [
+                {
+                  "champion": 202,
+                  "key": "Q"
+                }
+              ]
+            },
+            {
+              "text": "Walk up when he wastes Deadly Flourish ({cd:202:W}) dry. Without the follow-up root he has no answer to your slide.",
+              "scope": "pair",
+              "sourceIds": [
+                "omibro"
+              ],
+              "patch": "26.21",
+              "abilityKeys": [
+                {
+                  "champion": 202,
+                  "key": "W"
+                }
+              ]
+            },
+            {
+              "text": "Stick to him with Spark Surge ({cd:221:E}) once the trade starts. Your mobility turns his short-trade plan into the extended fight you win.",
+              "scope": "pair",
+              "sourceIds": [
+                "yunfang"
+              ],
+              "patch": "26.20",
+              "abilityKeys": [
+                {
+                  "champion": 221,
+                  "key": "E"
+                }
+              ]
+            }
+          ]
+        },
+        "mid-lane": {
+          "tips": [
+            {
+              "text": "Meet his objective groups and force the duel. His W-plus-R plan needs range and setup; your extended damage inside it wins.",
+              "scope": "pair",
+              "sourceIds": [
+                "yunfang"
+              ],
+              "patch": "26.20",
+              "abilityKeys": [
+                {
+                  "champion": 202,
+                  "key": "W"
+                },
+                {
+                  "champion": 202,
+                  "key": "R"
+                }
+              ]
+            },
+            {
+              "text": "Sweep the objective flanks for his traps and fog picks. Denied vision denies his casts, and he cannot set up what he cannot see.",
+              "scope": "pair",
+              "sourceIds": [
+                "omibro"
+              ],
+              "patch": "26.21",
+              "abilityKeys": [
+                {
+                  "champion": 202,
+                  "key": "E"
+                }
+              ]
+            }
+          ]
+        },
+        "win-condition": {
+          "tips": [
+            {
+              "text": "Kite forward through fights, not away. Every extra second of the extended trade favors you over his short-trade plan.",
+              "scope": "pair",
+              "sourceIds": [
+                "yunfang"
+              ],
+              "patch": "26.20",
+              "abilityKeys": [
+                {
+                  "champion": 221,
+                  "key": "E"
+                }
+              ]
+            },
+            {
+              "text": "Break vision and stay mobile once his root connects. The instant Curtain Call shot after it is guaranteed unless you are already moving.",
+              "scope": "pair",
+              "sourceIds": [
+                "omibro"
+              ],
+              "patch": "26.21",
+              "abilityKeys": [
+                {
+                  "champion": 202,
+                  "key": "W"
+                },
+                {
+                  "champion": 202,
+                  "key": "R"
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "itemization": [
+        {
+          "text": "Build to extend fights. Your win is the long mobile duel he refuses, so spend for sustained damage rather than poke.",
+          "scope": "pair",
+          "sourceIds": [
+            "yunfang"
+          ],
+          "patch": "26.20"
+        }
+      ],
+      "sources": [
+        {
+          "id": "antiwis",
+          "author": "Antiwis",
+          "rankClaim": "Diamond (profile badge; title claims Master Elo OTP) · Jhin main",
+          "rank": "diamond",
+          "url": "https://www.mobafire.com/league-of-legends/build/26-21-jhin-guide-real-updates-every-patch-master-elo-otp-633981",
+          "kind": "mobafire"
+        },
+        {
+          "id": "yunfang",
+          "author": "Yunfang",
+          "rankClaim": "Diamond (profile badge; guide text claims Master ADC main) · Jhin main",
+          "rank": "diamond",
+          "url": "https://www.mobafire.com/league-of-legends/build/s2026-20-easy-to-read-simple-1v9-live-ama-full-guide-updated-650175",
+          "kind": "mobafire"
+        },
+        {
+          "id": "omibro",
+          "author": "Omibro",
+          "rankClaim": "Challenger ADC and coach · Jhin main",
+          "rank": "challenger",
+          "url": "https://www.youtube.com/watch?v=8Ln7EC-ryxo&t=3259s",
+          "kind": "youtube"
+        }
+      ]
+    }
+  ],
+  "general": [
+    {
+      "champion": 221,
+      "lane": "adc",
+      "patch": "26.21",
+      "reviewed": false,
+      "keyTips": [
+        {
+          "text": "Treat Zeri as weak before level six: stay alive, farm, and take only short trades with empowered W or passive attacks instead of extended fights, rating level one as especially weak and levels two and three as only a small improvement.",
+          "scope": "champion",
+          "sourceIds": [
+            "junniseoul"
+          ],
+          "abilityKeys": [
+            {
+              "champion": 221,
+              "key": "W"
+            }
+          ]
+        },
+        {
+          "text": "Preserve E for escaping or repositioning rather than spending the dash for a small damage increase, and use wall angles to open movement and W paths.",
+          "scope": "champion",
+          "sourceIds": [
+            "junniseoul"
+          ],
+          "abilityKeys": [
+            {
+              "champion": 221,
+              "key": "E"
+            },
+            {
+              "champion": 221,
+              "key": "W"
+            }
+          ]
+        },
+        {
+          "text": "After lane, join teamfights and deal damage instead of farming a wave through an important breaking fight, positioning safely while keeping E available for the moment the fight shifts.",
+          "scope": "champion",
+          "sourceIds": [
+            "junniseoul"
+          ],
+          "abilityKeys": [
+            {
+              "champion": 221,
+              "key": "E"
+            }
+          ]
+        }
+      ],
+      "sections": {
+        "overview": {
+          "tips": []
+        },
+        "early-lane": {
+          "tips": [
+            {
+              "text": "Spend W once per wave for waveclear and save further casts for an enemy misposition or allied crowd control that creates a clear follow-up.",
+              "scope": "champion",
+              "sourceIds": [
+                "junniseoul"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 221,
+                  "key": "W"
+                }
+              ]
+            },
+            {
+              "text": "Open Doran's Bow by default, switching to Doran's Shield when lane priority is unavailable or the lane is going poorly.",
+              "scope": "champion",
+              "sourceIds": [
+                "junniseoul"
+              ],
+              "itemIds": [
+                1086,
+                1054
+              ]
+            },
+            {
+              "text": "Run Conqueror with Triumph, Legend: Alacrity, Cut Down, Celerity, and Gathering Storm, with attack speed, movement speed, and scaling health shards.",
+              "scope": "champion",
+              "sourceIds": [
+                "junniseoul"
+              ]
+            }
+          ]
+        },
+        "mid-lane": {
+          "tips": [
+            {
+              "text": "Play around walls: they create better E repositioning and W angles, so use E sparingly and keep it ready as the fight's position changes.",
+              "scope": "champion",
+              "sourceIds": [
+                "junniseoul"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 221,
+                  "key": "E"
+                },
+                {
+                  "champion": 221,
+                  "key": "W"
+                }
+              ]
+            },
+            {
+              "text": "Treat Zeri as burst-oriented in the early and mid game, transitioning toward sustained hypercarry damage as she scales.",
+              "scope": "champion",
+              "sourceIds": [
+                "junniseoul"
+              ]
+            }
+          ]
+        },
+        "win-condition": {
+          "tips": [
+            {
+              "text": "Farm through the weak pre-six lane, use the level-six ultimate window to contest fights, then scale into sustained teamfight damage with the crit build.",
+              "scope": "champion",
+              "sourceIds": [
+                "junniseoul"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 221,
+                  "key": "R"
+                }
+              ]
+            },
+            {
+              "text": "Keep wall routes for mobility and attack angles, holding E so Zeri can adjust position instead of getting trapped after committing.",
+              "scope": "champion",
+              "sourceIds": [
+                "junniseoul"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 221,
+                  "key": "E"
+                }
+              ]
+            },
+            {
+              "text": "Show up to teamfights and maintain damage uptime, choosing safety and useful positioning over an isolated duel.",
+              "scope": "champion",
+              "sourceIds": [
+                "junniseoul"
+              ]
+            }
+          ]
+        }
+      },
+      "itemization": [
+        {
+          "text": "Build Doran's Bow into Yun Tal Wildarrows, Infinity Edge, Lord Dominik's Regards, Hexoptics C44, and Berserker's Greaves, with Endless Hunger, Bloodthirster, and Guardian Angel as fifth- or sixth-slot options.",
+          "scope": "champion",
+          "sourceIds": [
+            "junniseoul"
+          ],
+          "itemIds": [
+            1086,
+            3032,
+            3031,
+            3036,
+            2523,
+            3006,
+            2517,
+            3072,
+            3026
+          ]
+        },
+        {
+          "text": "Take the safer alternative of Yun Tal Wildarrows, Runaan's Hurricane, Infinity Edge, and Gluttonous Greaves before situational armor penetration and late picks.",
+          "scope": "champion",
+          "sourceIds": [
+            "junniseoul"
+          ],
+          "itemIds": [
+            3032,
+            3085,
+            3031,
+            3008
+          ]
+        },
+        {
+          "text": "Keep Mortal Reminder for armor penetration, Mercurial Scimitar for cleanse, Edge of Night or Serpent's Fang by game, and Zhonya's Hourglass, Maw of Malmortius, Death's Dance, or Spirit Visage as defensive options.",
+          "scope": "champion",
+          "sourceIds": [
+            "junniseoul"
+          ],
+          "itemIds": [
+            3033,
+            3139,
+            3814,
+            6695,
+            3157,
+            3156,
+            6333,
+            3065
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "id": "junniseoul",
+          "author": "junniseoul",
+          "rankClaim": "Master (profile badge);",
+          "rank": "master",
+          "url": "https://www.mobafire.com/league-of-legends/build/26-18-1-zeri-na-top-3-global-junniseoul-648904",
+          "kind": "mobafire"
+        }
+      ]
+    }
+  ],
+  "vods": [
+    {
+      "lane": "adc",
+      "videos": [
+        {
+          "videoId": "H_uxW5ZhafE",
+          "title": "Gumayusi : Late Game His ZERI is so DAM STRONG - Engsub ( Zeri vs Ez )",
+          "rankClaim": "Master+",
+          "patch": "26.10",
+          "durationSec": 905,
+          "patchEstimated": true,
+          "player": "Gumayusi",
+          "uploaded": "2026-05-18",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "qnci9lom58w",
+          "title": "Gumayusi : His ZERI Mechanic is so AGGRESSIVE - Engsub",
+          "rankClaim": "Master+",
+          "patch": "26.6",
+          "durationSec": 875,
+          "patchEstimated": true,
+          "player": "Gumayusi",
+          "uploaded": "2026-03-18",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "G__YjZU1tus",
+          "title": "Uzi : His Zeri Mechanic is DEVASTATING CN Super Server - Engsub",
+          "rankClaim": "Master+",
+          "patch": "26.5",
+          "durationSec": 893,
+          "patchEstimated": true,
+          "player": "Uzi",
+          "uploaded": "2026-03-15",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "SmNpQoATg48",
+          "title": "Gumayusi Zeri : DOMINATING KR HighElo in Just 15 Min - Engsub",
+          "rankClaim": "Master+",
+          "patch": "26.4",
+          "durationSec": 703,
+          "region": "KR",
+          "patchEstimated": true,
+          "player": "Gumayusi",
+          "uploaded": "2026-03-01",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "QQhQ0jxAhzU",
+          "title": "Smash : His ZERI Damage is INSANITY - Engsub",
+          "rankClaim": "Master+",
+          "patch": "26.3",
+          "durationSec": 1080,
+          "patchEstimated": true,
+          "player": "Smash",
+          "uploaded": "2026-02-06",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "-289DRbGSXA",
+          "title": "Smash : His ZERI Damage is ways too NUT - Engsub",
+          "rankClaim": "Master+",
+          "patch": "26.3",
+          "durationSec": 703,
+          "patchEstimated": true,
+          "player": "Smash",
+          "uploaded": "2026-02-05",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "p9nWmm5DQP8",
+          "title": "Smash : His Zeri Mechanic is so Aggressive - Engsub",
+          "rankClaim": "Master+",
+          "patch": "26.2",
+          "durationSec": 1174,
+          "patchEstimated": true,
+          "player": "Smash",
+          "uploaded": "2026-01-24",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "QG7M6ST2eGE",
+          "title": "DK.Smash : His ZERI just One Shot Jiwoo with this NEW ITEM",
+          "rankClaim": "Master+",
+          "patch": "26.1",
+          "durationSec": 945,
+          "patchEstimated": true,
+          "player": "Smash",
+          "uploaded": "2026-01-09",
+          "format": "stream",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 1,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "4GOArAdz0_k",
+          "title": "Zeri Mid vs Annie - NA Challenger Patch 25.16",
+          "rankClaim": "Challenger",
+          "patch": "25.16",
+          "durationSec": 1642,
+          "region": "NA",
+          "uploaded": "2025-08-25",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 3,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "HRSyy0C7s_M",
+          "title": "Zeri Mid vs Galio - KR Master Patch 26.10",
+          "rankClaim": "Master",
+          "patch": "26.10",
+          "durationSec": 1885,
+          "region": "KR",
+          "uploaded": "2026-05-18",
+          "moments": []
+        },
+        {
+          "videoId": "hCKsiYnHtVs",
+          "title": "Zeri Mid vs Galio - KR Grandmaster Patch 25.14",
+          "rankClaim": "Grandmaster",
+          "patch": "25.14",
+          "durationSec": 1750,
+          "region": "KR",
+          "uploaded": "2025-07-29",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 11,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "ezHVyBf7_54",
+          "title": "Zeri Jungle vs Master Yi - NA Grandmaster Patch 25.22",
+          "rankClaim": "Grandmaster",
+          "patch": "25.22",
+          "durationSec": 1778,
+          "region": "NA",
+          "uploaded": "2025-11-21",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 13,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "DlJYHmXeAPA",
+          "title": "Zeri Mid vs Ryze - KR Grandmaster Patch 25.24",
+          "rankClaim": "Grandmaster",
+          "patch": "25.24",
+          "durationSec": 1612,
+          "region": "KR",
+          "uploaded": "2026-01-01",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 15,
+      "lane": "adc",
+      "videos": [
+        {
+          "videoId": "7ZvTTn07dPA",
+          "title": "Rank 1 Zeri : His Spacing is Absolutely Disgusting - Engsub ( Sivir, Xayah )",
+          "rankClaim": "Master+",
+          "patch": "26.21",
+          "durationSec": 1551,
+          "patchEstimated": true,
+          "uploaded": "2026-10-31",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "bvAr5vu0UUU",
+          "title": "\"Jz' 2000LP Zeri : This Dude is on Beast Mode \" His AOE Damage is Disgusting \" ( vs Sivir, Lucian )",
+          "rankClaim": "Master+",
+          "patch": "26.17",
+          "durationSec": 1749,
+          "patchEstimated": true,
+          "player": "Jz",
+          "uploaded": "2026-08-30",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "Y7G_MlN1Umk",
+          "title": "Zeri ADC vs Sivir - KR Master Patch 26.08",
+          "rankClaim": "Master",
+          "patch": "26.8",
+          "durationSec": 1877,
+          "region": "KR",
+          "uploaded": "2026-04-19",
+          "moments": []
+        },
+        {
+          "videoId": "qUEB1Y9IZzQ",
+          "title": "Zeri ADC vs Sivir - KR Grandmaster Patch 26.03",
+          "rankClaim": "Grandmaster",
+          "patch": "26.3",
+          "durationSec": 1505,
+          "region": "KR",
+          "uploaded": "2026-02-11",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 132,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 197,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 347,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 794,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 981,
+              "label": "Get a Triple Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1011,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1095,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1234,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1306,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1327,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1427,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1450,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1494,
+              "label": "End credit"
+            }
+          ]
+        },
+        {
+          "videoId": "bBBn4Gqp4yA",
+          "title": "Zeri ADC vs Sivir - KR Challenger Patch 25.22",
+          "rankClaim": "Challenger",
+          "patch": "25.22",
+          "durationSec": 1924,
+          "region": "KR",
+          "uploaded": "2025-11-13",
+          "moments": []
+        },
+        {
+          "videoId": "TTh9FaOAWso",
+          "title": "Zeri ADC vs Sivir - KR Challenger Patch 25.15",
+          "rankClaim": "Challenger",
+          "patch": "25.15",
+          "durationSec": 1589,
+          "region": "KR",
+          "uploaded": "2025-08-05",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 18,
+      "lane": "adc",
+      "videos": [
+        {
+          "videoId": "_7zrV9aas3o",
+          "title": "(LokeN) Zeri ADC vs Tristana - KR Challenger Patch 26.21",
+          "rankClaim": "Challenger",
+          "patch": "26.21",
+          "durationSec": 1468,
+          "region": "KR",
+          "player": "LokeN",
+          "uploaded": "2026-11-03",
+          "result": "W",
+          "moments": [
+            {
+              "atSec": 153,
+              "label": "Zeri picks off Braum"
+            },
+            {
+              "atSec": 336,
+              "label": "Zeri takes down Tristana"
+            },
+            {
+              "atSec": 436,
+              "label": "Zeri outplays Braum"
+            },
+            {
+              "atSec": 442,
+              "label": "Zeri Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 464,
+              "label": "Red takes 1st Dragon (Chemtech)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 529,
+              "label": "Zeri eliminates Qiyana"
+            },
+            {
+              "atSec": 655,
+              "label": "Akshan picks off Qiyana"
+            },
+            {
+              "atSec": 778,
+              "label": "Blue takes 1st Dragon (Infernal)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 788,
+              "label": "Zeri eliminates Qiyana"
+            },
+            {
+              "atSec": 963,
+              "label": "Team fight (4 kills)",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1037,
+              "label": "Zeri outduels Tristana"
+            },
+            {
+              "atSec": 1095,
+              "label": "Red takes 2nd Dragon (Mountain)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1236,
+              "label": "Blue takes Baron",
+              "kind": "baron"
+            },
+            {
+              "atSec": 1407,
+              "label": "Zeri takes down Tristana"
+            },
+            {
+              "atSec": 1410,
+              "label": "Top Inhibitor falls (Blue)"
+            },
+            {
+              "atSec": 1416,
+              "label": "Akshan takes down Braum"
+            }
+          ]
+        },
+        {
+          "videoId": "iGnIUFT4kuA",
+          "title": "Zeri ADC vs Tristana - KR Grandmaster Patch 26.16",
+          "rankClaim": "Grandmaster",
+          "patch": "26.16",
+          "durationSec": 1440,
+          "region": "KR",
+          "uploaded": "2026-08-24",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 21,
+      "lane": "adc",
+      "videos": [
+        {
+          "videoId": "He-6F6zUgjE",
+          "title": "Zeri ADC vs Miss Fortune - KR Master Patch 26.02",
+          "rankClaim": "Master",
+          "patch": "26.2",
+          "durationSec": 1619,
+          "region": "KR",
+          "uploaded": "2026-01-26",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 377,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 524,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 590,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 755,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 836,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 904,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1034,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1171,
+              "label": "Get a Triple Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1210,
+              "label": "Hunt The Dragon",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1273,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1294,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1390,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1411,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1440,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1455,
+              "label": "Take down The Inhibitor"
+            },
+            {
+              "atSec": 1468,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1608,
+              "label": "End credit"
+            }
+          ]
+        },
+        {
+          "videoId": "65hgHzGC3z4",
+          "title": "Zeri vs Miss Fortune ADC - KR Challenger - Patch 25.13 Season 15",
+          "rankClaim": "Challenger",
+          "patch": "25.13",
+          "durationSec": 2056,
+          "region": "KR",
+          "uploaded": "2025-06-26",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 22,
+      "lane": "adc",
+      "videos": [
+        {
+          "videoId": "x1b4LLuatGs",
+          "title": "Rank 1 Zeri : His Spacing is so DAM SMOOTH - Engsub (Zeri vs Ashe, Draven)",
+          "rankClaim": "Master+",
+          "patch": "26.14",
+          "durationSec": 1419,
+          "patchEstimated": true,
+          "uploaded": "2026-07-22",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "icnyzcFezRo",
+          "title": "Rank 1 Zeri : This Man is a FEARLESS SAVAGE \" NO BACKING DOWN \" Engsub ( Zeri vs Ashe, Varus )",
+          "rankClaim": "Master+",
+          "patch": "26.12",
+          "durationSec": 1425,
+          "patchEstimated": true,
+          "uploaded": "2026-06-14",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "Z2X9XP1FJIk",
+          "title": "Zeri vs Ashe ADC [ QuadraKill ] Korea Master Patch 25.21 ✅",
+          "rankClaim": "Master",
+          "patch": "25.21",
+          "durationSec": 1429,
+          "region": "KR",
+          "player": "QuadraKill",
+          "uploaded": "2025-11-01",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 29,
+      "lane": "adc",
+      "videos": [
+        {
+          "videoId": "FD8lRwQQT24",
+          "title": "Rank 1 Zeri : His Mechanic is Phenomenal - Engsub ( Zeri vs Twitch, Jinx )",
+          "rankClaim": "Master+",
+          "patch": "26.10",
+          "durationSec": 1285,
+          "patchEstimated": true,
+          "uploaded": "2026-05-19",
+          "format": "stream",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 38,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "wUbqjfw3kD4",
+          "title": "Zeri Mid vs Kassadin - KR Master Patch 25.20",
+          "rankClaim": "Master",
+          "patch": "25.20",
+          "durationSec": 1611,
+          "region": "KR",
+          "uploaded": "2025-10-21",
+          "moments": []
+        },
+        {
+          "videoId": "roG-cjuFW8w",
+          "title": "Zeri Mid vs Kassadin - KR Master Patch 25.18",
+          "rankClaim": "Master",
+          "patch": "25.18",
+          "durationSec": 1489,
+          "region": "KR",
+          "uploaded": "2025-09-21",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 39,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "t4NAsbuZq2U",
+          "title": "Zeri Mid vs Irelia - KR Master Patch 26.04",
+          "rankClaim": "Master",
+          "patch": "26.4",
+          "durationSec": 1640,
+          "region": "KR",
+          "uploaded": "2026-03-04",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 277,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 651,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1007,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1113,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1144,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1192,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1270,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1453,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1580,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1604,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1614,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1629,
+              "label": "End credit"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 42,
+      "lane": "adc",
+      "videos": [
+        {
+          "videoId": "VQt5Xec3jsg",
+          "title": "Zeri vs Corki ADC - KR Challenger - Patch 16.20 Season 16",
+          "rankClaim": "Challenger",
+          "patch": "26.20",
+          "durationSec": 1666,
+          "region": "KR",
+          "uploaded": "2026-10-19",
+          "moments": []
+        },
+        {
+          "videoId": "KbndpJkTyhQ",
+          "title": "Zeri ADC vs Corki - EUW Challenger Patch 26.04",
+          "rankClaim": "Challenger",
+          "patch": "26.4",
+          "durationSec": 1604,
+          "region": "EUW",
+          "uploaded": "2026-02-27",
+          "moments": []
+        },
+        {
+          "videoId": "zC0BK6xv64w",
+          "title": "Zeri ADC vs Corki - EUW Challenger Patch 26.03",
+          "rankClaim": "Challenger",
+          "patch": "26.3",
+          "durationSec": 1465,
+          "region": "EUW",
+          "uploaded": "2026-02-20",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 284,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 430,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 760,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 991,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1055,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1094,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1119,
+              "label": "Hunt The Dragon",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1147,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1233,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1270,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1317,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1388,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1420,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1442,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1454,
+              "label": "End credit"
+            }
+          ]
+        },
+        {
+          "videoId": "qHL_kDGfIuM",
+          "title": "Zeri ADC vs Corki - KR Master Patch 25.14",
+          "rankClaim": "Master",
+          "patch": "25.14",
+          "durationSec": 1633,
+          "region": "KR",
+          "uploaded": "2025-07-23",
+          "moments": []
+        },
+        {
+          "videoId": "JU4TD-s0Jts",
+          "title": "Zeri vs Corki ADC - KR Grandmaster - Patch 25.12 Season 15",
+          "rankClaim": "Grandmaster",
+          "patch": "25.12",
+          "durationSec": 1531,
+          "region": "KR",
+          "uploaded": "2025-06-14",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 45,
+      "lane": "adc",
+      "videos": [
+        {
+          "videoId": "r3KVt_bLbGI",
+          "title": "Zeri ADC vs Veigar - NA Challenger Patch 25.24",
+          "rankClaim": "Challenger",
+          "patch": "25.24",
+          "durationSec": 1791,
+          "region": "NA",
+          "uploaded": "2025-12-07",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 350,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 504,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 746,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 980,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1031,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1081,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1233,
+              "label": "Get a Quadra Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1295,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1359,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1487,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1515,
+              "label": "Hunt The Baron Nashor",
+              "kind": "baron"
+            },
+            {
+              "atSec": 1635,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1711,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1780,
+              "label": "End credit"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 50,
+      "lane": "adc",
+      "videos": [
+        {
+          "videoId": "H9akyL0Jx6s",
+          "title": "Rank 1 Zeri : His Spacing is AT ELITE LEVEL - Engsub ( vs Swain, Ez )",
+          "rankClaim": "Master+",
+          "patch": "26.15",
+          "durationSec": 1450,
+          "patchEstimated": true,
+          "uploaded": "2026-08-07",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "J42E_zz_fdo",
+          "title": "1600LP Zeri : Stormrazor Zeri is so DAM STRONG in Early Game - Engsub ( Zeri vs Swain, Draven )",
+          "rankClaim": "Master+",
+          "patch": "26.10",
+          "durationSec": 1274,
+          "patchEstimated": true,
+          "uploaded": "2026-05-18",
+          "format": "stream",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 51,
+      "lane": "adc",
+      "videos": [
+        {
+          "videoId": "ktcXFwnSTXc",
+          "title": "LazyFeel : His ZERI is WRECKING KOREAN Challenger Elo with Perfect Spacing - Engsub ( vs Caitlyn )",
+          "rankClaim": "Challenger",
+          "patch": "26.15",
+          "durationSec": 890,
+          "patchEstimated": true,
+          "player": "PerfecT",
+          "uploaded": "2026-08-09",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "WrYC3rAgGBA",
+          "title": "This is What ONLY ZERI Main in Super Server Challenger Look Like - Engsub ( Zeri vs Caitlyn )",
+          "rankClaim": "Challenger",
+          "patch": "26.11",
+          "durationSec": 1235,
+          "patchEstimated": true,
+          "uploaded": "2026-06-03",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "EgopefG6_hw",
+          "title": "T1 Peyz Zeri vs Caitlyn [ ADC ] Patch 26.1 Ranked Korea",
+          "rankClaim": "Master+",
+          "patch": "26.1",
+          "durationSec": 1004,
+          "region": "KR",
+          "player": "Peyz",
+          "team": "T1",
+          "uploaded": "2026-01-15",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 56,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "2tHVq_D2sP8",
+          "title": "Zeri Jungle vs Nocturne - NA Grandmaster Patch 26.15",
+          "rankClaim": "Grandmaster",
+          "patch": "26.15",
+          "durationSec": 1728,
+          "region": "NA",
+          "uploaded": "2026-08-10",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 67,
+      "lane": "adc",
+      "videos": [
+        {
+          "videoId": "UiXPgvu_It4",
+          "title": "Zeri vs Vayne [ ADC ] Korea Challenger 2016 LP | Patch 26.19",
+          "rankClaim": "Challenger",
+          "patch": "26.19",
+          "durationSec": 1243,
+          "region": "KR",
+          "uploaded": "2026-10-06",
+          "moments": []
+        },
+        {
+          "videoId": "AhHPSVkFJcM",
+          "title": "Rank 1 Zeri : This Dude is a KILLING MACHINE Tearing Master Elo Apart - Engsub (Zeri vs Aphe, Vayne)",
+          "rankClaim": "Master",
+          "patch": "26.9",
+          "durationSec": 1414,
+          "patchEstimated": true,
+          "uploaded": "2026-05-07",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "3tlsSreN5jg",
+          "title": "T1 Smash Zeri vs Vayne [ ADC ] Korea Challenger 1442 LP | Patch 25.18",
+          "rankClaim": "Challenger",
+          "patch": "25.18",
+          "durationSec": 1609,
+          "region": "KR",
+          "player": "Smash",
+          "team": "T1",
+          "uploaded": "2025-09-13",
+          "moments": []
+        },
+        {
+          "videoId": "XbSuGPtGH6Q",
+          "title": "Zeri ADC vs Vayne - KR Grandmaster Patch 25.05",
+          "rankClaim": "Grandmaster",
+          "patch": "25.5",
+          "durationSec": 1826,
+          "region": "KR",
+          "uploaded": "2025-03-11",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 68,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "f_dsrfGn4fk",
+          "title": "Zeri Mid vs Rumble - NA Challenger Patch 25.24",
+          "rankClaim": "Challenger",
+          "patch": "25.24",
+          "durationSec": 1528,
+          "region": "NA",
+          "uploaded": "2025-12-18",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 512,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 533,
+              "label": "Hunt The Void Grubs",
+              "kind": "grubs"
+            },
+            {
+              "atSec": 723,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 829,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 857,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 921,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 995,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1011,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1087,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1103,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1117,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1203,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1373,
+              "label": "Get a Triple Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1402,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1462,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1484,
+              "label": "Take down The Inhibitor"
+            },
+            {
+              "atSec": 1497,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1517,
+              "label": "End credit"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 69,
+      "lane": "adc",
+      "videos": [
+        {
+          "videoId": "xPa795rZU54",
+          "title": "Zeri ADC vs Cassiopeia - EUW Challenger Patch 25.18",
+          "rankClaim": "Challenger",
+          "patch": "25.18",
+          "durationSec": 1607,
+          "region": "EUW",
+          "uploaded": "2025-09-14",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 81,
+      "lane": "adc",
+      "videos": [
+        {
+          "videoId": "i-JcmqVJV_c",
+          "title": "T1 Peyz Zeri vs Ezreal [ ADC ] Korea Challenger 2509 LP | Patch 26.10",
+          "rankClaim": "Challenger",
+          "patch": "26.10",
+          "durationSec": 1446,
+          "region": "KR",
+          "player": "Peyz",
+          "team": "T1",
+          "uploaded": "2026-05-21",
+          "moments": []
+        },
+        {
+          "videoId": "FQPC3Eg3bFw",
+          "title": "Zeri vs Ezreal ADC - KR Challenger - Patch 16.09 Season 16",
+          "rankClaim": "Challenger",
+          "patch": "26.9",
+          "durationSec": 1836,
+          "region": "KR",
+          "uploaded": "2026-05-08",
+          "moments": []
+        },
+        {
+          "videoId": "Ds0cdm4AHOQ",
+          "title": "When Teayoon Zeri Destroying Teddy Ezreal in KR Challenger Elo - Engsub",
+          "rankClaim": "Challenger",
+          "patch": "26.3",
+          "durationSec": 1239,
+          "region": "KR",
+          "patchEstimated": true,
+          "player": "Teddy",
+          "uploaded": "2026-02-10",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "0vJdLmGlj8M",
+          "title": "T1 Peyz Zeri vs Ezreal [ ADC ] Korea Master 650 LP | Patch 26.1",
+          "rankClaim": "Master",
+          "patch": "26.1",
+          "durationSec": 1738,
+          "region": "KR",
+          "player": "Peyz",
+          "team": "T1",
+          "uploaded": "2026-01-18",
+          "moments": []
+        },
+        {
+          "videoId": "F8EQLaaGdEE",
+          "title": "T1 Peyz Zeri vs Ezreal [ ADC ] Patch 26.1 Ranked Korea",
+          "rankClaim": "Master+",
+          "patch": "26.1",
+          "durationSec": 1039,
+          "region": "KR",
+          "player": "Peyz",
+          "team": "T1",
+          "uploaded": "2026-01-12",
+          "moments": []
+        },
+        {
+          "videoId": "0Snw9jgaHYg",
+          "title": "Zeri ADC vs Ezreal - KR Grandmaster Patch 25.17",
+          "rankClaim": "Grandmaster",
+          "patch": "25.17",
+          "durationSec": 1698,
+          "region": "KR",
+          "uploaded": "2025-09-01",
+          "moments": []
+        },
+        {
+          "videoId": "WVhfxx_rKRw",
+          "title": "Zeri vs Ezreal ADC - KR Challenger - Patch 25.13 Season 15",
+          "rankClaim": "Challenger",
+          "patch": "25.13",
+          "durationSec": 1546,
+          "region": "KR",
+          "uploaded": "2025-07-03",
+          "moments": []
+        },
+        {
+          "videoId": "qfsxTCoTXXM",
+          "title": "Zeri vs Ezreal ADC [ DRX Teddy ] Patch 25.12 Korea Challenger",
+          "rankClaim": "Challenger",
+          "patch": "25.12",
+          "durationSec": 1307,
+          "region": "KR",
+          "player": "Teddy",
+          "team": "DRX",
+          "uploaded": "2025-06-16",
+          "moments": []
+        },
+        {
+          "videoId": "cRzGKxQAqqk",
+          "title": "Zeri ADC vs Ezreal - KR Grandmaster Patch 25.11",
+          "rankClaim": "Grandmaster",
+          "patch": "25.11",
+          "durationSec": 1918,
+          "region": "KR",
+          "uploaded": "2025-06-07",
+          "moments": []
+        },
+        {
+          "videoId": "n2iugEWcOVg",
+          "title": "T1 Gumayusi Zeri vs Ezreal [ ADC ] Korea Challenger Patch 25.10",
+          "rankClaim": "Challenger",
+          "patch": "25.10",
+          "durationSec": 1289,
+          "region": "KR",
+          "player": "Gumayusi",
+          "team": "T1",
+          "uploaded": "2025-05-26",
+          "moments": []
+        },
+        {
+          "videoId": "dpRMv7itijc",
+          "title": "Zeri vs Ezreal ADC [ Peyz ] Patch 25.7 Korea Challenger ✅",
+          "rankClaim": "Challenger",
+          "patch": "25.7",
+          "durationSec": 1869,
+          "region": "KR",
+          "player": "Peyz",
+          "uploaded": "2025-04-04",
+          "moments": []
+        },
+        {
+          "videoId": "SAKpP2CpSko",
+          "title": "Zeri vs Ezreal ADC - KR Challenger - Patch 25.7 Season 15",
+          "rankClaim": "Challenger",
+          "patch": "25.7",
+          "durationSec": 2056,
+          "region": "KR",
+          "uploaded": "2025-04-03",
+          "moments": []
+        },
+        {
+          "videoId": "TLsYV-pPVY4",
+          "title": "Zeri ADC vs Ezreal - EUW Grandmaster Patch 25.06",
+          "rankClaim": "Grandmaster",
+          "patch": "25.6",
+          "durationSec": 1816,
+          "region": "EUW",
+          "uploaded": "2025-03-24",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 184,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 329,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 607,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 810,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 915,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1019,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1051,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1093,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1140,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1256,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1428,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1614,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1632,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1738,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1777,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1795,
+              "label": "End credit"
+            }
+          ]
+        },
+        {
+          "videoId": "MGLi2vqcXqY",
+          "title": "T1 Gumayusi Zeri vs Ezreal [ ADC ] Patch 25.5 Korea Challenger",
+          "rankClaim": "Challenger",
+          "patch": "25.5",
+          "durationSec": 1392,
+          "region": "KR",
+          "player": "Gumayusi",
+          "team": "T1",
+          "uploaded": "2025-03-15",
+          "moments": []
+        },
+        {
+          "videoId": "AaxQApertjo",
+          "title": "Zeri vs Ezreal ADC - KR Challenger - Patch 15.4 Season 15",
+          "rankClaim": "Challenger",
+          "patch": "25.4",
+          "durationSec": 1696,
+          "region": "KR",
+          "uploaded": "2025-02-24",
+          "moments": []
+        },
+        {
+          "videoId": "RhwialATKzo",
+          "title": "Zeri vs Ezreal ADC [ Gen.G Ruler ] Korea Challenger Patch 25.3 ✅",
+          "rankClaim": "Challenger",
+          "patch": "25.3",
+          "durationSec": 1935,
+          "region": "KR",
+          "player": "Ruler",
+          "team": "Gen.G",
+          "uploaded": "2025-02-20",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 90,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "MsfFUWDj200",
+          "title": "Zeri Mid vs Malzahar - KR Master Patch 26.01",
+          "rankClaim": "Master",
+          "patch": "26.1",
+          "durationSec": 1564,
+          "region": "KR",
+          "uploaded": "2026-01-21",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 88,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 321,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 354,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 422,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 442,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 853,
+              "label": "Get a Triple Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 875,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 895,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 931,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1072,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1163,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1178,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1193,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1316,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1334,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1401,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1417,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1437,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1450,
+              "label": "Take down The Inhibitor"
+            },
+            {
+              "atSec": 1469,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1553,
+              "label": "End credit"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 101,
+      "lane": "adc",
+      "videos": [
+        {
+          "videoId": "pGAcGnfFbH0",
+          "title": "(BRO Teddy) Zeri ADC vs Xerath - KR Grandmaster Patch 26.14",
+          "rankClaim": "Grandmaster",
+          "patch": "26.14",
+          "durationSec": 1481,
+          "region": "KR",
+          "player": "Teddy",
+          "team": "BRO",
+          "uploaded": "2026-07-21",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 103,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "WBimh8snUrI",
+          "title": "Zeri Mid vs Ahri - KR Master Patch 25.08",
+          "rankClaim": "Master",
+          "patch": "25.8",
+          "durationSec": 1754,
+          "region": "KR",
+          "uploaded": "2025-04-26",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 104,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "0-AbqEid_DY",
+          "title": "Zeri Jungle vs Graves - NA Grandmaster Patch 26.11",
+          "rankClaim": "Grandmaster",
+          "patch": "26.11",
+          "durationSec": 1604,
+          "region": "NA",
+          "uploaded": "2026-06-08",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 105,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "rA5d4yDs9Ig",
+          "title": "Zeri Mid vs Fizz - KR Grandmaster Patch 25.12",
+          "rankClaim": "Grandmaster",
+          "patch": "25.12",
+          "durationSec": 1488,
+          "region": "KR",
+          "uploaded": "2025-06-19",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 110,
+      "lane": "adc",
+      "videos": [
+        {
+          "videoId": "CL8dFrEjrkE",
+          "title": "HLE Gumayusi Zeri vs Varus [ ADC ] Korea Challenger 2398 LP | Patch 26.17",
+          "rankClaim": "Challenger",
+          "patch": "26.17",
+          "durationSec": 1853,
+          "region": "KR",
+          "player": "Gumayusi",
+          "team": "HLE",
+          "uploaded": "2026-09-03",
+          "moments": []
+        },
+        {
+          "videoId": "Ynj3E5JBxBs",
+          "title": "Rank 1 Zeri : His Spacing is on Another Level - Engsub ( Zeri vs Varus )",
+          "rankClaim": "Master+",
+          "patch": "26.11",
+          "durationSec": 1144,
+          "patchEstimated": true,
+          "uploaded": "2026-05-31",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "RFabgG_O_2k",
+          "title": "(VIT Carzzy) Zeri ADC vs Varus - EUW Grandmaster Patch 26.10",
+          "rankClaim": "Grandmaster",
+          "patch": "26.10",
+          "durationSec": 1567,
+          "region": "EUW",
+          "player": "VIT Carzzy",
+          "uploaded": "2026-05-23",
+          "moments": []
+        },
+        {
+          "videoId": "7-jQl-vpNH4",
+          "title": "Rank 1 Zeri : He is Absolutely DOMINATING CN HighElo - Engsub ( Zeri vs Varus, Aphelios )",
+          "rankClaim": "Master+",
+          "patch": "26.9",
+          "durationSec": 1323,
+          "patchEstimated": true,
+          "uploaded": "2026-04-30",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "feHngndGQA8",
+          "title": "Zeri vs Varus ADC [ TripleKill ] Patch 25.23 Korea Challenger 1484 LP",
+          "rankClaim": "Challenger",
+          "patch": "25.23",
+          "durationSec": 1513,
+          "region": "KR",
+          "player": "TripleKill",
+          "uploaded": "2025-11-24",
+          "moments": []
+        },
+        {
+          "videoId": "5rn8LJy6JbY",
+          "title": "Zeri ADC vs Varus - KR Grandmaster Patch 25.09",
+          "rankClaim": "Grandmaster",
+          "patch": "25.9",
+          "durationSec": 1489,
+          "region": "KR",
+          "uploaded": "2025-05-05",
+          "moments": []
+        },
+        {
+          "videoId": "BGfotHFHw5U",
+          "title": "T1 Gumayusi Zeri vs Varus [ ADC ] Patch 25.5 Korea Challenger",
+          "rankClaim": "Challenger",
+          "patch": "25.5",
+          "durationSec": 1803,
+          "region": "KR",
+          "player": "Gumayusi",
+          "team": "T1",
+          "uploaded": "2025-03-05",
+          "moments": []
+        },
+        {
+          "videoId": "05sEuc7Lqik",
+          "title": "Zeri vs Varus ADC - KR Challenger - Patch 25.4 Season 15",
+          "rankClaim": "Challenger",
+          "patch": "25.4",
+          "durationSec": 1511,
+          "region": "KR",
+          "uploaded": "2025-03-05",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 112,
+      "lane": "adc",
+      "videos": [
+        {
+          "videoId": "ybMMHy7dzpQ",
+          "title": "\"Jz\" 2000LP Zeri : God Level of Spacing, Kiting Enemy to Death - Engsub ( vs Viktor, Xerath )",
+          "rankClaim": "Master+",
+          "patch": "26.17",
+          "durationSec": 1530,
+          "patchEstimated": true,
+          "player": "Jz",
+          "uploaded": "2026-08-29",
+          "format": "stream",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 112,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "vyj6AVZmpuE",
+          "title": "Zeri Mid vs Viktor - KR Master Patch 25.17",
+          "rankClaim": "Master",
+          "patch": "25.17",
+          "durationSec": 1604,
+          "region": "KR",
+          "uploaded": "2025-09-06",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 115,
+      "lane": "adc",
+      "videos": [
+        {
+          "videoId": "9Oe8YGuwKUc",
+          "title": "Rank 1 Zeri : He Makes ZERI Look COMPLETELY BROKEN - Engsub ( vs Ziggs, Kai'sa )",
+          "rankClaim": "Master+",
+          "patch": "26.16",
+          "durationSec": 1493,
+          "patchEstimated": true,
+          "uploaded": "2026-08-22",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "7vdbgf6vMiQ",
+          "title": "T1 Smash Zeri vs Ziggs [ ADC ] Korea Challenger 1681 LP | Patch 25.22",
+          "rankClaim": "Challenger",
+          "patch": "25.22",
+          "durationSec": 1547,
+          "region": "KR",
+          "player": "Smash",
+          "team": "T1",
+          "uploaded": "2025-11-07",
+          "moments": []
+        },
+        {
+          "videoId": "ZRjV5F6zBPM",
+          "title": "Zeri vs Ziggs ADC - KR Challenger - Patch 25.13 Season 15",
+          "rankClaim": "Challenger",
+          "patch": "25.13",
+          "durationSec": 1921,
+          "region": "KR",
+          "uploaded": "2025-07-02",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 119,
+      "lane": "adc",
+      "videos": [
+        {
+          "videoId": "VvY4ECCzHQw",
+          "title": "Rank 1 Zeri : His AOE DAMAGE with Hurricane is so BROKEN - Engsub ( vs Draven, Senna )",
+          "rankClaim": "Master+",
+          "patch": "26.15",
+          "durationSec": 1789,
+          "patchEstimated": true,
+          "uploaded": "2026-08-05",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "3rijiBpfl8k",
+          "title": "Rank 1 Zeri : He is The SAVIOR We Need to SAVE US - Engsub (Zeri vs Draven, Tris)",
+          "rankClaim": "Master+",
+          "patch": "26.15",
+          "durationSec": 1177,
+          "patchEstimated": true,
+          "uploaded": "2026-08-02",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "20tVHawL2wc",
+          "title": "(TOG Ryuk) Zeri ADC vs Draven - EUW Challenger Patch 26.13",
+          "rankClaim": "Challenger",
+          "patch": "26.13",
+          "durationSec": 1847,
+          "region": "EUW",
+          "player": "TOG Ryuk",
+          "uploaded": "2026-07-01",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 121,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "1GlEOCAC4zg",
+          "title": "Zeri Jungle vs Kha'Zix - NA Grandmaster Patch 26.10",
+          "rankClaim": "Grandmaster",
+          "patch": "26.10",
+          "durationSec": 1836,
+          "region": "NA",
+          "uploaded": "2026-05-30",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 127,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "P7Biif-6c58",
+          "title": "Zeri Mid vs Lissandra - KR Grandmaster Patch 26.07",
+          "rankClaim": "Grandmaster",
+          "patch": "26.7",
+          "durationSec": 1617,
+          "region": "KR",
+          "uploaded": "2026-04-15",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 134,
+      "lane": "adc",
+      "videos": [
+        {
+          "videoId": "k6m4FbmpnHQ",
+          "title": "Rank 1 Zeri : His Spacing is on a GOD LEVEL ( vs Aphe, Syndra )",
+          "rankClaim": "Master+",
+          "patch": "26.16",
+          "durationSec": 1429,
+          "patchEstimated": true,
+          "uploaded": "2026-08-17",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "WJFT26dk_s0",
+          "title": "(IN5 Nikiyas) Zeri ADC vs Syndra - EUW Grandmaster Patch 26.15",
+          "rankClaim": "Grandmaster",
+          "patch": "26.15",
+          "durationSec": 1449,
+          "region": "EUW",
+          "player": "IN5 Nikiyas",
+          "uploaded": "2026-08-06",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 136,
+      "lane": "adc",
+      "videos": [
+        {
+          "videoId": "7nUkakgpGH4",
+          "title": "(NBS Strode) Zeri ADC vs Aurelion Sol - EUW Challenger Patch 26.16",
+          "rankClaim": "Challenger",
+          "patch": "26.16",
+          "durationSec": 1689,
+          "region": "EUW",
+          "player": "NBS Strode",
+          "uploaded": "2026-08-18",
+          "moments": []
+        },
+        {
+          "videoId": "RZl6KbimcZ4",
+          "title": "Zeri ADC vs Aurelion Sol - NA Challenger Patch 25.09",
+          "rankClaim": "Challenger",
+          "patch": "25.9",
+          "durationSec": 1662,
+          "region": "NA",
+          "uploaded": "2025-05-15",
+          "moments": []
+        },
+        {
+          "videoId": "_yTdEyvnq7c",
+          "title": "Zeri ADC vs Aurelion Sol - KR Grandmaster Patch 25.08",
+          "rankClaim": "Grandmaster",
+          "patch": "25.8",
+          "durationSec": 1612,
+          "region": "KR",
+          "uploaded": "2025-04-19",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 128,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 247,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 274,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 358,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 458,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 646,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 950,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1113,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1135,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1246,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1369,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1387,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1489,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1533,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1591,
+              "label": "End credit"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 145,
+      "lane": "adc",
+      "videos": [
+        {
+          "videoId": "dpjp_I4xDAQ",
+          "title": "Zeri ADC vs Kai'Sa - EUW Challenger Patch 26.17",
+          "rankClaim": "Challenger",
+          "patch": "26.17",
+          "durationSec": 1798,
+          "region": "EUW",
+          "uploaded": "2026-08-30",
+          "moments": []
+        },
+        {
+          "videoId": "zXwEZQG-IhU",
+          "title": "Rank 1 Zeri : His Spacing is on A NEXT LEVEL with this NEW SHOE - Engsub (Zeri vs Kai'sa, Sivir)",
+          "rankClaim": "Master+",
+          "patch": "26.13",
+          "durationSec": 1573,
+          "patchEstimated": true,
+          "uploaded": "2026-06-25",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "SOabGaZ63l0",
+          "title": "Rank 1 Zeri : Insane Mechanics Running The Show - Engsub ( Zeri vs MF, Kai'sa )",
+          "rankClaim": "Master+",
+          "patch": "26.9",
+          "durationSec": 1213,
+          "patchEstimated": true,
+          "uploaded": "2026-05-12",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "j09Id6UDuRk",
+          "title": "HuanFeng Zeri : DOMINATNG Super Server Master Elo - Engsub ( Zeri vs Kai'sa )",
+          "rankClaim": "Master",
+          "patch": "26.9",
+          "durationSec": 803,
+          "patchEstimated": true,
+          "uploaded": "2026-05-11",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "BMLlAkL5Hko",
+          "title": "Rank 1 Zeri : DESTROYING Super Server HighElo - Engsub ( Zeri vs Kai'sa, Aphelios )",
+          "rankClaim": "Master+",
+          "patch": "26.9",
+          "durationSec": 1381,
+          "patchEstimated": true,
+          "uploaded": "2026-05-08",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "yl1nHLiD4BM",
+          "title": "BLG Viper Zeri vs Kai'Sa [ ADC ] Korea Challenger 2014 LP | Patch 26.9",
+          "rankClaim": "Challenger",
+          "patch": "26.9",
+          "durationSec": 1171,
+          "region": "KR",
+          "player": "Viper",
+          "team": "BLG",
+          "uploaded": "2026-05-02",
+          "moments": []
+        },
+        {
+          "videoId": "3CeA0Yx6v7M",
+          "title": "Zeri ADC vs Kai'Sa - VN Challenger Patch 26.07",
+          "rankClaim": "Challenger",
+          "patch": "26.7",
+          "durationSec": 1652,
+          "uploaded": "2026-04-10",
+          "moments": []
+        },
+        {
+          "videoId": "i0PR53nzmgk",
+          "title": "Zeri ADC vs Kai'Sa - VN Challenger Patch 26.06",
+          "rankClaim": "Challenger",
+          "patch": "26.6",
+          "durationSec": 1670,
+          "uploaded": "2026-03-25",
+          "moments": []
+        },
+        {
+          "videoId": "6EyZTfCJVAQ",
+          "title": "T1 Peyz Zeri vs Kai'Sa [ ADC ] Patch 26.5 Korea Challenger 2081 LP",
+          "rankClaim": "Challenger",
+          "patch": "26.5",
+          "durationSec": 1545,
+          "region": "KR",
+          "player": "Peyz",
+          "team": "T1",
+          "uploaded": "2026-03-16",
+          "moments": []
+        },
+        {
+          "videoId": "DPfNMi_LheE",
+          "title": "Zeri ADC vs Kai'Sa - KR Challenger Patch 26.05",
+          "rankClaim": "Challenger",
+          "patch": "26.5",
+          "durationSec": 1466,
+          "region": "KR",
+          "uploaded": "2026-03-12",
+          "moments": []
+        },
+        {
+          "videoId": "tILB4g69yOY",
+          "title": "Zeri vs Kai'Sa ADC - KR Challenger - Patch 25.23 Season 15",
+          "rankClaim": "Challenger",
+          "patch": "25.23",
+          "durationSec": 1650,
+          "region": "KR",
+          "uploaded": "2025-12-02",
+          "moments": []
+        },
+        {
+          "videoId": "iSEX1IT92SA",
+          "title": "Zeri vs Kai'Sa [ ADC ] Korea Challenger 1398 LP | Patch 25.20 ✅",
+          "rankClaim": "Challenger",
+          "patch": "25.20",
+          "durationSec": 1368,
+          "region": "KR",
+          "uploaded": "2025-10-21",
+          "moments": []
+        },
+        {
+          "videoId": "zZDjSFLfsGg",
+          "title": "Zeri vs Kai'Sa ADC - KR Challenger - Patch 15.20 Season 15",
+          "rankClaim": "Challenger",
+          "patch": "25.20",
+          "durationSec": 1120,
+          "region": "KR",
+          "uploaded": "2025-10-15",
+          "moments": []
+        },
+        {
+          "videoId": "SgIJg4-bX-E",
+          "title": "Zeri vs Kai'Sa ADC - KR Challenger - Patch 25.20 Season 15",
+          "rankClaim": "Challenger",
+          "patch": "25.20",
+          "durationSec": 1831,
+          "region": "KR",
+          "uploaded": "2025-10-13",
+          "moments": []
+        },
+        {
+          "videoId": "Ij6utszXwTU",
+          "title": "Zeri vs Kaisa ADC [ PentaKill ] Korea Challenger Patch 25.19 ✅",
+          "rankClaim": "Challenger",
+          "patch": "25.19",
+          "durationSec": 1305,
+          "region": "KR",
+          "player": "PentaKill",
+          "uploaded": "2025-10-01",
+          "moments": []
+        },
+        {
+          "videoId": "invS9KfoVAQ",
+          "title": "Zeri ADC vs Kai'Sa - KR Master Patch 25.19",
+          "rankClaim": "Master",
+          "patch": "25.19",
+          "durationSec": 1884,
+          "region": "KR",
+          "uploaded": "2025-09-30",
+          "moments": []
+        },
+        {
+          "videoId": "dSvWLXj6jVE",
+          "title": "Zeri vs Kai'Sa ADC - KR Challenger - Patch 25.13 Season 15",
+          "rankClaim": "Challenger",
+          "patch": "25.13",
+          "durationSec": 1631,
+          "region": "KR",
+          "uploaded": "2025-06-27",
+          "moments": []
+        },
+        {
+          "videoId": "xeqHPXshGD0",
+          "title": "Zeri vs Kai'Sa ADC - KR Challenger - Patch 25.10 Season 15",
+          "rankClaim": "Challenger",
+          "patch": "25.10",
+          "durationSec": 1771,
+          "region": "KR",
+          "uploaded": "2025-05-28",
+          "moments": []
+        },
+        {
+          "videoId": "Fv-g95GbShc",
+          "title": "Zeri vs Kai'Sa ADC - KR Grandmaster - Patch 25.10 Season 15",
+          "rankClaim": "Grandmaster",
+          "patch": "25.10",
+          "durationSec": 1751,
+          "region": "KR",
+          "uploaded": "2025-05-23",
+          "moments": []
+        },
+        {
+          "videoId": "dCZwwUTpKtQ",
+          "title": "Zeri ADC vs Kai'Sa - KR Master Patch 25.06",
+          "rankClaim": "Master",
+          "patch": "25.6",
+          "durationSec": 2083,
+          "region": "KR",
+          "uploaded": "2025-04-02",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 444,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 569,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 852,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 881,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 968,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1163,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1296,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1416,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1519,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1589,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1801,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1821,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1922,
+              "label": "Get a Triple Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1950,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1970,
+              "label": "Hunt The Dragon",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 2035,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 2062,
+              "label": "End credit"
+            }
+          ]
+        },
+        {
+          "videoId": "QMw0jkd7540",
+          "title": "Zeri ADC vs Kai'Sa - KR Challenger Patch 25.04",
+          "rankClaim": "Challenger",
+          "patch": "25.4",
+          "durationSec": 1717,
+          "region": "KR",
+          "uploaded": "2025-02-27",
+          "moments": []
+        },
+        {
+          "videoId": "0FcvXaejq_4",
+          "title": "Zeri vs Kaisa [ ADC ] Lol Korea Master Patch 25.3 ✅",
+          "rankClaim": "Master",
+          "patch": "25.3",
+          "durationSec": 1368,
+          "region": "KR",
+          "uploaded": "2025-02-09",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 161,
+      "lane": "adc",
+      "videos": [
+        {
+          "videoId": "c4mmMu1bEUg",
+          "title": "Zeri vs Vel'Koz ADC - KR Challenger - Patch 25.7 Season 15",
+          "rankClaim": "Challenger",
+          "patch": "25.7",
+          "durationSec": 1651,
+          "region": "KR",
+          "uploaded": "2025-04-11",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 163,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "qfqImfWuIro",
+          "title": "Zeri Mid vs Taliyah - KR Master Patch 25.13",
+          "rankClaim": "Master",
+          "patch": "25.13",
+          "durationSec": 1983,
+          "region": "KR",
+          "uploaded": "2025-07-07",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 200,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "OVpTfo_8mj4",
+          "title": "Zeri Jungle vs Bel'Veth - NA Grandmaster Patch 26.13",
+          "rankClaim": "Grandmaster",
+          "patch": "26.13",
+          "durationSec": 1566,
+          "region": "NA",
+          "uploaded": "2026-07-09",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 202,
+      "lane": "adc",
+      "videos": [
+        {
+          "videoId": "MZbxlrVamus",
+          "title": "Zeri vs Jhin ADC - KR Challenger - Patch 16.20 Season 16",
+          "rankClaim": "Challenger",
+          "patch": "26.20",
+          "durationSec": 1366,
+          "region": "KR",
+          "uploaded": "2026-10-20",
+          "moments": []
+        },
+        {
+          "videoId": "8hJp4fj6y18",
+          "title": "Zeri ADC vs Jhin - KR Master Patch 26.19",
+          "rankClaim": "Master",
+          "patch": "26.19",
+          "durationSec": 1793,
+          "region": "KR",
+          "uploaded": "2026-09-26",
+          "moments": []
+        },
+        {
+          "videoId": "doVNYDhaeak",
+          "title": "T1 Peyz Zeri vs Jhin [ ADC ] Patch 26.10 Korea Challenger 2486 LP",
+          "rankClaim": "Challenger",
+          "patch": "26.10",
+          "durationSec": 1238,
+          "region": "KR",
+          "player": "Peyz",
+          "team": "T1",
+          "uploaded": "2026-05-20",
+          "moments": []
+        },
+        {
+          "videoId": "3vEzyfo3pLU",
+          "title": "Rank 1 Zeri : DOMINATING Master Elo with Perfect KDA - Engsub ( Zeri vs Jhin, Lucian )",
+          "rankClaim": "Master",
+          "patch": "26.10",
+          "durationSec": 1108,
+          "patchEstimated": true,
+          "uploaded": "2026-05-16",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "7P6SqeVeOWc",
+          "title": "1600LP Zeri : His Mechanic is INCREDIBLE INSANE - Engsub ( Zeri vs Jhin )",
+          "rankClaim": "Master+",
+          "patch": "26.9",
+          "durationSec": 1085,
+          "patchEstimated": true,
+          "uploaded": "2026-05-10",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "n6kJWZfrj-8",
+          "title": "Zeri ADC vs Jhin - KR Challenger Patch 25.12",
+          "rankClaim": "Challenger",
+          "patch": "25.12",
+          "durationSec": 1787,
+          "region": "KR",
+          "uploaded": "2025-06-14",
+          "moments": []
+        },
+        {
+          "videoId": "RK_zMvHmFlA",
+          "title": "Zeri vs Jhin ADC [ Peyz ] Patch 25.3 Korea Challenger ✅",
+          "rankClaim": "Challenger",
+          "patch": "25.3",
+          "durationSec": 1413,
+          "region": "KR",
+          "player": "Peyz",
+          "uploaded": "2025-02-16",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 222,
+      "lane": "adc",
+      "videos": [
+        {
+          "videoId": "rlND-UdhaQY",
+          "title": "Zeri ADC vs Jinx - KR Master Patch 26.21",
+          "rankClaim": "Master",
+          "patch": "26.21",
+          "durationSec": 1643,
+          "region": "KR",
+          "uploaded": "2026-10-25",
+          "result": "W",
+          "moments": [
+            {
+              "atSec": 472,
+              "label": "Zeri picks off Taric"
+            },
+            {
+              "atSec": 496,
+              "label": "Zeri takes down Jinx"
+            },
+            {
+              "atSec": 585,
+              "label": "Blue takes 1st Dragon (Ocean)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 651,
+              "label": "Zeri takes down Jinx"
+            },
+            {
+              "atSec": 778,
+              "label": "Team fight (3 kills)",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 789,
+              "label": "Zeri Triple Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 919,
+              "label": "Red takes 1st Dragon (Chemtech)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 953,
+              "label": "Zeri takes down Jinx"
+            },
+            {
+              "atSec": 1141,
+              "label": "Zac kills Taric",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1231,
+              "label": "Blue takes 2nd Dragon (Mountain)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1268,
+              "label": "Zeri Triple Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1297,
+              "label": "Red takes Baron",
+              "kind": "baron"
+            },
+            {
+              "atSec": 1392,
+              "label": "Zeri takes down Jinx"
+            },
+            {
+              "atSec": 1415,
+              "label": "Bot Inhibitor falls (Blue)"
+            },
+            {
+              "atSec": 1519,
+              "label": "Zeri eliminates Darius"
+            },
+            {
+              "atSec": 1539,
+              "label": "Red takes 2nd Dragon (Mountain)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1613,
+              "label": "Zeri picks off Teemo"
+            }
+          ]
+        },
+        {
+          "videoId": "3oLvZmd6qUQ",
+          "title": "Zeri ADC vs Jinx - KR Grandmaster Patch 26.20",
+          "rankClaim": "Grandmaster",
+          "patch": "26.20",
+          "durationSec": 1640,
+          "region": "KR",
+          "uploaded": "2026-10-22",
+          "result": "W",
+          "moments": [
+            {
+              "atSec": 5,
+              "label": "First Blood — Zeri kills Nautilus",
+              "kind": "kill"
+            },
+            {
+              "atSec": 307,
+              "label": "Red takes 1st Dragon (Infernal)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 638,
+              "label": "Red takes 2nd Dragon (Mountain)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 697,
+              "label": "Zeri eliminates Viego"
+            },
+            {
+              "atSec": 753,
+              "label": "Illaoi eliminates Ambessa"
+            },
+            {
+              "atSec": 845,
+              "label": "Zeri kills Yasuo",
+              "kind": "kill"
+            },
+            {
+              "atSec": 881,
+              "label": "Zeri picks off Nautilus"
+            },
+            {
+              "atSec": 934,
+              "label": "Zeri takes down Jinx"
+            },
+            {
+              "atSec": 977,
+              "label": "Red takes 3rd Dragon (Ocean)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 988,
+              "label": "Taliyah kills Jinx",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1300,
+              "label": "Illaoi picks off Jinx"
+            },
+            {
+              "atSec": 1323,
+              "label": "Blue takes 1st Dragon (Ocean)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1448,
+              "label": "Blue takes Baron",
+              "kind": "baron"
+            },
+            {
+              "atSec": 1580,
+              "label": "Zeri outduels Jinx"
+            },
+            {
+              "atSec": 1584,
+              "label": "Zeri Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1586,
+              "label": "Zeri Triple Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1610,
+              "label": "Mid Inhibitor falls (Blue)"
+            }
+          ]
+        },
+        {
+          "videoId": "Wj0XMEM9efc",
+          "title": "(Gwen) Zeri ADC vs Jinx (TOG Ryuk) - EUW Challenger Patch 26.19",
+          "rankClaim": "Challenger",
+          "patch": "26.19",
+          "durationSec": 1478,
+          "region": "EUW",
+          "player": "Gwen",
+          "uploaded": "2026-10-08",
+          "result": "W",
+          "moments": [
+            {
+              "atSec": 341,
+              "label": "Blue takes 1st Dragon (Mountain)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 390,
+              "label": "First Blood — Zeri kills Thresh",
+              "kind": "kill"
+            },
+            {
+              "atSec": 519,
+              "label": "Zeri picks off Thresh"
+            },
+            {
+              "atSec": 638,
+              "label": "Zeri takes down Jinx"
+            },
+            {
+              "atSec": 687,
+              "label": "Red takes 1st Dragon (Hextech)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1014,
+              "label": "Red takes 2nd Dragon (Ocean)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1027,
+              "label": "Zoe kills Jinx",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1126,
+              "label": "Zeri Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1238,
+              "label": "Team fight (3 kills)",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1293,
+              "label": "Blue takes Baron",
+              "kind": "baron"
+            },
+            {
+              "atSec": 1358,
+              "label": "Blue takes 2nd Dragon (Ocean)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1426,
+              "label": "Top Inhibitor falls (Red)"
+            },
+            {
+              "atSec": 1436,
+              "label": "Mid Inhibitor falls (Red)"
+            },
+            {
+              "atSec": 1454,
+              "label": "Fiora kills Nidalee",
+              "kind": "kill"
+            }
+          ]
+        },
+        {
+          "videoId": "gNTIaZP_Q_U",
+          "title": "Rank 1 Zeri : His AOE Damage is Extremely so BROKEN - Engsub (Zeri vs MF, Jinx)",
+          "rankClaim": "Master+",
+          "patch": "26.13",
+          "durationSec": 1180,
+          "patchEstimated": true,
+          "uploaded": "2026-07-05",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "dgyoOAK_oSY",
+          "title": "Rank 1 Zeri : Perfect Kiting, 1v5 HardCarrying in G.Master Elo - Engsub ( Zeri vs Jinx )",
+          "rankClaim": "Master",
+          "patch": "26.12",
+          "durationSec": 1132,
+          "patchEstimated": true,
+          "player": "PerfecT",
+          "uploaded": "2026-06-11",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "cQENfsA--ng",
+          "title": "T1 Peyz Zeri vs Jinx [ ADC ] Rank #1 Korea Challenger Patch 26.3",
+          "rankClaim": "Challenger",
+          "patch": "26.3",
+          "durationSec": 1217,
+          "region": "KR",
+          "player": "Peyz",
+          "team": "T1",
+          "uploaded": "2026-02-13",
+          "moments": []
+        },
+        {
+          "videoId": "l1r_U3hDDf0",
+          "title": "DK Smash Zeri vs Jinx [ ADC ] Korea Challenger 1294 LP | Patch 26.2",
+          "rankClaim": "Challenger",
+          "patch": "26.2",
+          "durationSec": 1048,
+          "region": "KR",
+          "player": "Smash",
+          "team": "DK",
+          "uploaded": "2026-02-04",
+          "moments": []
+        },
+        {
+          "videoId": "s8e6g508NQY",
+          "title": "Zeri ADC vs Jinx - KR Challenger Patch 25.23",
+          "rankClaim": "Challenger",
+          "patch": "25.23",
+          "durationSec": 1649,
+          "region": "KR",
+          "uploaded": "2025-11-22",
+          "moments": []
+        },
+        {
+          "videoId": "zx8RpsBULsI",
+          "title": "T1 Smash Zeri vs Jinx ADC [ QuadraKill ] Korea Challenger 1517 LP | Patch 25.20",
+          "rankClaim": "Challenger",
+          "patch": "25.20",
+          "durationSec": 1307,
+          "region": "KR",
+          "player": "Smash",
+          "team": "T1",
+          "uploaded": "2025-10-10",
+          "moments": []
+        },
+        {
+          "videoId": "ixbxYphUDv8",
+          "title": "Zeri ADC vs Jinx - KR Challenger Patch 25.13",
+          "rankClaim": "Challenger",
+          "patch": "25.13",
+          "durationSec": 1977,
+          "region": "KR",
+          "uploaded": "2025-06-27",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 235,
+      "lane": "adc",
+      "videos": [
+        {
+          "videoId": "5rF1f0qP6YE",
+          "title": "Doggo: His ZERI Spacing is Phenomenal - Engsub (Zeri vs Senna)",
+          "rankClaim": "Master+",
+          "patch": "26.14",
+          "durationSec": 779,
+          "patchEstimated": true,
+          "uploaded": "2026-07-17",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "JTeJktk8AI8",
+          "title": "Rank 1 Zeri : This Dude Bring Zeri to a NEW LEVEL - Engsub ( Zeri vs Senna, Kai'sa )",
+          "rankClaim": "Master+",
+          "patch": "26.12",
+          "durationSec": 1272,
+          "patchEstimated": true,
+          "uploaded": "2026-06-18",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "Okk870fAkkU",
+          "title": "Zeri ADC vs Senna (OLE Flakked) - EUW Challenger Patch 26.12",
+          "rankClaim": "Challenger",
+          "patch": "26.12",
+          "durationSec": 1542,
+          "region": "EUW",
+          "uploaded": "2026-06-16",
+          "moments": []
+        },
+        {
+          "videoId": "kL-yyHckxrg",
+          "title": "Zeri vs Senna ADC - EUW Challenger - Season 16 Patch 16.11",
+          "rankClaim": "Challenger",
+          "patch": "26.11",
+          "durationSec": 1391,
+          "region": "EUW",
+          "uploaded": "2026-06-06",
+          "moments": []
+        },
+        {
+          "videoId": "T6i8Lnqq91o",
+          "title": "Gumayusi Zeri vs Senna ADC - KR Challenger - Patch 16.05 Season 16",
+          "rankClaim": "Challenger",
+          "patch": "26.5",
+          "durationSec": 1816,
+          "region": "KR",
+          "player": "Gumayusi",
+          "uploaded": "2026-03-05",
+          "moments": []
+        },
+        {
+          "videoId": "qOOthSJvOu0",
+          "title": "HLE Gumayusi Zeri vs Senna ADC [ PentaKill ] Patch 26.5 Ranked Korea",
+          "rankClaim": "Master+",
+          "patch": "26.5",
+          "durationSec": 1575,
+          "region": "KR",
+          "player": "Gumayusi",
+          "team": "HLE",
+          "uploaded": "2026-03-04",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 236,
+      "lane": "adc",
+      "videos": [
+        {
+          "videoId": "voXS-JJaip4",
+          "title": "Rank 1 Zeri : Crazy Spacing Movements, Insave 1v5 Comeback - Engsub ( Zeri vs Lucian, Cass )",
+          "rankClaim": "Master+",
+          "patch": "26.10",
+          "durationSec": 1293,
+          "patchEstimated": true,
+          "uploaded": "2026-05-14",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "N6RVFoz7wVk",
+          "title": "Zeri ADC vs Lucian - EUW Challenger Patch 26.02",
+          "rankClaim": "Challenger",
+          "patch": "26.2",
+          "durationSec": 1447,
+          "region": "EUW",
+          "uploaded": "2026-02-05",
+          "moments": []
+        },
+        {
+          "videoId": "mOhiJD6-shg",
+          "title": "Zeri ADC vs Lucian - KR Grandmaster Patch 25.21",
+          "rankClaim": "Grandmaster",
+          "patch": "25.21",
+          "durationSec": 1822,
+          "region": "KR",
+          "uploaded": "2025-10-28",
+          "moments": []
+        },
+        {
+          "videoId": "hoNhGC4-NVI",
+          "title": "Zeri ADC vs Lucian - EUW Grandmaster Patch 25.13",
+          "rankClaim": "Grandmaster",
+          "patch": "25.13",
+          "durationSec": 1792,
+          "region": "EUW",
+          "uploaded": "2025-07-15",
+          "moments": []
+        },
+        {
+          "videoId": "99uxPyFqtsk",
+          "title": "T1 Gumayusi Zeri vs Lucian [ ADC ] Patch 25.13 Ranked NA",
+          "rankClaim": "Master+",
+          "patch": "25.13",
+          "durationSec": 1507,
+          "region": "NA",
+          "player": "Gumayusi",
+          "team": "T1",
+          "uploaded": "2025-06-30",
+          "moments": []
+        },
+        {
+          "videoId": "1CtVmn4K-1g",
+          "title": "Zeri ADC vs Lucian - KR Challenger Patch 25.10",
+          "rankClaim": "Challenger",
+          "patch": "25.10",
+          "durationSec": 1503,
+          "region": "KR",
+          "uploaded": "2025-05-23",
+          "moments": []
+        },
+        {
+          "videoId": "lrTzCmSDxos",
+          "title": "Zeri vs Lucian ADC - KR Challenger - Patch 25.10 Season 15",
+          "rankClaim": "Challenger",
+          "patch": "25.10",
+          "durationSec": 2086,
+          "region": "KR",
+          "uploaded": "2025-05-19",
+          "moments": []
+        },
+        {
+          "videoId": "3EzZTjUK-7o",
+          "title": "Zeri vs Lucian ADC - KR Grandmaster - Patch 25.6 Season 15",
+          "rankClaim": "Grandmaster",
+          "patch": "25.6",
+          "durationSec": 1830,
+          "region": "KR",
+          "uploaded": "2025-03-28",
+          "moments": []
+        },
+        {
+          "videoId": "fi4w6UzQjzQ",
+          "title": "Zeri ADC vs Lucian - EUW Challenger Patch 25.05",
+          "rankClaim": "Challenger",
+          "patch": "25.5",
+          "durationSec": 2094,
+          "region": "EUW",
+          "uploaded": "2025-03-19",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 240,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "ixm1pOBhQzE",
+          "title": "Zeri Jungle vs Kled - NA Grandmaster Patch 25.19",
+          "rankClaim": "Grandmaster",
+          "patch": "25.19",
+          "durationSec": 1763,
+          "region": "NA",
+          "uploaded": "2025-10-08",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 245,
+      "lane": "adc",
+      "videos": [
+        {
+          "videoId": "mXdaTntakcw",
+          "title": "(KC Caliste) Zeri ADC vs Ekko - EUW Challenger Patch 26.13",
+          "rankClaim": "Challenger",
+          "patch": "26.13",
+          "durationSec": 1544,
+          "region": "EUW",
+          "player": "Caliste",
+          "team": "KC",
+          "uploaded": "2026-07-15",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 350,
+      "lane": "adc",
+      "videos": [
+        {
+          "videoId": "le5pzqxILY8",
+          "title": "This ZERI + YUUMI Combos is so DEADLY in Challenger Elo - Engsub",
+          "rankClaim": "Challenger",
+          "patch": "26.11",
+          "durationSec": 1213,
+          "patchEstimated": true,
+          "uploaded": "2026-06-04",
+          "format": "stream",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 360,
+      "lane": "adc",
+      "videos": [
+        {
+          "videoId": "rd5DO5Za1Ws",
+          "title": "Rank 1 Zeri : This is Why Gluttonous Greaves is so BROKEN for ZERI - Engsub ( vs Samira, Aphe )",
+          "rankClaim": "Master+",
+          "patch": "26.17",
+          "durationSec": 1380,
+          "patchEstimated": true,
+          "uploaded": "2026-09-08",
+          "format": "stream",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 421,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "R6JeXRddUtg",
+          "title": "Zeri Jungle vs Rek'Sai - NA Challenger Patch 26.12",
+          "rankClaim": "Challenger",
+          "patch": "26.12",
+          "durationSec": 1630,
+          "region": "NA",
+          "uploaded": "2026-06-21",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 429,
+      "lane": "adc",
+      "videos": [
+        {
+          "videoId": "qPJnGrPnY08",
+          "title": "Zeri ADC vs Kalista (ZYB Jezu) - EUW Challenger Patch 26.18",
+          "rankClaim": "Challenger",
+          "patch": "26.18",
+          "durationSec": 1461,
+          "region": "EUW",
+          "uploaded": "2026-09-23",
+          "moments": []
+        },
+        {
+          "videoId": "zxppEkxOnKs",
+          "title": "Zeri ADC vs Kalista (DNS deokdam) - KR Challenger Patch 26.18",
+          "rankClaim": "Challenger",
+          "patch": "26.18",
+          "durationSec": 1736,
+          "region": "KR",
+          "uploaded": "2026-09-14",
+          "moments": []
+        },
+        {
+          "videoId": "aALZTfPrC2g",
+          "title": "Rank 1 Zeri : This Guy is a Freaky Animal, Amazing Kiting Skill - Engsub (Zeri vs MF, Kalista)",
+          "rankClaim": "Master+",
+          "patch": "26.14",
+          "durationSec": 1407,
+          "patchEstimated": true,
+          "uploaded": "2026-07-19",
+          "format": "stream",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 498,
+      "lane": "adc",
+      "videos": [
+        {
+          "videoId": "j_AK6PMBm6Y",
+          "title": "DK Smash Zeri vs Xayah ADC - NA Master - Patch 16.21 Season 16",
+          "rankClaim": "Master",
+          "patch": "26.21",
+          "durationSec": 1770,
+          "region": "NA",
+          "player": "Smash",
+          "team": "DK",
+          "uploaded": "2026-10-27",
+          "moments": []
+        },
+        {
+          "videoId": "wPp1Ab4kfPY",
+          "title": "Deft Zeri vs Xayah [ ADC ] Korea Challenger 1935 LP | Patch 26.20 ✅",
+          "rankClaim": "Challenger",
+          "patch": "26.20",
+          "durationSec": 1371,
+          "region": "KR",
+          "player": "Deft",
+          "uploaded": "2026-10-10",
+          "moments": []
+        },
+        {
+          "videoId": "_046upj9QTM",
+          "title": "\"HanQL\" 2255LP Zeri : His Spacing is on Another Level - Engsub (Zeri vs Xayah)",
+          "rankClaim": "Master+",
+          "patch": "26.14",
+          "durationSec": 669,
+          "patchEstimated": true,
+          "player": "HanQL",
+          "uploaded": "2026-07-26",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "p9Eek8n8iFg",
+          "title": "Rank 1 Zeri : This Dude is Super Server KR Master Elo - Engsub (Zeri vs Aphe, Xayah)",
+          "rankClaim": "Master",
+          "patch": "26.13",
+          "durationSec": 1370,
+          "region": "KR",
+          "patchEstimated": true,
+          "uploaded": "2026-07-03",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "U3Hh9weAPRo",
+          "title": "(AL Kael) Zeri ADC vs Xayah - KR Challenger Patch 26.11",
+          "rankClaim": "Challenger",
+          "patch": "26.11",
+          "durationSec": 1659,
+          "region": "KR",
+          "player": "Kael",
+          "team": "AL",
+          "uploaded": "2026-06-01",
+          "moments": []
+        },
+        {
+          "videoId": "tmJenDJk_7s",
+          "title": "Zeri ADC vs Xayah - KR Grandmaster Patch 25.16",
+          "rankClaim": "Grandmaster",
+          "patch": "25.16",
+          "durationSec": 1474,
+          "region": "KR",
+          "uploaded": "2025-08-17",
+          "moments": []
+        },
+        {
+          "videoId": "WxeuNkZjy6Q",
+          "title": "T1 Gumayusi Zeri vs Xayah ADC [ Pentakill ] Patch 25.10 Korea Grandmaster",
+          "rankClaim": "Grandmaster",
+          "patch": "25.10",
+          "durationSec": 1459,
+          "region": "KR",
+          "player": "Gumayusi",
+          "team": "T1",
+          "uploaded": "2025-05-17",
+          "moments": []
+        },
+        {
+          "videoId": "0xFqCUkgLn4",
+          "title": "Zeri ADC vs Xayah - KR Challenger Patch 25.07",
+          "rankClaim": "Challenger",
+          "patch": "25.7",
+          "durationSec": 1497,
+          "region": "KR",
+          "uploaded": "2025-04-08",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 123,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 302,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 644,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 840,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 855,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1028,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1055,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1073,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1173,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1436,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1476,
+              "label": "End credit"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 517,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "6iVveSGlRuU",
+          "title": "Zeri vs Sylas Mid - KR Challenger - Patch 15.4 Season 15",
+          "rankClaim": "Challenger",
+          "patch": "25.4",
+          "durationSec": 1561,
+          "region": "KR",
+          "uploaded": "2025-02-25",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 523,
+      "lane": "adc",
+      "videos": [
+        {
+          "videoId": "_xMTGsFWAPA",
+          "title": "Zeri ADC vs Aphelios (LokeN) - KR Grandmaster Patch 26.17",
+          "rankClaim": "Grandmaster",
+          "patch": "26.17",
+          "durationSec": 1856,
+          "region": "KR",
+          "uploaded": "2026-09-09",
+          "moments": []
+        },
+        {
+          "videoId": "AlN9flcc-Dk",
+          "title": "Rank 1 Zeri : Taking Over Super Server at 1500LP Match - Engsub ( Zeri vs Aphelios, Ashe )",
+          "rankClaim": "Master+",
+          "patch": "26.9",
+          "durationSec": 1418,
+          "patchEstimated": true,
+          "uploaded": "2026-05-02",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "BBYUUQqtxws",
+          "title": "Zeri ADC vs Aphelios - KR Master Patch 26.01",
+          "rankClaim": "Master",
+          "patch": "26.1",
+          "durationSec": 1552,
+          "region": "KR",
+          "uploaded": "2026-01-12",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 774,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 887,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 912,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1039,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1055,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1104,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1143,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1169,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1286,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1312,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1333,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1446,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1519,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1541,
+              "label": "End credit"
+            }
+          ]
+        },
+        {
+          "videoId": "c4Yho7WWDXw",
+          "title": "Zeri ADC vs Aphelios - EUW Grandmaster Patch 25.24",
+          "rankClaim": "Grandmaster",
+          "patch": "25.24",
+          "durationSec": 1571,
+          "region": "EUW",
+          "uploaded": "2025-12-24",
+          "moments": []
+        },
+        {
+          "videoId": "MkEZphFBQhw",
+          "title": "Zeri vs Aphelios ADC - KR Challenger - Patch 25.24 Season 15",
+          "rankClaim": "Challenger",
+          "patch": "25.24",
+          "durationSec": 1921,
+          "region": "KR",
+          "uploaded": "2025-12-15",
+          "moments": []
+        },
+        {
+          "videoId": "uKDq1UEJ9jA",
+          "title": "Zeri ADC vs Aphelios - KR Challenger Patch 25.20",
+          "rankClaim": "Challenger",
+          "patch": "25.20",
+          "durationSec": 1934,
+          "region": "KR",
+          "uploaded": "2025-10-14",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 777,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "FebsAuin2Vg",
+          "title": "Zeri vs Yone Mid - KR Challenger - Patch 16.09 Season 16",
+          "rankClaim": "Challenger",
+          "patch": "26.9",
+          "durationSec": 2386,
+          "region": "KR",
+          "uploaded": "2026-05-05",
+          "moments": []
+        },
+        {
+          "videoId": "lhJ00OM0rls",
+          "title": "Zeri Mid vs Yone - KR Master Patch 25.23",
+          "rankClaim": "Master",
+          "patch": "25.23",
+          "durationSec": 1668,
+          "region": "KR",
+          "uploaded": "2025-12-01",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 800,
+      "lane": "adc",
+      "videos": [
+        {
+          "videoId": "x5lNj86nm6U",
+          "title": "Zeri ADC vs Mel - KR Master Patch 25.24",
+          "rankClaim": "Master",
+          "patch": "25.24",
+          "durationSec": 1476,
+          "region": "KR",
+          "uploaded": "2026-01-06",
+          "moments": []
+        },
+        {
+          "videoId": "SJn705yXYNU",
+          "title": "T1 Peyz Zeri vs Mel [ ADC ] Korea Master Patch 25.24",
+          "rankClaim": "Master",
+          "patch": "25.24",
+          "durationSec": 1261,
+          "region": "KR",
+          "player": "Peyz",
+          "team": "T1",
+          "uploaded": "2025-12-09",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 804,
+      "lane": "adc",
+      "videos": [
+        {
+          "videoId": "aQmuMO6IgCU",
+          "title": "Rank 1 Zeri : His Mechanic is Perfectly Clean \" Good Level of Spacing \" Engsub ( vs Yunara )",
+          "rankClaim": "Master+",
+          "patch": "26.21",
+          "durationSec": 865,
+          "patchEstimated": true,
+          "uploaded": "2026-11-04",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "MweUMU0ep3I",
+          "title": "Rank 1 Zeri : His Spacing and Kiting is Perfecly Clean - Engsub ( vs Yunara, Aphelios )",
+          "rankClaim": "Master+",
+          "patch": "26.21",
+          "durationSec": 1606,
+          "patchEstimated": true,
+          "uploaded": "2026-10-23",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "-YBMECF7Mrs",
+          "title": "Zeri ADC vs Yunara - KR Grandmaster Patch 26.20",
+          "rankClaim": "Grandmaster",
+          "patch": "26.20",
+          "durationSec": 1647,
+          "region": "KR",
+          "uploaded": "2026-10-09",
+          "result": "W",
+          "moments": [
+            {
+              "atSec": 60,
+              "label": "First Blood — Zeri kills Maokai",
+              "kind": "kill"
+            },
+            {
+              "atSec": 187,
+              "label": "Team fight (3 kills)",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 507,
+              "label": "Zeri picks off Shen"
+            },
+            {
+              "atSec": 685,
+              "label": "Zeri outduels Yunara"
+            },
+            {
+              "atSec": 749,
+              "label": "Zeri catches Anivia"
+            },
+            {
+              "atSec": 830,
+              "label": "Red takes 1st Dragon (Ocean)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1018,
+              "label": "Zeri eliminates Qiyana"
+            },
+            {
+              "atSec": 1156,
+              "label": "Red takes 2nd Dragon (Mountain)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1232,
+              "label": "Blue takes Baron",
+              "kind": "baron"
+            },
+            {
+              "atSec": 1289,
+              "label": "Zeri takes down Yunara"
+            },
+            {
+              "atSec": 1316,
+              "label": "Zeri eliminates Qiyana"
+            },
+            {
+              "atSec": 1405,
+              "label": "Team fight (3 kills)",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1437,
+              "label": "Zeri Triple Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1459,
+              "label": "Zeri solo kills Shen",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1489,
+              "label": "Red takes 3rd Dragon (Hextech)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1572,
+              "label": "Zeri Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1597,
+              "label": "Zeri eliminates Qiyana"
+            },
+            {
+              "atSec": 1606,
+              "label": "Mid Inhibitor falls (Blue)"
+            }
+          ]
+        },
+        {
+          "videoId": "HDcwt4GhOA0",
+          "title": "HLE Gumayusi Zeri vs Yunara [ ADC ] Korea Challenger 2330 LP | Patch 26.19",
+          "rankClaim": "Challenger",
+          "patch": "26.19",
+          "durationSec": 1811,
+          "region": "KR",
+          "player": "Gumayusi",
+          "team": "HLE",
+          "uploaded": "2026-09-27",
+          "moments": []
+        },
+        {
+          "videoId": "8iilpCS6Qcw",
+          "title": "Rank 1 Zeri : His Spacing is on Another Level - Engsub ( vs Yunara, Viktor )",
+          "rankClaim": "Master+",
+          "patch": "26.17",
+          "durationSec": 1187,
+          "patchEstimated": true,
+          "uploaded": "2026-09-06",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "WUbkSXZ5q4U",
+          "title": "Zeri vs Yunara ADC - KR Challenger - Patch 16.17 Season 16",
+          "rankClaim": "Challenger",
+          "patch": "26.17",
+          "durationSec": 1751,
+          "region": "KR",
+          "uploaded": "2026-09-05",
+          "moments": []
+        },
+        {
+          "videoId": "NjPpDByMft8",
+          "title": "Rank 1 Zeri : His AOE Damage From Hurricane is so NUT - Engsub (Zeri vs Yunara,Ez)",
+          "rankClaim": "Master+",
+          "patch": "26.14",
+          "durationSec": 1180,
+          "patchEstimated": true,
+          "uploaded": "2026-07-24",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "NJWqNs-zxK8",
+          "title": "Zeri vs Yunara [ ADC ] Korea Grandmaster 1764 LP | Patch 26.14",
+          "rankClaim": "Grandmaster",
+          "patch": "26.14",
+          "durationSec": 1522,
+          "region": "KR",
+          "uploaded": "2026-07-20",
+          "moments": []
+        },
+        {
+          "videoId": "YzRGVJvIT-8",
+          "title": "Rank 1 Zeri : He is The LAST HOPE WE GOT - Engsub (Zeri vs Ez, Yunara)",
+          "rankClaim": "Master+",
+          "patch": "26.13",
+          "durationSec": 1248,
+          "patchEstimated": true,
+          "uploaded": "2026-07-01",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "R5Gu5ypqCYI",
+          "title": "Rank 1 Zeri : How The F*CK Did He Comeback From This Game - Engsub (Zeri vs Yunara, Corki)",
+          "rankClaim": "Master+",
+          "patch": "26.13",
+          "durationSec": 1595,
+          "patchEstimated": true,
+          "uploaded": "2026-06-29",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "dlNrVlLTxZE",
+          "title": "Rank 1 Zeri : His Kiting Skill is Phenomenal \" Perfect KDA \" Engsub (Zeri vs Yunara, Tris)",
+          "rankClaim": "Master+",
+          "patch": "26.13",
+          "durationSec": 1188,
+          "patchEstimated": true,
+          "uploaded": "2026-06-27",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "1fR2u2ZJ6w8",
+          "title": "Rank 1 Zeri : This is GOD LEVEL OF ZERI Look Like - Engsub ( Zeri vs Yunara )",
+          "rankClaim": "Master+",
+          "patch": "26.11",
+          "durationSec": 1081,
+          "patchEstimated": true,
+          "uploaded": "2026-06-06",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "0JIS-EIeJAQ",
+          "title": "Zeri ADC vs Yunara - KR Grandmaster Patch 26.09",
+          "rankClaim": "Grandmaster",
+          "patch": "26.9",
+          "durationSec": 1640,
+          "region": "KR",
+          "uploaded": "2026-05-04",
+          "moments": []
+        },
+        {
+          "videoId": "Ot0RNKhZgAA",
+          "title": "Zeri vs Yunara ADC [ Gen.G Ruler ] Patch 25.24 Ranked Korea ✅",
+          "rankClaim": "Master+",
+          "patch": "25.24",
+          "durationSec": 1128,
+          "region": "KR",
+          "player": "Ruler",
+          "team": "Gen.G",
+          "uploaded": "2025-12-22",
+          "moments": []
+        },
+        {
+          "videoId": "CVsB-lbund0",
+          "title": "Zeri vs Yunara ADC [ DRX Teddy ] Patch 25.22 Korea Master",
+          "rankClaim": "Master",
+          "patch": "25.22",
+          "durationSec": 1381,
+          "region": "KR",
+          "player": "Teddy",
+          "team": "DRX",
+          "uploaded": "2025-11-05",
+          "moments": []
+        },
+        {
+          "videoId": "FWZrpnGQ-gQ",
+          "title": "Zeri ADC vs Yunara - EUW Grandmaster Patch 25.15",
+          "rankClaim": "Grandmaster",
+          "patch": "25.15",
+          "durationSec": 1597,
+          "region": "EUW",
+          "uploaded": "2025-08-15",
+          "moments": []
+        },
+        {
+          "videoId": "BHGAX3aM2r8",
+          "title": "Zeri vs Yunara ADC - KR Grandmaster - Patch 25.14 Season 15",
+          "rankClaim": "Grandmaster",
+          "patch": "25.14",
+          "durationSec": 1606,
+          "region": "KR",
+          "uploaded": "2025-07-25",
+          "moments": []
+        },
+        {
+          "videoId": "1Zy8GaJ1XzE",
+          "title": "Zeri vs Yunara ADC - KR Grandmaster - Patch 25.14 Season 15",
+          "rankClaim": "Grandmaster",
+          "patch": "25.14",
+          "durationSec": 1350,
+          "region": "KR",
+          "uploaded": "2025-07-22",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 804,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "CaIc6UYjkAs",
+          "title": "Zeri Mid vs Yunara - EUW Grandmaster Patch 25.21",
+          "rankClaim": "Grandmaster",
+          "patch": "25.21",
+          "durationSec": 1611,
+          "region": "EUW",
+          "uploaded": "2025-11-03",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 893,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "bxWKfKdfxMU",
+          "title": "Zeri Mid vs Aurora - KR Master Patch 26.08",
+          "rankClaim": "Master",
+          "patch": "26.8",
+          "durationSec": 1696,
+          "region": "KR",
+          "uploaded": "2026-04-30",
+          "moments": []
+        },
+        {
+          "videoId": "YNzL6bAvlwM",
+          "title": "Zeri Mid vs Aurora - KR Master Patch 25.04",
+          "rankClaim": "Master",
+          "patch": "25.4",
+          "durationSec": 2073,
+          "region": "KR",
+          "uploaded": "2025-03-03",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 112,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 234,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 824,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 846,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1069,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1136,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1271,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1372,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1391,
+              "label": "Get a Quadra Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1662,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1774,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1793,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1803,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1875,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1997,
+              "label": "Get a Triple Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 2020,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 2030,
+              "label": "Take down The Inhibitor"
+            },
+            {
+              "atSec": 2041,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 2052,
+              "label": "End credit"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 893,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "3W2Po2e2kdc",
+          "title": "Zeri Top vs Aurora - KR Master Patch 26.09",
+          "rankClaim": "Master",
+          "patch": "26.9",
+          "durationSec": 1503,
+          "region": "KR",
+          "uploaded": "2026-05-13",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 895,
+      "lane": "adc",
+      "videos": [
+        {
+          "videoId": "qo5WJ6bO01g",
+          "title": "Rank 1 Zeri : This Guy is a FREAKING SAVAGE - Engsub ( Zeri vs Nilah, Mel )",
+          "rankClaim": "Master+",
+          "patch": "26.9",
+          "durationSec": 1337,
+          "patchEstimated": true,
+          "uploaded": "2026-04-29",
+          "format": "stream",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 901,
+      "lane": "adc",
+      "videos": [
+        {
+          "videoId": "CLJVSXhFPl4",
+          "title": "Rank 1 Zeri : This is What 1v5 Zeri Perfomance Look Like - Engsub ( vs Tris, Smolder )",
+          "rankClaim": "Master+",
+          "patch": "26.17",
+          "durationSec": 1298,
+          "patchEstimated": true,
+          "uploaded": "2026-09-03",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "ZuP4w7Ux1Dg",
+          "title": "Zeri vs Smolder ADC - KR Challenger - Patch 25.13 Season 15",
+          "rankClaim": "Challenger",
+          "patch": "25.13",
+          "durationSec": 1501,
+          "region": "KR",
+          "uploaded": "2025-06-29",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 910,
+      "lane": "adc",
+      "videos": [
+        {
+          "videoId": "bjU1H647fpU",
+          "title": "Zeri vs Hwei ADC - KR Grandmaster - Patch 16.20 Season 16",
+          "rankClaim": "Grandmaster",
+          "patch": "26.20",
+          "durationSec": 2160,
+          "region": "KR",
+          "uploaded": "2026-10-15",
+          "moments": []
+        }
+      ]
+    }
+  ]
+}

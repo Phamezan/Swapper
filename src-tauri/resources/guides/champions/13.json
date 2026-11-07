@@ -1,0 +1,4051 @@
+{
+  "schema": 1,
+  "champion": 13,
+  "generatedAt": "2026-11-07T13:25:14.592Z",
+  "guides": [
+    {
+      "champion": 13,
+      "enemy": 7,
+      "lane": "mid",
+      "patch": "26.21",
+      "reviewed": false,
+      "difficulty": "Easy",
+      "favoredWhen": "She short-trades after plating and TP-answers your R, but past early she cannot kill you. Stack armor, scale.",
+      "keyTips": [
+        {
+          "text": "Bone Plating plus RoA (sometimes Mercs) make you too tanky: low cooldowns give high DPS, so force extended trades.",
+          "scope": "pair",
+          "sourceIds": [
+            "pumptm"
+          ]
+        },
+        {
+          "text": "She short-trades only after Bone Plating is gone: your plating gates every trade.",
+          "scope": "pair",
+          "sourceIds": [
+            "pumptm"
+          ]
+        },
+        {
+          "text": "Past early she will not kill you unless far ahead: concede nothing, scale everything.",
+          "scope": "pair",
+          "sourceIds": [
+            "pumptm"
+          ]
+        }
+      ],
+      "enemyTips": {},
+      "sections": {
+        "overview": {
+          "tips": []
+        },
+        "early-lane": {
+          "tips": [
+            {
+              "text": "She waits out Bone Plating: trade into her patience.",
+              "scope": "pair",
+              "sourceIds": [
+                "pumptm"
+              ]
+            },
+            {
+              "text": "She keeps E for your chase: never chase into a held chain.",
+              "scope": "pair",
+              "sourceIds": [
+                "pumptm"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 7,
+                  "key": "E"
+                }
+              ]
+            }
+          ]
+        },
+        "mid-lane": {
+          "tips": [
+            {
+              "text": "She always TPs to answer your R: R where her TP cannot follow.",
+              "scope": "pair",
+              "sourceIds": [
+                "pumptm"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 13,
+                  "key": "R"
+                }
+              ]
+            },
+            {
+              "text": "Her E answers your chase: sidestep the chain, run her down.",
+              "scope": "pair",
+              "sourceIds": [
+                "pumptm"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 7,
+                  "key": "E"
+                }
+              ]
+            }
+          ]
+        },
+        "win-condition": {
+          "tips": [
+            {
+              "text": "Tanky plus scaling: the LeBlanc who never got ahead never kills you.",
+              "scope": "pair",
+              "sourceIds": [
+                "pumptm"
+              ]
+            }
+          ]
+        }
+      },
+      "itemization": [],
+      "sources": [
+        {
+          "id": "pumptm",
+          "author": "pumpTM",
+          "rankClaim": "Rank 1 LeBlanc, 2941LP Challenger (title); Challenger (profile badge) · LeBlanc main",
+          "rank": "challenger",
+          "url": "https://www.mobafire.com/league-of-legends/build/26-17-2941lp-challenger-rank-1-leblancs-gunblade-1v9-build-653268",
+          "kind": "mobafire"
+        }
+      ]
+    },
+    {
+      "champion": 13,
+      "enemy": 84,
+      "lane": "mid",
+      "patch": "26.21",
+      "reviewed": false,
+      "difficulty": "Easy",
+      "favoredWhen": "One of the best for two seasons. Push her in, mark minions, spread Q into shroud.",
+      "keyTips": [
+        {
+          "text": "One of the worst for her, best for you: press the pick, not just the player.",
+          "scope": "pair",
+          "sourceIds": [
+            "anguish"
+          ]
+        },
+        {
+          "text": "Early you push her in: her tower is her only safety, so crash.",
+          "scope": "pair",
+          "sourceIds": [
+            "anguish"
+          ]
+        },
+        {
+          "text": "Your Q spreads into shroud: stealth does not save her.",
+          "scope": "pair",
+          "sourceIds": [
+            "anguish"
+          ],
+          "abilityKeys": [
+            {
+              "champion": 13,
+              "key": "Q"
+            },
+            {
+              "champion": 84,
+              "key": "W"
+            }
+          ]
+        }
+      ],
+      "enemyTips": {},
+      "sections": {
+        "overview": {
+          "tips": []
+        },
+        "early-lane": {
+          "tips": [
+            {
+              "text": "She avoids minions with your E mark: marked waves explode, so mark them.",
+              "scope": "pair",
+              "sourceIds": [
+                "anguish"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 13,
+                  "key": "E"
+                }
+              ]
+            },
+            {
+              "text": "She farms the crash: pushed-in CS is safe CS, so deny it.",
+              "scope": "pair",
+              "sourceIds": [
+                "anguish"
+              ]
+            }
+          ]
+        },
+        "mid-lane": {
+          "tips": [
+            {
+              "text": "Your trade pattern plus defensive mage items decide it: force stat-checks.",
+              "scope": "pair",
+              "sourceIds": [
+                "anguish"
+              ]
+            },
+            {
+              "text": "She all-ins only on cooldown gaps: your pattern has holes, hide them.",
+              "scope": "pair",
+              "sourceIds": [
+                "anguish"
+              ]
+            }
+          ]
+        },
+        "win-condition": {
+          "tips": [
+            {
+              "text": "Pushed in plus marked: the Akali who never dodged never wins.",
+              "scope": "pair",
+              "sourceIds": [
+                "anguish"
+              ]
+            }
+          ]
+        }
+      },
+      "itemization": [],
+      "sources": [
+        {
+          "id": "anguish",
+          "author": "Anguish333",
+          "rankClaim": "Master (profile badge; title claims 2000LP GrandMaster EUW and Challenger EUNE) · Akali main",
+          "rank": "master",
+          "url": "https://www.mobafire.com/league-of-legends/build/26-20-anguish-2000lp-grandmasters-euw-challenger-eune-akali-mid-top-s16-guide-every-matchup-item-rune-explained-625064",
+          "kind": "mobafire"
+        }
+      ]
+    }
+  ],
+  "general": [
+    {
+      "champion": 13,
+      "lane": "mid",
+      "patch": "26.21",
+      "reviewed": false,
+      "keyTips": [
+        {
+          "text": "Rush Seraph's Embrace instead of Rod of Ages for earlier damage and ability haste with its shield as protection, stacking Tear of the Goddess toward completion around twelve to thirteen minutes.",
+          "scope": "champion",
+          "sourceIds": [
+            "youngryze"
+          ],
+          "itemIds": [
+            6657,
+            3070
+          ]
+        },
+        {
+          "text": "Respect the weak early levels: avoid treating pre-Seraph's trades as guaranteed wins, push and roam only when the opponent permits it, and coordinate those moves with the jungler around objectives.",
+          "scope": "champion",
+          "sourceIds": [
+            "youngryze"
+          ]
+        },
+        {
+          "text": "After Seraph's and Fimbulwinter, Ryze survives longer and can win some one-versus-two fights against unfed opponents; treat that durability as a build-dependent claim, not a reason to force fights.",
+          "scope": "champion",
+          "sourceIds": [
+            "youngryze"
+          ]
+        }
+      ],
+      "sections": {
+        "overview": {
+          "tips": []
+        },
+        "early-lane": {
+          "tips": [
+            {
+              "text": "Use E early to build Tear and Manaflow Band stacks while staying safe.",
+              "scope": "champion",
+              "sourceIds": [
+                "youngryze"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 13,
+                  "key": "E"
+                }
+              ]
+            },
+            {
+              "text": "Shove and take the pre-level-six bot roam behind Dragon pit with enemy-jungle vision when the lane allows it, rather than sitting mid with no plan.",
+              "scope": "champion",
+              "sourceIds": [
+                "youngryze"
+              ]
+            },
+            {
+              "text": "Treat the level-six Realm Warp unlock as the cross-map spike: after a recall, look for a fast ult to mid or top instead of walking back to lane on autopilot.",
+              "scope": "champion",
+              "sourceIds": [
+                "youngryze"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 13,
+                  "key": "R"
+                }
+              ]
+            },
+            {
+              "text": "Open Tear of the Goddess with two Health Potions to start the stacking clock immediately.",
+              "scope": "champion",
+              "sourceIds": [
+                "youngryze"
+              ],
+              "itemIds": [
+                3070
+              ]
+            }
+          ]
+        },
+        "mid-lane": {
+          "tips": [
+            {
+              "text": "Work with the jungler for picks, or take a side lane when the map allows safe collection.",
+              "scope": "champion",
+              "sourceIds": [
+                "youngryze"
+              ]
+            },
+            {
+              "text": "At the Seraph's plus Fimbulwinter durability spike, reported around three thousand health plus the Seraph's shield near eighteen minutes, Ryze can hold riskier positions.",
+              "scope": "champion",
+              "sourceIds": [
+                "youngryze"
+              ]
+            }
+          ]
+        },
+        "win-condition": {
+          "tips": [
+            {
+              "text": "In the late game, choose between side-lane pressure that pulls enemies off your team, grouping mid for picks before objectives, or a flank onto squishy carries.",
+              "scope": "champion",
+              "sourceIds": [
+                "youngryze"
+              ]
+            },
+            {
+              "text": "Use Realm Warp to reach lanes or create an unexpected flank, but staying alive for the late fights matters more than the flashy angle.",
+              "scope": "champion",
+              "sourceIds": [
+                "youngryze"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 13,
+                  "key": "R"
+                }
+              ]
+            },
+            {
+              "text": "Treat Actualizer as the late one-versus-two multiplier on the Q-W-E-Q combo, using it as a power spike rather than an excuse to fight while behind.",
+              "scope": "champion",
+              "sourceIds": [
+                "youngryze"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 13,
+                  "key": "Q"
+                },
+                {
+                  "champion": 13,
+                  "key": "W"
+                },
+                {
+                  "champion": 13,
+                  "key": "E"
+                }
+              ],
+              "itemIds": [
+                2522
+              ]
+            }
+          ]
+        }
+      },
+      "itemization": [
+        {
+          "text": "Run Stormraider's Surge with Manaflow Band, Transcendence, Gathering Storm, Cash Back, and Cosmic Insight; open Tear and potions, then prioritize Lucidity boots with Seraph's, Fimbulwinter, Actualizer, and Rabadon's Deathcap.",
+          "scope": "champion",
+          "sourceIds": [
+            "youngryze"
+          ],
+          "itemIds": [
+            2522,
+            3089
+          ]
+        },
+        {
+          "text": "Take Blackfire Torch as a late option and Warmog's Armor, Frozen Heart, Zhonya's Hourglass, Cryptbloom, or Cosmic Drive for the last slot; the alternate Rod of Ages route exists, though Seraph's first gives earlier haste and damage.",
+          "scope": "champion",
+          "sourceIds": [
+            "youngryze"
+          ],
+          "itemIds": [
+            2503,
+            3083,
+            3110,
+            3157,
+            3137,
+            4629,
+            6657
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "id": "youngryze",
+          "author": "Young Ryze",
+          "rankClaim": "RANK 1; none",
+          "url": "https://www.mobafire.com/league-of-legends/build/rank-1-ryze-guide-651579",
+          "kind": "mobafire"
+        }
+      ]
+    }
+  ],
+  "vods": [
+    {
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "ppo4H-icuis",
+          "title": "HOW TO CARRY WITH RYZE - FULLY EDUCATIONAL GAME",
+          "rankClaim": "Master+",
+          "patch": "26.17",
+          "durationSec": 1355,
+          "patchEstimated": true,
+          "player": "Shok",
+          "uploaded": "2026-09-07",
+          "format": "stream",
+          "cam": true,
+          "moments": [
+            {
+              "atSec": 0,
+              "label": "Early lane phase"
+            },
+            {
+              "atSec": 143,
+              "label": "Itemization and trading"
+            },
+            {
+              "atSec": 334,
+              "label": "Capitalizing on advantages"
+            },
+            {
+              "atSec": 486,
+              "label": "Roaming and map control",
+              "kind": "roam"
+            },
+            {
+              "atSec": 627,
+              "label": "Mid-game snowballing"
+            },
+            {
+              "atSec": 855,
+              "label": "Executing objectives"
+            },
+            {
+              "atSec": 1024,
+              "label": "Closing out the game"
+            },
+            {
+              "atSec": 1284,
+              "label": "Advanced tips and mistakes"
+            }
+          ]
+        },
+        {
+          "videoId": "PrEhk1M6a5M",
+          "title": "Baicaiovo Ryze : This Dude is WRECKING Challenger Elo on CN Super Server",
+          "rankClaim": "Challenger",
+          "patch": "26.11",
+          "durationSec": 1756,
+          "patchEstimated": true,
+          "player": "Baicaiovo",
+          "uploaded": "2026-06-04",
+          "format": "stream",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 1,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "A2pt08G3n5U",
+          "title": "Ryze vs Annie MID [ Gen.G Chovy ] Patch 26.9 Korea Grandmaster 1655 LP",
+          "rankClaim": "Grandmaster",
+          "patch": "26.9",
+          "durationSec": 1273,
+          "region": "KR",
+          "player": "Chovy",
+          "team": "Gen.G",
+          "uploaded": "2026-05-05",
+          "moments": []
+        },
+        {
+          "videoId": "8LHSWyXEkF4",
+          "title": "Ryze Mid vs Annie - KR Challenger Patch 25.22",
+          "rankClaim": "Challenger",
+          "patch": "25.22",
+          "durationSec": 1633,
+          "region": "KR",
+          "uploaded": "2025-11-09",
+          "moments": []
+        },
+        {
+          "videoId": "6qnWsQDvI6g",
+          "title": "Ryze vs Annie Mid - KR Challenger - Patch 25.11 Season 15",
+          "rankClaim": "Challenger",
+          "patch": "25.11",
+          "durationSec": 1651,
+          "region": "KR",
+          "uploaded": "2025-06-10",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 2,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "WSbGCj2SEy8",
+          "title": "Ryze Top vs Olaf - EUW Grandmaster Patch 25.13",
+          "rankClaim": "Grandmaster",
+          "patch": "25.13",
+          "durationSec": 1635,
+          "region": "EUW",
+          "uploaded": "2025-07-05",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 3,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "_aEadJIpKTU",
+          "title": "(Honest) Ryze Mid vs Galio - EUW Grandmaster Patch 26.21",
+          "rankClaim": "Grandmaster",
+          "patch": "26.21",
+          "durationSec": 1867,
+          "region": "EUW",
+          "player": "Honest",
+          "uploaded": "2026-10-27",
+          "result": "W",
+          "moments": [
+            {
+              "atSec": 272,
+              "label": "Ryze takes down Galio"
+            },
+            {
+              "atSec": 629,
+              "label": "Blue takes 1st Dragon (Ocean)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 694,
+              "label": "Ryze takes down Soraka"
+            },
+            {
+              "atSec": 777,
+              "label": "Cho'Gath kills Rengar",
+              "kind": "kill"
+            },
+            {
+              "atSec": 933,
+              "label": "Ryze eliminates Galio"
+            },
+            {
+              "atSec": 1027,
+              "label": "Blue takes 2nd Dragon (Hextech)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1074,
+              "label": "Blue takes Rift Herald",
+              "kind": "herald"
+            },
+            {
+              "atSec": 1175,
+              "label": "Red takes Baron",
+              "kind": "baron"
+            },
+            {
+              "atSec": 1273,
+              "label": "Cho'Gath picks off Galio"
+            },
+            {
+              "atSec": 1356,
+              "label": "Varus picks off Rengar"
+            },
+            {
+              "atSec": 1375,
+              "label": "Blue takes 3rd Dragon (Mountain)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1463,
+              "label": "Ryze Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1583,
+              "label": "Ryze takes down Soraka"
+            },
+            {
+              "atSec": 1625,
+              "label": "Top Inhibitor falls (Red)"
+            },
+            {
+              "atSec": 1693,
+              "label": "Red takes 1st Dragon (Mountain)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1811,
+              "label": "Ryze picks off Kayn"
+            },
+            {
+              "atSec": 1818,
+              "label": "Ryze Triple Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1855,
+              "label": "Ryze takes down Rengar"
+            }
+          ]
+        },
+        {
+          "videoId": "kfH4jf97GKQ",
+          "title": "T1 Faker Ryze vs Galio [ MID ] Korea Master 1192 LP | Patch 26.6",
+          "rankClaim": "Master",
+          "patch": "26.6",
+          "durationSec": 1222,
+          "region": "KR",
+          "player": "Faker",
+          "team": "T1",
+          "uploaded": "2026-03-31",
+          "moments": []
+        },
+        {
+          "videoId": "cWYrjjkWB1M",
+          "title": "T1 Faker Ryze vs Galio [ MID ] Korea Grandmaster 1065 LP | Patch 26.5",
+          "rankClaim": "Grandmaster",
+          "patch": "26.5",
+          "durationSec": 1748,
+          "region": "KR",
+          "player": "Faker",
+          "team": "T1",
+          "uploaded": "2026-03-06",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 4,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "gDcnmB5V1og",
+          "title": "Rank 1 Ryze : This CN Super Server Legend is DEVASTATING Twisted Fate Mid Lane - Engsub",
+          "rankClaim": "Master+",
+          "patch": "26.6",
+          "durationSec": 1666,
+          "patchEstimated": true,
+          "player": "Baicaiovo",
+          "uploaded": "2026-03-20",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "GjrzBIxmv8k",
+          "title": "Ryze Mid vs Twisted Fate - NA Grandmaster Patch 25.24",
+          "rankClaim": "Grandmaster",
+          "patch": "25.24",
+          "durationSec": 1489,
+          "region": "NA",
+          "uploaded": "2026-01-06",
+          "moments": []
+        },
+        {
+          "videoId": "ImcvEXgD81c",
+          "title": "Ryze vs Twisted Fate MID [ QuadraKill ] Korea Master Patch 25.20 ✅",
+          "rankClaim": "Master",
+          "patch": "25.20",
+          "durationSec": 1182,
+          "region": "KR",
+          "player": "QuadraKill",
+          "uploaded": "2025-10-16",
+          "moments": []
+        },
+        {
+          "videoId": "H0TzOAQal4w",
+          "title": "T1 Faker Ryze vs Twisted Fate [ MID ] Patch 25.17 Korea Master",
+          "rankClaim": "Master",
+          "patch": "25.17",
+          "durationSec": 1081,
+          "region": "KR",
+          "player": "Faker",
+          "team": "T1",
+          "uploaded": "2025-08-28",
+          "moments": []
+        },
+        {
+          "videoId": "XMeYoA6-QXM",
+          "title": "Ryze Mid vs Twisted Fate - KR Challenger Patch 25.11",
+          "rankClaim": "Challenger",
+          "patch": "25.11",
+          "durationSec": 1579,
+          "region": "KR",
+          "uploaded": "2025-06-02",
+          "moments": []
+        },
+        {
+          "videoId": "TahHWHz2Tvk",
+          "title": "Ryze Mid vs Twisted Fate - EUW Challenger Patch 25.06",
+          "rankClaim": "Challenger",
+          "patch": "25.6",
+          "durationSec": 1816,
+          "region": "EUW",
+          "uploaded": "2025-03-24",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 153,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 201,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 218,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 383,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 581,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 632,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 787,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1043,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1093,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1191,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1256,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1329,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1428,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1605,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1625,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1646,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1658,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1670,
+              "label": "Take down The Inhibitor"
+            },
+            {
+              "atSec": 1738,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1776,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1795,
+              "label": "End credit"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 4,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "dRUqcOGYiK4",
+          "title": "Ryze Top vs Twisted Fate - KR Master Patch 26.10",
+          "rankClaim": "Master",
+          "patch": "26.10",
+          "durationSec": 1581,
+          "region": "KR",
+          "uploaded": "2026-05-17",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 7,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "SfTFHQNDI4A",
+          "title": "Ryze vs Leblanc [ MID ] Lol Korea Master Patch 25.2 ✅",
+          "rankClaim": "Master",
+          "patch": "25.2",
+          "durationSec": 1523,
+          "region": "KR",
+          "uploaded": "2025-01-27",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 8,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "u--zcPpExhM",
+          "title": "(EDG BuLLDoG) Ryze Mid vs Vladimir - KR Challenger Patch 26.16",
+          "rankClaim": "Challenger",
+          "patch": "26.16",
+          "durationSec": 1494,
+          "region": "KR",
+          "player": "BuLLDoG",
+          "team": "EDG",
+          "uploaded": "2026-08-15",
+          "moments": []
+        },
+        {
+          "videoId": "wVfgsDZ40Dg",
+          "title": "Ryze vs Vladimir Mid - KR Grandmaster - Patch 16.11 Season 16",
+          "rankClaim": "Grandmaster",
+          "patch": "26.11",
+          "durationSec": 1351,
+          "region": "KR",
+          "uploaded": "2026-06-09",
+          "moments": []
+        },
+        {
+          "videoId": "t21BfvhnSKE",
+          "title": "Ryze Mid vs Vladimir - KR Challenger Patch 25.10",
+          "rankClaim": "Challenger",
+          "patch": "25.10",
+          "durationSec": 1713,
+          "region": "KR",
+          "uploaded": "2025-05-20",
+          "moments": []
+        },
+        {
+          "videoId": "pTr-4L_Qa_Q",
+          "title": "Ryze Mid vs Vladimir - KR Challenger Patch 25.09",
+          "rankClaim": "Challenger",
+          "patch": "25.9",
+          "durationSec": 1798,
+          "region": "KR",
+          "uploaded": "2025-05-05",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 226,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 581,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 650,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 711,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 865,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 927,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1072,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1089,
+              "label": "Get a Triple Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1213,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1329,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1388,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1545,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1606,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1712,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1736,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1777,
+              "label": "End credit"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 8,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "vA5ywlOPeRM",
+          "title": "Ryze Top vs Vladimir - KR Grandmaster Patch 25.08",
+          "rankClaim": "Grandmaster",
+          "patch": "25.8",
+          "durationSec": 1873,
+          "region": "KR",
+          "uploaded": "2025-04-27",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 11,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "mbbDGI-59cA",
+          "title": "Ryze Mid vs Master Yi - KR Master Patch 26.20",
+          "rankClaim": "Master",
+          "patch": "26.20",
+          "durationSec": 1561,
+          "region": "KR",
+          "uploaded": "2026-10-13",
+          "result": "W",
+          "moments": [
+            {
+              "atSec": 374,
+              "label": "First Blood — Ryze kills Tryndamere",
+              "kind": "kill"
+            },
+            {
+              "atSec": 512,
+              "label": "Lee Sin eliminates Varus"
+            },
+            {
+              "atSec": 614,
+              "label": "Ryze Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 731,
+              "label": "Team fight (4 kills)",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 935,
+              "label": "Lee Sin picks off Master Yi"
+            },
+            {
+              "atSec": 953,
+              "label": "Blue takes 1st Dragon (Infernal)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1094,
+              "label": "Blue takes Rift Herald",
+              "kind": "herald"
+            },
+            {
+              "atSec": 1221,
+              "label": "Mid Inhibitor falls (Red)"
+            },
+            {
+              "atSec": 1240,
+              "label": "Ryze eliminates Master Yi"
+            },
+            {
+              "atSec": 1280,
+              "label": "Blue takes 2nd Dragon (Mountain)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1374,
+              "label": "Ryze Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1464,
+              "label": "Blue takes Baron",
+              "kind": "baron"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 17,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "RKfh60k-Hdo",
+          "title": "(CFO Rest) Ryze Top vs Teemo - KR Master Patch 26.14",
+          "rankClaim": "Master",
+          "patch": "26.14",
+          "durationSec": 1768,
+          "region": "KR",
+          "player": "CFO Rest",
+          "uploaded": "2026-07-27",
+          "moments": []
+        },
+        {
+          "videoId": "qTEjgkxF6R4",
+          "title": "Ryze Top vs Teemo - KR Grandmaster Patch 25.22",
+          "rankClaim": "Grandmaster",
+          "patch": "25.22",
+          "durationSec": 1898,
+          "region": "KR",
+          "uploaded": "2025-11-16",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 24,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "l0H5ui4rhig",
+          "title": "Ryze Top vs Jax - KR Master Patch 26.17",
+          "rankClaim": "Master",
+          "patch": "26.17",
+          "durationSec": 1468,
+          "region": "KR",
+          "uploaded": "2026-09-06",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 34,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "H_RlOP-xNV0",
+          "title": "(TES Creme) Ryze Mid vs Anivia - KR Grandmaster Patch 26.10",
+          "rankClaim": "Grandmaster",
+          "patch": "26.10",
+          "durationSec": 1862,
+          "region": "KR",
+          "player": "Creme",
+          "team": "TES",
+          "uploaded": "2026-05-24",
+          "moments": []
+        },
+        {
+          "videoId": "2PfmM3Pbsfs",
+          "title": "Ryze vs Anivia Mid - KR Challenger - Patch 16.06 Season 16",
+          "rankClaim": "Challenger",
+          "patch": "26.6",
+          "durationSec": 2101,
+          "region": "KR",
+          "uploaded": "2026-03-25",
+          "moments": []
+        },
+        {
+          "videoId": "WXjA6oVPIq4",
+          "title": "Ryze vs Anivia MID [ Gen.G Chovy ] Patch 26.2 Ranked Korea ✅",
+          "rankClaim": "Master+",
+          "patch": "26.2",
+          "durationSec": 1338,
+          "region": "KR",
+          "player": "Chovy",
+          "team": "Gen.G",
+          "uploaded": "2026-01-27",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 39,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "iYhbtRHHLro",
+          "title": "Ryze Top vs Irelia (TLAW Yeon) - NA Grandmaster Patch 26.15",
+          "rankClaim": "Grandmaster",
+          "patch": "26.15",
+          "durationSec": 1543,
+          "region": "NA",
+          "uploaded": "2026-08-11",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 41,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "0xLGJNS4QQw",
+          "title": "(DK ShowMaker) Ryze Top vs Gangplank - KR Challenger Patch 26.12",
+          "rankClaim": "Challenger",
+          "patch": "26.12",
+          "durationSec": 1437,
+          "region": "KR",
+          "player": "ShowMaker",
+          "team": "DK",
+          "uploaded": "2026-06-19",
+          "moments": []
+        },
+        {
+          "videoId": "J8zMm6R7kSs",
+          "title": "Ryze Top vs Gangplank - KR Master Patch 26.09",
+          "rankClaim": "Master",
+          "patch": "26.9",
+          "durationSec": 1796,
+          "region": "KR",
+          "uploaded": "2026-05-05",
+          "moments": []
+        },
+        {
+          "videoId": "OgXMbZ-82uU",
+          "title": "Ryze Top vs Gangplank - KR Grandmaster Patch 25.12",
+          "rankClaim": "Grandmaster",
+          "patch": "25.12",
+          "durationSec": 1519,
+          "region": "KR",
+          "uploaded": "2025-06-22",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 56,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "uQvagoPwd_8",
+          "title": "Ryze vs Nocturne Mid - KR Challenger - Patch  26.02 Season 16",
+          "rankClaim": "Challenger",
+          "patch": "26.2",
+          "durationSec": 1771,
+          "region": "KR",
+          "uploaded": "2026-02-02",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 58,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "m4H1Mod2oQM",
+          "title": "Ryze vs Renekton [ TOP ] Lol Korea Master Patch 25.24 ✅",
+          "rankClaim": "Master",
+          "patch": "25.24",
+          "durationSec": 1577,
+          "region": "KR",
+          "uploaded": "2025-12-21",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 61,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "XVs99qestxU",
+          "title": "T1 Faker Ryze vs Orianna [ MID ] Korea Challenger 2156 LP | Patch 26.18",
+          "rankClaim": "Challenger",
+          "patch": "26.18",
+          "durationSec": 1399,
+          "region": "KR",
+          "player": "Faker",
+          "team": "T1",
+          "uploaded": "2026-09-22",
+          "moments": []
+        },
+        {
+          "videoId": "Je-s0mRFH2M",
+          "title": "Ryze Mid vs Orianna - KR Grandmaster Patch 26.04",
+          "rankClaim": "Grandmaster",
+          "patch": "26.4",
+          "durationSec": 1600,
+          "region": "KR",
+          "uploaded": "2026-02-22",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 702,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 833,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 868,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 923,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1047,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1073,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1256,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1282,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1358,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1435,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1459,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1493,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1527,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1589,
+              "label": "End credit"
+            }
+          ]
+        },
+        {
+          "videoId": "Gv7Pu7EQRvc",
+          "title": "DK ShowMaker Ryze vs Orianna [ MID ] Korea Challenger 1834 LP | Patch 25.24",
+          "rankClaim": "Challenger",
+          "patch": "25.24",
+          "durationSec": 1699,
+          "region": "KR",
+          "player": "ShowMaker",
+          "team": "DK",
+          "uploaded": "2025-12-29",
+          "moments": []
+        },
+        {
+          "videoId": "JAv7tp3Qfks",
+          "title": "DK ShowMaker Ryze vs Orianna [ MID ] Patch 25.23 Korea Master",
+          "rankClaim": "Master",
+          "patch": "25.23",
+          "durationSec": 1452,
+          "region": "KR",
+          "player": "ShowMaker",
+          "team": "DK",
+          "uploaded": "2025-11-26",
+          "moments": []
+        },
+        {
+          "videoId": "9VzSp_XXjJM",
+          "title": "Ryze Mid vs Orianna - KR Challenger Patch 25.19",
+          "rankClaim": "Challenger",
+          "patch": "25.19",
+          "durationSec": 1599,
+          "region": "KR",
+          "uploaded": "2025-09-30",
+          "moments": []
+        },
+        {
+          "videoId": "1tsfXu3qmeU",
+          "title": "T1 Faker Ryze vs Orianna [ MID ] Patch 25.15 Korea Master",
+          "rankClaim": "Master",
+          "patch": "25.15",
+          "durationSec": 831,
+          "region": "KR",
+          "player": "Faker",
+          "team": "T1",
+          "uploaded": "2025-08-11",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 63,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "AyaTkhfV3xY",
+          "title": "Ryze Mid vs Brand - KR Master Patch 26.01",
+          "rankClaim": "Master",
+          "patch": "26.1",
+          "durationSec": 1447,
+          "region": "KR",
+          "uploaded": "2026-01-13",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 64,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "bPmF3cPuyrQ",
+          "title": "Ryze Jungle vs Lee Sin - KR Master Patch 25.13",
+          "rankClaim": "Master",
+          "patch": "25.13",
+          "durationSec": 1531,
+          "region": "KR",
+          "uploaded": "2025-07-14",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 68,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "slyE6QoMEfY",
+          "title": "Ryze Top vs Rumble - KR Master Patch 26.07",
+          "rankClaim": "Master",
+          "patch": "26.7",
+          "durationSec": 1524,
+          "region": "KR",
+          "uploaded": "2026-04-11",
+          "moments": []
+        },
+        {
+          "videoId": "yDqs30STnmA",
+          "title": "Ryze Top vs Rumble - TW Challenger Patch 25.18",
+          "rankClaim": "Challenger",
+          "patch": "25.18",
+          "durationSec": 1595,
+          "uploaded": "2025-09-21",
+          "moments": []
+        },
+        {
+          "videoId": "P58QaWDouDo",
+          "title": "Ryze Top vs Rumble - KR Grandmaster Patch 25.11",
+          "rankClaim": "Grandmaster",
+          "patch": "25.11",
+          "durationSec": 1957,
+          "region": "KR",
+          "uploaded": "2025-06-08",
+          "moments": []
+        },
+        {
+          "videoId": "RoF7awFyatA",
+          "title": "Ryze Top vs Rumble - EUW Grandmaster Patch 25.10",
+          "rankClaim": "Grandmaster",
+          "patch": "25.10",
+          "durationSec": 1930,
+          "region": "EUW",
+          "uploaded": "2025-05-29",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 69,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "iN3jW0PChGw",
+          "title": "(TES Creme) Ryze Mid vs Cassiopeia (Kuzan) - KR Grandmaster Patch 26.12",
+          "rankClaim": "Grandmaster",
+          "patch": "26.12",
+          "durationSec": 1533,
+          "region": "KR",
+          "player": "Creme",
+          "team": "TES",
+          "uploaded": "2026-06-15",
+          "moments": []
+        },
+        {
+          "videoId": "HVxHBcJyRYI",
+          "title": "DK ShowMaker Ryze vs Cassiopeia [ MID ] Korea Challenger 1845 LP | Patch 26.2",
+          "rankClaim": "Challenger",
+          "patch": "26.2",
+          "durationSec": 1189,
+          "region": "KR",
+          "player": "ShowMaker",
+          "team": "DK",
+          "uploaded": "2026-02-03",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 79,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "TCGoUeFXMX8",
+          "title": "Ryze Top vs Gragas - EUNE Grandmaster Patch 26.20",
+          "rankClaim": "Grandmaster",
+          "patch": "26.20",
+          "durationSec": 1650,
+          "region": "EUNE",
+          "uploaded": "2026-10-18",
+          "result": "W",
+          "moments": [
+            {
+              "atSec": 170,
+              "label": "First Blood — Sylas kills Gragas",
+              "kind": "kill"
+            },
+            {
+              "atSec": 337,
+              "label": "Blue takes 1st Dragon (Chemtech)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 378,
+              "label": "Ryze eliminates Gragas"
+            },
+            {
+              "atSec": 471,
+              "label": "Ryze outplays Viktor"
+            },
+            {
+              "atSec": 696,
+              "label": "Ryze catches Gragas"
+            },
+            {
+              "atSec": 714,
+              "label": "Red takes 1st Dragon (Cloud)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 806,
+              "label": "Ryze eliminates Gragas"
+            },
+            {
+              "atSec": 862,
+              "label": "Ryze takes down Viktor"
+            },
+            {
+              "atSec": 916,
+              "label": "Sylas Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 945,
+              "label": "Sylas picks off Viktor"
+            },
+            {
+              "atSec": 972,
+              "label": "Red takes Rift Herald",
+              "kind": "herald"
+            },
+            {
+              "atSec": 1035,
+              "label": "Ryze takes down Viktor"
+            },
+            {
+              "atSec": 1059,
+              "label": "Red takes 2nd Dragon (Mountain)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1234,
+              "label": "Red takes Baron",
+              "kind": "baron"
+            },
+            {
+              "atSec": 1269,
+              "label": "Ryze Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1318,
+              "label": "Ryze outduels Gragas again"
+            },
+            {
+              "atSec": 1375,
+              "label": "Blue takes 2nd Dragon (Mountain)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1624,
+              "label": "Mid Inhibitor falls (Blue)"
+            }
+          ]
+        },
+        {
+          "videoId": "A108lcaAvIA",
+          "title": "Ryze Top vs Gragas - KR Grandmaster Patch 25.19",
+          "rankClaim": "Grandmaster",
+          "patch": "25.19",
+          "durationSec": 1690,
+          "region": "KR",
+          "uploaded": "2025-10-04",
+          "moments": []
+        },
+        {
+          "videoId": "-pfvusayrOA",
+          "title": "Ryze Top vs Gragas - KR Master Patch 25.14",
+          "rankClaim": "Master",
+          "patch": "25.14",
+          "durationSec": 1955,
+          "region": "KR",
+          "uploaded": "2025-07-27",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 80,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "gX0XLi5SFag",
+          "title": "(CNV Cody Sun) Ryze Top vs Pantheon - NA Challenger Patch 26.21",
+          "rankClaim": "Challenger",
+          "patch": "26.21",
+          "durationSec": 1717,
+          "region": "NA",
+          "player": "CNV Cody Sun",
+          "uploaded": "2026-11-02",
+          "result": "W",
+          "moments": [
+            {
+              "atSec": 10,
+              "label": "Ryze eliminates Pantheon"
+            },
+            {
+              "atSec": 104,
+              "label": "Jax kills Pantheon",
+              "kind": "kill"
+            },
+            {
+              "atSec": 322,
+              "label": "Red takes 1st Dragon (Hextech)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 450,
+              "label": "Jax kills Pantheon",
+              "kind": "kill"
+            },
+            {
+              "atSec": 735,
+              "label": "Blue takes 1st Dragon (Mountain)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 839,
+              "label": "Ryze eliminates Shen"
+            },
+            {
+              "atSec": 1051,
+              "label": "Blue takes 2nd Dragon (Ocean)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1123,
+              "label": "Sylas takes down Pantheon"
+            },
+            {
+              "atSec": 1214,
+              "label": "Jax picks off Syndra"
+            },
+            {
+              "atSec": 1265,
+              "label": "Red takes Baron",
+              "kind": "baron"
+            },
+            {
+              "atSec": 1273,
+              "label": "Ryze kills Kindred",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1340,
+              "label": "Ryze kills Kindred",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1391,
+              "label": "Red takes 2nd Dragon (Ocean)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1508,
+              "label": "Ryze takes down Syndra"
+            },
+            {
+              "atSec": 1649,
+              "label": "Red takes 2nd Baron",
+              "kind": "baron"
+            },
+            {
+              "atSec": 1654,
+              "label": "Zeri picks off Shen"
+            },
+            {
+              "atSec": 1690,
+              "label": "Bot Inhibitor falls (Blue)"
+            },
+            {
+              "atSec": 1707,
+              "label": "Ryze eliminates Shen"
+            }
+          ]
+        },
+        {
+          "videoId": "sMaY0xww4iE",
+          "title": "Ryze Top vs Pantheon - KR Master Patch 25.06",
+          "rankClaim": "Master",
+          "patch": "25.6",
+          "durationSec": 1735,
+          "region": "KR",
+          "uploaded": "2025-04-03",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 83,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "Dh2GcMK3-fU",
+          "title": "Ryze Top vs Yorick - KR Master Patch 25.20",
+          "rankClaim": "Master",
+          "patch": "25.20",
+          "durationSec": 1728,
+          "region": "KR",
+          "uploaded": "2025-10-19",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 84,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "03kcmPxWL3o",
+          "title": "Ryze Mid vs Akali - KR Grandmaster Patch 26.02",
+          "rankClaim": "Grandmaster",
+          "patch": "26.2",
+          "durationSec": 1619,
+          "region": "KR",
+          "uploaded": "2026-01-23",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 195,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 507,
+              "label": "Get a Triple Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 651,
+              "label": "Hunt The Dragon",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 668,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 843,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 894,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 925,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 988,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1010,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1134,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1222,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1355,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1402,
+              "label": "Take down The Inhibitor"
+            },
+            {
+              "atSec": 1575,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1608,
+              "label": "End credit"
+            }
+          ]
+        },
+        {
+          "videoId": "dl997Z9e8xo",
+          "title": "DK ShowMaker Ryze vs Akali [ MID ] Korea Challenger 1162 LP | Patch 26.1",
+          "rankClaim": "Challenger",
+          "patch": "26.1",
+          "durationSec": 1885,
+          "region": "KR",
+          "player": "ShowMaker",
+          "team": "DK",
+          "uploaded": "2026-01-19",
+          "moments": []
+        },
+        {
+          "videoId": "1wRz3Gj7e0s",
+          "title": "Ryze Mid vs Akali - KR Master Patch 25.15",
+          "rankClaim": "Master",
+          "patch": "25.15",
+          "durationSec": 1756,
+          "region": "KR",
+          "uploaded": "2025-08-03",
+          "moments": []
+        },
+        {
+          "videoId": "OG5V-QaHsmg",
+          "title": "Ryze Mid vs Akali - KR Challenger Patch 25.08",
+          "rankClaim": "Challenger",
+          "patch": "25.8",
+          "durationSec": 1670,
+          "region": "KR",
+          "uploaded": "2025-04-20",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 194,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 409,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 637,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 689,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 749,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 819,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 843,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 865,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 919,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 948,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1098,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1194,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1210,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1405,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1429,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1572,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1649,
+              "label": "End credit"
+            }
+          ]
+        },
+        {
+          "videoId": "E3ULyrBSr-8",
+          "title": "Ryze vs Akali [ MID ] Lol Korea Master Patch 25.4 ✅",
+          "rankClaim": "Master",
+          "patch": "25.4",
+          "durationSec": 1566,
+          "region": "KR",
+          "uploaded": "2025-02-26",
+          "moments": []
+        },
+        {
+          "videoId": "WqyCXLDtY04",
+          "title": "T1 Faker Ryze MID vs Akali - Patch 25.2 Korea Master ✅",
+          "rankClaim": "Master",
+          "patch": "25.2",
+          "durationSec": 1364,
+          "region": "KR",
+          "player": "Faker",
+          "team": "T1",
+          "uploaded": "2025-02-03",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 85,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "gt_fYsfhOi0",
+          "title": "Ryze Top vs Kennen - EUW Challenger Patch 26.08",
+          "rankClaim": "Challenger",
+          "patch": "26.8",
+          "durationSec": 1780,
+          "region": "EUW",
+          "uploaded": "2026-04-27",
+          "moments": []
+        },
+        {
+          "videoId": "-LI450ESifM",
+          "title": "Ryze Top vs Kennen - NA Grandmaster Patch 26.06",
+          "rankClaim": "Grandmaster",
+          "patch": "26.6",
+          "durationSec": 1522,
+          "region": "NA",
+          "uploaded": "2026-03-27",
+          "moments": []
+        },
+        {
+          "videoId": "BK4cG6_ISd8",
+          "title": "Ryze Top vs Kennen - KR Master Patch 25.24",
+          "rankClaim": "Master",
+          "patch": "25.24",
+          "durationSec": 1592,
+          "region": "KR",
+          "uploaded": "2025-12-29",
+          "moments": []
+        },
+        {
+          "videoId": "S2Og0oxySqw",
+          "title": "Ryze Top vs Kennen - KR Master Patch 25.17",
+          "rankClaim": "Master",
+          "patch": "25.17",
+          "durationSec": 1638,
+          "region": "KR",
+          "uploaded": "2025-09-08",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 86,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "-B-aaM0HInk",
+          "title": "Ryze Top vs Garen - NA Grandmaster Patch 26.04",
+          "rankClaim": "Grandmaster",
+          "patch": "26.4",
+          "durationSec": 1626,
+          "region": "NA",
+          "uploaded": "2026-02-27",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 183,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 295,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 577,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 595,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 653,
+              "label": "Get a Triple Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 758,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 856,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 877,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1017,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1041,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1175,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1290,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1424,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1532,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1584,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1615,
+              "label": "End credit"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 90,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "oXUXXg-Jye0",
+          "title": "Ryze Top vs Malzahar - KR Challenger Patch 26.01",
+          "rankClaim": "Challenger",
+          "patch": "26.1",
+          "durationSec": 1590,
+          "region": "KR",
+          "uploaded": "2026-01-17",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 375,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 577,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 625,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 905,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 969,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1056,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1234,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1263,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1362,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1498,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1516,
+              "label": "Take down The Inhibitor"
+            },
+            {
+              "atSec": 1534,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1565,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1579,
+              "label": "End credit"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 92,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "PA_KyLBVuKg",
+          "title": "Ryze Top vs Riven - KR Master Patch 26.18",
+          "rankClaim": "Master",
+          "patch": "26.18",
+          "durationSec": 1575,
+          "region": "KR",
+          "uploaded": "2026-09-21",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 103,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "i4kVNQFbfdE",
+          "title": "(EDG Angel) Ryze Mid vs Ahri - KR Challenger Patch 26.15",
+          "rankClaim": "Challenger",
+          "patch": "26.15",
+          "durationSec": 1647,
+          "region": "KR",
+          "player": "Angel",
+          "team": "EDG",
+          "uploaded": "2026-08-02",
+          "moments": []
+        },
+        {
+          "videoId": "wH5gqDrZy1g",
+          "title": "Ryze Mid vs Ahri - KR Challenger Patch 26.07",
+          "rankClaim": "Challenger",
+          "patch": "26.7",
+          "durationSec": 1807,
+          "region": "KR",
+          "uploaded": "2026-04-05",
+          "moments": []
+        },
+        {
+          "videoId": "eOrOj2RC2PI",
+          "title": "Ryze Mid vs Ahri - KR Challenger Patch 25.23",
+          "rankClaim": "Challenger",
+          "patch": "25.23",
+          "durationSec": 1613,
+          "region": "KR",
+          "uploaded": "2025-11-21",
+          "moments": []
+        },
+        {
+          "videoId": "n6rt4uurmzE",
+          "title": "Ryze Mid vs Ahri - KR Challenger Patch 25.14",
+          "rankClaim": "Challenger",
+          "patch": "25.14",
+          "durationSec": 1835,
+          "region": "KR",
+          "uploaded": "2025-07-22",
+          "moments": []
+        },
+        {
+          "videoId": "mf2ColWkgcA",
+          "title": "Ryze Mid vs Ahri - KR Challenger Patch 25.12",
+          "rankClaim": "Challenger",
+          "patch": "25.12",
+          "durationSec": 1995,
+          "region": "KR",
+          "uploaded": "2025-06-17",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 103,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "K_pX3o3SXHg",
+          "title": "Ryze Top vs Ahri - NA Challenger Patch 26.19",
+          "rankClaim": "Challenger",
+          "patch": "26.19",
+          "durationSec": 1644,
+          "region": "NA",
+          "uploaded": "2026-10-04",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 105,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "vyej-U9p60U",
+          "title": "Ryze Mid vs Fizz - KR Challenger Patch 26.08",
+          "rankClaim": "Challenger",
+          "patch": "26.8",
+          "durationSec": 1499,
+          "region": "KR",
+          "uploaded": "2026-04-21",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 106,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "uWc6wcm5ujo",
+          "title": "Ryze vs Volibear Top - KR Challenger - Patch 25.22 Season 15",
+          "rankClaim": "Challenger",
+          "patch": "25.22",
+          "durationSec": 2011,
+          "region": "KR",
+          "uploaded": "2025-11-13",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 112,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "DCzv5rR7QEw",
+          "title": "Ryze vs Viktor Mid - KR Challenger - Patch 16.17 Season 16",
+          "rankClaim": "Challenger",
+          "patch": "26.17",
+          "durationSec": 1721,
+          "region": "KR",
+          "uploaded": "2026-09-04",
+          "moments": []
+        },
+        {
+          "videoId": "z-Jf_Ua-mXA",
+          "title": "T1 Faker Ryze vs Viktor [ MID ] Korea Challenger 1832 LP | Patch 26.12",
+          "rankClaim": "Challenger",
+          "patch": "26.12",
+          "durationSec": 2086,
+          "region": "KR",
+          "player": "Faker",
+          "team": "T1",
+          "uploaded": "2026-06-12",
+          "moments": []
+        },
+        {
+          "videoId": "LnwqsKMTWqc",
+          "title": "Ryze Mid vs Viktor - KR Master Patch 25.24",
+          "rankClaim": "Master",
+          "patch": "25.24",
+          "durationSec": 1752,
+          "region": "KR",
+          "uploaded": "2025-12-07",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 114,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "pzCL-WeZyt0",
+          "title": "(RNG Tangyuan) Ryze Mid vs Fiora - KR Grandmaster Patch 26.14",
+          "rankClaim": "Grandmaster",
+          "patch": "26.14",
+          "durationSec": 1468,
+          "region": "KR",
+          "player": "Tangyuan",
+          "uploaded": "2026-07-18",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 114,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "p8cx_qu04wU",
+          "title": "Ryze Top vs Fiora - KR Master Patch 25.24",
+          "rankClaim": "Master",
+          "patch": "25.24",
+          "durationSec": 1596,
+          "region": "KR",
+          "uploaded": "2025-12-13",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 126,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "33ITwEhm89I",
+          "title": "Ryze Mid vs Jayce - KR Challenger Patch 25.20",
+          "rankClaim": "Challenger",
+          "patch": "25.20",
+          "durationSec": 1464,
+          "region": "KR",
+          "uploaded": "2025-10-12",
+          "moments": []
+        },
+        {
+          "videoId": "_SIOJxtfCQg",
+          "title": "Faker Ryze vs Jayce Mid - KR Challenger - Patch 25.19 Season 15",
+          "rankClaim": "Challenger",
+          "patch": "25.19",
+          "durationSec": 1411,
+          "region": "KR",
+          "player": "Faker",
+          "uploaded": "2025-10-07",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 126,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "-mL--7tANj0",
+          "title": "Ryze Top vs Jayce - KR Master Patch 25.23",
+          "rankClaim": "Master",
+          "patch": "25.23",
+          "durationSec": 1596,
+          "region": "KR",
+          "uploaded": "2025-11-30",
+          "moments": []
+        },
+        {
+          "videoId": "YC56903NH1M",
+          "title": "Ryze Top vs Jayce - KR Grandmaster Patch 25.09",
+          "rankClaim": "Grandmaster",
+          "patch": "25.9",
+          "durationSec": 1836,
+          "region": "KR",
+          "uploaded": "2025-05-10",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 271,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 426,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 650,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 699,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 725,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1021,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1297,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1335,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1395,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1496,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1595,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1704,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1719,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1746,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1775,
+              "label": "Take down The Inhibitor"
+            },
+            {
+              "atSec": 1791,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1802,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1815,
+              "label": "End credit"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 127,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "-Ua6_VTkH8Y",
+          "title": "Ryze Mid vs Lissandra (HRTS Mercy9) - EUW Challenger Patch 26.18",
+          "rankClaim": "Challenger",
+          "patch": "26.18",
+          "durationSec": 1764,
+          "region": "EUW",
+          "uploaded": "2026-09-17",
+          "moments": []
+        },
+        {
+          "videoId": "VGZP-BcxC3Y",
+          "title": "Rank 1 Ryze : His DAMAGE is INSANE vs Lissandra - Engsub",
+          "rankClaim": "Master+",
+          "patch": "26.12",
+          "durationSec": 1962,
+          "patchEstimated": true,
+          "player": "Baicaiovo",
+          "uploaded": "2026-06-12",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "iQVMJ0N9atY",
+          "title": "Ryze Mid vs Lissandra - KR Master Patch 26.06",
+          "rankClaim": "Master",
+          "patch": "26.6",
+          "durationSec": 1481,
+          "region": "KR",
+          "uploaded": "2026-03-22",
+          "moments": []
+        },
+        {
+          "videoId": "-Euw_O9O6WE",
+          "title": "Ryze vs Lissandra Mid - KR Challenger - Patch 16.03 Season 16",
+          "rankClaim": "Challenger",
+          "patch": "26.3",
+          "durationSec": 1681,
+          "region": "KR",
+          "uploaded": "2026-02-07",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 131,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "ggjbJjcsHik",
+          "title": "Rank 1 Ryze : His Diana Matchup at CN Super Server is IMPRESSIVE",
+          "rankClaim": "Master+",
+          "patch": "26.13",
+          "durationSec": 2130,
+          "patchEstimated": true,
+          "player": "Baicaiovo",
+          "uploaded": "2026-07-07",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "cfewCCPH2Ss",
+          "title": "Ryze Mid vs Diana - KR Master Patch 25.21",
+          "rankClaim": "Master",
+          "patch": "25.21",
+          "durationSec": 1988,
+          "region": "KR",
+          "uploaded": "2025-10-25",
+          "moments": []
+        },
+        {
+          "videoId": "j0mtVZJt_Mo",
+          "title": "Ryze Mid vs Diana - KR Grandmaster Patch 25.07",
+          "rankClaim": "Grandmaster",
+          "patch": "25.7",
+          "durationSec": 1616,
+          "region": "KR",
+          "uploaded": "2025-04-07",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 164,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 342,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 438,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 575,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 738,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 787,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 843,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1028,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1094,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1122,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1228,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1251,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1348,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1381,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1415,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1453,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1468,
+              "label": "Take down The Inhibitor"
+            },
+            {
+              "atSec": 1490,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1518,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1595,
+              "label": "End credit"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 134,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "1eqRctQlcmo",
+          "title": "T1 Faker Ryze vs Syndra [ MID ] Korea Challenger 1926 LP | Patch 26.17",
+          "rankClaim": "Challenger",
+          "patch": "26.17",
+          "durationSec": 1643,
+          "region": "KR",
+          "player": "Faker",
+          "team": "T1",
+          "uploaded": "2026-09-02",
+          "moments": []
+        },
+        {
+          "videoId": "sZ44xJFMU3k",
+          "title": "(NS Calix) Ryze Mid vs Syndra - KR Challenger Patch 26.16",
+          "rankClaim": "Challenger",
+          "patch": "26.16",
+          "durationSec": 1473,
+          "region": "KR",
+          "player": "Calix",
+          "team": "NS",
+          "uploaded": "2026-08-24",
+          "moments": []
+        },
+        {
+          "videoId": "_u9aRWZnONU",
+          "title": "(LNG BuLLDoG) Ryze Mid vs Syndra - KR Challenger Patch 26.13",
+          "rankClaim": "Challenger",
+          "patch": "26.13",
+          "durationSec": 1695,
+          "region": "KR",
+          "player": "BuLLDoG",
+          "team": "LNG",
+          "uploaded": "2026-06-27",
+          "result": "L",
+          "moments": [
+            {
+              "atSec": 376,
+              "label": "Red takes 1st Dragon (Ocean)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 545,
+              "label": "First Blood — Ryze kills Poppy",
+              "kind": "kill"
+            },
+            {
+              "atSec": 709,
+              "label": "Red takes 2nd Dragon (Infernal)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1035,
+              "label": "Red takes 3rd Dragon (Cloud)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1122,
+              "label": "Qiyana picks off Syndra"
+            },
+            {
+              "atSec": 1235,
+              "label": "Team fight (3 kills)",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1369,
+              "label": "Red takes 4th Dragon (Cloud)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1510,
+              "label": "Ryze kills Sivir",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1534,
+              "label": "Red takes Baron",
+              "kind": "baron"
+            },
+            {
+              "atSec": 1620,
+              "label": "Ryze Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1632,
+              "label": "Mid Inhibitor falls (Blue)"
+            }
+          ]
+        },
+        {
+          "videoId": "d3OIqTC4XL4",
+          "title": "Ryze Mid vs Syndra - EUW Challenger Patch 25.24",
+          "rankClaim": "Challenger",
+          "patch": "25.24",
+          "durationSec": 1488,
+          "region": "EUW",
+          "uploaded": "2025-12-23",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 271,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 487,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 541,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 732,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 831,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 897,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 966,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 985,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 999,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1253,
+              "label": "Get a Triple Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1278,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1298,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1336,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1364,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1385,
+              "label": "Take down The Inhibitor"
+            },
+            {
+              "atSec": 1454,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1477,
+              "label": "End credit"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 157,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "a8DE-IXU-kY",
+          "title": "T1 Faker Ryze vs Yasuo [ MID ] Patch 26.1 Ranked Korea",
+          "rankClaim": "Master+",
+          "patch": "26.1",
+          "durationSec": 1540,
+          "region": "KR",
+          "player": "Faker",
+          "team": "T1",
+          "uploaded": "2026-01-14",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 157,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "MixRkvMX8IE",
+          "title": "Ryze Top vs Yasuo - EUW Grandmaster Patch 25.21",
+          "rankClaim": "Grandmaster",
+          "patch": "25.21",
+          "durationSec": 1977,
+          "region": "EUW",
+          "uploaded": "2025-11-01",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 163,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "medvJyBznPQ",
+          "title": "(FNC Upset) Ryze Mid vs Taliyah - EUW Challenger Patch 26.11",
+          "rankClaim": "Challenger",
+          "patch": "26.11",
+          "durationSec": 1540,
+          "region": "EUW",
+          "player": "Upset",
+          "team": "FNC",
+          "uploaded": "2026-06-01",
+          "moments": []
+        },
+        {
+          "videoId": "DTpNChCULgQ",
+          "title": "Ryze vs Taliyah MID [ Gen.G Chovy ] Patch 25.24 Ranked Korea ✅",
+          "rankClaim": "Master+",
+          "patch": "25.24",
+          "durationSec": 1819,
+          "region": "KR",
+          "player": "Chovy",
+          "team": "Gen.G",
+          "uploaded": "2025-12-31",
+          "moments": []
+        },
+        {
+          "videoId": "kKQgoVfU-L4",
+          "title": "Ryze vs Taliyah [ MID ] Korea Challenger 1152 LP | Patch 25.21 ✅",
+          "rankClaim": "Challenger",
+          "patch": "25.21",
+          "durationSec": 1399,
+          "region": "KR",
+          "uploaded": "2025-10-31",
+          "moments": []
+        },
+        {
+          "videoId": "r0EDno1jvn4",
+          "title": "Ryze Mid vs Taliyah - KR Grandmaster Patch 25.17",
+          "rankClaim": "Grandmaster",
+          "patch": "25.17",
+          "durationSec": 1975,
+          "region": "KR",
+          "uploaded": "2025-09-01",
+          "moments": []
+        },
+        {
+          "videoId": "vD1jmEGPX28",
+          "title": "Ryze vs Taliyah MID [ Doinb ] Patch 25.13 Korea Challenger ✅",
+          "rankClaim": "Challenger",
+          "patch": "25.13",
+          "durationSec": 1396,
+          "region": "KR",
+          "player": "Doinb",
+          "uploaded": "2025-07-04",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 164,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "ZudFs2fKEN4",
+          "title": "Ryze vs Camille Mid - KR Grandmaster - Patch 16.05 Season 16",
+          "rankClaim": "Grandmaster",
+          "patch": "26.5",
+          "durationSec": 1921,
+          "region": "KR",
+          "uploaded": "2026-03-09",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 164,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "5WHok2rJlSs",
+          "title": "Ryze Top vs Camille - EUW Grandmaster Patch 25.05",
+          "rankClaim": "Grandmaster",
+          "patch": "25.5",
+          "durationSec": 1719,
+          "region": "EUW",
+          "uploaded": "2025-03-16",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 234,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "aidi8oEhKxY",
+          "title": "Ryze Mid vs Viego - KR Challenger Patch 25.16",
+          "rankClaim": "Challenger",
+          "patch": "25.16",
+          "durationSec": 1635,
+          "region": "KR",
+          "uploaded": "2025-08-18",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 238,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "76KGPngpyTI",
+          "title": "Ryze vs Zed Mid - KR Challenger - Patch 25.9 Season 15",
+          "rankClaim": "Challenger",
+          "patch": "25.9",
+          "durationSec": 1981,
+          "region": "KR",
+          "uploaded": "2025-05-11",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 245,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "zVpc0e6sMlc",
+          "title": "THE BATTLE BEGINS: ALOIS VS DRUTUTT  |  KOREA DAY 1",
+          "rankClaim": "Master+",
+          "patch": "26.11",
+          "durationSec": 20356,
+          "patchEstimated": true,
+          "player": "Alois",
+          "uploaded": "2026-06-06",
+          "format": "stream",
+          "cam": true,
+          "startSec": 10669,
+          "endSec": 11863,
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 246,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "djDLVbiNhcI",
+          "title": "Ryze vs Qiyana MID [ Gen G Chovy ] Patch 25.19 Korea Master ✅",
+          "rankClaim": "Master",
+          "patch": "25.19",
+          "durationSec": 1965,
+          "region": "KR",
+          "player": "Chovy",
+          "uploaded": "2025-09-25",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 268,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "jyweZuCU_AU",
+          "title": "Ryze Mid vs Azir - KR Challenger Patch 26.03",
+          "rankClaim": "Challenger",
+          "patch": "26.3",
+          "durationSec": 1568,
+          "region": "KR",
+          "uploaded": "2026-02-07",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 335,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 525,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 677,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 838,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 876,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1008,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1138,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1163,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1273,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1431,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1446,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1466,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1495,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1557,
+              "label": "End credit"
+            }
+          ]
+        },
+        {
+          "videoId": "4U3qiucqr1k",
+          "title": "Ryze vs Azir MID [ Doinb ] Patch 25.6 Korea Master ✅",
+          "rankClaim": "Master",
+          "patch": "25.6",
+          "durationSec": 1797,
+          "region": "KR",
+          "player": "Doinb",
+          "uploaded": "2025-03-20",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 516,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "H18tA_i6J84",
+          "title": "(Strompest) Ryze Top vs Ornn - NA Challenger Patch 26.13",
+          "rankClaim": "Challenger",
+          "patch": "26.13",
+          "durationSec": 1468,
+          "region": "NA",
+          "player": "Strompest",
+          "uploaded": "2026-07-05",
+          "result": "W",
+          "moments": [
+            {
+              "atSec": 331,
+              "label": "Blue takes 1st Dragon (Mountain)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 488,
+              "label": "First Blood — Ryze kills Karthus",
+              "kind": "kill"
+            },
+            {
+              "atSec": 668,
+              "label": "Blue takes 2nd Dragon (Cloud)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 895,
+              "label": "Blue takes Rift Herald",
+              "kind": "herald"
+            },
+            {
+              "atSec": 969,
+              "label": "Ryze picks off Yone"
+            },
+            {
+              "atSec": 1005,
+              "label": "Blue takes 3rd Dragon (Hextech)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1039,
+              "label": "Ryze eliminates Ornn"
+            },
+            {
+              "atSec": 1106,
+              "label": "Ryze outplays Anivia"
+            },
+            {
+              "atSec": 1215,
+              "label": "Ryze eliminates Senna"
+            },
+            {
+              "atSec": 1266,
+              "label": "Blue takes Baron",
+              "kind": "baron"
+            },
+            {
+              "atSec": 1327,
+              "label": "Blue takes 4th Dragon (Hextech)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1352,
+              "label": "Hwei eliminates Anivia"
+            },
+            {
+              "atSec": 1365,
+              "label": "Mid Inhibitor falls (Red)"
+            },
+            {
+              "atSec": 1392,
+              "label": "Team fight (3 kills)",
+              "kind": "teamfight"
+            }
+          ]
+        },
+        {
+          "videoId": "Ieg1l90lnho",
+          "title": "Ryze Top vs Ornn - KR Master Patch 26.05",
+          "rankClaim": "Master",
+          "patch": "26.5",
+          "durationSec": 1738,
+          "region": "KR",
+          "uploaded": "2026-03-13",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 517,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "xz8arkzNH2Y",
+          "title": "T1 Faker Ryze vs Sylas [ MID ] Korea Grandmaster 1680 LP | Patch 26.12",
+          "rankClaim": "Grandmaster",
+          "patch": "26.12",
+          "durationSec": 1341,
+          "region": "KR",
+          "player": "Faker",
+          "team": "T1",
+          "uploaded": "2026-06-21",
+          "moments": []
+        },
+        {
+          "videoId": "FU5ZJ2HGF1Y",
+          "title": "Ryze Mid vs Sylas - VN Challenger Patch 26.05",
+          "rankClaim": "Challenger",
+          "patch": "26.5",
+          "durationSec": 1674,
+          "uploaded": "2026-03-08",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 77,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 184,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 402,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 459,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 540,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 685,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 804,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 873,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1027,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1099,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1120,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1149,
+              "label": "Take down The Inhibitor"
+            },
+            {
+              "atSec": 1236,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1347,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1386,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1409,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1508,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1557,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1593,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1629,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1643,
+              "label": "Take down The Inhibitor"
+            },
+            {
+              "atSec": 1663,
+              "label": "End credit"
+            }
+          ]
+        },
+        {
+          "videoId": "KPrJqlxxeNQ",
+          "title": "Ryze Mid vs Sylas - KR Grandmaster Patch 25.18",
+          "rankClaim": "Grandmaster",
+          "patch": "25.18",
+          "durationSec": 1468,
+          "region": "KR",
+          "uploaded": "2025-09-14",
+          "moments": []
+        },
+        {
+          "videoId": "SJQEMVNv8Y4",
+          "title": "Ryze vs Sylas MID [ Perfect KDA ] Lol Korea Grandmaster Patch 25.9 ✅",
+          "rankClaim": "Grandmaster",
+          "patch": "25.9",
+          "durationSec": 1139,
+          "region": "KR",
+          "player": "Perfect KDA",
+          "uploaded": "2025-05-07",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 777,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "3eGKpOYWmUU",
+          "title": "Ryze Mid vs Yone - KR Grandmaster Patch 26.17",
+          "rankClaim": "Grandmaster",
+          "patch": "26.17",
+          "durationSec": 1858,
+          "region": "KR",
+          "uploaded": "2026-09-01",
+          "moments": []
+        },
+        {
+          "videoId": "cW20jBpVb7U",
+          "title": "T1 Faker Ryze vs Yone [ MID ] Korea Challenger 1942 LP | Patch 26.9",
+          "rankClaim": "Challenger",
+          "patch": "26.9",
+          "durationSec": 1423,
+          "region": "KR",
+          "player": "Faker",
+          "team": "T1",
+          "uploaded": "2026-05-07",
+          "moments": []
+        },
+        {
+          "videoId": "KRvuqHFMMW8",
+          "title": "T1 Faker Ryze vs Yone [ MID ] Patch 25.6 Korea Master ✅",
+          "rankClaim": "Master",
+          "patch": "25.6",
+          "durationSec": 850,
+          "region": "KR",
+          "player": "Faker",
+          "team": "T1",
+          "uploaded": "2025-03-29",
+          "moments": []
+        },
+        {
+          "videoId": "vhM0T9_Grg8",
+          "title": "Ryze Mid vs Yone - KR Challenger Patch 25.04",
+          "rankClaim": "Challenger",
+          "patch": "25.4",
+          "durationSec": 1622,
+          "region": "KR",
+          "uploaded": "2025-02-23",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 271,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 374,
+              "label": "Hunt The Void Grubs",
+              "kind": "grubs"
+            },
+            {
+              "atSec": 411,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 500,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 619,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 713,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 758,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 887,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 952,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 982,
+              "label": "Hunt The Dragon",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1015,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1053,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1196,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1281,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1353,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1387,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1509,
+              "label": "Hunt The Atakhan"
+            },
+            {
+              "atSec": 1573,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1601,
+              "label": "End credit"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 777,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "7ENYLDjxiWc",
+          "title": "Ryze vs Yone [ TOP ] Lol Korea Master Patch 25.16",
+          "rankClaim": "Master",
+          "patch": "25.16",
+          "durationSec": 1404,
+          "region": "KR",
+          "uploaded": "2025-08-22",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 799,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "UgVi3PQgJe8",
+          "title": "(UCAM Kozi) Ryze Top vs Ambessa - EUW Grandmaster Patch 26.11",
+          "rankClaim": "Grandmaster",
+          "patch": "26.11",
+          "durationSec": 1442,
+          "region": "EUW",
+          "player": "UCAM Kozi",
+          "uploaded": "2026-06-08",
+          "moments": []
+        },
+        {
+          "videoId": "_0IJ9-co3YA",
+          "title": "Ryze Top vs Ambessa - NA Grandmaster Patch 25.15",
+          "rankClaim": "Grandmaster",
+          "patch": "25.15",
+          "durationSec": 1793,
+          "region": "NA",
+          "uploaded": "2025-08-09",
+          "moments": []
+        },
+        {
+          "videoId": "MEL7wLgt0Q0",
+          "title": "Ryze vs Ambessa TOP [ TripleKill ] Lol Korea Master Patch 25.12",
+          "rankClaim": "Master",
+          "patch": "25.12",
+          "durationSec": 1661,
+          "region": "KR",
+          "player": "TripleKill",
+          "uploaded": "2025-06-20",
+          "moments": []
+        },
+        {
+          "videoId": "ORmYl7leKEM",
+          "title": "Ryze Top vs Ambessa - KR Master Patch 25.07",
+          "rankClaim": "Master",
+          "patch": "25.7",
+          "durationSec": 1468,
+          "region": "KR",
+          "uploaded": "2025-04-15",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 800,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "SwHweYlRRv4",
+          "title": "Ryze Mid vs Mel - KR Master Patch 25.05",
+          "rankClaim": "Master",
+          "patch": "25.5",
+          "durationSec": 1856,
+          "region": "KR",
+          "uploaded": "2025-03-08",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 181,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 367,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 429,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 460,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 552,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 677,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 704,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 733,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 921,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 976,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1119,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1240,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1255,
+              "label": "Get a Triple Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1328,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1346,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1376,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1392,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1524,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1634,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1704,
+              "label": "Take down The Inhibitor"
+            },
+            {
+              "atSec": 1783,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1835,
+              "label": "End credit"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 887,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "qZVTgQEz2Yk",
+          "title": "Ryze Top vs Gwen - NA Grandmaster Patch 25.16",
+          "rankClaim": "Grandmaster",
+          "patch": "25.16",
+          "durationSec": 2061,
+          "region": "NA",
+          "uploaded": "2025-08-24",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 893,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "2_pThLusQMM",
+          "title": "(FNC Vladi) Ryze Mid vs Aurora - EUW Challenger Patch 26.19",
+          "rankClaim": "Challenger",
+          "patch": "26.19",
+          "durationSec": 1638,
+          "region": "EUW",
+          "player": "Vladi",
+          "team": "FNC",
+          "uploaded": "2026-09-30",
+          "moments": []
+        },
+        {
+          "videoId": "VXFW_H9s1zQ",
+          "title": "Ryze Mid vs Aurora - KR Challenger Patch 25.13",
+          "rankClaim": "Challenger",
+          "patch": "25.13",
+          "durationSec": 1551,
+          "region": "KR",
+          "uploaded": "2025-06-29",
+          "moments": []
+        },
+        {
+          "videoId": "A9OXj1op3Ic",
+          "title": "Ryze vs Aurora Mid -  KR Challenger - Patch 25.6 Season 15",
+          "rankClaim": "Challenger",
+          "patch": "25.6",
+          "durationSec": 2490,
+          "region": "KR",
+          "uploaded": "2025-03-21",
+          "moments": []
+        },
+        {
+          "videoId": "8WKdET1sQRA",
+          "title": "Ryze vs Aurora Mid - KR Grandmaster - Patch 25.6 Season 15",
+          "rankClaim": "Grandmaster",
+          "patch": "25.6",
+          "durationSec": 2491,
+          "region": "KR",
+          "uploaded": "2025-03-20",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 897,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "7IccSW3-YnU",
+          "title": "Ryze Top vs K'Sante - KR Master Patch 26.02",
+          "rankClaim": "Master",
+          "patch": "26.2",
+          "durationSec": 1614,
+          "region": "KR",
+          "uploaded": "2026-02-02",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 904,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "rGFgJXculeg",
+          "title": "Ryze Top vs Zaahen - KR Challenger Patch 26.03",
+          "rankClaim": "Challenger",
+          "patch": "26.3",
+          "durationSec": 1586,
+          "region": "KR",
+          "uploaded": "2026-02-14",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 315,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 492,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 630,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 759,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 958,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1082,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1176,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1264,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1301,
+              "label": "Get a Triple Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1334,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1412,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1447,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1489,
+              "label": "Hunt The Dragon",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1550,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1575,
+              "label": "End credit"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 950,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "s_pYFmXoQFY",
+          "title": "T1 Faker Ryze vs Naafiri [ MID ] Korea Grandmaster 1606 LP | Patch 26.15",
+          "rankClaim": "Grandmaster",
+          "patch": "26.15",
+          "durationSec": 1638,
+          "region": "KR",
+          "player": "Faker",
+          "team": "T1",
+          "uploaded": "2026-08-03",
+          "moments": []
+        }
+      ]
+    }
+  ]
+}

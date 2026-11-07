@@ -1,0 +1,4080 @@
+{
+  "schema": 1,
+  "champion": 233,
+  "generatedAt": "2026-11-07T13:25:14.592Z",
+  "guides": [
+    {
+      "champion": 233,
+      "enemy": 60,
+      "lane": "jungle",
+      "patch": "26.21",
+      "reviewed": false,
+      "difficulty": "Hard",
+      "favoredWhen": "Briar is the underdog head-on; her windows are counterganks and late fight entries after Cocoon and Rappel are spent.",
+      "keyTips": [
+        {
+          "text": "Elise is one of Briar's hardest matchups because both of her E answers stop a run-in: Cocoon stuns it and Rappel untargetably dodges it. Never force the duel; answer her instead.",
+          "scope": "pair",
+          "sourceIds": [
+            "loganjg"
+          ],
+          "abilityKeys": [
+            {
+              "champion": 60,
+              "key": "E"
+            }
+          ]
+        },
+        {
+          "text": "Join fights after they start, not first. Her control lands easiest on the opening diver, so be the second entry and close with W-Q ({cd:233:W}) once her attention is split.",
+          "scope": "pair",
+          "sourceIds": [
+            "loganjg"
+          ],
+          "abilityKeys": [
+            {
+              "champion": 233,
+              "key": "W"
+            },
+            {
+              "champion": 233,
+              "key": "Q"
+            },
+            {
+              "champion": 60,
+              "key": "E"
+            }
+          ]
+        },
+        {
+          "text": "Fire W1 only from range where Q lands instantly after. A long W1 run with a late Q is the exact sequence she punishes with Cocoon or Rappel.",
+          "scope": "pair",
+          "sourceIds": [
+            "loganjg"
+          ],
+          "abilityKeys": [
+            {
+              "champion": 233,
+              "key": "W"
+            },
+            {
+              "champion": 233,
+              "key": "Q"
+            },
+            {
+              "champion": 60,
+              "key": "E"
+            }
+          ]
+        }
+      ],
+      "enemyTips": {},
+      "sections": {
+        "overview": {
+          "tips": []
+        },
+        "early-lane": {
+          "tips": [
+            {
+              "text": "When Elise shows on a gank, path to her and countergank rather than forcing your own play elsewhere. She wins the straight duel, so meet her at her fight instead of taking a fair one.",
+              "scope": "pair",
+              "sourceIds": [
+                "loganjg"
+              ],
+              "heading": "Answer, don't force"
+            },
+            {
+              "text": "Let skirmishes start before you enter. Cocoon ({cd:60:E}) is hardest to land on a mover who arrives late, and a spent Cocoon is your cue to W-Q in.",
+              "scope": "pair",
+              "sourceIds": [
+                "loganjg"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 60,
+                  "key": "E"
+                },
+                {
+                  "champion": 233,
+                  "key": "W"
+                },
+                {
+                  "champion": 233,
+                  "key": "Q"
+                }
+              ]
+            },
+            {
+              "text": "Approach from fog. Closing across open ground lets her pre-aim Cocoon or hold Rappel for your Q; brush and flank angles cut that reaction window down.",
+              "scope": "pair",
+              "sourceIds": [
+                "loganjg"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 60,
+                  "key": "E"
+                }
+              ]
+            }
+          ]
+        },
+        "mid-lane": {
+          "tips": [
+            {
+              "text": "Set up mid-game approaches from brush. Starting W1 out of vision shortens the distance she has to react to your entry.",
+              "scope": "pair",
+              "sourceIds": [
+                "loganjg"
+              ],
+              "heading": "Brush approaches",
+              "abilityKeys": [
+                {
+                  "champion": 233,
+                  "key": "W"
+                }
+              ]
+            },
+            {
+              "text": "Make W1 and Q one motion. Q the instant you are close; the gap between a far W1 and a late Q is where her E answers live.",
+              "scope": "pair",
+              "sourceIds": [
+                "loganjg"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 233,
+                  "key": "W"
+                },
+                {
+                  "champion": 233,
+                  "key": "Q"
+                }
+              ]
+            },
+            {
+              "text": "Watch her E before committing. If Cocoon just caught a teammate, her best peel is down ({cd:60:E}) and your W-Q window is open.",
+              "scope": "pair",
+              "sourceIds": [
+                "loganjg"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 60,
+                  "key": "E"
+                },
+                {
+                  "champion": 233,
+                  "key": "W"
+                },
+                {
+                  "champion": 233,
+                  "key": "Q"
+                }
+              ]
+            }
+          ]
+        },
+        "win-condition": {
+          "tips": [
+            {
+              "text": "Win as the second engage, never the first. Let someone else draw Cocoon and Rappel, then enter late and stay on the backline through the cleanup.",
+              "scope": "pair",
+              "sourceIds": [
+                "loganjg"
+              ],
+              "heading": "Second entry",
+              "abilityKeys": [
+                {
+                  "champion": 60,
+                  "key": "E"
+                }
+              ]
+            },
+            {
+              "text": "Keep playing the countergank game around objectives. Elise wants picks with her control, so cover the lane she leans toward and turn her attempt into your fight.",
+              "scope": "pair",
+              "sourceIds": [
+                "loganjg"
+              ]
+            }
+          ]
+        }
+      },
+      "itemization": [
+        {
+          "text": "Go bruiser instead of full damage. Sterak's Gage plus Spirit Visage lets you eat the Cocoon focus, live through the Rappel stall, and still land the Q follow-up.",
+          "scope": "pair",
+          "sourceIds": [
+            "loganjg"
+          ],
+          "abilityKeys": [
+            {
+              "champion": 60,
+              "key": "E"
+            }
+          ],
+          "itemIds": [
+            3181,
+            3065,
+            3053
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "id": "loganjg",
+          "author": "L0ganJG",
+          "rankClaim": "Grandmaster (profile badge; title claims Rank 1 Briar) - Briar main",
+          "rank": "grandmaster",
+          "url": "https://www.mobafire.com/league-of-legends/build/26-21-rank-1-briar-all-matchups-briar-jungle-all-builds-check-notes-629922",
+          "kind": "mobafire"
+        }
+      ]
+    }
+  ],
+  "general": [
+    {
+      "champion": 233,
+      "lane": "jungle",
+      "patch": "26.21",
+      "reviewed": false,
+      "keyTips": [
+        {
+          "text": "Clear fully into Scuttle, then pick the next fight from what the map actually shows.",
+          "scope": "champion",
+          "sourceIds": [
+            "loganjg"
+          ]
+        },
+        {
+          "text": "Never start Blood Frenzy without a target and direction that favor the fight, and keep E ready to cancel it out.",
+          "scope": "champion",
+          "sourceIds": [
+            "loganjg"
+          ],
+          "abilityKeys": [
+            {
+              "champion": 233,
+              "key": "W"
+            },
+            {
+              "champion": 233,
+              "key": "E"
+            }
+          ]
+        },
+        {
+          "text": "Convert Q picks on isolated enemies into camps, vision, or objectives instead of sitting in long full-team fights.",
+          "scope": "champion",
+          "sourceIds": [
+            "loganjg"
+          ],
+          "abilityKeys": [
+            {
+              "champion": 233,
+              "key": "Q"
+            }
+          ]
+        }
+      ],
+      "sections": {
+        "overview": {
+          "tips": []
+        },
+        "early-lane": {
+          "tips": [
+            {
+              "text": "Try the one-camp invade only when tracking puts the enemy jungler elsewhere and nearby lanes can move.",
+              "scope": "champion",
+              "sourceIds": [
+                "loganjg"
+              ]
+            },
+            {
+              "text": "Counter-gank early skirmishes hard, since Briar duels well once an enemy shows or hits a teammate.",
+              "scope": "champion",
+              "sourceIds": [
+                "loganjg"
+              ]
+            },
+            {
+              "text": "Track the opposing jungler through map sightings and camp states before entering their side.",
+              "scope": "champion",
+              "sourceIds": [
+                "loganjg"
+              ]
+            },
+            {
+              "text": "Close gaps under control with W1 into Q for target priority, then spend W2 only when the return strike stays safe.",
+              "scope": "champion",
+              "sourceIds": [
+                "loganjg"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 233,
+                  "key": "W"
+                },
+                {
+                  "champion": 233,
+                  "key": "Q"
+                }
+              ]
+            },
+            {
+              "text": "Trade across the map when an ally already loses a lane instead of re-spending time on a hopeless rescue.",
+              "scope": "champion",
+              "sourceIds": [
+                "loganjg"
+              ]
+            }
+          ]
+        },
+        "mid-lane": {
+          "tips": [
+            {
+              "text": "Pick skirmishes with teammates or positional edges, and leave drawn-out team brawls early.",
+              "scope": "champion",
+              "sourceIds": [
+                "loganjg"
+              ]
+            },
+            {
+              "text": "Invade only with a known enemy jungler spot plus lane backup nearby.",
+              "scope": "champion",
+              "sourceIds": [
+                "loganjg"
+              ]
+            },
+            {
+              "text": "Before an objective, read the map and wait for the entry Briar team wins.",
+              "scope": "champion",
+              "sourceIds": [
+                "loganjg"
+              ]
+            },
+            {
+              "text": "Steal Dragon with W over the wall into Q priority plus W2 and Smite only as a high-risk last resort.",
+              "scope": "champion",
+              "sourceIds": [
+                "loganjg"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 233,
+                  "key": "W"
+                },
+                {
+                  "champion": 233,
+                  "key": "Q"
+                }
+              ]
+            },
+            {
+              "text": "Around Baron, respect its knockback, which can break the W2-plus-Smite timing.",
+              "scope": "champion",
+              "sourceIds": [
+                "loganjg"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 233,
+                  "key": "W"
+                }
+              ]
+            }
+          ]
+        },
+        "win-condition": {
+          "tips": [
+            {
+              "text": "Snowball informed skirmishes and invades into finished items.",
+              "scope": "champion",
+              "sourceIds": [
+                "loganjg"
+              ]
+            },
+            {
+              "text": "Let the enemy show an opening late, then flank or pick with Certain Death and turn it into an objective or another kill.",
+              "scope": "champion",
+              "sourceIds": [
+                "loganjg"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 233,
+                  "key": "R"
+                }
+              ]
+            },
+            {
+              "text": "Stay a calculated skirmisher around camps and objectives; never charge blind into groups or W without an exit.",
+              "scope": "champion",
+              "sourceIds": [
+                "loganjg"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 233,
+                  "key": "W"
+                }
+              ]
+            },
+            {
+              "text": "Punish mispositioning with the Q stun and plan every fight around both it and the E escape.",
+              "scope": "champion",
+              "sourceIds": [
+                "loganjg"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 233,
+                  "key": "Q"
+                },
+                {
+                  "champion": 233,
+                  "key": "E"
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "itemization": [
+        {
+          "text": "Run Press the Attack with Triumph, Legend: Haste, and Coup de Grace, plus Sudden Impact and Treasure Hunter.",
+          "scope": "champion",
+          "sourceIds": [
+            "loganjg"
+          ]
+        },
+        {
+          "text": "Rush Titanic Hydra and Black Cleaver on the high-elo bruiser path, then Plated Steelcaps, Endless Hunger, Death's Dance, and Guardian Angel.",
+          "scope": "champion",
+          "sourceIds": [
+            "loganjg"
+          ],
+          "itemIds": [
+            3748,
+            3071,
+            3047,
+            2517,
+            6333,
+            3026
+          ]
+        },
+        {
+          "text": "Take Blade of the Ruined King into Black Cleaver as the alternate bruiser route, with Death's Dance and Spirit Visage for durability.",
+          "scope": "champion",
+          "sourceIds": [
+            "loganjg"
+          ],
+          "itemIds": [
+            3071,
+            6333,
+            3065
+          ]
+        },
+        {
+          "text": "Pick the Hail of Blades assassin setup of Voltaic Cyclosword, The Collector, and Edge of Night only when picks beat frontline duty.",
+          "scope": "champion",
+          "sourceIds": [
+            "loganjg"
+          ],
+          "itemIds": [
+            6699,
+            6676,
+            3814
+          ]
+        },
+        {
+          "text": "Take Flash and Smite, and match the pet to the game: Gustwalker, Mosstomper, or Scorchclaw.",
+          "scope": "champion",
+          "sourceIds": [
+            "loganjg"
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "id": "loganjg",
+          "author": "L0ganJG",
+          "rankClaim": "Grandmaster (profile badge; title claims Rank 1 Briar) - Briar main",
+          "rank": "grandmaster",
+          "url": "https://www.mobafire.com/league-of-legends/build/26-21-rank-1-briar-all-matchups-briar-jungle-all-builds-check-notes-629922",
+          "kind": "mobafire"
+        }
+      ]
+    }
+  ],
+  "vods": [
+    {
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "PVaQhAS9wU8",
+          "title": "FULL EDUCATIONAL BRIAR GAMEPLAY | FREE GUIDE",
+          "rankClaim": "Master+",
+          "patch": "26.17",
+          "durationSec": 1425,
+          "patchEstimated": true,
+          "player": "Sinerias",
+          "uploaded": "2026-08-30",
+          "format": "stream",
+          "cam": true,
+          "moments": []
+        },
+        {
+          "videoId": "o4PrbIz__VQ",
+          "title": "FULL EDUCATIONAL BRIAR GAMEPLAY",
+          "rankClaim": "Master+",
+          "patch": "26.4",
+          "durationSec": 2000,
+          "patchEstimated": true,
+          "player": "Sinerias",
+          "uploaded": "2026-02-24",
+          "format": "stream",
+          "cam": true,
+          "moments": []
+        }
+      ]
+    },
+    {
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "dl1YNE2QJzs",
+          "title": "I LOVE BRIAR FEET😭🙏",
+          "rankClaim": "Master+",
+          "patch": "26.18",
+          "durationSec": 1395,
+          "patchEstimated": true,
+          "player": "Makkro",
+          "uploaded": "2026-09-14",
+          "format": "stream",
+          "cam": true,
+          "moments": [
+            {
+              "atSec": 0,
+              "label": "Match setup and intro"
+            },
+            {
+              "atSec": 34,
+              "label": "Early game laning phase"
+            },
+            {
+              "atSec": 242,
+              "label": "Mid-game skirmishes"
+            },
+            {
+              "atSec": 516,
+              "label": "Closing the first game"
+            },
+            {
+              "atSec": 671,
+              "label": "Second game laning phase"
+            },
+            {
+              "atSec": 952,
+              "label": "Mid-game team fights",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1214,
+              "label": "Game conclusion and wrap-up"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 4,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "NSFkh2eTnTk",
+          "title": "Briar Mid vs Twisted Fate - VN Challenger Patch 26.04",
+          "rankClaim": "Challenger",
+          "patch": "26.4",
+          "durationSec": 1617,
+          "uploaded": "2026-03-03",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 175,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 436,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 518,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 632,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 746,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 804,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 944,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1006,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1080,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1117,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1167,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1181,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1265,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1353,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1408,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1427,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1542,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1606,
+              "label": "End credit"
+            }
+          ]
+        },
+        {
+          "videoId": "Eh0AovfQdvw",
+          "title": "Briar Mid vs Twisted Fate - NA Grandmaster Patch 25.21",
+          "rankClaim": "Grandmaster",
+          "patch": "25.21",
+          "durationSec": 1486,
+          "region": "NA",
+          "uploaded": "2025-11-07",
+          "moments": []
+        },
+        {
+          "videoId": "c9CdKTHow5o",
+          "title": "Briar Mid vs Twisted Fate - KR Master Patch 25.15",
+          "rankClaim": "Master",
+          "patch": "25.15",
+          "durationSec": 1803,
+          "region": "KR",
+          "uploaded": "2025-08-13",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 5,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "OIdJLThM-pM",
+          "title": "Briar Jungle vs Xin Zhao - EUW Grandmaster Patch 26.04",
+          "rankClaim": "Grandmaster",
+          "patch": "26.4",
+          "durationSec": 1510,
+          "region": "EUW",
+          "uploaded": "2026-02-26",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 246,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 474,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 500,
+              "label": "Hunt The Void Grubs",
+              "kind": "grubs"
+            },
+            {
+              "atSec": 709,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 734,
+              "label": "Hunt The Dragon",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 768,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 798,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 882,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 910,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 933,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 989,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1020,
+              "label": "Hunt The Rift Herald",
+              "kind": "herald"
+            },
+            {
+              "atSec": 1144,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1188,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1285,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1329,
+              "label": "Hunt The Baron Nashor",
+              "kind": "baron"
+            },
+            {
+              "atSec": 1372,
+              "label": "Hunt The Dragon",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1400,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1458,
+              "label": "Take down The Inhibitor"
+            },
+            {
+              "atSec": 1476,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1499,
+              "label": "End credit"
+            }
+          ]
+        },
+        {
+          "videoId": "VuXNdobcnyg",
+          "title": "Briar Jungle vs Xin Zhao - KR Grandmaster Patch 25.24",
+          "rankClaim": "Grandmaster",
+          "patch": "25.24",
+          "durationSec": 1552,
+          "region": "KR",
+          "uploaded": "2025-12-31",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 200,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 476,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 501,
+              "label": "Hunt The Void Grubs",
+              "kind": "grubs"
+            },
+            {
+              "atSec": 533,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 616,
+              "label": "Hunt The Dragon",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 646,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 714,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 797,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 871,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 887,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 902,
+              "label": "Hunt The Rift Herald",
+              "kind": "herald"
+            },
+            {
+              "atSec": 925,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1023,
+              "label": "Hunt The Dragon",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1157,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1222,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1348,
+              "label": "Hunt The Dragon",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1375,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1454,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1508,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1519,
+              "label": "Take down The Inhibitor"
+            },
+            {
+              "atSec": 1541,
+              "label": "End credit"
+            }
+          ]
+        },
+        {
+          "videoId": "1Z2YsSFUkeM",
+          "title": "Briar Jungle vs Xin Zhao - KR Grandmaster Patch 25.09",
+          "rankClaim": "Grandmaster",
+          "patch": "25.9",
+          "durationSec": 1710,
+          "region": "KR",
+          "uploaded": "2025-05-10",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 301,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 363,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 474,
+              "label": "Hunt The Void Grubs",
+              "kind": "grubs"
+            },
+            {
+              "atSec": 503,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 720,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 755,
+              "label": "Hunt The Dragon",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 892,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 926,
+              "label": "Hunt The Rift Herald",
+              "kind": "herald"
+            },
+            {
+              "atSec": 958,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 978,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1002,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1079,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1111,
+              "label": "Hunt The Dragon",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1142,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1228,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1247,
+              "label": "Hunt The Atakhan"
+            },
+            {
+              "atSec": 1263,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1354,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1418,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1507,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1541,
+              "label": "Hunt The Baron Nashor",
+              "kind": "baron"
+            },
+            {
+              "atSec": 1636,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1652,
+              "label": "Take down The Inhibitor"
+            },
+            {
+              "atSec": 1689,
+              "label": "End credit"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 8,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "x_zriraPP88",
+          "title": "Briar Mid vs Vladimir - NA Grandmaster Patch 25.16",
+          "rankClaim": "Grandmaster",
+          "patch": "25.16",
+          "durationSec": 1471,
+          "region": "NA",
+          "uploaded": "2025-08-26",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 9,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "fGkWwy6oFiI",
+          "title": "Briar vs Fiddlesticks Jungle - KR Master - Patch 25.13 Season 15",
+          "rankClaim": "Master",
+          "patch": "25.13",
+          "durationSec": 1606,
+          "region": "KR",
+          "uploaded": "2025-07-02",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 10,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "ESmp6YE73wQ",
+          "title": "Briar Top vs Kayle - NA Grandmaster Patch 26.07",
+          "rankClaim": "Grandmaster",
+          "patch": "26.7",
+          "durationSec": 1849,
+          "region": "NA",
+          "uploaded": "2026-04-14",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 11,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "C6ZHI4ZW_7I",
+          "title": "Briar Jungle vs Master Yi - BR Challenger Patch 25.23",
+          "rankClaim": "Challenger",
+          "patch": "25.23",
+          "durationSec": 1478,
+          "uploaded": "2025-12-04",
+          "moments": []
+        },
+        {
+          "videoId": "ivp0TOWgqCQ",
+          "title": "Briar vs Master Yi [ Jungle ] Lol Korea Master Patch 25.18 ✅",
+          "rankClaim": "Master",
+          "patch": "25.18",
+          "durationSec": 1249,
+          "region": "KR",
+          "uploaded": "2025-09-14",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 13,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "-YYVMvDTasU",
+          "title": "Briar Mid vs Ryze - KR Master Patch 26.08",
+          "rankClaim": "Master",
+          "patch": "26.8",
+          "durationSec": 1706,
+          "region": "KR",
+          "uploaded": "2026-04-28",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 27,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "H2VC4oIDwVo",
+          "title": "Briar Top vs Singed - VN Challenger Patch 26.06",
+          "rankClaim": "Challenger",
+          "patch": "26.6",
+          "durationSec": 1515,
+          "uploaded": "2026-03-31",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 28,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "AQ9klcNQ3rM",
+          "title": "Briar Jungle vs Evelynn - KR Master Patch 26.08",
+          "rankClaim": "Master",
+          "patch": "26.8",
+          "durationSec": 1639,
+          "region": "KR",
+          "uploaded": "2026-04-20",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 30,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "UyWanm0geNo",
+          "title": "Briar Jungle vs Karthus - KR Master Patch 26.14",
+          "rankClaim": "Master",
+          "patch": "26.14",
+          "durationSec": 1524,
+          "region": "KR",
+          "uploaded": "2026-07-31",
+          "moments": []
+        },
+        {
+          "videoId": "a53miII5eMk",
+          "title": "Briar Jungle vs Karthus - EUW Grandmaster Patch 26.13",
+          "rankClaim": "Grandmaster",
+          "patch": "26.13",
+          "durationSec": 1508,
+          "region": "EUW",
+          "uploaded": "2026-07-03",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 30,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "WXmM0QMZTKM",
+          "title": "Briar Mid vs Karthus - KR Master Patch 25.12",
+          "rankClaim": "Master",
+          "patch": "25.12",
+          "durationSec": 1940,
+          "region": "KR",
+          "uploaded": "2025-06-26",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 31,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "kEnyBiYqQxA",
+          "title": "Briar Top vs Cho'Gath - EUW Master Patch 26.17",
+          "rankClaim": "Master",
+          "patch": "26.17",
+          "durationSec": 1758,
+          "region": "EUW",
+          "uploaded": "2026-09-08",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 32,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "tqRTpiT16jI",
+          "title": "Briar Jungle vs Amumu - KR Master Patch 25.13",
+          "rankClaim": "Master",
+          "patch": "25.13",
+          "durationSec": 1641,
+          "region": "KR",
+          "uploaded": "2025-07-03",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 33,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "6RiRESGCAyE",
+          "title": "Briar Jungle vs Rammus - NA Grandmaster Patch 25.24",
+          "rankClaim": "Grandmaster",
+          "patch": "25.24",
+          "durationSec": 1510,
+          "region": "NA",
+          "uploaded": "2025-12-18",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 34,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "EgQA0RNhWbs",
+          "title": "Briar Top vs Anivia - NA Grandmaster Patch 26.09",
+          "rankClaim": "Grandmaster",
+          "patch": "26.9",
+          "durationSec": 1472,
+          "region": "NA",
+          "uploaded": "2026-05-07",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 35,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "sQ1M8TxPgVs",
+          "title": "Briar Jungle vs Shaco - EUW Grandmaster Patch 26.14",
+          "rankClaim": "Grandmaster",
+          "patch": "26.14",
+          "durationSec": 1422,
+          "region": "EUW",
+          "uploaded": "2026-07-24",
+          "moments": []
+        },
+        {
+          "videoId": "iYBZQBrUxio",
+          "title": "Briar Jungle vs Shaco - KR Master Patch 25.15",
+          "rankClaim": "Master",
+          "patch": "25.15",
+          "durationSec": 1985,
+          "region": "KR",
+          "uploaded": "2025-08-07",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 36,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "h4zc8m9TVQo",
+          "title": "Briar vs Dr Mundo Jungle - EUW Grandmaster - Patch 16.07 Season 16",
+          "rankClaim": "Grandmaster",
+          "patch": "26.7",
+          "durationSec": 1636,
+          "region": "EUW",
+          "uploaded": "2026-04-09",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 39,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "S5WBKJsBq-8",
+          "title": "Briar Mid vs Irelia - KR Master Patch 25.19",
+          "rankClaim": "Master",
+          "patch": "25.19",
+          "durationSec": 1726,
+          "region": "KR",
+          "uploaded": "2025-10-08",
+          "moments": []
+        },
+        {
+          "videoId": "YjapzqyeNnU",
+          "title": "Briar Mid vs Irelia - NA Grandmaster Patch 25.04",
+          "rankClaim": "Grandmaster",
+          "patch": "25.4",
+          "durationSec": 1495,
+          "region": "NA",
+          "uploaded": "2025-03-01",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 41,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "omxswQlBF44",
+          "title": "Briar Top vs Gangplank - KR Master Patch 25.10",
+          "rankClaim": "Master",
+          "patch": "25.10",
+          "durationSec": 1735,
+          "region": "KR",
+          "uploaded": "2025-05-28",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 42,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "dnp9oVldssg",
+          "title": "Briar Mid vs Corki - NA Grandmaster Patch 25.17",
+          "rankClaim": "Grandmaster",
+          "patch": "25.17",
+          "durationSec": 1666,
+          "region": "NA",
+          "uploaded": "2025-09-09",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 55,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "ThTj97agXvw",
+          "title": "Briar Mid vs Katarina - EUW Grandmaster Patch 26.02",
+          "rankClaim": "Grandmaster",
+          "patch": "26.2",
+          "durationSec": 1487,
+          "region": "EUW",
+          "uploaded": "2026-02-05",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 434,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 562,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 642,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 703,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 766,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1002,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1086,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1120,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1160,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1230,
+              "label": "Get a Triple Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1260,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1322,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1380,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1432,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1461,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1476,
+              "label": "End credit"
+            }
+          ]
+        },
+        {
+          "videoId": "WZ2tGbxtjdQ",
+          "title": "Briar Mid vs Katarina - NA Grandmaster Patch 25.13",
+          "rankClaim": "Grandmaster",
+          "patch": "25.13",
+          "durationSec": 1461,
+          "region": "NA",
+          "uploaded": "2025-07-09",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 56,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "obGFGZdS93c",
+          "title": "Briar Jungle vs Nocturne - KR Master Patch 25.07",
+          "rankClaim": "Master",
+          "patch": "25.7",
+          "durationSec": 1481,
+          "region": "KR",
+          "uploaded": "2025-04-11",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 419,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 453,
+              "label": "Hunt The Dragon",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 556,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 643,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 725,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 829,
+              "label": "Hunt The Dragon",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 888,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 904,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 987,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1041,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1156,
+              "label": "Hunt The Dragon",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1186,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1210,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1221,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1295,
+              "label": "Hunt The Atakhan"
+            },
+            {
+              "atSec": 1325,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1371,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1460,
+              "label": "End credit"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 58,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "lUaxvcH0h7U",
+          "title": "Briar Top vs Renekton - KR Master Patch 26.19",
+          "rankClaim": "Master",
+          "patch": "26.19",
+          "durationSec": 1675,
+          "region": "KR",
+          "uploaded": "2026-10-06",
+          "result": "W",
+          "moments": [
+            {
+              "atSec": 150,
+              "label": "First Blood — Briar kills Renekton",
+              "kind": "kill"
+            },
+            {
+              "atSec": 385,
+              "label": "Blue takes 1st Dragon (Infernal)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 492,
+              "label": "Briar eliminates Renekton"
+            },
+            {
+              "atSec": 542,
+              "label": "Briar kills Viego",
+              "kind": "kill"
+            },
+            {
+              "atSec": 726,
+              "label": "Red takes 1st Dragon (Hextech)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 736,
+              "label": "Briar eliminates Renekton"
+            },
+            {
+              "atSec": 861,
+              "label": "Lillia kills Renekton",
+              "kind": "kill"
+            },
+            {
+              "atSec": 939,
+              "label": "Briar takes down Yasuo"
+            },
+            {
+              "atSec": 1050,
+              "label": "Red takes 2nd Dragon (Chemtech)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1127,
+              "label": "Briar outplays Yasuo"
+            },
+            {
+              "atSec": 1190,
+              "label": "Lillia kills Blitzcrank",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1226,
+              "label": "Team fight (3 kills)",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1366,
+              "label": "Blue takes 2nd Dragon (Chemtech)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1416,
+              "label": "Red takes Baron",
+              "kind": "baron"
+            },
+            {
+              "atSec": 1465,
+              "label": "Mid Inhibitor falls (Red)"
+            },
+            {
+              "atSec": 1514,
+              "label": "Team fight (3 kills)",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1623,
+              "label": "Lillia picks off Yasuo"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 59,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "BhbTuU1jUBA",
+          "title": "Briar Jungle vs Jarvan IV - EUNE Master Patch 26.19",
+          "rankClaim": "Master",
+          "patch": "26.19",
+          "durationSec": 1793,
+          "region": "EUNE",
+          "uploaded": "2026-09-29",
+          "moments": []
+        },
+        {
+          "videoId": "jiMVUOzMcu0",
+          "title": "Briar Jungle vs Jarvan IV - EUW Grandmaster Patch 26.15",
+          "rankClaim": "Grandmaster",
+          "patch": "26.15",
+          "durationSec": 1429,
+          "region": "EUW",
+          "uploaded": "2026-08-05",
+          "moments": []
+        },
+        {
+          "videoId": "gbjQ5FvYqeg",
+          "title": "Briar Jungle vs Jarvan IV - KR Master Patch 26.03",
+          "rankClaim": "Master",
+          "patch": "26.3",
+          "durationSec": 1540,
+          "region": "KR",
+          "uploaded": "2026-02-12",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 277,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 338,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 396,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 455,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 478,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 498,
+              "label": "Hunt The Void Grubs",
+              "kind": "grubs"
+            },
+            {
+              "atSec": 516,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 636,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 697,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 762,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 917,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 944,
+              "label": "Hunt The Dragon",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 978,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1076,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1276,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1304,
+              "label": "Hunt The Dragon",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1326,
+              "label": "Hunt The Baron Nashor",
+              "kind": "baron"
+            },
+            {
+              "atSec": 1346,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1357,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1406,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1431,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1443,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1462,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1529,
+              "label": "End credit"
+            }
+          ]
+        },
+        {
+          "videoId": "ewTcWahOhkM",
+          "title": "Briar Jungle vs Jarvan IV - KR Master Patch 25.21",
+          "rankClaim": "Master",
+          "patch": "25.21",
+          "durationSec": 1837,
+          "region": "KR",
+          "uploaded": "2025-10-30",
+          "moments": []
+        },
+        {
+          "videoId": "I8ZAO7Tf3No",
+          "title": "Briar Jungle vs Jarvan IV - EUW Challenger Patch 25.08",
+          "rankClaim": "Challenger",
+          "patch": "25.8",
+          "durationSec": 1732,
+          "region": "EUW",
+          "uploaded": "2025-04-18",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 51,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 167,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 296,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 385,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 481,
+              "label": "Hunt The Void Grubs",
+              "kind": "grubs"
+            },
+            {
+              "atSec": 508,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 640,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 672,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 763,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 778,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 788,
+              "label": "Hunt The Void Grubs",
+              "kind": "grubs"
+            },
+            {
+              "atSec": 822,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 923,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 987,
+              "label": "Hunt The Rift Herald",
+              "kind": "herald"
+            },
+            {
+              "atSec": 1016,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1117,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1142,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1197,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1258,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1315,
+              "label": "Hunt The Atakhan"
+            },
+            {
+              "atSec": 1348,
+              "label": "Hunt The Dragon",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1373,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1426,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1711,
+              "label": "End credit"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 64,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "4-Q8mJzm3vg",
+          "title": "Briar Jungle vs Lee Sin - KR Master Patch 26.07",
+          "rankClaim": "Master",
+          "patch": "26.7",
+          "durationSec": 1476,
+          "region": "KR",
+          "uploaded": "2026-04-08",
+          "moments": []
+        },
+        {
+          "videoId": "9QKClxjOuQw",
+          "title": "Briar Jungle vs Lee Sin - KR Master Patch 26.06",
+          "rankClaim": "Master",
+          "patch": "26.6",
+          "durationSec": 1782,
+          "region": "KR",
+          "uploaded": "2026-03-25",
+          "moments": []
+        },
+        {
+          "videoId": "dCEsuIoBGqc",
+          "title": "Briar Jungle vs Lee Sin - KR Master Patch 25.14",
+          "rankClaim": "Master",
+          "patch": "25.14",
+          "durationSec": 1593,
+          "region": "KR",
+          "uploaded": "2025-07-25",
+          "moments": []
+        },
+        {
+          "videoId": "FoaErMmkXic",
+          "title": "Briar Jungle vs Lee Sin - KR Master Patch 25.05",
+          "rankClaim": "Master",
+          "patch": "25.5",
+          "durationSec": 1897,
+          "region": "KR",
+          "uploaded": "2025-03-09",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 167,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 235,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 399,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 432,
+              "label": "Hunt The Dragon",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 564,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 586,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 651,
+              "label": "Hunt The Void Grubs",
+              "kind": "grubs"
+            },
+            {
+              "atSec": 703,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 822,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 862,
+              "label": "Hunt The Dragon",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 891,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1073,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1108,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1144,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1226,
+              "label": "Hunt The Dragon",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1353,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1543,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1566,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1577,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1746,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1763,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1859,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1876,
+              "label": "End credit"
+            }
+          ]
+        },
+        {
+          "videoId": "At1eMpGXtOc",
+          "title": "Briar vs Lee Sin [ Jungle ] Lol Korea Master Patch 25.4 ✅",
+          "rankClaim": "Master",
+          "patch": "25.4",
+          "durationSec": 1424,
+          "region": "KR",
+          "uploaded": "2025-02-27",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 72,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "PtEaOnnvOdA",
+          "title": "Briar Jungle vs Skarner - EUW Challenger Patch 26.11",
+          "rankClaim": "Challenger",
+          "patch": "26.11",
+          "durationSec": 1486,
+          "region": "EUW",
+          "uploaded": "2026-06-12",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 75,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "h2sp5s7ZN8U",
+          "title": "Briar Jungle vs Nasus - KR Master Patch 26.15",
+          "rankClaim": "Master",
+          "patch": "26.15",
+          "durationSec": 1800,
+          "region": "KR",
+          "uploaded": "2026-08-12",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 76,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "fkrc8C-7KVU",
+          "title": "Briar Jungle vs Nidalee - NA Grandmaster Patch 26.13",
+          "rankClaim": "Grandmaster",
+          "patch": "26.13",
+          "durationSec": 1579,
+          "region": "NA",
+          "uploaded": "2026-07-14",
+          "moments": []
+        },
+        {
+          "videoId": "PezMaOryweo",
+          "title": "Briar Jungle vs Nidalee - KR Master Patch 26.12",
+          "rankClaim": "Master",
+          "patch": "26.12",
+          "durationSec": 1421,
+          "region": "KR",
+          "uploaded": "2026-06-18",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 79,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "8BM__YvqfRI",
+          "title": "Briar vs Gragas Jungle - KR Grandmaster - Patch 25.4 Season 15",
+          "rankClaim": "Grandmaster",
+          "patch": "25.4",
+          "durationSec": 1440,
+          "region": "KR",
+          "uploaded": "2025-03-04",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 80,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "arqZFTIK6qo",
+          "title": "Briar Jungle vs Pantheon - EUW Master Patch 26.17",
+          "rankClaim": "Master",
+          "patch": "26.17",
+          "durationSec": 1762,
+          "region": "EUW",
+          "uploaded": "2026-08-31",
+          "moments": []
+        },
+        {
+          "videoId": "XpfHWRt73eI",
+          "title": "Briar vs Pantheon [ Jungle ] Lol Korea Master Patch 25.14 ✅",
+          "rankClaim": "Master",
+          "patch": "25.14",
+          "durationSec": 1671,
+          "region": "KR",
+          "uploaded": "2025-07-24",
+          "moments": []
+        },
+        {
+          "videoId": "0wqTe_ufsI0",
+          "title": "Briar vs Pantheon Jungle - KR Master - Patch 25.13 Season 15",
+          "rankClaim": "Master",
+          "patch": "25.13",
+          "durationSec": 1666,
+          "region": "KR",
+          "uploaded": "2025-07-04",
+          "moments": []
+        },
+        {
+          "videoId": "r32CZI9mTIc",
+          "title": "Briar Jungle vs Pantheon - EUW Challenger Patch 25.04",
+          "rankClaim": "Challenger",
+          "patch": "25.4",
+          "durationSec": 1789,
+          "region": "EUW",
+          "uploaded": "2025-03-05",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 91,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "mC-dsCZc1nU",
+          "title": "Briar Jungle vs Talon - KR Grandmaster Patch 26.17",
+          "rankClaim": "Grandmaster",
+          "patch": "26.17",
+          "durationSec": 1859,
+          "region": "KR",
+          "uploaded": "2026-09-12",
+          "moments": []
+        },
+        {
+          "videoId": "zrRlEG0oVc4",
+          "title": "Briar Jungle vs Talon - KR Master Patch 26.01",
+          "rankClaim": "Master",
+          "patch": "26.1",
+          "durationSec": 1599,
+          "region": "KR",
+          "uploaded": "2026-01-18",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 99,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "VB7JKWeSDLM",
+          "title": "Briar Mid vs Lux - NA Grandmaster Patch 25.20",
+          "rankClaim": "Grandmaster",
+          "patch": "25.20",
+          "durationSec": 1843,
+          "region": "NA",
+          "uploaded": "2025-10-23",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 102,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "j_UUB8aY0AQ",
+          "title": "(TH Daglas) Briar Jungle vs Shyvana - EUW Grandmaster Patch 26.10",
+          "rankClaim": "Grandmaster",
+          "patch": "26.10",
+          "durationSec": 1635,
+          "region": "EUW",
+          "player": "TH Daglas",
+          "uploaded": "2026-05-28",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 104,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "fmdn71K6Fmc",
+          "title": "Briar Jungle vs Graves - EUW Grandmaster Patch 26.10",
+          "rankClaim": "Grandmaster",
+          "patch": "26.10",
+          "durationSec": 1590,
+          "region": "EUW",
+          "uploaded": "2026-05-21",
+          "moments": []
+        },
+        {
+          "videoId": "1LQqDeFrrTA",
+          "title": "Briar vs Graves Jungle - KR Challenger - Patch 26.02 Season 16",
+          "rankClaim": "Challenger",
+          "patch": "26.2",
+          "durationSec": 1636,
+          "region": "KR",
+          "uploaded": "2026-01-29",
+          "moments": []
+        },
+        {
+          "videoId": "j03qoxrjChc",
+          "title": "Briar Jungle vs Graves - NA Grandmaster Patch 25.05",
+          "rankClaim": "Grandmaster",
+          "patch": "25.5",
+          "durationSec": 1598,
+          "region": "NA",
+          "uploaded": "2025-03-20",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 137,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 472,
+              "label": "Hunt The Dragon",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 506,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 620,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 690,
+              "label": "Hunt The Void Grubs",
+              "kind": "grubs"
+            },
+            {
+              "atSec": 785,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 800,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 848,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 876,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 911,
+              "label": "Hunt The Dragon",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 983,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1088,
+              "label": "Hunt The Rift Herald",
+              "kind": "herald"
+            },
+            {
+              "atSec": 1141,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1170,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1231,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1263,
+              "label": "Hunt The Dragon",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1319,
+              "label": "Hunt The Atakhan"
+            },
+            {
+              "atSec": 1345,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1500,
+              "label": "Hunt The Baron Nashor",
+              "kind": "baron"
+            },
+            {
+              "atSec": 1577,
+              "label": "End credit"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 106,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "W1HudBr7qmQ",
+          "title": "Briar Jungle vs Volibear - EUW Grandmaster Patch 25.13",
+          "rankClaim": "Grandmaster",
+          "patch": "25.13",
+          "durationSec": 1656,
+          "region": "EUW",
+          "uploaded": "2025-07-16",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 107,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "2Uzn8I8jYj8",
+          "title": "Briar Jungle vs Rengar - EUW Challenger Patch 26.05",
+          "rankClaim": "Challenger",
+          "patch": "26.5",
+          "durationSec": 1721,
+          "region": "EUW",
+          "uploaded": "2026-03-12",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 120,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "a5UVK2rJj6I",
+          "title": "Briar Jungle vs Hecarim - NA Grandmaster Patch 25.18",
+          "rankClaim": "Grandmaster",
+          "patch": "25.18",
+          "durationSec": 1792,
+          "region": "NA",
+          "uploaded": "2025-09-14",
+          "moments": []
+        },
+        {
+          "videoId": "0vIYe_o0gCE",
+          "title": "Briar Jungle vs Hecarim - EUW Challenger Patch 25.06",
+          "rankClaim": "Challenger",
+          "patch": "25.6",
+          "durationSec": 1459,
+          "region": "EUW",
+          "uploaded": "2025-04-03",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 121,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "GyAM8TzhoGI",
+          "title": "Briar Jungle vs Kha'Zix (KC Yike) - EUW Grandmaster Patch 26.11",
+          "rankClaim": "Grandmaster",
+          "patch": "26.11",
+          "durationSec": 1771,
+          "region": "EUW",
+          "uploaded": "2026-06-07",
+          "moments": []
+        },
+        {
+          "videoId": "YtOc6h6S5yM",
+          "title": "Briar Jungle vs Kha'Zix - NA Challenger Patch 25.24",
+          "rankClaim": "Challenger",
+          "patch": "25.24",
+          "durationSec": 1548,
+          "region": "NA",
+          "uploaded": "2026-01-08",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 204,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 270,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 356,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 425,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 538,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 552,
+              "label": "Hunt The Void Grubs",
+              "kind": "grubs"
+            },
+            {
+              "atSec": 575,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 608,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 653,
+              "label": "Hunt The Dragon",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 742,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 780,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 910,
+              "label": "Hunt The Rift Herald",
+              "kind": "herald"
+            },
+            {
+              "atSec": 1009,
+              "label": "Hunt The Dragon",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1033,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1102,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1233,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1261,
+              "label": "Hunt The Atakhan"
+            },
+            {
+              "atSec": 1329,
+              "label": "Hunt The Dragon",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1348,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1393,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1492,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1537,
+              "label": "End credit"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 126,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "nzyH0BeK3VI",
+          "title": "Briar Jungle vs Jayce - KR Master Patch 26.09",
+          "rankClaim": "Master",
+          "patch": "26.9",
+          "durationSec": 1447,
+          "region": "KR",
+          "uploaded": "2026-05-10",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 126,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "T5cE_NTuBpw",
+          "title": "Briar Top vs Jayce - KR Master Patch 26.21",
+          "rankClaim": "Master",
+          "patch": "26.21",
+          "durationSec": 1555,
+          "region": "KR",
+          "uploaded": "2026-10-31",
+          "result": "W",
+          "moments": [
+            {
+              "atSec": 100,
+              "label": "First Blood — Briar kills Jayce",
+              "kind": "kill"
+            },
+            {
+              "atSec": 199,
+              "label": "Briar catches Jayce"
+            },
+            {
+              "atSec": 308,
+              "label": "Red takes 1st Dragon (Infernal)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 500,
+              "label": "Briar outduels Jayce again"
+            },
+            {
+              "atSec": 608,
+              "label": "Briar outplays Jayce (3rd time)"
+            },
+            {
+              "atSec": 646,
+              "label": "Red takes 2nd Dragon (Ocean)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 723,
+              "label": "Briar solo kills Jayce (4th time)",
+              "kind": "kill"
+            },
+            {
+              "atSec": 821,
+              "label": "Briar outplays Diana"
+            },
+            {
+              "atSec": 969,
+              "label": "Blue takes 1st Dragon (Hextech)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1204,
+              "label": "Briar takes down Alistar"
+            },
+            {
+              "atSec": 1255,
+              "label": "Briar kills Xin Zhao",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1295,
+              "label": "Red takes 3rd Dragon (Hextech)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1345,
+              "label": "Blue takes Baron",
+              "kind": "baron"
+            },
+            {
+              "atSec": 1354,
+              "label": "Bot Inhibitor falls (Blue)"
+            },
+            {
+              "atSec": 1394,
+              "label": "Briar outduels Xin Zhao"
+            },
+            {
+              "atSec": 1503,
+              "label": "Kha'Zix kills Jayce",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1545,
+              "label": "Mid Inhibitor falls (Blue)"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 141,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "LROzW3BxUos",
+          "title": "Briar vs Kayn Jungle - EUW Grandmaster - Patch 25.20 Season 15",
+          "rankClaim": "Grandmaster",
+          "patch": "25.20",
+          "durationSec": 1751,
+          "region": "EUW",
+          "uploaded": "2025-10-16",
+          "moments": []
+        },
+        {
+          "videoId": "Tk82RUwSAKM",
+          "title": "Briar Jungle vs Kayn - KR Master Patch 25.11",
+          "rankClaim": "Master",
+          "patch": "25.11",
+          "durationSec": 1720,
+          "region": "KR",
+          "uploaded": "2025-06-07",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 143,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "FH-fOrN8e5c",
+          "title": "Briar Jungle vs Zyra - KR Master Patch 26.20",
+          "rankClaim": "Master",
+          "patch": "26.20",
+          "durationSec": 1727,
+          "region": "KR",
+          "uploaded": "2026-10-13",
+          "result": "W",
+          "moments": [
+            {
+              "atSec": 76,
+              "label": "First Blood — Briar kills Jayce",
+              "kind": "kill"
+            },
+            {
+              "atSec": 163,
+              "label": "Briar Triple Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 270,
+              "label": "Briar outduels Jayce"
+            },
+            {
+              "atSec": 337,
+              "label": "Red takes 1st Dragon (Hextech)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 688,
+              "label": "Red takes 2nd Dragon (Infernal)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1008,
+              "label": "Red takes 3rd Dragon (Cloud)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1013,
+              "label": "Briar takes down Zyra"
+            },
+            {
+              "atSec": 1037,
+              "label": "Briar kills Jayce",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1175,
+              "label": "Team fight (3 kills)",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1185,
+              "label": "Briar Triple Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1308,
+              "label": "Blue takes Baron",
+              "kind": "baron"
+            },
+            {
+              "atSec": 1343,
+              "label": "Red takes 4th Dragon (Cloud)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1356,
+              "label": "Briar eliminates Aphelios"
+            },
+            {
+              "atSec": 1478,
+              "label": "Yunara takes down Aphelios"
+            },
+            {
+              "atSec": 1568,
+              "label": "Briar outplays Zyra"
+            },
+            {
+              "atSec": 1680,
+              "label": "Yunara Triple Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1689,
+              "label": "Briar solo kills Zyra again",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1706,
+              "label": "Mid Inhibitor falls (Blue)"
+            }
+          ]
+        },
+        {
+          "videoId": "feeRsLsgPeI",
+          "title": "Briar Jungle vs Zyra - KR Master Patch 26.16",
+          "rankClaim": "Master",
+          "patch": "26.16",
+          "durationSec": 1424,
+          "region": "KR",
+          "uploaded": "2026-08-18",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 154,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "lwWHI6qFPtA",
+          "title": "Briar Jungle vs Zac - KR Master Patch 25.24",
+          "rankClaim": "Master",
+          "patch": "25.24",
+          "durationSec": 1610,
+          "region": "KR",
+          "uploaded": "2025-12-11",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 168,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 272,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 361,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 476,
+              "label": "Hunt The Void Grubs",
+              "kind": "grubs"
+            },
+            {
+              "atSec": 551,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 596,
+              "label": "Hunt The Dragon",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 637,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 834,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 900,
+              "label": "Hunt The Rift Herald",
+              "kind": "herald"
+            },
+            {
+              "atSec": 935,
+              "label": "Hunt The Dragon",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1041,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1229,
+              "label": "Hunt The Atakhan"
+            },
+            {
+              "atSec": 1250,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1300,
+              "label": "Hunt The Dragon",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1329,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1368,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1383,
+              "label": "Take down The Inhibitor"
+            },
+            {
+              "atSec": 1477,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1497,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1599,
+              "label": "End credit"
+            }
+          ]
+        },
+        {
+          "videoId": "ogW723yeEnQ",
+          "title": "Briar Jungle vs Zac - KR Master Patch 25.22",
+          "rankClaim": "Master",
+          "patch": "25.22",
+          "durationSec": 1708,
+          "region": "KR",
+          "uploaded": "2025-11-13",
+          "moments": []
+        },
+        {
+          "videoId": "GoAValRT1Rc",
+          "title": "Briar vs Zac Jungle [ 56% Win Rate ] Patch 25.12 Korea Master ✅",
+          "rankClaim": "Master",
+          "patch": "25.12",
+          "durationSec": 1469,
+          "region": "KR",
+          "player": "56% Win Rate",
+          "uploaded": "2025-06-17",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 157,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "QjPi0CxsWVQ",
+          "title": "Briar Mid vs Yasuo - NA Grandmaster Patch 26.03",
+          "rankClaim": "Grandmaster",
+          "patch": "26.3",
+          "durationSec": 1632,
+          "region": "NA",
+          "uploaded": "2026-02-18",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 183,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 265,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 387,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 739,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 870,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1105,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1230,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1343,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1359,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1432,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1559,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1621,
+              "label": "End credit"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 163,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "wQBO89xthkY",
+          "title": "Briar Jungle vs Taliyah - NA Grandmaster Patch 25.12",
+          "rankClaim": "Grandmaster",
+          "patch": "25.12",
+          "durationSec": 1811,
+          "region": "NA",
+          "uploaded": "2025-06-18",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 163,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "PTEuEb8Wy9I",
+          "title": "Briar Mid vs Taliyah - NA Grandmaster Patch 25.11",
+          "rankClaim": "Grandmaster",
+          "patch": "25.11",
+          "durationSec": 1426,
+          "region": "NA",
+          "uploaded": "2025-06-10",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 164,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "EoA7CDdG5yg",
+          "title": "Briar Top vs Camille - NA Grandmaster Patch 26.13",
+          "rankClaim": "Grandmaster",
+          "patch": "26.13",
+          "durationSec": 1489,
+          "region": "NA",
+          "uploaded": "2026-07-09",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 203,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "okbkyVr2PoE",
+          "title": "Briar Jungle vs Kindred - EUW Challenger Patch 26.18",
+          "rankClaim": "Challenger",
+          "patch": "26.18",
+          "durationSec": 1863,
+          "region": "EUW",
+          "uploaded": "2026-09-16",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 234,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "SGGz8Qlqn7Y",
+          "title": "Briar Jungle vs Viego - VN Challenger Patch 26.05",
+          "rankClaim": "Challenger",
+          "patch": "26.5",
+          "durationSec": 1912,
+          "uploaded": "2026-03-19",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 184,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 237,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 451,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 481,
+              "label": "Hunt The Dragon",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 533,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 598,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 652,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 764,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 911,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 942,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 979,
+              "label": "Hunt The Rift Herald",
+              "kind": "herald"
+            },
+            {
+              "atSec": 1070,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1158,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1182,
+              "label": "Hunt The Dragon",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1247,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1370,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1503,
+              "label": "Hunt The Dragon",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1521,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1609,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1636,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1725,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1755,
+              "label": "Hunt The Baron Nashor",
+              "kind": "baron"
+            },
+            {
+              "atSec": 1789,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1828,
+              "label": "Hunt The Dragon",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1872,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1901,
+              "label": "End credit"
+            }
+          ]
+        },
+        {
+          "videoId": "uconWkCvGDs",
+          "title": "Briar vs Viego [ Jungle ] Lol Korea Master Patch 25.22",
+          "rankClaim": "Master",
+          "patch": "25.22",
+          "durationSec": 1541,
+          "region": "KR",
+          "uploaded": "2025-11-13",
+          "moments": []
+        },
+        {
+          "videoId": "QLLlVm20yIU",
+          "title": "Briar Jungle vs Viego - NA Grandmaster Patch 25.16",
+          "rankClaim": "Grandmaster",
+          "patch": "25.16",
+          "durationSec": 1914,
+          "region": "NA",
+          "uploaded": "2025-08-20",
+          "moments": []
+        },
+        {
+          "videoId": "WGN-eArwatQ",
+          "title": "Briar vs Viego Jungle [ 56% Win Rate ] Lol Korea Master Patch 25.13",
+          "rankClaim": "Master",
+          "patch": "25.13",
+          "durationSec": 1419,
+          "region": "KR",
+          "player": "56% Win Rate",
+          "uploaded": "2025-07-10",
+          "moments": []
+        },
+        {
+          "videoId": "J3HSxSmS0Rs",
+          "title": "Briar vs Viego Jungle [ Triple Kill ] Korea Master Patch 25.8 ✅",
+          "rankClaim": "Master",
+          "patch": "25.8",
+          "durationSec": 1291,
+          "region": "KR",
+          "player": "Triple Kill",
+          "uploaded": "2025-04-28",
+          "moments": []
+        },
+        {
+          "videoId": "x4mla6nJv80",
+          "title": "Briar Jungle vs Viego - EUW Grandmaster Patch 25.07",
+          "rankClaim": "Grandmaster",
+          "patch": "25.7",
+          "durationSec": 1565,
+          "region": "EUW",
+          "uploaded": "2025-04-17",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 238,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "VOsm1moHWoM",
+          "title": "Briar Jungle vs Zed - KR Grandmaster Patch 25.10",
+          "rankClaim": "Grandmaster",
+          "patch": "25.10",
+          "durationSec": 1697,
+          "region": "KR",
+          "uploaded": "2025-05-22",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 146,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 326,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 388,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 443,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 479,
+              "label": "Hunt The Void Grubs",
+              "kind": "grubs"
+            },
+            {
+              "atSec": 567,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 752,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 819,
+              "label": "Hunt The Dragon",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 843,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 944,
+              "label": "Hunt The Rift Herald",
+              "kind": "herald"
+            },
+            {
+              "atSec": 977,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 997,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1178,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1215,
+              "label": "Hunt The Atakhan"
+            },
+            {
+              "atSec": 1289,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1363,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1481,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1507,
+              "label": "Hunt The Baron Nashor",
+              "kind": "baron"
+            },
+            {
+              "atSec": 1550,
+              "label": "Hunt The Dragon",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1590,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1620,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1636,
+              "label": "Take down The Inhibitor"
+            },
+            {
+              "atSec": 1655,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1676,
+              "label": "End credit"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 238,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "DkyFJOzNtRc",
+          "title": "Briar Mid vs Zed - NA Grandmaster Patch 25.14",
+          "rankClaim": "Grandmaster",
+          "patch": "25.14",
+          "durationSec": 1453,
+          "region": "NA",
+          "uploaded": "2025-07-29",
+          "moments": []
+        },
+        {
+          "videoId": "AHKpeH1ybHw",
+          "title": "Briar Mid vs Zed - KR Master Patch 25.09",
+          "rankClaim": "Master",
+          "patch": "25.9",
+          "durationSec": 1507,
+          "region": "KR",
+          "uploaded": "2025-05-16",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 245,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "kSeqZHOvULQ",
+          "title": "Briar vs Ekko [ Jungle ] Korea Master 739 LP | Patch 26.3",
+          "rankClaim": "Master",
+          "patch": "26.3",
+          "durationSec": 1506,
+          "region": "KR",
+          "uploaded": "2026-02-06",
+          "moments": []
+        },
+        {
+          "videoId": "veX7h637L5c",
+          "title": "Briar Jungle vs Ekko - KR Master Patch 25.20",
+          "rankClaim": "Master",
+          "patch": "25.20",
+          "durationSec": 1659,
+          "region": "KR",
+          "uploaded": "2025-10-13",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 246,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "ajxgZ-EzfSo",
+          "title": "Briar vs Qiyana Jungle - EUW Challenger - Patch 26.02 Season 16",
+          "rankClaim": "Challenger",
+          "patch": "26.2",
+          "durationSec": 1571,
+          "region": "EUW",
+          "uploaded": "2026-01-28",
+          "moments": []
+        },
+        {
+          "videoId": "U6zLWgFz-K0",
+          "title": "Briar Jungle vs Qiyana - KR Master Patch 25.23",
+          "rankClaim": "Master",
+          "patch": "25.23",
+          "durationSec": 1488,
+          "region": "KR",
+          "uploaded": "2025-11-27",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 254,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "zTG1gywPQFA",
+          "title": "Briar vs Vi Jungle [ 54% Win Rate ] Korea Master Patch 25.7 ✅",
+          "rankClaim": "Master",
+          "patch": "25.7",
+          "durationSec": 1496,
+          "region": "KR",
+          "player": "54% Win Rate",
+          "uploaded": "2025-04-16",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 266,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "t5b7WbtTqnQ",
+          "title": "Briar vs Aatrox Jungle  - EUW Challenger - Patch 16.07 Season 16",
+          "rankClaim": "Challenger",
+          "patch": "26.7",
+          "durationSec": 1456,
+          "region": "EUW",
+          "uploaded": "2026-04-16",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 421,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "up6CP6uBRwY",
+          "title": "Briar Jungle vs Rek'Sai - NA Grandmaster Patch 25.22",
+          "rankClaim": "Grandmaster",
+          "patch": "25.22",
+          "durationSec": 1551,
+          "region": "NA",
+          "uploaded": "2025-11-21",
+          "moments": []
+        },
+        {
+          "videoId": "msrJTMyA8O4",
+          "title": "Briar Jungle vs Rek'Sai - KR Master Patch 25.19",
+          "rankClaim": "Master",
+          "patch": "25.19",
+          "durationSec": 1548,
+          "region": "KR",
+          "uploaded": "2025-10-02",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 517,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "jn3wBOqN3KE",
+          "title": "Briar Jungle vs Sylas - KR Master Patch 26.12",
+          "rankClaim": "Master",
+          "patch": "26.12",
+          "durationSec": 1458,
+          "region": "KR",
+          "uploaded": "2026-06-25",
+          "moments": []
+        },
+        {
+          "videoId": "QUtJxzzneus",
+          "title": "Briar vs Sylas Jungle - KR Master - Patch 16.06 Season 16",
+          "rankClaim": "Master",
+          "patch": "26.6",
+          "durationSec": 1666,
+          "region": "KR",
+          "uploaded": "2026-03-24",
+          "moments": []
+        },
+        {
+          "videoId": "ibj1NqXUqWU",
+          "title": "Briar Jungle vs Sylas - KR Master Patch 26.02",
+          "rankClaim": "Master",
+          "patch": "26.2",
+          "durationSec": 1478,
+          "region": "KR",
+          "uploaded": "2026-02-03",
+          "moments": []
+        },
+        {
+          "videoId": "dqMiJWxVNdQ",
+          "title": "Briar vs Sylas Jungle - KR Grandmaster - Patch 25.24 Season 15",
+          "rankClaim": "Grandmaster",
+          "patch": "25.24",
+          "durationSec": 1581,
+          "region": "KR",
+          "uploaded": "2026-01-05",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 517,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "Lyut4J0LXwM",
+          "title": "Briar Mid vs Sylas - KR Master Patch 25.24",
+          "rankClaim": "Master",
+          "patch": "25.24",
+          "durationSec": 1507,
+          "region": "KR",
+          "uploaded": "2025-12-25",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 112,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 194,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 401,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 422,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 452,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 571,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 632,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 711,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 807,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 840,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1002,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1121,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1188,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1302,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1334,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1364,
+              "label": "Take down The Inhibitor"
+            },
+            {
+              "atSec": 1496,
+              "label": "End credit"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 799,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "Y8wLQUusMNc",
+          "title": "Briar Jungle vs Ambessa - KR Master Patch 26.16",
+          "rankClaim": "Master",
+          "patch": "26.16",
+          "durationSec": 1656,
+          "region": "KR",
+          "uploaded": "2026-08-27",
+          "moments": []
+        },
+        {
+          "videoId": "SipV814y3iQ",
+          "title": "Briar vs Ambessa 20/14/12 (Jungle) | EUW Master | Briar OTP Replay",
+          "rankClaim": "Master",
+          "patch": "26.9",
+          "durationSec": 1493,
+          "region": "EUW",
+          "patchEstimated": true,
+          "uploaded": "2026-05-08",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 800,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "2ZKNs5rkfVk",
+          "title": "Briar vs Mel [ MID ] Lol Korea Master Patch 25.24 ✅",
+          "rankClaim": "Master",
+          "patch": "25.24",
+          "durationSec": 1776,
+          "region": "KR",
+          "uploaded": "2026-01-01",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 876,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "2ypFcWkDoCw",
+          "title": "Briar Jungle vs Lillia - KR Master Patch 25.17",
+          "rankClaim": "Master",
+          "patch": "25.17",
+          "durationSec": 1799,
+          "region": "KR",
+          "uploaded": "2025-09-03",
+          "moments": []
+        },
+        {
+          "videoId": "vJ_H_EyIo3w",
+          "title": "Briar vs Lillia Jungle - EUW Grandmaster - Patch 25.15 Season 15",
+          "rankClaim": "Grandmaster",
+          "patch": "25.15",
+          "durationSec": 1576,
+          "region": "EUW",
+          "uploaded": "2025-08-05",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 904,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "Xb5GusQrfWo",
+          "title": "Briar Top vs Zaahen - EUW Master Patch 26.20",
+          "rankClaim": "Master",
+          "patch": "26.20",
+          "durationSec": 1832,
+          "region": "EUW",
+          "uploaded": "2026-10-19",
+          "result": "W",
+          "moments": [
+            {
+              "atSec": 76,
+              "label": "First Blood — Briar kills Zaahen",
+              "kind": "kill"
+            },
+            {
+              "atSec": 232,
+              "label": "Briar catches Zaahen"
+            },
+            {
+              "atSec": 325,
+              "label": "Briar outduels Zaahen again"
+            },
+            {
+              "atSec": 414,
+              "label": "Briar outplays Zaahen (3rd time)"
+            },
+            {
+              "atSec": 486,
+              "label": "Blue takes 1st Dragon (Hextech)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 709,
+              "label": "Briar takes down Nautilus"
+            },
+            {
+              "atSec": 807,
+              "label": "Red takes 1st Dragon (Mountain)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1141,
+              "label": "Blue takes 2nd Dragon (Chemtech)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1248,
+              "label": "Red takes Baron",
+              "kind": "baron"
+            },
+            {
+              "atSec": 1270,
+              "label": "Briar solo kills Zaahen (4th time)",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1453,
+              "label": "Red takes 2nd Dragon (Chemtech)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1524,
+              "label": "Mid Inhibitor falls (Blue)"
+            },
+            {
+              "atSec": 1562,
+              "label": "Team fight (3 kills)",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1623,
+              "label": "Blue takes Baron",
+              "kind": "baron"
+            },
+            {
+              "atSec": 1675,
+              "label": "Briar Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1764,
+              "label": "Blue takes 3rd Dragon (Chemtech)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1796,
+              "label": "Mid Inhibitor falls (Red)"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 950,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "GSO1Fc7ZniU",
+          "title": "Briar vs Naafiri [ Jungle ] Lol Korea Master Patch 26.14 ✅",
+          "rankClaim": "Master",
+          "patch": "26.14",
+          "durationSec": 1731,
+          "region": "KR",
+          "uploaded": "2026-07-25",
+          "moments": []
+        },
+        {
+          "videoId": "jda-nx0zUvM",
+          "title": "Briar Jungle vs Naafiri - KR Master Patch 25.06",
+          "rankClaim": "Master",
+          "patch": "25.6",
+          "durationSec": 1455,
+          "region": "KR",
+          "uploaded": "2025-03-28",
+          "moments": []
+        }
+      ]
+    }
+  ]
+}

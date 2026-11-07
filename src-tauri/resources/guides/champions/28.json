@@ -1,0 +1,3338 @@
+{
+  "schema": 1,
+  "champion": 28,
+  "generatedAt": "2026-11-07T13:25:14.592Z",
+  "guides": [],
+  "general": [
+    {
+      "champion": 28,
+      "lane": "jungle",
+      "patch": "26.21",
+      "reviewed": false,
+      "keyTips": [
+        {
+          "text": "Path toward bot after the sixth camp, flipping top only when bot loses without priority or the 3v3 looks bad.",
+          "scope": "champion",
+          "sourceIds": [
+            "gnarz"
+          ]
+        },
+        {
+          "text": "Hunt isolated targets with level-6 camouflage and vision angles instead of walking into set front lines.",
+          "scope": "champion",
+          "sourceIds": [
+            "gnarz"
+          ]
+        },
+        {
+          "text": "Burst a carry from a surprise angle, then leave with Last Caress when the fight turns.",
+          "scope": "champion",
+          "sourceIds": [
+            "gnarz"
+          ],
+          "abilityKeys": [
+            {
+              "champion": 28,
+              "key": "R"
+            }
+          ]
+        }
+      ],
+      "sections": {
+        "overview": {
+          "tips": []
+        },
+        "early-lane": {
+          "tips": [
+            {
+              "text": "On blue side, open Blue, Smite it when alone or save Smite for Gromp with a leash, then full-clear.",
+              "scope": "champion",
+              "sourceIds": [
+                "gnarz"
+              ]
+            },
+            {
+              "text": "On red side, open Raptors leash-less, then take Red and Krugs.",
+              "scope": "champion",
+              "sourceIds": [
+                "gnarz"
+              ]
+            },
+            {
+              "text": "At level 3 on red side, hold the skill point until top shows gankable; take W for the play, else reset or clear bot-side.",
+              "scope": "champion",
+              "sourceIds": [
+                "gnarz"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 28,
+                  "key": "W"
+                }
+              ]
+            },
+            {
+              "text": "After a good level-3 gank, recall for Dark Seal and Amplifying Tome before resuming bot-side.",
+              "scope": "champion",
+              "sourceIds": [
+                "gnarz"
+              ],
+              "itemIds": [
+                1082,
+                1052
+              ]
+            },
+            {
+              "text": "Open full clears with Q, E, Q, and throw Q over the wall to shorten the Wolves approach.",
+              "scope": "champion",
+              "sourceIds": [
+                "gnarz"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 28,
+                  "key": "Q"
+                },
+                {
+                  "champion": 28,
+                  "key": "E"
+                }
+              ]
+            },
+            {
+              "text": "Cast Whiplash near a camp end so its movement speed carries into the next route leg.",
+              "scope": "champion",
+              "sourceIds": [
+                "gnarz"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 28,
+                  "key": "E"
+                }
+              ]
+            },
+            {
+              "text": "Land the first Hate Spike, since a miss weakens every follow-up spike.",
+              "scope": "champion",
+              "sourceIds": [
+                "gnarz"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 28,
+                  "key": "Q"
+                }
+              ]
+            },
+            {
+              "text": "Fully charge Allure into high-magic-resistance targets so the charm and shred both apply.",
+              "scope": "champion",
+              "sourceIds": [
+                "gnarz"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 28,
+                  "key": "W"
+                }
+              ]
+            }
+          ]
+        },
+        "mid-lane": {
+          "tips": [
+            {
+              "text": "Stack Dark Seal through successful ganks, upgrading to Mejai's only with a lead safe enough to guard.",
+              "scope": "champion",
+              "sourceIds": [
+                "gnarz"
+              ],
+              "itemIds": [
+                1082
+              ]
+            },
+            {
+              "text": "Finish camps with E so Whiplash speed rushes the next play.",
+              "scope": "champion",
+              "sourceIds": [
+                "gnarz"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 28,
+                  "key": "E"
+                }
+              ]
+            },
+            {
+              "text": "Keep pathing toward the carry side; swing top when bot cannot contest or the top play runs clearly stronger.",
+              "scope": "champion",
+              "sourceIds": [
+                "gnarz"
+              ]
+            },
+            {
+              "text": "Hover Evelynn in a full-AP draft and ask for an AD mid laner before locking her in.",
+              "scope": "champion",
+              "sourceIds": [
+                "gnarz"
+              ]
+            }
+          ]
+        },
+        "win-condition": {
+          "tips": [
+            {
+              "text": "Snowball safely around picks and guard Mejai's stacks by skipping low-value fights.",
+              "scope": "champion",
+              "sourceIds": [
+                "gnarz"
+              ]
+            },
+            {
+              "text": "Charge W into high-MR targets for its resistance cut before unloading the combo.",
+              "scope": "champion",
+              "sourceIds": [
+                "gnarz"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 28,
+                  "key": "W"
+                }
+              ]
+            },
+            {
+              "text": "Plan the Last Caress backward blink so escapes and Baron steals never strand Evelynn out of a winning follow-up.",
+              "scope": "champion",
+              "sourceIds": [
+                "gnarz"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 28,
+                  "key": "R"
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "itemization": [
+        {
+          "text": "Run Electrocute with Sudden Impact, Sixth Sense, and Relentless Hunter, plus Triumph and Coup de Grace with adaptive-force and health shards.",
+          "scope": "champion",
+          "sourceIds": [
+            "gnarz"
+          ]
+        },
+        {
+          "text": "Take Flash and Smite, preferring Gustwalker for its movement speed.",
+          "scope": "champion",
+          "sourceIds": [
+            "gnarz"
+          ]
+        },
+        {
+          "text": "Buy Sorcerer's Shoes and Dark Seal early, with Blasting Wand plus Dark Seal as the 1,200-gold fallback.",
+          "scope": "champion",
+          "sourceIds": [
+            "gnarz"
+          ],
+          "itemIds": [
+            3020,
+            1082,
+            1026
+          ]
+        },
+        {
+          "text": "Core Sorcerer's Shoes, Lich Bane, Mejai's Soulstealer, Rabadon's Deathcap, Void Staff, and Banshee's Veil.",
+          "scope": "champion",
+          "sourceIds": [
+            "gnarz"
+          ],
+          "itemIds": [
+            3020,
+            3100,
+            3041,
+            3089,
+            3135,
+            3102
+          ]
+        },
+        {
+          "text": "Keep Mejai's only while stacks stay reasonably safe; close with Banshee's Veil or Zhonya's defensively, or Shadowflame for damage after lost stacks.",
+          "scope": "champion",
+          "sourceIds": [
+            "gnarz"
+          ],
+          "itemIds": [
+            3102,
+            4645
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "id": "gnarz",
+          "author": "gnarz",
+          "rankClaim": "Master (profile badge; self-reports Challenger EUNE and Grandmaster EUW)",
+          "rank": "master",
+          "url": "https://www.mobafire.com/league-of-legends/build/26-19-gnarzs-guide-to-become-the-best-evelynn-637851",
+          "kind": "mobafire"
+        }
+      ]
+    }
+  ],
+  "vods": [
+    {
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "vhHpf4pmAQY",
+          "title": "FULL EDUCATIONAL EVELYNN GAMEPLAY",
+          "rankClaim": "Master+",
+          "patch": "26.4",
+          "durationSec": 2150,
+          "patchEstimated": true,
+          "player": "Sinerias",
+          "uploaded": "2026-02-23",
+          "format": "stream",
+          "cam": true,
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 5,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "04sKtCqJeew",
+          "title": "Evelynn vs Xin Zhao 19/5/10 (Jungle) | EUW Master | Evelynn OTP Replay",
+          "rankClaim": "Master",
+          "patch": "26.8",
+          "durationSec": 1988,
+          "region": "EUW",
+          "patchEstimated": true,
+          "uploaded": "2026-04-26",
+          "moments": []
+        },
+        {
+          "videoId": "31bLM_s5zck",
+          "title": "Evelynn vs Xin Zhao 17/1/5 (Jungle) | EUW Master | Evelynn OTP Replay",
+          "rankClaim": "Master",
+          "patch": "26.8",
+          "durationSec": 1239,
+          "region": "EUW",
+          "patchEstimated": true,
+          "uploaded": "2026-04-23",
+          "moments": []
+        },
+        {
+          "videoId": "yl5kurQTFVA",
+          "title": "Evelynn Jungle vs Xin Zhao - KR Grandmaster Patch 25.19",
+          "rankClaim": "Grandmaster",
+          "patch": "25.19",
+          "durationSec": 1699,
+          "region": "KR",
+          "uploaded": "2025-10-05",
+          "moments": []
+        },
+        {
+          "videoId": "izwFQ_lYWW8",
+          "title": "Evelynn Jungle vs Xin Zhao - KR Master Patch 25.18",
+          "rankClaim": "Master",
+          "patch": "25.18",
+          "durationSec": 2087,
+          "region": "KR",
+          "uploaded": "2025-09-16",
+          "moments": []
+        },
+        {
+          "videoId": "y3R66V2udBA",
+          "title": "Evelynn vs XinZhao Jungle - KR Challenger - Patch 25.11 Season 15",
+          "rankClaim": "Challenger",
+          "patch": "25.11",
+          "durationSec": 1651,
+          "region": "KR",
+          "uploaded": "2025-06-05",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 11,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "6oVj_Xs2duw",
+          "title": "Evelynn Jungle vs Master Yi - KR Master Patch 25.24",
+          "rankClaim": "Master",
+          "patch": "25.24",
+          "durationSec": 1598,
+          "region": "KR",
+          "uploaded": "2025-12-18",
+          "moments": []
+        },
+        {
+          "videoId": "U0efYCzrU-g",
+          "title": "Evelynn Jungle vs Master Yi - KR Master Patch 25.08",
+          "rankClaim": "Master",
+          "patch": "25.8",
+          "durationSec": 1613,
+          "region": "KR",
+          "uploaded": "2025-04-25",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 241,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 405,
+              "label": "Hunt The Dragon",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 465,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 520,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 733,
+              "label": "Hunt The Dragon",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 808,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 906,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 964,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1063,
+              "label": "Hunt The Dragon",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1189,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1256,
+              "label": "Hunt The Atakhan"
+            },
+            {
+              "atSec": 1308,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1403,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1540,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1592,
+              "label": "End credit"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 24,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "4ZOWhFhZoYA",
+          "title": "Evelynn Jungle vs Jax - VN Challenger Patch 25.13",
+          "rankClaim": "Challenger",
+          "patch": "25.13",
+          "durationSec": 1796,
+          "uploaded": "2025-07-09",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 30,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "f_XxMhoINKY",
+          "title": "Evelynn Jungle vs Karthus - KR Grandmaster Patch 26.18",
+          "rankClaim": "Grandmaster",
+          "patch": "26.18",
+          "durationSec": 1745,
+          "region": "KR",
+          "uploaded": "2026-09-25",
+          "moments": []
+        },
+        {
+          "videoId": "GnwyRN7MV8w",
+          "title": "Evelynn Jungle vs Karthus - KR Grandmaster Patch 26.13",
+          "rankClaim": "Grandmaster",
+          "patch": "26.13",
+          "durationSec": 1568,
+          "region": "KR",
+          "uploaded": "2026-07-10",
+          "moments": []
+        },
+        {
+          "videoId": "E6MB7RLONho",
+          "title": "(MKOI Elyoya) Evelynn Jungle vs Karthus - EUW Grandmaster Patch 26.10",
+          "rankClaim": "Grandmaster",
+          "patch": "26.10",
+          "durationSec": 1525,
+          "region": "EUW",
+          "player": "MKOI Elyoya",
+          "uploaded": "2026-05-21",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 35,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "vKtUNXVq4mc",
+          "title": "Evelynn Jungle vs Shaco - NA Grandmaster Patch 25.20",
+          "rankClaim": "Grandmaster",
+          "patch": "25.20",
+          "durationSec": 1750,
+          "region": "NA",
+          "uploaded": "2025-10-24",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 39,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "tSWLI7nIGiM",
+          "title": "Evelynn Top vs Irelia - TW Challenger Patch 25.06",
+          "rankClaim": "Challenger",
+          "patch": "25.6",
+          "durationSec": 2055,
+          "uploaded": "2025-04-01",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 113,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 178,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 341,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 478,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 606,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 723,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 849,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 884,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 986,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1111,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1213,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1373,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1496,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1529,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1540,
+              "label": "Take down The Inhibitor"
+            },
+            {
+              "atSec": 1627,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1758,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1818,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1856,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1893,
+              "label": "Hunt The Dragon",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1925,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1986,
+              "label": "Take down The Inhibitor"
+            },
+            {
+              "atSec": 2016,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 2034,
+              "label": "End credit"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 41,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "heDFmfbjskI",
+          "title": "(SR Fudge) Evelynn Top vs Gangplank - NA Grandmaster Patch 26.11",
+          "rankClaim": "Grandmaster",
+          "patch": "26.11",
+          "durationSec": 1503,
+          "region": "NA",
+          "player": "SR Fudge",
+          "uploaded": "2026-06-05",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 54,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "nHNvb0hCllg",
+          "title": "Evelynn Jungle vs Malphite - EUW Challenger Patch 26.08",
+          "rankClaim": "Challenger",
+          "patch": "26.8",
+          "durationSec": 1884,
+          "region": "EUW",
+          "uploaded": "2026-04-24",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 56,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "RUwvL7c2lRI",
+          "title": "Evelynn Jungle vs Nocturne - NA Grandmaster Patch 25.07",
+          "rankClaim": "Grandmaster",
+          "patch": "25.7",
+          "durationSec": 1850,
+          "region": "NA",
+          "uploaded": "2025-04-12",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 129,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 214,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 401,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 479,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 641,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 691,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 786,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 816,
+              "label": "Hunt The Dragon",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 891,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1046,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1168,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1230,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1254,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1430,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1479,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1497,
+              "label": "Hunt The Dragon",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1511,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1522,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1575,
+              "label": "Hunt The Baron Nashor",
+              "kind": "baron"
+            },
+            {
+              "atSec": 1612,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1658,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1829,
+              "label": "End credit"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 59,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "EyuwRQ1cAfU",
+          "title": "Evelynn Jungle vs Jarvan IV - NA Master Patch 26.20",
+          "rankClaim": "Master",
+          "patch": "26.20",
+          "durationSec": 1706,
+          "region": "NA",
+          "uploaded": "2026-10-22",
+          "result": "W",
+          "moments": [
+            {
+              "atSec": 69,
+              "label": "First Blood — Evelynn kills Jarvan IV",
+              "kind": "kill"
+            },
+            {
+              "atSec": 403,
+              "label": "Blue takes 1st Dragon (Mountain)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 738,
+              "label": "Blue takes 2nd Dragon (Ocean)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 848,
+              "label": "Evelynn outduels Jayce"
+            },
+            {
+              "atSec": 1063,
+              "label": "Blue takes 3rd Dragon (Hextech)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1290,
+              "label": "Evelynn takes down Karthus"
+            },
+            {
+              "atSec": 1313,
+              "label": "Tahm Kench takes down Lux"
+            },
+            {
+              "atSec": 1344,
+              "label": "Red takes Baron",
+              "kind": "baron"
+            },
+            {
+              "atSec": 1400,
+              "label": "Red takes 1st Dragon (Hextech)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1406,
+              "label": "Ambessa picks off Karthus"
+            },
+            {
+              "atSec": 1437,
+              "label": "Evelynn outplays Jarvan IV"
+            },
+            {
+              "atSec": 1446,
+              "label": "Evelynn Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1472,
+              "label": "Evelynn catches Karthus again"
+            },
+            {
+              "atSec": 1525,
+              "label": "Jinx picks off Nautilus"
+            },
+            {
+              "atSec": 1566,
+              "label": "Zoe takes down Jayce"
+            },
+            {
+              "atSec": 1581,
+              "label": "Mid Inhibitor falls (Blue)"
+            },
+            {
+              "atSec": 1656,
+              "label": "Evelynn outduels Karthus (3rd time)"
+            },
+            {
+              "atSec": 1672,
+              "label": "Tahm Kench eliminates Jayce"
+            }
+          ]
+        },
+        {
+          "videoId": "bbYUISsk0h0",
+          "title": "Evelynn vs Jarvan IV Jungle - KR Challenger - Patch 16.19 Season 16",
+          "rankClaim": "Challenger",
+          "patch": "26.19",
+          "durationSec": 1800,
+          "region": "KR",
+          "uploaded": "2026-10-03",
+          "moments": []
+        },
+        {
+          "videoId": "ouLx8an9K48",
+          "title": "Evelynn Jungle vs Jarvan IV - NA Grandmaster Patch 25.24",
+          "rankClaim": "Grandmaster",
+          "patch": "25.24",
+          "durationSec": 1504,
+          "region": "NA",
+          "uploaded": "2025-12-26",
+          "moments": []
+        },
+        {
+          "videoId": "xN8KfaOssek",
+          "title": "Evelynn Jungle vs Jarvan IV - KR Master Patch 25.09",
+          "rankClaim": "Master",
+          "patch": "25.9",
+          "durationSec": 2001,
+          "region": "KR",
+          "uploaded": "2025-05-06",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 60,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "m0pb4KtzqR8",
+          "title": "Evelynn Jungle vs Elise - EUW Master Patch 26.21",
+          "rankClaim": "Master",
+          "patch": "26.21",
+          "durationSec": 1684,
+          "region": "EUW",
+          "uploaded": "2026-10-28",
+          "result": "W",
+          "moments": [
+            {
+              "atSec": 354,
+              "label": "Blue takes 1st Dragon (Infernal)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 435,
+              "label": "Lissandra eliminates Katarina"
+            },
+            {
+              "atSec": 490,
+              "label": "Lissandra eliminates Katarina"
+            },
+            {
+              "atSec": 611,
+              "label": "Evelynn kills Urgot",
+              "kind": "kill"
+            },
+            {
+              "atSec": 709,
+              "label": "Evelynn solo kills Katarina",
+              "kind": "kill"
+            },
+            {
+              "atSec": 723,
+              "label": "Red takes 1st Dragon (Hextech)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 816,
+              "label": "Lissandra eliminates Katarina"
+            },
+            {
+              "atSec": 887,
+              "label": "Evelynn kills Urgot",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1019,
+              "label": "Evelynn takes down Elise"
+            },
+            {
+              "atSec": 1048,
+              "label": "Red takes 2nd Dragon (Chemtech)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1204,
+              "label": "Evelynn kills Urgot",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1369,
+              "label": "Lissandra Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1371,
+              "label": "Lissandra Triple Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1390,
+              "label": "Red takes 3rd Dragon (Chemtech)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1461,
+              "label": "Evelynn eliminates Tristana"
+            },
+            {
+              "atSec": 1527,
+              "label": "Team fight (3 kills)",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1577,
+              "label": "Lissandra takes down Blitzcrank"
+            },
+            {
+              "atSec": 1659,
+              "label": "Seraphine kills Elise",
+              "kind": "kill"
+            }
+          ]
+        },
+        {
+          "videoId": "xsjfs1z0WNs",
+          "title": "Evelynn vs Elise [ Jungle ] Lol Korea Grandmaster Patch 25.24 ✅",
+          "rankClaim": "Grandmaster",
+          "patch": "25.24",
+          "durationSec": 1536,
+          "region": "KR",
+          "uploaded": "2026-01-08",
+          "moments": []
+        },
+        {
+          "videoId": "P8Iycax6j1k",
+          "title": "Evelynn Jungle vs Elise - KR Master Patch 25.23",
+          "rankClaim": "Master",
+          "patch": "25.23",
+          "durationSec": 1759,
+          "region": "KR",
+          "uploaded": "2025-11-26",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 61,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "1JMxyFCoz0s",
+          "title": "Evelynn Mid vs Orianna - KR Master Patch 26.03",
+          "rankClaim": "Master",
+          "patch": "26.3",
+          "durationSec": 1492,
+          "region": "KR",
+          "uploaded": "2026-02-20",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 126,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 197,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 358,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 513,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 651,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 788,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 809,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 855,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 945,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1038,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1053,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1170,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1342,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1377,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1481,
+              "label": "End credit"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 62,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "hK7VeUyA9A8",
+          "title": "Evelynn Jungle vs Wukong - KR Grandmaster Patch 25.16",
+          "rankClaim": "Grandmaster",
+          "patch": "25.16",
+          "durationSec": 1466,
+          "region": "KR",
+          "uploaded": "2025-08-21",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 64,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "8zuVyD8h_Bs",
+          "title": "Evelynn Jungle vs Lee Sin - KR Grandmaster Patch 25.13",
+          "rankClaim": "Grandmaster",
+          "patch": "25.13",
+          "durationSec": 1867,
+          "region": "KR",
+          "uploaded": "2025-07-02",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 68,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "7WopEYI60BE",
+          "title": "Evelynn Top vs Rumble - KR Master Patch 25.24",
+          "rankClaim": "Master",
+          "patch": "25.24",
+          "durationSec": 1568,
+          "region": "KR",
+          "uploaded": "2025-12-28",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 72,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "56KiU1lGqvc",
+          "title": "Evelynn Jungle vs Skarner - KR Grandmaster Patch 25.04",
+          "rankClaim": "Grandmaster",
+          "patch": "25.4",
+          "durationSec": 2166,
+          "region": "KR",
+          "uploaded": "2025-03-06",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 218,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 268,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 358,
+              "label": "Hunt The Dragon",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 650,
+              "label": "Hunt The Void Grubs",
+              "kind": "grubs"
+            },
+            {
+              "atSec": 775,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 845,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 969,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1095,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1122,
+              "label": "Take down The Inhibitor"
+            },
+            {
+              "atSec": 1218,
+              "label": "Hunt The Dragon",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1277,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1383,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1479,
+              "label": "Hunt The Atakhan"
+            },
+            {
+              "atSec": 1515,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1599,
+              "label": "Hunt The Dragon",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1730,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1866,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1916,
+              "label": "Hunt The Dragon",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1971,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 2116,
+              "label": "Hunt The Baron Nashor",
+              "kind": "baron"
+            },
+            {
+              "atSec": 2132,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 2145,
+              "label": "End credit"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 76,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "MNjowsYTQNA",
+          "title": "Evelynn Jungle vs Nidalee - KR Master Patch 26.10",
+          "rankClaim": "Master",
+          "patch": "26.10",
+          "durationSec": 1520,
+          "region": "KR",
+          "uploaded": "2026-05-27",
+          "moments": []
+        },
+        {
+          "videoId": "Z4ZbPK6QI0M",
+          "title": "Evelynn Jungle vs Nidalee - KR Master Patch 26.05",
+          "rankClaim": "Master",
+          "patch": "26.5",
+          "durationSec": 1520,
+          "region": "KR",
+          "uploaded": "2026-03-20",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 173,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 296,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 404,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 439,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 477,
+              "label": "Hunt The Dragon",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 558,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 590,
+              "label": "Hunt The Void Grubs",
+              "kind": "grubs"
+            },
+            {
+              "atSec": 680,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 823,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 856,
+              "label": "Hunt The Dragon",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 886,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 921,
+              "label": "Hunt The Rift Herald",
+              "kind": "herald"
+            },
+            {
+              "atSec": 947,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 964,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 987,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1138,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1206,
+              "label": "Hunt The Dragon",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1260,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1297,
+              "label": "Hunt The Baron Nashor",
+              "kind": "baron"
+            },
+            {
+              "atSec": 1469,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1509,
+              "label": "End credit"
+            }
+          ]
+        },
+        {
+          "videoId": "csXNSG8-eBA",
+          "title": "Evelynn vs Nidalee Jungle - KR Challenger - Patch 25.24 Season 15",
+          "rankClaim": "Challenger",
+          "patch": "25.24",
+          "durationSec": 2591,
+          "region": "KR",
+          "uploaded": "2025-12-23",
+          "moments": []
+        },
+        {
+          "videoId": "BD8WMVuf_R4",
+          "title": "Evelynn Jungle vs Nidalee - EUW Grandmaster Patch 25.17",
+          "rankClaim": "Grandmaster",
+          "patch": "25.17",
+          "durationSec": 1813,
+          "region": "EUW",
+          "uploaded": "2025-09-11",
+          "moments": []
+        },
+        {
+          "videoId": "ExCXSadigFE",
+          "title": "Evelynn Jungle vs Nidalee - KR Challenger Patch 25.10",
+          "rankClaim": "Challenger",
+          "patch": "25.10",
+          "durationSec": 1968,
+          "region": "KR",
+          "uploaded": "2025-05-24",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 77,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "R8bbgVSlME8",
+          "title": "Evelynn Jungle vs Udyr - NA Challenger Patch 26.04",
+          "rankClaim": "Challenger",
+          "patch": "26.4",
+          "durationSec": 1918,
+          "region": "NA",
+          "uploaded": "2026-02-26",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 120,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 268,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 409,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 465,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 578,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 669,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 694,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 801,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 870,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 941,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 978,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1107,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1184,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1225,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1326,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1390,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1453,
+              "label": "Hunt The Dragon",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1471,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1503,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1545,
+              "label": "Hunt The Baron Nashor",
+              "kind": "baron"
+            },
+            {
+              "atSec": 1775,
+              "label": "Hunt The Dragon",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1796,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1813,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1844,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1907,
+              "label": "End credit"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 78,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "gF5mZ50BNY0",
+          "title": "Evelynn Jungle vs Poppy - KR Master Patch 25.11",
+          "rankClaim": "Master",
+          "patch": "25.11",
+          "durationSec": 1683,
+          "region": "KR",
+          "uploaded": "2025-06-12",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 79,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "psAR0U5bgoE",
+          "title": "Evelynn Jungle vs Gragas - KR Grandmaster Patch 26.12",
+          "rankClaim": "Grandmaster",
+          "patch": "26.12",
+          "durationSec": 1623,
+          "region": "KR",
+          "uploaded": "2026-06-25",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 80,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "MAAjEVMrUOg",
+          "title": "Evelynn Jungle vs Pantheon (BFX Raptor) - KR Grandmaster Patch 26.13",
+          "rankClaim": "Grandmaster",
+          "patch": "26.13",
+          "durationSec": 1597,
+          "region": "KR",
+          "uploaded": "2026-07-16",
+          "moments": []
+        },
+        {
+          "videoId": "xqXivt0IKKg",
+          "title": "Evelynn Jungle vs Pantheon - KR Master Patch 25.12",
+          "rankClaim": "Master",
+          "patch": "25.12",
+          "durationSec": 1601,
+          "region": "KR",
+          "uploaded": "2025-06-19",
+          "moments": []
+        },
+        {
+          "videoId": "7twgvVlAFQ0",
+          "title": "Evelynn vs Pantheon Jungle - KR Challenger - Patch 25.10 Season 15",
+          "rankClaim": "Challenger",
+          "patch": "25.10",
+          "durationSec": 1711,
+          "region": "KR",
+          "uploaded": "2025-05-25",
+          "moments": []
+        },
+        {
+          "videoId": "nszW_dMY85k",
+          "title": "Evelynn Jungle vs Pantheon - KR Master Patch 25.05",
+          "rankClaim": "Master",
+          "patch": "25.5",
+          "durationSec": 2031,
+          "region": "KR",
+          "uploaded": "2025-03-09",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 330,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 359,
+              "label": "Hunt The Void Grubs",
+              "kind": "grubs"
+            },
+            {
+              "atSec": 616,
+              "label": "Hunt The Dragon",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 704,
+              "label": "Hunt The Void Grubs",
+              "kind": "grubs"
+            },
+            {
+              "atSec": 738,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 880,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 938,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 962,
+              "label": "Hunt The Dragon",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 992,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1095,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1116,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1182,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1209,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1286,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1426,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1558,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1642,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1816,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1947,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1969,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1980,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1991,
+              "label": "Take down The Inhibitor"
+            },
+            {
+              "atSec": 2010,
+              "label": "End credit"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 91,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "85MjHgw7FMc",
+          "title": "Evelynn Jungle vs Talon - BR Challenger Patch 26.06",
+          "rankClaim": "Challenger",
+          "patch": "26.6",
+          "durationSec": 1583,
+          "uploaded": "2026-03-27",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 154,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 305,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 437,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 467,
+              "label": "Hunt The Dragon",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 488,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 594,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 644,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 754,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 784,
+              "label": "Hunt The Dragon",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 848,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 937,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1093,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1119,
+              "label": "Hunt The Dragon",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1150,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1179,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1272,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1359,
+              "label": "Hunt The Baron Nashor",
+              "kind": "baron"
+            },
+            {
+              "atSec": 1506,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1527,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1548,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1572,
+              "label": "End credit"
+            }
+          ]
+        },
+        {
+          "videoId": "nnNRofU3SM0",
+          "title": "Evelynn Jungle vs Talon - KR Grandmaster Patch 26.03",
+          "rankClaim": "Grandmaster",
+          "patch": "26.3",
+          "durationSec": 1614,
+          "region": "KR",
+          "uploaded": "2026-02-13",
+          "moments": []
+        },
+        {
+          "videoId": "ixMT8_LS-LY",
+          "title": "Evelynn Jungle vs Talon - KR Master Patch 25.22",
+          "rankClaim": "Master",
+          "patch": "25.22",
+          "durationSec": 1446,
+          "region": "KR",
+          "uploaded": "2025-11-12",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 92,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "CPqDXL9Odo8",
+          "title": "Evelynn Top vs Riven - TW Challenger Patch 25.09",
+          "rankClaim": "Challenger",
+          "patch": "25.9",
+          "durationSec": 2119,
+          "uploaded": "2025-05-11",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 96,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "GztS6MYEuN0",
+          "title": "Evelynn Top vs Kog'Maw - TW Challenger Patch 25.08",
+          "rankClaim": "Challenger",
+          "patch": "25.8",
+          "durationSec": 1602,
+          "uploaded": "2025-04-29",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 103,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 332,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 397,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 553,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 695,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 752,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 866,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 888,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1099,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1220,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1287,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1353,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1462,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1494,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1531,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1555,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1581,
+              "label": "End credit"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 104,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "4cIac50Fo7s",
+          "title": "Evelynn Jungle vs Graves - KR Master Patch 26.19",
+          "rankClaim": "Master",
+          "patch": "26.19",
+          "durationSec": 1860,
+          "region": "KR",
+          "uploaded": "2026-10-09",
+          "result": "W",
+          "moments": [
+            {
+              "atSec": 287,
+              "label": "Red takes 1st Dragon (Ocean)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 299,
+              "label": "First Blood — Evelynn kills Sett",
+              "kind": "kill"
+            },
+            {
+              "atSec": 854,
+              "label": "Evelynn outduels Sett"
+            },
+            {
+              "atSec": 875,
+              "label": "Red takes 2nd Dragon (Chemtech)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1058,
+              "label": "Evelynn takes down Kalista"
+            },
+            {
+              "atSec": 1216,
+              "label": "Blue takes 1st Dragon (Cloud)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1297,
+              "label": "Red takes Baron",
+              "kind": "baron"
+            },
+            {
+              "atSec": 1342,
+              "label": "Evelynn eliminates Kalista"
+            },
+            {
+              "atSec": 1421,
+              "label": "Viktor takes down Sett"
+            },
+            {
+              "atSec": 1464,
+              "label": "Evelynn takes down Graves"
+            },
+            {
+              "atSec": 1519,
+              "label": "Evelynn kills Sett",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1535,
+              "label": "Blue takes 2nd Dragon (Cloud)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1624,
+              "label": "Evelynn solo kills Locke",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1675,
+              "label": "Red takes 2nd Baron",
+              "kind": "baron"
+            },
+            {
+              "atSec": 1709,
+              "label": "Evelynn picks off Locke"
+            },
+            {
+              "atSec": 1819,
+              "label": "Evelynn Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1823,
+              "label": "Evelynn Triple Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1836,
+              "label": "Mid Inhibitor falls (Red)"
+            }
+          ]
+        },
+        {
+          "videoId": "-yMs02crIbs",
+          "title": "Evelynn Jungle vs Graves - KR Master Patch 26.19",
+          "rankClaim": "Master",
+          "patch": "26.19",
+          "durationSec": 1833,
+          "region": "KR",
+          "uploaded": "2026-09-28",
+          "moments": []
+        },
+        {
+          "videoId": "FKddgsdQ4zU",
+          "title": "Evelynn Jungle vs Graves - KR Master Patch 26.14",
+          "rankClaim": "Master",
+          "patch": "26.14",
+          "durationSec": 1578,
+          "region": "KR",
+          "uploaded": "2026-07-23",
+          "moments": []
+        },
+        {
+          "videoId": "1tPcBAW0nyo",
+          "title": "Evelynn Jungle vs Graves - KR Master Patch 25.20",
+          "rankClaim": "Master",
+          "patch": "25.20",
+          "durationSec": 1845,
+          "region": "KR",
+          "uploaded": "2025-10-16",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 105,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "Djmd6UU9V34",
+          "title": "Evelynn Jungle vs Fizz - VN Challenger Patch 26.07",
+          "rankClaim": "Challenger",
+          "patch": "26.7",
+          "durationSec": 1904,
+          "uploaded": "2026-04-10",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 167,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 317,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 423,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 488,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 576,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 724,
+              "label": "Hunt The Dragon",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 750,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 853,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 913,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 975,
+              "label": "Hunt The Rift Herald",
+              "kind": "herald"
+            },
+            {
+              "atSec": 1078,
+              "label": "Hunt The Dragon",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1099,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1207,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1456,
+              "label": "Hunt The Dragon",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1489,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1520,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1542,
+              "label": "Hunt The Baron Nashor",
+              "kind": "baron"
+            },
+            {
+              "atSec": 1590,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1684,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1713,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1800,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1823,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1893,
+              "label": "End credit"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 107,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "IxjEU4pje7k",
+          "title": "Evelynn Jungle vs Rengar - KR Master Patch 26.11",
+          "rankClaim": "Master",
+          "patch": "26.11",
+          "durationSec": 1837,
+          "region": "KR",
+          "uploaded": "2026-06-07",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 113,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "tOU2_IlQAA0",
+          "title": "Evelynn vs Sejuani 8/2/6 (Jungle) | EUW Grandmaster | Evelynn OTP Replay",
+          "rankClaim": "Grandmaster",
+          "patch": "26.9",
+          "durationSec": 1169,
+          "region": "EUW",
+          "patchEstimated": true,
+          "uploaded": "2026-05-09",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 120,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "uDcpmMRa49U",
+          "title": "Evelynn Jungle vs Hecarim - KR Grandmaster Patch 25.24",
+          "rankClaim": "Grandmaster",
+          "patch": "25.24",
+          "durationSec": 1532,
+          "region": "KR",
+          "uploaded": "2025-12-09",
+          "moments": []
+        },
+        {
+          "videoId": "zShaM6lfRxc",
+          "title": "Evelynn Jungle vs Hecarim - NA Challenger Patch 25.19",
+          "rankClaim": "Challenger",
+          "patch": "25.19",
+          "durationSec": 1636,
+          "region": "NA",
+          "uploaded": "2025-10-10",
+          "moments": []
+        },
+        {
+          "videoId": "G3fs2IV36_M",
+          "title": "Evelynn vs Hercarim Jungle - KR Challenger - Patch 25.16 Season 15",
+          "rankClaim": "Challenger",
+          "patch": "25.16",
+          "durationSec": 1741,
+          "region": "KR",
+          "uploaded": "2025-08-22",
+          "moments": []
+        },
+        {
+          "videoId": "fm7vjVZpMtc",
+          "title": "Evelynn Jungle vs Hecarim - KR Master Patch 25.06",
+          "rankClaim": "Master",
+          "patch": "25.6",
+          "durationSec": 1688,
+          "region": "KR",
+          "uploaded": "2025-03-31",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 261,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 382,
+              "label": "Hunt The Void Grubs",
+              "kind": "grubs"
+            },
+            {
+              "atSec": 401,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 542,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 633,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 664,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 823,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 858,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 889,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1094,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1151,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1168,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1266,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1520,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1667,
+              "label": "End credit"
+            }
+          ]
+        },
+        {
+          "videoId": "A9KZ0TRGb6A",
+          "title": "Evelynn Jungle vs Hecarim - EUW Challenger Patch 25.05",
+          "rankClaim": "Challenger",
+          "patch": "25.5",
+          "durationSec": 1639,
+          "region": "EUW",
+          "uploaded": "2025-03-20",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 121,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "kB_D8Ja2zMs",
+          "title": "Evelynn Jungle vs Kha'Zix - VN Grandmaster Patch 26.20",
+          "rankClaim": "Grandmaster",
+          "patch": "26.20",
+          "durationSec": 1653,
+          "uploaded": "2026-10-12",
+          "result": "W",
+          "moments": [
+            {
+              "atSec": 150,
+              "label": "First Blood — Evelynn kills Zoe",
+              "kind": "kill"
+            },
+            {
+              "atSec": 597,
+              "label": "Red takes 1st Dragon (Infernal)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 914,
+              "label": "Team fight (3 kills)",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 958,
+              "label": "Red takes 2nd Dragon (Mountain)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1046,
+              "label": "Evelynn picks off Zoe"
+            },
+            {
+              "atSec": 1086,
+              "label": "Irelia Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1136,
+              "label": "Evelynn solo kills Zoe",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1167,
+              "label": "Evelynn takes down Kha'Zix"
+            },
+            {
+              "atSec": 1258,
+              "label": "Evelynn takes down Kha'Zix"
+            },
+            {
+              "atSec": 1294,
+              "label": "Red takes 3rd Dragon (Hextech)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1380,
+              "label": "Evelynn picks off Zoe"
+            },
+            {
+              "atSec": 1430,
+              "label": "Red takes Baron",
+              "kind": "baron"
+            },
+            {
+              "atSec": 1515,
+              "label": "Evelynn kills Olaf",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1596,
+              "label": "Evelynn catches Bard"
+            },
+            {
+              "atSec": 1598,
+              "label": "Twitch Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1601,
+              "label": "Twitch Quadra Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1629,
+              "label": "Mid Inhibitor falls (Blue)"
+            }
+          ]
+        },
+        {
+          "videoId": "aTM-fbO5gh8",
+          "title": "Evelynn Jungle vs Kha'Zix - KR Master Patch 26.17",
+          "rankClaim": "Master",
+          "patch": "26.17",
+          "durationSec": 1778,
+          "region": "KR",
+          "uploaded": "2026-08-30",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 133,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "XKaarRqlPVU",
+          "title": "Evelynn Jungle vs Quinn - EUW Grandmaster Patch 26.16",
+          "rankClaim": "Grandmaster",
+          "patch": "26.16",
+          "durationSec": 1673,
+          "region": "EUW",
+          "uploaded": "2026-08-27",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 143,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "yQjo6oWSBcw",
+          "title": "Evelynn Jungle vs Zyra - EUW Challenger Patch 26.05",
+          "rankClaim": "Challenger",
+          "patch": "26.5",
+          "durationSec": 1519,
+          "region": "EUW",
+          "uploaded": "2026-03-13",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 163,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "Q-_lI1rFWrc",
+          "title": "Evelynn Jungle vs Taliyah - EUW Challenger Patch 25.04",
+          "rankClaim": "Challenger",
+          "patch": "25.4",
+          "durationSec": 1522,
+          "region": "EUW",
+          "uploaded": "2025-02-26",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 359,
+              "label": "Hunt The Void Grubs",
+              "kind": "grubs"
+            },
+            {
+              "atSec": 401,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 543,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 712,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 788,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 820,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 914,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 968,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 993,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1111,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1142,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1160,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1174,
+              "label": "Hunt The Dragon",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1253,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1355,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1421,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1453,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1477,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1501,
+              "label": "End credit"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 200,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "Me2p60kmIiw",
+          "title": "Evelynn Jungle vs Bel'Veth - KR Grandmaster Patch 26.13",
+          "rankClaim": "Grandmaster",
+          "patch": "26.13",
+          "durationSec": 1676,
+          "region": "KR",
+          "uploaded": "2026-07-02",
+          "moments": []
+        },
+        {
+          "videoId": "rXp6wr8GQjw",
+          "title": "Evelynn Jungle vs Bel'Veth - EUW Challenger Patch 26.12",
+          "rankClaim": "Challenger",
+          "patch": "26.12",
+          "durationSec": 1641,
+          "region": "EUW",
+          "uploaded": "2026-06-18",
+          "moments": []
+        },
+        {
+          "videoId": "NfgpeO4QL2w",
+          "title": "Evelynn Jungle vs Bel'Veth - KR Master Patch 26.09",
+          "rankClaim": "Master",
+          "patch": "26.9",
+          "durationSec": 1523,
+          "region": "KR",
+          "uploaded": "2026-05-14",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 203,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "_aeK8b13mcE",
+          "title": "Evelynn Jungle vs Kindred - NA Challenger Patch 26.15",
+          "rankClaim": "Challenger",
+          "patch": "26.15",
+          "durationSec": 1805,
+          "region": "NA",
+          "uploaded": "2026-08-13",
+          "moments": []
+        },
+        {
+          "videoId": "22wdXqMebwU",
+          "title": "Evelynn Jungle vs Kindred - KR Master Patch 26.09",
+          "rankClaim": "Master",
+          "patch": "26.9",
+          "durationSec": 1605,
+          "region": "KR",
+          "uploaded": "2026-05-07",
+          "moments": []
+        },
+        {
+          "videoId": "5UF5Y47xXvk",
+          "title": "Evelynn Jungle vs Kindred - KR Master Patch 25.14",
+          "rankClaim": "Master",
+          "patch": "25.14",
+          "durationSec": 1569,
+          "region": "KR",
+          "uploaded": "2025-07-24",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 234,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "4sLZ_h_93SA",
+          "title": "Evelynn Jungle vs Viego - VN Challenger Patch 26.02",
+          "rankClaim": "Challenger",
+          "patch": "26.2",
+          "durationSec": 1499,
+          "uploaded": "2026-02-04",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 155,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 241,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 384,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 497,
+              "label": "Hunt The Void Grubs",
+              "kind": "grubs"
+            },
+            {
+              "atSec": 566,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 680,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 709,
+              "label": "Hunt The Dragon",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 930,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 989,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1075,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1278,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1333,
+              "label": "Hunt The Baron Nashor",
+              "kind": "baron"
+            },
+            {
+              "atSec": 1355,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1401,
+              "label": "Hunt The Dragon",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1436,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1488,
+              "label": "End credit"
+            }
+          ]
+        },
+        {
+          "videoId": "ONubf7rVt6w",
+          "title": "Evelynn Jungle vs Viego - KR Grandmaster Patch 25.15",
+          "rankClaim": "Grandmaster",
+          "patch": "25.15",
+          "durationSec": 1668,
+          "region": "KR",
+          "uploaded": "2025-08-06",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 238,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "oU16CGDClTM",
+          "title": "Evelynn Jungle vs Zed - KR Master Patch 25.21",
+          "rankClaim": "Master",
+          "patch": "25.21",
+          "durationSec": 1447,
+          "region": "KR",
+          "uploaded": "2025-11-01",
+          "moments": []
+        },
+        {
+          "videoId": "Rv1eRQ4WDQg",
+          "title": "Evelynn Jungle vs Zed - EUW Grandmaster Patch 25.18",
+          "rankClaim": "Grandmaster",
+          "patch": "25.18",
+          "durationSec": 1972,
+          "region": "EUW",
+          "uploaded": "2025-09-25",
+          "moments": []
+        },
+        {
+          "videoId": "DHwzhjSHoWM",
+          "title": "Evelynn Jungle vs Zed - EUW Grandmaster Patch 25.11",
+          "rankClaim": "Grandmaster",
+          "patch": "25.11",
+          "durationSec": 1505,
+          "region": "EUW",
+          "uploaded": "2025-06-05",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 245,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "ZJsPRkNSxlQ",
+          "title": "Evelynn Jungle vs Ekko - EUW Grandmaster Patch 25.10",
+          "rankClaim": "Grandmaster",
+          "patch": "25.10",
+          "durationSec": 1475,
+          "region": "EUW",
+          "uploaded": "2025-05-28",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 246,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "4eUNJSWkQ0Y",
+          "title": "Evelynn Jungle vs Qiyana (TSW Hizto) - KR Grandmaster Patch 26.16",
+          "rankClaim": "Grandmaster",
+          "patch": "26.16",
+          "durationSec": 1577,
+          "region": "KR",
+          "uploaded": "2026-08-20",
+          "moments": []
+        },
+        {
+          "videoId": "l9X2qN_IYqE",
+          "title": "Evelynn vs Qiyana 9/2/13 (Jungle) | EUW Grandmaster | Evelynn OTP Replay",
+          "rankClaim": "Grandmaster",
+          "patch": "26.9",
+          "durationSec": 1631,
+          "region": "EUW",
+          "patchEstimated": true,
+          "uploaded": "2026-05-11",
+          "moments": []
+        },
+        {
+          "videoId": "slD-RurOxwI",
+          "title": "Evelynn Jungle vs Qiyana - KR Master Patch 25.17",
+          "rankClaim": "Master",
+          "patch": "25.17",
+          "durationSec": 1707,
+          "region": "KR",
+          "uploaded": "2025-09-04",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 266,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "G725ugvzDo4",
+          "title": "Evelynn Jungle vs Aatrox - NA Grandmaster Patch 25.24",
+          "rankClaim": "Grandmaster",
+          "patch": "25.24",
+          "durationSec": 1455,
+          "region": "NA",
+          "uploaded": "2026-01-08",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 350,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "2HiwWEgqz44",
+          "title": "Evelynn Support vs Yuumi - VN Challenger Patch 25.13",
+          "rankClaim": "Challenger",
+          "patch": "25.13",
+          "durationSec": 1789,
+          "uploaded": "2025-07-15",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 517,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "ADZzV4sM1G8",
+          "title": "Evelynn Jungle vs Sylas - KR Master Patch 26.18",
+          "rankClaim": "Master",
+          "patch": "26.18",
+          "durationSec": 1559,
+          "region": "KR",
+          "uploaded": "2026-09-13",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 777,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "Q7WMp1xOkiI",
+          "title": "Evelynn Mid vs Yone - KR Master Patch 25.14",
+          "rankClaim": "Master",
+          "patch": "25.14",
+          "durationSec": 1476,
+          "region": "KR",
+          "uploaded": "2025-07-30",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 876,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "Sm-Vau0-r8I",
+          "title": "Evelynn Jungle vs Lillia - KR Master Patch 26.15",
+          "rankClaim": "Master",
+          "patch": "26.15",
+          "durationSec": 1623,
+          "region": "KR",
+          "uploaded": "2026-08-05",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 887,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "s5EXi4BAn3o",
+          "title": "Evelynn Jungle vs Gwen - EUW Master Patch 26.17",
+          "rankClaim": "Master",
+          "patch": "26.17",
+          "durationSec": 1789,
+          "region": "EUW",
+          "uploaded": "2026-09-12",
+          "moments": []
+        },
+        {
+          "videoId": "sz77vonyRhU",
+          "title": "Evelynn Jungle vs Gwen - NA Grandmaster Patch 25.21",
+          "rankClaim": "Grandmaster",
+          "patch": "25.21",
+          "durationSec": 1771,
+          "region": "NA",
+          "uploaded": "2025-11-07",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 904,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "LDC0Tvrk72k",
+          "title": "Evelynn Jungle vs Zaahen - KR Master Patch 26.01",
+          "rankClaim": "Master",
+          "patch": "26.1",
+          "durationSec": 1539,
+          "region": "KR",
+          "uploaded": "2026-01-16",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 950,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "TBFilAnwvr4",
+          "title": "Evelynn Jungle vs Naafiri - KR Master Patch 26.14",
+          "rankClaim": "Master",
+          "patch": "26.14",
+          "durationSec": 1663,
+          "region": "KR",
+          "uploaded": "2026-07-31",
+          "moments": []
+        },
+        {
+          "videoId": "LFjfQWojRuI",
+          "title": "Evelynn Jungle vs Naafiri - KR Master Patch 25.07",
+          "rankClaim": "Master",
+          "patch": "25.7",
+          "durationSec": 1780,
+          "region": "KR",
+          "uploaded": "2025-04-17",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 180,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 414,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 449,
+              "label": "Hunt The Void Grubs",
+              "kind": "grubs"
+            },
+            {
+              "atSec": 499,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 563,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 639,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 690,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 815,
+              "label": "Hunt The Void Grubs",
+              "kind": "grubs"
+            },
+            {
+              "atSec": 930,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 999,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1032,
+              "label": "Hunt The Rift Herald",
+              "kind": "herald"
+            },
+            {
+              "atSec": 1067,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1101,
+              "label": "Hunt The Dragon",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1212,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1286,
+              "label": "Hunt The Atakhan"
+            },
+            {
+              "atSec": 1308,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1395,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1431,
+              "label": "Hunt The Dragon",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1479,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1573,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1759,
+              "label": "End credit"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

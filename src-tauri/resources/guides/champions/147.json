@@ -1,0 +1,2248 @@
+{
+  "schema": 1,
+  "champion": 147,
+  "generatedAt": "2026-11-07T13:25:14.592Z",
+  "guides": [],
+  "general": [
+    {
+      "champion": 147,
+      "lane": "support",
+      "patch": "26.21",
+      "reviewed": false,
+      "keyTips": [
+        {
+          "text": "Leave spawn promptly to reach the bot-side brush before opponents; if delayed against a hook threat, ward over the wall instead of face-checking.",
+          "scope": "champion",
+          "sourceIds": [
+            "scottysseus"
+          ]
+        },
+        {
+          "text": "Use Beat Drop on an already-slowed target to root it, or on a rooted target to stun it; set up the target's status before casting.",
+          "scope": "champion",
+          "sourceIds": [
+            "scottysseus"
+          ],
+          "abilityKeys": [
+            {
+              "champion": 147,
+              "key": "E"
+            }
+          ]
+        },
+        {
+          "text": "Remember that Encore can extend its reach by passing through allied or enemy champions, allowing more flexible casts into a clustered fight.",
+          "scope": "champion",
+          "sourceIds": [
+            "scottysseus"
+          ],
+          "abilityKeys": [
+            {
+              "champion": 147,
+              "key": "R"
+            }
+          ]
+        }
+      ],
+      "sections": {
+        "overview": {
+          "tips": []
+        },
+        "early-lane": {
+          "tips": [
+            {
+              "text": "Ask the lane partner to coordinate an engage chain, such as their slow followed by Seraphine's root or stun.",
+              "scope": "champion",
+              "sourceIds": [
+                "scottysseus"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 147,
+                  "key": "E"
+                }
+              ]
+            },
+            {
+              "text": "Poke the enemy carry with spells rather than spending all lane pressure on the opposing support.",
+              "scope": "champion",
+              "sourceIds": [
+                "scottysseus"
+              ]
+            },
+            {
+              "text": "If the enemy support catches you or your partner with crowd control, answer by aiming Beat Drop and Surround Sound at their carry to discourage the follow-up.",
+              "scope": "champion",
+              "sourceIds": [
+                "scottysseus"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 147,
+                  "key": "E"
+                },
+                {
+                  "champion": 147,
+                  "key": "Q"
+                },
+                {
+                  "champion": 147,
+                  "key": "W"
+                }
+              ]
+            },
+            {
+              "text": "Encourage the lane partner to save wave-clear spells when using them on minions would waste mana and miss a useful trade window.",
+              "scope": "champion",
+              "sourceIds": [
+                "scottysseus"
+              ]
+            },
+            {
+              "text": "Hold mid lane as a default position so Seraphine can rotate toward whichever side of the map needs her.",
+              "scope": "champion",
+              "sourceIds": [
+                "scottysseus"
+              ]
+            }
+          ]
+        },
+        "mid-lane": {
+          "tips": [
+            {
+              "text": "Poke with Surround Sound before a team fight instead of waiting until the fight has already started.",
+              "scope": "champion",
+              "sourceIds": [
+                "scottysseus"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 147,
+                  "key": "Q"
+                },
+                {
+                  "champion": 147,
+                  "key": "W"
+                }
+              ]
+            },
+            {
+              "text": "Use the build's crowd control and poke to soften targets before the team commits to the engage.",
+              "scope": "champion",
+              "sourceIds": [
+                "scottysseus"
+              ]
+            },
+            {
+              "text": "Take the Encore angle through a champion when a direct cast is blocked, so the extended reach still finds the grouped targets.",
+              "scope": "champion",
+              "sourceIds": [
+                "scottysseus"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 147,
+                  "key": "R"
+                }
+              ]
+            }
+          ]
+        },
+        "win-condition": {
+          "tips": [
+            {
+              "text": "Favor damage and crowd control over a dedicated healing-and-shielding setup, to contribute more directly to picks.",
+              "scope": "champion",
+              "sourceIds": [
+                "scottysseus"
+              ]
+            },
+            {
+              "text": "Follow a successful Beat Drop root or stun with team damage, and use Encore to swing a clustered fight rather than casting it without setup.",
+              "scope": "champion",
+              "sourceIds": [
+                "scottysseus"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 147,
+                  "key": "E"
+                },
+                {
+                  "champion": 147,
+                  "key": "R"
+                }
+              ]
+            },
+            {
+              "text": "After a won fight, keep lanes pushed toward enemy territory so the team can convert its advantage into towers or inhibitors.",
+              "scope": "champion",
+              "sourceIds": [
+                "scottysseus"
+              ]
+            },
+            {
+              "text": "Keep the team together after a fight; splitting off for camps or shopping gives away the initiative.",
+              "scope": "champion",
+              "sourceIds": [
+                "scottysseus"
+              ]
+            },
+            {
+              "text": "Adapt to teammates instead of assuming they will coordinate perfectly: assess risk before following a risky play, while still helping with vision, roams, and objectives.",
+              "scope": "champion",
+              "sourceIds": [
+                "scottysseus"
+              ]
+            }
+          ]
+        }
+      },
+      "itemization": [],
+      "sources": [
+        {
+          "id": "scottysseus",
+          "author": "Scottysseus",
+          "rankClaim": "No rank claim",
+          "url": "https://www.mobafire.com/league-of-legends/build/how-to-climb-as-sera-support-a-kill-stealers-guide-to-iron-639007",
+          "kind": "mobafire"
+        }
+      ]
+    }
+  ],
+  "vods": [
+    {
+      "enemy": 3,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "8276fRddyYc",
+          "title": "Seraphine Support vs Galio - KR Challenger Patch 26.06",
+          "rankClaim": "Challenger",
+          "patch": "26.6",
+          "durationSec": 1789,
+          "region": "KR",
+          "uploaded": "2026-03-24",
+          "moments": []
+        },
+        {
+          "videoId": "orxHSo4JbE0",
+          "title": "Seraphine Support vs Galio - NA Challenger Patch 25.24",
+          "rankClaim": "Challenger",
+          "patch": "25.24",
+          "durationSec": 1441,
+          "region": "NA",
+          "uploaded": "2025-12-29",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 746,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 911,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 966,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 982,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1048,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1169,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1246,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1285,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1387,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1430,
+              "label": "End credit"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 4,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "cWI1gdNKVUw",
+          "title": "Seraphine Mid vs Twisted Fate - NA Grandmaster Patch 26.15",
+          "rankClaim": "Grandmaster",
+          "patch": "26.15",
+          "durationSec": 1851,
+          "region": "NA",
+          "uploaded": "2026-08-13",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 12,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "yW74xCJ0jTo",
+          "title": "Seraphine Support vs Alistar - VN Challenger Patch 26.07",
+          "rankClaim": "Challenger",
+          "patch": "26.7",
+          "durationSec": 1596,
+          "uploaded": "2026-04-05",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 93,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 178,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 281,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 443,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 720,
+              "label": "Hunt The Dragon",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 741,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 828,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 887,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1003,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1074,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1099,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1116,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1188,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1275,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1335,
+              "label": "Hunt The Baron Nashor",
+              "kind": "baron"
+            },
+            {
+              "atSec": 1363,
+              "label": "Hunt The Dragon",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1438,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1474,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1488,
+              "label": "Take down The Inhibitor"
+            },
+            {
+              "atSec": 1513,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1567,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1585,
+              "label": "End credit"
+            }
+          ]
+        },
+        {
+          "videoId": "Vha1UgBJu7U",
+          "title": "Seraphine Support vs Alistar - KR Grandmaster Patch 25.23",
+          "rankClaim": "Grandmaster",
+          "patch": "25.23",
+          "durationSec": 1510,
+          "region": "KR",
+          "uploaded": "2025-11-24",
+          "moments": []
+        },
+        {
+          "videoId": "F00n9S9EmTo",
+          "title": "Seraphine Support vs Alistar - KR Challenger Patch 25.20",
+          "rankClaim": "Challenger",
+          "patch": "25.20",
+          "durationSec": 1433,
+          "region": "KR",
+          "uploaded": "2025-10-15",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 13,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "dTDPM9JUocA",
+          "title": "Seraphine Mid vs Ryze - KR Master Patch 25.24",
+          "rankClaim": "Master",
+          "patch": "25.24",
+          "durationSec": 1545,
+          "region": "KR",
+          "uploaded": "2026-01-05",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 37,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "S0o3z0sHyss",
+          "title": "Seraphine Support vs Sona - KR Master Patch 25.15",
+          "rankClaim": "Master",
+          "patch": "25.15",
+          "durationSec": 1761,
+          "region": "KR",
+          "uploaded": "2025-08-07",
+          "moments": []
+        },
+        {
+          "videoId": "06-PzdzVczc",
+          "title": "Seraphine Support vs Sona - NA Grandmaster Patch 25.08",
+          "rankClaim": "Grandmaster",
+          "patch": "25.8",
+          "durationSec": 1992,
+          "region": "NA",
+          "uploaded": "2025-04-28",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 51,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 228,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 360,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 561,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 717,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 917,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1118,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1210,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1342,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1570,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1633,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1701,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1718,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1746,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1760,
+              "label": "Take down The Inhibitor"
+            },
+            {
+              "atSec": 1811,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1886,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1944,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1961,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1971,
+              "label": "End credit"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 40,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "F7lcsyo0gtU",
+          "title": "Seraphine Support vs Janna - KR Challenger Patch 25.12",
+          "rankClaim": "Challenger",
+          "patch": "25.12",
+          "durationSec": 1793,
+          "region": "KR",
+          "uploaded": "2025-06-20",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 42,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "xliLZZXRhoA",
+          "title": "Seraphine Mid vs Corki - KR Master Patch 25.24",
+          "rankClaim": "Master",
+          "patch": "25.24",
+          "durationSec": 1591,
+          "region": "KR",
+          "uploaded": "2025-12-19",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 688,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 918,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 985,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1070,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1300,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1390,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1445,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1465,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1550,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1580,
+              "label": "End credit"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 43,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "fxY_1-2O0cU",
+          "title": "Seraphine Support vs Karma - EUW Grandmaster Patch 25.24",
+          "rankClaim": "Grandmaster",
+          "patch": "25.24",
+          "durationSec": 1508,
+          "region": "EUW",
+          "uploaded": "2025-12-14",
+          "moments": []
+        },
+        {
+          "videoId": "IVfC8hjFnD0",
+          "title": "Seraphine Support vs Karma - KR Master Patch 25.04",
+          "rankClaim": "Master",
+          "patch": "25.4",
+          "durationSec": 1944,
+          "region": "KR",
+          "uploaded": "2025-02-25",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 102,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 194,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 283,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 355,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 480,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 601,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 685,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 758,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 977,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1067,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1088,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1158,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1237,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1336,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1453,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1602,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1691,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1923,
+              "label": "End credit"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 51,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "23HAOMLZyi4",
+          "title": "Seraphine Top vs Caitlyn - NA Challenger Patch 26.13",
+          "rankClaim": "Challenger",
+          "patch": "26.13",
+          "durationSec": 1654,
+          "region": "NA",
+          "uploaded": "2026-07-07",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 53,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "SRe6pzB3TF4",
+          "title": "Seraphine Support vs Blitzcrank - KR Master Patch 25.19",
+          "rankClaim": "Master",
+          "patch": "25.19",
+          "durationSec": 1525,
+          "region": "KR",
+          "uploaded": "2025-09-28",
+          "moments": []
+        },
+        {
+          "videoId": "KG7lZOXlmgw",
+          "title": "Seraphine Support vs Blitzcrank - KR Master Patch 25.07",
+          "rankClaim": "Master",
+          "patch": "25.7",
+          "durationSec": 1697,
+          "region": "KR",
+          "uploaded": "2025-04-10",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 149,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 243,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 349,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 530,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 650,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 804,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1015,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1089,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1199,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1307,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1345,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1429,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1486,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1553,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1635,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1663,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1676,
+              "label": "End credit"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 60,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "gqQREtF4SGs",
+          "title": "(GAM Taki) Seraphine Support vs Elise - KR Challenger Patch 26.16",
+          "rankClaim": "Challenger",
+          "patch": "26.16",
+          "durationSec": 1467,
+          "region": "KR",
+          "player": "GAM Taki",
+          "uploaded": "2026-08-24",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 61,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "bV5rCZAjPf4",
+          "title": "Seraphine Mid vs Orianna - KR Master Patch 26.14",
+          "rankClaim": "Master",
+          "patch": "26.14",
+          "durationSec": 1748,
+          "region": "KR",
+          "uploaded": "2026-07-30",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 64,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "yd8PnsB40wA",
+          "title": "DRUTUTT PREPARES ME FOR THE JYNXZI TOURNAMENT",
+          "rankClaim": "Master+",
+          "patch": "26.10",
+          "durationSec": 22033,
+          "patchEstimated": true,
+          "player": "Alois",
+          "uploaded": "2026-05-21",
+          "format": "stream",
+          "cam": true,
+          "startSec": 11099,
+          "endSec": 13391,
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 69,
+      "lane": "adc",
+      "videos": [
+        {
+          "videoId": "r_HTFXasRFA",
+          "title": "(T1 Eclipse) Seraphine Bot vs Cassiopeia - KR Challenger Patch 26.17",
+          "rankClaim": "Challenger",
+          "patch": "26.17",
+          "durationSec": 1794,
+          "region": "KR",
+          "player": "Eclipse",
+          "team": "T1",
+          "uploaded": "2026-09-05",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 78,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "z65s9Ap86eM",
+          "title": "Seraphine Support vs Poppy - KR Master Patch 25.11",
+          "rankClaim": "Master",
+          "patch": "25.11",
+          "durationSec": 1789,
+          "region": "KR",
+          "uploaded": "2025-06-05",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 80,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "UB4L5A2Z8tg",
+          "title": "Seraphine Support vs Pantheon - KR Grandmaster Patch 25.13",
+          "rankClaim": "Grandmaster",
+          "patch": "25.13",
+          "durationSec": 1645,
+          "region": "KR",
+          "uploaded": "2025-07-03",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 84,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "kzjrytDlInc",
+          "title": "Seraphine Top vs Akali - NA Challenger Patch 26.11",
+          "rankClaim": "Challenger",
+          "patch": "26.11",
+          "durationSec": 1846,
+          "region": "NA",
+          "uploaded": "2026-06-10",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 99,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "EKxBhd-tmlg",
+          "title": "Seraphine Support vs Lux - KR Master Patch 25.18",
+          "rankClaim": "Master",
+          "patch": "25.18",
+          "durationSec": 2030,
+          "region": "KR",
+          "uploaded": "2025-09-15",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 101,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "uFMvxGn5JNc",
+          "title": "Seraphine Mid vs Xerath - EUW Grandmaster Patch 25.20",
+          "rankClaim": "Grandmaster",
+          "patch": "25.20",
+          "durationSec": 1611,
+          "region": "EUW",
+          "uploaded": "2025-10-20",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 103,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "gnp6nR_eFUs",
+          "title": "Seraphine Mid vs Ahri - EUW Challenger Patch 26.13",
+          "rankClaim": "Challenger",
+          "patch": "26.13",
+          "durationSec": 1567,
+          "region": "EUW",
+          "uploaded": "2026-07-14",
+          "moments": []
+        },
+        {
+          "videoId": "IecahebOqgk",
+          "title": "Seraphine Mid vs Ahri - KR Master Patch 26.09",
+          "rankClaim": "Master",
+          "patch": "26.9",
+          "durationSec": 1780,
+          "region": "KR",
+          "uploaded": "2026-05-03",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 110,
+      "lane": "adc",
+      "videos": [
+        {
+          "videoId": "jAAEP8cnn78",
+          "title": "Seraphine Bot vs Varus - EUW Master Patch 26.21",
+          "rankClaim": "Master",
+          "patch": "26.21",
+          "durationSec": 1569,
+          "region": "EUW",
+          "uploaded": "2026-11-03",
+          "result": "W",
+          "moments": [
+            {
+              "atSec": 161,
+              "label": "Xin Zhao kills Nami",
+              "kind": "kill"
+            },
+            {
+              "atSec": 184,
+              "label": "Seraphine takes down Varus"
+            },
+            {
+              "atSec": 289,
+              "label": "Seraphine picks off Nami"
+            },
+            {
+              "atSec": 351,
+              "label": "Red takes 1st Dragon (Chemtech)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 494,
+              "label": "Soraka picks off Varus"
+            },
+            {
+              "atSec": 674,
+              "label": "Blue takes 1st Dragon (Mountain)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 816,
+              "label": "Xin Zhao eliminates Varus"
+            },
+            {
+              "atSec": 991,
+              "label": "Blue takes 2nd Dragon (Ocean)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1167,
+              "label": "Vayne picks off Varus"
+            },
+            {
+              "atSec": 1181,
+              "label": "Vayne Triple Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1222,
+              "label": "Red takes Baron",
+              "kind": "baron"
+            },
+            {
+              "atSec": 1224,
+              "label": "Soraka picks off Varus"
+            },
+            {
+              "atSec": 1331,
+              "label": "Red takes 2nd Dragon (Ocean)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1386,
+              "label": "Xin Zhao kills Nami",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1528,
+              "label": "Vayne Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1540,
+              "label": "Top Inhibitor falls (Blue)"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 111,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "KJqg4ipsL2g",
+          "title": "Seraphine Support vs Nautilus - KR Grandmaster Patch 25.21",
+          "rankClaim": "Grandmaster",
+          "patch": "25.21",
+          "durationSec": 1896,
+          "region": "KR",
+          "uploaded": "2025-10-30",
+          "moments": []
+        },
+        {
+          "videoId": "VKqAiKgw_50",
+          "title": "Seraphine Support vs Nautilus - KR Master Patch 25.09",
+          "rankClaim": "Master",
+          "patch": "25.9",
+          "durationSec": 2006,
+          "region": "KR",
+          "uploaded": "2025-05-06",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 112,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "bcOvkwzwkg0",
+          "title": "Seraphine Mid vs Viktor - VN Challenger Patch 25.13",
+          "rankClaim": "Challenger",
+          "patch": "25.13",
+          "durationSec": 1432,
+          "uploaded": "2025-07-07",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 117,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "V5JbXIERkOk",
+          "title": "(BDG Ronaldo) Seraphine Support vs Lulu - EUW Grandmaster Patch 26.21",
+          "rankClaim": "Grandmaster",
+          "patch": "26.21",
+          "durationSec": 1498,
+          "region": "EUW",
+          "player": "BDG Ronaldo",
+          "uploaded": "2026-10-27",
+          "result": "W",
+          "moments": [
+            {
+              "atSec": 109,
+              "label": "First Blood — Yunara kills Fiora",
+              "kind": "kill"
+            },
+            {
+              "atSec": 194,
+              "label": "Seraphine outplays Fiora"
+            },
+            {
+              "atSec": 253,
+              "label": "Team fight (3 kills)",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 323,
+              "label": "Red takes 1st Dragon (Mountain)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 387,
+              "label": "Yunara takes down Fiora"
+            },
+            {
+              "atSec": 606,
+              "label": "Seraphine eliminates Lulu"
+            },
+            {
+              "atSec": 707,
+              "label": "Wukong takes down Sylas"
+            },
+            {
+              "atSec": 859,
+              "label": "Red takes 2nd Dragon (Chemtech)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 917,
+              "label": "Wukong picks off Kog'Maw"
+            },
+            {
+              "atSec": 997,
+              "label": "Wukong takes down Sylas"
+            },
+            {
+              "atSec": 1139,
+              "label": "Team fight (4 kills)",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1199,
+              "label": "Red takes 3rd Dragon (Hextech)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1292,
+              "label": "Blue takes Baron",
+              "kind": "baron"
+            },
+            {
+              "atSec": 1344,
+              "label": "Yunara kills Kog'Maw",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1353,
+              "label": "Yunara Triple Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1389,
+              "label": "Mid Inhibitor falls (Blue)"
+            },
+            {
+              "atSec": 1439,
+              "label": "Teemo kills Sylas",
+              "kind": "kill"
+            }
+          ]
+        },
+        {
+          "videoId": "f60B17v5y5Y",
+          "title": "Seraphine Support vs Lulu - KR Master Patch 26.20",
+          "rankClaim": "Master",
+          "patch": "26.20",
+          "durationSec": 1764,
+          "region": "KR",
+          "uploaded": "2026-10-13",
+          "result": "W",
+          "moments": [
+            {
+              "atSec": 1,
+              "label": "First Blood — Seraphine kills Kog'Maw",
+              "kind": "kill"
+            },
+            {
+              "atSec": 346,
+              "label": "Red takes 1st Dragon (Cloud)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 784,
+              "label": "Red takes 2nd Dragon (Mountain)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 834,
+              "label": "Seraphine picks off Kog'Maw"
+            },
+            {
+              "atSec": 870,
+              "label": "Zoe takes down Yone"
+            },
+            {
+              "atSec": 1106,
+              "label": "Blue takes 1st Dragon (Chemtech)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1227,
+              "label": "Seraphine eliminates Yone"
+            },
+            {
+              "atSec": 1247,
+              "label": "Ashe takes down Kog'Maw"
+            },
+            {
+              "atSec": 1339,
+              "label": "Zoe picks off Qiyana"
+            },
+            {
+              "atSec": 1388,
+              "label": "Red takes Baron",
+              "kind": "baron"
+            },
+            {
+              "atSec": 1444,
+              "label": "Red takes 3rd Dragon (Chemtech)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1455,
+              "label": "Ashe Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1461,
+              "label": "Ashe Triple Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1506,
+              "label": "Zac takes down Qiyana"
+            },
+            {
+              "atSec": 1551,
+              "label": "Mid Inhibitor falls (Blue)"
+            },
+            {
+              "atSec": 1595,
+              "label": "Zoe takes down Yone"
+            },
+            {
+              "atSec": 1682,
+              "label": "Vayne Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1723,
+              "label": "Top Inhibitor falls (Blue)"
+            }
+          ]
+        },
+        {
+          "videoId": "tXeNFG9Uo1Y",
+          "title": "Seraphine Support vs Lulu - KR Challenger Patch 26.05",
+          "rankClaim": "Challenger",
+          "patch": "26.5",
+          "durationSec": 1718,
+          "region": "KR",
+          "uploaded": "2026-03-18",
+          "moments": []
+        },
+        {
+          "videoId": "mN5Us9qy1KQ",
+          "title": "Seraphine Support vs Lulu - KR Challenger Patch 26.05",
+          "rankClaim": "Challenger",
+          "patch": "26.5",
+          "durationSec": 1441,
+          "region": "KR",
+          "uploaded": "2026-03-10",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 63,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 302,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 406,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 547,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 652,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 840,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 918,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1005,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1036,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1059,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1152,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1287,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1387,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1413,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1430,
+              "label": "End credit"
+            }
+          ]
+        },
+        {
+          "videoId": "3EtqnF16l8s",
+          "title": "Seraphine Support vs Lulu - KR Grandmaster Patch 26.01",
+          "rankClaim": "Grandmaster",
+          "patch": "26.1",
+          "durationSec": 1576,
+          "region": "KR",
+          "uploaded": "2026-01-19",
+          "moments": []
+        },
+        {
+          "videoId": "5PSvCsR31Dg",
+          "title": "Seraphine Support vs Lulu - KR Master Patch 25.17",
+          "rankClaim": "Master",
+          "patch": "25.17",
+          "durationSec": 1539,
+          "region": "KR",
+          "uploaded": "2025-09-12",
+          "moments": []
+        },
+        {
+          "videoId": "Oxxm9LZijzo",
+          "title": "Seraphine Support vs Lulu - KR Grandmaster Patch 25.05",
+          "rankClaim": "Grandmaster",
+          "patch": "25.5",
+          "durationSec": 1868,
+          "region": "KR",
+          "uploaded": "2025-03-11",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 157,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "BZFd5tOzPTA",
+          "title": "Seraphine Mid vs Yasuo - VN Challenger Patch 25.23",
+          "rankClaim": "Challenger",
+          "patch": "25.23",
+          "durationSec": 1702,
+          "uploaded": "2025-12-01",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 164,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "T94RRFL7vpE",
+          "title": "Seraphine Support vs Camille - KR Master Patch 26.18",
+          "rankClaim": "Master",
+          "patch": "26.18",
+          "durationSec": 1677,
+          "region": "KR",
+          "uploaded": "2026-09-17",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 201,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "km8pmAzmXLE",
+          "title": "Seraphine Support vs Braum - KR Challenger Patch 25.22",
+          "rankClaim": "Challenger",
+          "patch": "25.22",
+          "durationSec": 1631,
+          "region": "KR",
+          "uploaded": "2025-11-10",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 202,
+      "lane": "adc",
+      "videos": [
+        {
+          "videoId": "sIDuBoUmryQ",
+          "title": "Seraphine Bot vs Jhin - EUW Master Patch 26.19",
+          "rankClaim": "Master",
+          "patch": "26.19",
+          "durationSec": 1713,
+          "region": "EUW",
+          "uploaded": "2026-10-05",
+          "result": "W",
+          "moments": [
+            {
+              "atSec": 134,
+              "label": "First Blood — Cho'Gath kills Jhin",
+              "kind": "kill"
+            },
+            {
+              "atSec": 502,
+              "label": "Red takes 1st Dragon (Chemtech)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 800,
+              "label": "Seraphine eliminates Udyr"
+            },
+            {
+              "atSec": 817,
+              "label": "Blue takes 1st Dragon (Hextech)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1062,
+              "label": "Seraphine picks off Pyke"
+            },
+            {
+              "atSec": 1140,
+              "label": "Blue takes 2nd Dragon (Cloud)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1214,
+              "label": "Team fight (3 kills)",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1238,
+              "label": "Seraphine Triple Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1255,
+              "label": "Seraphine picks off Pyke"
+            },
+            {
+              "atSec": 1327,
+              "label": "Seraphine picks off Pyke"
+            },
+            {
+              "atSec": 1382,
+              "label": "Blue takes Baron",
+              "kind": "baron"
+            },
+            {
+              "atSec": 1445,
+              "label": "Seraphine takes down Jhin"
+            },
+            {
+              "atSec": 1494,
+              "label": "Cho'Gath kills Pyke",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1534,
+              "label": "Red takes 2nd Dragon (Cloud)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1557,
+              "label": "Seraphine takes down Jhin"
+            },
+            {
+              "atSec": 1605,
+              "label": "Team fight (5 kills)",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1641,
+              "label": "Mid Inhibitor falls (Red)"
+            },
+            {
+              "atSec": 1663,
+              "label": "Wukong takes down Pyke"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 222,
+      "lane": "adc",
+      "videos": [
+        {
+          "videoId": "R7R9ZXHCqFw",
+          "title": "Seraphine Bot vs Jinx - BR Grandmaster Patch 26.20",
+          "rankClaim": "Grandmaster",
+          "patch": "26.20",
+          "durationSec": 1703,
+          "uploaded": "2026-10-19",
+          "result": "W",
+          "moments": [
+            {
+              "atSec": 196,
+              "label": "First Blood — Jayce kills Braum",
+              "kind": "kill"
+            },
+            {
+              "atSec": 198,
+              "label": "Jayce Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 374,
+              "label": "Red takes 1st Dragon (Hextech)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 529,
+              "label": "Seraphine takes down Jinx"
+            },
+            {
+              "atSec": 692,
+              "label": "Seraphine takes down Jinx"
+            },
+            {
+              "atSec": 811,
+              "label": "Jayce Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 813,
+              "label": "Red takes 2nd Dragon (Cloud)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1126,
+              "label": "Seraphine picks off Sion"
+            },
+            {
+              "atSec": 1182,
+              "label": "Red takes 3rd Dragon (Infernal)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1200,
+              "label": "Kayle Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1318,
+              "label": "Red takes Baron",
+              "kind": "baron"
+            },
+            {
+              "atSec": 1460,
+              "label": "Briar picks off Kassadin"
+            },
+            {
+              "atSec": 1509,
+              "label": "Red takes 4th Dragon (Infernal)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1571,
+              "label": "Kayle Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1620,
+              "label": "Kayle picks off Jinx"
+            },
+            {
+              "atSec": 1624,
+              "label": "Mid Inhibitor falls (Blue)"
+            },
+            {
+              "atSec": 1629,
+              "label": "Bot Inhibitor falls (Blue)"
+            },
+            {
+              "atSec": 1656,
+              "label": "Seraphine Double Kill",
+              "kind": "kill"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 236,
+      "lane": "adc",
+      "videos": [
+        {
+          "videoId": "F9e7BL3KbSw",
+          "title": "Seraphine Bot vs Lucian (LUP Pesho) - EUW Challenger Patch 26.18",
+          "rankClaim": "Challenger",
+          "patch": "26.18",
+          "durationSec": 1659,
+          "region": "EUW",
+          "uploaded": "2026-09-21",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 267,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "_TkLmBVmHKw",
+          "title": "Seraphine Support vs Nami - EUW Grandmaster Patch 26.17",
+          "rankClaim": "Grandmaster",
+          "patch": "26.17",
+          "durationSec": 1668,
+          "region": "EUW",
+          "uploaded": "2026-09-03",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 412,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "OxH_ZUVMS68",
+          "title": "Seraphine Support vs Thresh - KR Master Patch 26.04",
+          "rankClaim": "Master",
+          "patch": "26.4",
+          "durationSec": 1500,
+          "region": "KR",
+          "uploaded": "2026-02-23",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 432,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "etdMph5KrLI",
+          "title": "Seraphine Support vs Bard - KR Master Patch 26.08",
+          "rankClaim": "Master",
+          "patch": "26.8",
+          "durationSec": 1817,
+          "region": "KR",
+          "uploaded": "2026-04-19",
+          "moments": []
+        },
+        {
+          "videoId": "Z8Gw83y_MCg",
+          "title": "Seraphine Support vs Bard - KR Grandmaster Patch 25.16",
+          "rankClaim": "Grandmaster",
+          "patch": "25.16",
+          "durationSec": 1749,
+          "region": "KR",
+          "uploaded": "2025-08-22",
+          "moments": []
+        },
+        {
+          "videoId": "VBliaFOiEMw",
+          "title": "Seraphine Support vs Bard - KR Master Patch 25.06",
+          "rankClaim": "Master",
+          "patch": "25.6",
+          "durationSec": 1725,
+          "region": "KR",
+          "uploaded": "2025-03-28",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 497,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "7I3D5TULnMs",
+          "title": "Seraphine Support vs Rakan - KR Grandmaster Patch 26.02",
+          "rankClaim": "Grandmaster",
+          "patch": "26.2",
+          "durationSec": 1486,
+          "region": "KR",
+          "uploaded": "2026-01-28",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 529,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 654,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 868,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 969,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1176,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1316,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1416,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1475,
+              "label": "End credit"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 518,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "YUzAhqb9x_I",
+          "title": "Seraphine Support vs Neeko - KR Master Patch 25.10",
+          "rankClaim": "Master",
+          "patch": "25.10",
+          "durationSec": 1695,
+          "region": "KR",
+          "uploaded": "2025-05-21",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 223,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 433,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 634,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 833,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 972,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1010,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1021,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1092,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1285,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1392,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1503,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1552,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1636,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1657,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1674,
+              "label": "End credit"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 523,
+      "lane": "adc",
+      "videos": [
+        {
+          "videoId": "xvljdBTW-J0",
+          "title": "T1 Peyz Seraphine vs Aphelios [ ADC ] Korea Challenger 2429 LP | Patch 26.13",
+          "rankClaim": "Challenger",
+          "patch": "26.13",
+          "durationSec": 1177,
+          "region": "KR",
+          "player": "Peyz",
+          "team": "T1",
+          "uploaded": "2026-07-02",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 555,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "lH05oS8nFis",
+          "title": "(Ryoshi) Seraphine Support vs Pyke (NR Jango) - EUW Challenger Patch 26.19",
+          "rankClaim": "Challenger",
+          "patch": "26.19",
+          "durationSec": 1538,
+          "region": "EUW",
+          "player": "Ryoshi",
+          "uploaded": "2026-09-30",
+          "moments": []
+        },
+        {
+          "videoId": "dUCG6qkvBfk",
+          "title": "(BFX Kellin) Seraphine Support vs Pyke (DK Career) - KR Challenger Patch 26.11",
+          "rankClaim": "Challenger",
+          "patch": "26.11",
+          "durationSec": 1870,
+          "region": "KR",
+          "player": "Kellin",
+          "team": "BFX",
+          "uploaded": "2026-05-31",
+          "moments": []
+        },
+        {
+          "videoId": "sCzT38nB-vA",
+          "title": "Seraphine Support vs Pyke - KR Grandmaster Patch 25.14",
+          "rankClaim": "Grandmaster",
+          "patch": "25.14",
+          "durationSec": 1566,
+          "region": "KR",
+          "uploaded": "2025-07-23",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 800,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "b72-QmfvlYk",
+          "title": "Seraphine Support vs Mel - KR Grandmaster Patch 26.03",
+          "rankClaim": "Grandmaster",
+          "patch": "26.3",
+          "durationSec": 1605,
+          "region": "KR",
+          "uploaded": "2026-02-10",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 140,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 229,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 450,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 772,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 852,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1083,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1227,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1315,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1377,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1504,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1565,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1594,
+              "label": "End credit"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 893,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "3R-ZSc_x__U",
+          "title": "Seraphine Mid vs Aurora - EUW Challenger Patch 26.12",
+          "rankClaim": "Challenger",
+          "patch": "26.12",
+          "durationSec": 1733,
+          "region": "EUW",
+          "uploaded": "2026-06-24",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 902,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "hDgXONUIHSw",
+          "title": "(HLE Delight) Seraphine Support vs Milio - KR Master Patch 26.10",
+          "rankClaim": "Master",
+          "patch": "26.10",
+          "durationSec": 1523,
+          "region": "KR",
+          "player": "Delight",
+          "team": "HLE",
+          "uploaded": "2026-05-25",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 902,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "dLL24B_9Nxs",
+          "title": "MY SUPPORT ARC FOR THE JYNXZI TOURNAMENT",
+          "rankClaim": "Master+",
+          "patch": "26.10",
+          "durationSec": 20150,
+          "patchEstimated": true,
+          "player": "Alois",
+          "uploaded": "2026-05-20",
+          "format": "stream",
+          "cam": true,
+          "startSec": 16050,
+          "endSec": 18405,
+          "moments": []
+        }
+      ]
+    }
+  ]
+}

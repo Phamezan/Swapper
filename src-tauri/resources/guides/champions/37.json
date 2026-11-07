@@ -1,0 +1,2127 @@
+{
+  "schema": 1,
+  "champion": 37,
+  "generatedAt": "2026-11-07T13:25:14.592Z",
+  "guides": [],
+  "general": [
+    {
+      "champion": 37,
+      "lane": "support",
+      "patch": "26.21",
+      "reviewed": false,
+      "keyTips": [
+        {
+          "text": "Play around enemy cooldowns early: Sona is vulnerable with high mana costs and no escape, so avoid getting caught before items and trade only with ADC backup confirmed.",
+          "scope": "champion",
+          "sourceIds": [
+            "neiri"
+          ]
+        },
+        {
+          "text": "Spend W just before incoming damage to shield the hit and heal after, and prioritize the W Power Chord onto whoever deals the most damage to blunt their exchange.",
+          "scope": "champion",
+          "sourceIds": [
+            "neiri"
+          ],
+          "abilityKeys": [
+            {
+              "champion": 37,
+              "key": "W"
+            },
+            {
+              "champion": 37,
+              "key": "P"
+            }
+          ]
+        },
+        {
+          "text": "Move with the carries rather than far behind them, weaving in and out to apply passive autos and cycle auras while staying protected.",
+          "scope": "champion",
+          "sourceIds": [
+            "neiri"
+          ]
+        }
+      ],
+      "sections": {
+        "overview": {
+          "tips": []
+        },
+        "early-lane": {
+          "tips": [
+            {
+              "text": "Trade when the enemy ADC steps up to last-hit, answering with Q and a passive auto rather than spending health without a safe follow-up.",
+              "scope": "champion",
+              "sourceIds": [
+                "neiri"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 37,
+                  "key": "Q"
+                }
+              ]
+            },
+            {
+              "text": "When the opponent burns a bad roam timer, build a large wave and pressure their ADC, calling jungle or mid help before attempting a dive.",
+              "scope": "champion",
+              "sourceIds": [
+                "neiri"
+              ]
+            },
+            {
+              "text": "Run Summon Aery with Manaflow Band, Celerity, Gathering Storm, Presence of Mind, and Legend: Haste, with Flash and Heal for most games.",
+              "scope": "champion",
+              "sourceIds": [
+                "neiri"
+              ]
+            }
+          ]
+        },
+        "mid-lane": {
+          "tips": [
+            {
+              "text": "Choose the Power Chord that best disrupts the current threat instead of spending the passive without a target plan.",
+              "scope": "champion",
+              "sourceIds": [
+                "neiri"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 37,
+                  "key": "P"
+                }
+              ]
+            },
+            {
+              "text": "Keep hunting Flash-R angles, but first check that teammates have the health, resources, and numbers to follow the initiation.",
+              "scope": "champion",
+              "sourceIds": [
+                "neiri"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 37,
+                  "key": "R"
+                }
+              ]
+            },
+            {
+              "text": "Store an E Chord while moving around the map so a slow is ready for the next chase or disengage, chaining another slow after it to hold the target.",
+              "scope": "champion",
+              "sourceIds": [
+                "neiri"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 37,
+                  "key": "E"
+                }
+              ]
+            },
+            {
+              "text": "Roam after pushing the wave, when the ADC is safe, or on a better recall, planning the path and return so the ADC loses no tempo; never leave during a slow push, an enemy freeze, or when the ADC is exposed or holding a large shutdown.",
+              "scope": "champion",
+              "sourceIds": [
+                "neiri"
+              ]
+            }
+          ]
+        },
+        "win-condition": {
+          "tips": [
+            {
+              "text": "Scale into the aura enchanter: stay alive near the carry line, keep applying auras and Power Chord debuffs, and let W, E, and R decide the extended fight.",
+              "scope": "champion",
+              "sourceIds": [
+                "neiri"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 37,
+                  "key": "W"
+                },
+                {
+                  "champion": 37,
+                  "key": "E"
+                },
+                {
+                  "champion": 37,
+                  "key": "R"
+                },
+                {
+                  "champion": 37,
+                  "key": "P"
+                }
+              ]
+            },
+            {
+              "text": "Aim R where allies can follow the stun, W Chord onto the highest damage dealer, and E Chord onto the target your team can catch.",
+              "scope": "champion",
+              "sourceIds": [
+                "neiri"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 37,
+                  "key": "W"
+                },
+                {
+                  "champion": 37,
+                  "key": "E"
+                },
+                {
+                  "champion": 37,
+                  "key": "R"
+                }
+              ]
+            },
+            {
+              "text": "Treat every roam as a trade against what the ADC gives up, and at maximum stacks keep casting safely since basic-ability haste plus faster Crescendo rewards continued spell use.",
+              "scope": "champion",
+              "sourceIds": [
+                "neiri"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 37,
+                  "key": "R"
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "itemization": [
+        {
+          "text": "Buy Boots of Swiftness into Echoes of Helia, with the order reversible by game, then add Diadem of Songs, Moonstone Renewer, and Dawncore for the healer line.",
+          "scope": "champion",
+          "sourceIds": [
+            "neiri"
+          ],
+          "itemIds": [
+            3009,
+            6620,
+            6617,
+            6621
+          ]
+        },
+        {
+          "text": "Situationally take ability-haste boots, Seraph's Embrace, Frozen Heart, Kaenic Rookern, or Dawncore by team damage and survival needs, with Knight's Vow, Shurelya's Battlesong, Mikael's Blessing, and Oblivion Orb as further options.",
+          "scope": "champion",
+          "sourceIds": [
+            "neiri"
+          ],
+          "itemIds": [
+            3110,
+            2504,
+            6621,
+            3109,
+            2065,
+            3222,
+            3916
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "id": "neiri",
+          "author": "Neiri",
+          "rankClaim": "Diamond (profile badge)",
+          "rank": "diamond",
+          "url": "https://www.mobafire.com/league-of-legends/build/kits-otp-sona-guide-645016",
+          "kind": "mobafire"
+        }
+      ]
+    }
+  ],
+  "vods": [
+    {
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "asHCt7v8t_4",
+          "title": "I Played SONA JUNGLE In GOLD To PROVE A POINT",
+          "rankClaim": "Master+",
+          "patch": "26.4",
+          "durationSec": 1649,
+          "patchEstimated": true,
+          "player": "Sinerias",
+          "uploaded": "2026-03-03",
+          "format": "stream",
+          "cam": true,
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 9,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "laNZYzjxMuU",
+          "title": "Sona Support vs Fiddlesticks - EUW Challenger Patch 25.08",
+          "rankClaim": "Challenger",
+          "patch": "25.8",
+          "durationSec": 1561,
+          "region": "EUW",
+          "uploaded": "2025-05-01",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 43,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 125,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 224,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 296,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 381,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 589,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 767,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 822,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 917,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1045,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1180,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1257,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1372,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1505,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1540,
+              "label": "End credit"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 12,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "F88TLA5okk0",
+          "title": "Sona Support vs Alistar - KR Master Patch 25.14",
+          "rankClaim": "Master",
+          "patch": "25.14",
+          "durationSec": 2121,
+          "region": "KR",
+          "uploaded": "2025-07-23",
+          "moments": []
+        },
+        {
+          "videoId": "16cNxZ9z4A0",
+          "title": "Sona Support vs Alistar - KR Master Patch 25.11",
+          "rankClaim": "Master",
+          "patch": "25.11",
+          "durationSec": 2060,
+          "region": "KR",
+          "uploaded": "2025-06-07",
+          "moments": []
+        },
+        {
+          "videoId": "nCN2sQfk_MY",
+          "title": "Sona Support vs Alistar - KR Challenger Patch 25.09",
+          "rankClaim": "Challenger",
+          "patch": "25.9",
+          "durationSec": 1588,
+          "region": "KR",
+          "uploaded": "2025-05-11",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 16,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "KbjGEWGQR7Y",
+          "title": "Sona Support vs Soraka - KR Master Patch 25.23",
+          "rankClaim": "Master",
+          "patch": "25.23",
+          "durationSec": 1658,
+          "region": "KR",
+          "uploaded": "2025-11-28",
+          "moments": []
+        },
+        {
+          "videoId": "q_FsYQykK7I",
+          "title": "Sona Support vs Soraka - EUW Grandmaster Patch 25.13",
+          "rankClaim": "Grandmaster",
+          "patch": "25.13",
+          "durationSec": 2056,
+          "region": "EUW",
+          "uploaded": "2025-07-03",
+          "moments": []
+        },
+        {
+          "videoId": "Bm7aMj2KnjI",
+          "title": "Sona Support vs Soraka - KR Master Patch 25.10",
+          "rankClaim": "Master",
+          "patch": "25.10",
+          "durationSec": 1536,
+          "region": "KR",
+          "uploaded": "2025-05-23",
+          "moments": []
+        },
+        {
+          "videoId": "wYakbQZS4tg",
+          "title": "Sona Support vs Soraka - KR Master Patch 25.07",
+          "rankClaim": "Master",
+          "patch": "25.7",
+          "durationSec": 1843,
+          "region": "KR",
+          "uploaded": "2025-04-17",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 26,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "5dssjoH3beQ",
+          "title": "Sona Support vs Zilean - NA Challenger Patch 26.20",
+          "rankClaim": "Challenger",
+          "patch": "26.20",
+          "durationSec": 1548,
+          "region": "NA",
+          "uploaded": "2026-10-23",
+          "result": "W",
+          "moments": [
+            {
+              "atSec": 142,
+              "label": "First Blood — Swain kills Draven",
+              "kind": "kill"
+            },
+            {
+              "atSec": 304,
+              "label": "Red takes 1st Dragon (Hextech)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 651,
+              "label": "Red takes 2nd Dragon (Ocean)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 799,
+              "label": "Team fight (3 kills)",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 926,
+              "label": "Lillia kills Gangplank",
+              "kind": "kill"
+            },
+            {
+              "atSec": 970,
+              "label": "Blue takes 1st Dragon (Chemtech)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 974,
+              "label": "Swain eliminates Kha'Zix"
+            },
+            {
+              "atSec": 1020,
+              "label": "Irelia takes down Gangplank"
+            },
+            {
+              "atSec": 1114,
+              "label": "Red takes Rift Herald",
+              "kind": "herald"
+            },
+            {
+              "atSec": 1184,
+              "label": "Team fight (3 kills)",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1320,
+              "label": "Red takes 3rd Dragon (Chemtech)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1392,
+              "label": "Red takes Baron",
+              "kind": "baron"
+            },
+            {
+              "atSec": 1464,
+              "label": "Camille kills Kha'Zix",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1498,
+              "label": "Top Inhibitor falls (Blue)"
+            },
+            {
+              "atSec": 1531,
+              "label": "Sona kills Kha'Zix",
+              "kind": "kill"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 30,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "74cVdL5gNZU",
+          "title": "Sona Mid vs Karthus - TW Challenger Patch 25.15",
+          "rankClaim": "Challenger",
+          "patch": "25.15",
+          "durationSec": 2090,
+          "uploaded": "2025-08-12",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 40,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "sGObenP6aIA",
+          "title": "(BRT Peto) Sona Support vs Janna - EUNE Challenger Patch 26.15",
+          "rankClaim": "Challenger",
+          "patch": "26.15",
+          "durationSec": 1400,
+          "region": "EUNE",
+          "player": "BRT Peto",
+          "uploaded": "2026-08-07",
+          "moments": []
+        },
+        {
+          "videoId": "-FXR4fxlyZ8",
+          "title": "(LG Zeyzal) Sona Support vs Janna - NA Challenger Patch 26.11",
+          "rankClaim": "Challenger",
+          "patch": "26.11",
+          "durationSec": 1475,
+          "region": "NA",
+          "player": "LG Zeyzal",
+          "uploaded": "2026-06-12",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 43,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "WDnWP75XppE",
+          "title": "Sona Support vs Karma - KR Challenger Patch 26.08",
+          "rankClaim": "Challenger",
+          "patch": "26.8",
+          "durationSec": 1765,
+          "region": "KR",
+          "uploaded": "2026-05-01",
+          "moments": []
+        },
+        {
+          "videoId": "lxDRF679qKY",
+          "title": "Sona Support vs Karma - TW Challenger Patch 26.05",
+          "rankClaim": "Challenger",
+          "patch": "26.5",
+          "durationSec": 1815,
+          "uploaded": "2026-03-12",
+          "moments": []
+        },
+        {
+          "videoId": "3B3ZvbnXIDA",
+          "title": "Sona Support vs Karma - NA Challenger Patch 26.04",
+          "rankClaim": "Challenger",
+          "patch": "26.4",
+          "durationSec": 1729,
+          "region": "NA",
+          "uploaded": "2026-03-06",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 154,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 270,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 336,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 459,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 528,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 590,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 708,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 863,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1132,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1331,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1356,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1414,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1464,
+              "label": "Take down The Inhibitor"
+            },
+            {
+              "atSec": 1605,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1657,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1701,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1718,
+              "label": "End credit"
+            }
+          ]
+        },
+        {
+          "videoId": "0WDdCCxIbsU",
+          "title": "Sona Support vs Karma - KR Master Patch 26.02",
+          "rankClaim": "Master",
+          "patch": "26.2",
+          "durationSec": 1508,
+          "region": "KR",
+          "uploaded": "2026-01-29",
+          "moments": []
+        },
+        {
+          "videoId": "Dv7Lm8kXajo",
+          "title": "Sona Support vs Karma - KR Master Patch 25.16",
+          "rankClaim": "Master",
+          "patch": "25.16",
+          "durationSec": 1825,
+          "region": "KR",
+          "uploaded": "2025-08-21",
+          "moments": []
+        },
+        {
+          "videoId": "WqL3Ppvq4Wg",
+          "title": "Sona Support vs Karma - EUW Grandmaster Patch 25.09",
+          "rankClaim": "Grandmaster",
+          "patch": "25.9",
+          "durationSec": 1792,
+          "region": "EUW",
+          "uploaded": "2025-05-14",
+          "moments": []
+        },
+        {
+          "videoId": "8oDOBjsA5kE",
+          "title": "Sona Support vs Karma - KR Master Patch 25.06",
+          "rankClaim": "Master",
+          "patch": "25.6",
+          "durationSec": 1668,
+          "region": "KR",
+          "uploaded": "2025-03-28",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 44,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "gYXWsUcg8sw",
+          "title": "Sona Support vs Taric - EUW Grandmaster Patch 26.16",
+          "rankClaim": "Grandmaster",
+          "patch": "26.16",
+          "durationSec": 1512,
+          "region": "EUW",
+          "uploaded": "2026-08-24",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 53,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "UVrQYNzPcxg",
+          "title": "Sona Support vs Blitzcrank - KR Master Patch 26.18",
+          "rankClaim": "Master",
+          "patch": "26.18",
+          "durationSec": 1671,
+          "region": "KR",
+          "uploaded": "2026-09-13",
+          "moments": []
+        },
+        {
+          "videoId": "0zaEtCp53Tk",
+          "title": "Sona Support vs Blitzcrank - NA Challenger Patch 26.17",
+          "rankClaim": "Challenger",
+          "patch": "26.17",
+          "durationSec": 1857,
+          "region": "NA",
+          "uploaded": "2026-08-31",
+          "moments": []
+        },
+        {
+          "videoId": "VM7sfiCijk0",
+          "title": "Sona Support vs Blitzcrank - NA Grandmaster Patch 25.15",
+          "rankClaim": "Grandmaster",
+          "patch": "25.15",
+          "durationSec": 1797,
+          "region": "NA",
+          "uploaded": "2025-08-10",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 57,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "SQRUurLBwpo",
+          "title": "Sona Support vs Maokai - KR Master Patch 26.19",
+          "rankClaim": "Master",
+          "patch": "26.19",
+          "durationSec": 1824,
+          "region": "KR",
+          "uploaded": "2026-10-08",
+          "result": "W",
+          "moments": [
+            {
+              "atSec": 97,
+              "label": "First Blood — Nidalee kills Maokai",
+              "kind": "kill"
+            },
+            {
+              "atSec": 107,
+              "label": "Nidalee Triple Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 352,
+              "label": "Sona outplays Kalista"
+            },
+            {
+              "atSec": 986,
+              "label": "Syndra Triple Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1015,
+              "label": "Red takes 1st Dragon (Mountain)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1098,
+              "label": "Nidalee takes down Sylas"
+            },
+            {
+              "atSec": 1217,
+              "label": "Nidalee takes down Sylas"
+            },
+            {
+              "atSec": 1325,
+              "label": "Blue takes 1st Dragon (Chemtech)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1362,
+              "label": "Aatrox Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1534,
+              "label": "Nidalee kills Maokai",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1591,
+              "label": "Syndra kills Kalista",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1612,
+              "label": "Nidalee takes down Sylas"
+            },
+            {
+              "atSec": 1650,
+              "label": "Red takes 2nd Dragon (Hextech)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1715,
+              "label": "Red takes Baron",
+              "kind": "baron"
+            },
+            {
+              "atSec": 1782,
+              "label": "Nidalee takes down Sylas"
+            },
+            {
+              "atSec": 1809,
+              "label": "Mid Inhibitor falls (Blue)"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 57,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "dLL24B_9Nxs",
+          "title": "MY SUPPORT ARC FOR THE JYNXZI TOURNAMENT",
+          "rankClaim": "Master+",
+          "patch": "26.10",
+          "durationSec": 20150,
+          "patchEstimated": true,
+          "player": "Alois",
+          "uploaded": "2026-05-20",
+          "format": "stream",
+          "cam": true,
+          "startSec": 13672,
+          "endSec": 16050,
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 60,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "g8o22DvwXZ4",
+          "title": "Sona Support vs Elise - KR Grandmaster Patch 26.03",
+          "rankClaim": "Grandmaster",
+          "patch": "26.3",
+          "durationSec": 1514,
+          "region": "KR",
+          "uploaded": "2026-02-12",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 74,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "tVaw-cuOXhI",
+          "title": "Sona Top vs Heimerdinger - NA Grandmaster Patch 25.05",
+          "rankClaim": "Grandmaster",
+          "patch": "25.5",
+          "durationSec": 1730,
+          "region": "NA",
+          "uploaded": "2025-03-19",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 79,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "MdWARf0ubz8",
+          "title": "Sona Support vs Gragas - NA Challenger Patch 26.17",
+          "rankClaim": "Challenger",
+          "patch": "26.17",
+          "durationSec": 1757,
+          "region": "NA",
+          "uploaded": "2026-09-09",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 80,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "SM6q62aB2uk",
+          "title": "Sona Support vs Pantheon - EUW Grandmaster Patch 25.24",
+          "rankClaim": "Grandmaster",
+          "patch": "25.24",
+          "durationSec": 1596,
+          "region": "EUW",
+          "uploaded": "2025-12-20",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 142,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 306,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 390,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 627,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 740,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 887,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1005,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1113,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1137,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1238,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1343,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1384,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1453,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1554,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1585,
+              "label": "End credit"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 89,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "dLL24B_9Nxs",
+          "title": "MY SUPPORT ARC FOR THE JYNXZI TOURNAMENT",
+          "rankClaim": "Master+",
+          "patch": "26.10",
+          "durationSec": 20150,
+          "patchEstimated": true,
+          "player": "Alois",
+          "uploaded": "2026-05-20",
+          "format": "stream",
+          "cam": true,
+          "startSec": 90,
+          "endSec": 2070,
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 92,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "7ctL-Dulglo",
+          "title": "Sona Top vs Riven - KR Master Patch 25.12",
+          "rankClaim": "Master",
+          "patch": "25.12",
+          "durationSec": 1957,
+          "region": "KR",
+          "uploaded": "2025-06-25",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 103,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "ARvBnLknP-c",
+          "title": "Sona Mid vs Ahri - KR Master Patch 25.11",
+          "rankClaim": "Master",
+          "patch": "25.11",
+          "durationSec": 1954,
+          "region": "KR",
+          "uploaded": "2025-06-12",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 111,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "Pmk3q3eRq_E",
+          "title": "Sona Support vs Nautilus - EUW Challenger Patch 26.07",
+          "rankClaim": "Challenger",
+          "patch": "26.7",
+          "durationSec": 1833,
+          "region": "EUW",
+          "uploaded": "2026-04-08",
+          "moments": []
+        },
+        {
+          "videoId": "N9K5XGxYMz0",
+          "title": "Sona Support vs Nautilus - EUW Challenger Patch 26.02",
+          "rankClaim": "Challenger",
+          "patch": "26.2",
+          "durationSec": 1571,
+          "region": "EUW",
+          "uploaded": "2026-02-05",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 306,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 376,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 507,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 673,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 762,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 877,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 983,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1007,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1031,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1069,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1139,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1291,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1347,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1386,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1469,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1538,
+              "label": "Take down The Inhibitor"
+            },
+            {
+              "atSec": 1549,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1560,
+              "label": "End credit"
+            }
+          ]
+        },
+        {
+          "videoId": "HkbjDISTBVs",
+          "title": "Sona Support vs Nautilus - KR Master Patch 25.20",
+          "rankClaim": "Master",
+          "patch": "25.20",
+          "durationSec": 1814,
+          "region": "KR",
+          "uploaded": "2025-10-16",
+          "moments": []
+        },
+        {
+          "videoId": "gYYtnY1rDVI",
+          "title": "Sona Support vs Nautilus - EUW Grandmaster Patch 25.14",
+          "rankClaim": "Grandmaster",
+          "patch": "25.14",
+          "durationSec": 1598,
+          "region": "EUW",
+          "uploaded": "2025-07-31",
+          "moments": []
+        },
+        {
+          "videoId": "BZcqmoqO8u8",
+          "title": "Sona Support vs Nautilus - KR Grandmaster Patch 25.08",
+          "rankClaim": "Grandmaster",
+          "patch": "25.8",
+          "durationSec": 1587,
+          "region": "KR",
+          "uploaded": "2025-04-24",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 117,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "lqTqz9a69hU",
+          "title": "Sona Support vs Lulu - EUW Master Patch 26.19",
+          "rankClaim": "Master",
+          "patch": "26.19",
+          "durationSec": 1800,
+          "region": "EUW",
+          "uploaded": "2026-09-27",
+          "moments": []
+        },
+        {
+          "videoId": "SkRkoOkPxP4",
+          "title": "Sona Support vs Lulu - KR Challenger Patch 26.04",
+          "rankClaim": "Challenger",
+          "patch": "26.4",
+          "durationSec": 1576,
+          "region": "KR",
+          "uploaded": "2026-02-24",
+          "moments": []
+        },
+        {
+          "videoId": "5jcEjQV07Cw",
+          "title": "Sona Support vs Lulu - BR Grandmaster Patch 26.01",
+          "rankClaim": "Grandmaster",
+          "patch": "26.1",
+          "durationSec": 1597,
+          "uploaded": "2026-01-12",
+          "moments": []
+        },
+        {
+          "videoId": "R5VDPTkCO08",
+          "title": "Sona Support vs Lulu - KR Master Patch 25.24",
+          "rankClaim": "Master",
+          "patch": "25.24",
+          "durationSec": 1576,
+          "region": "KR",
+          "uploaded": "2025-12-12",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 520,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 621,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 715,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 822,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 846,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 863,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 951,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1008,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1045,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1126,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1223,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1263,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1332,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1530,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1565,
+              "label": "End credit"
+            }
+          ]
+        },
+        {
+          "videoId": "qYvb6gNZoZQ",
+          "title": "Sona Support vs Lulu - KR Master Patch 25.12",
+          "rankClaim": "Master",
+          "patch": "25.12",
+          "durationSec": 1703,
+          "region": "KR",
+          "uploaded": "2025-06-19",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 142,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "hM0SrIS_tVE",
+          "title": "Sona Support vs Zoe - NA Grandmaster Patch 26.20",
+          "rankClaim": "Grandmaster",
+          "patch": "26.20",
+          "durationSec": 1726,
+          "region": "NA",
+          "uploaded": "2026-10-12",
+          "result": "W",
+          "moments": [
+            {
+              "atSec": 298,
+              "label": "Red takes 1st Dragon (Chemtech)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 389,
+              "label": "First Blood — Wukong kills Jayce",
+              "kind": "kill"
+            },
+            {
+              "atSec": 493,
+              "label": "Team fight (3 kills)",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 571,
+              "label": "Yunara picks off Zoe"
+            },
+            {
+              "atSec": 632,
+              "label": "Wukong takes down Udyr"
+            },
+            {
+              "atSec": 666,
+              "label": "Red takes 2nd Dragon (Infernal)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 743,
+              "label": "Yone Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 817,
+              "label": "Sona takes down Jayce"
+            },
+            {
+              "atSec": 966,
+              "label": "Team fight (3 kills)",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1015,
+              "label": "Red takes 3rd Dragon (Mountain)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1074,
+              "label": "Team fight (3 kills)",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1238,
+              "label": "Sona eliminates Zoe"
+            },
+            {
+              "atSec": 1317,
+              "label": "Yunara eliminates Udyr"
+            },
+            {
+              "atSec": 1352,
+              "label": "Red takes 4th Dragon (Mountain)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1468,
+              "label": "Red takes Baron",
+              "kind": "baron"
+            },
+            {
+              "atSec": 1496,
+              "label": "Sona picks off Kai'Sa"
+            },
+            {
+              "atSec": 1542,
+              "label": "Mid Inhibitor falls (Blue)"
+            },
+            {
+              "atSec": 1684,
+              "label": "Team fight (3 kills)",
+              "kind": "teamfight"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 143,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "qn2YCYjAKDw",
+          "title": "Sona Support vs Zyra - KR Master Patch 25.13",
+          "rankClaim": "Master",
+          "patch": "25.13",
+          "durationSec": 1555,
+          "region": "KR",
+          "uploaded": "2025-07-11",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 147,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "ueoG6QwpDIY",
+          "title": "Sona Support vs Seraphine - NA Challenger Patch 25.24",
+          "rankClaim": "Challenger",
+          "patch": "25.24",
+          "durationSec": 1562,
+          "region": "NA",
+          "uploaded": "2025-12-25",
+          "moments": []
+        },
+        {
+          "videoId": "LZiWlAdmvG4",
+          "title": "Sona Support vs Seraphine - NA Grandmaster Patch 25.20",
+          "rankClaim": "Grandmaster",
+          "patch": "25.20",
+          "durationSec": 2082,
+          "region": "NA",
+          "uploaded": "2025-10-23",
+          "moments": []
+        },
+        {
+          "videoId": "xASrlHtlYUg",
+          "title": "Sona Support vs Seraphine - NA Grandmaster Patch 25.19",
+          "rankClaim": "Grandmaster",
+          "patch": "25.19",
+          "durationSec": 2097,
+          "region": "NA",
+          "uploaded": "2025-10-09",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 154,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "sga7CcsuqF8",
+          "title": "Sona Support vs Zac - KR Master Patch 25.22",
+          "rankClaim": "Master",
+          "patch": "25.22",
+          "durationSec": 1487,
+          "region": "KR",
+          "uploaded": "2025-11-13",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 164,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "oOothaEQKQE",
+          "title": "Sona Support vs Camille - EUW Grandmaster Patch 26.16",
+          "rankClaim": "Grandmaster",
+          "patch": "26.16",
+          "durationSec": 1442,
+          "region": "EUW",
+          "uploaded": "2026-08-21",
+          "moments": []
+        },
+        {
+          "videoId": "w5Rxcoj9XqA",
+          "title": "Sona Support vs Camille - KR Master Patch 26.12",
+          "rankClaim": "Master",
+          "patch": "26.12",
+          "durationSec": 1515,
+          "region": "KR",
+          "uploaded": "2026-06-20",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 201,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "y6_Q5bp2nyg",
+          "title": "Sona Support vs Braum - KR Challenger Patch 26.05",
+          "rankClaim": "Challenger",
+          "patch": "26.5",
+          "durationSec": 1588,
+          "region": "KR",
+          "uploaded": "2026-03-20",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 235,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "6N_y3lmRa2Q",
+          "title": "Sona Support vs Senna - NA Grandmaster Patch 26.21",
+          "rankClaim": "Grandmaster",
+          "patch": "26.21",
+          "durationSec": 1915,
+          "region": "NA",
+          "uploaded": "2026-10-26",
+          "result": "W",
+          "moments": [
+            {
+              "atSec": 764,
+              "label": "Red takes 1st Dragon (Hextech)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1001,
+              "label": "Locke Triple Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1085,
+              "label": "Red takes 2nd Dragon (Mountain)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1278,
+              "label": "Blue takes Baron",
+              "kind": "baron"
+            },
+            {
+              "atSec": 1311,
+              "label": "Azir eliminates Camille"
+            },
+            {
+              "atSec": 1397,
+              "label": "Locke picks off Gwen"
+            },
+            {
+              "atSec": 1407,
+              "label": "Blue takes 1st Dragon (Chemtech)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1466,
+              "label": "Locke picks off Gwen"
+            },
+            {
+              "atSec": 1490,
+              "label": "Mid Inhibitor falls (Red)"
+            },
+            {
+              "atSec": 1547,
+              "label": "Azir eliminates Camille"
+            },
+            {
+              "atSec": 1601,
+              "label": "Locke picks off Gwen"
+            },
+            {
+              "atSec": 1631,
+              "label": "Seraphine kills Anivia",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1662,
+              "label": "Azir eliminates Camille"
+            },
+            {
+              "atSec": 1732,
+              "label": "Team fight (3 kills)",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1791,
+              "label": "Blue takes 2nd Baron",
+              "kind": "baron"
+            },
+            {
+              "atSec": 1820,
+              "label": "Blue takes 2nd Dragon (Chemtech)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1864,
+              "label": "Locke Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1881,
+              "label": "Mid Inhibitor falls (Red)"
+            }
+          ]
+        },
+        {
+          "videoId": "Et3wyfEouWw",
+          "title": "(BGT CENTU) Sona Support vs Senna - EUW Challenger Patch 26.13",
+          "rankClaim": "Challenger",
+          "patch": "26.13",
+          "durationSec": 1676,
+          "region": "EUW",
+          "player": "BGT CENTU",
+          "uploaded": "2026-07-17",
+          "moments": []
+        },
+        {
+          "videoId": "FSarNCRX_ic",
+          "title": "Sona Support vs Senna - EUW Grandmaster Patch 25.24",
+          "rankClaim": "Grandmaster",
+          "patch": "25.24",
+          "durationSec": 1521,
+          "region": "EUW",
+          "uploaded": "2026-01-10",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 287,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 401,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 473,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 574,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 719,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 896,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 933,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1042,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1262,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1302,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1355,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1378,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1392,
+              "label": "Take down The Inhibitor"
+            },
+            {
+              "atSec": 1510,
+              "label": "End credit"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 267,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "qtMbEnqp-so",
+          "title": "Sona Support vs Nami - EUW Grandmaster Patch 26.06",
+          "rankClaim": "Grandmaster",
+          "patch": "26.6",
+          "durationSec": 1542,
+          "region": "EUW",
+          "uploaded": "2026-03-26",
+          "moments": []
+        },
+        {
+          "videoId": "yJbR07UDid8",
+          "title": "Sona Support vs Nami - NA Grandmaster Patch 25.21",
+          "rankClaim": "Grandmaster",
+          "patch": "25.21",
+          "durationSec": 1969,
+          "region": "NA",
+          "uploaded": "2025-10-30",
+          "moments": []
+        },
+        {
+          "videoId": "V2v2YtXhDDQ",
+          "title": "Sona Support vs Nami - NA Challenger Patch 25.17",
+          "rankClaim": "Challenger",
+          "patch": "25.17",
+          "durationSec": 1767,
+          "region": "NA",
+          "uploaded": "2025-09-11",
+          "moments": []
+        },
+        {
+          "videoId": "LCVysIwFq1M",
+          "title": "Sona Support vs Nami - NA Challenger Patch 25.13",
+          "rankClaim": "Challenger",
+          "patch": "25.13",
+          "durationSec": 1647,
+          "region": "NA",
+          "uploaded": "2025-07-18",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 267,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "yd8PnsB40wA",
+          "title": "DRUTUTT PREPARES ME FOR THE JYNXZI TOURNAMENT",
+          "rankClaim": "Master+",
+          "patch": "26.10",
+          "durationSec": 22033,
+          "patchEstimated": true,
+          "player": "Alois",
+          "uploaded": "2026-05-21",
+          "format": "stream",
+          "cam": true,
+          "startSec": 4001,
+          "endSec": 6730,
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 350,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "GOZKdW8x2cI",
+          "title": "Sona Support vs Yuumi - NA Grandmaster Patch 25.10",
+          "rankClaim": "Grandmaster",
+          "patch": "25.10",
+          "durationSec": 1806,
+          "region": "NA",
+          "uploaded": "2025-05-29",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 412,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "F2uz54-7y8I",
+          "title": "Sona Support vs Thresh - EUW Grandmaster Patch 26.14",
+          "rankClaim": "Grandmaster",
+          "patch": "26.14",
+          "durationSec": 1559,
+          "region": "EUW",
+          "uploaded": "2026-07-26",
+          "moments": []
+        },
+        {
+          "videoId": "9rPpnPW5uRc",
+          "title": "Sona Support vs Thresh - NA Challenger Patch 26.08",
+          "rankClaim": "Challenger",
+          "patch": "26.8",
+          "durationSec": 1431,
+          "region": "NA",
+          "uploaded": "2026-04-22",
+          "moments": []
+        },
+        {
+          "videoId": "8Mv9o9ZjMgM",
+          "title": "Sona Support vs Thresh - KR Master Patch 25.21",
+          "rankClaim": "Master",
+          "patch": "25.21",
+          "durationSec": 1512,
+          "region": "KR",
+          "uploaded": "2025-11-07",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 412,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "dLL24B_9Nxs",
+          "title": "MY SUPPORT ARC FOR THE JYNXZI TOURNAMENT",
+          "rankClaim": "Master+",
+          "patch": "26.10",
+          "durationSec": 20150,
+          "patchEstimated": true,
+          "player": "Alois",
+          "uploaded": "2026-05-20",
+          "format": "stream",
+          "cam": true,
+          "startSec": 18405,
+          "endSec": 20150,
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 432,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "n5kV7gn2a6c",
+          "title": "Sona Support vs Bard - KR Challenger Patch 26.09",
+          "rankClaim": "Challenger",
+          "patch": "26.9",
+          "durationSec": 1732,
+          "region": "KR",
+          "uploaded": "2026-05-07",
+          "moments": []
+        },
+        {
+          "videoId": "wS2Kk_klzo8",
+          "title": "Sona Support vs Bard - BR Challenger Patch 26.07",
+          "rankClaim": "Challenger",
+          "patch": "26.7",
+          "durationSec": 1868,
+          "uploaded": "2026-04-17",
+          "moments": []
+        },
+        {
+          "videoId": "LaxYcFHA408",
+          "title": "Sona Support vs Bard - KR Master Patch 25.18",
+          "rankClaim": "Master",
+          "patch": "25.18",
+          "durationSec": 1654,
+          "region": "KR",
+          "uploaded": "2025-09-26",
+          "moments": []
+        },
+        {
+          "videoId": "6mpLHj32Ivo",
+          "title": "Sona Support vs Bard - EUW Grandmaster Patch 25.16",
+          "rankClaim": "Grandmaster",
+          "patch": "25.16",
+          "durationSec": 1908,
+          "region": "EUW",
+          "uploaded": "2025-08-28",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 518,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "EO34F8ZegaE",
+          "title": "Sona Support vs Neeko - NA Grandmaster Patch 25.18",
+          "rankClaim": "Grandmaster",
+          "patch": "25.18",
+          "durationSec": 1841,
+          "region": "NA",
+          "uploaded": "2025-09-17",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 518,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "yd8PnsB40wA",
+          "title": "DRUTUTT PREPARES ME FOR THE JYNXZI TOURNAMENT",
+          "rankClaim": "Master+",
+          "patch": "26.10",
+          "durationSec": 22033,
+          "patchEstimated": true,
+          "player": "Alois",
+          "uploaded": "2026-05-21",
+          "format": "stream",
+          "cam": true,
+          "startSec": 17346,
+          "endSec": 19330,
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 526,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "rDSQ66HxG_8",
+          "title": "Sona Support vs Rell - KR Grandmaster Patch 25.17",
+          "rankClaim": "Grandmaster",
+          "patch": "25.17",
+          "durationSec": 1665,
+          "region": "KR",
+          "uploaded": "2025-09-04",
+          "moments": []
+        },
+        {
+          "videoId": "aQM5h8cGN3w",
+          "title": "Sona Support vs Rell - EUW Challenger Patch 25.07",
+          "rankClaim": "Challenger",
+          "patch": "25.7",
+          "durationSec": 2103,
+          "region": "EUW",
+          "uploaded": "2025-04-10",
+          "moments": []
+        },
+        {
+          "videoId": "GzclxZK9KEo",
+          "title": "Sona Support vs Rell - KR Master Patch 25.05",
+          "rankClaim": "Master",
+          "patch": "25.5",
+          "durationSec": 1869,
+          "region": "KR",
+          "uploaded": "2025-03-13",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 555,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "B1pAgXpBaDw",
+          "title": "(RBLS Sw3ry) Sona Support vs Pyke - EUW Challenger Patch 26.13",
+          "rankClaim": "Challenger",
+          "patch": "26.13",
+          "durationSec": 1848,
+          "region": "EUW",
+          "player": "RBLS Sw3ry",
+          "uploaded": "2026-07-06",
+          "moments": []
+        },
+        {
+          "videoId": "UEX941rwAes",
+          "title": "(FK Targamas) Sona Support vs Pyke - EUW Challenger Patch 26.10",
+          "rankClaim": "Challenger",
+          "patch": "26.10",
+          "durationSec": 1453,
+          "region": "EUW",
+          "player": "FK Targamas",
+          "uploaded": "2026-05-26",
+          "moments": []
+        },
+        {
+          "videoId": "Px-I-LJ8bRM",
+          "title": "Sona Support vs Pyke - KR Master Patch 25.19",
+          "rankClaim": "Master",
+          "patch": "25.19",
+          "durationSec": 1452,
+          "region": "KR",
+          "uploaded": "2025-10-02",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 800,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "E5apTHLzg8k",
+          "title": "Sona Support vs Mel - NA Grandmaster Patch 25.04",
+          "rankClaim": "Grandmaster",
+          "patch": "25.4",
+          "durationSec": 1993,
+          "region": "NA",
+          "uploaded": "2025-02-27",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 902,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "5U4ct6WM4O4",
+          "title": "Sona Support vs Milio - BR Challenger Patch 25.24",
+          "rankClaim": "Challenger",
+          "patch": "25.24",
+          "durationSec": 1585,
+          "uploaded": "2025-12-31",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 902,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "dLL24B_9Nxs",
+          "title": "MY SUPPORT ARC FOR THE JYNXZI TOURNAMENT",
+          "rankClaim": "Master+",
+          "patch": "26.10",
+          "durationSec": 20150,
+          "patchEstimated": true,
+          "player": "Alois",
+          "uploaded": "2026-05-20",
+          "format": "stream",
+          "cam": true,
+          "startSec": 9104,
+          "endSec": 11219,
+          "moments": []
+        }
+      ]
+    }
+  ]
+}

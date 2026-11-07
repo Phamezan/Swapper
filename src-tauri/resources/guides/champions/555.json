@@ -1,0 +1,3352 @@
+{
+  "schema": 1,
+  "champion": 555,
+  "generatedAt": "2026-11-07T13:25:14.592Z",
+  "guides": [],
+  "general": [
+    {
+      "champion": 555,
+      "lane": "support",
+      "patch": "26.21",
+      "reviewed": false,
+      "keyTips": [
+        {
+          "text": "Push for level two first, then use the early level advantage to threaten a favorable all-in.",
+          "scope": "champion",
+          "sourceIds": [
+            "mobalytics-pyke-support"
+          ]
+        },
+        {
+          "text": "When Bone Skewer is missed or unavailable, respect the enemy's response and wait for its cooldown before forcing a hook play.",
+          "scope": "champion",
+          "sourceIds": [
+            "mobalytics-pyke-support"
+          ],
+          "abilityKeys": [
+            {
+              "champion": 555,
+              "key": "Q"
+            }
+          ]
+        },
+        {
+          "text": "Roam between lanes and look for Death from Below executions that can spread a lead across the map.",
+          "scope": "champion",
+          "sourceIds": [
+            "mobalytics-pyke-support"
+          ],
+          "abilityKeys": [
+            {
+              "champion": 555,
+              "key": "R"
+            }
+          ]
+        }
+      ],
+      "sections": {
+        "overview": {
+          "tips": []
+        },
+        "early-lane": {
+          "tips": [
+            {
+              "text": "Seek frequent trades and kills in lane to establish a health lead that can set up a later kill.",
+              "scope": "champion",
+              "sourceIds": [
+                "mobalytics-pyke-support"
+              ]
+            },
+            {
+              "text": "Use Ghostwater Dive and Phantom Undertow mobility to escape danger or reposition around an enemy engage.",
+              "scope": "champion",
+              "sourceIds": [
+                "mobalytics-pyke-support"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 555,
+                  "key": "W"
+                },
+                {
+                  "champion": 555,
+                  "key": "E"
+                }
+              ]
+            },
+            {
+              "text": "Treat early boots as a roaming spike; use the movement to pressure mid and return to bot quickly.",
+              "scope": "champion",
+              "sourceIds": [
+                "mobalytics-pyke-support"
+              ]
+            },
+            {
+              "text": "After taking the bot tower, rotate toward mid and pressure its outer tower to open the map.",
+              "scope": "champion",
+              "sourceIds": [
+                "mobalytics-pyke-support"
+              ]
+            }
+          ]
+        },
+        "mid-lane": {
+          "tips": [
+            {
+              "text": "Track the next major objective and establish vision around it while there is still time to retreat safely.",
+              "scope": "champion",
+              "sourceIds": [
+                "mobalytics-pyke-support"
+              ]
+            },
+            {
+              "text": "Look for picks with allied follow-up; use the opponent's death timer to take a tower, an objective, or further kills.",
+              "scope": "champion",
+              "sourceIds": [
+                "mobalytics-pyke-support"
+              ]
+            },
+            {
+              "text": "Additional Death from Below ranks improve its damage and availability, creating more mid-game chances to secure kills.",
+              "scope": "champion",
+              "sourceIds": [
+                "mobalytics-pyke-support"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 555,
+                  "key": "R"
+                }
+              ]
+            },
+            {
+              "text": "Level sixteen is a major spike because the ultimate becomes available more often for fights.",
+              "scope": "champion",
+              "sourceIds": [
+                "mobalytics-pyke-support"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 555,
+                  "key": "R"
+                }
+              ]
+            }
+          ]
+        },
+        "win-condition": {
+          "tips": [
+            {
+              "text": "Convert early pressure and level advantages into kills, then use roaming and vision control to keep the map unstable for opponents.",
+              "scope": "champion",
+              "sourceIds": [
+                "mobalytics-pyke-support"
+              ]
+            },
+            {
+              "text": "In late fights, wait for enemy cooldowns or Flash to be spent before committing to a high-value ultimate attempt.",
+              "scope": "champion",
+              "sourceIds": [
+                "mobalytics-pyke-support"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 555,
+                  "key": "R"
+                }
+              ]
+            },
+            {
+              "text": "Stay with the team late and avoid solo warding or isolated rotations that could leave allies outnumbered.",
+              "scope": "champion",
+              "sourceIds": [
+                "mobalytics-pyke-support"
+              ]
+            },
+            {
+              "text": "Peel for allies when needed, while looking for low-health targets whose deaths can reset Death from Below.",
+              "scope": "champion",
+              "sourceIds": [
+                "mobalytics-pyke-support"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 555,
+                  "key": "R"
+                }
+              ]
+            },
+            {
+              "text": "Pyke's late game is weaker than his mid game, so prioritize safe objective vision and decisive picks over wandering alone.",
+              "scope": "champion",
+              "sourceIds": [
+                "mobalytics-pyke-support"
+              ]
+            }
+          ]
+        }
+      },
+      "itemization": [
+        {
+          "text": "Build Celestial Opposition, Boots of Swiftness, Umbral Glaive, Edge of Night, and Youmuu's Ghostblade as the 26.21 support core.",
+          "scope": "champion",
+          "sourceIds": [
+            "mobalytics-pyke-support-build"
+          ],
+          "itemIds": [
+            3869,
+            3009,
+            3179,
+            3814,
+            3142
+          ]
+        },
+        {
+          "text": "Take Hail of Blades, Cheap Shot, Sixth Sense, Ultimate Hunter, Bone Plating, and Unflinching as the rune setup.",
+          "scope": "champion",
+          "sourceIds": [
+            "mobalytics-pyke-support-build"
+          ]
+        },
+        {
+          "text": "Choose Voltaic Cyclosword as a possible fourth-item alternative to Edge of Night when seeking more assassin pressure.",
+          "scope": "champion",
+          "sourceIds": [
+            "mobalytics-pyke-support-build"
+          ],
+          "itemIds": [
+            6699,
+            3814
+          ]
+        },
+        {
+          "text": "Start Q, E, W and max Bone Skewer, then Phantom Undertow, then Ghostwater Dive, upgrading Death from Below at levels six, eleven, and sixteen.",
+          "scope": "champion",
+          "sourceIds": [
+            "mobalytics-pyke-support-build"
+          ],
+          "abilityKeys": [
+            {
+              "champion": 555,
+              "key": "Q"
+            },
+            {
+              "champion": 555,
+              "key": "E"
+            },
+            {
+              "champion": 555,
+              "key": "W"
+            },
+            {
+              "champion": 555,
+              "key": "R"
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "id": "mobalytics-pyke-support",
+          "author": "Mobalytics",
+          "rankClaim": "No rank claim",
+          "url": "https://mobalytics.gg/lol/champions/pyke/guide",
+          "kind": "web"
+        },
+        {
+          "id": "mobalytics-pyke-support-build",
+          "author": "Mobalytics",
+          "rankClaim": "No rank claim",
+          "url": "https://mobalytics.gg/lol/champions/pyke/build",
+          "kind": "web"
+        }
+      ]
+    }
+  ],
+  "vods": [
+    {
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "v4eQ9DUyNjY",
+          "title": "Baicaiovo Pyke : TOP 1 CN SUPER SERVER is ABSOLUTELY DESTROYING Everyone - Engsub",
+          "rankClaim": "Master+",
+          "patch": "26.10",
+          "durationSec": 1140,
+          "patchEstimated": true,
+          "player": "Baicaiovo",
+          "uploaded": "2026-05-18",
+          "format": "stream",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 1,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "spyObWYW7LI",
+          "title": "Pyke vs Annie Mid - KR Challenger - Patch 25.9 Season 15",
+          "rankClaim": "Challenger",
+          "patch": "25.9",
+          "durationSec": 1561,
+          "region": "KR",
+          "uploaded": "2025-05-11",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 3,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "eOE1nfWeNUI",
+          "title": "Pyke Support vs Galio - KR Master Patch 26.01",
+          "rankClaim": "Master",
+          "patch": "26.1",
+          "durationSec": 1504,
+          "region": "KR",
+          "uploaded": "2026-01-11",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 310,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 464,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 523,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 585,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 737,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 788,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 860,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 995,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1161,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1285,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1434,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1493,
+              "label": "End credit"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 4,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "GUNAtz6OFrU",
+          "title": "Pyke Mid vs Twisted Fate - NA Grandmaster Patch 25.16",
+          "rankClaim": "Grandmaster",
+          "patch": "25.16",
+          "durationSec": 1619,
+          "region": "NA",
+          "uploaded": "2025-08-22",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 8,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "z2lJk1CLNGw",
+          "title": "Pyke Mid vs Vladimir - NA Challenger Patch 25.04",
+          "rankClaim": "Challenger",
+          "patch": "25.4",
+          "durationSec": 1724,
+          "region": "NA",
+          "uploaded": "2025-03-04",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 242,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 427,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 540,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 706,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 762,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 797,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 893,
+              "label": "Get a Triple Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1019,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1072,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1264,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1352,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1430,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1508,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1531,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1578,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1642,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1653,
+              "label": "Take down The Inhibitor"
+            },
+            {
+              "atSec": 1679,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1703,
+              "label": "End credit"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 12,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "fZ4-A_ZA5LI",
+          "title": "(HLE Zeka) Pyke Support vs Alistar - KR Master Patch 26.13",
+          "rankClaim": "Master",
+          "patch": "26.13",
+          "durationSec": 1657,
+          "region": "KR",
+          "player": "Zeka",
+          "team": "HLE",
+          "uploaded": "2026-06-27",
+          "moments": []
+        },
+        {
+          "videoId": "rwl4T7MZ0aE",
+          "title": "Pyke Support vs Alistar - KR Challenger Patch 25.19",
+          "rankClaim": "Challenger",
+          "patch": "25.19",
+          "durationSec": 1898,
+          "region": "KR",
+          "uploaded": "2025-09-28",
+          "moments": []
+        },
+        {
+          "videoId": "uRZNSjsqrTg",
+          "title": "Pyke Support vs Alistar - KR Challenger Patch 25.14",
+          "rankClaim": "Challenger",
+          "patch": "25.14",
+          "durationSec": 1595,
+          "region": "KR",
+          "uploaded": "2025-07-20",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 16,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "urPdhk3Ee4w",
+          "title": "Pyke Support vs Soraka - KR Challenger Patch 26.02",
+          "rankClaim": "Challenger",
+          "patch": "26.2",
+          "durationSec": 1501,
+          "region": "KR",
+          "uploaded": "2026-01-25",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 54,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 115,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 205,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 305,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 691,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 767,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 955,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1139,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1192,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1316,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1432,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1490,
+              "label": "End credit"
+            }
+          ]
+        },
+        {
+          "videoId": "wb1gFBnBYqI",
+          "title": "Pyke Support vs Soraka - KR Master Patch 25.12",
+          "rankClaim": "Master",
+          "patch": "25.12",
+          "durationSec": 1481,
+          "region": "KR",
+          "uploaded": "2025-06-14",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 24,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "NsPB7ViYREY",
+          "title": "Pyke Support vs Jax - EUW Challenger Patch 26.17",
+          "rankClaim": "Challenger",
+          "patch": "26.17",
+          "durationSec": 1492,
+          "region": "EUW",
+          "uploaded": "2026-08-31",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 34,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "LPDB4UJ8icU",
+          "title": "Pyke Support vs Anivia - KR Challenger Patch 26.09",
+          "rankClaim": "Challenger",
+          "patch": "26.9",
+          "durationSec": 1626,
+          "region": "KR",
+          "uploaded": "2026-05-05",
+          "moments": []
+        },
+        {
+          "videoId": "WHm6YKgyMgY",
+          "title": "Pyke Support vs Anivia - EUW Challenger Patch 26.07",
+          "rankClaim": "Challenger",
+          "patch": "26.7",
+          "durationSec": 1532,
+          "region": "EUW",
+          "uploaded": "2026-04-06",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 30,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 229,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 315,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 338,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 425,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 474,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 564,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 773,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 788,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 859,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 927,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1052,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1141,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1166,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1237,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1319,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1354,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1421,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1444,
+              "label": "Take down The Inhibitor"
+            },
+            {
+              "atSec": 1476,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1521,
+              "label": "End credit"
+            }
+          ]
+        },
+        {
+          "videoId": "TqMJlC6LixU",
+          "title": "Pyke Support vs Anivia - KR Challenger Patch 25.05",
+          "rankClaim": "Challenger",
+          "patch": "25.5",
+          "durationSec": 1715,
+          "region": "KR",
+          "uploaded": "2025-03-09",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 189,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 675,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 727,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 790,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 867,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1008,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1172,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1231,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1296,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1455,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1578,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1595,
+              "label": "Take down The Inhibitor"
+            },
+            {
+              "atSec": 1618,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1694,
+              "label": "End credit"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 37,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "4uoACgfSPXE",
+          "title": "(KC Busio) Pyke Support vs Sona - EUW Grandmaster Patch 26.15",
+          "rankClaim": "Grandmaster",
+          "patch": "26.15",
+          "durationSec": 1523,
+          "region": "EUW",
+          "player": "Busio",
+          "team": "KC",
+          "uploaded": "2026-08-04",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 39,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "6rnk9xEcsWQ",
+          "title": "Pyke Mid vs Irelia - KR Master Patch 25.21",
+          "rankClaim": "Master",
+          "patch": "25.21",
+          "durationSec": 1775,
+          "region": "KR",
+          "uploaded": "2025-11-02",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 40,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "mtWPoLBofFo",
+          "title": "Pyke Support vs Janna - KR Challenger Patch 25.20",
+          "rankClaim": "Challenger",
+          "patch": "25.20",
+          "durationSec": 1740,
+          "region": "KR",
+          "uploaded": "2025-10-12",
+          "moments": []
+        },
+        {
+          "videoId": "56oeraAf0j8",
+          "title": "Pyke Support vs Janna - KR Challenger Patch 25.09",
+          "rankClaim": "Challenger",
+          "patch": "25.9",
+          "durationSec": 1576,
+          "region": "KR",
+          "uploaded": "2025-05-05",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 252,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 324,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 457,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 514,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 543,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 654,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 743,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 937,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1028,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1152,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1209,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1335,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1430,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1532,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1555,
+              "label": "End credit"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 42,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "o7hs2C9wvo0",
+          "title": "Pyke Mid vs Corki - KR Grandmaster Patch 25.09",
+          "rankClaim": "Grandmaster",
+          "patch": "25.9",
+          "durationSec": 2009,
+          "region": "KR",
+          "uploaded": "2025-05-11",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 80,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 266,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 345,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 366,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 436,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 543,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 648,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 756,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 912,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 970,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1050,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1133,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1182,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1214,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1238,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1292,
+              "label": "Hunt The Dragon",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1302,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1401,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1479,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1513,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1585,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1671,
+              "label": "Hunt The Baron Nashor",
+              "kind": "baron"
+            },
+            {
+              "atSec": 1758,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1856,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1944,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1972,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1988,
+              "label": "End credit"
+            }
+          ]
+        },
+        {
+          "videoId": "RNs-4xaKiao",
+          "title": "Pyke vs Corki Mid - KR Challenger - Patch 25.9 Season 15",
+          "rankClaim": "Challenger",
+          "patch": "25.9",
+          "durationSec": 1981,
+          "region": "KR",
+          "uploaded": "2025-05-02",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 43,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "U2oMZfK3-BA",
+          "title": "Pyke Support vs Karma (KT Effort) - KR Challenger Patch 26.16",
+          "rankClaim": "Challenger",
+          "patch": "26.16",
+          "durationSec": 1658,
+          "region": "KR",
+          "uploaded": "2026-08-23",
+          "moments": []
+        },
+        {
+          "videoId": "UqhtwI7ZNoM",
+          "title": "Pyke Support vs Karma - KR Challenger Patch 26.03",
+          "rankClaim": "Challenger",
+          "patch": "26.3",
+          "durationSec": 1542,
+          "region": "KR",
+          "uploaded": "2026-02-08",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 44,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "Jde8q2m4-Ys",
+          "title": "(BLG ON) Pyke Support vs Taric - KR Challenger Patch 26.11",
+          "rankClaim": "Challenger",
+          "patch": "26.11",
+          "durationSec": 1733,
+          "region": "KR",
+          "player": "ON",
+          "team": "BLG",
+          "uploaded": "2026-05-30",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 55,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "bCts1R195co",
+          "title": "Pyke Mid vs Katarina - KR Grandmaster Patch 25.11",
+          "rankClaim": "Grandmaster",
+          "patch": "25.11",
+          "durationSec": 1771,
+          "region": "KR",
+          "uploaded": "2025-06-09",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 60,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "54_1wNxKnL0",
+          "title": "Pyke Support vs Elise - KR Master Patch 25.23",
+          "rankClaim": "Master",
+          "patch": "25.23",
+          "durationSec": 1458,
+          "region": "KR",
+          "uploaded": "2025-11-21",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 61,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "CrSIUwDw9XA",
+          "title": "Pyke Mid vs Orianna (Deft) - KR Master Patch 26.14",
+          "rankClaim": "Master",
+          "patch": "26.14",
+          "durationSec": 1539,
+          "region": "KR",
+          "player": "Deft",
+          "uploaded": "2026-07-29",
+          "moments": []
+        },
+        {
+          "videoId": "gPYJcyKva7s",
+          "title": "Pyke Mid vs Orianna - KR Grandmaster Patch 26.08",
+          "rankClaim": "Grandmaster",
+          "patch": "26.8",
+          "durationSec": 1428,
+          "region": "KR",
+          "uploaded": "2026-04-28",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 62,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "N84zj4WEsvI",
+          "title": "Pyke Support vs Wukong - KR Grandmaster Patch 25.06",
+          "rankClaim": "Grandmaster",
+          "patch": "25.6",
+          "durationSec": 1557,
+          "region": "KR",
+          "uploaded": "2025-03-23",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 158,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 303,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 381,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 534,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 632,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 809,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 838,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 892,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 955,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1030,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1057,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1142,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1216,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1286,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1371,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1536,
+              "label": "End credit"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 69,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "VyjXZmQ1EdI",
+          "title": "Pyke Mid vs Cassiopeia - NA Challenger Patch 25.24",
+          "rankClaim": "Challenger",
+          "patch": "25.24",
+          "durationSec": 1443,
+          "region": "NA",
+          "uploaded": "2025-12-28",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 372,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 488,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 594,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 771,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 846,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 984,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1019,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1050,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1130,
+              "label": "Get a Triple Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1164,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1174,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1218,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1248,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1264,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1330,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1349,
+              "label": "Take down The Inhibitor"
+            },
+            {
+              "atSec": 1362,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1384,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1419,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1432,
+              "label": "End credit"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 78,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "Zs8CgZhnNhI",
+          "title": "Pyke Mid vs Poppy - KR Grandmaster Patch 26.04",
+          "rankClaim": "Grandmaster",
+          "patch": "26.4",
+          "durationSec": 1691,
+          "region": "KR",
+          "uploaded": "2026-03-05",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 78,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "OvLf9q80Ck0",
+          "title": "(SGE farfetch) Pyke Support vs Poppy - EUW Grandmaster Patch 26.16",
+          "rankClaim": "Grandmaster",
+          "patch": "26.16",
+          "durationSec": 1428,
+          "region": "EUW",
+          "player": "SGE farfetch",
+          "uploaded": "2026-08-21",
+          "moments": []
+        },
+        {
+          "videoId": "73b_gCymv04",
+          "title": "Pyke Support vs Poppy - BR Challenger Patch 26.04",
+          "rankClaim": "Challenger",
+          "patch": "26.4",
+          "durationSec": 1896,
+          "uploaded": "2026-02-23",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 94,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 181,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 232,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 495,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 576,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 723,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1267,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1326,
+              "label": "Hunt The Baron Nashor",
+              "kind": "baron"
+            },
+            {
+              "atSec": 1373,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1481,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1575,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1605,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1659,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1785,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1800,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1825,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1885,
+              "label": "End credit"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 80,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "a6eK9q28iz4",
+          "title": "Pyke Support vs Pantheon - TW Challenger Patch 26.17",
+          "rankClaim": "Challenger",
+          "patch": "26.17",
+          "durationSec": 1807,
+          "uploaded": "2026-09-11",
+          "moments": []
+        },
+        {
+          "videoId": "qrw7c6Df2lM",
+          "title": "(LNG BuLLDoG) Pyke Support vs Pantheon (WBG Xiaohu) - KR Challenger Patch 26.14",
+          "rankClaim": "Challenger",
+          "patch": "26.14",
+          "durationSec": 1612,
+          "region": "KR",
+          "player": "BuLLDoG",
+          "team": "LNG",
+          "uploaded": "2026-07-20",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 84,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "7NuZlWuIxTA",
+          "title": "Pyke Mid vs Akali - KR Grandmaster Patch 25.13",
+          "rankClaim": "Grandmaster",
+          "patch": "25.13",
+          "durationSec": 1732,
+          "region": "KR",
+          "uploaded": "2025-07-08",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 89,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "k66swjvi4qg",
+          "title": "Pyke Support vs Leona - KR Master Patch 25.13",
+          "rankClaim": "Master",
+          "patch": "25.13",
+          "durationSec": 1871,
+          "region": "KR",
+          "uploaded": "2025-07-15",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 91,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "lodJXF7JuxY",
+          "title": "Pyke Mid vs Talon - KR Grandmaster Patch 25.07",
+          "rankClaim": "Grandmaster",
+          "patch": "25.7",
+          "durationSec": 1850,
+          "region": "KR",
+          "uploaded": "2025-04-13",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 103,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "fzIRHkr6Jok",
+          "title": "Pyke Mid vs Ahri - NA Grandmaster Patch 25.20",
+          "rankClaim": "Grandmaster",
+          "patch": "25.20",
+          "durationSec": 1551,
+          "region": "NA",
+          "uploaded": "2025-10-19",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 111,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "ZCxsyDHPYII",
+          "title": "(Buddy) Pyke Support vs Nautilus (LokeN) - KR Grandmaster Patch 26.20",
+          "rankClaim": "Grandmaster",
+          "patch": "26.20",
+          "durationSec": 1792,
+          "region": "KR",
+          "player": "Buddy",
+          "uploaded": "2026-10-18",
+          "result": "W",
+          "moments": [
+            {
+              "atSec": 343,
+              "label": "Blue takes 1st Dragon (Chemtech)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 351,
+              "label": "First Blood — Lucian kills Yasuo",
+              "kind": "kill"
+            },
+            {
+              "atSec": 714,
+              "label": "Red takes 1st Dragon (Ocean)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 901,
+              "label": "Pyke eliminates Nautilus"
+            },
+            {
+              "atSec": 965,
+              "label": "Qiyana kills Aatrox",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1029,
+              "label": "Blue takes 2nd Dragon (Cloud)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1041,
+              "label": "Kayle takes down Aatrox"
+            },
+            {
+              "atSec": 1071,
+              "label": "Pyke eliminates Nautilus"
+            },
+            {
+              "atSec": 1289,
+              "label": "Red takes Baron",
+              "kind": "baron"
+            },
+            {
+              "atSec": 1300,
+              "label": "Lucian Triple Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1360,
+              "label": "Red takes 2nd Dragon (Cloud)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1367,
+              "label": "Pyke Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1376,
+              "label": "Pyke Triple Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1517,
+              "label": "Kayle takes down Aatrox"
+            },
+            {
+              "atSec": 1642,
+              "label": "Mid Inhibitor falls (Red)"
+            },
+            {
+              "atSec": 1692,
+              "label": "Red takes 2nd Baron",
+              "kind": "baron"
+            },
+            {
+              "atSec": 1698,
+              "label": "Pyke Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1736,
+              "label": "Kayle takes down Aatrox"
+            }
+          ]
+        },
+        {
+          "videoId": "OW-3plbsLxI",
+          "title": "Pyke Support vs Nautilus - KR Master Patch 26.19",
+          "rankClaim": "Master",
+          "patch": "26.19",
+          "durationSec": 1879,
+          "region": "KR",
+          "uploaded": "2026-10-09",
+          "result": "W",
+          "moments": [
+            {
+              "atSec": 64,
+              "label": "First Blood — Sivir kills Nautilus",
+              "kind": "kill"
+            },
+            {
+              "atSec": 523,
+              "label": "Red takes 1st Dragon (Chemtech)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 716,
+              "label": "Team fight (3 kills)",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 789,
+              "label": "Team fight (3 kills)",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 903,
+              "label": "Blue takes 1st Dragon (Ocean)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 946,
+              "label": "Pyke eliminates Aatrox"
+            },
+            {
+              "atSec": 1044,
+              "label": "Cho'Gath takes down Qiyana"
+            },
+            {
+              "atSec": 1088,
+              "label": "Pyke eliminates Aatrox"
+            },
+            {
+              "atSec": 1128,
+              "label": "Pyke kills Qiyana",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1213,
+              "label": "Red takes 2nd Dragon (Mountain)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1412,
+              "label": "Team fight (3 kills)",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1469,
+              "label": "Blue takes Baron",
+              "kind": "baron"
+            },
+            {
+              "atSec": 1535,
+              "label": "Blue takes 2nd Dragon (Mountain)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1595,
+              "label": "Bot Inhibitor falls (Red)"
+            },
+            {
+              "atSec": 1647,
+              "label": "Pyke takes down Aurora"
+            },
+            {
+              "atSec": 1768,
+              "label": "Team fight (3 kills)",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1818,
+              "label": "Cho'Gath kills Nautilus",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1830,
+              "label": "Top Inhibitor falls (Red)"
+            }
+          ]
+        },
+        {
+          "videoId": "3LOEcSn53p4",
+          "title": "Pyke Support vs Nautilus - KR Challenger Patch 26.06",
+          "rankClaim": "Challenger",
+          "patch": "26.6",
+          "durationSec": 1527,
+          "region": "KR",
+          "uploaded": "2026-03-23",
+          "moments": []
+        },
+        {
+          "videoId": "tlG3HxICeSU",
+          "title": "Pyke Support vs Nautilus - KR Challenger Patch 25.18",
+          "rankClaim": "Challenger",
+          "patch": "25.18",
+          "durationSec": 1663,
+          "region": "KR",
+          "uploaded": "2025-09-15",
+          "moments": []
+        },
+        {
+          "videoId": "Pvwgr-soMlo",
+          "title": "Pyke Support vs Nautilus - KR Challenger Patch 25.11",
+          "rankClaim": "Challenger",
+          "patch": "25.11",
+          "durationSec": 1428,
+          "region": "KR",
+          "uploaded": "2025-06-03",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 112,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "fLgiP2ZZ-JU",
+          "title": "Pyke Mid vs Viktor - NA Grandmaster Patch 25.08",
+          "rankClaim": "Grandmaster",
+          "patch": "25.8",
+          "durationSec": 1697,
+          "region": "NA",
+          "uploaded": "2025-04-27",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 117,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "03ReyJ-MZh4",
+          "title": "Pyke Support vs Lulu - EUW Challenger Patch 26.02",
+          "rankClaim": "Challenger",
+          "patch": "26.2",
+          "durationSec": 1597,
+          "region": "EUW",
+          "uploaded": "2026-02-03",
+          "moments": []
+        },
+        {
+          "videoId": "Abk1S2Df1XM",
+          "title": "Pyke Support vs Lulu - EUW Challenger Patch 25.24",
+          "rankClaim": "Challenger",
+          "patch": "25.24",
+          "durationSec": 1592,
+          "region": "EUW",
+          "uploaded": "2025-12-24",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 134,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "YGsGd-9QGKQ",
+          "title": "Pyke Mid vs Syndra - KR Challenger Patch 26.11",
+          "rankClaim": "Challenger",
+          "patch": "26.11",
+          "durationSec": 1826,
+          "region": "KR",
+          "uploaded": "2026-06-11",
+          "moments": []
+        },
+        {
+          "videoId": "2EdS_XR_b6E",
+          "title": "Pyke Mid vs Syndra - NA Challenger Patch 26.01",
+          "rankClaim": "Challenger",
+          "patch": "26.1",
+          "durationSec": 1558,
+          "region": "NA",
+          "uploaded": "2026-01-18",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 142,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "bRlVLD907uI",
+          "title": "Pyke Mid vs Zoe - KR Master Patch 26.12",
+          "rankClaim": "Master",
+          "patch": "26.12",
+          "durationSec": 1438,
+          "region": "KR",
+          "uploaded": "2026-06-23",
+          "moments": []
+        },
+        {
+          "videoId": "1BfRRK_VH5c",
+          "title": "Pyke Mid vs Zoe - KR Challenger Patch 25.05",
+          "rankClaim": "Challenger",
+          "patch": "25.5",
+          "durationSec": 1479,
+          "region": "KR",
+          "uploaded": "2025-03-16",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 186,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 224,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 865,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1061,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1084,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1112,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1211,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1275,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1288,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1312,
+              "label": "Take down The Inhibitor"
+            },
+            {
+              "atSec": 1325,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1337,
+              "label": "Take down The Inhibitor"
+            },
+            {
+              "atSec": 1361,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1408,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1434,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1458,
+              "label": "End credit"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 157,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "DtrJvQ0ICNI",
+          "title": "Pyke Mid vs Yasuo - KR Master Patch 25.22",
+          "rankClaim": "Master",
+          "patch": "25.22",
+          "durationSec": 1899,
+          "region": "KR",
+          "uploaded": "2025-11-15",
+          "moments": []
+        },
+        {
+          "videoId": "kU6yNvgmy7E",
+          "title": "Pyke vs Yasuo Mid - KR Grandmaster - Patch 25.8 Season 15",
+          "rankClaim": "Grandmaster",
+          "patch": "25.8",
+          "durationSec": 2236,
+          "region": "KR",
+          "uploaded": "2025-04-30",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 166,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "1u8W5MuWSjY",
+          "title": "Pyke Mid vs Akshan - KR Grandmaster Patch 26.13",
+          "rankClaim": "Grandmaster",
+          "patch": "26.13",
+          "durationSec": 1511,
+          "region": "KR",
+          "uploaded": "2026-07-09",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 201,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "sCbV1Vira_U",
+          "title": "Pyke Support vs Braum - KR Challenger Patch 25.15",
+          "rankClaim": "Challenger",
+          "patch": "25.15",
+          "durationSec": 1489,
+          "region": "KR",
+          "uploaded": "2025-08-04",
+          "moments": []
+        },
+        {
+          "videoId": "BWpNp8jkf1U",
+          "title": "Pyke Support vs Braum - KR Challenger Patch 25.04",
+          "rankClaim": "Challenger",
+          "patch": "25.4",
+          "durationSec": 1699,
+          "region": "KR",
+          "uploaded": "2025-03-03",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 185,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 368,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 445,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 586,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 731,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 859,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1139,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1167,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1280,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1309,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1379,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1492,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1678,
+              "label": "End credit"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 235,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "n839EsU_Dbg",
+          "title": "Rank 1 Pyke : CN Super Server GOAT is DEVASTATING This Senna - Engsub",
+          "rankClaim": "Master+",
+          "patch": "26.7",
+          "durationSec": 1323,
+          "patchEstimated": true,
+          "player": "Baicaiovo",
+          "uploaded": "2026-04-03",
+          "format": "stream",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 235,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "BTiJ1E_lsEo",
+          "title": "Pyke Support vs Senna - KR Grandmaster Patch 25.21",
+          "rankClaim": "Grandmaster",
+          "patch": "25.21",
+          "durationSec": 1864,
+          "region": "KR",
+          "uploaded": "2025-10-26",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 245,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "wwwwxfQnFUc",
+          "title": "Pyke Mid vs Ekko - KR Master Patch 25.17",
+          "rankClaim": "Master",
+          "patch": "25.17",
+          "durationSec": 1738,
+          "region": "KR",
+          "uploaded": "2025-09-09",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 246,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "jIpQVyaazrE",
+          "title": "Pyke vs Qiyana Mid - KR Challenger - Patch 25.18 Season 15",
+          "rankClaim": "Challenger",
+          "patch": "25.18",
+          "durationSec": 1771,
+          "region": "KR",
+          "uploaded": "2025-09-23",
+          "moments": []
+        },
+        {
+          "videoId": "m2iNG5F38D4",
+          "title": "Pyke Mid vs Qiyana - KR Master Patch 25.18",
+          "rankClaim": "Master",
+          "patch": "25.18",
+          "durationSec": 1724,
+          "region": "KR",
+          "uploaded": "2025-09-21",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 267,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "PhGG7-jNWaA",
+          "title": "Pyke Support vs Nami - EUW Challenger Patch 25.12",
+          "rankClaim": "Challenger",
+          "patch": "25.12",
+          "durationSec": 1524,
+          "region": "EUW",
+          "uploaded": "2025-06-26",
+          "moments": []
+        },
+        {
+          "videoId": "TUvzXgIxrYk",
+          "title": "Pyke Support vs Nami - KR Grandmaster Patch 25.10",
+          "rankClaim": "Grandmaster",
+          "patch": "25.10",
+          "durationSec": 1727,
+          "region": "KR",
+          "uploaded": "2025-05-18",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 268,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "3M6-b68kdIM",
+          "title": "Pyke vs Azir Mid - KR Challenger - Patch 25.9 Season 15",
+          "rankClaim": "Challenger",
+          "patch": "25.9",
+          "durationSec": 1921,
+          "region": "KR",
+          "uploaded": "2025-05-12",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 350,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "6vBkW-0HGRo",
+          "title": "Pyke Support vs Yuumi - KR Master Patch 25.08",
+          "rankClaim": "Master",
+          "patch": "25.8",
+          "durationSec": 1504,
+          "region": "KR",
+          "uploaded": "2025-04-20",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 432,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "iTelNshDGmQ",
+          "title": "Pyke Support vs Bard - KR Challenger Patch 26.07",
+          "rankClaim": "Challenger",
+          "patch": "26.7",
+          "durationSec": 1489,
+          "region": "KR",
+          "uploaded": "2026-04-16",
+          "result": "L",
+          "moments": [
+            {
+              "atSec": 135,
+              "label": "First Blood — Ashe kills Pantheon",
+              "kind": "kill"
+            },
+            {
+              "atSec": 244,
+              "label": "Pyke eliminates Bard"
+            },
+            {
+              "atSec": 306,
+              "label": "Xin Zhao picks off Ryze"
+            },
+            {
+              "atSec": 412,
+              "label": "Orianna eliminates Ryze"
+            },
+            {
+              "atSec": 442,
+              "label": "Quinn eliminates Gnar"
+            },
+            {
+              "atSec": 527,
+              "label": "Red takes 1st Dragon (Ocean)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 635,
+              "label": "Ashe picks off Bard"
+            },
+            {
+              "atSec": 687,
+              "label": "Pyke kills Pantheon",
+              "kind": "kill"
+            },
+            {
+              "atSec": 767,
+              "label": "Xin Zhao kills Bard",
+              "kind": "kill"
+            },
+            {
+              "atSec": 958,
+              "label": "Red takes 2nd Dragon (Mountain)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1003,
+              "label": "Pyke eliminates Bard"
+            },
+            {
+              "atSec": 1082,
+              "label": "Team fight (3 kills)",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1183,
+              "label": "Team fight (3 kills)",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1275,
+              "label": "Red takes 3rd Dragon (Cloud)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1338,
+              "label": "Orianna takes down Gnar"
+            },
+            {
+              "atSec": 1387,
+              "label": "Orianna picks off Pantheon"
+            },
+            {
+              "atSec": 1403,
+              "label": "Red takes Baron",
+              "kind": "baron"
+            }
+          ]
+        },
+        {
+          "videoId": "1AJm23_4tVI",
+          "title": "Pyke Support vs Bard - EUW Grandmaster Patch 25.24",
+          "rankClaim": "Grandmaster",
+          "patch": "25.24",
+          "durationSec": 1516,
+          "region": "EUW",
+          "uploaded": "2026-01-07",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 184,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 323,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 411,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 527,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 567,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 790,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 863,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1046,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1103,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1225,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1289,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1405,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1505,
+              "label": "End credit"
+            }
+          ]
+        },
+        {
+          "videoId": "szmqaOm-gyg",
+          "title": "Pyke Support vs Bard - KR Challenger Patch 25.07",
+          "rankClaim": "Challenger",
+          "patch": "25.7",
+          "durationSec": 1561,
+          "region": "KR",
+          "uploaded": "2025-04-06",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 176,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 239,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 375,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 447,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 621,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 721,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 830,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 904,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1118,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1198,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1224,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1333,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1432,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1540,
+              "label": "End credit"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 497,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "xpWoUCaygE8",
+          "title": "Pyke Support vs Rakan - KR Grandmaster Patch 26.20",
+          "rankClaim": "Grandmaster",
+          "patch": "26.20",
+          "durationSec": 1781,
+          "region": "KR",
+          "uploaded": "2026-10-20",
+          "result": "W",
+          "moments": [
+            {
+              "atSec": 182,
+              "label": "First Blood — Pyke kills Rakan",
+              "kind": "kill"
+            },
+            {
+              "atSec": 284,
+              "label": "Red takes 1st Dragon (Cloud)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 373,
+              "label": "Pyke solo kills Rakan",
+              "kind": "kill"
+            },
+            {
+              "atSec": 700,
+              "label": "Red takes 2nd Dragon (Hextech)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 808,
+              "label": "Pyke Triple Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 812,
+              "label": "Pyke Quadra Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 938,
+              "label": "Xayah takes down Kai'Sa"
+            },
+            {
+              "atSec": 1009,
+              "label": "LeBlanc picks off Vi"
+            },
+            {
+              "atSec": 1039,
+              "label": "Red takes 3rd Dragon (Infernal)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1085,
+              "label": "Team fight (3 kills)",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1097,
+              "label": "Pyke Triple Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1259,
+              "label": "Blue takes Baron",
+              "kind": "baron"
+            },
+            {
+              "atSec": 1356,
+              "label": "Blue takes 1st Dragon (Infernal)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1529,
+              "label": "Xayah eliminates Vi"
+            },
+            {
+              "atSec": 1644,
+              "label": "Blue takes 2nd Baron",
+              "kind": "baron"
+            },
+            {
+              "atSec": 1693,
+              "label": "Red takes 4th Dragon (Infernal)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1757,
+              "label": "Lee Sin Double Kill",
+              "kind": "kill"
+            }
+          ]
+        },
+        {
+          "videoId": "rUyV_9rCtXc",
+          "title": "Pyke Support vs Rakan - KR Master Patch 26.18",
+          "rankClaim": "Master",
+          "patch": "26.18",
+          "durationSec": 1666,
+          "region": "KR",
+          "uploaded": "2026-09-16",
+          "moments": []
+        },
+        {
+          "videoId": "Bw24JlyItsY",
+          "title": "Pyke Support vs Rakan - KR Challenger Patch 26.10",
+          "rankClaim": "Challenger",
+          "patch": "26.10",
+          "durationSec": 1555,
+          "region": "KR",
+          "uploaded": "2026-05-16",
+          "moments": []
+        },
+        {
+          "videoId": "ohkxm6Fv7ao",
+          "title": "Pyke Support vs Rakan - EUW Challenger Patch 26.08",
+          "rankClaim": "Challenger",
+          "patch": "26.8",
+          "durationSec": 1578,
+          "region": "EUW",
+          "uploaded": "2026-04-20",
+          "moments": []
+        },
+        {
+          "videoId": "fmYFgbjwHWo",
+          "title": "Pyke Support vs Rakan - KR Master Patch 25.24",
+          "rankClaim": "Master",
+          "patch": "25.24",
+          "durationSec": 1657,
+          "region": "KR",
+          "uploaded": "2025-12-06",
+          "moments": []
+        },
+        {
+          "videoId": "CYwrFroZz5o",
+          "title": "Pyke Support vs Rakan - KR Challenger Patch 25.22",
+          "rankClaim": "Challenger",
+          "patch": "25.22",
+          "durationSec": 1723,
+          "region": "KR",
+          "uploaded": "2025-11-09",
+          "moments": []
+        },
+        {
+          "videoId": "Xq6JTRXeNyk",
+          "title": "Pyke Support vs Rakan - KR Challenger Patch 25.16",
+          "rankClaim": "Challenger",
+          "patch": "25.16",
+          "durationSec": 1765,
+          "region": "KR",
+          "uploaded": "2025-08-19",
+          "moments": []
+        },
+        {
+          "videoId": "voEDStEXC6A",
+          "title": "Pyke Support vs Rakan - KR Challenger Patch 25.13",
+          "rankClaim": "Challenger",
+          "patch": "25.13",
+          "durationSec": 1453,
+          "region": "KR",
+          "uploaded": "2025-06-30",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 517,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "gnfl4fncdFY",
+          "title": "Pyke Mid vs Sylas - NA Challenger Patch 25.06",
+          "rankClaim": "Challenger",
+          "patch": "25.6",
+          "durationSec": 1642,
+          "region": "NA",
+          "uploaded": "2025-03-31",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 243,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 298,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 390,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 464,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 670,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 736,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 846,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1015,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1106,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1140,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1155,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1272,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1327,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1355,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1371,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1400,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1471,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1621,
+              "label": "End credit"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 518,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "X5ZT5lNf27o",
+          "title": "Pyke Mid vs Neeko - NA Grandmaster Patch 26.10",
+          "rankClaim": "Grandmaster",
+          "patch": "26.10",
+          "durationSec": 1612,
+          "region": "NA",
+          "uploaded": "2026-05-28",
+          "moments": []
+        },
+        {
+          "videoId": "YWB55X0Ggy4",
+          "title": "Pyke Mid vs Neeko - KR Master Patch 25.24",
+          "rankClaim": "Master",
+          "patch": "25.24",
+          "durationSec": 1559,
+          "region": "KR",
+          "uploaded": "2025-12-14",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 518,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "8CCMwjPWmuc",
+          "title": "Pyke Support vs Neeko - KR Challenger Patch 26.05",
+          "rankClaim": "Challenger",
+          "patch": "26.5",
+          "durationSec": 1836,
+          "region": "KR",
+          "uploaded": "2026-03-17",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 109,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 258,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 442,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 552,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 916,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1087,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1201,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1324,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1641,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1825,
+              "label": "End credit"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 526,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "t9ksRIFTuOA",
+          "title": "Pyke Support vs Rell - EUW Grandmaster Patch 25.15",
+          "rankClaim": "Grandmaster",
+          "patch": "25.15",
+          "durationSec": 1655,
+          "region": "EUW",
+          "uploaded": "2025-08-14",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 711,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "ryFOS4Pjzvc",
+          "title": "Pyke Mid vs Vex - KR Grandmaster Patch 26.06",
+          "rankClaim": "Grandmaster",
+          "patch": "26.6",
+          "durationSec": 1521,
+          "region": "KR",
+          "uploaded": "2026-03-30",
+          "moments": []
+        },
+        {
+          "videoId": "VC7SZYLrlYk",
+          "title": "Pyke Mid vs Vex - NA Grandmaster Patch 25.23",
+          "rankClaim": "Grandmaster",
+          "patch": "25.23",
+          "durationSec": 1589,
+          "region": "NA",
+          "uploaded": "2025-11-30",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 777,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "P_xmEodwZ5U",
+          "title": "Pyke vs Yone Mid - KR Challenger - Patch 25.5 Season 15",
+          "rankClaim": "Challenger",
+          "patch": "25.5",
+          "durationSec": 1840,
+          "region": "KR",
+          "uploaded": "2025-03-13",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 799,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "yaohu9yb_XE",
+          "title": "Pyke Mid vs Ambessa - KR Master Patch 26.03",
+          "rankClaim": "Master",
+          "patch": "26.3",
+          "durationSec": 1473,
+          "region": "KR",
+          "uploaded": "2026-02-14",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 888,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "bX_l0cEMxVo",
+          "title": "(Hailstone) Pyke Support vs Renata Glasc (TH Way) - KR Challenger Patch 26.19",
+          "rankClaim": "Challenger",
+          "patch": "26.19",
+          "durationSec": 1914,
+          "region": "KR",
+          "player": "Hailstone",
+          "uploaded": "2026-10-01",
+          "result": "L",
+          "moments": [
+            {
+              "atSec": 118,
+              "label": "First Blood — Zac kills Cho'Gath",
+              "kind": "kill"
+            },
+            {
+              "atSec": 459,
+              "label": "Blue takes 1st Dragon (Cloud)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 489,
+              "label": "Team fight (3 kills)",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 582,
+              "label": "Kalista takes down Draven"
+            },
+            {
+              "atSec": 673,
+              "label": "Team fight (3 kills)",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 748,
+              "label": "Zac kills Renata Glasc",
+              "kind": "kill"
+            },
+            {
+              "atSec": 784,
+              "label": "Blue takes 2nd Dragon (Mountain)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 839,
+              "label": "Kalista eliminates Cho'Gath"
+            },
+            {
+              "atSec": 1030,
+              "label": "Team fight (3 kills)",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1077,
+              "label": "Zac takes down Cho'Gath"
+            },
+            {
+              "atSec": 1128,
+              "label": "Blue takes 3rd Dragon (Infernal)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1272,
+              "label": "Red takes Baron",
+              "kind": "baron"
+            },
+            {
+              "atSec": 1454,
+              "label": "Red takes 1st Dragon (Infernal)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1476,
+              "label": "Mid Inhibitor falls (Blue)"
+            },
+            {
+              "atSec": 1494,
+              "label": "Pyke Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1607,
+              "label": "Twisted Fate kills Draven",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1766,
+              "label": "Red takes 2nd Dragon (Infernal)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1843,
+              "label": "Mid Inhibitor falls (Blue)"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 893,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "cE3sIzmcBEc",
+          "title": "Pyke Mid vs Aurora - KR Master Patch 25.10",
+          "rankClaim": "Master",
+          "patch": "25.10",
+          "durationSec": 2069,
+          "region": "KR",
+          "uploaded": "2025-05-28",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 902,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "4yo-nX1nrXU",
+          "title": "(LYON Isles) Pyke Support vs Milio - NA Challenger Patch 26.12",
+          "rankClaim": "Challenger",
+          "patch": "26.12",
+          "durationSec": 1565,
+          "region": "NA",
+          "player": "LYON Isles",
+          "uploaded": "2026-06-18",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 910,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "XlOS8IUHSiA",
+          "title": "Pyke Mid vs Hwei - KR Master Patch 25.19",
+          "rankClaim": "Master",
+          "patch": "25.19",
+          "durationSec": 1570,
+          "region": "KR",
+          "uploaded": "2025-10-04",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 910,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "YUZuS_Oaums",
+          "title": "Pyke Support vs Hwei - KR Challenger Patch 26.05",
+          "rankClaim": "Challenger",
+          "patch": "26.5",
+          "durationSec": 1478,
+          "region": "KR",
+          "uploaded": "2026-03-09",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 25,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 181,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 294,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 368,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 477,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 570,
+              "label": "Get a Triple Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 721,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 838,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 856,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 921,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1066,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1210,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1298,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1425,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1467,
+              "label": "End credit"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

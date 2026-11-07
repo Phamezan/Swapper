@@ -1,0 +1,3628 @@
+{
+  "schema": 1,
+  "champion": 106,
+  "generatedAt": "2026-11-07T13:25:14.592Z",
+  "guides": [
+    {
+      "champion": 106,
+      "enemy": 24,
+      "lane": "top",
+      "patch": "26.21",
+      "reviewed": false,
+      "difficulty": "Hard",
+      "favoredWhen": "Volibear wins by baiting Counter Strike and diving with the ultimate; Jax wins if E answers the full combo.",
+      "keyTips": [
+        {
+          "text": "Bait Counter Strike before committing Q plus W. His E dodges the full combo and reduces area damage, so feint first and engage into the spent shield.",
+          "scope": "pair",
+          "sourceIds": [
+            "federals1-volibear"
+          ],
+          "heading": "Bait first",
+          "abilityKeys": [
+            {
+              "champion": 24,
+              "key": "E"
+            },
+            {
+              "champion": 106,
+              "key": "Q"
+            },
+            {
+              "champion": 106,
+              "key": "W"
+            }
+          ]
+        },
+        {
+          "text": "Never commit into an active E. The shield plus stun reverses the exchange, so break off and re-engage after it expires.",
+          "scope": "pair",
+          "sourceIds": [
+            "federals1-volibear"
+          ],
+          "heading": "Shield respect",
+          "abilityKeys": [
+            {
+              "champion": 24,
+              "key": "E"
+            }
+          ]
+        },
+        {
+          "text": "Dive with the ultimate once he is low. R disables the tower, so convert a won exchange into a kill instead of letting him turtle.",
+          "scope": "pair",
+          "sourceIds": [
+            "ph45"
+          ],
+          "heading": "Dive finish",
+          "abilityKeys": [
+            {
+              "champion": 106,
+              "key": "R"
+            }
+          ]
+        }
+      ],
+      "enemyTips": {},
+      "sections": {
+        "overview": {
+          "tips": []
+        },
+        "early-lane": {
+          "tips": [
+            {
+              "text": "Win short trades before his resistances stack. Your early bulk beats his pattern, so force the issue while the exchange still favors you.",
+              "scope": "pair",
+              "sourceIds": [
+                "federals1-volibear"
+              ],
+              "heading": "Early press"
+            },
+            {
+              "text": "Punish his E expiry. The moment the shield falls is your engage window; step in as it ends rather than waiting for the next cycle.",
+              "scope": "pair",
+              "sourceIds": [
+                "federals1-volibear",
+                "ph45"
+              ],
+              "heading": "Expiry punish",
+              "abilityKeys": [
+                {
+                  "champion": 24,
+                  "key": "E"
+                }
+              ]
+            }
+          ]
+        },
+        "mid-lane": {
+          "tips": [
+            {
+              "text": "Mark him with W, then decide. If the mark sticks, stay for the second hit; if he leaves the zone, take the won trade and reset.",
+              "scope": "pair",
+              "sourceIds": [
+                "ph45"
+              ],
+              "heading": "Mark play",
+              "abilityKeys": [
+                {
+                  "champion": 106,
+                  "key": "W"
+                }
+              ]
+            },
+            {
+              "text": "Roam the tower line post-6 with R ready. The dive threat zones him off farm even uncast, so posture aggressively while it is up.",
+              "scope": "pair",
+              "sourceIds": [
+                "ph45"
+              ],
+              "heading": "Dive threat",
+              "abilityKeys": [
+                {
+                  "champion": 106,
+                  "key": "R"
+                }
+              ]
+            }
+          ]
+        },
+        "win-condition": {
+          "tips": [
+            {
+              "text": "All-in before his scaling answers you. His dueling grows past yours, so close the lane on your spike instead of farming it out.",
+              "scope": "pair",
+              "sourceIds": [
+                "federals1-volibear"
+              ],
+              "heading": "Close early"
+            },
+            {
+              "text": "Chain Q plus W inside spent-E windows. The full combo with no shield to meet it is your kill condition at every stage.",
+              "scope": "pair",
+              "sourceIds": [
+                "federals1-volibear",
+                "ph45"
+              ],
+              "heading": "Combo window",
+              "abilityKeys": [
+                {
+                  "champion": 106,
+                  "key": "Q"
+                },
+                {
+                  "champion": 106,
+                  "key": "W"
+                },
+                {
+                  "champion": 24,
+                  "key": "E"
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "itemization": [
+        {
+          "text": "Consider Warden's Mail against repeated damage. The armor blunts his auto pattern while your combo pattern decides the lane.",
+          "scope": "pair",
+          "sourceIds": [
+            "federals1-volibear"
+          ],
+          "itemIds": [
+            3082
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "id": "federals1-volibear",
+          "author": "Federals1",
+          "rankClaim": "Challenger · Volibear main",
+          "rank": "challenger",
+          "url": "https://www.mobafire.com/league-of-legends/build/26-20-challenger-volibear-top-guide-609641",
+          "kind": "mobafire"
+        },
+        {
+          "id": "ph45",
+          "author": "PH45",
+          "rankClaim": "Master (profile badge; no title claim) · Jax main",
+          "rank": "master",
+          "url": "https://www.mobafire.com/league-of-legends/build/26-21-thisispatriks-in-depth-jax-guide-503356",
+          "kind": "mobafire"
+        }
+      ]
+    },
+    {
+      "champion": 106,
+      "enemy": 122,
+      "lane": "top",
+      "patch": "26.21",
+      "reviewed": false,
+      "difficulty": "Skill matchup",
+      "favoredWhen": "Volibear wins by stepping inside Q and timing R against the pull; Darius wins Q-edge spacing and Shojin stack conversion.",
+      "keyTips": [
+        {
+          "text": "Respect levels 1–2 and the bleed stacks. Take short contacts only; every extra auto feeds the passive that kills you.",
+          "scope": "pair",
+          "sourceIds": [
+            "federals1-volibear"
+          ],
+          "heading": "Early respect"
+        },
+        {
+          "text": "Step inside his Q and time R against the pull. The inner ring denies his heal and stacks, and R answers the E he uses to catch you.",
+          "scope": "pair",
+          "sourceIds": [
+            "federals1-volibear"
+          ],
+          "heading": "Q denial",
+          "abilityKeys": [
+            {
+              "champion": 106,
+              "key": "R"
+            },
+            {
+              "champion": 122,
+              "key": "E"
+            }
+          ]
+        },
+        {
+          "text": "Make level 3 your all-in window. Q plus marked-W sustained trading is your strongest pattern, so force it before his items answer.",
+          "scope": "pair",
+          "sourceIds": [
+            "federals1-darius"
+          ],
+          "heading": "Level-3 turn",
+          "abilityKeys": [
+            {
+              "champion": 106,
+              "key": "Q"
+            },
+            {
+              "champion": 106,
+              "key": "W"
+            }
+          ]
+        }
+      ],
+      "enemyTips": {},
+      "sections": {
+        "overview": {
+          "tips": []
+        },
+        "early-lane": {
+          "tips": [
+            {
+              "text": "Concede his level-1 punish. He zones the opening wave, so give the CS rather than feeding him the zone plus first blood.",
+              "scope": "pair",
+              "sourceIds": [
+                "federals1-darius"
+              ],
+              "heading": "Level-1 concede"
+            },
+            {
+              "text": "Step inside before the Q edge casts. Meet each Q windup by closing in, denying the heal and the outer-ring damage together.",
+              "scope": "pair",
+              "sourceIds": [
+                "federals1-volibear"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 122,
+                  "key": "Q"
+                }
+              ]
+            }
+          ]
+        },
+        "mid-lane": {
+          "tips": [
+            {
+              "text": "Force the marked all-in. Land Q, stick for the marked W, and extend only while the mark pays out.",
+              "scope": "pair",
+              "sourceIds": [
+                "federals1-darius"
+              ],
+              "heading": "Mark commit",
+              "abilityKeys": [
+                {
+                  "champion": 106,
+                  "key": "Q"
+                },
+                {
+                  "champion": 106,
+                  "key": "W"
+                }
+              ]
+            },
+            {
+              "text": "Close before his Shojin spike. Once Spear of Shojin completes, his stacked trades outscale yours, so end the lane phase ahead.",
+              "scope": "pair",
+              "sourceIds": [
+                "federals1-darius"
+              ],
+              "heading": "Spike clock",
+              "itemIds": [
+                3161
+              ]
+            }
+          ]
+        },
+        "win-condition": {
+          "tips": [
+            {
+              "text": "Hold R for his pull. The flip answers your escape, so spend R only after E is down or to answer the cast directly.",
+              "scope": "pair",
+              "sourceIds": [
+                "federals1-volibear"
+              ],
+              "heading": "R discipline",
+              "abilityKeys": [
+                {
+                  "champion": 106,
+                  "key": "R"
+                },
+                {
+                  "champion": 122,
+                  "key": "E"
+                }
+              ]
+            },
+            {
+              "text": "Fight before Sterak's plus Shojin stack up. Your window is the mid game; grouped fights late favor his resets over your dive.",
+              "scope": "pair",
+              "sourceIds": [
+                "federals1-darius",
+                "federals1-volibear"
+              ],
+              "heading": "Mid-game window"
+            }
+          ]
+        }
+      },
+      "itemization": [
+        {
+          "text": "Respect his stacking with early armor and Warden's Mail value. Blunt the repeated damage while your Q-plus-W pattern decides the lane.",
+          "scope": "pair",
+          "sourceIds": [
+            "federals1-volibear"
+          ],
+          "itemIds": [
+            3082
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "id": "federals1-volibear",
+          "author": "Federals1",
+          "rankClaim": "Challenger · Volibear main",
+          "rank": "challenger",
+          "url": "https://www.mobafire.com/league-of-legends/build/26-20-challenger-volibear-top-guide-609641",
+          "kind": "mobafire"
+        },
+        {
+          "id": "federals1-darius",
+          "author": "Federals1",
+          "rankClaim": "Challenger · Darius main",
+          "rank": "challenger",
+          "url": "https://www.mobafire.com/league-of-legends/build/26-20-challenger-darius-top-guide-636714",
+          "kind": "mobafire"
+        }
+      ]
+    }
+  ],
+  "general": [
+    {
+      "champion": 106,
+      "lane": "top",
+      "patch": "26.21",
+      "reviewed": false,
+      "keyTips": [
+        {
+          "text": "Use Volibear's early dueling strength to pressure trades and look for a kill lead.",
+          "scope": "champion",
+          "sourceIds": [
+            "mobalytics-volibear-top"
+          ]
+        },
+        {
+          "text": "Level six adds a major duel and tower-dive option; use Stormbringer when the opponent is low and the dive is supported.",
+          "scope": "champion",
+          "sourceIds": [
+            "mobalytics-volibear-top"
+          ],
+          "abilityKeys": [
+            {
+              "champion": 106,
+              "key": "R"
+            }
+          ]
+        },
+        {
+          "text": "In late fights, use Stormbringer to get onto a backline target, then fall back to peel for allies.",
+          "scope": "champion",
+          "sourceIds": [
+            "mobalytics-volibear-top"
+          ],
+          "abilityKeys": [
+            {
+              "champion": 106,
+              "key": "R"
+            }
+          ]
+        }
+      ],
+      "sections": {
+        "overview": {
+          "tips": []
+        },
+        "early-lane": {
+          "tips": [
+            {
+              "text": "Keep the wave even or just on your side when not ahead; the longer lane helps run the opponent down and reduces gank exposure.",
+              "scope": "champion",
+              "sourceIds": [
+                "mobalytics-volibear-top"
+              ]
+            },
+            {
+              "text": "Use lane brush and Sky Splitter poke to make short trades safer before committing to a chase.",
+              "scope": "champion",
+              "sourceIds": [
+                "mobalytics-volibear-top"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 106,
+                  "key": "E"
+                }
+              ]
+            },
+            {
+              "text": "The first item component boosts his damage and durability enough to take more frequent duels.",
+              "scope": "champion",
+              "sourceIds": [
+                "mobalytics-volibear-top"
+              ]
+            },
+            {
+              "text": "Grievous Wounds reduces his healing and weakens his all-in and dive pattern, so respect enemy anti-heal timings.",
+              "scope": "champion",
+              "sourceIds": [
+                "mobalytics-volibear-top"
+              ]
+            }
+          ]
+        },
+        "mid-lane": {
+          "tips": [
+            {
+              "text": "Split push around side objectives and challenge the champion sent to stop you.",
+              "scope": "champion",
+              "sourceIds": [
+                "mobalytics-volibear-top"
+              ]
+            },
+            {
+              "text": "Avoid grouping when the side lane can pressure a nearby objective, but be ready to join when there is no objective to play toward.",
+              "scope": "champion",
+              "sourceIds": [
+                "mobalytics-volibear-top"
+              ]
+            },
+            {
+              "text": "At level nine the first ability is maxed, improving damage and dueling.",
+              "scope": "champion",
+              "sourceIds": [
+                "mobalytics-volibear-top"
+              ]
+            },
+            {
+              "text": "A second point in Stormbringer improves its damage and availability for team fights.",
+              "scope": "champion",
+              "sourceIds": [
+                "mobalytics-volibear-top"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 106,
+                  "key": "R"
+                }
+              ]
+            }
+          ]
+        },
+        "win-condition": {
+          "tips": [
+            {
+              "text": "Group with the team and approach from the side or an unwarded brush to make the engage harder to answer.",
+              "scope": "champion",
+              "sourceIds": [
+                "mobalytics-volibear-top"
+              ]
+            },
+            {
+              "text": "Do not remain split away from the team late; opponents can force a fight while Volibear is missing.",
+              "scope": "champion",
+              "sourceIds": [
+                "mobalytics-volibear-top"
+              ]
+            },
+            {
+              "text": "Wait for Stormbringer before committing to a late fight; if it is down, delay and disengage.",
+              "scope": "champion",
+              "sourceIds": [
+                "mobalytics-volibear-top"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 106,
+                  "key": "R"
+                }
+              ]
+            },
+            {
+              "text": "Expect Volibear to shift into a frontline and peel role as the game goes longer, rather than relying on him to duel everyone.",
+              "scope": "champion",
+              "sourceIds": [
+                "mobalytics-volibear-top"
+              ]
+            }
+          ]
+        }
+      },
+      "itemization": [
+        {
+          "text": "Take Lethal Tempo, Triumph, Legend: Haste, and Last Stand with Demolish and Revitalize as the favored 16.21 page.",
+          "scope": "champion",
+          "sourceIds": [
+            "mobalytics-volibear-top-build"
+          ]
+        },
+        {
+          "text": "Build Dusk and Dawn, Plated Steelcaps, Navori Flickerblade, Spirit Visage, and Thornmail as the popular 16.21 order.",
+          "scope": "champion",
+          "sourceIds": [
+            "mobalytics-volibear-top-build"
+          ],
+          "itemIds": [
+            2510,
+            3047,
+            6675,
+            3065,
+            3075
+          ]
+        },
+        {
+          "text": "Start Doran's Ring, a Health Potion, and Stealth Ward.",
+          "scope": "champion",
+          "sourceIds": [
+            "mobalytics-volibear-top-build"
+          ],
+          "itemIds": [
+            1056,
+            2003,
+            3340
+          ]
+        },
+        {
+          "text": "Choose Randuin's Omen to replace Spirit Visage in the fourth slot when armor is needed against physical and critical-hit damage.",
+          "scope": "champion",
+          "sourceIds": [
+            "mobalytics-volibear-top-build"
+          ],
+          "itemIds": [
+            3143,
+            3065
+          ]
+        },
+        {
+          "text": "Max W, then Q, then E, taking Stormbringer at levels six, eleven, and sixteen.",
+          "scope": "champion",
+          "sourceIds": [
+            "mobalytics-volibear-top-build"
+          ],
+          "abilityKeys": [
+            {
+              "champion": 106,
+              "key": "W"
+            },
+            {
+              "champion": 106,
+              "key": "Q"
+            },
+            {
+              "champion": 106,
+              "key": "E"
+            },
+            {
+              "champion": 106,
+              "key": "R"
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "id": "mobalytics-volibear-top",
+          "author": "Mobalytics",
+          "rankClaim": "No rank claim",
+          "url": "https://mobalytics.gg/lol/champions/volibear/guide/top",
+          "kind": "web"
+        },
+        {
+          "id": "mobalytics-volibear-top-build",
+          "author": "Mobalytics",
+          "rankClaim": "No rank claim",
+          "url": "https://mobalytics.gg/lol/champions/volibear/build/top",
+          "kind": "web"
+        }
+      ]
+    }
+  ],
+  "vods": [
+    {
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "hQOv9yXj8CA",
+          "title": "FULL EDUCATIONAL VOLIBEAR GAMEPLAY | FREE GUIDE",
+          "rankClaim": "Master+",
+          "patch": "26.21",
+          "durationSec": 1772,
+          "patchEstimated": true,
+          "player": "Sinerias",
+          "uploaded": "2026-11-03",
+          "format": "stream",
+          "cam": true,
+          "moments": []
+        },
+        {
+          "videoId": "eq-J_K3H6Wc",
+          "title": "Broxah Discovers Baus' NUCLEAR FUSION Volibear",
+          "rankClaim": "Master+",
+          "patch": "26.20",
+          "durationSec": 2771,
+          "patchEstimated": true,
+          "player": "Broxah",
+          "uploaded": "2026-10-14",
+          "format": "stream",
+          "cam": true,
+          "moments": [
+            {
+              "atSec": 0,
+              "label": "Planning and preparation"
+            },
+            {
+              "atSec": 146,
+              "label": "Early game skirmishes"
+            },
+            {
+              "atSec": 490,
+              "label": "Itemization errors"
+            },
+            {
+              "atSec": 713,
+              "label": "Mid-game dominance"
+            },
+            {
+              "atSec": 1051,
+              "label": "Late game failure"
+            },
+            {
+              "atSec": 1658,
+              "label": "Second match attempt"
+            },
+            {
+              "atSec": 2110,
+              "label": "Revisiting the build strategy"
+            }
+          ]
+        },
+        {
+          "videoId": "_rLFQMmRXKE",
+          "title": "VOLIBEAR JUST GOT BUFFED",
+          "rankClaim": "Master+",
+          "patch": "26.19",
+          "durationSec": 1666,
+          "patchEstimated": true,
+          "player": "Sinerias",
+          "uploaded": "2026-09-25",
+          "format": "stream",
+          "cam": true,
+          "moments": []
+        },
+        {
+          "videoId": "D78tn3xV-Tg",
+          "title": "LEARN VOLIBEAR AND CLIMB THE ELO LADDER",
+          "rankClaim": "Master+",
+          "patch": "26.7",
+          "durationSec": 3284,
+          "patchEstimated": true,
+          "player": "Sinerias",
+          "uploaded": "2026-04-09",
+          "format": "stream",
+          "cam": true,
+          "moments": []
+        },
+        {
+          "videoId": "PCWUymQfi34",
+          "title": "HOW TO ESCAPE LOW ELO USING VOLIBEAR",
+          "rankClaim": "Master+",
+          "patch": "26.2",
+          "durationSec": 2449,
+          "patchEstimated": true,
+          "player": "Sinerias",
+          "uploaded": "2026-02-03",
+          "format": "stream",
+          "cam": true,
+          "moments": []
+        }
+      ]
+    },
+    {
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "bfdwKHqXQVQ",
+          "title": "FIGHTING BAUS' VOLIBEAR",
+          "rankClaim": "Master+",
+          "patch": "26.11",
+          "durationSec": 1533,
+          "patchEstimated": true,
+          "player": "Makkro",
+          "uploaded": "2026-06-05",
+          "format": "stream",
+          "cam": true,
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 2,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "mltNKD8i5TY",
+          "title": "Volibear Top vs Olaf - KR Master Patch 25.09",
+          "rankClaim": "Master",
+          "patch": "25.9",
+          "durationSec": 2060,
+          "region": "KR",
+          "uploaded": "2025-05-07",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 506,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 639,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 707,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 821,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 845,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 914,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1020,
+              "label": "Get a Triple Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1058,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1239,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1281,
+              "label": "Hunt The Atakhan"
+            },
+            {
+              "atSec": 1357,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1427,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 2039,
+              "label": "End credit"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 5,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "jTdcAmGccBw",
+          "title": "Volibear Jungle vs Xin Zhao - KR Master Patch 25.24",
+          "rankClaim": "Master",
+          "patch": "25.24",
+          "durationSec": 1501,
+          "region": "KR",
+          "uploaded": "2025-12-12",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 190,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 213,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 228,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 352,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 392,
+              "label": "Hunt The Dragon",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 422,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 449,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 476,
+              "label": "Hunt The Void Grubs",
+              "kind": "grubs"
+            },
+            {
+              "atSec": 502,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 729,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 895,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 926,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 963,
+              "label": "Hunt The Rift Herald",
+              "kind": "herald"
+            },
+            {
+              "atSec": 1034,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1067,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1089,
+              "label": "Hunt The Dragon",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1110,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1219,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1255,
+              "label": "Hunt The Atakhan"
+            },
+            {
+              "atSec": 1327,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1407,
+              "label": "Hunt The Dragon",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1430,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1447,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1468,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1490,
+              "label": "End credit"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 6,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "UZT764uAiuY",
+          "title": "Volibear Top vs Urgot - KR Master Patch 25.23",
+          "rankClaim": "Master",
+          "patch": "25.23",
+          "durationSec": 1639,
+          "region": "KR",
+          "uploaded": "2025-11-30",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 13,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "wO6cQtamOZ0",
+          "title": "Volibear Top vs Ryze - NA Grandmaster Patch 25.06",
+          "rankClaim": "Grandmaster",
+          "patch": "25.6",
+          "durationSec": 1862,
+          "region": "NA",
+          "uploaded": "2025-03-23",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 17,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "OsNuBmBHI4I",
+          "title": "Volibear Top vs Teemo - NA Grandmaster Patch 26.05",
+          "rankClaim": "Grandmaster",
+          "patch": "26.5",
+          "durationSec": 1826,
+          "region": "NA",
+          "uploaded": "2026-03-12",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 393,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 661,
+              "label": "Hunt The Void Grubs",
+              "kind": "grubs"
+            },
+            {
+              "atSec": 759,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 879,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1155,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1288,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1385,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1457,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1622,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1638,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1649,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1667,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1756,
+              "label": "Take down The Inhibitor"
+            },
+            {
+              "atSec": 1774,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1815,
+              "label": "End credit"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 24,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "DCDOQny16nA",
+          "title": "Volibear Top vs Jax - KR Master Patch 26.17",
+          "rankClaim": "Master",
+          "patch": "26.17",
+          "durationSec": 1447,
+          "region": "KR",
+          "uploaded": "2026-09-11",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 28,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "b42m1rvUuyo",
+          "title": "Volibear Jungle vs Evelynn - NA Grandmaster Patch 25.07",
+          "rankClaim": "Grandmaster",
+          "patch": "25.7",
+          "durationSec": 1626,
+          "region": "NA",
+          "uploaded": "2025-04-10",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 30,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "g9dP_oacCL8",
+          "title": "Volibear Jungle vs Karthus - KR Master Patch 26.09",
+          "rankClaim": "Master",
+          "patch": "26.9",
+          "durationSec": 1602,
+          "region": "KR",
+          "uploaded": "2026-05-13",
+          "moments": []
+        },
+        {
+          "videoId": "zXGhMhk7grw",
+          "title": "Volibear Jungle vs Karthus - BR Challenger Patch 25.24",
+          "rankClaim": "Challenger",
+          "patch": "25.24",
+          "durationSec": 1491,
+          "uploaded": "2025-12-31",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 47,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 290,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 399,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 436,
+              "label": "Hunt The Dragon",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 464,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 533,
+              "label": "Hunt The Void Grubs",
+              "kind": "grubs"
+            },
+            {
+              "atSec": 568,
+              "label": "Get a Quadra Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 630,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 718,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 742,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 780,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 805,
+              "label": "Hunt The Dragon",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 822,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 964,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 993,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1013,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1068,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1152,
+              "label": "Hunt The Dragon",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1183,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1269,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1291,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1311,
+              "label": "Hunt The Atakhan"
+            },
+            {
+              "atSec": 1399,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1437,
+              "label": "Take down The Inhibitor"
+            },
+            {
+              "atSec": 1468,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1480,
+              "label": "End credit"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 34,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "zuBHydYe_z8",
+          "title": "Volibear Mid vs Anivia - NA Grandmaster Patch 25.24",
+          "rankClaim": "Grandmaster",
+          "patch": "25.24",
+          "durationSec": 1490,
+          "region": "NA",
+          "uploaded": "2026-01-05",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 188,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 330,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 468,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 518,
+              "label": "Hunt The Void Grubs",
+              "kind": "grubs"
+            },
+            {
+              "atSec": 636,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 684,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 767,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 822,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 857,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 983,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1010,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1032,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1165,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1196,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1293,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1323,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1349,
+              "label": "Hunt The Dragon",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1371,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1447,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1479,
+              "label": "End credit"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 35,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "i64C7XwwH1s",
+          "title": "(MKOI Elyoya) Volibear Jungle vs Shaco - EUW Grandmaster Patch 26.10",
+          "rankClaim": "Grandmaster",
+          "patch": "26.10",
+          "durationSec": 1638,
+          "region": "EUW",
+          "player": "MKOI Elyoya",
+          "uploaded": "2026-05-22",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 36,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "sNn5msVfR_U",
+          "title": "Volibear Jungle vs Dr. Mundo - KR Master Patch 26.13",
+          "rankClaim": "Master",
+          "patch": "26.13",
+          "durationSec": 1744,
+          "region": "KR",
+          "uploaded": "2026-07-15",
+          "moments": []
+        },
+        {
+          "videoId": "aOA-VfX1jHc",
+          "title": "Volibear Jungle vs Dr. Mundo - NA Grandmaster Patch 25.05",
+          "rankClaim": "Grandmaster",
+          "patch": "25.5",
+          "durationSec": 1604,
+          "region": "NA",
+          "uploaded": "2025-03-19",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 182,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 305,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 557,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 806,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 898,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 991,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1017,
+              "label": "Hunt The Dragon",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1085,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1120,
+              "label": "Hunt The Rift Herald",
+              "kind": "herald"
+            },
+            {
+              "atSec": 1245,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1266,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1312,
+              "label": "Hunt The Atakhan"
+            },
+            {
+              "atSec": 1337,
+              "label": "Hunt The Dragon",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1351,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1408,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1497,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1583,
+              "label": "End credit"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 36,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "XfaR1eYrtMg",
+          "title": "Volibear Top vs Dr. Mundo - KR Master Patch 26.01",
+          "rankClaim": "Master",
+          "patch": "26.1",
+          "durationSec": 1567,
+          "region": "KR",
+          "uploaded": "2026-01-13",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 264,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 335,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 615,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 664,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 691,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 724,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 882,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 947,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1054,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1338,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1365,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1389,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1418,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1556,
+              "label": "End credit"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 39,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "7MKOdlUeB3I",
+          "title": "(UCAM Kozi) Volibear Top vs Irelia - EUW Grandmaster Patch 26.10",
+          "rankClaim": "Grandmaster",
+          "patch": "26.10",
+          "durationSec": 1507,
+          "region": "EUW",
+          "player": "UCAM Kozi",
+          "uploaded": "2026-05-21",
+          "moments": []
+        },
+        {
+          "videoId": "AzxpWAGnbKs",
+          "title": "Volibear Top vs Irelia - KR Master Patch 25.10",
+          "rankClaim": "Master",
+          "patch": "25.10",
+          "durationSec": 1672,
+          "region": "KR",
+          "uploaded": "2025-05-22",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 148,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 329,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 491,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 846,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 959,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1047,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1167,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1194,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1252,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1353,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1498,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1594,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1618,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1635,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1651,
+              "label": "End credit"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 41,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "ctc3fEzGXy0",
+          "title": "Volibear Top vs Gangplank - KR Master Patch 26.17",
+          "rankClaim": "Master",
+          "patch": "26.17",
+          "durationSec": 1463,
+          "region": "KR",
+          "uploaded": "2026-09-02",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 48,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "tvCy7R4Q8Lw",
+          "title": "Volibear vs Trundle [ Jungle ] Lol Korea Master Patch 25.22 ✅",
+          "rankClaim": "Master",
+          "patch": "25.22",
+          "durationSec": 1518,
+          "region": "KR",
+          "uploaded": "2025-11-14",
+          "moments": []
+        },
+        {
+          "videoId": "DixyhhYkS0M",
+          "title": "Volibear Jungle vs Trundle - EUW Grandmaster Patch 25.14",
+          "rankClaim": "Grandmaster",
+          "patch": "25.14",
+          "durationSec": 1871,
+          "region": "EUW",
+          "uploaded": "2025-07-27",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 54,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "Giwb4zFo1ec",
+          "title": "Volibear Top vs Malphite - TW Challenger Patch 26.04",
+          "rankClaim": "Challenger",
+          "patch": "26.4",
+          "durationSec": 1816,
+          "uploaded": "2026-02-26",
+          "moments": []
+        },
+        {
+          "videoId": "3PsaZKGbFT8",
+          "title": "Volibear Top vs Malphite - KR Master Patch 25.22",
+          "rankClaim": "Master",
+          "patch": "25.22",
+          "durationSec": 1704,
+          "region": "KR",
+          "uploaded": "2025-11-14",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 58,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "Hji0gaNek-M",
+          "title": "Volibear Top vs Renekton - KR Grandmaster Patch 26.13",
+          "rankClaim": "Grandmaster",
+          "patch": "26.13",
+          "durationSec": 1644,
+          "region": "KR",
+          "uploaded": "2026-07-08",
+          "moments": []
+        },
+        {
+          "videoId": "CXt0WNDjKB4",
+          "title": "Volibear Top vs Renekton - KR Master Patch 25.18",
+          "rankClaim": "Master",
+          "patch": "25.18",
+          "durationSec": 1973,
+          "region": "KR",
+          "uploaded": "2025-09-18",
+          "moments": []
+        },
+        {
+          "videoId": "exR8CJMvwII",
+          "title": "Volibear Top vs Renekton - KR Master Patch 25.13",
+          "rankClaim": "Master",
+          "patch": "25.13",
+          "durationSec": 1439,
+          "region": "KR",
+          "uploaded": "2025-07-02",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 59,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "DPVGEsxhq8o",
+          "title": "Volibear Jungle vs Jarvan IV - KR Master Patch 25.06",
+          "rankClaim": "Master",
+          "patch": "25.6",
+          "durationSec": 1508,
+          "region": "KR",
+          "uploaded": "2025-03-30",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 150,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 427,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 611,
+              "label": "Hunt The Dragon",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 739,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 788,
+              "label": "Hunt The Void Grubs",
+              "kind": "grubs"
+            },
+            {
+              "atSec": 806,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 962,
+              "label": "Hunt The Dragon",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1025,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1050,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1131,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1272,
+              "label": "Hunt The Dragon",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1308,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1334,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1437,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1487,
+              "label": "End credit"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 60,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "f-D58Pmr_Ho",
+          "title": "Volibear Jungle vs Elise - EUW Grandmaster Patch 25.10",
+          "rankClaim": "Grandmaster",
+          "patch": "25.10",
+          "durationSec": 1703,
+          "region": "EUW",
+          "uploaded": "2025-05-26",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 63,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "OljMf1m4uNk",
+          "title": "Volibear Jungle vs Brand - EUW Grandmaster Patch 26.03",
+          "rankClaim": "Grandmaster",
+          "patch": "26.3",
+          "durationSec": 1582,
+          "region": "EUW",
+          "uploaded": "2026-02-18",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 150,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 428,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 519,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 614,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 698,
+              "label": "Hunt The Dragon",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 859,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 934,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1020,
+              "label": "Hunt The Dragon",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1042,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1205,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1308,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1424,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1470,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1532,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1571,
+              "label": "End credit"
+            }
+          ]
+        },
+        {
+          "videoId": "PH_uqyw08So",
+          "title": "Volibear Jungle vs Brand - EUW Grandmaster Patch 25.08",
+          "rankClaim": "Grandmaster",
+          "patch": "25.8",
+          "durationSec": 2139,
+          "region": "EUW",
+          "uploaded": "2025-04-25",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 68,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "F4HkSLb4dbs",
+          "title": "Volibear Top vs Rumble - KR Master Patch 26.03",
+          "rankClaim": "Master",
+          "patch": "26.3",
+          "durationSec": 1607,
+          "region": "KR",
+          "uploaded": "2026-02-10",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 75,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "9R8mNILWCTg",
+          "title": "Volibear Top vs Nasus - KR Master Patch 26.07",
+          "rankClaim": "Master",
+          "patch": "26.7",
+          "durationSec": 1897,
+          "region": "KR",
+          "uploaded": "2026-04-09",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 76,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "Kyf0CXXWahk",
+          "title": "Volibear Jungle vs Nidalee - KR Master Patch 25.23",
+          "rankClaim": "Master",
+          "patch": "25.23",
+          "durationSec": 1727,
+          "region": "KR",
+          "uploaded": "2025-12-03",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 77,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "QUcqQRDCQ6Y",
+          "title": "Volibear Jungle vs Udyr - NA Grandmaster Patch 26.08",
+          "rankClaim": "Grandmaster",
+          "patch": "26.8",
+          "durationSec": 1687,
+          "region": "NA",
+          "uploaded": "2026-04-29",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 83,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "_phy-dS8_3I",
+          "title": "Volibear Top vs Yorick - KR Master Patch 25.15",
+          "rankClaim": "Master",
+          "patch": "25.15",
+          "durationSec": 1747,
+          "region": "KR",
+          "uploaded": "2025-08-05",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 86,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "uyTGSg0lJvM",
+          "title": "Volibear Top vs Garen - KR Grandmaster Patch 26.18",
+          "rankClaim": "Grandmaster",
+          "patch": "26.18",
+          "durationSec": 1598,
+          "region": "KR",
+          "uploaded": "2026-09-17",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 90,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "rkXmAUBylBU",
+          "title": "Volibear Top vs Malzahar - KR Master Patch 25.12",
+          "rankClaim": "Master",
+          "patch": "25.12",
+          "durationSec": 1666,
+          "region": "KR",
+          "uploaded": "2025-06-22",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 91,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "8jOmY-6wdzI",
+          "title": "Volibear Jungle vs Talon - NA Grandmaster Patch 25.21",
+          "rankClaim": "Grandmaster",
+          "patch": "25.21",
+          "durationSec": 2032,
+          "region": "NA",
+          "uploaded": "2025-11-01",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 107,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "3q1h-TjygC4",
+          "title": "Volibear Jungle vs Rengar - EUW Grandmaster Patch 25.17",
+          "rankClaim": "Grandmaster",
+          "patch": "25.17",
+          "durationSec": 1941,
+          "region": "EUW",
+          "uploaded": "2025-09-08",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 114,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "SLCTtmQwwGM",
+          "title": "Volibear Top vs Fiora - KR Master Patch 26.19",
+          "rankClaim": "Master",
+          "patch": "26.19",
+          "durationSec": 1523,
+          "region": "KR",
+          "uploaded": "2026-10-01",
+          "moments": []
+        },
+        {
+          "videoId": "Nhmh1GlEXlU",
+          "title": "Volibear Top vs Fiora - KR Master Patch 26.11",
+          "rankClaim": "Master",
+          "patch": "26.11",
+          "durationSec": 1621,
+          "region": "KR",
+          "uploaded": "2026-06-05",
+          "moments": []
+        },
+        {
+          "videoId": "Jc_YkYWB4z8",
+          "title": "Volibear vs Fiora Top - KR Master - Patch 25.13 Season 15",
+          "rankClaim": "Master",
+          "patch": "25.13",
+          "durationSec": 2431,
+          "region": "KR",
+          "uploaded": "2025-06-29",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 120,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "2KeFalxKduI",
+          "title": "Volibear Jungle vs Hecarim - NA Grandmaster Patch 26.14",
+          "rankClaim": "Grandmaster",
+          "patch": "26.14",
+          "durationSec": 1731,
+          "region": "NA",
+          "uploaded": "2026-07-28",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 121,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "z6ailRdDyyc",
+          "title": "Volibear Jungle vs Kha'Zix - NA Grandmaster Patch 25.16",
+          "rankClaim": "Grandmaster",
+          "patch": "25.16",
+          "durationSec": 2044,
+          "region": "NA",
+          "uploaded": "2025-08-26",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 122,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "LGsvVZlRpcc",
+          "title": "(BW Ersin) Volibear Top vs Darius - EUW Challenger Patch 26.12",
+          "rankClaim": "Challenger",
+          "patch": "26.12",
+          "durationSec": 1634,
+          "region": "EUW",
+          "player": "BW Ersin",
+          "uploaded": "2026-06-16",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 126,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "uZTX1XMujsI",
+          "title": "Volibear Jungle vs Jayce - KR Master Patch 26.12",
+          "rankClaim": "Master",
+          "patch": "26.12",
+          "durationSec": 1570,
+          "region": "KR",
+          "uploaded": "2026-06-25",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 126,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "Iy8DsntfY9k",
+          "title": "Volibear Top vs Jayce - KR Master Patch 26.14",
+          "rankClaim": "Master",
+          "patch": "26.14",
+          "durationSec": 1866,
+          "region": "KR",
+          "uploaded": "2026-07-24",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 131,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "3EL91A5aRiU",
+          "title": "Volibear Jungle vs Diana - EUW Grandmaster Patch 26.01",
+          "rankClaim": "Grandmaster",
+          "patch": "26.1",
+          "durationSec": 1486,
+          "region": "EUW",
+          "uploaded": "2026-01-19",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 141,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "-7aSwDAzXZI",
+          "title": "Volibear Top vs Kayn - KR Master Patch 26.08",
+          "rankClaim": "Master",
+          "patch": "26.8",
+          "durationSec": 1720,
+          "region": "KR",
+          "uploaded": "2026-04-23",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 150,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "fF0OJ8lXHQA",
+          "title": "Volibear Top vs Gnar - KR Master Patch 26.21",
+          "rankClaim": "Master",
+          "patch": "26.21",
+          "durationSec": 1835,
+          "region": "KR",
+          "uploaded": "2026-10-27",
+          "result": "W",
+          "moments": [
+            {
+              "atSec": 152,
+              "label": "Volibear catches Gnar"
+            },
+            {
+              "atSec": 213,
+              "label": "Volibear outduels Gnar again"
+            },
+            {
+              "atSec": 341,
+              "label": "Blue takes 1st Dragon (Cloud)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 373,
+              "label": "Volibear outplays Gnar (3rd time)"
+            },
+            {
+              "atSec": 664,
+              "label": "Red takes 1st Dragon (Infernal)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 760,
+              "label": "Volibear solo kills Gnar (4th time)",
+              "kind": "kill"
+            },
+            {
+              "atSec": 996,
+              "label": "Blue takes 2nd Dragon (Hextech)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1215,
+              "label": "Volibear picks off Varus"
+            },
+            {
+              "atSec": 1337,
+              "label": "Volibear Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1346,
+              "label": "Blue takes Baron",
+              "kind": "baron"
+            },
+            {
+              "atSec": 1396,
+              "label": "Blue takes 3rd Dragon (Hextech)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1484,
+              "label": "Volibear eliminates Braum"
+            },
+            {
+              "atSec": 1518,
+              "label": "Mid Inhibitor falls (Red)"
+            },
+            {
+              "atSec": 1696,
+              "label": "Lissandra Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1744,
+              "label": "Red takes 2nd Dragon (Hextech)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1798,
+              "label": "Lissandra picks off Vi"
+            },
+            {
+              "atSec": 1807,
+              "label": "Ezreal Triple Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1821,
+              "label": "Mid Inhibitor falls (Red)"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 157,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "Ntu8QCXUmqY",
+          "title": "Volibear Mid vs Yasuo - KR Master Patch 25.04",
+          "rankClaim": "Master",
+          "patch": "25.4",
+          "durationSec": 1594,
+          "region": "KR",
+          "uploaded": "2025-02-27",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 157,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "wo7ooUylInI",
+          "title": "Volibear Top vs Yasuo - KR Grandmaster Patch 26.15",
+          "rankClaim": "Grandmaster",
+          "patch": "26.15",
+          "durationSec": 1742,
+          "region": "KR",
+          "uploaded": "2026-08-05",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 163,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "YPmRIJBshKM",
+          "title": "Volibear Jungle vs Taliyah - KR Grandmaster Patch 26.04",
+          "rankClaim": "Grandmaster",
+          "patch": "26.4",
+          "durationSec": 1682,
+          "region": "KR",
+          "uploaded": "2026-03-03",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 164,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "uNGjYQ7mrGQ",
+          "title": "Volibear Top vs Camille - KR Master Patch 25.11",
+          "rankClaim": "Master",
+          "patch": "25.11",
+          "durationSec": 1949,
+          "region": "KR",
+          "uploaded": "2025-06-13",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 233,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "O2ewV9slTPo",
+          "title": "Volibear Jungle vs Briar - NA Grandmaster Patch 25.19",
+          "rankClaim": "Grandmaster",
+          "patch": "25.19",
+          "durationSec": 2055,
+          "region": "NA",
+          "uploaded": "2025-10-03",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 234,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "aeP0kQdye5w",
+          "title": "Volibear Jungle vs Viego - KR Master Patch 26.15",
+          "rankClaim": "Master",
+          "patch": "26.15",
+          "durationSec": 1747,
+          "region": "KR",
+          "uploaded": "2026-08-10",
+          "moments": []
+        },
+        {
+          "videoId": "bDVOL0FqHtc",
+          "title": "Volibear Jungle vs Viego - EUW Grandmaster Patch 26.09",
+          "rankClaim": "Grandmaster",
+          "patch": "26.9",
+          "durationSec": 1691,
+          "region": "EUW",
+          "uploaded": "2026-05-07",
+          "moments": []
+        },
+        {
+          "videoId": "BjeW5HjMzmU",
+          "title": "Volibear Jungle vs Viego - EUW Grandmaster Patch 25.12",
+          "rankClaim": "Grandmaster",
+          "patch": "25.12",
+          "durationSec": 2121,
+          "region": "EUW",
+          "uploaded": "2025-06-16",
+          "moments": []
+        },
+        {
+          "videoId": "T5EARl_jxeY",
+          "title": "Volibear Jungle vs Viego - EUW Grandmaster Patch 25.11",
+          "rankClaim": "Grandmaster",
+          "patch": "25.11",
+          "durationSec": 1988,
+          "region": "EUW",
+          "uploaded": "2025-06-03",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 238,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "2J51sT_lGd0",
+          "title": "Volibear Jungle vs Zed - EUW Challenger Patch 25.13",
+          "rankClaim": "Challenger",
+          "patch": "25.13",
+          "durationSec": 1694,
+          "region": "EUW",
+          "uploaded": "2025-07-05",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 245,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "oce2ySICvkA",
+          "title": "Volibear Jungle vs Ekko - NA Challenger Patch 25.18",
+          "rankClaim": "Challenger",
+          "patch": "25.18",
+          "durationSec": 1798,
+          "region": "NA",
+          "uploaded": "2025-09-18",
+          "moments": []
+        },
+        {
+          "videoId": "KCpwxm8dus0",
+          "title": "Volibear Jungle vs Ekko - EUW Grandmaster Patch 25.15",
+          "rankClaim": "Grandmaster",
+          "patch": "25.15",
+          "durationSec": 1743,
+          "region": "EUW",
+          "uploaded": "2025-08-10",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 246,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "Etr1KxGzJe0",
+          "title": "Volibear Top vs Qiyana - KR Master Patch 25.24",
+          "rankClaim": "Master",
+          "patch": "25.24",
+          "durationSec": 1468,
+          "region": "KR",
+          "uploaded": "2025-12-25",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 254,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "9i3erdxo5HE",
+          "title": "Volibear Jungle vs Vi - KR Master Patch 26.13",
+          "rankClaim": "Master",
+          "patch": "26.13",
+          "durationSec": 1547,
+          "region": "KR",
+          "uploaded": "2026-07-02",
+          "moments": []
+        },
+        {
+          "videoId": "o_UJAvjLTtc",
+          "title": "Volibear Jungle vs Vi - NA Grandmaster Patch 25.09",
+          "rankClaim": "Grandmaster",
+          "patch": "25.9",
+          "durationSec": 2140,
+          "region": "NA",
+          "uploaded": "2025-05-09",
+          "moments": []
+        },
+        {
+          "videoId": "A37xlTmnfTg",
+          "title": "Volibear Jungle vs Vi - EUW Challenger Patch 25.04",
+          "rankClaim": "Challenger",
+          "patch": "25.4",
+          "durationSec": 1567,
+          "region": "EUW",
+          "uploaded": "2025-03-05",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 318,
+              "label": "Hunt The Dragon",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 384,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 487,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 646,
+              "label": "Hunt The Dragon",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 728,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1003,
+              "label": "Hunt The Rift Herald",
+              "kind": "herald"
+            },
+            {
+              "atSec": 1036,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1132,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1207,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1266,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1306,
+              "label": "Hunt The Dragon",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1394,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1493,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1514,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1530,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1546,
+              "label": "End credit"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 266,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "Z7Na3LQMKos",
+          "title": "Volibear Top vs Aatrox - NA Grandmaster Patch 26.16",
+          "rankClaim": "Grandmaster",
+          "patch": "26.16",
+          "durationSec": 1632,
+          "region": "NA",
+          "uploaded": "2026-08-28",
+          "moments": []
+        },
+        {
+          "videoId": "aAiY94U2yU4",
+          "title": "Volibear Top vs Aatrox - KR Master Patch 25.24",
+          "rankClaim": "Master",
+          "patch": "25.24",
+          "durationSec": 1536,
+          "region": "KR",
+          "uploaded": "2025-12-16",
+          "moments": []
+        },
+        {
+          "videoId": "pw_m5mhb1DY",
+          "title": "Volibear Top vs Aatrox - KR Master Patch 25.08",
+          "rankClaim": "Master",
+          "patch": "25.8",
+          "durationSec": 1674,
+          "region": "KR",
+          "uploaded": "2025-04-24",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 420,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "_jC6jrzDtqY",
+          "title": "Volibear Top vs Illaoi - KR Master Patch 26.16",
+          "rankClaim": "Master",
+          "patch": "26.16",
+          "durationSec": 1716,
+          "region": "KR",
+          "uploaded": "2026-08-21",
+          "moments": []
+        },
+        {
+          "videoId": "MhyDXm8HVmo",
+          "title": "Volibear Top vs Illaoi - TW Challenger Patch 26.06",
+          "rankClaim": "Challenger",
+          "patch": "26.6",
+          "durationSec": 1658,
+          "uploaded": "2026-03-26",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 205,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 269,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 340,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 375,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 713,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 762,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1005,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1047,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1170,
+              "label": "Get a Triple Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1212,
+              "label": "Hunt The Baron Nashor",
+              "kind": "baron"
+            },
+            {
+              "atSec": 1304,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1319,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1331,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1356,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1468,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1523,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1544,
+              "label": "Take down The Inhibitor"
+            },
+            {
+              "atSec": 1570,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1634,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1647,
+              "label": "End credit"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 421,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "nvwXY7JDuxA",
+          "title": "Volibear Top vs Rek'Sai - KR Master Patch 25.21",
+          "rankClaim": "Master",
+          "patch": "25.21",
+          "durationSec": 2031,
+          "region": "KR",
+          "uploaded": "2025-10-30",
+          "moments": []
+        },
+        {
+          "videoId": "KK0O1qfM3tM",
+          "title": "Volibear Top vs Rek'Sai - KR Master Patch 25.19",
+          "rankClaim": "Master",
+          "patch": "25.19",
+          "durationSec": 1920,
+          "region": "KR",
+          "uploaded": "2025-10-02",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 517,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "gc1QeEO-4-k",
+          "title": "Volibear Jungle vs Sylas - NA Grandmaster Patch 25.20",
+          "rankClaim": "Grandmaster",
+          "patch": "25.20",
+          "durationSec": 1884,
+          "region": "NA",
+          "uploaded": "2025-10-16",
+          "moments": []
+        },
+        {
+          "videoId": "n07NUycfFSU",
+          "title": "Volibear vs Sylas [ Jungle ] Lol Korea Master Patch 25.19 ✅",
+          "rankClaim": "Master",
+          "patch": "25.19",
+          "durationSec": 1730,
+          "region": "KR",
+          "uploaded": "2025-09-28",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 777,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "Y2pt3cnKwJ0",
+          "title": "(SW Elijah ) Volibear Top vs Yone - EUW Grandmaster Patch 26.20",
+          "rankClaim": "Grandmaster",
+          "patch": "26.20",
+          "durationSec": 1650,
+          "region": "EUW",
+          "player": "SW Elijah",
+          "uploaded": "2026-10-13",
+          "result": "W",
+          "moments": [
+            {
+              "atSec": 122,
+              "label": "First Blood — Volibear kills Yone",
+              "kind": "kill"
+            },
+            {
+              "atSec": 243,
+              "label": "Volibear catches Yone"
+            },
+            {
+              "atSec": 298,
+              "label": "Red takes 1st Dragon (Infernal)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 511,
+              "label": "Volibear outduels Yone again"
+            },
+            {
+              "atSec": 626,
+              "label": "Red takes 2nd Dragon (Chemtech)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 714,
+              "label": "Volibear outplays Yone (3rd time)"
+            },
+            {
+              "atSec": 955,
+              "label": "Team fight (3 kills)",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 959,
+              "label": "Blue takes 1st Dragon (Mountain)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1022,
+              "label": "Rek'Sai kills Yone",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1077,
+              "label": "Vladimir Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1173,
+              "label": "Volibear outplays Aurora"
+            },
+            {
+              "atSec": 1262,
+              "label": "Red takes Baron",
+              "kind": "baron"
+            },
+            {
+              "atSec": 1278,
+              "label": "Blue takes 2nd Dragon (Mountain)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1402,
+              "label": "Volibear solo kills Aurora again",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1465,
+              "label": "Volibear takes down Aurora (3rd time)"
+            },
+            {
+              "atSec": 1510,
+              "label": "Rek'Sai takes down Graves"
+            },
+            {
+              "atSec": 1603,
+              "label": "Team fight (3 kills)",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1624,
+              "label": "Mid Inhibitor falls (Red)"
+            }
+          ]
+        },
+        {
+          "videoId": "dY9Bdfhzb3I",
+          "title": "Volibear Top vs Yone - KR Master Patch 25.14",
+          "rankClaim": "Master",
+          "patch": "25.14",
+          "durationSec": 1663,
+          "region": "KR",
+          "uploaded": "2025-07-23",
+          "moments": []
+        },
+        {
+          "videoId": "AFXOch89UM8",
+          "title": "Volibear Top vs Yone - KR Master Patch 25.05",
+          "rankClaim": "Master",
+          "patch": "25.5",
+          "durationSec": 1862,
+          "region": "KR",
+          "uploaded": "2025-03-12",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 799,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "7rN1OludpIw",
+          "title": "Volibear Top vs Ambessa - KR Master Patch 26.02",
+          "rankClaim": "Master",
+          "patch": "26.2",
+          "durationSec": 1571,
+          "region": "KR",
+          "uploaded": "2026-01-29",
+          "moments": []
+        },
+        {
+          "videoId": "qjUMZUB_qKs",
+          "title": "Volibear Top vs Ambessa - KR Master Patch 25.20",
+          "rankClaim": "Master",
+          "patch": "25.20",
+          "durationSec": 1765,
+          "region": "KR",
+          "uploaded": "2025-10-20",
+          "moments": []
+        },
+        {
+          "videoId": "9d6WULmDUXA",
+          "title": "Volibear Top vs Ambessa - KR Master Patch 25.07",
+          "rankClaim": "Master",
+          "patch": "25.7",
+          "durationSec": 1739,
+          "region": "KR",
+          "uploaded": "2025-04-07",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 157,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 498,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 595,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 666,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 792,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 902,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 925,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1052,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1071,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1097,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1248,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1403,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1571,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1672,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1718,
+              "label": "End credit"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 875,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "gTdbTJTxleg",
+          "title": "Volibear Top vs Sett - KR Master Patch 25.17",
+          "rankClaim": "Master",
+          "patch": "25.17",
+          "durationSec": 1645,
+          "region": "KR",
+          "uploaded": "2025-09-04",
+          "moments": []
+        },
+        {
+          "videoId": "pWzyH9ZCYtM",
+          "title": "Volibear Top vs Sett - KR Master Patch 25.16",
+          "rankClaim": "Master",
+          "patch": "25.16",
+          "durationSec": 1514,
+          "region": "KR",
+          "uploaded": "2025-08-20",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 876,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "VYHDa_hIdKk",
+          "title": "Volibear Jungle vs Lillia - EUW Grandmaster Patch 26.06",
+          "rankClaim": "Grandmaster",
+          "patch": "26.6",
+          "durationSec": 1667,
+          "region": "EUW",
+          "uploaded": "2026-04-01",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 185,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 320,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 350,
+              "label": "Hunt The Dragon",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 382,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 507,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 643,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 844,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 921,
+              "label": "Hunt The Rift Herald",
+              "kind": "herald"
+            },
+            {
+              "atSec": 972,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1005,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1039,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1070,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1119,
+              "label": "Hunt The Dragon",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1210,
+              "label": "Hunt The Baron Nashor",
+              "kind": "baron"
+            },
+            {
+              "atSec": 1246,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1285,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1375,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1395,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1409,
+              "label": "Take down The Inhibitor"
+            },
+            {
+              "atSec": 1423,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1486,
+              "label": "Hunt The Dragon",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1603,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1639,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1656,
+              "label": "End credit"
+            }
+          ]
+        },
+        {
+          "videoId": "7EKddhEGbZ8",
+          "title": "Volibear Jungle vs Lillia - EUW Grandmaster Patch 26.02",
+          "rankClaim": "Grandmaster",
+          "patch": "26.2",
+          "durationSec": 1530,
+          "region": "EUW",
+          "uploaded": "2026-02-03",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 307,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 472,
+              "label": "Hunt The Void Grubs",
+              "kind": "grubs"
+            },
+            {
+              "atSec": 507,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 564,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 660,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 690,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 764,
+              "label": "Hunt The Dragon",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 780,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 917,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 993,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1088,
+              "label": "Hunt The Dragon",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1120,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1255,
+              "label": "Hunt The Baron Nashor",
+              "kind": "baron"
+            },
+            {
+              "atSec": 1270,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1303,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1320,
+              "label": "Take down The Inhibitor"
+            },
+            {
+              "atSec": 1419,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1480,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1500,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1519,
+              "label": "End credit"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 901,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "uMAxBCA1b_g",
+          "title": "Volibear Top vs Smolder - NA Challenger Patch 26.05",
+          "rankClaim": "Challenger",
+          "patch": "26.5",
+          "durationSec": 1790,
+          "region": "NA",
+          "uploaded": "2026-03-20",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 119,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 177,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 350,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 526,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 674,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 805,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 828,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 871,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 933,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1009,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1172,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1323,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1447,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1582,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1618,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1636,
+              "label": "Take down The Inhibitor"
+            },
+            {
+              "atSec": 1685,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1713,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1733,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1750,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1765,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1779,
+              "label": "End credit"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 950,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "WG4z2CQjBCc",
+          "title": "Volibear Jungle vs Naafiri - EUW Challenger Patch 26.07",
+          "rankClaim": "Challenger",
+          "patch": "26.7",
+          "durationSec": 1730,
+          "region": "EUW",
+          "uploaded": "2026-04-16",
+          "moments": []
+        }
+      ]
+    }
+  ]
+}

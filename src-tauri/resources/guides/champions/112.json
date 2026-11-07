@@ -1,0 +1,3652 @@
+{
+  "schema": 1,
+  "champion": 112,
+  "generatedAt": "2026-11-07T13:25:14.592Z",
+  "guides": [
+    {
+      "champion": 112,
+      "enemy": 7,
+      "lane": "mid",
+      "patch": "26.21",
+      "reviewed": false,
+      "difficulty": "Easy",
+      "favoredWhen": "His own pick into her. Run Bone Plating, bait E, and end lanes before E-poke grinds you.",
+      "keyTips": [
+        {
+          "text": "The matchup favors Viktor.",
+          "scope": "pair",
+          "sourceIds": [
+            "pumptm"
+          ]
+        },
+        {
+          "text": "Run Bone Plating: it blunts her opener.",
+          "scope": "pair",
+          "sourceIds": [
+            "pumptm"
+          ]
+        },
+        {
+          "text": "Bait her E, then combo: no chain means no answer.",
+          "scope": "pair",
+          "sourceIds": [
+            "pumptm"
+          ],
+          "abilityKeys": [
+            {
+              "champion": 7,
+              "key": "E"
+            }
+          ]
+        }
+      ],
+      "enemyTips": {},
+      "sections": {
+        "overview": {
+          "tips": []
+        },
+        "early-lane": {
+          "tips": [
+            {
+              "text": "Take TP unless your jungle ganks a lot: the lane is long.",
+              "scope": "pair",
+              "sourceIds": [
+                "pumptm"
+              ]
+            },
+            {
+              "text": "Pop Bone Plating with a long Q as she last-hits, then Q+W Electrocute.",
+              "scope": "pair",
+              "sourceIds": [
+                "pumptm"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 112,
+                  "key": "Q"
+                },
+                {
+                  "champion": 112,
+                  "key": "W"
+                }
+              ]
+            }
+          ]
+        },
+        "mid-lane": {
+          "tips": [
+            {
+              "text": "Desync backs: reset on your terms, not hers.",
+              "scope": "pair",
+              "sourceIds": [
+                "pumptm"
+              ]
+            },
+            {
+              "text": "Long laning means getting E-poked down: close before the grind.",
+              "scope": "pair",
+              "sourceIds": [
+                "pumptm"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 7,
+                  "key": "E"
+                }
+              ]
+            }
+          ]
+        },
+        "win-condition": {
+          "tips": [
+            {
+              "text": "Plating plus E-bait plus early close: the LeBlanc who never chains you never wins.",
+              "scope": "pair",
+              "sourceIds": [
+                "pumptm"
+              ]
+            }
+          ]
+        }
+      },
+      "itemization": [],
+      "sources": [
+        {
+          "id": "pumptm",
+          "author": "pumpTM",
+          "rankClaim": "Rank 1 LeBlanc, 2941LP Challenger (title); Challenger (profile badge) · LeBlanc main",
+          "rank": "challenger",
+          "url": "https://www.mobafire.com/league-of-legends/build/26-17-2941lp-challenger-rank-1-leblancs-gunblade-1v9-build-653268",
+          "kind": "mobafire"
+        }
+      ]
+    },
+    {
+      "champion": 112,
+      "enemy": 84,
+      "lane": "mid",
+      "patch": "26.21",
+      "reviewed": false,
+      "difficulty": "Skill matchup",
+      "favoredWhen": "Even. Deny her all-ins with W, land the second E hit, and punish her misplaces.",
+      "keyTips": [
+        {
+          "text": "Even lane: she all-ins your misplaces, so do not misplace.",
+          "scope": "pair",
+          "sourceIds": [
+            "anguish"
+          ]
+        },
+        {
+          "text": "Never let her engage for free: W the spot she wants.",
+          "scope": "pair",
+          "sourceIds": [
+            "anguish"
+          ],
+          "abilityKeys": [
+            {
+              "champion": 112,
+              "key": "W"
+            }
+          ]
+        },
+        {
+          "text": "Land the second E hit: the return is the damage.",
+          "scope": "pair",
+          "sourceIds": [
+            "anguish"
+          ],
+          "abilityKeys": [
+            {
+              "champion": 112,
+              "key": "E"
+            }
+          ]
+        }
+      ],
+      "enemyTips": {},
+      "sections": {
+        "overview": {
+          "tips": []
+        },
+        "early-lane": {
+          "tips": [
+            {
+              "text": "Poke, do not brawl: your rays out-trade her Qs.",
+              "scope": "pair",
+              "sourceIds": [
+                "anguish"
+              ]
+            },
+            {
+              "text": "Hold W for her engage: stunned Akali is dead Akali.",
+              "scope": "pair",
+              "sourceIds": [
+                "anguish"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 112,
+                  "key": "W"
+                }
+              ]
+            }
+          ]
+        },
+        "mid-lane": {
+          "tips": [
+            {
+              "text": "She dodges with shroud and MS: hold spells for the reappear.",
+              "scope": "pair",
+              "sourceIds": [
+                "anguish"
+              ]
+            },
+            {
+              "text": "Track shroud cooldown (about {cd:84:W}): no shroud means no escape for her.",
+              "scope": "pair",
+              "sourceIds": [
+                "anguish"
+              ]
+            }
+          ]
+        },
+        "win-condition": {
+          "tips": [
+            {
+              "text": "Misplaces denied plus W held: the Akali who never reaches you never wins.",
+              "scope": "pair",
+              "sourceIds": [
+                "anguish"
+              ]
+            }
+          ]
+        }
+      },
+      "itemization": [],
+      "sources": [
+        {
+          "id": "anguish",
+          "author": "Anguish333",
+          "rankClaim": "Master (profile badge; title claims 2000LP GrandMaster EUW and Challenger EUNE) · Akali main",
+          "rank": "master",
+          "url": "https://www.mobafire.com/league-of-legends/build/26-20-anguish-2000lp-grandmasters-euw-challenger-eune-akali-mid-top-s16-guide-every-matchup-item-rune-explained-625064",
+          "kind": "mobafire"
+        }
+      ]
+    },
+    {
+      "champion": 112,
+      "enemy": 103,
+      "lane": "mid",
+      "patch": "26.21",
+      "reviewed": false,
+      "difficulty": "Easy",
+      "favoredWhen": "You win trades at nearly every stage. Force them, and respect only her gank setup.",
+      "keyTips": [
+        {
+          "text": "You win trades at nearly every stage: force them.",
+          "scope": "pair",
+          "sourceIds": [
+            "shokviktor"
+          ]
+        },
+        {
+          "text": "Her only real threat is gank setup after 6: play around vision and your Flash.",
+          "scope": "pair",
+          "sourceIds": [
+            "shokviktor"
+          ]
+        },
+        {
+          "text": "Your E defines windows (about {cd:112:E}): obvious Es get dodged, so vary them.",
+          "scope": "pair",
+          "sourceIds": [
+            "peng04"
+          ],
+          "abilityKeys": [
+            {
+              "champion": 112,
+              "key": "E"
+            }
+          ]
+        }
+      ],
+      "enemyTips": {},
+      "sections": {
+        "overview": {
+          "tips": []
+        },
+        "early-lane": {
+          "tips": [
+            {
+              "text": "Throw non-obvious Es: she dodges telegraphed casts with W.",
+              "scope": "pair",
+              "sourceIds": [
+                "peng04"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 112,
+                  "key": "E"
+                }
+              ]
+            },
+            {
+              "text": "Keep the wave pushed: her threat is Charm into ganks, not the raw 1v1.",
+              "scope": "pair",
+              "sourceIds": [
+                "shokviktor"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 103,
+                  "key": "E"
+                }
+              ]
+            }
+          ]
+        },
+        "mid-lane": {
+          "tips": [
+            {
+              "text": "After 6, track her jungler: gank setup is her whole comeback.",
+              "scope": "pair",
+              "sourceIds": [
+                "shokviktor"
+              ]
+            },
+            {
+              "text": "Keep forcing trades: your stage never ends.",
+              "scope": "pair",
+              "sourceIds": [
+                "shokviktor"
+              ]
+            }
+          ]
+        },
+        "win-condition": {
+          "tips": [
+            {
+              "text": "Trades forced plus ganks denied: the Ahri who never sets up never wins.",
+              "scope": "pair",
+              "sourceIds": [
+                "peng04",
+                "shokviktor"
+              ]
+            }
+          ]
+        }
+      },
+      "itemization": [],
+      "sources": [
+        {
+          "id": "peng04",
+          "author": "Peng04",
+          "rankClaim": "Challenger · Ahri main",
+          "rank": "challenger",
+          "url": "https://www.mobafire.com/league-of-legends/build/26-20-pengs-ahri-guide-5-1mil-points-13x-challenger-648700",
+          "kind": "mobafire"
+        },
+        {
+          "id": "shokviktor",
+          "author": "ShokLoL",
+          "rankClaim": "Rank 1 Challenger · Viktor main",
+          "rank": "challenger",
+          "url": "https://www.mobafire.com/league-of-legends/build/26-1-shoks-rank-1-challenger-viktor-guide-645712",
+          "kind": "mobafire"
+        }
+      ]
+    },
+    {
+      "champion": 112,
+      "enemy": 134,
+      "lane": "mid",
+      "patch": "26.21",
+      "reviewed": false,
+      "difficulty": "Hard",
+      "favoredWhen": "You are favoured in the raw 1v1. Win the skillshot check, survive ganks, and take 2v2s.",
+      "keyTips": [
+        {
+          "text": "You are favoured in the raw 1v1: press your range edge.",
+          "scope": "pair",
+          "sourceIds": [
+            "shok"
+          ],
+          "abilityKeys": [
+            {
+              "champion": 112,
+              "key": "E"
+            }
+          ]
+        },
+        {
+          "text": "It is a skillshot check: movement and landing spells decide it.",
+          "scope": "pair",
+          "sourceIds": [
+            "shok"
+          ]
+        },
+        {
+          "text": "Take Second Wind: her poke war is answered in sustain.",
+          "scope": "pair",
+          "sourceIds": [
+            "trisend3"
+          ]
+        }
+      ],
+      "enemyTips": {},
+      "sections": {
+        "overview": {
+          "tips": []
+        },
+        "early-lane": {
+          "tips": [
+            {
+              "text": "Move between every cast: standing still loses her check.",
+              "scope": "pair",
+              "sourceIds": [
+                "shok"
+              ]
+            },
+            {
+              "text": "Land your E and Q: her check fails when yours connect.",
+              "scope": "pair",
+              "sourceIds": [
+                "shok"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 112,
+                  "key": "E"
+                },
+                {
+                  "champion": 112,
+                  "key": "Q"
+                }
+              ]
+            }
+          ]
+        },
+        "mid-lane": {
+          "tips": [
+            {
+              "text": "You are very gankable: wards before greed.",
+              "scope": "pair",
+              "sourceIds": [
+                "shok"
+              ]
+            },
+            {
+              "text": "Favour 2v2 and 3v3 skirmishes: with help you outfight her.",
+              "scope": "pair",
+              "sourceIds": [
+                "shok"
+              ]
+            }
+          ]
+        },
+        "win-condition": {
+          "tips": [
+            {
+              "text": "Favoured 1v1 plus skirmish edge: Second Wind through the lane, numbers for the fight.",
+              "scope": "pair",
+              "sourceIds": [
+                "shok",
+                "trisend3"
+              ]
+            }
+          ]
+        }
+      },
+      "itemization": [],
+      "sources": [
+        {
+          "id": "shok",
+          "author": "ShokLoL",
+          "rankClaim": "Rank 1 Challenger · Syndra main",
+          "rank": "challenger",
+          "url": "https://www.mobafire.com/league-of-legends/build/26-17-shoks-rank-1-challenger-syndra-guide-602710",
+          "kind": "mobafire"
+        },
+        {
+          "id": "trisend3",
+          "author": "Trisend3",
+          "rankClaim": "Challenger (title and profile badge) · Syndra main",
+          "rank": "challenger",
+          "url": "https://www.mobafire.com/league-of-legends/build/challenger-season-16-trisend3-syndra-guide-623459",
+          "kind": "mobafire"
+        }
+      ]
+    },
+    {
+      "champion": 112,
+      "enemy": 238,
+      "lane": "mid",
+      "patch": "26.21",
+      "reviewed": false,
+      "difficulty": "Skill matchup",
+      "favoredWhen": "Even. Keep range on his shadows, answer jumps with your field, and punish spent Ws.",
+      "keyTips": [
+        {
+          "text": "Even skill lane: respect the all-in, win the poke.",
+          "scope": "pair",
+          "sourceIds": [
+            "aikopanda"
+          ]
+        },
+        {
+          "text": "When his shadow comes in, answer with your field: Gravity Field is your disengage.",
+          "scope": "pair",
+          "sourceIds": [
+            "aikopanda"
+          ],
+          "abilityKeys": [
+            {
+              "champion": 238,
+              "key": "W"
+            },
+            {
+              "champion": 112,
+              "key": "W"
+            }
+          ]
+        },
+        {
+          "text": "He plays for the all-in: never stand where his shadows land.",
+          "scope": "pair",
+          "sourceIds": [
+            "aikopanda"
+          ],
+          "abilityKeys": [
+            {
+              "champion": 238,
+              "key": "W"
+            }
+          ]
+        }
+      ],
+      "enemyTips": {
+        "early-lane": [
+          {
+            "text": "Zed often places Living Shadow before Death Mark so he can swap away from skillshots. Hold your crowd control until he has used the swap.",
+            "scope": "enemy",
+            "sourceIds": [
+              "aikopanda"
+            ],
+            "patch": "26.21",
+            "abilityKeys": [
+              {
+                "champion": 238,
+                "key": "W"
+              },
+              {
+                "champion": 238,
+                "key": "R"
+              }
+            ]
+          }
+        ],
+        "win-condition": [
+          {
+            "text": "Death Mark always lands Zed behind his target. Pre-aim crowd control and escapes behind you, not toward where he cast it.",
+            "scope": "enemy",
+            "sourceIds": [
+              "peng04"
+            ],
+            "patch": "26.21",
+            "abilityKeys": [
+              {
+                "champion": 238,
+                "key": "R"
+              }
+            ]
+          }
+        ]
+      },
+      "sections": {
+        "overview": {
+          "tips": []
+        },
+        "early-lane": {
+          "tips": [
+            {
+              "text": "Keep him at E range: your poke is free, his engage is not.",
+              "scope": "pair",
+              "sourceIds": [
+                "aikopanda"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 112,
+                  "key": "E"
+                }
+              ]
+            },
+            {
+              "text": "Track his W cooldown: shadow-down is your poke window.",
+              "scope": "pair",
+              "sourceIds": [
+                "aikopanda"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 238,
+                  "key": "W"
+                }
+              ]
+            }
+          ]
+        },
+        "mid-lane": {
+          "tips": [
+            {
+              "text": "Field his shadow engage: W under yourself when he commits.",
+              "scope": "pair",
+              "sourceIds": [
+                "aikopanda"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 112,
+                  "key": "W"
+                },
+                {
+                  "champion": 238,
+                  "key": "W"
+                }
+              ]
+            },
+            {
+              "text": "Punish spent shadows: no W means a free E.",
+              "scope": "pair",
+              "sourceIds": [
+                "aikopanda"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 112,
+                  "key": "E"
+                }
+              ]
+            },
+            {
+              "text": "Death Mark lands him behind you: pre-aim W behind yourself when he ults.",
+              "scope": "pair",
+              "sourceIds": [
+                "peng04"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 238,
+                  "key": "R"
+                },
+                {
+                  "champion": 112,
+                  "key": "W"
+                }
+              ]
+            }
+          ]
+        },
+        "win-condition": {
+          "tips": [
+            {
+              "text": "Range held plus field ready: the Zed who never reaches you never wins.",
+              "scope": "pair",
+              "sourceIds": [
+                "aikopanda"
+              ]
+            }
+          ]
+        }
+      },
+      "itemization": [],
+      "sources": [
+        {
+          "id": "aikopanda",
+          "author": "AikoPanda",
+          "rankClaim": "Zed main",
+          "url": "https://www.mobafire.com/league-of-legends/build/26-20-video-guides-hidden-combos-all-matchups-zed-all-in-one-guide-652800",
+          "kind": "mobafire"
+        },
+        {
+          "id": "peng04",
+          "author": "Peng04",
+          "rankClaim": "Challenger · Ahri main",
+          "rank": "challenger",
+          "url": "https://www.mobafire.com/league-of-legends/build/26-20-pengs-ahri-guide-5-1mil-points-13x-challenger-648700",
+          "kind": "mobafire"
+        }
+      ]
+    }
+  ],
+  "general": [
+    {
+      "champion": 112,
+      "lane": "mid",
+      "patch": "26.21",
+      "reviewed": false,
+      "keyTips": [
+        {
+          "text": "Play as the evolution scaler: prioritize safe last hits early and use takedowns to reach ability upgrades sooner.",
+          "scope": "champion",
+          "sourceIds": [
+            "intaggar"
+          ]
+        },
+        {
+          "text": "Trade Q for its shield in safer short exchanges, or poke and farm from range with E when ranged opponents make Q trades hard.",
+          "scope": "champion",
+          "sourceIds": [
+            "intaggar"
+          ],
+          "abilityKeys": [
+            {
+              "champion": 112,
+              "key": "Q"
+            },
+            {
+              "champion": 112,
+              "key": "E"
+            }
+          ]
+        },
+        {
+          "text": "Evolve Q for movement speed when survival and disengage matter most, and E for poke and waveclear when the lane needs control and room to rotate.",
+          "scope": "champion",
+          "sourceIds": [
+            "intaggar"
+          ],
+          "abilityKeys": [
+            {
+              "champion": 112,
+              "key": "Q"
+            },
+            {
+              "champion": 112,
+              "key": "E"
+            }
+          ]
+        }
+      ],
+      "sections": {
+        "overview": {
+          "tips": []
+        },
+        "early-lane": {
+          "tips": [
+            {
+              "text": "Use W to interrupt an approach or cover an escape, and to set up a gank or catch an exposed target.",
+              "scope": "champion",
+              "sourceIds": [
+                "intaggar"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 112,
+                  "key": "W"
+                }
+              ]
+            },
+            {
+              "text": "Against strong early all-in opponents, skip forcing level-two or level-three trades and wait for a safer opening or jungler help.",
+              "scope": "champion",
+              "sourceIds": [
+                "intaggar"
+              ]
+            },
+            {
+              "text": "Treat Aery as the aggressive option for extra damage and shielding, and First Strike as the scaling pick that adds value into tankier teams.",
+              "scope": "champion",
+              "sourceIds": [
+                "intaggar"
+              ]
+            }
+          ]
+        },
+        "mid-lane": {
+          "tips": [
+            {
+              "text": "Treat the post-lane stretch from around minute ten onward as Viktor's first stronger phase, once evolutions and early sustain items come online.",
+              "scope": "champion",
+              "sourceIds": [
+                "intaggar"
+              ]
+            },
+            {
+              "text": "Poke from range without offering an easy return trade, tracking both junglers before setting up a play.",
+              "scope": "champion",
+              "sourceIds": [
+                "intaggar"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 112,
+                  "key": "E"
+                }
+              ]
+            },
+            {
+              "text": "Pair the stronger E poke and waveclear with safer pushes and rotations, while the evolved Q movement covers positioning against divers.",
+              "scope": "champion",
+              "sourceIds": [
+                "intaggar"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 112,
+                  "key": "E"
+                },
+                {
+                  "champion": 112,
+                  "key": "Q"
+                }
+              ]
+            },
+            {
+              "text": "Recall into Lost Chapter first, then follow the normal route of Blackfire Torch, boots, Liandry's Torment, Hextech Rocketbelt, Zhonya's Hourglass, Void Staff, and Rabadon's Deathcap; take the Rod of Ages, Rocketbelt, Void Staff, Zhonya's, Rabadon's defensive line or the Lich Bane and Shadowflame burst line by game.",
+              "scope": "champion",
+              "sourceIds": [
+                "intaggar"
+              ],
+              "itemIds": [
+                3802,
+                2503,
+                6653,
+                3152,
+                3157,
+                3135,
+                3089,
+                6657,
+                3100,
+                4645
+              ]
+            }
+          ]
+        },
+        "win-condition": {
+          "tips": [
+            {
+              "text": "Play from the back line in developing fights, keeping opponents at range with repeated poke and never stepping forward for damage that exposes Viktor to a dive.",
+              "scope": "champion",
+              "sourceIds": [
+                "intaggar"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 112,
+                  "key": "E"
+                }
+              ]
+            },
+            {
+              "text": "Use Teleport to collect a side wave and rejoin for the objective when the team groups elsewhere.",
+              "scope": "champion",
+              "sourceIds": [
+                "intaggar"
+              ]
+            },
+            {
+              "text": "Treat Q movement and the W stun as limited escape tools: when both are unavailable, Viktor is especially vulnerable to champions who can reach him.",
+              "scope": "champion",
+              "sourceIds": [
+                "intaggar"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 112,
+                  "key": "Q"
+                },
+                {
+                  "champion": 112,
+                  "key": "W"
+                }
+              ]
+            },
+            {
+              "text": "Hold the ultimate to interrupt channeled casts, including Katarina's Death Lotus, rather than spending it only for damage.",
+              "scope": "champion",
+              "sourceIds": [
+                "intaggar"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 112,
+                  "key": "R"
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "itemization": [
+        {
+          "text": "Favor Lucidity boots for the cooldown-oriented longer trades and repeated Q use, Sorcerer's Shoes as the general damage option, Plated Steelcaps into physical damage pressure, Mercury's Treads into magic damage and crowd control, and Swifties when extra movement is needed.",
+          "scope": "champion",
+          "sourceIds": [
+            "intaggar"
+          ],
+          "abilityKeys": [
+            {
+              "champion": 112,
+              "key": "Q"
+            }
+          ],
+          "itemIds": [
+            3020,
+            3047,
+            3111
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "id": "intaggar",
+          "author": "InTaggar",
+          "rankClaim": "no rank claim; Emerald",
+          "rank": "emerald",
+          "url": "https://www.mobafire.com/league-of-legends/build/26-17-viktor-guide-in-depth-eng-esp-633306",
+          "kind": "mobafire"
+        }
+      ]
+    }
+  ],
+  "vods": [
+    {
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "S4kuTmxj4JM",
+          "title": "Baicaiovo Viktor : His CHALLENGER MECHANICS are SO CLEAN",
+          "rankClaim": "Challenger",
+          "patch": "26.13",
+          "durationSec": 2100,
+          "patchEstimated": true,
+          "player": "Baicaiovo",
+          "uploaded": "2026-06-29",
+          "format": "stream",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "Pm9lesDdFYg",
+          "title": "Baicaiovo Top 2 Super Server Challenger Viktor Mid Lane Macro and Positioning Engsub",
+          "rankClaim": "Challenger",
+          "patch": "26.2",
+          "durationSec": 1868,
+          "patchEstimated": true,
+          "player": "Baicaiovo",
+          "uploaded": "2026-02-02",
+          "format": "stream",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 3,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "ZyAbx_1yBCk",
+          "title": "Viktor Mid vs Galio - KR Challenger Patch 25.14",
+          "rankClaim": "Challenger",
+          "patch": "25.14",
+          "durationSec": 1790,
+          "region": "KR",
+          "uploaded": "2025-07-21",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 4,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "cUU6NBQ3mhA",
+          "title": "Viktor Mid vs Twisted Fate - KR Grandmaster Patch 26.07",
+          "rankClaim": "Grandmaster",
+          "patch": "26.7",
+          "durationSec": 1470,
+          "region": "KR",
+          "uploaded": "2026-04-05",
+          "moments": []
+        },
+        {
+          "videoId": "AVWAohkmeco",
+          "title": "Viktor Mid vs Twisted Fate - KR Grandmaster Patch 26.01",
+          "rankClaim": "Grandmaster",
+          "patch": "26.1",
+          "durationSec": 1547,
+          "region": "KR",
+          "uploaded": "2026-01-14",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 136,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 347,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 384,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 471,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 708,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 778,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 907,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1061,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1075,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1087,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1209,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1293,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1417,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1476,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1504,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1536,
+              "label": "End credit"
+            }
+          ]
+        },
+        {
+          "videoId": "TFeMdUHm8-M",
+          "title": "Viktor Mid vs Twisted Fate - KR Master Patch 25.23",
+          "rankClaim": "Master",
+          "patch": "25.23",
+          "durationSec": 1806,
+          "region": "KR",
+          "uploaded": "2025-11-22",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 7,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "-kFEsnH5E4k",
+          "title": "T1 Faker Viktor vs Leblanc [ MID ] Patch 25.8 Korea Grandmaster ✅",
+          "rankClaim": "Grandmaster",
+          "patch": "25.8",
+          "durationSec": 1252,
+          "region": "KR",
+          "player": "Faker",
+          "team": "T1",
+          "uploaded": "2025-04-23",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 8,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "KJ-UqsKj26A",
+          "title": "Viktor Mid vs Vladimir - KR Master Patch 25.20",
+          "rankClaim": "Master",
+          "patch": "25.20",
+          "durationSec": 1997,
+          "region": "KR",
+          "uploaded": "2025-10-13",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 8,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "IW-xNDLCIzc",
+          "title": "Viktor vs Vladimir Top - KR Challenger - Patch 25.4 Season 15",
+          "rankClaim": "Challenger",
+          "patch": "25.4",
+          "durationSec": 1590,
+          "region": "KR",
+          "uploaded": "2025-03-06",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 13,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "o6FvTebD_HM",
+          "title": "Viktor Mid vs Ryze - KR Grandmaster Patch 26.20",
+          "rankClaim": "Grandmaster",
+          "patch": "26.20",
+          "durationSec": 1860,
+          "region": "KR",
+          "uploaded": "2026-10-15",
+          "result": "L",
+          "moments": [
+            {
+              "atSec": 356,
+              "label": "First Blood — Blitzcrank kills Karthus",
+              "kind": "kill"
+            },
+            {
+              "atSec": 598,
+              "label": "Red takes 1st Dragon (Infernal)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 647,
+              "label": "Viktor outduels Alistar"
+            },
+            {
+              "atSec": 912,
+              "label": "Red takes 2nd Dragon (Hextech)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1014,
+              "label": "Kai'Sa eliminates Karthus"
+            },
+            {
+              "atSec": 1111,
+              "label": "Viktor eliminates Ryze"
+            },
+            {
+              "atSec": 1146,
+              "label": "Viktor outplays Zaahen"
+            },
+            {
+              "atSec": 1238,
+              "label": "Red takes 3rd Dragon (Cloud)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1240,
+              "label": "Blue takes Baron",
+              "kind": "baron"
+            },
+            {
+              "atSec": 1337,
+              "label": "Viktor picks off Karthus"
+            },
+            {
+              "atSec": 1358,
+              "label": "Kai'Sa Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1376,
+              "label": "Mid Inhibitor falls (Red)"
+            },
+            {
+              "atSec": 1439,
+              "label": "Blitzcrank eliminates Zaahen"
+            },
+            {
+              "atSec": 1467,
+              "label": "Viktor picks off Karthus"
+            },
+            {
+              "atSec": 1573,
+              "label": "Red takes 4th Dragon (Cloud)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1636,
+              "label": "Red takes Baron",
+              "kind": "baron"
+            },
+            {
+              "atSec": 1670,
+              "label": "Top Inhibitor falls (Blue)"
+            },
+            {
+              "atSec": 1677,
+              "label": "Team fight (4 kills)",
+              "kind": "teamfight"
+            }
+          ]
+        },
+        {
+          "videoId": "58Xa5qcM5m0",
+          "title": "(NS Calix) Viktor Mid vs Ryze (KRX AKaJe) - KR Challenger Patch 26.15",
+          "rankClaim": "Challenger",
+          "patch": "26.15",
+          "durationSec": 1503,
+          "region": "KR",
+          "player": "Calix",
+          "team": "NS",
+          "uploaded": "2026-08-07",
+          "moments": []
+        },
+        {
+          "videoId": "6luddZxt1m0",
+          "title": "Viktor Mid vs Ryze - VN Challenger Patch 26.06",
+          "rankClaim": "Challenger",
+          "patch": "26.6",
+          "durationSec": 1557,
+          "uploaded": "2026-03-23",
+          "moments": []
+        },
+        {
+          "videoId": "5qMxmE0Xt5Q",
+          "title": "Viktor Mid vs Ryze - KR Challenger Patch 25.11",
+          "rankClaim": "Challenger",
+          "patch": "25.11",
+          "durationSec": 1902,
+          "region": "KR",
+          "uploaded": "2025-06-02",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 15,
+      "lane": "adc",
+      "videos": [
+        {
+          "videoId": "w4GvKluyrWk",
+          "title": "Viktor Bot vs Sivir - KR Master Patch 26.20",
+          "rankClaim": "Master",
+          "patch": "26.20",
+          "durationSec": 1739,
+          "region": "KR",
+          "uploaded": "2026-10-16",
+          "result": "W",
+          "moments": [
+            {
+              "atSec": 313,
+              "label": "First Blood — Lee Sin kills Thresh",
+              "kind": "kill"
+            },
+            {
+              "atSec": 315,
+              "label": "Viktor takes down Sivir"
+            },
+            {
+              "atSec": 336,
+              "label": "Viktor takes down Graves"
+            },
+            {
+              "atSec": 499,
+              "label": "Red takes 1st Dragon (Hextech)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 532,
+              "label": "Viktor takes down Sivir"
+            },
+            {
+              "atSec": 633,
+              "label": "Viktor picks off Thresh"
+            },
+            {
+              "atSec": 770,
+              "label": "Viktor outduels Sivir"
+            },
+            {
+              "atSec": 797,
+              "label": "Lee Sin kills Thresh",
+              "kind": "kill"
+            },
+            {
+              "atSec": 853,
+              "label": "Blue takes 1st Dragon (Infernal)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 894,
+              "label": "Viktor outplays Sivir again"
+            },
+            {
+              "atSec": 907,
+              "label": "Blue takes Rift Herald",
+              "kind": "herald"
+            },
+            {
+              "atSec": 1164,
+              "label": "Lee Sin takes down Graves"
+            },
+            {
+              "atSec": 1211,
+              "label": "Red takes 2nd Dragon (Chemtech)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1453,
+              "label": "Lee Sin Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1480,
+              "label": "Red takes Baron",
+              "kind": "baron"
+            },
+            {
+              "atSec": 1524,
+              "label": "Red takes 3rd Dragon (Chemtech)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1676,
+              "label": "Viktor takes down Sivir"
+            },
+            {
+              "atSec": 1682,
+              "label": "Viktor Triple Kill",
+              "kind": "kill"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 17,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "MzN8iTe2biE",
+          "title": "Viktor Top vs Teemo - KR Master Patch 25.22",
+          "rankClaim": "Master",
+          "patch": "25.22",
+          "durationSec": 1599,
+          "region": "KR",
+          "uploaded": "2025-11-17",
+          "moments": []
+        },
+        {
+          "videoId": "NR4FCYt9RhI",
+          "title": "Viktor Top vs Teemo - KR Master Patch 25.09",
+          "rankClaim": "Master",
+          "patch": "25.9",
+          "durationSec": 1603,
+          "region": "KR",
+          "uploaded": "2025-05-10",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 29,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 139,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 488,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 642,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 862,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 887,
+              "label": "Hunt The Dragon",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1124,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1145,
+              "label": "Get a Triple Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1172,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1242,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1281,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1362,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1467,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1488,
+              "label": "Take down The Inhibitor"
+            },
+            {
+              "atSec": 1542,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1582,
+              "label": "End credit"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 18,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "npr9uZOQhlk",
+          "title": "(WE Karis) Viktor Mid vs Tristana - KR Challenger Patch 26.17",
+          "rankClaim": "Challenger",
+          "patch": "26.17",
+          "durationSec": 1631,
+          "region": "KR",
+          "player": "Karis",
+          "team": "WE",
+          "uploaded": "2026-08-28",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 23,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "axtKAL8oZz8",
+          "title": "(TT Junhao) Viktor Mid vs Tryndamere - KR Grandmaster Patch 26.13",
+          "rankClaim": "Grandmaster",
+          "patch": "26.13",
+          "durationSec": 1431,
+          "region": "KR",
+          "player": "TT Junhao",
+          "uploaded": "2026-06-29",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 39,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "NV8Ju--lmYY",
+          "title": "Faker Viktor vs Irelia Mid - KR Grandmaster - Patch 25.8 Season 15",
+          "rankClaim": "Grandmaster",
+          "patch": "25.8",
+          "durationSec": 1590,
+          "region": "KR",
+          "player": "Faker",
+          "uploaded": "2025-04-25",
+          "moments": []
+        },
+        {
+          "videoId": "wMiCksQbroI",
+          "title": "T1 Faker Viktor MID vs Irelia - Patch 25.8 Korea Grandmaster ✅",
+          "rankClaim": "Grandmaster",
+          "patch": "25.8",
+          "durationSec": 1392,
+          "region": "KR",
+          "player": "Faker",
+          "team": "T1",
+          "uploaded": "2025-04-24",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 39,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "0CGupEQFTCc",
+          "title": "Viktor Top vs Irelia - KR Master Patch 25.14",
+          "rankClaim": "Master",
+          "patch": "25.14",
+          "durationSec": 2097,
+          "region": "KR",
+          "uploaded": "2025-07-28",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 42,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "ZYgIsCbmT_k",
+          "title": "Viktor Mid vs Corki - KR Grandmaster Patch 25.16",
+          "rankClaim": "Grandmaster",
+          "patch": "25.16",
+          "durationSec": 1957,
+          "region": "KR",
+          "uploaded": "2025-08-18",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 56,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "bC8f1zm5ytw",
+          "title": "Viktor Mid vs Nocturne - TW Challenger Patch 26.04",
+          "rankClaim": "Challenger",
+          "patch": "26.4",
+          "durationSec": 1588,
+          "uploaded": "2026-03-05",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 58,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "AeYIJqLbh94",
+          "title": "(FK SAKEN) Viktor Top vs Renekton - EUW Grandmaster Patch 26.13",
+          "rankClaim": "Grandmaster",
+          "patch": "26.13",
+          "durationSec": 1641,
+          "region": "EUW",
+          "player": "FK SAKEN",
+          "uploaded": "2026-07-12",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 61,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "-hsCVSpsAV8",
+          "title": "(KRX Ucal) Viktor Mid vs Orianna - KR Challenger Patch 26.12",
+          "rankClaim": "Challenger",
+          "patch": "26.12",
+          "durationSec": 1704,
+          "region": "KR",
+          "player": "KRX Ucal",
+          "uploaded": "2026-06-20",
+          "moments": []
+        },
+        {
+          "videoId": "E865jEmMV7E",
+          "title": "(LNG BuLLDoG) Viktor Mid vs Orianna (NS SeTab) - KR Challenger Patch 26.11",
+          "rankClaim": "Challenger",
+          "patch": "26.11",
+          "durationSec": 1598,
+          "region": "KR",
+          "player": "BuLLDoG",
+          "team": "LNG",
+          "uploaded": "2026-05-31",
+          "moments": []
+        },
+        {
+          "videoId": "iF4b0IlZfTE",
+          "title": "Viktor Mid vs Orianna - KR Master Patch 26.02",
+          "rankClaim": "Master",
+          "patch": "26.2",
+          "durationSec": 1534,
+          "region": "KR",
+          "uploaded": "2026-01-26",
+          "moments": []
+        },
+        {
+          "videoId": "5yRgCvD1bt4",
+          "title": "Viktor Mid vs Orianna - KR Grandmaster Patch 25.18",
+          "rankClaim": "Grandmaster",
+          "patch": "25.18",
+          "durationSec": 1809,
+          "region": "KR",
+          "uploaded": "2025-09-16",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 69,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "p4oz_RV_k3A",
+          "title": "Viktor Mid vs Cassiopeia - KR Grandmaster Patch 25.06",
+          "rankClaim": "Grandmaster",
+          "patch": "25.6",
+          "durationSec": 2034,
+          "region": "KR",
+          "uploaded": "2025-03-24",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 510,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 654,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 679,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 774,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 993,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1044,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1205,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1238,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1315,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1388,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1494,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1523,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1657,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1688,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1710,
+              "label": "Take down The Inhibitor"
+            },
+            {
+              "atSec": 1778,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1829,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1912,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1948,
+              "label": "Take down The Inhibitor"
+            },
+            {
+              "atSec": 1971,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1983,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 2013,
+              "label": "End credit"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 69,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "ec9PPD2DFmc",
+          "title": "Viktor Top vs Cassiopeia - KR Master Patch 25.08",
+          "rankClaim": "Master",
+          "patch": "25.8",
+          "durationSec": 1674,
+          "region": "KR",
+          "uploaded": "2025-04-30",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 236,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 393,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 976,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1017,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1192,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1375,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1402,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1421,
+              "label": "Take down The Inhibitor"
+            },
+            {
+              "atSec": 1492,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1509,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1531,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1653,
+              "label": "End credit"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 74,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "eG7cub-JBJ0",
+          "title": "Viktor Top vs Heimerdinger - KR Master Patch 26.10",
+          "rankClaim": "Master",
+          "patch": "26.10",
+          "durationSec": 1891,
+          "region": "KR",
+          "uploaded": "2026-05-16",
+          "result": "L",
+          "moments": [
+            {
+              "atSec": 177,
+              "label": "First Blood — Viktor kills Heimerdinger",
+              "kind": "kill"
+            },
+            {
+              "atSec": 280,
+              "label": "Viktor catches Heimerdinger"
+            },
+            {
+              "atSec": 384,
+              "label": "Viktor outduels Heimerdinger again"
+            },
+            {
+              "atSec": 402,
+              "label": "Red takes 1st Dragon (Cloud)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 644,
+              "label": "Viktor outplays Kassadin"
+            },
+            {
+              "atSec": 670,
+              "label": "Viktor outplays Heimerdinger (3rd time)"
+            },
+            {
+              "atSec": 736,
+              "label": "Viktor solo kills Heimerdinger (4th time)",
+              "kind": "kill"
+            },
+            {
+              "atSec": 769,
+              "label": "Blue takes 1st Dragon (Chemtech)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1016,
+              "label": "Viktor solo kills Kassadin again",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1090,
+              "label": "Red takes 2nd Dragon (Mountain)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1420,
+              "label": "Red takes 3rd Dragon (Mountain)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1443,
+              "label": "Aurora eliminates Kassadin"
+            },
+            {
+              "atSec": 1473,
+              "label": "Red takes Baron",
+              "kind": "baron"
+            },
+            {
+              "atSec": 1501,
+              "label": "Viktor eliminates Heimerdinger"
+            },
+            {
+              "atSec": 1562,
+              "label": "Team fight (3 kills)",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1622,
+              "label": "Mid Inhibitor falls (Blue)"
+            },
+            {
+              "atSec": 1743,
+              "label": "Red takes 4th Dragon (Mountain)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1807,
+              "label": "Draven Double Kill",
+              "kind": "kill"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 80,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "qeWZggDvQJY",
+          "title": "Viktor vs Pantheon Mid - KR Challenger - Patch 25.8 Season 15",
+          "rankClaim": "Challenger",
+          "patch": "25.8",
+          "durationSec": 2086,
+          "region": "KR",
+          "uploaded": "2025-04-28",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 81,
+      "lane": "adc",
+      "videos": [
+        {
+          "videoId": "YI8bZXKAqd4",
+          "title": "T1 Peyz Viktor vs Ezreal [ ADC ] Korea Challenger 2523 LP | Patch 26.17",
+          "rankClaim": "Challenger",
+          "patch": "26.17",
+          "durationSec": 1633,
+          "region": "KR",
+          "player": "Peyz",
+          "team": "T1",
+          "uploaded": "2026-08-27",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 84,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "Nb2Gi5uTiJ4",
+          "title": "Viktor vs Akali Mid - KR Grandmaster - Patch 25.13 Season 15",
+          "rankClaim": "Grandmaster",
+          "patch": "25.13",
+          "durationSec": 1711,
+          "region": "KR",
+          "uploaded": "2025-06-27",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 85,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "DTYkHJaMgy0",
+          "title": "Viktor Top vs Kennen - KR Master Patch 25.13",
+          "rankClaim": "Master",
+          "patch": "25.13",
+          "durationSec": 1686,
+          "region": "KR",
+          "uploaded": "2025-07-12",
+          "moments": []
+        },
+        {
+          "videoId": "J2Mg_Q1eirk",
+          "title": "Viktor Top vs Kennen - KR Master Patch 25.12",
+          "rankClaim": "Master",
+          "patch": "25.12",
+          "durationSec": 1758,
+          "region": "KR",
+          "uploaded": "2025-06-21",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 90,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "48jV_nJS_f0",
+          "title": "(JDG Xiaoxu) Viktor Mid vs Malzahar - KR Master Patch 26.14",
+          "rankClaim": "Master",
+          "patch": "26.14",
+          "durationSec": 1854,
+          "region": "KR",
+          "player": "Xiaoxu",
+          "team": "JDG",
+          "uploaded": "2026-07-20",
+          "moments": []
+        },
+        {
+          "videoId": "XF_dIITyOJs",
+          "title": "Viktor Mid vs Malzahar - KR Master Patch 25.04",
+          "rankClaim": "Master",
+          "patch": "25.4",
+          "durationSec": 1469,
+          "region": "KR",
+          "uploaded": "2025-02-22",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 328,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 443,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 588,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 831,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 921,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 981,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1072,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1210,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1348,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1373,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1403,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1448,
+              "label": "End credit"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 101,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "Tun3RiEe-v0",
+          "title": "Viktor Mid vs Xerath - VN Challenger Patch 26.05",
+          "rankClaim": "Challenger",
+          "patch": "26.5",
+          "durationSec": 1539,
+          "uploaded": "2026-03-09",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 412,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 515,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 625,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 863,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 997,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1120,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1159,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1285,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1325,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1354,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1486,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1528,
+              "label": "End credit"
+            }
+          ]
+        },
+        {
+          "videoId": "rSXtjWZz5PI",
+          "title": "Viktor Mid vs Xerath - KR Grandmaster Patch 25.08",
+          "rankClaim": "Grandmaster",
+          "patch": "25.8",
+          "durationSec": 2024,
+          "region": "KR",
+          "uploaded": "2025-04-20",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 103,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "FI5zj3oFVoc",
+          "title": "T1 Faker Viktor vs Ahri [ MID ] Korea Grandmaster 1065 LP | Patch 26.5",
+          "rankClaim": "Grandmaster",
+          "patch": "26.5",
+          "durationSec": 1201,
+          "region": "KR",
+          "player": "Faker",
+          "team": "T1",
+          "uploaded": "2026-03-07",
+          "moments": []
+        },
+        {
+          "videoId": "Xbm5xzqSq18",
+          "title": "Viktor Mid vs Ahri - KR Master Patch 26.03",
+          "rankClaim": "Master",
+          "patch": "26.3",
+          "durationSec": 1583,
+          "region": "KR",
+          "uploaded": "2026-02-10",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 112,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 441,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 853,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 873,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 951,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1042,
+              "label": "Hunt The Dragon",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1107,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1214,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1237,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1295,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1526,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1548,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1572,
+              "label": "End credit"
+            }
+          ]
+        },
+        {
+          "videoId": "y1kEXyokl4I",
+          "title": "Viktor Mid vs Ahri - EUW Challenger Patch 25.18",
+          "rankClaim": "Challenger",
+          "patch": "25.18",
+          "durationSec": 2002,
+          "region": "EUW",
+          "uploaded": "2025-09-24",
+          "moments": []
+        },
+        {
+          "videoId": "hG1K4hNyA2k",
+          "title": "Viktor Mid vs Ahri - KR Challenger Patch 25.13",
+          "rankClaim": "Challenger",
+          "patch": "25.13",
+          "durationSec": 1580,
+          "region": "KR",
+          "uploaded": "2025-06-29",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 103,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "EtqD-9aeYF4",
+          "title": "Viktor Top vs Ahri - EUW Grandmaster Patch 26.06",
+          "rankClaim": "Grandmaster",
+          "patch": "26.6",
+          "durationSec": 1824,
+          "region": "EUW",
+          "uploaded": "2026-03-28",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 105,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "jI3LbAh_zVM",
+          "title": "Viktor Mid vs Fizz - KR Challenger Patch 26.09",
+          "rankClaim": "Challenger",
+          "patch": "26.9",
+          "durationSec": 1799,
+          "region": "KR",
+          "uploaded": "2026-05-03",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 110,
+      "lane": "adc",
+      "videos": [
+        {
+          "videoId": "QzvezGh22VY",
+          "title": "T1 Peyz Viktor vs Varus [ ADC ] Patch 26.10 Korea Challenger 2504 LP",
+          "rankClaim": "Challenger",
+          "patch": "26.10",
+          "durationSec": 1337,
+          "region": "KR",
+          "player": "Peyz",
+          "team": "T1",
+          "uploaded": "2026-05-19",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 119,
+      "lane": "adc",
+      "videos": [
+        {
+          "videoId": "BQLhsEQicNo",
+          "title": "(GoldenGod) Viktor Bot vs Draven - EUW Challenger Patch 26.21",
+          "rankClaim": "Challenger",
+          "patch": "26.21",
+          "durationSec": 1808,
+          "region": "EUW",
+          "player": "GoldenGod",
+          "uploaded": "2026-10-30",
+          "result": "W",
+          "moments": [
+            {
+              "atSec": 583,
+              "label": "Blue takes 1st Dragon (Mountain)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 619,
+              "label": "Alistar picks off Draven"
+            },
+            {
+              "atSec": 902,
+              "label": "Blue takes 2nd Dragon (Infernal)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 962,
+              "label": "Viktor takes down Draven"
+            },
+            {
+              "atSec": 992,
+              "label": "Darius Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1122,
+              "label": "Darius Triple Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1247,
+              "label": "Blue takes Baron",
+              "kind": "baron"
+            },
+            {
+              "atSec": 1283,
+              "label": "Darius Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1294,
+              "label": "Red takes 1st Dragon (Cloud)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1424,
+              "label": "Team fight (3 kills)",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1529,
+              "label": "Team fight (3 kills)",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1587,
+              "label": "Bot Inhibitor falls (Blue)"
+            },
+            {
+              "atSec": 1622,
+              "label": "Red takes Baron",
+              "kind": "baron"
+            },
+            {
+              "atSec": 1625,
+              "label": "Nidalee picks off Orianna"
+            },
+            {
+              "atSec": 1663,
+              "label": "Red takes 2nd Dragon (Cloud)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1770,
+              "label": "Darius Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1772,
+              "label": "Darius Triple Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1780,
+              "label": "Mid Inhibitor falls (Blue)"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 126,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "jQcL6xbTsAA",
+          "title": "Baicaiovo Viktor: SOLID Performance vs Jayce in Challenger Elo",
+          "rankClaim": "Challenger",
+          "patch": "26.13",
+          "durationSec": 1350,
+          "patchEstimated": true,
+          "player": "Baicaiovo",
+          "uploaded": "2026-06-27",
+          "format": "stream",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 126,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "h_8glIo5ulo",
+          "title": "Viktor Top vs Jayce - KR Master Patch 25.21",
+          "rankClaim": "Master",
+          "patch": "25.21",
+          "durationSec": 1700,
+          "region": "KR",
+          "uploaded": "2025-11-03",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 131,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "q2lRUA3GQ6w",
+          "title": "Viktor Mid vs Diana - KR Challenger Patch 25.09",
+          "rankClaim": "Challenger",
+          "patch": "25.9",
+          "durationSec": 2036,
+          "region": "KR",
+          "uploaded": "2025-05-04",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 131,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "822FdCjzvVY",
+          "title": "Viktor Top vs Diana - KR Master Patch 25.07",
+          "rankClaim": "Master",
+          "patch": "25.7",
+          "durationSec": 1789,
+          "region": "KR",
+          "uploaded": "2025-04-16",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 134,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "7BBCNM3cayc",
+          "title": "(HLE Jackal) Viktor Mid vs Syndra - KR Challenger Patch 26.19",
+          "rankClaim": "Challenger",
+          "patch": "26.19",
+          "durationSec": 1711,
+          "region": "KR",
+          "player": "Jackal",
+          "team": "HLE",
+          "uploaded": "2026-10-01",
+          "moments": []
+        },
+        {
+          "videoId": "IRQoDgteWAc",
+          "title": "Viktor Mid vs Syndra (TSW Dire) - KR Challenger Patch 26.16",
+          "rankClaim": "Challenger",
+          "patch": "26.16",
+          "durationSec": 1821,
+          "region": "KR",
+          "uploaded": "2026-08-22",
+          "moments": []
+        },
+        {
+          "videoId": "c16f8tfdWUI",
+          "title": "Viktor Mid vs Syndra - KR Master Patch 25.10",
+          "rankClaim": "Master",
+          "patch": "25.10",
+          "durationSec": 1656,
+          "region": "KR",
+          "uploaded": "2025-05-16",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 526,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 601,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 667,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 816,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 912,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 987,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1019,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1110,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1312,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1369,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1442,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1473,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1514,
+              "label": "Take down The Inhibitor"
+            },
+            {
+              "atSec": 1589,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1614,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1635,
+              "label": "End credit"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 136,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "AfYdPgXf2Xs",
+          "title": "Viktor Mid vs Aurelion Sol - EUW Challenger Patch 26.01",
+          "rankClaim": "Challenger",
+          "patch": "26.1",
+          "durationSec": 1484,
+          "region": "EUW",
+          "uploaded": "2026-01-22",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 145,
+      "lane": "adc",
+      "videos": [
+        {
+          "videoId": "OP_lS7m3RTk",
+          "title": "Viktor Bot vs Kai'Sa - KR Master Patch 26.17",
+          "rankClaim": "Master",
+          "patch": "26.17",
+          "durationSec": 1661,
+          "region": "KR",
+          "uploaded": "2026-09-04",
+          "moments": []
+        },
+        {
+          "videoId": "D54FjWKY6pk",
+          "title": "T1 Peyz Viktor vs Kai'Sa [ ADC ] Korea Challenger 2429 LP | Patch 26.14",
+          "rankClaim": "Challenger",
+          "patch": "26.14",
+          "durationSec": 812,
+          "region": "KR",
+          "player": "Peyz",
+          "team": "T1",
+          "uploaded": "2026-07-25",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 145,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "xcJ0892R-6U",
+          "title": "Viktor Mid vs Kai'Sa - EUW Grandmaster Patch 25.24",
+          "rankClaim": "Grandmaster",
+          "patch": "25.24",
+          "durationSec": 1530,
+          "region": "EUW",
+          "uploaded": "2026-01-06",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 31,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 485,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 662,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 745,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 872,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1040,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1192,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1220,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1249,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1376,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1400,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1418,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1438,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1493,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1508,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1519,
+              "label": "End credit"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 147,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "-UJeSEnl7EI",
+          "title": "Viktor Mid vs Seraphine - KR Challenger Patch 25.22",
+          "rankClaim": "Challenger",
+          "patch": "25.22",
+          "durationSec": 1702,
+          "region": "KR",
+          "uploaded": "2025-11-10",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 163,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "39Y2lZyf9J4",
+          "title": "Viktor vs Taliyah Mid - KR Grandmaster - Patch 25.24 Season 15",
+          "rankClaim": "Grandmaster",
+          "patch": "25.24",
+          "durationSec": 1621,
+          "region": "KR",
+          "uploaded": "2025-12-26",
+          "moments": []
+        },
+        {
+          "videoId": "GRs1X9Yegtg",
+          "title": "Viktor Mid vs Taliyah - KR Master Patch 25.21",
+          "rankClaim": "Master",
+          "patch": "25.21",
+          "durationSec": 1469,
+          "region": "KR",
+          "uploaded": "2025-10-28",
+          "moments": []
+        },
+        {
+          "videoId": "Xn1MIu3rBEg",
+          "title": "Viktor Mid vs Taliyah - KR Challenger Patch 25.07",
+          "rankClaim": "Challenger",
+          "patch": "25.7",
+          "durationSec": 1507,
+          "region": "KR",
+          "uploaded": "2025-04-05",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 164,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "5OVc49cLIxI",
+          "title": "Viktor Top vs Camille - KR Master Patch 25.15",
+          "rankClaim": "Master",
+          "patch": "25.15",
+          "durationSec": 1819,
+          "region": "KR",
+          "uploaded": "2025-08-09",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 166,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "gCFofSFa5As",
+          "title": "Viktor Mid vs Akshan - KR Challenger Patch 25.15",
+          "rankClaim": "Challenger",
+          "patch": "25.15",
+          "durationSec": 1523,
+          "region": "KR",
+          "uploaded": "2025-08-03",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 221,
+      "lane": "adc",
+      "videos": [
+        {
+          "videoId": "eXu7ocRr-KE",
+          "title": "Viktor Bot vs Zeri - KR Challenger Patch 26.18",
+          "rankClaim": "Challenger",
+          "patch": "26.18",
+          "durationSec": 1838,
+          "region": "KR",
+          "uploaded": "2026-09-20",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 245,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "SPmBZ2IpSyg",
+          "title": "Viktor Mid vs Ekko - KR Grandmaster Patch 26.18",
+          "rankClaim": "Grandmaster",
+          "patch": "26.18",
+          "durationSec": 1888,
+          "region": "KR",
+          "uploaded": "2026-09-18",
+          "result": "W",
+          "moments": [
+            {
+              "atSec": 365,
+              "label": "Red takes 1st Dragon (Mountain)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 756,
+              "label": "Red takes 2nd Dragon (Hextech)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 798,
+              "label": "First Blood — Viego kills Ekko",
+              "kind": "kill"
+            },
+            {
+              "atSec": 905,
+              "label": "Viktor kills Corki",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1055,
+              "label": "Blue takes Rift Herald",
+              "kind": "herald"
+            },
+            {
+              "atSec": 1073,
+              "label": "Red takes 3rd Dragon (Chemtech)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1114,
+              "label": "Viego takes down Talon"
+            },
+            {
+              "atSec": 1212,
+              "label": "Team fight (4 kills)",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1246,
+              "label": "Blue takes Baron",
+              "kind": "baron"
+            },
+            {
+              "atSec": 1388,
+              "label": "Blue takes 1st Dragon (Chemtech)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1480,
+              "label": "Jhin eliminates Talon"
+            },
+            {
+              "atSec": 1582,
+              "label": "Jhin takes down Corki"
+            },
+            {
+              "atSec": 1609,
+              "label": "Mid Inhibitor falls (Red)"
+            },
+            {
+              "atSec": 1697,
+              "label": "Blue takes 2nd Dragon (Chemtech)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1722,
+              "label": "Blue takes 2nd Baron",
+              "kind": "baron"
+            },
+            {
+              "atSec": 1810,
+              "label": "Bot Inhibitor falls (Red)"
+            },
+            {
+              "atSec": 1827,
+              "label": "Viego picks off Ekko"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 246,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "-fd87RiFjZ0",
+          "title": "Viktor Mid vs Qiyana - KR Master Patch 25.24",
+          "rankClaim": "Master",
+          "patch": "25.24",
+          "durationSec": 1589,
+          "region": "KR",
+          "uploaded": "2025-12-05",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 179,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 239,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 347,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 684,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 768,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 791,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 896,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 930,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1036,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1050,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1079,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1242,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1258,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1287,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1310,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1410,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1431,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1448,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1532,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1578,
+              "label": "End credit"
+            }
+          ]
+        },
+        {
+          "videoId": "iZs0jwqdMww",
+          "title": "Viktor Mid vs Qiyana - KR Grandmaster Patch 25.19",
+          "rankClaim": "Grandmaster",
+          "patch": "25.19",
+          "durationSec": 2135,
+          "region": "KR",
+          "uploaded": "2025-10-01",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 516,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "kxHNxbrs-dM",
+          "title": "Viktor Top vs Ornn - KR Master Patch 26.11",
+          "rankClaim": "Master",
+          "patch": "26.11",
+          "durationSec": 1504,
+          "region": "KR",
+          "uploaded": "2026-06-10",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 517,
+      "lane": "adc",
+      "videos": [
+        {
+          "videoId": "A84_2m7chZw",
+          "title": "(BCE Xaro) Viktor Bot vs Sylas (VER Sayn) - EUW Grandmaster Patch 26.19",
+          "rankClaim": "Grandmaster",
+          "patch": "26.19",
+          "durationSec": 1735,
+          "region": "EUW",
+          "player": "BCE Xaro",
+          "uploaded": "2026-10-04",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 517,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "f5FzYeUSxe8",
+          "title": "T1 Faker Viktor vs Sylas [ MID ] Korea Master Patch 26.3",
+          "rankClaim": "Master",
+          "patch": "26.3",
+          "durationSec": 1666,
+          "region": "KR",
+          "player": "Faker",
+          "team": "T1",
+          "uploaded": "2026-02-09",
+          "moments": []
+        },
+        {
+          "videoId": "i_AFeXILI6k",
+          "title": "Viktor Mid vs Sylas - VN Challenger Patch 25.24",
+          "rankClaim": "Challenger",
+          "patch": "25.24",
+          "durationSec": 1465,
+          "uploaded": "2025-12-22",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 219,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 307,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 438,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 524,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 631,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 730,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 920,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 988,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1090,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1198,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1319,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1377,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1454,
+              "label": "End credit"
+            }
+          ]
+        },
+        {
+          "videoId": "3rAFi4QBtZs",
+          "title": "T1 Faker Viktor vs Sylas [ MID ] Patch 25.6 Korea Master ✅",
+          "rankClaim": "Master",
+          "patch": "25.6",
+          "durationSec": 1504,
+          "region": "KR",
+          "player": "Faker",
+          "team": "T1",
+          "uploaded": "2025-03-21",
+          "moments": []
+        },
+        {
+          "videoId": "HyZXirNRD44",
+          "title": "T1 Faker Viktor vs Sylas [ MID ] Patch 25.1 Ranked Master Korea ✅",
+          "rankClaim": "Master",
+          "patch": "25.1",
+          "durationSec": 1557,
+          "region": "KR",
+          "player": "Faker",
+          "team": "T1",
+          "uploaded": "2025-01-20",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 517,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "tOUEJwzQa0E",
+          "title": "Viktor Top vs Sylas - KR Master Patch 25.11",
+          "rankClaim": "Master",
+          "patch": "25.11",
+          "durationSec": 1802,
+          "region": "KR",
+          "uploaded": "2025-06-08",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 777,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "YfmAv7ObHCg",
+          "title": "Viktor Mid vs Yone - KR Master Patch 26.21",
+          "rankClaim": "Master",
+          "patch": "26.21",
+          "durationSec": 1461,
+          "region": "KR",
+          "uploaded": "2026-10-28",
+          "result": "W",
+          "moments": [
+            {
+              "atSec": 373,
+              "label": "Red takes 1st Dragon (Cloud)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 440,
+              "label": "Lee Sin picks off Yone"
+            },
+            {
+              "atSec": 779,
+              "label": "Viktor takes down Warwick"
+            },
+            {
+              "atSec": 871,
+              "label": "Red takes 2nd Dragon (Ocean)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 915,
+              "label": "Viktor takes down Yone"
+            },
+            {
+              "atSec": 978,
+              "label": "Viktor outplays Warwick"
+            },
+            {
+              "atSec": 1023,
+              "label": "Viktor kills Cassiopeia",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1076,
+              "label": "Team fight (4 kills)",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1190,
+              "label": "Red takes 3rd Dragon (Infernal)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1203,
+              "label": "Lee Sin takes down Diana"
+            },
+            {
+              "atSec": 1272,
+              "label": "Viktor picks off Diana"
+            },
+            {
+              "atSec": 1305,
+              "label": "Blue takes Baron",
+              "kind": "baron"
+            },
+            {
+              "atSec": 1366,
+              "label": "Lee Sin kills Warwick",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1415,
+              "label": "Team fight (3 kills)",
+              "kind": "teamfight"
+            }
+          ]
+        },
+        {
+          "videoId": "PGt4ornHIZA",
+          "title": "Viktor Mid vs Yone - NA Challenger Patch 26.05",
+          "rankClaim": "Challenger",
+          "patch": "26.5",
+          "durationSec": 1542,
+          "region": "NA",
+          "uploaded": "2026-03-16",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 86,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 567,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 625,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 700,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 789,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 906,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1032,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1052,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1188,
+              "label": "Get a Triple Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1219,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1304,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1421,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1508,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1531,
+              "label": "End credit"
+            }
+          ]
+        },
+        {
+          "videoId": "QOye27eb40U",
+          "title": "Viktor Mid vs Yone - KR Master Patch 25.05",
+          "rankClaim": "Master",
+          "patch": "25.5",
+          "durationSec": 1665,
+          "region": "KR",
+          "uploaded": "2025-03-08",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 800,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "tJn-z9SrLuY",
+          "title": "Viktor Mid vs Mel - VN Challenger Patch 26.08",
+          "rankClaim": "Challenger",
+          "patch": "26.8",
+          "durationSec": 1639,
+          "uploaded": "2026-04-18",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 893,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "Jfo-AUGL4n8",
+          "title": "Viktor Mid vs Aurora - KR Grandmaster Patch 25.12",
+          "rankClaim": "Grandmaster",
+          "patch": "25.12",
+          "durationSec": 1935,
+          "region": "KR",
+          "uploaded": "2025-06-15",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 910,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "ydBXmsyBimA",
+          "title": "Faker Viktor vs Hwei Mid - KR Challenger - Patch 25.10 Season 15",
+          "rankClaim": "Challenger",
+          "patch": "25.10",
+          "durationSec": 1726,
+          "region": "KR",
+          "player": "Faker",
+          "uploaded": "2025-05-20",
+          "moments": []
+        },
+        {
+          "videoId": "uYqQ0UyBCtg",
+          "title": "T1 Faker Viktor vs Hwei [ MID ] Patch 25.10 Korea Challenger",
+          "rankClaim": "Challenger",
+          "patch": "25.10",
+          "durationSec": 1562,
+          "region": "KR",
+          "player": "Faker",
+          "team": "T1",
+          "uploaded": "2025-05-17",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 950,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "lZzkCSvkW7Y",
+          "title": "Viktor Mid vs Naafiri - EUW Challenger Patch 26.04",
+          "rankClaim": "Challenger",
+          "patch": "26.4",
+          "durationSec": 1848,
+          "region": "EUW",
+          "uploaded": "2026-02-23",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 332,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 453,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 703,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 799,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 895,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1014,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1123,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1146,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1176,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1320,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1432,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1528,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1566,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1640,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1770,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1837,
+              "label": "End credit"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

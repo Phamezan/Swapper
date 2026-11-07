@@ -1,0 +1,2692 @@
+{
+  "schema": 1,
+  "champion": 117,
+  "generatedAt": "2026-11-07T13:25:14.592Z",
+  "guides": [],
+  "general": [
+    {
+      "champion": 117,
+      "lane": "support",
+      "patch": "26.21",
+      "reviewed": false,
+      "keyTips": [
+        {
+          "text": "Start no fights personally; follow ally engages and guard whoever can carry them.",
+          "scope": "champion",
+          "sourceIds": [
+            "mystral"
+          ]
+        },
+        {
+          "text": "Answer dives with E shield and W polymorph on reaction timing rather than on cooldown.",
+          "scope": "champion",
+          "sourceIds": [
+            "mystral"
+          ],
+          "abilityKeys": [
+            {
+              "champion": 117,
+              "key": "E"
+            },
+            {
+              "champion": 117,
+              "key": "W"
+            }
+          ]
+        },
+        {
+          "text": "Behind ADCs, move every save to the stronger teammate instead of defaulting to the ADC.",
+          "scope": "champion",
+          "sourceIds": [
+            "mystral"
+          ]
+        }
+      ],
+      "sections": {
+        "overview": {
+          "tips": []
+        },
+        "early-lane": {
+          "tips": [
+            {
+              "text": "Trade back into squishy poke supports, but against Lux hold approaches until her spells run out.",
+              "scope": "champion",
+              "sourceIds": [
+                "mystral"
+              ]
+            },
+            {
+              "text": "Into Leona or Thresh, steal autos while they last-hit or trade; on a Leona engage, shield the ADC, polymorph her partner, retreat, and slow pursuers with Q.",
+              "scope": "champion",
+              "sourceIds": [
+                "mystral"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 117,
+                  "key": "E"
+                },
+                {
+                  "champion": 117,
+                  "key": "W"
+                },
+                {
+                  "champion": 117,
+                  "key": "Q"
+                }
+              ]
+            },
+            {
+              "text": "With no wards up, refuse pushes and sit behind minions to cut gank exposure.",
+              "scope": "champion",
+              "sourceIds": [
+                "mystral"
+              ]
+            }
+          ]
+        },
+        "mid-lane": {
+          "tips": [
+            {
+              "text": "Ward the nearby jungle around the group against surprise flanks, especially ambush and long-range engage champions.",
+              "scope": "champion",
+              "sourceIds": [
+                "mystral"
+              ]
+            },
+            {
+              "text": "Sit behind the team near the ADC, shielding the frontline through poke while tracking the enemy carry or assassin.",
+              "scope": "champion",
+              "sourceIds": [
+                "mystral"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 117,
+                  "key": "E"
+                }
+              ]
+            },
+            {
+              "text": "Slow advancing enemies with Q and back away, speeding retreating allies with W.",
+              "scope": "champion",
+              "sourceIds": [
+                "mystral"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 117,
+                  "key": "Q"
+                },
+                {
+                  "champion": 117,
+                  "key": "W"
+                }
+              ]
+            },
+            {
+              "text": "Set dragon vision when opponents start it fast or the team plans a contest.",
+              "scope": "champion",
+              "sourceIds": [
+                "mystral"
+              ]
+            }
+          ]
+        },
+        "win-condition": {
+          "tips": [
+            {
+              "text": "Time E and W responses over cooldown spam when guarding damage dealers.",
+              "scope": "champion",
+              "sourceIds": [
+                "mystral"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 117,
+                  "key": "E"
+                },
+                {
+                  "champion": 117,
+                  "key": "W"
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "itemization": [],
+      "sources": [
+        {
+          "id": "mystral",
+          "author": "Mystral",
+          "rankClaim": "No rank claim",
+          "url": "https://www.mobafire.com/league-of-legends/build/lulu-utility-support-452223",
+          "kind": "mobafire"
+        }
+      ]
+    }
+  ],
+  "vods": [
+    {
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "4WaWjBZ7a2Q",
+          "title": "THIS LULU ALMOST GOT ME PERMA BANNED",
+          "rankClaim": "Master+",
+          "patch": "26.19",
+          "durationSec": 1717,
+          "patchEstimated": true,
+          "player": "Sinerias",
+          "uploaded": "2026-10-01",
+          "format": "stream",
+          "cam": true,
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 3,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "6To51y71smM",
+          "title": "Lulu Mid vs Galio - EUW Grandmaster Patch 25.07",
+          "rankClaim": "Grandmaster",
+          "patch": "25.7",
+          "durationSec": 1725,
+          "region": "EUW",
+          "uploaded": "2025-04-18",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 3,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "-J-vqWlJWHg",
+          "title": "Lulu Top vs Galio - KR Challenger Patch 25.08",
+          "rankClaim": "Challenger",
+          "patch": "25.8",
+          "durationSec": 1624,
+          "region": "KR",
+          "uploaded": "2025-05-02",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 388,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 440,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 601,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 665,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 725,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 857,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 935,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1012,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1131,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1166,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1184,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1246,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1256,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1390,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1423,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1434,
+              "label": "Take down The Inhibitor"
+            },
+            {
+              "atSec": 1573,
+              "label": "End credit"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 12,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "Vbf-1BAhmtk",
+          "title": "Lulu Support vs Alistar - KR Master Patch 25.22",
+          "rankClaim": "Master",
+          "patch": "25.22",
+          "durationSec": 1839,
+          "region": "KR",
+          "uploaded": "2025-11-08",
+          "moments": []
+        },
+        {
+          "videoId": "SAWpAtFBHTU",
+          "title": "Lulu Support vs Alistar - KR Grandmaster Patch 25.11",
+          "rankClaim": "Grandmaster",
+          "patch": "25.11",
+          "durationSec": 1535,
+          "region": "KR",
+          "uploaded": "2025-06-01",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 14,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "vefQ33MKGMg",
+          "title": "Lulu Top vs Sion - KR Master Patch 26.04",
+          "rankClaim": "Master",
+          "patch": "26.4",
+          "durationSec": 1793,
+          "region": "KR",
+          "uploaded": "2026-03-01",
+          "moments": []
+        },
+        {
+          "videoId": "EX1e4zU0XmY",
+          "title": "Lulu Top vs Sion - KR Challenger Patch 25.19",
+          "rankClaim": "Challenger",
+          "patch": "25.19",
+          "durationSec": 1769,
+          "region": "KR",
+          "uploaded": "2025-10-04",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 17,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "j5JvANsaWWo",
+          "title": "Lulu Top vs Teemo - KR Master Patch 25.24",
+          "rankClaim": "Master",
+          "patch": "25.24",
+          "durationSec": 1474,
+          "region": "KR",
+          "uploaded": "2025-12-27",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 23,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "Im3YCziPGwU",
+          "title": "Lulu Top vs Tryndamere - KR Master Patch 25.16",
+          "rankClaim": "Master",
+          "patch": "25.16",
+          "durationSec": 2021,
+          "region": "KR",
+          "uploaded": "2025-08-22",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 26,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "2LrYCXX7SbE",
+          "title": "(RBLS Sw3ry) Lulu Support vs Zilean (ZYB Stend) - EUW Challenger Patch 26.13",
+          "rankClaim": "Challenger",
+          "patch": "26.13",
+          "durationSec": 1788,
+          "region": "EUW",
+          "player": "RBLS Sw3ry",
+          "uploaded": "2026-07-02",
+          "moments": []
+        },
+        {
+          "videoId": "KWecNsby1dk",
+          "title": "Lulu Support vs Zilean - EUW Challenger Patch 26.07",
+          "rankClaim": "Challenger",
+          "patch": "26.7",
+          "durationSec": 1469,
+          "region": "EUW",
+          "uploaded": "2026-04-03",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 26,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "dLL24B_9Nxs",
+          "title": "MY SUPPORT ARC FOR THE JYNXZI TOURNAMENT",
+          "rankClaim": "Master+",
+          "patch": "26.10",
+          "durationSec": 20150,
+          "patchEstimated": true,
+          "player": "Alois",
+          "uploaded": "2026-05-20",
+          "format": "stream",
+          "cam": true,
+          "startSec": 4333,
+          "endSec": 5946,
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 27,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "7oFIGXhtLVY",
+          "title": "Lulu Support vs Singed - KR Grandmaster Patch 26.19",
+          "rankClaim": "Grandmaster",
+          "patch": "26.19",
+          "durationSec": 1809,
+          "region": "KR",
+          "uploaded": "2026-09-26",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 27,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "LQ-brtSxb6s",
+          "title": "Lulu Top vs Singed - KR Master Patch 26.09",
+          "rankClaim": "Master",
+          "patch": "26.9",
+          "durationSec": 1549,
+          "region": "KR",
+          "uploaded": "2026-05-02",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 37,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "U9Vb6p_IwkA",
+          "title": "Lulu Support vs Sona - NA Grandmaster Patch 25.24",
+          "rankClaim": "Grandmaster",
+          "patch": "25.24",
+          "durationSec": 1499,
+          "region": "NA",
+          "uploaded": "2026-01-05",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 552,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 756,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 819,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 868,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 972,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 998,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1052,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1165,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1238,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1309,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1335,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1365,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1442,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1469,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1488,
+              "label": "End credit"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 38,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "Zz-lT5L3a0U",
+          "title": "Lulu Top vs Kassadin - KR Master Patch 25.09",
+          "rankClaim": "Master",
+          "patch": "25.9",
+          "durationSec": 1685,
+          "region": "KR",
+          "uploaded": "2025-05-09",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 39,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "u2RtpcAFTwk",
+          "title": "Lulu Top vs Irelia - KR Challenger Patch 25.12",
+          "rankClaim": "Challenger",
+          "patch": "25.12",
+          "durationSec": 1658,
+          "region": "KR",
+          "uploaded": "2025-06-20",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 41,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "SncWrNU8KN0",
+          "title": "Lulu Top vs Gangplank - KR Master Patch 25.14",
+          "rankClaim": "Master",
+          "patch": "25.14",
+          "durationSec": 1757,
+          "region": "KR",
+          "uploaded": "2025-07-25",
+          "moments": []
+        },
+        {
+          "videoId": "vfuMsRpALCc",
+          "title": "Lulu Top vs Gangplank - EUW Challenger Patch 25.13",
+          "rankClaim": "Challenger",
+          "patch": "25.13",
+          "durationSec": 1526,
+          "region": "EUW",
+          "uploaded": "2025-07-06",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 43,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "gW5X9_602i8",
+          "title": "Lulu Mid vs Karma - NA Grandmaster Patch 25.15",
+          "rankClaim": "Grandmaster",
+          "patch": "25.15",
+          "durationSec": 1809,
+          "region": "NA",
+          "uploaded": "2025-08-14",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 43,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "EDg_3EYxEBw",
+          "title": "(DNS Quantum ) Lulu Support vs Karma - KR Challenger Patch 26.16",
+          "rankClaim": "Challenger",
+          "patch": "26.16",
+          "durationSec": 1867,
+          "region": "KR",
+          "player": "DNS Quantum",
+          "uploaded": "2026-08-21",
+          "moments": []
+        },
+        {
+          "videoId": "fN1saIFRNqA",
+          "title": "Lulu Support vs Karma - EUW Challenger Patch 25.24",
+          "rankClaim": "Challenger",
+          "patch": "25.24",
+          "durationSec": 1533,
+          "region": "EUW",
+          "uploaded": "2025-12-16",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 347,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 517,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 708,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 791,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 825,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 859,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 961,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 979,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1063,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1224,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1262,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1280,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1299,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1362,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1463,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1490,
+              "label": "Take down The Inhibitor"
+            },
+            {
+              "atSec": 1504,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1522,
+              "label": "End credit"
+            }
+          ]
+        },
+        {
+          "videoId": "Kz51pvXdSYQ",
+          "title": "Lulu Support vs Karma - KR Grandmaster Patch 25.05",
+          "rankClaim": "Grandmaster",
+          "patch": "25.5",
+          "durationSec": 1881,
+          "region": "KR",
+          "uploaded": "2025-03-07",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 53,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "kBf9B9A-0mk",
+          "title": "Lulu Support vs Blitzcrank - KR Grandmaster Patch 26.18",
+          "rankClaim": "Grandmaster",
+          "patch": "26.18",
+          "durationSec": 1689,
+          "region": "KR",
+          "uploaded": "2026-09-12",
+          "moments": []
+        },
+        {
+          "videoId": "ghs3ZFcKL6w",
+          "title": "Lulu Support vs Blitzcrank - KR Master Patch 25.24",
+          "rankClaim": "Master",
+          "patch": "25.24",
+          "durationSec": 1682,
+          "region": "KR",
+          "uploaded": "2025-12-06",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 55,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "Ixmtt7v3qUI",
+          "title": "Lulu Mid vs Katarina - KR Master Patch 26.15",
+          "rankClaim": "Master",
+          "patch": "26.15",
+          "durationSec": 1805,
+          "region": "KR",
+          "uploaded": "2026-08-05",
+          "moments": []
+        },
+        {
+          "videoId": "lM1p-slAYio",
+          "title": "Lulu Mid vs Katarina - KR Challenger Patch 26.03",
+          "rankClaim": "Challenger",
+          "patch": "26.3",
+          "durationSec": 1546,
+          "region": "KR",
+          "uploaded": "2026-02-14",
+          "moments": []
+        },
+        {
+          "videoId": "m9VbRDIgAXU",
+          "title": "Lulu Mid vs Katarina - KR Grandmaster Patch 26.02",
+          "rankClaim": "Grandmaster",
+          "patch": "26.2",
+          "durationSec": 1608,
+          "region": "KR",
+          "uploaded": "2026-02-03",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 61,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "Jd0-MKes8bI",
+          "title": "Lulu Mid vs Orianna - KR Master Patch 25.13",
+          "rankClaim": "Master",
+          "patch": "25.13",
+          "durationSec": 1763,
+          "region": "KR",
+          "uploaded": "2025-07-10",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 62,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "6n7mWjOlmDI",
+          "title": "Lulu Top vs Wukong - VN Challenger Patch 25.11",
+          "rankClaim": "Challenger",
+          "patch": "25.11",
+          "durationSec": 1677,
+          "uploaded": "2025-06-13",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 72,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "A6w-sWF4yMU",
+          "title": "(AHQ Wako) Lulu Support vs Skarner - KR Master Patch 26.12",
+          "rankClaim": "Master",
+          "patch": "26.12",
+          "durationSec": 1743,
+          "region": "KR",
+          "player": "AHQ Wako",
+          "uploaded": "2026-06-19",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 74,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "FS846W7CY6Q",
+          "title": "Lulu Top vs Heimerdinger - KR Master Patch 25.17",
+          "rankClaim": "Master",
+          "patch": "25.17",
+          "durationSec": 2055,
+          "region": "KR",
+          "uploaded": "2025-09-07",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 75,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "2bzn-k6f9Q8",
+          "title": "Lulu Support vs Nasus - EUW Challenger Patch 25.23",
+          "rankClaim": "Challenger",
+          "patch": "25.23",
+          "durationSec": 1576,
+          "region": "EUW",
+          "uploaded": "2025-12-03",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 76,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "giRaBC3N93M",
+          "title": "Lulu Support vs Nidalee - KR Master Patch 25.07",
+          "rankClaim": "Master",
+          "patch": "25.7",
+          "durationSec": 1614,
+          "region": "KR",
+          "uploaded": "2025-04-04",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 463,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 689,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 870,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 903,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 917,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1048,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1170,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1191,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1251,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1416,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1469,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1546,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1593,
+              "label": "End credit"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 78,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "na571pWq4Yg",
+          "title": "(AL Kael) Lulu Support vs Poppy - KR Challenger Patch 26.11",
+          "rankClaim": "Challenger",
+          "patch": "26.11",
+          "durationSec": 1581,
+          "region": "KR",
+          "player": "Kael",
+          "team": "AL",
+          "uploaded": "2026-06-01",
+          "moments": []
+        },
+        {
+          "videoId": "kmwCH96a8qA",
+          "title": "Lulu Support vs Poppy - KR Challenger Patch 26.05",
+          "rankClaim": "Challenger",
+          "patch": "26.5",
+          "durationSec": 1472,
+          "region": "KR",
+          "uploaded": "2026-03-07",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 215,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 539,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 777,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 877,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 975,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 994,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1193,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1301,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1341,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1434,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1461,
+              "label": "End credit"
+            }
+          ]
+        },
+        {
+          "videoId": "RDXu0UXu40g",
+          "title": "Lulu Support vs Poppy - KR Challenger Patch 25.09",
+          "rankClaim": "Challenger",
+          "patch": "25.9",
+          "durationSec": 1926,
+          "region": "KR",
+          "uploaded": "2025-05-03",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 80,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "Vnk1KFY71zw",
+          "title": "Lulu Support vs Pantheon - KR Challenger Patch 26.09",
+          "rankClaim": "Challenger",
+          "patch": "26.9",
+          "durationSec": 1718,
+          "region": "KR",
+          "uploaded": "2026-05-11",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 80,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "1f0GC6SR9g4",
+          "title": "Lulu Top vs Pantheon - KR Master Patch 26.06",
+          "rankClaim": "Master",
+          "patch": "26.6",
+          "durationSec": 1449,
+          "region": "KR",
+          "uploaded": "2026-03-28",
+          "moments": []
+        },
+        {
+          "videoId": "6LeiSR-jing",
+          "title": "Lulu Top vs Pantheon - KR Master Patch 26.01",
+          "rankClaim": "Master",
+          "patch": "26.1",
+          "durationSec": 1547,
+          "region": "KR",
+          "uploaded": "2026-01-21",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 82,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "xFJA2WrJIBg",
+          "title": "Lulu Top vs Mordekaiser - KR Master Patch 25.05",
+          "rankClaim": "Master",
+          "patch": "25.5",
+          "durationSec": 1786,
+          "region": "KR",
+          "uploaded": "2025-03-14",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 83,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "IQCqWeviJ3I",
+          "title": "Lulu Top vs Yorick - KR Master Patch 25.22",
+          "rankClaim": "Master",
+          "patch": "25.22",
+          "durationSec": 1515,
+          "region": "KR",
+          "uploaded": "2025-11-15",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 89,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "Kkx45MjO2bs",
+          "title": "Lulu Support vs Leona - KR Grandmaster Patch 26.21",
+          "rankClaim": "Grandmaster",
+          "patch": "26.21",
+          "durationSec": 1656,
+          "region": "KR",
+          "uploaded": "2026-11-04",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 90,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "LE-sakcEukw",
+          "title": "Lulu Mid vs Malzahar - EUW Challenger Patch 26.13",
+          "rankClaim": "Challenger",
+          "patch": "26.13",
+          "durationSec": 1429,
+          "region": "EUW",
+          "uploaded": "2026-07-11",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 98,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "pxfj8oTv4IA",
+          "title": "(GAM Taki) Lulu Support vs Shen (DNS Peter) - KR Challenger Patch 26.17",
+          "rankClaim": "Challenger",
+          "patch": "26.17",
+          "durationSec": 1423,
+          "region": "KR",
+          "player": "GAM Taki",
+          "uploaded": "2026-08-28",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 99,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "xxU-LNEmU7E",
+          "title": "Lulu Support vs Lux - KR Challenger Patch 26.17",
+          "rankClaim": "Challenger",
+          "patch": "26.17",
+          "durationSec": 1809,
+          "region": "KR",
+          "uploaded": "2026-09-08",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 101,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "VbVUc8lN-M8",
+          "title": "Lulu Support vs Xerath - KR Grandmaster Patch 25.14",
+          "rankClaim": "Grandmaster",
+          "patch": "25.14",
+          "durationSec": 1492,
+          "region": "KR",
+          "uploaded": "2025-07-18",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 103,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "6HNwPKBBZWU",
+          "title": "Lulu Mid vs Ahri - KR Master Patch 26.07",
+          "rankClaim": "Master",
+          "patch": "26.7",
+          "durationSec": 1623,
+          "region": "KR",
+          "uploaded": "2026-04-11",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 111,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "Lc8WEaggTBU",
+          "title": "(KT Pollu) Lulu Support vs Nautilus (DCG ShiauC) - KR Challenger Patch 26.21",
+          "rankClaim": "Challenger",
+          "patch": "26.21",
+          "durationSec": 1815,
+          "region": "KR",
+          "player": "Pollu",
+          "team": "KT",
+          "uploaded": "2026-10-25",
+          "result": "W",
+          "moments": [
+            {
+              "atSec": 496,
+              "label": "Red takes 1st Dragon (Cloud)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 699,
+              "label": "Team fight (3 kills)",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 759,
+              "label": "Camille eliminates Jax"
+            },
+            {
+              "atSec": 813,
+              "label": "Blue takes 1st Dragon (Infernal)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 825,
+              "label": "Camille Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 954,
+              "label": "Qiyana takes down Jayce"
+            },
+            {
+              "atSec": 1138,
+              "label": "Red takes 2nd Dragon (Ocean)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1154,
+              "label": "Tristana picks off Nautilus"
+            },
+            {
+              "atSec": 1193,
+              "label": "Blue takes Baron",
+              "kind": "baron"
+            },
+            {
+              "atSec": 1258,
+              "label": "Locke Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1329,
+              "label": "Tristana eliminates Jayce"
+            },
+            {
+              "atSec": 1356,
+              "label": "Mid Inhibitor falls (Red)"
+            },
+            {
+              "atSec": 1454,
+              "label": "Red takes 3rd Dragon (Ocean)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1544,
+              "label": "Tristana picks off Nautilus"
+            },
+            {
+              "atSec": 1565,
+              "label": "Blue takes 2nd Baron",
+              "kind": "baron"
+            },
+            {
+              "atSec": 1682,
+              "label": "Mid Inhibitor falls (Red)"
+            },
+            {
+              "atSec": 1760,
+              "label": "Blue takes 2nd Dragon (Ocean)",
+              "kind": "dragon"
+            }
+          ]
+        },
+        {
+          "videoId": "kXXZIrF3GgE",
+          "title": "Lulu Support vs Nautilus - KR Challenger Patch 26.20",
+          "rankClaim": "Challenger",
+          "patch": "26.20",
+          "durationSec": 1617,
+          "region": "KR",
+          "uploaded": "2026-10-10",
+          "result": "W",
+          "moments": [
+            {
+              "atSec": 166,
+              "label": "First Blood — Sylas kills Viktor",
+              "kind": "kill"
+            },
+            {
+              "atSec": 365,
+              "label": "Red takes 1st Dragon (Mountain)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 446,
+              "label": "Sylas kills Nautilus",
+              "kind": "kill"
+            },
+            {
+              "atSec": 708,
+              "label": "Red takes 2nd Dragon (Chemtech)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 727,
+              "label": "Tristana eliminates Lee Sin"
+            },
+            {
+              "atSec": 914,
+              "label": "Syndra eliminates Akshan"
+            },
+            {
+              "atSec": 1014,
+              "label": "Tristana Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1018,
+              "label": "Tristana Triple Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1053,
+              "label": "Red takes 3rd Dragon (Ocean)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1121,
+              "label": "Team fight (3 kills)",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1296,
+              "label": "Blue takes Baron",
+              "kind": "baron"
+            },
+            {
+              "atSec": 1341,
+              "label": "Sylas kills Nautilus",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1366,
+              "label": "Blue takes 1st Dragon (Ocean)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1433,
+              "label": "Team fight (3 kills)",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1473,
+              "label": "Mid Inhibitor falls (Blue)"
+            },
+            {
+              "atSec": 1489,
+              "label": "Lucian eliminates Jayce"
+            },
+            {
+              "atSec": 1572,
+              "label": "Sylas kills Nautilus",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1603,
+              "label": "Tristana Double Kill",
+              "kind": "kill"
+            }
+          ]
+        },
+        {
+          "videoId": "WKqYfOVDvIM",
+          "title": "Lulu Support vs Nautilus (NS Pleata) - KR Grandmaster Patch 26.19",
+          "rankClaim": "Grandmaster",
+          "patch": "26.19",
+          "durationSec": 1502,
+          "region": "KR",
+          "uploaded": "2026-10-07",
+          "result": "W",
+          "moments": [
+            {
+              "atSec": 86,
+              "label": "First Blood — Lulu kills Nautilus",
+              "kind": "kill"
+            },
+            {
+              "atSec": 268,
+              "label": "Nidalee eliminates Aphelios"
+            },
+            {
+              "atSec": 445,
+              "label": "Team fight (3 kills)",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 544,
+              "label": "Yunara kills Cassiopeia",
+              "kind": "kill"
+            },
+            {
+              "atSec": 612,
+              "label": "Red takes 1st Dragon (Chemtech)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 697,
+              "label": "Yunara eliminates Rammus"
+            },
+            {
+              "atSec": 832,
+              "label": "Vladimir eliminates Camille"
+            },
+            {
+              "atSec": 882,
+              "label": "Blue takes Rift Herald",
+              "kind": "herald"
+            },
+            {
+              "atSec": 948,
+              "label": "Nidalee takes down Rammus"
+            },
+            {
+              "atSec": 980,
+              "label": "Blue takes 1st Dragon (Ocean)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1085,
+              "label": "Team fight (3 kills)",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1199,
+              "label": "Team fight (3 kills)",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1251,
+              "label": "Yunara picks off Nautilus"
+            },
+            {
+              "atSec": 1265,
+              "label": "Blue takes Baron",
+              "kind": "baron"
+            },
+            {
+              "atSec": 1303,
+              "label": "Red takes 2nd Dragon (Mountain)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1309,
+              "label": "Nidalee eliminates Aphelios"
+            },
+            {
+              "atSec": 1445,
+              "label": "Yunara picks off Camille"
+            },
+            {
+              "atSec": 1471,
+              "label": "Mid Inhibitor falls (Red)"
+            }
+          ]
+        },
+        {
+          "videoId": "2jnRVtziRHA",
+          "title": "Lulu Support vs Nautilus - KR Grandmaster Patch 26.04",
+          "rankClaim": "Grandmaster",
+          "patch": "26.4",
+          "durationSec": 1464,
+          "region": "KR",
+          "uploaded": "2026-02-22",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 185,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 289,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 348,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 416,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 597,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 677,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 828,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 910,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 926,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1038,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1060,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1146,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1195,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1205,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1270,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1373,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1405,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1416,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1453,
+              "label": "End credit"
+            }
+          ]
+        },
+        {
+          "videoId": "UfmtKrd-TEg",
+          "title": "Lulu Support vs Nautilus - KR Grandmaster Patch 25.20",
+          "rankClaim": "Grandmaster",
+          "patch": "25.20",
+          "durationSec": 1606,
+          "region": "KR",
+          "uploaded": "2025-10-11",
+          "moments": []
+        },
+        {
+          "videoId": "RD5rx1YizHg",
+          "title": "Lulu Support vs Nautilus - KR Grandmaster Patch 25.12",
+          "rankClaim": "Grandmaster",
+          "patch": "25.12",
+          "durationSec": 1517,
+          "region": "KR",
+          "uploaded": "2025-06-14",
+          "moments": []
+        },
+        {
+          "videoId": "moWgwcdZHUc",
+          "title": "Lulu Support vs Nautilus - KR Master Patch 25.08",
+          "rankClaim": "Master",
+          "patch": "25.8",
+          "durationSec": 1525,
+          "region": "KR",
+          "uploaded": "2025-04-18",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 114,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "j3bZsgyrfxk",
+          "title": "Lulu Top vs Fiora - KR Grandmaster Patch 25.04",
+          "rankClaim": "Grandmaster",
+          "patch": "25.4",
+          "durationSec": 1968,
+          "region": "KR",
+          "uploaded": "2025-03-02",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 126,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "6jyg8l3zdtk",
+          "title": "Lulu Top vs Jayce - KR Master Patch 25.06",
+          "rankClaim": "Master",
+          "patch": "25.6",
+          "durationSec": 1850,
+          "region": "KR",
+          "uploaded": "2025-03-27",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 131,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "o8C3NVDW7MM",
+          "title": "Lulu Mid vs Diana - KR Master Patch 25.05",
+          "rankClaim": "Master",
+          "patch": "25.5",
+          "durationSec": 1579,
+          "region": "KR",
+          "uploaded": "2025-03-21",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 148,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 492,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 513,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 715,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 949,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 977,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1059,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1089,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1167,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1234,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1372,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1421,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1462,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1479,
+              "label": "Take down The Inhibitor"
+            },
+            {
+              "atSec": 1530,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1558,
+              "label": "End credit"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 134,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "LMTIR-c2sPc",
+          "title": "Lulu Mid vs Syndra - KR Grandmaster Patch 25.08",
+          "rankClaim": "Grandmaster",
+          "patch": "25.8",
+          "durationSec": 1704,
+          "region": "KR",
+          "uploaded": "2025-04-29",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 37,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 373,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 602,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 710,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 896,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 934,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 998,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1081,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1171,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1192,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1203,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1266,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1376,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1469,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1571,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1654,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1683,
+              "label": "End credit"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 161,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "CM9GaKg-Buc",
+          "title": "Lulu Support vs Vel'Koz - KR Grandmaster Patch 26.02",
+          "rankClaim": "Grandmaster",
+          "patch": "26.2",
+          "durationSec": 1549,
+          "region": "KR",
+          "uploaded": "2026-01-24",
+          "moments": []
+        },
+        {
+          "videoId": "2-dl5k8Q58M",
+          "title": "Lulu Support vs Vel'Koz - KR Grandmaster Patch 25.06",
+          "rankClaim": "Grandmaster",
+          "patch": "25.6",
+          "durationSec": 1525,
+          "region": "KR",
+          "uploaded": "2025-03-21",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 77,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 402,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 552,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 620,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 727,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 842,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 949,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1028,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1102,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1128,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1173,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1253,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1362,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1420,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1462,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1486,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1504,
+              "label": "End credit"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 163,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "D-yqjZ0g-Fc",
+          "title": "Lulu Mid vs Taliyah - KR Master Patch 25.24",
+          "rankClaim": "Master",
+          "patch": "25.24",
+          "durationSec": 1512,
+          "region": "KR",
+          "uploaded": "2026-01-02",
+          "moments": []
+        },
+        {
+          "videoId": "rx8nRA6XkMM",
+          "title": "Lulu Mid vs Taliyah - KR Master Patch 25.21",
+          "rankClaim": "Master",
+          "patch": "25.21",
+          "durationSec": 1679,
+          "region": "KR",
+          "uploaded": "2025-11-01",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 164,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "GPyK5xXVBwo",
+          "title": "Lulu Support vs Camille - KR Challenger Patch 26.20",
+          "rankClaim": "Challenger",
+          "patch": "26.20",
+          "durationSec": 1668,
+          "region": "KR",
+          "uploaded": "2026-10-21",
+          "result": "W",
+          "moments": [
+            {
+              "atSec": 166,
+              "label": "First Blood — Tristana kills Camille",
+              "kind": "kill"
+            },
+            {
+              "atSec": 337,
+              "label": "Team fight (4 kills)",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 346,
+              "label": "Red takes 1st Dragon (Ocean)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 452,
+              "label": "Tristana takes down Varus"
+            },
+            {
+              "atSec": 570,
+              "label": "Team fight (3 kills)",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 658,
+              "label": "Lulu takes down LeBlanc"
+            },
+            {
+              "atSec": 691,
+              "label": "Lulu eliminates Jax"
+            },
+            {
+              "atSec": 712,
+              "label": "Red takes 2nd Dragon (Mountain)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 806,
+              "label": "Tristana picks off Camille"
+            },
+            {
+              "atSec": 1062,
+              "label": "Yone picks off Talon"
+            },
+            {
+              "atSec": 1068,
+              "label": "Red takes 3rd Dragon (Chemtech)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1179,
+              "label": "Team fight (3 kills)",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1204,
+              "label": "Lulu outduels LeBlanc"
+            },
+            {
+              "atSec": 1230,
+              "label": "Tristana takes down Varus"
+            },
+            {
+              "atSec": 1235,
+              "label": "Red takes Baron",
+              "kind": "baron"
+            },
+            {
+              "atSec": 1379,
+              "label": "Blue takes 1st Dragon (Chemtech)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1396,
+              "label": "Yone Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1611,
+              "label": "Team fight (3 kills)",
+              "kind": "teamfight"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 201,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "-RA_Txx5vL4",
+          "title": "Lulu Support vs Braum - KR Grandmaster Patch 26.03",
+          "rankClaim": "Grandmaster",
+          "patch": "26.3",
+          "durationSec": 1447,
+          "region": "KR",
+          "uploaded": "2026-02-08",
+          "moments": []
+        },
+        {
+          "videoId": "E7XOsiPWal4",
+          "title": "Lulu Support vs Braum - KR Master Patch 25.18",
+          "rankClaim": "Master",
+          "patch": "25.18",
+          "durationSec": 1528,
+          "region": "KR",
+          "uploaded": "2025-09-13",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 201,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "dLL24B_9Nxs",
+          "title": "MY SUPPORT ARC FOR THE JYNXZI TOURNAMENT",
+          "rankClaim": "Master+",
+          "patch": "26.10",
+          "durationSec": 20150,
+          "patchEstimated": true,
+          "player": "Alois",
+          "uploaded": "2026-05-20",
+          "format": "stream",
+          "cam": true,
+          "startSec": 11219,
+          "endSec": 13672,
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 238,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "74UfjSQKmNM",
+          "title": "Lulu Top vs Zed - NA Grandmaster Patch 25.18",
+          "rankClaim": "Grandmaster",
+          "patch": "25.18",
+          "durationSec": 1478,
+          "region": "NA",
+          "uploaded": "2025-09-21",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 266,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "raaOLIM72LY",
+          "title": "Lulu Top vs Aatrox - KR Challenger Patch 25.07",
+          "rankClaim": "Challenger",
+          "patch": "25.7",
+          "durationSec": 1620,
+          "region": "KR",
+          "uploaded": "2025-04-13",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 267,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "1dc-Z0JsqqI",
+          "title": "Lulu Support vs Nami - KR Master Patch 26.08",
+          "rankClaim": "Master",
+          "patch": "26.8",
+          "durationSec": 1404,
+          "region": "KR",
+          "uploaded": "2026-04-30",
+          "moments": []
+        },
+        {
+          "videoId": "IchYlQGjx7w",
+          "title": "Lulu Support vs Nami - KR Master Patch 25.15",
+          "rankClaim": "Master",
+          "patch": "25.15",
+          "durationSec": 1517,
+          "region": "KR",
+          "uploaded": "2025-08-03",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 420,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "ViZ0tsi7vnU",
+          "title": "Lulu Top vs Illaoi - KR Grandmaster Patch 26.12",
+          "rankClaim": "Grandmaster",
+          "patch": "26.12",
+          "durationSec": 1910,
+          "region": "KR",
+          "uploaded": "2026-06-24",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 432,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "VezQS9ZBctk",
+          "title": "(RNG Tangyuan) Lulu Support vs Bard - KR Grandmaster Patch 26.14",
+          "rankClaim": "Grandmaster",
+          "patch": "26.14",
+          "durationSec": 1680,
+          "region": "KR",
+          "player": "Tangyuan",
+          "uploaded": "2026-07-17",
+          "moments": []
+        },
+        {
+          "videoId": "I79Q4KcCBD4",
+          "title": "Lulu Support vs Bard - KR Master Patch 25.21",
+          "rankClaim": "Master",
+          "patch": "25.21",
+          "durationSec": 1733,
+          "region": "KR",
+          "uploaded": "2025-10-25",
+          "moments": []
+        },
+        {
+          "videoId": "kfZWHmZXHnQ",
+          "title": "Lulu Support vs Bard - KR Grandmaster Patch 25.17",
+          "rankClaim": "Grandmaster",
+          "patch": "25.17",
+          "durationSec": 1566,
+          "region": "KR",
+          "uploaded": "2025-08-30",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 497,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "9nJTxX9POuo",
+          "title": "(Chesterbb) Lulu Support vs Rakan - KR Challenger Patch 26.16",
+          "rankClaim": "Challenger",
+          "patch": "26.16",
+          "durationSec": 1878,
+          "region": "KR",
+          "player": "Chesterbb",
+          "uploaded": "2026-08-21",
+          "moments": []
+        },
+        {
+          "videoId": "TGHeT0NmR0o",
+          "title": "Lulu Support vs Rakan - BR Challenger Patch 26.08",
+          "rankClaim": "Challenger",
+          "patch": "26.8",
+          "durationSec": 1789,
+          "uploaded": "2026-04-18",
+          "moments": []
+        },
+        {
+          "videoId": "gRBTwub4XDM",
+          "title": "Lulu Support vs Rakan - KR Challenger Patch 26.05",
+          "rankClaim": "Challenger",
+          "patch": "26.5",
+          "durationSec": 1660,
+          "region": "KR",
+          "uploaded": "2026-03-16",
+          "moments": []
+        },
+        {
+          "videoId": "fXm3h3ti4J4",
+          "title": "Lulu Support vs Rakan - KR Grandmaster Patch 25.19",
+          "rankClaim": "Grandmaster",
+          "patch": "25.19",
+          "durationSec": 1839,
+          "region": "KR",
+          "uploaded": "2025-09-27",
+          "moments": []
+        },
+        {
+          "videoId": "-hQ9fimbbTI",
+          "title": "Lulu Support vs Rakan - KR Challenger Patch 25.10",
+          "rankClaim": "Challenger",
+          "patch": "25.10",
+          "durationSec": 1580,
+          "region": "KR",
+          "uploaded": "2025-05-18",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 518,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "KZNqutokIeY",
+          "title": "(RBLS Sw3ry) Lulu Support vs Neeko - EUW Grandmaster Patch 26.15",
+          "rankClaim": "Grandmaster",
+          "patch": "26.15",
+          "durationSec": 1546,
+          "region": "EUW",
+          "player": "RBLS Sw3ry",
+          "uploaded": "2026-08-13",
+          "moments": []
+        },
+        {
+          "videoId": "gZ2KY_cZ9po",
+          "title": "Lulu Support vs Neeko - KR Challenger Patch 26.06",
+          "rankClaim": "Challenger",
+          "patch": "26.6",
+          "durationSec": 1650,
+          "region": "KR",
+          "uploaded": "2026-03-20",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 526,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "9UGTfkiGDIQ",
+          "title": "(GEN Duro) Lulu Support vs Rell - KR Grandmaster Patch 26.10",
+          "rankClaim": "Grandmaster",
+          "patch": "26.10",
+          "durationSec": 1902,
+          "region": "KR",
+          "player": "Duro",
+          "team": "GEN",
+          "uploaded": "2026-05-26",
+          "moments": []
+        },
+        {
+          "videoId": "wgyg9u3C2h4",
+          "title": "Lulu Support vs Rell - EUW Master Patch 26.01",
+          "rankClaim": "Master",
+          "patch": "26.1",
+          "durationSec": 1459,
+          "region": "EUW",
+          "uploaded": "2026-01-11",
+          "moments": []
+        },
+        {
+          "videoId": "24ZKOWj07jQ",
+          "title": "Lulu Support vs Rell - KR Master Patch 25.23",
+          "rankClaim": "Master",
+          "patch": "25.23",
+          "durationSec": 1566,
+          "region": "KR",
+          "uploaded": "2025-11-22",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 555,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "BJZdGPvRZZg",
+          "title": "Lulu Support vs Pyke - KR Master Patch 25.16",
+          "rankClaim": "Master",
+          "patch": "25.16",
+          "durationSec": 1709,
+          "region": "KR",
+          "uploaded": "2025-08-16",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 777,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "rZv58e__-oA",
+          "title": "Lulu Mid vs Yone - KR Challenger Patch 25.04",
+          "rankClaim": "Challenger",
+          "patch": "25.4",
+          "durationSec": 1783,
+          "region": "KR",
+          "uploaded": "2025-02-23",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 777,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "RbF5-iezhDQ",
+          "title": "Lulu Top vs Yone - EUW Challenger Patch 26.11",
+          "rankClaim": "Challenger",
+          "patch": "26.11",
+          "durationSec": 1427,
+          "region": "EUW",
+          "uploaded": "2026-06-10",
+          "moments": []
+        },
+        {
+          "videoId": "pLBXT_U7AKA",
+          "title": "Lulu Top vs Yone - EUW Grandmaster Patch 25.15",
+          "rankClaim": "Grandmaster",
+          "patch": "25.15",
+          "durationSec": 1582,
+          "region": "EUW",
+          "uploaded": "2025-08-08",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 799,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "igjBpCFWJVQ",
+          "title": "Lulu Top vs Ambessa - KR Master Patch 26.14",
+          "rankClaim": "Master",
+          "patch": "26.14",
+          "durationSec": 1619,
+          "region": "KR",
+          "uploaded": "2026-07-29",
+          "moments": []
+        },
+        {
+          "videoId": "U5m0qfoxkVU",
+          "title": "Lulu Top vs Ambessa - KR Master Patch 26.10",
+          "rankClaim": "Master",
+          "patch": "26.10",
+          "durationSec": 1720,
+          "region": "KR",
+          "uploaded": "2026-05-15",
+          "result": "W",
+          "moments": [
+            {
+              "atSec": 153,
+              "label": "First Blood — Kindred kills Zac",
+              "kind": "kill"
+            },
+            {
+              "atSec": 306,
+              "label": "Lulu catches Ambessa"
+            },
+            {
+              "atSec": 508,
+              "label": "Lulu outduels Ambessa again"
+            },
+            {
+              "atSec": 620,
+              "label": "Blue takes 1st Dragon (Cloud)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 643,
+              "label": "Lulu outplays Ambessa (3rd time)"
+            },
+            {
+              "atSec": 703,
+              "label": "Lulu solo kills Ambessa (4th time)",
+              "kind": "kill"
+            },
+            {
+              "atSec": 938,
+              "label": "Red takes 1st Dragon (Mountain)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1233,
+              "label": "Kindred kills Ambessa",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1253,
+              "label": "Blue takes 2nd Dragon (Chemtech)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1370,
+              "label": "Kindred picks off Jayce"
+            },
+            {
+              "atSec": 1436,
+              "label": "Blue takes Baron",
+              "kind": "baron"
+            },
+            {
+              "atSec": 1450,
+              "label": "Zed picks off Zac"
+            },
+            {
+              "atSec": 1478,
+              "label": "Zed takes down Ambessa"
+            },
+            {
+              "atSec": 1507,
+              "label": "Smolder kills Jayce",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1529,
+              "label": "Zed takes down Brand"
+            },
+            {
+              "atSec": 1570,
+              "label": "Blue takes 3rd Dragon (Chemtech)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1656,
+              "label": "Smolder Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1669,
+              "label": "Mid Inhibitor falls (Red)"
+            }
+          ]
+        },
+        {
+          "videoId": "TeEN-HntJE0",
+          "title": "Lulu Top vs Ambessa - KR Grandmaster Patch 25.10",
+          "rankClaim": "Grandmaster",
+          "patch": "25.10",
+          "durationSec": 1538,
+          "region": "KR",
+          "uploaded": "2025-05-23",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 893,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "iTAA89jTBxY",
+          "title": "Lulu Mid vs Aurora - NA Grandmaster Patch 25.17",
+          "rankClaim": "Grandmaster",
+          "patch": "25.17",
+          "durationSec": 1650,
+          "region": "NA",
+          "uploaded": "2025-09-12",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 901,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "7ZHR8EdDxv4",
+          "title": "Lulu Mid vs Smolder - KR Master Patch 25.12",
+          "rankClaim": "Master",
+          "patch": "25.12",
+          "durationSec": 1634,
+          "region": "KR",
+          "uploaded": "2025-06-26",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 902,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "OuFkBD76k-Y",
+          "title": "(HLE Delight) Lulu Support vs Milio - KR Grandmaster Patch 26.18",
+          "rankClaim": "Grandmaster",
+          "patch": "26.18",
+          "durationSec": 1494,
+          "region": "KR",
+          "player": "Delight",
+          "team": "HLE",
+          "uploaded": "2026-09-23",
+          "moments": []
+        },
+        {
+          "videoId": "8btJsstuO48",
+          "title": "Lulu Support vs Milio - KR Grandmaster Patch 25.13",
+          "rankClaim": "Grandmaster",
+          "patch": "25.13",
+          "durationSec": 1676,
+          "region": "KR",
+          "uploaded": "2025-06-29",
+          "moments": []
+        }
+      ]
+    }
+  ]
+}

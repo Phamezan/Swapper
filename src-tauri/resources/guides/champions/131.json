@@ -1,0 +1,4353 @@
+{
+  "schema": 1,
+  "champion": 131,
+  "generatedAt": "2026-11-07T13:25:14.592Z",
+  "guides": [
+    {
+      "champion": 131,
+      "enemy": 7,
+      "lane": "mid",
+      "patch": "26.21",
+      "reviewed": false,
+      "difficulty": "Easy",
+      "favoredWhen": "She cannot walk up without getting jumped. Hold your engage for her chain-down.",
+      "keyTips": [
+        {
+          "text": "She cannot walk up without getting jumped: your engage is the threat.",
+          "scope": "pair",
+          "sourceIds": [
+            "pumptm"
+          ]
+        },
+        {
+          "text": "Your shield, tankiness and burst outmatch her: build HP and turn.",
+          "scope": "pair",
+          "sourceIds": [
+            "pumptm"
+          ]
+        },
+        {
+          "text": "Her chain answers your jump: engage after it is spent.",
+          "scope": "pair",
+          "sourceIds": [
+            "pumptm"
+          ],
+          "abilityKeys": [
+            {
+              "champion": 7,
+              "key": "E"
+            },
+            {
+              "champion": 131,
+              "key": "E"
+            }
+          ]
+        }
+      ],
+      "enemyTips": {},
+      "sections": {
+        "overview": {
+          "tips": []
+        },
+        "early-lane": {
+          "tips": [
+            {
+              "text": "Trade the moment she steps in: Q+E punishes walkups.",
+              "scope": "pair",
+              "sourceIds": [
+                "pumptm"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 131,
+                  "key": "Q"
+                },
+                {
+                  "champion": 131,
+                  "key": "E"
+                }
+              ]
+            },
+            {
+              "text": "She holds chain: bait it before committing.",
+              "scope": "pair",
+              "sourceIds": [
+                "pumptm"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 7,
+                  "key": "E"
+                }
+              ]
+            }
+          ]
+        },
+        "mid-lane": {
+          "tips": [
+            {
+              "text": "After 6 your all-in out-bursts hers: R when chain is down.",
+              "scope": "pair",
+              "sourceIds": [
+                "pumptm"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 131,
+                  "key": "R"
+                },
+                {
+                  "champion": 7,
+                  "key": "E"
+                }
+              ]
+            },
+            {
+              "text": "Her W pad splits: after Q+W she must pick a target, so be both.",
+              "scope": "pair",
+              "sourceIds": [
+                "pumptm"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 7,
+                  "key": "W"
+                }
+              ]
+            }
+          ]
+        },
+        "win-condition": {
+          "tips": [
+            {
+              "text": "Jump unanswered plus burst superior: the LeBlanc who never chains you never wins.",
+              "scope": "pair",
+              "sourceIds": [
+                "pumptm"
+              ]
+            }
+          ]
+        }
+      },
+      "itemization": [],
+      "sources": [
+        {
+          "id": "pumptm",
+          "author": "pumpTM",
+          "rankClaim": "Rank 1 LeBlanc, 2941LP Challenger (title); Challenger (profile badge) · LeBlanc main",
+          "rank": "challenger",
+          "url": "https://www.mobafire.com/league-of-legends/build/26-17-2941lp-challenger-rank-1-leblancs-gunblade-1v9-build-653268",
+          "kind": "mobafire"
+        }
+      ]
+    },
+    {
+      "champion": 131,
+      "enemy": 238,
+      "lane": "mid",
+      "patch": "26.21",
+      "reviewed": false,
+      "difficulty": "Hard",
+      "favoredWhen": "He refuses early trades and answers every engage backwards. Poke, bait, then commit.",
+      "keyTips": [
+        {
+          "text": "He takes no early trades: concede the lane, win the all-in.",
+          "scope": "pair",
+          "sourceIds": [
+            "aikopanda"
+          ]
+        },
+        {
+          "text": "After Voltaic he pokes: respect the spike.",
+          "scope": "pair",
+          "sourceIds": [
+            "aikopanda"
+          ]
+        },
+        {
+          "text": "His Q curves from his right side: walk into it to make it miss.",
+          "scope": "pair",
+          "sourceIds": [
+            "v222"
+          ],
+          "abilityKeys": [
+            {
+              "champion": 238,
+              "key": "Q"
+            }
+          ]
+        }
+      ],
+      "enemyTips": {
+        "early-lane": [
+          {
+            "text": "Zed often places Living Shadow before Death Mark so he can swap away from skillshots. Hold your crowd control until he has used the swap.",
+            "scope": "enemy",
+            "sourceIds": [
+              "aikopanda"
+            ],
+            "patch": "26.21",
+            "abilityKeys": [
+              {
+                "champion": 238,
+                "key": "W"
+              },
+              {
+                "champion": 238,
+                "key": "R"
+              }
+            ]
+          }
+        ],
+        "win-condition": [
+          {
+            "text": "Death Mark always lands Zed behind his target. Pre-aim crowd control and escapes behind you, not toward where he cast it.",
+            "scope": "enemy",
+            "sourceIds": [
+              "peng04"
+            ],
+            "patch": "26.21",
+            "abilityKeys": [
+              {
+                "champion": 238,
+                "key": "R"
+              }
+            ]
+          }
+        ]
+      },
+      "sections": {
+        "overview": {
+          "tips": []
+        },
+        "early-lane": {
+          "tips": [
+            {
+              "text": "Poke, do not commit early: his backwards combo punishes engages.",
+              "scope": "pair",
+              "sourceIds": [
+                "aikopanda"
+              ]
+            },
+            {
+              "text": "Track his W: shadow-down is your engage.",
+              "scope": "pair",
+              "sourceIds": [
+                "aikopanda",
+                "v222"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 238,
+                  "key": "W"
+                }
+              ]
+            }
+          ]
+        },
+        "mid-lane": {
+          "tips": [
+            {
+              "text": "His backwards WEQ answers your jump: bait it before committing.",
+              "scope": "pair",
+              "sourceIds": [
+                "aikopanda"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 131,
+                  "key": "E"
+                }
+              ]
+            },
+            {
+              "text": "He holds R to dodge yours: bait the R before committing yours.",
+              "scope": "pair",
+              "sourceIds": [
+                "v222"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 238,
+                  "key": "R"
+                },
+                {
+                  "champion": 131,
+                  "key": "R"
+                }
+              ]
+            },
+            {
+              "text": "Death Mark lands him behind you: E to the exit when he ults.",
+              "scope": "pair",
+              "sourceIds": [
+                "peng04"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 238,
+                  "key": "R"
+                },
+                {
+                  "champion": 131,
+                  "key": "E"
+                }
+              ]
+            }
+          ]
+        },
+        "win-condition": {
+          "tips": [
+            {
+              "text": "Engage baited plus R answered: the Zed who never holds answers never kills you.",
+              "scope": "pair",
+              "sourceIds": [
+                "aikopanda",
+                "v222"
+              ]
+            }
+          ]
+        }
+      },
+      "itemization": [],
+      "sources": [
+        {
+          "id": "aikopanda",
+          "author": "AikoPanda",
+          "rankClaim": "Zed main",
+          "url": "https://www.mobafire.com/league-of-legends/build/26-20-video-guides-hidden-combos-all-matchups-zed-all-in-one-guide-652800",
+          "kind": "mobafire"
+        },
+        {
+          "id": "v222",
+          "author": "V222",
+          "rankClaim": "Challenger EUW · Zed main",
+          "rank": "challenger",
+          "url": "https://www.mobafire.com/league-of-legends/build/all-matchups-26-14-zed-guide-2000lp-euw-challenger-652354",
+          "kind": "mobafire"
+        },
+        {
+          "id": "peng04",
+          "author": "Peng04",
+          "rankClaim": "Challenger · Ahri main",
+          "rank": "challenger",
+          "url": "https://www.mobafire.com/league-of-legends/build/26-20-pengs-ahri-guide-5-1mil-points-13x-challenger-648700",
+          "kind": "mobafire"
+        }
+      ]
+    }
+  ],
+  "general": [
+    {
+      "champion": 131,
+      "lane": "jungle",
+      "patch": "26.21",
+      "reviewed": false,
+      "keyTips": [
+        {
+          "text": "Open Raptors into a full clear, then run a second Raptors and Krugs cycle before the first recall.",
+          "scope": "champion",
+          "sourceIds": [
+            "bullwhipgriffin"
+          ]
+        },
+        {
+          "text": "Spend that recall on Dark Seal plus Blasting Wand, upgrading to Mejai's only when stacks stay safe or a risky comeback demands it.",
+          "scope": "champion",
+          "sourceIds": [
+            "bullwhipgriffin"
+          ],
+          "itemIds": [
+            1082,
+            1026
+          ]
+        },
+        {
+          "text": "Play tank Diana to absorb pressure through defenses aimed at the damage that can actually reach her.",
+          "scope": "champion",
+          "sourceIds": [
+            "bullwhipgriffin"
+          ]
+        }
+      ],
+      "sections": {
+        "overview": {
+          "tips": []
+        },
+        "early-lane": {
+          "tips": [
+            {
+              "text": "Take Flash and Smite, treating Flash as the practical escape tool.",
+              "scope": "champion",
+              "sourceIds": [
+                "bullwhipgriffin"
+              ]
+            },
+            {
+              "text": "Start the Dusk and Dawn path through Blasting Wand, Ruby Crystal, Dagger, and Sheen.",
+              "scope": "champion",
+              "sourceIds": [
+                "bullwhipgriffin"
+              ],
+              "itemIds": [
+                2510,
+                1026,
+                1028,
+                1042,
+                3057
+              ]
+            },
+            {
+              "text": "With no lane-state gank route or objective schedule given, pick a full-clear direction that tracks the enemy jungler and keeps a nearby lane reachable.",
+              "scope": "champion",
+              "sourceIds": [
+                "bullwhipgriffin"
+              ]
+            }
+          ]
+        },
+        "mid-lane": {
+          "tips": [
+            {
+              "text": "Buy Riftmaker second on the tank setup for damage that scales with the defense bought afterward.",
+              "scope": "champion",
+              "sourceIds": [
+                "bullwhipgriffin"
+              ],
+              "itemIds": [
+                4633
+              ]
+            },
+            {
+              "text": "Default to Plated Steelcaps, switching to Mercury's Treads once enemy crowd control justifies them.",
+              "scope": "champion",
+              "sourceIds": [
+                "bullwhipgriffin"
+              ],
+              "itemIds": [
+                3047,
+                3111
+              ]
+            },
+            {
+              "text": "Buy Randuin's Omen into multiple critical threats and Thornmail into healing or on-hit attackers.",
+              "scope": "champion",
+              "sourceIds": [
+                "bullwhipgriffin"
+              ],
+              "itemIds": [
+                3143,
+                3075
+              ]
+            },
+            {
+              "text": "Take Unending Despair as the general armor pick outside those cases, usually with Spirit Visage unless Kaenic Rookern fits better.",
+              "scope": "champion",
+              "sourceIds": [
+                "bullwhipgriffin"
+              ],
+              "itemIds": [
+                2502,
+                3065,
+                2504
+              ]
+            },
+            {
+              "text": "Favor Spirit Visage as the general magic-resistance pick around allied healing or shielding, and Kaenic Rookern when burst protection matters more.",
+              "scope": "champion",
+              "sourceIds": [
+                "bullwhipgriffin"
+              ],
+              "itemIds": [
+                3065,
+                2504
+              ]
+            },
+            {
+              "text": "Reserve Force of Nature for heavy damage-over-time or burn teams, skipping it when Diana dies before its stacking pays off.",
+              "scope": "champion",
+              "sourceIds": [
+                "bullwhipgriffin"
+              ],
+              "itemIds": [
+                4401
+              ]
+            },
+            {
+              "text": "When even full defense cannot survive, pivot toward the bruiser damage setup instead.",
+              "scope": "champion",
+              "sourceIds": [
+                "bullwhipgriffin"
+              ]
+            }
+          ]
+        },
+        "win-condition": {
+          "tips": [
+            {
+              "text": "Pick AP Diana through Nashor's Tooth, Sorcerer's Shoes, Rabadon's Deathcap, and Zhonya's Hourglass when the team needs offense.",
+              "scope": "champion",
+              "sourceIds": [
+                "bullwhipgriffin"
+              ],
+              "itemIds": [
+                3115,
+                3020,
+                3089,
+                3157
+              ]
+            },
+            {
+              "text": "On AP Diana, buy Zhonya's for dives, especially when stasis lets Moonfall damage resolve before displacements land.",
+              "scope": "champion",
+              "sourceIds": [
+                "bullwhipgriffin"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 131,
+                  "key": "R"
+                }
+              ]
+            },
+            {
+              "text": "Protect the Dark Seal lead and never rush Mejai's while deaths remain likely.",
+              "scope": "champion",
+              "sourceIds": [
+                "bullwhipgriffin"
+              ],
+              "itemIds": [
+                1082
+              ]
+            }
+          ]
+        }
+      },
+      "itemization": [
+        {
+          "text": "Run the tank page of Conqueror, Triumph, Legend: Haste, and Cut Down with Absolute Focus and Waterwalking.",
+          "scope": "champion",
+          "sourceIds": [
+            "bullwhipgriffin"
+          ]
+        },
+        {
+          "text": "Build Dusk and Dawn into Plated Steelcaps and Riftmaker, then two defenses from Randuin's Omen, Kaenic Rookern, Spirit Visage, Force of Nature, Thornmail, and Frozen Heart.",
+          "scope": "champion",
+          "sourceIds": [
+            "bullwhipgriffin"
+          ],
+          "itemIds": [
+            2510,
+            3047,
+            4633,
+            3143,
+            2504,
+            3065,
+            4401,
+            3075,
+            3110
+          ]
+        },
+        {
+          "text": "Add Spirit Visage with enchanter or healing support behind the long-fight plan, or Kaenic Rookern into concentrated burst.",
+          "scope": "champion",
+          "sourceIds": [
+            "bullwhipgriffin"
+          ],
+          "itemIds": [
+            3065,
+            2504
+          ]
+        },
+        {
+          "text": "Start the alternate AP build on Nashor's Tooth, Sorcerer's Shoes, Rabadon's Deathcap, and Zhonya's when Diana can survive the entry and the team needs damage.",
+          "scope": "champion",
+          "sourceIds": [
+            "bullwhipgriffin"
+          ],
+          "itemIds": [
+            3115,
+            3020,
+            3089
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "id": "bullwhipgriffin",
+          "author": "BullwhipGriffin",
+          "rankClaim": "Diamond (profile badge; no title claim)",
+          "rank": "diamond",
+          "url": "https://www.mobafire.com/league-of-legends/build/s16-creator-of-tank-diana-griffins-diana-jungle-guide-612672",
+          "kind": "mobafire"
+        }
+      ]
+    },
+    {
+      "champion": 131,
+      "lane": "mid",
+      "patch": "26.21",
+      "reviewed": false,
+      "keyTips": [
+        {
+          "text": "Land Q first so E finds a marked target, refunds its cooldown, and enables another dash.",
+          "scope": "champion",
+          "sourceIds": [
+            "diimoonz"
+          ],
+          "abilityKeys": [
+            {
+              "champion": 131,
+              "key": "Q"
+            },
+            {
+              "champion": 131,
+              "key": "E"
+            }
+          ]
+        },
+        {
+          "text": "Initiate teamfights with R, whose pull also threatens several enemies at once.",
+          "scope": "champion",
+          "sourceIds": [
+            "diimoonz"
+          ],
+          "abilityKeys": [
+            {
+              "champion": 131,
+              "key": "R"
+            }
+          ]
+        },
+        {
+          "text": "Hold R until Flash, blink, and dash escapes are spent, since its delay lets those tools dodge it.",
+          "scope": "champion",
+          "sourceIds": [
+            "diimoonz"
+          ],
+          "abilityKeys": [
+            {
+              "champion": 131,
+              "key": "R"
+            }
+          ]
+        }
+      ],
+      "sections": {
+        "overview": {
+          "tips": []
+        },
+        "early-lane": {
+          "tips": [
+            {
+              "text": "Treat passive stacks as the lane and early-fight currency on either the AP or attack-speed build.",
+              "scope": "champion",
+              "sourceIds": [
+                "diimoonz"
+              ]
+            },
+            {
+              "text": "Dash through targets with Q, keeping the reset line in mind when other damage kills the target mid-dash.",
+              "scope": "champion",
+              "sourceIds": [
+                "diimoonz"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 131,
+                  "key": "Q"
+                }
+              ]
+            },
+            {
+              "text": "Soak AP dives with Defiant Dance, which also answers back while charged.",
+              "scope": "champion",
+              "sourceIds": [
+                "diimoonz"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 131,
+                  "key": "W"
+                }
+              ]
+            },
+            {
+              "text": "Read W as physical damage with less value into heavy armor, and hold it as defense there when needed.",
+              "scope": "champion",
+              "sourceIds": [
+                "diimoonz"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 131,
+                  "key": "W"
+                }
+              ]
+            },
+            {
+              "text": "Delay the second E blade to stretch the stun setup, and open from out of vision so the catch stays hard to read.",
+              "scope": "champion",
+              "sourceIds": [
+                "diimoonz"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 131,
+                  "key": "E"
+                }
+              ]
+            },
+            {
+              "text": "After a confirmed E stun, start charging W at once and follow with R near its peak charge.",
+              "scope": "champion",
+              "sourceIds": [
+                "diimoonz"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 131,
+                  "key": "E"
+                },
+                {
+                  "champion": 131,
+                  "key": "W"
+                },
+                {
+                  "champion": 131,
+                  "key": "R"
+                }
+              ]
+            },
+            {
+              "text": "Respect the flagged gank vulnerability before extending for lane pressure.",
+              "scope": "champion",
+              "sourceIds": [
+                "diimoonz"
+              ]
+            },
+            {
+              "text": "Never assume free shoves into pressure; waveclear is weak against it.",
+              "scope": "champion",
+              "sourceIds": [
+                "diimoonz"
+              ]
+            }
+          ]
+        },
+        "mid-lane": {
+          "tips": [
+            {
+              "text": "Split time between side pressure and grouping by map state, since Diana fits both.",
+              "scope": "champion",
+              "sourceIds": [
+                "diimoonz"
+              ]
+            },
+            {
+              "text": "Treat the first one to three core items as the labeled power spike.",
+              "scope": "champion",
+              "sourceIds": [
+                "diimoonz"
+              ]
+            },
+            {
+              "text": "Run the AP path from Sorcerer's Shoes and Lich Bane into Shadowflame and Rabadon's Deathcap.",
+              "scope": "champion",
+              "sourceIds": [
+                "diimoonz"
+              ],
+              "itemIds": [
+                3020,
+                3100,
+                4645,
+                3089
+              ]
+            },
+            {
+              "text": "Take the second path of Liandry's Torment, Riftmaker, and Shadowflame into tanks or bruisers.",
+              "scope": "champion",
+              "sourceIds": [
+                "diimoonz"
+              ],
+              "itemIds": [
+                6653,
+                4633,
+                4645
+              ]
+            },
+            {
+              "text": "Keep access rolling in skirmishes with Q-hit E resets for repeated dashes.",
+              "scope": "champion",
+              "sourceIds": [
+                "diimoonz"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 131,
+                  "key": "Q"
+                },
+                {
+                  "champion": 131,
+                  "key": "E"
+                }
+              ]
+            }
+          ]
+        },
+        "win-condition": {
+          "tips": [
+            {
+              "text": "Let each pulled champion raise Moonfall damage, so multi-target casts pay best.",
+              "scope": "champion",
+              "sourceIds": [
+                "diimoonz"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 131,
+                  "key": "R"
+                }
+              ]
+            },
+            {
+              "text": "Convert openings with a Q-enabled E reset for follow-up access after the strong side-lane and burst value carries in.",
+              "scope": "champion",
+              "sourceIds": [
+                "diimoonz"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 131,
+                  "key": "Q"
+                },
+                {
+                  "champion": 131,
+                  "key": "E"
+                }
+              ]
+            },
+            {
+              "text": "Land skillshots before committing, since the AP build depends on them and escapes run short.",
+              "scope": "champion",
+              "sourceIds": [
+                "diimoonz"
+              ]
+            },
+            {
+              "text": "Zone a key enemy with R or catch several, parking the main target where follow-up damage lands.",
+              "scope": "champion",
+              "sourceIds": [
+                "diimoonz"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 131,
+                  "key": "R"
+                }
+              ]
+            },
+            {
+              "text": "Guard W as a defensive cooldown too, since Diana turns very squishy while it stays down.",
+              "scope": "champion",
+              "sourceIds": [
+                "diimoonz"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 131,
+                  "key": "W"
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "itemization": [
+        {
+          "text": "Run Stormraider's Surge with Manaflow Band, Transcendence, and Gathering Storm plus Shield Bash and Conditioning.",
+          "scope": "champion",
+          "sourceIds": [
+            "diimoonz"
+          ]
+        },
+        {
+          "text": "Take Flash and Ignite as the aggressive summoner setup.",
+          "scope": "champion",
+          "sourceIds": [
+            "diimoonz"
+          ]
+        },
+        {
+          "text": "Hold Zhonya's Hourglass, Void Staff, and Banshee's Veil as situational defense and resistance answers.",
+          "scope": "champion",
+          "sourceIds": [
+            "diimoonz"
+          ],
+          "itemIds": [
+            3157,
+            3135,
+            3102
+          ]
+        },
+        {
+          "text": "For the bruiser route, use Conqueror with Resolve or Stormraider's Surge; one Conqueror setup runs Presence of Mind, Legend: Haste, Last Stand, Shield Bash, and Overgrowth.",
+          "scope": "champion",
+          "sourceIds": [
+            "diimoonz"
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "id": "diimoonz",
+          "author": "Diimoonz",
+          "rankClaim": "Diamond (profile badge; no title claim)",
+          "rank": "diamond",
+          "url": "https://www.mobafire.com/league-of-legends/build/best-midlane-diana-guide-diimoonz-live-everyday-632282",
+          "kind": "mobafire"
+        }
+      ]
+    }
+  ],
+  "vods": [
+    {
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "5jZ4Ou5lEos",
+          "title": "FULL EDUCATIONAL DIANA GAMEPLAY | FREE GUIDE",
+          "rankClaim": "Master+",
+          "patch": "26.21",
+          "durationSec": 1514,
+          "patchEstimated": true,
+          "player": "Sinerias",
+          "uploaded": "2026-10-27",
+          "format": "stream",
+          "cam": true,
+          "moments": [
+            {
+              "atSec": 0,
+              "label": "Rune and build setup"
+            },
+            {
+              "atSec": 69,
+              "label": "Early game jungle pathing"
+            },
+            {
+              "atSec": 353,
+              "label": "Securing early objectives"
+            },
+            {
+              "atSec": 606,
+              "label": "Mid-game pressure and diving"
+            },
+            {
+              "atSec": 907,
+              "label": "Objective control and pacing"
+            },
+            {
+              "atSec": 1216,
+              "label": "Closing the game with Baron",
+              "kind": "baron"
+            },
+            {
+              "atSec": 1404,
+              "label": "Final push and wrap up"
+            }
+          ]
+        },
+        {
+          "videoId": "QOhAYsqDzk0",
+          "title": "FULL EDUCATIONAL DIANA JUNGLE GAMEPLAY",
+          "rankClaim": "Master+",
+          "patch": "26.5",
+          "durationSec": 2282,
+          "patchEstimated": true,
+          "player": "Sinerias",
+          "uploaded": "2026-03-09",
+          "format": "stream",
+          "cam": true,
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 1,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "WiPHNBvrAZg",
+          "title": "Diana Mid vs Annie - KR Challenger Patch 25.16",
+          "rankClaim": "Challenger",
+          "patch": "25.16",
+          "durationSec": 1582,
+          "region": "KR",
+          "uploaded": "2025-08-21",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 4,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "woeojw7SyxY",
+          "title": "Diana Mid vs Twisted Fate - NA Grandmaster Patch 26.08",
+          "rankClaim": "Grandmaster",
+          "patch": "26.8",
+          "durationSec": 1459,
+          "region": "NA",
+          "uploaded": "2026-04-28",
+          "moments": []
+        },
+        {
+          "videoId": "UZPImp6keWc",
+          "title": "Diana Mid vs Twisted Fate - KR Grandmaster Patch 26.04",
+          "rankClaim": "Grandmaster",
+          "patch": "26.4",
+          "durationSec": 1892,
+          "region": "KR",
+          "uploaded": "2026-02-25",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 120,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 175,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 271,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 473,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 726,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 815,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 864,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 892,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 977,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1317,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1390,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1483,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1652,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1805,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1852,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1881,
+              "label": "End credit"
+            }
+          ]
+        },
+        {
+          "videoId": "qg88xyspVFM",
+          "title": "Diana Mid vs Twisted Fate - KR Grandmaster Patch 25.23",
+          "rankClaim": "Grandmaster",
+          "patch": "25.23",
+          "durationSec": 1690,
+          "region": "KR",
+          "uploaded": "2025-11-25",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 5,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "XYD3aZZzp9o",
+          "title": "T1 Oner Diana vs Xin Zhao [ Jungle ] Patch 26.12 Korea Challenger",
+          "rankClaim": "Challenger",
+          "patch": "26.12",
+          "durationSec": 819,
+          "region": "KR",
+          "player": "Oner",
+          "team": "T1",
+          "uploaded": "2026-06-11",
+          "moments": []
+        },
+        {
+          "videoId": "3xagybiHizw",
+          "title": "Diana vs Xin Zhao Jungle [ QuadraKill ] Lol Korea Master Patch 26.4 ✅",
+          "rankClaim": "Master",
+          "patch": "26.4",
+          "durationSec": 1389,
+          "region": "KR",
+          "player": "QuadraKill",
+          "uploaded": "2026-02-26",
+          "moments": []
+        },
+        {
+          "videoId": "4kVRlFXlook",
+          "title": "Diana Jungle vs Xin Zhao - KR Challenger Patch 25.20",
+          "rankClaim": "Challenger",
+          "patch": "25.20",
+          "durationSec": 1661,
+          "region": "KR",
+          "uploaded": "2025-10-13",
+          "moments": []
+        },
+        {
+          "videoId": "sCGAv3xqDeo",
+          "title": "Diana Jungle vs Xin Zhao - EUW Challenger Patch 25.07",
+          "rankClaim": "Challenger",
+          "patch": "25.7",
+          "durationSec": 1725,
+          "region": "EUW",
+          "uploaded": "2025-04-14",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 5,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "_Eqmr-RSdD0",
+          "title": "Diana Top vs Xin Zhao - KR Challenger Patch 26.09",
+          "rankClaim": "Challenger",
+          "patch": "26.9",
+          "durationSec": 1650,
+          "region": "KR",
+          "uploaded": "2026-05-10",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 11,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "sOHzXVbjxkQ",
+          "title": "Diana Jungle vs Master Yi - EUW Grandmaster Patch 25.05",
+          "rankClaim": "Grandmaster",
+          "patch": "25.5",
+          "durationSec": 1645,
+          "region": "EUW",
+          "uploaded": "2025-03-15",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 13,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "w47Fubff96A",
+          "title": "Diana Mid vs Ryze - NA Grandmaster Patch 25.21",
+          "rankClaim": "Grandmaster",
+          "patch": "25.21",
+          "durationSec": 1876,
+          "region": "NA",
+          "uploaded": "2025-11-01",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 18,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "P4K9b69wquo",
+          "title": "Diana vs Tristana Mid - KR Challenger - Patch 25.8 Season 15",
+          "rankClaim": "Challenger",
+          "patch": "25.8",
+          "durationSec": 1261,
+          "region": "KR",
+          "uploaded": "2025-04-21",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 23,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "_rRomr9TmHA",
+          "title": "Diana Mid vs Tryndamere - KR Grandmaster Patch 25.15",
+          "rankClaim": "Grandmaster",
+          "patch": "25.15",
+          "durationSec": 1922,
+          "region": "KR",
+          "uploaded": "2025-08-05",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 25,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "O_kMY6MLcPc",
+          "title": "Diana Mid vs Morgana - KR Master Patch 25.22",
+          "rankClaim": "Master",
+          "patch": "25.22",
+          "durationSec": 1425,
+          "region": "KR",
+          "uploaded": "2025-11-09",
+          "moments": []
+        },
+        {
+          "videoId": "VAZIU6cRAE4",
+          "title": "Diana Mid vs Morgana - VN Challenger Patch 25.19",
+          "rankClaim": "Challenger",
+          "patch": "25.19",
+          "durationSec": 1752,
+          "uploaded": "2025-10-02",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 26,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "3zRicBotLu8",
+          "title": "Diana vs Zilean Top - KR Challenger - Patch 16.20 Season 16",
+          "rankClaim": "Challenger",
+          "patch": "26.20",
+          "durationSec": 1816,
+          "region": "KR",
+          "uploaded": "2026-10-09",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 27,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "u8aiBjkeOxQ",
+          "title": "Diana Mid vs Singed - KR Grandmaster Patch 25.24",
+          "rankClaim": "Grandmaster",
+          "patch": "25.24",
+          "durationSec": 1597,
+          "region": "KR",
+          "uploaded": "2026-01-10",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 69,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 143,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 254,
+              "label": "Get a Triple Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 359,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 407,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 489,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 765,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 913,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 975,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1035,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1056,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1083,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1183,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1381,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1550,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1572,
+              "label": "Take down The Inhibitor"
+            },
+            {
+              "atSec": 1586,
+              "label": "End credit"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 30,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "phAcLuPhiJ0",
+          "title": "Diana Jungle vs Karthus - KR Master Patch 25.14",
+          "rankClaim": "Master",
+          "patch": "25.14",
+          "durationSec": 1966,
+          "region": "KR",
+          "uploaded": "2025-07-26",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 31,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "NgYREiOuwwE",
+          "title": "(UB Ivama) Diana Jungle vs Cho'Gath (M6msu) - EUW Grandmaster Patch 26.21",
+          "rankClaim": "Grandmaster",
+          "patch": "26.21",
+          "durationSec": 1548,
+          "region": "EUW",
+          "player": "UB Ivama",
+          "uploaded": "2026-10-30",
+          "result": "W",
+          "moments": [
+            {
+              "atSec": 468,
+              "label": "Red takes 1st Dragon (Chemtech)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 637,
+              "label": "Tristana takes down Draven"
+            },
+            {
+              "atSec": 684,
+              "label": "Diana outplays Cho'Gath"
+            },
+            {
+              "atSec": 772,
+              "label": "Team fight (3 kills)",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 806,
+              "label": "Red takes 2nd Dragon (Hextech)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 888,
+              "label": "Red takes Rift Herald",
+              "kind": "herald"
+            },
+            {
+              "atSec": 929,
+              "label": "Galio takes down Alistar"
+            },
+            {
+              "atSec": 1062,
+              "label": "Diana picks off LeBlanc"
+            },
+            {
+              "atSec": 1093,
+              "label": "Tristana eliminates Cho'Gath"
+            },
+            {
+              "atSec": 1123,
+              "label": "Red takes 3rd Dragon (Infernal)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1287,
+              "label": "Blue takes Baron",
+              "kind": "baron"
+            },
+            {
+              "atSec": 1403,
+              "label": "Tristana Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1408,
+              "label": "Tristana Triple Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1436,
+              "label": "Red takes 4th Dragon (Infernal)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1484,
+              "label": "Galio kills Draven",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1506,
+              "label": "Diana kills Alistar",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1514,
+              "label": "Mid Inhibitor falls (Blue)"
+            },
+            {
+              "atSec": 1525,
+              "label": "Tristana Double Kill",
+              "kind": "kill"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 42,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "dGHCyQR9P5A",
+          "title": "Diana Jungle vs Corki - NA Challenger Patch 25.09",
+          "rankClaim": "Challenger",
+          "patch": "25.9",
+          "durationSec": 1455,
+          "region": "NA",
+          "uploaded": "2025-05-14",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 55,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "lgSA-SFSAYg",
+          "title": "Diana Mid vs Katarina - NA Grandmaster Patch 25.20",
+          "rankClaim": "Grandmaster",
+          "patch": "25.20",
+          "durationSec": 1989,
+          "region": "NA",
+          "uploaded": "2025-10-21",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 59,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "6ozw0TfxNNM",
+          "title": "(GX ISMA) Diana Jungle vs Jarvan IV - EUW Master Patch 26.13",
+          "rankClaim": "Master",
+          "patch": "26.13",
+          "durationSec": 1780,
+          "region": "EUW",
+          "player": "GX ISMA",
+          "uploaded": "2026-07-07",
+          "moments": []
+        },
+        {
+          "videoId": "bbFbbY8bJs0",
+          "title": "Diana vs Jarvan IV [ Jungle ] Korea Master 507 LP | Patch 26.2 ✅",
+          "rankClaim": "Master",
+          "patch": "26.2",
+          "durationSec": 1475,
+          "region": "KR",
+          "uploaded": "2026-01-28",
+          "moments": []
+        },
+        {
+          "videoId": "7gL8-eibO_o",
+          "title": "Diana Jungle vs Jarvan IV - EUW Challenger Patch 25.23",
+          "rankClaim": "Challenger",
+          "patch": "25.23",
+          "durationSec": 1698,
+          "region": "EUW",
+          "uploaded": "2025-11-29",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 61,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "NVab05HCaAE",
+          "title": "Diana Mid vs Orianna - TW Challenger Patch 25.24",
+          "rankClaim": "Challenger",
+          "patch": "25.24",
+          "durationSec": 1480,
+          "uploaded": "2025-12-30",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 255,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 357,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 467,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 644,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 933,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 959,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 985,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1023,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1067,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1229,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1385,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1413,
+              "label": "Take down The Inhibitor"
+            },
+            {
+              "atSec": 1432,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1469,
+              "label": "End credit"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 62,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "Q0a2awETkvo",
+          "title": "Diana Jungle vs Wukong - VN Challenger Patch 25.08",
+          "rankClaim": "Challenger",
+          "patch": "25.8",
+          "durationSec": 1582,
+          "uploaded": "2025-04-27",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 63,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "WPRI9OUFvnM",
+          "title": "Diana Jungle vs Brand - EUW Grandmaster Patch 25.16",
+          "rankClaim": "Grandmaster",
+          "patch": "25.16",
+          "durationSec": 1634,
+          "region": "EUW",
+          "uploaded": "2025-08-25",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 64,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "wv9HnqKDGwo",
+          "title": "Diana Jungle vs Lee Sin - KR Master Patch 26.19",
+          "rankClaim": "Master",
+          "patch": "26.19",
+          "durationSec": 1851,
+          "region": "KR",
+          "uploaded": "2026-10-02",
+          "moments": []
+        },
+        {
+          "videoId": "bhFMVA5FlmE",
+          "title": "Diana Jungle vs Lee Sin - KR Grandmaster Patch 26.15",
+          "rankClaim": "Grandmaster",
+          "patch": "26.15",
+          "durationSec": 1644,
+          "region": "KR",
+          "uploaded": "2026-08-04",
+          "moments": []
+        },
+        {
+          "videoId": "MLvX70vVwa0",
+          "title": "Diana Jungle vs Lee Sin - VN Challenger Patch 25.17",
+          "rankClaim": "Challenger",
+          "patch": "25.17",
+          "durationSec": 1989,
+          "uploaded": "2025-09-05",
+          "moments": []
+        },
+        {
+          "videoId": "ALmGzt51FQ8",
+          "title": "Diana vs Lee Sin Jungle - KR GrandMaster - Patch 25.13 Season 15",
+          "rankClaim": "Grandmaster",
+          "patch": "25.13",
+          "durationSec": 1896,
+          "region": "KR",
+          "uploaded": "2025-07-15",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 68,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "WCM235AAE0k",
+          "title": "Diana Mid vs Rumble - KR Master Patch 26.17",
+          "rankClaim": "Master",
+          "patch": "26.17",
+          "durationSec": 1587,
+          "region": "KR",
+          "uploaded": "2026-09-05",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 69,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "8qHC9ASV9tg",
+          "title": "Diana vs Cassiopeia 8/8/14 (Mid) | EUW Master | Diana OTP Replay",
+          "rankClaim": "Master",
+          "patch": "26.11",
+          "durationSec": 1670,
+          "region": "EUW",
+          "patchEstimated": true,
+          "uploaded": "2026-05-28",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 76,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "pWT0TrdfTyg",
+          "title": "(GX ISMA) Diana Jungle vs Nidalee - EUW Grandmaster Patch 26.14",
+          "rankClaim": "Grandmaster",
+          "patch": "26.14",
+          "durationSec": 1724,
+          "region": "EUW",
+          "player": "GX ISMA",
+          "uploaded": "2026-07-28",
+          "moments": []
+        },
+        {
+          "videoId": "vHjvZADdfs4",
+          "title": "(Natalie) Diana Jungle vs Nidalee (HLE Kanavi) - KR Grandmaster Patch 26.13",
+          "rankClaim": "Grandmaster",
+          "patch": "26.13",
+          "durationSec": 1806,
+          "region": "KR",
+          "player": "Kanavi",
+          "uploaded": "2026-06-30",
+          "moments": []
+        },
+        {
+          "videoId": "FkSxKY2owXA",
+          "title": "(G2N Markoon) Diana Jungle vs Nidalee - EUW Challenger Patch 26.11",
+          "rankClaim": "Challenger",
+          "patch": "26.11",
+          "durationSec": 1766,
+          "region": "EUW",
+          "player": "G2N Markoon",
+          "uploaded": "2026-06-11",
+          "moments": []
+        },
+        {
+          "videoId": "iQwL5Ul_fIc",
+          "title": "Diana Jungle vs Nidalee - KR Challenger Patch 25.21",
+          "rankClaim": "Challenger",
+          "patch": "25.21",
+          "durationSec": 1963,
+          "region": "KR",
+          "uploaded": "2025-10-27",
+          "moments": []
+        },
+        {
+          "videoId": "M1UIAO2VdFg",
+          "title": "Diana Jungle vs Nidalee - EUW Grandmaster Patch 25.06",
+          "rankClaim": "Grandmaster",
+          "patch": "25.6",
+          "durationSec": 2061,
+          "region": "EUW",
+          "uploaded": "2025-04-02",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 80,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "BTJLo9eERwI",
+          "title": "(ANB Theocacs) Diana Jungle vs Pantheon - EUW Challenger Patch 26.12",
+          "rankClaim": "Challenger",
+          "patch": "26.12",
+          "durationSec": 1440,
+          "region": "EUW",
+          "player": "ANB Theocacs",
+          "uploaded": "2026-06-23",
+          "moments": []
+        },
+        {
+          "videoId": "aq-uvQrjKjs",
+          "title": "Diana vs Pantheon Jungle - KR Challenger - Patch 25.11 Season 15",
+          "rankClaim": "Challenger",
+          "patch": "25.11",
+          "durationSec": 1576,
+          "region": "KR",
+          "uploaded": "2025-06-11",
+          "moments": []
+        },
+        {
+          "videoId": "Uug7jutLdKo",
+          "title": "Diana vs Pantheon Jungle - KR Challenger - Patch 25.11 Season 15",
+          "rankClaim": "Challenger",
+          "patch": "25.11",
+          "durationSec": 1756,
+          "region": "KR",
+          "uploaded": "2025-06-09",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 84,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "49K6OR4V8ks",
+          "title": "Diana vs Akali [ MID ] Patch 26.11 Korea Master 918 LP",
+          "rankClaim": "Master",
+          "patch": "26.11",
+          "durationSec": 1719,
+          "region": "KR",
+          "uploaded": "2026-05-31",
+          "moments": []
+        },
+        {
+          "videoId": "PVEho4Vs5JM",
+          "title": "Diana vs Akali Mid - KR Grandmaster - Patch 25.20 Season 15",
+          "rankClaim": "Grandmaster",
+          "patch": "25.20",
+          "durationSec": 1621,
+          "region": "KR",
+          "uploaded": "2025-10-20",
+          "moments": []
+        },
+        {
+          "videoId": "FWpjJ-4NNs4",
+          "title": "Diana Mid vs Akali - KR Challenger Patch 25.11",
+          "rankClaim": "Challenger",
+          "patch": "25.11",
+          "durationSec": 1477,
+          "region": "KR",
+          "uploaded": "2025-06-13",
+          "moments": []
+        },
+        {
+          "videoId": "vrjwib0CMZk",
+          "title": "Diana vs Akali [ MID ] Lol Korea Master Patch 25.5 ✅",
+          "rankClaim": "Master",
+          "patch": "25.5",
+          "durationSec": 1421,
+          "region": "KR",
+          "uploaded": "2025-03-12",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 86,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "pH0sIDUBYKY",
+          "title": "Diana Mid vs Garen - KR Master Patch 26.07",
+          "rankClaim": "Master",
+          "patch": "26.7",
+          "durationSec": 1558,
+          "region": "KR",
+          "uploaded": "2026-04-07",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 181,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 334,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 406,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 465,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 560,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 589,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 621,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 740,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 770,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 842,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 866,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 881,
+              "label": "Hunt The Dragon",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1085,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1105,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1157,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1182,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1201,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1300,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1346,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1361,
+              "label": "Take down The Inhibitor"
+            },
+            {
+              "atSec": 1405,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1460,
+              "label": "Hunt The Baron Nashor",
+              "kind": "baron"
+            },
+            {
+              "atSec": 1520,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1547,
+              "label": "End credit"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 91,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "nOzp4ODB8AM",
+          "title": "Diana Jungle vs Talon - EUW Challenger Patch 26.09",
+          "rankClaim": "Challenger",
+          "patch": "26.9",
+          "durationSec": 1708,
+          "region": "EUW",
+          "uploaded": "2026-05-04",
+          "moments": []
+        },
+        {
+          "videoId": "RAhSciMuX68",
+          "title": "Diana Jungle vs Talon - EUW Challenger Patch 25.24",
+          "rankClaim": "Challenger",
+          "patch": "25.24",
+          "durationSec": 1589,
+          "region": "EUW",
+          "uploaded": "2025-12-14",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 91,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "qYnd0PmE23w",
+          "title": "Diana Mid vs Talon - NA Grandmaster Patch 26.06",
+          "rankClaim": "Grandmaster",
+          "patch": "26.6",
+          "durationSec": 1578,
+          "region": "NA",
+          "uploaded": "2026-03-24",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 101,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "jg094nWWotA",
+          "title": "Diana Mid vs Xerath - KR Master Patch 26.05",
+          "rankClaim": "Master",
+          "patch": "26.5",
+          "durationSec": 1640,
+          "region": "KR",
+          "uploaded": "2026-03-09",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 102,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "E2wvz8bddt0",
+          "title": "Diana Jungle vs Shyvana - KR Master Patch 26.10",
+          "rankClaim": "Master",
+          "patch": "26.10",
+          "durationSec": 1632,
+          "region": "KR",
+          "uploaded": "2026-05-17",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 103,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "O3ZFCyo-qAw",
+          "title": "Diana Mid vs Ahri - TW Challenger Patch 26.18",
+          "rankClaim": "Challenger",
+          "patch": "26.18",
+          "durationSec": 1606,
+          "uploaded": "2026-09-20",
+          "moments": []
+        },
+        {
+          "videoId": "M162KU20g7I",
+          "title": "Diana Mid vs Ahri - KR Master Patch 26.03",
+          "rankClaim": "Master",
+          "patch": "26.3",
+          "durationSec": 1619,
+          "region": "KR",
+          "uploaded": "2026-02-10",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 130,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 344,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 559,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 588,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 647,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 711,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 795,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 858,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 879,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 953,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1170,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1258,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1334,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1369,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1426,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1492,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1574,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1597,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1608,
+              "label": "End credit"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 104,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "EluT_9xHPwU",
+          "title": "Diana Jungle vs Graves - EUW Master Patch 26.20",
+          "rankClaim": "Master",
+          "patch": "26.20",
+          "durationSec": 1649,
+          "region": "EUW",
+          "uploaded": "2026-10-16",
+          "result": "W",
+          "moments": [
+            {
+              "atSec": 151,
+              "label": "First Blood — Diana kills Graves",
+              "kind": "kill"
+            },
+            {
+              "atSec": 430,
+              "label": "Red takes 1st Dragon (Hextech)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 909,
+              "label": "Red takes 2nd Dragon (Infernal)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 984,
+              "label": "Diana Triple Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1079,
+              "label": "Team fight (3 kills)",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1164,
+              "label": "Diana takes down Graves"
+            },
+            {
+              "atSec": 1218,
+              "label": "Red takes Baron",
+              "kind": "baron"
+            },
+            {
+              "atSec": 1243,
+              "label": "Yasuo picks off Graves"
+            },
+            {
+              "atSec": 1254,
+              "label": "Red takes 3rd Dragon (Cloud)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1259,
+              "label": "Diana picks off Viktor"
+            },
+            {
+              "atSec": 1291,
+              "label": "Mid Inhibitor falls (Blue)"
+            },
+            {
+              "atSec": 1297,
+              "label": "Hwei takes down Master Yi"
+            },
+            {
+              "atSec": 1391,
+              "label": "Diana eliminates Master Yi"
+            },
+            {
+              "atSec": 1564,
+              "label": "Red takes 4th Dragon (Cloud)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1608,
+              "label": "Diana Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1616,
+              "label": "Diana Triple Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1627,
+              "label": "Mid Inhibitor falls (Blue)"
+            },
+            {
+              "atSec": 1634,
+              "label": "Yasuo takes down Gwen"
+            }
+          ]
+        },
+        {
+          "videoId": "xOPQcGeFAQs",
+          "title": "(SK Skeanz) Diana Jungle vs Graves - EUW Challenger Patch 26.11",
+          "rankClaim": "Challenger",
+          "patch": "26.11",
+          "durationSec": 1785,
+          "region": "EUW",
+          "player": "SK Skeanz",
+          "uploaded": "2026-06-01",
+          "moments": []
+        },
+        {
+          "videoId": "fHG_czv_iGo",
+          "title": "Diana Jungle vs Graves - EUW Master Patch 26.01",
+          "rankClaim": "Master",
+          "patch": "26.1",
+          "durationSec": 1576,
+          "region": "EUW",
+          "uploaded": "2026-01-13",
+          "moments": []
+        },
+        {
+          "videoId": "L3IQDylFC5E",
+          "title": "Diana Jungle vs Graves - EUW Challenger Patch 25.12",
+          "rankClaim": "Challenger",
+          "patch": "25.12",
+          "durationSec": 1652,
+          "region": "EUW",
+          "uploaded": "2025-06-21",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 105,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "ITMW11iSqqg",
+          "title": "OTP Diana vs Fizz [ MID ] Lol Korea Master Patch 26.20 ✅",
+          "rankClaim": "Master",
+          "patch": "26.20",
+          "durationSec": 1359,
+          "region": "KR",
+          "player": "OTP",
+          "uploaded": "2026-10-18",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 107,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "H-KtjDFY5To",
+          "title": "Diana Jungle vs Rengar - NA Grandmaster Patch 26.03",
+          "rankClaim": "Grandmaster",
+          "patch": "26.3",
+          "durationSec": 1615,
+          "region": "NA",
+          "uploaded": "2026-02-13",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 112,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 265,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 370,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 456,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 567,
+              "label": "Hunt The Void Grubs",
+              "kind": "grubs"
+            },
+            {
+              "atSec": 673,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 932,
+              "label": "Hunt The Rift Herald",
+              "kind": "herald"
+            },
+            {
+              "atSec": 963,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 988,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1005,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1096,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1210,
+              "label": "Hunt The Dragon",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1230,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1303,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1341,
+              "label": "Hunt The Baron Nashor",
+              "kind": "baron"
+            },
+            {
+              "atSec": 1373,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1460,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1581,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1604,
+              "label": "End credit"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 112,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "BLJOSXkIbtI",
+          "title": "Diana Mid vs Viktor - KR Master Patch 26.20",
+          "rankClaim": "Master",
+          "patch": "26.20",
+          "durationSec": 1541,
+          "region": "KR",
+          "uploaded": "2026-10-16",
+          "result": "W",
+          "moments": [
+            {
+              "atSec": 292,
+              "label": "First Blood — Diana kills Fiora",
+              "kind": "kill"
+            },
+            {
+              "atSec": 392,
+              "label": "Red takes 1st Dragon (Infernal)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 410,
+              "label": "Kai'Sa Triple Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 572,
+              "label": "Team fight (3 kills)",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 675,
+              "label": "Nunu & Willump kills Thresh",
+              "kind": "kill"
+            },
+            {
+              "atSec": 720,
+              "label": "Blue takes 1st Dragon (Cloud)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 738,
+              "label": "Diana takes down Fiora"
+            },
+            {
+              "atSec": 804,
+              "label": "Nunu & Willump takes down Lee Sin"
+            },
+            {
+              "atSec": 836,
+              "label": "Jax takes down Viktor"
+            },
+            {
+              "atSec": 876,
+              "label": "Team fight (3 kills)",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 969,
+              "label": "Diana catches Caitlyn"
+            },
+            {
+              "atSec": 1057,
+              "label": "Blue takes 2nd Dragon (Hextech)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1121,
+              "label": "Nunu & Willump picks off Viktor"
+            },
+            {
+              "atSec": 1196,
+              "label": "Blue takes Baron",
+              "kind": "baron"
+            },
+            {
+              "atSec": 1307,
+              "label": "Diana takes down Fiora"
+            },
+            {
+              "atSec": 1369,
+              "label": "Blue takes 3rd Dragon (Hextech)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1387,
+              "label": "Diana takes down Fiora"
+            },
+            {
+              "atSec": 1518,
+              "label": "Diana outduels Caitlyn again"
+            }
+          ]
+        },
+        {
+          "videoId": "d0vk6QbeRLE",
+          "title": "(FoFo) Diana Mid vs Viktor - KR Master Patch 26.15",
+          "rankClaim": "Master",
+          "patch": "26.15",
+          "durationSec": 1576,
+          "region": "KR",
+          "player": "FoFo",
+          "uploaded": "2026-08-10",
+          "moments": []
+        },
+        {
+          "videoId": "jVZfUm_Q6h4",
+          "title": "Diana Mid vs Viktor - KR Master Patch 25.24",
+          "rankClaim": "Master",
+          "patch": "25.24",
+          "durationSec": 1564,
+          "region": "KR",
+          "uploaded": "2025-12-08",
+          "moments": []
+        },
+        {
+          "videoId": "S94Zay1gQvA",
+          "title": "Diana Mid vs Viktor - KR Master Patch 25.12",
+          "rankClaim": "Master",
+          "patch": "25.12",
+          "durationSec": 1571,
+          "region": "KR",
+          "uploaded": "2025-06-15",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 117,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "IDMqq26SnFs",
+          "title": "Diana Top vs Lulu - KR Master Patch 26.13",
+          "rankClaim": "Master",
+          "patch": "26.13",
+          "durationSec": 1504,
+          "region": "KR",
+          "uploaded": "2026-07-12",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 121,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "X5XxcQ_UMAQ",
+          "title": "Diana Jungle vs Kha'Zix - KR Master Patch 26.18",
+          "rankClaim": "Master",
+          "patch": "26.18",
+          "durationSec": 1747,
+          "region": "KR",
+          "uploaded": "2026-09-23",
+          "moments": []
+        },
+        {
+          "videoId": "wQ6BD51c2SY",
+          "title": "Diana vs Kha'Zix Jungle - KR Challenger - Patch 26.01 Season 16",
+          "rankClaim": "Challenger",
+          "patch": "26.1",
+          "durationSec": 2051,
+          "region": "KR",
+          "uploaded": "2026-01-20",
+          "moments": []
+        },
+        {
+          "videoId": "JmMJ9jRnDFA",
+          "title": "Diana Jungle vs Kha'Zix - EUW Challenger Patch 25.22",
+          "rankClaim": "Challenger",
+          "patch": "25.22",
+          "durationSec": 1668,
+          "region": "EUW",
+          "uploaded": "2025-11-14",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 122,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "pn3Jt5GPIXE",
+          "title": "Diana Top vs Darius - VN Challenger Patch 25.10",
+          "rankClaim": "Challenger",
+          "patch": "25.10",
+          "durationSec": 1503,
+          "uploaded": "2025-05-30",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 126,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "3bs3rS1avGA",
+          "title": "Diana Jungle vs Jayce - NA Grandmaster Patch 25.24",
+          "rankClaim": "Grandmaster",
+          "patch": "25.24",
+          "durationSec": 1597,
+          "region": "NA",
+          "uploaded": "2025-12-23",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 126,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "n-PXsV1oky8",
+          "title": "Diana vs Jayce Mid - KR Challenger - Patch 25.4 Season 15",
+          "rankClaim": "Challenger",
+          "patch": "25.4",
+          "durationSec": 1391,
+          "region": "KR",
+          "uploaded": "2025-03-04",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 141,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "dSwFenZ84qQ",
+          "title": "Diana vs Kayn [ Jungle ] Lol Korea Master Patch 25.19 ✅",
+          "rankClaim": "Master",
+          "patch": "25.19",
+          "durationSec": 1295,
+          "region": "KR",
+          "uploaded": "2025-09-30",
+          "moments": []
+        },
+        {
+          "videoId": "DgKjK7a-UvU",
+          "title": "Diana Jungle vs Kayn - NA Challenger Patch 25.15",
+          "rankClaim": "Challenger",
+          "patch": "25.15",
+          "durationSec": 1545,
+          "region": "NA",
+          "uploaded": "2025-08-11",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 142,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "eOgpxI0G5Xk",
+          "title": "Diana Mid vs Zoe - KR Master Patch 26.19",
+          "rankClaim": "Master",
+          "patch": "26.19",
+          "durationSec": 1742,
+          "region": "KR",
+          "uploaded": "2026-10-02",
+          "moments": []
+        },
+        {
+          "videoId": "IyPfkEWDvck",
+          "title": "Diana Mid vs Zoe - KR Grandmaster Patch 25.07",
+          "rankClaim": "Grandmaster",
+          "patch": "25.7",
+          "durationSec": 1774,
+          "region": "KR",
+          "uploaded": "2025-04-08",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 175,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 488,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 584,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 716,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 828,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 853,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 869,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1012,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1074,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1218,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1340,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1528,
+              "label": "Get a Triple Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1552,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1573,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1695,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1725,
+              "label": "Take down The Inhibitor"
+            },
+            {
+              "atSec": 1741,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1753,
+              "label": "End credit"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 143,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "Gf5kjmUgeeA",
+          "title": "(FXF Creal) Diana Jungle vs Zyra - EUW Grandmaster Patch 26.14",
+          "rankClaim": "Grandmaster",
+          "patch": "26.14",
+          "durationSec": 1430,
+          "region": "EUW",
+          "player": "FXF Creal",
+          "uploaded": "2026-07-21",
+          "moments": []
+        },
+        {
+          "videoId": "q4RbjttljHQ",
+          "title": "(SU RAMES) Diana Jungle vs Zyra - EUW Challenger Patch 26.12",
+          "rankClaim": "Challenger",
+          "patch": "26.12",
+          "durationSec": 1771,
+          "region": "EUW",
+          "player": "SU RAMES",
+          "uploaded": "2026-06-14",
+          "moments": []
+        },
+        {
+          "videoId": "UUaeh7gn568",
+          "title": "Diana Jungle vs Zyra - EUW Challenger Patch 25.18",
+          "rankClaim": "Challenger",
+          "patch": "25.18",
+          "durationSec": 1508,
+          "region": "EUW",
+          "uploaded": "2025-09-23",
+          "moments": []
+        },
+        {
+          "videoId": "nWZz7v2uz9I",
+          "title": "Diana Jungle vs Zyra - EUW Challenger Patch 25.10",
+          "rankClaim": "Challenger",
+          "patch": "25.10",
+          "durationSec": 1447,
+          "region": "EUW",
+          "uploaded": "2025-05-29",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 154,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "8TIZmYrBu6Y",
+          "title": "Diana Jungle vs Zac - EUW Grandmaster Patch 25.13",
+          "rankClaim": "Grandmaster",
+          "patch": "25.13",
+          "durationSec": 1659,
+          "region": "EUW",
+          "uploaded": "2025-07-09",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 157,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "hEJCJhj8lRE",
+          "title": "Diana vs Yasuo [ MID ] Lol Korea Master 408 LP | Patch 26.19 ✅",
+          "rankClaim": "Master",
+          "patch": "26.19",
+          "durationSec": 1429,
+          "region": "KR",
+          "uploaded": "2026-10-03",
+          "moments": [
+            {
+              "atSec": 0,
+              "label": "Early game laning phase"
+            },
+            {
+              "atSec": 223,
+              "label": "Mid game skirmishes"
+            },
+            {
+              "atSec": 693,
+              "label": "Objective control"
+            },
+            {
+              "atSec": 970,
+              "label": "Baron and sieging",
+              "kind": "baron"
+            },
+            {
+              "atSec": 1261,
+              "label": "Final push and victory"
+            }
+          ]
+        },
+        {
+          "videoId": "QdoMYXR2Hok",
+          "title": "Diana vs Yasuo [ MID ] Lol Korea Master Patch 25.20 ✅",
+          "rankClaim": "Master",
+          "patch": "25.20",
+          "durationSec": 1506,
+          "region": "KR",
+          "uploaded": "2025-10-11",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 163,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "nTP1fqaDYnk",
+          "title": "Diana Jungle vs Taliyah - KR Grandmaster Patch 26.16",
+          "rankClaim": "Grandmaster",
+          "patch": "26.16",
+          "durationSec": 1750,
+          "region": "KR",
+          "uploaded": "2026-08-27",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 163,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "Of4UBVC4PZg",
+          "title": "Diana Mid vs Taliyah - KR Challenger Patch 25.06",
+          "rankClaim": "Challenger",
+          "patch": "25.6",
+          "durationSec": 1869,
+          "region": "KR",
+          "uploaded": "2025-03-25",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 152,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 178,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 262,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 319,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 531,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 561,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 650,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 690,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 901,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 936,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1007,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1234,
+              "label": "Get a Quadra Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1259,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1274,
+              "label": "Hunt The Atakhan"
+            },
+            {
+              "atSec": 1324,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1540,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1567,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1848,
+              "label": "End credit"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 164,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "z559ZZ18D7I",
+          "title": "Diana Jungle vs Camille - EUW Challenger Patch 26.06",
+          "rankClaim": "Challenger",
+          "patch": "26.6",
+          "durationSec": 1564,
+          "region": "EUW",
+          "uploaded": "2026-03-30",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 203,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "eFpVehTfZsU",
+          "title": "Diana vs Kindred Jungle [ TripleKill ] Korea Master Patch 25.21",
+          "rankClaim": "Master",
+          "patch": "25.21",
+          "durationSec": 2141,
+          "region": "KR",
+          "player": "TripleKill",
+          "uploaded": "2025-10-29",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 233,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "fUHuySEZ_GM",
+          "title": "Diana Jungle vs Briar - TW Challenger Patch 26.04",
+          "rankClaim": "Challenger",
+          "patch": "26.4",
+          "durationSec": 1480,
+          "uploaded": "2026-03-02",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 234,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "NGndgXEdKOg",
+          "title": "T1 Oner Diana vs Viego Jungle [ Perfect KDA ] Patch 25.11 Korea Challenger",
+          "rankClaim": "Challenger",
+          "patch": "25.11",
+          "durationSec": 1289,
+          "region": "KR",
+          "player": "Oner",
+          "team": "T1",
+          "uploaded": "2025-06-06",
+          "moments": []
+        },
+        {
+          "videoId": "3Hc4KXnNlJU",
+          "title": "Diana Jungle vs Viego - KR Grandmaster Patch 25.11",
+          "rankClaim": "Grandmaster",
+          "patch": "25.11",
+          "durationSec": 1682,
+          "region": "KR",
+          "uploaded": "2025-06-02",
+          "moments": []
+        },
+        {
+          "videoId": "O6h4qWVAyIM",
+          "title": "Diana Jungle vs Viego - EUW Grandmaster Patch 25.04",
+          "rankClaim": "Grandmaster",
+          "patch": "25.4",
+          "durationSec": 1760,
+          "region": "EUW",
+          "uploaded": "2025-03-04",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 238,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "DUD79LIEgwU",
+          "title": "Diana vs Zed [ MID ] Lol Korea Master Patch 25.22 ✅",
+          "rankClaim": "Master",
+          "patch": "25.22",
+          "durationSec": 1779,
+          "region": "KR",
+          "uploaded": "2025-11-12",
+          "moments": []
+        },
+        {
+          "videoId": "VR0KfcR_t7I",
+          "title": "Diana Mid vs Zed - KR Master Patch 25.13",
+          "rankClaim": "Master",
+          "patch": "25.13",
+          "durationSec": 1464,
+          "region": "KR",
+          "uploaded": "2025-06-28",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 245,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "Z0yI2BE9FHQ",
+          "title": "Faker Diana vs Ekko Jungle - NA Master - Patch 25.13 Season 15",
+          "rankClaim": "Master",
+          "patch": "25.13",
+          "durationSec": 1751,
+          "region": "NA",
+          "player": "Faker",
+          "uploaded": "2025-07-12",
+          "moments": []
+        },
+        {
+          "videoId": "wlWWyw6OwHg",
+          "title": "T1 Faker Diana vs Ekko [ Jungle ] Patch 25.13 Ranked NA",
+          "rankClaim": "Master+",
+          "patch": "25.13",
+          "durationSec": 1538,
+          "region": "NA",
+          "player": "Faker",
+          "team": "T1",
+          "uploaded": "2025-07-08",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 246,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "p48QYc4qIw4",
+          "title": "Diana Jungle vs Qiyana - KR Grandmaster Patch 26.17",
+          "rankClaim": "Grandmaster",
+          "patch": "26.17",
+          "durationSec": 1544,
+          "region": "KR",
+          "uploaded": "2026-09-04",
+          "moments": []
+        },
+        {
+          "videoId": "bc1QMcDlhrQ",
+          "title": "Diana vs Qiyana [ Jungle ] Lol Korea Master Patch 25.23 ✅",
+          "rankClaim": "Master",
+          "patch": "25.23",
+          "durationSec": 1435,
+          "region": "KR",
+          "uploaded": "2025-11-22",
+          "moments": []
+        },
+        {
+          "videoId": "HvJX8P8hxFk",
+          "title": "Diana vs Qiyana Jungle - KR Challenger - Patch 25.19 Season 15",
+          "rankClaim": "Challenger",
+          "patch": "25.19",
+          "durationSec": 1631,
+          "region": "KR",
+          "uploaded": "2025-10-01",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 268,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "cXM0ka-se-c",
+          "title": "Diana Mid vs Azir - KR Grandmaster Patch 25.14",
+          "rankClaim": "Grandmaster",
+          "patch": "25.14",
+          "durationSec": 1691,
+          "region": "KR",
+          "uploaded": "2025-07-20",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 421,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "mEEIDQc6j50",
+          "title": "Diana Jungle vs Rek'Sai - KR Master Patch 26.08",
+          "rankClaim": "Master",
+          "patch": "26.8",
+          "durationSec": 1605,
+          "region": "KR",
+          "uploaded": "2026-04-20",
+          "moments": []
+        },
+        {
+          "videoId": "ednnCoX3Jic",
+          "title": "Diana Jungle vs Rek'Sai - KR Master Patch 26.07",
+          "rankClaim": "Master",
+          "patch": "26.7",
+          "durationSec": 1734,
+          "region": "KR",
+          "uploaded": "2026-04-12",
+          "moments": []
+        },
+        {
+          "videoId": "0oo034d0I4M",
+          "title": "Diana Jungle vs Rek'Sai - KR Master Patch 26.02",
+          "rankClaim": "Master",
+          "patch": "26.2",
+          "durationSec": 1566,
+          "region": "KR",
+          "uploaded": "2026-01-26",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 436,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 535,
+              "label": "Hunt The Void Grubs",
+              "kind": "grubs"
+            },
+            {
+              "atSec": 707,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 831,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 854,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 865,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 884,
+              "label": "Hunt The Dragon",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 936,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1061,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1081,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1183,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1206,
+              "label": "Hunt The Dragon",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1328,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1384,
+              "label": "Hunt The Baron Nashor",
+              "kind": "baron"
+            },
+            {
+              "atSec": 1401,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1412,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1436,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1479,
+              "label": "Take down The Inhibitor"
+            },
+            {
+              "atSec": 1509,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1525,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1555,
+              "label": "End credit"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 427,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "YQX6QnTdDus",
+          "title": "Diana vs Ivern Jungle - KR Challenger - Patch 25.19 Season 15",
+          "rankClaim": "Challenger",
+          "patch": "25.19",
+          "durationSec": 1636,
+          "region": "KR",
+          "uploaded": "2025-10-04",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 517,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "wxe7qGyD0-c",
+          "title": "Diana Jungle vs Sylas - KR Master Patch 26.16",
+          "rankClaim": "Master",
+          "patch": "26.16",
+          "durationSec": 1431,
+          "region": "KR",
+          "uploaded": "2026-08-19",
+          "moments": []
+        },
+        {
+          "videoId": "neJ98IGmFYI",
+          "title": "Diana Jungle vs Sylas - KR Grandmaster Patch 25.19",
+          "rankClaim": "Grandmaster",
+          "patch": "25.19",
+          "durationSec": 2009,
+          "region": "KR",
+          "uploaded": "2025-09-28",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 517,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "be9fAcP3o6Y",
+          "title": "Diana Mid vs Sylas - KR Challenger Patch 26.01",
+          "rankClaim": "Challenger",
+          "patch": "26.1",
+          "durationSec": 1602,
+          "region": "KR",
+          "uploaded": "2026-01-18",
+          "moments": []
+        },
+        {
+          "videoId": "GyjC4H77Tm4",
+          "title": "Diana vs Sylas [ MID ] Patch 25.24 Korea Master",
+          "rankClaim": "Master",
+          "patch": "25.24",
+          "durationSec": 1253,
+          "region": "KR",
+          "uploaded": "2025-12-22",
+          "moments": []
+        },
+        {
+          "videoId": "tSEpy9DPYoI",
+          "title": "Diana Mid vs Sylas - KR Master Patch 25.17",
+          "rankClaim": "Master",
+          "patch": "25.17",
+          "durationSec": 1748,
+          "region": "KR",
+          "uploaded": "2025-09-04",
+          "moments": []
+        },
+        {
+          "videoId": "_mUz5MvSYbo",
+          "title": "Diana Mid vs Sylas - KR Master Patch 25.10",
+          "rankClaim": "Master",
+          "patch": "25.10",
+          "durationSec": 1788,
+          "region": "KR",
+          "uploaded": "2025-05-20",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 150,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 299,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 359,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 493,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 602,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 626,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 724,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 746,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 761,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 848,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 909,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1004,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1025,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1097,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1124,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1225,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1399,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1426,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1506,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1523,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1631,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1656,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1668,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1728,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1746,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1756,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1767,
+              "label": "End credit"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 518,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "iMVXAiJUZoc",
+          "title": "Diana Mid vs Neeko - BR Challenger Patch 26.05",
+          "rankClaim": "Challenger",
+          "patch": "26.5",
+          "durationSec": 1464,
+          "uploaded": "2026-03-18",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 711,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "BvPxBf7a-M4",
+          "title": "(FXF Creal) Diana Mid vs Vex - EUW Challenger Patch 26.10",
+          "rankClaim": "Challenger",
+          "patch": "26.10",
+          "durationSec": 1570,
+          "region": "EUW",
+          "player": "FXF Creal",
+          "uploaded": "2026-05-27",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 777,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "f6EldxnfK_8",
+          "title": "Diana Mid vs Yone - VN Master Patch 26.21",
+          "rankClaim": "Master",
+          "patch": "26.21",
+          "durationSec": 1447,
+          "uploaded": "2026-10-30",
+          "result": "W",
+          "moments": [
+            {
+              "atSec": 88,
+              "label": "First Blood — Diana kills Yone",
+              "kind": "kill"
+            },
+            {
+              "atSec": 231,
+              "label": "Lee Sin Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 342,
+              "label": "Red takes 1st Dragon (Cloud)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 399,
+              "label": "Diana takes down Yone"
+            },
+            {
+              "atSec": 429,
+              "label": "Diana picks off Vi"
+            },
+            {
+              "atSec": 551,
+              "label": "Lee Sin picks off Yone"
+            },
+            {
+              "atSec": 657,
+              "label": "Diana catches Yone again"
+            },
+            {
+              "atSec": 683,
+              "label": "Red takes 2nd Dragon (Mountain)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 756,
+              "label": "Diana picks off Vi"
+            },
+            {
+              "atSec": 884,
+              "label": "Diana eliminates Yone"
+            },
+            {
+              "atSec": 974,
+              "label": "Team fight (4 kills)",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1052,
+              "label": "Red takes 3rd Dragon (Hextech)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1087,
+              "label": "Diana takes down Soraka"
+            },
+            {
+              "atSec": 1305,
+              "label": "Thresh takes down Yone"
+            },
+            {
+              "atSec": 1365,
+              "label": "Red takes Baron",
+              "kind": "baron"
+            },
+            {
+              "atSec": 1373,
+              "label": "Blue takes 1st Dragon (Hextech)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1406,
+              "label": "Kalista Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1417,
+              "label": "Bot Inhibitor falls (Blue)"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 799,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "7c2JhEa_hkw",
+          "title": "T1 Oner Diana vs Ambessa [ Jungle ] Korea Challenger 1459 LP | Patch 26.5",
+          "rankClaim": "Challenger",
+          "patch": "26.5",
+          "durationSec": 1773,
+          "region": "KR",
+          "player": "Oner",
+          "team": "T1",
+          "uploaded": "2026-03-07",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 805,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "kz4qx50J6aI",
+          "title": "Diana vs Locke [ MID ] Lol Korea Master Patch 26.14 ✅",
+          "rankClaim": "Master",
+          "patch": "26.14",
+          "durationSec": 1269,
+          "region": "KR",
+          "uploaded": "2026-07-19",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 875,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "rDEnZjADWGc",
+          "title": "Diana Top vs Sett - KR Master Patch 25.13",
+          "rankClaim": "Master",
+          "patch": "25.13",
+          "durationSec": 1595,
+          "region": "KR",
+          "uploaded": "2025-07-15",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 876,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "PQy8NSKfWLk",
+          "title": "Diana vs Lillia Jungle - KR Grandmaster - Patch 25.19 Season 15",
+          "rankClaim": "Grandmaster",
+          "patch": "25.19",
+          "durationSec": 1411,
+          "region": "KR",
+          "uploaded": "2025-09-25",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 893,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "gFf1K6uNoUE",
+          "title": "Diana Mid vs Aurora - KR Master Patch 25.18",
+          "rankClaim": "Master",
+          "patch": "25.18",
+          "durationSec": 2118,
+          "region": "KR",
+          "uploaded": "2025-09-16",
+          "moments": []
+        },
+        {
+          "videoId": "73hr6FQ3yuw",
+          "title": "Diana Mid vs Aurora - KR Grandmaster Patch 25.08",
+          "rankClaim": "Grandmaster",
+          "patch": "25.8",
+          "durationSec": 1668,
+          "region": "KR",
+          "uploaded": "2025-04-21",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 292,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 359,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 494,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 563,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 645,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 661,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 715,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 778,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 839,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 897,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 958,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1022,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1053,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1086,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1124,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1217,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1313,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1462,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1492,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1579,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1647,
+              "label": "End credit"
+            }
+          ]
+        },
+        {
+          "videoId": "yiEEAOTuuC4",
+          "title": "Diana Mid vs Aurora - KR Challenger Patch 25.05",
+          "rankClaim": "Challenger",
+          "patch": "25.5",
+          "durationSec": 1917,
+          "region": "KR",
+          "uploaded": "2025-03-11",
+          "moments": []
+        },
+        {
+          "videoId": "2nrOuHTCroo",
+          "title": "Diana vs Aurora Mid - KR Challenger - Patch 15.4 Season 15",
+          "rankClaim": "Challenger",
+          "patch": "25.4",
+          "durationSec": 1711,
+          "region": "KR",
+          "uploaded": "2025-02-26",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 901,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "2zuux057Zgg",
+          "title": "Diana Mid vs Smolder - KR Challenger Patch 25.04",
+          "rankClaim": "Challenger",
+          "patch": "25.4",
+          "durationSec": 1971,
+          "region": "KR",
+          "uploaded": "2025-02-25",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 146,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 172,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 290,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 404,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 488,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 582,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 685,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 840,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 855,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 875,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1164,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1228,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1280,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1318,
+              "label": "Hunt The Atakhan"
+            },
+            {
+              "atSec": 1373,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1437,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1742,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1816,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1844,
+              "label": "Take down The Inhibitor"
+            },
+            {
+              "atSec": 1861,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1950,
+              "label": "End credit"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 910,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "dZfctr74ZWE",
+          "title": "Diana Mid vs Hwei - KR Grandmaster Patch 25.09",
+          "rankClaim": "Grandmaster",
+          "patch": "25.9",
+          "durationSec": 1710,
+          "region": "KR",
+          "uploaded": "2025-05-06",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 431,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 483,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 813,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 846,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 999,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1065,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1143,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1247,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1328,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1457,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1519,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1636,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1689,
+              "label": "End credit"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 950,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "lWDrFqTm2mI",
+          "title": "Diana Mid vs Naafiri - VN Challenger Patch 26.02",
+          "rankClaim": "Challenger",
+          "patch": "26.2",
+          "durationSec": 1469,
+          "uploaded": "2026-01-30",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 79,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 164,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 228,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 468,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 608,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 782,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 808,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 843,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 876,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 893,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 977,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 992,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1008,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1061,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1309,
+              "label": "Hunt The Dragon",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1422,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1458,
+              "label": "End credit"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

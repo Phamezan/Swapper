@@ -1,0 +1,3638 @@
+{
+  "schema": 1,
+  "champion": 85,
+  "generatedAt": "2026-11-07T13:25:14.592Z",
+  "guides": [],
+  "general": [
+    {
+      "champion": 85,
+      "lane": "top",
+      "patch": "26.21",
+      "reviewed": false,
+      "keyTips": [
+        {
+          "text": "At level 3, stack Q, the empowered fifth attack, and W for three passive marks and the stun, adding another auto when safe.",
+          "scope": "champion",
+          "sourceIds": [
+            "guest-652087"
+          ],
+          "abilityKeys": [
+            {
+              "champion": 85,
+              "key": "Q"
+            },
+            {
+              "champion": 85,
+              "key": "W"
+            }
+          ]
+        },
+        {
+          "text": "At level 6, engage with E, then Flash and R with W and Q for the stun combo, ideally with the opponent near half health.",
+          "scope": "champion",
+          "sourceIds": [
+            "guest-652087"
+          ],
+          "abilityKeys": [
+            {
+              "champion": 85,
+              "key": "E"
+            },
+            {
+              "champion": 85,
+              "key": "R"
+            },
+            {
+              "champion": 85,
+              "key": "W"
+            },
+            {
+              "champion": 85,
+              "key": "Q"
+            }
+          ]
+        },
+        {
+          "text": "Deliver teamfight value by reaching clustered or vulnerable targets with R and layering the stun.",
+          "scope": "champion",
+          "sourceIds": [
+            "guest-652087"
+          ],
+          "abilityKeys": [
+            {
+              "champion": 85,
+              "key": "R"
+            }
+          ]
+        }
+      ],
+      "sections": {
+        "overview": {
+          "tips": []
+        },
+        "early-lane": {
+          "tips": [
+            {
+              "text": "Start E for early poke and mobility, with Q as the smaller poke alternative.",
+              "scope": "champion",
+              "sourceIds": [
+                "guest-652087"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 85,
+                  "key": "E"
+                },
+                {
+                  "champion": 85,
+                  "key": "Q"
+                }
+              ]
+            },
+            {
+              "text": "Pressure enemy last-hits while protecting personal farm and experience.",
+              "scope": "champion",
+              "sourceIds": [
+                "guest-652087"
+              ]
+            },
+            {
+              "text": "Track the enemy jungler and cut extended pressure short when a gank looms.",
+              "scope": "champion",
+              "sourceIds": [
+                "guest-652087"
+              ]
+            },
+            {
+              "text": "On jungler arrivals, run the level-6 engage combo, or E plus Flash into Q and W before level 6.",
+              "scope": "champion",
+              "sourceIds": [
+                "guest-652087"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 85,
+                  "key": "E"
+                },
+                {
+                  "champion": 85,
+                  "key": "Q"
+                },
+                {
+                  "champion": 85,
+                  "key": "W"
+                }
+              ]
+            }
+          ]
+        },
+        "mid-lane": {
+          "tips": [
+            {
+              "text": "Play around objective vision and flank the enemy backline.",
+              "scope": "champion",
+              "sourceIds": [
+                "guest-652087"
+              ]
+            },
+            {
+              "text": "Without an imminent objective, keep farming and press a side lane.",
+              "scope": "champion",
+              "sourceIds": [
+                "guest-652087"
+              ]
+            },
+            {
+              "text": "Set isolated picks from bushes when the map allows.",
+              "scope": "champion",
+              "sourceIds": [
+                "guest-652087"
+              ]
+            }
+          ]
+        },
+        "win-condition": {
+          "tips": [
+            {
+              "text": "Call each fight between protecting carries and diving the enemy backline; both jobs matter late.",
+              "scope": "champion",
+              "sourceIds": [
+                "guest-652087"
+              ]
+            },
+            {
+              "text": "Expect hard games into tanks, heavy shields, and teams with reliable disengage or vision.",
+              "scope": "champion",
+              "sourceIds": [
+                "guest-652087"
+              ]
+            },
+            {
+              "text": "Coordinate the area engage so teammates follow the control and cash in.",
+              "scope": "champion",
+              "sourceIds": [
+                "guest-652087"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 85,
+                  "key": "R"
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "itemization": [
+        {
+          "text": "Run Electrocute with Taste of Blood, Grisly Mementos, and Ultimate Hunter plus Axiom Arcanist and Scorch.",
+          "scope": "champion",
+          "sourceIds": [
+            "guest-652087"
+          ]
+        },
+        {
+          "text": "Build Hextech Rocketbelt first into Sorcerer's Shoes and Shadowflame, then Zhonya's Hourglass, Void Staff, and Rabadon's Deathcap.",
+          "scope": "champion",
+          "sourceIds": [
+            "guest-652087"
+          ],
+          "itemIds": [
+            3152,
+            3020,
+            4645,
+            3157,
+            3135,
+            3089
+          ]
+        },
+        {
+          "text": "Buy time inside R entries with Zhonya's, since the ultimate keeps working through stasis.",
+          "scope": "champion",
+          "sourceIds": [
+            "guest-652087"
+          ],
+          "abilityKeys": [
+            {
+              "champion": 85,
+              "key": "R"
+            }
+          ]
+        },
+        {
+          "text": "Hold Hextech Gunblade as the situational choice, moving to Rocketbelt later when games start on Gunblade.",
+          "scope": "champion",
+          "sourceIds": [
+            "guest-652087"
+          ],
+          "itemIds": [
+            3146
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "id": "guest-652087",
+          "author": "Guest",
+          "rankClaim": "Emerald (guide title)",
+          "rank": "emerald",
+          "url": "https://www.mobafire.com/league-of-legends/build/kennen-top-mid-600k-points-emerald-insights-make-sure-to-read-notes-for-every-item-matchup-652087",
+          "kind": "mobafire"
+        }
+      ]
+    }
+  ],
+  "vods": [
+    {
+      "enemy": 2,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "xfHs-F3ffCw",
+          "title": "Kennen Mid vs Olaf - TW Challenger Patch 25.06",
+          "rankClaim": "Challenger",
+          "patch": "25.6",
+          "durationSec": 1845,
+          "uploaded": "2025-04-02",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 166,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 535,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 569,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 667,
+              "label": "Hunt The Void Grubs",
+              "kind": "grubs"
+            },
+            {
+              "atSec": 888,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1021,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1128,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1154,
+              "label": "Take down The Inhibitor"
+            },
+            {
+              "atSec": 1167,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1314,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1430,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1545,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1583,
+              "label": "Take down The Inhibitor"
+            },
+            {
+              "atSec": 1601,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1698,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1778,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1809,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1824,
+              "label": "End credit"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 2,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "V0aCvhxoB3A",
+          "title": "Kennen Top vs Olaf - KR Master Patch 26.20",
+          "rankClaim": "Master",
+          "patch": "26.20",
+          "durationSec": 1758,
+          "region": "KR",
+          "uploaded": "2026-10-13",
+          "result": "W",
+          "moments": [
+            {
+              "atSec": 168,
+              "label": "First Blood — Kennen kills Kindred",
+              "kind": "kill"
+            },
+            {
+              "atSec": 284,
+              "label": "Kennen catches Olaf"
+            },
+            {
+              "atSec": 307,
+              "label": "Kennen kills Kindred",
+              "kind": "kill"
+            },
+            {
+              "atSec": 346,
+              "label": "Skarner kills Olaf",
+              "kind": "kill"
+            },
+            {
+              "atSec": 715,
+              "label": "Lissandra eliminates Galio"
+            },
+            {
+              "atSec": 780,
+              "label": "Red takes 1st Dragon (Mountain)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 879,
+              "label": "Team fight (3 kills)",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 964,
+              "label": "Morgana kills Kindred",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1095,
+              "label": "Blue takes 1st Dragon (Ocean)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1201,
+              "label": "Tristana Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1278,
+              "label": "Red takes Baron",
+              "kind": "baron"
+            },
+            {
+              "atSec": 1441,
+              "label": "Red takes 2nd Dragon (Infernal)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1549,
+              "label": "Kennen eliminates Soraka"
+            },
+            {
+              "atSec": 1691,
+              "label": "Tristana takes down Ezreal"
+            },
+            {
+              "atSec": 1699,
+              "label": "Tristana Quadra Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1704,
+              "label": "Tristana PENTA KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1733,
+              "label": "Mid Inhibitor falls (Red)"
+            }
+          ]
+        },
+        {
+          "videoId": "uARYSmoFdok",
+          "title": "T1 Doran Kennen vs Olaf [ TOP ] Patch 25.9 Korea Challenger ✅",
+          "rankClaim": "Challenger",
+          "patch": "25.9",
+          "durationSec": 1531,
+          "region": "KR",
+          "player": "Doran",
+          "team": "T1",
+          "uploaded": "2025-05-10",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 3,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "KJgfiijRjdg",
+          "title": "Kennen Mid vs Galio - NA Challenger Patch 25.07",
+          "rankClaim": "Challenger",
+          "patch": "25.7",
+          "durationSec": 1854,
+          "region": "NA",
+          "uploaded": "2025-04-14",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 4,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "codfIB_5KoU",
+          "title": "Kennen Mid vs Twisted Fate - NA Grandmaster Patch 26.01",
+          "rankClaim": "Grandmaster",
+          "patch": "26.1",
+          "durationSec": 1568,
+          "region": "NA",
+          "uploaded": "2026-01-21",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 328,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 462,
+              "label": "Get a Triple Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 490,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 785,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1081,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1104,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1209,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1338,
+              "label": "Get a Triple Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1364,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1385,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1521,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1537,
+              "label": "Take down The Inhibitor"
+            },
+            {
+              "atSec": 1557,
+              "label": "End credit"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 5,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "I__PY6jjkXM",
+          "title": "Kennen Top vs Xin Zhao - KR Master Patch 25.10",
+          "rankClaim": "Master",
+          "patch": "25.10",
+          "durationSec": 1808,
+          "region": "KR",
+          "uploaded": "2025-05-22",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 151,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 214,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 331,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 589,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 829,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 847,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 919,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1044,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1132,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1148,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1283,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1311,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1420,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1458,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1571,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1644,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1669,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1741,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1787,
+              "label": "End credit"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 7,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "VFmEHYFaV3E",
+          "title": "Kennen Mid vs LeBlanc - NA Grandmaster Patch 25.24",
+          "rankClaim": "Grandmaster",
+          "patch": "25.24",
+          "durationSec": 1508,
+          "region": "NA",
+          "uploaded": "2026-01-05",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 186,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 257,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 573,
+              "label": "Hunt The Void Grubs",
+              "kind": "grubs"
+            },
+            {
+              "atSec": 706,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 760,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 827,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 863,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 966,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1033,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1098,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1140,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1446,
+              "label": "Take down The Inhibitor"
+            },
+            {
+              "atSec": 1497,
+              "label": "End credit"
+            }
+          ]
+        },
+        {
+          "videoId": "mlnRvK_Ka_o",
+          "title": "Kennen Mid vs LeBlanc - EUW Grandmaster Patch 25.21",
+          "rankClaim": "Grandmaster",
+          "patch": "25.21",
+          "durationSec": 1628,
+          "region": "EUW",
+          "uploaded": "2025-11-05",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 8,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "VNepA3pOr70",
+          "title": "Kennen Mid vs Vladimir - KR Master Patch 26.07",
+          "rankClaim": "Master",
+          "patch": "26.7",
+          "durationSec": 1577,
+          "region": "KR",
+          "uploaded": "2026-04-16",
+          "moments": []
+        },
+        {
+          "videoId": "D2eLUyjY_o0",
+          "title": "Kennen Mid vs Vladimir - TW Challenger Patch 25.20",
+          "rankClaim": "Challenger",
+          "patch": "25.20",
+          "durationSec": 1900,
+          "uploaded": "2025-10-20",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 12,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "v0Lo8viQk-8",
+          "title": "Kennen Support vs Alistar - EUW Grandmaster Patch 25.19",
+          "rankClaim": "Grandmaster",
+          "patch": "25.19",
+          "durationSec": 1605,
+          "region": "EUW",
+          "uploaded": "2025-10-07",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 21,
+      "lane": "adc",
+      "videos": [
+        {
+          "videoId": "LLZQEyXTUQQ",
+          "title": "Kennen vs Miss Fortune ADC - KR Challenger - Patch 25.19 Season 15",
+          "rankClaim": "Challenger",
+          "patch": "25.19",
+          "durationSec": 1716,
+          "region": "KR",
+          "uploaded": "2025-09-25",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 24,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "Uq4FrQXAjcI",
+          "title": "Kennen Top vs Jax - KR Master Patch 26.18",
+          "rankClaim": "Master",
+          "patch": "26.18",
+          "durationSec": 1896,
+          "region": "KR",
+          "uploaded": "2026-09-16",
+          "moments": []
+        },
+        {
+          "videoId": "ZlZOFJl4jEE",
+          "title": "(CF Danilo) Kennen Top vs Jax - EUW Grandmaster Patch 26.13",
+          "rankClaim": "Grandmaster",
+          "patch": "26.13",
+          "durationSec": 1449,
+          "region": "EUW",
+          "player": "CF Danilo",
+          "uploaded": "2026-07-15",
+          "moments": []
+        },
+        {
+          "videoId": "yGq7IJkEk_8",
+          "title": "Kennen Top vs Jax - KR Challenger Patch 26.09",
+          "rankClaim": "Challenger",
+          "patch": "26.9",
+          "durationSec": 1413,
+          "region": "KR",
+          "uploaded": "2026-05-13",
+          "moments": []
+        },
+        {
+          "videoId": "-DBq7mDyWOc",
+          "title": "Kennen Top vs Jax - KR Master Patch 26.03",
+          "rankClaim": "Master",
+          "patch": "26.3",
+          "durationSec": 1515,
+          "region": "KR",
+          "uploaded": "2026-02-08",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 189,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 270,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 404,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 598,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 692,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 749,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 853,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1033,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1055,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1129,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1328,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1441,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1504,
+              "label": "End credit"
+            }
+          ]
+        },
+        {
+          "videoId": "w6o-_G4HP54",
+          "title": "Kennen Top vs Jax - KR Master Patch 25.21",
+          "rankClaim": "Master",
+          "patch": "25.21",
+          "durationSec": 1799,
+          "region": "KR",
+          "uploaded": "2025-10-31",
+          "moments": []
+        },
+        {
+          "videoId": "RdD2JNBf1Zw",
+          "title": "Kennen Top vs Jax - KR Master Patch 25.17",
+          "rankClaim": "Master",
+          "patch": "25.17",
+          "durationSec": 1767,
+          "region": "KR",
+          "uploaded": "2025-09-03",
+          "moments": []
+        },
+        {
+          "videoId": "So_baPWxZyk",
+          "title": "Kennen Top vs Jax - KR Challenger Patch 25.13",
+          "rankClaim": "Challenger",
+          "patch": "25.13",
+          "durationSec": 1458,
+          "region": "KR",
+          "uploaded": "2025-07-02",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 27,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "BorNCkVzuFU",
+          "title": "Kennen Top vs Singed - KR Master Patch 26.02",
+          "rankClaim": "Master",
+          "patch": "26.2",
+          "durationSec": 1450,
+          "region": "KR",
+          "uploaded": "2026-01-25",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 275,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 411,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 606,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 698,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 903,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 987,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1001,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1023,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1106,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1139,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1179,
+              "label": "Get a Triple Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1261,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1439,
+              "label": "End credit"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 31,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "u9yb0DpJzys",
+          "title": "Kennen Top vs Cho'Gath - EUW Challenger Patch 26.04",
+          "rankClaim": "Challenger",
+          "patch": "26.4",
+          "durationSec": 1572,
+          "region": "EUW",
+          "uploaded": "2026-02-23",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 109,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 196,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 311,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 420,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 547,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 660,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 775,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 843,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 877,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1109,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1134,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1149,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1198,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1303,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1453,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1520,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1538,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1561,
+              "label": "End credit"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 36,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "lXQyMx9eMK8",
+          "title": "Kennen vs Dr. Mundo 9/4/9 (Top) | EUW Master | Kennen OTP Replay",
+          "rankClaim": "Master",
+          "patch": "26.9",
+          "durationSec": 1409,
+          "region": "EUW",
+          "patchEstimated": true,
+          "uploaded": "2026-05-06",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 37,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "CX_7WeZfezg",
+          "title": "Kennen Support vs Sona - KR Master Patch 26.03",
+          "rankClaim": "Master",
+          "patch": "26.3",
+          "durationSec": 1555,
+          "region": "KR",
+          "uploaded": "2026-02-15",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 207,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 284,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 392,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 542,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 636,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 691,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 748,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 794,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 862,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 949,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1036,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1127,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1187,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1257,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1356,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1387,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1406,
+              "label": "Take down The Inhibitor"
+            },
+            {
+              "atSec": 1461,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1495,
+              "label": "Take down The Inhibitor"
+            },
+            {
+              "atSec": 1521,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1544,
+              "label": "End credit"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 39,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "4lO2ylWxoZc",
+          "title": "Kennen Top vs Irelia - KR Master Patch 26.07",
+          "rankClaim": "Master",
+          "patch": "26.7",
+          "durationSec": 1653,
+          "region": "KR",
+          "uploaded": "2026-04-07",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 74,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 214,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 264,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 408,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 435,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 523,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 627,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 662,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 773,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 799,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 880,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 933,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 984,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1008,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1128,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1223,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1318,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1365,
+              "label": "Hunt The Baron Nashor",
+              "kind": "baron"
+            },
+            {
+              "atSec": 1443,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1575,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1604,
+              "label": "Take down The Inhibitor"
+            },
+            {
+              "atSec": 1623,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1642,
+              "label": "End credit"
+            }
+          ]
+        },
+        {
+          "videoId": "ckLY2OY-F6k",
+          "title": "Kennen Top vs Irelia - KR Master Patch 26.06",
+          "rankClaim": "Master",
+          "patch": "26.6",
+          "durationSec": 1573,
+          "region": "KR",
+          "uploaded": "2026-03-23",
+          "moments": []
+        },
+        {
+          "videoId": "AjQopKv9kcE",
+          "title": "Kennen Top vs Irelia - KR Master Patch 25.18",
+          "rankClaim": "Master",
+          "patch": "25.18",
+          "durationSec": 1984,
+          "region": "KR",
+          "uploaded": "2025-09-18",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 42,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "UoLt0cU5Z4Y",
+          "title": "Kennen Mid vs Corki - NA Grandmaster Patch 25.23",
+          "rankClaim": "Grandmaster",
+          "patch": "25.23",
+          "durationSec": 1745,
+          "region": "NA",
+          "uploaded": "2025-12-02",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 43,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "gEX2Zr1udiM",
+          "title": "Kennen Mid vs Karma - EUW Grandmaster Patch 25.15",
+          "rankClaim": "Grandmaster",
+          "patch": "25.15",
+          "durationSec": 1509,
+          "region": "EUW",
+          "uploaded": "2025-08-11",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 43,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "Sg012ZkNnJ8",
+          "title": "Kennen Support vs Karma - KR Master Patch 26.02",
+          "rankClaim": "Master",
+          "patch": "26.2",
+          "durationSec": 1533,
+          "region": "KR",
+          "uploaded": "2026-01-30",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 142,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 319,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 393,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 423,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 455,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 493,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 534,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 630,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 752,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 817,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 835,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 918,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1009,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1170,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1252,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1292,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1305,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1378,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1395,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1482,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1522,
+              "label": "End credit"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 54,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "kgONT4B1hxI",
+          "title": "Kennen Top vs Malphite - TW Challenger Patch 26.05",
+          "rankClaim": "Challenger",
+          "patch": "26.5",
+          "durationSec": 1623,
+          "uploaded": "2026-03-10",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 303,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 443,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 609,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 685,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 829,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 909,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 944,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1083,
+              "label": "Get a Triple Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1110,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1199,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1586,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1612,
+              "label": "End credit"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 55,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "d3XYshuAS6s",
+          "title": "Kennen Mid vs Katarina - EUW Grandmaster Patch 25.17",
+          "rankClaim": "Grandmaster",
+          "patch": "25.17",
+          "durationSec": 1551,
+          "region": "EUW",
+          "uploaded": "2025-09-12",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 58,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "ei_EcO72Kho",
+          "title": "Kennen vs Renekton TOP [ KT PerfecT ] Korea Challenger Patch 26.5",
+          "rankClaim": "Challenger",
+          "patch": "26.5",
+          "durationSec": 1360,
+          "region": "KR",
+          "player": "PerfecT",
+          "team": "KT",
+          "uploaded": "2026-03-11",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 61,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "5HOp80t40B0",
+          "title": "Kennen Mid vs Orianna - KR Master Patch 25.11",
+          "rankClaim": "Master",
+          "patch": "25.11",
+          "durationSec": 1615,
+          "region": "KR",
+          "uploaded": "2025-06-10",
+          "moments": []
+        },
+        {
+          "videoId": "2J2ZJ97nifQ",
+          "title": "Kennen Mid vs Orianna - KR Master Patch 25.09",
+          "rankClaim": "Master",
+          "patch": "25.9",
+          "durationSec": 1879,
+          "region": "KR",
+          "uploaded": "2025-05-12",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 230,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 362,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 478,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 650,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 738,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1000,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1019,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1124,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1357,
+              "label": "Get a Triple Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1470,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1606,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1765,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1812,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1823,
+              "label": "Take down The Inhibitor"
+            },
+            {
+              "atSec": 1837,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1858,
+              "label": "End credit"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 62,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "ElokbpdIVKc",
+          "title": "Kennen Top vs Wukong - KR Master Patch 25.19",
+          "rankClaim": "Master",
+          "patch": "25.19",
+          "durationSec": 1452,
+          "region": "KR",
+          "uploaded": "2025-10-01",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 68,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "Q1tr81Kpgmw",
+          "title": "(DIG Photon) Kennen Top vs Rumble - KR Master Patch 26.14",
+          "rankClaim": "Master",
+          "patch": "26.14",
+          "durationSec": 1493,
+          "region": "KR",
+          "player": "DIG Photon",
+          "uploaded": "2026-07-21",
+          "moments": []
+        },
+        {
+          "videoId": "6tVJd_KtGhw",
+          "title": "HLE Zeus Kennen vs Rumble [ TOP ] Patch 25.24 Korea Master",
+          "rankClaim": "Master",
+          "patch": "25.24",
+          "durationSec": 1759,
+          "region": "KR",
+          "player": "Zeus",
+          "team": "HLE",
+          "uploaded": "2025-12-04",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 69,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "L2Mfa86b-Yw",
+          "title": "Kennen Top vs Cassiopeia - KR Grandmaster Patch 25.05",
+          "rankClaim": "Grandmaster",
+          "patch": "25.5",
+          "durationSec": 1733,
+          "region": "KR",
+          "uploaded": "2025-03-12",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 212,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 285,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 376,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 432,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 494,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 602,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 734,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 898,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1069,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1194,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1299,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1350,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1365,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1384,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1410,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1511,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1528,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1600,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1689,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1712,
+              "label": "End credit"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 74,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "_3flgIDTaOA",
+          "title": "Kennen Top vs Heimerdinger - KR Master Patch 26.01",
+          "rankClaim": "Master",
+          "patch": "26.1",
+          "durationSec": 1618,
+          "region": "KR",
+          "uploaded": "2026-01-12",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 75,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "e330J19-u-M",
+          "title": "Kennen Top vs Nasus - KR Grandmaster Patch 25.11",
+          "rankClaim": "Grandmaster",
+          "patch": "25.11",
+          "durationSec": 1477,
+          "region": "KR",
+          "uploaded": "2025-06-05",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 79,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "DhDMMpmiK8I",
+          "title": "Kennen Top vs Gragas - EUW Grandmaster Patch 25.13",
+          "rankClaim": "Grandmaster",
+          "patch": "25.13",
+          "durationSec": 1889,
+          "region": "EUW",
+          "uploaded": "2025-07-15",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 80,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "XlrCRN7aMSU",
+          "title": "Kennen Top vs Pantheon - KR Grandmaster Patch 25.22",
+          "rankClaim": "Grandmaster",
+          "patch": "25.22",
+          "durationSec": 1473,
+          "region": "KR",
+          "uploaded": "2025-11-15",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 84,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "E3Yk89gN0QE",
+          "title": "Kennen Mid vs Akali - KR Grandmaster Patch 25.04",
+          "rankClaim": "Grandmaster",
+          "patch": "25.4",
+          "durationSec": 2104,
+          "region": "KR",
+          "uploaded": "2025-02-27",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 103,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "xgL5uzSNB70",
+          "title": "Kennen Mid vs Ahri - TW Challenger Patch 25.10",
+          "rankClaim": "Challenger",
+          "patch": "25.10",
+          "durationSec": 1620,
+          "uploaded": "2025-05-26",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 106,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "VSJVlW_bRSY",
+          "title": "Kennen Top vs Volibear - NA Challenger Patch 26.17",
+          "rankClaim": "Challenger",
+          "patch": "26.17",
+          "durationSec": 1688,
+          "region": "NA",
+          "uploaded": "2026-09-02",
+          "result": "W",
+          "moments": [
+            {
+              "atSec": 236,
+              "label": "First Blood — Kennen kills Volibear",
+              "kind": "kill"
+            },
+            {
+              "atSec": 383,
+              "label": "Qiyana kills Volibear",
+              "kind": "kill"
+            },
+            {
+              "atSec": 461,
+              "label": "Kennen catches Volibear"
+            },
+            {
+              "atSec": 617,
+              "label": "Red takes 1st Dragon (Cloud)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 735,
+              "label": "Qiyana kills Volibear",
+              "kind": "kill"
+            },
+            {
+              "atSec": 861,
+              "label": "Kennen eliminates Volibear"
+            },
+            {
+              "atSec": 973,
+              "label": "Red takes 2nd Dragon (Mountain)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 986,
+              "label": "Qiyana kills Seraphine",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1023,
+              "label": "Qiyana kills Volibear",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1162,
+              "label": "Yunara picks off Seraphine"
+            },
+            {
+              "atSec": 1202,
+              "label": "Mid Inhibitor falls (Blue)"
+            },
+            {
+              "atSec": 1295,
+              "label": "Red takes 3rd Dragon (Hextech)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1386,
+              "label": "Blue takes Baron",
+              "kind": "baron"
+            },
+            {
+              "atSec": 1605,
+              "label": "Qiyana kills Seraphine",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1629,
+              "label": "Mid Inhibitor falls (Blue)"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 107,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "U-vyKv1E8Hk",
+          "title": "Kennen Support vs Rengar - KR Master Patch 25.22",
+          "rankClaim": "Master",
+          "patch": "25.22",
+          "durationSec": 1632,
+          "region": "KR",
+          "uploaded": "2025-11-18",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 107,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "qV7KOteMQQE",
+          "title": "Kennen Top vs Rengar - KR Master Patch 26.10",
+          "rankClaim": "Master",
+          "patch": "26.10",
+          "durationSec": 1573,
+          "region": "KR",
+          "uploaded": "2026-05-26",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 112,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "TrHIpr7nXPE",
+          "title": "Kennen Mid vs Viktor - EUW Master Patch 26.17",
+          "rankClaim": "Master",
+          "patch": "26.17",
+          "durationSec": 1895,
+          "region": "EUW",
+          "uploaded": "2026-09-07",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 114,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "shrrFegHMJk",
+          "title": "(LDS Sinmivak) Kennen Top vs Fiora - EUW Grandmaster Patch 26.16",
+          "rankClaim": "Grandmaster",
+          "patch": "26.16",
+          "durationSec": 1561,
+          "region": "EUW",
+          "player": "LDS Sinmivak",
+          "uploaded": "2026-08-16",
+          "moments": []
+        },
+        {
+          "videoId": "VLjV1qThFBA",
+          "title": "(T1 Guardian) Kennen Top vs Fiora - KR Challenger Patch 26.15",
+          "rankClaim": "Challenger",
+          "patch": "26.15",
+          "durationSec": 1651,
+          "region": "KR",
+          "player": "Guardian",
+          "team": "T1",
+          "uploaded": "2026-08-14",
+          "moments": []
+        },
+        {
+          "videoId": "UBBPk9xSF6k",
+          "title": "Kennen Top vs Fiora - KR Grandmaster Patch 25.24",
+          "rankClaim": "Grandmaster",
+          "patch": "25.24",
+          "durationSec": 1449,
+          "region": "KR",
+          "uploaded": "2025-12-09",
+          "moments": []
+        },
+        {
+          "videoId": "F5XCt7NUAbY",
+          "title": "Kennen Top vs Fiora - KR Grandmaster Patch 25.09",
+          "rankClaim": "Grandmaster",
+          "patch": "25.9",
+          "durationSec": 1916,
+          "region": "KR",
+          "uploaded": "2025-05-06",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 117,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "B48Rkth_Wro",
+          "title": "Kennen Support vs Lulu - KR Master Patch 25.24",
+          "rankClaim": "Master",
+          "patch": "25.24",
+          "durationSec": 1545,
+          "region": "KR",
+          "uploaded": "2026-01-01",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 271,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 438,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 532,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 589,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 623,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 665,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 742,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 770,
+              "label": "Hunt The Dragon",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 877,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 967,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1229,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1361,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1500,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1534,
+              "label": "End credit"
+            }
+          ]
+        },
+        {
+          "videoId": "RJCq2XC5NwE",
+          "title": "Kennen Support vs Lulu - KR Master Patch 25.05",
+          "rankClaim": "Master",
+          "patch": "25.5",
+          "durationSec": 1668,
+          "region": "KR",
+          "uploaded": "2025-03-17",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 216,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 454,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 627,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 645,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 722,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 983,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1046,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1131,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1197,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1296,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1321,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1448,
+              "label": "Take down The Inhibitor"
+            },
+            {
+              "atSec": 1473,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1647,
+              "label": "End credit"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 122,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "sqEmCkXa_iI",
+          "title": "Kennen Top vs Darius - KR Master Patch 26.21",
+          "rankClaim": "Master",
+          "patch": "26.21",
+          "durationSec": 1805,
+          "region": "KR",
+          "uploaded": "2026-10-27",
+          "result": "W",
+          "moments": [
+            {
+              "atSec": 491,
+              "label": "Blue takes 1st Dragon (Infernal)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 634,
+              "label": "Kennen catches Darius"
+            },
+            {
+              "atSec": 784,
+              "label": "Kennen Triple Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 843,
+              "label": "Blue takes 2nd Dragon (Ocean)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 862,
+              "label": "Kennen Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 895,
+              "label": "Kennen outduels Darius again"
+            },
+            {
+              "atSec": 963,
+              "label": "Kennen kills Xin Zhao",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1022,
+              "label": "Kennen outplays Darius (3rd time)"
+            },
+            {
+              "atSec": 1167,
+              "label": "Red takes 1st Dragon (Mountain)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1191,
+              "label": "Kennen takes down Zoe"
+            },
+            {
+              "atSec": 1215,
+              "label": "Skarner Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1333,
+              "label": "Kennen solo kills Darius (4th time)",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1405,
+              "label": "Kennen eliminates Darius"
+            },
+            {
+              "atSec": 1500,
+              "label": "Red takes 2nd Dragon (Mountain)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1513,
+              "label": "Blue takes Baron",
+              "kind": "baron"
+            },
+            {
+              "atSec": 1554,
+              "label": "Mid Inhibitor falls (Blue)"
+            },
+            {
+              "atSec": 1783,
+              "label": "Bot Inhibitor falls (Blue)"
+            }
+          ]
+        },
+        {
+          "videoId": "48KrZfkOsUs",
+          "title": "Kennen Top vs Darius - KR Challenger Patch 26.08",
+          "rankClaim": "Challenger",
+          "patch": "26.8",
+          "durationSec": 1503,
+          "region": "KR",
+          "uploaded": "2026-04-24",
+          "result": "L",
+          "moments": [
+            {
+              "atSec": 235,
+              "label": "First Blood — Pantheon kills Darius",
+              "kind": "kill"
+            },
+            {
+              "atSec": 348,
+              "label": "Pantheon takes down Talon"
+            },
+            {
+              "atSec": 451,
+              "label": "Red takes 1st Dragon (Infernal)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 462,
+              "label": "Kennen catches Darius"
+            },
+            {
+              "atSec": 674,
+              "label": "Kennen outduels Darius again"
+            },
+            {
+              "atSec": 731,
+              "label": "Kennen outplays Darius (3rd time)"
+            },
+            {
+              "atSec": 776,
+              "label": "Red takes 2nd Dragon (Cloud)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1098,
+              "label": "Red takes 3rd Dragon (Mountain)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1252,
+              "label": "Pantheon Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1286,
+              "label": "Red takes Baron",
+              "kind": "baron"
+            },
+            {
+              "atSec": 1340,
+              "label": "Pantheon Triple Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1389,
+              "label": "Pantheon Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1426,
+              "label": "Bot Inhibitor falls (Blue)"
+            },
+            {
+              "atSec": 1447,
+              "label": "Kennen eliminates Nautilus"
+            }
+          ]
+        },
+        {
+          "videoId": "fCGFnFpvTHE",
+          "title": "Kennen Top vs Darius - KR Challenger Patch 25.15",
+          "rankClaim": "Challenger",
+          "patch": "25.15",
+          "durationSec": 1597,
+          "region": "KR",
+          "uploaded": "2025-08-05",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 126,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "tAlWD5_bTp8",
+          "title": "Kennen Mid vs Jayce - NA Grandmaster Patch 25.14",
+          "rankClaim": "Grandmaster",
+          "patch": "25.14",
+          "durationSec": 2053,
+          "region": "NA",
+          "uploaded": "2025-07-28",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 131,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "4wvy1Y2xOug",
+          "title": "Kennen Mid vs Diana - NA Master Patch 26.20",
+          "rankClaim": "Master",
+          "patch": "26.20",
+          "durationSec": 1680,
+          "region": "NA",
+          "uploaded": "2026-10-19",
+          "result": "W",
+          "moments": [
+            {
+              "atSec": 129,
+              "label": "First Blood — Kennen kills Diana",
+              "kind": "kill"
+            },
+            {
+              "atSec": 333,
+              "label": "Kennen takes down Diana"
+            },
+            {
+              "atSec": 471,
+              "label": "Red takes 1st Dragon (Ocean)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 556,
+              "label": "Kennen catches Diana again"
+            },
+            {
+              "atSec": 671,
+              "label": "Kennen solo kills Qiyana",
+              "kind": "kill"
+            },
+            {
+              "atSec": 762,
+              "label": "Kennen catches Yunara"
+            },
+            {
+              "atSec": 784,
+              "label": "Red takes 2nd Dragon (Infernal)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 895,
+              "label": "Kennen takes down Qiyana again"
+            },
+            {
+              "atSec": 989,
+              "label": "Kennen outplays Jayce"
+            },
+            {
+              "atSec": 1069,
+              "label": "Kennen outduels Diana (3rd time)"
+            },
+            {
+              "atSec": 1108,
+              "label": "Red takes 3rd Dragon (Chemtech)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1342,
+              "label": "Red takes Baron",
+              "kind": "baron"
+            },
+            {
+              "atSec": 1409,
+              "label": "Kennen Triple Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1456,
+              "label": "Red takes 4th Dragon (Chemtech)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1550,
+              "label": "Kennen outduels Lulu"
+            },
+            {
+              "atSec": 1554,
+              "label": "Kennen Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1643,
+              "label": "Senna Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1656,
+              "label": "Mid Inhibitor falls (Blue)"
+            }
+          ]
+        },
+        {
+          "videoId": "qJqcSauIe6o",
+          "title": "Kennen Mid vs Diana - NA Grandmaster Patch 25.16",
+          "rankClaim": "Grandmaster",
+          "patch": "25.16",
+          "durationSec": 1547,
+          "region": "NA",
+          "uploaded": "2025-08-28",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 150,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "330wMC57uV8",
+          "title": "Kennen vs Gnar Top - KR Challenger - Patch 25.6 Season 15",
+          "rankClaim": "Challenger",
+          "patch": "25.6",
+          "durationSec": 1561,
+          "region": "KR",
+          "uploaded": "2025-03-25",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 157,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "ttEM1f8ATTY",
+          "title": "Kennen Top vs Yasuo - KR Grandmaster Patch 26.15",
+          "rankClaim": "Grandmaster",
+          "patch": "26.15",
+          "durationSec": 1777,
+          "region": "KR",
+          "uploaded": "2026-08-06",
+          "moments": []
+        },
+        {
+          "videoId": "szGp_u4VqpU",
+          "title": "Kennen Top vs Yasuo - KR Master Patch 25.23",
+          "rankClaim": "Master",
+          "patch": "25.23",
+          "durationSec": 1496,
+          "region": "KR",
+          "uploaded": "2025-11-25",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 163,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "3--ykbKU-kY",
+          "title": "Kennen Mid vs Taliyah - KR Master Patch 26.12",
+          "rankClaim": "Master",
+          "patch": "26.12",
+          "durationSec": 1457,
+          "region": "KR",
+          "uploaded": "2026-06-23",
+          "moments": []
+        },
+        {
+          "videoId": "zLHYwS8xKD0",
+          "title": "Kennen Mid vs Taliyah - KR Master Patch 25.13",
+          "rankClaim": "Master",
+          "patch": "25.13",
+          "durationSec": 1725,
+          "region": "KR",
+          "uploaded": "2025-07-07",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 164,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "UIfxbwW651k",
+          "title": "Kennen Top vs Camille - KR Master Patch 25.16",
+          "rankClaim": "Master",
+          "patch": "25.16",
+          "durationSec": 1508,
+          "region": "KR",
+          "uploaded": "2025-08-19",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 166,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "QyNzKxgxc2M",
+          "title": "Kennen Mid vs Akshan - NA Challenger Patch 25.24",
+          "rankClaim": "Challenger",
+          "patch": "25.24",
+          "durationSec": 1535,
+          "region": "NA",
+          "uploaded": "2025-12-15",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 148,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 365,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 516,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 605,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 735,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 814,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 838,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 907,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 937,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 991,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1026,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1152,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1231,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1363,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1454,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1481,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1504,
+              "label": "Take down The Inhibitor"
+            },
+            {
+              "atSec": 1514,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1524,
+              "label": "End credit"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 240,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "fKZmomr5iqI",
+          "title": "Kennen Top vs Kled - KR Master Patch 25.14",
+          "rankClaim": "Master",
+          "patch": "25.14",
+          "durationSec": 1580,
+          "region": "KR",
+          "uploaded": "2025-07-22",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 245,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "yHqn4AoHzLA",
+          "title": "Kennen Top vs Ekko - KR Master Patch 25.24",
+          "rankClaim": "Master",
+          "patch": "25.24",
+          "durationSec": 1604,
+          "region": "KR",
+          "uploaded": "2025-12-23",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 65,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 187,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 269,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 376,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 487,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 597,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 717,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 749,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 770,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 841,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 966,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1092,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1175,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1212,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1250,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1327,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1354,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1461,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1555,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1593,
+              "label": "End credit"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 266,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "Y8njUB779Mg",
+          "title": "(DIG Photon) Kennen Top vs Aatrox - KR Grandmaster Patch 26.16",
+          "rankClaim": "Grandmaster",
+          "patch": "26.16",
+          "durationSec": 1630,
+          "region": "KR",
+          "player": "DIG Photon",
+          "uploaded": "2026-08-27",
+          "moments": []
+        },
+        {
+          "videoId": "r4B_0fqDLLo",
+          "title": "Kennen Top vs Aatrox - KR Master Patch 25.12",
+          "rankClaim": "Master",
+          "patch": "25.12",
+          "durationSec": 1663,
+          "region": "KR",
+          "uploaded": "2025-06-18",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 432,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "v6uBa7HTiOw",
+          "title": "Kennen Support vs Bard - KR Master Patch 26.14",
+          "rankClaim": "Master",
+          "patch": "26.14",
+          "durationSec": 1789,
+          "region": "KR",
+          "uploaded": "2026-07-30",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 497,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "dDguOpxJHe4",
+          "title": "Kennen Support vs Rakan - KR Challenger Patch 26.04",
+          "rankClaim": "Challenger",
+          "patch": "26.4",
+          "durationSec": 1846,
+          "region": "KR",
+          "uploaded": "2026-03-02",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 169,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 377,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 511,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 613,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 639,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 653,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 779,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 835,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 916,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 985,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1107,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1165,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1251,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1488,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1621,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1675,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1693,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1718,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1808,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1835,
+              "label": "End credit"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 516,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "UkurLVgocMk",
+          "title": "(KHK Venour) Kennen Top vs Ornn - EUW Grandmaster Patch 26.11",
+          "rankClaim": "Grandmaster",
+          "patch": "26.11",
+          "durationSec": 1448,
+          "region": "EUW",
+          "player": "KHK Venour",
+          "uploaded": "2026-06-02",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 517,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "mxTdBJiMxNI",
+          "title": "Kennen Top vs Sylas - KR Master Patch 26.19",
+          "rankClaim": "Master",
+          "patch": "26.19",
+          "durationSec": 1653,
+          "region": "KR",
+          "uploaded": "2026-09-30",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 518,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "s7J6MUsdj0A",
+          "title": "Kennen Support vs Neeko - KR Master Patch 25.18",
+          "rankClaim": "Master",
+          "patch": "25.18",
+          "durationSec": 1886,
+          "region": "KR",
+          "uploaded": "2025-09-22",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 555,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "D1vICbFn3Uk",
+          "title": "Kennen Support vs Pyke - KR Grandmaster Patch 25.10",
+          "rankClaim": "Grandmaster",
+          "patch": "25.10",
+          "durationSec": 1967,
+          "region": "KR",
+          "uploaded": "2025-05-30",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 711,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "vr94-jAiW2k",
+          "title": "Kennen Mid vs Vex - NA Grandmaster Patch 25.08",
+          "rankClaim": "Grandmaster",
+          "patch": "25.8",
+          "durationSec": 2158,
+          "region": "NA",
+          "uploaded": "2025-04-29",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 166,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 216,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 378,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 441,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 478,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 605,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 764,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 825,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 868,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 918,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1057,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1085,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1136,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1162,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1268,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1369,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1432,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1593,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1838,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1898,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1957,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 2054,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 2073,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 2137,
+              "label": "End credit"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 799,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "6ntrtnlKhQo",
+          "title": "Kennen Top vs Ambessa - KR Grandmaster Patch 25.20",
+          "rankClaim": "Grandmaster",
+          "patch": "25.20",
+          "durationSec": 1886,
+          "region": "KR",
+          "uploaded": "2025-10-17",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 800,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "rcvU9Lq76O0",
+          "title": "Kennen Top vs Mel - EUW Challenger Patch 26.05",
+          "rankClaim": "Challenger",
+          "patch": "26.5",
+          "durationSec": 1712,
+          "region": "EUW",
+          "uploaded": "2026-03-19",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 805,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "cmd7ON16UiY",
+          "title": "(SK Skeanz) Kennen Top vs Locke - EUW Challenger Patch 26.13",
+          "rankClaim": "Challenger",
+          "patch": "26.13",
+          "durationSec": 1806,
+          "region": "EUW",
+          "player": "SK Skeanz",
+          "uploaded": "2026-06-29",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 875,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "y1JBmwCrZUE",
+          "title": "Kennen Top vs Sett - KR Grandmaster Patch 26.12",
+          "rankClaim": "Grandmaster",
+          "patch": "26.12",
+          "durationSec": 1780,
+          "region": "KR",
+          "uploaded": "2026-06-16",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 887,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "0aRxsLeWCyM",
+          "title": "Kennen Top vs Gwen - KR Grandmaster Patch 25.07",
+          "rankClaim": "Grandmaster",
+          "patch": "25.7",
+          "durationSec": 1986,
+          "region": "KR",
+          "uploaded": "2025-04-10",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 893,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "ekYzHUqYvew",
+          "title": "Kennen Mid vs Aurora - NA Grandmaster Patch 26.08",
+          "rankClaim": "Grandmaster",
+          "patch": "26.8",
+          "durationSec": 1828,
+          "region": "NA",
+          "uploaded": "2026-04-29",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 893,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "kW1Dsqu6fkE",
+          "title": "Kennen vs Aurora Top - KR Challenger - Patch 26.01 Season 16",
+          "rankClaim": "Challenger",
+          "patch": "26.1",
+          "durationSec": 2736,
+          "region": "KR",
+          "uploaded": "2026-01-14",
+          "moments": []
+        },
+        {
+          "videoId": "GJLOFpKPAS8",
+          "title": "Kennen Top vs Aurora - KR Grandmaster Patch 25.06",
+          "rankClaim": "Grandmaster",
+          "patch": "25.6",
+          "durationSec": 2094,
+          "region": "KR",
+          "uploaded": "2025-03-25",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 897,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "N5svi0_-MDA",
+          "title": "Kennen Top vs K'Sante - KR Master Patch 25.08",
+          "rankClaim": "Master",
+          "patch": "25.8",
+          "durationSec": 1651,
+          "region": "KR",
+          "uploaded": "2025-04-23",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 910,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "_B5BJqYzsrs",
+          "title": "(CF CROmpir) Kennen Mid vs Hwei - EUW Challenger Patch 26.13",
+          "rankClaim": "Challenger",
+          "patch": "26.13",
+          "durationSec": 1428,
+          "region": "EUW",
+          "player": "CF CROmpir",
+          "uploaded": "2026-07-07",
+          "moments": []
+        },
+        {
+          "videoId": "F4RJ5Wdsq1E",
+          "title": "Kennen Mid vs Hwei - NA Challenger Patch 25.12",
+          "rankClaim": "Challenger",
+          "patch": "25.12",
+          "durationSec": 1483,
+          "region": "NA",
+          "uploaded": "2025-06-22",
+          "moments": []
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,5347 @@
+{
+  "schema": 1,
+  "champion": 804,
+  "generatedAt": "2026-11-07T13:25:14.592Z",
+  "guides": [],
+  "general": [
+    {
+      "champion": 804,
+      "lane": "adc",
+      "patch": "26.21",
+      "reviewed": false,
+      "keyTips": [
+        {
+          "text": "Check the full trade list before committing: level advantage, available summoners and key cooldowns, support follow-up, rune strength, and minion count. When several run against Yunara, farm safely and wait for a better window.",
+          "scope": "champion",
+          "sourceIds": [
+            "infinem"
+          ]
+        },
+        {
+          "text": "Treat the charged Q as the level-one two-versus-two tool: build stacks with basic attacks, champion hits adding more than minion hits, and only fight with the empowerment ready.",
+          "scope": "champion",
+          "sourceIds": [
+            "infinem"
+          ],
+          "abilityKeys": [
+            {
+              "champion": 804,
+              "key": "Q"
+            }
+          ]
+        },
+        {
+          "text": "Default to a slow push by last-hitting into a big crash wave; hard-push only to clear quickly and freeze only to hold the wave near the turret, running the two-wave plan of slow-push first wave into hard-push second wave.",
+          "scope": "champion",
+          "sourceIds": [
+            "infinem"
+          ]
+        }
+      ],
+      "sections": {
+        "overview": {
+          "tips": []
+        },
+        "early-lane": {
+          "tips": [
+            {
+              "text": "At six Q stacks, trade when a champion hit finishes the stacks, activating Q to use its attack reset inside the exchange.",
+              "scope": "champion",
+              "sourceIds": [
+                "infinem"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 804,
+                  "key": "Q"
+                }
+              ]
+            },
+            {
+              "text": "Treat level two as a two-player race, but never spend too much health contesting it when the support's level-one setup is weaker; repeat that judgment at later level-up windows.",
+              "scope": "champion",
+              "sourceIds": [
+                "infinem"
+              ]
+            },
+            {
+              "text": "Prioritize attack damage in early component buys since Q supplies the attack speed; take Doran's Bow for the smoother start or Doran's Blade for stronger raw lane-trading stats.",
+              "scope": "champion",
+              "sourceIds": [
+                "infinem"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 804,
+                  "key": "Q"
+                }
+              ],
+              "itemIds": [
+                1086,
+                1055
+              ]
+            },
+            {
+              "text": "Run Lethal Tempo with Triumph, Legend: Bloodline, Cut Down, Cash Back, and Triple Tonic for extended trades, with attack speed, adaptive force, and base health shards.",
+              "scope": "champion",
+              "sourceIds": [
+                "infinem"
+              ]
+            }
+          ]
+        },
+        "mid-lane": {
+          "tips": [
+            {
+              "text": "Stay in bot lane until the lane quest completes to collect its extra minion and takedown gold, expected around ten to fifteen minutes into the game.",
+              "scope": "champion",
+              "sourceIds": [
+                "infinem"
+              ]
+            },
+            {
+              "text": "After the quest, move mid by default when the bot tower is down so the pair can reach either side, ward, and contest objectives; stay bot when its tower or an imminent Dragon makes that the better play.",
+              "scope": "champion",
+              "sourceIds": [
+                "infinem"
+              ]
+            },
+            {
+              "text": "After pushing a wave, spend the time before the next one warding, preparing for an objective, taking a safe jungle camp, recalling, or joining a team move, aligning vision with the area the team intends to play around.",
+              "scope": "champion",
+              "sourceIds": [
+                "infinem"
+              ]
+            },
+            {
+              "text": "Never push extended side lanes without vision, and choose safe routes back to teammates so neither Flash nor the ultimate gets spent just crossing fog.",
+              "scope": "champion",
+              "sourceIds": [
+                "infinem"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 804,
+                  "key": "R"
+                }
+              ]
+            },
+            {
+              "text": "Recall well before an objective, then help the support establish vision so the team arrives present and informed for the setup fight.",
+              "scope": "champion",
+              "sourceIds": [
+                "infinem"
+              ]
+            },
+            {
+              "text": "Treat the charged Q and the level-six ultimate as the skirmish spikes, and completed legendary items as the fight windows.",
+              "scope": "champion",
+              "sourceIds": [
+                "infinem"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 804,
+                  "key": "Q"
+                },
+                {
+                  "champion": 804,
+                  "key": "R"
+                }
+              ]
+            }
+          ]
+        },
+        "win-condition": {
+          "tips": [
+            {
+              "text": "Build through the crit curve and use the extended objective fights for sustained attacks, taking only trades and skirmishes with enough support, cooldowns, and numbers advantage.",
+              "scope": "champion",
+              "sourceIds": [
+                "infinem"
+              ]
+            },
+            {
+              "text": "In teamfights, hit the nearest safe target and track enemy engage and burst cooldowns, growing aggressive only as the abilities that threaten survival go used.",
+              "scope": "champion",
+              "sourceIds": [
+                "infinem"
+              ]
+            },
+            {
+              "text": "Preserve health and positioning for objective fights, choosing presence, vision, and front-to-back damage over an isolated split-push plan.",
+              "scope": "champion",
+              "sourceIds": [
+                "infinem"
+              ]
+            }
+          ]
+        }
+      },
+      "itemization": [
+        {
+          "text": "Open Doran's Bow into Yun Tal Wildarrows, Gluttonous Greaves, Runaan's Hurricane, Infinity Edge, Lord Dominik's Regards, Bloodthirster, and Guardian Angel.",
+          "scope": "champion",
+          "sourceIds": [
+            "infinem"
+          ],
+          "itemIds": [
+            1086,
+            3032,
+            3008,
+            3085,
+            3031,
+            3036,
+            3072,
+            3026
+          ]
+        },
+        {
+          "text": "Vary the first item with Kraken Slayer, Blade of the Ruined King, or Hexoptics C44, the boots with Berserker's Greaves or Plated Steelcaps, and the later slots with Phantom Dancer, Terminus, Mortal Reminder, Immortal Shieldbow, Maw of Malmortius, Hextech Gunblade, Zhonya's Hourglass, or Mercurial Scimitar by need.",
+          "scope": "champion",
+          "sourceIds": [
+            "infinem"
+          ],
+          "itemIds": [
+            6672,
+            2523,
+            3006,
+            3047,
+            3046,
+            3302,
+            3033,
+            6673,
+            3156,
+            3146,
+            3157,
+            3139
+          ]
+        },
+        {
+          "text": "Use W for waveclear, poke, or a slow, and keep E and R mobility ready for repositioning, remembering that E gains a fresh cooldown when R ends.",
+          "scope": "champion",
+          "sourceIds": [
+            "infinem"
+          ],
+          "abilityKeys": [
+            {
+              "champion": 804,
+              "key": "W"
+            },
+            {
+              "champion": 804,
+              "key": "E"
+            },
+            {
+              "champion": 804,
+              "key": "R"
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "id": "infinem",
+          "author": "inFinem",
+          "rankClaim": "Platinum (profile badge); none shown",
+          "rank": "platinum",
+          "url": "https://www.mobafire.com/league-of-legends/build/26-21-the-unbroken-faith-yunara-guide-648698",
+          "kind": "mobafire"
+        }
+      ]
+    }
+  ],
+  "vods": [
+    {
+      "lane": "adc",
+      "videos": [
+        {
+          "videoId": "W5R58bvhm4Q",
+          "title": "\"HanQL\" 2255LP Yunara : His Mechanic is so BRUTAL \" FEARLESS SAVAGE \" Engsub",
+          "rankClaim": "Master+",
+          "patch": "26.21",
+          "durationSec": 1502,
+          "patchEstimated": true,
+          "player": "HanQL",
+          "uploaded": "2026-11-02",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "9Yfwzp8qTlw",
+          "title": "JackeyLove : His YUNARA is BREAKING KR HighElo - Engsub",
+          "rankClaim": "Master+",
+          "patch": "26.21",
+          "durationSec": 852,
+          "region": "KR",
+          "patchEstimated": true,
+          "player": "JackeyLove",
+          "uploaded": "2026-10-30",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "dxcmmvrkvDM",
+          "title": "\"Jz\" 2000LP Yunara : His Mechanic is so BRUTAL, FEARLESS Savage - Engsub",
+          "rankClaim": "Master+",
+          "patch": "26.20",
+          "durationSec": 735,
+          "patchEstimated": true,
+          "player": "Jz",
+          "uploaded": "2026-10-09",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "XSa8Xu6XwNs",
+          "title": "\"HanQL\" 2255LP Yunara : He is so BRUTAL in Laning Phase - Engsub",
+          "rankClaim": "Master+",
+          "patch": "26.19",
+          "durationSec": 1640,
+          "patchEstimated": true,
+          "player": "HanQL",
+          "uploaded": "2026-10-05",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "InxczUmsy_I",
+          "title": "\"HanQL\" 2255LP Yunara : His Kiting and Spacing is so Good in TeamFight - Engsub",
+          "rankClaim": "Master+",
+          "patch": "26.19",
+          "durationSec": 817,
+          "patchEstimated": true,
+          "player": "HanQL",
+          "uploaded": "2026-10-02",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "45Yyy7V3Hpk",
+          "title": "\"HanQL\" 2255LP Yunara : This Dude is STORMING Super Server HighElo with Insane Mechanic - Engsub",
+          "rankClaim": "Master+",
+          "patch": "26.19",
+          "durationSec": 1225,
+          "patchEstimated": true,
+          "player": "HanQL",
+          "uploaded": "2026-09-25",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "w-YqdNGSWW4",
+          "title": "\"Jz\" 2000LP Yunara : This Dude is a F*CKING BEAST in TeamFight - Engsub ( vs Ez, Tris )",
+          "rankClaim": "Master+",
+          "patch": "26.18",
+          "durationSec": 1635,
+          "patchEstimated": true,
+          "player": "Jz",
+          "uploaded": "2026-09-20",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "AZBl0Bbs10A",
+          "title": "\"HanQL\" 2255LP Yunara : He is so AGGRESSIVE in Early Game - Engsub",
+          "rankClaim": "Master+",
+          "patch": "26.18",
+          "durationSec": 1138,
+          "patchEstimated": true,
+          "player": "HanQL",
+          "uploaded": "2026-09-12",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "rS7M72ECNFU",
+          "title": "\"Jz\" 2000LP Yunara : This Is How You CARRY With Yunara - Engsub",
+          "rankClaim": "Master+",
+          "patch": "26.17",
+          "durationSec": 848,
+          "patchEstimated": true,
+          "player": "Jz",
+          "uploaded": "2026-09-09",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "dtbAKwWz0n0",
+          "title": "Gumayusi Review : THE NEW T1 YUNARA SKIN \" My Yunara Skin is Actually Sick \" Engsub",
+          "rankClaim": "Master+",
+          "patch": "26.14",
+          "durationSec": 1333,
+          "patchEstimated": true,
+          "player": "Gumayusi",
+          "uploaded": "2026-07-24",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "V8CxXcOpB7o",
+          "title": "\"HanQL\" 2255LP Yunara : This Dude Mechanic is so AGGRESSIVE - Engsub (Yunara vs Aphe, Tris)",
+          "rankClaim": "Master+",
+          "patch": "26.14",
+          "durationSec": 1149,
+          "patchEstimated": true,
+          "player": "HanQL",
+          "uploaded": "2026-07-21",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "tVKhPAeJQkY",
+          "title": "\"HanQL\" 2255LP Yunara : His Mechanic is so DAM BRUTAL, He Fear No One - Engsub",
+          "rankClaim": "Master+",
+          "patch": "26.14",
+          "durationSec": 1532,
+          "patchEstimated": true,
+          "player": "HanQL",
+          "uploaded": "2026-07-17",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "9RSijLHqIvs",
+          "title": "2255LP Yunara \"HanQL\" From ZERO to HERO Rushless Comeback",
+          "rankClaim": "Master+",
+          "patch": "26.13",
+          "durationSec": 921,
+          "patchEstimated": true,
+          "player": "HanQL",
+          "uploaded": "2026-07-07",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "ykyr5V792jA",
+          "title": "Smash Yunara : DOMINATING KR Challenger in Less 15 Min - Engsub ( Yunara vs Tris )",
+          "rankClaim": "Challenger",
+          "patch": "26.13",
+          "durationSec": 612,
+          "region": "KR",
+          "patchEstimated": true,
+          "player": "Smash",
+          "uploaded": "2026-07-02",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "Q0_SNFIe1kw",
+          "title": "HanQL : His Yunara Mechanic is so AGGRESSIVE, Insane 1v5 HardCarrying The Game - Engsub",
+          "rankClaim": "Master+",
+          "patch": "26.13",
+          "durationSec": 1607,
+          "patchEstimated": true,
+          "player": "HanQL",
+          "uploaded": "2026-06-28",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "JUTz2PEvq0g",
+          "title": "DK Smash : His YUNARA is LEGIT SO CLEAN - Engsub",
+          "rankClaim": "Master+",
+          "patch": "26.8",
+          "durationSec": 1019,
+          "patchEstimated": true,
+          "player": "Smash",
+          "uploaded": "2026-04-28",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "K089cryChQo",
+          "title": "Gumayusi : His Yunara Kiting Skill is LEGIT INSANE - Engsub",
+          "rankClaim": "Master+",
+          "patch": "26.8",
+          "durationSec": 963,
+          "patchEstimated": true,
+          "player": "Gumayusi",
+          "uploaded": "2026-04-27",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "NJ5DYXOR6J0",
+          "title": "JackeyLove : His YUNARA is TEARING KOREAN APART - Engsub",
+          "rankClaim": "Master+",
+          "patch": "26.8",
+          "durationSec": 937,
+          "patchEstimated": true,
+          "player": "JackeyLove",
+          "uploaded": "2026-04-26",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "u0d-haWuyiI",
+          "title": "JackeyLove Yunara : DESTROYING KOREAN Master Elo - Engsub",
+          "rankClaim": "Master",
+          "patch": "26.8",
+          "durationSec": 888,
+          "patchEstimated": true,
+          "player": "JackeyLove",
+          "uploaded": "2026-04-22",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "J25uAnB30us",
+          "title": "Uzi : His Yunara is a FREAKING BEAST - Engsub",
+          "rankClaim": "Master+",
+          "patch": "26.8",
+          "durationSec": 988,
+          "patchEstimated": true,
+          "player": "Uzi",
+          "uploaded": "2026-04-19",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "4F5s1vG_bK8",
+          "title": "JackeyLove : His Yunara Mechanic is so AGGRESSIVE in Early Game - Engsub",
+          "rankClaim": "Master+",
+          "patch": "26.7",
+          "durationSec": 823,
+          "patchEstimated": true,
+          "player": "JackeyLove",
+          "uploaded": "2026-04-14",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "qZxKoeVtdIg",
+          "title": "T1 Peyz : His Yunara Mechanic is so AGGRESSIVE",
+          "rankClaim": "Master+",
+          "patch": "26.7",
+          "durationSec": 943,
+          "patchEstimated": true,
+          "player": "Peyz",
+          "uploaded": "2026-04-11",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "RdZdyeNv6j0",
+          "title": "Uzi Yunara : I'm Training Back for PRO - Engsub",
+          "rankClaim": "Master+",
+          "patch": "26.7",
+          "durationSec": 998,
+          "patchEstimated": true,
+          "player": "Uzi",
+          "uploaded": "2026-04-04",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "794QzSxjj5g",
+          "title": "DK Smash : His Yunara STORMING KR Challenger in Less 20 Min - Engsub",
+          "rankClaim": "Challenger",
+          "patch": "26.7",
+          "durationSec": 611,
+          "region": "KR",
+          "patchEstimated": true,
+          "player": "Smash",
+          "uploaded": "2026-04-04",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "6fIthJT7pbE",
+          "title": "Uzi : His Yunara is a DEADLY KILLING MACHINE - Engsub",
+          "rankClaim": "Master+",
+          "patch": "26.7",
+          "durationSec": 1096,
+          "patchEstimated": true,
+          "player": "Uzi",
+          "uploaded": "2026-04-03",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "d8O3nybvkm8",
+          "title": "Smash Yunara : Insane 1v5 Rambo Dominating Perfomance - Engsub",
+          "rankClaim": "Master+",
+          "patch": "26.7",
+          "durationSec": 1291,
+          "patchEstimated": true,
+          "player": "Smash",
+          "uploaded": "2026-04-02",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "R88gUPWPR8A",
+          "title": "Uzi : His Yunara Mechanic is Phenomenal - Engsub",
+          "rankClaim": "Master+",
+          "patch": "26.6",
+          "durationSec": 690,
+          "patchEstimated": true,
+          "player": "Uzi",
+          "uploaded": "2026-03-27",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "adWEkXuTgoA",
+          "title": "Aiming : His Yunara is Ridiculous Incredible - Engsub",
+          "rankClaim": "Master+",
+          "patch": "26.6",
+          "durationSec": 666,
+          "patchEstimated": true,
+          "player": "Aiming",
+          "uploaded": "2026-03-25",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "dmNSRHIH_JM",
+          "title": "Teddy : His Yunara is LEGIT INSANE - Engsub",
+          "rankClaim": "Master+",
+          "patch": "26.6",
+          "durationSec": 902,
+          "patchEstimated": true,
+          "player": "Teddy",
+          "uploaded": "2026-03-23",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "y-xii4ehCsM",
+          "title": "Gumayusi : His Yunara is so AGGRESSIVE in Early Game - Engsub",
+          "rankClaim": "Master+",
+          "patch": "26.6",
+          "durationSec": 1083,
+          "patchEstimated": true,
+          "player": "Gumayusi",
+          "uploaded": "2026-03-20",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "zZRAfWjIFq4",
+          "title": "Aiming : His Yunara is a F*CKING BEAST - Engsub",
+          "rankClaim": "Master+",
+          "patch": "26.6",
+          "durationSec": 704,
+          "patchEstimated": true,
+          "player": "Aiming",
+          "uploaded": "2026-03-19",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "7xnNeIi8t5s",
+          "title": "Uzi : His Yunara is a F*CKING BEAST - Engsub",
+          "rankClaim": "Master+",
+          "patch": "26.5",
+          "durationSec": 926,
+          "patchEstimated": true,
+          "player": "Uzi",
+          "uploaded": "2026-03-09",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "4pFkOG_hOeU",
+          "title": "Uzi Yunara : He is The SAVIOR We Need - Engsub",
+          "rankClaim": "Master+",
+          "patch": "26.5",
+          "durationSec": 1044,
+          "patchEstimated": true,
+          "player": "Uzi",
+          "uploaded": "2026-03-06",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "hM4ysFHl6xE",
+          "title": "Uzi : His Yunara Mechanic is too SMOOTH - Engsub",
+          "rankClaim": "Master+",
+          "patch": "26.4",
+          "durationSec": 818,
+          "patchEstimated": true,
+          "player": "Uzi",
+          "uploaded": "2026-03-03",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "YQFymN9m7qs",
+          "title": "Smash : His Yunara Spacing is MAGNIFICENT - Engsub",
+          "rankClaim": "Master+",
+          "patch": "26.4",
+          "durationSec": 1243,
+          "patchEstimated": true,
+          "player": "Smash",
+          "uploaded": "2026-03-02",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "H5-Allzucgw",
+          "title": "Uzi : His Yunara Kiting is Absolutely Amazing - Engsub",
+          "rankClaim": "Master+",
+          "patch": "26.4",
+          "durationSec": 1012,
+          "patchEstimated": true,
+          "player": "Uzi",
+          "uploaded": "2026-03-01",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "eLxfv1ZlWiE",
+          "title": "Uzi : His Yunara is going NUT in Super Server HighElo - Engsub",
+          "rankClaim": "Master+",
+          "patch": "26.4",
+          "durationSec": 843,
+          "patchEstimated": true,
+          "player": "Uzi",
+          "uploaded": "2026-02-26",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "zmK-Mn3OuEg",
+          "title": "TEDDY : His Yunara is Get Out of Control - Engsub",
+          "rankClaim": "Master+",
+          "patch": "26.4",
+          "durationSec": 788,
+          "patchEstimated": true,
+          "player": "Teddy",
+          "uploaded": "2026-02-22",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "CmvmX0VeLvI",
+          "title": "Smash : His Yunara Mechanic is so AGGRESSIVE - Engsub",
+          "rankClaim": "Master+",
+          "patch": "26.3",
+          "durationSec": 1086,
+          "patchEstimated": true,
+          "player": "Smash",
+          "uploaded": "2026-02-13",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "BJRUJqCCiGk",
+          "title": "Smash : His Yunara is so Aggressive - Engsub",
+          "rankClaim": "Master+",
+          "patch": "26.3",
+          "durationSec": 601,
+          "patchEstimated": true,
+          "player": "Smash",
+          "uploaded": "2026-02-08",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "FDpjLvxh9z0",
+          "title": "Smash : His Yunara become a Monster with this Build - Engsub",
+          "rankClaim": "Master+",
+          "patch": "26.1",
+          "durationSec": 968,
+          "patchEstimated": true,
+          "player": "Smash",
+          "uploaded": "2026-01-15",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "hCi7vpt2Fvw",
+          "title": "HanQL Yuanra : This NEW ITEM is so Dam Strong for Yunara - Engsub",
+          "rankClaim": "Master+",
+          "patch": "26.1",
+          "durationSec": 1084,
+          "patchEstimated": true,
+          "player": "HanQL",
+          "uploaded": "2026-01-13",
+          "format": "stream",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 4,
+      "lane": "adc",
+      "videos": [
+        {
+          "videoId": "Ta5SzGLjQnk",
+          "title": "HLE Gumayusi Yunara vs T1 Peyz Twisted Fate [ ADC ] Korea Challenger 2448 LP | Patch 26.17",
+          "rankClaim": "Challenger",
+          "patch": "26.17",
+          "durationSec": 732,
+          "region": "KR",
+          "player": "Gumayusi",
+          "team": "HLE",
+          "uploaded": "2026-09-09",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 7,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "4mO0BugKn8A",
+          "title": "Yunara Mid vs LeBlanc - KR Master Patch 25.24",
+          "rankClaim": "Master",
+          "patch": "25.24",
+          "durationSec": 1614,
+          "region": "KR",
+          "uploaded": "2025-12-15",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 46,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 509,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 612,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 747,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 829,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 909,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1035,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1060,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1146,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1194,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1256,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1306,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1356,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1407,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1443,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1476,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1496,
+              "label": "Take down The Inhibitor"
+            },
+            {
+              "atSec": 1557,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1579,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1603,
+              "label": "End credit"
+            }
+          ]
+        },
+        {
+          "videoId": "Cu7ncUn5kFI",
+          "title": "Yunara Mid vs LeBlanc - KR Challenger Patch 25.14",
+          "rankClaim": "Challenger",
+          "patch": "25.14",
+          "durationSec": 1526,
+          "region": "KR",
+          "uploaded": "2025-07-24",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 15,
+      "lane": "adc",
+      "videos": [
+        {
+          "videoId": "uXOvRjsn7sU",
+          "title": "Uzi : His Yunara is Slaughtering KR HighElo \" 23 Kill at 25 Min \" Engsub ( Yunara vs Sivir )",
+          "rankClaim": "Master+",
+          "patch": "26.11",
+          "durationSec": 1073,
+          "region": "KR",
+          "patchEstimated": true,
+          "player": "Uzi",
+          "uploaded": "2026-06-01",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "uitxjqzxqJw",
+          "title": "Teddy : His Yunara Mechanic is NEXT LEVEL INSANE - Engsub ( Yunara vs Sivir )",
+          "rankClaim": "Master+",
+          "patch": "26.10",
+          "durationSec": 1003,
+          "patchEstimated": true,
+          "player": "Teddy",
+          "uploaded": "2026-05-13",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "ey0TlNXsJtE",
+          "title": "Yunara vs Sivir ADC [ Teddy ] Patch 26.8 Korea Grandmaster 1480 LP",
+          "rankClaim": "Grandmaster",
+          "patch": "26.8",
+          "durationSec": 1257,
+          "region": "KR",
+          "player": "Teddy",
+          "uploaded": "2026-04-25",
+          "moments": []
+        },
+        {
+          "videoId": "Z_jZPJCo-pM",
+          "title": "DK Smash Yunara vs Sivir [ ADC ] Rank #1 Korea Challenger Patch 25.23",
+          "rankClaim": "Challenger",
+          "patch": "25.23",
+          "durationSec": 1597,
+          "region": "KR",
+          "player": "Smash",
+          "team": "DK",
+          "uploaded": "2025-11-26",
+          "moments": []
+        },
+        {
+          "videoId": "pvhMnuO_RAw",
+          "title": "Yunara vs Sivir ADC - KR Grandmaster - Patch 25.15 Season 15",
+          "rankClaim": "Grandmaster",
+          "patch": "25.15",
+          "durationSec": 1531,
+          "region": "KR",
+          "uploaded": "2025-08-08",
+          "moments": []
+        },
+        {
+          "videoId": "P8f8a5vSezY",
+          "title": "Yunara vs Sivir ADC - KR Master - Patch 25.15 Season 15",
+          "rankClaim": "Master",
+          "patch": "25.15",
+          "durationSec": 1321,
+          "region": "KR",
+          "uploaded": "2025-08-01",
+          "moments": []
+        },
+        {
+          "videoId": "pXKP-NImcEU",
+          "title": "Yunara vs Sivir ADC - KR Master - Patch 25.14 Season 15",
+          "rankClaim": "Master",
+          "patch": "25.14",
+          "durationSec": 2076,
+          "region": "KR",
+          "uploaded": "2025-07-22",
+          "moments": []
+        },
+        {
+          "videoId": "jdZlORZTCnk",
+          "title": "Yunara vs Sivir ADC - EUW Master - Patch 25.14 Season 15",
+          "rankClaim": "Master",
+          "patch": "25.14",
+          "durationSec": 1591,
+          "region": "EUW",
+          "uploaded": "2025-07-18",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 18,
+      "lane": "adc",
+      "videos": [
+        {
+          "videoId": "nJYFBd2YHMI",
+          "title": "HLE Gumayusi Yunara vs Tristana [ ADC ] Korea Challenger 2432 LP | Patch 26.20",
+          "rankClaim": "Challenger",
+          "patch": "26.20",
+          "durationSec": 979,
+          "region": "KR",
+          "player": "Gumayusi",
+          "team": "HLE",
+          "uploaded": "2026-10-17",
+          "moments": [
+            {
+              "atSec": 0,
+              "label": "Early game laning phase"
+            },
+            {
+              "atSec": 137,
+              "label": "Initial skirmishes"
+            },
+            {
+              "atSec": 206,
+              "label": "Mid-lane pressure"
+            },
+            {
+              "atSec": 240,
+              "label": "Strategic rotations"
+            },
+            {
+              "atSec": 338,
+              "label": "Objective control"
+            },
+            {
+              "atSec": 372,
+              "label": "Aggressive plays"
+            },
+            {
+              "atSec": 402,
+              "label": "Mid-game escalation"
+            },
+            {
+              "atSec": 486,
+              "label": "Securing key takedowns"
+            },
+            {
+              "atSec": 514,
+              "label": "Team fight dominance",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 565,
+              "label": "Expanding the lead"
+            },
+            {
+              "atSec": 611,
+              "label": "Drake and objective focus",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 632,
+              "label": "Late-game stabilization"
+            },
+            {
+              "atSec": 684,
+              "label": "Rift Herald deployment",
+              "kind": "herald"
+            },
+            {
+              "atSec": 711,
+              "label": "Pushing the advantage"
+            },
+            {
+              "atSec": 731,
+              "label": "Siege and structure defense"
+            },
+            {
+              "atSec": 794,
+              "label": "Final lane push"
+            },
+            {
+              "atSec": 818,
+              "label": "Decisive combat sequences"
+            },
+            {
+              "atSec": 849,
+              "label": "Closing the gap"
+            },
+            {
+              "atSec": 914,
+              "label": "Securing the nexus"
+            },
+            {
+              "atSec": 933,
+              "label": "Final victory push"
+            },
+            {
+              "atSec": 966,
+              "label": "Match conclusion"
+            }
+          ]
+        },
+        {
+          "videoId": "R7sBajaKbjI",
+          "title": "Yunara vs Tristana ADC [ Gen.G Ruler ] Korea Challenger 2124 | Patch 26.18",
+          "rankClaim": "Challenger",
+          "patch": "26.18",
+          "durationSec": 1585,
+          "region": "KR",
+          "player": "Ruler",
+          "team": "Gen.G",
+          "uploaded": "2026-09-12",
+          "moments": []
+        },
+        {
+          "videoId": "xKZ1bQmtyHk",
+          "title": "Yunara ADC vs Tristana - KR Challenger Patch 26.17",
+          "rankClaim": "Challenger",
+          "patch": "26.17",
+          "durationSec": 1450,
+          "region": "KR",
+          "uploaded": "2026-09-09",
+          "moments": []
+        },
+        {
+          "videoId": "Awm4PFh9R-c",
+          "title": "Yunara vs Tristana ADC - KR Challenger - Patch 16.17 Season 16",
+          "rankClaim": "Challenger",
+          "patch": "26.17",
+          "durationSec": 1561,
+          "region": "KR",
+          "uploaded": "2026-09-05",
+          "moments": []
+        },
+        {
+          "videoId": "5ojFn-Mug3I",
+          "title": "Yunara vs Tristana ADC [ PentaKill ] Korea Challenger 2213 LP | Patch 26.12 ✅",
+          "rankClaim": "Challenger",
+          "patch": "26.12",
+          "durationSec": 1015,
+          "region": "KR",
+          "player": "PentaKill",
+          "uploaded": "2026-06-17",
+          "moments": []
+        },
+        {
+          "videoId": "9m5OQOgH4_o",
+          "title": "HLE Gumayusi Yunara vs Tristana [ ADC ] Patch 26.1 Ranked Korea",
+          "rankClaim": "Master+",
+          "patch": "26.1",
+          "durationSec": 1933,
+          "region": "KR",
+          "player": "Gumayusi",
+          "team": "HLE",
+          "uploaded": "2026-01-09",
+          "moments": []
+        },
+        {
+          "videoId": "T6pcoESAu3I",
+          "title": "Yunara vs Tristana ADC - KR Master - Patch 25.15 Season 15",
+          "rankClaim": "Master",
+          "patch": "25.15",
+          "durationSec": 1840,
+          "region": "KR",
+          "uploaded": "2025-08-03",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 18,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "VSvZGyysuac",
+          "title": "Yunara Mid vs Tristana - KR Master Patch 26.15",
+          "rankClaim": "Master",
+          "patch": "26.15",
+          "durationSec": 1505,
+          "region": "KR",
+          "uploaded": "2026-08-14",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 21,
+      "lane": "adc",
+      "videos": [
+        {
+          "videoId": "OnqQvpvWhgQ",
+          "title": "(KT Ghost) Yunara ADC vs Miss Fortune - KR Challenger Patch 26.16",
+          "rankClaim": "Challenger",
+          "patch": "26.16",
+          "durationSec": 1503,
+          "region": "KR",
+          "player": "Ghost",
+          "team": "KT",
+          "uploaded": "2026-08-22",
+          "moments": []
+        },
+        {
+          "videoId": "tJmLhExAfDg",
+          "title": "T1 Peyz Yunara ADC vs Miss Fortune - Patch 26.3 Korea Challenger 2036 LP",
+          "rankClaim": "Challenger",
+          "patch": "26.3",
+          "durationSec": 1687,
+          "region": "KR",
+          "player": "Peyz",
+          "team": "T1",
+          "uploaded": "2026-02-13",
+          "moments": []
+        },
+        {
+          "videoId": "9hOhBoqKynE",
+          "title": "Yunara vs Miss Fortune [ ADC ] Korea Challenger 1521 LP | Patch 25.24",
+          "rankClaim": "Challenger",
+          "patch": "25.24",
+          "durationSec": 1436,
+          "region": "KR",
+          "uploaded": "2025-12-17",
+          "moments": []
+        },
+        {
+          "videoId": "jMbbxDhgWMQ",
+          "title": "Yunara vs Miss Fortune ADC - EUW Challenger - Patch 25.21 Season 15",
+          "rankClaim": "Challenger",
+          "patch": "25.21",
+          "durationSec": 2146,
+          "region": "EUW",
+          "uploaded": "2025-11-01",
+          "moments": []
+        },
+        {
+          "videoId": "6qL6Cd-Q8d4",
+          "title": "Yunara vs Miss Fortune ADC [ Gen.G Ruler ] Patch 25.18 Korea Grandmaster ✅",
+          "rankClaim": "Grandmaster",
+          "patch": "25.18",
+          "durationSec": 1177,
+          "region": "KR",
+          "player": "Ruler",
+          "team": "Gen.G",
+          "uploaded": "2025-09-21",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 22,
+      "lane": "adc",
+      "videos": [
+        {
+          "videoId": "ZFz3wcpRDFI",
+          "title": "\"HanQL\" 2255LP Yunara : This Man is a FEARLESS SAVAGE - Engsub ( vs Ashe, Caitlyn )",
+          "rankClaim": "Master+",
+          "patch": "26.20",
+          "durationSec": 1645,
+          "patchEstimated": true,
+          "player": "HanQL",
+          "uploaded": "2026-10-14",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "EWf9vwsJA5c",
+          "title": "\"HanQL\" His Yunara is so AGGRESSIVE in Early Game - Engsub ( vs Ashe , Kai'sa )",
+          "rankClaim": "Master+",
+          "patch": "26.19",
+          "durationSec": 1481,
+          "patchEstimated": true,
+          "player": "HanQL",
+          "uploaded": "2026-09-30",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "2AgRe-dQxHA",
+          "title": "Uzi : His Yunara is a MONSTER \" INSANE PENTAKILL\" Engsub ( Yunara vs Ashe )",
+          "rankClaim": "Master+",
+          "patch": "26.12",
+          "durationSec": 799,
+          "patchEstimated": true,
+          "player": "Uzi",
+          "uploaded": "2026-06-11",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "cE1nt1S8gow",
+          "title": "2255LP Yunara : His Spacing is so DAM CLEAN - Engsub ( Yunara vs Ashe, Ez )",
+          "rankClaim": "Master+",
+          "patch": "26.9",
+          "durationSec": 1165,
+          "patchEstimated": true,
+          "uploaded": "2026-05-08",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "Yg3BdFalisk",
+          "title": "Yunara vs Ashe ADC - KR Challenger - Patch 25.22 Season 15",
+          "rankClaim": "Challenger",
+          "patch": "25.22",
+          "durationSec": 1666,
+          "region": "KR",
+          "uploaded": "2025-11-14",
+          "moments": []
+        },
+        {
+          "videoId": "gGYUeVVSQGQ",
+          "title": "Yunara vs Ashe ADC  - EUW Challenger - Patch 25.21 Season 15",
+          "rankClaim": "Challenger",
+          "patch": "25.21",
+          "durationSec": 2161,
+          "region": "EUW",
+          "uploaded": "2025-10-29",
+          "moments": []
+        },
+        {
+          "videoId": "mbqsSErKDh8",
+          "title": "Yunara vs Ashe ADC - KR Master - Patch 25.14 Season 15",
+          "rankClaim": "Master",
+          "patch": "25.14",
+          "durationSec": 1651,
+          "region": "KR",
+          "uploaded": "2025-07-23",
+          "moments": []
+        },
+        {
+          "videoId": "Ws6kbWdxl8c",
+          "title": "Yunara vs Ashe ADC - EUW Master - Patch 25.14 Season 15",
+          "rankClaim": "Master",
+          "patch": "25.14",
+          "durationSec": 1501,
+          "region": "EUW",
+          "uploaded": "2025-07-18",
+          "moments": []
+        },
+        {
+          "videoId": "MmZI570YQwU",
+          "title": "Yunara vs Ashe ADC [ JDG Peyz ] Korea Challenger Patch 25.14 ✅",
+          "rankClaim": "Challenger",
+          "patch": "25.14",
+          "durationSec": 734,
+          "region": "KR",
+          "player": "Peyz",
+          "team": "JDG",
+          "uploaded": "2025-07-18",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 22,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "DGto4k3vx5w",
+          "title": "NO ONE CAN STOP THE LOW CORTISOL ADC CLIMB",
+          "rankClaim": "Master+",
+          "patch": "26.8",
+          "durationSec": 22951,
+          "patchEstimated": true,
+          "player": "Alois",
+          "uploaded": "2026-04-21",
+          "format": "stream",
+          "cam": true,
+          "startSec": 7670,
+          "endSec": 9763,
+          "moments": []
+        },
+        {
+          "videoId": "oBJg9jxjtVU",
+          "title": "FIGHTING FOR MY LIFE ON ADC",
+          "rankClaim": "Master+",
+          "patch": "26.8",
+          "durationSec": 12406,
+          "patchEstimated": true,
+          "player": "Alois",
+          "uploaded": "2026-04-19",
+          "format": "stream",
+          "cam": true,
+          "startSec": 11278,
+          "endSec": 12406,
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 29,
+      "lane": "adc",
+      "videos": [
+        {
+          "videoId": "ONRdleQrAEs",
+          "title": "T1 Gumayusi Yunara vs Twitch [ ADC ] Korea Master Patch 25.15",
+          "rankClaim": "Master",
+          "patch": "25.15",
+          "durationSec": 1443,
+          "region": "KR",
+          "player": "Gumayusi",
+          "team": "T1",
+          "uploaded": "2025-08-13",
+          "moments": []
+        },
+        {
+          "videoId": "4H367QF-43k",
+          "title": "Yunara vs Twitch ADC [ JDG Peyz ] Patch 25.15 Korea Challenger ✅",
+          "rankClaim": "Challenger",
+          "patch": "25.15",
+          "durationSec": 1344,
+          "region": "KR",
+          "player": "Peyz",
+          "team": "JDG",
+          "uploaded": "2025-08-07",
+          "moments": []
+        },
+        {
+          "videoId": "RT-2Z-WkgZU",
+          "title": "Yunara vs Twitch ADC - EUW Grandmaster - Patch 25.14 Season 15",
+          "rankClaim": "Grandmaster",
+          "patch": "25.14",
+          "durationSec": 1561,
+          "region": "EUW",
+          "uploaded": "2025-07-29",
+          "moments": []
+        },
+        {
+          "videoId": "Pe8TyCzPcu4",
+          "title": "Yunara vs Twitch ADC - EUW Master - Patch 25.14 Season 15",
+          "rankClaim": "Master",
+          "patch": "25.14",
+          "durationSec": 1861,
+          "region": "EUW",
+          "uploaded": "2025-07-17",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 29,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "ZI7fd5pTl_s",
+          "title": "SMOLDER HUBRIS MAXXING",
+          "rankClaim": "Master+",
+          "patch": "26.6",
+          "durationSec": 15770,
+          "patchEstimated": true,
+          "player": "Alois",
+          "uploaded": "2026-03-26",
+          "format": "stream",
+          "cam": true,
+          "startSec": 185,
+          "endSec": 1895,
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 36,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "UIXmsJzS-ac",
+          "title": "(FK Adam) Yunara Top vs Dr. Mundo - EUW Grandmaster Patch 26.14",
+          "rankClaim": "Grandmaster",
+          "patch": "26.14",
+          "durationSec": 1590,
+          "region": "EUW",
+          "player": "FK Adam",
+          "uploaded": "2026-07-18",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 42,
+      "lane": "adc",
+      "videos": [
+        {
+          "videoId": "sINQBWP-HMw",
+          "title": "Teayoon : When His Yunara Got Fiendhunter The Game is on His Hand - Engsub ( vs Corki )",
+          "rankClaim": "Master+",
+          "patch": "26.17",
+          "durationSec": 896,
+          "patchEstimated": true,
+          "uploaded": "2026-08-30",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "cCnkSRNN5dQ",
+          "title": "2255LP Yunara : He is Conquering Super Server Challenger Elo - Engsub ( Yunara vs Corki, Sivir )",
+          "rankClaim": "Challenger",
+          "patch": "26.10",
+          "durationSec": 1248,
+          "patchEstimated": true,
+          "uploaded": "2026-05-13",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "wmuDIgSUxug",
+          "title": "Yunara vs Corki ADC - KR Challenger - Patch 16.08 Season 16",
+          "rankClaim": "Challenger",
+          "patch": "26.8",
+          "durationSec": 1951,
+          "region": "KR",
+          "uploaded": "2026-04-22",
+          "moments": []
+        },
+        {
+          "videoId": "Gsd5bntKqP8",
+          "title": "HLE Gumayusi Yunara ADC vs Corki - Patch 26.8 Korea Challenger 2445 LP",
+          "rankClaim": "Challenger",
+          "patch": "26.8",
+          "durationSec": 1773,
+          "region": "KR",
+          "player": "Gumayusi",
+          "team": "HLE",
+          "uploaded": "2026-04-18",
+          "moments": []
+        },
+        {
+          "videoId": "P_tH1XWNGZ0",
+          "title": "HLE Gumayusi Yunara vs Corki [ ADC ] Korea Challenger 2512 LP | Patch 26.7",
+          "rankClaim": "Challenger",
+          "patch": "26.7",
+          "durationSec": 1365,
+          "region": "KR",
+          "player": "Gumayusi",
+          "team": "HLE",
+          "uploaded": "2026-04-14",
+          "moments": []
+        },
+        {
+          "videoId": "DNnqFrMhSoU",
+          "title": "T1 Peyz Yunara vs Corki [ ADC ] Patch 26.1 Ranked Korea",
+          "rankClaim": "Master+",
+          "patch": "26.1",
+          "durationSec": 821,
+          "region": "KR",
+          "player": "Peyz",
+          "team": "T1",
+          "uploaded": "2026-01-17",
+          "moments": []
+        },
+        {
+          "videoId": "eW1PdjC_-4g",
+          "title": "HLE Gumayusi Yunara vs Corki [ ADC ] Patch 25.24 Ranked Korea",
+          "rankClaim": "Master+",
+          "patch": "25.24",
+          "durationSec": 1091,
+          "region": "KR",
+          "player": "Gumayusi",
+          "team": "HLE",
+          "uploaded": "2025-12-13",
+          "moments": []
+        },
+        {
+          "videoId": "-BKBQHZ4vrI",
+          "title": "Yunara vs Corki ADC - KR Challenger - Patch 25.24 Season 15",
+          "rankClaim": "Challenger",
+          "patch": "25.24",
+          "durationSec": 1471,
+          "region": "KR",
+          "uploaded": "2025-12-10",
+          "moments": []
+        },
+        {
+          "videoId": "d4rPzqnJ6dY",
+          "title": "Yunara vs Corki ADC - KR Challenger - Patch 25.23 Season 15",
+          "rankClaim": "Challenger",
+          "patch": "25.23",
+          "durationSec": 1631,
+          "region": "KR",
+          "uploaded": "2025-11-29",
+          "moments": []
+        },
+        {
+          "videoId": "mtlDArv0gB8",
+          "title": "Yunara vs Corki ADC - KR Challenger - Patch 25.21 Season 15",
+          "rankClaim": "Challenger",
+          "patch": "25.21",
+          "durationSec": 1966,
+          "region": "KR",
+          "uploaded": "2025-11-04",
+          "moments": []
+        },
+        {
+          "videoId": "zByjl01pfiI",
+          "title": "Yunara vs Corki ADC - KR Challenger - Patch 25.20 Season 15",
+          "rankClaim": "Challenger",
+          "patch": "25.20",
+          "durationSec": 2191,
+          "region": "KR",
+          "uploaded": "2025-10-21",
+          "moments": []
+        },
+        {
+          "videoId": "cgaHg7Cjf70",
+          "title": "Yunara vs Corki ADC - KR Challenger - Patch 25.20 Season 15",
+          "rankClaim": "Challenger",
+          "patch": "25.20",
+          "durationSec": 2086,
+          "region": "KR",
+          "uploaded": "2025-10-18",
+          "moments": []
+        },
+        {
+          "videoId": "i3W_7SOTJso",
+          "title": "T1 Gumayusi Yunara vs Corki [ ADC ] Korea Grandmaster Patch 25.18",
+          "rankClaim": "Grandmaster",
+          "patch": "25.18",
+          "durationSec": 1148,
+          "region": "KR",
+          "player": "Gumayusi",
+          "team": "T1",
+          "uploaded": "2025-09-19",
+          "moments": []
+        },
+        {
+          "videoId": "Eg_BdxztAog",
+          "title": "Yunara vs Corki ADC - KR Challenger - Patch 25.17 Season 15",
+          "rankClaim": "Challenger",
+          "patch": "25.17",
+          "durationSec": 2011,
+          "region": "KR",
+          "uploaded": "2025-09-09",
+          "moments": []
+        },
+        {
+          "videoId": "cff5DBXzYNs",
+          "title": "DRX Teddy Yunara vs Corki [ ADC ] Patch 25.16 Korea Challenger",
+          "rankClaim": "Challenger",
+          "patch": "25.16",
+          "durationSec": 1472,
+          "region": "KR",
+          "player": "Teddy",
+          "team": "DRX",
+          "uploaded": "2025-08-26",
+          "moments": []
+        },
+        {
+          "videoId": "WbOvHiaHaPs",
+          "title": "Yunara vs Corki ADC - KR Challenger - Patch 25.16 Season 15",
+          "rankClaim": "Challenger",
+          "patch": "25.16",
+          "durationSec": 1830,
+          "region": "KR",
+          "uploaded": "2025-08-25",
+          "moments": []
+        },
+        {
+          "videoId": "Ct8PPiG6HD0",
+          "title": "T1 Gumayusi Yunara vs Corki [ ADC ] Patch 25.16 Korea Master",
+          "rankClaim": "Master",
+          "patch": "25.16",
+          "durationSec": 909,
+          "region": "KR",
+          "player": "Gumayusi",
+          "team": "T1",
+          "uploaded": "2025-08-22",
+          "moments": []
+        },
+        {
+          "videoId": "vQEoyEGtGXs",
+          "title": "T1 Gumayusi Yunara ADC vs Corki - Patch 25.16 Korea Master",
+          "rankClaim": "Master",
+          "patch": "25.16",
+          "durationSec": 989,
+          "region": "KR",
+          "player": "Gumayusi",
+          "team": "T1",
+          "uploaded": "2025-08-14",
+          "moments": []
+        },
+        {
+          "videoId": "Fi3bunS0q5o",
+          "title": "Viper Yunara vs Corki ADC - KR Challenger - Patch 25.15 Season 15",
+          "rankClaim": "Challenger",
+          "patch": "25.15",
+          "durationSec": 1516,
+          "region": "KR",
+          "player": "Viper",
+          "uploaded": "2025-08-07",
+          "moments": []
+        },
+        {
+          "videoId": "-xV5tJuTAns",
+          "title": "Yunara vs Corki ADC - EUW Master - Patch 25.14 Season 15",
+          "rankClaim": "Master",
+          "patch": "25.14",
+          "durationSec": 1571,
+          "region": "EUW",
+          "uploaded": "2025-07-18",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 42,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "a00VGMGi8Ao",
+          "title": "BEATING THE 600LP HARDSTUCK ALLEGATIONS",
+          "rankClaim": "Master+",
+          "patch": "26.7",
+          "durationSec": 22103,
+          "patchEstimated": true,
+          "player": "Alois",
+          "uploaded": "2026-04-12",
+          "format": "stream",
+          "cam": true,
+          "startSec": 2127,
+          "endSec": 5010,
+          "moments": []
+        },
+        {
+          "videoId": "iCB_gEWxkHE",
+          "title": "ADC DAY 10 AND TRYING NOT TO GO INSANE",
+          "rankClaim": "Master+",
+          "patch": "26.6",
+          "durationSec": 22845,
+          "patchEstimated": true,
+          "player": "Alois",
+          "uploaded": "2026-03-21",
+          "format": "stream",
+          "cam": true,
+          "startSec": 11910,
+          "endSec": 12810,
+          "moments": []
+        },
+        {
+          "videoId": "iCB_gEWxkHE",
+          "title": "ADC DAY 10 AND TRYING NOT TO GO INSANE",
+          "rankClaim": "Master+",
+          "patch": "26.6",
+          "durationSec": 22845,
+          "patchEstimated": true,
+          "player": "Alois",
+          "uploaded": "2026-03-21",
+          "format": "stream",
+          "cam": true,
+          "startSec": 18993,
+          "endSec": 20295,
+          "moments": []
+        },
+        {
+          "videoId": "Yxq-6l9lt5o",
+          "title": "Yunara Top vs Corki - NA Challenger Patch 25.15",
+          "rankClaim": "Challenger",
+          "patch": "25.15",
+          "durationSec": 2027,
+          "region": "NA",
+          "uploaded": "2025-08-15",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 50,
+      "lane": "adc",
+      "videos": [
+        {
+          "videoId": "BhpjjcLmWsU",
+          "title": "(BGT Yikesuo) Yunara ADC vs Swain - EUW Grandmaster Patch 26.12",
+          "rankClaim": "Grandmaster",
+          "patch": "26.12",
+          "durationSec": 1714,
+          "region": "EUW",
+          "player": "BGT Yikesuo",
+          "uploaded": "2026-06-26",
+          "moments": []
+        },
+        {
+          "videoId": "LiF1ITBvKSQ",
+          "title": "Yunara vs Swain ADC - KR Challenger - Patch 25.21 Season 15",
+          "rankClaim": "Challenger",
+          "patch": "25.21",
+          "durationSec": 1816,
+          "region": "KR",
+          "uploaded": "2025-11-06",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 51,
+      "lane": "adc",
+      "videos": [
+        {
+          "videoId": "IXP33OK9RwE",
+          "title": "Yunara vs Caitlyn ADC [ Gen.G Ruler ] Korea Challenger 2096 | Patch 26.19",
+          "rankClaim": "Challenger",
+          "patch": "26.19",
+          "durationSec": 1047,
+          "region": "KR",
+          "player": "Ruler",
+          "team": "Gen.G",
+          "uploaded": "2026-10-04",
+          "moments": []
+        },
+        {
+          "videoId": "_T3koXXZcS8",
+          "title": "HLE Gumayusi Yunara vs Caitlyn [ ADC ] Korea Challenger 2480 LP | Patch 26.17",
+          "rankClaim": "Challenger",
+          "patch": "26.17",
+          "durationSec": 962,
+          "region": "KR",
+          "player": "Gumayusi",
+          "team": "HLE",
+          "uploaded": "2026-08-29",
+          "moments": []
+        },
+        {
+          "videoId": "vLLJNPUoC3U",
+          "title": "Smash : His Yunara Mechanic is on Another Level - Engsub ( vs Caitlyn )",
+          "rankClaim": "Master+",
+          "patch": "26.16",
+          "durationSec": 1022,
+          "patchEstimated": true,
+          "player": "Smash",
+          "uploaded": "2026-08-25",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "zLj9g9-uFQY",
+          "title": "2255LP Yunara : 1v5 BREAKING CN Super Server Challenger - Engsub ( Yunara vs Caitlyn, Sivir )",
+          "rankClaim": "Challenger",
+          "patch": "26.12",
+          "durationSec": 1587,
+          "patchEstimated": true,
+          "uploaded": "2026-06-18",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "dUZvWcezfoA",
+          "title": "Uzi : Yunara + Lulu Combos is INDESTRUCTIBLE - Engsub ( Yunara vs Caitlyn, Smolder )",
+          "rankClaim": "Master+",
+          "patch": "26.10",
+          "durationSec": 1395,
+          "patchEstimated": true,
+          "player": "Uzi",
+          "uploaded": "2026-05-21",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "bOVQaIM-Gss",
+          "title": "1600LP Yunara : His Mechanic is so AGGRESSIVE in Early Game - Engsub ( Yunara vs Ez, Caitlyn )",
+          "rankClaim": "Master+",
+          "patch": "26.9",
+          "durationSec": 1480,
+          "patchEstimated": true,
+          "uploaded": "2026-05-11",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "dMXmqkAKJWI",
+          "title": "T1 Peyz : His Yunara Mechanic is so AGGRESSIVE in Early Game ( Yunara vs Caitlyn )",
+          "rankClaim": "Master+",
+          "patch": "26.9",
+          "durationSec": 1063,
+          "patchEstimated": true,
+          "player": "Peyz",
+          "uploaded": "2026-04-29",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "Frbut_NlalU",
+          "title": "Peyz Yunara vs Caitlyn ADC - KR Challenger - Patch 16.07 Season 16",
+          "rankClaim": "Challenger",
+          "patch": "26.7",
+          "durationSec": 1516,
+          "region": "KR",
+          "player": "Peyz",
+          "uploaded": "2026-04-14",
+          "moments": []
+        },
+        {
+          "videoId": "U-6mhrK0AeM",
+          "title": "Peyz Yunara vs Caitlyn ADC - KR Challenger - Patch 16.07 Season 16",
+          "rankClaim": "Challenger",
+          "patch": "26.7",
+          "durationSec": 1981,
+          "region": "KR",
+          "player": "Peyz",
+          "uploaded": "2026-04-11",
+          "moments": []
+        },
+        {
+          "videoId": "0nr2YuV4Yr8",
+          "title": "T1 Peyz Yunara vs Caitlyn [ ADC ] Rank #2 Korea Challenger Patch 26.7",
+          "rankClaim": "Challenger",
+          "patch": "26.7",
+          "durationSec": 1314,
+          "region": "KR",
+          "player": "Peyz",
+          "team": "T1",
+          "uploaded": "2026-04-10",
+          "moments": []
+        },
+        {
+          "videoId": "K_luCiw_Meg",
+          "title": "T1 Peyz Yunara vs Caitlyn [ ADC ] Korea Challenger 2470 LP | Patch 26.7",
+          "rankClaim": "Challenger",
+          "patch": "26.7",
+          "durationSec": 1717,
+          "region": "KR",
+          "player": "Peyz",
+          "team": "T1",
+          "uploaded": "2026-04-07",
+          "moments": []
+        },
+        {
+          "videoId": "vzpjpRD0OTE",
+          "title": "Yunara vs Caitlyn ADC [ Gen.G Ruler ] Patch 26.3 Ranked Korea",
+          "rankClaim": "Master+",
+          "patch": "26.3",
+          "durationSec": 1145,
+          "region": "KR",
+          "player": "Ruler",
+          "team": "Gen.G",
+          "uploaded": "2026-02-06",
+          "moments": []
+        },
+        {
+          "videoId": "SpB1O7GYSFQ",
+          "title": "T1 Peyz Yunara vs Caitlyn [ ADC ] Patch 26.1 Ranked Korea",
+          "rankClaim": "Master+",
+          "patch": "26.1",
+          "durationSec": 1218,
+          "region": "KR",
+          "player": "Peyz",
+          "team": "T1",
+          "uploaded": "2026-01-14",
+          "moments": []
+        },
+        {
+          "videoId": "ZGMlbrWt_Ww",
+          "title": "Yunara vs Caitlyn ADC [ PentaKill ] Lol Korea Master Patch 25.14",
+          "rankClaim": "Master",
+          "patch": "25.14",
+          "durationSec": 1644,
+          "region": "KR",
+          "player": "PentaKill",
+          "uploaded": "2025-07-26",
+          "moments": []
+        },
+        {
+          "videoId": "bk_Sv8C2K4c",
+          "title": "Yunara vs Caitlyn ADC [ PentaKill ] Lol Korea Master Patch 25.14",
+          "rankClaim": "Master",
+          "patch": "25.14",
+          "durationSec": 1224,
+          "region": "KR",
+          "player": "PentaKill",
+          "uploaded": "2025-07-22",
+          "moments": []
+        },
+        {
+          "videoId": "TPRuj3rQyNk",
+          "title": "Yunara vs Caitlyn ADC [ JDG Peyz ] Patch 25.14 Korea Challenger ✅",
+          "rankClaim": "Challenger",
+          "patch": "25.14",
+          "durationSec": 1371,
+          "region": "KR",
+          "player": "Peyz",
+          "team": "JDG",
+          "uploaded": "2025-07-17",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 51,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "bkcAJBrMjKk",
+          "title": "CLIMBING THROUGH EMERALD ELO AS AN ADC MAIN",
+          "rankClaim": "Master+",
+          "patch": "26.5",
+          "durationSec": 30508,
+          "patchEstimated": true,
+          "player": "Alois",
+          "uploaded": "2026-03-11",
+          "format": "stream",
+          "cam": true,
+          "startSec": 19452,
+          "endSec": 21136,
+          "moments": []
+        },
+        {
+          "videoId": "H3eW6lB1tHE",
+          "title": "FULL DAY OF LEARNING HOW TO PLAY AD CARRY",
+          "rankClaim": "Master+",
+          "patch": "26.5",
+          "durationSec": 28690,
+          "patchEstimated": true,
+          "player": "Alois",
+          "uploaded": "2026-03-10",
+          "format": "stream",
+          "cam": true,
+          "startSec": 18121,
+          "endSec": 19999,
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 58,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "D8V9i5GY9Ks",
+          "title": "Yunara Top vs Renekton - NA Challenger Patch 25.14",
+          "rankClaim": "Challenger",
+          "patch": "25.14",
+          "durationSec": 1694,
+          "region": "NA",
+          "uploaded": "2025-07-31",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 67,
+      "lane": "adc",
+      "videos": [
+        {
+          "videoId": "UsIL5fSLK9w",
+          "title": "2255LP Yunara : Crushing CN Super Server at 1500LP Match - Engsub ( Yunara vs Vayne )",
+          "rankClaim": "Master+",
+          "patch": "26.12",
+          "durationSec": 740,
+          "patchEstimated": true,
+          "uploaded": "2026-06-23",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "3JC1C3cKEzM",
+          "title": "Uzi : His Yunara is UNSTOPPABLE MONSTER - Engsub ( Yunara vs Vayne )",
+          "rankClaim": "Master+",
+          "patch": "26.11",
+          "durationSec": 893,
+          "patchEstimated": true,
+          "player": "Uzi",
+          "uploaded": "2026-05-31",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "4P_7urHSnog",
+          "title": "Yunara vs Vayne ADC - KR Challenger - Patch 16.06 Season 16",
+          "rankClaim": "Challenger",
+          "patch": "26.6",
+          "durationSec": 1501,
+          "region": "KR",
+          "uploaded": "2026-03-31",
+          "moments": []
+        },
+        {
+          "videoId": "IzN8_tsPUz8",
+          "title": "Yunara vs Vayne ADC - NA Grandmaster - Patch 25.14 Season 15",
+          "rankClaim": "Grandmaster",
+          "patch": "25.14",
+          "durationSec": 1426,
+          "region": "NA",
+          "uploaded": "2025-07-22",
+          "moments": []
+        },
+        {
+          "videoId": "ysU5CpbxINY",
+          "title": "Yunara vs Vayne ADC - KR Master - Patch 25.14 Season 15",
+          "rankClaim": "Master",
+          "patch": "25.14",
+          "durationSec": 1811,
+          "region": "KR",
+          "uploaded": "2025-07-22",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 67,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "aXqKK8CcOIo",
+          "title": "BIG WINSTREAK TODAY ON THE ADC CLIMB",
+          "rankClaim": "Master+",
+          "patch": "26.6",
+          "durationSec": 24356,
+          "patchEstimated": true,
+          "player": "Alois",
+          "uploaded": "2026-03-25",
+          "format": "stream",
+          "cam": true,
+          "startSec": 15599,
+          "endSec": 17616,
+          "moments": []
+        },
+        {
+          "videoId": "aXqKK8CcOIo",
+          "title": "BIG WINSTREAK TODAY ON THE ADC CLIMB",
+          "rankClaim": "Master+",
+          "patch": "26.6",
+          "durationSec": 24356,
+          "patchEstimated": true,
+          "player": "Alois",
+          "uploaded": "2026-03-25",
+          "format": "stream",
+          "cam": true,
+          "startSec": 21857,
+          "endSec": 24356,
+          "moments": []
+        },
+        {
+          "videoId": "iCB_gEWxkHE",
+          "title": "ADC DAY 10 AND TRYING NOT TO GO INSANE",
+          "rankClaim": "Master+",
+          "patch": "26.6",
+          "durationSec": 22845,
+          "patchEstimated": true,
+          "player": "Alois",
+          "uploaded": "2026-03-21",
+          "format": "stream",
+          "cam": true,
+          "startSec": 12810,
+          "endSec": 15126,
+          "moments": []
+        },
+        {
+          "videoId": "xy3r6pDNASs",
+          "title": "Yunara Top vs Vayne - NA Challenger Patch 25.22",
+          "rankClaim": "Challenger",
+          "patch": "25.22",
+          "durationSec": 1503,
+          "region": "NA",
+          "uploaded": "2025-11-14",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 81,
+      "lane": "adc",
+      "videos": [
+        {
+          "videoId": "50DoCCtBOWA",
+          "title": "HLE Gumayusi Yunara vs Ezreal [ ADC ] Ranked Master NA | Patch 26.21",
+          "rankClaim": "Master",
+          "patch": "26.21",
+          "durationSec": 1035,
+          "region": "NA",
+          "player": "Gumayusi",
+          "team": "HLE",
+          "uploaded": "2026-10-26",
+          "moments": []
+        },
+        {
+          "videoId": "-qjbOMjla6s",
+          "title": "PEYZ : His Yunara is Crushing ONER Ezreal in Laning Phase",
+          "rankClaim": "Master+",
+          "patch": "26.19",
+          "durationSec": 1034,
+          "patchEstimated": true,
+          "uploaded": "2026-09-24",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "NNb8JXLCalQ",
+          "title": "Yunara vs Ezreal [ ADC ] Korea Challenger 1833 LP | Patch 26.15",
+          "rankClaim": "Challenger",
+          "patch": "26.15",
+          "durationSec": 1229,
+          "region": "KR",
+          "uploaded": "2026-08-01",
+          "moments": []
+        },
+        {
+          "videoId": "T6SJeKY9XsY",
+          "title": "Yunara vs Ezreal ADC [ Gen.G Ruler ] Patch 26.10 Korea Challenger 1922 LP",
+          "rankClaim": "Challenger",
+          "patch": "26.10",
+          "durationSec": 1181,
+          "region": "KR",
+          "player": "Ruler",
+          "team": "Gen.G",
+          "uploaded": "2026-05-24",
+          "moments": []
+        },
+        {
+          "videoId": "Pn5A36D8feI",
+          "title": "Yunara ADC vs Ezreal - KR Challenger Patch 26.09",
+          "rankClaim": "Challenger",
+          "patch": "26.9",
+          "durationSec": 1502,
+          "region": "KR",
+          "uploaded": "2026-05-03",
+          "moments": []
+        },
+        {
+          "videoId": "-DbKhg1K6oY",
+          "title": "2255LP Yunara : Punishing The Opponent For Taking His EZREAL - Engsub",
+          "rankClaim": "Master+",
+          "patch": "26.7",
+          "durationSec": 921,
+          "patchEstimated": true,
+          "uploaded": "2026-04-10",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "ogoFzUGdN9c",
+          "title": "T1 Peyz Yunara vs Ezreal [ ADC ] Korea Challenger 2126 LP | Patch 26.6",
+          "rankClaim": "Challenger",
+          "patch": "26.6",
+          "durationSec": 1540,
+          "region": "KR",
+          "player": "Peyz",
+          "team": "T1",
+          "uploaded": "2026-03-27",
+          "moments": []
+        },
+        {
+          "videoId": "UJXnYiEZG5Y",
+          "title": "HLE Gumayusi Yunara vs Ezreal [ ADC ] Korea Challenger 2100 LP | Patch 26.6",
+          "rankClaim": "Challenger",
+          "patch": "26.6",
+          "durationSec": 1032,
+          "region": "KR",
+          "player": "Gumayusi",
+          "team": "HLE",
+          "uploaded": "2026-03-26",
+          "moments": []
+        },
+        {
+          "videoId": "ZaHiFg_-KdQ",
+          "title": "HLE Gumayusi Yunara vs Ezreal [ ADC ] Korea Challenger 1712 LP | Patch 26.5",
+          "rankClaim": "Challenger",
+          "patch": "26.5",
+          "durationSec": 1595,
+          "region": "KR",
+          "player": "Gumayusi",
+          "team": "HLE",
+          "uploaded": "2026-03-09",
+          "moments": []
+        },
+        {
+          "videoId": "2DHbEE75m-0",
+          "title": "Yunara vs Ezreal ADC - KR Challenger - Patch 16.05 Season 16",
+          "rankClaim": "Challenger",
+          "patch": "26.5",
+          "durationSec": 1681,
+          "region": "KR",
+          "uploaded": "2026-03-08",
+          "moments": []
+        },
+        {
+          "videoId": "D1vJ3mMD6iA",
+          "title": "T1 Peyz Yunara vs Ezreal [ ADC ] Rank #2 Korea Challenger | Patch 26.3",
+          "rankClaim": "Challenger",
+          "patch": "26.3",
+          "durationSec": 1204,
+          "region": "KR",
+          "player": "Peyz",
+          "team": "T1",
+          "uploaded": "2026-02-19",
+          "moments": []
+        },
+        {
+          "videoId": "dO257sREimQ",
+          "title": "2255LP Yunara : This Happen When You Stolen His Ezreal - Engsub",
+          "rankClaim": "Master+",
+          "patch": "26.3",
+          "durationSec": 840,
+          "patchEstimated": true,
+          "uploaded": "2026-02-14",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "UPBkCNcNhLc",
+          "title": "T1 Peyz Yunara vs Ezreal [ ADC ] Korea Challenger 1999 LP | Patch 26.3",
+          "rankClaim": "Challenger",
+          "patch": "26.3",
+          "durationSec": 1113,
+          "region": "KR",
+          "player": "Peyz",
+          "team": "T1",
+          "uploaded": "2026-02-11",
+          "moments": []
+        },
+        {
+          "videoId": "2qFOwdmza2I",
+          "title": "Yunara vs Ezreal [ ADC ] Korea Challenger 1526 LP | Patch 25.22",
+          "rankClaim": "Challenger",
+          "patch": "25.22",
+          "durationSec": 1777,
+          "region": "KR",
+          "uploaded": "2025-11-11",
+          "moments": []
+        },
+        {
+          "videoId": "YwVIjadaLTU",
+          "title": "Yunara vs Ezreal ADC - KR Challenger - Patch 25.16 Season 15",
+          "rankClaim": "Challenger",
+          "patch": "25.16",
+          "durationSec": 2266,
+          "region": "KR",
+          "uploaded": "2025-08-15",
+          "moments": []
+        },
+        {
+          "videoId": "1IVdHp7VmiE",
+          "title": "Yunara vs Ezreal ADC - KR Challenger - Patch 25.15 Season 15",
+          "rankClaim": "Challenger",
+          "patch": "25.15",
+          "durationSec": 1721,
+          "region": "KR",
+          "uploaded": "2025-08-04",
+          "moments": []
+        },
+        {
+          "videoId": "HnqAJFvSJ58",
+          "title": "Yunara vs Ezreal ADC - KR Master - Patch 25.14 Season 15",
+          "rankClaim": "Master",
+          "patch": "25.14",
+          "durationSec": 2051,
+          "region": "KR",
+          "uploaded": "2025-07-22",
+          "moments": []
+        },
+        {
+          "videoId": "-N3YeI0PerI",
+          "title": "Yunara vs Ezreal ADC - KR Master - Patch 25.14 Season 15",
+          "rankClaim": "Master",
+          "patch": "25.14",
+          "durationSec": 1666,
+          "region": "KR",
+          "uploaded": "2025-07-17",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 81,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "bkcAJBrMjKk",
+          "title": "CLIMBING THROUGH EMERALD ELO AS AN ADC MAIN",
+          "rankClaim": "Master+",
+          "patch": "26.5",
+          "durationSec": 30508,
+          "patchEstimated": true,
+          "player": "Alois",
+          "uploaded": "2026-03-11",
+          "format": "stream",
+          "cam": true,
+          "startSec": 5262,
+          "endSec": 7825,
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 84,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "igzK2z4mU58",
+          "title": "Yunara Top vs Akali - NA Challenger Patch 25.17",
+          "rankClaim": "Challenger",
+          "patch": "25.17",
+          "durationSec": 1447,
+          "region": "NA",
+          "uploaded": "2025-09-08",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 96,
+      "lane": "adc",
+      "videos": [
+        {
+          "videoId": "OsJ2y1ynO50",
+          "title": "Yunara vs Kog'Maw ADC - KR Challenger - Patch 25.16 Season 15",
+          "rankClaim": "Challenger",
+          "patch": "25.16",
+          "durationSec": 1981,
+          "region": "KR",
+          "uploaded": "2025-08-26",
+          "moments": []
+        },
+        {
+          "videoId": "ttS-y_2B0a4",
+          "title": "Yunara vs Kog'Maw ADC - KR Master - Patch 25.14 Season 15",
+          "rankClaim": "Master",
+          "patch": "25.14",
+          "durationSec": 1896,
+          "region": "KR",
+          "uploaded": "2025-07-23",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 101,
+      "lane": "adc",
+      "videos": [
+        {
+          "videoId": "Fci90QB6hxY",
+          "title": "Peyz Yunara vs Xerath ADC - KR Challenger - Patch 16.05 Season 16",
+          "rankClaim": "Challenger",
+          "patch": "26.5",
+          "durationSec": 1846,
+          "region": "KR",
+          "player": "Peyz",
+          "uploaded": "2026-03-07",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 103,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "DE06GI291zk",
+          "title": "Yunara Mid vs Ahri - KR Master Patch 26.10",
+          "rankClaim": "Master",
+          "patch": "26.10",
+          "durationSec": 1586,
+          "region": "KR",
+          "uploaded": "2026-05-29",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 110,
+      "lane": "adc",
+      "videos": [
+        {
+          "videoId": "hIkuGlGVNSI",
+          "title": "\"HanQL\" 2255LP Yunara : This Dude is BEAST in TEAMFIGHT - Engsub ( vs Varus, MF )",
+          "rankClaim": "Master+",
+          "patch": "26.20",
+          "durationSec": 1200,
+          "patchEstimated": true,
+          "player": "HanQL",
+          "uploaded": "2026-10-11",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "AcbAX0dLZ3Y",
+          "title": "(TOG Ryuk) Yunara ADC vs Varus - EUW Challenger Patch 26.16",
+          "rankClaim": "Challenger",
+          "patch": "26.16",
+          "durationSec": 1795,
+          "region": "EUW",
+          "player": "TOG Ryuk",
+          "uploaded": "2026-08-17",
+          "moments": []
+        },
+        {
+          "videoId": "WdfQdBkpWkQ",
+          "title": "T1 Peyz : His Yuanra is a REAL BEAST - Engsub (Yunara vs Doinb Varus)",
+          "rankClaim": "Master+",
+          "patch": "26.13",
+          "durationSec": 852,
+          "patchEstimated": true,
+          "uploaded": "2026-07-05",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "vtMwxesb-D8",
+          "title": "2255LP Yunara : Insane 1v5 Comeback of History - Engsub ( Yunara vs Varus, Kai'sa )",
+          "rankClaim": "Master+",
+          "patch": "26.12",
+          "durationSec": 1525,
+          "patchEstimated": true,
+          "uploaded": "2026-06-20",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "GXcFXrjQBR8",
+          "title": "T1 Peyz Yunara vs Varus [ ADC ] Korea Challenger 2388 LP | Patch 26.11",
+          "rankClaim": "Challenger",
+          "patch": "26.11",
+          "durationSec": 1242,
+          "region": "KR",
+          "player": "Peyz",
+          "team": "T1",
+          "uploaded": "2026-06-08",
+          "moments": []
+        },
+        {
+          "videoId": "dTIq6a0DeYI",
+          "title": "Gumayusi : His Yunara Mechanic is Phenomenal - Engsub ( Yunara vs Varus )",
+          "rankClaim": "Master+",
+          "patch": "26.9",
+          "durationSec": 921,
+          "patchEstimated": true,
+          "player": "Gumayusi",
+          "uploaded": "2026-05-02",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "dTlXfa6Kmis",
+          "title": "Yunara vs Varus ADC - KR Challenger - Patch 16.04 Season 16",
+          "rankClaim": "Challenger",
+          "patch": "26.4",
+          "durationSec": 1441,
+          "region": "KR",
+          "uploaded": "2026-02-23",
+          "moments": []
+        },
+        {
+          "videoId": "_PzP8pOh-w0",
+          "title": "Yunara vs Varus ADC - KR Challenger - Patch 25.21 Season 15",
+          "rankClaim": "Challenger",
+          "patch": "25.21",
+          "durationSec": 1636,
+          "region": "KR",
+          "uploaded": "2025-10-27",
+          "moments": []
+        },
+        {
+          "videoId": "FdEUI2qV4lU",
+          "title": "Yunara vs Varus ADC - EUW Challenger - Patch 25.21 Season 15",
+          "rankClaim": "Challenger",
+          "patch": "25.21",
+          "durationSec": 1711,
+          "region": "EUW",
+          "uploaded": "2025-10-24",
+          "moments": []
+        },
+        {
+          "videoId": "nP7qoOxksPk",
+          "title": "Yunara vs Varus ADC - KR Grandmaster - Patch 25.16 Season 15",
+          "rankClaim": "Grandmaster",
+          "patch": "25.16",
+          "durationSec": 1846,
+          "region": "KR",
+          "uploaded": "2025-08-19",
+          "moments": []
+        },
+        {
+          "videoId": "SDAAjxOp1bg",
+          "title": "Yunara vs Varus ADC - EUW Grandmaster - Patch 25.15 Season 15",
+          "rankClaim": "Grandmaster",
+          "patch": "25.15",
+          "durationSec": 2291,
+          "region": "EUW",
+          "uploaded": "2025-08-05",
+          "moments": []
+        },
+        {
+          "videoId": "7_1E_jy4kVY",
+          "title": "Yunara vs Varus ADC - KR Master - Patch 25.14 Season 15",
+          "rankClaim": "Master",
+          "patch": "25.14",
+          "durationSec": 1871,
+          "region": "KR",
+          "uploaded": "2025-07-21",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 110,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "r1bHJVO4w3c",
+          "title": "Yunara Top vs Varus - EUW Grandmaster Patch 26.05",
+          "rankClaim": "Grandmaster",
+          "patch": "26.5",
+          "durationSec": 1548,
+          "region": "EUW",
+          "uploaded": "2026-03-15",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 112,
+      "lane": "adc",
+      "videos": [
+        {
+          "videoId": "Nmmp9VvD6sw",
+          "title": "Yunara ADC vs Viktor (Mask) - KR Challenger Patch 26.18",
+          "rankClaim": "Challenger",
+          "patch": "26.18",
+          "durationSec": 1478,
+          "region": "KR",
+          "uploaded": "2026-09-13",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 115,
+      "lane": "adc",
+      "videos": [
+        {
+          "videoId": "AHjeasacVoU",
+          "title": "(BLG Viper) Yunara ADC vs Ziggs - KR Challenger Patch 26.13",
+          "rankClaim": "Challenger",
+          "patch": "26.13",
+          "durationSec": 1605,
+          "region": "KR",
+          "player": "Viper",
+          "team": "BLG",
+          "uploaded": "2026-07-09",
+          "moments": []
+        },
+        {
+          "videoId": "gZhi4QdixbI",
+          "title": "T1 Peyz Yunara ADC vs Ziggs - Patch 26.2 Korea Challenger 1260 LP",
+          "rankClaim": "Challenger",
+          "patch": "26.2",
+          "durationSec": 1298,
+          "region": "KR",
+          "player": "Peyz",
+          "team": "T1",
+          "uploaded": "2026-01-24",
+          "moments": []
+        },
+        {
+          "videoId": "ZjZv8eew6ME",
+          "title": "Viper Yunara vs Ziggs ADC - KR Challenger - Patch 25.14 Season 15",
+          "rankClaim": "Challenger",
+          "patch": "25.14",
+          "durationSec": 1606,
+          "region": "KR",
+          "player": "Viper",
+          "uploaded": "2025-07-26",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 119,
+      "lane": "adc",
+      "videos": [
+        {
+          "videoId": "3uhoDQDiOzo",
+          "title": "Deokdam : His Yunara just Dominating DOGGO DRAVEN in Laning Phase - Engsub",
+          "rankClaim": "Master+",
+          "patch": "26.20",
+          "durationSec": 1189,
+          "patchEstimated": true,
+          "uploaded": "2026-10-07",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "3YavB9eQSDE",
+          "title": "Yunara vs Draven ADC - KR Challenger - Patch 25.24 Season 15",
+          "rankClaim": "Challenger",
+          "patch": "25.24",
+          "durationSec": 1596,
+          "region": "KR",
+          "uploaded": "2026-01-03",
+          "moments": []
+        },
+        {
+          "videoId": "vLgOkuEa_3o",
+          "title": "Yunara vs Draven ADC - KR Master - Patch 25.14 Season 15",
+          "rankClaim": "Master",
+          "patch": "25.14",
+          "durationSec": 1860,
+          "region": "KR",
+          "uploaded": "2025-07-19",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 119,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "iCB_gEWxkHE",
+          "title": "ADC DAY 10 AND TRYING NOT TO GO INSANE",
+          "rankClaim": "Master+",
+          "patch": "26.6",
+          "durationSec": 22845,
+          "patchEstimated": true,
+          "player": "Alois",
+          "uploaded": "2026-03-21",
+          "format": "stream",
+          "cam": true,
+          "startSec": 16835,
+          "endSec": 18993,
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 131,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "CSbH1je0nr8",
+          "title": "Yunara Mid vs Diana - KR Master Patch 25.15",
+          "rankClaim": "Master",
+          "patch": "25.15",
+          "durationSec": 1748,
+          "region": "KR",
+          "uploaded": "2025-08-11",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 134,
+      "lane": "adc",
+      "videos": [
+        {
+          "videoId": "--SFXTleyvs",
+          "title": "(HLE Gumayusi) Yunara ADC vs Syndra - KR Challenger Patch 26.14",
+          "rankClaim": "Challenger",
+          "patch": "26.14",
+          "durationSec": 1422,
+          "region": "KR",
+          "player": "Gumayusi",
+          "team": "HLE",
+          "uploaded": "2026-07-25",
+          "result": "W",
+          "moments": [
+            {
+              "atSec": 116,
+              "label": "First Blood — Yunara kills Xin Zhao",
+              "kind": "kill"
+            },
+            {
+              "atSec": 176,
+              "label": "Yunara picks off Rell"
+            },
+            {
+              "atSec": 536,
+              "label": "Blue takes 1st Dragon (Chemtech)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 657,
+              "label": "Yunara takes down Syndra"
+            },
+            {
+              "atSec": 886,
+              "label": "Blue takes 2nd Dragon (Cloud)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 918,
+              "label": "Red takes Rift Herald",
+              "kind": "herald"
+            },
+            {
+              "atSec": 1217,
+              "label": "Blue takes 3rd Dragon (Ocean)",
+              "kind": "dragon"
+            }
+          ]
+        },
+        {
+          "videoId": "jfPDMjH55r4",
+          "title": "HLE Gumayusi Yunara vs Syndra [ ADC ] Korea Challenger 2497 LP | Patch 26.14",
+          "rankClaim": "Challenger",
+          "patch": "26.14",
+          "durationSec": 1277,
+          "region": "KR",
+          "player": "Gumayusi",
+          "team": "HLE",
+          "uploaded": "2026-07-20",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 136,
+      "lane": "adc",
+      "videos": [
+        {
+          "videoId": "zf79BHjyV4M",
+          "title": "Yunara ADC vs Aurelion Sol - KR Challenger Patch 26.20",
+          "rankClaim": "Challenger",
+          "patch": "26.20",
+          "durationSec": 1739,
+          "region": "KR",
+          "uploaded": "2026-10-10",
+          "result": "W",
+          "moments": [
+            {
+              "atSec": 3,
+              "label": "First Blood — Yunara kills Aurelion Sol",
+              "kind": "kill"
+            },
+            {
+              "atSec": 196,
+              "label": "Yunara outplays Camille"
+            },
+            {
+              "atSec": 307,
+              "label": "Yunara outduels Aurelion Sol"
+            },
+            {
+              "atSec": 340,
+              "label": "Red takes 1st Dragon (Mountain)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 615,
+              "label": "Yunara outplays Aurelion Sol again"
+            },
+            {
+              "atSec": 663,
+              "label": "Blue takes 1st Dragon (Infernal)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1011,
+              "label": "Blue takes 2nd Dragon (Ocean)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1103,
+              "label": "Yunara takes down Aurelion Sol"
+            },
+            {
+              "atSec": 1185,
+              "label": "Blue takes Baron",
+              "kind": "baron"
+            },
+            {
+              "atSec": 1382,
+              "label": "Blue takes 3rd Dragon (Ocean)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1399,
+              "label": "Mid Inhibitor falls (Red)"
+            },
+            {
+              "atSec": 1497,
+              "label": "Yunara Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1530,
+              "label": "Ambessa takes down Lissandra"
+            },
+            {
+              "atSec": 1591,
+              "label": "Yunara Triple Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1609,
+              "label": "Red takes Baron",
+              "kind": "baron"
+            },
+            {
+              "atSec": 1684,
+              "label": "Hecarim kills Camille",
+              "kind": "kill"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 145,
+      "lane": "adc",
+      "videos": [
+        {
+          "videoId": "P7Hlz0QVWG8",
+          "title": "\"HanQL\" 2255LP Yunara : This Dude is a FREAKING ANIMAL IN TEAMFIGHT - Engsub ( vs Kai'sa )",
+          "rankClaim": "Master+",
+          "patch": "26.19",
+          "durationSec": 1383,
+          "patchEstimated": true,
+          "player": "HanQL",
+          "uploaded": "2026-09-27",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "-7T_lrwwWMw",
+          "title": "Yunara ADC vs Kai'Sa (BLGJ chesterbb) - KR Grandmaster Patch 26.19",
+          "rankClaim": "Grandmaster",
+          "patch": "26.19",
+          "durationSec": 1809,
+          "region": "KR",
+          "uploaded": "2026-09-26",
+          "moments": []
+        },
+        {
+          "videoId": "xAokoy6PN8U",
+          "title": "HLE Gumayusi Yunara vs Kai'Sa [ ADC ] Korea Challenger 2443 LP | Patch 26.18",
+          "rankClaim": "Challenger",
+          "patch": "26.18",
+          "durationSec": 1031,
+          "region": "KR",
+          "player": "Gumayusi",
+          "team": "HLE",
+          "uploaded": "2026-09-12",
+          "moments": []
+        },
+        {
+          "videoId": "x937dI0rf5s",
+          "title": "\"HanQL\" 2255LP Yunara : Insane Mechanic Dominating Super Server Challenger - Engsub ( vs Kai'sa )",
+          "rankClaim": "Challenger",
+          "patch": "26.17",
+          "durationSec": 861,
+          "patchEstimated": true,
+          "player": "HanQL",
+          "uploaded": "2026-08-31",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "qH3uY-_cCBI",
+          "title": "Yunara vs Kai'Sa ADC - KR Challenger - Patch 16.16 Season 16",
+          "rankClaim": "Challenger",
+          "patch": "26.16",
+          "durationSec": 1681,
+          "region": "KR",
+          "uploaded": "2026-08-21",
+          "moments": []
+        },
+        {
+          "videoId": "FCsWKu1J20A",
+          "title": "\"HanQL\" 2255LP Yunara : His Mechanic is so AGGRESSIVE - Engsub ( vs Kai'sa, Draven )",
+          "rankClaim": "Master+",
+          "patch": "26.15",
+          "durationSec": 1301,
+          "patchEstimated": true,
+          "player": "HanQL",
+          "uploaded": "2026-08-05",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "D4hIJo9OKh8",
+          "title": "Uzi Yunara : An Absolutely Crazy 30Min Game at KR GrandMaster Match - Engsub ( Yunara vs Kai'sa )",
+          "rankClaim": "Grandmaster",
+          "patch": "26.11",
+          "durationSec": 1170,
+          "region": "KR",
+          "patchEstimated": true,
+          "player": "Uzi",
+          "uploaded": "2026-06-03",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "LmiLONL7dv8",
+          "title": "1500LP Yunara : His Mechanic is LEGIT INSANE - Engsub ( Yunara vs Kai'sa, Smolder )",
+          "rankClaim": "Master+",
+          "patch": "26.10",
+          "durationSec": 1320,
+          "patchEstimated": true,
+          "uploaded": "2026-05-22",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "NsZSznCVw18",
+          "title": "1600LP Yunara : This Dude is RELENTLESS SAVAGE - Engsub ( Yunara vs Kai'sa )",
+          "rankClaim": "Master+",
+          "patch": "26.10",
+          "durationSec": 807,
+          "patchEstimated": true,
+          "uploaded": "2026-05-17",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "wARPuv99csk",
+          "title": "1600LP Yunara : Beast Mode Ready For TeamFight - Engsub ( Yunara vs Kai'sa )",
+          "rankClaim": "Master+",
+          "patch": "26.10",
+          "durationSec": 688,
+          "patchEstimated": true,
+          "uploaded": "2026-05-14",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "yA0eDiZxZCs",
+          "title": "When Teddy Yunara meet SOFM Kai'sa in KR Challenger - Engsub",
+          "rankClaim": "Challenger",
+          "patch": "26.5",
+          "durationSec": 1359,
+          "region": "KR",
+          "patchEstimated": true,
+          "player": "Teddy",
+          "uploaded": "2026-03-16",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "9iQpehe-5HY",
+          "title": "Yunara vs Kai'Sa ADC - KR Challenger - Patch 16.05 Season 16",
+          "rankClaim": "Challenger",
+          "patch": "26.5",
+          "durationSec": 1576,
+          "region": "KR",
+          "uploaded": "2026-03-15",
+          "moments": []
+        },
+        {
+          "videoId": "xotXVhczzzw",
+          "title": "Deft Yunara vs Kai'Sa [ ADC ] Korea Master Patch 26.5 ✅",
+          "rankClaim": "Master",
+          "patch": "26.5",
+          "durationSec": 999,
+          "region": "KR",
+          "player": "Deft",
+          "uploaded": "2026-03-13",
+          "moments": []
+        },
+        {
+          "videoId": "oOPAKTJBQ64",
+          "title": "Yunara vs Kai'Sa ADC - KR Grandmaster - Patch 26.02 Season 16",
+          "rankClaim": "Grandmaster",
+          "patch": "26.2",
+          "durationSec": 1536,
+          "region": "KR",
+          "uploaded": "2026-01-26",
+          "moments": []
+        },
+        {
+          "videoId": "rEyjA6QQr5M",
+          "title": "HLE Gumayusi Yunara vs Kai'Sa [ ADC ] Patch 26.2 Ranked Korea",
+          "rankClaim": "Master+",
+          "patch": "26.2",
+          "durationSec": 1278,
+          "region": "KR",
+          "player": "Gumayusi",
+          "team": "HLE",
+          "uploaded": "2026-01-23",
+          "moments": []
+        },
+        {
+          "videoId": "C-tDi1YSyVA",
+          "title": "HLE Gumayusi Yunara vs Kai'Sa [ ADC ] Patch 25.24 Ranked Korea",
+          "rankClaim": "Master+",
+          "patch": "25.24",
+          "durationSec": 892,
+          "region": "KR",
+          "player": "Gumayusi",
+          "team": "HLE",
+          "uploaded": "2026-01-05",
+          "moments": []
+        },
+        {
+          "videoId": "pcOGi7Ob9sY",
+          "title": "Yunara vs Kai'Sa ADC - KR Challenger - Patch 25.24 Season 15",
+          "rankClaim": "Challenger",
+          "patch": "25.24",
+          "durationSec": 1591,
+          "region": "KR",
+          "uploaded": "2025-12-16",
+          "moments": []
+        },
+        {
+          "videoId": "7hSiYVyH4yo",
+          "title": "T1 Peyz Yunara vs Kai'Sa ADC [ PentaKill ] Patch 25.24 Ranked Korea",
+          "rankClaim": "Master+",
+          "patch": "25.24",
+          "durationSec": 1288,
+          "region": "KR",
+          "player": "Peyz",
+          "team": "T1",
+          "uploaded": "2025-12-13",
+          "moments": []
+        },
+        {
+          "videoId": "9htggaw_pyU",
+          "title": "Yunara vs KaiSa ADC - KR Challenger - Patch 25.22 Season 15",
+          "rankClaim": "Challenger",
+          "patch": "25.22",
+          "durationSec": 1771,
+          "region": "KR",
+          "uploaded": "2025-11-08",
+          "moments": []
+        },
+        {
+          "videoId": "DFnMm9mX_aU",
+          "title": "Yunara vs Kai'Sa [ ADC ] Lol Korea Master Patch 25.20 ✅",
+          "rankClaim": "Master",
+          "patch": "25.20",
+          "durationSec": 1502,
+          "region": "KR",
+          "uploaded": "2025-10-13",
+          "moments": []
+        },
+        {
+          "videoId": "VhwODf6S0pk",
+          "title": "Yunara vs Kai'Sa ADC - KR Challenger - Patch 25.19 Season 15",
+          "rankClaim": "Challenger",
+          "patch": "25.19",
+          "durationSec": 1830,
+          "region": "KR",
+          "uploaded": "2025-09-30",
+          "moments": []
+        },
+        {
+          "videoId": "s72dC5dCC4s",
+          "title": "Yunara vs Kai'Sa ADC - KR Challenger - Patch 25.19 Season 15",
+          "rankClaim": "Challenger",
+          "patch": "25.19",
+          "durationSec": 1861,
+          "region": "KR",
+          "uploaded": "2025-09-27",
+          "moments": []
+        },
+        {
+          "videoId": "-lAk5qFB0k8",
+          "title": "Yunara vs KaiSa ADC - KR CHallenger - Patch 25.18 Season 15",
+          "rankClaim": "Challenger",
+          "patch": "25.18",
+          "durationSec": 2181,
+          "region": "KR",
+          "uploaded": "2025-09-18",
+          "moments": []
+        },
+        {
+          "videoId": "H2ZgGR962dw",
+          "title": "T1 Gumayusi Yunara vs Kaisa [ ADC ] Patch 25.18 Korea Master",
+          "rankClaim": "Master",
+          "patch": "25.18",
+          "durationSec": 727,
+          "region": "KR",
+          "player": "Gumayusi",
+          "team": "T1",
+          "uploaded": "2025-09-14",
+          "moments": []
+        },
+        {
+          "videoId": "YljoAtyxmLo",
+          "title": "T1 Gumayusi Yunara vs Kaisa ADC [ Pentakill ] Patch 25.17 Korea Grandmaster",
+          "rankClaim": "Grandmaster",
+          "patch": "25.17",
+          "durationSec": 976,
+          "region": "KR",
+          "player": "Gumayusi",
+          "team": "T1",
+          "uploaded": "2025-09-06",
+          "moments": []
+        },
+        {
+          "videoId": "N8eqLyCd7FU",
+          "title": "Yunara vs KaiSa ADC - KR Grandmaster - Patch 25.16 Season 15",
+          "rankClaim": "Grandmaster",
+          "patch": "25.16",
+          "durationSec": 1726,
+          "region": "KR",
+          "uploaded": "2025-08-22",
+          "moments": []
+        },
+        {
+          "videoId": "jBSLWo0t1Fs",
+          "title": "Yunara vs Kai'Sa ADC - KR Challenger - Patch 25.16 Season 15",
+          "rankClaim": "Challenger",
+          "patch": "25.16",
+          "durationSec": 1331,
+          "region": "KR",
+          "uploaded": "2025-08-21",
+          "moments": []
+        },
+        {
+          "videoId": "xN2aZRt8tYo",
+          "title": "Yunara vs Kai'Sa ADC - KR Master - Patch 25.14 Season 15",
+          "rankClaim": "Master",
+          "patch": "25.14",
+          "durationSec": 2161,
+          "region": "KR",
+          "uploaded": "2025-07-28",
+          "moments": []
+        },
+        {
+          "videoId": "uK3KSx4oz3Y",
+          "title": "Gumayusi Yunara vs Kai'Sa ADC - KR Grandmaster - Patch 25.14 Season 15",
+          "rankClaim": "Grandmaster",
+          "patch": "25.14",
+          "durationSec": 1231,
+          "region": "KR",
+          "player": "Gumayusi",
+          "uploaded": "2025-07-28",
+          "moments": []
+        },
+        {
+          "videoId": "vofBBKOn1uY",
+          "title": "T1 Gumayusi Yunara vs Kaisa [ ADC ] Patch 25.14 Ranked Korea",
+          "rankClaim": "Master+",
+          "patch": "25.14",
+          "durationSec": 994,
+          "region": "KR",
+          "player": "Gumayusi",
+          "team": "T1",
+          "uploaded": "2025-07-27",
+          "moments": []
+        },
+        {
+          "videoId": "mLo-vuDOH7U",
+          "title": "Yunara vs Kai'Sa ADC - KR Master - Patch 25.14 Season 15",
+          "rankClaim": "Master",
+          "patch": "25.14",
+          "durationSec": 1591,
+          "region": "KR",
+          "uploaded": "2025-07-23",
+          "moments": []
+        },
+        {
+          "videoId": "YbobvChSlxU",
+          "title": "Yunara vs Kaisa ADC [ JDG Peyz ] Patch 25.14 Korea Challenger ✅",
+          "rankClaim": "Challenger",
+          "patch": "25.14",
+          "durationSec": 1154,
+          "region": "KR",
+          "player": "Peyz",
+          "team": "JDG",
+          "uploaded": "2025-07-21",
+          "moments": []
+        },
+        {
+          "videoId": "dXVb4qEoHzc",
+          "title": "Yunara vs Kai'Sa ADC - KR Master - Patch 25.14 Season 15",
+          "rankClaim": "Master",
+          "patch": "25.14",
+          "durationSec": 1531,
+          "region": "KR",
+          "uploaded": "2025-07-19",
+          "moments": []
+        },
+        {
+          "videoId": "6zRiS6uT3-w",
+          "title": "Yunara vs Kai'Sa ADC - EUW Master - Patch 25.14 Season 15",
+          "rankClaim": "Master",
+          "patch": "25.14",
+          "durationSec": 1591,
+          "region": "EUW",
+          "uploaded": "2025-07-18",
+          "moments": []
+        },
+        {
+          "videoId": "v6ZAI2OFdtU",
+          "title": "Yunara vs Kai'Sa ADC - EUW Master - Patch 25.14 Season 15",
+          "rankClaim": "Master",
+          "patch": "25.14",
+          "durationSec": 2641,
+          "region": "EUW",
+          "uploaded": "2025-07-17",
+          "moments": []
+        },
+        {
+          "videoId": "M2bdgo7XMus",
+          "title": "Yunara vs Kai'Sa ADC - KR Master - Patch 25.14 Season 15",
+          "rankClaim": "Master",
+          "patch": "25.14",
+          "durationSec": 1546,
+          "region": "KR",
+          "uploaded": "2025-07-17",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 145,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "aXqKK8CcOIo",
+          "title": "BIG WINSTREAK TODAY ON THE ADC CLIMB",
+          "rankClaim": "Master+",
+          "patch": "26.6",
+          "durationSec": 24356,
+          "patchEstimated": true,
+          "player": "Alois",
+          "uploaded": "2026-03-25",
+          "format": "stream",
+          "cam": true,
+          "startSec": 9080,
+          "endSec": 11075,
+          "moments": []
+        },
+        {
+          "videoId": "iCB_gEWxkHE",
+          "title": "ADC DAY 10 AND TRYING NOT TO GO INSANE",
+          "rankClaim": "Master+",
+          "patch": "26.6",
+          "durationSec": 22845,
+          "patchEstimated": true,
+          "player": "Alois",
+          "uploaded": "2026-03-21",
+          "format": "stream",
+          "cam": true,
+          "startSec": 8716,
+          "endSec": 10138,
+          "moments": []
+        },
+        {
+          "videoId": "bkcAJBrMjKk",
+          "title": "CLIMBING THROUGH EMERALD ELO AS AN ADC MAIN",
+          "rankClaim": "Master+",
+          "patch": "26.5",
+          "durationSec": 30508,
+          "patchEstimated": true,
+          "player": "Alois",
+          "uploaded": "2026-03-11",
+          "format": "stream",
+          "cam": true,
+          "startSec": 10119,
+          "endSec": 13587,
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 147,
+      "lane": "adc",
+      "videos": [
+        {
+          "videoId": "JexMKUAaWRQ",
+          "title": "(VIT Carzzy) Yunara ADC vs Seraphine - EUW Master Patch 26.13",
+          "rankClaim": "Master",
+          "patch": "26.13",
+          "durationSec": 1852,
+          "region": "EUW",
+          "player": "VIT Carzzy",
+          "uploaded": "2026-06-28",
+          "moments": []
+        },
+        {
+          "videoId": "-MyEvUjgoAU",
+          "title": "Yunara vs Seraphine ADC - KR Challenger - Patch 25.18 Season 15",
+          "rankClaim": "Challenger",
+          "patch": "25.18",
+          "durationSec": 1606,
+          "region": "KR",
+          "uploaded": "2025-09-22",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 147,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "aXqKK8CcOIo",
+          "title": "BIG WINSTREAK TODAY ON THE ADC CLIMB",
+          "rankClaim": "Master+",
+          "patch": "26.6",
+          "durationSec": 24356,
+          "patchEstimated": true,
+          "player": "Alois",
+          "uploaded": "2026-03-25",
+          "format": "stream",
+          "cam": true,
+          "startSec": 20034,
+          "endSec": 21857,
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 157,
+      "lane": "adc",
+      "videos": [
+        {
+          "videoId": "QfaHWQIMtEM",
+          "title": "Yunara vs Yasuo ADC - EUW Master - Patch 25.14 Season 15",
+          "rankClaim": "Master",
+          "patch": "25.14",
+          "durationSec": 1950,
+          "region": "EUW",
+          "uploaded": "2025-07-17",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 163,
+      "lane": "adc",
+      "videos": [
+        {
+          "videoId": "nOQ9zVqg07k",
+          "title": "Yunara ADC vs Taliyah - KR Challenger Patch 26.18",
+          "rankClaim": "Challenger",
+          "patch": "26.18",
+          "durationSec": 1642,
+          "region": "KR",
+          "uploaded": "2026-09-23",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 202,
+      "lane": "adc",
+      "videos": [
+        {
+          "videoId": "HIvwJmEHGhw",
+          "title": "Yunara ADC vs Jhin (Bull) - KR Challenger Patch 26.19",
+          "rankClaim": "Challenger",
+          "patch": "26.19",
+          "durationSec": 1430,
+          "region": "KR",
+          "uploaded": "2026-10-06",
+          "result": "W",
+          "moments": [
+            {
+              "atSec": 311,
+              "label": "Red takes 1st Dragon (Hextech)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 638,
+              "label": "Blue takes 1st Dragon (Infernal)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 805,
+              "label": "First Blood — Yunara kills Jhin",
+              "kind": "kill"
+            },
+            {
+              "atSec": 826,
+              "label": "Yunara picks off Alistar"
+            },
+            {
+              "atSec": 927,
+              "label": "Gangplank kills Taliyah",
+              "kind": "kill"
+            },
+            {
+              "atSec": 968,
+              "label": "Red takes 2nd Dragon (Ocean)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1108,
+              "label": "Yunara picks off Alistar"
+            },
+            {
+              "atSec": 1204,
+              "label": "Team fight (3 kills)",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1243,
+              "label": "Red takes Baron",
+              "kind": "baron"
+            },
+            {
+              "atSec": 1275,
+              "label": "Yunara picks off Alistar"
+            },
+            {
+              "atSec": 1300,
+              "label": "Red takes 3rd Dragon (Ocean)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1362,
+              "label": "Aurelion Sol kills Jhin",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1373,
+              "label": "Mid Inhibitor falls (Blue)"
+            },
+            {
+              "atSec": 1379,
+              "label": "Aurelion Sol picks off Taliyah"
+            },
+            {
+              "atSec": 1410,
+              "label": "Yunara kills Tristana",
+              "kind": "kill"
+            }
+          ]
+        },
+        {
+          "videoId": "6VaUPno05KI",
+          "title": "\"HanQL\" 2255LP Yunara : CLEAN SPACING Get Easy Pentakill - Engsub ( vs Jhin, Lucian )",
+          "rankClaim": "Master+",
+          "patch": "26.15",
+          "durationSec": 1242,
+          "patchEstimated": true,
+          "player": "HanQL",
+          "uploaded": "2026-08-07",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "fOLmhD38SKc",
+          "title": "2255LP Yunara : This Dude is Overwhelming Super Server HighElo - Engsub (Yunara vs Jhin, Smolder)",
+          "rankClaim": "Master+",
+          "patch": "26.12",
+          "durationSec": 1455,
+          "patchEstimated": true,
+          "uploaded": "2026-06-14",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "0od6baaO0-w",
+          "title": "Uzi Yunara : From ZERO to HERO, Insane Comeback of History - Engsub ( Yunara vs Jhin )",
+          "rankClaim": "Master+",
+          "patch": "26.10",
+          "durationSec": 975,
+          "patchEstimated": true,
+          "player": "Uzi",
+          "uploaded": "2026-05-26",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "Vs2L6olIqac",
+          "title": "Yunara vs Jhin ADC - KR Challenger - Patch 16.07 Season 16",
+          "rankClaim": "Challenger",
+          "patch": "26.7",
+          "durationSec": 1936,
+          "region": "KR",
+          "uploaded": "2026-04-02",
+          "moments": []
+        },
+        {
+          "videoId": "mJxtkYRtT9M",
+          "title": "HLE Gumayusi Yunara vs Jhin [ ADC ] Korea Challenger 1986 LP | Patch 26.5",
+          "rankClaim": "Challenger",
+          "patch": "26.5",
+          "durationSec": 1100,
+          "region": "KR",
+          "player": "Gumayusi",
+          "team": "HLE",
+          "uploaded": "2026-03-17",
+          "moments": []
+        },
+        {
+          "videoId": "Wp9Qnzqj-fw",
+          "title": "Yunara vs Jhin ADC - EUW Challenger - Patch 16.05 Season 16",
+          "rankClaim": "Challenger",
+          "patch": "26.5",
+          "durationSec": 1801,
+          "region": "EUW",
+          "uploaded": "2026-03-11",
+          "moments": []
+        },
+        {
+          "videoId": "SIpmDTqW2EU",
+          "title": "Yunara vs Jhin [ ADC ] Korea Challenger 1704 LP | Patch 25.24",
+          "rankClaim": "Challenger",
+          "patch": "25.24",
+          "durationSec": 1383,
+          "region": "KR",
+          "uploaded": "2025-12-26",
+          "moments": []
+        },
+        {
+          "videoId": "7L6IhVH07ZM",
+          "title": "HLE Gumayusi Yunara vs Jhin [ ADC ] Patch 25.24 Ranked Korea",
+          "rankClaim": "Master+",
+          "patch": "25.24",
+          "durationSec": 1331,
+          "region": "KR",
+          "player": "Gumayusi",
+          "team": "HLE",
+          "uploaded": "2025-12-04",
+          "moments": []
+        },
+        {
+          "videoId": "zodYZfqpOn0",
+          "title": "Yunara vs Jhin ADC - EUW Master - Patch 25.14 Season 15",
+          "rankClaim": "Master",
+          "patch": "25.14",
+          "durationSec": 1451,
+          "region": "EUW",
+          "uploaded": "2025-07-21",
+          "moments": []
+        },
+        {
+          "videoId": "7C4IVUPEBqk",
+          "title": "Yunara vs Jhin ADC - EUW Master - Patch 25.14 Season 15",
+          "rankClaim": "Master",
+          "patch": "25.14",
+          "durationSec": 1606,
+          "region": "EUW",
+          "uploaded": "2025-07-18",
+          "moments": []
+        },
+        {
+          "videoId": "r_k52AMd_p0",
+          "title": "Yunara vs Jhin ADC - EUW Master - Patch 25.14 Season 15",
+          "rankClaim": "Master",
+          "patch": "25.14",
+          "durationSec": 1606,
+          "region": "EUW",
+          "uploaded": "2025-07-17",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 202,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "aXqKK8CcOIo",
+          "title": "BIG WINSTREAK TODAY ON THE ADC CLIMB",
+          "rankClaim": "Master+",
+          "patch": "26.6",
+          "durationSec": 24356,
+          "patchEstimated": true,
+          "player": "Alois",
+          "uploaded": "2026-03-25",
+          "format": "stream",
+          "cam": true,
+          "startSec": 7,
+          "endSec": 1511,
+          "moments": []
+        },
+        {
+          "videoId": "aXqKK8CcOIo",
+          "title": "BIG WINSTREAK TODAY ON THE ADC CLIMB",
+          "rankClaim": "Master+",
+          "patch": "26.6",
+          "durationSec": 24356,
+          "patchEstimated": true,
+          "player": "Alois",
+          "uploaded": "2026-03-25",
+          "format": "stream",
+          "cam": true,
+          "startSec": 12634,
+          "endSec": 13950,
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 221,
+      "lane": "adc",
+      "videos": [
+        {
+          "videoId": "4PLqu9wajc4",
+          "title": "(T1 Eclipse) Yunara ADC vs Zeri - KR Challenger Patch 26.21",
+          "rankClaim": "Challenger",
+          "patch": "26.21",
+          "durationSec": 1860,
+          "region": "KR",
+          "player": "Eclipse",
+          "team": "T1",
+          "uploaded": "2026-11-04",
+          "moments": []
+        },
+        {
+          "videoId": "KiFCVynAiGE",
+          "title": "HLE Gumayusi Yunara vs Zeri [ ADC ] Korea Challenger 2516 LP | Patch 26.15",
+          "rankClaim": "Challenger",
+          "patch": "26.15",
+          "durationSec": 1192,
+          "region": "KR",
+          "player": "Gumayusi",
+          "team": "HLE",
+          "uploaded": "2026-08-04",
+          "moments": []
+        },
+        {
+          "videoId": "vAdsWKaixac",
+          "title": "\"Jz\" 2000LP Yunara : His Mechanic is so DAM Terrifying - Engsub (Yunara vs Zeri, Ez)",
+          "rankClaim": "Master+",
+          "patch": "26.15",
+          "durationSec": 1398,
+          "patchEstimated": true,
+          "player": "Jz",
+          "uploaded": "2026-07-29",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "tatG_MsSDi0",
+          "title": "Teddy : His Yunara Mechanic is so DAM AGGRESSIVE - Engsub ( Yunara vs Zeri )",
+          "rankClaim": "Master+",
+          "patch": "26.12",
+          "durationSec": 839,
+          "patchEstimated": true,
+          "player": "Teddy",
+          "uploaded": "2026-06-22",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "HxG-Cnlwkps",
+          "title": "Uzi : His Yunara Mechanic is LEGIT PHENOMENAL - Engsub ( Yunara vs Zeri )",
+          "rankClaim": "Master+",
+          "patch": "26.11",
+          "durationSec": 1073,
+          "patchEstimated": true,
+          "player": "Uzi",
+          "uploaded": "2026-06-09",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "rW3iFDm9iOY",
+          "title": "Gumayusi : His Yunara Mechanic is SO DAM GOOD - Engsub ( Yunara vs Zeri )",
+          "rankClaim": "Master+",
+          "patch": "26.10",
+          "durationSec": 1228,
+          "patchEstimated": true,
+          "player": "Gumayusi",
+          "uploaded": "2026-05-20",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "b0rB4v3MKp0",
+          "title": "HLE Gumayusi Yunara vs Zeri [ ADC ] Patch 26.10 Korea Challenger 2569 LP",
+          "rankClaim": "Challenger",
+          "patch": "26.10",
+          "durationSec": 1697,
+          "region": "KR",
+          "player": "Gumayusi",
+          "team": "HLE",
+          "uploaded": "2026-05-13",
+          "moments": []
+        },
+        {
+          "videoId": "GmoywjgYBlQ",
+          "title": "Yunara vs Zeri ADC - KR Challenger - Patch 16.09 Season 16",
+          "rankClaim": "Challenger",
+          "patch": "26.9",
+          "durationSec": 1456,
+          "region": "KR",
+          "uploaded": "2026-05-05",
+          "moments": []
+        },
+        {
+          "videoId": "TAyoXf_5RKE",
+          "title": "Yunara vs Zeri ADC [ Gen.G Ruler ] Korea Grandmaster 1705 | Patch 26.9 ✅",
+          "rankClaim": "Grandmaster",
+          "patch": "26.9",
+          "durationSec": 1361,
+          "region": "KR",
+          "player": "Ruler",
+          "team": "Gen.G",
+          "uploaded": "2026-04-29",
+          "moments": []
+        },
+        {
+          "videoId": "Gtl-a0IJl0U",
+          "title": "HLE Gumayusi Yunara vs Zeri [ ADC ] Patch 26.6 Korea Challenger 2131 LP",
+          "rankClaim": "Challenger",
+          "patch": "26.6",
+          "durationSec": 1154,
+          "region": "KR",
+          "player": "Gumayusi",
+          "team": "HLE",
+          "uploaded": "2026-03-19",
+          "moments": []
+        },
+        {
+          "videoId": "EQji7YuWsso",
+          "title": "Yunara vs Zeri ADC - KR Challenger - Patch 25.24 Season 15",
+          "rankClaim": "Challenger",
+          "patch": "25.24",
+          "durationSec": 1351,
+          "region": "KR",
+          "uploaded": "2025-12-28",
+          "moments": []
+        },
+        {
+          "videoId": "8oJA7TCaLPo",
+          "title": "T1 Peyz Yunara vs Zeri [ ADC ] Korea Master Patch 25.24",
+          "rankClaim": "Master",
+          "patch": "25.24",
+          "durationSec": 1213,
+          "region": "KR",
+          "player": "Peyz",
+          "team": "T1",
+          "uploaded": "2025-12-06",
+          "moments": []
+        },
+        {
+          "videoId": "UGJ0GgAUN2Q",
+          "title": "Yunara vs Zeri ADC - KR Challenger - Patch 25.22 Season 15",
+          "rankClaim": "Challenger",
+          "patch": "25.22",
+          "durationSec": 1591,
+          "region": "KR",
+          "uploaded": "2025-11-13",
+          "moments": []
+        },
+        {
+          "videoId": "SPzsLcfuKK4",
+          "title": "Yunara vs Zeri ADC - EUW Grandmaster - Patch 25.14 Season 15",
+          "rankClaim": "Grandmaster",
+          "patch": "25.14",
+          "durationSec": 1920,
+          "region": "EUW",
+          "uploaded": "2025-07-29",
+          "moments": []
+        },
+        {
+          "videoId": "T-0FX42b-PQ",
+          "title": "Yunara vs Zeri ADC - KR Master - Patch 25.14 Season 15",
+          "rankClaim": "Master",
+          "patch": "25.14",
+          "durationSec": 1606,
+          "region": "KR",
+          "uploaded": "2025-07-23",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 222,
+      "lane": "adc",
+      "videos": [
+        {
+          "videoId": "k6LqC1xNyJ4",
+          "title": "T1 Peyz Yunara vs Jinx [ ADC ] Ranked Master NA | Patch 26.21",
+          "rankClaim": "Master",
+          "patch": "26.21",
+          "durationSec": 1114,
+          "region": "NA",
+          "player": "Peyz",
+          "team": "T1",
+          "uploaded": "2026-10-30",
+          "moments": []
+        },
+        {
+          "videoId": "ngEeI3Ofhvs",
+          "title": "2255LP Yunara : This is GOD LEVEL Of Yunara Look Like - Engsub ( Yunara vs Jinx, Lucian )",
+          "rankClaim": "Master+",
+          "patch": "26.12",
+          "durationSec": 1549,
+          "patchEstimated": true,
+          "uploaded": "2026-06-17",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "Xqhq8mExHwI",
+          "title": "HLE Gumayusi Yunara vs Jinx [ ADC ] Patch 26.1 Ranked Korea",
+          "rankClaim": "Master+",
+          "patch": "26.1",
+          "durationSec": 1119,
+          "region": "KR",
+          "player": "Gumayusi",
+          "team": "HLE",
+          "uploaded": "2026-01-20",
+          "moments": []
+        },
+        {
+          "videoId": "ZaEoHBSMdzo",
+          "title": "Yunara vs Jinx [ ADC ] Patch 25.21 Korea Challenger 1360 LP",
+          "rankClaim": "Challenger",
+          "patch": "25.21",
+          "durationSec": 1476,
+          "region": "KR",
+          "uploaded": "2025-10-27",
+          "moments": []
+        },
+        {
+          "videoId": "Y8GQKVdiabY",
+          "title": "Yunara vs Jinx ADC - KR Grandmaster - Patch 25.14 Season 15",
+          "rankClaim": "Grandmaster",
+          "patch": "25.14",
+          "durationSec": 1351,
+          "region": "KR",
+          "uploaded": "2025-07-26",
+          "moments": []
+        },
+        {
+          "videoId": "hn2JSrdHfas",
+          "title": "Yunara vs Jinx ADC - KR Grandmaster - Patch 25.14 Season 15",
+          "rankClaim": "Grandmaster",
+          "patch": "25.14",
+          "durationSec": 1636,
+          "region": "KR",
+          "uploaded": "2025-07-24",
+          "moments": []
+        },
+        {
+          "videoId": "vljIs9tZ4Zo",
+          "title": "Yunara vs Jinx ADC - EUW Master - Patch 25.14 Season 15",
+          "rankClaim": "Master",
+          "patch": "25.14",
+          "durationSec": 1536,
+          "region": "EUW",
+          "uploaded": "2025-07-21",
+          "moments": []
+        },
+        {
+          "videoId": "3WmkluM18G4",
+          "title": "Yunara vs Jinx ADC - KR Master - Patch 25.14 Season 15",
+          "rankClaim": "Master",
+          "patch": "25.14",
+          "durationSec": 1501,
+          "region": "KR",
+          "uploaded": "2025-07-21",
+          "moments": []
+        },
+        {
+          "videoId": "EoXpU4fX0ok",
+          "title": "Yunara vs Jinx ADC - EUW Master - Patch 25.14 Season 15",
+          "rankClaim": "Master",
+          "patch": "25.14",
+          "durationSec": 1600,
+          "region": "EUW",
+          "uploaded": "2025-07-19",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 235,
+      "lane": "adc",
+      "videos": [
+        {
+          "videoId": "-UdwHedaef0",
+          "title": "BLG Viper Yunara vs Senna [ ADC ] Korea Challenger 2078 LP | Patch 26.13",
+          "rankClaim": "Challenger",
+          "patch": "26.13",
+          "durationSec": 1403,
+          "region": "KR",
+          "player": "Viper",
+          "team": "BLG",
+          "uploaded": "2026-06-28",
+          "moments": []
+        },
+        {
+          "videoId": "8P8GfqYwQXM",
+          "title": "HanQL : His Yunara is PROBLEM to Super Server HighElo - Engsub (Yunara vs Tris, Senna)",
+          "rankClaim": "Master+",
+          "patch": "26.13",
+          "durationSec": 1288,
+          "patchEstimated": true,
+          "player": "HanQL",
+          "uploaded": "2026-06-27",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "CvuxU3oV5Rg",
+          "title": "(FK Adam) Yunara ADC vs Senna - EUW Grandmaster Patch 26.11",
+          "rankClaim": "Grandmaster",
+          "patch": "26.11",
+          "durationSec": 1496,
+          "region": "EUW",
+          "player": "FK Adam",
+          "uploaded": "2026-05-31",
+          "moments": []
+        },
+        {
+          "videoId": "4PaKMAwBME8",
+          "title": "Yunara ADC vs Senna - KR Challenger Patch 26.10",
+          "rankClaim": "Challenger",
+          "patch": "26.10",
+          "durationSec": 1741,
+          "region": "KR",
+          "uploaded": "2026-05-18",
+          "result": "L",
+          "moments": [
+            {
+              "atSec": 95,
+              "label": "First Blood — Qiyana kills Senna",
+              "kind": "kill"
+            },
+            {
+              "atSec": 574,
+              "label": "Red takes 1st Dragon (Ocean)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 656,
+              "label": "Yunara takes down Senna"
+            },
+            {
+              "atSec": 703,
+              "label": "Yunara outduels Senna"
+            },
+            {
+              "atSec": 901,
+              "label": "Red takes 2nd Dragon (Hextech)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 921,
+              "label": "Yunara takes down Senna"
+            },
+            {
+              "atSec": 954,
+              "label": "Malphite takes down Ryze"
+            },
+            {
+              "atSec": 1034,
+              "label": "Malphite picks off Senna"
+            },
+            {
+              "atSec": 1144,
+              "label": "Yunara Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1177,
+              "label": "Red takes Baron",
+              "kind": "baron"
+            },
+            {
+              "atSec": 1230,
+              "label": "Red takes 3rd Dragon (Chemtech)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1308,
+              "label": "Yunara picks off Tristana"
+            },
+            {
+              "atSec": 1381,
+              "label": "Yunara kills Ryze",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1400,
+              "label": "Bot Inhibitor falls (Blue)"
+            },
+            {
+              "atSec": 1530,
+              "label": "Yunara picks off Tristana"
+            },
+            {
+              "atSec": 1586,
+              "label": "Red takes 4th Dragon (Chemtech)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1635,
+              "label": "Blue takes Baron",
+              "kind": "baron"
+            },
+            {
+              "atSec": 1691,
+              "label": "Mid Inhibitor falls (Blue)"
+            }
+          ]
+        },
+        {
+          "videoId": "RLvj7MkNIJI",
+          "title": "T1 Peyz Yunara vs Senna [ ADC ] Korea Challenger 2320 LP | Patch 26.7",
+          "rankClaim": "Challenger",
+          "patch": "26.7",
+          "durationSec": 1338,
+          "region": "KR",
+          "player": "Peyz",
+          "team": "T1",
+          "uploaded": "2026-04-05",
+          "moments": [
+            {
+              "atSec": 0,
+              "label": "Early game laning phase"
+            },
+            {
+              "atSec": 165,
+              "label": "Mid-game skirmishes"
+            },
+            {
+              "atSec": 441,
+              "label": "Objective control"
+            },
+            {
+              "atSec": 636,
+              "label": "Turret sieges",
+              "kind": "tower"
+            },
+            {
+              "atSec": 869,
+              "label": "Dragon and Rift Herald",
+              "kind": "herald"
+            },
+            {
+              "atSec": 1007,
+              "label": "Baron Nashor power play",
+              "kind": "baron"
+            },
+            {
+              "atSec": 1185,
+              "label": "Final push and victory"
+            }
+          ]
+        },
+        {
+          "videoId": "EGLUDAZMCHY",
+          "title": "HLE Gumayusi Yunara vs Senna [ ADC ] Korea Challenger 2412 LP | Patch 26.6",
+          "rankClaim": "Challenger",
+          "patch": "26.6",
+          "durationSec": 1364,
+          "region": "KR",
+          "player": "Gumayusi",
+          "team": "HLE",
+          "uploaded": "2026-04-01",
+          "moments": []
+        },
+        {
+          "videoId": "I0OSjnrRTwU",
+          "title": "Yunara vs Senna ADC [ HLE Viper ] Korea Challenger Patch 25.18",
+          "rankClaim": "Challenger",
+          "patch": "25.18",
+          "durationSec": 1060,
+          "region": "KR",
+          "player": "Viper",
+          "team": "HLE",
+          "uploaded": "2025-09-16",
+          "moments": []
+        },
+        {
+          "videoId": "QegYwBoHzV4",
+          "title": "Yunara vs Senna ADC - KR Challenger - Patch 25.16 Season 15",
+          "rankClaim": "Challenger",
+          "patch": "25.16",
+          "durationSec": 1441,
+          "region": "KR",
+          "uploaded": "2025-08-24",
+          "moments": []
+        },
+        {
+          "videoId": "zcWFj_e2Z9A",
+          "title": "T1 Gumayusi Yunara ADC vs Senna - Patch 25.15 Korea Master",
+          "rankClaim": "Master",
+          "patch": "25.15",
+          "durationSec": 1281,
+          "region": "KR",
+          "player": "Gumayusi",
+          "team": "T1",
+          "uploaded": "2025-08-09",
+          "moments": []
+        },
+        {
+          "videoId": "UFsnEEjd_4Y",
+          "title": "T1 Gumayusi Yunara vs Senna [ ADC ] Korea Master Patch 25.15",
+          "rankClaim": "Master",
+          "patch": "25.15",
+          "durationSec": 1020,
+          "region": "KR",
+          "player": "Gumayusi",
+          "team": "T1",
+          "uploaded": "2025-08-06",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 235,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "aXqKK8CcOIo",
+          "title": "BIG WINSTREAK TODAY ON THE ADC CLIMB",
+          "rankClaim": "Master+",
+          "patch": "26.6",
+          "durationSec": 24356,
+          "patchEstimated": true,
+          "player": "Alois",
+          "uploaded": "2026-03-25",
+          "format": "stream",
+          "cam": true,
+          "startSec": 7460,
+          "endSec": 9080,
+          "moments": []
+        },
+        {
+          "videoId": "iCB_gEWxkHE",
+          "title": "ADC DAY 10 AND TRYING NOT TO GO INSANE",
+          "rankClaim": "Master+",
+          "patch": "26.6",
+          "durationSec": 22845,
+          "patchEstimated": true,
+          "player": "Alois",
+          "uploaded": "2026-03-21",
+          "format": "stream",
+          "cam": true,
+          "startSec": 15126,
+          "endSec": 16835,
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 236,
+      "lane": "adc",
+      "videos": [
+        {
+          "videoId": "o60PZCDWKLw",
+          "title": "Ruler Yunara vs Lucian ADC - NA Master - Patch 16.21 Season 16",
+          "rankClaim": "Master",
+          "patch": "26.21",
+          "durationSec": 1306,
+          "region": "NA",
+          "player": "Ruler",
+          "uploaded": "2026-10-28",
+          "moments": []
+        },
+        {
+          "videoId": "_qRw1D9lLmI",
+          "title": "Yunara vs Lucian ADC [ Gen.G Ruler ] Ranked Master NA | Patch 26.21",
+          "rankClaim": "Master",
+          "patch": "26.21",
+          "durationSec": 1051,
+          "region": "NA",
+          "player": "Ruler",
+          "team": "Gen.G",
+          "uploaded": "2026-10-23",
+          "moments": []
+        },
+        {
+          "videoId": "HLmz1ew-sNo",
+          "title": "\"HanQL\" 2255LP Yunara : His Mechanic is so AGGRESSIVE at Level One - Engsub ( vs Aphe, Lucian )",
+          "rankClaim": "Master+",
+          "patch": "26.20",
+          "durationSec": 1376,
+          "patchEstimated": true,
+          "player": "HanQL",
+          "uploaded": "2026-10-13",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "Dz2pDt4mFTc",
+          "title": "BLG Viper Yunara vs Lucian [ ADC ] Korea Grandmaster 1822 LP | Patch 26.17",
+          "rankClaim": "Grandmaster",
+          "patch": "26.17",
+          "durationSec": 1426,
+          "region": "KR",
+          "player": "Viper",
+          "team": "BLG",
+          "uploaded": "2026-09-03",
+          "moments": []
+        },
+        {
+          "videoId": "lOQ-tWdzm00",
+          "title": "2255LP Yunara \"HanQL\" This Dude is a FEARLESS MONSTER - Engsub (Yunara vs Lucian, Jhin)",
+          "rankClaim": "Master+",
+          "patch": "26.13",
+          "durationSec": 1399,
+          "patchEstimated": true,
+          "player": "HanQL",
+          "uploaded": "2026-06-30",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "-c2csgCuA6g",
+          "title": "(BLG Viper) Yunara ADC vs Lucian - KR Challenger Patch 26.12",
+          "rankClaim": "Challenger",
+          "patch": "26.12",
+          "durationSec": 1600,
+          "region": "KR",
+          "player": "Viper",
+          "team": "BLG",
+          "uploaded": "2026-06-15",
+          "moments": []
+        },
+        {
+          "videoId": "c5ceXeIabZM",
+          "title": "1500LP Yunara : 1v5 Rambo in Teamfight with Runaan's - Engsub ( Yunara vs Tris, Lucian )",
+          "rankClaim": "Master+",
+          "patch": "26.10",
+          "durationSec": 1240,
+          "patchEstimated": true,
+          "uploaded": "2026-05-23",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "GMgwscKEWwg",
+          "title": "Yunara ADC vs Lucian - KR Challenger Patch 26.09",
+          "rankClaim": "Challenger",
+          "patch": "26.9",
+          "durationSec": 1651,
+          "region": "KR",
+          "uploaded": "2026-05-14",
+          "moments": []
+        },
+        {
+          "videoId": "LwnmrCC-704",
+          "title": "Yunara vs Lucian ADC - KR Challenger - Patch 16.07 Season 16",
+          "rankClaim": "Challenger",
+          "patch": "26.7",
+          "durationSec": 1876,
+          "region": "KR",
+          "uploaded": "2026-04-08",
+          "moments": []
+        },
+        {
+          "videoId": "lEzUc6eg_f8",
+          "title": "Yunara vs Lucian ADC - KR Challenger - Patch 16.06 Season 16",
+          "rankClaim": "Challenger",
+          "patch": "26.6",
+          "durationSec": 1716,
+          "region": "KR",
+          "uploaded": "2026-04-01",
+          "moments": []
+        },
+        {
+          "videoId": "jgV9zWp6USc",
+          "title": "Gumayusi Yunara vs Lucian [ ADC ] Patch 25.17 Korea Master - T1 Gumayusi",
+          "rankClaim": "Master",
+          "patch": "25.17",
+          "durationSec": 1056,
+          "region": "KR",
+          "player": "Gumayusi",
+          "uploaded": "2025-09-05",
+          "moments": []
+        },
+        {
+          "videoId": "FVNPoUW4GFQ",
+          "title": "Yunara vs Lucian ADC - EUW Challenger - Patch 25.14 Season 15",
+          "rankClaim": "Challenger",
+          "patch": "25.14",
+          "durationSec": 1621,
+          "region": "EUW",
+          "uploaded": "2025-07-29",
+          "moments": []
+        },
+        {
+          "videoId": "LkZ7y3nze4M",
+          "title": "Yunara vs Lucian ADC - EUW Master - Patch 25.14 Season 15",
+          "rankClaim": "Master",
+          "patch": "25.14",
+          "durationSec": 2071,
+          "region": "EUW",
+          "uploaded": "2025-07-18",
+          "moments": []
+        },
+        {
+          "videoId": "Xtysu5uBgl0",
+          "title": "Yunara vs Lucian ADC - EUW Master - Patch 25.14 Season 15",
+          "rankClaim": "Master",
+          "patch": "25.14",
+          "durationSec": 1651,
+          "region": "EUW",
+          "uploaded": "2025-07-17",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 268,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "R64Wf65VrVk",
+          "title": "Yunara Mid vs Azir - KR Master Patch 26.02",
+          "rankClaim": "Master",
+          "patch": "26.2",
+          "durationSec": 1476,
+          "region": "KR",
+          "uploaded": "2026-02-04",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 209,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 306,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 378,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 481,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 549,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 607,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 684,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 708,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 791,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 913,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1017,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1274,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1298,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1465,
+              "label": "End credit"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 360,
+      "lane": "adc",
+      "videos": [
+        {
+          "videoId": "zOx6S1gbfMY",
+          "title": "HanQL: This is The POWER of FED Yunara - Engsub ( Yunara vs Samira, Kai'sa)",
+          "rankClaim": "Master+",
+          "patch": "26.13",
+          "durationSec": 1477,
+          "patchEstimated": true,
+          "player": "HanQL",
+          "uploaded": "2026-06-25",
+          "format": "stream",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 360,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "RcDVNNx6M9g",
+          "title": "DON'T TILT WHILE PLAYING ADC CHALLENGE (IMPOSSIBLE)",
+          "rankClaim": "Master+",
+          "patch": "26.6",
+          "durationSec": 13010,
+          "patchEstimated": true,
+          "player": "Alois",
+          "uploaded": "2026-03-24",
+          "format": "stream",
+          "cam": true,
+          "startSec": 3710,
+          "endSec": 5700,
+          "moments": []
+        },
+        {
+          "videoId": "iCB_gEWxkHE",
+          "title": "ADC DAY 10 AND TRYING NOT TO GO INSANE",
+          "rankClaim": "Master+",
+          "patch": "26.6",
+          "durationSec": 22845,
+          "patchEstimated": true,
+          "player": "Alois",
+          "uploaded": "2026-03-21",
+          "format": "stream",
+          "cam": true,
+          "startSec": 10138,
+          "endSec": 11910,
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 429,
+      "lane": "adc",
+      "videos": [
+        {
+          "videoId": "8FVOHyO_SK0",
+          "title": "HLE Gumayusi Yunara vs Kalista [ ADC ] Korea Challenger 2386 LP | Patch 26.20",
+          "rankClaim": "Challenger",
+          "patch": "26.20",
+          "durationSec": 1557,
+          "region": "KR",
+          "player": "Gumayusi",
+          "team": "HLE",
+          "uploaded": "2026-10-15",
+          "moments": []
+        },
+        {
+          "videoId": "cVi5HQ3MToI",
+          "title": "HLE Gumayusi Yunara vs Kalista [ ADC ] Korea Challenger 2429 LP | Patch 26.18",
+          "rankClaim": "Challenger",
+          "patch": "26.18",
+          "durationSec": 1339,
+          "region": "KR",
+          "player": "Gumayusi",
+          "team": "HLE",
+          "uploaded": "2026-09-23",
+          "moments": []
+        },
+        {
+          "videoId": "8sKknJZZe9I",
+          "title": "\"HanQL\" 2255LP Yunara : His Perfomance in TeamFighting is LEGIT INSANE - Engsub (vs Kalista, Sivir)",
+          "rankClaim": "Master+",
+          "patch": "26.18",
+          "durationSec": 1788,
+          "patchEstimated": true,
+          "player": "HanQL",
+          "uploaded": "2026-09-18",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "M0aBsWiH0Wk",
+          "title": "HLE Gumayusi Yunara vs Kalista [ ADC ] Korea Challenger 2465 LP | Patch 26.17",
+          "rankClaim": "Challenger",
+          "patch": "26.17",
+          "durationSec": 1260,
+          "region": "KR",
+          "player": "Gumayusi",
+          "team": "HLE",
+          "uploaded": "2026-09-01",
+          "moments": []
+        },
+        {
+          "videoId": "OIbZfDulfbs",
+          "title": "Yunara vs Kalista [ ADC ] Patch 25.23 Korea Challenger 1273 LP",
+          "rankClaim": "Challenger",
+          "patch": "25.23",
+          "durationSec": 1246,
+          "region": "KR",
+          "uploaded": "2025-11-22",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 498,
+      "lane": "adc",
+      "videos": [
+        {
+          "videoId": "0khBmV3VTaw",
+          "title": "Yunara vs Xayah ADC [ Gen.G Ruler ] Korea Challenger 2059 | Patch 26.19",
+          "rankClaim": "Challenger",
+          "patch": "26.19",
+          "durationSec": 1193,
+          "region": "KR",
+          "player": "Ruler",
+          "team": "Gen.G",
+          "uploaded": "2026-10-06",
+          "moments": []
+        },
+        {
+          "videoId": "pSR2n7SosGw",
+          "title": "\"HanQL\" 2255LP Yunara : From ZERO to HERO Insane Comeback - Engsub ( vs Xayah )",
+          "rankClaim": "Master+",
+          "patch": "26.18",
+          "durationSec": 1480,
+          "patchEstimated": true,
+          "player": "HanQL",
+          "uploaded": "2026-09-16",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "lBVEdhi_lCI",
+          "title": "(NS Lucy) Yunara ADC vs Xayah - KR Challenger Patch 26.17",
+          "rankClaim": "Challenger",
+          "patch": "26.17",
+          "durationSec": 1564,
+          "region": "KR",
+          "player": "Lucy",
+          "team": "NS",
+          "uploaded": "2026-08-29",
+          "moments": []
+        },
+        {
+          "videoId": "j5WTYcvQGes",
+          "title": "Yunara vs Xayah ADC - KR Challenger - Patch 16.06 Season 16",
+          "rankClaim": "Challenger",
+          "patch": "26.6",
+          "durationSec": 1381,
+          "region": "KR",
+          "uploaded": "2026-03-30",
+          "moments": []
+        },
+        {
+          "videoId": "LB6eTVhAVSA",
+          "title": "T1 Peyz Yunara vs Xayah [ ADC ] Korea Challenger 1968 LP | Patch 26.6",
+          "rankClaim": "Challenger",
+          "patch": "26.6",
+          "durationSec": 1406,
+          "region": "KR",
+          "player": "Peyz",
+          "team": "T1",
+          "uploaded": "2026-03-22",
+          "moments": []
+        },
+        {
+          "videoId": "Lcx1FfpImPk",
+          "title": "T1 Gumayusi Yunara vs Xayah [ ADC ] Patch 25.15 Korea Master",
+          "rankClaim": "Master",
+          "patch": "25.15",
+          "durationSec": 1271,
+          "region": "KR",
+          "player": "Gumayusi",
+          "team": "T1",
+          "uploaded": "2025-08-04",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 498,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "RcDVNNx6M9g",
+          "title": "DON'T TILT WHILE PLAYING ADC CHALLENGE (IMPOSSIBLE)",
+          "rankClaim": "Master+",
+          "patch": "26.6",
+          "durationSec": 13010,
+          "patchEstimated": true,
+          "player": "Alois",
+          "uploaded": "2026-03-24",
+          "format": "stream",
+          "cam": true,
+          "startSec": 10775,
+          "endSec": 13010,
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 517,
+      "lane": "adc",
+      "videos": [
+        {
+          "videoId": "_mBtRiG0yaI",
+          "title": "(NAVI SamD) Yunara ADC vs Sylas - EUW Grandmaster Patch 26.15",
+          "rankClaim": "Grandmaster",
+          "patch": "26.15",
+          "durationSec": 1564,
+          "region": "EUW",
+          "player": "NAVI SamD",
+          "uploaded": "2026-08-01",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 523,
+      "lane": "adc",
+      "videos": [
+        {
+          "videoId": "IPrfwIF3QxE",
+          "title": "Yunara ADC vs Aphelios (Levy) - KR Grandmaster Patch 26.21",
+          "rankClaim": "Grandmaster",
+          "patch": "26.21",
+          "durationSec": 1686,
+          "region": "KR",
+          "uploaded": "2026-10-25",
+          "result": "W",
+          "moments": [
+            {
+              "atSec": 237,
+              "label": "Yunara outplays Thresh"
+            },
+            {
+              "atSec": 515,
+              "label": "Red takes 1st Dragon (Hextech)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 713,
+              "label": "Yunara takes down Aphelios"
+            },
+            {
+              "atSec": 774,
+              "label": "Yunara takes down Aphelios"
+            },
+            {
+              "atSec": 838,
+              "label": "Blue takes 1st Dragon (Cloud)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 899,
+              "label": "Red takes Rift Herald",
+              "kind": "herald"
+            },
+            {
+              "atSec": 973,
+              "label": "Yunara takes down Aphelios"
+            },
+            {
+              "atSec": 1178,
+              "label": "Fiora picks off Aphelios"
+            },
+            {
+              "atSec": 1181,
+              "label": "Red takes Baron",
+              "kind": "baron"
+            },
+            {
+              "atSec": 1206,
+              "label": "Blue takes 2nd Dragon (Mountain)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1375,
+              "label": "Vi kills Thresh",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1418,
+              "label": "Yunara eliminates Shyvana"
+            },
+            {
+              "atSec": 1514,
+              "label": "Red takes 2nd Dragon (Mountain)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1540,
+              "label": "Yunara Triple Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1542,
+              "label": "Yunara Quadra Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1569,
+              "label": "Blue takes Baron",
+              "kind": "baron"
+            },
+            {
+              "atSec": 1660,
+              "label": "Yunara eliminates Shyvana"
+            }
+          ]
+        },
+        {
+          "videoId": "279oLUx_QL4",
+          "title": "(BLGJ chesterbb) Yunara ADC vs Aphelios (KT FenRir) - KR Challenger Patch 26.20",
+          "rankClaim": "Challenger",
+          "patch": "26.20",
+          "durationSec": 1663,
+          "region": "KR",
+          "player": "BLGJ chesterbb",
+          "uploaded": "2026-10-20",
+          "result": "W",
+          "moments": [
+            {
+              "atSec": 97,
+              "label": "First Blood — Yunara kills Aphelios",
+              "kind": "kill"
+            },
+            {
+              "atSec": 316,
+              "label": "Red takes 1st Dragon (Infernal)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 411,
+              "label": "Ryze eliminates Akshan"
+            },
+            {
+              "atSec": 485,
+              "label": "Yunara outplays Lulu"
+            },
+            {
+              "atSec": 495,
+              "label": "Viego eliminates Aphelios"
+            },
+            {
+              "atSec": 663,
+              "label": "Red takes 2nd Dragon (Cloud)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 670,
+              "label": "Yunara outduels Aphelios"
+            },
+            {
+              "atSec": 788,
+              "label": "Yunara picks off Fiora"
+            },
+            {
+              "atSec": 863,
+              "label": "Yunara takes down Aphelios"
+            },
+            {
+              "atSec": 1012,
+              "label": "Blue takes 1st Dragon (Ocean)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1085,
+              "label": "Yunara picks off Lulu"
+            },
+            {
+              "atSec": 1262,
+              "label": "Team fight (4 kills)",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1264,
+              "label": "Blue takes Baron",
+              "kind": "baron"
+            },
+            {
+              "atSec": 1325,
+              "label": "Red takes 3rd Dragon (Ocean)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1414,
+              "label": "Team fight (4 kills)",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1448,
+              "label": "Mid Inhibitor falls (Blue)"
+            },
+            {
+              "atSec": 1528,
+              "label": "Yunara picks off Fiora"
+            },
+            {
+              "atSec": 1638,
+              "label": "Ryze kills Aphelios",
+              "kind": "kill"
+            }
+          ]
+        },
+        {
+          "videoId": "VLyWikmc2v4",
+          "title": "Yunara vs Aphelios ADC - KR Challenger - Patch 16.18 Season 16",
+          "rankClaim": "Challenger",
+          "patch": "26.18",
+          "durationSec": 1291,
+          "region": "KR",
+          "uploaded": "2026-09-15",
+          "moments": []
+        },
+        {
+          "videoId": "wDou4DACwxk",
+          "title": "T1 Peyz Yunara vs Aphelios [ ADC ] Patch 26.8 Korea Challenger 2430 LP",
+          "rankClaim": "Challenger",
+          "patch": "26.8",
+          "durationSec": 1513,
+          "region": "KR",
+          "player": "Peyz",
+          "team": "T1",
+          "uploaded": "2026-04-17",
+          "moments": []
+        },
+        {
+          "videoId": "r833gs_2tc8",
+          "title": "T1 Peyz Yunara ADC vs Aphelios - Patch 26.7 Korea Challenger 2274 LP",
+          "rankClaim": "Challenger",
+          "patch": "26.7",
+          "durationSec": 1073,
+          "region": "KR",
+          "player": "Peyz",
+          "team": "T1",
+          "uploaded": "2026-04-02",
+          "moments": []
+        },
+        {
+          "videoId": "2fWJXBjvk0s",
+          "title": "T1 Peyz Yunara vs Aphelios [ ADC ] Korea Challenger 2270 LP | Patch 26.7",
+          "rankClaim": "Challenger",
+          "patch": "26.7",
+          "durationSec": 743,
+          "region": "KR",
+          "player": "Peyz",
+          "team": "T1",
+          "uploaded": "2026-04-01",
+          "moments": []
+        },
+        {
+          "videoId": "7Kohwm9Bzkg",
+          "title": "BLG Viper Yunara vs Aphelios [ ADC ] Korea Challenger 1435 LP | Patch 26.5",
+          "rankClaim": "Challenger",
+          "patch": "26.5",
+          "durationSec": 1084,
+          "region": "KR",
+          "player": "Viper",
+          "team": "BLG",
+          "uploaded": "2026-03-07",
+          "moments": []
+        },
+        {
+          "videoId": "-X1llTr8uFE",
+          "title": "T1 Peyz Yunara ADC vs Aphelios - Patch 26.4 Korea Challenger 2076 LP",
+          "rankClaim": "Challenger",
+          "patch": "26.4",
+          "durationSec": 769,
+          "region": "KR",
+          "player": "Peyz",
+          "team": "T1",
+          "uploaded": "2026-02-21",
+          "moments": []
+        },
+        {
+          "videoId": "POoKnBy5WqQ",
+          "title": "Peyz Yunara vs Aphelios ADC - KR Challenger - Patch 16.03 Season 16",
+          "rankClaim": "Challenger",
+          "patch": "26.3",
+          "durationSec": 1476,
+          "region": "KR",
+          "player": "Peyz",
+          "uploaded": "2026-02-12",
+          "moments": []
+        },
+        {
+          "videoId": "gIOnkDjV4x8",
+          "title": "T1 Peyz Yunara vs Aphelios [ ADC ] Korea Challenger 1808 LP | Patch 26.3",
+          "rankClaim": "Challenger",
+          "patch": "26.3",
+          "durationSec": 1264,
+          "region": "KR",
+          "player": "Peyz",
+          "team": "T1",
+          "uploaded": "2026-02-08",
+          "moments": []
+        },
+        {
+          "videoId": "mVGWGkErpLo",
+          "title": "HLE Gumayusi Yunara vs Aphelios [ ADC ] Patch 26.2 Ranked Korea",
+          "rankClaim": "Master+",
+          "patch": "26.2",
+          "durationSec": 1677,
+          "region": "KR",
+          "player": "Gumayusi",
+          "team": "HLE",
+          "uploaded": "2026-02-03",
+          "moments": []
+        },
+        {
+          "videoId": "HhtagWBMWmM",
+          "title": "T1 Peyz Yunara vs Aphelios [ ADC ] Korea Challenger 1569 LP | Patch 26.2",
+          "rankClaim": "Challenger",
+          "patch": "26.2",
+          "durationSec": 931,
+          "region": "KR",
+          "player": "Peyz",
+          "team": "T1",
+          "uploaded": "2026-01-31",
+          "moments": []
+        },
+        {
+          "videoId": "r8GeDOnq6Es",
+          "title": "Yunara vs Aphelios ADC - KR Challenger - Patch 25.24 Season 15",
+          "rankClaim": "Challenger",
+          "patch": "25.24",
+          "durationSec": 2011,
+          "region": "KR",
+          "uploaded": "2026-01-05",
+          "moments": []
+        },
+        {
+          "videoId": "V-IMoKxKUF0",
+          "title": "T1 Peyz Yunara vs Aphelios ADC - KR Grandmaster - Patch 25.24 Season 15",
+          "rankClaim": "Grandmaster",
+          "patch": "25.24",
+          "durationSec": 1666,
+          "region": "KR",
+          "player": "Peyz",
+          "team": "T1",
+          "uploaded": "2025-12-29",
+          "moments": []
+        },
+        {
+          "videoId": "TBYaEPUFuvc",
+          "title": "T1 Peyz Yunara vs Aphelios [ ADC ] Korea Challenger Patch 25.24",
+          "rankClaim": "Challenger",
+          "patch": "25.24",
+          "durationSec": 1399,
+          "region": "KR",
+          "player": "Peyz",
+          "team": "T1",
+          "uploaded": "2025-12-27",
+          "moments": []
+        },
+        {
+          "videoId": "Ywx7H7UR2mg",
+          "title": "Yunara vs Aphelios ADC - KR Challenger - Patch 25.24 Season 15",
+          "rankClaim": "Challenger",
+          "patch": "25.24",
+          "durationSec": 2051,
+          "region": "KR",
+          "uploaded": "2025-12-26",
+          "moments": []
+        },
+        {
+          "videoId": "IEYTOMGF-Fc",
+          "title": "Yunara vs Aphelios ADC - KR Challenger - Patch 25.24 Season 15",
+          "rankClaim": "Challenger",
+          "patch": "25.24",
+          "durationSec": 1636,
+          "region": "KR",
+          "uploaded": "2025-12-23",
+          "moments": []
+        },
+        {
+          "videoId": "rzZh_GQyYuI",
+          "title": "Yunara vs Aphelios ADC - KR Challenger - Patch 25.23 Season 15",
+          "rankClaim": "Challenger",
+          "patch": "25.23",
+          "durationSec": 1536,
+          "region": "KR",
+          "uploaded": "2025-12-01",
+          "moments": []
+        },
+        {
+          "videoId": "_x6W6dvfPHQ",
+          "title": "Yunara vs Aphelios ADC [ Gen.G Ruler ] Patch 25.17 Korea Master ✅",
+          "rankClaim": "Master",
+          "patch": "25.17",
+          "durationSec": 1266,
+          "region": "KR",
+          "player": "Ruler",
+          "team": "Gen.G",
+          "uploaded": "2025-08-27",
+          "moments": []
+        },
+        {
+          "videoId": "N_HCTs-Y_sE",
+          "title": "Yunara vs Aphelios ADC [ DRX Teddy ] Patch 25.16 Korea Challenger",
+          "rankClaim": "Challenger",
+          "patch": "25.16",
+          "durationSec": 1093,
+          "region": "KR",
+          "player": "Teddy",
+          "team": "DRX",
+          "uploaded": "2025-08-24",
+          "moments": []
+        },
+        {
+          "videoId": "3VZ9shuDwqY",
+          "title": "T1 Gumayusi Yunara vs Aphelios [ ADC ] Patch 25.16 Korea Master",
+          "rankClaim": "Master",
+          "patch": "25.16",
+          "durationSec": 1153,
+          "region": "KR",
+          "player": "Gumayusi",
+          "team": "T1",
+          "uploaded": "2025-08-15",
+          "moments": []
+        },
+        {
+          "videoId": "0SWMRltOvWc",
+          "title": "Yunara vs Aphelios ADC - Grandmaster - Patch 25.14 Season 15",
+          "rankClaim": "Grandmaster",
+          "patch": "25.14",
+          "durationSec": 2080,
+          "uploaded": "2025-07-31",
+          "moments": []
+        },
+        {
+          "videoId": "1JWjTVGikKE",
+          "title": "Yunara vs Aphelios ADC - KR Challenger - Patch 25.14 Season 15",
+          "rankClaim": "Challenger",
+          "patch": "25.14",
+          "durationSec": 1216,
+          "region": "KR",
+          "uploaded": "2025-07-24",
+          "moments": []
+        },
+        {
+          "videoId": "aW-tBWj5Dd4",
+          "title": "Yunara vs Aphelios  ADC - KR Challenger - Patch 25.14 Season 15",
+          "rankClaim": "Challenger",
+          "patch": "25.14",
+          "durationSec": 1606,
+          "region": "KR",
+          "uploaded": "2025-07-19",
+          "moments": []
+        },
+        {
+          "videoId": "j1iW8jY5AOY",
+          "title": "Yunara vs Aphelios ADC - KR Master - Patch 25.14 Season 15",
+          "rankClaim": "Master",
+          "patch": "25.14",
+          "durationSec": 1591,
+          "region": "KR",
+          "uploaded": "2025-07-19",
+          "moments": []
+        },
+        {
+          "videoId": "0gecQNWFQUA",
+          "title": "Yunara vs Aphelios ADC - NA Challenger - Patch 25.14 Season 15",
+          "rankClaim": "Challenger",
+          "patch": "25.14",
+          "durationSec": 1596,
+          "region": "NA",
+          "uploaded": "2025-07-18",
+          "moments": []
+        },
+        {
+          "videoId": "m0U18WlGmlU",
+          "title": "Yunara vs Aphelios ADC - NA Grandmaster - Patch 25.14 Season 15",
+          "rankClaim": "Grandmaster",
+          "patch": "25.14",
+          "durationSec": 2041,
+          "region": "NA",
+          "uploaded": "2025-07-18",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 800,
+      "lane": "adc",
+      "videos": [
+        {
+          "videoId": "ifGoIs6077I",
+          "title": "\"TangYuanyu\" His Yunara is TEARING UP KR Challenger - Engsub ( vs Mel, Varus )",
+          "rankClaim": "Challenger",
+          "patch": "26.20",
+          "durationSec": 1445,
+          "region": "KR",
+          "patchEstimated": true,
+          "uploaded": "2026-10-15",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "Q4rx6XIdcBQ",
+          "title": "HLE Gumayusi Yunara vs Mel [ ADC ] Korea Challenger 2426 LP | Patch 26.7",
+          "rankClaim": "Challenger",
+          "patch": "26.7",
+          "durationSec": 1330,
+          "region": "KR",
+          "player": "Gumayusi",
+          "team": "HLE",
+          "uploaded": "2026-04-13",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 800,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "GLWSLo1ns8M",
+          "title": "LOSING MY MIND WITH AUTOFILLED SUPPORTS",
+          "rankClaim": "Master+",
+          "patch": "26.6",
+          "durationSec": 16169,
+          "patchEstimated": true,
+          "player": "Alois",
+          "uploaded": "2026-03-28",
+          "format": "stream",
+          "cam": true,
+          "startSec": 8270,
+          "endSec": 10310,
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 901,
+      "lane": "adc",
+      "videos": [
+        {
+          "videoId": "1ipmMRI8rzk",
+          "title": "2255LP Yunara : His Mechanic is so DAM TERRIFYING - Engsub ( Yunara vs Smolder )",
+          "rankClaim": "Master+",
+          "patch": "26.12",
+          "durationSec": 741,
+          "patchEstimated": true,
+          "uploaded": "2026-06-15",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "Z8BmyQs5aZA",
+          "title": "Uzi : His Yunara Mechanic is a REAL DEAL - Engsub ( Yunara vs Smolder )",
+          "rankClaim": "Master+",
+          "patch": "26.11",
+          "durationSec": 910,
+          "patchEstimated": true,
+          "player": "Uzi",
+          "uploaded": "2026-06-06",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "C8fL3JzViBw",
+          "title": "Uzi : His Yunara Mechanic is so AGGRESSIVE in Early Game - Engsub ( Yunara vs Smolder )",
+          "rankClaim": "Master+",
+          "patch": "26.10",
+          "durationSec": 1048,
+          "patchEstimated": true,
+          "player": "Uzi",
+          "uploaded": "2026-05-19",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "sqMHw4YmYKY",
+          "title": "1600LP Yunara : This Dude a Freaky Animal - Engsub ( Yunara vs Aphe, Smolder )",
+          "rankClaim": "Master+",
+          "patch": "26.9",
+          "durationSec": 1403,
+          "patchEstimated": true,
+          "uploaded": "2026-05-12",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "-QM_qj5DVJY",
+          "title": "Yunara vs Smolder ADC - KR Challenger - Patch 25.22 Season 15",
+          "rankClaim": "Challenger",
+          "patch": "25.22",
+          "durationSec": 2496,
+          "region": "KR",
+          "uploaded": "2025-11-17",
+          "moments": []
+        },
+        {
+          "videoId": "TY_t7R6Nfa0",
+          "title": "Yunara vs Smolder [ ADC ] Patch 25.22 Korea Challenger 1408 LP",
+          "rankClaim": "Challenger",
+          "patch": "25.22",
+          "durationSec": 2048,
+          "region": "KR",
+          "uploaded": "2025-11-06",
+          "moments": []
+        },
+        {
+          "videoId": "-WWGlRSofZk",
+          "title": "Yunara vs Smolder ADC - KR Master - Patch 25.16 Season 15",
+          "rankClaim": "Master",
+          "patch": "25.16",
+          "durationSec": 1441,
+          "region": "KR",
+          "uploaded": "2025-08-20",
+          "moments": []
+        },
+        {
+          "videoId": "hTyIhdt4gmg",
+          "title": "Yunara vs Smolder ADC - EUW Master - Patch 25.15 Season 15",
+          "rankClaim": "Master",
+          "patch": "25.15",
+          "durationSec": 1651,
+          "region": "EUW",
+          "uploaded": "2025-08-04",
+          "moments": []
+        },
+        {
+          "videoId": "q_l8nrWknpk",
+          "title": "Yunara vs Smolder ADC [ DRX Teddy ] Patch 25.14 Korea Challenger",
+          "rankClaim": "Challenger",
+          "patch": "25.14",
+          "durationSec": 1417,
+          "region": "KR",
+          "player": "Teddy",
+          "team": "DRX",
+          "uploaded": "2025-07-29",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 901,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "bkcAJBrMjKk",
+          "title": "CLIMBING THROUGH EMERALD ELO AS AN ADC MAIN",
+          "rankClaim": "Master+",
+          "patch": "26.5",
+          "durationSec": 30508,
+          "patchEstimated": true,
+          "player": "Alois",
+          "uploaded": "2026-03-11",
+          "format": "stream",
+          "cam": true,
+          "startSec": 170,
+          "endSec": 2728,
+          "moments": []
+        }
+      ]
+    }
+  ]
+}

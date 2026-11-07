@@ -1,0 +1,4833 @@
+{
+  "schema": 1,
+  "champion": 222,
+  "generatedAt": "2026-11-07T13:25:14.592Z",
+  "guides": [
+    {
+      "champion": 222,
+      "enemy": 202,
+      "lane": "adc",
+      "patch": "26.21",
+      "reviewed": false,
+      "difficulty": "Medium",
+      "favoredWhen": "Give up nothing early; an even lane is a won game because you outscale him.",
+      "keyTips": [
+        {
+          "text": "You outscale him, so going even through lane is winning. Refuse coinflip fights for lane pride; every even recall keeps you on your scaling curve while his early window closes.",
+          "scope": "pair",
+          "sourceIds": [
+            "antiwis"
+          ],
+          "patch": "26.21"
+        },
+        {
+          "text": "Shove him under his tower. He cannot answer your push, and a Jhin stuck catching waves cannot hold the short-trade lane he wants.",
+          "scope": "pair",
+          "sourceIds": [
+            "yunfang"
+          ],
+          "patch": "26.20"
+        },
+        {
+          "text": "Force long fights on your chompers. His whole plan is short trades precisely because standing to trade lets you root him under Flame Chompers ({cd:222:E}).",
+          "scope": "pair",
+          "sourceIds": [
+            "yunfang"
+          ],
+          "patch": "26.20",
+          "abilityKeys": [
+            {
+              "champion": 222,
+              "key": "E"
+            }
+          ]
+        }
+      ],
+      "enemyTips": {
+        "early-lane": [
+          {
+            "text": "Jhin loads his fourth shot on a minion and holds it to zone you off the wave. Trade while it is spent and give ground while it is held.",
+            "scope": "enemy",
+            "sourceIds": [
+              "omibro"
+            ],
+            "patch": "26.19",
+            "abilityKeys": [
+              {
+                "champion": 202,
+                "key": "Q"
+              }
+            ]
+          },
+          {
+            "text": "Deadly Flourish is a follow-up for support crowd control, not dry poke. A wasted W is your window to walk up.",
+            "scope": "enemy",
+            "sourceIds": [
+              "omibro"
+            ],
+            "patch": "26.19",
+            "abilityKeys": [
+              {
+                "champion": 202,
+                "key": "W"
+              }
+            ]
+          }
+        ],
+        "win-condition": [
+          {
+            "text": "A landed Deadly Flourish sets up a guaranteed first Curtain Call shot when fired instantly. Break vision lines and stay mobile once it connects.",
+            "scope": "enemy",
+            "sourceIds": [
+              "omibro"
+            ],
+            "patch": "26.19",
+            "abilityKeys": [
+              {
+                "champion": 202,
+                "key": "W"
+              },
+              {
+                "champion": 202,
+                "key": "R"
+              }
+            ]
+          }
+        ]
+      },
+      "sections": {
+        "overview": {
+          "tips": []
+        },
+        "early-lane": {
+          "tips": [
+            {
+              "text": "Open by shoving the first waves. Whoever holds the push decides who gets to trade and who has to catch, so make him the one catching.",
+              "scope": "pair",
+              "sourceIds": [
+                "yunfang"
+              ],
+              "patch": "26.20",
+              "abilityKeys": [
+                {
+                  "champion": 222,
+                  "key": "Q"
+                }
+              ]
+            },
+            {
+              "text": "Spoil his early-lead plan: give the first plate rather than dying for it. A scoreless lane that you shoved is his loss, not yours, because he needs the lead and you do not.",
+              "scope": "pair",
+              "sourceIds": [
+                "antiwis"
+              ],
+              "patch": "26.21"
+            },
+            {
+              "text": "Stand off the dying-minion line while his fourth shot is loaded. His grenade bounce into the execute shot is his max-damage trade, so concede that cannon rather than eating the combo for it.",
+              "scope": "pair",
+              "sourceIds": [
+                "omibro"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 202,
+                  "key": "Q"
+                }
+              ]
+            }
+          ]
+        },
+        "mid-lane": {
+          "tips": [
+            {
+              "text": "Keep the waves shoved through the mid game. Every wave he answers under his tower is a wave he is not pressuring you with.",
+              "scope": "pair",
+              "sourceIds": [
+                "yunfang"
+              ],
+              "patch": "26.20"
+            },
+            {
+              "text": "Seed Flame Chompers ({cd:222:E}) on the objective choke before your team starts it. He has to walk into the roots to contest, which turns his short-trade plan against him.",
+              "scope": "pair",
+              "sourceIds": [
+                "yunfang"
+              ],
+              "patch": "26.20",
+              "abilityKeys": [
+                {
+                  "champion": 222,
+                  "key": "E"
+                }
+              ]
+            }
+          ]
+        },
+        "win-condition": {
+          "tips": [
+            {
+              "text": "Drag the game past the laning phase once even. You outscale him, so every minute after his early window closes grows your edge in the fights that follow.",
+              "scope": "pair",
+              "sourceIds": [
+                "antiwis"
+              ],
+              "patch": "26.21"
+            },
+            {
+              "text": "Fight the decisive fight long: kite back through pre-placed chompers instead of bursting. The longer he stands to trade, the more roots he eats.",
+              "scope": "pair",
+              "sourceIds": [
+                "yunfang"
+              ],
+              "patch": "26.20",
+              "abilityKeys": [
+                {
+                  "champion": 222,
+                  "key": "E"
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "itemization": [],
+      "sources": [
+        {
+          "id": "antiwis",
+          "author": "Antiwis",
+          "rankClaim": "Diamond (profile badge; title claims Master Elo OTP) · Jhin main",
+          "rank": "diamond",
+          "url": "https://www.mobafire.com/league-of-legends/build/26-21-jhin-guide-real-updates-every-patch-master-elo-otp-633981",
+          "kind": "mobafire"
+        },
+        {
+          "id": "yunfang",
+          "author": "Yunfang",
+          "rankClaim": "Diamond (profile badge; guide text claims Master ADC main) · Jhin main",
+          "rank": "diamond",
+          "url": "https://www.mobafire.com/league-of-legends/build/s2026-20-easy-to-read-simple-1v9-live-ama-full-guide-updated-650175",
+          "kind": "mobafire"
+        },
+        {
+          "id": "omibro",
+          "author": "Omibro",
+          "rankClaim": "Challenger ADC and coach · Jhin main",
+          "rank": "challenger",
+          "url": "https://www.youtube.com/watch?v=8Ln7EC-ryxo&t=3259s",
+          "kind": "youtube"
+        }
+      ]
+    }
+  ],
+  "general": [
+    {
+      "champion": 222,
+      "lane": "adc",
+      "patch": "26.21",
+      "reviewed": false,
+      "keyTips": [
+        {
+          "text": "Play the first levels safely and fight early only on a clear edge like an engage support.",
+          "scope": "champion",
+          "sourceIds": [
+            "mobalytics-jinx"
+          ]
+        },
+        {
+          "text": "At level 6, finish low-health opponents with R after skirmishes, even far retreating targets.",
+          "scope": "champion",
+          "sourceIds": [
+            "mobalytics-jinx"
+          ],
+          "abilityKeys": [
+            {
+              "champion": 222,
+              "key": "R"
+            }
+          ]
+        },
+        {
+          "text": "Stand behind the team near the support late and kite the nearest enemy instead of chasing riskier targets.",
+          "scope": "champion",
+          "sourceIds": [
+            "mobalytics-jinx"
+          ]
+        }
+      ],
+      "sections": {
+        "overview": {
+          "tips": []
+        },
+        "early-lane": {
+          "tips": [
+            {
+              "text": "With a few levels banked, prefer extended trades over repeated short exchanges.",
+              "scope": "champion",
+              "sourceIds": [
+                "mobalytics-jinx"
+              ]
+            },
+            {
+              "text": "Budget mana so Q rockets stay ready for long-range last-hits instead of letting enemies zone Jinx off farm.",
+              "scope": "champion",
+              "sourceIds": [
+                "mobalytics-jinx"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 222,
+                  "key": "Q"
+                }
+              ]
+            },
+            {
+              "text": "Spend the first item component on skirmishing, firing Q rockets into clumps with allied peel around.",
+              "scope": "champion",
+              "sourceIds": [
+                "mobalytics-jinx"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 222,
+                  "key": "Q"
+                }
+              ]
+            }
+          ]
+        },
+        "mid-lane": {
+          "tips": [
+            {
+              "text": "After the bottom tower, rotate mid and open the map through its tower.",
+              "scope": "champion",
+              "sourceIds": [
+                "mobalytics-jinx"
+              ]
+            },
+            {
+              "text": "Stick near the support or another ally all mid game; isolation kills Jinx.",
+              "scope": "champion",
+              "sourceIds": [
+                "mobalytics-jinx"
+              ]
+            },
+            {
+              "text": "Group over split-pushing without a specific reason to leave the team.",
+              "scope": "champion",
+              "sourceIds": [
+                "mobalytics-jinx"
+              ]
+            },
+            {
+              "text": "Set picks with the support or jungler, then weigh Baron on the resulting numbers edge.",
+              "scope": "champion",
+              "sourceIds": [
+                "mobalytics-jinx"
+              ]
+            },
+            {
+              "text": "At level 9, deal heavier sustained damage with maxed Q under teammate peel.",
+              "scope": "champion",
+              "sourceIds": [
+                "mobalytics-jinx"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 222,
+                  "key": "Q"
+                }
+              ]
+            }
+          ]
+        },
+        "win-condition": {
+          "tips": [
+            {
+              "text": "Trigger the passive movement and attack-speed window with R finishes on low targets to keep damage rolling.",
+              "scope": "champion",
+              "sourceIds": [
+                "mobalytics-jinx"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 222,
+                  "key": "R"
+                }
+              ]
+            },
+            {
+              "text": "Keep allies between Jinx and divers; without E to help escape, all-ins stick hard.",
+              "scope": "champion",
+              "sourceIds": [
+                "mobalytics-jinx"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 222,
+                  "key": "E"
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "itemization": [
+        {
+          "text": "Reach core items safely while managing mana.",
+          "scope": "champion",
+          "sourceIds": [
+            "mobalytics-jinx"
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "id": "mobalytics-jinx",
+          "author": "Mobalytics",
+          "rankClaim": "No rank claim",
+          "url": "https://mobalytics.gg/lol/champions/jinx/guide",
+          "kind": "web"
+        }
+      ]
+    }
+  ],
+  "vods": [
+    {
+      "lane": "adc",
+      "videos": [
+        {
+          "videoId": "smlBXIYN3h8",
+          "title": "SMASH : Runaan's Jinx is STORMING KR KR Challenger - Engsub",
+          "rankClaim": "Challenger",
+          "patch": "26.21",
+          "durationSec": 785,
+          "region": "KR",
+          "patchEstimated": true,
+          "player": "Smash",
+          "uploaded": "2026-10-26",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "5R5AlpzCAoA",
+          "title": "PEYZ : THIS IS WHAT MACHINE GUN JINX LOOK LIKE - Engsub",
+          "rankClaim": "Master+",
+          "patch": "26.20",
+          "durationSec": 972,
+          "patchEstimated": true,
+          "player": "Peyz",
+          "uploaded": "2026-10-11",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "AzrSa8P08Yc",
+          "title": "PEYZ : Stormrazor Jinx is STORMING KR Challenger Elo",
+          "rankClaim": "Challenger",
+          "patch": "26.18",
+          "durationSec": 850,
+          "region": "KR",
+          "patchEstimated": true,
+          "player": "Peyz",
+          "uploaded": "2026-09-22",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "4zsVoqo6VHM",
+          "title": "\"HanQL\" 2255LP Jinx : His Spacing is Absolutely Amazing - Engsub",
+          "rankClaim": "Master+",
+          "patch": "26.18",
+          "durationSec": 1319,
+          "patchEstimated": true,
+          "player": "HanQL",
+          "uploaded": "2026-09-14",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "tTc2Tv10xYk",
+          "title": "\"Jz\" 2000LP JINX : His Position and Spacing in Team Fight is 200IQ - Engsub (Jinx vs Ez)",
+          "rankClaim": "Master+",
+          "patch": "26.14",
+          "durationSec": 818,
+          "patchEstimated": true,
+          "player": "Jz",
+          "uploaded": "2026-07-27",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "bY6AjquVpnY",
+          "title": "\"Jz\" 2000LP Jinx : This is What Machin Gun Jinx Look Like - Engsub",
+          "rankClaim": "Master+",
+          "patch": "26.14",
+          "durationSec": 1425,
+          "patchEstimated": true,
+          "player": "Jz",
+          "uploaded": "2026-07-23",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "0swB-JhvOPA",
+          "title": "Rank 1 Jinx : Destroying KR Challenger at 2000LP Match with Perfect PENTAKILL - Engsub",
+          "rankClaim": "Challenger",
+          "patch": "26.10",
+          "durationSec": 1352,
+          "region": "KR",
+          "patchEstimated": true,
+          "player": "PerfecT",
+          "uploaded": "2026-05-25",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "Pwui_s8flro",
+          "title": "Rank 1 Jinx : TEARING KOREAN Challenger in Less 20 Min - Engsub ( Jinx vs JackeyLove )",
+          "rankClaim": "Challenger",
+          "patch": "26.9",
+          "durationSec": 1221,
+          "patchEstimated": true,
+          "player": "JackeyLove",
+          "uploaded": "2026-05-08",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "UUGMTTnHxKU",
+          "title": "1600LP JINX : Insane Spacing Total Destroying TEDDY on KOREAN Challenger - Engsub",
+          "rankClaim": "Challenger",
+          "patch": "26.8",
+          "durationSec": 1263,
+          "patchEstimated": true,
+          "player": "Teddy",
+          "uploaded": "2026-04-21",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "gAF8EORJ2dc",
+          "title": "Uzi Jinx : When All The LPL LEGENDS Meet at Uzi Cup - Engsub",
+          "rankClaim": "Master+",
+          "patch": "26.7",
+          "durationSec": 828,
+          "patchEstimated": true,
+          "player": "Uzi",
+          "uploaded": "2026-04-05",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "h-4WVJ-zjDc",
+          "title": "Gumayusi : His Jinx Keep FIRING Like A Machine Gun - Engsub",
+          "rankClaim": "Master+",
+          "patch": "26.7",
+          "durationSec": 1327,
+          "patchEstimated": true,
+          "player": "Gumayusi",
+          "uploaded": "2026-04-02",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "Pixm-Rf2EyA",
+          "title": "Uzi : His Jinx Make KOREAN Masters Look Like an Robots - Engsub",
+          "rankClaim": "Master+",
+          "patch": "26.7",
+          "durationSec": 1043,
+          "patchEstimated": true,
+          "player": "Uzi",
+          "uploaded": "2026-04-01",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "puTEgZIuaOc",
+          "title": "Teddy : His JINX Blowing Up KOREAN Challenger in Less 20 Min - Engsub",
+          "rankClaim": "Challenger",
+          "patch": "26.6",
+          "durationSec": 786,
+          "patchEstimated": true,
+          "player": "Teddy",
+          "uploaded": "2026-03-18",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "bVOc__HU1eM",
+          "title": "Smash : His Jinx Spacing is so Dam Good - Engsub",
+          "rankClaim": "Master+",
+          "patch": "26.4",
+          "durationSec": 929,
+          "patchEstimated": true,
+          "player": "Smash",
+          "uploaded": "2026-02-19",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "1LQo0FXNod4",
+          "title": "Uzi : His Jinx Spacing is so CLEAN - Engsub",
+          "rankClaim": "Master+",
+          "patch": "26.3",
+          "durationSec": 1148,
+          "patchEstimated": true,
+          "player": "Uzi",
+          "uploaded": "2026-02-12",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "8nrtjNXkBk0",
+          "title": "Smash : This is ULTIMATE JINX BUILD TO DOMINATING in HighElo - Engsub",
+          "rankClaim": "Master+",
+          "patch": "26.2",
+          "durationSec": 1120,
+          "patchEstimated": true,
+          "player": "Smash",
+          "uploaded": "2026-01-24",
+          "format": "stream",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 2,
+      "lane": "adc",
+      "videos": [
+        {
+          "videoId": "Koy0sgXR4bQ",
+          "title": "Rank 1 Jinx : This Dude is BLOWING UP Super Server with C44 - Engsub ( vs Olaf, Smolder )",
+          "rankClaim": "Master+",
+          "patch": "26.19",
+          "durationSec": 1610,
+          "patchEstimated": true,
+          "uploaded": "2026-10-01",
+          "format": "stream",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 11,
+      "lane": "adc",
+      "videos": [
+        {
+          "videoId": "1mYKSE59Izw",
+          "title": "This is What Machine Gun JINX Look Like ! Engsub ( Jinx vs MasterYi, Aphelios )",
+          "rankClaim": "Master+",
+          "patch": "26.9",
+          "durationSec": 1079,
+          "patchEstimated": true,
+          "uploaded": "2026-05-02",
+          "format": "stream",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 15,
+      "lane": "adc",
+      "videos": [
+        {
+          "videoId": "l3YjMG4aPuA",
+          "title": "Rank 1 Jinx : His Spacing is so AMAZING - Engsub ( vs Sivir, Aurelion )",
+          "rankClaim": "Master+",
+          "patch": "26.19",
+          "durationSec": 1681,
+          "patchEstimated": true,
+          "uploaded": "2026-10-04",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "J5llhw_xKS4",
+          "title": "\"Jz\" This is What 2000LP Machine Gun Jinx Look Like - Engsub (Jinx vs Aphe, Sivir)",
+          "rankClaim": "Master+",
+          "patch": "26.14",
+          "durationSec": 1258,
+          "patchEstimated": true,
+          "player": "Jz",
+          "uploaded": "2026-07-28",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "RcqIbko1i7s",
+          "title": "Rank 1 Jinx : Let Loock in, Make His Bullet Rain - Engsub (Jinx vs Sivir, Ashe)",
+          "rankClaim": "Master+",
+          "patch": "26.13",
+          "durationSec": 1399,
+          "patchEstimated": true,
+          "uploaded": "2026-06-30",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "TzCFTM9mMXY",
+          "title": "Rank 1 Jinx : His Spacing is on Another Level - Engsub (Jinx vs Sivir, Tris)",
+          "rankClaim": "Master+",
+          "patch": "26.12",
+          "durationSec": 1228,
+          "patchEstimated": true,
+          "uploaded": "2026-06-16",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "bAOd_QykEeA",
+          "title": "(KC Caliste) Jinx ADC vs Sivir - EUW Challenger Patch 26.10",
+          "rankClaim": "Challenger",
+          "patch": "26.10",
+          "durationSec": 1789,
+          "region": "EUW",
+          "player": "Caliste",
+          "team": "KC",
+          "uploaded": "2026-05-30",
+          "moments": []
+        },
+        {
+          "videoId": "IDJa4zjuCuY",
+          "title": "Jinx ADC vs Sivir - KR Challenger Patch 26.08",
+          "rankClaim": "Challenger",
+          "patch": "26.8",
+          "durationSec": 1481,
+          "region": "KR",
+          "uploaded": "2026-04-18",
+          "moments": []
+        },
+        {
+          "videoId": "wpX62wCJNwY",
+          "title": "Jinx ADC vs Sivir - KR Challenger Patch 26.07",
+          "rankClaim": "Challenger",
+          "patch": "26.7",
+          "durationSec": 1424,
+          "region": "KR",
+          "uploaded": "2026-04-16",
+          "moments": []
+        },
+        {
+          "videoId": "UB655BAfQS8",
+          "title": "Jinx vs Sivir ADC - KR Challenger - Patch 16.06 Season 16",
+          "rankClaim": "Challenger",
+          "patch": "26.6",
+          "durationSec": 1341,
+          "region": "KR",
+          "uploaded": "2026-03-31",
+          "moments": []
+        },
+        {
+          "videoId": "yPim8UyIg5k",
+          "title": "T1 Peyz Jinx vs HLE Gumayusi Sivir [ ADC ] Korea Challenger 2024 LP | Patch 26.5",
+          "rankClaim": "Challenger",
+          "patch": "26.5",
+          "durationSec": 1120,
+          "region": "KR",
+          "player": "Peyz",
+          "team": "T1",
+          "uploaded": "2026-03-17",
+          "moments": []
+        },
+        {
+          "videoId": "yJ72JR0bjWE",
+          "title": "Jinx ADC vs Sivir - KR Master Patch 26.03",
+          "rankClaim": "Master",
+          "patch": "26.3",
+          "durationSec": 1504,
+          "region": "KR",
+          "uploaded": "2026-02-06",
+          "moments": []
+        },
+        {
+          "videoId": "umzraIpqgJU",
+          "title": "Jinx ADC vs Sivir - KR Grandmaster Patch 25.21",
+          "rankClaim": "Grandmaster",
+          "patch": "25.21",
+          "durationSec": 1537,
+          "region": "KR",
+          "uploaded": "2025-10-26",
+          "moments": []
+        },
+        {
+          "videoId": "6Dq6wD73MsY",
+          "title": "Jinx ADC vs Sivir - KR Grandmaster Patch 25.16",
+          "rankClaim": "Grandmaster",
+          "patch": "25.16",
+          "durationSec": 1590,
+          "region": "KR",
+          "uploaded": "2025-08-28",
+          "moments": []
+        },
+        {
+          "videoId": "8lDjp8E4kG0",
+          "title": "Jinx ADC vs Sivir - KR Grandmaster Patch 25.13",
+          "rankClaim": "Grandmaster",
+          "patch": "25.13",
+          "durationSec": 1597,
+          "region": "KR",
+          "uploaded": "2025-06-30",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 18,
+      "lane": "adc",
+      "videos": [
+        {
+          "videoId": "iAAjg3L0y4Q",
+          "title": "HLE Gumayusi Jinx vs Tristana [ ADC ] Korea Challenger 2301 LP | Patch 26.20",
+          "rankClaim": "Challenger",
+          "patch": "26.20",
+          "durationSec": 1493,
+          "region": "KR",
+          "player": "Gumayusi",
+          "team": "HLE",
+          "uploaded": "2026-10-14",
+          "moments": []
+        },
+        {
+          "videoId": "U56j9HDKISM",
+          "title": "Jinx ADC vs Tristana - KR Challenger Patch 26.02",
+          "rankClaim": "Challenger",
+          "patch": "26.2",
+          "durationSec": 1596,
+          "region": "KR",
+          "uploaded": "2026-01-23",
+          "moments": []
+        },
+        {
+          "videoId": "RNZGPbfARwc",
+          "title": "Jinx vs Tristana [ ADC ] Lol Korea Master Patch 25.23 ✅",
+          "rankClaim": "Master",
+          "patch": "25.23",
+          "durationSec": 1568,
+          "region": "KR",
+          "uploaded": "2025-11-28",
+          "moments": []
+        },
+        {
+          "videoId": "hrBdECvkBQ8",
+          "title": "Jinx vs Tristana ADC - KR Challenger - Patch 25.12 Season 15",
+          "rankClaim": "Challenger",
+          "patch": "25.12",
+          "durationSec": 1216,
+          "region": "KR",
+          "uploaded": "2025-06-12",
+          "moments": []
+        },
+        {
+          "videoId": "hAkpY3osXS4",
+          "title": "Jinx ADC vs Tristana - NA Challenger Patch 25.10",
+          "rankClaim": "Challenger",
+          "patch": "25.10",
+          "durationSec": 2060,
+          "region": "NA",
+          "uploaded": "2025-05-28",
+          "moments": []
+        },
+        {
+          "videoId": "eZdogOFells",
+          "title": "Jinx ADC vs Tristana - EUW Grandmaster Patch 25.05",
+          "rankClaim": "Grandmaster",
+          "patch": "25.5",
+          "durationSec": 1576,
+          "region": "EUW",
+          "uploaded": "2025-03-20",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 21,
+      "lane": "adc",
+      "videos": [
+        {
+          "videoId": "6DLPRV-4drM",
+          "title": "Jinx ADC vs Miss Fortune - EUW Grandmaster Patch 25.09",
+          "rankClaim": "Grandmaster",
+          "patch": "25.9",
+          "durationSec": 1544,
+          "region": "EUW",
+          "uploaded": "2025-05-13",
+          "moments": []
+        },
+        {
+          "videoId": "k5uUsfQFpLo",
+          "title": "T1 Gumayusi Jinx ADC vs Miss Fortune - Patch 25.3 Korea Challenger ✅",
+          "rankClaim": "Challenger",
+          "patch": "25.3",
+          "durationSec": 1922,
+          "region": "KR",
+          "player": "Gumayusi",
+          "team": "T1",
+          "uploaded": "2025-02-11",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 22,
+      "lane": "adc",
+      "videos": [
+        {
+          "videoId": "mKnATsDbQ2s",
+          "title": "Jinx ADC vs Ashe - KR Master Patch 26.21",
+          "rankClaim": "Master",
+          "patch": "26.21",
+          "durationSec": 1817,
+          "region": "KR",
+          "uploaded": "2026-10-25",
+          "result": "W",
+          "moments": [
+            {
+              "atSec": 97,
+              "label": "First Blood — Jinx kills Braum",
+              "kind": "kill"
+            },
+            {
+              "atSec": 361,
+              "label": "Red takes 1st Dragon (Cloud)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 757,
+              "label": "Red takes 2nd Dragon (Infernal)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 993,
+              "label": "Jinx kills Irelia",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1040,
+              "label": "Jinx picks off Braum"
+            },
+            {
+              "atSec": 1045,
+              "label": "Jinx Triple Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1076,
+              "label": "Red takes 3rd Dragon (Hextech)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1147,
+              "label": "Jinx Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1156,
+              "label": "Jinx Triple Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1286,
+              "label": "Lissandra takes down Gangplank"
+            },
+            {
+              "atSec": 1333,
+              "label": "Red takes Baron",
+              "kind": "baron"
+            },
+            {
+              "atSec": 1384,
+              "label": "Red takes 4th Dragon (Hextech)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1452,
+              "label": "Nidalee eliminates Ashe"
+            },
+            {
+              "atSec": 1479,
+              "label": "Jinx Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1733,
+              "label": "Red takes 2nd Baron",
+              "kind": "baron"
+            },
+            {
+              "atSec": 1761,
+              "label": "Lissandra Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1793,
+              "label": "Mid Inhibitor falls (Blue)"
+            }
+          ]
+        },
+        {
+          "videoId": "lULX6HjV5dg",
+          "title": "Jinx ADC vs Ashe - KR Master Patch 26.19",
+          "rankClaim": "Master",
+          "patch": "26.19",
+          "durationSec": 1592,
+          "region": "KR",
+          "uploaded": "2026-10-08",
+          "result": "W",
+          "moments": [
+            {
+              "atSec": 304,
+              "label": "First Blood — Graves kills Braum",
+              "kind": "kill"
+            },
+            {
+              "atSec": 341,
+              "label": "Blue takes 1st Dragon (Ocean)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 692,
+              "label": "Blue takes 2nd Dragon (Infernal)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 778,
+              "label": "Jinx catches Kassadin"
+            },
+            {
+              "atSec": 975,
+              "label": "Yone eliminates Braum"
+            },
+            {
+              "atSec": 1023,
+              "label": "Blue takes 3rd Dragon (Cloud)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1062,
+              "label": "Graves Triple Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1064,
+              "label": "Graves Quadra Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1066,
+              "label": "Graves PENTA KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1230,
+              "label": "Jinx eliminates Qiyana"
+            },
+            {
+              "atSec": 1252,
+              "label": "Blue takes Baron",
+              "kind": "baron"
+            },
+            {
+              "atSec": 1336,
+              "label": "Graves Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1372,
+              "label": "Blue takes 4th Dragon (Cloud)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1378,
+              "label": "Graves kills Braum",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1467,
+              "label": "Top Inhibitor falls (Red)"
+            },
+            {
+              "atSec": 1472,
+              "label": "Mid Inhibitor falls (Red)"
+            },
+            {
+              "atSec": 1553,
+              "label": "Team fight (3 kills)",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1557,
+              "label": "Graves Triple Kill",
+              "kind": "kill"
+            }
+          ]
+        },
+        {
+          "videoId": "2twc7NsDhCA",
+          "title": "Jinx vs Ashe [ ADC ] Lol Korea Master Patch 26.12 ✅",
+          "rankClaim": "Master",
+          "patch": "26.12",
+          "durationSec": 1515,
+          "region": "KR",
+          "uploaded": "2026-06-14",
+          "moments": []
+        },
+        {
+          "videoId": "UINH39HmCmI",
+          "title": "This is What Machine Gun Jinx Look Like - Engsub ( Jinx vs MF, Ashe )",
+          "rankClaim": "Master+",
+          "patch": "26.11",
+          "durationSec": 1399,
+          "patchEstimated": true,
+          "uploaded": "2026-06-03",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "Z5oC6wcwTFg",
+          "title": "Jinx vs Ashe ADC - KR Challenger - Patch 16.08 Season 16",
+          "rankClaim": "Challenger",
+          "patch": "26.8",
+          "durationSec": 1741,
+          "region": "KR",
+          "uploaded": "2026-04-19",
+          "moments": []
+        },
+        {
+          "videoId": "pZ1VhfKj7Ug",
+          "title": "Jinx ADC vs Ashe - KR Challenger Patch 26.05",
+          "rankClaim": "Challenger",
+          "patch": "26.5",
+          "durationSec": 1518,
+          "region": "KR",
+          "uploaded": "2026-03-06",
+          "moments": []
+        },
+        {
+          "videoId": "JeVIz8zAzEQ",
+          "title": "Jinx vs Ashe ADC [ QuadraKill ] Korea Master Patch 25.24",
+          "rankClaim": "Master",
+          "patch": "25.24",
+          "durationSec": 1249,
+          "region": "KR",
+          "player": "QuadraKill",
+          "uploaded": "2025-12-18",
+          "moments": []
+        },
+        {
+          "videoId": "aHXuWcfnZ-0",
+          "title": "Jinx ADC vs Ashe - KR Master Patch 25.24",
+          "rankClaim": "Master",
+          "patch": "25.24",
+          "durationSec": 1610,
+          "region": "KR",
+          "uploaded": "2025-12-06",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 177,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 306,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 380,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 507,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1066,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1233,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1275,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1349,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1435,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1553,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1599,
+              "label": "End credit"
+            }
+          ]
+        },
+        {
+          "videoId": "yFdonMDGGII",
+          "title": "Jinx vs Ashe [ ADC ] Lol Korea Master Patch 25.20 ✅",
+          "rankClaim": "Master",
+          "patch": "25.20",
+          "durationSec": 2058,
+          "region": "KR",
+          "uploaded": "2025-10-17",
+          "moments": []
+        },
+        {
+          "videoId": "L-hQARcjQv8",
+          "title": "Jinx vs Ashe ADC - KR Challenger - Patch 25.10 Season 15",
+          "rankClaim": "Challenger",
+          "patch": "25.10",
+          "durationSec": 1710,
+          "region": "KR",
+          "uploaded": "2025-05-24",
+          "moments": []
+        },
+        {
+          "videoId": "RLJHjEjINxs",
+          "title": "Jinx vs Ashe ADC - KR Challenger - Patch 25.5 Season 15",
+          "rankClaim": "Challenger",
+          "patch": "25.5",
+          "durationSec": 1610,
+          "region": "KR",
+          "uploaded": "2025-03-17",
+          "moments": []
+        },
+        {
+          "videoId": "apNIyuHQxLo",
+          "title": "Jinx vs Ashe [ ADC ] Lol Korea Master Patch 25.5 ✅",
+          "rankClaim": "Master",
+          "patch": "25.5",
+          "durationSec": 1402,
+          "region": "KR",
+          "uploaded": "2025-03-08",
+          "moments": []
+        },
+        {
+          "videoId": "ztEe9lUDpVg",
+          "title": "Jinx vs Ashe ADC - KR Challenger - Patch 15.4 Season 15",
+          "rankClaim": "Challenger",
+          "patch": "25.4",
+          "durationSec": 2051,
+          "region": "KR",
+          "uploaded": "2025-02-28",
+          "moments": []
+        },
+        {
+          "videoId": "SFlh6G2ZLOg",
+          "title": "Jinx vs Ashe ADC [ HLE Viper ] Korea Challenger Patch 25.1 ✅",
+          "rankClaim": "Challenger",
+          "patch": "25.1",
+          "durationSec": 1055,
+          "region": "KR",
+          "player": "Viper",
+          "team": "HLE",
+          "uploaded": "2025-01-18",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 29,
+      "lane": "adc",
+      "videos": [
+        {
+          "videoId": "IXEU5Psmfao",
+          "title": "(Bung) Jinx ADC vs Twitch - EUW Challenger Patch 26.16",
+          "rankClaim": "Challenger",
+          "patch": "26.16",
+          "durationSec": 1438,
+          "region": "EUW",
+          "player": "Bung",
+          "uploaded": "2026-08-21",
+          "moments": []
+        },
+        {
+          "videoId": "HzooBQJU8ZI",
+          "title": "Rank 1 Jinx : Let This Dude Cooking Master with Insane Mecahnic - Engsub( vs Twitch, Ez )",
+          "rankClaim": "Master",
+          "patch": "26.15",
+          "durationSec": 1159,
+          "patchEstimated": true,
+          "uploaded": "2026-08-09",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "XQ6bVNToqMI",
+          "title": "Rank 1 Jinx : He is The SAVIOR We Need, Insane 1v5 HardCarrying - Engsub ( Jinx vs Yauso, Twitch )",
+          "rankClaim": "Master+",
+          "patch": "26.10",
+          "durationSec": 1350,
+          "patchEstimated": true,
+          "uploaded": "2026-05-17",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "CChabpqeBks",
+          "title": "Jinx ADC vs Twitch - KR Master Patch 26.09",
+          "rankClaim": "Master",
+          "patch": "26.9",
+          "durationSec": 1493,
+          "region": "KR",
+          "uploaded": "2026-05-01",
+          "moments": []
+        },
+        {
+          "videoId": "i1EriSvNxmI",
+          "title": "Jinx ADC vs Twitch - NA Challenger Patch 25.24",
+          "rankClaim": "Challenger",
+          "patch": "25.24",
+          "durationSec": 1588,
+          "region": "NA",
+          "uploaded": "2025-12-25",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 188,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 535,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 603,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 710,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 827,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 902,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1176,
+              "label": "Get a Triple Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1357,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1393,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1502,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1525,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1538,
+              "label": "Take down The Inhibitor"
+            },
+            {
+              "atSec": 1553,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1564,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1577,
+              "label": "End credit"
+            }
+          ]
+        },
+        {
+          "videoId": "IQcT1Ga3y4I",
+          "title": "Jinx vs Twitch ADC - EUW Challenger - Patch 25.15 Season 15",
+          "rankClaim": "Challenger",
+          "patch": "25.15",
+          "durationSec": 1216,
+          "region": "EUW",
+          "uploaded": "2025-08-06",
+          "moments": []
+        },
+        {
+          "videoId": "PDEp8_uU_Sg",
+          "title": "Jinx vs Twitch ADC [ Peyz ] Patch 25.1 Korea Grandmaster ✅",
+          "rankClaim": "Grandmaster",
+          "patch": "25.1",
+          "durationSec": 1923,
+          "region": "KR",
+          "player": "Peyz",
+          "uploaded": "2025-01-20",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 34,
+      "lane": "adc",
+      "videos": [
+        {
+          "videoId": "pwUqYcdQRYc",
+          "title": "When Peyz Jinx meet Keria Anivia in KR Challenger Botlane",
+          "rankClaim": "Challenger",
+          "patch": "26.13",
+          "durationSec": 1001,
+          "region": "KR",
+          "patchEstimated": true,
+          "uploaded": "2026-06-29",
+          "format": "stream",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 42,
+      "lane": "adc",
+      "videos": [
+        {
+          "videoId": "HJ4RbOinawQ",
+          "title": "(RUD Afriibi) Jinx ADC vs Corki (OTF Shakur) - EUW Challenger Patch 26.20",
+          "rankClaim": "Challenger",
+          "patch": "26.20",
+          "durationSec": 1653,
+          "region": "EUW",
+          "player": "RUD Afriibi",
+          "uploaded": "2026-10-21",
+          "result": "W",
+          "moments": [
+            {
+              "atSec": 110,
+              "label": "First Blood — Jinx kills Corki",
+              "kind": "kill"
+            },
+            {
+              "atSec": 312,
+              "label": "Blue takes 1st Dragon (Infernal)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 418,
+              "label": "Jinx takes down Corki"
+            },
+            {
+              "atSec": 490,
+              "label": "Ahri Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 642,
+              "label": "Blue takes 2nd Dragon (Cloud)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 767,
+              "label": "Jinx picks off Blitzcrank"
+            },
+            {
+              "atSec": 843,
+              "label": "Jinx picks off Blitzcrank"
+            },
+            {
+              "atSec": 975,
+              "label": "Jinx picks off Blitzcrank"
+            },
+            {
+              "atSec": 980,
+              "label": "Blue takes 3rd Dragon (Chemtech)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1190,
+              "label": "Jinx picks off Blitzcrank"
+            },
+            {
+              "atSec": 1216,
+              "label": "Jinx solo kills Mordekaiser",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1309,
+              "label": "Red takes 1st Dragon (Chemtech)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1352,
+              "label": "Red takes Baron",
+              "kind": "baron"
+            },
+            {
+              "atSec": 1407,
+              "label": "Jinx Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1587,
+              "label": "Team fight (3 kills)",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1609,
+              "label": "Jinx Triple Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1628,
+              "label": "Mid Inhibitor falls (Red)"
+            },
+            {
+              "atSec": 1635,
+              "label": "Jinx picks off Blitzcrank"
+            }
+          ]
+        },
+        {
+          "videoId": "LIrvky7Dryk",
+          "title": "(FNC Upset) Jinx ADC vs Corki - EUW Challenger Patch 26.14",
+          "rankClaim": "Challenger",
+          "patch": "26.14",
+          "durationSec": 1696,
+          "region": "EUW",
+          "player": "Upset",
+          "team": "FNC",
+          "uploaded": "2026-07-31",
+          "moments": []
+        },
+        {
+          "videoId": "vqSPtuLQK48",
+          "title": "Jinx vs Corki ADC [ Gen.G Ruler ] Korea Challenger Patch 25.2 ✅",
+          "rankClaim": "Challenger",
+          "patch": "25.2",
+          "durationSec": 1673,
+          "region": "KR",
+          "player": "Ruler",
+          "team": "Gen.G",
+          "uploaded": "2025-02-02",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 50,
+      "lane": "adc",
+      "videos": [
+        {
+          "videoId": "3g8Yzu5lD38",
+          "title": "Jinx ADC vs Swain - KR Master Patch 26.08",
+          "rankClaim": "Master",
+          "patch": "26.8",
+          "durationSec": 1611,
+          "region": "KR",
+          "uploaded": "2026-04-29",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 51,
+      "lane": "adc",
+      "videos": [
+        {
+          "videoId": "ylJMyKTYHls",
+          "title": "BLG Viper Jinx vs Caitlyn [ ADC ] Korea Grandmaster 1729 LP | Patch 26.20",
+          "rankClaim": "Grandmaster",
+          "patch": "26.20",
+          "durationSec": 1101,
+          "region": "KR",
+          "player": "Viper",
+          "team": "BLG",
+          "uploaded": "2026-10-09",
+          "moments": []
+        },
+        {
+          "videoId": "cFrPYCLrS5A",
+          "title": "Gumayusi : His Jinx just Playing Survival Mode in Teamfighting - Engsub ( vs Caitlyn )",
+          "rankClaim": "Master+",
+          "patch": "26.18",
+          "durationSec": 838,
+          "patchEstimated": true,
+          "player": "Gumayusi",
+          "uploaded": "2026-09-11",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "J23ur7M_R0s",
+          "title": "Rank 1 Jinx : This Guy is Absolutely a MONSTER - Engsub ( vs MF, Caitlyn )",
+          "rankClaim": "Master+",
+          "patch": "26.15",
+          "durationSec": 1204,
+          "patchEstimated": true,
+          "uploaded": "2026-08-11",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "J6UEtwUG54Q",
+          "title": "Rank 1 Jinx : This Dude is BLOWING UP Super Server Master Elo - Engsub (Jinx vs Caitlyn, Xayah)",
+          "rankClaim": "Master",
+          "patch": "26.15",
+          "durationSec": 1229,
+          "patchEstimated": true,
+          "uploaded": "2026-07-29",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "Ewl35HBhFxQ",
+          "title": "Jinx ADC vs Caitlyn - KR Grandmaster Patch 26.10",
+          "rankClaim": "Grandmaster",
+          "patch": "26.10",
+          "durationSec": 1717,
+          "region": "KR",
+          "uploaded": "2026-05-18",
+          "moments": []
+        },
+        {
+          "videoId": "92z83qaL_04",
+          "title": "Rank 1 Jinx : Crushing Super Server HighElo - Engsub ( Jinx vs Caitlyn, Varus )",
+          "rankClaim": "Master+",
+          "patch": "26.9",
+          "durationSec": 1317,
+          "patchEstimated": true,
+          "uploaded": "2026-05-05",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "JddGZBrnJlM",
+          "title": "T1 Peyz Jinx vs Caitlyn [ ADC ] Korea Challenger 2489 LP | Patch 26.8",
+          "rankClaim": "Challenger",
+          "patch": "26.8",
+          "durationSec": 954,
+          "region": "KR",
+          "player": "Peyz",
+          "team": "T1",
+          "uploaded": "2026-04-28",
+          "moments": []
+        },
+        {
+          "videoId": "nN0thpupv6U",
+          "title": "Jinx vs Caitlyn ADC - KR Challenger - Patch 16.05 Season 16",
+          "rankClaim": "Challenger",
+          "patch": "26.5",
+          "durationSec": 1756,
+          "region": "KR",
+          "uploaded": "2026-03-19",
+          "moments": []
+        },
+        {
+          "videoId": "xElZLAtxAMk",
+          "title": "Jinx ADC vs Caitlyn - EUW Grandmaster Patch 25.23",
+          "rankClaim": "Grandmaster",
+          "patch": "25.23",
+          "durationSec": 1451,
+          "region": "EUW",
+          "uploaded": "2025-12-04",
+          "moments": []
+        },
+        {
+          "videoId": "AJ3nFyz8Dzo",
+          "title": "Jinx vs Caitlyn ADC [ TripleKill ] Korea Master Patch 25.22 ✅",
+          "rankClaim": "Master",
+          "patch": "25.22",
+          "durationSec": 1447,
+          "region": "KR",
+          "player": "TripleKill",
+          "uploaded": "2025-11-09",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 67,
+      "lane": "adc",
+      "videos": [
+        {
+          "videoId": "Lh88fq4P_QQ",
+          "title": "Rank 1 Jinx : UNLEASH Everything He Got, Make His Bullet Rain - Engsub ( vs Aphe, Vayne )",
+          "rankClaim": "Master+",
+          "patch": "26.20",
+          "durationSec": 1330,
+          "patchEstimated": true,
+          "uploaded": "2026-10-15",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "OKmaGKjCGA8",
+          "title": "Rank 1 Jinx : His Mechanic is Perfecly so Dam Clean - Engsub ( vs Vayne, Kai'sa )",
+          "rankClaim": "Master+",
+          "patch": "26.15",
+          "durationSec": 1234,
+          "patchEstimated": true,
+          "uploaded": "2026-08-08",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "cFimh8xE9QA",
+          "title": "Rank 1 Jinx : This Guy is a RUTHLESS SAVAGE \" Insane 1v5 Pentakill \" Engsub (Jinx vs Vayne, Jhin)",
+          "rankClaim": "Master+",
+          "patch": "26.14",
+          "durationSec": 1464,
+          "patchEstimated": true,
+          "uploaded": "2026-07-20",
+          "format": "stream",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 69,
+      "lane": "adc",
+      "videos": [
+        {
+          "videoId": "OJ4F5T4EwsU",
+          "title": "T1 Peyz Jinx vs Cassiopeia [ ADC ] Rank #2 Korea Challenger Patch 26.7",
+          "rankClaim": "Challenger",
+          "patch": "26.7",
+          "durationSec": 1460,
+          "region": "KR",
+          "player": "Peyz",
+          "team": "T1",
+          "uploaded": "2026-04-11",
+          "moments": []
+        },
+        {
+          "videoId": "09pZQ2xuzcM",
+          "title": "Jinx ADC vs Cassiopeia - KR Challenger Patch 26.04",
+          "rankClaim": "Challenger",
+          "patch": "26.4",
+          "durationSec": 1713,
+          "region": "KR",
+          "uploaded": "2026-02-20",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 74,
+      "lane": "adc",
+      "videos": [
+        {
+          "videoId": "i8mR_chd2cM",
+          "title": "When Challenger Jinx visit Diamond Elo - Engsub ( Jinx vs Heimerdinger, Jhin )",
+          "rankClaim": "Challenger",
+          "patch": "26.10",
+          "durationSec": 1148,
+          "patchEstimated": true,
+          "uploaded": "2026-05-21",
+          "format": "stream",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 81,
+      "lane": "adc",
+      "videos": [
+        {
+          "videoId": "n6nvCcRqXKw",
+          "title": "Jinx ADC vs Ezreal - KR Grandmaster Patch 26.17",
+          "rankClaim": "Grandmaster",
+          "patch": "26.17",
+          "durationSec": 1666,
+          "region": "KR",
+          "uploaded": "2026-08-29",
+          "moments": []
+        },
+        {
+          "videoId": "suKFrnpmY7w",
+          "title": "Jinx vs Ezreal ADC - KR Challenger - Patch 16.10 Season 16",
+          "rankClaim": "Challenger",
+          "patch": "26.10",
+          "durationSec": 1336,
+          "region": "KR",
+          "uploaded": "2026-05-21",
+          "moments": []
+        },
+        {
+          "videoId": "K50u9aJjCkU",
+          "title": "BLG Viper Jinx vs Ezreal [ ADC ] Korea Master 1140 LP | Patch 26.7",
+          "rankClaim": "Master",
+          "patch": "26.7",
+          "durationSec": 1482,
+          "region": "KR",
+          "player": "Viper",
+          "team": "BLG",
+          "uploaded": "2026-04-03",
+          "moments": []
+        },
+        {
+          "videoId": "Z4W6MTdgyTQ",
+          "title": "Jinx vs Ezreal ADC - KR Challenger - Patch 25.24 Season 15",
+          "rankClaim": "Challenger",
+          "patch": "25.24",
+          "durationSec": 1636,
+          "region": "KR",
+          "uploaded": "2025-12-23",
+          "moments": []
+        },
+        {
+          "videoId": "MGoLYvUpz6Y",
+          "title": "Jinx ADC vs Ezreal - KR Grandmaster Patch 25.22",
+          "rankClaim": "Grandmaster",
+          "patch": "25.22",
+          "durationSec": 1554,
+          "region": "KR",
+          "uploaded": "2025-11-09",
+          "moments": []
+        },
+        {
+          "videoId": "d-kBQ3KLfqE",
+          "title": "Jinx ADC vs Ezreal - EUW Grandmaster Patch 25.19",
+          "rankClaim": "Grandmaster",
+          "patch": "25.19",
+          "durationSec": 1750,
+          "region": "EUW",
+          "uploaded": "2025-10-08",
+          "moments": []
+        },
+        {
+          "videoId": "grKGlX1TvJE",
+          "title": "Jinx ADC vs Ezreal - KR Master Patch 25.12",
+          "rankClaim": "Master",
+          "patch": "25.12",
+          "durationSec": 1426,
+          "region": "KR",
+          "uploaded": "2025-06-16",
+          "moments": []
+        },
+        {
+          "videoId": "Ab0CB99Vras",
+          "title": "Jinx ADC vs Ezreal - KR Challenger Patch 25.09",
+          "rankClaim": "Challenger",
+          "patch": "25.9",
+          "durationSec": 1519,
+          "region": "KR",
+          "uploaded": "2025-05-07",
+          "moments": []
+        },
+        {
+          "videoId": "F1Iegjqc6iw",
+          "title": "Jinx ADC vs Ezreal - KR Challenger Patch 25.07",
+          "rankClaim": "Challenger",
+          "patch": "25.7",
+          "durationSec": 1749,
+          "region": "KR",
+          "uploaded": "2025-04-06",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 108,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 406,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 586,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 857,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 961,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1000,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1087,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1119,
+              "label": "Get a Triple Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1266,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1348,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1372,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1468,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1595,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1699,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1728,
+              "label": "End credit"
+            }
+          ]
+        },
+        {
+          "videoId": "iokuoKclAus",
+          "title": "T1 Gumayusi Jinx vs Ezreal [ ADC ] Korea Challenger Patch 25.4",
+          "rankClaim": "Challenger",
+          "patch": "25.4",
+          "durationSec": 1757,
+          "region": "KR",
+          "player": "Gumayusi",
+          "team": "T1",
+          "uploaded": "2025-02-28",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 96,
+      "lane": "adc",
+      "videos": [
+        {
+          "videoId": "qwUXamOHGE4",
+          "title": "Jinx vs Kog'Maw [ ADC ] Korea Challenger 2398 LP | Patch 26.20",
+          "rankClaim": "Challenger",
+          "patch": "26.20",
+          "durationSec": 1627,
+          "region": "KR",
+          "uploaded": "2026-10-20",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 101,
+      "lane": "adc",
+      "videos": [
+        {
+          "videoId": "rshIv3OEplE",
+          "title": "Rank 1 Jinx : His Spacing and Kiting is so DAM GOOD in TeamFight - Engsub ( vs Xerath, Kai'sa )",
+          "rankClaim": "Master+",
+          "patch": "26.20",
+          "durationSec": 1451,
+          "patchEstimated": true,
+          "uploaded": "2026-10-08",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "2XqKEOlLQCk",
+          "title": "T1 Peyz Jinx vs Xerath [ ADC ] Korea Challenger 2423 LP | Patch 26.16",
+          "rankClaim": "Challenger",
+          "patch": "26.16",
+          "durationSec": 1191,
+          "region": "KR",
+          "player": "Peyz",
+          "team": "T1",
+          "uploaded": "2026-08-20",
+          "moments": []
+        },
+        {
+          "videoId": "0atpGf5EqXc",
+          "title": "Jinx vs XeRath ADC - EUW Challenger - Patch 16.07 Season 16",
+          "rankClaim": "Challenger",
+          "patch": "26.7",
+          "durationSec": 1476,
+          "region": "EUW",
+          "uploaded": "2026-04-10",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 110,
+      "lane": "adc",
+      "videos": [
+        {
+          "videoId": "OYR9hRmv4QE",
+          "title": "Rank 1 Jinx : This Dude is a RECKLESS KILLING MACHINE - Engsub ( vs Varus, MF )",
+          "rankClaim": "Master+",
+          "patch": "26.17",
+          "durationSec": 1332,
+          "patchEstimated": true,
+          "uploaded": "2026-09-03",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "cM3bke1jj60",
+          "title": "(OME Array) Jinx ADC vs Varus - NA Challenger Patch 26.15",
+          "rankClaim": "Challenger",
+          "patch": "26.15",
+          "durationSec": 1492,
+          "region": "NA",
+          "player": "OME Array",
+          "uploaded": "2026-08-14",
+          "moments": []
+        },
+        {
+          "videoId": "geuIUmff15g",
+          "title": "\"Jz\" 2000LP Jinx : His Spacing is on Another Level - Engsub (Jinx vs Ez, Varus)",
+          "rankClaim": "Master+",
+          "patch": "26.14",
+          "durationSec": 891,
+          "patchEstimated": true,
+          "player": "Jz",
+          "uploaded": "2026-07-25",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "B9GxNxLQJM8",
+          "title": "Rank 1 Jinx : This Dude is a FREAKING ANIMAL in Super Server HighElo - Engsub (Jinx vs Varus)",
+          "rankClaim": "Master+",
+          "patch": "26.13",
+          "durationSec": 1087,
+          "patchEstimated": true,
+          "uploaded": "2026-07-10",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "a-EwsWEaQvc",
+          "title": "Rank 1 Jinx : This Dude is Taking Over KR HighElo - Engsub (Jinx vs Varus, Kai'sa)",
+          "rankClaim": "Master+",
+          "patch": "26.13",
+          "durationSec": 1227,
+          "region": "KR",
+          "patchEstimated": true,
+          "uploaded": "2026-07-07",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "yMt3Faa2O00",
+          "title": "Rank 1 Jinx : This Dude is BLOWING UP Super Server Master Elo - Engsub ( Jinx vs Varus, Ziggs )",
+          "rankClaim": "Master",
+          "patch": "26.9",
+          "durationSec": 1214,
+          "patchEstimated": true,
+          "uploaded": "2026-04-29",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "_Xv1PGXepjY",
+          "title": "Rank 1 Jinx : This Guy is BLOWING UP KR Challenger ( Jinx vs Leave Varus ) Engsub",
+          "rankClaim": "Challenger",
+          "patch": "26.6",
+          "durationSec": 842,
+          "region": "KR",
+          "patchEstimated": true,
+          "uploaded": "2026-03-20",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "qMwfYUIeXgU",
+          "title": "BLG Viper Jinx vs Varus [ ADC ] Korea Grandmaster Patch 26.4 ✅",
+          "rankClaim": "Grandmaster",
+          "patch": "26.4",
+          "durationSec": 1559,
+          "region": "KR",
+          "player": "Viper",
+          "team": "BLG",
+          "uploaded": "2026-02-21",
+          "moments": []
+        },
+        {
+          "videoId": "QDTIOxzTxCo",
+          "title": "Jinx vs Varus ADC [ Gen.G Ruler ] Korea Master Patch 26.2 ✅",
+          "rankClaim": "Master",
+          "patch": "26.2",
+          "durationSec": 1260,
+          "region": "KR",
+          "player": "Ruler",
+          "team": "Gen.G",
+          "uploaded": "2026-01-29",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 112,
+      "lane": "adc",
+      "videos": [
+        {
+          "videoId": "y33oDMPztRc",
+          "title": "Rank 1 Jinx : This is What Machine Gun Jinx Look Like - Engsub ( vs Viktor, Ashe )",
+          "rankClaim": "Master+",
+          "patch": "26.17",
+          "durationSec": 1355,
+          "patchEstimated": true,
+          "uploaded": "2026-09-06",
+          "format": "stream",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 119,
+      "lane": "adc",
+      "videos": [
+        {
+          "videoId": "uc4RzEWF5OE",
+          "title": "Jinx vs Draven ADC - KR Challenger - Patch 16.19 Season 16",
+          "rankClaim": "Challenger",
+          "patch": "26.19",
+          "durationSec": 1426,
+          "region": "KR",
+          "uploaded": "2026-10-06",
+          "moments": []
+        },
+        {
+          "videoId": "quLg5QIVS0A",
+          "title": "Rank 1 Jinx : This is What Machine Gun Jinx Look Like - Engsub ( vs Draven, Yunara )",
+          "rankClaim": "Master+",
+          "patch": "26.19",
+          "durationSec": 1491,
+          "patchEstimated": true,
+          "uploaded": "2026-09-27",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "QGRBPxfiiDs",
+          "title": "Rank 1 Jinx : This Dude is NEXT LEVEL OF CRAZINESS - Engsub ( vs Draven, Aphe )",
+          "rankClaim": "Master+",
+          "patch": "26.17",
+          "durationSec": 1294,
+          "patchEstimated": true,
+          "uploaded": "2026-08-28",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "ByjWT_jTs4I",
+          "title": "Rank 1 Jinx : His Mechanic is so AGGRESSIVE in Early Game - Engsub (Jinx vs Draven, Jhin)",
+          "rankClaim": "Master+",
+          "patch": "26.13",
+          "durationSec": 1355,
+          "patchEstimated": true,
+          "uploaded": "2026-07-04",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "lf2uQkUEMjI",
+          "title": "1600LP JINX : This Dude is UNSTOPPABLE MONSTER - Engsub ( Jinx vs Draven )",
+          "rankClaim": "Master+",
+          "patch": "26.9",
+          "durationSec": 1036,
+          "patchEstimated": true,
+          "uploaded": "2026-05-11",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "jASWVHHQpyU",
+          "title": "2255LP JINX : Insane 1v5 HardCarry Perfomance - Engsub ( Jinx vs Draven )",
+          "rankClaim": "Master+",
+          "patch": "26.9",
+          "durationSec": 840,
+          "patchEstimated": true,
+          "uploaded": "2026-05-02",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "7TXZ7DCBRqo",
+          "title": "Jinx ADC vs Draven - KR Grandmaster Patch 25.18",
+          "rankClaim": "Grandmaster",
+          "patch": "25.18",
+          "durationSec": 1912,
+          "region": "KR",
+          "uploaded": "2025-09-15",
+          "moments": []
+        },
+        {
+          "videoId": "8oYpZb7j2dk",
+          "title": "Jinx ADC vs Draven - KR Challenger Patch 25.08",
+          "rankClaim": "Challenger",
+          "patch": "25.8",
+          "durationSec": 1894,
+          "region": "KR",
+          "uploaded": "2025-04-21",
+          "moments": []
+        },
+        {
+          "videoId": "755dUJ_rKTo",
+          "title": "Jinx vs Draven ADC - KR Challenger - Patch 25.7 Season 15",
+          "rankClaim": "Challenger",
+          "patch": "25.7",
+          "durationSec": 1486,
+          "region": "KR",
+          "uploaded": "2025-04-12",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 134,
+      "lane": "adc",
+      "videos": [
+        {
+          "videoId": "8oC6Ur-TAJ0",
+          "title": "Rank 1 Jinx : This Dude is on FIRE, He is BLOWING UP Super Server HighElo - Engsub (vs Syndra, Hwei)",
+          "rankClaim": "Master+",
+          "patch": "26.16",
+          "durationSec": 1362,
+          "patchEstimated": true,
+          "uploaded": "2026-08-22",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "lp9CdWyGs4E",
+          "title": "\"AnAn\" The King of Jinx is back to Taking Down Super Server - Engsub ( vs Syndra, Jhin )",
+          "rankClaim": "Master+",
+          "patch": "26.16",
+          "durationSec": 1341,
+          "patchEstimated": true,
+          "uploaded": "2026-08-18",
+          "format": "stream",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 145,
+      "lane": "adc",
+      "videos": [
+        {
+          "videoId": "QGMxL37rZo8",
+          "title": "(Deft) Jinx ADC vs Kai'Sa (KRX AKaJe) - KR Challenger Patch 26.21",
+          "rankClaim": "Challenger",
+          "patch": "26.21",
+          "durationSec": 1654,
+          "region": "KR",
+          "player": "Deft",
+          "uploaded": "2026-11-04",
+          "moments": []
+        },
+        {
+          "videoId": "dHFp8KfJksU",
+          "title": "Rank 1 Jinx : This is What Machine Gun JINX Look Like - Engsub ( vs Kai'sa, Corki )",
+          "rankClaim": "Master+",
+          "patch": "26.20",
+          "durationSec": 1531,
+          "patchEstimated": true,
+          "uploaded": "2026-10-19",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "4gcG2WR9MAs",
+          "title": "Rank 1 Kai'sa : He is The CLEANEST Kai'sa Main Ever Alive - Engsub ( vs Kai'sa, Jinx )",
+          "rankClaim": "Master+",
+          "patch": "26.20",
+          "durationSec": 1631,
+          "patchEstimated": true,
+          "uploaded": "2026-10-14",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "fr2-2UCED3s",
+          "title": "(AHQ Doggo) Jinx ADC vs Kai'Sa - KR Challenger Patch 26.18",
+          "rankClaim": "Challenger",
+          "patch": "26.18",
+          "durationSec": 1734,
+          "region": "KR",
+          "player": "AHQ Doggo",
+          "uploaded": "2026-09-23",
+          "moments": []
+        },
+        {
+          "videoId": "JL42ZWalTqQ",
+          "title": "Rank 1 Jinx : His Spacing is Absolutely so Clean - Engsub ( vs Kai'sa, Corki )",
+          "rankClaim": "Master+",
+          "patch": "26.18",
+          "durationSec": 1365,
+          "patchEstimated": true,
+          "uploaded": "2026-09-22",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "usi4LGrXol4",
+          "title": "Jinx ADC vs Kai'Sa - KR Grandmaster Patch 26.17",
+          "rankClaim": "Grandmaster",
+          "patch": "26.17",
+          "durationSec": 1653,
+          "region": "KR",
+          "uploaded": "2026-09-10",
+          "moments": []
+        },
+        {
+          "videoId": "SiX1Ore8taQ",
+          "title": "(SK Jopa) Jinx ADC vs Kai'Sa - EUW Challenger Patch 26.16",
+          "rankClaim": "Challenger",
+          "patch": "26.16",
+          "durationSec": 1425,
+          "region": "EUW",
+          "player": "SK Jopa",
+          "uploaded": "2026-08-21",
+          "moments": []
+        },
+        {
+          "videoId": "R8LtZjI_Ul8",
+          "title": "Rank 1 Jinx : He is The LAST HOPE WE GOT \" Amazing 1v5 HardCarry \" Engsub ( vs Kai'sa, Yunara )",
+          "rankClaim": "Master+",
+          "patch": "26.15",
+          "durationSec": 1488,
+          "patchEstimated": true,
+          "uploaded": "2026-08-05",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "UGGrQy0Hink",
+          "title": "2255LP JINX \"HanQL\" His Kiting Skills is on A NEXT LEVEL - Engsub (Jinx vs Kai'sa)",
+          "rankClaim": "Master+",
+          "patch": "26.13",
+          "durationSec": 1242,
+          "patchEstimated": true,
+          "player": "HanQL",
+          "uploaded": "2026-07-03",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "t4n6unjUjCw",
+          "title": "Rank 1 Jinx : This Dude is BLOWING UP Master Elo - Engsub (Jinx vs Kai'sa, Jhin)",
+          "rankClaim": "Master",
+          "patch": "26.13",
+          "durationSec": 1325,
+          "patchEstimated": true,
+          "uploaded": "2026-07-01",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "qjy1tQoxhd8",
+          "title": "Rank 1 Jinx : Inssane Spacing, BLOWING UP Super Server HighElo - Engsub (Jinx vs Kai'sa, Senna)",
+          "rankClaim": "Master+",
+          "patch": "26.13",
+          "durationSec": 1390,
+          "patchEstimated": true,
+          "uploaded": "2026-06-27",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "6MYaE3bZ_Ts",
+          "title": "(JL Comp) Jinx ADC vs Kai'Sa (LR Crownie) - EUW Challenger Patch 26.12",
+          "rankClaim": "Challenger",
+          "patch": "26.12",
+          "durationSec": 1540,
+          "region": "EUW",
+          "player": "JL Comp",
+          "uploaded": "2026-06-25",
+          "moments": []
+        },
+        {
+          "videoId": "iI2o72WHpuU",
+          "title": "Rank 1 Jinx : He Absolutely Crushing Super Server Master Elo - Engsub ( Jinx vs Kai'sa, Tris )",
+          "rankClaim": "Master",
+          "patch": "26.9",
+          "durationSec": 1003,
+          "patchEstimated": true,
+          "uploaded": "2026-05-06",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "pKCG6LYSwkE",
+          "title": "Jinx vs Kai'Sa ADC - EUW Challenger - Patch 16.07 Season 16",
+          "rankClaim": "Challenger",
+          "patch": "26.7",
+          "durationSec": 1816,
+          "region": "EUW",
+          "uploaded": "2026-04-09",
+          "moments": []
+        },
+        {
+          "videoId": "RRYDM2B9iZk",
+          "title": "Jinx vs Kai'Sa ADC - KR Challenger - Patch 16.05 Season 16",
+          "rankClaim": "Challenger",
+          "patch": "26.5",
+          "durationSec": 1726,
+          "region": "KR",
+          "uploaded": "2026-03-17",
+          "moments": []
+        },
+        {
+          "videoId": "u9B5pzx9y78",
+          "title": "T1 Peyz Jinx ADC vs Kai'Sa - Patch 26.3 Korea Challenger 2119 LP",
+          "rankClaim": "Challenger",
+          "patch": "26.3",
+          "durationSec": 995,
+          "region": "KR",
+          "player": "Peyz",
+          "team": "T1",
+          "uploaded": "2026-02-15",
+          "moments": []
+        },
+        {
+          "videoId": "-ONyEL183yk",
+          "title": "Jinx ADC vs Kai'Sa - EUW Challenger Patch 25.22",
+          "rankClaim": "Challenger",
+          "patch": "25.22",
+          "durationSec": 1570,
+          "region": "EUW",
+          "uploaded": "2025-11-20",
+          "moments": []
+        },
+        {
+          "videoId": "k8L0yY_pC90",
+          "title": "Jinx ADC vs Kai'Sa - KR Challenger Patch 25.20",
+          "rankClaim": "Challenger",
+          "patch": "25.20",
+          "durationSec": 1672,
+          "region": "KR",
+          "uploaded": "2025-10-11",
+          "moments": []
+        },
+        {
+          "videoId": "J5jVI_39t5Y",
+          "title": "Jinx vs Kaisa ADC [ Gen.G Ruler ] Patch 25.19 Korea Grandmaster ✅",
+          "rankClaim": "Grandmaster",
+          "patch": "25.19",
+          "durationSec": 1645,
+          "region": "KR",
+          "player": "Ruler",
+          "team": "Gen.G",
+          "uploaded": "2025-09-24",
+          "moments": []
+        },
+        {
+          "videoId": "e8UZBKxuS6A",
+          "title": "Jinx ADC vs Kai'Sa - KR Grandmaster Patch 25.14",
+          "rankClaim": "Grandmaster",
+          "patch": "25.14",
+          "durationSec": 1527,
+          "region": "KR",
+          "uploaded": "2025-07-20",
+          "moments": []
+        },
+        {
+          "videoId": "nKsjRTHlnVM",
+          "title": "Jinx vs Kai'Sa ADC - KR Challenger - Patch 25.6 Season 15",
+          "rankClaim": "Challenger",
+          "patch": "25.6",
+          "durationSec": 2260,
+          "region": "KR",
+          "uploaded": "2025-03-30",
+          "moments": []
+        },
+        {
+          "videoId": "Gccykf8REUM",
+          "title": "Jinx ADC vs Kai'Sa - KR Master Patch 25.06",
+          "rankClaim": "Master",
+          "patch": "25.6",
+          "durationSec": 1514,
+          "region": "KR",
+          "uploaded": "2025-03-21",
+          "moments": []
+        },
+        {
+          "videoId": "Y3hMkxR3FnQ",
+          "title": "Jinx vs Kai'Sa ADC - KR Challenger - Patch 25.5 Season 15",
+          "rankClaim": "Challenger",
+          "patch": "25.5",
+          "durationSec": 1561,
+          "region": "KR",
+          "uploaded": "2025-03-18",
+          "moments": []
+        },
+        {
+          "videoId": "pLSJAecGtwQ",
+          "title": "Jinx vs Kaisa ADC [ Peyz + QuadraKill ] Patch 25.5 Korea Grandmaster ✅",
+          "rankClaim": "Grandmaster",
+          "patch": "25.5",
+          "durationSec": 1366,
+          "region": "KR",
+          "player": "Peyz",
+          "uploaded": "2025-03-11",
+          "moments": []
+        },
+        {
+          "videoId": "57HbaJSd_eY",
+          "title": "Jinx vs Kai'Sa ADC - KR Grandmaster - Patch 25.5 Season 15",
+          "rankClaim": "Grandmaster",
+          "patch": "25.5",
+          "durationSec": 1620,
+          "region": "KR",
+          "uploaded": "2025-03-10",
+          "moments": []
+        },
+        {
+          "videoId": "J1-vEwlA5pQ",
+          "title": "Jinx ADC vs Kai'Sa - EUW Grandmaster Patch 25.04",
+          "rankClaim": "Grandmaster",
+          "patch": "25.4",
+          "durationSec": 1609,
+          "region": "EUW",
+          "uploaded": "2025-03-06",
+          "moments": []
+        },
+        {
+          "videoId": "_KeuGi8EshE",
+          "title": "T1 Gumayusi Jinx vs Kaisa [ ADC ] Patch 25.2 Korea Challenger",
+          "rankClaim": "Challenger",
+          "patch": "25.2",
+          "durationSec": 1043,
+          "region": "KR",
+          "player": "Gumayusi",
+          "team": "T1",
+          "uploaded": "2025-01-25",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 157,
+      "lane": "adc",
+      "videos": [
+        {
+          "videoId": "L8X5Wk45gFU",
+          "title": "Jinx ADC vs Yasuo - KR Master Patch 25.24",
+          "rankClaim": "Master",
+          "patch": "25.24",
+          "durationSec": 1584,
+          "region": "KR",
+          "uploaded": "2026-01-08",
+          "moments": []
+        },
+        {
+          "videoId": "EBFoJ1iSJIQ",
+          "title": "Jinx vs Yasuo ADC - KR Challenger - Patch 25.10 Season 15",
+          "rankClaim": "Challenger",
+          "patch": "25.10",
+          "durationSec": 1636,
+          "region": "KR",
+          "uploaded": "2025-05-22",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 166,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "GJrrgr7mLYI",
+          "title": "Jinx Mid vs Akshan - EUW Grandmaster Patch 26.04",
+          "rankClaim": "Grandmaster",
+          "patch": "26.4",
+          "durationSec": 1540,
+          "region": "EUW",
+          "uploaded": "2026-03-02",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 202,
+      "lane": "adc",
+      "videos": [
+        {
+          "videoId": "QsEE7QcTcNA",
+          "title": "Diable : His JINX is STORMING KR Challenger in Just 15 Min - Engsub ( vs Aphe, Jhin )",
+          "rankClaim": "Challenger",
+          "patch": "26.20",
+          "durationSec": 1128,
+          "region": "KR",
+          "patchEstimated": true,
+          "uploaded": "2026-10-19",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "Ex8SmuVgEeY",
+          "title": "Rank 1 Jinx : He is The SAVIOR We Need, Insane 1v5 Saving The Game - Engsub ( vs Jhin, Caitlyn )",
+          "rankClaim": "Master+",
+          "patch": "26.19",
+          "durationSec": 1237,
+          "patchEstimated": true,
+          "uploaded": "2026-09-28",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "C7Emv2_-ADQ",
+          "title": "Rank 1 Jinx : His Kiting Skill is Phenomenal - Engsub ( vs Jhin, Sivir )",
+          "rankClaim": "Master+",
+          "patch": "26.18",
+          "durationSec": 1362,
+          "patchEstimated": true,
+          "uploaded": "2026-09-21",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "aMgwdtZk7vw",
+          "title": "(ZYB Jezu) Jinx ADC vs Jhin - EUW Challenger Patch 26.11",
+          "rankClaim": "Challenger",
+          "patch": "26.11",
+          "durationSec": 1460,
+          "region": "EUW",
+          "player": "ZYB Jezu",
+          "uploaded": "2026-06-04",
+          "moments": []
+        },
+        {
+          "videoId": "oNnhaYZSIz4",
+          "title": "Rank 1 Jinx : Wrecking CN Super Server Master Elo - Engsub ( Jinx vs Jhin, Lucian )",
+          "rankClaim": "Master",
+          "patch": "26.10",
+          "durationSec": 1284,
+          "patchEstimated": true,
+          "uploaded": "2026-05-20",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "TapgWuvzJks",
+          "title": "Jinx ADC vs Jhin - KR Challenger Patch 26.07",
+          "rankClaim": "Challenger",
+          "patch": "26.7",
+          "durationSec": 1472,
+          "region": "KR",
+          "uploaded": "2026-04-04",
+          "moments": []
+        },
+        {
+          "videoId": "CrlkDVMy6dU",
+          "title": "Jinx vs Jhin ADC - KR Challenger - Patch 16.06 Season 16",
+          "rankClaim": "Challenger",
+          "patch": "26.6",
+          "durationSec": 1516,
+          "region": "KR",
+          "uploaded": "2026-03-20",
+          "moments": []
+        },
+        {
+          "videoId": "IOBJfE8HdEs",
+          "title": "Jinx ADC vs Jhin - KR Challenger Patch 26.05",
+          "rankClaim": "Challenger",
+          "patch": "26.5",
+          "durationSec": 1549,
+          "region": "KR",
+          "uploaded": "2026-03-16",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 239,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 299,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 443,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 581,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 725,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 849,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 974,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1013,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1164,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1239,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1345,
+              "label": "Get a Quadra Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1385,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1412,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1501,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1538,
+              "label": "End credit"
+            }
+          ]
+        },
+        {
+          "videoId": "HhcS2pVUHiE",
+          "title": "Jinx vs Jhin [ ADC ] Lol Korea Master Patch 25.24",
+          "rankClaim": "Master",
+          "patch": "25.24",
+          "durationSec": 1247,
+          "region": "KR",
+          "uploaded": "2026-01-03",
+          "moments": []
+        },
+        {
+          "videoId": "QYyPHJnjQJM",
+          "title": "Jinx vs Jhin ADC - KR Challenger -Patch 25.22 Season 15",
+          "rankClaim": "Challenger",
+          "patch": "25.22",
+          "durationSec": 1621,
+          "region": "KR",
+          "uploaded": "2025-11-15",
+          "moments": []
+        },
+        {
+          "videoId": "7MIWF0qM68E",
+          "title": "Jinx ADC vs Jhin - EUW Challenger Patch 25.06",
+          "rankClaim": "Challenger",
+          "patch": "25.6",
+          "durationSec": 1858,
+          "region": "EUW",
+          "uploaded": "2025-04-01",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 233,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 785,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 872,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 887,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1031,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1199,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1251,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1335,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1436,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1677,
+              "label": "Get a Quadra Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1717,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1778,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1793,
+              "label": "Get a Triple Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1814,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1837,
+              "label": "End credit"
+            }
+          ]
+        },
+        {
+          "videoId": "K2C2hZDLUAU",
+          "title": "Jinx vs Jhin ADC - KR Challenger - Patch 25.5 Season 15",
+          "rankClaim": "Challenger",
+          "patch": "25.5",
+          "durationSec": 1711,
+          "region": "KR",
+          "uploaded": "2025-03-13",
+          "moments": []
+        },
+        {
+          "videoId": "Z_7WDgGCx2g",
+          "title": "Jinx ADC vs Jhin - KR Challenger Patch 25.05",
+          "rankClaim": "Challenger",
+          "patch": "25.5",
+          "durationSec": 1486,
+          "region": "KR",
+          "uploaded": "2025-03-08",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 430,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 672,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 710,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 797,
+              "label": "Get a Triple Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1133,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1157,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1267,
+              "label": "Get a Triple Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1361,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1441,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1465,
+              "label": "End credit"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 221,
+      "lane": "adc",
+      "videos": [
+        {
+          "videoId": "QW8PeIHNYPU",
+          "title": "\"HanQL\" 2255LP JINX : He is BLOWING Super Server Challenger with this BUILD - Engsub (vs Zeri )",
+          "rankClaim": "Challenger",
+          "patch": "26.18",
+          "durationSec": 743,
+          "patchEstimated": true,
+          "player": "HanQL",
+          "uploaded": "2026-09-21",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "zS2tSXnS87E",
+          "title": "Jinx ADC vs Zeri (VFB DizL) - EUW Challenger Patch 26.18",
+          "rankClaim": "Challenger",
+          "patch": "26.18",
+          "durationSec": 1686,
+          "region": "EUW",
+          "uploaded": "2026-09-13",
+          "moments": []
+        },
+        {
+          "videoId": "accMhX-6CBI",
+          "title": "Rank 1 Jinx : Let His Bullet Rain and Enemies Just Running For Their Life (Jinx vs Zeri)",
+          "rankClaim": "Master+",
+          "patch": "26.15",
+          "durationSec": 1383,
+          "patchEstimated": true,
+          "uploaded": "2026-08-02",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "VURIRTA79XA",
+          "title": "Rank 1 Jinx : His Spacing is SO DAM GOOD - Engsub (Jinx vs witch, Zeri)",
+          "rankClaim": "Master+",
+          "patch": "26.14",
+          "durationSec": 1550,
+          "patchEstimated": true,
+          "uploaded": "2026-07-21",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "YyuCUQ0GSc4",
+          "title": "(KC Caliste) Jinx ADC vs Zeri - EUW Challenger Patch 26.12",
+          "rankClaim": "Challenger",
+          "patch": "26.12",
+          "durationSec": 1479,
+          "region": "EUW",
+          "player": "Caliste",
+          "team": "KC",
+          "uploaded": "2026-06-15",
+          "moments": []
+        },
+        {
+          "videoId": "nUgcoEd3okw",
+          "title": "Rank 1 Jinx : This Dude is a KILLING MONSTER \" 24 Kills in A Match \" Engsub (Jinx vs Zeri, Kata)",
+          "rankClaim": "Master+",
+          "patch": "26.12",
+          "durationSec": 1351,
+          "patchEstimated": true,
+          "uploaded": "2026-06-12",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "-q4iAN6wh34",
+          "title": "Rank 1 Jinx : Hubris First Item is just so DAM STRONG - Engsub ( Jinx vs Zeri, Lucian )",
+          "rankClaim": "Master+",
+          "patch": "26.11",
+          "durationSec": 1134,
+          "patchEstimated": true,
+          "uploaded": "2026-06-06",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "zr9cWxThG4k",
+          "title": "Rank 1 Jinx : This Dude is BREAKING KR Challenger Elo - Engsub ( Jinx vs Zeri, Yunara )",
+          "rankClaim": "Challenger",
+          "patch": "26.10",
+          "durationSec": 1124,
+          "region": "KR",
+          "patchEstimated": true,
+          "uploaded": "2026-05-27",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "II3V7NtH-_o",
+          "title": "Rank 1 Jinx : This Dude is TEARING MASTER Elo APART - Engsub ( Jinx vs Zeri, Yunara )",
+          "rankClaim": "Master",
+          "patch": "26.9",
+          "durationSec": 1205,
+          "patchEstimated": true,
+          "uploaded": "2026-05-03",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "T_0obgC6OBs",
+          "title": "Jinx vs Zeri ADC - KR Challenger - Patch 16.05 Season 16",
+          "rankClaim": "Challenger",
+          "patch": "26.5",
+          "durationSec": 1486,
+          "region": "KR",
+          "uploaded": "2026-03-06",
+          "moments": []
+        },
+        {
+          "videoId": "VhHaYjNV09Q",
+          "title": "T1 Peyz Jinx vs Zeri [ ADC ] Korea Challenger 2067 LP | Patch 26.5",
+          "rankClaim": "Challenger",
+          "patch": "26.5",
+          "durationSec": 1189,
+          "region": "KR",
+          "player": "Peyz",
+          "team": "T1",
+          "uploaded": "2026-03-06",
+          "moments": []
+        },
+        {
+          "videoId": "fa0MCkoNGgk",
+          "title": "Jinx ADC vs Zeri - EUW Grandmaster Patch 25.24",
+          "rankClaim": "Grandmaster",
+          "patch": "25.24",
+          "durationSec": 1532,
+          "region": "EUW",
+          "uploaded": "2025-12-17",
+          "moments": []
+        },
+        {
+          "videoId": "FmRwLBZvu2E",
+          "title": "Jinx ADC vs Zeri - KR Challenger Patch 25.23",
+          "rankClaim": "Challenger",
+          "patch": "25.23",
+          "durationSec": 1621,
+          "region": "KR",
+          "uploaded": "2025-11-24",
+          "moments": []
+        },
+        {
+          "videoId": "pshBxPs7reM",
+          "title": "Jinx vs Zeri [ ADC ] Lol Korea Master Patch 25.18 ✅",
+          "rankClaim": "Master",
+          "patch": "25.18",
+          "durationSec": 1938,
+          "region": "KR",
+          "uploaded": "2025-09-22",
+          "moments": []
+        },
+        {
+          "videoId": "u0SAFlzlTXQ",
+          "title": "Deft Jinx vs Zeri ADC [ Perfect KDA ] Korea Challenger Patch 25.9 ✅",
+          "rankClaim": "Challenger",
+          "patch": "25.9",
+          "durationSec": 939,
+          "region": "KR",
+          "player": "Deft",
+          "uploaded": "2025-05-04",
+          "moments": []
+        },
+        {
+          "videoId": "c3Hq-d2x9XU",
+          "title": "Jinx ADC vs Zeri - EUW Grandmaster Patch 25.08",
+          "rankClaim": "Grandmaster",
+          "patch": "25.8",
+          "durationSec": 2143,
+          "region": "EUW",
+          "uploaded": "2025-04-30",
+          "moments": []
+        },
+        {
+          "videoId": "uAAeM5DhvkI",
+          "title": "Jinx ADC vs Zeri - KR Challenger Patch 25.04",
+          "rankClaim": "Challenger",
+          "patch": "25.4",
+          "durationSec": 1712,
+          "region": "KR",
+          "uploaded": "2025-02-23",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 235,
+      "lane": "adc",
+      "videos": [
+        {
+          "videoId": "lT7bSB33jT0",
+          "title": "Jinx vs Senna ADC [ Gen.G Ruler ] Patch 25.11 Korea Challenger ✅",
+          "rankClaim": "Challenger",
+          "patch": "25.11",
+          "durationSec": 1321,
+          "region": "KR",
+          "player": "Ruler",
+          "team": "Gen.G",
+          "uploaded": "2025-06-06",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 236,
+      "lane": "adc",
+      "videos": [
+        {
+          "videoId": "eidru9gyuY4",
+          "title": "Diable : This is What Machine Gun JINX Look Like - Engsub ( vs Aphe, Lucian )",
+          "rankClaim": "Master+",
+          "patch": "26.21",
+          "durationSec": 1472,
+          "patchEstimated": true,
+          "uploaded": "2026-10-23",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "fUIRkZj00xI",
+          "title": "Rank 1 Jinx : This Dude is a KILLING MACHINE \" One Kills Per Min \" Engsub ( vs Lucian, Viktor )",
+          "rankClaim": "Master+",
+          "patch": "26.20",
+          "durationSec": 1211,
+          "patchEstimated": true,
+          "uploaded": "2026-10-11",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "fsar3_IqeWY",
+          "title": "Rank 1 Jinx : His Mechanic is Phenomenal - Engsub ( vs Lucian, Yunara )",
+          "rankClaim": "Master+",
+          "patch": "26.19",
+          "durationSec": 1218,
+          "patchEstimated": true,
+          "uploaded": "2026-10-06",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "HyxYuygqWJM",
+          "title": "Rank 1 Jinx : This Machine Gun Jinx is UNSTOPPABLE - Engsub ( vs Vlad, Lucian )",
+          "rankClaim": "Master+",
+          "patch": "26.19",
+          "durationSec": 1470,
+          "patchEstimated": true,
+          "uploaded": "2026-09-30",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "zAgmKO7PoPo",
+          "title": "Rank 1 Jinx : His Kiting Movements is Look Like SCRIPTING ? Engsub (Jinx vs Lucian, Aphe)",
+          "rankClaim": "Master+",
+          "patch": "26.14",
+          "durationSec": 901,
+          "patchEstimated": true,
+          "uploaded": "2026-07-25",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "iL6DuziOAb4",
+          "title": "2255LP JINX \"HanQL\" He is The SAVIOR We Need - Engsub (Jinx vs Lucian)",
+          "rankClaim": "Master+",
+          "patch": "26.13",
+          "durationSec": 695,
+          "patchEstimated": true,
+          "player": "HanQL",
+          "uploaded": "2026-07-05",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "P-kfyyjqN6g",
+          "title": "Rank 1 Jinx : Hubris is Best S+ TIER ITEM - Engsub ( Jinx vs Aphe, Lucian )",
+          "rankClaim": "Master+",
+          "patch": "26.10",
+          "durationSec": 1295,
+          "patchEstimated": true,
+          "uploaded": "2026-05-22",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "-PHdauQSdXY",
+          "title": "Rank 1 Jinx : BLOWING UP GrandMaster \" 24 Kills at 21 Min \" Engsub ( Jinx vs Aphe, Lucian )",
+          "rankClaim": "Grandmaster",
+          "patch": "26.10",
+          "durationSec": 1012,
+          "patchEstimated": true,
+          "uploaded": "2026-05-19",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "AVdUCJdAgiM",
+          "title": "2255LP JINX : He is a FREAKING BEAST in TEAMFIGHT - Engsub ( Jinx vs Lucian )",
+          "rankClaim": "Master+",
+          "patch": "26.9",
+          "durationSec": 1048,
+          "patchEstimated": true,
+          "uploaded": "2026-04-30",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "-t1gfPLhBZE",
+          "title": "Jinx vs Lucian ADC - KR Challenger - Patch 26.01 Season 16",
+          "rankClaim": "Challenger",
+          "patch": "26.1",
+          "durationSec": 1651,
+          "region": "KR",
+          "uploaded": "2026-01-18",
+          "moments": []
+        },
+        {
+          "videoId": "iTct09nll5k",
+          "title": "Jinx vs Lucian ADC [ TripleKill ] Korea Challenger 1191 LP | Patch 25.22 ✅",
+          "rankClaim": "Challenger",
+          "patch": "25.22",
+          "durationSec": 1474,
+          "region": "KR",
+          "player": "TripleKill",
+          "uploaded": "2025-11-17",
+          "moments": []
+        },
+        {
+          "videoId": "Ie330SUXW_M",
+          "title": "Jinx ADC vs Lucian - KR Master Patch 25.11",
+          "rankClaim": "Master",
+          "patch": "25.11",
+          "durationSec": 1674,
+          "region": "KR",
+          "uploaded": "2025-06-03",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 360,
+      "lane": "adc",
+      "videos": [
+        {
+          "videoId": "JgHx38JAa_Q",
+          "title": "Rank 1 Jinx : He just Demolishing Tankers with this Build ( vs Samira, Nilah )",
+          "rankClaim": "Master+",
+          "patch": "26.17",
+          "durationSec": 1583,
+          "patchEstimated": true,
+          "uploaded": "2026-08-31",
+          "format": "stream",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 412,
+      "lane": "adc",
+      "videos": [
+        {
+          "videoId": "y47_h9hG4Qo",
+          "title": "When Rank 1 Jinx Duo with Rank 1 Thresh \" Enemies Are Doom \" - Engsub",
+          "rankClaim": "Master+",
+          "patch": "26.2",
+          "durationSec": 617,
+          "patchEstimated": true,
+          "uploaded": "2026-01-22",
+          "format": "stream",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 429,
+      "lane": "adc",
+      "videos": [
+        {
+          "videoId": "Z-bPgVkuHko",
+          "title": "Jinx vs Kalista [ ADC ] Korea Challenger 2167 LP | Patch 26.19",
+          "rankClaim": "Challenger",
+          "patch": "26.19",
+          "durationSec": 1183,
+          "region": "KR",
+          "uploaded": "2026-10-04",
+          "moments": [
+            {
+              "atSec": 0,
+              "label": "Early game phase"
+            },
+            {
+              "atSec": 244,
+              "label": "Mid game skirmishes"
+            },
+            {
+              "atSec": 506,
+              "label": "Turret defense strategies",
+              "kind": "tower"
+            },
+            {
+              "atSec": 725,
+              "label": "Strategic pushes"
+            },
+            {
+              "atSec": 1021,
+              "label": "Final objectives"
+            }
+          ]
+        },
+        {
+          "videoId": "088apMmOuuw",
+          "title": "Rank 1 Jinx : LET'S BLOWING UP KR HighElo - Engsub (Jinx vs Kalista, Kai'sa)",
+          "rankClaim": "Master+",
+          "patch": "26.14",
+          "durationSec": 1489,
+          "region": "KR",
+          "patchEstimated": true,
+          "uploaded": "2026-07-18",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "jqSVdCpQGLw",
+          "title": "Jinx ADC vs Kalista - EUW Grandmaster Patch 25.07",
+          "rankClaim": "Grandmaster",
+          "patch": "25.7",
+          "durationSec": 1486,
+          "region": "EUW",
+          "uploaded": "2025-04-17",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 181,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 317,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 425,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 617,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 739,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 795,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1089,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1113,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1125,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1224,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1239,
+              "label": "Get a Triple Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1262,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1431,
+              "label": "Get a Triple Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1453,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1465,
+              "label": "End credit"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 498,
+      "lane": "adc",
+      "videos": [
+        {
+          "videoId": "9squDyGEw7M",
+          "title": "HLE Gumayusi Jinx vs Xayah [ ADC ] Korea Challenger 2358 LP | Patch 26.19",
+          "rankClaim": "Challenger",
+          "patch": "26.19",
+          "durationSec": 1841,
+          "region": "KR",
+          "player": "Gumayusi",
+          "team": "HLE",
+          "uploaded": "2026-09-28",
+          "moments": []
+        },
+        {
+          "videoId": "NEPmBEfRZJI",
+          "title": "Rank 1 Jinx : This Dude is a Mad Man in TeamFight - Engsub ( vs Xayah, Hwei )",
+          "rankClaim": "Master+",
+          "patch": "26.18",
+          "durationSec": 1400,
+          "patchEstimated": true,
+          "uploaded": "2026-09-19",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "LHDs9tuV1yI",
+          "title": "Rank 1 Jinx : This Dude is BLOWING UP HighElo with this BUILD - Engsub ( vs Xayah, Tris )",
+          "rankClaim": "Master+",
+          "patch": "26.16",
+          "durationSec": 1297,
+          "patchEstimated": true,
+          "uploaded": "2026-08-19",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "q_H18Jpgvkk",
+          "title": "When \"HanQL\" 2255LP Jinx visit Master Elo - Engsub ( vs Xayah )",
+          "rankClaim": "Master",
+          "patch": "26.16",
+          "durationSec": 760,
+          "patchEstimated": true,
+          "player": "HanQL",
+          "uploaded": "2026-08-12",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "6_lUDtHa4l4",
+          "title": "T1 Peyz Jinx vs Xayah [ ADC ] Korea Challenger 2429 LP | Patch 26.12",
+          "rankClaim": "Challenger",
+          "patch": "26.12",
+          "durationSec": 1515,
+          "region": "KR",
+          "player": "Peyz",
+          "team": "T1",
+          "uploaded": "2026-06-23",
+          "moments": []
+        },
+        {
+          "videoId": "ofScbsb4cKY",
+          "title": "Rank 1 Jinx : This Guy is Going CRAZY, Crushing Master Elo - Engsub ( Jinx vs Xayah, Kai'sa )",
+          "rankClaim": "Master",
+          "patch": "26.12",
+          "durationSec": 1155,
+          "patchEstimated": true,
+          "uploaded": "2026-06-10",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "el9kOHhgybY",
+          "title": "2255LP JINX : His Spacing is so Dam Clean, Crushing Challenger Elo - Engsub ( Jinx vs Xayah )",
+          "rankClaim": "Challenger",
+          "patch": "26.10",
+          "durationSec": 864,
+          "patchEstimated": true,
+          "uploaded": "2026-05-21",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "a4owADG-diA",
+          "title": "Jinx ADC vs Xayah - KR Challenger Patch 26.06",
+          "rankClaim": "Challenger",
+          "patch": "26.6",
+          "durationSec": 1445,
+          "region": "KR",
+          "uploaded": "2026-03-21",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 175,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 308,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 433,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 515,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 569,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 913,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 931,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 945,
+              "label": "Hunt The Rift Herald",
+              "kind": "herald"
+            },
+            {
+              "atSec": 995,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1014,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1072,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1086,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1221,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1263,
+              "label": "Hunt The Baron Nashor",
+              "kind": "baron"
+            },
+            {
+              "atSec": 1328,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1434,
+              "label": "End credit"
+            }
+          ]
+        },
+        {
+          "videoId": "1u5otZSYgJI",
+          "title": "HLE Gumayusi Jinx vs Xayah [ ADC ] Korea Challenger 1607 LP | Patch 26.4",
+          "rankClaim": "Challenger",
+          "patch": "26.4",
+          "durationSec": 1269,
+          "region": "KR",
+          "player": "Gumayusi",
+          "team": "HLE",
+          "uploaded": "2026-02-26",
+          "moments": []
+        },
+        {
+          "videoId": "rcb2ZYpC0YQ",
+          "title": "Jinx vs Xayah ADC - KR Challenger - Patch 16.04 Season 16",
+          "rankClaim": "Challenger",
+          "patch": "26.4",
+          "durationSec": 1606,
+          "region": "KR",
+          "uploaded": "2026-02-24",
+          "moments": []
+        },
+        {
+          "videoId": "-O2hVaOlwFE",
+          "title": "Jinx ADC vs Xayah - KR Challenger Patch 26.03",
+          "rankClaim": "Challenger",
+          "patch": "26.3",
+          "durationSec": 1797,
+          "region": "KR",
+          "uploaded": "2026-02-19",
+          "moments": []
+        },
+        {
+          "videoId": "HhxRGz7Rkx4",
+          "title": "Jinx vs Xayah ADC - KR Challenger - Patch 16.03 Season 16",
+          "rankClaim": "Challenger",
+          "patch": "26.3",
+          "durationSec": 1786,
+          "region": "KR",
+          "uploaded": "2026-02-11",
+          "moments": []
+        },
+        {
+          "videoId": "k2aLeF8Ab9k",
+          "title": "DK Smash Jinx vs Xayah [ ADC ] Korea Challenger 1614 LP | Patch 26.3",
+          "rankClaim": "Challenger",
+          "patch": "26.3",
+          "durationSec": 1578,
+          "region": "KR",
+          "player": "Smash",
+          "team": "DK",
+          "uploaded": "2026-02-07",
+          "moments": []
+        },
+        {
+          "videoId": "HqjYVbwSsc8",
+          "title": "Jinx vs Xayah ADC - KR Challenger - Patch 25.19 Season 15",
+          "rankClaim": "Challenger",
+          "patch": "25.19",
+          "durationSec": 2111,
+          "region": "KR",
+          "uploaded": "2025-10-01",
+          "moments": []
+        },
+        {
+          "videoId": "ig7586V8ZaM",
+          "title": "T1 Smash Jinx vs Xayah [ ADC ] Korea Challenger Patch 25.10 ✅",
+          "rankClaim": "Challenger",
+          "patch": "25.10",
+          "durationSec": 1163,
+          "region": "KR",
+          "player": "Smash",
+          "team": "T1",
+          "uploaded": "2025-05-24",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 517,
+      "lane": "adc",
+      "videos": [
+        {
+          "videoId": "fJkskPnIKDM",
+          "title": "(Bung) Jinx ADC vs Sylas - EUW Challenger Patch 26.15",
+          "rankClaim": "Challenger",
+          "patch": "26.15",
+          "durationSec": 1868,
+          "region": "EUW",
+          "player": "Bung",
+          "uploaded": "2026-08-06",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 523,
+      "lane": "adc",
+      "videos": [
+        {
+          "videoId": "MCpnZ0d9uZI",
+          "title": "Jinx ADC vs Aphelios - KR Master Patch 26.20",
+          "rankClaim": "Master",
+          "patch": "26.20",
+          "durationSec": 1538,
+          "region": "KR",
+          "uploaded": "2026-10-09",
+          "result": "W",
+          "moments": [
+            {
+              "atSec": 101,
+              "label": "First Blood — Jinx kills Lulu",
+              "kind": "kill"
+            },
+            {
+              "atSec": 482,
+              "label": "Red takes 1st Dragon (Infernal)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 571,
+              "label": "Twisted Fate kills Aphelios",
+              "kind": "kill"
+            },
+            {
+              "atSec": 626,
+              "label": "Team fight (3 kills)",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 776,
+              "label": "Team fight (3 kills)",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 817,
+              "label": "Red takes 2nd Dragon (Cloud)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 922,
+              "label": "Jinx kills Lissandra",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1135,
+              "label": "Red takes 3rd Dragon (Mountain)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1207,
+              "label": "Yone picks off Aphelios"
+            },
+            {
+              "atSec": 1367,
+              "label": "Yone eliminates Darius"
+            },
+            {
+              "atSec": 1429,
+              "label": "Jinx takes down Aphelios"
+            },
+            {
+              "atSec": 1456,
+              "label": "Mid Inhibitor falls (Blue)"
+            },
+            {
+              "atSec": 1472,
+              "label": "Team fight (3 kills)",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1489,
+              "label": "Jinx Triple Kill",
+              "kind": "kill"
+            }
+          ]
+        },
+        {
+          "videoId": "KOEF8jPkrxg",
+          "title": "T1 Peyz Jinx vs Aphelios [ ADC ] Korea Challenger 2192 LP | Patch 26.20",
+          "rankClaim": "Challenger",
+          "patch": "26.20",
+          "durationSec": 1475,
+          "region": "KR",
+          "player": "Peyz",
+          "team": "T1",
+          "uploaded": "2026-10-08",
+          "moments": []
+        },
+        {
+          "videoId": "b_ccQR2TOWo",
+          "title": "(Bung) Jinx ADC vs Aphelios - EUW Challenger Patch 26.14",
+          "rankClaim": "Challenger",
+          "patch": "26.14",
+          "durationSec": 1777,
+          "region": "EUW",
+          "player": "Bung",
+          "uploaded": "2026-07-23",
+          "moments": []
+        },
+        {
+          "videoId": "COMk3LeU3vQ",
+          "title": "(DK Smash) Jinx ADC vs Aphelios - KR Challenger Patch 26.13",
+          "rankClaim": "Challenger",
+          "patch": "26.13",
+          "durationSec": 1495,
+          "region": "KR",
+          "player": "Smash",
+          "team": "DK",
+          "uploaded": "2026-07-09",
+          "moments": []
+        },
+        {
+          "videoId": "IkcDbITdgWk",
+          "title": "(JL Comp) Jinx ADC vs Aphelios - EUW Challenger Patch 26.13",
+          "rankClaim": "Challenger",
+          "patch": "26.13",
+          "durationSec": 1405,
+          "region": "EUW",
+          "player": "JL Comp",
+          "uploaded": "2026-06-28",
+          "moments": []
+        },
+        {
+          "videoId": "dwD92ROr09Q",
+          "title": "Jinx vs Aphelios ADC - KR Challenger - Patch 16.10 Season 16",
+          "rankClaim": "Challenger",
+          "patch": "26.10",
+          "durationSec": 1771,
+          "region": "KR",
+          "uploaded": "2026-05-18",
+          "moments": []
+        },
+        {
+          "videoId": "cnW3oKUuVcw",
+          "title": "Jinx vs Aphelios ADC - KR Challenger - Patch 16.03 Season 16",
+          "rankClaim": "Challenger",
+          "patch": "26.3",
+          "durationSec": 1501,
+          "region": "KR",
+          "uploaded": "2026-02-14",
+          "moments": []
+        },
+        {
+          "videoId": "4aq6NBwARBA",
+          "title": "T1 Peyz Jinx vs Aphelios [ ADC ] Korea Challenger 2011 LP | Patch 26.3",
+          "rankClaim": "Challenger",
+          "patch": "26.3",
+          "durationSec": 1033,
+          "region": "KR",
+          "player": "Peyz",
+          "team": "T1",
+          "uploaded": "2026-02-14",
+          "moments": []
+        },
+        {
+          "videoId": "SsVbhsJIzoQ",
+          "title": "T1 Peyz Jinx ADC vs Aphelios - Patch 26.1 Korea Grandmaster 990 LP",
+          "rankClaim": "Grandmaster",
+          "patch": "26.1",
+          "durationSec": 893,
+          "region": "KR",
+          "player": "Peyz",
+          "team": "T1",
+          "uploaded": "2026-01-21",
+          "moments": []
+        },
+        {
+          "videoId": "n3O6EOGe_Eg",
+          "title": "Jinx ADC vs Aphelios - KR Master Patch 26.01",
+          "rankClaim": "Master",
+          "patch": "26.1",
+          "durationSec": 1499,
+          "region": "KR",
+          "uploaded": "2026-01-11",
+          "moments": []
+        },
+        {
+          "videoId": "E8EGPgmJagE",
+          "title": "T1 Peyz Jinx vs Aphelios [ ADC ] Korea Challenger Patch 25.24",
+          "rankClaim": "Challenger",
+          "patch": "25.24",
+          "durationSec": 1151,
+          "region": "KR",
+          "player": "Peyz",
+          "team": "T1",
+          "uploaded": "2026-01-04",
+          "moments": []
+        },
+        {
+          "videoId": "-YLgdfovmtc",
+          "title": "Jinx ADC vs Aphelios - KR Grandmaster Patch 25.24",
+          "rankClaim": "Grandmaster",
+          "patch": "25.24",
+          "durationSec": 1571,
+          "region": "KR",
+          "uploaded": "2026-01-02",
+          "moments": []
+        },
+        {
+          "videoId": "jggzQNqm_PA",
+          "title": "Jinx vs Aphelios ADC - KR Challenger - Patch 25.23 Season 15",
+          "rankClaim": "Challenger",
+          "patch": "25.23",
+          "durationSec": 1591,
+          "region": "KR",
+          "uploaded": "2025-11-28",
+          "moments": []
+        },
+        {
+          "videoId": "DpE6BkpSJiw",
+          "title": "Jinx ADC vs Aphelios - KR Challenger Patch 25.19",
+          "rankClaim": "Challenger",
+          "patch": "25.19",
+          "durationSec": 1731,
+          "region": "KR",
+          "uploaded": "2025-09-27",
+          "moments": []
+        },
+        {
+          "videoId": "14QPPNmPhIE",
+          "title": "Jinx ADC vs Aphelios - EUW Challenger Patch 25.17",
+          "rankClaim": "Challenger",
+          "patch": "25.17",
+          "durationSec": 1483,
+          "region": "EUW",
+          "uploaded": "2025-09-10",
+          "moments": []
+        },
+        {
+          "videoId": "i6UGrbZfPbg",
+          "title": "Jinx ADC vs Aphelios - EUW Grandmaster Patch 25.15",
+          "rankClaim": "Grandmaster",
+          "patch": "25.15",
+          "durationSec": 1697,
+          "region": "EUW",
+          "uploaded": "2025-08-13",
+          "moments": []
+        },
+        {
+          "videoId": "Yi4GSEzBr68",
+          "title": "Jinx vs Aphelios [ ADC ] Lol Korea Master Patch 25.13 ✅",
+          "rankClaim": "Master",
+          "patch": "25.13",
+          "durationSec": 1392,
+          "region": "KR",
+          "uploaded": "2025-07-14",
+          "moments": []
+        },
+        {
+          "videoId": "1-_gmq_p5XM",
+          "title": "Jinx ADC vs Aphelios - EUW Challenger Patch 25.13",
+          "rankClaim": "Challenger",
+          "patch": "25.13",
+          "durationSec": 1475,
+          "region": "EUW",
+          "uploaded": "2025-07-10",
+          "moments": []
+        },
+        {
+          "videoId": "uzGg1IvJG1M",
+          "title": "Jinx ADC vs Aphelios - EUW Grandmaster Patch 25.12",
+          "rankClaim": "Grandmaster",
+          "patch": "25.12",
+          "durationSec": 1714,
+          "region": "EUW",
+          "uploaded": "2025-06-26",
+          "moments": []
+        },
+        {
+          "videoId": "oDabo_4UCxM",
+          "title": "Jinx vs Aphelios ADC - KR Challenger - Patch 25.12 Season 15",
+          "rankClaim": "Challenger",
+          "patch": "25.12",
+          "durationSec": 1546,
+          "region": "KR",
+          "uploaded": "2025-06-24",
+          "moments": []
+        },
+        {
+          "videoId": "6jMzHuhctCU",
+          "title": "Jinx vs Aphelios ADC - KR Grandmaster - Patch 25.12 Season 15",
+          "rankClaim": "Grandmaster",
+          "patch": "25.12",
+          "durationSec": 1996,
+          "region": "KR",
+          "uploaded": "2025-06-16",
+          "moments": []
+        },
+        {
+          "videoId": "SS_to7VKJaE",
+          "title": "Jinx vs Aphelios ADC [ DRX Teddy ] Patch 25.12 Korea Challenger",
+          "rankClaim": "Challenger",
+          "patch": "25.12",
+          "durationSec": 999,
+          "region": "KR",
+          "player": "Teddy",
+          "team": "DRX",
+          "uploaded": "2025-06-14",
+          "moments": []
+        },
+        {
+          "videoId": "9eKUAMTndys",
+          "title": "Jinx ADC vs Aphelios - KR Master Patch 25.10",
+          "rankClaim": "Master",
+          "patch": "25.10",
+          "durationSec": 1500,
+          "region": "KR",
+          "uploaded": "2025-05-19",
+          "moments": []
+        },
+        {
+          "videoId": "FdQyKq1uNC8",
+          "title": "Jinx vs Aphelios [ ADC ] Lol Korea Master Patch 25.8 ✅",
+          "rankClaim": "Master",
+          "patch": "25.8",
+          "durationSec": 1549,
+          "region": "KR",
+          "uploaded": "2025-04-28",
+          "moments": []
+        },
+        {
+          "videoId": "AiO-ZKxazvo",
+          "title": "Jinx vs Aphelios ADC - KR Challenger - Patch 25.7 Season 15",
+          "rankClaim": "Challenger",
+          "patch": "25.7",
+          "durationSec": 1606,
+          "region": "KR",
+          "uploaded": "2025-04-09",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 800,
+      "lane": "adc",
+      "videos": [
+        {
+          "videoId": "n9MkNmQbpVQ",
+          "title": "Smash : His JINX is Blowing Up KOREAN Challenger at 2000LP Match - Engsub (Jinx vs Cass, Mel)",
+          "rankClaim": "Challenger",
+          "patch": "26.12",
+          "durationSec": 1203,
+          "patchEstimated": true,
+          "player": "Smash",
+          "uploaded": "2026-06-21",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "_o3oeLarkH0",
+          "title": "T1 Peyz Jinx vs Mel [ ADC ] Korea Challenger 1978 LP | Patch 26.6",
+          "rankClaim": "Challenger",
+          "patch": "26.6",
+          "durationSec": 988,
+          "region": "KR",
+          "player": "Peyz",
+          "team": "T1",
+          "uploaded": "2026-03-25",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 804,
+      "lane": "adc",
+      "videos": [
+        {
+          "videoId": "MQFeUQl9KrE",
+          "title": "Rank 1 Jinx : This Dude is a BEAST, STORMING Super Server Master Elo - Engsub ( vs Yunara, Aphe )",
+          "rankClaim": "Master",
+          "patch": "26.21",
+          "durationSec": 1262,
+          "patchEstimated": true,
+          "uploaded": "2026-10-21",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "JQTQj85Trac",
+          "title": "Jinx ADC vs Yunara - KR Master Patch 26.19",
+          "rankClaim": "Master",
+          "patch": "26.19",
+          "durationSec": 1748,
+          "region": "KR",
+          "uploaded": "2026-09-26",
+          "moments": []
+        },
+        {
+          "videoId": "OLpIlwOTd6g",
+          "title": "Rank 1 Jinx : His Spacing is a NEXT LEVEL \" Blowing Up Master Elo \" Engsub ( vs Yunara, Ez )",
+          "rankClaim": "Master",
+          "patch": "26.18",
+          "durationSec": 1237,
+          "patchEstimated": true,
+          "uploaded": "2026-09-11",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "k8ax34yQBsk",
+          "title": "Rank 1 Jinx : This Dude make Jinx Completely Broken - Engsub ( vs Ez, Yunara )",
+          "rankClaim": "Master+",
+          "patch": "26.17",
+          "durationSec": 1647,
+          "patchEstimated": true,
+          "uploaded": "2026-09-09",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "nc_kEsul0fE",
+          "title": "Rank 1 Jinx : Unstoppable Performance Destroying Master Elo - Engsub ( vs Yunara, Lucian )",
+          "rankClaim": "Master",
+          "patch": "26.17",
+          "durationSec": 1489,
+          "patchEstimated": true,
+          "uploaded": "2026-08-30",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "RYXvJctRWQo",
+          "title": "Rank 1 Jinx : His Mechanic is so AGGRESSIVE at Level One - Engsub ( vs Yunara, Tris )",
+          "rankClaim": "Master+",
+          "patch": "26.16",
+          "durationSec": 1065,
+          "patchEstimated": true,
+          "uploaded": "2026-08-20",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "wteO9di8RQU",
+          "title": "Rank 1 Jinx : This Dude Puting Unstoppable Performance - Engsub ( vs Yunara, Ez )",
+          "rankClaim": "Master+",
+          "patch": "26.15",
+          "durationSec": 1117,
+          "patchEstimated": true,
+          "uploaded": "2026-08-07",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "7dMobzXlmdA",
+          "title": "This is What Super Machine Gun Look Like - Engsub (Jinx vs Yunara, Lucian)",
+          "rankClaim": "Master+",
+          "patch": "26.15",
+          "durationSec": 1460,
+          "patchEstimated": true,
+          "uploaded": "2026-07-31",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "A6g06KLthiE",
+          "title": "Rank 1 Jinx : Insane 1v5 Breaking Super Server at 1000LP Game - Engsub (Jinx vs Yunara, Senna)",
+          "rankClaim": "Master+",
+          "patch": "26.14",
+          "durationSec": 1589,
+          "patchEstimated": true,
+          "uploaded": "2026-07-19",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "2jbGaeGC4KM",
+          "title": "Jinx vs Yunara [ ADC ] Korea Master 811 LP | Patch 26.14",
+          "rankClaim": "Master",
+          "patch": "26.14",
+          "durationSec": 1207,
+          "region": "KR",
+          "uploaded": "2026-07-18",
+          "moments": []
+        },
+        {
+          "videoId": "PJvxAOUOCZo",
+          "title": "Rank 1 Jinx : This Dude is BLOWING UP Super Server Master Elo - Engsub ( Jinx vs Yunara, Aphelios )",
+          "rankClaim": "Master",
+          "patch": "26.11",
+          "durationSec": 1094,
+          "patchEstimated": true,
+          "uploaded": "2026-06-08",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "Yg-dV_S12_I",
+          "title": "Rank 1 Jinx : Crushing Super Server Master Elo with Perfect KDA - Engsub ( Jinx vs Yunara )",
+          "rankClaim": "Master",
+          "patch": "26.11",
+          "durationSec": 1174,
+          "patchEstimated": true,
+          "uploaded": "2026-06-04",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "NOTlKKlLb-M",
+          "title": "2255LP JINX : This Dude is BLOWING UP Super Server Challenger - Engsub ( Jinx vs Yunara )",
+          "rankClaim": "Challenger",
+          "patch": "26.10",
+          "durationSec": 948,
+          "patchEstimated": true,
+          "uploaded": "2026-05-26",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "ys5P4kvfw2c",
+          "title": "Rank 1 Jinx : 1v5 Crushing HighElo with Perfect KDA - Engsub (Jinx vs Tris, Yunara)",
+          "rankClaim": "Master+",
+          "patch": "26.10",
+          "durationSec": 1065,
+          "patchEstimated": true,
+          "uploaded": "2026-05-18",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "t8uF5N85Ofg",
+          "title": "Jinx ADC vs Yunara - KR Challenger Patch 26.06",
+          "rankClaim": "Challenger",
+          "patch": "26.6",
+          "durationSec": 1689,
+          "region": "KR",
+          "uploaded": "2026-04-01",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 332,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 467,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 577,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 637,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 802,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 865,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 903,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 935,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1129,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1207,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1221,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1243,
+              "label": "Hunt The Baron Nashor",
+              "kind": "baron"
+            },
+            {
+              "atSec": 1296,
+              "label": "Hunt The Dragon",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1327,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1397,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1460,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1484,
+              "label": "Take down The Inhibitor"
+            },
+            {
+              "atSec": 1530,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1642,
+              "label": "Hunt The Baron Nashor",
+              "kind": "baron"
+            },
+            {
+              "atSec": 1660,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1678,
+              "label": "End credit"
+            }
+          ]
+        },
+        {
+          "videoId": "jrRnKqvu1vE",
+          "title": "Jinx vs Yunara ADC [ Teddy ] Korea Challenger 1788 LP | Patch 26.6",
+          "rankClaim": "Challenger",
+          "patch": "26.6",
+          "durationSec": 1024,
+          "region": "KR",
+          "player": "Teddy",
+          "uploaded": "2026-03-21",
+          "moments": []
+        },
+        {
+          "videoId": "7esUu5rvaxM",
+          "title": "Jinx ADC vs Yunara - EUW Master Patch 26.02",
+          "rankClaim": "Master",
+          "patch": "26.2",
+          "durationSec": 1567,
+          "region": "EUW",
+          "uploaded": "2026-02-06",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 561,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 669,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 873,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 895,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 971,
+              "label": "Hunt The Rift Herald",
+              "kind": "herald"
+            },
+            {
+              "atSec": 1001,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1141,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1234,
+              "label": "Hunt The Dragon",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1262,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1358,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1486,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1515,
+              "label": "Hunt The Baron Nashor",
+              "kind": "baron"
+            },
+            {
+              "atSec": 1530,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1556,
+              "label": "End credit"
+            }
+          ]
+        },
+        {
+          "videoId": "c-LWXGBNA6k",
+          "title": "Jinx ADC vs Yunara - EUW Challenger Patch 26.01",
+          "rankClaim": "Challenger",
+          "patch": "26.1",
+          "durationSec": 1530,
+          "region": "EUW",
+          "uploaded": "2026-01-23",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 103,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 165,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 593,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 665,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 693,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 786,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 820,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 907,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 923,
+              "label": "Get a Triple Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 945,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1026,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1170,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1325,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1344,
+              "label": "Take down The Inhibitor"
+            },
+            {
+              "atSec": 1477,
+              "label": "Take down The Inhibitor"
+            },
+            {
+              "atSec": 1497,
+              "label": "Get a Triple Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1519,
+              "label": "End credit"
+            }
+          ]
+        },
+        {
+          "videoId": "kcv9awfoulU",
+          "title": "Jinx vs Yunara ADC [ QuadraKill ] Korea Master Patch 25.21 ✅",
+          "rankClaim": "Master",
+          "patch": "25.21",
+          "durationSec": 1655,
+          "region": "KR",
+          "player": "QuadraKill",
+          "uploaded": "2025-11-02",
+          "moments": []
+        },
+        {
+          "videoId": "Tka_L65QvwU",
+          "title": "JDG Peyz Jinx vs Yunara ADC [ PentaKill ] Korea Challenger Patch 25.19",
+          "rankClaim": "Challenger",
+          "patch": "25.19",
+          "durationSec": 1175,
+          "region": "KR",
+          "player": "Peyz",
+          "team": "JDG",
+          "uploaded": "2025-10-07",
+          "moments": []
+        },
+        {
+          "videoId": "P1kDinnzQ9M",
+          "title": "Jinx vs Yunara ADC - KR Challenger - Patch 25.19 Season 15",
+          "rankClaim": "Challenger",
+          "patch": "25.19",
+          "durationSec": 1541,
+          "region": "KR",
+          "uploaded": "2025-10-03",
+          "moments": []
+        },
+        {
+          "videoId": "AjnQpO794UM",
+          "title": "Jinx vs Yunara [ ADC ] Lol Korea Master Patch 25.17 ✅",
+          "rankClaim": "Master",
+          "patch": "25.17",
+          "durationSec": 1306,
+          "region": "KR",
+          "uploaded": "2025-08-31",
+          "moments": []
+        },
+        {
+          "videoId": "46wIP6Edba8",
+          "title": "Jinx ADC vs Yunara - EUW Challenger Patch 25.16",
+          "rankClaim": "Challenger",
+          "patch": "25.16",
+          "durationSec": 1956,
+          "region": "EUW",
+          "uploaded": "2025-08-16",
+          "moments": []
+        },
+        {
+          "videoId": "GtKAdC76wWE",
+          "title": "Jinx ADC vs Yunara - KR Master Patch 25.15",
+          "rankClaim": "Master",
+          "patch": "25.15",
+          "durationSec": 1560,
+          "region": "KR",
+          "uploaded": "2025-08-04",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 895,
+      "lane": "adc",
+      "videos": [
+        {
+          "videoId": "icYbupgR1iE",
+          "title": "Rank 1 Jinx : This Dude is STROMING Super Serve HighElo - Engsub ( VS Nilah, Samira )",
+          "rankClaim": "Master+",
+          "patch": "26.15",
+          "durationSec": 1087,
+          "patchEstimated": true,
+          "uploaded": "2026-08-04",
+          "format": "stream",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 901,
+      "lane": "adc",
+      "videos": [
+        {
+          "videoId": "KWzqRUGBIBw",
+          "title": "Rank 1 Jinx : This Dude is BLOWING Super Server Master Elo - Engsub ( vs Smolder, Zeri )",
+          "rankClaim": "Master",
+          "patch": "26.20",
+          "durationSec": 1508,
+          "patchEstimated": true,
+          "uploaded": "2026-10-14",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "E9oNIvJDkMU",
+          "title": "Rank 1 Jinx : 1v5 Breaking Master Elo with Perfect KDA - Engsub (Jinx vs Smolder, Caitlyn)",
+          "rankClaim": "Master",
+          "patch": "26.12",
+          "durationSec": 1131,
+          "patchEstimated": true,
+          "uploaded": "2026-06-13",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "USVQuTTQpH4",
+          "title": "Rank 1 Jinx : His Spacing is Phenomenal, Taking Over KR HighElo - Engsub ( Jinx vs Smolder )",
+          "rankClaim": "Master+",
+          "patch": "26.12",
+          "durationSec": 657,
+          "region": "KR",
+          "patchEstimated": true,
+          "uploaded": "2026-06-11",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "BB8TIQtm2Uw",
+          "title": "Rank 1 Jinx : This Dude is BLOWING UP Master Elo - Engsub ( Jinx vs Smolder, Caitlyn )",
+          "rankClaim": "Master",
+          "patch": "26.11",
+          "durationSec": 1088,
+          "patchEstimated": true,
+          "uploaded": "2026-06-02",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "ITgsJjl3XY0",
+          "title": "Rank 1 Jinx : This Dude is NEXT LEVEL OF CRAZINESS - Engsub ( Jinx vs Smolder, Jhin )",
+          "rankClaim": "Master+",
+          "patch": "26.10",
+          "durationSec": 1405,
+          "patchEstimated": true,
+          "uploaded": "2026-05-23",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "VQcaYBfk8bU",
+          "title": "Diable : His Jinx Spacing is so CLEAN - Engsub ( Jinx vs Smolder )",
+          "rankClaim": "Master+",
+          "patch": "26.10",
+          "durationSec": 880,
+          "patchEstimated": true,
+          "uploaded": "2026-05-19",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "vaJjCIDvuBk",
+          "title": "Rank 1 Jinx : WRECKING Super Server Master Elo - Engsub ( Jinx vs Smolder, Aphe )",
+          "rankClaim": "Master",
+          "patch": "26.10",
+          "durationSec": 1308,
+          "patchEstimated": true,
+          "uploaded": "2026-05-16",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "khNWPD-AMQ4",
+          "title": "Rank 1 Jinx : His Mechanic is so AGGRESSIVE in Early Game - Engsub ( Jinx vs Aphe, Smolder )",
+          "rankClaim": "Master+",
+          "patch": "26.10",
+          "durationSec": 1082,
+          "patchEstimated": true,
+          "uploaded": "2026-05-13",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "mmA7eLL4mds",
+          "title": "Jinx ADC vs Smolder - KR Challenger Patch 26.09",
+          "rankClaim": "Challenger",
+          "patch": "26.9",
+          "durationSec": 1441,
+          "region": "KR",
+          "uploaded": "2026-05-14",
+          "moments": []
+        },
+        {
+          "videoId": "MoP7wuvLW5k",
+          "title": "Rank 1 Jinx : Hubris Make Hime Become a MONSTER - Engsub ( Jinx vs Ez, Smolder )",
+          "rankClaim": "Master+",
+          "patch": "26.9",
+          "durationSec": 1105,
+          "patchEstimated": true,
+          "uploaded": "2026-05-07",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "ljiVp_wZCcI",
+          "title": "Jinx ADC vs Smolder - EUW Challenger Patch 25.21",
+          "rankClaim": "Challenger",
+          "patch": "25.21",
+          "durationSec": 1563,
+          "region": "EUW",
+          "uploaded": "2025-11-06",
+          "moments": []
+        },
+        {
+          "videoId": "pqHVXPxlSLU",
+          "title": "T1 Smash Jinx vs Smolder [ ADC ] Korea Challenger 1277 LP | Patch 25.19",
+          "rankClaim": "Challenger",
+          "patch": "25.19",
+          "durationSec": 1452,
+          "region": "KR",
+          "player": "Smash",
+          "team": "T1",
+          "uploaded": "2025-10-03",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 910,
+      "lane": "adc",
+      "videos": [
+        {
+          "videoId": "TI0PnE_nVIU",
+          "title": "Rank 1 Jinx : This Dude is Eliminating Anyone with this BUILD - Engsub ( vs Aphe, Hwei )",
+          "rankClaim": "Master+",
+          "patch": "26.20",
+          "durationSec": 1564,
+          "patchEstimated": true,
+          "uploaded": "2026-10-12",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "kpfgPpDi3GE",
+          "title": "Jinx vs Hwei ADC - KR Challenger - Patch 25.20 Season 15",
+          "rankClaim": "Challenger",
+          "patch": "25.20",
+          "durationSec": 1531,
+          "region": "KR",
+          "uploaded": "2025-10-21",
+          "moments": []
+        }
+      ]
+    }
+  ]
+}

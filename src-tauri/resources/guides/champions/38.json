@@ -1,0 +1,3066 @@
+{
+  "schema": 1,
+  "champion": 38,
+  "generatedAt": "2026-11-07T13:25:14.592Z",
+  "guides": [
+    {
+      "champion": 38,
+      "enemy": 84,
+      "lane": "mid",
+      "patch": "26.21",
+      "reviewed": false,
+      "difficulty": "Easy",
+      "favoredWhen": "She must all-in your low-mana Rs early before you outscale. Hold Q, stack Rs, punish.",
+      "keyTips": [
+        {
+          "text": "She never trades into your post-Q shield: the bubble wins exchanges, so hold it.",
+          "scope": "pair",
+          "sourceIds": [
+            "anguish"
+          ]
+        },
+        {
+          "text": "Your Electrocute burst matches hers: take the trade when shielded.",
+          "scope": "pair",
+          "sourceIds": [
+            "anguish"
+          ]
+        },
+        {
+          "text": "You outscale: the clock runs for you.",
+          "scope": "pair",
+          "sourceIds": [
+            "anguish"
+          ]
+        }
+      ],
+      "enemyTips": {},
+      "sections": {
+        "overview": {
+          "tips": []
+        },
+        "early-lane": {
+          "tips": [
+            {
+              "text": "She all-ins when you R in low on stacks or mana: never jump empty early.",
+              "scope": "pair",
+              "sourceIds": [
+                "anguish"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 38,
+                  "key": "R"
+                }
+              ]
+            },
+            {
+              "text": "She pokes the shield downtime: Q-shield gaps are her damage gaps, so vary.",
+              "scope": "pair",
+              "sourceIds": [
+                "anguish"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 38,
+                  "key": "Q"
+                }
+              ]
+            }
+          ]
+        },
+        "mid-lane": {
+          "tips": [
+            {
+              "text": "She forces before stacks: each R stacks the timer for you.",
+              "scope": "pair",
+              "sourceIds": [
+                "anguish"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 38,
+                  "key": "R"
+                }
+              ]
+            },
+            {
+              "text": "She punishes low-mana jumps: manage mana, never jump dry.",
+              "scope": "pair",
+              "sourceIds": [
+                "anguish"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 38,
+                  "key": "R"
+                }
+              ]
+            }
+          ]
+        },
+        "win-condition": {
+          "tips": [
+            {
+              "text": "Early survived plus scaled: the Akali who never converted never wins.",
+              "scope": "pair",
+              "sourceIds": [
+                "anguish"
+              ]
+            }
+          ]
+        }
+      },
+      "itemization": [],
+      "sources": [
+        {
+          "id": "anguish",
+          "author": "Anguish333",
+          "rankClaim": "Master (profile badge; title claims 2000LP GrandMaster EUW and Challenger EUNE) · Akali main",
+          "rank": "master",
+          "url": "https://www.mobafire.com/league-of-legends/build/26-20-anguish-2000lp-grandmasters-euw-challenger-eune-akali-mid-top-s16-guide-every-matchup-item-rune-explained-625064",
+          "kind": "mobafire"
+        }
+      ]
+    },
+    {
+      "champion": 38,
+      "enemy": 103,
+      "lane": "mid",
+      "patch": "26.21",
+      "reviewed": false,
+      "difficulty": "Hard",
+      "favoredWhen": "She bullies from level 1 and one Charm ruins your lane. Take sustain, survive, outscale.",
+      "keyTips": [
+        {
+          "text": "She baits your Q before trading (about {cd:38:Q}): vary the timing.",
+          "scope": "pair",
+          "sourceIds": [
+            "peng04"
+          ],
+          "abilityKeys": [
+            {
+              "champion": 38,
+              "key": "Q"
+            }
+          ]
+        },
+        {
+          "text": "She harasses every walk-up: concede CS to stay healthy.",
+          "scope": "pair",
+          "sourceIds": [
+            "shok-ahri"
+          ]
+        },
+        {
+          "text": "After 6 she never settles for even farming: match her roams or punish the crash.",
+          "scope": "pair",
+          "sourceIds": [
+            "peng04"
+          ]
+        }
+      ],
+      "enemyTips": {},
+      "sections": {
+        "overview": {
+          "tips": []
+        },
+        "early-lane": {
+          "tips": [
+            {
+              "text": "She bullies hard from 1 with burst and Charm: take DShield plus sustain if unsure.",
+              "scope": "pair",
+              "sourceIds": [
+                "shok-ahri",
+                "xblademojo-kass"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 103,
+                  "key": "E"
+                }
+              ]
+            },
+            {
+              "text": "She punishes every walk-up: give CS, keep XP.",
+              "scope": "pair",
+              "sourceIds": [
+                "shok-ahri"
+              ]
+            }
+          ]
+        },
+        "mid-lane": {
+          "tips": [
+            {
+              "text": "She keeps pushing and roaming: you lack waveclear, so catch waves and scale.",
+              "scope": "pair",
+              "sourceIds": [
+                "shok-ahri"
+              ]
+            },
+            {
+              "text": "She holds Charm for your jumps: bait it before committing.",
+              "scope": "pair",
+              "sourceIds": [
+                "shok-ahri"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 103,
+                  "key": "E"
+                }
+              ]
+            }
+          ]
+        },
+        "win-condition": {
+          "tips": [
+            {
+              "text": "She cashes the lead before you outscale: survive and you beat her late.",
+              "scope": "pair",
+              "sourceIds": [
+                "shok-ahri"
+              ]
+            },
+            {
+              "text": "Even lanes beat her: survive lane, win game.",
+              "scope": "pair",
+              "sourceIds": [
+                "peng04"
+              ]
+            }
+          ]
+        }
+      },
+      "itemization": [],
+      "sources": [
+        {
+          "id": "peng04",
+          "author": "Peng04",
+          "rankClaim": "Challenger · Ahri main",
+          "rank": "challenger",
+          "url": "https://www.mobafire.com/league-of-legends/build/26-20-pengs-ahri-guide-5-1mil-points-13x-challenger-648700",
+          "kind": "mobafire"
+        },
+        {
+          "id": "shok-ahri",
+          "author": "ShokLoL",
+          "rankClaim": "Rank 1 Challenger · Ahri main",
+          "rank": "challenger",
+          "url": "https://www.mobafire.com/league-of-legends/build/26-5-shoks-rank-1-challenger-ahri-guide-635065",
+          "kind": "mobafire"
+        },
+        {
+          "id": "xblademojo-kass",
+          "author": "xblademojo",
+          "rankClaim": "Rank 1 (title); Challenger (profile badge) · Kassadin main",
+          "rank": "challenger",
+          "url": "https://www.mobafire.com/league-of-legends/build/s16-rank-1-kassadin-complete-guide-by-coach-xblademojo-602685",
+          "kind": "mobafire"
+        }
+      ]
+    },
+    {
+      "champion": 38,
+      "enemy": 134,
+      "lane": "mid",
+      "patch": "26.21",
+      "reviewed": false,
+      "difficulty": "Skill matchup",
+      "favoredWhen": "She crushes early with Comet and the lead is the lane. Survive, scale, answer TP.",
+      "keyTips": [
+        {
+          "text": "She crushes early, you take over later: the clock runs for you.",
+          "scope": "pair",
+          "sourceIds": [
+            "shok"
+          ]
+        },
+        {
+          "text": "She builds a big early lead with Comet and Teleport, so respect her early pressure.",
+          "scope": "pair",
+          "sourceIds": [
+            "shok"
+          ]
+        },
+        {
+          "text": "She punishes every walkup: your melee range is her Q range, so concede.",
+          "scope": "pair",
+          "sourceIds": [
+            "shok"
+          ],
+          "abilityKeys": [
+            {
+              "champion": 134,
+              "key": "Q"
+            }
+          ]
+        }
+      ],
+      "enemyTips": {},
+      "sections": {
+        "overview": {
+          "tips": []
+        },
+        "early-lane": {
+          "tips": [
+            {
+              "text": "Comet poke from level 1: survive the stack before you function.",
+              "scope": "pair",
+              "sourceIds": [
+                "shok"
+              ]
+            },
+            {
+              "text": "She TPs back with an item: the second buy buries you, so crash before it.",
+              "scope": "pair",
+              "sourceIds": [
+                "shok"
+              ]
+            }
+          ]
+        },
+        "mid-lane": {
+          "tips": [
+            {
+              "text": "You get harder with levels: play for your spikes landing.",
+              "scope": "pair",
+              "sourceIds": [
+                "shok"
+              ]
+            },
+            {
+              "text": "She TPs while you are stuck: hold wave, never base into it.",
+              "scope": "pair",
+              "sourceIds": [
+                "shok"
+              ]
+            }
+          ]
+        },
+        "win-condition": {
+          "tips": [
+            {
+              "text": "Scale reached plus items done: the Syndra whose lead never converted never wins.",
+              "scope": "pair",
+              "sourceIds": [
+                "shok"
+              ]
+            }
+          ]
+        }
+      },
+      "itemization": [],
+      "sources": [
+        {
+          "id": "shok",
+          "author": "ShokLoL",
+          "rankClaim": "Rank 1 Challenger · Syndra main",
+          "rank": "challenger",
+          "url": "https://www.mobafire.com/league-of-legends/build/26-17-shoks-rank-1-challenger-syndra-guide-602710",
+          "kind": "mobafire"
+        }
+      ]
+    }
+  ],
+  "general": [
+    {
+      "champion": 38,
+      "lane": "mid",
+      "patch": "26.21",
+      "reviewed": false,
+      "keyTips": [
+        {
+          "text": "Farm safely to level 6 and refuse repeated pre-R trades that park Kassadin too close to opponents.",
+          "scope": "champion",
+          "sourceIds": [
+            "mobalytics-kassadin"
+          ],
+          "abilityKeys": [
+            {
+              "champion": 38,
+              "key": "R"
+            }
+          ]
+        },
+        {
+          "text": "After the first item, shove waves when safe and hunt kill chances in other lanes.",
+          "scope": "champion",
+          "sourceIds": [
+            "mobalytics-kassadin"
+          ]
+        },
+        {
+          "text": "At level 16, spend the third R rank on repeated picks and backline access.",
+          "scope": "champion",
+          "sourceIds": [
+            "mobalytics-kassadin"
+          ],
+          "abilityKeys": [
+            {
+              "champion": 38,
+              "key": "R"
+            }
+          ]
+        }
+      ],
+      "sections": {
+        "overview": {
+          "tips": []
+        },
+        "early-lane": {
+          "tips": [
+            {
+              "text": "Ward early because weak-lane Kassadin invites camps and farm denial.",
+              "scope": "champion",
+              "sourceIds": [
+                "mobalytics-kassadin"
+              ]
+            },
+            {
+              "text": "Use unlocked R both to trade and to disengage when exchanges turn bad.",
+              "scope": "champion",
+              "sourceIds": [
+                "mobalytics-kassadin"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 38,
+                  "key": "R"
+                }
+              ]
+            }
+          ]
+        },
+        "mid-lane": {
+          "tips": [
+            {
+              "text": "Farm gold and experience over forcing low-value fights.",
+              "scope": "champion",
+              "sourceIds": [
+                "mobalytics-kassadin"
+              ]
+            },
+            {
+              "text": "Take only favoring fights; with grouped enemies and a bad approach, return to farming.",
+              "scope": "champion",
+              "sourceIds": [
+                "mobalytics-kassadin"
+              ]
+            },
+            {
+              "text": "When the ADC and support rotate mid, farm side waves for free resources without contesting center.",
+              "scope": "champion",
+              "sourceIds": [
+                "mobalytics-kassadin"
+              ]
+            },
+            {
+              "text": "At level 11, burst harder with the second R rank and its more frequent access.",
+              "scope": "champion",
+              "sourceIds": [
+                "mobalytics-kassadin"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 38,
+                  "key": "R"
+                }
+              ]
+            },
+            {
+              "text": "At level 9, answer ganks and all-ins better with the first maxed ability and its higher damage.",
+              "scope": "champion",
+              "sourceIds": [
+                "mobalytics-kassadin"
+              ]
+            }
+          ]
+        },
+        "win-condition": {
+          "tips": [
+            {
+              "text": "Flank mispositioned targets for the burst, then R out before the collapse lands.",
+              "scope": "champion",
+              "sourceIds": [
+                "mobalytics-kassadin"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 38,
+                  "key": "R"
+                }
+              ]
+            },
+            {
+              "text": "Turn each pick into a push or objective instead of chasing further.",
+              "scope": "champion",
+              "sourceIds": [
+                "mobalytics-kassadin"
+              ]
+            },
+            {
+              "text": "Group with a team that wins grouped fights; otherwise pull opponents sidelane while allies press objectives elsewhere.",
+              "scope": "champion",
+              "sourceIds": [
+                "mobalytics-kassadin"
+              ]
+            }
+          ]
+        }
+      },
+      "itemization": [
+        {
+          "text": "Reach first-item and later spikes through safe farming.",
+          "scope": "champion",
+          "sourceIds": [
+            "mobalytics-kassadin"
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "id": "mobalytics-kassadin",
+          "author": "Mobalytics",
+          "rankClaim": "No rank claim",
+          "url": "https://mobalytics.gg/lol/champions/kassadin/guide",
+          "kind": "web"
+        }
+      ]
+    }
+  ],
+  "vods": [
+    {
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "yLA_8Goa4Qk",
+          "title": "Rank 1 Kassadin : This Super Server GOD is DEVASTATING Challenger Mid Lane With INSANE Mechanics",
+          "rankClaim": "Challenger",
+          "patch": "26.8",
+          "durationSec": 1409,
+          "patchEstimated": true,
+          "player": "Baicaiovo",
+          "uploaded": "2026-04-17",
+          "format": "stream",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "SMp5YKAUFJo",
+          "title": "I FOUND KASSADIN'S FATHER IN DOTA!! FOUNDER OF L9 🥹",
+          "rankClaim": "Master+",
+          "patch": "26.3",
+          "durationSec": 1510,
+          "patchEstimated": true,
+          "player": "Makkro",
+          "uploaded": "2026-02-08",
+          "format": "stream",
+          "cam": true,
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 1,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "Qg38JxymQgU",
+          "title": "Kassadin Mid vs Annie - KR Challenger Patch 26.12",
+          "rankClaim": "Challenger",
+          "patch": "26.12",
+          "durationSec": 1588,
+          "region": "KR",
+          "uploaded": "2026-06-16",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 2,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "SjC_TU81uKI",
+          "title": "Kassadin Mid vs Olaf - EUW Grandmaster Patch 25.13",
+          "rankClaim": "Grandmaster",
+          "patch": "25.13",
+          "durationSec": 1564,
+          "region": "EUW",
+          "uploaded": "2025-07-11",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 3,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "OzKzhl-XjTQ",
+          "title": "Kassadin Top vs Galio - KR Master Patch 25.10",
+          "rankClaim": "Master",
+          "patch": "25.10",
+          "durationSec": 1865,
+          "region": "KR",
+          "uploaded": "2025-05-28",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 4,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "fv8CYDslyvM",
+          "title": "Kassadin Mid vs Twisted Fate - KR Master Patch 25.19",
+          "rankClaim": "Master",
+          "patch": "25.19",
+          "durationSec": 2008,
+          "region": "KR",
+          "uploaded": "2025-10-02",
+          "moments": []
+        },
+        {
+          "videoId": "6pi78AzA4dA",
+          "title": "Kassadin Mid vs Twisted Fate - KR Master Patch 25.13",
+          "rankClaim": "Master",
+          "patch": "25.13",
+          "durationSec": 1714,
+          "region": "KR",
+          "uploaded": "2025-07-02",
+          "moments": []
+        },
+        {
+          "videoId": "H1Q6aMh4QYw",
+          "title": "Kassadin Mid vs Twisted Fate - KR Grandmaster Patch 25.12",
+          "rankClaim": "Grandmaster",
+          "patch": "25.12",
+          "durationSec": 1576,
+          "region": "KR",
+          "uploaded": "2025-06-22",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 7,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "awycn1bYz6Y",
+          "title": "Kassadin Mid vs LeBlanc - TW Challenger Patch 25.23",
+          "rankClaim": "Challenger",
+          "patch": "25.23",
+          "durationSec": 1532,
+          "uploaded": "2025-11-29",
+          "moments": []
+        },
+        {
+          "videoId": "QGKKntyHcio",
+          "title": "Kassadin Mid vs LeBlanc - KR Master Patch 25.20",
+          "rankClaim": "Master",
+          "patch": "25.20",
+          "durationSec": 1432,
+          "region": "KR",
+          "uploaded": "2025-10-13",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 8,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "tVdu5C41NGg",
+          "title": "Kassadin Mid vs Vladimir - NA Challenger Patch 26.16",
+          "rankClaim": "Challenger",
+          "patch": "26.16",
+          "durationSec": 1684,
+          "region": "NA",
+          "uploaded": "2026-08-26",
+          "moments": []
+        },
+        {
+          "videoId": "nVj3emNmQ0g",
+          "title": "Kassadin Mid vs Vladimir - EUW Grandmaster Patch 26.15",
+          "rankClaim": "Grandmaster",
+          "patch": "26.15",
+          "durationSec": 1715,
+          "region": "EUW",
+          "uploaded": "2026-08-14",
+          "moments": []
+        },
+        {
+          "videoId": "3_8x5AXaI_k",
+          "title": "Kassadin vs Vladimir MID [ QuadraKill ] Lol Korea Master Patch 25.16 ✅",
+          "rankClaim": "Master",
+          "patch": "25.16",
+          "durationSec": 1431,
+          "region": "KR",
+          "player": "QuadraKill",
+          "uploaded": "2025-08-17",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 13,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "VjpDpA6LmNw",
+          "title": "Kassadin Mid vs Ryze - KR Master Patch 25.15",
+          "rankClaim": "Master",
+          "patch": "25.15",
+          "durationSec": 1718,
+          "region": "KR",
+          "uploaded": "2025-08-09",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 14,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "tZ54IMckNFk",
+          "title": "Kassadin Top vs Sion - EUW Grandmaster Patch 26.12",
+          "rankClaim": "Grandmaster",
+          "patch": "26.12",
+          "durationSec": 1537,
+          "region": "EUW",
+          "uploaded": "2026-06-23",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 17,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "dmRTJHzLUI4",
+          "title": "Kassadin Top vs Teemo - KR Grandmaster Patch 25.14",
+          "rankClaim": "Grandmaster",
+          "patch": "25.14",
+          "durationSec": 1752,
+          "region": "KR",
+          "uploaded": "2025-07-30",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 18,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "9Q8y7Nm9cCo",
+          "title": "Kassadin Mid vs Tristana - NA Grandmaster Patch 25.18",
+          "rankClaim": "Grandmaster",
+          "patch": "25.18",
+          "durationSec": 1894,
+          "region": "NA",
+          "uploaded": "2025-09-25",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 34,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "bdTVv629uTU",
+          "title": "Kassadin Mid vs Anivia - KR Master Patch 26.08",
+          "rankClaim": "Master",
+          "patch": "26.8",
+          "durationSec": 1819,
+          "region": "KR",
+          "uploaded": "2026-05-01",
+          "moments": []
+        },
+        {
+          "videoId": "8SRz-C9fzzI",
+          "title": "Kassadin Mid vs Anivia - KR Master Patch 25.09",
+          "rankClaim": "Master",
+          "patch": "25.9",
+          "durationSec": 2001,
+          "region": "KR",
+          "uploaded": "2025-05-07",
+          "moments": []
+        },
+        {
+          "videoId": "2wevmqCag34",
+          "title": "Kassadin Mid vs Anivia - EUW Challenger Patch 25.06",
+          "rankClaim": "Challenger",
+          "patch": "25.6",
+          "durationSec": 1888,
+          "region": "EUW",
+          "uploaded": "2025-03-27",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 653,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 859,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 893,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1070,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1208,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1234,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1306,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1338,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1655,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1712,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1795,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1815,
+              "label": "Get a Triple Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1841,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1853,
+              "label": "Take down The Inhibitor"
+            },
+            {
+              "atSec": 1867,
+              "label": "End credit"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 34,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "bfrqLx2hy5c",
+          "title": "Kassadin Top vs Anivia - KR Master Patch 25.22",
+          "rankClaim": "Master",
+          "patch": "25.22",
+          "durationSec": 1671,
+          "region": "KR",
+          "uploaded": "2025-11-17",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 54,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "E923OuA2fKI",
+          "title": "Kassadin Top vs Malphite - KR Master Patch 26.13",
+          "rankClaim": "Master",
+          "patch": "26.13",
+          "durationSec": 1661,
+          "region": "KR",
+          "uploaded": "2026-07-09",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 55,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "jFI_HX0Xy5c",
+          "title": "Kassadin Mid vs Katarina - VN Challenger Patch 26.04",
+          "rankClaim": "Challenger",
+          "patch": "26.4",
+          "durationSec": 1567,
+          "uploaded": "2026-02-27",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 240,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 358,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 535,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 668,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 871,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 989,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1014,
+              "label": "Get a Triple Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1052,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1327,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1354,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1371,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1500,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1556,
+              "label": "End credit"
+            }
+          ]
+        },
+        {
+          "videoId": "OFl6bNXb4I8",
+          "title": "T1 Faker Kassadin vs Katarina [ MID ] Patch 25.8 Korea Grandmaster ✅",
+          "rankClaim": "Grandmaster",
+          "patch": "25.8",
+          "durationSec": 1914,
+          "region": "KR",
+          "player": "Faker",
+          "team": "T1",
+          "uploaded": "2025-04-17",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 61,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "IRMlUDort4c",
+          "title": "Kassadin Mid vs Orianna - EUW Grandmaster Patch 25.11",
+          "rankClaim": "Grandmaster",
+          "patch": "25.11",
+          "durationSec": 2048,
+          "region": "EUW",
+          "uploaded": "2025-06-12",
+          "moments": []
+        },
+        {
+          "videoId": "vaSmF7GWhpw",
+          "title": "Kassadin Mid vs Orianna - EUW Grandmaster Patch 25.10",
+          "rankClaim": "Grandmaster",
+          "patch": "25.10",
+          "durationSec": 1968,
+          "region": "EUW",
+          "uploaded": "2025-05-20",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 749,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 873,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 900,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1095,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1253,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1268,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1442,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1550,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1684,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1760,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1901,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1947,
+              "label": "End credit"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 63,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "gKp5IAQnEkM",
+          "title": "Kassadin Mid vs Brand - KR Master Patch 25.05",
+          "rankClaim": "Master",
+          "patch": "25.5",
+          "durationSec": 2148,
+          "region": "KR",
+          "uploaded": "2025-03-14",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 68,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "08ytZsw3WMc",
+          "title": "Kassadin Top vs Rumble (Dragis) - EUW Master Patch 26.20",
+          "rankClaim": "Master",
+          "patch": "26.20",
+          "durationSec": 1843,
+          "region": "EUW",
+          "uploaded": "2026-10-20",
+          "result": "W",
+          "moments": [
+            {
+              "atSec": 482,
+              "label": "First Blood — Wukong kills Talon",
+              "kind": "kill"
+            },
+            {
+              "atSec": 578,
+              "label": "Kassadin catches Rumble"
+            },
+            {
+              "atSec": 627,
+              "label": "Blue takes 1st Dragon (Ocean)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 765,
+              "label": "Kassadin outduels Rumble again"
+            },
+            {
+              "atSec": 838,
+              "label": "Kassadin outplays Rumble (3rd time)"
+            },
+            {
+              "atSec": 987,
+              "label": "Kassadin takes down Nami"
+            },
+            {
+              "atSec": 1013,
+              "label": "Blue takes 2nd Dragon (Infernal)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1187,
+              "label": "Kassadin solo kills Rumble (4th time)",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1217,
+              "label": "Kassadin outplays Lucian"
+            },
+            {
+              "atSec": 1253,
+              "label": "Kassadin solo kills Jinx",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1304,
+              "label": "Kassadin takes down Rumble (5th time)"
+            },
+            {
+              "atSec": 1409,
+              "label": "Red takes 1st Dragon (Mountain)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1473,
+              "label": "Kassadin catches Nami again"
+            },
+            {
+              "atSec": 1514,
+              "label": "Red takes Baron",
+              "kind": "baron"
+            },
+            {
+              "atSec": 1608,
+              "label": "Kassadin catches Rumble (6th time)"
+            },
+            {
+              "atSec": 1742,
+              "label": "Kassadin outduels Nami (3rd time)"
+            },
+            {
+              "atSec": 1752,
+              "label": "Red takes 2nd Dragon (Mountain)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1790,
+              "label": "Kassadin Triple Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1794,
+              "label": "Kassadin Quadra Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1820,
+              "label": "Mid Inhibitor falls (Blue)"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 69,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "ki1kDo1Gb5I",
+          "title": "Kassadin Top vs Cassiopeia - EUW Master Patch 26.18",
+          "rankClaim": "Master",
+          "patch": "26.18",
+          "durationSec": 1810,
+          "region": "EUW",
+          "uploaded": "2026-09-23",
+          "moments": []
+        },
+        {
+          "videoId": "5_jUEHiyYPU",
+          "title": "Kassadin Top vs Cassiopeia - KR Master Patch 25.20",
+          "rankClaim": "Master",
+          "patch": "25.20",
+          "durationSec": 1904,
+          "region": "KR",
+          "uploaded": "2025-10-22",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 79,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "xAgsn4jYj1k",
+          "title": "Kassadin Top vs Gragas - KR Master Patch 25.23",
+          "rankClaim": "Master",
+          "patch": "25.23",
+          "durationSec": 1707,
+          "region": "KR",
+          "uploaded": "2025-11-26",
+          "moments": []
+        },
+        {
+          "videoId": "Kg4REAFP9lE",
+          "title": "Kassadin Top vs Gragas - NA Grandmaster Patch 25.12",
+          "rankClaim": "Grandmaster",
+          "patch": "25.12",
+          "durationSec": 1972,
+          "region": "NA",
+          "uploaded": "2025-06-25",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 81,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "oSVpTfedwi4",
+          "title": "Kassadin Mid vs Ezreal - KR Master Patch 26.02",
+          "rankClaim": "Master",
+          "patch": "26.2",
+          "durationSec": 1590,
+          "region": "KR",
+          "uploaded": "2026-01-30",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 84,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "_DQYB_4rSUY",
+          "title": "Kassadin Mid vs Akali - EUW Master Patch 26.20",
+          "rankClaim": "Master",
+          "patch": "26.20",
+          "durationSec": 1585,
+          "region": "EUW",
+          "uploaded": "2026-10-11",
+          "result": "W",
+          "moments": [
+            {
+              "atSec": 57,
+              "label": "First Blood — Sylas kills Graves",
+              "kind": "kill"
+            },
+            {
+              "atSec": 515,
+              "label": "Red takes 1st Dragon (Mountain)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 729,
+              "label": "Kassadin Triple Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 794,
+              "label": "Kassadin catches Jinx"
+            },
+            {
+              "atSec": 851,
+              "label": "Blue takes 1st Dragon (Cloud)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1163,
+              "label": "Blue takes 2nd Dragon (Infernal)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1202,
+              "label": "Kassadin picks off Graves"
+            },
+            {
+              "atSec": 1214,
+              "label": "Kassadin outduels Jinx again"
+            },
+            {
+              "atSec": 1302,
+              "label": "Kassadin outplays Darius"
+            },
+            {
+              "atSec": 1329,
+              "label": "Kassadin solo kills Graves",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1334,
+              "label": "Briar Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1378,
+              "label": "Mid Inhibitor falls (Red)"
+            },
+            {
+              "atSec": 1381,
+              "label": "Blue takes Baron",
+              "kind": "baron"
+            },
+            {
+              "atSec": 1434,
+              "label": "Mid Inhibitor falls (Blue)"
+            },
+            {
+              "atSec": 1441,
+              "label": "Kassadin takes down Darius"
+            },
+            {
+              "atSec": 1447,
+              "label": "Kassadin Triple Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1490,
+              "label": "Blue takes 3rd Dragon (Infernal)",
+              "kind": "dragon"
+            }
+          ]
+        },
+        {
+          "videoId": "pNHPkmQAD6o",
+          "title": "Kassadin Mid vs Akali - KR Master Patch 25.14",
+          "rankClaim": "Master",
+          "patch": "25.14",
+          "durationSec": 1575,
+          "region": "KR",
+          "uploaded": "2025-07-23",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 85,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "RuX3Zt8jHQ4",
+          "title": "Kassadin Top vs Kennen - KR Master Patch 25.24",
+          "rankClaim": "Master",
+          "patch": "25.24",
+          "durationSec": 1533,
+          "region": "KR",
+          "uploaded": "2025-12-24",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 330,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 400,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 429,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 542,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 776,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 901,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 999,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1014,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1058,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1288,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1306,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1351,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1495,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1522,
+              "label": "End credit"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 86,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "7MkRx16Y2LE",
+          "title": "Kassadin Top vs Garen - NA Grandmaster Patch 25.21",
+          "rankClaim": "Grandmaster",
+          "patch": "25.21",
+          "durationSec": 1637,
+          "region": "NA",
+          "uploaded": "2025-11-04",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 91,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "i-a_B_FvKdw",
+          "title": "Kassadin vs Talon 21/3/10 (Mid) | EUW Master | Kassadin OTP Replay",
+          "rankClaim": "Master",
+          "patch": "26.7",
+          "durationSec": 1650,
+          "region": "EUW",
+          "patchEstimated": true,
+          "uploaded": "2026-04-10",
+          "moments": []
+        },
+        {
+          "videoId": "dWpfx_6mo1A",
+          "title": "Kassadin vs Talon [ MID ] Lol Korea Master Patch 25.17 ✅",
+          "rankClaim": "Master",
+          "patch": "25.17",
+          "durationSec": 1349,
+          "region": "KR",
+          "uploaded": "2025-08-27",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 96,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "aR4_B74i7qo",
+          "title": "Kassadin Mid vs Kog'Maw - KR Master Patch 26.03",
+          "rankClaim": "Master",
+          "patch": "26.3",
+          "durationSec": 1595,
+          "region": "KR",
+          "uploaded": "2026-02-12",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 223,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 331,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 610,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 830,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 938,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 957,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1124,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1213,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1240,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1253,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1376,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1490,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1508,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1556,
+              "label": "Take down The Inhibitor"
+            },
+            {
+              "atSec": 1573,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1584,
+              "label": "End credit"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 103,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "IQnMH5Y5r6w",
+          "title": "Kassadin Mid vs Ahri - KR Master Patch 26.14",
+          "rankClaim": "Master",
+          "patch": "26.14",
+          "durationSec": 1473,
+          "region": "KR",
+          "uploaded": "2026-07-30",
+          "moments": []
+        },
+        {
+          "videoId": "h-hzX_JYqx0",
+          "title": "Kassadin Mid vs Ahri - KR Master Patch 25.16",
+          "rankClaim": "Master",
+          "patch": "25.16",
+          "durationSec": 1684,
+          "region": "KR",
+          "uploaded": "2025-08-24",
+          "moments": []
+        },
+        {
+          "videoId": "oPT5nGW1QAY",
+          "title": "Kassadin vs Ahri MID [ Triple Kill ] Patch 25.7 Korea Master ✅",
+          "rankClaim": "Master",
+          "patch": "25.7",
+          "durationSec": 1351,
+          "region": "KR",
+          "player": "Triple Kill",
+          "uploaded": "2025-04-09",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 105,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "f3poza_eofw",
+          "title": "Kassadin Mid vs Fizz - EUW Master Patch 26.17",
+          "rankClaim": "Master",
+          "patch": "26.17",
+          "durationSec": 1698,
+          "region": "EUW",
+          "uploaded": "2026-09-12",
+          "moments": []
+        },
+        {
+          "videoId": "jscprJNUbmQ",
+          "title": "Kassadin Mid vs Fizz - KR Master Patch 26.07",
+          "rankClaim": "Master",
+          "patch": "26.7",
+          "durationSec": 1534,
+          "region": "KR",
+          "uploaded": "2026-04-09",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 117,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 348,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 495,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 709,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 768,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 882,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 945,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1057,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1212,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1270,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1306,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1343,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1418,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1523,
+              "label": "End credit"
+            }
+          ]
+        },
+        {
+          "videoId": "oVY7jMN29B0",
+          "title": "Kassadin Mid vs Fizz - KR Master Patch 25.18",
+          "rankClaim": "Master",
+          "patch": "25.18",
+          "durationSec": 2129,
+          "region": "KR",
+          "uploaded": "2025-09-17",
+          "moments": []
+        },
+        {
+          "videoId": "vqPJYHGK3Aw",
+          "title": "Kassadin Mid vs Fizz - KR Master Patch 25.07",
+          "rankClaim": "Master",
+          "patch": "25.7",
+          "durationSec": 1790,
+          "region": "KR",
+          "uploaded": "2025-04-06",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 112,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "9q7GNMDjrNQ",
+          "title": "Kassadin Mid vs Viktor - VN Challenger Patch 26.05",
+          "rankClaim": "Challenger",
+          "patch": "26.5",
+          "durationSec": 1526,
+          "uploaded": "2026-03-13",
+          "moments": []
+        },
+        {
+          "videoId": "X6Gvwbpm1WE",
+          "title": "Kassadin Mid vs Viktor - KR Master Patch 25.24",
+          "rankClaim": "Master",
+          "patch": "25.24",
+          "durationSec": 1477,
+          "region": "KR",
+          "uploaded": "2025-12-10",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 205,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 418,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 728,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 808,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 962,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 980,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1001,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1068,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1270,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1412,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1466,
+              "label": "End credit"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 126,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "yPxmH_ABn4Y",
+          "title": "Kassadin Mid vs Jayce - BR Challenger Patch 26.08",
+          "rankClaim": "Challenger",
+          "patch": "26.8",
+          "durationSec": 1817,
+          "uploaded": "2026-04-23",
+          "moments": []
+        },
+        {
+          "videoId": "9ypi8Xz0Yug",
+          "title": "Kassadin vs Jayce Mid - KR Challenger - Patch 25.10 Season 15",
+          "rankClaim": "Challenger",
+          "patch": "25.10",
+          "durationSec": 1591,
+          "region": "KR",
+          "uploaded": "2025-05-26",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 126,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "XlYJZY6pAPo",
+          "title": "Kassadin Top vs Jayce - KR Master Patch 26.04",
+          "rankClaim": "Master",
+          "patch": "26.4",
+          "durationSec": 1744,
+          "region": "KR",
+          "uploaded": "2026-03-05",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 127,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "2BmgvyJwtNg",
+          "title": "Kassadin Mid vs Lissandra - KR Grandmaster Patch 26.11",
+          "rankClaim": "Grandmaster",
+          "patch": "26.11",
+          "durationSec": 1764,
+          "region": "KR",
+          "uploaded": "2026-06-06",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 131,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "7f6NKRToHF0",
+          "title": "Kassadin vs Diana [ MID ] Lol Korea Master Patch 25.12 ✅",
+          "rankClaim": "Master",
+          "patch": "25.12",
+          "durationSec": 1469,
+          "region": "KR",
+          "uploaded": "2025-06-18",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 134,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "Wxr603OfH54",
+          "title": "Kassadin Mid vs Syndra - KR Master Patch 26.18",
+          "rankClaim": "Master",
+          "patch": "26.18",
+          "durationSec": 1673,
+          "region": "KR",
+          "uploaded": "2026-09-12",
+          "moments": []
+        },
+        {
+          "videoId": "vqLS50bTNlo",
+          "title": "(3BL c0st0m) Kassadin Mid vs Syndra - EUW Challenger Patch 26.15",
+          "rankClaim": "Challenger",
+          "patch": "26.15",
+          "durationSec": 1731,
+          "region": "EUW",
+          "player": "3BL c0st0m",
+          "uploaded": "2026-08-03",
+          "moments": []
+        },
+        {
+          "videoId": "0gGE-vYw-2g",
+          "title": "Kassadin Mid vs Syndra - NA Grandmaster Patch 25.24",
+          "rankClaim": "Grandmaster",
+          "patch": "25.24",
+          "durationSec": 1527,
+          "region": "NA",
+          "uploaded": "2025-12-17",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 538,
+              "label": "Hunt The Void Grubs",
+              "kind": "grubs"
+            },
+            {
+              "atSec": 677,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 771,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 869,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1032,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1177,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1213,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1286,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1395,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1482,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1516,
+              "label": "End credit"
+            }
+          ]
+        },
+        {
+          "videoId": "UGfgyiFcEe0",
+          "title": "Kassadin Mid vs Syndra - KR Master Patch 25.06",
+          "rankClaim": "Master",
+          "patch": "25.6",
+          "durationSec": 1633,
+          "region": "KR",
+          "uploaded": "2025-04-02",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 488,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 582,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 637,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 774,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 939,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1246,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1334,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1481,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1497,
+              "label": "Get a Quadra Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1526,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1579,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1600,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1612,
+              "label": "End credit"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 136,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "x9jmCx5AA-E",
+          "title": "Kassadin Mid vs Aurelion Sol - KR Master Patch 26.01",
+          "rankClaim": "Master",
+          "patch": "26.1",
+          "durationSec": 1544,
+          "region": "KR",
+          "uploaded": "2026-01-18",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 252,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 682,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 948,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 995,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1060,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1083,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1134,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1241,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1260,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1276,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1375,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1473,
+              "label": "Get a PENTA KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1512,
+              "label": "Take down The Inhibitor"
+            },
+            {
+              "atSec": 1523,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1533,
+              "label": "End credit"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 142,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "f9mSESv-V3w",
+          "title": "Kassadin Mid vs Zoe - EUW Challenger Patch 26.10",
+          "rankClaim": "Challenger",
+          "patch": "26.10",
+          "durationSec": 1825,
+          "region": "EUW",
+          "uploaded": "2026-05-30",
+          "moments": []
+        },
+        {
+          "videoId": "AfG-XL_x4PA",
+          "title": "Kassadin vs Zoe [ MID ] Lol Korea Master Patch 25.5 ✅",
+          "rankClaim": "Master",
+          "patch": "25.5",
+          "durationSec": 1421,
+          "region": "KR",
+          "uploaded": "2025-03-11",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 157,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "EkifX7vA7xk",
+          "title": "Kassadin Mid vs Yasuo - BR Master Patch 26.19",
+          "rankClaim": "Master",
+          "patch": "26.19",
+          "durationSec": 1839,
+          "uploaded": "2026-09-26",
+          "moments": []
+        },
+        {
+          "videoId": "6HjKWu1jvXs",
+          "title": "Kassadin Mid vs Yasuo - KR Master Patch 25.08",
+          "rankClaim": "Master",
+          "patch": "25.8",
+          "durationSec": 1738,
+          "region": "KR",
+          "uploaded": "2025-04-23",
+          "moments": []
+        },
+        {
+          "videoId": "axekE59Qxek",
+          "title": "Kassadin Mid vs Yasuo - KR Master Patch 25.04",
+          "rankClaim": "Master",
+          "patch": "25.4",
+          "durationSec": 1874,
+          "region": "KR",
+          "uploaded": "2025-02-25",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 163,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "5Y4ryNucpBg",
+          "title": "Kassadin Mid vs Taliyah - EUW Grandmaster Patch 26.05",
+          "rankClaim": "Grandmaster",
+          "patch": "26.5",
+          "durationSec": 1876,
+          "region": "EUW",
+          "uploaded": "2026-03-20",
+          "moments": []
+        },
+        {
+          "videoId": "s1v7wInlxB8",
+          "title": "Kassadin Mid vs Taliyah - KR Master Patch 25.21",
+          "rankClaim": "Master",
+          "patch": "25.21",
+          "durationSec": 2140,
+          "region": "KR",
+          "uploaded": "2025-10-28",
+          "moments": []
+        },
+        {
+          "videoId": "v8IzstcWnek",
+          "title": "Kassadin Mid vs Taliyah - KR Master Patch 25.11",
+          "rankClaim": "Master",
+          "patch": "25.11",
+          "durationSec": 1931,
+          "region": "KR",
+          "uploaded": "2025-06-05",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 221,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "37a_PiMZP7E",
+          "title": "Kassadin Mid vs Zeri (HLE Zeka) - KR Master Patch 26.10",
+          "rankClaim": "Master",
+          "patch": "26.10",
+          "durationSec": 1803,
+          "region": "KR",
+          "player": "Zeka",
+          "uploaded": "2026-05-21",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 235,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "6YjuyI8uGy0",
+          "title": "Kassadin Mid vs Senna - TW Challenger Patch 25.13",
+          "rankClaim": "Challenger",
+          "patch": "25.13",
+          "durationSec": 1442,
+          "uploaded": "2025-07-17",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 236,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "_SHISWS5Y6M",
+          "title": "Kassadin Mid vs Lucian - NA Challenger Patch 25.04",
+          "rankClaim": "Challenger",
+          "patch": "25.4",
+          "durationSec": 1505,
+          "region": "NA",
+          "uploaded": "2025-03-06",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 245,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "TV7BEmW7B1I",
+          "title": "Kassadin Mid vs Ekko - EUW Master Patch 26.17",
+          "rankClaim": "Master",
+          "patch": "26.17",
+          "durationSec": 1651,
+          "region": "EUW",
+          "uploaded": "2026-09-02",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 246,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "gsPLfEoXT6s",
+          "title": "Kassadin Mid vs Qiyana - EUW Challenger Patch 26.13",
+          "rankClaim": "Challenger",
+          "patch": "26.13",
+          "durationSec": 1749,
+          "region": "EUW",
+          "uploaded": "2026-07-03",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 268,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "k82bpYMaM9s",
+          "title": "Kassadin Mid vs Azir - KR Master Patch 25.17",
+          "rankClaim": "Master",
+          "patch": "25.17",
+          "durationSec": 1624,
+          "region": "KR",
+          "uploaded": "2025-09-05",
+          "moments": []
+        },
+        {
+          "videoId": "xtrp28J0xIQ",
+          "title": "Kassadin Mid vs Azir - EUW Challenger Patch 25.05",
+          "rankClaim": "Challenger",
+          "patch": "25.5",
+          "durationSec": 2019,
+          "region": "EUW",
+          "uploaded": "2025-03-19",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 268,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "vQotOD5er_g",
+          "title": "Kassadin Top vs Azir - EUNE Master Patch 26.17",
+          "rankClaim": "Master",
+          "patch": "26.17",
+          "durationSec": 1679,
+          "region": "EUNE",
+          "uploaded": "2026-09-08",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 429,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "uxdLtlpUtF4",
+          "title": "Kassadin Top vs Kalista - NA Grandmaster Patch 25.07",
+          "rankClaim": "Grandmaster",
+          "patch": "25.7",
+          "durationSec": 1540,
+          "region": "NA",
+          "uploaded": "2025-04-13",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 517,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "c1EWr2MFgEQ",
+          "title": "Kassadin vs Sylas MID [ Perfect KDA ] Lol Korea Master Patch 25.3 ✅",
+          "rankClaim": "Master",
+          "patch": "25.3",
+          "durationSec": 1338,
+          "region": "KR",
+          "player": "Perfect KDA",
+          "uploaded": "2025-02-18",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 777,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "MSGVpjeWhag",
+          "title": "Kassadin Mid vs Yone (INE Raizy) - EUW Master Patch 26.21",
+          "rankClaim": "Master",
+          "patch": "26.21",
+          "durationSec": 1534,
+          "region": "EUW",
+          "uploaded": "2026-10-26",
+          "result": "W",
+          "moments": [
+            {
+              "atSec": 305,
+              "label": "Kassadin takes down Yone"
+            },
+            {
+              "atSec": 366,
+              "label": "Red takes 1st Dragon (Cloud)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 731,
+              "label": "Red takes 2nd Dragon (Ocean)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 843,
+              "label": "Irelia takes down Yone"
+            },
+            {
+              "atSec": 895,
+              "label": "Kassadin takes down Zaahen"
+            },
+            {
+              "atSec": 993,
+              "label": "Kassadin picks off Elise"
+            },
+            {
+              "atSec": 1066,
+              "label": "Blue takes 1st Dragon (Chemtech)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1209,
+              "label": "Blue takes Baron",
+              "kind": "baron"
+            },
+            {
+              "atSec": 1254,
+              "label": "Kassadin picks off Elise"
+            },
+            {
+              "atSec": 1338,
+              "label": "Team fight (3 kills)",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1398,
+              "label": "Red takes 3rd Dragon (Chemtech)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1406,
+              "label": "Kassadin Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1415,
+              "label": "Kassadin Triple Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1513,
+              "label": "Kassadin Triple Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1517,
+              "label": "Kassadin Quadra Kill",
+              "kind": "kill"
+            }
+          ]
+        },
+        {
+          "videoId": "Fv3iwgq8e-8",
+          "title": "OTP Kassadin vs Yone [ MID ] Lol Korea Master Patch 26.18 ✅",
+          "rankClaim": "Master",
+          "patch": "26.18",
+          "durationSec": 1459,
+          "region": "KR",
+          "player": "OTP",
+          "uploaded": "2026-09-14",
+          "moments": [
+            {
+              "atSec": 0,
+              "label": "Early game laning phase"
+            },
+            {
+              "atSec": 220,
+              "label": "First objective skirmishes"
+            },
+            {
+              "atSec": 345,
+              "label": "Mid-game momentum"
+            },
+            {
+              "atSec": 488,
+              "label": "Dominating the map"
+            },
+            {
+              "atSec": 617,
+              "label": "Mid-game team fighting"
+            },
+            {
+              "atSec": 720,
+              "label": "Securing team advantages"
+            },
+            {
+              "atSec": 855,
+              "label": "Siege and turret pressure",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1012,
+              "label": "Late game transition"
+            },
+            {
+              "atSec": 1123,
+              "label": "Objective control showdowns"
+            },
+            {
+              "atSec": 1248,
+              "label": "Final push and victory"
+            }
+          ]
+        },
+        {
+          "videoId": "mM7Ax_0JAAY",
+          "title": "Kassadin Mid vs Yone - EUW Grandmaster Patch 26.16",
+          "rankClaim": "Grandmaster",
+          "patch": "26.16",
+          "durationSec": 1791,
+          "region": "EUW",
+          "uploaded": "2026-08-20",
+          "result": "L",
+          "moments": [
+            {
+              "atSec": 424,
+              "label": "First Blood — Kassadin kills Yone",
+              "kind": "kill"
+            },
+            {
+              "atSec": 666,
+              "label": "Kassadin kills Veigar",
+              "kind": "kill"
+            },
+            {
+              "atSec": 732,
+              "label": "Blue takes 1st Dragon (Chemtech)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 778,
+              "label": "Kassadin eliminates Yone"
+            },
+            {
+              "atSec": 807,
+              "label": "Kassadin takes down Nautilus"
+            },
+            {
+              "atSec": 854,
+              "label": "Kassadin eliminates Yone"
+            },
+            {
+              "atSec": 888,
+              "label": "Kassadin takes down Nautilus"
+            },
+            {
+              "atSec": 1064,
+              "label": "Blue takes 2nd Dragon (Ocean)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1209,
+              "label": "Azir Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1254,
+              "label": "Red takes Baron",
+              "kind": "baron"
+            },
+            {
+              "atSec": 1403,
+              "label": "Red takes 1st Dragon (Cloud)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1621,
+              "label": "Xin Zhao takes down Lee Sin"
+            },
+            {
+              "atSec": 1643,
+              "label": "Mid Inhibitor falls (Red)"
+            },
+            {
+              "atSec": 1731,
+              "label": "Mid Inhibitor falls (Blue)"
+            }
+          ]
+        },
+        {
+          "videoId": "zcf5FRR1azg",
+          "title": "Kassadin Mid vs Yone - KR Master Patch 26.09",
+          "rankClaim": "Master",
+          "patch": "26.9",
+          "durationSec": 1750,
+          "region": "KR",
+          "uploaded": "2026-05-06",
+          "moments": []
+        },
+        {
+          "videoId": "IESxWmvEn20",
+          "title": "Kassadin vs Yone MID [ Triple Kill ] Lol Korea Master Patch 25.9 ✅",
+          "rankClaim": "Master",
+          "patch": "25.9",
+          "durationSec": 1667,
+          "region": "KR",
+          "player": "Triple Kill",
+          "uploaded": "2025-05-08",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 777,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "PCiUibhMsaM",
+          "title": "Kassadin Top vs Yone - EUW Master Patch 26.19",
+          "rankClaim": "Master",
+          "patch": "26.19",
+          "durationSec": 1764,
+          "region": "EUW",
+          "uploaded": "2026-10-09",
+          "result": "W",
+          "moments": [
+            {
+              "atSec": 339,
+              "label": "Red takes 1st Dragon (Mountain)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 541,
+              "label": "First Blood — Kassadin kills Aurelion Sol",
+              "kind": "kill"
+            },
+            {
+              "atSec": 679,
+              "label": "Red takes 2nd Dragon (Infernal)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 785,
+              "label": "Kassadin eliminates Yone"
+            },
+            {
+              "atSec": 996,
+              "label": "Red takes 3rd Dragon (Ocean)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1187,
+              "label": "Kassadin kills Aurelion Sol",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1244,
+              "label": "Kassadin solo kills Kai'Sa",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1307,
+              "label": "Red takes 4th Dragon (Ocean)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1323,
+              "label": "Blue takes Baron",
+              "kind": "baron"
+            },
+            {
+              "atSec": 1437,
+              "label": "Kassadin Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1492,
+              "label": "Kassadin outplays Katarina"
+            },
+            {
+              "atSec": 1534,
+              "label": "Team fight (3 kills)",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1614,
+              "label": "Sivir picks off Thresh"
+            },
+            {
+              "atSec": 1701,
+              "label": "Sivir Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1711,
+              "label": "Kassadin Triple Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1737,
+              "label": "Mid Inhibitor falls (Blue)"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 800,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "ynWlHZSbeew",
+          "title": "Kassadin Mid vs Mel - EUW Grandmaster Patch 25.24",
+          "rankClaim": "Grandmaster",
+          "patch": "25.24",
+          "durationSec": 1571,
+          "region": "EUW",
+          "uploaded": "2026-01-07",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 485,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 691,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 809,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 831,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1072,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1215,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1360,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1398,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1432,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1525,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1545,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1560,
+              "label": "End credit"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 805,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "rIYlbSuJXp0",
+          "title": "Kassadin Mid vs Locke - EUW Grandmaster Patch 26.14",
+          "rankClaim": "Grandmaster",
+          "patch": "26.14",
+          "durationSec": 1680,
+          "region": "EUW",
+          "uploaded": "2026-07-22",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 893,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "9W5Sy0m5ZRI",
+          "title": "Kassadin Mid vs Aurora - NA Challenger Patch 25.24",
+          "rankClaim": "Challenger",
+          "patch": "25.24",
+          "durationSec": 1482,
+          "region": "NA",
+          "uploaded": "2025-12-31",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 587,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 848,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 904,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 939,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 980,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1006,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1053,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1251,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1285,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1306,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1321,
+              "label": "Take down The Inhibitor"
+            },
+            {
+              "atSec": 1420,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1440,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1471,
+              "label": "End credit"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 897,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "DHzgN9cyhjA",
+          "title": "Kassadin Top vs K'Sante - NA Challenger Patch 26.13",
+          "rankClaim": "Challenger",
+          "patch": "26.13",
+          "durationSec": 1653,
+          "region": "NA",
+          "uploaded": "2026-07-17",
+          "moments": []
+        },
+        {
+          "videoId": "mC3gkVH3bGk",
+          "title": "Kassadin Top vs K'Sante - KR Master Patch 25.08",
+          "rankClaim": "Master",
+          "patch": "25.8",
+          "durationSec": 1821,
+          "region": "KR",
+          "uploaded": "2025-04-30",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 901,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "JS1iLGMZ4Gw",
+          "title": "Kassadin Mid vs Smolder - EUW Grandmaster Patch 26.02",
+          "rankClaim": "Grandmaster",
+          "patch": "26.2",
+          "durationSec": 1495,
+          "region": "EUW",
+          "uploaded": "2026-02-04",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 910,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "zrX4SpYVDSg",
+          "title": "Kassadin Mid vs Hwei - TW Challenger Patch 26.06",
+          "rankClaim": "Challenger",
+          "patch": "26.6",
+          "durationSec": 1916,
+          "uploaded": "2026-03-27",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 950,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "-JguCEQMekU",
+          "title": "Kassadin Mid vs Naafiri - EUW Grandmaster Patch 25.22",
+          "rankClaim": "Grandmaster",
+          "patch": "25.22",
+          "durationSec": 2006,
+          "region": "EUW",
+          "uploaded": "2025-11-14",
+          "moments": []
+        }
+      ]
+    }
+  ]
+}

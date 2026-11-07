@@ -1,0 +1,3398 @@
+{
+  "schema": 1,
+  "champion": 45,
+  "generatedAt": "2026-11-07T13:25:14.592Z",
+  "guides": [
+    {
+      "champion": 45,
+      "enemy": 84,
+      "lane": "mid",
+      "patch": "26.21",
+      "reviewed": false,
+      "difficulty": "Skill matchup",
+      "favoredWhen": "Cage blocks her dashes and your R scales on low HP. Hold cage, stack, one-shot late.",
+      "keyTips": [
+        {
+          "text": "Your cage blocks her dashes: hold it until she Es.",
+          "scope": "pair",
+          "sourceIds": [
+            "anguish"
+          ],
+          "abilityKeys": [
+            {
+              "champion": 45,
+              "key": "E"
+            },
+            {
+              "champion": 84,
+              "key": "E"
+            }
+          ]
+        },
+        {
+          "text": "One stun per cage: she counts it before committing, so vary.",
+          "scope": "pair",
+          "sourceIds": [
+            "anguish"
+          ],
+          "abilityKeys": [
+            {
+              "champion": 45,
+              "key": "E"
+            }
+          ]
+        },
+        {
+          "text": "Your R scales on low HP: hold it for the execute.",
+          "scope": "pair",
+          "sourceIds": [
+            "anguish"
+          ],
+          "abilityKeys": [
+            {
+              "champion": 45,
+              "key": "R"
+            }
+          ]
+        }
+      ],
+      "enemyTips": {},
+      "sections": {
+        "overview": {
+          "tips": []
+        },
+        "early-lane": {
+          "tips": [
+            {
+              "text": "Your Q hits two targets: line her up with the wave.",
+              "scope": "pair",
+              "sourceIds": [
+                "anguish"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 45,
+                  "key": "Q"
+                }
+              ]
+            },
+            {
+              "text": "Her Q-R one-shots late: respect the spike, keep HP.",
+              "scope": "pair",
+              "sourceIds": [
+                "anguish"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 84,
+                  "key": "Q"
+                },
+                {
+                  "champion": 84,
+                  "key": "R"
+                }
+              ]
+            }
+          ]
+        },
+        "mid-lane": {
+          "tips": [
+            {
+              "text": "She trades HP for E2 damage: punish the stun she eats.",
+              "scope": "pair",
+              "sourceIds": [
+                "anguish"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 84,
+                  "key": "E"
+                }
+              ]
+            },
+            {
+              "text": "She roams to stop your scaling: stack while she shows elsewhere.",
+              "scope": "pair",
+              "sourceIds": [
+                "anguish"
+              ]
+            }
+          ]
+        },
+        "win-condition": {
+          "tips": [
+            {
+              "text": "Scaled plus caged: the Akali who never stops you never wins.",
+              "scope": "pair",
+              "sourceIds": [
+                "anguish"
+              ]
+            }
+          ]
+        }
+      },
+      "itemization": [],
+      "sources": [
+        {
+          "id": "anguish",
+          "author": "Anguish333",
+          "rankClaim": "Master (profile badge; title claims 2000LP GrandMaster EUW and Challenger EUNE) · Akali main",
+          "rank": "master",
+          "url": "https://www.mobafire.com/league-of-legends/build/26-20-anguish-2000lp-grandmasters-euw-challenger-eune-akali-mid-top-s16-guide-every-matchup-item-rune-explained-625064",
+          "kind": "mobafire"
+        }
+      ]
+    },
+    {
+      "champion": 45,
+      "enemy": 103,
+      "lane": "mid",
+      "patch": "26.21",
+      "reviewed": false,
+      "difficulty": "Hard",
+      "favoredWhen": "She pushes from level 1, dodges the cage with W, and snowballs before you scale. Stack safe, hold cage.",
+      "keyTips": [
+        {
+          "text": "She dodges your cage with W speed (about {cd:45:E}): cast it where she lands.",
+          "scope": "pair",
+          "sourceIds": [
+            "peng04"
+          ],
+          "abilityKeys": [
+            {
+              "champion": 103,
+              "key": "W"
+            },
+            {
+              "champion": 45,
+              "key": "E"
+            }
+          ]
+        },
+        {
+          "text": "She pushes from level 1: concede the wave, stack the minions.",
+          "scope": "pair",
+          "sourceIds": [
+            "starzall",
+            "shok-ahri"
+          ]
+        },
+        {
+          "text": "She punishes your last hits in levels 1-5: you are very weak early, so give CS.",
+          "scope": "pair",
+          "sourceIds": [
+            "peng04"
+          ]
+        }
+      ],
+      "enemyTips": {},
+      "sections": {
+        "overview": {
+          "tips": []
+        },
+        "early-lane": {
+          "tips": [
+            {
+              "text": "She forces the choice: Q her or last-hit; stack first.",
+              "scope": "pair",
+              "sourceIds": [
+                "peng04"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 45,
+                  "key": "Q"
+                }
+              ]
+            },
+            {
+              "text": "She keeps you pinned: you cannot hold the wave, so call the jungler.",
+              "scope": "pair",
+              "sourceIds": [
+                "shok-ahri"
+              ]
+            }
+          ]
+        },
+        "mid-lane": {
+          "tips": [
+            {
+              "text": "After 6 she shoves and roams to snowball: match the shove late, stack under tower.",
+              "scope": "pair",
+              "sourceIds": [
+                "shok-ahri"
+              ]
+            },
+            {
+              "text": "She coordinates dives with her jungler: a diver plus Charm beats cage from 6 on, so track it.",
+              "scope": "pair",
+              "sourceIds": [
+                "starzall"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 103,
+                  "key": "E"
+                },
+                {
+                  "champion": 45,
+                  "key": "E"
+                }
+              ]
+            }
+          ]
+        },
+        "win-condition": {
+          "tips": [
+            {
+              "text": "She ends before your scaling matters: your power only grows, so survive.",
+              "scope": "pair",
+              "sourceIds": [
+                "shok-ahri"
+              ]
+            }
+          ]
+        }
+      },
+      "itemization": [],
+      "sources": [
+        {
+          "id": "peng04",
+          "author": "Peng04",
+          "rankClaim": "Challenger · Ahri main",
+          "rank": "challenger",
+          "url": "https://www.mobafire.com/league-of-legends/build/26-20-pengs-ahri-guide-5-1mil-points-13x-challenger-648700",
+          "kind": "mobafire"
+        },
+        {
+          "id": "shok-ahri",
+          "author": "ShokLoL",
+          "rankClaim": "Rank 1 Challenger · Ahri main",
+          "rank": "challenger",
+          "url": "https://www.mobafire.com/league-of-legends/build/26-5-shoks-rank-1-challenger-ahri-guide-635065",
+          "kind": "mobafire"
+        },
+        {
+          "id": "starzall",
+          "author": "star zall",
+          "rankClaim": "Challenger Veigar OTP 3260 LP Peak (title, no badge) · Veigar main",
+          "rank": "challenger",
+          "peak": true,
+          "url": "https://www.mobafire.com/league-of-legends/build/guide-of-an-veigar-otp-star-zall-i-challenger-veigar-otp-3260-lp-peak-i-645348",
+          "kind": "mobafire"
+        }
+      ]
+    },
+    {
+      "champion": 45,
+      "enemy": 134,
+      "lane": "mid",
+      "patch": "26.21",
+      "reviewed": false,
+      "difficulty": "Hard",
+      "favoredWhen": "She abuses your weak trades and waveclear. Stack under tower, hold flash for ganks.",
+      "keyTips": [
+        {
+          "text": "Very easy for her: your trades and waveclear both lose, so concede.",
+          "scope": "pair",
+          "sourceIds": [
+            "shok"
+          ]
+        },
+        {
+          "text": "She pokes every step-up: weak trades mean lost HP, so give ground.",
+          "scope": "pair",
+          "sourceIds": [
+            "shok"
+          ]
+        },
+        {
+          "text": "Your cage plus gank, especially with her flash down: that is your only out.",
+          "scope": "pair",
+          "sourceIds": [
+            "shok"
+          ],
+          "abilityKeys": [
+            {
+              "champion": 45,
+              "key": "E"
+            }
+          ]
+        }
+      ],
+      "enemyTips": {},
+      "sections": {
+        "overview": {
+          "tips": []
+        },
+        "early-lane": {
+          "tips": [
+            {
+              "text": "She shoves from level 1: your waveclear cannot answer, so stack.",
+              "scope": "pair",
+              "sourceIds": [
+                "shok"
+              ]
+            },
+            {
+              "text": "She trades on cooldown: weak trades lose every exchange, so never answer.",
+              "scope": "pair",
+              "sourceIds": [
+                "shok"
+              ]
+            }
+          ]
+        },
+        "mid-lane": {
+          "tips": [
+            {
+              "text": "Cage plus jungler is the kill setup: call him when her flash is down.",
+              "scope": "pair",
+              "sourceIds": [
+                "shok"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 45,
+                  "key": "E"
+                }
+              ]
+            },
+            {
+              "text": "She keeps flash for the cage: no flash means she walks up, so punish.",
+              "scope": "pair",
+              "sourceIds": [
+                "shok"
+              ]
+            }
+          ]
+        },
+        "win-condition": {
+          "tips": [
+            {
+              "text": "Farmed plus flash tracked: the Syndra who never answers your cage never stops you.",
+              "scope": "pair",
+              "sourceIds": [
+                "shok"
+              ]
+            }
+          ]
+        }
+      },
+      "itemization": [],
+      "sources": [
+        {
+          "id": "shok",
+          "author": "ShokLoL",
+          "rankClaim": "Rank 1 Challenger · Syndra main",
+          "rank": "challenger",
+          "url": "https://www.mobafire.com/league-of-legends/build/26-17-shoks-rank-1-challenger-syndra-guide-602710",
+          "kind": "mobafire"
+        }
+      ]
+    },
+    {
+      "champion": 45,
+      "enemy": 238,
+      "lane": "mid",
+      "patch": "26.21",
+      "reviewed": false,
+      "difficulty": "Hard",
+      "favoredWhen": "He respects the cage, punishes it when down, and dodges your R with his. Hold cage, stack, end it.",
+      "keyTips": [
+        {
+          "text": "Your cage gates his all-ins: hold it while he looks.",
+          "scope": "pair",
+          "sourceIds": [
+            "v222"
+          ],
+          "abilityKeys": [
+            {
+              "champion": 45,
+              "key": "E"
+            }
+          ]
+        },
+        {
+          "text": "Cage down means he runs you down: the cooldown is his kill signal, so track it.",
+          "scope": "pair",
+          "sourceIds": [
+            "v222"
+          ],
+          "abilityKeys": [
+            {
+              "champion": 45,
+              "key": "E"
+            }
+          ]
+        },
+        {
+          "text": "His R answers your R: never ult a Zed holding Death Mark.",
+          "scope": "pair",
+          "sourceIds": [
+            "aikopanda",
+            "v222"
+          ],
+          "abilityKeys": [
+            {
+              "champion": 238,
+              "key": "R"
+            },
+            {
+              "champion": 45,
+              "key": "R"
+            }
+          ]
+        }
+      ],
+      "enemyTips": {
+        "early-lane": [
+          {
+            "text": "Zed often places Living Shadow before Death Mark so he can swap away from skillshots. Hold your crowd control until he has used the swap.",
+            "scope": "enemy",
+            "sourceIds": [
+              "aikopanda"
+            ],
+            "patch": "26.21",
+            "abilityKeys": [
+              {
+                "champion": 238,
+                "key": "W"
+              },
+              {
+                "champion": 238,
+                "key": "R"
+              }
+            ]
+          }
+        ],
+        "win-condition": [
+          {
+            "text": "Death Mark always lands Zed behind his target. Pre-aim crowd control and escapes behind you, not toward where he cast it.",
+            "scope": "enemy",
+            "sourceIds": [
+              "peng04"
+            ],
+            "patch": "26.21",
+            "abilityKeys": [
+              {
+                "champion": 238,
+                "key": "R"
+              }
+            ]
+          }
+        ]
+      },
+      "sections": {
+        "overview": {
+          "tips": []
+        },
+        "early-lane": {
+          "tips": [
+            {
+              "text": "He chips with shadow poke: dodge shadows, stack anyway.",
+              "scope": "pair",
+              "sourceIds": [
+                "aikopanda",
+                "v222"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 238,
+                  "key": "W"
+                }
+              ]
+            },
+            {
+              "text": "He farms to Voltaic: punish before the spike.",
+              "scope": "pair",
+              "sourceIds": [
+                "aikopanda"
+              ]
+            }
+          ]
+        },
+        "mid-lane": {
+          "tips": [
+            {
+              "text": "Death Mark always lands Zed behind his target. Pre-aim crowd control and escapes behind you, not toward where he cast it.",
+              "scope": "pair",
+              "sourceIds": [
+                "peng04"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 238,
+                  "key": "R"
+                }
+              ]
+            },
+            {
+              "text": "His Edge of Night second: with it your cage cannot catch him after R, so end it first.",
+              "scope": "pair",
+              "sourceIds": [
+                "aikopanda"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 45,
+                  "key": "E"
+                }
+              ],
+              "itemIds": [
+                3814
+              ]
+            }
+          ]
+        },
+        "win-condition": {
+          "tips": [
+            {
+              "text": "Cage up plus R held: that combination denies the kill every time.",
+              "scope": "pair",
+              "sourceIds": [
+                "aikopanda",
+                "v222"
+              ]
+            }
+          ]
+        }
+      },
+      "itemization": [],
+      "sources": [
+        {
+          "id": "aikopanda",
+          "author": "AikoPanda",
+          "rankClaim": "Zed main",
+          "url": "https://www.mobafire.com/league-of-legends/build/26-20-video-guides-hidden-combos-all-matchups-zed-all-in-one-guide-652800",
+          "kind": "mobafire"
+        },
+        {
+          "id": "v222",
+          "author": "V222",
+          "rankClaim": "Challenger EUW · Zed main",
+          "rank": "challenger",
+          "url": "https://www.mobafire.com/league-of-legends/build/all-matchups-26-14-zed-guide-2000lp-euw-challenger-652354",
+          "kind": "mobafire"
+        },
+        {
+          "id": "peng04",
+          "author": "Peng04",
+          "rankClaim": "Challenger · Ahri main",
+          "rank": "challenger",
+          "url": "https://www.mobafire.com/league-of-legends/build/26-20-pengs-ahri-guide-5-1mil-points-13x-challenger-648700",
+          "kind": "mobafire"
+        }
+      ]
+    }
+  ],
+  "general": [
+    {
+      "champion": 45,
+      "lane": "adc",
+      "patch": "26.21",
+      "reviewed": false,
+      "keyTips": [
+        {
+          "text": "Play safely through the opening levels; Veigar needs time, gold, and experience before he can carry fights.",
+          "scope": "champion",
+          "sourceIds": [
+            "mobalytics-veigar-adc"
+          ]
+        },
+        {
+          "text": "Keep Event Horizon available to stop a dive or all-in; it is his only self-peel and has a long cooldown.",
+          "scope": "champion",
+          "sourceIds": [
+            "mobalytics-veigar-adc"
+          ],
+          "abilityKeys": [
+            {
+              "champion": 45,
+              "key": "E"
+            }
+          ]
+        },
+        {
+          "text": "After reaching level six, use the full ability kit to set up a finish: poke first, then let Primordial Burst execute the low target.",
+          "scope": "champion",
+          "sourceIds": [
+            "mobalytics-veigar-adc"
+          ],
+          "abilityKeys": [
+            {
+              "champion": 45,
+              "key": "Q"
+            },
+            {
+              "champion": 45,
+              "key": "W"
+            },
+            {
+              "champion": 45,
+              "key": "E"
+            },
+            {
+              "champion": 45,
+              "key": "R"
+            }
+          ]
+        }
+      ],
+      "sections": {
+        "overview": {
+          "tips": []
+        },
+        "early-lane": {
+          "tips": [
+            {
+              "text": "Avoid trades unless the lane has a clear advantage; early pressure depends heavily on the support.",
+              "scope": "champion",
+              "sourceIds": [
+                "mobalytics-veigar-adc"
+              ]
+            },
+            {
+              "text": "Use Baleful Strike to farm and build passive stacks when doing so is safe.",
+              "scope": "champion",
+              "sourceIds": [
+                "mobalytics-veigar-adc"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 45,
+                  "key": "Q"
+                }
+              ]
+            },
+            {
+              "text": "Use Event Horizon to zone an approach or chain the support's crowd control; its cage also gives the jungler a gank setup.",
+              "scope": "champion",
+              "sourceIds": [
+                "mobalytics-veigar-adc"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 45,
+                  "key": "E"
+                }
+              ]
+            },
+            {
+              "text": "After taking the bot outer tower, rotate mid and help take that tower to open the map.",
+              "scope": "champion",
+              "sourceIds": [
+                "mobalytics-veigar-adc"
+              ]
+            }
+          ]
+        },
+        "mid-lane": {
+          "tips": [
+            {
+              "text": "Farm a side lane and keep collecting passive stacks before opponents begin grouping.",
+              "scope": "champion",
+              "sourceIds": [
+                "mobalytics-veigar-adc"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 45,
+                  "key": "Q"
+                }
+              ]
+            },
+            {
+              "text": "When the enemy starts grouping, join the team rather than staying isolated.",
+              "scope": "champion",
+              "sourceIds": [
+                "mobalytics-veigar-adc"
+              ]
+            },
+            {
+              "text": "Look for an Event Horizon catch; after a pick, call for Dragon or Baron while the enemy is down a player.",
+              "scope": "champion",
+              "sourceIds": [
+                "mobalytics-veigar-adc"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 45,
+                  "key": "E"
+                }
+              ]
+            },
+            {
+              "text": "Level nine maxes the first ability and makes Baleful Strike a meaningful chunk of a squishy target.",
+              "scope": "champion",
+              "sourceIds": [
+                "mobalytics-veigar-adc"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 45,
+                  "key": "Q"
+                }
+              ]
+            },
+            {
+              "text": "Two ultimate points at level eleven sharply improve the follow-up damage after the cage or teammates' crowd control.",
+              "scope": "champion",
+              "sourceIds": [
+                "mobalytics-veigar-adc"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 45,
+                  "key": "R"
+                }
+              ]
+            }
+          ]
+        },
+        "win-condition": {
+          "tips": [
+            {
+              "text": "Stay with allies in late game so the enemy cannot pick Veigar off or force a four-versus-five.",
+              "scope": "champion",
+              "sourceIds": [
+                "mobalytics-veigar-adc"
+              ]
+            },
+            {
+              "text": "Use Event Horizon to create a numbers advantage, then Primordial Burst to remove the caught target before taking a nearby objective or sieging.",
+              "scope": "champion",
+              "sourceIds": [
+                "mobalytics-veigar-adc"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 45,
+                  "key": "E"
+                },
+                {
+                  "champion": 45,
+                  "key": "R"
+                }
+              ]
+            },
+            {
+              "text": "If ahead, prioritize an accessible squishy with Primordial Burst to remove damage from the fight.",
+              "scope": "champion",
+              "sourceIds": [
+                "mobalytics-veigar-adc"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 45,
+                  "key": "R"
+                }
+              ]
+            },
+            {
+              "text": "Use choke points to improve the chance that Event Horizon and Dark Matter control the fight; avoid walking alone into fog because Veigar is immobile.",
+              "scope": "champion",
+              "sourceIds": [
+                "mobalytics-veigar-adc"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 45,
+                  "key": "E"
+                },
+                {
+                  "champion": 45,
+                  "key": "W"
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "itemization": [
+        {
+          "text": "Take First Strike, Magical Footwear, Biscuit Delivery, and Cosmic Insight with Manaflow Band and Transcendence as the 16.21 setup.",
+          "scope": "champion",
+          "sourceIds": [
+            "mobalytics-veigar-adc-build"
+          ]
+        },
+        {
+          "text": "Build the popular path of Luden's Echo, Sorcerer's Shoes, Stormsurge, Rabadon's Deathcap, and Zhonya's Hourglass.",
+          "scope": "champion",
+          "sourceIds": [
+            "mobalytics-veigar-adc-build"
+          ],
+          "itemIds": [
+            6655,
+            3020,
+            4646,
+            3089,
+            3157
+          ]
+        },
+        {
+          "text": "Start Doran's Ring, a Health Potion, and Stealth Ward.",
+          "scope": "champion",
+          "sourceIds": [
+            "mobalytics-veigar-adc-build"
+          ],
+          "itemIds": [
+            1056,
+            2003,
+            3340
+          ]
+        },
+        {
+          "text": "Choose Banshee's Veil as the fourth-item alternative to Rabadon's against burst damage or key crowd control.",
+          "scope": "champion",
+          "sourceIds": [
+            "mobalytics-veigar-adc-build"
+          ],
+          "itemIds": [
+            3102
+          ]
+        },
+        {
+          "text": "Max Q, then W, then E, taking Primordial Burst at levels six, eleven, and sixteen.",
+          "scope": "champion",
+          "sourceIds": [
+            "mobalytics-veigar-adc-build"
+          ],
+          "abilityKeys": [
+            {
+              "champion": 45,
+              "key": "Q"
+            },
+            {
+              "champion": 45,
+              "key": "W"
+            },
+            {
+              "champion": 45,
+              "key": "E"
+            },
+            {
+              "champion": 45,
+              "key": "R"
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "id": "mobalytics-veigar-adc",
+          "author": "Mobalytics",
+          "rankClaim": "No rank claim",
+          "url": "https://mobalytics.gg/lol/champions/veigar/guide/adc",
+          "kind": "web"
+        },
+        {
+          "id": "mobalytics-veigar-adc-build",
+          "author": "Mobalytics",
+          "rankClaim": "No rank claim",
+          "url": "https://mobalytics.gg/lol/champions/veigar/build/adc",
+          "kind": "web"
+        }
+      ]
+    },
+    {
+      "champion": 45,
+      "lane": "mid",
+      "patch": "26.21",
+      "reviewed": false,
+      "keyTips": [
+        {
+          "text": "Prioritize farm and experience; Veigar is weak early and needs time and gold to come online.",
+          "scope": "champion",
+          "sourceIds": [
+            "mobalytics-veigar-mid"
+          ]
+        },
+        {
+          "text": "Keep Event Horizon ready to prevent an all-in; do not spend his only self-peel casually.",
+          "scope": "champion",
+          "sourceIds": [
+            "mobalytics-veigar-mid"
+          ],
+          "abilityKeys": [
+            {
+              "champion": 45,
+              "key": "E"
+            }
+          ]
+        },
+        {
+          "text": "At level six, use Event Horizon to control space and connect Dark Matter and Baleful Strike, then look for Primordial Burst as the finishing damage.",
+          "scope": "champion",
+          "sourceIds": [
+            "mobalytics-veigar-mid"
+          ],
+          "abilityKeys": [
+            {
+              "champion": 45,
+              "key": "E"
+            },
+            {
+              "champion": 45,
+              "key": "W"
+            },
+            {
+              "champion": 45,
+              "key": "Q"
+            },
+            {
+              "champion": 45,
+              "key": "R"
+            }
+          ]
+        }
+      ],
+      "sections": {
+        "overview": {
+          "tips": []
+        },
+        "early-lane": {
+          "tips": [
+            {
+              "text": "Use Baleful Strike to collect passive stacks when it does not expose Veigar to a bad trade.",
+              "scope": "champion",
+              "sourceIds": [
+                "mobalytics-veigar-mid"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 45,
+                  "key": "Q"
+                }
+              ]
+            },
+            {
+              "text": "Avoid fighting until there is an item advantage or another clear opening.",
+              "scope": "champion",
+              "sourceIds": [
+                "mobalytics-veigar-mid"
+              ]
+            },
+            {
+              "text": "Against all-in champions, hold Event Horizon through the trade window instead of spending it for poke.",
+              "scope": "champion",
+              "sourceIds": [
+                "mobalytics-veigar-mid"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 45,
+                  "key": "E"
+                }
+              ]
+            },
+            {
+              "text": "When the enemy bot lane leaves mid after taking its tower, move to a side lane to keep farming and gaining experience.",
+              "scope": "champion",
+              "sourceIds": [
+                "mobalytics-veigar-mid"
+              ]
+            }
+          ]
+        },
+        "mid-lane": {
+          "tips": [
+            {
+              "text": "Side-lane to keep stacking while the map is quiet, then group when the enemy begins grouping.",
+              "scope": "champion",
+              "sourceIds": [
+                "mobalytics-veigar-mid"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 45,
+                  "key": "Q"
+                }
+              ]
+            },
+            {
+              "text": "Use Event Horizon to catch an isolated opponent; turn the pick into Dragon or Baron pressure.",
+              "scope": "champion",
+              "sourceIds": [
+                "mobalytics-veigar-mid"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 45,
+                  "key": "E"
+                }
+              ]
+            },
+            {
+              "text": "Maxing the first ability by level nine makes Baleful Strike a substantial hit on squishy targets.",
+              "scope": "champion",
+              "sourceIds": [
+                "mobalytics-veigar-mid"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 45,
+                  "key": "Q"
+                }
+              ]
+            },
+            {
+              "text": "Two ultimate points at level eleven increase his ability to finish targets after the team controls them.",
+              "scope": "champion",
+              "sourceIds": [
+                "mobalytics-veigar-mid"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 45,
+                  "key": "R"
+                }
+              ]
+            },
+            {
+              "text": "Passive stacks add ability power over time, so take safe farm and stacks rather than forcing unnecessary fights.",
+              "scope": "champion",
+              "sourceIds": [
+                "mobalytics-veigar-mid"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 45,
+                  "key": "P"
+                }
+              ]
+            }
+          ]
+        },
+        "win-condition": {
+          "tips": [
+            {
+              "text": "Stay with the team late; do not walk off alone and give the enemy a four-versus-five opening.",
+              "scope": "champion",
+              "sourceIds": [
+                "mobalytics-veigar-mid"
+              ]
+            },
+            {
+              "text": "Use Event Horizon to produce a pick, then Primordial Burst to finish the target before the team takes a nearby objective or sieges.",
+              "scope": "champion",
+              "sourceIds": [
+                "mobalytics-veigar-mid"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 45,
+                  "key": "E"
+                },
+                {
+                  "champion": 45,
+                  "key": "R"
+                }
+              ]
+            },
+            {
+              "text": "If ahead, use Primordial Burst on an accessible squishy to remove a key damage source.",
+              "scope": "champion",
+              "sourceIds": [
+                "mobalytics-veigar-mid"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 45,
+                  "key": "R"
+                }
+              ]
+            },
+            {
+              "text": "Use choke points to make Event Horizon catches easier and preserve the cage as a way to secure picks.",
+              "scope": "champion",
+              "sourceIds": [
+                "mobalytics-veigar-mid"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 45,
+                  "key": "E"
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "itemization": [
+        {
+          "text": "Take First Strike, Magical Footwear, Biscuit Delivery, and Cosmic Insight with Manaflow Band and Transcendence as the 16.21 rune page.",
+          "scope": "champion",
+          "sourceIds": [
+            "mobalytics-veigar-mid-build"
+          ]
+        },
+        {
+          "text": "Build the popular path of Rod of Ages, Sorcerer's Shoes, Archangel's Staff, Rabadon's Deathcap, and Zhonya's Hourglass.",
+          "scope": "champion",
+          "sourceIds": [
+            "mobalytics-veigar-mid-build"
+          ],
+          "itemIds": [
+            6657,
+            3020,
+            3003,
+            3089,
+            3157
+          ]
+        },
+        {
+          "text": "Start Doran's Ring, a Health Potion, and Stealth Ward.",
+          "scope": "champion",
+          "sourceIds": [
+            "mobalytics-veigar-mid-build"
+          ],
+          "itemIds": [
+            1056,
+            2003,
+            3340
+          ]
+        },
+        {
+          "text": "Choose Shadowflame as the fourth-item alternative to Rabadon's against healing and shielding champions.",
+          "scope": "champion",
+          "sourceIds": [
+            "mobalytics-veigar-mid-build"
+          ],
+          "itemIds": [
+            4645
+          ]
+        },
+        {
+          "text": "Max Q, then W, then E, taking Primordial Burst at levels six, eleven, and sixteen.",
+          "scope": "champion",
+          "sourceIds": [
+            "mobalytics-veigar-mid-build"
+          ],
+          "abilityKeys": [
+            {
+              "champion": 45,
+              "key": "Q"
+            },
+            {
+              "champion": 45,
+              "key": "W"
+            },
+            {
+              "champion": 45,
+              "key": "E"
+            },
+            {
+              "champion": 45,
+              "key": "R"
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "id": "mobalytics-veigar-mid",
+          "author": "Mobalytics",
+          "rankClaim": "No rank claim",
+          "url": "https://mobalytics.gg/lol/champions/veigar/guide",
+          "kind": "web"
+        },
+        {
+          "id": "mobalytics-veigar-mid-build",
+          "author": "Mobalytics",
+          "rankClaim": "No rank claim",
+          "url": "https://mobalytics.gg/lol/champions/veigar/build",
+          "kind": "web"
+        }
+      ]
+    }
+  ],
+  "vods": [
+    {
+      "enemy": 1,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "L_JbYSbo5ac",
+          "title": "Veigar Mid vs Annie - KR Master Patch 25.10",
+          "rankClaim": "Master",
+          "patch": "25.10",
+          "durationSec": 1554,
+          "region": "KR",
+          "uploaded": "2025-05-21",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 3,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "eZJNPZMADO8",
+          "title": "Veigar Mid vs Galio - VN Master Patch 26.19",
+          "rankClaim": "Master",
+          "patch": "26.19",
+          "durationSec": 1809,
+          "uploaded": "2026-10-01",
+          "moments": []
+        },
+        {
+          "videoId": "euVvStaeix8",
+          "title": "Veigar Mid vs Galio - KR Master Patch 25.15",
+          "rankClaim": "Master",
+          "patch": "25.15",
+          "durationSec": 1928,
+          "region": "KR",
+          "uploaded": "2025-08-05",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 4,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "nUDRJsxGzeY",
+          "title": "Veigar Mid vs Twisted Fate - KR Challenger Patch 25.13",
+          "rankClaim": "Challenger",
+          "patch": "25.13",
+          "durationSec": 1638,
+          "region": "KR",
+          "uploaded": "2025-07-05",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 8,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "9FL2BZSK46I",
+          "title": "Veigar Mid vs Vladimir - BR Challenger Patch 25.24",
+          "rankClaim": "Challenger",
+          "patch": "25.24",
+          "durationSec": 1448,
+          "uploaded": "2026-01-05",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 9,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "lNY7epBPxf4",
+          "title": "Veigar Support vs Fiddlesticks - KR Master Patch 25.06",
+          "rankClaim": "Master",
+          "patch": "25.6",
+          "durationSec": 1958,
+          "region": "KR",
+          "uploaded": "2025-03-31",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 264,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 587,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 669,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 695,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 710,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 835,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 899,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1242,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1379,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1421,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1573,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1717,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1749,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1772,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1937,
+              "label": "End credit"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 13,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "LopUtaWUatM",
+          "title": "Veigar vs Ryze Mid - KR Challenger - Patch 16.10 Season 16",
+          "rankClaim": "Challenger",
+          "patch": "26.10",
+          "durationSec": 2206,
+          "region": "KR",
+          "uploaded": "2026-05-16",
+          "moments": []
+        },
+        {
+          "videoId": "4_xGwnm6zPk",
+          "title": "Veigar vs Ryze Mid - KR Challenger - Patch 25.24 Season 15",
+          "rankClaim": "Challenger",
+          "patch": "25.24",
+          "durationSec": 1801,
+          "region": "KR",
+          "uploaded": "2025-12-08",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 14,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "ALXXaEImGdM",
+          "title": "Veigar Top vs Sion - KR Master Patch 25.05",
+          "rankClaim": "Master",
+          "patch": "25.5",
+          "durationSec": 1997,
+          "region": "KR",
+          "uploaded": "2025-03-16",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 18,
+      "lane": "adc",
+      "videos": [
+        {
+          "videoId": "7qXcPN3elIE",
+          "title": "Veigar Bot vs Tristana - EUNE Master Patch 26.19",
+          "rankClaim": "Master",
+          "patch": "26.19",
+          "durationSec": 1639,
+          "region": "EUNE",
+          "uploaded": "2026-10-02",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 26,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "FMkXOSDUKOs",
+          "title": "Veigar Mid vs Zilean - NA Grandmaster Patch 25.05",
+          "rankClaim": "Grandmaster",
+          "patch": "25.5",
+          "durationSec": 1875,
+          "region": "NA",
+          "uploaded": "2025-03-12",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 31,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "NkUFgtLw9W8",
+          "title": "(veXon) Veigar Mid vs Cho'Gath - EUW Grandmaster Patch 26.20",
+          "rankClaim": "Grandmaster",
+          "patch": "26.20",
+          "durationSec": 1651,
+          "region": "EUW",
+          "player": "veXon",
+          "uploaded": "2026-10-15",
+          "result": "W",
+          "moments": [
+            {
+              "atSec": 406,
+              "label": "First Blood — Aurelion Sol kills Jarvan IV",
+              "kind": "kill"
+            },
+            {
+              "atSec": 494,
+              "label": "Blue takes 1st Dragon (Infernal)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 772,
+              "label": "Aurelion Sol picks off Irelia"
+            },
+            {
+              "atSec": 822,
+              "label": "Team fight (3 kills)",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 856,
+              "label": "Red takes 1st Dragon (Cloud)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 886,
+              "label": "Nautilus picks off Twitch"
+            },
+            {
+              "atSec": 937,
+              "label": "Veigar picks off Jarvan IV"
+            },
+            {
+              "atSec": 1094,
+              "label": "Veigar Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1097,
+              "label": "Veigar Triple Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1171,
+              "label": "Red takes 2nd Dragon (Chemtech)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1220,
+              "label": "Veigar takes down Nami"
+            },
+            {
+              "atSec": 1236,
+              "label": "Bot Inhibitor falls (Blue)"
+            },
+            {
+              "atSec": 1284,
+              "label": "Veigar Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1317,
+              "label": "Blue takes Baron",
+              "kind": "baron"
+            },
+            {
+              "atSec": 1488,
+              "label": "Blue takes 2nd Dragon (Chemtech)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1561,
+              "label": "Veigar Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1572,
+              "label": "Bot Inhibitor falls (Red)"
+            },
+            {
+              "atSec": 1580,
+              "label": "Aurelion Sol Double Kill",
+              "kind": "kill"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 38,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "S6Vp4e0VB_8",
+          "title": "Veigar Mid vs Kassadin - KR Master Patch 26.21",
+          "rankClaim": "Master",
+          "patch": "26.21",
+          "durationSec": 1697,
+          "region": "KR",
+          "uploaded": "2026-10-30",
+          "result": "W",
+          "moments": [
+            {
+              "atSec": 272,
+              "label": "Veigar takes down Kassadin"
+            },
+            {
+              "atSec": 436,
+              "label": "Red takes 1st Dragon (Hextech)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 842,
+              "label": "Red takes 2nd Dragon (Mountain)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 930,
+              "label": "Veigar catches Kassadin again"
+            },
+            {
+              "atSec": 1109,
+              "label": "Veigar outduels Senna"
+            },
+            {
+              "atSec": 1124,
+              "label": "Lee Sin Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1184,
+              "label": "Red takes 3rd Dragon (Ocean)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1192,
+              "label": "Veigar outplays Senna again"
+            },
+            {
+              "atSec": 1259,
+              "label": "Veigar takes down Senna"
+            },
+            {
+              "atSec": 1289,
+              "label": "Mid Inhibitor falls (Blue)"
+            },
+            {
+              "atSec": 1419,
+              "label": "Veigar picks off Xin Zhao"
+            },
+            {
+              "atSec": 1490,
+              "label": "Veigar outduels Kassadin (3rd time)"
+            },
+            {
+              "atSec": 1503,
+              "label": "Blue takes Baron",
+              "kind": "baron"
+            },
+            {
+              "atSec": 1529,
+              "label": "Veigar picks off Xin Zhao"
+            },
+            {
+              "atSec": 1568,
+              "label": "Lee Sin eliminates Jhin"
+            },
+            {
+              "atSec": 1623,
+              "label": "Red takes 4th Dragon (Ocean)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1665,
+              "label": "Mid Inhibitor falls (Blue)"
+            },
+            {
+              "atSec": 1679,
+              "label": "Veigar Double Kill",
+              "kind": "kill"
+            }
+          ]
+        },
+        {
+          "videoId": "OJ7TqvMkXeY",
+          "title": "Veigar Mid vs Kassadin - NA Challenger Patch 26.18",
+          "rankClaim": "Challenger",
+          "patch": "26.18",
+          "durationSec": 1417,
+          "region": "NA",
+          "uploaded": "2026-09-19",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 39,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "RS8TaAz58fc",
+          "title": "Veigar Mid vs Irelia - KR Challenger Patch 25.22",
+          "rankClaim": "Challenger",
+          "patch": "25.22",
+          "durationSec": 1920,
+          "region": "KR",
+          "uploaded": "2025-11-13",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 42,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "NJ7sBXf1uPU",
+          "title": "Veigar Mid vs Corki - KR Master Patch 25.12",
+          "rankClaim": "Master",
+          "patch": "25.12",
+          "durationSec": 1753,
+          "region": "KR",
+          "uploaded": "2025-06-20",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 43,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "Clt7uNl-GvM",
+          "title": "Veigar Support vs Karma - KR Master Patch 25.22",
+          "rankClaim": "Master",
+          "patch": "25.22",
+          "durationSec": 1789,
+          "region": "KR",
+          "uploaded": "2025-11-19",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 55,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "uLTJA_RpDTA",
+          "title": "Veigar Mid vs Katarina - EUW Master Patch 26.17",
+          "rankClaim": "Master",
+          "patch": "26.17",
+          "durationSec": 1436,
+          "region": "EUW",
+          "uploaded": "2026-09-03",
+          "moments": []
+        },
+        {
+          "videoId": "33bY87f4t7w",
+          "title": "Veigar Mid vs Katarina - EUW Challenger Patch 26.12",
+          "rankClaim": "Challenger",
+          "patch": "26.12",
+          "durationSec": 1462,
+          "region": "EUW",
+          "uploaded": "2026-06-18",
+          "result": "W",
+          "moments": [
+            {
+              "atSec": 376,
+              "label": "First Blood — Veigar kills Katarina",
+              "kind": "kill"
+            },
+            {
+              "atSec": 399,
+              "label": "Kha'Zix takes down Trundle"
+            },
+            {
+              "atSec": 492,
+              "label": "Team fight (3 kills)",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 534,
+              "label": "Veigar Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 564,
+              "label": "Blue takes 1st Dragon (Cloud)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 611,
+              "label": "Kha'Zix takes down Trundle"
+            },
+            {
+              "atSec": 635,
+              "label": "Veigar takes down Katarina"
+            },
+            {
+              "atSec": 866,
+              "label": "Veigar eliminates Katarina"
+            },
+            {
+              "atSec": 921,
+              "label": "Blue takes 2nd Dragon (Mountain)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 985,
+              "label": "Jax eliminates Rumble"
+            },
+            {
+              "atSec": 1090,
+              "label": "Team fight (3 kills)",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1183,
+              "label": "Veigar outduels Karma"
+            },
+            {
+              "atSec": 1206,
+              "label": "Blue takes Baron",
+              "kind": "baron"
+            },
+            {
+              "atSec": 1273,
+              "label": "Blue takes 3rd Dragon (Hextech)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1385,
+              "label": "Mid Inhibitor falls (Red)"
+            },
+            {
+              "atSec": 1398,
+              "label": "Kalista Double Kill",
+              "kind": "kill"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 60,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "IfvqqnR8L1U",
+          "title": "Veigar Support vs Elise - KR Master Patch 25.09",
+          "rankClaim": "Master",
+          "patch": "25.9",
+          "durationSec": 2154,
+          "region": "KR",
+          "uploaded": "2025-05-13",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 61,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "f_69prsTtLQ",
+          "title": "Veigar Mid vs Orianna - KR Master Patch 26.15",
+          "rankClaim": "Master",
+          "patch": "26.15",
+          "durationSec": 1754,
+          "region": "KR",
+          "uploaded": "2026-08-11",
+          "moments": []
+        },
+        {
+          "videoId": "3byGZCYq7WY",
+          "title": "Veigar Mid vs Orianna - KR Grandmaster Patch 25.23",
+          "rankClaim": "Grandmaster",
+          "patch": "25.23",
+          "durationSec": 1434,
+          "region": "KR",
+          "uploaded": "2025-11-29",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 63,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "Qeg60h0zl0U",
+          "title": "Veigar Support vs Brand - KR Master Patch 26.04",
+          "rankClaim": "Master",
+          "patch": "26.4",
+          "durationSec": 1556,
+          "region": "KR",
+          "uploaded": "2026-03-05",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 69,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "kHc4K5AUo-8",
+          "title": "(Pekin Woof) Veigar Mid vs Cassiopeia - NA Grandmaster Patch 26.16",
+          "rankClaim": "Grandmaster",
+          "patch": "26.16",
+          "durationSec": 1656,
+          "region": "NA",
+          "player": "Pekin Woof",
+          "uploaded": "2026-08-19",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 78,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "YVJzHXZClSQ",
+          "title": "Veigar Top vs Poppy - KR Master Patch 25.04",
+          "rankClaim": "Master",
+          "patch": "25.4",
+          "durationSec": 1853,
+          "region": "KR",
+          "uploaded": "2025-03-06",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 698,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 931,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1160,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1212,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1396,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1417,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1439,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1552,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1594,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1632,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1696,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1723,
+              "label": "Take down The Inhibitor"
+            },
+            {
+              "atSec": 1746,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1832,
+              "label": "End credit"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 80,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "9WAlKsWWgAk",
+          "title": "Veigar Mid vs Pantheon - KR Master Patch 26.03",
+          "rankClaim": "Master",
+          "patch": "26.3",
+          "durationSec": 1467,
+          "region": "KR",
+          "uploaded": "2026-02-13",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 440,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 515,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 548,
+              "label": "Hunt The Dragon",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 810,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 887,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 972,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1103,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1214,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1232,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1291,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1318,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1377,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1456,
+              "label": "End credit"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 84,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "-nalm7gHptk",
+          "title": "Veigar Mid vs Akali - EUW Grandmaster Patch 26.08",
+          "rankClaim": "Grandmaster",
+          "patch": "26.8",
+          "durationSec": 1905,
+          "region": "EUW",
+          "uploaded": "2026-04-22",
+          "moments": []
+        },
+        {
+          "videoId": "5rAqKp73cQc",
+          "title": "Veigar Mid vs Akali - KR Master Patch 25.16",
+          "rankClaim": "Master",
+          "patch": "25.16",
+          "durationSec": 1949,
+          "region": "KR",
+          "uploaded": "2025-08-25",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 101,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "v0V1ejzqFDo",
+          "title": "Veigar Mid vs Xerath - VN Challenger Patch 26.07",
+          "rankClaim": "Challenger",
+          "patch": "26.7",
+          "durationSec": 1884,
+          "uploaded": "2026-04-08",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 289,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1002,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1128,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1220,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1381,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1411,
+              "label": "Hunt The Dragon",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1483,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1519,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1573,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1641,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1681,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1703,
+              "label": "Take down The Inhibitor"
+            },
+            {
+              "atSec": 1814,
+              "label": "Hunt The Baron Nashor",
+              "kind": "baron"
+            },
+            {
+              "atSec": 1835,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1873,
+              "label": "End credit"
+            }
+          ]
+        },
+        {
+          "videoId": "ex1xLO6w8CU",
+          "title": "Veigar vs Xerath MID [ PentaKill ] Korea Master Patch 25.19 ✅",
+          "rankClaim": "Master",
+          "patch": "25.19",
+          "durationSec": 1465,
+          "region": "KR",
+          "player": "PentaKill",
+          "uploaded": "2025-09-27",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 103,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "0Q_p2RpdVso",
+          "title": "Veigar vs Ahri [ MID ] Korea Master 362 LP | Patch 26.14 ✅",
+          "rankClaim": "Master",
+          "patch": "26.14",
+          "durationSec": 1802,
+          "region": "KR",
+          "uploaded": "2026-07-18",
+          "moments": []
+        },
+        {
+          "videoId": "wHhRxdF4DUs",
+          "title": "Veigar vs Ahri [ MID ] Korea Challenger 1766 LP | Patch 25.21 ✅",
+          "rankClaim": "Challenger",
+          "patch": "25.21",
+          "durationSec": 1614,
+          "region": "KR",
+          "uploaded": "2025-10-25",
+          "moments": []
+        },
+        {
+          "videoId": "V-Jd6XBgmaI",
+          "title": "Veigar Mid vs Ahri - KR Grandmaster Patch 25.09",
+          "rankClaim": "Grandmaster",
+          "patch": "25.9",
+          "durationSec": 1542,
+          "region": "KR",
+          "uploaded": "2025-05-11",
+          "moments": []
+        },
+        {
+          "videoId": "FNyFW1SCEpQ",
+          "title": "Veigar Mid vs Ahri - KR Master Patch 25.07",
+          "rankClaim": "Master",
+          "patch": "25.7",
+          "durationSec": 1616,
+          "region": "KR",
+          "uploaded": "2025-04-10",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 105,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "cpeQh6Nzrzo",
+          "title": "(KT Bdd) Veigar Mid vs Fizz (BRO Roamer) - KR Challenger Patch 26.11",
+          "rankClaim": "Challenger",
+          "patch": "26.11",
+          "durationSec": 1693,
+          "region": "KR",
+          "player": "Bdd",
+          "team": "KT",
+          "uploaded": "2026-06-06",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 111,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "tl4Hrpg4LhE",
+          "title": "Veigar Support vs Nautilus - KR Master Patch 25.14",
+          "rankClaim": "Master",
+          "patch": "25.14",
+          "durationSec": 1727,
+          "region": "KR",
+          "uploaded": "2025-07-29",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 112,
+      "lane": "adc",
+      "videos": [
+        {
+          "videoId": "0hCfxhU-I3M",
+          "title": "Veigar Bot vs Viktor - BR Challenger Patch 26.21",
+          "rankClaim": "Challenger",
+          "patch": "26.21",
+          "durationSec": 1749,
+          "uploaded": "2026-11-01",
+          "result": "W",
+          "moments": [
+            {
+              "atSec": 109,
+              "label": "First Blood — Veigar kills Gragas",
+              "kind": "kill"
+            },
+            {
+              "atSec": 333,
+              "label": "Red takes 1st Dragon (Mountain)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 595,
+              "label": "Team fight (3 kills)",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 661,
+              "label": "Red takes 2nd Dragon (Chemtech)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 730,
+              "label": "Veigar picks off Gragas"
+            },
+            {
+              "atSec": 877,
+              "label": "Alistar picks off Viktor"
+            },
+            {
+              "atSec": 1005,
+              "label": "Red takes 3rd Dragon (Infernal)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1184,
+              "label": "Talon kills Viktor",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1278,
+              "label": "Nocturne kills Gragas",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1284,
+              "label": "Blue takes Baron",
+              "kind": "baron"
+            },
+            {
+              "atSec": 1332,
+              "label": "Red takes 4th Dragon (Infernal)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1385,
+              "label": "Team fight (3 kills)",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1564,
+              "label": "Mid Inhibitor falls (Blue)"
+            },
+            {
+              "atSec": 1707,
+              "label": "Talon Double Kill",
+              "kind": "kill"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 127,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "VV8WIb4fZGw",
+          "title": "Veigar vs Lissandra 12/2/6 (Mid) | EUW Grandmaster | Veigar OTP Replay",
+          "rankClaim": "Grandmaster",
+          "patch": "26.8",
+          "durationSec": 1458,
+          "region": "EUW",
+          "patchEstimated": true,
+          "uploaded": "2026-04-23",
+          "moments": []
+        },
+        {
+          "videoId": "RBGBO0p9Bq4",
+          "title": "Veigar Mid vs Lissandra - NA Challenger Patch 26.06",
+          "rankClaim": "Challenger",
+          "patch": "26.6",
+          "durationSec": 1583,
+          "region": "NA",
+          "uploaded": "2026-03-26",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 208,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 279,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 419,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 535,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 586,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 665,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 685,
+              "label": "Hunt The Dragon",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 732,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1061,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1090,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1125,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1212,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1330,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1361,
+              "label": "Hunt The Dragon",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1391,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1422,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1441,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1517,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1540,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1572,
+              "label": "End credit"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 131,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "xgq1xfAF-7Q",
+          "title": "Veigar Mid vs Diana - KR Master Patch 26.10",
+          "rankClaim": "Master",
+          "patch": "26.10",
+          "durationSec": 1440,
+          "region": "KR",
+          "uploaded": "2026-05-20",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 134,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "tcg9pOifggc",
+          "title": "Veigar vs Syndra MID [ Gen.G Chovy ] Patch 26.10 Korea Challenger 2217 LP",
+          "rankClaim": "Challenger",
+          "patch": "26.10",
+          "durationSec": 1539,
+          "region": "KR",
+          "player": "Chovy",
+          "team": "Gen.G",
+          "uploaded": "2026-05-24",
+          "moments": []
+        },
+        {
+          "videoId": "r4s1d6tB1mQ",
+          "title": "Veigar Mid vs Syndra - EUW Grandmaster Patch 26.04",
+          "rankClaim": "Grandmaster",
+          "patch": "26.4",
+          "durationSec": 1898,
+          "region": "EUW",
+          "uploaded": "2026-02-27",
+          "moments": []
+        },
+        {
+          "videoId": "elQhi9uyhp4",
+          "title": "Veigar vs Syndra [ MID ] Korea Grandmaster Patch 25.13 ✅",
+          "rankClaim": "Grandmaster",
+          "patch": "25.13",
+          "durationSec": 1104,
+          "region": "KR",
+          "uploaded": "2025-07-13",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 136,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "5I5I2mk5Ooc",
+          "title": "Veigar Mid vs Aurelion Sol - KR Master Patch 25.08",
+          "rankClaim": "Master",
+          "patch": "25.8",
+          "durationSec": 1537,
+          "region": "KR",
+          "uploaded": "2025-04-26",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 377,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 453,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 697,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 855,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 886,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 926,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 943,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 957,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1069,
+              "label": "Hunt The Dragon",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1097,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1132,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1249,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1266,
+              "label": "Take down The Inhibitor"
+            },
+            {
+              "atSec": 1446,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1497,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1516,
+              "label": "End credit"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 142,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "8BdR6prdpDU",
+          "title": "Veigar Mid vs Zoe - KR Master Patch 25.11",
+          "rankClaim": "Master",
+          "patch": "25.11",
+          "durationSec": 1759,
+          "region": "KR",
+          "uploaded": "2025-06-07",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 145,
+      "lane": "adc",
+      "videos": [
+        {
+          "videoId": "_rhtkehazAA",
+          "title": "Veigar Bot vs Kai'Sa - VN Grandmaster Patch 26.20",
+          "rankClaim": "Grandmaster",
+          "patch": "26.20",
+          "durationSec": 1846,
+          "uploaded": "2026-10-17",
+          "result": "W",
+          "moments": [
+            {
+              "atSec": 142,
+              "label": "First Blood — Jarvan IV kills Pantheon",
+              "kind": "kill"
+            },
+            {
+              "atSec": 557,
+              "label": "Blue takes 1st Dragon (Mountain)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 780,
+              "label": "Jarvan IV eliminates Kai'Sa"
+            },
+            {
+              "atSec": 835,
+              "label": "Skarner kills Evelynn",
+              "kind": "kill"
+            },
+            {
+              "atSec": 931,
+              "label": "Blue takes 2nd Dragon (Hextech)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 995,
+              "label": "Veigar picks off Pantheon"
+            },
+            {
+              "atSec": 1102,
+              "label": "Jarvan IV takes down Evelynn"
+            },
+            {
+              "atSec": 1230,
+              "label": "Veigar Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1252,
+              "label": "Veigar kills Azir",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1303,
+              "label": "Veigar Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1335,
+              "label": "Blue takes 3rd Dragon (Cloud)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1424,
+              "label": "Veigar eliminates Evelynn"
+            },
+            {
+              "atSec": 1497,
+              "label": "Blue takes Baron",
+              "kind": "baron"
+            },
+            {
+              "atSec": 1587,
+              "label": "Team fight (3 kills)",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1645,
+              "label": "Blue takes 4th Dragon (Cloud)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1698,
+              "label": "Skarner eliminates Pantheon"
+            },
+            {
+              "atSec": 1761,
+              "label": "Team fight (3 kills)",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1783,
+              "label": "Mid Inhibitor falls (Red)"
+            }
+          ]
+        },
+        {
+          "videoId": "oNytMaKHE0c",
+          "title": "Veigar Bot vs Kai'Sa - KR Master Patch 26.17",
+          "rankClaim": "Master",
+          "patch": "26.17",
+          "durationSec": 1746,
+          "region": "KR",
+          "uploaded": "2026-09-05",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 150,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "Ift5cF6Vp9k",
+          "title": "Veigar Top vs Gnar - KR Master Patch 26.15",
+          "rankClaim": "Master",
+          "patch": "26.15",
+          "durationSec": 1780,
+          "region": "KR",
+          "uploaded": "2026-08-06",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 154,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "OJQjvvpYJhY",
+          "title": "Veigar vs Zac 12/2/7 (Mid) | EUW Grandmaster | Veigar OTP Replay",
+          "rankClaim": "Grandmaster",
+          "patch": "26.8",
+          "durationSec": 1447,
+          "region": "EUW",
+          "patchEstimated": true,
+          "uploaded": "2026-04-15",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 163,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "7GoEIlorhlo",
+          "title": "Veigar Mid vs Taliyah - KR Challenger Patch 25.24",
+          "rankClaim": "Challenger",
+          "patch": "25.24",
+          "durationSec": 1454,
+          "region": "KR",
+          "uploaded": "2025-12-16",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 457,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 729,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 884,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 901,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 913,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1060,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1087,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1116,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1224,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1261,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1288,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1419,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1443,
+              "label": "End credit"
+            }
+          ]
+        },
+        {
+          "videoId": "sALsbC1_y8w",
+          "title": "Veigar Mid vs Taliyah - KR Challenger Patch 25.21",
+          "rankClaim": "Challenger",
+          "patch": "25.21",
+          "durationSec": 1483,
+          "region": "KR",
+          "uploaded": "2025-10-31",
+          "moments": []
+        },
+        {
+          "videoId": "2SZXH5tnnkk",
+          "title": "Veigar Mid vs Taliyah - KR Master Patch 25.17",
+          "rankClaim": "Master",
+          "patch": "25.17",
+          "durationSec": 1843,
+          "region": "KR",
+          "uploaded": "2025-09-03",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 201,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "xismiH9X1uE",
+          "title": "Veigar Support vs Braum - KR Master Patch 25.12",
+          "rankClaim": "Master",
+          "patch": "25.12",
+          "durationSec": 1773,
+          "region": "KR",
+          "uploaded": "2025-06-25",
+          "moments": []
+        },
+        {
+          "videoId": "YZa2FXGqSxc",
+          "title": "Veigar Support vs Braum - KR Master Patch 25.10",
+          "rankClaim": "Master",
+          "patch": "25.10",
+          "durationSec": 1729,
+          "region": "KR",
+          "uploaded": "2025-05-28",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 222,
+      "lane": "adc",
+      "videos": [
+        {
+          "videoId": "nqaut0XmV9o",
+          "title": "Veigar Bot vs Jinx - NA Grandmaster Patch 26.18",
+          "rankClaim": "Grandmaster",
+          "patch": "26.18",
+          "durationSec": 1822,
+          "region": "NA",
+          "uploaded": "2026-09-18",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 238,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "dDzkYVyNOwg",
+          "title": "Veigar vs Zed 5/2/17 (Mid) | EUW Grandmaster | Veigar OTP Replay",
+          "rankClaim": "Grandmaster",
+          "patch": "26.8",
+          "durationSec": 1551,
+          "region": "EUW",
+          "patchEstimated": true,
+          "uploaded": "2026-04-25",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 240,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "DcdEKFRBb04",
+          "title": "Veigar Top vs Kled - EUW Challenger Patch 25.15",
+          "rankClaim": "Challenger",
+          "patch": "25.15",
+          "durationSec": 1582,
+          "region": "EUW",
+          "uploaded": "2025-08-12",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 246,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "u2wXxGUFQ3g",
+          "title": "Veigar Mid vs Qiyana - KR Master Patch 26.01",
+          "rankClaim": "Master",
+          "patch": "26.1",
+          "durationSec": 1596,
+          "region": "KR",
+          "uploaded": "2026-01-15",
+          "moments": []
+        },
+        {
+          "videoId": "oTe0y8FjANo",
+          "title": "Veigar Mid vs Qiyana - KR Master Patch 25.20",
+          "rankClaim": "Master",
+          "patch": "25.20",
+          "durationSec": 1641,
+          "region": "KR",
+          "uploaded": "2025-10-14",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 350,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "Rl0wDOdZREE",
+          "title": "Veigar Support vs Yuumi - KR Master Patch 25.24",
+          "rankClaim": "Master",
+          "patch": "25.24",
+          "durationSec": 1528,
+          "region": "KR",
+          "uploaded": "2025-12-21",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 169,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 274,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 333,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 411,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 482,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 595,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 809,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 861,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 933,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1010,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1098,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1223,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1252,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1271,
+              "label": "Take down The Inhibitor"
+            },
+            {
+              "atSec": 1331,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1360,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1388,
+              "label": "Take down The Inhibitor"
+            },
+            {
+              "atSec": 1449,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1495,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1517,
+              "label": "End credit"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 497,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "JSPZ7nNH3Ss",
+          "title": "Veigar Support vs Rakan - KR Master Patch 26.06",
+          "rankClaim": "Master",
+          "patch": "26.6",
+          "durationSec": 1470,
+          "region": "KR",
+          "uploaded": "2026-04-01",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 517,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "gs9rAx_kO6E",
+          "title": "(Pekin Woof) Veigar Mid vs Sylas - NA Grandmaster Patch 26.14",
+          "rankClaim": "Grandmaster",
+          "patch": "26.14",
+          "durationSec": 1855,
+          "region": "NA",
+          "player": "Pekin Woof",
+          "uploaded": "2026-07-28",
+          "moments": []
+        },
+        {
+          "videoId": "yB_454Il2GU",
+          "title": "(LR Baus) Veigar Mid vs Sylas - EUW Grandmaster Patch 26.13",
+          "rankClaim": "Grandmaster",
+          "patch": "26.13",
+          "durationSec": 1681,
+          "region": "EUW",
+          "player": "Thebausffs",
+          "uploaded": "2026-07-01",
+          "moments": []
+        },
+        {
+          "videoId": "v3KE4kmIaS4",
+          "title": "Veigar vs Sylas MID [ TripleKill ] Korea Master Patch 25.22 ✅",
+          "rankClaim": "Master",
+          "patch": "25.22",
+          "durationSec": 1909,
+          "region": "KR",
+          "player": "TripleKill",
+          "uploaded": "2025-11-18",
+          "moments": []
+        },
+        {
+          "videoId": "6cb3_-FdmHY",
+          "title": "Veigar Mid vs Sylas - KR Grandmaster Patch 25.14",
+          "rankClaim": "Grandmaster",
+          "patch": "25.14",
+          "durationSec": 1523,
+          "region": "KR",
+          "uploaded": "2025-07-25",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 518,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "rCBHVHIebdo",
+          "title": "Veigar Support vs Neeko - KR Master Patch 25.08",
+          "rankClaim": "Master",
+          "patch": "25.8",
+          "durationSec": 1922,
+          "region": "KR",
+          "uploaded": "2025-04-29",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 175,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 280,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 375,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 566,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 685,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 797,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 873,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 925,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1089,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1224,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1291,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1597,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1812,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1901,
+              "label": "End credit"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 526,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "-CzYnE8UENc",
+          "title": "Veigar Support vs Rell - KR Master Patch 25.13",
+          "rankClaim": "Master",
+          "patch": "25.13",
+          "durationSec": 2033,
+          "region": "KR",
+          "uploaded": "2025-07-11",
+          "moments": []
+        },
+        {
+          "videoId": "UzpxTndU-mg",
+          "title": "Veigar Support vs Rell - VN Challenger Patch 25.11",
+          "rankClaim": "Challenger",
+          "patch": "25.11",
+          "durationSec": 2106,
+          "uploaded": "2025-06-09",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 711,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "T3TBDOCU2mE",
+          "title": "Veigar Mid vs Vex - KR Grandmaster Patch 25.18",
+          "rankClaim": "Grandmaster",
+          "patch": "25.18",
+          "durationSec": 1993,
+          "region": "KR",
+          "uploaded": "2025-09-19",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 777,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "btD2wFoxR9E",
+          "title": "(GSMC Alix) Veigar Mid vs Yone - EUW Challenger Patch 26.16",
+          "rankClaim": "Challenger",
+          "patch": "26.16",
+          "durationSec": 1809,
+          "region": "EUW",
+          "player": "GSMC Alix",
+          "uploaded": "2026-08-27",
+          "moments": []
+        },
+        {
+          "videoId": "u6pxaGEEqfM",
+          "title": "Veigar Mid vs Yone - EUW Grandmaster Patch 25.19",
+          "rankClaim": "Grandmaster",
+          "patch": "25.19",
+          "durationSec": 1759,
+          "region": "EUW",
+          "uploaded": "2025-10-08",
+          "moments": []
+        },
+        {
+          "videoId": "R_03DCPmyR8",
+          "title": "Veigar Mid vs Yone - KR Grandmaster Patch 25.06",
+          "rankClaim": "Grandmaster",
+          "patch": "25.6",
+          "durationSec": 1983,
+          "region": "KR",
+          "uploaded": "2025-03-25",
+          "moments": []
+        },
+        {
+          "videoId": "6SYC7Zujt44",
+          "title": "Veigar Mid vs Yone - KR Master Patch 25.04",
+          "rankClaim": "Master",
+          "patch": "25.4",
+          "durationSec": 2138,
+          "region": "KR",
+          "uploaded": "2025-03-01",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 800,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "g_ZXoqqWE24",
+          "title": "Veigar Mid vs Mel - KR Grandmaster Patch 26.09",
+          "rankClaim": "Grandmaster",
+          "patch": "26.9",
+          "durationSec": 1774,
+          "region": "KR",
+          "uploaded": "2026-05-06",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 901,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "Dq2B9y0Xw1s",
+          "title": "Veigar Mid vs Smolder - BR Challenger Patch 26.05",
+          "rankClaim": "Challenger",
+          "patch": "26.5",
+          "durationSec": 1684,
+          "uploaded": "2026-03-13",
+          "moments": []
+        }
+      ]
+    }
+  ]
+}

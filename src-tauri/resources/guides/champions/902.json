@@ -1,0 +1,2140 @@
+{
+  "schema": 1,
+  "champion": 902,
+  "generatedAt": "2026-11-07T13:25:14.592Z",
+  "guides": [],
+  "general": [
+    {
+      "champion": 902,
+      "lane": "support",
+      "patch": "26.21",
+      "reviewed": false,
+      "keyTips": [
+        {
+          "text": "Handle levels 1 to 5 carefully into engage supports, saving health and mana before trading behind Warm Hugs shielding.",
+          "scope": "champion",
+          "sourceIds": [
+            "ssl"
+          ],
+          "abilityKeys": [
+            {
+              "champion": 902,
+              "key": "E"
+            }
+          ]
+        },
+        {
+          "text": "Save Ultra Mega Fire Kick to break engages and guard the carry; its knockback also stops incoming dashes, so never waste it randomly.",
+          "scope": "champion",
+          "sourceIds": [
+            "ssl"
+          ],
+          "abilityKeys": [
+            {
+              "champion": 902,
+              "key": "Q"
+            }
+          ]
+        },
+        {
+          "text": "Win by stretching fights and defusing enemy engages so a scaling carry keeps attacking.",
+          "scope": "champion",
+          "sourceIds": [
+            "ssl"
+          ]
+        }
+      ],
+      "sections": {
+        "overview": {
+          "tips": []
+        },
+        "early-lane": {
+          "tips": [
+            {
+              "text": "Cast E before damage lands and keep both charges for meaningful trades, since the two shields stack on one ally.",
+              "scope": "champion",
+              "sourceIds": [
+                "ssl"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 902,
+                  "key": "E"
+                }
+              ]
+            },
+            {
+              "text": "Add poke to help the ADC win short trades from outside engage range, never stepping in to force it.",
+              "scope": "champion",
+              "sourceIds": [
+                "ssl"
+              ]
+            },
+            {
+              "text": "Open three ranks in E then max Cozy Campfire, E, and Q.",
+              "scope": "champion",
+              "sourceIds": [
+                "ssl"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 902,
+                  "key": "E"
+                },
+                {
+                  "champion": 902,
+                  "key": "W"
+                },
+                {
+                  "champion": 902,
+                  "key": "Q"
+                }
+              ]
+            },
+            {
+              "text": "At level 6, track enemy engage tools and flip them with Breath of Life instead of spending R on the first minor control effect.",
+              "scope": "champion",
+              "sourceIds": [
+                "ssl"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 902,
+                  "key": "R"
+                }
+              ]
+            }
+          ]
+        },
+        "mid-lane": {
+          "tips": [
+            {
+              "text": "Travel with the ADC or the next strongest carry, since Milio peaks while amplifying reliable allied damage.",
+              "scope": "champion",
+              "sourceIds": [
+                "ssl"
+              ]
+            },
+            {
+              "text": "Set W slightly behind the carry pre-fight for forward kiting inside its healing range, retargeting the campfire as they move.",
+              "scope": "champion",
+              "sourceIds": [
+                "ssl"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 902,
+                  "key": "W"
+                }
+              ]
+            },
+            {
+              "text": "Rotate early to objectives beside the enabled carry, contesting space with range and attack-speed buffs from safety.",
+              "scope": "champion",
+              "sourceIds": [
+                "ssl"
+              ]
+            },
+            {
+              "text": "With enemy engage up, hold Q and R ready behind the carry instead of walking up to start fights.",
+              "scope": "champion",
+              "sourceIds": [
+                "ssl"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 902,
+                  "key": "Q"
+                },
+                {
+                  "champion": 902,
+                  "key": "R"
+                }
+              ]
+            }
+          ]
+        },
+        "win-condition": {
+          "tips": [
+            {
+              "text": "Stand behind and slightly off-axis from the carry, dodging shared area control while staying in shield and cleanse range.",
+              "scope": "champion",
+              "sourceIds": [
+                "ssl"
+              ]
+            },
+            {
+              "text": "Clear disabling and immobilizing chains with R while healing nearby allies, remembering it never removes knockups.",
+              "scope": "champion",
+              "sourceIds": [
+                "ssl"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 902,
+                  "key": "R"
+                }
+              ]
+            },
+            {
+              "text": "Aim Q at divers and engagers to knock them off the carry; a wasted Q invites collapses onto Milio.",
+              "scope": "champion",
+              "sourceIds": [
+                "ssl"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 902,
+                  "key": "Q"
+                }
+              ]
+            },
+            {
+              "text": "Refresh E shields through danger and use W range so the carry holds damage uptime from farther out.",
+              "scope": "champion",
+              "sourceIds": [
+                "ssl"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 902,
+                  "key": "E"
+                },
+                {
+                  "champion": 902,
+                  "key": "W"
+                }
+              ]
+            },
+            {
+              "text": "Apply the passive through ally-facing spells before their attacks, granting bonus magic damage on the next attack or ability.",
+              "scope": "champion",
+              "sourceIds": [
+                "ssl"
+              ]
+            }
+          ]
+        }
+      },
+      "itemization": [
+        {
+          "text": "List Summon Aery, Manaflow Band, Transcendence, and Scorch with Biscuit Delivery and Cosmic Insight on KoSa, fitting poke without detailed reasoning.",
+          "scope": "champion",
+          "sourceIds": [
+            "ssl"
+          ]
+        },
+        {
+          "text": "Build Echoes of Helia into Ionian Boots of Lucidity, Ardent Censer, and Locket of the Iron Solari.",
+          "scope": "champion",
+          "sourceIds": [
+            "ssl"
+          ],
+          "itemIds": [
+            6620,
+            3158,
+            3504,
+            3190
+          ]
+        },
+        {
+          "text": "Record GhostK older January list of Dream Maker, Echoes of Helia, Moonstone Renewer, Diadem of Songs, and Dawncore with Aery, Axiom Arcanist, Transcendence, Scorch, Bone Plating, and Revitalize as the older variant.",
+          "scope": "champion",
+          "sourceIds": [
+            "ghostk"
+          ],
+          "itemIds": [
+            3870,
+            6620,
+            6617,
+            6621
+          ]
+        },
+        {
+          "text": "Value the GhostK build through longer-fight ally survival without item-by-item rationale.",
+          "scope": "champion",
+          "sourceIds": [
+            "ghostk"
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "id": "ssl",
+          "author": "SSL",
+          "rankClaim": "Platinum (profile badge; no title claim)",
+          "rank": "platinum",
+          "url": "https://www.mobafire.com/league-of-legends/build/best-guide-for-milio-l-by-ssl-624095",
+          "kind": "mobafire"
+        },
+        {
+          "id": "ghostk",
+          "author": "GhostK",
+          "rankClaim": "No rank claim",
+          "url": "https://www.mobafire.com/league-of-legends/build/milio-2026-support-guide-new-diadem-of-songs-build-650776",
+          "kind": "mobafire"
+        }
+      ]
+    }
+  ],
+  "vods": [
+    {
+      "enemy": 7,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "ScZG5L9axXY",
+          "title": "(VIT Fleshy) Milio Support vs LeBlanc - EUW Challenger Patch 26.16",
+          "rankClaim": "Challenger",
+          "patch": "26.16",
+          "durationSec": 1860,
+          "region": "EUW",
+          "player": "VIT Fleshy",
+          "uploaded": "2026-08-21",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 12,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "FoT6-skII-A",
+          "title": "Milio Support vs Alistar - KR Grandmaster Patch 25.19",
+          "rankClaim": "Grandmaster",
+          "patch": "25.19",
+          "durationSec": 1647,
+          "region": "KR",
+          "uploaded": "2025-10-02",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 25,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "OMo2_O_lIdc",
+          "title": "Milio Support vs Morgana - KR Master Patch 25.13",
+          "rankClaim": "Master",
+          "patch": "25.13",
+          "durationSec": 1967,
+          "region": "KR",
+          "uploaded": "2025-06-28",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 26,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "kt8UrpHMGR8",
+          "title": "Milio Support vs Zilean - KR Master Patch 26.20",
+          "rankClaim": "Master",
+          "patch": "26.20",
+          "durationSec": 1559,
+          "region": "KR",
+          "uploaded": "2026-10-22",
+          "result": "W",
+          "moments": [
+            {
+              "atSec": 120,
+              "label": "First Blood — Lucian kills Tristana",
+              "kind": "kill"
+            },
+            {
+              "atSec": 454,
+              "label": "Red takes 1st Dragon (Ocean)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 501,
+              "label": "Lucian eliminates Jarvan IV"
+            },
+            {
+              "atSec": 609,
+              "label": "Lucian takes down Tristana"
+            },
+            {
+              "atSec": 651,
+              "label": "Lucian takes down Tristana"
+            },
+            {
+              "atSec": 745,
+              "label": "Hecarim picks off Orianna"
+            },
+            {
+              "atSec": 798,
+              "label": "Red takes 2nd Dragon (Cloud)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 892,
+              "label": "Team fight (3 kills)",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 997,
+              "label": "Zac kills Tristana",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1067,
+              "label": "Lucian picks off Irelia"
+            },
+            {
+              "atSec": 1112,
+              "label": "Blue takes 1st Dragon (Hextech)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1117,
+              "label": "Hecarim eliminates Tristana"
+            },
+            {
+              "atSec": 1147,
+              "label": "Lucian kills Orianna",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1173,
+              "label": "Zac takes down Irelia"
+            },
+            {
+              "atSec": 1258,
+              "label": "Blue takes Baron",
+              "kind": "baron"
+            },
+            {
+              "atSec": 1423,
+              "label": "Blue takes 2nd Dragon (Hextech)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1510,
+              "label": "Team fight (5 kills)",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1527,
+              "label": "Mid Inhibitor falls (Red)"
+            }
+          ]
+        },
+        {
+          "videoId": "lofvCJC-m1A",
+          "title": "Milio Support vs Zilean - KR Grandmaster Patch 25.14",
+          "rankClaim": "Grandmaster",
+          "patch": "25.14",
+          "durationSec": 1959,
+          "region": "KR",
+          "uploaded": "2025-07-21",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 34,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "ER-vsWm-kPY",
+          "title": "Milio Support vs Anivia - EUW Challenger Patch 26.08",
+          "rankClaim": "Challenger",
+          "patch": "26.8",
+          "durationSec": 1796,
+          "region": "EUW",
+          "uploaded": "2026-04-30",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 37,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "z5M6po6ukrQ",
+          "title": "Milio Support vs Sona - NA Challenger Patch 26.05",
+          "rankClaim": "Challenger",
+          "patch": "26.5",
+          "durationSec": 1550,
+          "region": "NA",
+          "uploaded": "2026-03-12",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 40,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "iNrj1Kb5u_8",
+          "title": "(VITB Dekap) Milio Support vs Janna - EUW Challenger Patch 26.14",
+          "rankClaim": "Challenger",
+          "patch": "26.14",
+          "durationSec": 1656,
+          "region": "EUW",
+          "player": "VITB Dekap",
+          "uploaded": "2026-07-24",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 43,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "gQXl44RQvV0",
+          "title": "Milio Support vs Karma - KR Master Patch 26.03",
+          "rankClaim": "Master",
+          "patch": "26.3",
+          "durationSec": 1813,
+          "region": "KR",
+          "uploaded": "2026-02-20",
+          "moments": []
+        },
+        {
+          "videoId": "noz-A_YAYUU",
+          "title": "Milio Support vs Karma - KR Grandmaster Patch 25.20",
+          "rankClaim": "Grandmaster",
+          "patch": "25.20",
+          "durationSec": 1590,
+          "region": "KR",
+          "uploaded": "2025-10-16",
+          "moments": []
+        },
+        {
+          "videoId": "f2ecWz97xoc",
+          "title": "Milio Support vs Karma - KR Master Patch 25.09",
+          "rankClaim": "Master",
+          "patch": "25.9",
+          "durationSec": 1589,
+          "region": "KR",
+          "uploaded": "2025-05-08",
+          "moments": []
+        },
+        {
+          "videoId": "xny6XJFIEQk",
+          "title": "Milio Support vs Karma - EUW Grandmaster Patch 25.05",
+          "rankClaim": "Grandmaster",
+          "patch": "25.5",
+          "durationSec": 1733,
+          "region": "EUW",
+          "uploaded": "2025-03-19",
+          "moments": []
+        },
+        {
+          "videoId": "srFwyckhFQs",
+          "title": "Milio Support vs Karma - EUW Grandmaster Patch 25.04",
+          "rankClaim": "Grandmaster",
+          "patch": "25.4",
+          "durationSec": 1658,
+          "region": "EUW",
+          "uploaded": "2025-03-06",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 44,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "JJqMiaMGVQc",
+          "title": "Milio Support vs Taric - EUW Challenger Patch 26.07",
+          "rankClaim": "Challenger",
+          "patch": "26.7",
+          "durationSec": 1744,
+          "region": "EUW",
+          "uploaded": "2026-04-07",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 53,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "O8sPS5W9DK4",
+          "title": "(WE Cube) Milio Support vs Blitzcrank - KR Master Patch 26.19",
+          "rankClaim": "Master",
+          "patch": "26.19",
+          "durationSec": 1537,
+          "region": "KR",
+          "player": "Cube",
+          "team": "WE",
+          "uploaded": "2026-09-26",
+          "moments": []
+        },
+        {
+          "videoId": "CqMhnHwzf_4",
+          "title": "Milio Support vs Blitzcrank - KR Master Patch 26.07",
+          "rankClaim": "Master",
+          "patch": "26.7",
+          "durationSec": 1779,
+          "region": "KR",
+          "uploaded": "2026-04-16",
+          "moments": []
+        },
+        {
+          "videoId": "wDiMy7ac7Y4",
+          "title": "Milio Support vs Blitzcrank - KR Master Patch 25.18",
+          "rankClaim": "Master",
+          "patch": "25.18",
+          "durationSec": 1465,
+          "region": "KR",
+          "uploaded": "2025-09-19",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 59,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "G2o_Pa1Y2e0",
+          "title": "Milio Support vs Jarvan IV - KR Grandmaster Patch 26.17",
+          "rankClaim": "Grandmaster",
+          "patch": "26.17",
+          "durationSec": 1693,
+          "region": "KR",
+          "uploaded": "2026-08-29",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 78,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "_GyI0NNG_b4",
+          "title": "Milio Support vs Poppy - KR Grandmaster Patch 26.01",
+          "rankClaim": "Grandmaster",
+          "patch": "26.1",
+          "durationSec": 1595,
+          "region": "KR",
+          "uploaded": "2026-01-17",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 100,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 262,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 589,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 612,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 876,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1076,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1317,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1436,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1536,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1584,
+              "label": "End credit"
+            }
+          ]
+        },
+        {
+          "videoId": "hwOGpAtXq5Q",
+          "title": "Milio Support vs Poppy - KR Challenger Patch 25.24",
+          "rankClaim": "Challenger",
+          "patch": "25.24",
+          "durationSec": 1566,
+          "region": "KR",
+          "uploaded": "2026-01-09",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 204,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 371,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 488,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 645,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 765,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 905,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1027,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1086,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1212,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1315,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1383,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1503,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1555,
+              "label": "End credit"
+            }
+          ]
+        },
+        {
+          "videoId": "aEPOO0CW49Y",
+          "title": "Milio Support vs Poppy - KR Grandmaster Patch 25.23",
+          "rankClaim": "Grandmaster",
+          "patch": "25.23",
+          "durationSec": 1442,
+          "region": "KR",
+          "uploaded": "2025-11-26",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 79,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "5Gz7U4eJhtQ",
+          "title": "Milio Support vs Gragas - KR Challenger Patch 25.06",
+          "rankClaim": "Challenger",
+          "patch": "25.6",
+          "durationSec": 1781,
+          "region": "KR",
+          "uploaded": "2025-03-29",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 199,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 372,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 662,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 902,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1062,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1086,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1105,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1193,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1243,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1305,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1421,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1458,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1512,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1612,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1643,
+              "label": "Take down The Inhibitor"
+            },
+            {
+              "atSec": 1714,
+              "label": "Take down The Inhibitor"
+            },
+            {
+              "atSec": 1735,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1760,
+              "label": "End credit"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 80,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "9wNaLtA6T3M",
+          "title": "Milio Support vs Pantheon - KR Master Patch 26.21",
+          "rankClaim": "Master",
+          "patch": "26.21",
+          "durationSec": 1807,
+          "region": "KR",
+          "uploaded": "2026-10-26",
+          "result": "W",
+          "moments": [
+            {
+              "atSec": 679,
+              "label": "Blue takes 1st Dragon (Mountain)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1079,
+              "label": "Blue takes 2nd Dragon (Cloud)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1168,
+              "label": "Kindred picks off Syndra"
+            },
+            {
+              "atSec": 1181,
+              "label": "Kindred Triple Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1187,
+              "label": "Kindred Quadra Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1288,
+              "label": "Team fight (4 kills)",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1399,
+              "label": "Red takes 1st Dragon (Ocean)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1454,
+              "label": "Kindred eliminates Lucian"
+            },
+            {
+              "atSec": 1498,
+              "label": "Smolder picks off Jayce"
+            },
+            {
+              "atSec": 1603,
+              "label": "Blue takes Baron",
+              "kind": "baron"
+            },
+            {
+              "atSec": 1650,
+              "label": "Smolder picks off Pantheon"
+            },
+            {
+              "atSec": 1709,
+              "label": "Ahri picks off Nidalee"
+            },
+            {
+              "atSec": 1712,
+              "label": "Red takes 2nd Dragon (Ocean)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1716,
+              "label": "Smolder takes down Lucian"
+            },
+            {
+              "atSec": 1744,
+              "label": "Mid Inhibitor falls (Blue)"
+            },
+            {
+              "atSec": 1771,
+              "label": "Gragas takes down Syndra"
+            },
+            {
+              "atSec": 1796,
+              "label": "Gragas eliminates Pantheon"
+            }
+          ]
+        },
+        {
+          "videoId": "BJV820n4Voo",
+          "title": "Milio Support vs Pantheon - NA Challenger Patch 25.22",
+          "rankClaim": "Challenger",
+          "patch": "25.22",
+          "durationSec": 1536,
+          "region": "NA",
+          "uploaded": "2025-11-20",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 89,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "pVitwhDeMWA",
+          "title": "Milio Support vs Leona - KR Master Patch 26.04",
+          "rankClaim": "Master",
+          "patch": "26.4",
+          "durationSec": 1557,
+          "region": "KR",
+          "uploaded": "2026-03-05",
+          "moments": []
+        },
+        {
+          "videoId": "Gul9pC5CrUI",
+          "title": "Milio Support vs Leona - NA Grandmaster Patch 25.24",
+          "rankClaim": "Grandmaster",
+          "patch": "25.24",
+          "durationSec": 1583,
+          "region": "NA",
+          "uploaded": "2026-01-03",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 659,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 751,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 899,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 924,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 994,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1033,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1131,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1203,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1317,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1432,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1471,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1487,
+              "label": "Take down The Inhibitor"
+            },
+            {
+              "atSec": 1509,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1560,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1572,
+              "label": "End credit"
+            }
+          ]
+        },
+        {
+          "videoId": "VmrxoCKF0bI",
+          "title": "Milio Support vs Leona - KR Master Patch 25.12",
+          "rankClaim": "Master",
+          "patch": "25.12",
+          "durationSec": 1809,
+          "region": "KR",
+          "uploaded": "2025-06-16",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 98,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "cZIQpd_tk-w",
+          "title": "(KRX Frog) Milio Support vs Shen - KR Challenger Patch 26.17",
+          "rankClaim": "Challenger",
+          "patch": "26.17",
+          "durationSec": 1754,
+          "region": "KR",
+          "player": "KRX Frog",
+          "uploaded": "2026-09-08",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 103,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "YFjAqCAWp7c",
+          "title": "Milio Mid vs Ahri - NA Grandmaster Patch 25.19",
+          "rankClaim": "Grandmaster",
+          "patch": "25.19",
+          "durationSec": 1741,
+          "region": "NA",
+          "uploaded": "2025-10-08",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 111,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "JcXO5qIZsWo",
+          "title": "Milio Support vs Nautilus - KR Grandmaster Patch 25.15",
+          "rankClaim": "Grandmaster",
+          "patch": "25.15",
+          "durationSec": 1706,
+          "region": "KR",
+          "uploaded": "2025-08-09",
+          "moments": []
+        },
+        {
+          "videoId": "1J6IumicIxw",
+          "title": "Milio Support vs Nautilus - NA Challenger Patch 25.10",
+          "rankClaim": "Challenger",
+          "patch": "25.10",
+          "durationSec": 1794,
+          "region": "NA",
+          "uploaded": "2025-05-21",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 292,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 379,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 481,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 562,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 630,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 729,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 839,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 862,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 952,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 977,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1103,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1310,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1437,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1559,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1708,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1728,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1745,
+              "label": "Take down The Inhibitor"
+            },
+            {
+              "atSec": 1773,
+              "label": "End credit"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 117,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "pLvflpVWiXM",
+          "title": "Milio Support vs Lulu - KR Master Patch 26.20",
+          "rankClaim": "Master",
+          "patch": "26.20",
+          "durationSec": 1453,
+          "region": "KR",
+          "uploaded": "2026-10-11",
+          "result": "W",
+          "moments": [
+            {
+              "atSec": 103,
+              "label": "First Blood — Lucian kills Aphelios",
+              "kind": "kill"
+            },
+            {
+              "atSec": 180,
+              "label": "Lucian takes down Aphelios"
+            },
+            {
+              "atSec": 259,
+              "label": "Galio picks off Kindred"
+            },
+            {
+              "atSec": 519,
+              "label": "Team fight (4 kills)",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 584,
+              "label": "Lucian picks off Lulu"
+            },
+            {
+              "atSec": 700,
+              "label": "Blue takes 1st Dragon (Chemtech)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 780,
+              "label": "Lucian kills Yasuo",
+              "kind": "kill"
+            },
+            {
+              "atSec": 788,
+              "label": "Lucian Triple Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 881,
+              "label": "Blue takes Rift Herald",
+              "kind": "herald"
+            },
+            {
+              "atSec": 975,
+              "label": "Lucian picks off Gragas"
+            },
+            {
+              "atSec": 1020,
+              "label": "Blue takes 2nd Dragon (Cloud)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1044,
+              "label": "Lucian picks off Gragas"
+            },
+            {
+              "atSec": 1228,
+              "label": "Blue takes Baron",
+              "kind": "baron"
+            },
+            {
+              "atSec": 1280,
+              "label": "Mid Inhibitor falls (Red)"
+            },
+            {
+              "atSec": 1309,
+              "label": "Tryndamere eliminates Lulu"
+            },
+            {
+              "atSec": 1375,
+              "label": "Team fight (3 kills)",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1407,
+              "label": "Blue takes 3rd Dragon (Hextech)",
+              "kind": "dragon"
+            }
+          ]
+        },
+        {
+          "videoId": "C9c_o7K8Myo",
+          "title": "Milio Support vs Lulu - KR Grandmaster Patch 26.02",
+          "rankClaim": "Grandmaster",
+          "patch": "26.2",
+          "durationSec": 1590,
+          "region": "KR",
+          "uploaded": "2026-01-28",
+          "moments": []
+        },
+        {
+          "videoId": "uygCG_XLgIk",
+          "title": "Milio Support vs Lulu - VN Challenger Patch 25.24",
+          "rankClaim": "Challenger",
+          "patch": "25.24",
+          "durationSec": 1610,
+          "uploaded": "2025-12-26",
+          "moments": []
+        },
+        {
+          "videoId": "u5id3V_mxKs",
+          "title": "Milio Support vs Lulu - KR Grandmaster Patch 25.21",
+          "rankClaim": "Grandmaster",
+          "patch": "25.21",
+          "durationSec": 1660,
+          "region": "KR",
+          "uploaded": "2025-10-30",
+          "moments": []
+        },
+        {
+          "videoId": "bz4HMUKcxVs",
+          "title": "Milio Support vs Lulu - KR Master Patch 25.16",
+          "rankClaim": "Master",
+          "patch": "25.16",
+          "durationSec": 2036,
+          "region": "KR",
+          "uploaded": "2025-08-20",
+          "moments": []
+        },
+        {
+          "videoId": "WrtQWKPCw-Q",
+          "title": "Milio Support vs Lulu - EUW Grandmaster Patch 25.13",
+          "rankClaim": "Grandmaster",
+          "patch": "25.13",
+          "durationSec": 1636,
+          "region": "EUW",
+          "uploaded": "2025-07-10",
+          "moments": []
+        },
+        {
+          "videoId": "60E9ezs1_wM",
+          "title": "Milio Support vs Lulu - NA Grandmaster Patch 25.12",
+          "rankClaim": "Grandmaster",
+          "patch": "25.12",
+          "durationSec": 1814,
+          "region": "NA",
+          "uploaded": "2025-06-25",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 142,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "lRBHa9y2V0E",
+          "title": "Milio Support vs Zoe - KR Master Patch 25.24",
+          "rankClaim": "Master",
+          "patch": "25.24",
+          "durationSec": 1494,
+          "region": "KR",
+          "uploaded": "2025-12-08",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 25,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 185,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 387,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 498,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 636,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 796,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 889,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 999,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1042,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1100,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1170,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1265,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1438,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1483,
+              "label": "End credit"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 147,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "EIbObnN6FRk",
+          "title": "Milio Support vs Seraphine - VN Challenger Patch 26.08",
+          "rankClaim": "Challenger",
+          "patch": "26.8",
+          "durationSec": 1586,
+          "uploaded": "2026-04-21",
+          "moments": []
+        },
+        {
+          "videoId": "ZleuI4amcoY",
+          "title": "Milio Support vs Seraphine - KR Challenger Patch 26.06",
+          "rankClaim": "Challenger",
+          "patch": "26.6",
+          "durationSec": 1768,
+          "region": "KR",
+          "uploaded": "2026-03-27",
+          "moments": []
+        },
+        {
+          "videoId": "Jk4qu4xgpAg",
+          "title": "Milio Support vs Seraphine - KR Master Patch 25.05",
+          "rankClaim": "Master",
+          "patch": "25.5",
+          "durationSec": 1625,
+          "region": "KR",
+          "uploaded": "2025-03-16",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 150,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "GjZ1VBRJXZo",
+          "title": "Milio Top vs Gnar - NA Grandmaster Patch 26.13",
+          "rankClaim": "Grandmaster",
+          "patch": "26.13",
+          "durationSec": 1573,
+          "region": "NA",
+          "uploaded": "2026-07-17",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 164,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "Pmf7961pqlw",
+          "title": "(NS Lucy) Milio Support vs Camille (OMG Juhan) - KR Challenger Patch 26.18",
+          "rankClaim": "Challenger",
+          "patch": "26.18",
+          "durationSec": 1803,
+          "region": "KR",
+          "player": "Lucy",
+          "team": "NS",
+          "uploaded": "2026-09-13",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 201,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "TLUKz-mfaoY",
+          "title": "Milio Support vs Braum - KR Master Patch 26.19",
+          "rankClaim": "Master",
+          "patch": "26.19",
+          "durationSec": 1578,
+          "region": "KR",
+          "uploaded": "2026-10-08",
+          "result": "W",
+          "moments": [
+            {
+              "atSec": 155,
+              "label": "First Blood — Lucian kills Braum",
+              "kind": "kill"
+            },
+            {
+              "atSec": 402,
+              "label": "Red takes 1st Dragon (Infernal)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 756,
+              "label": "Lucian picks off Braum"
+            },
+            {
+              "atSec": 801,
+              "label": "Red takes 2nd Dragon (Cloud)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 971,
+              "label": "Lucian Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1042,
+              "label": "Lucian picks off Varus"
+            },
+            {
+              "atSec": 1125,
+              "label": "Red takes 3rd Dragon (Ocean)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1244,
+              "label": "Lucian kills Syndra",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1253,
+              "label": "Lucian Triple Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1280,
+              "label": "Red takes Baron",
+              "kind": "baron"
+            },
+            {
+              "atSec": 1346,
+              "label": "Lucian kills Syndra",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1394,
+              "label": "Mid Inhibitor falls (Blue)"
+            },
+            {
+              "atSec": 1455,
+              "label": "Lucian picks off Varus"
+            },
+            {
+              "atSec": 1462,
+              "label": "Lucian Triple Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1472,
+              "label": "Red takes 4th Dragon (Ocean)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1529,
+              "label": "Team fight (3 kills)",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1535,
+              "label": "Lucian Triple Kill",
+              "kind": "kill"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 235,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "Y7i05S3QmW8",
+          "title": "Milio Support vs Senna - EUW Grandmaster Patch 25.11",
+          "rankClaim": "Grandmaster",
+          "patch": "25.11",
+          "durationSec": 1602,
+          "region": "EUW",
+          "uploaded": "2025-06-13",
+          "moments": []
+        },
+        {
+          "videoId": "ayiMRwBVdL0",
+          "title": "Milio Support vs Senna - KR Master Patch 25.10",
+          "rankClaim": "Master",
+          "patch": "25.10",
+          "durationSec": 1527,
+          "region": "KR",
+          "uploaded": "2025-05-28",
+          "moments": []
+        },
+        {
+          "videoId": "3U37wONi7ec",
+          "title": "Milio Support vs Senna - KR Master Patch 25.08",
+          "rankClaim": "Master",
+          "patch": "25.8",
+          "durationSec": 1862,
+          "region": "KR",
+          "uploaded": "2025-04-22",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 267,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "8QqrYKoRJ9g",
+          "title": "Milio Support vs Nami - KR Master Patch 25.22",
+          "rankClaim": "Master",
+          "patch": "25.22",
+          "durationSec": 1716,
+          "region": "KR",
+          "uploaded": "2025-11-12",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 350,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "N8bdoU6sIbY",
+          "title": "Milio Support vs Yuumi - KR Grandmaster Patch 26.09",
+          "rankClaim": "Grandmaster",
+          "patch": "26.9",
+          "durationSec": 1551,
+          "region": "KR",
+          "uploaded": "2026-05-04",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 412,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "IRjKSy2BF4E",
+          "title": "Milio Support vs Thresh - KR Master Patch 26.10",
+          "rankClaim": "Master",
+          "patch": "26.10",
+          "durationSec": 1489,
+          "region": "KR",
+          "uploaded": "2026-05-16",
+          "moments": []
+        },
+        {
+          "videoId": "GCZWOoG1JIk",
+          "title": "Milio Support vs Thresh - TW Challenger Patch 26.04",
+          "rankClaim": "Challenger",
+          "patch": "26.4",
+          "durationSec": 1708,
+          "uploaded": "2026-02-27",
+          "moments": []
+        },
+        {
+          "videoId": "bWfFkA1XL3M",
+          "title": "Milio Support vs Thresh - EUW Grandmaster Patch 25.17",
+          "rankClaim": "Grandmaster",
+          "patch": "25.17",
+          "durationSec": 1467,
+          "region": "EUW",
+          "uploaded": "2025-09-04",
+          "moments": []
+        },
+        {
+          "videoId": "-hhLGIQW5Oc",
+          "title": "Milio Support vs Thresh - NA Challenger Patch 25.14",
+          "rankClaim": "Challenger",
+          "patch": "25.14",
+          "durationSec": 1915,
+          "region": "NA",
+          "uploaded": "2025-07-30",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 432,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "8JD-rdFm4W8",
+          "title": "(KRX Minous) Milio Support vs Bard (DNS Life) - KR Challenger Patch 26.12",
+          "rankClaim": "Challenger",
+          "patch": "26.12",
+          "durationSec": 1438,
+          "region": "KR",
+          "player": "KRX Minous",
+          "uploaded": "2026-06-19",
+          "moments": []
+        },
+        {
+          "videoId": "BtkjGHixhs0",
+          "title": "Milio Support vs Bard - VN Challenger Patch 25.23",
+          "rankClaim": "Challenger",
+          "patch": "25.23",
+          "durationSec": 1556,
+          "uploaded": "2025-12-05",
+          "moments": []
+        },
+        {
+          "videoId": "-hs6ziA73t0",
+          "title": "Milio Support vs Bard - NA Challenger Patch 25.20",
+          "rankClaim": "Challenger",
+          "patch": "25.20",
+          "durationSec": 1446,
+          "region": "NA",
+          "uploaded": "2025-10-24",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 497,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "wU_m0Ayjxno",
+          "title": "(GAM Taki) Milio Support vs Rakan - KR Master Patch 26.13",
+          "rankClaim": "Master",
+          "patch": "26.13",
+          "durationSec": 1504,
+          "region": "KR",
+          "player": "GAM Taki",
+          "uploaded": "2026-07-03",
+          "moments": []
+        },
+        {
+          "videoId": "heYdQVJaf7k",
+          "title": "(SPSS Pyrka) Milio Support vs Rakan - EUW Challenger Patch 26.11",
+          "rankClaim": "Challenger",
+          "patch": "26.11",
+          "durationSec": 1427,
+          "region": "EUW",
+          "player": "SPSS Pyrka",
+          "uploaded": "2026-06-07",
+          "moments": []
+        },
+        {
+          "videoId": "83Mgyk4Lyig",
+          "title": "Milio Support vs Rakan - KR Master Patch 26.06",
+          "rankClaim": "Master",
+          "patch": "26.6",
+          "durationSec": 1814,
+          "region": "KR",
+          "uploaded": "2026-04-02",
+          "moments": []
+        },
+        {
+          "videoId": "0zHvJoRJpm8",
+          "title": "Milio Support vs Rakan - KR Master Patch 26.03",
+          "rankClaim": "Master",
+          "patch": "26.3",
+          "durationSec": 1570,
+          "region": "KR",
+          "uploaded": "2026-02-13",
+          "moments": []
+        },
+        {
+          "videoId": "w2XJ39FDCCs",
+          "title": "Milio Support vs Rakan - EUW Grandmaster Patch 26.02",
+          "rankClaim": "Grandmaster",
+          "patch": "26.2",
+          "durationSec": 1550,
+          "region": "EUW",
+          "uploaded": "2026-02-04",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 517,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "0XnVj56O0LQ",
+          "title": "Milio Support vs Sylas - KR Master Patch 25.11",
+          "rankClaim": "Master",
+          "patch": "25.11",
+          "durationSec": 1782,
+          "region": "KR",
+          "uploaded": "2025-06-07",
+          "moments": []
+        },
+        {
+          "videoId": "2I2D97slyBg",
+          "title": "Milio Support vs Sylas - NA Grandmaster Patch 25.07",
+          "rankClaim": "Grandmaster",
+          "patch": "25.7",
+          "durationSec": 2026,
+          "region": "NA",
+          "uploaded": "2025-04-09",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 518,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "NfUGmMm4h1A",
+          "title": "Milio Support vs Neeko - EUW Grandmaster Patch 25.18",
+          "rankClaim": "Grandmaster",
+          "patch": "25.18",
+          "durationSec": 1588,
+          "region": "EUW",
+          "uploaded": "2025-09-25",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 526,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "VibdCaYDmUk",
+          "title": "Milio Support vs Rell - EUW Grandmaster Patch 25.06",
+          "rankClaim": "Grandmaster",
+          "patch": "25.6",
+          "durationSec": 1826,
+          "region": "EUW",
+          "uploaded": "2025-04-02",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 555,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "YilSs0ZaFqk",
+          "title": "Milio Support vs Pyke (BLG ON) - KR Challenger Patch 26.15",
+          "rankClaim": "Challenger",
+          "patch": "26.15",
+          "durationSec": 1838,
+          "region": "KR",
+          "uploaded": "2026-08-08",
+          "moments": []
+        },
+        {
+          "videoId": "PY1qc5wJAS0",
+          "title": "(AL Kael) Milio Support vs Pyke - KR Grandmaster Patch 26.13",
+          "rankClaim": "Grandmaster",
+          "patch": "26.13",
+          "durationSec": 1604,
+          "region": "KR",
+          "player": "Kael",
+          "team": "AL",
+          "uploaded": "2026-07-10",
+          "moments": []
+        },
+        {
+          "videoId": "E92KsU337Rk",
+          "title": "Milio Support vs Pyke - EUW Grandmaster Patch 25.24",
+          "rankClaim": "Grandmaster",
+          "patch": "25.24",
+          "durationSec": 1581,
+          "region": "EUW",
+          "uploaded": "2025-12-18",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 492,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 566,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 875,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1033,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1054,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1067,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1208,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1302,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1516,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1555,
+              "label": "Take down The Inhibitor"
+            },
+            {
+              "atSec": 1570,
+              "label": "End credit"
+            }
+          ]
+        },
+        {
+          "videoId": "kdI9DEzj5_U",
+          "title": "Milio Support vs Pyke - NA Challenger Patch 25.13",
+          "rankClaim": "Challenger",
+          "patch": "25.13",
+          "durationSec": 1671,
+          "region": "NA",
+          "uploaded": "2025-07-18",
+          "moments": []
+        },
+        {
+          "videoId": "5CbMPCb3rXQ",
+          "title": "Milio Support vs Pyke - EUW Grandmaster Patch 25.08",
+          "rankClaim": "Grandmaster",
+          "patch": "25.8",
+          "durationSec": 1609,
+          "region": "EUW",
+          "uploaded": "2025-05-01",
+          "moments": []
+        },
+        {
+          "videoId": "Xf522ljJfxs",
+          "title": "Milio Support vs Pyke - VN Challenger Patch 25.04",
+          "rankClaim": "Challenger",
+          "patch": "25.4",
+          "durationSec": 1743,
+          "uploaded": "2025-02-25",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 257,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 471,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 559,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 779,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 872,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1307,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1456,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1586,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1649,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1678,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1692,
+              "label": "Take down The Inhibitor"
+            },
+            {
+              "atSec": 1703,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1722,
+              "label": "End credit"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 888,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "JTs2rWmS_tE",
+          "title": "Milio Support vs Renata Glasc (GEN Lumos) - KR Challenger Patch 26.16",
+          "rankClaim": "Challenger",
+          "patch": "26.16",
+          "durationSec": 1652,
+          "region": "KR",
+          "uploaded": "2026-08-23",
+          "moments": []
+        }
+      ]
+    }
+  ]
+}

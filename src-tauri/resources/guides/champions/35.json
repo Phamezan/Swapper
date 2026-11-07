@@ -1,0 +1,3839 @@
+{
+  "schema": 1,
+  "champion": 35,
+  "generatedAt": "2026-11-07T13:25:14.592Z",
+  "guides": [],
+  "general": [
+    {
+      "champion": 35,
+      "lane": "support",
+      "patch": "26.21",
+      "reviewed": false,
+      "keyTips": [
+        {
+          "text": "Treat area and vision control as the main support value: stack prepared boxes as stored damage and control, up to twenty-one in one area, backed by wards or blue trinket coverage.",
+          "scope": "champion",
+          "sourceIds": [
+            "fearthejester"
+          ],
+          "abilityKeys": [
+            {
+              "champion": 35,
+              "key": "W"
+            }
+          ]
+        },
+        {
+          "text": "Contest the middle brush on arrival with Oracle Lens ready, placing a box to block or punish an enemy whose outline shows in a side brush; against a hook support, approach only when reaction timing is reliable.",
+          "scope": "champion",
+          "sourceIds": [
+            "fearthejester"
+          ],
+          "abilityKeys": [
+            {
+              "champion": 35,
+              "key": "W"
+            },
+            {
+              "champion": 35,
+              "key": "Q"
+            }
+          ],
+          "itemIds": [
+            3364
+          ]
+        },
+        {
+          "text": "Begin objective areas about two minutes ahead, shifting toward a blue trinket after level nine so vision stays up while boxes deny entry to the river fight.",
+          "scope": "champion",
+          "sourceIds": [
+            "fearthejester"
+          ],
+          "abilityKeys": [
+            {
+              "champion": 35,
+              "key": "W"
+            }
+          ]
+        }
+      ],
+      "sections": {
+        "overview": {
+          "tips": []
+        },
+        "early-lane": {
+          "tips": [
+            {
+              "text": "When the enemy contests the center brush, spend a box to deny them the space; when safe, check whether the tower-side brush is warded before returning to the middle brush.",
+              "scope": "champion",
+              "sourceIds": [
+                "fearthejester"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 35,
+                  "key": "W"
+                }
+              ]
+            },
+            {
+              "text": "Use brush and river entrances as unseen approach points, tracking minion vision and probing reactions with a brief Q feint or a step-out-and-Q-back.",
+              "scope": "champion",
+              "sourceIds": [
+                "fearthejester"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 35,
+                  "key": "Q"
+                }
+              ]
+            },
+            {
+              "text": "Drill box-blocking and Q buffering in Practice Tool: catching a hook with a box or dodging one yourself buys the ADC room to farm and trade.",
+              "scope": "champion",
+              "sourceIds": [
+                "fearthejester"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 35,
+                  "key": "W"
+                },
+                {
+                  "champion": 35,
+                  "key": "Q"
+                }
+              ]
+            },
+            {
+              "text": "Spend the E-then-Q quick trade only when retaliation is unlikely: it lands Two-Shiv with a backstab nearly together but uses Shaco's only escape.",
+              "scope": "champion",
+              "sourceIds": [
+                "fearthejester"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 35,
+                  "key": "E"
+                },
+                {
+                  "champion": 35,
+                  "key": "Q"
+                }
+              ]
+            }
+          ]
+        },
+        "mid-lane": {
+          "tips": [
+            {
+              "text": "Cover a river choke with three boxes as the vision bridge, expanding into the adjacent enemy jungle only while the team can hold that ground.",
+              "scope": "champion",
+              "sourceIds": [
+                "fearthejester"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 35,
+                  "key": "W"
+                }
+              ]
+            },
+            {
+              "text": "In a split with one ally sidelaning and two mid, place boxes and vision in the connecting jungle to cover both routes and leave fallback traps behind the mid siege.",
+              "scope": "champion",
+              "sourceIds": [
+                "fearthejester"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 35,
+                  "key": "W"
+                }
+              ]
+            },
+            {
+              "text": "When the team cannot coordinate that split, siege slower while covering both flanks and placing retreat boxes behind the group.",
+              "scope": "champion",
+              "sourceIds": [
+                "fearthejester"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 35,
+                  "key": "W"
+                }
+              ]
+            }
+          ]
+        },
+        "win-condition": {
+          "tips": [
+            {
+              "text": "Against stronger direct-fight teams, set the side-lane threat before committing: arm boxes first, avoid pushing early, and force opponents to spend time answering it.",
+              "scope": "champion",
+              "sourceIds": [
+                "fearthejester"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 35,
+                  "key": "W"
+                }
+              ]
+            },
+            {
+              "text": "For Baron, prepare the enemy top-side jungle, then draw enemies through the armed area while the team starts it; stay off the objective, distract with the clone or chained fear, and stop the play when the team turns disadvantaged.",
+              "scope": "champion",
+              "sourceIds": [
+                "fearthejester"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 35,
+                  "key": "W"
+                },
+                {
+                  "champion": 35,
+                  "key": "R"
+                }
+              ]
+            },
+            {
+              "text": "After Baron, reset and threaten a side lane when Teleport is available, or return to the siege and split plan without it.",
+              "scope": "champion",
+              "sourceIds": [
+                "fearthejester"
+              ]
+            }
+          ]
+        }
+      },
+      "itemization": [
+        {
+          "text": "Run Arcane Comet, Axiom Arcanist, Transcendence, Gathering Storm, Legend: Haste, and Last Stand with Ignite and Teleport, as a specialized damage and control setup.",
+          "scope": "champion",
+          "sourceIds": [
+            "fearthejester"
+          ]
+        },
+        {
+          "text": "Build Zaz'Zak's Realmspike, Imperial Mandate, Malignance, Cryptbloom, Rabadon's Deathcap, and Mejai's Soulstealer for high-haste AP control.",
+          "scope": "champion",
+          "sourceIds": [
+            "fearthejester"
+          ],
+          "itemIds": [
+            3871,
+            4005,
+            3118,
+            3137,
+            3089,
+            3041
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "id": "fearthejester",
+          "author": "Fear The Jester",
+          "rankClaim": "No rank claim",
+          "url": "https://www.mobafire.com/league-of-legends/build/26-18-shaco-support-guide-2-9mil-sup-otp-598078",
+          "kind": "mobafire"
+        }
+      ]
+    }
+  ],
+  "vods": [
+    {
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "aMbJKNPjNBM",
+          "title": "I Finally Got To Show Midbeast My AD Shaco",
+          "rankClaim": "Master+",
+          "patch": "26.21",
+          "durationSec": 2132,
+          "patchEstimated": true,
+          "player": "Broxah",
+          "uploaded": "2026-11-02",
+          "format": "stream",
+          "cam": true,
+          "moments": []
+        },
+        {
+          "videoId": "y32r8bOteq4",
+          "title": "AD Shaco Cannot Be Balanced..",
+          "rankClaim": "Master+",
+          "patch": "26.18",
+          "durationSec": 1320,
+          "patchEstimated": true,
+          "player": "Broxah",
+          "uploaded": "2026-09-10",
+          "format": "stream",
+          "cam": true,
+          "moments": []
+        },
+        {
+          "videoId": "R7aDHVmuCFs",
+          "title": "I ASKED RANK 1 AP SHACO FOR A COACHING SESSION!?",
+          "rankClaim": "Master+",
+          "patch": "26.17",
+          "durationSec": 2278,
+          "patchEstimated": true,
+          "player": "Broxah",
+          "uploaded": "2026-09-02",
+          "format": "stream",
+          "cam": true,
+          "moments": [
+            {
+              "atSec": 180,
+              "label": "Game 1"
+            },
+            {
+              "atSec": 1080,
+              "label": "Game 2"
+            }
+          ]
+        },
+        {
+          "videoId": "gr1Gs8gZgJc",
+          "title": "AD SHACO JUNGLE IS ACTUALLY BROKEN...",
+          "rankClaim": "Master+",
+          "patch": "26.17",
+          "durationSec": 2303,
+          "patchEstimated": true,
+          "player": "Broxah",
+          "uploaded": "2026-08-29",
+          "format": "stream",
+          "cam": true,
+          "moments": []
+        },
+        {
+          "videoId": "bU9sQsGVHfQ",
+          "title": "I Finally Mastered BOTH AP & AD Shaco",
+          "rankClaim": "Master+",
+          "patch": "26.16",
+          "durationSec": 2058,
+          "patchEstimated": true,
+          "player": "Broxah",
+          "uploaded": "2026-08-22",
+          "format": "stream",
+          "cam": true,
+          "moments": []
+        },
+        {
+          "videoId": "eEMl40vQ9_8",
+          "title": "Broxah Officially Becomes A Shaco Jungle Main",
+          "rankClaim": "Master+",
+          "patch": "26.16",
+          "durationSec": 2053,
+          "patchEstimated": true,
+          "player": "Broxah",
+          "uploaded": "2026-08-15",
+          "format": "stream",
+          "cam": true,
+          "moments": []
+        },
+        {
+          "videoId": "Sz1Y7ag1-ao",
+          "title": "Broxah Discovers The Struggles of Playing AP Shaco",
+          "rankClaim": "Master+",
+          "patch": "26.16",
+          "durationSec": 2269,
+          "patchEstimated": true,
+          "player": "Broxah",
+          "uploaded": "2026-08-12",
+          "format": "stream",
+          "cam": true,
+          "moments": []
+        },
+        {
+          "videoId": "PVvc9rd6OS4",
+          "title": "I Turned Shaco Into an LP STEALING Machine!?",
+          "rankClaim": "Master+",
+          "patch": "26.15",
+          "durationSec": 1961,
+          "patchEstimated": true,
+          "player": "Broxah",
+          "uploaded": "2026-08-09",
+          "format": "stream",
+          "cam": true,
+          "moments": []
+        },
+        {
+          "videoId": "kDO2H8XKxqU",
+          "title": "Becoming a Complete Shaco Player (AP & AD)",
+          "rankClaim": "Master+",
+          "patch": "26.15",
+          "durationSec": 2179,
+          "patchEstimated": true,
+          "player": "Broxah",
+          "uploaded": "2026-08-06",
+          "format": "stream",
+          "cam": true,
+          "moments": []
+        },
+        {
+          "videoId": "E9LRNVjgv5g",
+          "title": "The Cleanest AP SHACO Game I Ever Played",
+          "rankClaim": "Master+",
+          "patch": "26.15",
+          "durationSec": 1003,
+          "patchEstimated": true,
+          "player": "Broxah",
+          "uploaded": "2026-08-01",
+          "format": "stream",
+          "cam": true,
+          "moments": []
+        },
+        {
+          "videoId": "YnDWTm8Euis",
+          "title": "The difference between AP and AD Shaco",
+          "rankClaim": "Master+",
+          "patch": "26.14",
+          "durationSec": 2402,
+          "patchEstimated": true,
+          "player": "Broxah",
+          "uploaded": "2026-07-26",
+          "format": "stream",
+          "cam": true,
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 2,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "TOgMqkVITE4",
+          "title": "Shaco Top vs Olaf - NA Grandmaster Patch 25.13",
+          "rankClaim": "Grandmaster",
+          "patch": "25.13",
+          "durationSec": 1568,
+          "region": "NA",
+          "uploaded": "2025-07-12",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 5,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "J7nsrmNlvZ0",
+          "title": "Shaco Jungle vs Xin Zhao - KR Master Patch 26.05",
+          "rankClaim": "Master",
+          "patch": "26.5",
+          "durationSec": 1697,
+          "region": "KR",
+          "uploaded": "2026-03-10",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 108,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 301,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 604,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 724,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 909,
+              "label": "Hunt The Dragon",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 942,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1127,
+              "label": "Hunt The Rift Herald",
+              "kind": "herald"
+            },
+            {
+              "atSec": 1182,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1205,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1218,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1293,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1381,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1484,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1551,
+              "label": "Hunt The Dragon",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1570,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1603,
+              "label": "Take down The Inhibitor"
+            },
+            {
+              "atSec": 1637,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1686,
+              "label": "End credit"
+            }
+          ]
+        },
+        {
+          "videoId": "0f8HcR0vOqs",
+          "title": "Shaco Jungle vs Xin Zhao - KR Master Patch 26.03",
+          "rankClaim": "Master",
+          "patch": "26.3",
+          "durationSec": 1447,
+          "region": "KR",
+          "uploaded": "2026-02-11",
+          "moments": []
+        },
+        {
+          "videoId": "J1wpge78Q_c",
+          "title": "Shaco Jungle vs Xin Zhao - KR Master Patch 25.21",
+          "rankClaim": "Master",
+          "patch": "25.21",
+          "durationSec": 1805,
+          "region": "KR",
+          "uploaded": "2025-10-27",
+          "moments": []
+        },
+        {
+          "videoId": "_0zybbLydko",
+          "title": "Shaco vs Xin Zhao Jungle [ Triple Kill ] Patch 25.12 Korea Grandmaster ✅",
+          "rankClaim": "Grandmaster",
+          "patch": "25.12",
+          "durationSec": 1421,
+          "region": "KR",
+          "player": "Triple Kill",
+          "uploaded": "2025-06-14",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 9,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "-JYHEGCzn_w",
+          "title": "Shaco vs Fiddlesticks [ Jungle ] Lol Korea Master Patch 25.8 ✅",
+          "rankClaim": "Master",
+          "patch": "25.8",
+          "durationSec": 1379,
+          "region": "KR",
+          "uploaded": "2025-04-19",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 11,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "8KDVJbd8_Ug",
+          "title": "Shaco Jungle vs Master Yi - BR Challenger Patch 25.24",
+          "rankClaim": "Challenger",
+          "patch": "25.24",
+          "durationSec": 1593,
+          "uploaded": "2026-01-07",
+          "moments": []
+        },
+        {
+          "videoId": "1AsOKDrJMMk",
+          "title": "Shaco vs Master Yi [ Jungle ] Lol Korea Master Patch 25.16 ✅",
+          "rankClaim": "Master",
+          "patch": "25.16",
+          "durationSec": 1406,
+          "region": "KR",
+          "uploaded": "2025-08-26",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 12,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "Cgy70T1OE7Q",
+          "title": "Shaco Support vs Alistar - KR Grandmaster Patch 25.21",
+          "rankClaim": "Grandmaster",
+          "patch": "25.21",
+          "durationSec": 1593,
+          "region": "KR",
+          "uploaded": "2025-11-03",
+          "moments": []
+        },
+        {
+          "videoId": "2VU8ZdyIgCE",
+          "title": "Shaco Support vs Alistar - TW Challenger Patch 25.19",
+          "rankClaim": "Challenger",
+          "patch": "25.19",
+          "durationSec": 2028,
+          "uploaded": "2025-10-05",
+          "moments": []
+        },
+        {
+          "videoId": "JB0pCrBqyGc",
+          "title": "Shaco Support vs Alistar - KR Master Patch 25.18",
+          "rankClaim": "Master",
+          "patch": "25.18",
+          "durationSec": 1822,
+          "region": "KR",
+          "uploaded": "2025-09-21",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 16,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "T2hoWD62zbs",
+          "title": "Shaco Support vs Soraka - VN Challenger Patch 25.10",
+          "rankClaim": "Challenger",
+          "patch": "25.10",
+          "durationSec": 1564,
+          "uploaded": "2025-05-25",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 30,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "oeqeWRBl9ZI",
+          "title": "Shaco Jungle vs Karthus - KR Grandmaster Patch 25.17",
+          "rankClaim": "Grandmaster",
+          "patch": "25.17",
+          "durationSec": 1788,
+          "region": "KR",
+          "uploaded": "2025-09-04",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 40,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "VTml8jgjc2I",
+          "title": "Shaco Support vs Janna - EUW Challenger Patch 25.24",
+          "rankClaim": "Challenger",
+          "patch": "25.24",
+          "durationSec": 1481,
+          "region": "EUW",
+          "uploaded": "2025-12-15",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 109,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 355,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 461,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 499,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 573,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 639,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 733,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 854,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1003,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1170,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1192,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1346,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1433,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1470,
+              "label": "End credit"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 43,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "-bY-KgSw1pU",
+          "title": "Shaco Support vs Karma - KR Master Patch 25.06",
+          "rankClaim": "Master",
+          "patch": "25.6",
+          "durationSec": 1939,
+          "region": "KR",
+          "uploaded": "2025-03-31",
+          "moments": []
+        },
+        {
+          "videoId": "j2V8FmwQ-eE",
+          "title": "Shaco Support vs Karma - KR Master Patch 25.05",
+          "rankClaim": "Master",
+          "patch": "25.5",
+          "durationSec": 1865,
+          "region": "KR",
+          "uploaded": "2025-03-16",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 45,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "ULcZzd5G3J8",
+          "title": "Shaco Support vs Veigar - EUW Grandmaster Patch 26.04",
+          "rankClaim": "Grandmaster",
+          "patch": "26.4",
+          "durationSec": 1535,
+          "region": "EUW",
+          "uploaded": "2026-03-02",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 49,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 182,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 204,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 304,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 418,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 484,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 558,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 624,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 700,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 768,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 787,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 871,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 893,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 969,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1034,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1113,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1208,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1267,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1369,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1393,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1404,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1467,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1498,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1524,
+              "label": "End credit"
+            }
+          ]
+        },
+        {
+          "videoId": "d2kHv9gmNss",
+          "title": "Shaco Support vs Veigar - KR Challenger Patch 25.20",
+          "rankClaim": "Challenger",
+          "patch": "25.20",
+          "durationSec": 1499,
+          "region": "KR",
+          "uploaded": "2025-10-20",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 50,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "svf0m-mLm-s",
+          "title": "Shaco Support vs Swain - KR Master Patch 26.01",
+          "rankClaim": "Master",
+          "patch": "26.1",
+          "durationSec": 1480,
+          "region": "KR",
+          "uploaded": "2026-01-21",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 56,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 141,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 299,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 357,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 470,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 585,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 768,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 939,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1006,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1029,
+              "label": "Hunt The Rift Herald",
+              "kind": "herald"
+            },
+            {
+              "atSec": 1044,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1215,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1297,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1371,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1417,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1469,
+              "label": "End credit"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 54,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "yivds7uw-N4",
+          "title": "Shaco vs Malphite 12/2/11 (Jungle) | EUW Master | Shaco OTP Replay",
+          "rankClaim": "Master",
+          "patch": "26.7",
+          "durationSec": 1610,
+          "region": "EUW",
+          "patchEstimated": true,
+          "uploaded": "2026-04-10",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 56,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "h4QcvwXjrLk",
+          "title": "Shaco Jungle vs Nocturne - KR Master Patch 26.10",
+          "rankClaim": "Master",
+          "patch": "26.10",
+          "durationSec": 1576,
+          "region": "KR",
+          "uploaded": "2026-05-16",
+          "moments": []
+        },
+        {
+          "videoId": "N3sxjJTh9iU",
+          "title": "Shaco vs Nocturne [ Jungle ] Lol Korea Challenger Patch 25.11 ✅",
+          "rankClaim": "Challenger",
+          "patch": "25.11",
+          "durationSec": 1831,
+          "region": "KR",
+          "uploaded": "2025-06-01",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 57,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "nVdMtjlE-m8",
+          "title": "Shaco Support vs Maokai - VN Challenger Patch 25.13",
+          "rankClaim": "Challenger",
+          "patch": "25.13",
+          "durationSec": 1801,
+          "uploaded": "2025-07-06",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 59,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "IimBHCcvpvA",
+          "title": "(CTG Array) Shaco Jungle vs Jarvan IV - NA Grandmaster Patch 26.13",
+          "rankClaim": "Grandmaster",
+          "patch": "26.13",
+          "durationSec": 1420,
+          "region": "NA",
+          "player": "CTG Array",
+          "uploaded": "2026-07-01",
+          "moments": []
+        },
+        {
+          "videoId": "f_RzKxqiWXE",
+          "title": "Shaco vs Jarvan IV 3/2/15 (Jungle) | EUW Grandmaster | Shaco OTP Replay",
+          "rankClaim": "Grandmaster",
+          "patch": "26.8",
+          "durationSec": 1592,
+          "region": "EUW",
+          "patchEstimated": true,
+          "uploaded": "2026-04-25",
+          "moments": []
+        },
+        {
+          "videoId": "UIShkrKxzDo",
+          "title": "Shaco Jungle vs Jarvan IV - KR Grandmaster Patch 26.02",
+          "rankClaim": "Grandmaster",
+          "patch": "26.2",
+          "durationSec": 1477,
+          "region": "KR",
+          "uploaded": "2026-01-28",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 96,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 176,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 416,
+              "label": "Hunt The Dragon",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 476,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 501,
+              "label": "Hunt The Void Grubs",
+              "kind": "grubs"
+            },
+            {
+              "atSec": 724,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 789,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 821,
+              "label": "Hunt The Dragon",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 897,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 926,
+              "label": "Hunt The Rift Herald",
+              "kind": "herald"
+            },
+            {
+              "atSec": 983,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1093,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1142,
+              "label": "Hunt The Dragon",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1225,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1308,
+              "label": "Hunt The Baron Nashor",
+              "kind": "baron"
+            },
+            {
+              "atSec": 1324,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1428,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1447,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1466,
+              "label": "End credit"
+            }
+          ]
+        },
+        {
+          "videoId": "s4DFuELqEvs",
+          "title": "Shaco Jungle vs Jarvan IV - KR Master Patch 25.18",
+          "rankClaim": "Master",
+          "patch": "25.18",
+          "durationSec": 1711,
+          "region": "KR",
+          "uploaded": "2025-09-16",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 60,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "n4eDJ3JvdMc",
+          "title": "Shaco Jungle vs Elise - EUW Challenger Patch 26.06",
+          "rankClaim": "Challenger",
+          "patch": "26.6",
+          "durationSec": 1562,
+          "region": "EUW",
+          "uploaded": "2026-03-25",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 60,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "tjMvOCQx1jo",
+          "title": "Shaco Support vs Elise - KR Master Patch 25.23",
+          "rankClaim": "Master",
+          "patch": "25.23",
+          "durationSec": 1462,
+          "region": "KR",
+          "uploaded": "2025-12-02",
+          "moments": []
+        },
+        {
+          "videoId": "3m3O4Zh735g",
+          "title": "Shaco Support vs Elise - KR Master Patch 25.08",
+          "rankClaim": "Master",
+          "patch": "25.8",
+          "durationSec": 1843,
+          "region": "KR",
+          "uploaded": "2025-04-27",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 119,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 282,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 445,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 620,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 715,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 805,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 933,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1026,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1125,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1182,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1351,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1384,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1401,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1521,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1604,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1654,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1709,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1822,
+              "label": "End credit"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 62,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "v3juHUbuvDg",
+          "title": "Shaco Jungle vs Wukong - EUW Grandmaster Patch 26.13",
+          "rankClaim": "Grandmaster",
+          "patch": "26.13",
+          "durationSec": 1440,
+          "region": "EUW",
+          "uploaded": "2026-07-13",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 63,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "4pZIv5VlzbE",
+          "title": "Shaco Support vs Brand - KR Master Patch 26.07",
+          "rankClaim": "Master",
+          "patch": "26.7",
+          "durationSec": 1885,
+          "region": "KR",
+          "uploaded": "2026-04-13",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 64,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "i7oWJ1UQ-WU",
+          "title": "Shaco Jungle vs Lee Sin - VN Challenger Patch 26.17",
+          "rankClaim": "Challenger",
+          "patch": "26.17",
+          "durationSec": 1598,
+          "uploaded": "2026-09-03",
+          "moments": []
+        },
+        {
+          "videoId": "wwLT5mqeHyY",
+          "title": "Shaco vs Lee Sin [ Jungle ] Korea Grandmaster 1508 LP | Patch 26.15 ✅",
+          "rankClaim": "Grandmaster",
+          "patch": "26.15",
+          "durationSec": 1851,
+          "region": "KR",
+          "uploaded": "2026-07-30",
+          "moments": []
+        },
+        {
+          "videoId": "PjPUwL9ilX0",
+          "title": "(Doil) Shaco Jungle vs Lee Sin - KR Master Patch 26.14",
+          "rankClaim": "Master",
+          "patch": "26.14",
+          "durationSec": 1447,
+          "region": "KR",
+          "player": "Doil",
+          "uploaded": "2026-07-30",
+          "moments": []
+        },
+        {
+          "videoId": "Fm4-yM4e0xQ",
+          "title": "Shaco vs Lee Sin 9/2/14 (Jungle) | EUW Master | Shaco OTP Replay",
+          "rankClaim": "Master",
+          "patch": "26.9",
+          "durationSec": 1674,
+          "region": "EUW",
+          "patchEstimated": true,
+          "uploaded": "2026-05-11",
+          "moments": []
+        },
+        {
+          "videoId": "v30prE6mhJ4",
+          "title": "Shaco Jungle vs Lee Sin - KR Grandmaster Patch 26.09",
+          "rankClaim": "Grandmaster",
+          "patch": "26.9",
+          "durationSec": 1683,
+          "region": "KR",
+          "uploaded": "2026-05-05",
+          "moments": []
+        },
+        {
+          "videoId": "tK6tpbhFl4g",
+          "title": "Shaco Jungle vs Lee Sin - NA Grandmaster Patch 25.24",
+          "rankClaim": "Grandmaster",
+          "patch": "25.24",
+          "durationSec": 1590,
+          "region": "NA",
+          "uploaded": "2025-12-22",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 199,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 282,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 361,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 391,
+              "label": "Hunt The Dragon",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 428,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 466,
+              "label": "Hunt The Void Grubs",
+              "kind": "grubs"
+            },
+            {
+              "atSec": 503,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 554,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 630,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 704,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 731,
+              "label": "Hunt The Dragon",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 814,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 837,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 898,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 935,
+              "label": "Hunt The Rift Herald",
+              "kind": "herald"
+            },
+            {
+              "atSec": 1074,
+              "label": "Hunt The Dragon",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1093,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1114,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1169,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1230,
+              "label": "Hunt The Atakhan"
+            },
+            {
+              "atSec": 1263,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1350,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1409,
+              "label": "Hunt The Dragon",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1494,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1551,
+              "label": "Take down The Inhibitor"
+            },
+            {
+              "atSec": 1561,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1579,
+              "label": "End credit"
+            }
+          ]
+        },
+        {
+          "videoId": "Hv2H8jlTKJw",
+          "title": "Shaco vs Lee Sin [ Jungle ] Patch 25.24 Korea Grandmaster 1057 LP",
+          "rankClaim": "Grandmaster",
+          "patch": "25.24",
+          "durationSec": 1559,
+          "region": "KR",
+          "uploaded": "2025-12-18",
+          "moments": []
+        },
+        {
+          "videoId": "mbL-dVPTHX4",
+          "title": "Shaco vs Lee Sin [ Jungle ] Lol Korea Master Patch 25.22 ✅",
+          "rankClaim": "Master",
+          "patch": "25.22",
+          "durationSec": 1564,
+          "region": "KR",
+          "uploaded": "2025-11-19",
+          "moments": []
+        },
+        {
+          "videoId": "ozVZBwwo-ZQ",
+          "title": "Shaco vs Lee Sin Jungle - KR Challenger - Patch 25.20 Season 15",
+          "rankClaim": "Challenger",
+          "patch": "25.20",
+          "durationSec": 1691,
+          "region": "KR",
+          "uploaded": "2025-10-19",
+          "moments": []
+        },
+        {
+          "videoId": "RLUNesXsYUE",
+          "title": "Shaco Jungle vs Lee Sin - KR Grandmaster Patch 25.20",
+          "rankClaim": "Grandmaster",
+          "patch": "25.20",
+          "durationSec": 1693,
+          "region": "KR",
+          "uploaded": "2025-10-13",
+          "moments": []
+        },
+        {
+          "videoId": "Gj8aCDodDnM",
+          "title": "Shaco Jungle vs Lee Sin - KR Master Patch 25.14",
+          "rankClaim": "Master",
+          "patch": "25.14",
+          "durationSec": 1501,
+          "region": "KR",
+          "uploaded": "2025-07-21",
+          "moments": []
+        },
+        {
+          "videoId": "hsaNtX1kZrc",
+          "title": "Shaco vs Lee Sin [ Jungle ] Lol Korea Master Patch 25.9 ✅",
+          "rankClaim": "Master",
+          "patch": "25.9",
+          "durationSec": 1441,
+          "region": "KR",
+          "uploaded": "2025-05-02",
+          "moments": []
+        },
+        {
+          "videoId": "ivATBn7N6TU",
+          "title": "Shaco Jungle vs Lee Sin - KR Challenger Patch 25.06",
+          "rankClaim": "Challenger",
+          "patch": "25.6",
+          "durationSec": 1670,
+          "region": "KR",
+          "uploaded": "2025-03-25",
+          "moments": []
+        },
+        {
+          "videoId": "6KOVdQtiMNY",
+          "title": "Shaco Jungle vs Lee Sin - KR Grandmaster Patch 25.05",
+          "rankClaim": "Grandmaster",
+          "patch": "25.5",
+          "durationSec": 1959,
+          "region": "KR",
+          "uploaded": "2025-03-11",
+          "moments": []
+        },
+        {
+          "videoId": "M3psr7ZpNiE",
+          "title": "Shaco vs Lee Sin [ Jungle ] Lol Korea Master Patch 25.4 ✅",
+          "rankClaim": "Master",
+          "patch": "25.4",
+          "durationSec": 1261,
+          "region": "KR",
+          "uploaded": "2025-02-25",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 77,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "KC8mPHsQGY8",
+          "title": "Shaco vs Udyr 17/2/9 (Jungle) | EUW Grandmaster | Shaco OTP Replay",
+          "rankClaim": "Grandmaster",
+          "patch": "26.7",
+          "durationSec": 1896,
+          "region": "EUW",
+          "patchEstimated": true,
+          "uploaded": "2026-04-12",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 78,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "Z_Fust_41Vc",
+          "title": "Shaco Support vs Poppy - KR Master Patch 25.24",
+          "rankClaim": "Master",
+          "patch": "25.24",
+          "durationSec": 1594,
+          "region": "KR",
+          "uploaded": "2025-12-29",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 38,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 206,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 265,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 342,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 479,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 626,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 712,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 735,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 874,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 990,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1106,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1297,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1350,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1378,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1442,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1467,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1525,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1544,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1583,
+              "label": "End credit"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 80,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "F5jANbJV1qI",
+          "title": "Shaco Jungle vs Pantheon (TSC Nasser) - EUW Grandmaster Patch 26.15",
+          "rankClaim": "Grandmaster",
+          "patch": "26.15",
+          "durationSec": 1657,
+          "region": "EUW",
+          "uploaded": "2026-08-12",
+          "moments": []
+        },
+        {
+          "videoId": "U9RPGpUXM7E",
+          "title": "Shaco Jungle vs Pantheon - KR Grandmaster Patch 25.12",
+          "rankClaim": "Grandmaster",
+          "patch": "25.12",
+          "durationSec": 1764,
+          "region": "KR",
+          "uploaded": "2025-06-16",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 80,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "RHbZ5_BHx3E",
+          "title": "Shaco Top vs Pantheon - KR Master Patch 25.10",
+          "rankClaim": "Master",
+          "patch": "25.10",
+          "durationSec": 1702,
+          "region": "KR",
+          "uploaded": "2025-05-31",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 89,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "JU6BaSKqN40",
+          "title": "Shaco Support vs Leona - KR Master Patch 26.06",
+          "rankClaim": "Master",
+          "patch": "26.6",
+          "durationSec": 1606,
+          "region": "KR",
+          "uploaded": "2026-03-31",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 291,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 343,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 365,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 574,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 728,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 750,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 830,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 929,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1104,
+              "label": "Hunt The Dragon",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1196,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1276,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1371,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1492,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1595,
+              "label": "End credit"
+            }
+          ]
+        },
+        {
+          "videoId": "Etf7IjJcmOo",
+          "title": "Shaco Support vs Leona - KR Master Patch 25.17",
+          "rankClaim": "Master",
+          "patch": "25.17",
+          "durationSec": 1487,
+          "region": "KR",
+          "uploaded": "2025-09-10",
+          "moments": []
+        },
+        {
+          "videoId": "2NgOvWPTnGs",
+          "title": "Shaco Support vs Leona - VN Challenger Patch 25.15",
+          "rankClaim": "Challenger",
+          "patch": "25.15",
+          "durationSec": 1549,
+          "uploaded": "2025-08-11",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 91,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "qFT_96ZHUgk",
+          "title": "Shaco vs Talon Jungle - EUW Challenger - Patch 16.11 Season 16",
+          "rankClaim": "Challenger",
+          "patch": "26.11",
+          "durationSec": 1956,
+          "region": "EUW",
+          "uploaded": "2026-06-06",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 99,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "wDIVNMlG8R0",
+          "title": "Shaco Support vs Lux - BR Grandmaster Patch 26.17",
+          "rankClaim": "Grandmaster",
+          "patch": "26.17",
+          "durationSec": 1650,
+          "uploaded": "2026-09-11",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 102,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "vYxXMeznWNs",
+          "title": "Shaco Jungle vs Shyvana (VES Mojie) - EUW Grandmaster Patch 26.19",
+          "rankClaim": "Grandmaster",
+          "patch": "26.19",
+          "durationSec": 1658,
+          "region": "EUW",
+          "uploaded": "2026-09-29",
+          "moments": []
+        },
+        {
+          "videoId": "Xjx-yZtivPY",
+          "title": "Shaco Jungle vs Shyvana - EUW Challenger Patch 26.16",
+          "rankClaim": "Challenger",
+          "patch": "26.16",
+          "durationSec": 1472,
+          "region": "EUW",
+          "uploaded": "2026-08-25",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 104,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "B1BFPELcTyw",
+          "title": "Shaco Jungle vs Graves - KR Master Patch 26.15",
+          "rankClaim": "Master",
+          "patch": "26.15",
+          "durationSec": 1688,
+          "region": "KR",
+          "uploaded": "2026-08-04",
+          "moments": []
+        },
+        {
+          "videoId": "pUg7iJyRdpk",
+          "title": "Shaco Jungle vs Graves - EUW Challenger Patch 26.11",
+          "rankClaim": "Challenger",
+          "patch": "26.11",
+          "durationSec": 1870,
+          "region": "EUW",
+          "uploaded": "2026-06-03",
+          "moments": []
+        },
+        {
+          "videoId": "uotwUYVAm64",
+          "title": "Shaco Jungle vs Graves - KR Master Patch 25.10",
+          "rankClaim": "Master",
+          "patch": "25.10",
+          "durationSec": 1678,
+          "region": "KR",
+          "uploaded": "2025-05-21",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 107,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "OiD5ttG6l9A",
+          "title": "Shaco vs Rengar [ Jungle ] Korea Master 403 LP | Patch 26.10",
+          "rankClaim": "Master",
+          "patch": "26.10",
+          "durationSec": 2197,
+          "region": "KR",
+          "uploaded": "2026-05-17",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 111,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "XlobX1qpg2E",
+          "title": "Shaco Support vs Nautilus - KR Master Patch 26.02",
+          "rankClaim": "Master",
+          "patch": "26.2",
+          "durationSec": 1511,
+          "region": "KR",
+          "uploaded": "2026-02-01",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 145,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 447,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 641,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 778,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 894,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 966,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1204,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1324,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1351,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1369,
+              "label": "Take down The Inhibitor"
+            },
+            {
+              "atSec": 1430,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1500,
+              "label": "End credit"
+            }
+          ]
+        },
+        {
+          "videoId": "105BkuWn9hM",
+          "title": "Shaco Support vs Nautilus - EUW Grandmaster Patch 25.11",
+          "rankClaim": "Grandmaster",
+          "patch": "25.11",
+          "durationSec": 2139,
+          "region": "EUW",
+          "uploaded": "2025-06-12",
+          "moments": []
+        },
+        {
+          "videoId": "7rj2aIZKVM0",
+          "title": "Shaco Support vs Nautilus - VN Challenger Patch 25.04",
+          "rankClaim": "Challenger",
+          "patch": "25.4",
+          "durationSec": 1714,
+          "uploaded": "2025-03-05",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 202,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 392,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 471,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 608,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 645,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 710,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 815,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 902,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 932,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1077,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1238,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1415,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1549,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1619,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1693,
+              "label": "End credit"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 114,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "_Ev8TyktqHw",
+          "title": "Shaco Jungle vs Fiora - EUW Challenger Patch 26.12",
+          "rankClaim": "Challenger",
+          "patch": "26.12",
+          "durationSec": 1630,
+          "region": "EUW",
+          "uploaded": "2026-06-25",
+          "result": "L",
+          "moments": [
+            {
+              "atSec": 210,
+              "label": "First Blood — Shaco kills Fiora",
+              "kind": "kill"
+            },
+            {
+              "atSec": 377,
+              "label": "Blue takes 1st Dragon (Cloud)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 461,
+              "label": "Shaco kills Galio",
+              "kind": "kill"
+            },
+            {
+              "atSec": 517,
+              "label": "Shaco kills Blitzcrank",
+              "kind": "kill"
+            },
+            {
+              "atSec": 607,
+              "label": "Shaco takes down Fiora"
+            },
+            {
+              "atSec": 662,
+              "label": "Shaco picks off Jayce"
+            },
+            {
+              "atSec": 704,
+              "label": "Red takes 1st Dragon (Hextech)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 784,
+              "label": "Aurelion Sol picks off Fiora"
+            },
+            {
+              "atSec": 937,
+              "label": "Shaco takes down Hwei"
+            },
+            {
+              "atSec": 957,
+              "label": "Aurelion Sol eliminates Jayce"
+            },
+            {
+              "atSec": 1033,
+              "label": "Red takes 2nd Dragon (Infernal)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1205,
+              "label": "Rumble kills Fiora",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1255,
+              "label": "Red takes Baron",
+              "kind": "baron"
+            },
+            {
+              "atSec": 1322,
+              "label": "Shaco outplays Fiora"
+            },
+            {
+              "atSec": 1353,
+              "label": "Red takes 3rd Dragon (Infernal)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1417,
+              "label": "Shaco picks off Jayce"
+            },
+            {
+              "atSec": 1441,
+              "label": "Bot Inhibitor falls (Blue)"
+            },
+            {
+              "atSec": 1487,
+              "label": "Shaco solo kills Fiora again",
+              "kind": "kill"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 117,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "G1V6R55DKDg",
+          "title": "Shaco Support vs Lulu - KR Master Patch 26.08",
+          "rankClaim": "Master",
+          "patch": "26.8",
+          "durationSec": 1779,
+          "region": "KR",
+          "uploaded": "2026-04-27",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 120,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "LJdMUr46f2I",
+          "title": "Shaco Jungle vs Hecarim - KR Grandmaster Patch 26.14",
+          "rankClaim": "Grandmaster",
+          "patch": "26.14",
+          "durationSec": 1868,
+          "region": "KR",
+          "uploaded": "2026-07-23",
+          "moments": []
+        },
+        {
+          "videoId": "OG26Z6coNtc",
+          "title": "Shaco Jungle vs Hecarim - KR Grandmaster Patch 25.22",
+          "rankClaim": "Grandmaster",
+          "patch": "25.22",
+          "durationSec": 1613,
+          "region": "KR",
+          "uploaded": "2025-11-11",
+          "moments": []
+        },
+        {
+          "videoId": "mTAG6xXbyjs",
+          "title": "Shaco Jungle vs Hecarim - KR Grandmaster Patch 25.07",
+          "rankClaim": "Grandmaster",
+          "patch": "25.7",
+          "durationSec": 2084,
+          "region": "KR",
+          "uploaded": "2025-04-05",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 88,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 158,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 366,
+              "label": "Hunt The Void Grubs",
+              "kind": "grubs"
+            },
+            {
+              "atSec": 406,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 487,
+              "label": "Hunt The Dragon",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 536,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 622,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 860,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 888,
+              "label": "Hunt The Dragon",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 995,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1139,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1423,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1522,
+              "label": "Hunt The Baron Nashor",
+              "kind": "baron"
+            },
+            {
+              "atSec": 1538,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1613,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1639,
+              "label": "Hunt The Dragon",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1658,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1911,
+              "label": "Hunt The Baron Nashor",
+              "kind": "baron"
+            },
+            {
+              "atSec": 1945,
+              "label": "Hunt The Dragon",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 2016,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 2053,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 2063,
+              "label": "End credit"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 126,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "jv1h-PTiJmA",
+          "title": "Shaco Jungle vs Jayce (MISA 113) - EUW Grandmaster Patch 26.12",
+          "rankClaim": "Grandmaster",
+          "patch": "26.12",
+          "durationSec": 1704,
+          "region": "EUW",
+          "uploaded": "2026-06-16",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 141,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "CPLqyz3Htws",
+          "title": "Shaco vs Kayn [ Jungle ] Lol Korea Master Patch 25.15 ✅",
+          "rankClaim": "Master",
+          "patch": "25.15",
+          "durationSec": 1656,
+          "region": "KR",
+          "uploaded": "2025-07-31",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 200,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "6Xbsm_kJsic",
+          "title": "Shaco vs Bel'Veth Jungle [ Quadra Kill ] Lol Korea Master Patch 25.10 ✅",
+          "rankClaim": "Master",
+          "patch": "25.10",
+          "durationSec": 1904,
+          "region": "KR",
+          "player": "Quadra Kill",
+          "uploaded": "2025-05-15",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 203,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "VaBs1NeBw_E",
+          "title": "Shaco vs Kindred [ Jungle ] Lol Korea Master Patch 25.19 ✅",
+          "rankClaim": "Master",
+          "patch": "25.19",
+          "durationSec": 1367,
+          "region": "KR",
+          "uploaded": "2025-10-08",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 233,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "rDlhyDjgbOc",
+          "title": "Shaco vs Briar 11/0/10 (Jungle) | EUW Grandmaster | Shaco OTP Replay",
+          "rankClaim": "Grandmaster",
+          "patch": "26.9",
+          "durationSec": 1738,
+          "region": "EUW",
+          "patchEstimated": true,
+          "uploaded": "2026-05-05",
+          "moments": []
+        },
+        {
+          "videoId": "E7WKDlxC9y4",
+          "title": "Shaco vs Briar 8/2/10 (Jungle) | EUW Grandmaster | Shaco OTP Replay",
+          "rankClaim": "Grandmaster",
+          "patch": "26.8",
+          "durationSec": 1691,
+          "region": "EUW",
+          "patchEstimated": true,
+          "uploaded": "2026-04-28",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 234,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "3FpRErzL0A4",
+          "title": "Shaco Jungle vs Viego - VN Challenger Patch 26.08",
+          "rankClaim": "Challenger",
+          "patch": "26.8",
+          "durationSec": 1877,
+          "uploaded": "2026-04-21",
+          "result": "L",
+          "moments": [
+            {
+              "atSec": 59,
+              "label": "First Blood — Shaco kills Viego",
+              "kind": "kill"
+            },
+            {
+              "atSec": 129,
+              "label": "Shaco outplays Viego"
+            },
+            {
+              "atSec": 420,
+              "label": "Blue takes 1st Dragon (Mountain)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 528,
+              "label": "Shaco solo kills Viego again",
+              "kind": "kill"
+            },
+            {
+              "atSec": 885,
+              "label": "Red takes 1st Dragon (Chemtech)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 922,
+              "label": "Shaco takes down Viego (3rd time)"
+            },
+            {
+              "atSec": 1209,
+              "label": "Shaco picks off Yone"
+            },
+            {
+              "atSec": 1260,
+              "label": "Red takes 2nd Dragon (Cloud)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1328,
+              "label": "Shaco kills Zyra",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1369,
+              "label": "Team fight (3 kills)",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1381,
+              "label": "Mid Inhibitor falls (Blue)"
+            },
+            {
+              "atSec": 1435,
+              "label": "Ezreal takes down Kai'Sa"
+            },
+            {
+              "atSec": 1594,
+              "label": "Red takes 3rd Dragon (Cloud)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1631,
+              "label": "Shaco catches Viego (4th time)"
+            },
+            {
+              "atSec": 1693,
+              "label": "Bot Inhibitor falls (Blue)"
+            },
+            {
+              "atSec": 1721,
+              "label": "Mid Inhibitor falls (Blue)"
+            },
+            {
+              "atSec": 1755,
+              "label": "Red takes Baron",
+              "kind": "baron"
+            },
+            {
+              "atSec": 1825,
+              "label": "Gnar eliminates Zyra"
+            }
+          ]
+        },
+        {
+          "videoId": "N7D8vz_4A8A",
+          "title": "Shaco Jungle vs Viego - VN Challenger Patch 26.04",
+          "rankClaim": "Challenger",
+          "patch": "26.4",
+          "durationSec": 1908,
+          "uploaded": "2026-02-24",
+          "moments": []
+        },
+        {
+          "videoId": "Mn7oQmP9wbU",
+          "title": "Shaco Jungle vs Viego - KR Grandmaster Patch 25.19",
+          "rankClaim": "Grandmaster",
+          "patch": "25.19",
+          "durationSec": 1705,
+          "region": "KR",
+          "uploaded": "2025-09-30",
+          "moments": []
+        },
+        {
+          "videoId": "9Aa9wcJKa2g",
+          "title": "Shaco vs Viego [ Jungle ] Lol Korea Master Patch 25.13",
+          "rankClaim": "Master",
+          "patch": "25.13",
+          "durationSec": 1909,
+          "region": "KR",
+          "uploaded": "2025-07-03",
+          "moments": []
+        },
+        {
+          "videoId": "D442nArylX4",
+          "title": "Shaco Jungle vs Viego - KR Challenger Patch 25.11",
+          "rankClaim": "Challenger",
+          "patch": "25.11",
+          "durationSec": 1527,
+          "region": "KR",
+          "uploaded": "2025-06-04",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 238,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "l16OtQI8pM8",
+          "title": "Shaco Jungle vs Zed - EUW Challenger Patch 26.10",
+          "rankClaim": "Challenger",
+          "patch": "26.10",
+          "durationSec": 1565,
+          "region": "EUW",
+          "uploaded": "2026-05-28",
+          "moments": []
+        },
+        {
+          "videoId": "sLYXJpf5FA8",
+          "title": "Shaco Jungle vs Zed - KR Master Patch 25.15",
+          "rankClaim": "Master",
+          "patch": "25.15",
+          "durationSec": 1605,
+          "region": "KR",
+          "uploaded": "2025-08-05",
+          "moments": []
+        },
+        {
+          "videoId": "qKH4QdFFibc",
+          "title": "Shaco vs Zed [ Jungle ] Lol Korea Grandmaster Patch 25.14",
+          "rankClaim": "Grandmaster",
+          "patch": "25.14",
+          "durationSec": 1669,
+          "region": "KR",
+          "uploaded": "2025-07-18",
+          "moments": []
+        },
+        {
+          "videoId": "kXUdwp3dLyU",
+          "title": "Shaco Jungle vs Zed - KR Challenger Patch 25.09",
+          "rankClaim": "Challenger",
+          "patch": "25.9",
+          "durationSec": 1756,
+          "region": "KR",
+          "uploaded": "2025-05-06",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 245,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "R4O3IlZdb5c",
+          "title": "Shaco Jungle vs Ekko - EUW Challenger Patch 26.18",
+          "rankClaim": "Challenger",
+          "patch": "26.18",
+          "durationSec": 1859,
+          "region": "EUW",
+          "uploaded": "2026-09-17",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 246,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "2eCLUfc-KJw",
+          "title": "Shaco Jungle vs Qiyana - KR Master Patch 26.19",
+          "rankClaim": "Master",
+          "patch": "26.19",
+          "durationSec": 1679,
+          "region": "KR",
+          "uploaded": "2026-10-09",
+          "result": "W",
+          "moments": [
+            {
+              "atSec": 60,
+              "label": "First Blood — Shaco kills Qiyana",
+              "kind": "kill"
+            },
+            {
+              "atSec": 127,
+              "label": "Shaco outplays Qiyana"
+            },
+            {
+              "atSec": 197,
+              "label": "Shaco solo kills Qiyana again",
+              "kind": "kill"
+            },
+            {
+              "atSec": 413,
+              "label": "Shaco takes down Qiyana (3rd time)"
+            },
+            {
+              "atSec": 577,
+              "label": "Shaco solo kills Syndra",
+              "kind": "kill"
+            },
+            {
+              "atSec": 629,
+              "label": "Shaco takes down Yunara"
+            },
+            {
+              "atSec": 758,
+              "label": "Shaco catches Yunara again"
+            },
+            {
+              "atSec": 835,
+              "label": "Shaco catches Qiyana (4th time)"
+            },
+            {
+              "atSec": 912,
+              "label": "Blue takes 1st Dragon (Cloud)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1089,
+              "label": "Kai'Sa Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1209,
+              "label": "Blue takes Baron",
+              "kind": "baron"
+            },
+            {
+              "atSec": 1293,
+              "label": "Red takes 1st Dragon (Infernal)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1356,
+              "label": "Shaco Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1451,
+              "label": "Shaco outduels Yunara (3rd time)"
+            },
+            {
+              "atSec": 1461,
+              "label": "Diana takes down Lulu"
+            },
+            {
+              "atSec": 1605,
+              "label": "Red takes 2nd Dragon (Ocean)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1620,
+              "label": "Shaco outduels Qiyana (5th time)"
+            },
+            {
+              "atSec": 1653,
+              "label": "Mid Inhibitor falls (Red)"
+            }
+          ]
+        },
+        {
+          "videoId": "hilCp3y0cCY",
+          "title": "Shaco vs Qiyana Jungle [ 56% Win Rate ] Lol Korea Master Patch 25.20 ✅",
+          "rankClaim": "Master",
+          "patch": "25.20",
+          "durationSec": 1846,
+          "region": "KR",
+          "player": "56% Win Rate",
+          "uploaded": "2025-10-21",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 254,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "i8hnQZOpvWA",
+          "title": "Shaco vs Vi Jungle [ TripleKill ] Lol Korea Challenger Patch 25.7 ✅",
+          "rankClaim": "Challenger",
+          "patch": "25.7",
+          "durationSec": 1414,
+          "region": "KR",
+          "player": "TripleKill",
+          "uploaded": "2025-04-05",
+          "moments": []
+        },
+        {
+          "videoId": "2YRN7T93G-0",
+          "title": "Shaco vs Vi Jungle [ Perfect KDA ] Lol Korea Master Patch 25.3 ✅",
+          "rankClaim": "Master",
+          "patch": "25.3",
+          "durationSec": 1434,
+          "region": "KR",
+          "player": "Perfect KDA",
+          "uploaded": "2025-02-08",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 266,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "K--DZaPplHo",
+          "title": "Shaco vs Aatrox Jungle - EUW Challenger - Patch 16.11 Season 16",
+          "rankClaim": "Challenger",
+          "patch": "26.11",
+          "durationSec": 1726,
+          "region": "EUW",
+          "uploaded": "2026-06-11",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 267,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "01yxd3VRf2Y",
+          "title": "Shaco Support vs Nami - VN Challenger Patch 25.12",
+          "rankClaim": "Challenger",
+          "patch": "25.12",
+          "durationSec": 1813,
+          "uploaded": "2025-06-23",
+          "moments": []
+        },
+        {
+          "videoId": "MAHcYJW48Mo",
+          "title": "Shaco Support vs Nami - EUW Grandmaster Patch 25.09",
+          "rankClaim": "Grandmaster",
+          "patch": "25.9",
+          "durationSec": 1578,
+          "region": "EUW",
+          "uploaded": "2025-05-11",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 280,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 438,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 500,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 642,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 849,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 928,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 956,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1008,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1091,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1370,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1502,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1526,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1539,
+              "label": "Take down The Inhibitor"
+            },
+            {
+              "atSec": 1557,
+              "label": "End credit"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 350,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "FyUigrXn-sQ",
+          "title": "Shaco Support vs Yuumi - VN Challenger Patch 25.14",
+          "rankClaim": "Challenger",
+          "patch": "25.14",
+          "durationSec": 1995,
+          "uploaded": "2025-07-25",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 421,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "4d0GqCItxGE",
+          "title": "Shaco Jungle vs Rek'Sai - KR Grandmaster Patch 26.01",
+          "rankClaim": "Grandmaster",
+          "patch": "26.1",
+          "durationSec": 1551,
+          "region": "KR",
+          "uploaded": "2026-01-16",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 230,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 299,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 400,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 517,
+              "label": "Hunt The Void Grubs",
+              "kind": "grubs"
+            },
+            {
+              "atSec": 659,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 731,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 805,
+              "label": "Hunt The Dragon",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 856,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 875,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 898,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 996,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1045,
+              "label": "Hunt The Rift Herald",
+              "kind": "herald"
+            },
+            {
+              "atSec": 1070,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1138,
+              "label": "Hunt The Dragon",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1271,
+              "label": "Get a Triple Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1304,
+              "label": "Hunt The Baron Nashor",
+              "kind": "baron"
+            },
+            {
+              "atSec": 1388,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1414,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1428,
+              "label": "Take down The Inhibitor"
+            },
+            {
+              "atSec": 1468,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1507,
+              "label": "Hunt The Dragon",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1540,
+              "label": "End credit"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 427,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "IMzPBXbyOwA",
+          "title": "(FSK Syzyfek) Shaco Jungle vs Ivern - EUW Grandmaster Patch 26.16",
+          "rankClaim": "Grandmaster",
+          "patch": "26.16",
+          "durationSec": 1752,
+          "region": "EUW",
+          "player": "FSK Syzyfek",
+          "uploaded": "2026-08-16",
+          "moments": []
+        },
+        {
+          "videoId": "0HGgK8PIS0c",
+          "title": "Shaco vs Ivern 7/0/20 (Jungle) | EUW Master | Shaco OTP Replay",
+          "rankClaim": "Master",
+          "patch": "26.10",
+          "durationSec": 2273,
+          "region": "EUW",
+          "patchEstimated": true,
+          "uploaded": "2026-05-17",
+          "moments": []
+        },
+        {
+          "videoId": "v9FncGweIyc",
+          "title": "Shaco Jungle vs Ivern - EUW Challenger Patch 26.09",
+          "rankClaim": "Challenger",
+          "patch": "26.9",
+          "durationSec": 1801,
+          "region": "EUW",
+          "uploaded": "2026-05-11",
+          "moments": []
+        },
+        {
+          "videoId": "kp9pGKywqs4",
+          "title": "Shaco Jungle vs Ivern - KR Master Patch 25.24",
+          "rankClaim": "Master",
+          "patch": "25.24",
+          "durationSec": 1442,
+          "region": "KR",
+          "uploaded": "2025-12-10",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 167,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 222,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 354,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 473,
+              "label": "Hunt The Void Grubs",
+              "kind": "grubs"
+            },
+            {
+              "atSec": 591,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 661,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 688,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 739,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 811,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 850,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 950,
+              "label": "Hunt The Dragon",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1047,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1185,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1212,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1242,
+              "label": "Hunt The Atakhan"
+            },
+            {
+              "atSec": 1270,
+              "label": "Hunt The Dragon",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1297,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1336,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1401,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1431,
+              "label": "End credit"
+            }
+          ]
+        },
+        {
+          "videoId": "aZb5af7SUA0",
+          "title": "Shaco Jungle vs Ivern - KR Grandmaster Patch 25.16",
+          "rankClaim": "Grandmaster",
+          "patch": "25.16",
+          "durationSec": 2022,
+          "region": "KR",
+          "uploaded": "2025-08-19",
+          "moments": []
+        },
+        {
+          "videoId": "UgZWQCwimSE",
+          "title": "Shaco Jungle vs Ivern - KR Grandmaster Patch 25.13",
+          "rankClaim": "Grandmaster",
+          "patch": "25.13",
+          "durationSec": 1734,
+          "region": "KR",
+          "uploaded": "2025-07-03",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 432,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "S3CcCZ6OaaY",
+          "title": "(Banino) Shaco Support vs Bard - EUW Grandmaster Patch 26.13",
+          "rankClaim": "Grandmaster",
+          "patch": "26.13",
+          "durationSec": 1807,
+          "region": "EUW",
+          "player": "Banino",
+          "uploaded": "2026-07-08",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 497,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "M9zdvFpdvj8",
+          "title": "Shaco Support vs Rakan - TW Challenger Patch 25.07",
+          "rankClaim": "Challenger",
+          "patch": "25.7",
+          "durationSec": 1774,
+          "uploaded": "2025-04-13",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 517,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "qNttIOH79tc",
+          "title": "Shaco Jungle vs Sylas - KR Grandmaster Patch 26.21",
+          "rankClaim": "Grandmaster",
+          "patch": "26.21",
+          "durationSec": 1698,
+          "region": "KR",
+          "uploaded": "2026-10-27",
+          "result": "W",
+          "moments": [
+            {
+              "atSec": 251,
+              "label": "Shaco outduels Qiyana"
+            },
+            {
+              "atSec": 348,
+              "label": "Shaco outplays Sylas"
+            },
+            {
+              "atSec": 527,
+              "label": "Red takes 1st Dragon (Hextech)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 632,
+              "label": "Shaco takes down Draven"
+            },
+            {
+              "atSec": 830,
+              "label": "Shaco takes down Sylas"
+            },
+            {
+              "atSec": 855,
+              "label": "Red takes 2nd Dragon (Infernal)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 949,
+              "label": "Shaco kills Qiyana",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1023,
+              "label": "Shaco takes down Sylas"
+            },
+            {
+              "atSec": 1060,
+              "label": "Shaco solo kills Zed",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1127,
+              "label": "Shaco takes down Sylas"
+            },
+            {
+              "atSec": 1147,
+              "label": "Ambessa takes down Qiyana"
+            },
+            {
+              "atSec": 1218,
+              "label": "Red takes 3rd Dragon (Mountain)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1250,
+              "label": "Shaco picks off Zed"
+            },
+            {
+              "atSec": 1291,
+              "label": "Kalista eliminates Sylas"
+            },
+            {
+              "atSec": 1324,
+              "label": "Red takes Baron",
+              "kind": "baron"
+            },
+            {
+              "atSec": 1382,
+              "label": "Kalista Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1509,
+              "label": "Mid Inhibitor falls (Blue)"
+            },
+            {
+              "atSec": 1541,
+              "label": "Red takes 4th Dragon (Mountain)",
+              "kind": "dragon"
+            }
+          ]
+        },
+        {
+          "videoId": "kchRl8Cfj7w",
+          "title": "(Túróstészta) Shaco Jungle vs Sylas - EUW Challenger Patch 26.20",
+          "rankClaim": "Challenger",
+          "patch": "26.20",
+          "durationSec": 1594,
+          "region": "EUW",
+          "player": "Túróstészta",
+          "uploaded": "2026-10-14",
+          "result": "W",
+          "moments": [
+            {
+              "atSec": 349,
+              "label": "Red takes 1st Dragon (Chemtech)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 391,
+              "label": "First Blood — Xayah kills Kalista",
+              "kind": "kill"
+            },
+            {
+              "atSec": 398,
+              "label": "Xayah Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 476,
+              "label": "Shaco takes down Sylas"
+            },
+            {
+              "atSec": 597,
+              "label": "Shaco kills K'Sante",
+              "kind": "kill"
+            },
+            {
+              "atSec": 694,
+              "label": "Red takes 2nd Dragon (Hextech)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 748,
+              "label": "Shaco kills K'Sante",
+              "kind": "kill"
+            },
+            {
+              "atSec": 837,
+              "label": "Xayah takes down Kalista"
+            },
+            {
+              "atSec": 1030,
+              "label": "Syndra kills Kalista",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1100,
+              "label": "Ornn Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1152,
+              "label": "Red takes 3rd Dragon (Mountain)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1259,
+              "label": "Shaco takes down Sylas"
+            },
+            {
+              "atSec": 1415,
+              "label": "Team fight (3 kills)",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1471,
+              "label": "Blue takes 1st Dragon (Mountain)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1546,
+              "label": "Xayah Triple Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1551,
+              "label": "Shaco catches Neeko"
+            },
+            {
+              "atSec": 1567,
+              "label": "Mid Inhibitor falls (Red)"
+            }
+          ]
+        },
+        {
+          "videoId": "ChfHZW49Or0",
+          "title": "Shaco Jungle vs Sylas - KR Grandmaster Patch 25.23",
+          "rankClaim": "Grandmaster",
+          "patch": "25.23",
+          "durationSec": 1728,
+          "region": "KR",
+          "uploaded": "2025-11-25",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 518,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "BOLMTuloWpA",
+          "title": "Shaco Support vs Neeko - KR Master Patch 25.22",
+          "rankClaim": "Master",
+          "patch": "25.22",
+          "durationSec": 1668,
+          "region": "KR",
+          "uploaded": "2025-11-16",
+          "moments": []
+        },
+        {
+          "videoId": "NgGXK0R3jSs",
+          "title": "Shaco Support vs Neeko - VN Challenger Patch 25.16",
+          "rankClaim": "Challenger",
+          "patch": "25.16",
+          "durationSec": 1794,
+          "uploaded": "2025-08-26",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 555,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "XnUFpgn14no",
+          "title": "Shaco Support vs Pyke - TW Challenger Patch 26.03",
+          "rankClaim": "Challenger",
+          "patch": "26.3",
+          "durationSec": 1998,
+          "uploaded": "2026-02-16",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 486,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 570,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 626,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 693,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1011,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1121,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1197,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1298,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1363,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1499,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1752,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1828,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1856,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1987,
+              "label": "End credit"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 799,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "mciZJsrYND8",
+          "title": "Shaco vs Ambessa 3/0/15 (Jungle) | EUW Grandmaster | Shaco OTP Replay",
+          "rankClaim": "Grandmaster",
+          "patch": "26.7",
+          "durationSec": 1626,
+          "region": "EUW",
+          "patchEstimated": true,
+          "uploaded": "2026-04-07",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 887,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "pOZElqKK7vA",
+          "title": "Shaco Jungle vs Gwen - EUW Grandmaster Patch 25.04",
+          "rankClaim": "Grandmaster",
+          "patch": "25.4",
+          "durationSec": 2015,
+          "region": "EUW",
+          "uploaded": "2025-02-27",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 904,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "uRowDkFV1PY",
+          "title": "Shaco vs Zaahen Jungle - EUW Challenger - Patch 16.11 Season 16",
+          "rankClaim": "Challenger",
+          "patch": "26.11",
+          "durationSec": 1906,
+          "region": "EUW",
+          "uploaded": "2026-06-09",
+          "moments": []
+        },
+        {
+          "videoId": "ZyyqRki68IA",
+          "title": "Shaco Jungle vs Zaahen - EUW Challenger Patch 26.07",
+          "rankClaim": "Challenger",
+          "patch": "26.7",
+          "durationSec": 1591,
+          "region": "EUW",
+          "uploaded": "2026-04-08",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 950,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "oBfIdveXse0",
+          "title": "Shaco Jungle vs Naafiri - KR Grandmaster Patch 26.11",
+          "rankClaim": "Grandmaster",
+          "patch": "26.11",
+          "durationSec": 1500,
+          "region": "KR",
+          "uploaded": "2026-06-11",
+          "moments": []
+        },
+        {
+          "videoId": "ukhfU-OSMZk",
+          "title": "Shaco vs Naafiri [ Jungle ] Patch 25.18 Korea Master",
+          "rankClaim": "Master",
+          "patch": "25.18",
+          "durationSec": 1526,
+          "region": "KR",
+          "uploaded": "2025-09-11",
+          "moments": []
+        },
+        {
+          "videoId": "i2mesfmOEP0",
+          "title": "Shaco Jungle vs Naafiri - KR Grandmaster Patch 25.08",
+          "rankClaim": "Grandmaster",
+          "patch": "25.8",
+          "durationSec": 1811,
+          "region": "KR",
+          "uploaded": "2025-04-24",
+          "moments": []
+        }
+      ]
+    }
+  ]
+}

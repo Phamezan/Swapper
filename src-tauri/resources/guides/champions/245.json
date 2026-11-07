@@ -1,0 +1,4687 @@
+{
+  "schema": 1,
+  "champion": 245,
+  "generatedAt": "2026-11-07T13:25:14.592Z",
+  "guides": [
+    {
+      "champion": 245,
+      "enemy": 84,
+      "lane": "mid",
+      "patch": "26.21",
+      "reviewed": false,
+      "difficulty": "Skill matchup",
+      "favoredWhen": "Even. She dodges with E and waits in shroud, so time your E on her E-down.",
+      "keyTips": [
+        {
+          "text": "Even skill lane: the E-dodge war decides it.",
+          "scope": "pair",
+          "sourceIds": [
+            "anguish"
+          ]
+        },
+        {
+          "text": "She hides behind minions at 1: Q the wave to reach her.",
+          "scope": "pair",
+          "sourceIds": [
+            "anguish"
+          ],
+          "abilityKeys": [
+            {
+              "champion": 245,
+              "key": "Q"
+            }
+          ]
+        },
+        {
+          "text": "She E-dodges your E: E where her dash ends.",
+          "scope": "pair",
+          "sourceIds": [
+            "anguish"
+          ],
+          "abilityKeys": [
+            {
+              "champion": 84,
+              "key": "E"
+            },
+            {
+              "champion": 245,
+              "key": "E"
+            }
+          ]
+        }
+      ],
+      "enemyTips": {},
+      "sections": {
+        "overview": {
+          "tips": []
+        },
+        "early-lane": {
+          "tips": [
+            {
+              "text": "Her E2-plus-passive-plus-shroud is the full answer: never chase into the shroud.",
+              "scope": "pair",
+              "sourceIds": [
+                "anguish"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 84,
+                  "key": "W"
+                }
+              ]
+            },
+            {
+              "text": "Dodge her Q2: the second blast is the damage.",
+              "scope": "pair",
+              "sourceIds": [
+                "anguish"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 84,
+                  "key": "Q"
+                }
+              ]
+            }
+          ]
+        },
+        "mid-lane": {
+          "tips": [
+            {
+              "text": "She waits in shroud: time your W stun where she reappears.",
+              "scope": "pair",
+              "sourceIds": [
+                "anguish"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 84,
+                  "key": "W"
+                },
+                {
+                  "champion": 245,
+                  "key": "W"
+                }
+              ]
+            },
+            {
+              "text": "Her E2 interrupts dashes: E in, walk out, never E back blind.",
+              "scope": "pair",
+              "sourceIds": [
+                "anguish"
+              ]
+            }
+          ]
+        },
+        "win-condition": {
+          "tips": [
+            {
+              "text": "Shroud read plus E-dodge won: the Akali who never hides never wins.",
+              "scope": "pair",
+              "sourceIds": [
+                "anguish"
+              ]
+            }
+          ]
+        }
+      },
+      "itemization": [],
+      "sources": [
+        {
+          "id": "anguish",
+          "author": "Anguish333",
+          "rankClaim": "Master (profile badge; title claims 2000LP GrandMaster EUW and Challenger EUNE) · Akali main",
+          "rank": "master",
+          "url": "https://www.mobafire.com/league-of-legends/build/26-20-anguish-2000lp-grandmasters-euw-challenger-eune-akali-mid-top-s16-guide-every-matchup-item-rune-explained-625064",
+          "kind": "mobafire"
+        }
+      ]
+    },
+    {
+      "champion": 245,
+      "enemy": 103,
+      "lane": "mid",
+      "patch": "26.21",
+      "reviewed": false,
+      "difficulty": "Skill matchup",
+      "favoredWhen": "Even skill lane. Vary your E timing to bait Charm, and never E onto Bramble or Ignite.",
+      "keyTips": [
+        {
+          "text": "Even skill lane: your E timing against her Charm decides it.",
+          "scope": "pair",
+          "sourceIds": [
+            "v222"
+          ],
+          "abilityKeys": [
+            {
+              "champion": 245,
+              "key": "E"
+            },
+            {
+              "champion": 103,
+              "key": "E"
+            }
+          ]
+        },
+        {
+          "text": "She tracks your E above all: vary every dash.",
+          "scope": "pair",
+          "sourceIds": [
+            "pengekko"
+          ],
+          "abilityKeys": [
+            {
+              "champion": 245,
+              "key": "E"
+            }
+          ]
+        },
+        {
+          "text": "She holds Charm through your first E and for your backline dives: bait it, never feed it.",
+          "scope": "pair",
+          "sourceIds": [
+            "shok-ahri",
+            "pengekko"
+          ],
+          "abilityKeys": [
+            {
+              "champion": 103,
+              "key": "E"
+            }
+          ]
+        }
+      ],
+      "enemyTips": {},
+      "sections": {
+        "overview": {
+          "tips": []
+        },
+        "early-lane": {
+          "tips": [
+            {
+              "text": "E in, wait out her W speed, then proc the passive: patience lands the third hit.",
+              "scope": "pair",
+              "sourceIds": [
+                "v222"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 245,
+                  "key": "E"
+                }
+              ]
+            },
+            {
+              "text": "Do not Q wave and face for free: she punishes Qs with push.",
+              "scope": "pair",
+              "sourceIds": [
+                "pengekko"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 245,
+                  "key": "Q"
+                }
+              ]
+            }
+          ]
+        },
+        "mid-lane": {
+          "tips": [
+            {
+              "text": "A connecting W stun means no fear of Charm: stun first, commit after.",
+              "scope": "pair",
+              "sourceIds": [
+                "v222"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 245,
+                  "key": "W"
+                },
+                {
+                  "champion": 103,
+                  "key": "E"
+                }
+              ]
+            },
+            {
+              "text": "After 6, watch R-E forward plus Ignite: clone placement decides the all-in.",
+              "scope": "pair",
+              "sourceIds": [
+                "v222"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 245,
+                  "key": "R"
+                }
+              ]
+            }
+          ]
+        },
+        "win-condition": {
+          "tips": [
+            {
+              "text": "E varied plus clone placed: the Ahri who never Charms you never wins.",
+              "scope": "pair",
+              "sourceIds": [
+                "pengekko",
+                "v222"
+              ]
+            }
+          ]
+        }
+      },
+      "itemization": [],
+      "sources": [
+        {
+          "id": "pengekko",
+          "author": "Peng04",
+          "rankClaim": "13x Challenger · Ahri main",
+          "rank": "challenger",
+          "url": "https://www.youtube.com/watch?v=nnBagiXA6sA",
+          "kind": "youtube"
+        },
+        {
+          "id": "v222",
+          "author": "V222",
+          "rankClaim": "Challenger EUW · Zed main",
+          "rank": "challenger",
+          "url": "https://www.mobafire.com/league-of-legends/build/all-matchups-26-14-zed-guide-2000lp-euw-challenger-652354",
+          "kind": "mobafire"
+        },
+        {
+          "id": "shok-ahri",
+          "author": "ShokLoL",
+          "rankClaim": "Rank 1 Challenger · Ahri main",
+          "rank": "challenger",
+          "url": "https://www.mobafire.com/league-of-legends/build/26-5-shoks-rank-1-challenger-ahri-guide-635065",
+          "kind": "mobafire"
+        }
+      ]
+    },
+    {
+      "champion": 245,
+      "enemy": 134,
+      "lane": "mid",
+      "patch": "26.21",
+      "reviewed": false,
+      "difficulty": "Skill matchup",
+      "favoredWhen": "She bullies all lane and holds E for your engage. Bait the stun, then go.",
+      "keyTips": [
+        {
+          "text": "She bullies all lane: respect levels, take windows.",
+          "scope": "pair",
+          "sourceIds": [
+            "shok"
+          ]
+        },
+        {
+          "text": "She never wastes the stun: bait E before engaging.",
+          "scope": "pair",
+          "sourceIds": [
+            "shok"
+          ],
+          "abilityKeys": [
+            {
+              "champion": 134,
+              "key": "E"
+            }
+          ]
+        },
+        {
+          "text": "Run Hail of Blades: she plays safe at 1 against your dash.",
+          "scope": "pair",
+          "sourceIds": [
+            "trisend3"
+          ],
+          "abilityKeys": [
+            {
+              "champion": 245,
+              "key": "E"
+            }
+          ]
+        }
+      ],
+      "enemyTips": {},
+      "sections": {
+        "overview": {
+          "tips": []
+        },
+        "early-lane": {
+          "tips": [
+            {
+              "text": "Weather the bully: your windows open after hers close.",
+              "scope": "pair",
+              "sourceIds": [
+                "shok"
+              ]
+            },
+            {
+              "text": "Q poke from range: E2 is for engages, not trades.",
+              "scope": "pair",
+              "sourceIds": [
+                "shok"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 245,
+                  "key": "Q"
+                }
+              ]
+            }
+          ]
+        },
+        "mid-lane": {
+          "tips": [
+            {
+              "text": "Her R cannot undo your R: rewind every committed combo.",
+              "scope": "pair",
+              "sourceIds": [
+                "shok"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 134,
+                  "key": "R"
+                },
+                {
+                  "champion": 245,
+                  "key": "R"
+                }
+              ]
+            },
+            {
+              "text": "Engage when E is spent: no scatter means no answer.",
+              "scope": "pair",
+              "sourceIds": [
+                "shok"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 134,
+                  "key": "E"
+                }
+              ]
+            }
+          ]
+        },
+        "win-condition": {
+          "tips": [
+            {
+              "text": "E baited plus R held: the Syndra who never stuns you never wins.",
+              "scope": "pair",
+              "sourceIds": [
+                "shok",
+                "trisend3"
+              ]
+            }
+          ]
+        }
+      },
+      "itemization": [],
+      "sources": [
+        {
+          "id": "shok",
+          "author": "ShokLoL",
+          "rankClaim": "Rank 1 Challenger · Syndra main",
+          "rank": "challenger",
+          "url": "https://www.mobafire.com/league-of-legends/build/26-17-shoks-rank-1-challenger-syndra-guide-602710",
+          "kind": "mobafire"
+        },
+        {
+          "id": "trisend3",
+          "author": "Trisend3",
+          "rankClaim": "Challenger (title and profile badge) · Syndra main",
+          "rank": "challenger",
+          "url": "https://www.mobafire.com/league-of-legends/build/challenger-season-16-trisend3-syndra-guide-623459",
+          "kind": "mobafire"
+        }
+      ]
+    },
+    {
+      "champion": 245,
+      "enemy": 238,
+      "lane": "mid",
+      "patch": "26.21",
+      "reviewed": false,
+      "difficulty": "Skill matchup",
+      "favoredWhen": "Even. He plays around your passive procs, so vary the engage, hold R, and punish spent shadows.",
+      "keyTips": [
+        {
+          "text": "Even skill lane: he plays around your passive procs.",
+          "scope": "pair",
+          "sourceIds": [
+            "aikopanda"
+          ]
+        },
+        {
+          "text": "He answers your E-Q-in with backwards WEQ: vary the engage angle.",
+          "scope": "pair",
+          "sourceIds": [
+            "aikopanda"
+          ],
+          "abilityKeys": [
+            {
+              "champion": 245,
+              "key": "E"
+            },
+            {
+              "champion": 238,
+              "key": "W"
+            }
+          ]
+        },
+        {
+          "text": "He Ignites early to cut your R heal: respect the all-in after 6.",
+          "scope": "pair",
+          "sourceIds": [
+            "aikopanda"
+          ],
+          "abilityKeys": [
+            {
+              "champion": 245,
+              "key": "R"
+            }
+          ]
+        }
+      ],
+      "enemyTips": {
+        "early-lane": [
+          {
+            "text": "Zed often places Living Shadow before Death Mark so he can swap away from skillshots. Hold your crowd control until he has used the swap.",
+            "scope": "enemy",
+            "sourceIds": [
+              "aikopanda"
+            ],
+            "patch": "26.21",
+            "abilityKeys": [
+              {
+                "champion": 238,
+                "key": "W"
+              },
+              {
+                "champion": 238,
+                "key": "R"
+              }
+            ]
+          }
+        ],
+        "win-condition": [
+          {
+            "text": "Death Mark always lands Zed behind his target. Pre-aim crowd control and escapes behind you, not toward where he cast it.",
+            "scope": "enemy",
+            "sourceIds": [
+              "peng04"
+            ],
+            "patch": "26.21",
+            "abilityKeys": [
+              {
+                "champion": 238,
+                "key": "R"
+              }
+            ]
+          }
+        ]
+      },
+      "sections": {
+        "overview": {
+          "tips": []
+        },
+        "early-lane": {
+          "tips": [
+            {
+              "text": "Take Hail of Blades and E in early: he respects the HoB opener.",
+              "scope": "pair",
+              "sourceIds": [
+                "aikopanda"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 245,
+                  "key": "E"
+                }
+              ]
+            },
+            {
+              "text": "Proc passive for free when he lets you: unanswered E-Qs stack up.",
+              "scope": "pair",
+              "sourceIds": [
+                "aikopanda"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 245,
+                  "key": "E"
+                }
+              ]
+            }
+          ]
+        },
+        "mid-lane": {
+          "tips": [
+            {
+              "text": "His W is the answer tool: engage when shadows are spent.",
+              "scope": "pair",
+              "sourceIds": [
+                "aikopanda"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 238,
+                  "key": "W"
+                }
+              ]
+            },
+            {
+              "text": "R heals through his combo: save R for the turn, not the engage.",
+              "scope": "pair",
+              "sourceIds": [
+                "aikopanda"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 245,
+                  "key": "R"
+                }
+              ]
+            },
+            {
+              "text": "Death Mark lands him behind you: E away from the exit when he ults.",
+              "scope": "pair",
+              "sourceIds": [
+                "peng04"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 238,
+                  "key": "R"
+                },
+                {
+                  "champion": 245,
+                  "key": "E"
+                }
+              ]
+            }
+          ]
+        },
+        "win-condition": {
+          "tips": [
+            {
+              "text": "Procs landed plus R held: the Zed who never zones you never wins.",
+              "scope": "pair",
+              "sourceIds": [
+                "aikopanda"
+              ]
+            }
+          ]
+        }
+      },
+      "itemization": [],
+      "sources": [
+        {
+          "id": "aikopanda",
+          "author": "AikoPanda",
+          "rankClaim": "Zed main",
+          "url": "https://www.mobafire.com/league-of-legends/build/26-20-video-guides-hidden-combos-all-matchups-zed-all-in-one-guide-652800",
+          "kind": "mobafire"
+        },
+        {
+          "id": "peng04",
+          "author": "Peng04",
+          "rankClaim": "Challenger · Ahri main",
+          "rank": "challenger",
+          "url": "https://www.mobafire.com/league-of-legends/build/26-20-pengs-ahri-guide-5-1mil-points-13x-challenger-648700",
+          "kind": "mobafire"
+        }
+      ]
+    }
+  ],
+  "general": [
+    {
+      "champion": 245,
+      "lane": "jungle",
+      "patch": "26.21",
+      "reviewed": false,
+      "keyTips": [
+        {
+          "text": "Start Raptors with Q at level 1 and have mid ward enemy Raptors to expose an invade angle.",
+          "scope": "champion",
+          "sourceIds": [
+            "guest-653345"
+          ],
+          "abilityKeys": [
+            {
+              "champion": 245,
+              "key": "Q"
+            }
+          ]
+        },
+        {
+          "text": "After Scuttle, check the two nearest lanes for ganks, often pressing mid, then cycle back to Raptors and Krugs.",
+          "scope": "champion",
+          "sourceIds": [
+            "guest-653345"
+          ]
+        },
+        {
+          "text": "Commit to major fights with Chronobreak ready, since it escapes and re-enters after risky plays.",
+          "scope": "champion",
+          "sourceIds": [
+            "guest-653345"
+          ],
+          "abilityKeys": [
+            {
+              "champion": 245,
+              "key": "R"
+            }
+          ]
+        }
+      ],
+      "sections": {
+        "overview": {
+          "tips": []
+        },
+        "early-lane": {
+          "tips": [
+            {
+              "text": "Skill W at level 2 and clear Krugs with Smite plus Red, then take E at level 3 ahead of Wolves, Gromp, Blue, and Scuttle.",
+              "scope": "champion",
+              "sourceIds": [
+                "guest-653345"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 245,
+                  "key": "W"
+                },
+                {
+                  "champion": 245,
+                  "key": "E"
+                }
+              ]
+            },
+            {
+              "text": "Favor volatile lanes or reliable setup for ganks; never force an invade without nearby priority, pings, and a read on the enemy jungler.",
+              "scope": "champion",
+              "sourceIds": [
+                "guest-653345"
+              ]
+            },
+            {
+              "text": "Value early takedowns and Void Grubs over an early Dragon, bending the trade to lane state and contest strength.",
+              "scope": "champion",
+              "sourceIds": [
+                "guest-653345"
+              ]
+            },
+            {
+              "text": "Target these item timings: first finished item near 9 to 10 minutes, second near 14 to 16, third near 19 to 20.",
+              "scope": "champion",
+              "sourceIds": [
+                "guest-653345"
+              ]
+            }
+          ]
+        },
+        "mid-lane": {
+          "tips": [
+            {
+              "text": "Default back to Raptors and Krugs with no confident play, protecting the fast income curve into core items.",
+              "scope": "champion",
+              "sourceIds": [
+                "guest-653345"
+              ]
+            },
+            {
+              "text": "Invade only when nearby lanes move first and the enemy jungler spot stays known or findable.",
+              "scope": "champion",
+              "sourceIds": [
+                "guest-653345"
+              ]
+            },
+            {
+              "text": "Before objective fights, verify enemy positions, health, vision, and summoners, preferring fights where the map favors Ekko.",
+              "scope": "champion",
+              "sourceIds": [
+                "guest-653345"
+              ]
+            },
+            {
+              "text": "Initiate as needed when the ultimate banks a safe exit, but guard the lead and finished items over low-value trades.",
+              "scope": "champion",
+              "sourceIds": [
+                "guest-653345"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 245,
+                  "key": "R"
+                }
+              ]
+            }
+          ]
+        },
+        "win-condition": {
+          "tips": [
+            {
+              "text": "Turn an early resource lead into picks and map pressure through assassin threat and strong scaling.",
+              "scope": "champion",
+              "sourceIds": [
+                "guest-653345"
+              ]
+            },
+            {
+              "text": "Hunt isolated or vulnerable targets in ganks and skirmishes, skipping long fights where lockdown sticks without the ultimate ready.",
+              "scope": "champion",
+              "sourceIds": [
+                "guest-653345"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 245,
+                  "key": "R"
+                }
+              ]
+            },
+            {
+              "text": "Set the ultimate return point as the safety plan before risky entries instead of relying on it after getting trapped.",
+              "scope": "champion",
+              "sourceIds": [
+                "guest-653345"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 245,
+                  "key": "R"
+                }
+              ]
+            },
+            {
+              "text": "Convert each kill or forced recall into camp access, a neutral objective, or vision toward faster item completion.",
+              "scope": "champion",
+              "sourceIds": [
+                "guest-653345"
+              ]
+            }
+          ]
+        }
+      },
+      "itemization": [
+        {
+          "text": "Run Dark Harvest with Sudden Impact, Grisly Mementos, and Treasure Hunter, plus Magical Footwear and Cosmic Insight with attack-speed, adaptive-force, and health shards.",
+          "scope": "champion",
+          "sourceIds": [
+            "guest-653345"
+          ]
+        },
+        {
+          "text": "Take Flash and Smite.",
+          "scope": "champion",
+          "sourceIds": [
+            "guest-653345"
+          ]
+        },
+        {
+          "text": "Build Nashor's Tooth into Lich Bane and Rabadon's Deathcap on one core path, with Sorcerer's Shoes and Mejai's Soulstealer as options.",
+          "scope": "champion",
+          "sourceIds": [
+            "guest-653345"
+          ],
+          "itemIds": [
+            3115,
+            3100,
+            3089,
+            3020,
+            3041
+          ]
+        },
+        {
+          "text": "Use Dusk and Dawn with Shadowflame, or Nashor's Tooth into Dusk and Dawn plus Rabadon's Deathcap, as other paths.",
+          "scope": "champion",
+          "sourceIds": [
+            "guest-653345"
+          ],
+          "itemIds": [
+            2510,
+            4645,
+            3115,
+            3089
+          ]
+        },
+        {
+          "text": "Pick situationally from Void Staff, Zhonya's Hourglass, Banshee's Veil, Cosmic Drive, Mercury's Treads, and Plated Steelcaps against the threats actually reaching Ekko.",
+          "scope": "champion",
+          "sourceIds": [
+            "guest-653345"
+          ],
+          "itemIds": [
+            3135,
+            3157,
+            3102,
+            4629,
+            3111,
+            3047
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "id": "guest-653345",
+          "author": "Guest",
+          "rankClaim": "No rank claim",
+          "url": "https://www.mobafire.com/league-of-legends/build/-653345",
+          "kind": "mobafire"
+        }
+      ]
+    },
+    {
+      "champion": 245,
+      "lane": "mid",
+      "patch": "26.21",
+      "reviewed": false,
+      "keyTips": [
+        {
+          "text": "Accept a weak early lane built on surviving to scale rather than forcing every trade.",
+          "scope": "champion",
+          "sourceIds": [
+            "osgrewynd"
+          ]
+        },
+        {
+          "text": "Slow-push the first two or three waves, then crash hard on wave three or four for a recall tempo edge.",
+          "scope": "champion",
+          "sourceIds": [
+            "osgrewynd"
+          ]
+        },
+        {
+          "text": "Treat the W stun as a major teamfight tool by predicting movement; even a miss still banks the shield on entry.",
+          "scope": "champion",
+          "sourceIds": [
+            "osgrewynd"
+          ],
+          "abilityKeys": [
+            {
+              "champion": 245,
+              "key": "W"
+            }
+          ]
+        }
+      ],
+      "sections": {
+        "overview": {
+          "tips": []
+        },
+        "early-lane": {
+          "tips": [
+            {
+              "text": "Pick a wave plan early: shove, concede the push, or line up a cheater recall.",
+              "scope": "champion",
+              "sourceIds": [
+                "osgrewynd"
+              ]
+            },
+            {
+              "text": "Sync wave and reset timing with the jungler route to support their next play.",
+              "scope": "champion",
+              "sourceIds": [
+                "osgrewynd"
+              ]
+            },
+            {
+              "text": "Roam freely once one Q clears casters around level 7 or 9 without donating the whole wave.",
+              "scope": "champion",
+              "sourceIds": [
+                "osgrewynd"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 245,
+                  "key": "Q"
+                }
+              ]
+            },
+            {
+              "text": "Trade fast with E1, Q, E2, auto; a missed Q makes triggering the passive much harder.",
+              "scope": "champion",
+              "sourceIds": [
+                "osgrewynd"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 245,
+                  "key": "E"
+                },
+                {
+                  "champion": 245,
+                  "key": "Q"
+                }
+              ]
+            },
+            {
+              "text": "Shield the exit or stun for a kill with E1, W, E2, Q, auto.",
+              "scope": "champion",
+              "sourceIds": [
+                "osgrewynd"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 245,
+                  "key": "E"
+                },
+                {
+                  "champion": 245,
+                  "key": "W"
+                },
+                {
+                  "champion": 245,
+                  "key": "Q"
+                }
+              ]
+            }
+          ]
+        },
+        "mid-lane": {
+          "tips": [
+            {
+              "text": "Point roams and resources at the teammate or lane carrying the win condition.",
+              "scope": "champion",
+              "sourceIds": [
+                "osgrewynd"
+              ]
+            },
+            {
+              "text": "With bot already ahead, hunt dives and counterplays that stretch its lead.",
+              "scope": "champion",
+              "sourceIds": [
+                "osgrewynd"
+              ]
+            },
+            {
+              "text": "Arrive early to fights and build plays with the jungler.",
+              "scope": "champion",
+              "sourceIds": [
+                "osgrewynd"
+              ]
+            },
+            {
+              "text": "Farm sides for picks, slow-pushing first so opponents must answer while the play starts.",
+              "scope": "champion",
+              "sourceIds": [
+                "osgrewynd"
+              ]
+            },
+            {
+              "text": "Check bushes with W for free vision instead of face-checking.",
+              "scope": "champion",
+              "sourceIds": [
+                "osgrewynd"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 245,
+                  "key": "W"
+                }
+              ]
+            },
+            {
+              "text": "Smooth the cast with E1 into W, which hides part of the throw animation.",
+              "scope": "champion",
+              "sourceIds": [
+                "osgrewynd"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 245,
+                  "key": "E"
+                },
+                {
+                  "champion": 245,
+                  "key": "W"
+                }
+              ]
+            }
+          ]
+        },
+        "win-condition": {
+          "tips": [
+            {
+              "text": "Hold R for the most valuable ultimate instead of spending it on the first forced mistake, using W cover and passive footwork to wait.",
+              "scope": "champion",
+              "sourceIds": [
+                "osgrewynd"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 245,
+                  "key": "R"
+                },
+                {
+                  "champion": 245,
+                  "key": "W"
+                }
+              ]
+            },
+            {
+              "text": "Respect crowd control as the main vulnerability on an otherwise bursty scaler.",
+              "scope": "champion",
+              "sourceIds": [
+                "osgrewynd"
+              ]
+            },
+            {
+              "text": "Run E1, Q, E2 for a faster, longer combo at the cost of Q reliability over E1, E2, Q.",
+              "scope": "champion",
+              "sourceIds": [
+                "osgrewynd"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 245,
+                  "key": "E"
+                },
+                {
+                  "champion": 245,
+                  "key": "Q"
+                }
+              ]
+            },
+            {
+              "text": "With situational Hextech Rocketbelt, burst E1, Q, E2, Rocketbelt, auto.",
+              "scope": "champion",
+              "sourceIds": [
+                "osgrewynd"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 245,
+                  "key": "E"
+                },
+                {
+                  "champion": 245,
+                  "key": "Q"
+                }
+              ],
+              "itemIds": [
+                3152
+              ]
+            }
+          ]
+        }
+      },
+      "itemization": [
+        {
+          "text": "Run Hail of Blades with Sudden Impact, Grisly Mementos, and Relentless Hunter, plus Manaflow Band and Scorch.",
+          "scope": "champion",
+          "sourceIds": [
+            "osgrewynd"
+          ]
+        },
+        {
+          "text": "Take Flash and Teleport as the defensive mid summoners.",
+          "scope": "champion",
+          "sourceIds": [
+            "osgrewynd"
+          ]
+        },
+        {
+          "text": "Build Lich Bane, Nashor's Tooth, Rabadon's Deathcap, Void Staff, and Dusk and Dawn.",
+          "scope": "champion",
+          "sourceIds": [
+            "osgrewynd"
+          ],
+          "itemIds": [
+            3100,
+            3115,
+            3089,
+            3135,
+            2510
+          ]
+        },
+        {
+          "text": "Start Doran's Ring, buying Dark Seal, Blasting Wand, Aether Wisp, and Sheen early.",
+          "scope": "champion",
+          "sourceIds": [
+            "osgrewynd"
+          ],
+          "itemIds": [
+            1056,
+            1082,
+            1026,
+            3113,
+            3057
+          ]
+        },
+        {
+          "text": "Rotate situationally through Mejai's Soulstealer, Zhonya's Hourglass, Shadowflame, Banshee's Veil, Morellonomicon, and Hextech Rocketbelt.",
+          "scope": "champion",
+          "sourceIds": [
+            "osgrewynd"
+          ],
+          "itemIds": [
+            3041,
+            3157,
+            4645,
+            3102,
+            3165,
+            3152
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "id": "osgrewynd",
+          "author": "OSG Rewynd",
+          "rankClaim": "Diamond (profile badge; no title claim)",
+          "rank": "diamond",
+          "url": "https://www.mobafire.com/league-of-legends/build/ekko-mid-and-jungle-guide-613291",
+          "kind": "mobafire"
+        }
+      ]
+    }
+  ],
+  "vods": [
+    {
+      "lane": "adc",
+      "videos": [
+        {
+          "videoId": "wmlw3JFXAZk",
+          "title": "T1 PEYZ : His EKKO ADC STRATEGY is BREAKING KR HighElo",
+          "rankClaim": "Master+",
+          "patch": "26.16",
+          "durationSec": 1733,
+          "region": "KR",
+          "patchEstimated": true,
+          "player": "Peyz",
+          "uploaded": "2026-08-20",
+          "format": "stream",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "WZupJASm2-0",
+          "title": "How To ACTUALLY Climb Low Elo With Ekko",
+          "rankClaim": "Master+",
+          "patch": "26.19",
+          "durationSec": 1391,
+          "patchEstimated": true,
+          "player": "Sinerias",
+          "uploaded": "2026-09-30",
+          "format": "stream",
+          "cam": true,
+          "moments": []
+        },
+        {
+          "videoId": "ffa5PLJDh0I",
+          "title": "FULL EDUCATIONAL EKKO JUNGLE GAMEPLAY",
+          "rankClaim": "Master+",
+          "patch": "26.5",
+          "durationSec": 1798,
+          "patchEstimated": true,
+          "player": "Sinerias",
+          "uploaded": "2026-03-05",
+          "format": "stream",
+          "cam": true,
+          "moments": []
+        },
+        {
+          "videoId": "qOrSMrjCLxM",
+          "title": "Why Ekko Is BROKEN | Complete Educational Guide",
+          "rankClaim": "Master+",
+          "patch": "26.2",
+          "durationSec": 2043,
+          "patchEstimated": true,
+          "player": "Sinerias",
+          "uploaded": "2026-01-27",
+          "format": "stream",
+          "cam": true,
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 1,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "S-HXJLE4mtE",
+          "title": "Ekko Mid vs Annie - EUW Challenger Patch 25.13",
+          "rankClaim": "Challenger",
+          "patch": "25.13",
+          "durationSec": 1822,
+          "region": "EUW",
+          "uploaded": "2025-07-05",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 3,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "V2pQyKGJN_Y",
+          "title": "Ekko Mid vs Galio - EUW Challenger Patch 25.08",
+          "rankClaim": "Challenger",
+          "patch": "25.8",
+          "durationSec": 1826,
+          "region": "EUW",
+          "uploaded": "2025-04-26",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 207,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 548,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 668,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 731,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 838,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1040,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1189,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1319,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1341,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1379,
+              "label": "Hunt The Dragon",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1486,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1516,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1616,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1643,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1714,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1805,
+              "label": "End credit"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 5,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "d4d77UgbyuY",
+          "title": "Ekko vs XinZhao Jungle - KR Challenger - Patch 25.14 Season 15",
+          "rankClaim": "Challenger",
+          "patch": "25.14",
+          "durationSec": 1921,
+          "region": "KR",
+          "uploaded": "2025-07-25",
+          "moments": []
+        },
+        {
+          "videoId": "_5eDbN7ljNQ",
+          "title": "Ekko Jungle vs Xin Zhao - KR Master Patch 25.13",
+          "rankClaim": "Master",
+          "patch": "25.13",
+          "durationSec": 1821,
+          "region": "KR",
+          "uploaded": "2025-06-28",
+          "moments": []
+        },
+        {
+          "videoId": "i5ie4QI3yKo",
+          "title": "Ekko vs XinZhao Jungle - KR Challenger - Patch 25.10 Season 15",
+          "rankClaim": "Challenger",
+          "patch": "25.10",
+          "durationSec": 1471,
+          "region": "KR",
+          "uploaded": "2025-05-27",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 6,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "ia_YasXN6zs",
+          "title": "Ekko Top vs Urgot - KR Master Patch 25.24",
+          "rankClaim": "Master",
+          "patch": "25.24",
+          "durationSec": 1615,
+          "region": "KR",
+          "uploaded": "2025-12-22",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 217,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 421,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 664,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 814,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 837,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 910,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1005,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1085,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1177,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1251,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1267,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1358,
+              "label": "Get a Triple Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1400,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1485,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1523,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1547,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1563,
+              "label": "Take down The Inhibitor"
+            },
+            {
+              "atSec": 1604,
+              "label": "End credit"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 7,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "-UOoW0OWvq4",
+          "title": "Ekko vs LeBlanc Mid - EUW Challenger - Patch 25.20 Season 15",
+          "rankClaim": "Challenger",
+          "patch": "25.20",
+          "durationSec": 1501,
+          "region": "EUW",
+          "uploaded": "2025-10-15",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 8,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "NWozEG_o6BM",
+          "title": "Ekko vs Vladimir Mid - EUW Challenger - Patch 16.14 Season 16",
+          "rankClaim": "Challenger",
+          "patch": "26.14",
+          "durationSec": 1876,
+          "region": "EUW",
+          "uploaded": "2026-07-22",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 27,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "4rm8lbf7tkk",
+          "title": "Ekko Mid vs Singed - EUW Challenger Patch 26.18",
+          "rankClaim": "Challenger",
+          "patch": "26.18",
+          "durationSec": 1694,
+          "region": "EUW",
+          "uploaded": "2026-09-20",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 30,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "6UZczFr3XIg",
+          "title": "Ekko Jungle vs Karthus - KR Master Patch 26.18",
+          "rankClaim": "Master",
+          "patch": "26.18",
+          "durationSec": 1753,
+          "region": "KR",
+          "uploaded": "2026-09-19",
+          "moments": []
+        },
+        {
+          "videoId": "b6YlX_QEoFQ",
+          "title": "Ekko Jungle vs Karthus - EUW Challenger Patch 26.12",
+          "rankClaim": "Challenger",
+          "patch": "26.12",
+          "durationSec": 1630,
+          "region": "EUW",
+          "uploaded": "2026-06-18",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 34,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "E6ZVmJlJx6U",
+          "title": "Ekko vs Anivia Mid - EUW Grandmaster - Patch 25.20 Season 15",
+          "rankClaim": "Grandmaster",
+          "patch": "25.20",
+          "durationSec": 1456,
+          "region": "EUW",
+          "uploaded": "2025-10-16",
+          "moments": []
+        },
+        {
+          "videoId": "GlO0JkKf1-4",
+          "title": "Ekko Mid vs Anivia - NA Challenger Patch 25.18",
+          "rankClaim": "Challenger",
+          "patch": "25.18",
+          "durationSec": 1806,
+          "region": "NA",
+          "uploaded": "2025-09-21",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 34,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "ixaC2VGa2Lo",
+          "title": "Ekko Top vs Anivia - KR Master Patch 26.09",
+          "rankClaim": "Master",
+          "patch": "26.9",
+          "durationSec": 1529,
+          "region": "KR",
+          "uploaded": "2026-05-10",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 35,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "KaxY2CgI8cY",
+          "title": "Ekko Jungle vs Shaco - EUW Grandmaster Patch 26.13",
+          "rankClaim": "Grandmaster",
+          "patch": "26.13",
+          "durationSec": 1843,
+          "region": "EUW",
+          "uploaded": "2026-07-13",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 36,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "H1gArcHHUOs",
+          "title": "Ekko Jungle vs Dr. Mundo - KR Challenger Patch 25.23",
+          "rankClaim": "Challenger",
+          "patch": "25.23",
+          "durationSec": 1431,
+          "region": "KR",
+          "uploaded": "2025-11-23",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 45,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "I5TkvqlusSw",
+          "title": "Ekko Mid vs Veigar - EUW Grandmaster Patch 25.22",
+          "rankClaim": "Grandmaster",
+          "patch": "25.22",
+          "durationSec": 1469,
+          "region": "EUW",
+          "uploaded": "2025-11-16",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 51,
+      "lane": "adc",
+      "videos": [
+        {
+          "videoId": "ZN7vBH_5DBc",
+          "title": "T1 Peyz Ekko vs Caitlyn [ ADC ] Korea Challenger 2389 LP | Patch 26.13",
+          "rankClaim": "Challenger",
+          "patch": "26.13",
+          "durationSec": 1266,
+          "region": "KR",
+          "player": "Peyz",
+          "team": "T1",
+          "uploaded": "2026-07-08",
+          "moments": [
+            {
+              "atSec": 0,
+              "label": "Early game setup"
+            },
+            {
+              "atSec": 139,
+              "label": "Mid-lane skirmishes"
+            },
+            {
+              "atSec": 423,
+              "label": "Taking objective control"
+            },
+            {
+              "atSec": 648,
+              "label": "Mid-game team fights",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 829,
+              "label": "Securing map objectives"
+            },
+            {
+              "atSec": 1020,
+              "label": "Sieging the base"
+            },
+            {
+              "atSec": 1217,
+              "label": "Final assault and victory"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 55,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "C2WPXAxJ0M0",
+          "title": "(Ekkosuna) Ekko Mid vs Katarina - EUW Grandmaster Patch 26.20",
+          "rankClaim": "Grandmaster",
+          "patch": "26.20",
+          "durationSec": 1585,
+          "region": "EUW",
+          "player": "Ekkosuna",
+          "uploaded": "2026-10-16",
+          "result": "W",
+          "moments": [
+            {
+              "atSec": 7,
+              "label": "First Blood — Ekko kills Kalista",
+              "kind": "kill"
+            },
+            {
+              "atSec": 359,
+              "label": "Red takes 1st Dragon (Cloud)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 593,
+              "label": "Ekko eliminates Katarina"
+            },
+            {
+              "atSec": 774,
+              "label": "Ekko takes down Yone"
+            },
+            {
+              "atSec": 885,
+              "label": "Red takes 2nd Dragon (Infernal)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 889,
+              "label": "Ekko takes down Katarina"
+            },
+            {
+              "atSec": 1029,
+              "label": "Blitzcrank eliminates Yone"
+            },
+            {
+              "atSec": 1065,
+              "label": "Ekko catches Katarina again"
+            },
+            {
+              "atSec": 1158,
+              "label": "Ekko kills Kalista",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1199,
+              "label": "Red takes 3rd Dragon (Chemtech)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1251,
+              "label": "Blue takes Baron",
+              "kind": "baron"
+            },
+            {
+              "atSec": 1340,
+              "label": "Ekko eliminates Katarina"
+            },
+            {
+              "atSec": 1396,
+              "label": "Team fight (3 kills)",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1450,
+              "label": "Team fight (3 kills)",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1509,
+              "label": "Red takes 4th Dragon (Chemtech)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1517,
+              "label": "Ekko eliminates Katarina"
+            },
+            {
+              "atSec": 1551,
+              "label": "Ekko takes down K'Sante"
+            },
+            {
+              "atSec": 1560,
+              "label": "Mid Inhibitor falls (Blue)"
+            }
+          ]
+        },
+        {
+          "videoId": "NPjwexmLRII",
+          "title": "Ekko vs Katarina 18/3/10 (Mid) | EUW Challenger | Ekko OTP Replay",
+          "rankClaim": "Challenger",
+          "patch": "26.9",
+          "durationSec": 2020,
+          "region": "EUW",
+          "patchEstimated": true,
+          "uploaded": "2026-05-04",
+          "moments": []
+        },
+        {
+          "videoId": "6Pb7sQTnnRU",
+          "title": "Ekko Mid vs Katarina - EUW Grandmaster Patch 25.05",
+          "rankClaim": "Grandmaster",
+          "patch": "25.5",
+          "durationSec": 1592,
+          "region": "EUW",
+          "uploaded": "2025-03-18",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 59,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "C4bKgcGSDEU",
+          "title": "Ekko Jungle vs Jarvan IV - EUW Challenger Patch 26.16",
+          "rankClaim": "Challenger",
+          "patch": "26.16",
+          "durationSec": 1482,
+          "region": "EUW",
+          "uploaded": "2026-08-25",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 61,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "Dfubz9d63_U",
+          "title": "Ekko Mid vs Orianna - EUW Challenger Patch 26.02",
+          "rankClaim": "Challenger",
+          "patch": "26.2",
+          "durationSec": 1485,
+          "region": "EUW",
+          "uploaded": "2026-02-03",
+          "moments": []
+        },
+        {
+          "videoId": "gBzFVKkiJFg",
+          "title": "Ekko Mid vs Orianna - EUW Challenger Patch 25.14",
+          "rankClaim": "Challenger",
+          "patch": "25.14",
+          "durationSec": 1990,
+          "region": "EUW",
+          "uploaded": "2025-07-30",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 62,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "Uez9a4KkOc4",
+          "title": "Ekko Jungle vs Wukong - KR Grandmaster Patch 26.10",
+          "rankClaim": "Grandmaster",
+          "patch": "26.10",
+          "durationSec": 1456,
+          "region": "KR",
+          "uploaded": "2026-05-18",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 64,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "_4FsiLSpguo",
+          "title": "Ekko Jungle vs Lee Sin (ZYB Wao) - EUW Grandmaster Patch 26.17",
+          "rankClaim": "Grandmaster",
+          "patch": "26.17",
+          "durationSec": 1647,
+          "region": "EUW",
+          "uploaded": "2026-09-04",
+          "moments": []
+        },
+        {
+          "videoId": "osxbjJWkdVc",
+          "title": "Ekko Jungle vs Lee Sin (Koldo) - EUW Grandmaster Patch 26.15",
+          "rankClaim": "Grandmaster",
+          "patch": "26.15",
+          "durationSec": 1566,
+          "region": "EUW",
+          "uploaded": "2026-08-04",
+          "moments": []
+        },
+        {
+          "videoId": "GXrDZZNhEcw",
+          "title": "Ekko vs Lee Sin Jungle - KR Challenger - Patch 25.21 Season 16",
+          "rankClaim": "Challenger",
+          "patch": "25.21",
+          "durationSec": 1921,
+          "region": "KR",
+          "uploaded": "2025-11-06",
+          "moments": []
+        },
+        {
+          "videoId": "44LRt9SJjvI",
+          "title": "Ekko Jungle vs Lee Sin - KR Master Patch 25.20",
+          "rankClaim": "Master",
+          "patch": "25.20",
+          "durationSec": 2092,
+          "region": "KR",
+          "uploaded": "2025-10-15",
+          "moments": []
+        },
+        {
+          "videoId": "KcDZigFx4V4",
+          "title": "Ekko Jungle vs Lee Sin - KR Master Patch 25.07",
+          "rankClaim": "Master",
+          "patch": "25.7",
+          "durationSec": 1898,
+          "region": "KR",
+          "uploaded": "2025-04-06",
+          "moments": []
+        },
+        {
+          "videoId": "kAjFsL5vjE0",
+          "title": "Ekko Jungle vs Lee Sin - KR Challenger Patch 25.05",
+          "rankClaim": "Challenger",
+          "patch": "25.5",
+          "durationSec": 2052,
+          "region": "KR",
+          "uploaded": "2025-03-12",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 69,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "zox6ov35TOA",
+          "title": "Ekko Mid vs Cassiopeia - EUW Grandmaster Patch 25.06",
+          "rankClaim": "Grandmaster",
+          "patch": "25.6",
+          "durationSec": 1490,
+          "region": "EUW",
+          "uploaded": "2025-03-29",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 178,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 259,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 413,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 485,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 562,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 640,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 697,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 971,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 999,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1058,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1121,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1211,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1286,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1323,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1437,
+              "label": "Take down The Inhibitor"
+            },
+            {
+              "atSec": 1455,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1469,
+              "label": "End credit"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 72,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "EXySs2zr-ZQ",
+          "title": "Ekko Jungle vs Skarner - KR Master Patch 26.21",
+          "rankClaim": "Master",
+          "patch": "26.21",
+          "durationSec": 1796,
+          "region": "KR",
+          "uploaded": "2026-10-31",
+          "result": "W",
+          "moments": [
+            {
+              "atSec": 327,
+              "label": "Red takes 1st Dragon (Infernal)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 489,
+              "label": "Ekko outplays Skarner"
+            },
+            {
+              "atSec": 682,
+              "label": "Blue takes 1st Dragon (Cloud)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 912,
+              "label": "Blue takes Rift Herald",
+              "kind": "herald"
+            },
+            {
+              "atSec": 1012,
+              "label": "Red takes 2nd Dragon (Hextech)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1054,
+              "label": "Pantheon picks off Yunara"
+            },
+            {
+              "atSec": 1102,
+              "label": "Ekko kills Camille",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1183,
+              "label": "Syndra takes down Camille"
+            },
+            {
+              "atSec": 1321,
+              "label": "Syndra eliminates Zeri"
+            },
+            {
+              "atSec": 1356,
+              "label": "Blue takes 2nd Dragon (Hextech)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1415,
+              "label": "Ekko kills Rell",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1452,
+              "label": "Blue takes Baron",
+              "kind": "baron"
+            },
+            {
+              "atSec": 1539,
+              "label": "Ekko picks off Zeri"
+            },
+            {
+              "atSec": 1587,
+              "label": "Ekko kills Camille",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1648,
+              "label": "Lucian eliminates Skarner"
+            },
+            {
+              "atSec": 1693,
+              "label": "Mid Inhibitor falls (Red)"
+            },
+            {
+              "atSec": 1710,
+              "label": "Blue takes 3rd Dragon (Hextech)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1746,
+              "label": "Team fight (4 kills)",
+              "kind": "teamfight"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 76,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "dO_w3orvBYw",
+          "title": "Ekko Jungle vs Nidalee - KR Grandmaster Patch 26.01",
+          "rankClaim": "Grandmaster",
+          "patch": "26.1",
+          "durationSec": 1608,
+          "region": "KR",
+          "uploaded": "2026-01-13",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 77,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "T_RqtOFdgT4",
+          "title": "(FSK XnS) Ekko Jungle vs Udyr - EUW Challenger Patch 26.11",
+          "rankClaim": "Challenger",
+          "patch": "26.11",
+          "durationSec": 1470,
+          "region": "EUW",
+          "player": "FSK XnS",
+          "uploaded": "2026-06-01",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 78,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "soaBs231zw8",
+          "title": "Ekko Jungle vs Poppy - KR Grandmaster Patch 26.07",
+          "rankClaim": "Grandmaster",
+          "patch": "26.7",
+          "durationSec": 1769,
+          "region": "KR",
+          "uploaded": "2026-04-06",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 80,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "016ZBF8W6hg",
+          "title": "Ekko Jungle vs Pantheon - KR Grandmaster Patch 25.11",
+          "rankClaim": "Grandmaster",
+          "patch": "25.11",
+          "durationSec": 1516,
+          "region": "KR",
+          "uploaded": "2025-05-31",
+          "moments": []
+        },
+        {
+          "videoId": "99kdzROwAQc",
+          "title": "Ekko Jungle vs Pantheon - KR Grandmaster Patch 25.08",
+          "rankClaim": "Grandmaster",
+          "patch": "25.8",
+          "durationSec": 1646,
+          "region": "KR",
+          "uploaded": "2025-04-22",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 148,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 210,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 286,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 535,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 566,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 599,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 690,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 717,
+              "label": "Hunt The Void Grubs",
+              "kind": "grubs"
+            },
+            {
+              "atSec": 825,
+              "label": "Hunt The Dragon",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 860,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 950,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1022,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1058,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1147,
+              "label": "Hunt The Dragon",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1178,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1249,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1393,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1410,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1479,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1523,
+              "label": "Hunt The Dragon",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1575,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1597,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1625,
+              "label": "End credit"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 83,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "2wqxrnkDnSo",
+          "title": "Ekko Top vs Yorick - NA Grandmaster Patch 25.13",
+          "rankClaim": "Grandmaster",
+          "patch": "25.13",
+          "durationSec": 2055,
+          "region": "NA",
+          "uploaded": "2025-07-18",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 84,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "fBozSsAUyOc",
+          "title": "Ekko Mid vs Akali - EUW Grandmaster Patch 25.20",
+          "rankClaim": "Grandmaster",
+          "patch": "25.20",
+          "durationSec": 1709,
+          "region": "EUW",
+          "uploaded": "2025-10-12",
+          "moments": []
+        },
+        {
+          "videoId": "rRNw6l3lk9Y",
+          "title": "Ekko Mid vs Akali - KR Master Patch 25.19",
+          "rankClaim": "Master",
+          "patch": "25.19",
+          "durationSec": 1681,
+          "region": "KR",
+          "uploaded": "2025-10-04",
+          "moments": []
+        },
+        {
+          "videoId": "Pabh0s_ACZo",
+          "title": "Ekko Mid vs Akali - EUW Challenger Patch 25.04",
+          "rankClaim": "Challenger",
+          "patch": "25.4",
+          "durationSec": 2047,
+          "region": "EUW",
+          "uploaded": "2025-03-05",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 247,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 704,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 782,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 862,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1097,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1160,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1190,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1324,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1436,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1466,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1525,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1557,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1582,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1599,
+              "label": "Hunt The Dragon",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1698,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1717,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1739,
+              "label": "Get a Triple Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1834,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1862,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1998,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 2026,
+              "label": "End credit"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 91,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "KjlxRTVdrgs",
+          "title": "Ekko Jungle vs Talon - KR Grandmaster Patch 25.18",
+          "rankClaim": "Grandmaster",
+          "patch": "25.18",
+          "durationSec": 1424,
+          "region": "KR",
+          "uploaded": "2025-09-14",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 91,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "VflcNFO7wKk",
+          "title": "Ekko vs Talon Mid - KR Challenger - Patch 16.20 Season 16",
+          "rankClaim": "Challenger",
+          "patch": "26.20",
+          "durationSec": 1546,
+          "region": "KR",
+          "uploaded": "2026-10-12",
+          "moments": []
+        },
+        {
+          "videoId": "7zVj6zJ__MQ",
+          "title": "Ekko Mid vs Talon - NA Grandmaster Patch 25.15",
+          "rankClaim": "Grandmaster",
+          "patch": "25.15",
+          "durationSec": 1933,
+          "region": "NA",
+          "uploaded": "2025-08-08",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 101,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "7wh4kg7Gfc8",
+          "title": "Ekko Mid vs Xerath - KR Master Patch 26.19",
+          "rankClaim": "Master",
+          "patch": "26.19",
+          "durationSec": 1870,
+          "region": "KR",
+          "uploaded": "2026-10-03",
+          "moments": []
+        },
+        {
+          "videoId": "qVahY2CEz9Y",
+          "title": "Ekko Mid vs Xerath - EUW Grandmaster Patch 25.21",
+          "rankClaim": "Grandmaster",
+          "patch": "25.21",
+          "durationSec": 1988,
+          "region": "EUW",
+          "uploaded": "2025-11-02",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 103,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "GzM32tt-gu4",
+          "title": "Ekko vs Ahri Mid - KR Challenger - Patch 16.20 Season 16",
+          "rankClaim": "Challenger",
+          "patch": "26.20",
+          "durationSec": 1931,
+          "region": "KR",
+          "uploaded": "2026-10-09",
+          "moments": []
+        },
+        {
+          "videoId": "p2EeNB31u4w",
+          "title": "(Six10) Ekko Mid vs Ahri - EUW Challenger Patch 26.14",
+          "rankClaim": "Challenger",
+          "patch": "26.14",
+          "durationSec": 1796,
+          "region": "EUW",
+          "player": "Six10",
+          "uploaded": "2026-07-22",
+          "moments": []
+        },
+        {
+          "videoId": "hwHZ6Bg5bY4",
+          "title": "Ekko vs Ahri 9/0/3 (Mid) | EUW Grandmaster | Ekko OTP Replay",
+          "rankClaim": "Grandmaster",
+          "patch": "26.8",
+          "durationSec": 909,
+          "region": "EUW",
+          "patchEstimated": true,
+          "uploaded": "2026-04-17",
+          "moments": []
+        },
+        {
+          "videoId": "O8f74lFM1lA",
+          "title": "Ekko vs Ahri 11/0/5 (Mid) | EUW Grandmaster | Ekko OTP Replay",
+          "rankClaim": "Grandmaster",
+          "patch": "26.7",
+          "durationSec": 1380,
+          "region": "EUW",
+          "patchEstimated": true,
+          "uploaded": "2026-04-10",
+          "moments": []
+        },
+        {
+          "videoId": "0BT0WMCWFus",
+          "title": "Ekko Mid vs Ahri - EUW Challenger Patch 26.03",
+          "rankClaim": "Challenger",
+          "patch": "26.3",
+          "durationSec": 1450,
+          "region": "EUW",
+          "uploaded": "2026-02-15",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 291,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 408,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 757,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 867,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 891,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1054,
+              "label": "Get a Triple Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1082,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1116,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1182,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1284,
+              "label": "Get a Triple Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1316,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1379,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1422,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1439,
+              "label": "End credit"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 105,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "nR0MY-LLsBg",
+          "title": "Ekko Mid vs Fizz - KR Master Patch 26.07",
+          "rankClaim": "Master",
+          "patch": "26.7",
+          "durationSec": 1569,
+          "region": "KR",
+          "uploaded": "2026-04-12",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 238,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 618,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 753,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 958,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1073,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1110,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1132,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1169,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1311,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1343,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1370,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1398,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1496,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1529,
+              "label": "Take down The Inhibitor"
+            },
+            {
+              "atSec": 1544,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1558,
+              "label": "End credit"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 106,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "WJYpcHyHFgg",
+          "title": "(FSK XnS) Ekko Jungle vs Volibear - EUW Challenger Patch 26.13",
+          "rankClaim": "Challenger",
+          "patch": "26.13",
+          "durationSec": 1575,
+          "region": "EUW",
+          "player": "FSK XnS",
+          "uploaded": "2026-06-30",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 107,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "QbKbhFWCDuo",
+          "title": "Ekko Jungle vs Rengar - KR Grandmaster Patch 25.16",
+          "rankClaim": "Grandmaster",
+          "patch": "25.16",
+          "durationSec": 1728,
+          "region": "KR",
+          "uploaded": "2025-08-17",
+          "moments": []
+        },
+        {
+          "videoId": "iU8n36fPfjA",
+          "title": "Ekko Jungle vs Rengar - KR Master Patch 25.15",
+          "rankClaim": "Master",
+          "patch": "25.15",
+          "durationSec": 1692,
+          "region": "KR",
+          "uploaded": "2025-08-04",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 115,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "fHlVeb9UurI",
+          "title": "Ekko Mid vs Ziggs - EUW Grandmaster Patch 25.24",
+          "rankClaim": "Grandmaster",
+          "patch": "25.24",
+          "durationSec": 1567,
+          "region": "EUW",
+          "uploaded": "2025-12-13",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 120,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "GFOdhRMX1pk",
+          "title": "Ekko Jungle vs Hecarim - NA Challenger Patch 26.06",
+          "rankClaim": "Challenger",
+          "patch": "26.6",
+          "durationSec": 1858,
+          "region": "NA",
+          "uploaded": "2026-03-24",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 157,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 318,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 447,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 529,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 897,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 914,
+              "label": "Hunt The Dragon",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 958,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1082,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1173,
+              "label": "Hunt The Rift Herald",
+              "kind": "herald"
+            },
+            {
+              "atSec": 1196,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1232,
+              "label": "Hunt The Dragon",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1300,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1343,
+              "label": "Hunt The Baron Nashor",
+              "kind": "baron"
+            },
+            {
+              "atSec": 1362,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1478,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1553,
+              "label": "Hunt The Dragon",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1674,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1784,
+              "label": "Hunt The Baron Nashor",
+              "kind": "baron"
+            },
+            {
+              "atSec": 1799,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1835,
+              "label": "Take down The Inhibitor"
+            },
+            {
+              "atSec": 1847,
+              "label": "End credit"
+            }
+          ]
+        },
+        {
+          "videoId": "v5qV2Xuq7Pc",
+          "title": "Ekko Jungle vs Hecarim - KR Master Patch 25.24",
+          "rankClaim": "Master",
+          "patch": "25.24",
+          "durationSec": 1541,
+          "region": "KR",
+          "uploaded": "2025-12-08",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 121,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "z8tRbMtuD-I",
+          "title": "Ekko Jungle vs Kha'Zix - TW Challenger Patch 26.04",
+          "rankClaim": "Challenger",
+          "patch": "26.4",
+          "durationSec": 1608,
+          "uploaded": "2026-02-24",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 182,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 202,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 288,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 358,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 381,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 502,
+              "label": "Hunt The Dragon",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 528,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 581,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 652,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 677,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 768,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 786,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 926,
+              "label": "Hunt The Dragon",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 961,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 986,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1013,
+              "label": "Hunt The Rift Herald",
+              "kind": "herald"
+            },
+            {
+              "atSec": 1069,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1093,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1116,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1198,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1217,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1227,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1246,
+              "label": "Hunt The Dragon",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1284,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1333,
+              "label": "Hunt The Baron Nashor",
+              "kind": "baron"
+            },
+            {
+              "atSec": 1397,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1421,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1460,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1559,
+              "label": "Hunt The Dragon",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1575,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1597,
+              "label": "End credit"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 126,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "coln_fq-gko",
+          "title": "Ekko Jungle vs Jayce (Doil) - KR Master Patch 26.14",
+          "rankClaim": "Master",
+          "patch": "26.14",
+          "durationSec": 1444,
+          "region": "KR",
+          "uploaded": "2026-07-25",
+          "moments": []
+        },
+        {
+          "videoId": "CWNd4fqpIE0",
+          "title": "Ekko Jungle vs Jayce - KR Grandmaster Patch 26.09",
+          "rankClaim": "Grandmaster",
+          "patch": "26.9",
+          "durationSec": 1699,
+          "region": "KR",
+          "uploaded": "2026-05-02",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 126,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "qKFT72Qjkc4",
+          "title": "Ekko Mid vs Jayce - EUW Challenger Patch 25.07",
+          "rankClaim": "Challenger",
+          "patch": "25.7",
+          "durationSec": 1735,
+          "region": "EUW",
+          "uploaded": "2025-04-14",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 49,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 172,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 336,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 386,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 535,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 620,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 704,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 753,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 848,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 958,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1030,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1049,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1073,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1218,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1269,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1398,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1714,
+              "label": "End credit"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 126,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "Y949tKnLIBM",
+          "title": "Ekko Top vs Jayce (Shlatan) - EUW Challenger Patch 26.10",
+          "rankClaim": "Challenger",
+          "patch": "26.10",
+          "durationSec": 1717,
+          "region": "EUW",
+          "uploaded": "2026-05-30",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 127,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "H4BTQpTx3Nk",
+          "title": "Ekko Mid vs Lissandra - VN Challenger Patch 25.11",
+          "rankClaim": "Challenger",
+          "patch": "25.11",
+          "durationSec": 1422,
+          "uploaded": "2025-06-08",
+          "moments": []
+        },
+        {
+          "videoId": "s26nAScj_Mc",
+          "title": "Ekko vs Lissandra Mid - EUW Grandmaster - Patch 25.7 Season 15",
+          "rankClaim": "Grandmaster",
+          "patch": "25.7",
+          "durationSec": 2221,
+          "region": "EUW",
+          "uploaded": "2025-04-07",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 131,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "luEcgesdtN0",
+          "title": "Ekko Jungle vs Diana - KR Challenger Patch 25.22",
+          "rankClaim": "Challenger",
+          "patch": "25.22",
+          "durationSec": 1723,
+          "region": "KR",
+          "uploaded": "2025-11-08",
+          "moments": []
+        },
+        {
+          "videoId": "Hy72Gkv_lxo",
+          "title": "Ekko Jungle vs Diana - KR Grandmaster Patch 25.19",
+          "rankClaim": "Grandmaster",
+          "patch": "25.19",
+          "durationSec": 1661,
+          "region": "KR",
+          "uploaded": "2025-09-30",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 131,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "JRoHRwrWVY8",
+          "title": "Ekko Mid vs Diana - EUW Challenger Patch 26.01",
+          "rankClaim": "Challenger",
+          "patch": "26.1",
+          "durationSec": 1593,
+          "region": "EUW",
+          "uploaded": "2026-01-18",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 579,
+              "label": "Get a Triple Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 704,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 729,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 838,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 874,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 932,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1011,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1096,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1118,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1283,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1382,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1548,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1567,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1582,
+              "label": "End credit"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 133,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "tqXXSLS-3Eg",
+          "title": "Ekko Jungle vs Quinn (Weiwei) - KR Challenger Patch 26.11",
+          "rankClaim": "Challenger",
+          "patch": "26.11",
+          "durationSec": 1643,
+          "region": "KR",
+          "uploaded": "2026-06-11",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 134,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "Db522R8OGes",
+          "title": "Ekko Mid vs Syndra - EUW Challenger Patch 25.16",
+          "rankClaim": "Challenger",
+          "patch": "25.16",
+          "durationSec": 1605,
+          "region": "EUW",
+          "uploaded": "2025-08-24",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 136,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "tx90U1lVqS8",
+          "title": "Ekko Jungle vs Aurelion Sol - NA Master Patch 26.19",
+          "rankClaim": "Master",
+          "patch": "26.19",
+          "durationSec": 1685,
+          "region": "NA",
+          "uploaded": "2026-10-01",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 136,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "9VbZIqrOAno",
+          "title": "Ekko vs Aurelion Sol Mid - EUW Grandmaster - Patch 25.8 Season 15",
+          "rankClaim": "Grandmaster",
+          "patch": "25.8",
+          "durationSec": 1891,
+          "region": "EUW",
+          "uploaded": "2025-04-17",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 141,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "H3whsNEnrRY",
+          "title": "Ekko Jungle vs Kayn - TW Challenger Patch 26.05",
+          "rankClaim": "Challenger",
+          "patch": "26.5",
+          "durationSec": 1814,
+          "uploaded": "2026-03-09",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 146,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 285,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 342,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 397,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 533,
+              "label": "Hunt The Dragon",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 617,
+              "label": "Hunt The Void Grubs",
+              "kind": "grubs"
+            },
+            {
+              "atSec": 684,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 828,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 850,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 930,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 990,
+              "label": "Hunt The Rift Herald",
+              "kind": "herald"
+            },
+            {
+              "atSec": 1112,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1234,
+              "label": "Hunt The Dragon",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1269,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1292,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1397,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1466,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1562,
+              "label": "Hunt The Dragon",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1633,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1711,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1803,
+              "label": "End credit"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 142,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "8m66NsV1W_M",
+          "title": "T1 Faker Ekko vs Zoe [ MID ] Korea Master Patch 25.6 ✅",
+          "rankClaim": "Master",
+          "patch": "25.6",
+          "durationSec": 1480,
+          "region": "KR",
+          "player": "Faker",
+          "team": "T1",
+          "uploaded": "2025-04-02",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 154,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "IV5ZXuGD1hU",
+          "title": "Ekko Jungle vs Zac - KR Challenger Patch 26.08",
+          "rankClaim": "Challenger",
+          "patch": "26.8",
+          "durationSec": 1526,
+          "region": "KR",
+          "uploaded": "2026-04-20",
+          "moments": []
+        },
+        {
+          "videoId": "U7e86q_y4Ts",
+          "title": "Ekko vs Zac Jungle - KR Challenger - Patch 25.19 Season 15",
+          "rankClaim": "Challenger",
+          "patch": "25.19",
+          "durationSec": 1601,
+          "region": "KR",
+          "uploaded": "2025-09-30",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 157,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "tOkvgdacnNQ",
+          "title": "Ekko Top vs Yasuo - EUW Challenger Patch 26.13",
+          "rankClaim": "Challenger",
+          "patch": "26.13",
+          "durationSec": 1438,
+          "region": "EUW",
+          "uploaded": "2026-07-08",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 200,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "oN38GTq1m2k",
+          "title": "Ekko Jungle vs Bel'Veth - KR Master Patch 25.04",
+          "rankClaim": "Master",
+          "patch": "25.4",
+          "durationSec": 1722,
+          "region": "KR",
+          "uploaded": "2025-02-25",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 203,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "0W4uelz41-Y",
+          "title": "Ekko Jungle vs Kindred - KR Challenger Patch 26.02",
+          "rankClaim": "Challenger",
+          "patch": "26.2",
+          "durationSec": 1494,
+          "region": "KR",
+          "uploaded": "2026-01-24",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 234,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "0dLXkxnzumg",
+          "title": "Ekko Jungle vs Viego - KR Challenger Patch 25.21",
+          "rankClaim": "Challenger",
+          "patch": "25.21",
+          "durationSec": 1664,
+          "region": "KR",
+          "uploaded": "2025-10-26",
+          "moments": []
+        },
+        {
+          "videoId": "4Y_sSKNmRlo",
+          "title": "Ekko Jungle vs Viego - KR Grandmaster Patch 25.12",
+          "rankClaim": "Grandmaster",
+          "patch": "25.12",
+          "durationSec": 2109,
+          "region": "KR",
+          "uploaded": "2025-06-13",
+          "moments": []
+        },
+        {
+          "videoId": "GqE4Ly7xX0I",
+          "title": "Ekko vs Viego Jungle - KR Challenger - Patch 25.10 Season 15",
+          "rankClaim": "Challenger",
+          "patch": "25.10",
+          "durationSec": 1861,
+          "region": "KR",
+          "uploaded": "2025-05-19",
+          "moments": []
+        },
+        {
+          "videoId": "Ht8q_aq5Q2U",
+          "title": "Ekko vs Viego Jungle - KR Challenger - Patch 25.10 Season 15",
+          "rankClaim": "Challenger",
+          "patch": "25.10",
+          "durationSec": 1571,
+          "region": "KR",
+          "uploaded": "2025-05-17",
+          "moments": []
+        },
+        {
+          "videoId": "JyWDSr7VkoA",
+          "title": "Ekko Jungle vs Viego - KR Grandmaster Patch 25.10",
+          "rankClaim": "Grandmaster",
+          "patch": "25.10",
+          "durationSec": 1931,
+          "region": "KR",
+          "uploaded": "2025-05-16",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 42,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 355,
+              "label": "Hunt The Dragon",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 392,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 480,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 502,
+              "label": "Hunt The Void Grubs",
+              "kind": "grubs"
+            },
+            {
+              "atSec": 525,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 547,
+              "label": "Hunt The Void Grubs",
+              "kind": "grubs"
+            },
+            {
+              "atSec": 571,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 795,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 887,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1074,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1091,
+              "label": "Hunt The Rift Herald",
+              "kind": "herald"
+            },
+            {
+              "atSec": 1102,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1269,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1302,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1321,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1410,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1520,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1629,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1780,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1910,
+              "label": "End credit"
+            }
+          ]
+        },
+        {
+          "videoId": "VfYQkNvV-gY",
+          "title": "Ekko Jungle vs Viego - KR Challenger Patch 25.09",
+          "rankClaim": "Challenger",
+          "patch": "25.9",
+          "durationSec": 1847,
+          "region": "KR",
+          "uploaded": "2025-05-04",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 238,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "hH-qc7caYsE",
+          "title": "Ekko Jungle vs Zed - KR Grandmaster Patch 25.17",
+          "rankClaim": "Grandmaster",
+          "patch": "25.17",
+          "durationSec": 1441,
+          "region": "KR",
+          "uploaded": "2025-09-02",
+          "moments": []
+        },
+        {
+          "videoId": "l1q2hbXDk34",
+          "title": "Ekko Jungle vs Zed - KR Grandmaster Patch 25.14",
+          "rankClaim": "Grandmaster",
+          "patch": "25.14",
+          "durationSec": 1728,
+          "region": "KR",
+          "uploaded": "2025-07-21",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 238,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "M6MExfSEWho",
+          "title": "Ekko vs Zed 9/1/10 (Mid) | EUW Challenger | Ekko OTP Replay",
+          "rankClaim": "Challenger",
+          "patch": "26.9",
+          "durationSec": 1623,
+          "region": "EUW",
+          "patchEstimated": true,
+          "uploaded": "2026-05-07",
+          "moments": []
+        },
+        {
+          "videoId": "qE89j9Q7SQo",
+          "title": "Ekko Mid vs Zed - TW Challenger Patch 25.10",
+          "rankClaim": "Challenger",
+          "patch": "25.10",
+          "durationSec": 1467,
+          "uploaded": "2025-05-24",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 246,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "xwzQzDxpVuk",
+          "title": "Ekko vs Qiyana Jungle - KR Challenger - Patch 25.22 Season 15",
+          "rankClaim": "Challenger",
+          "patch": "25.22",
+          "durationSec": 1591,
+          "region": "KR",
+          "uploaded": "2025-11-18",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 254,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "brwugq0uZgI",
+          "title": "Ekko Jungle vs Vi - KR Grandmaster Patch 26.16",
+          "rankClaim": "Grandmaster",
+          "patch": "26.16",
+          "durationSec": 1748,
+          "region": "KR",
+          "uploaded": "2026-08-20",
+          "moments": []
+        },
+        {
+          "videoId": "51dYuMaxFbM",
+          "title": "Ekko Jungle vs Vi - KR Challenger Patch 26.03",
+          "rankClaim": "Challenger",
+          "patch": "26.3",
+          "durationSec": 1490,
+          "region": "KR",
+          "uploaded": "2026-02-09",
+          "moments": []
+        },
+        {
+          "videoId": "PbFCz-35GvM",
+          "title": "Ekko Jungle vs Vi - KR Challenger Patch 25.06",
+          "rankClaim": "Challenger",
+          "patch": "25.6",
+          "durationSec": 1614,
+          "region": "KR",
+          "uploaded": "2025-03-24",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 163,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 232,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 369,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 487,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 521,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 633,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 682,
+              "label": "Hunt The Void Grubs",
+              "kind": "grubs"
+            },
+            {
+              "atSec": 751,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 870,
+              "label": "Hunt The Dragon",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 972,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1033,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1194,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1312,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1344,
+              "label": "Hunt The Atakhan"
+            },
+            {
+              "atSec": 1378,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1411,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1467,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1517,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1593,
+              "label": "End credit"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 266,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "qaMFbYxGT6c",
+          "title": "(IJC Kaboom) Ekko Jungle vs Aatrox - EUW Grandmaster Patch 26.10",
+          "rankClaim": "Grandmaster",
+          "patch": "26.10",
+          "durationSec": 1505,
+          "region": "EUW",
+          "player": "IJC Kaboom",
+          "uploaded": "2026-05-28",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 517,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "g_HJwdCNB8A",
+          "title": "Ekko Jungle vs Sylas - KR Master Patch 26.20",
+          "rankClaim": "Master",
+          "patch": "26.20",
+          "durationSec": 1838,
+          "region": "KR",
+          "uploaded": "2026-10-17",
+          "result": "W",
+          "moments": [
+            {
+              "atSec": 88,
+              "label": "First Blood — Xayah kills Pantheon",
+              "kind": "kill"
+            },
+            {
+              "atSec": 208,
+              "label": "Ekko outplays Sylas"
+            },
+            {
+              "atSec": 442,
+              "label": "Ekko solo kills Sylas again",
+              "kind": "kill"
+            },
+            {
+              "atSec": 712,
+              "label": "Blue takes 1st Dragon (Mountain)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 789,
+              "label": "Ekko outduels Irelia"
+            },
+            {
+              "atSec": 1047,
+              "label": "Blue takes 2nd Dragon (Infernal)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1174,
+              "label": "Blue takes Baron",
+              "kind": "baron"
+            },
+            {
+              "atSec": 1327,
+              "label": "Ekko takes down Lucian"
+            },
+            {
+              "atSec": 1362,
+              "label": "Blue takes 3rd Dragon (Hextech)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1465,
+              "label": "Mid Inhibitor falls (Red)"
+            },
+            {
+              "atSec": 1506,
+              "label": "Ekko takes down Sylas (3rd time)"
+            },
+            {
+              "atSec": 1512,
+              "label": "Ekko Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1554,
+              "label": "Top Inhibitor falls (Red)"
+            },
+            {
+              "atSec": 1571,
+              "label": "Xayah eliminates Sylas"
+            },
+            {
+              "atSec": 1655,
+              "label": "Ekko catches Lucian again"
+            },
+            {
+              "atSec": 1682,
+              "label": "Blue takes 4th Dragon (Hextech)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1804,
+              "label": "Blue takes 2nd Baron",
+              "kind": "baron"
+            },
+            {
+              "atSec": 1812,
+              "label": "Ekko kills Irelia",
+              "kind": "kill"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 517,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "b8YjNNXwRuw",
+          "title": "Ekko Mid vs Sylas - KR Challenger Patch 26.21",
+          "rankClaim": "Challenger",
+          "patch": "26.21",
+          "durationSec": 1508,
+          "region": "KR",
+          "uploaded": "2026-10-30",
+          "result": "W",
+          "moments": [
+            {
+              "atSec": 121,
+              "label": "First Blood — Ekko kills Sylas",
+              "kind": "kill"
+            },
+            {
+              "atSec": 358,
+              "label": "Red takes 1st Dragon (Cloud)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 607,
+              "label": "Jarvan IV Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 653,
+              "label": "Ekko takes down Sylas"
+            },
+            {
+              "atSec": 656,
+              "label": "Jarvan IV takes down Nidalee"
+            },
+            {
+              "atSec": 690,
+              "label": "Blue takes 1st Dragon (Ocean)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 706,
+              "label": "Jarvan IV picks off Sylas"
+            },
+            {
+              "atSec": 765,
+              "label": "Ekko kills Jhin",
+              "kind": "kill"
+            },
+            {
+              "atSec": 830,
+              "label": "Ekko takes down Rell"
+            },
+            {
+              "atSec": 939,
+              "label": "Riven eliminates Jax"
+            },
+            {
+              "atSec": 1019,
+              "label": "Red takes 2nd Dragon (Mountain)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1040,
+              "label": "Riven Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1216,
+              "label": "Corki Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1353,
+              "label": "Corki Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1392,
+              "label": "Blue takes Baron",
+              "kind": "baron"
+            },
+            {
+              "atSec": 1434,
+              "label": "Blue takes 2nd Dragon (Mountain)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1480,
+              "label": "Bot Inhibitor falls (Red)"
+            },
+            {
+              "atSec": 1494,
+              "label": "Corki kills Sylas",
+              "kind": "kill"
+            }
+          ]
+        },
+        {
+          "videoId": "vCDyUs5WVj8",
+          "title": "Ekko vs Sylas Mid - EUW Challenger - Patch 16.11 Season 16",
+          "rankClaim": "Challenger",
+          "patch": "26.11",
+          "durationSec": 1861,
+          "region": "EUW",
+          "uploaded": "2026-06-09",
+          "moments": []
+        },
+        {
+          "videoId": "a4g6SdBy6tI",
+          "title": "Ekko Mid vs Sylas - VN Challenger Patch 25.12",
+          "rankClaim": "Challenger",
+          "patch": "25.12",
+          "durationSec": 2090,
+          "uploaded": "2025-06-22",
+          "moments": []
+        },
+        {
+          "videoId": "K7TjWFZHSoQ",
+          "title": "Ekko vs Sylas Mid - KR Challenger - Patch 25.8 Season 15",
+          "rankClaim": "Challenger",
+          "patch": "25.8",
+          "durationSec": 1661,
+          "region": "KR",
+          "uploaded": "2025-04-18",
+          "moments": []
+        },
+        {
+          "videoId": "tw_AB4Q0E14",
+          "title": "Ekko vs Sylas Mid - EUW Grandmaster - Patch 25.6 Season 15",
+          "rankClaim": "Grandmaster",
+          "patch": "25.6",
+          "durationSec": 2176,
+          "region": "EUW",
+          "uploaded": "2025-03-20",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 777,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "-MTtNNsnM6A",
+          "title": "Ekko Mid vs Yone - NA Grandmaster Patch 25.09",
+          "rankClaim": "Grandmaster",
+          "patch": "25.9",
+          "durationSec": 1825,
+          "region": "NA",
+          "uploaded": "2025-05-08",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 34,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 302,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1076,
+              "label": "Get a Quadra Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1165,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1261,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1293,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1391,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1461,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1527,
+              "label": "Take down The Inhibitor"
+            },
+            {
+              "atSec": 1718,
+              "label": "Hunt The Dragon",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1740,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1804,
+              "label": "End credit"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 799,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "oJC4CS-rprc",
+          "title": "Ekko Jungle vs Ambessa - NA Challenger Patch 25.24",
+          "rankClaim": "Challenger",
+          "patch": "25.24",
+          "durationSec": 1503,
+          "region": "NA",
+          "uploaded": "2026-01-03",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 190,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 234,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 376,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 535,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 568,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 633,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 694,
+              "label": "Hunt The Void Grubs",
+              "kind": "grubs"
+            },
+            {
+              "atSec": 734,
+              "label": "Hunt The Dragon",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 776,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 909,
+              "label": "Hunt The Rift Herald",
+              "kind": "herald"
+            },
+            {
+              "atSec": 936,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 956,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1057,
+              "label": "Hunt The Dragon",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1124,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1213,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1240,
+              "label": "Hunt The Atakhan"
+            },
+            {
+              "atSec": 1255,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1492,
+              "label": "End credit"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 799,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "Kf7xIZ_Gco0",
+          "title": "Ekko Mid vs Ambessa - EUW Challenger Patch 26.04",
+          "rankClaim": "Challenger",
+          "patch": "26.4",
+          "durationSec": 1833,
+          "region": "EUW",
+          "uploaded": "2026-03-02",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 800,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "dVfZcxqcGWQ",
+          "title": "DK ShowMaker Ekko vs Mel [ MID ] Patch 26.3 Ranked Korea",
+          "rankClaim": "Master+",
+          "patch": "26.3",
+          "durationSec": 1156,
+          "region": "KR",
+          "player": "ShowMaker",
+          "team": "DK",
+          "uploaded": "2026-02-15",
+          "moments": []
+        },
+        {
+          "videoId": "SyKohm3Bl9c",
+          "title": "Ekko Mid vs Mel - EUW Grandmaster Patch 25.23",
+          "rankClaim": "Grandmaster",
+          "patch": "25.23",
+          "durationSec": 1602,
+          "region": "EUW",
+          "uploaded": "2025-12-01",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 805,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "Yd99gnq3woQ",
+          "title": "Ekko Mid vs Locke - KR Grandmaster Patch 26.17",
+          "rankClaim": "Grandmaster",
+          "patch": "26.17",
+          "durationSec": 1703,
+          "region": "KR",
+          "uploaded": "2026-09-05",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 893,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "Rdfs8k-3W04",
+          "title": "Ekko Mid vs Aurora - EUW Challenger Patch 26.08",
+          "rankClaim": "Challenger",
+          "patch": "26.8",
+          "durationSec": 1611,
+          "region": "EUW",
+          "uploaded": "2026-04-26",
+          "moments": []
+        },
+        {
+          "videoId": "qU8C4Cz_dyk",
+          "title": "Ekko Mid vs Aurora - EUW Challenger Patch 26.06",
+          "rankClaim": "Challenger",
+          "patch": "26.6",
+          "durationSec": 1814,
+          "region": "EUW",
+          "uploaded": "2026-03-30",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 950,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "UXt4I2q0QVM",
+          "title": "Ekko Mid vs Naafiri - NA Challenger Patch 25.17",
+          "rankClaim": "Challenger",
+          "patch": "25.17",
+          "durationSec": 1700,
+          "region": "NA",
+          "uploaded": "2025-09-07",
+          "moments": []
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,3294 @@
+{
+  "schema": 1,
+  "champion": 876,
+  "generatedAt": "2026-11-07T13:25:14.592Z",
+  "guides": [],
+  "general": [
+    {
+      "champion": 876,
+      "lane": "jungle",
+      "patch": "26.21",
+      "reviewed": false,
+      "keyTips": [
+        {
+          "text": "Farm camps and experience first through a weaker start to reach level 6 quickly.",
+          "scope": "champion",
+          "sourceIds": [
+            "mobalytics-lillia"
+          ]
+        },
+        {
+          "text": "Add ganks on pushed-up lanes through low-vision windows without abandoning full clears for low-percentage plays.",
+          "scope": "champion",
+          "sourceIds": [
+            "mobalytics-lillia"
+          ]
+        },
+        {
+          "text": "Play every catch and skirmish around R, whose sleep opens the team follow-up window.",
+          "scope": "champion",
+          "sourceIds": [
+            "mobalytics-lillia"
+          ],
+          "abilityKeys": [
+            {
+              "champion": 876,
+              "key": "R"
+            }
+          ]
+        }
+      ],
+      "sections": {
+        "overview": {
+          "tips": []
+        },
+        "early-lane": {
+          "tips": [
+            {
+              "text": "Contest neutral objectives with teammates when the map allows; objective control compounds into long-term advantage.",
+              "scope": "champion",
+              "sourceIds": [
+                "mobalytics-lillia"
+              ]
+            },
+            {
+              "text": "After level 6, open ganks by landing Q for passive stacks into R sleep on the marked target.",
+              "scope": "champion",
+              "sourceIds": [
+                "mobalytics-lillia-build"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 876,
+                  "key": "Q"
+                },
+                {
+                  "champion": 876,
+                  "key": "R"
+                }
+              ]
+            },
+            {
+              "text": "Cast R ready to help allies finish kills, especially into several catchable enemies.",
+              "scope": "champion",
+              "sourceIds": [
+                "mobalytics-lillia"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 876,
+                  "key": "R"
+                }
+              ]
+            },
+            {
+              "text": "Thread E through mid on the way back to jungle routes to threaten setups without detouring.",
+              "scope": "champion",
+              "sourceIds": [
+                "mobalytics-lillia-build"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 876,
+                  "key": "E"
+                }
+              ]
+            }
+          ]
+        },
+        "mid-lane": {
+          "tips": [
+            {
+              "text": "Keep farming between plays so R hunting never tanks jungle tempo.",
+              "scope": "champion",
+              "sourceIds": [
+                "mobalytics-lillia"
+              ]
+            },
+            {
+              "text": "Secure objectives with the team, spending successful picks on Baron or Dragon numbers.",
+              "scope": "champion",
+              "sourceIds": [
+                "mobalytics-lillia"
+              ]
+            }
+          ]
+        },
+        "win-condition": {
+          "tips": [
+            {
+              "text": "Stay with the team late and land R on an exposed squishy or a clustered group.",
+              "scope": "champion",
+              "sourceIds": [
+                "mobalytics-lillia"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 876,
+                  "key": "R"
+                }
+              ]
+            },
+            {
+              "text": "Flank toward the backline but hold arrival range so the fight start never beats Lillia there.",
+              "scope": "champion",
+              "sourceIds": [
+                "mobalytics-lillia"
+              ]
+            },
+            {
+              "text": "Refuse forced fights with R down and wait for the next strong engage window.",
+              "scope": "champion",
+              "sourceIds": [
+                "mobalytics-lillia"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 876,
+                  "key": "R"
+                }
+              ]
+            },
+            {
+              "text": "Ping before multi-target R commits so teammates hold damage until the sleep lands.",
+              "scope": "champion",
+              "sourceIds": [
+                "mobalytics-lillia"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 876,
+                  "key": "R"
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "itemization": [
+        {
+          "text": "Run Flash and Smite with Conqueror, Triumph, Legend: Haste, and Coup de Grace plus Cosmic Insight and Magical Footwear on adaptive-force and health-scaling shards.",
+          "scope": "champion",
+          "sourceIds": [
+            "mobalytics-lillia-build"
+          ]
+        },
+        {
+          "text": "Order Liandry's Torment, Sorcerer's Shoes, Riftmaker, Zhonya's Hourglass, Rylai's Crystal Scepter, and Rabadon's Deathcap while maxing Q, then W, then E.",
+          "scope": "champion",
+          "sourceIds": [
+            "mobalytics-lillia-build"
+          ],
+          "abilityKeys": [
+            {
+              "champion": 876,
+              "key": "Q"
+            },
+            {
+              "champion": 876,
+              "key": "W"
+            },
+            {
+              "champion": 876,
+              "key": "E"
+            }
+          ],
+          "itemIds": [
+            6653,
+            3020,
+            4633,
+            3157,
+            3116,
+            3089
+          ]
+        },
+        {
+          "text": "Slot Bloodletter's Curse fourth instead of Zhonya's Hourglass by game.",
+          "scope": "champion",
+          "sourceIds": [
+            "mobalytics-lillia-build"
+          ],
+          "itemIds": [
+            8010,
+            3157
+          ]
+        },
+        {
+          "text": "Keep the alternate current build of Blackfire Torch first shifting later toward Liandry's and Rylai's as its own separate order.",
+          "scope": "champion",
+          "sourceIds": [
+            "mobalytics-lillia-build"
+          ],
+          "itemIds": [
+            2503
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "id": "mobalytics-lillia",
+          "author": "Mobalytics",
+          "rankClaim": "No rank claim",
+          "url": "https://mobalytics.gg/lol/champions/lillia/guide/jungle",
+          "kind": "web"
+        },
+        {
+          "id": "mobalytics-lillia-build",
+          "author": "Mobalytics",
+          "rankClaim": "No rank claim",
+          "url": "https://mobalytics.gg/lol/champions/lillia/build",
+          "kind": "web"
+        }
+      ]
+    }
+  ],
+  "vods": [
+    {
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "jAnGMwtnQcU",
+          "title": "FULL EDUCATIONAL LILLIA GAMEPLAY | FREE GUIDE",
+          "rankClaim": "Master+",
+          "patch": "26.18",
+          "durationSec": 1001,
+          "patchEstimated": true,
+          "player": "Sinerias",
+          "uploaded": "2026-09-15",
+          "format": "stream",
+          "cam": true,
+          "moments": []
+        },
+        {
+          "videoId": "QQwXTUSXBJg",
+          "title": "How Baicaiovo reached Rank 2 on the Super Server with INSANE Lillia jungle pathing Engsub",
+          "rankClaim": "Master+",
+          "patch": "26.1",
+          "durationSec": 1786,
+          "patchEstimated": true,
+          "player": "Baicaiovo",
+          "uploaded": "2026-01-10",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "zUnoi6QIER4",
+          "title": "Baicaiovo Reaches Rank 2 Super Server with Flawless Lillia Jungle Pathing Engsub",
+          "rankClaim": "Master+",
+          "patch": "26.1",
+          "durationSec": 1532,
+          "patchEstimated": true,
+          "player": "Baicaiovo",
+          "uploaded": "2026-01-10",
+          "format": "stream",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "MsU-eeic6Dw",
+          "title": "Baicaiovo Pathing Masterclass Top 2 Super Server Challenger Lillia Jungle Execution Engsub",
+          "rankClaim": "Challenger",
+          "patch": "26.1",
+          "durationSec": 1342,
+          "patchEstimated": true,
+          "player": "Baicaiovo",
+          "uploaded": "2026-01-10",
+          "format": "stream",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 5,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "r5M_M-eHqzw",
+          "title": "Lillia Jungle vs Xin Zhao - KR Master Patch 25.22",
+          "rankClaim": "Master",
+          "patch": "25.22",
+          "durationSec": 1693,
+          "region": "KR",
+          "uploaded": "2025-11-08",
+          "moments": []
+        },
+        {
+          "videoId": "E_9-7tQfOkw",
+          "title": "Lillia Jungle vs Xin Zhao - KR Challenger Patch 25.11",
+          "rankClaim": "Challenger",
+          "patch": "25.11",
+          "durationSec": 1807,
+          "region": "KR",
+          "uploaded": "2025-06-04",
+          "moments": []
+        },
+        {
+          "videoId": "clBAvl54zpc",
+          "title": "Lillia Jungle vs Xin Zhao - EUW Grandmaster Patch 25.09",
+          "rankClaim": "Grandmaster",
+          "patch": "25.9",
+          "durationSec": 1457,
+          "region": "EUW",
+          "uploaded": "2025-05-16",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 420,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 480,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 546,
+              "label": "Hunt The Void Grubs",
+              "kind": "grubs"
+            },
+            {
+              "atSec": 664,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 770,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 894,
+              "label": "Hunt The Dragon",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 929,
+              "label": "Hunt The Rift Herald",
+              "kind": "herald"
+            },
+            {
+              "atSec": 954,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 984,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1150,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1223,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1255,
+              "label": "Hunt The Atakhan"
+            },
+            {
+              "atSec": 1324,
+              "label": "Hunt The Dragon",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1391,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1409,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1436,
+              "label": "End credit"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 11,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "4HqBTGxXQwk",
+          "title": "Lillia Jungle vs Master Yi - EUW Master Patch 26.18",
+          "rankClaim": "Master",
+          "patch": "26.18",
+          "durationSec": 1488,
+          "region": "EUW",
+          "uploaded": "2026-09-15",
+          "moments": []
+        },
+        {
+          "videoId": "fHJOfe1fb_0",
+          "title": "Lillia Jungle vs Master Yi - KR Master Patch 26.17",
+          "rankClaim": "Master",
+          "patch": "26.17",
+          "durationSec": 1468,
+          "region": "KR",
+          "uploaded": "2026-09-09",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 24,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "GFX-C629djY",
+          "title": "Lillia vs Jax Jungle - KR Challenger - Patch 25.4 Season 15",
+          "rankClaim": "Challenger",
+          "patch": "25.4",
+          "durationSec": 1696,
+          "region": "KR",
+          "uploaded": "2025-03-06",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 28,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "djHWa2uYMUE",
+          "title": "Lillia Jungle vs Evelynn - KR Grandmaster Patch 26.16",
+          "rankClaim": "Grandmaster",
+          "patch": "26.16",
+          "durationSec": 1747,
+          "region": "KR",
+          "uploaded": "2026-08-27",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 30,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "rlh-B7wYuAQ",
+          "title": "Lillia Jungle vs Karthus - NA Challenger Patch 25.19",
+          "rankClaim": "Challenger",
+          "patch": "25.19",
+          "durationSec": 2120,
+          "region": "NA",
+          "uploaded": "2025-10-08",
+          "moments": []
+        },
+        {
+          "videoId": "fkhEy3yH-pc",
+          "title": "T1 Oner Lillia vs Karthus  Jungle - KR Grandmaster - Patch 25.15 Season 15",
+          "rankClaim": "Grandmaster",
+          "patch": "25.15",
+          "durationSec": 1876,
+          "region": "KR",
+          "player": "Oner",
+          "team": "T1",
+          "uploaded": "2025-08-08",
+          "moments": []
+        },
+        {
+          "videoId": "X6lMI58a9lo",
+          "title": "T1 Oner Lillia vs Karthus [ Jungle ] Patch 25.15 Korea Master",
+          "rankClaim": "Master",
+          "patch": "25.15",
+          "durationSec": 1693,
+          "region": "KR",
+          "player": "Oner",
+          "team": "T1",
+          "uploaded": "2025-08-05",
+          "moments": []
+        },
+        {
+          "videoId": "fTIzy8e0CMk",
+          "title": "Lillia Jungle vs Karthus - EUW Grandmaster Patch 25.13",
+          "rankClaim": "Grandmaster",
+          "patch": "25.13",
+          "durationSec": 2133,
+          "region": "EUW",
+          "uploaded": "2025-07-11",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 33,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "94PGqDyhhh0",
+          "title": "Lillia Jungle vs Rammus - NA Challenger Patch 25.20",
+          "rankClaim": "Challenger",
+          "patch": "25.20",
+          "durationSec": 1714,
+          "region": "NA",
+          "uploaded": "2025-10-24",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 35,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "eGlFT6kF0FQ",
+          "title": "Lillia Jungle vs Shaco - EUW Challenger Patch 25.18",
+          "rankClaim": "Challenger",
+          "patch": "25.18",
+          "durationSec": 1964,
+          "region": "EUW",
+          "uploaded": "2025-09-26",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 36,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "wnr-RFHmzgg",
+          "title": "Lillia Jungle vs Dr. Mundo - KR Master Patch 25.23",
+          "rankClaim": "Master",
+          "patch": "25.23",
+          "durationSec": 1761,
+          "region": "KR",
+          "uploaded": "2025-11-27",
+          "moments": []
+        },
+        {
+          "videoId": "6-MjVT7JVjU",
+          "title": "Lillia Jungle vs Dr. Mundo - EUW Grandmaster Patch 25.08",
+          "rankClaim": "Grandmaster",
+          "patch": "25.8",
+          "durationSec": 1612,
+          "region": "EUW",
+          "uploaded": "2025-05-02",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 378,
+              "label": "Hunt The Dragon",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 626,
+              "label": "Hunt The Void Grubs",
+              "kind": "grubs"
+            },
+            {
+              "atSec": 732,
+              "label": "Get a Triple Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 832,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 890,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 984,
+              "label": "Hunt The Rift Herald",
+              "kind": "herald"
+            },
+            {
+              "atSec": 1076,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1154,
+              "label": "Get a Triple Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1289,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1321,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1348,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1364,
+              "label": "Hunt The Atakhan"
+            },
+            {
+              "atSec": 1439,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1472,
+              "label": "Hunt The Dragon",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1537,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1567,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1591,
+              "label": "End credit"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 56,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "_N9xL4s_fgE",
+          "title": "(SC Spooky) Lillia Jungle vs Nocturne (GOAL Elix1r) - EUW Challenger Patch 26.14",
+          "rankClaim": "Challenger",
+          "patch": "26.14",
+          "durationSec": 1494,
+          "region": "EUW",
+          "player": "SC Spooky",
+          "uploaded": "2026-07-21",
+          "moments": []
+        },
+        {
+          "videoId": "JM6ft8J7XCc",
+          "title": "(MVK Gury) Lillia Jungle vs Nocturne (OMG Juhan) - KR Challenger Patch 26.11",
+          "rankClaim": "Challenger",
+          "patch": "26.11",
+          "durationSec": 1770,
+          "region": "KR",
+          "player": "MVK Gury",
+          "uploaded": "2026-06-01",
+          "moments": []
+        },
+        {
+          "videoId": "ueh3Bl3hVbU",
+          "title": "Lillia Jungle vs Nocturne - EUW Grandmaster Patch 25.10",
+          "rankClaim": "Grandmaster",
+          "patch": "25.10",
+          "durationSec": 1706,
+          "region": "EUW",
+          "uploaded": "2025-05-28",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 59,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "8tlzulGWwQs",
+          "title": "Lillia vs Jarvan IV 4/1/4 (Jungle) | EUW Challenger | Lillia OTP Replay",
+          "rankClaim": "Challenger",
+          "patch": "26.10",
+          "durationSec": 917,
+          "region": "EUW",
+          "patchEstimated": true,
+          "uploaded": "2026-05-23",
+          "moments": []
+        },
+        {
+          "videoId": "kyMBkKVS3x4",
+          "title": "Lillia Jungle vs Jarvan IV - BR Challenger Patch 26.04",
+          "rankClaim": "Challenger",
+          "patch": "26.4",
+          "durationSec": 1790,
+          "uploaded": "2026-02-26",
+          "moments": []
+        },
+        {
+          "videoId": "uyZuB4KiRsY",
+          "title": "Lillia Jungle vs Jarvan IV - EUW Challenger Patch 25.14",
+          "rankClaim": "Challenger",
+          "patch": "25.14",
+          "durationSec": 1671,
+          "region": "EUW",
+          "uploaded": "2025-07-31",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 60,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "BjZ1Wb82gH0",
+          "title": "Lillia Jungle vs Elise - EUW Grandmaster Patch 25.22",
+          "rankClaim": "Grandmaster",
+          "patch": "25.22",
+          "durationSec": 1775,
+          "region": "EUW",
+          "uploaded": "2025-11-20",
+          "moments": []
+        },
+        {
+          "videoId": "DPpggZ6XGNA",
+          "title": "Lillia Jungle vs Elise - KR Master Patch 25.18",
+          "rankClaim": "Master",
+          "patch": "25.18",
+          "durationSec": 1907,
+          "region": "KR",
+          "uploaded": "2025-09-13",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 62,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "a6Xta831Srs",
+          "title": "Lillia Jungle vs Wukong (AL Shanks) - EUW Challenger Patch 26.14",
+          "rankClaim": "Challenger",
+          "patch": "26.14",
+          "durationSec": 1839,
+          "region": "EUW",
+          "player": "Shanks",
+          "uploaded": "2026-07-30",
+          "moments": []
+        },
+        {
+          "videoId": "ydyYyLlj924",
+          "title": "(SK Skeanz) Lillia Jungle vs Wukong - EUW Challenger Patch 26.13",
+          "rankClaim": "Challenger",
+          "patch": "26.13",
+          "durationSec": 1454,
+          "region": "EUW",
+          "player": "SK Skeanz",
+          "uploaded": "2026-07-08",
+          "moments": []
+        },
+        {
+          "videoId": "gX3ebgvKxr4",
+          "title": "Lillia vs Wukong Jungle - KR Challenger - Patch 25.19 Season 15",
+          "rankClaim": "Challenger",
+          "patch": "25.19",
+          "durationSec": 1401,
+          "region": "KR",
+          "uploaded": "2025-09-28",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 64,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "M1TtzYUGP6U",
+          "title": "Lillia Jungle vs Lee Sin - KR Challenger Patch 26.20",
+          "rankClaim": "Challenger",
+          "patch": "26.20",
+          "durationSec": 1595,
+          "region": "KR",
+          "uploaded": "2026-10-09",
+          "result": "W",
+          "moments": [
+            {
+              "atSec": 283,
+              "label": "First Blood — Lillia kills Yasuo",
+              "kind": "kill"
+            },
+            {
+              "atSec": 382,
+              "label": "Blue takes 1st Dragon (Infernal)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 515,
+              "label": "Lillia Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 698,
+              "label": "Blue takes 2nd Dragon (Hextech)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 858,
+              "label": "Zed takes down Twisted Fate"
+            },
+            {
+              "atSec": 1018,
+              "label": "Lillia kills Leona",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1022,
+              "label": "Lillia Triple Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1025,
+              "label": "Lillia Quadra Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1035,
+              "label": "Lillia PENTA KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1059,
+              "label": "Blue takes 3rd Dragon (Chemtech)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1292,
+              "label": "Red takes Baron",
+              "kind": "baron"
+            },
+            {
+              "atSec": 1367,
+              "label": "Red takes 1st Dragon (Chemtech)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1432,
+              "label": "Team fight (3 kills)",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1436,
+              "label": "Kai'Sa Triple Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1465,
+              "label": "Mid Inhibitor falls (Red)"
+            },
+            {
+              "atSec": 1480,
+              "label": "Yone eliminates Twisted Fate"
+            },
+            {
+              "atSec": 1551,
+              "label": "Kai'Sa picks off Leona"
+            },
+            {
+              "atSec": 1563,
+              "label": "Kai'Sa Triple Kill",
+              "kind": "kill"
+            }
+          ]
+        },
+        {
+          "videoId": "2Qgb4q2mywM",
+          "title": "Lillia Jungle vs Lee Sin (Crazy) - KR Master Patch 26.13",
+          "rankClaim": "Master",
+          "patch": "26.13",
+          "durationSec": 1785,
+          "region": "KR",
+          "uploaded": "2026-07-15",
+          "moments": []
+        },
+        {
+          "videoId": "guvEC4ruJCU",
+          "title": "(IJC Kaboom) Lillia Jungle vs Lee Sin - EUW Challenger Patch 26.11",
+          "rankClaim": "Challenger",
+          "patch": "26.11",
+          "durationSec": 1455,
+          "region": "EUW",
+          "player": "IJC Kaboom",
+          "uploaded": "2026-06-11",
+          "moments": []
+        },
+        {
+          "videoId": "zQQZSvzliAg",
+          "title": "(AOEE RoseThorn) Lillia Jungle vs Lee Sin - NA Grandmaster Patch 26.10",
+          "rankClaim": "Grandmaster",
+          "patch": "26.10",
+          "durationSec": 1798,
+          "region": "NA",
+          "player": "AOEE RoseThorn",
+          "uploaded": "2026-05-30",
+          "moments": []
+        },
+        {
+          "videoId": "DuVl9tNTnj4",
+          "title": "Lillia Jungle vs Lee Sin - KR Grandmaster Patch 26.09",
+          "rankClaim": "Grandmaster",
+          "patch": "26.9",
+          "durationSec": 1696,
+          "region": "KR",
+          "uploaded": "2026-05-14",
+          "moments": []
+        },
+        {
+          "videoId": "7xD7xRG2HXY",
+          "title": "Lillia vs Lee Sin 8/6/25 (Jungle) | EUW Master | Lillia OTP Replay",
+          "rankClaim": "Master",
+          "patch": "26.8",
+          "durationSec": 2096,
+          "region": "EUW",
+          "patchEstimated": true,
+          "uploaded": "2026-04-28",
+          "moments": []
+        },
+        {
+          "videoId": "GB_0wEIKcAs",
+          "title": "Lillia Jungle vs Lee Sin - KR Challenger Patch 26.05",
+          "rankClaim": "Challenger",
+          "patch": "26.5",
+          "durationSec": 1888,
+          "region": "KR",
+          "uploaded": "2026-03-11",
+          "moments": []
+        },
+        {
+          "videoId": "37-2_lDZzw0",
+          "title": "Lillia Jungle vs Lee Sin - TW Challenger Patch 25.17",
+          "rankClaim": "Challenger",
+          "patch": "25.17",
+          "durationSec": 1506,
+          "uploaded": "2025-09-12",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 72,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "AlrG8aTYQg4",
+          "title": "Lillia Jungle vs Skarner - KR Master Patch 26.17",
+          "rankClaim": "Master",
+          "patch": "26.17",
+          "durationSec": 1898,
+          "region": "KR",
+          "uploaded": "2026-08-31",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 76,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "dYalMMiww34",
+          "title": "(Juhan) Lillia Jungle vs Nidalee - KR Challenger Patch 26.21",
+          "rankClaim": "Challenger",
+          "patch": "26.21",
+          "durationSec": 1752,
+          "region": "KR",
+          "player": "Juhan",
+          "uploaded": "2026-11-03",
+          "result": "W",
+          "moments": [
+            {
+              "atSec": 556,
+              "label": "Red takes 1st Dragon (Cloud)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 782,
+              "label": "Team fight (3 kills)",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 879,
+              "label": "Red takes 2nd Dragon (Hextech)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 896,
+              "label": "Akali eliminates Zoe"
+            },
+            {
+              "atSec": 924,
+              "label": "Red takes Rift Herald",
+              "kind": "herald"
+            },
+            {
+              "atSec": 1003,
+              "label": "Team fight (3 kills)",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1045,
+              "label": "Lillia takes down Varus"
+            },
+            {
+              "atSec": 1185,
+              "label": "Blue takes Baron",
+              "kind": "baron"
+            },
+            {
+              "atSec": 1195,
+              "label": "Akali Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1198,
+              "label": "Akali Triple Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1269,
+              "label": "Red takes 3rd Dragon (Chemtech)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1318,
+              "label": "Akali kills Varus",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1473,
+              "label": "Jhin kills Zoe",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1583,
+              "label": "Blue takes 1st Dragon (Chemtech)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1624,
+              "label": "Lillia Triple Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1666,
+              "label": "Red takes Baron",
+              "kind": "baron"
+            },
+            {
+              "atSec": 1727,
+              "label": "Akali picks off Nidalee"
+            }
+          ]
+        },
+        {
+          "videoId": "6lfQdtaNarY",
+          "title": "Lillia Jungle vs Nidalee - KR Master Patch 26.19",
+          "rankClaim": "Master",
+          "patch": "26.19",
+          "durationSec": 1744,
+          "region": "KR",
+          "uploaded": "2026-10-08",
+          "result": "W",
+          "moments": [
+            {
+              "atSec": 188,
+              "label": "First Blood — Lillia kills Yone",
+              "kind": "kill"
+            },
+            {
+              "atSec": 379,
+              "label": "Blue takes 1st Dragon (Infernal)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 582,
+              "label": "Jhin picks off Leona"
+            },
+            {
+              "atSec": 751,
+              "label": "Lillia kills Malphite",
+              "kind": "kill"
+            },
+            {
+              "atSec": 754,
+              "label": "Blue takes 2nd Dragon (Hextech)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 868,
+              "label": "K'Sante eliminates Malphite"
+            },
+            {
+              "atSec": 913,
+              "label": "Red takes Rift Herald",
+              "kind": "herald"
+            },
+            {
+              "atSec": 1069,
+              "label": "Blue takes 3rd Dragon (Cloud)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1197,
+              "label": "Ryze picks off Nidalee"
+            },
+            {
+              "atSec": 1360,
+              "label": "Team fight (3 kills)",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1418,
+              "label": "Red takes 1st Dragon (Cloud)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1460,
+              "label": "Ryze eliminates Yone"
+            },
+            {
+              "atSec": 1471,
+              "label": "Mid Inhibitor falls (Red)"
+            },
+            {
+              "atSec": 1548,
+              "label": "Ryze eliminates Yone"
+            },
+            {
+              "atSec": 1590,
+              "label": "Red takes Baron",
+              "kind": "baron"
+            },
+            {
+              "atSec": 1703,
+              "label": "Mid Inhibitor falls (Blue)"
+            },
+            {
+              "atSec": 1730,
+              "label": "Jhin Double Kill",
+              "kind": "kill"
+            }
+          ]
+        },
+        {
+          "videoId": "R5gh7pKctvs",
+          "title": "(KRX Vincenzo) Lillia Jungle vs Nidalee - KR Challenger Patch 26.15",
+          "rankClaim": "Challenger",
+          "patch": "26.15",
+          "durationSec": 1618,
+          "region": "KR",
+          "player": "KRX Vincenzo",
+          "uploaded": "2026-08-11",
+          "moments": []
+        },
+        {
+          "videoId": "6DD0XvSon6M",
+          "title": "Lillia Jungle vs Nidalee - KR Grandmaster Patch 25.19",
+          "rankClaim": "Grandmaster",
+          "patch": "25.19",
+          "durationSec": 1649,
+          "region": "KR",
+          "uploaded": "2025-09-30",
+          "moments": []
+        },
+        {
+          "videoId": "0haDYys-SQU",
+          "title": "Lillia Jungle vs Nidalee - EUW Challenger Patch 25.05",
+          "rankClaim": "Challenger",
+          "patch": "25.5",
+          "durationSec": 1835,
+          "region": "EUW",
+          "uploaded": "2025-03-20",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 78,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "7l4i0Qi5gfc",
+          "title": "Lillia Jungle vs Poppy - EUW Challenger Patch 25.12",
+          "rankClaim": "Challenger",
+          "patch": "25.12",
+          "durationSec": 1785,
+          "region": "EUW",
+          "uploaded": "2025-06-27",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 80,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "LpLN4DUNwTY",
+          "title": "Lillia Jungle vs Pantheon - KR Master Patch 26.08",
+          "rankClaim": "Master",
+          "patch": "26.8",
+          "durationSec": 1745,
+          "region": "KR",
+          "uploaded": "2026-05-01",
+          "moments": []
+        },
+        {
+          "videoId": "N8jDN5zM2QQ",
+          "title": "Lillia Jungle vs Pantheon - KR Grandmaster Patch 25.12",
+          "rankClaim": "Grandmaster",
+          "patch": "25.12",
+          "durationSec": 1722,
+          "region": "KR",
+          "uploaded": "2025-06-15",
+          "moments": []
+        },
+        {
+          "videoId": "wdaS0eQg0e0",
+          "title": "Lillia Jungle vs Pantheon - KR Challenger Patch 25.10",
+          "rankClaim": "Challenger",
+          "patch": "25.10",
+          "durationSec": 1704,
+          "region": "KR",
+          "uploaded": "2025-05-18",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 185,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 348,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 397,
+              "label": "Hunt The Dragon",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 427,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 505,
+              "label": "Hunt The Void Grubs",
+              "kind": "grubs"
+            },
+            {
+              "atSec": 530,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 611,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 715,
+              "label": "Hunt The Void Grubs",
+              "kind": "grubs"
+            },
+            {
+              "atSec": 825,
+              "label": "Hunt The Dragon",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 887,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 923,
+              "label": "Hunt The Rift Herald",
+              "kind": "herald"
+            },
+            {
+              "atSec": 1120,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1159,
+              "label": "Hunt The Dragon",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1296,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1492,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1516,
+              "label": "Take down The Inhibitor"
+            },
+            {
+              "atSec": 1533,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1552,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1648,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1683,
+              "label": "End credit"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 91,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "IBF4J09cGdM",
+          "title": "Lillia vs Talon 13/1/10 (Jungle) | EUW Grandmaster | Lillia OTP Replay",
+          "rankClaim": "Grandmaster",
+          "patch": "26.10",
+          "durationSec": 1529,
+          "region": "EUW",
+          "patchEstimated": true,
+          "uploaded": "2026-05-16",
+          "moments": []
+        },
+        {
+          "videoId": "ncGhdTzCl44",
+          "title": "Lillia Jungle vs Talon - KR Grandmaster Patch 25.16",
+          "rankClaim": "Grandmaster",
+          "patch": "25.16",
+          "durationSec": 1554,
+          "region": "KR",
+          "uploaded": "2025-08-20",
+          "moments": []
+        },
+        {
+          "videoId": "0UjiRpglhcs",
+          "title": "Lillia vs Talon Jungle - KR Challenger - Patch 25.9 Season 15",
+          "rankClaim": "Challenger",
+          "patch": "25.9",
+          "durationSec": 2550,
+          "region": "KR",
+          "uploaded": "2025-05-15",
+          "moments": []
+        },
+        {
+          "videoId": "auNtkxLJRFA",
+          "title": "Lillia Jungle vs Talon - EUW Grandmaster Patch 25.07",
+          "rankClaim": "Grandmaster",
+          "patch": "25.7",
+          "durationSec": 1876,
+          "region": "EUW",
+          "uploaded": "2025-04-17",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 197,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 263,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 354,
+              "label": "Hunt The Void Grubs",
+              "kind": "grubs"
+            },
+            {
+              "atSec": 384,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 560,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 597,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 630,
+              "label": "Hunt The Void Grubs",
+              "kind": "grubs"
+            },
+            {
+              "atSec": 702,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 808,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 960,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 983,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1108,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1123,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1164,
+              "label": "Hunt The Rift Herald",
+              "kind": "herald"
+            },
+            {
+              "atSec": 1186,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1356,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1498,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1650,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1713,
+              "label": "Hunt The Baron Nashor",
+              "kind": "baron"
+            },
+            {
+              "atSec": 1733,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1855,
+              "label": "End credit"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 104,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "F-lge_SLZBw",
+          "title": "Lillia Jungle vs Graves - KR Master Patch 26.07",
+          "rankClaim": "Master",
+          "patch": "26.7",
+          "durationSec": 1835,
+          "region": "KR",
+          "uploaded": "2026-04-09",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 113,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "uhqJ1KMeBus",
+          "title": "Lillia Jungle vs Sejuani - KR Challenger Patch 25.06",
+          "rankClaim": "Challenger",
+          "patch": "25.6",
+          "durationSec": 1601,
+          "region": "KR",
+          "uploaded": "2025-03-24",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 120,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "knm6855eec8",
+          "title": "Lillia Jungle vs Hecarim - EUW Grandmaster Patch 25.04",
+          "rankClaim": "Grandmaster",
+          "patch": "25.4",
+          "durationSec": 1620,
+          "region": "EUW",
+          "uploaded": "2025-03-07",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 126,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "Qa4QLEOoGhg",
+          "title": "Lillia Jungle vs Jayce (Haru) - KR Grandmaster Patch 26.21",
+          "rankClaim": "Grandmaster",
+          "patch": "26.21",
+          "durationSec": 1769,
+          "region": "KR",
+          "uploaded": "2026-10-24",
+          "result": "W",
+          "moments": [
+            {
+              "atSec": 282,
+              "label": "Red takes 1st Dragon (Hextech)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 397,
+              "label": "First Blood — Lillia kills Taliyah",
+              "kind": "kill"
+            },
+            {
+              "atSec": 532,
+              "label": "Lillia outduels Cassiopeia"
+            },
+            {
+              "atSec": 675,
+              "label": "Blue takes 1st Dragon (Chemtech)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1000,
+              "label": "Red takes 2nd Dragon (Mountain)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1108,
+              "label": "Lillia Triple Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1193,
+              "label": "Lillia Triple Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1344,
+              "label": "Red takes 3rd Dragon (Mountain)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1529,
+              "label": "Blue takes Baron",
+              "kind": "baron"
+            },
+            {
+              "atSec": 1579,
+              "label": "Lillia kills Cassiopeia",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1668,
+              "label": "Red takes 4th Dragon (Mountain)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1678,
+              "label": "Lillia takes down Jinx"
+            },
+            {
+              "atSec": 1686,
+              "label": "Lillia Triple Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1717,
+              "label": "Team fight (3 kills)",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1720,
+              "label": "Mid Inhibitor falls (Blue)"
+            },
+            {
+              "atSec": 1752,
+              "label": "Lillia Triple Kill",
+              "kind": "kill"
+            }
+          ]
+        },
+        {
+          "videoId": "LVxculW97Pc",
+          "title": "(Haru) Lillia Jungle vs Jayce - KR Challenger Patch 26.12",
+          "rankClaim": "Challenger",
+          "patch": "26.12",
+          "durationSec": 1646,
+          "region": "KR",
+          "player": "Haru",
+          "uploaded": "2026-06-25",
+          "moments": []
+        },
+        {
+          "videoId": "xmL-4M01l8c",
+          "title": "Lillia Jungle vs Jayce - KR Challenger Patch 26.06",
+          "rankClaim": "Challenger",
+          "patch": "26.6",
+          "durationSec": 1580,
+          "region": "KR",
+          "uploaded": "2026-03-27",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 175,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 308,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 388,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 463,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 584,
+              "label": "Hunt The Void Grubs",
+              "kind": "grubs"
+            },
+            {
+              "atSec": 609,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 626,
+              "label": "Hunt The Void Grubs",
+              "kind": "grubs"
+            },
+            {
+              "atSec": 697,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 784,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 846,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 864,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 880,
+              "label": "Hunt The Dragon",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 977,
+              "label": "Get a Triple Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1068,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1170,
+              "label": "Hunt The Rift Herald",
+              "kind": "herald"
+            },
+            {
+              "atSec": 1200,
+              "label": "Hunt The Baron Nashor",
+              "kind": "baron"
+            },
+            {
+              "atSec": 1309,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1381,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1537,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1569,
+              "label": "End credit"
+            }
+          ]
+        },
+        {
+          "videoId": "TkA9Wpl8Yck",
+          "title": "Lillia Jungle vs Jayce - EUW Challenger Patch 26.05",
+          "rankClaim": "Challenger",
+          "patch": "26.5",
+          "durationSec": 1726,
+          "region": "EUW",
+          "uploaded": "2026-03-19",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 173,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 377,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 489,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 545,
+              "label": "Hunt The Void Grubs",
+              "kind": "grubs"
+            },
+            {
+              "atSec": 627,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 692,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 717,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 735,
+              "label": "Hunt The Dragon",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 852,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 955,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1038,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1065,
+              "label": "Hunt The Dragon",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1148,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1179,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1202,
+              "label": "Hunt The Baron Nashor",
+              "kind": "baron"
+            },
+            {
+              "atSec": 1234,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1344,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1435,
+              "label": "Hunt The Dragon",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1470,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1604,
+              "label": "Hunt The Baron Nashor",
+              "kind": "baron"
+            },
+            {
+              "atSec": 1664,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1715,
+              "label": "End credit"
+            }
+          ]
+        },
+        {
+          "videoId": "e64DbcHynAo",
+          "title": "Lillia Jungle vs Jayce - EUW Grandmaster Patch 26.02",
+          "rankClaim": "Grandmaster",
+          "patch": "26.2",
+          "durationSec": 1449,
+          "region": "EUW",
+          "uploaded": "2026-02-04",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 330,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 392,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 467,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 515,
+              "label": "Hunt The Void Grubs",
+              "kind": "grubs"
+            },
+            {
+              "atSec": 650,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 692,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 761,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 832,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 885,
+              "label": "Hunt The Dragon",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 909,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1008,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1080,
+              "label": "Hunt The Rift Herald",
+              "kind": "herald"
+            },
+            {
+              "atSec": 1129,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1211,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1232,
+              "label": "Hunt The Dragon",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1249,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1407,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1438,
+              "label": "End credit"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 131,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "QP1th3CU0Xk",
+          "title": "Lillia vs Diana 13/0/22 (Jungle) | EUW Master | Lillia OTP Replay",
+          "rankClaim": "Master",
+          "patch": "26.9",
+          "durationSec": 1455,
+          "region": "EUW",
+          "patchEstimated": true,
+          "uploaded": "2026-05-11",
+          "moments": []
+        },
+        {
+          "videoId": "iqutD9wmMrU",
+          "title": "Lillia Jungle vs Diana - KR Master Patch 26.01",
+          "rankClaim": "Master",
+          "patch": "26.1",
+          "durationSec": 1461,
+          "region": "KR",
+          "uploaded": "2026-01-15",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 230,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 425,
+              "label": "Hunt The Dragon",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 484,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 514,
+              "label": "Hunt The Void Grubs",
+              "kind": "grubs"
+            },
+            {
+              "atSec": 618,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 747,
+              "label": "Hunt The Dragon",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 783,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 931,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1006,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1093,
+              "label": "Hunt The Dragon",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1125,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1147,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1273,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1303,
+              "label": "Hunt The Baron Nashor",
+              "kind": "baron"
+            },
+            {
+              "atSec": 1322,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1429,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1450,
+              "label": "End credit"
+            }
+          ]
+        },
+        {
+          "videoId": "m_5A9WJTBh0",
+          "title": "Lillia Jungle vs Diana - NA Challenger Patch 25.24",
+          "rankClaim": "Challenger",
+          "patch": "25.24",
+          "durationSec": 1501,
+          "region": "NA",
+          "uploaded": "2026-01-03",
+          "moments": []
+        },
+        {
+          "videoId": "cGhK9iPWN1M",
+          "title": "Lillia Jungle vs Diana - KR Master Patch 25.21",
+          "rankClaim": "Master",
+          "patch": "25.21",
+          "durationSec": 1739,
+          "region": "KR",
+          "uploaded": "2025-10-29",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 133,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "Ayz1MQwxMlU",
+          "title": "Lillia Jungle vs Quinn - NA Challenger Patch 26.20",
+          "rankClaim": "Challenger",
+          "patch": "26.20",
+          "durationSec": 1471,
+          "region": "NA",
+          "uploaded": "2026-10-22",
+          "result": "W",
+          "moments": [
+            {
+              "atSec": 307,
+              "label": "First Blood — Lillia kills Quinn",
+              "kind": "kill"
+            },
+            {
+              "atSec": 360,
+              "label": "Blue takes 1st Dragon (Cloud)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 468,
+              "label": "Lillia takes down Quinn"
+            },
+            {
+              "atSec": 526,
+              "label": "Malzahar Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 659,
+              "label": "Lillia takes down Quinn"
+            },
+            {
+              "atSec": 724,
+              "label": "Red takes 1st Dragon (Chemtech)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 779,
+              "label": "Lillia catches Soraka"
+            },
+            {
+              "atSec": 839,
+              "label": "Lillia eliminates Irelia"
+            },
+            {
+              "atSec": 930,
+              "label": "Lillia kills Soraka",
+              "kind": "kill"
+            },
+            {
+              "atSec": 964,
+              "label": "Red takes Rift Herald",
+              "kind": "herald"
+            },
+            {
+              "atSec": 1037,
+              "label": "Red takes 2nd Dragon (Ocean)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1164,
+              "label": "Tristana picks off Soraka"
+            },
+            {
+              "atSec": 1213,
+              "label": "Red takes Baron",
+              "kind": "baron"
+            },
+            {
+              "atSec": 1324,
+              "label": "Mid Inhibitor falls (Blue)"
+            },
+            {
+              "atSec": 1353,
+              "label": "Red takes 3rd Dragon (Ocean)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1418,
+              "label": "Tristana picks off Soraka"
+            },
+            {
+              "atSec": 1434,
+              "label": "Top Inhibitor falls (Blue)"
+            },
+            {
+              "atSec": 1445,
+              "label": "Lillia solo kills LeBlanc",
+              "kind": "kill"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 143,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "MhTN7bwP1rU",
+          "title": "Lillia Jungle vs Zyra - NA Challenger Patch 25.16",
+          "rankClaim": "Challenger",
+          "patch": "25.16",
+          "durationSec": 1671,
+          "region": "NA",
+          "uploaded": "2025-08-29",
+          "moments": []
+        },
+        {
+          "videoId": "Vqsxi2T9kPc",
+          "title": "Lillia Jungle vs Zyra - KR Challenger Patch 25.08",
+          "rankClaim": "Challenger",
+          "patch": "25.8",
+          "durationSec": 1858,
+          "region": "KR",
+          "uploaded": "2025-04-20",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 236,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 361,
+              "label": "Hunt The Void Grubs",
+              "kind": "grubs"
+            },
+            {
+              "atSec": 378,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 567,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 616,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 674,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 699,
+              "label": "Hunt The Void Grubs",
+              "kind": "grubs"
+            },
+            {
+              "atSec": 830,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 902,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 930,
+              "label": "Hunt The Dragon",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 993,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1059,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1142,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1173,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1405,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1525,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1591,
+              "label": "Hunt The Dragon",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1626,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1675,
+              "label": "Hunt The Baron Nashor",
+              "kind": "baron"
+            },
+            {
+              "atSec": 1760,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1788,
+              "label": "Take down The Inhibitor"
+            },
+            {
+              "atSec": 1799,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1813,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1826,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1837,
+              "label": "End credit"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 154,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "GB6WvbXB-F8",
+          "title": "Lillia Jungle vs Zac - KR Grandmaster Patch 25.20",
+          "rankClaim": "Grandmaster",
+          "patch": "25.20",
+          "durationSec": 2001,
+          "region": "KR",
+          "uploaded": "2025-10-16",
+          "moments": []
+        },
+        {
+          "videoId": "iCrCZxMtgEA",
+          "title": "Lillia Jungle vs Zac - KR Grandmaster Patch 25.15",
+          "rankClaim": "Grandmaster",
+          "patch": "25.15",
+          "durationSec": 1688,
+          "region": "KR",
+          "uploaded": "2025-08-05",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 163,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "JgkZeq37WPM",
+          "title": "Lillia Jungle vs Taliyah - KR Challenger Patch 26.08",
+          "rankClaim": "Challenger",
+          "patch": "26.8",
+          "durationSec": 1534,
+          "region": "KR",
+          "uploaded": "2026-04-20",
+          "moments": []
+        },
+        {
+          "videoId": "eOt8sDYGZVQ",
+          "title": "Lillia Jungle vs Taliyah - KR Challenger Patch 25.09",
+          "rankClaim": "Challenger",
+          "patch": "25.9",
+          "durationSec": 1675,
+          "region": "KR",
+          "uploaded": "2025-05-04",
+          "moments": []
+        },
+        {
+          "videoId": "8GWpG8TAwJ8",
+          "title": "Lillia vs Taliyah Jungle - KR Challenger - Patch 15.4 Season 15",
+          "rankClaim": "Challenger",
+          "patch": "25.4",
+          "durationSec": 1591,
+          "region": "KR",
+          "uploaded": "2025-02-24",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 233,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "oP1yWt91zWc",
+          "title": "Lillia Jungle vs Briar - KR Master Patch 25.05",
+          "rankClaim": "Master",
+          "patch": "25.5",
+          "durationSec": 1485,
+          "region": "KR",
+          "uploaded": "2025-03-10",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 234,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "l53ZAfi7Xk4",
+          "title": "Lillia Jungle vs Viego - KR Grandmaster Patch 26.02",
+          "rankClaim": "Grandmaster",
+          "patch": "26.2",
+          "durationSec": 1608,
+          "region": "KR",
+          "uploaded": "2026-01-28",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 330,
+              "label": "Get a Triple Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 457,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 509,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 530,
+              "label": "Hunt The Void Grubs",
+              "kind": "grubs"
+            },
+            {
+              "atSec": 709,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 916,
+              "label": "Hunt The Dragon",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 948,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1001,
+              "label": "Hunt The Rift Herald",
+              "kind": "herald"
+            },
+            {
+              "atSec": 1052,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1070,
+              "label": "Get a Quadra Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1086,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1209,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1241,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1326,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1451,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1479,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1506,
+              "label": "Take down The Inhibitor"
+            },
+            {
+              "atSec": 1550,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1597,
+              "label": "End credit"
+            }
+          ]
+        },
+        {
+          "videoId": "oJS79WwFGUw",
+          "title": "Lillia Jungle vs Viego - NA Grandmaster Patch 25.24",
+          "rankClaim": "Grandmaster",
+          "patch": "25.24",
+          "durationSec": 1492,
+          "region": "NA",
+          "uploaded": "2026-01-09",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 259,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 376,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 500,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 586,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 632,
+              "label": "Hunt The Dragon",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 669,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 875,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 902,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1024,
+              "label": "Hunt The Rift Herald",
+              "kind": "herald"
+            },
+            {
+              "atSec": 1045,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1068,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1114,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1223,
+              "label": "Hunt The Atakhan"
+            },
+            {
+              "atSec": 1241,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1276,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1349,
+              "label": "Hunt The Dragon",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1426,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1481,
+              "label": "End credit"
+            }
+          ]
+        },
+        {
+          "videoId": "i6G9MQ3P6A0",
+          "title": "Lillia Jungle vs Viego - KR Master Patch 25.14",
+          "rankClaim": "Master",
+          "patch": "25.14",
+          "durationSec": 2018,
+          "region": "KR",
+          "uploaded": "2025-07-20",
+          "moments": []
+        },
+        {
+          "videoId": "uoWCet77Ygw",
+          "title": "Lillia Jungle vs Viego - KR Master Patch 25.13",
+          "rankClaim": "Master",
+          "patch": "25.13",
+          "durationSec": 2125,
+          "region": "KR",
+          "uploaded": "2025-06-30",
+          "moments": []
+        },
+        {
+          "videoId": "2GLH0OmQUy4",
+          "title": "Lillia vs Viego Jungle - KR Challenger - Patch 25.7 Season 15",
+          "rankClaim": "Challenger",
+          "patch": "25.7",
+          "durationSec": 2190,
+          "region": "KR",
+          "uploaded": "2025-04-12",
+          "moments": []
+        },
+        {
+          "videoId": "WRgYvdytLCk",
+          "title": "Lillia Jungle vs Viego - KR Challenger Patch 25.07",
+          "rankClaim": "Challenger",
+          "patch": "25.7",
+          "durationSec": 1683,
+          "region": "KR",
+          "uploaded": "2025-04-07",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 256,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 359,
+              "label": "Hunt The Void Grubs",
+              "kind": "grubs"
+            },
+            {
+              "atSec": 385,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 678,
+              "label": "Hunt The Dragon",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 700,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 758,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 829,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 925,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1012,
+              "label": "Hunt The Dragon",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1138,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1224,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1331,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1356,
+              "label": "Hunt The Dragon",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1458,
+              "label": "Hunt The Atakhan"
+            },
+            {
+              "atSec": 1477,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1506,
+              "label": "Hunt The Baron Nashor",
+              "kind": "baron"
+            },
+            {
+              "atSec": 1536,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1596,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1617,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1662,
+              "label": "End credit"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 238,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "2aWkmmtyKps",
+          "title": "T1 Oner Lillia vs Zed [ Jungle ] Korea Master Patch 25.7 ✅",
+          "rankClaim": "Master",
+          "patch": "25.7",
+          "durationSec": 1004,
+          "region": "KR",
+          "player": "Oner",
+          "team": "T1",
+          "uploaded": "2025-04-16",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 245,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "85hRtMZ4eCQ",
+          "title": "(G2N Markoon) Lillia Jungle vs Ekko - EUW Challenger Patch 26.10",
+          "rankClaim": "Challenger",
+          "patch": "26.10",
+          "durationSec": 1765,
+          "region": "EUW",
+          "player": "G2N Markoon",
+          "uploaded": "2026-05-20",
+          "moments": []
+        },
+        {
+          "videoId": "ghT4rG7V778",
+          "title": "Lillia Jungle vs Ekko - KR Challenger Patch 26.03",
+          "rankClaim": "Challenger",
+          "patch": "26.3",
+          "durationSec": 1540,
+          "region": "KR",
+          "uploaded": "2026-02-12",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 246,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "kq-7kZlVyWA",
+          "title": "Lillia Jungle vs Qiyana - KR Grandmaster Patch 26.19",
+          "rankClaim": "Grandmaster",
+          "patch": "26.19",
+          "durationSec": 1719,
+          "region": "KR",
+          "uploaded": "2026-09-25",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 254,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "hu4Ovi_BMfI",
+          "title": "Lillia Jungle vs Vi - KR Master Patch 25.24",
+          "rankClaim": "Master",
+          "patch": "25.24",
+          "durationSec": 1457,
+          "region": "KR",
+          "uploaded": "2025-12-27",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 209,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 397,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 472,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 564,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 658,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 674,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 746,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 941,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 987,
+              "label": "Hunt The Rift Herald",
+              "kind": "herald"
+            },
+            {
+              "atSec": 1071,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1228,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1263,
+              "label": "Hunt The Atakhan"
+            },
+            {
+              "atSec": 1342,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1368,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1446,
+              "label": "End credit"
+            }
+          ]
+        },
+        {
+          "videoId": "1JXUIl_D7ZE",
+          "title": "Lillia vs Vi Jungle - KR Grandmaster - Patch 25.9 Season 15",
+          "rankClaim": "Grandmaster",
+          "patch": "25.9",
+          "durationSec": 1871,
+          "region": "KR",
+          "uploaded": "2025-05-13",
+          "moments": []
+        },
+        {
+          "videoId": "-qQ7T7I4rik",
+          "title": "Lillia vs Vi Jungle - KR Challenger - Patch 25.9 Season 15",
+          "rankClaim": "Challenger",
+          "patch": "25.9",
+          "durationSec": 1621,
+          "region": "KR",
+          "uploaded": "2025-05-12",
+          "moments": []
+        },
+        {
+          "videoId": "zHDCavLMtI8",
+          "title": "Lillia Jungle vs Vi - KR Challenger Patch 25.04",
+          "rankClaim": "Challenger",
+          "patch": "25.4",
+          "durationSec": 1806,
+          "region": "KR",
+          "uploaded": "2025-02-24",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 266,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "q-1t2amBieA",
+          "title": "Lillia Jungle vs Aatrox - EUW Challenger Patch 25.23",
+          "rankClaim": "Challenger",
+          "patch": "25.23",
+          "durationSec": 1493,
+          "region": "EUW",
+          "uploaded": "2025-12-05",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 421,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "AnWqTQVpn8o",
+          "title": "Lillia Jungle vs Rek'Sai - EUW Challenger Patch 25.24",
+          "rankClaim": "Challenger",
+          "patch": "25.24",
+          "durationSec": 1507,
+          "region": "EUW",
+          "uploaded": "2025-12-20",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 221,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 414,
+              "label": "Hunt The Dragon",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 434,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 615,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 687,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 744,
+              "label": "Hunt The Dragon",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 768,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 815,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 887,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 916,
+              "label": "Hunt The Rift Herald",
+              "kind": "herald"
+            },
+            {
+              "atSec": 994,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1049,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1076,
+              "label": "Hunt The Dragon",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1135,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1236,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1351,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1379,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1391,
+              "label": "Take down The Inhibitor"
+            },
+            {
+              "atSec": 1443,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1459,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1476,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1496,
+              "label": "End credit"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 427,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "jMcz-PQfONE",
+          "title": "(CLA Kiki) Lillia Jungle vs Ivern - EUW Grandmaster Patch 26.13",
+          "rankClaim": "Grandmaster",
+          "patch": "26.13",
+          "durationSec": 1513,
+          "region": "EUW",
+          "player": "CLA Kiki",
+          "uploaded": "2026-06-29",
+          "moments": []
+        },
+        {
+          "videoId": "cG-erZqc0rk",
+          "title": "Lillia Jungle vs Ivern - KR Grandmaster Patch 25.17",
+          "rankClaim": "Grandmaster",
+          "patch": "25.17",
+          "durationSec": 1853,
+          "region": "KR",
+          "uploaded": "2025-09-06",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 517,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "z4gTrVNOzBI",
+          "title": "Lillia Jungle vs Sylas - KR Grandmaster Patch 25.24",
+          "rankClaim": "Grandmaster",
+          "patch": "25.24",
+          "durationSec": 1591,
+          "region": "KR",
+          "uploaded": "2025-12-11",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 799,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "8SLaGmOswcI",
+          "title": "Lillia Jungle vs Ambessa - KR Grandmaster Patch 26.09",
+          "rankClaim": "Grandmaster",
+          "patch": "26.9",
+          "durationSec": 1609,
+          "region": "KR",
+          "uploaded": "2026-05-06",
+          "moments": []
+        },
+        {
+          "videoId": "3EG1knro0Ac",
+          "title": "Lillia Jungle vs Ambessa - KR Challenger Patch 26.03",
+          "rankClaim": "Challenger",
+          "patch": "26.3",
+          "durationSec": 1914,
+          "region": "KR",
+          "uploaded": "2026-02-20",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 950,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "SOlfh_66O08",
+          "title": "(HELL Kituruken) Lillia Jungle vs Naafiri - NA Grandmaster Patch 26.15",
+          "rankClaim": "Grandmaster",
+          "patch": "26.15",
+          "durationSec": 1857,
+          "region": "NA",
+          "player": "HELL Kituruken",
+          "uploaded": "2026-08-03",
+          "moments": []
+        },
+        {
+          "videoId": "HcuYmyeHO-o",
+          "title": "(JDG Xiaoxu) Lillia Jungle vs Naafiri - KR Master Patch 26.12",
+          "rankClaim": "Master",
+          "patch": "26.12",
+          "durationSec": 1800,
+          "region": "KR",
+          "player": "Xiaoxu",
+          "team": "JDG",
+          "uploaded": "2026-06-16",
+          "moments": []
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,2048 @@
+{
+  "schema": 1,
+  "champion": 895,
+  "generatedAt": "2026-11-07T13:25:14.592Z",
+  "guides": [],
+  "general": [
+    {
+      "champion": 895,
+      "lane": "adc",
+      "patch": "26.21",
+      "reviewed": false,
+      "keyTips": [
+        {
+          "text": "Treat levels one and two as the weakest window: hold experience range and health rather than contesting every minion with a hard trade.",
+          "scope": "champion",
+          "sourceIds": [
+            "v1gorous1-nilah"
+          ]
+        },
+        {
+          "text": "Strike at advantage moments: an experience lead, level three, or level six, when a new ability or the ultimate can surprise opponents who still expect the weak early laner.",
+          "scope": "champion",
+          "sourceIds": [
+            "v1gorous1-nilah"
+          ],
+          "abilityKeys": [
+            {
+              "champion": 895,
+              "key": "R"
+            }
+          ]
+        },
+        {
+          "text": "In fights, weave basic attacks between Q and E casts, hold R until an ally starts the fight or opponents commit, and use W and R to shield a teammate under focus.",
+          "scope": "champion",
+          "sourceIds": [
+            "v1gorous1-nilah"
+          ],
+          "abilityKeys": [
+            {
+              "champion": 895,
+              "key": "Q"
+            },
+            {
+              "champion": 895,
+              "key": "W"
+            },
+            {
+              "champion": 895,
+              "key": "E"
+            },
+            {
+              "champion": 895,
+              "key": "R"
+            }
+          ]
+        }
+      ],
+      "sections": {
+        "overview": {
+          "tips": []
+        },
+        "early-lane": {
+          "tips": [
+            {
+              "text": "Give up individual minions before levels three and six if contesting them means taking a bad trade; Nilah's early game is about surviving to her windows.",
+              "scope": "champion",
+              "sourceIds": [
+                "v1gorous1-nilah"
+              ]
+            },
+            {
+              "text": "Track the experience race, including the extra experience from nearby allied minions, and look for the all-in exactly when Nilah holds the level edge.",
+              "scope": "champion",
+              "sourceIds": [
+                "v1gorous1-nilah"
+              ]
+            },
+            {
+              "text": "Use Q to damage turrets and take plates when the opposing bot lane is forced to recall; Nilah removes towers quickly once she has the opening.",
+              "scope": "champion",
+              "sourceIds": [
+                "v1gorous1-nilah"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 895,
+                  "key": "Q"
+                }
+              ]
+            },
+            {
+              "text": "Spending R to chunk the enemy ADC into a recall is acceptable when it converts into plates; treat the ultimate as a lane-investment tool, not only a kill tool.",
+              "scope": "champion",
+              "sourceIds": [
+                "v1gorous1-nilah"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 895,
+                  "key": "R"
+                }
+              ]
+            }
+          ]
+        },
+        "mid-lane": {
+          "tips": [
+            {
+              "text": "Enter and exit exchanges instead of standing inside the enemy team; time W and R around what opponents do rather than spending them on schedule.",
+              "scope": "champion",
+              "sourceIds": [
+                "v1gorous1-nilah"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 895,
+                  "key": "W"
+                },
+                {
+                  "champion": 895,
+                  "key": "R"
+                }
+              ]
+            },
+            {
+              "text": "Keep R ready for the follow-up moment: after an ally engages or the enemy commits, when its area damage and ally healing swing the exchange.",
+              "scope": "champion",
+              "sourceIds": [
+                "v1gorous1-nilah"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 895,
+                  "key": "R"
+                }
+              ]
+            },
+            {
+              "text": "Play as follow-up, not the initiator: reach the backline only when a teammate creates the entry, and protect a pressured teammate with W and R.",
+              "scope": "champion",
+              "sourceIds": [
+                "v1gorous1-nilah"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 895,
+                  "key": "W"
+                },
+                {
+                  "champion": 895,
+                  "key": "R"
+                }
+              ]
+            },
+            {
+              "text": "Keep damage flowing by alternating autos with Q and E instead of chaining abilities back to back without attacks between them.",
+              "scope": "champion",
+              "sourceIds": [
+                "v1gorous1-nilah"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 895,
+                  "key": "Q"
+                },
+                {
+                  "champion": 895,
+                  "key": "E"
+                }
+              ]
+            }
+          ]
+        },
+        "win-condition": {
+          "tips": [
+            {
+              "text": "Protect health through levels one and two, then turn a level lead or a level-three or level-six all-in into plates or a tower.",
+              "scope": "champion",
+              "sourceIds": [
+                "v1gorous1-nilah"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 895,
+                  "key": "R"
+                }
+              ]
+            },
+            {
+              "text": "In teamfights, wait for allied engage or an enemy commit, guard allies with W and R, and sustain damage with autos between abilities.",
+              "scope": "champion",
+              "sourceIds": [
+                "v1gorous1-nilah"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 895,
+                  "key": "W"
+                },
+                {
+                  "champion": 895,
+                  "key": "R"
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "itemization": [
+        {
+          "text": "Run Conqueror with Triumph, Legend: Alacrity, and Last Stand plus Cash Back and Biscuit Delivery; take Flash and Ghost with a Doran's Blade start.",
+          "scope": "champion",
+          "sourceIds": [
+            "v1gorous1-nilah"
+          ],
+          "itemIds": [
+            1055
+          ]
+        },
+        {
+          "text": "Build the standard curve of Essence Reaver, Immortal Shieldbow, Death's Dance, Infinity Edge, and Lord Dominik's Regards; in burst lanes open with The Collector, Infinity Edge, and Berserker's Greaves.",
+          "scope": "champion",
+          "sourceIds": [
+            "v1gorous1-nilah"
+          ],
+          "itemIds": [
+            3508,
+            6673,
+            6333,
+            3031,
+            3036,
+            6676,
+            3006
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "id": "v1gorous1-nilah",
+          "author": "V1gorous1",
+          "rankClaim": "Diamond (profile badge); Challenger, 829 LP peak (author claim)",
+          "rank": "diamond",
+          "url": "https://www.mobafire.com/league-of-legends/build/challenger-nilah-guide-season-16-updated-647955",
+          "kind": "mobafire"
+        }
+      ]
+    }
+  ],
+  "vods": [
+    {
+      "lane": "adc",
+      "videos": [
+        {
+          "videoId": "VvY_mSRECXo",
+          "title": "PEYZ : His Nilah Mechanic is so AGGRESSIVE",
+          "rankClaim": "Master+",
+          "patch": "26.18",
+          "durationSec": 1458,
+          "patchEstimated": true,
+          "player": "Peyz",
+          "uploaded": "2026-09-18",
+          "format": "stream",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 4,
+      "lane": "adc",
+      "videos": [
+        {
+          "videoId": "1iTD8574oFI",
+          "title": "Nilah ADC vs Twisted Fate - KR Grandmaster Patch 26.16",
+          "rankClaim": "Grandmaster",
+          "patch": "26.16",
+          "durationSec": 1548,
+          "region": "KR",
+          "uploaded": "2026-08-22",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 8,
+      "lane": "adc",
+      "videos": [
+        {
+          "videoId": "MDf58Q-e1xg",
+          "title": "Nilah ADC vs Vladimir - EUW Grandmaster Patch 26.14",
+          "rankClaim": "Grandmaster",
+          "patch": "26.14",
+          "durationSec": 1702,
+          "region": "EUW",
+          "uploaded": "2026-07-23",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 15,
+      "lane": "adc",
+      "videos": [
+        {
+          "videoId": "-aiSGPmPYYk",
+          "title": "T1 Peyz Nilah vs HLE Gumayusi Sivir [ ADC ] Korea Challenger 2565 LP | Patch 26.17",
+          "rankClaim": "Challenger",
+          "patch": "26.17",
+          "durationSec": 1337,
+          "region": "KR",
+          "player": "Peyz",
+          "team": "T1",
+          "uploaded": "2026-09-08",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 17,
+      "lane": "adc",
+      "videos": [
+        {
+          "videoId": "K0rjwprhT5c",
+          "title": "Nilah ADC vs Teemo - KR Master Patch 26.12",
+          "rankClaim": "Master",
+          "patch": "26.12",
+          "durationSec": 1512,
+          "region": "KR",
+          "uploaded": "2026-06-18",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 18,
+      "lane": "adc",
+      "videos": [
+        {
+          "videoId": "6PMwh49-kBA",
+          "title": "Nilah ADC vs Tristana - KR Master Patch 25.07",
+          "rankClaim": "Master",
+          "patch": "25.7",
+          "durationSec": 1826,
+          "region": "KR",
+          "uploaded": "2025-04-11",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 21,
+      "lane": "adc",
+      "videos": [
+        {
+          "videoId": "N8PHfUXZ1SA",
+          "title": "Nilah ADC vs Miss Fortune - EUW Challenger Patch 25.13",
+          "rankClaim": "Challenger",
+          "patch": "25.13",
+          "durationSec": 2060,
+          "region": "EUW",
+          "uploaded": "2025-07-04",
+          "moments": []
+        },
+        {
+          "videoId": "jsf8QZP6TBk",
+          "title": "Nilah vs Miss Fortune ADC - EUW Challenger - Patch 25.12 Season 15",
+          "rankClaim": "Challenger",
+          "patch": "25.12",
+          "durationSec": 2146,
+          "region": "EUW",
+          "uploaded": "2025-06-19",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 22,
+      "lane": "adc",
+      "videos": [
+        {
+          "videoId": "8wU6IFC0vkE",
+          "title": "T1 Peyz Nilah vs Ashe [ ADC ] Korea Challenger 2474 LP | Patch 26.17",
+          "rankClaim": "Challenger",
+          "patch": "26.17",
+          "durationSec": 1032,
+          "region": "KR",
+          "player": "Peyz",
+          "team": "T1",
+          "uploaded": "2026-09-04",
+          "moments": []
+        },
+        {
+          "videoId": "xYfbCLtO3Ls",
+          "title": "Nilah ADC vs Ashe - EUW Challenger Patch 25.19",
+          "rankClaim": "Challenger",
+          "patch": "25.19",
+          "durationSec": 1488,
+          "region": "EUW",
+          "uploaded": "2025-10-10",
+          "moments": []
+        },
+        {
+          "videoId": "cVIcYd81Peo",
+          "title": "Nilah ADC vs Ashe - KR Master Patch 25.08",
+          "rankClaim": "Master",
+          "patch": "25.8",
+          "durationSec": 1788,
+          "region": "KR",
+          "uploaded": "2025-04-24",
+          "moments": []
+        },
+        {
+          "videoId": "zz3kV5IFb_E",
+          "title": "Nilah ADC vs Ashe - KR Master Patch 25.05",
+          "rankClaim": "Master",
+          "patch": "25.5",
+          "durationSec": 1776,
+          "region": "KR",
+          "uploaded": "2025-03-10",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 24,
+      "lane": "adc",
+      "videos": [
+        {
+          "videoId": "SL6_WOM_Zc8",
+          "title": "Rank 1 Nilah : Jax Come at You ? No ! You Come to Jax - Engsub",
+          "rankClaim": "Master+",
+          "patch": "26.4",
+          "durationSec": 1037,
+          "patchEstimated": true,
+          "uploaded": "2026-02-23",
+          "format": "stream",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 42,
+      "lane": "adc",
+      "videos": [
+        {
+          "videoId": "v3MuGthD0dI",
+          "title": "Nilah vs Corki ADC - KR Challenger - Patch 25.4 Season 15",
+          "rankClaim": "Challenger",
+          "patch": "25.4",
+          "durationSec": 1711,
+          "region": "KR",
+          "uploaded": "2025-03-01",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 50,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "4aTolPBxI0g",
+          "title": "Nilah Mid vs Swain - EUW Challenger Patch 25.24",
+          "rankClaim": "Challenger",
+          "patch": "25.24",
+          "durationSec": 1565,
+          "region": "EUW",
+          "uploaded": "2025-12-27",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 51,
+      "lane": "adc",
+      "videos": [
+        {
+          "videoId": "fP-HJkh9hZ8",
+          "title": "Nilah ADC vs Caitlyn - KR Master Patch 25.22",
+          "rankClaim": "Master",
+          "patch": "25.22",
+          "durationSec": 1973,
+          "region": "KR",
+          "uploaded": "2025-11-14",
+          "moments": []
+        },
+        {
+          "videoId": "0VW-JvNRdsE",
+          "title": "Nilah ADC vs Caitlyn - NA Grandmaster Patch 25.20",
+          "rankClaim": "Grandmaster",
+          "patch": "25.20",
+          "durationSec": 1426,
+          "region": "NA",
+          "uploaded": "2025-10-23",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 63,
+      "lane": "adc",
+      "videos": [
+        {
+          "videoId": "_pSRT3Vb3os",
+          "title": "Nilah ADC vs Brand - EUW Grandmaster Patch 25.21",
+          "rankClaim": "Grandmaster",
+          "patch": "25.21",
+          "durationSec": 1656,
+          "region": "EUW",
+          "uploaded": "2025-11-06",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 67,
+      "lane": "adc",
+      "videos": [
+        {
+          "videoId": "lcMFa0jWWLs",
+          "title": "Nilah ADC vs Vayne - BR Challenger Patch 26.02",
+          "rankClaim": "Challenger",
+          "patch": "26.2",
+          "durationSec": 1584,
+          "uploaded": "2026-02-03",
+          "moments": []
+        },
+        {
+          "videoId": "_mw0rVMyi-8",
+          "title": "Nilah ADC vs Vayne - KR Master Patch 25.20",
+          "rankClaim": "Master",
+          "patch": "25.20",
+          "durationSec": 1487,
+          "region": "KR",
+          "uploaded": "2025-10-17",
+          "moments": []
+        },
+        {
+          "videoId": "sCpYJEh_GT8",
+          "title": "Nilah ADC vs Vayne - KR Master Patch 25.06",
+          "rankClaim": "Master",
+          "patch": "25.6",
+          "durationSec": 1820,
+          "region": "KR",
+          "uploaded": "2025-03-23",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 81,
+      "lane": "adc",
+      "videos": [
+        {
+          "videoId": "oJxMdB2p7Ug",
+          "title": "Nilah ADC vs Ezreal - KR Master Patch 26.03",
+          "rankClaim": "Master",
+          "patch": "26.3",
+          "durationSec": 1516,
+          "region": "KR",
+          "uploaded": "2026-02-13",
+          "moments": []
+        },
+        {
+          "videoId": "OBfmTNKa1OU",
+          "title": "Nilah ADC vs Ezreal - EUW Grandmaster Patch 25.05",
+          "rankClaim": "Grandmaster",
+          "patch": "25.5",
+          "durationSec": 1791,
+          "region": "EUW",
+          "uploaded": "2025-03-20",
+          "moments": []
+        },
+        {
+          "videoId": "zp6ybIN-F3w",
+          "title": "Nilah ADC vs Ezreal - KR Grandmaster Patch 25.04",
+          "rankClaim": "Grandmaster",
+          "patch": "25.4",
+          "durationSec": 1900,
+          "region": "KR",
+          "uploaded": "2025-03-01",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 110,
+      "lane": "adc",
+      "videos": [
+        {
+          "videoId": "kqGzeSjgp08",
+          "title": "(SSG Tianzhen) Nilah ADC vs Varus - KR Master Patch 26.10",
+          "rankClaim": "Master",
+          "patch": "26.10",
+          "durationSec": 1486,
+          "region": "KR",
+          "player": "SSG Tianzhen",
+          "uploaded": "2026-05-20",
+          "moments": []
+        },
+        {
+          "videoId": "vmtOjQ0KcNY",
+          "title": "Nilah ADC vs Varus - KR Master Patch 26.04",
+          "rankClaim": "Master",
+          "patch": "26.4",
+          "durationSec": 1739,
+          "region": "KR",
+          "uploaded": "2026-02-27",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 255,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 357,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 447,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 498,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 555,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 786,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 803,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 951,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1056,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1081,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1096,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1280,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1307,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1335,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1585,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1656,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1728,
+              "label": "End credit"
+            }
+          ]
+        },
+        {
+          "videoId": "fOSgcctGnuo",
+          "title": "Nilah ADC vs Varus - KR Master Patch 25.11",
+          "rankClaim": "Master",
+          "patch": "25.11",
+          "durationSec": 1537,
+          "region": "KR",
+          "uploaded": "2025-06-08",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 115,
+      "lane": "adc",
+      "videos": [
+        {
+          "videoId": "8g_QBA1q3IA",
+          "title": "Nilah ADC vs Ziggs - KR Master Patch 25.16",
+          "rankClaim": "Master",
+          "patch": "25.16",
+          "durationSec": 1756,
+          "region": "KR",
+          "uploaded": "2025-08-21",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 119,
+      "lane": "adc",
+      "videos": [
+        {
+          "videoId": "n1fa-_9h_CA",
+          "title": "Nilah ADC vs Draven - NA Grandmaster Patch 25.24",
+          "rankClaim": "Grandmaster",
+          "patch": "25.24",
+          "durationSec": 1447,
+          "region": "NA",
+          "uploaded": "2026-01-10",
+          "moments": []
+        },
+        {
+          "videoId": "nKirGGl-YHM",
+          "title": "Nilah ADC vs Draven - KR Master Patch 25.18",
+          "rankClaim": "Master",
+          "patch": "25.18",
+          "durationSec": 1491,
+          "region": "KR",
+          "uploaded": "2025-09-18",
+          "moments": []
+        },
+        {
+          "videoId": "xq4Z1AKpQ9c",
+          "title": "Nilah ADC vs Draven - EUW Grandmaster Patch 25.14",
+          "rankClaim": "Grandmaster",
+          "patch": "25.14",
+          "durationSec": 1747,
+          "region": "EUW",
+          "uploaded": "2025-07-30",
+          "moments": []
+        },
+        {
+          "videoId": "3GS0QDeVOFU",
+          "title": "Nilah ADC vs Draven - KR Master Patch 25.10",
+          "rankClaim": "Master",
+          "patch": "25.10",
+          "durationSec": 1703,
+          "region": "KR",
+          "uploaded": "2025-05-23",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 136,
+      "lane": "adc",
+      "videos": [
+        {
+          "videoId": "iLYopyfAmwA",
+          "title": "Nilah ADC vs Aurelion Sol (Wackaflcka) - EUW Master Patch 26.19",
+          "rankClaim": "Master",
+          "patch": "26.19",
+          "durationSec": 1751,
+          "region": "EUW",
+          "uploaded": "2026-10-02",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 145,
+      "lane": "adc",
+      "videos": [
+        {
+          "videoId": "B8G8zKYJ-no",
+          "title": "(HLE Gumayusi) Nilah ADC vs Kai'Sa - KR Challenger Patch 26.18",
+          "rankClaim": "Challenger",
+          "patch": "26.18",
+          "durationSec": 1501,
+          "region": "KR",
+          "player": "Gumayusi",
+          "team": "HLE",
+          "uploaded": "2026-09-24",
+          "moments": []
+        },
+        {
+          "videoId": "jdHZC1PnooY",
+          "title": "Nilah ADC vs Kai'Sa - VN Challenger Patch 26.06",
+          "rankClaim": "Challenger",
+          "patch": "26.6",
+          "durationSec": 1728,
+          "uploaded": "2026-03-28",
+          "moments": []
+        },
+        {
+          "videoId": "KJ5FsRL48y8",
+          "title": "Nilah ADC vs Kai'Sa - VN Challenger Patch 25.24",
+          "rankClaim": "Challenger",
+          "patch": "25.24",
+          "durationSec": 1506,
+          "uploaded": "2025-12-31",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 165,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 381,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 515,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 928,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1075,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1156,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1219,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1241,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1314,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1336,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1367,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1495,
+              "label": "End credit"
+            }
+          ]
+        },
+        {
+          "videoId": "6FrAgJcom2M",
+          "title": "Nilah ADC vs Kai'Sa - EUW Grandmaster Patch 25.22",
+          "rankClaim": "Grandmaster",
+          "patch": "25.22",
+          "durationSec": 1527,
+          "region": "EUW",
+          "uploaded": "2025-11-21",
+          "moments": []
+        },
+        {
+          "videoId": "f5LRIbyrhQA",
+          "title": "Nilah ADC vs Kai'Sa - KR Master Patch 25.21",
+          "rankClaim": "Master",
+          "patch": "25.21",
+          "durationSec": 1830,
+          "region": "KR",
+          "uploaded": "2025-10-31",
+          "moments": []
+        },
+        {
+          "videoId": "-wrmqjTixgM",
+          "title": "T1 Gumayusi Nilah vs Kaisa [ ADC ] Korea Challenger Patch 25.11",
+          "rankClaim": "Challenger",
+          "patch": "25.11",
+          "durationSec": 1644,
+          "region": "KR",
+          "player": "Gumayusi",
+          "team": "T1",
+          "uploaded": "2025-06-03",
+          "moments": []
+        },
+        {
+          "videoId": "iok_eohSpPk",
+          "title": "Nilah ADC vs Kai'Sa - KR Master Patch 25.09",
+          "rankClaim": "Master",
+          "patch": "25.9",
+          "durationSec": 2042,
+          "region": "KR",
+          "uploaded": "2025-05-08",
+          "moments": []
+        },
+        {
+          "videoId": "6rxdsU_-dwU",
+          "title": "Nilah ADC vs Kai'Sa - EUW Grandmaster Patch 25.06",
+          "rankClaim": "Grandmaster",
+          "patch": "25.6",
+          "durationSec": 2018,
+          "region": "EUW",
+          "uploaded": "2025-04-02",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 138,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 260,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 282,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 352,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 472,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 599,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 673,
+              "label": "Hunt The Void Grubs",
+              "kind": "grubs"
+            },
+            {
+              "atSec": 693,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 772,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 792,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 866,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 888,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 916,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1061,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1145,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1163,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1247,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1268,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1362,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1384,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1414,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1439,
+              "label": "Get a Triple Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1458,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1471,
+              "label": "Take down The Inhibitor"
+            },
+            {
+              "atSec": 1604,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1711,
+              "label": "Take down The Inhibitor"
+            },
+            {
+              "atSec": 1943,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1997,
+              "label": "End credit"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 157,
+      "lane": "adc",
+      "videos": [
+        {
+          "videoId": "2hMcA4ofcuc",
+          "title": "(WU Tomo) Nilah ADC vs Yasuo - NA Challenger Patch 26.18",
+          "rankClaim": "Challenger",
+          "patch": "26.18",
+          "durationSec": 1736,
+          "region": "NA",
+          "player": "WU Tomo",
+          "uploaded": "2026-09-15",
+          "moments": []
+        },
+        {
+          "videoId": "GJhYbZ_S4Kw",
+          "title": "Nilah ADC vs Yasuo - BR Challenger Patch 26.15",
+          "rankClaim": "Challenger",
+          "patch": "26.15",
+          "durationSec": 1716,
+          "uploaded": "2026-08-08",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 202,
+      "lane": "adc",
+      "videos": [
+        {
+          "videoId": "dQbb6tyMDFk",
+          "title": "Nilah ADC vs Jhin - KR Grandmaster Patch 26.09",
+          "rankClaim": "Grandmaster",
+          "patch": "26.9",
+          "durationSec": 1461,
+          "region": "KR",
+          "uploaded": "2026-05-08",
+          "moments": []
+        },
+        {
+          "videoId": "lgG-stZ8quc",
+          "title": "Nilah ADC vs Jhin - EUW Grandmaster Patch 25.24",
+          "rankClaim": "Grandmaster",
+          "patch": "25.24",
+          "durationSec": 1610,
+          "region": "EUW",
+          "uploaded": "2025-12-19",
+          "moments": []
+        },
+        {
+          "videoId": "CogvS7KZPTE",
+          "title": "Nilah ADC vs Jhin - EUW Grandmaster Patch 25.23",
+          "rankClaim": "Grandmaster",
+          "patch": "25.23",
+          "durationSec": 1721,
+          "region": "EUW",
+          "uploaded": "2025-12-05",
+          "moments": []
+        },
+        {
+          "videoId": "QPUb5jGX0_Q",
+          "title": "Nilah ADC vs Jhin - VN Challenger Patch 25.18",
+          "rankClaim": "Challenger",
+          "patch": "25.18",
+          "durationSec": 1514,
+          "uploaded": "2025-09-26",
+          "moments": []
+        },
+        {
+          "videoId": "E9eCGvE-STw",
+          "title": "Nilah ADC vs Jhin - EUW Grandmaster Patch 25.12",
+          "rankClaim": "Grandmaster",
+          "patch": "25.12",
+          "durationSec": 1802,
+          "region": "EUW",
+          "uploaded": "2025-06-27",
+          "moments": []
+        },
+        {
+          "videoId": "1ltAUTD8vlw",
+          "title": "Nilah ADC vs Jhin - NA Grandmaster Patch 25.11",
+          "rankClaim": "Grandmaster",
+          "patch": "25.11",
+          "durationSec": 1895,
+          "region": "NA",
+          "uploaded": "2025-06-13",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 221,
+      "lane": "adc",
+      "videos": [
+        {
+          "videoId": "qKYNG2bjh8c",
+          "title": "Nilah ADC vs Zeri - KR Master Patch 26.17",
+          "rankClaim": "Master",
+          "patch": "26.17",
+          "durationSec": 1684,
+          "region": "KR",
+          "uploaded": "2026-08-31",
+          "moments": []
+        },
+        {
+          "videoId": "NTbAitKh1d0",
+          "title": "Nilah ADC vs Zeri - KR Grandmaster Patch 26.13",
+          "rankClaim": "Grandmaster",
+          "patch": "26.13",
+          "durationSec": 1584,
+          "region": "KR",
+          "uploaded": "2026-07-03",
+          "moments": []
+        },
+        {
+          "videoId": "oEGCB5gmEfo",
+          "title": "Nilah vs Zeri [ ADC ] Korea Challenger 2232 LP | Patch 26.12 ✅",
+          "rankClaim": "Challenger",
+          "patch": "26.12",
+          "durationSec": 1554,
+          "region": "KR",
+          "uploaded": "2026-06-18",
+          "moments": []
+        },
+        {
+          "videoId": "cmlWhqT2oR8",
+          "title": "(SSG Tianzhen) Nilah ADC vs Zeri - KR Grandmaster Patch 26.11",
+          "rankClaim": "Grandmaster",
+          "patch": "26.11",
+          "durationSec": 1536,
+          "region": "KR",
+          "player": "SSG Tianzhen",
+          "uploaded": "2026-06-04",
+          "moments": []
+        },
+        {
+          "videoId": "x66Ckyn34R0",
+          "title": "Nilah ADC vs Zeri (LR Crownie) - EUW Challenger Patch 26.10",
+          "rankClaim": "Challenger",
+          "patch": "26.10",
+          "durationSec": 1566,
+          "region": "EUW",
+          "uploaded": "2026-05-30",
+          "moments": []
+        },
+        {
+          "videoId": "Up1gp9GH3Gk",
+          "title": "Nilah vs Zeri ADC - EUW Challenger - Patch 16.10 Season 16",
+          "rankClaim": "Challenger",
+          "patch": "26.10",
+          "durationSec": 1596,
+          "region": "EUW",
+          "uploaded": "2026-05-23",
+          "moments": []
+        },
+        {
+          "videoId": "YhYlU2RYSyE",
+          "title": "Nilah ADC vs Zeri - KR Master Patch 26.07",
+          "rankClaim": "Master",
+          "patch": "26.7",
+          "durationSec": 1483,
+          "region": "KR",
+          "uploaded": "2026-04-10",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 125,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 202,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 350,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 458,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 546,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 753,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 932,
+              "label": "Hunt The Rift Herald",
+              "kind": "herald"
+            },
+            {
+              "atSec": 986,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1011,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1086,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1100,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1120,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1233,
+              "label": "Hunt The Dragon",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1265,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1303,
+              "label": "Take down The Inhibitor"
+            },
+            {
+              "atSec": 1328,
+              "label": "Hunt The Baron Nashor",
+              "kind": "baron"
+            },
+            {
+              "atSec": 1387,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1415,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1472,
+              "label": "End credit"
+            }
+          ]
+        },
+        {
+          "videoId": "zmSH8VLi9u4",
+          "title": "Nilah vs Zeri ADC - KR Grandmaster - Patch 26.01 Season 16",
+          "rankClaim": "Grandmaster",
+          "patch": "26.1",
+          "durationSec": 1421,
+          "region": "KR",
+          "uploaded": "2026-01-12",
+          "moments": []
+        },
+        {
+          "videoId": "Pe-JMlZWmfU",
+          "title": "Nilah vs Zeri ADC [ JDG Peyz ] Patch 25.16 Korea Challenger ✅",
+          "rankClaim": "Challenger",
+          "patch": "25.16",
+          "durationSec": 1155,
+          "region": "KR",
+          "player": "Peyz",
+          "team": "JDG",
+          "uploaded": "2025-08-15",
+          "moments": []
+        },
+        {
+          "videoId": "mfvrCuf0eGo",
+          "title": "Nilah ADC vs Zeri - KR Grandmaster Patch 25.13",
+          "rankClaim": "Grandmaster",
+          "patch": "25.13",
+          "durationSec": 1538,
+          "region": "KR",
+          "uploaded": "2025-07-17",
+          "moments": []
+        },
+        {
+          "videoId": "0N-CDj5APVw",
+          "title": "Nilah vs Zeri ADC - KR Challenger - Patch 25.13 Season 15",
+          "rankClaim": "Challenger",
+          "patch": "25.13",
+          "durationSec": 1546,
+          "region": "KR",
+          "uploaded": "2025-07-01",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 223,
+      "lane": "adc",
+      "videos": [
+        {
+          "videoId": "m_mMOu67tvk",
+          "title": "Nilah ADC vs Tahm Kench - EUW Grandmaster Patch 26.13",
+          "rankClaim": "Grandmaster",
+          "patch": "26.13",
+          "durationSec": 1436,
+          "region": "EUW",
+          "uploaded": "2026-07-11",
+          "result": "L",
+          "moments": [
+            {
+              "atSec": 344,
+              "label": "Blue takes 1st Dragon (Infernal)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 481,
+              "label": "First Blood — Nilah kills Senna",
+              "kind": "kill"
+            },
+            {
+              "atSec": 644,
+              "label": "Nidalee takes down Skarner"
+            },
+            {
+              "atSec": 683,
+              "label": "Red takes 1st Dragon (Hextech)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 742,
+              "label": "Nilah picks off Senna"
+            },
+            {
+              "atSec": 813,
+              "label": "Nilah picks off Senna"
+            },
+            {
+              "atSec": 862,
+              "label": "Nilah outplays Senna"
+            },
+            {
+              "atSec": 1202,
+              "label": "Red takes 2nd Dragon (Mountain)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1361,
+              "label": "Nilah takes down Tahm Kench"
+            },
+            {
+              "atSec": 1373,
+              "label": "Bot Inhibitor falls (Blue)"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 235,
+      "lane": "adc",
+      "videos": [
+        {
+          "videoId": "a1lvdazB3QA",
+          "title": "Nilah ADC vs Senna - EUW Grandmaster Patch 25.16",
+          "rankClaim": "Grandmaster",
+          "patch": "25.16",
+          "durationSec": 1691,
+          "region": "EUW",
+          "uploaded": "2025-08-29",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 236,
+      "lane": "adc",
+      "videos": [
+        {
+          "videoId": "qxqnD5uOET0",
+          "title": "Nilah ADC vs Lucian - KR Grandmaster Patch 26.02",
+          "rankClaim": "Grandmaster",
+          "patch": "26.2",
+          "durationSec": 1557,
+          "region": "KR",
+          "uploaded": "2026-01-29",
+          "moments": []
+        },
+        {
+          "videoId": "oCdRTpHqNMI",
+          "title": "Nilah ADC vs Lucian - KR Master Patch 25.19",
+          "rankClaim": "Master",
+          "patch": "25.19",
+          "durationSec": 1556,
+          "region": "KR",
+          "uploaded": "2025-10-02",
+          "moments": []
+        },
+        {
+          "videoId": "OYF4_z9DS6I",
+          "title": "Nilah ADC vs Lucian - KR Master Patch 25.13",
+          "rankClaim": "Master",
+          "patch": "25.13",
+          "durationSec": 1523,
+          "region": "KR",
+          "uploaded": "2025-07-10",
+          "moments": []
+        },
+        {
+          "videoId": "0nTqOyMV2as",
+          "title": "Nilah ADC vs Lucian - KR Master Patch 25.12",
+          "rankClaim": "Master",
+          "patch": "25.12",
+          "durationSec": 1904,
+          "region": "KR",
+          "uploaded": "2025-06-19",
+          "moments": []
+        },
+        {
+          "videoId": "kYk75iFy3XQ",
+          "title": "Nilah ADC vs Lucian - NA Grandmaster Patch 25.10",
+          "rankClaim": "Grandmaster",
+          "patch": "25.10",
+          "durationSec": 1511,
+          "region": "NA",
+          "uploaded": "2025-05-30",
+          "moments": []
+        },
+        {
+          "videoId": "0EbgG794DEY",
+          "title": "Nilah ADC vs Lucian - VN Challenger Patch 25.04",
+          "rankClaim": "Challenger",
+          "patch": "25.4",
+          "durationSec": 1903,
+          "uploaded": "2025-03-07",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 360,
+      "lane": "adc",
+      "videos": [
+        {
+          "videoId": "9KOAb4LiPvY",
+          "title": "Nilah ADC vs Samira - NA Grandmaster Patch 25.09",
+          "rankClaim": "Grandmaster",
+          "patch": "25.9",
+          "durationSec": 1673,
+          "region": "NA",
+          "uploaded": "2025-05-16",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 186,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 244,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 352,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 632,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 925,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 957,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1034,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1067,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1088,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1180,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1209,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1231,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1303,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1424,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1463,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1530,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1563,
+              "label": "Hunt The Atakhan"
+            },
+            {
+              "atSec": 1619,
+              "label": "Take down The Inhibitor"
+            },
+            {
+              "atSec": 1638,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1652,
+              "label": "End credit"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 429,
+      "lane": "adc",
+      "videos": [
+        {
+          "videoId": "bz0kW1nsM4Y",
+          "title": "T1 Peyz Nilah vs HLE Gumayusi Kalista [ ADC ] Korea Challenger 2509 LP | Patch 26.13",
+          "rankClaim": "Challenger",
+          "patch": "26.13",
+          "durationSec": 726,
+          "region": "KR",
+          "player": "Peyz",
+          "team": "T1",
+          "uploaded": "2026-06-26",
+          "moments": [
+            {
+              "atSec": 0,
+              "label": "Early game laning phase"
+            },
+            {
+              "atSec": 118,
+              "label": "Mid-game skirmishes"
+            },
+            {
+              "atSec": 211,
+              "label": "Neutral objective control"
+            },
+            {
+              "atSec": 350,
+              "label": "Voidgrub and jungle battles"
+            },
+            {
+              "atSec": 432,
+              "label": "Siege and map pressure"
+            },
+            {
+              "atSec": 535,
+              "label": "Building an advantage"
+            },
+            {
+              "atSec": 654,
+              "label": "Victory and endgame"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 498,
+      "lane": "adc",
+      "videos": [
+        {
+          "videoId": "5lmOz1oN4gI",
+          "title": "Nilah ADC vs Xayah - NA Master Patch 26.17",
+          "rankClaim": "Master",
+          "patch": "26.17",
+          "durationSec": 1699,
+          "region": "NA",
+          "uploaded": "2026-09-12",
+          "moments": []
+        },
+        {
+          "videoId": "E006MjD9pLU",
+          "title": "Nilah ADC vs Xayah - NA Grandmaster Patch 26.05",
+          "rankClaim": "Grandmaster",
+          "patch": "26.5",
+          "durationSec": 1589,
+          "region": "NA",
+          "uploaded": "2026-03-13",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 523,
+      "lane": "adc",
+      "videos": [
+        {
+          "videoId": "VSf45oNfBwM",
+          "title": "Nilah ADC vs Aphelios - KR Challenger Patch 25.15",
+          "rankClaim": "Challenger",
+          "patch": "25.15",
+          "durationSec": 1441,
+          "region": "KR",
+          "uploaded": "2025-08-08",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 804,
+      "lane": "adc",
+      "videos": [
+        {
+          "videoId": "1vBpBjF-hls",
+          "title": "Nilah ADC vs Yunara - VN Master Patch 26.21",
+          "rankClaim": "Master",
+          "patch": "26.21",
+          "durationSec": 1498,
+          "uploaded": "2026-10-26",
+          "result": "W",
+          "moments": [
+            {
+              "atSec": 10,
+              "label": "First Blood — Nilah kills Lulu",
+              "kind": "kill"
+            },
+            {
+              "atSec": 405,
+              "label": "Nilah takes down Yunara"
+            },
+            {
+              "atSec": 466,
+              "label": "Nilah takes down Yunara"
+            },
+            {
+              "atSec": 495,
+              "label": "Red takes 1st Dragon (Hextech)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 704,
+              "label": "Nilah picks off Lulu"
+            },
+            {
+              "atSec": 806,
+              "label": "Red takes 2nd Dragon (Ocean)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 854,
+              "label": "Nilah picks off Lulu"
+            },
+            {
+              "atSec": 890,
+              "label": "Red takes Rift Herald",
+              "kind": "herald"
+            },
+            {
+              "atSec": 1018,
+              "label": "Nilah eliminates Kha'Zix"
+            },
+            {
+              "atSec": 1123,
+              "label": "Red takes 3rd Dragon (Mountain)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1241,
+              "label": "Red takes Baron",
+              "kind": "baron"
+            },
+            {
+              "atSec": 1316,
+              "label": "Team fight (3 kills)",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1374,
+              "label": "Nilah outplays Lulu"
+            },
+            {
+              "atSec": 1376,
+              "label": "Nilah Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1440,
+              "label": "Red takes 4th Dragon (Mountain)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1455,
+              "label": "Nilah eliminates Kha'Zix"
+            },
+            {
+              "atSec": 1460,
+              "label": "Nilah Triple Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1475,
+              "label": "Mid Inhibitor falls (Blue)"
+            }
+          ]
+        },
+        {
+          "videoId": "tp-jQL2fVxM",
+          "title": "T1 Peyz Nilah vs Yunara [ ADC ] Korea Challenger 2493 LP | Patch 26.17",
+          "rankClaim": "Challenger",
+          "patch": "26.17",
+          "durationSec": 1784,
+          "region": "KR",
+          "player": "Peyz",
+          "team": "T1",
+          "uploaded": "2026-08-31",
+          "moments": []
+        },
+        {
+          "videoId": "E0witQQYC28",
+          "title": "Nilah ADC vs Yunara - KR Master Patch 26.08",
+          "rankClaim": "Master",
+          "patch": "26.8",
+          "durationSec": 1818,
+          "region": "KR",
+          "uploaded": "2026-04-24",
+          "moments": []
+        },
+        {
+          "videoId": "KLLG32Rdbgg",
+          "title": "Nilah ADC vs Yunara - KR Challenger Patch 26.01",
+          "rankClaim": "Challenger",
+          "patch": "26.1",
+          "durationSec": 1621,
+          "region": "KR",
+          "uploaded": "2026-01-15",
+          "moments": []
+        },
+        {
+          "videoId": "p7bjgWUCJSE",
+          "title": "Nilah vs Yunara [ ADC ] Lol Korea Master Patch 25.24 ✅",
+          "rankClaim": "Master",
+          "patch": "25.24",
+          "durationSec": 1296,
+          "region": "KR",
+          "uploaded": "2025-12-19",
+          "moments": []
+        },
+        {
+          "videoId": "dZdHIq3DseE",
+          "title": "Nilah ADC vs Yunara - KR Master Patch 25.24",
+          "rankClaim": "Master",
+          "patch": "25.24",
+          "durationSec": 1453,
+          "region": "KR",
+          "uploaded": "2025-12-12",
+          "moments": []
+        },
+        {
+          "videoId": "vMeQnGFVhyQ",
+          "title": "Nilah ADC vs Yunara - EUW Grandmaster Patch 25.15",
+          "rankClaim": "Grandmaster",
+          "patch": "25.15",
+          "durationSec": 1541,
+          "region": "EUW",
+          "uploaded": "2025-08-14",
+          "moments": []
+        },
+        {
+          "videoId": "RIbKo43w3cc",
+          "title": "Nilah ADC vs Yunara - KR Master Patch 25.14",
+          "rankClaim": "Master",
+          "patch": "25.14",
+          "durationSec": 1571,
+          "region": "KR",
+          "uploaded": "2025-07-25",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 893,
+      "lane": "adc",
+      "videos": [
+        {
+          "videoId": "OdT6tibrFOg",
+          "title": "Nilah ADC vs Aurora - NA Challenger Patch 26.19",
+          "rankClaim": "Challenger",
+          "patch": "26.19",
+          "durationSec": 1661,
+          "region": "NA",
+          "uploaded": "2026-10-08",
+          "result": "W",
+          "moments": [
+            {
+              "atSec": 183,
+              "label": "First Blood — Rakan kills Aurora",
+              "kind": "kill"
+            },
+            {
+              "atSec": 328,
+              "label": "Blue takes 1st Dragon (Mountain)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 677,
+              "label": "Nilah catches Locke"
+            },
+            {
+              "atSec": 684,
+              "label": "Blue takes 2nd Dragon (Cloud)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 783,
+              "label": "Rakan eliminates Nidalee"
+            },
+            {
+              "atSec": 888,
+              "label": "Nilah takes down Aurora"
+            },
+            {
+              "atSec": 948,
+              "label": "Nilah takes down Aurora"
+            },
+            {
+              "atSec": 993,
+              "label": "Blue takes 3rd Dragon (Infernal)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1015,
+              "label": "Red takes Rift Herald",
+              "kind": "herald"
+            },
+            {
+              "atSec": 1038,
+              "label": "Nilah kills Locke",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1156,
+              "label": "Nilah Triple Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1198,
+              "label": "Red takes Baron",
+              "kind": "baron"
+            },
+            {
+              "atSec": 1337,
+              "label": "Nilah eliminates Rek'Sai"
+            },
+            {
+              "atSec": 1585,
+              "label": "Team fight (3 kills)",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1628,
+              "label": "Team fight (3 kills)",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1631,
+              "label": "Top Inhibitor falls (Blue)"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 901,
+      "lane": "adc",
+      "videos": [
+        {
+          "videoId": "4tb0MF8uao4",
+          "title": "Nilah ADC vs Smolder - KR Master Patch 25.23",
+          "rankClaim": "Master",
+          "patch": "25.23",
+          "durationSec": 1650,
+          "region": "KR",
+          "uploaded": "2025-11-27",
+          "moments": []
+        },
+        {
+          "videoId": "OC2sazsabqc",
+          "title": "Nilah ADC vs Smolder - KR Grandmaster Patch 25.17",
+          "rankClaim": "Grandmaster",
+          "patch": "25.17",
+          "durationSec": 2010,
+          "region": "KR",
+          "uploaded": "2025-09-04",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 910,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "P4EP3WFrmPE",
+          "title": "Nilah vs Hwei Mid - KR Grandmaster - Patch 25.13 Season 15",
+          "rankClaim": "Grandmaster",
+          "patch": "25.13",
+          "durationSec": 2676,
+          "region": "KR",
+          "uploaded": "2025-07-02",
+          "moments": []
+        }
+      ]
+    }
+  ]
+}

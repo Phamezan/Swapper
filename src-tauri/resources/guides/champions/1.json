@@ -1,0 +1,3155 @@
+{
+  "schema": 1,
+  "champion": 1,
+  "generatedAt": "2026-11-07T13:25:14.592Z",
+  "guides": [
+    {
+      "champion": 1,
+      "enemy": 238,
+      "lane": "mid",
+      "patch": "26.21",
+      "reviewed": false,
+      "difficulty": "Skill matchup",
+      "favoredWhen": "Annoying range, but after Voltaic you are usually the kill. Buffer stun, watch flash.",
+      "keyTips": [
+        {
+          "text": "Your range annoys him: he survives early, so punish before Voltaic.",
+          "scope": "pair",
+          "sourceIds": [
+            "aikopanda"
+          ]
+        },
+        {
+          "text": "His Voltaic spike flips it: end it before the item.",
+          "scope": "pair",
+          "sourceIds": [
+            "aikopanda"
+          ]
+        },
+        {
+          "text": "He buffers your stun on pop-out: hold Q until he lands.",
+          "scope": "pair",
+          "sourceIds": [
+            "aikopanda"
+          ],
+          "abilityKeys": [
+            {
+              "champion": 1,
+              "key": "Q"
+            }
+          ]
+        }
+      ],
+      "enemyTips": {
+        "early-lane": [
+          {
+            "text": "Zed often places Living Shadow before Death Mark so he can swap away from skillshots. Hold your crowd control until he has used the swap.",
+            "scope": "enemy",
+            "sourceIds": [
+              "aikopanda"
+            ],
+            "patch": "26.21",
+            "abilityKeys": [
+              {
+                "champion": 238,
+                "key": "W"
+              },
+              {
+                "champion": 238,
+                "key": "R"
+              }
+            ]
+          }
+        ],
+        "win-condition": [
+          {
+            "text": "Death Mark always lands Zed behind his target. Pre-aim crowd control and escapes behind you, not toward where he cast it.",
+            "scope": "enemy",
+            "sourceIds": [
+              "peng04"
+            ],
+            "patch": "26.21",
+            "abilityKeys": [
+              {
+                "champion": 238,
+                "key": "R"
+              }
+            ]
+          }
+        ]
+      },
+      "sections": {
+        "overview": {
+          "tips": []
+        },
+        "early-lane": {
+          "tips": [
+            {
+              "text": "His Mercs rush: tenacity covers one stun, so chain.",
+              "scope": "pair",
+              "sourceIds": [
+                "v222"
+              ]
+            },
+            {
+              "text": "He pokes and backs off: hold stun for his commit.",
+              "scope": "pair",
+              "sourceIds": [
+                "v222"
+              ]
+            }
+          ]
+        },
+        "mid-lane": {
+          "tips": [
+            {
+              "text": "Death Mark always lands Zed behind his target. Pre-aim crowd control and escapes behind you, not toward where he cast it.",
+              "scope": "pair",
+              "sourceIds": [
+                "peng04"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 238,
+                  "key": "R"
+                }
+              ]
+            },
+            {
+              "text": "He watches your flash: burn his attention, engage when sums are down.",
+              "scope": "pair",
+              "sourceIds": [
+                "v222"
+              ]
+            }
+          ]
+        },
+        "win-condition": {
+          "tips": [
+            {
+              "text": "Flash burned plus stun held: the Zed whose R never lands never kills.",
+              "scope": "pair",
+              "sourceIds": [
+                "aikopanda",
+                "v222"
+              ]
+            }
+          ]
+        }
+      },
+      "itemization": [],
+      "sources": [
+        {
+          "id": "aikopanda",
+          "author": "AikoPanda",
+          "rankClaim": "Zed main",
+          "url": "https://www.mobafire.com/league-of-legends/build/26-20-video-guides-hidden-combos-all-matchups-zed-all-in-one-guide-652800",
+          "kind": "mobafire"
+        },
+        {
+          "id": "v222",
+          "author": "V222",
+          "rankClaim": "Challenger EUW · Zed main",
+          "rank": "challenger",
+          "url": "https://www.mobafire.com/league-of-legends/build/all-matchups-26-14-zed-guide-2000lp-euw-challenger-652354",
+          "kind": "mobafire"
+        },
+        {
+          "id": "peng04",
+          "author": "Peng04",
+          "rankClaim": "Challenger · Ahri main",
+          "rank": "challenger",
+          "url": "https://www.mobafire.com/league-of-legends/build/26-20-pengs-ahri-guide-5-1mil-points-13x-challenger-648700",
+          "kind": "mobafire"
+        }
+      ]
+    }
+  ],
+  "general": [
+    {
+      "champion": 1,
+      "lane": "mid",
+      "patch": "26.21",
+      "reviewed": false,
+      "keyTips": [
+        {
+          "text": "Accept a weak early phase into most lanes and farm for scaling over repeated mana-heavy trades.",
+          "scope": "champion",
+          "sourceIds": [
+            "cyb3r1a"
+          ]
+        },
+        {
+          "text": "Treat level 6 as the first clear spike, with a loaded stun plus Tibbers threatening kills and ganks.",
+          "scope": "champion",
+          "sourceIds": [
+            "cyb3r1a"
+          ],
+          "abilityKeys": [
+            {
+              "champion": 1,
+              "key": "R"
+            }
+          ]
+        },
+        {
+          "text": "Save Flash for high-value objective and teamfight engages instead of low-impact chases.",
+          "scope": "champion",
+          "sourceIds": [
+            "cyb3r1a"
+          ]
+        }
+      ],
+      "sections": {
+        "overview": {
+          "tips": []
+        },
+        "early-lane": {
+          "tips": [
+            {
+              "text": "Keep the Pyromania stun ready to punish a spent enemy cooldown, stop an all-in, or set up the jungler.",
+              "scope": "champion",
+              "sourceIds": [
+                "cyb3r1a"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 1,
+                  "key": "P"
+                }
+              ]
+            },
+            {
+              "text": "Throw autos when the opponent mispositions, but respect mid gank angles and ward from a safe spot.",
+              "scope": "champion",
+              "sourceIds": [
+                "cyb3r1a"
+              ]
+            },
+            {
+              "text": "Play the level-10 spike when max-rank W gives enough priority to move first.",
+              "scope": "champion",
+              "sourceIds": [
+                "cyb3r1a"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 1,
+                  "key": "W"
+                }
+              ]
+            },
+            {
+              "text": "Slow-push ahead of a dive, recall, long roam, or safer lane; freeze to deny farm or hold the wave closer when behind.",
+              "scope": "champion",
+              "sourceIds": [
+                "cyb3r1a"
+              ]
+            },
+            {
+              "text": "Fast-push when priority matters for a dragon fight, a roam, a quick recall, or pinning the opponent under turret.",
+              "scope": "champion",
+              "sourceIds": [
+                "cyb3r1a"
+              ]
+            },
+            {
+              "text": "Use a neutral handshake wave on a centered cannon wave for a safer recall or roam.",
+              "scope": "champion",
+              "sourceIds": [
+                "cyb3r1a"
+              ]
+            },
+            {
+              "text": "Refuse forced roams by weighing lost minions, unspent gold, and target danger before leaving.",
+              "scope": "champion",
+              "sourceIds": [
+                "cyb3r1a"
+              ]
+            },
+            {
+              "text": "Take longer roams after a cannon wave starts pushing out or a crash strands many allied minions under the enemy turret.",
+              "scope": "champion",
+              "sourceIds": [
+                "cyb3r1a"
+              ]
+            }
+          ]
+        },
+        "mid-lane": {
+          "tips": [
+            {
+              "text": "After pushing, convert the free time into vision, a roam, an efficient recall, or a jungler play instead of idling.",
+              "scope": "champion",
+              "sourceIds": [
+                "cyb3r1a"
+              ]
+            },
+            {
+              "text": "Turn level-6 stun and Tibbers picks directly into objective pressure.",
+              "scope": "champion",
+              "sourceIds": [
+                "cyb3r1a"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 1,
+                  "key": "R"
+                }
+              ]
+            },
+            {
+              "text": "Claim priority with W waveclear, then rotate only when the wave state keeps the move cheap.",
+              "scope": "champion",
+              "sourceIds": [
+                "cyb3r1a"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 1,
+                  "key": "W"
+                }
+              ]
+            }
+          ]
+        },
+        "win-condition": {
+          "tips": [
+            {
+              "text": "Protect farm and levels early, then open picks and mid priority at the level-6 and level-10 windows.",
+              "scope": "champion",
+              "sourceIds": [
+                "cyb3r1a"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 1,
+                  "key": "R"
+                }
+              ]
+            },
+            {
+              "text": "Drop the loaded stun and Tibbers onto a carry or a cluster, then turn the pick into objective pressure.",
+              "scope": "champion",
+              "sourceIds": [
+                "cyb3r1a"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 1,
+                  "key": "R"
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "itemization": [
+        {
+          "text": "Run First Strike with Cash Back, Triple Tonic, Cosmic Insight, Bone Plating, and Overgrowth.",
+          "scope": "champion",
+          "sourceIds": [
+            "cyb3r1a"
+          ]
+        },
+        {
+          "text": "Build Rod of Ages into Crimson Lucidity, Archangel's Staff, Rylai's Crystal Scepter, Liandry's Torment, and Bloodletter's Curse.",
+          "scope": "champion",
+          "sourceIds": [
+            "cyb3r1a"
+          ],
+          "itemIds": [
+            6657,
+            3171,
+            3003,
+            3116,
+            6653,
+            8010
+          ]
+        },
+        {
+          "text": "Start Dark Seal, Refillable Potion, and Stealth Ward, then buy Tear of the Goddess, Catalyst of Aeons, and Blasting Wand early.",
+          "scope": "champion",
+          "sourceIds": [
+            "cyb3r1a"
+          ],
+          "itemIds": [
+            1082,
+            2031,
+            3340,
+            3070,
+            3803,
+            1026
+          ]
+        },
+        {
+          "text": "Take Flash and Ghost.",
+          "scope": "champion",
+          "sourceIds": [
+            "cyb3r1a"
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "id": "cyb3r1a",
+          "author": "cyb3r1a",
+          "rankClaim": "Master Rank (title); Diamond (profile badge)",
+          "rank": "diamond",
+          "url": "https://www.mobafire.com/league-of-legends/build/26-16-master-rank-annie-mid-cheat-sheet-651995",
+          "kind": "mobafire"
+        }
+      ]
+    }
+  ],
+  "vods": [
+    {
+      "enemy": 3,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "b2j-jDdWzFs",
+          "title": "Annie Mid vs Galio - KR Master Patch 26.03",
+          "rankClaim": "Master",
+          "patch": "26.3",
+          "durationSec": 1618,
+          "region": "KR",
+          "uploaded": "2026-02-13",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 25,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 159,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 258,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 374,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 556,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 633,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 758,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 823,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 839,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 901,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 926,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1003,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1036,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1188,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1223,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1250,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1314,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1405,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1429,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1553,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1607,
+              "label": "End credit"
+            }
+          ]
+        },
+        {
+          "videoId": "7E_Tju1H3WA",
+          "title": "Annie Mid vs Galio - KR Challenger Patch 25.05",
+          "rankClaim": "Challenger",
+          "patch": "25.5",
+          "durationSec": 1954,
+          "region": "KR",
+          "uploaded": "2025-03-15",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 187,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 417,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 692,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 931,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 958,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 974,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1072,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1171,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1200,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1298,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1375,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1406,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1432,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1512,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1533,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1547,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1646,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1665,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1787,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1880,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1897,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1913,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1933,
+              "label": "End credit"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 4,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "PEfg3A4M48A",
+          "title": "Annie Mid vs Twisted Fate - KR Grandmaster Patch 26.10",
+          "rankClaim": "Grandmaster",
+          "patch": "26.10",
+          "durationSec": 1609,
+          "region": "KR",
+          "uploaded": "2026-05-20",
+          "moments": []
+        },
+        {
+          "videoId": "UOhE5Ct8qoc",
+          "title": "Annie Mid vs Twisted Fate - KR Challenger Patch 25.17",
+          "rankClaim": "Challenger",
+          "patch": "25.17",
+          "durationSec": 1598,
+          "region": "KR",
+          "uploaded": "2025-09-03",
+          "moments": []
+        },
+        {
+          "videoId": "4Cp4PKLi8PA",
+          "title": "Annie Mid vs Twisted Fate - KR Grandmaster Patch 25.13",
+          "rankClaim": "Grandmaster",
+          "patch": "25.13",
+          "durationSec": 1690,
+          "region": "KR",
+          "uploaded": "2025-07-02",
+          "moments": []
+        },
+        {
+          "videoId": "fc4H7HVLaGs",
+          "title": "Annie Mid vs Twisted Fate - KR Master Patch 25.06",
+          "rankClaim": "Master",
+          "patch": "25.6",
+          "durationSec": 2007,
+          "region": "KR",
+          "uploaded": "2025-03-27",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 7,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "EIKUh9d9-fw",
+          "title": "Annie Mid vs LeBlanc - KR Grandmaster Patch 26.19",
+          "rankClaim": "Grandmaster",
+          "patch": "26.19",
+          "durationSec": 1689,
+          "region": "KR",
+          "uploaded": "2026-09-30",
+          "moments": []
+        },
+        {
+          "videoId": "xjDxF5Nlrcw",
+          "title": "(SGE ZaZee) Annie Mid vs LeBlanc - EUW Grandmaster Patch 26.11",
+          "rankClaim": "Grandmaster",
+          "patch": "26.11",
+          "durationSec": 1674,
+          "region": "EUW",
+          "player": "SGE ZaZee",
+          "uploaded": "2026-06-03",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 7,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "VRwQLW88d-A",
+          "title": "Annie Support vs LeBlanc - EUW Grandmaster Patch 25.15",
+          "rankClaim": "Grandmaster",
+          "patch": "25.15",
+          "durationSec": 1843,
+          "region": "EUW",
+          "uploaded": "2025-08-15",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 9,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "mh50x_f3q7M",
+          "title": "Annie Support vs Fiddlesticks - KR Master Patch 25.14",
+          "rankClaim": "Master",
+          "patch": "25.14",
+          "durationSec": 1671,
+          "region": "KR",
+          "uploaded": "2025-07-29",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 12,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "nmWRUYjyGdo",
+          "title": "Annie Support vs Alistar - KR Master Patch 25.12",
+          "rankClaim": "Master",
+          "patch": "25.12",
+          "durationSec": 1625,
+          "region": "KR",
+          "uploaded": "2025-06-24",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 13,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "FNzNvNMohN0",
+          "title": "Annie Mid vs Ryze - KR Challenger Patch 26.05",
+          "rankClaim": "Challenger",
+          "patch": "26.5",
+          "durationSec": 1609,
+          "region": "KR",
+          "uploaded": "2026-03-18",
+          "moments": []
+        },
+        {
+          "videoId": "VbmFCiaKGDk",
+          "title": "Annie Mid vs Ryze - KR Master Patch 25.24",
+          "rankClaim": "Master",
+          "patch": "25.24",
+          "durationSec": 1598,
+          "region": "KR",
+          "uploaded": "2026-01-09",
+          "moments": []
+        },
+        {
+          "videoId": "_Ern4SzkfI8",
+          "title": "Annie Mid vs Ryze - KR Grandmaster Patch 25.18",
+          "rankClaim": "Grandmaster",
+          "patch": "25.18",
+          "durationSec": 1642,
+          "region": "KR",
+          "uploaded": "2025-09-19",
+          "moments": []
+        },
+        {
+          "videoId": "5ONOn1QvUyQ",
+          "title": "Annie Mid vs Ryze - KR Master Patch 25.12",
+          "rankClaim": "Master",
+          "patch": "25.12",
+          "durationSec": 1637,
+          "region": "KR",
+          "uploaded": "2025-06-19",
+          "moments": []
+        },
+        {
+          "videoId": "MeCvQAyUrNM",
+          "title": "Annie Mid vs Ryze - KR Grandmaster Patch 25.08",
+          "rankClaim": "Grandmaster",
+          "patch": "25.8",
+          "durationSec": 1977,
+          "region": "KR",
+          "uploaded": "2025-04-19",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 314,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 483,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 594,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 700,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 758,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 992,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1018,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1051,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1210,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1321,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1427,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1481,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1589,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1657,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1926,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1956,
+              "label": "End credit"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 14,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "9dnFzPVuTNY",
+          "title": "Annie Top vs Sion - EUW Challenger Patch 26.13",
+          "rankClaim": "Challenger",
+          "patch": "26.13",
+          "durationSec": 1562,
+          "region": "EUW",
+          "uploaded": "2026-07-07",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 18,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "1SMzjD5kWT8",
+          "title": "Annie Mid vs Tristana - KR Grandmaster Patch 25.09",
+          "rankClaim": "Grandmaster",
+          "patch": "25.9",
+          "durationSec": 1637,
+          "region": "KR",
+          "uploaded": "2025-05-07",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 24,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "uafpZXi9PF8",
+          "title": "Annie Top vs Jax (WPE Libra) - EUW Grandmaster Patch 26.10",
+          "rankClaim": "Grandmaster",
+          "patch": "26.10",
+          "durationSec": 1645,
+          "region": "EUW",
+          "uploaded": "2026-05-28",
+          "moments": []
+        },
+        {
+          "videoId": "zBOORYvTWdQ",
+          "title": "Annie Top vs Jax - EUW Grandmaster Patch 26.09",
+          "rankClaim": "Grandmaster",
+          "patch": "26.9",
+          "durationSec": 1731,
+          "region": "EUW",
+          "uploaded": "2026-05-13",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 26,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "s_qlT-yOFDA",
+          "title": "Annie Support vs Zilean - KR Master Patch 25.13",
+          "rankClaim": "Master",
+          "patch": "25.13",
+          "durationSec": 1643,
+          "region": "KR",
+          "uploaded": "2025-07-08",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 27,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "r1aOT8rjELg",
+          "title": "Annie Top vs Singed - KR Master Patch 25.04",
+          "rankClaim": "Master",
+          "patch": "25.4",
+          "durationSec": 1936,
+          "region": "KR",
+          "uploaded": "2025-03-03",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 31,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "4_XbaiaQHcs",
+          "title": "Annie Top vs Cho'Gath - KR Master Patch 25.13",
+          "rankClaim": "Master",
+          "patch": "25.13",
+          "durationSec": 1681,
+          "region": "KR",
+          "uploaded": "2025-07-13",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 32,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "kk7KXBskGuM",
+          "title": "Annie Support vs Amumu - KR Master Patch 25.16",
+          "rankClaim": "Master",
+          "patch": "25.16",
+          "durationSec": 1544,
+          "region": "KR",
+          "uploaded": "2025-08-25",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 34,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "QBz8hr5MOU0",
+          "title": "(SU Vetheo) Annie Mid vs Anivia (Berkan) - EUW Challenger Patch 26.16",
+          "rankClaim": "Challenger",
+          "patch": "26.16",
+          "durationSec": 1584,
+          "region": "EUW",
+          "player": "SU Vetheo",
+          "uploaded": "2026-08-17",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 38,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "RyWabQ-Qq1g",
+          "title": "Annie Mid vs Kassadin - KR Challenger Patch 25.21",
+          "rankClaim": "Challenger",
+          "patch": "25.21",
+          "durationSec": 1579,
+          "region": "KR",
+          "uploaded": "2025-10-31",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 39,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "Zuv6CnIJu6w",
+          "title": "Annie Mid vs Irelia - NA Grandmaster Patch 26.20",
+          "rankClaim": "Grandmaster",
+          "patch": "26.20",
+          "durationSec": 1840,
+          "region": "NA",
+          "uploaded": "2026-10-12",
+          "result": "W",
+          "moments": [
+            {
+              "atSec": 120,
+              "label": "First Blood — Annie kills Irelia",
+              "kind": "kill"
+            },
+            {
+              "atSec": 212,
+              "label": "Annie takes down Irelia"
+            },
+            {
+              "atSec": 399,
+              "label": "Annie catches Irelia again"
+            },
+            {
+              "atSec": 417,
+              "label": "Blue takes 1st Dragon (Hextech)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 733,
+              "label": "Red takes 1st Dragon (Chemtech)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 821,
+              "label": "Jhin Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1055,
+              "label": "Red takes 2nd Dragon (Ocean)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1300,
+              "label": "Annie takes down Darius"
+            },
+            {
+              "atSec": 1416,
+              "label": "Blue takes 2nd Dragon (Ocean)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1453,
+              "label": "K'Sante takes down Irelia"
+            },
+            {
+              "atSec": 1515,
+              "label": "Team fight (3 kills)",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1526,
+              "label": "Red takes Baron",
+              "kind": "baron"
+            },
+            {
+              "atSec": 1598,
+              "label": "Team fight (3 kills)",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1679,
+              "label": "Rengar takes down Shyvana"
+            },
+            {
+              "atSec": 1734,
+              "label": "Red takes 3rd Dragon (Ocean)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1809,
+              "label": "Rengar picks off Irelia"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 41,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "cqofI4-MoJ4",
+          "title": "Annie vs Gangplank 5/3/18 (Top) | EUW Challenger | Annie OTP Replay",
+          "rankClaim": "Challenger",
+          "patch": "26.11",
+          "durationSec": 1515,
+          "region": "EUW",
+          "patchEstimated": true,
+          "uploaded": "2026-05-28",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 42,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "akSvUPl1bSA",
+          "title": "Annie Mid vs Corki - KR Challenger Patch 25.16",
+          "rankClaim": "Challenger",
+          "patch": "25.16",
+          "durationSec": 1505,
+          "region": "KR",
+          "uploaded": "2025-08-20",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 43,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "gFpAwlFQMIo",
+          "title": "Annie Support vs Karma - KR Master Patch 25.22",
+          "rankClaim": "Master",
+          "patch": "25.22",
+          "durationSec": 1595,
+          "region": "KR",
+          "uploaded": "2025-11-19",
+          "moments": []
+        },
+        {
+          "videoId": "X_hDtjrsoU0",
+          "title": "Annie Support vs Karma - KR Master Patch 25.10",
+          "rankClaim": "Master",
+          "patch": "25.10",
+          "durationSec": 1869,
+          "region": "KR",
+          "uploaded": "2025-05-24",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 45,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "QS432qflG5w",
+          "title": "Annie Mid vs Veigar - EUW Challenger Patch 26.08",
+          "rankClaim": "Challenger",
+          "patch": "26.8",
+          "durationSec": 1450,
+          "region": "EUW",
+          "uploaded": "2026-04-26",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 55,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "dYac0Pwu-hU",
+          "title": "Annie Mid vs Katarina - EUW Challenger Patch 26.18",
+          "rankClaim": "Challenger",
+          "patch": "26.18",
+          "durationSec": 1495,
+          "region": "EUW",
+          "uploaded": "2026-09-16",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 57,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "ia1XhM7bFLI",
+          "title": "Annie Support vs Maokai - KR Master Patch 26.04",
+          "rankClaim": "Master",
+          "patch": "26.4",
+          "durationSec": 1883,
+          "region": "KR",
+          "uploaded": "2026-03-04",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 60,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "LC0_nbFKZcs",
+          "title": "Annie Mid vs Elise - NA Grandmaster Patch 25.21",
+          "rankClaim": "Grandmaster",
+          "patch": "25.21",
+          "durationSec": 1542,
+          "region": "NA",
+          "uploaded": "2025-11-06",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 61,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "EnjLsa52lm0",
+          "title": "Annie Mid vs Orianna - KR Master Patch 25.24",
+          "rankClaim": "Master",
+          "patch": "25.24",
+          "durationSec": 1538,
+          "region": "KR",
+          "uploaded": "2026-01-02",
+          "moments": []
+        },
+        {
+          "videoId": "bFtSn5VQVkU",
+          "title": "Annie Mid vs Orianna - KR Challenger Patch 25.11",
+          "rankClaim": "Challenger",
+          "patch": "25.11",
+          "durationSec": 1612,
+          "region": "KR",
+          "uploaded": "2025-06-04",
+          "moments": []
+        },
+        {
+          "videoId": "oPJgsfxnKAk",
+          "title": "T1 Faker Annie vs Orianna [ MID ] Patch 25.9 Korea Grandmaster",
+          "rankClaim": "Grandmaster",
+          "patch": "25.9",
+          "durationSec": 1256,
+          "region": "KR",
+          "player": "Faker",
+          "team": "T1",
+          "uploaded": "2025-05-13",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 62,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "sA-tqRfymgc",
+          "title": "Annie Support vs Wukong - KR Master Patch 26.18",
+          "rankClaim": "Master",
+          "patch": "26.18",
+          "durationSec": 1722,
+          "region": "KR",
+          "uploaded": "2026-09-22",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 68,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "Ks8VW3vFsTA",
+          "title": "(Annie IRL) Annie Top vs Rumble (G2N Toasty) - EUW Challenger Patch 26.19",
+          "rankClaim": "Challenger",
+          "patch": "26.19",
+          "durationSec": 1706,
+          "region": "EUW",
+          "player": "Annie IRL",
+          "uploaded": "2026-10-06",
+          "result": "W",
+          "moments": [
+            {
+              "atSec": 314,
+              "label": "Red takes 1st Dragon (Ocean)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 355,
+              "label": "First Blood — Annie kills Rumble",
+              "kind": "kill"
+            },
+            {
+              "atSec": 505,
+              "label": "Annie catches Rumble"
+            },
+            {
+              "atSec": 700,
+              "label": "Red takes 2nd Dragon (Chemtech)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 817,
+              "label": "Annie solo kills Sivir",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1041,
+              "label": "Red takes 3rd Dragon (Hextech)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1057,
+              "label": "Annie outduels Jayce"
+            },
+            {
+              "atSec": 1134,
+              "label": "Jarvan IV takes down Jayce"
+            },
+            {
+              "atSec": 1283,
+              "label": "Blue takes Baron",
+              "kind": "baron"
+            },
+            {
+              "atSec": 1318,
+              "label": "Annie takes down Sivir again"
+            },
+            {
+              "atSec": 1360,
+              "label": "Red takes 4th Dragon (Hextech)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1474,
+              "label": "Tristana Triple Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1513,
+              "label": "Mid Inhibitor falls (Blue)"
+            },
+            {
+              "atSec": 1562,
+              "label": "Annie catches Sivir (3rd time)"
+            },
+            {
+              "atSec": 1630,
+              "label": "Jarvan IV eliminates Sivir"
+            },
+            {
+              "atSec": 1654,
+              "label": "Top Inhibitor falls (Blue)"
+            },
+            {
+              "atSec": 1656,
+              "label": "Team fight (3 kills)",
+              "kind": "teamfight"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 75,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "r36n_zAQYpQ",
+          "title": "Annie Top vs Nasus - KR Master Patch 26.08",
+          "rankClaim": "Master",
+          "patch": "26.8",
+          "durationSec": 1661,
+          "region": "KR",
+          "uploaded": "2026-04-20",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 80,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "o1MCAxSVFT0",
+          "title": "Annie Top vs Pantheon - EUW Grandmaster Patch 26.03",
+          "rankClaim": "Grandmaster",
+          "patch": "26.3",
+          "durationSec": 1917,
+          "region": "EUW",
+          "uploaded": "2026-02-18",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 242,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 440,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 525,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 682,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 876,
+              "label": "Get a Triple Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 986,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1005,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1017,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1384,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1441,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1576,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1607,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1635,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1866,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1906,
+              "label": "End credit"
+            }
+          ]
+        },
+        {
+          "videoId": "xun7xuVTKJ4",
+          "title": "Annie Top vs Pantheon - KR Master Patch 25.09",
+          "rankClaim": "Master",
+          "patch": "25.9",
+          "durationSec": 1830,
+          "region": "KR",
+          "uploaded": "2025-05-12",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 84,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "9xcKILceveE",
+          "title": "Annie Mid vs Akali - KR Master Patch 25.23",
+          "rankClaim": "Master",
+          "patch": "25.23",
+          "durationSec": 1547,
+          "region": "KR",
+          "uploaded": "2025-11-28",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 89,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "j6xvXxja6Mk",
+          "title": "Annie Support vs Leona - KR Grandmaster Patch 25.17",
+          "rankClaim": "Grandmaster",
+          "patch": "25.17",
+          "durationSec": 1809,
+          "region": "KR",
+          "uploaded": "2025-09-08",
+          "moments": []
+        },
+        {
+          "videoId": "Tyy_mOBSRoI",
+          "title": "Annie Support vs Leona - KR Master Patch 25.08",
+          "rankClaim": "Master",
+          "patch": "25.8",
+          "durationSec": 1563,
+          "region": "KR",
+          "uploaded": "2025-05-02",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 142,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 207,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 563,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 655,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 771,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 995,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1032,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1045,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1116,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1143,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1165,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1244,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1333,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1514,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1542,
+              "label": "End credit"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 90,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "DIt1maCfOB8",
+          "title": "Annie vs Malzahar Mid - KR Grandmaster - Patch 25.7 Season 15",
+          "rankClaim": "Grandmaster",
+          "patch": "25.7",
+          "durationSec": 1591,
+          "region": "KR",
+          "uploaded": "2025-04-14",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 91,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "kCEuEu8d7UA",
+          "title": "T1 Faker Annie vs Talon [ MID ] Korea Grandmaster Patch 25.18",
+          "rankClaim": "Grandmaster",
+          "patch": "25.18",
+          "durationSec": 766,
+          "region": "KR",
+          "player": "Faker",
+          "team": "T1",
+          "uploaded": "2025-09-17",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 101,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "ZEvoVKzWfIc",
+          "title": "Annie Mid vs Xerath - KR Master Patch 26.21",
+          "rankClaim": "Master",
+          "patch": "26.21",
+          "durationSec": 1831,
+          "region": "KR",
+          "uploaded": "2026-10-28",
+          "result": "W",
+          "moments": [
+            {
+              "atSec": 436,
+              "label": "Red takes 1st Dragon (Cloud)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 804,
+              "label": "Red takes 2nd Dragon (Ocean)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 854,
+              "label": "Yunara takes down Kai'Sa"
+            },
+            {
+              "atSec": 1098,
+              "label": "Annie takes down Dr. Mundo"
+            },
+            {
+              "atSec": 1126,
+              "label": "Red takes 3rd Dragon (Mountain)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1163,
+              "label": "Nasus kills Jax",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1170,
+              "label": "Nasus Triple Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1401,
+              "label": "Nasus Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1476,
+              "label": "Fiddlesticks takes down Jax"
+            },
+            {
+              "atSec": 1480,
+              "label": "Blue takes 1st Dragon (Mountain)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1548,
+              "label": "Annie takes down Leona"
+            },
+            {
+              "atSec": 1646,
+              "label": "Team fight (3 kills)",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1685,
+              "label": "Blue takes Baron",
+              "kind": "baron"
+            },
+            {
+              "atSec": 1771,
+              "label": "Nasus eliminates Leona"
+            },
+            {
+              "atSec": 1783,
+              "label": "Nasus Triple Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1785,
+              "label": "Nasus Quadra Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1804,
+              "label": "Mid Inhibitor falls (Red)"
+            },
+            {
+              "atSec": 1816,
+              "label": "Blue takes 2nd Dragon (Mountain)",
+              "kind": "dragon"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 103,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "20jKZG68lhE",
+          "title": "Annie Mid vs Ahri - KR Grandmaster Patch 26.17",
+          "rankClaim": "Grandmaster",
+          "patch": "26.17",
+          "durationSec": 1732,
+          "region": "KR",
+          "uploaded": "2026-09-02",
+          "result": "W",
+          "moments": [
+            {
+              "atSec": 169,
+              "label": "First Blood — Ziggs kills Ahri",
+              "kind": "kill"
+            },
+            {
+              "atSec": 294,
+              "label": "Annie takes down Ahri"
+            },
+            {
+              "atSec": 432,
+              "label": "Blue takes 1st Dragon (Cloud)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 564,
+              "label": "Annie catches Ahri again"
+            },
+            {
+              "atSec": 770,
+              "label": "Blue takes 2nd Dragon (Hextech)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 962,
+              "label": "Jarvan IV eliminates Jhin"
+            },
+            {
+              "atSec": 1043,
+              "label": "Annie picks off Talon"
+            },
+            {
+              "atSec": 1094,
+              "label": "Olaf takes down Ahri"
+            },
+            {
+              "atSec": 1121,
+              "label": "Olaf kills Talon",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1138,
+              "label": "Blue takes 3rd Dragon (Ocean)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1275,
+              "label": "Annie outplays Camille"
+            },
+            {
+              "atSec": 1434,
+              "label": "Ziggs picks off Camille"
+            },
+            {
+              "atSec": 1463,
+              "label": "Blue takes 4th Dragon (Ocean)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1536,
+              "label": "Blue takes Baron",
+              "kind": "baron"
+            },
+            {
+              "atSec": 1575,
+              "label": "Annie solo kills Camille again",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1637,
+              "label": "Mid Inhibitor falls (Red)"
+            },
+            {
+              "atSec": 1657,
+              "label": "Bot Inhibitor falls (Red)"
+            },
+            {
+              "atSec": 1676,
+              "label": "Jarvan IV kills Camille",
+              "kind": "kill"
+            }
+          ]
+        },
+        {
+          "videoId": "uJghonMrPmI",
+          "title": "(HRTS Lurox) Annie Mid vs Ahri - EUW Challenger Patch 26.12",
+          "rankClaim": "Challenger",
+          "patch": "26.12",
+          "durationSec": 1528,
+          "region": "EUW",
+          "player": "HRTS Lurox",
+          "uploaded": "2026-06-15",
+          "moments": []
+        },
+        {
+          "videoId": "PxvWzr9M_ec",
+          "title": "Annie Mid vs Ahri - KR Challenger Patch 26.05",
+          "rankClaim": "Challenger",
+          "patch": "26.5",
+          "durationSec": 1800,
+          "region": "KR",
+          "uploaded": "2026-03-10",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 111,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "fPAS5D6Y5MU",
+          "title": "Annie Support vs Nautilus - EUW Grandmaster Patch 25.19",
+          "rankClaim": "Grandmaster",
+          "patch": "25.19",
+          "durationSec": 1758,
+          "region": "EUW",
+          "uploaded": "2025-10-06",
+          "moments": []
+        },
+        {
+          "videoId": "wddCcrqyGJw",
+          "title": "Annie Support vs Nautilus - KR Master Patch 25.07",
+          "rankClaim": "Master",
+          "patch": "25.7",
+          "durationSec": 1741,
+          "region": "KR",
+          "uploaded": "2025-04-15",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 112,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "2ZL15EkeVQQ",
+          "title": "(GL Marty) Annie Mid vs Viktor - EUW Challenger Patch 26.13",
+          "rankClaim": "Challenger",
+          "patch": "26.13",
+          "durationSec": 1473,
+          "region": "EUW",
+          "player": "GL Marty",
+          "uploaded": "2026-07-02",
+          "result": "L",
+          "moments": [
+            {
+              "atSec": 258,
+              "label": "First Blood — Annie kills Viktor",
+              "kind": "kill"
+            },
+            {
+              "atSec": 397,
+              "label": "Camille takes down Viktor"
+            },
+            {
+              "atSec": 577,
+              "label": "Red takes 1st Dragon (Ocean)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 600,
+              "label": "Annie takes down Viktor"
+            },
+            {
+              "atSec": 780,
+              "label": "Camille takes down Viktor"
+            },
+            {
+              "atSec": 920,
+              "label": "Red takes 2nd Dragon (Chemtech)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 972,
+              "label": "Gangplank Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1079,
+              "label": "Xin Zhao Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1131,
+              "label": "Annie outduels Janna"
+            },
+            {
+              "atSec": 1219,
+              "label": "Annie picks off Aatrox"
+            },
+            {
+              "atSec": 1260,
+              "label": "Red takes Baron",
+              "kind": "baron"
+            },
+            {
+              "atSec": 1291,
+              "label": "Red takes 3rd Dragon (Mountain)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1304,
+              "label": "Yunara takes down Draven"
+            },
+            {
+              "atSec": 1341,
+              "label": "Bot Inhibitor falls (Blue)"
+            },
+            {
+              "atSec": 1421,
+              "label": "Gangplank Triple Kill",
+              "kind": "kill"
+            }
+          ]
+        },
+        {
+          "videoId": "rFWF-r2pq24",
+          "title": "Annie Mid vs Viktor - KR Master Patch 25.24",
+          "rankClaim": "Master",
+          "patch": "25.24",
+          "durationSec": 1618,
+          "region": "KR",
+          "uploaded": "2025-12-12",
+          "moments": []
+        },
+        {
+          "videoId": "eeVkWTuVMok",
+          "title": "Annie Mid vs Viktor - KR Master Patch 25.22",
+          "rankClaim": "Master",
+          "patch": "25.22",
+          "durationSec": 1930,
+          "region": "KR",
+          "uploaded": "2025-11-13",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 126,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "CXShAS5kjCE",
+          "title": "(NGE Katashi) Annie Top vs Jayce (Moe) - EUW Master Patch 26.20",
+          "rankClaim": "Master",
+          "patch": "26.20",
+          "durationSec": 1545,
+          "region": "EUW",
+          "player": "NGE Katashi",
+          "uploaded": "2026-10-20",
+          "result": "W",
+          "moments": [
+            {
+              "atSec": 154,
+              "label": "First Blood — Annie kills Jayce",
+              "kind": "kill"
+            },
+            {
+              "atSec": 375,
+              "label": "Blue takes 1st Dragon (Hextech)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 489,
+              "label": "Annie catches Jayce"
+            },
+            {
+              "atSec": 691,
+              "label": "Blue takes 2nd Dragon (Ocean)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 727,
+              "label": "Annie outduels Jayce again"
+            },
+            {
+              "atSec": 898,
+              "label": "Annie eliminates Jayce"
+            },
+            {
+              "atSec": 999,
+              "label": "Jinx picks off Jayce"
+            },
+            {
+              "atSec": 1022,
+              "label": "Red takes 1st Dragon (Infernal)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1128,
+              "label": "Annie outplays Lux"
+            },
+            {
+              "atSec": 1243,
+              "label": "Annie eliminates Jayce"
+            },
+            {
+              "atSec": 1279,
+              "label": "Sylas kills Jhin",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1300,
+              "label": "Blue takes Baron",
+              "kind": "baron"
+            },
+            {
+              "atSec": 1336,
+              "label": "Blue takes 3rd Dragon (Infernal)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1357,
+              "label": "Annie outduels Jarvan IV"
+            },
+            {
+              "atSec": 1386,
+              "label": "Annie takes down Lux"
+            },
+            {
+              "atSec": 1414,
+              "label": "Annie eliminates Seraphine"
+            },
+            {
+              "atSec": 1469,
+              "label": "Annie takes down Seraphine"
+            },
+            {
+              "atSec": 1532,
+              "label": "Mid Inhibitor falls (Red)"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 127,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "1oA0-sQRYyg",
+          "title": "(KCB Kamiloo) Annie Mid vs Lissandra - EUW Grandmaster Patch 26.14",
+          "rankClaim": "Grandmaster",
+          "patch": "26.14",
+          "durationSec": 1516,
+          "region": "EUW",
+          "player": "KCB Kamiloo",
+          "uploaded": "2026-07-22",
+          "moments": []
+        },
+        {
+          "videoId": "Bzj27qg0YKI",
+          "title": "Annie Mid vs Lissandra - KR Master Patch 25.24",
+          "rankClaim": "Master",
+          "patch": "25.24",
+          "durationSec": 1463,
+          "region": "KR",
+          "uploaded": "2025-12-26",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 240,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 301,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 407,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 916,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 931,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 970,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1084,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1197,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1248,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1271,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1288,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1424,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1441,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1452,
+              "label": "End credit"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 131,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "owowEpM_eos",
+          "title": "Annie Mid vs Diana - KR Grandmaster Patch 25.14",
+          "rankClaim": "Grandmaster",
+          "patch": "25.14",
+          "durationSec": 1527,
+          "region": "KR",
+          "uploaded": "2025-07-21",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 133,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "Wneo0dt6TPE",
+          "title": "(TheRoyalKanin) Annie Mid vs Quinn - EUW Challenger Patch 26.16",
+          "rankClaim": "Challenger",
+          "patch": "26.16",
+          "durationSec": 1514,
+          "region": "EUW",
+          "player": "TheRoyalKanin",
+          "uploaded": "2026-08-28",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 134,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "6pttynoRvvs",
+          "title": "Annie Mid vs Syndra - KR Grandmaster Patch 26.02",
+          "rankClaim": "Grandmaster",
+          "patch": "26.2",
+          "durationSec": 1615,
+          "region": "KR",
+          "uploaded": "2026-02-03",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 251,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 444,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 535,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 611,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 690,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 825,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 919,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1067,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1085,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1206,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1320,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1344,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1414,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1496,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1527,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1564,
+              "label": "Take down The Inhibitor"
+            },
+            {
+              "atSec": 1590,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1604,
+              "label": "End credit"
+            }
+          ]
+        },
+        {
+          "videoId": "ZSP3hdgEc0Q",
+          "title": "Annie Mid vs Syndra - KR Master Patch 26.01",
+          "rankClaim": "Master",
+          "patch": "26.1",
+          "durationSec": 1606,
+          "region": "KR",
+          "uploaded": "2026-01-15",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 515,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 592,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 758,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 821,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 851,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 886,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 924,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1142,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1292,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1405,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1539,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1570,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1581,
+              "label": "Take down The Inhibitor"
+            },
+            {
+              "atSec": 1595,
+              "label": "End credit"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 150,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "XZ3bVDzZ7RM",
+          "title": "Annie Top vs Gnar (BRO Pungyeon) - KR Challenger Patch 26.15",
+          "rankClaim": "Challenger",
+          "patch": "26.15",
+          "durationSec": 1461,
+          "region": "KR",
+          "uploaded": "2026-08-09",
+          "moments": []
+        },
+        {
+          "videoId": "eAsFRsn3R9w",
+          "title": "(Oscarinin) Annie Top vs Gnar - EUW Challenger Patch 26.13",
+          "rankClaim": "Challenger",
+          "patch": "26.13",
+          "durationSec": 1619,
+          "region": "EUW",
+          "player": "Oscarinin",
+          "uploaded": "2026-07-17",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 154,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "SyPWgBJYf04",
+          "title": "Annie Top vs Zac - EUW Challenger Patch 26.12",
+          "rankClaim": "Challenger",
+          "patch": "26.12",
+          "durationSec": 1675,
+          "region": "EUW",
+          "uploaded": "2026-06-21",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 157,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "0aH5wIJXgVk",
+          "title": "Annie Mid vs Yasuo - VN Challenger Patch 26.04",
+          "rankClaim": "Challenger",
+          "patch": "26.4",
+          "durationSec": 1697,
+          "uploaded": "2026-02-25",
+          "moments": []
+        },
+        {
+          "videoId": "VwhwCopaR6s",
+          "title": "Annie Mid vs Yasuo - KR Grandmaster Patch 25.07",
+          "rankClaim": "Grandmaster",
+          "patch": "25.7",
+          "durationSec": 2077,
+          "region": "KR",
+          "uploaded": "2025-04-10",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 157,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "fTr-H3ZtQWI",
+          "title": "Annie Top vs Yasuo - EUW Grandmaster Patch 25.10",
+          "rankClaim": "Grandmaster",
+          "patch": "25.10",
+          "durationSec": 1995,
+          "region": "EUW",
+          "uploaded": "2025-05-30",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 163,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "pJR1NXYss48",
+          "title": "Annie Support vs Taliyah - KR Master Patch 25.05",
+          "rankClaim": "Master",
+          "patch": "25.5",
+          "durationSec": 1584,
+          "region": "KR",
+          "uploaded": "2025-03-19",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 166,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "ZfKuCBOxVns",
+          "title": "Annie Mid vs Akshan - EUW Grandmaster Patch 25.23",
+          "rankClaim": "Grandmaster",
+          "patch": "25.23",
+          "durationSec": 1455,
+          "region": "EUW",
+          "uploaded": "2025-12-05",
+          "moments": []
+        },
+        {
+          "videoId": "IJ84DOiysUc",
+          "title": "Annie Mid vs Akshan - KR Master Patch 25.20",
+          "rankClaim": "Master",
+          "patch": "25.20",
+          "durationSec": 1968,
+          "region": "KR",
+          "uploaded": "2025-10-17",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 238,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "0EkQhw9Cs8Q",
+          "title": "Faker Annie vs Zed Mid - KR Grandmaster - Patch 25.9 Season 15",
+          "rankClaim": "Grandmaster",
+          "patch": "25.9",
+          "durationSec": 1786,
+          "region": "KR",
+          "player": "Faker",
+          "uploaded": "2025-05-11",
+          "moments": []
+        },
+        {
+          "videoId": "mOCoHsIGonE",
+          "title": "T1 Faker Annie vs Zed [ MID ] Korea Grandmaster Patch 25.9",
+          "rankClaim": "Grandmaster",
+          "patch": "25.9",
+          "durationSec": 1547,
+          "region": "KR",
+          "player": "Faker",
+          "team": "T1",
+          "uploaded": "2025-05-09",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 246,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "gUEY1DReNCs",
+          "title": "Annie Mid vs Qiyana - KR Master Patch 26.07",
+          "rankClaim": "Master",
+          "patch": "26.7",
+          "durationSec": 1561,
+          "region": "KR",
+          "uploaded": "2026-04-09",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 268,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "E8giSMSrxEc",
+          "title": "Annie Mid vs Azir - KR Challenger Patch 26.09",
+          "rankClaim": "Challenger",
+          "patch": "26.9",
+          "durationSec": 1517,
+          "region": "KR",
+          "uploaded": "2026-05-06",
+          "moments": []
+        },
+        {
+          "videoId": "0SoA1IqpbbI",
+          "title": "Annie Mid vs Azir - KR Challenger Patch 25.15",
+          "rankClaim": "Challenger",
+          "patch": "25.15",
+          "durationSec": 1750,
+          "region": "KR",
+          "uploaded": "2025-08-04",
+          "moments": []
+        },
+        {
+          "videoId": "6DGyaLzJXdo",
+          "title": "Annie Mid vs Azir - KR Master Patch 25.04",
+          "rankClaim": "Master",
+          "patch": "25.4",
+          "durationSec": 1789,
+          "region": "KR",
+          "uploaded": "2025-02-24",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 497,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "PGweAMVMGNQ",
+          "title": "Annie Support vs Rakan - KR Grandmaster Patch 26.07",
+          "rankClaim": "Grandmaster",
+          "patch": "26.7",
+          "durationSec": 1549,
+          "region": "KR",
+          "uploaded": "2026-04-15",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 516,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "V3saHe0UeCg",
+          "title": "Annie Mid vs Ornn - KR Challenger Patch 25.10",
+          "rankClaim": "Challenger",
+          "patch": "25.10",
+          "durationSec": 1666,
+          "region": "KR",
+          "uploaded": "2025-05-20",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 618,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 706,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 740,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 779,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 841,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 916,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 937,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 996,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1018,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1036,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1098,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1212,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1392,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1490,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1617,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1634,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1645,
+              "label": "End credit"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 517,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "HnUORItsWww",
+          "title": "(Naru) Annie Mid vs Sylas - EUW Grandmaster Patch 26.15",
+          "rankClaim": "Grandmaster",
+          "patch": "26.15",
+          "durationSec": 1715,
+          "region": "EUW",
+          "player": "Naru",
+          "uploaded": "2026-08-05",
+          "moments": []
+        },
+        {
+          "videoId": "S6wVG-YLodc",
+          "title": "T1 Faker Annie vs Sylas [ MID ] Korea Challenger 1993 LP | Patch 26.8",
+          "rankClaim": "Challenger",
+          "patch": "26.8",
+          "durationSec": 1719,
+          "region": "KR",
+          "player": "Faker",
+          "team": "T1",
+          "uploaded": "2026-04-24",
+          "moments": []
+        },
+        {
+          "videoId": "FoYLIVN2At0",
+          "title": "Annie Mid vs Sylas - KR Master Patch 25.19",
+          "rankClaim": "Master",
+          "patch": "25.19",
+          "durationSec": 1996,
+          "region": "KR",
+          "uploaded": "2025-10-02",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 526,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "1tDDWCdZkAw",
+          "title": "Annie Support vs Rell - KR Master Patch 26.17",
+          "rankClaim": "Master",
+          "patch": "26.17",
+          "durationSec": 1650,
+          "region": "KR",
+          "uploaded": "2026-09-06",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 555,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "nwLSDh4W8S4",
+          "title": "Annie Support vs Pyke - KR Grandmaster Patch 26.06",
+          "rankClaim": "Grandmaster",
+          "patch": "26.6",
+          "durationSec": 1487,
+          "region": "KR",
+          "uploaded": "2026-04-01",
+          "moments": []
+        },
+        {
+          "videoId": "AxXMxNcUl5A",
+          "title": "Annie Support vs Pyke - KR Master Patch 25.11",
+          "rankClaim": "Master",
+          "patch": "25.11",
+          "durationSec": 1666,
+          "region": "KR",
+          "uploaded": "2025-06-11",
+          "moments": []
+        },
+        {
+          "videoId": "wxvdWDfiHIs",
+          "title": "Annie Support vs Pyke - KR Master Patch 25.06",
+          "rankClaim": "Master",
+          "patch": "25.6",
+          "durationSec": 1540,
+          "region": "KR",
+          "uploaded": "2025-04-01",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 366,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 526,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 867,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 894,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 958,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1137,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1262,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1292,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1309,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1401,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1433,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1491,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1519,
+              "label": "End credit"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 777,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "2KfjcvEGT84",
+          "title": "Annie Mid vs Yone - NA Challenger Patch 26.06",
+          "rankClaim": "Challenger",
+          "patch": "26.6",
+          "durationSec": 1639,
+          "region": "NA",
+          "uploaded": "2026-03-25",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 325,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 445,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 482,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 534,
+              "label": "Hunt The Void Grubs",
+              "kind": "grubs"
+            },
+            {
+              "atSec": 751,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 790,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 818,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 900,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 984,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1018,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1087,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1140,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1240,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1324,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1470,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1495,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1596,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1628,
+              "label": "End credit"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 800,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "z8rXjWiO0cY",
+          "title": "Annie Mid vs Mel - EUW Grandmaster Patch 25.24",
+          "rankClaim": "Grandmaster",
+          "patch": "25.24",
+          "durationSec": 1606,
+          "region": "EUW",
+          "uploaded": "2025-12-18",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 893,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "eVshLSgibX8",
+          "title": "T1 Faker Annie vs Aurora [ MID ] Korea Grandmaster 1601 LP | Patch 26.7",
+          "rankClaim": "Grandmaster",
+          "patch": "26.7",
+          "durationSec": 1385,
+          "region": "KR",
+          "player": "Faker",
+          "team": "T1",
+          "uploaded": "2026-04-08",
+          "moments": []
+        },
+        {
+          "videoId": "jlw6vA4TxCg",
+          "title": "Annie Mid vs Aurora - EUW Challenger Patch 25.20",
+          "rankClaim": "Challenger",
+          "patch": "25.20",
+          "durationSec": 1995,
+          "region": "EUW",
+          "uploaded": "2025-10-24",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 902,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "hqo4Zs6NIM0",
+          "title": "Annie Support vs Milio - KR Master Patch 25.18",
+          "rankClaim": "Master",
+          "patch": "25.18",
+          "durationSec": 1424,
+          "region": "KR",
+          "uploaded": "2025-09-22",
+          "moments": []
+        }
+      ]
+    }
+  ]
+}

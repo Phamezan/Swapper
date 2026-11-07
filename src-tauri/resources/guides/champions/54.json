@@ -1,0 +1,3641 @@
+{
+  "schema": 1,
+  "champion": 54,
+  "generatedAt": "2026-11-07T13:25:14.592Z",
+  "guides": [
+    {
+      "champion": 54,
+      "enemy": 266,
+      "lane": "top",
+      "patch": "26.21",
+      "reviewed": false,
+      "difficulty": "Medium",
+      "favoredWhen": "Malphite wins Q-poke attrition, Bramble timing, and R-for-R trades; Aatrox wins full Q combos and W-chain all-ins.",
+      "keyTips": [
+        {
+          "text": "Use Q poke as the main lane pattern. Ranged harass is your safe damage; never take close trades you do not need.",
+          "scope": "pair",
+          "sourceIds": [
+            "federals1-malphite"
+          ],
+          "heading": "Poke pattern",
+          "abilityKeys": [
+            {
+              "champion": 54,
+              "key": "Q"
+            }
+          ]
+        },
+        {
+          "text": "Rush early Bramble Vest. His combo autos trigger the heal cut, so the item must be online before his first real all-in, not after.",
+          "scope": "pair",
+          "sourceIds": [
+            "federals1-malphite"
+          ],
+          "heading": "Bramble rush",
+          "itemIds": [
+            3076
+          ]
+        },
+        {
+          "text": "Answer his ultimate with your own. When he ults to all-in, meet it with R; the exchange stays manageable instead of one-sided.",
+          "scope": "pair",
+          "sourceIds": [
+            "federals1-malphite"
+          ],
+          "heading": "Ult answer",
+          "abilityKeys": [
+            {
+              "champion": 54,
+              "key": "R"
+            },
+            {
+              "champion": 266,
+              "key": "R"
+            }
+          ]
+        }
+      ],
+      "enemyTips": {},
+      "sections": {
+        "overview": {
+          "tips": []
+        },
+        "early-lane": {
+          "tips": [
+            {
+              "text": "If Q1 lands, be ready to absorb the full combo. His sequence is hard to avoid once started, so shield up and ride it out rather than flashing into worse.",
+              "scope": "pair",
+              "sourceIds": [
+                "federals1-malphite"
+              ],
+              "heading": "Combo respect",
+              "abilityKeys": [
+                {
+                  "champion": 266,
+                  "key": "Q"
+                }
+              ]
+            },
+            {
+              "text": "Keep Q movement speed cycling so he never gets a clean W combo. He looks for the engage as your speed fades, so reposition the moment it expires.",
+              "scope": "pair",
+              "sourceIds": [
+                "lilpicky",
+                "federals1-malphite"
+              ],
+              "heading": "Speed discipline",
+              "abilityKeys": [
+                {
+                  "champion": 54,
+                  "key": "Q"
+                }
+              ]
+            }
+          ]
+        },
+        "mid-lane": {
+          "tips": [
+            {
+              "text": "Leave his W zone with Q speed plus tier-two boots. The combination walks you out before Q2 lands; without it, the chain completes.",
+              "scope": "pair",
+              "sourceIds": [
+                "federals1-malphite"
+              ],
+              "heading": "W escape",
+              "abilityKeys": [
+                {
+                  "champion": 266,
+                  "key": "W"
+                }
+              ]
+            },
+            {
+              "text": "Take short W plus E trades, then back away. Stack armor until his penetration item lands; before Serylda's or Cleaver, your armor wins the exchange.",
+              "scope": "pair",
+              "sourceIds": [
+                "federals1-malphite"
+              ],
+              "heading": "Short trades",
+              "abilityKeys": [
+                {
+                  "champion": 54,
+                  "key": "W"
+                },
+                {
+                  "champion": 54,
+                  "key": "E"
+                }
+              ]
+            }
+          ]
+        },
+        "win-condition": {
+          "tips": [
+            {
+              "text": "Group after one item instead of side-laning. Your teamfight R decides more than a split exchange, so convert the spike into grouped fights.",
+              "scope": "pair",
+              "sourceIds": [
+                "federals1-malphite"
+              ],
+              "heading": "Group timing",
+              "abilityKeys": [
+                {
+                  "champion": 54,
+                  "key": "R"
+                }
+              ]
+            },
+            {
+              "text": "Watch his shield timer before committing. Strike as his passive shield fades rather than into it, so your combo lands on bare health.",
+              "scope": "pair",
+              "sourceIds": [
+                "lilpicky"
+              ],
+              "heading": "Shield watch"
+            }
+          ]
+        }
+      },
+      "itemization": [
+        {
+          "text": "Prioritize early Bramble Vest into Plated Steelcaps and armor. Delay damage until his penetration purchase forces the resistance race.",
+          "scope": "pair",
+          "sourceIds": [
+            "federals1-malphite"
+          ],
+          "itemIds": [
+            3076,
+            3047
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "id": "federals1-malphite",
+          "author": "Federals1",
+          "rankClaim": "Challenger · Malphite main",
+          "rank": "challenger",
+          "url": "https://www.mobafire.com/league-of-legends/build/26-20-challenger-malphite-top-guide-651329",
+          "kind": "mobafire"
+        },
+        {
+          "id": "lilpicky",
+          "author": "LilPicky",
+          "rankClaim": "Emerald · Aatrox main",
+          "rank": "emerald",
+          "url": "https://www.mobafire.com/league-of-legends/build/not-basic-aatrox-s16-guide-630818",
+          "kind": "mobafire"
+        }
+      ]
+    }
+  ],
+  "general": [
+    {
+      "champion": 54,
+      "lane": "top",
+      "patch": "26.21",
+      "reviewed": false,
+      "keyTips": [
+        {
+          "text": "Absorb short trades on the passive shield, then back off cleanly until it recharges off damage.",
+          "scope": "champion",
+          "sourceIds": [
+            "raen"
+          ]
+        },
+        {
+          "text": "Treat R as the entire hard engage; without it available, no other hard control exists.",
+          "scope": "champion",
+          "sourceIds": [
+            "raen"
+          ],
+          "abilityKeys": [
+            {
+              "champion": 54,
+              "key": "R"
+            }
+          ]
+        },
+        {
+          "text": "Build enough defense to live after R entries instead of assuming the knock-up alone wins fights.",
+          "scope": "champion",
+          "sourceIds": [
+            "raen"
+          ],
+          "abilityKeys": [
+            {
+              "champion": 54,
+              "key": "R"
+            }
+          ]
+        }
+      ],
+      "sections": {
+        "overview": {
+          "tips": []
+        },
+        "early-lane": {
+          "tips": [
+            {
+              "text": "Slow targets with Q while stealing their movement speed for follow-up or disengage windows.",
+              "scope": "champion",
+              "sourceIds": [
+                "raen"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 54,
+                  "key": "Q"
+                }
+              ]
+            },
+            {
+              "text": "Open trades from range with Q, then ride the stolen movement speed for better spacing.",
+              "scope": "champion",
+              "sourceIds": [
+                "raen"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 54,
+                  "key": "Q"
+                }
+              ]
+            },
+            {
+              "text": "Trade inside the W armor window, tripled while the passive shield holds.",
+              "scope": "champion",
+              "sourceIds": [
+                "raen"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 54,
+                  "key": "W"
+                }
+              ]
+            },
+            {
+              "text": "Answer committing auto attackers with E for its attack-speed cut.",
+              "scope": "champion",
+              "sourceIds": [
+                "raen"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 54,
+                  "key": "E"
+                }
+              ]
+            },
+            {
+              "text": "Seek auto-attack-heavy and AD opponents as favorable lanes, leaning on W armor there.",
+              "scope": "champion",
+              "sourceIds": [
+                "raen"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 54,
+                  "key": "W"
+                }
+              ]
+            },
+            {
+              "text": "Dodge extended exchanges into AP-heavy opponents while defenses stay mostly armor.",
+              "scope": "champion",
+              "sourceIds": [
+                "raen"
+              ]
+            }
+          ]
+        },
+        "mid-lane": {
+          "tips": [
+            {
+              "text": "Aim R at grouped targets to cash its area knock-up as teamfight initiation.",
+              "scope": "champion",
+              "sourceIds": [
+                "raen"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 54,
+                  "key": "R"
+                }
+              ]
+            },
+            {
+              "text": "Follow R engages with E for the attack-speed cut, then W empowered attacks inside range.",
+              "scope": "champion",
+              "sourceIds": [
+                "raen"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 54,
+                  "key": "R"
+                },
+                {
+                  "champion": 54,
+                  "key": "E"
+                },
+                {
+                  "champion": 54,
+                  "key": "W"
+                }
+              ]
+            },
+            {
+              "text": "Bank R for approaching objective fights over low-value solo plays.",
+              "scope": "champion",
+              "sourceIds": [
+                "raen"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 54,
+                  "key": "R"
+                }
+              ]
+            }
+          ]
+        },
+        "win-condition": {
+          "tips": [
+            {
+              "text": "Start team fights with R, then stay close to spread E attack-speed cuts across enemy carries.",
+              "scope": "champion",
+              "sourceIds": [
+                "raen"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 54,
+                  "key": "R"
+                },
+                {
+                  "champion": 54,
+                  "key": "E"
+                }
+              ]
+            },
+            {
+              "text": "Prioritize AD and frequent basic attackers when choosing engage spots and targets.",
+              "scope": "champion",
+              "sourceIds": [
+                "raen"
+              ]
+            },
+            {
+              "text": "Refuse forced fights with R down whenever the team needs his initiation.",
+              "scope": "champion",
+              "sourceIds": [
+                "raen"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 54,
+                  "key": "R"
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "itemization": [
+        {
+          "text": "Run Grasp of the Undying with Font of Life, Conditioning, and Overgrowth plus Manaflow Band and Gathering Storm for sustain and durability.",
+          "scope": "champion",
+          "sourceIds": [
+            "raen"
+          ]
+        },
+        {
+          "text": "Start Doran's Shield or Doran's Ring, showing Bami's Cinder on AD-lane first recalls and Null-Magic Mantle plus Ruby Crystal into AP lanes.",
+          "scope": "champion",
+          "sourceIds": [
+            "raen"
+          ],
+          "itemIds": [
+            1054,
+            1056,
+            6660,
+            1033,
+            1028
+          ]
+        },
+        {
+          "text": "Core Sunfire Aegis and Unending Despair.",
+          "scope": "champion",
+          "sourceIds": [
+            "raen"
+          ],
+          "itemIds": [
+            3068,
+            2502
+          ]
+        },
+        {
+          "text": "Build the standard tank set: Mercury's Treads, Jak'Sho, Abyssal Mask, and Thornmail.",
+          "scope": "champion",
+          "sourceIds": [
+            "raen"
+          ],
+          "itemIds": [
+            3111,
+            8020,
+            3075
+          ]
+        },
+        {
+          "text": "Pivot toward Plated Steelcaps, Thornmail, Frozen Heart, and Death's Dance into heavy AD.",
+          "scope": "champion",
+          "sourceIds": [
+            "raen"
+          ],
+          "itemIds": [
+            3047,
+            3075,
+            3110,
+            6333
+          ]
+        },
+        {
+          "text": "Pivot toward Mercury's Treads, Hollow Radiance, Abyssal Mask, Force of Nature, Banshee's Veil, and Wit's End into heavy AP.",
+          "scope": "champion",
+          "sourceIds": [
+            "raen"
+          ],
+          "itemIds": [
+            3111,
+            6664,
+            8020,
+            4401,
+            3102,
+            3091
+          ]
+        },
+        {
+          "text": "Keep the AP burst build of Sorcerer's Shoes, Malignance, Rabadon's Deathcap, Shadowflame, and Void Staff fully separate.",
+          "scope": "champion",
+          "sourceIds": [
+            "raen"
+          ],
+          "itemIds": [
+            3020,
+            3118,
+            3089,
+            4645,
+            3135
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "id": "raen",
+          "author": "Raen",
+          "rankClaim": "Master (profile badge)",
+          "rank": "master",
+          "url": "https://www.mobafire.com/league-of-legends/build/raens-malphite-tips-amp-build-569913",
+          "kind": "mobafire"
+        }
+      ]
+    }
+  ],
+  "vods": [
+    {
+      "enemy": 8,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "CfUAYJmNAMQ",
+          "title": "Malphite Top vs Vladimir - KR Master Patch 26.01",
+          "rankClaim": "Master",
+          "patch": "26.1",
+          "durationSec": 1612,
+          "region": "KR",
+          "uploaded": "2026-01-20",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 421,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 503,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 600,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 734,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 888,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 913,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1058,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1073,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1161,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1332,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1345,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1359,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1417,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1544,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1601,
+              "label": "End credit"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 11,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "euXTXikOBgI",
+          "title": "Malphite Mid vs Master Yi - KR Grandmaster Patch 26.18",
+          "rankClaim": "Grandmaster",
+          "patch": "26.18",
+          "durationSec": 1836,
+          "region": "KR",
+          "uploaded": "2026-09-22",
+          "result": "W",
+          "moments": [
+            {
+              "atSec": 171,
+              "label": "First Blood — Karthus kills Qiyana",
+              "kind": "kill"
+            },
+            {
+              "atSec": 405,
+              "label": "Red takes 1st Dragon (Hextech)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 748,
+              "label": "Red takes 2nd Dragon (Cloud)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 863,
+              "label": "Malphite picks off Qiyana"
+            },
+            {
+              "atSec": 911,
+              "label": "Lux eliminates Gwen"
+            },
+            {
+              "atSec": 962,
+              "label": "Malphite takes down Lulu"
+            },
+            {
+              "atSec": 1063,
+              "label": "Caitlyn takes down Yunara"
+            },
+            {
+              "atSec": 1096,
+              "label": "Blue takes 1st Dragon (Mountain)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1109,
+              "label": "Malphite outduels Lulu"
+            },
+            {
+              "atSec": 1121,
+              "label": "Lux takes down Master Yi"
+            },
+            {
+              "atSec": 1168,
+              "label": "Team fight (3 kills)",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1216,
+              "label": "Blue takes Baron",
+              "kind": "baron"
+            },
+            {
+              "atSec": 1362,
+              "label": "Mid Inhibitor falls (Red)"
+            },
+            {
+              "atSec": 1415,
+              "label": "Blue takes 2nd Dragon (Mountain)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1498,
+              "label": "Renekton kills Qiyana",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1590,
+              "label": "Karthus takes down Qiyana"
+            },
+            {
+              "atSec": 1617,
+              "label": "Blue takes 2nd Baron",
+              "kind": "baron"
+            },
+            {
+              "atSec": 1769,
+              "label": "Mid Inhibitor falls (Red)"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 14,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "a3xoYmKxFeI",
+          "title": "Malphite Top vs Sion - KR Master Patch 25.23",
+          "rankClaim": "Master",
+          "patch": "25.23",
+          "durationSec": 1530,
+          "region": "KR",
+          "uploaded": "2025-11-21",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 18,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "Znguq8ftbaw",
+          "title": "Malphite Mid vs Tristana - EUW Grandmaster Patch 25.14",
+          "rankClaim": "Grandmaster",
+          "patch": "25.14",
+          "durationSec": 1600,
+          "region": "EUW",
+          "uploaded": "2025-07-31",
+          "moments": []
+        },
+        {
+          "videoId": "E5veZi00BbM",
+          "title": "Malphite Mid vs Tristana - EUW Grandmaster Patch 25.06",
+          "rankClaim": "Grandmaster",
+          "patch": "25.6",
+          "durationSec": 1608,
+          "region": "EUW",
+          "uploaded": "2025-04-01",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 18,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "1grO1NWbwA4",
+          "title": "Malphite Top vs Tristana - KR Grandmaster Patch 26.16",
+          "rankClaim": "Grandmaster",
+          "patch": "26.16",
+          "durationSec": 1721,
+          "region": "KR",
+          "uploaded": "2026-08-23",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 19,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "Ky-RxMufqjQ",
+          "title": "Malphite Top vs Warwick - KR Master Patch 25.09",
+          "rankClaim": "Master",
+          "patch": "25.9",
+          "durationSec": 1726,
+          "region": "KR",
+          "uploaded": "2025-05-08",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 23,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "N1O7GqvJSuo",
+          "title": "MAKING A COMEBACK IN THE KOREA RACE  |  KOREA DAY 8",
+          "rankClaim": "Master+",
+          "patch": "26.12",
+          "durationSec": 35164,
+          "patchEstimated": true,
+          "player": "Alois",
+          "uploaded": "2026-06-14",
+          "format": "stream",
+          "cam": true,
+          "startSec": 23604,
+          "endSec": 25528,
+          "moments": []
+        },
+        {
+          "videoId": "1Sl9yx7E-zA",
+          "title": "Malphite Top vs Tryndamere - KR Master Patch 25.16",
+          "rankClaim": "Master",
+          "patch": "25.16",
+          "durationSec": 1676,
+          "region": "KR",
+          "uploaded": "2025-08-19",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 24,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "5qWSCbLsXUI",
+          "title": "Malphite Top vs Jax - VN Challenger Patch 26.07",
+          "rankClaim": "Challenger",
+          "patch": "26.7",
+          "durationSec": 1751,
+          "uploaded": "2026-04-07",
+          "moments": []
+        },
+        {
+          "videoId": "cakCR5Q8-_A",
+          "title": "Malphite Top vs Jax - KR Master Patch 25.12",
+          "rankClaim": "Master",
+          "patch": "25.12",
+          "durationSec": 1533,
+          "region": "KR",
+          "uploaded": "2025-06-17",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 27,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "ummANGvQDfY",
+          "title": "(DV1 fantomisto) Malphite Mid vs Singed - EUW Grandmaster Patch 26.13",
+          "rankClaim": "Grandmaster",
+          "patch": "26.13",
+          "durationSec": 1755,
+          "region": "EUW",
+          "player": "DV1 fantomisto",
+          "uploaded": "2026-07-10",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 27,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "oCZwSu_Nxcc",
+          "title": "Malphite Top vs Singed - KR Master Patch 25.22",
+          "rankClaim": "Master",
+          "patch": "25.22",
+          "durationSec": 1854,
+          "region": "KR",
+          "uploaded": "2025-11-09",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 33,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "jb-WBAATHww",
+          "title": "Malphite Support vs Rammus - KR Master Patch 25.19",
+          "rankClaim": "Master",
+          "patch": "25.19",
+          "durationSec": 1681,
+          "region": "KR",
+          "uploaded": "2025-10-06",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 36,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "sbSjl_Tb0N0",
+          "title": "Malphite Top vs Dr. Mundo - KR Master Patch 26.18",
+          "rankClaim": "Master",
+          "patch": "26.18",
+          "durationSec": 1849,
+          "region": "KR",
+          "uploaded": "2026-09-15",
+          "moments": []
+        },
+        {
+          "videoId": "A9FUlOit9Ks",
+          "title": "Malphite Top vs Dr. Mundo - NA Challenger Patch 26.06",
+          "rankClaim": "Challenger",
+          "patch": "26.6",
+          "durationSec": 1575,
+          "region": "NA",
+          "uploaded": "2026-03-23",
+          "moments": []
+        },
+        {
+          "videoId": "pERVuG0hkcQ",
+          "title": "Malphite Top vs Dr. Mundo - KR Master Patch 25.10",
+          "rankClaim": "Master",
+          "patch": "25.10",
+          "durationSec": 1695,
+          "region": "KR",
+          "uploaded": "2025-05-22",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 39,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "OCxtcuKmm-8",
+          "title": "(DK ShowMaker) Malphite Top vs Irelia - KR Challenger Patch 26.17",
+          "rankClaim": "Challenger",
+          "patch": "26.17",
+          "durationSec": 1799,
+          "region": "KR",
+          "player": "ShowMaker",
+          "team": "DK",
+          "uploaded": "2026-09-02",
+          "moments": []
+        },
+        {
+          "videoId": "Y05SCfmpil0",
+          "title": "PLAYING VARIETY CHAMPIONS IS SO FUN",
+          "rankClaim": "Master+",
+          "patch": "26.10",
+          "durationSec": 23100,
+          "patchEstimated": true,
+          "player": "Alois",
+          "uploaded": "2026-05-27",
+          "format": "stream",
+          "cam": true,
+          "startSec": 6797,
+          "endSec": 8851,
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 41,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "CtN0kxfRViM",
+          "title": "Malphite vs GangPLank Top - KR Master - Patch 16.05 Season 16",
+          "rankClaim": "Master",
+          "patch": "26.5",
+          "durationSec": 2581,
+          "region": "KR",
+          "uploaded": "2026-03-09",
+          "moments": []
+        },
+        {
+          "videoId": "ZNkqrEI1Tuc",
+          "title": "Malphite Top vs Gangplank - KR Master Patch 25.24",
+          "rankClaim": "Master",
+          "patch": "25.24",
+          "durationSec": 1801,
+          "region": "KR",
+          "uploaded": "2025-12-06",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 228,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 395,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 484,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 708,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 894,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1004,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1047,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1151,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1293,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1371,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1492,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1573,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1611,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1630,
+              "label": "Take down The Inhibitor"
+            },
+            {
+              "atSec": 1643,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1750,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1790,
+              "label": "End credit"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 50,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "tKYUPhPF-TA",
+          "title": "Malphite Mid vs Swain - KR Master Patch 26.05",
+          "rankClaim": "Master",
+          "patch": "26.5",
+          "durationSec": 1600,
+          "region": "KR",
+          "uploaded": "2026-03-14",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 57,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "QhGZsX5ARGk",
+          "title": "Malphite Top vs Maokai - KR Master Patch 26.02",
+          "rankClaim": "Master",
+          "patch": "26.2",
+          "durationSec": 1532,
+          "region": "KR",
+          "uploaded": "2026-01-26",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 298,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 598,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 832,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 940,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1091,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1183,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1203,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1295,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1368,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1385,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1410,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1451,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1473,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1521,
+              "label": "End credit"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 59,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "d21rNgBq5Gk",
+          "title": "Malphite Jungle vs Jarvan IV - KR Master Patch 26.12",
+          "rankClaim": "Master",
+          "patch": "26.12",
+          "durationSec": 1736,
+          "region": "KR",
+          "uploaded": "2026-06-21",
+          "moments": []
+        },
+        {
+          "videoId": "20O5dZpGKxc",
+          "title": "Malphite Jungle vs Jarvan IV - VN Challenger Patch 26.07",
+          "rankClaim": "Challenger",
+          "patch": "26.7",
+          "durationSec": 1631,
+          "uploaded": "2026-04-12",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 336,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 386,
+              "label": "Hunt The Dragon",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 407,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 452,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 536,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 642,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 727,
+              "label": "Hunt The Dragon",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 863,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 896,
+              "label": "Hunt The Rift Herald",
+              "kind": "herald"
+            },
+            {
+              "atSec": 951,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1037,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1075,
+              "label": "Hunt The Dragon",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1148,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1314,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1350,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1383,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1432,
+              "label": "Hunt The Dragon",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1502,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1522,
+              "label": "Hunt The Baron Nashor",
+              "kind": "baron"
+            },
+            {
+              "atSec": 1533,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1562,
+              "label": "Take down The Inhibitor"
+            },
+            {
+              "atSec": 1589,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1620,
+              "label": "End credit"
+            }
+          ]
+        },
+        {
+          "videoId": "J6MYE0qtCrc",
+          "title": "Malphite Jungle vs Jarvan IV - KR Grandmaster Patch 26.01",
+          "rankClaim": "Grandmaster",
+          "patch": "26.1",
+          "durationSec": 1463,
+          "region": "KR",
+          "uploaded": "2026-01-12",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 62,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "UaQnP28Mxu8",
+          "title": "Malphite Jungle vs Wukong - EUW Grandmaster Patch 26.13",
+          "rankClaim": "Grandmaster",
+          "patch": "26.13",
+          "durationSec": 1540,
+          "region": "EUW",
+          "uploaded": "2026-07-04",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 67,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "HCM9XVEdqzg",
+          "title": "(ULF Kaori) Malphite Top vs Vayne - EUW Challenger Patch 26.12",
+          "rankClaim": "Challenger",
+          "patch": "26.12",
+          "durationSec": 1566,
+          "region": "EUW",
+          "player": "ULF Kaori",
+          "uploaded": "2026-06-14",
+          "moments": []
+        },
+        {
+          "videoId": "wOdK8E5GSNA",
+          "title": "Malphite Top vs Vayne - VN Challenger Patch 26.05",
+          "rankClaim": "Challenger",
+          "patch": "26.5",
+          "durationSec": 1649,
+          "uploaded": "2026-03-09",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 532,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 854,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 873,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 986,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1144,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1183,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1252,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1332,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1382,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1493,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1557,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1615,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1638,
+              "label": "End credit"
+            }
+          ]
+        },
+        {
+          "videoId": "8yY-WOyr3gs",
+          "title": "Malphite Top vs Vayne - KR Master Patch 25.11",
+          "rankClaim": "Master",
+          "patch": "25.11",
+          "durationSec": 1759,
+          "region": "KR",
+          "uploaded": "2025-06-05",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 80,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "u5hoLE9kFUY",
+          "title": "Malphite Jungle vs Pantheon - KR Master Patch 26.14",
+          "rankClaim": "Master",
+          "patch": "26.14",
+          "durationSec": 1498,
+          "region": "KR",
+          "uploaded": "2026-07-26",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 80,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "-GvMiLM4uC0",
+          "title": "Malphite Support vs Pantheon - KR Master Patch 25.24",
+          "rankClaim": "Master",
+          "patch": "25.24",
+          "durationSec": 1597,
+          "region": "KR",
+          "uploaded": "2025-12-26",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 143,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 302,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 439,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 637,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 667,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 736,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 756,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 776,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 884,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 956,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 986,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1042,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1277,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1391,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1457,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1530,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1561,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1573,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1586,
+              "label": "End credit"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 80,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "twAym63LE1M",
+          "title": "KOREA TRAINING ARC",
+          "rankClaim": "Master+",
+          "patch": "26.9",
+          "durationSec": 35158,
+          "patchEstimated": true,
+          "player": "Alois",
+          "uploaded": "2026-05-09",
+          "format": "stream",
+          "cam": true,
+          "startSec": 5822,
+          "endSec": 8261,
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 82,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "Ptgkd_L2h-g",
+          "title": "Malphite Top vs Mordekaiser - KR Master Patch 26.17",
+          "rankClaim": "Master",
+          "patch": "26.17",
+          "durationSec": 1617,
+          "region": "KR",
+          "uploaded": "2026-09-10",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 84,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "Il8ZoKd2Cjo",
+          "title": "Malphite Mid vs Akali - EUW Grandmaster Patch 25.05",
+          "rankClaim": "Grandmaster",
+          "patch": "25.5",
+          "durationSec": 1605,
+          "region": "EUW",
+          "uploaded": "2025-03-17",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 84,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "UMDxcaVM-Eg",
+          "title": "Malphite Top vs Akali - KR Challenger Patch 26.09",
+          "rankClaim": "Challenger",
+          "patch": "26.9",
+          "durationSec": 1600,
+          "region": "KR",
+          "uploaded": "2026-05-10",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 85,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "DRZDMVGx7mk",
+          "title": "Malphite Top vs Kennen - KR Master Patch 25.14",
+          "rankClaim": "Master",
+          "patch": "25.14",
+          "durationSec": 1670,
+          "region": "KR",
+          "uploaded": "2025-07-23",
+          "moments": []
+        },
+        {
+          "videoId": "RWiCtJfWZ5A",
+          "title": "Malphite Top vs Kennen - KR Master Patch 25.13",
+          "rankClaim": "Master",
+          "patch": "25.13",
+          "durationSec": 1944,
+          "region": "KR",
+          "uploaded": "2025-07-02",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 92,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "fF8b3l4RKHU",
+          "title": "(GNG Shourdy) Malphite Top vs Riven - EUW Grandmaster Patch 26.13",
+          "rankClaim": "Grandmaster",
+          "patch": "26.13",
+          "durationSec": 1759,
+          "region": "EUW",
+          "player": "GNG Shourdy",
+          "uploaded": "2026-06-30",
+          "moments": []
+        },
+        {
+          "videoId": "twAym63LE1M",
+          "title": "KOREA TRAINING ARC",
+          "rankClaim": "Master+",
+          "patch": "26.9",
+          "durationSec": 35158,
+          "patchEstimated": true,
+          "player": "Alois",
+          "uploaded": "2026-05-09",
+          "format": "stream",
+          "cam": true,
+          "startSec": 25309,
+          "endSec": 27046,
+          "moments": []
+        },
+        {
+          "videoId": "kVWlbewmu1Y",
+          "title": "Malphite Top vs Riven - KR Master Patch 25.18",
+          "rankClaim": "Master",
+          "patch": "25.18",
+          "durationSec": 1935,
+          "region": "KR",
+          "uploaded": "2025-09-16",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 98,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "gNPkfK2n1dc",
+          "title": "(VIT Carzzy) Malphite Top vs Shen - EUW Grandmaster Patch 26.10",
+          "rankClaim": "Grandmaster",
+          "patch": "26.10",
+          "durationSec": 1762,
+          "region": "EUW",
+          "player": "VIT Carzzy",
+          "uploaded": "2026-05-23",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 103,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "apjjKmVjXic",
+          "title": "Malphite Mid vs Ahri - KR Master Patch 26.19",
+          "rankClaim": "Master",
+          "patch": "26.19",
+          "durationSec": 1875,
+          "region": "KR",
+          "uploaded": "2026-10-06",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 107,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "zs8JsUT1TOM",
+          "title": "Malphite Top vs Rengar - KR Grandmaster Patch 26.04",
+          "rankClaim": "Grandmaster",
+          "patch": "26.4",
+          "durationSec": 1565,
+          "region": "KR",
+          "uploaded": "2026-02-23",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 117,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "rAhcWV3qqK0",
+          "title": "Malphite Support vs Lulu - NA Challenger Patch 25.04",
+          "rankClaim": "Challenger",
+          "patch": "25.4",
+          "durationSec": 1819,
+          "region": "NA",
+          "uploaded": "2025-03-04",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 119,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "Xo3K9othWdw",
+          "title": "(Riris) Malphite Top vs Draven - KR Master Patch 26.15",
+          "rankClaim": "Master",
+          "patch": "26.15",
+          "durationSec": 1656,
+          "region": "KR",
+          "player": "Riris",
+          "uploaded": "2026-08-04",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 121,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "2isV9KSeC40",
+          "title": "Malphite Jungle vs Kha'Zix - EUW Grandmaster Patch 26.02",
+          "rankClaim": "Grandmaster",
+          "patch": "26.2",
+          "durationSec": 1483,
+          "region": "EUW",
+          "uploaded": "2026-01-30",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 126,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "Ml568L7OZgU",
+          "title": "Malphite Jungle vs Jayce - VN Master Patch 26.20",
+          "rankClaim": "Master",
+          "patch": "26.20",
+          "durationSec": 1822,
+          "uploaded": "2026-10-19",
+          "result": "W",
+          "moments": [
+            {
+              "atSec": 346,
+              "label": "First Blood — Malphite kills Caitlyn",
+              "kind": "kill"
+            },
+            {
+              "atSec": 442,
+              "label": "Malphite solo kills Vex",
+              "kind": "kill"
+            },
+            {
+              "atSec": 536,
+              "label": "Blue takes 1st Dragon (Ocean)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 561,
+              "label": "Yasuo Triple Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 978,
+              "label": "Red takes 1st Dragon (Hextech)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1145,
+              "label": "Jinx takes down Caitlyn"
+            },
+            {
+              "atSec": 1293,
+              "label": "Malphite kills Karma",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1348,
+              "label": "Red takes 2nd Dragon (Cloud)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1421,
+              "label": "Blue takes Baron",
+              "kind": "baron"
+            },
+            {
+              "atSec": 1438,
+              "label": "Malphite takes down Jayce"
+            },
+            {
+              "atSec": 1600,
+              "label": "Yasuo Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1657,
+              "label": "Yasuo takes down Karma"
+            },
+            {
+              "atSec": 1659,
+              "label": "Red takes 3rd Dragon (Cloud)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1677,
+              "label": "Jinx Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1679,
+              "label": "Jinx Triple Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1716,
+              "label": "Mid Inhibitor falls (Blue)"
+            },
+            {
+              "atSec": 1763,
+              "label": "Jinx kills Vex",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1768,
+              "label": "Jinx Triple Kill",
+              "kind": "kill"
+            }
+          ]
+        },
+        {
+          "videoId": "m1773-Z2HMg",
+          "title": "Malphite Jungle vs Jayce - EUW Grandmaster Patch 25.23",
+          "rankClaim": "Grandmaster",
+          "patch": "25.23",
+          "durationSec": 1537,
+          "region": "EUW",
+          "uploaded": "2025-11-29",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 126,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "5TIf_MVVF1s",
+          "title": "Malphite Mid vs Jayce - KR Master Patch 25.15",
+          "rankClaim": "Master",
+          "patch": "25.15",
+          "durationSec": 1466,
+          "region": "KR",
+          "uploaded": "2025-08-12",
+          "moments": []
+        },
+        {
+          "videoId": "68RMp6Z9318",
+          "title": "Malphite Mid vs Jayce - KR Master Patch 25.09",
+          "rankClaim": "Master",
+          "patch": "25.9",
+          "durationSec": 1880,
+          "region": "KR",
+          "uploaded": "2025-05-14",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 126,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "TE9MfVj3RY8",
+          "title": "(LOUD YoungJae) Malphite Top vs Jayce - KR Master Patch 26.14",
+          "rankClaim": "Master",
+          "patch": "26.14",
+          "durationSec": 1473,
+          "region": "KR",
+          "player": "LOUD YoungJae",
+          "uploaded": "2026-07-22",
+          "moments": []
+        },
+        {
+          "videoId": "QW1TJDiwSAA",
+          "title": "Malphite Top vs Jayce - KR Grandmaster Patch 25.17",
+          "rankClaim": "Grandmaster",
+          "patch": "25.17",
+          "durationSec": 1720,
+          "region": "KR",
+          "uploaded": "2025-09-03",
+          "moments": []
+        },
+        {
+          "videoId": "3w-_E9CquIU",
+          "title": "Malphite Top vs Jayce - KR Master Patch 25.08",
+          "rankClaim": "Master",
+          "patch": "25.8",
+          "durationSec": 1755,
+          "region": "KR",
+          "uploaded": "2025-04-23",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 398,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 526,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 671,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 862,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 970,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1025,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1051,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1084,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1204,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1289,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1425,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1544,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1634,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1699,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1723,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1734,
+              "label": "End credit"
+            }
+          ]
+        },
+        {
+          "videoId": "ehO6fkhUFLc",
+          "title": "Malphite Top vs Jayce - KR Challenger Patch 25.07",
+          "rankClaim": "Challenger",
+          "patch": "25.7",
+          "durationSec": 1680,
+          "region": "KR",
+          "uploaded": "2025-04-11",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 591,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 672,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 825,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 955,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1070,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1203,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1263,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1390,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1509,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1631,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1659,
+              "label": "End credit"
+            }
+          ]
+        },
+        {
+          "videoId": "Da3V-yI6OhU",
+          "title": "Malphite Top vs Jayce - KR Master Patch 25.06",
+          "rankClaim": "Master",
+          "patch": "25.6",
+          "durationSec": 2103,
+          "region": "KR",
+          "uploaded": "2025-03-24",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 531,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 633,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 796,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 941,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1055,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1076,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1281,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1363,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1399,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1558,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1644,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1687,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1770,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1817,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1837,
+              "label": "Take down The Inhibitor"
+            },
+            {
+              "atSec": 1926,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1942,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 2027,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 2082,
+              "label": "End credit"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 131,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "AuSHJtOurVY",
+          "title": "Malphite Jungle vs Diana - EUW Challenger Patch 26.11",
+          "rankClaim": "Challenger",
+          "patch": "26.11",
+          "durationSec": 1826,
+          "region": "EUW",
+          "uploaded": "2026-06-08",
+          "moments": []
+        },
+        {
+          "videoId": "pNUo7Rv37ZA",
+          "title": "Malphite Jungle vs Diana - EUW Grandmaster Patch 25.24",
+          "rankClaim": "Grandmaster",
+          "patch": "25.24",
+          "durationSec": 1463,
+          "region": "EUW",
+          "uploaded": "2025-12-13",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 226,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 393,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 473,
+              "label": "Hunt The Void Grubs",
+              "kind": "grubs"
+            },
+            {
+              "atSec": 519,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 620,
+              "label": "Hunt The Dragon",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 658,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 750,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 876,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 943,
+              "label": "Hunt The Dragon",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1038,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1175,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1194,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1204,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1223,
+              "label": "Hunt The Atakhan"
+            },
+            {
+              "atSec": 1271,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1313,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1341,
+              "label": "Take down The Inhibitor"
+            },
+            {
+              "atSec": 1422,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1452,
+              "label": "End credit"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 133,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "okl6xdtVaX0",
+          "title": "Malphite Mid vs Quinn - EUW Grandmaster Patch 25.21",
+          "rankClaim": "Grandmaster",
+          "patch": "25.21",
+          "durationSec": 1435,
+          "region": "EUW",
+          "uploaded": "2025-11-04",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 136,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "BeemUEu6V2E",
+          "title": "Malphite Mid vs Aurelion Sol - NA Grandmaster Patch 25.11",
+          "rankClaim": "Grandmaster",
+          "patch": "25.11",
+          "durationSec": 1791,
+          "region": "NA",
+          "uploaded": "2025-06-11",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 142,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "oekHr4830wo",
+          "title": "Malphite Mid vs Zoe - NA Grandmaster Patch 25.22",
+          "rankClaim": "Grandmaster",
+          "patch": "25.22",
+          "durationSec": 1643,
+          "region": "NA",
+          "uploaded": "2025-11-16",
+          "moments": []
+        },
+        {
+          "videoId": "27jfIoWoguM",
+          "title": "Malphite Mid vs Zoe - KR Grandmaster Patch 25.16",
+          "rankClaim": "Grandmaster",
+          "patch": "25.16",
+          "durationSec": 1771,
+          "region": "KR",
+          "uploaded": "2025-08-27",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 157,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "HHA4KghMGr0",
+          "title": "Malphite Top vs Yasuo - KR Master Patch 25.21",
+          "rankClaim": "Master",
+          "patch": "25.21",
+          "durationSec": 1952,
+          "region": "KR",
+          "uploaded": "2025-10-27",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 163,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "k5V66BlN550",
+          "title": "Malphite Mid vs Taliyah - KR Master Patch 25.18",
+          "rankClaim": "Master",
+          "patch": "25.18",
+          "durationSec": 1611,
+          "region": "KR",
+          "uploaded": "2025-09-22",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 164,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "N5cslbVUBp8",
+          "title": "(Permaban) Malphite Top vs Camille - EUW Challenger Patch 26.20",
+          "rankClaim": "Challenger",
+          "patch": "26.20",
+          "durationSec": 1588,
+          "region": "EUW",
+          "player": "Permaban",
+          "uploaded": "2026-10-12",
+          "result": "W",
+          "moments": [
+            {
+              "atSec": 347,
+              "label": "Red takes 1st Dragon (Cloud)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 416,
+              "label": "First Blood — Malphite kills Vex",
+              "kind": "kill"
+            },
+            {
+              "atSec": 762,
+              "label": "Akali picks off Jayce"
+            },
+            {
+              "atSec": 773,
+              "label": "Red takes 2nd Dragon (Chemtech)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 931,
+              "label": "Malphite eliminates Camille"
+            },
+            {
+              "atSec": 1091,
+              "label": "Cassiopeia Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1099,
+              "label": "Cassiopeia Triple Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1123,
+              "label": "Red takes 3rd Dragon (Ocean)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1258,
+              "label": "Malphite kills Jayce",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1292,
+              "label": "Red takes Baron",
+              "kind": "baron"
+            },
+            {
+              "atSec": 1325,
+              "label": "Team fight (3 kills)",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1440,
+              "label": "Red takes 4th Dragon (Ocean)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1466,
+              "label": "Vi kills Camille",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1501,
+              "label": "Akali Triple Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1519,
+              "label": "Mid Inhibitor falls (Blue)"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 166,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "vRzgjaf3wVw",
+          "title": "Malphite Mid vs Akshan - NA Grandmaster Patch 25.13",
+          "rankClaim": "Grandmaster",
+          "patch": "25.13",
+          "durationSec": 1456,
+          "region": "NA",
+          "uploaded": "2025-07-09",
+          "moments": []
+        },
+        {
+          "videoId": "HRpOJN1k7eQ",
+          "title": "Malphite Mid vs Akshan - KR Master Patch 25.04",
+          "rankClaim": "Master",
+          "patch": "25.4",
+          "durationSec": 1514,
+          "region": "KR",
+          "uploaded": "2025-02-28",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 504,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 766,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 845,
+              "label": "Get a Triple Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 874,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 906,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1004,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1060,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1199,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1288,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1314,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1375,
+              "label": "Get a Triple Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1445,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1473,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1493,
+              "label": "End credit"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 236,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "mUc7bsf8RcE",
+          "title": "Malphite Top vs Lucian - KR Grandmaster Patch 26.19",
+          "rankClaim": "Grandmaster",
+          "patch": "26.19",
+          "durationSec": 1763,
+          "region": "KR",
+          "uploaded": "2026-09-29",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 238,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "HI_KEEcqAQU",
+          "title": "Malphite Mid vs Zed - KR Grandmaster Patch 26.04",
+          "rankClaim": "Grandmaster",
+          "patch": "26.4",
+          "durationSec": 1783,
+          "region": "KR",
+          "uploaded": "2026-03-01",
+          "moments": []
+        },
+        {
+          "videoId": "TYtfytO1Omc",
+          "title": "Malphite Mid vs Zed - KR Master Patch 25.24",
+          "rankClaim": "Master",
+          "patch": "25.24",
+          "durationSec": 1574,
+          "region": "KR",
+          "uploaded": "2025-12-19",
+          "moments": []
+        },
+        {
+          "videoId": "lrzl7R9dd-o",
+          "title": "Malphite Mid vs Zed - KR Master Patch 25.17",
+          "rankClaim": "Master",
+          "patch": "25.17",
+          "durationSec": 1734,
+          "region": "KR",
+          "uploaded": "2025-09-12",
+          "moments": []
+        },
+        {
+          "videoId": "ZxisWVyF6fE",
+          "title": "Malphite Mid vs Zed - KR Master Patch 25.10",
+          "rankClaim": "Master",
+          "patch": "25.10",
+          "durationSec": 1690,
+          "region": "KR",
+          "uploaded": "2025-05-26",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 240,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "C7CC_Lwva4s",
+          "title": "Malphite Top vs Kled - KR Master Patch 26.08",
+          "rankClaim": "Master",
+          "patch": "26.8",
+          "durationSec": 1868,
+          "region": "KR",
+          "uploaded": "2026-04-18",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 245,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "UZgBW808I9E",
+          "title": "Malphite Jungle vs Ekko - EUW Challenger Patch 26.03",
+          "rankClaim": "Challenger",
+          "patch": "26.3",
+          "durationSec": 1910,
+          "region": "EUW",
+          "uploaded": "2026-02-15",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 183,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 543,
+              "label": "Hunt The Void Grubs",
+              "kind": "grubs"
+            },
+            {
+              "atSec": 757,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 860,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 958,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1055,
+              "label": "Hunt The Rift Herald",
+              "kind": "herald"
+            },
+            {
+              "atSec": 1078,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1094,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1104,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1115,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1144,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1225,
+              "label": "Hunt The Baron Nashor",
+              "kind": "baron"
+            },
+            {
+              "atSec": 1320,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1351,
+              "label": "Hunt The Dragon",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1424,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1476,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1488,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1636,
+              "label": "Hunt The Baron Nashor",
+              "kind": "baron"
+            },
+            {
+              "atSec": 1783,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1839,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1860,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1899,
+              "label": "End credit"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 246,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "TIHdUJRBXiw",
+          "title": "Malphite Jungle vs Qiyana - KR Master Patch 26.15",
+          "rankClaim": "Master",
+          "patch": "26.15",
+          "durationSec": 1841,
+          "region": "KR",
+          "uploaded": "2026-08-08",
+          "moments": []
+        },
+        {
+          "videoId": "CsRQLZId-1M",
+          "title": "T1 Oner Malphite vs Qiyana [ Jungle ] Patch 25.24 Ranked Korea",
+          "rankClaim": "Master+",
+          "patch": "25.24",
+          "durationSec": 1316,
+          "region": "KR",
+          "player": "Oner",
+          "team": "T1",
+          "uploaded": "2026-01-06",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 246,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "TF96MyKV6xU",
+          "title": "Malphite Mid vs Qiyana - KR Grandmaster Patch 26.08",
+          "rankClaim": "Grandmaster",
+          "patch": "26.8",
+          "durationSec": 1787,
+          "region": "KR",
+          "uploaded": "2026-04-25",
+          "moments": []
+        },
+        {
+          "videoId": "DYai3xU8uTs",
+          "title": "Malphite Mid vs Qiyana - KR Master Patch 25.08",
+          "rankClaim": "Master",
+          "patch": "25.8",
+          "durationSec": 1520,
+          "region": "KR",
+          "uploaded": "2025-04-29",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 266,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "us34KAygDus",
+          "title": "Malphite Top vs Aatrox - KR Challenger Patch 25.15",
+          "rankClaim": "Challenger",
+          "patch": "25.15",
+          "durationSec": 2107,
+          "region": "KR",
+          "uploaded": "2025-08-04",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 421,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "iHZUA-VvMhE",
+          "title": "Malphite Jungle vs Rek'Sai - EUW Grandmaster Patch 26.09",
+          "rankClaim": "Grandmaster",
+          "patch": "26.9",
+          "durationSec": 1577,
+          "region": "EUW",
+          "uploaded": "2026-05-03",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 516,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "xK1BIT8gQEE",
+          "title": "(NAVI SamD) Malphite Top vs Ornn - EUW Grandmaster Patch 26.11",
+          "rankClaim": "Grandmaster",
+          "patch": "26.11",
+          "durationSec": 1451,
+          "region": "EUW",
+          "player": "NAVI SamD",
+          "uploaded": "2026-06-02",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 517,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "BXe3gMEecf0",
+          "title": "Malphite Mid vs Sylas - EUW Grandmaster Patch 25.12",
+          "rankClaim": "Grandmaster",
+          "patch": "25.12",
+          "durationSec": 2058,
+          "region": "EUW",
+          "uploaded": "2025-06-24",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 517,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "YpKQIbwZ2Kk",
+          "title": "Malphite Top vs Sylas - KR Grandmaster Patch 25.19",
+          "rankClaim": "Grandmaster",
+          "patch": "25.19",
+          "durationSec": 1698,
+          "region": "KR",
+          "uploaded": "2025-10-01",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 777,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "Wxium3VZ0Ro",
+          "title": "Malphite Mid vs Yone - KR Master Patch 26.21",
+          "rankClaim": "Master",
+          "patch": "26.21",
+          "durationSec": 1631,
+          "region": "KR",
+          "uploaded": "2026-11-03",
+          "result": "W",
+          "moments": [
+            {
+              "atSec": 181,
+              "label": "First Blood — Taliyah kills Yone",
+              "kind": "kill"
+            },
+            {
+              "atSec": 392,
+              "label": "Red takes 1st Dragon (Ocean)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 528,
+              "label": "Jayce picks off Kai'Sa"
+            },
+            {
+              "atSec": 632,
+              "label": "Malphite picks off Nunu & Willump"
+            },
+            {
+              "atSec": 699,
+              "label": "Taliyah Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 722,
+              "label": "Blue takes 1st Dragon (Chemtech)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 821,
+              "label": "Malphite takes down Yone"
+            },
+            {
+              "atSec": 873,
+              "label": "Malphite takes down Nautilus"
+            },
+            {
+              "atSec": 1038,
+              "label": "Red takes 2nd Dragon (Mountain)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1042,
+              "label": "Malphite picks off Nunu & Willump"
+            },
+            {
+              "atSec": 1096,
+              "label": "Taliyah picks off Yone"
+            },
+            {
+              "atSec": 1251,
+              "label": "Team fight (3 kills)",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1259,
+              "label": "Red takes Baron",
+              "kind": "baron"
+            },
+            {
+              "atSec": 1324,
+              "label": "Taliyah picks off Yone"
+            },
+            {
+              "atSec": 1347,
+              "label": "Blue takes 2nd Dragon (Mountain)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1378,
+              "label": "Taliyah picks off Yone"
+            },
+            {
+              "atSec": 1401,
+              "label": "Mid Inhibitor falls (Red)"
+            },
+            {
+              "atSec": 1409,
+              "label": "Bot Inhibitor falls (Red)"
+            }
+          ]
+        },
+        {
+          "videoId": "y7cVeQPDGlM",
+          "title": "Malphite Mid vs Yone - EUW Grandmaster Patch 25.07",
+          "rankClaim": "Grandmaster",
+          "patch": "25.7",
+          "durationSec": 1667,
+          "region": "EUW",
+          "uploaded": "2025-04-16",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 37,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 324,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 483,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 620,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 754,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 998,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1040,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1198,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1224,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1238,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1308,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1444,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1481,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1613,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1631,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1646,
+              "label": "End credit"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 777,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "VWdvmb6Xsyc",
+          "title": "Malphite Top vs Yone - KR Master Patch 26.21",
+          "rankClaim": "Master",
+          "patch": "26.21",
+          "durationSec": 1654,
+          "region": "KR",
+          "uploaded": "2026-10-27",
+          "moments": [
+            {
+              "atSec": 260,
+              "label": "Malphite catches Yone"
+            },
+            {
+              "atSec": 473,
+              "label": "Malphite outduels Yone again"
+            },
+            {
+              "atSec": 552,
+              "label": "Malphite outplays Yone (3rd time)"
+            },
+            {
+              "atSec": 681,
+              "label": "Lee Sin kills Yone",
+              "kind": "kill"
+            },
+            {
+              "atSec": 695,
+              "label": "Red takes 1st Dragon (Chemtech)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 775,
+              "label": "Malphite solo kills Yone (4th time)",
+              "kind": "kill"
+            },
+            {
+              "atSec": 928,
+              "label": "Malphite picks off Ashe"
+            },
+            {
+              "atSec": 1039,
+              "label": "Blue takes 1st Dragon (Infernal)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1098,
+              "label": "Malphite outplays Sylas"
+            },
+            {
+              "atSec": 1200,
+              "label": "Malphite solo kills Sylas again",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1249,
+              "label": "Lee Sin takes down Kha'Zix"
+            },
+            {
+              "atSec": 1267,
+              "label": "Malphite takes down Yone (5th time)"
+            },
+            {
+              "atSec": 1295,
+              "label": "Blue takes Baron",
+              "kind": "baron"
+            },
+            {
+              "atSec": 1354,
+              "label": "Blue takes 2nd Dragon (Cloud)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1391,
+              "label": "Bot Inhibitor falls (Red)"
+            },
+            {
+              "atSec": 1541,
+              "label": "Malphite kills Kha'Zix",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1583,
+              "label": "Mid Inhibitor falls (Red)"
+            },
+            {
+              "atSec": 1636,
+              "label": "Yasuo Double Kill",
+              "kind": "kill"
+            }
+          ]
+        },
+        {
+          "videoId": "lM9n0kUzRaU",
+          "title": "LOSING MY SANITY IN KOREA  |  KOREA DAY 13",
+          "rankClaim": "Master+",
+          "patch": "26.12",
+          "durationSec": 29522,
+          "patchEstimated": true,
+          "player": "Alois",
+          "uploaded": "2026-06-19",
+          "format": "stream",
+          "cam": true,
+          "startSec": 7240,
+          "endSec": 9584,
+          "moments": []
+        },
+        {
+          "videoId": "nDEn-fKmDTA",
+          "title": "Malphite Top vs Yone - NA Grandmaster Patch 25.24",
+          "rankClaim": "Grandmaster",
+          "patch": "25.24",
+          "durationSec": 1600,
+          "region": "NA",
+          "uploaded": "2026-01-05",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 799,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "PfFcJHbN9pA",
+          "title": "Malphite Jungle vs Ambessa - EUW Challenger Patch 26.10",
+          "rankClaim": "Challenger",
+          "patch": "26.10",
+          "durationSec": 1759,
+          "region": "EUW",
+          "uploaded": "2026-05-18",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 799,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "4gSEh-FUnXw",
+          "title": "Malphite Top vs Ambessa - KR Grandmaster Patch 25.20",
+          "rankClaim": "Grandmaster",
+          "patch": "25.20",
+          "durationSec": 1847,
+          "region": "KR",
+          "uploaded": "2025-10-14",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 800,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "KcJ-b2_pV1M",
+          "title": "Malphite Mid vs Mel - BR Challenger Patch 26.06",
+          "rankClaim": "Challenger",
+          "patch": "26.6",
+          "durationSec": 1801,
+          "uploaded": "2026-03-29",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 154,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 364,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 459,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 668,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 764,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 844,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 952,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1131,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1192,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1327,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1369,
+              "label": "Hunt The Baron Nashor",
+              "kind": "baron"
+            },
+            {
+              "atSec": 1420,
+              "label": "Hunt The Dragon",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1445,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1538,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1573,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1634,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1742,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1790,
+              "label": "End credit"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 887,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "rGWYrRzMbGQ",
+          "title": "Malphite Top vs Gwen - KR Master Patch 25.05",
+          "rankClaim": "Master",
+          "patch": "25.5",
+          "durationSec": 1574,
+          "region": "KR",
+          "uploaded": "2025-03-12",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 272,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 731,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 817,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 920,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1023,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1175,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1277,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1367,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1529,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1553,
+              "label": "End credit"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 893,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "Wl47soPrd_A",
+          "title": "Malphite Mid vs Aurora - VN Challenger Patch 25.20",
+          "rankClaim": "Challenger",
+          "patch": "25.20",
+          "durationSec": 1927,
+          "uploaded": "2025-10-20",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 893,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "ViJgRez9Cts",
+          "title": "Malphite Top vs Aurora - KR Master Patch 26.03",
+          "rankClaim": "Master",
+          "patch": "26.3",
+          "durationSec": 1599,
+          "region": "KR",
+          "uploaded": "2026-02-09",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 330,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 481,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 571,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 693,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 771,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 958,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 978,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 991,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1011,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1091,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1161,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1187,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1236,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1363,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1514,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1566,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1588,
+              "label": "End credit"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

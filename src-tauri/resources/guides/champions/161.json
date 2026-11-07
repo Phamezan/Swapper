@@ -1,0 +1,3207 @@
+{
+  "schema": 1,
+  "champion": 161,
+  "generatedAt": "2026-11-07T13:25:14.592Z",
+  "guides": [
+    {
+      "champion": 161,
+      "enemy": 238,
+      "lane": "mid",
+      "patch": "26.21",
+      "reviewed": false,
+      "difficulty": "Skill matchup",
+      "favoredWhen": "He solves range with W-W-R gap-close and Edge of Night second for E. Punish wasted E, push and roam if he turtles.",
+      "keyTips": [
+        {
+          "text": "A good VelKoz never lets him close: use W-W-R to reach.",
+          "scope": "pair",
+          "sourceIds": [
+            "aikopanda"
+          ],
+          "abilityKeys": [
+            {
+              "champion": 238,
+              "key": "W"
+            },
+            {
+              "champion": 238,
+              "key": "R"
+            }
+          ]
+        },
+        {
+          "text": "Edge of Night second blocks his E, then kill.",
+          "scope": "pair",
+          "sourceIds": [
+            "aikopanda"
+          ],
+          "abilityKeys": [
+            {
+              "champion": 238,
+              "key": "W"
+            }
+          ],
+          "itemIds": [
+            3814
+          ]
+        },
+        {
+          "text": "A wasted E is the window: go when it misses.",
+          "scope": "pair",
+          "sourceIds": [
+            "v222"
+          ],
+          "abilityKeys": [
+            {
+              "champion": 161,
+              "key": "E"
+            }
+          ]
+        }
+      ],
+      "enemyTips": {
+        "early-lane": [
+          {
+            "text": "Zed often places Living Shadow before Death Mark so he can swap away from skillshots. Hold your crowd control until he has used the swap.",
+            "scope": "enemy",
+            "sourceIds": [
+              "aikopanda"
+            ],
+            "patch": "26.21",
+            "abilityKeys": [
+              {
+                "champion": 238,
+                "key": "W"
+              },
+              {
+                "champion": 238,
+                "key": "R"
+              }
+            ]
+          }
+        ],
+        "win-condition": [
+          {
+            "text": "Death Mark always lands Zed behind his target. Pre-aim crowd control and escapes behind you, not toward where he cast it.",
+            "scope": "enemy",
+            "sourceIds": [
+              "peng04"
+            ],
+            "patch": "26.21",
+            "abilityKeys": [
+              {
+                "champion": 238,
+                "key": "R"
+              }
+            ]
+          }
+        ]
+      },
+      "sections": {
+        "overview": {
+          "tips": []
+        },
+        "early-lane": {
+          "tips": [
+            {
+              "text": "His long-range poke: stay healthy, never trade chunked.",
+              "scope": "pair",
+              "sourceIds": [
+                "v222"
+              ]
+            },
+            {
+              "text": "If he turtles under tower, shove and roam.",
+              "scope": "pair",
+              "sourceIds": [
+                "v222"
+              ]
+            }
+          ]
+        },
+        "mid-lane": {
+          "tips": [
+            {
+              "text": "Death Mark always lands Zed behind his target. Pre-aim crowd control and escapes behind you, not toward where he cast it.",
+              "scope": "pair",
+              "sourceIds": [
+                "peng04"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 238,
+                  "key": "R"
+                }
+              ]
+            },
+            {
+              "text": "Block then close: EoN eats E, W-W-R finishes.",
+              "scope": "pair",
+              "sourceIds": [
+                "aikopanda"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 238,
+                  "key": "W"
+                },
+                {
+                  "champion": 238,
+                  "key": "R"
+                }
+              ]
+            }
+          ]
+        },
+        "win-condition": {
+          "tips": [
+            {
+              "text": "E down plus item online: the VelKoz who never misses E never wins.",
+              "scope": "pair",
+              "sourceIds": [
+                "v222"
+              ]
+            }
+          ]
+        }
+      },
+      "itemization": [],
+      "sources": [
+        {
+          "id": "aikopanda",
+          "author": "AikoPanda",
+          "rankClaim": "Zed main",
+          "url": "https://www.mobafire.com/league-of-legends/build/26-20-video-guides-hidden-combos-all-matchups-zed-all-in-one-guide-652800",
+          "kind": "mobafire"
+        },
+        {
+          "id": "v222",
+          "author": "V222",
+          "rankClaim": "Challenger EUW · Zed main",
+          "rank": "challenger",
+          "url": "https://www.mobafire.com/league-of-legends/build/all-matchups-26-14-zed-guide-2000lp-euw-challenger-652354",
+          "kind": "mobafire"
+        },
+        {
+          "id": "peng04",
+          "author": "Peng04",
+          "rankClaim": "Challenger · Ahri main",
+          "rank": "challenger",
+          "url": "https://www.mobafire.com/league-of-legends/build/26-20-pengs-ahri-guide-5-1mil-points-13x-challenger-648700",
+          "kind": "mobafire"
+        }
+      ]
+    }
+  ],
+  "general": [
+    {
+      "champion": 161,
+      "lane": "mid",
+      "patch": "26.21",
+      "reviewed": false,
+      "keyTips": [
+        {
+          "text": "Use Plasma Fission poke to make the opponent respect the range; wave pressure with Plasma Fission and Void Rift can also give room to help with objectives.",
+          "scope": "champion",
+          "sourceIds": [
+            "mobalytics-velkoz-mid"
+          ],
+          "abilityKeys": [
+            {
+              "champion": 161,
+              "key": "Q"
+            },
+            {
+              "champion": 161,
+              "key": "W"
+            }
+          ]
+        },
+        {
+          "text": "Before level six, keep the wave nearer your side because Vel'Koz is fragile and lacks a reliable escape.",
+          "scope": "champion",
+          "sourceIds": [
+            "mobalytics-velkoz-mid"
+          ]
+        },
+        {
+          "text": "Save Tectonic Disruption as the only self-peel rather than spending it casually; a blink or ranged crowd control can punish it being down.",
+          "scope": "champion",
+          "sourceIds": [
+            "mobalytics-velkoz-mid"
+          ],
+          "abilityKeys": [
+            {
+              "champion": 161,
+              "key": "E"
+            }
+          ]
+        }
+      ],
+      "sections": {
+        "overview": {
+          "tips": []
+        },
+        "early-lane": {
+          "tips": [
+            {
+              "text": "Do not push up until the position of the enemy jungler is known; his immobility makes ganks dangerous.",
+              "scope": "champion",
+              "sourceIds": [
+                "mobalytics-velkoz-mid"
+              ]
+            },
+            {
+              "text": "Life Form Disintegration Ray roots Vel'Koz in place, so channel from a safe angle where ranged crowd control cannot interrupt it.",
+              "scope": "champion",
+              "sourceIds": [
+                "mobalytics-velkoz-mid"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 161,
+                  "key": "R"
+                }
+              ]
+            },
+            {
+              "text": "At level six, the ultimate completes his kit and makes clumped fights more dangerous for the enemy.",
+              "scope": "champion",
+              "sourceIds": [
+                "mobalytics-velkoz-mid"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 161,
+                  "key": "R"
+                }
+              ]
+            },
+            {
+              "text": "The first item component lets Void Rift clear waves more often, helping prevent the opposing mid from roaming freely.",
+              "scope": "champion",
+              "sourceIds": [
+                "mobalytics-velkoz-mid"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 161,
+                  "key": "W"
+                }
+              ]
+            },
+            {
+              "text": "Trade Plasma Fission from maximum range and return to the wave immediately instead of lingering in range of gap closers.",
+              "scope": "champion",
+              "sourceIds": [
+                "mobalytics-velkoz-mid"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 161,
+                  "key": "Q"
+                }
+              ]
+            }
+          ]
+        },
+        "mid-lane": {
+          "tips": [
+            {
+              "text": "When allies rotate into mid after taking their lane tower, move to a side lane to keep collecting farm and experience.",
+              "scope": "champion",
+              "sourceIds": [
+                "mobalytics-velkoz-mid"
+              ]
+            },
+            {
+              "text": "Clear before sieging or defending a siege, then look for a favorable trade while landing poke.",
+              "scope": "champion",
+              "sourceIds": [
+                "mobalytics-velkoz-mid"
+              ]
+            },
+            {
+              "text": "Around Dragon or Baron, use abilities to catch someone out of position; convert a kill into the objective.",
+              "scope": "champion",
+              "sourceIds": [
+                "mobalytics-velkoz-mid"
+              ]
+            },
+            {
+              "text": "Two ultimate points at level eleven improve follow-up damage, especially when fights are clumped near an objective.",
+              "scope": "champion",
+              "sourceIds": [
+                "mobalytics-velkoz-mid"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 161,
+                  "key": "R"
+                }
+              ]
+            },
+            {
+              "text": "The passive can stack across several enemies in close fights, so chokepoints are useful places to contest.",
+              "scope": "champion",
+              "sourceIds": [
+                "mobalytics-velkoz-mid"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 161,
+                  "key": "P"
+                }
+              ]
+            }
+          ]
+        },
+        "win-condition": {
+          "tips": [
+            {
+              "text": "Stay with the team late rather than splitting; an isolated Vel'Koz can be picked before a fight.",
+              "scope": "champion",
+              "sourceIds": [
+                "mobalytics-velkoz-mid"
+              ]
+            },
+            {
+              "text": "Look for isolated targets, then collapse with allies to win the numbers advantage.",
+              "scope": "champion",
+              "sourceIds": [
+                "mobalytics-velkoz-mid"
+              ]
+            },
+            {
+              "text": "Poke before committing to a fight and keep checking positioning so the attempt to harass does not get punished.",
+              "scope": "champion",
+              "sourceIds": [
+                "mobalytics-velkoz-mid"
+              ]
+            },
+            {
+              "text": "Use chokepoints to make multi-target ability hits and passive procs more likely.",
+              "scope": "champion",
+              "sourceIds": [
+                "mobalytics-velkoz-mid"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 161,
+                  "key": "P"
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "itemization": [
+        {
+          "text": "Take Arcane Comet, Manaflow Band, Transcendence, and Scorch with Cut Down and Legend: Haste as the 16.21 rune page.",
+          "scope": "champion",
+          "sourceIds": [
+            "mobalytics-velkoz-mid-build"
+          ]
+        },
+        {
+          "text": "Build the popular path of Luden's Echo, Sorcerer's Shoes, Shadowflame, Zhonya's Hourglass, and Rabadon's Deathcap.",
+          "scope": "champion",
+          "sourceIds": [
+            "mobalytics-velkoz-mid-build"
+          ],
+          "itemIds": [
+            6655,
+            3020,
+            4645,
+            3157,
+            3089
+          ]
+        },
+        {
+          "text": "Start Doran's Ring, a Health Potion, and Stealth Ward.",
+          "scope": "champion",
+          "sourceIds": [
+            "mobalytics-velkoz-mid-build"
+          ],
+          "itemIds": [
+            1056,
+            2003,
+            3340
+          ]
+        },
+        {
+          "text": "Choose Horizon Focus as the fourth-item replacement for Zhonya's when wanting more long-range damage or facing immobilized targets.",
+          "scope": "champion",
+          "sourceIds": [
+            "mobalytics-velkoz-mid-build"
+          ],
+          "itemIds": [
+            4628
+          ]
+        },
+        {
+          "text": "Max Q, then W, then E, taking Life Form Disintegration Ray at levels six, eleven, and sixteen.",
+          "scope": "champion",
+          "sourceIds": [
+            "mobalytics-velkoz-mid-build"
+          ],
+          "abilityKeys": [
+            {
+              "champion": 161,
+              "key": "Q"
+            },
+            {
+              "champion": 161,
+              "key": "W"
+            },
+            {
+              "champion": 161,
+              "key": "E"
+            },
+            {
+              "champion": 161,
+              "key": "R"
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "id": "mobalytics-velkoz-mid",
+          "author": "Mobalytics",
+          "rankClaim": "No rank claim",
+          "url": "https://mobalytics.gg/lol/champions/velkoz/guide/mid",
+          "kind": "web"
+        },
+        {
+          "id": "mobalytics-velkoz-mid-build",
+          "author": "Mobalytics",
+          "rankClaim": "No rank claim",
+          "url": "https://mobalytics.gg/lol/champions/velkoz/build/mid",
+          "kind": "web"
+        }
+      ]
+    },
+    {
+      "champion": 161,
+      "lane": "support",
+      "patch": "26.21",
+      "reviewed": false,
+      "keyTips": [
+        {
+          "text": "Harass with Plasma Fission and Void Rift; the Void Rift slow helps set up Plasma Fission and Tectonic Disruption, while the stun can punish a target that steps out of position.",
+          "scope": "champion",
+          "sourceIds": [
+            "mobalytics-velkoz-support"
+          ],
+          "abilityKeys": [
+            {
+              "champion": 161,
+              "key": "Q"
+            },
+            {
+              "champion": 161,
+              "key": "W"
+            },
+            {
+              "champion": 161,
+              "key": "E"
+            }
+          ]
+        },
+        {
+          "text": "Keep Tectonic Disruption for peel when the enemy can engage; spending the only self-peel carelessly leaves the immobile support open to an all-in.",
+          "scope": "champion",
+          "sourceIds": [
+            "mobalytics-velkoz-support"
+          ],
+          "abilityKeys": [
+            {
+              "champion": 161,
+              "key": "E"
+            }
+          ]
+        },
+        {
+          "text": "At level six, use Life Form Disintegration Ray to finish or pressure grouped enemies; first poke them down and channel from a safe position because crowd control can interrupt it.",
+          "scope": "champion",
+          "sourceIds": [
+            "mobalytics-velkoz-support"
+          ],
+          "abilityKeys": [
+            {
+              "champion": 161,
+              "key": "R"
+            }
+          ]
+        }
+      ],
+      "sections": {
+        "overview": {
+          "tips": []
+        },
+        "early-lane": {
+          "tips": [
+            {
+              "text": "After the bot outer tower falls, rotate mid, pressure the tower, and poke the defender away from the objective.",
+              "scope": "champion",
+              "sourceIds": [
+                "mobalytics-velkoz-support"
+              ]
+            },
+            {
+              "text": "Use the Void Rift slow to help allies land their crowd control when a direct kill is not available.",
+              "scope": "champion",
+              "sourceIds": [
+                "mobalytics-velkoz-support"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 161,
+                  "key": "W"
+                }
+              ]
+            },
+            {
+              "text": "Hold the stun for an approaching diver rather than throwing it into the wave when the enemy pair is healthy.",
+              "scope": "champion",
+              "sourceIds": [
+                "mobalytics-velkoz-support"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 161,
+                  "key": "E"
+                }
+              ]
+            }
+          ]
+        },
+        "mid-lane": {
+          "tips": [
+            {
+              "text": "Delay a full fight while Plasma Fission poke lowers the enemy team, then commit when targets are softened.",
+              "scope": "champion",
+              "sourceIds": [
+                "mobalytics-velkoz-support"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 161,
+                  "key": "Q"
+                }
+              ]
+            },
+            {
+              "text": "Check the next major objective and establish vision early from a safe route, then retreat to the team.",
+              "scope": "champion",
+              "sourceIds": [
+                "mobalytics-velkoz-support"
+              ]
+            },
+            {
+              "text": "Do not cross the map or ward alone; the support is easy to catch without allies nearby.",
+              "scope": "champion",
+              "sourceIds": [
+                "mobalytics-velkoz-support"
+              ]
+            },
+            {
+              "text": "Level nine maxes Plasma Fission for long-range poke; level eleven adds an ultimate point for finishing low targets.",
+              "scope": "champion",
+              "sourceIds": [
+                "mobalytics-velkoz-support"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 161,
+                  "key": "Q"
+                },
+                {
+                  "champion": 161,
+                  "key": "R"
+                }
+              ]
+            },
+            {
+              "text": "At level thirteen, Void Rift reaches max rank and adds more damage to the Plasma Fission follow-up.",
+              "scope": "champion",
+              "sourceIds": [
+                "mobalytics-velkoz-support"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 161,
+                  "key": "W"
+                },
+                {
+                  "champion": 161,
+                  "key": "Q"
+                }
+              ]
+            }
+          ]
+        },
+        "win-condition": {
+          "tips": [
+            {
+              "text": "Ward major objectives and high-traffic paths late so the team can see the enemy approach.",
+              "scope": "champion",
+              "sourceIds": [
+                "mobalytics-velkoz-support"
+              ]
+            },
+            {
+              "text": "Stay with allies and avoid solo warding unless the enemy position is known; getting picked creates a four-versus-five.",
+              "scope": "champion",
+              "sourceIds": [
+                "mobalytics-velkoz-support"
+              ]
+            },
+            {
+              "text": "Use Tectonic Disruption to peel and protect the carries through the fight rather than trying to stand in front.",
+              "scope": "champion",
+              "sourceIds": [
+                "mobalytics-velkoz-support"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 161,
+                  "key": "E"
+                }
+              ]
+            },
+            {
+              "text": "Use fog and range to poke or finish squishies, but keep enough safety to complete the ultimate channel.",
+              "scope": "champion",
+              "sourceIds": [
+                "mobalytics-velkoz-support"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 161,
+                  "key": "R"
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "itemization": [
+        {
+          "text": "Take Arcane Comet, Manaflow Band, Transcendence, and Scorch with Cheap Shot and Ultimate Hunter as the 16.21 rune setup.",
+          "scope": "champion",
+          "sourceIds": [
+            "mobalytics-velkoz-support-build"
+          ]
+        },
+        {
+          "text": "Build the popular path of Zaz'Zak's Realmspike, Sorcerer's Shoes, Luden's Echo, Shadowflame, and Zhonya's Hourglass, followed by Rabadon's Deathcap.",
+          "scope": "champion",
+          "sourceIds": [
+            "mobalytics-velkoz-support-build"
+          ],
+          "itemIds": [
+            3871,
+            3020,
+            6655,
+            4645,
+            3157,
+            3089
+          ]
+        },
+        {
+          "text": "Start with Health Potion, Amplifying Tome, and Stealth Ward as early purchases.",
+          "scope": "champion",
+          "sourceIds": [
+            "mobalytics-velkoz-support-build"
+          ],
+          "itemIds": [
+            2003,
+            1052,
+            3340
+          ]
+        },
+        {
+          "text": "Choose Liandry's Torment to replace Shadowflame in the fourth slot when the enemy team has several tanks.",
+          "scope": "champion",
+          "sourceIds": [
+            "mobalytics-velkoz-support-build"
+          ],
+          "itemIds": [
+            6653,
+            4645
+          ]
+        },
+        {
+          "text": "Max Q, then W, then E, taking Life Form Disintegration Ray at levels six, eleven, and sixteen.",
+          "scope": "champion",
+          "sourceIds": [
+            "mobalytics-velkoz-support-build"
+          ],
+          "abilityKeys": [
+            {
+              "champion": 161,
+              "key": "Q"
+            },
+            {
+              "champion": 161,
+              "key": "W"
+            },
+            {
+              "champion": 161,
+              "key": "E"
+            },
+            {
+              "champion": 161,
+              "key": "R"
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "id": "mobalytics-velkoz-support",
+          "author": "Mobalytics",
+          "rankClaim": "No rank claim",
+          "url": "https://mobalytics.gg/lol/champions/velkoz/guide/support",
+          "kind": "web"
+        },
+        {
+          "id": "mobalytics-velkoz-support-build",
+          "author": "Mobalytics",
+          "rankClaim": "No rank claim",
+          "url": "https://mobalytics.gg/lol/champions/velkoz/build/support",
+          "kind": "web"
+        }
+      ]
+    }
+  ],
+  "vods": [
+    {
+      "enemy": 3,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "bW1FeLgYJz4",
+          "title": "Vel'Koz Mid vs Galio - TW Challenger Patch 26.07",
+          "rankClaim": "Challenger",
+          "patch": "26.7",
+          "durationSec": 1711,
+          "uploaded": "2026-04-14",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 170,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 356,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 902,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1016,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1041,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1127,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1216,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1245,
+              "label": "Hunt The Baron Nashor",
+              "kind": "baron"
+            },
+            {
+              "atSec": 1270,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1375,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1398,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1463,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1489,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1500,
+              "label": "Take down The Inhibitor"
+            },
+            {
+              "atSec": 1518,
+              "label": "Hunt The Dragon",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1556,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1643,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1686,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1700,
+              "label": "End credit"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 7,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "7WoNKFTjggo",
+          "title": "Vel'Koz Mid vs LeBlanc - EUW Grandmaster Patch 26.13",
+          "rankClaim": "Grandmaster",
+          "patch": "26.13",
+          "durationSec": 1561,
+          "region": "EUW",
+          "uploaded": "2026-07-14",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 8,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "Y891fYzdcGI",
+          "title": "Vel'Koz Mid vs Vladimir - TW Challenger Patch 25.10",
+          "rankClaim": "Challenger",
+          "patch": "25.10",
+          "durationSec": 2089,
+          "uploaded": "2025-05-27",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 12,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "ItySZYuyb1M",
+          "title": "Vel'Koz Support vs Alistar - EUW Grandmaster Patch 26.17",
+          "rankClaim": "Grandmaster",
+          "patch": "26.17",
+          "durationSec": 1557,
+          "region": "EUW",
+          "uploaded": "2026-09-04",
+          "result": "W",
+          "moments": [
+            {
+              "atSec": 96,
+              "label": "First Blood — Vel'Koz kills Alistar",
+              "kind": "kill"
+            },
+            {
+              "atSec": 270,
+              "label": "Vel'Koz solo kills Alistar",
+              "kind": "kill"
+            },
+            {
+              "atSec": 458,
+              "label": "Blue takes 1st Dragon (Ocean)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 667,
+              "label": "Yasuo picks off Alistar"
+            },
+            {
+              "atSec": 687,
+              "label": "Nasus kills Quinn",
+              "kind": "kill"
+            },
+            {
+              "atSec": 721,
+              "label": "Team fight (3 kills)",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 811,
+              "label": "Vel'Koz eliminates Alistar"
+            },
+            {
+              "atSec": 832,
+              "label": "Vel'Koz picks off Vayne"
+            },
+            {
+              "atSec": 862,
+              "label": "Blue takes 2nd Dragon (Hextech)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 923,
+              "label": "Hecarim eliminates Vayne"
+            },
+            {
+              "atSec": 1012,
+              "label": "Team fight (3 kills)",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1079,
+              "label": "Yasuo picks off Alistar"
+            },
+            {
+              "atSec": 1194,
+              "label": "Blue takes Baron",
+              "kind": "baron"
+            },
+            {
+              "atSec": 1209,
+              "label": "Red takes 1st Dragon (Cloud)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1272,
+              "label": "Team fight (3 kills)",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1307,
+              "label": "Bot Inhibitor falls (Red)"
+            },
+            {
+              "atSec": 1348,
+              "label": "Vel'Koz kills Quinn",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1380,
+              "label": "Vel'Koz eliminates Alistar"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 16,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "IyOgI8dhry8",
+          "title": "Vel'Koz Support vs Soraka - BR Challenger Patch 26.21",
+          "rankClaim": "Challenger",
+          "patch": "26.21",
+          "durationSec": 1508,
+          "uploaded": "2026-10-29",
+          "result": "W",
+          "moments": [
+            {
+              "atSec": 299,
+              "label": "Red takes 1st Dragon (Mountain)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 351,
+              "label": "Vel'Koz kills Lee Sin",
+              "kind": "kill"
+            },
+            {
+              "atSec": 470,
+              "label": "Vladimir picks off Soraka"
+            },
+            {
+              "atSec": 542,
+              "label": "Sylas eliminates Ezreal"
+            },
+            {
+              "atSec": 624,
+              "label": "Vel'Koz eliminates Soraka"
+            },
+            {
+              "atSec": 669,
+              "label": "Blue takes 1st Dragon (Chemtech)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 677,
+              "label": "Yasuo takes down Soraka"
+            },
+            {
+              "atSec": 724,
+              "label": "Yasuo takes down Camille"
+            },
+            {
+              "atSec": 799,
+              "label": "Vel'Koz picks off Ezreal"
+            },
+            {
+              "atSec": 845,
+              "label": "Yasuo Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1042,
+              "label": "Blue takes 2nd Dragon (Infernal)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1159,
+              "label": "Vladimir picks off Camille"
+            },
+            {
+              "atSec": 1262,
+              "label": "Team fight (3 kills)",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1290,
+              "label": "Blue takes Baron",
+              "kind": "baron"
+            },
+            {
+              "atSec": 1360,
+              "label": "Blue takes 3rd Dragon (Infernal)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1371,
+              "label": "Vel'Koz picks off Ezreal"
+            },
+            {
+              "atSec": 1460,
+              "label": "Team fight (3 kills)",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1491,
+              "label": "Mid Inhibitor falls (Red)"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 24,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "VBEGpcmhsqU",
+          "title": "Vel'Koz Top vs Jax - KR Master Patch 25.04",
+          "rankClaim": "Master",
+          "patch": "25.4",
+          "durationSec": 1820,
+          "region": "KR",
+          "uploaded": "2025-02-28",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 25,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "rwBY9umQZCg",
+          "title": "Vel'Koz Support vs Morgana - KR Master Patch 25.21",
+          "rankClaim": "Master",
+          "patch": "25.21",
+          "durationSec": 1552,
+          "region": "KR",
+          "uploaded": "2025-10-28",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 29,
+      "lane": "adc",
+      "videos": [
+        {
+          "videoId": "Zi86wZh8XtE",
+          "title": "Vel'Koz Bot vs Twitch - KR Master Patch 26.19",
+          "rankClaim": "Master",
+          "patch": "26.19",
+          "durationSec": 1845,
+          "region": "KR",
+          "uploaded": "2026-10-01",
+          "result": "W",
+          "moments": [
+            {
+              "atSec": 120,
+              "label": "First Blood — Zyra kills Rakan",
+              "kind": "kill"
+            },
+            {
+              "atSec": 322,
+              "label": "Red takes 1st Dragon (Chemtech)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 487,
+              "label": "Vel'Koz outduels Twitch"
+            },
+            {
+              "atSec": 675,
+              "label": "Vel'Koz outplays Twitch again"
+            },
+            {
+              "atSec": 735,
+              "label": "Red takes 2nd Dragon (Mountain)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 867,
+              "label": "Vel'Koz solo kills Twitch (3rd time)",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1074,
+              "label": "Jax Triple Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1099,
+              "label": "Red takes 3rd Dragon (Infernal)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1134,
+              "label": "Vel'Koz takes down Twitch (4th time)"
+            },
+            {
+              "atSec": 1353,
+              "label": "Zyra Triple Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1404,
+              "label": "Red takes Baron",
+              "kind": "baron"
+            },
+            {
+              "atSec": 1415,
+              "label": "Blue takes 1st Dragon (Infernal)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1631,
+              "label": "Vel'Koz outplays Rakan"
+            },
+            {
+              "atSec": 1647,
+              "label": "Vel'Koz takes down Twitch"
+            },
+            {
+              "atSec": 1674,
+              "label": "Top Inhibitor falls (Blue)"
+            },
+            {
+              "atSec": 1684,
+              "label": "Mid Inhibitor falls (Blue)"
+            },
+            {
+              "atSec": 1725,
+              "label": "Blue takes 2nd Dragon (Infernal)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1762,
+              "label": "Zyra takes down Qiyana"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 34,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "q2DnysfnE6M",
+          "title": "Vel'Koz Mid vs Anivia - TW Challenger Patch 25.17",
+          "rankClaim": "Challenger",
+          "patch": "25.17",
+          "durationSec": 1694,
+          "uploaded": "2025-09-09",
+          "moments": []
+        },
+        {
+          "videoId": "hFGCDnrL7Ss",
+          "title": "Vel'Koz Mid vs Anivia - EUW Grandmaster Patch 25.07",
+          "rankClaim": "Grandmaster",
+          "patch": "25.7",
+          "durationSec": 1777,
+          "region": "EUW",
+          "uploaded": "2025-04-14",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 562,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 752,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 914,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 950,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1017,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1156,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1345,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1482,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1581,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1645,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1677,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1702,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1724,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1756,
+              "label": "End credit"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 43,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "fSjUMVaEzMo",
+          "title": "Vel'Koz Support vs Karma - KR Master Patch 26.08",
+          "rankClaim": "Master",
+          "patch": "26.8",
+          "durationSec": 1683,
+          "region": "KR",
+          "uploaded": "2026-04-22",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 44,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "7-Xy320EAf4",
+          "title": "Vel'Koz Support vs Taric - KR Master Patch 26.02",
+          "rankClaim": "Master",
+          "patch": "26.2",
+          "durationSec": 1487,
+          "region": "KR",
+          "uploaded": "2026-01-27",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 141,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 226,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 347,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 459,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 489,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 606,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 700,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 786,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 860,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 911,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 999,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1110,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1186,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1204,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1224,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1339,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1427,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1476,
+              "label": "End credit"
+            }
+          ]
+        },
+        {
+          "videoId": "LU-0ObnMOz8",
+          "title": "Vel'Koz Support vs Taric - NA Grandmaster Patch 25.24",
+          "rankClaim": "Grandmaster",
+          "patch": "25.24",
+          "durationSec": 1509,
+          "region": "NA",
+          "uploaded": "2026-01-03",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 50,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "_2a-1FElWnw",
+          "title": "Vel'Koz Mid vs Swain - KR Master Patch 26.16",
+          "rankClaim": "Master",
+          "patch": "26.16",
+          "durationSec": 1641,
+          "region": "KR",
+          "uploaded": "2026-08-21",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 53,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "2lh5C-6AX7w",
+          "title": "Vel'Koz Support vs Blitzcrank - KR Master Patch 25.06",
+          "rankClaim": "Master",
+          "patch": "25.6",
+          "durationSec": 1915,
+          "region": "KR",
+          "uploaded": "2025-03-27",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 54,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "SjGczN7922o",
+          "title": "Vel'Koz Top vs Malphite - KR Master Patch 26.09",
+          "rankClaim": "Master",
+          "patch": "26.9",
+          "durationSec": 1738,
+          "region": "KR",
+          "uploaded": "2026-05-11",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 61,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "f9-eOvLYTfo",
+          "title": "Vel'Koz Mid vs Orianna - EUW Grandmaster Patch 26.14",
+          "rankClaim": "Grandmaster",
+          "patch": "26.14",
+          "durationSec": 1888,
+          "region": "EUW",
+          "uploaded": "2026-07-22",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 63,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "TjWDMB1b0QY",
+          "title": "Vel'Koz Top vs Brand - NA Grandmaster Patch 26.10",
+          "rankClaim": "Grandmaster",
+          "patch": "26.10",
+          "durationSec": 1849,
+          "region": "NA",
+          "uploaded": "2026-05-27",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 69,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "EAl4-9n79IY",
+          "title": "Vel'Koz Mid vs Cassiopeia - TW Challenger Patch 26.19",
+          "rankClaim": "Challenger",
+          "patch": "26.19",
+          "durationSec": 1834,
+          "uploaded": "2026-10-05",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 72,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "ulQX3L4KJVU",
+          "title": "Vel'Koz Support vs Skarner - KR Master Patch 25.17",
+          "rankClaim": "Master",
+          "patch": "25.17",
+          "durationSec": 1871,
+          "region": "KR",
+          "uploaded": "2025-09-04",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 74,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "UTCBwhCB8YM",
+          "title": "Vel'Koz Mid vs Heimerdinger - EUW Grandmaster Patch 25.14",
+          "rankClaim": "Grandmaster",
+          "patch": "25.14",
+          "durationSec": 1515,
+          "region": "EUW",
+          "uploaded": "2025-07-30",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 80,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "dSaAkjUr8TM",
+          "title": "Vel'Koz Support vs Pantheon - KR Challenger Patch 26.01",
+          "rankClaim": "Challenger",
+          "patch": "26.1",
+          "durationSec": 1443,
+          "region": "KR",
+          "uploaded": "2026-01-19",
+          "moments": []
+        },
+        {
+          "videoId": "Pj7UArc99UU",
+          "title": "Vel'Koz Support vs Pantheon - KR Master Patch 25.18",
+          "rankClaim": "Master",
+          "patch": "25.18",
+          "durationSec": 1636,
+          "region": "KR",
+          "uploaded": "2025-09-16",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 81,
+      "lane": "adc",
+      "videos": [
+        {
+          "videoId": "-6vPTdudPqg",
+          "title": "Vel'Koz Bot vs Ezreal (GAM Aress) - KR Grandmaster Patch 26.17",
+          "rankClaim": "Grandmaster",
+          "patch": "26.17",
+          "durationSec": 1654,
+          "region": "KR",
+          "uploaded": "2026-09-06",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 81,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "r1Gh0xxh5Bg",
+          "title": "Vel'Koz Support vs Ezreal - KR Master Patch 25.16",
+          "rankClaim": "Master",
+          "patch": "25.16",
+          "durationSec": 1644,
+          "region": "KR",
+          "uploaded": "2025-08-21",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 84,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "Iy5Q_oUxHZA",
+          "title": "Vel'Koz Mid vs Akali - TW Challenger Patch 26.20",
+          "rankClaim": "Challenger",
+          "patch": "26.20",
+          "durationSec": 1465,
+          "uploaded": "2026-10-18",
+          "result": "W",
+          "moments": [
+            {
+              "atSec": 240,
+              "label": "First Blood — Rell kills Akali",
+              "kind": "kill"
+            },
+            {
+              "atSec": 268,
+              "label": "Vel'Koz takes down Leona"
+            },
+            {
+              "atSec": 369,
+              "label": "Vel'Koz takes down Akali"
+            },
+            {
+              "atSec": 443,
+              "label": "Red takes 1st Dragon (Ocean)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 493,
+              "label": "Rell picks off Zed"
+            },
+            {
+              "atSec": 541,
+              "label": "Team fight (4 kills)",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 825,
+              "label": "Master Yi kills Olaf",
+              "kind": "kill"
+            },
+            {
+              "atSec": 905,
+              "label": "Blue takes 1st Dragon (Mountain)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1039,
+              "label": "Lucian kills Akali",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1121,
+              "label": "Master Yi Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1217,
+              "label": "Master Yi takes down Qiyana"
+            },
+            {
+              "atSec": 1239,
+              "label": "Red takes 2nd Dragon (Hextech)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1322,
+              "label": "Master Yi kills Leona",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1403,
+              "label": "Red takes Baron",
+              "kind": "baron"
+            }
+          ]
+        },
+        {
+          "videoId": "ZV_mo7cNJ4Y",
+          "title": "Vel'Koz Mid vs Akali - KR Master Patch 25.13",
+          "rankClaim": "Master",
+          "patch": "25.13",
+          "durationSec": 2134,
+          "region": "KR",
+          "uploaded": "2025-07-02",
+          "moments": []
+        },
+        {
+          "videoId": "3oJeXWoMsZY",
+          "title": "Vel'Koz Mid vs Akali - EUW Grandmaster Patch 25.05",
+          "rankClaim": "Grandmaster",
+          "patch": "25.5",
+          "durationSec": 1522,
+          "region": "EUW",
+          "uploaded": "2025-03-11",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 447,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 690,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 755,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 831,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 978,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1005,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1260,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1363,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1480,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1501,
+              "label": "End credit"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 90,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "dFMRPBF89PA",
+          "title": "Vel'Koz Mid vs Malzahar - EUW Grandmaster Patch 25.20",
+          "rankClaim": "Grandmaster",
+          "patch": "25.20",
+          "durationSec": 1680,
+          "region": "EUW",
+          "uploaded": "2025-10-18",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 101,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "WB_zYuJlwDg",
+          "title": "Vel'Koz Support vs Xerath - KR Master Patch 25.13",
+          "rankClaim": "Master",
+          "patch": "25.13",
+          "durationSec": 1679,
+          "region": "KR",
+          "uploaded": "2025-07-13",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 103,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "NlfABvyPUF8",
+          "title": "Vel'Koz Mid vs Ahri - EUW Grandmaster Patch 26.12",
+          "rankClaim": "Grandmaster",
+          "patch": "26.12",
+          "durationSec": 1604,
+          "region": "EUW",
+          "uploaded": "2026-06-25",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 110,
+      "lane": "adc",
+      "videos": [
+        {
+          "videoId": "oeoOS2VNZ6s",
+          "title": "DK Smash Vel'Koz vs Varus [ ADC ] Korea Challenger 2333 LP | Patch 26.13",
+          "rankClaim": "Challenger",
+          "patch": "26.13",
+          "durationSec": 1362,
+          "region": "KR",
+          "player": "Smash",
+          "team": "DK",
+          "uploaded": "2026-07-13",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 111,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "FOeAB1oM4SY",
+          "title": "Vel'Koz Support vs Nautilus - KR Grandmaster Patch 26.06",
+          "rankClaim": "Grandmaster",
+          "patch": "26.6",
+          "durationSec": 1654,
+          "region": "KR",
+          "uploaded": "2026-03-26",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 171,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 299,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 512,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 613,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 700,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 732,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 761,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 844,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 912,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 965,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1156,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1266,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1336,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1431,
+              "label": "Hunt The Baron Nashor",
+              "kind": "baron"
+            },
+            {
+              "atSec": 1477,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1534,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1558,
+              "label": "Take down The Inhibitor"
+            },
+            {
+              "atSec": 1643,
+              "label": "End credit"
+            }
+          ]
+        },
+        {
+          "videoId": "q0mnEZz2H38",
+          "title": "Vel'Koz Support vs Nautilus - KR Master Patch 25.14",
+          "rankClaim": "Master",
+          "patch": "25.14",
+          "durationSec": 1861,
+          "region": "KR",
+          "uploaded": "2025-07-27",
+          "moments": []
+        },
+        {
+          "videoId": "tUdyc9OV2kI",
+          "title": "Vel'Koz Support vs Nautilus - KR Master Patch 25.09",
+          "rankClaim": "Master",
+          "patch": "25.9",
+          "durationSec": 1928,
+          "region": "KR",
+          "uploaded": "2025-05-10",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 112,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "6HmLthB1eE0",
+          "title": "Velkoz vs Viktor 10/0/8 (Mid) | EUW Grandmaster | Velkoz OTP Replay",
+          "rankClaim": "Grandmaster",
+          "patch": "26.7",
+          "durationSec": 1696,
+          "region": "EUW",
+          "patchEstimated": true,
+          "uploaded": "2026-04-14",
+          "moments": []
+        },
+        {
+          "videoId": "E2cRsqI1sGg",
+          "title": "Vel'Koz Mid vs Viktor - NA Challenger Patch 26.02",
+          "rankClaim": "Challenger",
+          "patch": "26.2",
+          "durationSec": 1562,
+          "region": "NA",
+          "uploaded": "2026-01-31",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 171,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 448,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 611,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 633,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 701,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 764,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 796,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 877,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 955,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1012,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1136,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1205,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1373,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1551,
+              "label": "End credit"
+            }
+          ]
+        },
+        {
+          "videoId": "FBLsAnAfhTw",
+          "title": "Vel'Koz Mid vs Viktor - EUW Grandmaster Patch 25.06",
+          "rankClaim": "Grandmaster",
+          "patch": "25.6",
+          "durationSec": 1790,
+          "region": "EUW",
+          "uploaded": "2025-03-31",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 117,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "ZkYCIFy5C2U",
+          "title": "Vel'Koz Support vs Lulu - KR Master Patch 26.18",
+          "rankClaim": "Master",
+          "patch": "26.18",
+          "durationSec": 1867,
+          "region": "KR",
+          "uploaded": "2026-09-18",
+          "moments": []
+        },
+        {
+          "videoId": "k8xY5XFHQn8",
+          "title": "Vel'Koz Support vs Lulu - KR Master Patch 26.03",
+          "rankClaim": "Master",
+          "patch": "26.3",
+          "durationSec": 1509,
+          "region": "KR",
+          "uploaded": "2026-02-12",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 103,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 205,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 320,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 447,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 514,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 655,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 740,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 763,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 931,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1014,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1047,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1113,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1256,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1347,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1424,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1498,
+              "label": "End credit"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 127,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "OEOrBQyX4bY",
+          "title": "Vel'Koz Mid vs Lissandra - KR Grandmaster Patch 26.11",
+          "rankClaim": "Grandmaster",
+          "patch": "26.11",
+          "durationSec": 1705,
+          "region": "KR",
+          "uploaded": "2026-06-05",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 142,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "5IiXbH36qiE",
+          "title": "Vel'Koz Mid vs Zoe - TW Challenger Patch 25.24",
+          "rankClaim": "Challenger",
+          "patch": "25.24",
+          "durationSec": 1557,
+          "uploaded": "2025-12-30",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 300,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 578,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 715,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 804,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 827,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 881,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1027,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1125,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1168,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1415,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1503,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1533,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1546,
+              "label": "End credit"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 142,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "68u6Sw9LTKI",
+          "title": "Vel'Koz Support vs Zoe - KR Master Patch 25.12",
+          "rankClaim": "Master",
+          "patch": "25.12",
+          "durationSec": 1590,
+          "region": "KR",
+          "uploaded": "2025-06-18",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 145,
+      "lane": "adc",
+      "videos": [
+        {
+          "videoId": "4XADOlNpGkk",
+          "title": "Vel'Koz Bot vs Kai'Sa - KR Master Patch 26.21",
+          "rankClaim": "Master",
+          "patch": "26.21",
+          "durationSec": 1794,
+          "region": "KR",
+          "uploaded": "2026-10-30",
+          "result": "W",
+          "moments": [
+            {
+              "atSec": 100,
+              "label": "First Blood — Kindred kills Nautilus",
+              "kind": "kill"
+            },
+            {
+              "atSec": 386,
+              "label": "Vel'Koz outduels Kai'Sa"
+            },
+            {
+              "atSec": 479,
+              "label": "Red takes 1st Dragon (Chemtech)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 585,
+              "label": "Vel'Koz outplays Kai'Sa again"
+            },
+            {
+              "atSec": 807,
+              "label": "Blue takes 1st Dragon (Mountain)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 908,
+              "label": "Vel'Koz solo kills Kai'Sa (3rd time)",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1151,
+              "label": "Red takes 2nd Dragon (Hextech)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1176,
+              "label": "Blue takes Baron",
+              "kind": "baron"
+            },
+            {
+              "atSec": 1287,
+              "label": "Kindred kills Nautilus",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1352,
+              "label": "Kindred kills Nautilus",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1451,
+              "label": "Vel'Koz takes down Kai'Sa (4th time)"
+            },
+            {
+              "atSec": 1462,
+              "label": "Red takes 3rd Dragon (Hextech)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1481,
+              "label": "Zoe takes down Nautilus"
+            },
+            {
+              "atSec": 1500,
+              "label": "Mid Inhibitor falls (Red)"
+            },
+            {
+              "atSec": 1510,
+              "label": "Zoe eliminates Zed"
+            },
+            {
+              "atSec": 1629,
+              "label": "Blue takes 2nd Baron",
+              "kind": "baron"
+            },
+            {
+              "atSec": 1631,
+              "label": "Vel'Koz takes down Kai'Sa"
+            },
+            {
+              "atSec": 1764,
+              "label": "Bot Inhibitor falls (Red)"
+            }
+          ]
+        },
+        {
+          "videoId": "drXe962PxaU",
+          "title": "Vel'Koz Bot vs Kai'Sa - KR Master Patch 26.18",
+          "rankClaim": "Master",
+          "patch": "26.18",
+          "durationSec": 1780,
+          "region": "KR",
+          "uploaded": "2026-09-20",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 163,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "aJOEybe8jHs",
+          "title": "Vel'Koz Mid vs Taliyah - KR Master Patch 25.24",
+          "rankClaim": "Master",
+          "patch": "25.24",
+          "durationSec": 1564,
+          "region": "KR",
+          "uploaded": "2025-12-21",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 213,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 405,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 485,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 749,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 782,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 801,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 824,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 903,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 965,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1083,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1205,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1286,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1502,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1553,
+              "label": "End credit"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 201,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "QSmaYEHvKic",
+          "title": "Vel'Koz Support vs Braum - KR Master Patch 25.22",
+          "rankClaim": "Master",
+          "patch": "25.22",
+          "durationSec": 1611,
+          "region": "KR",
+          "uploaded": "2025-11-11",
+          "moments": []
+        },
+        {
+          "videoId": "JdtWZYv-5hg",
+          "title": "Vel'Koz Support vs Braum - KR Master Patch 25.11",
+          "rankClaim": "Master",
+          "patch": "25.11",
+          "durationSec": 2027,
+          "region": "KR",
+          "uploaded": "2025-06-07",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 245,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "caenWNXWM0c",
+          "title": "Vel'Koz Mid vs Ekko - KR Master Patch 25.15",
+          "rankClaim": "Master",
+          "patch": "25.15",
+          "durationSec": 1790,
+          "region": "KR",
+          "uploaded": "2025-08-05",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 266,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "e-uHzOUDr5g",
+          "title": "Vel'Koz Top vs Aatrox - KR Grandmaster Patch 26.15",
+          "rankClaim": "Grandmaster",
+          "patch": "26.15",
+          "durationSec": 1792,
+          "region": "KR",
+          "uploaded": "2026-08-11",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 350,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "eLdCbMa9qH8",
+          "title": "Vel'Koz Support vs Yuumi - VN Challenger Patch 26.07",
+          "rankClaim": "Challenger",
+          "patch": "26.7",
+          "durationSec": 1789,
+          "uploaded": "2026-04-08",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 332,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 709,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 830,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 971,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 998,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1149,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1370,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1467,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1499,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1519,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1568,
+              "label": "Hunt The Dragon",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1722,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1778,
+              "label": "End credit"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 412,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "QyRq3IXC43A",
+          "title": "Vel'Koz Support vs Thresh - KR Master Patch 25.23",
+          "rankClaim": "Master",
+          "patch": "25.23",
+          "durationSec": 1533,
+          "region": "KR",
+          "uploaded": "2025-11-28",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 432,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "x2-pVNnIGAY",
+          "title": "Vel'Koz Support vs Bard - KR Master Patch 26.16",
+          "rankClaim": "Master",
+          "patch": "26.16",
+          "durationSec": 1562,
+          "region": "KR",
+          "uploaded": "2026-08-27",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 497,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "T3V_lpT5fik",
+          "title": "Vel'Koz Support vs Rakan - KR Grandmaster Patch 26.04",
+          "rankClaim": "Grandmaster",
+          "patch": "26.4",
+          "durationSec": 1586,
+          "region": "KR",
+          "uploaded": "2026-02-24",
+          "moments": []
+        },
+        {
+          "videoId": "zmbjfFQBJN0",
+          "title": "Vel'Koz Support vs Rakan - EUW Grandmaster Patch 25.10",
+          "rankClaim": "Grandmaster",
+          "patch": "25.10",
+          "durationSec": 1588,
+          "region": "EUW",
+          "uploaded": "2025-05-22",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 518,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "RX2J4IorI84",
+          "title": "Vel'Koz Support vs Neeko - KR Master Patch 26.05",
+          "rankClaim": "Master",
+          "patch": "26.5",
+          "durationSec": 1701,
+          "region": "KR",
+          "uploaded": "2026-03-12",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 174,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 359,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 596,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 692,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 741,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 831,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 900,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 928,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1193,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1293,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1313,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1325,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1500,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1585,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1690,
+              "label": "End credit"
+            }
+          ]
+        },
+        {
+          "videoId": "nYYic5bRsGQ",
+          "title": "Vel'Koz Support vs Neeko - KR Master Patch 25.24",
+          "rankClaim": "Master",
+          "patch": "25.24",
+          "durationSec": 1616,
+          "region": "KR",
+          "uploaded": "2025-12-16",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 141,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 208,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 367,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 465,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 528,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 767,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 788,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 945,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1020,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1234,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1259,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1288,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1385,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1437,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1522,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1583,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1605,
+              "label": "End credit"
+            }
+          ]
+        },
+        {
+          "videoId": "v_3zMVHIP1U",
+          "title": "Vel'Koz Support vs Neeko - KR Challenger Patch 25.08",
+          "rankClaim": "Challenger",
+          "patch": "25.8",
+          "durationSec": 1921,
+          "region": "KR",
+          "uploaded": "2025-04-23",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 131,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 277,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 413,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 659,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 745,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 911,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1059,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1098,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1167,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1317,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1401,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1696,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1836,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1900,
+              "label": "End credit"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 523,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "hbH9phOC-aQ",
+          "title": "Vel'Koz Support vs Aphelios - KR Master Patch 25.20",
+          "rankClaim": "Master",
+          "patch": "25.20",
+          "durationSec": 1619,
+          "region": "KR",
+          "uploaded": "2025-10-17",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 526,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "a773-NBeMV8",
+          "title": "Vel'Koz Support vs Rell - KR Master Patch 25.07",
+          "rankClaim": "Master",
+          "patch": "25.7",
+          "durationSec": 1597,
+          "region": "KR",
+          "uploaded": "2025-04-12",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 777,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "sLuutlr77no",
+          "title": "Vel'Koz Top vs Yone - KR Master Patch 26.13",
+          "rankClaim": "Master",
+          "patch": "26.13",
+          "durationSec": 1615,
+          "region": "KR",
+          "uploaded": "2026-07-08",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 804,
+      "lane": "adc",
+      "videos": [
+        {
+          "videoId": "RC2KJv0WCI8",
+          "title": "Vel'Koz Bot vs Yunara - KR Master Patch 26.20",
+          "rankClaim": "Master",
+          "patch": "26.20",
+          "durationSec": 1780,
+          "region": "KR",
+          "uploaded": "2026-10-15",
+          "result": "W",
+          "moments": [
+            {
+              "atSec": 202,
+              "label": "First Blood — Vel'Koz kills Lulu",
+              "kind": "kill"
+            },
+            {
+              "atSec": 397,
+              "label": "Vel'Koz outplays Lulu"
+            },
+            {
+              "atSec": 495,
+              "label": "Vel'Koz outduels Yunara"
+            },
+            {
+              "atSec": 679,
+              "label": "Red takes 1st Dragon (Chemtech)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 991,
+              "label": "Red takes 2nd Dragon (Ocean)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1052,
+              "label": "Vel'Koz picks off Fiora"
+            },
+            {
+              "atSec": 1131,
+              "label": "Zed eliminates Yunara"
+            },
+            {
+              "atSec": 1153,
+              "label": "Vel'Koz picks off Lulu"
+            },
+            {
+              "atSec": 1233,
+              "label": "Zed kills Lulu",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1327,
+              "label": "Red takes 3rd Dragon (Infernal)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1484,
+              "label": "Yone Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1531,
+              "label": "Zed picks off Sylas"
+            },
+            {
+              "atSec": 1539,
+              "label": "Top Inhibitor falls (Blue)"
+            },
+            {
+              "atSec": 1637,
+              "label": "Zed Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1710,
+              "label": "Blue takes 1st Dragon (Infernal)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1717,
+              "label": "Irelia kills Yunara",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1753,
+              "label": "Bot Inhibitor falls (Blue)"
+            },
+            {
+              "atSec": 1758,
+              "label": "Zed kills Lulu",
+              "kind": "kill"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 893,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "veFHIHVsv-Y",
+          "title": "Vel'Koz Mid vs Aurora - TW Challenger Patch 25.19",
+          "rankClaim": "Challenger",
+          "patch": "25.19",
+          "durationSec": 1759,
+          "uploaded": "2025-10-07",
+          "moments": []
+        }
+      ]
+    }
+  ]
+}

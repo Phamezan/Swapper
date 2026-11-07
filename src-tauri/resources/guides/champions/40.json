@@ -1,0 +1,2547 @@
+{
+  "schema": 1,
+  "champion": 40,
+  "generatedAt": "2026-11-07T13:25:14.592Z",
+  "guides": [],
+  "general": [
+    {
+      "champion": 40,
+      "lane": "support",
+      "patch": "26.21",
+      "reviewed": false,
+      "keyTips": [
+        {
+          "text": "Survive a weak lane on spacing plus shield and heal value instead of forcing frequent all-ins.",
+          "scope": "champion",
+          "sourceIds": [
+            "1yanou"
+          ]
+        },
+        {
+          "text": "Default to Heal and treat Ignite as the rare pick after aggressive builds were nerfed.",
+          "scope": "champion",
+          "sourceIds": [
+            "1yanou"
+          ]
+        },
+        {
+          "text": "Win through roaming, disengage, peel, and playmaking while guarding allies with movement and control.",
+          "scope": "champion",
+          "sourceIds": [
+            "1yanou"
+          ]
+        }
+      ],
+      "sections": {
+        "overview": {
+          "tips": []
+        },
+        "early-lane": {
+          "tips": [
+            {
+              "text": "Hunt Q angles with little escape room, such as along a turret edge.",
+              "scope": "champion",
+              "sourceIds": [
+                "1yanou"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 40,
+                  "key": "Q"
+                }
+              ]
+            },
+            {
+              "text": "Fleeing a gank, lay Q across the pursuer path to seal access rather than aiming at their body.",
+              "scope": "champion",
+              "sourceIds": [
+                "1yanou"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 40,
+                  "key": "Q"
+                }
+              ]
+            },
+            {
+              "text": "Trust accurate Qs to make kills while accepting the practice they demand.",
+              "scope": "champion",
+              "sourceIds": [
+                "1yanou"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 40,
+                  "key": "Q"
+                }
+              ]
+            },
+            {
+              "text": "Impair enemies with W slow or Q knock-up to shorten E cooldown through its movement-impair refund.",
+              "scope": "champion",
+              "sourceIds": [
+                "1yanou"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 40,
+                  "key": "W"
+                },
+                {
+                  "champion": 40,
+                  "key": "Q"
+                },
+                {
+                  "champion": 40,
+                  "key": "E"
+                }
+              ]
+            },
+            {
+              "text": "Hold safe positioning always, since a caught Janna punishes fast.",
+              "scope": "champion",
+              "sourceIds": [
+                "1yanou"
+              ]
+            }
+          ]
+        },
+        "mid-lane": {
+          "tips": [
+            {
+              "text": "After a big crash under the enemy turret, spend the long window roaming mid or top or setting a jungler invade or gank.",
+              "scope": "champion",
+              "sourceIds": [
+                "1yanou"
+              ]
+            },
+            {
+              "text": "After a small crash, take only a quick ward, jungle invade, or mid check, returning before the next bot wave.",
+              "scope": "champion",
+              "sourceIds": [
+                "1yanou"
+              ]
+            },
+            {
+              "text": "Travel both ways in fog so enemies lose Janna tracks and misread ADC isolation.",
+              "scope": "champion",
+              "sourceIds": [
+                "1yanou"
+              ]
+            },
+            {
+              "text": "Read the jungler spot and activity before picking any roam.",
+              "scope": "champion",
+              "sourceIds": [
+                "1yanou"
+              ]
+            },
+            {
+              "text": "Treat Moonstone Renewer into Redemption and Monsoon as the later sustain spike for stronger healing.",
+              "scope": "champion",
+              "sourceIds": [
+                "1yanou"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 40,
+                  "key": "R"
+                }
+              ],
+              "itemIds": [
+                6617,
+                3107
+              ]
+            },
+            {
+              "text": "Prefer Dawncore third for more enchanter scaling.",
+              "scope": "champion",
+              "sourceIds": [
+                "1yanou"
+              ],
+              "itemIds": [
+                6621
+              ]
+            }
+          ]
+        },
+        "win-condition": {
+          "tips": [
+            {
+              "text": "Respect the unreliable engage and the ally-wrecking side of Monsoon; aim every R knock with the landing in mind.",
+              "scope": "champion",
+              "sourceIds": [
+                "1yanou"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 40,
+                  "key": "R"
+                }
+              ]
+            },
+            {
+              "text": "Scale on consistent shield and heal value over any early damage plan.",
+              "scope": "champion",
+              "sourceIds": [
+                "1yanou"
+              ]
+            }
+          ]
+        }
+      },
+      "itemization": [
+        {
+          "text": "Pick Summon Aery over Arcane Comet for shorter-cooldown repeated poke plus stronger shields.",
+          "scope": "champion",
+          "sourceIds": [
+            "1yanou"
+          ]
+        },
+        {
+          "text": "Take Manaflow Band for sustain and skip Axiom Arcanist in this setup.",
+          "scope": "champion",
+          "sourceIds": [
+            "1yanou"
+          ]
+        },
+        {
+          "text": "Choose Celerity for movement speed over Transcendence haste, since Q and W impairment already recharges E.",
+          "scope": "champion",
+          "sourceIds": [
+            "1yanou"
+          ],
+          "abilityKeys": [
+            {
+              "champion": 40,
+              "key": "Q"
+            },
+            {
+              "champion": 40,
+              "key": "W"
+            },
+            {
+              "champion": 40,
+              "key": "E"
+            }
+          ]
+        },
+        {
+          "text": "Take Gathering Storm for the scaling plan, or Waterwalking when map movement matters more.",
+          "scope": "champion",
+          "sourceIds": [
+            "1yanou"
+          ]
+        },
+        {
+          "text": "Pair Font of Life with Revitalize for ally healing and shields, preferring Revitalize over Bone Plating with safe positioning.",
+          "scope": "champion",
+          "sourceIds": [
+            "1yanou"
+          ]
+        },
+        {
+          "text": "Start Dream Maker, swapping Celestial Opposition into heavy burst.",
+          "scope": "champion",
+          "sourceIds": [
+            "1yanou"
+          ],
+          "itemIds": [
+            3870,
+            3869
+          ]
+        },
+        {
+          "text": "Rush Boots of Swiftness for movement over defensive or Ionian cooldown boots.",
+          "scope": "champion",
+          "sourceIds": [
+            "1yanou"
+          ],
+          "itemIds": [
+            3009
+          ]
+        },
+        {
+          "text": "Core Moonstone Renewer into Redemption and Dawncore.",
+          "scope": "champion",
+          "sourceIds": [
+            "1yanou"
+          ],
+          "itemIds": [
+            6617,
+            3107,
+            6621
+          ]
+        },
+        {
+          "text": "Add Mikael's Blessing third or fourth for its cleanse, Staff of Flowing Water with a fed AP ally, and Ardent Censer with attack-speed carries like Twitch, Jinx, or Vayne without rushing it.",
+          "scope": "champion",
+          "sourceIds": [
+            "1yanou"
+          ],
+          "itemIds": [
+            3222,
+            6616,
+            3504
+          ]
+        },
+        {
+          "text": "Sit on Oblivion Orb for team anti-heal before finishing Morellonomicon past core; buy Mejai's only far ahead and safe, and Shurelya's Battlesong as a later situational pick.",
+          "scope": "champion",
+          "sourceIds": [
+            "1yanou"
+          ],
+          "itemIds": [
+            3916,
+            3165,
+            2065
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "id": "1yanou",
+          "author": "1yanou",
+          "rankClaim": "Grandmaster (profile badge; no title claim)",
+          "rank": "grandmaster",
+          "url": "https://www.mobafire.com/league-of-legends/build/updated-1yanous-extremely-detailed-janna-guide-636483",
+          "kind": "mobafire"
+        }
+      ]
+    }
+  ],
+  "vods": [
+    {
+      "enemy": 7,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "C_lLqm3Sk_0",
+          "title": "Janna Support vs LeBlanc - NA Grandmaster Patch 25.20",
+          "rankClaim": "Grandmaster",
+          "patch": "25.20",
+          "durationSec": 1973,
+          "region": "NA",
+          "uploaded": "2025-10-23",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 9,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "y1OVJwu6gSk",
+          "title": "Janna Support vs Fiddlesticks - KR Master Patch 26.01",
+          "rankClaim": "Master",
+          "patch": "26.1",
+          "durationSec": 1558,
+          "region": "KR",
+          "uploaded": "2026-01-15",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 228,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 320,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 450,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 538,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 656,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 771,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 847,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1011,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1035,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1049,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1153,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1282,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1336,
+              "label": "Take down The Inhibitor"
+            },
+            {
+              "atSec": 1402,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1456,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1485,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1547,
+              "label": "End credit"
+            }
+          ]
+        },
+        {
+          "videoId": "YNZlqOmw6u4",
+          "title": "Janna Support vs Fiddlesticks - EUW Challenger Patch 25.15",
+          "rankClaim": "Challenger",
+          "patch": "25.15",
+          "durationSec": 1495,
+          "region": "EUW",
+          "uploaded": "2025-08-15",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 12,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "0pa1Rgikn6A",
+          "title": "Janna Support vs Alistar - VN Challenger Patch 26.04",
+          "rankClaim": "Challenger",
+          "patch": "26.4",
+          "durationSec": 1493,
+          "uploaded": "2026-02-26",
+          "moments": []
+        },
+        {
+          "videoId": "vUJvOK9S92M",
+          "title": "Janna Support vs Alistar - KR Challenger Patch 25.20",
+          "rankClaim": "Challenger",
+          "patch": "25.20",
+          "durationSec": 1775,
+          "region": "KR",
+          "uploaded": "2025-10-16",
+          "moments": []
+        },
+        {
+          "videoId": "EhCZ5QuoXug",
+          "title": "Janna Support vs Alistar - KR Challenger Patch 25.19",
+          "rankClaim": "Challenger",
+          "patch": "25.19",
+          "durationSec": 1763,
+          "region": "KR",
+          "uploaded": "2025-10-02",
+          "moments": []
+        },
+        {
+          "videoId": "2JWNOQfK5-Y",
+          "title": "Janna Support vs Alistar - KR Grandmaster Patch 25.16",
+          "rankClaim": "Grandmaster",
+          "patch": "25.16",
+          "durationSec": 1564,
+          "region": "KR",
+          "uploaded": "2025-08-20",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 26,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "zccD-NKM4Og",
+          "title": "Janna Support vs Zilean - KR Grandmaster Patch 25.13",
+          "rankClaim": "Grandmaster",
+          "patch": "25.13",
+          "durationSec": 2122,
+          "region": "KR",
+          "uploaded": "2025-07-01",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 30,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "RB7qFFGWIuI",
+          "title": "Janna Support vs Karthus - EUW Grandmaster Patch 26.07",
+          "rankClaim": "Grandmaster",
+          "patch": "26.7",
+          "durationSec": 1647,
+          "region": "EUW",
+          "uploaded": "2026-04-17",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 32,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "Q8uqOildbp8",
+          "title": "Janna Support vs Amumu - KR Master Patch 25.21",
+          "rankClaim": "Master",
+          "patch": "25.21",
+          "durationSec": 2050,
+          "region": "KR",
+          "uploaded": "2025-10-29",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 37,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "FX8hddVuabA",
+          "title": "Janna Support vs Sona - EUW Challenger Patch 26.16",
+          "rankClaim": "Challenger",
+          "patch": "26.16",
+          "durationSec": 1451,
+          "region": "EUW",
+          "uploaded": "2026-08-22",
+          "result": "L",
+          "moments": [
+            {
+              "atSec": 325,
+              "label": "First Blood — Draven kills Sona",
+              "kind": "kill"
+            },
+            {
+              "atSec": 473,
+              "label": "Draven picks off Sona"
+            },
+            {
+              "atSec": 509,
+              "label": "Red takes 1st Dragon (Infernal)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 584,
+              "label": "Team fight (3 kills)",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 649,
+              "label": "Talon takes down Rengar"
+            },
+            {
+              "atSec": 852,
+              "label": "Red takes 2nd Dragon (Mountain)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 952,
+              "label": "Team fight (3 kills)",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1030,
+              "label": "Talon kills Camille",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1169,
+              "label": "Red takes 3rd Dragon (Hextech)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1182,
+              "label": "Talon kills Camille",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1239,
+              "label": "Red takes Baron",
+              "kind": "baron"
+            },
+            {
+              "atSec": 1253,
+              "label": "Draven picks off Sona"
+            },
+            {
+              "atSec": 1379,
+              "label": "Akshan eliminates Viktor"
+            },
+            {
+              "atSec": 1391,
+              "label": "Mid Inhibitor falls (Blue)"
+            }
+          ]
+        },
+        {
+          "videoId": "KtRnm4LlaPc",
+          "title": "Janna Support vs Sona - KR Master Patch 25.06",
+          "rankClaim": "Master",
+          "patch": "25.6",
+          "durationSec": 1810,
+          "region": "KR",
+          "uploaded": "2025-03-27",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 43,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "ZZEJs2XPnOY",
+          "title": "(TH Daglas) Janna Support vs Karma - EUW Grandmaster Patch 26.12",
+          "rankClaim": "Grandmaster",
+          "patch": "26.12",
+          "durationSec": 1494,
+          "region": "EUW",
+          "player": "TH Daglas",
+          "uploaded": "2026-06-24",
+          "moments": []
+        },
+        {
+          "videoId": "7S8kHTXqlvg",
+          "title": "Janna Support vs Karma - EUW Grandmaster Patch 25.18",
+          "rankClaim": "Grandmaster",
+          "patch": "25.18",
+          "durationSec": 1441,
+          "region": "EUW",
+          "uploaded": "2025-09-25",
+          "moments": []
+        },
+        {
+          "videoId": "vBI97gDVif0",
+          "title": "Janna Support vs Karma - EUW Challenger Patch 25.08",
+          "rankClaim": "Challenger",
+          "patch": "25.8",
+          "durationSec": 1628,
+          "region": "EUW",
+          "uploaded": "2025-05-01",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 44,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "vA-lWJgZ5ns",
+          "title": "Janna Support vs Taric - EUW Challenger Patch 26.05",
+          "rankClaim": "Challenger",
+          "patch": "26.5",
+          "durationSec": 1596,
+          "region": "EUW",
+          "uploaded": "2026-03-13",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 168,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 409,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 481,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 582,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 610,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 726,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 758,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 952,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 970,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 988,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1060,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1153,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1200,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1236,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1332,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1456,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1509,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1528,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1558,
+              "label": "Take down The Inhibitor"
+            },
+            {
+              "atSec": 1585,
+              "label": "End credit"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 45,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "cV6Mr2t_1Vk",
+          "title": "Janna Support vs Veigar - KR Challenger Patch 25.24",
+          "rankClaim": "Challenger",
+          "patch": "25.24",
+          "durationSec": 1564,
+          "region": "KR",
+          "uploaded": "2025-12-11",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 955,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 969,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1113,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1203,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1377,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1405,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1422,
+              "label": "Take down The Inhibitor"
+            },
+            {
+              "atSec": 1505,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1537,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1553,
+              "label": "End credit"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 53,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "ADMOO-gxCQg",
+          "title": "Janna Support vs Blitzcrank - EUW Challenger Patch 26.14",
+          "rankClaim": "Challenger",
+          "patch": "26.14",
+          "durationSec": 1648,
+          "region": "EUW",
+          "uploaded": "2026-07-25",
+          "moments": []
+        },
+        {
+          "videoId": "n44liuez_Uc",
+          "title": "Janna Support vs Blitzcrank - EUW Challenger Patch 25.07",
+          "rankClaim": "Challenger",
+          "patch": "25.7",
+          "durationSec": 1516,
+          "region": "EUW",
+          "uploaded": "2025-04-16",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 60,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "I2ENaXeehEY",
+          "title": "Janna Support vs Elise (MKOI Alvaro) - EUW Challenger Patch 26.18",
+          "rankClaim": "Challenger",
+          "patch": "26.18",
+          "durationSec": 1720,
+          "region": "EUW",
+          "uploaded": "2026-09-23",
+          "moments": []
+        },
+        {
+          "videoId": "4T8A7zYj3V8",
+          "title": "Janna Support vs Elise - EUW Grandmaster Patch 25.24",
+          "rankClaim": "Grandmaster",
+          "patch": "25.24",
+          "durationSec": 1556,
+          "region": "EUW",
+          "uploaded": "2026-01-09",
+          "moments": []
+        },
+        {
+          "videoId": "gZQrFj-1k5c",
+          "title": "Janna Support vs Elise - EUW Grandmaster Patch 25.12",
+          "rankClaim": "Grandmaster",
+          "patch": "25.12",
+          "durationSec": 1634,
+          "region": "EUW",
+          "uploaded": "2025-06-26",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 61,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "X_LHDguM72E",
+          "title": "Janna Mid vs Orianna - KR Master Patch 25.13",
+          "rankClaim": "Master",
+          "patch": "25.13",
+          "durationSec": 1844,
+          "region": "KR",
+          "uploaded": "2025-07-14",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 72,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "WnfHghVB1zw",
+          "title": "Janna Support vs Skarner - KR Challenger Patch 25.23",
+          "rankClaim": "Challenger",
+          "patch": "25.23",
+          "durationSec": 1507,
+          "region": "KR",
+          "uploaded": "2025-11-29",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 78,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "8qEWi6mjO7k",
+          "title": "Janna Support vs Poppy - KR Grandmaster Patch 25.15",
+          "rankClaim": "Grandmaster",
+          "patch": "25.15",
+          "durationSec": 1572,
+          "region": "KR",
+          "uploaded": "2025-08-06",
+          "moments": []
+        },
+        {
+          "videoId": "sPmlqNsqjxo",
+          "title": "Janna Support vs Poppy - EUW Grandmaster Patch 25.11",
+          "rankClaim": "Grandmaster",
+          "patch": "25.11",
+          "durationSec": 1510,
+          "region": "EUW",
+          "uploaded": "2025-06-13",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 89,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "tXhJMFW7Iwo",
+          "title": "(CJJ Jensen) Janna Support vs Leona - EUW Grandmaster Patch 26.13",
+          "rankClaim": "Grandmaster",
+          "patch": "26.13",
+          "durationSec": 1872,
+          "region": "EUW",
+          "player": "CJJ Jensen",
+          "uploaded": "2026-07-05",
+          "moments": []
+        },
+        {
+          "videoId": "CN_W69wzAzU",
+          "title": "Janna Support vs Leona - VN Challenger Patch 25.13",
+          "rankClaim": "Challenger",
+          "patch": "25.13",
+          "durationSec": 1807,
+          "uploaded": "2025-07-09",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 99,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "fEHIB3saYR4",
+          "title": "Janna Support vs Lux - KR Grandmaster Patch 25.05",
+          "rankClaim": "Grandmaster",
+          "patch": "25.5",
+          "durationSec": 1750,
+          "region": "KR",
+          "uploaded": "2025-03-13",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 111,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "RxarOCtWgQg",
+          "title": "(Mega) Janna Support vs Nautilus - EUW Grandmaster Patch 26.16",
+          "rankClaim": "Grandmaster",
+          "patch": "26.16",
+          "durationSec": 1647,
+          "region": "EUW",
+          "player": "Mega",
+          "uploaded": "2026-08-21",
+          "moments": []
+        },
+        {
+          "videoId": "haqOxXyEyW0",
+          "title": "Janna Support vs Nautilus (JL HungryPanda) - EUW Grandmaster Patch 26.15",
+          "rankClaim": "Grandmaster",
+          "patch": "26.15",
+          "durationSec": 1682,
+          "region": "EUW",
+          "uploaded": "2026-08-09",
+          "moments": []
+        },
+        {
+          "videoId": "mjx7KVOyqoM",
+          "title": "Janna Support vs Nautilus - KR Master Patch 26.05",
+          "rankClaim": "Master",
+          "patch": "26.5",
+          "durationSec": 1666,
+          "region": "KR",
+          "uploaded": "2026-03-20",
+          "moments": []
+        },
+        {
+          "videoId": "iZ4XilgQiPE",
+          "title": "Janna Support vs Nautilus - KR Challenger Patch 26.03",
+          "rankClaim": "Challenger",
+          "patch": "26.3",
+          "durationSec": 1563,
+          "region": "KR",
+          "uploaded": "2026-02-12",
+          "moments": []
+        },
+        {
+          "videoId": "ukx1kCZ0sNU",
+          "title": "Janna Support vs Nautilus - EUW Challenger Patch 25.24",
+          "rankClaim": "Challenger",
+          "patch": "25.24",
+          "durationSec": 1515,
+          "region": "EUW",
+          "uploaded": "2026-01-01",
+          "moments": []
+        },
+        {
+          "videoId": "fCBqiFRQY3g",
+          "title": "Janna Support vs Nautilus - KR Challenger Patch 25.17",
+          "rankClaim": "Challenger",
+          "patch": "25.17",
+          "durationSec": 1958,
+          "region": "KR",
+          "uploaded": "2025-09-06",
+          "moments": []
+        },
+        {
+          "videoId": "pvqde7uyLrY",
+          "title": "Janna Support vs Nautilus - KR Grandmaster Patch 25.08",
+          "rankClaim": "Grandmaster",
+          "patch": "25.8",
+          "durationSec": 2137,
+          "region": "KR",
+          "uploaded": "2025-04-24",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 467,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 589,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 735,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 804,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1013,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1157,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1445,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1519,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1629,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1721,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1849,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1899,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 2045,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 2090,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 2116,
+              "label": "End credit"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 117,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "WRqTghaFA5s",
+          "title": "Janna Support vs Lulu - EUW Challenger Patch 26.08",
+          "rankClaim": "Challenger",
+          "patch": "26.8",
+          "durationSec": 1421,
+          "region": "EUW",
+          "uploaded": "2026-04-22",
+          "moments": []
+        },
+        {
+          "videoId": "7QJqU2uPt-g",
+          "title": "Janna Support vs Lulu - KR Master Patch 26.07",
+          "rankClaim": "Master",
+          "patch": "26.7",
+          "durationSec": 1751,
+          "region": "KR",
+          "uploaded": "2026-04-07",
+          "moments": []
+        },
+        {
+          "videoId": "nC0ZZJVmUpo",
+          "title": "Janna Support vs Lulu - EUW Grandmaster Patch 25.10",
+          "rankClaim": "Grandmaster",
+          "patch": "25.10",
+          "durationSec": 1504,
+          "region": "EUW",
+          "uploaded": "2025-05-29",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 117,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "nIYAoU6pvps",
+          "title": "THE BIGGEST CONTENT CREATOR TOURNAMENT EVER",
+          "rankClaim": "Master+",
+          "patch": "26.10",
+          "durationSec": 24433,
+          "patchEstimated": true,
+          "player": "Alois",
+          "uploaded": "2026-05-22",
+          "format": "stream",
+          "cam": true,
+          "startSec": 19278,
+          "endSec": 22078,
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 122,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "D-e3wTOUkQs",
+          "title": "Janna Top vs Darius - KR Master Patch 25.04",
+          "rankClaim": "Master",
+          "patch": "25.4",
+          "durationSec": 1754,
+          "region": "KR",
+          "uploaded": "2025-03-02",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 131,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "XDP6H74agIE",
+          "title": "Janna Mid vs Diana - EUW Grandmaster Patch 26.10",
+          "rankClaim": "Grandmaster",
+          "patch": "26.10",
+          "durationSec": 1831,
+          "region": "EUW",
+          "uploaded": "2026-05-29",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 142,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "6EeayGA8O_w",
+          "title": "(Trailblazer) Janna Support vs Zoe - EUW Challenger Patch 26.19",
+          "rankClaim": "Challenger",
+          "patch": "26.19",
+          "durationSec": 1634,
+          "region": "EUW",
+          "player": "Trailblazer",
+          "uploaded": "2026-10-07",
+          "result": "W",
+          "moments": [
+            {
+              "atSec": 169,
+              "label": "First Blood — Lillia kills Kalista",
+              "kind": "kill"
+            },
+            {
+              "atSec": 557,
+              "label": "Tristana picks off Zoe"
+            },
+            {
+              "atSec": 660,
+              "label": "Tristana picks off Zoe"
+            },
+            {
+              "atSec": 762,
+              "label": "Red takes 1st Dragon (Hextech)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 777,
+              "label": "Lillia Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 862,
+              "label": "Lillia picks off Locke"
+            },
+            {
+              "atSec": 960,
+              "label": "Lillia picks off Locke"
+            },
+            {
+              "atSec": 1037,
+              "label": "Yasuo takes down Locke"
+            },
+            {
+              "atSec": 1074,
+              "label": "Red takes 2nd Dragon (Infernal)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1196,
+              "label": "Blue takes Baron",
+              "kind": "baron"
+            },
+            {
+              "atSec": 1303,
+              "label": "Lillia kills Zoe",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1371,
+              "label": "Tristana kills Locke",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1397,
+              "label": "Red takes 3rd Dragon (Cloud)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1413,
+              "label": "Janna kills Rengar",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1490,
+              "label": "Team fight (4 kills)",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1549,
+              "label": "Mid Inhibitor falls (Blue)"
+            },
+            {
+              "atSec": 1560,
+              "label": "Yasuo eliminates Zoe"
+            },
+            {
+              "atSec": 1594,
+              "label": "Yasuo picks off Kalista"
+            }
+          ]
+        },
+        {
+          "videoId": "krondjPPuTc",
+          "title": "Janna Support vs Zoe - NA Challenger Patch 26.06",
+          "rankClaim": "Challenger",
+          "patch": "26.6",
+          "durationSec": 1654,
+          "region": "NA",
+          "uploaded": "2026-03-27",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 164,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "nefCt2ILKEk",
+          "title": "Janna Support vs Camille - NA Challenger Patch 26.19",
+          "rankClaim": "Challenger",
+          "patch": "26.19",
+          "durationSec": 1551,
+          "region": "NA",
+          "uploaded": "2026-09-26",
+          "moments": []
+        },
+        {
+          "videoId": "ILez2nXj3Kw",
+          "title": "Janna Support vs Camille - EUW Challenger Patch 26.17",
+          "rankClaim": "Challenger",
+          "patch": "26.17",
+          "durationSec": 1611,
+          "region": "EUW",
+          "uploaded": "2026-08-30",
+          "moments": []
+        },
+        {
+          "videoId": "z4lWKbFVAzY",
+          "title": "Janna Support vs Camille - EUW Grandmaster Patch 26.11",
+          "rankClaim": "Grandmaster",
+          "patch": "26.11",
+          "durationSec": 1604,
+          "region": "EUW",
+          "uploaded": "2026-06-07",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 201,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "kqXOui-PzTg",
+          "title": "Janna Support vs Braum - EUW Master Patch 26.20",
+          "rankClaim": "Master",
+          "patch": "26.20",
+          "durationSec": 1850,
+          "region": "EUW",
+          "uploaded": "2026-10-12",
+          "result": "W",
+          "moments": [
+            {
+              "atSec": 166,
+              "label": "First Blood — Janna kills Yunara",
+              "kind": "kill"
+            },
+            {
+              "atSec": 438,
+              "label": "Red takes 1st Dragon (Ocean)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 622,
+              "label": "Aphelios takes down Yunara"
+            },
+            {
+              "atSec": 783,
+              "label": "Blue takes 1st Dragon (Hextech)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 867,
+              "label": "Aphelios takes down Yunara"
+            },
+            {
+              "atSec": 963,
+              "label": "Viego Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1087,
+              "label": "Team fight (4 kills)",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1121,
+              "label": "Blue takes 2nd Dragon (Cloud)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1250,
+              "label": "Blue takes Baron",
+              "kind": "baron"
+            },
+            {
+              "atSec": 1252,
+              "label": "Vel'Koz eliminates Locke"
+            },
+            {
+              "atSec": 1413,
+              "label": "Viego Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1422,
+              "label": "Viego Triple Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1432,
+              "label": "Viego picks off Locke"
+            },
+            {
+              "atSec": 1451,
+              "label": "Blue takes 3rd Dragon (Cloud)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1581,
+              "label": "Aphelios kills Locke",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1592,
+              "label": "Mid Inhibitor falls (Red)"
+            },
+            {
+              "atSec": 1726,
+              "label": "Team fight (4 kills)",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1781,
+              "label": "Vel'Koz picks off Cho'Gath"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 233,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "ifan_uKE8eU",
+          "title": "Janna Mid vs Briar - NA Grandmaster Patch 26.12",
+          "rankClaim": "Grandmaster",
+          "patch": "26.12",
+          "durationSec": 1514,
+          "region": "NA",
+          "uploaded": "2026-06-18",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 235,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "5Z_8btGe_-U",
+          "title": "Janna Support vs Senna - NA Challenger Patch 25.21",
+          "rankClaim": "Challenger",
+          "patch": "25.21",
+          "durationSec": 2017,
+          "region": "NA",
+          "uploaded": "2025-11-05",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 266,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "X5fjatqBv5U",
+          "title": "Janna Top vs Aatrox - EUW Grandmaster Patch 25.06",
+          "rankClaim": "Grandmaster",
+          "patch": "25.6",
+          "durationSec": 1604,
+          "region": "EUW",
+          "uploaded": "2025-04-04",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 69,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 403,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 482,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 586,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 669,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 779,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 869,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 934,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 991,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1022,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1085,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1219,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1331,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1347,
+              "label": "Take down The Inhibitor"
+            },
+            {
+              "atSec": 1366,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1411,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1425,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1526,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1541,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1583,
+              "label": "End credit"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 267,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "Y4VfgyJMLrY",
+          "title": "Janna Support vs Nami - EUW Grandmaster Patch 26.20",
+          "rankClaim": "Grandmaster",
+          "patch": "26.20",
+          "durationSec": 1838,
+          "region": "EUW",
+          "uploaded": "2026-10-23",
+          "result": "W",
+          "moments": [
+            {
+              "atSec": 406,
+              "label": "Red takes 1st Dragon (Infernal)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 583,
+              "label": "First Blood — Viktor kills Syndra",
+              "kind": "kill"
+            },
+            {
+              "atSec": 821,
+              "label": "Blue takes 1st Dragon (Chemtech)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 878,
+              "label": "Jayce kills Syndra",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1035,
+              "label": "Viktor eliminates Xin Zhao"
+            },
+            {
+              "atSec": 1142,
+              "label": "Jayce takes down Nami"
+            },
+            {
+              "atSec": 1147,
+              "label": "Red takes 2nd Dragon (Hextech)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1180,
+              "label": "Jayce takes down Cassiopeia"
+            },
+            {
+              "atSec": 1268,
+              "label": "Jayce takes down Nami"
+            },
+            {
+              "atSec": 1299,
+              "label": "Malphite takes down Locke"
+            },
+            {
+              "atSec": 1401,
+              "label": "Jayce kills Syndra",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1473,
+              "label": "Blue takes 2nd Dragon (Hextech)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1547,
+              "label": "Bot Inhibitor falls (Red)"
+            },
+            {
+              "atSec": 1578,
+              "label": "Wukong takes down Xin Zhao"
+            },
+            {
+              "atSec": 1676,
+              "label": "Wukong eliminates Syndra"
+            },
+            {
+              "atSec": 1705,
+              "label": "Red takes Baron",
+              "kind": "baron"
+            },
+            {
+              "atSec": 1793,
+              "label": "Jayce kills Syndra",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1806,
+              "label": "Mid Inhibitor falls (Blue)"
+            }
+          ]
+        },
+        {
+          "videoId": "Dl2g9YuT2Jg",
+          "title": "Janna Support vs Nami - EUW Challenger Patch 26.02",
+          "rankClaim": "Challenger",
+          "patch": "26.2",
+          "durationSec": 1445,
+          "region": "EUW",
+          "uploaded": "2026-02-05",
+          "moments": []
+        },
+        {
+          "videoId": "kBSewFOwxok",
+          "title": "Janna Support vs Nami - EUW Grandmaster Patch 25.17",
+          "rankClaim": "Grandmaster",
+          "patch": "25.17",
+          "durationSec": 1481,
+          "region": "EUW",
+          "uploaded": "2025-09-12",
+          "moments": []
+        },
+        {
+          "videoId": "v4izwYT1oe4",
+          "title": "Janna Support vs Nami - KR Challenger Patch 25.10",
+          "rankClaim": "Challenger",
+          "patch": "25.10",
+          "durationSec": 1701,
+          "region": "KR",
+          "uploaded": "2025-05-23",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 652,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 709,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 917,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 958,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1157,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1364,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1393,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1513,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1550,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1627,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1680,
+              "label": "End credit"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 412,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "yARF70S1mzc",
+          "title": "Janna Support vs Thresh - EUW Challenger Patch 26.18",
+          "rankClaim": "Challenger",
+          "patch": "26.18",
+          "durationSec": 1798,
+          "region": "EUW",
+          "uploaded": "2026-09-15",
+          "moments": []
+        },
+        {
+          "videoId": "kkhA8lTZI9Q",
+          "title": "Janna Support vs Thresh - EUW Challenger Patch 26.17",
+          "rankClaim": "Challenger",
+          "patch": "26.17",
+          "durationSec": 1490,
+          "region": "EUW",
+          "uploaded": "2026-09-10",
+          "moments": []
+        },
+        {
+          "videoId": "5KK5TeZp4Is",
+          "title": "Janna Support vs Thresh - EUW Challenger Patch 26.10",
+          "rankClaim": "Challenger",
+          "patch": "26.10",
+          "durationSec": 1497,
+          "region": "EUW",
+          "uploaded": "2026-05-20",
+          "moments": []
+        },
+        {
+          "videoId": "p4QWU-wR0dE",
+          "title": "Janna Support vs Thresh - KR Master Patch 26.09",
+          "rankClaim": "Master",
+          "patch": "26.9",
+          "durationSec": 1564,
+          "region": "KR",
+          "uploaded": "2026-05-06",
+          "moments": []
+        },
+        {
+          "videoId": "gdz8j7Kul8Y",
+          "title": "Janna Support vs Thresh - VN Challenger Patch 25.16",
+          "rankClaim": "Challenger",
+          "patch": "25.16",
+          "durationSec": 1813,
+          "uploaded": "2025-08-28",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 432,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "FMtywMue_5g",
+          "title": "Janna Support vs Bard - EUW Challenger Patch 25.22",
+          "rankClaim": "Challenger",
+          "patch": "25.22",
+          "durationSec": 1669,
+          "region": "EUW",
+          "uploaded": "2025-11-20",
+          "moments": []
+        },
+        {
+          "videoId": "Ey8_e-KtYKQ",
+          "title": "Janna Support vs Bard - EUW Grandmaster Patch 25.19",
+          "rankClaim": "Grandmaster",
+          "patch": "25.19",
+          "durationSec": 1697,
+          "region": "EUW",
+          "uploaded": "2025-10-10",
+          "moments": []
+        },
+        {
+          "videoId": "1VliRG_09co",
+          "title": "Janna Support vs Bard - KR Challenger Patch 25.18",
+          "rankClaim": "Challenger",
+          "patch": "25.18",
+          "durationSec": 1429,
+          "region": "KR",
+          "uploaded": "2025-09-19",
+          "moments": []
+        },
+        {
+          "videoId": "my0hTTfY1Ig",
+          "title": "Janna Support vs Bard - EUW Grandmaster Patch 25.14",
+          "rankClaim": "Grandmaster",
+          "patch": "25.14",
+          "durationSec": 1721,
+          "region": "EUW",
+          "uploaded": "2025-07-30",
+          "moments": []
+        },
+        {
+          "videoId": "ScsxNRGVQIo",
+          "title": "Janna Support vs Bard - KR Challenger Patch 25.11",
+          "rankClaim": "Challenger",
+          "patch": "25.11",
+          "durationSec": 1641,
+          "region": "KR",
+          "uploaded": "2025-06-06",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 497,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "vWKE9F66bs8",
+          "title": "Janna Support vs Rakan - KR Grandmaster Patch 26.02",
+          "rankClaim": "Grandmaster",
+          "patch": "26.2",
+          "durationSec": 1590,
+          "region": "KR",
+          "uploaded": "2026-01-29",
+          "moments": []
+        },
+        {
+          "videoId": "zp3BQwHnIt8",
+          "title": "Janna Support vs Rakan - EUW Grandmaster Patch 26.01",
+          "rankClaim": "Grandmaster",
+          "patch": "26.1",
+          "durationSec": 1594,
+          "region": "EUW",
+          "uploaded": "2026-01-22",
+          "moments": []
+        },
+        {
+          "videoId": "gfPBHuFkTHM",
+          "title": "Janna Support vs Rakan - KR Challenger Patch 25.14",
+          "rankClaim": "Challenger",
+          "patch": "25.14",
+          "durationSec": 1531,
+          "region": "KR",
+          "uploaded": "2025-07-27",
+          "moments": []
+        },
+        {
+          "videoId": "bG47Xu4S2Dw",
+          "title": "Janna Support vs Rakan - EUW Grandmaster Patch 25.04",
+          "rankClaim": "Grandmaster",
+          "patch": "25.4",
+          "durationSec": 2088,
+          "region": "EUW",
+          "uploaded": "2025-02-25",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 210,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 470,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 531,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 664,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 702,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 743,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 829,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 896,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 990,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1006,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1112,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1217,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1291,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1337,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1374,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1483,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1933,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 2067,
+              "label": "End credit"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 518,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "8GMz8DojBTI",
+          "title": "Janna Support vs Neeko - EUW Challenger Patch 26.08",
+          "rankClaim": "Challenger",
+          "patch": "26.8",
+          "durationSec": 1868,
+          "region": "EUW",
+          "uploaded": "2026-05-01",
+          "moments": []
+        },
+        {
+          "videoId": "GOIVXDdKHdY",
+          "title": "Janna Support vs Neeko - KR Master Patch 25.22",
+          "rankClaim": "Master",
+          "patch": "25.22",
+          "durationSec": 1877,
+          "region": "KR",
+          "uploaded": "2025-11-12",
+          "moments": []
+        },
+        {
+          "videoId": "7MPWoeX-t9U",
+          "title": "Janna Support vs Neeko - KR Challenger Patch 25.09",
+          "rankClaim": "Challenger",
+          "patch": "25.9",
+          "durationSec": 1860,
+          "region": "KR",
+          "uploaded": "2025-05-08",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 526,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "rSHixSE3nRc",
+          "title": "Janna Support vs Rell - KR Master Patch 26.21",
+          "rankClaim": "Master",
+          "patch": "26.21",
+          "durationSec": 1684,
+          "region": "KR",
+          "uploaded": "2026-10-26",
+          "result": "W",
+          "moments": [
+            {
+              "atSec": 144,
+              "label": "First Blood — Zed kills Talon",
+              "kind": "kill"
+            },
+            {
+              "atSec": 241,
+              "label": "Janna outplays Varus"
+            },
+            {
+              "atSec": 322,
+              "label": "Red takes 1st Dragon (Mountain)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 666,
+              "label": "Red takes 2nd Dragon (Hextech)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 920,
+              "label": "Taliyah kills Jayce",
+              "kind": "kill"
+            },
+            {
+              "atSec": 981,
+              "label": "Red takes 3rd Dragon (Chemtech)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1005,
+              "label": "Kog'Maw picks off Rell"
+            },
+            {
+              "atSec": 1043,
+              "label": "Taliyah takes down Talon"
+            },
+            {
+              "atSec": 1110,
+              "label": "Taliyah takes down Talon"
+            },
+            {
+              "atSec": 1141,
+              "label": "Taliyah kills Rell",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1166,
+              "label": "Sion picks off Varus"
+            },
+            {
+              "atSec": 1203,
+              "label": "Zed eliminates Sylas"
+            },
+            {
+              "atSec": 1297,
+              "label": "Red takes 4th Dragon (Chemtech)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1402,
+              "label": "Team fight (3 kills)",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1456,
+              "label": "Red takes Baron",
+              "kind": "baron"
+            },
+            {
+              "atSec": 1554,
+              "label": "Kog'Maw eliminates Talon"
+            },
+            {
+              "atSec": 1593,
+              "label": "Mid Inhibitor falls (Blue)"
+            },
+            {
+              "atSec": 1672,
+              "label": "Blue takes Elder Dragon",
+              "kind": "dragon"
+            }
+          ]
+        },
+        {
+          "videoId": "IvngcxJQTM4",
+          "title": "Janna Support vs Rell - EUW Grandmaster Patch 26.03",
+          "rankClaim": "Grandmaster",
+          "patch": "26.3",
+          "durationSec": 1635,
+          "region": "EUW",
+          "uploaded": "2026-02-20",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 50,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 152,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 266,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 348,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 421,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 472,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 635,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 833,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 897,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1000,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1019,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1095,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1194,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1278,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1365,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1485,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1517,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1527,
+              "label": "Take down The Inhibitor"
+            },
+            {
+              "atSec": 1545,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1606,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1624,
+              "label": "End credit"
+            }
+          ]
+        },
+        {
+          "videoId": "LD9m_TScy-I",
+          "title": "Janna Support vs Rell - KR Grandmaster Patch 25.07",
+          "rankClaim": "Grandmaster",
+          "patch": "25.7",
+          "durationSec": 1714,
+          "region": "KR",
+          "uploaded": "2025-04-09",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 555,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "vFcVDBBy5hY",
+          "title": "(Henry Snow) Janna Support vs Pyke - EUW Grandmaster Patch 26.13",
+          "rankClaim": "Grandmaster",
+          "patch": "26.13",
+          "durationSec": 1783,
+          "region": "EUW",
+          "player": "Henry Snow",
+          "uploaded": "2026-07-14",
+          "moments": []
+        },
+        {
+          "videoId": "uNGp5w4GxpY",
+          "title": "Janna Support vs Pyke - KR Master Patch 25.24",
+          "rankClaim": "Master",
+          "patch": "25.24",
+          "durationSec": 1563,
+          "region": "KR",
+          "uploaded": "2025-12-27",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 638,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 850,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 960,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 984,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1245,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1330,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1440,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1531,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1552,
+              "label": "End credit"
+            }
+          ]
+        },
+        {
+          "videoId": "x-PtpJcjPs4",
+          "title": "Janna Support vs Pyke - KR Challenger Patch 25.12",
+          "rankClaim": "Challenger",
+          "patch": "25.12",
+          "durationSec": 1599,
+          "region": "KR",
+          "uploaded": "2025-06-19",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 902,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "ExHM99tJImU",
+          "title": "Janna Support vs Milio - NA Grandmaster Patch 25.24",
+          "rankClaim": "Grandmaster",
+          "patch": "25.24",
+          "durationSec": 1586,
+          "region": "NA",
+          "uploaded": "2025-12-17",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 114,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 352,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 485,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 574,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 757,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1040,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1180,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1362,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1379,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1407,
+              "label": "Take down The Inhibitor"
+            },
+            {
+              "atSec": 1417,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1487,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1575,
+              "label": "End credit"
+            }
+          ]
+        },
+        {
+          "videoId": "ZZuHWD8rEZk",
+          "title": "Janna Support vs Milio - NA Grandmaster Patch 25.23",
+          "rankClaim": "Grandmaster",
+          "patch": "25.23",
+          "durationSec": 1774,
+          "region": "NA",
+          "uploaded": "2025-12-04",
+          "moments": []
+        }
+      ]
+    }
+  ]
+}

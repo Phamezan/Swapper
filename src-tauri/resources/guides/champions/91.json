@@ -1,0 +1,4202 @@
+{
+  "schema": 1,
+  "champion": 91,
+  "generatedAt": "2026-11-07T13:25:14.592Z",
+  "guides": [
+    {
+      "champion": 91,
+      "enemy": 84,
+      "lane": "mid",
+      "patch": "26.21",
+      "reviewed": false,
+      "difficulty": "Skill matchup",
+      "favoredWhen": "She denies your passive, dodges W return, Es your Q. Punish E2-less windows.",
+      "keyTips": [
+        {
+          "text": "She denies passive procs: rake only when it sticks.",
+          "scope": "pair",
+          "sourceIds": [
+            "anguish"
+          ]
+        },
+        {
+          "text": "She dodges W return: aim the first half, never the return.",
+          "scope": "pair",
+          "sourceIds": [
+            "anguish"
+          ]
+        },
+        {
+          "text": "She Es your Q, engages R, saves E2: bait E before committing.",
+          "scope": "pair",
+          "sourceIds": [
+            "anguish"
+          ],
+          "abilityKeys": [
+            {
+              "champion": 84,
+              "key": "E"
+            }
+          ]
+        }
+      ],
+      "enemyTips": {},
+      "sections": {
+        "overview": {
+          "tips": []
+        },
+        "early-lane": {
+          "tips": [
+            {
+              "text": "Like Fizz, her instant full combo kills you if low: never stay low.",
+              "scope": "pair",
+              "sourceIds": [
+                "anguish"
+              ]
+            },
+            {
+              "text": "She saves E2 for your commit: force it before R.",
+              "scope": "pair",
+              "sourceIds": [
+                "anguish"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 84,
+                  "key": "E"
+                }
+              ]
+            }
+          ]
+        },
+        "mid-lane": {
+          "tips": [
+            {
+              "text": "Her R engage answers your R: hold yours for hers.",
+              "scope": "pair",
+              "sourceIds": [
+                "anguish"
+              ]
+            },
+            {
+              "text": "She plays for the low-HP all-in: roam before she can force it.",
+              "scope": "pair",
+              "sourceIds": [
+                "anguish"
+              ]
+            }
+          ]
+        },
+        "win-condition": {
+          "tips": [
+            {
+              "text": "Passive denied plus E2 baited: the Akali who never Es first never wins.",
+              "scope": "pair",
+              "sourceIds": [
+                "anguish"
+              ]
+            }
+          ]
+        }
+      },
+      "itemization": [],
+      "sources": [
+        {
+          "id": "anguish",
+          "author": "Anguish333",
+          "rankClaim": "Master (profile badge; title claims 2000LP GrandMaster EUW and Challenger EUNE) · Akali main",
+          "rank": "master",
+          "url": "https://www.mobafire.com/league-of-legends/build/26-20-anguish-2000lp-grandmasters-euw-challenger-eune-akali-mid-top-s16-guide-every-matchup-item-rune-explained-625064",
+          "kind": "mobafire"
+        }
+      ]
+    },
+    {
+      "champion": 91,
+      "enemy": 134,
+      "lane": "mid",
+      "patch": "26.21",
+      "reviewed": false,
+      "difficulty": "Skill matchup",
+      "favoredWhen": "She refuses to stack with the wave, sidesteps W returns, and respects your all-ins. Pick her or the CS.",
+      "keyTips": [
+        {
+          "text": "She refuses to stack with your wave: your W is trade and farm, so rake both.",
+          "scope": "pair",
+          "sourceIds": [
+            "shok"
+          ]
+        },
+        {
+          "text": "She makes you pick her or the CS: never get neither.",
+          "scope": "pair",
+          "sourceIds": [
+            "shok"
+          ]
+        },
+        {
+          "text": "Both W passes enable your jump and passive: land both.",
+          "scope": "pair",
+          "sourceIds": [
+            "shok"
+          ],
+          "abilityKeys": [
+            {
+              "champion": 91,
+              "key": "W"
+            }
+          ]
+        }
+      ],
+      "enemyTips": {},
+      "sections": {
+        "overview": {
+          "tips": []
+        },
+        "early-lane": {
+          "tips": [
+            {
+              "text": "She steps sideways not back at your W: lead laterally.",
+              "scope": "pair",
+              "sourceIds": [
+                "shok"
+              ]
+            },
+            {
+              "text": "She respects your level 2 and 6 all-ins with Ignite: force at spikes.",
+              "scope": "pair",
+              "sourceIds": [
+                "shok"
+              ]
+            }
+          ]
+        },
+        "mid-lane": {
+          "tips": [
+            {
+              "text": "Her early HP or Cloth Armor blunts you: roam when she turtles.",
+              "scope": "pair",
+              "sourceIds": [
+                "shok"
+              ],
+              "itemIds": [
+                1029
+              ]
+            },
+            {
+              "text": "She dodges the return: double-cast angles.",
+              "scope": "pair",
+              "sourceIds": [
+                "shok"
+              ]
+            }
+          ]
+        },
+        "win-condition": {
+          "tips": [
+            {
+              "text": "Picked plus returned: the Syndra who never chooses wrong never wins.",
+              "scope": "pair",
+              "sourceIds": [
+                "shok"
+              ]
+            }
+          ]
+        }
+      },
+      "itemization": [],
+      "sources": [
+        {
+          "id": "shok",
+          "author": "ShokLoL",
+          "rankClaim": "Rank 1 Challenger · Syndra main",
+          "rank": "challenger",
+          "url": "https://www.mobafire.com/league-of-legends/build/26-17-shoks-rank-1-challenger-syndra-guide-602710",
+          "kind": "mobafire"
+        }
+      ]
+    },
+    {
+      "champion": 91,
+      "enemy": 238,
+      "lane": "mid",
+      "patch": "26.21",
+      "reviewed": false,
+      "difficulty": "Skill matchup",
+      "favoredWhen": "Skill matchup. He never melees, uses range, and answers your R with his. Punish W-Q-ins.",
+      "keyTips": [
+        {
+          "text": "He refuses melee, using range: close with W-Q.",
+          "scope": "pair",
+          "sourceIds": [
+            "aikopanda"
+          ]
+        },
+        {
+          "text": "He respects your burst and pokes from range: his trades are bad, so force good trades.",
+          "scope": "pair",
+          "sourceIds": [
+            "v222"
+          ]
+        },
+        {
+          "text": "His Sweeper finds Q during your R stealth: R from fog.",
+          "scope": "pair",
+          "sourceIds": [
+            "aikopanda"
+          ]
+        }
+      ],
+      "enemyTips": {
+        "early-lane": [
+          {
+            "text": "Zed often places Living Shadow before Death Mark so he can swap away from skillshots. Hold your crowd control until he has used the swap.",
+            "scope": "enemy",
+            "sourceIds": [
+              "aikopanda"
+            ],
+            "patch": "26.21",
+            "abilityKeys": [
+              {
+                "champion": 238,
+                "key": "W"
+              },
+              {
+                "champion": 238,
+                "key": "R"
+              }
+            ]
+          }
+        ],
+        "win-condition": [
+          {
+            "text": "Death Mark always lands Zed behind his target. Pre-aim crowd control and escapes behind you, not toward where he cast it.",
+            "scope": "enemy",
+            "sourceIds": [
+              "peng04"
+            ],
+            "patch": "26.21",
+            "abilityKeys": [
+              {
+                "champion": 238,
+                "key": "R"
+              }
+            ]
+          }
+        ]
+      },
+      "sections": {
+        "overview": {
+          "tips": []
+        },
+        "early-lane": {
+          "tips": [
+            {
+              "text": "His range poke forces bad trades: W-Q in, R out.",
+              "scope": "pair",
+              "sourceIds": [
+                "v222"
+              ]
+            },
+            {
+              "text": "He plays the skill matchup at range: your W-Q is the only engage, so make it count.",
+              "scope": "pair",
+              "sourceIds": [
+                "aikopanda"
+              ]
+            }
+          ]
+        },
+        "mid-lane": {
+          "tips": [
+            {
+              "text": "Death Mark always lands Zed behind his target. Pre-aim crowd control and escapes behind you, not toward where he cast it.",
+              "scope": "pair",
+              "sourceIds": [
+                "peng04"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 238,
+                  "key": "R"
+                }
+              ]
+            },
+            {
+              "text": "His backwards combo answers your W-Q in: Q after he shadows.",
+              "scope": "pair",
+              "sourceIds": [
+                "v222"
+              ]
+            }
+          ]
+        },
+        "win-condition": {
+          "tips": [
+            {
+              "text": "He Rs your R or Ws to kite: bait the answer before committing.",
+              "scope": "pair",
+              "sourceIds": [
+                "v222"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 238,
+                  "key": "R"
+                },
+                {
+                  "champion": 238,
+                  "key": "W"
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "itemization": [],
+      "sources": [
+        {
+          "id": "aikopanda",
+          "author": "AikoPanda",
+          "rankClaim": "Zed main",
+          "url": "https://www.mobafire.com/league-of-legends/build/26-20-video-guides-hidden-combos-all-matchups-zed-all-in-one-guide-652800",
+          "kind": "mobafire"
+        },
+        {
+          "id": "v222",
+          "author": "V222",
+          "rankClaim": "Challenger EUW · Zed main",
+          "rank": "challenger",
+          "url": "https://www.mobafire.com/league-of-legends/build/all-matchups-26-14-zed-guide-2000lp-euw-challenger-652354",
+          "kind": "mobafire"
+        },
+        {
+          "id": "peng04",
+          "author": "Peng04",
+          "rankClaim": "Challenger · Ahri main",
+          "rank": "challenger",
+          "url": "https://www.mobafire.com/league-of-legends/build/26-20-pengs-ahri-guide-5-1mil-points-13x-challenger-648700",
+          "kind": "mobafire"
+        }
+      ]
+    }
+  ],
+  "vods": [
+    {
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "BgX7pzQ2bvw",
+          "title": "TALON IS S+ TIER TO CLIMB NOW",
+          "rankClaim": "Master+",
+          "patch": "26.21",
+          "durationSec": 1694,
+          "patchEstimated": true,
+          "player": "Sinerias",
+          "uploaded": "2026-10-21",
+          "format": "stream",
+          "cam": true,
+          "moments": [
+            {
+              "atSec": 0,
+              "label": "Early jungle pathing"
+            },
+            {
+              "atSec": 96,
+              "label": "Gaining map pressure"
+            },
+            {
+              "atSec": 227,
+              "label": "Champion scaling and tactics"
+            },
+            {
+              "atSec": 381,
+              "label": "Controlling the enemy jungle"
+            },
+            {
+              "atSec": 523,
+              "label": "Maintaining lane and map tempo"
+            },
+            {
+              "atSec": 776,
+              "label": "Strategic invades and tempo"
+            },
+            {
+              "atSec": 961,
+              "label": "Mid-game objective dominance"
+            },
+            {
+              "atSec": 1214,
+              "label": "Closing the game"
+            },
+            {
+              "atSec": 1563,
+              "label": "Game conclusion"
+            }
+          ]
+        },
+        {
+          "videoId": "Tlq72zHm1mM",
+          "title": "HOW TO PLAY TALON INTO A HARD COMP",
+          "rankClaim": "Master+",
+          "patch": "26.20",
+          "durationSec": 1471,
+          "patchEstimated": true,
+          "player": "Sinerias",
+          "uploaded": "2026-10-11",
+          "format": "stream",
+          "cam": true,
+          "moments": [
+            {
+              "atSec": 0,
+              "label": "Game introduction and clear"
+            },
+            {
+              "atSec": 85,
+              "label": "Early ganking and pathing"
+            },
+            {
+              "atSec": 204,
+              "label": "Avoiding high-risk plays"
+            },
+            {
+              "atSec": 322,
+              "label": "Maintaining tempo and control"
+            },
+            {
+              "atSec": 477,
+              "label": "Strategic invading and farming"
+            },
+            {
+              "atSec": 681,
+              "label": "Mid-game transitions"
+            },
+            {
+              "atSec": 845,
+              "label": "Objective control and pressure"
+            },
+            {
+              "atSec": 1024,
+              "label": "Assassination and skirmishing"
+            },
+            {
+              "atSec": 1232,
+              "label": "Securing the win"
+            }
+          ]
+        },
+        {
+          "videoId": "jjggnTBR4oc",
+          "title": "HOW TO 1V9 CARRY WITH TALON",
+          "rankClaim": "Master+",
+          "patch": "26.18",
+          "durationSec": 1581,
+          "patchEstimated": true,
+          "player": "Sinerias",
+          "uploaded": "2026-09-21",
+          "format": "stream",
+          "cam": true,
+          "moments": []
+        },
+        {
+          "videoId": "yBbnFSSO6x4",
+          "title": "FULL EDUCATIONAL TALON GAMEPLAY | FREE GUIDE",
+          "rankClaim": "Master+",
+          "patch": "26.17",
+          "durationSec": 1825,
+          "patchEstimated": true,
+          "player": "Sinerias",
+          "uploaded": "2026-09-04",
+          "format": "stream",
+          "cam": true,
+          "moments": []
+        },
+        {
+          "videoId": "kZLSgNd5ZPg",
+          "title": "I Tried Cyclosword Talon... Riot Needs To Nerf This",
+          "rankClaim": "Master+",
+          "patch": "26.11",
+          "durationSec": 1680,
+          "patchEstimated": true,
+          "player": "Broxah",
+          "uploaded": "2026-06-03",
+          "format": "stream",
+          "cam": true,
+          "moments": []
+        },
+        {
+          "videoId": "YAf-uyZClnA",
+          "title": "LEARN HOW TO SNOWBALL WITH TALON",
+          "rankClaim": "Master+",
+          "patch": "26.6",
+          "durationSec": 1740,
+          "patchEstimated": true,
+          "player": "Sinerias",
+          "uploaded": "2026-03-20",
+          "format": "stream",
+          "cam": true,
+          "moments": []
+        },
+        {
+          "videoId": "uMHSZ8Pe-gk",
+          "title": "THIS IS HOW TO PLAY TALON JUNGLE",
+          "rankClaim": "Master+",
+          "patch": "26.3",
+          "durationSec": 956,
+          "patchEstimated": true,
+          "player": "Sinerias",
+          "uploaded": "2026-02-15",
+          "format": "stream",
+          "cam": true,
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 3,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "_kd0YgjARZs",
+          "title": "Talon Mid vs Galio - TW Challenger Patch 26.07",
+          "rankClaim": "Challenger",
+          "patch": "26.7",
+          "durationSec": 1468,
+          "uploaded": "2026-04-12",
+          "moments": []
+        },
+        {
+          "videoId": "25JUG7P5mdU",
+          "title": "Talon Mid vs Galio - KR Grandmaster Patch 25.05",
+          "rankClaim": "Grandmaster",
+          "patch": "25.5",
+          "durationSec": 1687,
+          "region": "KR",
+          "uploaded": "2025-03-09",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 4,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "SVp6afeeE6I",
+          "title": "Talon Mid vs Twisted Fate (WE Karis) - KR Grandmaster Patch 26.13",
+          "rankClaim": "Grandmaster",
+          "patch": "26.13",
+          "durationSec": 1617,
+          "region": "KR",
+          "uploaded": "2026-07-14",
+          "moments": []
+        },
+        {
+          "videoId": "6UjABOyd0Mc",
+          "title": "Talon Mid vs Twisted Fate (AL Shanks) - KR Master Patch 26.11",
+          "rankClaim": "Master",
+          "patch": "26.11",
+          "durationSec": 1652,
+          "region": "KR",
+          "player": "Shanks",
+          "uploaded": "2026-06-08",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 5,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "0m75Lq_1i78",
+          "title": "T1 Oner Talon vs Xin Zhao [ Jungle ] Patch 25.24 Ranked Korea",
+          "rankClaim": "Master+",
+          "patch": "25.24",
+          "durationSec": 1628,
+          "region": "KR",
+          "player": "Oner",
+          "team": "T1",
+          "uploaded": "2026-01-08",
+          "moments": []
+        },
+        {
+          "videoId": "23DYj3hdVIc",
+          "title": "T1 Oner Talon vs Xin Zhao [ Jungle ] Korea Challenger Patch 25.11",
+          "rankClaim": "Challenger",
+          "patch": "25.11",
+          "durationSec": 1122,
+          "region": "KR",
+          "player": "Oner",
+          "team": "T1",
+          "uploaded": "2025-05-30",
+          "moments": []
+        },
+        {
+          "videoId": "25zhrCjgtB0",
+          "title": "Talon Jungle vs Xin Zhao - KR Challenger Patch 25.07",
+          "rankClaim": "Challenger",
+          "patch": "25.7",
+          "durationSec": 1786,
+          "region": "KR",
+          "uploaded": "2025-04-06",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 8,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "zLZByfO5xZo",
+          "title": "Talon Mid vs Vladimir - NA Grandmaster Patch 25.19",
+          "rankClaim": "Grandmaster",
+          "patch": "25.19",
+          "durationSec": 1989,
+          "region": "NA",
+          "uploaded": "2025-10-05",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 9,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "qj3PDlf6zwc",
+          "title": "Talon vs Fiddlesticks Jungle - KR Challenger - Patch 25.8 Season 15",
+          "rankClaim": "Challenger",
+          "patch": "25.8",
+          "durationSec": 2281,
+          "region": "KR",
+          "uploaded": "2025-04-24",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 13,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "huBm96HnwSs",
+          "title": "Talon vs Ryze Mid - KR Challenger - Patch 16.05 Season 16",
+          "rankClaim": "Challenger",
+          "patch": "26.5",
+          "durationSec": 1981,
+          "region": "KR",
+          "uploaded": "2026-03-10",
+          "moments": []
+        },
+        {
+          "videoId": "Y6aJvt6eOMY",
+          "title": "Talon Mid vs Ryze - NA Grandmaster Patch 25.18",
+          "rankClaim": "Grandmaster",
+          "patch": "25.18",
+          "durationSec": 1719,
+          "region": "NA",
+          "uploaded": "2025-09-20",
+          "moments": []
+        },
+        {
+          "videoId": "YuQaw79BFXg",
+          "title": "Talon Mid vs Ryze - EUW Grandmaster Patch 25.07",
+          "rankClaim": "Grandmaster",
+          "patch": "25.7",
+          "durationSec": 1681,
+          "region": "EUW",
+          "uploaded": "2025-04-11",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 14,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "HYQ5lHr4b8o",
+          "title": "Talon Mid vs Sion - KR Grandmaster Patch 26.21",
+          "rankClaim": "Grandmaster",
+          "patch": "26.21",
+          "durationSec": 1799,
+          "region": "KR",
+          "uploaded": "2026-10-31",
+          "result": "W",
+          "moments": [
+            {
+              "atSec": 115,
+              "label": "First Blood — Talon kills Sion",
+              "kind": "kill"
+            },
+            {
+              "atSec": 434,
+              "label": "Red takes 1st Dragon (Cloud)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 626,
+              "label": "Talon takes down Sion"
+            },
+            {
+              "atSec": 767,
+              "label": "Blue takes 1st Dragon (Mountain)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 947,
+              "label": "Talon takes down Fiora"
+            },
+            {
+              "atSec": 1082,
+              "label": "Blue takes 2nd Dragon (Hextech)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1248,
+              "label": "Talon Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1253,
+              "label": "Talon Triple Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1277,
+              "label": "Blue takes Baron",
+              "kind": "baron"
+            },
+            {
+              "atSec": 1339,
+              "label": "Talon Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1415,
+              "label": "Talon Triple Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1450,
+              "label": "Blue takes 3rd Dragon (Hextech)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1474,
+              "label": "Talon outplays Fiora"
+            },
+            {
+              "atSec": 1523,
+              "label": "Talon catches Sion again"
+            },
+            {
+              "atSec": 1686,
+              "label": "Nautilus Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1719,
+              "label": "Blue takes 2nd Baron",
+              "kind": "baron"
+            },
+            {
+              "atSec": 1768,
+              "label": "Talon takes down Bard"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 18,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "Jt8fHMiaR-4",
+          "title": "Talon Mid vs Tristana - EUW Challenger Patch 25.17",
+          "rankClaim": "Challenger",
+          "patch": "25.17",
+          "durationSec": 1673,
+          "region": "EUW",
+          "uploaded": "2025-09-07",
+          "moments": []
+        },
+        {
+          "videoId": "OHVbWuupqY8",
+          "title": "Talon vs Tristana Mid - KR Challenger - Patch 25.10 Season 15",
+          "rankClaim": "Challenger",
+          "patch": "25.10",
+          "durationSec": 1831,
+          "region": "KR",
+          "uploaded": "2025-05-23",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 20,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "KOZjnSplwmE",
+          "title": "Talon Jungle vs Nunu & Willump - KR Master Patch 25.04",
+          "rankClaim": "Master",
+          "patch": "25.4",
+          "durationSec": 1873,
+          "region": "KR",
+          "uploaded": "2025-02-28",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 23,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "UeCgMiJBUHE",
+          "title": "Talon Mid vs Tryndamere - KR Grandmaster Patch 26.20",
+          "rankClaim": "Grandmaster",
+          "patch": "26.20",
+          "durationSec": 1726,
+          "region": "KR",
+          "uploaded": "2026-10-17",
+          "result": "W",
+          "moments": [
+            {
+              "atSec": 22,
+              "label": "First Blood — Talon kills Tryndamere",
+              "kind": "kill"
+            },
+            {
+              "atSec": 90,
+              "label": "Talon takes down Tryndamere"
+            },
+            {
+              "atSec": 401,
+              "label": "Blue takes 1st Dragon (Cloud)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 760,
+              "label": "Blue takes 2nd Dragon (Chemtech)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 845,
+              "label": "Talon catches Tryndamere again"
+            },
+            {
+              "atSec": 1009,
+              "label": "Talon outduels Tryndamere (3rd time)"
+            },
+            {
+              "atSec": 1085,
+              "label": "Blue takes 3rd Dragon (Mountain)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1175,
+              "label": "Talon catches Xerath"
+            },
+            {
+              "atSec": 1322,
+              "label": "Talon solo kills Qiyana",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1352,
+              "label": "Blue takes Baron",
+              "kind": "baron"
+            },
+            {
+              "atSec": 1421,
+              "label": "Talon outduels Xerath again"
+            },
+            {
+              "atSec": 1452,
+              "label": "Blue takes 4th Dragon (Mountain)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1534,
+              "label": "Locke kills Pantheon",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1551,
+              "label": "Bot Inhibitor falls (Red)"
+            },
+            {
+              "atSec": 1566,
+              "label": "Mid Inhibitor falls (Red)"
+            },
+            {
+              "atSec": 1644,
+              "label": "Talon outplays Xerath (3rd time)"
+            },
+            {
+              "atSec": 1654,
+              "label": "Jax kills Qiyana",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1681,
+              "label": "Locke Double Kill",
+              "kind": "kill"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 30,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "tMC3_V5NtyI",
+          "title": "Talon Jungle vs Karthus - KR Challenger Patch 26.09",
+          "rankClaim": "Challenger",
+          "patch": "26.9",
+          "durationSec": 1840,
+          "region": "KR",
+          "uploaded": "2026-05-09",
+          "moments": []
+        },
+        {
+          "videoId": "SRmK_F9gfes",
+          "title": "Talon Jungle vs Karthus - KR Master Patch 26.07",
+          "rankClaim": "Master",
+          "patch": "26.7",
+          "durationSec": 1545,
+          "region": "KR",
+          "uploaded": "2026-04-05",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 152,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 216,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 357,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 384,
+              "label": "Hunt The Dragon",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 470,
+              "label": "Hunt The Void Grubs",
+              "kind": "grubs"
+            },
+            {
+              "atSec": 648,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 677,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 701,
+              "label": "Hunt The Dragon",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 863,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 948,
+              "label": "Hunt The Rift Herald",
+              "kind": "herald"
+            },
+            {
+              "atSec": 980,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1019,
+              "label": "Hunt The Dragon",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1207,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1277,
+              "label": "Hunt The Baron Nashor",
+              "kind": "baron"
+            },
+            {
+              "atSec": 1330,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1349,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1369,
+              "label": "Hunt The Dragon",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1387,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1409,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1475,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1498,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1534,
+              "label": "End credit"
+            }
+          ]
+        },
+        {
+          "videoId": "4uH4mQ4_Gg0",
+          "title": "Talon vs Karthus Jungle - KR Challenger - Patch 25.21 Season 15",
+          "rankClaim": "Challenger",
+          "patch": "25.21",
+          "durationSec": 2250,
+          "region": "KR",
+          "uploaded": "2025-11-03",
+          "moments": []
+        },
+        {
+          "videoId": "laLpn-2vL2Q",
+          "title": "Talon vs Karthus Jungle - KR Challenger - Patch 25.20 Season 15",
+          "rankClaim": "Challenger",
+          "patch": "25.20",
+          "durationSec": 1681,
+          "region": "KR",
+          "uploaded": "2025-10-13",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 35,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "BUrGf-baaKM",
+          "title": "Talon vs Shaco [ Jungle ] Lol Korea Master Patch 26.12 ✅",
+          "rankClaim": "Master",
+          "patch": "26.12",
+          "durationSec": 1726,
+          "region": "KR",
+          "uploaded": "2026-06-15",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 38,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "VXKOzezgfJU",
+          "title": "Talon Mid vs Kassadin - EUW Grandmaster Patch 26.03",
+          "rankClaim": "Grandmaster",
+          "patch": "26.3",
+          "durationSec": 1506,
+          "region": "EUW",
+          "uploaded": "2026-02-14",
+          "moments": []
+        },
+        {
+          "videoId": "jSIKUCLfET8",
+          "title": "Talon Mid vs Kassadin - TW Challenger Patch 25.10",
+          "rankClaim": "Challenger",
+          "patch": "25.10",
+          "durationSec": 1651,
+          "uploaded": "2025-05-23",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 39,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "oHtf7-yvCT0",
+          "title": "Talon Mid vs Irelia - EUW Grandmaster Patch 25.16",
+          "rankClaim": "Grandmaster",
+          "patch": "25.16",
+          "durationSec": 1801,
+          "region": "EUW",
+          "uploaded": "2025-08-24",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 42,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "IEbnSaLd74A",
+          "title": "Talon Mid vs Corki - KR Challenger Patch 25.24",
+          "rankClaim": "Challenger",
+          "patch": "25.24",
+          "durationSec": 1526,
+          "region": "KR",
+          "uploaded": "2025-12-13",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 302,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 364,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 402,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 545,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 624,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 880,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 948,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1023,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1047,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1068,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1092,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1125,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1199,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1284,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1404,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1488,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1515,
+              "label": "End credit"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 43,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "TNvdRCVQ7PE",
+          "title": "Talon Mid vs Karma - EUW Grandmaster Patch 25.15",
+          "rankClaim": "Grandmaster",
+          "patch": "25.15",
+          "durationSec": 1779,
+          "region": "EUW",
+          "uploaded": "2025-08-12",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 48,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "nUCEYVweEm8",
+          "title": "Talon Top vs Trundle - KR Master Patch 25.08",
+          "rankClaim": "Master",
+          "patch": "25.8",
+          "durationSec": 1725,
+          "region": "KR",
+          "uploaded": "2025-05-01",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 374,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 450,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 608,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 625,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 817,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 847,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 910,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 988,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1075,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1103,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1167,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1231,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1281,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1421,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1518,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1550,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1582,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1704,
+              "label": "End credit"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 55,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "RErhxUfCLiQ",
+          "title": "Talon Mid vs Katarina - NA Grandmaster Patch 25.24",
+          "rankClaim": "Grandmaster",
+          "patch": "25.24",
+          "durationSec": 1579,
+          "region": "NA",
+          "uploaded": "2026-01-04",
+          "moments": []
+        },
+        {
+          "videoId": "FtXXG2KXdW4",
+          "title": "Talon vs Katarina Mid - KR Challenger - Patch 25.17 Season 15",
+          "rankClaim": "Challenger",
+          "patch": "25.17",
+          "durationSec": 1441,
+          "region": "KR",
+          "uploaded": "2025-09-08",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 56,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "wFb1CVWMhVI",
+          "title": "Talon vs Nocturne [ Jungle ] Lol Korea Master | Patch 26.19 ✅",
+          "rankClaim": "Master",
+          "patch": "26.19",
+          "durationSec": 1459,
+          "region": "KR",
+          "uploaded": "2026-10-07",
+          "moments": []
+        },
+        {
+          "videoId": "vnQSTDGF3BM",
+          "title": "(ESB qualzy) Talon Jungle vs Nocturne - EUW Grandmaster Patch 26.13",
+          "rankClaim": "Grandmaster",
+          "patch": "26.13",
+          "durationSec": 1710,
+          "region": "EUW",
+          "player": "ESB qualzy",
+          "uploaded": "2026-07-01",
+          "moments": []
+        },
+        {
+          "videoId": "-slDySILbMQ",
+          "title": "Talon vs Nocturne 15/1/4 (Jungle) | EUW Master | Talon OTP Replay",
+          "rankClaim": "Master",
+          "patch": "26.9",
+          "durationSec": 1600,
+          "region": "EUW",
+          "patchEstimated": true,
+          "uploaded": "2026-05-10",
+          "moments": []
+        },
+        {
+          "videoId": "7fGctRXIx78",
+          "title": "Talon Jungle vs Nocturne - EUW Grandmaster Patch 26.08",
+          "rankClaim": "Grandmaster",
+          "patch": "26.8",
+          "durationSec": 1702,
+          "region": "EUW",
+          "uploaded": "2026-04-19",
+          "moments": []
+        },
+        {
+          "videoId": "ruaJIOVKhLM",
+          "title": "Talon Jungle vs Nocturne - KR Grandmaster Patch 25.20",
+          "rankClaim": "Grandmaster",
+          "patch": "25.20",
+          "durationSec": 1840,
+          "region": "KR",
+          "uploaded": "2025-10-11",
+          "moments": []
+        },
+        {
+          "videoId": "Zt3SFNruRYo",
+          "title": "Talon Jungle vs Nocturne - EUW Challenger Patch 25.05",
+          "rankClaim": "Challenger",
+          "patch": "25.5",
+          "durationSec": 1761,
+          "region": "EUW",
+          "uploaded": "2025-03-16",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 58,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "i1AGE1HGpAI",
+          "title": "Talon Top vs Renekton - KR Master Patch 25.24",
+          "rankClaim": "Master",
+          "patch": "25.24",
+          "durationSec": 1576,
+          "region": "KR",
+          "uploaded": "2025-12-21",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 118,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 261,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 461,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 493,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 517,
+              "label": "Hunt The Void Grubs",
+              "kind": "grubs"
+            },
+            {
+              "atSec": 598,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 861,
+              "label": "Get a Triple Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 917,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 947,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1048,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1150,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1221,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1350,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1508,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1535,
+              "label": "Take down The Inhibitor"
+            },
+            {
+              "atSec": 1548,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1565,
+              "label": "End credit"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 59,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "dRNjo6j4WJI",
+          "title": "Talon Jungle vs Jarvan IV (DNS Pyosik) - KR Grandmaster Patch 26.16",
+          "rankClaim": "Grandmaster",
+          "patch": "26.16",
+          "durationSec": 1612,
+          "region": "KR",
+          "player": "Pyosik",
+          "uploaded": "2026-08-22",
+          "moments": []
+        },
+        {
+          "videoId": "Q1xXWXZmDXo",
+          "title": "Talon Jungle vs Jarvan IV - KR Master Patch 25.18",
+          "rankClaim": "Master",
+          "patch": "25.18",
+          "durationSec": 1696,
+          "region": "KR",
+          "uploaded": "2025-09-15",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 62,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "GC7Rt8cvgKI",
+          "title": "Talon vs Wukong Jungle - KR Challenger - Patch 25.24 Season 15",
+          "rankClaim": "Challenger",
+          "patch": "25.24",
+          "durationSec": 1546,
+          "region": "KR",
+          "uploaded": "2025-12-20",
+          "moments": []
+        },
+        {
+          "videoId": "-sdtoN1bVA4",
+          "title": "Talon vs Wukong Jungle - KR Challenger - Patch 25.10 Season 15",
+          "rankClaim": "Challenger",
+          "patch": "25.10",
+          "durationSec": 1541,
+          "region": "KR",
+          "uploaded": "2025-05-20",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 64,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "41O-y-OzPA8",
+          "title": "(USE White) Talon Jungle vs Lee Sin - EUW Grandmaster Patch 26.14",
+          "rankClaim": "Grandmaster",
+          "patch": "26.14",
+          "durationSec": 1682,
+          "region": "EUW",
+          "player": "USE White",
+          "uploaded": "2026-07-30",
+          "moments": []
+        },
+        {
+          "videoId": "l2zR7Ozacvs",
+          "title": "Talon vs Lee Sin JUngle - KR Challenger - Patch 25.11 Season 15",
+          "rankClaim": "Challenger",
+          "patch": "25.11",
+          "durationSec": 1681,
+          "region": "KR",
+          "uploaded": "2025-06-04",
+          "moments": []
+        },
+        {
+          "videoId": "aBRUAaGepkM",
+          "title": "Talon Jungle vs Lee Sin - EUW Challenger Patch 25.06",
+          "rankClaim": "Challenger",
+          "patch": "25.6",
+          "durationSec": 1698,
+          "region": "EUW",
+          "uploaded": "2025-03-29",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 165,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 343,
+              "label": "Hunt The Dragon",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 414,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 497,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 598,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 651,
+              "label": "Hunt The Void Grubs",
+              "kind": "grubs"
+            },
+            {
+              "atSec": 677,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 795,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 824,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 969,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1039,
+              "label": "Hunt The Rift Herald",
+              "kind": "herald"
+            },
+            {
+              "atSec": 1106,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1138,
+              "label": "Hunt The Dragon",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1206,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1241,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1255,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1325,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1348,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1369,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1451,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1472,
+              "label": "Hunt The Dragon",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1493,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1510,
+              "label": "Take down The Inhibitor"
+            },
+            {
+              "atSec": 1531,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1627,
+              "label": "Hunt The Baron Nashor",
+              "kind": "baron"
+            },
+            {
+              "atSec": 1656,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1677,
+              "label": "End credit"
+            }
+          ]
+        },
+        {
+          "videoId": "v2WUkqaSStA",
+          "title": "T1 Oner Talon vs Lee Sin [ Jungle ] Patch 25.3 Korea Challenger ✅",
+          "rankClaim": "Challenger",
+          "patch": "25.3",
+          "durationSec": 1129,
+          "region": "KR",
+          "player": "Oner",
+          "team": "T1",
+          "uploaded": "2025-02-10",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 76,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "9igAgzQpxPc",
+          "title": "Talon Jungle vs Nidalee - EUW Challenger Patch 25.24",
+          "rankClaim": "Challenger",
+          "patch": "25.24",
+          "durationSec": 1529,
+          "region": "EUW",
+          "uploaded": "2025-12-29",
+          "moments": []
+        },
+        {
+          "videoId": "zDUPFWsqwPw",
+          "title": "OTP Talon vs Nidalee [ Jungle ] Patch 25.24 Korea Challenger ✅",
+          "rankClaim": "Challenger",
+          "patch": "25.24",
+          "durationSec": 1441,
+          "region": "KR",
+          "player": "OTP",
+          "uploaded": "2025-12-20",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 77,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "jz4QyH8O94w",
+          "title": "Talon vs Udyr 11/1/9 (Jungle) | EUW Grandmaster | Talon OTP Replay",
+          "rankClaim": "Grandmaster",
+          "patch": "26.11",
+          "durationSec": 1169,
+          "region": "EUW",
+          "patchEstimated": true,
+          "uploaded": "2026-05-28",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 79,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "oSLkexTTaXs",
+          "title": "Talon vs Gragas Jungle - KR Challenger - Patch 16.09 Season 16",
+          "rankClaim": "Challenger",
+          "patch": "26.9",
+          "durationSec": 1996,
+          "region": "KR",
+          "uploaded": "2026-05-08",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 80,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "puhzijA41DI",
+          "title": "Talon Jungle vs Pantheon - KR Grandmaster Patch 25.24",
+          "rankClaim": "Grandmaster",
+          "patch": "25.24",
+          "durationSec": 1444,
+          "region": "KR",
+          "uploaded": "2025-12-06",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 38,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 422,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 483,
+              "label": "Hunt The Void Grubs",
+              "kind": "grubs"
+            },
+            {
+              "atSec": 539,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 700,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 830,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1029,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1055,
+              "label": "Hunt The Rift Herald",
+              "kind": "herald"
+            },
+            {
+              "atSec": 1073,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1145,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1176,
+              "label": "Hunt The Dragon",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1284,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1304,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1396,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1417,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1433,
+              "label": "End credit"
+            }
+          ]
+        },
+        {
+          "videoId": "rFaoATTKlw0",
+          "title": "Talon vs Pantheon Jungle - KR Challenger - Patch 25.13 Season 15",
+          "rankClaim": "Challenger",
+          "patch": "25.13",
+          "durationSec": 1831,
+          "region": "KR",
+          "uploaded": "2025-06-29",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 84,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "dtaeFCnX10s",
+          "title": "Talon Mid vs Akali - NA Grandmaster Patch 25.14",
+          "rankClaim": "Grandmaster",
+          "patch": "25.14",
+          "durationSec": 1557,
+          "region": "NA",
+          "uploaded": "2025-07-26",
+          "moments": []
+        },
+        {
+          "videoId": "fs-FbS-XniY",
+          "title": "Talon Mid vs Akali - VN Challenger Patch 25.11",
+          "rankClaim": "Challenger",
+          "patch": "25.11",
+          "durationSec": 1958,
+          "uploaded": "2025-06-07",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 90,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "9G4ZxJ6YYiA",
+          "title": "Talon Mid vs Malzahar - KR Grandmaster Patch 26.01",
+          "rankClaim": "Grandmaster",
+          "patch": "26.1",
+          "durationSec": 1492,
+          "region": "KR",
+          "uploaded": "2026-01-18",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 174,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 363,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 464,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 541,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 874,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 946,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 982,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1181,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1329,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1352,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1375,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1447,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1467,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1481,
+              "label": "End credit"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 102,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "Z12QclUIwo4",
+          "title": "(SK Skeanz) Talon Jungle vs Shyvana - EUW Challenger Patch 26.12",
+          "rankClaim": "Challenger",
+          "patch": "26.12",
+          "durationSec": 1578,
+          "region": "EUW",
+          "player": "SK Skeanz",
+          "uploaded": "2026-06-13",
+          "moments": []
+        },
+        {
+          "videoId": "XG6GUlYSc1w",
+          "title": "Talon Jungle vs Shyvana - KR Challenger Patch 26.06",
+          "rankClaim": "Challenger",
+          "patch": "26.6",
+          "durationSec": 1477,
+          "region": "KR",
+          "uploaded": "2026-03-29",
+          "moments": []
+        },
+        {
+          "videoId": "Jk_h7iZt05c",
+          "title": "Talon Jungle vs Shyvana - KR Master Patch 26.04",
+          "rankClaim": "Master",
+          "patch": "26.4",
+          "durationSec": 1712,
+          "region": "KR",
+          "uploaded": "2026-02-21",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 103,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "c7K_NXjmxLw",
+          "title": "Talon Mid vs Ahri - KR Master Patch 26.17",
+          "rankClaim": "Master",
+          "patch": "26.17",
+          "durationSec": 1813,
+          "region": "KR",
+          "uploaded": "2026-09-06",
+          "moments": []
+        },
+        {
+          "videoId": "i5PLZ42Ib3A",
+          "title": "Talon Mid vs Ahri - KR Master Patch 26.06",
+          "rankClaim": "Master",
+          "patch": "26.6",
+          "durationSec": 1522,
+          "region": "KR",
+          "uploaded": "2026-03-22",
+          "moments": []
+        },
+        {
+          "videoId": "V4ywDzICmCg",
+          "title": "Talon Mid vs Ahri - TW Challenger Patch 25.20",
+          "rankClaim": "Challenger",
+          "patch": "25.20",
+          "durationSec": 1569,
+          "uploaded": "2025-10-19",
+          "moments": []
+        },
+        {
+          "videoId": "3TnNRSAvyNE",
+          "title": "Talon vs Ahri Mid - KR Grandmaster - Patch 25.5 Season 15",
+          "rankClaim": "Grandmaster",
+          "patch": "25.5",
+          "durationSec": 1711,
+          "region": "KR",
+          "uploaded": "2025-03-14",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 104,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "p-ORDKnD2mI",
+          "title": "Talon vs Graves 11/8/9 (Jungle) | EUW Grandmaster | Talon OTP Replay",
+          "rankClaim": "Grandmaster",
+          "patch": "26.10",
+          "durationSec": 1678,
+          "region": "EUW",
+          "patchEstimated": true,
+          "uploaded": "2026-05-23",
+          "moments": []
+        },
+        {
+          "videoId": "q2rhwjqH7h8",
+          "title": "Talon vs Graves 10/2/6 (Jungle) | EUW Master | Talon OTP Replay",
+          "rankClaim": "Master",
+          "patch": "26.10",
+          "durationSec": 1824,
+          "region": "EUW",
+          "patchEstimated": true,
+          "uploaded": "2026-05-17",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 105,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "8yM3s44tCnc",
+          "title": "Talon Jungle vs Fizz - EUW Grandmaster Patch 26.14",
+          "rankClaim": "Grandmaster",
+          "patch": "26.14",
+          "durationSec": 1845,
+          "region": "EUW",
+          "uploaded": "2026-07-22",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 112,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "HQ_erDpxw68",
+          "title": "Talon Mid vs Viktor - KR Master Patch 26.18",
+          "rankClaim": "Master",
+          "patch": "26.18",
+          "durationSec": 1776,
+          "region": "KR",
+          "uploaded": "2026-09-21",
+          "moments": []
+        },
+        {
+          "videoId": "qcpBcdfcf-s",
+          "title": "Talon Mid vs Viktor - KR Challenger Patch 26.05",
+          "rankClaim": "Challenger",
+          "patch": "26.5",
+          "durationSec": 1882,
+          "region": "KR",
+          "uploaded": "2026-03-15",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 120,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "sixuY3oAt4I",
+          "title": "T1 Oner Talon vs Hecarim [ Jungle ] Korea Challenger 2086 LP | Patch 26.17",
+          "rankClaim": "Challenger",
+          "patch": "26.17",
+          "durationSec": 1427,
+          "region": "KR",
+          "player": "Oner",
+          "team": "T1",
+          "uploaded": "2026-08-31",
+          "moments": []
+        },
+        {
+          "videoId": "_YiplnT_ztY",
+          "title": "(FEC Cboi) Talon Jungle vs Hecarim - EUW Grandmaster Patch 26.10",
+          "rankClaim": "Grandmaster",
+          "patch": "26.10",
+          "durationSec": 1420,
+          "region": "EUW",
+          "player": "FEC Cboi",
+          "uploaded": "2026-05-23",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 126,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "RYyWCX54Zcc",
+          "title": "Talon vs Jayce Mid - KR Challenger - Patch 25.5 Season 15",
+          "rankClaim": "Challenger",
+          "patch": "25.5",
+          "durationSec": 1936,
+          "region": "KR",
+          "uploaded": "2025-03-07",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 126,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "-P8GlnkwZYw",
+          "title": "Talon Top vs Jayce - KR Master Patch 25.10",
+          "rankClaim": "Master",
+          "patch": "25.10",
+          "durationSec": 1464,
+          "region": "KR",
+          "uploaded": "2025-05-30",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 127,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "2XjwOOnBH8E",
+          "title": "Talon vs Lissandra Mid - KR Challenger - Patch 25.20 Season 15",
+          "rankClaim": "Challenger",
+          "patch": "25.20",
+          "durationSec": 1741,
+          "region": "KR",
+          "uploaded": "2025-10-10",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 131,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "19s6KA73Y30",
+          "title": "Talon Jungle vs Diana - KR Challenger Patch 25.15",
+          "rankClaim": "Challenger",
+          "patch": "25.15",
+          "durationSec": 1686,
+          "region": "KR",
+          "uploaded": "2025-08-03",
+          "moments": []
+        },
+        {
+          "videoId": "T_uBw9glcaI",
+          "title": "Talon Jungle vs Diana - KR Challenger Patch 25.09",
+          "rankClaim": "Challenger",
+          "patch": "25.9",
+          "durationSec": 1660,
+          "region": "KR",
+          "uploaded": "2025-05-04",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 252,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 459,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 486,
+              "label": "Hunt The Void Grubs",
+              "kind": "grubs"
+            },
+            {
+              "atSec": 593,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 681,
+              "label": "Hunt The Dragon",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 717,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 980,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1047,
+              "label": "Hunt The Dragon",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1072,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1203,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1281,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1327,
+              "label": "Hunt The Atakhan"
+            },
+            {
+              "atSec": 1398,
+              "label": "Hunt The Dragon",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1423,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1455,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1639,
+              "label": "End credit"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 131,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "CohXw4XE_Eg",
+          "title": "Talon Mid vs Diana - KR Challenger Patch 26.08",
+          "rankClaim": "Challenger",
+          "patch": "26.8",
+          "durationSec": 1546,
+          "region": "KR",
+          "uploaded": "2026-04-26",
+          "moments": []
+        },
+        {
+          "videoId": "FQ-udoVqfGg",
+          "title": "Talon vs Diana Mid - KR Challenger - Patch 25.21 Season 15",
+          "rankClaim": "Challenger",
+          "patch": "25.21",
+          "durationSec": 1831,
+          "region": "KR",
+          "uploaded": "2025-10-28",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 134,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "cn143QnKv3E",
+          "title": "Talon Mid vs Syndra - EUW Grandmaster Patch 25.23",
+          "rankClaim": "Grandmaster",
+          "patch": "25.23",
+          "durationSec": 1565,
+          "region": "EUW",
+          "uploaded": "2025-11-29",
+          "moments": []
+        },
+        {
+          "videoId": "Y3AIolgLhmU",
+          "title": "Talon Mid vs Syndra - EUW Grandmaster Patch 25.08",
+          "rankClaim": "Grandmaster",
+          "patch": "25.8",
+          "durationSec": 1641,
+          "region": "EUW",
+          "uploaded": "2025-04-26",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 376,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 483,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 612,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 693,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 821,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 849,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 914,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1014,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1096,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1149,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1233,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1327,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1425,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1447,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1501,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1593,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1609,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1620,
+              "label": "End credit"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 142,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "tU4VJsiL5P0",
+          "title": "Talon vs Zoe Mid - KR Challenger - Patch 25.24 Season 15",
+          "rankClaim": "Challenger",
+          "patch": "25.24",
+          "durationSec": 1651,
+          "region": "KR",
+          "uploaded": "2026-01-06",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 143,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "DYnYBPbIPAY",
+          "title": "Talon Jungle vs Zyra - KR Challenger Patch 25.19",
+          "rankClaim": "Challenger",
+          "patch": "25.19",
+          "durationSec": 1745,
+          "region": "KR",
+          "uploaded": "2025-09-28",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 154,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "YF7-_dZDDmo",
+          "title": "Talon vs Zac Jungle - KR Challenger - Patch 26.1 Season 16",
+          "rankClaim": "Challenger",
+          "patch": "26.1",
+          "durationSec": 1471,
+          "region": "KR",
+          "uploaded": "2026-01-16",
+          "moments": []
+        },
+        {
+          "videoId": "wZVAcwscCw4",
+          "title": "Talon Jungle vs Zac - KR Master Patch 26.01",
+          "rankClaim": "Master",
+          "patch": "26.1",
+          "durationSec": 1501,
+          "region": "KR",
+          "uploaded": "2026-01-11",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 105,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 296,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 411,
+              "label": "Hunt The Dragon",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 481,
+              "label": "Hunt The Void Grubs",
+              "kind": "grubs"
+            },
+            {
+              "atSec": 500,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 532,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 566,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 644,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 736,
+              "label": "Hunt The Dragon",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 764,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 891,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1030,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1081,
+              "label": "Hunt The Dragon",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1097,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1251,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1367,
+              "label": "Get a PENTA KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1490,
+              "label": "End credit"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 157,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "u80opsi9rvo",
+          "title": "Talon Mid vs Yasuo - KR Master Patch 26.19",
+          "rankClaim": "Master",
+          "patch": "26.19",
+          "durationSec": 1574,
+          "region": "KR",
+          "uploaded": "2026-10-04",
+          "moments": []
+        },
+        {
+          "videoId": "871551CV3z0",
+          "title": "Talon Mid vs Yasuo - KR Grandmaster Patch 25.06",
+          "rankClaim": "Grandmaster",
+          "patch": "25.6",
+          "durationSec": 1788,
+          "region": "KR",
+          "uploaded": "2025-03-25",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 163,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "iQsz3VknV30",
+          "title": "Talon Jungle vs Taliyah - KR Grandmaster Patch 26.02",
+          "rankClaim": "Grandmaster",
+          "patch": "26.2",
+          "durationSec": 1561,
+          "region": "KR",
+          "uploaded": "2026-01-24",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 198,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 301,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 372,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 548,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 583,
+              "label": "Hunt The Dragon",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 621,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 647,
+              "label": "Hunt The Void Grubs",
+              "kind": "grubs"
+            },
+            {
+              "atSec": 673,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 775,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 862,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 882,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 948,
+              "label": "Hunt The Dragon",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 982,
+              "label": "Hunt The Rift Herald",
+              "kind": "herald"
+            },
+            {
+              "atSec": 1039,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1273,
+              "label": "Hunt The Dragon",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1337,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1394,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1427,
+              "label": "Hunt The Baron Nashor",
+              "kind": "baron"
+            },
+            {
+              "atSec": 1508,
+              "label": "Get a Quadra Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1550,
+              "label": "End credit"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 166,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "3BY43v2G9VE",
+          "title": "Talon Mid vs Akshan - NA Challenger Patch 25.04",
+          "rankClaim": "Challenger",
+          "patch": "25.4",
+          "durationSec": 1993,
+          "region": "NA",
+          "uploaded": "2025-03-06",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 56,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 149,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 229,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 303,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 377,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 511,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 657,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 822,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 896,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1171,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1293,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1462,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1511,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1588,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1659,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1857,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1905,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1972,
+              "label": "End credit"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 200,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "ti6g7AE5hp0",
+          "title": "Talon Jungle vs Bel'Veth - EUNE Challenger Patch 26.17",
+          "rankClaim": "Challenger",
+          "patch": "26.17",
+          "durationSec": 1460,
+          "region": "EUNE",
+          "uploaded": "2026-09-01",
+          "moments": []
+        },
+        {
+          "videoId": "6wTcrN8w-f0",
+          "title": "Talon Jungle vs Bel'Veth (RUD Ano) - EUW Grandmaster Patch 26.15",
+          "rankClaim": "Grandmaster",
+          "patch": "26.15",
+          "durationSec": 1816,
+          "region": "EUW",
+          "uploaded": "2026-08-12",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 202,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "FKbjW5I8BHo",
+          "title": "Talon Jungle vs Jhin (SC SPOOKY) - EUW Grandmaster Patch 26.18",
+          "rankClaim": "Grandmaster",
+          "patch": "26.18",
+          "durationSec": 1653,
+          "region": "EUW",
+          "uploaded": "2026-09-17",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 233,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "kcm84Jkfz4o",
+          "title": "Talon vs Briar Jungle - KR Challenger - Patch 16.15 Season 16",
+          "rankClaim": "Challenger",
+          "patch": "26.15",
+          "durationSec": 1366,
+          "region": "KR",
+          "uploaded": "2026-08-15",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 234,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "0GZGi_Ozy08",
+          "title": "Talon Jungle vs Viego - EUW Challenger Patch 26.05",
+          "rankClaim": "Challenger",
+          "patch": "26.5",
+          "durationSec": 1722,
+          "region": "EUW",
+          "uploaded": "2026-03-07",
+          "moments": []
+        },
+        {
+          "videoId": "-29LRdX9Qvs",
+          "title": "Talon Jungle vs Viego - KR Grandmaster Patch 25.21",
+          "rankClaim": "Grandmaster",
+          "patch": "25.21",
+          "durationSec": 1522,
+          "region": "KR",
+          "uploaded": "2025-10-26",
+          "moments": []
+        },
+        {
+          "videoId": "xxNTqiW2LKQ",
+          "title": "Talon vs Viego [ Jungle ] Patch 25.21 Korea Grandmaster 894 LP",
+          "rankClaim": "Grandmaster",
+          "patch": "25.21",
+          "durationSec": 1357,
+          "region": "KR",
+          "uploaded": "2025-10-23",
+          "moments": []
+        },
+        {
+          "videoId": "6tkujOuK6LQ",
+          "title": "Talon vs Viego [ Jungle ] Lol Korea Grandmaster Patch 25.19 ✅",
+          "rankClaim": "Grandmaster",
+          "patch": "25.19",
+          "durationSec": 1506,
+          "region": "KR",
+          "uploaded": "2025-10-02",
+          "moments": []
+        },
+        {
+          "videoId": "GgPALnxhb2w",
+          "title": "Talon Jungle vs Viego - KR Master Patch 25.14",
+          "rankClaim": "Master",
+          "patch": "25.14",
+          "durationSec": 2058,
+          "region": "KR",
+          "uploaded": "2025-07-18",
+          "moments": []
+        },
+        {
+          "videoId": "rtVSwLcPtoQ",
+          "title": "Talon vs Viego Jungle - KR Challenger - Patch 25.8 Season 15",
+          "rankClaim": "Challenger",
+          "patch": "25.8",
+          "durationSec": 1621,
+          "region": "KR",
+          "uploaded": "2025-05-01",
+          "moments": []
+        },
+        {
+          "videoId": "eEpMEUH_Dpw",
+          "title": "Talon Jungle vs Viego - KR Challenger Patch 25.08",
+          "rankClaim": "Challenger",
+          "patch": "25.8",
+          "durationSec": 1652,
+          "region": "KR",
+          "uploaded": "2025-04-19",
+          "moments": []
+        },
+        {
+          "videoId": "MtbFKFX1o5w",
+          "title": "Talon vs Viego Jungle - EUW Challenger - Patch 25.6 Season 15",
+          "rankClaim": "Challenger",
+          "patch": "25.6",
+          "durationSec": 1741,
+          "region": "EUW",
+          "uploaded": "2025-03-27",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 238,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "-FCeD49_uHA",
+          "title": "Talon vs Zed Jungle - KR Challenger - Patch 16.07 Season 16",
+          "rankClaim": "Challenger",
+          "patch": "26.7",
+          "durationSec": 1741,
+          "region": "KR",
+          "uploaded": "2026-04-03",
+          "moments": []
+        },
+        {
+          "videoId": "DgnnPVph-Mo",
+          "title": "Talon vs Zed Jungle - KR Challenger - Patch 25.22 Season 15",
+          "rankClaim": "Challenger",
+          "patch": "25.22",
+          "durationSec": 1691,
+          "region": "KR",
+          "uploaded": "2025-11-11",
+          "moments": []
+        },
+        {
+          "videoId": "o3FfJkEBVvk",
+          "title": "Talon Jungle vs Zed - KR Grandmaster Patch 25.22",
+          "rankClaim": "Grandmaster",
+          "patch": "25.22",
+          "durationSec": 1685,
+          "region": "KR",
+          "uploaded": "2025-11-09",
+          "moments": []
+        },
+        {
+          "videoId": "4FViVHwsn0o",
+          "title": "Talon vs Zed [ Jungle ] Lol Korea Master Patch 25.20",
+          "rankClaim": "Master",
+          "patch": "25.20",
+          "durationSec": 1386,
+          "region": "KR",
+          "uploaded": "2025-10-18",
+          "moments": []
+        },
+        {
+          "videoId": "4InAWGiD2a4",
+          "title": "Talon Jungle vs Zed - KR Grandmaster Patch 25.13",
+          "rankClaim": "Grandmaster",
+          "patch": "25.13",
+          "durationSec": 1893,
+          "region": "KR",
+          "uploaded": "2025-06-29",
+          "moments": []
+        },
+        {
+          "videoId": "5QoraIZ96lU",
+          "title": "Talon Jungle vs Zed - KR Grandmaster Patch 25.11",
+          "rankClaim": "Grandmaster",
+          "patch": "25.11",
+          "durationSec": 1665,
+          "region": "KR",
+          "uploaded": "2025-06-02",
+          "moments": []
+        },
+        {
+          "videoId": "rMOFYMXINFU",
+          "title": "Talon vs Zed Jungle - KR Challenger - Patch 25.10 Season 15",
+          "rankClaim": "Challenger",
+          "patch": "25.10",
+          "durationSec": 1981,
+          "region": "KR",
+          "uploaded": "2025-05-28",
+          "moments": []
+        },
+        {
+          "videoId": "K8RP2ImxFfE",
+          "title": "Talon Jungle vs Zed - KR Grandmaster Patch 25.10",
+          "rankClaim": "Grandmaster",
+          "patch": "25.10",
+          "durationSec": 1754,
+          "region": "KR",
+          "uploaded": "2025-05-16",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 219,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 339,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 606,
+              "label": "Hunt The Void Grubs",
+              "kind": "grubs"
+            },
+            {
+              "atSec": 698,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 772,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 898,
+              "label": "Hunt The Rift Herald",
+              "kind": "herald"
+            },
+            {
+              "atSec": 928,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 954,
+              "label": "Hunt The Dragon",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1022,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1166,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1211,
+              "label": "Hunt The Atakhan"
+            },
+            {
+              "atSec": 1379,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1401,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1414,
+              "label": "Hunt The Dragon",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1492,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1521,
+              "label": "Hunt The Baron Nashor",
+              "kind": "baron"
+            },
+            {
+              "atSec": 1580,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1666,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1692,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1733,
+              "label": "End credit"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 238,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "MMtiAkDgwVM",
+          "title": "Talon vs Zed Mid - KR Challenger - Patch 26.01 Season 16",
+          "rankClaim": "Challenger",
+          "patch": "26.1",
+          "durationSec": 2251,
+          "region": "KR",
+          "uploaded": "2026-01-21",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 245,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "VL8CEMT5diE",
+          "title": "Talon Jungle vs Ekko - NA Grandmaster Patch 26.20",
+          "rankClaim": "Grandmaster",
+          "patch": "26.20",
+          "durationSec": 1733,
+          "region": "NA",
+          "uploaded": "2026-10-14",
+          "result": "W",
+          "moments": [
+            {
+              "atSec": 110,
+              "label": "First Blood — Talon kills Urgot",
+              "kind": "kill"
+            },
+            {
+              "atSec": 333,
+              "label": "Red takes 1st Dragon (Infernal)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 557,
+              "label": "Talon outplays Ekko"
+            },
+            {
+              "atSec": 677,
+              "label": "Blue takes 1st Dragon (Hextech)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 789,
+              "label": "Talon solo kills Yone",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1015,
+              "label": "Smolder takes down Tristana"
+            },
+            {
+              "atSec": 1063,
+              "label": "Blue takes 2nd Dragon (Mountain)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1108,
+              "label": "Talon eliminates Tristana"
+            },
+            {
+              "atSec": 1152,
+              "label": "Talon kills Thresh",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1203,
+              "label": "Talon solo kills Ekko again",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1296,
+              "label": "Talon kills Urgot",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1419,
+              "label": "Red takes 2nd Dragon (Mountain)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1442,
+              "label": "Talon picks off Yone"
+            },
+            {
+              "atSec": 1566,
+              "label": "Talon takes down Ekko (3rd time)"
+            },
+            {
+              "atSec": 1577,
+              "label": "Smolder Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1601,
+              "label": "Mid Inhibitor falls (Red)"
+            },
+            {
+              "atSec": 1636,
+              "label": "Blue takes Baron",
+              "kind": "baron"
+            },
+            {
+              "atSec": 1682,
+              "label": "Talon eliminates Tristana"
+            }
+          ]
+        },
+        {
+          "videoId": "I7sBTVc1-F8",
+          "title": "Talon vs Ekko 15/3/7 (Jungle) | EUW Master | Talon OTP Replay",
+          "rankClaim": "Master",
+          "patch": "26.10",
+          "durationSec": 1382,
+          "region": "EUW",
+          "patchEstimated": true,
+          "uploaded": "2026-05-15",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 246,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "1CCubbY9EkY",
+          "title": "Talon Jungle vs Qiyana - KR Challenger Patch 26.19",
+          "rankClaim": "Challenger",
+          "patch": "26.19",
+          "durationSec": 1563,
+          "region": "KR",
+          "uploaded": "2026-09-30",
+          "moments": []
+        },
+        {
+          "videoId": "vZJGILc1qkA",
+          "title": "Talon vs Qiyana Jungle - KR Challenger - Patch 16.17 Season 16",
+          "rankClaim": "Challenger",
+          "patch": "26.17",
+          "durationSec": 1876,
+          "region": "KR",
+          "uploaded": "2026-09-07",
+          "moments": []
+        },
+        {
+          "videoId": "mRfbd7z6y3M",
+          "title": "Talon Jungle vs Qiyana - KR Master Patch 26.11",
+          "rankClaim": "Master",
+          "patch": "26.11",
+          "durationSec": 1795,
+          "region": "KR",
+          "uploaded": "2026-06-04",
+          "moments": []
+        },
+        {
+          "videoId": "Zpm4AU4mw90",
+          "title": "Talon Jungle vs Qiyana - KR Grandmaster Patch 25.17",
+          "rankClaim": "Grandmaster",
+          "patch": "25.17",
+          "durationSec": 1692,
+          "region": "KR",
+          "uploaded": "2025-08-31",
+          "moments": []
+        },
+        {
+          "videoId": "lwjdGyeKyLM",
+          "title": "Talon Jungle vs Qiyana - KR Challenger Patch 25.12",
+          "rankClaim": "Challenger",
+          "patch": "25.12",
+          "durationSec": 1477,
+          "region": "KR",
+          "uploaded": "2025-06-14",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 246,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "rLyIhp_z64A",
+          "title": "Talon Mid vs Qiyana - KR Challenger Patch 26.04",
+          "rankClaim": "Challenger",
+          "patch": "26.4",
+          "durationSec": 1614,
+          "region": "KR",
+          "uploaded": "2026-03-01",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 112,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 276,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 666,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 789,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 873,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 949,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1007,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1077,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1170,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1332,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1441,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1546,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1580,
+              "label": "Take down The Inhibitor"
+            },
+            {
+              "atSec": 1593,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1603,
+              "label": "End credit"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 254,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "I-WJnRCdohc",
+          "title": "Talon Jungle vs Vi - NA Challenger Patch 26.21",
+          "rankClaim": "Challenger",
+          "patch": "26.21",
+          "durationSec": 1592,
+          "region": "NA",
+          "uploaded": "2026-10-29",
+          "result": "W",
+          "moments": [
+            {
+              "atSec": 482,
+              "label": "Ambessa eliminates Aurora"
+            },
+            {
+              "atSec": 576,
+              "label": "Talon eliminates Zeri"
+            },
+            {
+              "atSec": 583,
+              "label": "Talon Triple Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 677,
+              "label": "Red takes 1st Dragon (Cloud)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 737,
+              "label": "Talon picks off Locke"
+            },
+            {
+              "atSec": 820,
+              "label": "Talon outduels Aurora"
+            },
+            {
+              "atSec": 919,
+              "label": "Talon picks off Locke"
+            },
+            {
+              "atSec": 1032,
+              "label": "Red takes 2nd Dragon (Infernal)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1097,
+              "label": "Talon solo kills Locke",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1191,
+              "label": "Talon takes down Zeri"
+            },
+            {
+              "atSec": 1282,
+              "label": "Talon Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1351,
+              "label": "Talon Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1363,
+              "label": "Red takes 3rd Dragon (Chemtech)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1458,
+              "label": "Talon takes down Vi"
+            },
+            {
+              "atSec": 1500,
+              "label": "Red takes Baron",
+              "kind": "baron"
+            },
+            {
+              "atSec": 1507,
+              "label": "Talon Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1541,
+              "label": "Team fight (3 kills)",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1572,
+              "label": "Talon catches Zeri again"
+            }
+          ]
+        },
+        {
+          "videoId": "HSRb2e70ip0",
+          "title": "Talon Jungle vs Vi - KR Challenger Patch 26.03",
+          "rankClaim": "Challenger",
+          "patch": "26.3",
+          "durationSec": 1521,
+          "region": "KR",
+          "uploaded": "2026-02-08",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 177,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 370,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 474,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 509,
+              "label": "Hunt The Void Grubs",
+              "kind": "grubs"
+            },
+            {
+              "atSec": 577,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 629,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 785,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 863,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 939,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1042,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1301,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1457,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1476,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1510,
+              "label": "End credit"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 266,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "HTfsddrfNYs",
+          "title": "Talon Jungle vs Aatrox - KR Challenger Patch 25.23",
+          "rankClaim": "Challenger",
+          "patch": "25.23",
+          "durationSec": 1754,
+          "region": "KR",
+          "uploaded": "2025-11-24",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 268,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "-ITncRwktUU",
+          "title": "Talon Mid vs Azir - KR Master Patch 26.09",
+          "rankClaim": "Master",
+          "patch": "26.9",
+          "durationSec": 1539,
+          "region": "KR",
+          "uploaded": "2026-05-02",
+          "moments": []
+        },
+        {
+          "videoId": "mNlhlGhEAjk",
+          "title": "Talon vs Azir [ MID ] Lol Korea Master Patch 25.22 ✅",
+          "rankClaim": "Master",
+          "patch": "25.22",
+          "durationSec": 1396,
+          "region": "KR",
+          "uploaded": "2025-11-14",
+          "moments": []
+        },
+        {
+          "videoId": "ls5o8kn-jfw",
+          "title": "Talon Mid vs Azir - EUW Grandmaster Patch 25.12",
+          "rankClaim": "Grandmaster",
+          "patch": "25.12",
+          "durationSec": 1783,
+          "region": "EUW",
+          "uploaded": "2025-06-22",
+          "moments": []
+        },
+        {
+          "videoId": "jmCigbWbIqI",
+          "title": "Talon vs Azir Mid - KR Challenger - Patch 25.5 Season 15",
+          "rankClaim": "Challenger",
+          "patch": "25.5",
+          "durationSec": 1846,
+          "region": "KR",
+          "uploaded": "2025-03-17",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 427,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "u3--gaViB0c",
+          "title": "Talon vs Ivern Jungle - KR Challenger - Patch 25.14 Season 15",
+          "rankClaim": "Challenger",
+          "patch": "25.14",
+          "durationSec": 1351,
+          "region": "KR",
+          "uploaded": "2025-07-18",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 517,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "9oO77QIFJIc",
+          "title": "Talon Jungle vs Sylas - KR Challenger Patch 25.16",
+          "rankClaim": "Challenger",
+          "patch": "25.16",
+          "durationSec": 1817,
+          "region": "KR",
+          "uploaded": "2025-08-17",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 517,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "-hT7NrqDYBI",
+          "title": "Talon vs Sylas Mid - EUW Grandmaster - Patch 25.17 Season 15",
+          "rankClaim": "Grandmaster",
+          "patch": "25.17",
+          "durationSec": 1441,
+          "region": "EUW",
+          "uploaded": "2025-09-03",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 518,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "7LqWd8JgnVM",
+          "title": "Talon Mid vs Neeko - KR Challenger Patch 25.13",
+          "rankClaim": "Challenger",
+          "patch": "25.13",
+          "durationSec": 1651,
+          "region": "KR",
+          "uploaded": "2025-07-06",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 777,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "h27OEHoKGkg",
+          "title": "Talon Mid vs Yone - EUW Grandmaster Patch 25.09",
+          "rankClaim": "Grandmaster",
+          "patch": "25.9",
+          "durationSec": 1685,
+          "region": "EUW",
+          "uploaded": "2025-05-09",
+          "moments": []
+        },
+        {
+          "videoId": "PeuZHDNEY58",
+          "title": "OTP Talon vs Yone [ MID ] Patch 25.6 Korea Master ✅",
+          "rankClaim": "Master",
+          "patch": "25.6",
+          "durationSec": 1518,
+          "region": "KR",
+          "player": "OTP",
+          "uploaded": "2025-03-27",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 805,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "vW0tCkH0uzU",
+          "title": "Talon vs Locke [ Jungle ] Lol Korea Grandmaster Patch 26.13 ✅",
+          "rankClaim": "Grandmaster",
+          "patch": "26.13",
+          "durationSec": 1321,
+          "region": "KR",
+          "uploaded": "2026-07-07",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 876,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "PKzEjd4hL2I",
+          "title": "Talon vs Lillia Jungle - KR Challenger - Patch 25.9 Season 15",
+          "rankClaim": "Challenger",
+          "patch": "25.9",
+          "durationSec": 1681,
+          "region": "KR",
+          "uploaded": "2025-05-12",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 893,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "If2uCpOGE3U",
+          "title": "Talon Mid vs Aurora - NA Challenger Patch 26.12",
+          "rankClaim": "Challenger",
+          "patch": "26.12",
+          "durationSec": 1716,
+          "region": "NA",
+          "uploaded": "2026-06-23",
+          "moments": []
+        },
+        {
+          "videoId": "_hWYAHtBeNM",
+          "title": "Talon Mid vs Aurora - TW Challenger Patch 26.02",
+          "rankClaim": "Challenger",
+          "patch": "26.2",
+          "durationSec": 1555,
+          "uploaded": "2026-01-30",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 214,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 410,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 515,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 654,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 688,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 952,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1044,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1154,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1183,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1445,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1478,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1498,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1514,
+              "label": "Take down The Inhibitor"
+            },
+            {
+              "atSec": 1524,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1544,
+              "label": "End credit"
+            }
+          ]
+        },
+        {
+          "videoId": "TtWdnYapF4s",
+          "title": "Talon vs Aurora Mid - KR Challenger - Patch 25.23 Season 15",
+          "rankClaim": "Challenger",
+          "patch": "25.23",
+          "durationSec": 1846,
+          "region": "KR",
+          "uploaded": "2025-11-28",
+          "moments": []
+        },
+        {
+          "videoId": "kiX68D7HmNA",
+          "title": "Talon Mid vs Aurora - TW Challenger Patch 25.22",
+          "rankClaim": "Challenger",
+          "patch": "25.22",
+          "durationSec": 1866,
+          "uploaded": "2025-11-17",
+          "moments": []
+        },
+        {
+          "videoId": "tviTmmZZc2Q",
+          "title": "Talon Mid vs Aurora - KR Master Patch 25.21",
+          "rankClaim": "Master",
+          "patch": "25.21",
+          "durationSec": 1520,
+          "region": "KR",
+          "uploaded": "2025-11-02",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 950,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "jH7H3vEWxWQ",
+          "title": "(OnFleek) Talon Jungle vs Naafiri - KR Master Patch 26.16",
+          "rankClaim": "Master",
+          "patch": "26.16",
+          "durationSec": 1668,
+          "region": "KR",
+          "player": "OnFleek",
+          "uploaded": "2026-08-18",
+          "moments": []
+        },
+        {
+          "videoId": "Z7GTCBEJve4",
+          "title": "Talon Jungle vs Naafiri (Hummelu) - EUW Grandmaster Patch 26.15",
+          "rankClaim": "Grandmaster",
+          "patch": "26.15",
+          "durationSec": 1652,
+          "region": "EUW",
+          "uploaded": "2026-08-04",
+          "moments": []
+        },
+        {
+          "videoId": "A_wIYNrDQdE",
+          "title": "Talon Jungle vs Naafiri (JDG Xiaoxu) - KR Master Patch 26.13",
+          "rankClaim": "Master",
+          "patch": "26.13",
+          "durationSec": 1443,
+          "region": "KR",
+          "player": "Xiaoxu",
+          "uploaded": "2026-07-08",
+          "moments": []
+        },
+        {
+          "videoId": "1NRb45buUdU",
+          "title": "T1 Oner Talon vs Naafiri [ Jungle ] Korea Challenger 2271 LP | Patch 26.8",
+          "rankClaim": "Challenger",
+          "patch": "26.8",
+          "durationSec": 1379,
+          "region": "KR",
+          "player": "Oner",
+          "team": "T1",
+          "uploaded": "2026-04-28",
+          "moments": []
+        },
+        {
+          "videoId": "XGnZ_LldSu0",
+          "title": "Talon vs Naafiri Jungle - KR Challenger - Patch 25.10 Season 15",
+          "rankClaim": "Challenger",
+          "patch": "25.10",
+          "durationSec": 1681,
+          "region": "KR",
+          "uploaded": "2025-05-22",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 950,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "jUIt3PfgyUI",
+          "title": "Talon Mid vs Naafiri - KR Master Patch 26.10",
+          "rankClaim": "Master",
+          "patch": "26.10",
+          "durationSec": 1544,
+          "region": "KR",
+          "uploaded": "2026-05-15",
+          "moments": []
+        }
+      ]
+    }
+  ]
+}

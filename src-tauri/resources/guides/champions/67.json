@@ -1,0 +1,3984 @@
+{
+  "schema": 1,
+  "champion": 67,
+  "generatedAt": "2026-11-07T13:25:14.592Z",
+  "guides": [],
+  "general": [
+    {
+      "champion": 67,
+      "lane": "adc",
+      "patch": "26.21",
+      "reviewed": false,
+      "keyTips": [
+        {
+          "text": "Space every exchange and never open at maximum range: use Q to dodge incoming pressure, and save the first real all-in window for level six when R arrives.",
+          "scope": "champion",
+          "sourceIds": [
+            "spook8"
+          ],
+          "abilityKeys": [
+            {
+              "champion": 67,
+              "key": "Q"
+            },
+            {
+              "champion": 67,
+              "key": "R"
+            }
+          ]
+        },
+        {
+          "text": "Plan the recall before the level-six spike so the return buys an attack-damage component plus an attack-speed item, arriving ready to fight with the ultimate.",
+          "scope": "champion",
+          "sourceIds": [
+            "spook8"
+          ],
+          "abilityKeys": [
+            {
+              "champion": 67,
+              "key": "R"
+            }
+          ]
+        },
+        {
+          "text": "Learn the R-Q fadeaway and keep movement unpredictable: stealth the roll so its direction stays hidden instead of rolling toward the opponent's expected aim.",
+          "scope": "champion",
+          "sourceIds": [
+            "spook8"
+          ],
+          "abilityKeys": [
+            {
+              "champion": 67,
+              "key": "Q"
+            },
+            {
+              "champion": 67,
+              "key": "R"
+            }
+          ]
+        }
+      ],
+      "sections": {
+        "overview": {
+          "tips": []
+        },
+        "early-lane": {
+          "tips": [
+            {
+              "text": "Take the short level-one trade since Q resets the basic-attack timer, but treat it as a small exchange rather than an all-in attempt.",
+              "scope": "champion",
+              "sourceIds": [
+                "spook8"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 67,
+                  "key": "Q"
+                }
+              ]
+            },
+            {
+              "text": "Run Presence of Mind because the small mana pool otherwise leaves Vayne unable to cast after E trades; take Barrier and Flash.",
+              "scope": "champion",
+              "sourceIds": [
+                "spook8"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 67,
+                  "key": "E"
+                }
+              ]
+            },
+            {
+              "text": "Adjust runes by lane: Bone Plating into all-in pressure, Second Wind into poke, usually Overgrowth after, or Revitalize when extra shielding and healing matter.",
+              "scope": "champion",
+              "sourceIds": [
+                "spook8"
+              ]
+            },
+            {
+              "text": "Play the standard page of Lethal Tempo, Presence of Mind, Legend: Alacrity, Cut Down, Cash Back, and Triple Tonic, with attack speed, adaptive force, and health shards.",
+              "scope": "champion",
+              "sourceIds": [
+                "spook8"
+              ]
+            }
+          ]
+        },
+        "mid-lane": {
+          "tips": [
+            {
+              "text": "Use R stealth on Q to reposition mid-fight, keeping the roll direction unreadable while the fight moves.",
+              "scope": "champion",
+              "sourceIds": [
+                "spook8"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 67,
+                  "key": "Q"
+                },
+                {
+                  "champion": 67,
+                  "key": "R"
+                }
+              ]
+            },
+            {
+              "text": "Combine Flash with E for a surprise Condemn stun when the wall collision can decide a fight already in progress.",
+              "scope": "champion",
+              "sourceIds": [
+                "spook8"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 67,
+                  "key": "E"
+                }
+              ]
+            }
+          ]
+        },
+        "win-condition": {
+          "tips": [
+            {
+              "text": "Stay healthy and resourced through early lane into level six with an item component, then use the ultimate's combat window to force the all-in.",
+              "scope": "champion",
+              "sourceIds": [
+                "spook8"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 67,
+                  "key": "R"
+                }
+              ]
+            },
+            {
+              "text": "Time attacks with Q and control targets with E when a stun angle appears, keeping the Q stealth movement and Condemn threat as the payoff for the patient lane.",
+              "scope": "champion",
+              "sourceIds": [
+                "spook8"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 67,
+                  "key": "Q"
+                },
+                {
+                  "champion": 67,
+                  "key": "E"
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "itemization": [
+        {
+          "text": "Open Doran's Bow and build the crit line of Yun Tal Wildarrows, Infinity Edge, Gluttonous Greaves, Phantom Dancer, Lord Dominik's Regards, and Bloodthirster, with Guardian Angel as the late option.",
+          "scope": "champion",
+          "sourceIds": [
+            "spook8"
+          ],
+          "itemIds": [
+            1086,
+            3032,
+            3031,
+            3008,
+            3046,
+            3036,
+            3072,
+            3026
+          ]
+        },
+        {
+          "text": "Vary by game with Mortal Reminder for armor penetration and Randuin's Omen, Kaenic Rookern, Immortal Shieldbow, Edge of Night, or Mercurial Scimitar for defense; prefer Legend: Alacrity with Gluttonous Greaves and Bloodline on other boot paths, with Cut Down, Coup de Grace, or Last Stand as viable final-row picks.",
+          "scope": "champion",
+          "sourceIds": [
+            "spook8"
+          ],
+          "itemIds": [
+            3033,
+            3143,
+            2504,
+            6673,
+            3814,
+            3139,
+            3008
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "id": "spook8",
+          "author": "Spook8",
+          "rankClaim": "Diamond (profile badge); Master ADC main (author claim)",
+          "rank": "diamond",
+          "url": "https://www.mobafire.com/league-of-legends/build/vayne-guide-from-master-vayne-one-trick-646861",
+          "kind": "mobafire"
+        }
+      ]
+    }
+  ],
+  "vods": [
+    {
+      "lane": "adc",
+      "videos": [
+        {
+          "videoId": "J8iHStHF0FA",
+          "title": "PEYZ : This is What Machine Gun Vayne Look Like",
+          "rankClaim": "Master+",
+          "patch": "26.18",
+          "durationSec": 885,
+          "patchEstimated": true,
+          "player": "Peyz",
+          "uploaded": "2026-09-14",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "aTbJiVS6yEI",
+          "title": "\"Jz\" 2000LP Vayne : His Kiting and Spacing Skill is on Another Level - Engsub ( vs Ez )",
+          "rankClaim": "Master+",
+          "patch": "26.16",
+          "durationSec": 1002,
+          "patchEstimated": true,
+          "player": "Jz",
+          "uploaded": "2026-08-24",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "WRrocgWEifo",
+          "title": "Uzi : This Vayne STRATEGY is BREAKING KR HighElo - Engsub ( Vayne vs Mundo )",
+          "rankClaim": "Master+",
+          "patch": "26.10",
+          "durationSec": 636,
+          "region": "KR",
+          "patchEstimated": true,
+          "player": "Uzi",
+          "uploaded": "2026-05-16",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "E_05dywOKx4",
+          "title": "Uzi : RIOT Need to Do Something with Vayne Toplane - Engsub",
+          "rankClaim": "Master+",
+          "patch": "26.10",
+          "durationSec": 1114,
+          "patchEstimated": true,
+          "player": "Uzi",
+          "uploaded": "2026-05-13",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "rj-s22kG5Dw",
+          "title": "Uzi : This NEW VAYNE SKIN LOOK SO COOL - Engsub ( Vayne vs Vlad )",
+          "rankClaim": "Master+",
+          "patch": "26.9",
+          "durationSec": 792,
+          "patchEstimated": true,
+          "player": "Uzi",
+          "uploaded": "2026-05-05",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "wDX-fpQO0rs",
+          "title": "Uzi : His Vayne Mechanic is too DAM CLEAN - Engsub",
+          "rankClaim": "Master+",
+          "patch": "26.7",
+          "durationSec": 977,
+          "patchEstimated": true,
+          "player": "Uzi",
+          "uploaded": "2026-04-13",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "kdIFHLa2G4A",
+          "title": "Uzi : His Vayne Mechanic is LEGENDARY - Engsib",
+          "rankClaim": "Master+",
+          "patch": "26.3",
+          "durationSec": 1018,
+          "patchEstimated": true,
+          "player": "Uzi",
+          "uploaded": "2026-02-11",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "mRgiAdlrfpQ",
+          "title": "Uzi is Back on Stream : Playing His Signature Vayne Skin - Engsub",
+          "rankClaim": "Master+",
+          "patch": "26.3",
+          "durationSec": 1005,
+          "patchEstimated": true,
+          "player": "Uzi",
+          "uploaded": "2026-02-06",
+          "format": "stream",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "QHMTjw39fmM",
+          "title": "Broxah Proves VAYNE JUNGLE Is Viable",
+          "rankClaim": "Master+",
+          "patch": "26.8",
+          "durationSec": 1175,
+          "patchEstimated": true,
+          "player": "Broxah",
+          "uploaded": "2026-04-17",
+          "format": "stream",
+          "cam": true,
+          "moments": []
+        },
+        {
+          "videoId": "hg__ileERsQ",
+          "title": "Vayne Jungle Is Actually GOATED",
+          "rankClaim": "Master+",
+          "patch": "26.7",
+          "durationSec": 1863,
+          "patchEstimated": true,
+          "player": "Broxah",
+          "uploaded": "2026-04-11",
+          "format": "stream",
+          "cam": true,
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 2,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "Bh9Qdf3mHEI",
+          "title": "HLE Zeus Vayne vs Olaf [ TOP ] Korea Challenger 1943 LP | Patch 26.10",
+          "rankClaim": "Challenger",
+          "patch": "26.10",
+          "durationSec": 1001,
+          "region": "KR",
+          "player": "Zeus",
+          "team": "HLE",
+          "uploaded": "2026-05-24",
+          "moments": []
+        },
+        {
+          "videoId": "_1yh3iG2ShQ",
+          "title": "Vayne Top vs Olaf - KR Master Patch 25.23",
+          "rankClaim": "Master",
+          "patch": "25.23",
+          "durationSec": 1606,
+          "region": "KR",
+          "uploaded": "2025-12-01",
+          "moments": []
+        },
+        {
+          "videoId": "xXs88VxkY-8",
+          "title": "Vayne Top vs Olaf - EUW Challenger Patch 25.19",
+          "rankClaim": "Challenger",
+          "patch": "25.19",
+          "durationSec": 1496,
+          "region": "EUW",
+          "uploaded": "2025-10-10",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 5,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "NqkF2KEJ5YY",
+          "title": "(TSS Aegis) Vayne Jungle vs Xin Zhao - BR Challenger Patch 26.12",
+          "rankClaim": "Challenger",
+          "patch": "26.12",
+          "durationSec": 1572,
+          "player": "TSS Aegis",
+          "uploaded": "2026-06-19",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 13,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "Fcfab_KdKec",
+          "title": "Vayne Top vs Ryze - EUW Grandmaster Patch 25.16",
+          "rankClaim": "Grandmaster",
+          "patch": "25.16",
+          "durationSec": 1426,
+          "region": "EUW",
+          "uploaded": "2025-08-25",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 14,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "0PuVtY5nMFk",
+          "title": "Vayne vs Sion Top - KR Challenger - Patch 16.05 Season 16",
+          "rankClaim": "Challenger",
+          "patch": "26.5",
+          "durationSec": 1711,
+          "region": "KR",
+          "uploaded": "2026-03-06",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 15,
+      "lane": "adc",
+      "videos": [
+        {
+          "videoId": "n5rZwOfLPHo",
+          "title": "Rank 1 Vayne : This Dude is a Freaky Killing Machine - Engsub ( vs Sivir, Jinx )",
+          "rankClaim": "Master+",
+          "patch": "26.15",
+          "durationSec": 1486,
+          "patchEstimated": true,
+          "uploaded": "2026-08-11",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "b7HcGvR0gD4",
+          "title": "Rank 1 Vayne : His Mechanic is so DAM AGGRESSIVE \" 28 Kills in Master Match \" Engsub ( vs Sivir )",
+          "rankClaim": "Master",
+          "patch": "26.15",
+          "durationSec": 923,
+          "patchEstimated": true,
+          "uploaded": "2026-08-09",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "AtunFicql_w",
+          "title": "(FK 3XA) Vayne ADC vs Sivir - EUW Grandmaster Patch 26.13",
+          "rankClaim": "Grandmaster",
+          "patch": "26.13",
+          "durationSec": 1840,
+          "region": "EUW",
+          "player": "FK 3XA",
+          "uploaded": "2026-07-05",
+          "moments": []
+        },
+        {
+          "videoId": "Ko-GwSviLjQ",
+          "title": "Vayne ADC vs Sivir - KR Master Patch 25.21",
+          "rankClaim": "Master",
+          "patch": "25.21",
+          "durationSec": 1626,
+          "region": "KR",
+          "uploaded": "2025-10-31",
+          "moments": []
+        },
+        {
+          "videoId": "X30wJlJAskU",
+          "title": "Vayne ADC vs Sivir - KR Master Patch 25.15",
+          "rankClaim": "Master",
+          "patch": "25.15",
+          "durationSec": 1833,
+          "region": "KR",
+          "uploaded": "2025-08-08",
+          "moments": []
+        },
+        {
+          "videoId": "kaNHcWvFLQE",
+          "title": "Vayne ADC vs Sivir - KR Grandmaster Patch 25.14",
+          "rankClaim": "Grandmaster",
+          "patch": "25.14",
+          "durationSec": 1524,
+          "region": "KR",
+          "uploaded": "2025-07-23",
+          "moments": []
+        },
+        {
+          "videoId": "qcZPdu7FiXw",
+          "title": "Vayne ADC vs Sivir - KR Master Patch 25.07",
+          "rankClaim": "Master",
+          "patch": "25.7",
+          "durationSec": 1665,
+          "region": "KR",
+          "uploaded": "2025-04-11",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 17,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "DPkh4YLj2y4",
+          "title": "Vayne Top vs Teemo - KR Master Patch 25.20",
+          "rankClaim": "Master",
+          "patch": "25.20",
+          "durationSec": 1872,
+          "region": "KR",
+          "uploaded": "2025-10-17",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 18,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "xkJTv9OJryo",
+          "title": "T1 Doran Vayne vs Tristana [ TOP ] Korea Grandmaster 1482 LP | Patch 26.14",
+          "rankClaim": "Grandmaster",
+          "patch": "26.14",
+          "durationSec": 1158,
+          "region": "KR",
+          "player": "Doran",
+          "team": "T1",
+          "uploaded": "2026-07-28",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 19,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "UHf4ptNXT_4",
+          "title": "Vayne Top vs Warwick - KR Master Patch 26.17",
+          "rankClaim": "Master",
+          "patch": "26.17",
+          "durationSec": 1471,
+          "region": "KR",
+          "uploaded": "2026-09-04",
+          "moments": []
+        },
+        {
+          "videoId": "kbYtHQ74fbk",
+          "title": "Vayne Top vs Warwick - KR Master Patch 25.11",
+          "rankClaim": "Master",
+          "patch": "25.11",
+          "durationSec": 1675,
+          "region": "KR",
+          "uploaded": "2025-06-11",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 22,
+      "lane": "adc",
+      "videos": [
+        {
+          "videoId": "bLK6zAYKI2E",
+          "title": "Rank 1 Vayne : This Dude is UNSTOPPABLE MONSTER - Engsub ( vs Ashe )",
+          "rankClaim": "Master+",
+          "patch": "26.16",
+          "durationSec": 1011,
+          "patchEstimated": true,
+          "uploaded": "2026-08-13",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "V_fhAhjiAac",
+          "title": "Vayne vs Ashe [ ADC ] Lol Korea Master Patch 25.22 ✅",
+          "rankClaim": "Master",
+          "patch": "25.22",
+          "durationSec": 1391,
+          "region": "KR",
+          "uploaded": "2025-11-07",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 23,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "3eVw3yzTJvY",
+          "title": "Vayne Top vs Tryndamere - NA Grandmaster Patch 25.21",
+          "rankClaim": "Grandmaster",
+          "patch": "25.21",
+          "durationSec": 1783,
+          "region": "NA",
+          "uploaded": "2025-11-02",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 24,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "kHEshuGDsAg",
+          "title": "T1 Doran Vayne vs Jax [ TOP ] Korea Grandmaster 1612 LP | Patch 26.11",
+          "rankClaim": "Grandmaster",
+          "patch": "26.11",
+          "durationSec": 1419,
+          "region": "KR",
+          "player": "Doran",
+          "team": "T1",
+          "uploaded": "2026-06-02",
+          "moments": []
+        },
+        {
+          "videoId": "c3BoZ7Io8Fc",
+          "title": "Vayne Top vs Jax - EUW Grandmaster Patch 25.06",
+          "rankClaim": "Grandmaster",
+          "patch": "25.6",
+          "durationSec": 1547,
+          "region": "EUW",
+          "uploaded": "2025-03-31",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 27,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "CJ-xNIfEl9o",
+          "title": "(LDS Sinmivak) Vayne Top vs Singed - EUW Grandmaster Patch 26.15",
+          "rankClaim": "Grandmaster",
+          "patch": "26.15",
+          "durationSec": 1776,
+          "region": "EUW",
+          "player": "LDS Sinmivak",
+          "uploaded": "2026-08-07",
+          "moments": []
+        },
+        {
+          "videoId": "Ib9sy_U_FQ4",
+          "title": "Vayne Top vs Singed - VN Challenger Patch 26.04",
+          "rankClaim": "Challenger",
+          "patch": "26.4",
+          "durationSec": 1537,
+          "uploaded": "2026-02-25",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 104,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 268,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 437,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 493,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 634,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 746,
+              "label": "Get a Quadra Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 869,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 890,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1018,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1062,
+              "label": "Hunt The Dragon",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1138,
+              "label": "Get a Triple Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1166,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1186,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1288,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1311,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1323,
+              "label": "Take down The Inhibitor"
+            },
+            {
+              "atSec": 1343,
+              "label": "Hunt The Baron Nashor",
+              "kind": "baron"
+            },
+            {
+              "atSec": 1361,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1499,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1516,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1526,
+              "label": "End credit"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 29,
+      "lane": "adc",
+      "videos": [
+        {
+          "videoId": "W5WA-uLoNrM",
+          "title": "Rank 1 Vayne : HE HIT THREE TIME & YOU HP IS GONE - Engsub ( vs Twitch, Ez )",
+          "rankClaim": "Master+",
+          "patch": "26.16",
+          "durationSec": 1474,
+          "patchEstimated": true,
+          "uploaded": "2026-08-21",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "phvYirweGh4",
+          "title": "Rank 1 Vayne : His Spacing is Phenomenal - Engsub ( vs Twitch, Varus )",
+          "rankClaim": "Master+",
+          "patch": "26.16",
+          "durationSec": 1418,
+          "patchEstimated": true,
+          "uploaded": "2026-08-16",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "uL0aEmiurVE",
+          "title": "Vayne ADC vs Twitch - KR Master Patch 25.10",
+          "rankClaim": "Master",
+          "patch": "25.10",
+          "durationSec": 1626,
+          "region": "KR",
+          "uploaded": "2025-05-21",
+          "moments": []
+        },
+        {
+          "videoId": "j27wdsqj1Es",
+          "title": "Vayne ADC vs Twitch - KR Master Patch 25.06",
+          "rankClaim": "Master",
+          "patch": "25.6",
+          "durationSec": 1624,
+          "region": "KR",
+          "uploaded": "2025-03-26",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 491,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 604,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 764,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 882,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1065,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1136,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1224,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1343,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1441,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1466,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1480,
+              "label": "Take down The Inhibitor"
+            },
+            {
+              "atSec": 1564,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1583,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1603,
+              "label": "End credit"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 34,
+      "lane": "adc",
+      "videos": [
+        {
+          "videoId": "3C3omCOPVcY",
+          "title": "Vayne ADC vs Anivia - EUW Grandmaster Patch 26.03",
+          "rankClaim": "Grandmaster",
+          "patch": "26.3",
+          "durationSec": 1994,
+          "region": "EUW",
+          "uploaded": "2026-02-16",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 36,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "k2PeZyc7q8E",
+          "title": "Vayne Top vs Dr. Mundo - EUW Grandmaster Patch 25.13",
+          "rankClaim": "Grandmaster",
+          "patch": "25.13",
+          "durationSec": 1566,
+          "region": "EUW",
+          "uploaded": "2025-07-08",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 39,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "VDrxSEjfJgs",
+          "title": "T1 Doran Vayne vs Irelia [ TOP ] Korea Grandmaster 1483 LP | Patch 26.13",
+          "rankClaim": "Grandmaster",
+          "patch": "26.13",
+          "durationSec": 945,
+          "region": "KR",
+          "player": "Doran",
+          "team": "T1",
+          "uploaded": "2026-07-12",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 41,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "LUVdw2Z0eeQ",
+          "title": "Vayne Top vs Gangplank - KR Master Patch 25.14",
+          "rankClaim": "Master",
+          "patch": "25.14",
+          "durationSec": 1698,
+          "region": "KR",
+          "uploaded": "2025-07-28",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 48,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "PTDFMYjHbdk",
+          "title": "I WAS TEMPTED BY THE DARK SIDE",
+          "rankClaim": "Master+",
+          "patch": "26.10",
+          "durationSec": 26617,
+          "patchEstimated": true,
+          "player": "Alois",
+          "uploaded": "2026-05-17",
+          "format": "stream",
+          "cam": true,
+          "startSec": 8072,
+          "endSec": 9691,
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 50,
+      "lane": "adc",
+      "videos": [
+        {
+          "videoId": "cpVZNYz8DKY",
+          "title": "(Comp) Vayne ADC vs Swain - EUW Challenger Patch 26.19",
+          "rankClaim": "Challenger",
+          "patch": "26.19",
+          "durationSec": 1618,
+          "region": "EUW",
+          "player": "Comp",
+          "uploaded": "2026-10-03",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 51,
+      "lane": "adc",
+      "videos": [
+        {
+          "videoId": "H7ztPYW90po",
+          "title": "Vayne vs Caitlyn [ ADC ] Lol Korea Master Patch 26.2 ✅",
+          "rankClaim": "Master",
+          "patch": "26.2",
+          "durationSec": 1212,
+          "region": "KR",
+          "uploaded": "2026-01-27",
+          "moments": []
+        },
+        {
+          "videoId": "Jan7ZWhu0JM",
+          "title": "Vayne ADC vs Caitlyn - KR Master Patch 25.22",
+          "rankClaim": "Master",
+          "patch": "25.22",
+          "durationSec": 1436,
+          "region": "KR",
+          "uploaded": "2025-11-14",
+          "moments": []
+        },
+        {
+          "videoId": "Ue_blCDUbzI",
+          "title": "Vayne vs Caitlyn [ ADC ] Lol Korea Master Patch 25.14",
+          "rankClaim": "Master",
+          "patch": "25.14",
+          "durationSec": 1483,
+          "region": "KR",
+          "uploaded": "2025-07-19",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 58,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "Q7xPBO0U9rc",
+          "title": "(TES Creme) Vayne Top vs Renekton - KR Grandmaster Patch 26.12",
+          "rankClaim": "Grandmaster",
+          "patch": "26.12",
+          "durationSec": 1565,
+          "region": "KR",
+          "player": "Creme",
+          "team": "TES",
+          "uploaded": "2026-06-14",
+          "moments": []
+        },
+        {
+          "videoId": "xiODju8OjUk",
+          "title": "Vayne Top vs Renekton - KR Master Patch 26.03",
+          "rankClaim": "Master",
+          "patch": "26.3",
+          "durationSec": 1446,
+          "region": "KR",
+          "uploaded": "2026-02-11",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 72,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 123,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 311,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 681,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 772,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 912,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1072,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1109,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1138,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1160,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1185,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1289,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1415,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1435,
+              "label": "End credit"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 68,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "W5DZXzB2Obc",
+          "title": "Vayne Top vs Rumble - EUW Grandmaster Patch 25.07",
+          "rankClaim": "Grandmaster",
+          "patch": "25.7",
+          "durationSec": 1503,
+          "region": "EUW",
+          "uploaded": "2025-04-15",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 69,
+      "lane": "adc",
+      "videos": [
+        {
+          "videoId": "a-xdgdHUECI",
+          "title": "Vayne ADC vs Cassiopeia - KR Master Patch 25.24",
+          "rankClaim": "Master",
+          "patch": "25.24",
+          "durationSec": 1443,
+          "region": "KR",
+          "uploaded": "2025-12-11",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 262,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 600,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 753,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 855,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 901,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 995,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1016,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1070,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1099,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1125,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1144,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1162,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1233,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1300,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1379,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1414,
+              "label": "Take down The Inhibitor"
+            },
+            {
+              "atSec": 1432,
+              "label": "End credit"
+            }
+          ]
+        },
+        {
+          "videoId": "35dt_325lLI",
+          "title": "Vayne vs Cassiopeia ADC [ HLE Viper ] Korea Challenger Patch 25.13",
+          "rankClaim": "Challenger",
+          "patch": "25.13",
+          "durationSec": 1979,
+          "region": "KR",
+          "player": "Viper",
+          "team": "HLE",
+          "uploaded": "2025-07-04",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 75,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "UUUl85B2VMY",
+          "title": "Vayne Top vs Nasus - BR Challenger Patch 25.24",
+          "rankClaim": "Challenger",
+          "patch": "25.24",
+          "durationSec": 1494,
+          "uploaded": "2026-01-07",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 288,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 494,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 511,
+              "label": "Hunt The Void Grubs",
+              "kind": "grubs"
+            },
+            {
+              "atSec": 747,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 832,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1071,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1156,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1226,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1259,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1349,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1398,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1431,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1457,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1483,
+              "label": "End credit"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 81,
+      "lane": "adc",
+      "videos": [
+        {
+          "videoId": "BUVugQL5N8w",
+          "title": "(T1 Peyz) Vayne ADC vs Ezreal (TES JackeyLove) - KR Challenger Patch 26.15",
+          "rankClaim": "Challenger",
+          "patch": "26.15",
+          "durationSec": 1506,
+          "region": "KR",
+          "player": "Peyz",
+          "team": "T1",
+          "uploaded": "2026-08-02",
+          "moments": []
+        },
+        {
+          "videoId": "RfMHt5H33G0",
+          "title": "Peyz Vayne vs Ezreal ADC - KR Challenger - Patch 16.07 Season 16",
+          "rankClaim": "Challenger",
+          "patch": "26.7",
+          "durationSec": 1396,
+          "region": "KR",
+          "player": "Peyz",
+          "uploaded": "2026-04-13",
+          "moments": []
+        },
+        {
+          "videoId": "jwWnP-MigNM",
+          "title": "T1 Peyz Vayne vs Ezreal ADC [ PentaKill ] Korea Challenger Patch 26.7",
+          "rankClaim": "Challenger",
+          "patch": "26.7",
+          "durationSec": 1181,
+          "region": "KR",
+          "player": "Peyz",
+          "team": "T1",
+          "uploaded": "2026-04-06",
+          "moments": []
+        },
+        {
+          "videoId": "bmgB2dQohh4",
+          "title": "Vayne ADC vs Ezreal - EUW Challenger Patch 26.04",
+          "rankClaim": "Challenger",
+          "patch": "26.4",
+          "durationSec": 1586,
+          "region": "EUW",
+          "uploaded": "2026-03-01",
+          "moments": []
+        },
+        {
+          "videoId": "RTHJi4GCXsM",
+          "title": "Vayne ADC vs Ezreal - KR Grandmaster Patch 26.01",
+          "rankClaim": "Grandmaster",
+          "patch": "26.1",
+          "durationSec": 1621,
+          "region": "KR",
+          "uploaded": "2026-01-16",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 99,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 320,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 433,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 557,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 655,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 851,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1169,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1331,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1443,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1571,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1595,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1610,
+              "label": "End credit"
+            }
+          ]
+        },
+        {
+          "videoId": "eNiLrxBWnqQ",
+          "title": "Vayne vs Ezreal [ ADC ] Korea Challenger 1236 LP | Patch 25.22 ✅",
+          "rankClaim": "Challenger",
+          "patch": "25.22",
+          "durationSec": 1791,
+          "region": "KR",
+          "uploaded": "2025-11-15",
+          "moments": []
+        },
+        {
+          "videoId": "8ELCZIahKJA",
+          "title": "Vayne vs Ezreal ADC [ QuadraKill ] Korea Master Patch 25.19 ✅",
+          "rankClaim": "Master",
+          "patch": "25.19",
+          "durationSec": 1882,
+          "region": "KR",
+          "player": "QuadraKill",
+          "uploaded": "2025-09-30",
+          "moments": []
+        },
+        {
+          "videoId": "_prr1UWiuFc",
+          "title": "Vayne ADC vs Ezreal - KR Challenger Patch 25.04",
+          "rankClaim": "Challenger",
+          "patch": "25.4",
+          "durationSec": 1655,
+          "region": "KR",
+          "uploaded": "2025-02-26",
+          "moments": []
+        },
+        {
+          "videoId": "4g5GhdiIeKo",
+          "title": "Deft Vayne ADC vs Ezreal - Patch 25.1 Korea Master ✅",
+          "rankClaim": "Master",
+          "patch": "25.1",
+          "durationSec": 1413,
+          "region": "KR",
+          "player": "Deft",
+          "uploaded": "2025-01-23",
+          "moments": []
+        },
+        {
+          "videoId": "OCJlERgf3rg",
+          "title": "Vayne vs Ezreal ADC [ TripleKill ] Patch 25.1 Korea Grandmaster ✅",
+          "rankClaim": "Grandmaster",
+          "patch": "25.1",
+          "durationSec": 1285,
+          "region": "KR",
+          "player": "TripleKill",
+          "uploaded": "2025-01-18",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 82,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "gbVaZeBR3Q4",
+          "title": "Vayne Top vs Mordekaiser - EUW Challenger Patch 25.17",
+          "rankClaim": "Challenger",
+          "patch": "25.17",
+          "durationSec": 1761,
+          "region": "EUW",
+          "uploaded": "2025-09-12",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 83,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "FMn21dyDrRo",
+          "title": "Vayne vs Yorick [ TOP ] Lol Korea Master Patch 26.13 ✅",
+          "rankClaim": "Master",
+          "patch": "26.13",
+          "durationSec": 1719,
+          "region": "KR",
+          "uploaded": "2026-07-11",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 86,
+      "lane": "adc",
+      "videos": [
+        {
+          "videoId": "pXLhfOkp9uc",
+          "title": "Vayne ADC vs Garen - NA Master Patch 26.20",
+          "rankClaim": "Master",
+          "patch": "26.20",
+          "durationSec": 1828,
+          "region": "NA",
+          "uploaded": "2026-10-16",
+          "result": "W",
+          "moments": [
+            {
+              "atSec": 43,
+              "label": "First Blood — Vayne kills Thresh",
+              "kind": "kill"
+            },
+            {
+              "atSec": 186,
+              "label": "Vayne outduels Garen"
+            },
+            {
+              "atSec": 608,
+              "label": "Vayne outplays Garen again"
+            },
+            {
+              "atSec": 699,
+              "label": "Red takes 1st Dragon (Infernal)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 865,
+              "label": "Vayne solo kills Singed",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1025,
+              "label": "Vayne Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1124,
+              "label": "Red takes 2nd Dragon (Chemtech)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1208,
+              "label": "Bot Inhibitor falls (Blue)"
+            },
+            {
+              "atSec": 1224,
+              "label": "Vayne picks off Thresh"
+            },
+            {
+              "atSec": 1301,
+              "label": "Team fight (3 kills)",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1430,
+              "label": "Vayne eliminates Ekko"
+            },
+            {
+              "atSec": 1511,
+              "label": "Red takes 3rd Dragon (Mountain)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1626,
+              "label": "Blue takes Baron",
+              "kind": "baron"
+            },
+            {
+              "atSec": 1629,
+              "label": "Bot Inhibitor falls (Blue)"
+            },
+            {
+              "atSec": 1659,
+              "label": "Vayne takes down Garen"
+            },
+            {
+              "atSec": 1693,
+              "label": "Zyra takes down Sylas"
+            },
+            {
+              "atSec": 1716,
+              "label": "Mid Inhibitor falls (Red)"
+            },
+            {
+              "atSec": 1768,
+              "label": "Zilean kills Ekko",
+              "kind": "kill"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 86,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "IpPzyf0KDeY",
+          "title": "Vayne vs Garen Top - KR Challenger - Patch 25.5 Season 15",
+          "rankClaim": "Challenger",
+          "patch": "25.5",
+          "durationSec": 1651,
+          "region": "KR",
+          "uploaded": "2025-03-07",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 92,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "U7d4usQnY9o",
+          "title": "Vayne Top vs Riven - KR Master Patch 25.22",
+          "rankClaim": "Master",
+          "patch": "25.22",
+          "durationSec": 1539,
+          "region": "KR",
+          "uploaded": "2025-11-19",
+          "moments": []
+        },
+        {
+          "videoId": "EV4OGx8Ly2U",
+          "title": "Vayne Top vs Riven - NA Grandmaster Patch 25.15",
+          "rankClaim": "Grandmaster",
+          "patch": "25.15",
+          "durationSec": 1729,
+          "region": "NA",
+          "uploaded": "2025-08-15",
+          "moments": []
+        },
+        {
+          "videoId": "u8lc03C9yH0",
+          "title": "Vayne Top vs Riven - EUW Challenger Patch 25.12",
+          "rankClaim": "Challenger",
+          "patch": "25.12",
+          "durationSec": 1655,
+          "region": "EUW",
+          "uploaded": "2025-06-27",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 110,
+      "lane": "adc",
+      "videos": [
+        {
+          "videoId": "FuXOR0OhCAc",
+          "title": "Rank 1 Vayne : His Mechanic is so Dam AGRESSIVE - Engsub (Vayne vs Varus)",
+          "rankClaim": "Master+",
+          "patch": "26.14",
+          "durationSec": 1096,
+          "patchEstimated": true,
+          "uploaded": "2026-07-25",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "zY7afZlKFpo",
+          "title": "Vayne vs Varus [ ADC ] Lol Korea Master Patch 25.12",
+          "rankClaim": "Master",
+          "patch": "25.12",
+          "durationSec": 1466,
+          "region": "KR",
+          "uploaded": "2025-06-19",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 110,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "Nd8zLfCDNmQ",
+          "title": "Vayne Top vs Varus - KR Master Patch 26.20",
+          "rankClaim": "Master",
+          "patch": "26.20",
+          "durationSec": 1515,
+          "region": "KR",
+          "uploaded": "2026-10-16",
+          "result": "W",
+          "moments": [
+            {
+              "atSec": 0,
+              "label": "First Blood — Vayne kills Varus",
+              "kind": "kill"
+            },
+            {
+              "atSec": 246,
+              "label": "Vayne catches Varus"
+            },
+            {
+              "atSec": 306,
+              "label": "Blue takes 1st Dragon (Cloud)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 309,
+              "label": "Vayne outduels Varus again"
+            },
+            {
+              "atSec": 413,
+              "label": "Vayne outplays Varus (3rd time)"
+            },
+            {
+              "atSec": 665,
+              "label": "Vayne outduels Graves"
+            },
+            {
+              "atSec": 668,
+              "label": "Vayne Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 744,
+              "label": "Team fight (3 kills)",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 832,
+              "label": "Vayne solo kills Varus (4th time)",
+              "kind": "kill"
+            },
+            {
+              "atSec": 893,
+              "label": "Blue takes 2nd Dragon (Infernal)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 988,
+              "label": "Blue takes Rift Herald",
+              "kind": "herald"
+            },
+            {
+              "atSec": 1141,
+              "label": "Vayne takes down Varus (5th time)"
+            },
+            {
+              "atSec": 1262,
+              "label": "Blue takes 3rd Dragon (Mountain)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1291,
+              "label": "Locke Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1293,
+              "label": "Locke Triple Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1387,
+              "label": "Vayne catches Varus (6th time)"
+            },
+            {
+              "atSec": 1469,
+              "label": "Vayne kills Graves",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1477,
+              "label": "Mid Inhibitor falls (Red)"
+            }
+          ]
+        },
+        {
+          "videoId": "YJc2SG8SPtw",
+          "title": "Vayne Top vs Varus - TW Challenger Patch 26.07",
+          "rankClaim": "Challenger",
+          "patch": "26.7",
+          "durationSec": 1507,
+          "uploaded": "2026-04-06",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 71,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 324,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 466,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 672,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 806,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 936,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 966,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1158,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1186,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1203,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1260,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1295,
+              "label": "Hunt The Baron Nashor",
+              "kind": "baron"
+            },
+            {
+              "atSec": 1333,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1368,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1396,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1417,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1475,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1496,
+              "label": "End credit"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 112,
+      "lane": "adc",
+      "videos": [
+        {
+          "videoId": "qv02MMatraM",
+          "title": "Vayne ADC vs Viktor - NA Challenger Patch 26.21",
+          "rankClaim": "Challenger",
+          "patch": "26.21",
+          "durationSec": 1850,
+          "region": "NA",
+          "uploaded": "2026-10-29",
+          "result": "W",
+          "moments": [
+            {
+              "atSec": 129,
+              "label": "First Blood — Sylas kills Viktor",
+              "kind": "kill"
+            },
+            {
+              "atSec": 796,
+              "label": "Akali takes down Zilean"
+            },
+            {
+              "atSec": 842,
+              "label": "Red takes 1st Dragon (Hextech)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 897,
+              "label": "Vayne picks off Zilean"
+            },
+            {
+              "atSec": 1012,
+              "label": "Vayne picks off Zilean"
+            },
+            {
+              "atSec": 1062,
+              "label": "Vayne kills Katarina",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1170,
+              "label": "Blue takes 1st Dragon (Infernal)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1192,
+              "label": "Sona kills Wukong",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1303,
+              "label": "Mid Inhibitor falls (Red)"
+            },
+            {
+              "atSec": 1308,
+              "label": "Bot Inhibitor falls (Red)"
+            },
+            {
+              "atSec": 1442,
+              "label": "Blue takes Baron",
+              "kind": "baron"
+            },
+            {
+              "atSec": 1494,
+              "label": "Vayne eliminates Wukong"
+            },
+            {
+              "atSec": 1522,
+              "label": "Vayne picks off Gnar"
+            },
+            {
+              "atSec": 1575,
+              "label": "Blue takes 2nd Dragon (Mountain)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1748,
+              "label": "Vayne picks off Zilean"
+            },
+            {
+              "atSec": 1762,
+              "label": "Mid Inhibitor falls (Red)"
+            },
+            {
+              "atSec": 1768,
+              "label": "Bot Inhibitor falls (Red)"
+            },
+            {
+              "atSec": 1794,
+              "label": "Vayne takes down Viktor"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 114,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "tv2PfhSYCGo",
+          "title": "Vayne vs Fiora [ TOP ] Korea Grandmaster 1426 LP | Patch 26.16 ✅",
+          "rankClaim": "Grandmaster",
+          "patch": "26.16",
+          "durationSec": 1879,
+          "region": "KR",
+          "uploaded": "2026-08-25",
+          "moments": []
+        },
+        {
+          "videoId": "lbTyC_j_RE8",
+          "title": "Vayne vs Fiora TOP [ PentaKill ] Korea Master 533 LP | Patch 26.14 ✅",
+          "rankClaim": "Master",
+          "patch": "26.14",
+          "durationSec": 1441,
+          "region": "KR",
+          "player": "PentaKill",
+          "uploaded": "2026-07-23",
+          "moments": []
+        },
+        {
+          "videoId": "MBuB0RvZmnc",
+          "title": "Vayne vs Fiora Top - KR Challenger - Patch 16.07 Season 16",
+          "rankClaim": "Challenger",
+          "patch": "26.7",
+          "durationSec": 1816,
+          "region": "KR",
+          "uploaded": "2026-04-15",
+          "moments": []
+        },
+        {
+          "videoId": "zEc4HzfyYjY",
+          "title": "Vayne vs Fiora Top - KR Challenger - Patch 16.06 Season 16",
+          "rankClaim": "Challenger",
+          "patch": "26.6",
+          "durationSec": 1846,
+          "region": "KR",
+          "uploaded": "2026-03-31",
+          "moments": []
+        },
+        {
+          "videoId": "kQSI_L1hqEM",
+          "title": "Vayne Top vs Fiora - KR Grandmaster Patch 25.18",
+          "rankClaim": "Grandmaster",
+          "patch": "25.18",
+          "durationSec": 1784,
+          "region": "KR",
+          "uploaded": "2025-09-18",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 119,
+      "lane": "adc",
+      "videos": [
+        {
+          "videoId": "4ASAKhGaSpE",
+          "title": "When Rank 1 Vayne meet Rank 1 Draven - Engsub",
+          "rankClaim": "Master+",
+          "patch": "26.15",
+          "durationSec": 911,
+          "patchEstimated": true,
+          "uploaded": "2026-07-30",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "ljSnTA9XXps",
+          "title": "Vayne vs Draven [ ADC ] Lol Korea Master Patch 26.12 ✅",
+          "rankClaim": "Master",
+          "patch": "26.12",
+          "durationSec": 1352,
+          "region": "KR",
+          "uploaded": "2026-06-16",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 122,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "frZE_KHm-1s",
+          "title": "Vayne Top vs Darius - KR Challenger Patch 26.08",
+          "rankClaim": "Challenger",
+          "patch": "26.8",
+          "durationSec": 1598,
+          "region": "KR",
+          "uploaded": "2026-04-18",
+          "moments": []
+        },
+        {
+          "videoId": "uxeQi2pdMI8",
+          "title": "Vayne Top vs Darius - KR Master Patch 25.08",
+          "rankClaim": "Master",
+          "patch": "25.8",
+          "durationSec": 1573,
+          "region": "KR",
+          "uploaded": "2025-04-30",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 310,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 593,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 650,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 979,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1085,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1119,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1141,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1244,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1271,
+              "label": "Get a Triple Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1379,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1396,
+              "label": "Take down The Inhibitor"
+            },
+            {
+              "atSec": 1501,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1534,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1552,
+              "label": "End credit"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 126,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "awUq5tKm714",
+          "title": "T1 Doran Vayne vs Jayce [ TOP ] Korea Grandmaster 1730 LP | Patch 26.11",
+          "rankClaim": "Grandmaster",
+          "patch": "26.11",
+          "durationSec": 1512,
+          "region": "KR",
+          "player": "Doran",
+          "team": "T1",
+          "uploaded": "2026-06-04",
+          "moments": []
+        },
+        {
+          "videoId": "wAiXDj9Fsug",
+          "title": "Vayne vs Jayce Top - KR Challenger - Patch 16.09 Season 16",
+          "rankClaim": "Challenger",
+          "patch": "26.9",
+          "durationSec": 1771,
+          "region": "KR",
+          "uploaded": "2026-05-06",
+          "moments": []
+        },
+        {
+          "videoId": "vUsy40l2OEg",
+          "title": "Vayne Top vs Jayce - KR Challenger Patch 26.06",
+          "rankClaim": "Challenger",
+          "patch": "26.6",
+          "durationSec": 1917,
+          "region": "KR",
+          "uploaded": "2026-03-24",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 131,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "f_MqgXeuf3M",
+          "title": "(ZYB Jezu) Vayne Jungle vs Diana - EUW Challenger Patch 26.11",
+          "rankClaim": "Challenger",
+          "patch": "26.11",
+          "durationSec": 1677,
+          "region": "EUW",
+          "player": "ZYB Jezu",
+          "uploaded": "2026-05-31",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 131,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "7HuxSH_opwI",
+          "title": "Vayne Top vs Diana - KR Master Patch 25.05",
+          "rankClaim": "Master",
+          "patch": "25.5",
+          "durationSec": 1663,
+          "region": "KR",
+          "uploaded": "2025-03-17",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 145,
+      "lane": "adc",
+      "videos": [
+        {
+          "videoId": "NZNyxeL8mfc",
+          "title": "Vayne vs Kai'Sa [ ADC ] Lol Korea Master 267 LP | Patch 26.18 ✅",
+          "rankClaim": "Master",
+          "patch": "26.18",
+          "durationSec": 1522,
+          "region": "KR",
+          "uploaded": "2026-09-16",
+          "moments": []
+        },
+        {
+          "videoId": "w0L45urKijs",
+          "title": "Rank 1 Vayne : He Makes Vayne Look COMPLETELY BROKEN with this Build - Engsub ( vs Kai'sa, Xayah )",
+          "rankClaim": "Master+",
+          "patch": "26.17",
+          "durationSec": 1680,
+          "patchEstimated": true,
+          "uploaded": "2026-08-28",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "aAa7ZAy5PYo",
+          "title": "T1 Peyz Vayne ADC vs Kai'Sa - Patch 25.24 Ranked Korea",
+          "rankClaim": "Master+",
+          "patch": "25.24",
+          "durationSec": 728,
+          "region": "KR",
+          "player": "Peyz",
+          "team": "T1",
+          "uploaded": "2025-12-12",
+          "moments": []
+        },
+        {
+          "videoId": "exTvPuI88ms",
+          "title": "Vayne vs Kai'Sa [ ADC ] Lol Korea Master Patch 25.23 ✅",
+          "rankClaim": "Master",
+          "patch": "25.23",
+          "durationSec": 1487,
+          "region": "KR",
+          "uploaded": "2025-11-29",
+          "moments": []
+        },
+        {
+          "videoId": "KtzTxt7q4Q8",
+          "title": "Vayne vs Kai'Sa ADC [ TripleKill ] Korea Master Patch 25.21 ✅",
+          "rankClaim": "Master",
+          "patch": "25.21",
+          "durationSec": 1752,
+          "region": "KR",
+          "player": "TripleKill",
+          "uploaded": "2025-10-25",
+          "moments": []
+        },
+        {
+          "videoId": "kL3MiNsS7Wk",
+          "title": "Vayne ADC vs Kai'Sa - KR Master Patch 25.19",
+          "rankClaim": "Master",
+          "patch": "25.19",
+          "durationSec": 1602,
+          "region": "KR",
+          "uploaded": "2025-10-02",
+          "moments": []
+        },
+        {
+          "videoId": "YgYfVXoyQFs",
+          "title": "Vayne ADC vs Kai'Sa - KR Master Patch 25.18",
+          "rankClaim": "Master",
+          "patch": "25.18",
+          "durationSec": 1566,
+          "region": "KR",
+          "uploaded": "2025-09-24",
+          "moments": []
+        },
+        {
+          "videoId": "yD6yS81dSlc",
+          "title": "Vayne vs Kaisa [ ADC ] Lol Korea Master Patch 25.17",
+          "rankClaim": "Master",
+          "patch": "25.17",
+          "durationSec": 1392,
+          "region": "KR",
+          "uploaded": "2025-09-03",
+          "moments": []
+        },
+        {
+          "videoId": "h1iXgQLJQ6c",
+          "title": "Vayne ADC vs Kai'Sa - KR Grandmaster Patch 25.17",
+          "rankClaim": "Grandmaster",
+          "patch": "25.17",
+          "durationSec": 1570,
+          "region": "KR",
+          "uploaded": "2025-09-03",
+          "moments": []
+        },
+        {
+          "videoId": "H5n4apeSV6M",
+          "title": "Vayne ADC vs Kai'Sa - KR Master Patch 25.13",
+          "rankClaim": "Master",
+          "patch": "25.13",
+          "durationSec": 1635,
+          "region": "KR",
+          "uploaded": "2025-07-01",
+          "moments": []
+        },
+        {
+          "videoId": "3nuyXzmUavU",
+          "title": "Vayne ADC vs Kai'Sa - KR Master Patch 25.11",
+          "rankClaim": "Master",
+          "patch": "25.11",
+          "durationSec": 1867,
+          "region": "KR",
+          "uploaded": "2025-06-05",
+          "moments": []
+        },
+        {
+          "videoId": "GWmNE4hALc4",
+          "title": "Vayne vs Kaisa ADC [ QuadraKill ] Korea Master Patch 25.7 ✅",
+          "rankClaim": "Master",
+          "patch": "25.7",
+          "durationSec": 1379,
+          "region": "KR",
+          "player": "QuadraKill",
+          "uploaded": "2025-04-11",
+          "moments": []
+        },
+        {
+          "videoId": "s6YUzenk9Ww",
+          "title": "Vayne ADC vs Kai'Sa - KR Grandmaster Patch 25.05",
+          "rankClaim": "Grandmaster",
+          "patch": "25.5",
+          "durationSec": 1713,
+          "region": "KR",
+          "uploaded": "2025-03-11",
+          "moments": []
+        },
+        {
+          "videoId": "azfWf71MEac",
+          "title": "T1 Smash Vayne ADC vs Kaisa - Rank #4 Korea Challenger Patch 25.4 ✅",
+          "rankClaim": "Challenger",
+          "patch": "25.4",
+          "durationSec": 1116,
+          "region": "KR",
+          "player": "Smash",
+          "team": "T1",
+          "uploaded": "2025-02-20",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 150,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "tCQoT8CC0DM",
+          "title": "(T1 Doran) Vayne Top vs Gnar - KR Grandmaster Patch 26.16",
+          "rankClaim": "Grandmaster",
+          "patch": "26.16",
+          "durationSec": 1497,
+          "region": "KR",
+          "player": "Doran",
+          "team": "T1",
+          "uploaded": "2026-08-16",
+          "moments": []
+        },
+        {
+          "videoId": "2NFvKFCAt-k",
+          "title": "Vayne vs Gnar Top - NA Challenger - Patch 25.13 Season 15",
+          "rankClaim": "Challenger",
+          "patch": "25.13",
+          "durationSec": 1571,
+          "region": "NA",
+          "uploaded": "2025-07-04",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 154,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "FLARtFgv7IY",
+          "title": "T1 Doran Vayne vs Zac [ TOP ] Patch 26.3 Ranked Korea",
+          "rankClaim": "Master+",
+          "patch": "26.3",
+          "durationSec": 1099,
+          "region": "KR",
+          "player": "Doran",
+          "team": "T1",
+          "uploaded": "2026-02-05",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 157,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "Taf-LQ2Te00",
+          "title": "(GZ 1Jiang) Vayne Top vs Yasuo - KR Grandmaster Patch 26.13",
+          "rankClaim": "Grandmaster",
+          "patch": "26.13",
+          "durationSec": 1428,
+          "region": "KR",
+          "player": "GZ 1Jiang",
+          "uploaded": "2026-06-28",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 161,
+      "lane": "adc",
+      "videos": [
+        {
+          "videoId": "Z78iOycI1gE",
+          "title": "Deokdam : His VAYNE Mechanic is so SMOOTH, Doge Every Vel'koz Skill Shot - Engsub",
+          "rankClaim": "Master+",
+          "patch": "26.19",
+          "durationSec": 658,
+          "patchEstimated": true,
+          "uploaded": "2026-09-29",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "g_1-_5kfz1o",
+          "title": "BLG Viper Vayne vs Vel'Koz [ ADC ] Korea Challenger 1925 LP | Patch 26.15",
+          "rankClaim": "Challenger",
+          "patch": "26.15",
+          "durationSec": 1095,
+          "region": "KR",
+          "player": "Viper",
+          "team": "BLG",
+          "uploaded": "2026-08-11",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 163,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "yGzas2dRGF8",
+          "title": "Vayne Top vs Taliyah - NA Grandmaster Patch 25.24",
+          "rankClaim": "Grandmaster",
+          "patch": "25.24",
+          "durationSec": 1485,
+          "region": "NA",
+          "uploaded": "2025-12-16",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 164,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "-mwtnaEjhck",
+          "title": "Vayne Top vs Camille - EUW Master Patch 26.18",
+          "rankClaim": "Master",
+          "patch": "26.18",
+          "durationSec": 1631,
+          "region": "EUW",
+          "uploaded": "2026-09-20",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 202,
+      "lane": "adc",
+      "videos": [
+        {
+          "videoId": "g088EVp9t80",
+          "title": "Vayne vs Jhin [ ADC ] Korea Grandmaster 1324 LP | Patch 26.10 ✅",
+          "rankClaim": "Grandmaster",
+          "patch": "26.10",
+          "durationSec": 1654,
+          "region": "KR",
+          "uploaded": "2026-05-17",
+          "moments": []
+        },
+        {
+          "videoId": "Jdif869AA8I",
+          "title": "Vayne ADC vs Jhin - KR Challenger Patch 26.07",
+          "rankClaim": "Challenger",
+          "patch": "26.7",
+          "durationSec": 1706,
+          "region": "KR",
+          "uploaded": "2026-04-12",
+          "moments": []
+        },
+        {
+          "videoId": "8m9EGSwh5O4",
+          "title": "Vayne vs Jhin [ ADC ] Lol Korea Master Patch 25.13",
+          "rankClaim": "Master",
+          "patch": "25.13",
+          "durationSec": 1328,
+          "region": "KR",
+          "uploaded": "2025-06-29",
+          "moments": []
+        },
+        {
+          "videoId": "aRCl4SjxRiY",
+          "title": "Vayne ADC vs Jhin - KR Master Patch 25.08",
+          "rankClaim": "Master",
+          "patch": "25.8",
+          "durationSec": 1783,
+          "region": "KR",
+          "uploaded": "2025-04-24",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 242,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 606,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 737,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 848,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1017,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1049,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1138,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1195,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1218,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1307,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1366,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1538,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1647,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1703,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1724,
+              "label": "Take down The Inhibitor"
+            },
+            {
+              "atSec": 1734,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1762,
+              "label": "End credit"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 221,
+      "lane": "adc",
+      "videos": [
+        {
+          "videoId": "OAfwrRZ2g4M",
+          "title": "\"HanQL\" 2255LP Vayne : His TRUE DAMAGE HURT SO BAD LIKE CRAZY - Engsub (Vayne vs Zeri)",
+          "rankClaim": "Master+",
+          "patch": "26.14",
+          "durationSec": 676,
+          "patchEstimated": true,
+          "player": "HanQL",
+          "uploaded": "2026-07-18",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "u2L_G_IiCAo",
+          "title": "(ZYB Jezu) Vayne ADC vs Zeri - EUW Challenger Patch 26.11",
+          "rankClaim": "Challenger",
+          "patch": "26.11",
+          "durationSec": 1460,
+          "region": "EUW",
+          "player": "ZYB Jezu",
+          "uploaded": "2026-06-06",
+          "moments": []
+        },
+        {
+          "videoId": "nBpCFqnr8Cs",
+          "title": "(ZYB Jezu) Vayne ADC vs Zeri (ULF Kaori) - EUW Challenger Patch 26.10",
+          "rankClaim": "Challenger",
+          "patch": "26.10",
+          "durationSec": 1810,
+          "region": "EUW",
+          "player": "ZYB Jezu",
+          "uploaded": "2026-05-24",
+          "moments": []
+        },
+        {
+          "videoId": "oKzME05UG7w",
+          "title": "HLE Gumayusi Vayne vs Zeri [ ADC ] Korea Challenger 1517 LP | Patch 26.2",
+          "rankClaim": "Challenger",
+          "patch": "26.2",
+          "durationSec": 1827,
+          "region": "KR",
+          "player": "Gumayusi",
+          "team": "HLE",
+          "uploaded": "2026-02-03",
+          "moments": []
+        },
+        {
+          "videoId": "Vd40dxNF2dM",
+          "title": "Vayne ADC vs Zeri - EUW Grandmaster Patch 25.23",
+          "rankClaim": "Grandmaster",
+          "patch": "25.23",
+          "durationSec": 1673,
+          "region": "EUW",
+          "uploaded": "2025-11-25",
+          "moments": []
+        },
+        {
+          "videoId": "I1rKeIBPy8M",
+          "title": "Vayne vs Zeri [ ADC ] Lol Korea Master Patch 25.15",
+          "rankClaim": "Master",
+          "patch": "25.15",
+          "durationSec": 1554,
+          "region": "KR",
+          "uploaded": "2025-08-03",
+          "moments": []
+        },
+        {
+          "videoId": "dwyT3NwfWMA",
+          "title": "Vayne vs Zeri [ ADC ] Patch 25.12 Korea Master ✅",
+          "rankClaim": "Master",
+          "patch": "25.12",
+          "durationSec": 1891,
+          "region": "KR",
+          "uploaded": "2025-06-13",
+          "moments": []
+        },
+        {
+          "videoId": "pvHXGWYuu-o",
+          "title": "T1 Gumayusi Vayne ADC vs Zeri - Patch 25.3 Korea Challenger ✅",
+          "rankClaim": "Challenger",
+          "patch": "25.3",
+          "durationSec": 1703,
+          "region": "KR",
+          "player": "Gumayusi",
+          "team": "T1",
+          "uploaded": "2025-02-10",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 222,
+      "lane": "adc",
+      "videos": [
+        {
+          "videoId": "kPSMugBkVXg",
+          "title": "Rank 1 Vayne : CLEAN SPACING, TEARING DOWN MASTER ELO - Engsub ( vs Jinx, Jhin )",
+          "rankClaim": "Master",
+          "patch": "26.16",
+          "durationSec": 1460,
+          "patchEstimated": true,
+          "uploaded": "2026-08-22",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "hqoMyu-jSoQ",
+          "title": "Rank 1 Vayne : His Mechanic is Phenomenal - Engsub ( vs Jinx )",
+          "rankClaim": "Master+",
+          "patch": "26.16",
+          "durationSec": 923,
+          "patchEstimated": true,
+          "uploaded": "2026-08-14",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "zCqdE4PWtDw",
+          "title": "2000LP Vayne \"Jz\" His Kiting Skill is a NEXT LEVEL INSANE - Engsub (Vayne vs Jinx)",
+          "rankClaim": "Master+",
+          "patch": "26.13",
+          "durationSec": 788,
+          "patchEstimated": true,
+          "player": "Jz",
+          "uploaded": "2026-06-30",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "wWS6mOGSAEU",
+          "title": "Vayne vs Jinx [ ADC ] Lol Korea Master Patch 25.20 ✅",
+          "rankClaim": "Master",
+          "patch": "25.20",
+          "durationSec": 1764,
+          "region": "KR",
+          "uploaded": "2025-10-11",
+          "moments": []
+        },
+        {
+          "videoId": "caFrBfrOSCk",
+          "title": "Vayne ADC vs Jinx - NA Challenger Patch 25.09",
+          "rankClaim": "Challenger",
+          "patch": "25.9",
+          "durationSec": 1905,
+          "region": "NA",
+          "uploaded": "2025-05-15",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 235,
+      "lane": "adc",
+      "videos": [
+        {
+          "videoId": "foij1wWqD4s",
+          "title": "Vayne vs Senna [ ADC ] Patch 25.11 Korea Master ✅",
+          "rankClaim": "Master",
+          "patch": "25.11",
+          "durationSec": 1156,
+          "region": "KR",
+          "uploaded": "2025-05-31",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 236,
+      "lane": "adc",
+      "videos": [
+        {
+          "videoId": "SyDpcomVh-I",
+          "title": "Rank 1 Vayne : His DAMAGE HUT SO BADLY ( vs Lucian, Kai'sa )",
+          "rankClaim": "Master+",
+          "patch": "26.16",
+          "durationSec": 1348,
+          "patchEstimated": true,
+          "uploaded": "2026-08-25",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "KGvO_xYzHGk",
+          "title": "1600LP Vayne \"Jz\" His Mechanic is UNSTOPPABLE - Engsub ( Vayne vs Lucian )",
+          "rankClaim": "Master+",
+          "patch": "26.11",
+          "durationSec": 819,
+          "patchEstimated": true,
+          "player": "Jz",
+          "uploaded": "2026-06-05",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "Zg3Yfl8tvFQ",
+          "title": "Uzi : His Vayne Mechanic is INCREDIBLE - Engsub ( Vayne vs Lucian )",
+          "rankClaim": "Master+",
+          "patch": "26.9",
+          "durationSec": 995,
+          "patchEstimated": true,
+          "player": "Uzi",
+          "uploaded": "2026-05-11",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "1cwnkXL7yxc",
+          "title": "Vayne vs Lucian [ ADC ] Lol Korea Master Patch 26.5 ✅",
+          "rankClaim": "Master",
+          "patch": "26.5",
+          "durationSec": 1405,
+          "region": "KR",
+          "uploaded": "2026-03-12",
+          "moments": []
+        },
+        {
+          "videoId": "rkFaA3YHhx8",
+          "title": "Vayne ADC vs Lucian - EUW Grandmaster Patch 25.24",
+          "rankClaim": "Grandmaster",
+          "patch": "25.24",
+          "durationSec": 1615,
+          "region": "EUW",
+          "uploaded": "2025-12-23",
+          "moments": []
+        },
+        {
+          "videoId": "P_9ZS-blNKU",
+          "title": "T1 Peyz Vayne vs Lucian [ ADC ] Patch 25.24 Ranked Korea",
+          "rankClaim": "Master+",
+          "patch": "25.24",
+          "durationSec": 1134,
+          "region": "KR",
+          "player": "Peyz",
+          "team": "T1",
+          "uploaded": "2025-12-10",
+          "moments": []
+        },
+        {
+          "videoId": "16XuV20WoR8",
+          "title": "Vayne vs Lucian [ ADC ] Lol Korea Master Patch 25.14",
+          "rankClaim": "Master",
+          "patch": "25.14",
+          "durationSec": 1635,
+          "region": "KR",
+          "uploaded": "2025-07-27",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 238,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "g1hjHenZYvg",
+          "title": "Vayne Jungle vs Zed - NA Grandmaster Patch 25.20",
+          "rankClaim": "Grandmaster",
+          "patch": "25.20",
+          "durationSec": 2007,
+          "region": "NA",
+          "uploaded": "2025-10-20",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 240,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "cfrLe7DA1X8",
+          "title": "Vayne Top vs Kled - KR Challenger Patch 26.10",
+          "rankClaim": "Challenger",
+          "patch": "26.10",
+          "durationSec": 1844,
+          "region": "KR",
+          "uploaded": "2026-05-18",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 266,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "hNI1EewqcZQ",
+          "title": "Uzi : His Vayne Top Mechanic is so ANNOYING - Engsub ( Vayne vs Aatrox )",
+          "rankClaim": "Master+",
+          "patch": "26.9",
+          "durationSec": 1101,
+          "patchEstimated": true,
+          "player": "Uzi",
+          "uploaded": "2026-05-12",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "rutZP-qCrTI",
+          "title": "Vayne Top vs Aatrox - VN Challenger Patch 26.05",
+          "rankClaim": "Challenger",
+          "patch": "26.5",
+          "durationSec": 1591,
+          "uploaded": "2026-03-09",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 360,
+      "lane": "adc",
+      "videos": [
+        {
+          "videoId": "rRQk6q_k8Fo",
+          "title": "BLG Viper Vayne vs Samira [ ADC ] Ranked Master NA | Patch 26.21",
+          "rankClaim": "Master",
+          "patch": "26.21",
+          "durationSec": 1719,
+          "region": "NA",
+          "player": "Viper",
+          "team": "BLG",
+          "uploaded": "2026-10-24",
+          "moments": []
+        },
+        {
+          "videoId": "6mVStpdIFSU",
+          "title": "Vayne ADC vs Samira - EUW Challenger Patch 26.06",
+          "rankClaim": "Challenger",
+          "patch": "26.6",
+          "durationSec": 1840,
+          "region": "EUW",
+          "uploaded": "2026-03-30",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 79,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 265,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 493,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 618,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 728,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 818,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 845,
+              "label": "Hunt The Dragon",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 872,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 938,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 966,
+              "label": "Hunt The Rift Herald",
+              "kind": "herald"
+            },
+            {
+              "atSec": 984,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1009,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1105,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1189,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1270,
+              "label": "Hunt The Baron Nashor",
+              "kind": "baron"
+            },
+            {
+              "atSec": 1298,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1458,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1502,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1590,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1606,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1630,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1797,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1812,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1829,
+              "label": "End credit"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 421,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "HYCaCO1KSXI",
+          "title": "(KC Yike) Vayne Jungle vs Rek'Sai - EUW Challenger Patch 26.14",
+          "rankClaim": "Challenger",
+          "patch": "26.14",
+          "durationSec": 1819,
+          "region": "EUW",
+          "player": "Yike",
+          "team": "KC",
+          "uploaded": "2026-07-20",
+          "moments": []
+        },
+        {
+          "videoId": "sW0mYuuDXOU",
+          "title": "Vayne vs Rek'Sai Jungle - KR Challenger - Patch 16.09 Season 16",
+          "rankClaim": "Challenger",
+          "patch": "26.9",
+          "durationSec": 2161,
+          "region": "KR",
+          "uploaded": "2026-05-07",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 429,
+      "lane": "adc",
+      "videos": [
+        {
+          "videoId": "ET1z0PBOY74",
+          "title": "Vayne ADC vs Kalista - NA Master Patch 26.17",
+          "rankClaim": "Master",
+          "patch": "26.17",
+          "durationSec": 1498,
+          "region": "NA",
+          "uploaded": "2026-09-05",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 498,
+      "lane": "adc",
+      "videos": [
+        {
+          "videoId": "GAobQfx9VXw",
+          "title": "Rank 1 Vayne : Insane True Damage DELETED TANKERS SO QUICK - Engsub ( vs Xayah, Yunara )",
+          "rankClaim": "Master+",
+          "patch": "26.16",
+          "durationSec": 1607,
+          "patchEstimated": true,
+          "uploaded": "2026-08-18",
+          "format": "stream",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 516,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "jlOEHCvwBqg",
+          "title": "Vayne Top vs Ornn - KR Master Patch 26.02",
+          "rankClaim": "Master",
+          "patch": "26.2",
+          "durationSec": 1485,
+          "region": "KR",
+          "uploaded": "2026-01-29",
+          "moments": []
+        },
+        {
+          "videoId": "m8w0LpEYK6U",
+          "title": "Vayne Top vs Ornn - EUW Challenger Patch 26.01",
+          "rankClaim": "Challenger",
+          "patch": "26.1",
+          "durationSec": 1574,
+          "region": "EUW",
+          "uploaded": "2026-01-15",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 517,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "RV0OK3nKstM",
+          "title": "Vayne Jungle vs Sylas - NA Grandmaster Patch 26.13",
+          "rankClaim": "Grandmaster",
+          "patch": "26.13",
+          "durationSec": 1641,
+          "region": "NA",
+          "uploaded": "2026-07-10",
+          "result": "W",
+          "moments": [
+            {
+              "atSec": 61,
+              "label": "First Blood — Vayne kills Sylas",
+              "kind": "kill"
+            },
+            {
+              "atSec": 574,
+              "label": "Team fight (3 kills)",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 714,
+              "label": "Vayne kills Camille",
+              "kind": "kill"
+            },
+            {
+              "atSec": 747,
+              "label": "Blue takes 1st Dragon (Hextech)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 793,
+              "label": "Vayne eliminates Mel"
+            },
+            {
+              "atSec": 885,
+              "label": "Janna eliminates Camille"
+            },
+            {
+              "atSec": 920,
+              "label": "Vayne picks off Ezreal"
+            },
+            {
+              "atSec": 976,
+              "label": "Seraphine picks off Jayce"
+            },
+            {
+              "atSec": 999,
+              "label": "Vayne takes down Sylas"
+            },
+            {
+              "atSec": 1079,
+              "label": "Ornn kills Sylas",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1134,
+              "label": "Blue takes 2nd Dragon (Ocean)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1197,
+              "label": "Vayne kills Camille",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1348,
+              "label": "Blue takes Baron",
+              "kind": "baron"
+            },
+            {
+              "atSec": 1404,
+              "label": "Team fight (3 kills)",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1449,
+              "label": "Mid Inhibitor falls (Red)"
+            },
+            {
+              "atSec": 1475,
+              "label": "Blue takes 3rd Dragon (Cloud)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1540,
+              "label": "Vayne picks off Ezreal"
+            },
+            {
+              "atSec": 1579,
+              "label": "Top Inhibitor falls (Red)"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 523,
+      "lane": "adc",
+      "videos": [
+        {
+          "videoId": "WLTTl9mRKo4",
+          "title": "Vayne vs Aphelios [ ADC ] Lol Korea Master Patch 25.18",
+          "rankClaim": "Master",
+          "patch": "25.18",
+          "durationSec": 1179,
+          "region": "KR",
+          "uploaded": "2025-09-15",
+          "moments": []
+        },
+        {
+          "videoId": "auC6CIsab5o",
+          "title": "Vayne ADC vs Aphelios - KR Master Patch 25.12",
+          "rankClaim": "Master",
+          "patch": "25.12",
+          "durationSec": 1421,
+          "region": "KR",
+          "uploaded": "2025-06-17",
+          "moments": []
+        },
+        {
+          "videoId": "d1x96AbtNn4",
+          "title": "T1 Gumayusi Vayne vs Aphelios [ ADC ] Korea Challenger Patch 25.11",
+          "rankClaim": "Challenger",
+          "patch": "25.11",
+          "durationSec": 1191,
+          "region": "KR",
+          "player": "Gumayusi",
+          "team": "T1",
+          "uploaded": "2025-06-03",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 799,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "hpPLY2MQVw8",
+          "title": "Vayne Top vs Ambessa (NS Kingen) - KR Challenger Patch 26.16",
+          "rankClaim": "Challenger",
+          "patch": "26.16",
+          "durationSec": 1872,
+          "region": "KR",
+          "player": "Kingen",
+          "uploaded": "2026-08-24",
+          "moments": []
+        },
+        {
+          "videoId": "q2W6iKjqytA",
+          "title": "Vayne vs Ambessa 7/8/7 (Top) | EUW Grandmaster | Vayne OTP Replay",
+          "rankClaim": "Grandmaster",
+          "patch": "26.8",
+          "durationSec": 1441,
+          "region": "EUW",
+          "patchEstimated": true,
+          "uploaded": "2026-04-17",
+          "moments": []
+        },
+        {
+          "videoId": "-gUs8vbMhIc",
+          "title": "Vayne vs Ambessa TOP [ HLE Zeus ] Korea Grandmaster Patch 25.5 ✅",
+          "rankClaim": "Grandmaster",
+          "patch": "25.5",
+          "durationSec": 1421,
+          "region": "KR",
+          "player": "Zeus",
+          "team": "HLE",
+          "uploaded": "2025-03-08",
+          "moments": []
+        },
+        {
+          "videoId": "TBrzPoK06hA",
+          "title": "Vayne Top vs Ambessa - EUW Grandmaster Patch 25.04",
+          "rankClaim": "Grandmaster",
+          "patch": "25.4",
+          "durationSec": 1864,
+          "region": "EUW",
+          "uploaded": "2025-03-05",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 804,
+      "lane": "adc",
+      "videos": [
+        {
+          "videoId": "YAfcyLlDqTs",
+          "title": "Vayne ADC vs Yunara - VN Master Patch 26.18",
+          "rankClaim": "Master",
+          "patch": "26.18",
+          "durationSec": 1543,
+          "uploaded": "2026-09-17",
+          "moments": []
+        },
+        {
+          "videoId": "S2N5KIm5rcU",
+          "title": "Rank 1 Vayne : His Mechanic is Perfecly \" Make No Mistake \" Engsub ( vs Yunara, Lucian )",
+          "rankClaim": "Master+",
+          "patch": "26.17",
+          "durationSec": 1491,
+          "patchEstimated": true,
+          "uploaded": "2026-08-29",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "1BEmUipVOqo",
+          "title": "Rank 1 Vayne : DAM ! His True Damage is NUT - Engsub ( vs Yunara )",
+          "rankClaim": "Master+",
+          "patch": "26.15",
+          "durationSec": 1023,
+          "patchEstimated": true,
+          "uploaded": "2026-08-07",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "QLFNY3wJP4c",
+          "title": "Rank 1 Vayne : His Spacing is on a Different Level - Engsub (VS Yunara)",
+          "rankClaim": "Master+",
+          "patch": "26.15",
+          "durationSec": 951,
+          "patchEstimated": true,
+          "uploaded": "2026-08-04",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "F6r55p2-31U",
+          "title": "Rank 1 Vayne : From ZERO to HERO, He is a SAVAGE - Engsub (Vayne vs Yunara)",
+          "rankClaim": "Master+",
+          "patch": "26.15",
+          "durationSec": 880,
+          "patchEstimated": true,
+          "uploaded": "2026-07-31",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "AGitgwyuViw",
+          "title": "Rank 1 Vayne : His TRUE DAMAGE with Kraken is so BROKEN - Engsub (Vayne vs Yunara)",
+          "rankClaim": "Master+",
+          "patch": "26.14",
+          "durationSec": 808,
+          "patchEstimated": true,
+          "uploaded": "2026-07-28",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "bmN3BbgPLWA",
+          "title": "Vayne ADC vs Yunara - EUW Challenger Patch 26.09",
+          "rankClaim": "Challenger",
+          "patch": "26.9",
+          "durationSec": 1564,
+          "region": "EUW",
+          "uploaded": "2026-05-08",
+          "result": "W",
+          "moments": [
+            {
+              "atSec": 30,
+              "label": "First Blood — Vayne kills Yunara",
+              "kind": "kill"
+            },
+            {
+              "atSec": 203,
+              "label": "Vayne picks off Soraka"
+            },
+            {
+              "atSec": 507,
+              "label": "Vayne picks off Soraka"
+            },
+            {
+              "atSec": 565,
+              "label": "Vayne takes down Yunara"
+            },
+            {
+              "atSec": 666,
+              "label": "Blue takes 1st Dragon (Cloud)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 788,
+              "label": "Singed eliminates Varus"
+            },
+            {
+              "atSec": 893,
+              "label": "Blue takes Rift Herald",
+              "kind": "herald"
+            },
+            {
+              "atSec": 975,
+              "label": "Blue takes 2nd Dragon (Hextech)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1060,
+              "label": "Vayne picks off Varus"
+            },
+            {
+              "atSec": 1100,
+              "label": "Braum eliminates Soraka"
+            },
+            {
+              "atSec": 1199,
+              "label": "Vayne picks off Soraka"
+            },
+            {
+              "atSec": 1231,
+              "label": "Blue takes Baron",
+              "kind": "baron"
+            },
+            {
+              "atSec": 1260,
+              "label": "Kayn eliminates Yunara"
+            },
+            {
+              "atSec": 1294,
+              "label": "Red takes 1st Dragon (Mountain)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1327,
+              "label": "Vayne picks off Varus"
+            },
+            {
+              "atSec": 1474,
+              "label": "Vayne Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1492,
+              "label": "Mid Inhibitor falls (Red)"
+            }
+          ]
+        },
+        {
+          "videoId": "9dW01GQMZ2c",
+          "title": "Vayne ADC vs Yunara - KR Master Patch 26.08",
+          "rankClaim": "Master",
+          "patch": "26.8",
+          "durationSec": 1484,
+          "region": "KR",
+          "uploaded": "2026-04-25",
+          "moments": []
+        },
+        {
+          "videoId": "EYUd9LN9cVg",
+          "title": "Vayne ADC vs Yunara - EUW Challenger Patch 26.02",
+          "rankClaim": "Challenger",
+          "patch": "26.2",
+          "durationSec": 1470,
+          "region": "EUW",
+          "uploaded": "2026-01-31",
+          "moments": []
+        },
+        {
+          "videoId": "T0W1USJk5ws",
+          "title": "Vayne vs Yunara [ ADC ] Lol Korea Master Patch 25.24 ✅",
+          "rankClaim": "Master",
+          "patch": "25.24",
+          "durationSec": 1704,
+          "region": "KR",
+          "uploaded": "2025-12-24",
+          "moments": []
+        },
+        {
+          "videoId": "sIkxd4jkXOw",
+          "title": "Vayne ADC vs Yunara - KR Master Patch 25.16",
+          "rankClaim": "Master",
+          "patch": "25.16",
+          "durationSec": 2025,
+          "region": "KR",
+          "uploaded": "2025-08-21",
+          "moments": []
+        },
+        {
+          "videoId": "5riZpJBXbQs",
+          "title": "Vayne vs Yunara [ ADC ] Lol Korea Master Patch 25.16",
+          "rankClaim": "Master",
+          "patch": "25.16",
+          "durationSec": 1624,
+          "region": "KR",
+          "uploaded": "2025-08-17",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 893,
+      "lane": "adc",
+      "videos": [
+        {
+          "videoId": "idAtWuDT_Jc",
+          "title": "Uzi : His Vayne Toplane is so AGGRESSIVE at Early Game - Engsub ( Vayne vs Aurora )",
+          "rankClaim": "Master+",
+          "patch": "26.9",
+          "durationSec": 818,
+          "patchEstimated": true,
+          "player": "Uzi",
+          "uploaded": "2026-05-07",
+          "format": "stream",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 895,
+      "lane": "adc",
+      "videos": [
+        {
+          "videoId": "dlF_ASFRPoA",
+          "title": "Vayne ADC vs Nilah - NA Challenger Patch 25.13",
+          "rankClaim": "Challenger",
+          "patch": "25.13",
+          "durationSec": 1589,
+          "region": "NA",
+          "uploaded": "2025-07-16",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 897,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "rSBtXnA2OCY",
+          "title": "Vayne Top vs K'Sante - BR Challenger Patch 26.19",
+          "rankClaim": "Challenger",
+          "patch": "26.19",
+          "durationSec": 1679,
+          "uploaded": "2026-10-02",
+          "moments": []
+        },
+        {
+          "videoId": "z0DRgmoggHI",
+          "title": "(KC Yike) Vayne Top vs K'Sante (OLE Flakked) - EUW Challenger Patch 26.14",
+          "rankClaim": "Challenger",
+          "patch": "26.14",
+          "durationSec": 1808,
+          "region": "EUW",
+          "player": "Yike",
+          "team": "KC",
+          "uploaded": "2026-07-25",
+          "moments": []
+        },
+        {
+          "videoId": "eBa8YaLQjqs",
+          "title": "T1 Doran Vayne vs K'Sante [ TOP ] Patch 26.8 Korea Challenger 1734 LP",
+          "rankClaim": "Challenger",
+          "patch": "26.8",
+          "durationSec": 1734,
+          "region": "KR",
+          "player": "Doran",
+          "team": "T1",
+          "uploaded": "2026-04-18",
+          "moments": []
+        },
+        {
+          "videoId": "2_HWomknNUc",
+          "title": "Vayne Top vs K'Sante - KR Master Patch 25.09",
+          "rankClaim": "Master",
+          "patch": "25.9",
+          "durationSec": 2146,
+          "region": "KR",
+          "uploaded": "2025-05-06",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 312,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 481,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 851,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 969,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 991,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1119,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1289,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1327,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1396,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1454,
+              "label": "Get a Triple Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1682,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1879,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1895,
+              "label": "Take down The Inhibitor"
+            },
+            {
+              "atSec": 2054,
+              "label": "Get a Triple Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 2087,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 2107,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 2125,
+              "label": "End credit"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 904,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "nLPRDB03xkw",
+          "title": "Vayne Top vs Zaahen - NA Challenger Patch 26.21",
+          "rankClaim": "Challenger",
+          "patch": "26.21",
+          "durationSec": 1845,
+          "region": "NA",
+          "uploaded": "2026-10-30",
+          "result": "W",
+          "moments": [
+            {
+              "atSec": 365,
+              "label": "Blue takes 1st Dragon (Chemtech)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 370,
+              "label": "Vayne catches Zaahen"
+            },
+            {
+              "atSec": 738,
+              "label": "Red takes 1st Dragon (Ocean)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1056,
+              "label": "Red takes 2nd Dragon (Infernal)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1256,
+              "label": "Blue takes Baron",
+              "kind": "baron"
+            },
+            {
+              "atSec": 1375,
+              "label": "Morgana takes down Jarvan IV"
+            },
+            {
+              "atSec": 1378,
+              "label": "Red takes 3rd Dragon (Infernal)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1595,
+              "label": "Vayne eliminates Lulu"
+            },
+            {
+              "atSec": 1629,
+              "label": "Red takes Baron",
+              "kind": "baron"
+            },
+            {
+              "atSec": 1660,
+              "label": "Vayne picks off Yunara"
+            },
+            {
+              "atSec": 1692,
+              "label": "Katarina picks off Jarvan IV"
+            },
+            {
+              "atSec": 1713,
+              "label": "Red takes 4th Dragon (Infernal)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1725,
+              "label": "Vayne eliminates Zaahen"
+            },
+            {
+              "atSec": 1752,
+              "label": "Vayne picks off Yunara"
+            },
+            {
+              "atSec": 1791,
+              "label": "Mid Inhibitor falls (Blue)"
+            },
+            {
+              "atSec": 1801,
+              "label": "Bot Inhibitor falls (Blue)"
+            },
+            {
+              "atSec": 1805,
+              "label": "Vayne takes down Vex"
+            },
+            {
+              "atSec": 1825,
+              "label": "Top Inhibitor falls (Blue)"
+            }
+          ]
+        },
+        {
+          "videoId": "PT3L3l0_gzc",
+          "title": "Vayne Top vs Zaahen - KR Challenger Patch 26.05",
+          "rankClaim": "Challenger",
+          "patch": "26.5",
+          "durationSec": 1711,
+          "region": "KR",
+          "uploaded": "2026-03-18",
+          "moments": []
+        },
+        {
+          "videoId": "rTFuNhCXhQ0",
+          "title": "HLE Zeus Vayne vs Zaahen [ TOP ] Korea Grandmaster 1140 LP | Patch 26.4",
+          "rankClaim": "Grandmaster",
+          "patch": "26.4",
+          "durationSec": 1288,
+          "region": "KR",
+          "player": "Zeus",
+          "team": "HLE",
+          "uploaded": "2026-02-25",
+          "moments": []
+        },
+        {
+          "videoId": "U7VLLnGLzh8",
+          "title": "Vayne Top vs Zaahen - KR Master Patch 25.24",
+          "rankClaim": "Master",
+          "patch": "25.24",
+          "durationSec": 1507,
+          "region": "KR",
+          "uploaded": "2025-12-31",
+          "moments": []
+        },
+        {
+          "videoId": "Y_kMndpcJ8E",
+          "title": "Vayne vs Zaahen Top - NA Challenger - Patch 25.24 Season 15",
+          "rankClaim": "Challenger",
+          "patch": "25.24",
+          "durationSec": 2051,
+          "region": "NA",
+          "uploaded": "2025-12-24",
+          "moments": []
+        }
+      ]
+    }
+  ]
+}

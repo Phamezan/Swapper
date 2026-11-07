@@ -1,0 +1,2660 @@
+{
+  "schema": 1,
+  "champion": 350,
+  "generatedAt": "2026-11-07T13:25:14.592Z",
+  "guides": [],
+  "general": [
+    {
+      "champion": 350,
+      "lane": "support",
+      "patch": "26.21",
+      "reviewed": false,
+      "keyTips": [
+        {
+          "text": "Play this as the damage and anti-heal setup for games with substantial enemy healing or fragile targets to pressure, accepting weaker healing and shielding in return.",
+          "scope": "champion",
+          "sourceIds": [
+            "hoffmann"
+          ]
+        },
+        {
+          "text": "Harass with Q and the passive while helping restore the ADC's health, staying patient and conserving mana early instead of casting continuously.",
+          "scope": "champion",
+          "sourceIds": [
+            "hoffmann"
+          ],
+          "abilityKeys": [
+            {
+              "champion": 350,
+              "key": "Q"
+            }
+          ]
+        },
+        {
+          "text": "Save E for the most important incoming damage or a critical save rather than spending it casually.",
+          "scope": "champion",
+          "sourceIds": [
+            "hoffmann"
+          ],
+          "abilityKeys": [
+            {
+              "champion": 350,
+              "key": "E"
+            }
+          ]
+        }
+      ],
+      "sections": {
+        "overview": {
+          "tips": []
+        },
+        "early-lane": {
+          "tips": [
+            {
+              "text": "Respect the detached vulnerability: check bushes with Q range before approaching, and ward from a safe distance or alongside an ally.",
+              "scope": "champion",
+              "sourceIds": [
+                "hoffmann"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 350,
+                  "key": "Q"
+                }
+              ]
+            },
+            {
+              "text": "Never stay attached to the ADC automatically when a different ally will carry more; switch with care since attached time decides which ally becomes Best Friend.",
+              "scope": "champion",
+              "sourceIds": [
+                "hoffmann"
+              ]
+            },
+            {
+              "text": "Leave a damaged bot turret early when the enemy threatens a dive or the tower will fall anyway, moving sooner to a safer teammate.",
+              "scope": "champion",
+              "sourceIds": [
+                "hoffmann"
+              ]
+            },
+            {
+              "text": "Run the damage page of Arcane Comet, Axiom Arcanist, Transcendence, Gathering Storm, Legend: Haste, and Coup de Grace with Exhaust and Ignite.",
+              "scope": "champion",
+              "sourceIds": [
+                "hoffmann"
+              ]
+            }
+          ]
+        },
+        "mid-lane": {
+          "tips": [
+            {
+              "text": "When the bot turret falls, rotate to whichever ally benefits most from Yuumi rather than remaining tied to the ADC by default.",
+              "scope": "champion",
+              "sourceIds": [
+                "hoffmann"
+              ]
+            },
+            {
+              "text": "Move with the jungler while waves push, scouting with Q from safety and looking for opportunities around camps and ganks.",
+              "scope": "champion",
+              "sourceIds": [
+                "hoffmann"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 350,
+                  "key": "Q"
+                }
+              ]
+            },
+            {
+              "text": "Switch to the utility build when the team needs healing and support more than AP damage: Dream Maker, Mikael's Blessing, Knight's Vow, Redemption, and Staff of Flowing Water.",
+              "scope": "champion",
+              "sourceIds": [
+                "hoffmann"
+              ],
+              "itemIds": [
+                3870,
+                3222,
+                3109,
+                3107,
+                6616
+              ]
+            },
+            {
+              "text": "Never ward alone while detached: coordinate with the ADC or jungler and retreat when the area may hide an ambush.",
+              "scope": "champion",
+              "sourceIds": [
+                "hoffmann"
+              ]
+            },
+            {
+              "text": "When the attached ally cannot survive a fight, detach and retreat instead of donating a second kill; the preserved Yuumi keeps later support alive.",
+              "scope": "champion",
+              "sourceIds": [
+                "hoffmann"
+              ]
+            }
+          ]
+        },
+        "win-condition": {
+          "tips": [
+            {
+              "text": "Chip opponents patiently in the damage setup, prioritizing vulnerable or healing-dependent targets while anti-heal cuts their sustain through the fight.",
+              "scope": "champion",
+              "sourceIds": [
+                "hoffmann"
+              ]
+            },
+            {
+              "text": "Stay alive attached to the ally best placed to use the healing, slows, and buffs, avoiding risky solo wards and chases.",
+              "scope": "champion",
+              "sourceIds": [
+                "hoffmann"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 350,
+                  "key": "E"
+                }
+              ]
+            },
+            {
+              "text": "Rotate off a failing lane before its tower falls whenever another ally can use the support more effectively.",
+              "scope": "champion",
+              "sourceIds": [
+                "hoffmann"
+              ]
+            },
+            {
+              "text": "Answer danger with R as an escape path and Exhaust against attackers as a possible response, not a guaranteed rescue.",
+              "scope": "champion",
+              "sourceIds": [
+                "hoffmann"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 350,
+                  "key": "R"
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "itemization": [
+        {
+          "text": "Build the AP damage and anti-heal line in order: Dark Seal, Oblivion Orb, and Lost Chapter before Luden's Echo, then Liandry's Torment and Blackfire Torch, with Mejai's Soulstealer and Morellonomicon as later purchases toward Zaz'Zak's Realmspike, Mejai's, Morellonomicon, Liandry's, Luden's Echo, and Blackfire Torch.",
+          "scope": "champion",
+          "sourceIds": [
+            "hoffmann"
+          ],
+          "itemIds": [
+            1082,
+            3916,
+            3802,
+            6655,
+            6653,
+            2503,
+            3041,
+            3165,
+            3871
+          ]
+        },
+        {
+          "text": "For support utility instead of AP damage, build Dream Maker, Mikael's Blessing, Knight's Vow, Redemption, Staff of Flowing Water, and Morellonomicon.",
+          "scope": "champion",
+          "sourceIds": [
+            "hoffmann"
+          ],
+          "itemIds": [
+            3870,
+            3222,
+            3109,
+            3107,
+            6616,
+            3165
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "id": "hoffmann",
+          "author": "Hoffmann",
+          "rankClaim": "No rank claim",
+          "url": "https://www.mobafire.com/league-of-legends/build/26-21-yuumi-ap-queen-of-the-flames-649762",
+          "kind": "mobafire"
+        }
+      ]
+    }
+  ],
+  "vods": [
+    {
+      "enemy": 12,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "MkYBYwmTxOw",
+          "title": "Yuumi Support vs Alistar - KR Master Patch 25.19",
+          "rankClaim": "Master",
+          "patch": "25.19",
+          "durationSec": 1526,
+          "region": "KR",
+          "uploaded": "2025-10-02",
+          "moments": []
+        },
+        {
+          "videoId": "Z6Z4M13D5z4",
+          "title": "Yuumi Support vs Alistar - KR Grandmaster Patch 25.15",
+          "rankClaim": "Grandmaster",
+          "patch": "25.15",
+          "durationSec": 1581,
+          "region": "KR",
+          "uploaded": "2025-08-06",
+          "moments": []
+        },
+        {
+          "videoId": "Liz_UVRdOSw",
+          "title": "Yuumi Support vs Alistar - KR Challenger Patch 25.14",
+          "rankClaim": "Challenger",
+          "patch": "25.14",
+          "durationSec": 1889,
+          "region": "KR",
+          "uploaded": "2025-07-22",
+          "moments": []
+        },
+        {
+          "videoId": "BwtZZL8J5ec",
+          "title": "Yuumi Support vs Alistar - KR Grandmaster Patch 25.09",
+          "rankClaim": "Grandmaster",
+          "patch": "25.9",
+          "durationSec": 1453,
+          "region": "KR",
+          "uploaded": "2025-05-05",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 16,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "pLkPZi0bvZg",
+          "title": "Yuumi Support vs Soraka - BR Challenger Patch 26.02",
+          "rankClaim": "Challenger",
+          "patch": "26.2",
+          "durationSec": 1542,
+          "uploaded": "2026-01-25",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 22,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "e6oJZN8Ig64",
+          "title": "Yuumi Support vs Ashe - KR Master Patch 26.01",
+          "rankClaim": "Master",
+          "patch": "26.1",
+          "durationSec": 1499,
+          "region": "KR",
+          "uploaded": "2026-01-14",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 137,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 317,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 453,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 572,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 706,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 791,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 886,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 921,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1042,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1089,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1148,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1277,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1331,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1355,
+              "label": "Take down The Inhibitor"
+            },
+            {
+              "atSec": 1429,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1466,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1488,
+              "label": "End credit"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 26,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "EthawgFpmFM",
+          "title": "Yuumi Support vs Zilean - KR Grandmaster Patch 25.16",
+          "rankClaim": "Grandmaster",
+          "patch": "25.16",
+          "durationSec": 1444,
+          "region": "KR",
+          "uploaded": "2025-08-19",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 27,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "l2eu7YiIdp0",
+          "title": "Yuumi Support vs Singed - KR Grandmaster Patch 25.23",
+          "rankClaim": "Grandmaster",
+          "patch": "25.23",
+          "durationSec": 1711,
+          "region": "KR",
+          "uploaded": "2025-11-25",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 37,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "Z_lPxQjjzQ4",
+          "title": "Yuumi Support vs Sona - KR Master Patch 25.06",
+          "rankClaim": "Master",
+          "patch": "25.6",
+          "durationSec": 1775,
+          "region": "KR",
+          "uploaded": "2025-03-21",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 376,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 521,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 733,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 831,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 862,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 976,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1063,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1201,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1378,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1430,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1680,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1721,
+              "label": "Take down The Inhibitor"
+            },
+            {
+              "atSec": 1742,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1754,
+              "label": "End credit"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 40,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "cMetxQ57_I8",
+          "title": "Yuumi Support vs Janna - KR Grandmaster Patch 26.17",
+          "rankClaim": "Grandmaster",
+          "patch": "26.17",
+          "durationSec": 1815,
+          "region": "KR",
+          "uploaded": "2026-08-30",
+          "moments": []
+        },
+        {
+          "videoId": "JNLDKI653lE",
+          "title": "Yuumi Support vs Janna - NA Grandmaster Patch 25.24",
+          "rankClaim": "Grandmaster",
+          "patch": "25.24",
+          "durationSec": 1504,
+          "region": "NA",
+          "uploaded": "2025-12-18",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 161,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 331,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 438,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 638,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 692,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 747,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 788,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 881,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 976,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1020,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1102,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1214,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1246,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1281,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1455,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1493,
+              "label": "End credit"
+            }
+          ]
+        },
+        {
+          "videoId": "3GzzADqxSEw",
+          "title": "Yuumi Support vs Janna - KR Grandmaster Patch 25.18",
+          "rankClaim": "Grandmaster",
+          "patch": "25.18",
+          "durationSec": 1448,
+          "region": "KR",
+          "uploaded": "2025-09-16",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 43,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "vUIynw2b0u4",
+          "title": "Yuumi Support vs Karma - KR Challenger Patch 26.08",
+          "rankClaim": "Challenger",
+          "patch": "26.8",
+          "durationSec": 1662,
+          "region": "KR",
+          "uploaded": "2026-05-01",
+          "moments": []
+        },
+        {
+          "videoId": "zxS-rWhvrH8",
+          "title": "Yuumi Support vs Karma - NA Challenger Patch 26.05",
+          "rankClaim": "Challenger",
+          "patch": "26.5",
+          "durationSec": 1763,
+          "region": "NA",
+          "uploaded": "2026-03-17",
+          "moments": []
+        },
+        {
+          "videoId": "BB-KXcJ4CKQ",
+          "title": "Yuumi Support vs Karma - KR Grandmaster Patch 25.24",
+          "rankClaim": "Grandmaster",
+          "patch": "25.24",
+          "durationSec": 1515,
+          "region": "KR",
+          "uploaded": "2025-12-26",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 221,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 357,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 386,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 478,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 595,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 758,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 867,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1061,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1209,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1245,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1294,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1344,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1408,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1422,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1462,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1488,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1504,
+              "label": "End credit"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 48,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "0ckVx_akpFA",
+          "title": "Yuumi Support vs Trundle - NA Challenger Patch 25.15",
+          "rankClaim": "Challenger",
+          "patch": "25.15",
+          "durationSec": 1444,
+          "region": "NA",
+          "uploaded": "2025-08-13",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 50,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "vTAqgWLQ9zk",
+          "title": "Yuumi Support vs Swain - KR Challenger Patch 26.19",
+          "rankClaim": "Challenger",
+          "patch": "26.19",
+          "durationSec": 1779,
+          "region": "KR",
+          "uploaded": "2026-09-27",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 60,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "yxq-Ad1CRII",
+          "title": "(LNG MISSING) Yuumi Support vs Elise - KR Challenger Patch 26.14",
+          "rankClaim": "Challenger",
+          "patch": "26.14",
+          "durationSec": 1531,
+          "region": "KR",
+          "player": "MISSING",
+          "team": "LNG",
+          "uploaded": "2026-07-23",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 76,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "5svbTAo8XmY",
+          "title": "Yuumi Support vs Nidalee - KR Master Patch 25.24",
+          "rankClaim": "Master",
+          "patch": "25.24",
+          "durationSec": 1582,
+          "region": "KR",
+          "uploaded": "2026-01-08",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 164,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 359,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 451,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 518,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 605,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 811,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 844,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 866,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 949,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 981,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1112,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1230,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1273,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1315,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1410,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1509,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1535,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1548,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1571,
+              "label": "End credit"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 78,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "6bWr-QqbnzY",
+          "title": "Yuumi Support vs Poppy - KR Master Patch 26.18",
+          "rankClaim": "Master",
+          "patch": "26.18",
+          "durationSec": 1809,
+          "region": "KR",
+          "uploaded": "2026-09-24",
+          "result": "W",
+          "moments": [
+            {
+              "atSec": 200,
+              "label": "First Blood — Lucian kills Jinx",
+              "kind": "kill"
+            },
+            {
+              "atSec": 298,
+              "label": "Blue takes 1st Dragon (Mountain)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 626,
+              "label": "Red takes 1st Dragon (Chemtech)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 679,
+              "label": "Lucian picks off Poppy"
+            },
+            {
+              "atSec": 741,
+              "label": "Team fight (3 kills)",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 971,
+              "label": "Lucian picks off Poppy"
+            },
+            {
+              "atSec": 1001,
+              "label": "Blue takes 2nd Dragon (Cloud)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1022,
+              "label": "Lucian kills Galio",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1155,
+              "label": "Lucian takes down Jinx"
+            },
+            {
+              "atSec": 1236,
+              "label": "Lucian takes down Jinx"
+            },
+            {
+              "atSec": 1303,
+              "label": "Blue takes Baron",
+              "kind": "baron"
+            },
+            {
+              "atSec": 1349,
+              "label": "Blue takes 3rd Dragon (Cloud)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1487,
+              "label": "Lucian picks off Poppy"
+            },
+            {
+              "atSec": 1569,
+              "label": "Lucian Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1617,
+              "label": "Mid Inhibitor falls (Blue)"
+            },
+            {
+              "atSec": 1647,
+              "label": "Tristana takes down Poppy"
+            },
+            {
+              "atSec": 1671,
+              "label": "Red takes 2nd Dragon (Cloud)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1746,
+              "label": "Lucian Double Kill",
+              "kind": "kill"
+            }
+          ]
+        },
+        {
+          "videoId": "7BN7YJJ05nM",
+          "title": "(TT Feather) Yuumi Support vs Poppy - KR Master Patch 26.13",
+          "rankClaim": "Master",
+          "patch": "26.13",
+          "durationSec": 1518,
+          "region": "KR",
+          "player": "TT Feather",
+          "uploaded": "2026-07-05",
+          "moments": []
+        },
+        {
+          "videoId": "io4TxfXp8Wc",
+          "title": "Yuumi Support vs Poppy - KR Grandmaster Patch 25.07",
+          "rankClaim": "Grandmaster",
+          "patch": "25.7",
+          "durationSec": 1660,
+          "region": "KR",
+          "uploaded": "2025-04-06",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 80,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "uU9c-mJXOCw",
+          "title": "Yuumi Support vs Pantheon - NA Challenger Patch 25.05",
+          "rankClaim": "Challenger",
+          "patch": "25.5",
+          "durationSec": 2016,
+          "region": "NA",
+          "uploaded": "2025-03-18",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 238,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 307,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 927,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1062,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1156,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1211,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1260,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1318,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1384,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1555,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1633,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1785,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1824,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1835,
+              "label": "Take down The Inhibitor"
+            },
+            {
+              "atSec": 1854,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1927,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1957,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1995,
+              "label": "End credit"
+            }
+          ]
+        },
+        {
+          "videoId": "-ZhVJv-L_w4",
+          "title": "Yuumi Support vs Pantheon - VN Challenger Patch 25.04",
+          "rankClaim": "Challenger",
+          "patch": "25.4",
+          "durationSec": 1550,
+          "uploaded": "2025-02-24",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 214,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 377,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 702,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 760,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 823,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 974,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1075,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1140,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1294,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1417,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1489,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1506,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1529,
+              "label": "End credit"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 83,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "qsGgn_7LtoA",
+          "title": "Yuumi Support vs Yorick - KR Challenger Patch 26.06",
+          "rankClaim": "Challenger",
+          "patch": "26.6",
+          "durationSec": 1826,
+          "region": "KR",
+          "uploaded": "2026-03-24",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 89,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "vmXRkMQjNR4",
+          "title": "Yuumi Support vs Leona - EUW Grandmaster Patch 26.16",
+          "rankClaim": "Grandmaster",
+          "patch": "26.16",
+          "durationSec": 1752,
+          "region": "EUW",
+          "uploaded": "2026-08-20",
+          "moments": []
+        },
+        {
+          "videoId": "Ux5gX6pxSb4",
+          "title": "Yuumi Support vs Leona - KR Master Patch 26.12",
+          "rankClaim": "Master",
+          "patch": "26.12",
+          "durationSec": 1705,
+          "region": "KR",
+          "uploaded": "2026-06-22",
+          "moments": []
+        },
+        {
+          "videoId": "YcD-Lz6EV4g",
+          "title": "Yuumi Support vs Leona - KR Master Patch 26.02",
+          "rankClaim": "Master",
+          "patch": "26.2",
+          "durationSec": 1554,
+          "region": "KR",
+          "uploaded": "2026-02-05",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 96,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "D4eN5qc0FPg",
+          "title": "Yuumi Support vs Kog'Maw - EUW Grandmaster Patch 26.17",
+          "rankClaim": "Grandmaster",
+          "patch": "26.17",
+          "durationSec": 1406,
+          "region": "EUW",
+          "uploaded": "2026-09-10",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 111,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "bsakU5JKzyY",
+          "title": "Yuumi Support vs Nautilus - KR Challenger Patch 26.21",
+          "rankClaim": "Challenger",
+          "patch": "26.21",
+          "durationSec": 1773,
+          "region": "KR",
+          "uploaded": "2026-10-23",
+          "result": "W",
+          "moments": [
+            {
+              "atSec": 158,
+              "label": "First Blood — Yuumi kills Miss Fortune",
+              "kind": "kill"
+            },
+            {
+              "atSec": 293,
+              "label": "Yuumi eliminates Nautilus"
+            },
+            {
+              "atSec": 391,
+              "label": "Yuumi eliminates Nautilus"
+            },
+            {
+              "atSec": 510,
+              "label": "Taliyah eliminates Miss Fortune"
+            },
+            {
+              "atSec": 599,
+              "label": "Lucian Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 611,
+              "label": "Red takes 1st Dragon (Ocean)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 846,
+              "label": "Jax eliminates Nautilus"
+            },
+            {
+              "atSec": 981,
+              "label": "Taliyah kills Nautilus",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1063,
+              "label": "Red takes 2nd Dragon (Cloud)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1159,
+              "label": "Taliyah Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1236,
+              "label": "Blue takes Baron",
+              "kind": "baron"
+            },
+            {
+              "atSec": 1340,
+              "label": "Team fight (3 kills)",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1378,
+              "label": "Red takes 3rd Dragon (Hextech)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1547,
+              "label": "Lucian picks off Olaf"
+            },
+            {
+              "atSec": 1601,
+              "label": "Team fight (4 kills)",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1689,
+              "label": "Red takes 4th Dragon (Hextech)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1724,
+              "label": "Lucian kills Lissandra",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1741,
+              "label": "Mid Inhibitor falls (Blue)"
+            }
+          ]
+        },
+        {
+          "videoId": "fT5VCywN4yo",
+          "title": "Yuumi Support vs Nautilus (Bull) - KR Challenger Patch 26.20",
+          "rankClaim": "Challenger",
+          "patch": "26.20",
+          "durationSec": 1675,
+          "region": "KR",
+          "uploaded": "2026-10-10",
+          "result": "L",
+          "moments": [
+            {
+              "atSec": 78,
+              "label": "First Blood — Zeri kills Ezreal",
+              "kind": "kill"
+            },
+            {
+              "atSec": 123,
+              "label": "Lissandra picks off Nidalee"
+            },
+            {
+              "atSec": 269,
+              "label": "Hecarim kills Nautilus",
+              "kind": "kill"
+            },
+            {
+              "atSec": 354,
+              "label": "Red takes 1st Dragon (Mountain)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 392,
+              "label": "Yuumi picks off Ezreal"
+            },
+            {
+              "atSec": 491,
+              "label": "Zeri picks off Nautilus"
+            },
+            {
+              "atSec": 630,
+              "label": "Zeri takes down Ezreal"
+            },
+            {
+              "atSec": 760,
+              "label": "Blue takes 1st Dragon (Ocean)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1043,
+              "label": "Zeri takes down Ezreal"
+            },
+            {
+              "atSec": 1079,
+              "label": "Red takes 2nd Dragon (Infernal)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1123,
+              "label": "Yuumi eliminates Nautilus"
+            },
+            {
+              "atSec": 1246,
+              "label": "Blue takes Baron",
+              "kind": "baron"
+            },
+            {
+              "atSec": 1390,
+              "label": "Blue takes 2nd Dragon (Infernal)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1403,
+              "label": "Zeri kills Taliyah",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1626,
+              "label": "Zeri picks off Nautilus"
+            },
+            {
+              "atSec": 1631,
+              "label": "Zeri Triple Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1642,
+              "label": "Mid Inhibitor falls (Red)"
+            }
+          ]
+        },
+        {
+          "videoId": "5zF0TaIXXZA",
+          "title": "Yuumi Support vs Nautilus - KR Grandmaster Patch 26.16",
+          "rankClaim": "Grandmaster",
+          "patch": "26.16",
+          "durationSec": 1582,
+          "region": "KR",
+          "uploaded": "2026-08-25",
+          "moments": []
+        },
+        {
+          "videoId": "4DXhAeA8DVY",
+          "title": "Yuumi Support vs Nautilus - KR Master Patch 26.08",
+          "rankClaim": "Master",
+          "patch": "26.8",
+          "durationSec": 1907,
+          "region": "KR",
+          "uploaded": "2026-04-20",
+          "moments": []
+        },
+        {
+          "videoId": "XORQ9FxD_VI",
+          "title": "Yuumi Support vs Nautilus - NA Challenger Patch 25.23",
+          "rankClaim": "Challenger",
+          "patch": "25.23",
+          "durationSec": 1777,
+          "region": "NA",
+          "uploaded": "2025-12-05",
+          "moments": []
+        },
+        {
+          "videoId": "e856INyHdv8",
+          "title": "Yuumi Support vs Nautilus - KR Master Patch 25.22",
+          "rankClaim": "Master",
+          "patch": "25.22",
+          "durationSec": 1663,
+          "region": "KR",
+          "uploaded": "2025-11-12",
+          "moments": []
+        },
+        {
+          "videoId": "Xe9pkrr2WtQ",
+          "title": "Yuumi Support vs Nautilus - EUW Grandmaster Patch 25.17",
+          "rankClaim": "Grandmaster",
+          "patch": "25.17",
+          "durationSec": 1889,
+          "region": "EUW",
+          "uploaded": "2025-09-11",
+          "moments": []
+        },
+        {
+          "videoId": "jlT6YCC9wSU",
+          "title": "Yuumi Support vs Nautilus - EUW Challenger Patch 25.12",
+          "rankClaim": "Challenger",
+          "patch": "25.12",
+          "durationSec": 1665,
+          "region": "EUW",
+          "uploaded": "2025-06-25",
+          "moments": []
+        },
+        {
+          "videoId": "tauDmmTo7n4",
+          "title": "Yuumi Support vs Nautilus - KR Grandmaster Patch 25.10",
+          "rankClaim": "Grandmaster",
+          "patch": "25.10",
+          "durationSec": 1771,
+          "region": "KR",
+          "uploaded": "2025-05-19",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 117,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "14YrCvESmOU",
+          "title": "Yuumi Support vs Lulu - KR Master Patch 26.13",
+          "rankClaim": "Master",
+          "patch": "26.13",
+          "durationSec": 1473,
+          "region": "KR",
+          "uploaded": "2026-07-16",
+          "moments": []
+        },
+        {
+          "videoId": "h7T3nsgITrM",
+          "title": "Yuumi Support vs Lulu - KR Challenger Patch 26.09",
+          "rankClaim": "Challenger",
+          "patch": "26.9",
+          "durationSec": 1559,
+          "region": "KR",
+          "uploaded": "2026-05-09",
+          "moments": []
+        },
+        {
+          "videoId": "cTav8vBDst8",
+          "title": "Yuumi Support vs Lulu - KR Master Patch 26.07",
+          "rankClaim": "Master",
+          "patch": "26.7",
+          "durationSec": 1526,
+          "region": "KR",
+          "uploaded": "2026-04-16",
+          "moments": []
+        },
+        {
+          "videoId": "v3vN9wDOmi4",
+          "title": "Yuumi Support vs Lulu - EUW Challenger Patch 26.04",
+          "rankClaim": "Challenger",
+          "patch": "26.4",
+          "durationSec": 1790,
+          "region": "EUW",
+          "uploaded": "2026-03-05",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 473,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 579,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 892,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 910,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 978,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1134,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1229,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1291,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1387,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1419,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1450,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1621,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1668,
+              "label": "Take down The Inhibitor"
+            },
+            {
+              "atSec": 1684,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1726,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1779,
+              "label": "End credit"
+            }
+          ]
+        },
+        {
+          "videoId": "VaKTLAYQGAA",
+          "title": "Yuumi Support vs Lulu - KR Challenger Patch 26.03",
+          "rankClaim": "Challenger",
+          "patch": "26.3",
+          "durationSec": 1850,
+          "region": "KR",
+          "uploaded": "2026-02-19",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 208,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 415,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 653,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 832,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 924,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1135,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1245,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1368,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1539,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1569,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1597,
+              "label": "Take down The Inhibitor"
+            },
+            {
+              "atSec": 1653,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1671,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1806,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1839,
+              "label": "End credit"
+            }
+          ]
+        },
+        {
+          "videoId": "47Nkpo3UEbw",
+          "title": "Yuumi Support vs Lulu - NA Challenger Patch 25.22",
+          "rankClaim": "Challenger",
+          "patch": "25.22",
+          "durationSec": 1623,
+          "region": "NA",
+          "uploaded": "2025-11-21",
+          "moments": []
+        },
+        {
+          "videoId": "rAKiFAzbI1E",
+          "title": "Yuumi Support vs Lulu - KR Master Patch 25.08",
+          "rankClaim": "Master",
+          "patch": "25.8",
+          "durationSec": 1711,
+          "region": "KR",
+          "uploaded": "2025-04-20",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 623,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 787,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 926,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1004,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1217,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1355,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1401,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1416,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1556,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1628,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1653,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1666,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1690,
+              "label": "End credit"
+            }
+          ]
+        },
+        {
+          "videoId": "TIqPZDAZqD0",
+          "title": "Yuumi Support vs Lulu - EUW Grandmaster Patch 25.06",
+          "rankClaim": "Grandmaster",
+          "patch": "25.6",
+          "durationSec": 1780,
+          "region": "EUW",
+          "uploaded": "2025-04-01",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 161,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "pCBww28-c8E",
+          "title": "(DK Wayne) Yuumi Support vs Vel'Koz - KR Master Patch 26.10",
+          "rankClaim": "Master",
+          "patch": "26.10",
+          "durationSec": 1590,
+          "region": "KR",
+          "player": "Wayne",
+          "team": "DK",
+          "uploaded": "2026-05-22",
+          "moments": []
+        },
+        {
+          "videoId": "_-olYMhu23Q",
+          "title": "Yuumi Support vs Vel'Koz - KR Master Patch 25.17",
+          "rankClaim": "Master",
+          "patch": "25.17",
+          "durationSec": 1726,
+          "region": "KR",
+          "uploaded": "2025-09-01",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 164,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "FVNQumDt7gc",
+          "title": "Yuumi Support vs Camille - KR Master Patch 26.03",
+          "rankClaim": "Master",
+          "patch": "26.3",
+          "durationSec": 1559,
+          "region": "KR",
+          "uploaded": "2026-02-11",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 112,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 317,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 424,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 533,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 593,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 669,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 736,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 896,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1018,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1245,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1338,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1363,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1387,
+              "label": "Take down The Inhibitor"
+            },
+            {
+              "atSec": 1442,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1530,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1548,
+              "label": "End credit"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 201,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "i8-cZYXufQ4",
+          "title": "(BDG Ronaldo) Yuumi Support vs Braum - EUW Challenger Patch 26.11",
+          "rankClaim": "Challenger",
+          "patch": "26.11",
+          "durationSec": 1532,
+          "region": "EUW",
+          "player": "BDG Ronaldo",
+          "uploaded": "2026-06-05",
+          "moments": []
+        },
+        {
+          "videoId": "-XV2WvOGuUU",
+          "title": "Yuumi Support vs Braum - VN Challenger Patch 25.16",
+          "rankClaim": "Challenger",
+          "patch": "25.16",
+          "durationSec": 1551,
+          "uploaded": "2025-08-28",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 235,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "Z1u4tFSQRtA",
+          "title": "Yuumi Support vs Senna - KR Master Patch 25.20",
+          "rankClaim": "Master",
+          "patch": "25.20",
+          "durationSec": 1725,
+          "region": "KR",
+          "uploaded": "2025-10-15",
+          "moments": []
+        },
+        {
+          "videoId": "A6Z50IkimaA",
+          "title": "Yuumi Support vs Senna - NA Challenger Patch 25.18",
+          "rankClaim": "Challenger",
+          "patch": "25.18",
+          "durationSec": 1688,
+          "region": "NA",
+          "uploaded": "2025-09-26",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 267,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "QwpS6KC0PYw",
+          "title": "Yuumi Support vs Nami - NA Challenger Patch 26.05",
+          "rankClaim": "Challenger",
+          "patch": "26.5",
+          "durationSec": 1550,
+          "region": "NA",
+          "uploaded": "2026-03-11",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 546,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 600,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 749,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 795,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 874,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 934,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 984,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1087,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1227,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1302,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1439,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1463,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1482,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1498,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1511,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1539,
+              "label": "End credit"
+            }
+          ]
+        },
+        {
+          "videoId": "kUypZXr8Irs",
+          "title": "Yuumi Support vs Nami - KR Challenger Patch 26.04",
+          "rankClaim": "Challenger",
+          "patch": "26.4",
+          "durationSec": 1561,
+          "region": "KR",
+          "uploaded": "2026-02-24",
+          "moments": []
+        },
+        {
+          "videoId": "ZmZTb1w6cO8",
+          "title": "Yuumi Support vs Nami - EUW Challenger Patch 25.20",
+          "rankClaim": "Challenger",
+          "patch": "25.20",
+          "durationSec": 2034,
+          "region": "EUW",
+          "uploaded": "2025-10-23",
+          "moments": []
+        },
+        {
+          "videoId": "Onl4EsiKXcQ",
+          "title": "Yuumi Support vs Nami - KR Master Patch 25.05",
+          "rankClaim": "Master",
+          "patch": "25.5",
+          "durationSec": 2021,
+          "region": "KR",
+          "uploaded": "2025-03-10",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 412,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "zO8BVF7pYFM",
+          "title": "Yuumi Support vs Thresh - KR Grandmaster Patch 26.20",
+          "rankClaim": "Grandmaster",
+          "patch": "26.20",
+          "durationSec": 1823,
+          "region": "KR",
+          "uploaded": "2026-10-22",
+          "result": "W",
+          "moments": [
+            {
+              "atSec": 159,
+              "label": "First Blood — Lee Sin kills Katarina",
+              "kind": "kill"
+            },
+            {
+              "atSec": 246,
+              "label": "Yuumi solo kills Thresh",
+              "kind": "kill"
+            },
+            {
+              "atSec": 828,
+              "label": "Zoe Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 831,
+              "label": "Zoe Triple Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 900,
+              "label": "Blue takes 1st Dragon (Infernal)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 955,
+              "label": "Yasuo picks off Renekton"
+            },
+            {
+              "atSec": 1051,
+              "label": "Lee Sin takes down Nidalee"
+            },
+            {
+              "atSec": 1169,
+              "label": "Lee Sin picks off Katarina"
+            },
+            {
+              "atSec": 1240,
+              "label": "Blue takes 2nd Dragon (Hextech)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1279,
+              "label": "Yuumi takes down Katarina"
+            },
+            {
+              "atSec": 1343,
+              "label": "Yasuo Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1380,
+              "label": "Red takes Baron",
+              "kind": "baron"
+            },
+            {
+              "atSec": 1491,
+              "label": "Zoe eliminates Katarina"
+            },
+            {
+              "atSec": 1565,
+              "label": "Lee Sin eliminates Lucian"
+            },
+            {
+              "atSec": 1567,
+              "label": "Red takes 1st Dragon (Chemtech)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1613,
+              "label": "Mid Inhibitor falls (Blue)"
+            },
+            {
+              "atSec": 1685,
+              "label": "Team fight (4 kills)",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1757,
+              "label": "Red takes 2nd Baron",
+              "kind": "baron"
+            }
+          ]
+        },
+        {
+          "videoId": "qdRIcyn8DNU",
+          "title": "Yuumi Support vs Thresh - EUW Challenger Patch 26.01",
+          "rankClaim": "Challenger",
+          "patch": "26.1",
+          "durationSec": 1526,
+          "region": "EUW",
+          "uploaded": "2026-01-22",
+          "moments": []
+        },
+        {
+          "videoId": "9dbqCeql17o",
+          "title": "Yuumi Support vs Thresh - KR Master Patch 25.24",
+          "rankClaim": "Master",
+          "patch": "25.24",
+          "durationSec": 1469,
+          "region": "KR",
+          "uploaded": "2025-12-09",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 281,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 441,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 703,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 736,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 767,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 906,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 929,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1006,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1233,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1312,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1334,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1356,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1434,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1458,
+              "label": "End credit"
+            }
+          ]
+        },
+        {
+          "videoId": "4zFX-DHTAvs",
+          "title": "Yuumi Support vs Thresh - EUW Grandmaster Patch 25.21",
+          "rankClaim": "Grandmaster",
+          "patch": "25.21",
+          "durationSec": 1481,
+          "region": "EUW",
+          "uploaded": "2025-11-06",
+          "moments": []
+        },
+        {
+          "videoId": "5DGG2wUdbMg",
+          "title": "Yuumi Support vs Thresh - NA Grandmaster Patch 25.13",
+          "rankClaim": "Grandmaster",
+          "patch": "25.13",
+          "durationSec": 1513,
+          "region": "NA",
+          "uploaded": "2025-07-17",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 432,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "fjuKaj3iT50",
+          "title": "Yuumi Support vs Bard - KR Challenger Patch 26.07",
+          "rankClaim": "Challenger",
+          "patch": "26.7",
+          "durationSec": 1709,
+          "region": "KR",
+          "uploaded": "2026-04-08",
+          "moments": []
+        },
+        {
+          "videoId": "0wkIM9k3ak8",
+          "title": "Yuumi Support vs Bard - EUW Grandmaster Patch 25.19",
+          "rankClaim": "Grandmaster",
+          "patch": "25.19",
+          "durationSec": 2005,
+          "region": "EUW",
+          "uploaded": "2025-10-10",
+          "moments": []
+        },
+        {
+          "videoId": "YqTR4k_hDdU",
+          "title": "Yuumi Support vs Bard - EUW Challenger Patch 25.13",
+          "rankClaim": "Challenger",
+          "patch": "25.13",
+          "durationSec": 1791,
+          "region": "EUW",
+          "uploaded": "2025-07-10",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 497,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "DiWQdfwVZzE",
+          "title": "Yuumi Support vs Rakan - KR Grandmaster Patch 26.15",
+          "rankClaim": "Grandmaster",
+          "patch": "26.15",
+          "durationSec": 1407,
+          "region": "KR",
+          "uploaded": "2026-08-10",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 517,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "5o7ieA52l6g",
+          "title": "Yuumi Support vs Sylas - KR Master Patch 25.21",
+          "rankClaim": "Master",
+          "patch": "25.21",
+          "durationSec": 1722,
+          "region": "KR",
+          "uploaded": "2025-10-29",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 518,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "vGTN-lxEJJQ",
+          "title": "Yuumi Support vs Neeko - KR Master Patch 25.13",
+          "rankClaim": "Master",
+          "patch": "25.13",
+          "durationSec": 1808,
+          "region": "KR",
+          "uploaded": "2025-06-29",
+          "moments": []
+        },
+        {
+          "videoId": "19qoUDxCIRo",
+          "title": "Yuumi Support vs Neeko - NA Challenger Patch 25.07",
+          "rankClaim": "Challenger",
+          "patch": "25.7",
+          "durationSec": 1910,
+          "region": "NA",
+          "uploaded": "2025-04-15",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 526,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "Lc14LhuPaek",
+          "title": "Yuumi Support vs Rell - VN Challenger Patch 25.24",
+          "rankClaim": "Challenger",
+          "patch": "25.24",
+          "durationSec": 1541,
+          "uploaded": "2025-12-31",
+          "moments": []
+        },
+        {
+          "videoId": "emGDISi4UcU",
+          "title": "Yuumi Support vs Rell - EUW Grandmaster Patch 25.14",
+          "rankClaim": "Grandmaster",
+          "patch": "25.14",
+          "durationSec": 1746,
+          "region": "EUW",
+          "uploaded": "2025-07-30",
+          "moments": []
+        },
+        {
+          "videoId": "LmxYRx_vT9U",
+          "title": "Yuumi Support vs Rell - KR Grandmaster Patch 25.12",
+          "rankClaim": "Grandmaster",
+          "patch": "25.12",
+          "durationSec": 1627,
+          "region": "KR",
+          "uploaded": "2025-06-15",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 888,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "rWR_8qLjyyM",
+          "title": "Yuumi Support vs Renata Glasc - KR Grandmaster Patch 26.19",
+          "rankClaim": "Grandmaster",
+          "patch": "26.19",
+          "durationSec": 1760,
+          "region": "KR",
+          "uploaded": "2026-10-07",
+          "result": "W",
+          "moments": [
+            {
+              "atSec": 156,
+              "label": "First Blood — Zeri kills Kalista",
+              "kind": "kill"
+            },
+            {
+              "atSec": 158,
+              "label": "Yuumi catches Hecarim"
+            },
+            {
+              "atSec": 744,
+              "label": "Blue takes 1st Dragon (Ocean)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 853,
+              "label": "Team fight (3 kills)",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1041,
+              "label": "Sylas Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1078,
+              "label": "Blue takes 2nd Dragon (Infernal)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1117,
+              "label": "Jarvan IV takes down Hecarim"
+            },
+            {
+              "atSec": 1163,
+              "label": "Zeri kills Akali",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1206,
+              "label": "Red takes Baron",
+              "kind": "baron"
+            },
+            {
+              "atSec": 1221,
+              "label": "Jarvan IV eliminates Kalista"
+            },
+            {
+              "atSec": 1357,
+              "label": "Mid Inhibitor falls (Blue)"
+            },
+            {
+              "atSec": 1391,
+              "label": "Red takes 1st Dragon (Mountain)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1553,
+              "label": "Team fight (4 kills)",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1559,
+              "label": "Zeri Triple Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1604,
+              "label": "Blue takes Baron",
+              "kind": "baron"
+            },
+            {
+              "atSec": 1677,
+              "label": "Team fight (3 kills)",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1686,
+              "label": "Jarvan IV Triple Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1712,
+              "label": "Mid Inhibitor falls (Red)"
+            }
+          ]
+        },
+        {
+          "videoId": "cjBJ9swp8v0",
+          "title": "Yuumi Support vs Renata Glasc - KR Grandmaster Patch 26.18",
+          "rankClaim": "Grandmaster",
+          "patch": "26.18",
+          "durationSec": 1698,
+          "region": "KR",
+          "uploaded": "2026-09-15",
+          "moments": []
+        },
+        {
+          "videoId": "5UQ2nPvKVTY",
+          "title": "Yuumi Support vs Renata Glasc - KR Grandmaster Patch 25.11",
+          "rankClaim": "Grandmaster",
+          "patch": "25.11",
+          "durationSec": 1477,
+          "region": "KR",
+          "uploaded": "2025-06-05",
+          "moments": []
+        }
+      ]
+    }
+  ]
+}

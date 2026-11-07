@@ -1,0 +1,4214 @@
+{
+  "schema": 1,
+  "champion": 21,
+  "generatedAt": "2026-11-07T13:25:14.592Z",
+  "guides": [
+    {
+      "champion": 21,
+      "enemy": 51,
+      "lane": "adc",
+      "patch": "26.21",
+      "reviewed": false,
+      "difficulty": "Hard",
+      "favoredWhen": "Patient Double Up angles with your support; never duel her range.",
+      "keyTips": [
+        {
+          "text": "Never duel her range. She pokes you down from outside your reply, so win through Double Up ({cd:21:Q}) bounce angles from far away, not through trades.",
+          "scope": "pair",
+          "sourceIds": [
+            "yunfang-mf",
+            "rowzkit"
+          ],
+          "patch": "26.21",
+          "abilityKeys": [
+            {
+              "champion": 21,
+              "key": "Q"
+            }
+          ]
+        },
+        {
+          "text": "Slow her with Make It Rain ({cd:21:E}) and take only short trades with your support. Extended fights and solo trades belong to her.",
+          "scope": "pair",
+          "sourceIds": [
+            "yunfang-mf"
+          ],
+          "patch": "26.21",
+          "abilityKeys": [
+            {
+              "champion": 21,
+              "key": "E"
+            }
+          ]
+        },
+        {
+          "text": "Track her 90 Caliber Net ({cd:51:E}) and Flash. She keeps disengage ready before trading, so engage only when both are down.",
+          "scope": "pair",
+          "sourceIds": [
+            "rowzkit"
+          ],
+          "patch": "26.21",
+          "abilityKeys": [
+            {
+              "champion": 51,
+              "key": "E"
+            }
+          ]
+        }
+      ],
+      "enemyTips": {},
+      "sections": {
+        "overview": {
+          "tips": []
+        },
+        "early-lane": {
+          "tips": [
+            {
+              "text": "Be patient and farm with Q bounces off the wave while she holds her net. Forcing plays into her ready disengage is how this lane is lost.",
+              "scope": "pair",
+              "sourceIds": [
+                "yunfang-mf"
+              ],
+              "patch": "26.21",
+              "abilityKeys": [
+                {
+                  "champion": 21,
+                  "key": "Q"
+                }
+              ]
+            },
+            {
+              "text": "Punish when her net is down. That is the only window your short trades win, so call your support the moment she spends it.",
+              "scope": "pair",
+              "sourceIds": [
+                "rowzkit"
+              ],
+              "patch": "26.21",
+              "abilityKeys": [
+                {
+                  "champion": 51,
+                  "key": "E"
+                }
+              ]
+            },
+            {
+              "text": "Position outside her auto range when going for last hits. Every free poke she lands without an answer is the lane slipping toward her.",
+              "scope": "pair",
+              "sourceIds": [
+                "rowzkit"
+              ],
+              "patch": "26.21"
+            }
+          ]
+        },
+        "mid-lane": {
+          "tips": [
+            {
+              "text": "Group skirmishes around your support, where waves meet and bounce angles appear. Alone in a side lane you have no setup and she picks you apart.",
+              "scope": "pair",
+              "sourceIds": [
+                "yunfang-mf"
+              ],
+              "patch": "26.21",
+              "abilityKeys": [
+                {
+                  "champion": 21,
+                  "key": "Q"
+                }
+              ]
+            },
+            {
+              "text": "Hold your slow for her overextensions. When she steps up to poke, land Make It Rain and take the short support trade before she disengages.",
+              "scope": "pair",
+              "sourceIds": [
+                "yunfang-mf"
+              ],
+              "patch": "26.21",
+              "abilityKeys": [
+                {
+                  "champion": 21,
+                  "key": "E"
+                }
+              ]
+            }
+          ]
+        },
+        "win-condition": {
+          "tips": [
+            {
+              "text": "Take only short supported trades in fights, never the long poke war. Her range wins every extended exchange, so force quick engages and leave.",
+              "scope": "pair",
+              "sourceIds": [
+                "yunfang-mf"
+              ],
+              "patch": "26.21"
+            },
+            {
+              "text": "Collapse her range with numbers. She dies once locked down without her net, so bring your support or jungler to the fight she wants to take alone.",
+              "scope": "pair",
+              "sourceIds": [
+                "rowzkit",
+                "yunfang-mf"
+              ],
+              "patch": "26.21",
+              "abilityKeys": [
+                {
+                  "champion": 51,
+                  "key": "E"
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "itemization": [
+        {
+          "text": "Your gold comes from patient Q-farm, not kills. Base on clean crashes and keep your support's tempo instead of forcing buys for a duel you cannot win yet.",
+          "scope": "pair",
+          "sourceIds": [
+            "yunfang-mf"
+          ],
+          "patch": "26.21"
+        }
+      ],
+      "sources": [
+        {
+          "id": "yunfang-mf",
+          "author": "Yunfang",
+          "rankClaim": "Diamond (profile badge; guide text claims Master ADC main) · Miss Fortune main",
+          "rank": "diamond",
+          "url": "https://www.mobafire.com/league-of-legends/build/s2026-21-easy-to-read-simple-1v9-live-ama-full-guide-updated-650250",
+          "kind": "mobafire"
+        },
+        {
+          "id": "rowzkit",
+          "author": "rowzkit",
+          "rankClaim": "Emerald (profile badge; title and guide text claim Master ADC) · Caitlyn main",
+          "rank": "emerald",
+          "url": "https://www.mobafire.com/league-of-legends/build/26-21-master-adc-caitlyn-guide-1-shot-late-game-scaling-caitlyn-build-meta-build-included-643874",
+          "kind": "mobafire"
+        }
+      ]
+    }
+  ],
+  "general": [
+    {
+      "champion": 21,
+      "lane": "adc",
+      "patch": "26.21",
+      "reviewed": false,
+      "keyTips": [
+        {
+          "text": "Stage a low-health minion so Q bounces through it onto the champion as a repeatable poke pattern.",
+          "scope": "champion",
+          "sourceIds": [
+            "misterfirstblood-mf"
+          ],
+          "abilityKeys": [
+            {
+              "champion": 21,
+              "key": "Q"
+            }
+          ]
+        },
+        {
+          "text": "Cast E before R so its slow makes Bullet Time connect more easily.",
+          "scope": "champion",
+          "sourceIds": [
+            "misterfirstblood-mf"
+          ],
+          "abilityKeys": [
+            {
+              "champion": 21,
+              "key": "E"
+            },
+            {
+              "champion": 21,
+              "key": "R"
+            }
+          ]
+        },
+        {
+          "text": "Poke before longer trades; she loses sustained races to most attack-speed ADCs, so all-in only for finishes.",
+          "scope": "champion",
+          "sourceIds": [
+            "misterfirstblood-mf"
+          ]
+        }
+      ],
+      "sections": {
+        "overview": {
+          "tips": []
+        },
+        "early-lane": {
+          "tips": [
+            {
+              "text": "Drop E between self and pursuers on ganks to slow their approach.",
+              "scope": "champion",
+              "sourceIds": [
+                "misterfirstblood-mf"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 21,
+                  "key": "E"
+                }
+              ]
+            },
+            {
+              "text": "While ahead, zone opponents off last hits and punish every farming step forward.",
+              "scope": "champion",
+              "sourceIds": [
+                "misterfirstblood-mf"
+              ]
+            }
+          ]
+        },
+        "mid-lane": {
+          "tips": [
+            {
+              "text": "Enter objective fights on a safe R angle, never channeling where opponents focus easily.",
+              "scope": "champion",
+              "sourceIds": [
+                "misterfirstblood-mf"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 21,
+                  "key": "R"
+                }
+              ]
+            },
+            {
+              "text": "Make space with E and slow pursuers, repositioning fully before committing to Bullet Time.",
+              "scope": "champion",
+              "sourceIds": [
+                "misterfirstblood-mf"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 21,
+                  "key": "E"
+                },
+                {
+                  "champion": 21,
+                  "key": "R"
+                }
+              ]
+            },
+            {
+              "text": "Hold extra distance from assassins and divers because your low mobility leaves you vulnerable.",
+              "scope": "champion",
+              "sourceIds": [
+                "misterfirstblood-mf"
+              ]
+            }
+          ]
+        },
+        "win-condition": {
+          "tips": [
+            {
+              "text": "Hunt multi-target Bullet Time that flips fights, connecting the channel through the E slow.",
+              "scope": "champion",
+              "sourceIds": [
+                "misterfirstblood-mf"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 21,
+                  "key": "R"
+                },
+                {
+                  "champion": 21,
+                  "key": "E"
+                }
+              ]
+            },
+            {
+              "text": "Threaten high burst from outside attack range with a prepared Q bounce off a low minion.",
+              "scope": "champion",
+              "sourceIds": [
+                "misterfirstblood-mf"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 21,
+                  "key": "Q"
+                }
+              ]
+            },
+            {
+              "text": "Snowball safe leads by zoning the enemy duo and banking damage before any all-in.",
+              "scope": "champion",
+              "sourceIds": [
+                "misterfirstblood-mf"
+              ]
+            },
+            {
+              "text": "Respect R positioning always: it turns fights but punishes every exposed channel.",
+              "scope": "champion",
+              "sourceIds": [
+                "misterfirstblood-mf"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 21,
+                  "key": "R"
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "itemization": [],
+      "sources": [
+        {
+          "id": "misterfirstblood-mf",
+          "author": "misterfirstblood",
+          "rankClaim": "No rank claim",
+          "url": "https://www.mobafire.com/league-of-legends/build/15-24-miss-fortune-guide-by-misterfirstblood-v2-522561",
+          "kind": "mobafire"
+        }
+      ]
+    }
+  ],
+  "vods": [
+    {
+      "lane": "adc",
+      "videos": [
+        {
+          "videoId": "Gq5b1UIa1mY",
+          "title": "JackeyLove : His MissFortune DAMAGE is so Terrifying - Engsub ( vs Aphe )",
+          "rankClaim": "Master+",
+          "patch": "26.21",
+          "durationSec": 947,
+          "patchEstimated": true,
+          "player": "JackeyLove",
+          "uploaded": "2026-10-31",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "hTZzNBy7dMY",
+          "title": "PEYZ : His MissFortune Become Unkillable with this SUPER LIFE STEAL BUILD - Engsub",
+          "rankClaim": "Master+",
+          "patch": "26.18",
+          "durationSec": 735,
+          "patchEstimated": true,
+          "player": "Peyz",
+          "uploaded": "2026-09-18",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "5fBfyIf3Ksw",
+          "title": "Gumayusi Review : THE NEW T1 MissFortune SKIN \" This PENTAKILL Effect is SO COOL \" Engsub",
+          "rankClaim": "Master+",
+          "patch": "26.14",
+          "durationSec": 1592,
+          "patchEstimated": true,
+          "player": "Gumayusi",
+          "uploaded": "2026-07-24",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "2gNng5Co3m8",
+          "title": "Gumayusi : His Missfortune is Absolutely a BEAST - Engsub (MF vs Ez)",
+          "rankClaim": "Master+",
+          "patch": "26.13",
+          "durationSec": 1230,
+          "patchEstimated": true,
+          "player": "Gumayusi",
+          "uploaded": "2026-07-02",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "dajjyMMGIyQ",
+          "title": "Gumayusi : His MissFortune is on WORLD CLASS LEVEL - Engsub",
+          "rankClaim": "Master+",
+          "patch": "26.11",
+          "durationSec": 1249,
+          "patchEstimated": true,
+          "player": "Gumayusi",
+          "uploaded": "2026-06-07",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "DOyI77C16A8",
+          "title": "Gumayusi : This is What WORLDS CLASS MissFortune Look Like - Engsub",
+          "rankClaim": "Master+",
+          "patch": "26.10",
+          "durationSec": 1001,
+          "patchEstimated": true,
+          "player": "Gumayusi",
+          "uploaded": "2026-05-13",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "KwdzA30EWv8",
+          "title": "DK Smash : His MissFortune DAMAGE is so BROKEN ! Engsub",
+          "rankClaim": "Master+",
+          "patch": "26.8",
+          "durationSec": 601,
+          "patchEstimated": true,
+          "player": "Smash",
+          "uploaded": "2026-04-22",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "w5uPmHGHbHo",
+          "title": "Gumayusi : His Missfortune is a REAL DEAL - Engsub",
+          "rankClaim": "Master+",
+          "patch": "26.8",
+          "durationSec": 671,
+          "patchEstimated": true,
+          "player": "Gumayusi",
+          "uploaded": "2026-04-21",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "CF7tvlDqsVw",
+          "title": "Gumayusi : His MissFortune is LEGIT INSANE GOOD - Engsub",
+          "rankClaim": "Master+",
+          "patch": "26.6",
+          "durationSec": 907,
+          "patchEstimated": true,
+          "player": "Gumayusi",
+          "uploaded": "2026-03-18",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "PyPTxMX9pw4",
+          "title": "1600LP MissFortune \"Jz\" His DAMAGE is MASSIVE INSANE - Engsub",
+          "rankClaim": "Master+",
+          "patch": "26.5",
+          "durationSec": 1201,
+          "patchEstimated": true,
+          "player": "Jz",
+          "uploaded": "2026-03-16",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "kN1Yk59C8lQ",
+          "title": "Gumayusi : This is WORLDS CLASS MissFortune Look Like ! Engsub",
+          "rankClaim": "Master+",
+          "patch": "26.5",
+          "durationSec": 708,
+          "patchEstimated": true,
+          "player": "Gumayusi",
+          "uploaded": "2026-03-08",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "o_19QuCKM-0",
+          "title": "Aiming : His MissFortune Spacing is so Good - Engsub",
+          "rankClaim": "Master+",
+          "patch": "26.3",
+          "durationSec": 1072,
+          "patchEstimated": true,
+          "player": "Aiming",
+          "uploaded": "2026-02-15",
+          "format": "stream",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "x_StnhazrJU",
+          "title": "Baicaiovo Miss Fortune : CN Super Server TOP 1 is CRUSHING Challenger Elo",
+          "rankClaim": "Challenger",
+          "patch": "26.8",
+          "durationSec": 1994,
+          "patchEstimated": true,
+          "player": "Baicaiovo",
+          "uploaded": "2026-04-18",
+          "format": "stream",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 3,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "YgcPJkAEQro",
+          "title": "Miss Fortune Mid vs Galio - KR Master Patch 26.12",
+          "rankClaim": "Master",
+          "patch": "26.12",
+          "durationSec": 1599,
+          "region": "KR",
+          "uploaded": "2026-06-26",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 15,
+      "lane": "adc",
+      "videos": [
+        {
+          "videoId": "bc2irSdqkeI",
+          "title": "Miss Fortune ADC vs Sivir - KR Master Patch 26.16",
+          "rankClaim": "Master",
+          "patch": "26.16",
+          "durationSec": 1665,
+          "region": "KR",
+          "uploaded": "2026-08-26",
+          "moments": []
+        },
+        {
+          "videoId": "MFZddXDCYHQ",
+          "title": "Miss Fortune ADC vs Sivir - KR Challenger Patch 26.03",
+          "rankClaim": "Challenger",
+          "patch": "26.3",
+          "durationSec": 1504,
+          "region": "KR",
+          "uploaded": "2026-02-08",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 336,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 361,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 537,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 604,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 659,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 805,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1034,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1059,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1134,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1208,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1223,
+              "label": "Get a Triple Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1252,
+              "label": "Hunt The Baron Nashor",
+              "kind": "baron"
+            },
+            {
+              "atSec": 1294,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1323,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1394,
+              "label": "Hunt The Dragon",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1451,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1493,
+              "label": "End credit"
+            }
+          ]
+        },
+        {
+          "videoId": "Id6OrNWlanM",
+          "title": "Miss Fortune ADC vs Sivir - NA Grandmaster Patch 25.15",
+          "rankClaim": "Grandmaster",
+          "patch": "25.15",
+          "durationSec": 2041,
+          "region": "NA",
+          "uploaded": "2025-08-12",
+          "moments": []
+        },
+        {
+          "videoId": "P4z0LNdSN9k",
+          "title": "Miss Fortune vs Sivir ADC [ DRX Teddy ] Patch 25.14 Korea Challenger",
+          "rankClaim": "Challenger",
+          "patch": "25.14",
+          "durationSec": 1444,
+          "region": "KR",
+          "player": "Teddy",
+          "team": "DRX",
+          "uploaded": "2025-07-25",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 18,
+      "lane": "adc",
+      "videos": [
+        {
+          "videoId": "X5khzpeC224",
+          "title": "(Envyy) Miss Fortune ADC vs Tristana (LazyFeel) - KR Challenger Patch 26.21",
+          "rankClaim": "Challenger",
+          "patch": "26.21",
+          "durationSec": 1771,
+          "region": "KR",
+          "player": "Envyy",
+          "uploaded": "2026-11-04",
+          "moments": []
+        },
+        {
+          "videoId": "DY1z7Kexkys",
+          "title": "(MKOI Supa) Miss Fortune ADC vs Tristana - EUW Grandmaster Patch 26.13",
+          "rankClaim": "Grandmaster",
+          "patch": "26.13",
+          "durationSec": 1668,
+          "region": "EUW",
+          "player": "MKOI Supa",
+          "uploaded": "2026-07-09",
+          "moments": []
+        },
+        {
+          "videoId": "ZoBE0Kg1l8o",
+          "title": "BLG Viper Miss Fortune vs Tristana [ ADC ] Patch 26.10 Korea Challenger 2163 LP",
+          "rankClaim": "Challenger",
+          "patch": "26.10",
+          "durationSec": 2073,
+          "region": "KR",
+          "player": "Viper",
+          "team": "BLG",
+          "uploaded": "2026-05-16",
+          "moments": []
+        },
+        {
+          "videoId": "Vygos70HAUY",
+          "title": "Miss Fortune ADC vs Tristana - EUW Challenger Patch 25.23",
+          "rankClaim": "Challenger",
+          "patch": "25.23",
+          "durationSec": 1441,
+          "region": "EUW",
+          "uploaded": "2025-12-04",
+          "moments": []
+        },
+        {
+          "videoId": "EazWbwEq8O4",
+          "title": "Miss Fortune vs Tristana ADC [ QuadraKill ] Korea Master Patch 25.19 ✅",
+          "rankClaim": "Master",
+          "patch": "25.19",
+          "durationSec": 1704,
+          "region": "KR",
+          "player": "QuadraKill",
+          "uploaded": "2025-10-04",
+          "moments": []
+        },
+        {
+          "videoId": "YlrVaumaZlo",
+          "title": "Miss Fortune ADC vs Tristana - NA Challenger Patch 25.13",
+          "rankClaim": "Challenger",
+          "patch": "25.13",
+          "durationSec": 2011,
+          "region": "NA",
+          "uploaded": "2025-07-08",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 18,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "JWZxBrboeLA",
+          "title": "Miss Fortune vs Tristana Mid - KR Challenger - Patch 25.18 Season 15",
+          "rankClaim": "Challenger",
+          "patch": "25.18",
+          "durationSec": 1786,
+          "region": "KR",
+          "uploaded": "2025-09-18",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 22,
+      "lane": "adc",
+      "videos": [
+        {
+          "videoId": "lpcISAKa_qk",
+          "title": "Miss Fortune ADC vs Ashe - KR Master Patch 26.01",
+          "rankClaim": "Master",
+          "patch": "26.1",
+          "durationSec": 1482,
+          "region": "KR",
+          "uploaded": "2026-01-10",
+          "moments": []
+        },
+        {
+          "videoId": "W72ay40alIM",
+          "title": "Miss Fortune ADC vs Ashe - KR Master Patch 25.24",
+          "rankClaim": "Master",
+          "patch": "25.24",
+          "durationSec": 1532,
+          "region": "KR",
+          "uploaded": "2025-12-21",
+          "moments": []
+        },
+        {
+          "videoId": "qfhcPkqno-w",
+          "title": "Miss Fortune vs Ashe ADC [ Teddy ] Patch 25.24 Korea Grandmaster",
+          "rankClaim": "Grandmaster",
+          "patch": "25.24",
+          "durationSec": 1349,
+          "region": "KR",
+          "player": "Teddy",
+          "uploaded": "2025-12-09",
+          "moments": []
+        },
+        {
+          "videoId": "oLznOObOf4g",
+          "title": "Miss Fortune ADC vs Ashe - KR Grandmaster Patch 25.21",
+          "rankClaim": "Grandmaster",
+          "patch": "25.21",
+          "durationSec": 1693,
+          "region": "KR",
+          "uploaded": "2025-10-27",
+          "moments": []
+        },
+        {
+          "videoId": "7ckdf-oNT_w",
+          "title": "Miss Fortune ADC vs Ashe - KR Master Patch 25.20",
+          "rankClaim": "Master",
+          "patch": "25.20",
+          "durationSec": 2111,
+          "region": "KR",
+          "uploaded": "2025-10-10",
+          "moments": []
+        },
+        {
+          "videoId": "cxWVXAgk3W0",
+          "title": "T1 Gumayusi Miss Fortune vs Ashe [ ADC ] Patch 25.1 Korea Master ✅",
+          "rankClaim": "Master",
+          "patch": "25.1",
+          "durationSec": 1112,
+          "region": "KR",
+          "player": "Gumayusi",
+          "team": "T1",
+          "uploaded": "2025-01-13",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 34,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "zyrtNqHVY-s",
+          "title": "Miss Fortune Top vs Anivia - KR Master Patch 25.19",
+          "rankClaim": "Master",
+          "patch": "25.19",
+          "durationSec": 1829,
+          "region": "KR",
+          "uploaded": "2025-10-07",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 36,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "vOrEeazEadI",
+          "title": "Miss Fortune Top vs Dr. Mundo - KR Master Patch 26.04",
+          "rankClaim": "Master",
+          "patch": "26.4",
+          "durationSec": 1457,
+          "region": "KR",
+          "uploaded": "2026-03-03",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 40,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "LmQmB1Jiiio",
+          "title": "Miss Fortune Support vs Janna - KR Master Patch 25.18",
+          "rankClaim": "Master",
+          "patch": "25.18",
+          "durationSec": 1487,
+          "region": "KR",
+          "uploaded": "2025-09-20",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 42,
+      "lane": "adc",
+      "videos": [
+        {
+          "videoId": "IE63k0bH_50",
+          "title": "HLE Gumayusi Miss Fortune vs Corki [ ADC ] Korea Challenger 2386 LP | Patch 26.20",
+          "rankClaim": "Challenger",
+          "patch": "26.20",
+          "durationSec": 1805,
+          "region": "KR",
+          "player": "Gumayusi",
+          "team": "HLE",
+          "uploaded": "2026-10-14",
+          "moments": []
+        },
+        {
+          "videoId": "Jo8LUA_lP5A",
+          "title": "Smash : His MissFortune DAMAGE is on Another Level, Burning KR Challenger Elo - Engsub (MF vs Corki)",
+          "rankClaim": "Challenger",
+          "patch": "26.12",
+          "durationSec": 835,
+          "region": "KR",
+          "patchEstimated": true,
+          "player": "Smash",
+          "uploaded": "2026-06-22",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "N-UBA65baZw",
+          "title": "LazyFeel : His Missfortune is a Killing Machine \" One Kill Per Min \" MF vs Corki",
+          "rankClaim": "Master+",
+          "patch": "26.12",
+          "durationSec": 856,
+          "patchEstimated": true,
+          "uploaded": "2026-06-18",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "D6U8Q4v9GGI",
+          "title": "Miss Fortune ADC vs Corki - KR Challenger Patch 25.05",
+          "rankClaim": "Challenger",
+          "patch": "25.5",
+          "durationSec": 1751,
+          "region": "KR",
+          "uploaded": "2025-03-10",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 274,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 392,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 537,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 676,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 830,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 932,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 972,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1056,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1094,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1125,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1142,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1327,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1346,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1364,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1568,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1606,
+              "label": "Take down The Inhibitor"
+            },
+            {
+              "atSec": 1672,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1687,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1711,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1730,
+              "label": "End credit"
+            }
+          ]
+        },
+        {
+          "videoId": "pBc82j_wQ2E",
+          "title": "Miss Fortune ADC vs Corki - KR Master Patch 25.04",
+          "rankClaim": "Master",
+          "patch": "25.4",
+          "durationSec": 2008,
+          "region": "KR",
+          "uploaded": "2025-02-22",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 50,
+      "lane": "adc",
+      "videos": [
+        {
+          "videoId": "ZS3gfeKxQdU",
+          "title": "Miss Fortune ADC vs Swain - KR Grandmaster Patch 26.06",
+          "rankClaim": "Grandmaster",
+          "patch": "26.6",
+          "durationSec": 1708,
+          "region": "KR",
+          "uploaded": "2026-03-23",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 51,
+      "lane": "adc",
+      "videos": [
+        {
+          "videoId": "DTofqqjhPsw",
+          "title": "(T1 Peyz) Miss Fortune ADC vs Caitlyn (Art) - KR Challenger Patch 26.13",
+          "rankClaim": "Challenger",
+          "patch": "26.13",
+          "durationSec": 1578,
+          "region": "KR",
+          "player": "Peyz",
+          "team": "T1",
+          "uploaded": "2026-06-27",
+          "moments": []
+        },
+        {
+          "videoId": "UBb8Z2rflmw",
+          "title": "T1 Peyz Miss Fortune vs Caitlyn [ ADC ] Patch 26.13 Korea Challenger 2509 LP",
+          "rankClaim": "Challenger",
+          "patch": "26.13",
+          "durationSec": 1357,
+          "region": "KR",
+          "player": "Peyz",
+          "team": "T1",
+          "uploaded": "2026-06-25",
+          "moments": []
+        },
+        {
+          "videoId": "PvFCoHeqD-4",
+          "title": "Miss Fortune vs Caitlyn ADC [ Gen.G Ruler ] Korea Challenger 2047 | Patch 26.10",
+          "rankClaim": "Challenger",
+          "patch": "26.10",
+          "durationSec": 1177,
+          "region": "KR",
+          "player": "Ruler",
+          "team": "Gen.G",
+          "uploaded": "2026-05-27",
+          "moments": []
+        },
+        {
+          "videoId": "L-nvXLNhrmQ",
+          "title": "Miss Fortune ADC vs Caitlyn - EUW Grandmaster Patch 26.02",
+          "rankClaim": "Grandmaster",
+          "patch": "26.2",
+          "durationSec": 1519,
+          "region": "EUW",
+          "uploaded": "2026-02-04",
+          "moments": []
+        },
+        {
+          "videoId": "972Z4LA6YFo",
+          "title": "T1 Gumayusi Miss Fortune vs Caitlyn ADC [ Quadra Kill ] Patch 25.11 Korea Challenger",
+          "rankClaim": "Challenger",
+          "patch": "25.11",
+          "durationSec": 1556,
+          "region": "KR",
+          "player": "Gumayusi",
+          "team": "T1",
+          "uploaded": "2025-06-07",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 67,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "IF1VtVANIAc",
+          "title": "Miss Fortune Top vs Vayne - KR Master Patch 25.08",
+          "rankClaim": "Master",
+          "patch": "25.8",
+          "durationSec": 1848,
+          "region": "KR",
+          "uploaded": "2025-05-02",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 81,
+      "lane": "adc",
+      "videos": [
+        {
+          "videoId": "fm7dp-hZ5f4",
+          "title": "Miss Fortune vs Ezreal [ ADC ] Korea Challenger 2355 LP | Patch 26.14",
+          "rankClaim": "Challenger",
+          "patch": "26.14",
+          "durationSec": 1745,
+          "region": "KR",
+          "uploaded": "2026-07-17",
+          "moments": []
+        },
+        {
+          "videoId": "n8cIQ2OruAo",
+          "title": "Miss Fortune ADC vs Ezreal - VN Challenger Patch 26.07",
+          "rankClaim": "Challenger",
+          "patch": "26.7",
+          "durationSec": 1697,
+          "uploaded": "2026-04-17",
+          "moments": []
+        },
+        {
+          "videoId": "NDGYqpOCPig",
+          "title": "HLE Gumayusi Miss Fortune vs Ezreal [ ADC ] Korea Challenger 2426 LP | Patch 26.7",
+          "rankClaim": "Challenger",
+          "patch": "26.7",
+          "durationSec": 1315,
+          "region": "KR",
+          "player": "Gumayusi",
+          "team": "HLE",
+          "uploaded": "2026-04-12",
+          "moments": []
+        },
+        {
+          "videoId": "DZf6DirZspQ",
+          "title": "BLG Viper Miss Fortune vs Ezreal [ ADC ] Korea Challenger 1427 LP | Patch 26.4",
+          "rankClaim": "Challenger",
+          "patch": "26.4",
+          "durationSec": 1424,
+          "region": "KR",
+          "player": "Viper",
+          "team": "BLG",
+          "uploaded": "2026-02-23",
+          "moments": []
+        },
+        {
+          "videoId": "FsNfVups-8M",
+          "title": "T1 Peyz Miss Fortune vs Ezreal [ ADC ] Korea Challenger 2183 LP | Patch 26.4",
+          "rankClaim": "Challenger",
+          "patch": "26.4",
+          "durationSec": 1326,
+          "region": "KR",
+          "player": "Peyz",
+          "team": "T1",
+          "uploaded": "2026-02-20",
+          "moments": []
+        },
+        {
+          "videoId": "RRSqFG2NaPg",
+          "title": "Miss Fortune ADC vs Ezreal - KR Challenger Patch 26.03",
+          "rankClaim": "Challenger",
+          "patch": "26.3",
+          "durationSec": 1827,
+          "region": "KR",
+          "uploaded": "2026-02-20",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 220,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 450,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 535,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 589,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 686,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 829,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 854,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 923,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1091,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1202,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1444,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1634,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1732,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1768,
+              "label": "Take down The Inhibitor"
+            },
+            {
+              "atSec": 1781,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1816,
+              "label": "End credit"
+            }
+          ]
+        },
+        {
+          "videoId": "nJl4bnxUjqA",
+          "title": "T1 Peyz Miss Fortune vs Ezreal [ ADC ] Korea Challenger 1808 LP | Patch 26.3",
+          "rankClaim": "Challenger",
+          "patch": "26.3",
+          "durationSec": 1647,
+          "region": "KR",
+          "player": "Peyz",
+          "team": "T1",
+          "uploaded": "2026-02-09",
+          "moments": []
+        },
+        {
+          "videoId": "Ye5eONmTs80",
+          "title": "Miss Fortune vs Ezreal [ ADC ] Korea Challenger 1262 LP | Patch 25.23 ✅",
+          "rankClaim": "Challenger",
+          "patch": "25.23",
+          "durationSec": 1374,
+          "region": "KR",
+          "uploaded": "2025-12-01",
+          "moments": []
+        },
+        {
+          "videoId": "vER5UDb57Os",
+          "title": "Miss Fortune vs Ezreal ADC - KR Challenger - Patch 25.21 Season 15",
+          "rankClaim": "Challenger",
+          "patch": "25.21",
+          "durationSec": 1711,
+          "region": "KR",
+          "uploaded": "2025-11-06",
+          "moments": []
+        },
+        {
+          "videoId": "cUxnSuprZZM",
+          "title": "Miss Fortune ADC vs Ezreal - KR Challenger Patch 25.10",
+          "rankClaim": "Challenger",
+          "patch": "25.10",
+          "durationSec": 1651,
+          "region": "KR",
+          "uploaded": "2025-05-17",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 279,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 566,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1069,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1095,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1165,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1321,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1439,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1462,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1476,
+              "label": "Take down The Inhibitor"
+            },
+            {
+              "atSec": 1565,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1630,
+              "label": "End credit"
+            }
+          ]
+        },
+        {
+          "videoId": "XRKhT7n7s7Y",
+          "title": "Miss Fortune ADC vs Ezreal - KR Master Patch 25.09",
+          "rankClaim": "Master",
+          "patch": "25.9",
+          "durationSec": 1667,
+          "region": "KR",
+          "uploaded": "2025-05-03",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 151,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 461,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 555,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 844,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 911,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 986,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1032,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1153,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1197,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1281,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1349,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1435,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1473,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1618,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1646,
+              "label": "End credit"
+            }
+          ]
+        },
+        {
+          "videoId": "m9_O1lZtDfE",
+          "title": "Miss Fortune ADC vs Ezreal - KR Challenger Patch 25.08",
+          "rankClaim": "Challenger",
+          "patch": "25.8",
+          "durationSec": 1700,
+          "region": "KR",
+          "uploaded": "2025-04-19",
+          "moments": []
+        },
+        {
+          "videoId": "M7pMsQYiY3M",
+          "title": "T1 Gumayusi Miss Fortune vs Ezreal [ ADC ] Patch 25.6 Korea Challenger ✅",
+          "rankClaim": "Challenger",
+          "patch": "25.6",
+          "durationSec": 1741,
+          "region": "KR",
+          "player": "Gumayusi",
+          "team": "T1",
+          "uploaded": "2025-03-28",
+          "moments": []
+        },
+        {
+          "videoId": "sOKIYEYPci8",
+          "title": "Miss Fortune ADC vs Ezreal - EUW Grandmaster Patch 25.05",
+          "rankClaim": "Grandmaster",
+          "patch": "25.5",
+          "durationSec": 1586,
+          "region": "EUW",
+          "uploaded": "2025-03-20",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 413,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 556,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 821,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 882,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 971,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1062,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1142,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1167,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1185,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1311,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1418,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1440,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1539,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1565,
+              "label": "End credit"
+            }
+          ]
+        },
+        {
+          "videoId": "_gKfVdNkOtM",
+          "title": "Miss Fortune ADC vs Ezreal - EUW Challenger Patch 25.04",
+          "rankClaim": "Challenger",
+          "patch": "25.4",
+          "durationSec": 1521,
+          "region": "EUW",
+          "uploaded": "2025-03-07",
+          "moments": []
+        },
+        {
+          "videoId": "ELy03e2Wivk",
+          "title": "T1 Gumayusi Miss Fortune vs Ezreal [ ADC ] Patch 25.2 Korea Challenger ✅",
+          "rankClaim": "Challenger",
+          "patch": "25.2",
+          "durationSec": 1461,
+          "region": "KR",
+          "player": "Gumayusi",
+          "team": "T1",
+          "uploaded": "2025-02-04",
+          "moments": []
+        },
+        {
+          "videoId": "Yv5yGs-jSww",
+          "title": "Miss Fortune vs Ezreal ADC [ Viper + QuadraKill ] Korea Challenger Patch 25.2 ✅",
+          "rankClaim": "Challenger",
+          "patch": "25.2",
+          "durationSec": 2685,
+          "region": "KR",
+          "player": "Viper",
+          "uploaded": "2025-01-29",
+          "moments": []
+        },
+        {
+          "videoId": "Z54V7uAqVlE",
+          "title": "Miss Fortune vs Ezreal ADC [ Peyz ] Korea Grandmaster Patch 25.1 ✅",
+          "rankClaim": "Grandmaster",
+          "patch": "25.1",
+          "durationSec": 1543,
+          "region": "KR",
+          "player": "Peyz",
+          "uploaded": "2025-01-19",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 84,
+      "lane": "adc",
+      "videos": [
+        {
+          "videoId": "-ioQ4aG2TKA",
+          "title": "Miss Fortune ADC vs Akali - EUW Challenger Patch 25.22",
+          "rankClaim": "Challenger",
+          "patch": "25.22",
+          "durationSec": 1574,
+          "region": "EUW",
+          "uploaded": "2025-11-19",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 90,
+      "lane": "adc",
+      "videos": [
+        {
+          "videoId": "PEwUbJmRu-Y",
+          "title": "(Riris) Miss Fortune ADC vs Malzahar - KR Master Patch 26.14",
+          "rankClaim": "Master",
+          "patch": "26.14",
+          "durationSec": 1549,
+          "region": "KR",
+          "player": "Riris",
+          "uploaded": "2026-07-31",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 99,
+      "lane": "adc",
+      "videos": [
+        {
+          "videoId": "6zZc9XljEDo",
+          "title": "HLE Gumayusi Miss Fortune vs Lux [ ADC ] Korea Challenger 2496 LP | Patch 26.13",
+          "rankClaim": "Challenger",
+          "patch": "26.13",
+          "durationSec": 2171,
+          "region": "KR",
+          "player": "Gumayusi",
+          "team": "HLE",
+          "uploaded": "2026-07-10",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 101,
+      "lane": "adc",
+      "videos": [
+        {
+          "videoId": "hy4QSU1erjc",
+          "title": "(KT Ghost) Miss Fortune ADC vs Xerath - KR Challenger Patch 26.16",
+          "rankClaim": "Challenger",
+          "patch": "26.16",
+          "durationSec": 1660,
+          "region": "KR",
+          "player": "Ghost",
+          "team": "KT",
+          "uploaded": "2026-08-20",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 110,
+      "lane": "adc",
+      "videos": [
+        {
+          "videoId": "bmyTn5InglA",
+          "title": "Miss Fortune ADC vs Varus - KR Master Patch 26.17",
+          "rankClaim": "Master",
+          "patch": "26.17",
+          "durationSec": 1660,
+          "region": "KR",
+          "uploaded": "2026-08-31",
+          "moments": []
+        },
+        {
+          "videoId": "tOmLo_Z8LgI",
+          "title": "DK Smash Miss Fortune vs Varus [ ADC ] Korea Challenger 2470 LP | Patch 26.9",
+          "rankClaim": "Challenger",
+          "patch": "26.9",
+          "durationSec": 1669,
+          "region": "KR",
+          "player": "Smash",
+          "team": "DK",
+          "uploaded": "2026-04-30",
+          "moments": []
+        },
+        {
+          "videoId": "lxUeVRGWBnk",
+          "title": "T1 Peyz Miss Fortune vs Varus [ ADC ] Korea Challenger 2138 LP | Patch 26.6",
+          "rankClaim": "Challenger",
+          "patch": "26.6",
+          "durationSec": 2007,
+          "region": "KR",
+          "player": "Peyz",
+          "team": "T1",
+          "uploaded": "2026-03-30",
+          "moments": []
+        },
+        {
+          "videoId": "lO0onMLzq1o",
+          "title": "Miss Fortune vs Varus ADC - KR Challenger - Patch 26.02 Season 16",
+          "rankClaim": "Challenger",
+          "patch": "26.2",
+          "durationSec": 2151,
+          "region": "KR",
+          "uploaded": "2026-02-02",
+          "moments": []
+        },
+        {
+          "videoId": "tU1F-hEcAMI",
+          "title": "T1 Peyz Miss Fortune vs Varus [ ADC ] Korea Challenger 1569 LP | Patch 26.2",
+          "rankClaim": "Challenger",
+          "patch": "26.2",
+          "durationSec": 1886,
+          "region": "KR",
+          "player": "Peyz",
+          "team": "T1",
+          "uploaded": "2026-01-30",
+          "moments": []
+        },
+        {
+          "videoId": "lZfw-z40BdA",
+          "title": "HLE Gumayusi Miss Fortune vs Varus [ ADC ] Patch 25.24 Ranked Korea",
+          "rankClaim": "Master+",
+          "patch": "25.24",
+          "durationSec": 691,
+          "region": "KR",
+          "player": "Gumayusi",
+          "team": "HLE",
+          "uploaded": "2025-12-05",
+          "moments": []
+        },
+        {
+          "videoId": "Afp_i9aYE7Y",
+          "title": "Miss Fortune ADC vs Varus - KR Challenger Patch 25.16",
+          "rankClaim": "Challenger",
+          "patch": "25.16",
+          "durationSec": 1561,
+          "region": "KR",
+          "uploaded": "2025-08-19",
+          "moments": []
+        },
+        {
+          "videoId": "iRC5cZL7uNI",
+          "title": "Miss Fortune ADC vs Varus - KR Master Patch 25.13",
+          "rankClaim": "Master",
+          "patch": "25.13",
+          "durationSec": 1590,
+          "region": "KR",
+          "uploaded": "2025-07-17",
+          "moments": []
+        },
+        {
+          "videoId": "l9ufE-VJHT4",
+          "title": "T1 Gumayusi Miss Fortune vs Varus [ ADC ] Patch 25.10 Korea Grandmaster",
+          "rankClaim": "Grandmaster",
+          "patch": "25.10",
+          "durationSec": 1312,
+          "region": "KR",
+          "player": "Gumayusi",
+          "team": "T1",
+          "uploaded": "2025-05-16",
+          "moments": []
+        },
+        {
+          "videoId": "R091PD1gpFs",
+          "title": "T1 Gumayusi Miss Fortune vs Varus [ ADC ] Korea Challenger Patch 25.7 ✅",
+          "rankClaim": "Challenger",
+          "patch": "25.7",
+          "durationSec": 1515,
+          "region": "KR",
+          "player": "Gumayusi",
+          "team": "T1",
+          "uploaded": "2025-04-09",
+          "moments": []
+        },
+        {
+          "videoId": "74plYPYVgXA",
+          "title": "T1 Gumayusi Miss Fortune ADC vs Varus - Patch 25.7 Korea Challenger ✅",
+          "rankClaim": "Challenger",
+          "patch": "25.7",
+          "durationSec": 1570,
+          "region": "KR",
+          "player": "Gumayusi",
+          "team": "T1",
+          "uploaded": "2025-04-04",
+          "moments": []
+        },
+        {
+          "videoId": "TR5VsjRSVBo",
+          "title": "T1 Gumayusi Miss Fortune ADC vs Varus - Patch 25.6 Korea Challenger ✅",
+          "rankClaim": "Challenger",
+          "patch": "25.6",
+          "durationSec": 1687,
+          "region": "KR",
+          "player": "Gumayusi",
+          "team": "T1",
+          "uploaded": "2025-03-21",
+          "moments": []
+        },
+        {
+          "videoId": "DJH3R8EWAH4",
+          "title": "T1 Gumayusi Miss Fortune vs Varus [ ADC ] Patch 25.1 Ranked Korea ✅",
+          "rankClaim": "Master+",
+          "patch": "25.1",
+          "durationSec": 1516,
+          "region": "KR",
+          "player": "Gumayusi",
+          "team": "T1",
+          "uploaded": "2025-01-11",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 112,
+      "lane": "adc",
+      "videos": [
+        {
+          "videoId": "aoLPlHXTm2c",
+          "title": "Miss Fortune ADC vs Viktor (Manda) - EUW Challenger Patch 26.20",
+          "rankClaim": "Challenger",
+          "patch": "26.20",
+          "durationSec": 1771,
+          "region": "EUW",
+          "uploaded": "2026-10-22",
+          "result": "W",
+          "moments": [
+            {
+              "atSec": 319,
+              "label": "First Blood — Miss Fortune kills Thresh",
+              "kind": "kill"
+            },
+            {
+              "atSec": 334,
+              "label": "Nautilus picks off Viktor"
+            },
+            {
+              "atSec": 456,
+              "label": "Blue takes 1st Dragon (Infernal)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 484,
+              "label": "Nautilus kills Vi",
+              "kind": "kill"
+            },
+            {
+              "atSec": 579,
+              "label": "Sylas eliminates Viktor"
+            },
+            {
+              "atSec": 799,
+              "label": "Red takes 1st Dragon (Ocean)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 805,
+              "label": "Miss Fortune takes down Viktor"
+            },
+            {
+              "atSec": 1101,
+              "label": "Team fight (3 kills)",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1150,
+              "label": "Blue takes 2nd Dragon (Chemtech)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1240,
+              "label": "Miss Fortune picks off Renekton"
+            },
+            {
+              "atSec": 1261,
+              "label": "Miss Fortune picks off Thresh"
+            },
+            {
+              "atSec": 1385,
+              "label": "Blue takes Baron",
+              "kind": "baron"
+            },
+            {
+              "atSec": 1462,
+              "label": "Miss Fortune Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1509,
+              "label": "Blue takes 3rd Dragon (Chemtech)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1613,
+              "label": "Team fight (3 kills)",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1710,
+              "label": "Miss Fortune takes down Viktor"
+            },
+            {
+              "atSec": 1737,
+              "label": "Mid Inhibitor falls (Blue)"
+            },
+            {
+              "atSec": 1757,
+              "label": "Miss Fortune Double Kill",
+              "kind": "kill"
+            }
+          ]
+        },
+        {
+          "videoId": "xi9dlyfYUS8",
+          "title": "(ZENA JayJay) Miss Fortune ADC vs Viktor - EUW Challenger Patch 26.17",
+          "rankClaim": "Challenger",
+          "patch": "26.17",
+          "durationSec": 1412,
+          "region": "EUW",
+          "player": "ZENA JayJay",
+          "uploaded": "2026-09-10",
+          "moments": []
+        },
+        {
+          "videoId": "WzBc9F781G8",
+          "title": "Miss Fortune ADC vs Viktor - EUW Grandmaster Patch 25.12",
+          "rankClaim": "Grandmaster",
+          "patch": "25.12",
+          "durationSec": 1608,
+          "region": "EUW",
+          "uploaded": "2025-06-26",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 115,
+      "lane": "adc",
+      "videos": [
+        {
+          "videoId": "rVv_t9P4qvA",
+          "title": "Miss Fortune vs Ziggs ADC - KR Challenger - Patch 25.24 Season 15",
+          "rankClaim": "Challenger",
+          "patch": "25.24",
+          "durationSec": 1696,
+          "region": "KR",
+          "uploaded": "2025-12-12",
+          "moments": []
+        },
+        {
+          "videoId": "nATIj-ygpV4",
+          "title": "T1 Smash Miss Fortune vs Ziggs ADC [ QuadraKill ] Korea Challenger 1460 LP | Patch 25.20",
+          "rankClaim": "Challenger",
+          "patch": "25.20",
+          "durationSec": 1172,
+          "region": "KR",
+          "player": "Smash",
+          "team": "T1",
+          "uploaded": "2025-10-09",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 117,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "oLIaXn1KCdE",
+          "title": "Miss Fortune Support vs Lulu - KR Master Patch 26.08",
+          "rankClaim": "Master",
+          "patch": "26.8",
+          "durationSec": 1588,
+          "region": "KR",
+          "uploaded": "2026-04-27",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 119,
+      "lane": "adc",
+      "videos": [
+        {
+          "videoId": "qUvpoSwp2ew",
+          "title": "Miss Fortune ADC vs Draven - KR Master Patch 26.19",
+          "rankClaim": "Master",
+          "patch": "26.19",
+          "durationSec": 1910,
+          "region": "KR",
+          "uploaded": "2026-09-26",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 134,
+      "lane": "adc",
+      "videos": [
+        {
+          "videoId": "dIXSnoIMRL4",
+          "title": "T1 Peyz Miss Fortune vs Syndra [ ADC ] Korea Challenger 2415 LP| Patch 26.15",
+          "rankClaim": "Challenger",
+          "patch": "26.15",
+          "durationSec": 1262,
+          "region": "KR",
+          "player": "Peyz",
+          "team": "T1",
+          "uploaded": "2026-08-10",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 145,
+      "lane": "adc",
+      "videos": [
+        {
+          "videoId": "5LSG1G1te3Q",
+          "title": "Miss Fortune ADC vs Kai'Sa - NA Challenger Patch 26.04",
+          "rankClaim": "Challenger",
+          "patch": "26.4",
+          "durationSec": 1686,
+          "region": "NA",
+          "uploaded": "2026-02-23",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 164,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 289,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 447,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 567,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 739,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 772,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 856,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 978,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1003,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1083,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1101,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1138,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1255,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1290,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1318,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1356,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1454,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1505,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1520,
+              "label": "Take down The Inhibitor"
+            },
+            {
+              "atSec": 1614,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1652,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1675,
+              "label": "End credit"
+            }
+          ]
+        },
+        {
+          "videoId": "YAqOfbA9wHQ",
+          "title": "Miss Fortune vs Kai'Sa ADC - KR Challenger - Patch 26.01 Season 16",
+          "rankClaim": "Challenger",
+          "patch": "26.1",
+          "durationSec": 1921,
+          "region": "KR",
+          "uploaded": "2026-01-21",
+          "moments": []
+        },
+        {
+          "videoId": "uQMxSYjS3eo",
+          "title": "Miss Fortune ADC vs Kai'Sa - EUW Grandmaster Patch 25.24",
+          "rankClaim": "Grandmaster",
+          "patch": "25.24",
+          "durationSec": 1592,
+          "region": "EUW",
+          "uploaded": "2026-01-07",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 296,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 427,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 614,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 715,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 796,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 871,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1071,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1113,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1166,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1182,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1208,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1319,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1343,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1367,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1396,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1470,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1581,
+              "label": "End credit"
+            }
+          ]
+        },
+        {
+          "videoId": "1IR-XZA-E20",
+          "title": "Miss Fortune vs Kai'Sa ADC - KR Challenger - Patch 25.24 Season 15",
+          "rankClaim": "Challenger",
+          "patch": "25.24",
+          "durationSec": 1681,
+          "region": "KR",
+          "uploaded": "2025-12-20",
+          "moments": []
+        },
+        {
+          "videoId": "IOjX_kwcAts",
+          "title": "Miss Fortune ADC vs Kai'Sa - KR Grandmaster Patch 25.23",
+          "rankClaim": "Grandmaster",
+          "patch": "25.23",
+          "durationSec": 1518,
+          "region": "KR",
+          "uploaded": "2025-11-21",
+          "moments": []
+        },
+        {
+          "videoId": "BXw0jQIt-_I",
+          "title": "Miss Fortune vs Kai'Sa ADC [ QuadraKill ] Korea Master Patch 25.22 ✅",
+          "rankClaim": "Master",
+          "patch": "25.22",
+          "durationSec": 1613,
+          "region": "KR",
+          "player": "QuadraKill",
+          "uploaded": "2025-11-12",
+          "moments": []
+        },
+        {
+          "videoId": "Up4n_LUBZ-4",
+          "title": "Miss Fortune ADC vs Kai'Sa - KR Grandmaster Patch 25.22",
+          "rankClaim": "Grandmaster",
+          "patch": "25.22",
+          "durationSec": 1587,
+          "region": "KR",
+          "uploaded": "2025-11-10",
+          "moments": []
+        },
+        {
+          "videoId": "DFPV0rCFvkA",
+          "title": "Miss Fortune ADC vs Kai'Sa - EUW Challenger Patch 25.20",
+          "rankClaim": "Challenger",
+          "patch": "25.20",
+          "durationSec": 1657,
+          "region": "EUW",
+          "uploaded": "2025-10-24",
+          "moments": []
+        },
+        {
+          "videoId": "l_T1MoxRySc",
+          "title": "Miss Fortune vs Kaisa [ ADC ] Lol Korea Master Patch 25.17",
+          "rankClaim": "Master",
+          "patch": "25.17",
+          "durationSec": 1405,
+          "region": "KR",
+          "uploaded": "2025-09-01",
+          "moments": []
+        },
+        {
+          "videoId": "75_f5LjBI7w",
+          "title": "T1 Gumayusi Miss Fortune vs Kaisa [ ADC ] Patch 25.13 Ranked NA",
+          "rankClaim": "Master+",
+          "patch": "25.13",
+          "durationSec": 1289,
+          "region": "NA",
+          "player": "Gumayusi",
+          "team": "T1",
+          "uploaded": "2025-07-07",
+          "moments": []
+        },
+        {
+          "videoId": "xkCa-uqnido",
+          "title": "Miss Fortune ADC vs Kai'Sa - KR Master Patch 25.07",
+          "rankClaim": "Master",
+          "patch": "25.7",
+          "durationSec": 1998,
+          "region": "KR",
+          "uploaded": "2025-04-16",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 155,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 517,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 659,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 956,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 992,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1069,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1140,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1240,
+              "label": "Get a Triple Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1267,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1475,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1536,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1608,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1631,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1758,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1869,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1925,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1944,
+              "label": "Get a Triple Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1977,
+              "label": "End credit"
+            }
+          ]
+        },
+        {
+          "videoId": "qdOn_V7J5q8",
+          "title": "Miss Fortune ADC vs Kai'Sa - KR Challenger Patch 25.06",
+          "rankClaim": "Challenger",
+          "patch": "25.6",
+          "durationSec": 1480,
+          "region": "KR",
+          "uploaded": "2025-03-23",
+          "moments": []
+        },
+        {
+          "videoId": "0DWI36_TW7M",
+          "title": "T1 Gumayusi Miss Fortune ADC vs Kaisa - Patch 25.2 Korea Challenger ✅",
+          "rankClaim": "Challenger",
+          "patch": "25.2",
+          "durationSec": 1691,
+          "region": "KR",
+          "player": "Gumayusi",
+          "team": "T1",
+          "uploaded": "2025-02-01",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 145,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "Kbk60IHqXw4",
+          "title": "(DV1 Faetski) Miss Fortune Top vs Kai'Sa - EUW Grandmaster Patch 26.15",
+          "rankClaim": "Grandmaster",
+          "patch": "26.15",
+          "durationSec": 1635,
+          "region": "EUW",
+          "player": "DV1 Faetski",
+          "uploaded": "2026-08-14",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 163,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "HKQO4FAAzkI",
+          "title": "Miss Fortune Mid vs Taliyah - EUW Challenger Patch 25.08",
+          "rankClaim": "Challenger",
+          "patch": "25.8",
+          "durationSec": 1996,
+          "region": "EUW",
+          "uploaded": "2025-04-28",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 650,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 759,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 851,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 883,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 953,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 977,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1042,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1154,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1185,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1257,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1433,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1482,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1503,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1599,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1685,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1770,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1819,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1937,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1958,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1975,
+              "label": "End credit"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 201,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "JzT6MV9Dju0",
+          "title": "Miss Fortune Support vs Braum - KR Master Patch 25.06",
+          "rankClaim": "Master",
+          "patch": "25.6",
+          "durationSec": 1786,
+          "region": "KR",
+          "uploaded": "2025-03-29",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 476,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 643,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1032,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1114,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1252,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1404,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1472,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1497,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1521,
+              "label": "Take down The Inhibitor"
+            },
+            {
+              "atSec": 1540,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1603,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1726,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1765,
+              "label": "End credit"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 202,
+      "lane": "adc",
+      "videos": [
+        {
+          "videoId": "mKd605uTl58",
+          "title": "Miss Fortune vs Jhin ADC [ Gen.G Ruler ] Korea Challenger 2147 | Patch 26.18",
+          "rankClaim": "Challenger",
+          "patch": "26.18",
+          "durationSec": 1170,
+          "region": "KR",
+          "player": "Ruler",
+          "team": "Gen.G",
+          "uploaded": "2026-09-12",
+          "moments": []
+        },
+        {
+          "videoId": "u4T36-gbe9Q",
+          "title": "HLE Gumayusi Miss Fortune vs DK Smash Jhin [ ADC ] Korea Challenger 2504 LP | Patch 26.16",
+          "rankClaim": "Challenger",
+          "patch": "26.16",
+          "durationSec": 1548,
+          "region": "KR",
+          "player": "Gumayusi",
+          "team": "HLE",
+          "uploaded": "2026-08-13",
+          "moments": []
+        },
+        {
+          "videoId": "x4zlPxqBbUM",
+          "title": "Miss Fortune ADC vs Jhin - KR Challenger Patch 26.08",
+          "rankClaim": "Challenger",
+          "patch": "26.8",
+          "durationSec": 1661,
+          "region": "KR",
+          "uploaded": "2026-04-21",
+          "moments": []
+        },
+        {
+          "videoId": "0LrXfMAcknU",
+          "title": "Miss Fortune ADC vs Jhin - EUW Challenger Patch 26.01",
+          "rankClaim": "Challenger",
+          "patch": "26.1",
+          "durationSec": 1495,
+          "region": "EUW",
+          "uploaded": "2026-01-22",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 88,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 255,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 392,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 455,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 478,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 590,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 760,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 894,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 984,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1064,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1087,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1098,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1158,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1207,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1303,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1342,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1355,
+              "label": "Take down The Inhibitor"
+            },
+            {
+              "atSec": 1365,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1446,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1484,
+              "label": "End credit"
+            }
+          ]
+        },
+        {
+          "videoId": "gt_IIHsgEXQ",
+          "title": "Miss Fortune vs Jhin [ ADC ] Korea Challenger 1211 LP | Patch 25.23 ✅",
+          "rankClaim": "Challenger",
+          "patch": "25.23",
+          "durationSec": 1955,
+          "region": "KR",
+          "uploaded": "2025-11-20",
+          "moments": []
+        },
+        {
+          "videoId": "nv3tDVd0mgw",
+          "title": "T1 Gumayusi Miss Fortune vs Jhin [ ADC ] Korea Grandmaster Patch 25.18",
+          "rankClaim": "Grandmaster",
+          "patch": "25.18",
+          "durationSec": 1150,
+          "region": "KR",
+          "player": "Gumayusi",
+          "team": "T1",
+          "uploaded": "2025-09-19",
+          "moments": []
+        },
+        {
+          "videoId": "we5tmNTfvc4",
+          "title": "Miss Fortune ADC vs Jhin - KR Challenger Patch 25.12",
+          "rankClaim": "Challenger",
+          "patch": "25.12",
+          "durationSec": 1820,
+          "region": "KR",
+          "uploaded": "2025-06-16",
+          "moments": []
+        },
+        {
+          "videoId": "kYDE0bLLtF0",
+          "title": "Miss Fortune ADC vs Jhin - EUW Challenger Patch 25.09",
+          "rankClaim": "Challenger",
+          "patch": "25.9",
+          "durationSec": 1713,
+          "region": "EUW",
+          "uploaded": "2025-05-14",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 56,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 219,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 341,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 397,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 476,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 560,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 650,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 674,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 686,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 799,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 835,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 931,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 999,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1030,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1065,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1272,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1300,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1402,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1421,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1436,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1446,
+              "label": "Take down The Inhibitor"
+            },
+            {
+              "atSec": 1469,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1546,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1631,
+              "label": "Hunt The Baron Nashor",
+              "kind": "baron"
+            },
+            {
+              "atSec": 1662,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1692,
+              "label": "End credit"
+            }
+          ]
+        },
+        {
+          "videoId": "nuyql8p_jF8",
+          "title": "Miss Fortune vs Jhin ADC [ Peyz ] Patch 25.8 Korea Challenger ✅",
+          "rankClaim": "Challenger",
+          "patch": "25.8",
+          "durationSec": 1641,
+          "region": "KR",
+          "player": "Peyz",
+          "uploaded": "2025-04-21",
+          "moments": []
+        },
+        {
+          "videoId": "5gWk2KBTOr4",
+          "title": "Miss Fortune ADC vs Jhin - EUW Challenger Patch 25.07",
+          "rankClaim": "Challenger",
+          "patch": "25.7",
+          "durationSec": 1565,
+          "region": "EUW",
+          "uploaded": "2025-04-07",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 250,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 539,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 779,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 927,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1030,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1086,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1283,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1320,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1371,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1467,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1544,
+              "label": "End credit"
+            }
+          ]
+        },
+        {
+          "videoId": "46d6g2K4qmI",
+          "title": "T1 Gumayusi Miss Fortune vs Jhin [ ADC ] Patch 25.7 Korea Challenger ✅",
+          "rankClaim": "Challenger",
+          "patch": "25.7",
+          "durationSec": 1240,
+          "region": "KR",
+          "player": "Gumayusi",
+          "team": "T1",
+          "uploaded": "2025-04-02",
+          "moments": []
+        },
+        {
+          "videoId": "lRhnNJkYX4M",
+          "title": "Miss Fortune vs Jhin ADC - KR Challenger - Patch 25.6 Season 15",
+          "rankClaim": "Challenger",
+          "patch": "25.6",
+          "durationSec": 2131,
+          "region": "KR",
+          "uploaded": "2025-03-27",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 221,
+      "lane": "adc",
+      "videos": [
+        {
+          "videoId": "bGGd2Nzi13k",
+          "title": "Miss Fortune ADC vs Zeri - KR Master Patch 25.19",
+          "rankClaim": "Master",
+          "patch": "25.19",
+          "durationSec": 1869,
+          "region": "KR",
+          "uploaded": "2025-09-26",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 222,
+      "lane": "adc",
+      "videos": [
+        {
+          "videoId": "ITb4HoUXKkI",
+          "title": "Miss Fortune ADC vs Jinx - KR Grandmaster Patch 26.20",
+          "rankClaim": "Grandmaster",
+          "patch": "26.20",
+          "durationSec": 1621,
+          "region": "KR",
+          "uploaded": "2026-10-11",
+          "result": "W",
+          "moments": [
+            {
+              "atSec": 69,
+              "label": "First Blood — Rell kills Tahm Kench",
+              "kind": "kill"
+            },
+            {
+              "atSec": 128,
+              "label": "Miss Fortune Triple Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 432,
+              "label": "Blue takes 1st Dragon (Chemtech)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 678,
+              "label": "Shaco takes down Zac"
+            },
+            {
+              "atSec": 773,
+              "label": "Blue takes 2nd Dragon (Infernal)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 869,
+              "label": "Malphite eliminates Zaahen"
+            },
+            {
+              "atSec": 901,
+              "label": "Blue takes Rift Herald",
+              "kind": "herald"
+            },
+            {
+              "atSec": 938,
+              "label": "Shaco eliminates Jinx"
+            },
+            {
+              "atSec": 1114,
+              "label": "Red takes 1st Dragon (Ocean)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1243,
+              "label": "Syndra takes down Zaahen"
+            },
+            {
+              "atSec": 1363,
+              "label": "Miss Fortune picks off Tahm Kench"
+            },
+            {
+              "atSec": 1393,
+              "label": "Blue takes Baron",
+              "kind": "baron"
+            },
+            {
+              "atSec": 1420,
+              "label": "Miss Fortune Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1445,
+              "label": "Miss Fortune picks off Tahm Kench"
+            },
+            {
+              "atSec": 1531,
+              "label": "Mid Inhibitor falls (Red)"
+            },
+            {
+              "atSec": 1578,
+              "label": "Shaco Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1599,
+              "label": "Miss Fortune picks off Tahm Kench"
+            }
+          ]
+        },
+        {
+          "videoId": "be86cg1rpD0",
+          "title": "(MKOI Supa) Miss Fortune ADC vs Jinx - EUW Grandmaster Patch 26.11",
+          "rankClaim": "Grandmaster",
+          "patch": "26.11",
+          "durationSec": 1520,
+          "region": "EUW",
+          "player": "MKOI Supa",
+          "uploaded": "2026-06-02",
+          "moments": []
+        },
+        {
+          "videoId": "XYVzUiW1ceU",
+          "title": "T1 Gumayusi Miss Fortune vs Jinx [ ADC ] Patch 25.5 Korea Challenger",
+          "rankClaim": "Challenger",
+          "patch": "25.5",
+          "durationSec": 1052,
+          "region": "KR",
+          "player": "Gumayusi",
+          "team": "T1",
+          "uploaded": "2025-03-18",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 235,
+      "lane": "adc",
+      "videos": [
+        {
+          "videoId": "ujtSUcBfKXo",
+          "title": "LazyFeel MissFortune : HIS ONE BULLET COULD SMOKED YOU HP BAR - Engsub (MF vs Senna)",
+          "rankClaim": "Master+",
+          "patch": "26.14",
+          "durationSec": 809,
+          "patchEstimated": true,
+          "uploaded": "2026-07-27",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "mWYhsjVS69Q",
+          "title": "Miss Fortune ADC vs Senna - EUW Grandmaster Patch 26.12",
+          "rankClaim": "Grandmaster",
+          "patch": "26.12",
+          "durationSec": 1496,
+          "region": "EUW",
+          "uploaded": "2026-06-17",
+          "moments": []
+        },
+        {
+          "videoId": "E_naVfAQqdk",
+          "title": "Miss Fortune ADC vs Senna - KR Challenger Patch 26.09",
+          "rankClaim": "Challenger",
+          "patch": "26.9",
+          "durationSec": 1678,
+          "region": "KR",
+          "uploaded": "2026-05-14",
+          "moments": []
+        },
+        {
+          "videoId": "s7RgreSKFnw",
+          "title": "Miss Fortune ADC vs Senna - KR Master Patch 25.11",
+          "rankClaim": "Master",
+          "patch": "25.11",
+          "durationSec": 1943,
+          "region": "KR",
+          "uploaded": "2025-06-01",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 236,
+      "lane": "adc",
+      "videos": [
+        {
+          "videoId": "wmeEsq9iz_0",
+          "title": "Miss Fortune ADC vs Lucian - KR Grandmaster Patch 26.21",
+          "rankClaim": "Grandmaster",
+          "patch": "26.21",
+          "durationSec": 1605,
+          "region": "KR",
+          "uploaded": "2026-10-23",
+          "result": "W",
+          "moments": [
+            {
+              "atSec": 74,
+              "label": "First Blood — Miss Fortune kills Nautilus",
+              "kind": "kill"
+            },
+            {
+              "atSec": 358,
+              "label": "Miss Fortune takes down Lucian"
+            },
+            {
+              "atSec": 469,
+              "label": "Red takes 1st Dragon (Chemtech)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 570,
+              "label": "Graves kills Nautilus",
+              "kind": "kill"
+            },
+            {
+              "atSec": 626,
+              "label": "Miss Fortune eliminates Nidalee"
+            },
+            {
+              "atSec": 809,
+              "label": "Miss Fortune eliminates Nidalee"
+            },
+            {
+              "atSec": 812,
+              "label": "Red takes 2nd Dragon (Mountain)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 925,
+              "label": "Miss Fortune picks off Nautilus"
+            },
+            {
+              "atSec": 985,
+              "label": "Miss Fortune outduels Lucian"
+            },
+            {
+              "atSec": 1180,
+              "label": "Blue takes 1st Dragon (Ocean)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1448,
+              "label": "Miss Fortune takes down Lucian"
+            },
+            {
+              "atSec": 1479,
+              "label": "Miss Fortune eliminates Nidalee"
+            },
+            {
+              "atSec": 1505,
+              "label": "Red takes 3rd Dragon (Ocean)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1552,
+              "label": "Graves picks off Aurora"
+            }
+          ]
+        },
+        {
+          "videoId": "VKsBbOKa2_I",
+          "title": "Miss Fortune ADC vs Lucian - KR Master Patch 26.15",
+          "rankClaim": "Master",
+          "patch": "26.15",
+          "durationSec": 1698,
+          "region": "KR",
+          "uploaded": "2026-08-05",
+          "moments": []
+        },
+        {
+          "videoId": "l7J_MtODxlA",
+          "title": "\"Jz\" 2000LP MissFortune : His MF DAMAGE is so BROKEN - Engsub (MF vs Lucian)",
+          "rankClaim": "Master+",
+          "patch": "26.14",
+          "durationSec": 899,
+          "patchEstimated": true,
+          "player": "Jz",
+          "uploaded": "2026-07-21",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "TjrtcSV0cpA",
+          "title": "T1 Peyz Miss Fortune vs Lucian [ ADC ] Rank #2 Korea Challenger Patch 26.7",
+          "rankClaim": "Challenger",
+          "patch": "26.7",
+          "durationSec": 1068,
+          "region": "KR",
+          "player": "Peyz",
+          "team": "T1",
+          "uploaded": "2026-04-11",
+          "moments": []
+        },
+        {
+          "videoId": "rll3Ssq_JM0",
+          "title": "Miss Fortune ADC vs Lucian - KR Grandmaster Patch 25.18",
+          "rankClaim": "Grandmaster",
+          "patch": "25.18",
+          "durationSec": 1477,
+          "region": "KR",
+          "uploaded": "2025-09-14",
+          "moments": []
+        },
+        {
+          "videoId": "hSMCkybuhEI",
+          "title": "Miss Fortune ADC vs Lucian - KR Master Patch 25.17",
+          "rankClaim": "Master",
+          "patch": "25.17",
+          "durationSec": 2019,
+          "region": "KR",
+          "uploaded": "2025-08-30",
+          "moments": []
+        },
+        {
+          "videoId": "ZGT77TnTKeQ",
+          "title": "Miss Fortune vs Lucian ADC - KR Challenger - Patch 25.13 Season 15",
+          "rankClaim": "Challenger",
+          "patch": "25.13",
+          "durationSec": 1751,
+          "region": "KR",
+          "uploaded": "2025-07-15",
+          "moments": []
+        },
+        {
+          "videoId": "bScDrpDP30U",
+          "title": "Miss Fortune vs Lucian ADC - KR Challenger - Patch 25.9 Season 15",
+          "rankClaim": "Challenger",
+          "patch": "25.9",
+          "durationSec": 1441,
+          "region": "KR",
+          "uploaded": "2025-05-13",
+          "moments": []
+        },
+        {
+          "videoId": "F_Hn6UAQl5c",
+          "title": "T1 Gumayusi Miss Fortune ADC vs Lucian - Patch 25.9 Korea Challenger",
+          "rankClaim": "Challenger",
+          "patch": "25.9",
+          "durationSec": 1236,
+          "region": "KR",
+          "player": "Gumayusi",
+          "team": "T1",
+          "uploaded": "2025-05-09",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 429,
+      "lane": "adc",
+      "videos": [
+        {
+          "videoId": "IwEsoL_ykFw",
+          "title": "Miss Fortune ADC vs Kalista - EUW Grandmaster Patch 25.16",
+          "rankClaim": "Grandmaster",
+          "patch": "25.16",
+          "durationSec": 1426,
+          "region": "EUW",
+          "uploaded": "2025-08-29",
+          "moments": []
+        },
+        {
+          "videoId": "udj7uXhRWcs",
+          "title": "Deft Miss Fortune ADC vs Kalista - Patch 25.6 Korea Grandmaster ✅",
+          "rankClaim": "Grandmaster",
+          "patch": "25.6",
+          "durationSec": 1909,
+          "region": "KR",
+          "player": "Deft",
+          "uploaded": "2025-03-20",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 432,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "nqVkGm6JOGs",
+          "title": "Miss Fortune Support vs Bard - KR Master Patch 25.17",
+          "rankClaim": "Master",
+          "patch": "25.17",
+          "durationSec": 1452,
+          "region": "KR",
+          "uploaded": "2025-09-09",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 523,
+      "lane": "adc",
+      "videos": [
+        {
+          "videoId": "XEIcF_3K5gI",
+          "title": "Miss Fortune ADC vs Aphelios - KR Challenger Patch 26.05",
+          "rankClaim": "Challenger",
+          "patch": "26.5",
+          "durationSec": 1767,
+          "region": "KR",
+          "uploaded": "2026-03-10",
+          "moments": []
+        },
+        {
+          "videoId": "9Ybrmz_paoI",
+          "title": "T1 Peyz Miss Fortune vs Aphelios [ ADC ] Korea Challenger 2048 LP | Patch 26.5",
+          "rankClaim": "Challenger",
+          "patch": "26.5",
+          "durationSec": 1609,
+          "region": "KR",
+          "player": "Peyz",
+          "team": "T1",
+          "uploaded": "2026-03-06",
+          "moments": []
+        },
+        {
+          "videoId": "rpdsZa_fFv8",
+          "title": "T1 Peyz Miss Fortune ADC vs Aphelios - Patch 26.2 Korea Challenger 1569 LP",
+          "rankClaim": "Challenger",
+          "patch": "26.2",
+          "durationSec": 1483,
+          "region": "KR",
+          "player": "Peyz",
+          "team": "T1",
+          "uploaded": "2026-01-31",
+          "moments": []
+        },
+        {
+          "videoId": "27xjNVGWSb4",
+          "title": "Miss Fortune ADC vs Aphelios - KR Grandmaster Patch 26.02",
+          "rankClaim": "Grandmaster",
+          "patch": "26.2",
+          "durationSec": 1477,
+          "region": "KR",
+          "uploaded": "2026-01-26",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 385,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 535,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 661,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 730,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 756,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 815,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 830,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1020,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1119,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1151,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1220,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1330,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1360,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1372,
+              "label": "Take down The Inhibitor"
+            },
+            {
+              "atSec": 1430,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1466,
+              "label": "End credit"
+            }
+          ]
+        },
+        {
+          "videoId": "BfARHMxei74",
+          "title": "T1 Peyz Miss Fortune vs Aphelios [ ADC ] Korea Grandmaster 740 LP | Patch 26.1",
+          "rankClaim": "Grandmaster",
+          "patch": "26.1",
+          "durationSec": 1634,
+          "region": "KR",
+          "player": "Peyz",
+          "team": "T1",
+          "uploaded": "2026-01-19",
+          "moments": []
+        },
+        {
+          "videoId": "K6f2fRFyI5Y",
+          "title": "Miss Fortune vs Aphelios ADC [ Gen.G Ruler ] Patch 26.1 Ranked Korea ✅",
+          "rankClaim": "Master+",
+          "patch": "26.1",
+          "durationSec": 1512,
+          "region": "KR",
+          "player": "Ruler",
+          "team": "Gen.G",
+          "uploaded": "2026-01-11",
+          "moments": []
+        },
+        {
+          "videoId": "DvHch17oai8",
+          "title": "Miss Fortune ADC vs Aphelios - EUW Challenger Patch 25.24",
+          "rankClaim": "Challenger",
+          "patch": "25.24",
+          "durationSec": 1459,
+          "region": "EUW",
+          "uploaded": "2025-12-31",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 78,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 193,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 263,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 415,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 542,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 606,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 721,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 967,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1001,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1034,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1048,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1124,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1197,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1308,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1332,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1360,
+              "label": "Take down The Inhibitor"
+            },
+            {
+              "atSec": 1420,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1434,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1448,
+              "label": "End credit"
+            }
+          ]
+        },
+        {
+          "videoId": "c-AvVvxpyLM",
+          "title": "T1 Smash Miss Fortune vs Aphelios [ ADC ] Patch 25.18 Korea Challenger",
+          "rankClaim": "Challenger",
+          "patch": "25.18",
+          "durationSec": 1915,
+          "region": "KR",
+          "player": "Smash",
+          "team": "T1",
+          "uploaded": "2025-09-21",
+          "moments": []
+        },
+        {
+          "videoId": "8WIcGZrPZz4",
+          "title": "Miss Fortune vs Aphelios ADC [ DRX Teddy ] Patch 25.13 Korea Challenger",
+          "rankClaim": "Challenger",
+          "patch": "25.13",
+          "durationSec": 1824,
+          "region": "KR",
+          "player": "Teddy",
+          "team": "DRX",
+          "uploaded": "2025-07-05",
+          "moments": []
+        },
+        {
+          "videoId": "o9wrctFg9QA",
+          "title": "Miss Fortune vs Aphelios ADC - KR Grandmaster - Patch 25.13 Season 15",
+          "rankClaim": "Grandmaster",
+          "patch": "25.13",
+          "durationSec": 1381,
+          "region": "KR",
+          "uploaded": "2025-07-03",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 777,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "sUSLEvYOXro",
+          "title": "Miss Fortune Top vs Yone - KR Master Patch 25.21",
+          "rankClaim": "Master",
+          "patch": "25.21",
+          "durationSec": 1929,
+          "region": "KR",
+          "uploaded": "2025-11-05",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 800,
+      "lane": "adc",
+      "videos": [
+        {
+          "videoId": "puqP9JkdrkM",
+          "title": "HLE Gumayusi Miss Fortune vs Mel [ ADC ] Patch 26.12 Korea Challenger 2475 LP",
+          "rankClaim": "Challenger",
+          "patch": "26.12",
+          "durationSec": 812,
+          "region": "KR",
+          "player": "Gumayusi",
+          "team": "HLE",
+          "uploaded": "2026-06-11",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 804,
+      "lane": "adc",
+      "videos": [
+        {
+          "videoId": "uu727kvCZ-0",
+          "title": "(Avarice) Miss Fortune ADC vs Yunara (KHK Boda) - EUW Challenger Patch 26.19",
+          "rankClaim": "Challenger",
+          "patch": "26.19",
+          "durationSec": 1784,
+          "region": "EUW",
+          "player": "Avarice",
+          "uploaded": "2026-10-06",
+          "result": "W",
+          "moments": [
+            {
+              "atSec": 236,
+              "label": "First Blood — Nautilus kills Yunara",
+              "kind": "kill"
+            },
+            {
+              "atSec": 313,
+              "label": "Red takes 1st Dragon (Infernal)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 652,
+              "label": "Blue takes 1st Dragon (Mountain)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 918,
+              "label": "Miss Fortune Triple Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 967,
+              "label": "Blue takes 2nd Dragon (Hextech)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1034,
+              "label": "Miss Fortune takes down Yunara"
+            },
+            {
+              "atSec": 1283,
+              "label": "Red takes 2nd Dragon (Hextech)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1347,
+              "label": "Miss Fortune kills Katarina",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1474,
+              "label": "Mid Inhibitor falls (Blue)"
+            },
+            {
+              "atSec": 1530,
+              "label": "Miss Fortune solo kills Jayce",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1544,
+              "label": "Miss Fortune picks off Lulu"
+            },
+            {
+              "atSec": 1618,
+              "label": "Red takes Baron",
+              "kind": "baron"
+            },
+            {
+              "atSec": 1643,
+              "label": "Miss Fortune outduels Yunara"
+            },
+            {
+              "atSec": 1658,
+              "label": "Red takes 3rd Dragon (Hextech)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1731,
+              "label": "Vex kills Yunara",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1758,
+              "label": "Mid Inhibitor falls (Red)"
+            },
+            {
+              "atSec": 1762,
+              "label": "Miss Fortune picks off Jayce"
+            }
+          ]
+        },
+        {
+          "videoId": "musfPaUzYas",
+          "title": "Miss Fortune ADC vs Yunara - KR Master Patch 26.18",
+          "rankClaim": "Master",
+          "patch": "26.18",
+          "durationSec": 1641,
+          "region": "KR",
+          "uploaded": "2026-09-14",
+          "moments": []
+        },
+        {
+          "videoId": "Hfi4M47xiC0",
+          "title": "(nae) Miss Fortune ADC vs Yunara - EUW Grandmaster Patch 26.14",
+          "rankClaim": "Grandmaster",
+          "patch": "26.14",
+          "durationSec": 1712,
+          "region": "EUW",
+          "player": "nae",
+          "uploaded": "2026-07-23",
+          "moments": []
+        },
+        {
+          "videoId": "kYf4kVYe_ac",
+          "title": "T1 Peyz Miss Fortune vs Yunara [ ADC ] Korea Challenger 2448 LP | Patch 26.11",
+          "rankClaim": "Challenger",
+          "patch": "26.11",
+          "durationSec": 1486,
+          "region": "KR",
+          "player": "Peyz",
+          "team": "T1",
+          "uploaded": "2026-06-07",
+          "moments": []
+        },
+        {
+          "videoId": "qzKbkuzsBk8",
+          "title": "Miss Fortune ADC vs Yunara - KR Challenger Patch 26.09",
+          "rankClaim": "Challenger",
+          "patch": "26.9",
+          "durationSec": 1824,
+          "region": "KR",
+          "uploaded": "2026-05-06",
+          "moments": []
+        },
+        {
+          "videoId": "5n267bpYsWE",
+          "title": "Miss Fortune ADC vs Yunara - KR Master Patch 26.06",
+          "rankClaim": "Master",
+          "patch": "26.6",
+          "durationSec": 1443,
+          "region": "KR",
+          "uploaded": "2026-04-02",
+          "moments": []
+        },
+        {
+          "videoId": "u98cUtY11h4",
+          "title": "BLG Viper Miss Fortune vs Yunara [ ADC ] Patch 26.1 Ranked Korea ✅",
+          "rankClaim": "Master+",
+          "patch": "26.1",
+          "durationSec": 1974,
+          "region": "KR",
+          "player": "Viper",
+          "team": "BLG",
+          "uploaded": "2026-01-16",
+          "moments": []
+        },
+        {
+          "videoId": "ZN23IkqEZYM",
+          "title": "DK Smash Miss Fortune vs Yunara [ ADC ] Korea Challenger Patch 25.24",
+          "rankClaim": "Challenger",
+          "patch": "25.24",
+          "durationSec": 1438,
+          "region": "KR",
+          "player": "Smash",
+          "team": "DK",
+          "uploaded": "2025-12-26",
+          "moments": []
+        },
+        {
+          "videoId": "TLOovyK7pr8",
+          "title": "Miss Fortune ADC vs Yunara - KR Grandmaster Patch 25.24",
+          "rankClaim": "Grandmaster",
+          "patch": "25.24",
+          "durationSec": 1745,
+          "region": "KR",
+          "uploaded": "2025-12-06",
+          "moments": []
+        },
+        {
+          "videoId": "psG6lhtzjpc",
+          "title": "Miss Fortune vs Yunara ADC - KR Challenger - Patch 25.21 Season 15",
+          "rankClaim": "Challenger",
+          "patch": "25.21",
+          "durationSec": 1441,
+          "region": "KR",
+          "uploaded": "2025-11-03",
+          "moments": []
+        },
+        {
+          "videoId": "Tjf2gJeua14",
+          "title": "Miss Fortune vs Yunara [ ADC ] Korea Challenger 1464 LP | Patch 25.21 ✅",
+          "rankClaim": "Challenger",
+          "patch": "25.21",
+          "durationSec": 1295,
+          "region": "KR",
+          "uploaded": "2025-10-29",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 895,
+      "lane": "adc",
+      "videos": [
+        {
+          "videoId": "Qywlwso-YgM",
+          "title": "Miss Fortune ADC vs Nilah - KR Master Patch 26.07",
+          "rankClaim": "Master",
+          "patch": "26.7",
+          "durationSec": 1764,
+          "region": "KR",
+          "uploaded": "2026-04-05",
+          "moments": []
+        },
+        {
+          "videoId": "ucbPnyC802A",
+          "title": "Miss Fortune ADC vs Nilah - KR Master Patch 25.15",
+          "rankClaim": "Master",
+          "patch": "25.15",
+          "durationSec": 2096,
+          "region": "KR",
+          "uploaded": "2025-08-05",
+          "moments": []
+        },
+        {
+          "videoId": "Nbk_kkZ0b8I",
+          "title": "Miss Fortune ADC vs Nilah - EUW Challenger Patch 25.11",
+          "rankClaim": "Challenger",
+          "patch": "25.11",
+          "durationSec": 1717,
+          "region": "EUW",
+          "uploaded": "2025-06-12",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 901,
+      "lane": "adc",
+      "videos": [
+        {
+          "videoId": "j5TmwQGuEBU",
+          "title": "Miss Fortune vs Smolder ADC [ Gen.G Ruler ] Patch 26.11 Korea Challenger 2170 LP",
+          "rankClaim": "Challenger",
+          "patch": "26.11",
+          "durationSec": 1696,
+          "region": "KR",
+          "player": "Ruler",
+          "team": "Gen.G",
+          "uploaded": "2026-06-02",
+          "moments": []
+        },
+        {
+          "videoId": "PbC8IVT5Zfc",
+          "title": "Miss Fortune ADC vs Smolder - KR Challenger Patch 26.10",
+          "rankClaim": "Challenger",
+          "patch": "26.10",
+          "durationSec": 1879,
+          "region": "KR",
+          "uploaded": "2026-05-20",
+          "moments": []
+        },
+        {
+          "videoId": "4b-Dh-Ov9W8",
+          "title": "Diable : His MissFortune DAMAGE is NUT, Crusing KR at 1000LP Match - Engsub ( MF vs Smolder )",
+          "rankClaim": "Master+",
+          "patch": "26.10",
+          "durationSec": 952,
+          "region": "KR",
+          "patchEstimated": true,
+          "uploaded": "2026-05-16",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "kFv-QP1zzLs",
+          "title": "Miss Fortune ADC vs Smolder - KR Grandmaster Patch 25.14",
+          "rankClaim": "Grandmaster",
+          "patch": "25.14",
+          "durationSec": 1580,
+          "region": "KR",
+          "uploaded": "2025-07-22",
+          "moments": []
+        },
+        {
+          "videoId": "HYWQLgtvHsU",
+          "title": "Miss Fortune ADC vs Smolder - KR Grandmaster Patch 25.13",
+          "rankClaim": "Grandmaster",
+          "patch": "25.13",
+          "durationSec": 1762,
+          "region": "KR",
+          "uploaded": "2025-06-30",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 950,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "v3w46QrrJfY",
+          "title": "Miss Fortune Mid vs Naafiri - BR Challenger Patch 26.13",
+          "rankClaim": "Challenger",
+          "patch": "26.13",
+          "durationSec": 1541,
+          "uploaded": "2026-07-16",
+          "moments": []
+        },
+        {
+          "videoId": "qjQAuJgXyTc",
+          "title": "Miss Fortune Mid vs Naafiri - NA Challenger Patch 25.24",
+          "rankClaim": "Challenger",
+          "patch": "25.24",
+          "durationSec": 1509,
+          "region": "NA",
+          "uploaded": "2025-12-12",
+          "moments": []
+        }
+      ]
+    }
+  ]
+}

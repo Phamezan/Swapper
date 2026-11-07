@@ -1,0 +1,2389 @@
+{
+  "schema": 1,
+  "champion": 888,
+  "generatedAt": "2026-11-07T13:25:14.592Z",
+  "guides": [],
+  "general": [
+    {
+      "champion": 888,
+      "lane": "support",
+      "patch": "26.21",
+      "reviewed": false,
+      "keyTips": [
+        {
+          "text": "Poke with Handshake while moving in and out of brush; add an auto attack, then step back to limit return damage.",
+          "scope": "champion",
+          "sourceIds": [
+            "lathyrus"
+          ],
+          "abilityKeys": [
+            {
+              "champion": 888,
+              "key": "E"
+            },
+            {
+              "champion": 888,
+              "key": "Q"
+            }
+          ]
+        },
+        {
+          "text": "Leverage Rumor can grab a minion and send it into an enemy champion for a brief stun, giving another way to start a trade.",
+          "scope": "champion",
+          "sourceIds": [
+            "lathyrus"
+          ],
+          "abilityKeys": [
+            {
+              "champion": 888,
+              "key": "Q"
+            }
+          ]
+        },
+        {
+          "text": "Cast Bailout just before an allied carry would die to create a chance for them to turn the fight; the buff resets on takedowns.",
+          "scope": "champion",
+          "sourceIds": [
+            "lathyrus"
+          ],
+          "abilityKeys": [
+            {
+              "champion": 888,
+              "key": "W"
+            }
+          ]
+        }
+      ],
+      "sections": {
+        "overview": {
+          "tips": []
+        },
+        "early-lane": {
+          "tips": [
+            {
+              "text": "Take Leverage Rumor early as trading crowd control for the lane.",
+              "scope": "champion",
+              "sourceIds": [
+                "lathyrus"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 888,
+                  "key": "Q"
+                }
+              ]
+            },
+            {
+              "text": "Weave autos into the Handshake poke pattern, since Renata's passive rewards alternating attacks with allies.",
+              "scope": "champion",
+              "sourceIds": [
+                "lathyrus"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 888,
+                  "key": "E"
+                },
+                {
+                  "champion": 888,
+                  "key": "Q"
+                }
+              ]
+            },
+            {
+              "text": "Her Hostile Takeover travels slowly, so do not treat the ultimate as a solo initiation tool; use it after landing hard crowd control or to counter an enemy dive.",
+              "scope": "champion",
+              "sourceIds": [
+                "lathyrus"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 888,
+                  "key": "R"
+                }
+              ]
+            },
+            {
+              "text": "Take Ignite for lane kill pressure, and take Exhaust instead when a dive threat is likely to reach the carries.",
+              "scope": "champion",
+              "sourceIds": [
+                "lathyrus"
+              ]
+            },
+            {
+              "text": "If the enemy support catches you or your partner with crowd control, answer by aiming Handshake and Leverage Rumor at their carry to discourage the follow-up.",
+              "scope": "champion",
+              "sourceIds": [
+                "lathyrus"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 888,
+                  "key": "E"
+                },
+                {
+                  "champion": 888,
+                  "key": "Q"
+                }
+              ]
+            }
+          ]
+        },
+        "mid-lane": {
+          "tips": [
+            {
+              "text": "Bailout can also help a carry chase by granting movement speed toward enemy champions.",
+              "scope": "champion",
+              "sourceIds": [
+                "lathyrus"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 888,
+                  "key": "W"
+                }
+              ]
+            },
+            {
+              "text": "Self-cast Bailout can buy time during a tower dive when Renata herself is being focused.",
+              "scope": "champion",
+              "sourceIds": [
+                "lathyrus"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 888,
+                  "key": "W"
+                }
+              ]
+            },
+            {
+              "text": "Save Hostile Takeover for clustered fights around Dragon or Baron, where the confined area makes its slow-moving wave harder to avoid.",
+              "scope": "champion",
+              "sourceIds": [
+                "lathyrus"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 888,
+                  "key": "R"
+                }
+              ]
+            },
+            {
+              "text": "Treat Hostile Takeover after landing Leverage Rumor as a safer follow-up than casting the ultimate alone.",
+              "scope": "champion",
+              "sourceIds": [
+                "lathyrus"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 888,
+                  "key": "Q"
+                },
+                {
+                  "champion": 888,
+                  "key": "R"
+                }
+              ]
+            }
+          ]
+        },
+        "win-condition": {
+          "tips": [
+            {
+              "text": "Build enough durability to stay alive and keep peeling; a tankier support role beats maximizing enchanter stats here.",
+              "scope": "champion",
+              "sourceIds": [
+                "lathyrus"
+              ]
+            },
+            {
+              "text": "Protect the carry with Handshake shields and the last-second Bailout window, then use Leverage Rumor or Hostile Takeover to disrupt divers.",
+              "scope": "champion",
+              "sourceIds": [
+                "lathyrus"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 888,
+                  "key": "E"
+                },
+                {
+                  "champion": 888,
+                  "key": "W"
+                },
+                {
+                  "champion": 888,
+                  "key": "Q"
+                },
+                {
+                  "champion": 888,
+                  "key": "R"
+                }
+              ]
+            },
+            {
+              "text": "Stay alive through team fights so Renata can keep applying peel and crowd control.",
+              "scope": "champion",
+              "sourceIds": [
+                "lathyrus"
+              ]
+            }
+          ]
+        }
+      },
+      "itemization": [],
+      "sources": [
+        {
+          "id": "lathyrus",
+          "author": "Lathyrus",
+          "rankClaim": "Challenger (title claim); Grandmaster (profile badge)",
+          "rank": "grandmaster",
+          "url": "https://www.mobafire.com/league-of-legends/build/lathyrus-15-18-challenger-renata-support-609588",
+          "kind": "mobafire"
+        }
+      ]
+    }
+  ],
+  "vods": [
+    {
+      "enemy": 12,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "efLuQbL_k2w",
+          "title": "Renata Glasc Support vs Alistar - KR Grandmaster Patch 26.18",
+          "rankClaim": "Grandmaster",
+          "patch": "26.18",
+          "durationSec": 1748,
+          "region": "KR",
+          "uploaded": "2026-09-13",
+          "moments": []
+        },
+        {
+          "videoId": "RYmhe9QWEbU",
+          "title": "Renata Glasc Support vs Alistar - EUW Grandmaster Patch 26.02",
+          "rankClaim": "Grandmaster",
+          "patch": "26.2",
+          "durationSec": 1527,
+          "region": "EUW",
+          "uploaded": "2026-02-06",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 116,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 248,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 359,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 610,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 742,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 758,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 837,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 893,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 951,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1020,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1110,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1142,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1156,
+              "label": "Take down The Inhibitor"
+            },
+            {
+              "atSec": 1167,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1201,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1271,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1379,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1450,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1490,
+              "label": "Take down The Inhibitor"
+            },
+            {
+              "atSec": 1516,
+              "label": "End credit"
+            }
+          ]
+        },
+        {
+          "videoId": "VPksM7iUI3o",
+          "title": "Renata Glasc Support vs Alistar - KR Grandmaster Patch 25.24",
+          "rankClaim": "Grandmaster",
+          "patch": "25.24",
+          "durationSec": 1571,
+          "region": "KR",
+          "uploaded": "2025-12-21",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 350,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 650,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 786,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 930,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 949,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 973,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 999,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1026,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1178,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1340,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1445,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1513,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1560,
+              "label": "End credit"
+            }
+          ]
+        },
+        {
+          "videoId": "kUMhqFWmNO0",
+          "title": "Renata Glasc Support vs Alistar - EUW Grandmaster Patch 25.23",
+          "rankClaim": "Grandmaster",
+          "patch": "25.23",
+          "durationSec": 1465,
+          "region": "EUW",
+          "uploaded": "2025-12-04",
+          "moments": []
+        },
+        {
+          "videoId": "F2wi_U2P8Vk",
+          "title": "Renata Glasc Support vs Alistar - KR Grandmaster Patch 25.22",
+          "rankClaim": "Grandmaster",
+          "patch": "25.22",
+          "durationSec": 1567,
+          "region": "KR",
+          "uploaded": "2025-11-13",
+          "moments": []
+        },
+        {
+          "videoId": "NjUkY1pi8BM",
+          "title": "Renata Glasc Support vs Alistar - KR Grandmaster Patch 25.14",
+          "rankClaim": "Grandmaster",
+          "patch": "25.14",
+          "durationSec": 1461,
+          "region": "KR",
+          "uploaded": "2025-07-24",
+          "moments": []
+        },
+        {
+          "videoId": "m8XNhSO2p-8",
+          "title": "Renata Glasc Support vs Alistar - KR Master Patch 25.12",
+          "rankClaim": "Master",
+          "patch": "25.12",
+          "durationSec": 2083,
+          "region": "KR",
+          "uploaded": "2025-06-26",
+          "moments": []
+        },
+        {
+          "videoId": "bKmlL-8eHQs",
+          "title": "Renata Glasc Support vs Alistar - EUW Grandmaster Patch 25.09",
+          "rankClaim": "Grandmaster",
+          "patch": "25.9",
+          "durationSec": 1616,
+          "region": "EUW",
+          "uploaded": "2025-05-16",
+          "moments": []
+        },
+        {
+          "videoId": "u1DOuo8mm9I",
+          "title": "Renata Glasc Support vs Alistar - KR Challenger Patch 25.08",
+          "rankClaim": "Challenger",
+          "patch": "25.8",
+          "durationSec": 1666,
+          "region": "KR",
+          "uploaded": "2025-04-24",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 43,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "os0siM9KI5Y",
+          "title": "Renata Glasc Support vs Karma - KR Master Patch 25.24",
+          "rankClaim": "Master",
+          "patch": "25.24",
+          "durationSec": 1566,
+          "region": "KR",
+          "uploaded": "2025-12-25",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 203,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 306,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 452,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 606,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 707,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 844,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 963,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 990,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1077,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1140,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1233,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1260,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1361,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1423,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1523,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1555,
+              "label": "End credit"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 53,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "_YoqZ4-eN7U",
+          "title": "Renata Glasc Support vs Blitzcrank - KR Grandmaster Patch 25.24",
+          "rankClaim": "Grandmaster",
+          "patch": "25.24",
+          "durationSec": 1472,
+          "region": "KR",
+          "uploaded": "2026-01-10",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 312,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 428,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 738,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1044,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1140,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1232,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1336,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1374,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1393,
+              "label": "Take down The Inhibitor"
+            },
+            {
+              "atSec": 1435,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1461,
+              "label": "End credit"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 60,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "MxYvKTIncVQ",
+          "title": "Renata Glasc Support vs Elise - EUW Grandmaster Patch 25.11",
+          "rankClaim": "Grandmaster",
+          "patch": "25.11",
+          "durationSec": 1975,
+          "region": "EUW",
+          "uploaded": "2025-06-13",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 75,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "Vrv6jy1gexs",
+          "title": "(OMG Moham) Renata Glasc Support vs Nasus - KR Challenger Patch 26.15",
+          "rankClaim": "Challenger",
+          "patch": "26.15",
+          "durationSec": 1434,
+          "region": "KR",
+          "player": "OMG Moham",
+          "uploaded": "2026-07-31",
+          "moments": []
+        },
+        {
+          "videoId": "GYJ7dHBoLhI",
+          "title": "Renata Glasc Support vs Nasus - EUW Grandmaster Patch 25.21",
+          "rankClaim": "Grandmaster",
+          "patch": "25.21",
+          "durationSec": 1784,
+          "region": "EUW",
+          "uploaded": "2025-11-07",
+          "moments": []
+        },
+        {
+          "videoId": "--4BdIwv-u8",
+          "title": "Renata Glasc Support vs Nasus - NA Grandmaster Patch 25.10",
+          "rankClaim": "Grandmaster",
+          "patch": "25.10",
+          "durationSec": 1838,
+          "region": "NA",
+          "uploaded": "2025-05-20",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 78,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "Qo2SIabx9dw",
+          "title": "(UCAM iLevi) Renata Glasc Support vs Poppy (G2 Labrov) - EUW Grandmaster Patch 26.14",
+          "rankClaim": "Grandmaster",
+          "patch": "26.14",
+          "durationSec": 1780,
+          "region": "EUW",
+          "player": "UCAM iLevi",
+          "uploaded": "2026-07-27",
+          "moments": []
+        },
+        {
+          "videoId": "snWRUzH1BfY",
+          "title": "(LGD Shaoye) Renata Glasc Support vs Poppy - KR Master Patch 26.13",
+          "rankClaim": "Master",
+          "patch": "26.13",
+          "durationSec": 1747,
+          "region": "KR",
+          "player": "LGD Shaoye",
+          "uploaded": "2026-07-06",
+          "moments": []
+        },
+        {
+          "videoId": "ZwSTzb-kvCE",
+          "title": "Renata Glasc Support vs Poppy - KR Master Patch 25.24",
+          "rankClaim": "Master",
+          "patch": "25.24",
+          "durationSec": 1442,
+          "region": "KR",
+          "uploaded": "2025-12-11",
+          "moments": []
+        },
+        {
+          "videoId": "D8fgwJz-mZs",
+          "title": "Renata Glasc Support vs Poppy - KR Master Patch 25.21",
+          "rankClaim": "Master",
+          "patch": "25.21",
+          "durationSec": 1455,
+          "region": "KR",
+          "uploaded": "2025-10-30",
+          "moments": []
+        },
+        {
+          "videoId": "SV4TfublGEo",
+          "title": "Renata Glasc Support vs Poppy - EUW Grandmaster Patch 25.19",
+          "rankClaim": "Grandmaster",
+          "patch": "25.19",
+          "durationSec": 2029,
+          "region": "EUW",
+          "uploaded": "2025-10-09",
+          "moments": []
+        },
+        {
+          "videoId": "ILTrHZPd1ts",
+          "title": "Renata Glasc Support vs Poppy - KR Challenger Patch 25.09",
+          "rankClaim": "Challenger",
+          "patch": "25.9",
+          "durationSec": 1781,
+          "region": "KR",
+          "uploaded": "2025-05-08",
+          "moments": []
+        },
+        {
+          "videoId": "9Fs26TzLtt4",
+          "title": "Renata Glasc Support vs Poppy - EUW Grandmaster Patch 25.04",
+          "rankClaim": "Grandmaster",
+          "patch": "25.4",
+          "durationSec": 1621,
+          "region": "EUW",
+          "uploaded": "2025-03-03",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 303,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 410,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 479,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 538,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 774,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 921,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1017,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1139,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1154,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1168,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1189,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1264,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1344,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1372,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1435,
+              "label": "Take down The Inhibitor"
+            },
+            {
+              "atSec": 1448,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1528,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1600,
+              "label": "End credit"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 80,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "NHrzN08ZU10",
+          "title": "Renata Glasc Support vs Pantheon - KR Master Patch 26.21",
+          "rankClaim": "Master",
+          "patch": "26.21",
+          "durationSec": 1749,
+          "region": "KR",
+          "uploaded": "2026-10-25",
+          "result": "W",
+          "moments": [
+            {
+              "atSec": 343,
+              "label": "Red takes 1st Dragon (Infernal)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 737,
+              "label": "Blue takes 1st Dragon (Ocean)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 896,
+              "label": "Talon Triple Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1057,
+              "label": "Red takes 2nd Dragon (Mountain)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1138,
+              "label": "Kalista picks off Olaf"
+            },
+            {
+              "atSec": 1333,
+              "label": "Kalista picks off Olaf"
+            },
+            {
+              "atSec": 1339,
+              "label": "Kalista Triple Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1341,
+              "label": "Kalista Quadra Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1347,
+              "label": "Kalista PENTA KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1390,
+              "label": "Red takes Baron",
+              "kind": "baron"
+            },
+            {
+              "atSec": 1422,
+              "label": "Kalista picks off Olaf"
+            },
+            {
+              "atSec": 1424,
+              "label": "Blue takes 2nd Dragon (Mountain)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1427,
+              "label": "Kalista Triple Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1442,
+              "label": "Vex Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1533,
+              "label": "Kalista picks off Pantheon"
+            },
+            {
+              "atSec": 1536,
+              "label": "Mid Inhibitor falls (Blue)"
+            },
+            {
+              "atSec": 1597,
+              "label": "Talon Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1700,
+              "label": "Renata Glasc Double Kill",
+              "kind": "kill"
+            }
+          ]
+        },
+        {
+          "videoId": "9WYkORtnmzU",
+          "title": "(AL Kael) Renata Glasc Support vs Pantheon (JDG Vampire) - KR Challenger Patch 26.19",
+          "rankClaim": "Challenger",
+          "patch": "26.19",
+          "durationSec": 1794,
+          "region": "KR",
+          "player": "Kael",
+          "team": "AL",
+          "uploaded": "2026-10-08",
+          "result": "W",
+          "moments": [
+            {
+              "atSec": 77,
+              "label": "First Blood — Qiyana kills Pantheon",
+              "kind": "kill"
+            },
+            {
+              "atSec": 208,
+              "label": "Renata Glasc eliminates Pantheon"
+            },
+            {
+              "atSec": 311,
+              "label": "Yunara eliminates Nidalee"
+            },
+            {
+              "atSec": 429,
+              "label": "Red takes 1st Dragon (Ocean)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 431,
+              "label": "Lissandra eliminates Dr. Mundo"
+            },
+            {
+              "atSec": 626,
+              "label": "Qiyana kills Pantheon",
+              "kind": "kill"
+            },
+            {
+              "atSec": 677,
+              "label": "Qiyana takes down Nidalee"
+            },
+            {
+              "atSec": 791,
+              "label": "Red takes 2nd Dragon (Cloud)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 833,
+              "label": "Qiyana kills Pantheon",
+              "kind": "kill"
+            },
+            {
+              "atSec": 974,
+              "label": "Qiyana kills Pantheon",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1041,
+              "label": "Qiyana kills Pantheon",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1165,
+              "label": "Red takes 3rd Dragon (Mountain)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1301,
+              "label": "Qiyana eliminates Jhin"
+            },
+            {
+              "atSec": 1384,
+              "label": "Red takes Baron",
+              "kind": "baron"
+            },
+            {
+              "atSec": 1485,
+              "label": "Team fight (3 kills)",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1535,
+              "label": "Blue takes 1st Dragon (Mountain)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1540,
+              "label": "Jayce eliminates Pantheon"
+            },
+            {
+              "atSec": 1622,
+              "label": "Team fight (3 kills)",
+              "kind": "teamfight"
+            }
+          ]
+        },
+        {
+          "videoId": "y8VvA9Aia80",
+          "title": "Renata Glasc Support vs Pantheon - NA Challenger Patch 26.04",
+          "rankClaim": "Challenger",
+          "patch": "26.4",
+          "durationSec": 1778,
+          "region": "NA",
+          "uploaded": "2026-02-28",
+          "moments": []
+        },
+        {
+          "videoId": "hNL09HEl8_Y",
+          "title": "Renata Glasc Support vs Pantheon - KR Grandmaster Patch 25.17",
+          "rankClaim": "Grandmaster",
+          "patch": "25.17",
+          "durationSec": 1756,
+          "region": "KR",
+          "uploaded": "2025-09-05",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 89,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "xjQ3GUX48g8",
+          "title": "Renata Glasc Support vs Leona - KR Master Patch 26.03",
+          "rankClaim": "Master",
+          "patch": "26.3",
+          "durationSec": 1593,
+          "region": "KR",
+          "uploaded": "2026-02-14",
+          "moments": []
+        },
+        {
+          "videoId": "VV5Zw5Dg5bE",
+          "title": "Renata Glasc Support vs Leona - KR Master Patch 26.02",
+          "rankClaim": "Master",
+          "patch": "26.2",
+          "durationSec": 1495,
+          "region": "KR",
+          "uploaded": "2026-02-04",
+          "moments": []
+        },
+        {
+          "videoId": "c0Jl3pC1tlc",
+          "title": "Renata Glasc Support vs Leona - KR Master Patch 26.01",
+          "rankClaim": "Master",
+          "patch": "26.1",
+          "durationSec": 1617,
+          "region": "KR",
+          "uploaded": "2026-01-16",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 111,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "MOPMnMSDjQo",
+          "title": "Renata Glasc Support vs Nautilus - KR Challenger Patch 26.17",
+          "rankClaim": "Challenger",
+          "patch": "26.17",
+          "durationSec": 1491,
+          "region": "KR",
+          "uploaded": "2026-09-01",
+          "moments": []
+        },
+        {
+          "videoId": "ugc950oZcFA",
+          "title": "Renata Glasc Support vs Nautilus - KR Master Patch 26.09",
+          "rankClaim": "Master",
+          "patch": "26.9",
+          "durationSec": 1484,
+          "region": "KR",
+          "uploaded": "2026-05-10",
+          "moments": []
+        },
+        {
+          "videoId": "CSym6avUhG8",
+          "title": "Renata Glasc Support vs Nautilus - KR Challenger Patch 25.05",
+          "rankClaim": "Challenger",
+          "patch": "25.5",
+          "durationSec": 1511,
+          "region": "KR",
+          "uploaded": "2025-03-15",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 184,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 362,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 681,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 830,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 914,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1028,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1154,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1265,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1436,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1490,
+              "label": "End credit"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 117,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "SxbZcoI7R3o",
+          "title": "Renata Glasc Support vs Lulu - KR Challenger Patch 26.07",
+          "rankClaim": "Challenger",
+          "patch": "26.7",
+          "durationSec": 1771,
+          "region": "KR",
+          "uploaded": "2026-04-10",
+          "moments": []
+        },
+        {
+          "videoId": "CsR16WQsv1c",
+          "title": "Renata Glasc Support vs Lulu - KR Master Patch 25.16",
+          "rankClaim": "Master",
+          "patch": "25.16",
+          "durationSec": 1589,
+          "region": "KR",
+          "uploaded": "2025-08-25",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 154,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "XZPMDOAOXnk",
+          "title": "Renata Glasc Support vs Zac - KR Master Patch 26.18",
+          "rankClaim": "Master",
+          "patch": "26.18",
+          "durationSec": 1610,
+          "region": "KR",
+          "uploaded": "2026-09-24",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 161,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "aRckxDoMql4",
+          "title": "Renata Glasc Support vs Vel'Koz - KR Master Patch 26.19",
+          "rankClaim": "Master",
+          "patch": "26.19",
+          "durationSec": 1859,
+          "region": "KR",
+          "uploaded": "2026-09-28",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 201,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "CrgOzzC1J1Y",
+          "title": "Renata Glasc Support vs Braum - KR Challenger Patch 25.23",
+          "rankClaim": "Challenger",
+          "patch": "25.23",
+          "durationSec": 1545,
+          "region": "KR",
+          "uploaded": "2025-11-28",
+          "moments": []
+        },
+        {
+          "videoId": "qsnzWh7LEpo",
+          "title": "Renata Glasc Support vs Braum - KR Grandmaster Patch 25.12",
+          "rankClaim": "Grandmaster",
+          "patch": "25.12",
+          "durationSec": 1786,
+          "region": "KR",
+          "uploaded": "2025-06-19",
+          "moments": []
+        },
+        {
+          "videoId": "qtKQqLOS8sI",
+          "title": "Renata Glasc Support vs Braum - EUW Challenger Patch 25.07",
+          "rankClaim": "Challenger",
+          "patch": "25.7",
+          "durationSec": 1962,
+          "region": "EUW",
+          "uploaded": "2025-04-17",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 235,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "PyR4ffSl_g4",
+          "title": "Renata Glasc Support vs Senna - KR Master Patch 25.11",
+          "rankClaim": "Master",
+          "patch": "25.11",
+          "durationSec": 1523,
+          "region": "KR",
+          "uploaded": "2025-06-06",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 267,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "eOBXcM0HRIc",
+          "title": "Renata Glasc Support vs Nami - KR Master Patch 25.18",
+          "rankClaim": "Master",
+          "patch": "25.18",
+          "durationSec": 1760,
+          "region": "KR",
+          "uploaded": "2025-09-26",
+          "moments": []
+        },
+        {
+          "videoId": "5RdUNPo76_s",
+          "title": "Renata Glasc Support vs Nami - KR Master Patch 25.13",
+          "rankClaim": "Master",
+          "patch": "25.13",
+          "durationSec": 1577,
+          "region": "KR",
+          "uploaded": "2025-07-04",
+          "moments": []
+        },
+        {
+          "videoId": "yImtVswJW88",
+          "title": "Renata Glasc Support vs Nami - NA Challenger Patch 25.06",
+          "rankClaim": "Challenger",
+          "patch": "25.6",
+          "durationSec": 1540,
+          "region": "NA",
+          "uploaded": "2025-04-04",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 350,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "57SuAHdaKDE",
+          "title": "Renata Glasc Support vs Yuumi - KR Master Patch 25.04",
+          "rankClaim": "Master",
+          "patch": "25.4",
+          "durationSec": 1576,
+          "region": "KR",
+          "uploaded": "2025-03-07",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 214,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 368,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 504,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 682,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 796,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 825,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 985,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1028,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1169,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1276,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1291,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1301,
+              "label": "Take down The Inhibitor"
+            },
+            {
+              "atSec": 1314,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1340,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1408,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1454,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1555,
+              "label": "End credit"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 412,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "KLWs2uoEoeQ",
+          "title": "Renata Glasc Support vs Thresh - NA Challenger Patch 26.08",
+          "rankClaim": "Challenger",
+          "patch": "26.8",
+          "durationSec": 1736,
+          "region": "NA",
+          "uploaded": "2026-04-25",
+          "moments": []
+        },
+        {
+          "videoId": "o4glXuYH4o8",
+          "title": "Renata Glasc Support vs Thresh - NA Grandmaster Patch 25.20",
+          "rankClaim": "Grandmaster",
+          "patch": "25.20",
+          "durationSec": 1426,
+          "region": "NA",
+          "uploaded": "2025-10-23",
+          "moments": []
+        },
+        {
+          "videoId": "Cd3OYmNY18M",
+          "title": "Renata Glasc Support vs Thresh - KR Master Patch 25.13",
+          "rankClaim": "Master",
+          "patch": "25.13",
+          "durationSec": 1536,
+          "region": "KR",
+          "uploaded": "2025-07-11",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 432,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "8koFlHHTnGY",
+          "title": "(WBG Moham) Renata Glasc Support vs Bard (T1 Cloud ) - KR Challenger Patch 26.17",
+          "rankClaim": "Challenger",
+          "patch": "26.17",
+          "durationSec": 1852,
+          "region": "KR",
+          "player": "Moham",
+          "team": "WBG",
+          "uploaded": "2026-09-09",
+          "moments": []
+        },
+        {
+          "videoId": "_rPw3IsKfIo",
+          "title": "Renata Glasc Support vs Bard - KR Challenger Patch 25.18",
+          "rankClaim": "Challenger",
+          "patch": "25.18",
+          "durationSec": 1511,
+          "region": "KR",
+          "uploaded": "2025-09-18",
+          "moments": []
+        },
+        {
+          "videoId": "bXrIoK5huv8",
+          "title": "Renata Glasc Support vs Bard - KR Master Patch 25.15",
+          "rankClaim": "Master",
+          "patch": "25.15",
+          "durationSec": 1672,
+          "region": "KR",
+          "uploaded": "2025-08-09",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 497,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "4FDyj0DdWf8",
+          "title": "Renata Glasc Support vs Rakan - KR Master Patch 26.16",
+          "rankClaim": "Master",
+          "patch": "26.16",
+          "durationSec": 1648,
+          "region": "KR",
+          "uploaded": "2026-08-21",
+          "moments": []
+        },
+        {
+          "videoId": "DvckX8xXEGQ",
+          "title": "Renata Glasc Support vs Rakan - KR Grandmaster Patch 26.10",
+          "rankClaim": "Grandmaster",
+          "patch": "26.10",
+          "durationSec": 1720,
+          "region": "KR",
+          "uploaded": "2026-05-24",
+          "moments": []
+        },
+        {
+          "videoId": "40jI55l6HLY",
+          "title": "Renata Glasc Support vs Rakan - KR Master Patch 26.05",
+          "rankClaim": "Master",
+          "patch": "26.5",
+          "durationSec": 1592,
+          "region": "KR",
+          "uploaded": "2026-03-13",
+          "moments": []
+        },
+        {
+          "videoId": "CrA_URHPWV0",
+          "title": "Renata Glasc Support vs Rakan - EUW Grandmaster Patch 25.24",
+          "rankClaim": "Grandmaster",
+          "patch": "25.24",
+          "durationSec": 1463,
+          "region": "EUW",
+          "uploaded": "2026-01-02",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 129,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 199,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 221,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 329,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 440,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 632,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 703,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 754,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 867,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 933,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 966,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 988,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1115,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1344,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1361,
+              "label": "Take down The Inhibitor"
+            },
+            {
+              "atSec": 1422,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1452,
+              "label": "End credit"
+            }
+          ]
+        },
+        {
+          "videoId": "SiGVJyU3qUY",
+          "title": "Renata Glasc Support vs Rakan - KR Master Patch 25.07",
+          "rankClaim": "Master",
+          "patch": "25.7",
+          "durationSec": 1626,
+          "region": "KR",
+          "uploaded": "2025-04-12",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 225,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 301,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 387,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 799,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1027,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1053,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1202,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1332,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1391,
+              "label": "Hunt The Atakhan"
+            },
+            {
+              "atSec": 1456,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1550,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1579,
+              "label": "Take down The Inhibitor"
+            },
+            {
+              "atSec": 1592,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1605,
+              "label": "End credit"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 516,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "6D9ULlAVc90",
+          "title": "Renata Glasc Support vs Ornn - KR Master Patch 25.20",
+          "rankClaim": "Master",
+          "patch": "25.20",
+          "durationSec": 1860,
+          "region": "KR",
+          "uploaded": "2025-10-16",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 517,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "qaiUaJhpbdg",
+          "title": "(LEO Furby) Renata Glasc Support vs Sylas - EUW Grandmaster Patch 26.13",
+          "rankClaim": "Grandmaster",
+          "patch": "26.13",
+          "durationSec": 1664,
+          "region": "EUW",
+          "player": "LEO Furby",
+          "uploaded": "2026-07-15",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 518,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "d1A-CksaE-k",
+          "title": "Renata Glasc Support vs Neeko (Bull) - KR Challenger Patch 26.20",
+          "rankClaim": "Challenger",
+          "patch": "26.20",
+          "durationSec": 1858,
+          "region": "KR",
+          "uploaded": "2026-10-21",
+          "result": "W",
+          "moments": [
+            {
+              "atSec": 194,
+              "label": "First Blood — Cassiopeia kills Kalista",
+              "kind": "kill"
+            },
+            {
+              "atSec": 287,
+              "label": "Red takes 1st Dragon (Chemtech)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 629,
+              "label": "Red takes 2nd Dragon (Cloud)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 877,
+              "label": "Jayce picks off Taliyah"
+            },
+            {
+              "atSec": 916,
+              "label": "Blue takes Rift Herald",
+              "kind": "herald"
+            },
+            {
+              "atSec": 963,
+              "label": "Blue takes 1st Dragon (Infernal)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 997,
+              "label": "Jayce takes down Viego"
+            },
+            {
+              "atSec": 1027,
+              "label": "Jayce picks off Taliyah"
+            },
+            {
+              "atSec": 1162,
+              "label": "Team fight (3 kills)",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1281,
+              "label": "Blue takes 2nd Dragon (Infernal)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1362,
+              "label": "Cassiopeia Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1404,
+              "label": "Red takes Baron",
+              "kind": "baron"
+            },
+            {
+              "atSec": 1556,
+              "label": "Team fight (3 kills)",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1601,
+              "label": "Blue takes 3rd Dragon (Infernal)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1636,
+              "label": "Locke picks off Viego"
+            },
+            {
+              "atSec": 1713,
+              "label": "Jax kills Viego",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1730,
+              "label": "Top Inhibitor falls (Red)"
+            },
+            {
+              "atSec": 1798,
+              "label": "Team fight (3 kills)",
+              "kind": "teamfight"
+            }
+          ]
+        },
+        {
+          "videoId": "Q5tvkubtNkk",
+          "title": "Renata Glasc Support vs Neeko - KR Challenger Patch 26.12",
+          "rankClaim": "Challenger",
+          "patch": "26.12",
+          "durationSec": 1471,
+          "region": "KR",
+          "uploaded": "2026-06-22",
+          "moments": []
+        },
+        {
+          "videoId": "KsGQSQyeHn0",
+          "title": "(TLAW CoreJJ) Renata Glasc Support vs Neeko - NA Challenger Patch 26.11",
+          "rankClaim": "Challenger",
+          "patch": "26.11",
+          "durationSec": 1594,
+          "region": "NA",
+          "player": "TLAW CoreJJ",
+          "uploaded": "2026-06-07",
+          "moments": []
+        },
+        {
+          "videoId": "j2lchdc3ujI",
+          "title": "Renata Glasc Support vs Neeko - EUW Grandmaster Patch 26.06",
+          "rankClaim": "Grandmaster",
+          "patch": "26.6",
+          "durationSec": 1462,
+          "region": "EUW",
+          "uploaded": "2026-03-28",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 97,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 121,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 301,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 361,
+              "label": "Hunt The Dragon",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 452,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 513,
+              "label": "Hunt The Void Grubs",
+              "kind": "grubs"
+            },
+            {
+              "atSec": 683,
+              "label": "Hunt The Dragon",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 714,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 797,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 890,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1035,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1128,
+              "label": "Hunt The Dragon",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1149,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1178,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1201,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1247,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1275,
+              "label": "Hunt The Baron Nashor",
+              "kind": "baron"
+            },
+            {
+              "atSec": 1303,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1320,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1353,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1367,
+              "label": "Take down The Inhibitor"
+            },
+            {
+              "atSec": 1404,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1451,
+              "label": "End credit"
+            }
+          ]
+        },
+        {
+          "videoId": "d1Ou51VNemc",
+          "title": "Renata Glasc Support vs Neeko - KR Master Patch 25.19",
+          "rankClaim": "Master",
+          "patch": "25.19",
+          "durationSec": 1659,
+          "region": "KR",
+          "uploaded": "2025-10-03",
+          "moments": []
+        },
+        {
+          "videoId": "wPkQdfMpT1M",
+          "title": "Renata Glasc Support vs Neeko - NA Challenger Patch 25.14",
+          "rankClaim": "Challenger",
+          "patch": "25.14",
+          "durationSec": 1557,
+          "region": "NA",
+          "uploaded": "2025-07-31",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 526,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "VYGj_Y6o2xA",
+          "title": "Renata Glasc Support vs Rell - KR Master Patch 26.20",
+          "rankClaim": "Master",
+          "patch": "26.20",
+          "durationSec": 1560,
+          "region": "KR",
+          "uploaded": "2026-10-10",
+          "result": "W",
+          "moments": [
+            {
+              "atSec": 244,
+              "label": "First Blood — Tristana kills Rell",
+              "kind": "kill"
+            },
+            {
+              "atSec": 330,
+              "label": "Tristana takes down Jhin"
+            },
+            {
+              "atSec": 380,
+              "label": "Tristana takes down Jhin"
+            },
+            {
+              "atSec": 423,
+              "label": "Nidalee takes down Talon"
+            },
+            {
+              "atSec": 470,
+              "label": "Tristana takes down Jhin"
+            },
+            {
+              "atSec": 506,
+              "label": "Blue takes 1st Dragon (Chemtech)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 890,
+              "label": "Red takes 1st Dragon (Infernal)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 918,
+              "label": "Tristana picks off Rell"
+            },
+            {
+              "atSec": 944,
+              "label": "Blue takes Rift Herald",
+              "kind": "herald"
+            },
+            {
+              "atSec": 986,
+              "label": "Team fight (5 kills)",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1115,
+              "label": "Urgot eliminates Warwick"
+            },
+            {
+              "atSec": 1151,
+              "label": "Urgot takes down Pantheon"
+            },
+            {
+              "atSec": 1214,
+              "label": "Red takes 2nd Dragon (Hextech)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1250,
+              "label": "Tristana kills Pantheon",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1386,
+              "label": "Tristana Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1419,
+              "label": "Blue takes Baron",
+              "kind": "baron"
+            },
+            {
+              "atSec": 1475,
+              "label": "Tristana Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1494,
+              "label": "Mid Inhibitor falls (Red)"
+            }
+          ]
+        },
+        {
+          "videoId": "Gp__spcnt6s",
+          "title": "Renata Glasc Support vs Rell - BR Challenger Patch 25.22",
+          "rankClaim": "Challenger",
+          "patch": "25.22",
+          "durationSec": 1595,
+          "uploaded": "2025-11-21",
+          "moments": []
+        },
+        {
+          "videoId": "kbtK7wEzL9k",
+          "title": "Renata Glasc Support vs Rell - KR Master Patch 25.10",
+          "rankClaim": "Master",
+          "patch": "25.10",
+          "durationSec": 1986,
+          "region": "KR",
+          "uploaded": "2025-05-29",
+          "moments": []
+        },
+        {
+          "videoId": "GyzQ8iU2AMQ",
+          "title": "Renata Glasc Support vs Rell - KR Grandmaster Patch 25.06",
+          "rankClaim": "Grandmaster",
+          "patch": "25.6",
+          "durationSec": 1573,
+          "region": "KR",
+          "uploaded": "2025-03-28",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 260,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 450,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 719,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 810,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 931,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 950,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1031,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1115,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1200,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1316,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1447,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1552,
+              "label": "End credit"
+            }
+          ]
+        },
+        {
+          "videoId": "VPco590_kpo",
+          "title": "Renata Glasc Support vs Rell - EUW Grandmaster Patch 25.05",
+          "rankClaim": "Grandmaster",
+          "patch": "25.5",
+          "durationSec": 2023,
+          "region": "EUW",
+          "uploaded": "2025-03-20",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 704,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 824,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 903,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 960,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1041,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1071,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1228,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1394,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1523,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1646,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1734,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1764,
+              "label": "Take down The Inhibitor"
+            },
+            {
+              "atSec": 1797,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1922,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 2002,
+              "label": "End credit"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

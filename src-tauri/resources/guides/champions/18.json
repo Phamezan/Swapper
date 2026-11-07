@@ -1,0 +1,3464 @@
+{
+  "schema": 1,
+  "champion": 18,
+  "generatedAt": "2026-11-07T13:25:14.592Z",
+  "guides": [
+    {
+      "champion": 18,
+      "enemy": 202,
+      "lane": "adc",
+      "patch": "26.21",
+      "reviewed": false,
+      "difficulty": "Medium",
+      "favoredWhen": "Force extended fights from jump angles; never let him keep it a short-trade lane.",
+      "keyTips": [
+        {
+          "text": "You are his biggest counter. He must keep his distance from you, so take the space he gives and force the fights he is avoiding.",
+          "scope": "pair",
+          "sourceIds": [
+            "antiwis"
+          ],
+          "patch": "26.21"
+        },
+        {
+          "text": "He wins only short trades — you win every extended trade. Never let him hit and leave for free; chase every trade past his comfort point.",
+          "scope": "pair",
+          "sourceIds": [
+            "yunfang"
+          ],
+          "patch": "26.20"
+        },
+        {
+          "text": "Jump angles decide the lane. Never jump straight at him — angle Rocket Jump ({cd:18:W}) diagonally so his reply misses you on the way in.",
+          "scope": "pair",
+          "sourceIds": [
+            "yunfang"
+          ],
+          "patch": "26.20",
+          "abilityKeys": [
+            {
+              "champion": 18,
+              "key": "W"
+            }
+          ]
+        }
+      ],
+      "enemyTips": {
+        "early-lane": [
+          {
+            "text": "Jhin loads his fourth shot on a minion and holds it to zone you off the wave. Trade while it is spent and give ground while it is held.",
+            "scope": "enemy",
+            "sourceIds": [
+              "omibro"
+            ],
+            "patch": "26.19",
+            "abilityKeys": [
+              {
+                "champion": 202,
+                "key": "Q"
+              }
+            ]
+          },
+          {
+            "text": "Deadly Flourish is a follow-up for support crowd control, not dry poke. A wasted W is your window to walk up.",
+            "scope": "enemy",
+            "sourceIds": [
+              "omibro"
+            ],
+            "patch": "26.19",
+            "abilityKeys": [
+              {
+                "champion": 202,
+                "key": "W"
+              }
+            ]
+          }
+        ],
+        "win-condition": [
+          {
+            "text": "A landed Deadly Flourish sets up a guaranteed first Curtain Call shot when fired instantly. Break vision lines and stay mobile once it connects.",
+            "scope": "enemy",
+            "sourceIds": [
+              "omibro"
+            ],
+            "patch": "26.19",
+            "abilityKeys": [
+              {
+                "champion": 202,
+                "key": "W"
+              },
+              {
+                "champion": 202,
+                "key": "R"
+              }
+            ]
+          }
+        ]
+      },
+      "sections": {
+        "overview": {
+          "tips": []
+        },
+        "early-lane": {
+          "tips": [
+            {
+              "text": "Force extended trades from the first waves. His whole plan is short trades precisely because standing to fight loses to you.",
+              "scope": "pair",
+              "sourceIds": [
+                "yunfang"
+              ],
+              "patch": "26.20"
+            },
+            {
+              "text": "Trade while his fourth shot is spent and respect it while held. The loaded shot zones you off the wave even without firing.",
+              "scope": "pair",
+              "sourceIds": [
+                "omibro"
+              ],
+              "patch": "26.21",
+              "abilityKeys": [
+                {
+                  "champion": 202,
+                  "key": "Q"
+                }
+              ]
+            },
+            {
+              "text": "Walk up when he wastes Deadly Flourish ({cd:202:W}) dry. Without the follow-up root he has no answer to your jump.",
+              "scope": "pair",
+              "sourceIds": [
+                "omibro"
+              ],
+              "patch": "26.21",
+              "abilityKeys": [
+                {
+                  "champion": 202,
+                  "key": "W"
+                }
+              ]
+            }
+          ]
+        },
+        "mid-lane": {
+          "tips": [
+            {
+              "text": "Meet his objective groups and jump in. He plays for W-plus-R casts because he cannot duel you — deny him the range those casts need.",
+              "scope": "pair",
+              "sourceIds": [
+                "yunfang"
+              ],
+              "patch": "26.20",
+              "abilityKeys": [
+                {
+                  "champion": 202,
+                  "key": "W"
+                },
+                {
+                  "champion": 202,
+                  "key": "R"
+                },
+                {
+                  "champion": 18,
+                  "key": "W"
+                }
+              ]
+            },
+            {
+              "text": "Sweep the objective flanks for his traps and fog picks. Denied vision denies his casts, and he cannot set up what he cannot see.",
+              "scope": "pair",
+              "sourceIds": [
+                "omibro"
+              ],
+              "patch": "26.21",
+              "abilityKeys": [
+                {
+                  "champion": 202,
+                  "key": "E"
+                }
+              ]
+            }
+          ]
+        },
+        "win-condition": {
+          "tips": [
+            {
+              "text": "Drag every fight long. Each extra second favors your extended-trade win over his short-trade plan, so kite forward rather than bursting and leaving.",
+              "scope": "pair",
+              "sourceIds": [
+                "yunfang"
+              ],
+              "patch": "26.20"
+            },
+            {
+              "text": "Break vision and stay mobile once his root connects. The instant Curtain Call shot after it is guaranteed unless you are already moving.",
+              "scope": "pair",
+              "sourceIds": [
+                "omibro"
+              ],
+              "patch": "26.21",
+              "abilityKeys": [
+                {
+                  "champion": 202,
+                  "key": "W"
+                },
+                {
+                  "champion": 202,
+                  "key": "R"
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "itemization": [
+        {
+          "text": "Build to extend fights. Your win is the long duel he refuses, so spend for sustained damage rather than poke.",
+          "scope": "pair",
+          "sourceIds": [
+            "yunfang"
+          ],
+          "patch": "26.20"
+        }
+      ],
+      "sources": [
+        {
+          "id": "antiwis",
+          "author": "Antiwis",
+          "rankClaim": "Diamond (profile badge; title claims Master Elo OTP) · Jhin main",
+          "rank": "diamond",
+          "url": "https://www.mobafire.com/league-of-legends/build/26-21-jhin-guide-real-updates-every-patch-master-elo-otp-633981",
+          "kind": "mobafire"
+        },
+        {
+          "id": "yunfang",
+          "author": "Yunfang",
+          "rankClaim": "Diamond (profile badge; guide text claims Master ADC main) · Jhin main",
+          "rank": "diamond",
+          "url": "https://www.mobafire.com/league-of-legends/build/s2026-20-easy-to-read-simple-1v9-live-ama-full-guide-updated-650175",
+          "kind": "mobafire"
+        },
+        {
+          "id": "omibro",
+          "author": "Omibro",
+          "rankClaim": "Challenger ADC and coach · Jhin main",
+          "rank": "challenger",
+          "url": "https://www.youtube.com/watch?v=8Ln7EC-ryxo&t=3259s",
+          "kind": "youtube"
+        }
+      ]
+    }
+  ],
+  "vods": [
+    {
+      "lane": "adc",
+      "videos": [
+        {
+          "videoId": "bc5SKUZgq8Y",
+          "title": "PEYZ : His Tristana is UNSTOPPABE MONSTER in Botlane",
+          "rankClaim": "Master+",
+          "patch": "26.21",
+          "durationSec": 1092,
+          "patchEstimated": true,
+          "player": "Peyz",
+          "uploaded": "2026-10-24",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "-uJWyraBw64",
+          "title": "VIPER : Testing NEW TRISTANA CAPS SKIN \"He is so AGGRESSIVE\" Engsub",
+          "rankClaim": "Master+",
+          "patch": "26.20",
+          "durationSec": 1058,
+          "patchEstimated": true,
+          "player": "Viper",
+          "uploaded": "2026-10-14",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "IBx5yDpiRo4",
+          "title": "PEYZ : His Tristana is BLOWING UP KOREAN Challenger \" Fearless Monster \"",
+          "rankClaim": "Challenger",
+          "patch": "26.17",
+          "durationSec": 611,
+          "patchEstimated": true,
+          "player": "Peyz",
+          "uploaded": "2026-08-28",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "yBc2Jkcg-vM",
+          "title": "\"Jz\" 2000LP Tristana : His Mechanic is so AGGRESSIVE in Early Game - Engsub (Tris vs Aphe)",
+          "rankClaim": "Master+",
+          "patch": "26.14",
+          "durationSec": 1227,
+          "patchEstimated": true,
+          "player": "Jz",
+          "uploaded": "2026-07-27",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "HRFqZKGUPVc",
+          "title": "Uzi : His Tristana Mechanic is Super Aggressive - Engsub ( Tris vs Ez )",
+          "rankClaim": "Master+",
+          "patch": "26.10",
+          "durationSec": 993,
+          "patchEstimated": true,
+          "player": "Uzi",
+          "uploaded": "2026-05-20",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "cXlclI2iqFg",
+          "title": "Uzi : His Tristana Mechanic is so DAM AGGRESSIVE - Engsub ( Tris vs Ez )",
+          "rankClaim": "Master+",
+          "patch": "26.10",
+          "durationSec": 1464,
+          "patchEstimated": true,
+          "player": "Uzi",
+          "uploaded": "2026-05-17",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "FgvLtAqIH0I",
+          "title": "DK Smash : His Tristana Mechanic is so AGGRESSIVE in Laning Phase - Engsub",
+          "rankClaim": "Master+",
+          "patch": "26.8",
+          "durationSec": 881,
+          "patchEstimated": true,
+          "player": "Smash",
+          "uploaded": "2026-04-27",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "qkoj8N886cQ",
+          "title": "KRX LazyFeel : His Tristana Destroying T1 Peyz in Botlane",
+          "rankClaim": "Master+",
+          "patch": "26.7",
+          "durationSec": 1309,
+          "patchEstimated": true,
+          "player": "Peyz",
+          "uploaded": "2026-04-11",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "cKS94bOp0MU",
+          "title": "Uzi : His Tristana is NEXT LEVEL OF AGGRESSIVE - Engsub",
+          "rankClaim": "Master+",
+          "patch": "26.5",
+          "durationSec": 963,
+          "patchEstimated": true,
+          "player": "Uzi",
+          "uploaded": "2026-03-09",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "GAhVfv7JzN8",
+          "title": "Uzi Tristana : LET BLOWING UP Everyone - Engsub",
+          "rankClaim": "Master+",
+          "patch": "26.4",
+          "durationSec": 788,
+          "patchEstimated": true,
+          "player": "Uzi",
+          "uploaded": "2026-02-19",
+          "format": "stream",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "upk6UG9eQKY",
+          "title": "Baicaiovo Tristana : CN Super Server TOP 1 is CRUSHING Challenger With This Build",
+          "rankClaim": "Challenger",
+          "patch": "26.7",
+          "durationSec": 1740,
+          "patchEstimated": true,
+          "player": "Baicaiovo",
+          "uploaded": "2026-04-08",
+          "format": "stream",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 3,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "Zoy6FqKpWZc",
+          "title": "Tristana Mid vs Galio - KR Challenger Patch 26.04",
+          "rankClaim": "Challenger",
+          "patch": "26.4",
+          "durationSec": 1452,
+          "region": "KR",
+          "uploaded": "2026-03-03",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 4,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "vD4xAREqVr4",
+          "title": "(Beichuan) Tristana Mid vs Twisted Fate - KR Challenger Patch 26.17",
+          "rankClaim": "Challenger",
+          "patch": "26.17",
+          "durationSec": 1548,
+          "region": "KR",
+          "player": "Beichuan",
+          "uploaded": "2026-09-07",
+          "moments": []
+        },
+        {
+          "videoId": "FtYAmy8bLcc",
+          "title": "Tristana Mid vs Twisted Fate - KR Master Patch 25.12",
+          "rankClaim": "Master",
+          "patch": "25.12",
+          "durationSec": 1728,
+          "region": "KR",
+          "uploaded": "2025-06-20",
+          "moments": []
+        },
+        {
+          "videoId": "X1shjyajpEQ",
+          "title": "Tristana Mid vs Twisted Fate - EUW Grandmaster Patch 25.09",
+          "rankClaim": "Grandmaster",
+          "patch": "25.9",
+          "durationSec": 1613,
+          "region": "EUW",
+          "uploaded": "2025-05-09",
+          "moments": []
+        },
+        {
+          "videoId": "G5008p80mbk",
+          "title": "Tristana vs Twisted Fate MID [ Doinb ] Patch 25.2 Korea Master ✅",
+          "rankClaim": "Master",
+          "patch": "25.2",
+          "durationSec": 1581,
+          "region": "KR",
+          "player": "Doinb",
+          "uploaded": "2025-01-30",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 6,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "-FZLaQfjHKA",
+          "title": "(BW Jeyrus) Tristana Top vs Urgot - EUW Challenger Patch 26.11",
+          "rankClaim": "Challenger",
+          "patch": "26.11",
+          "durationSec": 1660,
+          "region": "EUW",
+          "player": "BW Jeyrus",
+          "uploaded": "2026-06-01",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 7,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "u2prceWQqMo",
+          "title": "(DFM Fisher) Tristana Mid vs LeBlanc - KR Master Patch 26.13",
+          "rankClaim": "Master",
+          "patch": "26.13",
+          "durationSec": 1703,
+          "region": "KR",
+          "player": "DFM Fisher",
+          "uploaded": "2026-07-05",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 8,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "0zbl0l4wWZo",
+          "title": "Tristana Top vs Vladimir - KR Grandmaster Patch 25.04",
+          "rankClaim": "Grandmaster",
+          "patch": "25.4",
+          "durationSec": 1786,
+          "region": "KR",
+          "uploaded": "2025-03-02",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 13,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "Wnigs7gtTtE",
+          "title": "(AP Simpli) Tristana Mid vs Ryze (GX Dyenn) - EUW Challenger Patch 26.15",
+          "rankClaim": "Challenger",
+          "patch": "26.15",
+          "durationSec": 1460,
+          "region": "EUW",
+          "player": "AP Simpli",
+          "uploaded": "2026-08-09",
+          "moments": []
+        },
+        {
+          "videoId": "AvdA7zC34-M",
+          "title": "Tristana Mid vs Ryze - EUW Grandmaster Patch 25.21",
+          "rankClaim": "Grandmaster",
+          "patch": "25.21",
+          "durationSec": 1689,
+          "region": "EUW",
+          "uploaded": "2025-11-02",
+          "moments": []
+        },
+        {
+          "videoId": "l1Hz6olcp-s",
+          "title": "Tristana Mid vs Ryze - EUW Grandmaster Patch 25.17",
+          "rankClaim": "Grandmaster",
+          "patch": "25.17",
+          "durationSec": 1719,
+          "region": "EUW",
+          "uploaded": "2025-09-06",
+          "moments": []
+        },
+        {
+          "videoId": "f3bceTlHNbM",
+          "title": "Tristana Mid vs Ryze - EUW Grandmaster Patch 25.08",
+          "rankClaim": "Grandmaster",
+          "patch": "25.8",
+          "durationSec": 1906,
+          "region": "EUW",
+          "uploaded": "2025-04-24",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 15,
+      "lane": "adc",
+      "videos": [
+        {
+          "videoId": "QFQCcqDaSic",
+          "title": "HLE Gumayusi Tristana vs Sivir [ ADC ] Ranked Master NA | Patch 26.21",
+          "rankClaim": "Master",
+          "patch": "26.21",
+          "durationSec": 1292,
+          "region": "NA",
+          "player": "Gumayusi",
+          "team": "HLE",
+          "uploaded": "2026-10-25",
+          "moments": []
+        },
+        {
+          "videoId": "uV37uzCLOUw",
+          "title": "\"Jz\" 2000LP Tristana : This Dude is a RECKLESS SAVAGE - Engsub (Tris vs Sivir, Twitch)",
+          "rankClaim": "Master+",
+          "patch": "26.15",
+          "durationSec": 1334,
+          "patchEstimated": true,
+          "player": "Jz",
+          "uploaded": "2026-07-29",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "xtFZ7-hlJi0",
+          "title": "Tristana ADC vs Sivir - NA Challenger Patch 25.24",
+          "rankClaim": "Challenger",
+          "patch": "25.24",
+          "durationSec": 1488,
+          "region": "NA",
+          "uploaded": "2025-12-22",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 21,
+      "lane": "adc",
+      "videos": [
+        {
+          "videoId": "EnpMQL0Hw-4",
+          "title": "Tristana ADC vs Miss Fortune - KR Challenger Patch 25.09",
+          "rankClaim": "Challenger",
+          "patch": "25.9",
+          "durationSec": 1978,
+          "region": "KR",
+          "uploaded": "2025-05-04",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 29,
+      "lane": "adc",
+      "videos": [
+        {
+          "videoId": "TIj36SbpnlQ",
+          "title": "Tristana vs Twitch ADC - KR Challenger - Patch 26.01 Season 16",
+          "rankClaim": "Challenger",
+          "patch": "26.1",
+          "durationSec": 1681,
+          "region": "KR",
+          "uploaded": "2026-01-21",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 35,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "vNOs_sINon0",
+          "title": "Tristana Jungle vs Shaco - EUW Grandmaster Patch 26.09",
+          "rankClaim": "Grandmaster",
+          "patch": "26.9",
+          "durationSec": 1605,
+          "region": "EUW",
+          "uploaded": "2026-05-09",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 36,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "LLguPus_uVs",
+          "title": "Tristana Mid vs Dr. Mundo - KR Challenger Patch 25.19",
+          "rankClaim": "Challenger",
+          "patch": "25.19",
+          "durationSec": 1924,
+          "region": "KR",
+          "uploaded": "2025-10-04",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 38,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "9sC5IEpdGg4",
+          "title": "Tristana Mid vs Kassadin - EUW Grandmaster Patch 26.01",
+          "rankClaim": "Grandmaster",
+          "patch": "26.1",
+          "durationSec": 1447,
+          "region": "EUW",
+          "uploaded": "2026-01-20",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 510,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 534,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 621,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 734,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 758,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 897,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 969,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 995,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1014,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1026,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1042,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1286,
+              "label": "Get a Quadra Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1333,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1379,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1396,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1436,
+              "label": "End credit"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 39,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "7PINWm5_l18",
+          "title": "(CN1 TheShy) Tristana Top vs Irelia - KR Grandmaster Patch 26.14",
+          "rankClaim": "Grandmaster",
+          "patch": "26.14",
+          "durationSec": 1536,
+          "region": "KR",
+          "player": "TheShy",
+          "uploaded": "2026-07-25",
+          "result": "L",
+          "moments": [
+            {
+              "atSec": 14,
+              "label": "First Blood — Tristana kills Irelia",
+              "kind": "kill"
+            },
+            {
+              "atSec": 89,
+              "label": "Tristana catches Irelia"
+            },
+            {
+              "atSec": 462,
+              "label": "Tristana outduels Taliyah"
+            },
+            {
+              "atSec": 784,
+              "label": "Fiddlesticks takes down Irelia"
+            },
+            {
+              "atSec": 884,
+              "label": "Tristana eliminates Irelia"
+            },
+            {
+              "atSec": 948,
+              "label": "Tristana takes down Varus"
+            },
+            {
+              "atSec": 987,
+              "label": "Red takes 1st Dragon (Chemtech)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1023,
+              "label": "Tristana outplays Varus"
+            },
+            {
+              "atSec": 1141,
+              "label": "Tristana solo kills Varus again",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1179,
+              "label": "Red takes Baron",
+              "kind": "baron"
+            },
+            {
+              "atSec": 1201,
+              "label": "Fiddlesticks takes down Irelia"
+            },
+            {
+              "atSec": 1253,
+              "label": "Mel eliminates Irelia"
+            },
+            {
+              "atSec": 1300,
+              "label": "Mel kills Taliyah",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1312,
+              "label": "Mid Inhibitor falls (Blue)"
+            },
+            {
+              "atSec": 1359,
+              "label": "Red takes 2nd Dragon (Hextech)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1441,
+              "label": "Bot Inhibitor falls (Blue)"
+            },
+            {
+              "atSec": 1469,
+              "label": "Syndra eliminates Taliyah"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 41,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "IxpZ3CnS1m0",
+          "title": "Tristana vs GangPlank Top - KR Grandmaster - Patch 26.01 Season 16",
+          "rankClaim": "Grandmaster",
+          "patch": "26.1",
+          "durationSec": 1756,
+          "region": "KR",
+          "uploaded": "2026-01-20",
+          "moments": []
+        },
+        {
+          "videoId": "yo2e6ME3e_o",
+          "title": "Tristana Top vs Gangplank - KR Master Patch 25.07",
+          "rankClaim": "Master",
+          "patch": "25.7",
+          "durationSec": 1726,
+          "region": "KR",
+          "uploaded": "2025-04-18",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 42,
+      "lane": "adc",
+      "videos": [
+        {
+          "videoId": "WOS3Kh3DFYY",
+          "title": "Doggo : His Tristana Mechanic is so AGGRESSIVE - Engsub ( vs Corki )",
+          "rankClaim": "Master+",
+          "patch": "26.17",
+          "durationSec": 895,
+          "patchEstimated": true,
+          "uploaded": "2026-08-29",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "cnUvd5w7is0",
+          "title": "BLG Viper Tristana vs Corki [ ADC ] Korea Grandmaster Patch 26.3 ✅",
+          "rankClaim": "Grandmaster",
+          "patch": "26.3",
+          "durationSec": 1350,
+          "region": "KR",
+          "player": "Viper",
+          "team": "BLG",
+          "uploaded": "2026-02-06",
+          "moments": []
+        },
+        {
+          "videoId": "PsVNvyKTrzs",
+          "title": "Tristana ADC vs Corki - KR Challenger Patch 25.21",
+          "rankClaim": "Challenger",
+          "patch": "25.21",
+          "durationSec": 1700,
+          "region": "KR",
+          "uploaded": "2025-10-27",
+          "moments": []
+        },
+        {
+          "videoId": "cFuiOi-o3kg",
+          "title": "Tristana ADC vs Corki - KR Challenger Patch 25.17",
+          "rankClaim": "Challenger",
+          "patch": "25.17",
+          "durationSec": 1540,
+          "region": "KR",
+          "uploaded": "2025-08-29",
+          "moments": []
+        },
+        {
+          "videoId": "AXqObNdohR8",
+          "title": "Tristana ADC vs Corki - KR Grandmaster Patch 25.14",
+          "rankClaim": "Grandmaster",
+          "patch": "25.14",
+          "durationSec": 1757,
+          "region": "KR",
+          "uploaded": "2025-07-23",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 43,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "rRux44BzUn8",
+          "title": "Tristana Mid vs Karma - EUW Grandmaster Patch 25.24",
+          "rankClaim": "Grandmaster",
+          "patch": "25.24",
+          "durationSec": 1590,
+          "region": "EUW",
+          "uploaded": "2025-12-13",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 43,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "ufRYzDh16MU",
+          "title": "Tristana Top vs Karma - EUW Grandmaster Patch 25.13",
+          "rankClaim": "Grandmaster",
+          "patch": "25.13",
+          "durationSec": 1440,
+          "region": "EUW",
+          "uploaded": "2025-07-13",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 51,
+      "lane": "adc",
+      "videos": [
+        {
+          "videoId": "3YQ-DJaPO_I",
+          "title": "\"Jz\" 2000LP Tristana : His Mechanic is so DAM AGGRESSIVE - Engsub (Tris vs Caitlyn, Ez)",
+          "rankClaim": "Master+",
+          "patch": "26.14",
+          "durationSec": 1419,
+          "patchEstimated": true,
+          "player": "Jz",
+          "uploaded": "2026-07-22",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "Ohj_O47G1iU",
+          "title": "Tristana vs Caitlyn ADC [ QuadraKill ] Korea Master Patch 25.20 ✅",
+          "rankClaim": "Master",
+          "patch": "25.20",
+          "durationSec": 1500,
+          "region": "KR",
+          "player": "QuadraKill",
+          "uploaded": "2025-10-19",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 54,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "THCKplIZftU",
+          "title": "(EQX XI LAI) Tristana Top vs Malphite - KR Master Patch 26.15",
+          "rankClaim": "Master",
+          "patch": "26.15",
+          "durationSec": 1499,
+          "region": "KR",
+          "player": "EQX XI LAI",
+          "uploaded": "2026-08-02",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 55,
+      "lane": "adc",
+      "videos": [
+        {
+          "videoId": "8-dCLqDjSco",
+          "title": "Tristana ADC vs Katarina - KR Grandmaster Patch 26.19",
+          "rankClaim": "Grandmaster",
+          "patch": "26.19",
+          "durationSec": 1815,
+          "region": "KR",
+          "uploaded": "2026-09-29",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 55,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "cz0zSZOBXns",
+          "title": "Tristana Mid vs Katarina - EUW Grandmaster Patch 25.23",
+          "rankClaim": "Grandmaster",
+          "patch": "25.23",
+          "durationSec": 1652,
+          "region": "EUW",
+          "uploaded": "2025-11-28",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 63,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "CfVYIJqEIKQ",
+          "title": "Tristana Mid vs Brand - EUW Challenger Patch 25.13",
+          "rankClaim": "Challenger",
+          "patch": "25.13",
+          "durationSec": 1516,
+          "region": "EUW",
+          "uploaded": "2025-07-05",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 67,
+      "lane": "adc",
+      "videos": [
+        {
+          "videoId": "xBdTx22H7g0",
+          "title": "Tristana ADC vs Vayne - KR Grandmaster Patch 25.19",
+          "rankClaim": "Grandmaster",
+          "patch": "25.19",
+          "durationSec": 1607,
+          "region": "KR",
+          "uploaded": "2025-09-29",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 67,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "jh_m3JB5Bpo",
+          "title": "Tristana Top vs Vayne - KR Grandmaster Patch 26.09",
+          "rankClaim": "Grandmaster",
+          "patch": "26.9",
+          "durationSec": 1531,
+          "region": "KR",
+          "uploaded": "2026-05-05",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 69,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "Srq97UDe67M",
+          "title": "(FOXA Panda) Tristana Mid vs Cassiopeia (S04E Zwyroo) - EUW Challenger Patch 26.18",
+          "rankClaim": "Challenger",
+          "patch": "26.18",
+          "durationSec": 1816,
+          "region": "EUW",
+          "player": "FOXA Panda",
+          "uploaded": "2026-09-23",
+          "result": "W",
+          "moments": [
+            {
+              "atSec": 99,
+              "label": "First Blood — Tristana kills Cassiopeia",
+              "kind": "kill"
+            },
+            {
+              "atSec": 193,
+              "label": "Tristana takes down Cassiopeia"
+            },
+            {
+              "atSec": 332,
+              "label": "Tristana catches Cassiopeia again"
+            },
+            {
+              "atSec": 487,
+              "label": "Red takes 1st Dragon (Hextech)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 548,
+              "label": "Tristana outduels Cassiopeia (3rd time)"
+            },
+            {
+              "atSec": 874,
+              "label": "Tristana outplays Cassiopeia (4th time)"
+            },
+            {
+              "atSec": 937,
+              "label": "Tristana catches Jhin"
+            },
+            {
+              "atSec": 956,
+              "label": "Blue takes 1st Dragon (Mountain)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1297,
+              "label": "Red takes 2nd Dragon (Chemtech)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1328,
+              "label": "Red takes Baron",
+              "kind": "baron"
+            },
+            {
+              "atSec": 1472,
+              "label": "Mid Inhibitor falls (Blue)"
+            },
+            {
+              "atSec": 1494,
+              "label": "Tristana solo kills Jayce",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1603,
+              "label": "Red takes 3rd Dragon (Chemtech)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1645,
+              "label": "Kai'Sa takes down Jhin"
+            },
+            {
+              "atSec": 1702,
+              "label": "Red takes 2nd Baron",
+              "kind": "baron"
+            },
+            {
+              "atSec": 1747,
+              "label": "Tristana Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1757,
+              "label": "Tristana Triple Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1774,
+              "label": "Mid Inhibitor falls (Blue)"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 81,
+      "lane": "adc",
+      "videos": [
+        {
+          "videoId": "bGjn0frwr0M",
+          "title": "HLE Gumayusi Tristana vs Ezreal ADC [ PentaKill ] Patch 26.1 Ranked Korea",
+          "rankClaim": "Master+",
+          "patch": "26.1",
+          "durationSec": 1238,
+          "region": "KR",
+          "player": "Gumayusi",
+          "team": "HLE",
+          "uploaded": "2026-01-21",
+          "moments": []
+        },
+        {
+          "videoId": "fcCgvo_DUh0",
+          "title": "T1 Smash Tristana vs Ezreal [ ADC ] Korea Challenger 1526 LP | Patch 25.19",
+          "rankClaim": "Challenger",
+          "patch": "25.19",
+          "durationSec": 1533,
+          "region": "KR",
+          "player": "Smash",
+          "team": "T1",
+          "uploaded": "2025-09-28",
+          "moments": []
+        },
+        {
+          "videoId": "pYlYn2gK0lY",
+          "title": "Tristana ADC vs Ezreal - KR Grandmaster Patch 25.13",
+          "rankClaim": "Grandmaster",
+          "patch": "25.13",
+          "durationSec": 1697,
+          "region": "KR",
+          "uploaded": "2025-06-30",
+          "moments": []
+        },
+        {
+          "videoId": "X5m2jto2exc",
+          "title": "Tristana vs Ezreal ADC - KR Challenger - Patch 25.5 Season 15",
+          "rankClaim": "Challenger",
+          "patch": "25.5",
+          "durationSec": 1811,
+          "region": "KR",
+          "uploaded": "2025-03-06",
+          "moments": []
+        },
+        {
+          "videoId": "8rU_H7y8uXE",
+          "title": "Tristana vs Ezreal ADC - KR Challenger - Patch 15.4 Season 15",
+          "rankClaim": "Challenger",
+          "patch": "25.4",
+          "durationSec": 1681,
+          "region": "KR",
+          "uploaded": "2025-02-27",
+          "moments": []
+        },
+        {
+          "videoId": "nhUxqoCAK8M",
+          "title": "T1 Gumayusi Tristana ADC vs Ezreal - Patch 25.3 Korea Challenger ✅",
+          "rankClaim": "Challenger",
+          "patch": "25.3",
+          "durationSec": 1277,
+          "region": "KR",
+          "player": "Gumayusi",
+          "team": "T1",
+          "uploaded": "2025-02-10",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 82,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "K_b_VI5uGf0",
+          "title": "(MISA Ragner) Tristana Top vs Mordekaiser - EUW Grandmaster Patch 26.12",
+          "rankClaim": "Grandmaster",
+          "patch": "26.12",
+          "durationSec": 1613,
+          "region": "EUW",
+          "player": "MISA Ragner",
+          "uploaded": "2026-06-20",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 83,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "AfqQ98EkU5U",
+          "title": "Tristana Top vs Yorick - EUW Grandmaster Patch 25.09",
+          "rankClaim": "Grandmaster",
+          "patch": "25.9",
+          "durationSec": 1847,
+          "region": "EUW",
+          "uploaded": "2025-05-15",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 84,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "8YPsSRvyxyQ",
+          "title": "Tristana vs Akali MID [ Gen.G Chovy ] Korea Challenger 2360 LP | Patch 26.17",
+          "rankClaim": "Challenger",
+          "patch": "26.17",
+          "durationSec": 1667,
+          "region": "KR",
+          "player": "Chovy",
+          "team": "Gen.G",
+          "uploaded": "2026-09-08",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 85,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "FugFRoIjiqM",
+          "title": "Tristana Mid vs Kennen - EUW Grandmaster Patch 25.15",
+          "rankClaim": "Grandmaster",
+          "patch": "25.15",
+          "durationSec": 1743,
+          "region": "EUW",
+          "uploaded": "2025-08-09",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 91,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "ICPo0wX8i6I",
+          "title": "Tristana Mid vs Talon - NA Challenger Patch 25.06",
+          "rankClaim": "Challenger",
+          "patch": "25.6",
+          "durationSec": 2093,
+          "region": "NA",
+          "uploaded": "2025-03-30",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 96,
+      "lane": "adc",
+      "videos": [
+        {
+          "videoId": "LhdHmnsfqy8",
+          "title": "(MKOI Supa) Tristana ADC vs Kog'Maw - EUW Challenger Patch 26.11",
+          "rankClaim": "Challenger",
+          "patch": "26.11",
+          "durationSec": 1847,
+          "region": "EUW",
+          "player": "MKOI Supa",
+          "uploaded": "2026-06-06",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 99,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "1qezCHv6Ljc",
+          "title": "Tristana Top vs Lux - EUW Grandmaster Patch 26.13",
+          "rankClaim": "Grandmaster",
+          "patch": "26.13",
+          "durationSec": 1662,
+          "region": "EUW",
+          "uploaded": "2026-07-12",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 101,
+      "lane": "adc",
+      "videos": [
+        {
+          "videoId": "FSgzcZt-Oz8",
+          "title": "Tristana ADC vs Xerath - KR Master Patch 25.24",
+          "rankClaim": "Master",
+          "patch": "25.24",
+          "durationSec": 1719,
+          "region": "KR",
+          "uploaded": "2025-12-05",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 103,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "OWmYQqUGK80",
+          "title": "(Panda) Tristana Mid vs Ahri (Davitikus) - EUW Challenger Patch 26.19",
+          "rankClaim": "Challenger",
+          "patch": "26.19",
+          "durationSec": 1831,
+          "region": "EUW",
+          "player": "Panda",
+          "uploaded": "2026-10-05",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 110,
+      "lane": "adc",
+      "videos": [
+        {
+          "videoId": "T1t0-uGdbyE",
+          "title": "Tristana vs Varus ADC [ Gen.G Ruler ] Patch 25.6 Korea Challenger ✅",
+          "rankClaim": "Challenger",
+          "patch": "25.6",
+          "durationSec": 1872,
+          "region": "KR",
+          "player": "Ruler",
+          "team": "Gen.G",
+          "uploaded": "2025-04-01",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 112,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "ltXk683-zHk",
+          "title": "Tristana Mid vs Viktor - EUW Challenger Patch 26.03",
+          "rankClaim": "Challenger",
+          "patch": "26.3",
+          "durationSec": 1680,
+          "region": "EUW",
+          "uploaded": "2026-02-17",
+          "moments": []
+        },
+        {
+          "videoId": "vItWP1DwQ6I",
+          "title": "Tristana Mid vs Viktor - EUW Grandmaster Patch 25.10",
+          "rankClaim": "Grandmaster",
+          "patch": "25.10",
+          "durationSec": 1605,
+          "region": "EUW",
+          "uploaded": "2025-05-23",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 115,
+      "lane": "adc",
+      "videos": [
+        {
+          "videoId": "q8psFV5CKm0",
+          "title": "Tristana vs Ziggs ADC - KR Challenger - Patch 25.23 Season 15",
+          "rankClaim": "Challenger",
+          "patch": "25.23",
+          "durationSec": 1901,
+          "region": "KR",
+          "uploaded": "2025-11-30",
+          "moments": []
+        },
+        {
+          "videoId": "J60LJeV0MxU",
+          "title": "Tristana ADC vs Ziggs - KR Challenger Patch 25.05",
+          "rankClaim": "Challenger",
+          "patch": "25.5",
+          "durationSec": 1984,
+          "region": "KR",
+          "uploaded": "2025-03-09",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 119,
+      "lane": "adc",
+      "videos": [
+        {
+          "videoId": "6-uHN-EYG-Q",
+          "title": "Tristana vs Draven [ ADC ] Patch 25.21 Korea Challenger 1435 LP",
+          "rankClaim": "Challenger",
+          "patch": "25.21",
+          "durationSec": 1300,
+          "region": "KR",
+          "uploaded": "2025-11-02",
+          "moments": []
+        },
+        {
+          "videoId": "Z0POLUuX7yI",
+          "title": "Tristana ADC vs Draven - KR Challenger Patch 25.12",
+          "rankClaim": "Challenger",
+          "patch": "25.12",
+          "durationSec": 1585,
+          "region": "KR",
+          "uploaded": "2025-06-14",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 126,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "0wFGhaWwBLQ",
+          "title": "(WBG Xiaohu) Tristana Top vs Jayce - KR Challenger Patch 26.10",
+          "rankClaim": "Challenger",
+          "patch": "26.10",
+          "durationSec": 1809,
+          "region": "KR",
+          "player": "Xiaohu",
+          "team": "WBG",
+          "uploaded": "2026-05-26",
+          "moments": []
+        },
+        {
+          "videoId": "EE2GPhF4zEw",
+          "title": "Tristana Top vs Jayce - KR Master Patch 25.06",
+          "rankClaim": "Master",
+          "patch": "25.6",
+          "durationSec": 1988,
+          "region": "KR",
+          "uploaded": "2025-04-04",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 127,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "ll1u3v0WkMM",
+          "title": "Tristana Mid vs Lissandra - EUW Grandmaster Patch 25.05",
+          "rankClaim": "Grandmaster",
+          "patch": "25.5",
+          "durationSec": 1664,
+          "region": "EUW",
+          "uploaded": "2025-03-15",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 381,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 529,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 566,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 590,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 698,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 726,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 763,
+              "label": "Hunt The Void Grubs",
+              "kind": "grubs"
+            },
+            {
+              "atSec": 967,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1012,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1161,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1376,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1471,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1507,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1546,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1568,
+              "label": "Take down The Inhibitor"
+            },
+            {
+              "atSec": 1593,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1627,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1643,
+              "label": "End credit"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 134,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "CiOnTTixONA",
+          "title": "(NAVI Poby) Tristana Mid vs Syndra - EUW Master Patch 26.16",
+          "rankClaim": "Master",
+          "patch": "26.16",
+          "durationSec": 1799,
+          "region": "EUW",
+          "player": "NAVI Poby",
+          "uploaded": "2026-08-15",
+          "moments": []
+        },
+        {
+          "videoId": "spAZK8uzMD4",
+          "title": "Tristana Mid vs Syndra - TW Challenger Patch 26.06",
+          "rankClaim": "Challenger",
+          "patch": "26.6",
+          "durationSec": 1482,
+          "uploaded": "2026-03-30",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 136,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "LLGp_H4x3ng",
+          "title": "Tristana Mid vs Aurelion Sol - EUW Grandmaster Patch 25.20",
+          "rankClaim": "Grandmaster",
+          "patch": "25.20",
+          "durationSec": 1657,
+          "region": "EUW",
+          "uploaded": "2025-10-18",
+          "moments": []
+        },
+        {
+          "videoId": "lq_ms-WDuSQ",
+          "title": "Tristana Mid vs Aurelion Sol - EUW Grandmaster Patch 25.07",
+          "rankClaim": "Grandmaster",
+          "patch": "25.7",
+          "durationSec": 1549,
+          "region": "EUW",
+          "uploaded": "2025-04-13",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 142,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "qg_RwQPOAIk",
+          "title": "Tristana Mid vs Zoe - NA Challenger Patch 26.07",
+          "rankClaim": "Challenger",
+          "patch": "26.7",
+          "durationSec": 1783,
+          "region": "NA",
+          "uploaded": "2026-04-13",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 185,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 431,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 557,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 802,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 867,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 895,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 969,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1047,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1116,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1284,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1372,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1394,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1409,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1570,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1648,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1697,
+              "label": "Take down The Inhibitor"
+            },
+            {
+              "atSec": 1723,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1741,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1772,
+              "label": "End credit"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 145,
+      "lane": "adc",
+      "videos": [
+        {
+          "videoId": "ZLu-N8Kpt-8",
+          "title": "Tristana ADC vs Kai'Sa - KR Challenger Patch 26.18",
+          "rankClaim": "Challenger",
+          "patch": "26.18",
+          "durationSec": 1792,
+          "region": "KR",
+          "uploaded": "2026-09-15",
+          "moments": []
+        },
+        {
+          "videoId": "FoY67IAf_SI",
+          "title": "Tristana vs Kai'Sa ADC [ PentaKill ] Korea Challenger 2023 LP | Patch 26.18",
+          "rankClaim": "Challenger",
+          "patch": "26.18",
+          "durationSec": 1378,
+          "region": "KR",
+          "player": "PentaKill",
+          "uploaded": "2026-09-14",
+          "moments": []
+        },
+        {
+          "videoId": "0KgVK8Ib1os",
+          "title": "(KT Bdd) Tristana ADC vs Kai'Sa - KR Challenger Patch 26.16",
+          "rankClaim": "Challenger",
+          "patch": "26.16",
+          "durationSec": 1456,
+          "region": "KR",
+          "player": "Bdd",
+          "team": "KT",
+          "uploaded": "2026-08-23",
+          "moments": []
+        },
+        {
+          "videoId": "jWFRrGxTk3g",
+          "title": "T1 Peyz Tristana vs Kai'Sa [ ADC ] Korea Challenger 2429 LP | Patch 26.13",
+          "rankClaim": "Challenger",
+          "patch": "26.13",
+          "durationSec": 734,
+          "region": "KR",
+          "player": "Peyz",
+          "team": "T1",
+          "uploaded": "2026-07-01",
+          "moments": []
+        },
+        {
+          "videoId": "TtLXEqFQJVQ",
+          "title": "(FNC Upset) Tristana ADC vs Kai'Sa (LR Crownie) - EUW Challenger Patch 26.13",
+          "rankClaim": "Challenger",
+          "patch": "26.13",
+          "durationSec": 1604,
+          "region": "EUW",
+          "player": "Upset",
+          "team": "FNC",
+          "uploaded": "2026-06-27",
+          "result": "W",
+          "moments": [
+            {
+              "atSec": 306,
+              "label": "First Blood — Tristana kills Rek'Sai",
+              "kind": "kill"
+            },
+            {
+              "atSec": 529,
+              "label": "Red takes 1st Dragon (Chemtech)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 540,
+              "label": "Tristana outduels Kai'Sa"
+            },
+            {
+              "atSec": 594,
+              "label": "Tristana kills Cassiopeia",
+              "kind": "kill"
+            },
+            {
+              "atSec": 644,
+              "label": "Team fight (3 kills)",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 681,
+              "label": "Tristana Triple Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 725,
+              "label": "Tristana picks off Neeko"
+            },
+            {
+              "atSec": 973,
+              "label": "Tristana eliminates Rek'Sai"
+            },
+            {
+              "atSec": 1029,
+              "label": "Tristana outplays Kai'Sa again"
+            },
+            {
+              "atSec": 1050,
+              "label": "Blue takes 1st Dragon (Mountain)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1118,
+              "label": "Team fight (3 kills)",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1224,
+              "label": "Tristana eliminates Rek'Sai"
+            },
+            {
+              "atSec": 1255,
+              "label": "Blue takes Baron",
+              "kind": "baron"
+            },
+            {
+              "atSec": 1314,
+              "label": "Sylas kills Kai'Sa",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1350,
+              "label": "Tristana solo kills Illaoi",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1378,
+              "label": "Blue takes 2nd Dragon (Infernal)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1409,
+              "label": "Mid Inhibitor falls (Red)"
+            },
+            {
+              "atSec": 1538,
+              "label": "Team fight (3 kills)",
+              "kind": "teamfight"
+            }
+          ]
+        },
+        {
+          "videoId": "2V1_m6bBWw4",
+          "title": "Tristana ADC vs Kai'Sa - EUW Challenger Patch 26.05",
+          "rankClaim": "Challenger",
+          "patch": "26.5",
+          "durationSec": 1833,
+          "region": "EUW",
+          "uploaded": "2026-03-11",
+          "moments": []
+        },
+        {
+          "videoId": "cpIcYimj4-Y",
+          "title": "Tristana ADC vs Kai'Sa - KR Challenger Patch 25.22",
+          "rankClaim": "Challenger",
+          "patch": "25.22",
+          "durationSec": 1690,
+          "region": "KR",
+          "uploaded": "2025-11-12",
+          "moments": []
+        },
+        {
+          "videoId": "UoPwQ7b4ol0",
+          "title": "Tristana vs Kai'Sa [ ADC ] Patch 25.22 Korea Challenger 1578 LP",
+          "rankClaim": "Challenger",
+          "patch": "25.22",
+          "durationSec": 1481,
+          "region": "KR",
+          "uploaded": "2025-11-10",
+          "moments": []
+        },
+        {
+          "videoId": "dknEy2IFae8",
+          "title": "Tristana ADC vs Kai'Sa - KR Grandmaster Patch 25.18",
+          "rankClaim": "Grandmaster",
+          "patch": "25.18",
+          "durationSec": 1642,
+          "region": "KR",
+          "uploaded": "2025-09-13",
+          "moments": []
+        },
+        {
+          "videoId": "H8XEzwp3DUs",
+          "title": "Tristana ADC vs Kai'Sa - KR Challenger Patch 25.10",
+          "rankClaim": "Challenger",
+          "patch": "25.10",
+          "durationSec": 1626,
+          "region": "KR",
+          "uploaded": "2025-05-17",
+          "moments": []
+        },
+        {
+          "videoId": "Yy6khqUtUxo",
+          "title": "T1 Gumayusi Tristana vs Kaisa [ ADC ] Patch 25.7 Korea Challenger ✅",
+          "rankClaim": "Challenger",
+          "patch": "25.7",
+          "durationSec": 1069,
+          "region": "KR",
+          "player": "Gumayusi",
+          "team": "T1",
+          "uploaded": "2025-04-15",
+          "moments": []
+        },
+        {
+          "videoId": "Cugw7GMlh5o",
+          "title": "Tristana ADC vs Kai'Sa - KR Grandmaster Patch 25.06",
+          "rankClaim": "Grandmaster",
+          "patch": "25.6",
+          "durationSec": 1624,
+          "region": "KR",
+          "uploaded": "2025-03-21",
+          "moments": []
+        },
+        {
+          "videoId": "mr3l5H0JRdw",
+          "title": "Tristana ADC vs Kai'Sa - KR Challenger Patch 25.04",
+          "rankClaim": "Challenger",
+          "patch": "25.4",
+          "durationSec": 1868,
+          "region": "KR",
+          "uploaded": "2025-02-23",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 145,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "piM0YHEGqC4",
+          "title": "Tristana Mid vs Kai'Sa - BR Master Patch 26.21",
+          "rankClaim": "Master",
+          "patch": "26.21",
+          "durationSec": 1639,
+          "uploaded": "2026-11-02",
+          "result": "W",
+          "moments": [
+            {
+              "atSec": 175,
+              "label": "Tristana takes down Kai'Sa"
+            },
+            {
+              "atSec": 320,
+              "label": "Tristana catches Kai'Sa again"
+            },
+            {
+              "atSec": 473,
+              "label": "Riven eliminates Renekton"
+            },
+            {
+              "atSec": 492,
+              "label": "Blue takes 1st Dragon (Ocean)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 738,
+              "label": "Tristana takes down Leona"
+            },
+            {
+              "atSec": 864,
+              "label": "Red takes 1st Dragon (Hextech)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1026,
+              "label": "Tristana eliminates Kai'Sa"
+            },
+            {
+              "atSec": 1184,
+              "label": "Tristana Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1189,
+              "label": "Tristana Triple Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1219,
+              "label": "Red takes Baron",
+              "kind": "baron"
+            },
+            {
+              "atSec": 1259,
+              "label": "Blue takes 2nd Dragon (Chemtech)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1294,
+              "label": "Tristana kills Draven",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1399,
+              "label": "Tristana Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1404,
+              "label": "Tristana Triple Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1425,
+              "label": "Mid Inhibitor falls (Blue)"
+            },
+            {
+              "atSec": 1548,
+              "label": "Team fight (3 kills)",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1591,
+              "label": "Red takes 2nd Dragon (Chemtech)",
+              "kind": "dragon"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 157,
+      "lane": "adc",
+      "videos": [
+        {
+          "videoId": "6a8qc9P0r1k",
+          "title": "T1 Peyz Tristana vs Yasuo [ ADC ] Korea Challenger 2409 LP | Patch 26.13",
+          "rankClaim": "Challenger",
+          "patch": "26.13",
+          "durationSec": 744,
+          "region": "KR",
+          "player": "Peyz",
+          "team": "T1",
+          "uploaded": "2026-07-03",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 157,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "ajDve9l4cXU",
+          "title": "Tristana Mid vs Yasuo - EUW Challenger Patch 26.08",
+          "rankClaim": "Challenger",
+          "patch": "26.8",
+          "durationSec": 1663,
+          "region": "EUW",
+          "uploaded": "2026-04-27",
+          "moments": []
+        },
+        {
+          "videoId": "8sJKMI0BriA",
+          "title": "Tristana Mid vs Yasuo - EUW Grandmaster Patch 26.02",
+          "rankClaim": "Grandmaster",
+          "patch": "26.2",
+          "durationSec": 1475,
+          "region": "EUW",
+          "uploaded": "2026-02-01",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 161,
+      "lane": "adc",
+      "videos": [
+        {
+          "videoId": "qWxUa2VfyB0",
+          "title": "Tristana vs Vel'Koz ADC - KR Challenger - Patch 25.5 Season 15",
+          "rankClaim": "Challenger",
+          "patch": "25.5",
+          "durationSec": 1920,
+          "region": "KR",
+          "uploaded": "2025-03-18",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 163,
+      "lane": "adc",
+      "videos": [
+        {
+          "videoId": "CWUPITsvmRI",
+          "title": "(BGT Vzz) Tristana ADC vs Taliyah - EUW Challenger Patch 26.14",
+          "rankClaim": "Challenger",
+          "patch": "26.14",
+          "durationSec": 1775,
+          "region": "EUW",
+          "player": "BGT Vzz",
+          "uploaded": "2026-07-18",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 163,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "bPB4QMAXs_0",
+          "title": "Tristana Mid vs Taliyah - EUW Grandmaster Patch 25.22",
+          "rankClaim": "Grandmaster",
+          "patch": "25.22",
+          "durationSec": 1887,
+          "region": "EUW",
+          "uploaded": "2025-11-16",
+          "moments": []
+        },
+        {
+          "videoId": "IuOX1WyNZpw",
+          "title": "Tristana Mid vs Taliyah - VN Challenger Patch 25.18",
+          "rankClaim": "Challenger",
+          "patch": "25.18",
+          "durationSec": 1486,
+          "uploaded": "2025-09-19",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 202,
+      "lane": "adc",
+      "videos": [
+        {
+          "videoId": "a6ISzd6rLIc",
+          "title": "Tristana vs Jhin [ ADC ] Korea Challenger 2112 LP | Patch 26.14",
+          "rankClaim": "Challenger",
+          "patch": "26.14",
+          "durationSec": 1585,
+          "region": "KR",
+          "uploaded": "2026-07-21",
+          "moments": []
+        },
+        {
+          "videoId": "jhY6opH_N0o",
+          "title": "Tristana vs Jhin ADC - KR Challenger - Patch 25.24 Season 15",
+          "rankClaim": "Challenger",
+          "patch": "25.24",
+          "durationSec": 1471,
+          "region": "KR",
+          "uploaded": "2025-12-18",
+          "moments": []
+        },
+        {
+          "videoId": "AuQ7EoqLn6Y",
+          "title": "Tristana ADC vs Jhin - KR Master Patch 25.20",
+          "rankClaim": "Master",
+          "patch": "25.20",
+          "durationSec": 1556,
+          "region": "KR",
+          "uploaded": "2025-10-11",
+          "moments": []
+        },
+        {
+          "videoId": "G_lsCqy8kEY",
+          "title": "T1 Gumayusi Tristana vs Jhin [ ADC ] Patch 25.10 Korea Challenger",
+          "rankClaim": "Challenger",
+          "patch": "25.10",
+          "durationSec": 1661,
+          "region": "KR",
+          "player": "Gumayusi",
+          "team": "T1",
+          "uploaded": "2025-05-24",
+          "moments": []
+        },
+        {
+          "videoId": "oDDPMQfLPYY",
+          "title": "Tristana ADC vs Jhin - KR Challenger Patch 25.08",
+          "rankClaim": "Challenger",
+          "patch": "25.8",
+          "durationSec": 1744,
+          "region": "KR",
+          "uploaded": "2025-04-18",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 190,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 414,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 665,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 760,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 785,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 874,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 897,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1020,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1195,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1341,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1358,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1370,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1527,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1632,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1672,
+              "label": "Take down The Inhibitor"
+            },
+            {
+              "atSec": 1687,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1703,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1723,
+              "label": "End credit"
+            }
+          ]
+        },
+        {
+          "videoId": "xGr8u6qXNDQ",
+          "title": "Tristana ADC vs Jhin - KR Challenger Patch 25.07",
+          "rankClaim": "Challenger",
+          "patch": "25.7",
+          "durationSec": 1639,
+          "region": "KR",
+          "uploaded": "2025-04-05",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 221,
+      "lane": "adc",
+      "videos": [
+        {
+          "videoId": "Bw9BfZWURZQ",
+          "title": "Tristana ADC vs Zeri (Deft) - KR Challenger Patch 26.20",
+          "rankClaim": "Challenger",
+          "patch": "26.20",
+          "durationSec": 1881,
+          "region": "KR",
+          "player": "Deft",
+          "uploaded": "2026-10-12",
+          "result": "W",
+          "moments": [
+            {
+              "atSec": 39,
+              "label": "First Blood — Tristana kills Alistar",
+              "kind": "kill"
+            },
+            {
+              "atSec": 376,
+              "label": "Tristana takes down Zeri"
+            },
+            {
+              "atSec": 609,
+              "label": "Red takes 1st Dragon (Infernal)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 624,
+              "label": "Nautilus picks off Zeri"
+            },
+            {
+              "atSec": 944,
+              "label": "Xerath Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1120,
+              "label": "Red takes 2nd Dragon (Hextech)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1157,
+              "label": "Xerath kills Zeri",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1210,
+              "label": "Tristana kills Yone",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1434,
+              "label": "Red takes 3rd Dragon (Chemtech)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1475,
+              "label": "Red takes Baron",
+              "kind": "baron"
+            },
+            {
+              "atSec": 1477,
+              "label": "Tristana takes down Zeri"
+            },
+            {
+              "atSec": 1539,
+              "label": "Tristana picks off Alistar"
+            },
+            {
+              "atSec": 1745,
+              "label": "Red takes 4th Dragon (Chemtech)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1819,
+              "label": "Xin Zhao Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1843,
+              "label": "Mid Inhibitor falls (Red)"
+            }
+          ]
+        },
+        {
+          "videoId": "R9VdDRfDNSM",
+          "title": "T1 Peyz Tristana vs Zeri [ ADC ] Korea Challenger 2468 LP | Patch 26.11",
+          "rankClaim": "Challenger",
+          "patch": "26.11",
+          "durationSec": 1015,
+          "region": "KR",
+          "player": "Peyz",
+          "team": "T1",
+          "uploaded": "2026-06-04",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 222,
+      "lane": "adc",
+      "videos": [
+        {
+          "videoId": "QxvR--J0_c4",
+          "title": "Tristana ADC vs Jinx - KR Master Patch 26.21",
+          "rankClaim": "Master",
+          "patch": "26.21",
+          "durationSec": 1508,
+          "region": "KR",
+          "uploaded": "2026-10-25",
+          "moments": [
+            {
+              "atSec": 228,
+              "label": "Qiyana eliminates Jinx"
+            },
+            {
+              "atSec": 313,
+              "label": "Tristana takes down Jinx"
+            },
+            {
+              "atSec": 402,
+              "label": "Blue takes 1st Dragon (Hextech)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 590,
+              "label": "Tristana outduels Jinx"
+            },
+            {
+              "atSec": 684,
+              "label": "Tristana eliminates Talon"
+            },
+            {
+              "atSec": 787,
+              "label": "Qiyana kills Thresh",
+              "kind": "kill"
+            },
+            {
+              "atSec": 816,
+              "label": "Red takes 1st Dragon (Mountain)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 853,
+              "label": "Tristana picks off Thresh"
+            },
+            {
+              "atSec": 1085,
+              "label": "Team fight (3 kills)",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1088,
+              "label": "Tristana Triple Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1164,
+              "label": "Red takes 2nd Dragon (Cloud)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1214,
+              "label": "Tristana picks off Pantheon"
+            },
+            {
+              "atSec": 1273,
+              "label": "Red takes Baron",
+              "kind": "baron"
+            },
+            {
+              "atSec": 1345,
+              "label": "Tristana takes down Talon"
+            },
+            {
+              "atSec": 1362,
+              "label": "Mid Inhibitor falls (Blue)"
+            },
+            {
+              "atSec": 1455,
+              "label": "Team fight (3 kills)",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1490,
+              "label": "Tristana outplays Jinx again"
+            }
+          ]
+        },
+        {
+          "videoId": "e3V3e_q4K04",
+          "title": "Tristana ADC vs Jinx - KR Challenger Patch 26.07",
+          "rankClaim": "Challenger",
+          "patch": "26.7",
+          "durationSec": 1548,
+          "region": "KR",
+          "uploaded": "2026-04-07",
+          "moments": []
+        },
+        {
+          "videoId": "6emkfV2c5E0",
+          "title": "BLG Viper Tristana vs Jinx [ ADC ] Patch 26.4 Ranked Korea ✅",
+          "rankClaim": "Master+",
+          "patch": "26.4",
+          "durationSec": 1189,
+          "region": "KR",
+          "player": "Viper",
+          "team": "BLG",
+          "uploaded": "2026-02-23",
+          "moments": []
+        },
+        {
+          "videoId": "4ZzgZbOY3cc",
+          "title": "Tristana ADC vs Jinx - KR Master Patch 26.03",
+          "rankClaim": "Master",
+          "patch": "26.3",
+          "durationSec": 1576,
+          "region": "KR",
+          "uploaded": "2026-02-08",
+          "moments": []
+        },
+        {
+          "videoId": "9hHjgy0Z7TE",
+          "title": "Tristana ADC vs Jinx - KR Challenger Patch 26.01",
+          "rankClaim": "Challenger",
+          "patch": "26.1",
+          "durationSec": 1490,
+          "region": "KR",
+          "uploaded": "2026-01-12",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 235,
+      "lane": "adc",
+      "videos": [
+        {
+          "videoId": "oIkgjwjZhWA",
+          "title": "Tristana ADC vs Senna - KR Master Patch 25.11",
+          "rankClaim": "Master",
+          "patch": "25.11",
+          "durationSec": 1691,
+          "region": "KR",
+          "uploaded": "2025-06-01",
+          "moments": []
+        },
+        {
+          "videoId": "IHQS8HDZlD8",
+          "title": "Tristana vs Senna ADC [ Peyz ] Patch 25.11 Korea Challenger ✅",
+          "rankClaim": "Challenger",
+          "patch": "25.11",
+          "durationSec": 1316,
+          "region": "KR",
+          "player": "Peyz",
+          "uploaded": "2025-05-30",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 236,
+      "lane": "adc",
+      "videos": [
+        {
+          "videoId": "hH55mTx3wv8",
+          "title": "\"Jz\" 2000LP Tristana : This Champs is so BROKEN ! Why Nobody Play Her ? Engsub ( vs Lucian )",
+          "rankClaim": "Master+",
+          "patch": "26.15",
+          "durationSec": 703,
+          "patchEstimated": true,
+          "player": "Jz",
+          "uploaded": "2026-08-07",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "pfOvhVEMmPk",
+          "title": "\"Jz\" 2000LP Tristana : His Tris Mechanic is so DAM Dangerous - Engsub (Tris vs Lucian, Aphe)",
+          "rankClaim": "Master+",
+          "patch": "26.15",
+          "durationSec": 1201,
+          "patchEstimated": true,
+          "player": "Jz",
+          "uploaded": "2026-08-02",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "jgEWzugroLQ",
+          "title": "T1 Peyz Tristana vs Lucian [ ADC ] Korea Challenger 2402 LP | Patch 26.8",
+          "rankClaim": "Challenger",
+          "patch": "26.8",
+          "durationSec": 1317,
+          "region": "KR",
+          "player": "Peyz",
+          "team": "T1",
+          "uploaded": "2026-04-24",
+          "moments": []
+        },
+        {
+          "videoId": "Xf_WEZCZJHo",
+          "title": "Tristana vs Lucian ADC - KR Challenger - Patch 25.10 Season 15",
+          "rankClaim": "Challenger",
+          "patch": "25.10",
+          "durationSec": 1351,
+          "region": "KR",
+          "uploaded": "2025-05-27",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 238,
+      "lane": "adc",
+      "videos": [
+        {
+          "videoId": "epZAos3UYgE",
+          "title": "Tristana ADC vs Zed - KR Challenger Patch 26.17",
+          "rankClaim": "Challenger",
+          "patch": "26.17",
+          "durationSec": 1661,
+          "region": "KR",
+          "uploaded": "2026-08-28",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 238,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "LjXO4cytcDM",
+          "title": "(FNC Vladi) Tristana Mid vs Zed - EUW Challenger Patch 26.12",
+          "rankClaim": "Challenger",
+          "patch": "26.12",
+          "durationSec": 1646,
+          "region": "EUW",
+          "player": "Vladi",
+          "team": "FNC",
+          "uploaded": "2026-06-13",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 245,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "vNNuRp1P9OI",
+          "title": "Tristana Mid vs Ekko - KR Grandmaster Patch 25.24",
+          "rankClaim": "Grandmaster",
+          "patch": "25.24",
+          "durationSec": 1570,
+          "region": "KR",
+          "uploaded": "2025-12-29",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 33,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 289,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 360,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 634,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 709,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 823,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 907,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 986,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1011,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1034,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1065,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1091,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1147,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1195,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1224,
+              "label": "Hunt The Atakhan"
+            },
+            {
+              "atSec": 1245,
+              "label": "Hunt The Dragon",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1264,
+              "label": "Get a Triple Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1356,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1515,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1544,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1559,
+              "label": "End credit"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 268,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "8AfMWf2poKA",
+          "title": "Tristana Mid vs Azir - EUW Grandmaster Patch 25.16",
+          "rankClaim": "Grandmaster",
+          "patch": "25.16",
+          "durationSec": 1805,
+          "region": "EUW",
+          "uploaded": "2025-08-24",
+          "moments": []
+        },
+        {
+          "videoId": "OUB4AxDp894",
+          "title": "DK ShowMaker Tristana vs Azir [ MID ] Patch 25.7 Korea Master ✅",
+          "rankClaim": "Master",
+          "patch": "25.7",
+          "durationSec": 1514,
+          "region": "KR",
+          "player": "ShowMaker",
+          "team": "DK",
+          "uploaded": "2025-04-05",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 429,
+      "lane": "adc",
+      "videos": [
+        {
+          "videoId": "ysvodxVCY8w",
+          "title": "DK Smash Tristana vs Kalista [ ADC ] Korea Challenger 2102 LP | Patch 26.7",
+          "rankClaim": "Challenger",
+          "patch": "26.7",
+          "durationSec": 1766,
+          "region": "KR",
+          "player": "Smash",
+          "team": "DK",
+          "uploaded": "2026-04-13",
+          "moments": []
+        },
+        {
+          "videoId": "Li_QW30LX80",
+          "title": "Tristana vs Kalista [ ADC ] Patch 25.23 Korea Challenger 1377 LP",
+          "rankClaim": "Challenger",
+          "patch": "25.23",
+          "durationSec": 1353,
+          "region": "KR",
+          "uploaded": "2025-11-21",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 517,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "YTleYNGksaI",
+          "title": "Tristana Mid vs Sylas - EUW Grandmaster Patch 25.11",
+          "rankClaim": "Grandmaster",
+          "patch": "25.11",
+          "durationSec": 1495,
+          "region": "EUW",
+          "uploaded": "2025-06-07",
+          "moments": []
+        },
+        {
+          "videoId": "lrEUJ38hkUE",
+          "title": "T1 Faker Tristana vs Sylas [ MID ] Patch 25.6 Korea Master ✅",
+          "rankClaim": "Master",
+          "patch": "25.6",
+          "durationSec": 1744,
+          "region": "KR",
+          "player": "Faker",
+          "team": "T1",
+          "uploaded": "2025-03-25",
+          "moments": []
+        },
+        {
+          "videoId": "Zo1n9P-Wxig",
+          "title": "T1 Faker Tristana MID vs Sylas - Patch 25.3 Korea Grandmaster ✅",
+          "rankClaim": "Grandmaster",
+          "patch": "25.3",
+          "durationSec": 1106,
+          "region": "KR",
+          "player": "Faker",
+          "team": "T1",
+          "uploaded": "2025-02-12",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 523,
+      "lane": "adc",
+      "videos": [
+        {
+          "videoId": "Y6Iztut0oJ4",
+          "title": "Gumayusi : His Tristana Mechanic is so DAM AGGRESSIVE - Engsub ( vs Aphelios )",
+          "rankClaim": "Master+",
+          "patch": "26.21",
+          "durationSec": 736,
+          "patchEstimated": true,
+          "player": "Gumayusi",
+          "uploaded": "2026-10-31",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "Gib0OnnZWgU",
+          "title": "Tristana vs Aphelios [ ADC ] Korea Challenger 1317 LP | Patch 25.24 ✅",
+          "rankClaim": "Challenger",
+          "patch": "25.24",
+          "durationSec": 1647,
+          "region": "KR",
+          "uploaded": "2025-12-16",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 711,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "K8atZ4lCDEQ",
+          "title": "Tristana vs Vex MID [ Gen.G Chovy ] Patch 26.16 Korea Challenger 2087 LP",
+          "rankClaim": "Challenger",
+          "patch": "26.16",
+          "durationSec": 1261,
+          "region": "KR",
+          "player": "Chovy",
+          "team": "Gen.G",
+          "uploaded": "2026-08-15",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 777,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "9U_CKl-28qk",
+          "title": "(Destru) Tristana Mid vs Yone (BAN bbmuffin) - EUW Grandmaster Patch 26.20",
+          "rankClaim": "Grandmaster",
+          "patch": "26.20",
+          "durationSec": 1738,
+          "region": "EUW",
+          "player": "Destru",
+          "uploaded": "2026-10-19",
+          "result": "W",
+          "moments": [
+            {
+              "atSec": 258,
+              "label": "First Blood — Irelia kills Xin Zhao",
+              "kind": "kill"
+            },
+            {
+              "atSec": 545,
+              "label": "Red takes 1st Dragon (Mountain)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 915,
+              "label": "Tristana eliminates Yone"
+            },
+            {
+              "atSec": 989,
+              "label": "Tristana takes down Jayce"
+            },
+            {
+              "atSec": 1051,
+              "label": "Tristana takes down Bard"
+            },
+            {
+              "atSec": 1078,
+              "label": "Red takes 2nd Dragon (Ocean)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1161,
+              "label": "Tristana catches Ziggs"
+            },
+            {
+              "atSec": 1220,
+              "label": "Red takes Baron",
+              "kind": "baron"
+            },
+            {
+              "atSec": 1222,
+              "label": "Tristana picks off Xin Zhao"
+            },
+            {
+              "atSec": 1274,
+              "label": "Tristana kills Ziggs",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1313,
+              "label": "Tristana takes down Jayce"
+            },
+            {
+              "atSec": 1352,
+              "label": "Tristana takes down Bard"
+            },
+            {
+              "atSec": 1394,
+              "label": "Irelia Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1409,
+              "label": "Red takes 3rd Dragon (Hextech)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1567,
+              "label": "Tristana takes down Jayce"
+            },
+            {
+              "atSec": 1571,
+              "label": "Tristana Triple Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1588,
+              "label": "Mid Inhibitor falls (Blue)"
+            },
+            {
+              "atSec": 1672,
+              "label": "Red takes 2nd Baron",
+              "kind": "baron"
+            }
+          ]
+        },
+        {
+          "videoId": "hyq87V-a6ms",
+          "title": "(SHFT nuc) Tristana Mid vs Yone - EUW Master Patch 26.14",
+          "rankClaim": "Master",
+          "patch": "26.14",
+          "durationSec": 1854,
+          "region": "EUW",
+          "player": "SHFT nuc",
+          "uploaded": "2026-07-30",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 800,
+      "lane": "adc",
+      "videos": [
+        {
+          "videoId": "eth1puINSzk",
+          "title": "HLE Gumayusi Tristana vs Mel ADC [ PentaKill ] Patch 25.24 Ranked Korea",
+          "rankClaim": "Master+",
+          "patch": "25.24",
+          "durationSec": 1740,
+          "region": "KR",
+          "player": "Gumayusi",
+          "team": "HLE",
+          "uploaded": "2025-12-06",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 804,
+      "lane": "adc",
+      "videos": [
+        {
+          "videoId": "t8sTAjDS2PE",
+          "title": "T1 Peyz Tristana vs Yunara [ ADC ] Korea Challenger 2289 LP | Patch 26.20",
+          "rankClaim": "Challenger",
+          "patch": "26.20",
+          "durationSec": 961,
+          "region": "KR",
+          "player": "Peyz",
+          "team": "T1",
+          "uploaded": "2026-10-13",
+          "moments": []
+        },
+        {
+          "videoId": "EbTuJ-SbljA",
+          "title": "T1 Peyz Tristana vs Yunara [ ADC ] Korea Challenger 2442 LP | Patch 26.9",
+          "rankClaim": "Challenger",
+          "patch": "26.9",
+          "durationSec": 759,
+          "region": "KR",
+          "player": "Peyz",
+          "team": "T1",
+          "uploaded": "2026-05-06",
+          "moments": []
+        },
+        {
+          "videoId": "pzF5jSaCing",
+          "title": "Tristana ADC vs Yunara - KR Challenger Patch 26.08",
+          "rankClaim": "Challenger",
+          "patch": "26.8",
+          "durationSec": 1438,
+          "region": "KR",
+          "uploaded": "2026-04-21",
+          "moments": []
+        },
+        {
+          "videoId": "tAAjl8JmQB8",
+          "title": "Tristana ADC vs Yunara - EUW Challenger Patch 26.06",
+          "rankClaim": "Challenger",
+          "patch": "26.6",
+          "durationSec": 1602,
+          "region": "EUW",
+          "uploaded": "2026-03-24",
+          "moments": []
+        },
+        {
+          "videoId": "NHa5i7Dij2Y",
+          "title": "Tristana ADC vs Yunara - TW Challenger Patch 25.24",
+          "rankClaim": "Challenger",
+          "patch": "25.24",
+          "durationSec": 1569,
+          "uploaded": "2026-01-06",
+          "moments": []
+        },
+        {
+          "videoId": "fF1beua15-k",
+          "title": "Tristana ADC vs Yunara - KR Challenger Patch 25.23",
+          "rankClaim": "Challenger",
+          "patch": "25.23",
+          "durationSec": 1734,
+          "region": "KR",
+          "uploaded": "2025-11-23",
+          "moments": []
+        },
+        {
+          "videoId": "nhIWYuSEwTE",
+          "title": "T1 Smash Tristana vs Yunara [ ADC ] Korea Challenger Patch 25.18",
+          "rankClaim": "Challenger",
+          "patch": "25.18",
+          "durationSec": 979,
+          "region": "KR",
+          "player": "Smash",
+          "team": "T1",
+          "uploaded": "2025-09-13",
+          "moments": []
+        },
+        {
+          "videoId": "6F2qlVU0IJ4",
+          "title": "T1 Gumayusi Tristana ADC vs Yunara - Patch 25.16 Korea Master",
+          "rankClaim": "Master",
+          "patch": "25.16",
+          "durationSec": 1336,
+          "region": "KR",
+          "player": "Gumayusi",
+          "team": "T1",
+          "uploaded": "2025-08-19",
+          "moments": []
+        },
+        {
+          "videoId": "eXnF8vvpJRM",
+          "title": "Tristana vs Yunara ADC [ Gen.G Ruler ] Patch 25.16 Korea Master ✅",
+          "rankClaim": "Master",
+          "patch": "25.16",
+          "durationSec": 961,
+          "region": "KR",
+          "player": "Ruler",
+          "team": "Gen.G",
+          "uploaded": "2025-08-18",
+          "moments": []
+        },
+        {
+          "videoId": "T00TIM-sXuQ",
+          "title": "Tristana ADC vs Yunara - KR Challenger Patch 25.16",
+          "rankClaim": "Challenger",
+          "patch": "25.16",
+          "durationSec": 1610,
+          "region": "KR",
+          "uploaded": "2025-08-18",
+          "moments": []
+        },
+        {
+          "videoId": "52DhMVb_qHI",
+          "title": "Tristana vs Yunara ADC [ Gen.G Ruler ] Patch 25.16 Korea Master",
+          "rankClaim": "Master",
+          "patch": "25.16",
+          "durationSec": 1396,
+          "region": "KR",
+          "player": "Ruler",
+          "team": "Gen.G",
+          "uploaded": "2025-08-14",
+          "moments": []
+        },
+        {
+          "videoId": "RVnm1_MxZsg",
+          "title": "Tristana vs Yunara ADC [ Gen.G Ruler ] Patch 25.15 Korea Master",
+          "rankClaim": "Master",
+          "patch": "25.15",
+          "durationSec": 1419,
+          "region": "KR",
+          "player": "Ruler",
+          "team": "Gen.G",
+          "uploaded": "2025-08-10",
+          "moments": []
+        },
+        {
+          "videoId": "SrIqQ18dwhM",
+          "title": "Tristana ADC vs Yunara - KR Challenger Patch 25.15",
+          "rankClaim": "Challenger",
+          "patch": "25.15",
+          "durationSec": 2057,
+          "region": "KR",
+          "uploaded": "2025-08-02",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 893,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "Wj2BLMueU60",
+          "title": "Tristana Mid vs Aurora - EUW Challenger Patch 25.14",
+          "rankClaim": "Challenger",
+          "patch": "25.14",
+          "durationSec": 1577,
+          "region": "EUW",
+          "uploaded": "2025-07-29",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 895,
+      "lane": "adc",
+      "videos": [
+        {
+          "videoId": "OEl9tttEZzI",
+          "title": "Tristana ADC vs Nilah - TW Challenger Patch 26.04",
+          "rankClaim": "Challenger",
+          "patch": "26.4",
+          "durationSec": 1850,
+          "uploaded": "2026-02-25",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 901,
+      "lane": "adc",
+      "videos": [
+        {
+          "videoId": "PYlO7CQqUEE",
+          "title": "Tristana ADC vs Smolder - KR Challenger Patch 26.10",
+          "rankClaim": "Challenger",
+          "patch": "26.10",
+          "durationSec": 1459,
+          "region": "KR",
+          "uploaded": "2026-05-19",
+          "moments": []
+        },
+        {
+          "videoId": "13KsfmeE87s",
+          "title": "Tristana ADC vs Smolder - KR Challenger Patch 26.02",
+          "rankClaim": "Challenger",
+          "patch": "26.2",
+          "durationSec": 1516,
+          "region": "KR",
+          "uploaded": "2026-01-27",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 141,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 233,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 424,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 454,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 579,
+              "label": "Hunt The Dragon",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 946,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1006,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1035,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1061,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1089,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1172,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1196,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1221,
+              "label": "Hunt The Baron Nashor",
+              "kind": "baron"
+            },
+            {
+              "atSec": 1246,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1355,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1382,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1405,
+              "label": "Take down The Inhibitor"
+            },
+            {
+              "atSec": 1447,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1475,
+              "label": "Take down The Inhibitor"
+            },
+            {
+              "atSec": 1495,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1505,
+              "label": "End credit"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

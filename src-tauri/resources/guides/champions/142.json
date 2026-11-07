@@ -1,0 +1,4119 @@
+{
+  "schema": 1,
+  "champion": 142,
+  "generatedAt": "2026-11-07T13:25:14.592Z",
+  "guides": [
+    {
+      "champion": 142,
+      "enemy": 84,
+      "lane": "mid",
+      "patch": "26.21",
+      "reviewed": false,
+      "difficulty": "Skill matchup",
+      "favoredWhen": "She Cleanses sleep and answers your R at the return. Hold bubble, vary Qs, track Cleanse.",
+      "keyTips": [
+        {
+          "text": "She takes Cleanse to remove sleep, then one-shots: the summoner is her lane, so bait it.",
+          "scope": "pair",
+          "sourceIds": [
+            "anguish"
+          ],
+          "abilityKeys": [
+            {
+              "champion": 142,
+              "key": "E"
+            }
+          ]
+        },
+        {
+          "text": "She dodges Q and E: sidesteps beat both, so lead.",
+          "scope": "pair",
+          "sourceIds": [
+            "anguish"
+          ],
+          "abilityKeys": [
+            {
+              "champion": 142,
+              "key": "Q"
+            },
+            {
+              "champion": 142,
+              "key": "E"
+            }
+          ]
+        },
+        {
+          "text": "Free if your E is wasted: no bubble means no defense, so hold it.",
+          "scope": "pair",
+          "sourceIds": [
+            "anguish"
+          ],
+          "abilityKeys": [
+            {
+              "champion": 142,
+              "key": "E"
+            }
+          ]
+        }
+      ],
+      "enemyTips": {},
+      "sections": {
+        "overview": {
+          "tips": []
+        },
+        "early-lane": {
+          "tips": [
+            {
+              "text": "She respects Electrocute and ignite burst: your spikes kill, so force them.",
+              "scope": "pair",
+              "sourceIds": [
+                "anguish"
+              ]
+            },
+            {
+              "text": "She watches item drops: your pickups change the trade, so vary them.",
+              "scope": "pair",
+              "sourceIds": [
+                "anguish"
+              ]
+            }
+          ]
+        },
+        "mid-lane": {
+          "tips": [
+            {
+              "text": "When you R toward her she R1s through and E1s your return: vary the portal.",
+              "scope": "pair",
+              "sourceIds": [
+                "anguish"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 142,
+                  "key": "R"
+                },
+                {
+                  "champion": 84,
+                  "key": "R"
+                },
+                {
+                  "champion": 84,
+                  "key": "E"
+                }
+              ]
+            },
+            {
+              "text": "She tracks bubble cooldown: wasted-E windows are her kill windows, so hide it.",
+              "scope": "pair",
+              "sourceIds": [
+                "anguish"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 142,
+                  "key": "E"
+                }
+              ]
+            }
+          ]
+        },
+        "win-condition": {
+          "tips": [
+            {
+              "text": "Slept plus returned: the Akali who never dodges never wins.",
+              "scope": "pair",
+              "sourceIds": [
+                "anguish"
+              ]
+            }
+          ]
+        }
+      },
+      "itemization": [],
+      "sources": [
+        {
+          "id": "anguish",
+          "author": "Anguish333",
+          "rankClaim": "Master (profile badge; title claims 2000LP GrandMaster EUW and Challenger EUNE) · Akali main",
+          "rank": "master",
+          "url": "https://www.mobafire.com/league-of-legends/build/26-20-anguish-2000lp-grandmasters-euw-challenger-eune-akali-mid-top-s16-guide-every-matchup-item-rune-explained-625064",
+          "kind": "mobafire"
+        }
+      ]
+    },
+    {
+      "champion": 142,
+      "enemy": 103,
+      "lane": "mid",
+      "patch": "26.21",
+      "reviewed": false,
+      "difficulty": "Hard",
+      "favoredWhen": "She hugs minions against bubble and punishes portals with Charm. Vary angles, hold Exhaust threat.",
+      "keyTips": [
+        {
+          "text": "She stays near minions so they block your E sleep bubble: splash or wait.",
+          "scope": "pair",
+          "sourceIds": [
+            "shok-ahri"
+          ],
+          "abilityKeys": [
+            {
+              "champion": 142,
+              "key": "E"
+            }
+          ]
+        },
+        {
+          "text": "She answers bubble with W: never throw it raw, pair it.",
+          "scope": "pair",
+          "sourceIds": [
+            "peng04"
+          ],
+          "abilityKeys": [
+            {
+              "champion": 103,
+              "key": "W"
+            },
+            {
+              "champion": 142,
+              "key": "R"
+            }
+          ]
+        },
+        {
+          "text": "When you ult in, she ults and Charms your cast spot: you snap back to it, so vary.",
+          "scope": "pair",
+          "sourceIds": [
+            "peng04"
+          ],
+          "abilityKeys": [
+            {
+              "champion": 103,
+              "key": "R"
+            },
+            {
+              "champion": 103,
+              "key": "E"
+            },
+            {
+              "champion": 142,
+              "key": "R"
+            }
+          ]
+        }
+      ],
+      "enemyTips": {},
+      "sections": {
+        "overview": {
+          "tips": []
+        },
+        "early-lane": {
+          "tips": [
+            {
+              "text": "She concedes pressure in levels 1-5: press before her answers come online.",
+              "scope": "pair",
+              "sourceIds": [
+                "peng04"
+              ]
+            },
+            {
+              "text": "Your Exhaust and Ignite pickups keep her Charm defensive: show them.",
+              "scope": "pair",
+              "sourceIds": [
+                "shok-ahri"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 103,
+                  "key": "E"
+                }
+              ]
+            }
+          ]
+        },
+        "mid-lane": {
+          "tips": [
+            {
+              "text": "She Charms every portal forward: never portal predictably.",
+              "scope": "pair",
+              "sourceIds": [
+                "shok-ahri",
+                "peng04"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 103,
+                  "key": "E"
+                },
+                {
+                  "champion": 142,
+                  "key": "R"
+                }
+              ]
+            },
+            {
+              "text": "She calls her jungler from 6 on: duels favour you, ganks favour her, so track it.",
+              "scope": "pair",
+              "sourceIds": [
+                "shok-zoe"
+              ]
+            }
+          ]
+        },
+        "win-condition": {
+          "tips": [
+            {
+              "text": "She wins through ganks and cooldown punishes, not duels: you find the 1v1 easy, so force it.",
+              "scope": "pair",
+              "sourceIds": [
+                "shok-zoe",
+                "peng04"
+              ]
+            }
+          ]
+        }
+      },
+      "itemization": [],
+      "sources": [
+        {
+          "id": "peng04",
+          "author": "Peng04",
+          "rankClaim": "Challenger · Ahri main",
+          "rank": "challenger",
+          "url": "https://www.mobafire.com/league-of-legends/build/26-20-pengs-ahri-guide-5-1mil-points-13x-challenger-648700",
+          "kind": "mobafire"
+        },
+        {
+          "id": "shok-ahri",
+          "author": "ShokLoL",
+          "rankClaim": "Rank 1 Challenger · Ahri main",
+          "rank": "challenger",
+          "url": "https://www.mobafire.com/league-of-legends/build/26-5-shoks-rank-1-challenger-ahri-guide-635065",
+          "kind": "mobafire"
+        },
+        {
+          "id": "shok-zoe",
+          "author": "ShokLoL",
+          "rankClaim": "Rank 1 Challenger · Zoe main",
+          "rank": "challenger",
+          "url": "https://www.mobafire.com/league-of-legends/build/26-1-shoks-rank-1-challenger-zoe-guide-599223",
+          "kind": "mobafire"
+        }
+      ]
+    },
+    {
+      "champion": 142,
+      "enemy": 134,
+      "lane": "mid",
+      "patch": "26.21",
+      "reviewed": false,
+      "difficulty": "Skill matchup",
+      "favoredWhen": "Slightly hers. She blocks with creeps and stuns your snap-back. Punish wasted stuns, snowball.",
+      "keyTips": [
+        {
+          "text": "Skill matchup, slightly hers: steal edges before she banks them.",
+          "scope": "pair",
+          "sourceIds": [
+            "shok"
+          ]
+        },
+        {
+          "text": "She keeps creeps between to block Q and sleep bubble: the wave is her shield, so splash.",
+          "scope": "pair",
+          "sourceIds": [
+            "shok"
+          ],
+          "abilityKeys": [
+            {
+              "champion": 142,
+              "key": "Q"
+            },
+            {
+              "champion": 142,
+              "key": "E"
+            }
+          ]
+        },
+        {
+          "text": "If you waste bubble she plays very aggressive: the cooldown is her window, so hold it.",
+          "scope": "pair",
+          "sourceIds": [
+            "shok"
+          ],
+          "abilityKeys": [
+            {
+              "champion": 142,
+              "key": "E"
+            }
+          ]
+        }
+      ],
+      "enemyTips": {},
+      "sections": {
+        "overview": {
+          "tips": []
+        },
+        "early-lane": {
+          "tips": [
+            {
+              "text": "She respects your summoners and items: vary pickups.",
+              "scope": "pair",
+              "sourceIds": [
+                "shok"
+              ]
+            },
+            {
+              "text": "She calls ganks: you are very gankable with weak waveclear, so ward.",
+              "scope": "pair",
+              "sourceIds": [
+                "shok"
+              ]
+            }
+          ]
+        },
+        "mid-lane": {
+          "tips": [
+            {
+              "text": "Your all-ins end; her pressure does not: pick windows, never force.",
+              "scope": "pair",
+              "sourceIds": [
+                "shok"
+              ]
+            },
+            {
+              "text": "After 6, if you ult forward she steps up and stuns your snap-back: vary the return.",
+              "scope": "pair",
+              "sourceIds": [
+                "shok"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 134,
+                  "key": "E"
+                },
+                {
+                  "champion": 142,
+                  "key": "R"
+                }
+              ]
+            }
+          ]
+        },
+        "win-condition": {
+          "tips": [
+            {
+              "text": "Snowballed plus returns kept: the Syndra whose edges never banked loses the skill check.",
+              "scope": "pair",
+              "sourceIds": [
+                "shok",
+                "trisend3"
+              ]
+            }
+          ]
+        }
+      },
+      "itemization": [],
+      "sources": [
+        {
+          "id": "shok",
+          "author": "ShokLoL",
+          "rankClaim": "Rank 1 Challenger · Syndra main",
+          "rank": "challenger",
+          "url": "https://www.mobafire.com/league-of-legends/build/26-17-shoks-rank-1-challenger-syndra-guide-602710",
+          "kind": "mobafire"
+        },
+        {
+          "id": "trisend3",
+          "author": "Trisend3",
+          "rankClaim": "Challenger (title and profile badge) · Syndra main",
+          "rank": "challenger",
+          "url": "https://www.mobafire.com/league-of-legends/build/challenger-season-16-trisend3-syndra-guide-623459",
+          "kind": "mobafire"
+        }
+      ]
+    },
+    {
+      "champion": 142,
+      "enemy": 238,
+      "lane": "mid",
+      "patch": "26.21",
+      "reviewed": false,
+      "difficulty": "Skill matchup",
+      "favoredWhen": "He outranges you, takes Cleanse, and times shurikens for your return. Vary portals, hold bubble.",
+      "keyTips": [
+        {
+          "text": "He outranges you: max-range shadows are his safe damage, so close.",
+          "scope": "pair",
+          "sourceIds": [
+            "aikopanda"
+          ]
+        },
+        {
+          "text": "He checks your spellbook every back: vary pickups.",
+          "scope": "pair",
+          "sourceIds": [
+            "aikopanda"
+          ],
+          "abilityKeys": [
+            {
+              "champion": 142,
+              "key": "E"
+            }
+          ]
+        },
+        {
+          "text": "He takes Cleanse: escaping sleep means he all-ins freely, so bait it.",
+          "scope": "pair",
+          "sourceIds": [
+            "aikopanda",
+            "v222"
+          ]
+        }
+      ],
+      "enemyTips": {
+        "early-lane": [
+          {
+            "text": "Zed often places Living Shadow before Death Mark so he can swap away from skillshots. Hold your crowd control until he has used the swap.",
+            "scope": "enemy",
+            "sourceIds": [
+              "aikopanda"
+            ],
+            "patch": "26.21",
+            "abilityKeys": [
+              {
+                "champion": 238,
+                "key": "W"
+              },
+              {
+                "champion": 238,
+                "key": "R"
+              }
+            ]
+          }
+        ],
+        "win-condition": [
+          {
+            "text": "Death Mark always lands Zed behind his target. Pre-aim crowd control and escapes behind you, not toward where he cast it.",
+            "scope": "enemy",
+            "sourceIds": [
+              "peng04"
+            ],
+            "patch": "26.21",
+            "abilityKeys": [
+              {
+                "champion": 238,
+                "key": "R"
+              }
+            ]
+          }
+        ]
+      },
+      "sections": {
+        "overview": {
+          "tips": []
+        },
+        "early-lane": {
+          "tips": [
+            {
+              "text": "He respects your passive autos early: press walk-ups.",
+              "scope": "pair",
+              "sourceIds": [
+                "v222"
+              ]
+            },
+            {
+              "text": "He takes Cleanse or TP: the summoner is his safety net, so punish the window after use.",
+              "scope": "pair",
+              "sourceIds": [
+                "aikopanda"
+              ]
+            }
+          ]
+        },
+        "mid-lane": {
+          "tips": [
+            {
+              "text": "Death Mark always lands Zed behind his target. Pre-aim crowd control and escapes behind you, not toward where he cast it.",
+              "scope": "pair",
+              "sourceIds": [
+                "peng04"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 238,
+                  "key": "R"
+                }
+              ]
+            },
+            {
+              "text": "He times a triple Q on your R return spot: you always come back, so vary portals.",
+              "scope": "pair",
+              "sourceIds": [
+                "aikopanda"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 238,
+                  "key": "Q"
+                },
+                {
+                  "champion": 142,
+                  "key": "R"
+                }
+              ]
+            }
+          ]
+        },
+        "win-condition": {
+          "tips": [
+            {
+              "text": "Sleep landed plus return varied: with his Cleanse down and Qs dodged, his answers run out.",
+              "scope": "pair",
+              "sourceIds": [
+                "aikopanda",
+                "v222"
+              ]
+            }
+          ]
+        }
+      },
+      "itemization": [],
+      "sources": [
+        {
+          "id": "aikopanda",
+          "author": "AikoPanda",
+          "rankClaim": "Zed main",
+          "url": "https://www.mobafire.com/league-of-legends/build/26-20-video-guides-hidden-combos-all-matchups-zed-all-in-one-guide-652800",
+          "kind": "mobafire"
+        },
+        {
+          "id": "v222",
+          "author": "V222",
+          "rankClaim": "Challenger EUW · Zed main",
+          "rank": "challenger",
+          "url": "https://www.mobafire.com/league-of-legends/build/all-matchups-26-14-zed-guide-2000lp-euw-challenger-652354",
+          "kind": "mobafire"
+        },
+        {
+          "id": "peng04",
+          "author": "Peng04",
+          "rankClaim": "Challenger · Ahri main",
+          "rank": "challenger",
+          "url": "https://www.mobafire.com/league-of-legends/build/26-20-pengs-ahri-guide-5-1mil-points-13x-challenger-648700",
+          "kind": "mobafire"
+        }
+      ]
+    }
+  ],
+  "general": [
+    {
+      "champion": 142,
+      "lane": "mid",
+      "patch": "26.21",
+      "reviewed": false,
+      "keyTips": [
+        {
+          "text": "With Electrocute and Ignite, play for solo-kill pressure after Sleepy Trouble Bubble lands, following with Paddle Star and Ignite.",
+          "scope": "champion",
+          "sourceIds": [
+            "shok-zoe"
+          ],
+          "abilityKeys": [
+            {
+              "champion": 142,
+              "key": "E"
+            },
+            {
+              "champion": 142,
+              "key": "Q"
+            }
+          ]
+        },
+        {
+          "text": "Trade Paddle Star into an empowered passive auto into Paddle Star again for Electrocute; the empowered auto keeps the exchange useful even when Q misses.",
+          "scope": "champion",
+          "sourceIds": [
+            "shok-zoe"
+          ],
+          "abilityKeys": [
+            {
+              "champion": 142,
+              "key": "Q"
+            }
+          ]
+        },
+        {
+          "text": "Fish for Bubble as an opponent steps forward to last-hit, when their movement turns predictable, and after level six clear the back wave with Paddle Star when damage allows to remove minion cover for Bubble attempts.",
+          "scope": "champion",
+          "sourceIds": [
+            "shok-zoe"
+          ],
+          "abilityKeys": [
+            {
+              "champion": 142,
+              "key": "E"
+            },
+            {
+              "champion": 142,
+              "key": "Q"
+            }
+          ]
+        }
+      ],
+      "sections": {
+        "overview": {
+          "tips": []
+        },
+        "early-lane": {
+          "tips": [
+            {
+              "text": "Extend a forward Bubble angle with Portal Jump only from a safe launch point, since hard engage punishes Zoe hardest.",
+              "scope": "champion",
+              "sourceIds": [
+                "shok-zoe"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 142,
+                  "key": "E"
+                },
+                {
+                  "champion": 142,
+                  "key": "R"
+                }
+              ]
+            },
+            {
+              "text": "Conserve mana before Lost Chapter and blue buff, spending nothing on cooldown without a clear trade or wave purpose.",
+              "scope": "champion",
+              "sourceIds": [
+                "shok-zoe"
+              ],
+              "itemIds": [
+                3802
+              ]
+            },
+            {
+              "text": "On the Unsealed Spellbook and Teleport plan, trade health for the opponent's, then recall and teleport back to make them lose farm.",
+              "scope": "champion",
+              "sourceIds": [
+                "shok-zoe"
+              ]
+            },
+            {
+              "text": "Open Doran's Ring and Health Potions, with Dark Seal, boots, and Lost Chapter among the early buys.",
+              "scope": "champion",
+              "sourceIds": [
+                "shok-zoe"
+              ],
+              "itemIds": [
+                1056,
+                1082,
+                3802
+              ]
+            }
+          ]
+        },
+        "mid-lane": {
+          "tips": [
+            {
+              "text": "Skip extended side-laning: collect side waves as they reach the tower, pushing them only toward the river rather than committing long.",
+              "scope": "champion",
+              "sourceIds": [
+                "shok-zoe"
+              ]
+            },
+            {
+              "text": "Balance that safe farm with arriving early at dragon or Rift Herald fights, where the long-range pick can decide whether the enemy contests.",
+              "scope": "champion",
+              "sourceIds": [
+                "shok-zoe"
+              ]
+            },
+            {
+              "text": "When first to an objective, hit a high-value target with Bubble or Paddle Star to create the advantage before both teams fully commit.",
+              "scope": "champion",
+              "sourceIds": [
+                "shok-zoe"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 142,
+                  "key": "E"
+                },
+                {
+                  "champion": 142,
+                  "key": "Q"
+                }
+              ]
+            }
+          ]
+        },
+        "win-condition": {
+          "tips": [
+            {
+              "text": "Throw Sleepy Trouble Bubble through walls and follow with Paddle Star poke, using terrain for cover so the return engage never finds Zoe.",
+              "scope": "champion",
+              "sourceIds": [
+                "shok-zoe"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 142,
+                  "key": "E"
+                },
+                {
+                  "champion": 142,
+                  "key": "Q"
+                }
+              ]
+            },
+            {
+              "text": "Prioritize Bubble and poke on enemy carries when the angle exists; otherwise chip the frontline instead of forcing a risky dive.",
+              "scope": "champion",
+              "sourceIds": [
+                "shok-zoe"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 142,
+                  "key": "E"
+                },
+                {
+                  "champion": 142,
+                  "key": "Q"
+                }
+              ]
+            },
+            {
+              "text": "Fire Portal Jump only from a position whose return point stays safe, keeping hard engage answered by distance.",
+              "scope": "champion",
+              "sourceIds": [
+                "shok-zoe"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 142,
+                  "key": "R"
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "itemization": [
+        {
+          "text": "Run Electrocute with Taste of Blood, Deep Ward, Relentless Hunter, Nimbus Cloak, and Scorch, with Unsealed Spellbook and Teleport as the separate recall-and-return lane plan.",
+          "scope": "champion",
+          "sourceIds": [
+            "shok-zoe"
+          ]
+        },
+        {
+          "text": "Complete Luden's Echo, Sorcerer's Shoes, Shadowflame, Rabadon's Deathcap, Void Staff, and Horizon Focus, choosing Ionian Boots, Sorcerer's Shoes, or Mercury's Treads by game with Mercury's flagged against double AP and crowd control.",
+          "scope": "champion",
+          "sourceIds": [
+            "shok-zoe"
+          ],
+          "itemIds": [
+            6655,
+            3020,
+            4645,
+            3089,
+            3135,
+            4628,
+            3111
+          ]
+        },
+        {
+          "text": "Keep Mejai's Soulstealer for snowballs, Morellonomicon for healing, Zhonya's or Banshee's for defense, and Lich Bane for damage as situational picks.",
+          "scope": "champion",
+          "sourceIds": [
+            "shok-zoe"
+          ],
+          "itemIds": [
+            3041,
+            3165,
+            3100
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "id": "shok-zoe",
+          "author": "ShokLoL",
+          "rankClaim": "Rank 1 Challenger · Zoe main",
+          "rank": "challenger",
+          "url": "https://www.mobafire.com/league-of-legends/build/26-1-shoks-rank-1-challenger-zoe-guide-599223",
+          "kind": "mobafire"
+        }
+      ]
+    }
+  ],
+  "vods": [
+    {
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "3QmneLkR7us",
+          "title": "Rank 1 Zoe : This Dude is DEVASTATING CN Super Server",
+          "rankClaim": "Master+",
+          "patch": "26.12",
+          "durationSec": 1366,
+          "patchEstimated": true,
+          "player": "Baicaiovo",
+          "uploaded": "2026-06-15",
+          "format": "stream",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "bMY_9B1Nh30",
+          "title": "Baicaiovo Top 2 Super Server Challenger Zoe Mid Lane Outplay Showcase Engsub",
+          "rankClaim": "Challenger",
+          "patch": "26.1",
+          "durationSec": 1687,
+          "patchEstimated": true,
+          "player": "Baicaiovo",
+          "uploaded": "2026-01-13",
+          "format": "stream",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 1,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "EMlZAxH_SOA",
+          "title": "Zoe vs Annie 16/5/10 (Mid) | EUW Grandmaster | Zoe OTP Replay",
+          "rankClaim": "Grandmaster",
+          "patch": "26.9",
+          "durationSec": 1434,
+          "region": "EUW",
+          "patchEstimated": true,
+          "uploaded": "2026-05-10",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 3,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "v2A6dfg01Qw",
+          "title": "Zoe Mid vs Galio - KR Challenger Patch 26.17",
+          "rankClaim": "Challenger",
+          "patch": "26.17",
+          "durationSec": 1635,
+          "region": "KR",
+          "uploaded": "2026-09-02",
+          "result": "W",
+          "moments": [
+            {
+              "atSec": 83,
+              "label": "First Blood — Zoe kills Galio",
+              "kind": "kill"
+            },
+            {
+              "atSec": 172,
+              "label": "Nidalee picks off Galio"
+            },
+            {
+              "atSec": 259,
+              "label": "Zoe kills Caitlyn",
+              "kind": "kill"
+            },
+            {
+              "atSec": 549,
+              "label": "Red takes 1st Dragon (Chemtech)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 561,
+              "label": "Zoe takes down Galio"
+            },
+            {
+              "atSec": 922,
+              "label": "Red takes 2nd Dragon (Hextech)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1008,
+              "label": "Zoe takes down Ambessa"
+            },
+            {
+              "atSec": 1139,
+              "label": "Zoe outplays Ambessa"
+            },
+            {
+              "atSec": 1235,
+              "label": "Blue takes 1st Dragon (Infernal)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1303,
+              "label": "Red takes Baron",
+              "kind": "baron"
+            },
+            {
+              "atSec": 1371,
+              "label": "Nidalee kills Ambessa",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1385,
+              "label": "Zoe solo kills Lee Sin",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1566,
+              "label": "Zoe kills Caitlyn",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1576,
+              "label": "Mid Inhibitor falls (Blue)"
+            }
+          ]
+        },
+        {
+          "videoId": "fCJ545dNjO8",
+          "title": "Zoe Mid vs Galio (Starlit) - KR Challenger Patch 26.16",
+          "rankClaim": "Challenger",
+          "patch": "26.16",
+          "durationSec": 1547,
+          "region": "KR",
+          "uploaded": "2026-08-25",
+          "moments": []
+        },
+        {
+          "videoId": "OirL2MtcZxg",
+          "title": "Zoe Mid vs Galio - KR Challenger Patch 26.05",
+          "rankClaim": "Challenger",
+          "patch": "26.5",
+          "durationSec": 1837,
+          "region": "KR",
+          "uploaded": "2026-03-16",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 114,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 297,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 394,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 489,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 564,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 742,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1024,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1110,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1165,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1235,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1263,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1407,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1591,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1622,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1636,
+              "label": "Take down The Inhibitor"
+            },
+            {
+              "atSec": 1758,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1826,
+              "label": "End credit"
+            }
+          ]
+        },
+        {
+          "videoId": "eGJqucvuF8E",
+          "title": "Zoe Mid vs Galio - KR Challenger Patch 26.05",
+          "rankClaim": "Challenger",
+          "patch": "26.5",
+          "durationSec": 1684,
+          "region": "KR",
+          "uploaded": "2026-03-09",
+          "moments": []
+        },
+        {
+          "videoId": "Mr1wgmt_dF0",
+          "title": "Zoe Mid vs Galio - KR Grandmaster Patch 25.09",
+          "rankClaim": "Grandmaster",
+          "patch": "25.9",
+          "durationSec": 1714,
+          "region": "KR",
+          "uploaded": "2025-05-05",
+          "moments": []
+        },
+        {
+          "videoId": "Ai0ErnUuFYs",
+          "title": "Zoe Mid vs Galio - KR Grandmaster Patch 25.04",
+          "rankClaim": "Grandmaster",
+          "patch": "25.4",
+          "durationSec": 1986,
+          "region": "KR",
+          "uploaded": "2025-02-23",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 451,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 749,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 878,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1008,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1037,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1195,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1223,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1349,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1375,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1392,
+              "label": "Take down The Inhibitor"
+            },
+            {
+              "atSec": 1451,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1467,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1564,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1674,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1825,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1916,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1965,
+              "label": "End credit"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 4,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "gwyHSAI8CMY",
+          "title": "Baicaiovo Zoe: CN Super Server GOD deletes Twisted Fate.",
+          "rankClaim": "Master+",
+          "patch": "26.12",
+          "durationSec": 2001,
+          "patchEstimated": true,
+          "player": "Baicaiovo",
+          "uploaded": "2026-06-14",
+          "format": "stream",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 7,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "16G74Ms9tTc",
+          "title": "Zoe Mid vs LeBlanc - KR Challenger Patch 26.21",
+          "rankClaim": "Challenger",
+          "patch": "26.21",
+          "durationSec": 1735,
+          "region": "KR",
+          "uploaded": "2026-10-28",
+          "result": "W",
+          "moments": [
+            {
+              "atSec": 226,
+              "label": "Zoe kills Kalista",
+              "kind": "kill"
+            },
+            {
+              "atSec": 312,
+              "label": "Ezreal picks off Renata Glasc"
+            },
+            {
+              "atSec": 578,
+              "label": "Ezreal takes down Kalista"
+            },
+            {
+              "atSec": 602,
+              "label": "Blue takes 1st Dragon (Chemtech)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 630,
+              "label": "Jayce takes down Naafiri"
+            },
+            {
+              "atSec": 770,
+              "label": "Kennen Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 822,
+              "label": "Team fight (3 kills)",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 944,
+              "label": "Red takes 1st Dragon (Infernal)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 957,
+              "label": "Ezreal picks off Renata Glasc"
+            },
+            {
+              "atSec": 987,
+              "label": "Kennen eliminates K'Sante"
+            },
+            {
+              "atSec": 1277,
+              "label": "Blue takes 2nd Dragon (Mountain)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1355,
+              "label": "Red takes Baron",
+              "kind": "baron"
+            },
+            {
+              "atSec": 1454,
+              "label": "Jayce takes down Naafiri"
+            },
+            {
+              "atSec": 1563,
+              "label": "Zoe takes down K'Sante"
+            },
+            {
+              "atSec": 1599,
+              "label": "Red takes 2nd Dragon (Mountain)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1612,
+              "label": "Mid Inhibitor falls (Red)"
+            },
+            {
+              "atSec": 1691,
+              "label": "Zoe Double Kill",
+              "kind": "kill"
+            }
+          ]
+        },
+        {
+          "videoId": "d1WMgKW3BP4",
+          "title": "Zoe vs LeBlanc Mid - KR Grandmaster - Patch 25.13 Season 15",
+          "rankClaim": "Grandmaster",
+          "patch": "25.13",
+          "durationSec": 1860,
+          "region": "KR",
+          "uploaded": "2025-06-30",
+          "moments": []
+        },
+        {
+          "videoId": "xSSZJYCcC_0",
+          "title": "Zoe vs LeBlanc Mid - KR Challenger - Patch 25.12 Season 15",
+          "rankClaim": "Challenger",
+          "patch": "25.12",
+          "durationSec": 1606,
+          "region": "KR",
+          "uploaded": "2025-06-25",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 8,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "M3Nogk4Yrjw",
+          "title": "Zoe Mid vs Vladimir - KR Challenger Patch 25.14",
+          "rankClaim": "Challenger",
+          "patch": "25.14",
+          "durationSec": 2100,
+          "region": "KR",
+          "uploaded": "2025-07-23",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 9,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "0UUv6JLlVco",
+          "title": "Zoe Support vs Fiddlesticks - NA Challenger Patch 26.01",
+          "rankClaim": "Challenger",
+          "patch": "26.1",
+          "durationSec": 1589,
+          "region": "NA",
+          "uploaded": "2026-01-19",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 12,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "F1A9Or4a0PU",
+          "title": "Zoe Support vs Alistar - KR Master Patch 25.17",
+          "rankClaim": "Master",
+          "patch": "25.17",
+          "durationSec": 1544,
+          "region": "KR",
+          "uploaded": "2025-09-09",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 13,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "ScSdoncTuDA",
+          "title": "Zoe vs Ryze Mid - KR Challenger - Patch 25.13 Season 15",
+          "rankClaim": "Challenger",
+          "patch": "25.13",
+          "durationSec": 1991,
+          "region": "KR",
+          "uploaded": "2025-06-26",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 14,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "BggGnD41zHw",
+          "title": "(3BL VAEII) Zoe Top vs Sion - EUW Grandmaster Patch 26.11",
+          "rankClaim": "Grandmaster",
+          "patch": "26.11",
+          "durationSec": 1630,
+          "region": "EUW",
+          "player": "3BL VAEII",
+          "uploaded": "2026-06-03",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 15,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "H-W1BqRHEM0",
+          "title": "Zoe Mid vs Sivir - KR Challenger Patch 25.15",
+          "rankClaim": "Challenger",
+          "patch": "25.15",
+          "durationSec": 1945,
+          "region": "KR",
+          "uploaded": "2025-08-03",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 18,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "MjxqNnPpbUM",
+          "title": "Zoe Mid vs Tristana - VN Challenger Patch 26.04",
+          "rankClaim": "Challenger",
+          "patch": "26.4",
+          "durationSec": 1855,
+          "uploaded": "2026-02-23",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 37,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "K91yrT7hBD4",
+          "title": "Zoe Support vs Sona - KR Master Patch 25.12",
+          "rankClaim": "Master",
+          "patch": "25.12",
+          "durationSec": 1626,
+          "region": "KR",
+          "uploaded": "2025-06-23",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 38,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "6_3pzKOqnFA",
+          "title": "(ZPR Yuros) Zoe Mid vs Kassadin - EUW Challenger Patch 26.11",
+          "rankClaim": "Challenger",
+          "patch": "26.11",
+          "durationSec": 1592,
+          "region": "EUW",
+          "player": "ZPR Yuros",
+          "uploaded": "2026-06-07",
+          "moments": []
+        },
+        {
+          "videoId": "uzCx_1tUcnI",
+          "title": "Zoe Mid vs Kassadin - KR Grandmaster Patch 26.02",
+          "rankClaim": "Grandmaster",
+          "patch": "26.2",
+          "durationSec": 1549,
+          "region": "KR",
+          "uploaded": "2026-01-26",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 39,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "M0wN7rhKcuA",
+          "title": "Zoe Top vs Irelia - KR Master Patch 25.13",
+          "rankClaim": "Master",
+          "patch": "25.13",
+          "durationSec": 1502,
+          "region": "KR",
+          "uploaded": "2025-07-11",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 43,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "IAEI_-cU4cA",
+          "title": "Zoe Support vs Karma - NA Grandmaster Patch 25.15",
+          "rankClaim": "Grandmaster",
+          "patch": "25.15",
+          "durationSec": 1891,
+          "region": "NA",
+          "uploaded": "2025-08-13",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 44,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "XJNurSl_jMY",
+          "title": "Zoe Support vs Taric - KR Master Patch 25.24",
+          "rankClaim": "Master",
+          "patch": "25.24",
+          "durationSec": 1511,
+          "region": "KR",
+          "uploaded": "2025-12-14",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 185,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 332,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 446,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 513,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 651,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 819,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 964,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1124,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1245,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1343,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1374,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1393,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1442,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1464,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1490,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1500,
+              "label": "End credit"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 53,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "lvLeezjTSoo",
+          "title": "Zoe Support vs Blitzcrank - KR Master Patch 26.03",
+          "rankClaim": "Master",
+          "patch": "26.3",
+          "durationSec": 1562,
+          "region": "KR",
+          "uploaded": "2026-02-15",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 124,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 319,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 533,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 684,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 754,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 888,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1106,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1183,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1231,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1321,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1421,
+              "label": "Take down The Inhibitor"
+            },
+            {
+              "atSec": 1493,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1510,
+              "label": "Take down The Inhibitor"
+            },
+            {
+              "atSec": 1520,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1551,
+              "label": "End credit"
+            }
+          ]
+        },
+        {
+          "videoId": "VECrU4RvOcc",
+          "title": "Zoe Support vs Blitzcrank - KR Master Patch 26.02",
+          "rankClaim": "Master",
+          "patch": "26.2",
+          "durationSec": 1596,
+          "region": "KR",
+          "uploaded": "2026-01-30",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 210,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 353,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 525,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 605,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 779,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 889,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 969,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1062,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1147,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1338,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1441,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1466,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1479,
+              "label": "Take down The Inhibitor"
+            },
+            {
+              "atSec": 1490,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1585,
+              "label": "End credit"
+            }
+          ]
+        },
+        {
+          "videoId": "QlGav-MKGoQ",
+          "title": "Zoe Support vs Blitzcrank - EUW Grandmaster Patch 25.21",
+          "rankClaim": "Grandmaster",
+          "patch": "25.21",
+          "durationSec": 1698,
+          "region": "EUW",
+          "uploaded": "2025-11-01",
+          "moments": []
+        },
+        {
+          "videoId": "H2RkNAeUm1s",
+          "title": "Zoe Support vs Blitzcrank - KR Master Patch 25.20",
+          "rankClaim": "Master",
+          "patch": "25.20",
+          "durationSec": 1731,
+          "region": "KR",
+          "uploaded": "2025-10-19",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 55,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "Qwn5BaDnrgM",
+          "title": "Zoe Mid vs Katarina - KR Challenger Patch 26.03",
+          "rankClaim": "Challenger",
+          "patch": "26.3",
+          "durationSec": 1497,
+          "region": "KR",
+          "uploaded": "2026-02-09",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 301,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 317,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 505,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 731,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 756,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 875,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 947,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 965,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 981,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1003,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1015,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1080,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1154,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1173,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1296,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1324,
+              "label": "Take down The Inhibitor"
+            },
+            {
+              "atSec": 1446,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1486,
+              "label": "End credit"
+            }
+          ]
+        },
+        {
+          "videoId": "X_JYcQM_UjE",
+          "title": "Zoe Mid vs Katarina - KR Grandmaster Patch 25.24",
+          "rankClaim": "Grandmaster",
+          "patch": "25.24",
+          "durationSec": 1655,
+          "region": "KR",
+          "uploaded": "2025-12-05",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 58,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "AU1fSEQz4rw",
+          "title": "Zoe vs Renekton 12/3/12 (Top) | EUW Grandmaster | Zoe OTP Replay",
+          "rankClaim": "Grandmaster",
+          "patch": "26.10",
+          "durationSec": 1665,
+          "region": "EUW",
+          "patchEstimated": true,
+          "uploaded": "2026-05-17",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 60,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "ld2pPLvZ5Sw",
+          "title": "Zoe Support vs Elise - KR Grandmaster Patch 25.23",
+          "rankClaim": "Grandmaster",
+          "patch": "25.23",
+          "durationSec": 1569,
+          "region": "KR",
+          "uploaded": "2025-11-29",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 61,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "EXL1pA-n-hs",
+          "title": "Zoe vs Orianna [ MID ] Lol Korea Master Patch 25.23 ✅",
+          "rankClaim": "Master",
+          "patch": "25.23",
+          "durationSec": 1507,
+          "region": "KR",
+          "uploaded": "2025-11-20",
+          "moments": []
+        },
+        {
+          "videoId": "B8fVpPnAGR0",
+          "title": "Zoe vs Orianna Mid - KR Challenger - Patch 25.12 Season 15",
+          "rankClaim": "Challenger",
+          "patch": "25.12",
+          "durationSec": 1741,
+          "region": "KR",
+          "uploaded": "2025-06-24",
+          "moments": []
+        },
+        {
+          "videoId": "8c23CIcbcNs",
+          "title": "Zoe Mid vs Orianna - KR Grandmaster Patch 25.10",
+          "rankClaim": "Grandmaster",
+          "patch": "25.10",
+          "durationSec": 2097,
+          "region": "KR",
+          "uploaded": "2025-05-18",
+          "moments": []
+        },
+        {
+          "videoId": "qW9xEaMgl_U",
+          "title": "Zoe Mid vs Orianna - KR Grandmaster Patch 25.08",
+          "rankClaim": "Grandmaster",
+          "patch": "25.8",
+          "durationSec": 1986,
+          "region": "KR",
+          "uploaded": "2025-04-19",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 68,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "WYL4n_dkrzo",
+          "title": "Zoe Top vs Rumble - KR Master Patch 26.10",
+          "rankClaim": "Master",
+          "patch": "26.10",
+          "durationSec": 1703,
+          "region": "KR",
+          "uploaded": "2026-05-19",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 69,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "g9NEmUZ1k_c",
+          "title": "Zoe Mid vs Cassiopeia - KR Master Patch 26.01",
+          "rankClaim": "Master",
+          "patch": "26.1",
+          "durationSec": 1599,
+          "region": "KR",
+          "uploaded": "2026-01-11",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 76,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "1KimVLGFnI4",
+          "title": "Zoe Jungle vs Nidalee - KR Master Patch 26.13",
+          "rankClaim": "Master",
+          "patch": "26.13",
+          "durationSec": 1834,
+          "region": "KR",
+          "uploaded": "2026-07-17",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 76,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "N0-mHsu9iHs",
+          "title": "Zoe Support vs Nidalee - NA Grandmaster Patch 25.19",
+          "rankClaim": "Grandmaster",
+          "patch": "25.19",
+          "durationSec": 1996,
+          "region": "NA",
+          "uploaded": "2025-10-04",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 80,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "PanzAsUAIJs",
+          "title": "Zoe Support vs Pantheon - VN Challenger Patch 25.10",
+          "rankClaim": "Challenger",
+          "patch": "25.10",
+          "durationSec": 1694,
+          "uploaded": "2025-05-24",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 80,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "2xNjIm2dQSI",
+          "title": "Zoe Top vs Pantheon - KR Master Patch 26.15",
+          "rankClaim": "Master",
+          "patch": "26.15",
+          "durationSec": 1751,
+          "region": "KR",
+          "uploaded": "2026-08-11",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 84,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "63lJE2q44WE",
+          "title": "Zoe Top vs Akali - EUNE Challenger Patch 26.09",
+          "rankClaim": "Challenger",
+          "patch": "26.9",
+          "durationSec": 1789,
+          "region": "EUNE",
+          "uploaded": "2026-05-04",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 89,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "3LoD5iAjfhY",
+          "title": "Zoe Support vs Leona - KR Grandmaster Patch 26.09",
+          "rankClaim": "Grandmaster",
+          "patch": "26.9",
+          "durationSec": 1619,
+          "region": "KR",
+          "uploaded": "2026-05-12",
+          "moments": []
+        },
+        {
+          "videoId": "n7z8nZkGVh8",
+          "title": "Zoe Support vs Leona - KR Master Patch 25.13",
+          "rankClaim": "Master",
+          "patch": "25.13",
+          "durationSec": 1506,
+          "region": "KR",
+          "uploaded": "2025-07-06",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 91,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "LuzrjSdI8Vo",
+          "title": "Zoe Mid vs Talon - KR Challenger Patch 25.21",
+          "rankClaim": "Challenger",
+          "patch": "25.21",
+          "durationSec": 1904,
+          "region": "KR",
+          "uploaded": "2025-10-25",
+          "moments": []
+        },
+        {
+          "videoId": "GiELPlFgonk",
+          "title": "Zoe Mid vs Talon - KR Master Patch 25.18",
+          "rankClaim": "Master",
+          "patch": "25.18",
+          "durationSec": 1457,
+          "region": "KR",
+          "uploaded": "2025-09-13",
+          "moments": []
+        },
+        {
+          "videoId": "aUbv9ryEHwk",
+          "title": "Zoe Mid vs Talon - KR Challenger Patch 25.06",
+          "rankClaim": "Challenger",
+          "patch": "25.6",
+          "durationSec": 1610,
+          "region": "KR",
+          "uploaded": "2025-03-24",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 131,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 410,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 436,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 535,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 560,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 618,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 921,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1052,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1113,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1252,
+              "label": "Get a Triple Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1335,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1352,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1373,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1430,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1462,
+              "label": "Take down The Inhibitor"
+            },
+            {
+              "atSec": 1477,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1559,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1589,
+              "label": "End credit"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 98,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "emakxGf20uo",
+          "title": "Zoe Support vs Shen (KT Pollu) - KR Grandmaster Patch 26.17",
+          "rankClaim": "Grandmaster",
+          "patch": "26.17",
+          "durationSec": 1647,
+          "region": "KR",
+          "uploaded": "2026-09-08",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 103,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "zkWz0RdvfYk",
+          "title": "Zoe Mid vs Ahri - KR Challenger Patch 25.19",
+          "rankClaim": "Challenger",
+          "patch": "25.19",
+          "durationSec": 1736,
+          "region": "KR",
+          "uploaded": "2025-09-30",
+          "moments": []
+        },
+        {
+          "videoId": "k0uJuu5PFFo",
+          "title": "Zoe vs Ahri Mid - KR Challenger - Patch 25.13 Season 15",
+          "rankClaim": "Challenger",
+          "patch": "25.13",
+          "durationSec": 1860,
+          "region": "KR",
+          "uploaded": "2025-07-03",
+          "moments": []
+        },
+        {
+          "videoId": "acV4zjyRZ1A",
+          "title": "Zoe vs Ahri Mid - KR Challenger - Patch 25.13 Season 15",
+          "rankClaim": "Challenger",
+          "patch": "25.13",
+          "durationSec": 1861,
+          "region": "KR",
+          "uploaded": "2025-06-28",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 107,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "a9hdYiaEnjA",
+          "title": "Zoe Support vs Rengar - EUW Grandmaster Patch 26.08",
+          "rankClaim": "Grandmaster",
+          "patch": "26.8",
+          "durationSec": 1876,
+          "region": "EUW",
+          "uploaded": "2026-04-28",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 111,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "MUCaDlpUjZU",
+          "title": "(VER guggu) Zoe Support vs Nautilus (ZNT kkero) - EUW Grandmaster Patch 26.19",
+          "rankClaim": "Grandmaster",
+          "patch": "26.19",
+          "durationSec": 1879,
+          "region": "EUW",
+          "player": "VER guggu",
+          "uploaded": "2026-10-05",
+          "moments": []
+        },
+        {
+          "videoId": "l8aQqjJLNFE",
+          "title": "Zoe Support vs Nautilus - KR Master Patch 26.18",
+          "rankClaim": "Master",
+          "patch": "26.18",
+          "durationSec": 1592,
+          "region": "KR",
+          "uploaded": "2026-09-20",
+          "moments": []
+        },
+        {
+          "videoId": "mthZans4Hqo",
+          "title": "Zoe Support vs Nautilus - EUW Grandmaster Patch 26.06",
+          "rankClaim": "Grandmaster",
+          "patch": "26.6",
+          "durationSec": 1467,
+          "region": "EUW",
+          "uploaded": "2026-03-29",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 112,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "iLSy9wzEGwE",
+          "title": "(Harbo) Zoe Mid vs Viktor - EUW Challenger Patch 26.14",
+          "rankClaim": "Challenger",
+          "patch": "26.14",
+          "durationSec": 1641,
+          "region": "EUW",
+          "player": "Harbo",
+          "uploaded": "2026-07-23",
+          "moments": []
+        },
+        {
+          "videoId": "13VOMIdVG-0",
+          "title": "(Evrot) Zoe Mid vs Viktor - NA Challenger Patch 26.13",
+          "rankClaim": "Challenger",
+          "patch": "26.13",
+          "durationSec": 1426,
+          "region": "NA",
+          "player": "Evrot",
+          "uploaded": "2026-07-02",
+          "moments": []
+        },
+        {
+          "videoId": "rYs53i88KA8",
+          "title": "Zoe Mid vs Viktor - KR Master Patch 26.08",
+          "rankClaim": "Master",
+          "patch": "26.8",
+          "durationSec": 1856,
+          "region": "KR",
+          "uploaded": "2026-04-20",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 117,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "B8kNEAPfaYY",
+          "title": "Zoe Support vs Lulu - KR Master Patch 26.05",
+          "rankClaim": "Master",
+          "patch": "26.5",
+          "durationSec": 1700,
+          "region": "KR",
+          "uploaded": "2026-03-14",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 127,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "WYIlCAdz9CI",
+          "title": "Zoe Mid vs Lissandra - KR Challenger Patch 26.06",
+          "rankClaim": "Challenger",
+          "patch": "26.6",
+          "durationSec": 1446,
+          "region": "KR",
+          "uploaded": "2026-03-23",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 459,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 745,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 763,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 839,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 946,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 993,
+              "label": "Hunt The Rift Herald",
+              "kind": "herald"
+            },
+            {
+              "atSec": 1033,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1180,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1200,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1229,
+              "label": "Hunt The Baron Nashor",
+              "kind": "baron"
+            },
+            {
+              "atSec": 1312,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1350,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1405,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1435,
+              "label": "End credit"
+            }
+          ]
+        },
+        {
+          "videoId": "pYbEyBz7NKE",
+          "title": "T1 Faker Zoe vs Lissandra [ MID ] Korea Master Patch 26.2",
+          "rankClaim": "Master",
+          "patch": "26.2",
+          "durationSec": 1459,
+          "region": "KR",
+          "player": "Faker",
+          "team": "T1",
+          "uploaded": "2026-01-29",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 131,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "zQkHaNS0VJA",
+          "title": "(ES xKenzuke) Zoe Mid vs Diana - EUW Grandmaster Patch 26.12",
+          "rankClaim": "Grandmaster",
+          "patch": "26.12",
+          "durationSec": 1723,
+          "region": "EUW",
+          "player": "ES xKenzuke",
+          "uploaded": "2026-06-13",
+          "moments": []
+        },
+        {
+          "videoId": "vZTHFR-QANQ",
+          "title": "Zoe Mid vs Diana - KR Challenger Patch 26.07",
+          "rankClaim": "Challenger",
+          "patch": "26.7",
+          "durationSec": 1457,
+          "region": "KR",
+          "uploaded": "2026-04-06",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 134,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "CXbyo-gwdDQ",
+          "title": "Zoe Mid vs Syndra - KR Challenger Patch 26.15",
+          "rankClaim": "Challenger",
+          "patch": "26.15",
+          "durationSec": 1584,
+          "region": "KR",
+          "uploaded": "2026-08-04",
+          "moments": []
+        },
+        {
+          "videoId": "53ngx07ddzo",
+          "title": "Zoe vs Syndra Mid - KR Challenger - Patch 25.24 Season 15",
+          "rankClaim": "Challenger",
+          "patch": "25.24",
+          "durationSec": 2206,
+          "region": "KR",
+          "uploaded": "2025-12-22",
+          "moments": []
+        },
+        {
+          "videoId": "XH99i0eG3sg",
+          "title": "Zoe Mid vs Syndra - KR Grandmaster Patch 25.16",
+          "rankClaim": "Grandmaster",
+          "patch": "25.16",
+          "durationSec": 1622,
+          "region": "KR",
+          "uploaded": "2025-08-16",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 147,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "qZCLpUrNklY",
+          "title": "Zoe Support vs Seraphine - EUW Grandmaster Patch 25.24",
+          "rankClaim": "Grandmaster",
+          "patch": "25.24",
+          "durationSec": 1448,
+          "region": "EUW",
+          "uploaded": "2025-12-29",
+          "moments": []
+        },
+        {
+          "videoId": "nq918yU0E8U",
+          "title": "Zoe Support vs Seraphine - KR Master Patch 25.16",
+          "rankClaim": "Master",
+          "patch": "25.16",
+          "durationSec": 1884,
+          "region": "KR",
+          "uploaded": "2025-08-23",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 157,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "ks2fPw5gklg",
+          "title": "T1 Faker Zoe vs Yasuo [ MID ] Korea Grandmaster 1340 LP | Patch 26.7",
+          "rankClaim": "Grandmaster",
+          "patch": "26.7",
+          "durationSec": 1367,
+          "region": "KR",
+          "player": "Faker",
+          "team": "T1",
+          "uploaded": "2026-04-06",
+          "moments": []
+        },
+        {
+          "videoId": "_hh3oEPMP1w",
+          "title": "Zoe Mid vs Yasuo - KR Master Patch 25.07",
+          "rankClaim": "Master",
+          "patch": "25.7",
+          "durationSec": 1827,
+          "region": "KR",
+          "uploaded": "2025-04-08",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 192,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 273,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 573,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 607,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 767,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 834,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 858,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 888,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 962,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1014,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1199,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1246,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1395,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1455,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1476,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1535,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1575,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1590,
+              "label": "Take down The Inhibitor"
+            },
+            {
+              "atSec": 1601,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1698,
+              "label": "Hunt The Dragon",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1749,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1806,
+              "label": "End credit"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 164,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "3wgZE2VPXYk",
+          "title": "Zoe Support vs Camille - KR Challenger Patch 26.21",
+          "rankClaim": "Challenger",
+          "patch": "26.21",
+          "durationSec": 1647,
+          "region": "KR",
+          "uploaded": "2026-10-31",
+          "result": "W",
+          "moments": [
+            {
+              "atSec": 201,
+              "label": "Twisted Fate takes down Camille"
+            },
+            {
+              "atSec": 315,
+              "label": "Blue takes 1st Dragon (Ocean)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 389,
+              "label": "Zoe eliminates Camille"
+            },
+            {
+              "atSec": 486,
+              "label": "Rengar eliminates Olaf"
+            },
+            {
+              "atSec": 642,
+              "label": "Blue takes 2nd Dragon (Chemtech)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 672,
+              "label": "Xin Zhao takes down Viego"
+            },
+            {
+              "atSec": 702,
+              "label": "Zeri kills Akali",
+              "kind": "kill"
+            },
+            {
+              "atSec": 725,
+              "label": "Xin Zhao takes down Viego"
+            },
+            {
+              "atSec": 963,
+              "label": "Red takes 1st Dragon (Cloud)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1060,
+              "label": "Zeri picks off Olaf"
+            },
+            {
+              "atSec": 1132,
+              "label": "Zeri picks off Camille"
+            },
+            {
+              "atSec": 1243,
+              "label": "Zeri Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1296,
+              "label": "Red takes 2nd Dragon (Cloud)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1487,
+              "label": "Xin Zhao kills Camille",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1541,
+              "label": "Zeri takes down Ziggs"
+            },
+            {
+              "atSec": 1584,
+              "label": "Blue takes Baron",
+              "kind": "baron"
+            },
+            {
+              "atSec": 1614,
+              "label": "Mid Inhibitor falls (Red)"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 201,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "Kz48H6attaY",
+          "title": "Zoe Support vs Braum - KR Master Patch 25.22",
+          "rankClaim": "Master",
+          "patch": "25.22",
+          "durationSec": 1865,
+          "region": "KR",
+          "uploaded": "2025-11-16",
+          "moments": []
+        },
+        {
+          "videoId": "jOMsQP6OOTg",
+          "title": "Zoe Support vs Braum - KR Master Patch 25.05",
+          "rankClaim": "Master",
+          "patch": "25.5",
+          "durationSec": 1587,
+          "region": "KR",
+          "uploaded": "2025-03-17",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 197,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 418,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 516,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 790,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 891,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1052,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1147,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1251,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1285,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1302,
+              "label": "Take down The Inhibitor"
+            },
+            {
+              "atSec": 1371,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1468,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1548,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1566,
+              "label": "End credit"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 202,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "cT9cP6pDPms",
+          "title": "Zoe Mid vs Jhin - KR Grandmaster Patch 26.20",
+          "rankClaim": "Grandmaster",
+          "patch": "26.20",
+          "durationSec": 1676,
+          "region": "KR",
+          "uploaded": "2026-10-14",
+          "result": "W",
+          "moments": [
+            {
+              "atSec": 17,
+              "label": "First Blood — Zoe kills Jhin",
+              "kind": "kill"
+            },
+            {
+              "atSec": 305,
+              "label": "Red takes 1st Dragon (Infernal)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 473,
+              "label": "Aurelion Sol eliminates Sylas"
+            },
+            {
+              "atSec": 626,
+              "label": "Red takes 2nd Dragon (Cloud)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 674,
+              "label": "Zoe takes down Jhin"
+            },
+            {
+              "atSec": 805,
+              "label": "Zoe catches Jhin again"
+            },
+            {
+              "atSec": 935,
+              "label": "Aurelion Sol Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 968,
+              "label": "Red takes 3rd Dragon (Mountain)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1011,
+              "label": "Xin Zhao eliminates Jinx"
+            },
+            {
+              "atSec": 1117,
+              "label": "Camille takes down Jhin"
+            },
+            {
+              "atSec": 1172,
+              "label": "Camille kills Sylas",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1275,
+              "label": "Zoe picks off Sylas"
+            },
+            {
+              "atSec": 1317,
+              "label": "Red takes 4th Dragon (Mountain)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1355,
+              "label": "Zoe takes down Renekton"
+            },
+            {
+              "atSec": 1482,
+              "label": "Team fight (3 kills)",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1504,
+              "label": "Red takes Baron",
+              "kind": "baron"
+            },
+            {
+              "atSec": 1587,
+              "label": "Zoe catches Jinx"
+            },
+            {
+              "atSec": 1615,
+              "label": "Mid Inhibitor falls (Blue)"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 238,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "YoLlYkJLI8w",
+          "title": "Zoe Mid vs Zed - KR Grandmaster Patch 26.19",
+          "rankClaim": "Grandmaster",
+          "patch": "26.19",
+          "durationSec": 1673,
+          "region": "KR",
+          "uploaded": "2026-09-30",
+          "moments": []
+        },
+        {
+          "videoId": "6h3IBBlqgVc",
+          "title": "(BDG Ronaldo) Zoe Mid vs Zed - EUW Challenger Patch 26.10",
+          "rankClaim": "Challenger",
+          "patch": "26.10",
+          "durationSec": 1561,
+          "region": "EUW",
+          "player": "BDG Ronaldo",
+          "uploaded": "2026-05-25",
+          "moments": []
+        },
+        {
+          "videoId": "PlqY_ZiGRCw",
+          "title": "Zoe vs Zed Mid - KR Challenger - Patch 16.09 Season 16",
+          "rankClaim": "Challenger",
+          "patch": "26.9",
+          "durationSec": 1771,
+          "region": "KR",
+          "uploaded": "2026-05-13",
+          "moments": []
+        },
+        {
+          "videoId": "WVp1PxkrzFU",
+          "title": "Zoe Mid vs Zed - KR Challenger Patch 25.11",
+          "rankClaim": "Challenger",
+          "patch": "25.11",
+          "durationSec": 1727,
+          "region": "KR",
+          "uploaded": "2025-06-03",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 266,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "sYp1VD8OqOI",
+          "title": "Zoe Top vs Aatrox - KR Master Patch 25.04",
+          "rankClaim": "Master",
+          "patch": "25.4",
+          "durationSec": 2071,
+          "region": "KR",
+          "uploaded": "2025-03-03",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 267,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "crO0_ep1Kk4",
+          "title": "Zoe Support vs Nami - NA Grandmaster Patch 25.18",
+          "rankClaim": "Grandmaster",
+          "patch": "25.18",
+          "durationSec": 1567,
+          "region": "NA",
+          "uploaded": "2025-09-21",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 268,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "lylS9_WMMaU",
+          "title": "Zoe vs Azir Mid - KR Challenger - Patch 25.13 Season 15",
+          "rankClaim": "Challenger",
+          "patch": "25.13",
+          "durationSec": 2491,
+          "region": "KR",
+          "uploaded": "2025-06-27",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 432,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "3N1dJb3VOsg",
+          "title": "Zoe Support vs Bard - VN Challenger Patch 26.04",
+          "rankClaim": "Challenger",
+          "patch": "26.4",
+          "durationSec": 1537,
+          "uploaded": "2026-03-01",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 177,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 241,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 428,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 485,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 618,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 656,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 698,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 823,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 849,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 930,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1013,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1101,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1209,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1341,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1365,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1409,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1487,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1526,
+              "label": "End credit"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 497,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "QqOYDtgZObU",
+          "title": "Zoe Support vs Rakan - KR Challenger Patch 25.07",
+          "rankClaim": "Challenger",
+          "patch": "25.7",
+          "durationSec": 1626,
+          "region": "KR",
+          "uploaded": "2025-04-16",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 112,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 205,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 363,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 437,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 521,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 643,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 764,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1030,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1130,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1240,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1378,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1432,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1476,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1555,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1583,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1605,
+              "label": "End credit"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 517,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "gt38jEo6ut8",
+          "title": "Zoe Mid vs Sylas - KR Grandmaster Patch 25.22",
+          "rankClaim": "Grandmaster",
+          "patch": "25.22",
+          "durationSec": 1630,
+          "region": "KR",
+          "uploaded": "2025-11-09",
+          "moments": []
+        },
+        {
+          "videoId": "Choi_MyiaU8",
+          "title": "Zoe Mid vs Sylas - KR Grandmaster Patch 25.12",
+          "rankClaim": "Grandmaster",
+          "patch": "25.12",
+          "durationSec": 1753,
+          "region": "KR",
+          "uploaded": "2025-06-15",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 517,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "V4C_SV7CGvs",
+          "title": "Zoe Top vs Sylas - EUW Challenger Patch 26.13",
+          "rankClaim": "Challenger",
+          "patch": "26.13",
+          "durationSec": 1815,
+          "region": "EUW",
+          "uploaded": "2026-07-14",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 518,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "HPbCmKphOUs",
+          "title": "Zoe Support vs Neeko - EUW Challenger Patch 25.09",
+          "rankClaim": "Challenger",
+          "patch": "25.9",
+          "durationSec": 1747,
+          "region": "EUW",
+          "uploaded": "2025-05-11",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 526,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "WmTFh5L7uBg",
+          "title": "Zoe Support vs Rell - KR Challenger Patch 26.07",
+          "rankClaim": "Challenger",
+          "patch": "26.7",
+          "durationSec": 1868,
+          "region": "KR",
+          "uploaded": "2026-04-13",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 55,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 151,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 205,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 379,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 529,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 589,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 613,
+              "label": "Hunt The Void Grubs",
+              "kind": "grubs"
+            },
+            {
+              "atSec": 701,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 849,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 877,
+              "label": "Hunt The Dragon",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 906,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1005,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1060,
+              "label": "Hunt The Rift Herald",
+              "kind": "herald"
+            },
+            {
+              "atSec": 1098,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1181,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1205,
+              "label": "Hunt The Dragon",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1223,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1359,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1448,
+              "label": "Hunt The Baron Nashor",
+              "kind": "baron"
+            },
+            {
+              "atSec": 1464,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1511,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1544,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1612,
+              "label": "Take down The Inhibitor"
+            },
+            {
+              "atSec": 1628,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1814,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1831,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1857,
+              "label": "End credit"
+            }
+          ]
+        },
+        {
+          "videoId": "940U6bwgqjI",
+          "title": "Zoe Support vs Rell - EUW Grandmaster Patch 25.11",
+          "rankClaim": "Grandmaster",
+          "patch": "25.11",
+          "durationSec": 1449,
+          "region": "EUW",
+          "uploaded": "2025-06-08",
+          "moments": []
+        },
+        {
+          "videoId": "CGfF-OFZj9I",
+          "title": "Zoe Support vs Rell - VN Challenger Patch 25.08",
+          "rankClaim": "Challenger",
+          "patch": "25.8",
+          "durationSec": 1608,
+          "uploaded": "2025-04-26",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 354,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 390,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 479,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 496,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 534,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 796,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 874,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 892,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 910,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 942,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1005,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1103,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1151,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1178,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1204,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1362,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1377,
+              "label": "Get a Triple Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1505,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1587,
+              "label": "End credit"
+            }
+          ]
+        },
+        {
+          "videoId": "0Tz-dwqSkXY",
+          "title": "Zoe Support vs Rell - KR Master Patch 25.06",
+          "rankClaim": "Master",
+          "patch": "25.6",
+          "durationSec": 1696,
+          "region": "KR",
+          "uploaded": "2025-03-30",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 196,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 360,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 470,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 529,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 579,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 634,
+              "label": "Hunt The Void Grubs",
+              "kind": "grubs"
+            },
+            {
+              "atSec": 654,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 732,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 804,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 829,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 917,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 968,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 994,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1020,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1050,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1164,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1321,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1523,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1637,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1659,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1675,
+              "label": "End credit"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 555,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "XWKuxVZI7Cc",
+          "title": "Zoe Support vs Pyke - EUW Grandmaster Patch 25.14",
+          "rankClaim": "Grandmaster",
+          "patch": "25.14",
+          "durationSec": 1517,
+          "region": "EUW",
+          "uploaded": "2025-07-28",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 777,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "wga2vkE9k94",
+          "title": "Zoe Mid vs Yone - KR Challenger Patch 26.18",
+          "rankClaim": "Challenger",
+          "patch": "26.18",
+          "durationSec": 1642,
+          "region": "KR",
+          "uploaded": "2026-09-18",
+          "moments": []
+        },
+        {
+          "videoId": "SUI-LtyhaLc",
+          "title": "Zoe Mid vs Yone - KR Grandmaster Patch 25.20",
+          "rankClaim": "Grandmaster",
+          "patch": "25.20",
+          "durationSec": 1958,
+          "region": "KR",
+          "uploaded": "2025-10-11",
+          "moments": []
+        },
+        {
+          "videoId": "bZKMVOdBBcE",
+          "title": "Zoe Mid vs Yone - KR Master Patch 25.13",
+          "rankClaim": "Master",
+          "patch": "25.13",
+          "durationSec": 1844,
+          "region": "KR",
+          "uploaded": "2025-06-28",
+          "moments": []
+        },
+        {
+          "videoId": "rxeAYzNC9jc",
+          "title": "Zoe vs Yone Mid - KR Challenger - Patch 25.8 Season 15",
+          "rankClaim": "Challenger",
+          "patch": "25.8",
+          "durationSec": 2566,
+          "region": "KR",
+          "uploaded": "2025-04-26",
+          "moments": []
+        },
+        {
+          "videoId": "u4jsL6y7-jQ",
+          "title": "ShowMaker Zoe vs Yone Mid - KR Challenger - Patch 25.7 Season 15",
+          "rankClaim": "Challenger",
+          "patch": "25.7",
+          "durationSec": 1621,
+          "region": "KR",
+          "player": "ShowMaker",
+          "uploaded": "2025-04-14",
+          "moments": []
+        },
+        {
+          "videoId": "USXnUtk0bDs",
+          "title": "DK ShowMaker Zoe vs Yone [ MID ] Korea Grandmaster Patch 25.7 ✅",
+          "rankClaim": "Grandmaster",
+          "patch": "25.7",
+          "durationSec": 1417,
+          "region": "KR",
+          "player": "ShowMaker",
+          "team": "DK",
+          "uploaded": "2025-04-13",
+          "moments": []
+        },
+        {
+          "videoId": "Kp_m9Tql2C0",
+          "title": "Zoe Mid vs Yone - KR Grandmaster Patch 25.05",
+          "rankClaim": "Grandmaster",
+          "patch": "25.5",
+          "durationSec": 1937,
+          "region": "KR",
+          "uploaded": "2025-03-12",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 777,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "KzsMuVUYX3Q",
+          "title": "Zoe Top vs Yone - KR Master Patch 26.14",
+          "rankClaim": "Master",
+          "patch": "26.14",
+          "durationSec": 1842,
+          "region": "KR",
+          "uploaded": "2026-07-28",
+          "moments": []
+        },
+        {
+          "videoId": "ky-V2aTr_kQ",
+          "title": "Zoe Top vs Yone - KR Challenger Patch 26.12",
+          "rankClaim": "Challenger",
+          "patch": "26.12",
+          "durationSec": 1671,
+          "region": "KR",
+          "uploaded": "2026-06-23",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 800,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "UJza_KbeEao",
+          "title": "DK ShowMaker Zoe vs Mel [ MID ] Korea Challenger Patch 26.6",
+          "rankClaim": "Challenger",
+          "patch": "26.6",
+          "durationSec": 1287,
+          "region": "KR",
+          "player": "ShowMaker",
+          "team": "DK",
+          "uploaded": "2026-03-21",
+          "moments": []
+        },
+        {
+          "videoId": "aIsQztPmeYI",
+          "title": "Zoe Mid vs Mel - NA Challenger Patch 25.24",
+          "rankClaim": "Challenger",
+          "patch": "25.24",
+          "durationSec": 1537,
+          "region": "NA",
+          "uploaded": "2025-12-23",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 800,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "ogzVM5DyEzA",
+          "title": "(KC Busio) Zoe Support vs Mel (DIA Jeyrus) - EUW Challenger Patch 26.16",
+          "rankClaim": "Challenger",
+          "patch": "26.16",
+          "durationSec": 1739,
+          "region": "EUW",
+          "player": "Busio",
+          "team": "KC",
+          "uploaded": "2026-08-15",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 897,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "q4m7wEXa4bA",
+          "title": "Zoe Top vs K'Sante - TW Grandmaster Patch 26.20",
+          "rankClaim": "Grandmaster",
+          "patch": "26.20",
+          "durationSec": 1849,
+          "uploaded": "2026-10-20",
+          "result": "W",
+          "moments": [
+            {
+              "atSec": 32,
+              "label": "First Blood — Kayn kills Zyra",
+              "kind": "kill"
+            },
+            {
+              "atSec": 304,
+              "label": "Zoe catches K'Sante"
+            },
+            {
+              "atSec": 548,
+              "label": "Blue takes 1st Dragon (Cloud)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 552,
+              "label": "Zoe outduels K'Sante again"
+            },
+            {
+              "atSec": 866,
+              "label": "Red takes 1st Dragon (Mountain)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1213,
+              "label": "Syndra Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1271,
+              "label": "Red takes 2nd Dragon (Chemtech)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1356,
+              "label": "Zoe outduels Zyra"
+            },
+            {
+              "atSec": 1359,
+              "label": "Zoe Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1408,
+              "label": "Red takes Baron",
+              "kind": "baron"
+            },
+            {
+              "atSec": 1503,
+              "label": "Lucian eliminates Zyra"
+            },
+            {
+              "atSec": 1548,
+              "label": "Syndra takes down Renata Glasc"
+            },
+            {
+              "atSec": 1631,
+              "label": "Syndra Triple Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1694,
+              "label": "Red takes 3rd Dragon (Chemtech)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1784,
+              "label": "Zoe Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1787,
+              "label": "Zoe Triple Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1814,
+              "label": "Mid Inhibitor falls (Blue)"
+            },
+            {
+              "atSec": 1831,
+              "label": "Syndra takes down Renata Glasc"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 904,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "ec7D9gT5Pys",
+          "title": "Zoe Mid vs Zaahen - KR Challenger Patch 25.23",
+          "rankClaim": "Challenger",
+          "patch": "25.23",
+          "durationSec": 1674,
+          "region": "KR",
+          "uploaded": "2025-11-24",
+          "moments": []
+        }
+      ]
+    }
+  ]
+}

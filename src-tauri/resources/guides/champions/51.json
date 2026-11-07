@@ -1,0 +1,5273 @@
+{
+  "schema": 1,
+  "champion": 51,
+  "generatedAt": "2026-11-07T13:25:14.592Z",
+  "guides": [
+    {
+      "champion": 51,
+      "enemy": 21,
+      "lane": "adc",
+      "patch": "26.21",
+      "reviewed": false,
+      "difficulty": "Easy",
+      "favoredWhen": "Deny her Double Up angles and never all-in; poke wins.",
+      "keyTips": [
+        {
+          "text": "Never stand near low-health minions. Her Double Up ({cd:21:Q}) bounces off the dying wave into you, so farm from positions off the bounce line.",
+          "scope": "pair",
+          "sourceIds": [
+            "rowzkit"
+          ],
+          "patch": "26.21",
+          "abilityKeys": [
+            {
+              "champion": 21,
+              "key": "Q"
+            }
+          ]
+        },
+        {
+          "text": "Never all-in her. Poke from max range and leave — your edge is range she cannot answer, not dueling.",
+          "scope": "pair",
+          "sourceIds": [
+            "rowzkit"
+          ],
+          "patch": "26.21"
+        },
+        {
+          "text": "Her setup is Make It Rain ({cd:21:E}) slow into short support trades. Save 90 Caliber Net ({cd:51:E}) to break that chain, and poke hardest while her slow is down.",
+          "scope": "pair",
+          "sourceIds": [
+            "yunfang-mf"
+          ],
+          "patch": "26.21",
+          "abilityKeys": [
+            {
+              "champion": 21,
+              "key": "E"
+            },
+            {
+              "champion": 51,
+              "key": "E"
+            }
+          ]
+        }
+      ],
+      "enemyTips": {
+        "early-lane": [
+          {
+            "text": "Double Up bounces off a dying minion into the champion behind it. Never stand on the bounce line behind low-health minions when she steps up to farm.",
+            "scope": "enemy",
+            "sourceIds": [
+              "yunfang-mf"
+            ],
+            "patch": "26.21",
+            "abilityKeys": [
+              {
+                "champion": 21,
+                "key": "Q"
+              }
+            ]
+          },
+          {
+            "text": "Make It Rain slows you for her support's short trades. Save mobility for the slow and back out of the trade while it covers you.",
+            "scope": "enemy",
+            "sourceIds": [
+              "yunfang-mf"
+            ],
+            "patch": "26.21",
+            "abilityKeys": [
+              {
+                "champion": 21,
+                "key": "E"
+              }
+            ]
+          }
+        ]
+      },
+      "sections": {
+        "overview": {
+          "tips": []
+        },
+        "early-lane": {
+          "tips": [
+            {
+              "text": "Shape the wave so she never gets free bounce angles. When she lines up a Double Up off your dying minions, shove or reposition so no low minion sits between her and you.",
+              "scope": "pair",
+              "sourceIds": [
+                "rowzkit",
+                "yunfang-mf"
+              ],
+              "patch": "26.21",
+              "abilityKeys": [
+                {
+                  "champion": 21,
+                  "key": "Q"
+                }
+              ]
+            },
+            {
+              "text": "She looks for short trades with her support, never alone. Poke her when she is isolated and concede the trade the moment her support walks up.",
+              "scope": "pair",
+              "sourceIds": [
+                "yunfang-mf"
+              ],
+              "patch": "26.21"
+            }
+          ]
+        },
+        "mid-lane": {
+          "tips": [
+            {
+              "text": "Keep your net or Flash up in every skirmish. Without disengage ready, her all-in plus her support's chain runs you down before your range matters.",
+              "scope": "pair",
+              "sourceIds": [
+                "rowzkit"
+              ],
+              "patch": "26.21",
+              "abilityKeys": [
+                {
+                  "champion": 51,
+                  "key": "E"
+                }
+              ]
+            },
+            {
+              "text": "Seed traps on the chokes her support uses to walk up. If they cannot reach the short-trade setup, she is stuck eating poke from outside her reply range.",
+              "scope": "pair",
+              "sourceIds": [
+                "yunfang-mf"
+              ],
+              "patch": "26.21",
+              "abilityKeys": [
+                {
+                  "champion": 51,
+                  "key": "W"
+                }
+              ]
+            }
+          ]
+        },
+        "win-condition": {
+          "tips": [
+            {
+              "text": "Fight away from minion waves at objectives. With no dying wave there is no Double Up bounce, and her poke falls off without it.",
+              "scope": "pair",
+              "sourceIds": [
+                "rowzkit"
+              ],
+              "patch": "26.21",
+              "abilityKeys": [
+                {
+                  "champion": 21,
+                  "key": "Q"
+                }
+              ]
+            },
+            {
+              "text": "Turn every poke lead into plates and towers at once. Do not trade kills into her support's short-trade game when the turret is free.",
+              "scope": "pair",
+              "sourceIds": [
+                "rowzkit",
+                "yunfang-mf"
+              ],
+              "patch": "26.21"
+            }
+          ]
+        }
+      },
+      "itemization": [
+        {
+          "text": "No single item spike decides this lane. Keep buys tempo-positive and keep pressing range — your wins come from lane pressure, not an item break.",
+          "scope": "pair",
+          "sourceIds": [
+            "rowzkit"
+          ],
+          "patch": "26.21"
+        }
+      ],
+      "sources": [
+        {
+          "id": "rowzkit",
+          "author": "rowzkit",
+          "rankClaim": "Emerald (profile badge; title and guide text claim Master ADC) · Caitlyn main",
+          "rank": "emerald",
+          "url": "https://www.mobafire.com/league-of-legends/build/26-21-master-adc-caitlyn-guide-1-shot-late-game-scaling-caitlyn-build-meta-build-included-643874",
+          "kind": "mobafire"
+        },
+        {
+          "id": "yunfang-mf",
+          "author": "Yunfang",
+          "rankClaim": "Diamond (profile badge; guide text claims Master ADC main) · Miss Fortune main",
+          "rank": "diamond",
+          "url": "https://www.mobafire.com/league-of-legends/build/s2026-21-easy-to-read-simple-1v9-live-ama-full-guide-updated-650250",
+          "kind": "mobafire"
+        }
+      ]
+    },
+    {
+      "champion": 51,
+      "enemy": 202,
+      "lane": "adc",
+      "patch": "26.21",
+      "reviewed": false,
+      "difficulty": "Medium",
+      "favoredWhen": "Press your range lead early; an even game is his.",
+      "keyTips": [
+        {
+          "text": "You out-range him all lane. Keep every trade at max auto and Piltover Peacemaker distance, where he cannot answer with fourth-shot trades.",
+          "scope": "pair",
+          "sourceIds": [
+            "rowzkit"
+          ],
+          "patch": "26.21",
+          "abilityKeys": [
+            {
+              "champion": 51,
+              "key": "Q"
+            }
+          ]
+        },
+        {
+          "text": "Never linger at low health. His Curtain Call ({cd:202:R}) finishes low targets, so reset or hold your net to break the line instead of greedying one more wave.",
+          "scope": "pair",
+          "sourceIds": [
+            "rowzkit"
+          ],
+          "patch": "26.21",
+          "abilityKeys": [
+            {
+              "champion": 202,
+              "key": "R"
+            },
+            {
+              "champion": 51,
+              "key": "E"
+            }
+          ]
+        },
+        {
+          "text": "An even lane belongs to him. He outscales hard and is content going 0/0/0, so every even minute is his win — press the lead while your range rules.",
+          "scope": "pair",
+          "sourceIds": [
+            "antiwis"
+          ],
+          "patch": "26.21"
+        }
+      ],
+      "enemyTips": {
+        "early-lane": [
+          {
+            "text": "Jhin loads his fourth shot on a minion and holds it to zone you off the wave. Trade while it is spent and give ground while it is held.",
+            "scope": "enemy",
+            "sourceIds": [
+              "omibro"
+            ],
+            "patch": "26.19",
+            "abilityKeys": [
+              {
+                "champion": 202,
+                "key": "Q"
+              }
+            ]
+          },
+          {
+            "text": "Deadly Flourish is a follow-up for support crowd control, not dry poke. A wasted W is your window to walk up.",
+            "scope": "enemy",
+            "sourceIds": [
+              "omibro"
+            ],
+            "patch": "26.19",
+            "abilityKeys": [
+              {
+                "champion": 202,
+                "key": "W"
+              }
+            ]
+          }
+        ],
+        "win-condition": [
+          {
+            "text": "A landed Deadly Flourish sets up a guaranteed first Curtain Call shot when fired instantly. Break vision lines and stay mobile once it connects.",
+            "scope": "enemy",
+            "sourceIds": [
+              "omibro"
+            ],
+            "patch": "26.19",
+            "abilityKeys": [
+              {
+                "champion": 202,
+                "key": "W"
+              },
+              {
+                "champion": 202,
+                "key": "R"
+              }
+            ]
+          }
+        ]
+      },
+      "sections": {
+        "overview": {
+          "tips": []
+        },
+        "early-lane": {
+          "tips": [
+            {
+              "text": "Race him to level 2 with your support. The first engage usually decides who holds the wave for the next minutes.",
+              "scope": "pair",
+              "sourceIds": [
+                "yunfang"
+              ],
+              "patch": "26.20"
+            },
+            {
+              "text": "Trade while his fourth shot is spent and give ground while he holds it. The loaded shot zones you off the wave even without firing.",
+              "scope": "pair",
+              "sourceIds": [
+                "omibro"
+              ],
+              "patch": "26.21",
+              "abilityKeys": [
+                {
+                  "champion": 202,
+                  "key": "Q"
+                }
+              ]
+            },
+            {
+              "text": "Never commit to a trade without 90 Caliber Net ({cd:51:E}) or Flash up. If both are down, concede the wave rather than offering him a kill.",
+              "scope": "pair",
+              "sourceIds": [
+                "rowzkit"
+              ],
+              "patch": "26.21",
+              "abilityKeys": [
+                {
+                  "champion": 51,
+                  "key": "E"
+                }
+              ]
+            }
+          ]
+        },
+        "mid-lane": {
+          "tips": [
+            {
+              "text": "Force fights through your support, not your autos. He is useless once crowd controlled, so call the engage and follow it instead of trading into his range alone.",
+              "scope": "pair",
+              "sourceIds": [
+                "yunfang"
+              ],
+              "patch": "26.20"
+            },
+            {
+              "text": "His Deadly Flourish ({cd:202:W}) only follows support crowd control, never dry poke. When their support misses, that is your window to walk up and poke freely.",
+              "scope": "pair",
+              "sourceIds": [
+                "omibro"
+              ],
+              "patch": "26.21",
+              "abilityKeys": [
+                {
+                  "champion": 202,
+                  "key": "W"
+                }
+              ]
+            }
+          ]
+        },
+        "win-condition": {
+          "tips": [
+            {
+              "text": "Convert the range lead into plates and dragons. Sitting even lets his scaling erase your lane, so every lead must become map pressure.",
+              "scope": "pair",
+              "sourceIds": [
+                "antiwis"
+              ],
+              "patch": "26.21"
+            },
+            {
+              "text": "In fights, hold your net for his root-into-Curtain Call ({cd:202:R}) starter. Dash out the moment support control lands on you so his guaranteed first shot never comes.",
+              "scope": "pair",
+              "sourceIds": [
+                "rowzkit",
+                "omibro"
+              ],
+              "patch": "26.21",
+              "abilityKeys": [
+                {
+                  "champion": 51,
+                  "key": "E"
+                },
+                {
+                  "champion": 202,
+                  "key": "W"
+                },
+                {
+                  "champion": 202,
+                  "key": "R"
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "itemization": [
+        {
+          "text": "There is no item race to win here. Even gold favors him because of his scaling, so base on clean crashes and keep tempo instead of forcing buys for a spike.",
+          "scope": "pair",
+          "sourceIds": [
+            "antiwis"
+          ],
+          "patch": "26.21"
+        }
+      ],
+      "sources": [
+        {
+          "id": "rowzkit",
+          "author": "rowzkit",
+          "rankClaim": "Emerald (profile badge; title and guide text claim Master ADC) · Caitlyn main",
+          "rank": "emerald",
+          "url": "https://www.mobafire.com/league-of-legends/build/26-21-master-adc-caitlyn-guide-1-shot-late-game-scaling-caitlyn-build-meta-build-included-643874",
+          "kind": "mobafire"
+        },
+        {
+          "id": "antiwis",
+          "author": "Antiwis",
+          "rankClaim": "Diamond (profile badge; title claims Master Elo OTP) · Jhin main",
+          "rank": "diamond",
+          "url": "https://www.mobafire.com/league-of-legends/build/26-21-jhin-guide-real-updates-every-patch-master-elo-otp-633981",
+          "kind": "mobafire"
+        },
+        {
+          "id": "yunfang",
+          "author": "Yunfang",
+          "rankClaim": "Diamond (profile badge; guide text claims Master ADC main) · Jhin main",
+          "rank": "diamond",
+          "url": "https://www.mobafire.com/league-of-legends/build/s2026-20-easy-to-read-simple-1v9-live-ama-full-guide-updated-650175",
+          "kind": "mobafire"
+        },
+        {
+          "id": "omibro",
+          "author": "Omibro",
+          "rankClaim": "Challenger ADC and coach · Jhin main",
+          "rank": "challenger",
+          "url": "https://www.youtube.com/watch?v=8Ln7EC-ryxo&t=3259s",
+          "kind": "youtube"
+        }
+      ]
+    }
+  ],
+  "general": [
+    {
+      "champion": 51,
+      "lane": "adc",
+      "patch": "26.21",
+      "reviewed": false,
+      "keyTips": [
+        {
+          "text": "Lean on early range and poke to run the wave and collect tower plates.",
+          "scope": "champion",
+          "sourceIds": [
+            "mobalytics-caitlyn"
+          ]
+        },
+        {
+          "text": "At level 6, finish low targets with R from safety, since its channel breaks easily in close fights.",
+          "scope": "champion",
+          "sourceIds": [
+            "mobalytics-caitlyn"
+          ],
+          "abilityKeys": [
+            {
+              "champion": 51,
+              "key": "R"
+            }
+          ]
+        },
+        {
+          "text": "Keep the range edge late and pressure from distance instead of trading front-to-back damage.",
+          "scope": "champion",
+          "sourceIds": [
+            "mobalytics-caitlyn"
+          ]
+        }
+      ],
+      "sections": {
+        "overview": {
+          "tips": []
+        },
+        "early-lane": {
+          "tips": [
+            {
+              "text": "Fire Q down a line that clears the wave and tags the opponent together.",
+              "scope": "champion",
+              "sourceIds": [
+                "mobalytics-caitlyn"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 51,
+                  "key": "Q"
+                }
+              ]
+            },
+            {
+              "text": "Spend empowered Headshot autos on champions to tilt trades.",
+              "scope": "champion",
+              "sourceIds": [
+                "mobalytics-caitlyn"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 51,
+                  "key": "P"
+                }
+              ]
+            },
+            {
+              "text": "Practice trap spots where opponents walk, using W to lock lane control.",
+              "scope": "champion",
+              "sourceIds": [
+                "mobalytics-caitlyn"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 51,
+                  "key": "W"
+                }
+              ]
+            },
+            {
+              "text": "Hold E whenever the enemy can all-in, since an offensive net leaves Caitlyn exposed.",
+              "scope": "champion",
+              "sourceIds": [
+                "mobalytics-caitlyn"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 51,
+                  "key": "E"
+                }
+              ]
+            },
+            {
+              "text": "After the first bot tower, rotate mid to press the next outer tower.",
+              "scope": "champion",
+              "sourceIds": [
+                "mobalytics-caitlyn"
+              ]
+            }
+          ]
+        },
+        "mid-lane": {
+          "tips": [
+            {
+              "text": "Open the map from mid after the first tower and pressure nearby objectives.",
+              "scope": "champion",
+              "sourceIds": [
+                "mobalytics-caitlyn"
+              ]
+            },
+            {
+              "text": "Kite backward through fights and save E as the escape from hard engage, since she stays fragile.",
+              "scope": "champion",
+              "sourceIds": [
+                "mobalytics-caitlyn"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 51,
+                  "key": "E"
+                }
+              ]
+            },
+            {
+              "text": "Stay near the support and never cross unwarded ground alone where ambushes wait.",
+              "scope": "champion",
+              "sourceIds": [
+                "mobalytics-caitlyn"
+              ]
+            },
+            {
+              "text": "At level 9, clear waves faster with maxed Q and keep hammering towers.",
+              "scope": "champion",
+              "sourceIds": [
+                "mobalytics-caitlyn"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 51,
+                  "key": "Q"
+                }
+              ]
+            },
+            {
+              "text": "Treat extra components as better poke and trades without fixing her weak mid-game survival.",
+              "scope": "champion",
+              "sourceIds": [
+                "mobalytics-caitlyn"
+              ]
+            },
+            {
+              "text": "At level 11, execute from a safe angle with the stronger R instead of channeling mid-fight.",
+              "scope": "champion",
+              "sourceIds": [
+                "mobalytics-caitlyn"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 51,
+                  "key": "R"
+                }
+              ]
+            }
+          ]
+        },
+        "win-condition": {
+          "tips": [
+            {
+              "text": "Stay with the team late and refuse to get caught alone.",
+              "scope": "champion",
+              "sourceIds": [
+                "mobalytics-caitlyn"
+              ]
+            },
+            {
+              "text": "Hit the nearest reachable target and keep moving to hold distance from threats.",
+              "scope": "champion",
+              "sourceIds": [
+                "mobalytics-caitlyn"
+              ]
+            },
+            {
+              "text": "Spend E to make space from the frontline rather than stepping up for a risky shot.",
+              "scope": "champion",
+              "sourceIds": [
+                "mobalytics-caitlyn"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 51,
+                  "key": "E"
+                }
+              ]
+            },
+            {
+              "text": "At level 16, finish weakened targets with the next R rank from a still-safe window.",
+              "scope": "champion",
+              "sourceIds": [
+                "mobalytics-caitlyn"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 51,
+                  "key": "R"
+                }
+              ]
+            },
+            {
+              "text": "Deliver critical-strike autos through positioning and constant kiting once late scaling arrives.",
+              "scope": "champion",
+              "sourceIds": [
+                "mobalytics-caitlyn"
+              ]
+            }
+          ]
+        }
+      },
+      "itemization": [],
+      "sources": [
+        {
+          "id": "mobalytics-caitlyn",
+          "author": "Mobalytics",
+          "rankClaim": "No rank claim",
+          "url": "https://mobalytics.gg/lol/champions/caitlyn/guide",
+          "kind": "web"
+        }
+      ]
+    }
+  ],
+  "vods": [
+    {
+      "lane": "adc",
+      "videos": [
+        {
+          "videoId": "K_4HiZl0g8I",
+          "title": "\"Jz\" 2000LP Caitlyn : 1v5 God Level of Spacing Tearing KR Master Apart - Engsub ( vs Aphe )",
+          "rankClaim": "Master",
+          "patch": "26.21",
+          "durationSec": 812,
+          "region": "KR",
+          "patchEstimated": true,
+          "player": "Jz",
+          "uploaded": "2026-10-24",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "gTS8EleJxP4",
+          "title": "\"JZ\" 2000LP Caitlyn : STORMING KOREAN Master Elo - Engsub ( vs MF, Tris )",
+          "rankClaim": "Master",
+          "patch": "26.20",
+          "durationSec": 1403,
+          "patchEstimated": true,
+          "player": "Jz",
+          "uploaded": "2026-10-13",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "ZfXvvxVl_so",
+          "title": "RULER : His Caitlyn Mechanic is so CLEAN \" 200IQ TRAPS \" Engsub",
+          "rankClaim": "Master+",
+          "patch": "26.20",
+          "durationSec": 1191,
+          "patchEstimated": true,
+          "player": "Ruler",
+          "uploaded": "2026-10-11",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "OrLfnqXRnpc",
+          "title": "\"Jz\" 2000LP Caitlyn : He is The ONLY HOPE WE GOT - Engsub",
+          "rankClaim": "Master+",
+          "patch": "26.19",
+          "durationSec": 1091,
+          "patchEstimated": true,
+          "player": "Jz",
+          "uploaded": "2026-10-06",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "PZ4mZ-wI0h8",
+          "title": "\"Jz\" 2000LP Caitlyn : Laning Phase Again Him is a NIGHT MARE - Engsub",
+          "rankClaim": "Master+",
+          "patch": "26.19",
+          "durationSec": 1295,
+          "patchEstimated": true,
+          "player": "Jz",
+          "uploaded": "2026-09-28",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "rh3zNg50_4o",
+          "title": "Gumayusi : His Caitlyn is a MONSTER, Just Kiting Enemies to Death - Engsub",
+          "rankClaim": "Master+",
+          "patch": "26.17",
+          "durationSec": 722,
+          "patchEstimated": true,
+          "player": "Gumayusi",
+          "uploaded": "2026-09-08",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "-nfe0BOW4qc",
+          "title": "\"Jz\" 2000LP Caitlyn : His Spacing is Perfectly CLEAN \" Make No Mistake \" Engsub ( vs Tris, Aphe )",
+          "rankClaim": "Master+",
+          "patch": "26.17",
+          "durationSec": 1361,
+          "patchEstimated": true,
+          "player": "Jz",
+          "uploaded": "2026-09-07",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "r5QUrTjD20Y",
+          "title": "\"Jz\" 2000LP Caitlyn : This Game Basiclly Over at First Min \" Total Dominating \" Engsub",
+          "rankClaim": "Master+",
+          "patch": "26.17",
+          "durationSec": 1681,
+          "patchEstimated": true,
+          "player": "Jz",
+          "uploaded": "2026-09-04",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "1URrm8fcMY0",
+          "title": "\"Jz\" 2000LP Caitlyn : How to Pressuring Enemy in Early Game \" Make Sure Ther Can Breath \" Engsub",
+          "rankClaim": "Master+",
+          "patch": "26.17",
+          "durationSec": 1347,
+          "patchEstimated": true,
+          "player": "Jz",
+          "uploaded": "2026-08-31",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "ldO0FHIzQr4",
+          "title": "SMASH : His Caitlyn is a COMPLETE NIGHTMARE To Laning With \" Make No Mistake \" Engsub",
+          "rankClaim": "Master+",
+          "patch": "26.17",
+          "durationSec": 1055,
+          "patchEstimated": true,
+          "player": "Smash",
+          "uploaded": "2026-08-29",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "GPlhmx-HhYw",
+          "title": "Doggo Caitlyn : OMG \" Me & FAKER Destroying KR HighElo in Less 20 Min \" Engsub",
+          "rankClaim": "Master+",
+          "patch": "26.17",
+          "durationSec": 696,
+          "region": "KR",
+          "patchEstimated": true,
+          "player": "Faker",
+          "uploaded": "2026-08-29",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "b2Kh06uC2Wg",
+          "title": "\"Jz\" 2000LP Caitlyn : ONE BULLET - ONE SHOT - ONE KILL / Engsub",
+          "rankClaim": "Master+",
+          "patch": "26.14",
+          "durationSec": 1454,
+          "patchEstimated": true,
+          "player": "Jz",
+          "uploaded": "2026-07-26",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "iY9sWdvZe6U",
+          "title": "When Gumayusi Pick Caitlyn to visit Fan Town Diamond \" 20 Kill in One Game \" Engsub",
+          "rankClaim": "Master+",
+          "patch": "26.11",
+          "durationSec": 994,
+          "patchEstimated": true,
+          "player": "Gumayusi",
+          "uploaded": "2026-06-06",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "xCR4_ivnrbI",
+          "title": "Uzi : His Caitlyn is on A NEXT LEVEL OF INSANE, DOMINATING KR Challenger Elo - Engsub",
+          "rankClaim": "Challenger",
+          "patch": "26.10",
+          "durationSec": 1102,
+          "region": "KR",
+          "patchEstimated": true,
+          "player": "Uzi",
+          "uploaded": "2026-05-24",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "9xGxbWz2uYE",
+          "title": "Gumayusi : His Caitlyn Mechanic is on A NEXT LEVEL CRAZINESS - Engsub",
+          "rankClaim": "Master+",
+          "patch": "26.8",
+          "durationSec": 1027,
+          "patchEstimated": true,
+          "player": "Gumayusi",
+          "uploaded": "2026-04-26",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "ms53KNJh2X0",
+          "title": "T1 Peyz : His Caitlyn Kiting is so AMAZING",
+          "rankClaim": "Master+",
+          "patch": "26.8",
+          "durationSec": 1264,
+          "patchEstimated": true,
+          "player": "Peyz",
+          "uploaded": "2026-04-24",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "1H8_qA2ChmQ",
+          "title": "Smash : His Caitlyn TRAPS SETUP BAITING IS 200IQ - Engsub",
+          "rankClaim": "Master+",
+          "patch": "26.8",
+          "durationSec": 1154,
+          "patchEstimated": true,
+          "player": "Smash",
+          "uploaded": "2026-04-23",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "pu5DTEKHKHI",
+          "title": "Gumayusi : His Caitlyn Mechanic is Gonna Blow You Mind - Engsub",
+          "rankClaim": "Master+",
+          "patch": "26.8",
+          "durationSec": 636,
+          "patchEstimated": true,
+          "player": "Gumayusi",
+          "uploaded": "2026-04-21",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "eNo1XM-jF-U",
+          "title": "T1 Peyz : His Caitlyn Mechanic is so SMOOTH",
+          "rankClaim": "Master+",
+          "patch": "26.7",
+          "durationSec": 1110,
+          "patchEstimated": true,
+          "player": "Peyz",
+          "uploaded": "2026-04-14",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "X6r8xAy4jA0",
+          "title": "Teddy Caitlyn : Enemy Has No Answer For This DOMINATING - Engsub",
+          "rankClaim": "Master+",
+          "patch": "26.6",
+          "durationSec": 1038,
+          "patchEstimated": true,
+          "player": "Teddy",
+          "uploaded": "2026-03-20",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "JrbEfCOXwAU",
+          "title": "Teddy : His Caitlyn Spacing is too SMOOTH - Engsub",
+          "rankClaim": "Master+",
+          "patch": "26.5",
+          "durationSec": 1269,
+          "patchEstimated": true,
+          "player": "Teddy",
+          "uploaded": "2026-03-14",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "SDp5puqkGpI",
+          "title": "Uzi : His Caitlyn Spacing is so CLEAN - Engsub",
+          "rankClaim": "Master+",
+          "patch": "26.4",
+          "durationSec": 864,
+          "patchEstimated": true,
+          "player": "Uzi",
+          "uploaded": "2026-02-25",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "T2oS9G0Uh0c",
+          "title": "Uzi : His Caitlyn Spacing at Peak Perfomance - Engsub",
+          "rankClaim": "Master+",
+          "patch": "26.3",
+          "durationSec": 1377,
+          "patchEstimated": true,
+          "player": "Uzi",
+          "uploaded": "2026-02-08",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "NnO6lZE6Au4",
+          "title": "Uzi : His Caitlyn Spacing is so CLEAN - Engsub",
+          "rankClaim": "Master+",
+          "patch": "26.3",
+          "durationSec": 1280,
+          "patchEstimated": true,
+          "player": "Uzi",
+          "uploaded": "2026-02-07",
+          "format": "stream",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "pfRo71kveis",
+          "title": "Baicaiovo Caitlyn : This Super Server GOD is DEVASTATING Challenger Elo with CLEAN Kiting",
+          "rankClaim": "Challenger",
+          "patch": "26.8",
+          "durationSec": 1066,
+          "patchEstimated": true,
+          "player": "Baicaiovo",
+          "uploaded": "2026-04-20",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "xfwMhvbD854",
+          "title": "Rank 1 Caitlyn : This Dude is TEARING APART the Super Server with INSANE Mechanics",
+          "rankClaim": "Master+",
+          "patch": "26.7",
+          "durationSec": 1050,
+          "patchEstimated": true,
+          "player": "Baicaiovo",
+          "uploaded": "2026-04-09",
+          "format": "stream",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 4,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "HKh-JxnqYx4",
+          "title": "Caitlyn Mid vs Twisted Fate - NA Grandmaster Patch 26.09",
+          "rankClaim": "Grandmaster",
+          "patch": "26.9",
+          "durationSec": 1772,
+          "region": "NA",
+          "uploaded": "2026-05-08",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 8,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "ghErvPh7cqw",
+          "title": "(LGD Shaoye) Caitlyn Mid vs Vladimir - KR Challenger Patch 26.14",
+          "rankClaim": "Challenger",
+          "patch": "26.14",
+          "durationSec": 1503,
+          "region": "KR",
+          "player": "LGD Shaoye",
+          "uploaded": "2026-07-20",
+          "moments": []
+        },
+        {
+          "videoId": "p9m3PFlRJB0",
+          "title": "Caitlyn Mid vs Vladimir - NA Grandmaster Patch 26.07",
+          "rankClaim": "Grandmaster",
+          "patch": "26.7",
+          "durationSec": 1588,
+          "region": "NA",
+          "uploaded": "2026-04-12",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 8,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "xaXEwGEGc08",
+          "title": "Caitlyn Top vs Vladimir - NA Grandmaster Patch 25.22",
+          "rankClaim": "Grandmaster",
+          "patch": "25.22",
+          "durationSec": 1551,
+          "region": "NA",
+          "uploaded": "2025-11-15",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 13,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "F_US4GK6gSs",
+          "title": "Caitlyn Mid vs Ryze - NA Grandmaster Patch 25.24",
+          "rankClaim": "Grandmaster",
+          "patch": "25.24",
+          "durationSec": 1619,
+          "region": "NA",
+          "uploaded": "2026-01-10",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 15,
+      "lane": "adc",
+      "videos": [
+        {
+          "videoId": "3feiBIVqOT4",
+          "title": "Caitlyn ADC vs Sivir - KR Challenger Patch 26.19",
+          "rankClaim": "Challenger",
+          "patch": "26.19",
+          "durationSec": 1752,
+          "region": "KR",
+          "uploaded": "2026-10-07",
+          "result": "W",
+          "moments": [
+            {
+              "atSec": 200,
+              "label": "First Blood — Caitlyn kills Alistar",
+              "kind": "kill"
+            },
+            {
+              "atSec": 207,
+              "label": "Caitlyn Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 329,
+              "label": "Kindred kills Alistar",
+              "kind": "kill"
+            },
+            {
+              "atSec": 407,
+              "label": "Red takes 1st Dragon (Chemtech)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 450,
+              "label": "Caitlyn outduels Sivir"
+            },
+            {
+              "atSec": 739,
+              "label": "Caitlyn Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 787,
+              "label": "Red takes 2nd Dragon (Ocean)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1124,
+              "label": "Red takes 3rd Dragon (Infernal)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1281,
+              "label": "Blue takes Baron",
+              "kind": "baron"
+            },
+            {
+              "atSec": 1360,
+              "label": "Team fight (3 kills)",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1452,
+              "label": "Blue takes 1st Dragon (Infernal)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1621,
+              "label": "Caitlyn eliminates Kha'Zix"
+            },
+            {
+              "atSec": 1660,
+              "label": "Red takes Baron",
+              "kind": "baron"
+            },
+            {
+              "atSec": 1689,
+              "label": "Caitlyn Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1698,
+              "label": "Mid Inhibitor falls (Blue)"
+            }
+          ]
+        },
+        {
+          "videoId": "IIWEdxnECr0",
+          "title": "Caitlyn vs Sivir [ ADC ] Korea Challenger 2584 LP | Patch 26.14",
+          "rankClaim": "Challenger",
+          "patch": "26.14",
+          "durationSec": 1839,
+          "region": "KR",
+          "uploaded": "2026-07-25",
+          "moments": []
+        },
+        {
+          "videoId": "bOgx3JiBPrA",
+          "title": "(AP Kehvo) Caitlyn ADC vs Sivir (Creon) - EUW Grandmaster Patch 26.14",
+          "rankClaim": "Grandmaster",
+          "patch": "26.14",
+          "durationSec": 1851,
+          "region": "EUW",
+          "player": "AP Kehvo",
+          "uploaded": "2026-07-25",
+          "moments": []
+        },
+        {
+          "videoId": "oUCHWZgwiAo",
+          "title": "Uzi : His Caitlyn is so Dam Good, STORMING KR HighElo - Engsub ( Caitlyn vs Sivir )",
+          "rankClaim": "Master+",
+          "patch": "26.10",
+          "durationSec": 816,
+          "region": "KR",
+          "patchEstimated": true,
+          "player": "Uzi",
+          "uploaded": "2026-05-23",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "fWml5NMjlzw",
+          "title": "【Jzad】1600LP Caitlyn : His Kiting Skill is LEGIT INSANE - Engsub ( Caitlyn vs Sivir, Aphe )",
+          "rankClaim": "Master+",
+          "patch": "26.10",
+          "durationSec": 1496,
+          "patchEstimated": true,
+          "uploaded": "2026-05-21",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "zEw5qyVZpn4",
+          "title": "Caitlyn ADC vs Sivir - EUW Challenger Patch 26.07",
+          "rankClaim": "Challenger",
+          "patch": "26.7",
+          "durationSec": 1528,
+          "region": "EUW",
+          "uploaded": "2026-04-05",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 204,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 435,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 692,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 760,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 779,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 800,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 834,
+              "label": "Hunt The Dragon",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 930,
+              "label": "Hunt The Rift Herald",
+              "kind": "herald"
+            },
+            {
+              "atSec": 957,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1063,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1111,
+              "label": "Take down The Inhibitor"
+            },
+            {
+              "atSec": 1159,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1174,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1200,
+              "label": "Hunt The Baron Nashor",
+              "kind": "baron"
+            },
+            {
+              "atSec": 1272,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1289,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1363,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1485,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1517,
+              "label": "End credit"
+            }
+          ]
+        },
+        {
+          "videoId": "WsRVIC0BsB4",
+          "title": "Caitlyn ADC vs Sivir - EUW Challenger Patch 25.18",
+          "rankClaim": "Challenger",
+          "patch": "25.18",
+          "durationSec": 1687,
+          "region": "EUW",
+          "uploaded": "2025-09-26",
+          "moments": []
+        },
+        {
+          "videoId": "4Hs5MTrBp3Y",
+          "title": "Caitlyn vs Sivir ADC - EUW Grandmaster - Patch 25.17 Season 15",
+          "rankClaim": "Grandmaster",
+          "patch": "25.17",
+          "durationSec": 1381,
+          "region": "EUW",
+          "uploaded": "2025-09-09",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 15,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "WfeW2dDZKsI",
+          "title": "LEARNING THE BULLY OF BOTLANE",
+          "rankClaim": "Master+",
+          "patch": "26.5",
+          "durationSec": 22227,
+          "patchEstimated": true,
+          "player": "Alois",
+          "uploaded": "2026-03-15",
+          "format": "stream",
+          "cam": true,
+          "startSec": 30,
+          "endSec": 1980,
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 17,
+      "lane": "adc",
+      "videos": [
+        {
+          "videoId": "LIOpENUGY6Y",
+          "title": "T1 Gumayusi Caitlyn ADC vs Teemo - Patch 25.2 Korea Challenger ✅",
+          "rankClaim": "Challenger",
+          "patch": "25.2",
+          "durationSec": 1339,
+          "region": "KR",
+          "player": "Gumayusi",
+          "team": "T1",
+          "uploaded": "2025-01-30",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 18,
+      "lane": "adc",
+      "videos": [
+        {
+          "videoId": "kc_laJsKlAw",
+          "title": "Caitlyn vs Tristana [ ADC ] Korea Challenger 2294 LP | Patch 26.20",
+          "rankClaim": "Challenger",
+          "patch": "26.20",
+          "durationSec": 1674,
+          "region": "KR",
+          "uploaded": "2026-10-20",
+          "moments": [
+            {
+              "atSec": 0,
+              "label": "Early game preparation"
+            },
+            {
+              "atSec": 21,
+              "label": "Laning phase and skirmishes"
+            },
+            {
+              "atSec": 514,
+              "label": "Mid-game objective control"
+            },
+            {
+              "atSec": 821,
+              "label": "Securing the lead"
+            },
+            {
+              "atSec": 1075,
+              "label": "Baron and map control",
+              "kind": "baron"
+            },
+            {
+              "atSec": 1432,
+              "label": "Final push and victory"
+            }
+          ]
+        },
+        {
+          "videoId": "FXIO2S0cT2I",
+          "title": "Caitlyn vs Tristana ADC - KR Challenger - Patch 16.20 Season 16",
+          "rankClaim": "Challenger",
+          "patch": "26.20",
+          "durationSec": 1620,
+          "region": "KR",
+          "uploaded": "2026-10-16",
+          "moments": []
+        },
+        {
+          "videoId": "R_iyvM9La2w",
+          "title": "Caitlyn ADC vs Tristana - KR Master Patch 25.18",
+          "rankClaim": "Master",
+          "patch": "25.18",
+          "durationSec": 1678,
+          "region": "KR",
+          "uploaded": "2025-09-18",
+          "moments": []
+        },
+        {
+          "videoId": "6I5FlKVcK8s",
+          "title": "Caitlyn ADC vs Tristana - KR Master Patch 25.17",
+          "rankClaim": "Master",
+          "patch": "25.17",
+          "durationSec": 2037,
+          "region": "KR",
+          "uploaded": "2025-09-02",
+          "moments": []
+        },
+        {
+          "videoId": "9cUb35JMFfw",
+          "title": "Caitlyn vs Tristana ADC - KR Master - Patch 25.11 Season 15",
+          "rankClaim": "Master",
+          "patch": "25.11",
+          "durationSec": 1471,
+          "region": "KR",
+          "uploaded": "2025-06-04",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 18,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "YjB2i6NKVok",
+          "title": "Caitlyn Top vs Tristana - NA Grandmaster Patch 26.01",
+          "rankClaim": "Grandmaster",
+          "patch": "26.1",
+          "durationSec": 1454,
+          "region": "NA",
+          "uploaded": "2026-01-21",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 21,
+      "lane": "adc",
+      "videos": [
+        {
+          "videoId": "MKGFQyZZuBo",
+          "title": "Caitlyn vs Miss Fortune ADC - KR Grandmaster - Patch 16.09 Season 16",
+          "rankClaim": "Grandmaster",
+          "patch": "26.9",
+          "durationSec": 1356,
+          "region": "KR",
+          "uploaded": "2026-05-09",
+          "moments": []
+        },
+        {
+          "videoId": "bAvtPd0rltY",
+          "title": "Caitlyn ADC vs Miss Fortune - KR Challenger Patch 26.02",
+          "rankClaim": "Challenger",
+          "patch": "26.2",
+          "durationSec": 1527,
+          "region": "KR",
+          "uploaded": "2026-01-24",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 410,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 480,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 605,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 720,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 792,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 828,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 899,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1088,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1120,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1187,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1286,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1381,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1395,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1435,
+              "label": "Take down The Inhibitor"
+            },
+            {
+              "atSec": 1476,
+              "label": "Get a Triple Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1516,
+              "label": "End credit"
+            }
+          ]
+        },
+        {
+          "videoId": "st0JXSONP34",
+          "title": "Caitlyn vs Miss Fortune ADC - KR Challenger - Patch 25.19 Season 15",
+          "rankClaim": "Challenger",
+          "patch": "25.19",
+          "durationSec": 1321,
+          "region": "KR",
+          "uploaded": "2025-09-25",
+          "moments": []
+        },
+        {
+          "videoId": "DK5idFqd45g",
+          "title": "Caitlyn vs Miss Fortune ADC - EUW Grandmaster - Patch 25.15 Season 15",
+          "rankClaim": "Grandmaster",
+          "patch": "25.15",
+          "durationSec": 1951,
+          "region": "EUW",
+          "uploaded": "2025-08-07",
+          "moments": []
+        },
+        {
+          "videoId": "83ZImOIbBeA",
+          "title": "Caitlyn ADC vs Miss Fortune - KR Grandmaster Patch 25.13",
+          "rankClaim": "Grandmaster",
+          "patch": "25.13",
+          "durationSec": 1539,
+          "region": "KR",
+          "uploaded": "2025-06-30",
+          "moments": []
+        },
+        {
+          "videoId": "kdDGlhEiIzk",
+          "title": "T1 Gumayusi Caitlyn vs Miss Fortune [ ADC ] Patch 25.1 Korea Grandmaster",
+          "rankClaim": "Grandmaster",
+          "patch": "25.1",
+          "durationSec": 1502,
+          "region": "KR",
+          "player": "Gumayusi",
+          "team": "T1",
+          "uploaded": "2025-01-17",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 22,
+      "lane": "adc",
+      "videos": [
+        {
+          "videoId": "8eUFzdjAAE8",
+          "title": "BLG Viper Caitlyn vs Ashe [ ADC ] Korea Challenger 2152 LP | Patch 26.13",
+          "rankClaim": "Challenger",
+          "patch": "26.13",
+          "durationSec": 1027,
+          "region": "KR",
+          "player": "Viper",
+          "team": "BLG",
+          "uploaded": "2026-06-27",
+          "moments": []
+        },
+        {
+          "videoId": "0m0B9teT95I",
+          "title": "Uzi : His Caitlyn Mechanic is Just on Another Level - Engsub ( Caitlyn vs Ashe )",
+          "rankClaim": "Master+",
+          "patch": "26.10",
+          "durationSec": 943,
+          "patchEstimated": true,
+          "player": "Uzi",
+          "uploaded": "2026-05-20",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "G4I4U4a_-PM",
+          "title": "1600LP Caitlyn : Clean 1v5 Perfomance, Saving The Game - Engsub ( Caitlyn vs Ashe )",
+          "rankClaim": "Master+",
+          "patch": "26.9",
+          "durationSec": 771,
+          "patchEstimated": true,
+          "uploaded": "2026-05-11",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "p5_t2cEuY40",
+          "title": "HLE Gumayusi Caitlyn vs Ashe [ ADC ] Korea Challenger 2512 LP | Patch 26.7",
+          "rankClaim": "Challenger",
+          "patch": "26.7",
+          "durationSec": 1130,
+          "region": "KR",
+          "player": "Gumayusi",
+          "team": "HLE",
+          "uploaded": "2026-04-14",
+          "moments": []
+        },
+        {
+          "videoId": "O8l1FNK-cTs",
+          "title": "HLE Gumayusi Caitlyn vs Ashe [ ADC ] Korea Challenger 2357 LP | Patch 26.7",
+          "rankClaim": "Challenger",
+          "patch": "26.7",
+          "durationSec": 1827,
+          "region": "KR",
+          "player": "Gumayusi",
+          "team": "HLE",
+          "uploaded": "2026-04-05",
+          "moments": []
+        },
+        {
+          "videoId": "KfcWb0-NdTY",
+          "title": "Caitlyn vs Ashe ADC - KR Grandmaster - Patch 16.05 Season 16",
+          "rankClaim": "Grandmaster",
+          "patch": "26.5",
+          "durationSec": 1411,
+          "region": "KR",
+          "uploaded": "2026-03-08",
+          "moments": []
+        },
+        {
+          "videoId": "B7qBMHIWcD4",
+          "title": "Caitlyn vs Ashe ADC - EUW Challenger - Patch 16.04 Season 16",
+          "rankClaim": "Challenger",
+          "patch": "26.4",
+          "durationSec": 1906,
+          "region": "EUW",
+          "uploaded": "2026-02-28",
+          "moments": []
+        },
+        {
+          "videoId": "LvthTwwJjq4",
+          "title": "Caitlyn vs Ashe ADC [ DRX Teddy ] Patch 25.21 Korea Master",
+          "rankClaim": "Master",
+          "patch": "25.21",
+          "durationSec": 1573,
+          "region": "KR",
+          "player": "Teddy",
+          "team": "DRX",
+          "uploaded": "2025-11-03",
+          "moments": []
+        },
+        {
+          "videoId": "iIdSHr2_aSo",
+          "title": "Caitlyn vs Ashe ADC - KR Grandmaster - Patch 25.12 Season 15",
+          "rankClaim": "Grandmaster",
+          "patch": "25.12",
+          "durationSec": 2236,
+          "region": "KR",
+          "uploaded": "2025-06-13",
+          "moments": []
+        },
+        {
+          "videoId": "IeIPVJFek3g",
+          "title": "Caitlyn vs Ashe ADC - KR Grandmaster - Patch 25.10 Season 15",
+          "rankClaim": "Grandmaster",
+          "patch": "25.10",
+          "durationSec": 1951,
+          "region": "KR",
+          "uploaded": "2025-05-21",
+          "moments": []
+        },
+        {
+          "videoId": "84sWkE249uA",
+          "title": "Caitlyn vs Ashe ADC [ DRX Teddy ] Korea Challenger Patch 25.8 ✅",
+          "rankClaim": "Challenger",
+          "patch": "25.8",
+          "durationSec": 1463,
+          "region": "KR",
+          "player": "Teddy",
+          "team": "DRX",
+          "uploaded": "2025-04-23",
+          "moments": []
+        },
+        {
+          "videoId": "08c1OnlNL6Y",
+          "title": "T1 Gumayusi Caitlyn vs Ashe [ ADC ] Korea Challenger Patch 25.4",
+          "rankClaim": "Challenger",
+          "patch": "25.4",
+          "durationSec": 1581,
+          "region": "KR",
+          "player": "Gumayusi",
+          "team": "T1",
+          "uploaded": "2025-03-04",
+          "moments": []
+        },
+        {
+          "videoId": "auGRBNnitTs",
+          "title": "T1 Gumayusi Caitlyn vs Ashe [ ADC ] Patch 25.1 Ranked Korea ✅",
+          "rankClaim": "Master+",
+          "patch": "25.1",
+          "durationSec": 1293,
+          "region": "KR",
+          "player": "Gumayusi",
+          "team": "T1",
+          "uploaded": "2025-01-10",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 22,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "dA26IqHlFak",
+          "title": "SPEEDRUNNING THROUGH THE LADDER AS ADC",
+          "rankClaim": "Master+",
+          "patch": "26.5",
+          "durationSec": 29278,
+          "patchEstimated": true,
+          "player": "Alois",
+          "uploaded": "2026-03-13",
+          "format": "stream",
+          "cam": true,
+          "startSec": 5160,
+          "endSec": 7282,
+          "moments": []
+        },
+        {
+          "videoId": "bkcAJBrMjKk",
+          "title": "CLIMBING THROUGH EMERALD ELO AS AN ADC MAIN",
+          "rankClaim": "Master+",
+          "patch": "26.5",
+          "durationSec": 30508,
+          "patchEstimated": true,
+          "player": "Alois",
+          "uploaded": "2026-03-11",
+          "format": "stream",
+          "cam": true,
+          "startSec": 21136,
+          "endSec": 24036,
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 29,
+      "lane": "adc",
+      "videos": [
+        {
+          "videoId": "c4izJ2_2tHs",
+          "title": "1600LP Caitlyn : This is NEXT LEVEL OF KITING LOOK LIKE - Engsub ( Caitlyn vs Aphe, Twitch )",
+          "rankClaim": "Master+",
+          "patch": "26.10",
+          "durationSec": 1440,
+          "patchEstimated": true,
+          "uploaded": "2026-05-15",
+          "format": "stream",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 38,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "wq7xu5ug0SY",
+          "title": "Caitlyn Mid vs Kassadin - NA Grandmaster Patch 26.04",
+          "rankClaim": "Grandmaster",
+          "patch": "26.4",
+          "durationSec": 1695,
+          "region": "NA",
+          "uploaded": "2026-02-28",
+          "moments": []
+        },
+        {
+          "videoId": "Oj0f7ExBx8Y",
+          "title": "Caitlyn Mid vs Kassadin - EUW Grandmaster Patch 26.02",
+          "rankClaim": "Grandmaster",
+          "patch": "26.2",
+          "durationSec": 1589,
+          "region": "EUW",
+          "uploaded": "2026-02-02",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 42,
+      "lane": "adc",
+      "videos": [
+        {
+          "videoId": "fscAQd2miEI",
+          "title": "Caitlyn ADC vs Corki - EUW Challenger Patch 25.17",
+          "rankClaim": "Challenger",
+          "patch": "25.17",
+          "durationSec": 1753,
+          "region": "EUW",
+          "uploaded": "2025-09-11",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 50,
+      "lane": "adc",
+      "videos": [
+        {
+          "videoId": "rf9UeTaKYxM",
+          "title": "Caitlyn ADC vs Swain - KR Grandmaster Patch 26.20",
+          "rankClaim": "Grandmaster",
+          "patch": "26.20",
+          "durationSec": 1742,
+          "region": "KR",
+          "uploaded": "2026-10-11",
+          "result": "W",
+          "moments": [
+            {
+              "atSec": 112,
+              "label": "First Blood — Caitlyn kills Nautilus",
+              "kind": "kill"
+            },
+            {
+              "atSec": 376,
+              "label": "Red takes 1st Dragon (Infernal)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 420,
+              "label": "Thresh picks off Swain"
+            },
+            {
+              "atSec": 692,
+              "label": "Red takes 2nd Dragon (Hextech)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 798,
+              "label": "Caitlyn Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 992,
+              "label": "Caitlyn Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1011,
+              "label": "Blue takes 1st Dragon (Mountain)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1227,
+              "label": "Red takes Baron",
+              "kind": "baron"
+            },
+            {
+              "atSec": 1234,
+              "label": "Caitlyn kills Kai'Sa",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1344,
+              "label": "Blue takes 2nd Dragon (Mountain)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1352,
+              "label": "Viktor kills Swain",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1603,
+              "label": "Viktor takes down Draven"
+            },
+            {
+              "atSec": 1626,
+              "label": "Blue takes Baron",
+              "kind": "baron"
+            },
+            {
+              "atSec": 1681,
+              "label": "Caitlyn picks off Draven"
+            },
+            {
+              "atSec": 1707,
+              "label": "Mid Inhibitor falls (Red)"
+            }
+          ]
+        },
+        {
+          "videoId": "WmbCGwwPmiY",
+          "title": "(LOUD Bull) Caitlyn ADC vs Swain - KR Challenger Patch 26.18",
+          "rankClaim": "Challenger",
+          "patch": "26.18",
+          "durationSec": 1600,
+          "region": "KR",
+          "player": "LOUD Bull",
+          "uploaded": "2026-09-24",
+          "moments": []
+        },
+        {
+          "videoId": "f074XjLLsBw",
+          "title": "\"Jz\" 2000LP Caitlyn : He is The Only Man Who Could Save This Game - Engsub (Caitlyn vs Swain)",
+          "rankClaim": "Master+",
+          "patch": "26.14",
+          "durationSec": 862,
+          "patchEstimated": true,
+          "player": "Jz",
+          "uploaded": "2026-07-27",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "ccxqBKTQUMg",
+          "title": "Caitlyn ADC vs Swain - EUW Grandmaster Patch 25.24",
+          "rankClaim": "Grandmaster",
+          "patch": "25.24",
+          "durationSec": 1576,
+          "region": "EUW",
+          "uploaded": "2025-12-17",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 64,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "yQCjwm5qEsk",
+          "title": "Caitlyn Jungle vs Lee Sin - KR Master Patch 26.08",
+          "rankClaim": "Master",
+          "patch": "26.8",
+          "durationSec": 1619,
+          "region": "KR",
+          "uploaded": "2026-04-28",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 67,
+      "lane": "adc",
+      "videos": [
+        {
+          "videoId": "Hy5wcBnjfZ8",
+          "title": "Caitlyn vs Vayne ADC - KR Challenger - Patch 25.22 Season 15",
+          "rankClaim": "Challenger",
+          "patch": "25.22",
+          "durationSec": 1336,
+          "region": "KR",
+          "uploaded": "2025-11-07",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 69,
+      "lane": "adc",
+      "videos": [
+        {
+          "videoId": "K1K4fWuzHTI",
+          "title": "BLG Viper Caitlyn vs Cassiopeia [ ADC ] Korea Grandmaster Patch 26.4 ✅",
+          "rankClaim": "Grandmaster",
+          "patch": "26.4",
+          "durationSec": 1314,
+          "region": "KR",
+          "player": "Viper",
+          "team": "BLG",
+          "uploaded": "2026-02-22",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 69,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "-Nk7XKBq1T4",
+          "title": "Caitlyn Mid vs Cassiopeia - NA Grandmaster Patch 25.21",
+          "rankClaim": "Grandmaster",
+          "patch": "25.21",
+          "durationSec": 1460,
+          "region": "NA",
+          "uploaded": "2025-11-02",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 80,
+      "lane": "adc",
+      "videos": [
+        {
+          "videoId": "wGt9ris4ks0",
+          "title": "(LokeN) Caitlyn ADC vs Pantheon - KR Challenger Patch 26.17",
+          "rankClaim": "Challenger",
+          "patch": "26.17",
+          "durationSec": 1676,
+          "region": "KR",
+          "player": "LokeN",
+          "uploaded": "2026-09-08",
+          "moments": []
+        },
+        {
+          "videoId": "s5icCHCIWWI",
+          "title": "Caitlyn vs Pantheon ADC - KR Challenger - Patch 16.17 Season 16",
+          "rankClaim": "Challenger",
+          "patch": "26.17",
+          "durationSec": 1696,
+          "region": "KR",
+          "uploaded": "2026-09-07",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 81,
+      "lane": "adc",
+      "videos": [
+        {
+          "videoId": "bcCUI9OPklA",
+          "title": "Jackeylove : His Caitlyn just Outclassing VIPER Ezreal - Engsub",
+          "rankClaim": "Master+",
+          "patch": "26.21",
+          "durationSec": 756,
+          "patchEstimated": true,
+          "uploaded": "2026-10-31",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "sF2siQ1AvRA",
+          "title": "Caitlyn ADC vs Ezreal - KR Challenger Patch 26.21",
+          "rankClaim": "Challenger",
+          "patch": "26.21",
+          "durationSec": 1762,
+          "region": "KR",
+          "uploaded": "2026-10-23",
+          "result": "L",
+          "moments": [
+            {
+              "atSec": 10,
+              "label": "First Blood — Caitlyn kills Ezreal",
+              "kind": "kill"
+            },
+            {
+              "atSec": 479,
+              "label": "Red takes 1st Dragon (Infernal)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 508,
+              "label": "Taliyah eliminates Ezreal"
+            },
+            {
+              "atSec": 643,
+              "label": "Fizz kills Ezreal",
+              "kind": "kill"
+            },
+            {
+              "atSec": 741,
+              "label": "Team fight (3 kills)",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 825,
+              "label": "Red takes 2nd Dragon (Ocean)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 850,
+              "label": "Nautilus takes down Syndra"
+            },
+            {
+              "atSec": 917,
+              "label": "Taliyah kills Karma",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1021,
+              "label": "Taliyah takes down Qiyana"
+            },
+            {
+              "atSec": 1063,
+              "label": "Taliyah kills Karma",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1131,
+              "label": "Blue takes 1st Dragon (Cloud)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1290,
+              "label": "Blue takes Baron",
+              "kind": "baron"
+            },
+            {
+              "atSec": 1357,
+              "label": "Taliyah kills Karma",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1447,
+              "label": "Blue takes 2nd Dragon (Cloud)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1526,
+              "label": "Taliyah picks off Syndra"
+            },
+            {
+              "atSec": 1561,
+              "label": "Mid Inhibitor falls (Blue)"
+            },
+            {
+              "atSec": 1679,
+              "label": "Caitlyn kills Syndra",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1705,
+              "label": "Mid Inhibitor falls (Red)"
+            }
+          ]
+        },
+        {
+          "videoId": "8_iKz7xOCsI",
+          "title": "Caitlyn ADC vs Ezreal - KR Challenger Patch 26.17",
+          "rankClaim": "Challenger",
+          "patch": "26.17",
+          "durationSec": 1717,
+          "region": "KR",
+          "uploaded": "2026-08-29",
+          "moments": []
+        },
+        {
+          "videoId": "-B6N2IwBKco",
+          "title": "(KT Ghost) Caitlyn ADC vs Ezreal - KR Challenger Patch 26.15",
+          "rankClaim": "Challenger",
+          "patch": "26.15",
+          "durationSec": 1762,
+          "region": "KR",
+          "player": "Ghost",
+          "team": "KT",
+          "uploaded": "2026-08-04",
+          "moments": []
+        },
+        {
+          "videoId": "pITy-jA1Shk",
+          "title": "(LR Crownie) Caitlyn ADC vs Ezreal - EUW Grandmaster Patch 26.12",
+          "rankClaim": "Grandmaster",
+          "patch": "26.12",
+          "durationSec": 1564,
+          "region": "EUW",
+          "player": "LR Crownie",
+          "uploaded": "2026-06-14",
+          "moments": []
+        },
+        {
+          "videoId": "V78ELHg5dS0",
+          "title": "Caitlyn vs Ezreal ADC [ Gen.G Ruler ] Korea Challenger 2190 | Patch 26.12",
+          "rankClaim": "Challenger",
+          "patch": "26.12",
+          "durationSec": 1591,
+          "region": "KR",
+          "player": "Ruler",
+          "team": "Gen.G",
+          "uploaded": "2026-06-13",
+          "moments": []
+        },
+        {
+          "videoId": "uFbhsPHarEE",
+          "title": "T1 Peyz Caitlyn vs Ezreal [ ADC ] Korea Challenger 2475 LP | Patch 26.10",
+          "rankClaim": "Challenger",
+          "patch": "26.10",
+          "durationSec": 1488,
+          "region": "KR",
+          "player": "Peyz",
+          "team": "T1",
+          "uploaded": "2026-05-26",
+          "moments": []
+        },
+        {
+          "videoId": "IGG9i3uFdP4",
+          "title": "Caitlyn vs Ezreal ADC - EUW Challenger - Patch 16.10 Season 16",
+          "rankClaim": "Challenger",
+          "patch": "26.10",
+          "durationSec": 1576,
+          "region": "EUW",
+          "uploaded": "2026-05-25",
+          "moments": []
+        },
+        {
+          "videoId": "ujzogxUSx18",
+          "title": "Caitlyn vs Ezreal ADC - EUW Challenger - Patch 16.10 Season 16",
+          "rankClaim": "Challenger",
+          "patch": "26.10",
+          "durationSec": 1561,
+          "region": "EUW",
+          "uploaded": "2026-05-24",
+          "moments": []
+        },
+        {
+          "videoId": "_JqW80lM7KY",
+          "title": "Gumayusi Caitlyn vs Ezreal ADC - KR Challenger - Patch 16.10 Season 16",
+          "rankClaim": "Challenger",
+          "patch": "26.10",
+          "durationSec": 1571,
+          "region": "KR",
+          "player": "Gumayusi",
+          "uploaded": "2026-05-17",
+          "moments": []
+        },
+        {
+          "videoId": "PKbq3VGUTt0",
+          "title": "HLE Gumayusi Caitlyn vs Ezreal [ ADC ] Patch 26.10 Korea Challenger 2607 LP",
+          "rankClaim": "Challenger",
+          "patch": "26.10",
+          "durationSec": 1335,
+          "region": "KR",
+          "player": "Gumayusi",
+          "team": "HLE",
+          "uploaded": "2026-05-15",
+          "moments": []
+        },
+        {
+          "videoId": "AMkO0Nef8ZU",
+          "title": "HLE Gumayusi Caitlyn vs Ezreal [ ADC ] Korea Challenger 2435 LP | Patch 26.9",
+          "rankClaim": "Challenger",
+          "patch": "26.9",
+          "durationSec": 1008,
+          "region": "KR",
+          "player": "Gumayusi",
+          "team": "HLE",
+          "uploaded": "2026-05-03",
+          "moments": []
+        },
+        {
+          "videoId": "o_5bakIZNTk",
+          "title": "Gumayusi Caitlyn vs Ezreal ADC - KR Challenger - Patch 16.08 Season 16",
+          "rankClaim": "Challenger",
+          "patch": "26.8",
+          "durationSec": 1621,
+          "region": "KR",
+          "player": "Gumayusi",
+          "uploaded": "2026-04-23",
+          "moments": []
+        },
+        {
+          "videoId": "ZFO1NlxAe8c",
+          "title": "HLE Gumayusi Caitlyn vs Ezreal [ ADC ] Korea Challenger 2468 LP | Patch 26.8",
+          "rankClaim": "Challenger",
+          "patch": "26.8",
+          "durationSec": 1397,
+          "region": "KR",
+          "player": "Gumayusi",
+          "team": "HLE",
+          "uploaded": "2026-04-21",
+          "moments": []
+        },
+        {
+          "videoId": "2zm3CfxKUkQ",
+          "title": "HLE Gumayusi Caitlyn vs T1 Peyz Ezreal [ ADC ] Korea Challenger 2297 LP | Patch 26.7",
+          "rankClaim": "Challenger",
+          "patch": "26.7",
+          "durationSec": 1514,
+          "region": "KR",
+          "player": "Gumayusi",
+          "team": "HLE",
+          "uploaded": "2026-04-04",
+          "moments": []
+        },
+        {
+          "videoId": "ObeidOHlvTI",
+          "title": "Caitlyn ADC vs Ezreal - KR Challenger Patch 26.06",
+          "rankClaim": "Challenger",
+          "patch": "26.6",
+          "durationSec": 1752,
+          "region": "KR",
+          "uploaded": "2026-04-02",
+          "moments": []
+        },
+        {
+          "videoId": "yvBCl7T_RBY",
+          "title": "T1 Peyz Caitlyn vs Ezreal [ ADC ] Patch 26.6 Korea Challenger 1887 LP",
+          "rankClaim": "Challenger",
+          "patch": "26.6",
+          "durationSec": 766,
+          "region": "KR",
+          "player": "Peyz",
+          "team": "T1",
+          "uploaded": "2026-03-19",
+          "moments": []
+        },
+        {
+          "videoId": "kfzdunnkjIQ",
+          "title": "Caitlyn ADC vs Ezreal - KR Challenger Patch 26.05",
+          "rankClaim": "Challenger",
+          "patch": "26.5",
+          "durationSec": 1517,
+          "region": "KR",
+          "uploaded": "2026-03-17",
+          "moments": []
+        },
+        {
+          "videoId": "58nkMmIwnIw",
+          "title": "Caitlyn vs Ezreal ADC [ Teddy ] Korea Challenger 1515 LP | Patch 26.5",
+          "rankClaim": "Challenger",
+          "patch": "26.5",
+          "durationSec": 2231,
+          "region": "KR",
+          "player": "Teddy",
+          "uploaded": "2026-03-08",
+          "moments": []
+        },
+        {
+          "videoId": "BnVahv_OJ3M",
+          "title": "Caitlyn vs Ezreal ADC - EUW Challenger - Patch 16.04 Season 16",
+          "rankClaim": "Challenger",
+          "patch": "26.4",
+          "durationSec": 1801,
+          "region": "EUW",
+          "uploaded": "2026-03-02",
+          "moments": []
+        },
+        {
+          "videoId": "d44Y7858Fq4",
+          "title": "Caitlyn vs Ezreal ADC - KR Challenger - Patch 25.24 Season 15",
+          "rankClaim": "Challenger",
+          "patch": "25.24",
+          "durationSec": 1381,
+          "region": "KR",
+          "uploaded": "2026-01-02",
+          "moments": []
+        },
+        {
+          "videoId": "2fYaB9bNosU",
+          "title": "Caitlyn vs Ezreal ADC [ BLG Viper ] Patch 25.24 Ranked Korea ✅",
+          "rankClaim": "Master+",
+          "patch": "25.24",
+          "durationSec": 1747,
+          "region": "KR",
+          "player": "Viper",
+          "team": "BLG",
+          "uploaded": "2025-12-23",
+          "moments": []
+        },
+        {
+          "videoId": "R_T4DsqYsDo",
+          "title": "Caitlyn ADC vs Ezreal - KR Grandmaster Patch 25.07",
+          "rankClaim": "Grandmaster",
+          "patch": "25.7",
+          "durationSec": 2108,
+          "region": "KR",
+          "uploaded": "2025-04-06",
+          "moments": []
+        },
+        {
+          "videoId": "lK7xbAMWQfk",
+          "title": "Caitlyn vs Ezreal ADC - KR Challenger - Patch 25.5 Season 15",
+          "rankClaim": "Challenger",
+          "patch": "25.5",
+          "durationSec": 1681,
+          "region": "KR",
+          "uploaded": "2025-03-09",
+          "moments": []
+        },
+        {
+          "videoId": "O24GUPrZlmA",
+          "title": "T1 Gumayusi Caitlyn vs Ezreal [ ADC ] Patch 25.2 Korea Challenger",
+          "rankClaim": "Challenger",
+          "patch": "25.2",
+          "durationSec": 1322,
+          "region": "KR",
+          "player": "Gumayusi",
+          "team": "T1",
+          "uploaded": "2025-01-24",
+          "moments": []
+        },
+        {
+          "videoId": "3wpQYviY2FU",
+          "title": "Caitlyn vs Ezreal ADC [ HLE Viper ] Patch 25.1 Ranked Master Korea ✅",
+          "rankClaim": "Master",
+          "patch": "25.1",
+          "durationSec": 1242,
+          "region": "KR",
+          "player": "Viper",
+          "team": "HLE",
+          "uploaded": "2025-01-16",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 84,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "4gfj5n3aohE",
+          "title": "Caitlyn Mid vs Akali - NA Grandmaster Patch 25.13",
+          "rankClaim": "Grandmaster",
+          "patch": "25.13",
+          "durationSec": 1963,
+          "region": "NA",
+          "uploaded": "2025-07-10",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 96,
+      "lane": "adc",
+      "videos": [
+        {
+          "videoId": "6Co1l94M4SY",
+          "title": "\"Jz\" 2000LP Caitlyn : Keep Me Alive ! LET ME COOK - Engsub ( vs Kog'maw )",
+          "rankClaim": "Master+",
+          "patch": "26.21",
+          "durationSec": 856,
+          "patchEstimated": true,
+          "player": "Jz",
+          "uploaded": "2026-11-04",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "04GlTw-xLWs",
+          "title": "Caitlyn ADC vs Kog'Maw - NA Challenger Patch 26.19",
+          "rankClaim": "Challenger",
+          "patch": "26.19",
+          "durationSec": 1880,
+          "region": "NA",
+          "uploaded": "2026-09-27",
+          "result": "W",
+          "moments": [
+            {
+              "atSec": 115,
+              "label": "First Blood — Wukong kills Jarvan IV",
+              "kind": "kill"
+            },
+            {
+              "atSec": 205,
+              "label": "Caitlyn takes down Kog'Maw"
+            },
+            {
+              "atSec": 426,
+              "label": "Caitlyn takes down Kog'Maw"
+            },
+            {
+              "atSec": 613,
+              "label": "Blue takes 1st Dragon (Ocean)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 651,
+              "label": "Wukong eliminates Kog'Maw"
+            },
+            {
+              "atSec": 749,
+              "label": "Team fight (3 kills)",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 925,
+              "label": "Blue takes 2nd Dragon (Mountain)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1016,
+              "label": "Nami eliminates Lulu"
+            },
+            {
+              "atSec": 1066,
+              "label": "Caitlyn kills Sylas",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1223,
+              "label": "Caitlyn takes down Kog'Maw"
+            },
+            {
+              "atSec": 1297,
+              "label": "Red takes 1st Dragon (Chemtech)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1366,
+              "label": "Caitlyn picks off Kai'Sa"
+            },
+            {
+              "atSec": 1392,
+              "label": "Blue takes Baron",
+              "kind": "baron"
+            },
+            {
+              "atSec": 1522,
+              "label": "Caitlyn picks off Lulu"
+            },
+            {
+              "atSec": 1606,
+              "label": "Blue takes 3rd Dragon (Chemtech)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1694,
+              "label": "Wukong Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1780,
+              "label": "Blue takes 2nd Baron",
+              "kind": "baron"
+            },
+            {
+              "atSec": 1805,
+              "label": "Mid Inhibitor falls (Red)"
+            }
+          ]
+        },
+        {
+          "videoId": "dLlvDnvFSBM",
+          "title": "Teddy : His Caitlyn Mechanic is so Dam Terrifying - Engsub ( Caitlyn vs Kog'maw )",
+          "rankClaim": "Master+",
+          "patch": "26.12",
+          "durationSec": 767,
+          "patchEstimated": true,
+          "player": "Teddy",
+          "uploaded": "2026-06-20",
+          "format": "stream",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 103,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "ieOn0eeV3PI",
+          "title": "Caitlyn Mid vs Ahri - KR Master Patch 26.03",
+          "rankClaim": "Master",
+          "patch": "26.3",
+          "durationSec": 1740,
+          "region": "KR",
+          "uploaded": "2026-02-15",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 110,
+      "lane": "adc",
+      "videos": [
+        {
+          "videoId": "GtNGtF_zHTU",
+          "title": "\"Jz\" 2000LP Caitlyn : This Dude is a Freaky Animal - Engsub ( vs Varus, Lucian )",
+          "rankClaim": "Master+",
+          "patch": "26.19",
+          "durationSec": 1381,
+          "patchEstimated": true,
+          "player": "Jz",
+          "uploaded": "2026-10-04",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "5o7rEQJH9FM",
+          "title": "(FNC Upset) Caitlyn ADC vs Varus - EUW Challenger Patch 26.13",
+          "rankClaim": "Challenger",
+          "patch": "26.13",
+          "durationSec": 1855,
+          "region": "EUW",
+          "player": "Upset",
+          "team": "FNC",
+          "uploaded": "2026-06-27",
+          "moments": []
+        },
+        {
+          "videoId": "K7OKElw9W5M",
+          "title": "Caitlyn vs Varus ADC - KR Challenger - Patch 16.09 Season 16",
+          "rankClaim": "Challenger",
+          "patch": "26.9",
+          "durationSec": 1366,
+          "region": "KR",
+          "uploaded": "2026-05-14",
+          "moments": []
+        },
+        {
+          "videoId": "C_e3aA2vOiI",
+          "title": "T1 Peyz Caitlyn vs HLE Gumayusi Varus [ ADC ] Korea Challenger 2430 LP | Patch 26.8",
+          "rankClaim": "Challenger",
+          "patch": "26.8",
+          "durationSec": 1513,
+          "region": "KR",
+          "player": "Peyz",
+          "team": "T1",
+          "uploaded": "2026-04-16",
+          "moments": []
+        },
+        {
+          "videoId": "GJzTHfn5bVE",
+          "title": "Caitlyn vs Varus ADC - KR Grandmaster - Patch 16.6 Season 16",
+          "rankClaim": "Grandmaster",
+          "patch": "26.6",
+          "durationSec": 1861,
+          "region": "KR",
+          "uploaded": "2026-03-21",
+          "moments": []
+        },
+        {
+          "videoId": "Ses1BJwqulM",
+          "title": "Caitlyn ADC vs Varus - KR Challenger Patch 26.06",
+          "rankClaim": "Challenger",
+          "patch": "26.6",
+          "durationSec": 1790,
+          "region": "KR",
+          "uploaded": "2026-03-21",
+          "moments": []
+        },
+        {
+          "videoId": "AGZgPR9pl78",
+          "title": "T1 Peyz Caitlyn vs Varus [ ADC ] Korea Challenger 2050 LP | Patch 26.5",
+          "rankClaim": "Challenger",
+          "patch": "26.5",
+          "durationSec": 1847,
+          "region": "KR",
+          "player": "Peyz",
+          "team": "T1",
+          "uploaded": "2026-03-17",
+          "moments": []
+        },
+        {
+          "videoId": "E3lR_UDJcXk",
+          "title": "BLG Viper Caitlyn vs Varus [ ADC ] Korea Challenger 1517 LP | Patch 26.4",
+          "rankClaim": "Challenger",
+          "patch": "26.4",
+          "durationSec": 1693,
+          "region": "KR",
+          "player": "Viper",
+          "team": "BLG",
+          "uploaded": "2026-02-25",
+          "moments": []
+        },
+        {
+          "videoId": "LGq0zz30LgI",
+          "title": "Caitlyn ADC vs Varus - KR Challenger Patch 26.03",
+          "rankClaim": "Challenger",
+          "patch": "26.3",
+          "durationSec": 1527,
+          "region": "KR",
+          "uploaded": "2026-02-07",
+          "moments": []
+        },
+        {
+          "videoId": "EePe_FHe9C4",
+          "title": "Caitlyn vs Varus [ ADC ] Lol Korea Master Patch 25.20 ✅",
+          "rankClaim": "Master",
+          "patch": "25.20",
+          "durationSec": 1414,
+          "region": "KR",
+          "uploaded": "2025-10-15",
+          "moments": []
+        },
+        {
+          "videoId": "C-y7D1quMxc",
+          "title": "Caitlyn ADC vs Varus - KR Challenger Patch 25.15",
+          "rankClaim": "Challenger",
+          "patch": "25.15",
+          "durationSec": 2088,
+          "region": "KR",
+          "uploaded": "2025-08-08",
+          "moments": []
+        },
+        {
+          "videoId": "n-6H-e_m3UQ",
+          "title": "Caitlyn ADC vs Varus - KR Grandmaster Patch 25.10",
+          "rankClaim": "Grandmaster",
+          "patch": "25.10",
+          "durationSec": 1740,
+          "region": "KR",
+          "uploaded": "2025-05-20",
+          "moments": []
+        },
+        {
+          "videoId": "u1u207Yine8",
+          "title": "Caitlyn vs Varus ADC - KR Challenger - Patch 25.6 Season 15",
+          "rankClaim": "Challenger",
+          "patch": "25.6",
+          "durationSec": 1651,
+          "region": "KR",
+          "uploaded": "2025-03-25",
+          "moments": []
+        },
+        {
+          "videoId": "FIMPkVIcPek",
+          "title": "Caitlyn ADC vs Varus - KR Challenger Patch 25.06",
+          "rankClaim": "Challenger",
+          "patch": "25.6",
+          "durationSec": 1678,
+          "region": "KR",
+          "uploaded": "2025-03-25",
+          "moments": []
+        },
+        {
+          "videoId": "e5RshdmCI8M",
+          "title": "Caitlyn ADC vs Varus - KR Grandmaster Patch 25.05",
+          "rankClaim": "Grandmaster",
+          "patch": "25.5",
+          "durationSec": 1761,
+          "region": "KR",
+          "uploaded": "2025-03-09",
+          "moments": []
+        },
+        {
+          "videoId": "VPS1viUMeMY",
+          "title": "Caitlyn vs Varus ADC - KR Challenger - Patch 25.5 Season 15",
+          "rankClaim": "Challenger",
+          "patch": "25.5",
+          "durationSec": 1741,
+          "region": "KR",
+          "uploaded": "2025-03-07",
+          "moments": []
+        },
+        {
+          "videoId": "o8ExmFkdSt0",
+          "title": "Caitlyn vs Varus ADC - KR Challenger - Patch 25.4 Season 15",
+          "rankClaim": "Challenger",
+          "patch": "25.4",
+          "durationSec": 2010,
+          "region": "KR",
+          "uploaded": "2025-03-05",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 112,
+      "lane": "adc",
+      "videos": [
+        {
+          "videoId": "QwKucXhuKMM",
+          "title": "(DNS Enosh) Caitlyn ADC vs Viktor (GEN Ruler) - KR Challenger Patch 26.16",
+          "rankClaim": "Challenger",
+          "patch": "26.16",
+          "durationSec": 1635,
+          "region": "KR",
+          "player": "Ruler",
+          "uploaded": "2026-08-21",
+          "moments": []
+        },
+        {
+          "videoId": "rdqSz6RIBwI",
+          "title": "Caitlyn vs Viktor ADC [ Gen.G Ruler ] Korea Challenger 2129 | Patch 26.13",
+          "rankClaim": "Challenger",
+          "patch": "26.13",
+          "durationSec": 1363,
+          "region": "KR",
+          "player": "Ruler",
+          "team": "Gen.G",
+          "uploaded": "2026-07-11",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 115,
+      "lane": "adc",
+      "videos": [
+        {
+          "videoId": "81NQwCOvxgA",
+          "title": "\"Jz\" 2000LP Caitlyn : He is Slaughtering Everyone He Touch - Engsub ( vs Ziggs, Aphe )",
+          "rankClaim": "Master+",
+          "patch": "26.15",
+          "durationSec": 1439,
+          "patchEstimated": true,
+          "player": "Jz",
+          "uploaded": "2026-08-07",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "g5cZmwg_Ljg",
+          "title": "Caitlyn vs Ziggs ADC - KR Challenger - Patch 16.08 Season 16",
+          "rankClaim": "Challenger",
+          "patch": "26.8",
+          "durationSec": 2311,
+          "region": "KR",
+          "uploaded": "2026-04-19",
+          "moments": []
+        },
+        {
+          "videoId": "6klxjoxWbcQ",
+          "title": "T1 Peyz Caitlyn vs Ziggs ADC - KR Challenger - Patch 16.03 Season 16",
+          "rankClaim": "Challenger",
+          "patch": "26.3",
+          "durationSec": 1486,
+          "region": "KR",
+          "player": "Peyz",
+          "team": "T1",
+          "uploaded": "2026-02-14",
+          "moments": []
+        },
+        {
+          "videoId": "kGiV4pPNafE",
+          "title": "T1 Peyz Caitlyn vs Ziggs [ ADC ] Korea Challenger 2027 LP | Patch 26.3",
+          "rankClaim": "Challenger",
+          "patch": "26.3",
+          "durationSec": 1314,
+          "region": "KR",
+          "player": "Peyz",
+          "team": "T1",
+          "uploaded": "2026-02-13",
+          "moments": []
+        },
+        {
+          "videoId": "ZlpIFW4Wcy4",
+          "title": "Caitlyn vs Ziggs ADC [ DRX Teddy ] Patch 25.8 Korea Challenger ✅",
+          "rankClaim": "Challenger",
+          "patch": "25.8",
+          "durationSec": 1931,
+          "region": "KR",
+          "player": "Teddy",
+          "team": "DRX",
+          "uploaded": "2025-04-20",
+          "moments": []
+        },
+        {
+          "videoId": "KwXlJYN2Hfs",
+          "title": "T1 Smash Caitlyn ADC vs Ziggs - Rank #4 Korea Challenger Patch 25.4 ✅",
+          "rankClaim": "Challenger",
+          "patch": "25.4",
+          "durationSec": 1634,
+          "region": "KR",
+          "player": "Smash",
+          "team": "T1",
+          "uploaded": "2025-02-22",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 119,
+      "lane": "adc",
+      "videos": [
+        {
+          "videoId": "Ohc6T-AI4ps",
+          "title": "Deft Caitlyn vs Draven [ ADC ] Korea Challenger 1935 LP | Patch 26.20 ✅",
+          "rankClaim": "Challenger",
+          "patch": "26.20",
+          "durationSec": 1300,
+          "region": "KR",
+          "player": "Deft",
+          "uploaded": "2026-10-09",
+          "moments": []
+        },
+        {
+          "videoId": "5afdQ9Op4qM",
+          "title": "(LR Crownie) Caitlyn ADC vs Draven (VEG Laatch) - EUW Grandmaster Patch 26.15",
+          "rankClaim": "Grandmaster",
+          "patch": "26.15",
+          "durationSec": 1450,
+          "region": "EUW",
+          "player": "LR Crownie",
+          "uploaded": "2026-08-14",
+          "moments": []
+        },
+        {
+          "videoId": "IkyRzakp6xU",
+          "title": "(APM Eune) Caitlyn ADC vs Draven - EUW Grandmaster Patch 26.13",
+          "rankClaim": "Grandmaster",
+          "patch": "26.13",
+          "durationSec": 1845,
+          "region": "EUNE",
+          "player": "APM Eune",
+          "uploaded": "2026-07-09",
+          "moments": []
+        },
+        {
+          "videoId": "jxwQclFkXuo",
+          "title": "Caitlyn ADC vs Draven - KR Grandmaster Patch 25.23",
+          "rankClaim": "Grandmaster",
+          "patch": "25.23",
+          "durationSec": 1683,
+          "region": "KR",
+          "uploaded": "2025-11-26",
+          "moments": []
+        },
+        {
+          "videoId": "YOYInnT1xyw",
+          "title": "Caitlyn vs Draven ADC [ Quadrakill ] Patch 25.23 Korea Grandmaster ✅",
+          "rankClaim": "Grandmaster",
+          "patch": "25.23",
+          "durationSec": 1435,
+          "region": "KR",
+          "player": "Quadrakill",
+          "uploaded": "2025-11-23",
+          "moments": []
+        },
+        {
+          "videoId": "BPKG_eGYV6Y",
+          "title": "Caitlyn ADC vs Draven - KR Master Patch 25.14",
+          "rankClaim": "Master",
+          "patch": "25.14",
+          "durationSec": 1520,
+          "region": "KR",
+          "uploaded": "2025-07-22",
+          "moments": []
+        },
+        {
+          "videoId": "g5FSlEIhgss",
+          "title": "Caitlyn ADC vs Draven - EUW Challenger Patch 25.12",
+          "rankClaim": "Challenger",
+          "patch": "25.12",
+          "durationSec": 1731,
+          "region": "EUW",
+          "uploaded": "2025-06-26",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 119,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "bkcAJBrMjKk",
+          "title": "CLIMBING THROUGH EMERALD ELO AS AN ADC MAIN",
+          "rankClaim": "Master+",
+          "patch": "26.5",
+          "durationSec": 30508,
+          "patchEstimated": true,
+          "player": "Alois",
+          "uploaded": "2026-03-11",
+          "format": "stream",
+          "cam": true,
+          "startSec": 26252,
+          "endSec": 28030,
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 143,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "WfeW2dDZKsI",
+          "title": "LEARNING THE BULLY OF BOTLANE",
+          "rankClaim": "Master+",
+          "patch": "26.5",
+          "durationSec": 22227,
+          "patchEstimated": true,
+          "player": "Alois",
+          "uploaded": "2026-03-15",
+          "format": "stream",
+          "cam": true,
+          "startSec": 15840,
+          "endSec": 17580,
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 145,
+      "lane": "adc",
+      "videos": [
+        {
+          "videoId": "qmbjV6Sjdy0",
+          "title": "\"Jz\" 2000LP Caitlyn : STORMING Super Server Botlane - Engsub ( vs Kai'sa )",
+          "rankClaim": "Master+",
+          "patch": "26.18",
+          "durationSec": 1374,
+          "patchEstimated": true,
+          "player": "Jz",
+          "uploaded": "2026-09-18",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "t6eM67OZaZY",
+          "title": "Caitlyn ADC vs Kai'Sa - KR Challenger Patch 26.18",
+          "rankClaim": "Challenger",
+          "patch": "26.18",
+          "durationSec": 1603,
+          "region": "KR",
+          "uploaded": "2026-09-12",
+          "moments": []
+        },
+        {
+          "videoId": "5N_j02b5Z8A",
+          "title": "1600LP Caitlyn : His Spacing in TeamFight is Insanely Good - Engsub ( Caitlyn vs Kai'sa )",
+          "rankClaim": "Master+",
+          "patch": "26.12",
+          "durationSec": 874,
+          "patchEstimated": true,
+          "uploaded": "2026-06-19",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "A-9WiVHolPs",
+          "title": "1600LP Caitlyn : ONE AUTO - ONE SHOT CAITLYN is LEGIT INSANE - Engsub ( Caitlyn vs Kai'sa )",
+          "rankClaim": "Master+",
+          "patch": "26.10",
+          "durationSec": 956,
+          "patchEstimated": true,
+          "uploaded": "2026-05-16",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "poew9pLA5wY",
+          "title": "Caitlyn ADC vs Kai'Sa - KR Master Patch 25.24",
+          "rankClaim": "Master",
+          "patch": "25.24",
+          "durationSec": 1600,
+          "region": "KR",
+          "uploaded": "2025-12-10",
+          "moments": []
+        },
+        {
+          "videoId": "6hkwcWqdxfU",
+          "title": "Caitlyn vs Kai'Sa ADC [ Quadrakill ] Korea Challenger 1117 LP | Patch 25.22 ✅",
+          "rankClaim": "Challenger",
+          "patch": "25.22",
+          "durationSec": 1433,
+          "region": "KR",
+          "player": "Quadrakill",
+          "uploaded": "2025-11-16",
+          "moments": []
+        },
+        {
+          "videoId": "fXYWNlymm74",
+          "title": "Caitlyn vs Kai'Sa ADC - KR Challenger - Patch 25.22 Season 15",
+          "rankClaim": "Challenger",
+          "patch": "25.22",
+          "durationSec": 2131,
+          "region": "KR",
+          "uploaded": "2025-11-10",
+          "moments": []
+        },
+        {
+          "videoId": "B8duDEhn-ZI",
+          "title": "Caitlyn ADC vs Kai'Sa - KR Grandmaster Patch 25.21",
+          "rankClaim": "Grandmaster",
+          "patch": "25.21",
+          "durationSec": 1662,
+          "region": "KR",
+          "uploaded": "2025-10-25",
+          "moments": []
+        },
+        {
+          "videoId": "kv_Jl1bSMnA",
+          "title": "Caitlyn vs Kai'Sa ADC - EUW Grandmaster - Patch 25.20 Season 15",
+          "rankClaim": "Grandmaster",
+          "patch": "25.20",
+          "durationSec": 1841,
+          "region": "EUW",
+          "uploaded": "2025-10-14",
+          "moments": []
+        },
+        {
+          "videoId": "nl3wNsbYlJ8",
+          "title": "Caitlyn vs Kai'Sa ADC - KR Challenger - Patch 25.19 Season 15",
+          "rankClaim": "Challenger",
+          "patch": "25.19",
+          "durationSec": 1891,
+          "region": "KR",
+          "uploaded": "2025-09-29",
+          "moments": []
+        },
+        {
+          "videoId": "GuoyYQKS8zI",
+          "title": "Caitlyn vs Kai'Sa ADC - KR Master - Patch 25.14 Season 15",
+          "rankClaim": "Master",
+          "patch": "25.14",
+          "durationSec": 1831,
+          "region": "KR",
+          "uploaded": "2025-07-30",
+          "moments": []
+        },
+        {
+          "videoId": "SfaclznHlrE",
+          "title": "Caitlyn ADC vs Kai'Sa - KR Challenger Patch 25.04",
+          "rankClaim": "Challenger",
+          "patch": "25.4",
+          "durationSec": 1691,
+          "region": "KR",
+          "uploaded": "2025-02-26",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 420,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 547,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 665,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 738,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 960,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1076,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1095,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1238,
+              "label": "Hunt The Rift Herald",
+              "kind": "herald"
+            },
+            {
+              "atSec": 1272,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1379,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1428,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1528,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1618,
+              "label": "Get a Triple Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1650,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1670,
+              "label": "End credit"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 147,
+      "lane": "adc",
+      "videos": [
+        {
+          "videoId": "QEAfQzVzd7I",
+          "title": "Caitlyn vs Seraphine ADC - KR Master - Patch 16.15 Season 16",
+          "rankClaim": "Master",
+          "patch": "26.15",
+          "durationSec": 1661,
+          "region": "KR",
+          "uploaded": "2026-08-06",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 150,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "cbYUE0mTVFE",
+          "title": "Caitlyn Top vs Gnar - NA Grandmaster Patch 25.13",
+          "rankClaim": "Grandmaster",
+          "patch": "25.13",
+          "durationSec": 1531,
+          "region": "NA",
+          "uploaded": "2025-07-16",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 157,
+      "lane": "adc",
+      "videos": [
+        {
+          "videoId": "j_XZaZn_3nE",
+          "title": "Caitlyn vs Yasuo ADC - KR Grandmaster - Patch 26.01 Season 16",
+          "rankClaim": "Grandmaster",
+          "patch": "26.1",
+          "durationSec": 2101,
+          "region": "KR",
+          "uploaded": "2026-01-21",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 161,
+      "lane": "adc",
+      "videos": [
+        {
+          "videoId": "mzVPWaGMC88",
+          "title": "Caitlyn ADC vs Vel'Koz - EUW Challenger Patch 26.09",
+          "rankClaim": "Challenger",
+          "patch": "26.9",
+          "durationSec": 1641,
+          "region": "EUW",
+          "uploaded": "2026-05-02",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 166,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "QQXdXRz90XI",
+          "title": "Caitlyn Mid vs Akshan - NA Grandmaster Patch 25.04",
+          "rankClaim": "Grandmaster",
+          "patch": "25.4",
+          "durationSec": 1725,
+          "region": "NA",
+          "uploaded": "2025-03-04",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 211,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 361,
+              "label": "Hunt The Dragon",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 427,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 630,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 696,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 767,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 796,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 905,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 925,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 948,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1048,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1137,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1162,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1196,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1269,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1342,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1362,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1374,
+              "label": "Hunt The Atakhan"
+            },
+            {
+              "atSec": 1393,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1414,
+              "label": "Hunt The Dragon",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1549,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1648,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1704,
+              "label": "End credit"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 202,
+      "lane": "adc",
+      "videos": [
+        {
+          "videoId": "9VDpSJqmgB8",
+          "title": "BLG Viper Caitlyn vs Jhin [ ADC ] Ranked Master NA | Patch 26.21",
+          "rankClaim": "Master",
+          "patch": "26.21",
+          "durationSec": 1224,
+          "region": "NA",
+          "player": "Viper",
+          "team": "BLG",
+          "uploaded": "2026-10-27",
+          "moments": []
+        },
+        {
+          "videoId": "izkTld48Cwg",
+          "title": "Deokdam : His Caitlyn Spacing is so Dam Good in TeamFight - Engsub ( vs Jhin )",
+          "rankClaim": "Master+",
+          "patch": "26.20",
+          "durationSec": 701,
+          "patchEstimated": true,
+          "uploaded": "2026-10-18",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "ze2xLiYBhAs",
+          "title": "HLE Gumayusi Caitlyn vs Jhin [ ADC ] Korea Challenger 2480 LP | Patch 26.17",
+          "rankClaim": "Challenger",
+          "patch": "26.17",
+          "durationSec": 1218,
+          "region": "KR",
+          "player": "Gumayusi",
+          "team": "HLE",
+          "uploaded": "2026-08-29",
+          "moments": []
+        },
+        {
+          "videoId": "lngW7C1E00E",
+          "title": "Teayoon Caitlyn : INSANE BARON STEEL, SAVING THE GAME ( vs Jhin )",
+          "rankClaim": "Master+",
+          "patch": "26.16",
+          "durationSec": 973,
+          "patchEstimated": true,
+          "uploaded": "2026-08-24",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "lEUGRsIB-T0",
+          "title": "DK Smash Caitlyn vs Jhin [ ADC ] Korea Challenger 2255 LP | Patch 26.16",
+          "rankClaim": "Challenger",
+          "patch": "26.16",
+          "durationSec": 1199,
+          "region": "KR",
+          "player": "Smash",
+          "team": "DK",
+          "uploaded": "2026-08-16",
+          "moments": []
+        },
+        {
+          "videoId": "txR_fivu_X8",
+          "title": "Caitlyn vs Jhin [ ADC ] Korea Master 649 LP | Patch 26.14",
+          "rankClaim": "Master",
+          "patch": "26.14",
+          "durationSec": 1873,
+          "region": "KR",
+          "uploaded": "2026-07-15",
+          "moments": []
+        },
+        {
+          "videoId": "Xso_XOvqU0A",
+          "title": "Uzi : His Caitlyn Mechanic is so DAM GOOD - Engsub ( Caitlyn vs Jhin )",
+          "rankClaim": "Master+",
+          "patch": "26.11",
+          "durationSec": 1102,
+          "patchEstimated": true,
+          "player": "Uzi",
+          "uploaded": "2026-05-28",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "CVNB8twO6Wg",
+          "title": "(GEN Ruler) Caitlyn ADC vs Jhin (DK Smash) - KR Grandmaster Patch 26.10",
+          "rankClaim": "Grandmaster",
+          "patch": "26.10",
+          "durationSec": 1861,
+          "region": "KR",
+          "player": "Ruler",
+          "team": "GEN",
+          "uploaded": "2026-05-21",
+          "moments": []
+        },
+        {
+          "videoId": "LwbODBypa5Y",
+          "title": "HLE Gumayusi Caitlyn vs Jhin [ ADC ] Korea Challenger 2665 LP | Patch 26.10",
+          "rankClaim": "Challenger",
+          "patch": "26.10",
+          "durationSec": 1933,
+          "region": "KR",
+          "player": "Gumayusi",
+          "team": "HLE",
+          "uploaded": "2026-05-20",
+          "moments": []
+        },
+        {
+          "videoId": "OYJwxL9t830",
+          "title": "Diable Caitlyn : Tearing KR HighElo Apart in just 15 Min - Engsub ( Caitlyn vs Jhin )",
+          "rankClaim": "Master+",
+          "patch": "26.10",
+          "durationSec": 713,
+          "region": "KR",
+          "patchEstimated": true,
+          "uploaded": "2026-05-14",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "avL12atsEog",
+          "title": "HLE Gumayusi Caitlyn vs Jhin [ ADC ] Korea Challenger 2467 LP | Patch 26.9",
+          "rankClaim": "Challenger",
+          "patch": "26.9",
+          "durationSec": 1447,
+          "region": "KR",
+          "player": "Gumayusi",
+          "team": "HLE",
+          "uploaded": "2026-05-09",
+          "moments": []
+        },
+        {
+          "videoId": "DW3SPZaGnIo",
+          "title": "Caitlyn ADC vs Jhin - EUW Grandmaster Patch 26.08",
+          "rankClaim": "Grandmaster",
+          "patch": "26.8",
+          "durationSec": 1837,
+          "region": "EUW",
+          "uploaded": "2026-04-17",
+          "moments": []
+        },
+        {
+          "videoId": "3jcltVUA6mw",
+          "title": "Caitlyn vs Jhin ADC - KR Challenger - Patch 16.07 Season 16",
+          "rankClaim": "Challenger",
+          "patch": "26.7",
+          "durationSec": 1651,
+          "region": "KR",
+          "uploaded": "2026-04-13",
+          "moments": []
+        },
+        {
+          "videoId": "Zvc7GkZNPks",
+          "title": "DK Smash Caitlyn vs Jhin [ ADC ] Korea Challenger 1908 LP | Patch 26.7",
+          "rankClaim": "Challenger",
+          "patch": "26.7",
+          "durationSec": 1695,
+          "region": "KR",
+          "player": "Smash",
+          "team": "DK",
+          "uploaded": "2026-04-02",
+          "moments": []
+        },
+        {
+          "videoId": "y8gMZhWVL5M",
+          "title": "Caitlyn vs Jhin ADC - EUW Grandmaster - Patch 16.05 Season 16",
+          "rankClaim": "Grandmaster",
+          "patch": "26.5",
+          "durationSec": 1951,
+          "region": "EUW",
+          "uploaded": "2026-03-10",
+          "moments": []
+        },
+        {
+          "videoId": "yr4QpbW-Udg",
+          "title": "Caitlyn ADC vs Jhin - KR Master Patch 25.22",
+          "rankClaim": "Master",
+          "patch": "25.22",
+          "durationSec": 1956,
+          "region": "KR",
+          "uploaded": "2025-11-08",
+          "moments": []
+        },
+        {
+          "videoId": "8HsfWe3_4xs",
+          "title": "Caitlyn vs Jhin [ ADC ] Korea Challenger 1227 LP | Patch 25.21 ✅",
+          "rankClaim": "Challenger",
+          "patch": "25.21",
+          "durationSec": 1499,
+          "region": "KR",
+          "uploaded": "2025-10-31",
+          "moments": []
+        },
+        {
+          "videoId": "f2tNdJHUd3E",
+          "title": "Caitlyn vs Jhin ADC - KR Challenger - Patch 25.19 Season 15",
+          "rankClaim": "Challenger",
+          "patch": "25.19",
+          "durationSec": 1561,
+          "region": "KR",
+          "uploaded": "2025-10-08",
+          "moments": []
+        },
+        {
+          "videoId": "IuaA_2eTE68",
+          "title": "Caitlyn vs Jhin ADC [ HLE Viper ] Korea Challenger Patch 25.19",
+          "rankClaim": "Challenger",
+          "patch": "25.19",
+          "durationSec": 1293,
+          "region": "KR",
+          "player": "Viper",
+          "team": "HLE",
+          "uploaded": "2025-10-07",
+          "moments": []
+        },
+        {
+          "videoId": "eFfivPOtW8w",
+          "title": "Caitlyn vs Jhin ADC - KR Challenger - Patch 25.19 Season 15",
+          "rankClaim": "Challenger",
+          "patch": "25.19",
+          "durationSec": 1751,
+          "region": "KR",
+          "uploaded": "2025-09-30",
+          "moments": []
+        },
+        {
+          "videoId": "ye95BTZFmXE",
+          "title": "Caitlyn ADC vs Jhin - EUW Grandmaster Patch 25.15",
+          "rankClaim": "Grandmaster",
+          "patch": "25.15",
+          "durationSec": 1642,
+          "region": "EUW",
+          "uploaded": "2025-08-14",
+          "moments": []
+        },
+        {
+          "videoId": "BHiyjWWPa1c",
+          "title": "T1 Gumayusi Caitlyn ADC vs Jhin - Patch 25.13 Ranked NA",
+          "rankClaim": "Master+",
+          "patch": "25.13",
+          "durationSec": 1983,
+          "region": "NA",
+          "player": "Gumayusi",
+          "team": "T1",
+          "uploaded": "2025-07-09",
+          "moments": []
+        },
+        {
+          "videoId": "o1wkrw35KFs",
+          "title": "T1 Gumayusi Caitlyn vs Jhin [ ADC ] Korea Challenger Patch 25.11",
+          "rankClaim": "Challenger",
+          "patch": "25.11",
+          "durationSec": 1042,
+          "region": "KR",
+          "player": "Gumayusi",
+          "team": "T1",
+          "uploaded": "2025-06-04",
+          "moments": []
+        },
+        {
+          "videoId": "Pcy4hw7W26U",
+          "title": "Caitlyn vs Jhin ADC - KR Challenger - Patch 25.9 Season 15",
+          "rankClaim": "Challenger",
+          "patch": "25.9",
+          "durationSec": 1801,
+          "region": "KR",
+          "uploaded": "2025-05-10",
+          "moments": []
+        },
+        {
+          "videoId": "NP6MfvzY73c",
+          "title": "Caitlyn ADC vs Jhin - KR Master Patch 25.09",
+          "rankClaim": "Master",
+          "patch": "25.9",
+          "durationSec": 1938,
+          "region": "KR",
+          "uploaded": "2025-05-04",
+          "moments": []
+        },
+        {
+          "videoId": "EcaLpbrMp1I",
+          "title": "T1 Gumayusi Caitlyn ADC vs Jhin - Patch 25.7 Korea Challenger ✅",
+          "rankClaim": "Challenger",
+          "patch": "25.7",
+          "durationSec": 1374,
+          "region": "KR",
+          "player": "Gumayusi",
+          "team": "T1",
+          "uploaded": "2025-04-14",
+          "moments": []
+        },
+        {
+          "videoId": "jLx7Gq-jXVw",
+          "title": "Caitlyn vs Jhin ADC - KR Grandmaster - Patch 25.5 Season 15",
+          "rankClaim": "Grandmaster",
+          "patch": "25.5",
+          "durationSec": 1871,
+          "region": "KR",
+          "uploaded": "2025-03-10",
+          "moments": []
+        },
+        {
+          "videoId": "MeZzVHfXWkI",
+          "title": "Deft Caitlyn ADC vs Jhin - Patch 25.3 Korea Master ✅",
+          "rankClaim": "Master",
+          "patch": "25.3",
+          "durationSec": 1612,
+          "region": "KR",
+          "player": "Deft",
+          "uploaded": "2025-02-14",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 221,
+      "lane": "adc",
+      "videos": [
+        {
+          "videoId": "kx4WfrxPKT8",
+          "title": "BLG Viper Caitlyn vs Zeri [ ADC ] Korea Challenger 2335 LP | Patch 26.10",
+          "rankClaim": "Challenger",
+          "patch": "26.10",
+          "durationSec": 1989,
+          "region": "KR",
+          "player": "Viper",
+          "team": "BLG",
+          "uploaded": "2026-05-26",
+          "moments": []
+        },
+        {
+          "videoId": "xKQ07ZcF1NU",
+          "title": "Caitlyn ADC vs Zeri - KR Grandmaster Patch 25.12",
+          "rankClaim": "Grandmaster",
+          "patch": "25.12",
+          "durationSec": 1572,
+          "region": "KR",
+          "uploaded": "2025-06-17",
+          "moments": []
+        },
+        {
+          "videoId": "zxhqzakN2II",
+          "title": "T1 Gumayusi Caitlyn vs Zeri [ ADC ] Korea Challenger Patch 25.7 ✅",
+          "rankClaim": "Challenger",
+          "patch": "25.7",
+          "durationSec": 1307,
+          "region": "KR",
+          "player": "Gumayusi",
+          "team": "T1",
+          "uploaded": "2025-04-07",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 222,
+      "lane": "adc",
+      "videos": [
+        {
+          "videoId": "xgKnuvSqTB0",
+          "title": "\"Jz\" 2000LP Caitlyn : His Mechanic is on Another Level - Engsub ( vs Jinx, Lucian )",
+          "rankClaim": "Master+",
+          "patch": "26.19",
+          "durationSec": 1372,
+          "patchEstimated": true,
+          "player": "Jz",
+          "uploaded": "2026-09-25",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "UiV1ht9qDsk",
+          "title": "\"Jz\" 2000LP Caitlyn : This Dude Mechanic is on Another Level - Engsub (Caitlyn vs Jinx, Zeri)",
+          "rankClaim": "Master+",
+          "patch": "26.15",
+          "durationSec": 1264,
+          "patchEstimated": true,
+          "player": "Jz",
+          "uploaded": "2026-07-30",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "C1qiZY_3Dnc",
+          "title": "1500LP Caitlyn : He just Out Spacing Enemy, He is UNTOUCHABLE - Engsub ( Caitlyn vs Jinx )",
+          "rankClaim": "Master+",
+          "patch": "26.10",
+          "durationSec": 830,
+          "patchEstimated": true,
+          "uploaded": "2026-05-26",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "6MDP4dp49mk",
+          "title": "Caitlyn vs Jinx ADC - KR Challenger - Patch 16.08 Season 16",
+          "rankClaim": "Challenger",
+          "patch": "26.8",
+          "durationSec": 1681,
+          "region": "KR",
+          "uploaded": "2026-04-22",
+          "moments": []
+        },
+        {
+          "videoId": "wEq9zQpBu_8",
+          "title": "Caitlyn vs Jinx ADC - KR Grandmaster - Patch 16.06 Season 16",
+          "rankClaim": "Grandmaster",
+          "patch": "26.6",
+          "durationSec": 1451,
+          "region": "KR",
+          "uploaded": "2026-03-28",
+          "moments": []
+        },
+        {
+          "videoId": "KEkSi2BDlOo",
+          "title": "Caitlyn vs Jinx ADC - KR Grandmaster - Patch 16.05 Season 16",
+          "rankClaim": "Grandmaster",
+          "patch": "26.5",
+          "durationSec": 1726,
+          "region": "KR",
+          "uploaded": "2026-03-18",
+          "moments": []
+        },
+        {
+          "videoId": "0DIPP1EE6pQ",
+          "title": "Caitlyn vs Jinx ADC - EUW Challenger - Patch 16.03 Season 16",
+          "rankClaim": "Challenger",
+          "patch": "26.3",
+          "durationSec": 1980,
+          "region": "EUW",
+          "uploaded": "2026-02-10",
+          "moments": []
+        },
+        {
+          "videoId": "9CJhMviKb-g",
+          "title": "Caitlyn vs Jinx ADC - EUW Challenger - Patch 25.24 Season 15",
+          "rankClaim": "Challenger",
+          "patch": "25.24",
+          "durationSec": 1471,
+          "region": "EUW",
+          "uploaded": "2026-01-08",
+          "moments": []
+        },
+        {
+          "videoId": "Rj61eiE16wc",
+          "title": "Caitlyn ADC vs Jinx - EUW Grandmaster Patch 25.19",
+          "rankClaim": "Grandmaster",
+          "patch": "25.19",
+          "durationSec": 1450,
+          "region": "EUW",
+          "uploaded": "2025-10-10",
+          "moments": []
+        },
+        {
+          "videoId": "-5iu3gBtrkU",
+          "title": "Caitlyn vs Jinx ADC - KR Challenger - Patch 25.19 Season 15",
+          "rankClaim": "Challenger",
+          "patch": "25.19",
+          "durationSec": 1651,
+          "region": "KR",
+          "uploaded": "2025-10-02",
+          "moments": []
+        },
+        {
+          "videoId": "CdWLve9iPTs",
+          "title": "Caitlyn vs Jinx ADC - KR Grandmaster - Patch 25.5 Season 15",
+          "rankClaim": "Grandmaster",
+          "patch": "25.5",
+          "durationSec": 1686,
+          "region": "KR",
+          "uploaded": "2025-03-11",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 235,
+      "lane": "adc",
+      "videos": [
+        {
+          "videoId": "Iqalw0g6fVA",
+          "title": "2000LP Caitlyn \"Jz\" ONE BULLET - ONE SHOT - ONE KILL / Engsub (Caitlyn vs MF, Senna)",
+          "rankClaim": "Master+",
+          "patch": "26.13",
+          "durationSec": 1538,
+          "patchEstimated": true,
+          "player": "Jz",
+          "uploaded": "2026-07-09",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "MhjjpPY6fUY",
+          "title": "(LEO RustySniper) Caitlyn ADC vs Senna - EUW Grandmaster Patch 26.12",
+          "rankClaim": "Grandmaster",
+          "patch": "26.12",
+          "durationSec": 1476,
+          "region": "EUW",
+          "player": "LEO RustySniper",
+          "uploaded": "2026-06-25",
+          "moments": []
+        },
+        {
+          "videoId": "-cQfUGHfC0M",
+          "title": "Caitlyn vs Senna ADC - KR Grandmaster - Patch 25.12 Season 15",
+          "rankClaim": "Grandmaster",
+          "patch": "25.12",
+          "durationSec": 1906,
+          "region": "KR",
+          "uploaded": "2025-06-20",
+          "moments": []
+        },
+        {
+          "videoId": "_neYk2kn6l0",
+          "title": "Caitlyn ADC vs Senna - KR Master Patch 25.11",
+          "rankClaim": "Master",
+          "patch": "25.11",
+          "durationSec": 1662,
+          "region": "KR",
+          "uploaded": "2025-06-03",
+          "moments": []
+        },
+        {
+          "videoId": "06O6PDDvftQ",
+          "title": "T1 Gumayusi Caitlyn vs Senna [ ADC ] Patch 25.10 Korea Challenger",
+          "rankClaim": "Challenger",
+          "patch": "25.10",
+          "durationSec": 1171,
+          "region": "KR",
+          "player": "Gumayusi",
+          "team": "T1",
+          "uploaded": "2025-05-22",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 235,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "wPcRmohyjJM",
+          "title": "DAY 3 OF ADC AND I LOST MY MIND",
+          "rankClaim": "Master+",
+          "patch": "26.5",
+          "durationSec": 24436,
+          "patchEstimated": true,
+          "player": "Alois",
+          "uploaded": "2026-03-12",
+          "format": "stream",
+          "cam": true,
+          "startSec": 4840,
+          "endSec": 7090,
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 236,
+      "lane": "adc",
+      "videos": [
+        {
+          "videoId": "gP_ccaWauUM",
+          "title": "(GAM Artemis) Caitlyn ADC vs Lucian - KR Grandmaster Patch 26.16",
+          "rankClaim": "Grandmaster",
+          "patch": "26.16",
+          "durationSec": 1747,
+          "region": "KR",
+          "player": "GAM Artemis",
+          "uploaded": "2026-08-17",
+          "result": "L",
+          "moments": [
+            {
+              "atSec": 157,
+              "label": "First Blood — Caitlyn kills Shen",
+              "kind": "kill"
+            },
+            {
+              "atSec": 341,
+              "label": "Red takes 1st Dragon (Ocean)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 680,
+              "label": "Caitlyn picks off Shen"
+            },
+            {
+              "atSec": 728,
+              "label": "Red takes 2nd Dragon (Infernal)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 769,
+              "label": "Caitlyn takes down Lucian"
+            },
+            {
+              "atSec": 1041,
+              "label": "Blue takes 1st Dragon (Cloud)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1220,
+              "label": "Caitlyn picks off Shen"
+            },
+            {
+              "atSec": 1367,
+              "label": "Blue takes 2nd Dragon (Cloud)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1428,
+              "label": "Blue takes Baron",
+              "kind": "baron"
+            },
+            {
+              "atSec": 1487,
+              "label": "Team fight (3 kills)",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1662,
+              "label": "Caitlyn Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1689,
+              "label": "Mid Inhibitor falls (Blue)"
+            }
+          ]
+        },
+        {
+          "videoId": "WeAXw86-xBQ",
+          "title": "\"Jz\" 2000LP Caitlyn : ONE BULLET - ONE SHOT - ONE KILL / Engsub ( vs Lucian)",
+          "rankClaim": "Master+",
+          "patch": "26.15",
+          "durationSec": 1553,
+          "patchEstimated": true,
+          "player": "Jz",
+          "uploaded": "2026-08-05",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "F0S5hx6OgrM",
+          "title": "2000LP Caitlyn \"Jz\" ONE BULLET - ONE SHOT - ONE KILL / Engsub (Caitlyn vs Lucian, Twitch)",
+          "rankClaim": "Master+",
+          "patch": "26.13",
+          "durationSec": 1616,
+          "patchEstimated": true,
+          "player": "Jz",
+          "uploaded": "2026-06-30",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "aXDWAQH6Z80",
+          "title": "1600LP Caitlyn \"Jz adc\" His Mechanic is a LEGIT A REAL DEAL - Engsub (Caitlyn vs Lucian, Xayah)",
+          "rankClaim": "Master+",
+          "patch": "26.13",
+          "durationSec": 1574,
+          "patchEstimated": true,
+          "player": "Jz",
+          "uploaded": "2026-06-27",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "GHi2A5gqrkE",
+          "title": "Smash : His Caitlyn Mechanic is GOD LIKE \" 22Kills in Challenger\" Engsub (Caitlyn vs Ez, Lucian)",
+          "rankClaim": "Challenger",
+          "patch": "26.12",
+          "durationSec": 1449,
+          "patchEstimated": true,
+          "player": "Smash",
+          "uploaded": "2026-06-13",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "MjYrztjs-ak",
+          "title": "Caitlyn vs Lucian ADC [ Gen.G Ruler ] Patch 26.11 Korea Challenger 2130 LP",
+          "rankClaim": "Challenger",
+          "patch": "26.11",
+          "durationSec": 1256,
+          "region": "KR",
+          "player": "Ruler",
+          "team": "Gen.G",
+          "uploaded": "2026-06-08",
+          "moments": []
+        },
+        {
+          "videoId": "8aRmWNt2Kwk",
+          "title": "Uzi : His Caitlyn Mechanic is a REAL DEAL - Engsub ( Caitlyn vs Lucian )",
+          "rankClaim": "Master+",
+          "patch": "26.10",
+          "durationSec": 1207,
+          "patchEstimated": true,
+          "player": "Uzi",
+          "uploaded": "2026-05-18",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "ssd4b5vUieY",
+          "title": "BLG Viper Caitlyn vs Lucian [ ADC ] Patch 26.10 Korea Challenger 2163 LP",
+          "rankClaim": "Challenger",
+          "patch": "26.10",
+          "durationSec": 1461,
+          "region": "KR",
+          "player": "Viper",
+          "team": "BLG",
+          "uploaded": "2026-05-17",
+          "moments": []
+        },
+        {
+          "videoId": "LzwZk0oVCjE",
+          "title": "Caitlyn vs Lucian ADC - KR Challenger - Patch 16.09 Season 16",
+          "rankClaim": "Challenger",
+          "patch": "26.9",
+          "durationSec": 1771,
+          "region": "KR",
+          "uploaded": "2026-05-13",
+          "moments": []
+        },
+        {
+          "videoId": "ndqOJ3pPPDQ",
+          "title": "Caitlyn vs Lucian ADC - KR Challenger - Patch 16.09 Season 16",
+          "rankClaim": "Challenger",
+          "patch": "26.9",
+          "durationSec": 1606,
+          "region": "KR",
+          "uploaded": "2026-05-07",
+          "moments": []
+        },
+        {
+          "videoId": "Y1s2FQ1SxYY",
+          "title": "Uzi : His Caitlyn is About Going to WAR - Engsub ( Caitlyn vs Lucian )",
+          "rankClaim": "Master+",
+          "patch": "26.9",
+          "durationSec": 1057,
+          "patchEstimated": true,
+          "player": "Uzi",
+          "uploaded": "2026-05-06",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "jxzWFpvdJhc",
+          "title": "Caitlyn vs Lucian ADC - KR Grandmaster - Patch 16.05 Season 16",
+          "rankClaim": "Grandmaster",
+          "patch": "26.5",
+          "durationSec": 1996,
+          "region": "KR",
+          "uploaded": "2026-03-07",
+          "moments": []
+        },
+        {
+          "videoId": "Z18LmDayNfk",
+          "title": "BLG Viper Caitlyn vs Lucian [ ADC ] Patch 26.1 Ranked Korea ✅",
+          "rankClaim": "Master+",
+          "patch": "26.1",
+          "durationSec": 1695,
+          "region": "KR",
+          "player": "Viper",
+          "team": "BLG",
+          "uploaded": "2026-01-10",
+          "moments": []
+        },
+        {
+          "videoId": "-FMC342ZAqY",
+          "title": "Caitlyn ADC vs Lucian - KR Challenger Patch 25.24",
+          "rankClaim": "Challenger",
+          "patch": "25.24",
+          "durationSec": 1509,
+          "region": "KR",
+          "uploaded": "2025-12-27",
+          "moments": []
+        },
+        {
+          "videoId": "RNRcUUUdFds",
+          "title": "Caitlyn ADC vs Lucian - KR Master Patch 25.20",
+          "rankClaim": "Master",
+          "patch": "25.20",
+          "durationSec": 1470,
+          "region": "KR",
+          "uploaded": "2025-10-11",
+          "moments": []
+        },
+        {
+          "videoId": "XFQZYrKpzWU",
+          "title": "Caitlyn ADC vs Lucian - KR Challenger Patch 25.19",
+          "rankClaim": "Challenger",
+          "patch": "25.19",
+          "durationSec": 1628,
+          "region": "KR",
+          "uploaded": "2025-09-27",
+          "moments": []
+        },
+        {
+          "videoId": "Oy6nAsEHL00",
+          "title": "Caitlyn vs Lucian [ ADC ] Lol Korea Master Patch 25.18",
+          "rankClaim": "Master",
+          "patch": "25.18",
+          "durationSec": 2178,
+          "region": "KR",
+          "uploaded": "2025-09-15",
+          "moments": []
+        },
+        {
+          "videoId": "c1l8a9MwqrI",
+          "title": "Caitlyn ADC vs Lucian - KR Grandmaster Patch 25.16",
+          "rankClaim": "Grandmaster",
+          "patch": "25.16",
+          "durationSec": 1577,
+          "region": "KR",
+          "uploaded": "2025-08-18",
+          "moments": []
+        },
+        {
+          "videoId": "zvWZUslfDA4",
+          "title": "Caitlyn vs Lucian ADC - KR Grandmaster - Patch 25.16 Season 15",
+          "rankClaim": "Grandmaster",
+          "patch": "25.16",
+          "durationSec": 1771,
+          "region": "KR",
+          "uploaded": "2025-08-15",
+          "moments": []
+        },
+        {
+          "videoId": "W0TrSRI1NxU",
+          "title": "Caitlyn vs Lucian ADC - KR Challenger - Patch 25.12 Season 15",
+          "rankClaim": "Challenger",
+          "patch": "25.12",
+          "durationSec": 1426,
+          "region": "KR",
+          "uploaded": "2025-06-23",
+          "moments": []
+        },
+        {
+          "videoId": "Mo4h1NFdfHA",
+          "title": "Caitlyn vs Lucian [ ADC ] Lol Korea Master Patch 25.12",
+          "rankClaim": "Master",
+          "patch": "25.12",
+          "durationSec": 1449,
+          "region": "KR",
+          "uploaded": "2025-06-20",
+          "moments": []
+        },
+        {
+          "videoId": "4Yo6ljWCigI",
+          "title": "T1 Gumayusi Caitlyn vs Lucian [ ADC ] Patch 25.10 Korea Grandmaster",
+          "rankClaim": "Grandmaster",
+          "patch": "25.10",
+          "durationSec": 1731,
+          "region": "KR",
+          "player": "Gumayusi",
+          "team": "T1",
+          "uploaded": "2025-05-18",
+          "moments": []
+        },
+        {
+          "videoId": "shuHoo0AsIw",
+          "title": "Viper Caitlyn vs Lucian ADC - KR Challenger - Patch 25.9 Season 15",
+          "rankClaim": "Challenger",
+          "patch": "25.9",
+          "durationSec": 1620,
+          "region": "KR",
+          "player": "Viper",
+          "uploaded": "2025-05-12",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 238,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "yjQ1iszvzOA",
+          "title": "Caitlyn Mid vs Zed - NA Challenger Patch 26.10",
+          "rankClaim": "Challenger",
+          "patch": "26.10",
+          "durationSec": 1656,
+          "region": "NA",
+          "uploaded": "2026-05-18",
+          "moments": []
+        },
+        {
+          "videoId": "_x3qWeH6kik",
+          "title": "Caitlyn Mid vs Zed - NA Grandmaster Patch 25.09",
+          "rankClaim": "Grandmaster",
+          "patch": "25.9",
+          "durationSec": 2150,
+          "region": "NA",
+          "uploaded": "2025-05-12",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 360,
+      "lane": "adc",
+      "videos": [
+        {
+          "videoId": "Nu0-dhrysnw",
+          "title": "Caitlyn ADC vs Samira - KR Challenger Patch 26.04",
+          "rankClaim": "Challenger",
+          "patch": "26.4",
+          "durationSec": 1486,
+          "region": "KR",
+          "uploaded": "2026-02-21",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 431,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 513,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 714,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 751,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 819,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 931,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1008,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1025,
+              "label": "Get a Quadra Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1050,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1139,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1341,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1367,
+              "label": "Take down The Inhibitor"
+            },
+            {
+              "atSec": 1382,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1475,
+              "label": "End credit"
+            }
+          ]
+        },
+        {
+          "videoId": "_ro_btxIJAY",
+          "title": "Caitlyn vs Samira ADC - KR Challenger - Patch 26.01 Season 16",
+          "rankClaim": "Challenger",
+          "patch": "26.1",
+          "durationSec": 1651,
+          "region": "KR",
+          "uploaded": "2026-01-19",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 429,
+      "lane": "adc",
+      "videos": [
+        {
+          "videoId": "-8rFWNzFnc8",
+          "title": "BLG Viper Caitlyn vs Kalista [ ADC ] Korea Challenger 2205 LP | Patch 26.18",
+          "rankClaim": "Challenger",
+          "patch": "26.18",
+          "durationSec": 1004,
+          "region": "KR",
+          "player": "Viper",
+          "team": "BLG",
+          "uploaded": "2026-09-13",
+          "moments": []
+        },
+        {
+          "videoId": "AxY4PoLMGWw",
+          "title": "Caitlyn ADC vs Kalista - VN Challenger Patch 26.05",
+          "rankClaim": "Challenger",
+          "patch": "26.5",
+          "durationSec": 1856,
+          "uploaded": "2026-03-06",
+          "moments": []
+        },
+        {
+          "videoId": "PoQ85J7_NCM",
+          "title": "Caitlyn ADC vs Kalista - KR Challenger Patch 25.08",
+          "rankClaim": "Challenger",
+          "patch": "25.8",
+          "durationSec": 1731,
+          "region": "KR",
+          "uploaded": "2025-04-22",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 498,
+      "lane": "adc",
+      "videos": [
+        {
+          "videoId": "nF8FqRl0njs",
+          "title": "HuanFeng : His Caitlynn Mechanic is so CLEAN - Engsub ( Caitlyn vs Xayah, Twitch )",
+          "rankClaim": "Master+",
+          "patch": "26.11",
+          "durationSec": 1714,
+          "patchEstimated": true,
+          "uploaded": "2026-06-08",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "Pb0wVP3jXwo",
+          "title": "Caitlyn vs Xayah ADC - KR Grandmaster - Patch 25.13 Season 15",
+          "rankClaim": "Grandmaster",
+          "patch": "25.13",
+          "durationSec": 1931,
+          "region": "KR",
+          "uploaded": "2025-06-30",
+          "moments": []
+        },
+        {
+          "videoId": "cx-oe5_6L18",
+          "title": "T1 Gumayusi Caitlyn vs Xayah [ ADC ] Korea Challenger Patch 25.13",
+          "rankClaim": "Challenger",
+          "patch": "25.13",
+          "durationSec": 1849,
+          "region": "KR",
+          "player": "Gumayusi",
+          "team": "T1",
+          "uploaded": "2025-06-27",
+          "moments": []
+        },
+        {
+          "videoId": "TT03OYGvmJA",
+          "title": "Caitlyn vs Xayah ADC [ DRX Teddy ] Patch 25.11 Korea Challenger ✅",
+          "rankClaim": "Challenger",
+          "patch": "25.11",
+          "durationSec": 1492,
+          "region": "KR",
+          "player": "Teddy",
+          "team": "DRX",
+          "uploaded": "2025-05-28",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 498,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "WfeW2dDZKsI",
+          "title": "LEARNING THE BULLY OF BOTLANE",
+          "rankClaim": "Master+",
+          "patch": "26.5",
+          "durationSec": 22227,
+          "patchEstimated": true,
+          "player": "Alois",
+          "uploaded": "2026-03-15",
+          "format": "stream",
+          "cam": true,
+          "startSec": 4248,
+          "endSec": 6360,
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 517,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "Q2DElIhKRp8",
+          "title": "Caitlyn Mid vs Sylas - KR Master Patch 25.14",
+          "rankClaim": "Master",
+          "patch": "25.14",
+          "durationSec": 1457,
+          "region": "KR",
+          "uploaded": "2025-07-29",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 523,
+      "lane": "adc",
+      "videos": [
+        {
+          "videoId": "AB2C8AYj_90",
+          "title": "Caitlyn ADC vs Aphelios - KR Grandmaster Patch 26.20",
+          "rankClaim": "Grandmaster",
+          "patch": "26.20",
+          "durationSec": 1781,
+          "region": "KR",
+          "uploaded": "2026-10-21",
+          "result": "W",
+          "moments": [
+            {
+              "atSec": 147,
+              "label": "First Blood — Caitlyn kills Thresh",
+              "kind": "kill"
+            },
+            {
+              "atSec": 327,
+              "label": "Blue takes 1st Dragon (Cloud)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 332,
+              "label": "Caitlyn picks off Thresh"
+            },
+            {
+              "atSec": 486,
+              "label": "Caitlyn picks off Thresh"
+            },
+            {
+              "atSec": 670,
+              "label": "Red takes 1st Dragon (Hextech)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 881,
+              "label": "Blue takes Rift Herald",
+              "kind": "herald"
+            },
+            {
+              "atSec": 952,
+              "label": "Caitlyn takes down Aphelios"
+            },
+            {
+              "atSec": 1052,
+              "label": "Lux picks off Aphelios"
+            },
+            {
+              "atSec": 1060,
+              "label": "Blue takes 2nd Dragon (Ocean)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1111,
+              "label": "Caitlyn picks off Thresh"
+            },
+            {
+              "atSec": 1290,
+              "label": "Caitlyn outduels Aphelios"
+            },
+            {
+              "atSec": 1372,
+              "label": "Blue takes 3rd Dragon (Ocean)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1419,
+              "label": "Blue takes Baron",
+              "kind": "baron"
+            },
+            {
+              "atSec": 1490,
+              "label": "Mid Inhibitor falls (Red)"
+            },
+            {
+              "atSec": 1498,
+              "label": "Top Inhibitor falls (Red)"
+            },
+            {
+              "atSec": 1517,
+              "label": "Caitlyn Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1630,
+              "label": "Bot Inhibitor falls (Red)"
+            },
+            {
+              "atSec": 1679,
+              "label": "Blue takes 4th Dragon (Ocean)",
+              "kind": "dragon"
+            }
+          ]
+        },
+        {
+          "videoId": "0Sy3Db5euDU",
+          "title": "Caitlyn vs Aphelios ADC - KR Challenger - Patch 16.20 Season 16",
+          "rankClaim": "Challenger",
+          "patch": "26.20",
+          "durationSec": 1966,
+          "region": "KR",
+          "uploaded": "2026-10-13",
+          "moments": []
+        },
+        {
+          "videoId": "IgiXcnh3sj8",
+          "title": "Caitlyn vs APhelios ADC - EUW Challenger - Patch 16.11 Season 16",
+          "rankClaim": "Challenger",
+          "patch": "26.11",
+          "durationSec": 1921,
+          "region": "EUW",
+          "uploaded": "2026-06-11",
+          "moments": []
+        },
+        {
+          "videoId": "m7-on5K1mRo",
+          "title": "Uzi : His Caitlyn Laning Phase is so CLEAN - Engsub ( Caitlyn vs Aphelios )",
+          "rankClaim": "Master+",
+          "patch": "26.9",
+          "durationSec": 812,
+          "patchEstimated": true,
+          "player": "Uzi",
+          "uploaded": "2026-05-11",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "cDEUOiyYWT8",
+          "title": "Uzi Caitlyn : DOMINATING Super Server in Just 20 Min - Engsub ( Caitlyn vs Aphelios )",
+          "rankClaim": "Master+",
+          "patch": "26.9",
+          "durationSec": 902,
+          "patchEstimated": true,
+          "player": "Uzi",
+          "uploaded": "2026-05-08",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "kgR_j1C1bjo",
+          "title": "BLG Viper Caitlyn vs Aphelios [ ADC ] Korea Grandmaster Patch 26.2 ✅",
+          "rankClaim": "Grandmaster",
+          "patch": "26.2",
+          "durationSec": 1224,
+          "region": "KR",
+          "player": "Viper",
+          "team": "BLG",
+          "uploaded": "2026-02-02",
+          "moments": []
+        },
+        {
+          "videoId": "JQkq5HltLcs",
+          "title": "Caitlyn vs Aphelios ADC - EUW Grandmaster - Patch 26.01 Season 16",
+          "rankClaim": "Grandmaster",
+          "patch": "26.1",
+          "durationSec": 1681,
+          "region": "EUW",
+          "uploaded": "2026-01-13",
+          "moments": []
+        },
+        {
+          "videoId": "L41FvEHsrJM",
+          "title": "T1 Peyz Caitlyn vs Aphelios [ ADC ] Patch 26.1 Ranked Korea",
+          "rankClaim": "Master+",
+          "patch": "26.1",
+          "durationSec": 1596,
+          "region": "KR",
+          "player": "Peyz",
+          "team": "T1",
+          "uploaded": "2026-01-12",
+          "moments": []
+        },
+        {
+          "videoId": "KgMRsJQOODk",
+          "title": "Caitlyn ADC vs Aphelios - KR Master Patch 26.01",
+          "rankClaim": "Master",
+          "patch": "26.1",
+          "durationSec": 1459,
+          "region": "KR",
+          "uploaded": "2026-01-11",
+          "moments": []
+        },
+        {
+          "videoId": "WFbKSBZ8j2M",
+          "title": "Deft Caitlyn vs Aphelios ADC [ TripleKill ] Korea Master Patch 25.24 ✅",
+          "rankClaim": "Master",
+          "patch": "25.24",
+          "durationSec": 1713,
+          "region": "KR",
+          "player": "Deft",
+          "uploaded": "2025-12-28",
+          "moments": []
+        },
+        {
+          "videoId": "STqrqTJ7OWE",
+          "title": "Caitlyn vs Aphelios [ ADC ] Lol Korea Master Patch 25.14",
+          "rankClaim": "Master",
+          "patch": "25.14",
+          "durationSec": 1171,
+          "region": "KR",
+          "uploaded": "2025-07-26",
+          "moments": []
+        },
+        {
+          "videoId": "qLOFxaaKvVQ",
+          "title": "T1 Gumayusi Caitlyn vs Aphelios [ ADC ] Patch 25.13 Ranked NA",
+          "rankClaim": "Master+",
+          "patch": "25.13",
+          "durationSec": 1328,
+          "region": "NA",
+          "player": "Gumayusi",
+          "team": "T1",
+          "uploaded": "2025-07-06",
+          "moments": []
+        },
+        {
+          "videoId": "KQLRW2XrBeQ",
+          "title": "Caitlyn ADC vs Aphelios - EUW Challenger Patch 25.07",
+          "rankClaim": "Challenger",
+          "patch": "25.7",
+          "durationSec": 1734,
+          "region": "EUW",
+          "uploaded": "2025-04-18",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 800,
+      "lane": "adc",
+      "videos": [
+        {
+          "videoId": "_cDn0hIfZV4",
+          "title": "\"Jz\" 2000LP Caitlyn : His 200IQ TRAPS is NEXT LEVEL INSANE - Engsub ( vs Mel, Tris )",
+          "rankClaim": "Master+",
+          "patch": "26.15",
+          "durationSec": 1790,
+          "patchEstimated": true,
+          "player": "Jz",
+          "uploaded": "2026-08-06",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "Df05G_Y9pEc",
+          "title": "Doggo Caitlyn : ONE BULLET - ONE SHOT - ONE KILL / Engsub (Caitlyn vs Mel)",
+          "rankClaim": "Master+",
+          "patch": "26.14",
+          "durationSec": 773,
+          "patchEstimated": true,
+          "uploaded": "2026-07-19",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "ewHeNPQH5Wo",
+          "title": "(CNWI Doinb) Caitlyn ADC vs Mel (KRX LazyFeel) - KR Challenger Patch 26.11",
+          "rankClaim": "Challenger",
+          "patch": "26.11",
+          "durationSec": 1609,
+          "region": "KR",
+          "player": "Doinb",
+          "uploaded": "2026-05-31",
+          "moments": []
+        },
+        {
+          "videoId": "UwNp7Y8yjO0",
+          "title": "BFX Diable : His Caitlyn Mechanic is Phenomenal - Engsub ( Caitlyn vs Mel, Jhin )",
+          "rankClaim": "Master+",
+          "patch": "26.8",
+          "durationSec": 1251,
+          "patchEstimated": true,
+          "uploaded": "2026-04-28",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "6VgRyI6yB1Y",
+          "title": "Caitlyn vs Mel ADC - KR Challenger - Patch 16.07 Season 16",
+          "rankClaim": "Challenger",
+          "patch": "26.7",
+          "durationSec": 1681,
+          "region": "KR",
+          "uploaded": "2026-04-05",
+          "moments": []
+        },
+        {
+          "videoId": "Zt5lDmFkKfU",
+          "title": "Viper Caitlyn vs Mel ADC - KR Challenger - Patch 25.19 Season 15",
+          "rankClaim": "Challenger",
+          "patch": "25.19",
+          "durationSec": 2146,
+          "region": "KR",
+          "player": "Viper",
+          "uploaded": "2025-09-26",
+          "moments": []
+        },
+        {
+          "videoId": "R3elLL3KC3o",
+          "title": "Caitlyn vs Mel ADC [ HLE Viper ] Patch 25.19 Korea Challenger",
+          "rankClaim": "Challenger",
+          "patch": "25.19",
+          "durationSec": 1875,
+          "region": "KR",
+          "player": "Viper",
+          "team": "HLE",
+          "uploaded": "2025-09-25",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 804,
+      "lane": "adc",
+      "videos": [
+        {
+          "videoId": "kVQl7A5869I",
+          "title": "Caitlyn vs Yunara [ ADC ] Korea Challenger 2558 LP | Patch 26.19",
+          "rankClaim": "Challenger",
+          "patch": "26.19",
+          "durationSec": 1902,
+          "region": "KR",
+          "uploaded": "2026-09-26",
+          "moments": []
+        },
+        {
+          "videoId": "09eOy4lp8lQ",
+          "title": "1600LP Caitlyn : ONE TRAP HIT YOU GETTING DELETED - Engsub ( Caitlyn vs Yunara, Aphe )",
+          "rankClaim": "Master+",
+          "patch": "26.12",
+          "durationSec": 1535,
+          "patchEstimated": true,
+          "uploaded": "2026-06-22",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "Wj5db1pCUwQ",
+          "title": "DK Smash Caitlyn vs Yunara [ ADC ] Korea Challenger 2597 LP | Patch 26.11",
+          "rankClaim": "Challenger",
+          "patch": "26.11",
+          "durationSec": 1179,
+          "region": "KR",
+          "player": "Smash",
+          "team": "DK",
+          "uploaded": "2026-06-01",
+          "moments": []
+        },
+        {
+          "videoId": "9oxXbguK4bo",
+          "title": "Caitlyn vs Yunara ADC [ Gen.G Ruler ] Patch 26.11 Korea Challenger 2110 LP",
+          "rankClaim": "Challenger",
+          "patch": "26.11",
+          "durationSec": 1134,
+          "region": "KR",
+          "player": "Ruler",
+          "team": "Gen.G",
+          "uploaded": "2026-05-28",
+          "moments": []
+        },
+        {
+          "videoId": "ezAeaRYP9y8",
+          "title": "Caitlyn vs Yunara ADC - KR Grandmaster - Patch 16.09 Season 16",
+          "rankClaim": "Grandmaster",
+          "patch": "26.9",
+          "durationSec": 1816,
+          "region": "KR",
+          "uploaded": "2026-05-08",
+          "moments": []
+        },
+        {
+          "videoId": "4o2Fw9NGynI",
+          "title": "Caitlyn vs Yunara ADC - KR Challenger - Patch 16.09 Season 16",
+          "rankClaim": "Challenger",
+          "patch": "26.9",
+          "durationSec": 1831,
+          "region": "KR",
+          "uploaded": "2026-05-05",
+          "moments": []
+        },
+        {
+          "videoId": "VRB5lDd2NwM",
+          "title": "Caitlyn vs Yunara ADC - KR Challenger - Patch 16.08 Season 16",
+          "rankClaim": "Challenger",
+          "patch": "26.8",
+          "durationSec": 1501,
+          "region": "KR",
+          "uploaded": "2026-04-21",
+          "moments": []
+        },
+        {
+          "videoId": "UIMovDsbHGI",
+          "title": "BLG Viper Caitlyn vs Yunara [ ADC ] Korea Challenger 1469 LP | Patch 26.7",
+          "rankClaim": "Challenger",
+          "patch": "26.7",
+          "durationSec": 1435,
+          "region": "KR",
+          "player": "Viper",
+          "team": "BLG",
+          "uploaded": "2026-04-11",
+          "moments": []
+        },
+        {
+          "videoId": "_C_pEXW4cEs",
+          "title": "T1 Peyz Caitlyn vs Yunara [ ADC ] Korea Challenger 2243 LP | Patch 26.6",
+          "rankClaim": "Challenger",
+          "patch": "26.6",
+          "durationSec": 1770,
+          "region": "KR",
+          "player": "Peyz",
+          "team": "T1",
+          "uploaded": "2026-03-30",
+          "moments": []
+        },
+        {
+          "videoId": "f11NprnCsFo",
+          "title": "Caitlyn ADC vs Yunara - NA Grandmaster Patch 25.24",
+          "rankClaim": "Grandmaster",
+          "patch": "25.24",
+          "durationSec": 1564,
+          "region": "NA",
+          "uploaded": "2026-01-02",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 321,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 383,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 575,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 709,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 725,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 802,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 836,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 863,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 885,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 899,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 972,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1025,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1041,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1180,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1285,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1309,
+              "label": "Get a Triple Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1343,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1430,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1518,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1553,
+              "label": "End credit"
+            }
+          ]
+        },
+        {
+          "videoId": "QNN0fdksaas",
+          "title": "Caitlyn vs Yunara [ ADC ] Korea Challenger 1347 LP | Patch 25.24 ✅",
+          "rankClaim": "Challenger",
+          "patch": "25.24",
+          "durationSec": 1493,
+          "region": "KR",
+          "uploaded": "2025-12-16",
+          "moments": []
+        },
+        {
+          "videoId": "zbo3pZ6jWJ8",
+          "title": "Caitlyn ADC vs Yunara - EUW Challenger Patch 25.23",
+          "rankClaim": "Challenger",
+          "patch": "25.23",
+          "durationSec": 1631,
+          "region": "EUW",
+          "uploaded": "2025-12-04",
+          "moments": []
+        },
+        {
+          "videoId": "f71EfXo3jgo",
+          "title": "Caitlyn vs Yunara ADC [ QuadraKill ] Patch 25.21 Korea Grandmaster 1021 LP",
+          "rankClaim": "Grandmaster",
+          "patch": "25.21",
+          "durationSec": 1608,
+          "region": "KR",
+          "player": "QuadraKill",
+          "uploaded": "2025-10-22",
+          "moments": []
+        },
+        {
+          "videoId": "40jF6ev0qiU",
+          "title": "Caitlyn ADC vs Yunara - EUW Challenger Patch 25.20",
+          "rankClaim": "Challenger",
+          "patch": "25.20",
+          "durationSec": 1609,
+          "region": "EUW",
+          "uploaded": "2025-10-23",
+          "moments": []
+        },
+        {
+          "videoId": "xewGkP7SBfU",
+          "title": "Caitlyn vs Yunara ADC - KR Challenger - Patch 25.15 Season 15",
+          "rankClaim": "Challenger",
+          "patch": "25.15",
+          "durationSec": 1891,
+          "region": "KR",
+          "uploaded": "2025-08-08",
+          "moments": []
+        },
+        {
+          "videoId": "vdQO92sSiL0",
+          "title": "Caitlyn vs Yunara ADC - KR Challenger - Patch 25.14 Season 15",
+          "rankClaim": "Challenger",
+          "patch": "25.14",
+          "durationSec": 1831,
+          "region": "KR",
+          "uploaded": "2025-07-24",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 887,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "m6Qbh11GksU",
+          "title": "Caitlyn Top vs Gwen - NA Grandmaster Patch 25.10",
+          "rankClaim": "Grandmaster",
+          "patch": "25.10",
+          "durationSec": 1560,
+          "region": "NA",
+          "uploaded": "2025-05-31",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 901,
+      "lane": "adc",
+      "videos": [
+        {
+          "videoId": "2Az_fkmACIU",
+          "title": "Caitlyn vs Smolder ADC - EUW Grandmaster - Patch 16.09 Season 16",
+          "rankClaim": "Grandmaster",
+          "patch": "26.9",
+          "durationSec": 1876,
+          "region": "EUW",
+          "uploaded": "2026-05-12",
+          "moments": []
+        },
+        {
+          "videoId": "RBZWwx1IJ-w",
+          "title": "Caitlyn vs Smolder ADC - KR Master - Patch 25.12 Season 15",
+          "rankClaim": "Master",
+          "patch": "25.12",
+          "durationSec": 1366,
+          "region": "KR",
+          "uploaded": "2025-06-16",
+          "moments": []
+        },
+        {
+          "videoId": "MKtplK0uvI4",
+          "title": "Caitlyn vs Smolder ADC - KR Master - Patch 25.10 Season 15",
+          "rankClaim": "Master",
+          "patch": "25.10",
+          "durationSec": 1591,
+          "region": "KR",
+          "uploaded": "2025-05-22",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 901,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "WfeW2dDZKsI",
+          "title": "LEARNING THE BULLY OF BOTLANE",
+          "rankClaim": "Master+",
+          "patch": "26.5",
+          "durationSec": 22227,
+          "patchEstimated": true,
+          "player": "Alois",
+          "uploaded": "2026-03-15",
+          "format": "stream",
+          "cam": true,
+          "startSec": 13910,
+          "endSec": 15840,
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 910,
+      "lane": "adc",
+      "videos": [
+        {
+          "videoId": "n8YuC00fIeY",
+          "title": "Caitlyn vs Hwei ADC [ BLG Viper ] Patch 25.24 Ranked Korea ✅",
+          "rankClaim": "Master+",
+          "patch": "25.24",
+          "durationSec": 971,
+          "region": "KR",
+          "player": "Viper",
+          "team": "BLG",
+          "uploaded": "2026-01-01",
+          "moments": []
+        }
+      ]
+    }
+  ]
+}

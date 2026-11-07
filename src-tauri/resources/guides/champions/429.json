@@ -1,0 +1,3124 @@
+{
+  "schema": 1,
+  "champion": 429,
+  "generatedAt": "2026-11-07T13:25:14.592Z",
+  "guides": [],
+  "general": [
+    {
+      "champion": 429,
+      "lane": "adc",
+      "patch": "26.21",
+      "reviewed": false,
+      "keyTips": [
+        {
+          "text": "Play the first levels cautiously unless the lane holds a clear edge such as an engage support.",
+          "scope": "champion",
+          "sourceIds": [
+            "mobalytics-kalista"
+          ]
+        },
+        {
+          "text": "Once R unlocks, sync with an all-in support to stretch chases and start fights.",
+          "scope": "champion",
+          "sourceIds": [
+            "mobalytics-kalista"
+          ],
+          "abilityKeys": [
+            {
+              "champion": 429,
+              "key": "R"
+            }
+          ]
+        },
+        {
+          "text": "Fight late from open space near the support, kiting the nearest safe target.",
+          "scope": "champion",
+          "sourceIds": [
+            "mobalytics-kalista"
+          ]
+        }
+      ],
+      "sections": {
+        "overview": {
+          "tips": []
+        },
+        "early-lane": {
+          "tips": [
+            {
+              "text": "In winning extended trades, kite inside range while running opponents down.",
+              "scope": "champion",
+              "sourceIds": [
+                "mobalytics-kalista"
+              ]
+            },
+            {
+              "text": "Break enemy vision with unwarded brushes to reposition mid-trade.",
+              "scope": "champion",
+              "sourceIds": [
+                "mobalytics-kalista"
+              ]
+            },
+            {
+              "text": "Read lane pressure through the support; without their skirmish help, extended trades die.",
+              "scope": "champion",
+              "sourceIds": [
+                "mobalytics-kalista"
+              ]
+            }
+          ]
+        },
+        "mid-lane": {
+          "tips": [
+            {
+              "text": "After the bot tower, rotate mid and pressure its tower to open the map.",
+              "scope": "champion",
+              "sourceIds": [
+                "mobalytics-kalista"
+              ]
+            },
+            {
+              "text": "Stay glued to the support or another ally; lone Kalista dies easily.",
+              "scope": "champion",
+              "sourceIds": [
+                "mobalytics-kalista"
+              ]
+            },
+            {
+              "text": "Group over split-pushing without a specific reason to leave.",
+              "scope": "champion",
+              "sourceIds": [
+                "mobalytics-kalista"
+              ]
+            },
+            {
+              "text": "Set picks with the support or jungler and weigh Baron on the numbers edge after one.",
+              "scope": "champion",
+              "sourceIds": [
+                "mobalytics-kalista"
+              ]
+            },
+            {
+              "text": "Help lock neutral objectives with E alongside the jungler Smite.",
+              "scope": "champion",
+              "sourceIds": [
+                "mobalytics-kalista"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 429,
+                  "key": "E"
+                }
+              ]
+            },
+            {
+              "text": "Keep kiting room in fights and spend E only when its reset or execute secures a kill.",
+              "scope": "champion",
+              "sourceIds": [
+                "mobalytics-kalista"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 429,
+                  "key": "E"
+                }
+              ]
+            },
+            {
+              "text": "With waves pushed, send R to help the support roam or engage another lane.",
+              "scope": "champion",
+              "sourceIds": [
+                "mobalytics-kalista"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 429,
+                  "key": "R"
+                }
+              ]
+            }
+          ]
+        },
+        "win-condition": {
+          "tips": [
+            {
+              "text": "Keep vision and allies close; chained control stops her mobility and ends fights.",
+              "scope": "champion",
+              "sourceIds": [
+                "mobalytics-kalista"
+              ]
+            },
+            {
+              "text": "Against heavy control, buy Quicksilver Sash to cut the lockdown odds.",
+              "scope": "champion",
+              "sourceIds": [
+                "mobalytics-kalista"
+              ],
+              "itemIds": [
+                3140
+              ]
+            }
+          ]
+        }
+      },
+      "itemization": [
+        {
+          "text": "Chase core items while guarding kiting space with positioning.",
+          "scope": "champion",
+          "sourceIds": [
+            "mobalytics-kalista"
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "id": "mobalytics-kalista",
+          "author": "Mobalytics",
+          "rankClaim": "No rank claim",
+          "url": "https://mobalytics.gg/lol/champions/kalista/guide",
+          "kind": "web"
+        }
+      ]
+    }
+  ],
+  "vods": [
+    {
+      "lane": "adc",
+      "videos": [
+        {
+          "videoId": "UPzqxB_ITP8",
+          "title": "Smash : Statikk Shiv Kalista is STORMING in KR Challenger - Engsub",
+          "rankClaim": "Challenger",
+          "patch": "26.21",
+          "durationSec": 911,
+          "region": "KR",
+          "patchEstimated": true,
+          "player": "Smash",
+          "uploaded": "2026-10-31",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "OC6I9MLjOuc",
+          "title": "PEYZ : His KALISTA is WRECKING NA SERVER \" ONE KILL PER MIN \"",
+          "rankClaim": "Master+",
+          "patch": "26.21",
+          "durationSec": 727,
+          "region": "NA",
+          "patchEstimated": true,
+          "player": "Peyz",
+          "uploaded": "2026-10-22",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "RLOMR5cbFpQ",
+          "title": "Gumayusi : His Kalista is Dancing on FIRE with Statikk Shiv - Engsub ( Kalista vs Ez )",
+          "rankClaim": "Master+",
+          "patch": "26.12",
+          "durationSec": 1006,
+          "patchEstimated": true,
+          "player": "Gumayusi",
+          "uploaded": "2026-06-11",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "DA4c5nZvbqA",
+          "title": "Gumayusi : His Kalista Kiting Skill is on A NEXT LEVEL - Engsub",
+          "rankClaim": "Master+",
+          "patch": "26.8",
+          "durationSec": 887,
+          "patchEstimated": true,
+          "player": "Gumayusi",
+          "uploaded": "2026-04-18",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "dam9gL27WVU",
+          "title": "Uzi : His Kalista Kiting Skill is on Another Level - Engsub",
+          "rankClaim": "Master+",
+          "patch": "26.8",
+          "durationSec": 628,
+          "patchEstimated": true,
+          "player": "Uzi",
+          "uploaded": "2026-04-15",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "uuM1lswGBvw",
+          "title": "DK Smash : His Kalista Mechanic is on FIRE",
+          "rankClaim": "Master+",
+          "patch": "26.7",
+          "durationSec": 624,
+          "patchEstimated": true,
+          "player": "Smash",
+          "uploaded": "2026-04-06",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "kP1wS2XzKu4",
+          "title": "Gumayusi : His Kalista is Dancing in FIRE - Engsub",
+          "rankClaim": "Master+",
+          "patch": "26.6",
+          "durationSec": 798,
+          "patchEstimated": true,
+          "player": "Gumayusi",
+          "uploaded": "2026-03-21",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "w_gKJpOy3Ec",
+          "title": "Uzi : His Kalista is WRECKING Super Server in Just 15 Min - Engsub",
+          "rankClaim": "Master+",
+          "patch": "26.3",
+          "durationSec": 674,
+          "patchEstimated": true,
+          "player": "Uzi",
+          "uploaded": "2026-02-09",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "2mDfmBiWmOk",
+          "title": "DK Smash : His Kalista Kiting is God Like - Engsub",
+          "rankClaim": "Master+",
+          "patch": "26.1",
+          "durationSec": 1067,
+          "patchEstimated": true,
+          "player": "Smash",
+          "uploaded": "2026-01-08",
+          "format": "stream",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 2,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "PbPa_-njeUI",
+          "title": "Kalista Top vs Olaf - VN Challenger Patch 26.20",
+          "rankClaim": "Challenger",
+          "patch": "26.20",
+          "durationSec": 1638,
+          "uploaded": "2026-10-20",
+          "result": "W",
+          "moments": [
+            {
+              "atSec": 57,
+              "label": "First Blood — Kalista kills Olaf",
+              "kind": "kill"
+            },
+            {
+              "atSec": 141,
+              "label": "Kalista catches Olaf"
+            },
+            {
+              "atSec": 386,
+              "label": "Kalista outduels Olaf again"
+            },
+            {
+              "atSec": 433,
+              "label": "Red takes 1st Dragon (Mountain)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 460,
+              "label": "Kalista outplays Olaf (3rd time)"
+            },
+            {
+              "atSec": 759,
+              "label": "Red takes 2nd Dragon (Ocean)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1070,
+              "label": "Blue takes 1st Dragon (Chemtech)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1075,
+              "label": "Kalista outplays Smolder"
+            },
+            {
+              "atSec": 1079,
+              "label": "Kindred kills Olaf",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1198,
+              "label": "Kalista eliminates Alistar"
+            },
+            {
+              "atSec": 1221,
+              "label": "Red takes Baron",
+              "kind": "baron"
+            },
+            {
+              "atSec": 1374,
+              "label": "Taliyah Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1400,
+              "label": "Red takes 3rd Dragon (Chemtech)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1500,
+              "label": "Kalista picks off Kai'Sa"
+            },
+            {
+              "atSec": 1507,
+              "label": "Kalista Quadra Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1564,
+              "label": "Mid Inhibitor falls (Blue)"
+            },
+            {
+              "atSec": 1572,
+              "label": "Kindred Double Kill",
+              "kind": "kill"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 4,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "rs4VaePsxw4",
+          "title": "Kalista Mid vs Twisted Fate - KR Master Patch 26.09",
+          "rankClaim": "Master",
+          "patch": "26.9",
+          "durationSec": 1834,
+          "region": "KR",
+          "uploaded": "2026-05-15",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 6,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "B5u4ha7lY1A",
+          "title": "Kalista Top vs Urgot - NA Master Patch 26.18",
+          "rankClaim": "Master",
+          "patch": "26.18",
+          "durationSec": 1822,
+          "region": "NA",
+          "uploaded": "2026-09-24",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 8,
+      "lane": "adc",
+      "videos": [
+        {
+          "videoId": "CEnyKuUR3zM",
+          "title": "(BLG Viper) Kalista ADC vs Vladimir (Envyy) - KR Challenger Patch 26.13",
+          "rankClaim": "Challenger",
+          "patch": "26.13",
+          "durationSec": 1648,
+          "region": "KR",
+          "player": "Viper",
+          "team": "BLG",
+          "uploaded": "2026-06-29",
+          "moments": []
+        },
+        {
+          "videoId": "bgC-_hADwRQ",
+          "title": "T1 Peyz Kalista vs Vladimir [ ADC ] Korea Challenger 2442 LP | Patch 26.9",
+          "rankClaim": "Challenger",
+          "patch": "26.9",
+          "durationSec": 1484,
+          "region": "KR",
+          "player": "Peyz",
+          "team": "T1",
+          "uploaded": "2026-05-07",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 14,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "-yCZ4s-1XiM",
+          "title": "Kalista Top vs Sion (2M MESSCLICK) - EUW Master Patch 26.21",
+          "rankClaim": "Master",
+          "patch": "26.21",
+          "durationSec": 1403,
+          "region": "EUW",
+          "uploaded": "2026-11-02",
+          "result": "W",
+          "moments": [
+            {
+              "atSec": 236,
+              "label": "Kalista catches Sion"
+            },
+            {
+              "atSec": 305,
+              "label": "Red takes 1st Dragon (Chemtech)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 396,
+              "label": "Kalista outduels Sion again"
+            },
+            {
+              "atSec": 636,
+              "label": "Red takes 2nd Dragon (Cloud)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 650,
+              "label": "Kalista kills Elise",
+              "kind": "kill"
+            },
+            {
+              "atSec": 810,
+              "label": "Kalista kills Elise",
+              "kind": "kill"
+            },
+            {
+              "atSec": 912,
+              "label": "Kalista kills Elise",
+              "kind": "kill"
+            },
+            {
+              "atSec": 940,
+              "label": "Kalista takes down Taric"
+            },
+            {
+              "atSec": 1014,
+              "label": "Kalista takes down Sylas"
+            },
+            {
+              "atSec": 1060,
+              "label": "Red takes 3rd Dragon (Mountain)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1077,
+              "label": "Kalista eliminates Taric"
+            },
+            {
+              "atSec": 1099,
+              "label": "Kalista takes down Sylas"
+            },
+            {
+              "atSec": 1173,
+              "label": "Kalista Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1176,
+              "label": "Kalista Quadra Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1253,
+              "label": "Kalista picks off Tristana"
+            },
+            {
+              "atSec": 1295,
+              "label": "Red takes Baron",
+              "kind": "baron"
+            },
+            {
+              "atSec": 1371,
+              "label": "Team fight (4 kills)",
+              "kind": "teamfight"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 15,
+      "lane": "adc",
+      "videos": [
+        {
+          "videoId": "h7nsUXu2Hbk",
+          "title": "Kalista ADC vs Sivir - KR Master Patch 26.03",
+          "rankClaim": "Master",
+          "patch": "26.3",
+          "durationSec": 1546,
+          "region": "KR",
+          "uploaded": "2026-02-13",
+          "moments": []
+        },
+        {
+          "videoId": "FK1PInLrIk0",
+          "title": "Kalista ADC vs Sivir - KR Grandmaster Patch 25.12",
+          "rankClaim": "Grandmaster",
+          "patch": "25.12",
+          "durationSec": 1570,
+          "region": "KR",
+          "uploaded": "2025-06-20",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 18,
+      "lane": "adc",
+      "videos": [
+        {
+          "videoId": "bu522oTKaus",
+          "title": "(Kaori) Kalista ADC vs Tristana - EUW Challenger Patch 26.20",
+          "rankClaim": "Challenger",
+          "patch": "26.20",
+          "durationSec": 1796,
+          "region": "EUW",
+          "player": "Kaori",
+          "uploaded": "2026-10-12",
+          "result": "W",
+          "moments": [
+            {
+              "atSec": 89,
+              "label": "First Blood — Kalista kills Tristana",
+              "kind": "kill"
+            },
+            {
+              "atSec": 665,
+              "label": "Red takes 1st Dragon (Mountain)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 894,
+              "label": "Kalista catches Qiyana"
+            },
+            {
+              "atSec": 1056,
+              "label": "Lee Sin kills Swain",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1090,
+              "label": "Red takes 2nd Dragon (Ocean)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1155,
+              "label": "Kalista takes down Tristana"
+            },
+            {
+              "atSec": 1214,
+              "label": "Red takes Baron",
+              "kind": "baron"
+            },
+            {
+              "atSec": 1261,
+              "label": "Kalista picks off Swain"
+            },
+            {
+              "atSec": 1376,
+              "label": "Kalista takes down Tristana"
+            },
+            {
+              "atSec": 1414,
+              "label": "Blue takes 1st Dragon (Chemtech)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1470,
+              "label": "Kalista kills Qiyana",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1522,
+              "label": "Bot Inhibitor falls (Blue)"
+            },
+            {
+              "atSec": 1535,
+              "label": "Zoe takes down Swain"
+            },
+            {
+              "atSec": 1563,
+              "label": "Lee Sin kills Blitzcrank",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1638,
+              "label": "Zoe kills Tristana",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1687,
+              "label": "Zoe picks off Skarner"
+            },
+            {
+              "atSec": 1741,
+              "label": "Kalista Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1763,
+              "label": "Mid Inhibitor falls (Blue)"
+            }
+          ]
+        },
+        {
+          "videoId": "BC4JjWp_rjk",
+          "title": "Kalista ADC vs Tristana - KR Challenger Patch 25.09",
+          "rankClaim": "Challenger",
+          "patch": "25.9",
+          "durationSec": 1727,
+          "region": "KR",
+          "uploaded": "2025-05-09",
+          "moments": []
+        },
+        {
+          "videoId": "w7tjF0nfLg0",
+          "title": "Kalista ADC vs Tristana - EUW Grandmaster Patch 25.08",
+          "rankClaim": "Grandmaster",
+          "patch": "25.8",
+          "durationSec": 1792,
+          "region": "EUW",
+          "uploaded": "2025-04-30",
+          "moments": []
+        },
+        {
+          "videoId": "WSbZOpeTh14",
+          "title": "Kalista vs Tristana ADC - KR Challenger - Patch 25.4 Season 15",
+          "rankClaim": "Challenger",
+          "patch": "25.4",
+          "durationSec": 2221,
+          "region": "KR",
+          "uploaded": "2025-03-05",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 21,
+      "lane": "adc",
+      "videos": [
+        {
+          "videoId": "kPoM9lwQkCI",
+          "title": "HLE Gumayusi Kalista vs Miss Fortune [ ADC ] Patch 25.24 Ranked Korea",
+          "rankClaim": "Master+",
+          "patch": "25.24",
+          "durationSec": 1206,
+          "region": "KR",
+          "player": "Gumayusi",
+          "team": "HLE",
+          "uploaded": "2025-12-14",
+          "moments": []
+        },
+        {
+          "videoId": "RJsjPX3d5xY",
+          "title": "Kalista ADC vs Miss Fortune - KR Master Patch 25.24",
+          "rankClaim": "Master",
+          "patch": "25.24",
+          "durationSec": 1526,
+          "region": "KR",
+          "uploaded": "2025-12-13",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 211,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 423,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 452,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 513,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 643,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 790,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 821,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 926,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 955,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1239,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1257,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1337,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1362,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1375,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1443,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1515,
+              "label": "End credit"
+            }
+          ]
+        },
+        {
+          "videoId": "rLVnHlGC_x8",
+          "title": "Kalista vs Miss Fortune [ ADC ] Korea Master Patch 25.22 ✅",
+          "rankClaim": "Master",
+          "patch": "25.22",
+          "durationSec": 1389,
+          "region": "KR",
+          "uploaded": "2025-11-18",
+          "moments": []
+        },
+        {
+          "videoId": "hkrpHDyL5zo",
+          "title": "Kalista ADC vs Miss Fortune - KR Challenger Patch 25.08",
+          "rankClaim": "Challenger",
+          "patch": "25.8",
+          "durationSec": 1460,
+          "region": "KR",
+          "uploaded": "2025-04-23",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 30,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 313,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 730,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 844,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 929,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1093,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1189,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1214,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1237,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1309,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1327,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1353,
+              "label": "Hunt The Atakhan"
+            },
+            {
+              "atSec": 1415,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1439,
+              "label": "End credit"
+            }
+          ]
+        },
+        {
+          "videoId": "0DcYA4gyKhw",
+          "title": "Kalista ADC vs Miss Fortune - KR Master Patch 25.07",
+          "rankClaim": "Master",
+          "patch": "25.7",
+          "durationSec": 2100,
+          "region": "KR",
+          "uploaded": "2025-04-07",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 22,
+      "lane": "adc",
+      "videos": [
+        {
+          "videoId": "Vp-dhzCNfFY",
+          "title": "(OLE Flakked) Kalista ADC vs Ashe - EUW Challenger Patch 26.10",
+          "rankClaim": "Challenger",
+          "patch": "26.10",
+          "durationSec": 1401,
+          "region": "EUW",
+          "player": "OLE Flakked",
+          "uploaded": "2026-05-20",
+          "moments": []
+        },
+        {
+          "videoId": "J4EG27i4YVg",
+          "title": "Kalista ADC vs Ashe - KR Challenger Patch 26.09",
+          "rankClaim": "Challenger",
+          "patch": "26.9",
+          "durationSec": 1465,
+          "region": "KR",
+          "uploaded": "2026-05-06",
+          "moments": []
+        },
+        {
+          "videoId": "-lmwdDf-klc",
+          "title": "Kalista ADC vs Ashe - KR Grandmaster Patch 25.21",
+          "rankClaim": "Grandmaster",
+          "patch": "25.21",
+          "durationSec": 1580,
+          "region": "KR",
+          "uploaded": "2025-10-31",
+          "moments": []
+        },
+        {
+          "videoId": "NNw5Ptz19eQ",
+          "title": "Kalista ADC vs Ashe - VN Challenger Patch 25.13",
+          "rankClaim": "Challenger",
+          "patch": "25.13",
+          "durationSec": 1890,
+          "uploaded": "2025-07-18",
+          "moments": []
+        },
+        {
+          "videoId": "kpoHZVLU6F4",
+          "title": "T1 Gumayusi Kalista vs Ashe [ ADC ] Patch 25.13 Ranked NA",
+          "rankClaim": "Master+",
+          "patch": "25.13",
+          "durationSec": 1682,
+          "region": "NA",
+          "player": "Gumayusi",
+          "team": "T1",
+          "uploaded": "2025-07-02",
+          "moments": []
+        },
+        {
+          "videoId": "EqLClkv2sKY",
+          "title": "Kalista vs Ashe ADC - KR Challenger - Patch 25.7 Season 15",
+          "rankClaim": "Challenger",
+          "patch": "25.7",
+          "durationSec": 1381,
+          "region": "KR",
+          "uploaded": "2025-04-11",
+          "moments": []
+        },
+        {
+          "videoId": "hYMsbPh9xgg",
+          "title": "Kalista ADC vs Ashe - EUW Grandmaster Patch 25.05",
+          "rankClaim": "Grandmaster",
+          "patch": "25.5",
+          "durationSec": 1969,
+          "region": "EUW",
+          "uploaded": "2025-03-20",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 143,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 376,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 517,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 896,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 963,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 982,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1117,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1220,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1250,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1338,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1512,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1544,
+              "label": "Hunt The Baron Nashor",
+              "kind": "baron"
+            },
+            {
+              "atSec": 1762,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1804,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1824,
+              "label": "Take down The Inhibitor"
+            },
+            {
+              "atSec": 1898,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1935,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1948,
+              "label": "End credit"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 34,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "LrptMKP-npM",
+          "title": "Kalista Top vs Anivia - EUW Challenger Patch 26.15",
+          "rankClaim": "Challenger",
+          "patch": "26.15",
+          "durationSec": 1771,
+          "region": "EUW",
+          "uploaded": "2026-08-10",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 41,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "Y5vX0kN5m0o",
+          "title": "Kalista Top vs Gangplank - KR Master Patch 25.06",
+          "rankClaim": "Master",
+          "patch": "25.6",
+          "durationSec": 1521,
+          "region": "KR",
+          "uploaded": "2025-04-01",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 269,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 578,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 996,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1090,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1112,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1169,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1233,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1328,
+              "label": "Get a Quadra Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1368,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1422,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1500,
+              "label": "End credit"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 42,
+      "lane": "adc",
+      "videos": [
+        {
+          "videoId": "wWInkS7g4jo",
+          "title": "Doggo: His Kalista Mechanic is on FIRE \" Insane Spacing Enemies Can Touch Him \" Engsub ( vs Corki )",
+          "rankClaim": "Master+",
+          "patch": "26.16",
+          "durationSec": 1138,
+          "patchEstimated": true,
+          "uploaded": "2026-08-22",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "pEUaGWr14fI",
+          "title": "T1 Peyz Kalista vs HLE Gumayusi Corki [ ADC ] Korea Challenger 2437 LP | Patch 26.16",
+          "rankClaim": "Challenger",
+          "patch": "26.16",
+          "durationSec": 1102,
+          "region": "KR",
+          "player": "Peyz",
+          "team": "T1",
+          "uploaded": "2026-08-12",
+          "moments": []
+        },
+        {
+          "videoId": "M_4iFltwAzY",
+          "title": "Kalista ADC vs Corki - EUW Challenger Patch 25.07",
+          "rankClaim": "Challenger",
+          "patch": "25.7",
+          "durationSec": 1725,
+          "region": "EUW",
+          "uploaded": "2025-04-16",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 50,
+      "lane": "adc",
+      "videos": [
+        {
+          "videoId": "PlE-kFMn2HU",
+          "title": "Kalista ADC vs Swain - EUW Grandmaster Patch 25.13",
+          "rankClaim": "Grandmaster",
+          "patch": "25.13",
+          "durationSec": 1639,
+          "region": "EUW",
+          "uploaded": "2025-07-11",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 51,
+      "lane": "adc",
+      "videos": [
+        {
+          "videoId": "LsMnehc8Y3g",
+          "title": "T1 Peyz Kalista vs Caitlyn [ ADC ] Korea Challenger 2523 LP | Patch 26.17",
+          "rankClaim": "Challenger",
+          "patch": "26.17",
+          "durationSec": 1334,
+          "region": "KR",
+          "player": "Peyz",
+          "team": "T1",
+          "uploaded": "2026-08-27",
+          "moments": []
+        },
+        {
+          "videoId": "tPOujTVPyBU",
+          "title": "T1 Peyz Kalista vs Caitlyn [ ADC ] Korea Challenger 2443 LP | Patch 26.16",
+          "rankClaim": "Challenger",
+          "patch": "26.16",
+          "durationSec": 986,
+          "region": "KR",
+          "player": "Peyz",
+          "team": "T1",
+          "uploaded": "2026-08-20",
+          "moments": []
+        },
+        {
+          "videoId": "Kuvj0P1f-Lg",
+          "title": "Kalista ADC vs Caitlyn - KR Master Patch 26.06",
+          "rankClaim": "Master",
+          "patch": "26.6",
+          "durationSec": 1612,
+          "region": "KR",
+          "uploaded": "2026-03-27",
+          "moments": []
+        },
+        {
+          "videoId": "IZYWGukwxDc",
+          "title": "Kalista ADC vs Caitlyn - KR Grandmaster Patch 25.17",
+          "rankClaim": "Grandmaster",
+          "patch": "25.17",
+          "durationSec": 1550,
+          "region": "KR",
+          "uploaded": "2025-09-04",
+          "moments": []
+        },
+        {
+          "videoId": "w8XV9t7mekg",
+          "title": "T1 Gumayusi Kalista vs Caitlyn [ ADC ] Patch 25.3 Korea Challenger ✅",
+          "rankClaim": "Challenger",
+          "patch": "25.3",
+          "durationSec": 1177,
+          "region": "KR",
+          "player": "Gumayusi",
+          "team": "T1",
+          "uploaded": "2025-02-08",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 59,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "goK2eoXN38U",
+          "title": "Kalista Jungle vs Jarvan IV - KR Master Patch 26.12",
+          "rankClaim": "Master",
+          "patch": "26.12",
+          "durationSec": 1873,
+          "region": "KR",
+          "uploaded": "2026-06-23",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 63,
+      "lane": "adc",
+      "videos": [
+        {
+          "videoId": "pFwdsTKhI4s",
+          "title": "Kalista ADC vs Brand (Frost) - EUW Challenger Patch 26.19",
+          "rankClaim": "Challenger",
+          "patch": "26.19",
+          "durationSec": 1855,
+          "region": "EUW",
+          "uploaded": "2026-10-09",
+          "result": "W",
+          "moments": [
+            {
+              "atSec": 354,
+              "label": "First Blood — Kalista kills Poppy",
+              "kind": "kill"
+            },
+            {
+              "atSec": 643,
+              "label": "Blue takes 1st Dragon (Ocean)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 801,
+              "label": "Kalista kills Camille",
+              "kind": "kill"
+            },
+            {
+              "atSec": 871,
+              "label": "Kalista picks off Poppy"
+            },
+            {
+              "atSec": 904,
+              "label": "Kalista picks off Fiora"
+            },
+            {
+              "atSec": 937,
+              "label": "Pantheon picks off Brand"
+            },
+            {
+              "atSec": 958,
+              "label": "Kalista eliminates Taliyah"
+            },
+            {
+              "atSec": 976,
+              "label": "Blue takes 2nd Dragon (Mountain)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1129,
+              "label": "Kalista kills Camille",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1139,
+              "label": "Kalista Triple Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1146,
+              "label": "Kalista Quadra Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1202,
+              "label": "Blue takes Baron",
+              "kind": "baron"
+            },
+            {
+              "atSec": 1289,
+              "label": "Blue takes 3rd Dragon (Infernal)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1408,
+              "label": "Kalista picks off Poppy"
+            },
+            {
+              "atSec": 1580,
+              "label": "Blue takes 2nd Baron",
+              "kind": "baron"
+            },
+            {
+              "atSec": 1607,
+              "label": "Blue takes 4th Dragon (Infernal)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1752,
+              "label": "Top Inhibitor falls (Red)"
+            },
+            {
+              "atSec": 1788,
+              "label": "Pantheon Double Kill",
+              "kind": "kill"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 69,
+      "lane": "adc",
+      "videos": [
+        {
+          "videoId": "GXs1VE7U_y8",
+          "title": "(ZYB Jezu) Kalista ADC vs Cassiopeia (BGT Vzz) - EUW Challenger Patch 26.15",
+          "rankClaim": "Challenger",
+          "patch": "26.15",
+          "durationSec": 1563,
+          "region": "EUW",
+          "player": "ZYB Jezu",
+          "uploaded": "2026-08-02",
+          "moments": []
+        },
+        {
+          "videoId": "dSZTRlE-tl8",
+          "title": "(FNC Upset) Kalista ADC vs Cassiopeia - EUW Challenger Patch 26.14",
+          "rankClaim": "Challenger",
+          "patch": "26.14",
+          "durationSec": 1749,
+          "region": "EUW",
+          "player": "Upset",
+          "team": "FNC",
+          "uploaded": "2026-07-19",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 81,
+      "lane": "adc",
+      "videos": [
+        {
+          "videoId": "hMmKWBLnQpM",
+          "title": "Ruler Kalista vs Ezreal ADC - NA Master - Patch 16.21 Season 16",
+          "rankClaim": "Master",
+          "patch": "26.21",
+          "durationSec": 1596,
+          "region": "NA",
+          "player": "Ruler",
+          "uploaded": "2026-10-29",
+          "moments": []
+        },
+        {
+          "videoId": "33UolquJQgg",
+          "title": "Kalista vs Ezreal ADC [ Gen.G Ruler ] Ranked Master NA | Patch 26.21",
+          "rankClaim": "Master",
+          "patch": "26.21",
+          "durationSec": 1385,
+          "region": "NA",
+          "player": "Ruler",
+          "team": "Gen.G",
+          "uploaded": "2026-10-27",
+          "moments": []
+        },
+        {
+          "videoId": "2qc90rbhPi8",
+          "title": "T1 Peyz Kalista vs Ezreal [ ADC ] Korea Challenger 2520 LP | Patch 26.17",
+          "rankClaim": "Challenger",
+          "patch": "26.17",
+          "durationSec": 755,
+          "region": "KR",
+          "player": "Peyz",
+          "team": "T1",
+          "uploaded": "2026-09-06",
+          "moments": []
+        },
+        {
+          "videoId": "nptz_XgzfoE",
+          "title": "Kalista vs Ezreal [ ADC ] Korea Grandmaster 1676 LP | Patch 26.14",
+          "rankClaim": "Grandmaster",
+          "patch": "26.14",
+          "durationSec": 1501,
+          "region": "KR",
+          "uploaded": "2026-07-24",
+          "moments": []
+        },
+        {
+          "videoId": "x2KlpGTyGkQ",
+          "title": "HLE Gumayusi Kalista vs Ezreal [ ADC ] Korea Challenger 2496 LP | Patch 26.11",
+          "rankClaim": "Challenger",
+          "patch": "26.11",
+          "durationSec": 1343,
+          "region": "KR",
+          "player": "Gumayusi",
+          "team": "HLE",
+          "uploaded": "2026-06-08",
+          "moments": []
+        },
+        {
+          "videoId": "7-Ec1Cjs6wE",
+          "title": "Kalista ADC vs Ezreal - KR Master Patch 26.07",
+          "rankClaim": "Master",
+          "patch": "26.7",
+          "durationSec": 1835,
+          "region": "KR",
+          "uploaded": "2026-04-09",
+          "moments": []
+        },
+        {
+          "videoId": "8k7clm7W4sw",
+          "title": "T1 Peyz Kalista vs Ezreal ADC [ PentaKill ] Korea Challenger Patch 26.7",
+          "rankClaim": "Challenger",
+          "patch": "26.7",
+          "durationSec": 1572,
+          "region": "KR",
+          "player": "Peyz",
+          "team": "T1",
+          "uploaded": "2026-04-07",
+          "moments": []
+        },
+        {
+          "videoId": "MHdKJr85kgA",
+          "title": "T1 Peyz Kalista vs Ezreal [ ADC ] Korea Challenger 2127 LP | Patch 26.4",
+          "rankClaim": "Challenger",
+          "patch": "26.4",
+          "durationSec": 1746,
+          "region": "KR",
+          "player": "Peyz",
+          "team": "T1",
+          "uploaded": "2026-02-20",
+          "moments": []
+        },
+        {
+          "videoId": "3y7gZz5X0qU",
+          "title": "Kalista ADC vs Ezreal - KR Master Patch 26.02",
+          "rankClaim": "Master",
+          "patch": "26.2",
+          "durationSec": 1578,
+          "region": "KR",
+          "uploaded": "2026-01-30",
+          "moments": []
+        },
+        {
+          "videoId": "tacFiRpIHaY",
+          "title": "Kalista ADC vs Ezreal - EUW Grandmaster Patch 25.16",
+          "rankClaim": "Grandmaster",
+          "patch": "25.16",
+          "durationSec": 1876,
+          "region": "EUW",
+          "uploaded": "2025-08-28",
+          "moments": []
+        },
+        {
+          "videoId": "0g1oZkwBSmo",
+          "title": "T1 Gumayusi Kalista vs Ezreal [ ADC ] Patch 25.12 Korea Challenger",
+          "rankClaim": "Challenger",
+          "patch": "25.12",
+          "durationSec": 875,
+          "region": "KR",
+          "player": "Gumayusi",
+          "team": "T1",
+          "uploaded": "2025-06-11",
+          "moments": []
+        },
+        {
+          "videoId": "i4XeNGn6aBY",
+          "title": "Kalista ADC vs Ezreal - KR Challenger Patch 25.05",
+          "rankClaim": "Challenger",
+          "patch": "25.5",
+          "durationSec": 1642,
+          "region": "KR",
+          "uploaded": "2025-03-13",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 350,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 449,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 572,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 710,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 782,
+              "label": "Hunt The Void Grubs",
+              "kind": "grubs"
+            },
+            {
+              "atSec": 972,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1216,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1401,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1452,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1475,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1556,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1585,
+              "label": "Get a Triple Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1605,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1621,
+              "label": "End credit"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 92,
+      "lane": "adc",
+      "videos": [
+        {
+          "videoId": "XtHPXMtib6s",
+          "title": "Kalista ADC vs Riven - BR Challenger Patch 26.17",
+          "rankClaim": "Challenger",
+          "patch": "26.17",
+          "durationSec": 1461,
+          "uploaded": "2026-08-31",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 92,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "KV0lpqrGzgA",
+          "title": "Kalista Top vs Riven - NA Master Patch 26.19",
+          "rankClaim": "Master",
+          "patch": "26.19",
+          "durationSec": 1733,
+          "region": "NA",
+          "uploaded": "2026-10-06",
+          "result": "W",
+          "moments": [
+            {
+              "atSec": 255,
+              "label": "First Blood — Kalista kills Riven",
+              "kind": "kill"
+            },
+            {
+              "atSec": 306,
+              "label": "Blue takes 1st Dragon (Chemtech)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 637,
+              "label": "Blue takes 2nd Dragon (Cloud)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 840,
+              "label": "Qiyana picks off Akshan"
+            },
+            {
+              "atSec": 888,
+              "label": "Qiyana eliminates Kai'Sa"
+            },
+            {
+              "atSec": 986,
+              "label": "Team fight (3 kills)",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1028,
+              "label": "Blue takes 3rd Dragon (Ocean)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1083,
+              "label": "Kalista catches Riven"
+            },
+            {
+              "atSec": 1122,
+              "label": "Red takes Rift Herald",
+              "kind": "herald"
+            },
+            {
+              "atSec": 1171,
+              "label": "Qiyana Triple Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1339,
+              "label": "Kalista eliminates Riven"
+            },
+            {
+              "atSec": 1363,
+              "label": "Red takes 1st Dragon (Ocean)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1396,
+              "label": "Red takes Baron",
+              "kind": "baron"
+            },
+            {
+              "atSec": 1491,
+              "label": "Team fight (3 kills)",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1657,
+              "label": "Yunara Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1660,
+              "label": "Yunara Triple Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1685,
+              "label": "Mid Inhibitor falls (Blue)"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 96,
+      "lane": "adc",
+      "videos": [
+        {
+          "videoId": "XRI7aVmx4o4",
+          "title": "Kalista vs Kog'Maw ADC - KR Challenger - Patch 15.4 Season 15",
+          "rankClaim": "Challenger",
+          "patch": "25.4",
+          "durationSec": 1861,
+          "region": "KR",
+          "uploaded": "2025-02-25",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 99,
+      "lane": "adc",
+      "videos": [
+        {
+          "videoId": "JnXutPG-vks",
+          "title": "Kalista ADC vs Lux - EUW Grandmaster Patch 25.24",
+          "rankClaim": "Grandmaster",
+          "patch": "25.24",
+          "durationSec": 1609,
+          "region": "EUW",
+          "uploaded": "2026-01-02",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 101,
+      "lane": "adc",
+      "videos": [
+        {
+          "videoId": "lCSh4N9OSF8",
+          "title": "Kalista ADC vs Xerath - KR Grandmaster Patch 25.14",
+          "rankClaim": "Grandmaster",
+          "patch": "25.14",
+          "durationSec": 1946,
+          "region": "KR",
+          "uploaded": "2025-07-26",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 101,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "5GUqkCryBnA",
+          "title": "Kalista Mid vs Xerath - KR Master Patch 26.04",
+          "rankClaim": "Master",
+          "patch": "26.4",
+          "durationSec": 1500,
+          "region": "KR",
+          "uploaded": "2026-03-05",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 114,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 228,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 349,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 622,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 766,
+              "label": "Hunt The Dragon",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 781,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 872,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 930,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1023,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1054,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1191,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1208,
+              "label": "Take down The Inhibitor"
+            },
+            {
+              "atSec": 1219,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1248,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1259,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1374,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1406,
+              "label": "Hunt The Baron Nashor",
+              "kind": "baron"
+            },
+            {
+              "atSec": 1456,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1476,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1489,
+              "label": "End credit"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 110,
+      "lane": "adc",
+      "videos": [
+        {
+          "videoId": "gZvNvQLNMrg",
+          "title": "Kalista ADC vs Varus - KR Master Patch 26.19",
+          "rankClaim": "Master",
+          "patch": "26.19",
+          "durationSec": 1833,
+          "region": "KR",
+          "uploaded": "2026-09-28",
+          "moments": []
+        },
+        {
+          "videoId": "bnmBfQKLc60",
+          "title": "T1 Peyz Kalista vs Varus [ ADC ] Korea Challenger Patch 25.24",
+          "rankClaim": "Challenger",
+          "patch": "25.24",
+          "durationSec": 948,
+          "region": "KR",
+          "player": "Peyz",
+          "team": "T1",
+          "uploaded": "2026-01-06",
+          "moments": []
+        },
+        {
+          "videoId": "D0RaCdw7STY",
+          "title": "T1 Gumayusi Kalista vs Varus [ ADC ] Patch 25.13 Ranked NA",
+          "rankClaim": "Master+",
+          "patch": "25.13",
+          "durationSec": 1011,
+          "region": "NA",
+          "player": "Gumayusi",
+          "team": "T1",
+          "uploaded": "2025-07-06",
+          "moments": []
+        },
+        {
+          "videoId": "L1_Yu3KDz4M",
+          "title": "Kalista ADC vs Varus - KR Challenger Patch 25.11",
+          "rankClaim": "Challenger",
+          "patch": "25.11",
+          "durationSec": 1884,
+          "region": "KR",
+          "uploaded": "2025-06-03",
+          "moments": []
+        },
+        {
+          "videoId": "GWhVxlQaUVA",
+          "title": "T1 Gumayusi Kalista vs Varus [ ADC ] Patch 25.11 Korea Challenger",
+          "rankClaim": "Challenger",
+          "patch": "25.11",
+          "durationSec": 1636,
+          "region": "KR",
+          "player": "Gumayusi",
+          "team": "T1",
+          "uploaded": "2025-05-29",
+          "moments": []
+        },
+        {
+          "videoId": "IDPtT8SO-tU",
+          "title": "Kalista ADC vs Varus - EUW Grandmaster Patch 25.09",
+          "rankClaim": "Grandmaster",
+          "patch": "25.9",
+          "durationSec": 1473,
+          "region": "EUW",
+          "uploaded": "2025-05-14",
+          "moments": []
+        },
+        {
+          "videoId": "TM66o9vkXC0",
+          "title": "T1 Gumayusi Kalista ADC vs Varus - Patch 25.2 Korea Challenger ✅",
+          "rankClaim": "Challenger",
+          "patch": "25.2",
+          "durationSec": 1703,
+          "region": "KR",
+          "player": "Gumayusi",
+          "team": "T1",
+          "uploaded": "2025-01-31",
+          "moments": []
+        },
+        {
+          "videoId": "C07x84P4de8",
+          "title": "T1 Gumayusi Kalista vs Varus ADC [ Pentakill ] Patch 25.1 Korea Master ✅",
+          "rankClaim": "Master",
+          "patch": "25.1",
+          "durationSec": 1367,
+          "region": "KR",
+          "player": "Gumayusi",
+          "team": "T1",
+          "uploaded": "2025-01-12",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 110,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "H3eW6lB1tHE",
+          "title": "FULL DAY OF LEARNING HOW TO PLAY AD CARRY",
+          "rankClaim": "Master+",
+          "patch": "26.5",
+          "durationSec": 28690,
+          "patchEstimated": true,
+          "player": "Alois",
+          "uploaded": "2026-03-10",
+          "format": "stream",
+          "cam": true,
+          "startSec": 15992,
+          "endSec": 18121,
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 115,
+      "lane": "adc",
+      "videos": [
+        {
+          "videoId": "g2yqzjZkNvU",
+          "title": "Kalista vs Ziggs ADC - KR Challenger - Patch 16.20 Season 16",
+          "rankClaim": "Challenger",
+          "patch": "26.20",
+          "durationSec": 1830,
+          "region": "KR",
+          "uploaded": "2026-10-14",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 119,
+      "lane": "adc",
+      "videos": [
+        {
+          "videoId": "f_77Hg46h1M",
+          "title": "(AHQ Doggo) Kalista ADC vs Draven - KR Grandmaster Patch 26.18",
+          "rankClaim": "Grandmaster",
+          "patch": "26.18",
+          "durationSec": 1815,
+          "region": "KR",
+          "player": "AHQ Doggo",
+          "uploaded": "2026-09-12",
+          "moments": []
+        },
+        {
+          "videoId": "LVKiHbiMHWU",
+          "title": "(FK 3XA) Kalista ADC vs Draven - EUW Challenger Patch 26.11",
+          "rankClaim": "Challenger",
+          "patch": "26.11",
+          "durationSec": 1531,
+          "region": "EUW",
+          "player": "FK 3XA",
+          "uploaded": "2026-06-03",
+          "moments": []
+        },
+        {
+          "videoId": "Goez8blHmiQ",
+          "title": "Kalista ADC vs Draven - KR Challenger Patch 25.10",
+          "rankClaim": "Challenger",
+          "patch": "25.10",
+          "durationSec": 1795,
+          "region": "KR",
+          "uploaded": "2025-05-23",
+          "moments": []
+        },
+        {
+          "videoId": "jj8pB_SbMsQ",
+          "title": "Kalista ADC vs Draven - KR Challenger Patch 25.04",
+          "rankClaim": "Challenger",
+          "patch": "25.4",
+          "durationSec": 1644,
+          "region": "KR",
+          "uploaded": "2025-02-25",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 136,
+      "lane": "adc",
+      "videos": [
+        {
+          "videoId": "-EheAeSbquU",
+          "title": "Kalista ADC vs Aurelion Sol - KR Master Patch 25.24",
+          "rankClaim": "Master",
+          "patch": "25.24",
+          "durationSec": 1448,
+          "region": "KR",
+          "uploaded": "2026-01-10",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 145,
+      "lane": "adc",
+      "videos": [
+        {
+          "videoId": "f6IXa9pEMSM",
+          "title": "Doggo : His Kalista Mechanic is Absolutely Disgusting - Engsub (Kalista vs Ez, Kai'sa)",
+          "rankClaim": "Master+",
+          "patch": "26.14",
+          "durationSec": 1327,
+          "patchEstimated": true,
+          "uploaded": "2026-07-22",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "Rv9FOiIY6G8",
+          "title": "Kalista ADC vs Kai'Sa - KR Grandmaster Patch 25.24",
+          "rankClaim": "Grandmaster",
+          "patch": "25.24",
+          "durationSec": 1491,
+          "region": "KR",
+          "uploaded": "2025-12-25",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 59,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 159,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 245,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 361,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 389,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 469,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 484,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 534,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 585,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 698,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 736,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 794,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 830,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 860,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1011,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1029,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1054,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1210,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1268,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1480,
+              "label": "End credit"
+            }
+          ]
+        },
+        {
+          "videoId": "W1FjG9bVpk8",
+          "title": "Kalista vs Kai'Sa ADC - KR Challenger - Patch 25.20 Season 15",
+          "rankClaim": "Challenger",
+          "patch": "25.20",
+          "durationSec": 1711,
+          "region": "KR",
+          "uploaded": "2025-10-20",
+          "moments": []
+        },
+        {
+          "videoId": "brfdyXQ72zI",
+          "title": "Kalista vs Kai'Sa ADC [ QuadraKill ] Korea Challenger 1461 LP | Patch 25.20 ✅",
+          "rankClaim": "Challenger",
+          "patch": "25.20",
+          "durationSec": 1431,
+          "region": "KR",
+          "player": "QuadraKill",
+          "uploaded": "2025-10-18",
+          "moments": []
+        },
+        {
+          "videoId": "hovDulGZ3cc",
+          "title": "Kalista ADC vs Kai'Sa - KR Master Patch 25.19",
+          "rankClaim": "Master",
+          "patch": "25.19",
+          "durationSec": 1530,
+          "region": "KR",
+          "uploaded": "2025-10-10",
+          "moments": []
+        },
+        {
+          "videoId": "F1U8W4wMi9Q",
+          "title": "Kalista ADC vs Kai'Sa - EUW Challenger Patch 25.17",
+          "rankClaim": "Challenger",
+          "patch": "25.17",
+          "durationSec": 1555,
+          "region": "EUW",
+          "uploaded": "2025-09-12",
+          "moments": []
+        },
+        {
+          "videoId": "sznRrxUblA0",
+          "title": "Kalista ADC vs Kai'Sa - KR Master Patch 25.14",
+          "rankClaim": "Master",
+          "patch": "25.14",
+          "durationSec": 1512,
+          "region": "KR",
+          "uploaded": "2025-08-01",
+          "moments": []
+        },
+        {
+          "videoId": "3YQV7PUUHmw",
+          "title": "Kalista ADC vs Kai'Sa - EUW Grandmaster Patch 25.10",
+          "rankClaim": "Grandmaster",
+          "patch": "25.10",
+          "durationSec": 1488,
+          "region": "EUW",
+          "uploaded": "2025-05-29",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 147,
+      "lane": "adc",
+      "videos": [
+        {
+          "videoId": "X7ZsLn0Z-SM",
+          "title": "Kalista ADC vs Seraphine - KR Challenger Patch 26.08",
+          "rankClaim": "Challenger",
+          "patch": "26.8",
+          "durationSec": 1416,
+          "region": "KR",
+          "uploaded": "2026-04-24",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 150,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "Y92rqzfEurA",
+          "title": "(Funk3y) Kalista Top vs Gnar (KHK Abbedagge) - EUW Challenger Patch 26.13",
+          "rankClaim": "Challenger",
+          "patch": "26.13",
+          "durationSec": 1472,
+          "region": "EUW",
+          "player": "Funk3y",
+          "uploaded": "2026-07-04",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 157,
+      "lane": "adc",
+      "videos": [
+        {
+          "videoId": "Xxvb_tXzVk0",
+          "title": "Kalista ADC vs Yasuo - KR Challenger Patch 26.04",
+          "rankClaim": "Challenger",
+          "patch": "26.4",
+          "durationSec": 1518,
+          "region": "KR",
+          "uploaded": "2026-02-27",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 157,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "yKRFHUqq-aY",
+          "title": "(WU Tomo) Kalista Top vs Yasuo - NA Grandmaster Patch 26.11",
+          "rankClaim": "Grandmaster",
+          "patch": "26.11",
+          "durationSec": 1579,
+          "region": "NA",
+          "player": "WU Tomo",
+          "uploaded": "2026-06-09",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 163,
+      "lane": "adc",
+      "videos": [
+        {
+          "videoId": "LZoCEHhvIXs",
+          "title": "HLE Gumayusi Kalista vs Taliyah [ ADC ] Patch 26.2 Ranked Korea",
+          "rankClaim": "Master+",
+          "patch": "26.2",
+          "durationSec": 1625,
+          "region": "KR",
+          "player": "Gumayusi",
+          "team": "HLE",
+          "uploaded": "2026-01-30",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 202,
+      "lane": "adc",
+      "videos": [
+        {
+          "videoId": "Lw-yKKEeYSI",
+          "title": "T1 Peyz Kalista vs Jhin [ ADC ] Korea Challenger 2206 LP | Patch 26.20",
+          "rankClaim": "Challenger",
+          "patch": "26.20",
+          "durationSec": 1470,
+          "region": "KR",
+          "player": "Peyz",
+          "team": "T1",
+          "uploaded": "2026-10-18",
+          "moments": []
+        },
+        {
+          "videoId": "4abOQg7tABs",
+          "title": "Kalista vs Jhin ADC [ Teddy ] Lol Korea Master Patch 26.19 ✅",
+          "rankClaim": "Master",
+          "patch": "26.19",
+          "durationSec": 1261,
+          "region": "KR",
+          "player": "Teddy",
+          "uploaded": "2026-10-03",
+          "moments": [
+            {
+              "atSec": 0,
+              "label": "Early game setup"
+            },
+            {
+              "atSec": 114,
+              "label": "First major skirmishes"
+            },
+            {
+              "atSec": 204,
+              "label": "Mid-game objective control"
+            },
+            {
+              "atSec": 378,
+              "label": "Securing team advantages"
+            },
+            {
+              "atSec": 522,
+              "label": "Expanding territorial control"
+            },
+            {
+              "atSec": 753,
+              "label": "Siege and map dominance"
+            },
+            {
+              "atSec": 960,
+              "label": "Baron and late-game pushes",
+              "kind": "baron"
+            },
+            {
+              "atSec": 1122,
+              "label": "Base demolition and victory"
+            }
+          ]
+        },
+        {
+          "videoId": "VUfufNilOn0",
+          "title": "Doggo : His Kalista Mechanic is on FIRE - Engsub ( Kalista vs Jhin )",
+          "rankClaim": "Master+",
+          "patch": "26.9",
+          "durationSec": 1022,
+          "patchEstimated": true,
+          "uploaded": "2026-04-29",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "X7PUAHXbyaM",
+          "title": "Kalista vs Jhin ADC [ QuadraKill ] Korea Master Patch 25.21 ✅",
+          "rankClaim": "Master",
+          "patch": "25.21",
+          "durationSec": 1386,
+          "region": "KR",
+          "player": "QuadraKill",
+          "uploaded": "2025-11-04",
+          "moments": []
+        },
+        {
+          "videoId": "wkdQ20dFZJ4",
+          "title": "Kalista ADC vs Jhin - KR Challenger Patch 25.06",
+          "rankClaim": "Challenger",
+          "patch": "25.6",
+          "durationSec": 2071,
+          "region": "KR",
+          "uploaded": "2025-03-26",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 221,
+      "lane": "adc",
+      "videos": [
+        {
+          "videoId": "mhF0cN3Wzd8",
+          "title": "HLE Gumayusi Kalista vs Zeri [ ADC ] Korea Challenger 2414 LP | Patch 26.18",
+          "rankClaim": "Challenger",
+          "patch": "26.18",
+          "durationSec": 1570,
+          "region": "KR",
+          "player": "Gumayusi",
+          "team": "HLE",
+          "uploaded": "2026-09-21",
+          "moments": []
+        },
+        {
+          "videoId": "CLO50WpNjM4",
+          "title": "Kalista vs Zeri ADC [ Teddy + Pentakill ] Lol Korea Master Patch 26.18 ✅",
+          "rankClaim": "Master",
+          "patch": "26.18",
+          "durationSec": 1399,
+          "region": "KR",
+          "player": "Teddy",
+          "uploaded": "2026-09-18",
+          "moments": []
+        },
+        {
+          "videoId": "Oc00yCrV9K4",
+          "title": "Kalista vs Zeri ADC [ Gen.G Ruler ] Korea Challenger Patch 25.1 ✅",
+          "rankClaim": "Challenger",
+          "patch": "25.1",
+          "durationSec": 1761,
+          "region": "KR",
+          "player": "Ruler",
+          "team": "Gen.G",
+          "uploaded": "2025-01-21",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 222,
+      "lane": "adc",
+      "videos": [
+        {
+          "videoId": "ug8uxVlBXLA",
+          "title": "(UCAM ANDARIEL) Kalista ADC vs Jinx - EUW Challenger Patch 26.16",
+          "rankClaim": "Challenger",
+          "patch": "26.16",
+          "durationSec": 1495,
+          "region": "EUW",
+          "player": "UCAM ANDARIEL",
+          "uploaded": "2026-08-26",
+          "moments": []
+        },
+        {
+          "videoId": "kNBvEJtqqZw",
+          "title": "Kalista ADC vs Jinx - KR Master Patch 25.21",
+          "rankClaim": "Master",
+          "patch": "25.21",
+          "durationSec": 1974,
+          "region": "KR",
+          "uploaded": "2025-11-06",
+          "moments": []
+        },
+        {
+          "videoId": "2rY9HeFHsbA",
+          "title": "Kalista ADC vs Jinx - EUW Grandmaster Patch 25.20",
+          "rankClaim": "Grandmaster",
+          "patch": "25.20",
+          "durationSec": 1699,
+          "region": "EUW",
+          "uploaded": "2025-10-15",
+          "moments": []
+        },
+        {
+          "videoId": "rtS6qcRViwg",
+          "title": "Kalista ADC vs Jinx - KR Grandmaster Patch 25.19",
+          "rankClaim": "Grandmaster",
+          "patch": "25.19",
+          "durationSec": 1606,
+          "region": "KR",
+          "uploaded": "2025-10-03",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 235,
+      "lane": "adc",
+      "videos": [
+        {
+          "videoId": "eohFMpEChSA",
+          "title": "Kalista ADC vs Senna - EUW Challenger Patch 25.12",
+          "rankClaim": "Challenger",
+          "patch": "25.12",
+          "durationSec": 1873,
+          "region": "EUW",
+          "uploaded": "2025-06-27",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 236,
+      "lane": "adc",
+      "videos": [
+        {
+          "videoId": "KuAHDoB0cQk",
+          "title": "Smash : His Kalista is DANCING ON FIRE \"Crushing FAKER in SoloQ\" Engsub ( Kalista vs Lucian )",
+          "rankClaim": "Master+",
+          "patch": "26.12",
+          "durationSec": 708,
+          "patchEstimated": true,
+          "uploaded": "2026-06-22",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "_m8NwNL4VyQ",
+          "title": "(T1 Peyz) Kalista ADC vs Lucian - KR Challenger Patch 26.12",
+          "rankClaim": "Challenger",
+          "patch": "26.12",
+          "durationSec": 1575,
+          "region": "KR",
+          "player": "Peyz",
+          "team": "T1",
+          "uploaded": "2026-06-13",
+          "moments": []
+        },
+        {
+          "videoId": "8Pt4jfA1reo",
+          "title": "T1 Peyz Kalista vs Lucian [ ADC ] Patch 26.12 Korea Challenger 2388 LP",
+          "rankClaim": "Challenger",
+          "patch": "26.12",
+          "durationSec": 1364,
+          "region": "KR",
+          "player": "Peyz",
+          "team": "T1",
+          "uploaded": "2026-06-10",
+          "moments": []
+        },
+        {
+          "videoId": "Dl4nAAhAv2M",
+          "title": "Gumayusi: His Kalista Spacing is Gonna Blow You Mind \"Crushing SMASH Lucian in Laning Phase\" Engsub",
+          "rankClaim": "Master+",
+          "patch": "26.9",
+          "durationSec": 722,
+          "patchEstimated": true,
+          "uploaded": "2026-05-03",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "Sf04D8fyDcI",
+          "title": "Deft Kalista vs Lucian [ ADC ] Korea Master Patch 26.9 ✅",
+          "rankClaim": "Master",
+          "patch": "26.9",
+          "durationSec": 759,
+          "region": "KR",
+          "player": "Deft",
+          "uploaded": "2026-05-01",
+          "moments": []
+        },
+        {
+          "videoId": "6skM_ABQ-xY",
+          "title": "HLE Gumayusi Kalista vs Lucian [ ADC ] Korea Challenger 2414 LP | Patch 26.8",
+          "rankClaim": "Challenger",
+          "patch": "26.8",
+          "durationSec": 969,
+          "region": "KR",
+          "player": "Gumayusi",
+          "team": "HLE",
+          "uploaded": "2026-04-27",
+          "moments": []
+        },
+        {
+          "videoId": "jkuxi6kzIx8",
+          "title": "Kalista ADC vs Lucian - KR Master Patch 25.22",
+          "rankClaim": "Master",
+          "patch": "25.22",
+          "durationSec": 1984,
+          "region": "KR",
+          "uploaded": "2025-11-15",
+          "moments": []
+        },
+        {
+          "videoId": "_hxSn4tIUO8",
+          "title": "Kalista ADC vs Lucian - KR Grandmaster Patch 25.18",
+          "rankClaim": "Grandmaster",
+          "patch": "25.18",
+          "durationSec": 1724,
+          "region": "KR",
+          "uploaded": "2025-09-20",
+          "moments": []
+        },
+        {
+          "videoId": "y9pcHTr60ug",
+          "title": "Kalista vs Lucian ADC - KR Challenger - Patch 25.18 Season 15",
+          "rankClaim": "Challenger",
+          "patch": "25.18",
+          "durationSec": 1726,
+          "region": "KR",
+          "uploaded": "2025-09-17",
+          "moments": []
+        },
+        {
+          "videoId": "O8Y9EimcqZo",
+          "title": "Kalista ADC vs Lucian - KR Master Patch 25.13",
+          "rankClaim": "Master",
+          "patch": "25.13",
+          "durationSec": 1443,
+          "region": "KR",
+          "uploaded": "2025-07-03",
+          "moments": []
+        },
+        {
+          "videoId": "xIDM5ShiZZI",
+          "title": "T1 Gumayusi Kalista vs Lucian [ ADC ] Korea Challenger Patch 25.13",
+          "rankClaim": "Challenger",
+          "patch": "25.13",
+          "durationSec": 979,
+          "region": "KR",
+          "player": "Gumayusi",
+          "team": "T1",
+          "uploaded": "2025-06-26",
+          "moments": []
+        },
+        {
+          "videoId": "LPvseGXsX5M",
+          "title": "Kalista vs Lucian ADC - KR Challenger - Patch 25.8 Season 15",
+          "rankClaim": "Challenger",
+          "patch": "25.8",
+          "durationSec": 2206,
+          "region": "KR",
+          "uploaded": "2025-04-21",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 266,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "4PHo1oFdnZ8",
+          "title": "Kalista Top vs Aatrox - KR Master Patch 26.14",
+          "rankClaim": "Master",
+          "patch": "26.14",
+          "durationSec": 1426,
+          "region": "KR",
+          "uploaded": "2026-07-31",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 360,
+      "lane": "adc",
+      "videos": [
+        {
+          "videoId": "_n-e4nL01jU",
+          "title": "Kalista ADC vs Samira - EUW Challenger Patch 26.05",
+          "rankClaim": "Challenger",
+          "patch": "26.5",
+          "durationSec": 1708,
+          "region": "EUW",
+          "uploaded": "2026-03-12",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 523,
+      "lane": "adc",
+      "videos": [
+        {
+          "videoId": "Hkf6-2OFbB0",
+          "title": "Kalista ADC vs Aphelios - KR Challenger Patch 26.21",
+          "rankClaim": "Challenger",
+          "patch": "26.21",
+          "durationSec": 1712,
+          "region": "KR",
+          "uploaded": "2026-10-26",
+          "result": "W",
+          "moments": [
+            {
+              "atSec": 450,
+              "label": "Kalista picks off Thresh"
+            },
+            {
+              "atSec": 492,
+              "label": "Nautilus picks off Aphelios"
+            },
+            {
+              "atSec": 617,
+              "label": "Kalista takes down Aphelios"
+            },
+            {
+              "atSec": 622,
+              "label": "Kalista Triple Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 652,
+              "label": "Blue takes 1st Dragon (Hextech)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 704,
+              "label": "Kalista picks off Thresh"
+            },
+            {
+              "atSec": 900,
+              "label": "Blue takes Rift Herald",
+              "kind": "herald"
+            },
+            {
+              "atSec": 949,
+              "label": "Nautilus picks off Aphelios"
+            },
+            {
+              "atSec": 990,
+              "label": "Blue takes 2nd Dragon (Mountain)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1246,
+              "label": "Blue takes Baron",
+              "kind": "baron"
+            },
+            {
+              "atSec": 1320,
+              "label": "Blue takes 3rd Dragon (Chemtech)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1374,
+              "label": "Jayce picks off Aphelios"
+            },
+            {
+              "atSec": 1395,
+              "label": "Bot Inhibitor falls (Red)"
+            },
+            {
+              "atSec": 1543,
+              "label": "Jayce picks off Aphelios"
+            },
+            {
+              "atSec": 1549,
+              "label": "Mid Inhibitor falls (Red)"
+            },
+            {
+              "atSec": 1632,
+              "label": "Red takes 1st Dragon (Chemtech)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1636,
+              "label": "Jayce picks off Aphelios"
+            },
+            {
+              "atSec": 1691,
+              "label": "Zoe kills Aphelios",
+              "kind": "kill"
+            }
+          ]
+        },
+        {
+          "videoId": "zzmBCEbRgs8",
+          "title": "Kalista ADC vs Aphelios - EUW Challenger Patch 25.18",
+          "rankClaim": "Challenger",
+          "patch": "25.18",
+          "durationSec": 1689,
+          "region": "EUW",
+          "uploaded": "2025-09-25",
+          "moments": []
+        },
+        {
+          "videoId": "qYwvFr78X64",
+          "title": "Kalista ADC vs Aphelios - KR Master Patch 25.16",
+          "rankClaim": "Master",
+          "patch": "25.16",
+          "durationSec": 1549,
+          "region": "KR",
+          "uploaded": "2025-08-22",
+          "moments": []
+        },
+        {
+          "videoId": "u4o-VnrRuQc",
+          "title": "Kalista ADC vs Aphelios - KR Master Patch 25.15",
+          "rankClaim": "Master",
+          "patch": "25.15",
+          "durationSec": 1544,
+          "region": "KR",
+          "uploaded": "2025-08-07",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 777,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "Youdk067ZtY",
+          "title": "Kalista Top vs Yone - EUW Master Patch 26.17",
+          "rankClaim": "Master",
+          "patch": "26.17",
+          "durationSec": 1498,
+          "region": "EUW",
+          "uploaded": "2026-09-07",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 800,
+      "lane": "adc",
+      "videos": [
+        {
+          "videoId": "SO8dlWTfUIk",
+          "title": "Kalista ADC vs Mel - EUW Grandmaster Patch 25.23",
+          "rankClaim": "Grandmaster",
+          "patch": "25.23",
+          "durationSec": 1582,
+          "region": "EUW",
+          "uploaded": "2025-11-25",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 804,
+      "lane": "adc",
+      "videos": [
+        {
+          "videoId": "rQ2G6Mjl0Pc",
+          "title": "T1 Peyz Kalista vs Yunara [ ADC ] Korea Challenger 2192 LP | Patch 26.20",
+          "rankClaim": "Challenger",
+          "patch": "26.20",
+          "durationSec": 976,
+          "region": "KR",
+          "player": "Peyz",
+          "team": "T1",
+          "uploaded": "2026-10-07",
+          "moments": []
+        },
+        {
+          "videoId": "4OvTzWRaV1c",
+          "title": "HLE Gumayusi Kalista vs Yunara [ ADC ] Korea Challenger 2419 LP | Patch 26.18",
+          "rankClaim": "Challenger",
+          "patch": "26.18",
+          "durationSec": 1217,
+          "region": "KR",
+          "player": "Gumayusi",
+          "team": "HLE",
+          "uploaded": "2026-09-22",
+          "moments": [
+            {
+              "atSec": 0,
+              "label": "Early game laning phase"
+            },
+            {
+              "atSec": 358,
+              "label": "Mid game objectives"
+            },
+            {
+              "atSec": 695,
+              "label": "Rift Herald and team fights",
+              "kind": "herald"
+            },
+            {
+              "atSec": 882,
+              "label": "Sieging the base"
+            },
+            {
+              "atSec": 1071,
+              "label": "Final push and victory"
+            }
+          ]
+        },
+        {
+          "videoId": "sgkMU7EZNPM",
+          "title": "(LOUD Bull) Kalista ADC vs Yunara - KR Challenger Patch 26.17",
+          "rankClaim": "Challenger",
+          "patch": "26.17",
+          "durationSec": 1640,
+          "region": "KR",
+          "player": "LOUD Bull",
+          "uploaded": "2026-09-12",
+          "moments": []
+        },
+        {
+          "videoId": "E8ZXMA3B00c",
+          "title": "(UCAM ANDARIEL) Kalista ADC vs Yunara (BAM choego) - EUW Challenger Patch 26.16",
+          "rankClaim": "Challenger",
+          "patch": "26.16",
+          "durationSec": 1668,
+          "region": "EUW",
+          "player": "UCAM ANDARIEL",
+          "uploaded": "2026-08-20",
+          "moments": []
+        },
+        {
+          "videoId": "yUsOo9VK6QA",
+          "title": "BLG Viper Kalista vs Yunara [ ADC ] Korea Grandmaster 1523 LP | Patch 26.7",
+          "rankClaim": "Grandmaster",
+          "patch": "26.7",
+          "durationSec": 1270,
+          "region": "KR",
+          "player": "Viper",
+          "team": "BLG",
+          "uploaded": "2026-04-13",
+          "moments": []
+        },
+        {
+          "videoId": "--xlfStmkOk",
+          "title": "Kalista ADC vs Yunara - KR Master Patch 25.23",
+          "rankClaim": "Master",
+          "patch": "25.23",
+          "durationSec": 1684,
+          "region": "KR",
+          "uploaded": "2025-12-03",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 875,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "dVzs1oPInI0",
+          "title": "Kalista Top vs Sett - KR Grandmaster Patch 26.07",
+          "rankClaim": "Grandmaster",
+          "patch": "26.7",
+          "durationSec": 1468,
+          "region": "KR",
+          "uploaded": "2026-04-15",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 888,
+      "lane": "adc",
+      "videos": [
+        {
+          "videoId": "MoD9PJabjrc",
+          "title": "Smash Kalista + Career Renata Duo Combo is so STRONG in KR HighElo - Engsub",
+          "rankClaim": "Master+",
+          "patch": "26.1",
+          "durationSec": 717,
+          "region": "KR",
+          "patchEstimated": true,
+          "player": "Smash",
+          "uploaded": "2026-01-20",
+          "format": "stream",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 895,
+      "lane": "adc",
+      "videos": [
+        {
+          "videoId": "0bLkBUALhqg",
+          "title": "Kalista ADC vs Nilah - KR Master Patch 26.01",
+          "rankClaim": "Master",
+          "patch": "26.1",
+          "durationSec": 1550,
+          "region": "KR",
+          "uploaded": "2026-01-16",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 901,
+      "lane": "adc",
+      "videos": [
+        {
+          "videoId": "vW5pSqqgO_w",
+          "title": "Kalista ADC vs Smolder - EUW Challenger Patch 25.24",
+          "rankClaim": "Challenger",
+          "patch": "25.24",
+          "durationSec": 1494,
+          "region": "EUW",
+          "uploaded": "2025-12-19",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 950,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "0nfdEGrfXyk",
+          "title": "Kalista Mid vs Naafiri - KR Master Patch 26.13",
+          "rankClaim": "Master",
+          "patch": "26.13",
+          "durationSec": 1672,
+          "region": "KR",
+          "uploaded": "2026-07-17",
+          "moments": []
+        }
+      ]
+    }
+  ]
+}

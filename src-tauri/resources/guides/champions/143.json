@@ -1,0 +1,3187 @@
+{
+  "schema": 1,
+  "champion": 143,
+  "generatedAt": "2026-11-07T13:25:14.592Z",
+  "guides": [],
+  "general": [
+    {
+      "champion": 143,
+      "lane": "jungle",
+      "patch": "26.21",
+      "reviewed": false,
+      "keyTips": [
+        {
+          "text": "Keep one plant of each type on a camp when possible, since multiple plants of the same type deal reduced damage to the same target.",
+          "scope": "champion",
+          "sourceIds": [
+            "dabloondemon"
+          ],
+          "abilityKeys": [
+            {
+              "champion": 143,
+              "key": "W"
+            }
+          ]
+        },
+        {
+          "text": "Auto-attack the intended champion target in fights, because plants otherwise prioritize minions when minions are present.",
+          "scope": "champion",
+          "sourceIds": [
+            "dabloondemon"
+          ]
+        },
+        {
+          "text": "Use the teamfight string of E, W, R, Q, W to root, knock up, and amplify plant damage, using it when the root can connect safely and never as the opener into easy hard engage or mobility.",
+          "scope": "champion",
+          "sourceIds": [
+            "dabloondemon"
+          ],
+          "abilityKeys": [
+            {
+              "champion": 143,
+              "key": "E"
+            },
+            {
+              "champion": 143,
+              "key": "W"
+            },
+            {
+              "champion": 143,
+              "key": "R"
+            },
+            {
+              "champion": 143,
+              "key": "Q"
+            }
+          ]
+        }
+      ],
+      "sections": {
+        "overview": {
+          "tips": []
+        },
+        "early-lane": {
+          "tips": [
+            {
+              "text": "Open Q at level one for its cooldown and early plant trigger, with the standard max order of Q, W, E; for a poke setup take three points in Q then three in E for root duration before W ranks, or Q, E, W for direct skirmishing.",
+              "scope": "champion",
+              "sourceIds": [
+                "dabloondemon"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 143,
+                  "key": "Q"
+                },
+                {
+                  "champion": 143,
+                  "key": "W"
+                },
+                {
+                  "champion": 143,
+                  "key": "E"
+                }
+              ]
+            },
+            {
+              "text": "Report the roughly three-minute full clear with clean pathing and plant timing as the pace target for arriving at river early enough to gank or prepare Scuttle.",
+              "scope": "champion",
+              "sourceIds": [
+                "dabloondemon"
+              ]
+            },
+            {
+              "text": "On a Red start, play Q and passive plants on Red, move toward Krugs, place W seeds as Red dies, and smite the large Krug over the wall; on a Blue start, ready plants for the Blue and Gromp sequence, then clear Wolves toward Raptors, letting passive timing place the preparations.",
+              "scope": "champion",
+              "sourceIds": [
+                "dabloondemon"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 143,
+                  "key": "Q"
+                },
+                {
+                  "champion": 143,
+                  "key": "W"
+                }
+              ]
+            },
+            {
+              "text": "Drift toward the next camp before the current one dies so a passive seed has a better chance to spawn where it saves time, and clear small raptors or krugs first since W charges refresh faster when large monsters die.",
+              "scope": "champion",
+              "sourceIds": [
+                "dabloondemon"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 143,
+                  "key": "W"
+                }
+              ]
+            },
+            {
+              "text": "Attack the lowest-health small monster when possible to earn the W cooldown refund, and leave camps to plants once they can safely finish the remaining monsters.",
+              "scope": "champion",
+              "sourceIds": [
+                "dabloondemon"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 143,
+                  "key": "W"
+                }
+              ]
+            },
+            {
+              "text": "Hold passive seed generation while sitting in a brush, since passive seeds do not appear there, then leave when a seed will help prepare the next camp or ambush.",
+              "scope": "champion",
+              "sourceIds": [
+                "dabloondemon"
+              ]
+            },
+            {
+              "text": "Scout with W seeds and Q over walls or into brushes; plants also grant temporary vision while attacking.",
+              "scope": "champion",
+              "sourceIds": [
+                "dabloondemon"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 143,
+                  "key": "W"
+                },
+                {
+                  "champion": 143,
+                  "key": "Q"
+                }
+              ]
+            }
+          ]
+        },
+        "mid-lane": {
+          "tips": [
+            {
+              "text": "Turn the fast first clear into pressure: push a lane or set plants near the Scuttle approach, and threaten early invades only while healthy.",
+              "scope": "champion",
+              "sourceIds": [
+                "dabloondemon"
+              ]
+            },
+            {
+              "text": "Judge each gank by enemy mobility, allied follow-up, wave direction, and nearby opponents, skipping pushed lanes behind a large enemy minion wave.",
+              "scope": "champion",
+              "sourceIds": [
+                "dabloondemon"
+              ]
+            },
+            {
+              "text": "Predict with E and hold the W charge when the root misses instead of spending it on a low-impact slow; place W only after casting Q or E so the seed never reveals the spell direction early.",
+              "scope": "champion",
+              "sourceIds": [
+                "dabloondemon"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 143,
+                  "key": "E"
+                },
+                {
+                  "champion": 143,
+                  "key": "W"
+                },
+                {
+                  "champion": 143,
+                  "key": "Q"
+                }
+              ]
+            },
+            {
+              "text": "Catch from fog or behind terrain with E and refresh vision beyond walls with a Q plant.",
+              "scope": "champion",
+              "sourceIds": [
+                "dabloondemon"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 143,
+                  "key": "E"
+                },
+                {
+                  "champion": 143,
+                  "key": "Q"
+                }
+              ]
+            },
+            {
+              "text": "Solo most dragons and Rift Herald with prepared plants, while respecting that Hextech dragon splash and Cloud dragon attack speed make plants less reliable there.",
+              "scope": "champion",
+              "sourceIds": [
+                "dabloondemon"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 143,
+                  "key": "W"
+                }
+              ]
+            }
+          ]
+        },
+        "win-condition": {
+          "tips": [
+            {
+              "text": "Past three items, play from behind the team and open with E only when the enemy lacks easy hard engage or mobility to punish Zyra.",
+              "scope": "champion",
+              "sourceIds": [
+                "dabloondemon"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 143,
+                  "key": "E"
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "itemization": [
+        {
+          "text": "Spend on the tempo identity: clear speed, range, objective pressure, and disengage matter more than dueling stats.",
+          "scope": "champion",
+          "sourceIds": [
+            "dabloondemon"
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "id": "dabloondemon",
+          "author": "DabloonDemon",
+          "rankClaim": "Not shown; author says this is not a high-elo guide",
+          "url": "https://www.mobafire.com/league-of-legends/build/26-21-putting-the-jungle-in-jungle-zyra-632424",
+          "kind": "mobafire"
+        }
+      ]
+    }
+  ],
+  "vods": [
+    {
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "vyEY_fFNBaM",
+          "title": "Rank 1 Zyra : This Dude is WRECKING CN Super Server - Engsub",
+          "rankClaim": "Master+",
+          "patch": "26.10",
+          "durationSec": 2298,
+          "patchEstimated": true,
+          "player": "Baicaiovo",
+          "uploaded": "2026-05-19",
+          "format": "stream",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "w7YzM8pEe3Y",
+          "title": "Baicaiovo Pathing Masterclass: Top 2 Super Server Zyra Jungle Tactics Engsub",
+          "rankClaim": "Master+",
+          "patch": "26.3",
+          "durationSec": 978,
+          "patchEstimated": true,
+          "player": "Baicaiovo",
+          "uploaded": "2026-02-12",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "W51DRkdro3Y",
+          "title": "Baicaiovo Top 2 Super Server Zyra Support Mastery and Macro Analysis Engsub",
+          "rankClaim": "Master+",
+          "patch": "26.3",
+          "durationSec": 1042,
+          "patchEstimated": true,
+          "player": "Baicaiovo",
+          "uploaded": "2026-02-09",
+          "format": "stream",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 9,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "l1x6Eu7TpKA",
+          "title": "Zyra Jungle vs Fiddlesticks - KR Master Patch 26.19",
+          "rankClaim": "Master",
+          "patch": "26.19",
+          "durationSec": 1599,
+          "region": "KR",
+          "uploaded": "2026-10-01",
+          "moments": []
+        },
+        {
+          "videoId": "K_XY36qauk0",
+          "title": "T1 Oner Zyra vs Fiddlesticks [ Jungle ] Korea Challenger 2348 LP | Patch 26.14",
+          "rankClaim": "Challenger",
+          "patch": "26.14",
+          "durationSec": 1865,
+          "region": "KR",
+          "player": "Oner",
+          "team": "T1",
+          "uploaded": "2026-07-28",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 16,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "B2qUB4dJ9Pc",
+          "title": "Zyra Support vs Soraka - KR Master Patch 25.17",
+          "rankClaim": "Master",
+          "patch": "25.17",
+          "durationSec": 1912,
+          "region": "KR",
+          "uploaded": "2025-09-07",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 20,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "UDnuFwNDWSs",
+          "title": "Zyra Support vs Nunu & Willump - NA Grandmaster Patch 25.16",
+          "rankClaim": "Grandmaster",
+          "patch": "25.16",
+          "durationSec": 1513,
+          "region": "NA",
+          "uploaded": "2025-08-23",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 30,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "1mHmeH9cgW8",
+          "title": "Zyra Jungle vs Karthus - KR Grandmaster Patch 25.18",
+          "rankClaim": "Grandmaster",
+          "patch": "25.18",
+          "durationSec": 1821,
+          "region": "KR",
+          "uploaded": "2025-09-12",
+          "moments": []
+        },
+        {
+          "videoId": "eXUeFryovOM",
+          "title": "Zyra Jungle vs Karthus - KR Challenger Patch 25.14",
+          "rankClaim": "Challenger",
+          "patch": "25.14",
+          "durationSec": 1603,
+          "region": "KR",
+          "uploaded": "2025-07-24",
+          "moments": []
+        },
+        {
+          "videoId": "v4NC_7xudYY",
+          "title": "Zyra Jungle vs Karthus - KR Grandmaster Patch 25.07",
+          "rankClaim": "Grandmaster",
+          "patch": "25.7",
+          "durationSec": 1892,
+          "region": "KR",
+          "uploaded": "2025-04-06",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 33,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "Hqqp0WcBjh4",
+          "title": "Zyra Support vs Rammus - KR Grandmaster Patch 25.23",
+          "rankClaim": "Grandmaster",
+          "patch": "25.23",
+          "durationSec": 1434,
+          "region": "KR",
+          "uploaded": "2025-11-30",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 36,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "R_5GX5grF9c",
+          "title": "Zyra Jungle vs Dr. Mundo - KR Grandmaster Patch 25.24",
+          "rankClaim": "Grandmaster",
+          "patch": "25.24",
+          "durationSec": 1558,
+          "region": "KR",
+          "uploaded": "2025-12-08",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 37,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "HadxvFnWh2o",
+          "title": "Zyra Support vs Sona - NA Grandmaster Patch 26.08",
+          "rankClaim": "Grandmaster",
+          "patch": "26.8",
+          "durationSec": 1473,
+          "region": "NA",
+          "uploaded": "2026-04-27",
+          "moments": []
+        },
+        {
+          "videoId": "LcTaA_bEseY",
+          "title": "Zyra Support vs Sona - NA Grandmaster Patch 26.07",
+          "rankClaim": "Grandmaster",
+          "patch": "26.7",
+          "durationSec": 1823,
+          "region": "NA",
+          "uploaded": "2026-04-16",
+          "moments": []
+        },
+        {
+          "videoId": "RsTyNUerC88",
+          "title": "Zyra Support vs Sona - NA Challenger Patch 26.02",
+          "rankClaim": "Challenger",
+          "patch": "26.2",
+          "durationSec": 1594,
+          "region": "NA",
+          "uploaded": "2026-02-02",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 384,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 436,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 492,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 611,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 835,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 863,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1196,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1230,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1330,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1345,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1444,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1528,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1552,
+              "label": "Take down The Inhibitor"
+            },
+            {
+              "atSec": 1564,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1583,
+              "label": "End credit"
+            }
+          ]
+        },
+        {
+          "videoId": "EuEzl-4peWo",
+          "title": "Zyra Support vs Sona - NA Grandmaster Patch 25.19",
+          "rankClaim": "Grandmaster",
+          "patch": "25.19",
+          "durationSec": 1633,
+          "region": "NA",
+          "uploaded": "2025-10-06",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 43,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "Pi0Sbyf2syY",
+          "title": "Zyra Support vs Karma - NA Grandmaster Patch 25.08",
+          "rankClaim": "Grandmaster",
+          "patch": "25.8",
+          "durationSec": 1738,
+          "region": "NA",
+          "uploaded": "2025-04-28",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 343,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 365,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 382,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 573,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 628,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 852,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 885,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1107,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1202,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1309,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1384,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1534,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1680,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1717,
+              "label": "End credit"
+            }
+          ]
+        },
+        {
+          "videoId": "Ckd0lT3f0p0",
+          "title": "Zyra Support vs Karma - KR Master Patch 25.05",
+          "rankClaim": "Master",
+          "patch": "25.5",
+          "durationSec": 2092,
+          "region": "KR",
+          "uploaded": "2025-03-15",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 54,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "CNOH1uV1wTg",
+          "title": "Zyra Jungle vs Malphite - EUW Grandmaster Patch 26.01",
+          "rankClaim": "Grandmaster",
+          "patch": "26.1",
+          "durationSec": 1443,
+          "region": "EUW",
+          "uploaded": "2026-01-18",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 151,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 318,
+              "label": "Hunt The Dragon",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 350,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 492,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 546,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 602,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 657,
+              "label": "Hunt The Dragon",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 705,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 826,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 961,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1056,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1074,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1160,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1183,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1237,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1305,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1375,
+              "label": "Hunt The Dragon",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1393,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1413,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1432,
+              "label": "End credit"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 56,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "kpk176tJehI",
+          "title": "(Racoon) Zyra Jungle vs Nocturne - KR Challenger Patch 26.16",
+          "rankClaim": "Challenger",
+          "patch": "26.16",
+          "durationSec": 1739,
+          "region": "KR",
+          "player": "Racoon",
+          "uploaded": "2026-08-28",
+          "moments": []
+        },
+        {
+          "videoId": "eVNqFpBQR9s",
+          "title": "Zyra Jungle vs Nocturne - KR Challenger Patch 25.15",
+          "rankClaim": "Challenger",
+          "patch": "25.15",
+          "durationSec": 1567,
+          "region": "KR",
+          "uploaded": "2025-08-06",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 60,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "cvl-WcxnVug",
+          "title": "Zyra Support vs Elise - KR Master Patch 25.07",
+          "rankClaim": "Master",
+          "patch": "25.7",
+          "durationSec": 1635,
+          "region": "KR",
+          "uploaded": "2025-04-15",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 61,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "-QT-4vTcekM",
+          "title": "Zyra Mid vs Orianna - KR Master Patch 26.01",
+          "rankClaim": "Master",
+          "patch": "26.1",
+          "durationSec": 1616,
+          "region": "KR",
+          "uploaded": "2026-01-16",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 62,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "_mhvQzUlR3Q",
+          "title": "Zyra Jungle vs Wukong - EUW Challenger Patch 26.06",
+          "rankClaim": "Challenger",
+          "patch": "26.6",
+          "durationSec": 1539,
+          "region": "EUW",
+          "uploaded": "2026-03-22",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 301,
+              "label": "Hunt The Dragon",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 319,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 456,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 656,
+              "label": "Hunt The Dragon",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 681,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 824,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 958,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1003,
+              "label": "Hunt The Dragon",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1052,
+              "label": "Hunt The Rift Herald",
+              "kind": "herald"
+            },
+            {
+              "atSec": 1086,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1120,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1238,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1267,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1370,
+              "label": "Hunt The Dragon",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1391,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1412,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1425,
+              "label": "Take down The Inhibitor"
+            },
+            {
+              "atSec": 1447,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1511,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1528,
+              "label": "End credit"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 63,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "IRj_NTnTa2c",
+          "title": "Zyra Jungle vs Brand - KR Challenger Patch 25.16",
+          "rankClaim": "Challenger",
+          "patch": "25.16",
+          "durationSec": 1625,
+          "region": "KR",
+          "uploaded": "2025-08-18",
+          "moments": []
+        },
+        {
+          "videoId": "K97mVYEzT9c",
+          "title": "Zyra vs Brand Jungle - KR Challenger - Patch 25.16 Season 15",
+          "rankClaim": "Challenger",
+          "patch": "25.16",
+          "durationSec": 1631,
+          "region": "KR",
+          "uploaded": "2025-08-15",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 64,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "KdzWfDUmNG8",
+          "title": "(Racoon) Zyra Jungle vs Lee Sin - KR Challenger Patch 26.15",
+          "rankClaim": "Challenger",
+          "patch": "26.15",
+          "durationSec": 1451,
+          "region": "KR",
+          "player": "Racoon",
+          "uploaded": "2026-08-12",
+          "result": "W",
+          "moments": [
+            {
+              "atSec": 116,
+              "label": "First Blood — Zyra kills Twisted Fate",
+              "kind": "kill"
+            },
+            {
+              "atSec": 575,
+              "label": "Cassiopeia kills Twisted Fate",
+              "kind": "kill"
+            },
+            {
+              "atSec": 619,
+              "label": "Cassiopeia eliminates Galio"
+            },
+            {
+              "atSec": 654,
+              "label": "Blue takes 1st Dragon (Hextech)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 729,
+              "label": "Shen picks off Twisted Fate"
+            },
+            {
+              "atSec": 764,
+              "label": "Zyra catches Camille"
+            },
+            {
+              "atSec": 903,
+              "label": "Blue takes Rift Herald",
+              "kind": "herald"
+            },
+            {
+              "atSec": 943,
+              "label": "Zyra picks off Galio"
+            },
+            {
+              "atSec": 978,
+              "label": "Blue takes 2nd Dragon (Ocean)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1062,
+              "label": "Zyra kills Jayce",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1144,
+              "label": "Cassiopeia takes down Jayce"
+            },
+            {
+              "atSec": 1176,
+              "label": "Blue takes Baron",
+              "kind": "baron"
+            },
+            {
+              "atSec": 1247,
+              "label": "Zyra eliminates Twisted Fate"
+            },
+            {
+              "atSec": 1265,
+              "label": "Top Inhibitor falls (Red)"
+            },
+            {
+              "atSec": 1283,
+              "label": "Mid Inhibitor falls (Red)"
+            },
+            {
+              "atSec": 1335,
+              "label": "Blue takes 3rd Dragon (Mountain)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1370,
+              "label": "Bot Inhibitor falls (Red)"
+            },
+            {
+              "atSec": 1385,
+              "label": "Dr. Mundo picks off Twisted Fate"
+            }
+          ]
+        },
+        {
+          "videoId": "Xd2-q09GMjY",
+          "title": "Zyra Jungle vs Lee Sin - KR Master Patch 26.05",
+          "rankClaim": "Master",
+          "patch": "26.5",
+          "durationSec": 1547,
+          "region": "KR",
+          "uploaded": "2026-03-17",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 260,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 380,
+              "label": "Hunt The Dragon",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 403,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 500,
+              "label": "Hunt The Void Grubs",
+              "kind": "grubs"
+            },
+            {
+              "atSec": 534,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 674,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 779,
+              "label": "Hunt The Dragon",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 805,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 908,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 941,
+              "label": "Hunt The Rift Herald",
+              "kind": "herald"
+            },
+            {
+              "atSec": 976,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1000,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1101,
+              "label": "Hunt The Dragon",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1131,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1155,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1244,
+              "label": "Hunt The Baron Nashor",
+              "kind": "baron"
+            },
+            {
+              "atSec": 1268,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1295,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1305,
+              "label": "Take down The Inhibitor"
+            },
+            {
+              "atSec": 1347,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1380,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1403,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1445,
+              "label": "Hunt The Dragon",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1494,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1536,
+              "label": "End credit"
+            }
+          ]
+        },
+        {
+          "videoId": "hNh6bSl5lFs",
+          "title": "Zyra Jungle vs Lee Sin - KR Grandmaster Patch 26.02",
+          "rankClaim": "Grandmaster",
+          "patch": "26.2",
+          "durationSec": 1598,
+          "region": "KR",
+          "uploaded": "2026-01-29",
+          "moments": []
+        },
+        {
+          "videoId": "0Z3LTXuUmlc",
+          "title": "Zyra Jungle vs Lee Sin - KR Grandmaster Patch 25.20",
+          "rankClaim": "Grandmaster",
+          "patch": "25.20",
+          "durationSec": 1751,
+          "region": "KR",
+          "uploaded": "2025-10-12",
+          "moments": []
+        },
+        {
+          "videoId": "KK9bJKOGueE",
+          "title": "Zyra Jungle vs Lee Sin - KR Master Patch 25.04",
+          "rankClaim": "Master",
+          "patch": "25.4",
+          "durationSec": 1862,
+          "region": "KR",
+          "uploaded": "2025-02-24",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 196,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 356,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 496,
+              "label": "Hunt The Void Grubs",
+              "kind": "grubs"
+            },
+            {
+              "atSec": 599,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 831,
+              "label": "Hunt The Void Grubs",
+              "kind": "grubs"
+            },
+            {
+              "atSec": 911,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1034,
+              "label": "Hunt The Dragon",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1155,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1250,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1295,
+              "label": "Hunt The Atakhan"
+            },
+            {
+              "atSec": 1386,
+              "label": "Hunt The Dragon",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1406,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1430,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1490,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1530,
+              "label": "Hunt The Baron Nashor",
+              "kind": "baron"
+            },
+            {
+              "atSec": 1553,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1591,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1656,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1733,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1765,
+              "label": "Take down The Inhibitor"
+            },
+            {
+              "atSec": 1793,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1815,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1841,
+              "label": "End credit"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 72,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "jShAQt_tr1c",
+          "title": "Zyra Jungle vs Skarner - KR Challenger Patch 25.13",
+          "rankClaim": "Challenger",
+          "patch": "25.13",
+          "durationSec": 1856,
+          "region": "KR",
+          "uploaded": "2025-07-04",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 74,
+      "lane": "adc",
+      "videos": [
+        {
+          "videoId": "DUcF5zZ6C_s",
+          "title": "Zyra Bot vs Heimerdinger - NA Challenger Patch 26.20",
+          "rankClaim": "Challenger",
+          "patch": "26.20",
+          "durationSec": 1631,
+          "region": "NA",
+          "uploaded": "2026-10-18",
+          "result": "W",
+          "moments": [
+            {
+              "atSec": 291,
+              "label": "Red takes 1st Dragon (Mountain)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 384,
+              "label": "First Blood — Zyra kills Heimerdinger",
+              "kind": "kill"
+            },
+            {
+              "atSec": 425,
+              "label": "Zyra outplays Rell"
+            },
+            {
+              "atSec": 571,
+              "label": "Kindred kills Rell",
+              "kind": "kill"
+            },
+            {
+              "atSec": 755,
+              "label": "Red takes 2nd Dragon (Cloud)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 839,
+              "label": "Kindred eliminates Heimerdinger"
+            },
+            {
+              "atSec": 996,
+              "label": "Zyra outduels Heimerdinger"
+            },
+            {
+              "atSec": 1005,
+              "label": "Zyra Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1087,
+              "label": "Red takes 3rd Dragon (Ocean)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1216,
+              "label": "Viktor kills Heimerdinger",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1228,
+              "label": "Viktor Triple Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1412,
+              "label": "Red takes 4th Dragon (Ocean)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1425,
+              "label": "Kindred kills Riven",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1475,
+              "label": "Red takes Baron",
+              "kind": "baron"
+            },
+            {
+              "atSec": 1556,
+              "label": "Mid Inhibitor falls (Blue)"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 76,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "5A6asBDElwQ",
+          "title": "Zyra Jungle vs Nidalee (TT Feather) - KR Master Patch 26.12",
+          "rankClaim": "Master",
+          "patch": "26.12",
+          "durationSec": 1771,
+          "region": "KR",
+          "uploaded": "2026-06-17",
+          "moments": []
+        },
+        {
+          "videoId": "dj-D66vEiEs",
+          "title": "Zyra Jungle vs Nidalee - KR Grandmaster Patch 26.03",
+          "rankClaim": "Grandmaster",
+          "patch": "26.3",
+          "durationSec": 1571,
+          "region": "KR",
+          "uploaded": "2026-02-09",
+          "moments": []
+        },
+        {
+          "videoId": "iLqB7_oPXkY",
+          "title": "Zyra Jungle vs Nidalee - KR Grandmaster Patch 25.21",
+          "rankClaim": "Grandmaster",
+          "patch": "25.21",
+          "durationSec": 1723,
+          "region": "KR",
+          "uploaded": "2025-10-27",
+          "moments": []
+        },
+        {
+          "videoId": "DphTxytryQ0",
+          "title": "Zyra vs Nidalee [ Jungle ] Korea Challenger 1369 LP | Patch 25.20 ✅",
+          "rankClaim": "Challenger",
+          "patch": "25.20",
+          "durationSec": 1973,
+          "region": "KR",
+          "uploaded": "2025-10-20",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 80,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "3aoDpMJ7L20",
+          "title": "Zyra Jungle vs Pantheon (T1 Painter) - KR Challenger Patch 26.17",
+          "rankClaim": "Challenger",
+          "patch": "26.17",
+          "durationSec": 1707,
+          "region": "KR",
+          "uploaded": "2026-09-12",
+          "moments": []
+        },
+        {
+          "videoId": "UL8mswN_--Y",
+          "title": "Zyra Jungle vs Pantheon - KR Challenger Patch 26.09",
+          "rankClaim": "Challenger",
+          "patch": "26.9",
+          "durationSec": 1641,
+          "region": "KR",
+          "uploaded": "2026-05-13",
+          "moments": []
+        },
+        {
+          "videoId": "YdtZg91jIIE",
+          "title": "Zyra Jungle vs Pantheon - KR Challenger Patch 26.07",
+          "rankClaim": "Challenger",
+          "patch": "26.7",
+          "durationSec": 1654,
+          "region": "KR",
+          "uploaded": "2026-04-06",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 139,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 333,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 477,
+              "label": "Hunt The Void Grubs",
+              "kind": "grubs"
+            },
+            {
+              "atSec": 517,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 613,
+              "label": "Hunt The Dragon",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 705,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 818,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 840,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 852,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 906,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 998,
+              "label": "Hunt The Dragon",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1021,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1188,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1228,
+              "label": "Hunt The Baron Nashor",
+              "kind": "baron"
+            },
+            {
+              "atSec": 1303,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1354,
+              "label": "Hunt The Dragon",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1445,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1474,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1602,
+              "label": "Hunt The Baron Nashor",
+              "kind": "baron"
+            },
+            {
+              "atSec": 1622,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1643,
+              "label": "End credit"
+            }
+          ]
+        },
+        {
+          "videoId": "WQDg-nuu-uw",
+          "title": "Zyra Jungle vs Pantheon - KR Challenger Patch 25.11",
+          "rankClaim": "Challenger",
+          "patch": "25.11",
+          "durationSec": 1840,
+          "region": "KR",
+          "uploaded": "2025-06-04",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 92,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "haLTNsYmiUM",
+          "title": "Zyra Jungle vs Riven - KR Grandmaster Patch 25.22",
+          "rankClaim": "Grandmaster",
+          "patch": "25.22",
+          "durationSec": 1618,
+          "region": "KR",
+          "uploaded": "2025-11-12",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 104,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "g3jX6krTRlw",
+          "title": "Zyra Jungle vs Graves - NA Challenger Patch 26.04",
+          "rankClaim": "Challenger",
+          "patch": "26.4",
+          "durationSec": 1899,
+          "region": "NA",
+          "uploaded": "2026-02-25",
+          "moments": []
+        },
+        {
+          "videoId": "HESH_hi5Rjw",
+          "title": "Zyra Jungle vs Graves - KR Master Patch 25.10",
+          "rankClaim": "Master",
+          "patch": "25.10",
+          "durationSec": 1433,
+          "region": "KR",
+          "uploaded": "2025-05-18",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 111,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "Y_pZ3YCXMcc",
+          "title": "Zyra Support vs Nautilus - KR Master Patch 25.20",
+          "rankClaim": "Master",
+          "patch": "25.20",
+          "durationSec": 1556,
+          "region": "KR",
+          "uploaded": "2025-10-20",
+          "moments": []
+        },
+        {
+          "videoId": "UJpIIafEv_o",
+          "title": "Zyra Support vs Nautilus - NA Grandmaster Patch 25.09",
+          "rankClaim": "Grandmaster",
+          "patch": "25.9",
+          "durationSec": 1933,
+          "region": "NA",
+          "uploaded": "2025-05-11",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 117,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "Txp0zlWeG4w",
+          "title": "Zyra Support vs Lulu - KR Grandmaster Patch 25.15",
+          "rankClaim": "Grandmaster",
+          "patch": "25.15",
+          "durationSec": 1441,
+          "region": "KR",
+          "uploaded": "2025-08-11",
+          "moments": []
+        },
+        {
+          "videoId": "23Ya9zWQzRI",
+          "title": "Zyra Support vs Lulu - KR Master Patch 25.06",
+          "rankClaim": "Master",
+          "patch": "25.6",
+          "durationSec": 1852,
+          "region": "KR",
+          "uploaded": "2025-03-29",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 126,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "6DTaSVjqry8",
+          "title": "Zyra vs Jayce [ Jungle ] Lol Korea Grandmaster Patch 25.24 ✅",
+          "rankClaim": "Grandmaster",
+          "patch": "25.24",
+          "durationSec": 1631,
+          "region": "KR",
+          "uploaded": "2025-12-26",
+          "moments": []
+        },
+        {
+          "videoId": "ZmkW7FXHJag",
+          "title": "Zyra Jungle vs Jayce - NA Grandmaster Patch 25.24",
+          "rankClaim": "Grandmaster",
+          "patch": "25.24",
+          "durationSec": 1461,
+          "region": "NA",
+          "uploaded": "2025-12-23",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 182,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 299,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 349,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 498,
+              "label": "Hunt The Void Grubs",
+              "kind": "grubs"
+            },
+            {
+              "atSec": 539,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 633,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 700,
+              "label": "Hunt The Dragon",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 719,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 909,
+              "label": "Hunt The Rift Herald",
+              "kind": "herald"
+            },
+            {
+              "atSec": 1001,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1034,
+              "label": "Hunt The Dragon",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1065,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1079,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1102,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1196,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1224,
+              "label": "Hunt The Atakhan"
+            },
+            {
+              "atSec": 1353,
+              "label": "Hunt The Dragon",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1402,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1421,
+              "label": "Take down The Inhibitor"
+            },
+            {
+              "atSec": 1431,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1450,
+              "label": "End credit"
+            }
+          ]
+        },
+        {
+          "videoId": "NqAbvZ-V56c",
+          "title": "Zyra Jungle vs Jayce - KR Challenger Patch 25.23",
+          "rankClaim": "Challenger",
+          "patch": "25.23",
+          "durationSec": 1483,
+          "region": "KR",
+          "uploaded": "2025-11-25",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 131,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "e8O06GnDC9M",
+          "title": "Zyra Jungle vs Diana - KR Master Patch 26.15",
+          "rankClaim": "Master",
+          "patch": "26.15",
+          "durationSec": 1810,
+          "region": "KR",
+          "uploaded": "2026-08-05",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 133,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "3QFKkZSmNu8",
+          "title": "(G2 SkewMond) Zyra Jungle vs Quinn - EUW Grandmaster Patch 26.16",
+          "rankClaim": "Grandmaster",
+          "patch": "26.16",
+          "durationSec": 1623,
+          "region": "EUW",
+          "player": "SkewMond",
+          "team": "G2",
+          "uploaded": "2026-08-15",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 141,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "UKqdRqq8EaI",
+          "title": "Zyra Jungle vs Kayn - KR Challenger Patch 26.21",
+          "rankClaim": "Challenger",
+          "patch": "26.21",
+          "durationSec": 1705,
+          "region": "KR",
+          "uploaded": "2026-10-30",
+          "result": "W",
+          "moments": [
+            {
+              "atSec": 283,
+              "label": "Zyra takes down Kayn"
+            },
+            {
+              "atSec": 334,
+              "label": "Zyra outduels Kled"
+            },
+            {
+              "atSec": 385,
+              "label": "Aatrox eliminates Kled"
+            },
+            {
+              "atSec": 453,
+              "label": "Zyra takes down Kayn"
+            },
+            {
+              "atSec": 509,
+              "label": "Locke takes down Nautilus"
+            },
+            {
+              "atSec": 531,
+              "label": "Zyra kills Kled",
+              "kind": "kill"
+            },
+            {
+              "atSec": 665,
+              "label": "Poppy eliminates Kled"
+            },
+            {
+              "atSec": 675,
+              "label": "Red takes 1st Dragon (Hextech)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 918,
+              "label": "Blue takes Rift Herald",
+              "kind": "herald"
+            },
+            {
+              "atSec": 1060,
+              "label": "Red takes 2nd Dragon (Mountain)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1221,
+              "label": "Sion takes down Miss Fortune"
+            },
+            {
+              "atSec": 1334,
+              "label": "Team fight (3 kills)",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1372,
+              "label": "Blue takes 1st Dragon (Chemtech)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1412,
+              "label": "Blue takes Baron",
+              "kind": "baron"
+            },
+            {
+              "atSec": 1569,
+              "label": "Mid Inhibitor falls (Red)"
+            },
+            {
+              "atSec": 1679,
+              "label": "Zyra Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1687,
+              "label": "Zyra Triple Kill",
+              "kind": "kill"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 154,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "txyoYklf4eQ",
+          "title": "Zyra Jungle vs Zac - KR Challenger Patch 26.05",
+          "rankClaim": "Challenger",
+          "patch": "26.5",
+          "durationSec": 1534,
+          "region": "KR",
+          "uploaded": "2026-03-10",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 161,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "Jr6BEh71lnk",
+          "title": "Zyra Support vs Vel'Koz - KR Master Patch 25.11",
+          "rankClaim": "Master",
+          "patch": "25.11",
+          "durationSec": 1564,
+          "region": "KR",
+          "uploaded": "2025-06-09",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 163,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "o2sDTorXYz4",
+          "title": "Zyra Jungle vs Taliyah - KR Master Patch 26.18",
+          "rankClaim": "Master",
+          "patch": "26.18",
+          "durationSec": 1493,
+          "region": "KR",
+          "uploaded": "2026-09-19",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 200,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "rXpizoFbpyY",
+          "title": "Zyra vs Bel'Veth [ Jungle ] Korea Master Patch 25.19 ✅",
+          "rankClaim": "Master",
+          "patch": "25.19",
+          "durationSec": 1510,
+          "region": "KR",
+          "uploaded": "2025-10-04",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 201,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "iQrUdgBj2fY",
+          "title": "Zyra Support vs Braum - KR Master Patch 25.24",
+          "rankClaim": "Master",
+          "patch": "25.24",
+          "durationSec": 1506,
+          "region": "KR",
+          "uploaded": "2025-12-14",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 250,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 445,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 494,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 554,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 701,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 798,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 865,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 929,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1001,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1053,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1070,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1200,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1280,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1358,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1442,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1495,
+              "label": "End credit"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 203,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "dLQEk7sOlKI",
+          "title": "(Racoon) Zyra Jungle vs Kindred - KR Challenger Patch 26.17",
+          "rankClaim": "Challenger",
+          "patch": "26.17",
+          "durationSec": 1508,
+          "region": "KR",
+          "player": "Racoon",
+          "uploaded": "2026-09-04",
+          "moments": []
+        },
+        {
+          "videoId": "LKXAL3tth-g",
+          "title": "Zyra Jungle vs Kindred - KR Grandmaster Patch 26.09",
+          "rankClaim": "Grandmaster",
+          "patch": "26.9",
+          "durationSec": 1855,
+          "region": "KR",
+          "uploaded": "2026-05-05",
+          "moments": []
+        },
+        {
+          "videoId": "d8uRF-9tzJ8",
+          "title": "Zyra Jungle vs Kindred - KR Challenger Patch 25.09",
+          "rankClaim": "Challenger",
+          "patch": "25.9",
+          "durationSec": 1705,
+          "region": "KR",
+          "uploaded": "2025-05-07",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 94,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 146,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 224,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 390,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 447,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 550,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 681,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 699,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 870,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 885,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 898,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 948,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1062,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1151,
+              "label": "Hunt The Rift Herald",
+              "kind": "herald"
+            },
+            {
+              "atSec": 1187,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1234,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1302,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1414,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1447,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1501,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1541,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1558,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1684,
+              "label": "End credit"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 222,
+      "lane": "adc",
+      "videos": [
+        {
+          "videoId": "wT4Uuzwee2w",
+          "title": "Zyra Bot vs Jinx - EUW Master Patch 26.19",
+          "rankClaim": "Master",
+          "patch": "26.19",
+          "durationSec": 1807,
+          "region": "EUW",
+          "uploaded": "2026-10-05",
+          "moments": []
+        },
+        {
+          "videoId": "Hf-1BYC5JMw",
+          "title": "Zyra Bot vs Jinx - BR Challenger Patch 26.18",
+          "rankClaim": "Challenger",
+          "patch": "26.18",
+          "durationSec": 1658,
+          "uploaded": "2026-09-22",
+          "result": "W",
+          "moments": [
+            {
+              "atSec": 125,
+              "label": "First Blood — Zyra kills Jinx",
+              "kind": "kill"
+            },
+            {
+              "atSec": 279,
+              "label": "Red takes 1st Dragon (Ocean)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 383,
+              "label": "Zyra outduels Jinx"
+            },
+            {
+              "atSec": 660,
+              "label": "Red takes 2nd Dragon (Infernal)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 737,
+              "label": "Zyra picks off Sona"
+            },
+            {
+              "atSec": 833,
+              "label": "Zyra picks off Sona"
+            },
+            {
+              "atSec": 924,
+              "label": "Kennen eliminates Sona"
+            },
+            {
+              "atSec": 995,
+              "label": "Blue takes 1st Dragon (Mountain)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1013,
+              "label": "Kennen eliminates Sona"
+            },
+            {
+              "atSec": 1037,
+              "label": "Vi eliminates Jinx"
+            },
+            {
+              "atSec": 1204,
+              "label": "Zyra Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1227,
+              "label": "Blue takes Baron",
+              "kind": "baron"
+            },
+            {
+              "atSec": 1263,
+              "label": "Yone takes down Fiora"
+            },
+            {
+              "atSec": 1321,
+              "label": "Blue takes 2nd Dragon (Mountain)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1405,
+              "label": "Vi Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1429,
+              "label": "Kennen takes down Yasuo"
+            },
+            {
+              "atSec": 1569,
+              "label": "Vi Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1600,
+              "label": "Mid Inhibitor falls (Blue)"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 234,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "G8fdTtQvYHQ",
+          "title": "(IG Wei) Zyra Jungle vs Viego (KRWI Clid) - KR Challenger Patch 26.13",
+          "rankClaim": "Challenger",
+          "patch": "26.13",
+          "durationSec": 1588,
+          "region": "KR",
+          "player": "Wei",
+          "team": "IG",
+          "uploaded": "2026-07-10",
+          "moments": []
+        },
+        {
+          "videoId": "PU-KxJ4VFnY",
+          "title": "Zyra Jungle vs Viego - KR Challenger Patch 26.08",
+          "rankClaim": "Challenger",
+          "patch": "26.8",
+          "durationSec": 1597,
+          "region": "KR",
+          "uploaded": "2026-04-21",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 246,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "Eaw8pK7uNXI",
+          "title": "Zyra Jungle vs Qiyana - KR Master Patch 26.20",
+          "rankClaim": "Master",
+          "patch": "26.20",
+          "durationSec": 1473,
+          "region": "KR",
+          "uploaded": "2026-10-15",
+          "result": "W",
+          "moments": [
+            {
+              "atSec": 146,
+              "label": "First Blood — Zyra kills Alistar",
+              "kind": "kill"
+            },
+            {
+              "atSec": 325,
+              "label": "Blue takes 1st Dragon (Mountain)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 424,
+              "label": "Zyra outduels Draven"
+            },
+            {
+              "atSec": 663,
+              "label": "Red takes 1st Dragon (Infernal)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 725,
+              "label": "Xayah eliminates Qiyana"
+            },
+            {
+              "atSec": 868,
+              "label": "Zyra eliminates Kalista"
+            },
+            {
+              "atSec": 982,
+              "label": "Blue takes 2nd Dragon (Ocean)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 995,
+              "label": "Xayah picks off Alistar"
+            },
+            {
+              "atSec": 1025,
+              "label": "Jayce kills Qiyana",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1057,
+              "label": "Zyra kills Draven",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1145,
+              "label": "Zyra picks off LeBlanc"
+            },
+            {
+              "atSec": 1217,
+              "label": "Blue takes Baron",
+              "kind": "baron"
+            },
+            {
+              "atSec": 1295,
+              "label": "Jayce eliminates Draven"
+            },
+            {
+              "atSec": 1320,
+              "label": "Mid Inhibitor falls (Red)"
+            },
+            {
+              "atSec": 1351,
+              "label": "Blue takes 3rd Dragon (Ocean)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1360,
+              "label": "Zyra eliminates Kalista"
+            },
+            {
+              "atSec": 1436,
+              "label": "Bot Inhibitor falls (Red)"
+            },
+            {
+              "atSec": 1452,
+              "label": "Zyra Double Kill",
+              "kind": "kill"
+            }
+          ]
+        },
+        {
+          "videoId": "72DE148QNE0",
+          "title": "Zyra Jungle vs Qiyana - KR Challenger Patch 25.19",
+          "rankClaim": "Challenger",
+          "patch": "25.19",
+          "durationSec": 1966,
+          "region": "KR",
+          "uploaded": "2025-09-29",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 254,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "KX4X9g03kfY",
+          "title": "(JDG JunJia) Zyra Jungle vs Vi (KRWI Clid) - KR Grandmaster Patch 26.13",
+          "rankClaim": "Grandmaster",
+          "patch": "26.13",
+          "durationSec": 1645,
+          "region": "KR",
+          "player": "JunJia",
+          "team": "JDG",
+          "uploaded": "2026-06-28",
+          "moments": []
+        },
+        {
+          "videoId": "8_dOe1iTyNk",
+          "title": "Zyra vs Vi Jungle - KR Challenger - Patch 25.12 Season 15",
+          "rankClaim": "Challenger",
+          "patch": "25.12",
+          "durationSec": 1801,
+          "region": "KR",
+          "uploaded": "2025-06-18",
+          "moments": []
+        },
+        {
+          "videoId": "TAswFr15qCY",
+          "title": "Zyra Jungle vs Vi - KR Challenger Patch 25.08",
+          "rankClaim": "Challenger",
+          "patch": "25.8",
+          "durationSec": 1669,
+          "region": "KR",
+          "uploaded": "2025-04-23",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 60,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 218,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 419,
+              "label": "Hunt The Void Grubs",
+              "kind": "grubs"
+            },
+            {
+              "atSec": 515,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 584,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 612,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 647,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 726,
+              "label": "Hunt The Void Grubs",
+              "kind": "grubs"
+            },
+            {
+              "atSec": 866,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1079,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1137,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1239,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1457,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1597,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1648,
+              "label": "End credit"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 266,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "55QaxVMCtog",
+          "title": "(OTS Lulas) Zyra Jungle vs Aatrox - EUW Grandmaster Patch 26.14",
+          "rankClaim": "Grandmaster",
+          "patch": "26.14",
+          "durationSec": 1797,
+          "region": "EUW",
+          "player": "OTS Lulas",
+          "uploaded": "2026-07-21",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 350,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "bhb-GfK4R8Y",
+          "title": "Zyra Support vs Yuumi - NA Grandmaster Patch 25.14",
+          "rankClaim": "Grandmaster",
+          "patch": "25.14",
+          "durationSec": 2024,
+          "region": "NA",
+          "uploaded": "2025-07-30",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 412,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "Q0VPrslpr9I",
+          "title": "Zyra Support vs Thresh - KR Master Patch 25.22",
+          "rankClaim": "Master",
+          "patch": "25.22",
+          "durationSec": 1826,
+          "region": "KR",
+          "uploaded": "2025-11-17",
+          "moments": []
+        },
+        {
+          "videoId": "V5hJygF4Y9Y",
+          "title": "Zyra Support vs Thresh - NA Grandmaster Patch 25.12",
+          "rankClaim": "Grandmaster",
+          "patch": "25.12",
+          "durationSec": 1466,
+          "region": "NA",
+          "uploaded": "2025-06-23",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 421,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "Goc5F9Uqcc4",
+          "title": "(CLA Kiki) Zyra Jungle vs Rek'Sai - EUW Grandmaster Patch 26.11",
+          "rankClaim": "Grandmaster",
+          "patch": "26.11",
+          "durationSec": 1431,
+          "region": "EUW",
+          "player": "CLA Kiki",
+          "uploaded": "2026-06-01",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 427,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "8awrrw68Z98",
+          "title": "Zyra Jungle vs Ivern - KR Challenger Patch 25.12",
+          "rankClaim": "Challenger",
+          "patch": "25.12",
+          "durationSec": 1755,
+          "region": "KR",
+          "uploaded": "2025-06-19",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 432,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "CauhD3xcQxs",
+          "title": "Zyra Support vs Bard - KR Master Patch 25.21",
+          "rankClaim": "Master",
+          "patch": "25.21",
+          "durationSec": 1784,
+          "region": "KR",
+          "uploaded": "2025-11-02",
+          "moments": []
+        },
+        {
+          "videoId": "IvccsZ3-ZpQ",
+          "title": "Zyra Support vs Bard - KR Master Patch 25.13",
+          "rankClaim": "Master",
+          "patch": "25.13",
+          "durationSec": 2070,
+          "region": "KR",
+          "uploaded": "2025-07-09",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 497,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "koCqQTr2AGc",
+          "title": "Zyra Support vs Rakan - VN Challenger Patch 26.21",
+          "rankClaim": "Challenger",
+          "patch": "26.21",
+          "durationSec": 1736,
+          "uploaded": "2026-10-30",
+          "result": "W",
+          "moments": [
+            {
+              "atSec": 359,
+              "label": "Red takes 1st Dragon (Mountain)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 468,
+              "label": "Jhin picks off Rakan"
+            },
+            {
+              "atSec": 529,
+              "label": "Irelia kills Quinn",
+              "kind": "kill"
+            },
+            {
+              "atSec": 730,
+              "label": "Red takes 2nd Dragon (Hextech)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 870,
+              "label": "Team fight (3 kills)",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1028,
+              "label": "Jhin Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1053,
+              "label": "Red takes 3rd Dragon (Chemtech)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1153,
+              "label": "Jhin Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1191,
+              "label": "Red takes Baron",
+              "kind": "baron"
+            },
+            {
+              "atSec": 1365,
+              "label": "Red takes 4th Dragon (Chemtech)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1421,
+              "label": "Jhin picks off Akali"
+            },
+            {
+              "atSec": 1527,
+              "label": "Zyra eliminates Rakan"
+            },
+            {
+              "atSec": 1570,
+              "label": "Jhin Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1601,
+              "label": "Red takes 2nd Baron",
+              "kind": "baron"
+            },
+            {
+              "atSec": 1667,
+              "label": "Jhin picks off Rakan"
+            },
+            {
+              "atSec": 1680,
+              "label": "Jhin Triple Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1688,
+              "label": "Mid Inhibitor falls (Blue)"
+            },
+            {
+              "atSec": 1706,
+              "label": "Galio takes down Akali"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 517,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "LANWgrfQJtk",
+          "title": "Zyra Jungle vs Sylas - KR Master Patch 25.17",
+          "rankClaim": "Master",
+          "patch": "25.17",
+          "durationSec": 2006,
+          "region": "KR",
+          "uploaded": "2025-09-01",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 518,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "v9F6FVhsLas",
+          "title": "Zyra Support vs Neeko - KR Master Patch 25.18",
+          "rankClaim": "Master",
+          "patch": "25.18",
+          "durationSec": 1474,
+          "region": "KR",
+          "uploaded": "2025-09-21",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 526,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "7Bo4xw6UO9Y",
+          "title": "Zyra Support vs Rell - NA Challenger Patch 26.06",
+          "rankClaim": "Challenger",
+          "patch": "26.6",
+          "durationSec": 1853,
+          "region": "NA",
+          "uploaded": "2026-03-29",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 555,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "wjzhaf0nWOE",
+          "title": "Zyra Support vs Pyke - KR Master Patch 25.24",
+          "rankClaim": "Master",
+          "patch": "25.24",
+          "durationSec": 1508,
+          "region": "KR",
+          "uploaded": "2026-01-04",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 799,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "8e2ltpywsJY",
+          "title": "Zyra vs Ambessa JUngle - EUW Challenger - Patch 16.08 Season 16",
+          "rankClaim": "Challenger",
+          "patch": "26.8",
+          "durationSec": 1411,
+          "region": "EUW",
+          "uploaded": "2026-04-16",
+          "moments": []
+        },
+        {
+          "videoId": "AHHokn2WQg8",
+          "title": "Zyra vs Ambessa [ Jungle ] Korea Challenger 1563 LP | Patch 25.23",
+          "rankClaim": "Challenger",
+          "patch": "25.23",
+          "durationSec": 1665,
+          "region": "KR",
+          "uploaded": "2025-11-30",
+          "moments": []
+        },
+        {
+          "videoId": "JnkZFVyM2Iw",
+          "title": "Zyra vs Ambessa Jungle - KR Challenger - Patch 25.8 Season 15",
+          "rankClaim": "Challenger",
+          "patch": "25.8",
+          "durationSec": 1901,
+          "region": "KR",
+          "uploaded": "2025-04-30",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 876,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "pVZlBVB_CG0",
+          "title": "Zyra Jungle vs Lillia - KR Challenger Patch 25.06",
+          "rankClaim": "Challenger",
+          "patch": "25.6",
+          "durationSec": 1467,
+          "region": "KR",
+          "uploaded": "2025-03-24",
+          "moments": []
+        },
+        {
+          "videoId": "CJaj9sCJdK0",
+          "title": "Zyra Jungle vs Lillia - KR Challenger Patch 25.05",
+          "rankClaim": "Challenger",
+          "patch": "25.5",
+          "durationSec": 1743,
+          "region": "KR",
+          "uploaded": "2025-03-09",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 902,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "8ybKTzImIfI",
+          "title": "Zyra Support vs Milio - VN Challenger Patch 26.04",
+          "rankClaim": "Challenger",
+          "patch": "26.4",
+          "durationSec": 1574,
+          "uploaded": "2026-03-02",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 177,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 389,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 480,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 504,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 707,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 834,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1012,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1043,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1174,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1286,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1531,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1545,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1563,
+              "label": "End credit"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 950,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "c8b684tgP9Y",
+          "title": "(Racoon) Zyra Jungle vs Naafiri (BFX Raptor) - KR Challenger Patch 26.10",
+          "rankClaim": "Challenger",
+          "patch": "26.10",
+          "durationSec": 1600,
+          "region": "KR",
+          "player": "Racoon",
+          "uploaded": "2026-05-27",
+          "moments": []
+        },
+        {
+          "videoId": "xaC22OFkk3U",
+          "title": "Zyra Jungle vs Naafiri - KR Grandmaster Patch 26.10",
+          "rankClaim": "Grandmaster",
+          "patch": "26.10",
+          "durationSec": 1635,
+          "region": "KR",
+          "uploaded": "2026-05-19",
+          "moments": []
+        }
+      ]
+    }
+  ]
+}

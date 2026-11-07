@@ -1,0 +1,3939 @@
+{
+  "schema": 1,
+  "champion": 4,
+  "generatedAt": "2026-11-07T13:25:14.592Z",
+  "guides": [
+    {
+      "champion": 4,
+      "enemy": 84,
+      "lane": "mid",
+      "patch": "26.21",
+      "reviewed": false,
+      "difficulty": "Skill matchup",
+      "favoredWhen": "She bullies the lane but your R is the matchup. Concede damage, reveal shroud, roam.",
+      "keyTips": [
+        {
+          "text": "Her damage beats your cards: concede the 1v1.",
+          "scope": "pair",
+          "sourceIds": [
+            "anguish"
+          ]
+        },
+        {
+          "text": "Your R reveals her shroud: the matchup turns on Destiny.",
+          "scope": "pair",
+          "sourceIds": [
+            "anguish"
+          ],
+          "abilityKeys": [
+            {
+              "champion": 4,
+              "key": "R"
+            },
+            {
+              "champion": 84,
+              "key": "W"
+            }
+          ]
+        },
+        {
+          "text": "Hold your R: the held reveal blanks her stealth.",
+          "scope": "pair",
+          "sourceIds": [
+            "anguish"
+          ],
+          "abilityKeys": [
+            {
+              "champion": 4,
+              "key": "R"
+            }
+          ]
+        }
+      ],
+      "enemyTips": {},
+      "sections": {
+        "overview": {
+          "tips": []
+        },
+        "early-lane": {
+          "tips": [
+            {
+              "text": "She dodges Q and gold, E-ing as your W comes: vary the timing.",
+              "scope": "pair",
+              "sourceIds": [
+                "anguish"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 84,
+                  "key": "E"
+                },
+                {
+                  "champion": 4,
+                  "key": "W"
+                }
+              ]
+            },
+            {
+              "text": "Your stacked-deck auto is your trade: hold the glow until she commits.",
+              "scope": "pair",
+              "sourceIds": [
+                "anguish"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 4,
+                  "key": "E"
+                }
+              ]
+            }
+          ]
+        },
+        "mid-lane": {
+          "tips": [
+            {
+              "text": "She calls your 6: roam before the team reacts.",
+              "scope": "pair",
+              "sourceIds": [
+                "anguish"
+              ]
+            },
+            {
+              "text": "She bullies but cannot match your map: shove and vanish.",
+              "scope": "pair",
+              "sourceIds": [
+                "anguish"
+              ]
+            }
+          ]
+        },
+        "win-condition": {
+          "tips": [
+            {
+              "text": "Cards picked plus reveals timed: the Akali who never touches you never wins.",
+              "scope": "pair",
+              "sourceIds": [
+                "anguish"
+              ]
+            }
+          ]
+        }
+      },
+      "itemization": [],
+      "sources": [
+        {
+          "id": "anguish",
+          "author": "Anguish333",
+          "rankClaim": "Master (profile badge; title claims 2000LP GrandMaster EUW and Challenger EUNE) · Akali main",
+          "rank": "master",
+          "url": "https://www.mobafire.com/league-of-legends/build/26-20-anguish-2000lp-grandmasters-euw-challenger-eune-akali-mid-top-s16-guide-every-matchup-item-rune-explained-625064",
+          "kind": "mobafire"
+        }
+      ]
+    },
+    {
+      "champion": 4,
+      "enemy": 103,
+      "lane": "mid",
+      "patch": "26.21",
+      "reviewed": false,
+      "difficulty": "Hard",
+      "favoredWhen": "She punishes every card window and holds Charm for Gold. Shove and roam before she does.",
+      "keyTips": [
+        {
+          "text": "She trades after your Pick a Card (about {cd:4:W}): the cooldown is her window.",
+          "scope": "pair",
+          "sourceIds": [
+            "peng04"
+          ],
+          "abilityKeys": [
+            {
+              "champion": 4,
+              "key": "W"
+            }
+          ]
+        },
+        {
+          "text": "She times Charm onto your Gold walk-up: expect it at the same moment.",
+          "scope": "pair",
+          "sourceIds": [
+            "peng04"
+          ],
+          "abilityKeys": [
+            {
+              "champion": 103,
+              "key": "E"
+            },
+            {
+              "champion": 4,
+              "key": "W"
+            }
+          ]
+        },
+        {
+          "text": "She Qs you walking to last-hit: concede some CS to dodge.",
+          "scope": "pair",
+          "sourceIds": [
+            "peng04"
+          ],
+          "abilityKeys": [
+            {
+              "champion": 103,
+              "key": "Q"
+            }
+          ]
+        }
+      ],
+      "enemyTips": {},
+      "sections": {
+        "overview": {
+          "tips": []
+        },
+        "early-lane": {
+          "tips": [
+            {
+              "text": "Your waveclear and trading are weak: concede early, survive the pressure.",
+              "scope": "pair",
+              "sourceIds": [
+                "shok-ahri"
+              ]
+            },
+            {
+              "text": "She ults in for big chunks after 6: hold Gold Card for her dives.",
+              "scope": "pair",
+              "sourceIds": [
+                "peng04"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 103,
+                  "key": "R"
+                },
+                {
+                  "champion": 4,
+                  "key": "W"
+                }
+              ]
+            }
+          ]
+        },
+        "mid-lane": {
+          "tips": [
+            {
+              "text": "She keeps pressure so you cannot roam: shove before she does.",
+              "scope": "pair",
+              "sourceIds": [
+                "shok-ahri",
+                "jammed"
+              ]
+            },
+            {
+              "text": "You bait Charm with fake steps and unlocked cards: keep faking, never walk real Golds predictably.",
+              "scope": "pair",
+              "sourceIds": [
+                "jammed"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 103,
+                  "key": "E"
+                },
+                {
+                  "champion": 4,
+                  "key": "W"
+                }
+              ]
+            }
+          ]
+        },
+        "win-condition": {
+          "tips": [
+            {
+              "text": "Shove and move first: the axis is roam pressure, and your ult beats her shove.",
+              "scope": "pair",
+              "sourceIds": [
+                "shok-ahri",
+                "jammed"
+              ]
+            }
+          ]
+        }
+      },
+      "itemization": [],
+      "sources": [
+        {
+          "id": "peng04",
+          "author": "Peng04",
+          "rankClaim": "Challenger · Ahri main",
+          "rank": "challenger",
+          "url": "https://www.mobafire.com/league-of-legends/build/26-20-pengs-ahri-guide-5-1mil-points-13x-challenger-648700",
+          "kind": "mobafire"
+        },
+        {
+          "id": "shok-ahri",
+          "author": "ShokLoL",
+          "rankClaim": "Rank 1 Challenger · Ahri main",
+          "rank": "challenger",
+          "url": "https://www.mobafire.com/league-of-legends/build/26-5-shoks-rank-1-challenger-ahri-guide-635065",
+          "kind": "mobafire"
+        },
+        {
+          "id": "jammed",
+          "author": "Jammed",
+          "rankClaim": "Diamond (profile badge) · Twisted Fate main",
+          "rank": "diamond",
+          "url": "https://www.mobafire.com/league-of-legends/build/26-17-victorious-twisted-fate-guide-for-season-16-jammed-642489",
+          "kind": "mobafire"
+        }
+      ]
+    },
+    {
+      "champion": 4,
+      "enemy": 134,
+      "lane": "mid",
+      "patch": "26.21",
+      "reviewed": false,
+      "difficulty": "Hard",
+      "favoredWhen": "She wins the lane hard and keeps you pushed in. Survive, track jungle, roam on first window.",
+      "keyTips": [
+        {
+          "text": "She wins the lane hard: play to survive, not to press.",
+          "scope": "pair",
+          "sourceIds": [
+            "shok"
+          ]
+        },
+        {
+          "text": "She keeps you pushed in: a TF under tower cannot roam, so break out.",
+          "scope": "pair",
+          "sourceIds": [
+            "shok"
+          ]
+        },
+        {
+          "text": "Pushed waves invite ganks: your jungler is your lane partner.",
+          "scope": "pair",
+          "sourceIds": [
+            "shok"
+          ]
+        }
+      ],
+      "enemyTips": {},
+      "sections": {
+        "overview": {
+          "tips": []
+        },
+        "early-lane": {
+          "tips": [
+            {
+              "text": "She does not force: take the free farm and scale.",
+              "scope": "pair",
+              "sourceIds": [
+                "shok"
+              ]
+            },
+            {
+              "text": "Her Q spam has a plan: sidestep the pattern, punish the dry spells.",
+              "scope": "pair",
+              "sourceIds": [
+                "shok"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 134,
+                  "key": "Q"
+                }
+              ]
+            }
+          ]
+        },
+        "mid-lane": {
+          "tips": [
+            {
+              "text": "She plays for pushing and map pressure: match Teleport with your ult.",
+              "scope": "pair",
+              "sourceIds": [
+                "shok"
+              ]
+            },
+            {
+              "text": "Every wave she crashes denies a roam: thin the wave before it lands.",
+              "scope": "pair",
+              "sourceIds": [
+                "shok"
+              ]
+            }
+          ]
+        },
+        "win-condition": {
+          "tips": [
+            {
+              "text": "Never held plus jungler dodged: the Syndra who never keeps you in never beats you.",
+              "scope": "pair",
+              "sourceIds": [
+                "shok"
+              ]
+            }
+          ]
+        }
+      },
+      "itemization": [],
+      "sources": [
+        {
+          "id": "shok",
+          "author": "ShokLoL",
+          "rankClaim": "Rank 1 Challenger · Syndra main",
+          "rank": "challenger",
+          "url": "https://www.mobafire.com/league-of-legends/build/26-17-shoks-rank-1-challenger-syndra-guide-602710",
+          "kind": "mobafire"
+        }
+      ]
+    },
+    {
+      "champion": 4,
+      "enemy": 238,
+      "lane": "mid",
+      "patch": "26.21",
+      "reviewed": false,
+      "difficulty": "Easy",
+      "favoredWhen": "He shoves to punish every roam and holds R for Gold. Roam on crashed waves, never into a held R.",
+      "keyTips": [
+        {
+          "text": "The lane is fine for him but you roam: his job is making every roam cost you.",
+          "scope": "pair",
+          "sourceIds": [
+            "aikopanda"
+          ]
+        },
+        {
+          "text": "He always shoves: the minions you miss and plates he takes are the matchup.",
+          "scope": "pair",
+          "sourceIds": [
+            "aikopanda"
+          ]
+        },
+        {
+          "text": "He Rs after your Gold Card: throw it only with backup.",
+          "scope": "pair",
+          "sourceIds": [
+            "v222"
+          ],
+          "abilityKeys": [
+            {
+              "champion": 238,
+              "key": "R"
+            },
+            {
+              "champion": 4,
+              "key": "W"
+            }
+          ]
+        }
+      ],
+      "enemyTips": {
+        "early-lane": [
+          {
+            "text": "Zed often places Living Shadow before Death Mark so he can swap away from skillshots. Hold your crowd control until he has used the swap.",
+            "scope": "enemy",
+            "sourceIds": [
+              "aikopanda"
+            ],
+            "patch": "26.21",
+            "abilityKeys": [
+              {
+                "champion": 238,
+                "key": "W"
+              },
+              {
+                "champion": 238,
+                "key": "R"
+              }
+            ]
+          }
+        ],
+        "win-condition": [
+          {
+            "text": "Death Mark always lands Zed behind his target. Pre-aim crowd control and escapes behind you, not toward where he cast it.",
+            "scope": "enemy",
+            "sourceIds": [
+              "peng04"
+            ],
+            "patch": "26.21",
+            "abilityKeys": [
+              {
+                "champion": 238,
+                "key": "R"
+              }
+            ]
+          }
+        ]
+      },
+      "sections": {
+        "overview": {
+          "tips": []
+        },
+        "early-lane": {
+          "tips": [
+            {
+              "text": "Your stacked-deck auto is your trade: force when the glow is up.",
+              "scope": "pair",
+              "sourceIds": [
+                "v222"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 4,
+                  "key": "E"
+                }
+              ]
+            },
+            {
+              "text": "He pokes to keep you in lane: chunked HP cannot roam, so stay healthy.",
+              "scope": "pair",
+              "sourceIds": [
+                "v222"
+              ]
+            }
+          ]
+        },
+        "mid-lane": {
+          "tips": [
+            {
+              "text": "Death Mark always lands Zed behind his target. Pre-aim crowd control and escapes behind you, not toward where he cast it.",
+              "scope": "pair",
+              "sourceIds": [
+                "peng04"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 238,
+                  "key": "R"
+                }
+              ]
+            },
+            {
+              "text": "He tracks your R and pings every vanish: roam only on crashed waves.",
+              "scope": "pair",
+              "sourceIds": [
+                "v222"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 4,
+                  "key": "R"
+                }
+              ]
+            }
+          ]
+        },
+        "win-condition": {
+          "tips": [
+            {
+              "text": "Win the map, not the duel: a Zed whose shove never holds you is a Zed who loses.",
+              "scope": "pair",
+              "sourceIds": [
+                "aikopanda"
+              ]
+            }
+          ]
+        }
+      },
+      "itemization": [],
+      "sources": [
+        {
+          "id": "aikopanda",
+          "author": "AikoPanda",
+          "rankClaim": "Zed main",
+          "url": "https://www.mobafire.com/league-of-legends/build/26-20-video-guides-hidden-combos-all-matchups-zed-all-in-one-guide-652800",
+          "kind": "mobafire"
+        },
+        {
+          "id": "v222",
+          "author": "V222",
+          "rankClaim": "Challenger EUW · Zed main",
+          "rank": "challenger",
+          "url": "https://www.mobafire.com/league-of-legends/build/all-matchups-26-14-zed-guide-2000lp-euw-challenger-652354",
+          "kind": "mobafire"
+        },
+        {
+          "id": "peng04",
+          "author": "Peng04",
+          "rankClaim": "Challenger · Ahri main",
+          "rank": "challenger",
+          "url": "https://www.mobafire.com/league-of-legends/build/26-20-pengs-ahri-guide-5-1mil-points-13x-challenger-648700",
+          "kind": "mobafire"
+        }
+      ]
+    }
+  ],
+  "general": [
+    {
+      "champion": 4,
+      "lane": "mid",
+      "patch": "26.21",
+      "reviewed": false,
+      "keyTips": [
+        {
+          "text": "Play for reliable farming and a controlled wave before level six; burst and melee lanes punish Twisted Fate early, so respect their windows.",
+          "scope": "champion",
+          "sourceIds": [
+            "jammed"
+          ]
+        },
+        {
+          "text": "At level six, push and use Destiny to threaten side lanes, counter a dive, or reveal enemy positions; after Lich Bane, shove the side wave and hover near mid or the bot-side jungle for picks.",
+          "scope": "champion",
+          "sourceIds": [
+            "jammed"
+          ],
+          "abilityKeys": [
+            {
+              "champion": 4,
+              "key": "R"
+            }
+          ],
+          "itemIds": [
+            3100
+          ]
+        },
+        {
+          "text": "In fights, poke with Q and wait for a safe Gold Card window instead of frontlining; use Destiny to find an isolated target, arrive with Gold Card ready, then follow with an auto and Wild Cards.",
+          "scope": "champion",
+          "sourceIds": [
+            "jammed"
+          ],
+          "abilityKeys": [
+            {
+              "champion": 4,
+              "key": "Q"
+            },
+            {
+              "champion": 4,
+              "key": "W"
+            },
+            {
+              "champion": 4,
+              "key": "R"
+            }
+          ]
+        }
+      ],
+      "sections": {
+        "overview": {
+          "tips": []
+        },
+        "early-lane": {
+          "tips": [
+            {
+              "text": "Use Wild Cards for low-risk poke and ranged wave trimming, and Pick a Card to last-hit safely, including under tower.",
+              "scope": "champion",
+              "sourceIds": [
+                "jammed"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 4,
+                  "key": "Q"
+                },
+                {
+                  "champion": 4,
+                  "key": "W"
+                }
+              ]
+            },
+            {
+              "text": "Take W at level one, Q at two, E at three, then max Q, W, E while taking R at six, eleven, and sixteen; take the early E point into aggressive melee lanes for stronger trades.",
+              "scope": "champion",
+              "sourceIds": [
+                "jammed"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 4,
+                  "key": "W"
+                },
+                {
+                  "champion": 4,
+                  "key": "Q"
+                },
+                {
+                  "champion": 4,
+                  "key": "E"
+                },
+                {
+                  "champion": 4,
+                  "key": "R"
+                }
+              ]
+            },
+            {
+              "text": "Trade Gold Card into Wild Cards plus an auto to add Stacked Deck damage; clear with Red Card plus Q and restore mana with Blue Card plus Q.",
+              "scope": "champion",
+              "sourceIds": [
+                "jammed"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 4,
+                  "key": "W"
+                },
+                {
+                  "champion": 4,
+                  "key": "Q"
+                },
+                {
+                  "champion": 4,
+                  "key": "E"
+                }
+              ]
+            },
+            {
+              "text": "Freeze near your tower when behind or threatened by an assassin, slow-push before a planned Destiny roam, and fast-push before a recall or map move.",
+              "scope": "champion",
+              "sourceIds": [
+                "jammed"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 4,
+                  "key": "R"
+                }
+              ]
+            },
+            {
+              "text": "Ward river entrances defensively early, and with mid priority ward enemy Raptors or a Red Buff entrance to track the jungler and open safer roams.",
+              "scope": "champion",
+              "sourceIds": [
+                "jammed"
+              ]
+            }
+          ]
+        },
+        "mid-lane": {
+          "tips": [
+            {
+              "text": "After one or two core items, shove the assigned side wave and hover near mid or the bot-side jungle for picks rather than sitting in lane.",
+              "scope": "champion",
+              "sourceIds": [
+                "jammed"
+              ]
+            },
+            {
+              "text": "Keep side-lane pressure within vision; otherwise group or collect waves as they reach your tower.",
+              "scope": "champion",
+              "sourceIds": [
+                "jammed"
+              ]
+            },
+            {
+              "text": "Before Dragon, Rift Herald, or Baron, control nearby vision and push a side wave so the enemy must answer it.",
+              "scope": "champion",
+              "sourceIds": [
+                "jammed"
+              ]
+            },
+            {
+              "text": "Use Destiny to reveal the enemy jungler's location during a clear, choosing between a roam, a reset, or an objective from that information.",
+              "scope": "champion",
+              "sourceIds": [
+                "jammed"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 4,
+                  "key": "R"
+                }
+              ]
+            }
+          ]
+        },
+        "win-condition": {
+          "tips": [
+            {
+              "text": "Protect carries with Gold Card when an enemy diver reaches them; focus on pick setup and map pressure rather than frontline damage.",
+              "scope": "champion",
+              "sourceIds": [
+                "jammed"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 4,
+                  "key": "W"
+                }
+              ]
+            },
+            {
+              "text": "Late game, stay with the team unless Destiny is available and side-lane vision makes a split safe; never face-check fog.",
+              "scope": "champion",
+              "sourceIds": [
+                "jammed"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 4,
+                  "key": "R"
+                }
+              ]
+            },
+            {
+              "text": "Extend Gold Card threat with Rapid Firecannon for picks and sieges, using a catch to start Baron, Elder Dragon, or a tower push.",
+              "scope": "champion",
+              "sourceIds": [
+                "jammed"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 4,
+                  "key": "W"
+                }
+              ],
+              "itemIds": [
+                3094
+              ]
+            },
+            {
+              "text": "Activate Destiny before or during an objective fight when the reveal exposes enemy positions or a flank.",
+              "scope": "champion",
+              "sourceIds": [
+                "jammed"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 4,
+                  "key": "R"
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "itemization": [
+        {
+          "text": "Choose Electrocute for burst in short-range lanes, First Strike as the safer scaling and gold-acceleration page, or Unsealed Spellbook for utility and flexible summoner spells; the First Strike page pairs Cash Back, Triple Tonic, and Jack of All Trades with Celerity and Gathering Storm.",
+          "scope": "champion",
+          "sourceIds": [
+            "jammed"
+          ]
+        },
+        {
+          "text": "Run Flash by default with Teleport as the consistent ranked pairing, Ignite for aggressive kill pressure, Exhaust against burst, or Ghost for extended skirmishes with limited enemy crowd control.",
+          "scope": "champion",
+          "sourceIds": [
+            "jammed"
+          ]
+        },
+        {
+          "text": "Follow the Luden's path from Doran's Ring and potions into Luden's Echo, Sorcerer's Shoes, Lich Bane, Rabadon's Deathcap, and Void Staff, ending with Mejai's or Rapid Firecannon; take Rod of Ages into the safer first-item route with Lich Bane and defenses, or the burn path into three or more tanks.",
+          "scope": "champion",
+          "sourceIds": [
+            "jammed"
+          ],
+          "itemIds": [
+            1056,
+            6655,
+            3020,
+            3100,
+            3089,
+            3135,
+            3094,
+            6657
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "id": "jammed",
+          "author": "Jammed",
+          "rankClaim": "Diamond (profile badge) · Twisted Fate main",
+          "rank": "diamond",
+          "url": "https://www.mobafire.com/league-of-legends/build/26-17-victorious-twisted-fate-guide-for-season-16-jammed-642489",
+          "kind": "mobafire"
+        }
+      ]
+    }
+  ],
+  "vods": [
+    {
+      "lane": "adc",
+      "videos": [
+        {
+          "videoId": "rvweFjprCrI",
+          "title": "PEYZ : His Twisted Fate FULL CRIT is BREAKING KR CHALLENGER",
+          "rankClaim": "Challenger",
+          "patch": "26.18",
+          "durationSec": 859,
+          "region": "KR",
+          "patchEstimated": true,
+          "player": "Peyz",
+          "uploaded": "2026-09-22",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "jniKIrlYoMc",
+          "title": "PEYZ : His Machine Gun Twisted Fate Strategy is DOMINATING KR Challenger \" Smashing DK DMASH \"",
+          "rankClaim": "Challenger",
+          "patch": "26.18",
+          "durationSec": 601,
+          "region": "KR",
+          "patchEstimated": true,
+          "player": "Peyz",
+          "uploaded": "2026-09-14",
+          "format": "stream",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "61K3r3svtb4",
+          "title": "How Baicaiovo Reached Rank 2 With Insane Twisted Fate Roaming Tactics Challenger Engsub",
+          "rankClaim": "Challenger",
+          "patch": "26.1",
+          "durationSec": 1636,
+          "patchEstimated": true,
+          "player": "Baicaiovo",
+          "uploaded": "2026-01-13",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "uhbxGGaH_wM",
+          "title": "Baicaiovo Reaches Rank 2 Super Server with Flawless Twisted Fate Macro Engsub Challenger Gameplay",
+          "rankClaim": "Challenger",
+          "patch": "26.1",
+          "durationSec": 1342,
+          "patchEstimated": true,
+          "player": "Baicaiovo",
+          "uploaded": "2026-01-12",
+          "format": "stream",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "oCh01Yq5W4M",
+          "title": "Baicaiovo Twisted Fate: TOP 1 CN Super Server Is UNSTOPPABLE",
+          "rankClaim": "Master+",
+          "patch": "26.13",
+          "durationSec": 1770,
+          "patchEstimated": true,
+          "player": "Baicaiovo",
+          "uploaded": "2026-07-08",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "XkJukwJlXpw",
+          "title": "Baicaiovo Reaches Top 2 Chinese Super Server with Flawless Twisted Fate Mechanics Engsub",
+          "rankClaim": "Master+",
+          "patch": "26.1",
+          "durationSec": 1582,
+          "patchEstimated": true,
+          "player": "Baicaiovo",
+          "uploaded": "2026-01-14",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "mtCzlL-Em00",
+          "title": "Baicaiovo Reaches Top 2 on Super Server with Flawless Twisted Fate Macro Engsub",
+          "rankClaim": "Master+",
+          "patch": "26.1",
+          "durationSec": 1132,
+          "patchEstimated": true,
+          "player": "Baicaiovo",
+          "uploaded": "2026-01-14",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "A8leWonNcQQ",
+          "title": "Baicaiovo Reaches Top 2 Ranking with an Unstoppable Twisted Fate Roaming Masterclass Engsub",
+          "rankClaim": "Master+",
+          "patch": "26.1",
+          "durationSec": 2159,
+          "patchEstimated": true,
+          "player": "Baicaiovo",
+          "uploaded": "2026-01-13",
+          "format": "stream",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 1,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "ze2k7COYhLs",
+          "title": "Twisted Fate Mid vs Annie - EUW Challenger Patch 25.17",
+          "rankClaim": "Challenger",
+          "patch": "25.17",
+          "durationSec": 1506,
+          "region": "EUW",
+          "uploaded": "2025-09-10",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 2,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "zS0FpoOPsIc",
+          "title": "Twisted Fate Top vs Olaf - EUW Grandmaster Patch 26.03",
+          "rankClaim": "Grandmaster",
+          "patch": "26.3",
+          "durationSec": 1663,
+          "region": "EUW",
+          "uploaded": "2026-02-16",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 3,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "rxGPX-75UQ0",
+          "title": "Twisted Fate Mid vs Galio - KR Grandmaster Patch 26.04",
+          "rankClaim": "Grandmaster",
+          "patch": "26.4",
+          "durationSec": 1836,
+          "region": "KR",
+          "uploaded": "2026-02-22",
+          "moments": []
+        },
+        {
+          "videoId": "GYZtFghn0LU",
+          "title": "Twisted Fate Mid vs Galio - KR Master Patch 26.03",
+          "rankClaim": "Master",
+          "patch": "26.3",
+          "durationSec": 1575,
+          "region": "KR",
+          "uploaded": "2026-02-08",
+          "moments": []
+        },
+        {
+          "videoId": "TY7CLVQheTI",
+          "title": "Twisted Fate Mid vs Galio - KR Grandmaster Patch 25.08",
+          "rankClaim": "Grandmaster",
+          "patch": "25.8",
+          "durationSec": 1479,
+          "region": "KR",
+          "uploaded": "2025-04-19",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 369,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 534,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 743,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 888,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 985,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1051,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1135,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1226,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1317,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1414,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1458,
+              "label": "End credit"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 6,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "NcSj5Bhg9dE",
+          "title": "Twisted Fate Top vs Urgot - NA Challenger Patch 26.05",
+          "rankClaim": "Challenger",
+          "patch": "26.5",
+          "durationSec": 1466,
+          "region": "NA",
+          "uploaded": "2026-03-14",
+          "moments": []
+        },
+        {
+          "videoId": "bmtt4qPC-VE",
+          "title": "Twisted Fate Top vs Urgot - NA Grandmaster Patch 25.12",
+          "rankClaim": "Grandmaster",
+          "patch": "25.12",
+          "durationSec": 2056,
+          "region": "NA",
+          "uploaded": "2025-06-21",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 10,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "lfbptAMfIMU",
+          "title": "Twisted Fate Top vs Kayle - EUW Grandmaster Patch 26.12",
+          "rankClaim": "Grandmaster",
+          "patch": "26.12",
+          "durationSec": 1636,
+          "region": "EUW",
+          "uploaded": "2026-06-16",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 12,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "eArfWzNbLkM",
+          "title": "Twisted Fate Support vs Alistar - KR Master Patch 25.21",
+          "rankClaim": "Master",
+          "patch": "25.21",
+          "durationSec": 1638,
+          "region": "KR",
+          "uploaded": "2025-11-07",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 13,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "e69rkLQPBvg",
+          "title": "Twisted Fate Mid vs Ryze - KR Grandmaster Patch 26.07",
+          "rankClaim": "Grandmaster",
+          "patch": "26.7",
+          "durationSec": 1580,
+          "region": "KR",
+          "uploaded": "2026-04-05",
+          "moments": []
+        },
+        {
+          "videoId": "Gio7XsW5vYc",
+          "title": "T1 Faker Twisted Fate vs Ryze [ MID ] Korea Grandmaster Patch 25.17",
+          "rankClaim": "Grandmaster",
+          "patch": "25.17",
+          "durationSec": 1461,
+          "region": "KR",
+          "player": "Faker",
+          "team": "T1",
+          "uploaded": "2025-09-07",
+          "moments": []
+        },
+        {
+          "videoId": "NLu5V9lzZBo",
+          "title": "Twisted Fate Mid vs Ryze - KR Challenger Patch 25.14",
+          "rankClaim": "Challenger",
+          "patch": "25.14",
+          "durationSec": 1493,
+          "region": "KR",
+          "uploaded": "2025-07-19",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 13,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "NMEpuSh5gEA",
+          "title": "Twisted Fate Top vs Ryze - KR Master Patch 25.13",
+          "rankClaim": "Master",
+          "patch": "25.13",
+          "durationSec": 2020,
+          "region": "KR",
+          "uploaded": "2025-07-04",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 14,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "Xk5qxmKs28Q",
+          "title": "Twisted Fate Mid vs Sion - KR Challenger Patch 25.23",
+          "rankClaim": "Challenger",
+          "patch": "25.23",
+          "durationSec": 1531,
+          "region": "KR",
+          "uploaded": "2025-11-25",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 14,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "J2xMUsYpP1o",
+          "title": "Twisted Fate Top vs Sion (UCAM ANDARIEL) - EUW Challenger Patch 26.18",
+          "rankClaim": "Challenger",
+          "patch": "26.18",
+          "durationSec": 1866,
+          "region": "EUW",
+          "uploaded": "2026-09-23",
+          "moments": []
+        },
+        {
+          "videoId": "gA3xK5Rbqyo",
+          "title": "Twisted Fate vs Sion 13/2/8 (Top) | EUW Challenger | Twisted Fate OTP Replay",
+          "rankClaim": "Challenger",
+          "patch": "26.9",
+          "durationSec": 1311,
+          "region": "EUW",
+          "patchEstimated": true,
+          "uploaded": "2026-05-07",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 18,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "CYFinrgj0Cw",
+          "title": "Twisted Fate Mid vs Tristana - KR Grandmaster Patch 26.02",
+          "rankClaim": "Grandmaster",
+          "patch": "26.2",
+          "durationSec": 1553,
+          "region": "KR",
+          "uploaded": "2026-01-25",
+          "moments": []
+        },
+        {
+          "videoId": "JGVMSYWEWek",
+          "title": "Twisted Fate Mid vs Tristana - TW Challenger Patch 25.05",
+          "rankClaim": "Challenger",
+          "patch": "25.5",
+          "durationSec": 1846,
+          "uploaded": "2025-03-19",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 44,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 300,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 376,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 690,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 814,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 841,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1034,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1070,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1114,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1201,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1245,
+              "label": "Hunt The Atakhan"
+            },
+            {
+              "atSec": 1315,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1406,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1450,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1464,
+              "label": "Take down The Inhibitor"
+            },
+            {
+              "atSec": 1557,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1573,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1756,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1800,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1825,
+              "label": "End credit"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 23,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "w_rob9VK8qc",
+          "title": "Twisted Fate Mid vs Tryndamere - KR Grandmaster Patch 26.19",
+          "rankClaim": "Grandmaster",
+          "patch": "26.19",
+          "durationSec": 1685,
+          "region": "KR",
+          "uploaded": "2026-10-09",
+          "result": "W",
+          "moments": [
+            {
+              "atSec": 144,
+              "label": "First Blood — Elise kills Tryndamere",
+              "kind": "kill"
+            },
+            {
+              "atSec": 381,
+              "label": "Red takes 1st Dragon (Chemtech)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 464,
+              "label": "Elise picks off Tryndamere"
+            },
+            {
+              "atSec": 712,
+              "label": "Team fight (3 kills)",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 756,
+              "label": "Red takes 2nd Dragon (Hextech)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 783,
+              "label": "Elise picks off Tryndamere"
+            },
+            {
+              "atSec": 824,
+              "label": "Kalista takes down Zeri"
+            },
+            {
+              "atSec": 921,
+              "label": "Kalista Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1066,
+              "label": "Red takes 3rd Dragon (Infernal)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1285,
+              "label": "Ambessa picks off Zeri"
+            },
+            {
+              "atSec": 1334,
+              "label": "Red takes Baron",
+              "kind": "baron"
+            },
+            {
+              "atSec": 1393,
+              "label": "Red takes 4th Dragon (Infernal)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1455,
+              "label": "Twisted Fate takes down Tryndamere"
+            },
+            {
+              "atSec": 1471,
+              "label": "Mid Inhibitor falls (Red)"
+            },
+            {
+              "atSec": 1483,
+              "label": "Kalista takes down Zeri"
+            },
+            {
+              "atSec": 1497,
+              "label": "Ambessa kills Wukong",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1630,
+              "label": "Kalista Double Kill",
+              "kind": "kill"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 23,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "XVOEn2hrr_8",
+          "title": "(G2 BrokenBlade) Twisted Fate Top vs Tryndamere - EUW Master Patch 26.11",
+          "rankClaim": "Master",
+          "patch": "26.11",
+          "durationSec": 1444,
+          "region": "EUW",
+          "player": "BrokenBlade",
+          "team": "G2",
+          "uploaded": "2026-06-01",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 24,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "3L539OCS7s0",
+          "title": "Twisted Fate Mid vs Jax - KR Challenger Patch 26.21",
+          "rankClaim": "Challenger",
+          "patch": "26.21",
+          "durationSec": 1469,
+          "region": "KR",
+          "uploaded": "2026-11-03",
+          "result": "L",
+          "moments": [
+            {
+              "atSec": 108,
+              "label": "First Blood — Twisted Fate kills Jax",
+              "kind": "kill"
+            },
+            {
+              "atSec": 184,
+              "label": "Bard takes down Jax"
+            },
+            {
+              "atSec": 219,
+              "label": "Twisted Fate picks off Graves"
+            },
+            {
+              "atSec": 271,
+              "label": "Twisted Fate outplays Ambessa"
+            },
+            {
+              "atSec": 286,
+              "label": "Twisted Fate takes down Jax"
+            },
+            {
+              "atSec": 410,
+              "label": "Viego takes down Graves"
+            },
+            {
+              "atSec": 609,
+              "label": "Red takes 1st Dragon (Ocean)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 721,
+              "label": "Twisted Fate catches Jax again"
+            },
+            {
+              "atSec": 780,
+              "label": "Twisted Fate takes down Ambessa"
+            },
+            {
+              "atSec": 951,
+              "label": "Aurelion Sol takes down Kai'Sa"
+            },
+            {
+              "atSec": 1045,
+              "label": "Blue takes 1st Dragon (Chemtech)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1235,
+              "label": "Viego takes down Graves"
+            },
+            {
+              "atSec": 1375,
+              "label": "Blue takes Baron",
+              "kind": "baron"
+            },
+            {
+              "atSec": 1398,
+              "label": "Blue takes 2nd Dragon (Infernal)",
+              "kind": "dragon"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 24,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "nZNKnhxtYKM",
+          "title": "Twisted Fate Top vs Jax - KR Master Patch 26.09",
+          "rankClaim": "Master",
+          "patch": "26.9",
+          "durationSec": 1744,
+          "region": "KR",
+          "uploaded": "2026-05-04",
+          "moments": []
+        },
+        {
+          "videoId": "8ZPaolpgR9c",
+          "title": "Twisted Fate Top vs Jax - KR Master Patch 25.10",
+          "rankClaim": "Master",
+          "patch": "25.10",
+          "durationSec": 2085,
+          "region": "KR",
+          "uploaded": "2025-05-31",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 25,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "izLQC7VURy0",
+          "title": "Twisted Fate Mid vs Morgana - KR Grandmaster Patch 25.21",
+          "rankClaim": "Grandmaster",
+          "patch": "25.21",
+          "durationSec": 1652,
+          "region": "KR",
+          "uploaded": "2025-10-26",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 34,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "EJjZVWw_ypU",
+          "title": "(FNC Vladi) Twisted Fate Mid vs Anivia (Dyenn) - EUW Challenger Patch 26.13",
+          "rankClaim": "Challenger",
+          "patch": "26.13",
+          "durationSec": 1496,
+          "region": "EUW",
+          "player": "Vladi",
+          "team": "FNC",
+          "uploaded": "2026-06-29",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 39,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "fCvxIKu9XBk",
+          "title": "(LNG sheer) Twisted Fate Top vs Irelia (BRO DDahyuk) - KR Grandmaster Patch 26.10",
+          "rankClaim": "Grandmaster",
+          "patch": "26.10",
+          "durationSec": 1573,
+          "region": "KR",
+          "player": "sheer",
+          "team": "LNG",
+          "uploaded": "2026-05-24",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 42,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "KKUGPEDcylU",
+          "title": "Twisted Fate Mid vs Corki (BFX MG) - KR Grandmaster Patch 26.21",
+          "rankClaim": "Grandmaster",
+          "patch": "26.21",
+          "durationSec": 1400,
+          "region": "KR",
+          "uploaded": "2026-10-24",
+          "result": "W",
+          "moments": [
+            {
+              "atSec": 93,
+              "label": "First Blood — Twisted Fate kills Corki",
+              "kind": "kill"
+            },
+            {
+              "atSec": 222,
+              "label": "Lee Sin Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 293,
+              "label": "Red takes 1st Dragon (Chemtech)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 321,
+              "label": "Lee Sin takes down Xin Zhao"
+            },
+            {
+              "atSec": 605,
+              "label": "Twisted Fate eliminates Corki"
+            },
+            {
+              "atSec": 713,
+              "label": "Twisted Fate eliminates Corki"
+            },
+            {
+              "atSec": 750,
+              "label": "Blue takes 1st Dragon (Infernal)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 780,
+              "label": "Lee Sin takes down Xin Zhao"
+            },
+            {
+              "atSec": 817,
+              "label": "Lee Sin picks off Corki"
+            },
+            {
+              "atSec": 963,
+              "label": "Blue takes Rift Herald",
+              "kind": "herald"
+            },
+            {
+              "atSec": 1012,
+              "label": "Twisted Fate eliminates Corki"
+            },
+            {
+              "atSec": 1147,
+              "label": "Jayce takes down Corki"
+            },
+            {
+              "atSec": 1209,
+              "label": "Blue takes 2nd Dragon (Ocean)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1303,
+              "label": "Twisted Fate kills Orianna",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1363,
+              "label": "Jayce Double Kill",
+              "kind": "kill"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 43,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "RvwormlLKos",
+          "title": "Twisted Fate Support vs Karma - KR Master Patch 25.09",
+          "rankClaim": "Master",
+          "patch": "25.9",
+          "durationSec": 1669,
+          "region": "KR",
+          "uploaded": "2025-05-15",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 45,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "C6cPxjeOATE",
+          "title": "Twisted Fate Top vs Veigar - BR Master Patch 26.17",
+          "rankClaim": "Master",
+          "patch": "26.17",
+          "durationSec": 1739,
+          "uploaded": "2026-09-07",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 53,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "ouNke0csvs0",
+          "title": "Twisted Fate Support vs Blitzcrank - VN Challenger Patch 25.04",
+          "rankClaim": "Challenger",
+          "patch": "25.4",
+          "durationSec": 1606,
+          "uploaded": "2025-03-02",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 150,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 472,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 625,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 751,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 828,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1048,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1143,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1164,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1249,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1409,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1446,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1465,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1564,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1585,
+              "label": "End credit"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 54,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "-_cVBKMcgcY",
+          "title": "Twisted Fate Mid vs Malphite - NA Grandmaster Patch 25.24",
+          "rankClaim": "Grandmaster",
+          "patch": "25.24",
+          "durationSec": 1448,
+          "region": "NA",
+          "uploaded": "2025-12-31",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 162,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 230,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 360,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 389,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 499,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 833,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1031,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1051,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1140,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1190,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1243,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1390,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1437,
+              "label": "End credit"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 54,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "Lt_oekj2N78",
+          "title": "Twisted Fate Top vs Malphite - EUW Challenger Patch 26.06",
+          "rankClaim": "Challenger",
+          "patch": "26.6",
+          "durationSec": 1554,
+          "region": "EUW",
+          "uploaded": "2026-03-27",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 57,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "SS_45P_ASxM",
+          "title": "Twisted Fate Top vs Maokai - KR Master Patch 26.08",
+          "rankClaim": "Master",
+          "patch": "26.8",
+          "durationSec": 1600,
+          "region": "KR",
+          "uploaded": "2026-04-26",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 58,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "Q8fiS_l-hyQ",
+          "title": "(DIG Photon) Twisted Fate Top vs Renekton - KR Master Patch 26.14",
+          "rankClaim": "Master",
+          "patch": "26.14",
+          "durationSec": 1459,
+          "region": "KR",
+          "player": "DIG Photon",
+          "uploaded": "2026-07-21",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 61,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "K46seYq62-g",
+          "title": "(T1 Faker) Twisted Fate Mid vs Orianna - KR Challenger Patch 26.11",
+          "rankClaim": "Challenger",
+          "patch": "26.11",
+          "durationSec": 1876,
+          "region": "KR",
+          "player": "Faker",
+          "team": "T1",
+          "uploaded": "2026-06-06",
+          "result": "W",
+          "moments": [
+            {
+              "atSec": 144,
+              "label": "First Blood — Rek'Sai kills Orianna",
+              "kind": "kill"
+            },
+            {
+              "atSec": 563,
+              "label": "Twisted Fate eliminates Orianna"
+            },
+            {
+              "atSec": 630,
+              "label": "Red takes 1st Dragon (Mountain)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 894,
+              "label": "Team fight (3 kills)",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 945,
+              "label": "Twisted Fate kills Varus",
+              "kind": "kill"
+            },
+            {
+              "atSec": 955,
+              "label": "Twisted Fate Triple Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1114,
+              "label": "Blue takes 1st Dragon (Infernal)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1246,
+              "label": "Miss Fortune picks off Gnar"
+            },
+            {
+              "atSec": 1294,
+              "label": "Rek'Sai picks off Orianna"
+            },
+            {
+              "atSec": 1330,
+              "label": "Twisted Fate kills Varus",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1426,
+              "label": "Red takes 2nd Dragon (Chemtech)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1491,
+              "label": "Blue takes Baron",
+              "kind": "baron"
+            },
+            {
+              "atSec": 1519,
+              "label": "Twisted Fate kills Varus",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1563,
+              "label": "Rek'Sai kills Gnar",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1634,
+              "label": "Miss Fortune picks off Rell"
+            },
+            {
+              "atSec": 1742,
+              "label": "Blue takes 2nd Dragon (Chemtech)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1813,
+              "label": "Miss Fortune picks off Gnar"
+            },
+            {
+              "atSec": 1825,
+              "label": "Mid Inhibitor falls (Red)"
+            }
+          ]
+        },
+        {
+          "videoId": "8wCvlQ6LU1w",
+          "title": "T1 Faker Twisted Fate vs Orianna [ MID ] Korea Challenger 1908 LP | Patch 26.11",
+          "rankClaim": "Challenger",
+          "patch": "26.11",
+          "durationSec": 1684,
+          "region": "KR",
+          "player": "Faker",
+          "team": "T1",
+          "uploaded": "2026-06-03",
+          "moments": []
+        },
+        {
+          "videoId": "3rTXasB95Tw",
+          "title": "Twisted Fate Mid vs Orianna - KR Master Patch 26.01",
+          "rankClaim": "Master",
+          "patch": "26.1",
+          "durationSec": 1452,
+          "region": "KR",
+          "uploaded": "2026-01-11",
+          "moments": []
+        },
+        {
+          "videoId": "jsBY80jSCbM",
+          "title": "Twisted Fate Mid vs Orianna - KR Grandmaster Patch 25.09",
+          "rankClaim": "Grandmaster",
+          "patch": "25.9",
+          "durationSec": 1965,
+          "region": "KR",
+          "uploaded": "2025-05-06",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 69,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "bOry_gB2QRc",
+          "title": "Twisted Fate Top vs Cassiopeia - KR Challenger Patch 25.04",
+          "rankClaim": "Challenger",
+          "patch": "25.4",
+          "durationSec": 1707,
+          "region": "KR",
+          "uploaded": "2025-02-26",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 80,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "sd_vSea6iBQ",
+          "title": "Twisted Fate Mid vs Pantheon - KR Grandmaster Patch 25.15",
+          "rankClaim": "Grandmaster",
+          "patch": "25.15",
+          "durationSec": 1973,
+          "region": "KR",
+          "uploaded": "2025-08-02",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 80,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "VZNMem7YrNk",
+          "title": "Twisted Fate Top vs Pantheon - EUW Challenger Patch 25.16",
+          "rankClaim": "Challenger",
+          "patch": "25.16",
+          "durationSec": 1539,
+          "region": "EUW",
+          "uploaded": "2025-08-24",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 81,
+      "lane": "adc",
+      "videos": [
+        {
+          "videoId": "0R3kS3qQ57k",
+          "title": "(CFO Rest) Twisted Fate ADC vs Ezreal - KR Master Patch 26.12",
+          "rankClaim": "Master",
+          "patch": "26.12",
+          "durationSec": 1750,
+          "region": "KR",
+          "player": "CFO Rest",
+          "uploaded": "2026-06-19",
+          "result": "L",
+          "moments": [
+            {
+              "atSec": 14,
+              "label": "First Blood — Twisted Fate kills Ezreal",
+              "kind": "kill"
+            },
+            {
+              "atSec": 377,
+              "label": "Red takes 1st Dragon (Hextech)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 426,
+              "label": "Twisted Fate picks off Thresh"
+            },
+            {
+              "atSec": 449,
+              "label": "Twisted Fate outduels Ezreal"
+            },
+            {
+              "atSec": 519,
+              "label": "Twisted Fate picks off Thresh"
+            },
+            {
+              "atSec": 717,
+              "label": "Blue takes 1st Dragon (Chemtech)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 830,
+              "label": "Karma picks off Ezreal"
+            },
+            {
+              "atSec": 985,
+              "label": "Twisted Fate kills Mel",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1021,
+              "label": "Twisted Fate picks off Yasuo"
+            },
+            {
+              "atSec": 1067,
+              "label": "Red takes 2nd Dragon (Mountain)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1122,
+              "label": "Ryze takes down Yasuo"
+            },
+            {
+              "atSec": 1176,
+              "label": "Twisted Fate picks off Thresh"
+            },
+            {
+              "atSec": 1298,
+              "label": "Twisted Fate picks off Yasuo"
+            },
+            {
+              "atSec": 1339,
+              "label": "Red takes Baron",
+              "kind": "baron"
+            },
+            {
+              "atSec": 1395,
+              "label": "Red takes 3rd Dragon (Mountain)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1561,
+              "label": "Kha'Zix Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1654,
+              "label": "Team fight (3 kills)",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1691,
+              "label": "Top Inhibitor falls (Blue)"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 82,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "YeH5GpLgRY0",
+          "title": "Twisted Fate Mid vs Mordekaiser - EUW Grandmaster Patch 25.13",
+          "rankClaim": "Grandmaster",
+          "patch": "25.13",
+          "durationSec": 1996,
+          "region": "EUW",
+          "uploaded": "2025-07-14",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 84,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "U98HFRuJ-1I",
+          "title": "(WBG Elk) Twisted Fate Mid vs Akali - KR Challenger Patch 26.14",
+          "rankClaim": "Challenger",
+          "patch": "26.14",
+          "durationSec": 1724,
+          "region": "KR",
+          "player": "Elk",
+          "team": "WBG",
+          "uploaded": "2026-07-25",
+          "moments": []
+        },
+        {
+          "videoId": "-TeRsMrFO6c",
+          "title": "Twisted Fate Mid vs Akali - EUW Challenger Patch 25.24",
+          "rankClaim": "Challenger",
+          "patch": "25.24",
+          "durationSec": 1611,
+          "region": "EUW",
+          "uploaded": "2026-01-08",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 151,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 579,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 681,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 766,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 791,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 901,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 931,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 969,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 999,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1094,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1146,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1340,
+              "label": "Get a Triple Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1435,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1488,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1514,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1548,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1560,
+              "label": "Take down The Inhibitor"
+            },
+            {
+              "atSec": 1575,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1600,
+              "label": "End credit"
+            }
+          ]
+        },
+        {
+          "videoId": "7oYBZxmx8lY",
+          "title": "Twisted Fate Mid vs Akali - KR Grandmaster Patch 25.19",
+          "rankClaim": "Grandmaster",
+          "patch": "25.19",
+          "durationSec": 2061,
+          "region": "KR",
+          "uploaded": "2025-09-27",
+          "moments": []
+        },
+        {
+          "videoId": "geRebCGrMz0",
+          "title": "T1 Faker Twisted Fate vs Akali [ MID ] Patch 25.17 Korea Master ",
+          "rankClaim": "Master",
+          "patch": "25.17",
+          "durationSec": 816,
+          "region": "KR",
+          "player": "Faker",
+          "team": "T1",
+          "uploaded": "2025-08-28",
+          "moments": []
+        },
+        {
+          "videoId": "IJowYjGKAKg",
+          "title": "Twisted Fate Mid vs Akali - EUW Grandmaster Patch 25.11",
+          "rankClaim": "Grandmaster",
+          "patch": "25.11",
+          "durationSec": 1814,
+          "region": "EUW",
+          "uploaded": "2025-06-13",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 90,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "SS0XoJjW-_c",
+          "title": "Twisted Fate Mid vs Malzahar - NA Challenger Patch 25.06",
+          "rankClaim": "Challenger",
+          "patch": "25.6",
+          "durationSec": 1588,
+          "region": "NA",
+          "uploaded": "2025-04-02",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 91,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "8RveR2GYFw8",
+          "title": "Twisted Fate Jungle vs Talon - NA Grandmaster Patch 26.13",
+          "rankClaim": "Grandmaster",
+          "patch": "26.13",
+          "durationSec": 1451,
+          "region": "NA",
+          "uploaded": "2026-07-17",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 91,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "BnCy8Q0H2X4",
+          "title": "Twisted Fate Mid vs Talon - KR Grandmaster Patch 25.20",
+          "rankClaim": "Grandmaster",
+          "patch": "25.20",
+          "durationSec": 1696,
+          "region": "KR",
+          "uploaded": "2025-10-11",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 92,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "svdySANHyEA",
+          "title": "Twisted Fate Top vs Riven - KR Master Patch 25.14",
+          "rankClaim": "Master",
+          "patch": "25.14",
+          "durationSec": 1896,
+          "region": "KR",
+          "uploaded": "2025-07-25",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 103,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "6d7ZBINRU7s",
+          "title": "(TOG Sajator) Twisted Fate Mid vs Ahri - EUW Challenger Patch 26.15",
+          "rankClaim": "Challenger",
+          "patch": "26.15",
+          "durationSec": 1675,
+          "region": "EUW",
+          "player": "TOG Sajator",
+          "uploaded": "2026-08-02",
+          "moments": []
+        },
+        {
+          "videoId": "sJwkZhObe7o",
+          "title": "Twisted Fate Mid vs Ahri - KR Master Patch 25.07",
+          "rankClaim": "Master",
+          "patch": "25.7",
+          "durationSec": 1803,
+          "region": "KR",
+          "uploaded": "2025-04-06",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 106,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "yAJLv_F-i9I",
+          "title": "Twisted Fate Top vs Volibear - KR Master Patch 25.18",
+          "rankClaim": "Master",
+          "patch": "25.18",
+          "durationSec": 1556,
+          "region": "KR",
+          "uploaded": "2025-09-20",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 111,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "UeN47JphdS4",
+          "title": "Twisted Fate Support vs Nautilus - EUW Grandmaster Patch 25.22",
+          "rankClaim": "Grandmaster",
+          "patch": "25.22",
+          "durationSec": 1816,
+          "region": "EUW",
+          "uploaded": "2025-11-15",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 115,
+      "lane": "adc",
+      "videos": [
+        {
+          "videoId": "OA5m_HtKIT0",
+          "title": "Twisted Fate ADC vs Ziggs - KR Challenger Patch 26.09",
+          "rankClaim": "Challenger",
+          "patch": "26.9",
+          "durationSec": 1723,
+          "region": "KR",
+          "uploaded": "2026-05-11",
+          "moments": []
+        },
+        {
+          "videoId": "2vtSKr4M3Jk",
+          "title": "T1 Peyz Twisted Fate vs Ziggs [ ADC ] Korea Challenger 2430 LP | Patch 26.9",
+          "rankClaim": "Challenger",
+          "patch": "26.9",
+          "durationSec": 1546,
+          "region": "KR",
+          "player": "Peyz",
+          "team": "T1",
+          "uploaded": "2026-05-05",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 115,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "rK5Hpy4zGUg",
+          "title": "T1 Faker Twisted Fate vs Ziggs [ MID ] Korea Master Patch 25.16",
+          "rankClaim": "Master",
+          "patch": "25.16",
+          "durationSec": 1221,
+          "region": "KR",
+          "player": "Faker",
+          "team": "T1",
+          "uploaded": "2025-08-18",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 126,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "4Ty2fpmfdvI",
+          "title": "Twisted Fate Top vs Jayce - KR Grandmaster Patch 26.20",
+          "rankClaim": "Grandmaster",
+          "patch": "26.20",
+          "durationSec": 1600,
+          "region": "KR",
+          "uploaded": "2026-10-20",
+          "result": "W",
+          "moments": [
+            {
+              "atSec": 123,
+              "label": "First Blood — Twisted Fate kills Jayce",
+              "kind": "kill"
+            },
+            {
+              "atSec": 384,
+              "label": "Blue takes 1st Dragon (Chemtech)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 703,
+              "label": "Twisted Fate outplays Galio"
+            },
+            {
+              "atSec": 727,
+              "label": "Red takes 1st Dragon (Mountain)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 874,
+              "label": "Aphelios picks off Bard"
+            },
+            {
+              "atSec": 984,
+              "label": "Twisted Fate takes down Bard"
+            },
+            {
+              "atSec": 1045,
+              "label": "Thresh picks off Tristana"
+            },
+            {
+              "atSec": 1171,
+              "label": "Red takes Baron",
+              "kind": "baron"
+            },
+            {
+              "atSec": 1237,
+              "label": "Aphelios Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1239,
+              "label": "Aphelios Triple Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1264,
+              "label": "Mid Inhibitor falls (Blue)"
+            },
+            {
+              "atSec": 1275,
+              "label": "Twisted Fate eliminates Bard"
+            },
+            {
+              "atSec": 1364,
+              "label": "Red takes 2nd Dragon (Cloud)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1435,
+              "label": "Twisted Fate picks off Tristana"
+            },
+            {
+              "atSec": 1541,
+              "label": "Aphelios Triple Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1551,
+              "label": "Taliyah takes down Bard"
+            }
+          ]
+        },
+        {
+          "videoId": "nSGBzfuIssc",
+          "title": "Twisted Fate vs Jayce 11/2/6 (Top) | EUW Challenger | Twisted Fate OTP Replay",
+          "rankClaim": "Challenger",
+          "patch": "26.9",
+          "durationSec": 1842,
+          "region": "EUW",
+          "patchEstimated": true,
+          "uploaded": "2026-05-10",
+          "moments": []
+        },
+        {
+          "videoId": "CokCFvQ3eIQ",
+          "title": "Twisted Fate Top vs Jayce - KR Master Patch 25.20",
+          "rankClaim": "Master",
+          "patch": "25.20",
+          "durationSec": 1659,
+          "region": "KR",
+          "uploaded": "2025-10-18",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 142,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "4eYnxGnPl4w",
+          "title": "Twisted Fate Mid vs Zoe - KR Challenger Patch 26.17",
+          "rankClaim": "Challenger",
+          "patch": "26.17",
+          "durationSec": 1913,
+          "region": "KR",
+          "uploaded": "2026-08-31",
+          "moments": []
+        },
+        {
+          "videoId": "h0pUaVDJsvw",
+          "title": "(NS Calix) Twisted Fate Mid vs Zoe - KR Challenger Patch 26.16",
+          "rankClaim": "Challenger",
+          "patch": "26.16",
+          "durationSec": 1440,
+          "region": "KR",
+          "player": "Calix",
+          "team": "NS",
+          "uploaded": "2026-08-23",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 145,
+      "lane": "adc",
+      "videos": [
+        {
+          "videoId": "bQy2JCC_a40",
+          "title": "Twisted Fate ADC vs Kai'Sa - KR Master Patch 25.15",
+          "rankClaim": "Master",
+          "patch": "25.15",
+          "durationSec": 1751,
+          "region": "KR",
+          "uploaded": "2025-08-09",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 147,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "Y5Rqod2qkIg",
+          "title": "Twisted Fate Support vs Seraphine - KR Master Patch 25.10",
+          "rankClaim": "Master",
+          "patch": "25.10",
+          "durationSec": 1645,
+          "region": "KR",
+          "uploaded": "2025-05-29",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 157,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "N_3W8gnsYkM",
+          "title": "Twisted Fate Mid vs Yasuo - KR Grandmaster Patch 25.16",
+          "rankClaim": "Grandmaster",
+          "patch": "25.16",
+          "durationSec": 1696,
+          "region": "KR",
+          "uploaded": "2025-08-15",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 163,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "DfhWxieb5gE",
+          "title": "Twisted Fate Mid vs Taliyah - KR Master Patch 26.19",
+          "rankClaim": "Master",
+          "patch": "26.19",
+          "durationSec": 1582,
+          "region": "KR",
+          "uploaded": "2026-09-27",
+          "moments": []
+        },
+        {
+          "videoId": "k6bLrAUMC2k",
+          "title": "Twisted Fate Mid vs Taliyah - KR Grandmaster Patch 25.18",
+          "rankClaim": "Grandmaster",
+          "patch": "25.18",
+          "durationSec": 1724,
+          "region": "KR",
+          "uploaded": "2025-09-15",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 202,
+      "lane": "adc",
+      "videos": [
+        {
+          "videoId": "Hhe5Ptz4Dvw",
+          "title": "Twisted Fate ADC vs Jhin - KR Master Patch 26.13",
+          "rankClaim": "Master",
+          "patch": "26.13",
+          "durationSec": 1599,
+          "region": "KR",
+          "uploaded": "2026-07-13",
+          "result": "W",
+          "moments": [
+            {
+              "atSec": 59,
+              "label": "First Blood — Twisted Fate kills Leona",
+              "kind": "kill"
+            },
+            {
+              "atSec": 186,
+              "label": "Locke eliminates Jhin"
+            },
+            {
+              "atSec": 241,
+              "label": "Braum eliminates Leona"
+            },
+            {
+              "atSec": 314,
+              "label": "Locke Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 492,
+              "label": "Twisted Fate picks off Leona"
+            },
+            {
+              "atSec": 565,
+              "label": "Twisted Fate picks off Leona"
+            },
+            {
+              "atSec": 612,
+              "label": "Blue takes 1st Dragon (Mountain)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 688,
+              "label": "Twisted Fate takes down Jhin"
+            },
+            {
+              "atSec": 822,
+              "label": "Twisted Fate picks off Fiora"
+            },
+            {
+              "atSec": 941,
+              "label": "Blue takes 2nd Dragon (Hextech)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1052,
+              "label": "Twisted Fate picks off Leona"
+            },
+            {
+              "atSec": 1215,
+              "label": "Blue takes Baron",
+              "kind": "baron"
+            },
+            {
+              "atSec": 1258,
+              "label": "Blue takes 3rd Dragon (Chemtech)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1307,
+              "label": "Locke kills Fiora",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1448,
+              "label": "Bot Inhibitor falls (Red)"
+            },
+            {
+              "atSec": 1458,
+              "label": "Mid Inhibitor falls (Red)"
+            },
+            {
+              "atSec": 1509,
+              "label": "Malzahar takes down Fiora"
+            },
+            {
+              "atSec": 1548,
+              "label": "Top Inhibitor falls (Red)"
+            }
+          ]
+        },
+        {
+          "videoId": "0_Nkko-Fw2I",
+          "title": "Twisted Fate ADC vs Jhin - KR Master Patch 25.19",
+          "rankClaim": "Master",
+          "patch": "25.19",
+          "durationSec": 1730,
+          "region": "KR",
+          "uploaded": "2025-10-08",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 238,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "NwcfYMEE-lY",
+          "title": "Twisted Fate Mid vs Zed - NA Grandmaster Patch 26.06",
+          "rankClaim": "Grandmaster",
+          "patch": "26.6",
+          "durationSec": 1757,
+          "region": "NA",
+          "uploaded": "2026-03-21",
+          "moments": []
+        },
+        {
+          "videoId": "MIn7wgtSKEw",
+          "title": "Twisted Fate Mid vs Zed - KR Master Patch 25.24",
+          "rankClaim": "Master",
+          "patch": "25.24",
+          "durationSec": 1635,
+          "region": "KR",
+          "uploaded": "2025-12-08",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 245,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "LPDKEaZLLe4",
+          "title": "Twisted Fate Mid vs Ekko - EUW Challenger Patch 25.24",
+          "rankClaim": "Challenger",
+          "patch": "25.24",
+          "durationSec": 1488,
+          "region": "EUW",
+          "uploaded": "2025-12-23",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 246,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "MxfCOK6syO4",
+          "title": "Twisted Fate Mid vs Qiyana - KR Challenger Patch 25.13",
+          "rankClaim": "Challenger",
+          "patch": "25.13",
+          "durationSec": 1624,
+          "region": "KR",
+          "uploaded": "2025-06-28",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 267,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "rx2QVuW00Ok",
+          "title": "Twisted Fate Support vs Nami - EUW Grandmaster Patch 26.04",
+          "rankClaim": "Grandmaster",
+          "patch": "26.4",
+          "durationSec": 1742,
+          "region": "EUW",
+          "uploaded": "2026-02-27",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 94,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 173,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 261,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 386,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 482,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 766,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 879,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1013,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1206,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1394,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1490,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1609,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1684,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1731,
+              "label": "End credit"
+            }
+          ]
+        },
+        {
+          "videoId": "ToENJd1TNbU",
+          "title": "Twisted Fate Support vs Nami - EUW Challenger Patch 25.08",
+          "rankClaim": "Challenger",
+          "patch": "25.8",
+          "durationSec": 1651,
+          "region": "EUW",
+          "uploaded": "2025-04-25",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 206,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 330,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 489,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 546,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 633,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 753,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 799,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 848,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1068,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1208,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1290,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1481,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1567,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1630,
+              "label": "End credit"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 268,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "6ryXSekBE9Q",
+          "title": "Twisted Fate Mid vs Azir - EUW Challenger Patch 26.02",
+          "rankClaim": "Challenger",
+          "patch": "26.2",
+          "durationSec": 1544,
+          "region": "EUW",
+          "uploaded": "2026-02-04",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 420,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 535,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 718,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 834,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 850,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 913,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 978,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 998,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1010,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1038,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1131,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1158,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1206,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1256,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1308,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1349,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1362,
+              "label": "Take down The Inhibitor"
+            },
+            {
+              "atSec": 1373,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1473,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1515,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1533,
+              "label": "End credit"
+            }
+          ]
+        },
+        {
+          "videoId": "FabVkT67LCA",
+          "title": "T1 Faker Twisted Fate vs Azir [ MID ] Patch 25.11 Korea Grandmaster",
+          "rankClaim": "Grandmaster",
+          "patch": "25.11",
+          "durationSec": 1938,
+          "region": "KR",
+          "player": "Faker",
+          "team": "T1",
+          "uploaded": "2025-06-09",
+          "moments": []
+        },
+        {
+          "videoId": "WIVkkGMm2jo",
+          "title": "Twisted Fate Mid vs Azir - KR Grandmaster Patch 25.06",
+          "rankClaim": "Grandmaster",
+          "patch": "25.6",
+          "durationSec": 1971,
+          "region": "KR",
+          "uploaded": "2025-03-23",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 146,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 322,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 514,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 685,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 779,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 814,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 910,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1033,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1217,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1352,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1378,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1391,
+              "label": "Take down The Inhibitor"
+            },
+            {
+              "atSec": 1478,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1538,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1586,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1685,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1706,
+              "label": "Take down The Inhibitor"
+            },
+            {
+              "atSec": 1720,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1776,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1847,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1865,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1901,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1950,
+              "label": "End credit"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 497,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "idxxIlApmVo",
+          "title": "Twisted Fate Support vs Rakan - KR Master Patch 25.24",
+          "rankClaim": "Master",
+          "patch": "25.24",
+          "durationSec": 1444,
+          "region": "KR",
+          "uploaded": "2025-12-17",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 37,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 390,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 497,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 595,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 709,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 824,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1019,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1128,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1290,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1381,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1433,
+              "label": "End credit"
+            }
+          ]
+        },
+        {
+          "videoId": "TTOBBAvVQus",
+          "title": "Twisted Fate Support vs Rakan - NA Grandmaster Patch 25.23",
+          "rankClaim": "Grandmaster",
+          "patch": "25.23",
+          "durationSec": 1569,
+          "region": "NA",
+          "uploaded": "2025-11-30",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 517,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "ihMYLk7MXWc",
+          "title": "(MagiFelix) Twisted Fate Mid vs Sylas (SHFT nuc) - EUW Challenger Patch 26.18",
+          "rankClaim": "Challenger",
+          "patch": "26.18",
+          "durationSec": 1813,
+          "region": "EUW",
+          "player": "MagiFelix",
+          "uploaded": "2026-09-16",
+          "moments": []
+        },
+        {
+          "videoId": "sJpkU2LZkck",
+          "title": "(IG Rookie) Twisted Fate Mid vs Sylas - KR Grandmaster Patch 26.16",
+          "rankClaim": "Grandmaster",
+          "patch": "26.16",
+          "durationSec": 1440,
+          "region": "KR",
+          "player": "Rookie",
+          "team": "IG",
+          "uploaded": "2026-08-17",
+          "moments": []
+        },
+        {
+          "videoId": "1KnQ5Z0OcGw",
+          "title": "Twisted Fate Mid vs Sylas - KR Challenger Patch 25.22",
+          "rankClaim": "Challenger",
+          "patch": "25.22",
+          "durationSec": 1499,
+          "region": "KR",
+          "uploaded": "2025-11-10",
+          "moments": []
+        },
+        {
+          "videoId": "KRSyftuT3ug",
+          "title": "T1 Faker Twisted Fate MID vs Sylas - Patch 25.15 Korea Master",
+          "rankClaim": "Master",
+          "patch": "25.15",
+          "durationSec": 1156,
+          "region": "KR",
+          "player": "Faker",
+          "team": "T1",
+          "uploaded": "2025-08-12",
+          "moments": []
+        },
+        {
+          "videoId": "HvOI-G2YPfU",
+          "title": "T1 Faker Twisted Fate vs Sylas [ MID ] Patch 25.15 Korea Master",
+          "rankClaim": "Master",
+          "patch": "25.15",
+          "durationSec": 1521,
+          "region": "KR",
+          "player": "Faker",
+          "team": "T1",
+          "uploaded": "2025-08-05",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 555,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "b-U4ixsRQ7c",
+          "title": "Twisted Fate Mid vs Pyke - KR Challenger Patch 25.11",
+          "rankClaim": "Challenger",
+          "patch": "25.11",
+          "durationSec": 1584,
+          "region": "KR",
+          "uploaded": "2025-06-03",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 777,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "6vi-yvB1VPs",
+          "title": "Twisted Fate Mid vs Yone - BR Challenger Patch 26.05",
+          "rankClaim": "Challenger",
+          "patch": "26.5",
+          "durationSec": 1722,
+          "uploaded": "2026-03-07",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 799,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "OBYcenNxzJ8",
+          "title": "Twisted Fate Mid vs Ambessa - KR Grandmaster Patch 25.05",
+          "rankClaim": "Grandmaster",
+          "patch": "25.5",
+          "durationSec": 1599,
+          "region": "KR",
+          "uploaded": "2025-03-10",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 799,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "0CMUOn8z81I",
+          "title": "(LYON Dhokla) Twisted Fate Top vs Ambessa - NA Master Patch 26.15",
+          "rankClaim": "Master",
+          "patch": "26.15",
+          "durationSec": 1535,
+          "region": "NA",
+          "player": "LYON Dhokla",
+          "uploaded": "2026-08-08",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 800,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "hixwfKGQbjo",
+          "title": "(Beichuan) Twisted Fate Mid vs Mel - KR Challenger Patch 26.17",
+          "rankClaim": "Challenger",
+          "patch": "26.17",
+          "durationSec": 1864,
+          "region": "KR",
+          "player": "Beichuan",
+          "uploaded": "2026-09-11",
+          "moments": []
+        },
+        {
+          "videoId": "xziqX6kuqvQ",
+          "title": "Twisted Fate Mid vs Mel - KR Challenger Patch 26.10",
+          "rankClaim": "Challenger",
+          "patch": "26.10",
+          "durationSec": 1911,
+          "region": "KR",
+          "uploaded": "2026-05-17",
+          "moments": []
+        },
+        {
+          "videoId": "XQE8Bo11ncE",
+          "title": "Twisted Fate Mid vs Mel - KR Master Patch 25.10",
+          "rankClaim": "Master",
+          "patch": "25.10",
+          "durationSec": 1967,
+          "region": "KR",
+          "uploaded": "2025-05-19",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 526,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 616,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 705,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 823,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 962,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1042,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1112,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1205,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1290,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1430,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1546,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1684,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1715,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1740,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1752,
+              "label": "Take down The Inhibitor"
+            },
+            {
+              "atSec": 1885,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1946,
+              "label": "End credit"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 804,
+      "lane": "adc",
+      "videos": [
+        {
+          "videoId": "3xO3dlVhA2Q",
+          "title": "T1 Peyz Twisted Fate vs Yunara [ ADC ] Korea Challenger 2520 LP | Patch 26.17",
+          "rankClaim": "Challenger",
+          "patch": "26.17",
+          "durationSec": 1601,
+          "region": "KR",
+          "player": "Peyz",
+          "team": "T1",
+          "uploaded": "2026-09-06",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 805,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "UhQNHgrm2jE",
+          "title": "Twisted Fate Mid vs Locke - KR Grandmaster Patch 26.20",
+          "rankClaim": "Grandmaster",
+          "patch": "26.20",
+          "durationSec": 1757,
+          "region": "KR",
+          "uploaded": "2026-10-12",
+          "result": "W",
+          "moments": [
+            {
+              "atSec": 305,
+              "label": "First Blood — Twisted Fate kills Locke",
+              "kind": "kill"
+            },
+            {
+              "atSec": 339,
+              "label": "Jax eliminates Zaahen"
+            },
+            {
+              "atSec": 370,
+              "label": "Red takes 1st Dragon (Ocean)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 715,
+              "label": "Red takes 2nd Dragon (Chemtech)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 812,
+              "label": "Karthus takes down Kindred"
+            },
+            {
+              "atSec": 904,
+              "label": "Karthus picks off Locke"
+            },
+            {
+              "atSec": 1034,
+              "label": "Red takes 3rd Dragon (Hextech)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1072,
+              "label": "Karthus kills Zaahen",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1274,
+              "label": "Camille kills Kindred",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1327,
+              "label": "Blue takes Baron",
+              "kind": "baron"
+            },
+            {
+              "atSec": 1358,
+              "label": "Red takes 4th Dragon (Hextech)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1360,
+              "label": "Xayah kills Locke",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1367,
+              "label": "Xayah Triple Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1665,
+              "label": "Xayah Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1696,
+              "label": "Mid Inhibitor falls (Red)"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 893,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "DY28PpKEtG0",
+          "title": "Twisted Fate Mid vs Aurora - BR Challenger Patch 26.08",
+          "rankClaim": "Challenger",
+          "patch": "26.8",
+          "durationSec": 1864,
+          "uploaded": "2026-04-21",
+          "moments": []
+        },
+        {
+          "videoId": "NAF60oyCcPI",
+          "title": "Twisted Fate Mid vs Aurora - KR Master Patch 25.17",
+          "rankClaim": "Master",
+          "patch": "25.17",
+          "durationSec": 1659,
+          "region": "KR",
+          "uploaded": "2025-08-29",
+          "moments": []
+        },
+        {
+          "videoId": "Fv7n3vgZ0CM",
+          "title": "Twisted Fate Mid vs Aurora - KR Challenger Patch 25.12",
+          "rankClaim": "Challenger",
+          "patch": "25.12",
+          "durationSec": 1669,
+          "region": "KR",
+          "uploaded": "2025-06-16",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 897,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "abi6l3k-N9E",
+          "title": "(NS Kingen) Twisted Fate Top vs K'Sante - KR Grandmaster Patch 26.13",
+          "rankClaim": "Grandmaster",
+          "patch": "26.13",
+          "durationSec": 1536,
+          "region": "KR",
+          "player": "Kingen",
+          "team": "NS",
+          "uploaded": "2026-07-06",
+          "moments": []
+        },
+        {
+          "videoId": "KIqnSxlZ7Wo",
+          "title": "Twisted Fate Top vs K'Sante - EUW Grandmaster Patch 26.07",
+          "rankClaim": "Grandmaster",
+          "patch": "26.7",
+          "durationSec": 1538,
+          "region": "EUW",
+          "uploaded": "2026-04-13",
+          "moments": []
+        }
+      ]
+    }
+  ]
+}

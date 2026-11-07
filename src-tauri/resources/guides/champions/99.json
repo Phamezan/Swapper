@@ -1,0 +1,2883 @@
+{
+  "schema": 1,
+  "champion": 99,
+  "generatedAt": "2026-11-07T13:25:14.592Z",
+  "guides": [
+    {
+      "champion": 99,
+      "enemy": 84,
+      "lane": "mid",
+      "patch": "26.21",
+      "reviewed": false,
+      "difficulty": "Skill matchup",
+      "favoredWhen": "She dodges everything and camps brush after 6. Vary spells, check bushes, match roams.",
+      "keyTips": [
+        {
+          "text": "She dodges spells and never face-checks: vary the timing.",
+          "scope": "pair",
+          "sourceIds": [
+            "anguish"
+          ]
+        },
+        {
+          "text": "After 6 you clear waves: the duel ends, the map begins.",
+          "scope": "pair",
+          "sourceIds": [
+            "anguish"
+          ]
+        },
+        {
+          "text": "She camps brush when the map is known: check every brush.",
+          "scope": "pair",
+          "sourceIds": [
+            "anguish"
+          ]
+        }
+      ],
+      "enemyTips": {},
+      "sections": {
+        "overview": {
+          "tips": []
+        },
+        "early-lane": {
+          "tips": [
+            {
+              "text": "Your E checks bushes: E brush before entering.",
+              "scope": "pair",
+              "sourceIds": [
+                "anguish"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 99,
+                  "key": "E"
+                }
+              ]
+            },
+            {
+              "text": "She trades on dodges: every sidestep is her opening, so hold spells.",
+              "scope": "pair",
+              "sourceIds": [
+                "anguish"
+              ]
+            }
+          ]
+        },
+        "mid-lane": {
+          "tips": [
+            {
+              "text": "She buys Mercs when struggling: tenacity answers bindings, so land Q first.",
+              "scope": "pair",
+              "sourceIds": [
+                "anguish"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 99,
+                  "key": "Q"
+                }
+              ]
+            },
+            {
+              "text": "Match her clears with roams: wave met wave means move.",
+              "scope": "pair",
+              "sourceIds": [
+                "anguish"
+              ]
+            }
+          ]
+        },
+        "win-condition": {
+          "tips": [
+            {
+              "text": "Bound plus cleared: the Akali who never dodges never wins.",
+              "scope": "pair",
+              "sourceIds": [
+                "anguish"
+              ]
+            }
+          ]
+        }
+      },
+      "itemization": [],
+      "sources": [
+        {
+          "id": "anguish",
+          "author": "Anguish333",
+          "rankClaim": "Master (profile badge; title claims 2000LP GrandMaster EUW and Challenger EUNE) · Akali main",
+          "rank": "master",
+          "url": "https://www.mobafire.com/league-of-legends/build/26-20-anguish-2000lp-grandmasters-euw-challenger-eune-akali-mid-top-s16-guide-every-matchup-item-rune-explained-625064",
+          "kind": "mobafire"
+        }
+      ]
+    },
+    {
+      "champion": 99,
+      "enemy": 103,
+      "lane": "mid",
+      "patch": "26.21",
+      "reviewed": false,
+      "difficulty": "Skill matchup",
+      "favoredWhen": "She forces the wave-choice and converts every miss. Hold Q for dashes, shove to roam.",
+      "keyTips": [
+        {
+          "text": "She never stands with the wave: aim Qs where she must dodge to.",
+          "scope": "pair",
+          "sourceIds": [
+            "shok-ahri"
+          ]
+        },
+        {
+          "text": "Her dash is your Q target: after one dash, bind her.",
+          "scope": "pair",
+          "sourceIds": [
+            "pekinwoof"
+          ],
+          "abilityKeys": [
+            {
+              "champion": 103,
+              "key": "R"
+            },
+            {
+              "champion": 99,
+              "key": "Q"
+            }
+          ]
+        },
+        {
+          "text": "She dodges E then shoves: hold E for guaranteed hits.",
+          "scope": "pair",
+          "sourceIds": [
+            "shok-ahri"
+          ],
+          "abilityKeys": [
+            {
+              "champion": 99,
+              "key": "E"
+            }
+          ]
+        }
+      ],
+      "enemyTips": {},
+      "sections": {
+        "overview": {
+          "tips": []
+        },
+        "early-lane": {
+          "tips": [
+            {
+              "text": "She fights for the wave with autos: match autos, keep E threat.",
+              "scope": "pair",
+              "sourceIds": [
+                "shok-ahri"
+              ]
+            },
+            {
+              "text": "She answers E-catches by shoving: never throw E without a plan.",
+              "scope": "pair",
+              "sourceIds": [
+                "shok-ahri"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 99,
+                  "key": "E"
+                }
+              ]
+            }
+          ]
+        },
+        "mid-lane": {
+          "tips": [
+            {
+              "text": "After 6 she respects bind into combo: Q then R wins.",
+              "scope": "pair",
+              "sourceIds": [
+                "shok-ahri"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 99,
+                  "key": "Q"
+                },
+                {
+                  "champion": 99,
+                  "key": "R"
+                }
+              ]
+            },
+            {
+              "text": "She shoves to pin you: clear fast, roam before forced to base.",
+              "scope": "pair",
+              "sourceIds": [
+                "pekinwoof"
+              ]
+            }
+          ]
+        },
+        "win-condition": {
+          "tips": [
+            {
+              "text": "Her misses are her windows: a Lux who never misses never loses.",
+              "scope": "pair",
+              "sourceIds": [
+                "shok-ahri"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 99,
+                  "key": "Q"
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "itemization": [],
+      "sources": [
+        {
+          "id": "shok-ahri",
+          "author": "ShokLoL",
+          "rankClaim": "Rank 1 Challenger · Ahri main",
+          "rank": "challenger",
+          "url": "https://www.mobafire.com/league-of-legends/build/26-5-shoks-rank-1-challenger-ahri-guide-635065",
+          "kind": "mobafire"
+        },
+        {
+          "id": "pekinwoof",
+          "author": "PekinWoof",
+          "rankClaim": "Challenger (video title and outro) · Lux main",
+          "rank": "challenger",
+          "url": "https://www.youtube.com/watch?v=sFRlxSiRTis&t=503s",
+          "kind": "youtube"
+        }
+      ]
+    },
+    {
+      "champion": 99,
+      "enemy": 134,
+      "lane": "mid",
+      "patch": "26.21",
+      "reviewed": false,
+      "difficulty": "Skill matchup",
+      "favoredWhen": "She builds a pre-6 lead and answers wave-ults. Survive early, ult waves after 6.",
+      "keyTips": [
+        {
+          "text": "She builds a lead before 6: the lane is decided early, so do not concede it.",
+          "scope": "pair",
+          "sourceIds": [
+            "shok"
+          ]
+        },
+        {
+          "text": "After 6 you ult waves and neutralize: a conceding Syndra is your win condition.",
+          "scope": "pair",
+          "sourceIds": [
+            "shok"
+          ],
+          "abilityKeys": [
+            {
+              "champion": 99,
+              "key": "R"
+            }
+          ]
+        },
+        {
+          "text": "Her tier-2 boots rush: lead Qs, never throw straight.",
+          "scope": "pair",
+          "sourceIds": [
+            "shok"
+          ]
+        }
+      ],
+      "enemyTips": {},
+      "sections": {
+        "overview": {
+          "tips": []
+        },
+        "early-lane": {
+          "tips": [
+            {
+              "text": "She pressures pre-6 with Q-E: respect the threat range.",
+              "scope": "pair",
+              "sourceIds": [
+                "shok"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 134,
+                  "key": "Q"
+                },
+                {
+                  "champion": 134,
+                  "key": "E"
+                }
+              ]
+            },
+            {
+              "text": "Every sidestep compounds her lead: vary Q-E patterns.",
+              "scope": "pair",
+              "sourceIds": [
+                "shok"
+              ]
+            }
+          ]
+        },
+        "mid-lane": {
+          "tips": [
+            {
+              "text": "She answers your wave-ults with pressure: make neutral cost her.",
+              "scope": "pair",
+              "sourceIds": [
+                "shok"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 99,
+                  "key": "R"
+                }
+              ]
+            },
+            {
+              "text": "She keeps dodging: boots plus movement are her whole defense, so hold spells.",
+              "scope": "pair",
+              "sourceIds": [
+                "shok"
+              ]
+            }
+          ]
+        },
+        "win-condition": {
+          "tips": [
+            {
+              "text": "Pre-6 survived plus waves ulted: the Syndra whose lead never banked never threatens.",
+              "scope": "pair",
+              "sourceIds": [
+                "shok"
+              ]
+            }
+          ]
+        }
+      },
+      "itemization": [],
+      "sources": [
+        {
+          "id": "shok",
+          "author": "ShokLoL",
+          "rankClaim": "Rank 1 Challenger · Syndra main",
+          "rank": "challenger",
+          "url": "https://www.mobafire.com/league-of-legends/build/26-17-shoks-rank-1-challenger-syndra-guide-602710",
+          "kind": "mobafire"
+        }
+      ]
+    },
+    {
+      "champion": 99,
+      "enemy": 238,
+      "lane": "mid",
+      "patch": "26.21",
+      "reviewed": false,
+      "difficulty": "Skill matchup",
+      "favoredWhen": "He engages the moment Q misses and never Rs into it. Hold Q, vary E, end it.",
+      "keyTips": [
+        {
+          "text": "Your Q enables everything: a missed Q removes most of your threat, so hold it.",
+          "scope": "pair",
+          "sourceIds": [
+            "v222"
+          ],
+          "abilityKeys": [
+            {
+              "champion": 99,
+              "key": "Q"
+            }
+          ]
+        },
+        {
+          "text": "He never Rs while your Q is up: the held binding is your shield.",
+          "scope": "pair",
+          "sourceIds": [
+            "v222"
+          ],
+          "abilityKeys": [
+            {
+              "champion": 238,
+              "key": "R"
+            },
+            {
+              "champion": 99,
+              "key": "Q"
+            }
+          ]
+        },
+        {
+          "text": "He engages when you spend Q: the cooldown is his entire window, so vary it.",
+          "scope": "pair",
+          "sourceIds": [
+            "aikopanda"
+          ],
+          "abilityKeys": [
+            {
+              "champion": 99,
+              "key": "Q"
+            }
+          ]
+        }
+      ],
+      "enemyTips": {
+        "early-lane": [
+          {
+            "text": "Zed often places Living Shadow before Death Mark so he can swap away from skillshots. Hold your crowd control until he has used the swap.",
+            "scope": "enemy",
+            "sourceIds": [
+              "aikopanda"
+            ],
+            "patch": "26.21",
+            "abilityKeys": [
+              {
+                "champion": 238,
+                "key": "W"
+              },
+              {
+                "champion": 238,
+                "key": "R"
+              }
+            ]
+          }
+        ],
+        "win-condition": [
+          {
+            "text": "Death Mark always lands Zed behind his target. Pre-aim crowd control and escapes behind you, not toward where he cast it.",
+            "scope": "enemy",
+            "sourceIds": [
+              "peng04"
+            ],
+            "patch": "26.21",
+            "abilityKeys": [
+              {
+                "champion": 238,
+                "key": "R"
+              }
+            ]
+          }
+        ]
+      },
+      "sections": {
+        "overview": {
+          "tips": []
+        },
+        "early-lane": {
+          "tips": [
+            {
+              "text": "He dodges E at max range: change the angle, never the timing.",
+              "scope": "pair",
+              "sourceIds": [
+                "aikopanda",
+                "v222"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 99,
+                  "key": "E"
+                }
+              ]
+            },
+            {
+              "text": "Your Q-E-R converts a single binding: fish, never force.",
+              "scope": "pair",
+              "sourceIds": [
+                "aikopanda"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 99,
+                  "key": "Q"
+                }
+              ]
+            }
+          ]
+        },
+        "mid-lane": {
+          "tips": [
+            {
+              "text": "Death Mark always lands Zed behind his target. Pre-aim crowd control and escapes behind you, not toward where he cast it.",
+              "scope": "pair",
+              "sourceIds": [
+                "peng04"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 238,
+                  "key": "R"
+                }
+              ]
+            },
+            {
+              "text": "His Edge of Night blanks one Q: bait the shield before committing.",
+              "scope": "pair",
+              "sourceIds": [
+                "aikopanda"
+              ],
+              "itemIds": [
+                3814
+              ]
+            }
+          ]
+        },
+        "win-condition": {
+          "tips": [
+            {
+              "text": "Shield baited plus Q landed: the Zed whose Edge never blanks you never kills you.",
+              "scope": "pair",
+              "sourceIds": [
+                "aikopanda",
+                "v222"
+              ]
+            }
+          ]
+        }
+      },
+      "itemization": [],
+      "sources": [
+        {
+          "id": "aikopanda",
+          "author": "AikoPanda",
+          "rankClaim": "Zed main",
+          "url": "https://www.mobafire.com/league-of-legends/build/26-20-video-guides-hidden-combos-all-matchups-zed-all-in-one-guide-652800",
+          "kind": "mobafire"
+        },
+        {
+          "id": "v222",
+          "author": "V222",
+          "rankClaim": "Challenger EUW · Zed main",
+          "rank": "challenger",
+          "url": "https://www.mobafire.com/league-of-legends/build/all-matchups-26-14-zed-guide-2000lp-euw-challenger-652354",
+          "kind": "mobafire"
+        },
+        {
+          "id": "peng04",
+          "author": "Peng04",
+          "rankClaim": "Challenger · Ahri main",
+          "rank": "challenger",
+          "url": "https://www.mobafire.com/league-of-legends/build/26-20-pengs-ahri-guide-5-1mil-points-13x-challenger-648700",
+          "kind": "mobafire"
+        }
+      ]
+    }
+  ],
+  "general": [
+    {
+      "champion": 99,
+      "lane": "mid",
+      "patch": "26.21",
+      "reviewed": false,
+      "keyTips": [
+        {
+          "text": "Last-hit routinely with basic attacks and hold the wave stable; habitual spell clearing wastes mana, invites ganks, and drops farm.",
+          "scope": "champion",
+          "sourceIds": [
+            "luxthegreywarden"
+          ]
+        },
+        {
+          "text": "Spend spells on waves only to secure cannons, catch crashes under tower, or build priority before objectives and roams.",
+          "scope": "champion",
+          "sourceIds": [
+            "luxthegreywarden"
+          ]
+        },
+        {
+          "text": "Follow allied area engages with R across grouped teams instead of saving it purely for single low-health finishes.",
+          "scope": "champion",
+          "sourceIds": [
+            "luxthegreywarden"
+          ],
+          "abilityKeys": [
+            {
+              "champion": 99,
+              "key": "R"
+            }
+          ]
+        }
+      ],
+      "sections": {
+        "overview": {
+          "tips": []
+        },
+        "early-lane": {
+          "tips": [
+            {
+              "text": "Against melee opponents, auto them on step-up CS attempts and hold a freeze while respecting their threatening spells and extra minion aggro.",
+              "scope": "champion",
+              "sourceIds": [
+                "luxthegreywarden"
+              ]
+            },
+            {
+              "text": "Never donate a valuable last hit just to land one more auto on the opponent.",
+              "scope": "champion",
+              "sourceIds": [
+                "luxthegreywarden"
+              ]
+            }
+          ]
+        },
+        "mid-lane": {
+          "tips": [
+            {
+              "text": "Roam with pushed waves toward extended bot lanes and no camps worth taking; never leave while the own wave crashes inward.",
+              "scope": "champion",
+              "sourceIds": [
+                "luxthegreywarden"
+              ]
+            },
+            {
+              "text": "On enemy mid roams, ping both sides and hold vision before following; never walk blind into a mobile opponent path.",
+              "scope": "champion",
+              "sourceIds": [
+                "luxthegreywarden"
+              ]
+            },
+            {
+              "text": "Answer unsafe-to-follow roams by shoving mid for plates, banking gold and experience over late arrivals.",
+              "scope": "champion",
+              "sourceIds": [
+                "luxthegreywarden"
+              ]
+            },
+            {
+              "text": "Take nearby Raptors only after pushing out far enough to return, before a healthy mana-filled recall, or on explicit jungler permission.",
+              "scope": "champion",
+              "sourceIds": [
+                "luxthegreywarden"
+              ]
+            }
+          ]
+        },
+        "win-condition": {
+          "tips": [
+            {
+              "text": "Chip vulnerable opponents with E before teams commit to ease the coming engage.",
+              "scope": "champion",
+              "sourceIds": [
+                "luxthegreywarden"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 99,
+                  "key": "E"
+                }
+              ]
+            },
+            {
+              "text": "Aim burst at the enemy ADC or mage when possible over the first rooted tank, respecting defensive answers that can block it.",
+              "scope": "champion",
+              "sourceIds": [
+                "luxthegreywarden"
+              ]
+            },
+            {
+              "text": "Peel divers off the ADC by shielding with W and rooting attackers with Q so the carry keeps firing.",
+              "scope": "champion",
+              "sourceIds": [
+                "luxthegreywarden"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 99,
+                  "key": "W"
+                },
+                {
+                  "champion": 99,
+                  "key": "Q"
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "itemization": [],
+      "sources": [
+        {
+          "id": "luxthegreywarden",
+          "author": "LuxTheGreyWarden",
+          "rankClaim": "No rank claim",
+          "url": "https://www.mobafire.com/league-of-legends/build/15-3-mid-apc-light-em-up-im-on-fiyaa-luxe-n-style-460573",
+          "kind": "mobafire"
+        }
+      ]
+    },
+    {
+      "champion": 99,
+      "lane": "support",
+      "patch": "26.21",
+      "reviewed": false,
+      "keyTips": [
+        {
+          "text": "Shove safely, then poke E so the enemy ADC picks between eating damage and collecting farm.",
+          "scope": "champion",
+          "sourceIds": [
+            "guest-653465",
+            "henrysjg"
+          ],
+          "abilityKeys": [
+            {
+              "champion": 99,
+              "key": "E"
+            }
+          ]
+        },
+        {
+          "text": "Play without a reliable escape in these setups, keeping distance after spending Q or E.",
+          "scope": "champion",
+          "sourceIds": [
+            "guest-653465"
+          ],
+          "abilityKeys": [
+            {
+              "champion": 99,
+              "key": "Q"
+            },
+            {
+              "champion": 99,
+              "key": "E"
+            }
+          ]
+        },
+        {
+          "text": "Hunt catches and burst over front-to-back anchoring; Lux never plays the sustained team anchor.",
+          "scope": "champion",
+          "sourceIds": [
+            "guest-653465"
+          ]
+        }
+      ],
+      "sections": {
+        "overview": {
+          "tips": []
+        },
+        "early-lane": {
+          "tips": [
+            {
+              "text": "Match E poke to First Strike windows and repeat the trade as the rune returns.",
+              "scope": "champion",
+              "sourceIds": [
+                "henrysjg"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 99,
+                  "key": "E"
+                }
+              ]
+            },
+            {
+              "text": "Spend the passive mark with a safe basic attack whenever one opens.",
+              "scope": "champion",
+              "sourceIds": [
+                "guest-653465"
+              ]
+            }
+          ]
+        },
+        "mid-lane": {
+          "tips": [
+            {
+              "text": "Ride Shurelya's Battlesong plus Boots of Swiftness movement to reposition, escape, and rotate faster.",
+              "scope": "champion",
+              "sourceIds": [
+                "guest-653465"
+              ],
+              "itemIds": [
+                2065,
+                3009
+              ]
+            },
+            {
+              "text": "Track enemy squishies and ward likely catch routes, since vision sets up Lux own picks.",
+              "scope": "champion",
+              "sourceIds": [
+                "guest-653465"
+              ]
+            },
+            {
+              "text": "Watch the minimap and rotate after shoves; supports never need to stay for last hits.",
+              "scope": "champion",
+              "sourceIds": [
+                "guest-653465"
+              ]
+            },
+            {
+              "text": "Stay off enemy vision before catch attempts the team can follow.",
+              "scope": "champion",
+              "sourceIds": [
+                "guest-653465"
+              ]
+            }
+          ]
+        },
+        "win-condition": {
+          "tips": [
+            {
+              "text": "Bind and burst squishy targets, then leave on movement speed before opponents turn back.",
+              "scope": "champion",
+              "sourceIds": [
+                "guest-653465"
+              ]
+            },
+            {
+              "text": "Check the team needs an AP damage support before locking Lux; composition comes first.",
+              "scope": "champion",
+              "sourceIds": [
+                "guest-653465"
+              ]
+            },
+            {
+              "text": "Snowball early leads and close before prolonged fights, where she fades.",
+              "scope": "champion",
+              "sourceIds": [
+                "guest-653465"
+              ]
+            }
+          ]
+        }
+      },
+      "itemization": [
+        {
+          "text": "Run Aery with Manaflow Band, Celerity, and Scorch plus Cheap Shot and Relentless Hunter, picking movement speed for map safety and speed.",
+          "scope": "champion",
+          "sourceIds": [
+            "guest-653465"
+          ]
+        },
+        {
+          "text": "Build Shurelya's Battlesong into Boots of Swiftness and Stormsurge, recovering AP cheaply with Dark Seal after the mobility rush.",
+          "scope": "champion",
+          "sourceIds": [
+            "guest-653465"
+          ],
+          "itemIds": [
+            2065,
+            3009,
+            4646,
+            1082
+          ]
+        },
+        {
+          "text": "Run Arcane Comet with Manaflow Band, Absolute Focus, and Gathering Storm plus Cash Back and Jack of All Trades, with First Strike as the repeated-poke and gold alternative.",
+          "scope": "champion",
+          "sourceIds": [
+            "henrysjg"
+          ]
+        },
+        {
+          "text": "Build Stormsurge first for burst into Sorcerer's Shoes and Shadowflame, then Rabadon's Deathcap and Cryptbloom in the order that completes Jack of All Trades and Cash Back bonuses efficiently.",
+          "scope": "champion",
+          "sourceIds": [
+            "henrysjg"
+          ],
+          "itemIds": [
+            4646,
+            3020,
+            4645,
+            3089,
+            3137
+          ]
+        },
+        {
+          "text": "Pick Zaz'Zak's Realmspike as the default support item, or Celestial Opposition into assassins.",
+          "scope": "champion",
+          "sourceIds": [
+            "henrysjg"
+          ],
+          "itemIds": [
+            3871,
+            3869
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "id": "guest-653465",
+          "author": "Guest",
+          "rankClaim": "No rank claim",
+          "url": "https://www.mobafire.com/league-of-legends/build/the-most-fun-way-to-play-lux-653465",
+          "kind": "mobafire"
+        },
+        {
+          "id": "henrysjg",
+          "author": "HenrySJG",
+          "rankClaim": "Diamond (profile badge; no title claim)",
+          "rank": "diamond",
+          "url": "https://www.mobafire.com/league-of-legends/build/lux-ap-support-season-2026-june-update-651240",
+          "kind": "mobafire"
+        }
+      ]
+    }
+  ],
+  "vods": [
+    {
+      "enemy": 3,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "cbGKATJo3rU",
+          "title": "(RNG Tangyuan) Lux Mid vs Galio - KR Master Patch 26.13",
+          "rankClaim": "Master",
+          "patch": "26.13",
+          "durationSec": 1589,
+          "region": "KR",
+          "player": "Tangyuan",
+          "uploaded": "2026-07-04",
+          "moments": []
+        },
+        {
+          "videoId": "VkUlqnQOCak",
+          "title": "Lux Mid vs Galio - EUW Grandmaster Patch 25.07",
+          "rankClaim": "Grandmaster",
+          "patch": "25.7",
+          "durationSec": 1832,
+          "region": "EUW",
+          "uploaded": "2025-04-13",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 4,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "zzzvWa7VDRI",
+          "title": "Lux Mid vs Twisted Fate - KR Challenger Patch 26.12",
+          "rankClaim": "Challenger",
+          "patch": "26.12",
+          "durationSec": 1789,
+          "region": "KR",
+          "uploaded": "2026-06-22",
+          "moments": []
+        },
+        {
+          "videoId": "Fvj0_Rm-GzU",
+          "title": "Lux Mid vs Twisted Fate - KR Master Patch 25.16",
+          "rankClaim": "Master",
+          "patch": "25.16",
+          "durationSec": 1849,
+          "region": "KR",
+          "uploaded": "2025-08-18",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 7,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "d4fZxGJyfCw",
+          "title": "Lux Mid vs LeBlanc - KR Master Patch 26.18",
+          "rankClaim": "Master",
+          "patch": "26.18",
+          "durationSec": 1807,
+          "region": "KR",
+          "uploaded": "2026-09-20",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 13,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "mnooT2u2Rec",
+          "title": "Lux Mid vs Ryze - KR Master Patch 26.10",
+          "rankClaim": "Master",
+          "patch": "26.10",
+          "durationSec": 1430,
+          "region": "KR",
+          "uploaded": "2026-05-18",
+          "moments": []
+        },
+        {
+          "videoId": "47G6Po2xy8E",
+          "title": "Lux Mid vs Ryze - EUW Grandmaster Patch 25.06",
+          "rankClaim": "Grandmaster",
+          "patch": "25.6",
+          "durationSec": 1812,
+          "region": "EUW",
+          "uploaded": "2025-03-30",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 16,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "qw3oWfGD_9o",
+          "title": "Lux Support vs Soraka - KR Master Patch 25.22",
+          "rankClaim": "Master",
+          "patch": "25.22",
+          "durationSec": 1876,
+          "region": "KR",
+          "uploaded": "2025-11-11",
+          "moments": []
+        },
+        {
+          "videoId": "x-T3Xyr_8bE",
+          "title": "Lux Support vs Soraka - KR Master Patch 25.14",
+          "rankClaim": "Master",
+          "patch": "25.14",
+          "durationSec": 2139,
+          "region": "KR",
+          "uploaded": "2025-07-26",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 25,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "V9eFi0ET4WE",
+          "title": "Lux Support vs Morgana - KR Master Patch 25.23",
+          "rankClaim": "Master",
+          "patch": "25.23",
+          "durationSec": 1792,
+          "region": "KR",
+          "uploaded": "2025-11-27",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 33,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "91lQYgZTu4U",
+          "title": "Lux Support vs Rammus - KR Master Patch 25.20",
+          "rankClaim": "Master",
+          "patch": "25.20",
+          "durationSec": 1711,
+          "region": "KR",
+          "uploaded": "2025-10-14",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 37,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "nFtBMB_1aLg",
+          "title": "Lux Support vs Sona - NA Challenger Patch 26.05",
+          "rankClaim": "Challenger",
+          "patch": "26.5",
+          "durationSec": 1580,
+          "region": "NA",
+          "uploaded": "2026-03-10",
+          "moments": []
+        },
+        {
+          "videoId": "KPb_FJP46Eg",
+          "title": "Lux Support vs Sona - KR Master Patch 26.02",
+          "rankClaim": "Master",
+          "patch": "26.2",
+          "durationSec": 1467,
+          "region": "KR",
+          "uploaded": "2026-01-28",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 39,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "4q6BJiN2oC8",
+          "title": "Lux Mid vs Irelia - NA Grandmaster Patch 25.08",
+          "rankClaim": "Grandmaster",
+          "patch": "25.8",
+          "durationSec": 1816,
+          "region": "NA",
+          "uploaded": "2025-05-01",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 168,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 267,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 524,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 611,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 679,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 729,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1011,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1181,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1433,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1614,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1727,
+              "label": "Get a PENTA KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1795,
+              "label": "End credit"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 40,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "CikoF_d7vpU",
+          "title": "Lux Support vs Janna - EUW Grandmaster Patch 26.16",
+          "rankClaim": "Grandmaster",
+          "patch": "26.16",
+          "durationSec": 1694,
+          "region": "EUW",
+          "uploaded": "2026-08-25",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 42,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "D_RbE43GdvE",
+          "title": "Lux Mid vs Corki (Domoles) - EUW Grandmaster Patch 26.15",
+          "rankClaim": "Grandmaster",
+          "patch": "26.15",
+          "durationSec": 1588,
+          "region": "EUW",
+          "uploaded": "2026-08-06",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 43,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "miAQhJrgFTs",
+          "title": "Lux Support vs Karma - EUW Challenger Patch 25.24",
+          "rankClaim": "Challenger",
+          "patch": "25.24",
+          "durationSec": 1442,
+          "region": "EUW",
+          "uploaded": "2025-12-30",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 185,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 629,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 772,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 824,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 972,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1036,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1298,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1378,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1400,
+              "label": "Take down The Inhibitor"
+            },
+            {
+              "atSec": 1415,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1431,
+              "label": "End credit"
+            }
+          ]
+        },
+        {
+          "videoId": "0Jw7Icz6UqE",
+          "title": "Lux Support vs Karma - KR Master Patch 25.09",
+          "rankClaim": "Master",
+          "patch": "25.9",
+          "durationSec": 1898,
+          "region": "KR",
+          "uploaded": "2025-05-07",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 45,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "OI7n4o25bvc",
+          "title": "Lux vs Veigar [ MID ] Korea Master 969 LP | Patch 26.15 ✅",
+          "rankClaim": "Master",
+          "patch": "26.15",
+          "durationSec": 1469,
+          "region": "KR",
+          "uploaded": "2026-08-10",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 45,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "uv7coXfV7HU",
+          "title": "Lux Support vs Veigar - KR Challenger Patch 25.06",
+          "rankClaim": "Challenger",
+          "patch": "25.6",
+          "durationSec": 1711,
+          "region": "KR",
+          "uploaded": "2025-03-28",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 50,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "DLKm-e0kSR8",
+          "title": "Lux Mid vs Swain - TW Challenger Patch 25.13",
+          "rankClaim": "Challenger",
+          "patch": "25.13",
+          "durationSec": 1816,
+          "uploaded": "2025-07-07",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 53,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "mK5eXcqnMts",
+          "title": "Lux Support vs Blitzcrank - KR Master Patch 25.21",
+          "rankClaim": "Master",
+          "patch": "25.21",
+          "durationSec": 1509,
+          "region": "KR",
+          "uploaded": "2025-10-28",
+          "moments": []
+        },
+        {
+          "videoId": "3GXbSbfgv9Y",
+          "title": "Lux Support vs Blitzcrank - KR Master Patch 25.17",
+          "rankClaim": "Master",
+          "patch": "25.17",
+          "durationSec": 1847,
+          "region": "KR",
+          "uploaded": "2025-09-02",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 55,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "9L22ByH633g",
+          "title": "Lux Mid vs Katarina - NA Grandmaster Patch 25.21",
+          "rankClaim": "Grandmaster",
+          "patch": "25.21",
+          "durationSec": 1568,
+          "region": "NA",
+          "uploaded": "2025-11-01",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 59,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "an6Y0VMYBXc",
+          "title": "Lux Support vs Jarvan IV - KR Master Patch 26.05",
+          "rankClaim": "Master",
+          "patch": "26.5",
+          "durationSec": 1485,
+          "region": "KR",
+          "uploaded": "2026-03-18",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 144,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 270,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 504,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 662,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 800,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 951,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 975,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1132,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1168,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1242,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1275,
+              "label": "Take down The Inhibitor"
+            },
+            {
+              "atSec": 1286,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1305,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1417,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1453,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1474,
+              "label": "End credit"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 61,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "AYx310T2brg",
+          "title": "Lux Mid vs Orianna - KR Master Patch 26.03",
+          "rankClaim": "Master",
+          "patch": "26.3",
+          "durationSec": 1541,
+          "region": "KR",
+          "uploaded": "2026-02-13",
+          "moments": []
+        },
+        {
+          "videoId": "bikH-ECPu2w",
+          "title": "Lux Mid vs Orianna - NA Grandmaster Patch 25.20",
+          "rankClaim": "Grandmaster",
+          "patch": "25.20",
+          "durationSec": 1754,
+          "region": "NA",
+          "uploaded": "2025-10-21",
+          "moments": []
+        },
+        {
+          "videoId": "MaltG9EiwF0",
+          "title": "Lux vs Orianna [ MID ] Lol Korea Grandmaster Patch 25.13 ✅",
+          "rankClaim": "Grandmaster",
+          "patch": "25.13",
+          "durationSec": 1499,
+          "region": "KR",
+          "uploaded": "2025-07-15",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 84,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "k4gcllS1Io0",
+          "title": "Lux Mid vs Akali - KR Master Patch 26.20",
+          "rankClaim": "Master",
+          "patch": "26.20",
+          "durationSec": 1870,
+          "region": "KR",
+          "uploaded": "2026-10-16",
+          "result": "W",
+          "moments": [
+            {
+              "atSec": 96,
+              "label": "First Blood — Lux kills Akali",
+              "kind": "kill"
+            },
+            {
+              "atSec": 195,
+              "label": "Lux takes down Akali"
+            },
+            {
+              "atSec": 312,
+              "label": "Lux catches Akali again"
+            },
+            {
+              "atSec": 350,
+              "label": "Red takes 1st Dragon (Chemtech)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 498,
+              "label": "Lux outduels Akali (3rd time)"
+            },
+            {
+              "atSec": 770,
+              "label": "Red takes 2nd Dragon (Cloud)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 972,
+              "label": "Lux outplays Akali (4th time)"
+            },
+            {
+              "atSec": 1080,
+              "label": "Blue takes 1st Dragon (Infernal)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1312,
+              "label": "Red takes Baron",
+              "kind": "baron"
+            },
+            {
+              "atSec": 1454,
+              "label": "Red takes 3rd Dragon (Infernal)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1627,
+              "label": "Jhin picks off Amumu"
+            },
+            {
+              "atSec": 1669,
+              "label": "Lux eliminates Akali"
+            },
+            {
+              "atSec": 1718,
+              "label": "Blue takes Baron",
+              "kind": "baron"
+            },
+            {
+              "atSec": 1763,
+              "label": "Blue takes 2nd Dragon (Infernal)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1772,
+              "label": "Jhin kills Akali",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1798,
+              "label": "Lux catches Zeri"
+            },
+            {
+              "atSec": 1831,
+              "label": "Mid Inhibitor falls (Red)"
+            },
+            {
+              "atSec": 1837,
+              "label": "Lux eliminates Akali"
+            }
+          ]
+        },
+        {
+          "videoId": "tLVOSPK3PI4",
+          "title": "Showmaker Lux vs Akali Mid - KR Challenger - Patch 16.11 Season 16",
+          "rankClaim": "Challenger",
+          "patch": "26.11",
+          "durationSec": 1531,
+          "region": "KR",
+          "player": "ShowMaker",
+          "uploaded": "2026-06-07",
+          "moments": []
+        },
+        {
+          "videoId": "UeQF77Tke6Q",
+          "title": "Lux Mid vs Akali - EUW Challenger Patch 25.10",
+          "rankClaim": "Challenger",
+          "patch": "25.10",
+          "durationSec": 1749,
+          "region": "EUW",
+          "uploaded": "2025-05-30",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 89,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "uA-QmP7d9f4",
+          "title": "Lux Support vs Leona - KR Grandmaster Patch 25.13",
+          "rankClaim": "Grandmaster",
+          "patch": "25.13",
+          "durationSec": 1578,
+          "region": "KR",
+          "uploaded": "2025-07-02",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 90,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "f1x2IFE1xb8",
+          "title": "Lux Mid vs Malzahar - EUW Grandmaster Patch 25.11",
+          "rankClaim": "Grandmaster",
+          "patch": "25.11",
+          "durationSec": 1547,
+          "region": "EUW",
+          "uploaded": "2025-06-12",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 91,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "sNKB_vIVo_Y",
+          "title": "Lux vs Talon [ MID ] Korea Master 1055 LP | Patch 26.17 ✅",
+          "rankClaim": "Master",
+          "patch": "26.17",
+          "durationSec": 1749,
+          "region": "KR",
+          "uploaded": "2026-08-29",
+          "moments": []
+        },
+        {
+          "videoId": "JE6AJMDKYd4",
+          "title": "Lux vs Talon [ MID ] Lol Korea Master Patch 25.5 ✅",
+          "rankClaim": "Master",
+          "patch": "25.5",
+          "durationSec": 1419,
+          "region": "KR",
+          "uploaded": "2025-03-08",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 101,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "m0MENJ2-Ka0",
+          "title": "Lux vs Xerath [ MID ] Lol Korea Grandmaster Patch 25.17",
+          "rankClaim": "Grandmaster",
+          "patch": "25.17",
+          "durationSec": 1426,
+          "region": "KR",
+          "uploaded": "2025-09-10",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 103,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "9JtsmRYkcww",
+          "title": "Lux vs Ahri [ MID ] Patch 26.9 Korea Challenger 1994 LP",
+          "rankClaim": "Challenger",
+          "patch": "26.9",
+          "durationSec": 1748,
+          "region": "KR",
+          "uploaded": "2026-05-03",
+          "moments": []
+        },
+        {
+          "videoId": "8uCjrWFQ1q8",
+          "title": "Lux Mid vs Ahri - EUW Grandmaster Patch 26.08",
+          "rankClaim": "Grandmaster",
+          "patch": "26.8",
+          "durationSec": 1651,
+          "region": "EUW",
+          "uploaded": "2026-04-18",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 106,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "XoJjKs0u6lA",
+          "title": "Lux Mid vs Volibear - EUW Grandmaster Patch 25.09",
+          "rankClaim": "Grandmaster",
+          "patch": "25.9",
+          "durationSec": 1569,
+          "region": "EUW",
+          "uploaded": "2025-05-11",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 111,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "unlyrSWIrYw",
+          "title": "Lux Support vs Nautilus - KR Challenger Patch 25.04",
+          "rankClaim": "Challenger",
+          "patch": "25.4",
+          "durationSec": 1717,
+          "region": "KR",
+          "uploaded": "2025-02-27",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 165,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 260,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 338,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 506,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 634,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 763,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 878,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 910,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 967,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1003,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1041,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1116,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1157,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1180,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1213,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1281,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1315,
+              "label": "Take down The Inhibitor"
+            },
+            {
+              "atSec": 1329,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1343,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1420,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1517,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1696,
+              "label": "End credit"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 112,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "rnS_VTOYb0c",
+          "title": "(DK ShowMaker) Lux Mid vs Viktor - KR Challenger Patch 26.11",
+          "rankClaim": "Challenger",
+          "patch": "26.11",
+          "durationSec": 1869,
+          "region": "KR",
+          "player": "ShowMaker",
+          "team": "DK",
+          "uploaded": "2026-06-08",
+          "result": "W",
+          "moments": [
+            {
+              "atSec": 150,
+              "label": "First Blood — Xin Zhao kills Jarvan IV",
+              "kind": "kill"
+            },
+            {
+              "atSec": 160,
+              "label": "Xin Zhao kills Bard",
+              "kind": "kill"
+            },
+            {
+              "atSec": 328,
+              "label": "Red takes 1st Dragon (Cloud)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 679,
+              "label": "Blue takes 1st Dragon (Infernal)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 821,
+              "label": "Lux kills Jhin",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1032,
+              "label": "Blue takes 2nd Dragon (Hextech)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1071,
+              "label": "Lux takes down Yone"
+            },
+            {
+              "atSec": 1148,
+              "label": "Ashe takes down Jhin"
+            },
+            {
+              "atSec": 1351,
+              "label": "Blue takes 3rd Dragon (Hextech)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1373,
+              "label": "Ashe Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1404,
+              "label": "Blue takes Baron",
+              "kind": "baron"
+            },
+            {
+              "atSec": 1463,
+              "label": "Sion eliminates Yone"
+            },
+            {
+              "atSec": 1661,
+              "label": "Xin Zhao Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1682,
+              "label": "Blue takes 4th Dragon (Hextech)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1781,
+              "label": "Team fight (3 kills)",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1808,
+              "label": "Mid Inhibitor falls (Red)"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 117,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "VWBpO-_kV_E",
+          "title": "Lux Support vs Lulu - KR Master Patch 26.20",
+          "rankClaim": "Master",
+          "patch": "26.20",
+          "durationSec": 1909,
+          "region": "KR",
+          "uploaded": "2026-10-14",
+          "result": "W",
+          "moments": [
+            {
+              "atSec": 76,
+              "label": "First Blood — Lux kills Lulu",
+              "kind": "kill"
+            },
+            {
+              "atSec": 569,
+              "label": "Lux takes down Sylas"
+            },
+            {
+              "atSec": 601,
+              "label": "Red takes 1st Dragon (Ocean)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 658,
+              "label": "Team fight (3 kills)",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 686,
+              "label": "Viktor Triple Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 746,
+              "label": "Lux picks off Zeri"
+            },
+            {
+              "atSec": 799,
+              "label": "Lux catches Zyra"
+            },
+            {
+              "atSec": 919,
+              "label": "Viktor eliminates Sylas"
+            },
+            {
+              "atSec": 988,
+              "label": "Red takes 2nd Dragon (Hextech)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1276,
+              "label": "Lux eliminates Lulu"
+            },
+            {
+              "atSec": 1352,
+              "label": "Blue takes 1st Dragon (Mountain)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1485,
+              "label": "Lux outduels Sylas"
+            },
+            {
+              "atSec": 1576,
+              "label": "Lux kills Zyra",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1618,
+              "label": "Lux takes down Sylas"
+            },
+            {
+              "atSec": 1682,
+              "label": "Blue takes 2nd Dragon (Mountain)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1815,
+              "label": "Team fight (3 kills)",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1847,
+              "label": "Bot Inhibitor falls (Blue)"
+            }
+          ]
+        },
+        {
+          "videoId": "ZY_sY_eVuCc",
+          "title": "Lux Support vs Lulu - EUNE Challenger Patch 26.18",
+          "rankClaim": "Challenger",
+          "patch": "26.18",
+          "durationSec": 1877,
+          "region": "EUNE",
+          "uploaded": "2026-09-18",
+          "moments": []
+        },
+        {
+          "videoId": "LNSFXFNv924",
+          "title": "Lux Support vs Lulu - EUW Challenger Patch 26.08",
+          "rankClaim": "Challenger",
+          "patch": "26.8",
+          "durationSec": 1439,
+          "region": "EUW",
+          "uploaded": "2026-04-26",
+          "moments": []
+        },
+        {
+          "videoId": "fikMueelmDA",
+          "title": "Lux Support vs Lulu - EUW Grandmaster Patch 26.03",
+          "rankClaim": "Grandmaster",
+          "patch": "26.3",
+          "durationSec": 1599,
+          "region": "EUW",
+          "uploaded": "2026-02-08",
+          "moments": []
+        },
+        {
+          "videoId": "2ksn-O9sr4k",
+          "title": "Lux Support vs Lulu - KR Master Patch 25.24",
+          "rankClaim": "Master",
+          "patch": "25.24",
+          "durationSec": 1453,
+          "region": "KR",
+          "uploaded": "2025-12-10",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 50,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 125,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 267,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 402,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 491,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 671,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 739,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 893,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 911,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 970,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1047,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1222,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1301,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1442,
+              "label": "End credit"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 126,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "nulXfofmbSo",
+          "title": "Lux Top vs Jayce - KR Master Patch 26.14",
+          "rankClaim": "Master",
+          "patch": "26.14",
+          "durationSec": 1884,
+          "region": "KR",
+          "uploaded": "2026-07-30",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 127,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "VfRbajJJLws",
+          "title": "Lux Mid vs Lissandra - VN Challenger Patch 26.07",
+          "rankClaim": "Challenger",
+          "patch": "26.7",
+          "durationSec": 1600,
+          "uploaded": "2026-04-07",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 134,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "9VclTLMEp1U",
+          "title": "Lux Mid vs Syndra - EUW Challenger Patch 26.06",
+          "rankClaim": "Challenger",
+          "patch": "26.6",
+          "durationSec": 1620,
+          "region": "EUW",
+          "uploaded": "2026-03-31",
+          "moments": []
+        },
+        {
+          "videoId": "yGztOJ0dkhk",
+          "title": "Lux Mid vs Syndra - EUW Challenger Patch 25.22",
+          "rankClaim": "Challenger",
+          "patch": "25.22",
+          "durationSec": 1683,
+          "region": "EUW",
+          "uploaded": "2025-11-18",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 142,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "nyRgTvxEcTI",
+          "title": "Lux Mid vs Zoe - VN Challenger Patch 25.12",
+          "rankClaim": "Challenger",
+          "patch": "25.12",
+          "durationSec": 1773,
+          "uploaded": "2025-06-22",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 163,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "RZM-PQro6Es",
+          "title": "Lux Mid vs Taliyah - KR Challenger Patch 26.09",
+          "rankClaim": "Challenger",
+          "patch": "26.9",
+          "durationSec": 1624,
+          "region": "KR",
+          "uploaded": "2026-05-03",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 166,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "un28xTJSFhQ",
+          "title": "Lux vs Akshan [ MID ] Korea Challenger 2211 LP | Patch 26.10 ✅",
+          "rankClaim": "Challenger",
+          "patch": "26.10",
+          "durationSec": 1461,
+          "region": "KR",
+          "uploaded": "2026-05-25",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 201,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "jqLHeM8IkMg",
+          "title": "Lux Support vs Braum - KR Challenger Patch 26.07",
+          "rankClaim": "Challenger",
+          "patch": "26.7",
+          "durationSec": 1767,
+          "region": "KR",
+          "uploaded": "2026-04-12",
+          "moments": []
+        },
+        {
+          "videoId": "cmuNebwVNQQ",
+          "title": "Lux Support vs Braum - KR Master Patch 25.12",
+          "rankClaim": "Master",
+          "patch": "25.12",
+          "durationSec": 1575,
+          "region": "KR",
+          "uploaded": "2025-06-19",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 235,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "xb6d8aAW8C4",
+          "title": "Lux Support vs Senna - KR Master Patch 25.19",
+          "rankClaim": "Master",
+          "patch": "25.19",
+          "durationSec": 1598,
+          "region": "KR",
+          "uploaded": "2025-10-01",
+          "moments": []
+        },
+        {
+          "videoId": "7OVV12Tw0r0",
+          "title": "Lux Support vs Senna - KR Master Patch 25.10",
+          "rankClaim": "Master",
+          "patch": "25.10",
+          "durationSec": 1758,
+          "region": "KR",
+          "uploaded": "2025-05-20",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 236,
+      "lane": "adc",
+      "videos": [
+        {
+          "videoId": "5xI2ix9J5t0",
+          "title": "T1 Peyz Lux vs Lucian [ ADC ] Korea Challenger 2389 LP | Patch 26.13",
+          "rankClaim": "Challenger",
+          "patch": "26.13",
+          "durationSec": 787,
+          "region": "KR",
+          "player": "Peyz",
+          "team": "T1",
+          "uploaded": "2026-07-11",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 236,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "hppR80NWxG0",
+          "title": "Lux vs Lucian Mid - KR Challenger - Patch 25.12 Season 15",
+          "rankClaim": "Challenger",
+          "patch": "25.12",
+          "durationSec": 1451,
+          "region": "KR",
+          "uploaded": "2025-06-25",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 246,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "Oy_4iTjlJKg",
+          "title": "Lux Mid vs Qiyana - KR Master Patch 26.19",
+          "rankClaim": "Master",
+          "patch": "26.19",
+          "durationSec": 1716,
+          "region": "KR",
+          "uploaded": "2026-10-03",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 267,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "zot3YFm5h8Q",
+          "title": "Lux Support vs Nami - NA Grandmaster Patch 26.19",
+          "rankClaim": "Grandmaster",
+          "patch": "26.19",
+          "durationSec": 1633,
+          "region": "NA",
+          "uploaded": "2026-09-30",
+          "moments": []
+        },
+        {
+          "videoId": "_9oehJyphFo",
+          "title": "Lux Support vs Nami - TW Challenger Patch 26.04",
+          "rankClaim": "Challenger",
+          "patch": "26.4",
+          "durationSec": 1470,
+          "uploaded": "2026-02-25",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 403,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 579,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 663,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 736,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 808,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 938,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1022,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1077,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1249,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1381,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1424,
+              "label": "Take down The Inhibitor"
+            },
+            {
+              "atSec": 1437,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1459,
+              "label": "End credit"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 412,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "_1eS4EpKrNc",
+          "title": "Lux Support vs Thresh - KR Master Patch 26.01",
+          "rankClaim": "Master",
+          "patch": "26.1",
+          "durationSec": 1562,
+          "region": "KR",
+          "uploaded": "2026-01-15",
+          "moments": []
+        },
+        {
+          "videoId": "pW3-ptJYvGs",
+          "title": "Lux Support vs Thresh - KR Master Patch 25.18",
+          "rankClaim": "Master",
+          "patch": "25.18",
+          "durationSec": 1654,
+          "region": "KR",
+          "uploaded": "2025-09-18",
+          "moments": []
+        },
+        {
+          "videoId": "Lq2KNJwAd58",
+          "title": "Lux Support vs Thresh - KR Master Patch 25.07",
+          "rankClaim": "Master",
+          "patch": "25.7",
+          "durationSec": 1773,
+          "region": "KR",
+          "uploaded": "2025-04-10",
+          "moments": []
+        },
+        {
+          "videoId": "dYRUWlLYkJU",
+          "title": "Lux Support vs Thresh - EUW Grandmaster Patch 25.05",
+          "rankClaim": "Grandmaster",
+          "patch": "25.5",
+          "durationSec": 1877,
+          "region": "EUW",
+          "uploaded": "2025-03-17",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 429,
+      "lane": "adc",
+      "videos": [
+        {
+          "videoId": "bKrHHAaWJ3w",
+          "title": "Lux Bot vs Kalista - EUW Grandmaster Patch 26.21",
+          "rankClaim": "Grandmaster",
+          "patch": "26.21",
+          "durationSec": 1673,
+          "region": "EUW",
+          "uploaded": "2026-10-30",
+          "result": "W",
+          "moments": [
+            {
+              "atSec": 546,
+              "label": "Lux outduels Kalista"
+            },
+            {
+              "atSec": 577,
+              "label": "Red takes 1st Dragon (Ocean)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 918,
+              "label": "Red takes 2nd Dragon (Mountain)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1040,
+              "label": "Lux outplays Kalista again"
+            },
+            {
+              "atSec": 1083,
+              "label": "Qiyana Triple Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1165,
+              "label": "Qiyana picks off Yasuo"
+            },
+            {
+              "atSec": 1201,
+              "label": "Yone picks off Kalista"
+            },
+            {
+              "atSec": 1230,
+              "label": "Yone eliminates Sylas"
+            },
+            {
+              "atSec": 1280,
+              "label": "Red takes Baron",
+              "kind": "baron"
+            },
+            {
+              "atSec": 1302,
+              "label": "Lux solo kills Kalista (3rd time)",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1325,
+              "label": "Red takes 3rd Dragon (Hextech)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1483,
+              "label": "Team fight (3 kills)",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1488,
+              "label": "Yone Triple Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1517,
+              "label": "Mid Inhibitor falls (Blue)"
+            },
+            {
+              "atSec": 1534,
+              "label": "Lux takes down Kalista"
+            },
+            {
+              "atSec": 1631,
+              "label": "Yone Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1637,
+              "label": "Yone Triple Kill",
+              "kind": "kill"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 497,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "7He_yY2rk1w",
+          "title": "Lux Support vs Rakan - BR Grandmaster Patch 26.17",
+          "rankClaim": "Grandmaster",
+          "patch": "26.17",
+          "durationSec": 1872,
+          "uploaded": "2026-09-04",
+          "moments": []
+        },
+        {
+          "videoId": "4bCgmTPv6SQ",
+          "title": "Lux Support vs Rakan - EUW Challenger Patch 26.06",
+          "rankClaim": "Challenger",
+          "patch": "26.6",
+          "durationSec": 1728,
+          "region": "EUW",
+          "uploaded": "2026-03-25",
+          "moments": []
+        },
+        {
+          "videoId": "fVAc9O4Skxc",
+          "title": "Lux Support vs Rakan - TW Challenger Patch 25.15",
+          "rankClaim": "Challenger",
+          "patch": "25.15",
+          "durationSec": 1595,
+          "uploaded": "2025-08-12",
+          "moments": []
+        },
+        {
+          "videoId": "P2XEKdXCJc4",
+          "title": "Lux Support vs Rakan - KR Master Patch 25.11",
+          "rankClaim": "Master",
+          "patch": "25.11",
+          "durationSec": 1632,
+          "region": "KR",
+          "uploaded": "2025-06-04",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 517,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "Pot-34ANh34",
+          "title": "Lux Mid vs Sylas - EUW Grandmaster Patch 26.21",
+          "rankClaim": "Grandmaster",
+          "patch": "26.21",
+          "durationSec": 1619,
+          "region": "EUW",
+          "uploaded": "2026-10-31",
+          "result": "W",
+          "moments": [
+            {
+              "atSec": 352,
+              "label": "Blue takes 1st Dragon (Mountain)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 394,
+              "label": "Rek'Sai picks off Sylas"
+            },
+            {
+              "atSec": 521,
+              "label": "Lux takes down Sylas"
+            },
+            {
+              "atSec": 696,
+              "label": "Blue takes 2nd Dragon (Infernal)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 978,
+              "label": "Kalista Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1046,
+              "label": "Red takes 1st Dragon (Hextech)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1084,
+              "label": "Lux takes down Sejuani"
+            },
+            {
+              "atSec": 1173,
+              "label": "Fiora eliminates Alistar"
+            },
+            {
+              "atSec": 1314,
+              "label": "Mid Inhibitor falls (Red)"
+            },
+            {
+              "atSec": 1375,
+              "label": "Red takes 2nd Dragon (Hextech)",
+              "kind": "dragon"
+            }
+          ]
+        },
+        {
+          "videoId": "EDZJBW72cxI",
+          "title": "Lux Mid vs Sylas - KR Master Patch 26.17",
+          "rankClaim": "Master",
+          "patch": "26.17",
+          "durationSec": 1800,
+          "region": "KR",
+          "uploaded": "2026-09-05",
+          "moments": []
+        },
+        {
+          "videoId": "jsIKMynfxd0",
+          "title": "Lux Mid vs Sylas - KR Master Patch 26.04",
+          "rankClaim": "Master",
+          "patch": "26.4",
+          "durationSec": 1614,
+          "region": "KR",
+          "uploaded": "2026-03-02",
+          "moments": []
+        },
+        {
+          "videoId": "PyNT8tJY7qo",
+          "title": "Lux Mid vs Sylas - KR Challenger Patch 25.24",
+          "rankClaim": "Challenger",
+          "patch": "25.24",
+          "durationSec": 1479,
+          "region": "KR",
+          "uploaded": "2025-12-21",
+          "moments": []
+        },
+        {
+          "videoId": "9yGdKRcEE9c",
+          "title": "Lux Mid vs Sylas - KR Master Patch 25.05",
+          "rankClaim": "Master",
+          "patch": "25.5",
+          "durationSec": 1971,
+          "region": "KR",
+          "uploaded": "2025-03-11",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 555,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "B_TFt_kIvIo",
+          "title": "Lux Support vs Pyke - KR Master Patch 25.08",
+          "rankClaim": "Master",
+          "patch": "25.8",
+          "durationSec": 2013,
+          "region": "KR",
+          "uploaded": "2025-04-23",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 711,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "fZWVX13Ma28",
+          "title": "DK ShowMaker Lux vs Vex [ MID ] Korea Master Patch 26.3",
+          "rankClaim": "Master",
+          "patch": "26.3",
+          "durationSec": 1369,
+          "region": "KR",
+          "player": "ShowMaker",
+          "team": "DK",
+          "uploaded": "2026-02-16",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 777,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "UDRTXMUvxNQ",
+          "title": "Lux Mid vs Yone - TW Challenger Patch 25.14",
+          "rankClaim": "Challenger",
+          "patch": "25.14",
+          "durationSec": 1476,
+          "uploaded": "2025-07-30",
+          "moments": []
+        },
+        {
+          "videoId": "3Ema6YmA20Y",
+          "title": "Lux vs Yone Mid - KR Grandmaster - Patch 25.13 Season 15",
+          "rankClaim": "Grandmaster",
+          "patch": "25.13",
+          "durationSec": 1771,
+          "region": "KR",
+          "uploaded": "2025-07-11",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 799,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "aJgPLKyVz8U",
+          "title": "Lux vs Ambessa Mid - KR Challenger - Patch 25.13 Season 15",
+          "rankClaim": "Challenger",
+          "patch": "25.13",
+          "durationSec": 1601,
+          "region": "KR",
+          "uploaded": "2025-07-03",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 893,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "8B4lszlQI-Q",
+          "title": "Lux Mid vs Aurora - BR Challenger Patch 25.23",
+          "rankClaim": "Challenger",
+          "patch": "25.23",
+          "durationSec": 1549,
+          "uploaded": "2025-12-02",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 910,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "dd2SKTGZznE",
+          "title": "Lux vs Hwei [ MID ] Lol Korea Master Patch 25.15 ✅",
+          "rankClaim": "Master",
+          "patch": "25.15",
+          "durationSec": 1431,
+          "region": "KR",
+          "uploaded": "2025-08-12",
+          "moments": []
+        }
+      ]
+    }
+  ]
+}

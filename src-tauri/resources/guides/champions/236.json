@@ -1,0 +1,4901 @@
+{
+  "schema": 1,
+  "champion": 236,
+  "generatedAt": "2026-11-07T13:25:14.592Z",
+  "guides": [
+    {
+      "champion": 236,
+      "enemy": 202,
+      "lane": "adc",
+      "patch": "26.21",
+      "reviewed": false,
+      "difficulty": "Medium",
+      "favoredWhen": "Win the trades and deny his teamfight casts; never give him a free objective setup.",
+      "keyTips": [
+        {
+          "text": "You win the trades, so this is your skill matchup to decide with your support. Take the straight fight with them and never without them.",
+          "scope": "pair",
+          "sourceIds": [
+            "antiwis"
+          ],
+          "patch": "26.21"
+        },
+        {
+          "text": "With your support beside you this is his hardest lane. Duel him — he wants teamfights and objectives with Deadly Flourish and Curtain Call instead.",
+          "scope": "pair",
+          "sourceIds": [
+            "yunfang"
+          ],
+          "patch": "26.20",
+          "abilityKeys": [
+            {
+              "champion": 202,
+              "key": "W"
+            },
+            {
+              "champion": 202,
+              "key": "R"
+            }
+          ]
+        },
+        {
+          "text": "Your dash ({cd:236:E}) is what he tracks above everything else. Vary its timing and never slide predictably into his root.",
+          "scope": "pair",
+          "sourceIds": [
+            "yunfang"
+          ],
+          "patch": "26.20",
+          "abilityKeys": [
+            {
+              "champion": 236,
+              "key": "E"
+            },
+            {
+              "champion": 202,
+              "key": "W"
+            }
+          ]
+        }
+      ],
+      "enemyTips": {
+        "early-lane": [
+          {
+            "text": "Jhin loads his fourth shot on a minion and holds it to zone you off the wave. Trade while it is spent and give ground while it is held.",
+            "scope": "enemy",
+            "sourceIds": [
+              "omibro"
+            ],
+            "patch": "26.19",
+            "abilityKeys": [
+              {
+                "champion": 202,
+                "key": "Q"
+              }
+            ]
+          },
+          {
+            "text": "Deadly Flourish is a follow-up for support crowd control, not dry poke. A wasted W is your window to walk up.",
+            "scope": "enemy",
+            "sourceIds": [
+              "omibro"
+            ],
+            "patch": "26.19",
+            "abilityKeys": [
+              {
+                "champion": 202,
+                "key": "W"
+              }
+            ]
+          }
+        ],
+        "win-condition": [
+          {
+            "text": "A landed Deadly Flourish sets up a guaranteed first Curtain Call shot when fired instantly. Break vision lines and stay mobile once it connects.",
+            "scope": "enemy",
+            "sourceIds": [
+              "omibro"
+            ],
+            "patch": "26.19",
+            "abilityKeys": [
+              {
+                "champion": 202,
+                "key": "W"
+              },
+              {
+                "champion": 202,
+                "key": "R"
+              }
+            ]
+          }
+        ]
+      },
+      "sections": {
+        "overview": {
+          "tips": []
+        },
+        "early-lane": {
+          "tips": [
+            {
+              "text": "Force straight trades with your support. His burst loses them, so make him fight your fight from the first waves.",
+              "scope": "pair",
+              "sourceIds": [
+                "antiwis"
+              ],
+              "patch": "26.21"
+            },
+            {
+              "text": "Trade while his fourth shot is spent and give ground while he holds it. The loaded shot zones you off the wave even without firing.",
+              "scope": "pair",
+              "sourceIds": [
+                "omibro"
+              ],
+              "patch": "26.21",
+              "abilityKeys": [
+                {
+                  "champion": 202,
+                  "key": "Q"
+                }
+              ]
+            },
+            {
+              "text": "Walk up when he wastes Deadly Flourish ({cd:202:W}) dry. Without the follow-up root he has no answer to your burst.",
+              "scope": "pair",
+              "sourceIds": [
+                "omibro"
+              ],
+              "patch": "26.21",
+              "abilityKeys": [
+                {
+                  "champion": 202,
+                  "key": "W"
+                }
+              ]
+            }
+          ]
+        },
+        "mid-lane": {
+          "tips": [
+            {
+              "text": "Meet his objective groups and force the duel. His W-plus-R plan needs range and setup; your burst inside it wins.",
+              "scope": "pair",
+              "sourceIds": [
+                "yunfang"
+              ],
+              "patch": "26.20",
+              "abilityKeys": [
+                {
+                  "champion": 202,
+                  "key": "W"
+                },
+                {
+                  "champion": 202,
+                  "key": "R"
+                }
+              ]
+            },
+            {
+              "text": "Sweep the objective flanks for his traps and fog picks. Denied vision denies his casts, and he cannot set up what he cannot see.",
+              "scope": "pair",
+              "sourceIds": [
+                "omibro"
+              ],
+              "patch": "26.21",
+              "abilityKeys": [
+                {
+                  "champion": 202,
+                  "key": "E"
+                }
+              ]
+            }
+          ]
+        },
+        "win-condition": {
+          "tips": [
+            {
+              "text": "Win through duels, not casts. Chase him off objectives with your dash rather than trading W-plus-R volleys at his range.",
+              "scope": "pair",
+              "sourceIds": [
+                "yunfang"
+              ],
+              "patch": "26.20",
+              "abilityKeys": [
+                {
+                  "champion": 236,
+                  "key": "E"
+                }
+              ]
+            },
+            {
+              "text": "Break vision and stay mobile once his root connects. The instant Curtain Call shot after it is guaranteed unless you are already moving.",
+              "scope": "pair",
+              "sourceIds": [
+                "omibro"
+              ],
+              "patch": "26.21",
+              "abilityKeys": [
+                {
+                  "champion": 202,
+                  "key": "W"
+                },
+                {
+                  "champion": 202,
+                  "key": "R"
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "itemization": [
+        {
+          "text": "Build to duel. Your win is the 1v1 and the short trades he refuses, so spend for burst rather than poke.",
+          "scope": "pair",
+          "sourceIds": [
+            "antiwis"
+          ],
+          "patch": "26.21"
+        }
+      ],
+      "sources": [
+        {
+          "id": "antiwis",
+          "author": "Antiwis",
+          "rankClaim": "Diamond (profile badge; title claims Master Elo OTP) · Jhin main",
+          "rank": "diamond",
+          "url": "https://www.mobafire.com/league-of-legends/build/26-21-jhin-guide-real-updates-every-patch-master-elo-otp-633981",
+          "kind": "mobafire"
+        },
+        {
+          "id": "yunfang",
+          "author": "Yunfang",
+          "rankClaim": "Diamond (profile badge; guide text claims Master ADC main) · Jhin main",
+          "rank": "diamond",
+          "url": "https://www.mobafire.com/league-of-legends/build/s2026-20-easy-to-read-simple-1v9-live-ama-full-guide-updated-650175",
+          "kind": "mobafire"
+        },
+        {
+          "id": "omibro",
+          "author": "Omibro",
+          "rankClaim": "Challenger ADC and coach · Jhin main",
+          "rank": "challenger",
+          "url": "https://www.youtube.com/watch?v=8Ln7EC-ryxo&t=3259s",
+          "kind": "youtube"
+        }
+      ]
+    }
+  ],
+  "general": [
+    {
+      "champion": 236,
+      "lane": "adc",
+      "patch": "26.21",
+      "reviewed": false,
+      "keyTips": [
+        {
+          "text": "Spend short-range windows pressuring with Q through minions plus passive-enhanced attacks.",
+          "scope": "champion",
+          "sourceIds": [
+            "tokyodamonsta"
+          ],
+          "abilityKeys": [
+            {
+              "champion": 236,
+              "key": "Q"
+            }
+          ]
+        },
+        {
+          "text": "Start all-ins after the support lands control or the enemy burns an important escape or defense.",
+          "scope": "champion",
+          "sourceIds": [
+            "tokyodamonsta"
+          ]
+        },
+        {
+          "text": "Flank teamfights from side angles; Lucian plays closer than long-range ADCs without ever frontlining.",
+          "scope": "champion",
+          "sourceIds": [
+            "tokyodamonsta"
+          ]
+        }
+      ],
+      "sections": {
+        "overview": {
+          "tips": []
+        },
+        "early-lane": {
+          "tips": [
+            {
+              "text": "Check the enemy jungler before committing; a mistimed close trade can lose the lane outright.",
+              "scope": "champion",
+              "sourceIds": [
+                "tokyodamonsta"
+              ]
+            },
+            {
+              "text": "Hold passive-enhanced attacks off the wave unless pushing stays intentional, keeping the lane safe.",
+              "scope": "champion",
+              "sourceIds": [
+                "tokyodamonsta"
+              ]
+            },
+            {
+              "text": "Poke Q directly when open, or thread it through a minion to reach opponents outside direct range.",
+              "scope": "champion",
+              "sourceIds": [
+                "tokyodamonsta"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 236,
+                  "key": "Q"
+                }
+              ]
+            }
+          ]
+        },
+        "mid-lane": {
+          "tips": [
+            {
+              "text": "Pressure tanks and the frontline with R, then E out once an assassin closes in.",
+              "scope": "champion",
+              "sourceIds": [
+                "tokyodamonsta"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 236,
+                  "key": "R"
+                },
+                {
+                  "champion": 236,
+                  "key": "E"
+                }
+              ]
+            },
+            {
+              "text": "Threaten with brushes and flank setups instead of walking blind into unseen space.",
+              "scope": "champion",
+              "sourceIds": [
+                "tokyodamonsta"
+              ]
+            }
+          ]
+        },
+        "win-condition": {
+          "tips": [
+            {
+              "text": "Turn lane pressure into early Dragon and Baron control; Lucian fades later, so close while the lead lives.",
+              "scope": "champion",
+              "sourceIds": [
+                "tokyodamonsta"
+              ]
+            },
+            {
+              "text": "Flank the backline only after control and peel threats are spent before stepping close.",
+              "scope": "champion",
+              "sourceIds": [
+                "tokyodamonsta"
+              ]
+            },
+            {
+              "text": "Spend E defensively on divers, since its mobility answers lockdown best.",
+              "scope": "champion",
+              "sourceIds": [
+                "tokyodamonsta"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 236,
+                  "key": "E"
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "itemization": [],
+      "sources": [
+        {
+          "id": "tokyodamonsta",
+          "author": "tokyodamonsta",
+          "rankClaim": "No rank claim",
+          "url": "https://www.mobafire.com/league-of-legends/build/season-15-lucian-high-elo-guide-573969",
+          "kind": "mobafire"
+        }
+      ]
+    }
+  ],
+  "vods": [
+    {
+      "lane": "adc",
+      "videos": [
+        {
+          "videoId": "H5Ka7pF4gUw",
+          "title": "\"Jz\" 2000LP Lucian : His Mechanic is so INSANE, STORMING KR HighElo - Engsub ( vs Tris )",
+          "rankClaim": "Master+",
+          "patch": "26.20",
+          "durationSec": 1450,
+          "region": "KR",
+          "patchEstimated": true,
+          "player": "Jz",
+          "uploaded": "2026-10-19",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "vBixw-do4E8",
+          "title": "\"Jz\" 2000LP Lucian : His EARLY GAME Laning Phase is so DAM GOOD - Engsub",
+          "rankClaim": "Master+",
+          "patch": "26.20",
+          "durationSec": 1580,
+          "patchEstimated": true,
+          "player": "Jz",
+          "uploaded": "2026-10-18",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "IOBTw3dYsOU",
+          "title": "\"JZ\" 2000LP Lucian : His Combos is so SMOOTH \" DELETING ENEMY HEATH BAR SO QUICK \" Engsub",
+          "rankClaim": "Master+",
+          "patch": "26.20",
+          "durationSec": 1292,
+          "patchEstimated": true,
+          "player": "Jz",
+          "uploaded": "2026-10-14",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "0QYjAWedMwU",
+          "title": "\"Jz\" 2000LP Lucian : His DAMAGE is on Another Level with this BUILD - Engsub ( vs Tris )",
+          "rankClaim": "Master+",
+          "patch": "26.19",
+          "durationSec": 810,
+          "patchEstimated": true,
+          "player": "Jz",
+          "uploaded": "2026-10-06",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "V5ZIfuqOEpc",
+          "title": "\"Jz\" 2000LP Lucian: His Mechanic is so BURTAL \"1v9 Dominating in HighElo\" Engsub",
+          "rankClaim": "Master+",
+          "patch": "26.19",
+          "durationSec": 1179,
+          "patchEstimated": true,
+          "player": "Jz",
+          "uploaded": "2026-10-05",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "F-t1nIrVXqY",
+          "title": "PEYZ : His Lucian Mechanic is so Dam Aggressive",
+          "rankClaim": "Master+",
+          "patch": "26.18",
+          "durationSec": 988,
+          "patchEstimated": true,
+          "player": "Peyz",
+          "uploaded": "2026-09-21",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "GeZpedF7oQs",
+          "title": "\"Jz\" 2000LP Lucian : How to END a Game in The First Minute - Engsub",
+          "rankClaim": "Master+",
+          "patch": "26.17",
+          "durationSec": 1250,
+          "patchEstimated": true,
+          "player": "Jz",
+          "uploaded": "2026-09-07",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "jnnqOlFSIaY",
+          "title": "\"Jz\" 2000LP Lucian : This is Why Lucian is Got 60% WinRate in HighElo - Engsub (Lucian vs Ez, Tris)",
+          "rankClaim": "Master+",
+          "patch": "26.14",
+          "durationSec": 1101,
+          "patchEstimated": true,
+          "player": "Jz",
+          "uploaded": "2026-07-26",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "StHSt_Ruuzo",
+          "title": "\"Jz\" 2000LP Lucian : His Mechanic is too DAM SMOOTH - Engsub (Lucian vs Aphe)",
+          "rankClaim": "Master+",
+          "patch": "26.14",
+          "durationSec": 789,
+          "patchEstimated": true,
+          "player": "Jz",
+          "uploaded": "2026-07-17",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "Zr4XMftB64s",
+          "title": "1600LP Lucian \"Jz\" Total Destroying Super Server Master Elo - Engsub ( Lucian vs Tris )",
+          "rankClaim": "Master",
+          "patch": "26.12",
+          "durationSec": 1448,
+          "patchEstimated": true,
+          "player": "Jz",
+          "uploaded": "2026-06-14",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "IoXEvGiSvJg",
+          "title": "Uzi : His Lucian is a Absolutely a BEAST, NO BACKING DOWN - Engsub",
+          "rankClaim": "Master+",
+          "patch": "26.11",
+          "durationSec": 1175,
+          "patchEstimated": true,
+          "player": "Uzi",
+          "uploaded": "2026-05-29",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "3jM5xLiTsTM",
+          "title": "Uzi : His Lucian Mechanic is so AGGRESSIVE - Engsub ( Lucian vs Ez )",
+          "rankClaim": "Master+",
+          "patch": "26.10",
+          "durationSec": 1113,
+          "patchEstimated": true,
+          "player": "Uzi",
+          "uploaded": "2026-05-16",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "vdZQFCRYb9k",
+          "title": "Uzi Lucian : Total Destruction HighElo in Less 20 Min - Engsub",
+          "rankClaim": "Master+",
+          "patch": "26.6",
+          "durationSec": 650,
+          "patchEstimated": true,
+          "player": "Uzi",
+          "uploaded": "2026-03-29",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "gtx7AuBlHHs",
+          "title": "Uzi : His Lucian is Absolutely a MONSTER - Engsub",
+          "rankClaim": "Master+",
+          "patch": "26.6",
+          "durationSec": 1144,
+          "patchEstimated": true,
+          "player": "Uzi",
+          "uploaded": "2026-03-28",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "gSVBTWtrd8Y",
+          "title": "Aiming : This OLD Lucian Build is Back & WRECKING KOREAN Challenger - Engsub",
+          "rankClaim": "Challenger",
+          "patch": "26.6",
+          "durationSec": 900,
+          "patchEstimated": true,
+          "player": "Aiming",
+          "uploaded": "2026-03-26",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "l5GHtr6tSBo",
+          "title": "Gumayusi : His Lucian Combos is so CLEAN - Engsub",
+          "rankClaim": "Master+",
+          "patch": "26.6",
+          "durationSec": 928,
+          "patchEstimated": true,
+          "player": "Gumayusi",
+          "uploaded": "2026-03-18",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "ewnl1jSo9Xk",
+          "title": "Uzi Lucian : He so AGGRESSIVE at Level 1 - Engsub",
+          "rankClaim": "Master+",
+          "patch": "26.5",
+          "durationSec": 786,
+          "patchEstimated": true,
+          "player": "Uzi",
+          "uploaded": "2026-03-07",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "x5ZrXEzd-xo",
+          "title": "Uzi : His Lucian Mechanic is so AGGRESSIVE - Engsub",
+          "rankClaim": "Master+",
+          "patch": "26.4",
+          "durationSec": 887,
+          "patchEstimated": true,
+          "player": "Uzi",
+          "uploaded": "2026-02-21",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "iozdmiM223w",
+          "title": "Uzi : His Lucian DAMAGE is Ridiculous - Engsub",
+          "rankClaim": "Master+",
+          "patch": "26.3",
+          "durationSec": 1085,
+          "patchEstimated": true,
+          "player": "Uzi",
+          "uploaded": "2026-02-18",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "wOoSjCRuNZI",
+          "title": "Uzi : His Lucian is BLASTING Everyone He Saw - Engsub",
+          "rankClaim": "Master+",
+          "patch": "26.3",
+          "durationSec": 1115,
+          "patchEstimated": true,
+          "player": "Uzi",
+          "uploaded": "2026-02-13",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "CXQ7RFn1BQE",
+          "title": "Uzi : His Lucian Mechanic is so CLEAN - Engsub",
+          "rankClaim": "Master+",
+          "patch": "26.3",
+          "durationSec": 982,
+          "patchEstimated": true,
+          "player": "Uzi",
+          "uploaded": "2026-02-12",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "OV6eOurHPZ0",
+          "title": "Smash : His Lucian Combos is too SMOOTH - Engsub",
+          "rankClaim": "Master+",
+          "patch": "26.3",
+          "durationSec": 652,
+          "patchEstimated": true,
+          "player": "Smash",
+          "uploaded": "2026-02-05",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "ionrdO4TG4I",
+          "title": "Gumayusi : His Lucian is a Monster in SoloQ - Engsub",
+          "rankClaim": "Master+",
+          "patch": "26.2",
+          "durationSec": 1273,
+          "patchEstimated": true,
+          "player": "Gumayusi",
+          "uploaded": "2026-02-01",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "jRUOp5Z9S60",
+          "title": "Smash : His Lucian Laning Phase is too CLEAN - Engsub",
+          "rankClaim": "Master+",
+          "patch": "26.2",
+          "durationSec": 671,
+          "patchEstimated": true,
+          "player": "Smash",
+          "uploaded": "2026-01-27",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "GqDxfNZId2k",
+          "title": "Gumayusi : His Lucian Combos is so Smooth - Engsub",
+          "rankClaim": "Master+",
+          "patch": "26.1",
+          "durationSec": 888,
+          "patchEstimated": true,
+          "player": "Gumayusi",
+          "uploaded": "2026-01-18",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "w_kJxVnM3Kk",
+          "title": "Teddy : His Lucian Destroying KR HighElo in Less 15 Min - Engsub",
+          "rankClaim": "Master+",
+          "patch": "26.1",
+          "durationSec": 731,
+          "region": "KR",
+          "patchEstimated": true,
+          "player": "Teddy",
+          "uploaded": "2026-01-11",
+          "format": "stream",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 3,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "u6Bba-3VQv8",
+          "title": "Lucian Mid vs Galio - KR Master Patch 25.23",
+          "rankClaim": "Master",
+          "patch": "25.23",
+          "durationSec": 1686,
+          "region": "KR",
+          "uploaded": "2025-12-01",
+          "moments": []
+        },
+        {
+          "videoId": "L0txhXrR43U",
+          "title": "Lucian Mid vs Galio - TW Challenger Patch 25.19",
+          "rankClaim": "Challenger",
+          "patch": "25.19",
+          "durationSec": 1610,
+          "uploaded": "2025-10-06",
+          "moments": []
+        },
+        {
+          "videoId": "smuHy2-KlB8",
+          "title": "Lucian Mid vs Galio - NA Challenger Patch 25.12",
+          "rankClaim": "Challenger",
+          "patch": "25.12",
+          "durationSec": 1635,
+          "region": "NA",
+          "uploaded": "2025-06-23",
+          "moments": []
+        },
+        {
+          "videoId": "fa12XK7PbyU",
+          "title": "Lucian Mid vs Galio - KR Challenger Patch 25.05",
+          "rankClaim": "Challenger",
+          "patch": "25.5",
+          "durationSec": 1603,
+          "region": "KR",
+          "uploaded": "2025-03-16",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 4,
+      "lane": "adc",
+      "videos": [
+        {
+          "videoId": "5eYFkJ0Tbsg",
+          "title": "When GUMAYUSI Lucian Meet T1 PEYZ TwistedFate in KR Challenger \" Insane Comeback \" Engsub",
+          "rankClaim": "Challenger",
+          "patch": "26.18",
+          "durationSec": 1136,
+          "region": "KR",
+          "patchEstimated": true,
+          "uploaded": "2026-09-19",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "26QOTr2cSJ0",
+          "title": "HLE Gumayusi Lucian vs Twisted Fate [ ADC ] Korea Challenger 2459 LP | Patch 26.18",
+          "rankClaim": "Challenger",
+          "patch": "26.18",
+          "durationSec": 1618,
+          "region": "KR",
+          "player": "Gumayusi",
+          "team": "HLE",
+          "uploaded": "2026-09-11",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 4,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "IQQ8pnEzuWw",
+          "title": "Lucian Mid vs Twisted Fate - KR Master Patch 25.21",
+          "rankClaim": "Master",
+          "patch": "25.21",
+          "durationSec": 1461,
+          "region": "KR",
+          "uploaded": "2025-11-01",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 7,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "My9UWfqA_V8",
+          "title": "Lucian Mid vs LeBlanc (HLE Cracker) - KR Challenger Patch 26.21",
+          "rankClaim": "Challenger",
+          "patch": "26.21",
+          "durationSec": 1660,
+          "region": "KR",
+          "uploaded": "2026-11-03",
+          "result": "W",
+          "moments": [
+            {
+              "atSec": 85,
+              "label": "First Blood — Lucian kills LeBlanc",
+              "kind": "kill"
+            },
+            {
+              "atSec": 516,
+              "label": "Lucian takes down Qiyana"
+            },
+            {
+              "atSec": 722,
+              "label": "Alistar eliminates Qiyana"
+            },
+            {
+              "atSec": 868,
+              "label": "Lucian takes down LeBlanc"
+            },
+            {
+              "atSec": 870,
+              "label": "Red takes 1st Dragon (Hextech)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1081,
+              "label": "Lucian takes down Qiyana"
+            },
+            {
+              "atSec": 1174,
+              "label": "Lee Sin takes down Wukong"
+            },
+            {
+              "atSec": 1229,
+              "label": "Lucian takes down Jax"
+            },
+            {
+              "atSec": 1273,
+              "label": "Red takes 2nd Dragon (Mountain)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1281,
+              "label": "Lucian catches LeBlanc again"
+            },
+            {
+              "atSec": 1360,
+              "label": "Lucian outduels LeBlanc (3rd time)"
+            },
+            {
+              "atSec": 1451,
+              "label": "Lee Sin picks off LeBlanc"
+            },
+            {
+              "atSec": 1494,
+              "label": "Red takes Baron",
+              "kind": "baron"
+            },
+            {
+              "atSec": 1556,
+              "label": "Lucian takes down Qiyana"
+            },
+            {
+              "atSec": 1586,
+              "label": "Mid Inhibitor falls (Blue)"
+            },
+            {
+              "atSec": 1607,
+              "label": "Team fight (4 kills)",
+              "kind": "teamfight"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 13,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "BRWE_qD4CXM",
+          "title": "(KT Hwichan) Lucian Mid vs Ryze - KR Challenger Patch 26.15",
+          "rankClaim": "Challenger",
+          "patch": "26.15",
+          "durationSec": 1535,
+          "region": "KR",
+          "player": "Hwichan",
+          "team": "KT",
+          "uploaded": "2026-08-11",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 15,
+      "lane": "adc",
+      "videos": [
+        {
+          "videoId": "lIt3PGwKjnI",
+          "title": "\"Jz\" 2000LP Lucian : Hubris Lucian is Kinda Broken - Engsub ( vs Sivir, Aphe )",
+          "rankClaim": "Master+",
+          "patch": "26.17",
+          "durationSec": 1632,
+          "patchEstimated": true,
+          "player": "Jz",
+          "uploaded": "2026-09-03",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "S4XCwVKdu9I",
+          "title": "\"Jz\" 2000LP Lucian : This is NEXT LEVEL OF LUCIAN LOOK LIKE - Engsub ( vs Sivir, Tris )",
+          "rankClaim": "Master+",
+          "patch": "26.17",
+          "durationSec": 1467,
+          "patchEstimated": true,
+          "player": "Jz",
+          "uploaded": "2026-08-27",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "aT-zietFDBI",
+          "title": "(KRX Rich) Lucian ADC vs Sivir - KR Challenger Patch 26.13",
+          "rankClaim": "Challenger",
+          "patch": "26.13",
+          "durationSec": 1483,
+          "region": "KR",
+          "player": "KRX Rich",
+          "uploaded": "2026-06-27",
+          "moments": []
+        },
+        {
+          "videoId": "z7Wf4O_5kSs",
+          "title": "Lucian ADC vs Sivir - KR Master Patch 25.24",
+          "rankClaim": "Master",
+          "patch": "25.24",
+          "durationSec": 1517,
+          "region": "KR",
+          "uploaded": "2025-12-31",
+          "moments": []
+        },
+        {
+          "videoId": "mDQS8GOynio",
+          "title": "Lucian ADC vs Sivir - KR Grandmaster Patch 25.14",
+          "rankClaim": "Grandmaster",
+          "patch": "25.14",
+          "durationSec": 1683,
+          "region": "KR",
+          "uploaded": "2025-07-19",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 18,
+      "lane": "adc",
+      "videos": [
+        {
+          "videoId": "x2P_NppfSo0",
+          "title": "Gumayusi : His Lucian just Out Gun DK Smash Tristana in TeamFight - Engsub",
+          "rankClaim": "Master+",
+          "patch": "26.21",
+          "durationSec": 1636,
+          "patchEstimated": true,
+          "uploaded": "2026-11-02",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "RIlHMZkaRVI",
+          "title": "HLE Gumayusi Lucian ADC vs Tristana - Patch 26.20 Korea Challenger 2417 LP",
+          "rankClaim": "Challenger",
+          "patch": "26.20",
+          "durationSec": 1258,
+          "region": "KR",
+          "player": "Gumayusi",
+          "team": "HLE",
+          "uploaded": "2026-10-17",
+          "moments": []
+        },
+        {
+          "videoId": "LE3qhd5bnqM",
+          "title": "HLE Gumayusi Lucian vs Tristana [ ADC ] Korea Challenger 2404 LP | Patch 26.20",
+          "rankClaim": "Challenger",
+          "patch": "26.20",
+          "durationSec": 1110,
+          "region": "KR",
+          "player": "Gumayusi",
+          "team": "HLE",
+          "uploaded": "2026-10-15",
+          "moments": []
+        },
+        {
+          "videoId": "1QmbCX3B_7c",
+          "title": "Lucian ADC vs Tristana - KR Grandmaster Patch 26.18",
+          "rankClaim": "Grandmaster",
+          "patch": "26.18",
+          "durationSec": 1760,
+          "region": "KR",
+          "uploaded": "2026-09-25",
+          "moments": []
+        },
+        {
+          "videoId": "7wa6Ttsanyo",
+          "title": "T1 Peyz Lucian vs Tristana [ ADC ] Patch 25.24 Ranked Korea",
+          "rankClaim": "Master+",
+          "patch": "25.24",
+          "durationSec": 1462,
+          "region": "KR",
+          "player": "Peyz",
+          "team": "T1",
+          "uploaded": "2025-12-07",
+          "moments": []
+        },
+        {
+          "videoId": "Q53-RvyxaxQ",
+          "title": "Lucian ADC vs Tristana - KR Master Patch 25.20",
+          "rankClaim": "Master",
+          "patch": "25.20",
+          "durationSec": 1608,
+          "region": "KR",
+          "uploaded": "2025-10-10",
+          "moments": []
+        },
+        {
+          "videoId": "0olUxlaIK0o",
+          "title": "T1 Smash Lucian vs Tristana [ ADC ] Patch 25.16 Korea Challenger",
+          "rankClaim": "Challenger",
+          "patch": "25.16",
+          "durationSec": 1974,
+          "region": "KR",
+          "player": "Smash",
+          "team": "T1",
+          "uploaded": "2025-08-24",
+          "moments": []
+        },
+        {
+          "videoId": "vRPzmo3gf14",
+          "title": "T1 Gumayusi Lucian ADC vs Tristana - Patch 25.6 Korea Challenger ✅",
+          "rankClaim": "Challenger",
+          "patch": "25.6",
+          "durationSec": 1368,
+          "region": "KR",
+          "player": "Gumayusi",
+          "team": "T1",
+          "uploaded": "2025-03-29",
+          "moments": []
+        },
+        {
+          "videoId": "Zt-VGnIXW8M",
+          "title": "Lucian ADC vs Tristana - KR Grandmaster Patch 25.05",
+          "rankClaim": "Grandmaster",
+          "patch": "25.5",
+          "durationSec": 1459,
+          "region": "KR",
+          "uploaded": "2025-03-13",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 20,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "CXfwK3uWVAk",
+          "title": "Lucian Mid vs Nunu & Willump - KR Grandmaster Patch 25.07",
+          "rankClaim": "Grandmaster",
+          "patch": "25.7",
+          "durationSec": 1595,
+          "region": "KR",
+          "uploaded": "2025-04-10",
+          "moments": []
+        },
+        {
+          "videoId": "7Uwc_AVl2_I",
+          "title": "Lucian vs Nunu & Willump  Mid - KR Challenger - Patch 25.7 Season 15",
+          "rankClaim": "Challenger",
+          "patch": "25.7",
+          "durationSec": 1571,
+          "region": "KR",
+          "uploaded": "2025-04-03",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 21,
+      "lane": "adc",
+      "videos": [
+        {
+          "videoId": "1H-ZMJ9Zy04",
+          "title": "Lucian vs Miss Fortune [ ADC ] Korea Master 273 LP | Patch 26.14",
+          "rankClaim": "Master",
+          "patch": "26.14",
+          "durationSec": 1844,
+          "region": "KR",
+          "uploaded": "2026-07-18",
+          "moments": []
+        },
+        {
+          "videoId": "eOdFOynEO7s",
+          "title": "(BLG ON) Lucian ADC vs Miss Fortune (DNS Peter) - KR Challenger Patch 26.10",
+          "rankClaim": "Challenger",
+          "patch": "26.10",
+          "durationSec": 1483,
+          "region": "KR",
+          "player": "ON",
+          "team": "BLG",
+          "uploaded": "2026-05-29",
+          "result": "W",
+          "moments": [
+            {
+              "atSec": 477,
+              "label": "First Blood — Lucian kills Vayne",
+              "kind": "kill"
+            },
+            {
+              "atSec": 720,
+              "label": "Nidalee eliminates Miss Fortune"
+            },
+            {
+              "atSec": 744,
+              "label": "Lucian picks off Nautilus"
+            },
+            {
+              "atSec": 782,
+              "label": "Lucian takes down Miss Fortune"
+            },
+            {
+              "atSec": 864,
+              "label": "Red takes 1st Dragon (Ocean)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 951,
+              "label": "Milio eliminates Vayne"
+            },
+            {
+              "atSec": 1056,
+              "label": "Lucian outduels Miss Fortune"
+            },
+            {
+              "atSec": 1189,
+              "label": "Lucian eliminates Jayce"
+            },
+            {
+              "atSec": 1220,
+              "label": "Tristana Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1241,
+              "label": "Bot Inhibitor falls (Red)"
+            },
+            {
+              "atSec": 1261,
+              "label": "Blue takes 1st Dragon (Hextech)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1307,
+              "label": "Lucian outplays Miss Fortune again"
+            },
+            {
+              "atSec": 1334,
+              "label": "Blue takes Baron",
+              "kind": "baron"
+            },
+            {
+              "atSec": 1385,
+              "label": "Mid Inhibitor falls (Red)"
+            },
+            {
+              "atSec": 1407,
+              "label": "Top Inhibitor falls (Red)"
+            },
+            {
+              "atSec": 1422,
+              "label": "Lucian picks off Vayne"
+            }
+          ]
+        },
+        {
+          "videoId": "qIJn1N7DLLw",
+          "title": "Lucian vs Miss fortune ADC - KR Challenger - Patch 25.20 Season 15",
+          "rankClaim": "Challenger",
+          "patch": "25.20",
+          "durationSec": 1576,
+          "region": "KR",
+          "uploaded": "2025-10-18",
+          "moments": []
+        },
+        {
+          "videoId": "qsEeqmRubEY",
+          "title": "Lucian vs Miss Fortune ADC [ PentaKill ] Korea Challenger 1195 LP | Patch 25.20 ✅",
+          "rankClaim": "Challenger",
+          "patch": "25.20",
+          "durationSec": 1360,
+          "region": "KR",
+          "player": "PentaKill",
+          "uploaded": "2025-10-18",
+          "moments": []
+        },
+        {
+          "videoId": "-EH2iIYmIFo",
+          "title": "Lucian vs Miss Fortune ADC - KR Challenger - Patch 25.9 Season 15",
+          "rankClaim": "Challenger",
+          "patch": "25.9",
+          "durationSec": 1861,
+          "region": "KR",
+          "uploaded": "2025-05-12",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 22,
+      "lane": "adc",
+      "videos": [
+        {
+          "videoId": "JgIocdrlLBk",
+          "title": "DK Smash Lucian vs Ashe [ ADC ] Korea Challenger 1725 LP | Patch 25.24",
+          "rankClaim": "Challenger",
+          "patch": "25.24",
+          "durationSec": 923,
+          "region": "KR",
+          "player": "Smash",
+          "team": "DK",
+          "uploaded": "2025-12-22",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 29,
+      "lane": "adc",
+      "videos": [
+        {
+          "videoId": "OjD9DAmjqKQ",
+          "title": "\"HanQL\" 2255LP Lucian : His Combos is so DAM SMOOTH - Engsub (Lucian vs Twitch)",
+          "rankClaim": "Master+",
+          "patch": "26.14",
+          "durationSec": 663,
+          "patchEstimated": true,
+          "player": "HanQL",
+          "uploaded": "2026-07-25",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "YaOtwbrz8nw",
+          "title": "\"Jz\" 2000LP Lucian : Insane Comeback of Century - Engsub (Lucian vs Twitch)",
+          "rankClaim": "Master+",
+          "patch": "26.14",
+          "durationSec": 622,
+          "patchEstimated": true,
+          "player": "Jz",
+          "uploaded": "2026-07-21",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "UplGZ8H3vnE",
+          "title": "2255LP Lucian \"HanQL\" Demolishing Super Server Master Elo - Engsub (Lucian vs Twitch)",
+          "rankClaim": "Master",
+          "patch": "26.13",
+          "durationSec": 818,
+          "patchEstimated": true,
+          "player": "HanQL",
+          "uploaded": "2026-07-01",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "jVdVCXd98g8",
+          "title": "1600LP Lucian : BLASTING Everyone He Saw - Engsub ( Lucian vs Twitch, MF )",
+          "rankClaim": "Master+",
+          "patch": "26.12",
+          "durationSec": 1550,
+          "patchEstimated": true,
+          "uploaded": "2026-06-15",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "8YECAHcPJ1w",
+          "title": "1600LP Lucian : This Dude is a Freaky Animal - Engsub ( Lucian vs Twitch, Kalista )",
+          "rankClaim": "Master+",
+          "patch": "26.12",
+          "durationSec": 1212,
+          "patchEstimated": true,
+          "uploaded": "2026-06-11",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "WPtSP3XDwNw",
+          "title": "Rank 1 Lucian : His Mechanic is LEGIT INSANE - Engsub ( Lucian vs Twitch )",
+          "rankClaim": "Master+",
+          "patch": "26.9",
+          "durationSec": 1059,
+          "patchEstimated": true,
+          "uploaded": "2026-05-03",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "z0j-VB1daPw",
+          "title": "Lucian vs Twitch ADC - KR Challenger - Patch 25.19 Season 15",
+          "rankClaim": "Challenger",
+          "patch": "25.19",
+          "durationSec": 1516,
+          "region": "KR",
+          "uploaded": "2025-09-28",
+          "moments": []
+        },
+        {
+          "videoId": "Fqf0kxaZEy4",
+          "title": "Lucian ADC vs Twitch - KR Grandmaster Patch 25.19",
+          "rankClaim": "Grandmaster",
+          "patch": "25.19",
+          "durationSec": 1514,
+          "region": "KR",
+          "uploaded": "2025-09-28",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 30,
+      "lane": "adc",
+      "videos": [
+        {
+          "videoId": "cILhIU7t8lc",
+          "title": "(VNR Listo) Lucian ADC vs Karthus - KR Challenger Patch 26.12",
+          "rankClaim": "Challenger",
+          "patch": "26.12",
+          "durationSec": 1786,
+          "region": "KR",
+          "player": "VNR Listo",
+          "uploaded": "2026-06-16",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 34,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "aiu-LKiZXLE",
+          "title": "Lucian Mid vs Anivia - KR Master Patch 25.22",
+          "rankClaim": "Master",
+          "patch": "25.22",
+          "durationSec": 1790,
+          "region": "KR",
+          "uploaded": "2025-11-16",
+          "moments": []
+        },
+        {
+          "videoId": "5TukexTbvLs",
+          "title": "Lucian Mid vs Anivia - NA Grandmaster Patch 25.20",
+          "rankClaim": "Grandmaster",
+          "patch": "25.20",
+          "durationSec": 1754,
+          "region": "NA",
+          "uploaded": "2025-10-18",
+          "moments": []
+        },
+        {
+          "videoId": "XLYiaehckPk",
+          "title": "Lucian Mid vs Anivia - KR Master Patch 25.08",
+          "rankClaim": "Master",
+          "patch": "25.8",
+          "durationSec": 1658,
+          "region": "KR",
+          "uploaded": "2025-04-26",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 345,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 362,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 670,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 812,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 924,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 961,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 981,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1231,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1302,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1422,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1453,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1481,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1565,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1626,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1637,
+              "label": "End credit"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 38,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "UUWYTTDo4Iw",
+          "title": "Lucian Mid vs Kassadin - BR Challenger Patch 26.06",
+          "rankClaim": "Challenger",
+          "patch": "26.6",
+          "durationSec": 1643,
+          "uploaded": "2026-03-27",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 41,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "20qvU2fz3zk",
+          "title": "Lucian Top vs Gangplank - KR Master Patch 26.13",
+          "rankClaim": "Master",
+          "patch": "26.13",
+          "durationSec": 1892,
+          "region": "KR",
+          "uploaded": "2026-07-07",
+          "moments": []
+        },
+        {
+          "videoId": "aiWM4toEcpE",
+          "title": "(MISA Ragner) Lucian Top vs Gangplank - EUW Grandmaster Patch 26.11",
+          "rankClaim": "Grandmaster",
+          "patch": "26.11",
+          "durationSec": 1606,
+          "region": "EUW",
+          "player": "MISA Ragner",
+          "uploaded": "2026-06-11",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 42,
+      "lane": "adc",
+      "videos": [
+        {
+          "videoId": "QPZOpFYncdo",
+          "title": "Lucian ADC vs Corki - KR Grandmaster Patch 26.20",
+          "rankClaim": "Grandmaster",
+          "patch": "26.20",
+          "durationSec": 1808,
+          "region": "KR",
+          "uploaded": "2026-10-13",
+          "result": "W",
+          "moments": [
+            {
+              "atSec": 301,
+              "label": "First Blood — Fiddlesticks kills Corki",
+              "kind": "kill"
+            },
+            {
+              "atSec": 388,
+              "label": "Blue takes 1st Dragon (Ocean)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 823,
+              "label": "Red takes 1st Dragon (Cloud)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1119,
+              "label": "Fiddlesticks Triple Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1149,
+              "label": "Blue takes 2nd Dragon (Infernal)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1171,
+              "label": "Fiddlesticks kills Nautilus",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1241,
+              "label": "Fiddlesticks takes down Elise"
+            },
+            {
+              "atSec": 1277,
+              "label": "Blue takes Baron",
+              "kind": "baron"
+            },
+            {
+              "atSec": 1342,
+              "label": "Lucian takes down Elise"
+            },
+            {
+              "atSec": 1427,
+              "label": "Lucian picks off Nautilus"
+            },
+            {
+              "atSec": 1467,
+              "label": "Blue takes 3rd Dragon (Infernal)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1650,
+              "label": "Fiddlesticks Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1682,
+              "label": "Blue takes 2nd Baron",
+              "kind": "baron"
+            },
+            {
+              "atSec": 1759,
+              "label": "Mid Inhibitor falls (Red)"
+            },
+            {
+              "atSec": 1770,
+              "label": "Lucian takes down Corki"
+            },
+            {
+              "atSec": 1781,
+              "label": "Red takes 2nd Dragon (Infernal)",
+              "kind": "dragon"
+            }
+          ]
+        },
+        {
+          "videoId": "kRPby27VuXE",
+          "title": "Lucian vs Corki ADC [ Gen.G Ruler ] Korea Challenger 2176 | Patch 26.17",
+          "rankClaim": "Challenger",
+          "patch": "26.17",
+          "durationSec": 1343,
+          "region": "KR",
+          "player": "Ruler",
+          "team": "Gen.G",
+          "uploaded": "2026-09-04",
+          "moments": []
+        },
+        {
+          "videoId": "_hvV0_NEbA8",
+          "title": "\"HanQL\" 2255LP Lucian : His Mechanic is Master Class - Engsub ( vs Aphe, Corki )",
+          "rankClaim": "Master",
+          "patch": "26.15",
+          "durationSec": 1500,
+          "patchEstimated": true,
+          "player": "HanQL",
+          "uploaded": "2026-08-11",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "RUxIZHZXxUU",
+          "title": "Diable : His Lucian is TOTAL DESTRUCTIONS SAVAGE - Engsub ( Lucian vs Corki )",
+          "rankClaim": "Master+",
+          "patch": "26.9",
+          "durationSec": 976,
+          "patchEstimated": true,
+          "uploaded": "2026-05-05",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "US03FSctH1g",
+          "title": "Lucian ADC vs Corki - KR Challenger Patch 25.21",
+          "rankClaim": "Challenger",
+          "patch": "25.21",
+          "durationSec": 1729,
+          "region": "KR",
+          "uploaded": "2025-10-25",
+          "moments": []
+        },
+        {
+          "videoId": "j0tTSDMhuUs",
+          "title": "DRX Teddy Lucian vs Corki ADC [ Quadrakill ] Patch 25.14 Korea Challenger",
+          "rankClaim": "Challenger",
+          "patch": "25.14",
+          "durationSec": 1337,
+          "region": "KR",
+          "player": "Teddy",
+          "team": "DRX",
+          "uploaded": "2025-07-25",
+          "moments": []
+        },
+        {
+          "videoId": "K7664vjacuc",
+          "title": "Lucian vs Corki ADC [ DRX Teddy ] Korea Challenger Patch 25.14",
+          "rankClaim": "Challenger",
+          "patch": "25.14",
+          "durationSec": 1699,
+          "region": "KR",
+          "player": "Teddy",
+          "team": "DRX",
+          "uploaded": "2025-07-18",
+          "moments": []
+        },
+        {
+          "videoId": "AJwBXwb9PgY",
+          "title": "Lucian vs Corki [ ADC ] Lol Korea Master Patch 25.4 ✅",
+          "rankClaim": "Master",
+          "patch": "25.4",
+          "durationSec": 1509,
+          "region": "KR",
+          "uploaded": "2025-03-03",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 42,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "CtvA6Ttx3KM",
+          "title": "Lucian Mid vs Corki - EUW Challenger Patch 25.06",
+          "rankClaim": "Challenger",
+          "patch": "25.6",
+          "durationSec": 1698,
+          "region": "EUW",
+          "uploaded": "2025-03-28",
+          "moments": []
+        },
+        {
+          "videoId": "ZLnILRFp9o4",
+          "title": "Lucian Mid vs Corki - KR Grandmaster Patch 25.04",
+          "rankClaim": "Grandmaster",
+          "patch": "25.4",
+          "durationSec": 1692,
+          "region": "KR",
+          "uploaded": "2025-02-27",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 42,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "T4Cd1l_HUzs",
+          "title": "T1 Doran Lucian vs Corki [ TOP ] Korea Master 1293 LP | Patch 26.18",
+          "rankClaim": "Master",
+          "patch": "26.18",
+          "durationSec": 1356,
+          "region": "KR",
+          "player": "Doran",
+          "team": "T1",
+          "uploaded": "2026-09-19",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 45,
+      "lane": "adc",
+      "videos": [
+        {
+          "videoId": "nNaVXeoM-2c",
+          "title": "Lucian ADC vs Veigar - KR Challenger Patch 25.24",
+          "rankClaim": "Challenger",
+          "patch": "25.24",
+          "durationSec": 1493,
+          "region": "KR",
+          "uploaded": "2025-12-06",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 480,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 579,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 629,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 775,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 950,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1029,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1049,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1279,
+              "label": "Hunt The Atakhan"
+            },
+            {
+              "atSec": 1300,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1313,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1324,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1381,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1399,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1418,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1446,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1464,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1482,
+              "label": "End credit"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 50,
+      "lane": "adc",
+      "videos": [
+        {
+          "videoId": "UBZ0EPvCIVI",
+          "title": "T1 Peyz Lucian vs Swain [ ADC ] Ranked Master NA | Patch 26.21",
+          "rankClaim": "Master",
+          "patch": "26.21",
+          "durationSec": 1332,
+          "region": "NA",
+          "player": "Peyz",
+          "team": "T1",
+          "uploaded": "2026-11-01",
+          "moments": []
+        },
+        {
+          "videoId": "2MgAbWevIzs",
+          "title": "Lucian ADC vs Swain - EUW Grandmaster Patch 26.08",
+          "rankClaim": "Grandmaster",
+          "patch": "26.8",
+          "durationSec": 1792,
+          "region": "EUW",
+          "uploaded": "2026-04-18",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 51,
+      "lane": "adc",
+      "videos": [
+        {
+          "videoId": "4DsM5PtmG90",
+          "title": "Teddy : This is What Perfect Lucian Mechanic Look Like - Engsub ( vs Ez, Caitlyn )",
+          "rankClaim": "Master+",
+          "patch": "26.21",
+          "durationSec": 1170,
+          "patchEstimated": true,
+          "uploaded": "2026-11-03",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "CfDOWg5pPiw",
+          "title": "(DK Smash) Lucian ADC vs Caitlyn - KR Challenger Patch 26.17",
+          "rankClaim": "Challenger",
+          "patch": "26.17",
+          "durationSec": 1737,
+          "region": "KR",
+          "player": "Smash",
+          "team": "DK",
+          "uploaded": "2026-08-29",
+          "moments": []
+        },
+        {
+          "videoId": "N70IX_KPvA8",
+          "title": "Smash Lucian : One Combo and You’re Already DEAD - Engsub ( vs Caitlyn )",
+          "rankClaim": "Master+",
+          "patch": "26.16",
+          "durationSec": 979,
+          "patchEstimated": true,
+          "player": "Smash",
+          "uploaded": "2026-08-24",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "7B4UI1vfp4s",
+          "title": "(DK Smash) Lucian ADC vs Caitlyn (JDG GALA) - KR Challenger Patch 26.16",
+          "rankClaim": "Challenger",
+          "patch": "26.16",
+          "durationSec": 1623,
+          "region": "KR",
+          "player": "Smash",
+          "team": "DK",
+          "uploaded": "2026-08-22",
+          "moments": []
+        },
+        {
+          "videoId": "eowJM9G6ecU",
+          "title": "HLE Gumayusi Lucian vs Caitlyn [ ADC ] Patch 26.16 Korea Challenger 2474 LP",
+          "rankClaim": "Challenger",
+          "patch": "26.16",
+          "durationSec": 973,
+          "region": "KR",
+          "player": "Gumayusi",
+          "team": "HLE",
+          "uploaded": "2026-08-15",
+          "moments": []
+        },
+        {
+          "videoId": "VDeuinap-gI",
+          "title": "\"HanQL\" 2255LP Lucian : His Mechanic is so DAM Terrifying - Engsub (Lucian vs Caitlyn, Seraphine)",
+          "rankClaim": "Master+",
+          "patch": "26.14",
+          "durationSec": 1187,
+          "patchEstimated": true,
+          "player": "HanQL",
+          "uploaded": "2026-07-21",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "aSfMdsG1DR8",
+          "title": "1600LP Lucian : BURNING DOWN EVERYTHING HE TOUCH - Engsub ( Lucian vs Tris, Caitlyn )",
+          "rankClaim": "Master+",
+          "patch": "26.11",
+          "durationSec": 1271,
+          "patchEstimated": true,
+          "uploaded": "2026-06-06",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "ddEW3nfqS6k",
+          "title": "HLE Gumayusi Lucian vs Caitlyn [ ADC ] Korea Challenger 2635 LP | Patch 26.10",
+          "rankClaim": "Challenger",
+          "patch": "26.10",
+          "durationSec": 1721,
+          "region": "KR",
+          "player": "Gumayusi",
+          "team": "HLE",
+          "uploaded": "2026-05-26",
+          "moments": []
+        },
+        {
+          "videoId": "hTRPsxvSSgU",
+          "title": "1600LP Lucian \"Jz\" This Guy is a UNSTOPPABLE KILLING MACHINE - Engsub ( Lucian vs Caitlyn, Smolder )",
+          "rankClaim": "Master+",
+          "patch": "26.10",
+          "durationSec": 1252,
+          "patchEstimated": true,
+          "player": "Jz",
+          "uploaded": "2026-05-26",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "1PnOL_d8OSs",
+          "title": "HLE Gumayusi Lucian vs Caitlyn [ ADC ] Korea Challenger 2657 LP | Patch 26.10",
+          "rankClaim": "Challenger",
+          "patch": "26.10",
+          "durationSec": 1186,
+          "region": "KR",
+          "player": "Gumayusi",
+          "team": "HLE",
+          "uploaded": "2026-05-23",
+          "moments": []
+        },
+        {
+          "videoId": "qve32n6FX4E",
+          "title": "T1 Peyz Lucian vs Caitlyn [ ADC ] Korea Challenger 2422 LP | Patch 26.8",
+          "rankClaim": "Challenger",
+          "patch": "26.8",
+          "durationSec": 1735,
+          "region": "KR",
+          "player": "Peyz",
+          "team": "T1",
+          "uploaded": "2026-04-24",
+          "moments": []
+        },
+        {
+          "videoId": "ZVWf91S09_o",
+          "title": "Lucian vs Caitlyn ADC - KR Challenger - Patch 25.22 Season 15",
+          "rankClaim": "Challenger",
+          "patch": "25.22",
+          "durationSec": 1631,
+          "region": "KR",
+          "uploaded": "2025-11-13",
+          "moments": []
+        },
+        {
+          "videoId": "egqgXR7RPik",
+          "title": "Lucian vs Caitlyn [ ADC ] Korea Challenger 1156 LP | Patch 25.22",
+          "rankClaim": "Challenger",
+          "patch": "25.22",
+          "durationSec": 1358,
+          "region": "KR",
+          "uploaded": "2025-11-13",
+          "moments": []
+        },
+        {
+          "videoId": "c1opJgVJifw",
+          "title": "Lucian vs Caitlyn ADC - KR Challenger - Patch 25.11 Season 15",
+          "rankClaim": "Challenger",
+          "patch": "25.11",
+          "durationSec": 1546,
+          "region": "KR",
+          "uploaded": "2025-06-03",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 54,
+      "lane": "adc",
+      "videos": [
+        {
+          "videoId": "OZknI4HD-zw",
+          "title": "LazyFeel : His Lucian Just Deleted 600 Armor Malphite in One Combo - Engsub",
+          "rankClaim": "Master+",
+          "patch": "26.1",
+          "durationSec": 1067,
+          "patchEstimated": true,
+          "uploaded": "2026-01-21",
+          "format": "stream",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 67,
+      "lane": "adc",
+      "videos": [
+        {
+          "videoId": "msv7_trFxNE",
+          "title": "1600LP Lucian \"Jz\" His Mechanic is so Satisfying to Watch - Engsub ( Lucian vs Aphe, Vayne )",
+          "rankClaim": "Master+",
+          "patch": "26.10",
+          "durationSec": 1470,
+          "patchEstimated": true,
+          "player": "Jz",
+          "uploaded": "2026-05-25",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "CBvXgpJF9hg",
+          "title": "Lucian vs Vayne ADC - KR Challenger - Patch 16.07 Season 16",
+          "rankClaim": "Challenger",
+          "patch": "26.7",
+          "durationSec": 2136,
+          "region": "KR",
+          "uploaded": "2026-04-07",
+          "moments": []
+        },
+        {
+          "videoId": "lAmIjOovH-4",
+          "title": "When Rank 1 Lucian meet Rank 1 Vayne - Engsub",
+          "rankClaim": "Master+",
+          "patch": "26.1",
+          "durationSec": 879,
+          "patchEstimated": true,
+          "uploaded": "2026-01-08",
+          "format": "stream",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 67,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "qyNP15f7Fm0",
+          "title": "Lucian Top vs Vayne - EUW Grandmaster Patch 25.13",
+          "rankClaim": "Grandmaster",
+          "patch": "25.13",
+          "durationSec": 1955,
+          "region": "EUW",
+          "uploaded": "2025-07-07",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 69,
+      "lane": "adc",
+      "videos": [
+        {
+          "videoId": "Qp5PZIgmuJs",
+          "title": "HLE Gumayusi Lucian vs Cassiopeia [ ADC ] Korea Challenger 2482 LP | Patch 26.15",
+          "rankClaim": "Challenger",
+          "patch": "26.15",
+          "durationSec": 1540,
+          "region": "KR",
+          "player": "Gumayusi",
+          "team": "HLE",
+          "uploaded": "2026-08-04",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 69,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "pbkR1Rp5Cao",
+          "title": "Lucian Mid vs Cassiopeia - KR Master Patch 25.13",
+          "rankClaim": "Master",
+          "patch": "25.13",
+          "durationSec": 1542,
+          "region": "KR",
+          "uploaded": "2025-07-11",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 80,
+      "lane": "adc",
+      "videos": [
+        {
+          "videoId": "eU1kTn5EeyA",
+          "title": "(G2 Hans Sama) Lucian ADC vs Pantheon - EUW Master Patch 26.15",
+          "rankClaim": "Master",
+          "patch": "26.15",
+          "durationSec": 1759,
+          "region": "EUW",
+          "player": "Hans Sama",
+          "team": "G2",
+          "uploaded": "2026-08-04",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 81,
+      "lane": "adc",
+      "videos": [
+        {
+          "videoId": "m-vodhjmdWc",
+          "title": "(VIT Carzzy) Lucian ADC vs Ezreal - EUW Master Patch 26.14",
+          "rankClaim": "Master",
+          "patch": "26.14",
+          "durationSec": 1835,
+          "region": "EUW",
+          "player": "VIT Carzzy",
+          "uploaded": "2026-07-21",
+          "moments": []
+        },
+        {
+          "videoId": "k4whRuTa3b0",
+          "title": "Smash : His Lucian is Tearing Peyz Ezreal Apart - Engsub ( Ft.Showmaker, Gumayusi, Peyz, Lucid, )",
+          "rankClaim": "Master+",
+          "patch": "26.13",
+          "durationSec": 1347,
+          "patchEstimated": true,
+          "uploaded": "2026-06-25",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "E57M1bREVFw",
+          "title": "(TES Creme) Lucian ADC vs Ezreal - KR Challenger Patch 26.11",
+          "rankClaim": "Challenger",
+          "patch": "26.11",
+          "durationSec": 1639,
+          "region": "KR",
+          "player": "Creme",
+          "team": "TES",
+          "uploaded": "2026-06-02",
+          "moments": []
+        },
+        {
+          "videoId": "aTxs2iaPydI",
+          "title": "Lucian ADC vs Ezreal - KR Challenger Patch 26.09",
+          "rankClaim": "Challenger",
+          "patch": "26.9",
+          "durationSec": 1482,
+          "region": "KR",
+          "uploaded": "2026-05-09",
+          "moments": []
+        },
+        {
+          "videoId": "58iOjk0ZKXA",
+          "title": "Lucian vs Ezreal ADC - KR Challenger - Patch 16.09 Season 16",
+          "rankClaim": "Challenger",
+          "patch": "26.9",
+          "durationSec": 1396,
+          "region": "KR",
+          "uploaded": "2026-05-06",
+          "moments": []
+        },
+        {
+          "videoId": "YkmvN6NhldU",
+          "title": "HLE Gumayusi Lucian vs Ezreal [ ADC ] Korea Challenger 2500 LP | Patch 26.9",
+          "rankClaim": "Challenger",
+          "patch": "26.9",
+          "durationSec": 1216,
+          "region": "KR",
+          "player": "Gumayusi",
+          "team": "HLE",
+          "uploaded": "2026-05-04",
+          "moments": []
+        },
+        {
+          "videoId": "WawELgwKuvc",
+          "title": "Lucian ADC vs Ezreal - KR Master Patch 26.07",
+          "rankClaim": "Master",
+          "patch": "26.7",
+          "durationSec": 1459,
+          "region": "KR",
+          "uploaded": "2026-04-04",
+          "moments": []
+        },
+        {
+          "videoId": "VtKlzT2DT5Q",
+          "title": "Lucian ADC vs Ezreal - KR Master Patch 26.05",
+          "rankClaim": "Master",
+          "patch": "26.5",
+          "durationSec": 1572,
+          "region": "KR",
+          "uploaded": "2026-03-06",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 159,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 299,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 323,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 497,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 637,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 674,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 881,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 915,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 941,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1153,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1182,
+              "label": "Get a Quadra Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1290,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1318,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1342,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1368,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1392,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1492,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1507,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1523,
+              "label": "Take down The Inhibitor"
+            },
+            {
+              "atSec": 1534,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1545,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1561,
+              "label": "End credit"
+            }
+          ]
+        },
+        {
+          "videoId": "hkfb3rnvB-Y",
+          "title": "Lucian ADC vs Ezreal - KR Challenger Patch 26.04",
+          "rankClaim": "Challenger",
+          "patch": "26.4",
+          "durationSec": 1598,
+          "region": "KR",
+          "uploaded": "2026-03-05",
+          "moments": []
+        },
+        {
+          "videoId": "qd6EG9lEIOU",
+          "title": "HLE Gumayusi Lucian vs Ezreal [ ADC ] Korea Challenger 1637 LP | Patch 26.4",
+          "rankClaim": "Challenger",
+          "patch": "26.4",
+          "durationSec": 938,
+          "region": "KR",
+          "player": "Gumayusi",
+          "team": "HLE",
+          "uploaded": "2026-02-28",
+          "moments": []
+        },
+        {
+          "videoId": "YAPUa_tY0gE",
+          "title": "T1 Peyz Lucian vs Ezreal [ ADC ] Korea Challenger 1755 LP | Patch 26.3",
+          "rankClaim": "Challenger",
+          "patch": "26.3",
+          "durationSec": 1602,
+          "region": "KR",
+          "player": "Peyz",
+          "team": "T1",
+          "uploaded": "2026-02-07",
+          "moments": []
+        },
+        {
+          "videoId": "erDRMubYPWE",
+          "title": "HLE Gumayusi Lucian vs Ezreal [ ADC ] Patch 25.24 Ranked Korea",
+          "rankClaim": "Master+",
+          "patch": "25.24",
+          "durationSec": 1672,
+          "region": "KR",
+          "player": "Gumayusi",
+          "team": "HLE",
+          "uploaded": "2025-12-31",
+          "moments": []
+        },
+        {
+          "videoId": "PZVl51wrmR8",
+          "title": "Lucian vs Ezreal ADC [ Gen.G Ruler ] Patch 25.24 Ranked Korea ✅",
+          "rankClaim": "Master+",
+          "patch": "25.24",
+          "durationSec": 1301,
+          "region": "KR",
+          "player": "Ruler",
+          "team": "Gen.G",
+          "uploaded": "2025-12-30",
+          "moments": []
+        },
+        {
+          "videoId": "lqRO8zmgnuQ",
+          "title": "Lucian ADC vs Ezreal - KR Challenger Patch 25.23",
+          "rankClaim": "Challenger",
+          "patch": "25.23",
+          "durationSec": 1514,
+          "region": "KR",
+          "uploaded": "2025-11-23",
+          "moments": []
+        },
+        {
+          "videoId": "kLqqrIW3Hgk",
+          "title": "T1 Smash Lucian vs Ezreal [ ADC ] Korea Challenger 1238 LP | Patch 25.19",
+          "rankClaim": "Challenger",
+          "patch": "25.19",
+          "durationSec": 1441,
+          "region": "KR",
+          "player": "Smash",
+          "team": "T1",
+          "uploaded": "2025-10-01",
+          "moments": []
+        },
+        {
+          "videoId": "42GbE-K3_WQ",
+          "title": "Lucian ADC vs Ezreal - KR Master Patch 25.17",
+          "rankClaim": "Master",
+          "patch": "25.17",
+          "durationSec": 1457,
+          "region": "KR",
+          "uploaded": "2025-08-31",
+          "moments": []
+        },
+        {
+          "videoId": "Z2J6z_adpQk",
+          "title": "Lucian vs Ezreal ADC - KR Challenger - Patch 25.13 Season 15",
+          "rankClaim": "Challenger",
+          "patch": "25.13",
+          "durationSec": 1531,
+          "region": "KR",
+          "uploaded": "2025-07-11",
+          "moments": []
+        },
+        {
+          "videoId": "A3WLKEvm6os",
+          "title": "Lucian ADC vs Ezreal - KR Grandmaster Patch 25.10",
+          "rankClaim": "Grandmaster",
+          "patch": "25.10",
+          "durationSec": 1606,
+          "region": "KR",
+          "uploaded": "2025-05-16",
+          "moments": []
+        },
+        {
+          "videoId": "aF3dPlpJDaQ",
+          "title": "T1 Smash Lucian vs Ezreal [ ADC ] Korea Challenger Patch 25.8 ✅",
+          "rankClaim": "Challenger",
+          "patch": "25.8",
+          "durationSec": 1473,
+          "region": "KR",
+          "player": "Smash",
+          "team": "T1",
+          "uploaded": "2025-04-18",
+          "moments": []
+        },
+        {
+          "videoId": "JOkTsTyLkEY",
+          "title": "Lucian vs Ezreal ADC [ Peyz ] Patch 25.8 Korea Challenger ✅",
+          "rankClaim": "Challenger",
+          "patch": "25.8",
+          "durationSec": 935,
+          "region": "KR",
+          "player": "Peyz",
+          "uploaded": "2025-04-16",
+          "moments": []
+        },
+        {
+          "videoId": "jdbkC_Fzzdw",
+          "title": "Lucian ADC vs Ezreal - KR Master Patch 25.07",
+          "rankClaim": "Master",
+          "patch": "25.7",
+          "durationSec": 1704,
+          "region": "KR",
+          "uploaded": "2025-04-05",
+          "moments": []
+        },
+        {
+          "videoId": "eoLyMWt-78Y",
+          "title": "T1 Gumayusi Lucian vs Ezreal [ ADC ] Korea Challenger Patch 25.6 ✅",
+          "rankClaim": "Challenger",
+          "patch": "25.6",
+          "durationSec": 717,
+          "region": "KR",
+          "player": "Gumayusi",
+          "team": "T1",
+          "uploaded": "2025-03-26",
+          "moments": []
+        },
+        {
+          "videoId": "z3wkWcYpGy4",
+          "title": "T1 Gumayusi Lucian vs Ezreal [ ADC ] Korea Challenger Patch 25.5 ✅",
+          "rankClaim": "Challenger",
+          "patch": "25.5",
+          "durationSec": 765,
+          "region": "KR",
+          "player": "Gumayusi",
+          "team": "T1",
+          "uploaded": "2025-03-19",
+          "moments": []
+        },
+        {
+          "videoId": "SNOtVVA24Ws",
+          "title": "Lucian ADC vs Ezreal - EUW Challenger Patch 25.04",
+          "rankClaim": "Challenger",
+          "patch": "25.4",
+          "durationSec": 1966,
+          "region": "EUW",
+          "uploaded": "2025-03-05",
+          "moments": []
+        },
+        {
+          "videoId": "J1qSApAou14",
+          "title": "T1 Gumayusi Lucian ADC vs Ezreal - Patch 25.2 Korea Challenger ✅",
+          "rankClaim": "Challenger",
+          "patch": "25.2",
+          "durationSec": 1479,
+          "region": "KR",
+          "player": "Gumayusi",
+          "team": "T1",
+          "uploaded": "2025-01-31",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 84,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "uu2zb7pELSA",
+          "title": "Lucian Top vs Akali - KR Master Patch 26.07",
+          "rankClaim": "Master",
+          "patch": "26.7",
+          "durationSec": 1570,
+          "region": "KR",
+          "uploaded": "2026-04-12",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 276,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 643,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 749,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 864,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 976,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1052,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1280,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1298,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1317,
+              "label": "Hunt The Baron Nashor",
+              "kind": "baron"
+            },
+            {
+              "atSec": 1354,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1425,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1458,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1559,
+              "label": "End credit"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 91,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "MtzImx3rpOg",
+          "title": "Lucian Mid vs Talon - KR Master Patch 26.12",
+          "rankClaim": "Master",
+          "patch": "26.12",
+          "durationSec": 1493,
+          "region": "KR",
+          "uploaded": "2026-06-24",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 96,
+      "lane": "adc",
+      "videos": [
+        {
+          "videoId": "tHGJ-mIRPRE",
+          "title": "Lucian ADC vs Kog'Maw - KR Challenger Patch 26.17",
+          "rankClaim": "Challenger",
+          "patch": "26.17",
+          "durationSec": 1716,
+          "region": "KR",
+          "uploaded": "2026-09-07",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 101,
+      "lane": "adc",
+      "videos": [
+        {
+          "videoId": "x0xLIJsXtxc",
+          "title": "\"Jz\" 2000LP Lucian: With Yuumi on My Side We Could Total 2v8 This Game - Engsub ( vs Xerath, Kalista",
+          "rankClaim": "Master+",
+          "patch": "26.16",
+          "durationSec": 1702,
+          "patchEstimated": true,
+          "player": "Jz",
+          "uploaded": "2026-08-17",
+          "format": "stream",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 101,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "lBPQgi_Ejr0",
+          "title": "Lucian Mid vs Xerath - KR Master Patch 25.14",
+          "rankClaim": "Master",
+          "patch": "25.14",
+          "durationSec": 1851,
+          "region": "KR",
+          "uploaded": "2025-07-27",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 105,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "mTJ8s7Kolvs",
+          "title": "Lucian Mid vs Fizz - NA Grandmaster Patch 25.15",
+          "rankClaim": "Grandmaster",
+          "patch": "25.15",
+          "durationSec": 1580,
+          "region": "NA",
+          "uploaded": "2025-08-14",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 110,
+      "lane": "adc",
+      "videos": [
+        {
+          "videoId": "ujZFUINsJtE",
+          "title": "HLE Gumayusi Lucian vs Varus [ ADC ] Korea Challenger 2358 LP | Patch 26.19",
+          "rankClaim": "Challenger",
+          "patch": "26.19",
+          "durationSec": 836,
+          "region": "KR",
+          "player": "Gumayusi",
+          "team": "HLE",
+          "uploaded": "2026-09-27",
+          "moments": []
+        },
+        {
+          "videoId": "eLKH7Q7czxM",
+          "title": "1600LP Lucian \"Jzad\" He is The Only Man Who Could Save This Game - Engsub ( Lucian vs Varus )",
+          "rankClaim": "Master+",
+          "patch": "26.10",
+          "durationSec": 1309,
+          "patchEstimated": true,
+          "uploaded": "2026-05-22",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "S69A70q1DBg",
+          "title": "Lucian vs Varus ADC - KR Challenger - Patch 16.08 Season 16",
+          "rankClaim": "Challenger",
+          "patch": "26.8",
+          "durationSec": 2056,
+          "region": "KR",
+          "uploaded": "2026-04-19",
+          "moments": []
+        },
+        {
+          "videoId": "uCBBAF0aR9U",
+          "title": "BLG Viper Lucian vs Varus [ ADC ] Korea Grandmaster Patch 26.4 ✅",
+          "rankClaim": "Grandmaster",
+          "patch": "26.4",
+          "durationSec": 1229,
+          "region": "KR",
+          "player": "Viper",
+          "team": "BLG",
+          "uploaded": "2026-02-22",
+          "moments": []
+        },
+        {
+          "videoId": "YQuoHNDonCw",
+          "title": "Lucian ADC vs Varus - KR Grandmaster Patch 26.02",
+          "rankClaim": "Grandmaster",
+          "patch": "26.2",
+          "durationSec": 1548,
+          "region": "KR",
+          "uploaded": "2026-01-24",
+          "moments": []
+        },
+        {
+          "videoId": "QOYZKW0GrBo",
+          "title": "Lucian vs Varus ADC [ DRX Teddy ] Patch 25.14 Korea Challenger",
+          "rankClaim": "Challenger",
+          "patch": "25.14",
+          "durationSec": 1302,
+          "region": "KR",
+          "player": "Teddy",
+          "team": "DRX",
+          "uploaded": "2025-07-16",
+          "moments": []
+        },
+        {
+          "videoId": "9TTOAY-h8WI",
+          "title": "Lucian ADC vs Varus - KR Challenger Patch 25.11",
+          "rankClaim": "Challenger",
+          "patch": "25.11",
+          "durationSec": 1669,
+          "region": "KR",
+          "uploaded": "2025-06-02",
+          "moments": []
+        },
+        {
+          "videoId": "w1isDzZSnPI",
+          "title": "T1 Gumayusi Lucian vs Varus [ ADC ] Korea Challenger Patch 25.10",
+          "rankClaim": "Challenger",
+          "patch": "25.10",
+          "durationSec": 1517,
+          "region": "KR",
+          "player": "Gumayusi",
+          "team": "T1",
+          "uploaded": "2025-05-23",
+          "moments": []
+        },
+        {
+          "videoId": "h5ielOKLz7c",
+          "title": "T1 Gumayusi Lucian vs Varus [ ADC ] Korea Master Patch 25.9",
+          "rankClaim": "Master",
+          "patch": "25.9",
+          "durationSec": 1531,
+          "region": "KR",
+          "player": "Gumayusi",
+          "team": "T1",
+          "uploaded": "2025-05-02",
+          "moments": []
+        },
+        {
+          "videoId": "nhIhnihhZYc",
+          "title": "Lucian vs Varus ADC [ Deft ] Korea Challenger Patch 25.8 ✅",
+          "rankClaim": "Challenger",
+          "patch": "25.8",
+          "durationSec": 1448,
+          "region": "KR",
+          "player": "Deft",
+          "uploaded": "2025-04-28",
+          "moments": []
+        },
+        {
+          "videoId": "HPIw8RuVLTk",
+          "title": "T1 Gumayusi Lucian vs Varus [ ADC ] Patch 25.7 Korea Challenger ✅",
+          "rankClaim": "Challenger",
+          "patch": "25.7",
+          "durationSec": 970,
+          "region": "KR",
+          "player": "Gumayusi",
+          "team": "T1",
+          "uploaded": "2025-04-08",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 112,
+      "lane": "adc",
+      "videos": [
+        {
+          "videoId": "p6bfJ7ViJ-U",
+          "title": "Lucian vs Viktor ADC [ Gen.G Ruler ] Korea Challenger 2054 | Patch 26.15",
+          "rankClaim": "Challenger",
+          "patch": "26.15",
+          "durationSec": 1481,
+          "region": "KR",
+          "player": "Ruler",
+          "team": "Gen.G",
+          "uploaded": "2026-07-30",
+          "moments": []
+        },
+        {
+          "videoId": "JuvROsk6uQw",
+          "title": "Lucian ADC vs Viktor - KR Grandmaster Patch 25.09",
+          "rankClaim": "Grandmaster",
+          "patch": "25.9",
+          "durationSec": 1699,
+          "region": "KR",
+          "uploaded": "2025-05-03",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 115,
+      "lane": "adc",
+      "videos": [
+        {
+          "videoId": "t_sRBWuue0Q",
+          "title": "(GSMC Alix) Lucian ADC vs Ziggs - EUW Challenger Patch 26.21",
+          "rankClaim": "Challenger",
+          "patch": "26.21",
+          "durationSec": 1770,
+          "region": "EUW",
+          "player": "GSMC Alix",
+          "uploaded": "2026-10-27",
+          "result": "W",
+          "moments": [
+            {
+              "atSec": 283,
+              "label": "Red takes 1st Dragon (Infernal)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 601,
+              "label": "Red takes 2nd Dragon (Hextech)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 801,
+              "label": "Ahri eliminates Garen"
+            },
+            {
+              "atSec": 910,
+              "label": "Lucian picks off Quinn"
+            },
+            {
+              "atSec": 920,
+              "label": "Blue takes 1st Dragon (Cloud)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1092,
+              "label": "Twisted Fate takes down Garen"
+            },
+            {
+              "atSec": 1285,
+              "label": "Red takes 3rd Dragon (Cloud)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1324,
+              "label": "Ahri eliminates Garen"
+            },
+            {
+              "atSec": 1435,
+              "label": "Lucian picks off Anivia"
+            },
+            {
+              "atSec": 1511,
+              "label": "Lucian picks off Quinn"
+            },
+            {
+              "atSec": 1545,
+              "label": "Red takes Baron",
+              "kind": "baron"
+            },
+            {
+              "atSec": 1550,
+              "label": "Lucian takes down Ziggs"
+            },
+            {
+              "atSec": 1573,
+              "label": "Lucian Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1616,
+              "label": "Red takes 4th Dragon (Cloud)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1693,
+              "label": "Team fight (3 kills)",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1715,
+              "label": "Lucian takes down Talon"
+            },
+            {
+              "atSec": 1739,
+              "label": "Ahri eliminates Garen"
+            },
+            {
+              "atSec": 1746,
+              "label": "Top Inhibitor falls (Blue)"
+            }
+          ]
+        },
+        {
+          "videoId": "xaQcIXPEv78",
+          "title": "T1 Peyz Lucian vs Ziggs [ ADC ] Patch 26.21 Ranked Master NA",
+          "rankClaim": "Master",
+          "patch": "26.21",
+          "durationSec": 1333,
+          "region": "NA",
+          "player": "Peyz",
+          "team": "T1",
+          "uploaded": "2026-10-22",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 119,
+      "lane": "adc",
+      "videos": [
+        {
+          "videoId": "jivXG70ZEQ8",
+          "title": "\"HanQL\" 2255LP Lucian : This Dude is so AGGRESSIVE in Early Game - Engsub ( vs Draven, Corki )",
+          "rankClaim": "Master+",
+          "patch": "26.15",
+          "durationSec": 1160,
+          "patchEstimated": true,
+          "player": "HanQL",
+          "uploaded": "2026-08-09",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "Jm0HwSXgBIw",
+          "title": "1600LP Lucian : His DAMAGE is so DAM BROKEN - Engsub ( Lucian vs Aphe, Draven )",
+          "rankClaim": "Master+",
+          "patch": "26.12",
+          "durationSec": 1836,
+          "patchEstimated": true,
+          "uploaded": "2026-06-16",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "Fmet87v7SSA",
+          "title": "1600LP Lucian : This Guy is TEARING Super Server HighElo Apart - Engsub ( Lucian vs Draven, Yunara )",
+          "rankClaim": "Master+",
+          "patch": "26.10",
+          "durationSec": 1249,
+          "patchEstimated": true,
+          "uploaded": "2026-05-23",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "Q51eUmggSMc",
+          "title": "Diable : His Lucian is TEARING APART KOREAN MASTER ELO - Engsub ( Lucian vs Draven )",
+          "rankClaim": "Master",
+          "patch": "26.9",
+          "durationSec": 1041,
+          "patchEstimated": true,
+          "uploaded": "2026-04-29",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "jDs8ttTNoVg",
+          "title": "HLE Gumayusi Lucian vs Draven [ ADC ] Korea Challenger 2297 LP | Patch 26.7",
+          "rankClaim": "Challenger",
+          "patch": "26.7",
+          "durationSec": 1531,
+          "region": "KR",
+          "player": "Gumayusi",
+          "team": "HLE",
+          "uploaded": "2026-04-04",
+          "moments": []
+        },
+        {
+          "videoId": "NeJfKZ9QMlo",
+          "title": "Lucian vs Draven ADC - KR Challenger - Patch 25.22 Season 15",
+          "rankClaim": "Challenger",
+          "patch": "25.22",
+          "durationSec": 1381,
+          "region": "KR",
+          "uploaded": "2025-11-16",
+          "moments": []
+        },
+        {
+          "videoId": "7wmFnlTygf0",
+          "title": "Deft Lucian vs Draven ADC [ TripleKill ] Korea Master Patch 25.13 ✅",
+          "rankClaim": "Master",
+          "patch": "25.13",
+          "durationSec": 1295,
+          "region": "KR",
+          "player": "Deft",
+          "uploaded": "2025-07-12",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 126,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "_5CdtpUm9tY",
+          "title": "Lucian Mid vs Jayce - NA Challenger Patch 26.02",
+          "rankClaim": "Challenger",
+          "patch": "26.2",
+          "durationSec": 1522,
+          "region": "NA",
+          "uploaded": "2026-01-31",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 126,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "Pii4WI41Fxg",
+          "title": "(Rascal) Lucian Top vs Jayce - KR Master Patch 26.14",
+          "rankClaim": "Master",
+          "patch": "26.14",
+          "durationSec": 1538,
+          "region": "KR",
+          "player": "Rascal",
+          "uploaded": "2026-07-26",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 127,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "uM4NyGWlK4M",
+          "title": "Lucian Mid vs Lissandra - NA Challenger Patch 25.09",
+          "rankClaim": "Challenger",
+          "patch": "25.9",
+          "durationSec": 1594,
+          "region": "NA",
+          "uploaded": "2025-05-09",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 133,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "XgY9wUKuKwk",
+          "title": "Lucian Top vs Quinn - NA Challenger Patch 26.05",
+          "rankClaim": "Challenger",
+          "patch": "26.5",
+          "durationSec": 1513,
+          "region": "NA",
+          "uploaded": "2026-03-14",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 142,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "a2hVP7SoItg",
+          "title": "Lucian Mid vs Zoe - KR Master Patch 26.19",
+          "rankClaim": "Master",
+          "patch": "26.19",
+          "durationSec": 1778,
+          "region": "KR",
+          "uploaded": "2026-10-05",
+          "moments": []
+        },
+        {
+          "videoId": "LcoxVP7y5CY",
+          "title": "Lucian Mid vs Zoe - KR Master Patch 25.17",
+          "rankClaim": "Master",
+          "patch": "25.17",
+          "durationSec": 1723,
+          "region": "KR",
+          "uploaded": "2025-09-06",
+          "moments": []
+        },
+        {
+          "videoId": "OHD3wX_a10w",
+          "title": "Lucian Mid vs Zoe - KR Grandmaster Patch 25.10",
+          "rankClaim": "Grandmaster",
+          "patch": "25.10",
+          "durationSec": 1840,
+          "region": "KR",
+          "uploaded": "2025-05-23",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 145,
+      "lane": "adc",
+      "videos": [
+        {
+          "videoId": "5crUYpSKz6c",
+          "title": "(G2 Caps) Lucian ADC vs Kai'Sa - EUW Challenger Patch 26.19",
+          "rankClaim": "Challenger",
+          "patch": "26.19",
+          "durationSec": 1745,
+          "region": "EUW",
+          "player": "Caps",
+          "team": "G2",
+          "uploaded": "2026-09-29",
+          "moments": []
+        },
+        {
+          "videoId": "ZfVW2GXBEYo",
+          "title": "\"Jz\" 2000LP Lucian : Destroying Master Elo with Perfect KDA - Engsub ( vs Kai'sa, Corki )",
+          "rankClaim": "Master",
+          "patch": "26.18",
+          "durationSec": 1174,
+          "patchEstimated": true,
+          "player": "Jz",
+          "uploaded": "2026-09-21",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "OtXHivwzGx0",
+          "title": "Lucian ADC vs Kai'Sa - KR Master Patch 26.18",
+          "rankClaim": "Master",
+          "patch": "26.18",
+          "durationSec": 1790,
+          "region": "KR",
+          "uploaded": "2026-09-14",
+          "moments": []
+        },
+        {
+          "videoId": "LQkxW1ZQCPo",
+          "title": "1500lp Lucian : This Dude is RUTHLESS SAVAGE - Engsub ( vs Kai'sa )",
+          "rankClaim": "Master+",
+          "patch": "26.17",
+          "durationSec": 801,
+          "patchEstimated": true,
+          "uploaded": "2026-09-06",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "Y5pykk9g49c",
+          "title": "2000LP Lucian \"Jz\" His Mechanic is so AGGRESSIVE in Early Game - Engsub (Lucian vs Kai'sa, Tris)",
+          "rankClaim": "Master+",
+          "patch": "26.13",
+          "durationSec": 1415,
+          "patchEstimated": true,
+          "player": "Jz",
+          "uploaded": "2026-07-10",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "pjCvN3I6fMI",
+          "title": "1600LP Lucian : LET HIM COOKKK .... Engsub ( Lucian vs Kai'sa, Nilah )",
+          "rankClaim": "Master+",
+          "patch": "26.12",
+          "durationSec": 1338,
+          "patchEstimated": true,
+          "uploaded": "2026-06-22",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "RykPiPTTQj0",
+          "title": "1600LP Lucian : His DAMAGE Hurting so Bad with Full CRIT BUILD - Engsub (Lucian vs Kai'sa, Draven)",
+          "rankClaim": "Master+",
+          "patch": "26.12",
+          "durationSec": 1579,
+          "patchEstimated": true,
+          "uploaded": "2026-06-13",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "rfYwGXXtCUA",
+          "title": "1600LP Lucian \"Jz\" This Dude is a FREAKING KILLING MACHINE - Engsub ( Lucian vs Kai'sa, Tris )",
+          "rankClaim": "Master+",
+          "patch": "26.11",
+          "durationSec": 1227,
+          "patchEstimated": true,
+          "player": "Jz",
+          "uploaded": "2026-05-31",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "rE6h7D1LF3o",
+          "title": "BLG Viper Lucian vs Kai'Sa [ ADC ] Korea Challenger 2050 LP | Patch 26.9",
+          "rankClaim": "Challenger",
+          "patch": "26.9",
+          "durationSec": 1379,
+          "region": "KR",
+          "player": "Viper",
+          "team": "BLG",
+          "uploaded": "2026-05-01",
+          "moments": []
+        },
+        {
+          "videoId": "GxI2G-580e4",
+          "title": "Lucian ADC vs Kai'Sa - KR Master Patch 26.03",
+          "rankClaim": "Master",
+          "patch": "26.3",
+          "durationSec": 1531,
+          "region": "KR",
+          "uploaded": "2026-02-08",
+          "moments": []
+        },
+        {
+          "videoId": "qsAmvlKHIuY",
+          "title": "HLE Gumayusi Lucian vs Kai'Sa [ ADC ] Patch 26.1 Ranked Korea",
+          "rankClaim": "Master+",
+          "patch": "26.1",
+          "durationSec": 1515,
+          "region": "KR",
+          "player": "Gumayusi",
+          "team": "HLE",
+          "uploaded": "2026-01-11",
+          "moments": []
+        },
+        {
+          "videoId": "miJv5CYmPC0",
+          "title": "Lucian ADC vs Kai'Sa - EUW Grandmaster Patch 25.24",
+          "rankClaim": "Grandmaster",
+          "patch": "25.24",
+          "durationSec": 1510,
+          "region": "EUW",
+          "uploaded": "2025-12-21",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 206,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 270,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 405,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 514,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 630,
+              "label": "Get a Triple Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 811,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 845,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 878,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 936,
+              "label": "Hunt The Rift Herald",
+              "kind": "herald"
+            },
+            {
+              "atSec": 1014,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1226,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1255,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1499,
+              "label": "End credit"
+            }
+          ]
+        },
+        {
+          "videoId": "zAr4f3fwrFc",
+          "title": "Lucian vs Kai'Sa [ ADC ] Patch 25.24 Korea Challenger 1405 LP",
+          "rankClaim": "Challenger",
+          "patch": "25.24",
+          "durationSec": 1408,
+          "region": "KR",
+          "uploaded": "2025-12-04",
+          "moments": []
+        },
+        {
+          "videoId": "yypI2uZsq2I",
+          "title": "Lucian vs Kaisa [ ADC ] Korea Challenger 1183 LP | Patch 25.21 ✅",
+          "rankClaim": "Challenger",
+          "patch": "25.21",
+          "durationSec": 1416,
+          "region": "KR",
+          "uploaded": "2025-10-30",
+          "moments": []
+        },
+        {
+          "videoId": "wJXeo1cfmRo",
+          "title": "Lucian vs Kai'Sa ADC - KR Challenger - Patch 25.18 Season 15",
+          "rankClaim": "Challenger",
+          "patch": "25.18",
+          "durationSec": 1381,
+          "region": "KR",
+          "uploaded": "2025-09-21",
+          "moments": []
+        },
+        {
+          "videoId": "H5RdoY-aOB0",
+          "title": "Lucian vs Kaisa ADC [ Gen.G Ruler ] Patch 25.18 Korea Grandmaster ✅",
+          "rankClaim": "Grandmaster",
+          "patch": "25.18",
+          "durationSec": 1048,
+          "region": "KR",
+          "player": "Ruler",
+          "team": "Gen.G",
+          "uploaded": "2025-09-19",
+          "moments": []
+        },
+        {
+          "videoId": "BLDXHw54G1M",
+          "title": "T1 Gumayusi Lucian vs Kaisa [ ADC ] Korea Challenger Patch 25.17",
+          "rankClaim": "Challenger",
+          "patch": "25.17",
+          "durationSec": 1317,
+          "region": "KR",
+          "player": "Gumayusi",
+          "team": "T1",
+          "uploaded": "2025-09-08",
+          "moments": []
+        },
+        {
+          "videoId": "SOhLg0lYJR4",
+          "title": "Lucian ADC vs Kai'Sa - KR Grandmaster Patch 25.16",
+          "rankClaim": "Grandmaster",
+          "patch": "25.16",
+          "durationSec": 1787,
+          "region": "KR",
+          "uploaded": "2025-08-15",
+          "moments": []
+        },
+        {
+          "videoId": "ZZ5ICJotGQk",
+          "title": "Lucian ADC vs Kai'Sa - KR Grandmaster Patch 25.15",
+          "rankClaim": "Grandmaster",
+          "patch": "25.15",
+          "durationSec": 1625,
+          "region": "KR",
+          "uploaded": "2025-08-01",
+          "moments": []
+        },
+        {
+          "videoId": "eQYejeENxug",
+          "title": "Lucian ADC vs Kai'Sa - KR Grandmaster Patch 25.08",
+          "rankClaim": "Grandmaster",
+          "patch": "25.8",
+          "durationSec": 1556,
+          "region": "KR",
+          "uploaded": "2025-04-19",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 122,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 328,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 684,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 844,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 869,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 879,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1138,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1168,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1195,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1244,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1319,
+              "label": "Hunt The Dragon",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1427,
+              "label": "Take down The Inhibitor"
+            },
+            {
+              "atSec": 1514,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1535,
+              "label": "End credit"
+            }
+          ]
+        },
+        {
+          "videoId": "CXlba1LPFds",
+          "title": "Lucian ADC vs Kai'Sa - KR Grandmaster Patch 25.06",
+          "rankClaim": "Grandmaster",
+          "patch": "25.6",
+          "durationSec": 1722,
+          "region": "KR",
+          "uploaded": "2025-03-23",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 157,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "9JSn1NxREA0",
+          "title": "Lucian Mid vs Yasuo - KR Master Patch 25.18",
+          "rankClaim": "Master",
+          "patch": "25.18",
+          "durationSec": 1490,
+          "region": "KR",
+          "uploaded": "2025-09-19",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 161,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "53JIS199tyk",
+          "title": "Lucian Mid vs Vel'Koz - NA Grandmaster Patch 26.01",
+          "rankClaim": "Grandmaster",
+          "patch": "26.1",
+          "durationSec": 1477,
+          "region": "NA",
+          "uploaded": "2026-01-21",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 226,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 315,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 517,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 552,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 616,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 698,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 874,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 994,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1017,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1077,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1207,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1281,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1466,
+              "label": "End credit"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 161,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "tNie1C25z14",
+          "title": "(PCF Nawa) Lucian Top vs Vel'Koz - EUW Grandmaster Patch 26.13",
+          "rankClaim": "Grandmaster",
+          "patch": "26.13",
+          "durationSec": 1641,
+          "region": "EUW",
+          "player": "PCF Nawa",
+          "uploaded": "2026-07-16",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 166,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "TDNyjnJWj-8",
+          "title": "Lucian Mid vs Akshan - KR Grandmaster Patch 26.20",
+          "rankClaim": "Grandmaster",
+          "patch": "26.20",
+          "durationSec": 1597,
+          "region": "KR",
+          "uploaded": "2026-10-19",
+          "result": "W",
+          "moments": [
+            {
+              "atSec": 132,
+              "label": "First Blood — Nidalee kills Rakan",
+              "kind": "kill"
+            },
+            {
+              "atSec": 141,
+              "label": "Lucian picks off Talon"
+            },
+            {
+              "atSec": 262,
+              "label": "Nidalee picks off Akshan"
+            },
+            {
+              "atSec": 542,
+              "label": "Lucian eliminates Akshan"
+            },
+            {
+              "atSec": 605,
+              "label": "Lucian eliminates Akshan"
+            },
+            {
+              "atSec": 684,
+              "label": "Blue takes 1st Dragon (Infernal)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 688,
+              "label": "Nidalee takes down Talon"
+            },
+            {
+              "atSec": 752,
+              "label": "Pantheon kills Talon",
+              "kind": "kill"
+            },
+            {
+              "atSec": 791,
+              "label": "Lucian takes down Olaf"
+            },
+            {
+              "atSec": 870,
+              "label": "Lucian kills Kalista",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1017,
+              "label": "Blue takes 2nd Dragon (Cloud)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1064,
+              "label": "Lucian outplays Olaf"
+            },
+            {
+              "atSec": 1247,
+              "label": "Mid Inhibitor falls (Red)"
+            },
+            {
+              "atSec": 1311,
+              "label": "Xerath eliminates Talon"
+            },
+            {
+              "atSec": 1359,
+              "label": "Blue takes 3rd Dragon (Ocean)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1486,
+              "label": "Blue takes Baron",
+              "kind": "baron"
+            },
+            {
+              "atSec": 1563,
+              "label": "Nidalee picks off Akshan"
+            },
+            {
+              "atSec": 1568,
+              "label": "Mid Inhibitor falls (Red)"
+            }
+          ]
+        },
+        {
+          "videoId": "zw3LT75e-Is",
+          "title": "Lucian Mid vs Akshan - KR Master Patch 26.03",
+          "rankClaim": "Master",
+          "patch": "26.3",
+          "durationSec": 1473,
+          "region": "KR",
+          "uploaded": "2026-02-15",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 430,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 674,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 755,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 989,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1010,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1020,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1034,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1095,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1187,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1217,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1239,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1281,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1317,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1344,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1377,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1429,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1462,
+              "label": "End credit"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 201,
+      "lane": "adc",
+      "videos": [
+        {
+          "videoId": "1DSYxNGpqtQ",
+          "title": "\"Jz\" 2000LP Lucian : This Lucian + Braum Botlane Combos is Total Destruction - Engsub ( vs MF )",
+          "rankClaim": "Master+",
+          "patch": "26.15",
+          "durationSec": 1242,
+          "patchEstimated": true,
+          "player": "Jz",
+          "uploaded": "2026-08-05",
+          "format": "stream",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 202,
+      "lane": "adc",
+      "videos": [
+        {
+          "videoId": "31J2NbRC2s0",
+          "title": "When \"JZ\" 2000LP Lucian meet Rank 1 JHIN - Engsub",
+          "rankClaim": "Master+",
+          "patch": "26.20",
+          "durationSec": 1325,
+          "patchEstimated": true,
+          "player": "Jz",
+          "uploaded": "2026-10-15",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "lNMpB0_4a7I",
+          "title": "\"Jz\" 2000LP Lucian : Demolishing Everyone He Saw - Engsub ( vs Jhin, Ez )",
+          "rankClaim": "Master+",
+          "patch": "26.19",
+          "durationSec": 1510,
+          "patchEstimated": true,
+          "player": "Jz",
+          "uploaded": "2026-10-04",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "WPhfiqAqE58",
+          "title": "T1 Peyz Lucian vs Jhin [ ADC ] Korea Challenger 2525 LP | Patch 26.17",
+          "rankClaim": "Challenger",
+          "patch": "26.17",
+          "durationSec": 1647,
+          "region": "KR",
+          "player": "Peyz",
+          "team": "T1",
+          "uploaded": "2026-09-09",
+          "moments": []
+        },
+        {
+          "videoId": "IBedH56jsT4",
+          "title": "(KT PerfecT) Lucian ADC vs Jhin - KR Challenger Patch 26.16",
+          "rankClaim": "Challenger",
+          "patch": "26.16",
+          "durationSec": 1658,
+          "region": "KR",
+          "player": "PerfecT",
+          "team": "KT",
+          "uploaded": "2026-08-16",
+          "moments": []
+        },
+        {
+          "videoId": "kAnN-0uw6dI",
+          "title": "Lucian vs Jhin [ ADC ] Korea Grandmaster 1691 LP | Patch 26.14",
+          "rankClaim": "Grandmaster",
+          "patch": "26.14",
+          "durationSec": 1605,
+          "region": "KR",
+          "uploaded": "2026-07-24",
+          "moments": []
+        },
+        {
+          "videoId": "FaSVPuDBwrw",
+          "title": "2000LP Lucian \"Jz\" Doran's Bow is so STRONG in Early Game - Engsub (Lucian vs Aphe, Jhin)",
+          "rankClaim": "Master+",
+          "patch": "26.13",
+          "durationSec": 1408,
+          "patchEstimated": true,
+          "uploaded": "2026-07-04",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "oiJMzC1Q6U0",
+          "title": "Deokdam : His Lucian Mechanic is a FREAKING SAVAGE - Engsub ( Lucian vs Jhin )",
+          "rankClaim": "Master+",
+          "patch": "26.13",
+          "durationSec": 938,
+          "patchEstimated": true,
+          "uploaded": "2026-07-02",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "2gXhSJ2ncs4",
+          "title": "T1 Peyz Lucian vs Jhin ADC [ Perfect KDA ] Korea Challenger 2474 LP | Patch 26.9",
+          "rankClaim": "Challenger",
+          "patch": "26.9",
+          "durationSec": 1107,
+          "region": "KR",
+          "player": "Peyz",
+          "team": "T1",
+          "uploaded": "2026-05-08",
+          "moments": []
+        },
+        {
+          "videoId": "8AkcxDJYY60",
+          "title": "Lucian ADC vs Jhin - KR Challenger Patch 26.04",
+          "rankClaim": "Challenger",
+          "patch": "26.4",
+          "durationSec": 1465,
+          "region": "KR",
+          "uploaded": "2026-02-21",
+          "moments": []
+        },
+        {
+          "videoId": "uhGkGK2aQv0",
+          "title": "Lucian vs Jhin ADC [ DRX Teddy ] Patch 25.22 Korea Master",
+          "rankClaim": "Master",
+          "patch": "25.22",
+          "durationSec": 1425,
+          "region": "KR",
+          "player": "Teddy",
+          "team": "DRX",
+          "uploaded": "2025-11-05",
+          "moments": []
+        },
+        {
+          "videoId": "9vR2SCwyjxg",
+          "title": "T1 Gumayusi Lucian vs Jhin [ ADC ] Patch 25.13 Ranked NA",
+          "rankClaim": "Master+",
+          "patch": "25.13",
+          "durationSec": 1325,
+          "region": "NA",
+          "player": "Gumayusi",
+          "team": "T1",
+          "uploaded": "2025-07-01",
+          "moments": []
+        },
+        {
+          "videoId": "oQtB_m_EEKI",
+          "title": "Lucian vs Jhin ADC - KR Challenger - Patch 25.11 Season 15",
+          "rankClaim": "Challenger",
+          "patch": "25.11",
+          "durationSec": 1531,
+          "region": "KR",
+          "uploaded": "2025-06-05",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 221,
+      "lane": "adc",
+      "videos": [
+        {
+          "videoId": "JQ-f9hsNIOM",
+          "title": "\"HanQL\" 2255LP Lucian : I FEEL LIKE PALYING URF - Engsub ( vs Zeri )",
+          "rankClaim": "Master+",
+          "patch": "26.21",
+          "durationSec": 1010,
+          "patchEstimated": true,
+          "player": "HanQL",
+          "uploaded": "2026-10-31",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "MtVb3FlBtog",
+          "title": "Lucian vs Zeri ADC [ Gen.G Ruler ] Korea Grandmaster Patch 26.7 ✅",
+          "rankClaim": "Grandmaster",
+          "patch": "26.7",
+          "durationSec": 1646,
+          "region": "KR",
+          "player": "Ruler",
+          "team": "Gen.G",
+          "uploaded": "2026-04-11",
+          "moments": []
+        },
+        {
+          "videoId": "oHyhAoYPKvQ",
+          "title": "HLE Gumayusi Lucian vs Zeri [ ADC ] Korea Challenger 2152 LP | Patch 26.6",
+          "rankClaim": "Challenger",
+          "patch": "26.6",
+          "durationSec": 1625,
+          "region": "KR",
+          "player": "Gumayusi",
+          "team": "HLE",
+          "uploaded": "2026-03-27",
+          "moments": []
+        },
+        {
+          "videoId": "oCdIxani_HI",
+          "title": "Lucian vs Zeri ADC - KR Challenger - Patch 25.21 Season 15",
+          "rankClaim": "Challenger",
+          "patch": "25.21",
+          "durationSec": 1741,
+          "region": "KR",
+          "uploaded": "2025-11-05",
+          "moments": []
+        },
+        {
+          "videoId": "gi7hVWx1ILQ",
+          "title": "Lucian ADC vs Zeri - KR Grandmaster Patch 25.18",
+          "rankClaim": "Grandmaster",
+          "patch": "25.18",
+          "durationSec": 1983,
+          "region": "KR",
+          "uploaded": "2025-09-12",
+          "moments": []
+        },
+        {
+          "videoId": "TpqZdZYya8I",
+          "title": "Lucian ADC vs Zeri - KR Challenger Patch 25.13",
+          "rankClaim": "Challenger",
+          "patch": "25.13",
+          "durationSec": 1817,
+          "region": "KR",
+          "uploaded": "2025-06-29",
+          "moments": []
+        },
+        {
+          "videoId": "0mrEkarcGaM",
+          "title": "T1 Smash Lucian vs Zeri [ ADC ] Korea Challenger Patch 25.13",
+          "rankClaim": "Challenger",
+          "patch": "25.13",
+          "durationSec": 1566,
+          "region": "KR",
+          "player": "Smash",
+          "team": "T1",
+          "uploaded": "2025-06-26",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 222,
+      "lane": "adc",
+      "videos": [
+        {
+          "videoId": "AWixocaqCQE",
+          "title": "\"Jz\" 2000LP Lucian : Hubris Lucian is a TREND NOW in Super Server - Engsub ( vs Jinx, Vayne )",
+          "rankClaim": "Master+",
+          "patch": "26.16",
+          "durationSec": 1036,
+          "patchEstimated": true,
+          "player": "Jz",
+          "uploaded": "2026-08-12",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "96LfYzDTvBU",
+          "title": "\"Jz\" 2000LP Lucian : His Combos is so FAST so SMOOTH - Engsub (Lucian vs Jinx, Nilah)",
+          "rankClaim": "Master+",
+          "patch": "26.15",
+          "durationSec": 1391,
+          "patchEstimated": true,
+          "player": "Jz",
+          "uploaded": "2026-07-31",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "pkrusM_7_iE",
+          "title": "2255LP Lucian : DOMINATING Super Server HighElo in Just 20 Min - Engsub ( Lucian vs Jinx )",
+          "rankClaim": "Master+",
+          "patch": "26.11",
+          "durationSec": 733,
+          "patchEstimated": true,
+          "uploaded": "2026-06-04",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "gS4N3uZb_3w",
+          "title": "Gumayusi Lucian : I meet CN Rank 1 Jinx, Let Me Ban Jinx Real Quick - Engsub",
+          "rankClaim": "Master+",
+          "patch": "26.6",
+          "durationSec": 898,
+          "patchEstimated": true,
+          "player": "Gumayusi",
+          "uploaded": "2026-03-21",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "rZfXS1ba-vA",
+          "title": "Lucian vs Jinx [ ADC ] Lol Korea Master Patch 26.5 ✅",
+          "rankClaim": "Master",
+          "patch": "26.5",
+          "durationSec": 1704,
+          "region": "KR",
+          "uploaded": "2026-03-12",
+          "moments": []
+        },
+        {
+          "videoId": "EX7rfHvXl6k",
+          "title": "Lucian ADC vs Jinx - KR Grandmaster Patch 25.22",
+          "rankClaim": "Grandmaster",
+          "patch": "25.22",
+          "durationSec": 1507,
+          "region": "KR",
+          "uploaded": "2025-11-07",
+          "moments": []
+        },
+        {
+          "videoId": "06HXOxf2S-M",
+          "title": "T1 Gumayusi Lucian ADC vs Jinx - Patch 25.6 Korea Challenger ✅",
+          "rankClaim": "Challenger",
+          "patch": "25.6",
+          "durationSec": 1659,
+          "region": "KR",
+          "player": "Gumayusi",
+          "team": "T1",
+          "uploaded": "2025-03-24",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 235,
+      "lane": "adc",
+      "videos": [
+        {
+          "videoId": "h7TWHy0dk3o",
+          "title": "Doggo : His Lucian Mechanic is so AGGRESSIVE in Early Game - Engsub (Lucian vs Senna)",
+          "rankClaim": "Master+",
+          "patch": "26.14",
+          "durationSec": 708,
+          "patchEstimated": true,
+          "uploaded": "2026-07-24",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "npS-pKwVCxA",
+          "title": "BLG Viper Lucian vs Senna [ ADC ] Korea Challenger 2083 LP | Patch 26.9",
+          "rankClaim": "Challenger",
+          "patch": "26.9",
+          "durationSec": 1849,
+          "region": "KR",
+          "player": "Viper",
+          "team": "BLG",
+          "uploaded": "2026-05-13",
+          "moments": []
+        },
+        {
+          "videoId": "qc7Hk4bq-BQ",
+          "title": "T1 Peyz Lucian vs Senna [ ADC ] Korea Challenger 2407 LP | Patch 26.8",
+          "rankClaim": "Challenger",
+          "patch": "26.8",
+          "durationSec": 1343,
+          "region": "KR",
+          "player": "Peyz",
+          "team": "T1",
+          "uploaded": "2026-04-22",
+          "moments": []
+        },
+        {
+          "videoId": "_D6ySwJshY8",
+          "title": "Lucian vs Senna ADC - KR Challenger - Patch 25.11 Season 15",
+          "rankClaim": "Challenger",
+          "patch": "25.11",
+          "durationSec": 2251,
+          "region": "KR",
+          "uploaded": "2025-06-10",
+          "moments": []
+        },
+        {
+          "videoId": "IEkyQB9Zgz0",
+          "title": "T1 Gumayusi Lucian vs Senna [ ADC ] Korea Challenger Patch 25.10",
+          "rankClaim": "Challenger",
+          "patch": "25.10",
+          "durationSec": 1043,
+          "region": "KR",
+          "player": "Gumayusi",
+          "team": "T1",
+          "uploaded": "2025-05-27",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 245,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "mfL-VyzvXJg",
+          "title": "Lucian Mid vs Ekko - EUW Challenger Patch 25.16",
+          "rankClaim": "Challenger",
+          "patch": "25.16",
+          "durationSec": 1607,
+          "region": "EUW",
+          "uploaded": "2025-08-25",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 360,
+      "lane": "adc",
+      "videos": [
+        {
+          "videoId": "lNKR0SQvp90",
+          "title": "1600LP Lucian : This Guy is a KILLING SAVAGE - Engsub (Lucian vs Aphe, Samira)",
+          "rankClaim": "Master+",
+          "patch": "26.12",
+          "durationSec": 1535,
+          "patchEstimated": true,
+          "uploaded": "2026-06-19",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "e8aXBtKp_jo",
+          "title": "T1 Gumayusi Lucian vs Samira [ ADC ] Patch 25.13 Ranked NA",
+          "rankClaim": "Master+",
+          "patch": "25.13",
+          "durationSec": 1414,
+          "region": "NA",
+          "player": "Gumayusi",
+          "team": "T1",
+          "uploaded": "2025-07-03",
+          "moments": []
+        },
+        {
+          "videoId": "WgZK9gQC4lo",
+          "title": "Lucian ADC vs Samira - KR Challenger Patch 25.12",
+          "rankClaim": "Challenger",
+          "patch": "25.12",
+          "durationSec": 1706,
+          "region": "KR",
+          "uploaded": "2025-06-15",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 429,
+      "lane": "adc",
+      "videos": [
+        {
+          "videoId": "-uxgEMWPztM",
+          "title": "1600LP Lucian : This Dude is a FREAKING KILLING MACHINE - Engsub ( Lucian vs Aurelion, Kalista )",
+          "rankClaim": "Master+",
+          "patch": "26.9",
+          "durationSec": 1203,
+          "patchEstimated": true,
+          "uploaded": "2026-05-08",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "K-eX8hQ5Ym4",
+          "title": "Rank 1 Lucian : LET HIM COOK THIS SHOW - Engsub ( Lucian vs Kalista, Tristana )",
+          "rankClaim": "Master+",
+          "patch": "26.9",
+          "durationSec": 1227,
+          "patchEstimated": true,
+          "uploaded": "2026-04-30",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "IShAqei5Y-c",
+          "title": "DK Smash Lucian vs Kalista [ ADC ] Korea Challenger 1697 LP | Patch 26.3",
+          "rankClaim": "Challenger",
+          "patch": "26.3",
+          "durationSec": 1189,
+          "region": "KR",
+          "player": "Smash",
+          "team": "DK",
+          "uploaded": "2026-02-18",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 498,
+      "lane": "adc",
+      "videos": [
+        {
+          "videoId": "qjetxK32IBQ",
+          "title": "\"Jz\" 2000LP Lucian : His DAMAGE is so DAM BROKEN - Engsub ( vs Tris, Xayah )",
+          "rankClaim": "Master+",
+          "patch": "26.19",
+          "durationSec": 1749,
+          "patchEstimated": true,
+          "player": "Jz",
+          "uploaded": "2026-09-27",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "iOQtQy9KSGc",
+          "title": "\"Jz\" 2000LP Lucian : This BUILD DEALING MASSIVE DAMAGE - Engsub ( vs Xayah, Tris )",
+          "rankClaim": "Master+",
+          "patch": "26.18",
+          "durationSec": 1505,
+          "patchEstimated": true,
+          "player": "Jz",
+          "uploaded": "2026-09-22",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "VrX6zmqVFPY",
+          "title": "\"HanQL\" 2255lp Lucian : His Mechanic is so AGGRESSIVE in Early Game - Engsub ( vs Xayah, Sivir )",
+          "rankClaim": "Master+",
+          "patch": "26.15",
+          "durationSec": 1189,
+          "patchEstimated": true,
+          "player": "HanQL",
+          "uploaded": "2026-08-06",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "5PWsIha8e0E",
+          "title": "2000LP Lucian \"Jz\" His Combos is so DAM SMOOTH - Engsub (Lucian vs Xayah, Twitch)",
+          "rankClaim": "Master+",
+          "patch": "26.13",
+          "durationSec": 1133,
+          "patchEstimated": true,
+          "player": "Jz",
+          "uploaded": "2026-06-29",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "XR6a_iaAHTg",
+          "title": "T1 Peyz Lucian vs Xayah [ ADC ] Korea Challenger 2468 LP | Patch 26.11",
+          "rankClaim": "Challenger",
+          "patch": "26.11",
+          "durationSec": 1469,
+          "region": "KR",
+          "player": "Peyz",
+          "team": "T1",
+          "uploaded": "2026-06-04",
+          "moments": []
+        },
+        {
+          "videoId": "hIbS1tFdFRw",
+          "title": "HLE Gumayusi Lucian vs T1 Peyz Xayah [ ADC ] Korea Challenger 2485 LP | Patch 26.8",
+          "rankClaim": "Challenger",
+          "patch": "26.8",
+          "durationSec": 1360,
+          "region": "KR",
+          "player": "Gumayusi",
+          "team": "HLE",
+          "uploaded": "2026-04-23",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 517,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "N7Ars37S2aA",
+          "title": "Lucian Mid vs Sylas - KR Master Patch 25.24",
+          "rankClaim": "Master",
+          "patch": "25.24",
+          "durationSec": 1548,
+          "region": "KR",
+          "uploaded": "2026-01-10",
+          "moments": []
+        },
+        {
+          "videoId": "ZWTl_H_cHbY",
+          "title": "Lucian Mid vs Sylas - EUW Grandmaster Patch 25.11",
+          "rankClaim": "Grandmaster",
+          "patch": "25.11",
+          "durationSec": 1801,
+          "region": "EUW",
+          "uploaded": "2025-06-09",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 523,
+      "lane": "adc",
+      "videos": [
+        {
+          "videoId": "6Z0TF7GSJWs",
+          "title": "Lucian vs Aphelios ADC - KR Challenger - Patch 16.05 Season 16",
+          "rankClaim": "Challenger",
+          "patch": "26.5",
+          "durationSec": 1774,
+          "region": "KR",
+          "uploaded": "2026-03-17",
+          "moments": []
+        },
+        {
+          "videoId": "pcg2yY4F4gk",
+          "title": "HLE Gumayusi Lucian vs Aphelios [ ADC ] Korea Challenger 2022 LP | Patch 26.5",
+          "rankClaim": "Challenger",
+          "patch": "26.5",
+          "durationSec": 1546,
+          "region": "KR",
+          "player": "Gumayusi",
+          "team": "HLE",
+          "uploaded": "2026-03-15",
+          "moments": []
+        },
+        {
+          "videoId": "T0460pingGQ",
+          "title": "T1 Peyz Lucian vs Aphelios [ ADC ] Korea Challenger 1678 LP | Patch 26.3",
+          "rankClaim": "Challenger",
+          "patch": "26.3",
+          "durationSec": 738,
+          "region": "KR",
+          "player": "Peyz",
+          "team": "T1",
+          "uploaded": "2026-02-06",
+          "moments": []
+        },
+        {
+          "videoId": "Cu3Q_BMZz5w",
+          "title": "Lucian vs Aphelios ADC - KR Challenger - Patch 25.13 Season 15",
+          "rankClaim": "Challenger",
+          "patch": "25.13",
+          "durationSec": 1441,
+          "region": "KR",
+          "uploaded": "2025-06-30",
+          "moments": []
+        },
+        {
+          "videoId": "PErQ29FNWwM",
+          "title": "Lucian vs Aphelios ADC [ Gen.G Ruler ] Patch 25.12 Korea Challenger",
+          "rankClaim": "Challenger",
+          "patch": "25.12",
+          "durationSec": 1505,
+          "region": "KR",
+          "player": "Ruler",
+          "team": "Gen.G",
+          "uploaded": "2025-06-17",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 777,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "3lv9MAAhpto",
+          "title": "Lucian Mid vs Yone - EUW Grandmaster Patch 26.09",
+          "rankClaim": "Grandmaster",
+          "patch": "26.9",
+          "durationSec": 1466,
+          "region": "EUW",
+          "uploaded": "2026-05-03",
+          "moments": []
+        },
+        {
+          "videoId": "cYyqRlJ1y3o",
+          "title": "Lucian Mid vs Yone - KR Challenger Patch 25.24",
+          "rankClaim": "Challenger",
+          "patch": "25.24",
+          "durationSec": 1619,
+          "region": "KR",
+          "uploaded": "2025-12-12",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 800,
+      "lane": "adc",
+      "videos": [
+        {
+          "videoId": "E_3dttORydE",
+          "title": "\"Jz\" 2000LP Lucian : BLASTING ENEMIES with this NEW BUILD - Engsub ( vs Mel, Corki )",
+          "rankClaim": "Master+",
+          "patch": "26.19",
+          "durationSec": 1493,
+          "patchEstimated": true,
+          "player": "Jz",
+          "uploaded": "2026-09-29",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "G6k-aNbynD0",
+          "title": "\"Jz\" 2000LP Lucian : He Become a KILLING MACHINE with this BUILD - Engsub ( vs Mel, Yunara )",
+          "rankClaim": "Master+",
+          "patch": "26.19",
+          "durationSec": 1572,
+          "patchEstimated": true,
+          "player": "Jz",
+          "uploaded": "2026-09-25",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "qCZzN6sbcRk",
+          "title": "Lucian vs Mel ADC - KR Challenger - Patch 25.21 Season 15",
+          "rankClaim": "Challenger",
+          "patch": "25.21",
+          "durationSec": 1966,
+          "region": "KR",
+          "uploaded": "2025-10-28",
+          "moments": []
+        },
+        {
+          "videoId": "YCLm7v1Q3Ik",
+          "title": "T1 Gumayusi Lucian vs Mel [ ADC ] Patch 25.13 Ranked NA",
+          "rankClaim": "Master+",
+          "patch": "25.13",
+          "durationSec": 2050,
+          "region": "NA",
+          "player": "Gumayusi",
+          "team": "T1",
+          "uploaded": "2025-07-08",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 804,
+      "lane": "adc",
+      "videos": [
+        {
+          "videoId": "jiCg9KVLFt8",
+          "title": "\"JZ\" 2000LP Lucian : This Dude is a UNSTOPPABLE KILLING MONSTER - Engsub ( vs Yunara, Aphe )",
+          "rankClaim": "Master+",
+          "patch": "26.20",
+          "durationSec": 1756,
+          "patchEstimated": true,
+          "player": "Jz",
+          "uploaded": "2026-10-13",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "7_zrxvUjfm4",
+          "title": "Lucian vs Yunara ADC [ Gen.G Ruler ] Korea Challenger 2071 | Patch 26.19",
+          "rankClaim": "Challenger",
+          "patch": "26.19",
+          "durationSec": 1281,
+          "region": "KR",
+          "player": "Ruler",
+          "team": "Gen.G",
+          "uploaded": "2026-09-30",
+          "moments": []
+        },
+        {
+          "videoId": "Lfrr45fZgto",
+          "title": "HLE Gumayusi Lucian vs Yunara [ ADC ] Korea Challenger 2435 LP | Patch 26.18",
+          "rankClaim": "Challenger",
+          "patch": "26.18",
+          "durationSec": 1188,
+          "region": "KR",
+          "player": "Gumayusi",
+          "team": "HLE",
+          "uploaded": "2026-09-17",
+          "moments": []
+        },
+        {
+          "videoId": "4WfbJYZcApw",
+          "title": "\"Jz\" 2000LP Lucian : This BOTLANE DUO is TOTAL DESTRUCTIONS - Engsub ( vs Tris, Yunara )",
+          "rankClaim": "Master+",
+          "patch": "26.18",
+          "durationSec": 1571,
+          "patchEstimated": true,
+          "player": "Jz",
+          "uploaded": "2026-09-17",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "K8vMHpKiZiI",
+          "title": "HLE Gumayusi Lucian vs Yunara [ ADC ] Korea Challenger 2422 LP | Patch 26.17",
+          "rankClaim": "Challenger",
+          "patch": "26.17",
+          "durationSec": 734,
+          "region": "KR",
+          "player": "Gumayusi",
+          "team": "HLE",
+          "uploaded": "2026-09-05",
+          "moments": []
+        },
+        {
+          "videoId": "XGyCJWWZ_Tk",
+          "title": "\"Jz\" 2000LP Lucian : This Dude is PLASTING EVERYONE With Insane Damage - Engsub ( vs Yunara, Tris )",
+          "rankClaim": "Master+",
+          "patch": "26.17",
+          "durationSec": 1469,
+          "patchEstimated": true,
+          "player": "Jz",
+          "uploaded": "2026-09-02",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "bjKVR_sd9Ew",
+          "title": "1600LP Lucian \"Jz adc\" He is Shattering Enemies When He Saw Them- Engsub ( Lucian vs Yunara, Kai'sa)",
+          "rankClaim": "Master+",
+          "patch": "26.13",
+          "durationSec": 1302,
+          "patchEstimated": true,
+          "player": "Jz",
+          "uploaded": "2026-06-27",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "GDqzuZln4p0",
+          "title": "1600LP Lucian : Eliminating Everyone He Touch - Engsub (Lucian vs Yunara, Kai'sa)",
+          "rankClaim": "Master+",
+          "patch": "26.13",
+          "durationSec": 1144,
+          "patchEstimated": true,
+          "uploaded": "2026-06-24",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "cN0o9SxCDTs",
+          "title": "1600LP Lucian : Crushing CN HighElo with PERFECT KDA - Engsub ( Lucian vs Tris, Yunara )",
+          "rankClaim": "Master+",
+          "patch": "26.12",
+          "durationSec": 1256,
+          "patchEstimated": true,
+          "uploaded": "2026-06-16",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "JA8TDd1439E",
+          "title": "1600LP Lucian: DOMINATING Super Server HighElo in Less 20 Min - Engsub (Lucian vs Yunara, Kai'sa)",
+          "rankClaim": "Master+",
+          "patch": "26.11",
+          "durationSec": 1238,
+          "patchEstimated": true,
+          "uploaded": "2026-06-09",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "69YoOf7Mn4M",
+          "title": "Lucian ADC vs Yunara - KR Challenger Patch 26.10",
+          "rankClaim": "Challenger",
+          "patch": "26.10",
+          "durationSec": 1543,
+          "region": "KR",
+          "uploaded": "2026-05-18",
+          "moments": []
+        },
+        {
+          "videoId": "pdXYCV1iaKk",
+          "title": "2255LP Lucian : I SAID \" LET HIM COOK \" Engsub ( Lucian vs Yunara )",
+          "rankClaim": "Master+",
+          "patch": "26.10",
+          "durationSec": 1095,
+          "patchEstimated": true,
+          "uploaded": "2026-05-18",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "XqhZ-0PyHFg",
+          "title": "BLG Viper Lucian vs Yunara [ ADC ] Patch 26.8 Korea Challenger 1637 LP",
+          "rankClaim": "Challenger",
+          "patch": "26.8",
+          "durationSec": 1769,
+          "region": "KR",
+          "player": "Viper",
+          "team": "BLG",
+          "uploaded": "2026-04-16",
+          "moments": []
+        },
+        {
+          "videoId": "Wx6-anUrrm4",
+          "title": "Lucian ADC vs Yunara - KR Challenger Patch 26.06",
+          "rankClaim": "Challenger",
+          "patch": "26.6",
+          "durationSec": 1658,
+          "region": "KR",
+          "uploaded": "2026-03-21",
+          "moments": []
+        },
+        {
+          "videoId": "xza3prINFag",
+          "title": "Lucian vs Yunara ADC - KR Challenger - Patch 16.05 Season 16",
+          "rankClaim": "Challenger",
+          "patch": "26.5",
+          "durationSec": 2281,
+          "region": "KR",
+          "uploaded": "2026-03-15",
+          "moments": []
+        },
+        {
+          "videoId": "AzP2FdQabhg",
+          "title": "Lucian ADC vs Yunara - KR Master Patch 26.01",
+          "rankClaim": "Master",
+          "patch": "26.1",
+          "durationSec": 1521,
+          "region": "KR",
+          "uploaded": "2026-01-11",
+          "moments": []
+        },
+        {
+          "videoId": "6lCrCiTRy-8",
+          "title": "DK Smash Lucian vs Yunara [ ADC ] Korea Challenger 1885 LP | Patch 25.23",
+          "rankClaim": "Challenger",
+          "patch": "25.23",
+          "durationSec": 1202,
+          "region": "KR",
+          "player": "Smash",
+          "team": "DK",
+          "uploaded": "2025-12-02",
+          "moments": []
+        },
+        {
+          "videoId": "VYNDtN4Xfv0",
+          "title": "T1 Gumayusi Lucian vs Yunara [ ADC ] Korea Master Patch 25.14",
+          "rankClaim": "Master",
+          "patch": "25.14",
+          "durationSec": 1471,
+          "region": "KR",
+          "player": "Gumayusi",
+          "team": "T1",
+          "uploaded": "2025-07-30",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 893,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "SA9wGWkU2PE",
+          "title": "DK ShowMaker Lucian vs Aurora [ MID ] Korea Challenger Patch 25.19",
+          "rankClaim": "Challenger",
+          "patch": "25.19",
+          "durationSec": 1410,
+          "region": "KR",
+          "player": "ShowMaker",
+          "team": "DK",
+          "uploaded": "2025-09-26",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 895,
+      "lane": "adc",
+      "videos": [
+        {
+          "videoId": "CYkwYsCScRA",
+          "title": "HLE Gumayusi Lucian vs Nilah [ ADC ] Patch 26.1 Ranked Korea",
+          "rankClaim": "Master+",
+          "patch": "26.1",
+          "durationSec": 901,
+          "region": "KR",
+          "player": "Gumayusi",
+          "team": "HLE",
+          "uploaded": "2026-01-13",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 901,
+      "lane": "adc",
+      "videos": [
+        {
+          "videoId": "YcslRLDvDYk",
+          "title": "Lucian vs Smolder ADC - KR Challenger - Patch 25.24 Season 15",
+          "rankClaim": "Challenger",
+          "patch": "25.24",
+          "durationSec": 1921,
+          "region": "KR",
+          "uploaded": "2025-12-12",
+          "moments": []
+        },
+        {
+          "videoId": "IDCd_QHUvGM",
+          "title": "Gumayusi Lucian vs Smolder [ ADC ] Patch 25.17 Korea Grandmaster - T1 Gumayusi",
+          "rankClaim": "Grandmaster",
+          "patch": "25.17",
+          "durationSec": 1860,
+          "region": "KR",
+          "player": "Gumayusi",
+          "uploaded": "2025-09-05",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 910,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "qi4uHWXM1ws",
+          "title": "Lucian Mid vs Hwei - KR Challenger Patch 26.08",
+          "rankClaim": "Challenger",
+          "patch": "26.8",
+          "durationSec": 1543,
+          "region": "KR",
+          "uploaded": "2026-04-24",
+          "moments": []
+        }
+      ]
+    }
+  ]
+}

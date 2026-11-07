@@ -1,0 +1,2655 @@
+{
+  "schema": 1,
+  "champion": 89,
+  "generatedAt": "2026-11-07T13:25:14.592Z",
+  "guides": [],
+  "general": [
+    {
+      "champion": 89,
+      "lane": "support",
+      "patch": "26.21",
+      "reviewed": false,
+      "keyTips": [
+        {
+          "text": "Win the level-2 race and all-in through it, engaging only with the ADC able to follow.",
+          "scope": "champion",
+          "sourceIds": [
+            "mobalytics-leona"
+          ]
+        },
+        {
+          "text": "At level 6, threaten reliable picks by saving R for targets the team can reach and finish.",
+          "scope": "champion",
+          "sourceIds": [
+            "mobalytics-leona"
+          ],
+          "abilityKeys": [
+            {
+              "champion": 89,
+              "key": "R"
+            }
+          ]
+        },
+        {
+          "text": "After engaging, turn back to peel the ADC instead of chasing past the team.",
+          "scope": "champion",
+          "sourceIds": [
+            "mobalytics-leona"
+          ]
+        }
+      ],
+      "sections": {
+        "overview": {
+          "tips": []
+        },
+        "early-lane": {
+          "tips": [
+            {
+              "text": "Stay healthy through ranged poke, stepping outside auto range while key abilities cycle.",
+              "scope": "champion",
+              "sourceIds": [
+                "mobalytics-leona"
+              ]
+            },
+            {
+              "text": "Hold the wave even or near your side; a permanently pushed wave kills engage angles.",
+              "scope": "champion",
+              "sourceIds": [
+                "mobalytics-leona-build"
+              ]
+            },
+            {
+              "text": "Commit to all-ins fully or not at all; never dive in with allies too far to follow.",
+              "scope": "champion",
+              "sourceIds": [
+                "mobalytics-leona"
+              ]
+            },
+            {
+              "text": "Clear wards fast with the AA, Q, AA sequence to deny vision.",
+              "scope": "champion",
+              "sourceIds": [
+                "mobalytics-leona-build"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 89,
+                  "key": "Q"
+                }
+              ]
+            },
+            {
+              "text": "Roam from base or while the ADC sits safely, using R availability to pressure mid.",
+              "scope": "champion",
+              "sourceIds": [
+                "mobalytics-leona"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 89,
+                  "key": "R"
+                }
+              ]
+            }
+          ]
+        },
+        "mid-lane": {
+          "tips": [
+            {
+              "text": "Group with the team and ward only with enough enemy-position knowledge to avoid pre-objective picks.",
+              "scope": "champion",
+              "sourceIds": [
+                "mobalytics-leona"
+              ]
+            },
+            {
+              "text": "Punish overextended walk-ups with R catches that start fights or buy objective windows.",
+              "scope": "champion",
+              "sourceIds": [
+                "mobalytics-leona"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 89,
+                  "key": "R"
+                }
+              ]
+            }
+          ]
+        },
+        "win-condition": {
+          "tips": [
+            {
+              "text": "Start fights the allies can follow, then disrupt the nearest threat with Q and E to shield carries.",
+              "scope": "champion",
+              "sourceIds": [
+                "mobalytics-leona"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 89,
+                  "key": "Q"
+                },
+                {
+                  "champion": 89,
+                  "key": "E"
+                }
+              ]
+            },
+            {
+              "text": "Stay glued to the ADC in late fights, falling back to the nearest enemy after the initial engage.",
+              "scope": "champion",
+              "sourceIds": [
+                "mobalytics-leona"
+              ]
+            },
+            {
+              "text": "Against scattered opponents, catch one with R and convert the pick into a fight or objective.",
+              "scope": "champion",
+              "sourceIds": [
+                "mobalytics-leona"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 89,
+                  "key": "R"
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "itemization": [
+        {
+          "text": "Run Flash and Ignite with Aftershock, Font of Life, Bone Plating, and Unflinching plus Biscuit Delivery and Cosmic Insight secondary.",
+          "scope": "champion",
+          "sourceIds": [
+            "mobalytics-leona-build"
+          ]
+        },
+        {
+          "text": "Take Ability Haste and Health Scaling shards, bending the defensive shard to the lane matchup.",
+          "scope": "champion",
+          "sourceIds": [
+            "mobalytics-leona-build"
+          ]
+        },
+        {
+          "text": "Order Celestial Opposition, Plated Steelcaps, Locket of the Iron Solari, Knight's Vow, Bandlepipes, and Thornmail while maxing W, then E, then Q.",
+          "scope": "champion",
+          "sourceIds": [
+            "mobalytics-leona-build"
+          ],
+          "abilityKeys": [
+            {
+              "champion": 89,
+              "key": "W"
+            },
+            {
+              "champion": 89,
+              "key": "E"
+            },
+            {
+              "champion": 89,
+              "key": "Q"
+            }
+          ],
+          "itemIds": [
+            3869,
+            3047,
+            3190,
+            3109,
+            2524,
+            3075
+          ]
+        },
+        {
+          "text": "Swap Mercury's Treads or other defense for Steelcaps by enemy damage and control, with Protoplasm Harness as the fourth-item tank alternative.",
+          "scope": "champion",
+          "sourceIds": [
+            "mobalytics-leona-build"
+          ],
+          "itemIds": [
+            3111,
+            2525
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "id": "mobalytics-leona",
+          "author": "Mobalytics",
+          "rankClaim": "No rank claim",
+          "url": "https://mobalytics.gg/lol/champions/leona/guide/support",
+          "kind": "web"
+        },
+        {
+          "id": "mobalytics-leona-build",
+          "author": "Mobalytics",
+          "rankClaim": "No rank claim",
+          "url": "https://mobalytics.gg/lol/champions/leona/build",
+          "kind": "web"
+        }
+      ]
+    }
+  ],
+  "vods": [
+    {
+      "enemy": 3,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "wiZ88xQd8iI",
+          "title": "Leona Support vs Galio - KR Challenger Patch 26.16",
+          "rankClaim": "Challenger",
+          "patch": "26.16",
+          "durationSec": 1551,
+          "region": "KR",
+          "uploaded": "2026-08-23",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 9,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "G6w1A3lhmh0",
+          "title": "Leona Support vs Fiddlesticks - EUW Grandmaster Patch 25.24",
+          "rankClaim": "Grandmaster",
+          "patch": "25.24",
+          "durationSec": 1466,
+          "region": "EUW",
+          "uploaded": "2025-12-16",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 176,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 303,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 581,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 698,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 853,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 953,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1059,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1088,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1107,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1235,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1353,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1455,
+              "label": "End credit"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 12,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "RV_9tKhu5Jw",
+          "title": "Leona Support vs Alistar - KR Challenger Patch 26.03",
+          "rankClaim": "Challenger",
+          "patch": "26.3",
+          "durationSec": 1785,
+          "region": "KR",
+          "uploaded": "2026-02-19",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 184,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 371,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 826,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 927,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1120,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1238,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1358,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1396,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1732,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1774,
+              "label": "End credit"
+            }
+          ]
+        },
+        {
+          "videoId": "xPjH9VacWb8",
+          "title": "Leona Support vs Alistar - KR Master Patch 25.23",
+          "rankClaim": "Master",
+          "patch": "25.23",
+          "durationSec": 1785,
+          "region": "KR",
+          "uploaded": "2025-11-23",
+          "moments": []
+        },
+        {
+          "videoId": "kd8e2GT7X-E",
+          "title": "Leona Support vs Alistar - EUW Grandmaster Patch 25.07",
+          "rankClaim": "Grandmaster",
+          "patch": "25.7",
+          "durationSec": 1788,
+          "region": "EUW",
+          "uploaded": "2025-04-17",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 307,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 454,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 680,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 785,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 861,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1010,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1071,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1092,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1145,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1215,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1380,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1521,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1635,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1665,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1690,
+              "label": "Take down The Inhibitor"
+            },
+            {
+              "atSec": 1728,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1767,
+              "label": "End credit"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 43,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "xLevr9U37Zg",
+          "title": "Leona Support vs Karma - EUW Challenger Patch 26.06",
+          "rankClaim": "Challenger",
+          "patch": "26.6",
+          "durationSec": 1783,
+          "region": "EUW",
+          "uploaded": "2026-04-01",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 109,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 165,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 518,
+              "label": "Hunt The Dragon",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 790,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 936,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1152,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1184,
+              "label": "Hunt The Dragon",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1264,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1308,
+              "label": "Hunt The Baron Nashor",
+              "kind": "baron"
+            },
+            {
+              "atSec": 1510,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1565,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1696,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1749,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1772,
+              "label": "End credit"
+            }
+          ]
+        },
+        {
+          "videoId": "b4IfSIqN3tI",
+          "title": "Leona Support vs Karma - KR Master Patch 26.01",
+          "rankClaim": "Master",
+          "patch": "26.1",
+          "durationSec": 1542,
+          "region": "KR",
+          "uploaded": "2026-01-14",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 79,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 155,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 261,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 383,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 572,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 729,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 807,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 892,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 998,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1139,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1266,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1353,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1459,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1531,
+              "label": "End credit"
+            }
+          ]
+        },
+        {
+          "videoId": "q5liKBWB0zA",
+          "title": "Leona Support vs Karma - KR Grandmaster Patch 25.05",
+          "rankClaim": "Grandmaster",
+          "patch": "25.5",
+          "durationSec": 1901,
+          "region": "KR",
+          "uploaded": "2025-03-09",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 53,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "6k0xvuLMwec",
+          "title": "(Lindarang) Leona Support vs Blitzcrank - KR Master Patch 26.14",
+          "rankClaim": "Master",
+          "patch": "26.14",
+          "durationSec": 1547,
+          "region": "KR",
+          "player": "Lindarang",
+          "uploaded": "2026-07-26",
+          "moments": []
+        },
+        {
+          "videoId": "BKQlHuxRSiE",
+          "title": "Leona Support vs Blitzcrank - KR Grandmaster Patch 25.22",
+          "rankClaim": "Grandmaster",
+          "patch": "25.22",
+          "durationSec": 1919,
+          "region": "KR",
+          "uploaded": "2025-11-08",
+          "moments": []
+        },
+        {
+          "videoId": "y_WTKWwhzBs",
+          "title": "Leona Support vs Blitzcrank - KR Grandmaster Patch 25.17",
+          "rankClaim": "Grandmaster",
+          "patch": "25.17",
+          "durationSec": 1533,
+          "region": "KR",
+          "uploaded": "2025-08-31",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 57,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "to5EZG91alo",
+          "title": "Leona Support vs Maokai - KR Grandmaster Patch 25.18",
+          "rankClaim": "Grandmaster",
+          "patch": "25.18",
+          "durationSec": 1444,
+          "region": "KR",
+          "uploaded": "2025-09-13",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 60,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "M3UVFjBR5v0",
+          "title": "Leona Support vs Elise - EUW Challenger Patch 25.16",
+          "rankClaim": "Challenger",
+          "patch": "25.16",
+          "durationSec": 2120,
+          "region": "EUW",
+          "uploaded": "2025-08-28",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 78,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "SjFvVwyfBP0",
+          "title": "Leona Support vs Poppy - KR Master Patch 25.16",
+          "rankClaim": "Master",
+          "patch": "25.16",
+          "durationSec": 1681,
+          "region": "KR",
+          "uploaded": "2025-08-18",
+          "moments": []
+        },
+        {
+          "videoId": "t5SVgtBYJlE",
+          "title": "Leona Support vs Poppy - KR Grandmaster Patch 25.15",
+          "rankClaim": "Grandmaster",
+          "patch": "25.15",
+          "durationSec": 1961,
+          "region": "KR",
+          "uploaded": "2025-08-04",
+          "moments": []
+        },
+        {
+          "videoId": "klYRJ0cfztI",
+          "title": "Leona Support vs Poppy - KR Challenger Patch 25.13",
+          "rankClaim": "Challenger",
+          "patch": "25.13",
+          "durationSec": 1501,
+          "region": "KR",
+          "uploaded": "2025-07-01",
+          "moments": []
+        },
+        {
+          "videoId": "GsbPuFc4vXg",
+          "title": "Leona Support vs Poppy - KR Grandmaster Patch 25.09",
+          "rankClaim": "Grandmaster",
+          "patch": "25.9",
+          "durationSec": 1506,
+          "region": "KR",
+          "uploaded": "2025-05-04",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 80,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "WpoqxWKKpog",
+          "title": "(BFX Kellin) Leona Support vs Pantheon - KR Master Patch 26.13",
+          "rankClaim": "Master",
+          "patch": "26.13",
+          "durationSec": 1635,
+          "region": "KR",
+          "player": "Kellin",
+          "team": "BFX",
+          "uploaded": "2026-07-12",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 98,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "z-b1R84K4iw",
+          "title": "(Yagao) Leona Support vs Shen - KR Grandmaster Patch 26.18",
+          "rankClaim": "Grandmaster",
+          "patch": "26.18",
+          "durationSec": 1419,
+          "region": "KR",
+          "player": "Yagao",
+          "uploaded": "2026-09-14",
+          "moments": []
+        },
+        {
+          "videoId": "wbAhnI3bfVE",
+          "title": "Leona Support vs Shen - KR Master Patch 26.17",
+          "rankClaim": "Master",
+          "patch": "26.17",
+          "durationSec": 1798,
+          "region": "KR",
+          "uploaded": "2026-09-11",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 99,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "htkiHZV3EyI",
+          "title": "Leona Support vs Lux - EUW Challenger Patch 25.19",
+          "rankClaim": "Challenger",
+          "patch": "25.19",
+          "durationSec": 1748,
+          "region": "EUW",
+          "uploaded": "2025-10-08",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 111,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "FdLC1Ob1ehg",
+          "title": "(DK Career) Leona Support vs Nautilus - KR Challenger Patch 26.15",
+          "rankClaim": "Challenger",
+          "patch": "26.15",
+          "durationSec": 1666,
+          "region": "KR",
+          "player": "Career",
+          "team": "DK",
+          "uploaded": "2026-08-07",
+          "moments": []
+        },
+        {
+          "videoId": "2RaJY1GRkTA",
+          "title": "(JDG Vampire) Leona Support vs Nautilus - KR Challenger Patch 26.13",
+          "rankClaim": "Challenger",
+          "patch": "26.13",
+          "durationSec": 1600,
+          "region": "KR",
+          "player": "Vampire",
+          "team": "JDG",
+          "uploaded": "2026-06-30",
+          "moments": []
+        },
+        {
+          "videoId": "Lig_kmDtou8",
+          "title": "Leona Support vs Nautilus - EUW Challenger Patch 26.07",
+          "rankClaim": "Challenger",
+          "patch": "26.7",
+          "durationSec": 1796,
+          "region": "EUW",
+          "uploaded": "2026-04-04",
+          "moments": []
+        },
+        {
+          "videoId": "i_xJ6xq_ZJk",
+          "title": "Leona Support vs Nautilus - EUW Challenger Patch 26.05",
+          "rankClaim": "Challenger",
+          "patch": "26.5",
+          "durationSec": 1666,
+          "region": "EUW",
+          "uploaded": "2026-03-17",
+          "moments": []
+        },
+        {
+          "videoId": "DlpD-j9iqQQ",
+          "title": "Leona Support vs Nautilus - KR Challenger Patch 26.04",
+          "rankClaim": "Challenger",
+          "patch": "26.4",
+          "durationSec": 1519,
+          "region": "KR",
+          "uploaded": "2026-02-21",
+          "moments": []
+        },
+        {
+          "videoId": "QWZBd5tPWSo",
+          "title": "Leona Support vs Nautilus - KR Master Patch 26.03",
+          "rankClaim": "Master",
+          "patch": "26.3",
+          "durationSec": 1577,
+          "region": "KR",
+          "uploaded": "2026-02-08",
+          "moments": []
+        },
+        {
+          "videoId": "9L8IXsxX-xY",
+          "title": "Leona Support vs Nautilus - NA Grandmaster Patch 25.24",
+          "rankClaim": "Grandmaster",
+          "patch": "25.24",
+          "durationSec": 1495,
+          "region": "NA",
+          "uploaded": "2026-01-09",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 161,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 275,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 357,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 555,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 878,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1006,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1104,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1155,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1360,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1379,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1425,
+              "label": "Take down The Inhibitor"
+            },
+            {
+              "atSec": 1444,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1459,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1484,
+              "label": "End credit"
+            }
+          ]
+        },
+        {
+          "videoId": "Y4gxnjOujFg",
+          "title": "Leona Support vs Nautilus - NA Challenger Patch 25.22",
+          "rankClaim": "Challenger",
+          "patch": "25.22",
+          "durationSec": 1431,
+          "region": "NA",
+          "uploaded": "2025-11-20",
+          "moments": []
+        },
+        {
+          "videoId": "B6MId8Y2g20",
+          "title": "Leona Support vs Nautilus - KR Challenger Patch 25.20",
+          "rankClaim": "Challenger",
+          "patch": "25.20",
+          "durationSec": 1442,
+          "region": "KR",
+          "uploaded": "2025-10-12",
+          "moments": []
+        },
+        {
+          "videoId": "kDvwf15V-B8",
+          "title": "Leona Support vs Nautilus - EUW Challenger Patch 25.11",
+          "rankClaim": "Challenger",
+          "patch": "25.11",
+          "durationSec": 1870,
+          "region": "EUW",
+          "uploaded": "2025-06-13",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 117,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "ZyMxRwT1zTs",
+          "title": "Leona Support vs Lulu - EUW Challenger Patch 25.15",
+          "rankClaim": "Challenger",
+          "patch": "25.15",
+          "durationSec": 1866,
+          "region": "EUW",
+          "uploaded": "2025-08-14",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 143,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "NDlr21P8Igc",
+          "title": "(KCB Prime) Leona Support vs Zyra - EUW Master Patch 26.16",
+          "rankClaim": "Master",
+          "patch": "26.16",
+          "durationSec": 1759,
+          "region": "EUW",
+          "player": "KCB Prime",
+          "uploaded": "2026-08-17",
+          "moments": []
+        },
+        {
+          "videoId": "pdfI0yHxQZY",
+          "title": "Leona Support vs Zyra - EUW Grandmaster Patch 25.20",
+          "rankClaim": "Grandmaster",
+          "patch": "25.20",
+          "durationSec": 1425,
+          "region": "EUW",
+          "uploaded": "2025-10-24",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 147,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "rHdL45HgmH8",
+          "title": "Leona Support vs Seraphine - KR Challenger Patch 26.10",
+          "rankClaim": "Challenger",
+          "patch": "26.10",
+          "durationSec": 1528,
+          "region": "KR",
+          "uploaded": "2026-05-19",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 164,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "cHzUUtSihNA",
+          "title": "Leona Support vs Camille - KR Master Patch 26.20",
+          "rankClaim": "Master",
+          "patch": "26.20",
+          "durationSec": 1456,
+          "region": "KR",
+          "uploaded": "2026-10-11",
+          "result": "W",
+          "moments": [
+            {
+              "atSec": 277,
+              "label": "First Blood — Leona kills Camille",
+              "kind": "kill"
+            },
+            {
+              "atSec": 312,
+              "label": "Viego picks off Galio"
+            },
+            {
+              "atSec": 339,
+              "label": "Blue takes 1st Dragon (Mountain)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 448,
+              "label": "Xerath picks off Camille"
+            },
+            {
+              "atSec": 502,
+              "label": "Team fight (3 kills)",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 673,
+              "label": "Viego kills Camille",
+              "kind": "kill"
+            },
+            {
+              "atSec": 787,
+              "label": "Viego kills Camille",
+              "kind": "kill"
+            },
+            {
+              "atSec": 809,
+              "label": "Blue takes 2nd Dragon (Cloud)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 842,
+              "label": "Team fight (3 kills)",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 896,
+              "label": "Blue takes Rift Herald",
+              "kind": "herald"
+            },
+            {
+              "atSec": 1129,
+              "label": "Red takes 1st Dragon (Ocean)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1156,
+              "label": "Jax picks off Tristana"
+            },
+            {
+              "atSec": 1185,
+              "label": "Top Inhibitor falls (Red)"
+            },
+            {
+              "atSec": 1263,
+              "label": "Xerath Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1345,
+              "label": "Orianna kills Tristana",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1412,
+              "label": "Viego Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1421,
+              "label": "Viego Triple Kill",
+              "kind": "kill"
+            }
+          ]
+        },
+        {
+          "videoId": "NOucW7dmdy8",
+          "title": "Leona Support vs Camille (AL Kael) - KR Grandmaster Patch 26.17",
+          "rankClaim": "Grandmaster",
+          "patch": "26.17",
+          "durationSec": 1702,
+          "region": "KR",
+          "uploaded": "2026-08-29",
+          "result": "W",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "First Blood — Qiyana kills Yone",
+              "kind": "kill"
+            },
+            {
+              "atSec": 666,
+              "label": "Red takes 1st Dragon (Chemtech)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 716,
+              "label": "Leona eliminates Camille"
+            },
+            {
+              "atSec": 745,
+              "label": "Qiyana eliminates Yasuo"
+            },
+            {
+              "atSec": 789,
+              "label": "Orianna picks off Zyra"
+            },
+            {
+              "atSec": 879,
+              "label": "Qiyana kills Camille",
+              "kind": "kill"
+            },
+            {
+              "atSec": 927,
+              "label": "Qiyana eliminates Yasuo"
+            },
+            {
+              "atSec": 983,
+              "label": "Ziggs eliminates Zyra"
+            },
+            {
+              "atSec": 1065,
+              "label": "Ziggs takes down Yasuo"
+            },
+            {
+              "atSec": 1113,
+              "label": "Red takes 2nd Dragon (Cloud)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1219,
+              "label": "Pantheon eliminates Camille"
+            },
+            {
+              "atSec": 1302,
+              "label": "Blue takes Baron",
+              "kind": "baron"
+            },
+            {
+              "atSec": 1336,
+              "label": "Ziggs eliminates Zyra"
+            },
+            {
+              "atSec": 1429,
+              "label": "Qiyana eliminates Yasuo"
+            },
+            {
+              "atSec": 1474,
+              "label": "Mid Inhibitor falls (Blue)"
+            },
+            {
+              "atSec": 1496,
+              "label": "Red takes 3rd Dragon (Infernal)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1591,
+              "label": "Ziggs eliminates Zyra"
+            },
+            {
+              "atSec": 1652,
+              "label": "Qiyana Double Kill",
+              "kind": "kill"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 201,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "gSw48EVar8I",
+          "title": "(Aether) Leona Support vs Braum (Berr) - KR Challenger Patch 26.21",
+          "rankClaim": "Challenger",
+          "patch": "26.21",
+          "durationSec": 1605,
+          "region": "KR",
+          "player": "Aether",
+          "uploaded": "2026-10-24",
+          "result": "W",
+          "moments": [
+            {
+              "atSec": 151,
+              "label": "First Blood — Viego kills Braum",
+              "kind": "kill"
+            },
+            {
+              "atSec": 162,
+              "label": "Ezreal takes down Lucian"
+            },
+            {
+              "atSec": 456,
+              "label": "Red takes 1st Dragon (Ocean)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 621,
+              "label": "Viego kills Braum",
+              "kind": "kill"
+            },
+            {
+              "atSec": 844,
+              "label": "Blue takes 1st Dragon (Hextech)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1142,
+              "label": "Viego Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1183,
+              "label": "Red takes Baron",
+              "kind": "baron"
+            },
+            {
+              "atSec": 1217,
+              "label": "Blue takes 2nd Dragon (Infernal)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1346,
+              "label": "Orianna Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1451,
+              "label": "Ezreal Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1541,
+              "label": "Blue takes 3rd Dragon (Infernal)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1579,
+              "label": "Mid Inhibitor falls (Blue)"
+            }
+          ]
+        },
+        {
+          "videoId": "ZFDZWKBhHSQ",
+          "title": "Leona Support vs Braum - KR Master Patch 26.19",
+          "rankClaim": "Master",
+          "patch": "26.19",
+          "durationSec": 1834,
+          "region": "KR",
+          "uploaded": "2026-09-26",
+          "moments": []
+        },
+        {
+          "videoId": "jCxcj-sdbqE",
+          "title": "Leona Support vs Braum - EUW Master Patch 26.02",
+          "rankClaim": "Master",
+          "patch": "26.2",
+          "durationSec": 1589,
+          "region": "EUW",
+          "uploaded": "2026-02-03",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 484,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 573,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 663,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 784,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 878,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 946,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1035,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1119,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1240,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1387,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1500,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1531,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1555,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1578,
+              "label": "End credit"
+            }
+          ]
+        },
+        {
+          "videoId": "jG7-HRK8laA",
+          "title": "Leona Support vs Braum - EUW Grandmaster Patch 25.23",
+          "rankClaim": "Grandmaster",
+          "patch": "25.23",
+          "durationSec": 1675,
+          "region": "EUW",
+          "uploaded": "2025-12-04",
+          "moments": []
+        },
+        {
+          "videoId": "rODcwWP-Jzs",
+          "title": "Leona Support vs Braum - KR Grandmaster Patch 25.11",
+          "rankClaim": "Grandmaster",
+          "patch": "25.11",
+          "durationSec": 1636,
+          "region": "KR",
+          "uploaded": "2025-06-02",
+          "moments": []
+        },
+        {
+          "videoId": "hsPJ55YueB8",
+          "title": "Leona Support vs Braum - EUW Challenger Patch 25.08",
+          "rankClaim": "Challenger",
+          "patch": "25.8",
+          "durationSec": 1685,
+          "region": "EUW",
+          "uploaded": "2025-05-01",
+          "moments": []
+        },
+        {
+          "videoId": "iwQ2Wi1gyRA",
+          "title": "Leona Support vs Braum - KR Master Patch 25.06",
+          "rankClaim": "Master",
+          "patch": "25.6",
+          "durationSec": 1762,
+          "region": "KR",
+          "uploaded": "2025-03-23",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 235,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "yAn_jT2iaVI",
+          "title": "Leona Support vs Senna - EUW Challenger Patch 26.07",
+          "rankClaim": "Challenger",
+          "patch": "26.7",
+          "durationSec": 1716,
+          "region": "EUW",
+          "uploaded": "2026-04-16",
+          "moments": []
+        },
+        {
+          "videoId": "IME-gVb-GY8",
+          "title": "Leona Support vs Senna - KR Grandmaster Patch 26.02",
+          "rankClaim": "Grandmaster",
+          "patch": "26.2",
+          "durationSec": 1511,
+          "region": "KR",
+          "uploaded": "2026-01-25",
+          "moments": []
+        },
+        {
+          "videoId": "U1LnrLNGxB8",
+          "title": "Leona Support vs Senna - EUW Challenger Patch 25.18",
+          "rankClaim": "Challenger",
+          "patch": "25.18",
+          "durationSec": 1786,
+          "region": "EUW",
+          "uploaded": "2025-09-24",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 238,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "m6iFMawxbvw",
+          "title": "Leona Support vs Zed - EUW Challenger Patch 26.08",
+          "rankClaim": "Challenger",
+          "patch": "26.8",
+          "durationSec": 1499,
+          "region": "EUW",
+          "uploaded": "2026-04-21",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 267,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "QMVR4ZLszb8",
+          "title": "Leona Support vs Nami - BR Challenger Patch 25.24",
+          "rankClaim": "Challenger",
+          "patch": "25.24",
+          "durationSec": 1618,
+          "uploaded": "2025-12-30",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 453,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 620,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 731,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 812,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 973,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1069,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1120,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1136,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1212,
+              "label": "Hunt The Atakhan"
+            },
+            {
+              "atSec": 1230,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1446,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1550,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1577,
+              "label": "Take down The Inhibitor"
+            },
+            {
+              "atSec": 1592,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1607,
+              "label": "End credit"
+            }
+          ]
+        },
+        {
+          "videoId": "3iL1r5fqG24",
+          "title": "Leona Support vs Nami - KR Challenger Patch 25.07",
+          "rankClaim": "Challenger",
+          "patch": "25.7",
+          "durationSec": 1955,
+          "region": "KR",
+          "uploaded": "2025-04-06",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 350,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "mRkLJInTQoY",
+          "title": "Leona Support vs Yuumi - VN Challenger Patch 26.06",
+          "rankClaim": "Challenger",
+          "patch": "26.6",
+          "durationSec": 1554,
+          "uploaded": "2026-03-22",
+          "moments": []
+        },
+        {
+          "videoId": "ZmcMb8h99dE",
+          "title": "Leona Support vs Yuumi - KR Master Patch 25.24",
+          "rankClaim": "Master",
+          "patch": "25.24",
+          "durationSec": 1688,
+          "region": "KR",
+          "uploaded": "2025-12-07",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 482,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 643,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 729,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 820,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 839,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 906,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1079,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1166,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1313,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1341,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1462,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1644,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1660,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1677,
+              "label": "End credit"
+            }
+          ]
+        },
+        {
+          "videoId": "N1E0ztuMqCQ",
+          "title": "Leona Support vs Yuumi - EUW Grandmaster Patch 25.04",
+          "rankClaim": "Grandmaster",
+          "patch": "25.4",
+          "durationSec": 1696,
+          "region": "EUW",
+          "uploaded": "2025-03-07",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 204,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 260,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 661,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 709,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 821,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 958,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 972,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1177,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1291,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1381,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1432,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1479,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1494,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1629,
+              "label": "Take down The Inhibitor"
+            },
+            {
+              "atSec": 1643,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1661,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1675,
+              "label": "End credit"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 412,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "cXU_U3ft98k",
+          "title": "(GX Attila) Leona Support vs Thresh - EUW Grandmaster Patch 26.12",
+          "rankClaim": "Grandmaster",
+          "patch": "26.12",
+          "durationSec": 1719,
+          "region": "EUW",
+          "player": "GX Attila",
+          "uploaded": "2026-06-17",
+          "moments": []
+        },
+        {
+          "videoId": "zCUGADoxubs",
+          "title": "Leona Support vs Thresh - EUW Grandmaster Patch 26.05",
+          "rankClaim": "Grandmaster",
+          "patch": "26.5",
+          "durationSec": 1580,
+          "region": "EUW",
+          "uploaded": "2026-03-07",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 185,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 254,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 342,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 416,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 532,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 654,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 766,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 919,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1006,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1150,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1271,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1405,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1429,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1496,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1569,
+              "label": "End credit"
+            }
+          ]
+        },
+        {
+          "videoId": "W1rhHV0dzx4",
+          "title": "Leona Support vs Thresh - EUW Grandmaster Patch 26.01",
+          "rankClaim": "Grandmaster",
+          "patch": "26.1",
+          "durationSec": 1564,
+          "region": "EUW",
+          "uploaded": "2026-01-22",
+          "moments": []
+        },
+        {
+          "videoId": "QwRb7UPrlBM",
+          "title": "Leona Support vs Thresh - TW Challenger Patch 25.24",
+          "rankClaim": "Challenger",
+          "patch": "25.24",
+          "durationSec": 1579,
+          "uploaded": "2025-12-25",
+          "moments": []
+        },
+        {
+          "videoId": "-hvUmB60Jjk",
+          "title": "Leona Support vs Thresh - KR Grandmaster Patch 25.12",
+          "rankClaim": "Grandmaster",
+          "patch": "25.12",
+          "durationSec": 1849,
+          "region": "KR",
+          "uploaded": "2025-06-13",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 432,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "c8FNN6Sapvc",
+          "title": "Leona Support vs Bard - KR Challenger Patch 26.04",
+          "rankClaim": "Challenger",
+          "patch": "26.4",
+          "durationSec": 1461,
+          "region": "KR",
+          "uploaded": "2026-03-06",
+          "moments": []
+        },
+        {
+          "videoId": "O4LGD_eG4kw",
+          "title": "Leona Support vs Bard - KR Master Patch 25.10",
+          "rankClaim": "Master",
+          "patch": "25.10",
+          "durationSec": 1655,
+          "region": "KR",
+          "uploaded": "2025-05-18",
+          "moments": []
+        },
+        {
+          "videoId": "9txDNQpKXm4",
+          "title": "Leona Support vs Bard - KR Grandmaster Patch 25.08",
+          "rankClaim": "Grandmaster",
+          "patch": "25.8",
+          "durationSec": 1754,
+          "region": "KR",
+          "uploaded": "2025-04-20",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 38,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 272,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 374,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 935,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1109,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1211,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1249,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1466,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1560,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1612,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1710,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1733,
+              "label": "End credit"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 497,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "MUuGrBBdh6M",
+          "title": "(VITB Dekap) Leona Support vs Rakan (iLevi) - EUW Challenger Patch 26.20",
+          "rankClaim": "Challenger",
+          "patch": "26.20",
+          "durationSec": 1770,
+          "region": "EUW",
+          "player": "VITB Dekap",
+          "uploaded": "2026-10-21",
+          "result": "W",
+          "moments": [
+            {
+              "atSec": 251,
+              "label": "First Blood — Leona kills K'Sante",
+              "kind": "kill"
+            },
+            {
+              "atSec": 356,
+              "label": "Blue takes 1st Dragon (Chemtech)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 678,
+              "label": "Red takes 1st Dragon (Infernal)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 867,
+              "label": "Nidalee kills K'Sante",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1007,
+              "label": "Red takes 2nd Dragon (Hextech)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1047,
+              "label": "Fiora Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1206,
+              "label": "Leona takes down Akali"
+            },
+            {
+              "atSec": 1328,
+              "label": "Blue takes 2nd Dragon (Hextech)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1457,
+              "label": "Blue takes Baron",
+              "kind": "baron"
+            },
+            {
+              "atSec": 1471,
+              "label": "Fiora Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1477,
+              "label": "Fiora Triple Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1487,
+              "label": "Fiora Quadra Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1576,
+              "label": "Leona eliminates Rakan"
+            },
+            {
+              "atSec": 1665,
+              "label": "Yone Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1696,
+              "label": "Mid Inhibitor falls (Blue)"
+            },
+            {
+              "atSec": 1729,
+              "label": "Red takes 3rd Dragon (Hextech)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1738,
+              "label": "Nidalee eliminates Jhin"
+            },
+            {
+              "atSec": 1746,
+              "label": "Nidalee Triple Kill",
+              "kind": "kill"
+            }
+          ]
+        },
+        {
+          "videoId": "FroaK3YFlhI",
+          "title": "Leona Support vs Rakan - EUW Challenger Patch 26.08",
+          "rankClaim": "Challenger",
+          "patch": "26.8",
+          "durationSec": 1454,
+          "region": "EUW",
+          "uploaded": "2026-05-01",
+          "moments": []
+        },
+        {
+          "videoId": "HVBRC5-jWy8",
+          "title": "Leona Support vs Rakan - NA Grandmaster Patch 25.21",
+          "rankClaim": "Grandmaster",
+          "patch": "25.21",
+          "durationSec": 1556,
+          "region": "NA",
+          "uploaded": "2025-11-05",
+          "moments": []
+        },
+        {
+          "videoId": "VIy0ji9z2gE",
+          "title": "Leona Support vs Rakan - EUW Challenger Patch 25.06",
+          "rankClaim": "Challenger",
+          "patch": "25.6",
+          "durationSec": 1797,
+          "region": "EUW",
+          "uploaded": "2025-04-02",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 517,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "vI8hUrnaltc",
+          "title": "Leona Support vs Sylas - KR Challenger Patch 25.04",
+          "rankClaim": "Challenger",
+          "patch": "25.4",
+          "durationSec": 1520,
+          "region": "KR",
+          "uploaded": "2025-02-27",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 65,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 126,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 178,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 258,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 345,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 394,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 487,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 606,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 752,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 875,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1022,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1078,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1158,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1274,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1350,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1376,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1395,
+              "label": "Take down The Inhibitor"
+            },
+            {
+              "atSec": 1478,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1499,
+              "label": "End credit"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 526,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "H4OpfTZSpNI",
+          "title": "Leona Support vs Rell - KR Grandmaster Patch 26.18",
+          "rankClaim": "Grandmaster",
+          "patch": "26.18",
+          "durationSec": 1815,
+          "region": "KR",
+          "uploaded": "2026-09-25",
+          "result": "W",
+          "moments": [
+            {
+              "atSec": 78,
+              "label": "First Blood — Kai'Sa kills Rell",
+              "kind": "kill"
+            },
+            {
+              "atSec": 603,
+              "label": "Blue takes 1st Dragon (Infernal)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 630,
+              "label": "Kai'Sa takes down Jhin"
+            },
+            {
+              "atSec": 696,
+              "label": "Kai'Sa takes down Jhin"
+            },
+            {
+              "atSec": 744,
+              "label": "Aurora takes down Rell"
+            },
+            {
+              "atSec": 824,
+              "label": "Kai'Sa takes down Jhin"
+            },
+            {
+              "atSec": 928,
+              "label": "Blue takes 2nd Dragon (Chemtech)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1019,
+              "label": "Kai'Sa picks off Rell"
+            },
+            {
+              "atSec": 1089,
+              "label": "Lee Sin kills Camille",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1210,
+              "label": "Blue takes Baron",
+              "kind": "baron"
+            },
+            {
+              "atSec": 1249,
+              "label": "Riven Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1289,
+              "label": "Red takes 1st Dragon (Hextech)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1300,
+              "label": "Aurora picks off Zyra"
+            },
+            {
+              "atSec": 1405,
+              "label": "Aurora takes down Rell"
+            },
+            {
+              "atSec": 1577,
+              "label": "Aurora takes down Rell"
+            },
+            {
+              "atSec": 1681,
+              "label": "Riven eliminates Rell"
+            },
+            {
+              "atSec": 1719,
+              "label": "Aurora eliminates Azir"
+            },
+            {
+              "atSec": 1756,
+              "label": "Mid Inhibitor falls (Red)"
+            }
+          ]
+        },
+        {
+          "videoId": "TmMjQkOX-sg",
+          "title": "Leona Support vs Rell - KR Challenger Patch 25.21",
+          "rankClaim": "Challenger",
+          "patch": "25.21",
+          "durationSec": 1480,
+          "region": "KR",
+          "uploaded": "2025-10-27",
+          "moments": []
+        },
+        {
+          "videoId": "wrmJivighqU",
+          "title": "Leona Support vs Rell - KR Grandmaster Patch 25.19",
+          "rankClaim": "Grandmaster",
+          "patch": "25.19",
+          "durationSec": 1643,
+          "region": "KR",
+          "uploaded": "2025-09-28",
+          "moments": []
+        },
+        {
+          "videoId": "cy0cf4sWqCs",
+          "title": "Leona Support vs Rell - NA Challenger Patch 25.17",
+          "rankClaim": "Challenger",
+          "patch": "25.17",
+          "durationSec": 1710,
+          "region": "NA",
+          "uploaded": "2025-09-11",
+          "moments": []
+        },
+        {
+          "videoId": "f5MqLH3uuu4",
+          "title": "Leona Support vs Rell - EUW Grandmaster Patch 25.13",
+          "rankClaim": "Grandmaster",
+          "patch": "25.13",
+          "durationSec": 1562,
+          "region": "EUW",
+          "uploaded": "2025-07-10",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 555,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "rANtn-w5Sfc",
+          "title": "Leona Support vs Pyke - KR Master Patch 25.14",
+          "rankClaim": "Master",
+          "patch": "25.14",
+          "durationSec": 1459,
+          "region": "KR",
+          "uploaded": "2025-07-21",
+          "moments": []
+        },
+        {
+          "videoId": "HaykjXTPsaM",
+          "title": "Leona Support vs Pyke - KR Master Patch 25.13",
+          "rankClaim": "Master",
+          "patch": "25.13",
+          "durationSec": 1725,
+          "region": "KR",
+          "uploaded": "2025-07-17",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 800,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "wJ6uosrCPWw",
+          "title": "Leona Support vs Mel - KR Grandmaster Patch 26.09",
+          "rankClaim": "Grandmaster",
+          "patch": "26.9",
+          "durationSec": 1579,
+          "region": "KR",
+          "uploaded": "2026-05-07",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 888,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "bhh-dRaENjY",
+          "title": "(KCB Prime) Leona Support vs Renata Glasc - EUW Grandmaster Patch 26.11",
+          "rankClaim": "Grandmaster",
+          "patch": "26.11",
+          "durationSec": 1643,
+          "region": "EUW",
+          "player": "KCB Prime",
+          "uploaded": "2026-06-06",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 897,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "9JBpzCR8qgo",
+          "title": "Leona Top vs K'Sante - NA Grandmaster Patch 25.05",
+          "rankClaim": "Grandmaster",
+          "patch": "25.5",
+          "durationSec": 1792,
+          "region": "NA",
+          "uploaded": "2025-03-15",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 902,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "Ov_tukN4w7c",
+          "title": "Leona Support vs Milio - KR Master Patch 26.19",
+          "rankClaim": "Master",
+          "patch": "26.19",
+          "durationSec": 1435,
+          "region": "KR",
+          "uploaded": "2026-10-09",
+          "result": "W",
+          "moments": [
+            {
+              "atSec": 138,
+              "label": "First Blood — Locke kills Lucian",
+              "kind": "kill"
+            },
+            {
+              "atSec": 150,
+              "label": "Leona kills Darius",
+              "kind": "kill"
+            },
+            {
+              "atSec": 317,
+              "label": "Red takes 1st Dragon (Mountain)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 322,
+              "label": "Locke kills Lucian",
+              "kind": "kill"
+            },
+            {
+              "atSec": 410,
+              "label": "Zeri takes down Lucian"
+            },
+            {
+              "atSec": 619,
+              "label": "Shaco eliminates Lucian"
+            },
+            {
+              "atSec": 645,
+              "label": "Red takes 2nd Dragon (Cloud)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 708,
+              "label": "Leona takes down Akali"
+            },
+            {
+              "atSec": 779,
+              "label": "Zeri takes down Lucian"
+            },
+            {
+              "atSec": 864,
+              "label": "Locke takes down Irelia"
+            },
+            {
+              "atSec": 970,
+              "label": "Red takes 3rd Dragon (Hextech)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1116,
+              "label": "Locke Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1286,
+              "label": "Team fight (3 kills)",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1325,
+              "label": "Red takes 4th Dragon (Hextech)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1385,
+              "label": "Locke Triple Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1421,
+              "label": "Red takes Baron",
+              "kind": "baron"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

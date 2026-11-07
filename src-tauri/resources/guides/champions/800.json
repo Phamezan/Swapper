@@ -1,0 +1,4198 @@
+{
+  "schema": 1,
+  "champion": 800,
+  "generatedAt": "2026-11-07T13:25:14.592Z",
+  "guides": [
+    {
+      "champion": 800,
+      "enemy": 103,
+      "lane": "mid",
+      "patch": "26.21",
+      "reviewed": false,
+      "difficulty": "Skill matchup",
+      "favoredWhen": "She Charms only when reflect is down and takes priority on your weak waveclear. Hold W, shove back.",
+      "keyTips": [
+        {
+          "text": "She never Charms into your reflect: Charm comes only once your W is down (about {cd:800:W}).",
+          "scope": "pair",
+          "sourceIds": [
+            "peng04"
+          ],
+          "abilityKeys": [
+            {
+              "champion": 103,
+              "key": "E"
+            },
+            {
+              "champion": 800,
+              "key": "W"
+            }
+          ]
+        },
+        {
+          "text": "She ults in casting one spell per dash: reflect the last, not the first.",
+          "scope": "pair",
+          "sourceIds": [
+            "peng04"
+          ],
+          "abilityKeys": [
+            {
+              "champion": 103,
+              "key": "R"
+            },
+            {
+              "champion": 103,
+              "key": "E"
+            },
+            {
+              "champion": 800,
+              "key": "W"
+            }
+          ]
+        },
+        {
+          "text": "She throws Charm from behind a minion to force W first: hold W anyway.",
+          "scope": "pair",
+          "sourceIds": [
+            "peng04"
+          ],
+          "abilityKeys": [
+            {
+              "champion": 103,
+              "key": "E"
+            },
+            {
+              "champion": 800,
+              "key": "W"
+            }
+          ]
+        }
+      ],
+      "enemyTips": {},
+      "sections": {
+        "overview": {
+          "tips": []
+        },
+        "early-lane": {
+          "tips": [
+            {
+              "text": "She dodges your missiles with W speed: lead the Qs.",
+              "scope": "pair",
+              "sourceIds": [
+                "shok-ahri"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 103,
+                  "key": "W"
+                },
+                {
+                  "champion": 800,
+                  "key": "Q"
+                },
+                {
+                  "champion": 800,
+                  "key": "E"
+                }
+              ]
+            },
+            {
+              "text": "Her fox-fires cannot be dodged and proc Electrocute: short W trades are hers, so respect.",
+              "scope": "pair",
+              "sourceIds": [
+                "evandabank"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 103,
+                  "key": "W"
+                }
+              ]
+            }
+          ]
+        },
+        "mid-lane": {
+          "tips": [
+            {
+              "text": "She punishes your weak waveclear: her Q spam takes priority, so match it.",
+              "scope": "pair",
+              "sourceIds": [
+                "shok-ahri"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 103,
+                  "key": "Q"
+                }
+              ]
+            },
+            {
+              "text": "She answers instead of tanking minions: poke from range, never walk in.",
+              "scope": "pair",
+              "sourceIds": [
+                "evandabank"
+              ]
+            }
+          ]
+        },
+        "win-condition": {
+          "tips": [
+            {
+              "text": "She converts priority to map plays: pin her or lose the map.",
+              "scope": "pair",
+              "sourceIds": [
+                "evandabank"
+              ]
+            },
+            {
+              "text": "She duels only at Charm-up angles: reflect down means no duel.",
+              "scope": "pair",
+              "sourceIds": [
+                "peng04"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 103,
+                  "key": "E"
+                },
+                {
+                  "champion": 800,
+                  "key": "W"
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "itemization": [],
+      "sources": [
+        {
+          "id": "peng04",
+          "author": "Peng04",
+          "rankClaim": "Challenger · Ahri main",
+          "rank": "challenger",
+          "url": "https://www.mobafire.com/league-of-legends/build/26-20-pengs-ahri-guide-5-1mil-points-13x-challenger-648700",
+          "kind": "mobafire"
+        },
+        {
+          "id": "shok-ahri",
+          "author": "ShokLoL",
+          "rankClaim": "Rank 1 Challenger · Ahri main",
+          "rank": "challenger",
+          "url": "https://www.mobafire.com/league-of-legends/build/26-5-shoks-rank-1-challenger-ahri-guide-635065",
+          "kind": "mobafire"
+        },
+        {
+          "id": "evandabank",
+          "author": "Evandabank",
+          "rankClaim": "Grandmaster (title and profile badge) · Mel main",
+          "rank": "grandmaster",
+          "url": "https://www.mobafire.com/league-of-legends/build/evandabanks-grandmaster-mel-midlane-guide-648010",
+          "kind": "mobafire"
+        }
+      ]
+    },
+    {
+      "champion": 800,
+      "enemy": 238,
+      "lane": "mid",
+      "patch": "26.21",
+      "reviewed": false,
+      "difficulty": "Skill matchup",
+      "favoredWhen": "He kills once W is used and baits it with autos first. Hold W, punish WEQ.",
+      "keyTips": [
+        {
+          "text": "W used means you die: hold reflect for his all-in.",
+          "scope": "pair",
+          "sourceIds": [
+            "aikopanda"
+          ],
+          "abilityKeys": [
+            {
+              "champion": 800,
+              "key": "W"
+            }
+          ]
+        },
+        {
+          "text": "He calls ganks since you cannot escape: ward and track.",
+          "scope": "pair",
+          "sourceIds": [
+            "aikopanda"
+          ]
+        },
+        {
+          "text": "He pokes from 3 and backs off: reflect the second cast, not the first.",
+          "scope": "pair",
+          "sourceIds": [
+            "aikopanda"
+          ]
+        }
+      ],
+      "enemyTips": {
+        "early-lane": [
+          {
+            "text": "Zed often places Living Shadow before Death Mark so he can swap away from skillshots. Hold your crowd control until he has used the swap.",
+            "scope": "enemy",
+            "sourceIds": [
+              "aikopanda"
+            ],
+            "patch": "26.21",
+            "abilityKeys": [
+              {
+                "champion": 238,
+                "key": "W"
+              },
+              {
+                "champion": 238,
+                "key": "R"
+              }
+            ]
+          }
+        ],
+        "win-condition": [
+          {
+            "text": "Death Mark always lands Zed behind his target. Pre-aim crowd control and escapes behind you, not toward where he cast it.",
+            "scope": "enemy",
+            "sourceIds": [
+              "peng04"
+            ],
+            "patch": "26.21",
+            "abilityKeys": [
+              {
+                "champion": 238,
+                "key": "R"
+              }
+            ]
+          }
+        ]
+      },
+      "sections": {
+        "overview": {
+          "tips": []
+        },
+        "early-lane": {
+          "tips": [
+            {
+              "text": "In all-ins he autos first to bait W, then Q-E: never reflect the auto.",
+              "scope": "pair",
+              "sourceIds": [
+                "aikopanda"
+              ]
+            },
+            {
+              "text": "He steps back after WEQ: hold Q until he lands.",
+              "scope": "pair",
+              "sourceIds": [
+                "v222"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 238,
+                  "key": "W"
+                }
+              ]
+            }
+          ]
+        },
+        "mid-lane": {
+          "tips": [
+            {
+              "text": "Death Mark always lands Zed behind his target. Pre-aim crowd control and escapes behind you, not toward where he cast it.",
+              "scope": "pair",
+              "sourceIds": [
+                "peng04"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 238,
+                  "key": "R"
+                }
+              ]
+            },
+            {
+              "text": "E down means his aggressive all-ins: W is your life, so track yours.",
+              "scope": "pair",
+              "sourceIds": [
+                "v222"
+              ]
+            }
+          ]
+        },
+        "win-condition": {
+          "tips": [
+            {
+              "text": "Panic W loses: hold reflect until Qs fly.",
+              "scope": "pair",
+              "sourceIds": [
+                "v222"
+              ]
+            }
+          ]
+        }
+      },
+      "itemization": [],
+      "sources": [
+        {
+          "id": "aikopanda",
+          "author": "AikoPanda",
+          "rankClaim": "Zed main",
+          "url": "https://www.mobafire.com/league-of-legends/build/26-20-video-guides-hidden-combos-all-matchups-zed-all-in-one-guide-652800",
+          "kind": "mobafire"
+        },
+        {
+          "id": "v222",
+          "author": "V222",
+          "rankClaim": "Challenger EUW · Zed main",
+          "rank": "challenger",
+          "url": "https://www.mobafire.com/league-of-legends/build/all-matchups-26-14-zed-guide-2000lp-euw-challenger-652354",
+          "kind": "mobafire"
+        },
+        {
+          "id": "peng04",
+          "author": "Peng04",
+          "rankClaim": "Challenger · Ahri main",
+          "rank": "challenger",
+          "url": "https://www.mobafire.com/league-of-legends/build/26-20-pengs-ahri-guide-5-1mil-points-13x-challenger-648700",
+          "kind": "mobafire"
+        }
+      ]
+    }
+  ],
+  "vods": [
+    {
+      "lane": "adc",
+      "videos": [
+        {
+          "videoId": "Bi2wOOXXF54",
+          "title": "Gumayusi : His Mel is a Killing Machine in Botlane - Engsub",
+          "rankClaim": "Master+",
+          "patch": "26.1",
+          "durationSec": 1161,
+          "patchEstimated": true,
+          "player": "Gumayusi",
+          "uploaded": "2026-01-19",
+          "format": "stream",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "Wg6Rf4UWuyA",
+          "title": "Challenger Baicaiovo Mel: His Kiting is UNREAL on CN Super Server",
+          "rankClaim": "Challenger",
+          "patch": "26.12",
+          "durationSec": 1834,
+          "patchEstimated": true,
+          "player": "Baicaiovo",
+          "uploaded": "2026-06-11",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "THuX0n12TgQ",
+          "title": "Rank 1 Mel : This Dude is WRECKING CN Super Server",
+          "rankClaim": "Master+",
+          "patch": "26.11",
+          "durationSec": 925,
+          "patchEstimated": true,
+          "player": "Baicaiovo",
+          "uploaded": "2026-06-06",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "vPR-ueuao_g",
+          "title": "Challenger Baicaiovo Mel: His Mel INSANE on CN Super Server",
+          "rankClaim": "Challenger",
+          "patch": "26.10",
+          "durationSec": 1200,
+          "patchEstimated": true,
+          "player": "Baicaiovo",
+          "uploaded": "2026-05-19",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "FNT1r1obsOM",
+          "title": "Baicaiovo Mel : This CN Super Server Legend is DEVASTATING Challenger Mid Lane - Engsub",
+          "rankClaim": "Challenger",
+          "patch": "26.6",
+          "durationSec": 1242,
+          "patchEstimated": true,
+          "player": "Baicaiovo",
+          "uploaded": "2026-03-19",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "33AAG5t360I",
+          "title": "Baicaiovo Mel : This CN Super Server Legend is DEVASTATING Challenger Elo",
+          "rankClaim": "Challenger",
+          "patch": "26.5",
+          "durationSec": 1684,
+          "patchEstimated": true,
+          "player": "Baicaiovo",
+          "uploaded": "2026-03-13",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "XiCLIoc-lpE",
+          "title": "Baicaiovo Reaches Rank 2 Super Server With This Flawless Mel Mid Lane Masterclass Engsub",
+          "rankClaim": "Master+",
+          "patch": "26.3",
+          "durationSec": 1512,
+          "patchEstimated": true,
+          "player": "Baicaiovo",
+          "uploaded": "2026-02-06",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "dNDt-HhsCuk",
+          "title": "Baicaiovo Shows Why Mel Is Rank 2 Super Server Level Challenger Laning And Teamfight Engsub",
+          "rankClaim": "Challenger",
+          "patch": "26.1",
+          "durationSec": 1743,
+          "patchEstimated": true,
+          "player": "Baicaiovo",
+          "uploaded": "2026-01-12",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "zx1HRj7xugo",
+          "title": "Baicaiovo Perfects Mel Mid Lane Mechanics on Chinese Super Server Challenger Rank Engsub",
+          "rankClaim": "Challenger",
+          "patch": "26.1",
+          "durationSec": 2536,
+          "patchEstimated": true,
+          "player": "Baicaiovo",
+          "uploaded": "2026-01-11",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "OEL5c9vmu4o",
+          "title": "Baicaiovo Mel Mid Lane Mastery on Chinese Super Server Challenger Rank Engsub",
+          "rankClaim": "Challenger",
+          "patch": "26.1",
+          "durationSec": 1686,
+          "patchEstimated": true,
+          "player": "Baicaiovo",
+          "uploaded": "2026-01-11",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "AHg4AwkQcPQ",
+          "title": "Baicaiovo Chinese Super Server Rank 2 Challenger Mel Mid Lane Mechanics Engsub",
+          "rankClaim": "Challenger",
+          "patch": "26.1",
+          "durationSec": 1919,
+          "patchEstimated": true,
+          "player": "Baicaiovo",
+          "uploaded": "2026-01-10",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "I6ioTJtWNdI",
+          "title": "Baicaiovo Chinese Super Server Rank 2 Mel Challenger Mid Lane Outplay Engsub",
+          "rankClaim": "Challenger",
+          "patch": "26.1",
+          "durationSec": 1877,
+          "patchEstimated": true,
+          "player": "Baicaiovo",
+          "uploaded": "2026-01-10",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "EErfEgr-Z9k",
+          "title": "Baicaiovo Reaches Rank 2 Chinese Super Server With This Flawless Mel Challenger Mid Lane Engsub",
+          "rankClaim": "Challenger",
+          "patch": "26.1",
+          "durationSec": 1966,
+          "patchEstimated": true,
+          "player": "Baicaiovo",
+          "uploaded": "2026-01-10",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "2CjupwF2Cto",
+          "title": "Baicaiovo Mel Mid Lane Mastery Rank 2 Chinese Super Server Challenger Engsub",
+          "rankClaim": "Challenger",
+          "patch": "26.1",
+          "durationSec": 1678,
+          "patchEstimated": true,
+          "player": "Baicaiovo",
+          "uploaded": "2026-01-10",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "-h2YO7u2FkU",
+          "title": "Baicaiovo Perfects Mel Mid Lane Mechanics on the Chinese Super Server Challenger Rank Engsub",
+          "rankClaim": "Challenger",
+          "patch": "26.1",
+          "durationSec": 930,
+          "patchEstimated": true,
+          "player": "Baicaiovo",
+          "uploaded": "2026-01-10",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "yDBWhBnZ3rM",
+          "title": "Baicaiovo Chinese Super Server Rank 2 Challenger Mel Mid Lane Mechanics Engsub",
+          "rankClaim": "Challenger",
+          "patch": "26.1",
+          "durationSec": 2613,
+          "patchEstimated": true,
+          "player": "Baicaiovo",
+          "uploaded": "2026-01-10",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "sKir1Fg4ekQ",
+          "title": "Baicaiovo Reaches Super Server Rank 2 with This Flawless Mel Mid Lane Execution Engsub",
+          "rankClaim": "Master+",
+          "patch": "26.1",
+          "durationSec": 1098,
+          "patchEstimated": true,
+          "player": "Baicaiovo",
+          "uploaded": "2026-01-10",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "VrrD0aT7Clg",
+          "title": "Baicaiovo Reaches Rank 2 Chinese Super Server With This Flawless Mel Mid Lane Execution Engsub",
+          "rankClaim": "Master+",
+          "patch": "26.1",
+          "durationSec": 1665,
+          "patchEstimated": true,
+          "player": "Baicaiovo",
+          "uploaded": "2026-01-10",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "11ukC5ZGBmY",
+          "title": "Baicaiovo Reaches Super Server Rank 2 with This Flawless Mel Mid Lane Masterclass Engsub",
+          "rankClaim": "Master+",
+          "patch": "26.1",
+          "durationSec": 1943,
+          "patchEstimated": true,
+          "player": "Baicaiovo",
+          "uploaded": "2026-01-10",
+          "format": "stream",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "4EhSjsbjQ0g",
+          "title": "Baicaiovo Top 2 Super Server Mel Masterclass Engsub",
+          "rankClaim": "Master+",
+          "patch": "26.2",
+          "durationSec": 1457,
+          "patchEstimated": true,
+          "player": "Baicaiovo",
+          "uploaded": "2026-02-01",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "oAdj284Flg0",
+          "title": "Baicaiovo Top 2 Super Server Godlike Mel Mechanics Engsub",
+          "rankClaim": "Master+",
+          "patch": "26.2",
+          "durationSec": 1707,
+          "patchEstimated": true,
+          "player": "Baicaiovo",
+          "uploaded": "2026-01-22",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "9gOkkDgah_c",
+          "title": "Baicaiovo Top 2 Chinese Super Server Challenger Mel Mid Lane Mechanics Engsub",
+          "rankClaim": "Challenger",
+          "patch": "26.1",
+          "durationSec": 1560,
+          "patchEstimated": true,
+          "player": "Baicaiovo",
+          "uploaded": "2026-01-12",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "DipXDx-frVo",
+          "title": "Baicaiovo Top 2 Super Server Challenger Mel Mid Lane Mechanics Engsub",
+          "rankClaim": "Challenger",
+          "patch": "26.1",
+          "durationSec": 1452,
+          "patchEstimated": true,
+          "player": "Baicaiovo",
+          "uploaded": "2026-01-12",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "GJV-zHFWeO4",
+          "title": "Baicaiovo Reaches Top 2 Chinese Super Server with Flawless Mel Mid Lane Mechanics Engsub",
+          "rankClaim": "Master+",
+          "patch": "26.1",
+          "durationSec": 911,
+          "patchEstimated": true,
+          "player": "Baicaiovo",
+          "uploaded": "2026-01-10",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "9lnJYi6Hmgs",
+          "title": "Baicaiovo Reaches Top 2 Chinese Super Server With Flawless Challenger Mel Mechanics Engsub",
+          "rankClaim": "Challenger",
+          "patch": "26.1",
+          "durationSec": 1560,
+          "patchEstimated": true,
+          "player": "Baicaiovo",
+          "uploaded": "2026-01-10",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "GvaNHg04hdg",
+          "title": "Baicaiovo Top 2 Chinese Super Server Challenger Mel Mid Lane Mechanics Engsub",
+          "rankClaim": "Challenger",
+          "patch": "26.1",
+          "durationSec": 907,
+          "patchEstimated": true,
+          "player": "Baicaiovo",
+          "uploaded": "2026-01-10",
+          "format": "stream",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 1,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "hg4txWW0MKw",
+          "title": "Mel Mid vs Annie - KR Grandmaster Patch 26.11",
+          "rankClaim": "Grandmaster",
+          "patch": "26.11",
+          "durationSec": 1614,
+          "region": "KR",
+          "uploaded": "2026-06-10",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 3,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "3TK96EQ9Pa4",
+          "title": "T1 Faker Mel MID vs Galio - Patch 25.3 Korea Master ✅",
+          "rankClaim": "Master",
+          "patch": "25.3",
+          "durationSec": 1428,
+          "region": "KR",
+          "player": "Faker",
+          "team": "T1",
+          "uploaded": "2025-02-10",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 3,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "EhII93dr0S0",
+          "title": "Mel vs Galio Top - KR Grandmaster - Patch 15.4 Season 15",
+          "rankClaim": "Grandmaster",
+          "patch": "25.4",
+          "durationSec": 2111,
+          "region": "KR",
+          "uploaded": "2025-02-25",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 4,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "ll6OnOhQkUk",
+          "title": "Mel Mid vs Twisted Fate - EUW Grandmaster Patch 26.18",
+          "rankClaim": "Grandmaster",
+          "patch": "26.18",
+          "durationSec": 1860,
+          "region": "EUW",
+          "uploaded": "2026-09-19",
+          "moments": []
+        },
+        {
+          "videoId": "glq9pWXYA1c",
+          "title": "(HRTS Mercy9) Mel Mid vs Twisted Fate (MagiFelix) - EUW Challenger Patch 26.17",
+          "rankClaim": "Challenger",
+          "patch": "26.17",
+          "durationSec": 1520,
+          "region": "EUW",
+          "player": "HRTS Mercy9",
+          "uploaded": "2026-09-04",
+          "moments": []
+        },
+        {
+          "videoId": "b1AqXI_btaA",
+          "title": "(HLE Zeka) Mel Mid vs Twisted Fate - KR Master Patch 26.13",
+          "rankClaim": "Master",
+          "patch": "26.13",
+          "durationSec": 1457,
+          "region": "KR",
+          "player": "Zeka",
+          "team": "HLE",
+          "uploaded": "2026-06-29",
+          "moments": []
+        },
+        {
+          "videoId": "KW6AVRaOvIw",
+          "title": "Mel vs Twisted Fate  Mid - KR Challenger - Patch 16.07 Season 16",
+          "rankClaim": "Challenger",
+          "patch": "26.7",
+          "durationSec": 1791,
+          "region": "KR",
+          "uploaded": "2026-04-03",
+          "moments": []
+        },
+        {
+          "videoId": "hU0ymqPF1h8",
+          "title": "Mel Mid vs Twisted Fate - KR Grandmaster Patch 25.15",
+          "rankClaim": "Grandmaster",
+          "patch": "25.15",
+          "durationSec": 1826,
+          "region": "KR",
+          "uploaded": "2025-08-05",
+          "moments": []
+        },
+        {
+          "videoId": "pNlbV3zlTJ0",
+          "title": "Mel Mid vs Twisted Fate - KR Master Patch 25.14",
+          "rankClaim": "Master",
+          "patch": "25.14",
+          "durationSec": 1807,
+          "region": "KR",
+          "uploaded": "2025-07-21",
+          "moments": []
+        },
+        {
+          "videoId": "ZqXh9BEaCSY",
+          "title": "Mel vs Twisted Fate Mid - KR Master - Patch 25.13 Season 15",
+          "rankClaim": "Master",
+          "patch": "25.13",
+          "durationSec": 2026,
+          "region": "KR",
+          "uploaded": "2025-06-29",
+          "moments": []
+        },
+        {
+          "videoId": "baq3rAeJQh8",
+          "title": "Mel vs Twisted Fate Mid - KR Challenger - Patch 25.12 Season 15",
+          "rankClaim": "Challenger",
+          "patch": "25.12",
+          "durationSec": 1711,
+          "region": "KR",
+          "uploaded": "2025-06-17",
+          "moments": []
+        },
+        {
+          "videoId": "WpXh0rkImzI",
+          "title": "Mel Mid vs Twisted Fate - KR Master Patch 25.12",
+          "rankClaim": "Master",
+          "patch": "25.12",
+          "durationSec": 1666,
+          "region": "KR",
+          "uploaded": "2025-06-16",
+          "moments": []
+        },
+        {
+          "videoId": "q_YiU_bYJgs",
+          "title": "Mel Mid vs Twisted Fate - KR Master Patch 25.10",
+          "rankClaim": "Master",
+          "patch": "25.10",
+          "durationSec": 1632,
+          "region": "KR",
+          "uploaded": "2025-05-19",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 194,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 216,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 338,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 414,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 473,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 505,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 592,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 846,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 872,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 987,
+              "label": "Get a Triple Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1078,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1112,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1210,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1225,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1399,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1555,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1576,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1611,
+              "label": "End credit"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 7,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "3PdGsj0DNpA",
+          "title": "Mel Mid vs LeBlanc - KR Grandmaster Patch 26.09",
+          "rankClaim": "Grandmaster",
+          "patch": "26.9",
+          "durationSec": 1684,
+          "region": "KR",
+          "uploaded": "2026-05-05",
+          "moments": []
+        },
+        {
+          "videoId": "rh0L6iC5-Ps",
+          "title": "Mel Mid vs LeBlanc - KR Master Patch 25.05",
+          "rankClaim": "Master",
+          "patch": "25.5",
+          "durationSec": 1816,
+          "region": "KR",
+          "uploaded": "2025-03-10",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 224,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 400,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 566,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 648,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 729,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 754,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 820,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 906,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 923,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1084,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1144,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1177,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1444,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1478,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1514,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1583,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1735,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1762,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1795,
+              "label": "End credit"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 9,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "pTX2tms4hAw",
+          "title": "Mel Support vs Fiddlesticks - NA Grandmaster Patch 25.13",
+          "rankClaim": "Grandmaster",
+          "patch": "25.13",
+          "durationSec": 1760,
+          "region": "NA",
+          "uploaded": "2025-07-15",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 10,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "UXKvMDKNX7Q",
+          "title": "Mel vs Kayle [ MID ] Patch 25.23 Korea Challenger 1649 LP",
+          "rankClaim": "Challenger",
+          "patch": "25.23",
+          "durationSec": 1814,
+          "region": "KR",
+          "uploaded": "2025-11-27",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 11,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "epOHq5cZALg",
+          "title": "Mel vs Master Yi Mid - KR Challenger - Patch 16.05 Season 16",
+          "rankClaim": "Challenger",
+          "patch": "26.5",
+          "durationSec": 1751,
+          "region": "KR",
+          "uploaded": "2026-03-13",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 12,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "-ARUbP_utGs",
+          "title": "Mel Support vs Alistar - TW Challenger Patch 25.24",
+          "rankClaim": "Challenger",
+          "patch": "25.24",
+          "durationSec": 1563,
+          "uploaded": "2026-01-03",
+          "moments": []
+        },
+        {
+          "videoId": "s7OJzt3s6Vo",
+          "title": "Mel Support vs Alistar - KR Master Patch 25.22",
+          "rankClaim": "Master",
+          "patch": "25.22",
+          "durationSec": 1841,
+          "region": "KR",
+          "uploaded": "2025-11-15",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 13,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "ixsAhVq1jJ0",
+          "title": "Mel vs Ryze Mid - KR Challenger - Patch 16.07 Season 16",
+          "rankClaim": "Challenger",
+          "patch": "26.7",
+          "durationSec": 2266,
+          "region": "KR",
+          "uploaded": "2026-04-07",
+          "moments": []
+        },
+        {
+          "videoId": "ORLy0y04clE",
+          "title": "Baicaiovo Mel : This CN Super Server Legend is DEVASTATING Ryze with INSANE Mechanics",
+          "rankClaim": "Master+",
+          "patch": "26.6",
+          "durationSec": 1774,
+          "patchEstimated": true,
+          "player": "Baicaiovo",
+          "uploaded": "2026-03-21",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "XV94115JDoQ",
+          "title": "Mel Mid vs Ryze - EUW Challenger Patch 25.07",
+          "rankClaim": "Challenger",
+          "patch": "25.7",
+          "durationSec": 1614,
+          "region": "EUW",
+          "uploaded": "2025-04-14",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 355,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 552,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 742,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 885,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1070,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1099,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1281,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1377,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1458,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1497,
+              "label": "Hunt The Dragon",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1569,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1593,
+              "label": "End credit"
+            }
+          ]
+        },
+        {
+          "videoId": "L_qXGV1NFe4",
+          "title": "Mel vs Ryze Mid - EUW Grandmaster - Patch 25.5 Season 15",
+          "rankClaim": "Grandmaster",
+          "patch": "25.5",
+          "durationSec": 1651,
+          "region": "EUW",
+          "uploaded": "2025-03-11",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 15,
+      "lane": "adc",
+      "videos": [
+        {
+          "videoId": "sh1nTixl0Sg",
+          "title": "DK Smash Mel vs Sivir [ ADC ] Patch 26.11 Korea Challenger 2541 LP",
+          "rankClaim": "Challenger",
+          "patch": "26.11",
+          "durationSec": 1459,
+          "region": "KR",
+          "player": "Smash",
+          "team": "DK",
+          "uploaded": "2026-05-31",
+          "moments": []
+        },
+        {
+          "videoId": "WJFixqpzx0E",
+          "title": "Mel vs Sivir ADC - EUW Challenger - Patch 25.18 Season 15",
+          "rankClaim": "Challenger",
+          "patch": "25.18",
+          "durationSec": 1846,
+          "region": "EUW",
+          "uploaded": "2025-09-15",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 16,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "7ScjDKViMOw",
+          "title": "Mel Support vs Soraka - NA Grandmaster Patch 25.17",
+          "rankClaim": "Grandmaster",
+          "patch": "25.17",
+          "durationSec": 1830,
+          "region": "NA",
+          "uploaded": "2025-09-08",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 22,
+      "lane": "adc",
+      "videos": [
+        {
+          "videoId": "UkVkKy0v43w",
+          "title": "Mel vs Ashe [ ADC ] Lol Korea Master Patch 25.21 ✅",
+          "rankClaim": "Master",
+          "patch": "25.21",
+          "durationSec": 1589,
+          "region": "KR",
+          "uploaded": "2025-10-25",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 34,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "WKVb4rc7hBQ",
+          "title": "Mel vs Anivia Mid - KR Challenger - Patch 16.05 Season 16",
+          "rankClaim": "Challenger",
+          "patch": "26.5",
+          "durationSec": 2011,
+          "region": "KR",
+          "uploaded": "2026-03-18",
+          "moments": []
+        },
+        {
+          "videoId": "E10_P0FfYUg",
+          "title": "Mel Mid vs Anivia - KR Master Patch 25.09",
+          "rankClaim": "Master",
+          "patch": "25.9",
+          "durationSec": 2066,
+          "region": "KR",
+          "uploaded": "2025-05-05",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 37,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "hXILWVGS37c",
+          "title": "Mel Support vs Sona - BR Challenger Patch 25.23",
+          "rankClaim": "Challenger",
+          "patch": "25.23",
+          "durationSec": 1423,
+          "uploaded": "2025-11-30",
+          "moments": []
+        },
+        {
+          "videoId": "km6EA-r8sik",
+          "title": "Mel Support vs Sona - NA Grandmaster Patch 25.14",
+          "rankClaim": "Grandmaster",
+          "patch": "25.14",
+          "durationSec": 1629,
+          "region": "NA",
+          "uploaded": "2025-07-27",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 39,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "NqVWpblo-G4",
+          "title": "(Kaymin) Mel Mid vs Irelia - EUW Grandmaster Patch 26.21",
+          "rankClaim": "Grandmaster",
+          "patch": "26.21",
+          "durationSec": 1678,
+          "region": "EUW",
+          "player": "Kaymin",
+          "uploaded": "2026-10-31",
+          "result": "W",
+          "moments": [
+            {
+              "atSec": 86,
+              "label": "First Blood — Mel kills Irelia",
+              "kind": "kill"
+            },
+            {
+              "atSec": 265,
+              "label": "Mel takes down Irelia"
+            },
+            {
+              "atSec": 377,
+              "label": "Mel catches Irelia again"
+            },
+            {
+              "atSec": 439,
+              "label": "Red takes 1st Dragon (Infernal)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 796,
+              "label": "Mel outduels Irelia (3rd time)"
+            },
+            {
+              "atSec": 859,
+              "label": "Red takes 2nd Dragon (Ocean)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 930,
+              "label": "Mel outplays Irelia (4th time)"
+            },
+            {
+              "atSec": 1195,
+              "label": "Red takes 3rd Dragon (Chemtech)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1321,
+              "label": "Red takes Baron",
+              "kind": "baron"
+            },
+            {
+              "atSec": 1371,
+              "label": "Mel outduels Rell"
+            },
+            {
+              "atSec": 1375,
+              "label": "Mel Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1404,
+              "label": "Bot Inhibitor falls (Blue)"
+            },
+            {
+              "atSec": 1433,
+              "label": "Mel takes down Ornn"
+            },
+            {
+              "atSec": 1507,
+              "label": "Red takes 4th Dragon (Chemtech)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1550,
+              "label": "Mel picks off Lillia"
+            },
+            {
+              "atSec": 1647,
+              "label": "Mid Inhibitor falls (Blue)"
+            },
+            {
+              "atSec": 1658,
+              "label": "Mel eliminates Irelia"
+            }
+          ]
+        },
+        {
+          "videoId": "MK19K-I7DSY",
+          "title": "Mel vs Irelia Mid - KR Challenger - Patch 25.24 Season 15",
+          "rankClaim": "Challenger",
+          "patch": "25.24",
+          "durationSec": 1696,
+          "region": "KR",
+          "uploaded": "2025-12-19",
+          "moments": []
+        },
+        {
+          "videoId": "DzCNOHU3FaM",
+          "title": "Mel Mid vs Irelia - KR Master Patch 25.24",
+          "rankClaim": "Master",
+          "patch": "25.24",
+          "durationSec": 1494,
+          "region": "KR",
+          "uploaded": "2025-12-05",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 42,
+      "lane": "adc",
+      "videos": [
+        {
+          "videoId": "TZUafIbuS6g",
+          "title": "Mel vs Corki ADC - KR Challenger - Patch 25.21 Season 15",
+          "rankClaim": "Challenger",
+          "patch": "25.21",
+          "durationSec": 1426,
+          "region": "KR",
+          "uploaded": "2025-11-03",
+          "moments": []
+        },
+        {
+          "videoId": "7DWleessWyQ",
+          "title": "Mel vs Corki ADC - EUW Challenger - Patch 25.14 Season 15",
+          "rankClaim": "Challenger",
+          "patch": "25.14",
+          "durationSec": 1741,
+          "region": "EUW",
+          "uploaded": "2025-07-18",
+          "moments": []
+        },
+        {
+          "videoId": "kaECu7kZA2k",
+          "title": "Mel vs Corki ADC [ Peyz + TripleKill ] Patch 25.5 Korea Grandmaster ✅",
+          "rankClaim": "Grandmaster",
+          "patch": "25.5",
+          "durationSec": 1003,
+          "region": "KR",
+          "player": "Peyz",
+          "uploaded": "2025-03-12",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 42,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "MK2SlFcO1ws",
+          "title": "Mel vs Corki MID [ QuadraKill ] Korea Grandmaster Patch 25.2 ✅",
+          "rankClaim": "Grandmaster",
+          "patch": "25.2",
+          "durationSec": 1266,
+          "region": "KR",
+          "player": "QuadraKill",
+          "uploaded": "2025-01-26",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 43,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "acCk53j8aeA",
+          "title": "Mel Support vs Karma - KR Master Patch 26.01",
+          "rankClaim": "Master",
+          "patch": "26.1",
+          "durationSec": 1443,
+          "region": "KR",
+          "uploaded": "2026-01-18",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 45,
+      "lane": "adc",
+      "videos": [
+        {
+          "videoId": "ASCfjS7sHoM",
+          "title": "Mel vs Veigar ADC - KR Grandmaster - Patch 25.23 Season 15",
+          "rankClaim": "Grandmaster",
+          "patch": "25.23",
+          "durationSec": 1561,
+          "region": "KR",
+          "uploaded": "2025-11-27",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 45,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "l-Vfa3LxWLk",
+          "title": "Mel Mid vs Veigar (Woozbad) - EUW Master Patch 26.20",
+          "rankClaim": "Master",
+          "patch": "26.20",
+          "durationSec": 1884,
+          "region": "EUW",
+          "uploaded": "2026-10-21",
+          "result": "W",
+          "moments": [
+            {
+              "atSec": 121,
+              "label": "First Blood — Mel kills Veigar",
+              "kind": "kill"
+            },
+            {
+              "atSec": 290,
+              "label": "Red takes 1st Dragon (Ocean)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 629,
+              "label": "Mel takes down Veigar"
+            },
+            {
+              "atSec": 674,
+              "label": "Red takes 2nd Dragon (Mountain)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 770,
+              "label": "Mel Triple Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1038,
+              "label": "Red takes 3rd Dragon (Chemtech)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1389,
+              "label": "Blue takes 1st Dragon (Chemtech)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1574,
+              "label": "Jhin takes down Hwei"
+            },
+            {
+              "atSec": 1605,
+              "label": "Red takes Baron",
+              "kind": "baron"
+            },
+            {
+              "atSec": 1693,
+              "label": "Mel takes down Poppy"
+            },
+            {
+              "atSec": 1716,
+              "label": "Red takes 4th Dragon (Chemtech)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1770,
+              "label": "Mel picks off Master Yi"
+            },
+            {
+              "atSec": 1775,
+              "label": "Mel Triple Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1801,
+              "label": "Mid Inhibitor falls (Blue)"
+            },
+            {
+              "atSec": 1804,
+              "label": "Bot Inhibitor falls (Blue)"
+            },
+            {
+              "atSec": 1826,
+              "label": "Mel picks off Master Yi"
+            },
+            {
+              "atSec": 1829,
+              "label": "Mel Triple Kill",
+              "kind": "kill"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 50,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "FwH5a0xFbDU",
+          "title": "Mel Support vs Swain - KR Grandmaster Patch 25.24",
+          "rankClaim": "Grandmaster",
+          "patch": "25.24",
+          "durationSec": 1538,
+          "region": "KR",
+          "uploaded": "2025-12-13",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 51,
+      "lane": "adc",
+      "videos": [
+        {
+          "videoId": "CQx4PEkQ6Oc",
+          "title": "Mel Bot vs Caitlyn - KR Master Patch 26.20",
+          "rankClaim": "Master",
+          "patch": "26.20",
+          "durationSec": 1780,
+          "region": "KR",
+          "uploaded": "2026-10-14",
+          "result": "W",
+          "moments": [
+            {
+              "atSec": 277,
+              "label": "First Blood — Locke kills Caitlyn",
+              "kind": "kill"
+            },
+            {
+              "atSec": 309,
+              "label": "Red takes 1st Dragon (Infernal)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 715,
+              "label": "Red takes 2nd Dragon (Chemtech)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1028,
+              "label": "Mel takes down Kha'Zix"
+            },
+            {
+              "atSec": 1033,
+              "label": "Mel Triple Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1039,
+              "label": "Mel Quadra Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1063,
+              "label": "Red takes 3rd Dragon (Ocean)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1235,
+              "label": "Mel outduels Caitlyn"
+            },
+            {
+              "atSec": 1281,
+              "label": "Locke picks off Kha'Zix"
+            },
+            {
+              "atSec": 1375,
+              "label": "Team fight (3 kills)",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1407,
+              "label": "Red takes 4th Dragon (Ocean)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1444,
+              "label": "Kindred takes down Kha'Zix"
+            },
+            {
+              "atSec": 1503,
+              "label": "Locke takes down Renekton"
+            },
+            {
+              "atSec": 1576,
+              "label": "Red takes Baron",
+              "kind": "baron"
+            },
+            {
+              "atSec": 1629,
+              "label": "Mel takes down Caitlyn"
+            },
+            {
+              "atSec": 1725,
+              "label": "Kindred Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1753,
+              "label": "Top Inhibitor falls (Blue)"
+            }
+          ]
+        },
+        {
+          "videoId": "2bZ68bNOaNs",
+          "title": "HLE Gumayusi Mel vs Caitlyn [ ADC ] Patch 26.12 Korea Challenger 2495 LP",
+          "rankClaim": "Challenger",
+          "patch": "26.12",
+          "durationSec": 1722,
+          "region": "KR",
+          "player": "Gumayusi",
+          "team": "HLE",
+          "uploaded": "2026-06-11",
+          "moments": []
+        },
+        {
+          "videoId": "GgqVvmSMtOg",
+          "title": "Mel vs Caitlyn ADC - KR Challenger - Patch 25.22 Season 15",
+          "rankClaim": "Challenger",
+          "patch": "25.22",
+          "durationSec": 1696,
+          "region": "KR",
+          "uploaded": "2025-11-11",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 53,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "OPro39vmqw0",
+          "title": "Mel Support vs Blitzcrank - KR Master Patch 25.21",
+          "rankClaim": "Master",
+          "patch": "25.21",
+          "durationSec": 1496,
+          "region": "KR",
+          "uploaded": "2025-11-03",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 54,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "atRBLEGtUes",
+          "title": "Mel Mid vs Malphite - KR Master Patch 25.17",
+          "rankClaim": "Master",
+          "patch": "25.17",
+          "durationSec": 1612,
+          "region": "KR",
+          "uploaded": "2025-09-05",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 55,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "fXUc6arxgtc",
+          "title": "Challenger Mel : His DEVASTATING gameplay TEARING apart Katarina in CN Super Server",
+          "rankClaim": "Challenger",
+          "patch": "26.12",
+          "durationSec": 1793,
+          "patchEstimated": true,
+          "player": "Baicaiovo",
+          "uploaded": "2026-06-12",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "p_aeE_AjuB4",
+          "title": "Challenger Mel : His INSANE WRECKS Katarina at CN Super Server",
+          "rankClaim": "Challenger",
+          "patch": "26.10",
+          "durationSec": 1313,
+          "patchEstimated": true,
+          "player": "Baicaiovo",
+          "uploaded": "2026-05-17",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "KqrE2ZvNHLg",
+          "title": "Mel vs Katarina MID [ Quadra Kill ] Patch 25.3 Korea Grandmaster ✅",
+          "rankClaim": "Grandmaster",
+          "patch": "25.3",
+          "durationSec": 1379,
+          "region": "KR",
+          "player": "Quadra Kill",
+          "uploaded": "2025-02-20",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 60,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "ph0zMkQhCDA",
+          "title": "Mel Support vs Elise - EUW Grandmaster Patch 26.02",
+          "rankClaim": "Grandmaster",
+          "patch": "26.2",
+          "durationSec": 1506,
+          "region": "EUW",
+          "uploaded": "2026-01-31",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 470,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 527,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 600,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 723,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 784,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 820,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 915,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 976,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1044,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1263,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1357,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1372,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1495,
+              "label": "End credit"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 61,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "X81j6OoGyMs",
+          "title": "Mel Mid vs Orianna - KR Master Patch 25.16",
+          "rankClaim": "Master",
+          "patch": "25.16",
+          "durationSec": 1725,
+          "region": "KR",
+          "uploaded": "2025-08-22",
+          "moments": []
+        },
+        {
+          "videoId": "pNtUuCKaauE",
+          "title": "Mel vs Orianna Mid - EUW Challenger - Patch 25.12 Season 15",
+          "rankClaim": "Challenger",
+          "patch": "25.12",
+          "durationSec": 2071,
+          "region": "EUW",
+          "uploaded": "2025-06-19",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 74,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "DjqAKi7gaic",
+          "title": "Mel Top vs Heimerdinger - NA Grandmaster Patch 25.04",
+          "rankClaim": "Grandmaster",
+          "patch": "25.4",
+          "durationSec": 1914,
+          "region": "NA",
+          "uploaded": "2025-03-01",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 78,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "nQuLlr0efRs",
+          "title": "Mel Support vs Poppy - EUW Challenger Patch 25.20",
+          "rankClaim": "Challenger",
+          "patch": "25.20",
+          "durationSec": 1490,
+          "region": "EUW",
+          "uploaded": "2025-10-19",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 81,
+      "lane": "adc",
+      "videos": [
+        {
+          "videoId": "Ru5wSHyj9Fk",
+          "title": "Mel Bot vs Ezreal - KR Master Patch 26.17",
+          "rankClaim": "Master",
+          "patch": "26.17",
+          "durationSec": 1815,
+          "region": "KR",
+          "uploaded": "2026-09-03",
+          "result": "W",
+          "moments": [
+            {
+              "atSec": 11,
+              "label": "First Blood — Rell kills Ezreal",
+              "kind": "kill"
+            },
+            {
+              "atSec": 404,
+              "label": "Mel takes down Ezreal"
+            },
+            {
+              "atSec": 457,
+              "label": "Blue takes 1st Dragon (Ocean)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 539,
+              "label": "Mel takes down Ezreal"
+            },
+            {
+              "atSec": 812,
+              "label": "Blue takes 2nd Dragon (Chemtech)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 837,
+              "label": "Mel kills Cassiopeia",
+              "kind": "kill"
+            },
+            {
+              "atSec": 923,
+              "label": "Mel eliminates Viego"
+            },
+            {
+              "atSec": 1146,
+              "label": "Mel eliminates Viego"
+            },
+            {
+              "atSec": 1171,
+              "label": "Red takes 1st Dragon (Infernal)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1222,
+              "label": "Mel takes down Ezreal"
+            },
+            {
+              "atSec": 1264,
+              "label": "Katarina eliminates Cassiopeia"
+            },
+            {
+              "atSec": 1289,
+              "label": "Red takes Baron",
+              "kind": "baron"
+            },
+            {
+              "atSec": 1355,
+              "label": "Katarina Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1382,
+              "label": "Katarina takes down Nasus"
+            },
+            {
+              "atSec": 1456,
+              "label": "Mel Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1498,
+              "label": "Red takes 2nd Dragon (Infernal)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1563,
+              "label": "Mel eliminates Viego"
+            },
+            {
+              "atSec": 1754,
+              "label": "Team fight (4 kills)",
+              "kind": "teamfight"
+            }
+          ]
+        },
+        {
+          "videoId": "POL7A9Qyd6M",
+          "title": "Mel vs Ezreal ADC - KR Challenger - Patch 16.08 Season 16",
+          "rankClaim": "Challenger",
+          "patch": "26.8",
+          "durationSec": 1816,
+          "region": "KR",
+          "uploaded": "2026-04-17",
+          "moments": []
+        },
+        {
+          "videoId": "UyQiCI2xy9Y",
+          "title": "Mel vs Ezreal ADC - KR Challenger - Patch 16.06 Season 16",
+          "rankClaim": "Challenger",
+          "patch": "26.6",
+          "durationSec": 1966,
+          "region": "KR",
+          "uploaded": "2026-04-01",
+          "moments": []
+        },
+        {
+          "videoId": "cpqrz7KJJxU",
+          "title": "Mel vs Ezreal ADC - KR Challenger - Patch 16.06 Season 16",
+          "rankClaim": "Challenger",
+          "patch": "26.6",
+          "durationSec": 1836,
+          "region": "KR",
+          "uploaded": "2026-03-23",
+          "moments": []
+        },
+        {
+          "videoId": "_sWQurqcdwA",
+          "title": "Mel vs Ezreal ADC - KR Challenger - Patch 25.23 Season 15",
+          "rankClaim": "Challenger",
+          "patch": "25.23",
+          "durationSec": 1981,
+          "region": "KR",
+          "uploaded": "2025-12-03",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 81,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "NmuRT7shVTU",
+          "title": "Challenger Mel : This CN Super Server Legend is DEVASTATING Ezreal with INSANE Kiting",
+          "rankClaim": "Challenger",
+          "patch": "26.3",
+          "durationSec": 1629,
+          "patchEstimated": true,
+          "player": "Baicaiovo",
+          "uploaded": "2026-02-16",
+          "format": "stream",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 84,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "rBjM3Xs5JP8",
+          "title": "Mel Mid vs Akali - EUW Grandmaster Patch 26.03",
+          "rankClaim": "Grandmaster",
+          "patch": "26.3",
+          "durationSec": 1710,
+          "region": "EUW",
+          "uploaded": "2026-02-16",
+          "moments": []
+        },
+        {
+          "videoId": "Xlo-5xPpDd8",
+          "title": "Mel Mid vs Akali - KR Grandmaster Patch 25.23",
+          "rankClaim": "Grandmaster",
+          "patch": "25.23",
+          "durationSec": 1576,
+          "region": "KR",
+          "uploaded": "2025-11-23",
+          "moments": []
+        },
+        {
+          "videoId": "Qkh7UWIqnLs",
+          "title": "Mel Mid vs Akali - KR Master Patch 25.13",
+          "rankClaim": "Master",
+          "patch": "25.13",
+          "durationSec": 1916,
+          "region": "KR",
+          "uploaded": "2025-06-29",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 89,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "_ACvLTLwjeA",
+          "title": "Mel Support vs Leona - EUW Grandmaster Patch 25.12",
+          "rankClaim": "Grandmaster",
+          "patch": "25.12",
+          "durationSec": 1472,
+          "region": "EUW",
+          "uploaded": "2025-06-22",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 90,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "9h-SoDB2n6U",
+          "title": "Mel Mid vs Malzahar - KR Grandmaster Patch 25.22",
+          "rankClaim": "Grandmaster",
+          "patch": "25.22",
+          "durationSec": 1822,
+          "region": "KR",
+          "uploaded": "2025-11-08",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 91,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "iQVDDEl9_TQ",
+          "title": "Mel vs Talon MID [ Gen.G Chovy ] Korea Master Patch 26.2 ✅",
+          "rankClaim": "Master",
+          "patch": "26.2",
+          "durationSec": 1354,
+          "region": "KR",
+          "player": "Chovy",
+          "team": "Gen.G",
+          "uploaded": "2026-01-31",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 96,
+      "lane": "adc",
+      "videos": [
+        {
+          "videoId": "AVT9IshnQnQ",
+          "title": "DK Smash Mel vs Kog'Maw [ ADC ] Rank #4 Korea Challenger 2493 LP | Patch 26.9",
+          "rankClaim": "Challenger",
+          "patch": "26.9",
+          "durationSec": 2068,
+          "region": "KR",
+          "player": "Smash",
+          "team": "DK",
+          "uploaded": "2026-05-02",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 99,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "C7WELiJx-wM",
+          "title": "Mel vs Lux Mid - KR Challenger - Patch 16.04 Season 16",
+          "rankClaim": "Challenger",
+          "patch": "26.4",
+          "durationSec": 2056,
+          "region": "KR",
+          "uploaded": "2026-02-24",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 101,
+      "lane": "adc",
+      "videos": [
+        {
+          "videoId": "wv0QpkwWZTg",
+          "title": "Gumayusi : His MEL Botlane is LEGIT SO GOOD, Insane Comeback - Engsub ( Mel vs Xerath )",
+          "rankClaim": "Master+",
+          "patch": "26.12",
+          "durationSec": 1175,
+          "patchEstimated": true,
+          "player": "Gumayusi",
+          "uploaded": "2026-06-14",
+          "format": "stream",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 101,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "qxElzANJBxE",
+          "title": "Mel vs Xerath Mid - KR Grandmaster - Patch 25.24 Season 15",
+          "rankClaim": "Grandmaster",
+          "patch": "25.24",
+          "durationSec": 1906,
+          "region": "KR",
+          "uploaded": "2025-12-28",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 103,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "1yyJCFOVaCU",
+          "title": "(C9 Zven) Mel Mid vs Ahri - NA Challenger Patch 26.14",
+          "rankClaim": "Challenger",
+          "patch": "26.14",
+          "durationSec": 1878,
+          "region": "NA",
+          "player": "Zven",
+          "team": "C9",
+          "uploaded": "2026-07-27",
+          "result": "W",
+          "moments": [
+            {
+              "atSec": 171,
+              "label": "First Blood — Rek'Sai kills Ahri",
+              "kind": "kill"
+            },
+            {
+              "atSec": 327,
+              "label": "Blue takes 1st Dragon (Mountain)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 654,
+              "label": "Blue takes 2nd Dragon (Hextech)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 774,
+              "label": "Karthus kills Ahri",
+              "kind": "kill"
+            },
+            {
+              "atSec": 836,
+              "label": "Mel eliminates Ahri"
+            },
+            {
+              "atSec": 977,
+              "label": "Mel Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1018,
+              "label": "Blue takes 3rd Dragon (Chemtech)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1044,
+              "label": "Mel takes down Ahri"
+            },
+            {
+              "atSec": 1204,
+              "label": "Blue takes Baron",
+              "kind": "baron"
+            },
+            {
+              "atSec": 1343,
+              "label": "Blue takes 4th Dragon (Chemtech)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1371,
+              "label": "Karthus eliminates Jarvan IV"
+            },
+            {
+              "atSec": 1468,
+              "label": "Rek'Sai picks off Ahri"
+            },
+            {
+              "atSec": 1641,
+              "label": "Blue takes 2nd Baron",
+              "kind": "baron"
+            },
+            {
+              "atSec": 1731,
+              "label": "Blue takes Elder Dragon",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1783,
+              "label": "Mid Inhibitor falls (Red)"
+            },
+            {
+              "atSec": 1798,
+              "label": "Camille takes down Ahri"
+            },
+            {
+              "atSec": 1808,
+              "label": "Bot Inhibitor falls (Red)"
+            },
+            {
+              "atSec": 1823,
+              "label": "Mel kills Ziggs",
+              "kind": "kill"
+            }
+          ]
+        },
+        {
+          "videoId": "tX7iVQDABXQ",
+          "title": "(TH Daglas) Mel Mid vs Ahri - EUW Grandmaster Patch 26.12",
+          "rankClaim": "Grandmaster",
+          "patch": "26.12",
+          "durationSec": 1864,
+          "region": "EUW",
+          "player": "TH Daglas",
+          "uploaded": "2026-06-21",
+          "moments": []
+        },
+        {
+          "videoId": "RwyfOMdGTz8",
+          "title": "Mel Mid vs Ahri - KR Challenger Patch 26.05",
+          "rankClaim": "Challenger",
+          "patch": "26.5",
+          "durationSec": 1814,
+          "region": "KR",
+          "uploaded": "2026-03-08",
+          "moments": []
+        },
+        {
+          "videoId": "-ouIqK_a064",
+          "title": "DK ShowMaker Mel vs Ahri [ MID ] Korea Challenger Patch 25.24",
+          "rankClaim": "Challenger",
+          "patch": "25.24",
+          "durationSec": 1479,
+          "region": "KR",
+          "player": "ShowMaker",
+          "team": "DK",
+          "uploaded": "2025-12-27",
+          "moments": []
+        },
+        {
+          "videoId": "jq8P_oWop28",
+          "title": "Mel Mid vs Ahri - KR Master Patch 25.11",
+          "rankClaim": "Master",
+          "patch": "25.11",
+          "durationSec": 1979,
+          "region": "KR",
+          "uploaded": "2025-06-03",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 110,
+      "lane": "adc",
+      "videos": [
+        {
+          "videoId": "ShtLwd5ZfGc",
+          "title": "Gumayusi : His MEL is Tearing KR Challenger Apart with this BUILD - Engsub ( Mel vs Varus )",
+          "rankClaim": "Challenger",
+          "patch": "26.12",
+          "durationSec": 986,
+          "region": "KR",
+          "patchEstimated": true,
+          "player": "Gumayusi",
+          "uploaded": "2026-06-20",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "r74OhnFGoLw",
+          "title": "HLE Gumayusi Mel vs Varus [ ADC ] Korea Challenger 2534 LP | Patch 26.11",
+          "rankClaim": "Challenger",
+          "patch": "26.11",
+          "durationSec": 1364,
+          "region": "KR",
+          "player": "Gumayusi",
+          "team": "HLE",
+          "uploaded": "2026-06-07",
+          "moments": []
+        },
+        {
+          "videoId": "AaqXb8NWdLM",
+          "title": "T1 Peyz Mel vs Varus [ ADC ] Korea Challenger 2183 LP | Patch 26.4",
+          "rankClaim": "Challenger",
+          "patch": "26.4",
+          "durationSec": 1130,
+          "region": "KR",
+          "player": "Peyz",
+          "team": "T1",
+          "uploaded": "2026-02-21",
+          "moments": []
+        },
+        {
+          "videoId": "mr5PhJN5MAo",
+          "title": "HLE Gumayusi Mel vs Varus [ ADC ] Patch 26.1 Ranked Korea",
+          "rankClaim": "Master+",
+          "patch": "26.1",
+          "durationSec": 1793,
+          "region": "KR",
+          "player": "Gumayusi",
+          "team": "HLE",
+          "uploaded": "2026-01-13",
+          "moments": []
+        },
+        {
+          "videoId": "kdcWuKdbPfs",
+          "title": "Mel vs Varus ADC - KR Challenger - Patch 25.8 Season 15",
+          "rankClaim": "Challenger",
+          "patch": "25.8",
+          "durationSec": 1921,
+          "region": "KR",
+          "uploaded": "2025-04-19",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 112,
+      "lane": "adc",
+      "videos": [
+        {
+          "videoId": "50SO6Be25sM",
+          "title": "Mel Bot vs Viktor - TW Grandmaster Patch 26.19",
+          "rankClaim": "Grandmaster",
+          "patch": "26.19",
+          "durationSec": 1700,
+          "uploaded": "2026-10-02",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 112,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "G4I2ZyPtxUQ",
+          "title": "Mel vs Viktor Mid - KR Challenger - Patch 16.10 Season 16",
+          "rankClaim": "Challenger",
+          "patch": "26.10",
+          "durationSec": 1846,
+          "region": "KR",
+          "uploaded": "2026-05-18",
+          "moments": []
+        },
+        {
+          "videoId": "zKNUnlcyjEU",
+          "title": "Mel vs Viktor Mid - KR Grandmaster - Patch 25.8 Season 15",
+          "rankClaim": "Grandmaster",
+          "patch": "25.8",
+          "durationSec": 2071,
+          "region": "KR",
+          "uploaded": "2025-04-26",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 114,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "xaOzClmRgRg",
+          "title": "Mel vs Fiora Mid - KR Grandmaster - Patch 25.14 Season 15",
+          "rankClaim": "Grandmaster",
+          "patch": "25.14",
+          "durationSec": 1861,
+          "region": "KR",
+          "uploaded": "2025-07-31",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 115,
+      "lane": "adc",
+      "videos": [
+        {
+          "videoId": "U1XAPpY5xJc",
+          "title": "Mel vs Ziggs ADC [ Gen.G Ruler ] Korea Challenger 2210 | Patch 26.12",
+          "rankClaim": "Challenger",
+          "patch": "26.12",
+          "durationSec": 1420,
+          "region": "KR",
+          "player": "Ruler",
+          "team": "Gen.G",
+          "uploaded": "2026-06-13",
+          "moments": []
+        },
+        {
+          "videoId": "bSvgDsRslLY",
+          "title": "Mel vs Ziggs ADC - EUW Challenger - Patch 25.15 Season 15",
+          "rankClaim": "Challenger",
+          "patch": "25.15",
+          "durationSec": 1741,
+          "region": "EUW",
+          "uploaded": "2025-08-14",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 117,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "mAVNcQ27th4",
+          "title": "Mel Support vs Lulu - NA Grandmaster Patch 26.06",
+          "rankClaim": "Grandmaster",
+          "patch": "26.6",
+          "durationSec": 1745,
+          "region": "NA",
+          "uploaded": "2026-03-28",
+          "moments": []
+        },
+        {
+          "videoId": "RmIcBAFEhDI",
+          "title": "Mel Support vs Lulu - KR Master Patch 25.08",
+          "rankClaim": "Master",
+          "patch": "25.8",
+          "durationSec": 1714,
+          "region": "KR",
+          "uploaded": "2025-04-29",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 380,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 524,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 549,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 574,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 699,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 761,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 844,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 922,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1103,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1140,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1234,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1279,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1378,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1432,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1561,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1652,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1693,
+              "label": "End credit"
+            }
+          ]
+        },
+        {
+          "videoId": "I6OhevdcOzE",
+          "title": "Mel Support vs Lulu - KR Master Patch 25.06",
+          "rankClaim": "Master",
+          "patch": "25.6",
+          "durationSec": 1867,
+          "region": "KR",
+          "uploaded": "2025-03-30",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 126,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "6Rg76tLY-HA",
+          "title": "Challenger Mel : This dude DELETED Jayce in CN Super Server MID LANE",
+          "rankClaim": "Challenger",
+          "patch": "26.12",
+          "durationSec": 1486,
+          "patchEstimated": true,
+          "player": "Baicaiovo",
+          "uploaded": "2026-06-13",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "_wvp-Lta_lY",
+          "title": "Mel vs Jayce Mid - EUW Grandmaster - Patch 25.21 Season 15",
+          "rankClaim": "Grandmaster",
+          "patch": "25.21",
+          "durationSec": 2161,
+          "region": "EUW",
+          "uploaded": "2025-11-01",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 127,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "dT2O3lxS43o",
+          "title": "Baicaiovo Mel : This CN Super Server Legend is DEVASTATING Lissandra with INSANE Mechanics - Engsub",
+          "rankClaim": "Master+",
+          "patch": "26.5",
+          "durationSec": 1504,
+          "patchEstimated": true,
+          "player": "Baicaiovo",
+          "uploaded": "2026-03-16",
+          "format": "stream",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 136,
+      "lane": "adc",
+      "videos": [
+        {
+          "videoId": "tUzDiJK1kqM",
+          "title": "Mel vs Aurelion Sol ADC - KR Challenger - Patch 25.11 Season 15",
+          "rankClaim": "Challenger",
+          "patch": "25.11",
+          "durationSec": 2191,
+          "region": "KR",
+          "uploaded": "2025-06-10",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 136,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "L0Rtukto--8",
+          "title": "Mel Mid vs Aurelion Sol - KR Grandmaster Patch 25.06",
+          "rankClaim": "Grandmaster",
+          "patch": "25.6",
+          "durationSec": 1661,
+          "region": "KR",
+          "uploaded": "2025-03-26",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 142,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "FhvPS8c0AYI",
+          "title": "Mel Mid vs Zoe - VN Challenger Patch 26.19",
+          "rankClaim": "Challenger",
+          "patch": "26.19",
+          "durationSec": 1697,
+          "uploaded": "2026-10-01",
+          "moments": []
+        },
+        {
+          "videoId": "9nvJgO025Xk",
+          "title": "Mel vs Zoe Mid - KR Grandmaster - Patch 25.24 Season 15",
+          "rankClaim": "Grandmaster",
+          "patch": "25.24",
+          "durationSec": 1741,
+          "region": "KR",
+          "uploaded": "2025-12-29",
+          "moments": []
+        },
+        {
+          "videoId": "G3A11qauc4c",
+          "title": "Mel Mid vs Zoe - KR Grandmaster Patch 25.19",
+          "rankClaim": "Grandmaster",
+          "patch": "25.19",
+          "durationSec": 1772,
+          "region": "KR",
+          "uploaded": "2025-09-29",
+          "moments": []
+        },
+        {
+          "videoId": "cgxkbPSLK6U",
+          "title": "Mel vs Zoe Mid - KR Challenger - Patch 25.19 Season 15",
+          "rankClaim": "Challenger",
+          "patch": "25.19",
+          "durationSec": 1571,
+          "region": "KR",
+          "uploaded": "2025-09-25",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 145,
+      "lane": "adc",
+      "videos": [
+        {
+          "videoId": "-wRfLl8Uwhc",
+          "title": "Mel vs Kai'Sa ADC - EUW Grandmaster - Patch 25.17 Season 15",
+          "rankClaim": "Grandmaster",
+          "patch": "25.17",
+          "durationSec": 1716,
+          "region": "EUW",
+          "uploaded": "2025-09-09",
+          "moments": []
+        },
+        {
+          "videoId": "uuFTZ0Zte5Q",
+          "title": "Mel vs Kai'Sa ADC - KR Challenger - Patch 25.9 Season 15",
+          "rankClaim": "Challenger",
+          "patch": "25.9",
+          "durationSec": 2070,
+          "region": "KR",
+          "uploaded": "2025-05-01",
+          "moments": []
+        },
+        {
+          "videoId": "3iXKQBNBZV8",
+          "title": "Mel vs Kai'Sa ADC - KR Challenger - Patch 25.8 Season 15",
+          "rankClaim": "Challenger",
+          "patch": "25.8",
+          "durationSec": 1776,
+          "region": "KR",
+          "uploaded": "2025-04-21",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 157,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "CQfYgnpulko",
+          "title": "Mel Mid vs Yasuo - EUW Challenger Patch 26.06",
+          "rankClaim": "Challenger",
+          "patch": "26.6",
+          "durationSec": 1707,
+          "region": "EUW",
+          "uploaded": "2026-03-21",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 456,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 581,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 807,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 877,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 967,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1174,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1202,
+              "label": "Hunt The Baron Nashor",
+              "kind": "baron"
+            },
+            {
+              "atSec": 1285,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1323,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1451,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1478,
+              "label": "Take down The Inhibitor"
+            },
+            {
+              "atSec": 1533,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1586,
+              "label": "Hunt The Baron Nashor",
+              "kind": "baron"
+            },
+            {
+              "atSec": 1652,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1696,
+              "label": "End credit"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 161,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "qfkWUxt5u8I",
+          "title": "Mel vs Vel'Koz Mid - KR Grandmaster - Patch 25.24 Season 15",
+          "rankClaim": "Grandmaster",
+          "patch": "25.24",
+          "durationSec": 1831,
+          "region": "KR",
+          "uploaded": "2025-12-31",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 202,
+      "lane": "adc",
+      "videos": [
+        {
+          "videoId": "0K5OLGNep4w",
+          "title": "HLE Gumayusi Mel vs Jhin [ ADC ] Korea Challenger 2570 LP | Patch 26.12",
+          "rankClaim": "Challenger",
+          "patch": "26.12",
+          "durationSec": 1428,
+          "region": "KR",
+          "player": "Gumayusi",
+          "team": "HLE",
+          "uploaded": "2026-06-23",
+          "moments": []
+        },
+        {
+          "videoId": "NcYya9dQu0A",
+          "title": "Peyz Mel vs Jhin ADC - KR Challenger - Patch 16.10 Season 16",
+          "rankClaim": "Challenger",
+          "patch": "26.10",
+          "durationSec": 1666,
+          "region": "KR",
+          "player": "Peyz",
+          "uploaded": "2026-05-17",
+          "moments": []
+        },
+        {
+          "videoId": "CNzwYLZXUNM",
+          "title": "T1 Peyz Mel vs Jhin [ ADC ] Patch 26.10 Korea Challenger 2519 LP",
+          "rankClaim": "Challenger",
+          "patch": "26.10",
+          "durationSec": 1486,
+          "region": "KR",
+          "player": "Peyz",
+          "team": "T1",
+          "uploaded": "2026-05-16",
+          "moments": []
+        },
+        {
+          "videoId": "XaAqvB8_OaM",
+          "title": "Mel vs Jhin ADC - KR Challenger - Patch 16.06 Season 16",
+          "rankClaim": "Challenger",
+          "patch": "26.6",
+          "durationSec": 1816,
+          "region": "KR",
+          "uploaded": "2026-04-02",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 222,
+      "lane": "adc",
+      "videos": [
+        {
+          "videoId": "0WrFeGfjNJA",
+          "title": "Mel vs Jinx ADC - KR Challenger - Patch 16.06 Season 16",
+          "rankClaim": "Challenger",
+          "patch": "26.6",
+          "durationSec": 2266,
+          "region": "KR",
+          "uploaded": "2026-03-21",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 234,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "jDcrRLJuJ7A",
+          "title": "Mel Mid vs Viego - KR Grandmaster Patch 25.20",
+          "rankClaim": "Grandmaster",
+          "patch": "25.20",
+          "durationSec": 1885,
+          "region": "KR",
+          "uploaded": "2025-10-13",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 235,
+      "lane": "adc",
+      "videos": [
+        {
+          "videoId": "CyCS-aHIFDg",
+          "title": "(JSK VAEII) Mel Bot vs Senna - EUW Challenger Patch 26.16",
+          "rankClaim": "Challenger",
+          "patch": "26.16",
+          "durationSec": 1876,
+          "region": "EUW",
+          "player": "JSK VAEII",
+          "uploaded": "2026-08-27",
+          "moments": []
+        },
+        {
+          "videoId": "5IK_dm6YtDk",
+          "title": "Mel vs Senna ADC - EUW Challenger - Patch 25.10 Season 15",
+          "rankClaim": "Challenger",
+          "patch": "25.10",
+          "durationSec": 1761,
+          "region": "EUW",
+          "uploaded": "2025-05-16",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 236,
+      "lane": "adc",
+      "videos": [
+        {
+          "videoId": "RP0Vu--b5Z8",
+          "title": "Mel vs Lucian ADC - EUW Master - Patch 25.8 Season 15",
+          "rankClaim": "Master",
+          "patch": "25.8",
+          "durationSec": 1681,
+          "region": "EUW",
+          "uploaded": "2025-04-27",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 236,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "7aLtwy9OBg0",
+          "title": "Challenger Mel : This CN Super Server Legend is DEVASTATING Lucian with INSANE Kiting - Engsub",
+          "rankClaim": "Challenger",
+          "patch": "26.5",
+          "durationSec": 983,
+          "patchEstimated": true,
+          "player": "Baicaiovo",
+          "uploaded": "2026-03-11",
+          "format": "stream",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 245,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "BXrsPbVvRkI",
+          "title": "(IJC Dajor) Mel Mid vs Ekko - EUW Challenger Patch 26.10",
+          "rankClaim": "Challenger",
+          "patch": "26.10",
+          "durationSec": 1561,
+          "region": "EUW",
+          "player": "IJC Dajor",
+          "uploaded": "2026-05-26",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 246,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "e7xn3WdMyF8",
+          "title": "Mel Mid vs Qiyana - NA Master Patch 26.01",
+          "rankClaim": "Master",
+          "patch": "26.1",
+          "durationSec": 1581,
+          "region": "NA",
+          "uploaded": "2026-01-13",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 625,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 955,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1061,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1319,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1445,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1467,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1529,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1570,
+              "label": "End credit"
+            }
+          ]
+        },
+        {
+          "videoId": "l0F3IWRXpCo",
+          "title": "Mel Mid vs Qiyana - KR Challenger Patch 25.04",
+          "rankClaim": "Challenger",
+          "patch": "25.4",
+          "durationSec": 2015,
+          "region": "KR",
+          "uploaded": "2025-02-23",
+          "moments": []
+        },
+        {
+          "videoId": "Y7qnoWkNHss",
+          "title": "Mel vs Qiyana MId - KR Challenger - Patch 15.4 Season 15",
+          "rankClaim": "Challenger",
+          "patch": "25.4",
+          "durationSec": 1981,
+          "region": "KR",
+          "uploaded": "2025-02-21",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 267,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "Gwdos9RUwqM",
+          "title": "Mel Support vs Nami - NA Challenger Patch 25.19",
+          "rankClaim": "Challenger",
+          "patch": "25.19",
+          "durationSec": 1447,
+          "region": "NA",
+          "uploaded": "2025-10-07",
+          "moments": []
+        },
+        {
+          "videoId": "1YqBduxCWI4",
+          "title": "Mel Support vs Nami - EUW Challenger Patch 25.10",
+          "rankClaim": "Challenger",
+          "patch": "25.10",
+          "durationSec": 1527,
+          "region": "EUW",
+          "uploaded": "2025-05-30",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 268,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "bO25p9R0530",
+          "title": "Mel vs Azir Mid - KR Challenger - Patch 25.15 Season 15",
+          "rankClaim": "Challenger",
+          "patch": "25.15",
+          "durationSec": 1830,
+          "region": "KR",
+          "uploaded": "2025-08-04",
+          "moments": []
+        },
+        {
+          "videoId": "jk8Tzl16Lc8",
+          "title": "Mel vs Azir Mid - EUW Challenger - Patch 25.9 Season 15",
+          "rankClaim": "Challenger",
+          "patch": "25.9",
+          "durationSec": 1621,
+          "region": "EUW",
+          "uploaded": "2025-05-03",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 429,
+      "lane": "adc",
+      "videos": [
+        {
+          "videoId": "ybgJSYoKaWA",
+          "title": "Mel Bot vs Kalista (NRG Spica) - NA Challenger Patch 26.21",
+          "rankClaim": "Challenger",
+          "patch": "26.21",
+          "durationSec": 1712,
+          "region": "NA",
+          "uploaded": "2026-11-02",
+          "result": "W",
+          "moments": [
+            {
+              "atSec": 118,
+              "label": "First Blood — Wukong kills Lux",
+              "kind": "kill"
+            },
+            {
+              "atSec": 395,
+              "label": "Blue takes 1st Dragon (Cloud)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 713,
+              "label": "Blue takes 2nd Dragon (Infernal)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 829,
+              "label": "Wukong picks off Pantheon"
+            },
+            {
+              "atSec": 900,
+              "label": "Wukong kills Lux",
+              "kind": "kill"
+            },
+            {
+              "atSec": 947,
+              "label": "Mel takes down Kalista"
+            },
+            {
+              "atSec": 1000,
+              "label": "Mel picks off Lux"
+            },
+            {
+              "atSec": 1030,
+              "label": "Blue takes 3rd Dragon (Chemtech)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1159,
+              "label": "Mel takes down Kalista"
+            },
+            {
+              "atSec": 1271,
+              "label": "Mel eliminates Graves"
+            },
+            {
+              "atSec": 1307,
+              "label": "Red takes Baron",
+              "kind": "baron"
+            },
+            {
+              "atSec": 1365,
+              "label": "Mel picks off Gragas"
+            },
+            {
+              "atSec": 1369,
+              "label": "Red takes 1st Dragon (Chemtech)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1495,
+              "label": "Mel picks off Gragas"
+            },
+            {
+              "atSec": 1534,
+              "label": "Wukong eliminates Kalista"
+            },
+            {
+              "atSec": 1568,
+              "label": "Mid Inhibitor falls (Blue)"
+            },
+            {
+              "atSec": 1652,
+              "label": "Mel solo kills Gragas",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1667,
+              "label": "Mel eliminates Graves"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 429,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "Sk-PxArxkzo",
+          "title": "Mel Mid vs Kalista - EUW Grandmaster Patch 26.07",
+          "rankClaim": "Grandmaster",
+          "patch": "26.7",
+          "durationSec": 1669,
+          "region": "EUW",
+          "uploaded": "2026-04-04",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 391,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 511,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 647,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 702,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 884,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 961,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1095,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1120,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1145,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1178,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1344,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1406,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1498,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1533,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1555,
+              "label": "Hunt The Baron Nashor",
+              "kind": "baron"
+            },
+            {
+              "atSec": 1580,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1658,
+              "label": "End credit"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 498,
+      "lane": "adc",
+      "videos": [
+        {
+          "videoId": "tHkqx1adsW8",
+          "title": "Mel vs Xayah ADC - KR Grandmaster - Patch 15.12 Season 15",
+          "rankClaim": "Grandmaster",
+          "patch": "25.12",
+          "durationSec": 1636,
+          "region": "KR",
+          "uploaded": "2025-06-20",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 517,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "h4N3z5izzDM",
+          "title": "Mel Mid vs Sylas - KR Master Patch 26.08",
+          "rankClaim": "Master",
+          "patch": "26.8",
+          "durationSec": 1578,
+          "region": "KR",
+          "uploaded": "2026-04-18",
+          "moments": []
+        },
+        {
+          "videoId": "xZiXTf69CYw",
+          "title": "Mel Mid vs Sylas - VN Challenger Patch 26.04",
+          "rankClaim": "Challenger",
+          "patch": "26.4",
+          "durationSec": 1472,
+          "uploaded": "2026-02-26",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 328,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 493,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 839,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 860,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 924,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 967,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1050,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1082,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1198,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1254,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1404,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1422,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1440,
+              "label": "Take down The Inhibitor"
+            },
+            {
+              "atSec": 1461,
+              "label": "End credit"
+            }
+          ]
+        },
+        {
+          "videoId": "dILTgfJQGMI",
+          "title": "Mel vs Sylas Mid - KR Challenger - Patch 25.8 Season 15",
+          "rankClaim": "Challenger",
+          "patch": "25.8",
+          "durationSec": 1931,
+          "region": "KR",
+          "uploaded": "2025-04-24",
+          "moments": []
+        },
+        {
+          "videoId": "zfY6Vqvm46A",
+          "title": "Mel vs Sylas Mid - KR Grandmaster - Patch 25.5 Season 15",
+          "rankClaim": "Grandmaster",
+          "patch": "25.5",
+          "durationSec": 1596,
+          "region": "KR",
+          "uploaded": "2025-03-17",
+          "moments": []
+        },
+        {
+          "videoId": "tJd8uHHRwyc",
+          "title": "Mel vs Sylas Mid - KR Grandmaster - Patch 25.4 Season 15",
+          "rankClaim": "Grandmaster",
+          "patch": "25.4",
+          "durationSec": 1476,
+          "region": "KR",
+          "uploaded": "2025-03-05",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 523,
+      "lane": "adc",
+      "videos": [
+        {
+          "videoId": "5ZHx3eDtdmQ",
+          "title": "Mel vs Aphelios ADC - KR Challenger - Patch 25.12 Season 15",
+          "rankClaim": "Challenger",
+          "patch": "25.12",
+          "durationSec": 1396,
+          "region": "KR",
+          "uploaded": "2025-06-25",
+          "moments": []
+        },
+        {
+          "videoId": "NB2cPX47kKE",
+          "title": "Mel vs Aphelios ADC - KR Challenger - Patch 25.12 Season 15",
+          "rankClaim": "Challenger",
+          "patch": "25.12",
+          "durationSec": 1696,
+          "region": "KR",
+          "uploaded": "2025-06-14",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 555,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "Wk9TODucNLE",
+          "title": "Mel Support vs Pyke - EUW Challenger Patch 26.04",
+          "rankClaim": "Challenger",
+          "patch": "26.4",
+          "durationSec": 1586,
+          "region": "EUW",
+          "uploaded": "2026-03-03",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 711,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "yP3ZqX720Mk",
+          "title": "Mel vs Vex Mid - KR Challenger - Patch 16.07 Season 16",
+          "rankClaim": "Challenger",
+          "patch": "26.7",
+          "durationSec": 2371,
+          "region": "KR",
+          "uploaded": "2026-04-09",
+          "moments": []
+        },
+        {
+          "videoId": "c2QFMl1_BO4",
+          "title": "Mel Mid vs Vex - KR Master Patch 26.02",
+          "rankClaim": "Master",
+          "patch": "26.2",
+          "durationSec": 1485,
+          "region": "KR",
+          "uploaded": "2026-01-27",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 109,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 338,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 844,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 863,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 915,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1034,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1113,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1316,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1339,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1366,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1431,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1448,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1474,
+              "label": "End credit"
+            }
+          ]
+        },
+        {
+          "videoId": "08GOA1kv5QE",
+          "title": "Mel vs Vex [ MID ] Korea Master Patch 25.2 ✅",
+          "rankClaim": "Master",
+          "patch": "25.2",
+          "durationSec": 1527,
+          "region": "KR",
+          "uploaded": "2025-02-02",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 777,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "hgnq7zK0wZc",
+          "title": "Baicaiovo Mel : ABSOLUTELY DELETING Yone on CN Super Server",
+          "rankClaim": "Master+",
+          "patch": "26.9",
+          "durationSec": 1947,
+          "patchEstimated": true,
+          "player": "Baicaiovo",
+          "uploaded": "2026-05-06",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "CqYT98N51Tg",
+          "title": "Mel vs Yone Mid - EUW Challenger - Patch 16.03 Season 16",
+          "rankClaim": "Challenger",
+          "patch": "26.3",
+          "durationSec": 2051,
+          "region": "EUW",
+          "uploaded": "2026-02-10",
+          "moments": []
+        },
+        {
+          "videoId": "jDLT1i5PvG4",
+          "title": "Mel vs Yone Mid - KR Challenger - Season 15 Patch 25.24",
+          "rankClaim": "Challenger",
+          "patch": "25.24",
+          "durationSec": 1636,
+          "region": "KR",
+          "uploaded": "2025-12-15",
+          "moments": []
+        },
+        {
+          "videoId": "sel3OWI-yjA",
+          "title": "Mel vs Yone Mid - KR Challenger - Patch 25.21 Season 15",
+          "rankClaim": "Challenger",
+          "patch": "25.21",
+          "durationSec": 1831,
+          "region": "KR",
+          "uploaded": "2025-10-28",
+          "moments": []
+        },
+        {
+          "videoId": "-WR7Ny6rDhQ",
+          "title": "Mel Mid vs Yone - KR Grandmaster Patch 25.21",
+          "rankClaim": "Grandmaster",
+          "patch": "25.21",
+          "durationSec": 1820,
+          "region": "KR",
+          "uploaded": "2025-10-28",
+          "moments": []
+        },
+        {
+          "videoId": "e1lO0eCcDg4",
+          "title": "Mel Mid vs Yone - KR Grandmaster Patch 25.08",
+          "rankClaim": "Grandmaster",
+          "patch": "25.8",
+          "durationSec": 1768,
+          "region": "KR",
+          "uploaded": "2025-04-25",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 215,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 346,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 549,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 652,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 783,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 976,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1065,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1083,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1224,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1336,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1385,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1455,
+              "label": "Hunt The Atakhan"
+            },
+            {
+              "atSec": 1485,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1537,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1617,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1629,
+              "label": "Take down The Inhibitor"
+            },
+            {
+              "atSec": 1705,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1747,
+              "label": "End credit"
+            }
+          ]
+        },
+        {
+          "videoId": "ow_tkdWAR3w",
+          "title": "Mel vs Yone [ MID ] Korea Master Patch 25.2 ✅",
+          "rankClaim": "Master",
+          "patch": "25.2",
+          "durationSec": 1384,
+          "region": "KR",
+          "uploaded": "2025-01-28",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 799,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "3WAx9AHA-X8",
+          "title": "Mel vs Ambessa Mid - KR Challenger - Patch 25.23 Season 15",
+          "rankClaim": "Challenger",
+          "patch": "25.23",
+          "durationSec": 1871,
+          "region": "KR",
+          "uploaded": "2025-11-25",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 804,
+      "lane": "adc",
+      "videos": [
+        {
+          "videoId": "OfqnsvqrILk",
+          "title": "HLE Gumayusi Mel vs Yunara [ ADC ] Korea Challenger 2480 LP | Patch 26.13",
+          "rankClaim": "Challenger",
+          "patch": "26.13",
+          "durationSec": 2017,
+          "region": "KR",
+          "player": "Gumayusi",
+          "team": "HLE",
+          "uploaded": "2026-06-30",
+          "moments": []
+        },
+        {
+          "videoId": "zBkpxJdNPKg",
+          "title": "Mel vs Yunara ADC - KR Challenger - Patch 16.06 Season 16",
+          "rankClaim": "Challenger",
+          "patch": "26.6",
+          "durationSec": 1876,
+          "region": "KR",
+          "uploaded": "2026-03-30",
+          "moments": []
+        },
+        {
+          "videoId": "kt6PhT08fg4",
+          "title": "Mel vs Yunara ADC - KR Challenger - Patch 25.21 Season 15",
+          "rankClaim": "Challenger",
+          "patch": "25.21",
+          "durationSec": 1891,
+          "region": "KR",
+          "uploaded": "2025-11-06",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 805,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "f7yaXHkKYYc",
+          "title": "Mel Mid vs Locke (KRX AKaJe) - KR Grandmaster Patch 26.15",
+          "rankClaim": "Grandmaster",
+          "patch": "26.15",
+          "durationSec": 1800,
+          "region": "KR",
+          "uploaded": "2026-08-05",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 893,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "poQ67ctIuI0",
+          "title": "Challenger Mel : This Dude CRUSHES Aurora on CN Super Server with INSANE PLAY",
+          "rankClaim": "Challenger",
+          "patch": "26.13",
+          "durationSec": 1881,
+          "patchEstimated": true,
+          "player": "Baicaiovo",
+          "uploaded": "2026-07-06",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "gndjsCrOOGc",
+          "title": "Mel vs Aurora MID [ Gen.G Chovy ] Patch 26.7 Ranked Korea ✅",
+          "rankClaim": "Master+",
+          "patch": "26.7",
+          "durationSec": 1680,
+          "region": "KR",
+          "player": "Chovy",
+          "team": "Gen.G",
+          "uploaded": "2026-04-03",
+          "moments": []
+        },
+        {
+          "videoId": "QzoBxmR45hI",
+          "title": "Baicaiovo Mel : CN Super Server Rank 1 is DEVASTATING Aurora with INSANE Mechanics",
+          "rankClaim": "Master+",
+          "patch": "26.6",
+          "durationSec": 1110,
+          "patchEstimated": true,
+          "player": "Baicaiovo",
+          "uploaded": "2026-03-31",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "5zaSeIFSaYs",
+          "title": "Challenger Mel : This CN Super Server Legend is DEVASTATING Aurora With UNREAL Mechanics - Engsub",
+          "rankClaim": "Challenger",
+          "patch": "26.5",
+          "durationSec": 1476,
+          "patchEstimated": true,
+          "player": "Baicaiovo",
+          "uploaded": "2026-03-13",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "H8Olszim-tI",
+          "title": "Mel Mid vs Aurora - KR Master Patch 25.18",
+          "rankClaim": "Master",
+          "patch": "25.18",
+          "durationSec": 1688,
+          "region": "KR",
+          "uploaded": "2025-09-16",
+          "moments": []
+        },
+        {
+          "videoId": "SxHW31TTKB8",
+          "title": "Mel vs Aurora Mid - EUW Challenger - Patch 25.13 Seaosn 15",
+          "rankClaim": "Challenger",
+          "patch": "25.13",
+          "durationSec": 1591,
+          "region": "EUW",
+          "uploaded": "2025-07-16",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 895,
+      "lane": "adc",
+      "videos": [
+        {
+          "videoId": "agGNvLYzZmg",
+          "title": "Mel vs Nilah ADC - EUW Challenger - Patch 26.02 Season 16",
+          "rankClaim": "Challenger",
+          "patch": "26.2",
+          "durationSec": 1961,
+          "region": "EUW",
+          "uploaded": "2026-01-29",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 901,
+      "lane": "adc",
+      "videos": [
+        {
+          "videoId": "cH8npjMN1fo",
+          "title": "Mel vs Smolder ADC - EUW Grandmaster - Patch 25.17 Season 15",
+          "rankClaim": "Grandmaster",
+          "patch": "25.17",
+          "durationSec": 1441,
+          "region": "EUW",
+          "uploaded": "2025-09-10",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 902,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "-UrRWOh5w38",
+          "title": "Mel Support vs Milio - KR Master Patch 25.15",
+          "rankClaim": "Master",
+          "patch": "25.15",
+          "durationSec": 1468,
+          "region": "KR",
+          "uploaded": "2025-08-11",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 910,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "SPp1bMSgBHM",
+          "title": "Mel vs Hwei Mid - EUW Challenger - Patch 25.24 Season 15",
+          "rankClaim": "Challenger",
+          "patch": "25.24",
+          "durationSec": 1621,
+          "region": "EUW",
+          "uploaded": "2026-01-07",
+          "moments": []
+        },
+        {
+          "videoId": "pMOFoKPZB3Q",
+          "title": "Mel Mid vs Hwei - EUW Grandmaster Patch 25.24",
+          "rankClaim": "Grandmaster",
+          "patch": "25.24",
+          "durationSec": 1509,
+          "region": "EUW",
+          "uploaded": "2025-12-27",
+          "moments": []
+        },
+        {
+          "videoId": "t44cCguv3fU",
+          "title": "Mel vs Hwei Mid - KR Master - Patch 25.24 Season 15",
+          "rankClaim": "Master",
+          "patch": "25.24",
+          "durationSec": 1751,
+          "region": "KR",
+          "uploaded": "2025-12-26",
+          "moments": []
+        }
+      ]
+    }
+  ]
+}

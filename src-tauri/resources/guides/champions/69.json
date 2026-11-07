@@ -1,0 +1,4641 @@
+{
+  "schema": 1,
+  "champion": 69,
+  "generatedAt": "2026-11-07T13:25:14.592Z",
+  "guides": [
+    {
+      "champion": 69,
+      "enemy": 84,
+      "lane": "mid",
+      "patch": "26.21",
+      "reviewed": false,
+      "difficulty": "Skill matchup",
+      "favoredWhen": "Fine lane for her, but you outscale and stat-check once defensive. Bait mobility, hold R.",
+      "keyTips": [
+        {
+          "text": "She dodges Q with mobility: vary the angle.",
+          "scope": "pair",
+          "sourceIds": [
+            "anguish"
+          ],
+          "abilityKeys": [
+            {
+              "champion": 69,
+              "key": "Q"
+            }
+          ]
+        },
+        {
+          "text": "She avoids empowered E: Q-hit means E now.",
+          "scope": "pair",
+          "sourceIds": [
+            "anguish"
+          ],
+          "abilityKeys": [
+            {
+              "champion": 69,
+              "key": "Q"
+            },
+            {
+              "champion": 69,
+              "key": "E"
+            }
+          ]
+        },
+        {
+          "text": "Your W hard-counters her dashes: hold it for E.",
+          "scope": "pair",
+          "sourceIds": [
+            "anguish"
+          ],
+          "abilityKeys": [
+            {
+              "champion": 69,
+              "key": "W"
+            },
+            {
+              "champion": 84,
+              "key": "E"
+            }
+          ]
+        }
+      ],
+      "enemyTips": {},
+      "sections": {
+        "overview": {
+          "tips": []
+        },
+        "early-lane": {
+          "tips": [
+            {
+              "text": "She baits R with a backward step: R when she steps in.",
+              "scope": "pair",
+              "sourceIds": [
+                "anguish"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 69,
+                  "key": "R"
+                }
+              ]
+            },
+            {
+              "text": "Fine lane for her: concede early, scale.",
+              "scope": "pair",
+              "sourceIds": [
+                "anguish"
+              ]
+            }
+          ]
+        },
+        "mid-lane": {
+          "tips": [
+            {
+              "text": "You outscale and stat-check her once she builds defensive: force it.",
+              "scope": "pair",
+              "sourceIds": [
+                "anguish"
+              ]
+            },
+            {
+              "text": "She saves mobility for E: hold E until she commits.",
+              "scope": "pair",
+              "sourceIds": [
+                "anguish"
+              ]
+            }
+          ]
+        },
+        "win-condition": {
+          "tips": [
+            {
+              "text": "Dashes baited plus R landed: the Akali who never Es first never wins.",
+              "scope": "pair",
+              "sourceIds": [
+                "anguish"
+              ]
+            }
+          ]
+        }
+      },
+      "itemization": [],
+      "sources": [
+        {
+          "id": "anguish",
+          "author": "Anguish333",
+          "rankClaim": "Master (profile badge; title claims 2000LP GrandMaster EUW and Challenger EUNE) · Akali main",
+          "rank": "master",
+          "url": "https://www.mobafire.com/league-of-legends/build/26-20-anguish-2000lp-grandmasters-euw-challenger-eune-akali-mid-top-s16-guide-every-matchup-item-rune-explained-625064",
+          "kind": "mobafire"
+        }
+      ]
+    },
+    {
+      "champion": 69,
+      "enemy": 238,
+      "lane": "mid",
+      "patch": "26.21",
+      "reviewed": false,
+      "difficulty": "Skill matchup",
+      "favoredWhen": "She Ws herself so he can't R on, and her R answers his. Dodge Qs, turn away on R.",
+      "keyTips": [
+        {
+          "text": "Your W grounds his R: hold it for his dive.",
+          "scope": "pair",
+          "sourceIds": [
+            "aikopanda"
+          ],
+          "abilityKeys": [
+            {
+              "champion": 69,
+              "key": "W"
+            }
+          ]
+        },
+        {
+          "text": "He dodges every Q: lead the snakes.",
+          "scope": "pair",
+          "sourceIds": [
+            "aikopanda"
+          ],
+          "abilityKeys": [
+            {
+              "champion": 69,
+              "key": "Q"
+            }
+          ]
+        },
+        {
+          "text": "He Rs your ult: cast it where he lands.",
+          "scope": "pair",
+          "sourceIds": [
+            "aikopanda"
+          ],
+          "abilityKeys": [
+            {
+              "champion": 238,
+              "key": "R"
+            },
+            {
+              "champion": 69,
+              "key": "R"
+            }
+          ]
+        }
+      ],
+      "enemyTips": {
+        "early-lane": [
+          {
+            "text": "Zed often places Living Shadow before Death Mark so he can swap away from skillshots. Hold your crowd control until he has used the swap.",
+            "scope": "enemy",
+            "sourceIds": [
+              "aikopanda"
+            ],
+            "patch": "26.21",
+            "abilityKeys": [
+              {
+                "champion": 238,
+                "key": "W"
+              },
+              {
+                "champion": 238,
+                "key": "R"
+              }
+            ]
+          }
+        ],
+        "win-condition": [
+          {
+            "text": "Death Mark always lands Zed behind his target. Pre-aim crowd control and escapes behind you, not toward where he cast it.",
+            "scope": "enemy",
+            "sourceIds": [
+              "peng04"
+            ],
+            "patch": "26.21",
+            "abilityKeys": [
+              {
+                "champion": 238,
+                "key": "R"
+              }
+            ]
+          }
+        ]
+      },
+      "sections": {
+        "overview": {
+          "tips": []
+        },
+        "early-lane": {
+          "tips": [
+            {
+              "text": "His shadow poke: heal through, never stand in doubles.",
+              "scope": "pair",
+              "sourceIds": [
+                "aikopanda"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 238,
+                  "key": "W"
+                }
+              ]
+            },
+            {
+              "text": "He turns away from your ult: R when he faces you.",
+              "scope": "pair",
+              "sourceIds": [
+                "aikopanda"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 69,
+                  "key": "R"
+                }
+              ]
+            }
+          ]
+        },
+        "mid-lane": {
+          "tips": [
+            {
+              "text": "Death Mark always lands Zed behind his target. Pre-aim crowd control and escapes behind you, not toward where he cast it.",
+              "scope": "pair",
+              "sourceIds": [
+                "peng04"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 238,
+                  "key": "R"
+                }
+              ]
+            },
+            {
+              "text": "Your W stops his swaps: after his R, face him down.",
+              "scope": "pair",
+              "sourceIds": [
+                "v222"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 69,
+                  "key": "W"
+                }
+              ]
+            }
+          ]
+        },
+        "win-condition": {
+          "tips": [
+            {
+              "text": "Chunked plus spell-less: the Zed who never respects W never wins.",
+              "scope": "pair",
+              "sourceIds": [
+                "v222"
+              ]
+            }
+          ]
+        }
+      },
+      "itemization": [],
+      "sources": [
+        {
+          "id": "aikopanda",
+          "author": "AikoPanda",
+          "rankClaim": "Zed main",
+          "url": "https://www.mobafire.com/league-of-legends/build/26-20-video-guides-hidden-combos-all-matchups-zed-all-in-one-guide-652800",
+          "kind": "mobafire"
+        },
+        {
+          "id": "v222",
+          "author": "V222",
+          "rankClaim": "Challenger EUW · Zed main",
+          "rank": "challenger",
+          "url": "https://www.mobafire.com/league-of-legends/build/all-matchups-26-14-zed-guide-2000lp-euw-challenger-652354",
+          "kind": "mobafire"
+        },
+        {
+          "id": "peng04",
+          "author": "Peng04",
+          "rankClaim": "Challenger · Ahri main",
+          "rank": "challenger",
+          "url": "https://www.mobafire.com/league-of-legends/build/26-20-pengs-ahri-guide-5-1mil-points-13x-challenger-648700",
+          "kind": "mobafire"
+        }
+      ]
+    }
+  ],
+  "general": [
+    {
+      "champion": 69,
+      "lane": "mid",
+      "patch": "26.21",
+      "reviewed": false,
+      "keyTips": [
+        {
+          "text": "Take extended trades after landing Q, then chain E casts while the target stays poisoned.",
+          "scope": "champion",
+          "sourceIds": [
+            "mobalytics-cassiopeia"
+          ],
+          "abilityKeys": [
+            {
+              "champion": 69,
+              "key": "Q"
+            },
+            {
+              "champion": 69,
+              "key": "E"
+            }
+          ]
+        },
+        {
+          "text": "Spend R to start or stop an all-in and to set up ganks, closing enough for the cone to connect.",
+          "scope": "champion",
+          "sourceIds": [
+            "mobalytics-cassiopeia"
+          ],
+          "abilityKeys": [
+            {
+              "champion": 69,
+              "key": "R"
+            }
+          ]
+        },
+        {
+          "text": "Scale into a late damage carry by staying alive, finding safe angles, and grouping instead of splitting.",
+          "scope": "champion",
+          "sourceIds": [
+            "mobalytics-cassiopeia"
+          ]
+        }
+      ],
+      "sections": {
+        "overview": {
+          "tips": []
+        },
+        "early-lane": {
+          "tips": [
+            {
+              "text": "Watch mana closely, since short cooldowns invite overspending through repeated casts.",
+              "scope": "champion",
+              "sourceIds": [
+                "mobalytics-cassiopeia"
+              ]
+            },
+            {
+              "text": "At level 2, force an early all-in window when the lane partner can follow it up.",
+              "scope": "champion",
+              "sourceIds": [
+                "mobalytics-cassiopeia"
+              ]
+            },
+            {
+              "text": "At level 3, press the clearer spike with all basic abilities online.",
+              "scope": "champion",
+              "sourceIds": [
+                "mobalytics-cassiopeia"
+              ]
+            },
+            {
+              "text": "Turn the first finished item into stronger trades, using landed Q plus repeated E for a big health lead.",
+              "scope": "champion",
+              "sourceIds": [
+                "mobalytics-cassiopeia"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 69,
+                  "key": "Q"
+                },
+                {
+                  "champion": 69,
+                  "key": "E"
+                }
+              ]
+            }
+          ]
+        },
+        "mid-lane": {
+          "tips": [
+            {
+              "text": "Take a side lane for experience and gold whenever no teamfight brews.",
+              "scope": "champion",
+              "sourceIds": [
+                "mobalytics-cassiopeia"
+              ]
+            },
+            {
+              "text": "Flank before teamfights to open a stronger R angle.",
+              "scope": "champion",
+              "sourceIds": [
+                "mobalytics-cassiopeia"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 69,
+                  "key": "R"
+                }
+              ]
+            },
+            {
+              "text": "Favor tight terrain where R catches several opponents, or lock down one key target with it.",
+              "scope": "champion",
+              "sourceIds": [
+                "mobalytics-cassiopeia"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 69,
+                  "key": "R"
+                }
+              ]
+            },
+            {
+              "text": "Stack Tear of the Goddess by mid game to ease mana through sustained casting.",
+              "scope": "champion",
+              "sourceIds": [
+                "mobalytics-cassiopeia"
+              ],
+              "itemIds": [
+                3070
+              ]
+            },
+            {
+              "text": "At level 9, convert maxed E into heavier follow-up once Q lands.",
+              "scope": "champion",
+              "sourceIds": [
+                "mobalytics-cassiopeia"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 69,
+                  "key": "Q"
+                },
+                {
+                  "champion": 69,
+                  "key": "E"
+                }
+              ]
+            },
+            {
+              "text": "At level 11, press the second R rank for more damage and a shorter cooldown into mid-game kills.",
+              "scope": "champion",
+              "sourceIds": [
+                "mobalytics-cassiopeia"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 69,
+                  "key": "R"
+                }
+              ]
+            }
+          ]
+        },
+        "win-condition": {
+          "tips": [
+            {
+              "text": "Group with the team late instead of splitting and stranding allies in a 4v5.",
+              "scope": "champion",
+              "sourceIds": [
+                "mobalytics-cassiopeia"
+              ]
+            },
+            {
+              "text": "Initiate with R when it stuns several enemies and hands the team a clear edge.",
+              "scope": "champion",
+              "sourceIds": [
+                "mobalytics-cassiopeia"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 69,
+                  "key": "R"
+                }
+              ]
+            },
+            {
+              "text": "At level 13, pair maxed Q with E for stronger skirmish damage.",
+              "scope": "champion",
+              "sourceIds": [
+                "mobalytics-cassiopeia"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 69,
+                  "key": "Q"
+                },
+                {
+                  "champion": 69,
+                  "key": "E"
+                }
+              ]
+            },
+            {
+              "text": "At level 16, use the last R rank for more damage and another control spike.",
+              "scope": "champion",
+              "sourceIds": [
+                "mobalytics-cassiopeia"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 69,
+                  "key": "R"
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "itemization": [
+        {
+          "text": "Stack Tear of the Goddess into mid game, since stored mana sustains long casting stretches.",
+          "scope": "champion",
+          "sourceIds": [
+            "mobalytics-cassiopeia"
+          ],
+          "itemIds": [
+            3070
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "id": "mobalytics-cassiopeia",
+          "author": "Mobalytics",
+          "rankClaim": "No rank claim",
+          "url": "https://mobalytics.gg/lol/champions/cassiopeia/guide",
+          "kind": "web"
+        }
+      ]
+    }
+  ],
+  "vods": [
+    {
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "CJ986o3Ma80",
+          "title": "HOW TO CARRY WITH CASSIOPEIA - FULLY EDUCATIONAL GAME",
+          "rankClaim": "Master+",
+          "patch": "26.18",
+          "durationSec": 2283,
+          "patchEstimated": true,
+          "player": "Shok",
+          "uploaded": "2026-09-10",
+          "format": "stream",
+          "cam": true,
+          "moments": []
+        },
+        {
+          "videoId": "bHEz_3FDr4E",
+          "title": "Rank 1 Cassiopeia : He CRUSHES Challenger MID on CN Super Server",
+          "rankClaim": "Challenger",
+          "patch": "26.13",
+          "durationSec": 1272,
+          "patchEstimated": true,
+          "player": "Baicaiovo",
+          "uploaded": "2026-06-29",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "ZrXZp3E-E2U",
+          "title": "Rank 1 Cassiopeia : This Dude is CLEAN on CN Super Server",
+          "rankClaim": "Master+",
+          "patch": "26.13",
+          "durationSec": 920,
+          "patchEstimated": true,
+          "player": "Baicaiovo",
+          "uploaded": "2026-06-29",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "0XcONIvwc-0",
+          "title": "Baicaiovo Cassiopeia : PERFECT 8-0-0 at CN Super Server - Engsub",
+          "rankClaim": "Master+",
+          "patch": "26.13",
+          "durationSec": 1089,
+          "patchEstimated": true,
+          "player": "Baicaiovo",
+          "uploaded": "2026-06-29",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "BsHvJhVhVeg",
+          "title": "Challenger Cassiopeia: Baicaiovo DEVASTATING Entire CN Super Server MID LANE",
+          "rankClaim": "Challenger",
+          "patch": "26.13",
+          "durationSec": 1857,
+          "patchEstimated": true,
+          "player": "Baicaiovo",
+          "uploaded": "2026-06-29",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "QeKcFheehWc",
+          "title": "Baicaiovo Cassiopeia: This Dude Makes CHALLENGERS Look Like NPCs on CN Super Server",
+          "rankClaim": "Master+",
+          "patch": "26.13",
+          "durationSec": 1545,
+          "patchEstimated": true,
+          "player": "Baicaiovo",
+          "uploaded": "2026-06-26",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "k4TuZw0kqYs",
+          "title": "Baicaiovo Cassiopeia : WRECKING CN Super Server with INSANE Gameplay",
+          "rankClaim": "Master+",
+          "patch": "26.12",
+          "durationSec": 1409,
+          "patchEstimated": true,
+          "player": "Baicaiovo",
+          "uploaded": "2026-06-17",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "bwD_NGW0qVU",
+          "title": "Rank 1 Cassiopeia : DEVASTATING CN Super Server with INSANE Mechanics",
+          "rankClaim": "Master+",
+          "patch": "26.12",
+          "durationSec": 1086,
+          "patchEstimated": true,
+          "player": "Baicaiovo",
+          "uploaded": "2026-06-16",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "83Okvvc3Zn8",
+          "title": "Rank 1 Cassiopeia : This Dude is CRUSHING CN SUPER SERVER",
+          "rankClaim": "Master+",
+          "patch": "26.12",
+          "durationSec": 2256,
+          "patchEstimated": true,
+          "player": "Baicaiovo",
+          "uploaded": "2026-06-12",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "7u2WKpLvGoo",
+          "title": "Baicaiovo Cassiopeia: CRUSHING Challenger on CN Super Server",
+          "rankClaim": "Challenger",
+          "patch": "26.12",
+          "durationSec": 1701,
+          "patchEstimated": true,
+          "player": "Baicaiovo",
+          "uploaded": "2026-06-12",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "kj7MEYvEEN4",
+          "title": "Rank 1 Cassiopeia : Baicaiovo MAKE Challenger Players LOOK EASY",
+          "rankClaim": "Challenger",
+          "patch": "26.12",
+          "durationSec": 1162,
+          "patchEstimated": true,
+          "player": "Baicaiovo",
+          "uploaded": "2026-06-11",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "DJZjQAp2BIg",
+          "title": "Rank 1 Cassiopeia : He is WRECKING CN Super Server - Engsub",
+          "rankClaim": "Master+",
+          "patch": "26.11",
+          "durationSec": 1666,
+          "patchEstimated": true,
+          "player": "Baicaiovo",
+          "uploaded": "2026-06-06",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "BuSlIsJwif4",
+          "title": "Baicaiovo Cassiopeia : This Dude is CRUSHING CN Super Server - Engsub",
+          "rankClaim": "Master+",
+          "patch": "26.11",
+          "durationSec": 1261,
+          "patchEstimated": true,
+          "player": "Baicaiovo",
+          "uploaded": "2026-06-01",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "b7ua9xnT_4c",
+          "title": "Baicaiovo Cassiopeia : Making CN Super Server Challenger Players Look Like NPC",
+          "rankClaim": "Challenger",
+          "patch": "26.10",
+          "durationSec": 1272,
+          "patchEstimated": true,
+          "player": "Baicaiovo",
+          "uploaded": "2026-05-16",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "mTVqgDeobXA",
+          "title": "Baicaiovo Cassiopeia : This CN Super Server Legend is DEVASTATING Challenger Mid Lane - Engsub",
+          "rankClaim": "Challenger",
+          "patch": "26.6",
+          "durationSec": 1229,
+          "patchEstimated": true,
+          "player": "Baicaiovo",
+          "uploaded": "2026-03-31",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "WM0pJSewwP0",
+          "title": "Rank 1 Cassiopeia : This CN Super Server God is DEVASTATING Challenger Elo - Engsub",
+          "rankClaim": "Challenger",
+          "patch": "26.6",
+          "durationSec": 1282,
+          "patchEstimated": true,
+          "player": "Baicaiovo",
+          "uploaded": "2026-03-30",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "-7d1-f9XBz8",
+          "title": "Rank 1 Cassiopeia : This CN Super Server Legend is CRUSHING Challenger NPCs - Engsub",
+          "rankClaim": "Challenger",
+          "patch": "26.6",
+          "durationSec": 1273,
+          "patchEstimated": true,
+          "player": "Baicaiovo",
+          "uploaded": "2026-03-28",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "-8rziMy96_s",
+          "title": "Rank 1 Cassiopeia : This CN Super Server Legend is CRUSHING Challenger with INSANE Kiting",
+          "rankClaim": "Challenger",
+          "patch": "26.5",
+          "durationSec": 2797,
+          "patchEstimated": true,
+          "player": "Baicaiovo",
+          "uploaded": "2026-03-12",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "TJn7hLaZXH8",
+          "title": "Rank 1 Cassiopeia : His CLEAN Kiting is TEARING APART the CN Super Server",
+          "rankClaim": "Master+",
+          "patch": "26.5",
+          "durationSec": 2034,
+          "patchEstimated": true,
+          "player": "Baicaiovo",
+          "uploaded": "2026-03-09",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "bGQghfzCeus",
+          "title": "Rank 1 Cassiopeia : This CN Super Server Legend is CRUSHING Challenger NPCs - Engsub",
+          "rankClaim": "Challenger",
+          "patch": "26.5",
+          "durationSec": 1356,
+          "patchEstimated": true,
+          "player": "Baicaiovo",
+          "uploaded": "2026-03-08",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "sXHHMnGtOMM",
+          "title": "Rank 1 Cassiopeia : His CN Super Server Mechanics are DEVASTATING - Engsub",
+          "rankClaim": "Master+",
+          "patch": "26.3",
+          "durationSec": 1883,
+          "patchEstimated": true,
+          "player": "Baicaiovo",
+          "uploaded": "2026-02-15",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "j3L9WvlutzQ",
+          "title": "Baicaiovo Reaches Rank 2 Super Server With Flawless Cassiopeia Mid Lane Mechanics Engsub",
+          "rankClaim": "Master+",
+          "patch": "26.2",
+          "durationSec": 1482,
+          "patchEstimated": true,
+          "player": "Baicaiovo",
+          "uploaded": "2026-01-31",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "-WXYxPDDZhM",
+          "title": "Baicaiovo Reaches Rank 2 Super Server with Flawless Cassiopeia Mid Lane Mechanics Engsub",
+          "rankClaim": "Master+",
+          "patch": "26.2",
+          "durationSec": 1770,
+          "patchEstimated": true,
+          "player": "Baicaiovo",
+          "uploaded": "2026-01-24",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "2z83tOrl1Ek",
+          "title": "How Baicaiovo Hit Rank 2 With Flawless Cassiopeia Teamfight Tactics Challenger Engsub",
+          "rankClaim": "Challenger",
+          "patch": "26.1",
+          "durationSec": 1911,
+          "patchEstimated": true,
+          "player": "Baicaiovo",
+          "uploaded": "2026-01-12",
+          "format": "stream",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "_vdyv1llhV0",
+          "title": "Baicaiovo Cassiopeia : TOP 1 CN Super Server WRECKING Challenger Elo - Engsub",
+          "rankClaim": "Challenger",
+          "patch": "26.13",
+          "durationSec": 1318,
+          "patchEstimated": true,
+          "player": "Baicaiovo",
+          "uploaded": "2026-06-24",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "51ZKKy20txA",
+          "title": "Challenger Cassiopeia : TOP 1 CN Super Server - His MECHANIC is INSANE - Engsub",
+          "rankClaim": "Challenger",
+          "patch": "26.12",
+          "durationSec": 1658,
+          "patchEstimated": true,
+          "player": "Baicaiovo",
+          "uploaded": "2026-06-23",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "JSpUo-oLmPE",
+          "title": "Baicaiovo Cassiopeia : Top 1 CN Super Server! WRECKING Challenger with INSANE Mechanics - Engsub",
+          "rankClaim": "Challenger",
+          "patch": "26.11",
+          "durationSec": 1725,
+          "patchEstimated": true,
+          "player": "Baicaiovo",
+          "uploaded": "2026-06-09",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "oiHJa2o1hQ8",
+          "title": "Baicaiovo Reveals High Rank Positioning Secrets on Cassiopeia Top 2 China Challenger Engsub",
+          "rankClaim": "Challenger",
+          "patch": "26.3",
+          "durationSec": 1879,
+          "patchEstimated": true,
+          "player": "Baicaiovo",
+          "uploaded": "2026-02-11",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "iZLjTSEIGBM",
+          "title": "CN Super Server Top 2 Baicaiovo Cassiopeia Mid Masterclass Engsub",
+          "rankClaim": "Master+",
+          "patch": "26.2",
+          "durationSec": 1394,
+          "patchEstimated": true,
+          "player": "Baicaiovo",
+          "uploaded": "2026-02-03",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "q7X_HMOucic",
+          "title": "Baicaiovo Showcases Godlike Cassiopeia Mechanics Top 2 CN Challenger Engsub",
+          "rankClaim": "Challenger",
+          "patch": "26.2",
+          "durationSec": 2086,
+          "patchEstimated": true,
+          "player": "Baicaiovo",
+          "uploaded": "2026-02-02",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "oPkD1SBbeLE",
+          "title": "Top 2 CN Challenger Baicaiovo Insane Cassiopeia Masterclass Engsub",
+          "rankClaim": "Challenger",
+          "patch": "26.2",
+          "durationSec": 1770,
+          "patchEstimated": true,
+          "player": "Baicaiovo",
+          "uploaded": "2026-01-31",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "qyMqZ9WP72k",
+          "title": "Baicaiovo Reaches Super Server Top 2 with Flawless Cassiopeia Mid Lane Mechanics Engsub",
+          "rankClaim": "Master+",
+          "patch": "26.2",
+          "durationSec": 1684,
+          "patchEstimated": true,
+          "player": "Baicaiovo",
+          "uploaded": "2026-01-28",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "m-uQWS9Em4I",
+          "title": "Baicaiovo Godlike Cassiopeia Mechanics Top 2 CN Server Engsub",
+          "rankClaim": "Master+",
+          "patch": "26.2",
+          "durationSec": 1399,
+          "patchEstimated": true,
+          "player": "Baicaiovo",
+          "uploaded": "2026-01-23",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "nw8hLz8Rk9Q",
+          "title": "Baicaiovo Reaches Super Server Top 2 With Insane Cassiopeia Mechanics Engsub",
+          "rankClaim": "Master+",
+          "patch": "26.1",
+          "durationSec": 1797,
+          "patchEstimated": true,
+          "player": "Baicaiovo",
+          "uploaded": "2026-01-12",
+          "format": "stream",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 1,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "becW87Fa3Yg",
+          "title": "T1 Faker Cassiopeia vs Annie [ MID ] Korea Challenger 1849 LP | Patch 26.11",
+          "rankClaim": "Challenger",
+          "patch": "26.11",
+          "durationSec": 813,
+          "region": "KR",
+          "player": "Faker",
+          "team": "T1",
+          "uploaded": "2026-06-06",
+          "moments": []
+        },
+        {
+          "videoId": "To-ZJjLlpDA",
+          "title": "(GEN Chovy) Cassiopeia Mid vs Annie (NS SeTab) - KR Challenger Patch 26.10",
+          "rankClaim": "Challenger",
+          "patch": "26.10",
+          "durationSec": 1463,
+          "region": "KR",
+          "player": "Chovy",
+          "team": "GEN",
+          "uploaded": "2026-05-23",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 2,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "A2hRcZUzguw",
+          "title": "Cassiopeia Top vs Olaf - KR Master Patch 25.17",
+          "rankClaim": "Master",
+          "patch": "25.17",
+          "durationSec": 1652,
+          "region": "KR",
+          "uploaded": "2025-09-09",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 3,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "25NKlHIfrFA",
+          "title": "Baicaiovo Cassiopeia : HIS WRECKING KR Challenger Elo TEARING Galio - Engsub",
+          "rankClaim": "Challenger",
+          "patch": "26.13",
+          "durationSec": 1029,
+          "region": "KR",
+          "patchEstimated": true,
+          "player": "Baicaiovo",
+          "uploaded": "2026-06-28",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "YNZtlVUKO54",
+          "title": "Cassiopeia Mid vs Galio - NA Challenger Patch 25.10",
+          "rankClaim": "Challenger",
+          "patch": "25.10",
+          "durationSec": 1741,
+          "region": "NA",
+          "uploaded": "2025-05-27",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 4,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "lijg1916RKo",
+          "title": "(LNG BuLLDoG) Cassiopeia Mid vs Twisted Fate - KR Challenger Patch 26.11",
+          "rankClaim": "Challenger",
+          "patch": "26.11",
+          "durationSec": 1536,
+          "region": "KR",
+          "player": "BuLLDoG",
+          "team": "LNG",
+          "uploaded": "2026-05-30",
+          "moments": []
+        },
+        {
+          "videoId": "a1qjiTwPRlI",
+          "title": "Cassiopeia Mid vs Twisted Fate - KR Challenger Patch 26.07",
+          "rankClaim": "Challenger",
+          "patch": "26.7",
+          "durationSec": 1883,
+          "region": "KR",
+          "uploaded": "2026-04-07",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 288,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 521,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 665,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 900,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 969,
+              "label": "Hunt The Rift Herald",
+              "kind": "herald"
+            },
+            {
+              "atSec": 1054,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1088,
+              "label": "Hunt The Dragon",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1210,
+              "label": "Hunt The Baron Nashor",
+              "kind": "baron"
+            },
+            {
+              "atSec": 1278,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1409,
+              "label": "Hunt The Dragon",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1614,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1715,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1831,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1872,
+              "label": "End credit"
+            }
+          ]
+        },
+        {
+          "videoId": "w22g13q0SkA",
+          "title": "Cassiopeia Mid vs Twisted Fate - KR Master Patch 25.17",
+          "rankClaim": "Master",
+          "patch": "25.17",
+          "durationSec": 1533,
+          "region": "KR",
+          "uploaded": "2025-08-31",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 7,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "Db9kNnwaq80",
+          "title": "Cassiopeia Mid vs LeBlanc - KR Master Patch 26.02",
+          "rankClaim": "Master",
+          "patch": "26.2",
+          "durationSec": 1461,
+          "region": "KR",
+          "uploaded": "2026-01-27",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 291,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 623,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 888,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 983,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1110,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1294,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1322,
+              "label": "Get a Triple Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1450,
+              "label": "End credit"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 8,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "JEx2UZavXDc",
+          "title": "Baicaiovo Cassiopeia : CN Super Server Rank 1 CRUSHING Challenger Vladimir with INSANE Kiting - E...",
+          "rankClaim": "Challenger",
+          "patch": "26.6",
+          "durationSec": 1796,
+          "patchEstimated": true,
+          "player": "Baicaiovo",
+          "uploaded": "2026-03-19",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "RcNdkD_y3DY",
+          "title": "Cassiopeia Mid vs Vladimir - EUW Grandmaster Patch 25.21",
+          "rankClaim": "Grandmaster",
+          "patch": "25.21",
+          "durationSec": 1556,
+          "region": "EUW",
+          "uploaded": "2025-11-03",
+          "moments": []
+        },
+        {
+          "videoId": "gv4aJgFsoMk",
+          "title": "Cassiopeia Mid vs Vladimir - KR Grandmaster Patch 25.07",
+          "rankClaim": "Grandmaster",
+          "patch": "25.7",
+          "durationSec": 1658,
+          "region": "KR",
+          "uploaded": "2025-04-15",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 8,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "icB12dIuiN8",
+          "title": "Cassiopeia Top vs Vladimir - KR Master Patch 25.19",
+          "rankClaim": "Master",
+          "patch": "25.19",
+          "durationSec": 1560,
+          "region": "KR",
+          "uploaded": "2025-09-30",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 10,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "yYvjtwO0JLY",
+          "title": "DK ShowMaker Cassiopeia vs Kayle [ MID ] Korea Challenger 2262 LP | Patch 26.20",
+          "rankClaim": "Challenger",
+          "patch": "26.20",
+          "durationSec": 1309,
+          "region": "KR",
+          "player": "ShowMaker",
+          "team": "DK",
+          "uploaded": "2026-10-15",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 13,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "_8T8tQQRzRM",
+          "title": "Cassiopeia vs Ryze 14/2/4 (Mid) | EUW Master | Cassiopeia OTP Replay",
+          "rankClaim": "Master",
+          "patch": "26.9",
+          "durationSec": 1101,
+          "region": "EUW",
+          "patchEstimated": true,
+          "uploaded": "2026-05-05",
+          "moments": []
+        },
+        {
+          "videoId": "o6Dy9CoQ-YI",
+          "title": "Cassiopeia Mid vs Ryze - EUW Challenger Patch 25.22",
+          "rankClaim": "Challenger",
+          "patch": "25.22",
+          "durationSec": 1626,
+          "region": "EUW",
+          "uploaded": "2025-11-18",
+          "moments": []
+        },
+        {
+          "videoId": "ffwnuvzyxMI",
+          "title": "Cassiopeia Mid vs Ryze - EUW Challenger Patch 25.19",
+          "rankClaim": "Challenger",
+          "patch": "25.19",
+          "durationSec": 1896,
+          "region": "EUW",
+          "uploaded": "2025-10-06",
+          "moments": []
+        },
+        {
+          "videoId": "QDiC6u8Zx4Q",
+          "title": "Cassiopeia vs Ryze Mid - KR Challenger - Patch 25.13 Season 15",
+          "rankClaim": "Challenger",
+          "patch": "25.13",
+          "durationSec": 1681,
+          "region": "KR",
+          "uploaded": "2025-06-26",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 17,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "owwIhETBYLc",
+          "title": "Cassiopeia Top vs Teemo - KR Grandmaster Patch 25.06",
+          "rankClaim": "Grandmaster",
+          "patch": "25.6",
+          "durationSec": 1665,
+          "region": "KR",
+          "uploaded": "2025-03-28",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 20,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "GcZI9PtO5D4",
+          "title": "Cassiopeia Mid vs Nunu & Willump - KR Master Patch 25.14",
+          "rankClaim": "Master",
+          "patch": "25.14",
+          "durationSec": 2087,
+          "region": "KR",
+          "uploaded": "2025-07-31",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 21,
+      "lane": "adc",
+      "videos": [
+        {
+          "videoId": "cvvujlZsi8A",
+          "title": "T1 Gumayusi Cassiopeia vs Miss Fortune [ ADC ] Patch 25.1 Korea Master ✅",
+          "rankClaim": "Master",
+          "patch": "25.1",
+          "durationSec": 1784,
+          "region": "KR",
+          "player": "Gumayusi",
+          "team": "T1",
+          "uploaded": "2025-01-14",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 24,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "ii7BeAv88TI",
+          "title": "Cassiopeia Top vs Jax - KR Grandmaster Patch 25.20",
+          "rankClaim": "Grandmaster",
+          "patch": "25.20",
+          "durationSec": 2054,
+          "region": "KR",
+          "uploaded": "2025-10-15",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 25,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "pbFUwAvaRS8",
+          "title": "Cassiopeia Mid vs Morgana - KR Master Patch 25.15",
+          "rankClaim": "Master",
+          "patch": "25.15",
+          "durationSec": 2003,
+          "region": "KR",
+          "uploaded": "2025-08-06",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 27,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "H3z6W6UXE1c",
+          "title": "(Philip) Cassiopeia Top vs Singed - NA Challenger Patch 26.12",
+          "rankClaim": "Challenger",
+          "patch": "26.12",
+          "durationSec": 1561,
+          "region": "NA",
+          "player": "Philip",
+          "uploaded": "2026-06-20",
+          "moments": []
+        },
+        {
+          "videoId": "pwjq-XhaMw8",
+          "title": "Cassiopeia Top vs Singed - KR Master Patch 25.23",
+          "rankClaim": "Master",
+          "patch": "25.23",
+          "durationSec": 1594,
+          "region": "KR",
+          "uploaded": "2025-11-26",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 31,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "NNrZKpxz5vg",
+          "title": "Cassiopeia Mid vs Cho'Gath - NA Challenger Patch 25.05",
+          "rankClaim": "Challenger",
+          "patch": "25.5",
+          "durationSec": 1860,
+          "region": "NA",
+          "uploaded": "2025-03-17",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 38,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "dxaXN4NHWp8",
+          "title": "(IHG Mrozku) Cassiopeia Mid vs Kassadin - EUW Challenger Patch 26.21",
+          "rankClaim": "Challenger",
+          "patch": "26.21",
+          "durationSec": 1632,
+          "region": "EUW",
+          "player": "IHG Mrozku",
+          "uploaded": "2026-10-30",
+          "result": "W",
+          "moments": [
+            {
+              "atSec": 354,
+              "label": "Red takes 1st Dragon (Hextech)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 447,
+              "label": "Rell eliminates Sylas"
+            },
+            {
+              "atSec": 514,
+              "label": "Cassiopeia takes down Sylas"
+            },
+            {
+              "atSec": 686,
+              "label": "Blue takes 1st Dragon (Infernal)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 978,
+              "label": "Garen takes down Kassadin"
+            },
+            {
+              "atSec": 1004,
+              "label": "Red takes 2nd Dragon (Cloud)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1219,
+              "label": "Red takes Baron",
+              "kind": "baron"
+            },
+            {
+              "atSec": 1282,
+              "label": "Cassiopeia takes down Sylas"
+            },
+            {
+              "atSec": 1305,
+              "label": "Garen picks off Zeri"
+            },
+            {
+              "atSec": 1377,
+              "label": "Red takes 3rd Dragon (Cloud)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1416,
+              "label": "Hecarim eliminates Zeri"
+            },
+            {
+              "atSec": 1468,
+              "label": "Team fight (3 kills)",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1511,
+              "label": "Mid Inhibitor falls (Blue)"
+            },
+            {
+              "atSec": 1589,
+              "label": "Varus kills Kassadin",
+              "kind": "kill"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 39,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "G_Ic0Tw1Y9w",
+          "title": "Cassiopeia Mid vs Irelia - KR Grandmaster Patch 26.03",
+          "rankClaim": "Grandmaster",
+          "patch": "26.3",
+          "durationSec": 1620,
+          "region": "KR",
+          "uploaded": "2026-02-10",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 39,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "g1yVY8GRLMo",
+          "title": "Cassiopeia Top vs Irelia - KR Grandmaster Patch 25.09",
+          "rankClaim": "Grandmaster",
+          "patch": "25.9",
+          "durationSec": 1776,
+          "region": "KR",
+          "uploaded": "2025-05-07",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 289,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 523,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 657,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 730,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 951,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1042,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1058,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1076,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1165,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1239,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1379,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1483,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1608,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1687,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1722,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1744,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1755,
+              "label": "End credit"
+            }
+          ]
+        },
+        {
+          "videoId": "NL12m9RIldA",
+          "title": "Cassiopeia Top vs Irelia - KR Master Patch 25.07",
+          "rankClaim": "Master",
+          "patch": "25.7",
+          "durationSec": 1996,
+          "region": "KR",
+          "uploaded": "2025-04-09",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 151,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 206,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 271,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 349,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 429,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 459,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 539,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 701,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 729,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 783,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 834,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1003,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1188,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1274,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1328,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1346,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1369,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1480,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1531,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1567,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1626,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1660,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1842,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1925,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1959,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1975,
+              "label": "End credit"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 41,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "ZL8QiOezdi4",
+          "title": "Cassiopeia Top vs Gangplank - KR Master Patch 25.18",
+          "rankClaim": "Master",
+          "patch": "25.18",
+          "durationSec": 1901,
+          "region": "KR",
+          "uploaded": "2025-09-14",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 42,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "amtNc6fJ84o",
+          "title": "Rank 1 Cassiopeia : His CN Super Server Mechanics are CRUSHING Corki in Challenger Elo",
+          "rankClaim": "Challenger",
+          "patch": "26.5",
+          "durationSec": 1407,
+          "patchEstimated": true,
+          "player": "Baicaiovo",
+          "uploaded": "2026-03-14",
+          "format": "stream",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 42,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "aEG90P9Jw-U",
+          "title": "Baicaiovo Cassiopeia : CN Super Server Top 1 DOMINATES Corki in Mid Lane",
+          "rankClaim": "Master+",
+          "patch": "26.12",
+          "durationSec": 2010,
+          "patchEstimated": true,
+          "player": "Baicaiovo",
+          "uploaded": "2026-06-18",
+          "format": "stream",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 51,
+      "lane": "adc",
+      "videos": [
+        {
+          "videoId": "6xA4L2imS1E",
+          "title": "Cassiopeia Bot vs Caitlyn - KR Challenger Patch 26.21",
+          "rankClaim": "Challenger",
+          "patch": "26.21",
+          "durationSec": 1587,
+          "region": "KR",
+          "uploaded": "2026-10-31",
+          "result": "W",
+          "moments": [
+            {
+              "atSec": 221,
+              "label": "Cassiopeia outduels Caitlyn"
+            },
+            {
+              "atSec": 449,
+              "label": "Blue takes 1st Dragon (Mountain)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 662,
+              "label": "Cassiopeia picks off Pantheon"
+            },
+            {
+              "atSec": 754,
+              "label": "Syndra takes down Pantheon"
+            },
+            {
+              "atSec": 774,
+              "label": "Cassiopeia kills Xerath",
+              "kind": "kill"
+            },
+            {
+              "atSec": 780,
+              "label": "Red takes 1st Dragon (Chemtech)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 985,
+              "label": "Cassiopeia picks off Pantheon"
+            },
+            {
+              "atSec": 1100,
+              "label": "Blue takes 2nd Dragon (Hextech)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1235,
+              "label": "Cassiopeia kills Xerath",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1303,
+              "label": "Blue takes Baron",
+              "kind": "baron"
+            },
+            {
+              "atSec": 1317,
+              "label": "Viego Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1429,
+              "label": "Red takes 2nd Dragon (Hextech)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1538,
+              "label": "Gangplank Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1561,
+              "label": "Mid Inhibitor falls (Blue)"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 55,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "LpvM_Eavem8",
+          "title": "(MagiFelix) Cassiopeia Mid vs Katarina - EUW Challenger Patch 26.18",
+          "rankClaim": "Challenger",
+          "patch": "26.18",
+          "durationSec": 1814,
+          "region": "EUW",
+          "player": "MagiFelix",
+          "uploaded": "2026-09-19",
+          "moments": []
+        },
+        {
+          "videoId": "mVSUci7PgPU",
+          "title": "Cassiopeia Mid vs Katarina - KR Master Patch 25.04",
+          "rankClaim": "Master",
+          "patch": "25.4",
+          "durationSec": 1676,
+          "region": "KR",
+          "uploaded": "2025-02-25",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 254,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 395,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 443,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 753,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 910,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 952,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1015,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1084,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1203,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1310,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1556,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1620,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1641,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1655,
+              "label": "End credit"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 58,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "CLrGv0iwywM",
+          "title": "Cassiopeia vs Renekton Top - KR Challenger - Patch 25.24 Season 15",
+          "rankClaim": "Challenger",
+          "patch": "25.24",
+          "durationSec": 1471,
+          "region": "KR",
+          "uploaded": "2025-12-25",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 61,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "uvAew09HC5o",
+          "title": "Faker Cassiopeia vs Orianna Mid  - KR Challenger - Patch 16.16 Season 16",
+          "rankClaim": "Challenger",
+          "patch": "26.16",
+          "durationSec": 1861,
+          "region": "KR",
+          "player": "Faker",
+          "uploaded": "2026-08-22",
+          "moments": []
+        },
+        {
+          "videoId": "YfBcfh_5rAY",
+          "title": "T1 Faker Cassiopeia vs Orianna [ MID ] Korea Challenger 1867 LP | Patch 26.16",
+          "rankClaim": "Challenger",
+          "patch": "26.16",
+          "durationSec": 1634,
+          "region": "KR",
+          "player": "Faker",
+          "team": "T1",
+          "uploaded": "2026-08-21",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 62,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "MibwXQasVAY",
+          "title": "Cassiopeia Mid vs Wukong - KR Master Patch 25.06",
+          "rankClaim": "Master",
+          "patch": "25.6",
+          "durationSec": 1575,
+          "region": "KR",
+          "uploaded": "2025-03-30",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 67,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "no0OfDJAx5w",
+          "title": "Cassiopeia Top vs Vayne - EUW Challenger Patch 25.24",
+          "rankClaim": "Challenger",
+          "patch": "25.24",
+          "durationSec": 1561,
+          "region": "EUW",
+          "uploaded": "2025-12-30",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 455,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 487,
+              "label": "Hunt The Void Grubs",
+              "kind": "grubs"
+            },
+            {
+              "atSec": 687,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 761,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 782,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 898,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 959,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1116,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1203,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1292,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1317,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1372,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1394,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1404,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1485,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1523,
+              "label": "Take down The Inhibitor"
+            },
+            {
+              "atSec": 1535,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1550,
+              "label": "End credit"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 68,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "b3AmILZfLH8",
+          "title": "(BIG Irrelevant) Cassiopeia Top vs Rumble - EUW Challenger Patch 26.13",
+          "rankClaim": "Challenger",
+          "patch": "26.13",
+          "durationSec": 1625,
+          "region": "EUW",
+          "player": "BIG Irrelevant",
+          "uploaded": "2026-07-04",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 75,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "JFqCpxkFzd0",
+          "title": "Cassiopeia Mid vs Nasus - EUW Grandmaster Patch 26.06",
+          "rankClaim": "Grandmaster",
+          "patch": "26.6",
+          "durationSec": 1558,
+          "region": "EUW",
+          "uploaded": "2026-03-23",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 452,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 585,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 666,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 759,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 844,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 947,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1019,
+              "label": "Hunt The Dragon",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1131,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1155,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1230,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1309,
+              "label": "Hunt The Baron Nashor",
+              "kind": "baron"
+            },
+            {
+              "atSec": 1331,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1347,
+              "label": "Hunt The Dragon",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1473,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1509,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1547,
+              "label": "End credit"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 79,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "7fmdwEarqT8",
+          "title": "Cassiopeia Top vs Gragas - KR Challenger Patch 26.07",
+          "rankClaim": "Challenger",
+          "patch": "26.7",
+          "durationSec": 1865,
+          "region": "KR",
+          "uploaded": "2026-04-14",
+          "moments": []
+        },
+        {
+          "videoId": "MY-6fkaneQM",
+          "title": "Cassiopeia Top vs Gragas - KR Master Patch 25.08",
+          "rankClaim": "Master",
+          "patch": "25.8",
+          "durationSec": 1687,
+          "region": "KR",
+          "uploaded": "2025-04-24",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 80,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "UFefWCMumv8",
+          "title": "Cassiopeia Mid vs Pantheon - KR Challenger Patch 26.08",
+          "rankClaim": "Challenger",
+          "patch": "26.8",
+          "durationSec": 1654,
+          "region": "KR",
+          "uploaded": "2026-04-24",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 81,
+      "lane": "adc",
+      "videos": [
+        {
+          "videoId": "Y3zo2NNmJtc",
+          "title": "T1 Peyz Cassiopeia vs Ezreal [ ADC ] Korea Challenger 2440 LP | Patch 26.16",
+          "rankClaim": "Challenger",
+          "patch": "26.16",
+          "durationSec": 1188,
+          "region": "KR",
+          "player": "Peyz",
+          "team": "T1",
+          "uploaded": "2026-08-15",
+          "moments": []
+        },
+        {
+          "videoId": "IAjjsEZE4Ns",
+          "title": "Cassiopeia vs Ezreal ADC [ Gen.G Ruler ] Korea Challenger 2105 | Patch 26.13",
+          "rankClaim": "Challenger",
+          "patch": "26.13",
+          "durationSec": 1378,
+          "region": "KR",
+          "player": "Ruler",
+          "team": "Gen.G",
+          "uploaded": "2026-07-09",
+          "moments": []
+        },
+        {
+          "videoId": "-bxJu-MTTfQ",
+          "title": "DK Smash Cassiopeia vs Ezreal [ ADC ] Patch 25.24 Korea Challenger 1823 LP",
+          "rankClaim": "Challenger",
+          "patch": "25.24",
+          "durationSec": 1427,
+          "region": "KR",
+          "player": "Smash",
+          "team": "DK",
+          "uploaded": "2025-12-05",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 82,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "sealt8hqlTA",
+          "title": "Cassiopeia Top vs Mordekaiser - EUNE Challenger Patch 26.08",
+          "rankClaim": "Challenger",
+          "patch": "26.8",
+          "durationSec": 1671,
+          "region": "EUNE",
+          "uploaded": "2026-04-29",
+          "moments": []
+        },
+        {
+          "videoId": "YrBTSIGpyEs",
+          "title": "Cassiopeia Top vs Mordekaiser - NA Grandmaster Patch 25.16",
+          "rankClaim": "Grandmaster",
+          "patch": "25.16",
+          "durationSec": 1805,
+          "region": "NA",
+          "uploaded": "2025-08-23",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 83,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "mjStTvg61LI",
+          "title": "Cassiopeia Top vs Yorick - EUW Grandmaster Patch 26.18",
+          "rankClaim": "Grandmaster",
+          "patch": "26.18",
+          "durationSec": 1637,
+          "region": "EUW",
+          "uploaded": "2026-09-21",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 91,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "QLLts2r43bs",
+          "title": "Rank 1 Cassiopeia : CRUSHING Talon on CN SUPER SERVER",
+          "rankClaim": "Master+",
+          "patch": "26.13",
+          "durationSec": 1098,
+          "patchEstimated": true,
+          "player": "Baicaiovo",
+          "uploaded": "2026-06-27",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "_oeo0ZkpmKs",
+          "title": "Challenger Cassiopeia : WRECKING Talon on CN Super Server",
+          "rankClaim": "Challenger",
+          "patch": "26.9",
+          "durationSec": 1163,
+          "patchEstimated": true,
+          "player": "Baicaiovo",
+          "uploaded": "2026-05-10",
+          "format": "stream",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 92,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "5so-9o2j148",
+          "title": "(MISA Kofte) Cassiopeia Mid vs Riven - EUW Challenger Patch 26.13",
+          "rankClaim": "Challenger",
+          "patch": "26.13",
+          "durationSec": 1815,
+          "region": "EUW",
+          "player": "MISA Kofte",
+          "uploaded": "2026-06-30",
+          "result": "L",
+          "moments": [
+            {
+              "atSec": 402,
+              "label": "First Blood — Cassiopeia kills Malphite",
+              "kind": "kill"
+            },
+            {
+              "atSec": 602,
+              "label": "Red takes 1st Dragon (Mountain)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 682,
+              "label": "Cassiopeia kills Aphelios",
+              "kind": "kill"
+            },
+            {
+              "atSec": 807,
+              "label": "Jax takes down Malphite"
+            },
+            {
+              "atSec": 943,
+              "label": "Red takes 2nd Dragon (Chemtech)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1182,
+              "label": "Cassiopeia takes down Varus"
+            },
+            {
+              "atSec": 1253,
+              "label": "Cassiopeia Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1282,
+              "label": "Red takes 3rd Dragon (Infernal)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1404,
+              "label": "Blue takes Baron",
+              "kind": "baron"
+            },
+            {
+              "atSec": 1569,
+              "label": "Cassiopeia picks off Malphite"
+            },
+            {
+              "atSec": 1614,
+              "label": "Red takes 4th Dragon (Infernal)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1755,
+              "label": "Sion Double Kill",
+              "kind": "kill"
+            }
+          ]
+        },
+        {
+          "videoId": "WEk23Y5iaB8",
+          "title": "Challenger Cassiopeia : His Kiting on CN Super Server is INSANE, Riven DEAD",
+          "rankClaim": "Challenger",
+          "patch": "26.12",
+          "durationSec": 1323,
+          "patchEstimated": true,
+          "player": "Baicaiovo",
+          "uploaded": "2026-06-23",
+          "format": "stream",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 96,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "OJuSlPGVyHM",
+          "title": "(HLE Cracker) Cassiopeia Mid vs Kog'Maw (Dooly) - KR Challenger Patch 26.19",
+          "rankClaim": "Challenger",
+          "patch": "26.19",
+          "durationSec": 1617,
+          "region": "KR",
+          "player": "Cracker",
+          "team": "HLE",
+          "uploaded": "2026-10-02",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 101,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "JV0ZBT3oCF8",
+          "title": "Cassiopeia Mid vs Xerath - KR Grandmaster Patch 26.01",
+          "rankClaim": "Grandmaster",
+          "patch": "26.1",
+          "durationSec": 1562,
+          "region": "KR",
+          "uploaded": "2026-01-21",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 238,
+              "label": "Get a Triple Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 269,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 517,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 539,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 552,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 685,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 710,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 903,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1012,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1113,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1215,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1249,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1285,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1376,
+              "label": "Hunt The Dragon",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1489,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1519,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1551,
+              "label": "End credit"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 103,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "ik-No1__KY8",
+          "title": "T1 Faker Cassiopeia vs Ahri [ MID ] Patch 26.10 Korea Challenger 1935 LP",
+          "rankClaim": "Challenger",
+          "patch": "26.10",
+          "durationSec": 994,
+          "region": "KR",
+          "player": "Faker",
+          "team": "T1",
+          "uploaded": "2026-05-19",
+          "moments": []
+        },
+        {
+          "videoId": "pqdur3huLrI",
+          "title": "Cassiopeia Mid vs Ahri - EUW Challenger Patch 25.24",
+          "rankClaim": "Challenger",
+          "patch": "25.24",
+          "durationSec": 1586,
+          "region": "EUW",
+          "uploaded": "2025-12-15",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 228,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 384,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 478,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 558,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 743,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 764,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 831,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 950,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1129,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1264,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1324,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1340,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1418,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1446,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1470,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1522,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1557,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1575,
+              "label": "End credit"
+            }
+          ]
+        },
+        {
+          "videoId": "sNVG0x4MuMg",
+          "title": "Cassiopeia Mid vs Ahri - VN Challenger Patch 25.20",
+          "rankClaim": "Challenger",
+          "patch": "25.20",
+          "durationSec": 1767,
+          "uploaded": "2025-10-19",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 103,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "YXa08qzcQx4",
+          "title": "Rank 1 Cassiopeia : DELETING Ahri on Top 1 CN Super Server",
+          "rankClaim": "Master+",
+          "patch": "26.9",
+          "durationSec": 1777,
+          "patchEstimated": true,
+          "player": "Baicaiovo",
+          "uploaded": "2026-05-10",
+          "format": "stream",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 104,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "cNxg1Ole87o",
+          "title": "Cassiopeia Mid vs Graves - NA Grandmaster Patch 25.12",
+          "rankClaim": "Grandmaster",
+          "patch": "25.12",
+          "durationSec": 1663,
+          "region": "NA",
+          "uploaded": "2025-06-24",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 105,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "O6YEwghA6M4",
+          "title": "Rank 1 Cassiopeia : He TEARS APART Fizz on CN Super Server",
+          "rankClaim": "Master+",
+          "patch": "26.12",
+          "durationSec": 1489,
+          "patchEstimated": true,
+          "player": "Baicaiovo",
+          "uploaded": "2026-06-11",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "0cIIToB3OQA",
+          "title": "Rank 1 Cassiopeia: DELETING Fizz in CN Super Server - Engsub",
+          "rankClaim": "Master+",
+          "patch": "26.11",
+          "durationSec": 2194,
+          "patchEstimated": true,
+          "player": "Baicaiovo",
+          "uploaded": "2026-06-01",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "CDbzTuIav3U",
+          "title": "T1 Faker Cassiopeia vs Fizz [ MID ] Korea Challenger 1932 LP | Patch 26.10",
+          "rankClaim": "Challenger",
+          "patch": "26.10",
+          "durationSec": 2226,
+          "region": "KR",
+          "player": "Faker",
+          "team": "T1",
+          "uploaded": "2026-05-23",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 106,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "CZ3cjl-JWKU",
+          "title": "Cassiopeia Top vs Volibear - KR Master Patch 25.14",
+          "rankClaim": "Master",
+          "patch": "25.14",
+          "durationSec": 1639,
+          "region": "KR",
+          "uploaded": "2025-07-23",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 107,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "1kNzdltIM2Q",
+          "title": "Cassiopeia Top vs Rengar - KR Master Patch 25.13",
+          "rankClaim": "Master",
+          "patch": "25.13",
+          "durationSec": 1656,
+          "region": "KR",
+          "uploaded": "2025-07-01",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 110,
+      "lane": "adc",
+      "videos": [
+        {
+          "videoId": "110mNorM48c",
+          "title": "T1 Peyz Cassiopeia vs Varus [ ADC ] Korea Challenger 2455 LP | Patch 26.9",
+          "rankClaim": "Challenger",
+          "patch": "26.9",
+          "durationSec": 760,
+          "region": "KR",
+          "player": "Peyz",
+          "team": "T1",
+          "uploaded": "2026-05-03",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 112,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "ssOLdmkhUxQ",
+          "title": "Cassiopeia Mid vs Viktor - KR Challenger Patch 25.13",
+          "rankClaim": "Challenger",
+          "patch": "25.13",
+          "durationSec": 1591,
+          "region": "KR",
+          "uploaded": "2025-07-08",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 112,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "OrpJ8pCa75U",
+          "title": "(BAR Macaquinho) Cassiopeia Top vs Viktor - EUW Challenger Patch 26.19",
+          "rankClaim": "Challenger",
+          "patch": "26.19",
+          "durationSec": 1815,
+          "region": "EUW",
+          "player": "BAR Macaquinho",
+          "uploaded": "2026-10-04",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 117,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "TVKek_8rodU",
+          "title": "Cassiopeia Top vs Lulu - KR Grandmaster Patch 25.11",
+          "rankClaim": "Grandmaster",
+          "patch": "25.11",
+          "durationSec": 1531,
+          "region": "KR",
+          "uploaded": "2025-06-04",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 122,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "9sDJ2uwaNNg",
+          "title": "(KC Busio) Cassiopeia Top vs Darius - EUW Grandmaster Patch 26.15",
+          "rankClaim": "Grandmaster",
+          "patch": "26.15",
+          "durationSec": 1597,
+          "region": "EUW",
+          "player": "Busio",
+          "team": "KC",
+          "uploaded": "2026-08-07",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 126,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "KoLSFj6seWU",
+          "title": "Cassiopeia Mid vs Jayce - KR Grandmaster Patch 26.20",
+          "rankClaim": "Grandmaster",
+          "patch": "26.20",
+          "durationSec": 1734,
+          "region": "KR",
+          "uploaded": "2026-10-16",
+          "result": "W",
+          "moments": [
+            {
+              "atSec": 465,
+              "label": "Red takes 1st Dragon (Cloud)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 500,
+              "label": "First Blood — Cassiopeia kills Jayce",
+              "kind": "kill"
+            },
+            {
+              "atSec": 796,
+              "label": "Locke eliminates Nilah"
+            },
+            {
+              "atSec": 805,
+              "label": "Red takes 2nd Dragon (Ocean)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 901,
+              "label": "Locke Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1062,
+              "label": "Locke eliminates Nilah"
+            },
+            {
+              "atSec": 1133,
+              "label": "Blue takes 1st Dragon (Infernal)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1182,
+              "label": "Locke Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1219,
+              "label": "Cassiopeia takes down Karthus"
+            },
+            {
+              "atSec": 1232,
+              "label": "Blue takes Baron",
+              "kind": "baron"
+            },
+            {
+              "atSec": 1257,
+              "label": "Locke eliminates Nilah"
+            },
+            {
+              "atSec": 1313,
+              "label": "Locke eliminates Nilah"
+            },
+            {
+              "atSec": 1440,
+              "label": "Cassiopeia Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1468,
+              "label": "Cassiopeia outplays Karthus"
+            },
+            {
+              "atSec": 1497,
+              "label": "Blue takes 2nd Dragon (Infernal)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1644,
+              "label": "Team fight (3 kills)",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1664,
+              "label": "Yasuo Triple Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1678,
+              "label": "Mid Inhibitor falls (Red)"
+            }
+          ]
+        },
+        {
+          "videoId": "mnRGa1qkln8",
+          "title": "(FNC Vladi) Cassiopeia Mid vs Jayce (Mentos) - EUW Challenger Patch 26.14",
+          "rankClaim": "Challenger",
+          "patch": "26.14",
+          "durationSec": 1728,
+          "region": "EUW",
+          "player": "Vladi",
+          "team": "FNC",
+          "uploaded": "2026-07-26",
+          "result": "W",
+          "moments": [
+            {
+              "atSec": 166,
+              "label": "First Blood — Jarvan IV kills Jayce",
+              "kind": "kill"
+            },
+            {
+              "atSec": 365,
+              "label": "Red takes 1st Dragon (Ocean)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 601,
+              "label": "Cassiopeia eliminates Jayce"
+            },
+            {
+              "atSec": 643,
+              "label": "Cassiopeia takes down Sylas"
+            },
+            {
+              "atSec": 704,
+              "label": "Red takes 2nd Dragon (Mountain)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 720,
+              "label": "Cassiopeia takes down Sylas"
+            },
+            {
+              "atSec": 781,
+              "label": "Cassiopeia takes down Mordekaiser"
+            },
+            {
+              "atSec": 918,
+              "label": "Cassiopeia Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 983,
+              "label": "Team fight (4 kills)",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1029,
+              "label": "Blue takes 1st Dragon (Cloud)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1068,
+              "label": "Cassiopeia takes down Sylas"
+            },
+            {
+              "atSec": 1150,
+              "label": "Ziggs Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1199,
+              "label": "Blue takes Baron",
+              "kind": "baron"
+            },
+            {
+              "atSec": 1360,
+              "label": "Red takes 3rd Dragon (Cloud)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1427,
+              "label": "Cassiopeia takes down Mordekaiser"
+            },
+            {
+              "atSec": 1592,
+              "label": "Blue takes 2nd Baron",
+              "kind": "baron"
+            },
+            {
+              "atSec": 1635,
+              "label": "Cassiopeia picks off Pantheon"
+            },
+            {
+              "atSec": 1667,
+              "label": "Mid Inhibitor falls (Red)"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 127,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "JDidtkOnQ-A",
+          "title": "T1 Faker Cassiopeia vs Lissandra [ MID ] Korea Grandmaster 1828 LP | Patch 26.16",
+          "rankClaim": "Grandmaster",
+          "patch": "26.16",
+          "durationSec": 1146,
+          "region": "KR",
+          "player": "Faker",
+          "team": "T1",
+          "uploaded": "2026-08-19",
+          "moments": []
+        },
+        {
+          "videoId": "spsmwOFTsLg",
+          "title": "Challenger Cassiopeia : TEARING Apart Lissandra at CN Super Server - Engsub",
+          "rankClaim": "Challenger",
+          "patch": "26.13",
+          "durationSec": 1924,
+          "patchEstimated": true,
+          "player": "Baicaiovo",
+          "uploaded": "2026-06-29",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "sK26LxwAK60",
+          "title": "Challenger Cassiopeia : His ONE SHOT DELETED Lissandra on CN Super Server",
+          "rankClaim": "Challenger",
+          "patch": "26.11",
+          "durationSec": 1718,
+          "patchEstimated": true,
+          "player": "Baicaiovo",
+          "uploaded": "2026-05-31",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "8EiceONV1Fc",
+          "title": "Cassiopeia vs Lissandra 25/1/8 (Mid) | EUW Master | Cassiopeia OTP Replay",
+          "rankClaim": "Master",
+          "patch": "26.9",
+          "durationSec": 1334,
+          "region": "EUW",
+          "patchEstimated": true,
+          "uploaded": "2026-05-11",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 134,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "bW2Zptsa0lE",
+          "title": "(BRO Teddy) Cassiopeia Mid vs Syndra - KR Grandmaster Patch 26.15",
+          "rankClaim": "Grandmaster",
+          "patch": "26.15",
+          "durationSec": 1468,
+          "region": "KR",
+          "player": "Teddy",
+          "team": "BRO",
+          "uploaded": "2026-08-01",
+          "moments": []
+        },
+        {
+          "videoId": "WG2hRb-1rmI",
+          "title": "Cassiopeia Mid vs Syndra - EUW Grandmaster Patch 25.18",
+          "rankClaim": "Grandmaster",
+          "patch": "25.18",
+          "durationSec": 1525,
+          "region": "EUW",
+          "uploaded": "2025-09-22",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 134,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "wYgHbVjGh3g",
+          "title": "Cassiopeia Top vs Syndra - EUW Grandmaster Patch 26.03",
+          "rankClaim": "Grandmaster",
+          "patch": "26.3",
+          "durationSec": 1826,
+          "region": "EUW",
+          "uploaded": "2026-02-17",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 142,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "fSMhcZNp-bY",
+          "title": "(IG Rookie) Cassiopeia Mid vs Zoe - KR Grandmaster Patch 26.16",
+          "rankClaim": "Grandmaster",
+          "patch": "26.16",
+          "durationSec": 1720,
+          "region": "KR",
+          "player": "Rookie",
+          "team": "IG",
+          "uploaded": "2026-08-15",
+          "result": "L",
+          "moments": [
+            {
+              "atSec": 129,
+              "label": "First Blood — Cassiopeia kills Zoe",
+              "kind": "kill"
+            },
+            {
+              "atSec": 503,
+              "label": "Cassiopeia solo kills Qiyana",
+              "kind": "kill"
+            },
+            {
+              "atSec": 633,
+              "label": "Cassiopeia takes down Zoe"
+            },
+            {
+              "atSec": 674,
+              "label": "Blitzcrank eliminates Pantheon"
+            },
+            {
+              "atSec": 829,
+              "label": "Lee Sin kills Pantheon",
+              "kind": "kill"
+            },
+            {
+              "atSec": 857,
+              "label": "Red takes 1st Dragon (Chemtech)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 967,
+              "label": "Team fight (3 kills)",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1038,
+              "label": "Cassiopeia picks off Qiyana"
+            },
+            {
+              "atSec": 1088,
+              "label": "Cassiopeia catches Zoe again"
+            },
+            {
+              "atSec": 1155,
+              "label": "Cassiopeia outduels Pantheon"
+            },
+            {
+              "atSec": 1166,
+              "label": "Cassiopeia catches Ambessa"
+            },
+            {
+              "atSec": 1228,
+              "label": "Red takes 2nd Dragon (Hextech)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1332,
+              "label": "Yunara picks off Pantheon"
+            },
+            {
+              "atSec": 1373,
+              "label": "Cassiopeia eliminates Zoe"
+            },
+            {
+              "atSec": 1535,
+              "label": "Blue takes Baron",
+              "kind": "baron"
+            },
+            {
+              "atSec": 1595,
+              "label": "Red takes 3rd Dragon (Mountain)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1625,
+              "label": "Yunara Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1661,
+              "label": "Mid Inhibitor falls (Blue)"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 145,
+      "lane": "adc",
+      "videos": [
+        {
+          "videoId": "XfWJ_0bk9M0",
+          "title": "T1 Peyz Cassiopeia vs Kai'Sa [ ADC ] Korea Challenger 2429 LP | Patch 26.14",
+          "rankClaim": "Challenger",
+          "patch": "26.14",
+          "durationSec": 1300,
+          "region": "KR",
+          "player": "Peyz",
+          "team": "T1",
+          "uploaded": "2026-07-27",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 157,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "GKG1mNLa1JE",
+          "title": "Cassiopeia vs Yasuo Mid - KR Challenger - Patch 25.24 Season 15",
+          "rankClaim": "Challenger",
+          "patch": "25.24",
+          "durationSec": 1841,
+          "region": "KR",
+          "uploaded": "2025-12-05",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 163,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "cywqUR2RcmA",
+          "title": "Cassiopeia Mid vs Taliyah (ES Fantomisto) - EUW Challenger Patch 26.17",
+          "rankClaim": "Challenger",
+          "patch": "26.17",
+          "durationSec": 1693,
+          "region": "EUW",
+          "uploaded": "2026-09-04",
+          "moments": []
+        },
+        {
+          "videoId": "jIQEHt9ntQo",
+          "title": "Cassiopeia Mid vs Taliyah - KR Challenger Patch 26.05",
+          "rankClaim": "Challenger",
+          "patch": "26.5",
+          "durationSec": 1466,
+          "region": "KR",
+          "uploaded": "2026-03-11",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 164,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "ka-jIjWh_cc",
+          "title": "Cassiopeia Top vs Camille - KR Master Patch 25.21",
+          "rankClaim": "Master",
+          "patch": "25.21",
+          "durationSec": 1758,
+          "region": "KR",
+          "uploaded": "2025-10-28",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 166,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "b08QTcvicbY",
+          "title": "Rank 1 Cassiopeia: This Guy is WRECKING Akshan - Engsub",
+          "rankClaim": "Master+",
+          "patch": "26.13",
+          "durationSec": 1447,
+          "patchEstimated": true,
+          "player": "Baicaiovo",
+          "uploaded": "2026-07-08",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "rQQFMSbJeHE",
+          "title": "(FNC Vladi) Cassiopeia Mid vs Akshan - EUW Challenger Patch 26.12",
+          "rankClaim": "Challenger",
+          "patch": "26.12",
+          "durationSec": 1473,
+          "region": "EUW",
+          "player": "Vladi",
+          "team": "FNC",
+          "uploaded": "2026-06-13",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 166,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "nRRh0Kq3b6Y",
+          "title": "Cassiopeia Top vs Akshan - KR Challenger Patch 26.09",
+          "rankClaim": "Challenger",
+          "patch": "26.9",
+          "durationSec": 1736,
+          "region": "KR",
+          "uploaded": "2026-05-12",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 202,
+      "lane": "adc",
+      "videos": [
+        {
+          "videoId": "cODFzViA_Qc",
+          "title": "T1 Peyz Cassiopeia vs Jhin [ ADC ] Korea Challenger 2474 LP | Patch 26.9",
+          "rankClaim": "Challenger",
+          "patch": "26.9",
+          "durationSec": 1551,
+          "region": "KR",
+          "player": "Peyz",
+          "team": "T1",
+          "uploaded": "2026-05-08",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 202,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "2KQBvEG_Vyo",
+          "title": "Rank 1 Cassiopeia : This Dude is WRECKING Jhin in CN Super Server - Engsub",
+          "rankClaim": "Master+",
+          "patch": "26.11",
+          "durationSec": 1229,
+          "patchEstimated": true,
+          "player": "Baicaiovo",
+          "uploaded": "2026-06-05",
+          "format": "stream",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 202,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "YKfh8DK2FgA",
+          "title": "Cassiopeia Top vs Jhin - KR Master Patch 26.17",
+          "rankClaim": "Master",
+          "patch": "26.17",
+          "durationSec": 1582,
+          "region": "KR",
+          "uploaded": "2026-09-06",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 236,
+      "lane": "adc",
+      "videos": [
+        {
+          "videoId": "BfqXdl9E13U",
+          "title": "Cassiopeia vs Lucian ADC - KR Challenger - Patch 25.7 Season 15",
+          "rankClaim": "Challenger",
+          "patch": "25.7",
+          "durationSec": 1841,
+          "region": "KR",
+          "uploaded": "2025-04-15",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 238,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "r9fydLt9cO4",
+          "title": "Rank 1 Cassiopeia: VS Zed in CN SUPER Server - Engsub",
+          "rankClaim": "Master+",
+          "patch": "26.12",
+          "durationSec": 1350,
+          "patchEstimated": true,
+          "player": "Baicaiovo",
+          "uploaded": "2026-06-13",
+          "format": "stream",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 245,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "hUdXjpD0dRU",
+          "title": "T1 Faker Cassiopeia vs Ekko [ MID ] Korea Challenger 2054 LP | Patch 26.19",
+          "rankClaim": "Challenger",
+          "patch": "26.19",
+          "durationSec": 1209,
+          "region": "KR",
+          "player": "Faker",
+          "team": "T1",
+          "uploaded": "2026-10-02",
+          "moments": []
+        },
+        {
+          "videoId": "VoZP1GVKf0w",
+          "title": "Rank 1 Cassiopeia : This Dude is CRUSHING Super Server Ekko",
+          "rankClaim": "Master+",
+          "patch": "26.12",
+          "durationSec": 1397,
+          "patchEstimated": true,
+          "player": "Baicaiovo",
+          "uploaded": "2026-06-23",
+          "format": "stream",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 245,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "vn8XIdR2J4I",
+          "title": "(G2 Caps) Cassiopeia Top vs Ekko - EUW Grandmaster Patch 26.11",
+          "rankClaim": "Grandmaster",
+          "patch": "26.11",
+          "durationSec": 1671,
+          "region": "EUW",
+          "player": "Caps",
+          "team": "G2",
+          "uploaded": "2026-06-06",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 246,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "FcRi5m_eXng",
+          "title": "Rank 1 Cassiopeia: When THIS GUY Meets Qiyana in CN Super Server CHALLENGER Mid",
+          "rankClaim": "Challenger",
+          "patch": "26.13",
+          "durationSec": 1493,
+          "patchEstimated": true,
+          "player": "Baicaiovo",
+          "uploaded": "2026-06-28",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "8Bj4Eh0Fazs",
+          "title": "T1 Faker Cassiopeia vs Qiyana [ MID ] Patch 25.18 Korea Grandmaster",
+          "rankClaim": "Grandmaster",
+          "patch": "25.18",
+          "durationSec": 1414,
+          "region": "KR",
+          "player": "Faker",
+          "team": "T1",
+          "uploaded": "2025-09-11",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 266,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "ueDSWq46RTU",
+          "title": "Cassiopeia Top vs Aatrox - KR Master Patch 25.22",
+          "rankClaim": "Master",
+          "patch": "25.22",
+          "durationSec": 1659,
+          "region": "KR",
+          "uploaded": "2025-11-11",
+          "moments": []
+        },
+        {
+          "videoId": "I2jps28EOaI",
+          "title": "Cassiopeia Top vs Aatrox - KR Grandmaster Patch 25.05",
+          "rankClaim": "Grandmaster",
+          "patch": "25.5",
+          "durationSec": 1715,
+          "region": "KR",
+          "uploaded": "2025-03-12",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 420,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "Nc-j6kTusR8",
+          "title": "Cassiopeia Top vs Illaoi - EUW Master Patch 26.01",
+          "rankClaim": "Master",
+          "patch": "26.1",
+          "durationSec": 1601,
+          "region": "EUW",
+          "uploaded": "2026-01-12",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 56,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 164,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 187,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 275,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 430,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 493,
+              "label": "Hunt The Void Grubs",
+              "kind": "grubs"
+            },
+            {
+              "atSec": 598,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 627,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 742,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 771,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 865,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 933,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1081,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1105,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1156,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1172,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1341,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1446,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1495,
+              "label": "Take down The Inhibitor"
+            },
+            {
+              "atSec": 1518,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1544,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1554,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1569,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1590,
+              "label": "End credit"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 516,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "Hv1rSnCdmvw",
+          "title": "(Pun1sher) Cassiopeia Top vs Ornn (Nilsog) - EUW Grandmaster Patch 26.20",
+          "rankClaim": "Grandmaster",
+          "patch": "26.20",
+          "durationSec": 1873,
+          "region": "EUW",
+          "player": "Pun1sher",
+          "uploaded": "2026-10-17",
+          "result": "W",
+          "moments": [
+            {
+              "atSec": 350,
+              "label": "Red takes 1st Dragon (Chemtech)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 372,
+              "label": "First Blood — Cassiopeia kills Ornn",
+              "kind": "kill"
+            },
+            {
+              "atSec": 675,
+              "label": "Red takes 2nd Dragon (Infernal)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 993,
+              "label": "Blue takes 1st Dragon (Hextech)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1188,
+              "label": "Blue takes Baron",
+              "kind": "baron"
+            },
+            {
+              "atSec": 1233,
+              "label": "Cassiopeia solo kills Tristana",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1385,
+              "label": "Blue takes 2nd Dragon (Hextech)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1431,
+              "label": "Mid Inhibitor falls (Red)"
+            },
+            {
+              "atSec": 1450,
+              "label": "Bot Inhibitor falls (Red)"
+            },
+            {
+              "atSec": 1485,
+              "label": "Cassiopeia takes down Tristana again"
+            },
+            {
+              "atSec": 1528,
+              "label": "Orianna eliminates LeBlanc"
+            },
+            {
+              "atSec": 1633,
+              "label": "Blue takes 2nd Baron",
+              "kind": "baron"
+            },
+            {
+              "atSec": 1638,
+              "label": "Wukong kills Neeko",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1667,
+              "label": "Cassiopeia eliminates Ornn"
+            },
+            {
+              "atSec": 1740,
+              "label": "Blue takes 3rd Dragon (Hextech)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1814,
+              "label": "Team fight (3 kills)",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1858,
+              "label": "Mid Inhibitor falls (Red)"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 517,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "RhRRul_Zbtg",
+          "title": "(BRO Pungyeon) Cassiopeia Mid vs Sylas - KR Challenger Patch 26.16",
+          "rankClaim": "Challenger",
+          "patch": "26.16",
+          "durationSec": 1550,
+          "region": "KR",
+          "player": "Pungyeon",
+          "team": "BRO",
+          "uploaded": "2026-08-26",
+          "moments": []
+        },
+        {
+          "videoId": "h9kphXrM6t0",
+          "title": "T1 Faker Cassiopeia vs Sylas [ MID ] Korea Grandmaster 1697 LP | Patch 26.13",
+          "rankClaim": "Grandmaster",
+          "patch": "26.13",
+          "durationSec": 1395,
+          "region": "KR",
+          "player": "Faker",
+          "team": "T1",
+          "uploaded": "2026-07-12",
+          "moments": []
+        },
+        {
+          "videoId": "D0TC_l8Qo7g",
+          "title": "Cassiopeia Mid vs Sylas - EUW Grandmaster Patch 25.23",
+          "rankClaim": "Grandmaster",
+          "patch": "25.23",
+          "durationSec": 1682,
+          "region": "EUW",
+          "uploaded": "2025-12-02",
+          "moments": []
+        },
+        {
+          "videoId": "642U5nooGRQ",
+          "title": "Cassiopeia Mid vs Sylas - EUW Challenger Patch 25.11",
+          "rankClaim": "Challenger",
+          "patch": "25.11",
+          "durationSec": 1456,
+          "region": "EUW",
+          "uploaded": "2025-06-09",
+          "moments": []
+        },
+        {
+          "videoId": "GJMDZyz4-84",
+          "title": "Cassiopeia Mid vs Sylas - NA Challenger Patch 25.09",
+          "rankClaim": "Challenger",
+          "patch": "25.9",
+          "durationSec": 1510,
+          "region": "NA",
+          "uploaded": "2025-05-13",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 303,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 393,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 537,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 731,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 759,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 856,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 910,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1064,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1095,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1180,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1339,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1376,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1401,
+              "label": "Take down The Inhibitor"
+            },
+            {
+              "atSec": 1423,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1465,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1489,
+              "label": "End credit"
+            }
+          ]
+        },
+        {
+          "videoId": "A39kLPHxZ9Y",
+          "title": "Cassiopeia Mid vs Sylas - NA Grandmaster Patch 25.08",
+          "rankClaim": "Grandmaster",
+          "patch": "25.8",
+          "durationSec": 1615,
+          "region": "NA",
+          "uploaded": "2025-04-27",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 269,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 377,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 489,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 546,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 671,
+              "label": "Hunt The Void Grubs",
+              "kind": "grubs"
+            },
+            {
+              "atSec": 885,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1006,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1142,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1167,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1230,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1364,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1446,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1475,
+              "label": "Hunt The Dragon",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1495,
+              "label": "Hunt The Baron Nashor",
+              "kind": "baron"
+            },
+            {
+              "atSec": 1544,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1570,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1594,
+              "label": "End credit"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 711,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "uFfWl45GeHA",
+          "title": "Baicaiovo Challenger Cassiopeia : WRECKING CN Super Server Through Challenger Vex - Engsub",
+          "rankClaim": "Challenger",
+          "patch": "26.12",
+          "durationSec": 1296,
+          "patchEstimated": true,
+          "player": "Baicaiovo",
+          "uploaded": "2026-06-17",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "CAHHk4Z1Y9o",
+          "title": "Rank 1 Cassiopeia : ABSOLUTELY DELETING Vex on CN Super Server",
+          "rankClaim": "Master+",
+          "patch": "26.9",
+          "durationSec": 907,
+          "patchEstimated": true,
+          "player": "Baicaiovo",
+          "uploaded": "2026-05-09",
+          "format": "stream",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 777,
+      "lane": "adc",
+      "videos": [
+        {
+          "videoId": "assVFfdnT7Q",
+          "title": "T1 Peyz Cassiopeia vs Yone [ ADC ] Korea Challenger 2489 LP | Patch 26.14",
+          "rankClaim": "Challenger",
+          "patch": "26.14",
+          "durationSec": 1383,
+          "region": "KR",
+          "player": "Peyz",
+          "team": "T1",
+          "uploaded": "2026-07-28",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 777,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "KvgrhwBXyBo",
+          "title": "T1 Faker Cassiopeia vs Yone [ MID ] Korea Grandmaster 1639 LP | Patch 26.13",
+          "rankClaim": "Grandmaster",
+          "patch": "26.13",
+          "durationSec": 1368,
+          "region": "KR",
+          "player": "Faker",
+          "team": "T1",
+          "uploaded": "2026-06-28",
+          "moments": []
+        },
+        {
+          "videoId": "3FKDGedZJN4",
+          "title": "Rank 1 Cassiopeia : This Dude is CRUSHING CN Super Server Yone",
+          "rankClaim": "Master+",
+          "patch": "26.11",
+          "durationSec": 1257,
+          "patchEstimated": true,
+          "player": "Baicaiovo",
+          "uploaded": "2026-06-03",
+          "format": "stream",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 777,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "T43AMg2TO88",
+          "title": "Cassiopeia Top vs Yone - KR Master Patch 26.10",
+          "rankClaim": "Master",
+          "patch": "26.10",
+          "durationSec": 1515,
+          "region": "KR",
+          "uploaded": "2026-05-20",
+          "moments": []
+        },
+        {
+          "videoId": "WW9ZG-idATw",
+          "title": "Cassiopeia Top vs Yone - KR Master Patch 25.12",
+          "rankClaim": "Master",
+          "patch": "25.12",
+          "durationSec": 1677,
+          "region": "KR",
+          "uploaded": "2025-06-18",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 799,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "10PHJn0eGp0",
+          "title": "Cassiopeia Top vs Ambessa - KR Master Patch 25.10",
+          "rankClaim": "Master",
+          "patch": "25.10",
+          "durationSec": 1589,
+          "region": "KR",
+          "uploaded": "2025-05-23",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 178,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 272,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 582,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 781,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 895,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1015,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1030,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1047,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1135,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1229,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1253,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1273,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1339,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1405,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1430,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1443,
+              "label": "Take down The Inhibitor"
+            },
+            {
+              "atSec": 1568,
+              "label": "End credit"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 800,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "Mpiek6Z4CVQ",
+          "title": "Rank 1 Cassiopeia : This CN Super Server Legend is CRUSHING Mel with INSANE Kiting - Engsub",
+          "rankClaim": "Master+",
+          "patch": "26.6",
+          "durationSec": 1935,
+          "patchEstimated": true,
+          "player": "Baicaiovo",
+          "uploaded": "2026-03-31",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "3JyaZrOlzvI",
+          "title": "Cassiopeia Mid vs Mel - KR Master Patch 25.24",
+          "rankClaim": "Master",
+          "patch": "25.24",
+          "durationSec": 1597,
+          "region": "KR",
+          "uploaded": "2026-01-04",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 804,
+      "lane": "adc",
+      "videos": [
+        {
+          "videoId": "GNIi4Su0p8Q",
+          "title": "T1 Peyz Cassiopeia vs Yunara [ ADC ] Korea Challenger 2487 LP | Patch 26.17",
+          "rankClaim": "Challenger",
+          "patch": "26.17",
+          "durationSec": 746,
+          "region": "KR",
+          "player": "Peyz",
+          "team": "T1",
+          "uploaded": "2026-09-03",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 893,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "DH3xtIGoA9Y",
+          "title": "Challenger Cassiopeia: His WRECKING MIDLANE ONE COMBO ON AURORA - Super Server Engsub",
+          "rankClaim": "Challenger",
+          "patch": "26.13",
+          "durationSec": 1403,
+          "patchEstimated": true,
+          "player": "Baicaiovo",
+          "uploaded": "2026-07-07",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "hdk8CaGIlq4",
+          "title": "Cassiopeia Mid vs Aurora - KR Master Patch 26.04",
+          "rankClaim": "Master",
+          "patch": "26.4",
+          "durationSec": 1731,
+          "region": "KR",
+          "uploaded": "2026-02-24",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 161,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 192,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 431,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 481,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 686,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 791,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 843,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 875,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1003,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1157,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1210,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1307,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1425,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1447,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1526,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1542,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1554,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1580,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1661,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1694,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1720,
+              "label": "End credit"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 897,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "VGXeuRBpmT0",
+          "title": "Cassiopeia Top vs K'Sante - KR Grandmaster Patch 25.24",
+          "rankClaim": "Grandmaster",
+          "patch": "25.24",
+          "durationSec": 1529,
+          "region": "KR",
+          "uploaded": "2025-12-09",
+          "moments": []
+        }
+      ]
+    }
+  ]
+}

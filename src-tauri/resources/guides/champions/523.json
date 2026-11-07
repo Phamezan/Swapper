@@ -1,0 +1,5331 @@
+{
+  "schema": 1,
+  "champion": 523,
+  "generatedAt": "2026-11-07T13:25:14.592Z",
+  "guides": [],
+  "general": [
+    {
+      "champion": 523,
+      "lane": "adc",
+      "patch": "26.21",
+      "reviewed": false,
+      "keyTips": [
+        {
+          "text": "Default to caution in bot lane and scale aggression to the matchup instead of forcing every trade.",
+          "scope": "champion",
+          "sourceIds": [
+            "wargreymon"
+          ]
+        },
+        {
+          "text": "Treat the two to three item stretch as the weakest stage; keep farming and skip uncertain fights.",
+          "scope": "champion",
+          "sourceIds": [
+            "wargreymon"
+          ]
+        },
+        {
+          "text": "Play for the four-item spike, when teamfight damage jumps sharply.",
+          "scope": "champion",
+          "sourceIds": [
+            "wargreymon"
+          ]
+        }
+      ],
+      "sections": {
+        "overview": {
+          "tips": []
+        },
+        "early-lane": {
+          "tips": [
+            {
+              "text": "Hold Gravitum ready when support or jungle follow-up is near, since its slow and root set up picks and ganks.",
+              "scope": "champion",
+              "sourceIds": [
+                "wargreymon"
+              ]
+            },
+            {
+              "text": "Open Calibrum and Severum, then spend Severum first to reach the Calibrum and Gravitum pairing sooner.",
+              "scope": "champion",
+              "sourceIds": [
+                "wargreymon"
+              ]
+            },
+            {
+              "text": "Use Severum Q for a short all-in that stacks Press the Attack fast, or for movement speed while leaving.",
+              "scope": "champion",
+              "sourceIds": [
+                "wargreymon"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 523,
+                  "key": "Q"
+                }
+              ]
+            },
+            {
+              "text": "Mark at long range with Calibrum Q, then extend the catch with a Gravitum attack and root for allied engage.",
+              "scope": "champion",
+              "sourceIds": [
+                "wargreymon"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 523,
+                  "key": "Q"
+                }
+              ]
+            },
+            {
+              "text": "Near level 6, preserve a useful pair like Calibrum and Crescendum or Severum and Crescendum for an all-in or dragon fight.",
+              "scope": "champion",
+              "sourceIds": [
+                "wargreymon"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 523,
+                  "key": "R"
+                }
+              ]
+            },
+            {
+              "text": "Plan the next gun pair before emptying one: each gun holds 50 ammo, Q spends 10, and each basic attack spends 1.",
+              "scope": "champion",
+              "sourceIds": [
+                "wargreymon"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 523,
+                  "key": "Q"
+                }
+              ]
+            }
+          ]
+        },
+        "mid-lane": {
+          "tips": [
+            {
+              "text": "Skip doubtful fights through the low-pressure item window unless numbers or setup clearly favor the team.",
+              "scope": "champion",
+              "sourceIds": [
+                "wargreymon"
+              ]
+            },
+            {
+              "text": "Keep collecting farm and avoid deaths so the build still reaches its later spike.",
+              "scope": "champion",
+              "sourceIds": [
+                "wargreymon"
+              ]
+            },
+            {
+              "text": "Around objectives past level 6, pick gun pairs for the coming fight instead of following the rotation blindly.",
+              "scope": "champion",
+              "sourceIds": [
+                "wargreymon"
+              ]
+            }
+          ]
+        },
+        "win-condition": {
+          "tips": [
+            {
+              "text": "Prioritize guns late as Infernum, Severum, Crescendum, Calibrum, then Gravitum, bending to matchup and utility needs.",
+              "scope": "champion",
+              "sourceIds": [
+                "wargreymon"
+              ]
+            },
+            {
+              "text": "Spread Infernum area damage into groups, especially with Infernum and Gravitum sharing slow and root setup across targets.",
+              "scope": "champion",
+              "sourceIds": [
+                "wargreymon"
+              ]
+            },
+            {
+              "text": "Match Moonlight Vigil to the fight: Calibrum marks, Severum heals, Gravitum slows, Infernum adds area damage, Crescendum grants extra Chakrams.",
+              "scope": "champion",
+              "sourceIds": [
+                "wargreymon"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 523,
+                  "key": "R"
+                }
+              ]
+            },
+            {
+              "text": "Hold a safe firing spot with no mobility to spare, and refuse low-value mid-game fights.",
+              "scope": "champion",
+              "sourceIds": [
+                "wargreymon"
+              ]
+            },
+            {
+              "text": "Enter fights with useful weapon effects ready, since disciplined cycling drives late damage and control.",
+              "scope": "champion",
+              "sourceIds": [
+                "wargreymon"
+              ]
+            }
+          ]
+        }
+      },
+      "itemization": [
+        {
+          "text": "Run Press the Attack with Triumph, Legend: Bloodline, and Cut Down, plus Cash Back and Triple Tonic, fitting the short-trade pattern.",
+          "scope": "champion",
+          "sourceIds": [
+            "wargreymon"
+          ]
+        },
+        {
+          "text": "Build The Collector into Berserker's Greaves, Infinity Edge, Lord Dominik's Regards, Runaan's Hurricane, and Bloodthirster, with Guardian Angel in the core list.",
+          "scope": "champion",
+          "sourceIds": [
+            "wargreymon"
+          ],
+          "itemIds": [
+            6676,
+            3006,
+            3031,
+            3036,
+            3085,
+            3072,
+            3026
+          ]
+        },
+        {
+          "text": "Choose first buys by gold and recall timing among Serrated Dirk, Noonquiver, B. F. Sword, and Berserker's Greaves.",
+          "scope": "champion",
+          "sourceIds": [
+            "wargreymon"
+          ],
+          "itemIds": [
+            3134,
+            6670,
+            1038,
+            3006
+          ]
+        },
+        {
+          "text": "Keep situational picks ready: Mortal Reminder, Stormrazor, Immortal Shieldbow, Maw of Malmortius, Mercurial Scimitar, Hexoptics C44, Rapid Firecannon, Phantom Dancer, and Zhonya's Hourglass.",
+          "scope": "champion",
+          "sourceIds": [
+            "wargreymon"
+          ],
+          "itemIds": [
+            3033,
+            3095,
+            6673,
+            3156,
+            3139,
+            2523,
+            3094,
+            3046,
+            3157
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "id": "wargreymon",
+          "author": "War Greymon",
+          "rankClaim": "Master tier ADC (self-described; no badge)",
+          "rank": "master",
+          "url": "https://www.mobafire.com/league-of-legends/build/aphelios-general-guide-by-war-greymon-653897",
+          "kind": "mobafire"
+        }
+      ]
+    }
+  ],
+  "vods": [
+    {
+      "lane": "adc",
+      "videos": [
+        {
+          "videoId": "zfNNwSjrrOo",
+          "title": "\"Jz\" 2000LP ADC : Stormrazor Aphelios is STORMING Super Server HighElo - Engsub",
+          "rankClaim": "Master+",
+          "patch": "26.21",
+          "durationSec": 1106,
+          "patchEstimated": true,
+          "player": "Jz",
+          "uploaded": "2026-10-27",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "74QMaqEVJtI",
+          "title": "PEYZ : His Aphelios is TAKING OVER NA Server",
+          "rankClaim": "Master+",
+          "patch": "26.21",
+          "durationSec": 857,
+          "region": "NA",
+          "patchEstimated": true,
+          "player": "Peyz",
+          "uploaded": "2026-10-25",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "0K2VvRwitKs",
+          "title": "\"003ad\" #1 Aphelios Destroying GUMAYUSI in KR HighElo - Engsub",
+          "rankClaim": "Master+",
+          "patch": "26.19",
+          "durationSec": 1836,
+          "region": "KR",
+          "patchEstimated": true,
+          "player": "Gumayusi",
+          "uploaded": "2026-10-05",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "TwZVf7b4-v8",
+          "title": "\"003ad\" 1800LP Aphelios : Destroying Super Server Challenger with PERFECT MECHANIC",
+          "rankClaim": "Challenger",
+          "patch": "26.19",
+          "durationSec": 1764,
+          "patchEstimated": true,
+          "player": "PerfecT",
+          "uploaded": "2026-10-02",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "Gfdyzwuu_bQ",
+          "title": "T1 Peyz : His Aphelios is DOMINATING KR Challenger with Insane Mechanic",
+          "rankClaim": "Challenger",
+          "patch": "26.13",
+          "durationSec": 1241,
+          "region": "KR",
+          "patchEstimated": true,
+          "player": "Peyz",
+          "uploaded": "2026-07-07",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "m2Sq05DyEHM",
+          "title": "Rank 1 Aphelios : WRECKING KOREAN Server Destroying T1 Peyz in Challenger Elo - Engsub",
+          "rankClaim": "Challenger",
+          "patch": "26.8",
+          "durationSec": 1353,
+          "patchEstimated": true,
+          "player": "Peyz",
+          "uploaded": "2026-04-16",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "h05aAgf0PyA",
+          "title": "Uzi : His Aphelios DAMAGE is so BROKEN - Engsub",
+          "rankClaim": "Master+",
+          "patch": "26.7",
+          "durationSec": 1299,
+          "patchEstimated": true,
+          "player": "Uzi",
+          "uploaded": "2026-04-08",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "jEZhP8dr77k",
+          "title": "DK Smash : His Aphelios is BREAKING KR Challenger with this Build - Engsub",
+          "rankClaim": "Challenger",
+          "patch": "26.7",
+          "durationSec": 704,
+          "region": "KR",
+          "patchEstimated": true,
+          "player": "Smash",
+          "uploaded": "2026-04-07",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "xQexJfED6F0",
+          "title": "1300LP Aphelios : OMG ! I'm on The Same Team with VIPER and Hard Carrying Him - Engsub",
+          "rankClaim": "Master+",
+          "patch": "26.6",
+          "durationSec": 1042,
+          "patchEstimated": true,
+          "player": "Viper",
+          "uploaded": "2026-03-19",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "4qnOX4CNp2M",
+          "title": "Uzi : His Aphelios Combos is too CLEAN - Engsub",
+          "rankClaim": "Master+",
+          "patch": "26.3",
+          "durationSec": 766,
+          "patchEstimated": true,
+          "player": "Uzi",
+          "uploaded": "2026-02-08",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "Pt9oIO6HFgE",
+          "title": "Teddy : His Aphelios Combos is too Smooth - Engsub",
+          "rankClaim": "Master+",
+          "patch": "26.1",
+          "durationSec": 1056,
+          "patchEstimated": true,
+          "player": "Teddy",
+          "uploaded": "2026-01-13",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "zhS8B1hvPGM",
+          "title": "Gumayusi : His Aphelios Mechanic is so Aggressive - Engsub",
+          "rankClaim": "Master+",
+          "patch": "26.1",
+          "durationSec": 832,
+          "patchEstimated": true,
+          "player": "Gumayusi",
+          "uploaded": "2026-01-10",
+          "format": "stream",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "-E_PyN-Fxpc",
+          "title": "Rank 1 Aphelios : This CN Super Server Legend is CRUSHING Challenger with INSANE Kiting",
+          "rankClaim": "Challenger",
+          "patch": "26.7",
+          "durationSec": 1851,
+          "patchEstimated": true,
+          "player": "Baicaiovo",
+          "uploaded": "2026-04-09",
+          "format": "stream",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 4,
+      "lane": "adc",
+      "videos": [
+        {
+          "videoId": "5uNY7lGJW7M",
+          "title": "Aphelios ADC vs Twisted Fate - KR Master Patch 26.18",
+          "rankClaim": "Master",
+          "patch": "26.18",
+          "durationSec": 1570,
+          "region": "KR",
+          "uploaded": "2026-09-14",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 8,
+      "lane": "adc",
+      "videos": [
+        {
+          "videoId": "Z5l0hXGy6Eg",
+          "title": "T1 Peyz Aphelios vs Vladimir [ ADC ] Korea Challenger 2429 LP | Patch 26.12",
+          "rankClaim": "Challenger",
+          "patch": "26.12",
+          "durationSec": 1089,
+          "region": "KR",
+          "player": "Peyz",
+          "team": "T1",
+          "uploaded": "2026-06-24",
+          "result": "W",
+          "moments": [
+            {
+              "atSec": 0,
+              "label": "Early game laning phase"
+            },
+            {
+              "atSec": 117,
+              "label": "First skirmishes"
+            },
+            {
+              "atSec": 173,
+              "label": "Mid-game setup"
+            },
+            {
+              "atSec": 297,
+              "label": "Mid-game transitions"
+            },
+            {
+              "atSec": 391,
+              "label": "Objectives and combat"
+            },
+            {
+              "atSec": 492,
+              "label": "Momentum shift"
+            },
+            {
+              "atSec": 532,
+              "label": "Dominating team fights",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 582,
+              "label": "Pressing the advantage"
+            },
+            {
+              "atSec": 623,
+              "label": "Securing control"
+            },
+            {
+              "atSec": 720,
+              "label": "Objective takedowns"
+            },
+            {
+              "atSec": 772,
+              "label": "Dragon and Rift Herald",
+              "kind": "herald"
+            },
+            {
+              "atSec": 793,
+              "label": "Sieging the base"
+            },
+            {
+              "atSec": 852,
+              "label": "Inhibitor breakthrough"
+            },
+            {
+              "atSec": 939,
+              "label": "Final push"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 15,
+      "lane": "adc",
+      "videos": [
+        {
+          "videoId": "UsaGlMHGlgk",
+          "title": "When Rank 1 Aphelios visit Diamond Elo - Engsub ( vs Sivir, Yunara )",
+          "rankClaim": "Master+",
+          "patch": "26.19",
+          "durationSec": 1381,
+          "patchEstimated": true,
+          "uploaded": "2026-09-24",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "sIoPgs1zENs",
+          "title": "Rank 1 Aphelios : His Mechanic is so Satisfying to Watch - Engsub ( vs Sivir, Jinx )",
+          "rankClaim": "Master+",
+          "patch": "26.17",
+          "durationSec": 1196,
+          "patchEstimated": true,
+          "uploaded": "2026-08-28",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "NY5lhZfaEJs",
+          "title": "Rank 1 Aphelios : His Combo Looks PERFECTLY CLEAN ( vs Sivir, Yunara )",
+          "rankClaim": "Master+",
+          "patch": "26.16",
+          "durationSec": 1332,
+          "patchEstimated": true,
+          "uploaded": "2026-08-25",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "oNGeFHemOf0",
+          "title": "1600LP Aphelios : His DAMAGE is ILLEGAL, WRECKING Master Elo - Engsub ( Aphe vs Sivir )",
+          "rankClaim": "Master",
+          "patch": "26.12",
+          "durationSec": 1247,
+          "patchEstimated": true,
+          "uploaded": "2026-06-18",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "ino6LYVJyxI",
+          "title": "Rank 1 Aphelios : His Mechanic is so AGGRESSIVE at Early Game - Engsub ( Aphe vs Sivir, Yunara )",
+          "rankClaim": "Master+",
+          "patch": "26.9",
+          "durationSec": 1319,
+          "patchEstimated": true,
+          "uploaded": "2026-04-30",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "OLkSjr98vDY",
+          "title": "Aphelios ADC vs Sivir - NA Challenger Patch 26.06",
+          "rankClaim": "Challenger",
+          "patch": "26.6",
+          "durationSec": 1507,
+          "region": "NA",
+          "uploaded": "2026-04-02",
+          "moments": []
+        },
+        {
+          "videoId": "t0XZIRscflw",
+          "title": "Aphelios ADC vs Sivir - KR Grandmaster Patch 25.17",
+          "rankClaim": "Grandmaster",
+          "patch": "25.17",
+          "durationSec": 1548,
+          "region": "KR",
+          "uploaded": "2025-08-30",
+          "moments": []
+        },
+        {
+          "videoId": "-BEOhdw4AMA",
+          "title": "Aphelios ADC vs Sivir - KR Grandmaster Patch 25.15",
+          "rankClaim": "Grandmaster",
+          "patch": "25.15",
+          "durationSec": 1882,
+          "region": "KR",
+          "uploaded": "2025-08-01",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 18,
+      "lane": "adc",
+      "videos": [
+        {
+          "videoId": "ty9eu276PUU",
+          "title": "(WLG Unkn0wn) Aphelios ADC vs Tristana - EUW Challenger Patch 26.15",
+          "rankClaim": "Challenger",
+          "patch": "26.15",
+          "durationSec": 1509,
+          "region": "EUW",
+          "player": "WLG Unkn0wn",
+          "uploaded": "2026-08-03",
+          "result": "L",
+          "moments": [
+            {
+              "atSec": 87,
+              "label": "First Blood — Aphelios kills Tristana",
+              "kind": "kill"
+            },
+            {
+              "atSec": 248,
+              "label": "Aphelios picks off Bard"
+            },
+            {
+              "atSec": 367,
+              "label": "Aphelios picks off Bard"
+            },
+            {
+              "atSec": 602,
+              "label": "Aphelios eliminates Aatrox"
+            },
+            {
+              "atSec": 631,
+              "label": "Red takes 1st Dragon (Ocean)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 705,
+              "label": "Syndra takes down Bard"
+            },
+            {
+              "atSec": 856,
+              "label": "Aphelios picks off Bard"
+            },
+            {
+              "atSec": 959,
+              "label": "Blue takes 1st Dragon (Mountain)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1056,
+              "label": "Aphelios eliminates Aatrox"
+            },
+            {
+              "atSec": 1194,
+              "label": "Red takes Baron",
+              "kind": "baron"
+            },
+            {
+              "atSec": 1258,
+              "label": "Aphelios picks off Bard"
+            },
+            {
+              "atSec": 1289,
+              "label": "Mid Inhibitor falls (Blue)"
+            },
+            {
+              "atSec": 1317,
+              "label": "Red takes 2nd Dragon (Cloud)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1445,
+              "label": "Aphelios eliminates Aatrox"
+            },
+            {
+              "atSec": 1464,
+              "label": "Bot Inhibitor falls (Blue)"
+            }
+          ]
+        },
+        {
+          "videoId": "I_uDRzIBvIc",
+          "title": "(NS Diable) Aphelios ADC vs Tristana - KR Master Patch 26.11",
+          "rankClaim": "Master",
+          "patch": "26.11",
+          "durationSec": 1584,
+          "region": "KR",
+          "player": "Diable",
+          "team": "NS",
+          "uploaded": "2026-06-04",
+          "moments": []
+        },
+        {
+          "videoId": "5dEBHySyTmg",
+          "title": "Aphelios vs Tristana [ ADC ] Korea Grandmaster 1495 LP | Patch 26.11",
+          "rankClaim": "Grandmaster",
+          "patch": "26.11",
+          "durationSec": 1508,
+          "region": "KR",
+          "uploaded": "2026-05-29",
+          "moments": []
+        },
+        {
+          "videoId": "7VVBWN67Hv0",
+          "title": "Aphelios ADC vs Tristana - KR Master Patch 26.10",
+          "rankClaim": "Master",
+          "patch": "26.10",
+          "durationSec": 1557,
+          "region": "KR",
+          "uploaded": "2026-05-29",
+          "moments": []
+        },
+        {
+          "videoId": "GwYM4dM6LKw",
+          "title": "Aphelios vs Tristana ADC - KR Challenger - Patch 25.24 Season 15",
+          "rankClaim": "Challenger",
+          "patch": "25.24",
+          "durationSec": 1531,
+          "region": "KR",
+          "uploaded": "2025-12-09",
+          "moments": []
+        },
+        {
+          "videoId": "VTwRUdX_yCQ",
+          "title": "Aphelios vs Tristana ADC - KR Challenger - Patch 25.8 Season 15",
+          "rankClaim": "Challenger",
+          "patch": "25.8",
+          "durationSec": 1710,
+          "region": "KR",
+          "uploaded": "2025-04-30",
+          "moments": []
+        },
+        {
+          "videoId": "rzlTj2s1BD0",
+          "title": "Aphelios vs Tristana ADC - KR Challenger - Patch 15.7 Season 15",
+          "rankClaim": "Challenger",
+          "patch": "25.7",
+          "durationSec": 1661,
+          "region": "KR",
+          "uploaded": "2025-04-10",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 21,
+      "lane": "adc",
+      "videos": [
+        {
+          "videoId": "183kDHG5Iao",
+          "title": "T1 Peyz Aphelios vs Miss Fortune [ ADC ] Korea Challenger 2173 LP | Patch 26.5",
+          "rankClaim": "Challenger",
+          "patch": "26.5",
+          "durationSec": 1079,
+          "region": "KR",
+          "player": "Peyz",
+          "team": "T1",
+          "uploaded": "2026-03-05",
+          "moments": []
+        },
+        {
+          "videoId": "Bm4exBK338s",
+          "title": "Aphelios ADC vs Miss Fortune - KR Challenger Patch 26.03",
+          "rankClaim": "Challenger",
+          "patch": "26.3",
+          "durationSec": 1608,
+          "region": "KR",
+          "uploaded": "2026-02-07",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 278,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 649,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 725,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 830,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 896,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 993,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1055,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1138,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1246,
+              "label": "Hunt The Baron Nashor",
+              "kind": "baron"
+            },
+            {
+              "atSec": 1281,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1309,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1386,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1417,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1427,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1541,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1558,
+              "label": "Take down The Inhibitor"
+            },
+            {
+              "atSec": 1570,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1597,
+              "label": "End credit"
+            }
+          ]
+        },
+        {
+          "videoId": "cSl_2uLM_Nk",
+          "title": "Aphelios ADC vs Miss Fortune - NA Grandmaster Patch 25.24",
+          "rankClaim": "Grandmaster",
+          "patch": "25.24",
+          "durationSec": 1567,
+          "region": "NA",
+          "uploaded": "2025-12-31",
+          "moments": []
+        },
+        {
+          "videoId": "AnQZaUwQrMQ",
+          "title": "Aphelios vs Miss Fortune ADC - KR Challenger - Patch 25.24 Season 15",
+          "rankClaim": "Challenger",
+          "patch": "25.24",
+          "durationSec": 1816,
+          "region": "KR",
+          "uploaded": "2025-12-26",
+          "moments": []
+        },
+        {
+          "videoId": "zDjOxi4TaBI",
+          "title": "Aphelios ADC vs Miss Fortune - KR Master Patch 25.18",
+          "rankClaim": "Master",
+          "patch": "25.18",
+          "durationSec": 1552,
+          "region": "KR",
+          "uploaded": "2025-09-13",
+          "moments": []
+        },
+        {
+          "videoId": "h_r0tC8i2mo",
+          "title": "Aphelios ADC vs Miss Fortune - EUW Challenger Patch 25.12",
+          "rankClaim": "Challenger",
+          "patch": "25.12",
+          "durationSec": 1697,
+          "region": "EUW",
+          "uploaded": "2025-06-26",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 22,
+      "lane": "adc",
+      "videos": [
+        {
+          "videoId": "xBjpnBE7kJc",
+          "title": "Rank 1 Aphelios : Insane Mechanic LEGIT 2V8 on This HighElo Match - Engsub (Aphe vs Ashe, Ez)",
+          "rankClaim": "Master+",
+          "patch": "26.14",
+          "durationSec": 1389,
+          "patchEstimated": true,
+          "uploaded": "2026-07-18",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "CnBy3g4npac",
+          "title": "Rank 1 Aphelios : BLOWING UP Super Server Challenger - Engsub ( Aphe vs Ashe, Tris )",
+          "rankClaim": "Challenger",
+          "patch": "26.12",
+          "durationSec": 1399,
+          "patchEstimated": true,
+          "uploaded": "2026-06-15",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "ww6jMQ6bvAQ",
+          "title": "When Rank 1 Aphelios meet Uzi Ashe in KR HighElo - Engsub",
+          "rankClaim": "Master+",
+          "patch": "26.11",
+          "durationSec": 1185,
+          "region": "KR",
+          "patchEstimated": true,
+          "player": "Uzi",
+          "uploaded": "2026-06-04",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "iBcLdA7xqZc",
+          "title": "Rank 1 Aphelios : His Mechanic is TOTAL DESTRUCTIONS - Engsub ( Aphe vs Tris, Ashe )",
+          "rankClaim": "Master+",
+          "patch": "26.10",
+          "durationSec": 1398,
+          "patchEstimated": true,
+          "uploaded": "2026-05-16",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "QcAgM4PW9Kg",
+          "title": "Aphelios vs Ashe ADC [ DRX Teddy ] Patch 25.12 Korea Challenger",
+          "rankClaim": "Challenger",
+          "patch": "25.12",
+          "durationSec": 1378,
+          "region": "KR",
+          "player": "Teddy",
+          "team": "DRX",
+          "uploaded": "2025-06-15",
+          "moments": []
+        },
+        {
+          "videoId": "3jC6X14qbsY",
+          "title": "T1 Gumayusi Aphelios vs Ashe [ ADC ] Patch 25.7 Korea Challenger ✅",
+          "rankClaim": "Challenger",
+          "patch": "25.7",
+          "durationSec": 1826,
+          "region": "KR",
+          "player": "Gumayusi",
+          "team": "T1",
+          "uploaded": "2025-04-14",
+          "moments": []
+        },
+        {
+          "videoId": "nf9xd70Uu6Q",
+          "title": "Aphelios ADC vs Ashe - KR Master Patch 25.05",
+          "rankClaim": "Master",
+          "patch": "25.5",
+          "durationSec": 2149,
+          "region": "KR",
+          "uploaded": "2025-03-08",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 29,
+      "lane": "adc",
+      "videos": [
+        {
+          "videoId": "z2dTAvdzAH8",
+          "title": "2000LP Aphelios \"Jz\" Clean Combos Total Destructions - Engsub (Aphe vs Twitch, Caitlyn)",
+          "rankClaim": "Master+",
+          "patch": "26.13",
+          "durationSec": 1423,
+          "patchEstimated": true,
+          "player": "Jz",
+          "uploaded": "2026-07-10",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "6LlBXr5hFIU",
+          "title": "Rank 1 Aphelios : This Dude Mechanic is Insane, BREAKING Challenger - Engsub (Aphe vs Twitch, Corki)",
+          "rankClaim": "Challenger",
+          "patch": "26.11",
+          "durationSec": 1156,
+          "patchEstimated": true,
+          "uploaded": "2026-06-03",
+          "format": "stream",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 42,
+      "lane": "adc",
+      "videos": [
+        {
+          "videoId": "Bg3jSPfybNg",
+          "title": "\"HanQL\" 2255LP Aphelios : CLEAN COMBOS TOTAL DESTRUCTIONS DELETING ENEMY - Engsub (vs Corki, Sivir)",
+          "rankClaim": "Master+",
+          "patch": "26.21",
+          "durationSec": 1458,
+          "patchEstimated": true,
+          "player": "HanQL",
+          "uploaded": "2026-11-03",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "f18CZBRWnws",
+          "title": "Rank 1 Aphelios : How to Make Super Server Challenger FF at 20 Min - Engsub ( Aphe vs Corki, Ashe )",
+          "rankClaim": "Challenger",
+          "patch": "26.12",
+          "durationSec": 1190,
+          "patchEstimated": true,
+          "uploaded": "2026-06-16",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "Qd5ZCnHpook",
+          "title": "Aphelios ADC vs Corki - EUW Challenger Patch 25.21",
+          "rankClaim": "Challenger",
+          "patch": "25.21",
+          "durationSec": 1520,
+          "region": "EUW",
+          "uploaded": "2025-11-06",
+          "moments": []
+        },
+        {
+          "videoId": "vSiSq2RZL6U",
+          "title": "Aphelios vs Corki ADC - KR Challenger - Patch 25.5 Season 15",
+          "rankClaim": "Challenger",
+          "patch": "25.5",
+          "durationSec": 1680,
+          "region": "KR",
+          "uploaded": "2025-03-08",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 42,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "Wk5B53F1FaI",
+          "title": "Aphelios Mid vs Corki - KR Master Patch 25.07",
+          "rankClaim": "Master",
+          "patch": "25.7",
+          "durationSec": 1905,
+          "region": "KR",
+          "uploaded": "2025-04-18",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 216,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 363,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 392,
+              "label": "Hunt The Void Grubs",
+              "kind": "grubs"
+            },
+            {
+              "atSec": 597,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 622,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 973,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 992,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1007,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1027,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1291,
+              "label": "Get a Triple Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1321,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1342,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1395,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1601,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1717,
+              "label": "Take down The Inhibitor"
+            },
+            {
+              "atSec": 1848,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1872,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1884,
+              "label": "End credit"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 50,
+      "lane": "adc",
+      "videos": [
+        {
+          "videoId": "pMF39CB_MbY",
+          "title": "(JDG GALA) Aphelios ADC vs Swain - KR Challenger Patch 26.16",
+          "rankClaim": "Challenger",
+          "patch": "26.16",
+          "durationSec": 1679,
+          "region": "KR",
+          "player": "GALA",
+          "team": "JDG",
+          "uploaded": "2026-08-24",
+          "moments": []
+        },
+        {
+          "videoId": "rqL3ws4N1tw",
+          "title": "Rank 1 Aphelios : He Make KR GrandMaster look so Easy For Him - Engsub (Aphe vs Swain, Senna)",
+          "rankClaim": "Grandmaster",
+          "patch": "26.15",
+          "durationSec": 1317,
+          "region": "KR",
+          "patchEstimated": true,
+          "uploaded": "2026-07-29",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "9R-fr3h14LM",
+          "title": "2000LP Aphelios \"Jz\" His Combos is so DAM SMOOTH - Engsub (Aphe vs Swain, Lucian)",
+          "rankClaim": "Master+",
+          "patch": "26.13",
+          "durationSec": 1382,
+          "patchEstimated": true,
+          "player": "Jz",
+          "uploaded": "2026-07-05",
+          "format": "stream",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 51,
+      "lane": "adc",
+      "videos": [
+        {
+          "videoId": "Qc4SL9RBAQo",
+          "title": "Smash : His Aphelios is a FREAKING MONSTER - Engsub ( vs Caitlyn )",
+          "rankClaim": "Master+",
+          "patch": "26.20",
+          "durationSec": 1131,
+          "patchEstimated": true,
+          "player": "Smash",
+          "uploaded": "2026-10-18",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "Ntp56EUqX9Q",
+          "title": "Rank 1 Aphelios : His Combos is Total Destructions - Engsub ( vs Caitlyn )",
+          "rankClaim": "Master+",
+          "patch": "26.18",
+          "durationSec": 701,
+          "patchEstimated": true,
+          "uploaded": "2026-09-14",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "y9_-z3ea7PE",
+          "title": "Aphelios ADC vs Caitlyn - KR Challenger Patch 26.17",
+          "rankClaim": "Challenger",
+          "patch": "26.17",
+          "durationSec": 1799,
+          "region": "KR",
+          "uploaded": "2026-08-30",
+          "moments": []
+        },
+        {
+          "videoId": "h1d1LLxOk_g",
+          "title": "T1 Peyz Aphelios vs Caitlyn [ ADC ] Korea Challenger 2409 LP | Patch 26.13",
+          "rankClaim": "Challenger",
+          "patch": "26.13",
+          "durationSec": 1973,
+          "region": "KR",
+          "player": "Peyz",
+          "team": "T1",
+          "uploaded": "2026-07-03",
+          "moments": []
+        },
+        {
+          "videoId": "5m-ERu3vCSI",
+          "title": "Aphelios vs Caitlyn ADC - KR Challenger - Patch 26.01 Season 16",
+          "rankClaim": "Challenger",
+          "patch": "26.1",
+          "durationSec": 1751,
+          "region": "KR",
+          "uploaded": "2026-01-14",
+          "moments": []
+        },
+        {
+          "videoId": "vZ-xU_wdnOI",
+          "title": "Aphelios vs Caitlyn ADC - KR Challenger - Patch 26.01 Season 16",
+          "rankClaim": "Challenger",
+          "patch": "26.1",
+          "durationSec": 1321,
+          "region": "KR",
+          "uploaded": "2026-01-13",
+          "moments": []
+        },
+        {
+          "videoId": "VuLIfk0Krxc",
+          "title": "Aphelios ADC vs Caitlyn - EUW Challenger Patch 25.20",
+          "rankClaim": "Challenger",
+          "patch": "25.20",
+          "durationSec": 1534,
+          "region": "EUW",
+          "uploaded": "2025-10-22",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 63,
+      "lane": "adc",
+      "videos": [
+        {
+          "videoId": "ldo6ginEfPE",
+          "title": "Aphelios ADC vs Brand - EUW Grandmaster Patch 25.08",
+          "rankClaim": "Grandmaster",
+          "patch": "25.8",
+          "durationSec": 1552,
+          "region": "EUW",
+          "uploaded": "2025-04-30",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 207,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 283,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 506,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 616,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 746,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 857,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 879,
+              "label": "Hunt The Dragon",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 903,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 920,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 983,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1008,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1023,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1084,
+              "label": "Get a Triple Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1121,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1197,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1246,
+              "label": "Hunt The Atakhan"
+            },
+            {
+              "atSec": 1267,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1292,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1312,
+              "label": "Get a Triple Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1412,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1456,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1531,
+              "label": "End credit"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 67,
+      "lane": "adc",
+      "videos": [
+        {
+          "videoId": "env8uPiazmQ",
+          "title": "\"HanQL\" 2255LP Aphelios : His Mechanic is Phenomenal - Engsub ( vs Vayne )",
+          "rankClaim": "Master+",
+          "patch": "26.18",
+          "durationSec": 755,
+          "patchEstimated": true,
+          "player": "HanQL",
+          "uploaded": "2026-09-12",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "q38xsfExllI",
+          "title": "Rank 1 Aphelios : Insane Comeback of History It's Gonna Blow You Mind - Engsub ( Aphe vs Vayne )",
+          "rankClaim": "Master+",
+          "patch": "26.12",
+          "durationSec": 1420,
+          "patchEstimated": true,
+          "uploaded": "2026-06-20",
+          "format": "stream",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 69,
+      "lane": "adc",
+      "videos": [
+        {
+          "videoId": "mht78f9tPuQ",
+          "title": "T1 Peyz Aphelios vs Cassiopeia [ ADC ] Korea Challenger 2191 LP | Patch 26.19",
+          "rankClaim": "Challenger",
+          "patch": "26.19",
+          "durationSec": 1988,
+          "region": "KR",
+          "player": "Peyz",
+          "team": "T1",
+          "uploaded": "2026-10-01",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 81,
+      "lane": "adc",
+      "videos": [
+        {
+          "videoId": "NQu4vL252Iw",
+          "title": "T1 Peyz Aphelios vs Ezreal [ ADC ] Korea Challenger 2487 LP | Patch 26.17",
+          "rankClaim": "Challenger",
+          "patch": "26.17",
+          "durationSec": 2050,
+          "region": "KR",
+          "player": "Peyz",
+          "team": "T1",
+          "uploaded": "2026-09-01",
+          "moments": []
+        },
+        {
+          "videoId": "FrR10xxwqL4",
+          "title": "T1 Peyz Aphelios vs Ezreal [ ADC ] Korea Challenger 2443 LP | Patch 26.16",
+          "rankClaim": "Challenger",
+          "patch": "26.16",
+          "durationSec": 1321,
+          "region": "KR",
+          "player": "Peyz",
+          "team": "T1",
+          "uploaded": "2026-08-20",
+          "moments": []
+        },
+        {
+          "videoId": "Q-ZocGVyS5U",
+          "title": "Rank 1 Aphelios : His Mechanic is Phenomenal \" Destroying VIPER Ezreal in KR Challenger \" Engsub",
+          "rankClaim": "Challenger",
+          "patch": "26.16",
+          "durationSec": 1465,
+          "region": "KR",
+          "patchEstimated": true,
+          "player": "Viper",
+          "uploaded": "2026-08-20",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "4ot9A0vGKIc",
+          "title": "(GLSH Dream) Aphelios ADC vs Ezreal - EUW Grandmaster Patch 26.14",
+          "rankClaim": "Grandmaster",
+          "patch": "26.14",
+          "durationSec": 1599,
+          "region": "EUW",
+          "player": "GLSH Dream",
+          "uploaded": "2026-07-31",
+          "moments": []
+        },
+        {
+          "videoId": "CckB_4ZFJIk",
+          "title": "Aphelios vs Ezreal ADC - KR Challenger - Patch 16.10 Season 16",
+          "rankClaim": "Challenger",
+          "patch": "26.10",
+          "durationSec": 1816,
+          "region": "KR",
+          "uploaded": "2026-05-19",
+          "moments": []
+        },
+        {
+          "videoId": "nhuz7PmP8hE",
+          "title": "Aphelios ADC vs Ezreal - KR Grandmaster Patch 26.10",
+          "rankClaim": "Grandmaster",
+          "patch": "26.10",
+          "durationSec": 1830,
+          "region": "KR",
+          "uploaded": "2026-05-18",
+          "moments": []
+        },
+        {
+          "videoId": "-cXYuB73FB4",
+          "title": "Aphelios vs Ezreal ADC - KR Challenger - Patch 16.07 Season 16",
+          "rankClaim": "Challenger",
+          "patch": "26.7",
+          "durationSec": 1711,
+          "region": "KR",
+          "uploaded": "2026-04-08",
+          "moments": []
+        },
+        {
+          "videoId": "zuZSkY1QvKw",
+          "title": "Aphelios vs Ezreal ADC - KR Challenger - Patch 16.06 Season 16",
+          "rankClaim": "Challenger",
+          "patch": "26.6",
+          "durationSec": 1771,
+          "region": "KR",
+          "uploaded": "2026-03-26",
+          "moments": []
+        },
+        {
+          "videoId": "7_FywUp-W3o",
+          "title": "Aphelios vs Ezreal ADC [ Gen.G Ruler ] Patch 26.5 Korea Grandmaster",
+          "rankClaim": "Grandmaster",
+          "patch": "26.5",
+          "durationSec": 1824,
+          "region": "KR",
+          "player": "Ruler",
+          "team": "Gen.G",
+          "uploaded": "2026-03-08",
+          "moments": []
+        },
+        {
+          "videoId": "RUYkb5MPoXY",
+          "title": "Aphelios vs Ezreal ADC - KR Challenger - Patch 26.01 Season 16",
+          "rankClaim": "Challenger",
+          "patch": "26.1",
+          "durationSec": 1306,
+          "region": "KR",
+          "uploaded": "2026-01-20",
+          "moments": []
+        },
+        {
+          "videoId": "DfL8sWIPQrM",
+          "title": "Aphelios vs Ezreal ADC [ BLG Viper ] Patch 25.24 Ranked Korea ✅",
+          "rankClaim": "Master+",
+          "patch": "25.24",
+          "durationSec": 1398,
+          "region": "KR",
+          "player": "Viper",
+          "team": "BLG",
+          "uploaded": "2025-12-26",
+          "moments": []
+        },
+        {
+          "videoId": "Dq4OqYZ3T2Q",
+          "title": "Aphelios ADC vs Ezreal - KR Challenger Patch 25.24",
+          "rankClaim": "Challenger",
+          "patch": "25.24",
+          "durationSec": 1712,
+          "region": "KR",
+          "uploaded": "2025-12-05",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 357,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 492,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 632,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 695,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 850,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 884,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 989,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1010,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1100,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1123,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1136,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1284,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1456,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1625,
+              "label": "Get a Triple Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1701,
+              "label": "End credit"
+            }
+          ]
+        },
+        {
+          "videoId": "30sA-xORjdM",
+          "title": "Aphelios vs Ezreal [ ADC ] Patch 25.23 Korea Challenger 1279 LP",
+          "rankClaim": "Challenger",
+          "patch": "25.23",
+          "durationSec": 1106,
+          "region": "KR",
+          "uploaded": "2025-11-22",
+          "moments": []
+        },
+        {
+          "videoId": "14dch2DmjlM",
+          "title": "Aphelios vs Ezreal ADC - KR Challenger - Patch 25.12 Season 15",
+          "rankClaim": "Challenger",
+          "patch": "25.12",
+          "durationSec": 2461,
+          "region": "KR",
+          "uploaded": "2025-06-25",
+          "moments": []
+        },
+        {
+          "videoId": "3E5JNdb-Clw",
+          "title": "Aphelios vs Ezreal ADC - KR Grandmaster - Patch 25.10 Season 15",
+          "rankClaim": "Grandmaster",
+          "patch": "25.10",
+          "durationSec": 1871,
+          "region": "KR",
+          "uploaded": "2025-05-24",
+          "moments": []
+        },
+        {
+          "videoId": "cVFQytFdbSs",
+          "title": "Aphelios ADC vs Ezreal - KR Grandmaster Patch 25.09",
+          "rankClaim": "Grandmaster",
+          "patch": "25.9",
+          "durationSec": 1853,
+          "region": "KR",
+          "uploaded": "2025-05-06",
+          "moments": []
+        },
+        {
+          "videoId": "BJFGwgOS0LA",
+          "title": "Aphelios vs Ezreal ADC [ Peyz ] Patch 25.9 Korea Challenger ✅",
+          "rankClaim": "Challenger",
+          "patch": "25.9",
+          "durationSec": 1392,
+          "region": "KR",
+          "player": "Peyz",
+          "uploaded": "2025-05-05",
+          "moments": []
+        },
+        {
+          "videoId": "jV_-vV1wQ1c",
+          "title": "Aphelios vs Ezreal ADC - KR Challenger - Patch 25.7 Season 15",
+          "rankClaim": "Challenger",
+          "patch": "25.7",
+          "durationSec": 1756,
+          "region": "KR",
+          "uploaded": "2025-04-16",
+          "moments": []
+        },
+        {
+          "videoId": "iEZ6ODL4vkk",
+          "title": "Aphelios vs Ezreal ADC - KR Challenger - Patch 25.5 Season 15",
+          "rankClaim": "Challenger",
+          "patch": "25.5",
+          "durationSec": 1650,
+          "region": "KR",
+          "uploaded": "2025-03-07",
+          "moments": []
+        },
+        {
+          "videoId": "APkBRpgjrY4",
+          "title": "Aphelios vs Ezreal ADC [ Peyz ] Patch 25.3 Korea Challenger ✅",
+          "rankClaim": "Challenger",
+          "patch": "25.3",
+          "durationSec": 1557,
+          "region": "KR",
+          "player": "Peyz",
+          "uploaded": "2025-02-18",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 96,
+      "lane": "adc",
+      "videos": [
+        {
+          "videoId": "rR0ehUARId4",
+          "title": "BLG Viper Aphelios vs Kog'Maw [ ADC ] Korea Challenger 2004 LP | Patch 26.13",
+          "rankClaim": "Challenger",
+          "patch": "26.13",
+          "durationSec": 783,
+          "region": "KR",
+          "player": "Viper",
+          "team": "BLG",
+          "uploaded": "2026-07-05",
+          "moments": []
+        },
+        {
+          "videoId": "1ny0tvMLwKw",
+          "title": "Aphelios vs Kogmaw ADC [ Peyz + Pentakill ] Patch 25.5 Korea Master",
+          "rankClaim": "Master",
+          "patch": "25.5",
+          "durationSec": 1587,
+          "region": "KR",
+          "player": "Peyz",
+          "uploaded": "2025-03-09",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 103,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "pfqvmmnn4fU",
+          "title": "Aphelios Mid vs Ahri - BR Challenger Patch 26.07",
+          "rankClaim": "Challenger",
+          "patch": "26.7",
+          "durationSec": 1592,
+          "uploaded": "2026-04-15",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 110,
+      "lane": "adc",
+      "videos": [
+        {
+          "videoId": "yFVA8Zpt4bo",
+          "title": "Aphelios ADC vs Varus - KR Challenger Patch 26.21",
+          "rankClaim": "Challenger",
+          "patch": "26.21",
+          "durationSec": 1794,
+          "region": "KR",
+          "uploaded": "2026-11-04",
+          "moments": []
+        },
+        {
+          "videoId": "O5AtPPHCK2k",
+          "title": "Aphelios vs Varus [ ADC ] Korea Master 863 LP | Patch 26.14",
+          "rankClaim": "Master",
+          "patch": "26.14",
+          "durationSec": 1622,
+          "region": "KR",
+          "uploaded": "2026-07-19",
+          "moments": []
+        },
+        {
+          "videoId": "4vJyq1ZbnOY",
+          "title": "Rank 1 Aphelios : His Mechanic is on Another Level - Engsub ( Aphe vs Varus, Nilah )",
+          "rankClaim": "Master+",
+          "patch": "26.9",
+          "durationSec": 1162,
+          "patchEstimated": true,
+          "uploaded": "2026-05-07",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "yltU3eigPxU",
+          "title": "T1 Peyz Aphelios vs Varus [ ADC ] Korea Challenger 2061 LP | Patch 26.6",
+          "rankClaim": "Challenger",
+          "patch": "26.6",
+          "durationSec": 765,
+          "region": "KR",
+          "player": "Peyz",
+          "team": "T1",
+          "uploaded": "2026-03-28",
+          "moments": []
+        },
+        {
+          "videoId": "Wg9-3Ujgx1w",
+          "title": "T1 Peyz Aphelios vs Varus [ ADC ] Korea Challenger 2024 LP | Patch 26.5",
+          "rankClaim": "Challenger",
+          "patch": "26.5",
+          "durationSec": 818,
+          "region": "KR",
+          "player": "Peyz",
+          "team": "T1",
+          "uploaded": "2026-03-18",
+          "moments": []
+        },
+        {
+          "videoId": "OJtpk6MNCrw",
+          "title": "T1 Peyz Aphelios vs Varus [ ADC ] Korea Challenger 1963 LP | Patch 26.3",
+          "rankClaim": "Challenger",
+          "patch": "26.3",
+          "durationSec": 1375,
+          "region": "KR",
+          "player": "Peyz",
+          "team": "T1",
+          "uploaded": "2026-02-17",
+          "moments": []
+        },
+        {
+          "videoId": "XXBYoxdxIuA",
+          "title": "Aphelios vs Varus ADC [ Gen.G Ruler ] Korea Grandmaster Patch 26.3 ✅",
+          "rankClaim": "Grandmaster",
+          "patch": "26.3",
+          "durationSec": 1654,
+          "region": "KR",
+          "player": "Ruler",
+          "team": "Gen.G",
+          "uploaded": "2026-02-16",
+          "moments": []
+        },
+        {
+          "videoId": "QekkNLU041g",
+          "title": "Aphelios vs Varus ADC [ Gen.G Ruler ] Korea Master Patch 26.2 ✅",
+          "rankClaim": "Master",
+          "patch": "26.2",
+          "durationSec": 1564,
+          "region": "KR",
+          "player": "Ruler",
+          "team": "Gen.G",
+          "uploaded": "2026-02-01",
+          "moments": []
+        },
+        {
+          "videoId": "sXXednPfdrs",
+          "title": "Aphelios vs Varus ADC - KR Challenger - Patch 26.01 Season 16",
+          "rankClaim": "Challenger",
+          "patch": "26.1",
+          "durationSec": 1681,
+          "region": "KR",
+          "uploaded": "2026-01-17",
+          "moments": []
+        },
+        {
+          "videoId": "sKlPZ6AsNEY",
+          "title": "T1 Peyz Aphelios vs Varus [ ADC ] Patch 26.1 Ranked Korea",
+          "rankClaim": "Master+",
+          "patch": "26.1",
+          "durationSec": 1260,
+          "region": "KR",
+          "player": "Peyz",
+          "team": "T1",
+          "uploaded": "2026-01-15",
+          "moments": []
+        },
+        {
+          "videoId": "lZivzEewdi8",
+          "title": "Aphelios vs Varus ADC - KR Challenger - Patch 25.24 Season 15",
+          "rankClaim": "Challenger",
+          "patch": "25.24",
+          "durationSec": 2400,
+          "region": "KR",
+          "uploaded": "2026-01-06",
+          "moments": []
+        },
+        {
+          "videoId": "Zz3bEmvC3F0",
+          "title": "Aphelios vs Varus ADC - EUW Challenger - Patch 25.18 Season 15",
+          "rankClaim": "Challenger",
+          "patch": "25.18",
+          "durationSec": 2086,
+          "region": "EUW",
+          "uploaded": "2025-09-15",
+          "moments": []
+        },
+        {
+          "videoId": "eq-7-uWaGxg",
+          "title": "Aphelios ADC vs Varus - KR Master Patch 25.13",
+          "rankClaim": "Master",
+          "patch": "25.13",
+          "durationSec": 1593,
+          "region": "KR",
+          "uploaded": "2025-07-16",
+          "moments": []
+        },
+        {
+          "videoId": "bpOGspUtETY",
+          "title": "Aphelios vs Varus ADC - KR Challenger - Patch 25.13 Season 15",
+          "rankClaim": "Challenger",
+          "patch": "25.13",
+          "durationSec": 1456,
+          "region": "KR",
+          "uploaded": "2025-07-12",
+          "moments": []
+        },
+        {
+          "videoId": "8XRczjI1gV8",
+          "title": "Aphelios vs Varus ADC - KR Challenger - Patch 25.13 Season 15",
+          "rankClaim": "Challenger",
+          "patch": "25.13",
+          "durationSec": 1696,
+          "region": "KR",
+          "uploaded": "2025-06-28",
+          "moments": []
+        },
+        {
+          "videoId": "2EIg2NEq7HM",
+          "title": "Aphelios vs Varus ADC - KR Challenger - Patch 25.11 Season 15",
+          "rankClaim": "Challenger",
+          "patch": "25.11",
+          "durationSec": 1511,
+          "region": "KR",
+          "uploaded": "2025-06-09",
+          "moments": []
+        },
+        {
+          "videoId": "y2JoxDKovZ8",
+          "title": "Aphelios vs Varus ADC - KR Challenger - Patch 25.8 Season 15",
+          "rankClaim": "Challenger",
+          "patch": "25.8",
+          "durationSec": 1456,
+          "region": "KR",
+          "uploaded": "2025-04-21",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 115,
+      "lane": "adc",
+      "videos": [
+        {
+          "videoId": "kWXWiF5kMdo",
+          "title": "Aphelios vs Ziggs ADC - KR Challenger - Patch 25.24 Season 15",
+          "rankClaim": "Challenger",
+          "patch": "25.24",
+          "durationSec": 2221,
+          "region": "KR",
+          "uploaded": "2026-01-08",
+          "moments": []
+        },
+        {
+          "videoId": "KPLmoE5Z6I8",
+          "title": "Aphelios ADC vs Ziggs - EUW Grandmaster Patch 25.22",
+          "rankClaim": "Grandmaster",
+          "patch": "25.22",
+          "durationSec": 1699,
+          "region": "EUW",
+          "uploaded": "2025-11-20",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 119,
+      "lane": "adc",
+      "videos": [
+        {
+          "videoId": "IccH_u2SAVM",
+          "title": "Rank 1 Aphelios : Coming at Him Like a SUICIDE MISSIONS - Engsub ( vs Draven, Smolder )",
+          "rankClaim": "Master+",
+          "patch": "26.19",
+          "durationSec": 1387,
+          "patchEstimated": true,
+          "uploaded": "2026-09-28",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "cbj8cMBHpkE",
+          "title": "(JL Comp) Aphelios ADC vs Draven - EUW Challenger Patch 26.12",
+          "rankClaim": "Challenger",
+          "patch": "26.12",
+          "durationSec": 1508,
+          "region": "EUW",
+          "player": "JL Comp",
+          "uploaded": "2026-06-16",
+          "moments": []
+        },
+        {
+          "videoId": "pQERIG9OcmM",
+          "title": "Rank 1 Aphelios : Try This NEW Aphelios Build, You Gonna Love It - Engsub ( Aphe vs Draven )",
+          "rankClaim": "Master+",
+          "patch": "26.12",
+          "durationSec": 761,
+          "patchEstimated": true,
+          "uploaded": "2026-06-14",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "q8Qul2Bkn4E",
+          "title": "1600LP Aphelios : SKIP The Minions, I'm Farming on Enemies Head - Engsub ( Aphe vs Draven, Vayne )",
+          "rankClaim": "Master+",
+          "patch": "26.12",
+          "durationSec": 1241,
+          "patchEstimated": true,
+          "uploaded": "2026-06-11",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "LBnbKfAViWo",
+          "title": "T1 Peyz Aphelios vs Draven [ ADC ] Korea Challenger 2488 LP | Patch 26.11",
+          "rankClaim": "Challenger",
+          "patch": "26.11",
+          "durationSec": 1741,
+          "region": "KR",
+          "player": "Peyz",
+          "team": "T1",
+          "uploaded": "2026-06-05",
+          "moments": [
+            {
+              "atSec": 0,
+              "label": "Early game and setup"
+            },
+            {
+              "atSec": 54,
+              "label": "Mid game laning and skirmish"
+            },
+            {
+              "atSec": 308,
+              "label": "Objective control and fighting"
+            },
+            {
+              "atSec": 647,
+              "label": "Rift Herald and mid-game push",
+              "kind": "herald"
+            },
+            {
+              "atSec": 821,
+              "label": "Team fights and map dominance",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1071,
+              "label": "Baron pressure and map control",
+              "kind": "baron"
+            },
+            {
+              "atSec": 1450,
+              "label": "Late game sieges"
+            },
+            {
+              "atSec": 1666,
+              "label": "Base assault and victory"
+            }
+          ]
+        },
+        {
+          "videoId": "9synglqKcas",
+          "title": "Aphelios ADC vs Draven - KR Challenger Patch 25.16",
+          "rankClaim": "Challenger",
+          "patch": "25.16",
+          "durationSec": 1848,
+          "region": "KR",
+          "uploaded": "2025-08-16",
+          "moments": []
+        },
+        {
+          "videoId": "JOEpggukTZU",
+          "title": "Aphelios vs Draven ADC - KR Challenger - Patch 25.16 Season 15",
+          "rankClaim": "Challenger",
+          "patch": "25.16",
+          "durationSec": 1861,
+          "region": "KR",
+          "uploaded": "2025-08-14",
+          "moments": []
+        },
+        {
+          "videoId": "2GVu3x-0PvM",
+          "title": "Aphelios ADC vs Draven - KR Grandmaster Patch 25.13",
+          "rankClaim": "Grandmaster",
+          "patch": "25.13",
+          "durationSec": 1706,
+          "region": "KR",
+          "uploaded": "2025-06-28",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 134,
+      "lane": "adc",
+      "videos": [
+        {
+          "videoId": "Rs_nUksPElw",
+          "title": "Rank 1 Aphelios : DESTROYING KOREAN HIGHELO at 1000LP Match - Engsub ( vs Syndra, Yunara )",
+          "rankClaim": "Master+",
+          "patch": "26.20",
+          "durationSec": 1839,
+          "patchEstimated": true,
+          "uploaded": "2026-10-07",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "w2y9qlWpZxo",
+          "title": "Rank 1 Aphelios : He Make KR Challenger Look Like AI - Engsub ( vs Syndra, Yunara )",
+          "rankClaim": "Challenger",
+          "patch": "26.16",
+          "durationSec": 1229,
+          "region": "KR",
+          "patchEstimated": true,
+          "uploaded": "2026-08-13",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "FWkkk1wSYOU",
+          "title": "1300LP Aphelios : This Man Let His Bullet Rain with Runaan - Engsub ( vs Syndra, Lucian )",
+          "rankClaim": "Master+",
+          "patch": "26.15",
+          "durationSec": 1790,
+          "patchEstimated": true,
+          "uploaded": "2026-08-10",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "xFMTJuQL61E",
+          "title": "Rank 1 Aphelios : This Man is BREAKING KOREAN HighElo - Engsub (Aphe vs Syndra, Lucian)",
+          "rankClaim": "Master+",
+          "patch": "26.15",
+          "durationSec": 1317,
+          "patchEstimated": true,
+          "uploaded": "2026-07-31",
+          "format": "stream",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 145,
+      "lane": "adc",
+      "videos": [
+        {
+          "videoId": "4epDGMQruYY",
+          "title": "\"Jz\" 2000LP Aphelios : DOMINATING KR HighElo at 1000LP Match - Engsub ( vs Kai'sa, Tris )",
+          "rankClaim": "Master+",
+          "patch": "26.21",
+          "durationSec": 1604,
+          "region": "KR",
+          "patchEstimated": true,
+          "player": "Jz",
+          "uploaded": "2026-11-04",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "BQIEPP0jt4s",
+          "title": "BLG Viper Aphelios vs Kai'Sa [ ADC ] Ranked Master NA | Patch 26.21",
+          "rankClaim": "Master",
+          "patch": "26.21",
+          "durationSec": 1377,
+          "region": "NA",
+          "player": "Viper",
+          "team": "BLG",
+          "uploaded": "2026-10-25",
+          "moments": []
+        },
+        {
+          "videoId": "nI8PXkL9A3w",
+          "title": "Aphelios ADC vs Kai'Sa - KR Master Patch 26.19",
+          "rankClaim": "Master",
+          "patch": "26.19",
+          "durationSec": 1656,
+          "region": "KR",
+          "uploaded": "2026-10-08",
+          "result": "W",
+          "moments": [
+            {
+              "atSec": 125,
+              "label": "First Blood — Rakan kills Camille",
+              "kind": "kill"
+            },
+            {
+              "atSec": 505,
+              "label": "Blue takes 1st Dragon (Cloud)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 554,
+              "label": "Aphelios outplays Camille"
+            },
+            {
+              "atSec": 611,
+              "label": "Aphelios eliminates Kayn"
+            },
+            {
+              "atSec": 687,
+              "label": "Aphelios takes down Kai'Sa"
+            },
+            {
+              "atSec": 764,
+              "label": "Qiyana takes down Kayn"
+            },
+            {
+              "atSec": 848,
+              "label": "Red takes 1st Dragon (Ocean)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 897,
+              "label": "Blue takes Rift Herald",
+              "kind": "herald"
+            },
+            {
+              "atSec": 1016,
+              "label": "Aphelios picks off Shyvana"
+            },
+            {
+              "atSec": 1092,
+              "label": "Team fight (3 kills)",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1170,
+              "label": "Red takes 2nd Dragon (Infernal)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1189,
+              "label": "Aphelios picks off Camille"
+            },
+            {
+              "atSec": 1301,
+              "label": "Red takes Baron",
+              "kind": "baron"
+            },
+            {
+              "atSec": 1487,
+              "label": "Blue takes 2nd Dragon (Infernal)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1590,
+              "label": "Team fight (3 kills)",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1629,
+              "label": "Mid Inhibitor falls (Red)"
+            },
+            {
+              "atSec": 1638,
+              "label": "Aphelios solo kills Camille again",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1644,
+              "label": "Aphelios Double Kill",
+              "kind": "kill"
+            }
+          ]
+        },
+        {
+          "videoId": "a7wuwqLRGNI",
+          "title": "When Rank 1 Aphelios visit Diamond Elo \" One Kills Per Min \" ( vs Kai'sa, Jhin )",
+          "rankClaim": "Master+",
+          "patch": "26.18",
+          "durationSec": 1544,
+          "patchEstimated": true,
+          "uploaded": "2026-09-22",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "lKiR9GogdVE",
+          "title": "1300LP Aphelios : His Mechanic is Gonna Blow You Mind - Engsub ( vs Kai'sa, Jinx )",
+          "rankClaim": "Master+",
+          "patch": "26.15",
+          "durationSec": 1348,
+          "patchEstimated": true,
+          "uploaded": "2026-08-05",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "J_PtKWm4Wp8",
+          "title": "1300LP Aphelios : DAM ! His Mechanic is Phenomenal - Engsub (Aphe vs Kai'sa, Ez)",
+          "rankClaim": "Master+",
+          "patch": "26.15",
+          "durationSec": 1404,
+          "patchEstimated": true,
+          "uploaded": "2026-08-01",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "bqX83K5-j90",
+          "title": "\"Jz\" 2000LP Aphelios : Satisfying Combos Deleting Enemy Team - Engsub (Aphe vs Ez, Kai'sa)",
+          "rankClaim": "Master+",
+          "patch": "26.14",
+          "durationSec": 1331,
+          "patchEstimated": true,
+          "player": "Jz",
+          "uploaded": "2026-07-25",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "iUdEfDOceuU",
+          "title": "Rank 1 Aphelios : His DAMAGE is Ridiculous Insane - Engsub ( Aphe vs MF, Kai'sa )",
+          "rankClaim": "Master+",
+          "patch": "26.10",
+          "durationSec": 1315,
+          "patchEstimated": true,
+          "uploaded": "2026-05-24",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "hFXpLMAwEyc",
+          "title": "Aphelios ADC vs Kai'Sa - TW Challenger Patch 26.07",
+          "rankClaim": "Challenger",
+          "patch": "26.7",
+          "durationSec": 1797,
+          "uploaded": "2026-04-05",
+          "moments": []
+        },
+        {
+          "videoId": "jHIQ8D5ickY",
+          "title": "Aphelios ADC vs Kai'Sa - KR Master Patch 25.24",
+          "rankClaim": "Master",
+          "patch": "25.24",
+          "durationSec": 1456,
+          "region": "KR",
+          "uploaded": "2025-12-25",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 145,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 378,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 618,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 826,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 850,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 882,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 999,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1030,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1042,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1058,
+              "label": "Hunt The Dragon",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1081,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1141,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1207,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1242,
+              "label": "Hunt The Atakhan"
+            },
+            {
+              "atSec": 1261,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1331,
+              "label": "Get a Triple Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1352,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1369,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1445,
+              "label": "End credit"
+            }
+          ]
+        },
+        {
+          "videoId": "y34j-EzhnSg",
+          "title": "Aphelios vs Kai'Sa ADC - KR Challenger - Patch 25.21 Season 15",
+          "rankClaim": "Challenger",
+          "patch": "25.21",
+          "durationSec": 1836,
+          "region": "KR",
+          "uploaded": "2025-11-06",
+          "moments": []
+        },
+        {
+          "videoId": "2wKkRn7Fpec",
+          "title": "Aphelios vs Kai'Sa ADC - KR Challenger - Patch 25.20 Season 15",
+          "rankClaim": "Challenger",
+          "patch": "25.20",
+          "durationSec": 1861,
+          "region": "KR",
+          "uploaded": "2025-10-11",
+          "moments": []
+        },
+        {
+          "videoId": "yQS_iPjzlWw",
+          "title": "Aphelios ADC vs Kai'Sa - EUW Challenger Patch 25.19",
+          "rankClaim": "Challenger",
+          "patch": "25.19",
+          "durationSec": 1928,
+          "region": "EUW",
+          "uploaded": "2025-10-09",
+          "moments": []
+        },
+        {
+          "videoId": "9pUUfoIAyJ4",
+          "title": "Aphelios vs Kaisa ADC [ HLE Viper ] Korea Challenger Patch 25.18",
+          "rankClaim": "Challenger",
+          "patch": "25.18",
+          "durationSec": 1491,
+          "region": "KR",
+          "player": "Viper",
+          "team": "HLE",
+          "uploaded": "2025-09-23",
+          "moments": []
+        },
+        {
+          "videoId": "rjrZmQ-OMd8",
+          "title": "Aphelios vs Kai'Sa ADC - KR Challenger - Patch 25.18 Season 15",
+          "rankClaim": "Challenger",
+          "patch": "25.18",
+          "durationSec": 1786,
+          "region": "KR",
+          "uploaded": "2025-09-22",
+          "moments": []
+        },
+        {
+          "videoId": "3cc36HABkaI",
+          "title": "Aphelios ADC vs Kai'Sa - EUW Challenger Patch 25.17",
+          "rankClaim": "Challenger",
+          "patch": "25.17",
+          "durationSec": 1881,
+          "region": "EUW",
+          "uploaded": "2025-09-10",
+          "moments": []
+        },
+        {
+          "videoId": "UzUhT_JNsjY",
+          "title": "Aphelios ADC vs Kai'Sa - EUW Grandmaster Patch 25.14",
+          "rankClaim": "Grandmaster",
+          "patch": "25.14",
+          "durationSec": 1597,
+          "region": "EUW",
+          "uploaded": "2025-07-31",
+          "moments": []
+        },
+        {
+          "videoId": "PQF1vaojSAc",
+          "title": "Aphelios ADC vs Kai'Sa - NA Challenger Patch 25.09",
+          "rankClaim": "Challenger",
+          "patch": "25.9",
+          "durationSec": 1428,
+          "region": "NA",
+          "uploaded": "2025-05-14",
+          "moments": []
+        },
+        {
+          "videoId": "NBcP1Jezbb4",
+          "title": "Aphelios ADC vs Kai'Sa - KR Challenger Patch 25.08",
+          "rankClaim": "Challenger",
+          "patch": "25.8",
+          "durationSec": 1731,
+          "region": "KR",
+          "uploaded": "2025-04-20",
+          "moments": []
+        },
+        {
+          "videoId": "mz0z4gI6qCk",
+          "title": "Aphelios ADC vs Kai'Sa - KR Grandmaster Patch 25.07",
+          "rankClaim": "Grandmaster",
+          "patch": "25.7",
+          "durationSec": 1798,
+          "region": "KR",
+          "uploaded": "2025-04-06",
+          "moments": []
+        },
+        {
+          "videoId": "WFs5eFEt47w",
+          "title": "Aphelios vs Kaisa ADC [ TripleKill ] Korea Master Patch 25.5 ✅",
+          "rankClaim": "Master",
+          "patch": "25.5",
+          "durationSec": 1562,
+          "region": "KR",
+          "player": "TripleKill",
+          "uploaded": "2025-03-08",
+          "moments": []
+        },
+        {
+          "videoId": "ylJxPpRQTWY",
+          "title": "Aphelios ADC vs Kai'Sa - KR Grandmaster Patch 25.04",
+          "rankClaim": "Grandmaster",
+          "patch": "25.4",
+          "durationSec": 2103,
+          "region": "KR",
+          "uploaded": "2025-02-24",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 301,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 412,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 591,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 899,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 928,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1050,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1075,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1269,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1371,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1425,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1570,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1730,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1756,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1789,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1802,
+              "label": "Take down The Inhibitor"
+            },
+            {
+              "atSec": 1821,
+              "label": "Get a Triple Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1997,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 2018,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 2047,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 2069,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 2082,
+              "label": "End credit"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 161,
+      "lane": "adc",
+      "videos": [
+        {
+          "videoId": "nxrfDQOq0Ts",
+          "title": "Rank 1 Aphelios : This Dude is on Beast Mode - Engsub ( vs Vel'koz, Ez )",
+          "rankClaim": "Master+",
+          "patch": "26.17",
+          "durationSec": 1508,
+          "patchEstimated": true,
+          "uploaded": "2026-08-31",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "MDpL4SO3Yys",
+          "title": "Rank 1 Aphelios : This Dude is a BEAST in KR HighElo - Engsub ( vs Vel'koz, Yunara )",
+          "rankClaim": "Master+",
+          "patch": "26.16",
+          "durationSec": 1013,
+          "region": "KR",
+          "patchEstimated": true,
+          "uploaded": "2026-08-16",
+          "format": "stream",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 163,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "r0qI_IeZS-Q",
+          "title": "Aphelios Mid vs Taliyah - KR Master Patch 26.13",
+          "rankClaim": "Master",
+          "patch": "26.13",
+          "durationSec": 1480,
+          "region": "KR",
+          "uploaded": "2026-07-09",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 202,
+      "lane": "adc",
+      "videos": [
+        {
+          "videoId": "GmK4pFt9_bE",
+          "title": "\"Jz\" 2000LP Aphelios : This Dude is LEGIT 1v9 HardCarry Saving The Game - Engsub ( vs Jhin, Tris )",
+          "rankClaim": "Master+",
+          "patch": "26.21",
+          "durationSec": 1403,
+          "patchEstimated": true,
+          "player": "Jz",
+          "uploaded": "2026-11-01",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "ePCC0ZOezhc",
+          "title": "\"003ad\" Rank 1 Aphelios : His Combos is TOTAL DESTRUCTIONS - Engsub ( vs Jhin, Xayah )",
+          "rankClaim": "Master+",
+          "patch": "26.20",
+          "durationSec": 1787,
+          "patchEstimated": true,
+          "uploaded": "2026-10-09",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "JbqzC9ZykVo",
+          "title": "T1 Peyz Aphelios vs Jhin [ ADC ] Korea Challenger 2225 LP | Patch 26.19",
+          "rankClaim": "Challenger",
+          "patch": "26.19",
+          "durationSec": 939,
+          "region": "KR",
+          "player": "Peyz",
+          "team": "T1",
+          "uploaded": "2026-10-06",
+          "moments": []
+        },
+        {
+          "videoId": "vwiyI8l90fs",
+          "title": "SMASH : His Aphelios Combos is Devastating - Engsub ( vs Jhin )",
+          "rankClaim": "Master+",
+          "patch": "26.17",
+          "durationSec": 1110,
+          "patchEstimated": true,
+          "player": "Smash",
+          "uploaded": "2026-08-29",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "V9dET0bshxA",
+          "title": "1300LP Aphelios : The Smoothest Aphelios Mechanics You’ll Ever See - Engsub ( vs MF, Jhin )",
+          "rankClaim": "Master+",
+          "patch": "26.16",
+          "durationSec": 1254,
+          "patchEstimated": true,
+          "uploaded": "2026-08-22",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "034uTBilM2k",
+          "title": "(DK Smash) Aphelios ADC vs Jhin - KR Challenger Patch 26.16",
+          "rankClaim": "Challenger",
+          "patch": "26.16",
+          "durationSec": 1751,
+          "region": "KR",
+          "player": "Smash",
+          "team": "DK",
+          "uploaded": "2026-08-19",
+          "moments": []
+        },
+        {
+          "videoId": "ZoQERsxsbYI",
+          "title": "DK Smash Aphelios vs Jhin [ ADC ] Korea Challenger 2255 LP | Patch 26.16",
+          "rankClaim": "Challenger",
+          "patch": "26.16",
+          "durationSec": 1538,
+          "region": "KR",
+          "player": "Smash",
+          "team": "DK",
+          "uploaded": "2026-08-17",
+          "moments": []
+        },
+        {
+          "videoId": "exjMKxETmPs",
+          "title": "Rank 1 Aphelios : He Make Super Server Master Elo Look Like AI - Engsub (Aphe vs Jhin, Jinx)",
+          "rankClaim": "Master",
+          "patch": "26.13",
+          "durationSec": 1314,
+          "patchEstimated": true,
+          "uploaded": "2026-06-28",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "5a0XUzxAAs4",
+          "title": "Aphelios vs Jhin ADC - EUW Challenger - Patch 16.04 Season 16",
+          "rankClaim": "Challenger",
+          "patch": "26.4",
+          "durationSec": 1801,
+          "region": "EUW",
+          "uploaded": "2026-03-02",
+          "moments": []
+        },
+        {
+          "videoId": "pN3xoMUDIYA",
+          "title": "Aphelios ADC vs Jhin - EUW Challenger Patch 26.02",
+          "rankClaim": "Challenger",
+          "patch": "26.2",
+          "durationSec": 1490,
+          "region": "EUW",
+          "uploaded": "2026-02-05",
+          "moments": []
+        },
+        {
+          "videoId": "T_gtX3L_YKk",
+          "title": "Aphelios ADC vs Jhin - EUW Challenger Patch 26.01",
+          "rankClaim": "Challenger",
+          "patch": "26.1",
+          "durationSec": 1593,
+          "region": "EUW",
+          "uploaded": "2026-01-23",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 133,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 285,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 439,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 659,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 690,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 758,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 857,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 884,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 909,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1007,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1054,
+              "label": "Get a Triple Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1143,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1377,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1450,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1475,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1497,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1512,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1524,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1546,
+              "label": "Take down The Inhibitor"
+            },
+            {
+              "atSec": 1559,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1582,
+              "label": "End credit"
+            }
+          ]
+        },
+        {
+          "videoId": "nEkwddB3ru4",
+          "title": "Aphelios vs Jhin ADC [ QuadraKill ] Korea Master Patch 25.21",
+          "rankClaim": "Master",
+          "patch": "25.21",
+          "durationSec": 1903,
+          "region": "KR",
+          "player": "QuadraKill",
+          "uploaded": "2025-10-27",
+          "moments": []
+        },
+        {
+          "videoId": "AsLd1ZFO_A0",
+          "title": "Aphelios ADC vs Jhin - EUW Challenger Patch 25.18",
+          "rankClaim": "Challenger",
+          "patch": "25.18",
+          "durationSec": 1661,
+          "region": "EUW",
+          "uploaded": "2025-09-24",
+          "moments": []
+        },
+        {
+          "videoId": "S5ZpRHejuIA",
+          "title": "Aphelios vs Jhin ADC - KR Challenger - Patch 25.13 Season 15",
+          "rankClaim": "Challenger",
+          "patch": "25.13",
+          "durationSec": 1951,
+          "region": "KR",
+          "uploaded": "2025-07-01",
+          "moments": []
+        },
+        {
+          "videoId": "FlHvAt5HgX0",
+          "title": "Aphelios vs Jhin ADC - KR CHallenger - Patch 25.7 Season 15",
+          "rankClaim": "Challenger",
+          "patch": "25.7",
+          "durationSec": 2791,
+          "region": "KR",
+          "uploaded": "2025-04-14",
+          "moments": []
+        },
+        {
+          "videoId": "0xBQcXFhQPE",
+          "title": "Aphelios ADC vs Jhin - EUW Grandmaster Patch 25.06",
+          "rankClaim": "Grandmaster",
+          "patch": "25.6",
+          "durationSec": 1695,
+          "region": "EUW",
+          "uploaded": "2025-04-01",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 221,
+      "lane": "adc",
+      "videos": [
+        {
+          "videoId": "iedknJ3rNmE",
+          "title": "Rank 1 Aphelios : BLASTING Enemies HP So Quick with Insane DAMAGE - Engsub ( vs Zeri, Caitlyn )",
+          "rankClaim": "Master+",
+          "patch": "26.21",
+          "durationSec": 1601,
+          "patchEstimated": true,
+          "uploaded": "2026-10-22",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "va9yp0P-dC4",
+          "title": "Rank 1 Aphelios : 1v9 Destroying CN Super Server Master Elo - Engsub ( vs Zeri, Kalista )",
+          "rankClaim": "Master",
+          "patch": "26.21",
+          "durationSec": 1784,
+          "patchEstimated": true,
+          "uploaded": "2026-10-21",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "GrEeCjzDFA0",
+          "title": "\"ShuangYi\" Rank 1 Aphelios : His Combos is so Satisfying to Watch - Engsub ( vs Zeri )",
+          "rankClaim": "Master+",
+          "patch": "26.18",
+          "durationSec": 1114,
+          "patchEstimated": true,
+          "uploaded": "2026-09-19",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "9NB2KROhXWw",
+          "title": "Rank 1 Aphelios : Infernum + Runaan is NEXT LEVEL of Destructions ( vs Zeri, Viktor )",
+          "rankClaim": "Master+",
+          "patch": "26.17",
+          "durationSec": 1427,
+          "patchEstimated": true,
+          "uploaded": "2026-08-26",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "TJdnqLTyzBg",
+          "title": "Rank 1 Aphelios : His Aphelios Is a DEADLY KILLING MACHINE ( vs Zeri, Jinx )",
+          "rankClaim": "Master+",
+          "patch": "26.16",
+          "durationSec": 1181,
+          "patchEstimated": true,
+          "uploaded": "2026-08-23",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "c4rtbdVqPfQ",
+          "title": "1300LP Aphelios : How to Play When Enemies Had so Much ASSASSIN - Engsub ( vs Zeri, Jinx )",
+          "rankClaim": "Master+",
+          "patch": "26.16",
+          "durationSec": 1224,
+          "patchEstimated": true,
+          "uploaded": "2026-08-12",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "jyGCe_nhaoA",
+          "title": "Rank 1 Aphelios : His Mechanic is so Dam Clean - Engsub ( vs Zeri, Yunara )",
+          "rankClaim": "Master+",
+          "patch": "26.15",
+          "durationSec": 1311,
+          "patchEstimated": true,
+          "uploaded": "2026-08-11",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "BpFscSptV-4",
+          "title": "\"HanQL\" 2255LP Aphelios : His Combos is so Satisfying to Watch - Engsub ( vs Zeri )",
+          "rankClaim": "Master+",
+          "patch": "26.15",
+          "durationSec": 1501,
+          "patchEstimated": true,
+          "player": "HanQL",
+          "uploaded": "2026-08-08",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "NhuFypp6KNw",
+          "title": "Rank 1 Aphelios : He is Slaughtering Super Server GrandMaster Elo - Engsub (Aphe vs Zeri, Caitlyn)",
+          "rankClaim": "Grandmaster",
+          "patch": "26.10",
+          "durationSec": 1350,
+          "patchEstimated": true,
+          "uploaded": "2026-05-26",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "JIHqP_i_ZcY",
+          "title": "Aphelios ADC vs Zeri - KR Grandmaster Patch 26.09",
+          "rankClaim": "Grandmaster",
+          "patch": "26.9",
+          "durationSec": 1480,
+          "region": "KR",
+          "uploaded": "2026-05-03",
+          "moments": []
+        },
+        {
+          "videoId": "kf-xE1ieMTQ",
+          "title": "Aphelios vs Zeri ADC - KR Challenger - Patch 25.20 Season 15",
+          "rankClaim": "Challenger",
+          "patch": "25.20",
+          "durationSec": 1546,
+          "region": "KR",
+          "uploaded": "2025-10-19",
+          "moments": []
+        },
+        {
+          "videoId": "mm1Y1N0GzAM",
+          "title": "Aphelios ADC vs Zeri - EUW Challenger Patch 25.13",
+          "rankClaim": "Challenger",
+          "patch": "25.13",
+          "durationSec": 1604,
+          "region": "EUW",
+          "uploaded": "2025-07-09",
+          "moments": []
+        },
+        {
+          "videoId": "0USLAalVMLA",
+          "title": "T1 Gumayusi Aphelios vs Zeri [ ADC ] Korea Challenger Patch 25.12",
+          "rankClaim": "Challenger",
+          "patch": "25.12",
+          "durationSec": 793,
+          "region": "KR",
+          "player": "Gumayusi",
+          "team": "T1",
+          "uploaded": "2025-06-24",
+          "moments": []
+        },
+        {
+          "videoId": "PUdYgIpug2I",
+          "title": "Aphelios vs Zeri ADC - KR Challenger - Patch 25.12 Season 15",
+          "rankClaim": "Challenger",
+          "patch": "25.12",
+          "durationSec": 1831,
+          "region": "KR",
+          "uploaded": "2025-06-17",
+          "moments": []
+        },
+        {
+          "videoId": "AP_9C2SUAhs",
+          "title": "T1 Smash Aphelios vs Zeri [ ADC ] Korea Challenger Patch 25.12",
+          "rankClaim": "Challenger",
+          "patch": "25.12",
+          "durationSec": 1588,
+          "region": "KR",
+          "player": "Smash",
+          "team": "T1",
+          "uploaded": "2025-06-14",
+          "moments": []
+        },
+        {
+          "videoId": "-hhqDBxMHZQ",
+          "title": "T1 Smash Aphelios vs Zeri [ ADC ] Korea Challenger Patch 25.6 ✅",
+          "rankClaim": "Challenger",
+          "patch": "25.6",
+          "durationSec": 1356,
+          "region": "KR",
+          "player": "Smash",
+          "team": "T1",
+          "uploaded": "2025-03-27",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 222,
+      "lane": "adc",
+      "videos": [
+        {
+          "videoId": "fhazVseZLeo",
+          "title": "\"Jz\" 2000LP Aphelios : His Combos is TOLTAL DESTRUCTIONS - Engsub ( vs Jinx, Kog'maw )",
+          "rankClaim": "Master+",
+          "patch": "26.21",
+          "durationSec": 1914,
+          "patchEstimated": true,
+          "player": "Jz",
+          "uploaded": "2026-10-30",
+          "format": "stream",
+          "moments": [
+            {
+              "atSec": 0,
+              "label": "Early game laning phase"
+            },
+            {
+              "atSec": 150,
+              "label": "Mid-game skirmishes"
+            },
+            {
+              "atSec": 425,
+              "label": "Turret sieges and objectives",
+              "kind": "tower"
+            },
+            {
+              "atSec": 737,
+              "label": "Escalating team fights",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1043,
+              "label": "Mid-game breakthrough"
+            },
+            {
+              "atSec": 1394,
+              "label": "Late game macro play"
+            },
+            {
+              "atSec": 1787,
+              "label": "Victory and endgame"
+            }
+          ]
+        },
+        {
+          "videoId": "B7ah38gXVEA",
+          "title": "Rank 1 Aphelios : This Game is BASIC Over At Level One - Engsub ( vs Ez, Jinx )",
+          "rankClaim": "Master+",
+          "patch": "26.21",
+          "durationSec": 1606,
+          "patchEstimated": true,
+          "uploaded": "2026-10-29",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "etPMkKPtAWI",
+          "title": "When Gumayusi using Aphelios Destroying Viper Jinx in Laning Phase - Engsub",
+          "rankClaim": "Master+",
+          "patch": "26.20",
+          "durationSec": 1031,
+          "patchEstimated": true,
+          "uploaded": "2026-10-13",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "pbt9M5RVHfw",
+          "title": "(xpd) Aphelios ADC vs Jinx (T1 Peyz) - KR Challenger Patch 26.20",
+          "rankClaim": "Challenger",
+          "patch": "26.20",
+          "durationSec": 1705,
+          "region": "KR",
+          "player": "Peyz",
+          "uploaded": "2026-10-10",
+          "result": "W",
+          "moments": [
+            {
+              "atSec": 101,
+              "label": "First Blood — Aphelios kills Jinx",
+              "kind": "kill"
+            },
+            {
+              "atSec": 272,
+              "label": "Aphelios takes down Jinx"
+            },
+            {
+              "atSec": 350,
+              "label": "Red takes 1st Dragon (Mountain)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 394,
+              "label": "Aphelios picks off Thresh"
+            },
+            {
+              "atSec": 495,
+              "label": "Aphelios takes down Jinx"
+            },
+            {
+              "atSec": 578,
+              "label": "Aphelios picks off Thresh"
+            },
+            {
+              "atSec": 683,
+              "label": "Blue takes 1st Dragon (Chemtech)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 705,
+              "label": "Aphelios picks off Thresh"
+            },
+            {
+              "atSec": 987,
+              "label": "Aphelios picks off Thresh"
+            },
+            {
+              "atSec": 1069,
+              "label": "Blue takes 2nd Dragon (Ocean)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1265,
+              "label": "Aphelios Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1368,
+              "label": "Red takes Baron",
+              "kind": "baron"
+            },
+            {
+              "atSec": 1395,
+              "label": "Blue takes 3rd Dragon (Ocean)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1523,
+              "label": "Sylas picks off Viego"
+            },
+            {
+              "atSec": 1564,
+              "label": "Mid Inhibitor falls (Blue)"
+            },
+            {
+              "atSec": 1639,
+              "label": "Aphelios picks off Kennen"
+            },
+            {
+              "atSec": 1645,
+              "label": "Aphelios Triple Kill",
+              "kind": "kill"
+            }
+          ]
+        },
+        {
+          "videoId": "Ype392t-bLw",
+          "title": "BLG Viper Aphelios vs Jinx [ ADC ] Korea Grandmaster 1637 LP | Patch 26.20",
+          "rankClaim": "Grandmaster",
+          "patch": "26.20",
+          "durationSec": 1502,
+          "region": "KR",
+          "player": "Viper",
+          "team": "BLG",
+          "uploaded": "2026-10-08",
+          "moments": []
+        },
+        {
+          "videoId": "mBdoBBAWXcY",
+          "title": "Rank 1 Aphelios : I’m back to KR Challenger ! Boy ... Engsub ( vs Jinx, Yunara )",
+          "rankClaim": "Challenger",
+          "patch": "26.17",
+          "durationSec": 1522,
+          "region": "KR",
+          "patchEstimated": true,
+          "uploaded": "2026-09-04",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "Z0CwoQ_R67M",
+          "title": "Rank 1 Aphelios : 1v5 Storming Korean Grand Master Elo - Engsub ( vs MF, Jinx )",
+          "rankClaim": "Master",
+          "patch": "26.15",
+          "durationSec": 1296,
+          "patchEstimated": true,
+          "uploaded": "2026-08-06",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "jpGFw_YBzCI",
+          "title": "\"HanQL\" 2255LP Aphelios : His Mechanic is LEGIT INSANE - Engsub (Aphe vs Jinx, Kai'sa)",
+          "rankClaim": "Master+",
+          "patch": "26.15",
+          "durationSec": 1272,
+          "patchEstimated": true,
+          "player": "HanQL",
+          "uploaded": "2026-07-30",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "sO7YC5COWX0",
+          "title": "\"Jz\" 2000LP Aphelios : Insane 1v9 Comeback of History - Engsub (Aphe vs Jinx)",
+          "rankClaim": "Master+",
+          "patch": "26.14",
+          "durationSec": 1393,
+          "patchEstimated": true,
+          "player": "Jz",
+          "uploaded": "2026-07-27",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "lc9C0VGwRcs",
+          "title": "(OLE Flakked) Aphelios ADC vs Jinx - EUW Challenger Patch 26.14",
+          "rankClaim": "Challenger",
+          "patch": "26.14",
+          "durationSec": 1770,
+          "region": "EUW",
+          "player": "OLE Flakked",
+          "uploaded": "2026-07-22",
+          "moments": []
+        },
+        {
+          "videoId": "FiZrxiMwx3Q",
+          "title": "Rank 1 Aphelios : He Make KR Challenger 1500LP Look Like AI ROBOT - Engsub (Aphe vs Jinx, Senna)",
+          "rankClaim": "Challenger",
+          "patch": "26.14",
+          "durationSec": 1325,
+          "region": "KR",
+          "patchEstimated": true,
+          "uploaded": "2026-07-17",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "nSZfI1dsQvs",
+          "title": "(VIT Carzzy) Aphelios ADC vs Jinx - EUW Master Patch 26.13",
+          "rankClaim": "Master",
+          "patch": "26.13",
+          "durationSec": 1486,
+          "region": "EUW",
+          "player": "VIT Carzzy",
+          "uploaded": "2026-06-29",
+          "moments": []
+        },
+        {
+          "videoId": "Z0H6Z6XSBIY",
+          "title": "Rank 1 Aphelios : His Mechanic is so DAM GOOD - Engsub ( Aphe vs Jinx, Zeri )",
+          "rankClaim": "Master+",
+          "patch": "26.10",
+          "durationSec": 1069,
+          "patchEstimated": true,
+          "uploaded": "2026-05-21",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "CPrj3lPVRxw",
+          "title": "Aphelios ADC vs Jinx - KR Challenger Patch 26.09",
+          "rankClaim": "Challenger",
+          "patch": "26.9",
+          "durationSec": 1493,
+          "region": "KR",
+          "uploaded": "2026-05-14",
+          "moments": []
+        },
+        {
+          "videoId": "8E2JXE8CUnw",
+          "title": "1300LP Aphelios : His Mechanic is Phenomenal - Engsub (Aphe vs Jinx, Twitch)",
+          "rankClaim": "Master+",
+          "patch": "26.9",
+          "durationSec": 1253,
+          "patchEstimated": true,
+          "uploaded": "2026-05-10",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "hzvhBM5D5Wg",
+          "title": "Aphelios vs Jinx ADC - KR Challenger - Patch 16.06 Season 16",
+          "rankClaim": "Challenger",
+          "patch": "26.6",
+          "durationSec": 2026,
+          "region": "KR",
+          "uploaded": "2026-03-27",
+          "moments": []
+        },
+        {
+          "videoId": "omKT-EPXJMM",
+          "title": "Aphelios ADC vs Jinx - EUW Challenger Patch 26.06",
+          "rankClaim": "Challenger",
+          "patch": "26.6",
+          "durationSec": 1570,
+          "region": "EUW",
+          "uploaded": "2026-03-22",
+          "moments": []
+        },
+        {
+          "videoId": "lZl5JxJNdn8",
+          "title": "Aphelios ADC vs Jinx - KR Master Patch 26.05",
+          "rankClaim": "Master",
+          "patch": "26.5",
+          "durationSec": 1558,
+          "region": "KR",
+          "uploaded": "2026-03-16",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 94,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 183,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 279,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 385,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 423,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 685,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 785,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 814,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 934,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1064,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1128,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1243,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1331,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1347,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1358,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1382,
+              "label": "Take down The Inhibitor"
+            },
+            {
+              "atSec": 1406,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1443,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1461,
+              "label": "Take down The Inhibitor"
+            },
+            {
+              "atSec": 1471,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1547,
+              "label": "End credit"
+            }
+          ]
+        },
+        {
+          "videoId": "g-Ml_UtaHmc",
+          "title": "Aphelios ADC vs Jinx - VN Challenger Patch 26.04",
+          "rankClaim": "Challenger",
+          "patch": "26.4",
+          "durationSec": 1496,
+          "uploaded": "2026-02-21",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 125,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 202,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 277,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 457,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 529,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 660,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 772,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 795,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1213,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1232,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1249,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1326,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1374,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1414,
+              "label": "Take down The Inhibitor"
+            },
+            {
+              "atSec": 1441,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1470,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1485,
+              "label": "End credit"
+            }
+          ]
+        },
+        {
+          "videoId": "vWAIhKEC1pM",
+          "title": "T1 Peyz Aphelios vs Jinx [ ADC ] Korea Challenger 1260 LP | Patch 26.2",
+          "rankClaim": "Challenger",
+          "patch": "26.2",
+          "durationSec": 1103,
+          "region": "KR",
+          "player": "Peyz",
+          "team": "T1",
+          "uploaded": "2026-01-23",
+          "moments": []
+        },
+        {
+          "videoId": "_B7V005ekvQ",
+          "title": "BLG Viper Aphelios vs Jinx [ ADC ] Patch 26.1 Ranked Korea ✅",
+          "rankClaim": "Master+",
+          "patch": "26.1",
+          "durationSec": 1450,
+          "region": "KR",
+          "player": "Viper",
+          "team": "BLG",
+          "uploaded": "2026-01-11",
+          "moments": []
+        },
+        {
+          "videoId": "T2WnuK0zo0g",
+          "title": "DK Smash Aphelios vs Jinx [ ADC ] Patch 25.24 Korea Challenger 1800 LP",
+          "rankClaim": "Challenger",
+          "patch": "25.24",
+          "durationSec": 1742,
+          "region": "KR",
+          "player": "Smash",
+          "team": "DK",
+          "uploaded": "2025-12-03",
+          "moments": []
+        },
+        {
+          "videoId": "6143HmqcXeM",
+          "title": "Aphelios vs Jinx ADC - KR Challenger - Patch 25.23 Season 15",
+          "rankClaim": "Challenger",
+          "patch": "25.23",
+          "durationSec": 1696,
+          "region": "KR",
+          "uploaded": "2025-12-02",
+          "moments": []
+        },
+        {
+          "videoId": "qXKaHyGOPMA",
+          "title": "Aphelios vs Jinx ADC - KR Challenger - Patch 25.23 Season 15",
+          "rankClaim": "Challenger",
+          "patch": "25.23",
+          "durationSec": 1691,
+          "region": "KR",
+          "uploaded": "2025-11-30",
+          "moments": []
+        },
+        {
+          "videoId": "8NhKZi1EIbA",
+          "title": "Aphelios ADC vs Jinx - KR Grandmaster Patch 25.23",
+          "rankClaim": "Grandmaster",
+          "patch": "25.23",
+          "durationSec": 1771,
+          "region": "KR",
+          "uploaded": "2025-11-22",
+          "moments": []
+        },
+        {
+          "videoId": "q5MneknAS9E",
+          "title": "Aphelios ADC vs Jinx - KR Challenger Patch 25.22",
+          "rankClaim": "Challenger",
+          "patch": "25.22",
+          "durationSec": 1804,
+          "region": "KR",
+          "uploaded": "2025-11-09",
+          "moments": []
+        },
+        {
+          "videoId": "qeg67THAm-A",
+          "title": "Aphelios vs Jinx [ ADC ] Lol Korea Master Patch 25.20 ✅",
+          "rankClaim": "Master",
+          "patch": "25.20",
+          "durationSec": 1424,
+          "region": "KR",
+          "uploaded": "2025-10-12",
+          "moments": []
+        },
+        {
+          "videoId": "qs0Ks8OWTsg",
+          "title": "Aphelios ADC vs Jinx - KR Grandmaster Patch 25.20",
+          "rankClaim": "Grandmaster",
+          "patch": "25.20",
+          "durationSec": 1584,
+          "region": "KR",
+          "uploaded": "2025-10-12",
+          "moments": []
+        },
+        {
+          "videoId": "J-jS5orqn5M",
+          "title": "Aphelios ADC vs Jinx - KR Grandmaster Patch 25.19",
+          "rankClaim": "Grandmaster",
+          "patch": "25.19",
+          "durationSec": 1848,
+          "region": "KR",
+          "uploaded": "2025-09-27",
+          "moments": []
+        },
+        {
+          "videoId": "Ov5K2kSqKZE",
+          "title": "Aphelios ADC vs Jinx - KR Grandmaster Patch 25.12",
+          "rankClaim": "Grandmaster",
+          "patch": "25.12",
+          "durationSec": 1875,
+          "region": "KR",
+          "uploaded": "2025-06-13",
+          "moments": []
+        },
+        {
+          "videoId": "Fw8QL-FuzIQ",
+          "title": "Aphelios ADC vs Jinx - KR Grandmaster Patch 25.11",
+          "rankClaim": "Grandmaster",
+          "patch": "25.11",
+          "durationSec": 1911,
+          "region": "KR",
+          "uploaded": "2025-06-04",
+          "moments": []
+        },
+        {
+          "videoId": "w4iwNHbyiBQ",
+          "title": "Aphelios ADC vs Jinx - KR Master Patch 25.10",
+          "rankClaim": "Master",
+          "patch": "25.10",
+          "durationSec": 1646,
+          "region": "KR",
+          "uploaded": "2025-05-19",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 230,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 400,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 629,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 823,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 840,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 905,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 935,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1005,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1033,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1122,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1155,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1185,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1254,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1290,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1301,
+              "label": "Hunt The Dragon",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1326,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1501,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1541,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1578,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1592,
+              "label": "Take down The Inhibitor"
+            },
+            {
+              "atSec": 1625,
+              "label": "End credit"
+            }
+          ]
+        },
+        {
+          "videoId": "Z5TpeV19R_0",
+          "title": "T1 Gumayusi Aphelios vs Jinx [ ADC ] Patch 25.10 Korea Grandmaster",
+          "rankClaim": "Grandmaster",
+          "patch": "25.10",
+          "durationSec": 1313,
+          "region": "KR",
+          "player": "Gumayusi",
+          "team": "T1",
+          "uploaded": "2025-05-18",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 235,
+      "lane": "adc",
+      "videos": [
+        {
+          "videoId": "XH7rMX5slpg",
+          "title": "Aiming Aphelios : From ZERO to HERO, Late Game He Become a GOD - Engsub (Aphe vs Senna)",
+          "rankClaim": "Master+",
+          "patch": "26.14",
+          "durationSec": 737,
+          "patchEstimated": true,
+          "player": "Aiming",
+          "uploaded": "2026-07-26",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "F8Ay2L-ur2I",
+          "title": "Rank 1 Aphelios : His Combos is TOTAL DESTRUCTIONS - Engsub (Aphe vs Senna)",
+          "rankClaim": "Master+",
+          "patch": "26.14",
+          "durationSec": 1402,
+          "patchEstimated": true,
+          "uploaded": "2026-07-20",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "i5xB29NueI0",
+          "title": "(KT Aiming) Aphelios ADC vs Senna (KRX Rich) - KR Challenger Patch 26.13",
+          "rankClaim": "Challenger",
+          "patch": "26.13",
+          "durationSec": 1819,
+          "region": "KR",
+          "player": "Aiming",
+          "team": "KT",
+          "uploaded": "2026-07-14",
+          "moments": []
+        },
+        {
+          "videoId": "YkZBTAoN2Uo",
+          "title": "Gumayusi : He is Conquering KR Challenger with \" Conqueror Aphelios \" Engsub ( Aphe vs Senna )",
+          "rankClaim": "Challenger",
+          "patch": "26.13",
+          "durationSec": 1012,
+          "region": "KR",
+          "patchEstimated": true,
+          "player": "Gumayusi",
+          "uploaded": "2026-07-01",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "r0TJv1-cRoQ",
+          "title": "T1 Peyz Aphelios vs Senna [ ADC ] Patch 26.13 Korea Challenger 2509 LP",
+          "rankClaim": "Challenger",
+          "patch": "26.13",
+          "durationSec": 1277,
+          "region": "KR",
+          "player": "Peyz",
+          "team": "T1",
+          "uploaded": "2026-06-25",
+          "moments": []
+        },
+        {
+          "videoId": "twe5p7t4QNo",
+          "title": "T1 Gumayusi Aphelios vs Senna [ ADC ] Patch 25.16 Korea Master",
+          "rankClaim": "Master",
+          "patch": "25.16",
+          "durationSec": 1561,
+          "region": "KR",
+          "player": "Gumayusi",
+          "team": "T1",
+          "uploaded": "2025-08-19",
+          "moments": []
+        },
+        {
+          "videoId": "KL9OUzubv0M",
+          "title": "T1 Smash Aphelios vs Senna [ ADC ] Korea Challenger Patch 25.12",
+          "rankClaim": "Challenger",
+          "patch": "25.12",
+          "durationSec": 1272,
+          "region": "KR",
+          "player": "Smash",
+          "team": "T1",
+          "uploaded": "2025-06-20",
+          "moments": []
+        },
+        {
+          "videoId": "UzgLpw2Wru8",
+          "title": "Aphelios vs Senna ADC - KR Grandmaster - Patch 25.10 Season 15",
+          "rankClaim": "Grandmaster",
+          "patch": "25.10",
+          "durationSec": 2236,
+          "region": "KR",
+          "uploaded": "2025-05-23",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 236,
+      "lane": "adc",
+      "videos": [
+        {
+          "videoId": "Vu9zgtEsKz4",
+          "title": "Rank 1 Aphelios : He Make Master Elo Look Like AI - Engsub ( vs Lucian, Kalista )",
+          "rankClaim": "Master",
+          "patch": "26.19",
+          "durationSec": 1820,
+          "patchEstimated": true,
+          "uploaded": "2026-10-04",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "XbMACfM72bQ",
+          "title": "Aphelios ADC vs Lucian - KR Master Patch 26.17",
+          "rankClaim": "Master",
+          "patch": "26.17",
+          "durationSec": 1754,
+          "region": "KR",
+          "uploaded": "2026-09-10",
+          "moments": []
+        },
+        {
+          "videoId": "VQQnSSMfUKM",
+          "title": "Rank 1 Aphelios : His Mechanic is Absolutely Disgusting - Engsub ( vs Lucian, Xayah)",
+          "rankClaim": "Master+",
+          "patch": "26.15",
+          "durationSec": 987,
+          "patchEstimated": true,
+          "uploaded": "2026-08-04",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "w43p6Nw0Lsk",
+          "title": "Rank 1 Aphelios : This Combos is Toltal Destructions - Engsub (Aphe vs Lucian, Ez)",
+          "rankClaim": "Master+",
+          "patch": "26.14",
+          "durationSec": 1439,
+          "patchEstimated": true,
+          "uploaded": "2026-07-24",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "YvqiIk7DLHo",
+          "title": "Rank 1 Aphelios : His DAMAGE is so DAM BROKEN - Engsub (Aphe vs Lucian,Caitlyn)",
+          "rankClaim": "Master+",
+          "patch": "26.13",
+          "durationSec": 1552,
+          "patchEstimated": true,
+          "uploaded": "2026-07-08",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "Yd7eJBdJXvU",
+          "title": "Aphelios ADC vs Lucian - KR Challenger Patch 26.08",
+          "rankClaim": "Challenger",
+          "patch": "26.8",
+          "durationSec": 1833,
+          "region": "KR",
+          "uploaded": "2026-05-01",
+          "result": "L",
+          "moments": [
+            {
+              "atSec": 178,
+              "label": "First Blood — Thresh kills Lucian",
+              "kind": "kill"
+            },
+            {
+              "atSec": 508,
+              "label": "Red takes 1st Dragon (Ocean)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 626,
+              "label": "Aphelios picks off Milio"
+            },
+            {
+              "atSec": 714,
+              "label": "Aphelios kills Orianna",
+              "kind": "kill"
+            },
+            {
+              "atSec": 748,
+              "label": "Aphelios eliminates Pantheon"
+            },
+            {
+              "atSec": 779,
+              "label": "Aphelios picks off Milio"
+            },
+            {
+              "atSec": 879,
+              "label": "Red takes 2nd Dragon (Hextech)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 890,
+              "label": "Aphelios takes down Lucian"
+            },
+            {
+              "atSec": 984,
+              "label": "Aphelios picks off Milio"
+            },
+            {
+              "atSec": 1005,
+              "label": "Aphelios picks off Varus"
+            },
+            {
+              "atSec": 1222,
+              "label": "Blue takes 1st Dragon (Chemtech)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1301,
+              "label": "Red takes Baron",
+              "kind": "baron"
+            },
+            {
+              "atSec": 1491,
+              "label": "Anivia kills Lucian",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1513,
+              "label": "Top Inhibitor falls (Blue)"
+            },
+            {
+              "atSec": 1571,
+              "label": "Red takes 3rd Dragon (Chemtech)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1729,
+              "label": "Red takes 2nd Baron",
+              "kind": "baron"
+            },
+            {
+              "atSec": 1770,
+              "label": "Aphelios Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1780,
+              "label": "Mid Inhibitor falls (Blue)"
+            }
+          ]
+        },
+        {
+          "videoId": "O7KgA7QBj5s",
+          "title": "Aphelios ADC vs Lucian - KR Challenger Patch 26.04",
+          "rankClaim": "Challenger",
+          "patch": "26.4",
+          "durationSec": 1891,
+          "region": "KR",
+          "uploaded": "2026-03-06",
+          "moments": []
+        },
+        {
+          "videoId": "XfH0M-tEmtk",
+          "title": "Aphelios ADC vs Lucian - KR Master Patch 26.01",
+          "rankClaim": "Master",
+          "patch": "26.1",
+          "durationSec": 1559,
+          "region": "KR",
+          "uploaded": "2026-01-11",
+          "moments": []
+        },
+        {
+          "videoId": "1NNGbB-lTVs",
+          "title": "Aphelios ADC vs Lucian - TW Challenger Patch 25.24",
+          "rankClaim": "Challenger",
+          "patch": "25.24",
+          "durationSec": 1523,
+          "uploaded": "2026-01-08",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 213,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 235,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 676,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 871,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 891,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 940,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1066,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1102,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1147,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1255,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1353,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1382,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1405,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1427,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1485,
+              "label": "Get a Quadra Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1512,
+              "label": "End credit"
+            }
+          ]
+        },
+        {
+          "videoId": "vahEKWBjegk",
+          "title": "Aphelios ADC vs Lucian - KR Challenger Patch 25.14",
+          "rankClaim": "Challenger",
+          "patch": "25.14",
+          "durationSec": 2020,
+          "region": "KR",
+          "uploaded": "2025-07-20",
+          "moments": []
+        },
+        {
+          "videoId": "ofJqFFnM5AQ",
+          "title": "Aphelios vs Lucian ADC [ JDG Peyz ] Patch 25.14 Korea Challenger ✅",
+          "rankClaim": "Challenger",
+          "patch": "25.14",
+          "durationSec": 1780,
+          "region": "KR",
+          "player": "Peyz",
+          "team": "JDG",
+          "uploaded": "2025-07-17",
+          "moments": []
+        },
+        {
+          "videoId": "oljk78YuvkY",
+          "title": "Aphelios vs Lucian ADC [ DRX Teddy ] Patch 25.13 Korea Challenger",
+          "rankClaim": "Challenger",
+          "patch": "25.13",
+          "durationSec": 1248,
+          "region": "KR",
+          "player": "Teddy",
+          "team": "DRX",
+          "uploaded": "2025-06-29",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 360,
+      "lane": "adc",
+      "videos": [
+        {
+          "videoId": "iVAsSyUUtGQ",
+          "title": "Rank 1 Aphelios : Phantom Dancer is NEXT LEVEL of Aphelios Power - Engsub (Aphe vs Samira, Kai'sa)",
+          "rankClaim": "Master+",
+          "patch": "26.14",
+          "durationSec": 1189,
+          "patchEstimated": true,
+          "uploaded": "2026-07-23",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "Fo02DLlf50U",
+          "title": "Rank 1 Aphelios : He Make GrandMaster Look Like NPC - Engsub ( Aphe vs Samira )",
+          "rankClaim": "Grandmaster",
+          "patch": "26.11",
+          "durationSec": 1047,
+          "patchEstimated": true,
+          "uploaded": "2026-06-08",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "8fUXlcb87eY",
+          "title": "Rank 1 Aphelios : Stormrazor Aphelios Storming HighElo - Engsub ( Aphe vs Samira, Tris )",
+          "rankClaim": "Master+",
+          "patch": "26.10",
+          "durationSec": 1356,
+          "patchEstimated": true,
+          "uploaded": "2026-05-20",
+          "format": "stream",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 429,
+      "lane": "adc",
+      "videos": [
+        {
+          "videoId": "9thAGD99HXY",
+          "title": "(Art) Aphelios ADC vs Kalista - KR Grandmaster Patch 26.20",
+          "rankClaim": "Grandmaster",
+          "patch": "26.20",
+          "durationSec": 1600,
+          "region": "KR",
+          "player": "Art",
+          "uploaded": "2026-10-22",
+          "result": "W",
+          "moments": [
+            {
+              "atSec": 83,
+              "label": "First Blood — Lee Sin kills Renata Glasc",
+              "kind": "kill"
+            },
+            {
+              "atSec": 202,
+              "label": "Zoe takes down Renata Glasc"
+            },
+            {
+              "atSec": 325,
+              "label": "Aphelios takes down Kalista"
+            },
+            {
+              "atSec": 471,
+              "label": "Aphelios eliminates Hecarim"
+            },
+            {
+              "atSec": 566,
+              "label": "Team fight (3 kills)",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 852,
+              "label": "Aphelios takes down Kalista"
+            },
+            {
+              "atSec": 1107,
+              "label": "Aphelios Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1186,
+              "label": "Blue takes 1st Dragon (Mountain)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1202,
+              "label": "Lee Sin Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1273,
+              "label": "Blue takes Baron",
+              "kind": "baron"
+            },
+            {
+              "atSec": 1366,
+              "label": "Aphelios takes down Kalista"
+            },
+            {
+              "atSec": 1500,
+              "label": "Pantheon picks off Kalista"
+            },
+            {
+              "atSec": 1510,
+              "label": "Blue takes 2nd Dragon (Hextech)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1541,
+              "label": "Mid Inhibitor falls (Red)"
+            }
+          ]
+        },
+        {
+          "videoId": "Q-U0LuK0j2s",
+          "title": "Rank 1 Aphelios: He is BLOWING KR Challenger Elo with C44 Aphelios - Engsub (Aphe vs Kalista, Senna)",
+          "rankClaim": "Challenger",
+          "patch": "26.13",
+          "durationSec": 1087,
+          "region": "KR",
+          "patchEstimated": true,
+          "uploaded": "2026-07-03",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "FXj629zgJIM",
+          "title": "Rank 1 Aphelios : DOMINATING KOREAN HighElo - Engsub ( Aphelios vs Kalista )",
+          "rankClaim": "Master+",
+          "patch": "26.9",
+          "durationSec": 999,
+          "patchEstimated": true,
+          "uploaded": "2026-05-02",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "QogVUBpzx0Y",
+          "title": "Aphelios ADC vs Kalista - EUW Grandmaster Patch 25.16",
+          "rankClaim": "Grandmaster",
+          "patch": "25.16",
+          "durationSec": 1752,
+          "region": "EUW",
+          "uploaded": "2025-08-28",
+          "moments": []
+        },
+        {
+          "videoId": "emeZdHeiVrc",
+          "title": "Aphelios vs Kalista ADC - KR Challenger - Patch 15.4 Season 15",
+          "rankClaim": "Challenger",
+          "patch": "25.4",
+          "durationSec": 2681,
+          "region": "KR",
+          "uploaded": "2025-02-24",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 498,
+      "lane": "adc",
+      "videos": [
+        {
+          "videoId": "pLiV0G7OXag",
+          "title": "Rank 1 Aphelios : His Mechanic is so Overwhelming KR Challenger - Engsub (vs MF, Xayah)",
+          "rankClaim": "Challenger",
+          "patch": "26.15",
+          "durationSec": 1330,
+          "region": "KR",
+          "patchEstimated": true,
+          "uploaded": "2026-08-02",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "93VujxEfDfs",
+          "title": "Rank 1 Aphelios : He is STORMING KR HighElo with this BUILD - Engsub ( Aphe vs Xayah, Lucian)",
+          "rankClaim": "Master+",
+          "patch": "26.13",
+          "durationSec": 1188,
+          "region": "KR",
+          "patchEstimated": true,
+          "uploaded": "2026-06-30",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "PtycPbbapwA",
+          "title": "Rank 1 Aphelios : He Just SMURFING on Super Server Challenger - Engsub ( Aphe vs Xayah, Yunara )",
+          "rankClaim": "Challenger",
+          "patch": "26.11",
+          "durationSec": 1364,
+          "patchEstimated": true,
+          "uploaded": "2026-06-06",
+          "format": "stream",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 800,
+      "lane": "adc",
+      "videos": [
+        {
+          "videoId": "vuq2bBSwitI",
+          "title": "Rank 1 Aphelios : This ITEM Make Aphelios is so BROKEN ! Engsub ( Aphe vs Mel )",
+          "rankClaim": "Master+",
+          "patch": "26.9",
+          "durationSec": 990,
+          "patchEstimated": true,
+          "uploaded": "2026-05-03",
+          "format": "stream",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 804,
+      "lane": "adc",
+      "videos": [
+        {
+          "videoId": "Zkn8hMHqzz4",
+          "title": "(Bull) Aphelios ADC vs Yunara (T1 Eclipse) - KR Challenger Patch 26.21",
+          "rankClaim": "Challenger",
+          "patch": "26.21",
+          "durationSec": 1623,
+          "region": "KR",
+          "player": "Bull",
+          "uploaded": "2026-10-24",
+          "result": "W",
+          "moments": [
+            {
+              "atSec": 274,
+              "label": "First Blood — Aphelios kills Yunara",
+              "kind": "kill"
+            },
+            {
+              "atSec": 303,
+              "label": "Blue takes 1st Dragon (Cloud)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 776,
+              "label": "Aphelios takes down Yunara"
+            },
+            {
+              "atSec": 801,
+              "label": "Red takes 1st Dragon (Chemtech)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 837,
+              "label": "Aphelios takes down Yunara"
+            },
+            {
+              "atSec": 902,
+              "label": "Aphelios eliminates Viego"
+            },
+            {
+              "atSec": 1068,
+              "label": "Jax Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1075,
+              "label": "Aphelios Triple Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1118,
+              "label": "Red takes 2nd Dragon (Infernal)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1190,
+              "label": "Aphelios Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1251,
+              "label": "Team fight (3 kills)",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1293,
+              "label": "Red takes Baron",
+              "kind": "baron"
+            },
+            {
+              "atSec": 1341,
+              "label": "Aphelios kills Taliyah",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1349,
+              "label": "Aphelios Triple Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1373,
+              "label": "Mid Inhibitor falls (Blue)"
+            },
+            {
+              "atSec": 1458,
+              "label": "Blue takes 2nd Dragon (Infernal)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1551,
+              "label": "Nidalee kills Lulu",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1553,
+              "label": "Aphelios Triple Kill",
+              "kind": "kill"
+            }
+          ]
+        },
+        {
+          "videoId": "nlhhzIpwEiA",
+          "title": "T1 Peyz Aphelios vs Yunara [ ADC ] Korea Challenger 2289 LP | Patch 26.20",
+          "rankClaim": "Challenger",
+          "patch": "26.20",
+          "durationSec": 1332,
+          "region": "KR",
+          "player": "Peyz",
+          "team": "T1",
+          "uploaded": "2026-10-14",
+          "moments": []
+        },
+        {
+          "videoId": "iHl0H_ol7q4",
+          "title": "DK Smash Aphelios vs Yunara [ ADC ] Korea Challenger 2423 LP | Patch 26.19",
+          "rankClaim": "Challenger",
+          "patch": "26.19",
+          "durationSec": 1235,
+          "region": "KR",
+          "player": "Smash",
+          "team": "DK",
+          "uploaded": "2026-10-04",
+          "moments": []
+        },
+        {
+          "videoId": "ba_cyNN64Ng",
+          "title": "Aphelios vs Yunara ADC - KR Challenger - Patch 16.19 Season 16",
+          "rankClaim": "Challenger",
+          "patch": "26.19",
+          "durationSec": 1776,
+          "region": "KR",
+          "uploaded": "2026-10-03",
+          "moments": []
+        },
+        {
+          "videoId": "FZSuhaFWT9M",
+          "title": "Rank 1 Aphelios : His Combos is TOTAL DESTRUCTIONS - Engsub ( vs Yunara, Kai'sa )",
+          "rankClaim": "Master+",
+          "patch": "26.19",
+          "durationSec": 1400,
+          "patchEstimated": true,
+          "uploaded": "2026-09-30",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "wl2Chdz7_UM",
+          "title": "Aphelios ADC vs Yunara - KR Master Patch 26.19",
+          "rankClaim": "Master",
+          "patch": "26.19",
+          "durationSec": 1465,
+          "region": "KR",
+          "uploaded": "2026-09-27",
+          "result": "W",
+          "moments": [
+            {
+              "atSec": 125,
+              "label": "First Blood — Aphelios kills Yunara",
+              "kind": "kill"
+            },
+            {
+              "atSec": 434,
+              "label": "Blue takes 1st Dragon (Hextech)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 543,
+              "label": "Aphelios takes down Yunara"
+            },
+            {
+              "atSec": 628,
+              "label": "Aphelios outduels Yunara"
+            },
+            {
+              "atSec": 727,
+              "label": "Aphelios takes down Yunara"
+            },
+            {
+              "atSec": 769,
+              "label": "Red takes 1st Dragon (Chemtech)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 867,
+              "label": "Aphelios picks off LeBlanc"
+            },
+            {
+              "atSec": 905,
+              "label": "Aphelios Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 929,
+              "label": "Red takes Rift Herald",
+              "kind": "herald"
+            },
+            {
+              "atSec": 962,
+              "label": "Aphelios picks off Blitzcrank"
+            },
+            {
+              "atSec": 990,
+              "label": "Aphelios eliminates Lee Sin"
+            },
+            {
+              "atSec": 1101,
+              "label": "Blue takes 2nd Dragon (Cloud)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1130,
+              "label": "Gragas eliminates LeBlanc"
+            },
+            {
+              "atSec": 1186,
+              "label": "Aphelios outplays Yunara again"
+            },
+            {
+              "atSec": 1273,
+              "label": "Aphelios Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1309,
+              "label": "Red takes Baron",
+              "kind": "baron"
+            },
+            {
+              "atSec": 1389,
+              "label": "Mid Inhibitor falls (Blue)"
+            },
+            {
+              "atSec": 1409,
+              "label": "Aphelios Double Kill",
+              "kind": "kill"
+            }
+          ]
+        },
+        {
+          "videoId": "X4aQDWVjYYs",
+          "title": "Rank 1 Aphelios : STROMING Super Server Master Elo - Engsub ( vs Ez, Yunara )",
+          "rankClaim": "Master",
+          "patch": "26.18",
+          "durationSec": 1433,
+          "patchEstimated": true,
+          "uploaded": "2026-09-21",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "EbzEBsE5Hg4",
+          "title": "Rank 1 Aphelios : He Turn a GOD in Last TeamFighting - Engsub ( vs Yunara )",
+          "rankClaim": "Master+",
+          "patch": "26.18",
+          "durationSec": 810,
+          "patchEstimated": true,
+          "uploaded": "2026-09-11",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "zLlTdlTYLv0",
+          "title": "1300LP Aphelios : His Chaning Gun in Midle Of TeamFight is 200IQ - Engsub ( vs Ez, Yunara )",
+          "rankClaim": "Master+",
+          "patch": "26.16",
+          "durationSec": 1601,
+          "patchEstimated": true,
+          "uploaded": "2026-08-21",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "C4q8m93nQik",
+          "title": "Rank 1 Aphelios : DOMINATING KOREAN Challenger at 1800LP Match ( vs Yunara, Ez )",
+          "rankClaim": "Challenger",
+          "patch": "26.16",
+          "durationSec": 1485,
+          "patchEstimated": true,
+          "uploaded": "2026-08-19",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "Ih_Q7KkdVoQ",
+          "title": "Rank 1 Aphelios : His DAMAGE is so BROKEN with C44 - Engsub ( Aphe vs Yunara, Tris )",
+          "rankClaim": "Master+",
+          "patch": "26.10",
+          "durationSec": 1297,
+          "patchEstimated": true,
+          "uploaded": "2026-05-19",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "BYOazSDgK1w",
+          "title": "Rank 1 Aphelios : Insane 1v5 HardCarry in HighElo - Engsub ( Aphe vs Yunara, Tris )",
+          "rankClaim": "Master+",
+          "patch": "26.10",
+          "durationSec": 1444,
+          "patchEstimated": true,
+          "uploaded": "2026-05-15",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "uTJ9YWq2PYk",
+          "title": "Rank 1 Aphelios : His Combos is Gonna Blow You Mind - Engsub ( Aphe vs Yunara )",
+          "rankClaim": "Master+",
+          "patch": "26.9",
+          "durationSec": 833,
+          "patchEstimated": true,
+          "uploaded": "2026-05-05",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "D8j-eONau94",
+          "title": "Aphelios vs Yunara ADC - KR Challenger - Patch 16.06 Season 16",
+          "rankClaim": "Challenger",
+          "patch": "26.6",
+          "durationSec": 1441,
+          "region": "KR",
+          "uploaded": "2026-03-31",
+          "moments": []
+        },
+        {
+          "videoId": "GejfRBpmaXw",
+          "title": "Aphelios vs Yunara ADC [ Gen.G Ruler ] Korea Grandmaster Patch 26.4 ✅",
+          "rankClaim": "Grandmaster",
+          "patch": "26.4",
+          "durationSec": 1135,
+          "region": "KR",
+          "player": "Ruler",
+          "team": "Gen.G",
+          "uploaded": "2026-02-23",
+          "moments": []
+        },
+        {
+          "videoId": "tx2WQGOV0lg",
+          "title": "Aphelios ADC vs Yunara - KR Challenger Patch 26.02",
+          "rankClaim": "Challenger",
+          "patch": "26.2",
+          "durationSec": 1472,
+          "region": "KR",
+          "uploaded": "2026-01-24",
+          "moments": []
+        },
+        {
+          "videoId": "242NxqvDWQE",
+          "title": "T1 Peyz Aphelios vs Yunara [ ADC ] Patch 26.1 Ranked Korea",
+          "rankClaim": "Master+",
+          "patch": "26.1",
+          "durationSec": 1911,
+          "region": "KR",
+          "player": "Peyz",
+          "team": "T1",
+          "uploaded": "2026-01-09",
+          "moments": []
+        },
+        {
+          "videoId": "OLvEAa_loW4",
+          "title": "Viper Aphelios vs Yunara ADC - KR Grandmaster - Patch 25.24 Season 15",
+          "rankClaim": "Grandmaster",
+          "patch": "25.24",
+          "durationSec": 1726,
+          "region": "KR",
+          "player": "Viper",
+          "uploaded": "2025-12-30",
+          "moments": []
+        },
+        {
+          "videoId": "syRRudSJsJg",
+          "title": "Aphelios vs Yunara ADC - KR Challenger - Patch 25.24 Season 15",
+          "rankClaim": "Challenger",
+          "patch": "25.24",
+          "durationSec": 2101,
+          "region": "KR",
+          "uploaded": "2025-12-29",
+          "moments": []
+        },
+        {
+          "videoId": "tqqdtf1-XgI",
+          "title": "BLG Viper Aphelios vs Yunara [ ADC ] Patch 25.24 Ranked Korea ✅",
+          "rankClaim": "Master+",
+          "patch": "25.24",
+          "durationSec": 1450,
+          "region": "KR",
+          "player": "Viper",
+          "team": "BLG",
+          "uploaded": "2025-12-29",
+          "moments": []
+        },
+        {
+          "videoId": "zNaEiiquxqA",
+          "title": "Aphelios vs Yunara ADC [ BLG Viper ] Patch 25.24 Ranked Korea ✅",
+          "rankClaim": "Master+",
+          "patch": "25.24",
+          "durationSec": 1201,
+          "region": "KR",
+          "player": "Viper",
+          "team": "BLG",
+          "uploaded": "2025-12-24",
+          "moments": []
+        },
+        {
+          "videoId": "oFcDKNgy9Fg",
+          "title": "Aphelios vs Yunara ADC [ Teddy ] Korea Challenger 1220 LP | Patch 25.24",
+          "rankClaim": "Challenger",
+          "patch": "25.24",
+          "durationSec": 1448,
+          "region": "KR",
+          "player": "Teddy",
+          "uploaded": "2025-12-12",
+          "moments": []
+        },
+        {
+          "videoId": "zvlsS_aSNiM",
+          "title": "T1 Peyz Aphelios vs Yunara [ ADC ] Patch 25.24 Ranked Korea",
+          "rankClaim": "Master+",
+          "patch": "25.24",
+          "durationSec": 913,
+          "region": "KR",
+          "player": "Peyz",
+          "team": "T1",
+          "uploaded": "2025-12-08",
+          "moments": []
+        },
+        {
+          "videoId": "lE_hmHXVhEk",
+          "title": "Aphelios vs Yunara ADC - KR Challenger - Patch 25.24 Season 15",
+          "rankClaim": "Challenger",
+          "patch": "25.24",
+          "durationSec": 1771,
+          "region": "KR",
+          "uploaded": "2025-12-07",
+          "moments": []
+        },
+        {
+          "videoId": "pZotHWmJagI",
+          "title": "Aphelios vs Yunara ADC [ TripleKill ] Korea Master Patch 25.22",
+          "rankClaim": "Master",
+          "patch": "25.22",
+          "durationSec": 1922,
+          "region": "KR",
+          "player": "TripleKill",
+          "uploaded": "2025-11-07",
+          "moments": []
+        },
+        {
+          "videoId": "9bS8lydL2r0",
+          "title": "Aphelios ADC vs Yunara - KR Master Patch 25.21",
+          "rankClaim": "Master",
+          "patch": "25.21",
+          "durationSec": 1770,
+          "region": "KR",
+          "uploaded": "2025-10-25",
+          "moments": []
+        },
+        {
+          "videoId": "GqtRn0ab_6E",
+          "title": "Aphelios vs Yunara ADC - KR Challenger - Patch 25.19 Season 15",
+          "rankClaim": "Challenger",
+          "patch": "25.19",
+          "durationSec": 1831,
+          "region": "KR",
+          "uploaded": "2025-10-06",
+          "moments": []
+        },
+        {
+          "videoId": "HEYZ4kofD0Y",
+          "title": "Aphelios ADC vs Yunara - EUW Challenger Patch 25.15",
+          "rankClaim": "Challenger",
+          "patch": "25.15",
+          "durationSec": 1795,
+          "region": "EUW",
+          "uploaded": "2025-08-14",
+          "moments": []
+        },
+        {
+          "videoId": "f0x0CIroIPE",
+          "title": "Aphelios vs Yunara ADC - KR Grandmaster - Patch 25.15 Season 15",
+          "rankClaim": "Grandmaster",
+          "patch": "25.15",
+          "durationSec": 2041,
+          "region": "KR",
+          "uploaded": "2025-08-13",
+          "moments": []
+        },
+        {
+          "videoId": "THTBJZh5rVA",
+          "title": "T1 Smash Aphelios vs Yunara [ ADC ] Korea Challenger Patch 25.15",
+          "rankClaim": "Challenger",
+          "patch": "25.15",
+          "durationSec": 1154,
+          "region": "KR",
+          "player": "Smash",
+          "team": "T1",
+          "uploaded": "2025-08-09",
+          "moments": []
+        },
+        {
+          "videoId": "aBkuZ7tJuE8",
+          "title": "Aphelios vs Yunara ADC - KR Grandmaster - Patch 25.14 Season 15",
+          "rankClaim": "Grandmaster",
+          "patch": "25.14",
+          "durationSec": 1806,
+          "region": "KR",
+          "uploaded": "2025-07-23",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 893,
+      "lane": "adc",
+      "videos": [
+        {
+          "videoId": "imhwCMGLNR8",
+          "title": "Rank 1 Aphelios : His DAMAGE is Ridiculous Insane - Engsub (Aphe vs Aurora, Ashe)",
+          "rankClaim": "Master+",
+          "patch": "26.14",
+          "durationSec": 1522,
+          "patchEstimated": true,
+          "uploaded": "2026-07-21",
+          "format": "stream",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 895,
+      "lane": "adc",
+      "videos": [
+        {
+          "videoId": "uwlFCDMoQRM",
+          "title": "1600LP Aphelios : His DAMAGE is so DAM BROKEN ! Engsub (Aphe vs Nilah, Smolder)",
+          "rankClaim": "Master+",
+          "patch": "26.12",
+          "durationSec": 1490,
+          "patchEstimated": true,
+          "uploaded": "2026-06-12",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "VLAclN2fGpA",
+          "title": "Rank 1 Aphelios : Taking Over Super Server 1000LP in Less 20 Min - Engsub ( Aphe vs Nilah )",
+          "rankClaim": "Master+",
+          "patch": "26.11",
+          "durationSec": 1105,
+          "patchEstimated": true,
+          "uploaded": "2026-06-02",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "l7LZ7qs2yZA",
+          "title": "Aphelios ADC vs Nilah - EUW Challenger Patch 26.05",
+          "rankClaim": "Challenger",
+          "patch": "26.5",
+          "durationSec": 1666,
+          "region": "EUW",
+          "uploaded": "2026-03-07",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 901,
+      "lane": "adc",
+      "videos": [
+        {
+          "videoId": "lReVh_yryJE",
+          "title": "Rank 1 Aphelios : His Mechanic is Phenomenal - Engsub ( vs MF, Smolder )",
+          "rankClaim": "Master+",
+          "patch": "26.15",
+          "durationSec": 1382,
+          "patchEstimated": true,
+          "uploaded": "2026-08-07",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "Ayg_j67pkpc",
+          "title": "Rank 1 Aphelios : His Mechanic is on A NEXT LEVEL - Engsub ( Aphe vs Smolder )",
+          "rankClaim": "Master+",
+          "patch": "26.12",
+          "durationSec": 1158,
+          "patchEstimated": true,
+          "uploaded": "2026-06-10",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "clVCFC4A3k8",
+          "title": "Rank 1 Aphelios : His Combos is TOLTAL DESTRUCTIONS - Engsub ( Aphe vs Smolder, Tris )",
+          "rankClaim": "Master+",
+          "patch": "26.10",
+          "durationSec": 1264,
+          "patchEstimated": true,
+          "uploaded": "2026-05-23",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "YL642v6uaa8",
+          "title": "Aphelios ADC vs Smolder - KR Master Patch 26.08",
+          "rankClaim": "Master",
+          "patch": "26.8",
+          "durationSec": 1643,
+          "region": "KR",
+          "uploaded": "2026-04-21",
+          "moments": []
+        },
+        {
+          "videoId": "V60Wa-WXe20",
+          "title": "Aphelios ADC vs Smolder - EUW Grandmaster Patch 25.24",
+          "rankClaim": "Grandmaster",
+          "patch": "25.24",
+          "durationSec": 1464,
+          "region": "EUW",
+          "uploaded": "2025-12-17",
+          "moments": []
+        },
+        {
+          "videoId": "9u_Evw-0zCg",
+          "title": "Aphelios vs Smolder [ ADC ] Korea Challenger 1204 LP | Patch 25.23",
+          "rankClaim": "Challenger",
+          "patch": "25.23",
+          "durationSec": 1526,
+          "region": "KR",
+          "uploaded": "2025-11-28",
+          "moments": []
+        },
+        {
+          "videoId": "3GTLdByoByI",
+          "title": "Aphelios ADC vs Smolder - KR Challenger Patch 25.06",
+          "rankClaim": "Challenger",
+          "patch": "25.6",
+          "durationSec": 1691,
+          "region": "KR",
+          "uploaded": "2025-03-24",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 910,
+      "lane": "adc",
+      "videos": [
+        {
+          "videoId": "rBW9c8UOJgI",
+          "title": "T1 Gumayusi Aphelios vs Hwei [ ADC ] Korea Challenger Patch 25.13",
+          "rankClaim": "Challenger",
+          "patch": "25.13",
+          "durationSec": 909,
+          "region": "KR",
+          "player": "Gumayusi",
+          "team": "T1",
+          "uploaded": "2025-06-27",
+          "moments": []
+        }
+      ]
+    }
+  ]
+}

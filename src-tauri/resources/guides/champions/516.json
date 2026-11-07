@@ -1,0 +1,4150 @@
+{
+  "schema": 1,
+  "champion": 516,
+  "generatedAt": "2026-11-07T13:25:14.592Z",
+  "guides": [],
+  "general": [
+    {
+      "champion": 516,
+      "lane": "top",
+      "patch": "26.21",
+      "reviewed": false,
+      "keyTips": [
+        {
+          "text": "Play safely for the first few levels and fight only with a clear advantage; Ornn is vulnerable to early pressure before his abilities and health items come online.",
+          "scope": "champion",
+          "sourceIds": [
+            "mobalytics-ornn-top"
+          ]
+        },
+        {
+          "text": "Level six is the first major spike because Call of the Forge God adds a reliable way to start fights and threaten an overextended opponent.",
+          "scope": "champion",
+          "sourceIds": [
+            "mobalytics-ornn-top"
+          ],
+          "abilityKeys": [
+            {
+              "champion": 516,
+              "key": "R"
+            }
+          ]
+        },
+        {
+          "text": "In late game, hold the ultimate for a fight or a pick on an isolated enemy; a well-timed cast sets up the jungler and can knock up several opponents.",
+          "scope": "champion",
+          "sourceIds": [
+            "mobalytics-ornn-top"
+          ],
+          "abilityKeys": [
+            {
+              "champion": 516,
+              "key": "R"
+            }
+          ]
+        }
+      ],
+      "sections": {
+        "overview": {
+          "tips": []
+        },
+        "early-lane": {
+          "tips": [
+            {
+              "text": "Keep the wave closer to your side of the lane for protection while Ornn is still fragile.",
+              "scope": "champion",
+              "sourceIds": [
+                "mobalytics-ornn-top"
+              ]
+            },
+            {
+              "text": "Before level six, use lane brushes and trade when opponents step close or overstay; avoid telegraphed trades into a dominant early laner.",
+              "scope": "champion",
+              "sourceIds": [
+                "mobalytics-ornn-top"
+              ]
+            },
+            {
+              "text": "The first item component improves lane damage and durability, and preserving health can let you stay in lane and keep collecting farm.",
+              "scope": "champion",
+              "sourceIds": [
+                "mobalytics-ornn-top"
+              ]
+            },
+            {
+              "text": "Give up aggressive positioning against stronger early laners and wait for the level-six ultimate or item timings to contest the wave.",
+              "scope": "champion",
+              "sourceIds": [
+                "mobalytics-ornn-top"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 516,
+                  "key": "R"
+                }
+              ]
+            }
+          ]
+        },
+        "mid-lane": {
+          "tips": [
+            {
+              "text": "Push a side lane near upcoming objectives and use Ornn's dueling strength against opponents who come to stop you.",
+              "scope": "champion",
+              "sourceIds": [
+                "mobalytics-ornn-top"
+              ]
+            },
+            {
+              "text": "Be ready to regroup for a five-versus-five when no nearby objective is available; split only when you can convert the pressure instead of staying isolated without purpose.",
+              "scope": "champion",
+              "sourceIds": [
+                "mobalytics-ornn-top"
+              ]
+            },
+            {
+              "text": "A second point in Call of the Forge God increases its damage and lets you create plays more often.",
+              "scope": "champion",
+              "sourceIds": [
+                "mobalytics-ornn-top"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 516,
+                  "key": "R"
+                }
+              ]
+            },
+            {
+              "text": "Max Searing Charge first, followed by Bellows Breath and then Volcanic Rupture, starting Q, W, E and upgrading the ultimate at levels six, eleven, and sixteen.",
+              "scope": "champion",
+              "sourceIds": [
+                "mobalytics-ornn-top-build"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 516,
+                  "key": "W"
+                },
+                {
+                  "champion": 516,
+                  "key": "Q"
+                },
+                {
+                  "champion": 516,
+                  "key": "E"
+                },
+                {
+                  "champion": 516,
+                  "key": "R"
+                }
+              ]
+            },
+            {
+              "text": "Once multiple completed tank items are online, participate in fights where the team can follow the initiation and let Ornn absorb damage for allies.",
+              "scope": "champion",
+              "sourceIds": [
+                "mobalytics-ornn-top"
+              ]
+            }
+          ]
+        },
+        "win-condition": {
+          "tips": [
+            {
+              "text": "Look for an isolated, overextended target when the ultimate is available, then help the team convert the catch into an objective.",
+              "scope": "champion",
+              "sourceIds": [
+                "mobalytics-ornn-top"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 516,
+                  "key": "R"
+                }
+              ]
+            },
+            {
+              "text": "Peel for carries and keep allies alive; Ornn needs teammates who can follow up on the targets he catches.",
+              "scope": "champion",
+              "sourceIds": [
+                "mobalytics-ornn-top"
+              ]
+            },
+            {
+              "text": "Fight near terrain when possible, where Ornn can better set up his crowd control.",
+              "scope": "champion",
+              "sourceIds": [
+                "mobalytics-ornn-top"
+              ]
+            }
+          ]
+        }
+      },
+      "itemization": [
+        {
+          "text": "Build the popular 26.21 core of Sunfire Aegis, Plated Steelcaps, Thornmail, Jak'Sho, and Randuin's Omen.",
+          "scope": "champion",
+          "sourceIds": [
+            "mobalytics-ornn-top-build"
+          ],
+          "itemIds": [
+            3068,
+            3047,
+            3075,
+            3143
+          ]
+        },
+        {
+          "text": "Take Grasp of the Undying, Demolish, Bone Plating, Overgrowth, Biscuit Delivery, and Magical Footwear as the standard rune page.",
+          "scope": "champion",
+          "sourceIds": [
+            "mobalytics-ornn-top-build"
+          ]
+        },
+        {
+          "text": "Choose Kaenic Rookern as the situational alternative to Jak'Sho when the enemy team has substantial magic damage, valuing its shield against heavy ability power.",
+          "scope": "champion",
+          "sourceIds": [
+            "mobalytics-ornn-top-build"
+          ],
+          "itemIds": [
+            2504
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "id": "mobalytics-ornn-top",
+          "author": "Mobalytics",
+          "rankClaim": "No rank claim",
+          "url": "https://mobalytics.gg/lol/champions/ornn/guide",
+          "kind": "web"
+        },
+        {
+          "id": "mobalytics-ornn-top-build",
+          "author": "Mobalytics",
+          "rankClaim": "No rank claim",
+          "url": "https://mobalytics.gg/lol/champions/ornn/build",
+          "kind": "web"
+        }
+      ]
+    }
+  ],
+  "vods": [
+    {
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "pWesJ-kYziI",
+          "title": "ORNN JUNGLE IS BACK...",
+          "rankClaim": "Master+",
+          "patch": "26.15",
+          "durationSec": 1342,
+          "patchEstimated": true,
+          "player": "Makkro",
+          "uploaded": "2026-08-07",
+          "format": "stream",
+          "cam": true,
+          "moments": []
+        }
+      ]
+    },
+    {
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "YJ6sHqlikxM",
+          "title": "REACTING TO @Thebausffs PLAYING ORNN MID...",
+          "rankClaim": "Master+",
+          "patch": "26.18",
+          "durationSec": 1780,
+          "patchEstimated": true,
+          "player": "Makkro",
+          "uploaded": "2026-09-22",
+          "format": "stream",
+          "cam": true,
+          "moments": [
+            {
+              "atSec": 0,
+              "label": "Introduction to Ornn mid"
+            },
+            {
+              "atSec": 60,
+              "label": "Laning phase mistakes"
+            },
+            {
+              "atSec": 150,
+              "label": "Early game struggles"
+            },
+            {
+              "atSec": 260,
+              "label": "Questionable item builds"
+            },
+            {
+              "atSec": 435,
+              "label": "Analyzing the brittle combo"
+            },
+            {
+              "atSec": 585,
+              "label": "Game falling apart"
+            },
+            {
+              "atSec": 750,
+              "label": "Missed opportunities"
+            },
+            {
+              "atSec": 918,
+              "label": "Desperate team efforts"
+            },
+            {
+              "atSec": 1065,
+              "label": "Final game analysis"
+            },
+            {
+              "atSec": 1264,
+              "label": "Triple brittle masterclass"
+            },
+            {
+              "atSec": 1490,
+              "label": "Ornn building guide"
+            }
+          ]
+        },
+        {
+          "videoId": "1EtTjrdGv2w",
+          "title": "I CARRIED NOWAY4U ON ORNN MID...",
+          "rankClaim": "Master+",
+          "patch": "26.15",
+          "durationSec": 1483,
+          "patchEstimated": true,
+          "player": "Makkro",
+          "uploaded": "2026-08-02",
+          "format": "stream",
+          "cam": true,
+          "moments": []
+        }
+      ]
+    },
+    {
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "a1v26d4d_7A",
+          "title": "SUPPORT ORNN TOP? AN IQ TOO HIGH???",
+          "rankClaim": "Master+",
+          "patch": "26.21",
+          "durationSec": 1575,
+          "patchEstimated": true,
+          "player": "Makkro",
+          "uploaded": "2026-10-31",
+          "format": "stream",
+          "cam": true,
+          "moments": []
+        }
+      ]
+    },
+    {
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "6fH4rNen7eU",
+          "title": "TITANIC ORNN GAMEPLAY",
+          "rankClaim": "Master+",
+          "patch": "26.21",
+          "durationSec": 1964,
+          "patchEstimated": true,
+          "player": "Makkro",
+          "uploaded": "2026-11-02",
+          "format": "stream",
+          "cam": true,
+          "moments": []
+        },
+        {
+          "videoId": "tySWekgT7TU",
+          "title": "SPELLBOOK ORNN IS SO PEAK",
+          "rankClaim": "Master+",
+          "patch": "26.21",
+          "durationSec": 1526,
+          "patchEstimated": true,
+          "player": "Makkro",
+          "uploaded": "2026-10-30",
+          "format": "stream",
+          "cam": true,
+          "moments": []
+        },
+        {
+          "videoId": "gaT81mQ9vm4",
+          "title": "PLATED STEELCAPS ORNN IS IMMORTAL!!!",
+          "rankClaim": "Master+",
+          "patch": "26.21",
+          "durationSec": 1128,
+          "patchEstimated": true,
+          "player": "Makkro",
+          "uploaded": "2026-10-26",
+          "format": "stream",
+          "cam": true,
+          "moments": []
+        },
+        {
+          "videoId": "dgU-0VEFP-w",
+          "title": "LOWEST CORTISOL ORNN GAMEPLAY EVER",
+          "rankClaim": "Master+",
+          "patch": "26.20",
+          "durationSec": 966,
+          "patchEstimated": true,
+          "player": "Makkro",
+          "uploaded": "2026-10-17",
+          "format": "stream",
+          "cam": true,
+          "moments": [
+            {
+              "atSec": 0,
+              "label": "Matchup discussion"
+            },
+            {
+              "atSec": 69,
+              "label": "Laning struggle"
+            },
+            {
+              "atSec": 144,
+              "label": "Mid-game recovery"
+            },
+            {
+              "atSec": 341,
+              "label": "Itemization and strategy"
+            },
+            {
+              "atSec": 501,
+              "label": "New game analysis"
+            },
+            {
+              "atSec": 744,
+              "label": "Late game execution"
+            }
+          ]
+        },
+        {
+          "videoId": "99dqW1l-Yg0",
+          "title": "WE SEE THE FIT ORNN",
+          "rankClaim": "Master+",
+          "patch": "26.20",
+          "durationSec": 1075,
+          "patchEstimated": true,
+          "player": "Makkro",
+          "uploaded": "2026-10-16",
+          "format": "stream",
+          "cam": true,
+          "moments": [
+            {
+              "atSec": 0,
+              "label": "Tournament prep and gameplay"
+            },
+            {
+              "atSec": 643,
+              "label": "Match analysis and side lane"
+            },
+            {
+              "atSec": 735,
+              "label": "Interaction with chat community"
+            },
+            {
+              "atSec": 858,
+              "label": "Mid-to-late game objectives"
+            }
+          ]
+        },
+        {
+          "videoId": "kofGK1Z07k4",
+          "title": "GOTHAM RELIES ON ONE ORNN TONIGHT...🦇",
+          "rankClaim": "Master+",
+          "patch": "26.20",
+          "durationSec": 1453,
+          "patchEstimated": true,
+          "player": "Makkro",
+          "uploaded": "2026-10-14",
+          "format": "stream",
+          "cam": true,
+          "moments": [
+            {
+              "atSec": 0,
+              "label": "Stream intro and setup"
+            },
+            {
+              "atSec": 94,
+              "label": "Early game laning phase"
+            },
+            {
+              "atSec": 351,
+              "label": "Mid game skirmishes"
+            },
+            {
+              "atSec": 580,
+              "label": "Strategic rotations"
+            },
+            {
+              "atSec": 815,
+              "label": "Late game decision making"
+            },
+            {
+              "atSec": 1113,
+              "label": "Final push and victory"
+            },
+            {
+              "atSec": 1414,
+              "label": "Post-game wrap up"
+            }
+          ]
+        },
+        {
+          "videoId": "GvmOOgbZfPM",
+          "title": "BRAMBLE ORNN IS TOO OP VS RANGED TOP",
+          "rankClaim": "Master+",
+          "patch": "26.20",
+          "durationSec": 1299,
+          "patchEstimated": true,
+          "player": "Makkro",
+          "uploaded": "2026-10-07",
+          "format": "stream",
+          "cam": true,
+          "moments": [
+            {
+              "atSec": 0,
+              "label": "Strategic advice"
+            },
+            {
+              "atSec": 69,
+              "label": "Early laning phase"
+            },
+            {
+              "atSec": 172,
+              "label": "Mid-game momentum"
+            },
+            {
+              "atSec": 297,
+              "label": "Climbing to victory"
+            },
+            {
+              "atSec": 674,
+              "label": "Champion analysis"
+            },
+            {
+              "atSec": 882,
+              "label": "Advanced laning tactics"
+            }
+          ]
+        },
+        {
+          "videoId": "3QmDFDm95FY",
+          "title": "FED MAKKRO ORNN POV IN SZN16",
+          "rankClaim": "Master+",
+          "patch": "26.19",
+          "durationSec": 2028,
+          "patchEstimated": true,
+          "player": "Makkro",
+          "uploaded": "2026-10-05",
+          "format": "stream",
+          "cam": true,
+          "moments": [
+            {
+              "atSec": 0,
+              "label": "Match preamble"
+            },
+            {
+              "atSec": 26,
+              "label": "AI commentary"
+            },
+            {
+              "atSec": 44,
+              "label": "Channel intro and plugs"
+            },
+            {
+              "atSec": 60,
+              "label": "Early laning phase"
+            },
+            {
+              "atSec": 145,
+              "label": "Jungle and laning conflict"
+            },
+            {
+              "atSec": 280,
+              "label": "Mid-game skirmishes"
+            },
+            {
+              "atSec": 448,
+              "label": "Team coordination and macro"
+            },
+            {
+              "atSec": 607,
+              "label": "Mid-game itemization"
+            },
+            {
+              "atSec": 757,
+              "label": "Late game teamfighting"
+            },
+            {
+              "atSec": 999,
+              "label": "Post-match analysis"
+            },
+            {
+              "atSec": 1057,
+              "label": "Philosophical discussion"
+            },
+            {
+              "atSec": 1125,
+              "label": "Laning mechanics and theory"
+            },
+            {
+              "atSec": 1444,
+              "label": "Advanced itemization talk"
+            },
+            {
+              "atSec": 1608,
+              "label": "Final match review"
+            },
+            {
+              "atSec": 1928,
+              "label": "Stream conclusion"
+            }
+          ]
+        },
+        {
+          "videoId": "Bd_KCme3NZo",
+          "title": "MAGE ORNN IS REAL!",
+          "rankClaim": "Master+",
+          "patch": "26.19",
+          "durationSec": 1415,
+          "patchEstimated": true,
+          "player": "Makkro",
+          "uploaded": "2026-10-02",
+          "format": "stream",
+          "cam": true,
+          "moments": [
+            {
+              "atSec": 0,
+              "label": "Build discussion and planning"
+            },
+            {
+              "atSec": 120,
+              "label": "Early game laning struggles"
+            },
+            {
+              "atSec": 226,
+              "label": "Mid-game transition and items"
+            },
+            {
+              "atSec": 351,
+              "label": "Bot lane chaos and team state"
+            },
+            {
+              "atSec": 445,
+              "label": "Scaling and game frustration"
+            },
+            {
+              "atSec": 703,
+              "label": "Second game: Ornn vs Illaoi"
+            },
+            {
+              "atSec": 880,
+              "label": "Dominating the lane matchup"
+            },
+            {
+              "atSec": 1032,
+              "label": "Continued pressure and scaling"
+            },
+            {
+              "atSec": 1132,
+              "label": "Closing out the match"
+            },
+            {
+              "atSec": 1326,
+              "label": "Match recap and final thoughts"
+            }
+          ]
+        },
+        {
+          "videoId": "CngRFiYfeFE",
+          "title": "AVERAGE ORNN IN ENEMY TEAM: GOD ENGINE TITAN ORNN",
+          "rankClaim": "Master+",
+          "patch": "26.19",
+          "durationSec": 1181,
+          "patchEstimated": true,
+          "player": "Makkro",
+          "uploaded": "2026-10-01",
+          "format": "stream",
+          "cam": true,
+          "moments": [
+            {
+              "atSec": 0,
+              "label": "Early lane phase"
+            },
+            {
+              "atSec": 94,
+              "label": "Desk and hardware issues"
+            },
+            {
+              "atSec": 150,
+              "label": "Sunfire build strategy"
+            },
+            {
+              "atSec": 280,
+              "label": "Mid-game dominance"
+            },
+            {
+              "atSec": 435,
+              "label": "Team coordination and items"
+            },
+            {
+              "atSec": 530,
+              "label": "Ornn's quality of life"
+            },
+            {
+              "atSec": 640,
+              "label": "Top lane vs jungle"
+            },
+            {
+              "atSec": 744,
+              "label": "Countering Stormsurge"
+            },
+            {
+              "atSec": 924,
+              "label": "Advanced gameplay and Ignite"
+            },
+            {
+              "atSec": 1044,
+              "label": "Game summary and wrap-up"
+            }
+          ]
+        },
+        {
+          "videoId": "rdwXNib7eEA",
+          "title": "TEACHING THE SHY HOW TO PLAY ORNN",
+          "rankClaim": "Master+",
+          "patch": "26.19",
+          "durationSec": 1608,
+          "patchEstimated": true,
+          "player": "Makkro",
+          "uploaded": "2026-09-30",
+          "format": "stream",
+          "cam": true,
+          "moments": []
+        },
+        {
+          "videoId": "5LGNpYd-8Ms",
+          "title": "ORNN: THE MAGE DEATHKNIGHT PALADIN HUNTER ROGUE WARRIOR ENCHANTER TANK BRUISER WIZARD WARLOCK PRIEST",
+          "rankClaim": "Master+",
+          "patch": "26.19",
+          "durationSec": 1477,
+          "patchEstimated": true,
+          "player": "Makkro",
+          "uploaded": "2026-09-26",
+          "format": "stream",
+          "cam": true,
+          "moments": [
+            {
+              "atSec": 0,
+              "label": "Ban discussion and reaction"
+            },
+            {
+              "atSec": 66,
+              "label": "Gameplay and laning phase"
+            },
+            {
+              "atSec": 200,
+              "label": "Mid-game strategies"
+            },
+            {
+              "atSec": 649,
+              "label": "Post-match analysis"
+            },
+            {
+              "atSec": 778,
+              "label": "Second game and closing"
+            }
+          ]
+        },
+        {
+          "videoId": "HynvAMGpLKI",
+          "title": "HEAR ME OUT... FIMBULWINTER ORNN MIDLANE...",
+          "rankClaim": "Master+",
+          "patch": "26.18",
+          "durationSec": 1285,
+          "patchEstimated": true,
+          "player": "Makkro",
+          "uploaded": "2026-09-19",
+          "format": "stream",
+          "cam": true,
+          "moments": [
+            {
+              "atSec": 0,
+              "label": "Account and meta discussion"
+            },
+            {
+              "atSec": 23,
+              "label": "Sunfire item balance"
+            },
+            {
+              "atSec": 96,
+              "label": "Ornn mid lane laning phase"
+            },
+            {
+              "atSec": 207,
+              "label": "Mid lane skirmishes"
+            },
+            {
+              "atSec": 358,
+              "label": "Mid-game transitions"
+            },
+            {
+              "atSec": 531,
+              "label": "Late-game itemization"
+            },
+            {
+              "atSec": 648,
+              "label": "Post-match review"
+            },
+            {
+              "atSec": 754,
+              "label": "Second game analysis"
+            },
+            {
+              "atSec": 924,
+              "label": "Mid game pressure and scaling"
+            },
+            {
+              "atSec": 1084,
+              "label": "Final team fights and victory",
+              "kind": "teamfight"
+            }
+          ]
+        },
+        {
+          "videoId": "zOf5X3qbbTw",
+          "title": "ORNN IS RUMBLES BIGGEST COUNTER",
+          "rankClaim": "Master+",
+          "patch": "26.18",
+          "durationSec": 1384,
+          "patchEstimated": true,
+          "player": "Makkro",
+          "uploaded": "2026-09-18",
+          "format": "stream",
+          "cam": true,
+          "moments": [
+            {
+              "atSec": 0,
+              "label": "ADC start item debate"
+            },
+            {
+              "atSec": 103,
+              "label": "Top lane laning phase"
+            },
+            {
+              "atSec": 204,
+              "label": "Dominating the Rumble matchup"
+            },
+            {
+              "atSec": 357,
+              "label": "Strategic lane control"
+            },
+            {
+              "atSec": 513,
+              "label": "Bullying the opponent"
+            },
+            {
+              "atSec": 637,
+              "label": "Itemization and misplays"
+            },
+            {
+              "atSec": 743,
+              "label": "Mid-game transitions"
+            },
+            {
+              "atSec": 880,
+              "label": "Team fights and rotations",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1045,
+              "label": "End-game strategy"
+            },
+            {
+              "atSec": 1184,
+              "label": "Closing out the match"
+            }
+          ]
+        },
+        {
+          "videoId": "FKeSe8RemNQ",
+          "title": "SPEEDY GONZALES ORNN BUILD",
+          "rankClaim": "Master+",
+          "patch": "26.18",
+          "durationSec": 1520,
+          "patchEstimated": true,
+          "player": "Makkro",
+          "uploaded": "2026-09-13",
+          "format": "stream",
+          "cam": true,
+          "moments": [
+            {
+              "atSec": 0,
+              "label": "Introduction and setup"
+            },
+            {
+              "atSec": 67,
+              "label": "Early game laning challenges"
+            },
+            {
+              "atSec": 219,
+              "label": "Rune and build experimentation"
+            },
+            {
+              "atSec": 402,
+              "label": "Mid-game skirmishes and tactics"
+            },
+            {
+              "atSec": 573,
+              "label": "Ending the match"
+            },
+            {
+              "atSec": 756,
+              "label": "Anti-heal discussion"
+            },
+            {
+              "atSec": 931,
+              "label": "Laning against Yone"
+            },
+            {
+              "atSec": 1107,
+              "label": "Late game dominance"
+            },
+            {
+              "atSec": 1420,
+              "label": "Match recap and queue"
+            }
+          ]
+        },
+        {
+          "videoId": "ELRy5iuNkKg",
+          "title": "UNSEALED SPELLBOOK ORNN IS OP!!!",
+          "rankClaim": "Master+",
+          "patch": "26.17",
+          "durationSec": 1743,
+          "patchEstimated": true,
+          "player": "Makkro",
+          "uploaded": "2026-09-08",
+          "format": "stream",
+          "cam": true,
+          "moments": [
+            {
+              "atSec": 0,
+              "label": "Ornn laning strategy"
+            },
+            {
+              "atSec": 90,
+              "label": "Tank itemization debate"
+            },
+            {
+              "atSec": 204,
+              "label": "Wave management basics"
+            },
+            {
+              "atSec": 346,
+              "label": "Brand top frustrations"
+            },
+            {
+              "atSec": 506,
+              "label": "Mid-game skirmishes"
+            },
+            {
+              "atSec": 854,
+              "label": "Drafting and rune choices"
+            },
+            {
+              "atSec": 1057,
+              "label": "Spellbook gameplay"
+            },
+            {
+              "atSec": 1320,
+              "label": "Late game and victory"
+            }
+          ]
+        },
+        {
+          "videoId": "lbrd2VvT1Cw",
+          "title": "REACTING TO @AloisNL PLAYING ORNN...",
+          "rankClaim": "Master+",
+          "patch": "26.17",
+          "durationSec": 1705,
+          "patchEstimated": true,
+          "player": "Makkro",
+          "uploaded": "2026-09-07",
+          "format": "stream",
+          "cam": true,
+          "moments": [
+            {
+              "atSec": 0,
+              "label": "Introduction"
+            },
+            {
+              "atSec": 33,
+              "label": "Champion selection and runes"
+            },
+            {
+              "atSec": 147,
+              "label": "Early lane phase"
+            },
+            {
+              "atSec": 305,
+              "label": "Mid game objectives and laning"
+            },
+            {
+              "atSec": 456,
+              "label": "Strategic aggression and roaming",
+              "kind": "roam"
+            },
+            {
+              "atSec": 633,
+              "label": "Team fighting and sideline pressure"
+            },
+            {
+              "atSec": 788,
+              "label": "Baron and objective control",
+              "kind": "baron"
+            },
+            {
+              "atSec": 934,
+              "label": "Late game itemization"
+            },
+            {
+              "atSec": 1076,
+              "label": "The role of tanks"
+            },
+            {
+              "atSec": 1284,
+              "label": "Closing the game"
+            },
+            {
+              "atSec": 1505,
+              "label": "Lessons in tank gameplay"
+            }
+          ]
+        },
+        {
+          "videoId": "Y7XTrHRNkb0",
+          "title": "RANK 1 ORNN VS RANK 1 FIDDLE 🥀",
+          "rankClaim": "Master+",
+          "patch": "26.16",
+          "durationSec": 1705,
+          "patchEstimated": true,
+          "player": "Makkro",
+          "uploaded": "2026-08-20",
+          "format": "stream",
+          "cam": true,
+          "moments": []
+        },
+        {
+          "videoId": "XpJiDH3MM1Y",
+          "title": "THE MIGHTY ORNN...",
+          "rankClaim": "Master+",
+          "patch": "26.16",
+          "durationSec": 1721,
+          "patchEstimated": true,
+          "player": "Makkro",
+          "uploaded": "2026-08-17",
+          "format": "stream",
+          "cam": true,
+          "moments": []
+        },
+        {
+          "videoId": "ugI67C57R_c",
+          "title": "ORNN IS OP. TO LEARN MORE LOOK UP \"ORNN INFLATION\"",
+          "rankClaim": "Master+",
+          "patch": "26.15",
+          "durationSec": 1161,
+          "patchEstimated": true,
+          "player": "Makkro",
+          "uploaded": "2026-08-10",
+          "format": "stream",
+          "cam": true,
+          "moments": []
+        },
+        {
+          "videoId": "a4nNS4_lcOU",
+          "title": "ENCHANTER ORNN IS OP!!!",
+          "rankClaim": "Master+",
+          "patch": "26.13",
+          "durationSec": 1273,
+          "patchEstimated": true,
+          "player": "Makkro",
+          "uploaded": "2026-06-25",
+          "format": "stream",
+          "cam": true,
+          "moments": []
+        },
+        {
+          "videoId": "Mv_EpKvomGg",
+          "title": "THE GREATEST ORNN IN HISTORY",
+          "rankClaim": "Master+",
+          "patch": "26.12",
+          "durationSec": 1059,
+          "patchEstimated": true,
+          "player": "Makkro",
+          "uploaded": "2026-06-22",
+          "format": "stream",
+          "cam": true,
+          "moments": []
+        },
+        {
+          "videoId": "oTIpXSDe8l4",
+          "title": "IMPERIAL MANDATE ORNN IS OP???",
+          "rankClaim": "Master+",
+          "patch": "26.11",
+          "durationSec": 1453,
+          "patchEstimated": true,
+          "player": "Makkro",
+          "uploaded": "2026-06-09",
+          "format": "stream",
+          "cam": true,
+          "moments": []
+        },
+        {
+          "videoId": "PmvwTQ1m6Xw",
+          "title": "NEW ORNN BOOT CHOICE JUST DROPPED (MAGIC PEN BOOTS???)",
+          "rankClaim": "Master+",
+          "patch": "26.10",
+          "durationSec": 1481,
+          "patchEstimated": true,
+          "player": "Makkro",
+          "uploaded": "2026-05-23",
+          "format": "stream",
+          "cam": true,
+          "moments": []
+        },
+        {
+          "videoId": "bmLz7kRoIZU",
+          "title": "AP ORNN IS ACTUALLY SO BROKEN...",
+          "rankClaim": "Master+",
+          "patch": "26.8",
+          "durationSec": 1229,
+          "patchEstimated": true,
+          "player": "Makkro",
+          "uploaded": "2026-04-27",
+          "format": "stream",
+          "cam": true,
+          "moments": []
+        },
+        {
+          "videoId": "AZnOJK0PnWo",
+          "title": "GRAND REGENT ORNN IS HIM😭🙏",
+          "rankClaim": "Master+",
+          "patch": "26.8",
+          "durationSec": 972,
+          "patchEstimated": true,
+          "player": "Makkro",
+          "uploaded": "2026-04-19",
+          "format": "stream",
+          "cam": true,
+          "moments": []
+        },
+        {
+          "videoId": "B2ePtZpsUuM",
+          "title": "RIFTMAKER ORNN WORKS?????",
+          "rankClaim": "Master+",
+          "patch": "26.7",
+          "durationSec": 1305,
+          "patchEstimated": true,
+          "player": "Makkro",
+          "uploaded": "2026-04-13",
+          "format": "stream",
+          "cam": true,
+          "moments": []
+        },
+        {
+          "videoId": "vWs5GPcvAYY",
+          "title": "MATHEMATICALLY CORRECT ORNN @xPetu ",
+          "rankClaim": "Master+",
+          "patch": "26.7",
+          "durationSec": 1323,
+          "patchEstimated": true,
+          "player": "Makkro",
+          "uploaded": "2026-04-08",
+          "format": "stream",
+          "cam": true,
+          "moments": []
+        },
+        {
+          "videoId": "3p-X42G29ew",
+          "title": "LEVEL 20 ORNN...",
+          "rankClaim": "Master+",
+          "patch": "26.7",
+          "durationSec": 1292,
+          "patchEstimated": true,
+          "player": "Makkro",
+          "uploaded": "2026-04-04",
+          "format": "stream",
+          "cam": true,
+          "moments": []
+        },
+        {
+          "videoId": "zr8RwLKkKYw",
+          "title": "ORNN IS DEAD...",
+          "rankClaim": "Master+",
+          "patch": "26.7",
+          "durationSec": 2085,
+          "patchEstimated": true,
+          "player": "Makkro",
+          "uploaded": "2026-04-02",
+          "format": "stream",
+          "cam": true,
+          "moments": []
+        },
+        {
+          "videoId": "5bffsTf5dnY",
+          "title": "HOW A 700 ARMOR ORNN GAME LOOKS LIKE...",
+          "rankClaim": "Master+",
+          "patch": "26.6",
+          "durationSec": 1618,
+          "patchEstimated": true,
+          "player": "Makkro",
+          "uploaded": "2026-03-30",
+          "format": "stream",
+          "cam": true,
+          "moments": []
+        },
+        {
+          "videoId": "_0p_gpyRbds",
+          "title": "BIG ULTIMATE MEGA ORNN GUIDE FOR SEASON 16",
+          "rankClaim": "Master+",
+          "patch": "26.6",
+          "durationSec": 2762,
+          "patchEstimated": true,
+          "player": "Makkro",
+          "uploaded": "2026-03-19",
+          "format": "stream",
+          "cam": true,
+          "moments": []
+        },
+        {
+          "videoId": "zggbnoACK8I",
+          "title": "THIS IS THE BEST CORE ORNN BUILD!",
+          "rankClaim": "Master+",
+          "patch": "26.5",
+          "durationSec": 842,
+          "patchEstimated": true,
+          "player": "Makkro",
+          "uploaded": "2026-03-16",
+          "format": "stream",
+          "cam": true,
+          "moments": []
+        },
+        {
+          "videoId": "LQfnm1B0UN8",
+          "title": "I GOT MY FIRST PENTAKILL WITH ORNN (ALMOST HEXAKILL)",
+          "rankClaim": "Master+",
+          "patch": "26.5",
+          "durationSec": 1067,
+          "patchEstimated": true,
+          "player": "Makkro",
+          "uploaded": "2026-03-04",
+          "format": "stream",
+          "cam": true,
+          "moments": []
+        },
+        {
+          "videoId": "qKtZFenQhy4",
+          "title": "I'M BACK AT ORNN...",
+          "rankClaim": "Master+",
+          "patch": "26.4",
+          "durationSec": 1940,
+          "patchEstimated": true,
+          "player": "Makkro",
+          "uploaded": "2026-02-25",
+          "format": "stream",
+          "cam": true,
+          "moments": []
+        },
+        {
+          "videoId": "tiDVo6v3ClI",
+          "title": "NEW SEASON, NEW ORNN SKIN...",
+          "rankClaim": "Master+",
+          "patch": "26.1",
+          "durationSec": 2605,
+          "patchEstimated": true,
+          "player": "Makkro",
+          "uploaded": "2026-01-09",
+          "format": "stream",
+          "cam": true,
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 2,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "7ZDwfXgeOWg",
+          "title": "Ornn Top vs Olaf - EUW Master Patch 26.18",
+          "rankClaim": "Master",
+          "patch": "26.18",
+          "durationSec": 1754,
+          "region": "EUW",
+          "uploaded": "2026-09-13",
+          "moments": []
+        },
+        {
+          "videoId": "F3L4fF_cr4M",
+          "title": "Ornn Top vs Olaf - KR Master Patch 25.19",
+          "rankClaim": "Master",
+          "patch": "25.19",
+          "durationSec": 1552,
+          "region": "KR",
+          "uploaded": "2025-10-02",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 6,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "pdo-ZY-KJ-k",
+          "title": "Ornn Top vs Urgot - EUW Master Patch 26.19",
+          "rankClaim": "Master",
+          "patch": "26.19",
+          "durationSec": 1672,
+          "region": "EUW",
+          "uploaded": "2026-09-26",
+          "moments": []
+        },
+        {
+          "videoId": "C3vaJmCC77k",
+          "title": "Ornn Top vs Urgot - EUW Grandmaster Patch 26.17",
+          "rankClaim": "Grandmaster",
+          "patch": "26.17",
+          "durationSec": 1466,
+          "region": "EUW",
+          "uploaded": "2026-09-09",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 13,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "VX6IKKhIIBc",
+          "title": "Ornn Mid vs Ryze - KR Master Patch 25.07",
+          "rankClaim": "Master",
+          "patch": "25.7",
+          "durationSec": 1781,
+          "region": "KR",
+          "uploaded": "2025-04-15",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 228,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 399,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 662,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 861,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 955,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 995,
+              "label": "Hunt The Rift Herald",
+              "kind": "herald"
+            },
+            {
+              "atSec": 1069,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1103,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1179,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1295,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1360,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1602,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1618,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1690,
+              "label": "Take down The Inhibitor"
+            },
+            {
+              "atSec": 1715,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1745,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1760,
+              "label": "End credit"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 14,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "8WfQ037LdPA",
+          "title": "(GSMC Ace) Ornn Top vs Sion - EUW Challenger Patch 26.15",
+          "rankClaim": "Challenger",
+          "patch": "26.15",
+          "durationSec": 1429,
+          "region": "EUW",
+          "player": "GSMC Ace",
+          "uploaded": "2026-08-04",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 18,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "JMwfcIahYtk",
+          "title": "Ornn Mid vs Tristana - KR Challenger Patch 26.07",
+          "rankClaim": "Challenger",
+          "patch": "26.7",
+          "durationSec": 1826,
+          "region": "KR",
+          "uploaded": "2026-04-13",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 407,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 619,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 858,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 998,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1164,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1259,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1287,
+              "label": "Hunt The Dragon",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1347,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1362,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1455,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1554,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1601,
+              "label": "Hunt The Baron Nashor",
+              "kind": "baron"
+            },
+            {
+              "atSec": 1664,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1703,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1777,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1815,
+              "label": "End credit"
+            }
+          ]
+        },
+        {
+          "videoId": "X4SunOEx5CM",
+          "title": "Ornn Mid vs Tristana - KR Master Patch 25.08",
+          "rankClaim": "Master",
+          "patch": "25.8",
+          "durationSec": 2077,
+          "region": "KR",
+          "uploaded": "2025-04-30",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 39,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 227,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 294,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 785,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 922,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1041,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1218,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1378,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1469,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1490,
+              "label": "Hunt The Dragon",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1501,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1647,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1770,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1874,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 2009,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 2056,
+              "label": "End credit"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 24,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "F2Inwcc2WeE",
+          "title": "Ornn Top vs Jax - KR Master Patch 26.21",
+          "rankClaim": "Master",
+          "patch": "26.21",
+          "durationSec": 1580,
+          "region": "KR",
+          "uploaded": "2026-10-23",
+          "result": "W",
+          "moments": [
+            {
+              "atSec": 305,
+              "label": "First Blood — Ornn kills Jax",
+              "kind": "kill"
+            },
+            {
+              "atSec": 416,
+              "label": "Ekko kills Jax",
+              "kind": "kill"
+            },
+            {
+              "atSec": 430,
+              "label": "Red takes 1st Dragon (Hextech)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 611,
+              "label": "Ornn eliminates Jax"
+            },
+            {
+              "atSec": 738,
+              "label": "Ekko kills Jax",
+              "kind": "kill"
+            },
+            {
+              "atSec": 746,
+              "label": "Red takes 2nd Dragon (Chemtech)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1066,
+              "label": "Red takes 3rd Dragon (Cloud)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1075,
+              "label": "Aphelios Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1098,
+              "label": "Talon eliminates Twisted Fate"
+            },
+            {
+              "atSec": 1211,
+              "label": "Blue takes Baron",
+              "kind": "baron"
+            },
+            {
+              "atSec": 1307,
+              "label": "Ekko picks off Twisted Fate"
+            },
+            {
+              "atSec": 1388,
+              "label": "Ekko Triple Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1423,
+              "label": "Mid Inhibitor falls (Red)"
+            },
+            {
+              "atSec": 1440,
+              "label": "Blue takes 1st Dragon (Cloud)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1501,
+              "label": "Team fight (4 kills)",
+              "kind": "teamfight"
+            }
+          ]
+        },
+        {
+          "videoId": "WcseDHNPz2Y",
+          "title": "Ornn Top vs Jax - EUW Grandmaster Patch 26.02",
+          "rankClaim": "Grandmaster",
+          "patch": "26.2",
+          "durationSec": 1569,
+          "region": "EUW",
+          "uploaded": "2026-02-05",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 503,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 737,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 826,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 882,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1000,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1367,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1477,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1519,
+              "label": "Take down The Inhibitor"
+            },
+            {
+              "atSec": 1531,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1541,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1558,
+              "label": "End credit"
+            }
+          ]
+        },
+        {
+          "videoId": "sa4ZuNYAu-Y",
+          "title": "Ornn Top vs Jax - KR Grandmaster Patch 25.20",
+          "rankClaim": "Grandmaster",
+          "patch": "25.20",
+          "durationSec": 1552,
+          "region": "KR",
+          "uploaded": "2025-10-18",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 36,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "v7pHBud1uIM",
+          "title": "(SGE Zanzarah) Ornn Top vs Dr. Mundo - EUW Challenger Patch 26.16",
+          "rankClaim": "Challenger",
+          "patch": "26.16",
+          "durationSec": 1792,
+          "region": "EUW",
+          "player": "SGE Zanzarah",
+          "uploaded": "2026-08-18",
+          "moments": []
+        },
+        {
+          "videoId": "_VycJ1L385o",
+          "title": "Ornn Top vs Dr. Mundo - KR Master Patch 25.14",
+          "rankClaim": "Master",
+          "patch": "25.14",
+          "durationSec": 1628,
+          "region": "KR",
+          "uploaded": "2025-07-24",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 39,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "K4rmjPTHRaE",
+          "title": "Ornn Top vs Irelia - NA Challenger Patch 26.05",
+          "rankClaim": "Challenger",
+          "patch": "26.5",
+          "durationSec": 1523,
+          "region": "NA",
+          "uploaded": "2026-03-18",
+          "moments": []
+        },
+        {
+          "videoId": "x3siGplAAJ0",
+          "title": "Ornn Top vs Irelia - EUW Grandmaster Patch 25.24",
+          "rankClaim": "Grandmaster",
+          "patch": "25.24",
+          "durationSec": 1589,
+          "region": "EUW",
+          "uploaded": "2026-01-08",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 174,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 210,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 301,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 359,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 553,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 817,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 846,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 873,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 937,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 965,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1069,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1132,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1181,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1284,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1313,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1332,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1445,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1519,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1545,
+              "label": "Take down The Inhibitor"
+            },
+            {
+              "atSec": 1556,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1578,
+              "label": "End credit"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 41,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "hzeqTGdzL_A",
+          "title": "Ornn Top vs Gangplank - EUW Challenger Patch 26.11",
+          "rankClaim": "Challenger",
+          "patch": "26.11",
+          "durationSec": 1540,
+          "region": "EUW",
+          "uploaded": "2026-06-06",
+          "moments": []
+        },
+        {
+          "videoId": "OXA36_hsXfo",
+          "title": "Ornn Top vs Gangplank - KR Master Patch 25.13",
+          "rankClaim": "Master",
+          "patch": "25.13",
+          "durationSec": 1625,
+          "region": "KR",
+          "uploaded": "2025-07-04",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 45,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "ZddvCam4kOY",
+          "title": "Ornn Mid vs Veigar - NA Grandmaster Patch 25.13",
+          "rankClaim": "Grandmaster",
+          "patch": "25.13",
+          "durationSec": 1880,
+          "region": "NA",
+          "uploaded": "2025-07-12",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 48,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "tg2FG0N6XfM",
+          "title": "Ornn Mid vs Trundle - KR Master Patch 25.20",
+          "rankClaim": "Master",
+          "patch": "25.20",
+          "durationSec": 1737,
+          "region": "KR",
+          "uploaded": "2025-10-21",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 50,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "PF4gw21A9xU",
+          "title": "Ornn Mid vs Swain - KR Master Patch 25.04",
+          "rankClaim": "Master",
+          "patch": "25.4",
+          "durationSec": 1702,
+          "region": "KR",
+          "uploaded": "2025-03-06",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 50,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "LLUzfB0ver4",
+          "title": "Ornn Top vs Swain - EUW Grandmaster Patch 25.24",
+          "rankClaim": "Grandmaster",
+          "patch": "25.24",
+          "durationSec": 1594,
+          "region": "EUW",
+          "uploaded": "2025-12-31",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 146,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 400,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 583,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 838,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1055,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1175,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1307,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1344,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1442,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1473,
+              "label": "Take down The Inhibitor"
+            },
+            {
+              "atSec": 1504,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1583,
+              "label": "End credit"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 53,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "bhtCv3m6b-Y",
+          "title": "Ornn Support vs Blitzcrank - TW Challenger Patch 25.17",
+          "rankClaim": "Challenger",
+          "patch": "25.17",
+          "durationSec": 1629,
+          "uploaded": "2025-09-12",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 54,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "XloXN6GWwg8",
+          "title": "Ornn Mid vs Malphite - KR Master Patch 25.15",
+          "rankClaim": "Master",
+          "patch": "25.15",
+          "durationSec": 1801,
+          "region": "KR",
+          "uploaded": "2025-08-15",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 54,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "ZqkJHm2VVeE",
+          "title": "Ornn Top vs Malphite - KR Master Patch 26.01",
+          "rankClaim": "Master",
+          "patch": "26.1",
+          "durationSec": 1548,
+          "region": "KR",
+          "uploaded": "2026-01-21",
+          "moments": []
+        },
+        {
+          "videoId": "c9tgDnfd0wc",
+          "title": "Ornn Top vs Malphite - NA Grandmaster Patch 25.24",
+          "rankClaim": "Grandmaster",
+          "patch": "25.24",
+          "durationSec": 1457,
+          "region": "NA",
+          "uploaded": "2025-12-11",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 468,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 581,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 871,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1056,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1152,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1220,
+              "label": "Get a Triple Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1250,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1332,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1405,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1446,
+              "label": "End credit"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 58,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "WJrmcIRp2Ds",
+          "title": "Ornn Top vs Renekton - KR Grandmaster Patch 25.08",
+          "rankClaim": "Grandmaster",
+          "patch": "25.8",
+          "durationSec": 2144,
+          "region": "KR",
+          "uploaded": "2025-04-24",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 115,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 369,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 936,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1174,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1283,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1380,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1530,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1619,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1668,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1693,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1893,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1926,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1958,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1980,
+              "label": "Take down The Inhibitor"
+            },
+            {
+              "atSec": 2040,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 2095,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 2123,
+              "label": "End credit"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 60,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "K7cwqEpZye4",
+          "title": "Ornn Jungle vs Elise - EUW Challenger Patch 25.23",
+          "rankClaim": "Challenger",
+          "patch": "25.23",
+          "durationSec": 1497,
+          "region": "EUW",
+          "uploaded": "2025-12-02",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 64,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "meywKlMIMhk",
+          "title": "(LOS Drakehero) Ornn Jungle vs Lee Sin - BR Challenger Patch 26.13",
+          "rankClaim": "Challenger",
+          "patch": "26.13",
+          "durationSec": 1817,
+          "player": "LOS Drakehero",
+          "uploaded": "2026-07-14",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 67,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "AIsCTWp9GIQ",
+          "title": "Ornn Top vs Vayne (WNTR) - EUW Grandmaster Patch 26.16",
+          "rankClaim": "Grandmaster",
+          "patch": "26.16",
+          "durationSec": 1832,
+          "region": "EUW",
+          "uploaded": "2026-08-25",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 68,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "2am9GonhOBM",
+          "title": "WHY ORNN IS ALWAYS PICKED AGAINST RUMBLE",
+          "rankClaim": "Master+",
+          "patch": "26.21",
+          "durationSec": 1596,
+          "patchEstimated": true,
+          "player": "Makkro",
+          "uploaded": "2026-11-01",
+          "format": "stream",
+          "cam": true,
+          "moments": []
+        },
+        {
+          "videoId": "htwwT451sBw",
+          "title": "(MISA Ragner) Ornn Top vs Rumble - EUW Grandmaster Patch 26.12",
+          "rankClaim": "Grandmaster",
+          "patch": "26.12",
+          "durationSec": 1675,
+          "region": "EUW",
+          "player": "MISA Ragner",
+          "uploaded": "2026-06-13",
+          "moments": []
+        },
+        {
+          "videoId": "BasTI2Gr8tE",
+          "title": "Ornn Top vs Rumble - KR Master Patch 26.02",
+          "rankClaim": "Master",
+          "patch": "26.2",
+          "durationSec": 1446,
+          "region": "KR",
+          "uploaded": "2026-01-27",
+          "moments": []
+        },
+        {
+          "videoId": "5_P7yo2I9KU",
+          "title": "Ornn Top vs Rumble - KR Challenger Patch 25.22",
+          "rankClaim": "Challenger",
+          "patch": "25.22",
+          "durationSec": 1729,
+          "region": "KR",
+          "uploaded": "2025-11-13",
+          "moments": []
+        },
+        {
+          "videoId": "Ts4ueiWTRyw",
+          "title": "Ornn Top vs Rumble - KR Grandmaster Patch 25.18",
+          "rankClaim": "Grandmaster",
+          "patch": "25.18",
+          "durationSec": 1953,
+          "region": "KR",
+          "uploaded": "2025-09-18",
+          "moments": []
+        },
+        {
+          "videoId": "WK5zlcfnyXE",
+          "title": "Ornn Top vs Rumble - EUW Challenger Patch 25.13",
+          "rankClaim": "Challenger",
+          "patch": "25.13",
+          "durationSec": 2019,
+          "region": "EUW",
+          "uploaded": "2025-07-16",
+          "moments": []
+        },
+        {
+          "videoId": "ZGaWKmAoUbc",
+          "title": "Ornn Top vs Rumble - KR Master Patch 25.11",
+          "rankClaim": "Master",
+          "patch": "25.11",
+          "durationSec": 2101,
+          "region": "KR",
+          "uploaded": "2025-06-06",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 77,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "Ve7LOIlqxBk",
+          "title": "(LOS Drakehero) Ornn Jungle vs Udyr - BR Challenger Patch 26.14",
+          "rankClaim": "Challenger",
+          "patch": "26.14",
+          "durationSec": 1536,
+          "player": "LOS Drakehero",
+          "uploaded": "2026-07-28",
+          "moments": []
+        },
+        {
+          "videoId": "cnTHNhAW4jE",
+          "title": "(G2 SkewMond) Ornn Jungle vs Udyr (SGE Zanzarah) - EUW Challenger Patch 26.10",
+          "rankClaim": "Challenger",
+          "patch": "26.10",
+          "durationSec": 1743,
+          "region": "EUW",
+          "player": "SkewMond",
+          "team": "G2",
+          "uploaded": "2026-05-24",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 77,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "SDx5lkXyKT8",
+          "title": "Ornn Top vs Udyr - KR Master Patch 26.17",
+          "rankClaim": "Master",
+          "patch": "26.17",
+          "durationSec": 1823,
+          "region": "KR",
+          "uploaded": "2026-08-30",
+          "moments": []
+        },
+        {
+          "videoId": "_OEsAy8Y-Sk",
+          "title": "Ornn Top vs Udyr - KR Master Patch 25.16",
+          "rankClaim": "Master",
+          "patch": "25.16",
+          "durationSec": 2003,
+          "region": "KR",
+          "uploaded": "2025-08-22",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 79,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "cGbAS2u78ow",
+          "title": "Ornn Top vs Gragas - KR Master Patch 25.05",
+          "rankClaim": "Master",
+          "patch": "25.5",
+          "durationSec": 1765,
+          "region": "KR",
+          "uploaded": "2025-03-14",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 80,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "it1TEK8i_ZM",
+          "title": "Ornn Top vs Pantheon - KR Grandmaster Patch 26.09",
+          "rankClaim": "Grandmaster",
+          "patch": "26.9",
+          "durationSec": 1590,
+          "region": "KR",
+          "uploaded": "2026-05-04",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 82,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "NAVkUhT8lyw",
+          "title": "ORNN COUNTERS MORDEKAISER EASILY!",
+          "rankClaim": "Master+",
+          "patch": "26.20",
+          "durationSec": 1490,
+          "patchEstimated": true,
+          "player": "Makkro",
+          "uploaded": "2026-10-13",
+          "format": "stream",
+          "cam": true,
+          "moments": [
+            {
+              "atSec": 0,
+              "label": "Matchup analysis"
+            },
+            {
+              "atSec": 32,
+              "label": "Early laning phase"
+            },
+            {
+              "atSec": 174,
+              "label": "Ornn itemization strategy"
+            },
+            {
+              "atSec": 438,
+              "label": "Mid game team fights",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 709,
+              "label": "Losing game analysis"
+            },
+            {
+              "atSec": 866,
+              "label": "Gangplank and Gwen matchups"
+            },
+            {
+              "atSec": 1031,
+              "label": "Aggressive diving strategies"
+            },
+            {
+              "atSec": 1219,
+              "label": "Q&A and closing thoughts"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 84,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "1I05pQX3xGQ",
+          "title": "Ornn Top vs Akali - KR Master Patch 26.18",
+          "rankClaim": "Master",
+          "patch": "26.18",
+          "durationSec": 1796,
+          "region": "KR",
+          "uploaded": "2026-09-24",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 85,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "WQzqsExb88Q",
+          "title": "Ornn Top vs Kennen - KR Master Patch 26.20",
+          "rankClaim": "Master",
+          "patch": "26.20",
+          "durationSec": 1779,
+          "region": "KR",
+          "uploaded": "2026-10-23",
+          "result": "W",
+          "moments": [
+            {
+              "atSec": 142,
+              "label": "First Blood — Ornn kills Kennen",
+              "kind": "kill"
+            },
+            {
+              "atSec": 381,
+              "label": "Blue takes 1st Dragon (Chemtech)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 700,
+              "label": "Red takes 1st Dragon (Infernal)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1020,
+              "label": "Jhin picks off Thresh"
+            },
+            {
+              "atSec": 1098,
+              "label": "Blue takes 2nd Dragon (Hextech)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1243,
+              "label": "Ornn outplays Aurora"
+            },
+            {
+              "atSec": 1255,
+              "label": "Blue takes Baron",
+              "kind": "baron"
+            },
+            {
+              "atSec": 1270,
+              "label": "Kog'Maw takes down Thresh"
+            },
+            {
+              "atSec": 1304,
+              "label": "Jhin eliminates Jayce"
+            },
+            {
+              "atSec": 1312,
+              "label": "Ornn solo kills Kai'Sa",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1356,
+              "label": "Jhin picks off Kennen"
+            },
+            {
+              "atSec": 1361,
+              "label": "Mid Inhibitor falls (Red)"
+            },
+            {
+              "atSec": 1414,
+              "label": "Blue takes 3rd Dragon (Hextech)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1463,
+              "label": "Bot Inhibitor falls (Red)"
+            },
+            {
+              "atSec": 1619,
+              "label": "Top Inhibitor falls (Red)"
+            },
+            {
+              "atSec": 1659,
+              "label": "Blue takes 2nd Baron",
+              "kind": "baron"
+            },
+            {
+              "atSec": 1704,
+              "label": "Mid Inhibitor falls (Red)"
+            },
+            {
+              "atSec": 1722,
+              "label": "Kog'Maw Double Kill",
+              "kind": "kill"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 86,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "IR5IQlqkYGE",
+          "title": "Ornn Top vs Garen - EUW Challenger Patch 26.06",
+          "rankClaim": "Challenger",
+          "patch": "26.6",
+          "durationSec": 1701,
+          "region": "EUW",
+          "uploaded": "2026-03-25",
+          "moments": []
+        },
+        {
+          "videoId": "mYhwxmasVSs",
+          "title": "Ornn Top vs Garen - KR Master Patch 25.21",
+          "rankClaim": "Master",
+          "patch": "25.21",
+          "durationSec": 1618,
+          "region": "KR",
+          "uploaded": "2025-10-30",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 98,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "ecIqBHQWarA",
+          "title": "(USE FornoReason) Ornn Top vs Shen - EUW Grandmaster Patch 26.13",
+          "rankClaim": "Grandmaster",
+          "patch": "26.13",
+          "durationSec": 1693,
+          "region": "EUW",
+          "player": "USE FornoReason",
+          "uploaded": "2026-06-30",
+          "moments": []
+        },
+        {
+          "videoId": "7pGdWZNIemA",
+          "title": "Ornn Top vs Shen - KR Master Patch 25.09",
+          "rankClaim": "Master",
+          "patch": "25.9",
+          "durationSec": 1666,
+          "region": "KR",
+          "uploaded": "2025-05-07",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 103,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "jEZdniZjoDk",
+          "title": "Ornn Mid vs Ahri - NA Challenger Patch 25.12",
+          "rankClaim": "Challenger",
+          "patch": "25.12",
+          "durationSec": 2055,
+          "region": "NA",
+          "uploaded": "2025-06-23",
+          "moments": []
+        },
+        {
+          "videoId": "8nUpOUuUEw4",
+          "title": "Ornn Mid vs Ahri - NA Challenger Patch 25.10",
+          "rankClaim": "Challenger",
+          "patch": "25.10",
+          "durationSec": 1732,
+          "region": "NA",
+          "uploaded": "2025-05-26",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 106,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "Qm9Z9GSkPMI",
+          "title": "Ornn Top vs Volibear - KR Master Patch 25.17",
+          "rankClaim": "Master",
+          "patch": "25.17",
+          "durationSec": 2061,
+          "region": "KR",
+          "uploaded": "2025-09-01",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 111,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "Gg9t_Tt4yJs",
+          "title": "Ornn Support vs Nautilus - EUW Grandmaster Patch 26.08",
+          "rankClaim": "Grandmaster",
+          "patch": "26.8",
+          "durationSec": 1419,
+          "region": "EUW",
+          "uploaded": "2026-04-28",
+          "moments": []
+        },
+        {
+          "videoId": "mIJqrXyoGas",
+          "title": "Ornn Support vs Nautilus - KR Master Patch 26.04",
+          "rankClaim": "Master",
+          "patch": "26.4",
+          "durationSec": 1826,
+          "region": "KR",
+          "uploaded": "2026-03-03",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 468,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 582,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 899,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1023,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1299,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1404,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1554,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1582,
+              "label": "Take down The Inhibitor"
+            },
+            {
+              "atSec": 1654,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1691,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1776,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1804,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1815,
+              "label": "End credit"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 112,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "5hWRNXlbEfo",
+          "title": "Ornn Mid vs Viktor - KR Master Patch 25.18",
+          "rankClaim": "Master",
+          "patch": "25.18",
+          "durationSec": 1871,
+          "region": "KR",
+          "uploaded": "2025-09-24",
+          "moments": []
+        },
+        {
+          "videoId": "aKVc6nEjD2k",
+          "title": "Ornn Mid vs Viktor - KR Master Patch 25.14",
+          "rankClaim": "Master",
+          "patch": "25.14",
+          "durationSec": 1880,
+          "region": "KR",
+          "uploaded": "2025-07-28",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 114,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "mHz-V0zyR6s",
+          "title": "LIVE ORNN REACTION TO FIORA MATCHUP",
+          "rankClaim": "Master+",
+          "patch": "26.18",
+          "durationSec": 1778,
+          "patchEstimated": true,
+          "player": "Makkro",
+          "uploaded": "2026-09-10",
+          "format": "stream",
+          "cam": true,
+          "moments": [
+            {
+              "atSec": 0,
+              "label": "Starting the Fiora matchup"
+            },
+            {
+              "atSec": 28,
+              "label": "Vital management strategy"
+            },
+            {
+              "atSec": 78,
+              "label": "Early laning and farming"
+            },
+            {
+              "atSec": 204,
+              "label": "Mid-game skirmishes"
+            },
+            {
+              "atSec": 330,
+              "label": "Mid-game itemization"
+            },
+            {
+              "atSec": 444,
+              "label": "Tank survivability analysis"
+            },
+            {
+              "atSec": 565,
+              "label": "Late game scaling and focus"
+            },
+            {
+              "atSec": 772,
+              "label": "Post-game stats breakdown"
+            },
+            {
+              "atSec": 956,
+              "label": "Ambessa vs Fiora ban choice"
+            },
+            {
+              "atSec": 1033,
+              "label": "Second game laning phase"
+            },
+            {
+              "atSec": 1211,
+              "label": "Team coordination issues"
+            },
+            {
+              "atSec": 1392,
+              "label": "Late game macro decisions"
+            },
+            {
+              "atSec": 1555,
+              "label": "Closing the game"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 122,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "8qP_oM6iszw",
+          "title": "Ornn Top vs Darius - KR Master Patch 25.07",
+          "rankClaim": "Master",
+          "patch": "25.7",
+          "durationSec": 1891,
+          "region": "KR",
+          "uploaded": "2025-04-12",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 208,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 267,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 426,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 578,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 652,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 783,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 805,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1078,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1175,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1264,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1354,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1458,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1560,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1694,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1717,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1727,
+              "label": "Take down The Inhibitor"
+            },
+            {
+              "atSec": 1805,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1870,
+              "label": "End credit"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 126,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "KkIeXgy9oto",
+          "title": "Ornn Top vs Jayce - KR Grandmaster Patch 25.15",
+          "rankClaim": "Grandmaster",
+          "patch": "25.15",
+          "durationSec": 1889,
+          "region": "KR",
+          "uploaded": "2025-08-09",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 134,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "OtUDFa7QzKI",
+          "title": "Ornn Mid vs Syndra - NA Grandmaster Patch 25.16",
+          "rankClaim": "Grandmaster",
+          "patch": "25.16",
+          "durationSec": 1711,
+          "region": "NA",
+          "uploaded": "2025-08-27",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 147,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "tnKtM_qotXQ",
+          "title": "Ornn Support vs Seraphine - KR Master Patch 26.12",
+          "rankClaim": "Master",
+          "patch": "26.12",
+          "durationSec": 1561,
+          "region": "KR",
+          "uploaded": "2026-06-24",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 150,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "sxblLHAiOm8",
+          "title": "Ornn Top vs Gnar - KR Grandmaster Patch 26.20",
+          "rankClaim": "Grandmaster",
+          "patch": "26.20",
+          "durationSec": 1707,
+          "region": "KR",
+          "uploaded": "2026-10-10",
+          "result": "W",
+          "moments": [
+            {
+              "atSec": 281,
+              "label": "First Blood — Sylas kills Gnar",
+              "kind": "kill"
+            },
+            {
+              "atSec": 676,
+              "label": "Red takes 1st Dragon (Chemtech)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 697,
+              "label": "Aurelion Sol takes down Seraphine"
+            },
+            {
+              "atSec": 996,
+              "label": "Red takes 2nd Dragon (Mountain)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1009,
+              "label": "Aurelion Sol Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1087,
+              "label": "Aurelion Sol takes down Seraphine"
+            },
+            {
+              "atSec": 1137,
+              "label": "Sylas takes down Bard"
+            },
+            {
+              "atSec": 1218,
+              "label": "Team fight (5 kills)",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1317,
+              "label": "Lee Sin Triple Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1349,
+              "label": "Blue takes 1st Dragon (Cloud)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1561,
+              "label": "Aurelion Sol eliminates Jarvan IV"
+            },
+            {
+              "atSec": 1610,
+              "label": "Blue takes Baron",
+              "kind": "baron"
+            },
+            {
+              "atSec": 1656,
+              "label": "Team fight (3 kills)",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1684,
+              "label": "Mid Inhibitor falls (Red)"
+            }
+          ]
+        },
+        {
+          "videoId": "TNlCoNTrhe8",
+          "title": "Ornn Top vs Gnar - KR Master Patch 26.10",
+          "rankClaim": "Master",
+          "patch": "26.10",
+          "durationSec": 1786,
+          "region": "KR",
+          "uploaded": "2026-05-19",
+          "moments": []
+        },
+        {
+          "videoId": "hrfo47vXse4",
+          "title": "Ornn Top vs Gnar - EUW Grandmaster Patch 25.06",
+          "rankClaim": "Grandmaster",
+          "patch": "25.6",
+          "durationSec": 2145,
+          "region": "EUW",
+          "uploaded": "2025-03-26",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 154,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "LD-hyQIVpwg",
+          "title": "Ornn Top vs Zac - TW Challenger Patch 26.05",
+          "rankClaim": "Challenger",
+          "patch": "26.5",
+          "durationSec": 1560,
+          "uploaded": "2026-03-10",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 157,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "Cg_K_rjjLZ4",
+          "title": "Ornn Top vs Yasuo - KR Grandmaster Patch 25.23",
+          "rankClaim": "Grandmaster",
+          "patch": "25.23",
+          "durationSec": 1720,
+          "region": "KR",
+          "uploaded": "2025-11-27",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 163,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "YGATRg-pRHA",
+          "title": "Ornn Mid vs Taliyah - KR Master Patch 25.19",
+          "rankClaim": "Master",
+          "patch": "25.19",
+          "durationSec": 2028,
+          "region": "KR",
+          "uploaded": "2025-10-07",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 164,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "7vxmJCJ4Qgg",
+          "title": "Ornn Top vs Camille - KR Master Patch 25.12",
+          "rankClaim": "Master",
+          "patch": "25.12",
+          "durationSec": 2026,
+          "region": "KR",
+          "uploaded": "2025-06-19",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 223,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "etSZbnOv0fM",
+          "title": "Ornn Top vs Tahm Kench - KR Master Patch 25.04",
+          "rankClaim": "Master",
+          "patch": "25.4",
+          "durationSec": 1967,
+          "region": "KR",
+          "uploaded": "2025-02-26",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 234,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "DitmvhfcY2I",
+          "title": "Ornn Jungle vs Viego - KR Master Patch 26.13",
+          "rankClaim": "Master",
+          "patch": "26.13",
+          "durationSec": 1862,
+          "region": "KR",
+          "uploaded": "2026-07-08",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 245,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "8NcPwF7wOkY",
+          "title": "(Harbo) Ornn Top vs Ekko - EUW Challenger Patch 26.14",
+          "rankClaim": "Challenger",
+          "patch": "26.14",
+          "durationSec": 1613,
+          "region": "EUW",
+          "player": "Harbo",
+          "uploaded": "2026-07-20",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 246,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "pWEJN5ta94E",
+          "title": "Ornn Jungle vs Qiyana - KR Master Patch 25.24",
+          "rankClaim": "Master",
+          "patch": "25.24",
+          "durationSec": 1568,
+          "region": "KR",
+          "uploaded": "2025-12-15",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 126,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 201,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 342,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 542,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 667,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 885,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 960,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 998,
+              "label": "Hunt The Dragon",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1061,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1152,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1207,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1240,
+              "label": "Hunt The Atakhan"
+            },
+            {
+              "atSec": 1261,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1325,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1390,
+              "label": "Hunt The Dragon",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1438,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1557,
+              "label": "End credit"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 268,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "yh3tXLZqV5k",
+          "title": "Ornn Mid vs Azir - EUW Grandmaster Patch 26.03",
+          "rankClaim": "Grandmaster",
+          "patch": "26.3",
+          "durationSec": 1859,
+          "region": "EUW",
+          "uploaded": "2026-02-17",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 259,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 590,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 714,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 838,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 924,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 953,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1038,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1189,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1329,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1462,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1566,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1620,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1791,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1848,
+              "label": "End credit"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 517,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "ilIsH_XYhgE",
+          "title": "Ornn Top vs Sylas - KR Master Patch 26.08",
+          "rankClaim": "Master",
+          "patch": "26.8",
+          "durationSec": 1846,
+          "region": "KR",
+          "uploaded": "2026-04-20",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 777,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "hY72d6rHkF8",
+          "title": "Ornn Top vs Yone - KR Master Patch 26.04",
+          "rankClaim": "Master",
+          "patch": "26.4",
+          "durationSec": 1770,
+          "region": "KR",
+          "uploaded": "2026-02-25",
+          "moments": []
+        },
+        {
+          "videoId": "OA3yYxqQWQw",
+          "title": "Ornn Top vs Yone - KR Master Patch 26.03",
+          "rankClaim": "Master",
+          "patch": "26.3",
+          "durationSec": 1467,
+          "region": "KR",
+          "uploaded": "2026-02-11",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 367,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 475,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 795,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 929,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1103,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1227,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1316,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1336,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1395,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1456,
+              "label": "End credit"
+            }
+          ]
+        },
+        {
+          "videoId": "sFTePITRmgk",
+          "title": "Ornn Top vs Yone - KR Master Patch 25.24",
+          "rankClaim": "Master",
+          "patch": "25.24",
+          "durationSec": 1612,
+          "region": "KR",
+          "uploaded": "2025-12-23",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 213,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 599,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 778,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 914,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 945,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1017,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1146,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1226,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1339,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1431,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1466,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1520,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1559,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1601,
+              "label": "End credit"
+            }
+          ]
+        },
+        {
+          "videoId": "IxxsQkba_KY",
+          "title": "Ornn Top vs Yone - EUW Challenger Patch 25.05",
+          "rankClaim": "Challenger",
+          "patch": "25.5",
+          "durationSec": 1885,
+          "region": "EUW",
+          "uploaded": "2025-03-20",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 160,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 457,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 554,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 653,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 686,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1000,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1036,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1154,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1330,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1354,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1381,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1417,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1526,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1644,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1735,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1759,
+              "label": "Take down The Inhibitor"
+            },
+            {
+              "atSec": 1776,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1798,
+              "label": "Take down The Inhibitor"
+            },
+            {
+              "atSec": 1820,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1864,
+              "label": "End credit"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 799,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "bfDhmiDVJXQ",
+          "title": "Ornn Jungle vs Ambessa - KR Master Patch 26.09",
+          "rankClaim": "Master",
+          "patch": "26.9",
+          "durationSec": 1792,
+          "region": "KR",
+          "uploaded": "2026-05-12",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 799,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "ld4853Hz1Sc",
+          "title": "Ornn Top vs Ambessa - KR Master Patch 25.10",
+          "rankClaim": "Master",
+          "patch": "25.10",
+          "durationSec": 1876,
+          "region": "KR",
+          "uploaded": "2025-05-22",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 875,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "SLqzrcGA0Ww",
+          "title": "Ornn Top vs Sett - KR Master Patch 26.19",
+          "rankClaim": "Master",
+          "patch": "26.19",
+          "durationSec": 1585,
+          "region": "KR",
+          "uploaded": "2026-10-07",
+          "result": "W",
+          "moments": [
+            {
+              "atSec": 84,
+              "label": "First Blood — Qiyana kills Sett",
+              "kind": "kill"
+            },
+            {
+              "atSec": 308,
+              "label": "Blue takes 1st Dragon (Cloud)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 456,
+              "label": "Ornn catches Sett"
+            },
+            {
+              "atSec": 590,
+              "label": "Ornn outduels Sett again"
+            },
+            {
+              "atSec": 659,
+              "label": "Red takes 1st Dragon (Infernal)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 818,
+              "label": "Qiyana eliminates Zeri"
+            },
+            {
+              "atSec": 949,
+              "label": "Yunara Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 971,
+              "label": "Red takes 2nd Dragon (Mountain)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1009,
+              "label": "Qiyana kills Sett",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1128,
+              "label": "Ornn outplays Sett (3rd time)"
+            },
+            {
+              "atSec": 1233,
+              "label": "Qiyana Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1284,
+              "label": "Red takes 3rd Dragon (Mountain)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1413,
+              "label": "Red takes Baron",
+              "kind": "baron"
+            },
+            {
+              "atSec": 1415,
+              "label": "Qiyana takes down Talon"
+            },
+            {
+              "atSec": 1477,
+              "label": "Ahri kills Zeri",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1510,
+              "label": "Yunara Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1523,
+              "label": "Mid Inhibitor falls (Blue)"
+            },
+            {
+              "atSec": 1530,
+              "label": "Qiyana eliminates Zeri"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 887,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "tZYjQtWWh4A",
+          "title": "Ornn Mid vs Gwen - EUW Grandmaster Patch 25.22",
+          "rankClaim": "Grandmaster",
+          "patch": "25.22",
+          "durationSec": 1788,
+          "region": "EUW",
+          "uploaded": "2025-11-18",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 904,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "Gtesq-UXom4",
+          "title": "Ornn Top vs Zaahen - KR Master Patch 26.07",
+          "rankClaim": "Master",
+          "patch": "26.7",
+          "durationSec": 1524,
+          "region": "KR",
+          "uploaded": "2026-04-08",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 117,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 189,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 325,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 575,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 731,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 855,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 932,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 956,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1078,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1142,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1185,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1203,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1257,
+              "label": "Hunt The Baron Nashor",
+              "kind": "baron"
+            },
+            {
+              "atSec": 1290,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1322,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1339,
+              "label": "Take down The Inhibitor"
+            },
+            {
+              "atSec": 1351,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1369,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1416,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1445,
+              "label": "Hunt The Dragon",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1472,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1513,
+              "label": "End credit"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

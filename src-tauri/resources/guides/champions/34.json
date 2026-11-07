@@ -1,0 +1,3800 @@
+{
+  "schema": 1,
+  "champion": 34,
+  "generatedAt": "2026-11-07T13:25:14.592Z",
+  "guides": [
+    {
+      "champion": 34,
+      "enemy": 134,
+      "lane": "mid",
+      "patch": "26.21",
+      "reviewed": false,
+      "difficulty": "Hard",
+      "favoredWhen": "She punishes pre-6 walkups, dodges Q, and grows the lead. Farm safe, scale.",
+      "keyTips": [
+        {
+          "text": "She punishes your pre-6 walkups: your cooldowns are long and range short, so concede.",
+          "scope": "pair",
+          "sourceIds": [
+            "shok"
+          ]
+        },
+        {
+          "text": "She dodges your Q or takes big damage: the sidestep is mandatory for her, so lead.",
+          "scope": "pair",
+          "sourceIds": [
+            "shok"
+          ],
+          "abilityKeys": [
+            {
+              "champion": 34,
+              "key": "Q"
+            }
+          ]
+        },
+        {
+          "text": "You are very gankable: ward for her jungler.",
+          "scope": "pair",
+          "sourceIds": [
+            "shok"
+          ]
+        }
+      ],
+      "enemyTips": {},
+      "sections": {
+        "overview": {
+          "tips": []
+        },
+        "early-lane": {
+          "tips": [
+            {
+              "text": "She trades every walkup: your cooldowns do not cover the wave, so give it.",
+              "scope": "pair",
+              "sourceIds": [
+                "shok"
+              ]
+            },
+            {
+              "text": "She builds the pre-6 lead: it keeps growing after 6, so survive to it.",
+              "scope": "pair",
+              "sourceIds": [
+                "shok"
+              ]
+            }
+          ]
+        },
+        "mid-lane": {
+          "tips": [
+            {
+              "text": "Harder for her to punish after 6: your waveclear lands, so stall.",
+              "scope": "pair",
+              "sourceIds": [
+                "shok"
+              ]
+            },
+            {
+              "text": "She keeps dodging Q: the rule never expires, so vary.",
+              "scope": "pair",
+              "sourceIds": [
+                "shok"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 34,
+                  "key": "Q"
+                }
+              ]
+            }
+          ]
+        },
+        "win-condition": {
+          "tips": [
+            {
+              "text": "Farmed plus scaled: the Syndra whose pre-6 bank never grew never wins.",
+              "scope": "pair",
+              "sourceIds": [
+                "shok"
+              ]
+            }
+          ]
+        }
+      },
+      "itemization": [],
+      "sources": [
+        {
+          "id": "shok",
+          "author": "ShokLoL",
+          "rankClaim": "Rank 1 Challenger · Syndra main",
+          "rank": "challenger",
+          "url": "https://www.mobafire.com/league-of-legends/build/26-17-shoks-rank-1-challenger-syndra-guide-602710",
+          "kind": "mobafire"
+        }
+      ]
+    },
+    {
+      "champion": 34,
+      "enemy": 238,
+      "lane": "mid",
+      "patch": "26.21",
+      "reviewed": false,
+      "difficulty": "Easy",
+      "favoredWhen": "He dodges Q, respects the wall after 6, and never cracks the egg without the kill. Punish shadows, hold wall.",
+      "keyTips": [
+        {
+          "text": "He dodges Q: it is your main poke and starts everything, so vary.",
+          "scope": "pair",
+          "sourceIds": [
+            "v222"
+          ],
+          "abilityKeys": [
+            {
+              "champion": 34,
+              "key": "Q"
+            }
+          ]
+        },
+        {
+          "text": "Your egg punishes half-commits: position so he must fully commit.",
+          "scope": "pair",
+          "sourceIds": [
+            "aikopanda",
+            "v222"
+          ]
+        },
+        {
+          "text": "He respects your wall: it decides where fights happen, so place it.",
+          "scope": "pair",
+          "sourceIds": [
+            "aikopanda"
+          ],
+          "abilityKeys": [
+            {
+              "champion": 34,
+              "key": "W"
+            }
+          ]
+        }
+      ],
+      "enemyTips": {
+        "early-lane": [
+          {
+            "text": "Zed often places Living Shadow before Death Mark so he can swap away from skillshots. Hold your crowd control until he has used the swap.",
+            "scope": "enemy",
+            "sourceIds": [
+              "aikopanda"
+            ],
+            "patch": "26.21",
+            "abilityKeys": [
+              {
+                "champion": 238,
+                "key": "W"
+              },
+              {
+                "champion": 238,
+                "key": "R"
+              }
+            ]
+          }
+        ],
+        "win-condition": [
+          {
+            "text": "Death Mark always lands Zed behind his target. Pre-aim crowd control and escapes behind you, not toward where he cast it.",
+            "scope": "enemy",
+            "sourceIds": [
+              "peng04"
+            ],
+            "patch": "26.21",
+            "abilityKeys": [
+              {
+                "champion": 238,
+                "key": "R"
+              }
+            ]
+          }
+        ]
+      },
+      "sections": {
+        "overview": {
+          "tips": []
+        },
+        "early-lane": {
+          "tips": [
+            {
+              "text": "He sidesteps Q on cooldown: every miss is lane control you lose, so hold.",
+              "scope": "pair",
+              "sourceIds": [
+                "aikopanda",
+                "v222"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 34,
+                  "key": "Q"
+                }
+              ]
+            },
+            {
+              "text": "With his W down, your W-Q is hard to avoid: track his shadow cooldown.",
+              "scope": "pair",
+              "sourceIds": [
+                "aikopanda"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 238,
+                  "key": "W"
+                },
+                {
+                  "champion": 34,
+                  "key": "W"
+                }
+              ]
+            }
+          ]
+        },
+        "mid-lane": {
+          "tips": [
+            {
+              "text": "Death Mark always lands Zed behind his target. Pre-aim crowd control and escapes behind you, not toward where he cast it.",
+              "scope": "pair",
+              "sourceIds": [
+                "peng04"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 238,
+                  "key": "R"
+                }
+              ]
+            },
+            {
+              "text": "After 6, wall him into R when he commits blindly: time his W.",
+              "scope": "pair",
+              "sourceIds": [
+                "v222"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 238,
+                  "key": "W"
+                },
+                {
+                  "champion": 34,
+                  "key": "R"
+                }
+              ]
+            }
+          ]
+        },
+        "win-condition": {
+          "tips": [
+            {
+              "text": "Q landed plus wall placed: the Zed who never dodges never kills.",
+              "scope": "pair",
+              "sourceIds": [
+                "aikopanda",
+                "v222"
+              ]
+            }
+          ]
+        }
+      },
+      "itemization": [],
+      "sources": [
+        {
+          "id": "aikopanda",
+          "author": "AikoPanda",
+          "rankClaim": "Zed main",
+          "url": "https://www.mobafire.com/league-of-legends/build/26-20-video-guides-hidden-combos-all-matchups-zed-all-in-one-guide-652800",
+          "kind": "mobafire"
+        },
+        {
+          "id": "v222",
+          "author": "V222",
+          "rankClaim": "Challenger EUW · Zed main",
+          "rank": "challenger",
+          "url": "https://www.mobafire.com/league-of-legends/build/all-matchups-26-14-zed-guide-2000lp-euw-challenger-652354",
+          "kind": "mobafire"
+        },
+        {
+          "id": "peng04",
+          "author": "Peng04",
+          "rankClaim": "Challenger · Ahri main",
+          "rank": "challenger",
+          "url": "https://www.mobafire.com/league-of-legends/build/26-20-pengs-ahri-guide-5-1mil-points-13x-challenger-648700",
+          "kind": "mobafire"
+        }
+      ]
+    }
+  ],
+  "general": [
+    {
+      "champion": 34,
+      "lane": "mid",
+      "patch": "26.21",
+      "reviewed": false,
+      "keyTips": [
+        {
+          "text": "Play a scaling lane and rush Malignance or Rod of Ages so damage comes online sooner.",
+          "scope": "champion",
+          "sourceIds": [
+            "aniviabot"
+          ],
+          "itemIds": [
+            3118,
+            6657
+          ]
+        },
+        {
+          "text": "Block only caster minions to build a slow push back; a full-wave block works on sides, not mid.",
+          "scope": "champion",
+          "sourceIds": [
+            "aniviabot"
+          ],
+          "abilityKeys": [
+            {
+              "champion": 34,
+              "key": "W"
+            }
+          ]
+        },
+        {
+          "text": "Set R and use W to drag the dragon behind the pit wall for a hidden take when the area sits unwarded.",
+          "scope": "champion",
+          "sourceIds": [
+            "aniviabot"
+          ],
+          "abilityKeys": [
+            {
+              "champion": 34,
+              "key": "R"
+            },
+            {
+              "champion": 34,
+              "key": "W"
+            }
+          ]
+        }
+      ],
+      "sections": {
+        "overview": {
+          "tips": []
+        },
+        "early-lane": {
+          "tips": [
+            {
+              "text": "Land the quick Q and E combo so Frostbite connects as Flash Frost arrives, before targets like Gangplank can cleanse the stun.",
+              "scope": "champion",
+              "sourceIds": [
+                "aniviabot"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 34,
+                  "key": "Q"
+                },
+                {
+                  "champion": 34,
+                  "key": "E"
+                }
+              ]
+            },
+            {
+              "text": "Spend short trade combos to punish a bad step and trigger Electrocute or Phase Rush.",
+              "scope": "champion",
+              "sourceIds": [
+                "aniviabot"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 34,
+                  "key": "Q"
+                },
+                {
+                  "champion": 34,
+                  "key": "E"
+                }
+              ]
+            },
+            {
+              "text": "Drop W behind the turret to stall minions and farm safely, but expect the wave to slow-push toward the enemy.",
+              "scope": "champion",
+              "sourceIds": [
+                "aniviabot"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 34,
+                  "key": "W"
+                }
+              ]
+            },
+            {
+              "text": "Never block waves on autopilot, since a bad push can expose Anivia or park the wave where she cannot hold it.",
+              "scope": "champion",
+              "sourceIds": [
+                "aniviabot"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 34,
+                  "key": "W"
+                }
+              ]
+            },
+            {
+              "text": "Start Doran's Ring with a Health Potion, or Refillable Potion plus Dark Seal as the alternate open.",
+              "scope": "champion",
+              "sourceIds": [
+                "aniviabot"
+              ],
+              "itemIds": [
+                1056,
+                2003,
+                2031,
+                1082
+              ]
+            }
+          ]
+        },
+        "mid-lane": {
+          "tips": [
+            {
+              "text": "Spike first on Malignance; buy Rod of Ages before or after it for safer scaling with health and mana.",
+              "scope": "champion",
+              "sourceIds": [
+                "aniviabot"
+              ],
+              "itemIds": [
+                3118,
+                6657
+              ]
+            },
+            {
+              "text": "Play around the stacked Rod of Ages level gain as a major experience jump.",
+              "scope": "champion",
+              "sourceIds": [
+                "aniviabot"
+              ],
+              "itemIds": [
+                6657
+              ]
+            },
+            {
+              "text": "Add Liandry's Torment later for sustained damage next to Rod durability.",
+              "scope": "champion",
+              "sourceIds": [
+                "aniviabot"
+              ],
+              "itemIds": [
+                6653
+              ]
+            },
+            {
+              "text": "Take Cosmic Drive later for movement and haste, pairing it with Approach Velocity and upgraded Ionian Boots.",
+              "scope": "champion",
+              "sourceIds": [
+                "aniviabot"
+              ],
+              "itemIds": [
+                4629
+              ]
+            },
+            {
+              "text": "Swap Cosmic Drive for Zhonya's Hourglass into heavy dive, since the ultimate keeps running through stasis.",
+              "scope": "champion",
+              "sourceIds": [
+                "aniviabot"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 34,
+                  "key": "R"
+                }
+              ],
+              "itemIds": [
+                4629,
+                3157
+              ]
+            },
+            {
+              "text": "Use W to steer side waves, forcing a push or breaking an enemy freeze.",
+              "scope": "champion",
+              "sourceIds": [
+                "aniviabot"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 34,
+                  "key": "W"
+                }
+              ]
+            }
+          ]
+        },
+        "win-condition": {
+          "tips": [
+            {
+              "text": "Scale through the first mana and damage item, then fight heavier around the Rod of Ages level spike.",
+              "scope": "champion",
+              "sourceIds": [
+                "aniviabot"
+              ],
+              "itemIds": [
+                6657
+              ]
+            },
+            {
+              "text": "Control space around fights and objectives with Q, E, R, and W instead of chasing a lane-kill plan.",
+              "scope": "champion",
+              "sourceIds": [
+                "aniviabot"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 34,
+                  "key": "Q"
+                },
+                {
+                  "champion": 34,
+                  "key": "E"
+                },
+                {
+                  "champion": 34,
+                  "key": "R"
+                },
+                {
+                  "champion": 34,
+                  "key": "W"
+                }
+              ]
+            },
+            {
+              "text": "Attempt hidden W objective setups only with clear vision, since the trick fails when the pit or approach is warded.",
+              "scope": "champion",
+              "sourceIds": [
+                "aniviabot"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 34,
+                  "key": "W"
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "itemization": [
+        {
+          "text": "Run Stormraider's Surge with Manaflow Band, Celerity, and Gathering Storm, plus Triple Tonic and Approach Velocity.",
+          "scope": "champion",
+          "sourceIds": [
+            "aniviabot"
+          ]
+        },
+        {
+          "text": "Rush Malignance for earlier damage, or Rod of Ages first for safer health and mana scaling, then complete the other as the second core.",
+          "scope": "champion",
+          "sourceIds": [
+            "aniviabot"
+          ],
+          "itemIds": [
+            3118,
+            6657
+          ]
+        },
+        {
+          "text": "Add Liandry's Torment as the later mid-setup damage item, and Morellonomicon when the team lacks Grievous Wounds.",
+          "scope": "champion",
+          "sourceIds": [
+            "aniviabot"
+          ],
+          "itemIds": [
+            6653,
+            3165
+          ]
+        },
+        {
+          "text": "Pick Zhonya's into heavy dive, Cosmic Drive for movement and haste, and Banshee's Veil as the alternate defense.",
+          "scope": "champion",
+          "sourceIds": [
+            "aniviabot"
+          ],
+          "itemIds": [
+            4629,
+            3102
+          ]
+        },
+        {
+          "text": "Wear Sorcerer's Shoes for damage, Mercury's Treads for resistance and tenacity, Ionian Boots for ability and summoner haste, and Plated Steelcaps into physical auto attackers.",
+          "scope": "champion",
+          "sourceIds": [
+            "aniviabot"
+          ],
+          "itemIds": [
+            3020,
+            3111,
+            3047
+          ]
+        },
+        {
+          "text": "Consider Fimbulwinter as a rare durability pick, since Q or W can trigger its shield.",
+          "scope": "champion",
+          "sourceIds": [
+            "aniviabot"
+          ],
+          "abilityKeys": [
+            {
+              "champion": 34,
+              "key": "Q"
+            },
+            {
+              "champion": 34,
+              "key": "W"
+            }
+          ]
+        },
+        {
+          "text": "Take Flash and Ignite, opening Doran's Ring or Refillable Potion plus Dark Seal.",
+          "scope": "champion",
+          "sourceIds": [
+            "aniviabot"
+          ],
+          "itemIds": [
+            1056,
+            2031,
+            1082
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "id": "aniviabot",
+          "author": "AniviaBot",
+          "rankClaim": "Master (profile badge; no title claim)",
+          "rank": "master",
+          "url": "https://www.mobafire.com/league-of-legends/build/the-anivia-encyclopedia-an-in-depth-anivia-guide-592758",
+          "kind": "mobafire"
+        }
+      ]
+    }
+  ],
+  "vods": [
+    {
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "VLhckobmqhY",
+          "title": "Baicaiovo Anivia : This Guy is CRUSHING CN Super Server - Engsub",
+          "rankClaim": "Master+",
+          "patch": "26.13",
+          "durationSec": 1793,
+          "patchEstimated": true,
+          "player": "Baicaiovo",
+          "uploaded": "2026-06-25",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "lS0KMSs3OjQ",
+          "title": "Baicaiovo Anivia : This CN Super Server Legend is CRUSHING Challenger Elo - Engsub",
+          "rankClaim": "Challenger",
+          "patch": "26.5",
+          "durationSec": 1504,
+          "patchEstimated": true,
+          "player": "Baicaiovo",
+          "uploaded": "2026-03-10",
+          "format": "stream",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 1,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "6jsPF9Vak1w",
+          "title": "Anivia Mid vs Annie - KR Grandmaster Patch 25.14",
+          "rankClaim": "Grandmaster",
+          "patch": "25.14",
+          "durationSec": 1556,
+          "region": "KR",
+          "uploaded": "2025-07-25",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 3,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "lSUd4t8sC_Q",
+          "title": "Anivia Mid vs Galio - KR Grandmaster Patch 25.23",
+          "rankClaim": "Grandmaster",
+          "patch": "25.23",
+          "durationSec": 1701,
+          "region": "KR",
+          "uploaded": "2025-11-25",
+          "moments": []
+        },
+        {
+          "videoId": "MRw4hdEIE30",
+          "title": "Anivia Mid vs Galio - KR Challenger Patch 25.21",
+          "rankClaim": "Challenger",
+          "patch": "25.21",
+          "durationSec": 1951,
+          "region": "KR",
+          "uploaded": "2025-10-29",
+          "moments": []
+        },
+        {
+          "videoId": "Xqpla1N47i0",
+          "title": "Anivia Mid vs Galio - KR Grandmaster Patch 25.20",
+          "rankClaim": "Grandmaster",
+          "patch": "25.20",
+          "durationSec": 1815,
+          "region": "KR",
+          "uploaded": "2025-10-15",
+          "moments": []
+        },
+        {
+          "videoId": "9FFkDgtrOSY",
+          "title": "Anivia Mid vs Galio - KR Challenger Patch 25.13",
+          "rankClaim": "Challenger",
+          "patch": "25.13",
+          "durationSec": 1525,
+          "region": "KR",
+          "uploaded": "2025-07-03",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 4,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "Et2irnsgShs",
+          "title": "Anivia Mid vs Twisted Fate - KR Master Patch 25.08",
+          "rankClaim": "Master",
+          "patch": "25.8",
+          "durationSec": 1785,
+          "region": "KR",
+          "uploaded": "2025-04-21",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 8,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "m_ArjmkXiXQ",
+          "title": "T1 Faker Anivia vs Vladimir [ MID ] Korea Challenger 1875 LP | Patch 26.11",
+          "rankClaim": "Challenger",
+          "patch": "26.11",
+          "durationSec": 1788,
+          "region": "KR",
+          "player": "Faker",
+          "team": "T1",
+          "uploaded": "2026-06-07",
+          "moments": []
+        },
+        {
+          "videoId": "dzGCldcDcos",
+          "title": "Anivia Mid vs Vladimir - KR Grandmaster Patch 25.12",
+          "rankClaim": "Grandmaster",
+          "patch": "25.12",
+          "durationSec": 1767,
+          "region": "KR",
+          "uploaded": "2025-06-17",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 9,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "PTDFMYjHbdk",
+          "title": "I WAS TEMPTED BY THE DARK SIDE",
+          "rankClaim": "Master+",
+          "patch": "26.10",
+          "durationSec": 26617,
+          "patchEstimated": true,
+          "player": "Alois",
+          "uploaded": "2026-05-17",
+          "format": "stream",
+          "cam": true,
+          "startSec": 9691,
+          "endSec": 11626,
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 10,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "u4nqR6aYmRU",
+          "title": "Anivia vs Kayle 13/0/5 (Top) | EUW Master | Anivia OTP Replay",
+          "rankClaim": "Master",
+          "patch": "26.9",
+          "durationSec": 1519,
+          "region": "EUW",
+          "patchEstimated": true,
+          "uploaded": "2026-05-04",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 13,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "KMHMMpk_pXw",
+          "title": "Anivia Mid vs Ryze - KR Challenger Patch 26.18",
+          "rankClaim": "Challenger",
+          "patch": "26.18",
+          "durationSec": 1829,
+          "region": "KR",
+          "uploaded": "2026-09-19",
+          "moments": []
+        },
+        {
+          "videoId": "80WvvDgt-HI",
+          "title": "T1 Faker Anivia vs Ryze MID [ Perfect KDA ] Korea Challenger 1723 LP | Patch 26.7",
+          "rankClaim": "Challenger",
+          "patch": "26.7",
+          "durationSec": 1309,
+          "region": "KR",
+          "player": "Faker",
+          "team": "T1",
+          "uploaded": "2026-04-15",
+          "moments": []
+        },
+        {
+          "videoId": "QImWf-aqnic",
+          "title": "T1 Faker Anivia vs Ryze [ MID ] Korea Grandmaster 1148 LP | Patch 26.6",
+          "rankClaim": "Grandmaster",
+          "patch": "26.6",
+          "durationSec": 1175,
+          "region": "KR",
+          "player": "Faker",
+          "team": "T1",
+          "uploaded": "2026-03-24",
+          "moments": []
+        },
+        {
+          "videoId": "H0A7tEpda6M",
+          "title": "DK ShowMaker Anivia vs Ryze [ MID ] Rank #1 Korea Challenger Patch 26.2",
+          "rankClaim": "Challenger",
+          "patch": "26.2",
+          "durationSec": 1183,
+          "region": "KR",
+          "player": "ShowMaker",
+          "team": "DK",
+          "uploaded": "2026-02-04",
+          "moments": []
+        },
+        {
+          "videoId": "7wZHk2hFAeI",
+          "title": "Anivia Mid vs Ryze - KR Challenger Patch 25.07",
+          "rankClaim": "Challenger",
+          "patch": "25.7",
+          "durationSec": 1510,
+          "region": "KR",
+          "uploaded": "2025-04-09",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 213,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 268,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 371,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 458,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 837,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 946,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 972,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1004,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1156,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1263,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1435,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1489,
+              "label": "End credit"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 14,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "AKOpkPDG1jY",
+          "title": "Anivia Top vs Sion - EUW Challenger Patch 26.03",
+          "rankClaim": "Challenger",
+          "patch": "26.3",
+          "durationSec": 1659,
+          "region": "EUW",
+          "uploaded": "2026-02-16",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 17,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "zzSJWW6s_b4",
+          "title": "Anivia Top vs Teemo - EUW Grandmaster Patch 25.13",
+          "rankClaim": "Grandmaster",
+          "patch": "25.13",
+          "durationSec": 1590,
+          "region": "EUW",
+          "uploaded": "2025-07-14",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 31,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "g3nGAsz2fZA",
+          "title": "Faker Anivia vs Cho'Gatch Mid - KR Grandmaster - Patch 16.03 Season 16",
+          "rankClaim": "Grandmaster",
+          "patch": "26.3",
+          "durationSec": 2221,
+          "region": "KR",
+          "player": "Faker",
+          "uploaded": "2026-02-12",
+          "moments": []
+        },
+        {
+          "videoId": "FMXT4R7sH2o",
+          "title": "T1 Faker Anivia vs Cho'Gath [ MID ] Korea Master Patch 26.3",
+          "rankClaim": "Master",
+          "patch": "26.3",
+          "durationSec": 1993,
+          "region": "KR",
+          "player": "Faker",
+          "team": "T1",
+          "uploaded": "2026-02-10",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 31,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "dry9qNgusro",
+          "title": "Anivia Top vs Cho'Gath - EUW Challenger Patch 26.01",
+          "rankClaim": "Challenger",
+          "patch": "26.1",
+          "durationSec": 1545,
+          "region": "EUW",
+          "uploaded": "2026-01-21",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 366,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 614,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 764,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 830,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 845,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 927,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1012,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1157,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1268,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1288,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1318,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1342,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1464,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1516,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1534,
+              "label": "End credit"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 32,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "lZ6CcyvX-ZI",
+          "title": "Anivia Support vs Amumu - KR Challenger Patch 25.15",
+          "rankClaim": "Challenger",
+          "patch": "25.15",
+          "durationSec": 1998,
+          "region": "KR",
+          "uploaded": "2025-08-11",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 39,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "HkWEsCULa7w",
+          "title": "Anivia Mid vs Irelia - KR Master Patch 25.11",
+          "rankClaim": "Master",
+          "patch": "25.11",
+          "durationSec": 1741,
+          "region": "KR",
+          "uploaded": "2025-06-03",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 39,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "Sl59Z3bZ7iA",
+          "title": "(KT PerfecT) Anivia Top vs Irelia - KR Challenger Patch 26.16",
+          "rankClaim": "Challenger",
+          "patch": "26.16",
+          "durationSec": 1784,
+          "region": "KR",
+          "player": "PerfecT",
+          "team": "KT",
+          "uploaded": "2026-08-15",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 43,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "VCkz8EpYB1E",
+          "title": "Anivia Support vs Karma - KR Challenger Patch 26.08",
+          "rankClaim": "Challenger",
+          "patch": "26.8",
+          "durationSec": 1491,
+          "region": "KR",
+          "uploaded": "2026-04-26",
+          "moments": []
+        },
+        {
+          "videoId": "ctEszk24gj4",
+          "title": "Anivia Support vs Karma - KR Master Patch 25.21",
+          "rankClaim": "Master",
+          "patch": "25.21",
+          "durationSec": 1925,
+          "region": "KR",
+          "uploaded": "2025-11-03",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 54,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "CHciFZWb8a0",
+          "title": "Anivia vs Malphite 15/3/9 (Top) | EUW Grandmaster | Anivia OTP Replay",
+          "rankClaim": "Grandmaster",
+          "patch": "26.9",
+          "durationSec": 1660,
+          "region": "EUW",
+          "patchEstimated": true,
+          "uploaded": "2026-04-29",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 55,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "J81AMs1N4wY",
+          "title": "T1 Faker Anivia vs Katarina [ MID ] Korea Grandmaster 1636 LP | Patch 26.15",
+          "rankClaim": "Grandmaster",
+          "patch": "26.15",
+          "durationSec": 2142,
+          "region": "KR",
+          "player": "Faker",
+          "team": "T1",
+          "uploaded": "2026-08-07",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 55,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "TXc4yyyOH6Y",
+          "title": "Anivia Top vs Katarina - VN Challenger Patch 26.04",
+          "rankClaim": "Challenger",
+          "patch": "26.4",
+          "durationSec": 1510,
+          "uploaded": "2026-03-03",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 57,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "sIqN1mEkrwA",
+          "title": "Anivia Support vs Maokai - KR Challenger Patch 26.07",
+          "rankClaim": "Challenger",
+          "patch": "26.7",
+          "durationSec": 1744,
+          "region": "KR",
+          "uploaded": "2026-04-04",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 58,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "tFuvEJFEwy8",
+          "title": "Anivia Top vs Renekton - KR Grandmaster Patch 26.09",
+          "rankClaim": "Grandmaster",
+          "patch": "26.9",
+          "durationSec": 1876,
+          "region": "KR",
+          "uploaded": "2026-05-02",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 61,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "mth7MW_V22Q",
+          "title": "T1 Faker Anivia vs Orianna [ MID ] Korea Grandmaster 1183 LP | Patch 26.4",
+          "rankClaim": "Grandmaster",
+          "patch": "26.4",
+          "durationSec": 1802,
+          "region": "KR",
+          "player": "Faker",
+          "team": "T1",
+          "uploaded": "2026-02-20",
+          "moments": []
+        },
+        {
+          "videoId": "GoW3Afa6xIc",
+          "title": "Anivia vs Orianna Mid - KR Challenger - Patch 26.02 Season 16",
+          "rankClaim": "Challenger",
+          "patch": "26.2",
+          "durationSec": 1691,
+          "region": "KR",
+          "uploaded": "2026-01-27",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 63,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "qZt2VTDN7bI",
+          "title": "Anivia Support vs Brand - KR Master Patch 25.24",
+          "rankClaim": "Master",
+          "patch": "25.24",
+          "durationSec": 1446,
+          "region": "KR",
+          "uploaded": "2025-12-14",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 99,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 209,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 300,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 417,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 505,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 616,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 698,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 815,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 886,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 912,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 940,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1009,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1113,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1229,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1365,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1409,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1435,
+              "label": "End credit"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 67,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "l7HQSrUfNuI",
+          "title": "(GZ 1Jiang) Anivia Top vs Vayne - KR Master Patch 26.15",
+          "rankClaim": "Master",
+          "patch": "26.15",
+          "durationSec": 1525,
+          "region": "KR",
+          "player": "GZ 1Jiang",
+          "uploaded": "2026-08-01",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 69,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "37Q9YhFPQxs",
+          "title": "Anivia Mid vs Cassiopeia - KR Grandmaster Patch 26.17",
+          "rankClaim": "Grandmaster",
+          "patch": "26.17",
+          "durationSec": 1558,
+          "region": "KR",
+          "uploaded": "2026-09-04",
+          "moments": []
+        },
+        {
+          "videoId": "ivo2ky0JVXk",
+          "title": "Anivia Mid vs Cassiopeia - KR Grandmaster Patch 26.16",
+          "rankClaim": "Grandmaster",
+          "patch": "26.16",
+          "durationSec": 1662,
+          "region": "KR",
+          "uploaded": "2026-08-27",
+          "result": "W",
+          "moments": [
+            {
+              "atSec": 365,
+              "label": "First Blood — Lee Sin kills Cassiopeia",
+              "kind": "kill"
+            },
+            {
+              "atSec": 382,
+              "label": "Blue takes 1st Dragon (Infernal)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 888,
+              "label": "Red takes 1st Dragon (Ocean)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1056,
+              "label": "Team fight (3 kills)",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1099,
+              "label": "Pantheon Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1266,
+              "label": "Lee Sin kills Shen",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1309,
+              "label": "Anivia picks off Jarvan IV"
+            },
+            {
+              "atSec": 1334,
+              "label": "Red takes 2nd Dragon (Cloud)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1402,
+              "label": "Team fight (3 kills)",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1445,
+              "label": "Red takes Baron",
+              "kind": "baron"
+            },
+            {
+              "atSec": 1578,
+              "label": "Team fight (3 kills)",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1594,
+              "label": "Bot Inhibitor falls (Blue)"
+            }
+          ]
+        },
+        {
+          "videoId": "gHOlB4dNwFk",
+          "title": "(GEN Chovy) Anivia Mid vs Cassiopeia (KT Hwichan) - KR Grandmaster Patch 26.15",
+          "rankClaim": "Grandmaster",
+          "patch": "26.15",
+          "durationSec": 1831,
+          "region": "KR",
+          "player": "Chovy",
+          "team": "GEN",
+          "uploaded": "2026-08-08",
+          "moments": []
+        },
+        {
+          "videoId": "xLAfRvNEvSo",
+          "title": "(FNC Vladi) Anivia Mid vs Cassiopeia - EUW Challenger Patch 26.12",
+          "rankClaim": "Challenger",
+          "patch": "26.12",
+          "durationSec": 1482,
+          "region": "EUW",
+          "player": "Vladi",
+          "team": "FNC",
+          "uploaded": "2026-06-14",
+          "moments": []
+        },
+        {
+          "videoId": "BKVB7kGhdpE",
+          "title": "(GEN Chovy) Anivia Mid vs Cassiopeia (GAM Aress) - KR Challenger Patch 26.10",
+          "rankClaim": "Challenger",
+          "patch": "26.10",
+          "durationSec": 1786,
+          "region": "KR",
+          "player": "Chovy",
+          "team": "GEN",
+          "uploaded": "2026-05-22",
+          "moments": []
+        },
+        {
+          "videoId": "KPd0rSNcA04",
+          "title": "T1 Faker Anivia vs Cassiopeia [ MID ] Korea Challenger 1932 LP | Patch 26.10",
+          "rankClaim": "Challenger",
+          "patch": "26.10",
+          "durationSec": 964,
+          "region": "KR",
+          "player": "Faker",
+          "team": "T1",
+          "uploaded": "2026-05-21",
+          "moments": []
+        },
+        {
+          "videoId": "WH85UOd21N0",
+          "title": "Anivia Mid vs Cassiopeia - EUW Challenger Patch 25.24",
+          "rankClaim": "Challenger",
+          "patch": "25.24",
+          "durationSec": 1517,
+          "region": "EUW",
+          "uploaded": "2026-01-04",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 79,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "in0TR2xla00",
+          "title": "Anivia Top vs Gragas (Pun) - KR Grandmaster Patch 26.20",
+          "rankClaim": "Grandmaster",
+          "patch": "26.20",
+          "durationSec": 1860,
+          "region": "KR",
+          "uploaded": "2026-10-17",
+          "result": "W",
+          "moments": [
+            {
+              "atSec": 861,
+              "label": "First Blood — Jhin kills Zeri",
+              "kind": "kill"
+            },
+            {
+              "atSec": 872,
+              "label": "Anivia eliminates Camille"
+            },
+            {
+              "atSec": 1044,
+              "label": "Red takes 1st Dragon (Hextech)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1115,
+              "label": "Lee Sin Triple Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1304,
+              "label": "Lee Sin kills Camille",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1306,
+              "label": "Lee Sin Triple Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1378,
+              "label": "Azir Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1415,
+              "label": "Blue takes 1st Dragon (Chemtech)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1497,
+              "label": "Jhin picks off Camille"
+            },
+            {
+              "atSec": 1740,
+              "label": "Blue takes Baron",
+              "kind": "baron"
+            },
+            {
+              "atSec": 1771,
+              "label": "Red takes 2nd Dragon (Cloud)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1807,
+              "label": "Anivia eliminates Camille"
+            },
+            {
+              "atSec": 1827,
+              "label": "Mid Inhibitor falls (Red)"
+            },
+            {
+              "atSec": 1843,
+              "label": "Azir Double Kill",
+              "kind": "kill"
+            }
+          ]
+        },
+        {
+          "videoId": "gieBTe-BsXw",
+          "title": "Anivia Top vs Gragas - KR Master Patch 26.06",
+          "rankClaim": "Master",
+          "patch": "26.6",
+          "durationSec": 1756,
+          "region": "KR",
+          "uploaded": "2026-03-28",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 83,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "n9ZdhNLk5yM",
+          "title": "(KT PerfecT) Anivia Top vs Yorick - KR Challenger Patch 26.14",
+          "rankClaim": "Challenger",
+          "patch": "26.14",
+          "durationSec": 1575,
+          "region": "KR",
+          "player": "PerfecT",
+          "team": "KT",
+          "uploaded": "2026-07-19",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 84,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "TFZ4u8rQEBc",
+          "title": "Anivia Mid vs Akali - EUW Challenger Patch 26.05",
+          "rankClaim": "Challenger",
+          "patch": "26.5",
+          "durationSec": 1742,
+          "region": "EUW",
+          "uploaded": "2026-03-09",
+          "moments": []
+        },
+        {
+          "videoId": "w1S9sCKx7K0",
+          "title": "Anivia Mid vs Akali - KR Challenger Patch 26.02",
+          "rankClaim": "Challenger",
+          "patch": "26.2",
+          "durationSec": 1443,
+          "region": "KR",
+          "uploaded": "2026-01-27",
+          "moments": []
+        },
+        {
+          "videoId": "XZLOVUEgjbk",
+          "title": "Anivia Mid vs Akali - KR Master Patch 25.22",
+          "rankClaim": "Master",
+          "patch": "25.22",
+          "durationSec": 1697,
+          "region": "KR",
+          "uploaded": "2025-11-18",
+          "moments": []
+        },
+        {
+          "videoId": "Rdztv-Gi-wM",
+          "title": "Anivia vs Akali Mid - KR Challenger - Patch 25.11 Season 15",
+          "rankClaim": "Challenger",
+          "patch": "25.11",
+          "durationSec": 2101,
+          "region": "KR",
+          "uploaded": "2025-05-31",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 84,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "YBHJ2biKm-M",
+          "title": "(GEN Kiin) Anivia Top vs Akali - KR Grandmaster Patch 26.11",
+          "rankClaim": "Grandmaster",
+          "patch": "26.11",
+          "durationSec": 1711,
+          "region": "KR",
+          "player": "Kiin",
+          "team": "GEN",
+          "uploaded": "2026-05-31",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 85,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "tmUvzu3hlN4",
+          "title": "Anivia Support vs Kennen - KR Challenger Patch 25.08",
+          "rankClaim": "Challenger",
+          "patch": "25.8",
+          "durationSec": 1546,
+          "region": "KR",
+          "uploaded": "2025-04-28",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 185,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 269,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 384,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 519,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 549,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 588,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 647,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 804,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 842,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 862,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 950,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1003,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1167,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1352,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1494,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1525,
+              "label": "End credit"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 89,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "bDtxRWAKyEs",
+          "title": "Anivia Support vs Leona - KR Master Patch 25.18",
+          "rankClaim": "Master",
+          "patch": "25.18",
+          "durationSec": 1633,
+          "region": "KR",
+          "uploaded": "2025-09-22",
+          "moments": []
+        },
+        {
+          "videoId": "M8m3X5WodV0",
+          "title": "Anivia Support vs Leona - NA Grandmaster Patch 25.10",
+          "rankClaim": "Grandmaster",
+          "patch": "25.10",
+          "durationSec": 1758,
+          "region": "NA",
+          "uploaded": "2025-05-26",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 92,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "MEB-XIc6ATI",
+          "title": "Anivia Top vs Riven - KR Grandmaster Patch 25.24",
+          "rankClaim": "Grandmaster",
+          "patch": "25.24",
+          "durationSec": 1521,
+          "region": "KR",
+          "uploaded": "2025-12-21",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 603,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 727,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 843,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 861,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 914,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1064,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1097,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1143,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1214,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1270,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1345,
+              "label": "Take down The Inhibitor"
+            },
+            {
+              "atSec": 1382,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1469,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1510,
+              "label": "End credit"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 101,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "di2f4tL4dQY",
+          "title": "Anivia Mid vs Xerath - KR Grandmaster Patch 25.15",
+          "rankClaim": "Grandmaster",
+          "patch": "25.15",
+          "durationSec": 1896,
+          "region": "KR",
+          "uploaded": "2025-08-06",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 102,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "IWexL-oLTSU",
+          "title": "Anivia Top vs Shyvana - KR Master Patch 25.17",
+          "rankClaim": "Master",
+          "patch": "25.17",
+          "durationSec": 1665,
+          "region": "KR",
+          "uploaded": "2025-09-09",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 103,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "S8CxUvrU_s0",
+          "title": "Anivia Mid vs Ahri - EUW Grandmaster Patch 26.04",
+          "rankClaim": "Grandmaster",
+          "patch": "26.4",
+          "durationSec": 1580,
+          "region": "EUW",
+          "uploaded": "2026-02-23",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 91,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 218,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 345,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 444,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 704,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 768,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 893,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 977,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1082,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1170,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1250,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1323,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1364,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1378,
+              "label": "Take down The Inhibitor"
+            },
+            {
+              "atSec": 1479,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1527,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1540,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1569,
+              "label": "End credit"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 105,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "bLsw9woDwVk",
+          "title": "Anivia Mid vs Fizz - KR Challenger Patch 26.08",
+          "rankClaim": "Challenger",
+          "patch": "26.8",
+          "durationSec": 1871,
+          "region": "KR",
+          "uploaded": "2026-04-19",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 110,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "AYpO0wLnEyA",
+          "title": "Anivia vs Varus Mid - KR Challenger - Patch 16.03 Season 16",
+          "rankClaim": "Challenger",
+          "patch": "26.3",
+          "durationSec": 2431,
+          "region": "KR",
+          "uploaded": "2026-02-07",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 111,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "fi7NZbgqbVo",
+          "title": "Anivia Support vs Nautilus - KR Master Patch 25.13",
+          "rankClaim": "Master",
+          "patch": "25.13",
+          "durationSec": 1757,
+          "region": "KR",
+          "uploaded": "2025-07-11",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 112,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "mzweRVeIGvk",
+          "title": "Anivia vs Viktor MID [ Gen.G Chovy ] Korea Challenger 2360 LP | Patch 26.17",
+          "rankClaim": "Challenger",
+          "patch": "26.17",
+          "durationSec": 1079,
+          "region": "KR",
+          "player": "Chovy",
+          "team": "Gen.G",
+          "uploaded": "2026-09-07",
+          "moments": []
+        },
+        {
+          "videoId": "CzVeFoUiWGI",
+          "title": "Anivia vs Viktor 12/2/9 (Mid) | EUW Challenger | Anivia OTP Replay",
+          "rankClaim": "Challenger",
+          "patch": "26.8",
+          "durationSec": 1511,
+          "region": "EUW",
+          "patchEstimated": true,
+          "uploaded": "2026-04-26",
+          "moments": []
+        },
+        {
+          "videoId": "S1Hg6DWQQ3I",
+          "title": "Anivia Mid vs Viktor - KR Challenger Patch 26.03",
+          "rankClaim": "Challenger",
+          "patch": "26.3",
+          "durationSec": 1620,
+          "region": "KR",
+          "uploaded": "2026-02-10",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 377,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 462,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 515,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 622,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 808,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 929,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 989,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1207,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1318,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1443,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1461,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1609,
+              "label": "End credit"
+            }
+          ]
+        },
+        {
+          "videoId": "uh3eNScFhuM",
+          "title": "Anivia Mid vs Viktor - KR Grandmaster Patch 25.16",
+          "rankClaim": "Grandmaster",
+          "patch": "25.16",
+          "durationSec": 1849,
+          "region": "KR",
+          "uploaded": "2025-08-22",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 122,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "KpE-qOhJGUk",
+          "title": "(GEN Chovy) Anivia Mid vs Darius - KR Challenger Patch 26.11",
+          "rankClaim": "Challenger",
+          "patch": "26.11",
+          "durationSec": 1670,
+          "region": "KR",
+          "player": "Chovy",
+          "team": "GEN",
+          "uploaded": "2026-06-06",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 126,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "g-8rpxS2wtQ",
+          "title": "Anivia Top vs Jayce - KR Grandmaster Patch 26.21",
+          "rankClaim": "Grandmaster",
+          "patch": "26.21",
+          "durationSec": 1673,
+          "region": "KR",
+          "uploaded": "2026-10-31",
+          "result": "W",
+          "moments": [
+            {
+              "atSec": 10,
+              "label": "First Blood — Graves kills Annie",
+              "kind": "kill"
+            },
+            {
+              "atSec": 401,
+              "label": "Red takes 1st Dragon (Infernal)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 452,
+              "label": "Anivia catches Jayce"
+            },
+            {
+              "atSec": 971,
+              "label": "Kog'Maw picks off Jayce"
+            },
+            {
+              "atSec": 997,
+              "label": "Red takes 2nd Dragon (Cloud)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1018,
+              "label": "Graves kills Pantheon",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1109,
+              "label": "Team fight (3 kills)",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1159,
+              "label": "Kog'Maw picks off Jayce"
+            },
+            {
+              "atSec": 1268,
+              "label": "Graves Triple Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1297,
+              "label": "Red takes Baron",
+              "kind": "baron"
+            },
+            {
+              "atSec": 1332,
+              "label": "Red takes 3rd Dragon (Hextech)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1334,
+              "label": "Anivia eliminates Pantheon"
+            },
+            {
+              "atSec": 1482,
+              "label": "Taliyah takes down Annie"
+            },
+            {
+              "atSec": 1553,
+              "label": "Graves takes down Viego"
+            },
+            {
+              "atSec": 1570,
+              "label": "Graves Triple Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1649,
+              "label": "Red takes 4th Dragon (Hextech)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1657,
+              "label": "Graves Double Kill",
+              "kind": "kill"
+            }
+          ]
+        },
+        {
+          "videoId": "PTDFMYjHbdk",
+          "title": "I WAS TEMPTED BY THE DARK SIDE",
+          "rankClaim": "Master+",
+          "patch": "26.10",
+          "durationSec": 26617,
+          "patchEstimated": true,
+          "player": "Alois",
+          "uploaded": "2026-05-17",
+          "format": "stream",
+          "cam": true,
+          "startSec": 13940,
+          "endSec": 15883,
+          "moments": []
+        },
+        {
+          "videoId": "-zzgLJBowCM",
+          "title": "Anivia Top vs Jayce - VN Challenger Patch 25.20",
+          "rankClaim": "Challenger",
+          "patch": "25.20",
+          "durationSec": 1435,
+          "uploaded": "2025-10-21",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 131,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "IoD5TjSoic0",
+          "title": "Anivia Mid vs Diana - KR Challenger Patch 25.24",
+          "rankClaim": "Challenger",
+          "patch": "25.24",
+          "durationSec": 1457,
+          "region": "KR",
+          "uploaded": "2025-12-09",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 133,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "bchemu23Pqg",
+          "title": "Anivia vs Quinn 8/2/15 (Mid) | EUW Challenger | Anivia OTP Replay",
+          "rankClaim": "Challenger",
+          "patch": "26.8",
+          "durationSec": 1437,
+          "region": "EUW",
+          "patchEstimated": true,
+          "uploaded": "2026-04-22",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 133,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "PTDFMYjHbdk",
+          "title": "I WAS TEMPTED BY THE DARK SIDE",
+          "rankClaim": "Master+",
+          "patch": "26.10",
+          "durationSec": 26617,
+          "patchEstimated": true,
+          "player": "Alois",
+          "uploaded": "2026-05-17",
+          "format": "stream",
+          "cam": true,
+          "startSec": 11626,
+          "endSec": 13940,
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 134,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "X7b92NtTjp4",
+          "title": "Anivia Mid vs Syndra - KR Grandmaster Patch 25.17",
+          "rankClaim": "Grandmaster",
+          "patch": "25.17",
+          "durationSec": 1641,
+          "region": "KR",
+          "uploaded": "2025-09-02",
+          "moments": []
+        },
+        {
+          "videoId": "Lz8h9U6Njr0",
+          "title": "Anivia Mid vs Syndra - EUW Challenger Patch 25.06",
+          "rankClaim": "Challenger",
+          "patch": "25.6",
+          "durationSec": 2085,
+          "region": "EUW",
+          "uploaded": "2025-03-29",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 142,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "t6k4_f8UOBA",
+          "title": "Anivia Mid vs Zoe - NA Grandmaster Patch 26.19",
+          "rankClaim": "Grandmaster",
+          "patch": "26.19",
+          "durationSec": 1892,
+          "region": "NA",
+          "uploaded": "2026-10-02",
+          "result": "W",
+          "moments": [
+            {
+              "atSec": 187,
+              "label": "First Blood — Singed kills Zoe",
+              "kind": "kill"
+            },
+            {
+              "atSec": 366,
+              "label": "Red takes 1st Dragon (Chemtech)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 705,
+              "label": "Red takes 2nd Dragon (Cloud)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 771,
+              "label": "Anivia picks off Lee Sin"
+            },
+            {
+              "atSec": 868,
+              "label": "Anivia Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 977,
+              "label": "Blitzcrank eliminates Neeko"
+            },
+            {
+              "atSec": 1018,
+              "label": "Blue takes 1st Dragon (Ocean)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1094,
+              "label": "Anivia takes down Garen"
+            },
+            {
+              "atSec": 1118,
+              "label": "Anivia eliminates Zoe"
+            },
+            {
+              "atSec": 1222,
+              "label": "Anivia kills Viktor",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1314,
+              "label": "Jhin takes down Viktor"
+            },
+            {
+              "atSec": 1377,
+              "label": "Red takes 3rd Dragon (Ocean)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1398,
+              "label": "Jhin eliminates Lee Sin"
+            },
+            {
+              "atSec": 1613,
+              "label": "Red takes Baron",
+              "kind": "baron"
+            },
+            {
+              "atSec": 1626,
+              "label": "Anivia takes down Zoe"
+            },
+            {
+              "atSec": 1720,
+              "label": "Red takes 4th Dragon (Ocean)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1788,
+              "label": "Mid Inhibitor falls (Blue)"
+            },
+            {
+              "atSec": 1833,
+              "label": "Jhin kills Zoe",
+              "kind": "kill"
+            }
+          ]
+        },
+        {
+          "videoId": "TcoP3lYAp_c",
+          "title": "Anivia Mid vs Zoe - KR Challenger Patch 26.05",
+          "rankClaim": "Challenger",
+          "patch": "26.5",
+          "durationSec": 1731,
+          "region": "KR",
+          "uploaded": "2026-03-17",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 147,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "fCBB95nfYDM",
+          "title": "Anivia vs Seraphine 11/0/6 (Mid) | EUW Challenger | Anivia OTP Replay",
+          "rankClaim": "Challenger",
+          "patch": "26.9",
+          "durationSec": 1342,
+          "region": "EUW",
+          "patchEstimated": true,
+          "uploaded": "2026-05-09",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 157,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "EvvBw1zcuao",
+          "title": "(CJJ Jensen) Anivia Top vs Yasuo - EUW Grandmaster Patch 26.19",
+          "rankClaim": "Grandmaster",
+          "patch": "26.19",
+          "durationSec": 1737,
+          "region": "EUW",
+          "player": "CJJ Jensen",
+          "uploaded": "2026-10-04",
+          "moments": []
+        },
+        {
+          "videoId": "zgHGbkdeGMA",
+          "title": "Anivia Top vs Yasuo - NA Grandmaster Patch 25.09",
+          "rankClaim": "Grandmaster",
+          "patch": "25.9",
+          "durationSec": 1678,
+          "region": "NA",
+          "uploaded": "2025-05-16",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 163,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "bRTJA7CeNkM",
+          "title": "Anivia Mid vs Taliyah - KR Grandmaster Patch 26.20",
+          "rankClaim": "Grandmaster",
+          "patch": "26.20",
+          "durationSec": 1851,
+          "region": "KR",
+          "uploaded": "2026-10-15",
+          "result": "W",
+          "moments": [
+            {
+              "atSec": 206,
+              "label": "First Blood — Anivia kills Renekton",
+              "kind": "kill"
+            },
+            {
+              "atSec": 367,
+              "label": "Anivia takes down Taliyah"
+            },
+            {
+              "atSec": 441,
+              "label": "Red takes 1st Dragon (Infernal)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 815,
+              "label": "Red takes 2nd Dragon (Cloud)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1130,
+              "label": "Red takes 3rd Dragon (Ocean)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1175,
+              "label": "Blue takes Baron",
+              "kind": "baron"
+            },
+            {
+              "atSec": 1202,
+              "label": "Anivia catches Taliyah again"
+            },
+            {
+              "atSec": 1260,
+              "label": "Ambessa Triple Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1392,
+              "label": "Draven Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1394,
+              "label": "Draven Triple Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1431,
+              "label": "Jayce takes down Qiyana"
+            },
+            {
+              "atSec": 1444,
+              "label": "Blue takes 1st Dragon (Ocean)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1519,
+              "label": "Team fight (4 kills)",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1567,
+              "label": "Blue takes 2nd Baron",
+              "kind": "baron"
+            },
+            {
+              "atSec": 1752,
+              "label": "Blue takes 2nd Dragon (Ocean)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1777,
+              "label": "Draven eliminates Qiyana"
+            },
+            {
+              "atSec": 1787,
+              "label": "Draven Quadra Kill",
+              "kind": "kill"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 164,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "NvlTJ7yRKkY",
+          "title": "Zeus Anivia vs Camille Top - KR Challenger - Patch 16.06 Season 16",
+          "rankClaim": "Challenger",
+          "patch": "26.6",
+          "durationSec": 1486,
+          "region": "KR",
+          "player": "Zeus",
+          "uploaded": "2026-03-27",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 238,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "e27XAOogdR4",
+          "title": "Anivia vs Zed 15/1/4 (Mid) | EUW Master | Anivia OTP Replay",
+          "rankClaim": "Master",
+          "patch": "26.9",
+          "durationSec": 1283,
+          "region": "EUW",
+          "patchEstimated": true,
+          "uploaded": "2026-05-07",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 238,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "tUUsIWihuEY",
+          "title": "(NIP Hoya) Anivia Top vs Zed - KR Challenger Patch 26.13",
+          "rankClaim": "Challenger",
+          "patch": "26.13",
+          "durationSec": 1613,
+          "region": "KR",
+          "player": "Hoya",
+          "team": "NIP",
+          "uploaded": "2026-06-30",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 240,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "UAwEDb30GeE",
+          "title": "Anivia vs Kled 10/1/10 (Top) | EUW Grandmaster | Anivia OTP Replay",
+          "rankClaim": "Grandmaster",
+          "patch": "26.7",
+          "durationSec": 1182,
+          "region": "EUW",
+          "patchEstimated": true,
+          "uploaded": "2026-04-11",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 246,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "v8iX9D1j5u0",
+          "title": "Anivia Mid vs Qiyana - NA Challenger Patch 26.06",
+          "rankClaim": "Challenger",
+          "patch": "26.6",
+          "durationSec": 1572,
+          "region": "NA",
+          "uploaded": "2026-03-23",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 115,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 274,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 339,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 426,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 517,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 553,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 596,
+              "label": "Hunt The Dragon",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 717,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 752,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 784,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 835,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 868,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 986,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1012,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1101,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1219,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1377,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1433,
+              "label": "Hunt The Baron Nashor",
+              "kind": "baron"
+            },
+            {
+              "atSec": 1561,
+              "label": "End credit"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 266,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "mr9BuKCubFM",
+          "title": "Anivia Top vs Aatrox - EUW Grandmaster Patch 26.02",
+          "rankClaim": "Grandmaster",
+          "patch": "26.2",
+          "durationSec": 1619,
+          "region": "EUW",
+          "uploaded": "2026-01-30",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 267,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "u2WuCs6feIQ",
+          "title": "Anivia Support vs Nami - NA Challenger Patch 25.16",
+          "rankClaim": "Challenger",
+          "patch": "25.16",
+          "durationSec": 1637,
+          "region": "NA",
+          "uploaded": "2025-08-26",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 412,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "rRYtaZiq5V8",
+          "title": "Anivia Support vs Thresh - KR Master Patch 25.06",
+          "rankClaim": "Master",
+          "patch": "25.6",
+          "durationSec": 2167,
+          "region": "KR",
+          "uploaded": "2025-03-26",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 432,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "2W7ZM0cky5w",
+          "title": "Anivia Support vs Bard - KR Master Patch 25.11",
+          "rankClaim": "Master",
+          "patch": "25.11",
+          "durationSec": 1816,
+          "region": "KR",
+          "uploaded": "2025-06-10",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 517,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "egJl6ZNzAEA",
+          "title": "(AL Shanks) Anivia Mid vs Sylas - KR Grandmaster Patch 26.14",
+          "rankClaim": "Grandmaster",
+          "patch": "26.14",
+          "durationSec": 1520,
+          "region": "KR",
+          "player": "Shanks",
+          "team": "AL",
+          "uploaded": "2026-07-25",
+          "moments": []
+        },
+        {
+          "videoId": "Yba8btnfXgI",
+          "title": "Anivia Mid vs Sylas - VN Master Patch 26.01",
+          "rankClaim": "Master",
+          "patch": "26.1",
+          "durationSec": 1547,
+          "uploaded": "2026-01-12",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 517,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "rkhBnihxQzM",
+          "title": "Anivia Support vs Sylas - NA Challenger Patch 25.23",
+          "rankClaim": "Challenger",
+          "patch": "25.23",
+          "durationSec": 1762,
+          "region": "NA",
+          "uploaded": "2025-11-30",
+          "moments": []
+        },
+        {
+          "videoId": "WAZICnzEWQI",
+          "title": "Anivia Support vs Sylas - NA Challenger Patch 25.05",
+          "rankClaim": "Challenger",
+          "patch": "25.5",
+          "durationSec": 1514,
+          "region": "NA",
+          "uploaded": "2025-03-17",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 170,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 331,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 443,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 632,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 904,
+              "label": "Hunt The Void Grubs",
+              "kind": "grubs"
+            },
+            {
+              "atSec": 934,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1106,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1188,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1345,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1493,
+              "label": "End credit"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 518,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "zXWP6LBSXhk",
+          "title": "Anivia Mid vs Neeko (MagiFelix) - EUW Challenger Patch 26.21",
+          "rankClaim": "Challenger",
+          "patch": "26.21",
+          "durationSec": 1773,
+          "region": "EUW",
+          "uploaded": "2026-10-30",
+          "result": "W",
+          "moments": [
+            {
+              "atSec": 414,
+              "label": "Blue takes 1st Dragon (Chemtech)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 564,
+              "label": "Anivia takes down Neeko"
+            },
+            {
+              "atSec": 777,
+              "label": "Blue takes 2nd Dragon (Mountain)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 820,
+              "label": "Anivia picks off Ivern"
+            },
+            {
+              "atSec": 933,
+              "label": "Anivia takes down Blitzcrank"
+            },
+            {
+              "atSec": 961,
+              "label": "Blue takes Rift Herald",
+              "kind": "herald"
+            },
+            {
+              "atSec": 1091,
+              "label": "Anivia solo kills Ivern",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1094,
+              "label": "Kha'Zix picks off Neeko"
+            },
+            {
+              "atSec": 1113,
+              "label": "Blue takes 3rd Dragon (Hextech)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1139,
+              "label": "Lucian picks off Fiora"
+            },
+            {
+              "atSec": 1189,
+              "label": "Blue takes Baron",
+              "kind": "baron"
+            },
+            {
+              "atSec": 1314,
+              "label": "Lucian takes down Yasuo"
+            },
+            {
+              "atSec": 1428,
+              "label": "Red takes 1st Dragon (Hextech)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1609,
+              "label": "Red takes Baron",
+              "kind": "baron"
+            },
+            {
+              "atSec": 1617,
+              "label": "Darius picks off Yasuo"
+            },
+            {
+              "atSec": 1729,
+              "label": "Darius Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1752,
+              "label": "Mid Inhibitor falls (Red)"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 518,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "8hDuz1bgFDM",
+          "title": "Anivia Support vs Neeko - NA Grandmaster Patch 25.07",
+          "rankClaim": "Grandmaster",
+          "patch": "25.7",
+          "durationSec": 2117,
+          "region": "NA",
+          "uploaded": "2025-04-13",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 560,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 704,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 736,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 859,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1012,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1062,
+              "label": "Hunt The Dragon",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1147,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1292,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1388,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1454,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1514,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1579,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1682,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1712,
+              "label": "Take down The Inhibitor"
+            },
+            {
+              "atSec": 1792,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1829,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1910,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 2044,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 2074,
+              "label": "Take down The Inhibitor"
+            },
+            {
+              "atSec": 2096,
+              "label": "End credit"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 777,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "ReH8LboBtW4",
+          "title": "Anivia Mid vs Yone - KR Master Patch 25.10",
+          "rankClaim": "Master",
+          "patch": "25.10",
+          "durationSec": 1763,
+          "region": "KR",
+          "uploaded": "2025-05-20",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 777,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "dYMCJh_UrCQ",
+          "title": "Anivia Top vs Yone - KR Grandmaster Patch 26.17",
+          "rankClaim": "Grandmaster",
+          "patch": "26.17",
+          "durationSec": 1707,
+          "region": "KR",
+          "uploaded": "2026-09-05",
+          "moments": []
+        },
+        {
+          "videoId": "WbgbV2n23ms",
+          "title": "Anivia Top vs Yone - KR Grandmaster Patch 26.10",
+          "rankClaim": "Grandmaster",
+          "patch": "26.10",
+          "durationSec": 1842,
+          "region": "KR",
+          "uploaded": "2026-05-17",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 799,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "pB1N_psmZdo",
+          "title": "(KRX Rich) Anivia Top vs Ambessa (DNS DuDu) - KR Challenger Patch 26.12",
+          "rankClaim": "Challenger",
+          "patch": "26.12",
+          "durationSec": 1759,
+          "region": "KR",
+          "player": "KRX Rich",
+          "uploaded": "2026-06-19",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 800,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "shU7nsyv6RY",
+          "title": "(SC Nafkelah) Anivia Mid vs Mel (S04E Zwyroo) - EUW Challenger Patch 26.13",
+          "rankClaim": "Challenger",
+          "patch": "26.13",
+          "durationSec": 1670,
+          "region": "EUW",
+          "player": "SC Nafkelah",
+          "uploaded": "2026-07-06",
+          "moments": []
+        },
+        {
+          "videoId": "KE2Ryqt6nTY",
+          "title": "Anivia Mid vs Mel - EUW Challenger Patch 26.07",
+          "rankClaim": "Challenger",
+          "patch": "26.7",
+          "durationSec": 1538,
+          "region": "EUW",
+          "uploaded": "2026-04-12",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 26,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 175,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 296,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 372,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 476,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 541,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 638,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 810,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 882,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 933,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 961,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1093,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1232,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1273,
+              "label": "Hunt The Baron Nashor",
+              "kind": "baron"
+            },
+            {
+              "atSec": 1321,
+              "label": "Hunt The Dragon",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1337,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1375,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1478,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1525,
+              "label": "End credit"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 875,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "CA1HuHY87Os",
+          "title": "Anivia Top vs Sett - NA Challenger Patch 25.14",
+          "rankClaim": "Challenger",
+          "patch": "25.14",
+          "durationSec": 1748,
+          "region": "NA",
+          "uploaded": "2025-07-31",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 887,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "SbH_ujE7Vn4",
+          "title": "Anivia Top vs Gwen - VN Challenger Patch 25.19",
+          "rankClaim": "Challenger",
+          "patch": "25.19",
+          "durationSec": 1594,
+          "uploaded": "2025-10-05",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 893,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "p8gWROF5juI",
+          "title": "Anivia Mid vs Aurora - KR Grandmaster Patch 25.19",
+          "rankClaim": "Grandmaster",
+          "patch": "25.19",
+          "durationSec": 2014,
+          "region": "KR",
+          "uploaded": "2025-09-30",
+          "moments": []
+        },
+        {
+          "videoId": "_hCczIcDhH0",
+          "title": "Anivia Mid vs Aurora - KR Grandmaster Patch 25.18",
+          "rankClaim": "Grandmaster",
+          "patch": "25.18",
+          "durationSec": 1708,
+          "region": "KR",
+          "uploaded": "2025-09-15",
+          "moments": []
+        },
+        {
+          "videoId": "NCZqjl2Yyqc",
+          "title": "Anivia Mid vs Aurora - KR Master Patch 25.05",
+          "rankClaim": "Master",
+          "patch": "25.5",
+          "durationSec": 1701,
+          "region": "KR",
+          "uploaded": "2025-03-12",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 337,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 415,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 678,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 788,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 805,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 964,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1062,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1106,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1226,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1354,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1395,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1419,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1455,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1467,
+              "label": "Take down The Inhibitor"
+            },
+            {
+              "atSec": 1541,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1568,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1583,
+              "label": "Take down The Inhibitor"
+            },
+            {
+              "atSec": 1620,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1680,
+              "label": "End credit"
+            }
+          ]
+        },
+        {
+          "videoId": "fV3uHEAg2hQ",
+          "title": "Anivia Mid vs Aurora - KR Master Patch 25.04",
+          "rankClaim": "Master",
+          "patch": "25.4",
+          "durationSec": 1744,
+          "region": "KR",
+          "uploaded": "2025-02-22",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 902,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "Mjb1o4VwWOQ",
+          "title": "Anivia Support vs Milio - KR Master Patch 25.12",
+          "rankClaim": "Master",
+          "patch": "25.12",
+          "durationSec": 2006,
+          "region": "KR",
+          "uploaded": "2025-06-25",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 904,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "bX5-zrThKS0",
+          "title": "Anivia Top vs Zaahen - KR Master Patch 26.18",
+          "rankClaim": "Master",
+          "patch": "26.18",
+          "durationSec": 1819,
+          "region": "KR",
+          "uploaded": "2026-09-19",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 910,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "faZX0FWCCRI",
+          "title": "Anivia Mid vs Hwei - KR Challenger Patch 25.09",
+          "rankClaim": "Challenger",
+          "patch": "25.9",
+          "durationSec": 2048,
+          "region": "KR",
+          "uploaded": "2025-05-05",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 444,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 499,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 547,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 646,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 921,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1110,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1124,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1273,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1427,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1583,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1669,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1837,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1873,
+              "label": "Take down The Inhibitor"
+            },
+            {
+              "atSec": 1890,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1982,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 2007,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 2027,
+              "label": "End credit"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

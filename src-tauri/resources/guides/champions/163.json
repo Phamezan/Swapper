@@ -1,0 +1,3749 @@
+{
+  "schema": 1,
+  "champion": 163,
+  "generatedAt": "2026-11-07T13:25:14.592Z",
+  "guides": [
+    {
+      "champion": 163,
+      "enemy": 84,
+      "lane": "mid",
+      "patch": "26.21",
+      "reviewed": false,
+      "difficulty": "Skill matchup",
+      "favoredWhen": "Lane OK for her, but your late E rock field is lethal. Hold E for dashes, W after.",
+      "keyTips": [
+        {
+          "text": "Lane OK for her: your win comes late, so survive.",
+          "scope": "pair",
+          "sourceIds": [
+            "anguish"
+          ]
+        },
+        {
+          "text": "Your late E rock field is lethal: hold it for her commits.",
+          "scope": "pair",
+          "sourceIds": [
+            "anguish"
+          ],
+          "abilityKeys": [
+            {
+              "champion": 163,
+              "key": "E"
+            }
+          ]
+        },
+        {
+          "text": "She dodges Qs (especially the big one off terrain): vary the angle.",
+          "scope": "pair",
+          "sourceIds": [
+            "anguish"
+          ],
+          "abilityKeys": [
+            {
+              "champion": 163,
+              "key": "Q"
+            }
+          ]
+        }
+      ],
+      "enemyTips": {},
+      "sections": {
+        "overview": {
+          "tips": []
+        },
+        "early-lane": {
+          "tips": [
+            {
+              "text": "She plays around your E-then-W: delay W to catch her.",
+              "scope": "pair",
+              "sourceIds": [
+                "anguish"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 163,
+                  "key": "E"
+                },
+                {
+                  "champion": 163,
+                  "key": "W"
+                }
+              ]
+            },
+            {
+              "text": "One stun per field is all she fears: make it count.",
+              "scope": "pair",
+              "sourceIds": [
+                "anguish"
+              ]
+            }
+          ]
+        },
+        "mid-lane": {
+          "tips": [
+            {
+              "text": "Her Zhonya's during E2 dodges the field: bait it before committing E.",
+              "scope": "pair",
+              "sourceIds": [
+                "anguish"
+              ]
+            },
+            {
+              "text": "She saves mobility for E: force it before the field.",
+              "scope": "pair",
+              "sourceIds": [
+                "anguish"
+              ]
+            }
+          ]
+        },
+        "win-condition": {
+          "tips": [
+            {
+              "text": "Field landed plus W followed: the Akali who never dodges never wins.",
+              "scope": "pair",
+              "sourceIds": [
+                "anguish"
+              ]
+            }
+          ]
+        }
+      },
+      "itemization": [],
+      "sources": [
+        {
+          "id": "anguish",
+          "author": "Anguish333",
+          "rankClaim": "Master (profile badge; title claims 2000LP GrandMaster EUW and Challenger EUNE) · Akali main",
+          "rank": "master",
+          "url": "https://www.mobafire.com/league-of-legends/build/26-20-anguish-2000lp-grandmasters-euw-challenger-eune-akali-mid-top-s16-guide-every-matchup-item-rune-explained-625064",
+          "kind": "mobafire"
+        }
+      ]
+    },
+    {
+      "champion": 163,
+      "enemy": 134,
+      "lane": "mid",
+      "patch": "26.21",
+      "reviewed": false,
+      "difficulty": "Hard",
+      "favoredWhen": "Very easy for her. She bullies every stage and never gets shoved into E. Weather it, land one combo.",
+      "keyTips": [
+        {
+          "text": "Very easy for her: she bullies you at every stage, so concede.",
+          "scope": "pair",
+          "sourceIds": [
+            "shok"
+          ]
+        },
+        {
+          "text": "She never gets caught by a sudden shove into your E: the combo is your only play, so hide it.",
+          "scope": "pair",
+          "sourceIds": [
+            "shok"
+          ],
+          "abilityKeys": [
+            {
+              "champion": 163,
+              "key": "E"
+            }
+          ]
+        },
+        {
+          "text": "She positions off the shove line: angles beat your setup, so vary.",
+          "scope": "pair",
+          "sourceIds": [
+            "shok"
+          ]
+        }
+      ],
+      "enemyTips": {},
+      "sections": {
+        "overview": {
+          "tips": []
+        },
+        "early-lane": {
+          "tips": [
+            {
+              "text": "She bullies from level 1: Q poke has no answer, so give CS.",
+              "scope": "pair",
+              "sourceIds": [
+                "shok"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 134,
+                  "key": "Q"
+                }
+              ]
+            },
+            {
+              "text": "She stands off your E angle: no shove means no combo, so roam.",
+              "scope": "pair",
+              "sourceIds": [
+                "shok"
+              ]
+            }
+          ]
+        },
+        "mid-lane": {
+          "tips": [
+            {
+              "text": "She keeps bullying mid-game: the stage never changes, so scale.",
+              "scope": "pair",
+              "sourceIds": [
+                "shok"
+              ]
+            },
+            {
+              "text": "She wards against the shove: vision kills your only play, so sweep.",
+              "scope": "pair",
+              "sourceIds": [
+                "shok"
+              ]
+            }
+          ]
+        },
+        "win-condition": {
+          "tips": [
+            {
+              "text": "Survived plus combo landed: the Syndra who never respects E loses.",
+              "scope": "pair",
+              "sourceIds": [
+                "shok"
+              ]
+            }
+          ]
+        }
+      },
+      "itemization": [],
+      "sources": [
+        {
+          "id": "shok",
+          "author": "ShokLoL",
+          "rankClaim": "Rank 1 Challenger · Syndra main",
+          "rank": "challenger",
+          "url": "https://www.mobafire.com/league-of-legends/build/26-17-shoks-rank-1-challenger-syndra-guide-602710",
+          "kind": "mobafire"
+        }
+      ]
+    },
+    {
+      "champion": 163,
+      "enemy": 238,
+      "lane": "mid",
+      "patch": "26.21",
+      "reviewed": false,
+      "difficulty": "Hard",
+      "favoredWhen": "Easy for him. You have no dashes besides TP; he dodges W and pokes shadows. Hold W, punish oversteps.",
+      "keyTips": [
+        {
+          "text": "Easy for him: you have no dashes besides TP, so position safe.",
+          "scope": "pair",
+          "sourceIds": [
+            "aikopanda"
+          ]
+        },
+        {
+          "text": "He dodges W and blanks E: cast W where he lands, not where he stands.",
+          "scope": "pair",
+          "sourceIds": [
+            "aikopanda"
+          ],
+          "abilityKeys": [
+            {
+              "champion": 163,
+              "key": "W"
+            }
+          ]
+        },
+        {
+          "text": "He Ws before R to dodge your W: hold W until the shadow lands.",
+          "scope": "pair",
+          "sourceIds": [
+            "aikopanda"
+          ],
+          "abilityKeys": [
+            {
+              "champion": 238,
+              "key": "W"
+            },
+            {
+              "champion": 163,
+              "key": "W"
+            }
+          ]
+        }
+      ],
+      "enemyTips": {
+        "early-lane": [
+          {
+            "text": "Zed often places Living Shadow before Death Mark so he can swap away from skillshots. Hold your crowd control until he has used the swap.",
+            "scope": "enemy",
+            "sourceIds": [
+              "aikopanda"
+            ],
+            "patch": "26.21",
+            "abilityKeys": [
+              {
+                "champion": 238,
+                "key": "W"
+              },
+              {
+                "champion": 238,
+                "key": "R"
+              }
+            ]
+          }
+        ],
+        "win-condition": [
+          {
+            "text": "Death Mark always lands Zed behind his target. Pre-aim crowd control and escapes behind you, not toward where he cast it.",
+            "scope": "enemy",
+            "sourceIds": [
+              "peng04"
+            ],
+            "patch": "26.21",
+            "abilityKeys": [
+              {
+                "champion": 238,
+                "key": "R"
+              }
+            ]
+          }
+        ]
+      },
+      "sections": {
+        "overview": {
+          "tips": []
+        },
+        "early-lane": {
+          "tips": [
+            {
+              "text": "His shadow poke is undodgeable: heal through, never stand in doubles.",
+              "scope": "pair",
+              "sourceIds": [
+                "aikopanda"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 238,
+                  "key": "W"
+                }
+              ]
+            },
+            {
+              "text": "If you overstep, he Ignites and Ghosts and runs you down: never overstep.",
+              "scope": "pair",
+              "sourceIds": [
+                "v222"
+              ]
+            }
+          ]
+        },
+        "mid-lane": {
+          "tips": [
+            {
+              "text": "Death Mark always lands Zed behind his target. Pre-aim crowd control and escapes behind you, not toward where he cast it.",
+              "scope": "pair",
+              "sourceIds": [
+                "peng04"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 238,
+                  "key": "R"
+                }
+              ]
+            },
+            {
+              "text": "Your W is your only peel: hold it for his all-in, not poke.",
+              "scope": "pair",
+              "sourceIds": [
+                "v222"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 163,
+                  "key": "W"
+                }
+              ]
+            }
+          ]
+        },
+        "win-condition": {
+          "tips": [
+            {
+              "text": "W landed plus E followed: the Zed who never respects W never wins.",
+              "scope": "pair",
+              "sourceIds": [
+                "aikopanda",
+                "v222"
+              ]
+            }
+          ]
+        }
+      },
+      "itemization": [],
+      "sources": [
+        {
+          "id": "aikopanda",
+          "author": "AikoPanda",
+          "rankClaim": "Zed main",
+          "url": "https://www.mobafire.com/league-of-legends/build/26-20-video-guides-hidden-combos-all-matchups-zed-all-in-one-guide-652800",
+          "kind": "mobafire"
+        },
+        {
+          "id": "v222",
+          "author": "V222",
+          "rankClaim": "Challenger EUW · Zed main",
+          "rank": "challenger",
+          "url": "https://www.mobafire.com/league-of-legends/build/all-matchups-26-14-zed-guide-2000lp-euw-challenger-652354",
+          "kind": "mobafire"
+        },
+        {
+          "id": "peng04",
+          "author": "Peng04",
+          "rankClaim": "Challenger · Ahri main",
+          "rank": "challenger",
+          "url": "https://www.mobafire.com/league-of-legends/build/26-20-pengs-ahri-guide-5-1mil-points-13x-challenger-648700",
+          "kind": "mobafire"
+        }
+      ]
+    }
+  ],
+  "general": [
+    {
+      "champion": 163,
+      "lane": "mid",
+      "patch": "26.21",
+      "reviewed": false,
+      "keyTips": [
+        {
+          "text": "Play as the lane stabilizer: thin waves early, scale, and only look to move around the map once waveclear is sufficient, especially after level six.",
+          "scope": "champion",
+          "sourceIds": [
+            "shok-taliyah"
+          ],
+          "abilityKeys": [
+            {
+              "champion": 163,
+              "key": "Q"
+            }
+          ]
+        },
+        {
+          "text": "Into ranged champions play defensively with occasional E poke on the wave-clear advantage; against shorter-range opponents threaten with E, Q, and autos while respecting their all-in range.",
+          "scope": "champion",
+          "sourceIds": [
+            "shok-taliyah"
+          ],
+          "abilityKeys": [
+            {
+              "champion": 163,
+              "key": "E"
+            },
+            {
+              "champion": 163,
+              "key": "Q"
+            }
+          ]
+        },
+        {
+          "text": "Hold E for dashes and gap closers, keep the wave closer to your side, and save W to follow allied crowd control so the displacement lands reliably.",
+          "scope": "champion",
+          "sourceIds": [
+            "shok-taliyah"
+          ],
+          "abilityKeys": [
+            {
+              "champion": 163,
+              "key": "E"
+            },
+            {
+              "champion": 163,
+              "key": "W"
+            }
+          ]
+        }
+      ],
+      "sections": {
+        "overview": {
+          "tips": []
+        },
+        "early-lane": {
+          "tips": [
+            {
+              "text": "Freeze near your tower when behind or threatened by an assassin, slow-push before a planned Destiny-style roam, and fast-push before a recall or map move.",
+              "scope": "champion",
+              "sourceIds": [
+                "shok-taliyah"
+              ]
+            },
+            {
+              "text": "Take W at level one, Q at two, E at three, then max Q, W, E while taking R at six, eleven, and sixteen.",
+              "scope": "champion",
+              "sourceIds": [
+                "shok-taliyah"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 163,
+                  "key": "W"
+                },
+                {
+                  "champion": 163,
+                  "key": "Q"
+                },
+                {
+                  "champion": 163,
+                  "key": "E"
+                },
+                {
+                  "champion": 163,
+                  "key": "R"
+                }
+              ]
+            },
+            {
+              "text": "Judge the early phase by high CS, few deaths, and some takedown contribution from skirmishes or a side-lane roam, and treat the level-six Weaver's Wall unlock as the signal to clear quickly and move around the map.",
+              "scope": "champion",
+              "sourceIds": [
+                "shok-taliyah"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 163,
+                  "key": "R"
+                }
+              ]
+            },
+            {
+              "text": "Ward river entrances defensively early, and with mid priority ward enemy Raptors or a Red Buff entrance to track the jungler and open safer roams.",
+              "scope": "champion",
+              "sourceIds": [
+                "shok-taliyah"
+              ]
+            }
+          ]
+        },
+        "mid-lane": {
+          "tips": [
+            {
+              "text": "Keep gold and experience flowing while attending every major objective fight; never trade the whole wave timer for an empty rotation.",
+              "scope": "champion",
+              "sourceIds": [
+                "shok-taliyah"
+              ]
+            },
+            {
+              "text": "Push a side wave only to a safe point, and without Teleport group and collect waves as they reach your tower instead of holding a long side lane.",
+              "scope": "champion",
+              "sourceIds": [
+                "shok-taliyah"
+              ]
+            },
+            {
+              "text": "Use the ultimate to join a side-lane play without Teleport when the team fights near mid, but avoid getting stranded across the map.",
+              "scope": "champion",
+              "sourceIds": [
+                "shok-taliyah"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 163,
+                  "key": "R"
+                }
+              ]
+            },
+            {
+              "text": "Recall roughly a minute before dragon to spend gold and restore health and mana, and take Krugs or Raptors when they are safe, especially to deny the enemy team.",
+              "scope": "champion",
+              "sourceIds": [
+                "shok-taliyah"
+              ]
+            }
+          ]
+        },
+        "win-condition": {
+          "tips": [
+            {
+              "text": "Play front to back behind tanks and damage the frontline instead of stepping forward alone; keep E ready when its displacement protects the team.",
+              "scope": "champion",
+              "sourceIds": [
+                "shok-taliyah"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 163,
+                  "key": "E"
+                }
+              ]
+            },
+            {
+              "text": "Fight around chokes and small spaces where E disrupts several opponents, switching onto a mispositioned squishy rather than tunneling the frontline.",
+              "scope": "champion",
+              "sourceIds": [
+                "shok-taliyah"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 163,
+                  "key": "E"
+                }
+              ]
+            },
+            {
+              "text": "Account for enemy engage tools before committing, positioning around threats such as a hook that punishes Taliyah's placement.",
+              "scope": "champion",
+              "sourceIds": [
+                "shok-taliyah"
+              ]
+            }
+          ]
+        }
+      },
+      "itemization": [
+        {
+          "text": "Run Phase Rush with Manaflow Band, Transcendence, Waterwalking, Legend: Haste, and Cut Down; open Doran's Ring and two Health Potions, with Tear and two potions as the greedy start.",
+          "scope": "champion",
+          "sourceIds": [
+            "shok-taliyah"
+          ],
+          "itemIds": [
+            1056
+          ]
+        },
+        {
+          "text": "Build Seraph's Embrace into Sorcerer's Shoes, Liandry's Torment, Rabadon's Deathcap, Cryptbloom, and Zhonya's Hourglass, with Ionian Boots or Mercury's Treads by game, Mercury's specified against double AP and crowd control.",
+          "scope": "champion",
+          "sourceIds": [
+            "shok-taliyah"
+          ],
+          "itemIds": [
+            3020,
+            6653,
+            3089,
+            3137,
+            3157,
+            3111
+          ]
+        },
+        {
+          "text": "Keep Mejai's Soulstealer, Banshee's Veil, Morellonomicon, Shadowflame, Cosmic Drive, Liandry's Torment, and Bloodletter's Curse as situational picks around lead, survival, and enemy defenses.",
+          "scope": "champion",
+          "sourceIds": [
+            "shok-taliyah"
+          ],
+          "itemIds": [
+            3041,
+            3102,
+            3165,
+            4645,
+            4629,
+            6653,
+            8010
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "id": "shok-taliyah",
+          "author": "ShokLoL",
+          "rankClaim": "Rank 1 Challenger; CHALLENGER",
+          "rank": "challenger",
+          "url": "https://www.mobafire.com/league-of-legends/build/26-1-shoks-rank-1-challenger-taliyah-guide-635673",
+          "kind": "mobafire"
+        }
+      ]
+    }
+  ],
+  "vods": [
+    {
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "1vPTsWLeX-E",
+          "title": "HOW I 1v9 WITH TALIYAH MID - EDUCATIONAL GAME",
+          "rankClaim": "Master+",
+          "patch": "26.21",
+          "durationSec": 1652,
+          "patchEstimated": true,
+          "player": "Shok",
+          "uploaded": "2026-10-26",
+          "format": "stream",
+          "cam": true,
+          "moments": []
+        },
+        {
+          "videoId": "C0EYVLUciFQ",
+          "title": "Rank 1 Taliyah : DEVASTATING CN Super Server with INSANE Mechanics",
+          "rankClaim": "Master+",
+          "patch": "26.13",
+          "durationSec": 1161,
+          "patchEstimated": true,
+          "player": "Baicaiovo",
+          "uploaded": "2026-06-30",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "XJLcr0kD_xw",
+          "title": "Baicaiovo Taliyah : This CN Super Server Legend is CRUSHING Challenger Players Like NPC",
+          "rankClaim": "Challenger",
+          "patch": "26.8",
+          "durationSec": 1882,
+          "patchEstimated": true,
+          "player": "Baicaiovo",
+          "uploaded": "2026-04-19",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "ytRGTVLA614",
+          "title": "Baicaiovo Taliyah : This CN Super Server Legend is DEVASTATING Challenger Elo",
+          "rankClaim": "Challenger",
+          "patch": "26.5",
+          "durationSec": 1837,
+          "patchEstimated": true,
+          "player": "Baicaiovo",
+          "uploaded": "2026-03-08",
+          "format": "stream",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 3,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "BoTvdOZpsU4",
+          "title": "Taliyah Mid vs Galio - KR Grandmaster Patch 25.17",
+          "rankClaim": "Grandmaster",
+          "patch": "25.17",
+          "durationSec": 1812,
+          "region": "KR",
+          "uploaded": "2025-08-31",
+          "moments": []
+        },
+        {
+          "videoId": "JLyiOY8Pw7U",
+          "title": "Taliyah Mid vs Galio - KR Grandmaster Patch 25.11",
+          "rankClaim": "Grandmaster",
+          "patch": "25.11",
+          "durationSec": 1490,
+          "region": "KR",
+          "uploaded": "2025-06-01",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 4,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "L9Y11l0rctw",
+          "title": "Taliyah Mid vs Twisted Fate (Angel) - KR Challenger Patch 26.19",
+          "rankClaim": "Challenger",
+          "patch": "26.19",
+          "durationSec": 1911,
+          "region": "KR",
+          "player": "Angel",
+          "uploaded": "2026-10-02",
+          "moments": []
+        },
+        {
+          "videoId": "LYzdC1ltnnk",
+          "title": "Taliyah Mid vs Twisted Fate - KR Grandmaster Patch 25.12",
+          "rankClaim": "Grandmaster",
+          "patch": "25.12",
+          "durationSec": 1820,
+          "region": "KR",
+          "uploaded": "2025-06-16",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 5,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "h7rebGZVmHA",
+          "title": "Taliyah Jungle vs Xin Zhao - KR Grandmaster Patch 26.10",
+          "rankClaim": "Grandmaster",
+          "patch": "26.10",
+          "durationSec": 1568,
+          "region": "KR",
+          "uploaded": "2026-05-19",
+          "moments": []
+        },
+        {
+          "videoId": "TW6LqcKlsng",
+          "title": "Taliyah Jungle vs Xin Zhao - TW Challenger Patch 25.17",
+          "rankClaim": "Challenger",
+          "patch": "25.17",
+          "durationSec": 1619,
+          "uploaded": "2025-09-07",
+          "moments": []
+        },
+        {
+          "videoId": "WVQDV4tBKWg",
+          "title": "Taliyah Jungle vs Xin Zhao - EUW Grandmaster Patch 25.14",
+          "rankClaim": "Grandmaster",
+          "patch": "25.14",
+          "durationSec": 1766,
+          "region": "EUW",
+          "uploaded": "2025-07-29",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 9,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "7gsRxl03gXs",
+          "title": "Taliyah Jungle vs Fiddlesticks - KR Grandmaster Patch 26.18",
+          "rankClaim": "Grandmaster",
+          "patch": "26.18",
+          "durationSec": 1748,
+          "region": "KR",
+          "uploaded": "2026-09-19",
+          "moments": []
+        },
+        {
+          "videoId": "sdhb8l49oMM",
+          "title": "Taliyah Jungle vs Fiddlesticks - KR Grandmaster Patch 26.02",
+          "rankClaim": "Grandmaster",
+          "patch": "26.2",
+          "durationSec": 1608,
+          "region": "KR",
+          "uploaded": "2026-01-26",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 11,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "E3dAKG-swK8",
+          "title": "(Karsa) Taliyah Jungle vs Master Yi - KR Master Patch 26.14",
+          "rankClaim": "Master",
+          "patch": "26.14",
+          "durationSec": 1705,
+          "region": "KR",
+          "player": "Karsa",
+          "uploaded": "2026-07-24",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 11,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "xkWjb7G0gUU",
+          "title": "Taliyah Top vs Master Yi - KR Master Patch 26.09",
+          "rankClaim": "Master",
+          "patch": "26.9",
+          "durationSec": 1841,
+          "region": "KR",
+          "uploaded": "2026-05-12",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 13,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "ucdd-30A-yw",
+          "title": "T1 Faker Taliyah vs Ryze [ MID ] Korea Grandmaster 1828 LP | Patch 26.16",
+          "rankClaim": "Grandmaster",
+          "patch": "26.16",
+          "durationSec": 1032,
+          "region": "KR",
+          "player": "Faker",
+          "team": "T1",
+          "uploaded": "2026-08-13",
+          "moments": []
+        },
+        {
+          "videoId": "0vT6TXh6yKM",
+          "title": "(SGE ZaZee) Taliyah Mid vs Ryze - EUW Grandmaster Patch 26.12",
+          "rankClaim": "Grandmaster",
+          "patch": "26.12",
+          "durationSec": 1511,
+          "region": "EUW",
+          "player": "SGE ZaZee",
+          "uploaded": "2026-06-21",
+          "moments": []
+        },
+        {
+          "videoId": "Mw2cToJdVA0",
+          "title": "(WE Karis) Taliyah Mid vs Ryze (NS Calix) - KR Grandmaster Patch 26.10",
+          "rankClaim": "Grandmaster",
+          "patch": "26.10",
+          "durationSec": 1796,
+          "region": "KR",
+          "player": "Karis",
+          "team": "WE",
+          "uploaded": "2026-05-24",
+          "moments": []
+        },
+        {
+          "videoId": "-qMqpuXkQPI",
+          "title": "Taliyah Mid vs Ryze - EUW Challenger Patch 26.05",
+          "rankClaim": "Challenger",
+          "patch": "26.5",
+          "durationSec": 1576,
+          "region": "EUW",
+          "uploaded": "2026-03-09",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 325,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 520,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 620,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 745,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 769,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 789,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 922,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 986,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1311,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1331,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1345,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1392,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1410,
+              "label": "Take down The Inhibitor"
+            },
+            {
+              "atSec": 1429,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1463,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1537,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1565,
+              "label": "End credit"
+            }
+          ]
+        },
+        {
+          "videoId": "JdUstJ6xRks",
+          "title": "Taliyah Mid vs Ryze - NA Challenger Patch 26.02",
+          "rankClaim": "Challenger",
+          "patch": "26.2",
+          "durationSec": 1522,
+          "region": "NA",
+          "uploaded": "2026-01-30",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 28,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 226,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 472,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 545,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 661,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 710,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 767,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 926,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 948,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 977,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1130,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1152,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1198,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1271,
+              "label": "Take down The Inhibitor"
+            },
+            {
+              "atSec": 1332,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1486,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1511,
+              "label": "End credit"
+            }
+          ]
+        },
+        {
+          "videoId": "0NbtCm1y_V4",
+          "title": "Taliyah Mid vs Ryze - KR Grandmaster Patch 25.19",
+          "rankClaim": "Grandmaster",
+          "patch": "25.19",
+          "durationSec": 1709,
+          "region": "KR",
+          "uploaded": "2025-09-27",
+          "moments": []
+        },
+        {
+          "videoId": "eH4FX0HXb_U",
+          "title": "Taliyah Mid vs Ryze - KR Challenger Patch 25.08",
+          "rankClaim": "Challenger",
+          "patch": "25.8",
+          "durationSec": 1527,
+          "region": "KR",
+          "uploaded": "2025-04-20",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 18,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "ZPouDS2ki4Q",
+          "title": "Taliyah Mid vs Tristana - KR Challenger Patch 26.05",
+          "rankClaim": "Challenger",
+          "patch": "26.5",
+          "durationSec": 1468,
+          "region": "KR",
+          "uploaded": "2026-03-16",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 169,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 376,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 578,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 679,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 853,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 950,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 993,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1058,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1078,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1130,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1147,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1242,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1315,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1391,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1457,
+              "label": "End credit"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 20,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "WwOSjS0kzI0",
+          "title": "Taliyah vs Nunu 11/2/9 (Jungle) | EUW Grandmaster | Taliyah OTP Replay",
+          "rankClaim": "Grandmaster",
+          "patch": "26.8",
+          "durationSec": 1306,
+          "region": "EUW",
+          "patchEstimated": true,
+          "uploaded": "2026-04-15",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 36,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "UvdWXUl_IUU",
+          "title": "Taliyah Jungle vs Dr. Mundo - EUW Challenger Patch 25.13",
+          "rankClaim": "Challenger",
+          "patch": "25.13",
+          "durationSec": 1457,
+          "region": "EUW",
+          "uploaded": "2025-07-06",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 39,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "J1DotjisfBk",
+          "title": "Taliyah Mid vs Irelia - KR Challenger Patch 25.21",
+          "rankClaim": "Challenger",
+          "patch": "25.21",
+          "durationSec": 1884,
+          "region": "KR",
+          "uploaded": "2025-10-27",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 55,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "m2L7hM4HsYc",
+          "title": "T1 Faker Taliyah vs Katarina [ MID ] Patch 25.13 Korea Challenger",
+          "rankClaim": "Challenger",
+          "patch": "25.13",
+          "durationSec": 1529,
+          "region": "KR",
+          "player": "Faker",
+          "team": "T1",
+          "uploaded": "2025-06-26",
+          "moments": []
+        },
+        {
+          "videoId": "FqmbydxcZIA",
+          "title": "Taliyah Mid vs Katarina - KR Grandmaster Patch 25.07",
+          "rankClaim": "Grandmaster",
+          "patch": "25.7",
+          "durationSec": 1494,
+          "region": "KR",
+          "uploaded": "2025-04-08",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 59,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "bcCmzXmsvAY",
+          "title": "Taliyah Jungle vs Jarvan IV - KR Grandmaster Patch 26.09",
+          "rankClaim": "Grandmaster",
+          "patch": "26.9",
+          "durationSec": 1595,
+          "region": "KR",
+          "uploaded": "2026-05-04",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 60,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "WF_OAX1Kuzg",
+          "title": "Taliyah Jungle vs Elise - KR Challenger Patch 26.03",
+          "rankClaim": "Challenger",
+          "patch": "26.3",
+          "durationSec": 1593,
+          "region": "KR",
+          "uploaded": "2026-02-07",
+          "moments": []
+        },
+        {
+          "videoId": "o1SINEJJ9e0",
+          "title": "Taliyah Jungle vs Elise - EUW Challenger Patch 25.06",
+          "rankClaim": "Challenger",
+          "patch": "25.6",
+          "durationSec": 1809,
+          "region": "EUW",
+          "uploaded": "2025-04-03",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 246,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 320,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 384,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 471,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 529,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 593,
+              "label": "Hunt The Dragon",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 645,
+              "label": "Hunt The Void Grubs",
+              "kind": "grubs"
+            },
+            {
+              "atSec": 683,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 745,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 779,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 826,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 865,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 902,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 924,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 937,
+              "label": "Hunt The Dragon",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 963,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1077,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1097,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1231,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1355,
+              "label": "Hunt The Atakhan"
+            },
+            {
+              "atSec": 1384,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1491,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1617,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1718,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1734,
+              "label": "Take down The Inhibitor"
+            },
+            {
+              "atSec": 1788,
+              "label": "End credit"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 61,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "6bsvQQky8ic",
+          "title": "Taliyah Mid vs Orianna - BR Challenger Patch 26.08",
+          "rankClaim": "Challenger",
+          "patch": "26.8",
+          "durationSec": 1860,
+          "uploaded": "2026-04-23",
+          "moments": []
+        },
+        {
+          "videoId": "ylAa494VOF4",
+          "title": "Taliyah Mid vs Orianna - NA Challenger Patch 25.24",
+          "rankClaim": "Challenger",
+          "patch": "25.24",
+          "durationSec": 1588,
+          "region": "NA",
+          "uploaded": "2026-01-03",
+          "moments": []
+        },
+        {
+          "videoId": "_ZYAfTAEEwk",
+          "title": "Taliyah Mid vs Orianna - KR Challenger Patch 25.14",
+          "rankClaim": "Challenger",
+          "patch": "25.14",
+          "durationSec": 1548,
+          "region": "KR",
+          "uploaded": "2025-07-21",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 64,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "gW6EMJELE48",
+          "title": "(VIT Lyncas) Taliyah Jungle vs Lee Sin (3BL ShizuOo) - EUW Challenger Patch 26.12",
+          "rankClaim": "Challenger",
+          "patch": "26.12",
+          "durationSec": 1584,
+          "region": "EUW",
+          "player": "VIT Lyncas",
+          "uploaded": "2026-06-26",
+          "moments": []
+        },
+        {
+          "videoId": "P6RTA-Hs_Pg",
+          "title": "Taliyah Jungle vs Lee Sin - KR Grandmaster Patch 26.08",
+          "rankClaim": "Grandmaster",
+          "patch": "26.8",
+          "durationSec": 1677,
+          "region": "KR",
+          "uploaded": "2026-04-27",
+          "moments": []
+        },
+        {
+          "videoId": "Y7yBUD8_unc",
+          "title": "Taliyah vs Lee Sin Jungle - KR Challenger - Patch 16.05 Season 16",
+          "rankClaim": "Challenger",
+          "patch": "26.5",
+          "durationSec": 2091,
+          "region": "KR",
+          "uploaded": "2026-03-08",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 74,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "hHsrBzUfMu8",
+          "title": "Taliyah Mid vs Heimerdinger - EUW Challenger Patch 25.09",
+          "rankClaim": "Challenger",
+          "patch": "25.9",
+          "durationSec": 1581,
+          "region": "EUW",
+          "uploaded": "2025-05-10",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 75,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "8elYvNRVi6M",
+          "title": "Taliyah Mid vs Nasus - KR Challenger Patch 25.24",
+          "rankClaim": "Challenger",
+          "patch": "25.24",
+          "durationSec": 1716,
+          "region": "KR",
+          "uploaded": "2025-12-08",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 76,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "v_adVccjeq0",
+          "title": "Taliyah Jungle vs Nidalee (T1 Carim) - KR Grandmaster Patch 26.19",
+          "rankClaim": "Grandmaster",
+          "patch": "26.19",
+          "durationSec": 1782,
+          "region": "KR",
+          "uploaded": "2026-10-03",
+          "moments": []
+        },
+        {
+          "videoId": "w7Jnwd0JT7I",
+          "title": "Taliyah Jungle vs Nidalee - EUW Challenger Patch 25.22",
+          "rankClaim": "Challenger",
+          "patch": "25.22",
+          "durationSec": 1670,
+          "region": "EUW",
+          "uploaded": "2025-11-16",
+          "moments": []
+        },
+        {
+          "videoId": "arp1P13H9XQ",
+          "title": "Taliyah Jungle vs Nidalee - KR Challenger Patch 25.18",
+          "rankClaim": "Challenger",
+          "patch": "25.18",
+          "durationSec": 2120,
+          "region": "KR",
+          "uploaded": "2025-09-14",
+          "moments": []
+        },
+        {
+          "videoId": "cAE0KI6r008",
+          "title": "Taliyah Jungle vs Nidalee - EUW Challenger Patch 25.12",
+          "rankClaim": "Challenger",
+          "patch": "25.12",
+          "durationSec": 1453,
+          "region": "EUW",
+          "uploaded": "2025-06-24",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 79,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "oDt8LImlYPM",
+          "title": "Taliyah Support vs Gragas - KR Master Patch 25.10",
+          "rankClaim": "Master",
+          "patch": "25.10",
+          "durationSec": 1957,
+          "region": "KR",
+          "uploaded": "2025-05-31",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 80,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "BeqHlk8Pxaw",
+          "title": "Taliyah Jungle vs Pantheon - KR Challenger Patch 26.07",
+          "rankClaim": "Challenger",
+          "patch": "26.7",
+          "durationSec": 1634,
+          "region": "KR",
+          "uploaded": "2026-04-13",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 137,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 240,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 513,
+              "label": "Hunt The Void Grubs",
+              "kind": "grubs"
+            },
+            {
+              "atSec": 535,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 604,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 761,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 850,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 951,
+              "label": "Hunt The Rift Herald",
+              "kind": "herald"
+            },
+            {
+              "atSec": 1008,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1171,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1208,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1225,
+              "label": "Hunt The Baron Nashor",
+              "kind": "baron"
+            },
+            {
+              "atSec": 1243,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1273,
+              "label": "Hunt The Dragon",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1293,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1407,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1514,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1566,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1591,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1623,
+              "label": "End credit"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 80,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "_tg_RPsjfEM",
+          "title": "T1 Faker Taliyah vs Pantheon [ MID ] Patch 25.13 Ranked NA",
+          "rankClaim": "Master+",
+          "patch": "25.13",
+          "durationSec": 1196,
+          "region": "NA",
+          "player": "Faker",
+          "team": "T1",
+          "uploaded": "2025-07-02",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 84,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "s9RmTuavcco",
+          "title": "Taliyah Mid vs Akali - KR Challenger Patch 25.05",
+          "rankClaim": "Challenger",
+          "patch": "25.5",
+          "durationSec": 1613,
+          "region": "KR",
+          "uploaded": "2025-03-10",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 437,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 717,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 823,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 960,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1101,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1221,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1294,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1348,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1592,
+              "label": "End credit"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 90,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "QIacV1ub2J4",
+          "title": "Taliyah Mid vs Malzahar - KR Master Patch 25.22",
+          "rankClaim": "Master",
+          "patch": "25.22",
+          "durationSec": 1896,
+          "region": "KR",
+          "uploaded": "2025-11-10",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 91,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "mOp7YR9X9O4",
+          "title": "Taliyah Jungle vs Talon - EUW Grandmaster Patch 25.20",
+          "rankClaim": "Grandmaster",
+          "patch": "25.20",
+          "durationSec": 1662,
+          "region": "EUW",
+          "uploaded": "2025-10-20",
+          "moments": []
+        },
+        {
+          "videoId": "9nqDU7jqPcc",
+          "title": "Taliyah Jungle vs Talon - KR Grandmaster Patch 25.09",
+          "rankClaim": "Grandmaster",
+          "patch": "25.9",
+          "durationSec": 1931,
+          "region": "KR",
+          "uploaded": "2025-05-03",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 92,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "5VbU8Ob_DQk",
+          "title": "(SGE ZaZee) Taliyah Mid vs Riven - EUW Challenger Patch 26.16",
+          "rankClaim": "Challenger",
+          "patch": "26.16",
+          "durationSec": 1594,
+          "region": "EUW",
+          "player": "SGE ZaZee",
+          "uploaded": "2026-08-17",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 103,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "XuTA_y1tHNc",
+          "title": "T1 Faker Taliyah vs Ahri [ MID ] Patch 25.12 Korea Challenger",
+          "rankClaim": "Challenger",
+          "patch": "25.12",
+          "durationSec": 1999,
+          "region": "KR",
+          "player": "Faker",
+          "team": "T1",
+          "uploaded": "2025-06-12",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 104,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "Upt--IFp93Q",
+          "title": "(NIP Guwon) Taliyah Jungle vs Graves - KR Challenger Patch 26.15",
+          "rankClaim": "Challenger",
+          "patch": "26.15",
+          "durationSec": 1422,
+          "region": "KR",
+          "player": "Guwon",
+          "team": "NIP",
+          "uploaded": "2026-08-07",
+          "moments": []
+        },
+        {
+          "videoId": "0p3UsEd-wqw",
+          "title": "(TT Junhao) Taliyah Jungle vs Graves - KR Master Patch 26.13",
+          "rankClaim": "Master",
+          "patch": "26.13",
+          "durationSec": 1658,
+          "region": "KR",
+          "player": "TT Junhao",
+          "uploaded": "2026-06-27",
+          "result": "W",
+          "moments": [
+            {
+              "atSec": 125,
+              "label": "First Blood — Rumble kills Yone",
+              "kind": "kill"
+            },
+            {
+              "atSec": 436,
+              "label": "Red takes 1st Dragon (Ocean)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 619,
+              "label": "Akshan takes down Nautilus"
+            },
+            {
+              "atSec": 722,
+              "label": "Taliyah kills Nautilus",
+              "kind": "kill"
+            },
+            {
+              "atSec": 771,
+              "label": "Blue takes 1st Dragon (Cloud)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 794,
+              "label": "Akshan kills Kai'Sa",
+              "kind": "kill"
+            },
+            {
+              "atSec": 952,
+              "label": "Akshan kills Kai'Sa",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1008,
+              "label": "Akshan takes down Yone"
+            },
+            {
+              "atSec": 1030,
+              "label": "Blue takes Rift Herald",
+              "kind": "herald"
+            },
+            {
+              "atSec": 1128,
+              "label": "Red takes 2nd Dragon (Infernal)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1175,
+              "label": "Ezreal picks off Nautilus"
+            },
+            {
+              "atSec": 1267,
+              "label": "Taliyah kills Nautilus",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1309,
+              "label": "Blue takes Baron",
+              "kind": "baron"
+            },
+            {
+              "atSec": 1335,
+              "label": "Taliyah kills Yone",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1363,
+              "label": "Team fight (3 kills)",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1448,
+              "label": "Blue takes 2nd Dragon (Infernal)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1505,
+              "label": "Mid Inhibitor falls (Red)"
+            },
+            {
+              "atSec": 1582,
+              "label": "Taliyah picks off Ryze"
+            }
+          ]
+        },
+        {
+          "videoId": "8a0G2EZfd0w",
+          "title": "(VIT Lyncas) Taliyah Jungle vs Graves - EUW Challenger Patch 26.11",
+          "rankClaim": "Challenger",
+          "patch": "26.11",
+          "durationSec": 1482,
+          "region": "EUW",
+          "player": "VIT Lyncas",
+          "uploaded": "2026-05-31",
+          "moments": []
+        },
+        {
+          "videoId": "WL4aWwV-l3g",
+          "title": "Taliyah Jungle vs Graves - KR Challenger Patch 26.06",
+          "rankClaim": "Challenger",
+          "patch": "26.6",
+          "durationSec": 1609,
+          "region": "KR",
+          "uploaded": "2026-03-29",
+          "moments": []
+        },
+        {
+          "videoId": "ZSXjI4eqzrQ",
+          "title": "Taliyah Jungle vs Graves - KR Challenger Patch 26.04",
+          "rankClaim": "Challenger",
+          "patch": "26.4",
+          "durationSec": 1497,
+          "region": "KR",
+          "uploaded": "2026-02-28",
+          "moments": []
+        },
+        {
+          "videoId": "BOJHC_V1xxU",
+          "title": "Taliyah Jungle vs Graves - EUW Grandmaster Patch 25.21",
+          "rankClaim": "Grandmaster",
+          "patch": "25.21",
+          "durationSec": 1656,
+          "region": "EUW",
+          "uploaded": "2025-11-02",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 106,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "Vp1Afkrvs_8",
+          "title": "Taliyah Jungle vs Volibear - NA Grandmaster Patch 25.15",
+          "rankClaim": "Grandmaster",
+          "patch": "25.15",
+          "durationSec": 2058,
+          "region": "NA",
+          "uploaded": "2025-08-11",
+          "moments": []
+        },
+        {
+          "videoId": "2HD95rynzWk",
+          "title": "Taliyah Jungle vs Volibear - EUW Grandmaster Patch 25.10",
+          "rankClaim": "Grandmaster",
+          "patch": "25.10",
+          "durationSec": 1684,
+          "region": "EUW",
+          "uploaded": "2025-05-25",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 111,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "ZMIlJTEpwwU",
+          "title": "Taliyah Support vs Nautilus - KR Master Patch 25.13",
+          "rankClaim": "Master",
+          "patch": "25.13",
+          "durationSec": 1491,
+          "region": "KR",
+          "uploaded": "2025-07-11",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 126,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "IFEiiXgbGt8",
+          "title": "Taliyah Jungle vs Jayce - KR Master Patch 25.23",
+          "rankClaim": "Master",
+          "patch": "25.23",
+          "durationSec": 1790,
+          "region": "KR",
+          "uploaded": "2025-11-22",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 131,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "zP9VBoDT1W0",
+          "title": "Taliyah Jungle vs Diana - EUW Grandmaster Patch 25.24",
+          "rankClaim": "Grandmaster",
+          "patch": "25.24",
+          "durationSec": 1581,
+          "region": "EUW",
+          "uploaded": "2025-12-14",
+          "moments": []
+        },
+        {
+          "videoId": "QuhojqZ7ywY",
+          "title": "Taliyah Jungle vs Diana - EUW Challenger Patch 25.19",
+          "rankClaim": "Challenger",
+          "patch": "25.19",
+          "durationSec": 1453,
+          "region": "EUW",
+          "uploaded": "2025-10-05",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 131,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "JWYAjI-yxDY",
+          "title": "Taliyah Mid vs Diana - KR Grandmaster Patch 25.06",
+          "rankClaim": "Grandmaster",
+          "patch": "25.6",
+          "durationSec": 1574,
+          "region": "KR",
+          "uploaded": "2025-03-24",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 581,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 992,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1123,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1177,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1235,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1313,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1408,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1424,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1442,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1456,
+              "label": "Take down The Inhibitor"
+            },
+            {
+              "atSec": 1519,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1553,
+              "label": "End credit"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 134,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "GSCrKh9WVvQ",
+          "title": "Taliyah Mid vs Syndra - KR Master Patch 26.20",
+          "rankClaim": "Master",
+          "patch": "26.20",
+          "durationSec": 1513,
+          "region": "KR",
+          "uploaded": "2026-10-15",
+          "result": "W",
+          "moments": [
+            {
+              "atSec": 287,
+              "label": "First Blood — Taliyah kills Syndra",
+              "kind": "kill"
+            },
+            {
+              "atSec": 359,
+              "label": "Taliyah eliminates Syndra"
+            },
+            {
+              "atSec": 440,
+              "label": "Blue takes 1st Dragon (Ocean)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 502,
+              "label": "Taliyah takes down Syndra"
+            },
+            {
+              "atSec": 777,
+              "label": "Gragas picks off Syndra"
+            },
+            {
+              "atSec": 810,
+              "label": "Blue takes 2nd Dragon (Cloud)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 826,
+              "label": "Taliyah catches Syndra again"
+            },
+            {
+              "atSec": 863,
+              "label": "Taliyah takes down Thresh"
+            },
+            {
+              "atSec": 916,
+              "label": "Blue takes Rift Herald",
+              "kind": "herald"
+            },
+            {
+              "atSec": 990,
+              "label": "Taliyah Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1047,
+              "label": "Team fight (3 kills)",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1121,
+              "label": "Blue takes 3rd Dragon (Hextech)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1193,
+              "label": "K'Sante kills Sylas",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1257,
+              "label": "Gragas kills Thresh",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1283,
+              "label": "Blue takes Baron",
+              "kind": "baron"
+            },
+            {
+              "atSec": 1331,
+              "label": "Taliyah takes down Kled"
+            },
+            {
+              "atSec": 1374,
+              "label": "Mid Inhibitor falls (Red)"
+            },
+            {
+              "atSec": 1418,
+              "label": "Xayah picks off Thresh"
+            }
+          ]
+        },
+        {
+          "videoId": "rxJDvVrmozE",
+          "title": "(LNG BuLLDoG) Taliyah Mid vs Syndra - KR Challenger Patch 26.13",
+          "rankClaim": "Challenger",
+          "patch": "26.13",
+          "durationSec": 1809,
+          "region": "KR",
+          "player": "BuLLDoG",
+          "team": "LNG",
+          "uploaded": "2026-07-03",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 166,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "srMDkNhJAEc",
+          "title": "(EDG BuLLDoG) Taliyah Mid vs Akshan - KR Challenger Patch 26.21",
+          "rankClaim": "Challenger",
+          "patch": "26.21",
+          "durationSec": 1769,
+          "region": "KR",
+          "player": "BuLLDoG",
+          "team": "EDG",
+          "uploaded": "2026-10-30",
+          "result": "W",
+          "moments": [
+            {
+              "atSec": 416,
+              "label": "Red takes 1st Dragon (Chemtech)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 825,
+              "label": "Taliyah eliminates Akshan"
+            },
+            {
+              "atSec": 893,
+              "label": "Red takes 2nd Dragon (Hextech)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 970,
+              "label": "Taliyah takes down Zaahen"
+            },
+            {
+              "atSec": 1105,
+              "label": "Taliyah kills Syndra",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1200,
+              "label": "Miss Fortune takes down Syndra"
+            },
+            {
+              "atSec": 1206,
+              "label": "Blue takes 1st Dragon (Cloud)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1253,
+              "label": "Blue takes Baron",
+              "kind": "baron"
+            },
+            {
+              "atSec": 1348,
+              "label": "Team fight (3 kills)",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1399,
+              "label": "Taliyah kills Syndra",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1523,
+              "label": "Team fight (3 kills)",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1526,
+              "label": "Miss Fortune Triple Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1548,
+              "label": "Red takes 3rd Dragon (Cloud)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1622,
+              "label": "Taliyah picks off Olaf"
+            },
+            {
+              "atSec": 1665,
+              "label": "Red takes Baron",
+              "kind": "baron"
+            },
+            {
+              "atSec": 1699,
+              "label": "Taliyah kills Syndra",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1733,
+              "label": "Mid Inhibitor falls (Blue)"
+            },
+            {
+              "atSec": 1750,
+              "label": "Bot Inhibitor falls (Blue)"
+            }
+          ]
+        },
+        {
+          "videoId": "TdlowUXVgxk",
+          "title": "Taliyah Mid vs Akshan - KR Challenger Patch 25.20",
+          "rankClaim": "Challenger",
+          "patch": "25.20",
+          "durationSec": 1483,
+          "region": "KR",
+          "uploaded": "2025-10-12",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 200,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "ADbiN6SumYE",
+          "title": "Taliyah Jungle vs Bel'Veth - KR Master Patch 26.20",
+          "rankClaim": "Master",
+          "patch": "26.20",
+          "durationSec": 1805,
+          "region": "KR",
+          "uploaded": "2026-10-17",
+          "result": "W",
+          "moments": [
+            {
+              "atSec": 122,
+              "label": "First Blood — Taliyah kills Bel'Veth",
+              "kind": "kill"
+            },
+            {
+              "atSec": 540,
+              "label": "Red takes 1st Dragon (Hextech)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 771,
+              "label": "Taliyah solo kills Mel",
+              "kind": "kill"
+            },
+            {
+              "atSec": 871,
+              "label": "Blue takes 1st Dragon (Cloud)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1031,
+              "label": "Taliyah takes down Lucian"
+            },
+            {
+              "atSec": 1206,
+              "label": "Red takes 2nd Dragon (Infernal)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1210,
+              "label": "Jhin picks off Bard"
+            },
+            {
+              "atSec": 1235,
+              "label": "Jayce eliminates Pantheon"
+            },
+            {
+              "atSec": 1266,
+              "label": "Blue takes Baron",
+              "kind": "baron"
+            },
+            {
+              "atSec": 1413,
+              "label": "Pyke eliminates Bard"
+            },
+            {
+              "atSec": 1517,
+              "label": "Blue takes 2nd Dragon (Infernal)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1529,
+              "label": "Taliyah catches Lucian again"
+            },
+            {
+              "atSec": 1537,
+              "label": "Ahri Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1641,
+              "label": "Team fight (3 kills)",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1733,
+              "label": "Taliyah eliminates Lucian"
+            },
+            {
+              "atSec": 1746,
+              "label": "Mid Inhibitor falls (Red)"
+            },
+            {
+              "atSec": 1766,
+              "label": "Bot Inhibitor falls (Red)"
+            },
+            {
+              "atSec": 1784,
+              "label": "Jhin eliminates Bel'Veth"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 203,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "QQsEfwADLHY",
+          "title": "Taliyah vs Kindred 13/2/10 (Jungle) | EUW Grandmaster | Taliyah OTP Replay",
+          "rankClaim": "Grandmaster",
+          "patch": "26.7",
+          "durationSec": 1299,
+          "region": "EUW",
+          "patchEstimated": true,
+          "uploaded": "2026-04-11",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 234,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "GdjaZoh3AAU",
+          "title": "Taliyah vs Viego Mid - KR Grandmaster - Patch 25.16 Season 15",
+          "rankClaim": "Grandmaster",
+          "patch": "25.16",
+          "durationSec": 2050,
+          "region": "KR",
+          "uploaded": "2025-08-17",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 238,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "a5urxqbiL9s",
+          "title": "Taliyah Mid vs Zed - KR Challenger Patch 26.17",
+          "rankClaim": "Challenger",
+          "patch": "26.17",
+          "durationSec": 1746,
+          "region": "KR",
+          "uploaded": "2026-09-04",
+          "moments": []
+        },
+        {
+          "videoId": "zLRGjAL1kMY",
+          "title": "Taliyah Mid vs Zed - EUW Challenger Patch 26.07",
+          "rankClaim": "Challenger",
+          "patch": "26.7",
+          "durationSec": 1907,
+          "region": "EUW",
+          "uploaded": "2026-04-07",
+          "moments": []
+        },
+        {
+          "videoId": "gVDDbD-FmpI",
+          "title": "T1 Faker Taliyah vs Zed [ MID ] Patch 25.7 Korea Grandmaster ✅",
+          "rankClaim": "Grandmaster",
+          "patch": "25.7",
+          "durationSec": 868,
+          "region": "KR",
+          "player": "Faker",
+          "team": "T1",
+          "uploaded": "2025-04-09",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 245,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "-sq6Usy6HOA",
+          "title": "Taliyah Jungle vs Ekko - NA Challenger Patch 25.11",
+          "rankClaim": "Challenger",
+          "patch": "25.11",
+          "durationSec": 1700,
+          "region": "NA",
+          "uploaded": "2025-06-08",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 245,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "XihZ1Z3yDfk",
+          "title": "Taliyah Mid vs Ekko - KR Challenger Patch 26.16",
+          "rankClaim": "Challenger",
+          "patch": "26.16",
+          "durationSec": 1652,
+          "region": "KR",
+          "uploaded": "2026-08-27",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 246,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "mbeCGHJKEEg",
+          "title": "Taliyah Jungle vs Qiyana - KR Challenger Patch 25.16",
+          "rankClaim": "Challenger",
+          "patch": "25.16",
+          "durationSec": 1692,
+          "region": "KR",
+          "uploaded": "2025-08-24",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 246,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "JD9uDadaOU0",
+          "title": "Taliyah Mid vs Qiyana - KR Master Patch 25.13",
+          "rankClaim": "Master",
+          "patch": "25.13",
+          "durationSec": 2012,
+          "region": "KR",
+          "uploaded": "2025-06-29",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 254,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "AWYbWh1mkGc",
+          "title": "(KT Jiwoo) Taliyah Jungle vs Vi - KR Challenger Patch 26.21",
+          "rankClaim": "Challenger",
+          "patch": "26.21",
+          "durationSec": 1641,
+          "region": "KR",
+          "player": "Jiwoo",
+          "team": "KT",
+          "uploaded": "2026-10-31",
+          "result": "W",
+          "moments": [
+            {
+              "atSec": 136,
+              "label": "Taliyah kills Leona",
+              "kind": "kill"
+            },
+            {
+              "atSec": 338,
+              "label": "Red takes 1st Dragon (Hextech)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 521,
+              "label": "Taliyah picks off Zeri"
+            },
+            {
+              "atSec": 617,
+              "label": "Team fight (3 kills)",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 665,
+              "label": "Aurelion Sol eliminates Vi"
+            },
+            {
+              "atSec": 710,
+              "label": "Taliyah picks off Zeri"
+            },
+            {
+              "atSec": 799,
+              "label": "Yasuo takes down Leona"
+            },
+            {
+              "atSec": 815,
+              "label": "Blue takes 1st Dragon (Ocean)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 854,
+              "label": "Taliyah kills Rumble",
+              "kind": "kill"
+            },
+            {
+              "atSec": 903,
+              "label": "Blue takes Rift Herald",
+              "kind": "herald"
+            },
+            {
+              "atSec": 961,
+              "label": "Taliyah kills Leona",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1128,
+              "label": "Blue takes 2nd Dragon (Cloud)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1252,
+              "label": "Blue takes Baron",
+              "kind": "baron"
+            },
+            {
+              "atSec": 1296,
+              "label": "Taliyah eliminates Ziggs"
+            },
+            {
+              "atSec": 1436,
+              "label": "Jax eliminates Leona"
+            },
+            {
+              "atSec": 1457,
+              "label": "Blue takes 3rd Dragon (Cloud)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1620,
+              "label": "Aurelion Sol Double Kill",
+              "kind": "kill"
+            }
+          ]
+        },
+        {
+          "videoId": "gc4aHscMT4s",
+          "title": "Taliyah Jungle vs Vi (Holder) - KR Challenger Patch 26.17",
+          "rankClaim": "Challenger",
+          "patch": "26.17",
+          "durationSec": 1887,
+          "region": "KR",
+          "uploaded": "2026-09-04",
+          "result": "W",
+          "moments": [
+            {
+              "atSec": 24,
+              "label": "First Blood — Taliyah kills Vi",
+              "kind": "kill"
+            },
+            {
+              "atSec": 653,
+              "label": "Taliyah solo kills Twisted Fate",
+              "kind": "kill"
+            },
+            {
+              "atSec": 716,
+              "label": "Red takes 1st Dragon (Mountain)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 776,
+              "label": "Taliyah kills Renata Glasc",
+              "kind": "kill"
+            },
+            {
+              "atSec": 823,
+              "label": "Taliyah takes down Vi"
+            },
+            {
+              "atSec": 984,
+              "label": "Taliyah kills Renata Glasc",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1036,
+              "label": "Blue takes 1st Dragon (Hextech)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1118,
+              "label": "Team fight (3 kills)",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1206,
+              "label": "Blue takes Baron",
+              "kind": "baron"
+            },
+            {
+              "atSec": 1252,
+              "label": "Taliyah takes down Vi"
+            },
+            {
+              "atSec": 1305,
+              "label": "Riven Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1360,
+              "label": "Red takes 2nd Dragon (Chemtech)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1506,
+              "label": "Taliyah takes down Twisted Fate again"
+            },
+            {
+              "atSec": 1592,
+              "label": "Red takes Baron",
+              "kind": "baron"
+            },
+            {
+              "atSec": 1707,
+              "label": "Red takes 3rd Dragon (Chemtech)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1787,
+              "label": "Ashe eliminates Vi"
+            },
+            {
+              "atSec": 1810,
+              "label": "Taliyah kills Gnar",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1826,
+              "label": "Mid Inhibitor falls (Blue)"
+            }
+          ]
+        },
+        {
+          "videoId": "DpIzUU9PTEU",
+          "title": "Taliyah Jungle vs Vi - EUW Grandmaster Patch 25.08",
+          "rankClaim": "Grandmaster",
+          "patch": "25.8",
+          "durationSec": 1516,
+          "region": "EUW",
+          "uploaded": "2025-05-01",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 268,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "b0AYoXiZEtA",
+          "title": "Taliyah Mid vs Azir - KR Challenger Patch 26.06",
+          "rankClaim": "Challenger",
+          "patch": "26.6",
+          "durationSec": 1804,
+          "region": "KR",
+          "uploaded": "2026-03-22",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 119,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 335,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 556,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 706,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 836,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1078,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1101,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1173,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1203,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1285,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1375,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1415,
+              "label": "Get a Triple Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1484,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1579,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1659,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1687,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1753,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1775,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1793,
+              "label": "End credit"
+            }
+          ]
+        },
+        {
+          "videoId": "Vc8AgGaWkkc",
+          "title": "Taliyah Mid vs Azir - KR Grandmaster Patch 25.16",
+          "rankClaim": "Grandmaster",
+          "patch": "25.16",
+          "durationSec": 1869,
+          "region": "KR",
+          "uploaded": "2025-08-18",
+          "moments": []
+        },
+        {
+          "videoId": "EvJEMamn3I0",
+          "title": "T1 Faker Taliyah vs Azir [ MID ] Patch 25.11 Korea Grandmaster",
+          "rankClaim": "Grandmaster",
+          "patch": "25.11",
+          "durationSec": 918,
+          "region": "KR",
+          "player": "Faker",
+          "team": "T1",
+          "uploaded": "2025-06-07",
+          "moments": []
+        },
+        {
+          "videoId": "uUZufyHAOus",
+          "title": "Taliyah Mid vs Azir - KR Challenger Patch 25.10",
+          "rankClaim": "Challenger",
+          "patch": "25.10",
+          "durationSec": 1514,
+          "region": "KR",
+          "uploaded": "2025-05-18",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 421,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "cmynFm4myb4",
+          "title": "Taliyah Jungle vs Rek'Sai - EUW Grandmaster Patch 25.05",
+          "rankClaim": "Grandmaster",
+          "patch": "25.5",
+          "durationSec": 1500,
+          "region": "EUW",
+          "uploaded": "2025-03-18",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 202,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 223,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 396,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 454,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 482,
+              "label": "Hunt The Void Grubs",
+              "kind": "grubs"
+            },
+            {
+              "atSec": 669,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 751,
+              "label": "Hunt The Void Grubs",
+              "kind": "grubs"
+            },
+            {
+              "atSec": 838,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 914,
+              "label": "Hunt The Dragon",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1009,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1050,
+              "label": "Hunt The Rift Herald",
+              "kind": "herald"
+            },
+            {
+              "atSec": 1074,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1150,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1180,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1237,
+              "label": "Hunt The Dragon",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1261,
+              "label": "Hunt The Atakhan"
+            },
+            {
+              "atSec": 1286,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1310,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1334,
+              "label": "Take down The Inhibitor"
+            },
+            {
+              "atSec": 1378,
+              "label": "Take down The Inhibitor"
+            },
+            {
+              "atSec": 1479,
+              "label": "End credit"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 429,
+      "lane": "adc",
+      "videos": [
+        {
+          "videoId": "3RqpH4-sPBQ",
+          "title": "T1 Peyz Taliyah vs Kalista [ ADC ] Korea Challenger 2206 LP | Patch 26.20",
+          "rankClaim": "Challenger",
+          "patch": "26.20",
+          "durationSec": 1690,
+          "region": "KR",
+          "player": "Peyz",
+          "team": "T1",
+          "uploaded": "2026-10-17",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 517,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "BlMbM-MDaLo",
+          "title": "Taliyah Mid vs Sylas - KR Master Patch 26.18",
+          "rankClaim": "Master",
+          "patch": "26.18",
+          "durationSec": 1663,
+          "region": "KR",
+          "uploaded": "2026-09-19",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 517,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "1pf-AGf50vY",
+          "title": "Taliyah Top vs Sylas - KR Master Patch 25.24",
+          "rankClaim": "Master",
+          "patch": "25.24",
+          "durationSec": 1565,
+          "region": "KR",
+          "uploaded": "2025-12-21",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 777,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "PvN0ihe-bRI",
+          "title": "Taliyah Mid vs Yone - EUW Challenger Patch 26.04",
+          "rankClaim": "Challenger",
+          "patch": "26.4",
+          "durationSec": 1544,
+          "region": "EUW",
+          "uploaded": "2026-02-23",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 30,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 183,
+              "label": "Get a Triple Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 325,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 526,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 590,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 828,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 856,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1023,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1141,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1272,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1335,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1457,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1533,
+              "label": "End credit"
+            }
+          ]
+        },
+        {
+          "videoId": "zo8k6uVvqH8",
+          "title": "Taliyah Mid vs Yone - EUW Challenger Patch 26.03",
+          "rankClaim": "Challenger",
+          "patch": "26.3",
+          "durationSec": 1611,
+          "region": "EUW",
+          "uploaded": "2026-02-14",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 799,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "d2yIgk8jZyo",
+          "title": "Taliyah Jungle vs Ambessa - EUW Challenger Patch 26.05",
+          "rankClaim": "Challenger",
+          "patch": "26.5",
+          "durationSec": 1515,
+          "region": "EUW",
+          "uploaded": "2026-03-14",
+          "moments": []
+        },
+        {
+          "videoId": "rHxRz9f1Lm0",
+          "title": "Taliyah Jungle vs Ambessa - KR Challenger Patch 26.01",
+          "rankClaim": "Challenger",
+          "patch": "26.1",
+          "durationSec": 1560,
+          "region": "KR",
+          "uploaded": "2026-01-20",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 347,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 367,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 484,
+              "label": "Hunt The Void Grubs",
+              "kind": "grubs"
+            },
+            {
+              "atSec": 561,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 635,
+              "label": "Hunt The Dragon",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 663,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 748,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 816,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 959,
+              "label": "Hunt The Dragon",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1063,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1102,
+              "label": "Hunt The Rift Herald",
+              "kind": "herald"
+            },
+            {
+              "atSec": 1134,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1266,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1303,
+              "label": "Hunt The Baron Nashor",
+              "kind": "baron"
+            },
+            {
+              "atSec": 1334,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1352,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1366,
+              "label": "Take down The Inhibitor"
+            },
+            {
+              "atSec": 1414,
+              "label": "Hunt The Dragon",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1494,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1521,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1549,
+              "label": "End credit"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 800,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "PZb5nOo0R2M",
+          "title": "Taliyah Mid vs Mel - VN Master Patch 26.01",
+          "rankClaim": "Master",
+          "patch": "26.1",
+          "durationSec": 1557,
+          "uploaded": "2026-01-11",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 56,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 180,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 435,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 455,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 626,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 696,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 812,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 910,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 939,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1048,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1137,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1167,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1243,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1327,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1403,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1431,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1511,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1546,
+              "label": "End credit"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 805,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "C8jmgR_eSTo",
+          "title": "(DNS Clozer) Taliyah Mid vs Locke (UP Saber) - KR Challenger Patch 26.15",
+          "rankClaim": "Challenger",
+          "patch": "26.15",
+          "durationSec": 1412,
+          "region": "KR",
+          "player": "Clozer",
+          "uploaded": "2026-08-03",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 876,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "xhU3CvS6QzA",
+          "title": "Taliyah Jungle vs Lillia - EUW Challenger Patch 25.07",
+          "rankClaim": "Challenger",
+          "patch": "25.7",
+          "durationSec": 1698,
+          "region": "EUW",
+          "uploaded": "2025-04-16",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 893,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "zTNtj_r2nxw",
+          "title": "(LNG BuLLDoG) Taliyah Mid vs Aurora - KR Challenger Patch 26.11",
+          "rankClaim": "Challenger",
+          "patch": "26.11",
+          "durationSec": 1735,
+          "region": "KR",
+          "player": "BuLLDoG",
+          "team": "LNG",
+          "uploaded": "2026-06-06",
+          "result": "L",
+          "moments": [
+            {
+              "atSec": 331,
+              "label": "First Blood — Rengar kills Lee Sin",
+              "kind": "kill"
+            },
+            {
+              "atSec": 433,
+              "label": "Blue takes 1st Dragon (Cloud)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 553,
+              "label": "Rengar picks off Aurora"
+            },
+            {
+              "atSec": 655,
+              "label": "Rengar picks off Aurora"
+            },
+            {
+              "atSec": 767,
+              "label": "Blue takes 2nd Dragon (Chemtech)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1084,
+              "label": "Blue takes 3rd Dragon (Infernal)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1097,
+              "label": "Taliyah kills Mel",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1337,
+              "label": "Bot Inhibitor falls (Blue)"
+            },
+            {
+              "atSec": 1402,
+              "label": "Varus Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1425,
+              "label": "Red takes 1st Dragon (Infernal)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1535,
+              "label": "Red takes Baron",
+              "kind": "baron"
+            },
+            {
+              "atSec": 1578,
+              "label": "Varus eliminates Lee Sin"
+            },
+            {
+              "atSec": 1662,
+              "label": "Taliyah picks off Lee Sin"
+            }
+          ]
+        },
+        {
+          "videoId": "h0-qDn1x_sQ",
+          "title": "Taliyah Mid vs Aurora - EUW Challenger Patch 25.23",
+          "rankClaim": "Challenger",
+          "patch": "25.23",
+          "durationSec": 1552,
+          "region": "EUW",
+          "uploaded": "2025-12-01",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 910,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "a3e4MLhH9wY",
+          "title": "Taliyah Mid vs Hwei - EUW Grandmaster Patch 25.18",
+          "rankClaim": "Grandmaster",
+          "patch": "25.18",
+          "durationSec": 1575,
+          "region": "EUW",
+          "uploaded": "2025-09-19",
+          "moments": []
+        },
+        {
+          "videoId": "fhmtFJD34xs",
+          "title": "Taliyah Mid vs Hwei - KR Challenger Patch 25.15",
+          "rankClaim": "Challenger",
+          "patch": "25.15",
+          "durationSec": 1793,
+          "region": "KR",
+          "uploaded": "2025-08-04",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 950,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "v8LU7iajduQ",
+          "title": "(FUR Guigo) Taliyah Jungle vs Naafiri - BR Challenger Patch 26.12",
+          "rankClaim": "Challenger",
+          "patch": "26.12",
+          "durationSec": 1458,
+          "player": "FUR Guigo",
+          "uploaded": "2026-06-15",
+          "moments": []
+        },
+        {
+          "videoId": "m_DmPkr4rjQ",
+          "title": "Taliyah vs Naafiri 11/2/7 (Jungle) | EUW Grandmaster | Taliyah OTP Replay",
+          "rankClaim": "Grandmaster",
+          "patch": "26.8",
+          "durationSec": 1541,
+          "region": "EUW",
+          "patchEstimated": true,
+          "uploaded": "2026-04-20",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 950,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "ZSAgpIt_R6o",
+          "title": "Taliyah Mid vs Naafiri - NA Grandmaster Patch 25.04",
+          "rankClaim": "Grandmaster",
+          "patch": "25.4",
+          "durationSec": 1934,
+          "region": "NA",
+          "uploaded": "2025-02-24",
+          "moments": []
+        }
+      ]
+    }
+  ]
+}

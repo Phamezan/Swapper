@@ -1,0 +1,5752 @@
+{
+  "schema": 1,
+  "champion": 901,
+  "generatedAt": "2026-11-07T13:25:14.592Z",
+  "guides": [
+    {
+      "champion": 901,
+      "enemy": 202,
+      "lane": "adc",
+      "patch": "26.21",
+      "reviewed": false,
+      "difficulty": "Hard",
+      "favoredWhen": "Survive the early crush without conceding CS or XP; drag the game to your stacks.",
+      "keyTips": [
+        {
+          "text": "He crushes you early, so concede nothing. Every minion and experience point matters because your outscale is the entire win condition.",
+          "scope": "pair",
+          "sourceIds": [
+            "yunfang"
+          ],
+          "patch": "26.20"
+        },
+        {
+          "text": "Do not give him level 2 first. His early aggression off the race decides the lane, so match his push from the first wave.",
+          "scope": "pair",
+          "sourceIds": [
+            "yunfang"
+          ],
+          "patch": "26.20"
+        },
+        {
+          "text": "Drag the game out. He must close early because you outscale if it drags — every minute you survive even is a minute won.",
+          "scope": "pair",
+          "sourceIds": [
+            "yunfang"
+          ],
+          "patch": "26.20"
+        }
+      ],
+      "enemyTips": {
+        "early-lane": [
+          {
+            "text": "Jhin loads his fourth shot on a minion and holds it to zone you off the wave. Trade while it is spent and give ground while it is held.",
+            "scope": "enemy",
+            "sourceIds": [
+              "omibro"
+            ],
+            "patch": "26.19",
+            "abilityKeys": [
+              {
+                "champion": 202,
+                "key": "Q"
+              }
+            ]
+          },
+          {
+            "text": "Deadly Flourish is a follow-up for support crowd control, not dry poke. A wasted W is your window to walk up.",
+            "scope": "enemy",
+            "sourceIds": [
+              "omibro"
+            ],
+            "patch": "26.19",
+            "abilityKeys": [
+              {
+                "champion": 202,
+                "key": "W"
+              }
+            ]
+          }
+        ],
+        "win-condition": [
+          {
+            "text": "A landed Deadly Flourish sets up a guaranteed first Curtain Call shot when fired instantly. Break vision lines and stay mobile once it connects.",
+            "scope": "enemy",
+            "sourceIds": [
+              "omibro"
+            ],
+            "patch": "26.19",
+            "abilityKeys": [
+              {
+                "champion": 202,
+                "key": "W"
+              },
+              {
+                "champion": 202,
+                "key": "R"
+              }
+            ]
+          }
+        ]
+      },
+      "sections": {
+        "overview": {
+          "tips": []
+        },
+        "early-lane": {
+          "tips": [
+            {
+              "text": "Stack Super Scorcher Breath ({cd:901:Q}) on the wave safely. Never trade autos for stacks — the stacks are worth more than any single trade.",
+              "scope": "pair",
+              "sourceIds": [
+                "yunfang"
+              ],
+              "patch": "26.20",
+              "abilityKeys": [
+                {
+                  "champion": 901,
+                  "key": "Q"
+                }
+              ]
+            },
+            {
+              "text": "Trade while his fourth shot is spent and give ground while he holds it. The loaded shot zones you off the wave even without firing.",
+              "scope": "pair",
+              "sourceIds": [
+                "omibro"
+              ],
+              "patch": "26.21",
+              "abilityKeys": [
+                {
+                  "champion": 202,
+                  "key": "Q"
+                }
+              ]
+            },
+            {
+              "text": "Walk up when he wastes Deadly Flourish ({cd:202:W}) dry. Without the follow-up root he has no answer to your stacking.",
+              "scope": "pair",
+              "sourceIds": [
+                "omibro"
+              ],
+              "patch": "26.21",
+              "abilityKeys": [
+                {
+                  "champion": 202,
+                  "key": "W"
+                }
+              ]
+            }
+          ]
+        },
+        "mid-lane": {
+          "tips": [
+            {
+              "text": "Farm sides and answer groups, but never duel. His deny-CS plan only works if you show up to be denied — take the safe farm and leave.",
+              "scope": "pair",
+              "sourceIds": [
+                "yunfang"
+              ],
+              "patch": "26.20"
+            },
+            {
+              "text": "Sweep the objective flanks for his traps and fog picks. Denied vision denies his casts, and he cannot set up what he cannot see.",
+              "scope": "pair",
+              "sourceIds": [
+                "omibro"
+              ],
+              "patch": "26.21",
+              "abilityKeys": [
+                {
+                  "champion": 202,
+                  "key": "E"
+                }
+              ]
+            }
+          ]
+        },
+        "win-condition": {
+          "tips": [
+            {
+              "text": "Once stacked, take the front-to-back he fears. He spent the whole game trying to stop your stacks — make him fight into them.",
+              "scope": "pair",
+              "sourceIds": [
+                "yunfang"
+              ],
+              "patch": "26.20"
+            },
+            {
+              "text": "Break vision and stay mobile once his root connects. The instant Curtain Call shot after it is guaranteed unless you are already moving.",
+              "scope": "pair",
+              "sourceIds": [
+                "omibro"
+              ],
+              "patch": "26.21",
+              "abilityKeys": [
+                {
+                  "champion": 202,
+                  "key": "W"
+                },
+                {
+                  "champion": 202,
+                  "key": "R"
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "itemization": [
+        {
+          "text": "Spend for scaling, not for dueling. Your win is the late game he is racing, so buy the stacking curve rather than early fight stats.",
+          "scope": "pair",
+          "sourceIds": [
+            "yunfang"
+          ],
+          "patch": "26.20"
+        }
+      ],
+      "sources": [
+        {
+          "id": "antiwis",
+          "author": "Antiwis",
+          "rankClaim": "Diamond (profile badge; title claims Master Elo OTP) · Jhin main",
+          "rank": "diamond",
+          "url": "https://www.mobafire.com/league-of-legends/build/26-21-jhin-guide-real-updates-every-patch-master-elo-otp-633981",
+          "kind": "mobafire"
+        },
+        {
+          "id": "yunfang",
+          "author": "Yunfang",
+          "rankClaim": "Diamond (profile badge; guide text claims Master ADC main) · Jhin main",
+          "rank": "diamond",
+          "url": "https://www.mobafire.com/league-of-legends/build/s2026-20-easy-to-read-simple-1v9-live-ama-full-guide-updated-650175",
+          "kind": "mobafire"
+        },
+        {
+          "id": "omibro",
+          "author": "Omibro",
+          "rankClaim": "Challenger ADC and coach · Jhin main",
+          "rank": "challenger",
+          "url": "https://www.youtube.com/watch?v=8Ln7EC-ryxo&t=3259s",
+          "kind": "youtube"
+        }
+      ]
+    }
+  ],
+  "vods": [
+    {
+      "lane": "adc",
+      "videos": [
+        {
+          "videoId": "rgRvdBUsg74",
+          "title": "Smash : His Smolder is Dealing Massive Damage - Engsub ( Smolder vs Aphe )",
+          "rankClaim": "Master+",
+          "patch": "26.12",
+          "durationSec": 818,
+          "patchEstimated": true,
+          "player": "Smash",
+          "uploaded": "2026-06-19",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "4dHo91jMutY",
+          "title": "1600LP Smolder \"Jz\" He is The SAVIOR We Need - Engsub",
+          "rankClaim": "Master+",
+          "patch": "26.11",
+          "durationSec": 1384,
+          "patchEstimated": true,
+          "player": "Jz",
+          "uploaded": "2026-05-30",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "X0DJvUmTOGI",
+          "title": "Doggo Smolder : From ZERO to HERO HardCarrying FAKER in KR Challenger - Engsub",
+          "rankClaim": "Challenger",
+          "patch": "26.10",
+          "durationSec": 1576,
+          "region": "KR",
+          "patchEstimated": true,
+          "player": "Faker",
+          "uploaded": "2026-05-17",
+          "format": "stream",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "9uX7RRSYUpM",
+          "title": "Baicaiovo Smolder: This CN Super Server Legend is CRUSHING Challenger with INSANE Kiting - Engsub",
+          "rankClaim": "Challenger",
+          "patch": "26.5",
+          "durationSec": 1020,
+          "patchEstimated": true,
+          "player": "Baicaiovo",
+          "uploaded": "2026-03-14",
+          "format": "stream",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 3,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "XGSVsf1NSdI",
+          "title": "(TLNP Toffe) Smolder Mid vs Galio (TheRoyalKanin) - EUW Challenger Patch 26.15",
+          "rankClaim": "Challenger",
+          "patch": "26.15",
+          "durationSec": 1686,
+          "region": "EUW",
+          "player": "TLNP Toffe",
+          "uploaded": "2026-08-07",
+          "moments": []
+        },
+        {
+          "videoId": "RwJItnuxlbA",
+          "title": "Smolder Mid vs Galio - KR Grandmaster Patch 26.12",
+          "rankClaim": "Grandmaster",
+          "patch": "26.12",
+          "durationSec": 1590,
+          "region": "KR",
+          "uploaded": "2026-06-25",
+          "moments": []
+        },
+        {
+          "videoId": "Hh-b_ZlGen0",
+          "title": "Smolder Mid vs Galio - EUW Grandmaster Patch 26.03",
+          "rankClaim": "Grandmaster",
+          "patch": "26.3",
+          "durationSec": 1780,
+          "region": "EUW",
+          "uploaded": "2026-02-18",
+          "moments": []
+        },
+        {
+          "videoId": "3lAoHEcCx30",
+          "title": "Smolder Mid vs Galio - NA Challenger Patch 26.02",
+          "rankClaim": "Challenger",
+          "patch": "26.2",
+          "durationSec": 1618,
+          "region": "NA",
+          "uploaded": "2026-02-01",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 638,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 664,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 726,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 805,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 885,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 919,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1198,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1360,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1378,
+              "label": "Take down The Inhibitor"
+            },
+            {
+              "atSec": 1469,
+              "label": "Get a Triple Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1500,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1567,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1607,
+              "label": "End credit"
+            }
+          ]
+        },
+        {
+          "videoId": "J5cU16gs44w",
+          "title": "Smolder Mid vs Galio - EUW Grandmaster Patch 25.24",
+          "rankClaim": "Grandmaster",
+          "patch": "25.24",
+          "durationSec": 1481,
+          "region": "EUW",
+          "uploaded": "2026-01-04",
+          "moments": []
+        },
+        {
+          "videoId": "8jXhJOByG20",
+          "title": "Smolder Mid vs Galio - TW Challenger Patch 25.23",
+          "rankClaim": "Challenger",
+          "patch": "25.23",
+          "durationSec": 1509,
+          "uploaded": "2025-12-01",
+          "moments": []
+        },
+        {
+          "videoId": "MRnnUrOgvs8",
+          "title": "Smolder Mid vs Galio - EUW Challenger Patch 25.22",
+          "rankClaim": "Challenger",
+          "patch": "25.22",
+          "durationSec": 1604,
+          "region": "EUW",
+          "uploaded": "2025-11-20",
+          "moments": []
+        },
+        {
+          "videoId": "cwAqNkYVpXE",
+          "title": "Smolder Mid vs Galio - NA Challenger Patch 25.10",
+          "rankClaim": "Challenger",
+          "patch": "25.10",
+          "durationSec": 1461,
+          "region": "NA",
+          "uploaded": "2025-05-25",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 5,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "B3sCbh1oUh4",
+          "title": "LEARNING HOW TO PLAY NAAFIRI DRUTUTT EDITION",
+          "rankClaim": "Master+",
+          "patch": "26.9",
+          "durationSec": 22602,
+          "patchEstimated": true,
+          "player": "Alois",
+          "uploaded": "2026-05-06",
+          "format": "stream",
+          "cam": true,
+          "startSec": 15780,
+          "endSec": 18169,
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 7,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "8NVNjJ9AHqs",
+          "title": "Smolder vs LeBlanc Mid - KR Challenger - Patch 25.5 Season 15",
+          "rankClaim": "Challenger",
+          "patch": "25.5",
+          "durationSec": 1541,
+          "region": "KR",
+          "uploaded": "2025-03-14",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 8,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "VIwUmcBs5Hg",
+          "title": "Smolder Top vs Vladimir - NA Grandmaster Patch 26.14",
+          "rankClaim": "Grandmaster",
+          "patch": "26.14",
+          "durationSec": 1468,
+          "region": "NA",
+          "uploaded": "2026-07-30",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 13,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "c_DBBHGAu1c",
+          "title": "Smolder Mid vs Ryze - EUW Grandmaster Patch 26.07",
+          "rankClaim": "Grandmaster",
+          "patch": "26.7",
+          "durationSec": 1732,
+          "region": "EUW",
+          "uploaded": "2026-04-11",
+          "moments": []
+        },
+        {
+          "videoId": "9sY_wShk0J8",
+          "title": "Smolder Mid vs Ryze - KR Master Patch 25.09",
+          "rankClaim": "Master",
+          "patch": "25.9",
+          "durationSec": 1992,
+          "region": "KR",
+          "uploaded": "2025-05-13",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 14,
+      "lane": "adc",
+      "videos": [
+        {
+          "videoId": "P7ksMkaGTf4",
+          "title": "Smolder ADC vs Sion - KR Grandmaster Patch 25.12",
+          "rankClaim": "Grandmaster",
+          "patch": "25.12",
+          "durationSec": 1770,
+          "region": "KR",
+          "uploaded": "2025-06-13",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 15,
+      "lane": "adc",
+      "videos": [
+        {
+          "videoId": "9TgM06VZ5uU",
+          "title": "Smolder vs Sivir ADC - EUW Challenger - Patch 25.21 Season 15",
+          "rankClaim": "Challenger",
+          "patch": "25.21",
+          "durationSec": 1931,
+          "region": "EUW",
+          "uploaded": "2025-11-01",
+          "moments": []
+        },
+        {
+          "videoId": "VbsqXNfy2tA",
+          "title": "T1 Gumayusi Smolder vs Sivir [ ADC ] Korea Challenger 1309 LP | Patch 25.18",
+          "rankClaim": "Challenger",
+          "patch": "25.18",
+          "durationSec": 1772,
+          "region": "KR",
+          "player": "Gumayusi",
+          "team": "T1",
+          "uploaded": "2025-09-16",
+          "moments": []
+        },
+        {
+          "videoId": "IRrqe59GxCg",
+          "title": "Smolder ADC vs Sivir - KR Challenger Patch 25.17",
+          "rankClaim": "Challenger",
+          "patch": "25.17",
+          "durationSec": 1604,
+          "region": "KR",
+          "uploaded": "2025-09-02",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 15,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "wPcRmohyjJM",
+          "title": "DAY 3 OF ADC AND I LOST MY MIND",
+          "rankClaim": "Master+",
+          "patch": "26.5",
+          "durationSec": 24436,
+          "patchEstimated": true,
+          "player": "Alois",
+          "uploaded": "2026-03-12",
+          "format": "stream",
+          "cam": true,
+          "startSec": 7090,
+          "endSec": 9500,
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 18,
+      "lane": "adc",
+      "videos": [
+        {
+          "videoId": "0XEANuMVlBA",
+          "title": "Smolder vs Tristana ADC - EUW Challenger - Patch 25.24 Season 15",
+          "rankClaim": "Challenger",
+          "patch": "25.24",
+          "durationSec": 1721,
+          "region": "EUW",
+          "uploaded": "2026-01-02",
+          "moments": []
+        },
+        {
+          "videoId": "CG59sRlSER8",
+          "title": "Smolder ADC vs Tristana - KR Challenger Patch 25.06",
+          "rankClaim": "Challenger",
+          "patch": "25.6",
+          "durationSec": 1764,
+          "region": "KR",
+          "uploaded": "2025-03-25",
+          "moments": []
+        },
+        {
+          "videoId": "slU8oglHyJs",
+          "title": "Smolder vs Tristana ADC [ Peyz ] Patch 25.6 Korea Grandmaster ✅",
+          "rankClaim": "Grandmaster",
+          "patch": "25.6",
+          "durationSec": 1489,
+          "region": "KR",
+          "player": "Peyz",
+          "uploaded": "2025-03-23",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 18,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "EfoELCLM5_c",
+          "title": "GRANDMASTER IS WITHIN MY GRASP",
+          "rankClaim": "Grandmaster",
+          "patch": "26.9",
+          "durationSec": 27392,
+          "patchEstimated": true,
+          "player": "Alois",
+          "uploaded": "2026-04-29",
+          "format": "stream",
+          "cam": true,
+          "startSec": 25250,
+          "endSec": 27392,
+          "moments": []
+        },
+        {
+          "videoId": "8mFc3blj90k",
+          "title": "ADC IS A ROLLERCOASTER",
+          "rankClaim": "Master+",
+          "patch": "26.8",
+          "durationSec": 21703,
+          "patchEstimated": true,
+          "player": "Alois",
+          "uploaded": "2026-04-28",
+          "format": "stream",
+          "cam": true,
+          "startSec": 11493,
+          "endSec": 13520,
+          "moments": []
+        },
+        {
+          "videoId": "bD-J0hpNAok",
+          "title": "I'M MVPMAXXING EVERY GAME",
+          "rankClaim": "Master+",
+          "patch": "26.8",
+          "durationSec": 30513,
+          "patchEstimated": true,
+          "player": "Alois",
+          "uploaded": "2026-04-25",
+          "format": "stream",
+          "cam": true,
+          "startSec": 28393,
+          "endSec": 30513,
+          "moments": []
+        },
+        {
+          "videoId": "ggpLYZjmeBU",
+          "title": "BOUNCING BETWEEN 600-700 LP",
+          "rankClaim": "Master+",
+          "patch": "26.7",
+          "durationSec": 18149,
+          "patchEstimated": true,
+          "player": "Alois",
+          "uploaded": "2026-04-07",
+          "format": "stream",
+          "cam": true,
+          "startSec": 2616,
+          "endSec": 4640,
+          "moments": []
+        },
+        {
+          "videoId": "19UMTVqZ_yM",
+          "title": "LOW CORTISOL ADC IS BACK ON THE RIFT",
+          "rankClaim": "Master+",
+          "patch": "26.7",
+          "durationSec": 20459,
+          "patchEstimated": true,
+          "player": "Alois",
+          "uploaded": "2026-04-06",
+          "format": "stream",
+          "cam": true,
+          "startSec": 12400,
+          "endSec": 14898,
+          "moments": []
+        },
+        {
+          "videoId": "GLWSLo1ns8M",
+          "title": "LOSING MY MIND WITH AUTOFILLED SUPPORTS",
+          "rankClaim": "Master+",
+          "patch": "26.6",
+          "durationSec": 16169,
+          "patchEstimated": true,
+          "player": "Alois",
+          "uploaded": "2026-03-28",
+          "format": "stream",
+          "cam": true,
+          "startSec": 4436,
+          "endSec": 5831,
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 21,
+      "lane": "adc",
+      "videos": [
+        {
+          "videoId": "OWdaIOxxdRA",
+          "title": "Smolder vs Miss Fortune ADC - KR Challenger - Patch 16.10 Season 16",
+          "rankClaim": "Challenger",
+          "patch": "26.10",
+          "durationSec": 2146,
+          "region": "KR",
+          "uploaded": "2026-05-18",
+          "moments": []
+        },
+        {
+          "videoId": "9d8u9FcSWnw",
+          "title": "Smolder vs Miss Fortune ADC - KR Challenger - Patch  26.01 Season 16",
+          "rankClaim": "Challenger",
+          "patch": "26.1",
+          "durationSec": 1936,
+          "region": "KR",
+          "uploaded": "2026-01-22",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 22,
+      "lane": "adc",
+      "videos": [
+        {
+          "videoId": "tmc1tDLpktE",
+          "title": "Smolder ADC vs Ashe - KR Master Patch 26.05",
+          "rankClaim": "Master",
+          "patch": "26.5",
+          "durationSec": 1510,
+          "region": "KR",
+          "uploaded": "2026-03-11",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 117,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 248,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 264,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 432,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 512,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 744,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 759,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 885,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 973,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1179,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1257,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1346,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1379,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1392,
+              "label": "Take down The Inhibitor"
+            },
+            {
+              "atSec": 1426,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1467,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1484,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1499,
+              "label": "End credit"
+            }
+          ]
+        },
+        {
+          "videoId": "HgMQExS5Rew",
+          "title": "Smolder vs Ashe [ ADC ] Lol Korea Master Patch 25.22 ✅",
+          "rankClaim": "Master",
+          "patch": "25.22",
+          "durationSec": 1423,
+          "region": "KR",
+          "uploaded": "2025-11-12",
+          "moments": []
+        },
+        {
+          "videoId": "cm2LjnBbhvs",
+          "title": "Smolder ADC vs Ashe - KR Master Patch 25.20",
+          "rankClaim": "Master",
+          "patch": "25.20",
+          "durationSec": 1908,
+          "region": "KR",
+          "uploaded": "2025-10-15",
+          "moments": []
+        },
+        {
+          "videoId": "Y1wRKiyJMqw",
+          "title": "Smolder ADC vs Ashe - KR Master Patch 25.19",
+          "rankClaim": "Master",
+          "patch": "25.19",
+          "durationSec": 1700,
+          "region": "KR",
+          "uploaded": "2025-10-01",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 22,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "fzap4Ke6Ufo",
+          "title": "MY TIME IS RUNNING OUT!",
+          "rankClaim": "Master+",
+          "patch": "26.8",
+          "durationSec": 22136,
+          "patchEstimated": true,
+          "player": "Alois",
+          "uploaded": "2026-04-27",
+          "format": "stream",
+          "cam": true,
+          "startSec": 1659,
+          "endSec": 4189,
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 22,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "EfoELCLM5_c",
+          "title": "GRANDMASTER IS WITHIN MY GRASP",
+          "rankClaim": "Grandmaster",
+          "patch": "26.9",
+          "durationSec": 27392,
+          "patchEstimated": true,
+          "player": "Alois",
+          "uploaded": "2026-04-29",
+          "format": "stream",
+          "cam": true,
+          "startSec": 20898,
+          "endSec": 23032,
+          "moments": []
+        },
+        {
+          "videoId": "bD-J0hpNAok",
+          "title": "I'M MVPMAXXING EVERY GAME",
+          "rankClaim": "Master+",
+          "patch": "26.8",
+          "durationSec": 30513,
+          "patchEstimated": true,
+          "player": "Alois",
+          "uploaded": "2026-04-25",
+          "format": "stream",
+          "cam": true,
+          "startSec": 10514,
+          "endSec": 12255,
+          "moments": []
+        },
+        {
+          "videoId": "bD-J0hpNAok",
+          "title": "I'M MVPMAXXING EVERY GAME",
+          "rankClaim": "Master+",
+          "patch": "26.8",
+          "durationSec": 30513,
+          "patchEstimated": true,
+          "player": "Alois",
+          "uploaded": "2026-04-25",
+          "format": "stream",
+          "cam": true,
+          "startSec": 23595,
+          "endSec": 26266,
+          "moments": []
+        },
+        {
+          "videoId": "HxfqWv-32jo",
+          "title": "CLIMBING TO GRANDMASTER WITH AN 80% WINRATE",
+          "rankClaim": "Grandmaster",
+          "patch": "26.8",
+          "durationSec": 28974,
+          "patchEstimated": true,
+          "player": "Alois",
+          "uploaded": "2026-04-24",
+          "format": "stream",
+          "cam": true,
+          "startSec": 11430,
+          "endSec": 13421,
+          "moments": []
+        },
+        {
+          "videoId": "hhGTomHuJ8c",
+          "title": "I LOVE MY SUPPORTS",
+          "rankClaim": "Master+",
+          "patch": "26.8",
+          "durationSec": 23187,
+          "patchEstimated": true,
+          "player": "Alois",
+          "uploaded": "2026-04-23",
+          "format": "stream",
+          "cam": true,
+          "startSec": 3709,
+          "endSec": 5036,
+          "moments": []
+        },
+        {
+          "videoId": "BuvE9dB-nHw",
+          "title": "THE TWO ADC TITANS I'M ABUSING TO GET CHALLENGER",
+          "rankClaim": "Challenger",
+          "patch": "26.8",
+          "durationSec": 20980,
+          "patchEstimated": true,
+          "player": "Alois",
+          "uploaded": "2026-04-22",
+          "format": "stream",
+          "cam": true,
+          "startSec": 4506,
+          "endSec": 6307,
+          "moments": []
+        },
+        {
+          "videoId": "BuvE9dB-nHw",
+          "title": "THE TWO ADC TITANS I'M ABUSING TO GET CHALLENGER",
+          "rankClaim": "Challenger",
+          "patch": "26.8",
+          "durationSec": 20980,
+          "patchEstimated": true,
+          "player": "Alois",
+          "uploaded": "2026-04-22",
+          "format": "stream",
+          "cam": true,
+          "startSec": 8334,
+          "endSec": 9945,
+          "moments": []
+        },
+        {
+          "videoId": "_DuwhIq3wSw",
+          "title": "I'M TAKING CORKI AIRLINES TO ESCAPE MASTERS",
+          "rankClaim": "Master+",
+          "patch": "26.8",
+          "durationSec": 25090,
+          "patchEstimated": true,
+          "player": "Alois",
+          "uploaded": "2026-04-21",
+          "format": "stream",
+          "cam": true,
+          "startSec": 10054,
+          "endSec": 12058,
+          "moments": []
+        },
+        {
+          "videoId": "k84PcCGOlLk",
+          "title": "I'M SMOLDERMAXXING",
+          "rankClaim": "Master+",
+          "patch": "26.8",
+          "durationSec": 28942,
+          "patchEstimated": true,
+          "player": "Alois",
+          "uploaded": "2026-04-16",
+          "format": "stream",
+          "cam": true,
+          "startSec": 2532,
+          "endSec": 4772,
+          "moments": []
+        },
+        {
+          "videoId": "a00VGMGi8Ao",
+          "title": "BEATING THE 600LP HARDSTUCK ALLEGATIONS",
+          "rankClaim": "Master+",
+          "patch": "26.7",
+          "durationSec": 22103,
+          "patchEstimated": true,
+          "player": "Alois",
+          "uploaded": "2026-04-12",
+          "format": "stream",
+          "cam": true,
+          "startSec": 12874,
+          "endSec": 15214,
+          "moments": []
+        },
+        {
+          "videoId": "19UMTVqZ_yM",
+          "title": "LOW CORTISOL ADC IS BACK ON THE RIFT",
+          "rankClaim": "Master+",
+          "patch": "26.7",
+          "durationSec": 20459,
+          "patchEstimated": true,
+          "player": "Alois",
+          "uploaded": "2026-04-06",
+          "format": "stream",
+          "cam": true,
+          "startSec": 55,
+          "endSec": 2735,
+          "moments": []
+        },
+        {
+          "videoId": "iCB_gEWxkHE",
+          "title": "ADC DAY 10 AND TRYING NOT TO GO INSANE",
+          "rankClaim": "Master+",
+          "patch": "26.6",
+          "durationSec": 22845,
+          "patchEstimated": true,
+          "player": "Alois",
+          "uploaded": "2026-03-21",
+          "format": "stream",
+          "cam": true,
+          "startSec": 150,
+          "endSec": 2196,
+          "moments": []
+        },
+        {
+          "videoId": "wPcRmohyjJM",
+          "title": "DAY 3 OF ADC AND I LOST MY MIND",
+          "rankClaim": "Master+",
+          "patch": "26.5",
+          "durationSec": 24436,
+          "patchEstimated": true,
+          "player": "Alois",
+          "uploaded": "2026-03-12",
+          "format": "stream",
+          "cam": true,
+          "startSec": 2260,
+          "endSec": 4840,
+          "moments": []
+        },
+        {
+          "videoId": "H3eW6lB1tHE",
+          "title": "FULL DAY OF LEARNING HOW TO PLAY AD CARRY",
+          "rankClaim": "Master+",
+          "patch": "26.5",
+          "durationSec": 28690,
+          "patchEstimated": true,
+          "player": "Alois",
+          "uploaded": "2026-03-10",
+          "format": "stream",
+          "cam": true,
+          "startSec": 14091,
+          "endSec": 15992,
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 29,
+      "lane": "adc",
+      "videos": [
+        {
+          "videoId": "45d_v7zInZk",
+          "title": "Smolder ADC vs Twitch - KR Grandmaster Patch 25.23",
+          "rankClaim": "Grandmaster",
+          "patch": "25.23",
+          "durationSec": 1679,
+          "region": "KR",
+          "uploaded": "2025-11-25",
+          "moments": []
+        },
+        {
+          "videoId": "CORuf0_JLPM",
+          "title": "Smolder vs Twitch ADC - KR Challenger - Patch 25.11 Season 15",
+          "rankClaim": "Challenger",
+          "patch": "25.11",
+          "durationSec": 1921,
+          "region": "KR",
+          "uploaded": "2025-06-09",
+          "moments": []
+        },
+        {
+          "videoId": "qrT8soSEfvk",
+          "title": "Smolder ADC vs Twitch - KR Challenger Patch 25.11",
+          "rankClaim": "Challenger",
+          "patch": "25.11",
+          "durationSec": 1503,
+          "region": "KR",
+          "uploaded": "2025-06-01",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 29,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "P-z3NfSBMBA",
+          "title": "CLIMBING THROUGH THE DIAMOND LADDER ON AD CARRY",
+          "rankClaim": "Master+",
+          "patch": "26.5",
+          "durationSec": 27755,
+          "patchEstimated": true,
+          "player": "Alois",
+          "uploaded": "2026-03-16",
+          "format": "stream",
+          "cam": true,
+          "startSec": 16801,
+          "endSec": 18715,
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 30,
+      "lane": "adc",
+      "videos": [
+        {
+          "videoId": "gzKkV91Y3TQ",
+          "title": "Smolder ADC vs Karthus - EUW Challenger Patch 26.04",
+          "rankClaim": "Challenger",
+          "patch": "26.4",
+          "durationSec": 1770,
+          "region": "EUW",
+          "uploaded": "2026-02-24",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 174,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 338,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 411,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 517,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 862,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 879,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 939,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1015,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1142,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1217,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1298,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1363,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1501,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1523,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1542,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1553,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1659,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1676,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1689,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1759,
+              "label": "End credit"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 30,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "hhGTomHuJ8c",
+          "title": "I LOVE MY SUPPORTS",
+          "rankClaim": "Master+",
+          "patch": "26.8",
+          "durationSec": 23187,
+          "patchEstimated": true,
+          "player": "Alois",
+          "uploaded": "2026-04-23",
+          "format": "stream",
+          "cam": true,
+          "startSec": 9724,
+          "endSec": 12186,
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 34,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "NrizUONGEc0",
+          "title": "Smolder Mid vs Anivia - EUW Grandmaster Patch 26.06",
+          "rankClaim": "Grandmaster",
+          "patch": "26.6",
+          "durationSec": 1894,
+          "region": "EUW",
+          "uploaded": "2026-04-01",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 38,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "8mFc3blj90k",
+          "title": "ADC IS A ROLLERCOASTER",
+          "rankClaim": "Master+",
+          "patch": "26.8",
+          "durationSec": 21703,
+          "patchEstimated": true,
+          "player": "Alois",
+          "uploaded": "2026-04-28",
+          "format": "stream",
+          "cam": true,
+          "startSec": 19570,
+          "endSec": 21703,
+          "moments": []
+        },
+        {
+          "videoId": "aUb1C_YgsNc",
+          "title": "Smolder Mid vs Kassadin - EUNE Challenger Patch 26.08",
+          "rankClaim": "Challenger",
+          "patch": "26.8",
+          "durationSec": 1406,
+          "region": "EUNE",
+          "uploaded": "2026-04-26",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 39,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "yYAoZPi1uOs",
+          "title": "Smolder Mid vs Irelia - KR Master Patch 26.19",
+          "rankClaim": "Master",
+          "patch": "26.19",
+          "durationSec": 1879,
+          "region": "KR",
+          "uploaded": "2026-10-09",
+          "result": "W",
+          "moments": [
+            {
+              "atSec": 201,
+              "label": "First Blood — Elise kills Irelia",
+              "kind": "kill"
+            },
+            {
+              "atSec": 383,
+              "label": "Smolder takes down Irelia"
+            },
+            {
+              "atSec": 532,
+              "label": "Red takes 1st Dragon (Cloud)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 770,
+              "label": "Elise picks off Irelia"
+            },
+            {
+              "atSec": 847,
+              "label": "Team fight (3 kills)",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 892,
+              "label": "Blue takes 1st Dragon (Hextech)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1124,
+              "label": "Elise picks off Irelia"
+            },
+            {
+              "atSec": 1217,
+              "label": "Smolder eliminates Irelia"
+            },
+            {
+              "atSec": 1231,
+              "label": "Smolder Triple Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1260,
+              "label": "Blue takes 2nd Dragon (Infernal)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1332,
+              "label": "Smolder takes down Alistar"
+            },
+            {
+              "atSec": 1371,
+              "label": "Smolder takes down Aurora"
+            },
+            {
+              "atSec": 1579,
+              "label": "Team fight (3 kills)",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1622,
+              "label": "Blue takes 3rd Dragon (Infernal)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1686,
+              "label": "Blue takes Baron",
+              "kind": "baron"
+            },
+            {
+              "atSec": 1784,
+              "label": "Smolder eliminates Irelia"
+            },
+            {
+              "atSec": 1822,
+              "label": "Jhin picks off Aurora"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 42,
+      "lane": "adc",
+      "videos": [
+        {
+          "videoId": "8mwDiZgv25E",
+          "title": "Smolder ADC vs Corki - KR Master Patch 25.05",
+          "rankClaim": "Master",
+          "patch": "25.5",
+          "durationSec": 1884,
+          "region": "KR",
+          "uploaded": "2025-03-11",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 42,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "EfoELCLM5_c",
+          "title": "GRANDMASTER IS WITHIN MY GRASP",
+          "rankClaim": "Grandmaster",
+          "patch": "26.9",
+          "durationSec": 27392,
+          "patchEstimated": true,
+          "player": "Alois",
+          "uploaded": "2026-04-29",
+          "format": "stream",
+          "cam": true,
+          "startSec": 2655,
+          "endSec": 4359,
+          "moments": []
+        },
+        {
+          "videoId": "EfoELCLM5_c",
+          "title": "GRANDMASTER IS WITHIN MY GRASP",
+          "rankClaim": "Grandmaster",
+          "patch": "26.9",
+          "durationSec": 27392,
+          "patchEstimated": true,
+          "player": "Alois",
+          "uploaded": "2026-04-29",
+          "format": "stream",
+          "cam": true,
+          "startSec": 13756,
+          "endSec": 15484,
+          "moments": []
+        },
+        {
+          "videoId": "hhGTomHuJ8c",
+          "title": "I LOVE MY SUPPORTS",
+          "rankClaim": "Master+",
+          "patch": "26.8",
+          "durationSec": 23187,
+          "patchEstimated": true,
+          "player": "Alois",
+          "uploaded": "2026-04-23",
+          "format": "stream",
+          "cam": true,
+          "startSec": 12186,
+          "endSec": 14653,
+          "moments": []
+        },
+        {
+          "videoId": "BuvE9dB-nHw",
+          "title": "THE TWO ADC TITANS I'M ABUSING TO GET CHALLENGER",
+          "rankClaim": "Challenger",
+          "patch": "26.8",
+          "durationSec": 20980,
+          "patchEstimated": true,
+          "player": "Alois",
+          "uploaded": "2026-04-22",
+          "format": "stream",
+          "cam": true,
+          "startSec": 18840,
+          "endSec": 20980,
+          "moments": []
+        },
+        {
+          "videoId": "CSuXOXGqZiQ",
+          "title": "I LOST MY MIND BUT WINNERSQ SAVES THE DAY",
+          "rankClaim": "Master+",
+          "patch": "26.7",
+          "durationSec": 28210,
+          "patchEstimated": true,
+          "player": "Alois",
+          "uploaded": "2026-04-09",
+          "format": "stream",
+          "cam": true,
+          "startSec": 70,
+          "endSec": 2907,
+          "moments": []
+        },
+        {
+          "videoId": "19UMTVqZ_yM",
+          "title": "LOW CORTISOL ADC IS BACK ON THE RIFT",
+          "rankClaim": "Master+",
+          "patch": "26.7",
+          "durationSec": 20459,
+          "patchEstimated": true,
+          "player": "Alois",
+          "uploaded": "2026-04-06",
+          "format": "stream",
+          "cam": true,
+          "startSec": 2735,
+          "endSec": 4897,
+          "moments": []
+        },
+        {
+          "videoId": "iCB_gEWxkHE",
+          "title": "ADC DAY 10 AND TRYING NOT TO GO INSANE",
+          "rankClaim": "Master+",
+          "patch": "26.6",
+          "durationSec": 22845,
+          "patchEstimated": true,
+          "player": "Alois",
+          "uploaded": "2026-03-21",
+          "format": "stream",
+          "cam": true,
+          "startSec": 3791,
+          "endSec": 4977,
+          "moments": []
+        },
+        {
+          "videoId": "dA26IqHlFak",
+          "title": "SPEEDRUNNING THROUGH THE LADDER AS ADC",
+          "rankClaim": "Master+",
+          "patch": "26.5",
+          "durationSec": 29278,
+          "patchEstimated": true,
+          "player": "Alois",
+          "uploaded": "2026-03-13",
+          "format": "stream",
+          "cam": true,
+          "startSec": 2415,
+          "endSec": 3322,
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 45,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "bD-J0hpNAok",
+          "title": "I'M MVPMAXXING EVERY GAME",
+          "rankClaim": "Master+",
+          "patch": "26.8",
+          "durationSec": 30513,
+          "patchEstimated": true,
+          "player": "Alois",
+          "uploaded": "2026-04-25",
+          "format": "stream",
+          "cam": true,
+          "startSec": 30,
+          "endSec": 1837,
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 50,
+      "lane": "adc",
+      "videos": [
+        {
+          "videoId": "N-u-W_8Wi-4",
+          "title": "(Rat IRL) Smolder ADC vs Swain - EUW Grandmaster Patch 26.21",
+          "rankClaim": "Grandmaster",
+          "patch": "26.21",
+          "durationSec": 1469,
+          "region": "EUW",
+          "player": "Rat IRL",
+          "uploaded": "2026-10-28",
+          "result": "W",
+          "moments": [
+            {
+              "atSec": 172,
+              "label": "Milio picks off Swain"
+            },
+            {
+              "atSec": 292,
+              "label": "Blue takes 1st Dragon (Cloud)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 616,
+              "label": "Red takes 1st Dragon (Mountain)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 745,
+              "label": "Dr. Mundo kills Graves",
+              "kind": "kill"
+            },
+            {
+              "atSec": 804,
+              "label": "Smolder solo kills Urgot",
+              "kind": "kill"
+            },
+            {
+              "atSec": 954,
+              "label": "Red takes 2nd Dragon (Infernal)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1201,
+              "label": "Team fight (3 kills)",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1238,
+              "label": "Red takes Baron",
+              "kind": "baron"
+            },
+            {
+              "atSec": 1286,
+              "label": "Blue takes 2nd Dragon (Infernal)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1308,
+              "label": "Dr. Mundo takes down Vex"
+            },
+            {
+              "atSec": 1411,
+              "label": "Team fight (3 kills)",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1435,
+              "label": "Mid Inhibitor falls (Blue)"
+            }
+          ]
+        },
+        {
+          "videoId": "KFZluR_0zZc",
+          "title": "1600LP Smolder \"Jzad\" Late Game He Become a MONSTER - Engsub ( Smolder vs Swain )",
+          "rankClaim": "Master+",
+          "patch": "26.10",
+          "durationSec": 1177,
+          "patchEstimated": true,
+          "uploaded": "2026-05-22",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "eIqZHvro74I",
+          "title": "Smolder ADC vs Swain - EUW Challenger Patch 26.08",
+          "rankClaim": "Challenger",
+          "patch": "26.8",
+          "durationSec": 1695,
+          "region": "EUW",
+          "uploaded": "2026-04-19",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 51,
+      "lane": "adc",
+      "videos": [
+        {
+          "videoId": "T6cNS1oxVBQ",
+          "title": "Smolder vs Caitlyn [ ADC ] Korea Master 1054 LP | Patch 26.12",
+          "rankClaim": "Master",
+          "patch": "26.12",
+          "durationSec": 1807,
+          "region": "KR",
+          "uploaded": "2026-06-15",
+          "moments": []
+        },
+        {
+          "videoId": "0evcLdb_uSM",
+          "title": "(TES Creme) Smolder ADC vs Caitlyn - KR Grandmaster Patch 26.10",
+          "rankClaim": "Grandmaster",
+          "patch": "26.10",
+          "durationSec": 1742,
+          "region": "KR",
+          "player": "Creme",
+          "team": "TES",
+          "uploaded": "2026-05-25",
+          "moments": []
+        },
+        {
+          "videoId": "d8zF2Wuhykc",
+          "title": "Smolder vs Caitlyn ADC - EUW Grandmaster - Patch 16.08 Season 16",
+          "rankClaim": "Grandmaster",
+          "patch": "26.8",
+          "durationSec": 2881,
+          "region": "EUW",
+          "uploaded": "2026-04-25",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 51,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "dA26IqHlFak",
+          "title": "SPEEDRUNNING THROUGH THE LADDER AS ADC",
+          "rankClaim": "Master+",
+          "patch": "26.5",
+          "durationSec": 29278,
+          "patchEstimated": true,
+          "player": "Alois",
+          "uploaded": "2026-03-13",
+          "format": "stream",
+          "cam": true,
+          "startSec": 3322,
+          "endSec": 5160,
+          "moments": []
+        },
+        {
+          "videoId": "dA26IqHlFak",
+          "title": "SPEEDRUNNING THROUGH THE LADDER AS ADC",
+          "rankClaim": "Master+",
+          "patch": "26.5",
+          "durationSec": 29278,
+          "patchEstimated": true,
+          "player": "Alois",
+          "uploaded": "2026-03-13",
+          "format": "stream",
+          "cam": true,
+          "startSec": 22090,
+          "endSec": 25075,
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 67,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "P-z3NfSBMBA",
+          "title": "CLIMBING THROUGH THE DIAMOND LADDER ON AD CARRY",
+          "rankClaim": "Master+",
+          "patch": "26.5",
+          "durationSec": 27755,
+          "patchEstimated": true,
+          "player": "Alois",
+          "uploaded": "2026-03-16",
+          "format": "stream",
+          "cam": true,
+          "startSec": 24,
+          "endSec": 1605,
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 69,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "ZI7fd5pTl_s",
+          "title": "SMOLDER HUBRIS MAXXING",
+          "rankClaim": "Master+",
+          "patch": "26.6",
+          "durationSec": 15770,
+          "patchEstimated": true,
+          "player": "Alois",
+          "uploaded": "2026-03-26",
+          "format": "stream",
+          "cam": true,
+          "startSec": 6792,
+          "endSec": 9237,
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 81,
+      "lane": "adc",
+      "videos": [
+        {
+          "videoId": "K1dxvSyBQWs",
+          "title": "Smolder ADC vs Ezreal - KR Master Patch 26.15",
+          "rankClaim": "Master",
+          "patch": "26.15",
+          "durationSec": 1582,
+          "region": "KR",
+          "uploaded": "2026-08-12",
+          "moments": []
+        },
+        {
+          "videoId": "N505H0xMoKM",
+          "title": "(Aeon) Smolder ADC vs Ezreal (GLSH Dream) - EUW Grandmaster Patch 26.14",
+          "rankClaim": "Grandmaster",
+          "patch": "26.14",
+          "durationSec": 1568,
+          "region": "EUW",
+          "player": "Aeon",
+          "uploaded": "2026-07-22",
+          "moments": []
+        },
+        {
+          "videoId": "2CLIHJTLxu4",
+          "title": "Smolder ADC vs Ezreal (OLE Flakked) - EUW Challenger Patch 26.13",
+          "rankClaim": "Challenger",
+          "patch": "26.13",
+          "durationSec": 1878,
+          "region": "EUW",
+          "uploaded": "2026-07-02",
+          "moments": []
+        },
+        {
+          "videoId": "JHRiJOU934U",
+          "title": "Smolder vs Ezreal ADC - KR Challenger - Patch 16.10 Season 16",
+          "rankClaim": "Challenger",
+          "patch": "26.10",
+          "durationSec": 1681,
+          "region": "KR",
+          "uploaded": "2026-05-20",
+          "moments": []
+        },
+        {
+          "videoId": "uSJPrvIE6as",
+          "title": "Smolder vs Ezreal ADC - KR Challenger - Patch 25.23 Season 15",
+          "rankClaim": "Challenger",
+          "patch": "25.23",
+          "durationSec": 1951,
+          "region": "KR",
+          "uploaded": "2025-11-28",
+          "moments": []
+        },
+        {
+          "videoId": "PRg68IiPAYY",
+          "title": "DK Smash Smolder vs Ezreal [ ADC ] Korea Challenger 1895 LP | Patch 25.23",
+          "rankClaim": "Challenger",
+          "patch": "25.23",
+          "durationSec": 1707,
+          "region": "KR",
+          "player": "Smash",
+          "team": "DK",
+          "uploaded": "2025-11-26",
+          "moments": []
+        },
+        {
+          "videoId": "nTSoktgw0nc",
+          "title": "Smolder vs Ezreal ADC - KR Challenger - Patch 25.11 Season 15",
+          "rankClaim": "Challenger",
+          "patch": "25.11",
+          "durationSec": 1531,
+          "region": "KR",
+          "uploaded": "2025-06-10",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 81,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "EfoELCLM5_c",
+          "title": "GRANDMASTER IS WITHIN MY GRASP",
+          "rankClaim": "Grandmaster",
+          "patch": "26.9",
+          "durationSec": 27392,
+          "patchEstimated": true,
+          "player": "Alois",
+          "uploaded": "2026-04-29",
+          "format": "stream",
+          "cam": true,
+          "startSec": 9199,
+          "endSec": 11760,
+          "moments": []
+        },
+        {
+          "videoId": "8mFc3blj90k",
+          "title": "ADC IS A ROLLERCOASTER",
+          "rankClaim": "Master+",
+          "patch": "26.8",
+          "durationSec": 21703,
+          "patchEstimated": true,
+          "player": "Alois",
+          "uploaded": "2026-04-28",
+          "format": "stream",
+          "cam": true,
+          "startSec": 3682,
+          "endSec": 6126,
+          "moments": []
+        },
+        {
+          "videoId": "8mFc3blj90k",
+          "title": "ADC IS A ROLLERCOASTER",
+          "rankClaim": "Master+",
+          "patch": "26.8",
+          "durationSec": 21703,
+          "patchEstimated": true,
+          "player": "Alois",
+          "uploaded": "2026-04-28",
+          "format": "stream",
+          "cam": true,
+          "startSec": 13520,
+          "endSec": 15959,
+          "moments": []
+        },
+        {
+          "videoId": "fzap4Ke6Ufo",
+          "title": "MY TIME IS RUNNING OUT!",
+          "rankClaim": "Master+",
+          "patch": "26.8",
+          "durationSec": 22136,
+          "patchEstimated": true,
+          "player": "Alois",
+          "uploaded": "2026-04-27",
+          "format": "stream",
+          "cam": true,
+          "startSec": 7271,
+          "endSec": 9628,
+          "moments": []
+        },
+        {
+          "videoId": "bD-J0hpNAok",
+          "title": "I'M MVPMAXXING EVERY GAME",
+          "rankClaim": "Master+",
+          "patch": "26.8",
+          "durationSec": 30513,
+          "patchEstimated": true,
+          "player": "Alois",
+          "uploaded": "2026-04-25",
+          "format": "stream",
+          "cam": true,
+          "startSec": 4450,
+          "endSec": 6279,
+          "moments": []
+        },
+        {
+          "videoId": "bD-J0hpNAok",
+          "title": "I'M MVPMAXXING EVERY GAME",
+          "rankClaim": "Master+",
+          "patch": "26.8",
+          "durationSec": 30513,
+          "patchEstimated": true,
+          "player": "Alois",
+          "uploaded": "2026-04-25",
+          "format": "stream",
+          "cam": true,
+          "startSec": 20923,
+          "endSec": 23595,
+          "moments": []
+        },
+        {
+          "videoId": "BuvE9dB-nHw",
+          "title": "THE TWO ADC TITANS I'M ABUSING TO GET CHALLENGER",
+          "rankClaim": "Challenger",
+          "patch": "26.8",
+          "durationSec": 20980,
+          "patchEstimated": true,
+          "player": "Alois",
+          "uploaded": "2026-04-22",
+          "format": "stream",
+          "cam": true,
+          "startSec": 16663,
+          "endSec": 18840,
+          "moments": []
+        },
+        {
+          "videoId": "DGto4k3vx5w",
+          "title": "NO ONE CAN STOP THE LOW CORTISOL ADC CLIMB",
+          "rankClaim": "Master+",
+          "patch": "26.8",
+          "durationSec": 22951,
+          "patchEstimated": true,
+          "player": "Alois",
+          "uploaded": "2026-04-21",
+          "format": "stream",
+          "cam": true,
+          "startSec": 3959,
+          "endSec": 6199,
+          "moments": []
+        },
+        {
+          "videoId": "DGto4k3vx5w",
+          "title": "NO ONE CAN STOP THE LOW CORTISOL ADC CLIMB",
+          "rankClaim": "Master+",
+          "patch": "26.8",
+          "durationSec": 22951,
+          "patchEstimated": true,
+          "player": "Alois",
+          "uploaded": "2026-04-21",
+          "format": "stream",
+          "cam": true,
+          "startSec": 12022,
+          "endSec": 13902,
+          "moments": []
+        },
+        {
+          "videoId": "oBJg9jxjtVU",
+          "title": "FIGHTING FOR MY LIFE ON ADC",
+          "rankClaim": "Master+",
+          "patch": "26.8",
+          "durationSec": 12406,
+          "patchEstimated": true,
+          "player": "Alois",
+          "uploaded": "2026-04-19",
+          "format": "stream",
+          "cam": true,
+          "startSec": 2030,
+          "endSec": 4345,
+          "moments": []
+        },
+        {
+          "videoId": "k84PcCGOlLk",
+          "title": "I'M SMOLDERMAXXING",
+          "rankClaim": "Master+",
+          "patch": "26.8",
+          "durationSec": 28942,
+          "patchEstimated": true,
+          "player": "Alois",
+          "uploaded": "2026-04-16",
+          "format": "stream",
+          "cam": true,
+          "startSec": 4772,
+          "endSec": 6824,
+          "moments": []
+        },
+        {
+          "videoId": "k84PcCGOlLk",
+          "title": "I'M SMOLDERMAXXING",
+          "rankClaim": "Master+",
+          "patch": "26.8",
+          "durationSec": 28942,
+          "patchEstimated": true,
+          "player": "Alois",
+          "uploaded": "2026-04-16",
+          "format": "stream",
+          "cam": true,
+          "startSec": 13307,
+          "endSec": 15383,
+          "moments": []
+        },
+        {
+          "videoId": "k84PcCGOlLk",
+          "title": "I'M SMOLDERMAXXING",
+          "rankClaim": "Master+",
+          "patch": "26.8",
+          "durationSec": 28942,
+          "patchEstimated": true,
+          "player": "Alois",
+          "uploaded": "2026-04-16",
+          "format": "stream",
+          "cam": true,
+          "startSec": 15383,
+          "endSec": 17525,
+          "moments": []
+        },
+        {
+          "videoId": "ggpLYZjmeBU",
+          "title": "BOUNCING BETWEEN 600-700 LP",
+          "rankClaim": "Master+",
+          "patch": "26.7",
+          "durationSec": 18149,
+          "patchEstimated": true,
+          "player": "Alois",
+          "uploaded": "2026-04-07",
+          "format": "stream",
+          "cam": true,
+          "startSec": 13480,
+          "endSec": 16200,
+          "moments": []
+        },
+        {
+          "videoId": "GLWSLo1ns8M",
+          "title": "LOSING MY MIND WITH AUTOFILLED SUPPORTS",
+          "rankClaim": "Master+",
+          "patch": "26.6",
+          "durationSec": 16169,
+          "patchEstimated": true,
+          "player": "Alois",
+          "uploaded": "2026-03-28",
+          "format": "stream",
+          "cam": true,
+          "startSec": 5831,
+          "endSec": 8270,
+          "moments": []
+        },
+        {
+          "videoId": "ZI7fd5pTl_s",
+          "title": "SMOLDER HUBRIS MAXXING",
+          "rankClaim": "Master+",
+          "patch": "26.6",
+          "durationSec": 15770,
+          "patchEstimated": true,
+          "player": "Alois",
+          "uploaded": "2026-03-26",
+          "format": "stream",
+          "cam": true,
+          "startSec": 13528,
+          "endSec": 15770,
+          "moments": []
+        },
+        {
+          "videoId": "YGOF0TDVoL4",
+          "title": "WE HIT MASTER WITH AD CARRY ONLY",
+          "rankClaim": "Master",
+          "patch": "26.5",
+          "durationSec": 26838,
+          "patchEstimated": true,
+          "player": "Alois",
+          "uploaded": "2026-03-17",
+          "format": "stream",
+          "cam": true,
+          "startSec": 72,
+          "endSec": 2076,
+          "moments": []
+        },
+        {
+          "videoId": "YGOF0TDVoL4",
+          "title": "WE HIT MASTER WITH AD CARRY ONLY",
+          "rankClaim": "Master",
+          "patch": "26.5",
+          "durationSec": 26838,
+          "patchEstimated": true,
+          "player": "Alois",
+          "uploaded": "2026-03-17",
+          "format": "stream",
+          "cam": true,
+          "startSec": 20178,
+          "endSec": 22255,
+          "moments": []
+        },
+        {
+          "videoId": "bkcAJBrMjKk",
+          "title": "CLIMBING THROUGH EMERALD ELO AS AN ADC MAIN",
+          "rankClaim": "Master+",
+          "patch": "26.5",
+          "durationSec": 30508,
+          "patchEstimated": true,
+          "player": "Alois",
+          "uploaded": "2026-03-11",
+          "format": "stream",
+          "cam": true,
+          "startSec": 7825,
+          "endSec": 10119,
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 83,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "B3sCbh1oUh4",
+          "title": "LEARNING HOW TO PLAY NAAFIRI DRUTUTT EDITION",
+          "rankClaim": "Master+",
+          "patch": "26.9",
+          "durationSec": 22602,
+          "patchEstimated": true,
+          "player": "Alois",
+          "uploaded": "2026-05-06",
+          "format": "stream",
+          "cam": true,
+          "startSec": 2732,
+          "endSec": 4830,
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 86,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "zlogAMHXX2Y",
+          "title": "Smolder Mid vs Garen - KR Master Patch 25.13",
+          "rankClaim": "Master",
+          "patch": "25.13",
+          "durationSec": 1990,
+          "region": "KR",
+          "uploaded": "2025-07-04",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 86,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "25KkmsNUOz0",
+          "title": "Smolder Top vs Garen - NA Grandmaster Patch 26.11",
+          "rankClaim": "Grandmaster",
+          "patch": "26.11",
+          "durationSec": 1527,
+          "region": "NA",
+          "uploaded": "2026-06-11",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 90,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "u570o5MzZLA",
+          "title": "Smolder Mid vs Malzahar - EUW Master Patch 26.18",
+          "rankClaim": "Master",
+          "patch": "26.18",
+          "durationSec": 1892,
+          "region": "EUW",
+          "uploaded": "2026-09-24",
+          "moments": []
+        },
+        {
+          "videoId": "gYLQycDTzfk",
+          "title": "(Kurama Cat) Smolder Mid vs Malzahar - EUW Challenger Patch 26.13",
+          "rankClaim": "Challenger",
+          "patch": "26.13",
+          "durationSec": 1708,
+          "region": "EUW",
+          "player": "Kurama Cat",
+          "uploaded": "2026-07-08",
+          "moments": []
+        },
+        {
+          "videoId": "ncykKIsF1vY",
+          "title": "Smolder Mid vs Malzahar - EUW Grandmaster Patch 26.01",
+          "rankClaim": "Grandmaster",
+          "patch": "26.1",
+          "durationSec": 1573,
+          "region": "EUW",
+          "uploaded": "2026-01-19",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 90,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "EfoELCLM5_c",
+          "title": "GRANDMASTER IS WITHIN MY GRASP",
+          "rankClaim": "Grandmaster",
+          "patch": "26.9",
+          "durationSec": 27392,
+          "patchEstimated": true,
+          "player": "Alois",
+          "uploaded": "2026-04-29",
+          "format": "stream",
+          "cam": true,
+          "startSec": 16843,
+          "endSec": 18538,
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 91,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "EY0Dfh-zhz8",
+          "title": "Smolder Mid vs Talon - KR Master Patch 25.24",
+          "rankClaim": "Master",
+          "patch": "25.24",
+          "durationSec": 1591,
+          "region": "KR",
+          "uploaded": "2025-12-15",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 137,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 153,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 464,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 594,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 825,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 912,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 933,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 950,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1017,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1131,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1151,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1229,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1322,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1342,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1404,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1426,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1440,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1501,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1539,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1580,
+              "label": "End credit"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 96,
+      "lane": "adc",
+      "videos": [
+        {
+          "videoId": "7zJWLkCRcVI",
+          "title": "Smolder ADC vs Kog'Maw - TW Challenger Patch 26.07",
+          "rankClaim": "Challenger",
+          "patch": "26.7",
+          "durationSec": 1788,
+          "uploaded": "2026-04-08",
+          "moments": []
+        },
+        {
+          "videoId": "NY5FedJT6fk",
+          "title": "Smolder vs Kog'Maw ADC - KR Challenger - Patch 25.22 Season 15",
+          "rankClaim": "Challenger",
+          "patch": "25.22",
+          "durationSec": 1831,
+          "region": "KR",
+          "uploaded": "2025-11-18",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 96,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "19UMTVqZ_yM",
+          "title": "LOW CORTISOL ADC IS BACK ON THE RIFT",
+          "rankClaim": "Master+",
+          "patch": "26.7",
+          "durationSec": 20459,
+          "patchEstimated": true,
+          "player": "Alois",
+          "uploaded": "2026-04-06",
+          "format": "stream",
+          "cam": true,
+          "startSec": 6550,
+          "endSec": 8851,
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 98,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "EfoELCLM5_c",
+          "title": "GRANDMASTER IS WITHIN MY GRASP",
+          "rankClaim": "Grandmaster",
+          "patch": "26.9",
+          "durationSec": 27392,
+          "patchEstimated": true,
+          "player": "Alois",
+          "uploaded": "2026-04-29",
+          "format": "stream",
+          "cam": true,
+          "startSec": 85,
+          "endSec": 2655,
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 99,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "GLWSLo1ns8M",
+          "title": "LOSING MY MIND WITH AUTOFILLED SUPPORTS",
+          "rankClaim": "Master+",
+          "patch": "26.6",
+          "durationSec": 16169,
+          "patchEstimated": true,
+          "player": "Alois",
+          "uploaded": "2026-03-28",
+          "format": "stream",
+          "cam": true,
+          "startSec": 11815,
+          "endSec": 13965,
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 101,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "z5hj4d86doY",
+          "title": "Smolder Mid vs Xerath - VN Challenger Patch 26.04",
+          "rankClaim": "Challenger",
+          "patch": "26.4",
+          "durationSec": 1540,
+          "uploaded": "2026-03-04",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 101,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "bD-J0hpNAok",
+          "title": "I'M MVPMAXXING EVERY GAME",
+          "rankClaim": "Master+",
+          "patch": "26.8",
+          "durationSec": 30513,
+          "patchEstimated": true,
+          "player": "Alois",
+          "uploaded": "2026-04-25",
+          "format": "stream",
+          "cam": true,
+          "startSec": 13932,
+          "endSec": 16535,
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 103,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "ZMpyrSuMMGA",
+          "title": "Smolder Mid vs Ahri - EUW Grandmaster Patch 25.18",
+          "rankClaim": "Grandmaster",
+          "patch": "25.18",
+          "durationSec": 1908,
+          "region": "EUW",
+          "uploaded": "2025-09-21",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 110,
+      "lane": "adc",
+      "videos": [
+        {
+          "videoId": "WWfez-IGt0c",
+          "title": "Smolder vs Varus [ ADC ] Lol Korea Master Patch 26.2 ✅",
+          "rankClaim": "Master",
+          "patch": "26.2",
+          "durationSec": 1741,
+          "region": "KR",
+          "uploaded": "2026-01-25",
+          "moments": []
+        },
+        {
+          "videoId": "o-jAXtcfr-8",
+          "title": "Smolder vs Varus ADC - KR Challenger - Patch 26.01 Season 16",
+          "rankClaim": "Challenger",
+          "patch": "26.1",
+          "durationSec": 2511,
+          "region": "KR",
+          "uploaded": "2026-01-20",
+          "moments": []
+        },
+        {
+          "videoId": "80BTH88zJNk",
+          "title": "Smolder vs Varus ADC - KR Grandmaster - Patch 25.19 Season 15",
+          "rankClaim": "Grandmaster",
+          "patch": "25.19",
+          "durationSec": 1891,
+          "region": "KR",
+          "uploaded": "2025-09-27",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 110,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "fzap4Ke6Ufo",
+          "title": "MY TIME IS RUNNING OUT!",
+          "rankClaim": "Master+",
+          "patch": "26.8",
+          "durationSec": 22136,
+          "patchEstimated": true,
+          "player": "Alois",
+          "uploaded": "2026-04-27",
+          "format": "stream",
+          "cam": true,
+          "startSec": 13752,
+          "endSec": 16003,
+          "moments": []
+        },
+        {
+          "videoId": "hhGTomHuJ8c",
+          "title": "I LOVE MY SUPPORTS",
+          "rankClaim": "Master+",
+          "patch": "26.8",
+          "durationSec": 23187,
+          "patchEstimated": true,
+          "player": "Alois",
+          "uploaded": "2026-04-23",
+          "format": "stream",
+          "cam": true,
+          "startSec": 5036,
+          "endSec": 7457,
+          "moments": []
+        },
+        {
+          "videoId": "UPZJUxgy5tU",
+          "title": "SMOLDER IS MY WINNING TICKET TO GM",
+          "rankClaim": "Master+",
+          "patch": "26.6",
+          "durationSec": 14217,
+          "patchEstimated": true,
+          "player": "Alois",
+          "uploaded": "2026-03-29",
+          "format": "stream",
+          "cam": true,
+          "startSec": 6546,
+          "endSec": 8500,
+          "moments": []
+        },
+        {
+          "videoId": "UPZJUxgy5tU",
+          "title": "SMOLDER IS MY WINNING TICKET TO GM",
+          "rankClaim": "Master+",
+          "patch": "26.6",
+          "durationSec": 14217,
+          "patchEstimated": true,
+          "player": "Alois",
+          "uploaded": "2026-03-29",
+          "format": "stream",
+          "cam": true,
+          "startSec": 8500,
+          "endSec": 10934,
+          "moments": []
+        },
+        {
+          "videoId": "iCB_gEWxkHE",
+          "title": "ADC DAY 10 AND TRYING NOT TO GO INSANE",
+          "rankClaim": "Master+",
+          "patch": "26.6",
+          "durationSec": 22845,
+          "patchEstimated": true,
+          "player": "Alois",
+          "uploaded": "2026-03-21",
+          "format": "stream",
+          "cam": true,
+          "startSec": 2196,
+          "endSec": 3791,
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 111,
+      "lane": "adc",
+      "videos": [
+        {
+          "videoId": "o0gc35rBUF0",
+          "title": "Smolder ADC vs Nautilus - KR Challenger Patch 26.13",
+          "rankClaim": "Challenger",
+          "patch": "26.13",
+          "durationSec": 1846,
+          "region": "KR",
+          "uploaded": "2026-07-16",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 114,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "B3sCbh1oUh4",
+          "title": "LEARNING HOW TO PLAY NAAFIRI DRUTUTT EDITION",
+          "rankClaim": "Master+",
+          "patch": "26.9",
+          "durationSec": 22602,
+          "patchEstimated": true,
+          "player": "Alois",
+          "uploaded": "2026-05-06",
+          "format": "stream",
+          "cam": true,
+          "startSec": 9352,
+          "endSec": 11659,
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 115,
+      "lane": "adc",
+      "videos": [
+        {
+          "videoId": "e86Od55L8fA",
+          "title": "Smolder ADC vs Ziggs - EUW Master Patch 26.19",
+          "rankClaim": "Master",
+          "patch": "26.19",
+          "durationSec": 1793,
+          "region": "EUW",
+          "uploaded": "2026-09-30",
+          "moments": []
+        },
+        {
+          "videoId": "rySg7kkpGAY",
+          "title": "Smolder vs Ziggs ADC - KR Challenger - Patch 25.19 Season 15",
+          "rankClaim": "Challenger",
+          "patch": "25.19",
+          "durationSec": 2101,
+          "region": "KR",
+          "uploaded": "2025-10-08",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 115,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "bD-J0hpNAok",
+          "title": "I'M MVPMAXXING EVERY GAME",
+          "rankClaim": "Master+",
+          "patch": "26.8",
+          "durationSec": 30513,
+          "patchEstimated": true,
+          "player": "Alois",
+          "uploaded": "2026-04-25",
+          "format": "stream",
+          "cam": true,
+          "startSec": 6279,
+          "endSec": 8709,
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 119,
+      "lane": "adc",
+      "videos": [
+        {
+          "videoId": "f29CLa_spWE",
+          "title": "Smolder ADC vs Draven - NA Master Patch 26.20",
+          "rankClaim": "Master",
+          "patch": "26.20",
+          "durationSec": 1834,
+          "region": "NA",
+          "uploaded": "2026-10-12",
+          "result": "W",
+          "moments": [
+            {
+              "atSec": 136,
+              "label": "First Blood — Smolder kills Draven",
+              "kind": "kill"
+            },
+            {
+              "atSec": 309,
+              "label": "Red takes 1st Dragon (Cloud)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 648,
+              "label": "Red takes 2nd Dragon (Infernal)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1020,
+              "label": "Red takes 3rd Dragon (Hextech)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1031,
+              "label": "Galio takes down Pyke"
+            },
+            {
+              "atSec": 1133,
+              "label": "Smolder takes down Draven"
+            },
+            {
+              "atSec": 1160,
+              "label": "Galio takes down Pyke"
+            },
+            {
+              "atSec": 1274,
+              "label": "Galio takes down Pyke"
+            },
+            {
+              "atSec": 1304,
+              "label": "Smolder kills Nasus",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1338,
+              "label": "Blue takes 1st Dragon (Hextech)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1459,
+              "label": "Jarvan IV kills Pyke",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1542,
+              "label": "Jarvan IV eliminates Draven"
+            },
+            {
+              "atSec": 1593,
+              "label": "Blue takes Baron",
+              "kind": "baron"
+            },
+            {
+              "atSec": 1595,
+              "label": "Smolder picks off Akali"
+            },
+            {
+              "atSec": 1640,
+              "label": "Smolder Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1653,
+              "label": "Blue takes 2nd Dragon (Hextech)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1791,
+              "label": "Galio kills Draven",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1808,
+              "label": "Mid Inhibitor falls (Red)"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 119,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "8mFc3blj90k",
+          "title": "ADC IS A ROLLERCOASTER",
+          "rankClaim": "Master+",
+          "patch": "26.8",
+          "durationSec": 21703,
+          "patchEstimated": true,
+          "player": "Alois",
+          "uploaded": "2026-04-28",
+          "format": "stream",
+          "cam": true,
+          "startSec": 185,
+          "endSec": 1957,
+          "moments": []
+        },
+        {
+          "videoId": "HxfqWv-32jo",
+          "title": "CLIMBING TO GRANDMASTER WITH AN 80% WINRATE",
+          "rankClaim": "Grandmaster",
+          "patch": "26.8",
+          "durationSec": 28974,
+          "patchEstimated": true,
+          "player": "Alois",
+          "uploaded": "2026-04-24",
+          "format": "stream",
+          "cam": true,
+          "startSec": 2250,
+          "endSec": 4410,
+          "moments": []
+        },
+        {
+          "videoId": "HxfqWv-32jo",
+          "title": "CLIMBING TO GRANDMASTER WITH AN 80% WINRATE",
+          "rankClaim": "Grandmaster",
+          "patch": "26.8",
+          "durationSec": 28974,
+          "patchEstimated": true,
+          "player": "Alois",
+          "uploaded": "2026-04-24",
+          "format": "stream",
+          "cam": true,
+          "startSec": 25014,
+          "endSec": 27422,
+          "moments": []
+        },
+        {
+          "videoId": "a00VGMGi8Ao",
+          "title": "BEATING THE 600LP HARDSTUCK ALLEGATIONS",
+          "rankClaim": "Master+",
+          "patch": "26.7",
+          "durationSec": 22103,
+          "patchEstimated": true,
+          "player": "Alois",
+          "uploaded": "2026-04-12",
+          "format": "stream",
+          "cam": true,
+          "startSec": 19872,
+          "endSec": 22103,
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 122,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "B0ICIZanjTY",
+          "title": "Smolder Top vs Darius - KR Master Patch 25.13",
+          "rankClaim": "Master",
+          "patch": "25.13",
+          "durationSec": 1507,
+          "region": "KR",
+          "uploaded": "2025-07-15",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 131,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "ge4QezSl0oo",
+          "title": "Smolder Mid vs Diana - KR Master Patch 25.17",
+          "rankClaim": "Master",
+          "patch": "25.17",
+          "durationSec": 1757,
+          "region": "KR",
+          "uploaded": "2025-09-08",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 134,
+      "lane": "adc",
+      "videos": [
+        {
+          "videoId": "rCecApTdFrg",
+          "title": "Smolder ADC vs Syndra - NA Challenger Patch 26.05",
+          "rankClaim": "Challenger",
+          "patch": "26.5",
+          "durationSec": 1758,
+          "region": "NA",
+          "uploaded": "2026-03-19",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 136,
+      "lane": "adc",
+      "videos": [
+        {
+          "videoId": "kjSyPf2HGnE",
+          "title": "Smolder ADC vs Aurelion Sol - EUW Grandmaster Patch 26.16",
+          "rankClaim": "Grandmaster",
+          "patch": "26.16",
+          "durationSec": 1839,
+          "region": "EUW",
+          "uploaded": "2026-08-21",
+          "moments": []
+        },
+        {
+          "videoId": "z0ZR2XX_M-E",
+          "title": "Smolder ADC vs Aurelion Sol - NA Grandmaster Patch 26.06",
+          "rankClaim": "Grandmaster",
+          "patch": "26.6",
+          "durationSec": 1450,
+          "region": "NA",
+          "uploaded": "2026-03-26",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 136,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "C_KxnFReP1s",
+          "title": "Smolder Mid vs Aurelion Sol - KR Master Patch 25.12",
+          "rankClaim": "Master",
+          "patch": "25.12",
+          "durationSec": 1692,
+          "region": "KR",
+          "uploaded": "2025-06-20",
+          "moments": []
+        },
+        {
+          "videoId": "OdgkCChEV_w",
+          "title": "Smolder Mid vs Aurelion Sol - KR Master Patch 25.08",
+          "rankClaim": "Master",
+          "patch": "25.8",
+          "durationSec": 1973,
+          "region": "KR",
+          "uploaded": "2025-04-28",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 141,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "oBJg9jxjtVU",
+          "title": "FIGHTING FOR MY LIFE ON ADC",
+          "rankClaim": "Master+",
+          "patch": "26.8",
+          "durationSec": 12406,
+          "patchEstimated": true,
+          "player": "Alois",
+          "uploaded": "2026-04-19",
+          "format": "stream",
+          "cam": true,
+          "startSec": 214,
+          "endSec": 2030,
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 142,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "BS6TMiAxdMo",
+          "title": "Smolder Mid vs Zoe - EUW Challenger Patch 25.19",
+          "rankClaim": "Challenger",
+          "patch": "25.19",
+          "durationSec": 1780,
+          "region": "EUW",
+          "uploaded": "2025-10-06",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 145,
+      "lane": "adc",
+      "videos": [
+        {
+          "videoId": "WszZOid5lTw",
+          "title": "Smolder ADC vs Kai'Sa - TW Grandmaster Patch 26.18",
+          "rankClaim": "Grandmaster",
+          "patch": "26.18",
+          "durationSec": 1732,
+          "uploaded": "2026-09-17",
+          "moments": []
+        },
+        {
+          "videoId": "Pm08T961cMc",
+          "title": "Smolder ADC vs Kai'Sa - KR Master Patch 26.02",
+          "rankClaim": "Master",
+          "patch": "26.2",
+          "durationSec": 1511,
+          "region": "KR",
+          "uploaded": "2026-01-27",
+          "moments": []
+        },
+        {
+          "videoId": "xct5mbM09b0",
+          "title": "Smolder ADC vs Kai'Sa - EUW Grandmaster Patch 25.24",
+          "rankClaim": "Grandmaster",
+          "patch": "25.24",
+          "durationSec": 1523,
+          "region": "EUW",
+          "uploaded": "2025-12-23",
+          "moments": []
+        },
+        {
+          "videoId": "_Nk8dHsiP74",
+          "title": "Smolder ADC vs Kai'Sa - KR Grandmaster Patch 25.21",
+          "rankClaim": "Grandmaster",
+          "patch": "25.21",
+          "durationSec": 1929,
+          "region": "KR",
+          "uploaded": "2025-10-28",
+          "moments": []
+        },
+        {
+          "videoId": "7wH1tVk31eE",
+          "title": "Smolder vs Kaisa ADC [ PentaKill ] Korea Master Patch 25.19 ✅",
+          "rankClaim": "Master",
+          "patch": "25.19",
+          "durationSec": 1537,
+          "region": "KR",
+          "player": "PentaKill",
+          "uploaded": "2025-10-03",
+          "moments": []
+        },
+        {
+          "videoId": "OrQ26-WQpnc",
+          "title": "Smolder vs Kai'Sa ADC - KR Challenger - Patch 25.13 Season 15",
+          "rankClaim": "Challenger",
+          "patch": "25.13",
+          "durationSec": 1620,
+          "region": "KR",
+          "uploaded": "2025-07-10",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 145,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "EfoELCLM5_c",
+          "title": "GRANDMASTER IS WITHIN MY GRASP",
+          "rankClaim": "Grandmaster",
+          "patch": "26.9",
+          "durationSec": 27392,
+          "patchEstimated": true,
+          "player": "Alois",
+          "uploaded": "2026-04-29",
+          "format": "stream",
+          "cam": true,
+          "startSec": 4359,
+          "endSec": 7063,
+          "moments": []
+        },
+        {
+          "videoId": "8mFc3blj90k",
+          "title": "ADC IS A ROLLERCOASTER",
+          "rankClaim": "Master+",
+          "patch": "26.8",
+          "durationSec": 21703,
+          "patchEstimated": true,
+          "player": "Alois",
+          "uploaded": "2026-04-28",
+          "format": "stream",
+          "cam": true,
+          "startSec": 9362,
+          "endSec": 11493,
+          "moments": []
+        },
+        {
+          "videoId": "fzap4Ke6Ufo",
+          "title": "MY TIME IS RUNNING OUT!",
+          "rankClaim": "Master+",
+          "patch": "26.8",
+          "durationSec": 22136,
+          "patchEstimated": true,
+          "player": "Alois",
+          "uploaded": "2026-04-27",
+          "format": "stream",
+          "cam": true,
+          "startSec": 17990,
+          "endSec": 19904,
+          "moments": []
+        },
+        {
+          "videoId": "bD-J0hpNAok",
+          "title": "I'M MVPMAXXING EVERY GAME",
+          "rankClaim": "Master+",
+          "patch": "26.8",
+          "durationSec": 30513,
+          "patchEstimated": true,
+          "player": "Alois",
+          "uploaded": "2026-04-25",
+          "format": "stream",
+          "cam": true,
+          "startSec": 26266,
+          "endSec": 28393,
+          "moments": []
+        },
+        {
+          "videoId": "HxfqWv-32jo",
+          "title": "CLIMBING TO GRANDMASTER WITH AN 80% WINRATE",
+          "rankClaim": "Grandmaster",
+          "patch": "26.8",
+          "durationSec": 28974,
+          "patchEstimated": true,
+          "player": "Alois",
+          "uploaded": "2026-04-24",
+          "format": "stream",
+          "cam": true,
+          "startSec": 22210,
+          "endSec": 25014,
+          "moments": []
+        },
+        {
+          "videoId": "_DuwhIq3wSw",
+          "title": "I'M TAKING CORKI AIRLINES TO ESCAPE MASTERS",
+          "rankClaim": "Master+",
+          "patch": "26.8",
+          "durationSec": 25090,
+          "patchEstimated": true,
+          "player": "Alois",
+          "uploaded": "2026-04-21",
+          "format": "stream",
+          "cam": true,
+          "startSec": 12058,
+          "endSec": 13641,
+          "moments": []
+        },
+        {
+          "videoId": "_DuwhIq3wSw",
+          "title": "I'M TAKING CORKI AIRLINES TO ESCAPE MASTERS",
+          "rankClaim": "Master+",
+          "patch": "26.8",
+          "durationSec": 25090,
+          "patchEstimated": true,
+          "player": "Alois",
+          "uploaded": "2026-04-21",
+          "format": "stream",
+          "cam": true,
+          "startSec": 19583,
+          "endSec": 21944,
+          "moments": []
+        },
+        {
+          "videoId": "ZI7fd5pTl_s",
+          "title": "SMOLDER HUBRIS MAXXING",
+          "rankClaim": "Master+",
+          "patch": "26.6",
+          "durationSec": 15770,
+          "patchEstimated": true,
+          "player": "Alois",
+          "uploaded": "2026-03-26",
+          "format": "stream",
+          "cam": true,
+          "startSec": 11000,
+          "endSec": 13528,
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 157,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "GlIsW6eRgbs",
+          "title": "Smolder Mid vs Yasuo - EUW Grandmaster Patch 25.05",
+          "rankClaim": "Grandmaster",
+          "patch": "25.5",
+          "durationSec": 1908,
+          "region": "EUW",
+          "uploaded": "2025-03-19",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 316,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 663,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 811,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1068,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1125,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1139,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1164,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1363,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1448,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1657,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1752,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1838,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1855,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1866,
+              "label": "Take down The Inhibitor"
+            },
+            {
+              "atSec": 1877,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1887,
+              "label": "End credit"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 157,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "a00VGMGi8Ao",
+          "title": "BEATING THE 600LP HARDSTUCK ALLEGATIONS",
+          "rankClaim": "Master+",
+          "patch": "26.7",
+          "durationSec": 22103,
+          "patchEstimated": true,
+          "player": "Alois",
+          "uploaded": "2026-04-12",
+          "format": "stream",
+          "cam": true,
+          "startSec": 15214,
+          "endSec": 17175,
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 163,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "d2sj3n4wX5I",
+          "title": "(ZENA JayJay) Smolder Mid vs Taliyah (William4) - EUW Grandmaster Patch 26.21",
+          "rankClaim": "Grandmaster",
+          "patch": "26.21",
+          "durationSec": 1713,
+          "region": "EUW",
+          "player": "ZENA JayJay",
+          "uploaded": "2026-11-02",
+          "result": "W",
+          "moments": [
+            {
+              "atSec": 535,
+              "label": "Red takes 1st Dragon (Hextech)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 750,
+              "label": "Smolder catches Kai'Sa"
+            },
+            {
+              "atSec": 871,
+              "label": "Red takes 2nd Dragon (Mountain)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 947,
+              "label": "Smolder takes down Tryndamere"
+            },
+            {
+              "atSec": 1084,
+              "label": "Smolder eliminates Taliyah"
+            },
+            {
+              "atSec": 1203,
+              "label": "Smolder takes down Nautilus"
+            },
+            {
+              "atSec": 1280,
+              "label": "Smolder takes down Nautilus"
+            },
+            {
+              "atSec": 1292,
+              "label": "Blue takes 1st Dragon (Ocean)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1412,
+              "label": "Blue takes Baron",
+              "kind": "baron"
+            },
+            {
+              "atSec": 1443,
+              "label": "Sylas eliminates Jarvan IV"
+            },
+            {
+              "atSec": 1470,
+              "label": "Karthus eliminates Kai'Sa"
+            },
+            {
+              "atSec": 1587,
+              "label": "Smolder Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1597,
+              "label": "Smolder Triple Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1616,
+              "label": "Red takes 3rd Dragon (Ocean)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1621,
+              "label": "Mid Inhibitor falls (Red)"
+            },
+            {
+              "atSec": 1642,
+              "label": "Team fight (3 kills)",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1647,
+              "label": "Smolder Triple Kill",
+              "kind": "kill"
+            }
+          ]
+        },
+        {
+          "videoId": "iWESZfPF99w",
+          "title": "T1 Faker Smolder vs Taliyah [ MID ] Patch 25.10 Korea Challenger",
+          "rankClaim": "Challenger",
+          "patch": "25.10",
+          "durationSec": 1570,
+          "region": "KR",
+          "player": "Faker",
+          "team": "T1",
+          "uploaded": "2025-05-16",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 202,
+      "lane": "adc",
+      "videos": [
+        {
+          "videoId": "fD3dQon1iMQ",
+          "title": "BLG Viper Smolder vs Jhin [ ADC ] Korea Challenger 2023 LP | Patch 26.9",
+          "rankClaim": "Challenger",
+          "patch": "26.9",
+          "durationSec": 1872,
+          "region": "KR",
+          "player": "Viper",
+          "team": "BLG",
+          "uploaded": "2026-05-11",
+          "moments": []
+        },
+        {
+          "videoId": "PqywH0HmtdU",
+          "title": "Smolder vs Jhin ADC - KR Challenger - Patch 25.20 Season 15",
+          "rankClaim": "Challenger",
+          "patch": "25.20",
+          "durationSec": 2011,
+          "region": "KR",
+          "uploaded": "2025-10-22",
+          "moments": []
+        },
+        {
+          "videoId": "Iwh4KEWJWAo",
+          "title": "Smolder vs Jhin ADC - KR Grandmaster - Patch 25.12 Season 15",
+          "rankClaim": "Grandmaster",
+          "patch": "25.12",
+          "durationSec": 1596,
+          "region": "KR",
+          "uploaded": "2025-06-14",
+          "moments": []
+        },
+        {
+          "videoId": "wSm7V0i8zDQ",
+          "title": "Smolder vs Jhin [ ADC ] Lol Korea Master Patch 25.8 ✅",
+          "rankClaim": "Master",
+          "patch": "25.8",
+          "durationSec": 1534,
+          "region": "KR",
+          "uploaded": "2025-04-28",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 202,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "EfoELCLM5_c",
+          "title": "GRANDMASTER IS WITHIN MY GRASP",
+          "rankClaim": "Grandmaster",
+          "patch": "26.9",
+          "durationSec": 27392,
+          "patchEstimated": true,
+          "player": "Alois",
+          "uploaded": "2026-04-29",
+          "format": "stream",
+          "cam": true,
+          "startSec": 23032,
+          "endSec": 25250,
+          "moments": []
+        },
+        {
+          "videoId": "fzap4Ke6Ufo",
+          "title": "MY TIME IS RUNNING OUT!",
+          "rankClaim": "Master+",
+          "patch": "26.8",
+          "durationSec": 22136,
+          "patchEstimated": true,
+          "player": "Alois",
+          "uploaded": "2026-04-27",
+          "format": "stream",
+          "cam": true,
+          "startSec": 9628,
+          "endSec": 12381,
+          "moments": []
+        },
+        {
+          "videoId": "bD-J0hpNAok",
+          "title": "I'M MVPMAXXING EVERY GAME",
+          "rankClaim": "Master+",
+          "patch": "26.8",
+          "durationSec": 30513,
+          "patchEstimated": true,
+          "player": "Alois",
+          "uploaded": "2026-04-25",
+          "format": "stream",
+          "cam": true,
+          "startSec": 1837,
+          "endSec": 4450,
+          "moments": []
+        },
+        {
+          "videoId": "HxfqWv-32jo",
+          "title": "CLIMBING TO GRANDMASTER WITH AN 80% WINRATE",
+          "rankClaim": "Grandmaster",
+          "patch": "26.8",
+          "durationSec": 28974,
+          "patchEstimated": true,
+          "player": "Alois",
+          "uploaded": "2026-04-24",
+          "format": "stream",
+          "cam": true,
+          "startSec": 6166,
+          "endSec": 9179,
+          "moments": []
+        },
+        {
+          "videoId": "hhGTomHuJ8c",
+          "title": "I LOVE MY SUPPORTS",
+          "rankClaim": "Master+",
+          "patch": "26.8",
+          "durationSec": 23187,
+          "patchEstimated": true,
+          "player": "Alois",
+          "uploaded": "2026-04-23",
+          "format": "stream",
+          "cam": true,
+          "startSec": 16558,
+          "endSec": 18673,
+          "moments": []
+        },
+        {
+          "videoId": "k84PcCGOlLk",
+          "title": "I'M SMOLDERMAXXING",
+          "rankClaim": "Master+",
+          "patch": "26.8",
+          "durationSec": 28942,
+          "patchEstimated": true,
+          "player": "Alois",
+          "uploaded": "2026-04-16",
+          "format": "stream",
+          "cam": true,
+          "startSec": 20,
+          "endSec": 2532,
+          "moments": []
+        },
+        {
+          "videoId": "dA26IqHlFak",
+          "title": "SPEEDRUNNING THROUGH THE LADDER AS ADC",
+          "rankClaim": "Master+",
+          "patch": "26.5",
+          "durationSec": 29278,
+          "patchEstimated": true,
+          "player": "Alois",
+          "uploaded": "2026-03-13",
+          "format": "stream",
+          "cam": true,
+          "startSec": 11846,
+          "endSec": 13890,
+          "moments": []
+        },
+        {
+          "videoId": "H3eW6lB1tHE",
+          "title": "FULL DAY OF LEARNING HOW TO PLAY AD CARRY",
+          "rankClaim": "Master+",
+          "patch": "26.5",
+          "durationSec": 28690,
+          "patchEstimated": true,
+          "player": "Alois",
+          "uploaded": "2026-03-10",
+          "format": "stream",
+          "cam": true,
+          "startSec": 278,
+          "endSec": 3540,
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 221,
+      "lane": "adc",
+      "videos": [
+        {
+          "videoId": "g_ImH3zNX3k",
+          "title": "Smolder ADC vs Zeri - KR Master Patch 26.01",
+          "rankClaim": "Master",
+          "patch": "26.1",
+          "durationSec": 1576,
+          "region": "KR",
+          "uploaded": "2026-01-15",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 226,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 313,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 454,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 714,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 785,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 893,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 910,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1034,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1151,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1169,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1376,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1526,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1565,
+              "label": "End credit"
+            }
+          ]
+        },
+        {
+          "videoId": "R4Nw3YA0gpE",
+          "title": "Smolder ADC vs Zeri - KR Challenger Patch 25.24",
+          "rankClaim": "Challenger",
+          "patch": "25.24",
+          "durationSec": 1613,
+          "region": "KR",
+          "uploaded": "2025-12-08",
+          "moments": []
+        },
+        {
+          "videoId": "hIQZRsN5AXQ",
+          "title": "Smolder vs Zeri ADC - KR Challenger - Patch 25.20 Season 15",
+          "rankClaim": "Challenger",
+          "patch": "25.20",
+          "durationSec": 1501,
+          "region": "KR",
+          "uploaded": "2025-10-17",
+          "moments": []
+        },
+        {
+          "videoId": "a5pb0BwCL4Q",
+          "title": "Smolder ADC vs Zeri - KR Challenger Patch 25.18",
+          "rankClaim": "Challenger",
+          "patch": "25.18",
+          "durationSec": 1909,
+          "region": "KR",
+          "uploaded": "2025-09-15",
+          "moments": []
+        },
+        {
+          "videoId": "xEtXJOdx-Zk",
+          "title": "Smolder ADC vs Zeri - KR Master Patch 25.16",
+          "rankClaim": "Master",
+          "patch": "25.16",
+          "durationSec": 1763,
+          "region": "KR",
+          "uploaded": "2025-08-19",
+          "moments": []
+        },
+        {
+          "videoId": "u2B8UvexMaw",
+          "title": "Smolder vs Zeri ADC - KR Challenger - Patch 25.12 Season 15",
+          "rankClaim": "Challenger",
+          "patch": "25.12",
+          "durationSec": 1921,
+          "region": "KR",
+          "uploaded": "2025-06-17",
+          "moments": []
+        },
+        {
+          "videoId": "N04ci293VHc",
+          "title": "T1 Smash Smolder vs Zeri [ ADC ] Patch 25.12 Korea Challenger",
+          "rankClaim": "Challenger",
+          "patch": "25.12",
+          "durationSec": 1743,
+          "region": "KR",
+          "player": "Smash",
+          "team": "T1",
+          "uploaded": "2025-06-15",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 221,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "8mFc3blj90k",
+          "title": "ADC IS A ROLLERCOASTER",
+          "rankClaim": "Master+",
+          "patch": "26.8",
+          "durationSec": 21703,
+          "patchEstimated": true,
+          "player": "Alois",
+          "uploaded": "2026-04-28",
+          "format": "stream",
+          "cam": true,
+          "startSec": 1957,
+          "endSec": 3682,
+          "moments": []
+        },
+        {
+          "videoId": "HxfqWv-32jo",
+          "title": "CLIMBING TO GRANDMASTER WITH AN 80% WINRATE",
+          "rankClaim": "Grandmaster",
+          "patch": "26.8",
+          "durationSec": 28974,
+          "patchEstimated": true,
+          "player": "Alois",
+          "uploaded": "2026-04-24",
+          "format": "stream",
+          "cam": true,
+          "startSec": 9179,
+          "endSec": 11430,
+          "moments": []
+        },
+        {
+          "videoId": "BuvE9dB-nHw",
+          "title": "THE TWO ADC TITANS I'M ABUSING TO GET CHALLENGER",
+          "rankClaim": "Challenger",
+          "patch": "26.8",
+          "durationSec": 20980,
+          "patchEstimated": true,
+          "player": "Alois",
+          "uploaded": "2026-04-22",
+          "format": "stream",
+          "cam": true,
+          "startSec": 14838,
+          "endSec": 16663,
+          "moments": []
+        },
+        {
+          "videoId": "UPZJUxgy5tU",
+          "title": "SMOLDER IS MY WINNING TICKET TO GM",
+          "rankClaim": "Master+",
+          "patch": "26.6",
+          "durationSec": 14217,
+          "patchEstimated": true,
+          "player": "Alois",
+          "uploaded": "2026-03-29",
+          "format": "stream",
+          "cam": true,
+          "startSec": 4327,
+          "endSec": 6546,
+          "moments": []
+        },
+        {
+          "videoId": "dA26IqHlFak",
+          "title": "SPEEDRUNNING THROUGH THE LADDER AS ADC",
+          "rankClaim": "Master+",
+          "patch": "26.5",
+          "durationSec": 29278,
+          "patchEstimated": true,
+          "player": "Alois",
+          "uploaded": "2026-03-13",
+          "format": "stream",
+          "cam": true,
+          "startSec": 13890,
+          "endSec": 15745,
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 222,
+      "lane": "adc",
+      "videos": [
+        {
+          "videoId": "uG9jl2vHyic",
+          "title": "Smolder vs Jinx [ ADC ] Lol Korea Master 533 LP | Patch 26.18 ✅",
+          "rankClaim": "Master",
+          "patch": "26.18",
+          "durationSec": 1539,
+          "region": "KR",
+          "uploaded": "2026-09-15",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 222,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "EfoELCLM5_c",
+          "title": "GRANDMASTER IS WITHIN MY GRASP",
+          "rankClaim": "Grandmaster",
+          "patch": "26.9",
+          "durationSec": 27392,
+          "patchEstimated": true,
+          "player": "Alois",
+          "uploaded": "2026-04-29",
+          "format": "stream",
+          "cam": true,
+          "startSec": 7063,
+          "endSec": 9199,
+          "moments": []
+        },
+        {
+          "videoId": "fzap4Ke6Ufo",
+          "title": "MY TIME IS RUNNING OUT!",
+          "rankClaim": "Master+",
+          "patch": "26.8",
+          "durationSec": 22136,
+          "patchEstimated": true,
+          "player": "Alois",
+          "uploaded": "2026-04-27",
+          "format": "stream",
+          "cam": true,
+          "startSec": 5638,
+          "endSec": 7271,
+          "moments": []
+        },
+        {
+          "videoId": "HxfqWv-32jo",
+          "title": "CLIMBING TO GRANDMASTER WITH AN 80% WINRATE",
+          "rankClaim": "Grandmaster",
+          "patch": "26.8",
+          "durationSec": 28974,
+          "patchEstimated": true,
+          "player": "Alois",
+          "uploaded": "2026-04-24",
+          "format": "stream",
+          "cam": true,
+          "startSec": 13421,
+          "endSec": 15747,
+          "moments": []
+        },
+        {
+          "videoId": "0ccN494J2-Y",
+          "title": "I AM NOT A VICTIM ANYMORE",
+          "rankClaim": "Master+",
+          "patch": "26.8",
+          "durationSec": 24757,
+          "patchEstimated": true,
+          "player": "Alois",
+          "uploaded": "2026-04-22",
+          "format": "stream",
+          "cam": true,
+          "startSec": 11470,
+          "endSec": 14360,
+          "moments": []
+        },
+        {
+          "videoId": "BuvE9dB-nHw",
+          "title": "THE TWO ADC TITANS I'M ABUSING TO GET CHALLENGER",
+          "rankClaim": "Challenger",
+          "patch": "26.8",
+          "durationSec": 20980,
+          "patchEstimated": true,
+          "player": "Alois",
+          "uploaded": "2026-04-22",
+          "format": "stream",
+          "cam": true,
+          "startSec": 100,
+          "endSec": 2792,
+          "moments": []
+        },
+        {
+          "videoId": "k84PcCGOlLk",
+          "title": "I'M SMOLDERMAXXING",
+          "rankClaim": "Master+",
+          "patch": "26.8",
+          "durationSec": 28942,
+          "patchEstimated": true,
+          "player": "Alois",
+          "uploaded": "2026-04-16",
+          "format": "stream",
+          "cam": true,
+          "startSec": 9046,
+          "endSec": 11236,
+          "moments": []
+        },
+        {
+          "videoId": "a00VGMGi8Ao",
+          "title": "BEATING THE 600LP HARDSTUCK ALLEGATIONS",
+          "rankClaim": "Master+",
+          "patch": "26.7",
+          "durationSec": 22103,
+          "patchEstimated": true,
+          "player": "Alois",
+          "uploaded": "2026-04-12",
+          "format": "stream",
+          "cam": true,
+          "startSec": 6435,
+          "endSec": 8820,
+          "moments": []
+        },
+        {
+          "videoId": "a00VGMGi8Ao",
+          "title": "BEATING THE 600LP HARDSTUCK ALLEGATIONS",
+          "rankClaim": "Master+",
+          "patch": "26.7",
+          "durationSec": 22103,
+          "patchEstimated": true,
+          "player": "Alois",
+          "uploaded": "2026-04-12",
+          "format": "stream",
+          "cam": true,
+          "startSec": 10973,
+          "endSec": 12874,
+          "moments": []
+        },
+        {
+          "videoId": "CSuXOXGqZiQ",
+          "title": "I LOST MY MIND BUT WINNERSQ SAVES THE DAY",
+          "rankClaim": "Master+",
+          "patch": "26.7",
+          "durationSec": 28210,
+          "patchEstimated": true,
+          "player": "Alois",
+          "uploaded": "2026-04-09",
+          "format": "stream",
+          "cam": true,
+          "startSec": 12523,
+          "endSec": 14642,
+          "moments": []
+        },
+        {
+          "videoId": "ZI7fd5pTl_s",
+          "title": "SMOLDER HUBRIS MAXXING",
+          "rankClaim": "Master+",
+          "patch": "26.6",
+          "durationSec": 15770,
+          "patchEstimated": true,
+          "player": "Alois",
+          "uploaded": "2026-03-26",
+          "format": "stream",
+          "cam": true,
+          "startSec": 9237,
+          "endSec": 11000,
+          "moments": []
+        },
+        {
+          "videoId": "YGOF0TDVoL4",
+          "title": "WE HIT MASTER WITH AD CARRY ONLY",
+          "rankClaim": "Master",
+          "patch": "26.5",
+          "durationSec": 26838,
+          "patchEstimated": true,
+          "player": "Alois",
+          "uploaded": "2026-03-17",
+          "format": "stream",
+          "cam": true,
+          "startSec": 12675,
+          "endSec": 14590,
+          "moments": []
+        },
+        {
+          "videoId": "P-z3NfSBMBA",
+          "title": "CLIMBING THROUGH THE DIAMOND LADDER ON AD CARRY",
+          "rankClaim": "Master+",
+          "patch": "26.5",
+          "durationSec": 27755,
+          "patchEstimated": true,
+          "player": "Alois",
+          "uploaded": "2026-03-16",
+          "format": "stream",
+          "cam": true,
+          "startSec": 1605,
+          "endSec": 3805,
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 235,
+      "lane": "adc",
+      "videos": [
+        {
+          "videoId": "QCCe3BbK7Zw",
+          "title": "Smolder ADC vs Senna - KR Challenger Patch 26.12",
+          "rankClaim": "Challenger",
+          "patch": "26.12",
+          "durationSec": 1457,
+          "region": "KR",
+          "uploaded": "2026-06-18",
+          "moments": []
+        },
+        {
+          "videoId": "0hicg1YPo7o",
+          "title": "Smolder vs Senna ADC - KR Challenger - Patch 25.14 Season 15",
+          "rankClaim": "Challenger",
+          "patch": "25.14",
+          "durationSec": 2651,
+          "region": "KR",
+          "uploaded": "2025-07-24",
+          "moments": []
+        },
+        {
+          "videoId": "qXqf7waYSBw",
+          "title": "Smolder ADC vs Senna - KR Grandmaster Patch 25.13",
+          "rankClaim": "Grandmaster",
+          "patch": "25.13",
+          "durationSec": 1816,
+          "region": "KR",
+          "uploaded": "2025-06-28",
+          "moments": []
+        },
+        {
+          "videoId": "aCqO1zwQ1Z8",
+          "title": "Smolder vs Senna ADC - KR Challenger - Patch 25.13 Season 15",
+          "rankClaim": "Challenger",
+          "patch": "25.13",
+          "durationSec": 1816,
+          "region": "KR",
+          "uploaded": "2025-06-26",
+          "moments": []
+        },
+        {
+          "videoId": "j912YCt86T8",
+          "title": "Smolder vs Senna ADC - KR Challenger - Patch 25.13 Season 15",
+          "rankClaim": "Challenger",
+          "patch": "25.13",
+          "durationSec": 1741,
+          "region": "KR",
+          "uploaded": "2025-06-24",
+          "moments": []
+        },
+        {
+          "videoId": "DGYAGiAG4Us",
+          "title": "Smolder vs Senna ADC - KR Challenger - Patch 25.11 Season 15",
+          "rankClaim": "Challenger",
+          "patch": "25.11",
+          "durationSec": 1546,
+          "region": "KR",
+          "uploaded": "2025-06-04",
+          "moments": []
+        },
+        {
+          "videoId": "s-dbeCZFtyc",
+          "title": "T1 Gumayusi Smolder vs Senna ADC [ QuadraKill ] Patch 25.11 Korea Challenger",
+          "rankClaim": "Challenger",
+          "patch": "25.11",
+          "durationSec": 1410,
+          "region": "KR",
+          "player": "Gumayusi",
+          "team": "T1",
+          "uploaded": "2025-06-04",
+          "moments": []
+        },
+        {
+          "videoId": "gjOlgsRhWC4",
+          "title": "Smolder vs Senna ADC - KR Challenger - Patch 25.11 Season 15",
+          "rankClaim": "Challenger",
+          "patch": "25.11",
+          "durationSec": 1841,
+          "region": "KR",
+          "uploaded": "2025-06-01",
+          "moments": []
+        },
+        {
+          "videoId": "zMBlSDJSfwE",
+          "title": "T1 Smash Smolder vs Senna [ ADC ] Patch 25.11 Korea Challenger ✅",
+          "rankClaim": "Challenger",
+          "patch": "25.11",
+          "durationSec": 1536,
+          "region": "KR",
+          "player": "Smash",
+          "team": "T1",
+          "uploaded": "2025-05-30",
+          "moments": []
+        },
+        {
+          "videoId": "jBOopXcbboM",
+          "title": "T1 Gumayusi Smolder vs Senna [ ADC ] Patch 25.10 Korea Challenger",
+          "rankClaim": "Challenger",
+          "patch": "25.10",
+          "durationSec": 1572,
+          "region": "KR",
+          "player": "Gumayusi",
+          "team": "T1",
+          "uploaded": "2025-05-21",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 235,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "0ccN494J2-Y",
+          "title": "I AM NOT A VICTIM ANYMORE",
+          "rankClaim": "Master+",
+          "patch": "26.8",
+          "durationSec": 24757,
+          "patchEstimated": true,
+          "player": "Alois",
+          "uploaded": "2026-04-22",
+          "format": "stream",
+          "cam": true,
+          "startSec": 17821,
+          "endSec": 20360,
+          "moments": []
+        },
+        {
+          "videoId": "ggpLYZjmeBU",
+          "title": "BOUNCING BETWEEN 600-700 LP",
+          "rankClaim": "Master+",
+          "patch": "26.7",
+          "durationSec": 18149,
+          "patchEstimated": true,
+          "player": "Alois",
+          "uploaded": "2026-04-07",
+          "format": "stream",
+          "cam": true,
+          "startSec": 126,
+          "endSec": 2616,
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 236,
+      "lane": "adc",
+      "videos": [
+        {
+          "videoId": "EjgMhwFqRd8",
+          "title": "1600LP Smolder : His DAMAGE is on Another Level - Engsub ( Smolder vs Lucian, Vayne )",
+          "rankClaim": "Master+",
+          "patch": "26.10",
+          "durationSec": 1461,
+          "patchEstimated": true,
+          "uploaded": "2026-05-27",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "EjqC0R56F7g",
+          "title": "Smolder vs Lucian ADC - KR Challenger - Patch 16.10 Season 16",
+          "rankClaim": "Challenger",
+          "patch": "26.10",
+          "durationSec": 1621,
+          "region": "KR",
+          "uploaded": "2026-05-17",
+          "moments": []
+        },
+        {
+          "videoId": "ozvLCpTbmwo",
+          "title": "Smolder ADC vs Lucian - KR Master Patch 26.03",
+          "rankClaim": "Master",
+          "patch": "26.3",
+          "durationSec": 1572,
+          "region": "KR",
+          "uploaded": "2026-02-12",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 235,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 411,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 539,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 612,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 905,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 920,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1065,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1189,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1266,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1285,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1317,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1473,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1509,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1543,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1561,
+              "label": "End credit"
+            }
+          ]
+        },
+        {
+          "videoId": "sHDKa6MSUI4",
+          "title": "Smolder vs Lucian ADC [ TripleKill ] Korea Master Patch 25.20 ✅",
+          "rankClaim": "Master",
+          "patch": "25.20",
+          "durationSec": 1689,
+          "region": "KR",
+          "player": "TripleKill",
+          "uploaded": "2025-10-13",
+          "moments": []
+        },
+        {
+          "videoId": "kI6hFsUrGts",
+          "title": "Smolder ADC vs Lucian - KR Grandmaster Patch 25.10",
+          "rankClaim": "Grandmaster",
+          "patch": "25.10",
+          "durationSec": 1660,
+          "region": "KR",
+          "uploaded": "2025-05-19",
+          "moments": []
+        },
+        {
+          "videoId": "4gTwdGItyM4",
+          "title": "Smolder ADC vs Lucian - NA Challenger Patch 25.07",
+          "rankClaim": "Challenger",
+          "patch": "25.7",
+          "durationSec": 1470,
+          "region": "NA",
+          "uploaded": "2025-04-14",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 223,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 366,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 569,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 720,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 911,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 933,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 944,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1161,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1190,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1280,
+              "label": "Get a Quadra Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1299,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1311,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1428,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1449,
+              "label": "End credit"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 236,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "fzap4Ke6Ufo",
+          "title": "MY TIME IS RUNNING OUT!",
+          "rankClaim": "Master+",
+          "patch": "26.8",
+          "durationSec": 22136,
+          "patchEstimated": true,
+          "player": "Alois",
+          "uploaded": "2026-04-27",
+          "format": "stream",
+          "cam": true,
+          "startSec": 19904,
+          "endSec": 22136,
+          "moments": []
+        },
+        {
+          "videoId": "CSuXOXGqZiQ",
+          "title": "I LOST MY MIND BUT WINNERSQ SAVES THE DAY",
+          "rankClaim": "Master+",
+          "patch": "26.7",
+          "durationSec": 28210,
+          "patchEstimated": true,
+          "player": "Alois",
+          "uploaded": "2026-04-09",
+          "format": "stream",
+          "cam": true,
+          "startSec": 17498,
+          "endSec": 19730,
+          "moments": []
+        },
+        {
+          "videoId": "CSuXOXGqZiQ",
+          "title": "I LOST MY MIND BUT WINNERSQ SAVES THE DAY",
+          "rankClaim": "Master+",
+          "patch": "26.7",
+          "durationSec": 28210,
+          "patchEstimated": true,
+          "player": "Alois",
+          "uploaded": "2026-04-09",
+          "format": "stream",
+          "cam": true,
+          "startSec": 26211,
+          "endSec": 28210,
+          "moments": []
+        },
+        {
+          "videoId": "YGOF0TDVoL4",
+          "title": "WE HIT MASTER WITH AD CARRY ONLY",
+          "rankClaim": "Master",
+          "patch": "26.5",
+          "durationSec": 26838,
+          "patchEstimated": true,
+          "player": "Alois",
+          "uploaded": "2026-03-17",
+          "format": "stream",
+          "cam": true,
+          "startSec": 6230,
+          "endSec": 8500,
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 245,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "1FXoMZd3GjE",
+          "title": "Smolder Mid vs Ekko - KR Master Patch 25.04",
+          "rankClaim": "Master",
+          "patch": "25.4",
+          "durationSec": 1810,
+          "region": "KR",
+          "uploaded": "2025-03-05",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 360,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "UPZJUxgy5tU",
+          "title": "SMOLDER IS MY WINNING TICKET TO GM",
+          "rankClaim": "Master+",
+          "patch": "26.6",
+          "durationSec": 14217,
+          "patchEstimated": true,
+          "player": "Alois",
+          "uploaded": "2026-03-29",
+          "format": "stream",
+          "cam": true,
+          "startSec": 12230,
+          "endSec": 14217,
+          "moments": []
+        },
+        {
+          "videoId": "P-z3NfSBMBA",
+          "title": "CLIMBING THROUGH THE DIAMOND LADDER ON AD CARRY",
+          "rankClaim": "Master+",
+          "patch": "26.5",
+          "durationSec": 27755,
+          "patchEstimated": true,
+          "player": "Alois",
+          "uploaded": "2026-03-16",
+          "format": "stream",
+          "cam": true,
+          "startSec": 5994,
+          "endSec": 7776,
+          "moments": []
+        },
+        {
+          "videoId": "wPcRmohyjJM",
+          "title": "DAY 3 OF ADC AND I LOST MY MIND",
+          "rankClaim": "Master+",
+          "patch": "26.5",
+          "durationSec": 24436,
+          "patchEstimated": true,
+          "player": "Alois",
+          "uploaded": "2026-03-12",
+          "format": "stream",
+          "cam": true,
+          "startSec": 83,
+          "endSec": 2260,
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 429,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "GLWSLo1ns8M",
+          "title": "LOSING MY MIND WITH AUTOFILLED SUPPORTS",
+          "rankClaim": "Master+",
+          "patch": "26.6",
+          "durationSec": 16169,
+          "patchEstimated": true,
+          "player": "Alois",
+          "uploaded": "2026-03-28",
+          "format": "stream",
+          "cam": true,
+          "startSec": 13965,
+          "endSec": 16169,
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 498,
+      "lane": "adc",
+      "videos": [
+        {
+          "videoId": "XG23pB9rtQI",
+          "title": "Smolder ADC vs Xayah - KR Master Patch 26.16",
+          "rankClaim": "Master",
+          "patch": "26.16",
+          "durationSec": 1909,
+          "region": "KR",
+          "uploaded": "2026-08-27",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 498,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "UPZJUxgy5tU",
+          "title": "SMOLDER IS MY WINNING TICKET TO GM",
+          "rankClaim": "Master+",
+          "patch": "26.6",
+          "durationSec": 14217,
+          "patchEstimated": true,
+          "player": "Alois",
+          "uploaded": "2026-03-29",
+          "format": "stream",
+          "cam": true,
+          "startSec": 10934,
+          "endSec": 12230,
+          "moments": []
+        },
+        {
+          "videoId": "WfeW2dDZKsI",
+          "title": "LEARNING THE BULLY OF BOTLANE",
+          "rankClaim": "Master+",
+          "patch": "26.5",
+          "durationSec": 22227,
+          "patchEstimated": true,
+          "player": "Alois",
+          "uploaded": "2026-03-15",
+          "format": "stream",
+          "cam": true,
+          "startSec": 8850,
+          "endSec": 11065,
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 517,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "MB2YDjU3vc0",
+          "title": "Smolder Mid vs Sylas - KR Master Patch 26.10",
+          "rankClaim": "Master",
+          "patch": "26.10",
+          "durationSec": 1623,
+          "region": "KR",
+          "uploaded": "2026-05-16",
+          "result": "L",
+          "moments": [
+            {
+              "atSec": 130,
+              "label": "First Blood — Smolder kills Sylas",
+              "kind": "kill"
+            },
+            {
+              "atSec": 421,
+              "label": "Blue takes 1st Dragon (Cloud)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 678,
+              "label": "Smolder takes down Sylas"
+            },
+            {
+              "atSec": 806,
+              "label": "Smolder takes down Bard"
+            },
+            {
+              "atSec": 861,
+              "label": "Blue takes 2nd Dragon (Hextech)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 933,
+              "label": "Smolder solo kills Lee Sin",
+              "kind": "kill"
+            },
+            {
+              "atSec": 973,
+              "label": "Smolder takes down Jayce"
+            },
+            {
+              "atSec": 1195,
+              "label": "Team fight (3 kills)",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1269,
+              "label": "Blue takes 3rd Dragon (Infernal)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1292,
+              "label": "Smolder Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1352,
+              "label": "Smolder eliminates Sylas"
+            },
+            {
+              "atSec": 1441,
+              "label": "Smolder Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1484,
+              "label": "Red takes Baron",
+              "kind": "baron"
+            },
+            {
+              "atSec": 1564,
+              "label": "Mid Inhibitor falls (Blue)"
+            }
+          ]
+        },
+        {
+          "videoId": "CKWzRC3yVKU",
+          "title": "Smolder Mid vs Sylas - EUW Grandmaster Patch 25.06",
+          "rankClaim": "Grandmaster",
+          "patch": "25.6",
+          "durationSec": 1608,
+          "region": "EUW",
+          "uploaded": "2025-04-03",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 523,
+      "lane": "adc",
+      "videos": [
+        {
+          "videoId": "zqz3noMflzo",
+          "title": "DK Smash Smolder vs Aphelios [ ADC ] Patch 26.10 Korea Challenger 2421 LP",
+          "rankClaim": "Challenger",
+          "patch": "26.10",
+          "durationSec": 1610,
+          "region": "KR",
+          "player": "Smash",
+          "team": "DK",
+          "uploaded": "2026-05-18",
+          "moments": []
+        },
+        {
+          "videoId": "32IiqbhqDqI",
+          "title": "Smolder vs Aphelios ADC - KR Challenger - Patch 16.09 Season 16",
+          "rankClaim": "Challenger",
+          "patch": "26.9",
+          "durationSec": 1921,
+          "region": "KR",
+          "uploaded": "2026-05-14",
+          "moments": []
+        },
+        {
+          "videoId": "ZAFiywjeLQg",
+          "title": "Smolder vs Aphelios [ ADC ] Lol Korea Master Patch 26.5 ✅",
+          "rankClaim": "Master",
+          "patch": "26.5",
+          "durationSec": 1663,
+          "region": "KR",
+          "uploaded": "2026-03-08",
+          "moments": []
+        },
+        {
+          "videoId": "bR4GSZFyXWA",
+          "title": "Smolder ADC vs Aphelios - KR Grandmaster Patch 25.14",
+          "rankClaim": "Grandmaster",
+          "patch": "25.14",
+          "durationSec": 1802,
+          "region": "KR",
+          "uploaded": "2025-07-20",
+          "moments": []
+        },
+        {
+          "videoId": "jzfs_QyJeqA",
+          "title": "Smolder ADC vs Aphelios - KR Grandmaster Patch 25.08",
+          "rankClaim": "Grandmaster",
+          "patch": "25.8",
+          "durationSec": 1543,
+          "region": "KR",
+          "uploaded": "2025-04-24",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 523,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "8mFc3blj90k",
+          "title": "ADC IS A ROLLERCOASTER",
+          "rankClaim": "Master+",
+          "patch": "26.8",
+          "durationSec": 21703,
+          "patchEstimated": true,
+          "player": "Alois",
+          "uploaded": "2026-04-28",
+          "format": "stream",
+          "cam": true,
+          "startSec": 18182,
+          "endSec": 19570,
+          "moments": []
+        },
+        {
+          "videoId": "CSuXOXGqZiQ",
+          "title": "I LOST MY MIND BUT WINNERSQ SAVES THE DAY",
+          "rankClaim": "Master+",
+          "patch": "26.7",
+          "durationSec": 28210,
+          "patchEstimated": true,
+          "player": "Alois",
+          "uploaded": "2026-04-09",
+          "format": "stream",
+          "cam": true,
+          "startSec": 22277,
+          "endSec": 24517,
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 711,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "RI2jjbYkCOg",
+          "title": "Smolder Mid vs Vex - NA Grandmaster Patch 25.15",
+          "rankClaim": "Grandmaster",
+          "patch": "25.15",
+          "durationSec": 1741,
+          "region": "NA",
+          "uploaded": "2025-08-14",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 777,
+      "lane": "adc",
+      "videos": [
+        {
+          "videoId": "83sZt_0kYLQ",
+          "title": "Smolder ADC vs Yone - NA Master Patch 26.17",
+          "rankClaim": "Master",
+          "patch": "26.17",
+          "durationSec": 1797,
+          "region": "NA",
+          "uploaded": "2026-09-09",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 777,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "OXaO2G0ZJ8M",
+          "title": "Smolder Mid vs Yone - KR Master Patch 25.07",
+          "rankClaim": "Master",
+          "patch": "25.7",
+          "durationSec": 1826,
+          "region": "KR",
+          "uploaded": "2025-04-05",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 799,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "Xbh8ljtuzNg",
+          "title": "Smolder Mid vs Ambessa - NA Grandmaster Patch 25.11",
+          "rankClaim": "Grandmaster",
+          "patch": "25.11",
+          "durationSec": 1512,
+          "region": "NA",
+          "uploaded": "2025-06-06",
+          "moments": []
+        },
+        {
+          "videoId": "Ny9qONxMPdI",
+          "title": "Smolder vs Ambessa Mid - KR Challenger - Patch 25.10 Season 15",
+          "rankClaim": "Challenger",
+          "patch": "25.10",
+          "durationSec": 2536,
+          "region": "KR",
+          "uploaded": "2025-05-21",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 800,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "EdH84mBLgUk",
+          "title": "Smolder Mid vs Mel - KR Master Patch 26.09",
+          "rankClaim": "Master",
+          "patch": "26.9",
+          "durationSec": 1480,
+          "region": "KR",
+          "uploaded": "2026-05-02",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 800,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "ggpLYZjmeBU",
+          "title": "BOUNCING BETWEEN 600-700 LP",
+          "rankClaim": "Master+",
+          "patch": "26.7",
+          "durationSec": 18149,
+          "patchEstimated": true,
+          "player": "Alois",
+          "uploaded": "2026-04-07",
+          "format": "stream",
+          "cam": true,
+          "startSec": 4640,
+          "endSec": 5854,
+          "moments": []
+        },
+        {
+          "videoId": "19UMTVqZ_yM",
+          "title": "LOW CORTISOL ADC IS BACK ON THE RIFT",
+          "rankClaim": "Master+",
+          "patch": "26.7",
+          "durationSec": 20459,
+          "patchEstimated": true,
+          "player": "Alois",
+          "uploaded": "2026-04-06",
+          "format": "stream",
+          "cam": true,
+          "startSec": 16666,
+          "endSec": 18700,
+          "moments": []
+        },
+        {
+          "videoId": "H3eW6lB1tHE",
+          "title": "FULL DAY OF LEARNING HOW TO PLAY AD CARRY",
+          "rankClaim": "Master+",
+          "patch": "26.5",
+          "durationSec": 28690,
+          "patchEstimated": true,
+          "player": "Alois",
+          "uploaded": "2026-03-10",
+          "format": "stream",
+          "cam": true,
+          "startSec": 23929,
+          "endSec": 26223,
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 804,
+      "lane": "adc",
+      "videos": [
+        {
+          "videoId": "qvxg1RzY7Mo",
+          "title": "1600LP Smolder : Late Game His DAMAGE is Insanity - Engsub ( Smolder vs Yunara )",
+          "rankClaim": "Master+",
+          "patch": "26.12",
+          "durationSec": 753,
+          "patchEstimated": true,
+          "uploaded": "2026-06-10",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "chiap2oNlM8",
+          "title": "1600LP Smolder \"Jz\" Insane Comeback of History - Engsub ( Smolder vs Yunara )",
+          "rankClaim": "Master+",
+          "patch": "26.11",
+          "durationSec": 1329,
+          "patchEstimated": true,
+          "player": "Jz",
+          "uploaded": "2026-06-06",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "UWbVPIi4VQQ",
+          "title": "1600LP Smolder : His DAMAGE is BURNING Enemies so BAD with this Build - Engsub (Smolder vs Yunara)",
+          "rankClaim": "Master+",
+          "patch": "26.11",
+          "durationSec": 1411,
+          "patchEstimated": true,
+          "uploaded": "2026-06-04",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "SRtUFklnVas",
+          "title": "Smolder ADC vs Yunara - KR Master Patch 26.09",
+          "rankClaim": "Master",
+          "patch": "26.9",
+          "durationSec": 1824,
+          "region": "KR",
+          "uploaded": "2026-05-08",
+          "moments": []
+        },
+        {
+          "videoId": "SO7CtqgqBqg",
+          "title": "Smolder vs Yunara ADC [ Gen.G Ruler ] Patch 25.24 Ranked Korea ✅",
+          "rankClaim": "Master+",
+          "patch": "25.24",
+          "durationSec": 1352,
+          "region": "KR",
+          "player": "Ruler",
+          "team": "Gen.G",
+          "uploaded": "2025-12-21",
+          "moments": []
+        },
+        {
+          "videoId": "SP_sgLbemKk",
+          "title": "T1 Peyz Smolder vs Yunara [ ADC ] Korea Master Patch 25.24",
+          "rankClaim": "Master",
+          "patch": "25.24",
+          "durationSec": 1192,
+          "region": "KR",
+          "player": "Peyz",
+          "team": "T1",
+          "uploaded": "2025-12-09",
+          "moments": []
+        },
+        {
+          "videoId": "K4dRJRsJnm8",
+          "title": "Smolder vs Yunara ADC - KR Challenger - Patch 25.24 Season 15",
+          "rankClaim": "Challenger",
+          "patch": "25.24",
+          "durationSec": 2041,
+          "region": "KR",
+          "uploaded": "2025-12-04",
+          "moments": []
+        },
+        {
+          "videoId": "u2hRNR3FWYI",
+          "title": "Smolder ADC vs Yunara - KR Grandmaster Patch 25.22",
+          "rankClaim": "Grandmaster",
+          "patch": "25.22",
+          "durationSec": 1438,
+          "region": "KR",
+          "uploaded": "2025-11-11",
+          "moments": []
+        },
+        {
+          "videoId": "eR9UIQx6m30",
+          "title": "Smolder vs Yunara ADC [ TripleKill ] Patch 25.21 Korea Challenger 1219 LP",
+          "rankClaim": "Challenger",
+          "patch": "25.21",
+          "durationSec": 1368,
+          "region": "KR",
+          "player": "TripleKill",
+          "uploaded": "2025-10-26",
+          "moments": []
+        },
+        {
+          "videoId": "RlKN7hY2Ftw",
+          "title": "Smolder vs Yunara ADC [ JDG Peyz ] Patch 25.16 Korea Challenger ✅",
+          "rankClaim": "Challenger",
+          "patch": "25.16",
+          "durationSec": 918,
+          "region": "KR",
+          "player": "Peyz",
+          "team": "JDG",
+          "uploaded": "2025-08-17",
+          "moments": []
+        },
+        {
+          "videoId": "tB34NJOdTiM",
+          "title": "Smolder ADC vs Yunara - KR Challenger Patch 25.15",
+          "rankClaim": "Challenger",
+          "patch": "25.15",
+          "durationSec": 1762,
+          "region": "KR",
+          "uploaded": "2025-08-05",
+          "moments": []
+        },
+        {
+          "videoId": "NdU5E-xWKr8",
+          "title": "Smolder vs Yunara ADC - EUW Challenger - Patch 25.15 Season 15",
+          "rankClaim": "Challenger",
+          "patch": "25.15",
+          "durationSec": 1966,
+          "region": "EUW",
+          "uploaded": "2025-08-04",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 804,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "8mFc3blj90k",
+          "title": "ADC IS A ROLLERCOASTER",
+          "rankClaim": "Master+",
+          "patch": "26.8",
+          "durationSec": 21703,
+          "patchEstimated": true,
+          "player": "Alois",
+          "uploaded": "2026-04-28",
+          "format": "stream",
+          "cam": true,
+          "startSec": 15959,
+          "endSec": 18182,
+          "moments": []
+        },
+        {
+          "videoId": "HxfqWv-32jo",
+          "title": "CLIMBING TO GRANDMASTER WITH AN 80% WINRATE",
+          "rankClaim": "Grandmaster",
+          "patch": "26.8",
+          "durationSec": 28974,
+          "patchEstimated": true,
+          "player": "Alois",
+          "uploaded": "2026-04-24",
+          "format": "stream",
+          "cam": true,
+          "startSec": 27422,
+          "endSec": 28974,
+          "moments": []
+        },
+        {
+          "videoId": "hhGTomHuJ8c",
+          "title": "I LOVE MY SUPPORTS",
+          "rankClaim": "Master+",
+          "patch": "26.8",
+          "durationSec": 23187,
+          "patchEstimated": true,
+          "player": "Alois",
+          "uploaded": "2026-04-23",
+          "format": "stream",
+          "cam": true,
+          "startSec": 20720,
+          "endSec": 23187,
+          "moments": []
+        },
+        {
+          "videoId": "DGto4k3vx5w",
+          "title": "NO ONE CAN STOP THE LOW CORTISOL ADC CLIMB",
+          "rankClaim": "Master+",
+          "patch": "26.8",
+          "durationSec": 22951,
+          "patchEstimated": true,
+          "player": "Alois",
+          "uploaded": "2026-04-21",
+          "format": "stream",
+          "cam": true,
+          "startSec": 9763,
+          "endSec": 12022,
+          "moments": []
+        },
+        {
+          "videoId": "k84PcCGOlLk",
+          "title": "I'M SMOLDERMAXXING",
+          "rankClaim": "Master+",
+          "patch": "26.8",
+          "durationSec": 28942,
+          "patchEstimated": true,
+          "player": "Alois",
+          "uploaded": "2026-04-16",
+          "format": "stream",
+          "cam": true,
+          "startSec": 25130,
+          "endSec": 27286,
+          "moments": []
+        },
+        {
+          "videoId": "a00VGMGi8Ao",
+          "title": "BEATING THE 600LP HARDSTUCK ALLEGATIONS",
+          "rankClaim": "Master+",
+          "patch": "26.7",
+          "durationSec": 22103,
+          "patchEstimated": true,
+          "player": "Alois",
+          "uploaded": "2026-04-12",
+          "format": "stream",
+          "cam": true,
+          "startSec": 170,
+          "endSec": 2127,
+          "moments": []
+        },
+        {
+          "videoId": "UPZJUxgy5tU",
+          "title": "SMOLDER IS MY WINNING TICKET TO GM",
+          "rankClaim": "Master+",
+          "patch": "26.6",
+          "durationSec": 14217,
+          "patchEstimated": true,
+          "player": "Alois",
+          "uploaded": "2026-03-29",
+          "format": "stream",
+          "cam": true,
+          "startSec": 2175,
+          "endSec": 4327,
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 893,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "c_4OM86ungo",
+          "title": "Smolder Mid vs Aurora - EUW Challenger Patch 25.20",
+          "rankClaim": "Challenger",
+          "patch": "25.20",
+          "durationSec": 1644,
+          "region": "EUW",
+          "uploaded": "2025-10-19",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 893,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "hhGTomHuJ8c",
+          "title": "I LOVE MY SUPPORTS",
+          "rankClaim": "Master+",
+          "patch": "26.8",
+          "durationSec": 23187,
+          "patchEstimated": true,
+          "player": "Alois",
+          "uploaded": "2026-04-23",
+          "format": "stream",
+          "cam": true,
+          "startSec": 14653,
+          "endSec": 16558,
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 895,
+      "lane": "adc",
+      "videos": [
+        {
+          "videoId": "WpC57RaNTYc",
+          "title": "Smolder ADC vs Nilah - KR Master Patch 25.09",
+          "rankClaim": "Master",
+          "patch": "25.9",
+          "durationSec": 1807,
+          "region": "KR",
+          "uploaded": "2025-05-07",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 895,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "k84PcCGOlLk",
+          "title": "I'M SMOLDERMAXXING",
+          "rankClaim": "Master+",
+          "patch": "26.8",
+          "durationSec": 28942,
+          "patchEstimated": true,
+          "player": "Alois",
+          "uploaded": "2026-04-16",
+          "format": "stream",
+          "cam": true,
+          "startSec": 6824,
+          "endSec": 9046,
+          "moments": []
+        },
+        {
+          "videoId": "P-z3NfSBMBA",
+          "title": "CLIMBING THROUGH THE DIAMOND LADDER ON AD CARRY",
+          "rankClaim": "Master+",
+          "patch": "26.5",
+          "durationSec": 27755,
+          "patchEstimated": true,
+          "player": "Alois",
+          "uploaded": "2026-03-16",
+          "format": "stream",
+          "cam": true,
+          "startSec": 14355,
+          "endSec": 16801,
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 897,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "omXMBE0E4dY",
+          "title": "Smolder Top vs K'Sante (Anathar) - EUW Master Patch 26.20",
+          "rankClaim": "Master",
+          "patch": "26.20",
+          "durationSec": 1570,
+          "region": "EUW",
+          "uploaded": "2026-10-20",
+          "result": "W",
+          "moments": [
+            {
+              "atSec": 177,
+              "label": "First Blood — Poppy kills Viego",
+              "kind": "kill"
+            },
+            {
+              "atSec": 315,
+              "label": "Blue takes 1st Dragon (Cloud)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 644,
+              "label": "Blue takes 2nd Dragon (Chemtech)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 746,
+              "label": "Smolder eliminates K'Sante"
+            },
+            {
+              "atSec": 845,
+              "label": "Smolder outplays Nasus"
+            },
+            {
+              "atSec": 962,
+              "label": "Smolder takes down Nautilus"
+            },
+            {
+              "atSec": 968,
+              "label": "Lillia eliminates Samira"
+            },
+            {
+              "atSec": 1113,
+              "label": "Smolder Triple Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1122,
+              "label": "Smolder Quadra Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1198,
+              "label": "Smolder picks off Samira"
+            },
+            {
+              "atSec": 1215,
+              "label": "Red takes Baron",
+              "kind": "baron"
+            },
+            {
+              "atSec": 1229,
+              "label": "Smolder takes down Nasus"
+            },
+            {
+              "atSec": 1281,
+              "label": "Smolder eliminates K'Sante"
+            },
+            {
+              "atSec": 1285,
+              "label": "Red takes 1st Dragon (Infernal)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1540,
+              "label": "Mid Inhibitor falls (Blue)"
+            },
+            {
+              "atSec": 1561,
+              "label": "Top Inhibitor falls (Red)"
+            }
+          ]
+        },
+        {
+          "videoId": "3_gyrgqZ4RI",
+          "title": "TOPLANE GAMING",
+          "rankClaim": "Master+",
+          "patch": "26.10",
+          "durationSec": 17402,
+          "patchEstimated": true,
+          "player": "Alois",
+          "uploaded": "2026-05-16",
+          "format": "stream",
+          "cam": true,
+          "startSec": 4969,
+          "endSec": 6617,
+          "moments": []
+        },
+        {
+          "videoId": "wRkdqcEIyVI",
+          "title": "Smolder Top vs K'Sante - KR Master Patch 25.24",
+          "rankClaim": "Master",
+          "patch": "25.24",
+          "durationSec": 1615,
+          "region": "KR",
+          "uploaded": "2025-12-28",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 279,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 449,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 573,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 655,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 871,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 897,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1048,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1080,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1154,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1253,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1301,
+              "label": "Hunt The Dragon",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1367,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1386,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1458,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1484,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1505,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1520,
+              "label": "Take down The Inhibitor"
+            },
+            {
+              "atSec": 1542,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1604,
+              "label": "End credit"
+            }
+          ]
+        },
+        {
+          "videoId": "ccjKI992wlo",
+          "title": "Smolder vs K'Sante Top - KR Challenger - Patch 25.16 Season 15",
+          "rankClaim": "Challenger",
+          "patch": "25.16",
+          "durationSec": 2431,
+          "region": "KR",
+          "uploaded": "2025-08-22",
+          "moments": []
+        },
+        {
+          "videoId": "zAy766C3GOA",
+          "title": "Smolder Top vs K'Sante - KR Master Patch 25.10",
+          "rankClaim": "Master",
+          "patch": "25.10",
+          "durationSec": 1919,
+          "region": "KR",
+          "uploaded": "2025-05-29",
+          "moments": []
+        },
+        {
+          "videoId": "9QOuons6-mo",
+          "title": "Smolder Top vs K'Sante - EUW Grandmaster Patch 25.04",
+          "rankClaim": "Grandmaster",
+          "patch": "25.4",
+          "durationSec": 2120,
+          "region": "EUW",
+          "uploaded": "2025-02-28",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 272,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 399,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 625,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 783,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 914,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1495,
+              "label": "Get a Triple Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1610,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1770,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1801,
+              "label": "Take down The Inhibitor"
+            },
+            {
+              "atSec": 2074,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 2099,
+              "label": "End credit"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 904,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "tUAUmEoX2Ec",
+          "title": "Smolder Top vs Zaahen - EUW Challenger Patch 26.09",
+          "rankClaim": "Challenger",
+          "patch": "26.9",
+          "durationSec": 1482,
+          "region": "EUW",
+          "uploaded": "2026-05-15",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 910,
+      "lane": "adc",
+      "videos": [
+        {
+          "videoId": "ibTvpTgCav0",
+          "title": "(Kami) Smolder ADC vs Hwei - BR Grandmaster Patch 26.17",
+          "rankClaim": "Grandmaster",
+          "patch": "26.17",
+          "durationSec": 1504,
+          "player": "Kami",
+          "uploaded": "2026-09-12",
+          "moments": []
+        },
+        {
+          "videoId": "GwxGpYppaSU",
+          "title": "(S04E Zwyroo) Smolder ADC vs Hwei - EUW Challenger Patch 26.11",
+          "rankClaim": "Challenger",
+          "patch": "26.11",
+          "durationSec": 1809,
+          "region": "EUW",
+          "player": "S04E Zwyroo",
+          "uploaded": "2026-06-04",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 910,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "DZJ-4CatNE0",
+          "title": "Smolder Mid vs Hwei - EUW Challenger Patch 25.21",
+          "rankClaim": "Challenger",
+          "patch": "25.21",
+          "durationSec": 1732,
+          "region": "EUW",
+          "uploaded": "2025-11-03",
+          "moments": []
+        },
+        {
+          "videoId": "LcEDc2IwKWo",
+          "title": "Smolder Mid vs Hwei - EUW Challenger Patch 25.14",
+          "rankClaim": "Challenger",
+          "patch": "25.14",
+          "durationSec": 1561,
+          "region": "EUW",
+          "uploaded": "2025-07-27",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 950,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "43Bo_byGQNE",
+          "title": "Smolder Mid vs Naafiri - NA Grandmaster Patch 25.16",
+          "rankClaim": "Grandmaster",
+          "patch": "25.16",
+          "durationSec": 2131,
+          "region": "NA",
+          "uploaded": "2025-08-24",
+          "moments": []
+        }
+      ]
+    }
+  ]
+}

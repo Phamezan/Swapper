@@ -1,0 +1,3859 @@
+{
+  "schema": 1,
+  "champion": 17,
+  "generatedAt": "2026-11-07T13:25:14.592Z",
+  "guides": [
+    {
+      "champion": 17,
+      "enemy": 266,
+      "lane": "top",
+      "patch": "26.21",
+      "reviewed": false,
+      "difficulty": "Hard",
+      "favoredWhen": "Teemo wins by farming to boots and punishing Q cooldowns with brief autos; Aatrox wins any post-6 all-in and every full sweet-spot combo.",
+      "keyTips": [
+        {
+          "text": "Farm safely until Teemo has boots. His Q is nearly impossible to dodge on foot, so concede pressure early rather than bleeding health before Teemo can move.",
+          "scope": "pair",
+          "sourceIds": [
+            "manco1"
+          ],
+          "heading": "Boots first"
+        },
+        {
+          "text": "After dodging his Q, land a few autos or a Q and then back off. The cooldown window is short, and staying longer turns a won exchange into his full combo.",
+          "scope": "pair",
+          "sourceIds": [
+            "manco1"
+          ],
+          "heading": "Window trading",
+          "abilityKeys": [
+            {
+              "champion": 17,
+              "key": "Q"
+            },
+            {
+              "champion": 266,
+              "key": "Q"
+            }
+          ]
+        },
+        {
+          "text": "Track his W at all times. It is his main way to force the combo when Teemo holds an escape, so keep the wave near the middle and always leave room to run from the pull.",
+          "scope": "pair",
+          "sourceIds": [
+            "persimannon"
+          ],
+          "heading": "Respect the pull",
+          "abilityKeys": [
+            {
+              "champion": 266,
+              "key": "W"
+            },
+            {
+              "champion": 17,
+              "key": "W"
+            }
+          ]
+        }
+      ],
+      "enemyTips": {},
+      "sections": {
+        "overview": {
+          "tips": []
+        },
+        "early-lane": {
+          "tips": [
+            {
+              "text": "Prioritize dodging Q sweet spots over dealing damage. Leave the center of W the moment it lands, since the knock-up into Q chain is the entire lane threat.",
+              "scope": "pair",
+              "sourceIds": [
+                "temoonlyifok"
+              ],
+              "heading": "Dodge first",
+              "abilityKeys": [
+                {
+                  "champion": 17,
+                  "key": "Q"
+                },
+                {
+                  "champion": 266,
+                  "key": "Q"
+                },
+                {
+                  "champion": 266,
+                  "key": "W"
+                }
+              ]
+            },
+            {
+              "text": "Never start a short trade close to his turret while abilities are down. He chases Teemo down in that space with cooldowns to spare, so only trade with an exit already planned.",
+              "scope": "pair",
+              "sourceIds": [
+                "persimannon"
+              ],
+              "heading": "No turret trades",
+              "abilityKeys": [
+                {
+                  "champion": 266,
+                  "key": "Q"
+                },
+                {
+                  "champion": 17,
+                  "key": "W"
+                }
+              ]
+            }
+          ]
+        },
+        "mid-lane": {
+          "tips": [
+            {
+              "text": "Do not all-in him after level 6 unless Ignite is ready. Without it the extended fight favors him through R healing, so treat Ignite as the permission slip for every mid-game commit.",
+              "scope": "pair",
+              "sourceIds": [
+                "manco1"
+              ],
+              "heading": "Ignite rule",
+              "abilityKeys": [
+                {
+                  "champion": 266,
+                  "key": "R"
+                }
+              ]
+            },
+            {
+              "text": "Farm and scale instead of forcing kills. Teemo cannot match his R combo in a fair duel, so hold CS parity and let boots plus levels do the work.",
+              "scope": "pair",
+              "sourceIds": [
+                "temoonlyifok",
+                "manco1"
+              ],
+              "heading": "Scale it out"
+            }
+          ]
+        },
+        "win-condition": {
+          "tips": [
+            {
+              "text": "Win by denying the full combo, not by out-dueling him. Every fight Teemo takes should be a dodged Q into autos and out; the moment he lands a clean three-cast rotation, the lane is lost.",
+              "scope": "pair",
+              "sourceIds": [
+                "temoonlyifok",
+                "persimannon"
+              ],
+              "heading": "Deny the rotation",
+              "abilityKeys": [
+                {
+                  "champion": 266,
+                  "key": "Q"
+                },
+                {
+                  "champion": 17,
+                  "key": "Q"
+                }
+              ]
+            },
+            {
+              "text": "Keep the wave short after level 6. His kill pattern needs room to chase through W into Q, and a short lane plus shroomed exits starves exactly that.",
+              "scope": "pair",
+              "sourceIds": [
+                "persimannon"
+              ],
+              "heading": "Short lane",
+              "abilityKeys": [
+                {
+                  "champion": 266,
+                  "key": "W"
+                },
+                {
+                  "champion": 17,
+                  "key": "R"
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "itemization": [
+        {
+          "text": "Rush boots before anything else, with Swifties first. Movement speed is the whole dodge plan against Q, so complete them before trading with intent.",
+          "scope": "pair",
+          "sourceIds": [
+            "manco1",
+            "temoonlyifok"
+          ]
+        },
+        {
+          "text": "Take Ignite over anything defensive. The post-6 all-in only exists with it, and without it Teemo has no way to answer his R healing in the one fight that matters.",
+          "scope": "pair",
+          "sourceIds": [
+            "manco1"
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "id": "manco1",
+          "author": "Manco1",
+          "rankClaim": "Challenger (lolmatchups account tier, Riot-linked Manco1#NA1) Teemo main",
+          "rank": "challenger",
+          "url": "https://lolmatchups.gg/Teemo/matchups?lane=TOP",
+          "kind": "web"
+        },
+        {
+          "id": "temoonlyifok",
+          "author": "TemoOnlyIfOK",
+          "rankClaim": "Diamond (profile badge; no title claim) Teemo main",
+          "rank": "diamond",
+          "url": "https://www.mobafire.com/league-of-legends/build/a-different-type-of-teemo-vibes-based-wip-650397",
+          "kind": "mobafire"
+        },
+        {
+          "id": "persimannon",
+          "author": "Persimannon",
+          "rankClaim": "Diamond (self-stated post title) Aatrox main",
+          "rank": "diamond",
+          "url": "https://www.reddit.com/r/AatroxMains/comments/1x5etj3/mid_diamond_thoughts_on_aatrox_matchups/",
+          "kind": "web"
+        }
+      ]
+    }
+  ],
+  "general": [
+    {
+      "champion": 17,
+      "lane": "top",
+      "patch": "26.21",
+      "reviewed": false,
+      "keyTips": [
+        {
+          "text": "Play the weaker early game for farm and wave control toward Liandry's: take one safe auto when an opponent steps up for a minion, then disengage instead of following into their engage range.",
+          "scope": "champion",
+          "sourceIds": [
+            "trickybam"
+          ]
+        },
+        {
+          "text": "Save Q for opponents who rely on basic attacks or the moment they commit, since the blind stops basic attacks rather than most abilities.",
+          "scope": "champion",
+          "sourceIds": [
+            "trickybam"
+          ],
+          "abilityKeys": [
+            {
+              "champion": 17,
+              "key": "Q"
+            }
+          ]
+        },
+        {
+          "text": "Spend one shroom per wave only when it buys a useful recall or rotation; keep charges for escape routes and objectives, and start objective traps about a minute before Dragon or Baron when the team can safely enter.",
+          "scope": "champion",
+          "sourceIds": [
+            "trickybam"
+          ],
+          "abilityKeys": [
+            {
+              "champion": 17,
+              "key": "R"
+            }
+          ]
+        }
+      ],
+      "sections": {
+        "overview": {
+          "tips": []
+        },
+        "early-lane": {
+          "tips": [
+            {
+              "text": "Collect Dark Harvest stacks only when they cost no death and no missed wave; steady poke matters less than staying alive and on schedule.",
+              "scope": "champion",
+              "sourceIds": [
+                "trickybam"
+              ]
+            },
+            {
+              "text": "Keep the wave near your side when walking up is dangerous, and when safe push fully before recalling, warding ahead of a hard push.",
+              "scope": "champion",
+              "sourceIds": [
+                "trickybam"
+              ]
+            },
+            {
+              "text": "Start Doran's Ring, two Health Potions, and a Stealth Ward; max E first, Q second, and W last, taking R at levels six, eleven, and sixteen, with E-Q-E-W as the example opening.",
+              "scope": "champion",
+              "sourceIds": [
+                "trickybam"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 17,
+                  "key": "E"
+                },
+                {
+                  "champion": 17,
+                  "key": "Q"
+                },
+                {
+                  "champion": 17,
+                  "key": "W"
+                },
+                {
+                  "champion": 17,
+                  "key": "R"
+                }
+              ],
+              "itemIds": [
+                1056,
+                3340
+              ]
+            },
+            {
+              "text": "Maintain distance with W and pre-placed escape-route shrooms before trouble starts rather than reacting after the enemy commits.",
+              "scope": "champion",
+              "sourceIds": [
+                "trickybam"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 17,
+                  "key": "W"
+                },
+                {
+                  "champion": 17,
+                  "key": "R"
+                }
+              ]
+            }
+          ]
+        },
+        "mid-lane": {
+          "tips": [
+            {
+              "text": "Push a safe wave before rotating, but never push deep near an objective spawn or while several opponents are missing.",
+              "scope": "champion",
+              "sourceIds": [
+                "trickybam"
+              ]
+            },
+            {
+              "text": "Trap river entrances, corners, walls, and likely jungle paths, spreading charges across approaches so one Sweeper clears less, and hold one or two charges for the fight itself.",
+              "scope": "champion",
+              "sourceIds": [
+                "trickybam"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 17,
+                  "key": "R"
+                }
+              ]
+            },
+            {
+              "text": "Ward objectives with Control Wards and consider Oracle Lens after lane; shrooms aid vision but never replace real wards.",
+              "scope": "champion",
+              "sourceIds": [
+                "trickybam"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 17,
+                  "key": "R"
+                }
+              ],
+              "itemIds": [
+                3364
+              ]
+            },
+            {
+              "text": "When behind, farm safely and trap your own jungle entrances; never enter fog alone, and let opponents walk through the traps before helping contest after they back off.",
+              "scope": "champion",
+              "sourceIds": [
+                "trickybam"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 17,
+                  "key": "R"
+                }
+              ]
+            }
+          ]
+        },
+        "win-condition": {
+          "tips": [
+            {
+              "text": "Scale through safe farm into AP and shroom damage, weakening opponents on their approaches before Dragon or Baron fights rather than forcing plays early.",
+              "scope": "champion",
+              "sourceIds": [
+                "trickybam"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 17,
+                  "key": "R"
+                }
+              ]
+            },
+            {
+              "text": "Value staying alive and on schedule over extra Dark Harvest stacks or kills; the shroom field becomes the main threat as items arrive.",
+              "scope": "champion",
+              "sourceIds": [
+                "trickybam"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 17,
+                  "key": "R"
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "itemization": [
+        {
+          "text": "Run Dark Harvest with Cheap Shot, Grisly Mementos, and Ultimate Hunter plus Absolute Focus and Gathering Storm; take safe stacks since shroom slows trigger Cheap Shot, Grisly Mementos feeds trinket uptime, and Ultimate Hunter means more frequent shrooms.",
+          "scope": "champion",
+          "sourceIds": [
+            "trickybam"
+          ],
+          "abilityKeys": [
+            {
+              "champion": 17,
+              "key": "R"
+            }
+          ]
+        },
+        {
+          "text": "Build Liandry's Torment for max-health burn, Malignance for mana plus more frequent shrooms with magic-resistance reduction in its ground, then Shadowflame for the damage increase against targets below forty percent health, buying Sorcerer's Shoes when recall gold allows.",
+          "scope": "champion",
+          "sourceIds": [
+            "trickybam"
+          ],
+          "itemIds": [
+            6653,
+            3118,
+            4645,
+            3020
+          ]
+        },
+        {
+          "text": "Into substantial purchased magic resistance follow the core with Void Staff and Rabadon's Deathcap, or Deathcap first without much resistance; take Gluttonous Greaves over Sorcerer's only for sustain games with no enemy Ignite and little other healing reduction.",
+          "scope": "champion",
+          "sourceIds": [
+            "trickybam"
+          ],
+          "itemIds": [
+            3135,
+            3089,
+            3008
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "id": "trickybam",
+          "author": "TrickyBAM",
+          "rankClaim": "Diamond (profile badge; no title claim) Teemo main",
+          "rank": "diamond",
+          "url": "https://www.mobafire.com/league-of-legends/build/teemo-top-dark-harvest-ap-shrooms-patch-26-17-526194",
+          "kind": "mobafire"
+        }
+      ]
+    }
+  ],
+  "vods": [
+    {
+      "lane": "adc",
+      "videos": [
+        {
+          "videoId": "T1ytCjb1ELI",
+          "title": "T1 Peyz : DESTROYING KR Challenger with TEEMO ADC",
+          "rankClaim": "Challenger",
+          "patch": "26.7",
+          "durationSec": 979,
+          "region": "KR",
+          "patchEstimated": true,
+          "player": "Peyz",
+          "uploaded": "2026-04-07",
+          "format": "stream",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "Xvlsj-Ir_VI",
+          "title": "The BEST Teemo Game You'll Ever See. I Promise.",
+          "rankClaim": "Master+",
+          "patch": "26.20",
+          "durationSec": 1924,
+          "patchEstimated": true,
+          "player": "Broxah",
+          "uploaded": "2026-10-11",
+          "format": "stream",
+          "cam": true,
+          "moments": []
+        },
+        {
+          "videoId": "5M8PlLaVWUA",
+          "title": "ARCANE COMET TEEMO JUNGLE IS THE NEW TECH!?",
+          "rankClaim": "Master+",
+          "patch": "26.18",
+          "durationSec": 2439,
+          "patchEstimated": true,
+          "player": "Broxah",
+          "uploaded": "2026-09-15",
+          "format": "stream",
+          "cam": true,
+          "moments": []
+        },
+        {
+          "videoId": "5pXd2PKIoC8",
+          "title": "The Once In A Lifetime Teemo Jungle Game",
+          "rankClaim": "Master+",
+          "patch": "26.15",
+          "durationSec": 1498,
+          "patchEstimated": true,
+          "player": "Broxah",
+          "uploaded": "2026-07-29",
+          "format": "stream",
+          "cam": true,
+          "moments": []
+        },
+        {
+          "videoId": "nrcL2jD3mwM",
+          "title": "I TRIED TEEMO JUNGLE IN LEAGUE CLASSIC.. AND IT ACTUALLY WORKED!?",
+          "rankClaim": "Master+",
+          "patch": "26.14",
+          "durationSec": 2377,
+          "patchEstimated": true,
+          "player": "Broxah",
+          "uploaded": "2026-07-19",
+          "format": "stream",
+          "cam": true,
+          "moments": [
+            {
+              "atSec": 75,
+              "label": "Teemo Jungle"
+            },
+            {
+              "atSec": 1333,
+              "label": "2nd Game"
+            }
+          ]
+        },
+        {
+          "videoId": "la4Ux5nZY7s",
+          "title": "THE ON HIT TEEMO BUILD IS BROKEN!?",
+          "rankClaim": "Master+",
+          "patch": "26.13",
+          "durationSec": 1497,
+          "patchEstimated": true,
+          "player": "Broxah",
+          "uploaded": "2026-06-28",
+          "format": "stream",
+          "cam": true,
+          "moments": []
+        },
+        {
+          "videoId": "Q22UO_rZrtA",
+          "title": "The Most Difficult TEEMO JUNGLE Game Ever!?",
+          "rankClaim": "Master+",
+          "patch": "26.13",
+          "durationSec": 1689,
+          "patchEstimated": true,
+          "player": "Broxah",
+          "uploaded": "2026-06-25",
+          "format": "stream",
+          "cam": true,
+          "moments": []
+        },
+        {
+          "videoId": "XN3ounItSio",
+          "title": "POV: Your Teemo Jungle Gets Overly Excited",
+          "rankClaim": "Master+",
+          "patch": "26.12",
+          "durationSec": 2320,
+          "patchEstimated": true,
+          "player": "Broxah",
+          "uploaded": "2026-06-21",
+          "format": "stream",
+          "cam": true,
+          "moments": []
+        },
+        {
+          "videoId": "BXV-B0m-LXY",
+          "title": "This is Why Broxah Spams This Teemo Jungle Build!",
+          "rankClaim": "Master+",
+          "patch": "26.12",
+          "durationSec": 2312,
+          "patchEstimated": true,
+          "player": "Broxah",
+          "uploaded": "2026-06-18",
+          "format": "stream",
+          "cam": true,
+          "moments": []
+        },
+        {
+          "videoId": "Dpzfq_q4Tko",
+          "title": "This Is How Broxah Gets Himself Out Of Losers Queue With Teemo Jungle",
+          "rankClaim": "Master+",
+          "patch": "26.10",
+          "durationSec": 1218,
+          "patchEstimated": true,
+          "player": "Broxah",
+          "uploaded": "2026-05-24",
+          "format": "stream",
+          "cam": true,
+          "moments": []
+        },
+        {
+          "videoId": "1ImvgH6HKN4",
+          "title": "I Tried ON HIT Teemo Jungle In The Most CHAOTIC Game Ever",
+          "rankClaim": "Master+",
+          "patch": "26.10",
+          "durationSec": 1410,
+          "patchEstimated": true,
+          "player": "Broxah",
+          "uploaded": "2026-05-21",
+          "format": "stream",
+          "cam": true,
+          "moments": []
+        },
+        {
+          "videoId": "Vdq7wrswWHU",
+          "title": "AloisNL + Broxah Teemo Jungle in an INSANE High Elo Streamer Battle",
+          "rankClaim": "Master+",
+          "patch": "26.10",
+          "durationSec": 1401,
+          "patchEstimated": true,
+          "player": "Broxah",
+          "uploaded": "2026-05-18",
+          "format": "stream",
+          "cam": true,
+          "moments": []
+        },
+        {
+          "videoId": "sTAP0AD-NdY",
+          "title": "Broxah Tries The NEW TEEMO JUNGLE Build For The First Time",
+          "rankClaim": "Master+",
+          "patch": "26.10",
+          "durationSec": 1083,
+          "patchEstimated": true,
+          "player": "Broxah",
+          "uploaded": "2026-05-15",
+          "format": "stream",
+          "cam": true,
+          "moments": []
+        },
+        {
+          "videoId": "Ed7V8Tg_h6s",
+          "title": "My Thoughts On Deathfire Touch Teemo Jungle",
+          "rankClaim": "Master+",
+          "patch": "26.9",
+          "durationSec": 2231,
+          "patchEstimated": true,
+          "player": "Broxah",
+          "uploaded": "2026-05-12",
+          "format": "stream",
+          "cam": true,
+          "moments": []
+        },
+        {
+          "videoId": "cFfVjwJQIf8",
+          "title": "Do NOT Give TEEMO JUNGLE A Chance To Carry",
+          "rankClaim": "Master+",
+          "patch": "26.9",
+          "durationSec": 1091,
+          "patchEstimated": true,
+          "player": "Broxah",
+          "uploaded": "2026-05-09",
+          "format": "stream",
+          "cam": true,
+          "moments": []
+        },
+        {
+          "videoId": "gvhgQcuSQYM",
+          "title": "My Teemo Jungle Made Them Apologize For Flaming!?",
+          "rankClaim": "Master+",
+          "patch": "26.9",
+          "durationSec": 1830,
+          "patchEstimated": true,
+          "player": "Broxah",
+          "uploaded": "2026-05-06",
+          "format": "stream",
+          "cam": true,
+          "moments": [
+            {
+              "atSec": 0,
+              "label": "Game 1"
+            },
+            {
+              "atSec": 1100,
+              "label": "They Apologized"
+            },
+            {
+              "atSec": 1183,
+              "label": "Game 2"
+            }
+          ]
+        },
+        {
+          "videoId": "D189sfW3M7Q",
+          "title": "The True Power Of TEEMO SHROOMS!",
+          "rankClaim": "Master+",
+          "patch": "26.7",
+          "durationSec": 2074,
+          "patchEstimated": true,
+          "player": "Broxah",
+          "uploaded": "2026-04-14",
+          "format": "stream",
+          "cam": true,
+          "moments": []
+        },
+        {
+          "videoId": "RbfEGA62lr8",
+          "title": "THIS IS WHY I'M A TEEMO JUNGLE MAIN",
+          "rankClaim": "Master+",
+          "patch": "26.6",
+          "durationSec": 1253,
+          "patchEstimated": true,
+          "player": "Broxah",
+          "uploaded": "2026-03-28",
+          "format": "stream",
+          "cam": true,
+          "moments": []
+        },
+        {
+          "videoId": "fpQjol6P_pA",
+          "title": "I'm UNSTOPPABLE With TEEMO Jungle on EUNE",
+          "rankClaim": "Master+",
+          "patch": "26.5",
+          "durationSec": 1705,
+          "region": "EUNE",
+          "patchEstimated": true,
+          "player": "Broxah",
+          "uploaded": "2026-03-06",
+          "format": "stream",
+          "cam": true,
+          "moments": []
+        },
+        {
+          "videoId": "K_evtWAwcsc",
+          "title": "IS TEEMO JUNGLE TROLL OR OP ON EUNE!?",
+          "rankClaim": "Master+",
+          "patch": "26.4",
+          "durationSec": 1910,
+          "region": "EUNE",
+          "patchEstimated": true,
+          "player": "Broxah",
+          "uploaded": "2026-02-28",
+          "format": "stream",
+          "cam": true,
+          "moments": []
+        },
+        {
+          "videoId": "hhMOLrkkTsQ",
+          "title": "THE TEEMO BUFFS MADE ME ADDICTED AGAIN",
+          "rankClaim": "Master+",
+          "patch": "26.4",
+          "durationSec": 1897,
+          "patchEstimated": true,
+          "player": "Broxah",
+          "uploaded": "2026-02-22",
+          "format": "stream",
+          "cam": true,
+          "moments": []
+        },
+        {
+          "videoId": "q5W4m4AWaYA",
+          "title": "PLAYING THE NEW BUFFED TEEMO JUNGLE",
+          "rankClaim": "Master+",
+          "patch": "26.4",
+          "durationSec": 1719,
+          "patchEstimated": true,
+          "player": "Sinerias",
+          "uploaded": "2026-02-19",
+          "format": "stream",
+          "cam": true,
+          "moments": []
+        },
+        {
+          "videoId": "9TKB0CUfD_A",
+          "title": "RIOT BROUGHT BACK TEEMO JUNGLE IN 2026",
+          "rankClaim": "Master+",
+          "patch": "26.4",
+          "durationSec": 2199,
+          "patchEstimated": true,
+          "player": "Broxah",
+          "uploaded": "2026-02-19",
+          "format": "stream",
+          "cam": true,
+          "moments": []
+        },
+        {
+          "videoId": "Mpw4hL0i8Og",
+          "title": "Broxah's Toxic Teammate RAGES at his Teemo Jungle",
+          "rankClaim": "Master+",
+          "patch": "26.3",
+          "durationSec": 1748,
+          "patchEstimated": true,
+          "player": "Broxah",
+          "uploaded": "2026-02-10",
+          "format": "stream",
+          "cam": true,
+          "moments": []
+        },
+        {
+          "videoId": "Zg_Zn4yDe6o",
+          "title": "THIS NEW BUILD WILL SAVE TEEMO JUNGLE IN SEASON 16!?",
+          "rankClaim": "Master+",
+          "patch": "26.1",
+          "durationSec": 1520,
+          "patchEstimated": true,
+          "player": "Broxah",
+          "uploaded": "2026-01-17",
+          "format": "stream",
+          "cam": true,
+          "moments": []
+        },
+        {
+          "videoId": "2B8QNmU2ZBg",
+          "title": "THE BIGGEST TEEMO JUNGLE LEAD IN 2026",
+          "rankClaim": "Master+",
+          "patch": "26.1",
+          "durationSec": 993,
+          "patchEstimated": true,
+          "player": "Broxah",
+          "uploaded": "2026-01-10",
+          "format": "stream",
+          "cam": true,
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 4,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "1QSaWJReYew",
+          "title": "Teemo Support vs Twisted Fate - EUW Challenger Patch 26.07",
+          "rankClaim": "Challenger",
+          "patch": "26.7",
+          "durationSec": 1841,
+          "region": "EUW",
+          "uploaded": "2026-04-15",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 5,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "bdEJ08SMLCU",
+          "title": "Teemo Jungle vs Xin Zhao - KR Master Patch 25.13",
+          "rankClaim": "Master",
+          "patch": "25.13",
+          "durationSec": 1819,
+          "region": "KR",
+          "uploaded": "2025-07-14",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 6,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "ocYVR88UgJA",
+          "title": "Teemo Top vs Urgot - NA Master Patch 26.21",
+          "rankClaim": "Master",
+          "patch": "26.21",
+          "durationSec": 1781,
+          "region": "NA",
+          "uploaded": "2026-10-28",
+          "result": "W",
+          "moments": [
+            {
+              "atSec": 275,
+              "label": "Teemo catches Urgot"
+            },
+            {
+              "atSec": 502,
+              "label": "Red takes 1st Dragon (Hextech)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 551,
+              "label": "Teemo outduels Urgot again"
+            },
+            {
+              "atSec": 616,
+              "label": "Teemo outplays Urgot (3rd time)"
+            },
+            {
+              "atSec": 700,
+              "label": "Teemo solo kills Urgot (4th time)",
+              "kind": "kill"
+            },
+            {
+              "atSec": 820,
+              "label": "Red takes 2nd Dragon (Infernal)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 855,
+              "label": "Teemo outplays Taliyah"
+            },
+            {
+              "atSec": 917,
+              "label": "Teemo takes down Urgot (5th time)"
+            },
+            {
+              "atSec": 1099,
+              "label": "Teemo catches Urgot (6th time)"
+            },
+            {
+              "atSec": 1143,
+              "label": "Red takes 3rd Dragon (Mountain)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1340,
+              "label": "Red takes Baron",
+              "kind": "baron"
+            },
+            {
+              "atSec": 1481,
+              "label": "Red takes 4th Dragon (Mountain)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1495,
+              "label": "Teemo picks off Miss Fortune"
+            },
+            {
+              "atSec": 1519,
+              "label": "Teemo kills Jarvan IV",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1612,
+              "label": "Hecarim eliminates Miss Fortune"
+            },
+            {
+              "atSec": 1642,
+              "label": "Teemo takes down Taliyah"
+            },
+            {
+              "atSec": 1746,
+              "label": "Mid Inhibitor falls (Red)"
+            },
+            {
+              "atSec": 1761,
+              "label": "Bot Inhibitor falls (Red)"
+            }
+          ]
+        },
+        {
+          "videoId": "VSAytZjhFgo",
+          "title": "(KC Canna) Teemo Top vs Urgot - EUW Master Patch 26.16",
+          "rankClaim": "Master",
+          "patch": "26.16",
+          "durationSec": 1476,
+          "region": "EUW",
+          "player": "Canna",
+          "team": "KC",
+          "uploaded": "2026-08-15",
+          "moments": []
+        },
+        {
+          "videoId": "HMhGqfMlEwE",
+          "title": "Teemo Top vs Urgot - KR Master Patch 25.08",
+          "rankClaim": "Master",
+          "patch": "25.8",
+          "durationSec": 1841,
+          "region": "KR",
+          "uploaded": "2025-04-24",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 8,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "HMgTnlhOiP8",
+          "title": "Teemo Top vs Vladimir - KR Master Patch 25.22",
+          "rankClaim": "Master",
+          "patch": "25.22",
+          "durationSec": 1584,
+          "region": "KR",
+          "uploaded": "2025-11-14",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 12,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "95x8QqImVPc",
+          "title": "Teemo Support vs Alistar - KR Master Patch 25.19",
+          "rankClaim": "Master",
+          "patch": "25.19",
+          "durationSec": 1527,
+          "region": "KR",
+          "uploaded": "2025-10-08",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 13,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "VmGFmF3Dlps",
+          "title": "Teemo vs Ryze [ TOP ] Patch 25.9 Korea Grandmaster ✅",
+          "rankClaim": "Grandmaster",
+          "patch": "25.9",
+          "durationSec": 1444,
+          "region": "KR",
+          "uploaded": "2025-05-12",
+          "moments": []
+        },
+        {
+          "videoId": "atF7XOKfXLg",
+          "title": "Teemo Top vs Ryze - KR Master Patch 25.05",
+          "rankClaim": "Master",
+          "patch": "25.5",
+          "durationSec": 1785,
+          "region": "KR",
+          "uploaded": "2025-03-14",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 14,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "ga0jy9lCyzE",
+          "title": "Teemo Top vs Sion (DIA Hamsi) - EUW Grandmaster Patch 26.20",
+          "rankClaim": "Grandmaster",
+          "patch": "26.20",
+          "durationSec": 1454,
+          "region": "EUW",
+          "uploaded": "2026-10-14",
+          "result": "W",
+          "moments": [
+            {
+              "atSec": 189,
+              "label": "First Blood — Jarvan IV kills Sion",
+              "kind": "kill"
+            },
+            {
+              "atSec": 291,
+              "label": "Red takes 1st Dragon (Infernal)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 500,
+              "label": "Jarvan IV kills Sion",
+              "kind": "kill"
+            },
+            {
+              "atSec": 615,
+              "label": "Red takes 2nd Dragon (Hextech)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 634,
+              "label": "Teemo takes down Rell"
+            },
+            {
+              "atSec": 750,
+              "label": "Team fight (3 kills)",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 860,
+              "label": "Teemo Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 932,
+              "label": "Red takes 3rd Dragon (Cloud)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1277,
+              "label": "Blue takes 1st Dragon (Cloud)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1279,
+              "label": "Teemo Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1314,
+              "label": "Blue takes Baron",
+              "kind": "baron"
+            },
+            {
+              "atSec": 1392,
+              "label": "Mid Inhibitor falls (Red)"
+            },
+            {
+              "atSec": 1403,
+              "label": "Bot Inhibitor falls (Red)"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 23,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "BbZvwwfgA0M",
+          "title": "Teemo Mid vs Tryndamere - KR Master Patch 25.05",
+          "rankClaim": "Master",
+          "patch": "25.5",
+          "durationSec": 2023,
+          "region": "KR",
+          "uploaded": "2025-03-18",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 152,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 512,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 678,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 774,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 942,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1050,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1067,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1079,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1160,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1296,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1388,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1521,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1546,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1621,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1689,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1771,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1794,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1806,
+              "label": "Take down The Inhibitor"
+            },
+            {
+              "atSec": 1952,
+              "label": "Hunt The Baron Nashor",
+              "kind": "baron"
+            },
+            {
+              "atSec": 1974,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 2002,
+              "label": "End credit"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 23,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "e0T_tuHiW7s",
+          "title": "Teemo Top vs Tryndamere - EUW Grandmaster Patch 26.18",
+          "rankClaim": "Grandmaster",
+          "patch": "26.18",
+          "durationSec": 1693,
+          "region": "EUW",
+          "uploaded": "2026-09-17",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 27,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "0OEIUgVGlKc",
+          "title": "Teemo Top vs Singed - KR Master Patch 25.21",
+          "rankClaim": "Master",
+          "patch": "25.21",
+          "durationSec": 1660,
+          "region": "KR",
+          "uploaded": "2025-10-30",
+          "moments": []
+        },
+        {
+          "videoId": "Aw4o9Id3f_g",
+          "title": "Teemo vs Singed [ TOP ] Lol Korea Master Patch 25.13",
+          "rankClaim": "Master",
+          "patch": "25.13",
+          "durationSec": 1628,
+          "region": "KR",
+          "uploaded": "2025-07-11",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 32,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "qZVlFVoOh2g",
+          "title": "Teemo Support vs Amumu - KR Master Patch 25.20",
+          "rankClaim": "Master",
+          "patch": "25.20",
+          "durationSec": 1542,
+          "region": "KR",
+          "uploaded": "2025-10-22",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 34,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "KqtAxi5rFPk",
+          "title": "Teemo Top vs Anivia - KR Grandmaster Patch 26.14",
+          "rankClaim": "Grandmaster",
+          "patch": "26.14",
+          "durationSec": 1514,
+          "region": "KR",
+          "uploaded": "2026-07-21",
+          "result": "W",
+          "moments": [
+            {
+              "atSec": 69,
+              "label": "First Blood — Teemo kills Anivia",
+              "kind": "kill"
+            },
+            {
+              "atSec": 239,
+              "label": "Camille eliminates Anivia"
+            },
+            {
+              "atSec": 408,
+              "label": "Teemo takes down Poppy"
+            },
+            {
+              "atSec": 421,
+              "label": "Teemo catches Anivia"
+            },
+            {
+              "atSec": 599,
+              "label": "Blue takes 1st Dragon (Infernal)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 671,
+              "label": "Bel'Veth kills Anivia",
+              "kind": "kill"
+            },
+            {
+              "atSec": 760,
+              "label": "Bel'Veth kills Anivia",
+              "kind": "kill"
+            },
+            {
+              "atSec": 885,
+              "label": "Teemo eliminates Poppy"
+            },
+            {
+              "atSec": 958,
+              "label": "Red takes 1st Dragon (Hextech)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1075,
+              "label": "Bel'Veth kills Anivia",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1262,
+              "label": "Blue takes Baron",
+              "kind": "baron"
+            },
+            {
+              "atSec": 1307,
+              "label": "Blue takes 2nd Dragon (Ocean)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1335,
+              "label": "Teemo takes down Cassiopeia"
+            },
+            {
+              "atSec": 1370,
+              "label": "Mid Inhibitor falls (Red)"
+            },
+            {
+              "atSec": 1418,
+              "label": "Team fight (3 kills)",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1460,
+              "label": "Teemo kills Qiyana",
+              "kind": "kill"
+            }
+          ]
+        },
+        {
+          "videoId": "dJmtr_U_-wg",
+          "title": "Teemo Top vs Anivia - KR Master Patch 25.10",
+          "rankClaim": "Master",
+          "patch": "25.10",
+          "durationSec": 1582,
+          "region": "KR",
+          "uploaded": "2025-05-22",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 103,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 416,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 493,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 522,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 642,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 740,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 925,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 974,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1086,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1104,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1254,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1354,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1375,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1393,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1407,
+              "label": "Take down The Inhibitor"
+            },
+            {
+              "atSec": 1455,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1483,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1561,
+              "label": "End credit"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 36,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "GX2hkuN1ObE",
+          "title": "Teemo Top vs Dr. Mundo - EUW Grandmaster Patch 25.15",
+          "rankClaim": "Grandmaster",
+          "patch": "25.15",
+          "durationSec": 1552,
+          "region": "EUW",
+          "uploaded": "2025-08-15",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 39,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "HrJptWoKdxc",
+          "title": "Teemo vs Irelia [ TOP ] Lol Korea Master Patch 25.20 ✅",
+          "rankClaim": "Master",
+          "patch": "25.20",
+          "durationSec": 1827,
+          "region": "KR",
+          "uploaded": "2025-10-11",
+          "moments": []
+        },
+        {
+          "videoId": "adjTPQCiJrQ",
+          "title": "Teemo vs Irelia [ TOP ] Lol Korea Master Patch 25.14",
+          "rankClaim": "Master",
+          "patch": "25.14",
+          "durationSec": 1269,
+          "region": "KR",
+          "uploaded": "2025-07-27",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 41,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "9e6q70Zc3HI",
+          "title": "OTP Teemo vs Gangplank [ TOP ] Patch 25.1 Korea Grandmaster ✅",
+          "rankClaim": "Grandmaster",
+          "patch": "25.1",
+          "durationSec": 1072,
+          "region": "KR",
+          "player": "OTP",
+          "uploaded": "2025-01-18",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 54,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "j7E181sSqYY",
+          "title": "Teemo Top vs Malphite - KR Grandmaster Patch 26.17",
+          "rankClaim": "Grandmaster",
+          "patch": "26.17",
+          "durationSec": 1653,
+          "region": "KR",
+          "uploaded": "2026-09-12",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 57,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "QutT_FvpuZg",
+          "title": "Teemo Jungle vs Maokai - NA Grandmaster Patch 26.15",
+          "rankClaim": "Grandmaster",
+          "patch": "26.15",
+          "durationSec": 1561,
+          "region": "NA",
+          "uploaded": "2026-08-09",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 58,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "X7j6hJJ0Vb8",
+          "title": "Teemo Top vs Renekton - KR Master Patch 26.02",
+          "rankClaim": "Master",
+          "patch": "26.2",
+          "durationSec": 1591,
+          "region": "KR",
+          "uploaded": "2026-02-06",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 271,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 470,
+              "label": "Hunt The Void Grubs",
+              "kind": "grubs"
+            },
+            {
+              "atSec": 497,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 614,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 721,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 747,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 931,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1029,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1090,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1131,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1205,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1230,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1366,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1454,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1479,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1529,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1580,
+              "label": "End credit"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 59,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "DPnwGCSxNz0",
+          "title": "Teemo Jungle vs Jarvan IV - NA Grandmaster Patch 25.21",
+          "rankClaim": "Grandmaster",
+          "patch": "25.21",
+          "durationSec": 1892,
+          "region": "NA",
+          "uploaded": "2025-11-05",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 62,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "Iikj8NOUrQY",
+          "title": "Teemo Top vs Wukong - KR Master Patch 25.15",
+          "rankClaim": "Master",
+          "patch": "25.15",
+          "durationSec": 1876,
+          "region": "KR",
+          "uploaded": "2025-08-05",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 64,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "z4Ig5qwk4dY",
+          "title": "Teemo Jungle vs Lee Sin - KR Master Patch 25.06",
+          "rankClaim": "Master",
+          "patch": "25.6",
+          "durationSec": 1656,
+          "region": "KR",
+          "uploaded": "2025-04-03",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 68,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "7zwhtdGzFCA",
+          "title": "Teemo Jungle vs Rumble - NA Grandmaster Patch 26.14",
+          "rankClaim": "Grandmaster",
+          "patch": "26.14",
+          "durationSec": 1850,
+          "region": "NA",
+          "uploaded": "2026-07-31",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 68,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "BbPvCaQ65wg",
+          "title": "Teemo Top vs Rumble - KR Grandmaster Patch 25.13",
+          "rankClaim": "Grandmaster",
+          "patch": "25.13",
+          "durationSec": 1626,
+          "region": "KR",
+          "uploaded": "2025-07-02",
+          "moments": []
+        },
+        {
+          "videoId": "zSKSdzXaBFQ",
+          "title": "Teemo Top vs Rumble - KR Grandmaster Patch 25.11",
+          "rankClaim": "Grandmaster",
+          "patch": "25.11",
+          "durationSec": 1547,
+          "region": "KR",
+          "uploaded": "2025-06-06",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 69,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "6uFHw31Y3Oo",
+          "title": "Teemo Top vs Cassiopeia - EUW Grandmaster Patch 25.16",
+          "rankClaim": "Grandmaster",
+          "patch": "25.16",
+          "durationSec": 1921,
+          "region": "EUW",
+          "uploaded": "2025-08-21",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 72,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "OniMWJscqkQ",
+          "title": "Teemo Jungle vs Skarner - EUW Grandmaster Patch 26.11",
+          "rankClaim": "Grandmaster",
+          "patch": "26.11",
+          "durationSec": 1799,
+          "region": "EUW",
+          "uploaded": "2026-06-08",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 75,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "-gnHotaqCvE",
+          "title": "Teemo Top vs Nasus - KR Master Patch 26.16",
+          "rankClaim": "Master",
+          "patch": "26.16",
+          "durationSec": 1510,
+          "region": "KR",
+          "uploaded": "2026-08-26",
+          "moments": []
+        },
+        {
+          "videoId": "5vviCg94PZc",
+          "title": "Teemo Top vs Nasus - KR Master Patch 26.01",
+          "rankClaim": "Master",
+          "patch": "26.1",
+          "durationSec": 1535,
+          "region": "KR",
+          "uploaded": "2026-01-20",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 218,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 922,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 972,
+              "label": "Hunt The Rift Herald",
+              "kind": "herald"
+            },
+            {
+              "atSec": 1059,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1092,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1211,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1314,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1407,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1439,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1511,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1524,
+              "label": "End credit"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 76,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "y6bgz4T0cbo",
+          "title": "Teemo Jungle vs Nidalee - NA Challenger Patch 26.04",
+          "rankClaim": "Challenger",
+          "patch": "26.4",
+          "durationSec": 1711,
+          "region": "NA",
+          "uploaded": "2026-03-04",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 287,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 520,
+              "label": "Hunt The Dragon",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 750,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 818,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 852,
+              "label": "Hunt The Dragon",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 908,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 935,
+              "label": "Hunt The Rift Herald",
+              "kind": "herald"
+            },
+            {
+              "atSec": 1189,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1207,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1317,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1386,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1493,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1512,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1537,
+              "label": "Hunt The Dragon",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1589,
+              "label": "Hunt The Baron Nashor",
+              "kind": "baron"
+            },
+            {
+              "atSec": 1656,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1700,
+              "label": "End credit"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 79,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "ymueaWSNDbM",
+          "title": "Teemo Top vs Gragas - KR Grandmaster Patch 25.14",
+          "rankClaim": "Grandmaster",
+          "patch": "25.14",
+          "durationSec": 1481,
+          "region": "KR",
+          "uploaded": "2025-07-26",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 80,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "Ndrm8Ta1kfo",
+          "title": "Teemo vs Pantheon [ TOP ] Patch 25.8 Korea Master ✅",
+          "rankClaim": "Master",
+          "patch": "25.8",
+          "durationSec": 1735,
+          "region": "KR",
+          "uploaded": "2025-04-26",
+          "moments": []
+        },
+        {
+          "videoId": "BvST5ZB4zVs",
+          "title": "Teemo vs Pantheon [ TOP ] Korea Challenger Patch 25.4 ✅",
+          "rankClaim": "Challenger",
+          "patch": "25.4",
+          "durationSec": 1522,
+          "region": "KR",
+          "uploaded": "2025-02-23",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 82,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "NLVA5zsApqA",
+          "title": "Teemo Top vs Mordekaiser - NA Grandmaster Patch 25.06",
+          "rankClaim": "Grandmaster",
+          "patch": "25.6",
+          "durationSec": 1612,
+          "region": "NA",
+          "uploaded": "2025-03-26",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 366,
+              "label": "Hunt The Void Grubs",
+              "kind": "grubs"
+            },
+            {
+              "atSec": 676,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 729,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 992,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1143,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1175,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1265,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1299,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1380,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1510,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1534,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1563,
+              "label": "Take down The Inhibitor"
+            },
+            {
+              "atSec": 1578,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1591,
+              "label": "End credit"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 85,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "anqXGVR2Uas",
+          "title": "(Untara) Teemo Top vs Kennen - KR Master Patch 26.13",
+          "rankClaim": "Master",
+          "patch": "26.13",
+          "durationSec": 1649,
+          "region": "KR",
+          "player": "Untara",
+          "uploaded": "2026-07-01",
+          "moments": []
+        },
+        {
+          "videoId": "NMWCeLKRmIY",
+          "title": "Teemo Top vs Kennen - KR Grandmaster Patch 26.07",
+          "rankClaim": "Grandmaster",
+          "patch": "26.7",
+          "durationSec": 1837,
+          "region": "KR",
+          "uploaded": "2026-04-10",
+          "moments": []
+        },
+        {
+          "videoId": "IB69-2gJ0ZY",
+          "title": "Teemo vs Kennen [ TOP ] Lol Korea Master Patch 25.24 ✅",
+          "rankClaim": "Master",
+          "patch": "25.24",
+          "durationSec": 1710,
+          "region": "KR",
+          "uploaded": "2025-12-25",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 86,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "1xd-QxqajqI",
+          "title": "Teemo Top vs Garen - KR Grandmaster Patch 26.09",
+          "rankClaim": "Grandmaster",
+          "patch": "26.9",
+          "durationSec": 1879,
+          "region": "KR",
+          "uploaded": "2026-05-07",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 98,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "GNlCOPukkG4",
+          "title": "Teemo vs Shen [ TOP ] Lol Korea Master Patch 25.18",
+          "rankClaim": "Master",
+          "patch": "25.18",
+          "durationSec": 1371,
+          "region": "KR",
+          "uploaded": "2025-09-22",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 104,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "OBFoAx6yHBg",
+          "title": "(Sheiden) Teemo Jungle vs Graves - EUW Challenger Patch 26.10",
+          "rankClaim": "Challenger",
+          "patch": "26.10",
+          "durationSec": 1426,
+          "region": "EUW",
+          "player": "Sheiden",
+          "uploaded": "2026-05-23",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 106,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "0oWemY5YoY4",
+          "title": "Teemo vs Volibear [ TOP ] Lol Korea Master Patch 25.23 ✅",
+          "rankClaim": "Master",
+          "patch": "25.23",
+          "durationSec": 1775,
+          "region": "KR",
+          "uploaded": "2025-11-28",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 107,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "aTzQ-E9rHXo",
+          "title": "Teemo Top vs Rengar - KR Grandmaster Patch 25.12",
+          "rankClaim": "Grandmaster",
+          "patch": "25.12",
+          "durationSec": 1719,
+          "region": "KR",
+          "uploaded": "2025-06-18",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 112,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "8sr4t-TN3Bs",
+          "title": "(Untara) Teemo Top vs Viktor (SCBC Shogun) - KR Grandmaster Patch 26.11",
+          "rankClaim": "Grandmaster",
+          "patch": "26.11",
+          "durationSec": 1849,
+          "region": "KR",
+          "player": "Untara",
+          "uploaded": "2026-06-02",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 114,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "FRdskvdkWDU",
+          "title": "(BIG Irrelevant) Teemo Top vs Fiora - EUW Grandmaster Patch 26.10",
+          "rankClaim": "Grandmaster",
+          "patch": "26.10",
+          "durationSec": 1522,
+          "region": "EUW",
+          "player": "BIG Irrelevant",
+          "uploaded": "2026-05-29",
+          "moments": []
+        },
+        {
+          "videoId": "1X6LeqLoTHc",
+          "title": "Teemo Top vs Fiora - KR Master Patch 25.17",
+          "rankClaim": "Master",
+          "patch": "25.17",
+          "durationSec": 1815,
+          "region": "KR",
+          "uploaded": "2025-09-04",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 122,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "qr-AChtWfg4",
+          "title": "Teemo vs Darius 12/2/8 (Top) | EUW Master | Teemo OTP Replay",
+          "rankClaim": "Master",
+          "patch": "26.11",
+          "durationSec": 1716,
+          "region": "EUW",
+          "patchEstimated": true,
+          "uploaded": "2026-05-28",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 126,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "RldlEvHI2h8",
+          "title": "(Untara) Teemo Top vs Jayce - KR Master Patch 26.15",
+          "rankClaim": "Master",
+          "patch": "26.15",
+          "durationSec": 1727,
+          "region": "KR",
+          "player": "Untara",
+          "uploaded": "2026-08-04",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 134,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "GbkXQhG8YzI",
+          "title": "Teemo Top vs Syndra - KR Grandmaster Patch 26.05",
+          "rankClaim": "Grandmaster",
+          "patch": "26.5",
+          "durationSec": 1813,
+          "region": "KR",
+          "uploaded": "2026-03-12",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 85,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 240,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 331,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 581,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 870,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 895,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 922,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 946,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1048,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1117,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1237,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1332,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1363,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1411,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1524,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1636,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1652,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1738,
+              "label": "Hunt The Dragon",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1755,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1802,
+              "label": "End credit"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 141,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "y6hzq3dC-E0",
+          "title": "Teemo Jungle vs Kayn - EUW Grandmaster Patch 26.06",
+          "rankClaim": "Grandmaster",
+          "patch": "26.6",
+          "durationSec": 1783,
+          "region": "EUW",
+          "uploaded": "2026-03-31",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 150,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "6IR7cmcr1lM",
+          "title": "Teemo vs Gnar [ TOP ] Lol Korea Master 570 LP | Patch 26.14 ✅",
+          "rankClaim": "Master",
+          "patch": "26.14",
+          "durationSec": 1793,
+          "region": "KR",
+          "uploaded": "2026-07-19",
+          "moments": []
+        },
+        {
+          "videoId": "PVxm7cF7kTI",
+          "title": "Teemo vs Gnar 14/3/9 (Top) | EUW Master | Teemo OTP Replay",
+          "rankClaim": "Master",
+          "patch": "26.10",
+          "durationSec": 1574,
+          "region": "EUW",
+          "patchEstimated": true,
+          "uploaded": "2026-05-23",
+          "moments": []
+        },
+        {
+          "videoId": "2A_kqV0dZ40",
+          "title": "Teemo Top vs Gnar - KR Master Patch 25.24",
+          "rankClaim": "Master",
+          "patch": "25.24",
+          "durationSec": 1516,
+          "region": "KR",
+          "uploaded": "2025-12-24",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 269,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 534,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 653,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 879,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 959,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 980,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1098,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1174,
+              "label": "Hunt The Dragon",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1278,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1376,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1477,
+              "label": "Get a Triple Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1505,
+              "label": "End credit"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 154,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "89ebRT5v2JY",
+          "title": "Teemo Jungle vs Zac - KR Master Patch 25.09",
+          "rankClaim": "Master",
+          "patch": "25.9",
+          "durationSec": 1847,
+          "region": "KR",
+          "uploaded": "2025-05-12",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 157,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "xX5XZGFxmN0",
+          "title": "Teemo Top vs Yasuo - KR Challenger Patch 25.19",
+          "rankClaim": "Challenger",
+          "patch": "25.19",
+          "durationSec": 1794,
+          "region": "KR",
+          "uploaded": "2025-10-01",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 164,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "n36KO8kuODI",
+          "title": "Teemo Top vs Camille - EUW Master Patch 26.17",
+          "rankClaim": "Master",
+          "patch": "26.17",
+          "durationSec": 1677,
+          "region": "EUW",
+          "uploaded": "2026-09-01",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 203,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "Eg3UZpsuyd0",
+          "title": "Teemo Jungle vs Kindred - KR Master Patch 25.07",
+          "rankClaim": "Master",
+          "patch": "25.7",
+          "durationSec": 2000,
+          "region": "KR",
+          "uploaded": "2025-04-13",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 235,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "XB13BTMdyK0",
+          "title": "Teemo Support vs Senna - KR Master Patch 25.13",
+          "rankClaim": "Master",
+          "patch": "25.13",
+          "durationSec": 1892,
+          "region": "KR",
+          "uploaded": "2025-07-08",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 236,
+      "lane": "adc",
+      "videos": [
+        {
+          "videoId": "uE9A-WekxXI",
+          "title": "T1 Peyz Teemo vs Lucian [ ADC ] Korea Challenger 2429 LP | Patch 26.12",
+          "rankClaim": "Challenger",
+          "patch": "26.12",
+          "durationSec": 1222,
+          "region": "KR",
+          "player": "Peyz",
+          "team": "T1",
+          "uploaded": "2026-06-24",
+          "moments": [
+            {
+              "atSec": 0,
+              "label": "Early game and first blood",
+              "kind": "kill"
+            },
+            {
+              "atSec": 132,
+              "label": "Mid lane skirmishes"
+            },
+            {
+              "atSec": 395,
+              "label": "Objective control and fighting"
+            },
+            {
+              "atSec": 662,
+              "label": "Expanding map pressure"
+            },
+            {
+              "atSec": 864,
+              "label": "Dominating the late game"
+            },
+            {
+              "atSec": 1054,
+              "label": "Closing the victory"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 238,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "XYrgEOXezbY",
+          "title": "Teemo Jungle vs Zed - EUW Grandmaster Patch 25.24",
+          "rankClaim": "Grandmaster",
+          "patch": "25.24",
+          "durationSec": 1495,
+          "region": "EUW",
+          "uploaded": "2026-01-01",
+          "moments": []
+        },
+        {
+          "videoId": "lbbdkXuewkI",
+          "title": "Teemo Jungle vs Zed - KR Master Patch 25.08",
+          "rankClaim": "Master",
+          "patch": "25.8",
+          "durationSec": 1775,
+          "region": "KR",
+          "uploaded": "2025-04-28",
+          "moments": []
+        },
+        {
+          "videoId": "ZCi1cNUWWsY",
+          "title": "Teemo Jungle vs Zed - NA Grandmaster Patch 25.04",
+          "rankClaim": "Grandmaster",
+          "patch": "25.4",
+          "durationSec": 1591,
+          "region": "NA",
+          "uploaded": "2025-03-05",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 374,
+              "label": "Hunt The Dragon",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 448,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 640,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 839,
+              "label": "Get a Triple Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 874,
+              "label": "Hunt The Dragon",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 975,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1080,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1202,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1219,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1234,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1282,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1320,
+              "label": "Hunt The Atakhan"
+            },
+            {
+              "atSec": 1352,
+              "label": "Hunt The Rift Herald",
+              "kind": "herald"
+            },
+            {
+              "atSec": 1382,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1481,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1511,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1526,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1570,
+              "label": "End credit"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 245,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "r7Z6_aJTSeQ",
+          "title": "Teemo Top vs Ekko - KR Master Patch 26.03",
+          "rankClaim": "Master",
+          "patch": "26.3",
+          "durationSec": 1534,
+          "region": "KR",
+          "uploaded": "2026-02-12",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 137,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 364,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 558,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 741,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 836,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 869,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 959,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 987,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1009,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1041,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1102,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1141,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1176,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1287,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1358,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1471,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1487,
+              "label": "Take down The Inhibitor"
+            },
+            {
+              "atSec": 1500,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1523,
+              "label": "End credit"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 266,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "0IUuR4w-LwM",
+          "title": "Teemo Top vs Aatrox - BR Challenger Patch 26.08",
+          "rankClaim": "Challenger",
+          "patch": "26.8",
+          "durationSec": 1747,
+          "uploaded": "2026-04-24",
+          "moments": []
+        },
+        {
+          "videoId": "Tko1UBS7oUk",
+          "title": "Teemo vs Aatrox [ TOP ] Lol Korea Master Patch 25.16",
+          "rankClaim": "Master",
+          "patch": "25.16",
+          "durationSec": 1830,
+          "region": "KR",
+          "uploaded": "2025-08-17",
+          "moments": []
+        },
+        {
+          "videoId": "QxvkPRcL8Ok",
+          "title": "Teemo vs Aatrox [ TOP ] Lol Korea Master Patch 25.12",
+          "rankClaim": "Master",
+          "patch": "25.12",
+          "durationSec": 1502,
+          "region": "KR",
+          "uploaded": "2025-06-22",
+          "moments": []
+        },
+        {
+          "videoId": "qybh88NEmEI",
+          "title": "Teemo Top vs Aatrox - KR Master Patch 25.09",
+          "rankClaim": "Master",
+          "patch": "25.9",
+          "durationSec": 1877,
+          "region": "KR",
+          "uploaded": "2025-05-08",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 157,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 373,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 588,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 795,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 822,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 853,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1043,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1086,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1113,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1248,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1330,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1364,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1407,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1481,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1585,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1604,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1622,
+              "label": "Take down The Inhibitor"
+            },
+            {
+              "atSec": 1638,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1719,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1776,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1856,
+              "label": "End credit"
+            }
+          ]
+        },
+        {
+          "videoId": "rV3qK3szE3o",
+          "title": "Teemo Top vs Aatrox - KR Master Patch 25.07",
+          "rankClaim": "Master",
+          "patch": "25.7",
+          "durationSec": 1958,
+          "region": "KR",
+          "uploaded": "2025-04-10",
+          "moments": []
+        },
+        {
+          "videoId": "BjT82Q9jh4U",
+          "title": "Teemo vs Aatrox [ TOP ] Patch 25.2 Korea Grandmaster ✅",
+          "rankClaim": "Grandmaster",
+          "patch": "25.2",
+          "durationSec": 1784,
+          "region": "KR",
+          "uploaded": "2025-01-29",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 267,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "jE2spbIwQU4",
+          "title": "Teemo Support vs Nami - NA Challenger Patch 25.18",
+          "rankClaim": "Challenger",
+          "patch": "25.18",
+          "durationSec": 1834,
+          "region": "NA",
+          "uploaded": "2025-09-23",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 350,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "us0R9Sbni0Y",
+          "title": "Teemo Support vs Yuumi - KR Master Patch 25.14",
+          "rankClaim": "Master",
+          "patch": "25.14",
+          "durationSec": 1615,
+          "region": "KR",
+          "uploaded": "2025-08-01",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 432,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "a86sI-lMX8M",
+          "title": "Teemo Support vs Bard - KR Master Patch 26.09",
+          "rankClaim": "Master",
+          "patch": "26.9",
+          "durationSec": 1555,
+          "region": "KR",
+          "uploaded": "2026-05-13",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 497,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "JuD0wjYub0Q",
+          "title": "Teemo Support vs Rakan - KR Master Patch 25.23",
+          "rankClaim": "Master",
+          "patch": "25.23",
+          "durationSec": 1456,
+          "region": "KR",
+          "uploaded": "2025-12-04",
+          "moments": []
+        },
+        {
+          "videoId": "RmwKollhZ3s",
+          "title": "Teemo Support vs Rakan - NA Challenger Patch 25.17",
+          "rankClaim": "Challenger",
+          "patch": "25.17",
+          "durationSec": 1687,
+          "region": "NA",
+          "uploaded": "2025-09-09",
+          "moments": []
+        },
+        {
+          "videoId": "SqP7_r95kqc",
+          "title": "Teemo Support vs Rakan - KR Master Patch 25.10",
+          "rankClaim": "Master",
+          "patch": "25.10",
+          "durationSec": 1999,
+          "region": "KR",
+          "uploaded": "2025-05-27",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 516,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "TzMEb0i2eOk",
+          "title": "Teemo Top vs Ornn - EUW Master Patch 26.19",
+          "rankClaim": "Master",
+          "patch": "26.19",
+          "durationSec": 1762,
+          "region": "EUW",
+          "uploaded": "2026-09-29",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 518,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "0jeyVUQE79g",
+          "title": "Teemo Support vs Neeko - KR Grandmaster Patch 26.03",
+          "rankClaim": "Grandmaster",
+          "patch": "26.3",
+          "durationSec": 1580,
+          "region": "KR",
+          "uploaded": "2026-02-19",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 157,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 354,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 457,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 707,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 804,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 887,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 977,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1079,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1187,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1239,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1398,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1417,
+              "label": "Take down The Inhibitor"
+            },
+            {
+              "atSec": 1429,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1569,
+              "label": "End credit"
+            }
+          ]
+        },
+        {
+          "videoId": "DAj10WZ-kEc",
+          "title": "Teemo Support vs Neeko - KR Master Patch 25.12",
+          "rankClaim": "Master",
+          "patch": "25.12",
+          "durationSec": 1526,
+          "region": "KR",
+          "uploaded": "2025-06-25",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 777,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "TwShb4VTfUg",
+          "title": "Teemo Mid vs Yone - NA Grandmaster Patch 25.24",
+          "rankClaim": "Grandmaster",
+          "patch": "25.24",
+          "durationSec": 1556,
+          "region": "NA",
+          "uploaded": "2026-01-07",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 270,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 521,
+              "label": "Hunt The Void Grubs",
+              "kind": "grubs"
+            },
+            {
+              "atSec": 787,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 855,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 882,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 999,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1026,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1054,
+              "label": "Hunt The Dragon",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1145,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1399,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1470,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1545,
+              "label": "End credit"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 799,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "0ZdE927L7iE",
+          "title": "Teemo Top vs Ambessa - KR Master Patch 26.12",
+          "rankClaim": "Master",
+          "patch": "26.12",
+          "durationSec": 1718,
+          "region": "KR",
+          "uploaded": "2026-06-18",
+          "moments": []
+        },
+        {
+          "videoId": "-yiqgnzMWsI",
+          "title": "Teemo Top vs Ambessa - KR Master Patch 25.20",
+          "rankClaim": "Master",
+          "patch": "25.20",
+          "durationSec": 2027,
+          "region": "KR",
+          "uploaded": "2025-10-17",
+          "moments": []
+        },
+        {
+          "videoId": "GgwaDC8hg0o",
+          "title": "Teemo Top vs Ambessa - KR Master Patch 25.18",
+          "rankClaim": "Master",
+          "patch": "25.18",
+          "durationSec": 1645,
+          "region": "KR",
+          "uploaded": "2025-09-17",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 804,
+      "lane": "adc",
+      "videos": [
+        {
+          "videoId": "naGLXAhUABA",
+          "title": "T1 Peyz Teemo vs Yunara [ ADC ] Korea Challenger 2462 LP | Patch 26.7",
+          "rankClaim": "Challenger",
+          "patch": "26.7",
+          "durationSec": 1508,
+          "region": "KR",
+          "player": "Peyz",
+          "team": "T1",
+          "uploaded": "2026-04-05",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 805,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "ANy7zUC5bKI",
+          "title": "Teemo Jungle vs Locke - VN Challenger Patch 26.13",
+          "rankClaim": "Challenger",
+          "patch": "26.13",
+          "durationSec": 1532,
+          "uploaded": "2026-07-05",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 904,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "ozxJvG86v8M",
+          "title": "Teemo Top vs Zaahen - KR Grandmaster Patch 26.06",
+          "rankClaim": "Grandmaster",
+          "patch": "26.6",
+          "durationSec": 1691,
+          "region": "KR",
+          "uploaded": "2026-03-26",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 763,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 868,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 885,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 948,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1064,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1113,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1134,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1152,
+              "label": "Hunt The Dragon",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1197,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1227,
+              "label": "Hunt The Baron Nashor",
+              "kind": "baron"
+            },
+            {
+              "atSec": 1284,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1391,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1459,
+              "label": "Hunt The Dragon",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1648,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1680,
+              "label": "End credit"
+            }
+          ]
+        },
+        {
+          "videoId": "crq3M8gIXLw",
+          "title": "Teemo Top vs Zaahen - KR Master Patch 26.04",
+          "rankClaim": "Master",
+          "patch": "26.4",
+          "durationSec": 1712,
+          "region": "KR",
+          "uploaded": "2026-02-25",
+          "moments": []
+        },
+        {
+          "videoId": "cq8JhouMTOI",
+          "title": "Teemo Top vs Zaahen - KR Master Patch 25.24",
+          "rankClaim": "Master",
+          "patch": "25.24",
+          "durationSec": 1606,
+          "region": "KR",
+          "uploaded": "2025-12-15",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 230,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 440,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 535,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 580,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 612,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 751,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 916,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1080,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1111,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1229,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1347,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1474,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1528,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1595,
+              "label": "End credit"
+            }
+          ]
+        },
+        {
+          "videoId": "3Cp_ouTscyY",
+          "title": "Teemo Top vs Zaahen - KR Master Patch 25.23",
+          "rankClaim": "Master",
+          "patch": "25.23",
+          "durationSec": 1597,
+          "region": "KR",
+          "uploaded": "2025-11-29",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 910,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "OE6xHW0FAF0",
+          "title": "Teemo Mid vs Hwei - EUW Grandmaster Patch 25.04",
+          "rankClaim": "Grandmaster",
+          "patch": "25.4",
+          "durationSec": 1610,
+          "region": "EUW",
+          "uploaded": "2025-02-27",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 203,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 377,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 459,
+              "label": "Get a Triple Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 588,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 654,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 819,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 884,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1009,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1027,
+              "label": "Take down The Inhibitor"
+            },
+            {
+              "atSec": 1166,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1274,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1336,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1391,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1424,
+              "label": "Take down The Inhibitor"
+            },
+            {
+              "atSec": 1529,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1569,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1589,
+              "label": "End credit"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 950,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "Cqknl4ilGII",
+          "title": "Teemo Jungle vs Naafiri - EUW Grandmaster Patch 25.24",
+          "rankClaim": "Grandmaster",
+          "patch": "25.24",
+          "durationSec": 1523,
+          "region": "EUW",
+          "uploaded": "2025-12-11",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 390,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 471,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 526,
+              "label": "Hunt The Dragon",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 702,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 864,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 991,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1101,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1166,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1192,
+              "label": "Hunt The Dragon",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1212,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1252,
+              "label": "Hunt The Atakhan"
+            },
+            {
+              "atSec": 1331,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1353,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1512,
+              "label": "End credit"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,5076 @@
+{
+  "schema": 1,
+  "champion": 22,
+  "generatedAt": "2026-11-07T13:25:14.592Z",
+  "guides": [
+    {
+      "champion": 22,
+      "enemy": 202,
+      "lane": "adc",
+      "patch": "26.21",
+      "reviewed": false,
+      "difficulty": "Medium",
+      "favoredWhen": "Keep him at Volley range; never let him set the short-trade terms.",
+      "keyTips": [
+        {
+          "text": "Your range is the problem he cannot solve. Hold max distance and make every trade happen at your auto range, never at his.",
+          "scope": "pair",
+          "sourceIds": [
+            "antiwis"
+          ],
+          "patch": "26.21"
+        },
+        {
+          "text": "He trades only in flashes of Q plus the fourth shot, then leaves. Answer the burst, then re-engage while his shots are spent.",
+          "scope": "pair",
+          "sourceIds": [
+            "antiwis"
+          ],
+          "patch": "26.21",
+          "abilityKeys": [
+            {
+              "champion": 202,
+              "key": "Q"
+            }
+          ]
+        },
+        {
+          "text": "He rushes Swiftness and takes Fleet plus Cleanse into you. Respect that setup: hold Volley ({cd:22:W}) slows for real commits and hold your arrow for the guaranteed hit, not poke.",
+          "scope": "pair",
+          "sourceIds": [
+            "antiwis"
+          ],
+          "patch": "26.21",
+          "abilityKeys": [
+            {
+              "champion": 22,
+              "key": "W"
+            },
+            {
+              "champion": 22,
+              "key": "R"
+            }
+          ]
+        }
+      ],
+      "enemyTips": {
+        "early-lane": [
+          {
+            "text": "Jhin loads his fourth shot on a minion and holds it to zone you off the wave. Trade while it is spent and give ground while it is held.",
+            "scope": "enemy",
+            "sourceIds": [
+              "omibro"
+            ],
+            "patch": "26.19",
+            "abilityKeys": [
+              {
+                "champion": 202,
+                "key": "Q"
+              }
+            ]
+          },
+          {
+            "text": "Deadly Flourish is a follow-up for support crowd control, not dry poke. A wasted W is your window to walk up.",
+            "scope": "enemy",
+            "sourceIds": [
+              "omibro"
+            ],
+            "patch": "26.19",
+            "abilityKeys": [
+              {
+                "champion": 202,
+                "key": "W"
+              }
+            ]
+          }
+        ],
+        "win-condition": [
+          {
+            "text": "A landed Deadly Flourish sets up a guaranteed first Curtain Call shot when fired instantly. Break vision lines and stay mobile once it connects.",
+            "scope": "enemy",
+            "sourceIds": [
+              "omibro"
+            ],
+            "patch": "26.19",
+            "abilityKeys": [
+              {
+                "champion": 202,
+                "key": "W"
+              },
+              {
+                "champion": 202,
+                "key": "R"
+              }
+            ]
+          }
+        ]
+      },
+      "sections": {
+        "overview": {
+          "tips": []
+        },
+        "early-lane": {
+          "tips": [
+            {
+              "text": "Keep Volley pressure on the wave. He must wait for its cooldown to engage, so never give him a free window without it.",
+              "scope": "pair",
+              "sourceIds": [
+                "yunfang"
+              ],
+              "patch": "26.20",
+              "abilityKeys": [
+                {
+                  "champion": 22,
+                  "key": "W"
+                }
+              ]
+            },
+            {
+              "text": "Trade while his fourth shot is spent and give ground while he holds it. The loaded shot zones you off the wave even without firing.",
+              "scope": "pair",
+              "sourceIds": [
+                "omibro"
+              ],
+              "patch": "26.21",
+              "abilityKeys": [
+                {
+                  "champion": 202,
+                  "key": "Q"
+                }
+              ]
+            },
+            {
+              "text": "Walk up when he wastes Deadly Flourish ({cd:202:W}) dry. Without the follow-up root he has no answer to your slows.",
+              "scope": "pair",
+              "sourceIds": [
+                "omibro"
+              ],
+              "patch": "26.21",
+              "abilityKeys": [
+                {
+                  "champion": 202,
+                  "key": "W"
+                }
+              ]
+            }
+          ]
+        },
+        "mid-lane": {
+          "tips": [
+            {
+              "text": "Force the long game at your range. He avoids fighting and wants only brief trades, so extended slow pressure breaks him.",
+              "scope": "pair",
+              "sourceIds": [
+                "antiwis"
+              ],
+              "patch": "26.21"
+            },
+            {
+              "text": "Sweep the objective flanks for his traps and fog picks. Denied vision denies his casts, and he cannot set up what he cannot see.",
+              "scope": "pair",
+              "sourceIds": [
+                "omibro"
+              ],
+              "patch": "26.21",
+              "abilityKeys": [
+                {
+                  "champion": 202,
+                  "key": "E"
+                }
+              ]
+            }
+          ]
+        },
+        "win-condition": {
+          "tips": [
+            {
+              "text": "Force his Cleanse with slows first, then land the arrow while it is down. The kill chain only works in that order against his setup.",
+              "scope": "pair",
+              "sourceIds": [
+                "antiwis"
+              ],
+              "patch": "26.21",
+              "abilityKeys": [
+                {
+                  "champion": 22,
+                  "key": "R"
+                }
+              ]
+            },
+            {
+              "text": "Break vision and stay mobile once his root connects. The instant Curtain Call shot after it is guaranteed unless you are already moving.",
+              "scope": "pair",
+              "sourceIds": [
+                "omibro"
+              ],
+              "patch": "26.21",
+              "abilityKeys": [
+                {
+                  "champion": 202,
+                  "key": "W"
+                },
+                {
+                  "champion": 202,
+                  "key": "R"
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "itemization": [
+        {
+          "text": "Spend for fight damage, not utility. His whole plan is avoiding you, so raw stats that win the fights he cannot refuse beat extra slow tools.",
+          "scope": "pair",
+          "sourceIds": [
+            "antiwis"
+          ],
+          "patch": "26.21"
+        }
+      ],
+      "sources": [
+        {
+          "id": "antiwis",
+          "author": "Antiwis",
+          "rankClaim": "Diamond (profile badge; title claims Master Elo OTP) · Jhin main",
+          "rank": "diamond",
+          "url": "https://www.mobafire.com/league-of-legends/build/26-21-jhin-guide-real-updates-every-patch-master-elo-otp-633981",
+          "kind": "mobafire"
+        },
+        {
+          "id": "yunfang",
+          "author": "Yunfang",
+          "rankClaim": "Diamond (profile badge; guide text claims Master ADC main) · Jhin main",
+          "rank": "diamond",
+          "url": "https://www.mobafire.com/league-of-legends/build/s2026-20-easy-to-read-simple-1v9-live-ama-full-guide-updated-650175",
+          "kind": "mobafire"
+        },
+        {
+          "id": "omibro",
+          "author": "Omibro",
+          "rankClaim": "Challenger ADC and coach · Jhin main",
+          "rank": "challenger",
+          "url": "https://www.youtube.com/watch?v=8Ln7EC-ryxo&t=3259s",
+          "kind": "youtube"
+        }
+      ]
+    }
+  ],
+  "general": [
+    {
+      "champion": 22,
+      "lane": "adc",
+      "patch": "26.21",
+      "reviewed": false,
+      "keyTips": [
+        {
+          "text": "Control the wave and vision before stepping up to trade, since Ashe has no mobility escape.",
+          "scope": "champion",
+          "sourceIds": [
+            "misterfirstblood-ashe"
+          ]
+        },
+        {
+          "text": "Kite with passive slows and hold enough distance to make up for the missing escape.",
+          "scope": "champion",
+          "sourceIds": [
+            "misterfirstblood-ashe"
+          ]
+        },
+        {
+          "text": "Fire R only when allies stand ready to act on the stun.",
+          "scope": "champion",
+          "sourceIds": [
+            "misterfirstblood-ashe"
+          ],
+          "abilityKeys": [
+            {
+              "champion": 22,
+              "key": "R"
+            }
+          ]
+        }
+      ],
+      "sections": {
+        "overview": {
+          "tips": []
+        },
+        "early-lane": {
+          "tips": [
+            {
+              "text": "Slow a target with an attack before a close-range R, since the shorter reaction window lands the stun more reliably.",
+              "scope": "champion",
+              "sourceIds": [
+                "misterfirstblood-ashe"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 22,
+                  "key": "R"
+                }
+              ]
+            },
+            {
+              "text": "When lane pressure gets hard, freeze and farm safely while scaling toward the later timing.",
+              "scope": "champion",
+              "sourceIds": [
+                "misterfirstblood-ashe"
+              ]
+            },
+            {
+              "text": "Send E ahead before pushing or rotating to an objective; vision that finds a kill can also add an assist.",
+              "scope": "champion",
+              "sourceIds": [
+                "misterfirstblood-ashe"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 22,
+                  "key": "E"
+                }
+              ]
+            }
+          ]
+        },
+        "mid-lane": {
+          "tips": [
+            {
+              "text": "Use E to track enemy rotations so the team never walks blind into an unseen move.",
+              "scope": "champion",
+              "sourceIds": [
+                "misterfirstblood-ashe"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 22,
+                  "key": "E"
+                }
+              ]
+            },
+            {
+              "text": "Open plays with long-range R for teammates, then stay positioned to follow with slows and steady attacks.",
+              "scope": "champion",
+              "sourceIds": [
+                "misterfirstblood-ashe"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 22,
+                  "key": "R"
+                }
+              ]
+            }
+          ]
+        },
+        "win-condition": {
+          "tips": [
+            {
+              "text": "Use R to enable teammates or rescue a fight rather than spending it with no follow-up.",
+              "scope": "champion",
+              "sourceIds": [
+                "misterfirstblood-ashe"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 22,
+                  "key": "R"
+                }
+              ]
+            },
+            {
+              "text": "Scout with E before a push or objective, then catch a priority target with R for the team to convert.",
+              "scope": "champion",
+              "sourceIds": [
+                "misterfirstblood-ashe"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 22,
+                  "key": "E"
+                },
+                {
+                  "champion": 22,
+                  "key": "R"
+                }
+              ]
+            },
+            {
+              "text": "After scaling, stay with the team and deal sustained damage from safety instead of chasing past the frontline.",
+              "scope": "champion",
+              "sourceIds": [
+                "misterfirstblood-ashe"
+              ]
+            }
+          ]
+        }
+      },
+      "itemization": [],
+      "sources": [
+        {
+          "id": "misterfirstblood-ashe",
+          "author": "misterfirstblood",
+          "rankClaim": "No rank claim",
+          "url": "https://www.mobafire.com/league-of-legends/build/15-24-ashe-guide-by-misterfirstblood-v2-522633",
+          "kind": "mobafire"
+        }
+      ]
+    }
+  ],
+  "vods": [
+    {
+      "lane": "adc",
+      "videos": [
+        {
+          "videoId": "imdHeahtK_g",
+          "title": "This is What Machine Gun ASHE Look Like \" Perfect Kitiing\" Engsub",
+          "rankClaim": "Master+",
+          "patch": "26.21",
+          "durationSec": 1301,
+          "patchEstimated": true,
+          "player": "PerfecT",
+          "uploaded": "2026-10-30",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "ZrltfO2XX-Y",
+          "title": "Gumayusi Ashe Tearing KR Challenger Apart .. I'm Coming For Rank 1 Boy .. Engsub",
+          "rankClaim": "Challenger",
+          "patch": "26.11",
+          "durationSec": 781,
+          "region": "KR",
+          "patchEstimated": true,
+          "player": "Gumayusi",
+          "uploaded": "2026-06-01",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "frvGxVbsLPA",
+          "title": "T1 Peyz : His ASHE Mechanic is a FREAKING BEAST",
+          "rankClaim": "Master+",
+          "patch": "26.8",
+          "durationSec": 1277,
+          "patchEstimated": true,
+          "player": "Peyz",
+          "uploaded": "2026-04-28",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "-o65ipY74Ss",
+          "title": "Gumayusi : His ASHE Spacing is GOD LIKE \" Tearing KR Challenger Apart \" Engsub",
+          "rankClaim": "Challenger",
+          "patch": "26.8",
+          "durationSec": 1137,
+          "region": "KR",
+          "patchEstimated": true,
+          "player": "Gumayusi",
+          "uploaded": "2026-04-23",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "9xh3MbxnZhQ",
+          "title": "Gumayusi Ashe : Insane Comeback of History - Engsub",
+          "rankClaim": "Master+",
+          "patch": "26.8",
+          "durationSec": 682,
+          "patchEstimated": true,
+          "player": "Gumayusi",
+          "uploaded": "2026-04-18",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "pKHn-JtSPBM",
+          "title": "GEN.G Ruler : His ASHE Mechanic is Phenomenal - Engsub",
+          "rankClaim": "Master+",
+          "patch": "26.7",
+          "durationSec": 1023,
+          "patchEstimated": true,
+          "player": "Ruler",
+          "uploaded": "2026-04-02",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "TiJPC_3qMIk",
+          "title": "Aiming : His ASHE Spacing is on Another Level - Engsub",
+          "rankClaim": "Master+",
+          "patch": "26.6",
+          "durationSec": 700,
+          "patchEstimated": true,
+          "player": "Aiming",
+          "uploaded": "2026-03-23",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "RCqJmfbSFiQ",
+          "title": "KT Aiming : His Ashe Spacing is God Like ! Engsub",
+          "rankClaim": "Master+",
+          "patch": "26.6",
+          "durationSec": 659,
+          "patchEstimated": true,
+          "player": "Aiming",
+          "uploaded": "2026-03-19",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "zmRya71zjvc",
+          "title": "Aiming : His Ashe Mechanic is so AGGRESSIVE - Engsub",
+          "rankClaim": "Master+",
+          "patch": "26.5",
+          "durationSec": 640,
+          "patchEstimated": true,
+          "player": "Aiming",
+          "uploaded": "2026-03-15",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "a10x2ir0E8U",
+          "title": "Gumayusi : His ASHE SPACING Is MASTER CLASS, Taking Over Challenger in Less 20 Min - Engsub",
+          "rankClaim": "Master",
+          "patch": "26.5",
+          "durationSec": 878,
+          "patchEstimated": true,
+          "player": "Gumayusi",
+          "uploaded": "2026-03-14",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "MiRDrFq3rXA",
+          "title": "Smash : This is SUPREME ASHE Looke Like - Engsub",
+          "rankClaim": "Master+",
+          "patch": "26.4",
+          "durationSec": 1032,
+          "patchEstimated": true,
+          "player": "Smash",
+          "uploaded": "2026-02-24",
+          "format": "stream",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "059jeiCufgQ",
+          "title": "Rank 1 Ashe : This CN Super Server Support is DEVASTATING Challenger Elo",
+          "rankClaim": "Challenger",
+          "patch": "26.5",
+          "durationSec": 1636,
+          "patchEstimated": true,
+          "player": "Baicaiovo",
+          "uploaded": "2026-03-12",
+          "format": "stream",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 12,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "bQHFc2sAnPc",
+          "title": "Ashe Support vs Alistar - KR Master Patch 25.20",
+          "rankClaim": "Master",
+          "patch": "25.20",
+          "durationSec": 1901,
+          "region": "KR",
+          "uploaded": "2025-10-23",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 14,
+      "lane": "adc",
+      "videos": [
+        {
+          "videoId": "KKmWYgW_zvM",
+          "title": "Ashe vs Sion ADC - KR Challenger - Patch 15.4 Season 15",
+          "rankClaim": "Challenger",
+          "patch": "25.4",
+          "durationSec": 2326,
+          "region": "KR",
+          "uploaded": "2025-02-22",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 15,
+      "lane": "adc",
+      "videos": [
+        {
+          "videoId": "_4Tn2o3nU0I",
+          "title": "Rank 1 Ashe : His Mechanic is so DAM AGGRESSIVE - Engsub ( vs Ez, Sivir )",
+          "rankClaim": "Master+",
+          "patch": "26.18",
+          "durationSec": 1282,
+          "patchEstimated": true,
+          "uploaded": "2026-09-22",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "8dyYyItC-L8",
+          "title": "Rank 1 Ashe : With This TWO ITEM, He Will Become Unstoppable - Engsub ( Ashe vs Sivir )",
+          "rankClaim": "Master+",
+          "patch": "26.10",
+          "durationSec": 1098,
+          "patchEstimated": true,
+          "uploaded": "2026-05-22",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "b88lPiThSiQ",
+          "title": "Diable : His ASHE Spacing is so SMOOTH - Engsub ( Ashe vs Sivir )",
+          "rankClaim": "Master+",
+          "patch": "26.9",
+          "durationSec": 1033,
+          "patchEstimated": true,
+          "uploaded": "2026-04-30",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "d_SlKmkcrqs",
+          "title": "Ashe ADC vs Sivir - EUW Grandmaster Patch 26.05",
+          "rankClaim": "Grandmaster",
+          "patch": "26.5",
+          "durationSec": 1444,
+          "region": "EUW",
+          "uploaded": "2026-03-08",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 16,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "7X0hNjXqNDI",
+          "title": "Ashe Support vs Soraka - NA Grandmaster Patch 25.12",
+          "rankClaim": "Grandmaster",
+          "patch": "25.12",
+          "durationSec": 1618,
+          "region": "NA",
+          "uploaded": "2025-06-25",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 18,
+      "lane": "adc",
+      "videos": [
+        {
+          "videoId": "tY6SjCrVrCk",
+          "title": "Ashe vs Tristana ADC [ Gen.G Ruler ] Ranked Master NA | Patch 26.21",
+          "rankClaim": "Master",
+          "patch": "26.21",
+          "durationSec": 1218,
+          "region": "NA",
+          "player": "Ruler",
+          "team": "Gen.G",
+          "uploaded": "2026-10-29",
+          "moments": []
+        },
+        {
+          "videoId": "EVULG335akE",
+          "title": "(MISA Ruep) Ashe ADC vs Tristana - EUW Challenger Patch 26.11",
+          "rankClaim": "Challenger",
+          "patch": "26.11",
+          "durationSec": 1429,
+          "region": "EUW",
+          "player": "MISA Ruep",
+          "uploaded": "2026-06-05",
+          "moments": []
+        },
+        {
+          "videoId": "4eY1dlVzXdU",
+          "title": "Ashe vs Tristana ADC - KR Challenger - Patch 25.23 Season 15",
+          "rankClaim": "Challenger",
+          "patch": "25.23",
+          "durationSec": 1741,
+          "region": "KR",
+          "uploaded": "2025-12-02",
+          "moments": []
+        },
+        {
+          "videoId": "cNBxpEyDJcA",
+          "title": "Ashe vs Tristana ADC - KR Challenger - Patch 25.22 Season 15",
+          "rankClaim": "Challenger",
+          "patch": "25.22",
+          "durationSec": 1621,
+          "region": "KR",
+          "uploaded": "2025-11-17",
+          "moments": []
+        },
+        {
+          "videoId": "-ecDDaG1n5g",
+          "title": "Ashe ADC vs Tristana - KR Grandmaster Patch 25.22",
+          "rankClaim": "Grandmaster",
+          "patch": "25.22",
+          "durationSec": 1441,
+          "region": "KR",
+          "uploaded": "2025-11-07",
+          "moments": []
+        },
+        {
+          "videoId": "o_jyqvCWFLY",
+          "title": "Ashe vs Tristana [ ADC ] Lol Korea Master Patch 25.18 ✅",
+          "rankClaim": "Master",
+          "patch": "25.18",
+          "durationSec": 1418,
+          "region": "KR",
+          "uploaded": "2025-09-11",
+          "moments": []
+        },
+        {
+          "videoId": "nWoxxKumwbE",
+          "title": "Ashe ADC vs Tristana - KR Master Patch 25.17",
+          "rankClaim": "Master",
+          "patch": "25.17",
+          "durationSec": 1915,
+          "region": "KR",
+          "uploaded": "2025-09-02",
+          "moments": []
+        },
+        {
+          "videoId": "BmtD_1nUftE",
+          "title": "T1 Gumayusi Ashe vs Tristana [ ADC ] Patch 25.7 Korea Challenger ✅",
+          "rankClaim": "Challenger",
+          "patch": "25.7",
+          "durationSec": 1015,
+          "region": "KR",
+          "player": "Gumayusi",
+          "team": "T1",
+          "uploaded": "2025-04-03",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 21,
+      "lane": "adc",
+      "videos": [
+        {
+          "videoId": "N48wysQnP6w",
+          "title": "Ashe ADC vs Miss Fortune - EUW Challenger Patch 26.07",
+          "rankClaim": "Challenger",
+          "patch": "26.7",
+          "durationSec": 1447,
+          "region": "EUW",
+          "uploaded": "2026-04-04",
+          "moments": []
+        },
+        {
+          "videoId": "magAwP0JWF8",
+          "title": "Ashe ADC vs Miss Fortune - KR Challenger Patch 26.06",
+          "rankClaim": "Challenger",
+          "patch": "26.6",
+          "durationSec": 1785,
+          "region": "KR",
+          "uploaded": "2026-03-22",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 99,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 238,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 378,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 452,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 553,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 726,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 797,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 920,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1000,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1099,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1244,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1318,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1438,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1463,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1612,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1627,
+              "label": "Get a Triple Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1649,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1700,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1741,
+              "label": "Take down The Inhibitor"
+            },
+            {
+              "atSec": 1753,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1774,
+              "label": "End credit"
+            }
+          ]
+        },
+        {
+          "videoId": "QigOzzKpEgY",
+          "title": "Ashe ADC vs Miss Fortune - EUW Grandmaster Patch 25.24",
+          "rankClaim": "Grandmaster",
+          "patch": "25.24",
+          "durationSec": 1451,
+          "region": "EUW",
+          "uploaded": "2026-01-05",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 126,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 211,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 329,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 496,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 638,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 756,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 785,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 856,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 881,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 947,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 963,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1055,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1094,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1130,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1283,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1314,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1329,
+              "label": "Take down The Inhibitor"
+            },
+            {
+              "atSec": 1410,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1430,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1440,
+              "label": "End credit"
+            }
+          ]
+        },
+        {
+          "videoId": "WP65rR2VfaE",
+          "title": "T1 Gumayusi Ashe vs Miss Fortune [ ADC ] Patch 25.2 Korea Challenger ✅",
+          "rankClaim": "Challenger",
+          "patch": "25.2",
+          "durationSec": 1093,
+          "region": "KR",
+          "player": "Gumayusi",
+          "team": "T1",
+          "uploaded": "2025-02-05",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 26,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "H2u41nTN1vY",
+          "title": "Ashe Support vs Zilean - KR Master Patch 26.03",
+          "rankClaim": "Master",
+          "patch": "26.3",
+          "durationSec": 1605,
+          "region": "KR",
+          "uploaded": "2026-02-17",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 29,
+      "lane": "adc",
+      "videos": [
+        {
+          "videoId": "-IvmFVJFZMA",
+          "title": "Rank 1 Ashe : He Make Super Server Look Like AI - Engsub ( Ashe vs Twitch )",
+          "rankClaim": "Master+",
+          "patch": "26.12",
+          "durationSec": 1027,
+          "patchEstimated": true,
+          "uploaded": "2026-06-16",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "dF-xqzJVrxw",
+          "title": "Rank 1 Ashe : His is so AGGRESSIVE in Early Game with this NEW BUILD - Engsub ( Ashe vs Twitch )",
+          "rankClaim": "Master+",
+          "patch": "26.10",
+          "durationSec": 1026,
+          "patchEstimated": true,
+          "uploaded": "2026-05-21",
+          "format": "stream",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 37,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "Jfoyej4fB6s",
+          "title": "Ashe Support vs Sona - NA Grandmaster Patch 25.21",
+          "rankClaim": "Grandmaster",
+          "patch": "25.21",
+          "durationSec": 1491,
+          "region": "NA",
+          "uploaded": "2025-11-05",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 42,
+      "lane": "adc",
+      "videos": [
+        {
+          "videoId": "qxTrLDMaKEc",
+          "title": "Ashe vs Corki ADC - KR Challenger - Patch 25.18 Season 15",
+          "rankClaim": "Challenger",
+          "patch": "25.18",
+          "durationSec": 1656,
+          "region": "KR",
+          "uploaded": "2025-09-18",
+          "moments": []
+        },
+        {
+          "videoId": "vlCFtBRlaug",
+          "title": "Ashe ADC vs Corki - KR Grandmaster Patch 25.18",
+          "rankClaim": "Grandmaster",
+          "patch": "25.18",
+          "durationSec": 1752,
+          "region": "KR",
+          "uploaded": "2025-09-13",
+          "moments": []
+        },
+        {
+          "videoId": "jMNwbBvZcGk",
+          "title": "T1 Gumayusi Ashe vs Corki [ ADC ] Rank #7 Korea Challenger Patch 25.9",
+          "rankClaim": "Challenger",
+          "patch": "25.9",
+          "durationSec": 1165,
+          "region": "KR",
+          "player": "Gumayusi",
+          "team": "T1",
+          "uploaded": "2025-05-05",
+          "moments": []
+        },
+        {
+          "videoId": "NU7ORgA2nQs",
+          "title": "Ashe vs Corki ADC [ Gen.G Ruler ] Patch 25.8 Korea Challenger ✅",
+          "rankClaim": "Challenger",
+          "patch": "25.8",
+          "durationSec": 1126,
+          "region": "KR",
+          "player": "Ruler",
+          "team": "Gen.G",
+          "uploaded": "2025-04-19",
+          "moments": []
+        },
+        {
+          "videoId": "nUFOTd22NC8",
+          "title": "Ashe vs Corki ADC [ Viper + TripleKill ] Korea Challenger Patch 25.1 ✅",
+          "rankClaim": "Challenger",
+          "patch": "25.1",
+          "durationSec": 1330,
+          "region": "KR",
+          "player": "Viper",
+          "uploaded": "2025-01-19",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 43,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "v_nGs3h-wgQ",
+          "title": "Ashe Support vs Karma - KR Master Patch 26.04",
+          "rankClaim": "Master",
+          "patch": "26.4",
+          "durationSec": 1842,
+          "region": "KR",
+          "uploaded": "2026-03-01",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 113,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 360,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 455,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 636,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 726,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 758,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 785,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 911,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 984,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1009,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1036,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1092,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1195,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1243,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1341,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1454,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1490,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1536,
+              "label": "Take down The Inhibitor"
+            },
+            {
+              "atSec": 1550,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1782,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1810,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1831,
+              "label": "End credit"
+            }
+          ]
+        },
+        {
+          "videoId": "o8sKDp_uzeY",
+          "title": "Ashe Support vs Karma - EUW Grandmaster Patch 25.07",
+          "rankClaim": "Grandmaster",
+          "patch": "25.7",
+          "durationSec": 1494,
+          "region": "EUW",
+          "uploaded": "2025-04-12",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 44,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "2FkHB_DGSSY",
+          "title": "Ashe Support vs Taric - KR Master Patch 26.13",
+          "rankClaim": "Master",
+          "patch": "26.13",
+          "durationSec": 1834,
+          "region": "KR",
+          "uploaded": "2026-07-17",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 45,
+      "lane": "adc",
+      "videos": [
+        {
+          "videoId": "Xs9DfeeBFYI",
+          "title": "Ashe ADC vs Veigar - KR Master Patch 26.03",
+          "rankClaim": "Master",
+          "patch": "26.3",
+          "durationSec": 1593,
+          "region": "KR",
+          "uploaded": "2026-02-09",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 50,
+      "lane": "adc",
+      "videos": [
+        {
+          "videoId": "MJwS5r3qcQM",
+          "title": "Rank 1 Ashe : With This TWO ITEMS He Basically Become MONSTER - Engsub ( Ashe vs Swain )",
+          "rankClaim": "Master+",
+          "patch": "26.10",
+          "durationSec": 862,
+          "patchEstimated": true,
+          "uploaded": "2026-05-13",
+          "format": "stream",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 51,
+      "lane": "adc",
+      "videos": [
+        {
+          "videoId": "q4OEr4g_fVg",
+          "title": "Rank 1 Ashe : This Dude is LEGIT 1v9 HardCarrying in HighElo - Engsub ( vs Caitlyn, Zeri )",
+          "rankClaim": "Master+",
+          "patch": "26.21",
+          "durationSec": 1706,
+          "patchEstimated": true,
+          "uploaded": "2026-10-31",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "u-FZjNrD4yo",
+          "title": "PEYZ : His ASHE is Out Spacing Deokdam Caitlyn in KR Challenger",
+          "rankClaim": "Challenger",
+          "patch": "26.21",
+          "durationSec": 1041,
+          "region": "KR",
+          "patchEstimated": true,
+          "player": "Peyz",
+          "uploaded": "2026-10-22",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "Trpg1VCGh98",
+          "title": "Rank 1 Ashe ADC : PERFECT Spacing + MASSIVE Damage - Engsub ( vs Caitlyn )",
+          "rankClaim": "Master+",
+          "patch": "26.17",
+          "durationSec": 1065,
+          "patchEstimated": true,
+          "player": "PerfecT",
+          "uploaded": "2026-09-03",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "rDK5b8ri7K4",
+          "title": "Rank 1 Ashe : Insane 1v9 Crushing Super Server - Engsub ( Ashe vs Caitlyn )",
+          "rankClaim": "Master+",
+          "patch": "26.13",
+          "durationSec": 1241,
+          "patchEstimated": true,
+          "uploaded": "2026-06-24",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "lKanypAKhnA",
+          "title": "Ashe vs Caitlyn ADC - KR Challenger - Patch 16.09 Season 16",
+          "rankClaim": "Challenger",
+          "patch": "26.9",
+          "durationSec": 1921,
+          "region": "KR",
+          "uploaded": "2026-05-08",
+          "moments": []
+        },
+        {
+          "videoId": "zykbCXnV_Ng",
+          "title": "HLE Gumayusi Ashe vs Caitlyn [ ADC ] Korea Challenger 2482 LP | Patch 26.9",
+          "rankClaim": "Challenger",
+          "patch": "26.9",
+          "durationSec": 1386,
+          "region": "KR",
+          "player": "Gumayusi",
+          "team": "HLE",
+          "uploaded": "2026-05-06",
+          "moments": []
+        },
+        {
+          "videoId": "KUD_hXfb06s",
+          "title": "Ashe vs Caitlyn ADC [ Gen.G Ruler ] Korea Grandmaster 1479 | Patch 26.8 ✅",
+          "rankClaim": "Grandmaster",
+          "patch": "26.8",
+          "durationSec": 928,
+          "region": "KR",
+          "player": "Ruler",
+          "team": "Gen.G",
+          "uploaded": "2026-04-18",
+          "moments": []
+        },
+        {
+          "videoId": "ywwUpl9eqfU",
+          "title": "Ashe vs Caitlyn [ ADC ] Lol Korea Master Patch 25.24 ✅",
+          "rankClaim": "Master",
+          "patch": "25.24",
+          "durationSec": 1906,
+          "region": "KR",
+          "uploaded": "2025-12-15",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 53,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "anS5-Qf9MkE",
+          "title": "Ashe Support vs Blitzcrank - NA Grandmaster Patch 26.06",
+          "rankClaim": "Grandmaster",
+          "patch": "26.6",
+          "durationSec": 1487,
+          "region": "NA",
+          "uploaded": "2026-03-28",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 63,
+      "lane": "adc",
+      "videos": [
+        {
+          "videoId": "eZiIPoAP_fA",
+          "title": "Ashe ADC vs Brand - KR Master Patch 26.16",
+          "rankClaim": "Master",
+          "patch": "26.16",
+          "durationSec": 1470,
+          "region": "KR",
+          "uploaded": "2026-08-24",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 67,
+      "lane": "adc",
+      "videos": [
+        {
+          "videoId": "TKsLkj10G4I",
+          "title": "Rank 1 Ashe : His Mechanic is so ANNOYING, Infinity Slow Kiting to Death - Engsub ( vs Vayne )",
+          "rankClaim": "Master+",
+          "patch": "26.16",
+          "durationSec": 907,
+          "patchEstimated": true,
+          "uploaded": "2026-08-20",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "TbK17KiRkXI",
+          "title": "Rank 1 Ashe: This is What Machine Gun ASHE Look Like - Engsub (Ashe vs Vayne)",
+          "rankClaim": "Master+",
+          "patch": "26.14",
+          "durationSec": 1013,
+          "patchEstimated": true,
+          "uploaded": "2026-07-27",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "VxBKTf7mf3I",
+          "title": "(WLG Unkn0wn) Ashe ADC vs Vayne (Reptile) - EUW Challenger Patch 26.14",
+          "rankClaim": "Challenger",
+          "patch": "26.14",
+          "durationSec": 1701,
+          "region": "EUW",
+          "player": "WLG Unkn0wn",
+          "uploaded": "2026-07-23",
+          "moments": []
+        },
+        {
+          "videoId": "xxK2mVhztyw",
+          "title": "Rank 1 Ashe : This Dude is a LEGIT SAVAGE, NO BACKING DOWN - Engsub ( Ashe vs Vayne )",
+          "rankClaim": "Master+",
+          "patch": "26.10",
+          "durationSec": 1371,
+          "patchEstimated": true,
+          "uploaded": "2026-05-19",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "h8xp2sbyMGI",
+          "title": "Ashe ADC vs Vayne - KR Master Patch 25.12",
+          "rankClaim": "Master",
+          "patch": "25.12",
+          "durationSec": 1786,
+          "region": "KR",
+          "uploaded": "2025-06-18",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 75,
+      "lane": "adc",
+      "videos": [
+        {
+          "videoId": "Y76bI7y94rU",
+          "title": "Rank 1 Ashe : WTF is this META ? NASUS ADC ? Let Me Kiting You to Death - Engsub",
+          "rankClaim": "Master+",
+          "patch": "26.17",
+          "durationSec": 837,
+          "patchEstimated": true,
+          "uploaded": "2026-09-05",
+          "format": "stream",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 80,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "_QrFXpeE5eE",
+          "title": "Ashe Support vs Pantheon - KR Master Patch 26.07",
+          "rankClaim": "Master",
+          "patch": "26.7",
+          "durationSec": 1656,
+          "region": "KR",
+          "uploaded": "2026-04-11",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 117,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 296,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 456,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 709,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 807,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 867,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 927,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 987,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1062,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1125,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1254,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1288,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1363,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1422,
+              "label": "Hunt The Dragon",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1527,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1645,
+              "label": "End credit"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 81,
+      "lane": "adc",
+      "videos": [
+        {
+          "videoId": "rsaWFwhB0w0",
+          "title": "Ashe ADC vs Ezreal - KR Master Patch 26.17",
+          "rankClaim": "Master",
+          "patch": "26.17",
+          "durationSec": 1589,
+          "region": "KR",
+          "uploaded": "2026-09-11",
+          "moments": []
+        },
+        {
+          "videoId": "vLfz6dc2cW0",
+          "title": "T1 Peyz Ashe vs Ezreal [ ADC ] Korea Challenger 2444 LP | Patch 26.17",
+          "rankClaim": "Challenger",
+          "patch": "26.17",
+          "durationSec": 938,
+          "region": "KR",
+          "player": "Peyz",
+          "team": "T1",
+          "uploaded": "2026-09-04",
+          "moments": []
+        },
+        {
+          "videoId": "mnGjOlylfMM",
+          "title": "T1 Peyz Ashe vs Ezreal [ ADC ] Korea Challenger 2459 LP | Patch 26.9",
+          "rankClaim": "Challenger",
+          "patch": "26.9",
+          "durationSec": 1066,
+          "region": "KR",
+          "player": "Peyz",
+          "team": "T1",
+          "uploaded": "2026-05-09",
+          "moments": []
+        },
+        {
+          "videoId": "syLukuaxIBo",
+          "title": "Ashe ADC vs Ezreal - KR Challenger Patch 26.09",
+          "rankClaim": "Challenger",
+          "patch": "26.9",
+          "durationSec": 1581,
+          "region": "KR",
+          "uploaded": "2026-05-01",
+          "moments": []
+        },
+        {
+          "videoId": "8jDge940aR4",
+          "title": "Rank 1 Ashe : From ZERO to HERO Insane Comeback of History - Engsub ( Ashe vs Ezreal )",
+          "rankClaim": "Master+",
+          "patch": "26.9",
+          "durationSec": 1121,
+          "patchEstimated": true,
+          "uploaded": "2026-04-29",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "uhF_lPQNUnE",
+          "title": "HLE Gumayusi Ashe vs Ezreal [ ADC ] Korea Challenger 2463 LP | Patch 26.8",
+          "rankClaim": "Challenger",
+          "patch": "26.8",
+          "durationSec": 1633,
+          "region": "KR",
+          "player": "Gumayusi",
+          "team": "HLE",
+          "uploaded": "2026-04-20",
+          "moments": []
+        },
+        {
+          "videoId": "-GNNKTlMkxw",
+          "title": "Ashe vs Ezreal ADC - EUW Grandmaster - Patch 16.07 Season 16",
+          "rankClaim": "Grandmaster",
+          "patch": "26.7",
+          "durationSec": 2041,
+          "region": "EUW",
+          "uploaded": "2026-04-10",
+          "moments": []
+        },
+        {
+          "videoId": "f2go46IrixY",
+          "title": "BLG Viper Ashe vs Ezreal [ ADC ] Korea Master 910 LP | Patch 26.7",
+          "rankClaim": "Master",
+          "patch": "26.7",
+          "durationSec": 2235,
+          "region": "KR",
+          "player": "Viper",
+          "team": "BLG",
+          "uploaded": "2026-04-02",
+          "moments": []
+        },
+        {
+          "videoId": "j3jXMYbx-T0",
+          "title": "T1 Peyz Ashe vs Ezreal [ ADC ] Korea Challenger 1964 LP | Patch 26.6",
+          "rankClaim": "Challenger",
+          "patch": "26.6",
+          "durationSec": 1030,
+          "region": "KR",
+          "player": "Peyz",
+          "team": "T1",
+          "uploaded": "2026-03-26",
+          "moments": []
+        },
+        {
+          "videoId": "0iceaXnRil8",
+          "title": "Ashe vs Ezreal ADC - KR Challenger - Patch 16.05 Season 16",
+          "rankClaim": "Challenger",
+          "patch": "26.5",
+          "durationSec": 1291,
+          "region": "KR",
+          "uploaded": "2026-03-11",
+          "moments": []
+        },
+        {
+          "videoId": "UPFwT4Csy4g",
+          "title": "T1 Peyz Ashe vs Ezreal [ ADC ] Korea Challenger 2083 LP | Patch 26.3",
+          "rankClaim": "Challenger",
+          "patch": "26.3",
+          "durationSec": 749,
+          "region": "KR",
+          "player": "Peyz",
+          "team": "T1",
+          "uploaded": "2026-02-18",
+          "moments": []
+        },
+        {
+          "videoId": "KiHBjBVkNbE",
+          "title": "Ashe vs Ezreal [ ADC ] Lol Korea Master Patch 26.1 ✅",
+          "rankClaim": "Master",
+          "patch": "26.1",
+          "durationSec": 1871,
+          "region": "KR",
+          "uploaded": "2026-01-20",
+          "moments": []
+        },
+        {
+          "videoId": "yhQl0cQJ5GQ",
+          "title": "When Smash Ashe Destroying LazyFeel Ezreal at 1800LP Match",
+          "rankClaim": "Master+",
+          "patch": "26.1",
+          "durationSec": 788,
+          "patchEstimated": true,
+          "player": "Smash",
+          "uploaded": "2026-01-08",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "aEPON6uDm-I",
+          "title": "Ashe vs Ezreal ADC [ BLG Viper ] Patch 25.24 Ranked Korea ✅",
+          "rankClaim": "Master+",
+          "patch": "25.24",
+          "durationSec": 1059,
+          "region": "KR",
+          "player": "Viper",
+          "team": "BLG",
+          "uploaded": "2025-12-21",
+          "moments": []
+        },
+        {
+          "videoId": "zlKsw3MMUtI",
+          "title": "Ashe ADC vs Ezreal - KR Grandmaster Patch 25.10",
+          "rankClaim": "Grandmaster",
+          "patch": "25.10",
+          "durationSec": 1816,
+          "region": "KR",
+          "uploaded": "2025-05-17",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 32,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 240,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 404,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 638,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 770,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1061,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1086,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1209,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1235,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1335,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1423,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1459,
+              "label": "Hunt The Dragon",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1644,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1663,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1688,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1711,
+              "label": "Take down The Inhibitor"
+            },
+            {
+              "atSec": 1737,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1778,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1795,
+              "label": "End credit"
+            }
+          ]
+        },
+        {
+          "videoId": "r4b2hq6bdjk",
+          "title": "Ashe vs Ezreal ADC - KR Challenger - Patch 25.6 Season 15",
+          "rankClaim": "Challenger",
+          "patch": "25.6",
+          "durationSec": 1981,
+          "region": "KR",
+          "uploaded": "2025-03-21",
+          "moments": []
+        },
+        {
+          "videoId": "r8y_uvxXccs",
+          "title": "Ashe ADC vs Ezreal - KR Grandmaster Patch 25.05",
+          "rankClaim": "Grandmaster",
+          "patch": "25.5",
+          "durationSec": 1708,
+          "region": "KR",
+          "uploaded": "2025-03-08",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 147,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 245,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 376,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 470,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 757,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 858,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 926,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 973,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1051,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1147,
+              "label": "Hunt The Rift Herald",
+              "kind": "herald"
+            },
+            {
+              "atSec": 1176,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1214,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1286,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1339,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1357,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1425,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1516,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1652,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1669,
+              "label": "Take down The Inhibitor"
+            },
+            {
+              "atSec": 1687,
+              "label": "End credit"
+            }
+          ]
+        },
+        {
+          "videoId": "ts30adqr_B8",
+          "title": "T1 Gumayusi Ashe ADC vs Ezreal - Patch 25.2 Korea Challenger ✅",
+          "rankClaim": "Challenger",
+          "patch": "25.2",
+          "durationSec": 1617,
+          "region": "KR",
+          "player": "Gumayusi",
+          "team": "T1",
+          "uploaded": "2025-01-29",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 96,
+      "lane": "adc",
+      "videos": [
+        {
+          "videoId": "aD9IBezKN9c",
+          "title": "Uzi : His ASHE Mechanic is Phenomenal \" 100+ Kills in a Match It's a WAR \" Engsub (Ashe vs Kog'maw)",
+          "rankClaim": "Master+",
+          "patch": "26.9",
+          "durationSec": 1214,
+          "patchEstimated": true,
+          "player": "Uzi",
+          "uploaded": "2026-05-08",
+          "format": "stream",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 101,
+      "lane": "adc",
+      "videos": [
+        {
+          "videoId": "h8_pmaipL_w",
+          "title": "Rank 1 Ashe : This Dude is a RUTHLESS SAVAGE - Engsub ( vs Xerath )",
+          "rankClaim": "Master+",
+          "patch": "26.16",
+          "durationSec": 941,
+          "patchEstimated": true,
+          "uploaded": "2026-08-25",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "H47VHuaN-CQ",
+          "title": "Rank 1 Ashe : His Mechanics Are Absolutely DISGUSTING - Engsub ( vs Xerath )",
+          "rankClaim": "Master+",
+          "patch": "26.16",
+          "durationSec": 1118,
+          "patchEstimated": true,
+          "uploaded": "2026-08-22",
+          "format": "stream",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 110,
+      "lane": "adc",
+      "videos": [
+        {
+          "videoId": "UHrnL2krwoE",
+          "title": "Rank 1 Ashe : His Spacing in TEAMFIGHT is Phenomenal - Engsub ( vs Varus, Jhin )",
+          "rankClaim": "Master+",
+          "patch": "26.19",
+          "durationSec": 1769,
+          "patchEstimated": true,
+          "uploaded": "2026-09-24",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "fTGix16gKuI",
+          "title": "(BLG Viper) Ashe ADC vs Varus - KR Challenger Patch 26.13",
+          "rankClaim": "Challenger",
+          "patch": "26.13",
+          "durationSec": 1530,
+          "region": "KR",
+          "player": "Viper",
+          "team": "BLG",
+          "uploaded": "2026-06-29",
+          "moments": []
+        },
+        {
+          "videoId": "3Cobjom1kIw",
+          "title": "BLG Viper Ashe vs Varus [ ADC ] Korea Challenger 2133 LP | Patch 26.13",
+          "rankClaim": "Challenger",
+          "patch": "26.13",
+          "durationSec": 1284,
+          "region": "KR",
+          "player": "Viper",
+          "team": "BLG",
+          "uploaded": "2026-06-27",
+          "moments": []
+        },
+        {
+          "videoId": "RkdWNG4RKyo",
+          "title": "Ashe ADC vs Varus - KR Challenger Patch 26.08",
+          "rankClaim": "Challenger",
+          "patch": "26.8",
+          "durationSec": 1532,
+          "region": "KR",
+          "uploaded": "2026-04-17",
+          "moments": []
+        },
+        {
+          "videoId": "xhZGMekx-7I",
+          "title": "T1 Peyz Ashe vs Varus [ ADC ] Korea Challenger Patch 25.24",
+          "rankClaim": "Challenger",
+          "patch": "25.24",
+          "durationSec": 1378,
+          "region": "KR",
+          "player": "Peyz",
+          "team": "T1",
+          "uploaded": "2025-12-29",
+          "moments": []
+        },
+        {
+          "videoId": "jdJ03pNhJY4",
+          "title": "Ashe ADC vs Varus - KR Challenger Patch 25.20",
+          "rankClaim": "Challenger",
+          "patch": "25.20",
+          "durationSec": 2036,
+          "region": "KR",
+          "uploaded": "2025-10-11",
+          "moments": []
+        },
+        {
+          "videoId": "HOnz9ltFdzU",
+          "title": "T1 Gumayusi Ashe vs Varus [ ADC ] Patch 25.12 Korea Challenger",
+          "rankClaim": "Challenger",
+          "patch": "25.12",
+          "durationSec": 1716,
+          "region": "KR",
+          "player": "Gumayusi",
+          "team": "T1",
+          "uploaded": "2025-06-12",
+          "moments": []
+        },
+        {
+          "videoId": "8erMYZZNCUY",
+          "title": "Ashe ADC vs Varus - EUW Challenger Patch 25.11",
+          "rankClaim": "Challenger",
+          "patch": "25.11",
+          "durationSec": 1973,
+          "region": "EUW",
+          "uploaded": "2025-06-12",
+          "moments": []
+        },
+        {
+          "videoId": "UL3_05h3J-Q",
+          "title": "T1 Gumayusi Ashe ADC vs Varus - Patch 25.6 Korea Challenger ✅",
+          "rankClaim": "Challenger",
+          "patch": "25.6",
+          "durationSec": 1288,
+          "region": "KR",
+          "player": "Gumayusi",
+          "team": "T1",
+          "uploaded": "2025-03-24",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 110,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "k6uf0mmnv8E",
+          "title": "Ashe Top vs Varus - KR Master Patch 25.24",
+          "rankClaim": "Master",
+          "patch": "25.24",
+          "durationSec": 1577,
+          "region": "KR",
+          "uploaded": "2025-12-15",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 119,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 471,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 586,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 719,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 838,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 869,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 900,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 920,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1082,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1346,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1361,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1395,
+              "label": "Take down The Inhibitor"
+            },
+            {
+              "atSec": 1543,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1566,
+              "label": "End credit"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 111,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "SMtymffamQs",
+          "title": "Ashe Support vs Nautilus - KR Master Patch 25.09",
+          "rankClaim": "Master",
+          "patch": "25.9",
+          "durationSec": 1602,
+          "region": "KR",
+          "uploaded": "2025-05-14",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 112,
+      "lane": "adc",
+      "videos": [
+        {
+          "videoId": "NvxlxgG-HcU",
+          "title": "Rank 1 Ashe : This is Why Voltaic Ashe is so BROKEN - Engsub ( vs Viktor )",
+          "rankClaim": "Master+",
+          "patch": "26.17",
+          "durationSec": 815,
+          "patchEstimated": true,
+          "uploaded": "2026-09-07",
+          "format": "stream",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 115,
+      "lane": "adc",
+      "videos": [
+        {
+          "videoId": "ktv8JF4rdTs",
+          "title": "(LR Crownie) Ashe ADC vs Ziggs (JL Comp) - EUW Challenger Patch 26.12",
+          "rankClaim": "Challenger",
+          "patch": "26.12",
+          "durationSec": 1625,
+          "region": "EUW",
+          "player": "LR Crownie",
+          "uploaded": "2026-06-25",
+          "moments": []
+        },
+        {
+          "videoId": "orREbDVfp04",
+          "title": "HLE Gumayusi Ashe vs Ziggs [ ADC ] Korea Challenger 1637 LP | Patch 26.4",
+          "rankClaim": "Challenger",
+          "patch": "26.4",
+          "durationSec": 1490,
+          "region": "KR",
+          "player": "Gumayusi",
+          "team": "HLE",
+          "uploaded": "2026-02-28",
+          "moments": []
+        },
+        {
+          "videoId": "bgPdq3hErVY",
+          "title": "Ashe vs Ziggs ADC - KR Challenger - Patch 25.22 Season 15",
+          "rankClaim": "Challenger",
+          "patch": "25.22",
+          "durationSec": 1951,
+          "region": "KR",
+          "uploaded": "2025-11-11",
+          "moments": []
+        },
+        {
+          "videoId": "Z26QpIQI8yo",
+          "title": "T1 Smash Ashe vs Ziggs [ ADC ] Korea Challenger 1446 LP | Patch 25.18",
+          "rankClaim": "Challenger",
+          "patch": "25.18",
+          "durationSec": 1333,
+          "region": "KR",
+          "player": "Smash",
+          "team": "T1",
+          "uploaded": "2025-09-23",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 117,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "y29Bor4pe40",
+          "title": "Ashe Support vs Lulu - KR Master Patch 25.15",
+          "rankClaim": "Master",
+          "patch": "25.15",
+          "durationSec": 1805,
+          "region": "KR",
+          "uploaded": "2025-08-10",
+          "moments": []
+        },
+        {
+          "videoId": "oh7SAj7HsMY",
+          "title": "Ashe Support vs Lulu - KR Master Patch 25.08",
+          "rankClaim": "Master",
+          "patch": "25.8",
+          "durationSec": 1721,
+          "region": "KR",
+          "uploaded": "2025-04-26",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 424,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 495,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 596,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 657,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 715,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 837,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 934,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 970,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1047,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1157,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1360,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1515,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1700,
+              "label": "End credit"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 119,
+      "lane": "adc",
+      "videos": [
+        {
+          "videoId": "170FcYNtXro",
+          "title": "Ashe vs Draven ADC - EUW Grandmaster - Patch 16.08 Season 16",
+          "rankClaim": "Grandmaster",
+          "patch": "26.8",
+          "durationSec": 1501,
+          "region": "EUW",
+          "uploaded": "2026-04-25",
+          "moments": []
+        },
+        {
+          "videoId": "PNFH3gtdfXI",
+          "title": "Ashe vs Draven ADC - KR Challenger - Patch 25.21 Season 15",
+          "rankClaim": "Challenger",
+          "patch": "25.21",
+          "durationSec": 1726,
+          "region": "KR",
+          "uploaded": "2025-10-25",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 136,
+      "lane": "adc",
+      "videos": [
+        {
+          "videoId": "zdHPcyf8wHo",
+          "title": "T1 Peyz Ashe vs Aurelion Sol [ ADC ] Korea Challenger 1954 LP | Patch 26.6",
+          "rankClaim": "Challenger",
+          "patch": "26.6",
+          "durationSec": 1380,
+          "region": "KR",
+          "player": "Peyz",
+          "team": "T1",
+          "uploaded": "2026-03-18",
+          "moments": []
+        },
+        {
+          "videoId": "2QQF7Z_hcZ8",
+          "title": "Ashe ADC vs Aurelion Sol - KR Grandmaster Patch 25.24",
+          "rankClaim": "Grandmaster",
+          "patch": "25.24",
+          "durationSec": 1601,
+          "region": "KR",
+          "uploaded": "2025-12-06",
+          "moments": []
+        },
+        {
+          "videoId": "Lx3O3dP_ymI",
+          "title": "Ashe vs Aurelion Sol ADC - KR Challenger - Patch 25.24 Season 15",
+          "rankClaim": "Challenger",
+          "patch": "25.24",
+          "durationSec": 1591,
+          "region": "KR",
+          "uploaded": "2025-12-05",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 145,
+      "lane": "adc",
+      "videos": [
+        {
+          "videoId": "Yk1R4zJfPdE",
+          "title": "Rank 1 Ashe : His DAMAGE is Phenomenal with this Build - Engsub ( vs Kai'sa )",
+          "rankClaim": "Master+",
+          "patch": "26.21",
+          "durationSec": 1518,
+          "patchEstimated": true,
+          "uploaded": "2026-11-03",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "ltQ1em6Gp3o",
+          "title": "Rank 1 Ashe : His Mechanic is Absolutely Disgusting - Engsub ( vs Kai'sa )",
+          "rankClaim": "Master+",
+          "patch": "26.21",
+          "durationSec": 1477,
+          "patchEstimated": true,
+          "uploaded": "2026-11-02",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "6jnJpQBHQWY",
+          "title": "Rank 1 Ashe : This MAN is LEGIT INSANE GOOD AT WHAT HE DO - Engsub ( vs Kai'sa )",
+          "rankClaim": "Master+",
+          "patch": "26.19",
+          "durationSec": 940,
+          "patchEstimated": true,
+          "uploaded": "2026-10-02",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "LsM-5tctq44",
+          "title": "Rank 1 Ashe : This Dude is FEARLESS MONSTER, Insane 1v2 No Going Back - Engsub ( vs Kai'sa )",
+          "rankClaim": "Master+",
+          "patch": "26.19",
+          "durationSec": 896,
+          "patchEstimated": true,
+          "uploaded": "2026-09-27",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "y3p4Io9eKyc",
+          "title": "Rank 1 Ashe : His DAMAGE is so BROKEN with Runaan - Engsub ( vs Kai'sa )",
+          "rankClaim": "Master+",
+          "patch": "26.19",
+          "durationSec": 1157,
+          "patchEstimated": true,
+          "uploaded": "2026-09-26",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "cGpUVOjEr2g",
+          "title": "Rank 1 Ashe : His DAMAGE is Phenomenal - Engsub ( vs Kai'sa, Tris )",
+          "rankClaim": "Master+",
+          "patch": "26.17",
+          "durationSec": 1343,
+          "patchEstimated": true,
+          "uploaded": "2026-09-03",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "2Q05yXB71ts",
+          "title": "Ashe vs Kai'Sa [ ADC ] Lol Korea Master 823 LP | Patch 26.16 ✅",
+          "rankClaim": "Master",
+          "patch": "26.16",
+          "durationSec": 1274,
+          "region": "KR",
+          "uploaded": "2026-08-24",
+          "moments": []
+        },
+        {
+          "videoId": "Od4c9HyFPEw",
+          "title": "Rank 1 Ashe : Try to 1v1 Him is You Biggest Mistake, His Damage is Devastating - Engsub ( vs Kai'sa)",
+          "rankClaim": "Master+",
+          "patch": "26.15",
+          "durationSec": 1049,
+          "patchEstimated": true,
+          "uploaded": "2026-08-09",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "j9OTotzZS7s",
+          "title": "Ashe ADC vs Kai'Sa - KR Master Patch 26.15",
+          "rankClaim": "Master",
+          "patch": "26.15",
+          "durationSec": 1610,
+          "region": "KR",
+          "uploaded": "2026-08-07",
+          "moments": []
+        },
+        {
+          "videoId": "6rxXXtnk2QM",
+          "title": "Rank 1 Ashe : His DAMAGE in Late Game is Gonna Blow You Mind - Engsub ( vs Kai'sa )",
+          "rankClaim": "Master+",
+          "patch": "26.15",
+          "durationSec": 993,
+          "patchEstimated": true,
+          "uploaded": "2026-08-06",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "e8jLnSVhdgc",
+          "title": "Rank 1 Ashe : How to Make Enemy FF at 20 Min - Engsub (Ashe vs Aphe, Kai'sa)",
+          "rankClaim": "Master+",
+          "patch": "26.15",
+          "durationSec": 1229,
+          "patchEstimated": true,
+          "uploaded": "2026-07-31",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "aZECcRSMCWk",
+          "title": "Rank 1 Ashe : His Damage is so BROKEN \" No Fear, No Going Back \" Engsub (Ashe vs Kai'sa)",
+          "rankClaim": "Master+",
+          "patch": "26.14",
+          "durationSec": 906,
+          "patchEstimated": true,
+          "uploaded": "2026-07-25",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "cu7Pu_p-Ev8",
+          "title": "Rank 1 Ashe : His Spacing is GOD LIKE - Engsub ( Ashe vs Kai'sa )",
+          "rankClaim": "Master+",
+          "patch": "26.12",
+          "durationSec": 1276,
+          "patchEstimated": true,
+          "uploaded": "2026-06-18",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "_koQhgq7KnM",
+          "title": "Rank 1 Ashe : Crushing CN Super Server HighElo with Perfect Mechanic - Engsub ( Ashe vs Kai'sa )",
+          "rankClaim": "Master+",
+          "patch": "26.12",
+          "durationSec": 820,
+          "patchEstimated": true,
+          "player": "PerfecT",
+          "uploaded": "2026-06-14",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "AZoVWB57_hg",
+          "title": "Rank 1 Ashe : This is What Elite Level Ashe Look Like - Engsub ( Ashe vs Kai'sa )",
+          "rankClaim": "Master+",
+          "patch": "26.11",
+          "durationSec": 748,
+          "patchEstimated": true,
+          "uploaded": "2026-06-05",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "2CItsUUskBI",
+          "title": "Rank 1 Ashe : His Mechanic is so AGGRESSIVE, NO FEAR - Engsub ( Ashe vs Kai'sa )",
+          "rankClaim": "Master+",
+          "patch": "26.11",
+          "durationSec": 1109,
+          "patchEstimated": true,
+          "uploaded": "2026-05-28",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "2hz0tuzbai4",
+          "title": "Ashe vs Kai'Sa ADC - KR Grandmaster - Patch 16.09 Season 16",
+          "rankClaim": "Grandmaster",
+          "patch": "26.9",
+          "durationSec": 1741,
+          "region": "KR",
+          "uploaded": "2026-05-13",
+          "moments": []
+        },
+        {
+          "videoId": "lzW_VtChZ8E",
+          "title": "Rank 1 Ashe : This NEW BUILD IS BREAKING Super Server HighElo - Engsub (Ashe vs Kai'sa, Caitlyn )",
+          "rankClaim": "Master+",
+          "patch": "26.9",
+          "durationSec": 1555,
+          "patchEstimated": true,
+          "uploaded": "2026-05-07",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "C4ziSb51z34",
+          "title": "Rank 1 Ashe : His Spacing is on A NEXT LEVEL ( Ashe vs Kai'sa )",
+          "rankClaim": "Master+",
+          "patch": "26.9",
+          "durationSec": 1342,
+          "patchEstimated": true,
+          "uploaded": "2026-05-02",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "oFqV0DXC37Y",
+          "title": "This is What Super Machine Gun ASHE Look Like - Engsub ( Ashe vs Kai'sa )",
+          "rankClaim": "Master+",
+          "patch": "26.9",
+          "durationSec": 1019,
+          "patchEstimated": true,
+          "uploaded": "2026-04-30",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "OJT5z7fNFdg",
+          "title": "Ashe vs Kai'Sa ADC - KR Grandmaster - Patch 16.05 Season 16",
+          "rankClaim": "Grandmaster",
+          "patch": "26.5",
+          "durationSec": 1501,
+          "region": "KR",
+          "uploaded": "2026-03-18",
+          "moments": []
+        },
+        {
+          "videoId": "b6hF3zcmqdk",
+          "title": "Ashe vs Kai'Sa ADC - EUW Challenger - Patch 26.02 Season 16",
+          "rankClaim": "Challenger",
+          "patch": "26.2",
+          "durationSec": 1471,
+          "region": "EUW",
+          "uploaded": "2026-01-28",
+          "moments": []
+        },
+        {
+          "videoId": "Q_BbAn8mlJU",
+          "title": "Ashe ADC vs Kai'Sa - KR Grandmaster Patch 26.02",
+          "rankClaim": "Grandmaster",
+          "patch": "26.2",
+          "durationSec": 1620,
+          "region": "KR",
+          "uploaded": "2026-01-24",
+          "moments": []
+        },
+        {
+          "videoId": "9hYqxnM1DDA",
+          "title": "Ashe vs Kai'Sa ADC [ QuadraKill ] Korea Master Patch 25.20 ✅",
+          "rankClaim": "Master",
+          "patch": "25.20",
+          "durationSec": 1324,
+          "region": "KR",
+          "player": "QuadraKill",
+          "uploaded": "2025-10-13",
+          "moments": []
+        },
+        {
+          "videoId": "nH9duB14UTg",
+          "title": "Ashe ADC vs Kai'Sa - KR Challenger Patch 25.19",
+          "rankClaim": "Challenger",
+          "patch": "25.19",
+          "durationSec": 1561,
+          "region": "KR",
+          "uploaded": "2025-09-28",
+          "moments": []
+        },
+        {
+          "videoId": "KyF1AcxA1_g",
+          "title": "Ashe vs Kaisa [ ADC ] Lol Korea Master Patch 25.13 ✅",
+          "rankClaim": "Master",
+          "patch": "25.13",
+          "durationSec": 1209,
+          "region": "KR",
+          "uploaded": "2025-07-13",
+          "moments": []
+        },
+        {
+          "videoId": "LpQ_b7FEumE",
+          "title": "Ashe vs Kai'Sa ADC - KR Master - Patch 25.13 Season 15",
+          "rankClaim": "Master",
+          "patch": "25.13",
+          "durationSec": 2116,
+          "region": "KR",
+          "uploaded": "2025-07-11",
+          "moments": []
+        },
+        {
+          "videoId": "P7wyTGYxl-s",
+          "title": "Ashe ADC vs Kai'Sa - TW Challenger Patch 25.13",
+          "rankClaim": "Challenger",
+          "patch": "25.13",
+          "durationSec": 1600,
+          "uploaded": "2025-07-09",
+          "moments": []
+        },
+        {
+          "videoId": "0xjHrcJ0NU4",
+          "title": "Ashe ADC vs Kai'Sa - KR Master Patch 25.09",
+          "rankClaim": "Master",
+          "patch": "25.9",
+          "durationSec": 1824,
+          "region": "KR",
+          "uploaded": "2025-05-02",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 412,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 543,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 728,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 758,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 844,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 887,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1065,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1185,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1393,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1433,
+              "label": "Hunt The Dragon",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1652,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1773,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1803,
+              "label": "End credit"
+            }
+          ]
+        },
+        {
+          "videoId": "brpQcv0KTHU",
+          "title": "Ashe ADC vs Kai'Sa - EUW Challenger Patch 25.06",
+          "rankClaim": "Challenger",
+          "patch": "25.6",
+          "durationSec": 1633,
+          "region": "EUW",
+          "uploaded": "2025-04-01",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 145,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "YrxthdFeio4",
+          "title": "Rank 1 Ashe : If I Can't Carry, I Will Be Second Sup - Engsub ( Ashe vs Kai'sa )",
+          "rankClaim": "Master+",
+          "patch": "26.10",
+          "durationSec": 1098,
+          "patchEstimated": true,
+          "uploaded": "2026-05-26",
+          "format": "stream",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 161,
+      "lane": "adc",
+      "videos": [
+        {
+          "videoId": "waWNiChB_As",
+          "title": "Ashe ADC vs Vel'Koz - KR Master Patch 25.04",
+          "rankClaim": "Master",
+          "patch": "25.4",
+          "durationSec": 1469,
+          "region": "KR",
+          "uploaded": "2025-02-22",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 94,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 236,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 500,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 650,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 707,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 831,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 851,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 871,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 981,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1015,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1036,
+              "label": "Hunt The Dragon",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1065,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1155,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1210,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1237,
+              "label": "Get a Triple Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1338,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1413,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1448,
+              "label": "End credit"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 201,
+      "lane": "adc",
+      "videos": [
+        {
+          "videoId": "yDDssCgxF20",
+          "title": "Rank 1 Ashe : Infinity STUN with Braum + Ashe Duo - Engsub",
+          "rankClaim": "Master+",
+          "patch": "26.4",
+          "durationSec": 616,
+          "patchEstimated": true,
+          "uploaded": "2026-03-03",
+          "format": "stream",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 202,
+      "lane": "adc",
+      "videos": [
+        {
+          "videoId": "N5jUQ-1P1Hk",
+          "title": "Rank 1 Ashe : This Dude is so AGGRESSIVE at Level One - Engsub ( vs Jhin )",
+          "rankClaim": "Master+",
+          "patch": "26.18",
+          "durationSec": 1016,
+          "patchEstimated": true,
+          "uploaded": "2026-09-19",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "TdvENsahipM",
+          "title": "Ashe ADC vs Jhin - KR Master Patch 26.18",
+          "rankClaim": "Master",
+          "patch": "26.18",
+          "durationSec": 1528,
+          "region": "KR",
+          "uploaded": "2026-09-15",
+          "moments": []
+        },
+        {
+          "videoId": "_AKxqr767aQ",
+          "title": "Rank 1 Ashe : This Dude is a FEARLESS WILD BEAST - Engsub ( Ashe vs Jhin )",
+          "rankClaim": "Master+",
+          "patch": "26.12",
+          "durationSec": 980,
+          "patchEstimated": true,
+          "uploaded": "2026-06-22",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "7Emn_b5QPAA",
+          "title": "Rank 1 Ashe : His DAMAGE is Going to to ROOF with this BUILD - Engsub ( Ashe vs Jhin )",
+          "rankClaim": "Master+",
+          "patch": "26.12",
+          "durationSec": 874,
+          "patchEstimated": true,
+          "uploaded": "2026-06-20",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "5WGQ3lWMzEg",
+          "title": "Smash : His Ashe Mechanic is Gonna Blow You Mind - Engsub ( Ashe vs Jhin )",
+          "rankClaim": "Master+",
+          "patch": "26.12",
+          "durationSec": 732,
+          "patchEstimated": true,
+          "player": "Smash",
+          "uploaded": "2026-06-19",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "Fw9O8FF4wNs",
+          "title": "Smash : His Ashe Spacing is Absoutely Disgusting - Engsub ( Ashe vs Jhin )",
+          "rankClaim": "Master+",
+          "patch": "26.12",
+          "durationSec": 732,
+          "patchEstimated": true,
+          "player": "Smash",
+          "uploaded": "2026-06-14",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "WJ2NF1rnpC8",
+          "title": "Rank 1 Ashe : This is What Machine Gun Ashe Look Like - Engsub ( Ashe vs Jhin )",
+          "rankClaim": "Master+",
+          "patch": "26.11",
+          "durationSec": 1139,
+          "patchEstimated": true,
+          "uploaded": "2026-06-02",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "_xc8h5Lma5c",
+          "title": "Rank 1 Ashe : This is What Super Machine Gun Look Like - Engsub ( Ashe vs Jhin )",
+          "rankClaim": "Master+",
+          "patch": "26.11",
+          "durationSec": 1001,
+          "patchEstimated": true,
+          "uploaded": "2026-05-30",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "U89qlFHD1tk",
+          "title": "Rank 1 Ashe : Runaan's Make Ashe so Broken in TeamFight - Engsub ( Ashe vs Jhin )",
+          "rankClaim": "Master+",
+          "patch": "26.10",
+          "durationSec": 901,
+          "patchEstimated": true,
+          "uploaded": "2026-05-27",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "ooRCfngUqEQ",
+          "title": "T1 Peyz Ashe vs Jhin [ ADC ] Patch 26.10 Korea Challenger 2519 LP",
+          "rankClaim": "Challenger",
+          "patch": "26.10",
+          "durationSec": 1766,
+          "region": "KR",
+          "player": "Peyz",
+          "team": "T1",
+          "uploaded": "2026-05-16",
+          "moments": []
+        },
+        {
+          "videoId": "g5xSodc0WtI",
+          "title": "Ashe ADC vs Jhin - KR Grandmaster Patch 26.10",
+          "rankClaim": "Grandmaster",
+          "patch": "26.10",
+          "durationSec": 1865,
+          "region": "KR",
+          "uploaded": "2026-05-15",
+          "moments": []
+        },
+        {
+          "videoId": "-WM0CmNkjEE",
+          "title": "Ashe vs Jhin ADC [ Gen.G Ruler ] Patch 26.10 Korea Grandmaster 1735 LP",
+          "rankClaim": "Grandmaster",
+          "patch": "26.10",
+          "durationSec": 1170,
+          "region": "KR",
+          "player": "Ruler",
+          "team": "Gen.G",
+          "uploaded": "2026-05-14",
+          "moments": []
+        },
+        {
+          "videoId": "eGi6_XlqOlk",
+          "title": "Ashe vs Jhin [ ADC ] Patch 25.23 Korea Challenger 1233 LP",
+          "rankClaim": "Challenger",
+          "patch": "25.23",
+          "durationSec": 1589,
+          "region": "KR",
+          "uploaded": "2025-11-25",
+          "moments": []
+        },
+        {
+          "videoId": "IDuFsnSxOtU",
+          "title": "Ashe vs Jhin ADC - KR Challenger - Patch 25.22 Season 15",
+          "rankClaim": "Challenger",
+          "patch": "25.22",
+          "durationSec": 1560,
+          "region": "KR",
+          "uploaded": "2025-11-18",
+          "moments": []
+        },
+        {
+          "videoId": "LPevTLTLCPw",
+          "title": "T1 Gumayusi Ashe vs Jhin [ ADC ] Korea Challenger Patch 25.19",
+          "rankClaim": "Challenger",
+          "patch": "25.19",
+          "durationSec": 1409,
+          "region": "KR",
+          "player": "Gumayusi",
+          "team": "T1",
+          "uploaded": "2025-10-04",
+          "moments": []
+        },
+        {
+          "videoId": "k8VeeqY5bws",
+          "title": "Ashe vs Jhin ADC [ HLE Viper ] Patch 25.19 Korea Challenger",
+          "rankClaim": "Challenger",
+          "patch": "25.19",
+          "durationSec": 1614,
+          "region": "KR",
+          "player": "Viper",
+          "team": "HLE",
+          "uploaded": "2025-09-25",
+          "moments": []
+        },
+        {
+          "videoId": "mP4aQWrLVao",
+          "title": "Ashe ADC vs Jhin - KR Master Patch 25.16",
+          "rankClaim": "Master",
+          "patch": "25.16",
+          "durationSec": 1610,
+          "region": "KR",
+          "uploaded": "2025-08-17",
+          "moments": []
+        },
+        {
+          "videoId": "DcyCeNZVrTg",
+          "title": "Ashe ADC vs Jhin - KR Grandmaster Patch 25.15",
+          "rankClaim": "Grandmaster",
+          "patch": "25.15",
+          "durationSec": 1763,
+          "region": "KR",
+          "uploaded": "2025-08-04",
+          "moments": []
+        },
+        {
+          "videoId": "1pWo6s_Cp8c",
+          "title": "Ashe vs Jhin ADC - KR Master - Patch 25.13 Season 15",
+          "rankClaim": "Master",
+          "patch": "25.13",
+          "durationSec": 1516,
+          "region": "KR",
+          "uploaded": "2025-07-02",
+          "moments": []
+        },
+        {
+          "videoId": "p5HtNr8TDfE",
+          "title": "Ashe ADC vs Jhin - KR Grandmaster Patch 25.11",
+          "rankClaim": "Grandmaster",
+          "patch": "25.11",
+          "durationSec": 1735,
+          "region": "KR",
+          "uploaded": "2025-06-02",
+          "moments": []
+        },
+        {
+          "videoId": "vN6wPjXr1is",
+          "title": "Ashe ADC vs Jhin - KR Grandmaster Patch 25.06",
+          "rankClaim": "Grandmaster",
+          "patch": "25.6",
+          "durationSec": 1723,
+          "region": "KR",
+          "uploaded": "2025-03-22",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 767,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 839,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 907,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 999,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1192,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1222,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1238,
+              "label": "Hunt The Dragon",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1282,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1467,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1495,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1702,
+              "label": "End credit"
+            }
+          ]
+        },
+        {
+          "videoId": "tFvhZCQqwd0",
+          "title": "T1 Gumayusi Ashe vs Jhin [ ADC ] Korea Challenger Patch 25.5 ✅",
+          "rankClaim": "Challenger",
+          "patch": "25.5",
+          "durationSec": 1372,
+          "region": "KR",
+          "player": "Gumayusi",
+          "team": "T1",
+          "uploaded": "2025-03-18",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 221,
+      "lane": "adc",
+      "videos": [
+        {
+          "videoId": "zoYTh3iSgL8",
+          "title": "Ashe ADC vs Zeri - BR Grandmaster Patch 26.21",
+          "rankClaim": "Grandmaster",
+          "patch": "26.21",
+          "durationSec": 1781,
+          "uploaded": "2026-10-25",
+          "result": "W",
+          "moments": [
+            {
+              "atSec": 357,
+              "label": "Red takes 1st Dragon (Ocean)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 645,
+              "label": "Aatrox eliminates Soraka"
+            },
+            {
+              "atSec": 697,
+              "label": "Red takes 2nd Dragon (Chemtech)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 975,
+              "label": "Ashe takes down Zeri"
+            },
+            {
+              "atSec": 1042,
+              "label": "Ashe outduels Zeri"
+            },
+            {
+              "atSec": 1068,
+              "label": "Red takes 3rd Dragon (Mountain)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1100,
+              "label": "Ashe kills Sylas",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1235,
+              "label": "Ashe picks off Soraka"
+            },
+            {
+              "atSec": 1273,
+              "label": "Red takes Baron",
+              "kind": "baron"
+            },
+            {
+              "atSec": 1333,
+              "label": "Team fight (3 kills)",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1405,
+              "label": "Red takes 4th Dragon (Mountain)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1435,
+              "label": "Mid Inhibitor falls (Red)"
+            },
+            {
+              "atSec": 1520,
+              "label": "Mid Inhibitor falls (Blue)"
+            },
+            {
+              "atSec": 1619,
+              "label": "Cho'Gath eliminates Zeri"
+            },
+            {
+              "atSec": 1625,
+              "label": "Cho'Gath Triple Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1684,
+              "label": "Red takes 2nd Baron",
+              "kind": "baron"
+            },
+            {
+              "atSec": 1725,
+              "label": "Seraphine picks off Zeri"
+            },
+            {
+              "atSec": 1766,
+              "label": "Ashe Double Kill",
+              "kind": "kill"
+            }
+          ]
+        },
+        {
+          "videoId": "unac9zkfuj0",
+          "title": "(Naïm) Ashe ADC vs Zeri (BAR Legolas) - EUW Grandmaster Patch 26.20",
+          "rankClaim": "Grandmaster",
+          "patch": "26.20",
+          "durationSec": 1843,
+          "region": "NA",
+          "player": "Naïm",
+          "uploaded": "2026-10-22",
+          "result": "W",
+          "moments": [
+            {
+              "atSec": 5,
+              "label": "First Blood — Ashe kills Lulu",
+              "kind": "kill"
+            },
+            {
+              "atSec": 342,
+              "label": "Blue takes 1st Dragon (Mountain)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 656,
+              "label": "Blue takes 2nd Dragon (Chemtech)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 871,
+              "label": "Ashe kills Locke",
+              "kind": "kill"
+            },
+            {
+              "atSec": 905,
+              "label": "Karthus kills Lulu",
+              "kind": "kill"
+            },
+            {
+              "atSec": 988,
+              "label": "Karthus Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1013,
+              "label": "Blue takes 3rd Dragon (Cloud)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1085,
+              "label": "Ashe takes down Zeri"
+            },
+            {
+              "atSec": 1225,
+              "label": "Ashe takes down Zeri"
+            },
+            {
+              "atSec": 1324,
+              "label": "Red takes 1st Dragon (Cloud)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1364,
+              "label": "Riven takes down Olaf"
+            },
+            {
+              "atSec": 1477,
+              "label": "Team fight (3 kills)",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1590,
+              "label": "Karthus Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1636,
+              "label": "Blue takes 4th Dragon (Cloud)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1697,
+              "label": "Gangplank Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1701,
+              "label": "Blue takes Baron",
+              "kind": "baron"
+            },
+            {
+              "atSec": 1756,
+              "label": "Mid Inhibitor falls (Red)"
+            },
+            {
+              "atSec": 1824,
+              "label": "Ashe Double Kill",
+              "kind": "kill"
+            }
+          ]
+        },
+        {
+          "videoId": "KnlZdX8vnq0",
+          "title": "Rank 1 Ashe : His Mechanic is a Master Piece - Engsub ( vs Zeri, Jhin )",
+          "rankClaim": "Master",
+          "patch": "26.19",
+          "durationSec": 1497,
+          "patchEstimated": true,
+          "uploaded": "2026-10-05",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "quUPTSa9bUE",
+          "title": "(DV1 Faetski) Ashe ADC vs Zeri - EUW Grandmaster Patch 26.13",
+          "rankClaim": "Grandmaster",
+          "patch": "26.13",
+          "durationSec": 1636,
+          "region": "EUW",
+          "player": "DV1 Faetski",
+          "uploaded": "2026-07-10",
+          "moments": []
+        },
+        {
+          "videoId": "lclJ1NyvlB4",
+          "title": "Rank 1 Ashe : Insane 1v9 HardCarrying \" He is The Last Man Standing \" Engsub ( Ashe vs Zeri )",
+          "rankClaim": "Master+",
+          "patch": "26.13",
+          "durationSec": 1413,
+          "patchEstimated": true,
+          "uploaded": "2026-06-25",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "L0zA7BydvbE",
+          "title": "Rank 1 Ashe : This is What Machine Gun Ashe Look Like - Engsub ( Ashe vs Zeri )",
+          "rankClaim": "Master+",
+          "patch": "26.10",
+          "durationSec": 708,
+          "patchEstimated": true,
+          "uploaded": "2026-05-20",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "iZ0xSuqSBA8",
+          "title": "T1 Peyz Ashe vs Zeri [ ADC ] Korea Challenger 1968 LP | Patch 26.6",
+          "rankClaim": "Challenger",
+          "patch": "26.6",
+          "durationSec": 1606,
+          "region": "KR",
+          "player": "Peyz",
+          "team": "T1",
+          "uploaded": "2026-03-23",
+          "moments": []
+        },
+        {
+          "videoId": "GdLZpDJwSDo",
+          "title": "DK Smash Ashe vs Zeri [ ADC ] Korea Challenger 1725 LP | Patch 25.24",
+          "rankClaim": "Challenger",
+          "patch": "25.24",
+          "durationSec": 1501,
+          "region": "KR",
+          "player": "Smash",
+          "team": "DK",
+          "uploaded": "2025-12-22",
+          "moments": []
+        },
+        {
+          "videoId": "Ev_ece8-oUM",
+          "title": "Ashe ADC vs Zeri - TW Challenger Patch 25.24",
+          "rankClaim": "Challenger",
+          "patch": "25.24",
+          "durationSec": 1490,
+          "uploaded": "2025-12-22",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 128,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 202,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 282,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 418,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 777,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 864,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 997,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1075,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1125,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1181,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1294,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1344,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1479,
+              "label": "End credit"
+            }
+          ]
+        },
+        {
+          "videoId": "qfJZZ10YErk",
+          "title": "Ashe ADC vs Zeri - EUW Grandmaster Patch 25.19",
+          "rankClaim": "Grandmaster",
+          "patch": "25.19",
+          "durationSec": 1689,
+          "region": "EUW",
+          "uploaded": "2025-10-09",
+          "moments": []
+        },
+        {
+          "videoId": "EnLnp1rsSmk",
+          "title": "Ashe vs Zeri [ ADC ] Lol Korea Master Patch 25.16 ✅",
+          "rankClaim": "Master",
+          "patch": "25.16",
+          "durationSec": 1824,
+          "region": "KR",
+          "uploaded": "2025-08-25",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 222,
+      "lane": "adc",
+      "videos": [
+        {
+          "videoId": "G0Clgg4-vt0",
+          "title": "\"JZ\" 2000LP Ashe : His Spacing and Kiting is Absolutely AMAZING - Engsub ( vs Jinx )",
+          "rankClaim": "Master+",
+          "patch": "26.20",
+          "durationSec": 827,
+          "patchEstimated": true,
+          "player": "Jz",
+          "uploaded": "2026-10-07",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "blE8rl9FfO0",
+          "title": "Ashe ADC vs Jinx - EUW Master Patch 26.19",
+          "rankClaim": "Master",
+          "patch": "26.19",
+          "durationSec": 1910,
+          "region": "EUW",
+          "uploaded": "2026-10-08",
+          "result": "W",
+          "moments": [
+            {
+              "atSec": 155,
+              "label": "First Blood — Ashe kills Jinx",
+              "kind": "kill"
+            },
+            {
+              "atSec": 394,
+              "label": "Red takes 1st Dragon (Ocean)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 845,
+              "label": "Red takes 2nd Dragon (Infernal)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 955,
+              "label": "Ashe outplays Thresh"
+            },
+            {
+              "atSec": 1177,
+              "label": "Blue takes 1st Dragon (Hextech)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1311,
+              "label": "Red takes Baron",
+              "kind": "baron"
+            },
+            {
+              "atSec": 1385,
+              "label": "Ashe eliminates Talon"
+            },
+            {
+              "atSec": 1405,
+              "label": "Ashe takes down Jinx"
+            },
+            {
+              "atSec": 1434,
+              "label": "Mid Inhibitor falls (Blue)"
+            },
+            {
+              "atSec": 1505,
+              "label": "Blue takes 2nd Dragon (Hextech)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1580,
+              "label": "Bot Inhibitor falls (Blue)"
+            },
+            {
+              "atSec": 1612,
+              "label": "Swain Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1717,
+              "label": "Red takes 2nd Baron",
+              "kind": "baron"
+            },
+            {
+              "atSec": 1750,
+              "label": "Ashe eliminates Talon"
+            },
+            {
+              "atSec": 1811,
+              "label": "Red takes 3rd Dragon (Hextech)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1834,
+              "label": "Ashe Triple Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1856,
+              "label": "Mid Inhibitor falls (Blue)"
+            }
+          ]
+        },
+        {
+          "videoId": "4rI-ogx26Hg",
+          "title": "Rank 1 Ashe : His Mechanic is so AGGRESSIVE in EARLY GAME - Engsub ( vs Jinx, Vayne )",
+          "rankClaim": "Master+",
+          "patch": "26.18",
+          "durationSec": 1362,
+          "patchEstimated": true,
+          "uploaded": "2026-09-17",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "WmHLCg8nzxs",
+          "title": "Rank 1 Ashe : This Machine Gun ASHE is BREAKING DOWN Master Elo - Engsub ( vs Jinx )",
+          "rankClaim": "Master",
+          "patch": "26.16",
+          "durationSec": 988,
+          "patchEstimated": true,
+          "uploaded": "2026-08-19",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "PHCf3PHLPzo",
+          "title": "Rank 1 Ashe : His Mechanic is so AGGRESSIVE in Early Game - Engsub ( Ashe vs Jinx )",
+          "rankClaim": "Master+",
+          "patch": "26.11",
+          "durationSec": 1108,
+          "patchEstimated": true,
+          "uploaded": "2026-05-31",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "vCZsnGq-mEs",
+          "title": "Rank 1 Ashe : Cyclosword is Absolutely BROKEN For ASHE - Engsub ( Ashe vs Jinx )",
+          "rankClaim": "Master+",
+          "patch": "26.10",
+          "durationSec": 1098,
+          "patchEstimated": true,
+          "uploaded": "2026-05-18",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "F3sOdBtCDbU",
+          "title": "Rank 1 Ashe : This Dude is LEGIT INSANLY GOOD AT ASHE - Engsub ( Ashe vs Jinx )",
+          "rankClaim": "Master+",
+          "patch": "26.10",
+          "durationSec": 1191,
+          "patchEstimated": true,
+          "uploaded": "2026-05-17",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "MYnrYs2ltac",
+          "title": "Rank 1 Ashe : This is ULTIMATE ASHE BUILD for Max DAMAGE - Engsub ( Ashe vs Jinx )",
+          "rankClaim": "Master+",
+          "patch": "26.10",
+          "durationSec": 1199,
+          "patchEstimated": true,
+          "uploaded": "2026-05-15",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "XLLUAL0PIqo",
+          "title": "Rank 1 Ashe : His Mechanic is so AGGRESSIVE in Early Game - Engsub ( Ashe vs Jinx )",
+          "rankClaim": "Master+",
+          "patch": "26.9",
+          "durationSec": 782,
+          "patchEstimated": true,
+          "uploaded": "2026-05-08",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "8y_jtUyxK5U",
+          "title": "Ashe vs Jinx ADC - KR Grandmaster - Patch 16.05 Season 16",
+          "rankClaim": "Grandmaster",
+          "patch": "26.5",
+          "durationSec": 2071,
+          "region": "KR",
+          "uploaded": "2026-03-15",
+          "moments": []
+        },
+        {
+          "videoId": "i02W6YPrbYg",
+          "title": "Peyz Ashe vs Jinx ADC - KR Challenger - Patch 16.05 Season 16",
+          "rankClaim": "Challenger",
+          "patch": "26.5",
+          "durationSec": 1476,
+          "region": "KR",
+          "player": "Peyz",
+          "uploaded": "2026-03-06",
+          "moments": []
+        },
+        {
+          "videoId": "_IxTi2wkKqo",
+          "title": "T1 Peyz Ashe vs Jinx [ ADC ] Korea Challenger 2118 LP | Patch 26.5",
+          "rankClaim": "Challenger",
+          "patch": "26.5",
+          "durationSec": 1266,
+          "region": "KR",
+          "player": "Peyz",
+          "team": "T1",
+          "uploaded": "2026-03-06",
+          "moments": []
+        },
+        {
+          "videoId": "gKcMqvPZmdo",
+          "title": "HLE Gumayusi Ashe vs Jinx [ ADC ] Korea Challenger 1401 LP | Patch 26.4",
+          "rankClaim": "Challenger",
+          "patch": "26.4",
+          "durationSec": 1402,
+          "region": "KR",
+          "player": "Gumayusi",
+          "team": "HLE",
+          "uploaded": "2026-02-24",
+          "moments": []
+        },
+        {
+          "videoId": "qbmqUjocm80",
+          "title": "Ashe vs Jinx ADC - KR Challenger - Patch 25.22 Season 15",
+          "rankClaim": "Challenger",
+          "patch": "25.22",
+          "durationSec": 1636,
+          "region": "KR",
+          "uploaded": "2025-11-14",
+          "moments": []
+        },
+        {
+          "videoId": "tqk7bOCEyLk",
+          "title": "Ashe vs Jinx ADC - KR Master - Patch 25.14 Season 15",
+          "rankClaim": "Master",
+          "patch": "25.14",
+          "durationSec": 1740,
+          "region": "KR",
+          "uploaded": "2025-07-26",
+          "moments": []
+        },
+        {
+          "videoId": "L1xeRzZjj6g",
+          "title": "Ashe ADC vs Jinx - KR Master Patch 25.13",
+          "rankClaim": "Master",
+          "patch": "25.13",
+          "durationSec": 1631,
+          "region": "KR",
+          "uploaded": "2025-07-18",
+          "moments": []
+        },
+        {
+          "videoId": "dEytIqFs5hs",
+          "title": "Ashe vs Jinx ADC - KR Master - Patch 25.10 Season 15",
+          "rankClaim": "Master",
+          "patch": "25.10",
+          "durationSec": 1891,
+          "region": "KR",
+          "uploaded": "2025-05-26",
+          "moments": []
+        },
+        {
+          "videoId": "hR2ZMoAFIGI",
+          "title": "Ashe ADC vs Jinx - KR Grandmaster Patch 25.07",
+          "rankClaim": "Grandmaster",
+          "patch": "25.7",
+          "durationSec": 1709,
+          "region": "KR",
+          "uploaded": "2025-04-06",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 235,
+      "lane": "adc",
+      "videos": [
+        {
+          "videoId": "pvmWgYId9xY",
+          "title": "Rank 1 Ashe : Insane 1v5 Comeback of History - Engsub ( Ashe vs Senna )",
+          "rankClaim": "Master+",
+          "patch": "26.13",
+          "durationSec": 1036,
+          "patchEstimated": true,
+          "uploaded": "2026-07-04",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "LtpWL-inKEs",
+          "title": "Rank 1 Ashe : His Spacing is on A NEXT LEVEL - Engsub (Ashe vs Senna, Caitlyn)",
+          "rankClaim": "Master+",
+          "patch": "26.13",
+          "durationSec": 1406,
+          "patchEstimated": true,
+          "uploaded": "2026-07-02",
+          "format": "stream",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 235,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "r9_Pbxi7kI8",
+          "title": "Ashe Support vs Senna - EUW Grandmaster Patch 26.05",
+          "rankClaim": "Grandmaster",
+          "patch": "26.5",
+          "durationSec": 1798,
+          "region": "EUW",
+          "uploaded": "2026-03-14",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 236,
+      "lane": "adc",
+      "videos": [
+        {
+          "videoId": "QZdkETRXhuI",
+          "title": "Ashe ADC vs Lucian (SPK rajed) - EUW Master Patch 26.20",
+          "rankClaim": "Master",
+          "patch": "26.20",
+          "durationSec": 1641,
+          "region": "EUW",
+          "uploaded": "2026-10-11",
+          "result": "W",
+          "moments": [
+            {
+              "atSec": 133,
+              "label": "First Blood — Ashe kills Lucian",
+              "kind": "kill"
+            },
+            {
+              "atSec": 314,
+              "label": "Red takes 1st Dragon (Infernal)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 637,
+              "label": "Red takes 2nd Dragon (Hextech)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 685,
+              "label": "Nautilus picks off Lucian"
+            },
+            {
+              "atSec": 740,
+              "label": "Ashe outduels Lucian"
+            },
+            {
+              "atSec": 826,
+              "label": "Ashe takes down Lucian"
+            },
+            {
+              "atSec": 896,
+              "label": "Red takes Rift Herald",
+              "kind": "herald"
+            },
+            {
+              "atSec": 989,
+              "label": "Blue takes 1st Dragon (Ocean)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1243,
+              "label": "Ashe takes down Lucian"
+            },
+            {
+              "atSec": 1295,
+              "label": "Ashe kills Lissandra",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1330,
+              "label": "Blue takes 2nd Dragon (Ocean)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1414,
+              "label": "Sejuani eliminates Milio"
+            },
+            {
+              "atSec": 1447,
+              "label": "Red takes Baron",
+              "kind": "baron"
+            },
+            {
+              "atSec": 1454,
+              "label": "Cho'Gath kills Ambessa",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1504,
+              "label": "Cho'Gath Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1602,
+              "label": "Mid Inhibitor falls (Blue)"
+            },
+            {
+              "atSec": 1606,
+              "label": "Top Inhibitor falls (Blue)"
+            },
+            {
+              "atSec": 1628,
+              "label": "Ashe eliminates Kha'Zix"
+            }
+          ]
+        },
+        {
+          "videoId": "etekeT7mV0Q",
+          "title": "(FNC Upset) Ashe ADC vs Lucian - EUW Challenger Patch 26.16",
+          "rankClaim": "Challenger",
+          "patch": "26.16",
+          "durationSec": 1626,
+          "region": "EUW",
+          "player": "Upset",
+          "team": "FNC",
+          "uploaded": "2026-08-16",
+          "moments": []
+        },
+        {
+          "videoId": "rpJneXZroEk",
+          "title": "When Rank 1 Ashe visit Fan Town Diamond Elo - Engsub ( Ashe vs Lucian )",
+          "rankClaim": "Master+",
+          "patch": "26.12",
+          "durationSec": 1142,
+          "patchEstimated": true,
+          "uploaded": "2026-06-21",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "IU_gV-4Gw1g",
+          "title": "Teanyoon : His Ashe Spacing is on Another Level - Engsub ( Ashe vs Lucian )",
+          "rankClaim": "Master+",
+          "patch": "26.12",
+          "durationSec": 1290,
+          "patchEstimated": true,
+          "uploaded": "2026-06-13",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "hTTT8zW628w",
+          "title": "HLE Gumayusi Ashe vs Lucian [ ADC ] Korea Challenger 2585 LP | Patch 26.11",
+          "rankClaim": "Challenger",
+          "patch": "26.11",
+          "durationSec": 934,
+          "region": "KR",
+          "player": "Gumayusi",
+          "team": "HLE",
+          "uploaded": "2026-05-30",
+          "moments": []
+        },
+        {
+          "videoId": "AvVQfDE6OiI",
+          "title": "(HLE Gumayusi) Ashe ADC vs Lucian - KR Challenger Patch 26.10",
+          "rankClaim": "Challenger",
+          "patch": "26.10",
+          "durationSec": 1678,
+          "region": "KR",
+          "player": "Gumayusi",
+          "team": "HLE",
+          "uploaded": "2026-05-27",
+          "moments": []
+        },
+        {
+          "videoId": "YpECWO3ASI8",
+          "title": "Ashe vs Lucian ADC - KR Challenger - Patch 25.21 Season 15",
+          "rankClaim": "Challenger",
+          "patch": "25.21",
+          "durationSec": 1261,
+          "region": "KR",
+          "uploaded": "2025-11-05",
+          "moments": []
+        },
+        {
+          "videoId": "peKi-klcrDg",
+          "title": "Ashe vs Lucian ADC [ TripleKill ] Korea Master Patch 25.21 ✅",
+          "rankClaim": "Master",
+          "patch": "25.21",
+          "durationSec": 1832,
+          "region": "KR",
+          "player": "TripleKill",
+          "uploaded": "2025-10-23",
+          "moments": []
+        },
+        {
+          "videoId": "44UxPQLbt5o",
+          "title": "Ashe vs Lucian [ ADC ] Lol Korea Master Patch 25.15 ✅",
+          "rankClaim": "Master",
+          "patch": "25.15",
+          "durationSec": 1707,
+          "region": "KR",
+          "uploaded": "2025-08-07",
+          "moments": []
+        },
+        {
+          "videoId": "ptu9PzjE_C0",
+          "title": "Ashe ADC vs Lucian - EUW Challenger Patch 25.14",
+          "rankClaim": "Challenger",
+          "patch": "25.14",
+          "durationSec": 1667,
+          "region": "EUW",
+          "uploaded": "2025-07-30",
+          "moments": []
+        },
+        {
+          "videoId": "5IBdWpIg7_M",
+          "title": "Ashe ADC vs Lucian - KR Grandmaster Patch 25.13",
+          "rankClaim": "Grandmaster",
+          "patch": "25.13",
+          "durationSec": 1688,
+          "region": "KR",
+          "uploaded": "2025-06-30",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 267,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "l4z9qRlo0ig",
+          "title": "Ashe Support vs Nami - EUW Grandmaster Patch 26.08",
+          "rankClaim": "Grandmaster",
+          "patch": "26.8",
+          "durationSec": 1652,
+          "region": "EUW",
+          "uploaded": "2026-04-28",
+          "moments": []
+        },
+        {
+          "videoId": "OOXRAwOtGs8",
+          "title": "Ashe Support vs Nami - KR Master Patch 25.17",
+          "rankClaim": "Master",
+          "patch": "25.17",
+          "durationSec": 1757,
+          "region": "KR",
+          "uploaded": "2025-09-08",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 360,
+      "lane": "adc",
+      "videos": [
+        {
+          "videoId": "R0dtWx6R3go",
+          "title": "Rank 1 Ashe : This Build is Extreme Broken ! You Need to Try It - Engsub ( vs Samira, Twitch )",
+          "rankClaim": "Master+",
+          "patch": "26.18",
+          "durationSec": 1517,
+          "patchEstimated": true,
+          "uploaded": "2026-09-21",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "1PsRUyUgLbw",
+          "title": "Rank 1 Ashe : LEGIT Insane 1v5 Pentakill Dominating The Game - Engsub ( Ashe vs Samira )",
+          "rankClaim": "Master+",
+          "patch": "26.12",
+          "durationSec": 1035,
+          "patchEstimated": true,
+          "uploaded": "2026-06-19",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "CbvFCWAIIYU",
+          "title": "Ashe vs Samira ADC - EUW Grandmaster - Patch 16.08 Season 16",
+          "rankClaim": "Grandmaster",
+          "patch": "26.8",
+          "durationSec": 1831,
+          "region": "EUW",
+          "uploaded": "2026-04-23",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 412,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "LnVlIUlsdKY",
+          "title": "Ashe Support vs Thresh - KR Master Patch 26.01",
+          "rankClaim": "Master",
+          "patch": "26.1",
+          "durationSec": 1484,
+          "region": "KR",
+          "uploaded": "2026-01-23",
+          "moments": []
+        },
+        {
+          "videoId": "raiWYB6j62M",
+          "title": "Ashe Support vs Thresh - KR Master Patch 25.23",
+          "rankClaim": "Master",
+          "patch": "25.23",
+          "durationSec": 1467,
+          "region": "KR",
+          "uploaded": "2025-12-03",
+          "moments": []
+        },
+        {
+          "videoId": "Wpt-qRaIqpw",
+          "title": "Ashe Support vs Thresh - KR Master Patch 25.10",
+          "rankClaim": "Master",
+          "patch": "25.10",
+          "durationSec": 1494,
+          "region": "KR",
+          "uploaded": "2025-05-23",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 429,
+      "lane": "adc",
+      "videos": [
+        {
+          "videoId": "mLc5tqwbf_U",
+          "title": "Ashe ADC vs Kalista - VN Master Patch 26.17",
+          "rankClaim": "Master",
+          "patch": "26.17",
+          "durationSec": 1725,
+          "uploaded": "2026-08-30",
+          "moments": []
+        },
+        {
+          "videoId": "K1vZUmACG7o",
+          "title": "Rank 1 Ashe: His Kiting Skill and Control in Teamfight is on a NEXT LEVEL - Engsub (Ashe vs Kalista)",
+          "rankClaim": "Master+",
+          "patch": "26.9",
+          "durationSec": 1302,
+          "patchEstimated": true,
+          "uploaded": "2026-05-03",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "qhsLQnd1fHw",
+          "title": "Ashe ADC vs Kalista - KR Grandmaster Patch 25.08",
+          "rankClaim": "Grandmaster",
+          "patch": "25.8",
+          "durationSec": 2042,
+          "region": "KR",
+          "uploaded": "2025-04-22",
+          "moments": []
+        },
+        {
+          "videoId": "LID9dKF7s3M",
+          "title": "T1 Gumayusi Ashe ADC vs Kalista - Patch 25.4 Korea Challenger ✅",
+          "rankClaim": "Challenger",
+          "patch": "25.4",
+          "durationSec": 1555,
+          "region": "KR",
+          "player": "Gumayusi",
+          "team": "T1",
+          "uploaded": "2025-02-24",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 498,
+      "lane": "adc",
+      "videos": [
+        {
+          "videoId": "1-1MkS3OBLs",
+          "title": "Ashe ADC vs Xayah - EUW Master Patch 26.19",
+          "rankClaim": "Master",
+          "patch": "26.19",
+          "durationSec": 1693,
+          "region": "EUW",
+          "uploaded": "2026-09-28",
+          "moments": []
+        },
+        {
+          "videoId": "U3CD9XOgXrw",
+          "title": "Rank 1 Ashe : This is ELITE Level Ashe Look Like - Engsub ( vs Xayah )",
+          "rankClaim": "Master+",
+          "patch": "26.15",
+          "durationSec": 1134,
+          "patchEstimated": true,
+          "uploaded": "2026-08-07",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "8qc11fF0S-M",
+          "title": "Rank 1 Ashe : This Dude is a LEGIT INSANE - Engsub ( Ashe vs Xayah )",
+          "rankClaim": "Master+",
+          "patch": "26.12",
+          "durationSec": 1059,
+          "patchEstimated": true,
+          "uploaded": "2026-06-12",
+          "format": "stream",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 523,
+      "lane": "adc",
+      "videos": [
+        {
+          "videoId": "pZA6R9R2WzU",
+          "title": "Ashe ADC vs Aphelios - KR Master Patch 26.01",
+          "rankClaim": "Master",
+          "patch": "26.1",
+          "durationSec": 1572,
+          "region": "KR",
+          "uploaded": "2026-01-10",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 326,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 421,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 803,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 939,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1029,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1052,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1178,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1206,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1368,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1406,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1420,
+              "label": "Take down The Inhibitor"
+            },
+            {
+              "atSec": 1481,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1521,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1541,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1561,
+              "label": "End credit"
+            }
+          ]
+        },
+        {
+          "videoId": "qY7LxTzs-bg",
+          "title": "Ashe ADC vs Aphelios - EUW Challenger Patch 25.22",
+          "rankClaim": "Challenger",
+          "patch": "25.22",
+          "durationSec": 1561,
+          "region": "EUW",
+          "uploaded": "2025-11-20",
+          "moments": []
+        },
+        {
+          "videoId": "3DW4KNpV4uY",
+          "title": "Ashe vs Aphelios ADC [ TripleKill ] Korea Master Patch 25.22 ✅",
+          "rankClaim": "Master",
+          "patch": "25.22",
+          "durationSec": 1548,
+          "region": "KR",
+          "player": "TripleKill",
+          "uploaded": "2025-11-08",
+          "moments": []
+        },
+        {
+          "videoId": "iUlMvdd6b2o",
+          "title": "T1 Gumayusi Ashe vs Aphelios [ ADC ] Patch 25.9 Korea Grandmaster",
+          "rankClaim": "Grandmaster",
+          "patch": "25.9",
+          "durationSec": 1121,
+          "region": "KR",
+          "player": "Gumayusi",
+          "team": "T1",
+          "uploaded": "2025-05-08",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 526,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "8UlkZXkdO48",
+          "title": "Ashe Support vs Rell - KR Master Patch 25.05",
+          "rankClaim": "Master",
+          "patch": "25.5",
+          "durationSec": 1703,
+          "region": "KR",
+          "uploaded": "2025-03-16",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 555,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "J3J6ZeSig80",
+          "title": "Ashe Support vs Pyke - KR Master Patch 25.24",
+          "rankClaim": "Master",
+          "patch": "25.24",
+          "durationSec": 1526,
+          "region": "KR",
+          "uploaded": "2025-12-28",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 800,
+      "lane": "adc",
+      "videos": [
+        {
+          "videoId": "JUzRcOaNk0U",
+          "title": "(BLG Viper) Ashe ADC vs Mel - KR Challenger Patch 26.12",
+          "rankClaim": "Challenger",
+          "patch": "26.12",
+          "durationSec": 1538,
+          "region": "KR",
+          "player": "Viper",
+          "team": "BLG",
+          "uploaded": "2026-06-14",
+          "result": "W",
+          "moments": [
+            {
+              "atSec": 52,
+              "label": "First Blood — Ashe kills Mel",
+              "kind": "kill"
+            },
+            {
+              "atSec": 159,
+              "label": "Leona kills Kindred",
+              "kind": "kill"
+            },
+            {
+              "atSec": 266,
+              "label": "Leona picks off Mel"
+            },
+            {
+              "atSec": 446,
+              "label": "Galio picks off Kindred"
+            },
+            {
+              "atSec": 655,
+              "label": "Ashe picks off Jax"
+            },
+            {
+              "atSec": 786,
+              "label": "Ashe takes down Kindred"
+            },
+            {
+              "atSec": 798,
+              "label": "Ashe takes down Mel"
+            },
+            {
+              "atSec": 1034,
+              "label": "Blue takes Rift Herald",
+              "kind": "herald"
+            },
+            {
+              "atSec": 1065,
+              "label": "Red takes 1st Dragon (Cloud)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1165,
+              "label": "Ashe picks off Jax"
+            },
+            {
+              "atSec": 1288,
+              "label": "Ashe picks off Jax"
+            },
+            {
+              "atSec": 1334,
+              "label": "Blue takes Baron",
+              "kind": "baron"
+            },
+            {
+              "atSec": 1384,
+              "label": "Blue takes 1st Dragon (Chemtech)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1415,
+              "label": "Ashe kills Anivia",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1473,
+              "label": "Leona kills Kindred",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1501,
+              "label": "Mid Inhibitor falls (Red)"
+            }
+          ]
+        },
+        {
+          "videoId": "PhJfkQc2B_U",
+          "title": "BLG Viper Ashe vs Mel [ ADC ] Korea Challenger 2215 LP | Patch 26.12",
+          "rankClaim": "Challenger",
+          "patch": "26.12",
+          "durationSec": 1308,
+          "region": "KR",
+          "player": "Viper",
+          "team": "BLG",
+          "uploaded": "2026-06-12",
+          "moments": []
+        },
+        {
+          "videoId": "rAyZ9F1xzLM",
+          "title": "T1 Peyz Ashe vs Mel [ ADC ] Patch 25.24 Ranked Korea",
+          "rankClaim": "Master+",
+          "patch": "25.24",
+          "durationSec": 1238,
+          "region": "KR",
+          "player": "Peyz",
+          "team": "T1",
+          "uploaded": "2026-01-05",
+          "moments": []
+        },
+        {
+          "videoId": "1X2PmILBH6g",
+          "title": "T1 Gumayusi Ashe vs Mel [ ADC ] Korea Grandmaster Patch 25.9",
+          "rankClaim": "Grandmaster",
+          "patch": "25.9",
+          "durationSec": 1336,
+          "region": "KR",
+          "player": "Gumayusi",
+          "team": "T1",
+          "uploaded": "2025-05-12",
+          "moments": []
+        },
+        {
+          "videoId": "HOwydY9nM-U",
+          "title": "Viper Ashe vs Mel ADC - KR Challenger - Patch 25.9 Season 15",
+          "rankClaim": "Challenger",
+          "patch": "25.9",
+          "durationSec": 1770,
+          "region": "KR",
+          "player": "Viper",
+          "uploaded": "2025-05-09",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 800,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "mvCwPBhrENo",
+          "title": "Ashe Support vs Mel - EUW Grandmaster Patch 25.04",
+          "rankClaim": "Grandmaster",
+          "patch": "25.4",
+          "durationSec": 1887,
+          "region": "EUW",
+          "uploaded": "2025-03-01",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 804,
+      "lane": "adc",
+      "videos": [
+        {
+          "videoId": "O4zfDwsL9YI",
+          "title": "Rank 1 Ashe : His DAMAGE is so DAM NUT - Engsub ( vs Yunara )",
+          "rankClaim": "Master+",
+          "patch": "26.19",
+          "durationSec": 1101,
+          "patchEstimated": true,
+          "uploaded": "2026-09-30",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "WE2wxaniS10",
+          "title": "Rank 1 Ashe : His Mechanic is so AGGRESSIVE in Laning Phase - Engsub ( vs Yunara )",
+          "rankClaim": "Master+",
+          "patch": "26.19",
+          "durationSec": 816,
+          "patchEstimated": true,
+          "uploaded": "2026-09-29",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "yXjHq-HbA9Y",
+          "title": "Ashe vs Yunara [ ADC ] Lol Korea Master 425 LP | Patch 26.18 ✅",
+          "rankClaim": "Master",
+          "patch": "26.18",
+          "durationSec": 1570,
+          "region": "KR",
+          "uploaded": "2026-09-15",
+          "moments": []
+        },
+        {
+          "videoId": "2JmIzUKpKm4",
+          "title": "Rank 1 Ashe : His Teamfighting Is Actually TERRIFYING - Engsub ( vs Yunara )",
+          "rankClaim": "Master+",
+          "patch": "26.17",
+          "durationSec": 1065,
+          "patchEstimated": true,
+          "uploaded": "2026-09-08",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "ERZIUPjGcMc",
+          "title": "Rank 1 Ashe : His Mechanic is so AGGRESSIVE in Laning Phase - Engsub (Ashe vs Yunara)",
+          "rankClaim": "Master+",
+          "patch": "26.15",
+          "durationSec": 845,
+          "patchEstimated": true,
+          "uploaded": "2026-08-02",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "ODaOp6v4hvk",
+          "title": "Rank 1 Ashe: The Most ICONIC Comeback of History \"Late Game He is a Monster\" Engsub (Ashe vs Yunara)",
+          "rankClaim": "Master+",
+          "patch": "26.14",
+          "durationSec": 1033,
+          "patchEstimated": true,
+          "uploaded": "2026-07-28",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "9U6S6tNCEqY",
+          "title": "Rank 1 Ashe : Insane Kitiing Force Enemy FF at 20 Min - Engsub (Ashe vs Yunara)",
+          "rankClaim": "Master+",
+          "patch": "26.13",
+          "durationSec": 744,
+          "patchEstimated": true,
+          "uploaded": "2026-07-09",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "Lawydri6jq4",
+          "title": "Rank 1 Ashe : Late Game His DAMAGE is LEGIT INSANE - Engsub ( Ashe vs Yunara )",
+          "rankClaim": "Master+",
+          "patch": "26.12",
+          "durationSec": 1395,
+          "patchEstimated": true,
+          "uploaded": "2026-06-11",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "1W6NdJOOrZk",
+          "title": "Rank 1 Ashe : His DAMAGE is Ridiculous with this New BOOT - Engsub ( Ashe vs Yunara )",
+          "rankClaim": "Master+",
+          "patch": "26.9",
+          "durationSec": 897,
+          "patchEstimated": true,
+          "uploaded": "2026-05-12",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "pVv7GOcZQMk",
+          "title": "Rank 1 Ashe : Insane 1v9 Dominating Master Elo - Engsub ( Ashe vs Yunara )",
+          "rankClaim": "Master",
+          "patch": "26.9",
+          "durationSec": 1007,
+          "patchEstimated": true,
+          "uploaded": "2026-05-06",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "3lDfuPTdJvg",
+          "title": "HLE Gumayusi Ashe vs Yunara [ ADC ] Patch 26.8 Korea Challenger 2494 LP",
+          "rankClaim": "Challenger",
+          "patch": "26.8",
+          "durationSec": 1487,
+          "region": "KR",
+          "player": "Gumayusi",
+          "team": "HLE",
+          "uploaded": "2026-04-16",
+          "moments": []
+        },
+        {
+          "videoId": "_50-1CYANS4",
+          "title": "T1 Peyz Ashe vs HLE Gumayusi Yunara [ ADC ] Korea Challenger 2278 LP | Patch 26.7",
+          "rankClaim": "Challenger",
+          "patch": "26.7",
+          "durationSec": 1387,
+          "region": "KR",
+          "player": "Peyz",
+          "team": "T1",
+          "uploaded": "2026-04-04",
+          "moments": []
+        },
+        {
+          "videoId": "FxmWU6d-U_s",
+          "title": "T1 Peyz Ashe vs Yunara [ ADC ] Korea Challenger 2038 LP | Patch 26.6",
+          "rankClaim": "Challenger",
+          "patch": "26.6",
+          "durationSec": 1818,
+          "region": "KR",
+          "player": "Peyz",
+          "team": "T1",
+          "uploaded": "2026-03-28",
+          "moments": []
+        },
+        {
+          "videoId": "FJ7exmiaTh4",
+          "title": "HLE Gumayusi Ashe vs Yunara [ ADC ] Korea Challenger 1754 LP | Patch 26.5",
+          "rankClaim": "Challenger",
+          "patch": "26.5",
+          "durationSec": 919,
+          "region": "KR",
+          "player": "Gumayusi",
+          "team": "HLE",
+          "uploaded": "2026-03-05",
+          "moments": []
+        },
+        {
+          "videoId": "DayfisQa3Xo",
+          "title": "Ashe ADC vs Yunara - KR Challenger Patch 26.04",
+          "rankClaim": "Challenger",
+          "patch": "26.4",
+          "durationSec": 1731,
+          "region": "KR",
+          "uploaded": "2026-02-25",
+          "moments": []
+        },
+        {
+          "videoId": "Ep7hIm5IVvo",
+          "title": "T1 Peyz Ashe ADC vs Yunara - Patch 26.4 Korea Challenger 2127 LP",
+          "rankClaim": "Challenger",
+          "patch": "26.4",
+          "durationSec": 1090,
+          "region": "KR",
+          "player": "Peyz",
+          "team": "T1",
+          "uploaded": "2026-02-20",
+          "moments": []
+        },
+        {
+          "videoId": "rtg52zIW-ek",
+          "title": "DK Smash Ashe vs Yunara [ ADC ] Korea Challenger 1715 LP | Patch 26.3",
+          "rankClaim": "Challenger",
+          "patch": "26.3",
+          "durationSec": 1516,
+          "region": "KR",
+          "player": "Smash",
+          "team": "DK",
+          "uploaded": "2026-02-16",
+          "moments": []
+        },
+        {
+          "videoId": "BQqN9CVYgdg",
+          "title": "Ashe vs Yunara ADC - KR Challenger - Patch 16.03 Season 16",
+          "rankClaim": "Challenger",
+          "patch": "26.3",
+          "durationSec": 1771,
+          "region": "KR",
+          "uploaded": "2026-02-11",
+          "moments": []
+        },
+        {
+          "videoId": "SGvXbmU6CtU",
+          "title": "Ashe ADC vs Yunara - EUW Grandmaster Patch 26.02",
+          "rankClaim": "Grandmaster",
+          "patch": "26.2",
+          "durationSec": 1513,
+          "region": "EUW",
+          "uploaded": "2026-02-05",
+          "moments": []
+        },
+        {
+          "videoId": "8iqO2Mpcgvo",
+          "title": "HLE Gumayusi Ashe vs Yunara [ ADC ] Patch 25.24 Ranked Korea",
+          "rankClaim": "Master+",
+          "patch": "25.24",
+          "durationSec": 1405,
+          "region": "KR",
+          "player": "Gumayusi",
+          "team": "HLE",
+          "uploaded": "2025-12-05",
+          "moments": []
+        },
+        {
+          "videoId": "pxKNAatvkIg",
+          "title": "Ashe ADC vs Yunara - KR Grandmaster Patch 25.23",
+          "rankClaim": "Grandmaster",
+          "patch": "25.23",
+          "durationSec": 1571,
+          "region": "KR",
+          "uploaded": "2025-11-23",
+          "moments": []
+        },
+        {
+          "videoId": "LSJi6zqEXk8",
+          "title": "Ashe ADC vs Yunara - KR Grandmaster Patch 25.21",
+          "rankClaim": "Grandmaster",
+          "patch": "25.21",
+          "durationSec": 1571,
+          "region": "KR",
+          "uploaded": "2025-10-25",
+          "moments": []
+        },
+        {
+          "videoId": "EehUmzvVN8o",
+          "title": "Ashe ADC vs Yunara - KR Master Patch 25.14",
+          "rankClaim": "Master",
+          "patch": "25.14",
+          "durationSec": 1689,
+          "region": "KR",
+          "uploaded": "2025-07-22",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 901,
+      "lane": "adc",
+      "videos": [
+        {
+          "videoId": "VFdV5iRrK4A",
+          "title": "Deokdam : Machine Gun ASHE Tearing KR HighElo Apart - Quick Pentakill - Engsub (Ashe vs Smolder)",
+          "rankClaim": "Master+",
+          "patch": "26.13",
+          "durationSec": 892,
+          "region": "KR",
+          "patchEstimated": true,
+          "uploaded": "2026-07-01",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "xkyhpIAeGt8",
+          "title": "Rank 1 Ashe : His Spacing and Kiting Skill is on Another Level - Engsub ( Ashe vs Smolder )",
+          "rankClaim": "Master+",
+          "patch": "26.9",
+          "durationSec": 1062,
+          "patchEstimated": true,
+          "uploaded": "2026-05-03",
+          "format": "stream",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 910,
+      "lane": "adc",
+      "videos": [
+        {
+          "videoId": "Vaqj04OvqSU",
+          "title": "Uzi Ashe : Insane Kiting Skill Tearing KR HighElo Apart - Engsub ( Ashe vs Hwei )",
+          "rankClaim": "Master+",
+          "patch": "26.11",
+          "durationSec": 1101,
+          "region": "KR",
+          "patchEstimated": true,
+          "player": "Uzi",
+          "uploaded": "2026-06-07",
+          "format": "stream",
+          "moments": []
+        }
+      ]
+    }
+  ]
+}

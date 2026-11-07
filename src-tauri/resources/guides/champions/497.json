@@ -1,0 +1,3041 @@
+{
+  "schema": 1,
+  "champion": 497,
+  "generatedAt": "2026-11-07T13:25:14.592Z",
+  "guides": [],
+  "general": [
+    {
+      "champion": 497,
+      "lane": "support",
+      "patch": "26.21",
+      "reviewed": false,
+      "keyTips": [
+        {
+          "text": "Respect the weak early game: control the lane bushes and count the minions to level two before deciding whether an engage is actually available.",
+          "scope": "champion",
+          "sourceIds": [
+            "daltonfresh"
+          ]
+        },
+        {
+          "text": "Punish from the bushes when the enemy ADC locks into a last-hit animation or wastes an ability: W in, add an auto and Q, then E back to safety, extending with a second auto only when it is safe.",
+          "scope": "champion",
+          "sourceIds": [
+            "daltonfresh"
+          ],
+          "abilityKeys": [
+            {
+              "champion": 497,
+              "key": "W"
+            },
+            {
+              "champion": 497,
+              "key": "Q"
+            },
+            {
+              "champion": 497,
+              "key": "E"
+            }
+          ]
+        },
+        {
+          "text": "From level six, roam when the ADC is safe or ahead, cast R during E travel to hide the approach, and keep Flash ready for a fast R or W engage.",
+          "scope": "champion",
+          "sourceIds": [
+            "daltonfresh"
+          ],
+          "abilityKeys": [
+            {
+              "champion": 497,
+              "key": "R"
+            },
+            {
+              "champion": 497,
+              "key": "E"
+            },
+            {
+              "champion": 497,
+              "key": "W"
+            }
+          ]
+        }
+      ],
+      "sections": {
+        "overview": {
+          "tips": []
+        },
+        "early-lane": {
+          "tips": [
+            {
+              "text": "Take the opening only when opponents offer it: engage with W and E or Q and W, and otherwise keep W available to threaten or to answer an engage.",
+              "scope": "champion",
+              "sourceIds": [
+                "daltonfresh"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 497,
+                  "key": "W"
+                },
+                {
+                  "champion": 497,
+                  "key": "Q"
+                },
+                {
+                  "champion": 497,
+                  "key": "E"
+                }
+              ]
+            },
+            {
+              "text": "After a winning trade crashes the wave, spend the time on a river or enemy-jungle ward; after a lost trade, wait for a safer window instead of forcing another attempt.",
+              "scope": "champion",
+              "sourceIds": [
+                "daltonfresh"
+              ]
+            },
+            {
+              "text": "Start Q, then max W followed by E, with Flash and Heal as the standard summoners on the Guardian page.",
+              "scope": "champion",
+              "sourceIds": [
+                "daltonfresh"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 497,
+                  "key": "Q"
+                },
+                {
+                  "champion": 497,
+                  "key": "W"
+                },
+                {
+                  "champion": 497,
+                  "key": "E"
+                }
+              ]
+            }
+          ]
+        },
+        "mid-lane": {
+          "tips": [
+            {
+              "text": "Buy Oracle Lens after the first recall and use it to pressure bushes and clear river vision.",
+              "scope": "champion",
+              "sourceIds": [
+                "daltonfresh"
+              ],
+              "itemIds": [
+                3364
+              ]
+            },
+            {
+              "text": "Roam to help mid, assist the jungler around Grubs, or plant deeper vision when the ADC can hold alone; when roaming would expose the ADC, stay to ward entries, cover dragon, or set up the jungler's approach.",
+              "scope": "champion",
+              "sourceIds": [
+                "daltonfresh"
+              ]
+            },
+            {
+              "text": "Check mid after every wave crash: a pushed-up opponent plus Rakan's movement and crowd control is a quick gank before returning bot.",
+              "scope": "champion",
+              "sourceIds": [
+                "daltonfresh"
+              ]
+            },
+            {
+              "text": "Against enemies who can dodge or interrupt a direct R-W entry, play as secondary engage or counter-engage instead of starting the fight yourself.",
+              "scope": "champion",
+              "sourceIds": [
+                "daltonfresh"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 497,
+                  "key": "R"
+                },
+                {
+                  "champion": 497,
+                  "key": "W"
+                }
+              ]
+            }
+          ]
+        },
+        "win-condition": {
+          "tips": [
+            {
+              "text": "Play as the disruptor who charms several opponents and knocks them up, but generally let a teammate start the fight so allies can follow the entrance.",
+              "scope": "champion",
+              "sourceIds": [
+                "daltonfresh"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 497,
+                  "key": "R"
+                },
+                {
+                  "champion": 497,
+                  "key": "W"
+                }
+              ]
+            },
+            {
+              "text": "Pick the mode each game: engage favorable bot skirmishes, roam when the ADC holds safely, or save W and E to peel and counter-engage.",
+              "scope": "champion",
+              "sourceIds": [
+                "daltonfresh"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 497,
+                  "key": "W"
+                },
+                {
+                  "champion": 497,
+                  "key": "E"
+                }
+              ]
+            },
+            {
+              "text": "Keep enough ability haste and health to repeat engage and disengage cycles; Rakan cannot fight alone and always needs allied follow-up.",
+              "scope": "champion",
+              "sourceIds": [
+                "daltonfresh"
+              ]
+            }
+          ]
+        }
+      },
+      "itemization": [
+        {
+          "text": "Follow the patch 26.21 meta example of Celestial Opposition, Dark Seal, Ionian Boots of Lucidity, Zeke's Convergence, Bandlepipes, Locket of the Iron Solari, and Knight's Vow, and avoid dying while building Dark Seal's value.",
+          "scope": "champion",
+          "sourceIds": [
+            "daltonfresh"
+          ],
+          "itemIds": [
+            3869,
+            1082,
+            3158,
+            3050,
+            2524,
+            3190,
+            3109
+          ]
+        },
+        {
+          "text": "Take Celestial Opposition as the default support upgrade with Solstice Sleigh for extra frontline utility; choose Locket, Knight's Vow, Mikael's Blessing, or Shurelya's Battlesong for defense and Oblivion Orb or Imperial Mandate for offense.",
+          "scope": "champion",
+          "sourceIds": [
+            "daltonfresh"
+          ],
+          "itemIds": [
+            3869,
+            3876,
+            3109,
+            3222,
+            2065,
+            3916,
+            4005
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "id": "daltonfresh",
+          "author": "daltonfresh",
+          "rankClaim": "none shown; title identifies it as a low-elo guide",
+          "url": "https://www.mobafire.com/league-of-legends/build/26-21-rakan-for-low-elo-rush-dark-seal-play-with-xayah-updated-every-patch-647318",
+          "kind": "mobafire"
+        }
+      ]
+    }
+  ],
+  "vods": [
+    {
+      "enemy": 12,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "fuKMwhwL1fA",
+          "title": "(LokeN) Rakan Support vs Alistar - KR Challenger Patch 26.19",
+          "rankClaim": "Challenger",
+          "patch": "26.19",
+          "durationSec": 1548,
+          "region": "KR",
+          "player": "LokeN",
+          "uploaded": "2026-10-06",
+          "result": "W",
+          "moments": [
+            {
+              "atSec": 73,
+              "label": "First Blood — Yunara kills Alistar",
+              "kind": "kill"
+            },
+            {
+              "atSec": 90,
+              "label": "Cho'Gath eliminates Kai'Sa"
+            },
+            {
+              "atSec": 356,
+              "label": "Red takes 1st Dragon (Cloud)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 495,
+              "label": "Lissandra eliminates Katarina"
+            },
+            {
+              "atSec": 684,
+              "label": "Lissandra takes down Alistar"
+            },
+            {
+              "atSec": 744,
+              "label": "Red takes 2nd Dragon (Chemtech)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 850,
+              "label": "Yunara takes down Kai'Sa"
+            },
+            {
+              "atSec": 952,
+              "label": "Rakan eliminates Ambessa"
+            },
+            {
+              "atSec": 1051,
+              "label": "Team fight (3 kills)",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1087,
+              "label": "Blue takes 1st Dragon (Infernal)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1160,
+              "label": "Rakan eliminates Alistar"
+            },
+            {
+              "atSec": 1283,
+              "label": "Blue takes Baron",
+              "kind": "baron"
+            },
+            {
+              "atSec": 1296,
+              "label": "Urgot picks off Kai'Sa"
+            },
+            {
+              "atSec": 1326,
+              "label": "Lissandra eliminates Katarina"
+            },
+            {
+              "atSec": 1407,
+              "label": "Blue takes 2nd Dragon (Infernal)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1437,
+              "label": "Mid Inhibitor falls (Red)"
+            },
+            {
+              "atSec": 1457,
+              "label": "Yunara takes down Kai'Sa"
+            }
+          ]
+        },
+        {
+          "videoId": "BtQQb64q73s",
+          "title": "Rakan Support vs Alistar - KR Challenger Patch 26.02",
+          "rankClaim": "Challenger",
+          "patch": "26.2",
+          "durationSec": 1555,
+          "region": "KR",
+          "uploaded": "2026-01-26",
+          "moments": []
+        },
+        {
+          "videoId": "aKlLBP3FFDg",
+          "title": "Rakan Support vs Alistar - KR Challenger Patch 25.22",
+          "rankClaim": "Challenger",
+          "patch": "25.22",
+          "durationSec": 1751,
+          "region": "KR",
+          "uploaded": "2025-11-08",
+          "moments": []
+        },
+        {
+          "videoId": "TfNHaDnmEEs",
+          "title": "Rakan Support vs Alistar - KR Challenger Patch 25.20",
+          "rankClaim": "Challenger",
+          "patch": "25.20",
+          "durationSec": 1486,
+          "region": "KR",
+          "uploaded": "2025-10-14",
+          "moments": []
+        },
+        {
+          "videoId": "nUgWcD2dnmk",
+          "title": "Rakan Support vs Alistar - EUW Challenger Patch 25.13",
+          "rankClaim": "Challenger",
+          "patch": "25.13",
+          "durationSec": 2137,
+          "region": "EUW",
+          "uploaded": "2025-07-09",
+          "moments": []
+        },
+        {
+          "videoId": "VOMS_ueOEfY",
+          "title": "Rakan Support vs Alistar - EUW Grandmaster Patch 25.09",
+          "rankClaim": "Grandmaster",
+          "patch": "25.9",
+          "durationSec": 1608,
+          "region": "EUW",
+          "uploaded": "2025-05-14",
+          "moments": []
+        },
+        {
+          "videoId": "hD9SOxw8wMw",
+          "title": "Rakan Support vs Alistar - EUW Challenger Patch 25.06",
+          "rankClaim": "Challenger",
+          "patch": "25.6",
+          "durationSec": 1941,
+          "region": "EUW",
+          "uploaded": "2025-04-03",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 34,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "gbl0vpYajxo",
+          "title": "Rakan Support vs Anivia - KR Challenger Patch 26.03",
+          "rankClaim": "Challenger",
+          "patch": "26.3",
+          "durationSec": 1603,
+          "region": "KR",
+          "uploaded": "2026-02-09",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 255,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 454,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 653,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 764,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1002,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1129,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1163,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1212,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1322,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1342,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1355,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1375,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1509,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1525,
+              "label": "Take down The Inhibitor"
+            },
+            {
+              "atSec": 1543,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1592,
+              "label": "End credit"
+            }
+          ]
+        },
+        {
+          "videoId": "VBDgd-PtNUU",
+          "title": "Rakan Support vs Anivia - KR Master Patch 25.16",
+          "rankClaim": "Master",
+          "patch": "25.16",
+          "durationSec": 1712,
+          "region": "KR",
+          "uploaded": "2025-08-17",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 39,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "LC7UDt4XAmI",
+          "title": "Rakan Top vs Irelia - KR Master Patch 25.04",
+          "rankClaim": "Master",
+          "patch": "25.4",
+          "durationSec": 1566,
+          "region": "KR",
+          "uploaded": "2025-03-01",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 40,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "sM9hEZnIux8",
+          "title": "Rakan Support vs Janna (DFM Woody) - KR Challenger Patch 26.20",
+          "rankClaim": "Challenger",
+          "patch": "26.20",
+          "durationSec": 1478,
+          "region": "KR",
+          "uploaded": "2026-10-20",
+          "result": "W",
+          "moments": [
+            {
+              "atSec": 230,
+              "label": "First Blood — Nidalee kills Olaf",
+              "kind": "kill"
+            },
+            {
+              "atSec": 277,
+              "label": "Katarina takes down Caitlyn"
+            },
+            {
+              "atSec": 371,
+              "label": "Yone picks off Jayce"
+            },
+            {
+              "atSec": 447,
+              "label": "Yone eliminates Locke"
+            },
+            {
+              "atSec": 491,
+              "label": "Nidalee takes down Jayce"
+            },
+            {
+              "atSec": 644,
+              "label": "Blue takes 1st Dragon (Cloud)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 651,
+              "label": "Nidalee kills Janna",
+              "kind": "kill"
+            },
+            {
+              "atSec": 740,
+              "label": "Nidalee takes down Jayce"
+            },
+            {
+              "atSec": 806,
+              "label": "Yone eliminates Locke"
+            },
+            {
+              "atSec": 967,
+              "label": "Warwick kills Jayce",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1045,
+              "label": "Red takes 1st Dragon (Chemtech)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1212,
+              "label": "Yone picks off Jayce"
+            },
+            {
+              "atSec": 1249,
+              "label": "Red takes Baron",
+              "kind": "baron"
+            },
+            {
+              "atSec": 1318,
+              "label": "Team fight (3 kills)",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1327,
+              "label": "Katarina Triple Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1366,
+              "label": "Red takes 2nd Dragon (Hextech)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1422,
+              "label": "Katarina Double Kill",
+              "kind": "kill"
+            }
+          ]
+        },
+        {
+          "videoId": "0tq1euF8ooA",
+          "title": "Rakan Support vs Janna - NA Grandmaster Patch 25.13",
+          "rankClaim": "Grandmaster",
+          "patch": "25.13",
+          "durationSec": 1612,
+          "region": "NA",
+          "uploaded": "2025-07-16",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 43,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "cJu7CqW_syQ",
+          "title": "Rakan Support vs Karma - KR Challenger Patch 26.09",
+          "rankClaim": "Challenger",
+          "patch": "26.9",
+          "durationSec": 1551,
+          "region": "KR",
+          "uploaded": "2026-05-09",
+          "moments": []
+        },
+        {
+          "videoId": "6FvnOUbMOjY",
+          "title": "Rakan Support vs Karma - KR Grandmaster Patch 25.08",
+          "rankClaim": "Grandmaster",
+          "patch": "25.8",
+          "durationSec": 1896,
+          "region": "KR",
+          "uploaded": "2025-04-21",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 216,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 346,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 479,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 603,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 873,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1007,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1157,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1235,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1402,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1503,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1603,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1695,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1805,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1875,
+              "label": "End credit"
+            }
+          ]
+        },
+        {
+          "videoId": "xhD5dKx7Olg",
+          "title": "Rakan Support vs Karma - KR Grandmaster Patch 25.05",
+          "rankClaim": "Grandmaster",
+          "patch": "25.5",
+          "durationSec": 1568,
+          "region": "KR",
+          "uploaded": "2025-03-09",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 255,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 395,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 543,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 634,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 664,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 741,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 951,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1023,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1113,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1181,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1328,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1422,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1516,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1547,
+              "label": "End credit"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 44,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "8HeQEWcSLFA",
+          "title": "Rakan Support vs Taric - KR Grandmaster Patch 25.10",
+          "rankClaim": "Grandmaster",
+          "patch": "25.10",
+          "durationSec": 2065,
+          "region": "KR",
+          "uploaded": "2025-05-17",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 53,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "kKUx8Fax23Q",
+          "title": "Rakan Support vs Blitzcrank - KR Challenger Patch 26.21",
+          "rankClaim": "Challenger",
+          "patch": "26.21",
+          "durationSec": 1479,
+          "region": "KR",
+          "uploaded": "2026-11-03",
+          "result": "W",
+          "moments": [
+            {
+              "atSec": 313,
+              "label": "Blue takes 1st Dragon (Ocean)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 633,
+              "label": "Xayah takes down Ezreal"
+            },
+            {
+              "atSec": 659,
+              "label": "Blue takes 2nd Dragon (Chemtech)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 717,
+              "label": "Syndra takes down Fiora"
+            },
+            {
+              "atSec": 760,
+              "label": "Camille picks off Ezreal"
+            },
+            {
+              "atSec": 863,
+              "label": "Camille picks off Ezreal"
+            },
+            {
+              "atSec": 904,
+              "label": "Blue takes Rift Herald",
+              "kind": "herald"
+            },
+            {
+              "atSec": 941,
+              "label": "Syndra Triple Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 977,
+              "label": "Rakan eliminates Fiora"
+            },
+            {
+              "atSec": 980,
+              "label": "Blue takes 3rd Dragon (Hextech)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1020,
+              "label": "Lee Sin kills Blitzcrank",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1091,
+              "label": "Lee Sin kills Blitzcrank",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1171,
+              "label": "Syndra takes down Blitzcrank"
+            },
+            {
+              "atSec": 1287,
+              "label": "Xayah Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1305,
+              "label": "Mid Inhibitor falls (Red)"
+            },
+            {
+              "atSec": 1331,
+              "label": "Blue takes 4th Dragon (Hextech)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1432,
+              "label": "Red takes Baron",
+              "kind": "baron"
+            }
+          ]
+        },
+        {
+          "videoId": "1FA_scL6uJ0",
+          "title": "Rakan Support vs Blitzcrank - KR Grandmaster Patch 25.17",
+          "rankClaim": "Grandmaster",
+          "patch": "25.17",
+          "durationSec": 1540,
+          "region": "KR",
+          "uploaded": "2025-08-29",
+          "moments": []
+        },
+        {
+          "videoId": "gToM7Q8CzaU",
+          "title": "Rakan Support vs Blitzcrank - KR Master Patch 25.13",
+          "rankClaim": "Master",
+          "patch": "25.13",
+          "durationSec": 1454,
+          "region": "KR",
+          "uploaded": "2025-06-28",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 57,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "dArhTnZlWoI",
+          "title": "Rakan Support vs Maokai - KR Challenger Patch 26.18",
+          "rankClaim": "Challenger",
+          "patch": "26.18",
+          "durationSec": 1809,
+          "region": "KR",
+          "uploaded": "2026-09-23",
+          "moments": []
+        },
+        {
+          "videoId": "TCeHfL6rq1w",
+          "title": "Rakan Support vs Maokai - KR Grandmaster Patch 25.12",
+          "rankClaim": "Grandmaster",
+          "patch": "25.12",
+          "durationSec": 1572,
+          "region": "KR",
+          "uploaded": "2025-06-14",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 60,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "4hc02RnmQB4",
+          "title": "Rakan Support vs Elise - EUW Challenger Patch 25.05",
+          "rankClaim": "Challenger",
+          "patch": "25.5",
+          "durationSec": 1595,
+          "region": "EUW",
+          "uploaded": "2025-03-20",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 78,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "-m-r5WLOK1Y",
+          "title": "(SSG Tianzhen) Rakan Support vs Poppy - KR Grandmaster Patch 26.11",
+          "rankClaim": "Grandmaster",
+          "patch": "26.11",
+          "durationSec": 1537,
+          "region": "KR",
+          "player": "SSG Tianzhen",
+          "uploaded": "2026-06-03",
+          "moments": []
+        },
+        {
+          "videoId": "oz97HJIJdic",
+          "title": "Rakan Support vs Poppy - KR Challenger Patch 25.24",
+          "rankClaim": "Challenger",
+          "patch": "25.24",
+          "durationSec": 1582,
+          "region": "KR",
+          "uploaded": "2025-12-07",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 79,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "qsvIFsCsZOM",
+          "title": "Rakan Support vs Gragas - KR Challenger Patch 25.18",
+          "rankClaim": "Challenger",
+          "patch": "25.18",
+          "durationSec": 1852,
+          "region": "KR",
+          "uploaded": "2025-09-14",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 80,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "eLvYeDLuZEQ",
+          "title": "Rakan Support vs Pantheon - KR Challenger Patch 26.05",
+          "rankClaim": "Challenger",
+          "patch": "26.5",
+          "durationSec": 1602,
+          "region": "KR",
+          "uploaded": "2026-03-17",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 168,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 190,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 263,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 315,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 397,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 683,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 759,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 834,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 946,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1042,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1141,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1201,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1407,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1531,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1578,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1591,
+              "label": "End credit"
+            }
+          ]
+        },
+        {
+          "videoId": "Tt5f4vm5Oms",
+          "title": "Rakan Support vs Pantheon - KR Grandmaster Patch 25.21",
+          "rankClaim": "Grandmaster",
+          "patch": "25.21",
+          "durationSec": 1796,
+          "region": "KR",
+          "uploaded": "2025-10-27",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 89,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "LtidfRQsnrE",
+          "title": "Rakan Support vs Leona - EUW Challenger Patch 26.01",
+          "rankClaim": "Challenger",
+          "patch": "26.1",
+          "durationSec": 1445,
+          "region": "EUW",
+          "uploaded": "2026-01-23",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 90,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "cpIYnR5aocc",
+          "title": "Rakan Mid vs Malzahar - KR Master Patch 26.03",
+          "rankClaim": "Master",
+          "patch": "26.3",
+          "durationSec": 1470,
+          "region": "KR",
+          "uploaded": "2026-02-14",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 186,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 377,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 549,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 611,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 737,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 769,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 844,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 942,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1017,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1043,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1065,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1143,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1233,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1333,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1370,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1383,
+              "label": "Take down The Inhibitor"
+            },
+            {
+              "atSec": 1459,
+              "label": "End credit"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 92,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "rYD2zJFbEV8",
+          "title": "Rakan Mid vs Riven - KR Master Patch 26.05",
+          "rankClaim": "Master",
+          "patch": "26.5",
+          "durationSec": 1642,
+          "region": "KR",
+          "uploaded": "2026-03-15",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 51,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 185,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 300,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 381,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 449,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 594,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 720,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 847,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 862,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1078,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1146,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1245,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1364,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1475,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1570,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1605,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1618,
+              "label": "Take down The Inhibitor"
+            },
+            {
+              "atSec": 1631,
+              "label": "End credit"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 103,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "9cD_ATemIg8",
+          "title": "Rakan Mid vs Ahri - KR Master Patch 25.15",
+          "rankClaim": "Master",
+          "patch": "25.15",
+          "durationSec": 1602,
+          "region": "KR",
+          "uploaded": "2025-08-08",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 111,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "FbaYFz8GTz4",
+          "title": "Rakan Support vs Nautilus - KR Grandmaster Patch 26.18",
+          "rankClaim": "Grandmaster",
+          "patch": "26.18",
+          "durationSec": 1768,
+          "region": "KR",
+          "uploaded": "2026-09-12",
+          "moments": []
+        },
+        {
+          "videoId": "hVbvUsl3Rfk",
+          "title": "Rakan Support vs Nautilus - KR Challenger Patch 26.16",
+          "rankClaim": "Challenger",
+          "patch": "26.16",
+          "durationSec": 1569,
+          "region": "KR",
+          "uploaded": "2026-08-24",
+          "moments": []
+        },
+        {
+          "videoId": "ytzgrVg0bKU",
+          "title": "Rakan Support vs Nautilus - KR Challenger Patch 26.05",
+          "rankClaim": "Challenger",
+          "patch": "26.5",
+          "durationSec": 1495,
+          "region": "KR",
+          "uploaded": "2026-03-09",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 272,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 412,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 619,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 771,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 855,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 873,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 997,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1016,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1031,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1125,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1226,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1320,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1358,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1432,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1459,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1484,
+              "label": "End credit"
+            }
+          ]
+        },
+        {
+          "videoId": "iCNvt3ox7-c",
+          "title": "Rakan Support vs Nautilus - EUW Grandmaster Patch 25.24",
+          "rankClaim": "Grandmaster",
+          "patch": "25.24",
+          "durationSec": 1499,
+          "region": "EUW",
+          "uploaded": "2025-12-17",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 126,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 216,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 412,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 494,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 770,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 997,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1013,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1051,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1142,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1314,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1361,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1372,
+              "label": "Take down The Inhibitor"
+            },
+            {
+              "atSec": 1434,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1488,
+              "label": "End credit"
+            }
+          ]
+        },
+        {
+          "videoId": "uDMz8ZzaH0g",
+          "title": "Rakan Support vs Nautilus - EUW Grandmaster Patch 25.20",
+          "rankClaim": "Grandmaster",
+          "patch": "25.20",
+          "durationSec": 1742,
+          "region": "EUW",
+          "uploaded": "2025-10-23",
+          "moments": []
+        },
+        {
+          "videoId": "jSvS72P5kc8",
+          "title": "Rakan Support vs Nautilus - KR Grandmaster Patch 25.19",
+          "rankClaim": "Grandmaster",
+          "patch": "25.19",
+          "durationSec": 1461,
+          "region": "KR",
+          "uploaded": "2025-09-27",
+          "moments": []
+        },
+        {
+          "videoId": "PEQ1dcunU7w",
+          "title": "Rakan Support vs Nautilus - KR Grandmaster Patch 25.11",
+          "rankClaim": "Grandmaster",
+          "patch": "25.11",
+          "durationSec": 1568,
+          "region": "KR",
+          "uploaded": "2025-06-02",
+          "moments": []
+        },
+        {
+          "videoId": "i89NaYyT8GU",
+          "title": "Rakan Support vs Nautilus - KR Grandmaster Patch 25.06",
+          "rankClaim": "Grandmaster",
+          "patch": "25.6",
+          "durationSec": 1564,
+          "region": "KR",
+          "uploaded": "2025-03-23",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 151,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 334,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 416,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 610,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 686,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 765,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 861,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1011,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1100,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1134,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1212,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1305,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1360,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1418,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1506,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1543,
+              "label": "End credit"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 112,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "Gr6p71zMx38",
+          "title": "Rakan Mid vs Viktor - KR Master Patch 26.02",
+          "rankClaim": "Master",
+          "patch": "26.2",
+          "durationSec": 1572,
+          "region": "KR",
+          "uploaded": "2026-01-31",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 117,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "4cqtdyb3ous",
+          "title": "Rakan Support vs Lulu - KR Master Patch 26.17",
+          "rankClaim": "Master",
+          "patch": "26.17",
+          "durationSec": 1891,
+          "region": "KR",
+          "uploaded": "2026-08-31",
+          "moments": []
+        },
+        {
+          "videoId": "7PxhD6ccLe4",
+          "title": "Rakan Support vs Lulu - KR Master Patch 26.07",
+          "rankClaim": "Master",
+          "patch": "26.7",
+          "durationSec": 1553,
+          "region": "KR",
+          "uploaded": "2026-04-17",
+          "moments": []
+        },
+        {
+          "videoId": "ZWuFhSrUEYM",
+          "title": "Rakan Support vs Lulu - EUW Challenger Patch 25.21",
+          "rankClaim": "Challenger",
+          "patch": "25.21",
+          "durationSec": 1521,
+          "region": "EUW",
+          "uploaded": "2025-11-06",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 127,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "ksGxF_axgcE",
+          "title": "(USE DenVoksne) Rakan Support vs Lissandra (SGE ZaZee) - EUW Challenger Patch 26.14",
+          "rankClaim": "Challenger",
+          "patch": "26.14",
+          "durationSec": 1425,
+          "region": "EUW",
+          "player": "USE DenVoksne",
+          "uploaded": "2026-07-22",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 154,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "MSShvdRMi00",
+          "title": "Rakan Support vs Zac - EUW Challenger Patch 25.19",
+          "rankClaim": "Challenger",
+          "patch": "25.19",
+          "durationSec": 1776,
+          "region": "EUW",
+          "uploaded": "2025-10-08",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 163,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "1uIFV9BuULU",
+          "title": "Rakan Mid vs Taliyah - NA Grandmaster Patch 25.10",
+          "rankClaim": "Grandmaster",
+          "patch": "25.10",
+          "durationSec": 1649,
+          "region": "NA",
+          "uploaded": "2025-05-29",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 201,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "IPZiLQHrnLs",
+          "title": "(SSG Tianzhen) Rakan Support vs Braum - KR Master Patch 26.10",
+          "rankClaim": "Master",
+          "patch": "26.10",
+          "durationSec": 1542,
+          "region": "KR",
+          "player": "SSG Tianzhen",
+          "uploaded": "2026-05-22",
+          "result": "W",
+          "moments": [
+            {
+              "atSec": 218,
+              "label": "First Blood — Rakan kills Lissandra",
+              "kind": "kill"
+            },
+            {
+              "atSec": 288,
+              "label": "Draven takes down Caitlyn"
+            },
+            {
+              "atSec": 356,
+              "label": "Kindred takes down Lee Sin"
+            },
+            {
+              "atSec": 470,
+              "label": "Blue takes 1st Dragon (Cloud)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 664,
+              "label": "Draven takes down Caitlyn"
+            },
+            {
+              "atSec": 729,
+              "label": "Draven Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 769,
+              "label": "Orianna kills Caitlyn",
+              "kind": "kill"
+            },
+            {
+              "atSec": 840,
+              "label": "Blue takes 2nd Dragon (Hextech)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 867,
+              "label": "Orianna takes down Jayce"
+            },
+            {
+              "atSec": 1185,
+              "label": "Blue takes 3rd Dragon (Mountain)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1210,
+              "label": "Draven takes down Caitlyn"
+            },
+            {
+              "atSec": 1441,
+              "label": "Blue takes Baron",
+              "kind": "baron"
+            },
+            {
+              "atSec": 1489,
+              "label": "Aurora Double Kill",
+              "kind": "kill"
+            }
+          ]
+        },
+        {
+          "videoId": "-VCcF7ISkq0",
+          "title": "Rakan Support vs Braum - KR Master Patch 26.01",
+          "rankClaim": "Master",
+          "patch": "26.1",
+          "durationSec": 1534,
+          "region": "KR",
+          "uploaded": "2026-01-12",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 223,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 346,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 402,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 524,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 676,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 926,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1009,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1078,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1221,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1342,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1373,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1434,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1499,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1523,
+              "label": "End credit"
+            }
+          ]
+        },
+        {
+          "videoId": "TT3wKustB-8",
+          "title": "Rakan Support vs Braum - KR Grandmaster Patch 25.23",
+          "rankClaim": "Grandmaster",
+          "patch": "25.23",
+          "durationSec": 1499,
+          "region": "KR",
+          "uploaded": "2025-11-22",
+          "moments": []
+        },
+        {
+          "videoId": "EXu-cEtimd4",
+          "title": "Rakan Support vs Braum - EUW Grandmaster Patch 25.16",
+          "rankClaim": "Grandmaster",
+          "patch": "25.16",
+          "durationSec": 2082,
+          "region": "EUW",
+          "uploaded": "2025-08-26",
+          "moments": []
+        },
+        {
+          "videoId": "krfGFJ8hZDM",
+          "title": "Rakan Support vs Braum - KR Grandmaster Patch 25.14",
+          "rankClaim": "Grandmaster",
+          "patch": "25.14",
+          "durationSec": 1845,
+          "region": "KR",
+          "uploaded": "2025-07-19",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 267,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "wYDvknTY7Qw",
+          "title": "Rakan Support vs Nami - KR Master Patch 26.08",
+          "rankClaim": "Master",
+          "patch": "26.8",
+          "durationSec": 1623,
+          "region": "KR",
+          "uploaded": "2026-04-19",
+          "moments": []
+        },
+        {
+          "videoId": "4Ws692BBtbQ",
+          "title": "Rakan Support vs Nami - VN Challenger Patch 26.07",
+          "rankClaim": "Challenger",
+          "patch": "26.7",
+          "durationSec": 1489,
+          "uploaded": "2026-04-05",
+          "moments": []
+        },
+        {
+          "videoId": "MqVj37qg6DU",
+          "title": "Rakan Support vs Nami - NA Challenger Patch 25.24",
+          "rankClaim": "Challenger",
+          "patch": "25.24",
+          "durationSec": 1614,
+          "region": "NA",
+          "uploaded": "2026-01-02",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 187,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 518,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 630,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 688,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 798,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 938,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1040,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1137,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1181,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1226,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1315,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1353,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1386,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1442,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1495,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1513,
+              "label": "Take down The Inhibitor"
+            },
+            {
+              "atSec": 1533,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1603,
+              "label": "End credit"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 412,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "6f9ZpMeSyI4",
+          "title": "Rakan Support vs Thresh - KR Challenger Patch 26.20",
+          "rankClaim": "Challenger",
+          "patch": "26.20",
+          "durationSec": 1616,
+          "region": "KR",
+          "uploaded": "2026-10-09",
+          "result": "W",
+          "moments": [
+            {
+              "atSec": 347,
+              "label": "Red takes 1st Dragon (Ocean)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 672,
+              "label": "Red takes 2nd Dragon (Cloud)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 721,
+              "label": "First Blood — Lee Sin kills Kalista",
+              "kind": "kill"
+            },
+            {
+              "atSec": 727,
+              "label": "Lee Sin Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 921,
+              "label": "Blue takes Rift Herald",
+              "kind": "herald"
+            },
+            {
+              "atSec": 989,
+              "label": "Blue takes 1st Dragon (Hextech)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1002,
+              "label": "Kai'Sa Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1009,
+              "label": "Kai'Sa Triple Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1236,
+              "label": "Blue takes Baron",
+              "kind": "baron"
+            },
+            {
+              "atSec": 1316,
+              "label": "Lee Sin takes down Vi"
+            },
+            {
+              "atSec": 1330,
+              "label": "Kai'Sa Triple Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1355,
+              "label": "Blue takes 2nd Dragon (Hextech)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1545,
+              "label": "Kai'Sa Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1570,
+              "label": "Mid Inhibitor falls (Red)"
+            }
+          ]
+        },
+        {
+          "videoId": "uEer7ha0oNo",
+          "title": "(TPX Mahonix) Rakan Support vs Thresh - EUW Grandmaster Patch 26.16",
+          "rankClaim": "Grandmaster",
+          "patch": "26.16",
+          "durationSec": 1423,
+          "region": "EUW",
+          "player": "TPX Mahonix",
+          "uploaded": "2026-08-18",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 432,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "laZ8WqIlbNc",
+          "title": "(HLE Delight) Rakan Support vs Bard - KR Master Patch 26.10",
+          "rankClaim": "Master",
+          "patch": "26.10",
+          "durationSec": 1821,
+          "region": "KR",
+          "player": "Delight",
+          "team": "HLE",
+          "uploaded": "2026-05-28",
+          "result": "L",
+          "moments": [
+            {
+              "atSec": 112,
+              "label": "First Blood — Yunara kills Bard",
+              "kind": "kill"
+            },
+            {
+              "atSec": 475,
+              "label": "Blue takes 1st Dragon (Infernal)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 623,
+              "label": "Aurora Triple Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 738,
+              "label": "Wukong kills Bard",
+              "kind": "kill"
+            },
+            {
+              "atSec": 803,
+              "label": "Red takes 1st Dragon (Chemtech)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 838,
+              "label": "Wukong kills Bard",
+              "kind": "kill"
+            },
+            {
+              "atSec": 879,
+              "label": "Team fight (3 kills)",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 963,
+              "label": "Team fight (3 kills)",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1107,
+              "label": "Yunara picks off Jayce"
+            },
+            {
+              "atSec": 1161,
+              "label": "Red takes 2nd Dragon (Ocean)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1249,
+              "label": "Red takes Baron",
+              "kind": "baron"
+            },
+            {
+              "atSec": 1413,
+              "label": "Rakan eliminates Jayce"
+            },
+            {
+              "atSec": 1463,
+              "label": "Mid Inhibitor falls (Blue)"
+            },
+            {
+              "atSec": 1503,
+              "label": "Wukong kills Jayce",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1587,
+              "label": "Red takes 3rd Dragon (Ocean)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1688,
+              "label": "Red takes 2nd Baron",
+              "kind": "baron"
+            },
+            {
+              "atSec": 1733,
+              "label": "Team fight (4 kills)",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1770,
+              "label": "Mid Inhibitor falls (Blue)"
+            }
+          ]
+        },
+        {
+          "videoId": "sQ3amWVyZOg",
+          "title": "Rakan Support vs Bard - EUW Challenger Patch 26.04",
+          "rankClaim": "Challenger",
+          "patch": "26.4",
+          "durationSec": 1673,
+          "region": "EUW",
+          "uploaded": "2026-02-22",
+          "moments": []
+        },
+        {
+          "videoId": "V1o5apForHM",
+          "title": "Rakan Support vs Bard - EUW Grandmaster Patch 25.18",
+          "rankClaim": "Grandmaster",
+          "patch": "25.18",
+          "durationSec": 2127,
+          "region": "EUW",
+          "uploaded": "2025-09-24",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 517,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "MZowpq2bBWo",
+          "title": "Rakan Mid vs Sylas - KR Master Patch 26.06",
+          "rankClaim": "Master",
+          "patch": "26.6",
+          "durationSec": 1646,
+          "region": "KR",
+          "uploaded": "2026-03-29",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 517,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "-H1XqD_DXm0",
+          "title": "Rakan Support vs Sylas - KR Master Patch 26.19",
+          "rankClaim": "Master",
+          "patch": "26.19",
+          "durationSec": 1594,
+          "region": "KR",
+          "uploaded": "2026-09-27",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 518,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "WDs-voK-rd0",
+          "title": "(OMG Moham) Rakan Support vs Neeko - KR Challenger Patch 26.13",
+          "rankClaim": "Challenger",
+          "patch": "26.13",
+          "durationSec": 1756,
+          "region": "KR",
+          "player": "OMG Moham",
+          "uploaded": "2026-07-02",
+          "moments": []
+        },
+        {
+          "videoId": "6Op84Dl4RZ4",
+          "title": "Rakan Support vs Neeko - KR Challenger Patch 26.06",
+          "rankClaim": "Challenger",
+          "patch": "26.6",
+          "durationSec": 1831,
+          "region": "KR",
+          "uploaded": "2026-03-22",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 394,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 553,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 581,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 739,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 808,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 866,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1083,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1302,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1361,
+              "label": "Hunt The Dragon",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1398,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1483,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1628,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1674,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1699,
+              "label": "Take down The Inhibitor"
+            },
+            {
+              "atSec": 1713,
+              "label": "Hunt The Dragon",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1770,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1808,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1820,
+              "label": "End credit"
+            }
+          ]
+        },
+        {
+          "videoId": "WXM9meT5gdI",
+          "title": "Rakan Support vs Neeko - KR Master Patch 25.24",
+          "rankClaim": "Master",
+          "patch": "25.24",
+          "durationSec": 1550,
+          "region": "KR",
+          "uploaded": "2025-12-24",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 117,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 277,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 346,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 711,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 810,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 907,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 999,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1249,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1343,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1419,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1457,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1514,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1539,
+              "label": "End credit"
+            }
+          ]
+        },
+        {
+          "videoId": "UpsaCAuGxj4",
+          "title": "Rakan Support vs Neeko - KR Grandmaster Patch 25.07",
+          "rankClaim": "Grandmaster",
+          "patch": "25.7",
+          "durationSec": 1487,
+          "region": "KR",
+          "uploaded": "2025-04-05",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 33,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 352,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 469,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 637,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 728,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1011,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1139,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1225,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1374,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1411,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1443,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1466,
+              "label": "End credit"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 526,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "57yuEga-iP8",
+          "title": "Rakan Support vs Rell - KR Challenger Patch 26.17",
+          "rankClaim": "Challenger",
+          "patch": "26.17",
+          "durationSec": 1747,
+          "region": "KR",
+          "uploaded": "2026-09-09",
+          "moments": []
+        },
+        {
+          "videoId": "mmqRgos4OKU",
+          "title": "Rakan Support vs Rell - EUW Challenger Patch 25.07",
+          "rankClaim": "Challenger",
+          "patch": "25.7",
+          "durationSec": 1779,
+          "region": "EUW",
+          "uploaded": "2025-04-15",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 555,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "GSjA4TFqy0Q",
+          "title": "Rakan Support vs Pyke - KR Grandmaster Patch 26.21",
+          "rankClaim": "Grandmaster",
+          "patch": "26.21",
+          "durationSec": 1500,
+          "region": "KR",
+          "uploaded": "2026-10-25",
+          "result": "W",
+          "moments": [
+            {
+              "atSec": 450,
+              "label": "Rakan takes down Orianna"
+            },
+            {
+              "atSec": 518,
+              "label": "Red takes 1st Dragon (Infernal)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 550,
+              "label": "Kindred eliminates Tristana"
+            },
+            {
+              "atSec": 747,
+              "label": "Rakan solo kills Pyke",
+              "kind": "kill"
+            },
+            {
+              "atSec": 760,
+              "label": "Pantheon takes down Orianna"
+            },
+            {
+              "atSec": 816,
+              "label": "Taliyah picks off Qiyana"
+            },
+            {
+              "atSec": 922,
+              "label": "Kindred kills Pyke",
+              "kind": "kill"
+            },
+            {
+              "atSec": 966,
+              "label": "Red takes 2nd Dragon (Mountain)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1071,
+              "label": "Team fight (3 kills)",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1210,
+              "label": "Blue takes Baron",
+              "kind": "baron"
+            },
+            {
+              "atSec": 1269,
+              "label": "Kalista kills Orianna",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1293,
+              "label": "Kalista Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1325,
+              "label": "Red takes 3rd Dragon (Cloud)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1333,
+              "label": "Rakan takes down Orianna"
+            },
+            {
+              "atSec": 1412,
+              "label": "Kalista takes down Tristana"
+            },
+            {
+              "atSec": 1433,
+              "label": "Kalista picks off Pyke"
+            },
+            {
+              "atSec": 1435,
+              "label": "Mid Inhibitor falls (Blue)"
+            },
+            {
+              "atSec": 1461,
+              "label": "Team fight (3 kills)",
+              "kind": "teamfight"
+            }
+          ]
+        },
+        {
+          "videoId": "JCfVAeyMi5k",
+          "title": "(HLE Delight) Rakan Support vs Pyke - KR Grandmaster Patch 26.15",
+          "rankClaim": "Grandmaster",
+          "patch": "26.15",
+          "durationSec": 1514,
+          "region": "KR",
+          "player": "Delight",
+          "team": "HLE",
+          "uploaded": "2026-08-06",
+          "moments": []
+        },
+        {
+          "videoId": "FWR3SArezX4",
+          "title": "(VITB Czajek) Rakan Support vs Pyke - EUW Grandmaster Patch 26.13",
+          "rankClaim": "Grandmaster",
+          "patch": "26.13",
+          "durationSec": 1654,
+          "region": "EUW",
+          "player": "VITB Czajek",
+          "uploaded": "2026-07-12",
+          "moments": []
+        },
+        {
+          "videoId": "f_7kCmHzZs0",
+          "title": "(Hood) Rakan Support vs Pyke - KR Grandmaster Patch 26.12",
+          "rankClaim": "Grandmaster",
+          "patch": "26.12",
+          "durationSec": 1598,
+          "region": "KR",
+          "player": "Hood",
+          "uploaded": "2026-06-20",
+          "moments": []
+        },
+        {
+          "videoId": "c3KG6ARGQJc",
+          "title": "Rakan Support vs Pyke - EUW Grandmaster Patch 25.24",
+          "rankClaim": "Grandmaster",
+          "patch": "25.24",
+          "durationSec": 1540,
+          "region": "EUW",
+          "uploaded": "2026-01-10",
+          "moments": []
+        },
+        {
+          "videoId": "y3_LAjxrxy0",
+          "title": "Rakan Support vs Pyke - KR Challenger Patch 25.15",
+          "rankClaim": "Challenger",
+          "patch": "25.15",
+          "durationSec": 1595,
+          "region": "KR",
+          "uploaded": "2025-08-02",
+          "moments": []
+        },
+        {
+          "videoId": "c7RJLofzc5E",
+          "title": "Rakan Support vs Pyke - EUW Challenger Patch 25.11",
+          "rankClaim": "Challenger",
+          "patch": "25.11",
+          "durationSec": 1638,
+          "region": "EUW",
+          "uploaded": "2025-06-12",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 800,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "1EfoBth-kn0",
+          "title": "Rakan Support vs Mel - EUW Challenger Patch 25.08",
+          "rankClaim": "Challenger",
+          "patch": "25.8",
+          "durationSec": 1818,
+          "region": "EUW",
+          "uploaded": "2025-04-30",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 888,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "3ad-LJwcRpk",
+          "title": "Rakan Support vs Renata Glasc - KR Challenger Patch 25.04",
+          "rankClaim": "Challenger",
+          "patch": "25.4",
+          "durationSec": 1719,
+          "region": "KR",
+          "uploaded": "2025-02-23",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 215,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 327,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 437,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 630,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 701,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 765,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 870,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 976,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1092,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1139,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1294,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1343,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1427,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1669,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1698,
+              "label": "End credit"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 897,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "wZyDEgQuWzE",
+          "title": "Rakan Support vs K'Sante - EUW Grandmaster Patch 25.22",
+          "rankClaim": "Grandmaster",
+          "patch": "25.22",
+          "durationSec": 1598,
+          "region": "EUW",
+          "uploaded": "2025-11-20",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 902,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "854jziRZYTc",
+          "title": "Rakan Mid vs Milio - NA Grandmaster Patch 25.17",
+          "rankClaim": "Grandmaster",
+          "patch": "25.17",
+          "durationSec": 1696,
+          "region": "NA",
+          "uploaded": "2025-09-08",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 910,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "1hZ3aw68m7M",
+          "title": "Rakan Mid vs Hwei - KR Master Patch 26.08",
+          "rankClaim": "Master",
+          "patch": "26.8",
+          "durationSec": 1547,
+          "region": "KR",
+          "uploaded": "2026-04-30",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 910,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "38ZbT2_gmgo",
+          "title": "Rakan Support vs Hwei - KR Challenger Patch 26.04",
+          "rankClaim": "Challenger",
+          "patch": "26.4",
+          "durationSec": 1544,
+          "region": "KR",
+          "uploaded": "2026-03-06",
+          "moments": []
+        }
+      ]
+    }
+  ]
+}

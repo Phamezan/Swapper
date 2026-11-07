@@ -1,0 +1,5330 @@
+{
+  "schema": 1,
+  "champion": 80,
+  "generatedAt": "2026-11-07T13:25:14.592Z",
+  "guides": [],
+  "general": [
+    {
+      "champion": 80,
+      "lane": "support",
+      "patch": "26.21",
+      "reviewed": false,
+      "keyTips": [
+        {
+          "text": "Control the lane brushes so you can surprise opponents with Shield Vault and keep them away from minions.",
+          "scope": "champion",
+          "sourceIds": [
+            "mobalytics-pantheon-support"
+          ],
+          "abilityKeys": [
+            {
+              "champion": 80,
+              "key": "W"
+            }
+          ]
+        },
+        {
+          "text": "Poke with Comet Spear to build a health lead, then all-in once the opponent is low enough to finish.",
+          "scope": "champion",
+          "sourceIds": [
+            "mobalytics-pantheon-support"
+          ],
+          "abilityKeys": [
+            {
+              "champion": 80,
+              "key": "Q"
+            }
+          ]
+        },
+        {
+          "text": "Level six is more valuable for roaming than for winning every lane all-in; use Grand Starfall to create plays elsewhere.",
+          "scope": "champion",
+          "sourceIds": [
+            "mobalytics-pantheon-support"
+          ],
+          "abilityKeys": [
+            {
+              "champion": 80,
+              "key": "R"
+            }
+          ]
+        }
+      ],
+      "sections": {
+        "overview": {
+          "tips": []
+        },
+        "early-lane": {
+          "tips": [
+            {
+              "text": "At level one, work from a brush and choose poke or an all-in based on the opening rather than walking into a prepared fight.",
+              "scope": "champion",
+              "sourceIds": [
+                "mobalytics-pantheon-support"
+              ]
+            },
+            {
+              "text": "Hold Aegis Assault for a committed trade where blocking damage turns the fight; Pantheon is vulnerable while it is unavailable.",
+              "scope": "champion",
+              "sourceIds": [
+                "mobalytics-pantheon-support"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 80,
+                  "key": "E"
+                }
+              ]
+            },
+            {
+              "text": "Keep the wave even or slightly on your side so you can run the enemy down while staying safer from ganks.",
+              "scope": "champion",
+              "sourceIds": [
+                "mobalytics-pantheon-support"
+              ]
+            },
+            {
+              "text": "After taking the bot tower or when the lane goes quiet, treat the unlocked ultimate as a roaming tool and look for the first cross-map opening.",
+              "scope": "champion",
+              "sourceIds": [
+                "mobalytics-pantheon-support"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 80,
+                  "key": "R"
+                }
+              ]
+            }
+          ]
+        },
+        "mid-lane": {
+          "tips": [
+            {
+              "text": "Use Grand Starfall for cross-map plays after a recall or when another lane needs help.",
+              "scope": "champion",
+              "sourceIds": [
+                "mobalytics-pantheon-support"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 80,
+                  "key": "R"
+                }
+              ]
+            },
+            {
+              "text": "Lock down a high-priority target and work with the jungler to pick off the enemy jungler or support.",
+              "scope": "champion",
+              "sourceIds": [
+                "mobalytics-pantheon-support"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 80,
+                  "key": "W"
+                }
+              ]
+            },
+            {
+              "text": "Flank with the ultimate during an ongoing fight so enemies have less time to react to the arrival.",
+              "scope": "champion",
+              "sourceIds": [
+                "mobalytics-pantheon-support"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 80,
+                  "key": "R"
+                }
+              ]
+            },
+            {
+              "text": "Use extra roaming speed from boots to create more plays across the map and convert that movement into pressure.",
+              "scope": "champion",
+              "sourceIds": [
+                "mobalytics-pantheon-support"
+              ]
+            },
+            {
+              "text": "A second ultimate rank mainly reduces its cooldown, so use the more frequent windows to set up picks rather than expecting a larger utility jump.",
+              "scope": "champion",
+              "sourceIds": [
+                "mobalytics-pantheon-support"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 80,
+                  "key": "R"
+                }
+              ]
+            }
+          ]
+        },
+        "win-condition": {
+          "tips": [
+            {
+              "text": "In late game, look for picks instead of forcing a front-to-back five-versus-five; Pantheon's damage falls off as opponents buy defenses.",
+              "scope": "champion",
+              "sourceIds": [
+                "mobalytics-pantheon-support"
+              ]
+            },
+            {
+              "text": "Stay near neutral objectives and track the enemy jungler so you can contest or protect the objective instead of being caught on the opposite side.",
+              "scope": "champion",
+              "sourceIds": [
+                "mobalytics-pantheon-support"
+              ]
+            },
+            {
+              "text": "Use fog of war to reach enemy carries from an unexpected angle; if the team needs a frontline, a tankier build can fill that role.",
+              "scope": "champion",
+              "sourceIds": [
+                "mobalytics-pantheon-support"
+              ]
+            },
+            {
+              "text": "Avoid starting an ultimate engage so far ahead of the team that nobody can follow up; the landing position can leave Pantheon exposed.",
+              "scope": "champion",
+              "sourceIds": [
+                "mobalytics-pantheon-support"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 80,
+                  "key": "R"
+                }
+              ]
+            },
+            {
+              "text": "If Grand Starfall is unavailable, delay a late-game fight or disengage rather than committing without the main engage tool.",
+              "scope": "champion",
+              "sourceIds": [
+                "mobalytics-pantheon-support"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 80,
+                  "key": "R"
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "itemization": [
+        {
+          "text": "Take Press the Attack, Triumph, Legend: Haste, Coup de Grace, Cheap Shot, and Relentless Hunter as the 26.21 support rune page.",
+          "scope": "champion",
+          "sourceIds": [
+            "mobalytics-pantheon-support-build"
+          ]
+        },
+        {
+          "text": "Build Bloodsong, Plated Steelcaps, Umbral Glaive, Eclipse, and Black Cleaver as the 26.21 support core.",
+          "scope": "champion",
+          "sourceIds": [
+            "mobalytics-pantheon-support-build"
+          ],
+          "itemIds": [
+            3877,
+            3047,
+            3179,
+            6692,
+            3071
+          ]
+        },
+        {
+          "text": "Choose Sundered Sky as the alternative to Eclipse when the game calls for its critical strike and healing as a bruiser damage-and-sustain option.",
+          "scope": "champion",
+          "sourceIds": [
+            "mobalytics-pantheon-support-build"
+          ],
+          "itemIds": [
+            6610,
+            6692
+          ]
+        },
+        {
+          "text": "Start W, Q, E, then max Comet Spear first followed by Shield Vault and Aegis Assault, upgrading Grand Starfall at levels six, eleven, and sixteen.",
+          "scope": "champion",
+          "sourceIds": [
+            "mobalytics-pantheon-support-build"
+          ],
+          "abilityKeys": [
+            {
+              "champion": 80,
+              "key": "W"
+            },
+            {
+              "champion": 80,
+              "key": "Q"
+            },
+            {
+              "champion": 80,
+              "key": "E"
+            },
+            {
+              "champion": 80,
+              "key": "R"
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "id": "mobalytics-pantheon-support",
+          "author": "Mobalytics",
+          "rankClaim": "No rank claim",
+          "url": "https://mobalytics.gg/lol/champions/pantheon/guide/support",
+          "kind": "web"
+        },
+        {
+          "id": "mobalytics-pantheon-support-build",
+          "author": "Mobalytics",
+          "rankClaim": "No rank claim",
+          "url": "https://mobalytics.gg/lol/champions/pantheon/build/support",
+          "kind": "web"
+        }
+      ]
+    },
+    {
+      "champion": 80,
+      "lane": "top",
+      "patch": "26.21",
+      "reviewed": false,
+      "keyTips": [
+        {
+          "text": "Use Pantheon's early pressure to poke and threaten kills; a lead can snowball quickly.",
+          "scope": "champion",
+          "sourceIds": [
+            "mobalytics-pantheon-top"
+          ]
+        },
+        {
+          "text": "Use Aegis Assault to block damage in a committed trade, but play more carefully while it is on cooldown because the opponent can punish that window.",
+          "scope": "champion",
+          "sourceIds": [
+            "mobalytics-pantheon-top"
+          ],
+          "abilityKeys": [
+            {
+              "champion": 80,
+              "key": "E"
+            }
+          ]
+        },
+        {
+          "text": "Late-game picks are safer than repeated full-team fights; if Grand Starfall is unavailable, wait or disengage until the next engage window.",
+          "scope": "champion",
+          "sourceIds": [
+            "mobalytics-pantheon-top"
+          ],
+          "abilityKeys": [
+            {
+              "champion": 80,
+              "key": "R"
+            }
+          ]
+        }
+      ],
+      "sections": {
+        "overview": {
+          "tips": []
+        },
+        "early-lane": {
+          "tips": [
+            {
+              "text": "Open the lane aggressively with Comet Spear pressure and threaten kills whenever the opponent offers a window.",
+              "scope": "champion",
+              "sourceIds": [
+                "mobalytics-pantheon-top"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 80,
+                  "key": "Q"
+                }
+              ]
+            },
+            {
+              "text": "Keep the wave even or slightly on your side so you can run an opponent down while reducing gank exposure.",
+              "scope": "champion",
+              "sourceIds": [
+                "mobalytics-pantheon-top"
+              ]
+            },
+            {
+              "text": "Level six adds cross-map Grand Starfall plays, but it does not guarantee winning every lane all-in against a stronger enemy ultimate.",
+              "scope": "champion",
+              "sourceIds": [
+                "mobalytics-pantheon-top"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 80,
+                  "key": "R"
+                }
+              ]
+            },
+            {
+              "text": "Use Comet Spear to poke or finish a low target; lane and river brush positioning can let you pressure without taking return damage.",
+              "scope": "champion",
+              "sourceIds": [
+                "mobalytics-pantheon-top"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 80,
+                  "key": "Q"
+                }
+              ]
+            }
+          ]
+        },
+        "mid-lane": {
+          "tips": [
+            {
+              "text": "Split for side objectives and use Pantheon's dueling strength against opponents who come to stop you.",
+              "scope": "champion",
+              "sourceIds": [
+                "mobalytics-pantheon-top"
+              ]
+            },
+            {
+              "text": "Regroup for five-versus-five when there are no nearby objectives to take alone.",
+              "scope": "champion",
+              "sourceIds": [
+                "mobalytics-pantheon-top"
+              ]
+            },
+            {
+              "text": "Use Grand Starfall and Shield Vault to set up picks with the team; focus high-priority targets and convert the catch into an objective.",
+              "scope": "champion",
+              "sourceIds": [
+                "mobalytics-pantheon-top"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 80,
+                  "key": "R"
+                },
+                {
+                  "champion": 80,
+                  "key": "W"
+                }
+              ]
+            },
+            {
+              "text": "A second ultimate rank gives a modest damage increase but lowers its cooldown, so it creates more windows for map plays.",
+              "scope": "champion",
+              "sourceIds": [
+                "mobalytics-pantheon-top"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 80,
+                  "key": "R"
+                }
+              ]
+            },
+            {
+              "text": "Max Comet Spear first, then Aegis Assault, then Shield Vault, starting Q, W, E and upgrading the ultimate at levels six, eleven, and sixteen.",
+              "scope": "champion",
+              "sourceIds": [
+                "mobalytics-pantheon-top-build"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 80,
+                  "key": "Q"
+                },
+                {
+                  "champion": 80,
+                  "key": "E"
+                },
+                {
+                  "champion": 80,
+                  "key": "W"
+                },
+                {
+                  "champion": 80,
+                  "key": "R"
+                }
+              ]
+            }
+          ]
+        },
+        "win-condition": {
+          "tips": [
+            {
+              "text": "Pantheon is strongest when early pressure and picks let the team enter mid game with a lead; avoid letting a won lane turn into aimless fighting.",
+              "scope": "champion",
+              "sourceIds": [
+                "mobalytics-pantheon-top"
+              ]
+            },
+            {
+              "text": "In late game, flank from fog of war to reach enemy carries, or peel for allies after using the ultimate to enter the fight.",
+              "scope": "champion",
+              "sourceIds": [
+                "mobalytics-pantheon-top"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 80,
+                  "key": "R"
+                }
+              ]
+            },
+            {
+              "text": "Avoid starting an ultimate engage beyond the team's ability to follow; a landing position without allied support can leave Pantheon stranded.",
+              "scope": "champion",
+              "sourceIds": [
+                "mobalytics-pantheon-top"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 80,
+                  "key": "R"
+                }
+              ]
+            },
+            {
+              "text": "When the team needs a frontline, use a tankier build and protect allies rather than forcing a backline dive.",
+              "scope": "champion",
+              "sourceIds": [
+                "mobalytics-pantheon-top"
+              ]
+            }
+          ]
+        }
+      },
+      "itemization": [
+        {
+          "text": "Build Bastionbreaker, Plated Steelcaps, Voltaic Cyclosword, Lord Dominik's Regards, and Edge of Night as the 26.21 top core.",
+          "scope": "champion",
+          "sourceIds": [
+            "mobalytics-pantheon-top-build"
+          ],
+          "itemIds": [
+            2520,
+            3047,
+            6699,
+            3036,
+            3814
+          ]
+        },
+        {
+          "text": "Take Stormraider's Surge, Manaflow Band, Transcendence, Scorch, Triumph, and Cut Down as the current rune page.",
+          "scope": "champion",
+          "sourceIds": [
+            "mobalytics-pantheon-top-build"
+          ]
+        },
+        {
+          "text": "Choose Serpent's Fang as the situational replacement for Lord Dominik's Regards when you need to pressure a team with heavy shielding.",
+          "scope": "champion",
+          "sourceIds": [
+            "mobalytics-pantheon-top-build"
+          ],
+          "itemIds": [
+            6695,
+            3036
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "id": "mobalytics-pantheon-top",
+          "author": "Mobalytics",
+          "rankClaim": "No rank claim",
+          "url": "https://mobalytics.gg/lol/champions/pantheon/guide",
+          "kind": "web"
+        },
+        {
+          "id": "mobalytics-pantheon-top-build",
+          "author": "Mobalytics",
+          "rankClaim": "No rank claim",
+          "url": "https://mobalytics.gg/lol/champions/pantheon/build",
+          "kind": "web"
+        }
+      ]
+    }
+  ],
+  "vods": [
+    {
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "-yZ4UxvYT8c",
+          "title": "FULL EDUCATIONAL PANTHEON JUNGLE GAMEPLAY",
+          "rankClaim": "Master+",
+          "patch": "26.9",
+          "durationSec": 1013,
+          "patchEstimated": true,
+          "player": "Sinerias",
+          "uploaded": "2026-05-03",
+          "format": "stream",
+          "cam": true,
+          "moments": []
+        }
+      ]
+    },
+    {
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "lAmGh8OPugg",
+          "title": "Baicaiovo Shows Why Pantheon Is Unstoppable In High Rank Chinese Super Server Engsub",
+          "rankClaim": "Master+",
+          "patch": "26.1",
+          "durationSec": 1551,
+          "patchEstimated": true,
+          "player": "Baicaiovo",
+          "uploaded": "2026-01-15",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "gTykZfNoYhs",
+          "title": "Baicaiovo Reaches Super Server Rank 2 With Flawless Challenger Mid Pantheon Execution Engsub",
+          "rankClaim": "Challenger",
+          "patch": "26.1",
+          "durationSec": 1479,
+          "patchEstimated": true,
+          "player": "Baicaiovo",
+          "uploaded": "2026-01-13",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "896G07TTwwI",
+          "title": "How Baicaiovo Mastered the Mid Lane as a Rank 2 Chinese Challenger Pantheon Engsub",
+          "rankClaim": "Challenger",
+          "patch": "26.1",
+          "durationSec": 1872,
+          "patchEstimated": true,
+          "player": "Baicaiovo",
+          "uploaded": "2026-01-12",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "pNVqaS8ROzc",
+          "title": "How Baicaiovo Secures Rank 2 with Elite Mid Lane Pantheon Mechanics Engsub",
+          "rankClaim": "Master+",
+          "patch": "26.1",
+          "durationSec": 1872,
+          "patchEstimated": true,
+          "player": "Baicaiovo",
+          "uploaded": "2026-01-12",
+          "format": "stream",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "lVRI8UrpQQg",
+          "title": "I FOUND PANTHEON IN DOTA 2!!!",
+          "rankClaim": "Master+",
+          "patch": "26.1",
+          "durationSec": 1570,
+          "patchEstimated": true,
+          "player": "Makkro",
+          "uploaded": "2026-01-20",
+          "format": "stream",
+          "cam": true,
+          "moments": []
+        },
+        {
+          "videoId": "jbOtbdWXxCw",
+          "title": "Baicaiovo Top 2 Super Server Mid Lane Pantheon Strategy Engsub",
+          "rankClaim": "Master+",
+          "patch": "26.1",
+          "durationSec": 1777,
+          "patchEstimated": true,
+          "player": "Baicaiovo",
+          "uploaded": "2026-01-14",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "n_KZahgAxVQ",
+          "title": "Baicaiovo Reaches Super Server Top 2 With Flawless Mid Pantheon Mechanics Engsub",
+          "rankClaim": "Master+",
+          "patch": "26.1",
+          "durationSec": 1627,
+          "patchEstimated": true,
+          "player": "Baicaiovo",
+          "uploaded": "2026-01-13",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "2HtFMfX9h-Q",
+          "title": "Baicaiovo Top 2 Chinese Super Server Challenger Mid Pantheon Mastery Engsub",
+          "rankClaim": "Challenger",
+          "patch": "26.1",
+          "durationSec": 1463,
+          "patchEstimated": true,
+          "player": "Baicaiovo",
+          "uploaded": "2026-01-13",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "fpQ10cmUka8",
+          "title": "Baicaiovo Top 2 Super Server Challenger Mid Lane Pantheon Mechanics Engsub",
+          "rankClaim": "Challenger",
+          "patch": "26.1",
+          "durationSec": 1671,
+          "patchEstimated": true,
+          "player": "Baicaiovo",
+          "uploaded": "2026-01-13",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "2GuUQNiAXgg",
+          "title": "Baicaiovo Top 2 Chinese Super Server Challenger Mid Pantheon Flawless Roaming Engsub",
+          "rankClaim": "Challenger",
+          "patch": "26.1",
+          "durationSec": 1329,
+          "patchEstimated": true,
+          "player": "Baicaiovo",
+          "uploaded": "2026-01-12",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "isBy0smku38",
+          "title": "Baicaiovo Top 2 Chinese Super Server Challenger Mid Pantheon Mastery Engsub",
+          "rankClaim": "Challenger",
+          "patch": "26.1",
+          "durationSec": 990,
+          "patchEstimated": true,
+          "player": "Baicaiovo",
+          "uploaded": "2026-01-12",
+          "format": "stream",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 2,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "AI84Dyswyco",
+          "title": "(JNX) Pantheon Top vs Olaf - EUW Grandmaster Patch 26.14",
+          "rankClaim": "Grandmaster",
+          "patch": "26.14",
+          "durationSec": 1550,
+          "region": "EUW",
+          "player": "JNX",
+          "uploaded": "2026-07-27",
+          "moments": []
+        },
+        {
+          "videoId": "-AfxqnRGLek",
+          "title": "Pantheon Top vs Olaf - KR Grandmaster Patch 26.02",
+          "rankClaim": "Grandmaster",
+          "patch": "26.2",
+          "durationSec": 1495,
+          "region": "KR",
+          "uploaded": "2026-02-01",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 4,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "HwmTuuzBOao",
+          "title": "Pantheon Mid vs Twisted Fate - KR Master Patch 25.18",
+          "rankClaim": "Master",
+          "patch": "25.18",
+          "durationSec": 1821,
+          "region": "KR",
+          "uploaded": "2025-09-12",
+          "moments": []
+        },
+        {
+          "videoId": "VhNw78GIox4",
+          "title": "Pantheon Mid vs Twisted Fate - NA Grandmaster Patch 25.13",
+          "rankClaim": "Grandmaster",
+          "patch": "25.13",
+          "durationSec": 1833,
+          "region": "NA",
+          "uploaded": "2025-07-17",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 4,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "nTvUfjEc8Tw",
+          "title": "Pantheon Top vs Twisted Fate - NA Challenger Patch 26.05",
+          "rankClaim": "Challenger",
+          "patch": "26.5",
+          "durationSec": 1644,
+          "region": "NA",
+          "uploaded": "2026-03-15",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 109,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 346,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 489,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 585,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 844,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 988,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1092,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1319,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1417,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1472,
+              "label": "Hunt The Dragon",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1500,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1590,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1633,
+              "label": "End credit"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 5,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "MKZsz5IXAME",
+          "title": "Pantheon vs Xin Zhao Jungle - KR Challenger - Patch 16.09 Season 16",
+          "rankClaim": "Challenger",
+          "patch": "26.9",
+          "durationSec": 1681,
+          "region": "KR",
+          "uploaded": "2026-05-05",
+          "moments": []
+        },
+        {
+          "videoId": "fdl7-xZ_RM4",
+          "title": "Pantheon Jungle vs Xin Zhao - KR Challenger Patch 25.13",
+          "rankClaim": "Challenger",
+          "patch": "25.13",
+          "durationSec": 1706,
+          "region": "KR",
+          "uploaded": "2025-06-28",
+          "moments": []
+        },
+        {
+          "videoId": "QrriBCNLCbo",
+          "title": "Pantheon Jungle vs Xin Zhao - NA Challenger Patch 25.08",
+          "rankClaim": "Challenger",
+          "patch": "25.8",
+          "durationSec": 1722,
+          "region": "NA",
+          "uploaded": "2025-04-25",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 362,
+              "label": "Hunt The Void Grubs",
+              "kind": "grubs"
+            },
+            {
+              "atSec": 399,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 595,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 631,
+              "label": "Hunt The Void Grubs",
+              "kind": "grubs"
+            },
+            {
+              "atSec": 706,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 723,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 857,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 876,
+              "label": "Hunt The Dragon",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 934,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 975,
+              "label": "Hunt The Rift Herald",
+              "kind": "herald"
+            },
+            {
+              "atSec": 1036,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1245,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1271,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1341,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1661,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1701,
+              "label": "End credit"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 6,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "26errZuTlkI",
+          "title": "Pantheon Top vs Urgot - KR Challenger Patch 26.20",
+          "rankClaim": "Challenger",
+          "patch": "26.20",
+          "durationSec": 1721,
+          "region": "KR",
+          "uploaded": "2026-10-16",
+          "result": "W",
+          "moments": [
+            {
+              "atSec": 484,
+              "label": "First Blood — Camille kills Thresh",
+              "kind": "kill"
+            },
+            {
+              "atSec": 566,
+              "label": "Blue takes 1st Dragon (Chemtech)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 842,
+              "label": "Pantheon eliminates Urgot"
+            },
+            {
+              "atSec": 882,
+              "label": "Blue takes 2nd Dragon (Ocean)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 941,
+              "label": "Master Yi eliminates Yunara"
+            },
+            {
+              "atSec": 948,
+              "label": "Master Yi Triple Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1024,
+              "label": "Master Yi kills Thresh",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1122,
+              "label": "Master Yi takes down Nidalee"
+            },
+            {
+              "atSec": 1196,
+              "label": "Red takes 1st Dragon (Infernal)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1306,
+              "label": "Master Yi Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1308,
+              "label": "Pantheon catches Urgot"
+            },
+            {
+              "atSec": 1310,
+              "label": "Master Yi Triple Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1345,
+              "label": "Red takes Baron",
+              "kind": "baron"
+            },
+            {
+              "atSec": 1452,
+              "label": "Team fight (3 kills)",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1505,
+              "label": "Red takes 2nd Dragon (Infernal)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1528,
+              "label": "Pantheon outduels Nidalee"
+            },
+            {
+              "atSec": 1656,
+              "label": "Camille takes down Yasuo"
+            },
+            {
+              "atSec": 1710,
+              "label": "Mid Inhibitor falls (Blue)"
+            }
+          ]
+        },
+        {
+          "videoId": "P2d_oJb5bZc",
+          "title": "Pantheon Top vs Urgot - EUW Challenger Patch 25.21",
+          "rankClaim": "Challenger",
+          "patch": "25.21",
+          "durationSec": 1604,
+          "region": "EUW",
+          "uploaded": "2025-11-01",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 7,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "joyo53yQ5QI",
+          "title": "Pantheon Mid vs LeBlanc - EUW Challenger Patch 25.17",
+          "rankClaim": "Challenger",
+          "patch": "25.17",
+          "durationSec": 1805,
+          "region": "EUW",
+          "uploaded": "2025-09-11",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 12,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "UKOmBahG1y4",
+          "title": "Pantheon Support vs Alistar - KR Grandmaster Patch 26.16",
+          "rankClaim": "Grandmaster",
+          "patch": "26.16",
+          "durationSec": 1846,
+          "region": "KR",
+          "uploaded": "2026-08-25",
+          "result": "W",
+          "moments": [
+            {
+              "atSec": 256,
+              "label": "First Blood — Vel'Koz kills Yunara",
+              "kind": "kill"
+            },
+            {
+              "atSec": 530,
+              "label": "Blue takes 1st Dragon (Cloud)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 801,
+              "label": "Zac takes down Lee Sin"
+            },
+            {
+              "atSec": 860,
+              "label": "Red takes 1st Dragon (Ocean)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 878,
+              "label": "Pantheon picks off Yunara"
+            },
+            {
+              "atSec": 899,
+              "label": "Vel'Koz picks off Alistar"
+            },
+            {
+              "atSec": 941,
+              "label": "Pantheon picks off Yunara"
+            },
+            {
+              "atSec": 1194,
+              "label": "Red takes 2nd Dragon (Hextech)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1336,
+              "label": "Pantheon kills Lee Sin",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1370,
+              "label": "Blue takes Baron",
+              "kind": "baron"
+            },
+            {
+              "atSec": 1484,
+              "label": "Team fight (3 kills)",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1569,
+              "label": "Zac eliminates Yunara"
+            },
+            {
+              "atSec": 1599,
+              "label": "Pantheon takes down Locke"
+            },
+            {
+              "atSec": 1618,
+              "label": "Blue takes 2nd Dragon (Hextech)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1672,
+              "label": "Vel'Koz picks off Alistar"
+            },
+            {
+              "atSec": 1703,
+              "label": "Mid Inhibitor falls (Red)"
+            },
+            {
+              "atSec": 1715,
+              "label": "Top Inhibitor falls (Red)"
+            },
+            {
+              "atSec": 1763,
+              "label": "Pantheon outduels Locke"
+            }
+          ]
+        },
+        {
+          "videoId": "3FQ-uk4N25w",
+          "title": "Pantheon Support vs Alistar - KR Grandmaster Patch 25.21",
+          "rankClaim": "Grandmaster",
+          "patch": "25.21",
+          "durationSec": 1681,
+          "region": "KR",
+          "uploaded": "2025-10-26",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 14,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "34sMWk-qvAs",
+          "title": "Pantheon Mid vs Sion - KR Challenger Patch 26.21",
+          "rankClaim": "Challenger",
+          "patch": "26.21",
+          "durationSec": 1481,
+          "region": "KR",
+          "uploaded": "2026-11-02",
+          "result": "W",
+          "moments": [
+            {
+              "atSec": 270,
+              "label": "Lillia picks off Sion"
+            },
+            {
+              "atSec": 371,
+              "label": "Lillia takes down Ekko"
+            },
+            {
+              "atSec": 417,
+              "label": "Team fight (3 kills)",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 488,
+              "label": "Pantheon takes down Pyke"
+            },
+            {
+              "atSec": 511,
+              "label": "Red takes 1st Dragon (Hextech)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 848,
+              "label": "Pantheon picks off Ekko"
+            },
+            {
+              "atSec": 869,
+              "label": "Pantheon takes down Jax"
+            },
+            {
+              "atSec": 938,
+              "label": "Team fight (3 kills)",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 985,
+              "label": "Blue takes 1st Dragon (Ocean)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 993,
+              "label": "Pantheon takes down Jax"
+            },
+            {
+              "atSec": 1030,
+              "label": "Pantheon takes down Pyke"
+            },
+            {
+              "atSec": 1133,
+              "label": "Pantheon takes down Pyke"
+            },
+            {
+              "atSec": 1350,
+              "label": "Blue takes 2nd Dragon (Mountain)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1438,
+              "label": "Poppy takes down Sion"
+            },
+            {
+              "atSec": 1454,
+              "label": "Mid Inhibitor falls (Red)"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 14,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "24s9nuqEph8",
+          "title": "Pantheon Top vs Sion - KR Master Patch 25.24",
+          "rankClaim": "Master",
+          "patch": "25.24",
+          "durationSec": 1471,
+          "region": "KR",
+          "uploaded": "2026-01-09",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 177,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 252,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 328,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 641,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 664,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 730,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 819,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 847,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 910,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1102,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1196,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1318,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1343,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1359,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1373,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1435,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1460,
+              "label": "End credit"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 16,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "ZrV_Jxbw7Ag",
+          "title": "Pantheon Support vs Soraka - BR Challenger Patch 26.06",
+          "rankClaim": "Challenger",
+          "patch": "26.6",
+          "durationSec": 1707,
+          "uploaded": "2026-03-22",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 227,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 578,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 595,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 701,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 880,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 965,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1068,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1192,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1347,
+              "label": "Hunt The Baron Nashor",
+              "kind": "baron"
+            },
+            {
+              "atSec": 1368,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1445,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1466,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1696,
+              "label": "End credit"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 23,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "j8J3eAPpd5A",
+          "title": "(BIG Irrelevant) Pantheon Top vs Tryndamere - EUW Grandmaster Patch 26.11",
+          "rankClaim": "Grandmaster",
+          "patch": "26.11",
+          "durationSec": 1524,
+          "region": "EUW",
+          "player": "BIG Irrelevant",
+          "uploaded": "2026-06-08",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 24,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "AyVPulAPLF4",
+          "title": "Pantheon Top vs Jax (OnFleek) - KR Challenger Patch 26.21",
+          "rankClaim": "Challenger",
+          "patch": "26.21",
+          "durationSec": 1733,
+          "region": "KR",
+          "uploaded": "2026-10-30",
+          "result": "W",
+          "moments": [
+            {
+              "atSec": 69,
+              "label": "First Blood — Pantheon kills Jax",
+              "kind": "kill"
+            },
+            {
+              "atSec": 152,
+              "label": "Pantheon catches Jax"
+            },
+            {
+              "atSec": 215,
+              "label": "Pantheon outduels Jax again"
+            },
+            {
+              "atSec": 283,
+              "label": "Pantheon outplays Jax (3rd time)"
+            },
+            {
+              "atSec": 576,
+              "label": "Pantheon solo kills Jax (4th time)",
+              "kind": "kill"
+            },
+            {
+              "atSec": 610,
+              "label": "Red takes 1st Dragon (Ocean)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 627,
+              "label": "Pantheon takes down Jax (5th time)"
+            },
+            {
+              "atSec": 781,
+              "label": "Aurora takes down Poppy"
+            },
+            {
+              "atSec": 949,
+              "label": "Red takes 2nd Dragon (Hextech)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1031,
+              "label": "Pantheon outplays Xerath"
+            },
+            {
+              "atSec": 1098,
+              "label": "Pantheon picks off Jhin"
+            },
+            {
+              "atSec": 1223,
+              "label": "Red takes Baron",
+              "kind": "baron"
+            },
+            {
+              "atSec": 1232,
+              "label": "Pantheon eliminates Poppy"
+            },
+            {
+              "atSec": 1265,
+              "label": "Blue takes 1st Dragon (Infernal)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1481,
+              "label": "Aurora takes down Poppy"
+            },
+            {
+              "atSec": 1537,
+              "label": "Pantheon catches Jax (6th time)"
+            },
+            {
+              "atSec": 1603,
+              "label": "Blue takes 2nd Dragon (Infernal)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1714,
+              "label": "Pantheon outduels Jax (7th time)"
+            }
+          ]
+        },
+        {
+          "videoId": "dYNeknEyMzs",
+          "title": "Pantheon vs Jax 9/1/8 (Top) | EUW Grandmaster | Pantheon OTP Replay",
+          "rankClaim": "Grandmaster",
+          "patch": "26.10",
+          "durationSec": 1317,
+          "region": "EUW",
+          "patchEstimated": true,
+          "uploaded": "2026-05-19",
+          "moments": []
+        },
+        {
+          "videoId": "FFJchiOdx7U",
+          "title": "Pantheon Top vs Jax - KR Master Patch 25.08",
+          "rankClaim": "Master",
+          "patch": "25.8",
+          "durationSec": 1848,
+          "region": "KR",
+          "uploaded": "2025-05-01",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 26,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "VcyIzXtGTw8",
+          "title": "Pantheon Support vs Zilean - EUW Grandmaster Patch 25.10",
+          "rankClaim": "Grandmaster",
+          "patch": "25.10",
+          "durationSec": 1935,
+          "region": "EUW",
+          "uploaded": "2025-05-25",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 30,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "PWsPlfvXwfo",
+          "title": "Pantheon Jungle vs Karthus - TW Challenger Patch 26.06",
+          "rankClaim": "Challenger",
+          "patch": "26.6",
+          "durationSec": 1722,
+          "uploaded": "2026-03-28",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 31,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "FgoHi7i_dqQ",
+          "title": "Pantheon Jungle vs Cho'Gath - EUW Challenger Patch 25.23",
+          "rankClaim": "Challenger",
+          "patch": "25.23",
+          "durationSec": 1519,
+          "region": "EUW",
+          "uploaded": "2025-11-28",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 33,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "ymp1qZC9ci0",
+          "title": "Pantheon Jungle vs Rammus - BR Challenger Patch 25.22",
+          "rankClaim": "Challenger",
+          "patch": "25.22",
+          "durationSec": 2036,
+          "uploaded": "2025-11-15",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 34,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "QEAFGYWtNCo",
+          "title": "Pantheon Top vs Anivia - KR Grandmaster Patch 26.19",
+          "rankClaim": "Grandmaster",
+          "patch": "26.19",
+          "durationSec": 1749,
+          "region": "KR",
+          "uploaded": "2026-10-02",
+          "result": "W",
+          "moments": [
+            {
+              "atSec": 86,
+              "label": "First Blood — Xin Zhao kills Anivia",
+              "kind": "kill"
+            },
+            {
+              "atSec": 308,
+              "label": "Pantheon catches Anivia"
+            },
+            {
+              "atSec": 337,
+              "label": "Red takes 1st Dragon (Hextech)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 368,
+              "label": "Pantheon kills Talon",
+              "kind": "kill"
+            },
+            {
+              "atSec": 532,
+              "label": "Pantheon eliminates Anivia"
+            },
+            {
+              "atSec": 672,
+              "label": "Red takes 2nd Dragon (Ocean)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 746,
+              "label": "Xin Zhao picks off Karthus"
+            },
+            {
+              "atSec": 987,
+              "label": "Red takes 3rd Dragon (Cloud)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1107,
+              "label": "Red takes Rift Herald",
+              "kind": "herald"
+            },
+            {
+              "atSec": 1163,
+              "label": "Team fight (4 kills)",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1294,
+              "label": "Pantheon kills Talon",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1312,
+              "label": "Red takes 4th Dragon (Cloud)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1358,
+              "label": "Xin Zhao kills Janna",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1511,
+              "label": "Xin Zhao Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1535,
+              "label": "Red takes Baron",
+              "kind": "baron"
+            },
+            {
+              "atSec": 1601,
+              "label": "Pantheon eliminates Anivia"
+            },
+            {
+              "atSec": 1616,
+              "label": "Mid Inhibitor falls (Blue)"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 35,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "EYU0XUCV89M",
+          "title": "Pantheon Jungle vs Shaco - KR Grandmaster Patch 26.20",
+          "rankClaim": "Grandmaster",
+          "patch": "26.20",
+          "durationSec": 1444,
+          "region": "KR",
+          "uploaded": "2026-10-19",
+          "result": "W",
+          "moments": [
+            {
+              "atSec": 94,
+              "label": "First Blood — Pantheon kills Shaco",
+              "kind": "kill"
+            },
+            {
+              "atSec": 97,
+              "label": "Pantheon Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 247,
+              "label": "Lucian takes down Zeri"
+            },
+            {
+              "atSec": 358,
+              "label": "Locke picks off Shaco"
+            },
+            {
+              "atSec": 396,
+              "label": "Pantheon eliminates Zeri"
+            },
+            {
+              "atSec": 587,
+              "label": "Pantheon outduels Gragas"
+            },
+            {
+              "atSec": 725,
+              "label": "Locke Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 774,
+              "label": "Blue takes 1st Dragon (Mountain)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 794,
+              "label": "Locke takes down Nautilus"
+            },
+            {
+              "atSec": 888,
+              "label": "Locke Triple Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 892,
+              "label": "Locke Quadra Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 934,
+              "label": "Team fight (3 kills)",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1058,
+              "label": "Blue takes Rift Herald",
+              "kind": "herald"
+            },
+            {
+              "atSec": 1133,
+              "label": "Blue takes 2nd Dragon (Hextech)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1220,
+              "label": "Pantheon kills Gragas",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1330,
+              "label": "Red takes Baron",
+              "kind": "baron"
+            },
+            {
+              "atSec": 1423,
+              "label": "Bot Inhibitor falls (Red)"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 36,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "mG2mbymKfJA",
+          "title": "Pantheon Top vs Dr. Mundo - KR Master Patch 25.10",
+          "rankClaim": "Master",
+          "patch": "25.10",
+          "durationSec": 1682,
+          "region": "KR",
+          "uploaded": "2025-05-30",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 40,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "_hN2FCaLlJo",
+          "title": "Pantheon Support vs Janna - KR Challenger Patch 26.05",
+          "rankClaim": "Challenger",
+          "patch": "26.5",
+          "durationSec": 1516,
+          "region": "KR",
+          "uploaded": "2026-03-17",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 99,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 228,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 326,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 370,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 438,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 548,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 644,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 726,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 806,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 845,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 905,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1153,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1297,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1359,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1433,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1480,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1505,
+              "label": "End credit"
+            }
+          ]
+        },
+        {
+          "videoId": "oHGX7KUfy6Q",
+          "title": "Pantheon Support vs Janna - EUW Challenger Patch 25.24",
+          "rankClaim": "Challenger",
+          "patch": "25.24",
+          "durationSec": 1613,
+          "region": "EUW",
+          "uploaded": "2026-01-02",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 44,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "zZvUMavrs50",
+          "title": "Pantheon Support vs Taric - KR Master Patch 25.20",
+          "rankClaim": "Master",
+          "patch": "25.20",
+          "durationSec": 1658,
+          "region": "KR",
+          "uploaded": "2025-10-12",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 48,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "yGe6GoUlWio",
+          "title": "Pantheon Jungle vs Trundle - KR Challenger Patch 25.15",
+          "rankClaim": "Challenger",
+          "patch": "25.15",
+          "durationSec": 1696,
+          "region": "KR",
+          "uploaded": "2025-08-02",
+          "moments": []
+        },
+        {
+          "videoId": "Ypm9Nyl_o1w",
+          "title": "Pantheon vs Trundle Jungle [ HLE Peanut ] Korea Grandmaster Patch 25.13",
+          "rankClaim": "Grandmaster",
+          "patch": "25.13",
+          "durationSec": 1953,
+          "region": "KR",
+          "player": "Peanut",
+          "team": "HLE",
+          "uploaded": "2025-07-05",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 54,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "pF-v6JuLJNI",
+          "title": "Pantheon Top vs Malphite - KR Master Patch 26.17",
+          "rankClaim": "Master",
+          "patch": "26.17",
+          "durationSec": 1769,
+          "region": "KR",
+          "uploaded": "2026-09-05",
+          "moments": []
+        },
+        {
+          "videoId": "u_QXQJToNog",
+          "title": "(Nasser) Pantheon Top vs Malphite - EUW Grandmaster Patch 26.10",
+          "rankClaim": "Grandmaster",
+          "patch": "26.10",
+          "durationSec": 1667,
+          "region": "EUW",
+          "player": "Nasser",
+          "uploaded": "2026-05-29",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 55,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "3BpYSM9QmKw",
+          "title": "Pantheon Mid vs Katarina - NA Grandmaster Patch 25.24",
+          "rankClaim": "Grandmaster",
+          "patch": "25.24",
+          "durationSec": 1593,
+          "region": "NA",
+          "uploaded": "2025-12-26",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 44,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 161,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 555,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 613,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 688,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 705,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 929,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1073,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1170,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1293,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1431,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1537,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1582,
+              "label": "End credit"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 56,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "fqL5W-yNOU8",
+          "title": "Pantheon vs Nocturne Jungle - KR Challenger - Patch 16.06 Season 16",
+          "rankClaim": "Challenger",
+          "patch": "26.6",
+          "durationSec": 1651,
+          "region": "KR",
+          "uploaded": "2026-04-01",
+          "moments": []
+        },
+        {
+          "videoId": "3MRQryr7aRQ",
+          "title": "Pantheon vs Nocturne Jungle - EUW Challenger - Patch 25.18 Season 15",
+          "rankClaim": "Challenger",
+          "patch": "25.18",
+          "durationSec": 1546,
+          "region": "EUW",
+          "uploaded": "2025-09-14",
+          "moments": []
+        },
+        {
+          "videoId": "wt7V4GNqwx4",
+          "title": "Pantheon vs Nocturne Jungle - KR Challenger - Patch 25.10 Season 15",
+          "rankClaim": "Challenger",
+          "patch": "25.10",
+          "durationSec": 1891,
+          "region": "KR",
+          "uploaded": "2025-05-23",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 58,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "37OPrTMKh78",
+          "title": "Pantheon Top vs Renekton - KR Master Patch 26.01",
+          "rankClaim": "Master",
+          "patch": "26.1",
+          "durationSec": 1547,
+          "region": "KR",
+          "uploaded": "2026-01-19",
+          "moments": []
+        },
+        {
+          "videoId": "HijAAZTl5VU",
+          "title": "Pantheon Top vs Renekton - NA Grandmaster Patch 25.12",
+          "rankClaim": "Grandmaster",
+          "patch": "25.12",
+          "durationSec": 2141,
+          "region": "NA",
+          "uploaded": "2025-06-27",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 59,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "lMoxxqcwopk",
+          "title": "Pantheon Jungle vs Jarvan IV - KR Master Patch 26.18",
+          "rankClaim": "Master",
+          "patch": "26.18",
+          "durationSec": 1773,
+          "region": "KR",
+          "uploaded": "2026-09-22",
+          "moments": []
+        },
+        {
+          "videoId": "tjHmcUwXvNo",
+          "title": "Pantheon Jungle vs Jarvan IV - KR Challenger Patch 26.09",
+          "rankClaim": "Challenger",
+          "patch": "26.9",
+          "durationSec": 1472,
+          "region": "KR",
+          "uploaded": "2026-05-02",
+          "moments": []
+        },
+        {
+          "videoId": "TivUrUNzSJM",
+          "title": "Pantheon vs Jarvan IV Jungle - KR Challenger - Patch 16.08 Season 16",
+          "rankClaim": "Challenger",
+          "patch": "26.8",
+          "durationSec": 1831,
+          "region": "KR",
+          "uploaded": "2026-04-27",
+          "moments": []
+        },
+        {
+          "videoId": "nV7koPekYpM",
+          "title": "T1 Oner Pantheon vs Jarvan IV [ Jungle ] Korea Challenger 1984 LP | Patch 26.7",
+          "rankClaim": "Challenger",
+          "patch": "26.7",
+          "durationSec": 1371,
+          "region": "KR",
+          "player": "Oner",
+          "team": "T1",
+          "uploaded": "2026-04-04",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 60,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "yKFYQBVYlAU",
+          "title": "Pantheon Support vs Elise - KR Grandmaster Patch 25.08",
+          "rankClaim": "Grandmaster",
+          "patch": "25.8",
+          "durationSec": 1714,
+          "region": "KR",
+          "uploaded": "2025-04-19",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 61,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "B16UcGmFxv0",
+          "title": "Pantheon vs Orianna Mid - KR Challenger - Patch 25.22 Season 15",
+          "rankClaim": "Challenger",
+          "patch": "25.22",
+          "durationSec": 1351,
+          "region": "KR",
+          "uploaded": "2025-11-16",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 62,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "4PQpN_cZUFE",
+          "title": "Pantheon Jungle vs Wukong - KR Challenger Patch 26.04",
+          "rankClaim": "Challenger",
+          "patch": "26.4",
+          "durationSec": 1686,
+          "region": "KR",
+          "uploaded": "2026-03-01",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 347,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 383,
+              "label": "Hunt The Dragon",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 491,
+              "label": "Hunt The Void Grubs",
+              "kind": "grubs"
+            },
+            {
+              "atSec": 545,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 617,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 745,
+              "label": "Hunt The Dragon",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 777,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 886,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 908,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 924,
+              "label": "Hunt The Rift Herald",
+              "kind": "herald"
+            },
+            {
+              "atSec": 954,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 990,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1128,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1241,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1296,
+              "label": "Hunt The Baron Nashor",
+              "kind": "baron"
+            },
+            {
+              "atSec": 1341,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1388,
+              "label": "Hunt The Dragon",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1425,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1644,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1675,
+              "label": "End credit"
+            }
+          ]
+        },
+        {
+          "videoId": "xr9N3BIRVIU",
+          "title": "Pantheon Jungle vs Wukong - KR Challenger Patch 25.14",
+          "rankClaim": "Challenger",
+          "patch": "25.14",
+          "durationSec": 1617,
+          "region": "KR",
+          "uploaded": "2025-07-18",
+          "moments": []
+        },
+        {
+          "videoId": "qdsskEzmHNM",
+          "title": "Pantheon vs Wukong Jungle - KR Challenger - Patch 25.7 Season 15",
+          "rankClaim": "Challenger",
+          "patch": "25.7",
+          "durationSec": 1711,
+          "region": "KR",
+          "uploaded": "2025-04-09",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 62,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "6id1m4fZ3uM",
+          "title": "Pantheon Support vs Wukong - KR Master Patch 25.12",
+          "rankClaim": "Master",
+          "patch": "25.12",
+          "durationSec": 1699,
+          "region": "KR",
+          "uploaded": "2025-06-19",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 62,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "rZTXweBYXgA",
+          "title": "DK Siwoo Pantheon vs Wukong Top - NA Grandmaster - Patch 16.21 Season 16",
+          "rankClaim": "Grandmaster",
+          "patch": "26.21",
+          "durationSec": 1726,
+          "region": "NA",
+          "player": "Siwoo",
+          "team": "DK",
+          "uploaded": "2026-11-03",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 64,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "e_Z_uYXvxmQ",
+          "title": "(NS Sponge) Pantheon Jungle vs Lee Sin (KRX Minous) - KR Challenger Patch 26.15",
+          "rankClaim": "Challenger",
+          "patch": "26.15",
+          "durationSec": 1566,
+          "region": "KR",
+          "player": "Sponge",
+          "team": "NS",
+          "uploaded": "2026-08-14",
+          "moments": []
+        },
+        {
+          "videoId": "R_6yXFPiOMY",
+          "title": "(IG Wei) Pantheon Jungle vs Lee Sin (KRWI Clid) - KR Challenger Patch 26.14",
+          "rankClaim": "Challenger",
+          "patch": "26.14",
+          "durationSec": 1857,
+          "region": "KR",
+          "player": "Wei",
+          "team": "IG",
+          "uploaded": "2026-07-30",
+          "moments": []
+        },
+        {
+          "videoId": "kP171pVXlJI",
+          "title": "(AL Shanks) Pantheon Jungle vs Lee Sin - EUW Grandmaster Patch 26.14",
+          "rankClaim": "Grandmaster",
+          "patch": "26.14",
+          "durationSec": 1774,
+          "region": "EUW",
+          "player": "Shanks",
+          "team": "AL",
+          "uploaded": "2026-07-18",
+          "moments": []
+        },
+        {
+          "videoId": "FjbwxPeDoOo",
+          "title": "(BFX Raptor) Pantheon Jungle vs Lee Sin - KR Challenger Patch 26.10",
+          "rankClaim": "Challenger",
+          "patch": "26.10",
+          "durationSec": 1449,
+          "region": "KR",
+          "player": "Raptor",
+          "team": "BFX",
+          "uploaded": "2026-05-27",
+          "result": "L",
+          "moments": [
+            {
+              "atSec": 319,
+              "label": "First Blood — Pantheon kills Lee Sin",
+              "kind": "kill"
+            },
+            {
+              "atSec": 453,
+              "label": "Pantheon kills Bard",
+              "kind": "kill"
+            },
+            {
+              "atSec": 513,
+              "label": "Red takes 1st Dragon (Ocean)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 744,
+              "label": "Pantheon takes down Varus"
+            },
+            {
+              "atSec": 831,
+              "label": "Qiyana Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 877,
+              "label": "Red takes 2nd Dragon (Chemtech)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1038,
+              "label": "Pantheon catches Varus again"
+            },
+            {
+              "atSec": 1123,
+              "label": "Red takes Rift Herald",
+              "kind": "herald"
+            },
+            {
+              "atSec": 1324,
+              "label": "Pantheon catches Bard"
+            },
+            {
+              "atSec": 1398,
+              "label": "Qiyana Double Kill",
+              "kind": "kill"
+            }
+          ]
+        },
+        {
+          "videoId": "uDH95ztnibc",
+          "title": "Pantheon Jungle vs Lee Sin - KR Challenger Patch 26.08",
+          "rankClaim": "Challenger",
+          "patch": "26.8",
+          "durationSec": 1547,
+          "region": "KR",
+          "uploaded": "2026-04-26",
+          "moments": []
+        },
+        {
+          "videoId": "nHaTe2r60J8",
+          "title": "Pantheon vs Lee Sin Jungle - KR Challenger - Patch 25.22 Season 15",
+          "rankClaim": "Challenger",
+          "patch": "25.22",
+          "durationSec": 1876,
+          "region": "KR",
+          "uploaded": "2025-11-09",
+          "moments": []
+        },
+        {
+          "videoId": "R3PI-5lMkKQ",
+          "title": "Pantheon vs Lee Sin [ Jungle ] Patch 25.21 Korea Challenger 1550 LP",
+          "rankClaim": "Challenger",
+          "patch": "25.21",
+          "durationSec": 1811,
+          "region": "KR",
+          "uploaded": "2025-10-26",
+          "moments": []
+        },
+        {
+          "videoId": "mxnlrkPtJ0s",
+          "title": "T1 Oner Pantheon vs Lee Sin [ Jungle ] Patch 25.8 Korea Grandmaster ✅",
+          "rankClaim": "Grandmaster",
+          "patch": "25.8",
+          "durationSec": 1409,
+          "region": "KR",
+          "player": "Oner",
+          "team": "T1",
+          "uploaded": "2025-04-24",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 72,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "176pf5ODpo8",
+          "title": "Pantheon vs Skarner Jungle [ KT Cuzz ] Korea Grandmaster Patch 25.3 ✅",
+          "rankClaim": "Grandmaster",
+          "patch": "25.3",
+          "durationSec": 1936,
+          "region": "KR",
+          "player": "Cuzz",
+          "team": "KT",
+          "uploaded": "2025-02-07",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 72,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "xMe1UnMKTI8",
+          "title": "Pantheon vs Skarner 10/1/0 (Top) | EUW Challenger | Pantheon OTP Replay",
+          "rankClaim": "Challenger",
+          "patch": "26.7",
+          "durationSec": 1125,
+          "region": "EUW",
+          "patchEstimated": true,
+          "uploaded": "2026-04-13",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 74,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "0N70iZz8vBY",
+          "title": "Baicaiovo Pantheon : CRUSHING Heimerdinger on CN Super Server - Engsub",
+          "rankClaim": "Master+",
+          "patch": "26.12",
+          "durationSec": 1118,
+          "patchEstimated": true,
+          "player": "Baicaiovo",
+          "uploaded": "2026-06-14",
+          "format": "stream",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 76,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "Ji3amKkEpEU",
+          "title": "Pantheon Jungle vs Nidalee - EUW Challenger Patch 25.18",
+          "rankClaim": "Challenger",
+          "patch": "25.18",
+          "durationSec": 1476,
+          "region": "EUW",
+          "uploaded": "2025-09-20",
+          "moments": []
+        },
+        {
+          "videoId": "tEFPKKYJXAo",
+          "title": "Pantheon Jungle vs Nidalee - KR Challenger Patch 25.12",
+          "rankClaim": "Challenger",
+          "patch": "25.12",
+          "durationSec": 2000,
+          "region": "KR",
+          "uploaded": "2025-06-15",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 78,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "PonxSkW8ncI",
+          "title": "T1 Oner Pantheon vs Poppy [ Jungle ] Patch 25.24 Ranked Korea",
+          "rankClaim": "Master+",
+          "patch": "25.24",
+          "durationSec": 850,
+          "region": "KR",
+          "player": "Oner",
+          "team": "T1",
+          "uploaded": "2025-12-08",
+          "moments": []
+        },
+        {
+          "videoId": "7fJNCMq94OI",
+          "title": "Pantheon vs Poppy Jungle - KR Challenger - Patch 25.16 Season 15",
+          "rankClaim": "Challenger",
+          "patch": "25.16",
+          "durationSec": 1906,
+          "region": "KR",
+          "uploaded": "2025-08-25",
+          "moments": []
+        },
+        {
+          "videoId": "3iupYEDMecc",
+          "title": "Pantheon vs Poppy Jungle - KR Challenger - Patch 25.8 Season 15",
+          "rankClaim": "Challenger",
+          "patch": "25.8",
+          "durationSec": 1411,
+          "region": "KR",
+          "uploaded": "2025-04-29",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 78,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "IEPbyui0IZI",
+          "title": "Pantheon Support vs Poppy - KR Grandmaster Patch 25.23",
+          "rankClaim": "Grandmaster",
+          "patch": "25.23",
+          "durationSec": 1678,
+          "region": "KR",
+          "uploaded": "2025-11-24",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 79,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "nE9Pklb5jQ0",
+          "title": "Pantheon Top vs Gragas - KR Grandmaster Patch 26.09",
+          "rankClaim": "Grandmaster",
+          "patch": "26.9",
+          "durationSec": 1693,
+          "region": "KR",
+          "uploaded": "2026-05-09",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 82,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "pNSf4IhF3hs",
+          "title": "Pantheon Top vs Mordekaiser - KR Grandmaster Patch 25.24",
+          "rankClaim": "Grandmaster",
+          "patch": "25.24",
+          "durationSec": 1520,
+          "region": "KR",
+          "uploaded": "2025-12-13",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 88,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 251,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 497,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1003,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1084,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1112,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1171,
+              "label": "Get a PENTA KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1257,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1405,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1452,
+              "label": "Take down The Inhibitor"
+            },
+            {
+              "atSec": 1465,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1496,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1509,
+              "label": "End credit"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 89,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "WxU1KkE4rzQ",
+          "title": "Pantheon Support vs Leona - KR Grandmaster Patch 25.19",
+          "rankClaim": "Grandmaster",
+          "patch": "25.19",
+          "durationSec": 1883,
+          "region": "KR",
+          "uploaded": "2025-09-27",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 91,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "L1zxYEkRbnY",
+          "title": "Pantheon Jungle vs Talon (OnFleek) - KR Grandmaster Patch 26.17",
+          "rankClaim": "Grandmaster",
+          "patch": "26.17",
+          "durationSec": 1873,
+          "region": "KR",
+          "uploaded": "2026-09-07",
+          "moments": []
+        },
+        {
+          "videoId": "zm-GfQcEBtQ",
+          "title": "(GX ISMA) Pantheon Jungle vs Talon - EUW Challenger Patch 26.16",
+          "rankClaim": "Challenger",
+          "patch": "26.16",
+          "durationSec": 1469,
+          "region": "EUW",
+          "player": "GX ISMA",
+          "uploaded": "2026-08-14",
+          "moments": []
+        },
+        {
+          "videoId": "4Lx2Tpgds1k",
+          "title": "Pantheon vs Talon Jungle - KR Challenger - Patch 16.08 Season 16",
+          "rankClaim": "Challenger",
+          "patch": "26.8",
+          "durationSec": 1681,
+          "region": "KR",
+          "uploaded": "2026-04-18",
+          "moments": []
+        },
+        {
+          "videoId": "nlsPGNS2ne8",
+          "title": "Pantheon vs Talon Jungle - KR Challenger - Patch 26.01 Season 16",
+          "rankClaim": "Challenger",
+          "patch": "26.1",
+          "durationSec": 1981,
+          "region": "KR",
+          "uploaded": "2026-01-19",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 98,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "QHdWk2nOgrM",
+          "title": "T1 Doran Pantheon vs Shen [ TOP ] Korea Grandmaster 1462 LP | Patch 26.20",
+          "rankClaim": "Grandmaster",
+          "patch": "26.20",
+          "durationSec": 1423,
+          "region": "KR",
+          "player": "Doran",
+          "team": "T1",
+          "uploaded": "2026-10-11",
+          "moments": [
+            {
+              "atSec": 0,
+              "label": "Early game laning phase"
+            },
+            {
+              "atSec": 784,
+              "label": "First turrets fall",
+              "kind": "tower"
+            },
+            {
+              "atSec": 981,
+              "label": "Mid game objective skirmishes"
+            },
+            {
+              "atSec": 1266,
+              "label": "Final push and victory"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 101,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "sNIcAl_trzw",
+          "title": "Pantheon vs Xerath Mid - KR CHallenger - Patch 25.7 Season 15",
+          "rankClaim": "Challenger",
+          "patch": "25.7",
+          "durationSec": 1486,
+          "region": "KR",
+          "uploaded": "2025-04-13",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 101,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "t5otZu5aN0Y",
+          "title": "Pantheon Support vs Xerath - KR Master Patch 26.01",
+          "rankClaim": "Master",
+          "patch": "26.1",
+          "durationSec": 1442,
+          "region": "KR",
+          "uploaded": "2026-01-14",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 142,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 208,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 296,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 461,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 632,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 758,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 828,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 864,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 927,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1053,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1098,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1164,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1242,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1266,
+              "label": "Take down The Inhibitor"
+            },
+            {
+              "atSec": 1288,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1360,
+              "label": "Take down The Inhibitor"
+            },
+            {
+              "atSec": 1394,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1431,
+              "label": "End credit"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 104,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "S4skr3HkeOc",
+          "title": "Pantheon Jungle vs Graves - KR Grandmaster Patch 26.07",
+          "rankClaim": "Grandmaster",
+          "patch": "26.7",
+          "durationSec": 1643,
+          "region": "KR",
+          "uploaded": "2026-04-03",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 188,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 496,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 521,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 564,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 770,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 929,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 964,
+              "label": "Hunt The Rift Herald",
+              "kind": "herald"
+            },
+            {
+              "atSec": 996,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1087,
+              "label": "Hunt The Dragon",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1157,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1174,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1309,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1447,
+              "label": "Hunt The Baron Nashor",
+              "kind": "baron"
+            },
+            {
+              "atSec": 1508,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1531,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1557,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1632,
+              "label": "End credit"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 105,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "nN626qyUIC8",
+          "title": "Rank 1 Pantheon : WRECKING Fizz - Top 1 CN Super Server - Engsub",
+          "rankClaim": "Master+",
+          "patch": "26.13",
+          "durationSec": 1634,
+          "patchEstimated": true,
+          "player": "Baicaiovo",
+          "uploaded": "2026-06-26",
+          "format": "stream",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 106,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "ovduV7KVx3E",
+          "title": "Pantheon vs Volibear 12/3/8 (Top) | EUW Challenger | Pantheon OTP Replay",
+          "rankClaim": "Challenger",
+          "patch": "26.10",
+          "durationSec": 1601,
+          "region": "EUW",
+          "patchEstimated": true,
+          "uploaded": "2026-05-17",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 111,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "dV3t0-aCc3A",
+          "title": "(AL Kael) Pantheon Support vs Nautilus - KR Master Patch 26.13",
+          "rankClaim": "Master",
+          "patch": "26.13",
+          "durationSec": 1450,
+          "region": "KR",
+          "player": "Kael",
+          "team": "AL",
+          "uploaded": "2026-06-26",
+          "moments": []
+        },
+        {
+          "videoId": "i_KT2AGypvg",
+          "title": "(FK Targamas) Pantheon Support vs Nautilus - EUW Challenger Patch 26.12",
+          "rankClaim": "Challenger",
+          "patch": "26.12",
+          "durationSec": 1414,
+          "region": "EUW",
+          "player": "FK Targamas",
+          "uploaded": "2026-06-14",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 114,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "M-nWvTtGCQg",
+          "title": "Pantheon Top vs Fiora - EUW Grandmaster Patch 26.03",
+          "rankClaim": "Grandmaster",
+          "patch": "26.3",
+          "durationSec": 1454,
+          "region": "EUW",
+          "uploaded": "2026-02-13",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 117,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 207,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 408,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 617,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 729,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 839,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 950,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 975,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1023,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1042,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1070,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1207,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1292,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1327,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1419,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1443,
+              "label": "End credit"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 117,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "ILKBeB-sPW4",
+          "title": "Pantheon Support vs Lulu - KR Grandmaster Patch 25.07",
+          "rankClaim": "Grandmaster",
+          "patch": "25.7",
+          "durationSec": 1658,
+          "region": "KR",
+          "uploaded": "2025-04-05",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 121,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "pLZum1z2-4s",
+          "title": "Pantheon vs Kha'Zix Jungle - EUW Challenger - Patch 25.9 Season 15",
+          "rankClaim": "Challenger",
+          "patch": "25.9",
+          "durationSec": 1931,
+          "region": "EUW",
+          "uploaded": "2025-05-01",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 122,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "2pzB815MhUc",
+          "title": "Pantheon vs Darius 14/3/9 (Top) | EUW Grandmaster | Pantheon OTP Replay",
+          "rankClaim": "Grandmaster",
+          "patch": "26.7",
+          "durationSec": 1465,
+          "region": "EUW",
+          "patchEstimated": true,
+          "uploaded": "2026-04-07",
+          "moments": []
+        },
+        {
+          "videoId": "N0946SV16o4",
+          "title": "Pantheon Top vs Darius - KR Master Patch 25.06",
+          "rankClaim": "Master",
+          "patch": "25.6",
+          "durationSec": 1603,
+          "region": "KR",
+          "uploaded": "2025-04-04",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 368,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 645,
+              "label": "Hunt The Void Grubs",
+              "kind": "grubs"
+            },
+            {
+              "atSec": 686,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 815,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 871,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 950,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1110,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1162,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1243,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1291,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1315,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1377,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1397,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1422,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1436,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1503,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1541,
+              "label": "Take down The Inhibitor"
+            },
+            {
+              "atSec": 1582,
+              "label": "End credit"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 126,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "Aacx1h6wexs",
+          "title": "(AL Tarzan) Pantheon Top vs Jayce - KR Challenger Patch 26.13",
+          "rankClaim": "Challenger",
+          "patch": "26.13",
+          "durationSec": 1814,
+          "region": "KR",
+          "player": "Tarzan",
+          "team": "AL",
+          "uploaded": "2026-07-11",
+          "moments": []
+        },
+        {
+          "videoId": "lpq86SzTVik",
+          "title": "Pantheon Top vs Jayce - VN Challenger Patch 25.19",
+          "rankClaim": "Challenger",
+          "patch": "25.19",
+          "durationSec": 1609,
+          "uploaded": "2025-10-05",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 131,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "UopZXx4Xuqg",
+          "title": "Pantheon vs Diana [ Jungle ] Patch 25.19 Korea Challenger 1558 LP",
+          "rankClaim": "Challenger",
+          "patch": "25.19",
+          "durationSec": 1465,
+          "region": "KR",
+          "uploaded": "2025-09-24",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 141,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "0vtj-TXCvL4",
+          "title": "Pantheon Jungle vs Kayn - KR Master Patch 25.04",
+          "rankClaim": "Master",
+          "patch": "25.4",
+          "durationSec": 1547,
+          "region": "KR",
+          "uploaded": "2025-02-23",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 158,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 259,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 377,
+              "label": "Hunt The Dragon",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 573,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 641,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 704,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 737,
+              "label": "Hunt The Dragon",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 773,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 827,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 912,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1038,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1105,
+              "label": "Hunt The Dragon",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1132,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1249,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1295,
+              "label": "Hunt The Atakhan"
+            },
+            {
+              "atSec": 1387,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1422,
+              "label": "Hunt The Dragon",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1450,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1526,
+              "label": "End credit"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 142,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "SH4eyLday7U",
+          "title": "Pantheon Support vs Zoe - EUW Grandmaster Patch 25.06",
+          "rankClaim": "Grandmaster",
+          "patch": "25.6",
+          "durationSec": 1627,
+          "region": "EUW",
+          "uploaded": "2025-03-28",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 249,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 400,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 547,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 653,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 737,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 881,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 983,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1052,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1144,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1238,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1268,
+              "label": "Take down The Inhibitor"
+            },
+            {
+              "atSec": 1335,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1449,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1468,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1549,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1584,
+              "label": "Take down The Inhibitor"
+            },
+            {
+              "atSec": 1595,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1606,
+              "label": "End credit"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 150,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "Pcu8t8gsXvU",
+          "title": "Pantheon Top vs Gnar - KR Challenger Patch 26.18",
+          "rankClaim": "Challenger",
+          "patch": "26.18",
+          "durationSec": 1795,
+          "region": "KR",
+          "uploaded": "2026-09-19",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 157,
+      "lane": "adc",
+      "videos": [
+        {
+          "videoId": "5ZdQ--Z6op8",
+          "title": "Pantheon ADC vs Yasuo - EUW Grandmaster Patch 25.04",
+          "rankClaim": "Grandmaster",
+          "patch": "25.4",
+          "durationSec": 1707,
+          "region": "EUW",
+          "uploaded": "2025-03-04",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 157,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "EdQf-F5SDsU",
+          "title": "Pantheon Top vs Yasuo - KR Grandmaster Patch 25.20",
+          "rankClaim": "Grandmaster",
+          "patch": "25.20",
+          "durationSec": 1639,
+          "region": "KR",
+          "uploaded": "2025-10-18",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 166,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "JcHCh3P2VQA",
+          "title": "Baicaiovo Pantheon: Top 1 CN Super Server DELETES Akshan in Challenger Elo",
+          "rankClaim": "Challenger",
+          "patch": "26.12",
+          "durationSec": 1216,
+          "patchEstimated": true,
+          "player": "Baicaiovo",
+          "uploaded": "2026-06-10",
+          "format": "stream",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 201,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "JGVDRXgiIAQ",
+          "title": "Pantheon Support vs Braum - EUW Master Patch 26.17",
+          "rankClaim": "Master",
+          "patch": "26.17",
+          "durationSec": 1584,
+          "region": "EUW",
+          "uploaded": "2026-09-12",
+          "moments": []
+        },
+        {
+          "videoId": "AADFRn8OQyA",
+          "title": "Pantheon Support vs Braum - NA Grandmaster Patch 26.05",
+          "rankClaim": "Grandmaster",
+          "patch": "26.5",
+          "durationSec": 1634,
+          "region": "NA",
+          "uploaded": "2026-03-08",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 138,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 347,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 667,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1002,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1068,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1170,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1251,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1376,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1469,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1552,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1580,
+              "label": "Take down The Inhibitor"
+            },
+            {
+              "atSec": 1592,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1608,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1623,
+              "label": "End credit"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 203,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "-WS757dNYuo",
+          "title": "Pantheon vs Kindred Jungle - KR Challenger - Patch 16.07 Season 16",
+          "rankClaim": "Challenger",
+          "patch": "26.7",
+          "durationSec": 1561,
+          "region": "KR",
+          "uploaded": "2026-04-07",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 234,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "670xa9F9QSU",
+          "title": "(IG Wei) Pantheon Jungle vs Viego - KR Challenger Patch 26.15",
+          "rankClaim": "Challenger",
+          "patch": "26.15",
+          "durationSec": 1691,
+          "region": "KR",
+          "player": "Wei",
+          "team": "IG",
+          "uploaded": "2026-08-01",
+          "moments": []
+        },
+        {
+          "videoId": "p7_gUiS4Jpo",
+          "title": "(HRTS Lurox) Pantheon Jungle vs Viego - EUW Challenger Patch 26.12",
+          "rankClaim": "Challenger",
+          "patch": "26.12",
+          "durationSec": 1768,
+          "region": "EUW",
+          "player": "HRTS Lurox",
+          "uploaded": "2026-06-19",
+          "moments": []
+        },
+        {
+          "videoId": "lIgSzlU_TdU",
+          "title": "(WBG Elk) Pantheon Jungle vs Viego - KR Grandmaster Patch 26.11",
+          "rankClaim": "Grandmaster",
+          "patch": "26.11",
+          "durationSec": 1432,
+          "region": "KR",
+          "player": "Elk",
+          "team": "WBG",
+          "uploaded": "2026-05-31",
+          "moments": []
+        },
+        {
+          "videoId": "3ecL7wNui6k",
+          "title": "Pantheon Jungle vs Viego - KR Grandmaster Patch 26.10",
+          "rankClaim": "Grandmaster",
+          "patch": "26.10",
+          "durationSec": 1442,
+          "region": "KR",
+          "uploaded": "2026-05-18",
+          "moments": []
+        },
+        {
+          "videoId": "zYdw7NiWDSw",
+          "title": "Pantheon vs Viego Jungle - KR Challenger - Patch 16.06 Season 16",
+          "rankClaim": "Challenger",
+          "patch": "26.6",
+          "durationSec": 1981,
+          "region": "KR",
+          "uploaded": "2026-03-26",
+          "moments": []
+        },
+        {
+          "videoId": "c0N9jlzPw4I",
+          "title": "Pantheon vs Viego Jungle - KR Challenger - Patch 16.03 Season 16",
+          "rankClaim": "Challenger",
+          "patch": "26.3",
+          "durationSec": 1591,
+          "region": "KR",
+          "uploaded": "2026-02-18",
+          "moments": []
+        },
+        {
+          "videoId": "_lv0HbDn9nc",
+          "title": "Pantheon Jungle vs Viego - KR Grandmaster Patch 25.17",
+          "rankClaim": "Grandmaster",
+          "patch": "25.17",
+          "durationSec": 1605,
+          "region": "KR",
+          "uploaded": "2025-08-30",
+          "moments": []
+        },
+        {
+          "videoId": "Um70C41Mvzw",
+          "title": "Pantheon vs Viego Jungle - KR Challenger - Patch 25.12 Season 15",
+          "rankClaim": "Challenger",
+          "patch": "25.12",
+          "durationSec": 1606,
+          "region": "KR",
+          "uploaded": "2025-06-23",
+          "moments": []
+        },
+        {
+          "videoId": "ZoPLTIHHCJM",
+          "title": "T1 Oner Pantheon vs Viego [ Jungle ] Patch 25.10 Korea Challenger ✅",
+          "rankClaim": "Challenger",
+          "patch": "25.10",
+          "durationSec": 1021,
+          "region": "KR",
+          "player": "Oner",
+          "team": "T1",
+          "uploaded": "2025-05-27",
+          "moments": []
+        },
+        {
+          "videoId": "U5FcJMYTeMc",
+          "title": "Pantheon vs Viego Jungle - KR Challenger - Patch 25.9 Season 15",
+          "rankClaim": "Challenger",
+          "patch": "25.9",
+          "durationSec": 1511,
+          "region": "KR",
+          "uploaded": "2025-05-14",
+          "moments": []
+        },
+        {
+          "videoId": "BbxMqjGR5_A",
+          "title": "Pantheon Jungle vs Viego - EUW Challenger Patch 25.07",
+          "rankClaim": "Challenger",
+          "patch": "25.7",
+          "durationSec": 1736,
+          "region": "EUW",
+          "uploaded": "2025-04-13",
+          "moments": []
+        },
+        {
+          "videoId": "5ll7k8C0uxI",
+          "title": "Pantheon Jungle vs Viego - KR Challenger Patch 25.06",
+          "rankClaim": "Challenger",
+          "patch": "25.6",
+          "durationSec": 1551,
+          "region": "KR",
+          "uploaded": "2025-03-23",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 275,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 358,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 385,
+              "label": "Hunt The Void Grubs",
+              "kind": "grubs"
+            },
+            {
+              "atSec": 457,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 506,
+              "label": "Hunt The Dragon",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 612,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 736,
+              "label": "Hunt The Void Grubs",
+              "kind": "grubs"
+            },
+            {
+              "atSec": 839,
+              "label": "Hunt The Dragon",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 869,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 983,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1038,
+              "label": "Hunt The Rift Herald",
+              "kind": "herald"
+            },
+            {
+              "atSec": 1058,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1191,
+              "label": "Hunt The Dragon",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1253,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1268,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1347,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1430,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1510,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1530,
+              "label": "End credit"
+            }
+          ]
+        },
+        {
+          "videoId": "geJ71NaXyqI",
+          "title": "Pantheon vs Viego Jungle - KR Challenger - Patch 25.5 Season 15",
+          "rankClaim": "Challenger",
+          "patch": "25.5",
+          "durationSec": 1986,
+          "region": "KR",
+          "uploaded": "2025-03-13",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 238,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "QLKl7bBb5RE",
+          "title": "Pantheon Jungle vs Zed - KR Grandmaster Patch 25.16",
+          "rankClaim": "Grandmaster",
+          "patch": "25.16",
+          "durationSec": 1458,
+          "region": "KR",
+          "uploaded": "2025-08-17",
+          "moments": []
+        },
+        {
+          "videoId": "ARY96FgIaAA",
+          "title": "Pantheon vs Zed Jungle - KR Challenger - Patch 25.13 Season 15",
+          "rankClaim": "Challenger",
+          "patch": "25.13",
+          "durationSec": 2016,
+          "region": "KR",
+          "uploaded": "2025-07-10",
+          "moments": []
+        },
+        {
+          "videoId": "exWRU6ZBLpc",
+          "title": "T1 Faker Pantheon vs Zed [ Jungle ] Korea Challenger Patch 25.11 ✅",
+          "rankClaim": "Challenger",
+          "patch": "25.11",
+          "durationSec": 1351,
+          "region": "KR",
+          "player": "Faker",
+          "team": "T1",
+          "uploaded": "2025-06-05",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 245,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "V7-XbUoA3No",
+          "title": "Pantheon vs Ekko 16/7/15 (Jungle) | EUW Challenger | Pantheon OTP Replay",
+          "rankClaim": "Challenger",
+          "patch": "26.9",
+          "durationSec": 1671,
+          "region": "EUW",
+          "patchEstimated": true,
+          "uploaded": "2026-05-12",
+          "moments": []
+        },
+        {
+          "videoId": "6VQcmyXHeOU",
+          "title": "Pantheon vs Ekko Jungle - KR Challenger - Patch 25.16 Season 15",
+          "rankClaim": "Challenger",
+          "patch": "25.16",
+          "durationSec": 1811,
+          "region": "KR",
+          "uploaded": "2025-08-23",
+          "moments": []
+        },
+        {
+          "videoId": "mHmK0Mm1m6Y",
+          "title": "Pantheon Jungle vs Ekko - KR Challenger Patch 25.11",
+          "rankClaim": "Challenger",
+          "patch": "25.11",
+          "durationSec": 1859,
+          "region": "KR",
+          "uploaded": "2025-06-01",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 246,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "bNL6e0uGUlk",
+          "title": "Pantheon vs Qiyana Jungle [ Gen.G Canyon ] Korea Challengerr 2507 LP | Patch 26.19",
+          "rankClaim": "Challenger",
+          "patch": "26.19",
+          "durationSec": 1582,
+          "region": "KR",
+          "player": "Canyon",
+          "team": "Gen.G",
+          "uploaded": "2026-09-27",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 254,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "bUtEknq8ezc",
+          "title": "Pantheon vs Vi Jungle - KR Challenger - Patch 25.22 Season 15",
+          "rankClaim": "Challenger",
+          "patch": "25.22",
+          "durationSec": 2011,
+          "region": "KR",
+          "uploaded": "2025-11-13",
+          "moments": []
+        },
+        {
+          "videoId": "cztE7ueU50E",
+          "title": "Pantheon vs Vi [ Jungle ] Patch 25.22 Korea Challenger 1526 LP",
+          "rankClaim": "Challenger",
+          "patch": "25.22",
+          "durationSec": 1435,
+          "region": "KR",
+          "uploaded": "2025-11-12",
+          "moments": []
+        },
+        {
+          "videoId": "m8K14-4xqYY",
+          "title": "Pantheon vs Vi Jungle - KR Challenger - Patch 25.9 Season 15",
+          "rankClaim": "Challenger",
+          "patch": "25.9",
+          "durationSec": 1456,
+          "region": "KR",
+          "uploaded": "2025-05-09",
+          "moments": []
+        },
+        {
+          "videoId": "7fPRauFVw_I",
+          "title": "Pantheon Jungle vs Vi - KR Challenger Patch 25.09",
+          "rankClaim": "Challenger",
+          "patch": "25.9",
+          "durationSec": 1581,
+          "region": "KR",
+          "uploaded": "2025-05-03",
+          "moments": []
+        },
+        {
+          "videoId": "jyTPxq1mQCc",
+          "title": "Pantheon Jungle vs Vi - KR Grandmaster Patch 25.05",
+          "rankClaim": "Grandmaster",
+          "patch": "25.5",
+          "durationSec": 1599,
+          "region": "KR",
+          "uploaded": "2025-03-07",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 266,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "VnxGwQSpxak",
+          "title": "Pantheon Jungle vs Aatrox - KR Master Patch 25.24",
+          "rankClaim": "Master",
+          "patch": "25.24",
+          "durationSec": 1563,
+          "region": "KR",
+          "uploaded": "2025-12-19",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 267,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "8Y3PDWyzOsc",
+          "title": "Pantheon Support vs Nami - EUW Grandmaster Patch 25.15",
+          "rankClaim": "Grandmaster",
+          "patch": "25.15",
+          "durationSec": 1774,
+          "region": "EUW",
+          "uploaded": "2025-08-07",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 268,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "tVIeIyBCqUw",
+          "title": "T1 Faker Pantheon vs Azir [ MID ] Patch 25.6 Korea Master ✅",
+          "rankClaim": "Master",
+          "patch": "25.6",
+          "durationSec": 1067,
+          "region": "KR",
+          "player": "Faker",
+          "team": "T1",
+          "uploaded": "2025-04-01",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 350,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "Skes7jlKBLk",
+          "title": "Pantheon Support vs Yuumi - NA Grandmaster Patch 25.14",
+          "rankClaim": "Grandmaster",
+          "patch": "25.14",
+          "durationSec": 1467,
+          "region": "NA",
+          "uploaded": "2025-07-25",
+          "moments": []
+        },
+        {
+          "videoId": "82HGBR9fp0w",
+          "title": "Pantheon Support vs Yuumi - EUW Grandmaster Patch 25.13",
+          "rankClaim": "Grandmaster",
+          "patch": "25.13",
+          "durationSec": 1496,
+          "region": "EUW",
+          "uploaded": "2025-07-05",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 412,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "xjkPjpAXnSI",
+          "title": "Pantheon Support vs Thresh - KR Challenger Patch 26.03",
+          "rankClaim": "Challenger",
+          "patch": "26.3",
+          "durationSec": 1536,
+          "region": "KR",
+          "uploaded": "2026-02-09",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 201,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 400,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 479,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 600,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 691,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 859,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 899,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 959,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1101,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1193,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1226,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1264,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1355,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1370,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1432,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1459,
+              "label": "Take down The Inhibitor"
+            },
+            {
+              "atSec": 1481,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1525,
+              "label": "End credit"
+            }
+          ]
+        },
+        {
+          "videoId": "PTZgW1HKpj0",
+          "title": "Pantheon Support vs Thresh - VN Challenger Patch 25.05",
+          "rankClaim": "Challenger",
+          "patch": "25.5",
+          "durationSec": 1587,
+          "uploaded": "2025-03-17",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 421,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "OInSsIt9KG8",
+          "title": "Pantheon vs Rek'Sai [ Jungle ] Patch 25.20 Korea Master 205 LP",
+          "rankClaim": "Master",
+          "patch": "25.20",
+          "durationSec": 1825,
+          "region": "KR",
+          "uploaded": "2025-10-17",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 427,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "1kHsRmccSXU",
+          "title": "Pantheon vs Ivern Jungle - KR Challenger - Patch 25.12 Season 15",
+          "rankClaim": "Challenger",
+          "patch": "25.12",
+          "durationSec": 1656,
+          "region": "KR",
+          "uploaded": "2025-06-14",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 432,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "st8RJa5SJfU",
+          "title": "(KCB Yukino) Pantheon Support vs Bard (FK Targamas) - EUW Challenger Patch 26.19",
+          "rankClaim": "Challenger",
+          "patch": "26.19",
+          "durationSec": 1700,
+          "region": "EUW",
+          "player": "KCB Yukino",
+          "uploaded": "2026-10-01",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 497,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "TD6Ao0uvJwk",
+          "title": "Pantheon Support vs Rakan - EUW Grandmaster Patch 25.09",
+          "rankClaim": "Grandmaster",
+          "patch": "25.9",
+          "durationSec": 1639,
+          "region": "EUW",
+          "uploaded": "2025-05-10",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 516,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "rCxLoilPkKQ",
+          "title": "Pantheon vs Ornn 13/3/7 (Top) | EUW Grandmaster | Pantheon OTP Replay",
+          "rankClaim": "Grandmaster",
+          "patch": "26.8",
+          "durationSec": 1307,
+          "region": "EUW",
+          "patchEstimated": true,
+          "uploaded": "2026-04-17",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 517,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "qX7rM0iO6Mk",
+          "title": "Pantheon vs Sylas Jungle [ DNS Pyosik ] Korea Grandmaster Patch 26.5",
+          "rankClaim": "Grandmaster",
+          "patch": "26.5",
+          "durationSec": 1193,
+          "region": "KR",
+          "player": "Pyosik",
+          "uploaded": "2026-03-13",
+          "moments": []
+        },
+        {
+          "videoId": "popLOGSVBA4",
+          "title": "Pantheon vs Sylas Jungle - KR Challenger - Patch 25.17 Season 15",
+          "rankClaim": "Challenger",
+          "patch": "25.17",
+          "durationSec": 2101,
+          "region": "KR",
+          "uploaded": "2025-09-09",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 517,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "KYKpkYR6-O0",
+          "title": "Pantheon Support vs Sylas - EUW Challenger Patch 25.16",
+          "rankClaim": "Challenger",
+          "patch": "25.16",
+          "durationSec": 1795,
+          "region": "EUW",
+          "uploaded": "2025-08-23",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 518,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "1tie2woeDJs",
+          "title": "Pantheon Support vs Neeko - KR Challenger Patch 25.24",
+          "rankClaim": "Challenger",
+          "patch": "25.24",
+          "durationSec": 1604,
+          "region": "KR",
+          "uploaded": "2025-12-07",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 526,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "cbLqLfEgx9M",
+          "title": "Pantheon Support vs Rell - KR Grandmaster Patch 25.22",
+          "rankClaim": "Grandmaster",
+          "patch": "25.22",
+          "durationSec": 1659,
+          "region": "KR",
+          "uploaded": "2025-11-09",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 555,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "U16djlJMWPU",
+          "title": "Pantheon Support vs Pyke - KR Challenger Patch 26.08",
+          "rankClaim": "Challenger",
+          "patch": "26.8",
+          "durationSec": 1748,
+          "region": "KR",
+          "uploaded": "2026-04-19",
+          "result": "L",
+          "moments": [
+            {
+              "atSec": 147,
+              "label": "First Blood — Pantheon kills Pyke",
+              "kind": "kill"
+            },
+            {
+              "atSec": 465,
+              "label": "Hwei picks off Pyke"
+            },
+            {
+              "atSec": 488,
+              "label": "Hwei takes down Jhin"
+            },
+            {
+              "atSec": 540,
+              "label": "Hwei picks off Pyke"
+            },
+            {
+              "atSec": 581,
+              "label": "Red takes 1st Dragon (Infernal)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 603,
+              "label": "Pantheon picks off Jhin"
+            },
+            {
+              "atSec": 705,
+              "label": "Hwei Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 746,
+              "label": "Aatrox eliminates Jhin"
+            },
+            {
+              "atSec": 876,
+              "label": "Team fight (4 kills)",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 955,
+              "label": "Red takes 2nd Dragon (Chemtech)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1003,
+              "label": "Team fight (3 kills)",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1133,
+              "label": "Pantheon solo kills Pyke",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1208,
+              "label": "Aatrox takes down Lee Sin"
+            },
+            {
+              "atSec": 1334,
+              "label": "Red takes 3rd Dragon (Ocean)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1408,
+              "label": "Pantheon eliminates Pyke"
+            },
+            {
+              "atSec": 1647,
+              "label": "Aatrox kills Jayce",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1661,
+              "label": "Blue takes 1st Dragon (Ocean)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1680,
+              "label": "Mid Inhibitor falls (Blue)"
+            }
+          ]
+        },
+        {
+          "videoId": "ZaIKCBlqn2Q",
+          "title": "Pantheon Support vs Pyke - KR Challenger Patch 26.07",
+          "rankClaim": "Challenger",
+          "patch": "26.7",
+          "durationSec": 1671,
+          "region": "KR",
+          "uploaded": "2026-04-11",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 225,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 370,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 484,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 553,
+              "label": "Hunt The Void Grubs",
+              "kind": "grubs"
+            },
+            {
+              "atSec": 662,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 715,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 838,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 883,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 983,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1041,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1143,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1177,
+              "label": "Hunt The Dragon",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1352,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1503,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1587,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1636,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1660,
+              "label": "End credit"
+            }
+          ]
+        },
+        {
+          "videoId": "xRtqdmbCf98",
+          "title": "Pantheon Support vs Pyke - KR Master Patch 26.02",
+          "rankClaim": "Master",
+          "patch": "26.2",
+          "durationSec": 1577,
+          "region": "KR",
+          "uploaded": "2026-01-25",
+          "moments": []
+        },
+        {
+          "videoId": "8iM7TGq-ddo",
+          "title": "Pantheon Support vs Pyke - EUW Grandmaster Patch 25.11",
+          "rankClaim": "Grandmaster",
+          "patch": "25.11",
+          "durationSec": 1844,
+          "region": "EUW",
+          "uploaded": "2025-06-11",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 777,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "rkpOj48j91Q",
+          "title": "Pantheon vs Yone Top - KR Challenger - Patch 25.22 Season 15",
+          "rankClaim": "Challenger",
+          "patch": "25.22",
+          "durationSec": 1606,
+          "region": "KR",
+          "uploaded": "2025-11-14",
+          "moments": []
+        },
+        {
+          "videoId": "RsTTtIa-UNs",
+          "title": "Pantheon Top vs Yone - KR Master Patch 25.13",
+          "rankClaim": "Master",
+          "patch": "25.13",
+          "durationSec": 1837,
+          "region": "KR",
+          "uploaded": "2025-07-10",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 799,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "T8TpDQc-qiA",
+          "title": "T1 Oner Pantheon vs Ambessa [ Jungle ] Korea Master Patch 26.3",
+          "rankClaim": "Master",
+          "patch": "26.3",
+          "durationSec": 1991,
+          "region": "KR",
+          "player": "Oner",
+          "team": "T1",
+          "uploaded": "2026-02-11",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 805,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "-R-w_8M4_VI",
+          "title": "(MADD Benny) Pantheon Jungle vs Locke - EUW Grandmaster Patch 26.13",
+          "rankClaim": "Grandmaster",
+          "patch": "26.13",
+          "durationSec": 1500,
+          "region": "EUW",
+          "player": "MADD Benny",
+          "uploaded": "2026-07-16",
+          "result": "L",
+          "moments": [
+            {
+              "atSec": 57,
+              "label": "First Blood — Pantheon kills Bard",
+              "kind": "kill"
+            },
+            {
+              "atSec": 316,
+              "label": "Pantheon outplays Locke"
+            },
+            {
+              "atSec": 354,
+              "label": "Red takes 1st Dragon (Hextech)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 648,
+              "label": "Pantheon takes down Locke"
+            },
+            {
+              "atSec": 678,
+              "label": "Red takes 2nd Dragon (Chemtech)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 725,
+              "label": "Tryndamere picks off Locke"
+            },
+            {
+              "atSec": 820,
+              "label": "Tryndamere eliminates Jayce"
+            },
+            {
+              "atSec": 860,
+              "label": "Jinx eliminates Locke"
+            },
+            {
+              "atSec": 914,
+              "label": "Red takes Rift Herald",
+              "kind": "herald"
+            },
+            {
+              "atSec": 1015,
+              "label": "Red takes 3rd Dragon (Infernal)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1051,
+              "label": "Pantheon kills Malphite",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1124,
+              "label": "Tryndamere kills Draven",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1160,
+              "label": "Jinx eliminates Locke"
+            },
+            {
+              "atSec": 1210,
+              "label": "Red takes Baron",
+              "kind": "baron"
+            },
+            {
+              "atSec": 1319,
+              "label": "Bot Inhibitor falls (Blue)"
+            },
+            {
+              "atSec": 1342,
+              "label": "Jinx eliminates Locke"
+            },
+            {
+              "atSec": 1363,
+              "label": "Red takes 4th Dragon (Infernal)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1434,
+              "label": "Pantheon Double Kill",
+              "kind": "kill"
+            }
+          ]
+        },
+        {
+          "videoId": "doIiBGf1N7c",
+          "title": "(FWS Betty) Pantheon Jungle vs Locke - KR Master Patch 26.13",
+          "rankClaim": "Master",
+          "patch": "26.13",
+          "durationSec": 1609,
+          "region": "KR",
+          "player": "FWS Betty",
+          "uploaded": "2026-07-04",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 875,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "dLSsj3sGGG4",
+          "title": "Pantheon Top vs Sett - KR Master Patch 25.14",
+          "rankClaim": "Master",
+          "patch": "25.14",
+          "durationSec": 2058,
+          "region": "KR",
+          "uploaded": "2025-08-01",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 897,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "-EBgc_EuwkA",
+          "title": "Pantheon Top vs K'Sante - KR Master Patch 26.15",
+          "rankClaim": "Master",
+          "patch": "26.15",
+          "durationSec": 1687,
+          "region": "KR",
+          "uploaded": "2026-08-09",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 902,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "jGB0I3VHNE0",
+          "title": "Pantheon Support vs Milio - KR Master Patch 26.04",
+          "rankClaim": "Master",
+          "patch": "26.4",
+          "durationSec": 1620,
+          "region": "KR",
+          "uploaded": "2026-02-22",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 268,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 303,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 454,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 696,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 810,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 895,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1012,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1034,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1146,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1218,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1253,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1279,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1335,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1411,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1439,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1457,
+              "label": "Take down The Inhibitor"
+            },
+            {
+              "atSec": 1555,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1609,
+              "label": "End credit"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 910,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "1bkQyO3vl5k",
+          "title": "Pantheon Support vs Hwei - KR Master Patch 25.17",
+          "rankClaim": "Master",
+          "patch": "25.17",
+          "durationSec": 1798,
+          "region": "KR",
+          "uploaded": "2025-09-05",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 950,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "INVGy12jzoU",
+          "title": "Pantheon Jungle vs Naafiri - KR Challenger Patch 25.10",
+          "rankClaim": "Challenger",
+          "patch": "25.10",
+          "durationSec": 2023,
+          "region": "KR",
+          "uploaded": "2025-05-18",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 537,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 642,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 674,
+              "label": "Hunt The Dragon",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 779,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 841,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1014,
+              "label": "Hunt The Dragon",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1087,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1284,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1331,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1352,
+              "label": "Hunt The Dragon",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1486,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1507,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1527,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1702,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1732,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1762,
+              "label": "Take down The Inhibitor"
+            },
+            {
+              "atSec": 1921,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 2002,
+              "label": "End credit"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

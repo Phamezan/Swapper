@@ -1,0 +1,4320 @@
+{
+  "schema": 1,
+  "champion": 104,
+  "generatedAt": "2026-11-07T13:25:14.592Z",
+  "guides": [],
+  "general": [
+    {
+      "champion": 104,
+      "lane": "jungle",
+      "patch": "26.21",
+      "reviewed": false,
+      "keyTips": [
+        {
+          "text": "Make plays from level 3, especially with red buff, when nearby lanes bring setup or crowd control.",
+          "scope": "champion",
+          "sourceIds": [
+            "christi21"
+          ]
+        },
+        {
+          "text": "Default to a sequenced full clear in camp order instead of breaking it for low-percentage ganks.",
+          "scope": "champion",
+          "sourceIds": [
+            "christi21"
+          ]
+        },
+        {
+          "text": "Convert the level-6, level-9 max-Q, Dirk, and first-item spikes into a fight, invade, or objective rather than auto-returning to camps.",
+          "scope": "champion",
+          "sourceIds": [
+            "christi21"
+          ],
+          "abilityKeys": [
+            {
+              "champion": 104,
+              "key": "Q"
+            }
+          ]
+        }
+      ],
+      "sections": {
+        "overview": {
+          "tips": []
+        },
+        "early-lane": {
+          "tips": [
+            {
+              "text": "Run the example clear of red, Krugs, Raptors, Wolves, Gromp, then blue.",
+              "scope": "champion",
+              "sourceIds": [
+                "christi21"
+              ]
+            },
+            {
+              "text": "End clears toward lanes with reliable control or setup, never pathing somewhere merely because it sits close.",
+              "scope": "champion",
+              "sourceIds": [
+                "christi21"
+              ]
+            },
+            {
+              "text": "Track enemy camp order for safe early invades into slower farmers or tank junglers, refusing forced plays into strong control without priority.",
+              "scope": "champion",
+              "sourceIds": [
+                "christi21"
+              ]
+            },
+            {
+              "text": "Gank outside common vision toward allies who can lock targets down, since Graves brings little control himself.",
+              "scope": "champion",
+              "sourceIds": [
+                "christi21"
+              ]
+            },
+            {
+              "text": "Hold W until the target spends a dash or Flash when possible, and save E for the angle or follow-up that holds attack range.",
+              "scope": "champion",
+              "sourceIds": [
+                "christi21"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 104,
+                  "key": "W"
+                },
+                {
+                  "champion": 104,
+                  "key": "E"
+                }
+              ]
+            },
+            {
+              "text": "Play E around the two-shell reload: it reloads a shell and resets an attack, so an early dash wastes the damage window mid-reload.",
+              "scope": "champion",
+              "sourceIds": [
+                "christi21"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 104,
+                  "key": "E"
+                }
+              ]
+            },
+            {
+              "text": "Dash diagonally to stay in attack range without flying past the target or opening an escape gap.",
+              "scope": "champion",
+              "sourceIds": [
+                "christi21"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 104,
+                  "key": "E"
+                }
+              ]
+            },
+            {
+              "text": "Shorten Q with terrain; its return detonates sooner off a wall hit.",
+              "scope": "champion",
+              "sourceIds": [
+                "christi21"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 104,
+                  "key": "Q"
+                }
+              ]
+            }
+          ]
+        },
+        "mid-lane": {
+          "tips": [
+            {
+              "text": "Prefer Hubris as the snowball first item on the lethality route, keeping Youmuu's Ghostblade as the less-used mobility and lethality alternative.",
+              "scope": "champion",
+              "sourceIds": [
+                "christi21"
+              ],
+              "itemIds": [
+                6697,
+                3142
+              ]
+            },
+            {
+              "text": "Stretch side-lane plays into towers, objectives, safe enemy camps, and deep vision instead of resetting to only own camps.",
+              "scope": "champion",
+              "sourceIds": [
+                "christi21"
+              ]
+            },
+            {
+              "text": "Carry a control ward for dragon and Herald setups, firing Q through chokes and terrain in small skirmishes for more return hits.",
+              "scope": "champion",
+              "sourceIds": [
+                "christi21"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 104,
+                  "key": "Q"
+                }
+              ]
+            },
+            {
+              "text": "Never face-check even on True Grit stacks, and never dash forward without a secured kill; keep E as the exit near control.",
+              "scope": "champion",
+              "sourceIds": [
+                "christi21"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 104,
+                  "key": "E"
+                }
+              ]
+            },
+            {
+              "text": "Pick between the standard full clear and the Raptors-start variant that lines up a mid gank after Scuttle plus a big recall, by lane setup and invade safety.",
+              "scope": "champion",
+              "sourceIds": [
+                "christi21"
+              ]
+            }
+          ]
+        },
+        "win-condition": {
+          "tips": [
+            {
+              "text": "While ahead, rule the enemy jungle with early dueling and mobility for repeat skirmishes on efficient camp tempo.",
+              "scope": "champion",
+              "sourceIds": [
+                "christi21"
+              ]
+            },
+            {
+              "text": "Flank isolated carries pre-objective on lethality builds, sweeping first and avoiding visible routes.",
+              "scope": "champion",
+              "sourceIds": [
+                "christi21"
+              ]
+            },
+            {
+              "text": "On bruiser builds, hold maximum attack range and kite the nearest frontline instead of forcing one-shots.",
+              "scope": "champion",
+              "sourceIds": [
+                "christi21"
+              ]
+            },
+            {
+              "text": "Finish low targets with R or recoil backward for space, never opening with it and gifting room to escape.",
+              "scope": "champion",
+              "sourceIds": [
+                "christi21"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 104,
+                  "key": "R"
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "itemization": [
+        {
+          "text": "Run Dark Harvest with Precision secondary.",
+          "scope": "champion",
+          "sourceIds": [
+            "christi21"
+          ]
+        },
+        {
+          "text": "Stack lethality through Hubris into The Collector and Lord Dominik's Regards for snowballing squishier targets.",
+          "scope": "champion",
+          "sourceIds": [
+            "christi21"
+          ],
+          "itemIds": [
+            6697,
+            6676,
+            3036
+          ]
+        },
+        {
+          "text": "Start Youmuu's Ghostblade and Collector before crit on the alternate path, or Umbral Glaive and Sundered Sky on the bruiser path.",
+          "scope": "champion",
+          "sourceIds": [
+            "christi21"
+          ],
+          "itemIds": [
+            3142,
+            3179,
+            6610
+          ]
+        },
+        {
+          "text": "Take the blue pet for speed and reach, red for direct damage and kill pressure, or green for durability into burst and heavy control.",
+          "scope": "champion",
+          "sourceIds": [
+            "christi21"
+          ]
+        },
+        {
+          "text": "Wear Plated Steelcaps into auto-heavy physical teams and Mercury's Treads into high magic damage or control.",
+          "scope": "champion",
+          "sourceIds": [
+            "christi21"
+          ],
+          "itemIds": [
+            3047,
+            3111
+          ]
+        },
+        {
+          "text": "Prioritize Serrated Dirk plus basic boots on the first recall, leaving finished boots until after the first two cores.",
+          "scope": "champion",
+          "sourceIds": [
+            "christi21"
+          ],
+          "itemIds": [
+            3134
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "id": "christi21",
+          "author": "Christi21",
+          "rankClaim": "No rank claim",
+          "url": "https://www.mobafire.com/league-of-legends/build/comprehensive-graves-jungle-guide-for-season-16-master-the-outlaw-649226",
+          "kind": "mobafire"
+        }
+      ]
+    }
+  ],
+  "vods": [
+    {
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "RrqHjvJbqhg",
+          "title": "I Got DIRK At LEVEL 1 On GRAVES",
+          "rankClaim": "Master+",
+          "patch": "26.21",
+          "durationSec": 1543,
+          "patchEstimated": true,
+          "player": "Sinerias",
+          "uploaded": "2026-10-22",
+          "format": "stream",
+          "cam": true,
+          "moments": [
+            {
+              "atSec": 0,
+              "label": "Early game jungle invasion"
+            },
+            {
+              "atSec": 147,
+              "label": "Maintaining jungle pressure"
+            },
+            {
+              "atSec": 262,
+              "label": "Educational climbing tips"
+            },
+            {
+              "atSec": 375,
+              "label": "Aggressive objective control"
+            },
+            {
+              "atSec": 511,
+              "label": "Strategic tempo management"
+            },
+            {
+              "atSec": 660,
+              "label": "Punishing enemy mistakes"
+            },
+            {
+              "atSec": 842,
+              "label": "Mid-game map dominance"
+            },
+            {
+              "atSec": 1030,
+              "label": "Securing late game objectives"
+            },
+            {
+              "atSec": 1285,
+              "label": "Closing out the game"
+            }
+          ]
+        },
+        {
+          "videoId": "XwO_o7WGgkQ",
+          "title": "HOW TO PROPERLY PLAY GRAVES",
+          "rankClaim": "Master+",
+          "patch": "26.19",
+          "durationSec": 2218,
+          "patchEstimated": true,
+          "player": "Sinerias",
+          "uploaded": "2026-09-28",
+          "format": "stream",
+          "cam": true,
+          "moments": []
+        },
+        {
+          "videoId": "aEcCqXg3EBs",
+          "title": "GRAVES IS BACK | High Elo Graves Gameplay",
+          "rankClaim": "Master+",
+          "patch": "26.16",
+          "durationSec": 1575,
+          "patchEstimated": true,
+          "player": "Sinerias",
+          "uploaded": "2026-08-13",
+          "format": "stream",
+          "cam": true,
+          "moments": []
+        },
+        {
+          "videoId": "FnxRHGFtWKc",
+          "title": "THIS WAS THE CRAZIEST GRAVES GAME I'VE HAD",
+          "rankClaim": "Master+",
+          "patch": "26.14",
+          "durationSec": 2206,
+          "patchEstimated": true,
+          "player": "Sinerias",
+          "uploaded": "2026-07-27",
+          "format": "stream",
+          "cam": true,
+          "moments": []
+        },
+        {
+          "videoId": "hcqwZT9d1j8",
+          "title": "HIGH ELO GRAVES GAMEPLAY",
+          "rankClaim": "Master+",
+          "patch": "26.13",
+          "durationSec": 1981,
+          "patchEstimated": true,
+          "player": "Sinerias",
+          "uploaded": "2026-07-09",
+          "format": "stream",
+          "cam": true,
+          "moments": []
+        },
+        {
+          "videoId": "RLaQZG5sSLc",
+          "title": "DOMINATE YOUR GAMES WITH GRAVES",
+          "rankClaim": "Master+",
+          "patch": "26.13",
+          "durationSec": 1332,
+          "patchEstimated": true,
+          "player": "Sinerias",
+          "uploaded": "2026-07-08",
+          "format": "stream",
+          "cam": true,
+          "moments": []
+        },
+        {
+          "videoId": "K0tYAoj089k",
+          "title": "How to 1v9 CARRY WITH GRAVES | JUNGLE EXPLAINED",
+          "rankClaim": "Master+",
+          "patch": "26.13",
+          "durationSec": 1761,
+          "patchEstimated": true,
+          "player": "Sinerias",
+          "uploaded": "2026-07-01",
+          "format": "stream",
+          "cam": true,
+          "moments": []
+        },
+        {
+          "videoId": "9YEeDId_M54",
+          "title": "HOW TO PLAY GRAVES AND 1v9 CARRY",
+          "rankClaim": "Master+",
+          "patch": "26.10",
+          "durationSec": 1797,
+          "patchEstimated": true,
+          "player": "Sinerias",
+          "uploaded": "2026-05-24",
+          "format": "stream",
+          "cam": true,
+          "moments": []
+        },
+        {
+          "videoId": "PwnMont3GxQ",
+          "title": "HOW TO CLIMB WITH GRAVES (1000 LP + ELO)",
+          "rankClaim": "Master+",
+          "patch": "26.8",
+          "durationSec": 1222,
+          "patchEstimated": true,
+          "player": "Sinerias",
+          "uploaded": "2026-04-20",
+          "format": "stream",
+          "cam": true,
+          "moments": []
+        },
+        {
+          "videoId": "uVOx_B8Qpf8",
+          "title": "THIS IS HOW TO SNOWBALL WITH GRAVES",
+          "rankClaim": "Master+",
+          "patch": "26.8",
+          "durationSec": 2787,
+          "patchEstimated": true,
+          "player": "Sinerias",
+          "uploaded": "2026-04-16",
+          "format": "stream",
+          "cam": true,
+          "moments": []
+        },
+        {
+          "videoId": "3wuLhoewHXk",
+          "title": "FULL EDUCATIONAL GRAVES GAMEPLAY",
+          "rankClaim": "Master+",
+          "patch": "26.6",
+          "durationSec": 1708,
+          "patchEstimated": true,
+          "player": "Sinerias",
+          "uploaded": "2026-03-26",
+          "format": "stream",
+          "cam": true,
+          "moments": []
+        },
+        {
+          "videoId": "U_1_GsRR82g",
+          "title": "THIS IS HOW YOU ESCAPE LOW ELO USING GRAVES",
+          "rankClaim": "Master+",
+          "patch": "26.5",
+          "durationSec": 1697,
+          "patchEstimated": true,
+          "player": "Sinerias",
+          "uploaded": "2026-03-06",
+          "format": "stream",
+          "cam": true,
+          "moments": []
+        },
+        {
+          "videoId": "VnWMV7C7L58",
+          "title": "GRAVES JUST GOT BUFFED...AND HE'S BACK",
+          "rankClaim": "Master+",
+          "patch": "26.4",
+          "durationSec": 1601,
+          "patchEstimated": true,
+          "player": "Sinerias",
+          "uploaded": "2026-02-22",
+          "format": "stream",
+          "cam": true,
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 5,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "ZWYCNpEsXQ8",
+          "title": "Graves vs Xin Zhao [ Jungle ] Lol Korea Master Patch 26.10 ✅",
+          "rankClaim": "Master",
+          "patch": "26.10",
+          "durationSec": 1206,
+          "region": "KR",
+          "uploaded": "2026-05-18",
+          "moments": []
+        },
+        {
+          "videoId": "qCgyAmtFZG0",
+          "title": "Graves Jungle vs Xin Zhao - KR Challenger Patch 26.09",
+          "rankClaim": "Challenger",
+          "patch": "26.9",
+          "durationSec": 1742,
+          "region": "KR",
+          "uploaded": "2026-05-01",
+          "moments": []
+        },
+        {
+          "videoId": "gRM0fuDwECM",
+          "title": "Graves vs XinZhao Jungle - EUW Challenger - Patch 16.08 Season 16",
+          "rankClaim": "Challenger",
+          "patch": "26.8",
+          "durationSec": 1681,
+          "region": "EUW",
+          "uploaded": "2026-04-19",
+          "moments": []
+        },
+        {
+          "videoId": "xm_4yCs6IIo",
+          "title": "Graves vs Xin Zhao [ Jungle ] Lol Korea Master Patch 26.4 ✅",
+          "rankClaim": "Master",
+          "patch": "26.4",
+          "durationSec": 1664,
+          "region": "KR",
+          "uploaded": "2026-02-23",
+          "moments": []
+        },
+        {
+          "videoId": "33gomIBsgwc",
+          "title": "Graves vs XinZhao Jungle - KR Challenger - Patch 15.4 Season 15",
+          "rankClaim": "Challenger",
+          "patch": "25.4",
+          "durationSec": 1751,
+          "region": "KR",
+          "uploaded": "2025-02-27",
+          "moments": []
+        },
+        {
+          "videoId": "EPnbVanCucE",
+          "title": "Graves vs XinZhao Jungle - NA Challenger - Patch 15.4 Season 15",
+          "rankClaim": "Challenger",
+          "patch": "25.4",
+          "durationSec": 2221,
+          "region": "NA",
+          "uploaded": "2025-02-24",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 6,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "r8_-bx5DW_A",
+          "title": "Graves vs Urgot 16/2/12 (Jungle) | EUW Grandmaster | Graves OTP Replay",
+          "rankClaim": "Grandmaster",
+          "patch": "26.8",
+          "durationSec": 1810,
+          "region": "EUW",
+          "patchEstimated": true,
+          "uploaded": "2026-04-24",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 9,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "gveUzNcuRw4",
+          "title": "Graves Jungle vs Fiddlesticks - KR Grandmaster Patch 26.18",
+          "rankClaim": "Grandmaster",
+          "patch": "26.18",
+          "durationSec": 1539,
+          "region": "KR",
+          "uploaded": "2026-09-25",
+          "moments": []
+        },
+        {
+          "videoId": "tW3vKXOTnGU",
+          "title": "Graves vs FiddleSticks 17/2/8 (Jungle) | EUW Challenger | Graves OTP Replay",
+          "rankClaim": "Challenger",
+          "patch": "26.9",
+          "durationSec": 1307,
+          "region": "EUW",
+          "patchEstimated": true,
+          "uploaded": "2026-05-09",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 9,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "sR70jvHZNao",
+          "title": "Graves Mid vs Fiddlesticks - KR Master Patch 25.05",
+          "rankClaim": "Master",
+          "patch": "25.5",
+          "durationSec": 1456,
+          "region": "KR",
+          "uploaded": "2025-03-21",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 11,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "va3djYFmpVI",
+          "title": "Graves vs Master Yi Jungle  - KR Challenger -  Patch 16.06 Season 16",
+          "rankClaim": "Challenger",
+          "patch": "26.6",
+          "durationSec": 1816,
+          "region": "KR",
+          "uploaded": "2026-03-20",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 14,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "FWnvIzm32o0",
+          "title": "Graves Top vs Sion - NA Challenger Patch 26.04",
+          "rankClaim": "Challenger",
+          "patch": "26.4",
+          "durationSec": 1735,
+          "region": "NA",
+          "uploaded": "2026-03-01",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 20,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "sTagto4h0NU",
+          "title": "Graves vs Nunu & Willump Jungle - KR Grandmaster - Patch 25.16 Season 15",
+          "rankClaim": "Grandmaster",
+          "patch": "25.16",
+          "durationSec": 1751,
+          "region": "KR",
+          "uploaded": "2025-08-18",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 25,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "JnxKc7hdgxo",
+          "title": "Graves vs Morgana Jungle - KR Grandmaster - Patch 25.17 Season 15",
+          "rankClaim": "Grandmaster",
+          "patch": "25.17",
+          "durationSec": 1691,
+          "region": "KR",
+          "uploaded": "2025-09-08",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 28,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "kFXSku3a_rs",
+          "title": "Graves vs Evelynn Jungle - KR Grandmaster - Patch 15.4 Season 15",
+          "rankClaim": "Grandmaster",
+          "patch": "25.4",
+          "durationSec": 2041,
+          "region": "KR",
+          "uploaded": "2025-02-21",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 30,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "kozuGNv_oAE",
+          "title": "Graves vs Karthus Jungle - KR Challenger - Patch 25.21 Season 15",
+          "rankClaim": "Challenger",
+          "patch": "25.21",
+          "durationSec": 1771,
+          "region": "KR",
+          "uploaded": "2025-11-05",
+          "moments": []
+        },
+        {
+          "videoId": "vPIIW-9msRU",
+          "title": "Graves vs Karthus Jungle - KR Grandmaster - Patch 25.14 Season 15",
+          "rankClaim": "Grandmaster",
+          "patch": "25.14",
+          "durationSec": 2621,
+          "region": "KR",
+          "uploaded": "2025-07-30",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 35,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "3Hl5NUMNzEQ",
+          "title": "Graves Jungle vs Shaco - KR Challenger Patch 25.12",
+          "rankClaim": "Challenger",
+          "patch": "25.12",
+          "durationSec": 1506,
+          "region": "KR",
+          "uploaded": "2025-06-18",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 39,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "xbZBOF24FpI",
+          "title": "Graves Top vs Irelia - KR Master Patch 25.23",
+          "rankClaim": "Master",
+          "patch": "25.23",
+          "durationSec": 1705,
+          "region": "KR",
+          "uploaded": "2025-11-30",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 45,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "VSLd04I19r8",
+          "title": "Graves Mid vs Veigar - EUNE Challenger Patch 26.13",
+          "rankClaim": "Challenger",
+          "patch": "26.13",
+          "durationSec": 1625,
+          "region": "EUNE",
+          "uploaded": "2026-07-15",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 56,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "lSYcrFRtsiU",
+          "title": "Graves Jungle vs Nocturne - TW Challenger Patch 25.08",
+          "rankClaim": "Challenger",
+          "patch": "25.8",
+          "durationSec": 1801,
+          "uploaded": "2025-05-02",
+          "moments": []
+        },
+        {
+          "videoId": "XmxnPTYWF3k",
+          "title": "Graves Jungle vs Nocturne - KR Challenger Patch 25.05",
+          "rankClaim": "Challenger",
+          "patch": "25.5",
+          "durationSec": 1910,
+          "region": "KR",
+          "uploaded": "2025-03-09",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 103,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 263,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 335,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 367,
+              "label": "Hunt The Void Grubs",
+              "kind": "grubs"
+            },
+            {
+              "atSec": 401,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 558,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 644,
+              "label": "Hunt The Void Grubs",
+              "kind": "grubs"
+            },
+            {
+              "atSec": 757,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 812,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 868,
+              "label": "Hunt The Dragon",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 904,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1031,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1048,
+              "label": "Hunt The Rift Herald",
+              "kind": "herald"
+            },
+            {
+              "atSec": 1058,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1119,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1146,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1181,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1287,
+              "label": "Hunt The Dragon",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1311,
+              "label": "Hunt The Atakhan"
+            },
+            {
+              "atSec": 1362,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1534,
+              "label": "Get a Triple Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1601,
+              "label": "Hunt The Dragon",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1889,
+              "label": "End credit"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 59,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "5CICGL9ciwM",
+          "title": "Graves vs Jarvan IV [ Jungle ] Lol Korea Master | Patch 26.19 ✅",
+          "rankClaim": "Master",
+          "patch": "26.19",
+          "durationSec": 1709,
+          "region": "KR",
+          "uploaded": "2026-10-04",
+          "moments": []
+        },
+        {
+          "videoId": "jKhmBV6HqVE",
+          "title": "(MKF Time) Graves Jungle vs Jarvan IV - EUW Grandmaster Patch 26.15",
+          "rankClaim": "Grandmaster",
+          "patch": "26.15",
+          "durationSec": 1426,
+          "region": "EUW",
+          "player": "MKF Time",
+          "uploaded": "2026-08-03",
+          "moments": []
+        },
+        {
+          "videoId": "tsHS0HZurAk",
+          "title": "(JDG Xiaoxu) Graves Jungle vs Jarvan IV - KR Master Patch 26.14",
+          "rankClaim": "Master",
+          "patch": "26.14",
+          "durationSec": 1470,
+          "region": "KR",
+          "player": "Xiaoxu",
+          "team": "JDG",
+          "uploaded": "2026-07-17",
+          "moments": []
+        },
+        {
+          "videoId": "AgZ-afALi8s",
+          "title": "Graves Jungle vs Jarvan IV - KR Challenger Patch 26.08",
+          "rankClaim": "Challenger",
+          "patch": "26.8",
+          "durationSec": 1498,
+          "region": "KR",
+          "uploaded": "2026-04-17",
+          "moments": []
+        },
+        {
+          "videoId": "Pqq4cDbfMlc",
+          "title": "Graves vs Jarvan IV Jungle - KR Challenger - Patch 16.04 Season 16",
+          "rankClaim": "Challenger",
+          "patch": "26.4",
+          "durationSec": 1511,
+          "region": "KR",
+          "uploaded": "2026-03-04",
+          "moments": []
+        },
+        {
+          "videoId": "Lu44Iqo0SGk",
+          "title": "Graves vs Jarvan IV Jungle - KR Challenger - Patch 25.22 Season 15",
+          "rankClaim": "Challenger",
+          "patch": "25.22",
+          "durationSec": 1391,
+          "region": "KR",
+          "uploaded": "2025-11-17",
+          "moments": []
+        },
+        {
+          "videoId": "nfmtauWafes",
+          "title": "Graves vs Jarvan IV Jungle - KR Challenger - Patch 25.22 Season 15",
+          "rankClaim": "Challenger",
+          "patch": "25.22",
+          "durationSec": 1546,
+          "region": "KR",
+          "uploaded": "2025-11-07",
+          "moments": []
+        },
+        {
+          "videoId": "f6I4j1pWTAw",
+          "title": "Graves vs Jarvan IV Jungle - KR Challenger - Patch 25.20 Season 15",
+          "rankClaim": "Challenger",
+          "patch": "25.20",
+          "durationSec": 1411,
+          "region": "KR",
+          "uploaded": "2025-10-21",
+          "moments": []
+        },
+        {
+          "videoId": "iW6Rsf13q_Q",
+          "title": "Graves Jungle vs Jarvan IV - EUW Grandmaster Patch 25.11",
+          "rankClaim": "Grandmaster",
+          "patch": "25.11",
+          "durationSec": 1502,
+          "region": "EUW",
+          "uploaded": "2025-06-12",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 62,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "bz6v0E07_Bw",
+          "title": "Graves Jungle vs Wukong - KR Master Patch 26.19",
+          "rankClaim": "Master",
+          "patch": "26.19",
+          "durationSec": 1679,
+          "region": "KR",
+          "uploaded": "2026-10-07",
+          "result": "W",
+          "moments": [
+            {
+              "atSec": 261,
+              "label": "First Blood — Graves kills Yunara",
+              "kind": "kill"
+            },
+            {
+              "atSec": 571,
+              "label": "Graves takes down Wukong"
+            },
+            {
+              "atSec": 600,
+              "label": "Red takes 1st Dragon (Cloud)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 671,
+              "label": "Team fight (3 kills)",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 896,
+              "label": "Malzahar takes down Riven"
+            },
+            {
+              "atSec": 959,
+              "label": "Red takes 2nd Dragon (Hextech)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1041,
+              "label": "Red takes Rift Herald",
+              "kind": "herald"
+            },
+            {
+              "atSec": 1171,
+              "label": "Jinx takes down Yunara"
+            },
+            {
+              "atSec": 1255,
+              "label": "Red takes Baron",
+              "kind": "baron"
+            },
+            {
+              "atSec": 1294,
+              "label": "Blue takes 1st Dragon (Ocean)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1366,
+              "label": "Graves Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1369,
+              "label": "Graves Triple Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1371,
+              "label": "Top Inhibitor falls (Blue)"
+            },
+            {
+              "atSec": 1603,
+              "label": "Red takes 3rd Dragon (Ocean)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1630,
+              "label": "Red takes 2nd Baron",
+              "kind": "baron"
+            },
+            {
+              "atSec": 1647,
+              "label": "Graves Triple Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1651,
+              "label": "Jinx Double Kill",
+              "kind": "kill"
+            }
+          ]
+        },
+        {
+          "videoId": "GLY-uzryKNY",
+          "title": "(IJC Kaboom) Graves Jungle vs Wukong - EUW Challenger Patch 26.12",
+          "rankClaim": "Challenger",
+          "patch": "26.12",
+          "durationSec": 1557,
+          "region": "EUW",
+          "player": "IJC Kaboom",
+          "uploaded": "2026-06-14",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 64,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "IM3ZewdCNa8",
+          "title": "Graves vs Lee Sin Jungle - KR Challenger - Patch 16.20 Season 16",
+          "rankClaim": "Challenger",
+          "patch": "26.20",
+          "durationSec": 1476,
+          "region": "KR",
+          "uploaded": "2026-10-11",
+          "moments": []
+        },
+        {
+          "videoId": "53axAymXRTs",
+          "title": "Graves Jungle vs Lee Sin (OMG Juhan) - KR Challenger Patch 26.17",
+          "rankClaim": "Challenger",
+          "patch": "26.17",
+          "durationSec": 1846,
+          "region": "KR",
+          "uploaded": "2026-09-08",
+          "moments": []
+        },
+        {
+          "videoId": "BGXRZklkWqE",
+          "title": "Graves vs Lee Sin Jungle - KR Challenger - Patch 16.17 Season 16",
+          "rankClaim": "Challenger",
+          "patch": "26.17",
+          "durationSec": 1486,
+          "region": "KR",
+          "uploaded": "2026-09-05",
+          "moments": []
+        },
+        {
+          "videoId": "wFJJTK6zLLM",
+          "title": "Graves vs Lee Sin 16/1/6 (Jungle) | EUW Challenger | Graves OTP Replay",
+          "rankClaim": "Challenger",
+          "patch": "26.10",
+          "durationSec": 1492,
+          "region": "EUW",
+          "patchEstimated": true,
+          "uploaded": "2026-05-15",
+          "moments": []
+        },
+        {
+          "videoId": "cp_vKQ3Fs1U",
+          "title": "Graves Jungle vs Lee Sin - KR Grandmaster Patch 26.10",
+          "rankClaim": "Grandmaster",
+          "patch": "26.10",
+          "durationSec": 1552,
+          "region": "KR",
+          "uploaded": "2026-05-15",
+          "moments": []
+        },
+        {
+          "videoId": "vfrTo-9e55s",
+          "title": "Graves Jungle vs Lee Sin - KR Grandmaster Patch 26.09",
+          "rankClaim": "Grandmaster",
+          "patch": "26.9",
+          "durationSec": 1674,
+          "region": "KR",
+          "uploaded": "2026-05-14",
+          "moments": []
+        },
+        {
+          "videoId": "I7BQ5QO9Ag0",
+          "title": "Graves vs Lee Sin Jungle - KR Challenger - Patch 16.08 Season 16",
+          "rankClaim": "Challenger",
+          "patch": "26.8",
+          "durationSec": 2136,
+          "region": "KR",
+          "uploaded": "2026-04-23",
+          "moments": []
+        },
+        {
+          "videoId": "hzgwHKrtjlQ",
+          "title": "Graves Jungle vs Lee Sin - KR Challenger Patch 26.06",
+          "rankClaim": "Challenger",
+          "patch": "26.6",
+          "durationSec": 1744,
+          "region": "KR",
+          "uploaded": "2026-04-01",
+          "moments": []
+        },
+        {
+          "videoId": "1igSLrNJY-A",
+          "title": "Graves vs Lee Sin Jungle - KR Challenger - Patch 16.04 Season 16",
+          "rankClaim": "Challenger",
+          "patch": "26.4",
+          "durationSec": 1771,
+          "region": "KR",
+          "uploaded": "2026-03-04",
+          "moments": []
+        },
+        {
+          "videoId": "lTXEAU93KW4",
+          "title": "Graves vs Lee Sin Jungle [ 55% Win Rate ] Korea Master Patch 25.24 ✅",
+          "rankClaim": "Master",
+          "patch": "25.24",
+          "durationSec": 1629,
+          "region": "KR",
+          "player": "55% Win Rate",
+          "uploaded": "2025-12-30",
+          "moments": []
+        },
+        {
+          "videoId": "9zASULeedxU",
+          "title": "Graves vs Lee Sin Jungle - KR Challenger - Patch 25.21 Season 15",
+          "rankClaim": "Challenger",
+          "patch": "25.21",
+          "durationSec": 1571,
+          "region": "KR",
+          "uploaded": "2025-11-05",
+          "moments": []
+        },
+        {
+          "videoId": "ktzTQZE_cyU",
+          "title": "Graves vs Lee Sin Jungle - KR Grandmaster - Patch 25.21 Season 15",
+          "rankClaim": "Grandmaster",
+          "patch": "25.21",
+          "durationSec": 2086,
+          "region": "KR",
+          "uploaded": "2025-11-02",
+          "moments": []
+        },
+        {
+          "videoId": "tnbisAq85FU",
+          "title": "Graves Jungle vs Lee Sin - TW Challenger Patch 25.19",
+          "rankClaim": "Challenger",
+          "patch": "25.19",
+          "durationSec": 1732,
+          "uploaded": "2025-10-10",
+          "moments": []
+        },
+        {
+          "videoId": "h6sIoKnNPKY",
+          "title": "Graves vs Lee Sin Jungle - KR Grandmaster - Patch 25.12 Season 15",
+          "rankClaim": "Grandmaster",
+          "patch": "25.12",
+          "durationSec": 1906,
+          "region": "KR",
+          "uploaded": "2025-06-20",
+          "moments": []
+        },
+        {
+          "videoId": "CbmE2i6MMSI",
+          "title": "Graves Jungle vs Lee Sin - KR Challenger Patch 25.10",
+          "rankClaim": "Challenger",
+          "patch": "25.10",
+          "durationSec": 1759,
+          "region": "KR",
+          "uploaded": "2025-05-20",
+          "moments": []
+        },
+        {
+          "videoId": "-h5Z_X4IwAI",
+          "title": "Graves vs Lee Sin Jungle - KR Grandmaster - Patch 25.9 Season 15",
+          "rankClaim": "Grandmaster",
+          "patch": "25.9",
+          "durationSec": 1951,
+          "region": "KR",
+          "uploaded": "2025-05-02",
+          "moments": []
+        },
+        {
+          "videoId": "wRFsMwdXcKw",
+          "title": "Graves Jungle vs Lee Sin - KR Grandmaster Patch 25.07",
+          "rankClaim": "Grandmaster",
+          "patch": "25.7",
+          "durationSec": 1635,
+          "region": "KR",
+          "uploaded": "2025-04-08",
+          "moments": []
+        },
+        {
+          "videoId": "IgnztM3mE58",
+          "title": "Graves vs Lee Sin Jungle - KR Challenger - Patch 25.7 Season 15",
+          "rankClaim": "Challenger",
+          "patch": "25.7",
+          "durationSec": 1606,
+          "region": "KR",
+          "uploaded": "2025-04-03",
+          "moments": []
+        },
+        {
+          "videoId": "x21kUFJKnk4",
+          "title": "Graves vs Lee Sin Jungle - KR Challenger - Patch 25.5 Season 15",
+          "rankClaim": "Challenger",
+          "patch": "25.5",
+          "durationSec": 1866,
+          "region": "KR",
+          "uploaded": "2025-03-19",
+          "moments": []
+        },
+        {
+          "videoId": "hQTNLVCnSg4",
+          "title": "Graves vs Lee Sin Jungle - KR Challenger - Patch 25.5 Season 15",
+          "rankClaim": "Challenger",
+          "patch": "25.5",
+          "durationSec": 1571,
+          "region": "KR",
+          "uploaded": "2025-03-08",
+          "moments": []
+        },
+        {
+          "videoId": "lPndPZKMq9g",
+          "title": "Graves vs Lee Sin Jungle - KR Grandmaster - Patch 25.4 Season 15",
+          "rankClaim": "Grandmaster",
+          "patch": "25.4",
+          "durationSec": 1591,
+          "region": "KR",
+          "uploaded": "2025-03-03",
+          "moments": []
+        },
+        {
+          "videoId": "YHMkoOWvbcg",
+          "title": "Graves vs Lee Sin Jungle - KR Challenger - Patch 15.4 Season 15",
+          "rankClaim": "Challenger",
+          "patch": "25.4",
+          "durationSec": 1420,
+          "region": "KR",
+          "uploaded": "2025-02-28",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 67,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "X2DWJTB5gH8",
+          "title": "Graves Mid vs Vayne - KR Master Patch 26.08",
+          "rankClaim": "Master",
+          "patch": "26.8",
+          "durationSec": 1871,
+          "region": "KR",
+          "uploaded": "2026-04-25",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 76,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "Becpyl1fR-c",
+          "title": "Graves Jungle vs Nidalee - KR Challenger Patch 26.21",
+          "rankClaim": "Challenger",
+          "patch": "26.21",
+          "durationSec": 1580,
+          "region": "KR",
+          "uploaded": "2026-11-04",
+          "moments": []
+        },
+        {
+          "videoId": "IDorRrdt97c",
+          "title": "Graves vs Nidalee Jungle - KR Challenger - Patch 16.21 Season 16",
+          "rankClaim": "Challenger",
+          "patch": "26.21",
+          "durationSec": 1426,
+          "region": "KR",
+          "uploaded": "2026-11-02",
+          "moments": []
+        },
+        {
+          "videoId": "oFtYTBIhQyg",
+          "title": "Graves Jungle vs Nidalee - KR Grandmaster Patch 26.20",
+          "rankClaim": "Grandmaster",
+          "patch": "26.20",
+          "durationSec": 1530,
+          "region": "KR",
+          "uploaded": "2026-10-22",
+          "result": "W",
+          "moments": [
+            {
+              "atSec": 85,
+              "label": "First Blood — Ekko kills Nidalee",
+              "kind": "kill"
+            },
+            {
+              "atSec": 376,
+              "label": "Graves picks off Twisted Fate"
+            },
+            {
+              "atSec": 541,
+              "label": "Graves kills Fiora",
+              "kind": "kill"
+            },
+            {
+              "atSec": 667,
+              "label": "Graves kills Zed",
+              "kind": "kill"
+            },
+            {
+              "atSec": 806,
+              "label": "Red takes 1st Dragon (Ocean)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 881,
+              "label": "Graves eliminates Kai'Sa"
+            },
+            {
+              "atSec": 905,
+              "label": "Red takes Rift Herald",
+              "kind": "herald"
+            },
+            {
+              "atSec": 1028,
+              "label": "Graves kills Zed",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1131,
+              "label": "Red takes 2nd Dragon (Infernal)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1161,
+              "label": "Graves takes down Nidalee"
+            },
+            {
+              "atSec": 1263,
+              "label": "Red takes Baron",
+              "kind": "baron"
+            },
+            {
+              "atSec": 1275,
+              "label": "Graves takes down Nidalee"
+            },
+            {
+              "atSec": 1285,
+              "label": "Graves Triple Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1382,
+              "label": "Graves takes down Nidalee"
+            },
+            {
+              "atSec": 1445,
+              "label": "Blue takes 1st Dragon (Hextech)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1447,
+              "label": "Graves kills Fiora",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1481,
+              "label": "Jhin Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1500,
+              "label": "Mid Inhibitor falls (Blue)"
+            }
+          ]
+        },
+        {
+          "videoId": "5TrFTR-6nq4",
+          "title": "(SK Mikyx) Graves Jungle vs Nidalee - EUW Grandmaster Patch 26.12",
+          "rankClaim": "Grandmaster",
+          "patch": "26.12",
+          "durationSec": 1825,
+          "region": "EUW",
+          "player": "SK Mikyx",
+          "uploaded": "2026-06-22",
+          "moments": []
+        },
+        {
+          "videoId": "Hzs7iIqHzzY",
+          "title": "Graves vs Nidalee Jungle - KR Challenger - Patch 16.06 Season 16",
+          "rankClaim": "Challenger",
+          "patch": "26.6",
+          "durationSec": 1921,
+          "region": "KR",
+          "uploaded": "2026-03-31",
+          "moments": []
+        },
+        {
+          "videoId": "N2vR621VI2E",
+          "title": "HLE Kanavi Graves vs Nidalee [ Jungle ] Korea Grandmaster 1192 LP | Patch 26.5",
+          "rankClaim": "Grandmaster",
+          "patch": "26.5",
+          "durationSec": 1174,
+          "region": "KR",
+          "player": "Kanavi",
+          "team": "HLE",
+          "uploaded": "2026-03-05",
+          "moments": []
+        },
+        {
+          "videoId": "wOJq-FLp3dE",
+          "title": "Graves Jungle vs Nidalee - KR Challenger Patch 25.21",
+          "rankClaim": "Challenger",
+          "patch": "25.21",
+          "durationSec": 1760,
+          "region": "KR",
+          "uploaded": "2025-10-26",
+          "moments": []
+        },
+        {
+          "videoId": "pNe4EmrEioY",
+          "title": "Graves Jungle vs Nidalee - KR Grandmaster Patch 25.16",
+          "rankClaim": "Grandmaster",
+          "patch": "25.16",
+          "durationSec": 1771,
+          "region": "KR",
+          "uploaded": "2025-08-20",
+          "moments": []
+        },
+        {
+          "videoId": "0b48E6Lqs5E",
+          "title": "Graves Jungle vs Nidalee - TW Challenger Patch 25.14",
+          "rankClaim": "Challenger",
+          "patch": "25.14",
+          "durationSec": 2094,
+          "uploaded": "2025-07-31",
+          "moments": []
+        },
+        {
+          "videoId": "39VbwqR9P6M",
+          "title": "Graves Jungle vs Nidalee - KR Challenger Patch 25.06",
+          "rankClaim": "Challenger",
+          "patch": "25.6",
+          "durationSec": 1605,
+          "region": "KR",
+          "uploaded": "2025-03-25",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 294,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 442,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 560,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 624,
+              "label": "Hunt The Dragon",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 794,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 862,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 949,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1068,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1083,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1099,
+              "label": "Hunt The Dragon",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1193,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1351,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1390,
+              "label": "Hunt The Atakhan"
+            },
+            {
+              "atSec": 1454,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1559,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1584,
+              "label": "End credit"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 77,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "vH4Uu-Vu2zA",
+          "title": "Graves vs Udyr Jungle - KR Grandmaster - Patch 25.10 Season 15",
+          "rankClaim": "Grandmaster",
+          "patch": "25.10",
+          "durationSec": 2111,
+          "region": "KR",
+          "uploaded": "2025-05-21",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 80,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "Xffrsz9hnd4",
+          "title": "(SK Skeanz) Graves Jungle vs Pantheon - EUW Challenger Patch 26.16",
+          "rankClaim": "Challenger",
+          "patch": "26.16",
+          "durationSec": 1580,
+          "region": "EUW",
+          "player": "SK Skeanz",
+          "uploaded": "2026-08-15",
+          "moments": []
+        },
+        {
+          "videoId": "q3yBOL8kjhM",
+          "title": "Graves vs Pantheon Jungle - KR Challenger - Patch 16.05 Season 16",
+          "rankClaim": "Challenger",
+          "patch": "26.5",
+          "durationSec": 1831,
+          "region": "KR",
+          "uploaded": "2026-03-08",
+          "moments": []
+        },
+        {
+          "videoId": "9C2nXdy9Q3I",
+          "title": "Graves vs Pantheon Jungle - KR Grandmaster - Patch 25.12 Season 15",
+          "rankClaim": "Grandmaster",
+          "patch": "25.12",
+          "durationSec": 1771,
+          "region": "KR",
+          "uploaded": "2025-06-17",
+          "moments": []
+        },
+        {
+          "videoId": "A4P0ZC6OGws",
+          "title": "Graves vs Pantheon Jungle [ Quadra Kill ] Korea Master Patch 25.12 ✅",
+          "rankClaim": "Master",
+          "patch": "25.12",
+          "durationSec": 1567,
+          "region": "KR",
+          "player": "Quadra Kill",
+          "uploaded": "2025-06-16",
+          "moments": []
+        },
+        {
+          "videoId": "yEU7LRboM5Y",
+          "title": "Graves vs Pantheon Jungle [ Triple Kill ] Korea Master Patch 25.4 ✅",
+          "rankClaim": "Master",
+          "patch": "25.4",
+          "durationSec": 1436,
+          "region": "KR",
+          "player": "Triple Kill",
+          "uploaded": "2025-02-22",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 91,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "HpkwW5j3gk0",
+          "title": "Graves vs Talon Jungle - KR Challenger - Patch 16.16 Season 16",
+          "rankClaim": "Challenger",
+          "patch": "26.16",
+          "durationSec": 1961,
+          "region": "KR",
+          "uploaded": "2026-08-23",
+          "moments": []
+        },
+        {
+          "videoId": "bxSQAHRNkPA",
+          "title": "Graves vs Talon Jungle - KR Challenger - Patch 16.07 Season 16",
+          "rankClaim": "Challenger",
+          "patch": "26.7",
+          "durationSec": 1846,
+          "region": "KR",
+          "uploaded": "2026-04-05",
+          "moments": []
+        },
+        {
+          "videoId": "6lFP8f41ArU",
+          "title": "Graves Jungle vs Talon - KR Challenger Patch 26.07",
+          "rankClaim": "Challenger",
+          "patch": "26.7",
+          "durationSec": 1859,
+          "region": "KR",
+          "uploaded": "2026-04-04",
+          "moments": []
+        },
+        {
+          "videoId": "Dd2SRsT44LA",
+          "title": "Graves vs Talon Jungle - KR Challenger - Patch 16.07 Season 16",
+          "rankClaim": "Challenger",
+          "patch": "26.7",
+          "durationSec": 1981,
+          "region": "KR",
+          "uploaded": "2026-04-03",
+          "moments": []
+        },
+        {
+          "videoId": "sty_udqyc8U",
+          "title": "Graves Jungle vs Talon - TW Challenger Patch 25.24",
+          "rankClaim": "Challenger",
+          "patch": "25.24",
+          "durationSec": 1491,
+          "uploaded": "2026-01-08",
+          "moments": []
+        },
+        {
+          "videoId": "XcB4jLFI-CE",
+          "title": "Graves vs Talon [ Jungle ] Lol Korea Master Patch 25.23 ✅",
+          "rankClaim": "Master",
+          "patch": "25.23",
+          "durationSec": 1522,
+          "region": "KR",
+          "uploaded": "2025-12-01",
+          "moments": []
+        },
+        {
+          "videoId": "IH-5P3hF0FU",
+          "title": "Graves Jungle vs Talon - KR Grandmaster Patch 25.23",
+          "rankClaim": "Grandmaster",
+          "patch": "25.23",
+          "durationSec": 1670,
+          "region": "KR",
+          "uploaded": "2025-11-25",
+          "moments": []
+        },
+        {
+          "videoId": "I9m9rc4iQl4",
+          "title": "Graves Jungle vs Talon - KR Master Patch 25.17",
+          "rankClaim": "Master",
+          "patch": "25.17",
+          "durationSec": 1603,
+          "region": "KR",
+          "uploaded": "2025-09-01",
+          "moments": []
+        },
+        {
+          "videoId": "CRDofeZShJY",
+          "title": "Graves Jungle vs Talon - KR Grandmaster Patch 25.15",
+          "rankClaim": "Grandmaster",
+          "patch": "25.15",
+          "durationSec": 1615,
+          "region": "KR",
+          "uploaded": "2025-08-06",
+          "moments": []
+        },
+        {
+          "videoId": "mPdJ8U9UMj0",
+          "title": "Graves Jungle vs Talon - KR Grandmaster Patch 25.09",
+          "rankClaim": "Grandmaster",
+          "patch": "25.9",
+          "durationSec": 1462,
+          "region": "KR",
+          "uploaded": "2025-05-14",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 353,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 542,
+              "label": "Hunt The Void Grubs",
+              "kind": "grubs"
+            },
+            {
+              "atSec": 734,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 884,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 949,
+              "label": "Hunt The Rift Herald",
+              "kind": "herald"
+            },
+            {
+              "atSec": 1014,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1042,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1102,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1124,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1167,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1192,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1260,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1316,
+              "label": "Hunt The Dragon",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1379,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1441,
+              "label": "End credit"
+            }
+          ]
+        },
+        {
+          "videoId": "bkopJqMnN8M",
+          "title": "Graves vs Talon Jungle - KR Grandmaster - Patch 25.9 Season 15",
+          "rankClaim": "Grandmaster",
+          "patch": "25.9",
+          "durationSec": 1631,
+          "region": "KR",
+          "uploaded": "2025-05-13",
+          "moments": []
+        },
+        {
+          "videoId": "uGeJlnzXoHk",
+          "title": "Graves vs Talon Jungle - UW Grandmaster - Patch 25.5 Season 15",
+          "rankClaim": "Grandmaster",
+          "patch": "25.5",
+          "durationSec": 1831,
+          "uploaded": "2025-03-06",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 96,
+      "lane": "adc",
+      "videos": [
+        {
+          "videoId": "WjCNzReKKy0",
+          "title": "Graves ADC vs Kog'Maw - KR Master Patch 26.03",
+          "rankClaim": "Master",
+          "patch": "26.3",
+          "durationSec": 1921,
+          "region": "KR",
+          "uploaded": "2026-02-18",
+          "moments": []
+        },
+        {
+          "videoId": "bEkakOvJsv4",
+          "title": "Graves ADC vs Kog'Maw - KR Master Patch 25.18",
+          "rankClaim": "Master",
+          "patch": "25.18",
+          "durationSec": 1582,
+          "region": "KR",
+          "uploaded": "2025-09-23",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 102,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "slU1wIFc6a4",
+          "title": "T1 Oner Graves vs Shyvana [ Jungle ] Korea Challenger 1877 LP | Patch 26.6",
+          "rankClaim": "Challenger",
+          "patch": "26.6",
+          "durationSec": 2868,
+          "region": "KR",
+          "player": "Oner",
+          "team": "T1",
+          "uploaded": "2026-03-28",
+          "moments": []
+        },
+        {
+          "videoId": "fOV0o7YZJZ0",
+          "title": "Graves vs Shyvana Jungle - KR Challenger - Patch 16.06 Season 16",
+          "rankClaim": "Challenger",
+          "patch": "26.6",
+          "durationSec": 1801,
+          "region": "KR",
+          "uploaded": "2026-03-24",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 106,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "RoBdbURCYAQ",
+          "title": "Graves vs Volibear Jungle - KR Challenger - Patch 16.20 Season 16",
+          "rankClaim": "Challenger",
+          "patch": "26.20",
+          "durationSec": 1800,
+          "region": "KR",
+          "uploaded": "2026-10-19",
+          "moments": []
+        },
+        {
+          "videoId": "9uF3JE0tDn4",
+          "title": "Graves vs Volibear [ Jungle ] Lol Korea Grandmaster 1434 LP | Patch 26.20 ✅",
+          "rankClaim": "Grandmaster",
+          "patch": "26.20",
+          "durationSec": 1601,
+          "region": "KR",
+          "uploaded": "2026-10-16",
+          "moments": []
+        },
+        {
+          "videoId": "S91YvMxaEuo",
+          "title": "Graves Jungle vs Volibear - EUW Grandmaster Patch 26.02",
+          "rankClaim": "Grandmaster",
+          "patch": "26.2",
+          "durationSec": 1474,
+          "region": "EUW",
+          "uploaded": "2026-02-05",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 107,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "fgM8xDSGZic",
+          "title": "Graves Jungle vs Rengar - NA Grandmaster Patch 26.01",
+          "rankClaim": "Grandmaster",
+          "patch": "26.1",
+          "durationSec": 1583,
+          "region": "NA",
+          "uploaded": "2026-01-23",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 197,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 307,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 370,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 461,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 485,
+              "label": "Hunt The Void Grubs",
+              "kind": "grubs"
+            },
+            {
+              "atSec": 514,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 647,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 842,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 861,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 880,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 916,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 958,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1081,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1166,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1185,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1210,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1288,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1377,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1572,
+              "label": "End credit"
+            }
+          ]
+        },
+        {
+          "videoId": "b0MRvz-Upy4",
+          "title": "Graves vs  Rengar Jungle - KR Challenger - Patch 25.20 Season 15",
+          "rankClaim": "Challenger",
+          "patch": "25.20",
+          "durationSec": 1431,
+          "region": "KR",
+          "uploaded": "2025-10-22",
+          "moments": []
+        },
+        {
+          "videoId": "98BbDhgfuik",
+          "title": "Graves Jungle vs Rengar - KR Master Patch 25.11",
+          "rankClaim": "Master",
+          "patch": "25.11",
+          "durationSec": 2075,
+          "region": "KR",
+          "uploaded": "2025-06-02",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 113,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "b2lnILr5mF4",
+          "title": "Graves vs Sejuani Jungle - EUW Challenger - Patch 16.11 Season 16",
+          "rankClaim": "Challenger",
+          "patch": "26.11",
+          "durationSec": 1356,
+          "region": "EUW",
+          "uploaded": "2026-06-06",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 120,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "CAkp-V0yIL8",
+          "title": "Graves Jungle vs Hecarim - NA Challenger Patch 26.21",
+          "rankClaim": "Challenger",
+          "patch": "26.21",
+          "durationSec": 1548,
+          "region": "NA",
+          "uploaded": "2026-10-25",
+          "result": "W",
+          "moments": [
+            {
+              "atSec": 118,
+              "label": "Graves kills Taric",
+              "kind": "kill"
+            },
+            {
+              "atSec": 324,
+              "label": "Blue takes 1st Dragon (Infernal)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 667,
+              "label": "Blue takes 2nd Dragon (Hextech)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 703,
+              "label": "Graves picks off Syndra"
+            },
+            {
+              "atSec": 809,
+              "label": "Graves picks off Syndra"
+            },
+            {
+              "atSec": 858,
+              "label": "Dr. Mundo takes down Syndra"
+            },
+            {
+              "atSec": 947,
+              "label": "Pyke eliminates Nidalee"
+            },
+            {
+              "atSec": 978,
+              "label": "Red takes 1st Dragon (Cloud)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1268,
+              "label": "Graves picks off Syndra"
+            },
+            {
+              "atSec": 1310,
+              "label": "Team fight (3 kills)",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1313,
+              "label": "Red takes Baron",
+              "kind": "baron"
+            },
+            {
+              "atSec": 1317,
+              "label": "Graves outduels Nidalee"
+            },
+            {
+              "atSec": 1366,
+              "label": "Blue takes 3rd Dragon (Cloud)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1490,
+              "label": "Pyke eliminates Taric"
+            },
+            {
+              "atSec": 1514,
+              "label": "Top Inhibitor falls (Blue)"
+            },
+            {
+              "atSec": 1539,
+              "label": "Mid Inhibitor falls (Blue)"
+            }
+          ]
+        },
+        {
+          "videoId": "DI8JZdfJ8JA",
+          "title": "Graves vs Hercarim Jungle - KR Challenger - Patch 16.20 Season 16",
+          "rankClaim": "Challenger",
+          "patch": "26.20",
+          "durationSec": 1380,
+          "region": "KR",
+          "uploaded": "2026-10-15",
+          "moments": []
+        },
+        {
+          "videoId": "lfkLufrhIrQ",
+          "title": "Graves Jungle vs Hecarim - KR Challenger Patch 26.18",
+          "rankClaim": "Challenger",
+          "patch": "26.18",
+          "durationSec": 1641,
+          "region": "KR",
+          "uploaded": "2026-09-14",
+          "moments": []
+        },
+        {
+          "videoId": "3jpPGJm_n6c",
+          "title": "(IG Wei) Graves Jungle vs Hecarim - KR Challenger Patch 26.16",
+          "rankClaim": "Challenger",
+          "patch": "26.16",
+          "durationSec": 1603,
+          "region": "KR",
+          "player": "Wei",
+          "team": "IG",
+          "uploaded": "2026-08-21",
+          "moments": []
+        },
+        {
+          "videoId": "O7cGTgGujNU",
+          "title": "(MADD Benny) Graves Jungle vs Hecarim - EUW Grandmaster Patch 26.13",
+          "rankClaim": "Grandmaster",
+          "patch": "26.13",
+          "durationSec": 1748,
+          "region": "EUW",
+          "player": "MADD Benny",
+          "uploaded": "2026-06-28",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 121,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "n04f-WplPcs",
+          "title": "Graves vs Kha'Zix Jungle - KR Challenger - Patch 16.07 Season 16",
+          "rankClaim": "Challenger",
+          "patch": "26.7",
+          "durationSec": 1536,
+          "region": "KR",
+          "uploaded": "2026-04-14",
+          "moments": []
+        },
+        {
+          "videoId": "M4Wu78LW7R0",
+          "title": "Graves vs Kha'Zix Jungle - KR Challenger - Patch 16.05 Season 16",
+          "rankClaim": "Challenger",
+          "patch": "26.5",
+          "durationSec": 1726,
+          "region": "KR",
+          "uploaded": "2026-03-16",
+          "moments": []
+        },
+        {
+          "videoId": "rLuzefF7ETE",
+          "title": "Graves vs Kha'Zix Jungle - KR Challenger - Patch 16.05 Season 16",
+          "rankClaim": "Challenger",
+          "patch": "26.5",
+          "durationSec": 1906,
+          "region": "KR",
+          "uploaded": "2026-03-07",
+          "moments": []
+        },
+        {
+          "videoId": "VVvK4NnTAXA",
+          "title": "Graves Jungle vs Kha'Zix - KR Challenger Patch 26.05",
+          "rankClaim": "Challenger",
+          "patch": "26.5",
+          "durationSec": 1569,
+          "region": "KR",
+          "uploaded": "2026-03-07",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 169,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 298,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 336,
+              "label": "Hunt The Dragon",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 364,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 427,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 520,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 685,
+              "label": "Hunt The Dragon",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 716,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 881,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 918,
+              "label": "Hunt The Rift Herald",
+              "kind": "herald"
+            },
+            {
+              "atSec": 952,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1014,
+              "label": "Hunt The Dragon",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1051,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1191,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1222,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1295,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1318,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1340,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1449,
+              "label": "Hunt The Baron Nashor",
+              "kind": "baron"
+            },
+            {
+              "atSec": 1505,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1528,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1558,
+              "label": "End credit"
+            }
+          ]
+        },
+        {
+          "videoId": "fFI9l_uBAAo",
+          "title": "Graves vs Kha'Zix Jungle - KR Challenger - Patch 16.05 Season 16",
+          "rankClaim": "Challenger",
+          "patch": "26.5",
+          "durationSec": 1546,
+          "region": "KR",
+          "uploaded": "2026-03-05",
+          "moments": []
+        },
+        {
+          "videoId": "waOfCqxxYNc",
+          "title": "Graves Jungle vs Kha'Zix - EUW Challenger Patch 26.04",
+          "rankClaim": "Challenger",
+          "patch": "26.4",
+          "durationSec": 1791,
+          "region": "EUW",
+          "uploaded": "2026-02-22",
+          "moments": []
+        },
+        {
+          "videoId": "2tppcjgM0vQ",
+          "title": "Graves Jungle vs Kha'Zix - EUW Grandmaster Patch 25.22",
+          "rankClaim": "Grandmaster",
+          "patch": "25.22",
+          "durationSec": 1663,
+          "region": "EUW",
+          "uploaded": "2025-11-19",
+          "moments": []
+        },
+        {
+          "videoId": "Q4CMEUyym4c",
+          "title": "Graves vs Kha'Zix Jungle - KR Challenger - Patch 25.20 Season 15",
+          "rankClaim": "Challenger",
+          "patch": "25.20",
+          "durationSec": 2046,
+          "region": "KR",
+          "uploaded": "2025-10-17",
+          "moments": []
+        },
+        {
+          "videoId": "EDNQtzCcKZc",
+          "title": "Graves vs Kha'Zix [ Jungle ] Lol Korea Master Patch 25.20 ✅",
+          "rankClaim": "Master",
+          "patch": "25.20",
+          "durationSec": 1549,
+          "region": "KR",
+          "uploaded": "2025-10-12",
+          "moments": []
+        },
+        {
+          "videoId": "qXgiHN8XPBI",
+          "title": "Graves Jungle vs Kha'Zix - VN Challenger Patch 25.13",
+          "rankClaim": "Challenger",
+          "patch": "25.13",
+          "durationSec": 2028,
+          "uploaded": "2025-06-28",
+          "moments": []
+        },
+        {
+          "videoId": "niTme6ThkeQ",
+          "title": "Graves Jungle vs Kha'Zix - VN Challenger Patch 25.09",
+          "rankClaim": "Challenger",
+          "patch": "25.9",
+          "durationSec": 1874,
+          "uploaded": "2025-05-05",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 182,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 265,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 403,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 419,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 488,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 506,
+              "label": "Hunt The Void Grubs",
+              "kind": "grubs"
+            },
+            {
+              "atSec": 577,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 765,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 900,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 938,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1035,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1064,
+              "label": "Hunt The Dragon",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1121,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1141,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1165,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1240,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1279,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1308,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1390,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1446,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1501,
+              "label": "Hunt The Baron Nashor",
+              "kind": "baron"
+            },
+            {
+              "atSec": 1520,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1617,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1639,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1723,
+              "label": "Hunt The Dragon",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1853,
+              "label": "End credit"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 126,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "bapd3eDW35Q",
+          "title": "(ANB Theocacs) Graves Jungle vs Jayce - EUW Grandmaster Patch 26.10",
+          "rankClaim": "Grandmaster",
+          "patch": "26.10",
+          "durationSec": 1488,
+          "region": "EUW",
+          "player": "ANB Theocacs",
+          "uploaded": "2026-05-26",
+          "moments": []
+        },
+        {
+          "videoId": "VnGy6z34cZM",
+          "title": "Graves Jungle vs Jayce - KR Master Patch 26.03",
+          "rankClaim": "Master",
+          "patch": "26.3",
+          "durationSec": 1566,
+          "region": "KR",
+          "uploaded": "2026-02-09",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 39,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 335,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 363,
+              "label": "Hunt The Dragon",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 397,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 531,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 649,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 683,
+              "label": "Hunt The Dragon",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 887,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1008,
+              "label": "Hunt The Dragon",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1029,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1140,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1191,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1307,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1330,
+              "label": "Hunt The Dragon",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1385,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1482,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1504,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1525,
+              "label": "Hunt The Baron Nashor",
+              "kind": "baron"
+            },
+            {
+              "atSec": 1555,
+              "label": "End credit"
+            }
+          ]
+        },
+        {
+          "videoId": "dQ87H3cBPU4",
+          "title": "Graves Jungle vs Jayce - KR Master Patch 26.02",
+          "rankClaim": "Master",
+          "patch": "26.2",
+          "durationSec": 1483,
+          "region": "KR",
+          "uploaded": "2026-01-27",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 312,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 471,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 507,
+              "label": "Hunt The Dragon",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 572,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 675,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 810,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 840,
+              "label": "Hunt The Dragon",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 898,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 929,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1007,
+              "label": "Hunt The Rift Herald",
+              "kind": "herald"
+            },
+            {
+              "atSec": 1024,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1040,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1100,
+              "label": "Get a Triple Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1143,
+              "label": "Hunt The Dragon",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1185,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1222,
+              "label": "Hunt The Baron Nashor",
+              "kind": "baron"
+            },
+            {
+              "atSec": 1252,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1289,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1336,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1348,
+              "label": "Take down The Inhibitor"
+            },
+            {
+              "atSec": 1472,
+              "label": "End credit"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 126,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "6YyPmOVS_YQ",
+          "title": "Graves Top vs Jayce - EUW Grandmaster Patch 26.07",
+          "rankClaim": "Grandmaster",
+          "patch": "26.7",
+          "durationSec": 1584,
+          "region": "EUW",
+          "uploaded": "2026-04-11",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 131,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "_CZwSNPfM_w",
+          "title": "(KC Yike) Graves Jungle vs Diana - EUW Challenger Patch 26.14",
+          "rankClaim": "Challenger",
+          "patch": "26.14",
+          "durationSec": 1772,
+          "region": "EUW",
+          "player": "Yike",
+          "team": "KC",
+          "uploaded": "2026-07-28",
+          "moments": []
+        },
+        {
+          "videoId": "BlWGRDoNW1c",
+          "title": "Graves Jungle vs Diana - NA Challenger Patch 25.15",
+          "rankClaim": "Challenger",
+          "patch": "25.15",
+          "durationSec": 2025,
+          "region": "NA",
+          "uploaded": "2025-08-15",
+          "moments": []
+        },
+        {
+          "videoId": "_EwU-024HvA",
+          "title": "Graves Jungle vs Diana - EUW Grandmaster Patch 25.13",
+          "rankClaim": "Grandmaster",
+          "patch": "25.13",
+          "durationSec": 1799,
+          "region": "EUW",
+          "uploaded": "2025-07-16",
+          "moments": []
+        },
+        {
+          "videoId": "vBWAAqFv0DM",
+          "title": "Graves vs Diana Jungle - EUW Challenger - Patch 25.12 Season 15",
+          "rankClaim": "Challenger",
+          "patch": "25.12",
+          "durationSec": 1516,
+          "region": "EUW",
+          "uploaded": "2025-06-25",
+          "moments": []
+        },
+        {
+          "videoId": "3g9LHS_8Big",
+          "title": "Graves vs Diana Jungle - KR Grandmaster - Patch 25.11 Season 15",
+          "rankClaim": "Grandmaster",
+          "patch": "25.11",
+          "durationSec": 1591,
+          "region": "KR",
+          "uploaded": "2025-06-02",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 133,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "q3sMSxHW2n4",
+          "title": "(BW Elramir) Graves Jungle vs Quinn - EUW Grandmaster Patch 26.11",
+          "rankClaim": "Grandmaster",
+          "patch": "26.11",
+          "durationSec": 1551,
+          "region": "EUW",
+          "player": "BW Elramir",
+          "uploaded": "2026-06-02",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 136,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "caoJRZvsCxQ",
+          "title": "Graves Mid vs Aurelion Sol - KR Master Patch 26.09",
+          "rankClaim": "Master",
+          "patch": "26.9",
+          "durationSec": 1473,
+          "region": "KR",
+          "uploaded": "2026-05-09",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 141,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "DfgwUJb1xfk",
+          "title": "Graves vs Kayn 14/1/6 (Jungle) | EUW Challenger | Graves OTP Replay",
+          "rankClaim": "Challenger",
+          "patch": "26.9",
+          "durationSec": 1581,
+          "region": "EUW",
+          "patchEstimated": true,
+          "uploaded": "2026-05-04",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 143,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "-huXjRaeHC0",
+          "title": "Graves Jungle vs Zyra - VN Challenger Patch 25.16",
+          "rankClaim": "Challenger",
+          "patch": "25.16",
+          "durationSec": 1443,
+          "uploaded": "2025-08-27",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 145,
+      "lane": "adc",
+      "videos": [
+        {
+          "videoId": "0vvQXhlmhZg",
+          "title": "Graves ADC vs Kai'Sa - KR Master Patch 25.21",
+          "rankClaim": "Master",
+          "patch": "25.21",
+          "durationSec": 1770,
+          "region": "KR",
+          "uploaded": "2025-10-31",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 154,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "bt5QTsWgIsU",
+          "title": "Graves vs Zac [ Jungle ] Korea Master 872 LP | Patch 26.15 ✅",
+          "rankClaim": "Master",
+          "patch": "26.15",
+          "durationSec": 1731,
+          "region": "KR",
+          "uploaded": "2026-08-07",
+          "moments": []
+        },
+        {
+          "videoId": "01pdDK2HzFo",
+          "title": "Graves vs Zac Jungle - KR Grandmaster - Patch 15.4 Season 15",
+          "rankClaim": "Grandmaster",
+          "patch": "25.4",
+          "durationSec": 1381,
+          "region": "KR",
+          "uploaded": "2025-02-25",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 163,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "wHy_Lgh1GEs",
+          "title": "Graves vs Taliyah Jungle - KR Challenger - Patch 16.20 Season 16",
+          "rankClaim": "Challenger",
+          "patch": "26.20",
+          "durationSec": 1486,
+          "region": "KR",
+          "uploaded": "2026-10-14",
+          "moments": []
+        },
+        {
+          "videoId": "Q-otr6ch6cU",
+          "title": "Graves Jungle vs Taliyah - KR Master Patch 26.20",
+          "rankClaim": "Master",
+          "patch": "26.20",
+          "durationSec": 1725,
+          "region": "KR",
+          "uploaded": "2026-10-10",
+          "result": "W",
+          "moments": [
+            {
+              "atSec": 56,
+              "label": "First Blood — Graves kills Pantheon",
+              "kind": "kill"
+            },
+            {
+              "atSec": 336,
+              "label": "Graves picks off Pantheon"
+            },
+            {
+              "atSec": 379,
+              "label": "Yone Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 459,
+              "label": "Graves picks off Pantheon"
+            },
+            {
+              "atSec": 540,
+              "label": "Graves picks off Pantheon"
+            },
+            {
+              "atSec": 662,
+              "label": "Red takes 1st Dragon (Mountain)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 678,
+              "label": "Graves takes down Taliyah"
+            },
+            {
+              "atSec": 787,
+              "label": "Graves eliminates Katarina"
+            },
+            {
+              "atSec": 853,
+              "label": "Team fight (3 kills)",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 975,
+              "label": "Blue takes 1st Dragon (Hextech)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1193,
+              "label": "Graves takes down Taliyah"
+            },
+            {
+              "atSec": 1319,
+              "label": "Red takes 2nd Dragon (Chemtech)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1352,
+              "label": "Blue takes Baron",
+              "kind": "baron"
+            },
+            {
+              "atSec": 1362,
+              "label": "Team fight (3 kills)",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1484,
+              "label": "Graves kills Leona",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1531,
+              "label": "Team fight (3 kills)",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1629,
+              "label": "Team fight (4 kills)",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1658,
+              "label": "Mid Inhibitor falls (Red)"
+            }
+          ]
+        },
+        {
+          "videoId": "0YQOsaljfO8",
+          "title": "Graves vs Taliyah Jungle - KR Challenger - Patch 16.05 Season 16",
+          "rankClaim": "Challenger",
+          "patch": "26.5",
+          "durationSec": 1726,
+          "region": "KR",
+          "uploaded": "2026-03-10",
+          "moments": []
+        },
+        {
+          "videoId": "xQ2RkAgG-BY",
+          "title": "Graves vs Taliyah Jungle - KR Challenger - Patch 25.20 Season 15",
+          "rankClaim": "Challenger",
+          "patch": "25.20",
+          "durationSec": 2141,
+          "region": "KR",
+          "uploaded": "2025-10-23",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 203,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "LlA3ZVZH5fE",
+          "title": "(LOUD YoungJae) Graves Jungle vs Kindred - KR Master Patch 26.15",
+          "rankClaim": "Master",
+          "patch": "26.15",
+          "durationSec": 1665,
+          "region": "KR",
+          "player": "LOUD YoungJae",
+          "uploaded": "2026-08-12",
+          "moments": []
+        },
+        {
+          "videoId": "e-tC53jPICA",
+          "title": "Graves vs Kindred Jungle - KR Challenger - Patch 25.22 Season 15",
+          "rankClaim": "Challenger",
+          "patch": "25.22",
+          "durationSec": 1290,
+          "region": "KR",
+          "uploaded": "2025-11-15",
+          "moments": []
+        },
+        {
+          "videoId": "gdnWWVALFlk",
+          "title": "Graves Jungle vs Kindred - KR Master Patch 25.14",
+          "rankClaim": "Master",
+          "patch": "25.14",
+          "durationSec": 1534,
+          "region": "KR",
+          "uploaded": "2025-07-22",
+          "moments": []
+        },
+        {
+          "videoId": "Ne9Ypb6VSx4",
+          "title": "Graves vs Kindred Jungle - KR Grandmaster - Patch 25.13 Season 15",
+          "rankClaim": "Grandmaster",
+          "patch": "25.13",
+          "durationSec": 2356,
+          "region": "KR",
+          "uploaded": "2025-07-15",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 233,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "jwg6EIk292k",
+          "title": "Graves vs Briar Jungle - KR Grandmaster - Patch 16.03 Season 16",
+          "rankClaim": "Grandmaster",
+          "patch": "26.3",
+          "durationSec": 1831,
+          "region": "KR",
+          "uploaded": "2026-02-14",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 234,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "AGNER1DUdg4",
+          "title": "Graves vs Viego Jungle - KR Challenger - Patch 16.07 Season 16",
+          "rankClaim": "Challenger",
+          "patch": "26.7",
+          "durationSec": 1596,
+          "region": "KR",
+          "uploaded": "2026-04-09",
+          "moments": []
+        },
+        {
+          "videoId": "MOHwYuMsVEU",
+          "title": "Graves Jungle vs Viego - KR Challenger Patch 26.06",
+          "rankClaim": "Challenger",
+          "patch": "26.6",
+          "durationSec": 1491,
+          "region": "KR",
+          "uploaded": "2026-03-20",
+          "moments": []
+        },
+        {
+          "videoId": "GElNGYqPUUc",
+          "title": "Graves vs Viego Jungle - KR Challenger - Patch 25.22 Season 15",
+          "rankClaim": "Challenger",
+          "patch": "25.22",
+          "durationSec": 2581,
+          "region": "KR",
+          "uploaded": "2025-11-14",
+          "moments": []
+        },
+        {
+          "videoId": "ig-YkW3Bvb8",
+          "title": "Graves Jungle vs Viego - KR Challenger Patch 25.22",
+          "rankClaim": "Challenger",
+          "patch": "25.22",
+          "durationSec": 1637,
+          "region": "KR",
+          "uploaded": "2025-11-08",
+          "moments": []
+        },
+        {
+          "videoId": "FOTXTt1PV18",
+          "title": "Graves vs Viego Jungle [ QuadraKill ] Korea Master Patch 25.21",
+          "rankClaim": "Master",
+          "patch": "25.21",
+          "durationSec": 1617,
+          "region": "KR",
+          "player": "QuadraKill",
+          "uploaded": "2025-10-28",
+          "moments": []
+        },
+        {
+          "videoId": "DBO3tUtFXfU",
+          "title": "Graves Jungle vs Viego - KR Grandmaster Patch 25.19",
+          "rankClaim": "Grandmaster",
+          "patch": "25.19",
+          "durationSec": 1849,
+          "region": "KR",
+          "uploaded": "2025-10-02",
+          "moments": []
+        },
+        {
+          "videoId": "i5l7jcxiI5U",
+          "title": "Graves vs Viego [ Jungle ] Lol Korea Master Patch 25.19 ✅",
+          "rankClaim": "Master",
+          "patch": "25.19",
+          "durationSec": 1539,
+          "region": "KR",
+          "uploaded": "2025-09-28",
+          "moments": []
+        },
+        {
+          "videoId": "Q84S9vGv5Us",
+          "title": "Graves vs Viego Jungle - KR Challenger - Patch 25.19 Season 15",
+          "rankClaim": "Challenger",
+          "patch": "25.19",
+          "durationSec": 1861,
+          "region": "KR",
+          "uploaded": "2025-09-27",
+          "moments": []
+        },
+        {
+          "videoId": "Fq7yv-m8MwM",
+          "title": "Graves Jungle vs Viego - NA Challenger Patch 25.07",
+          "rankClaim": "Challenger",
+          "patch": "25.7",
+          "durationSec": 1641,
+          "region": "NA",
+          "uploaded": "2025-04-16",
+          "moments": []
+        },
+        {
+          "videoId": "zz9Y8D4udKA",
+          "title": "Graves vs Viego Jungle - KR Challenger - Patch 25.7 Season 15",
+          "rankClaim": "Challenger",
+          "patch": "25.7",
+          "durationSec": 1546,
+          "region": "KR",
+          "uploaded": "2025-04-11",
+          "moments": []
+        },
+        {
+          "videoId": "A1zVwEyecIY",
+          "title": "Graves Jungle vs Viego - EUW Grandmaster Patch 25.06",
+          "rankClaim": "Grandmaster",
+          "patch": "25.6",
+          "durationSec": 1568,
+          "region": "EUW",
+          "uploaded": "2025-04-01",
+          "moments": []
+        },
+        {
+          "videoId": "NEP-9YZZm5w",
+          "title": "Graves vs Viego Jungle - KR Grandmaster - Patch 25.6 Season 15",
+          "rankClaim": "Grandmaster",
+          "patch": "25.6",
+          "durationSec": 2280,
+          "region": "KR",
+          "uploaded": "2025-03-25",
+          "moments": []
+        },
+        {
+          "videoId": "fQ0Vi4jtF_I",
+          "title": "Graves vs Viego Jungle - KR Grandmaster - Patch 25.5 Season 15",
+          "rankClaim": "Grandmaster",
+          "patch": "25.5",
+          "durationSec": 2070,
+          "region": "KR",
+          "uploaded": "2025-03-17",
+          "moments": []
+        },
+        {
+          "videoId": "NX2CCT5NoAA",
+          "title": "Graves vs Viego Jungle - KR Challenger - Patch 25.5 Season 15",
+          "rankClaim": "Challenger",
+          "patch": "25.5",
+          "durationSec": 1710,
+          "region": "KR",
+          "uploaded": "2025-03-14",
+          "moments": []
+        },
+        {
+          "videoId": "8frUdNsoTd8",
+          "title": "Graves vs Viego Jungle - KR Grandmaster - Patch 25.5 Season 15",
+          "rankClaim": "Grandmaster",
+          "patch": "25.5",
+          "durationSec": 2086,
+          "region": "KR",
+          "uploaded": "2025-03-12",
+          "moments": []
+        },
+        {
+          "videoId": "iolQOSRRyo0",
+          "title": "Graves vs Viego Jungle - KR Challenger - Patch 25.4 Season 15",
+          "rankClaim": "Challenger",
+          "patch": "25.4",
+          "durationSec": 1890,
+          "region": "KR",
+          "uploaded": "2025-03-01",
+          "moments": []
+        },
+        {
+          "videoId": "PtMPMjR78Q4",
+          "title": "Graves vs Viego Jungle - KR Challenger - Patch 15.4 Season 15",
+          "rankClaim": "Challenger",
+          "patch": "25.4",
+          "durationSec": 1716,
+          "region": "KR",
+          "uploaded": "2025-02-26",
+          "moments": []
+        },
+        {
+          "videoId": "8tkpJwgNIrI",
+          "title": "Graves Jungle vs Viego - KR Challenger Patch 25.04",
+          "rankClaim": "Challenger",
+          "patch": "25.4",
+          "durationSec": 1911,
+          "region": "KR",
+          "uploaded": "2025-02-24",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 236,
+      "lane": "adc",
+      "videos": [
+        {
+          "videoId": "D6Jd2XDZbyQ",
+          "title": "Graves ADC vs Lucian - KR Master Patch 25.20",
+          "rankClaim": "Master",
+          "patch": "25.20",
+          "durationSec": 1644,
+          "region": "KR",
+          "uploaded": "2025-10-20",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 238,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "OH6RgHB4l_0",
+          "title": "Graves Jungle vs Zed - KR Master Patch 25.18",
+          "rankClaim": "Master",
+          "patch": "25.18",
+          "durationSec": 1884,
+          "region": "KR",
+          "uploaded": "2025-09-17",
+          "moments": []
+        },
+        {
+          "videoId": "heS4J23KbK4",
+          "title": "Graves vs Zed Jungle - KR Grandmaster - Patch 25.12 Season 15",
+          "rankClaim": "Grandmaster",
+          "patch": "25.12",
+          "durationSec": 1726,
+          "region": "KR",
+          "uploaded": "2025-06-14",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 245,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "onxrBZdZhsQ",
+          "title": "Graves Jungle vs Ekko - EUW Grandmaster Patch 25.24",
+          "rankClaim": "Grandmaster",
+          "patch": "25.24",
+          "durationSec": 1512,
+          "region": "EUW",
+          "uploaded": "2025-12-18",
+          "moments": []
+        },
+        {
+          "videoId": "7cbjLR-Ez7c",
+          "title": "Graves vs Ekko Jungle - KR Grandmaster - Patch 25.12 Season 15",
+          "rankClaim": "Grandmaster",
+          "patch": "25.12",
+          "durationSec": 1996,
+          "region": "KR",
+          "uploaded": "2025-06-16",
+          "moments": []
+        },
+        {
+          "videoId": "ySLFIA6LTb0",
+          "title": "Graves vs Ekko Jungle - KR Grandmaster - Patch 25.8 Season 15",
+          "rankClaim": "Grandmaster",
+          "patch": "25.8",
+          "durationSec": 1320,
+          "region": "KR",
+          "uploaded": "2025-04-26",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 246,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "RuuxLCi6tp0",
+          "title": "Graves Jungle vs Qiyana - KR Grandmaster Patch 26.17",
+          "rankClaim": "Grandmaster",
+          "patch": "26.17",
+          "durationSec": 1758,
+          "region": "KR",
+          "uploaded": "2026-08-29",
+          "moments": []
+        },
+        {
+          "videoId": "zwcZpFPiD0o",
+          "title": "Graves vs Qiyana Jungle - KR Challenger - Patch 16.06 Season 16",
+          "rankClaim": "Challenger",
+          "patch": "26.6",
+          "durationSec": 1726,
+          "region": "KR",
+          "uploaded": "2026-04-01",
+          "moments": []
+        },
+        {
+          "videoId": "pAhs_yhaHLI",
+          "title": "Graves vs Qiyana Jungle - KR Challenger - Patch 25.20 Season 15",
+          "rankClaim": "Challenger",
+          "patch": "25.20",
+          "durationSec": 1711,
+          "region": "KR",
+          "uploaded": "2025-10-18",
+          "moments": []
+        },
+        {
+          "videoId": "eZ5LXEk3E3U",
+          "title": "Graves vs Qiyana Jungle - KR Grandmaster - Patch 25.18 Season 15",
+          "rankClaim": "Grandmaster",
+          "patch": "25.18",
+          "durationSec": 1511,
+          "region": "KR",
+          "uploaded": "2025-09-16",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 254,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "DF0kAGJDXIs",
+          "title": "Graves vs Vi 10/2/9 (Jungle) | EUW Grandmaster | Graves OTP Replay",
+          "rankClaim": "Grandmaster",
+          "patch": "26.8",
+          "durationSec": 1531,
+          "region": "EUW",
+          "patchEstimated": true,
+          "uploaded": "2026-04-27",
+          "moments": []
+        },
+        {
+          "videoId": "LkIaTe1KnPs",
+          "title": "Graves vs Vi Jungle - KR Challenger - Patch 16.05 Season 16",
+          "rankClaim": "Challenger",
+          "patch": "26.5",
+          "durationSec": 2280,
+          "region": "KR",
+          "uploaded": "2026-03-17",
+          "moments": []
+        },
+        {
+          "videoId": "rXWbAiHsR1M",
+          "title": "T1 Oner Graves vs Vi [ Jungle ] Korea Challenger 1501 LP | Patch 26.5",
+          "rankClaim": "Challenger",
+          "patch": "26.5",
+          "durationSec": 2081,
+          "region": "KR",
+          "player": "Oner",
+          "team": "T1",
+          "uploaded": "2026-03-17",
+          "moments": []
+        },
+        {
+          "videoId": "20DOeuwXxyk",
+          "title": "Graves vs Vi Jungle - KR Challenger - Patch 25.8 Season 15",
+          "rankClaim": "Challenger",
+          "patch": "25.8",
+          "durationSec": 2071,
+          "region": "KR",
+          "uploaded": "2025-04-29",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 266,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "RuVAMvPYqQw",
+          "title": "Graves Jungle vs Aatrox - KR Challenger Patch 25.24",
+          "rankClaim": "Challenger",
+          "patch": "25.24",
+          "durationSec": 1620,
+          "region": "KR",
+          "uploaded": "2025-12-08",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 61,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 486,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 583,
+              "label": "Hunt The Dragon",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 608,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 684,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 746,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 840,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 948,
+              "label": "Hunt The Dragon",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 975,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1048,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1132,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1211,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1259,
+              "label": "Hunt The Atakhan"
+            },
+            {
+              "atSec": 1284,
+              "label": "Hunt The Dragon",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1331,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1394,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1499,
+              "label": "Hunt The Baron Nashor",
+              "kind": "baron"
+            },
+            {
+              "atSec": 1526,
+              "label": "Get a Triple Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1561,
+              "label": "Take down The Inhibitor"
+            },
+            {
+              "atSec": 1581,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1592,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1609,
+              "label": "End credit"
+            }
+          ]
+        },
+        {
+          "videoId": "54cvxbGT5Es",
+          "title": "Graves vs Aatrox Jungle - KR Challenger - Patch 25.24 Season 15",
+          "rankClaim": "Challenger",
+          "patch": "25.24",
+          "durationSec": 1411,
+          "region": "KR",
+          "uploaded": "2025-12-04",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 267,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "A1yafE8tzlo",
+          "title": "Graves Support vs Nami - NA Grandmaster Patch 25.24",
+          "rankClaim": "Grandmaster",
+          "patch": "25.24",
+          "durationSec": 1588,
+          "region": "NA",
+          "uploaded": "2025-12-30",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 421,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "zPlG3_x1eJA",
+          "title": "Graves vs Rek'Sai Jungle - KR Challenger - Patch 16.07 Season 16",
+          "rankClaim": "Challenger",
+          "patch": "26.7",
+          "durationSec": 2491,
+          "region": "KR",
+          "uploaded": "2026-04-06",
+          "moments": []
+        },
+        {
+          "videoId": "IvehKb4gfG0",
+          "title": "Graves vs Rek'Sai Jungle - EUW Grandmaster - Patch 15.20 Season 15",
+          "rankClaim": "Grandmaster",
+          "patch": "25.20",
+          "durationSec": 1891,
+          "region": "EUW",
+          "uploaded": "2025-10-15",
+          "moments": []
+        },
+        {
+          "videoId": "EverHqWv77U",
+          "title": "Graves Jungle vs Rek'Sai - NA Grandmaster Patch 25.12",
+          "rankClaim": "Grandmaster",
+          "patch": "25.12",
+          "durationSec": 1725,
+          "region": "NA",
+          "uploaded": "2025-06-26",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 427,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "qUxx2j10M58",
+          "title": "Graves vs Ivern Jungle - KR Challenger - Patch 16.21 Season 16",
+          "rankClaim": "Challenger",
+          "patch": "26.21",
+          "durationSec": 1811,
+          "region": "KR",
+          "uploaded": "2026-11-04",
+          "moments": []
+        },
+        {
+          "videoId": "-p3CktzXDAM",
+          "title": "Graves vs Ivern Jungle - KR Challenger - Patch 25.8 Season 15",
+          "rankClaim": "Challenger",
+          "patch": "25.8",
+          "durationSec": 1351,
+          "region": "KR",
+          "uploaded": "2025-04-23",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 498,
+      "lane": "adc",
+      "videos": [
+        {
+          "videoId": "BwPWmxjBbyo",
+          "title": "Graves ADC vs Xayah - KR Master Patch 25.10",
+          "rankClaim": "Master",
+          "patch": "25.10",
+          "durationSec": 1691,
+          "region": "KR",
+          "uploaded": "2025-05-26",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 516,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "-CLEFfh4uLI",
+          "title": "Graves Top vs Ornn - KR Master Patch 25.13",
+          "rankClaim": "Master",
+          "patch": "25.13",
+          "durationSec": 1874,
+          "region": "KR",
+          "uploaded": "2025-07-13",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 517,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "EBEADXATSeE",
+          "title": "(OLE Flakked) Graves Jungle vs Sylas - EUW Challenger Patch 26.13",
+          "rankClaim": "Challenger",
+          "patch": "26.13",
+          "durationSec": 1654,
+          "region": "EUW",
+          "player": "OLE Flakked",
+          "uploaded": "2026-07-08",
+          "moments": []
+        },
+        {
+          "videoId": "vqlovviU0S0",
+          "title": "Graves vs Sylas Jungle - KR Challenger - Patch 26.01 Season 16",
+          "rankClaim": "Challenger",
+          "patch": "26.1",
+          "durationSec": 2026,
+          "region": "KR",
+          "uploaded": "2026-01-19",
+          "moments": []
+        },
+        {
+          "videoId": "QXCo3c0zjbc",
+          "title": "Graves vs Sylas Jungle - KR Master - Patch 26.01 Season 16",
+          "rankClaim": "Master",
+          "patch": "26.1",
+          "durationSec": 1906,
+          "region": "KR",
+          "uploaded": "2026-01-12",
+          "moments": []
+        },
+        {
+          "videoId": "3SfC1TiEG0A",
+          "title": "Graves Jungle vs Sylas - KR Master Patch 25.24",
+          "rankClaim": "Master",
+          "patch": "25.24",
+          "durationSec": 1598,
+          "region": "KR",
+          "uploaded": "2025-12-25",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 436,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 556,
+              "label": "Hunt The Void Grubs",
+              "kind": "grubs"
+            },
+            {
+              "atSec": 628,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 770,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 820,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 868,
+              "label": "Hunt The Dragon",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 897,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 978,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1004,
+              "label": "Hunt The Rift Herald",
+              "kind": "herald"
+            },
+            {
+              "atSec": 1114,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1134,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1206,
+              "label": "Hunt The Dragon",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1234,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1283,
+              "label": "Hunt The Atakhan"
+            },
+            {
+              "atSec": 1432,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1448,
+              "label": "Get a Triple Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1518,
+              "label": "Hunt The Dragon",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1539,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1570,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1587,
+              "label": "End credit"
+            }
+          ]
+        },
+        {
+          "videoId": "e-Veo3rx1wI",
+          "title": "Graves vs Sylas Jungle - KR Challenger - Patch 25.22 Season 15",
+          "rankClaim": "Challenger",
+          "patch": "25.22",
+          "durationSec": 1621,
+          "region": "KR",
+          "uploaded": "2025-11-11",
+          "moments": []
+        },
+        {
+          "videoId": "jRDEekk6G88",
+          "title": "Graves Jungle vs Sylas - KR Challenger Patch 25.20",
+          "rankClaim": "Challenger",
+          "patch": "25.20",
+          "durationSec": 1623,
+          "region": "KR",
+          "uploaded": "2025-10-12",
+          "moments": []
+        },
+        {
+          "videoId": "T1X1sMAJPLM",
+          "title": "Graves vs Sylas Jungle - KR Challenger - Patch 25.19 Season 15",
+          "rankClaim": "Challenger",
+          "patch": "25.19",
+          "durationSec": 2821,
+          "region": "KR",
+          "uploaded": "2025-10-01",
+          "moments": []
+        },
+        {
+          "videoId": "qs-UNVXvsPw",
+          "title": "Graves vs Sylas Jungle - KR Challenger - Patch 25.16 Season 15",
+          "rankClaim": "Challenger",
+          "patch": "25.16",
+          "durationSec": 2011,
+          "region": "KR",
+          "uploaded": "2025-08-23",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 799,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "aL3ual_luAA",
+          "title": "Graves Jungle vs Ambessa - EUW Challenger Patch 26.19",
+          "rankClaim": "Challenger",
+          "patch": "26.19",
+          "durationSec": 1636,
+          "region": "EUW",
+          "uploaded": "2026-09-27",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 876,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "LhLulwoc3bg",
+          "title": "Graves Jungle vs Lillia - KR Grandmaster Patch 25.08",
+          "rankClaim": "Grandmaster",
+          "patch": "25.8",
+          "durationSec": 1839,
+          "region": "KR",
+          "uploaded": "2025-04-21",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 234,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 366,
+              "label": "Hunt The Void Grubs",
+              "kind": "grubs"
+            },
+            {
+              "atSec": 531,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 584,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 637,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 706,
+              "label": "Hunt The Void Grubs",
+              "kind": "grubs"
+            },
+            {
+              "atSec": 778,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 794,
+              "label": "Hunt The Dragon",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 806,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1088,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1177,
+              "label": "Hunt The Dragon",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1204,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1341,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1467,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1565,
+              "label": "Hunt The Dragon",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1593,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1661,
+              "label": "Take down The Inhibitor"
+            },
+            {
+              "atSec": 1687,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1762,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1818,
+              "label": "End credit"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 887,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "s2lBXm9OetI",
+          "title": "T1 Oner Graves vs Gwen [ Jungle ] Korea Challenger 2222 LP | Patch 26.17",
+          "rankClaim": "Challenger",
+          "patch": "26.17",
+          "durationSec": 1332,
+          "region": "KR",
+          "player": "Oner",
+          "team": "T1",
+          "uploaded": "2026-09-09",
+          "moments": []
+        },
+        {
+          "videoId": "cntqcDoLYPk",
+          "title": "Graves Jungle vs Gwen - VN Master Patch 26.01",
+          "rankClaim": "Master",
+          "patch": "26.1",
+          "durationSec": 1592,
+          "uploaded": "2026-01-12",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 904,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "FpWVzDOhImA",
+          "title": "Graves Jungle vs Zaahen - KR Challenger Patch 26.05",
+          "rankClaim": "Challenger",
+          "patch": "26.5",
+          "durationSec": 1680,
+          "region": "KR",
+          "uploaded": "2026-03-15",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 950,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "WW1DSuZLN4E",
+          "title": "Graves vs Naafiri Jungle - KR Challenger - Patch 16.12 Season 16",
+          "rankClaim": "Challenger",
+          "patch": "26.12",
+          "durationSec": 1416,
+          "region": "KR",
+          "uploaded": "2026-06-11",
+          "moments": []
+        },
+        {
+          "videoId": "fbyc5rKOfi8",
+          "title": "(HLE Kanavi) Graves Jungle vs Naafiri - KR Grandmaster Patch 26.11",
+          "rankClaim": "Grandmaster",
+          "patch": "26.11",
+          "durationSec": 1591,
+          "region": "KR",
+          "player": "Kanavi",
+          "team": "HLE",
+          "uploaded": "2026-06-10",
+          "moments": []
+        },
+        {
+          "videoId": "AcR4Py5IW4M",
+          "title": "Graves vs Naafiri Jungle - EUW Challenger - Patch 16.10 Season 16",
+          "rankClaim": "Challenger",
+          "patch": "26.10",
+          "durationSec": 1831,
+          "region": "EUW",
+          "uploaded": "2026-05-25",
+          "moments": []
+        },
+        {
+          "videoId": "apjVKlty1_0",
+          "title": "Graves vs Naafiri Jungle - KR Grandmaster - Patch 25.6 Season 15",
+          "rankClaim": "Grandmaster",
+          "patch": "25.6",
+          "durationSec": 2881,
+          "region": "KR",
+          "uploaded": "2025-03-26",
+          "moments": []
+        }
+      ]
+    }
+  ]
+}

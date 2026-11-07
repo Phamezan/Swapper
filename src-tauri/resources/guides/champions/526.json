@@ -1,0 +1,2933 @@
+{
+  "schema": 1,
+  "champion": 526,
+  "generatedAt": "2026-11-07T13:25:14.592Z",
+  "guides": [],
+  "general": [
+    {
+      "champion": 526,
+      "lane": "support",
+      "patch": "26.21",
+      "reviewed": false,
+      "keyTips": [
+        {
+          "text": "Reach level two before the enemy if possible, then use Rell's early all-in pressure to start a favorable trade.",
+          "scope": "champion",
+          "sourceIds": [
+            "mobalytics-rell-support"
+          ]
+        },
+        {
+          "text": "Preserve health while waiting for cooldowns; step outside auto-attack range when the engage tools are unavailable.",
+          "scope": "champion",
+          "sourceIds": [
+            "mobalytics-rell-support"
+          ]
+        },
+        {
+          "text": "Shattering Strike is useful against shielding because it can break shields before a follow-up engage.",
+          "scope": "champion",
+          "sourceIds": [
+            "mobalytics-rell-support"
+          ],
+          "abilityKeys": [
+            {
+              "champion": 526,
+              "key": "Q"
+            }
+          ]
+        }
+      ],
+      "sections": {
+        "overview": {
+          "tips": []
+        },
+        "early-lane": {
+          "tips": [
+            {
+              "text": "If enemy knock-ups or interrupts shut down lane engages, look for a roam or approach from an unwarded bush with Crash Down instead.",
+              "scope": "champion",
+              "sourceIds": [
+                "mobalytics-rell-support"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 526,
+                  "key": "W"
+                }
+              ]
+            },
+            {
+              "text": "Rell's level-three spike adds another ability to her all-in pattern and increases her crowd-control threat.",
+              "scope": "champion",
+              "sourceIds": [
+                "mobalytics-rell-support"
+              ]
+            },
+            {
+              "text": "Boots improve both roaming pace and the ability to stay on enemies after engaging.",
+              "scope": "champion",
+              "sourceIds": [
+                "mobalytics-rell-support"
+              ]
+            },
+            {
+              "text": "Start a roam from base or when the carry can farm safely without Rell's presence.",
+              "scope": "champion",
+              "sourceIds": [
+                "mobalytics-rell-support"
+              ]
+            }
+          ]
+        },
+        "mid-lane": {
+          "tips": [
+            {
+              "text": "Stay with the team and ward objectives only when enemy positions make the trip safe.",
+              "scope": "champion",
+              "sourceIds": [
+                "mobalytics-rell-support"
+              ]
+            },
+            {
+              "text": "Use Magnet Storm on grouped enemies to create a multi-target crowd-control window and force an objective or team fight.",
+              "scope": "champion",
+              "sourceIds": [
+                "mobalytics-rell-support"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 526,
+                  "key": "R"
+                }
+              ]
+            },
+            {
+              "text": "Coordinate with the jungler to set up picks in an unwarded enemy-jungle brush.",
+              "scope": "champion",
+              "sourceIds": [
+                "mobalytics-rell-support"
+              ]
+            },
+            {
+              "text": "After an engage, retreat toward the carry and peel rather than continuing forward without follow-up.",
+              "scope": "champion",
+              "sourceIds": [
+                "mobalytics-rell-support"
+              ]
+            },
+            {
+              "text": "A second Magnet Storm rank at level eleven shortens its cooldown and creates more mid-game all-in chances.",
+              "scope": "champion",
+              "sourceIds": [
+                "mobalytics-rell-support"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 526,
+                  "key": "R"
+                }
+              ]
+            }
+          ]
+        },
+        "win-condition": {
+          "tips": [
+            {
+              "text": "Use Attract and Repel from a frontline ally's engage to extend crowd control onto the enemy team.",
+              "scope": "champion",
+              "sourceIds": [
+                "mobalytics-rell-support"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 526,
+                  "key": "E"
+                }
+              ]
+            },
+            {
+              "text": "When behind, avoid forcing a deep ultimate or Crash Down engage without allied damage; Rell can die before the team follows up.",
+              "scope": "champion",
+              "sourceIds": [
+                "mobalytics-rell-support"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 526,
+                  "key": "R"
+                },
+                {
+                  "champion": 526,
+                  "key": "W"
+                }
+              ]
+            },
+            {
+              "text": "Late game, stay grouped and do not leave the carry exposed to an enemy punish.",
+              "scope": "champion",
+              "sourceIds": [
+                "mobalytics-rell-support"
+              ]
+            },
+            {
+              "text": "After using the ultimate in a late fight, fall back to protect carries and control the nearest threat.",
+              "scope": "champion",
+              "sourceIds": [
+                "mobalytics-rell-support"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 526,
+                  "key": "R"
+                }
+              ]
+            },
+            {
+              "text": "Look for picks at choke points, where the ultimate's area control can turn a catch into an objective.",
+              "scope": "champion",
+              "sourceIds": [
+                "mobalytics-rell-support"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 526,
+                  "key": "R"
+                }
+              ]
+            },
+            {
+              "text": "At level sixteen, Magnet Storm is fully ranked and its shorter cooldown supports repeated pick attempts.",
+              "scope": "champion",
+              "sourceIds": [
+                "mobalytics-rell-support"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 526,
+                  "key": "R"
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "itemization": [
+        {
+          "text": "Build Celestial Opposition, Plated Steelcaps, Zeke's Convergence, Locket of the Iron Solari, and Knight's Vow as the 26.21 support core.",
+          "scope": "champion",
+          "sourceIds": [
+            "mobalytics-rell-support-build"
+          ],
+          "itemIds": [
+            3869,
+            3047,
+            3050,
+            3190,
+            3109
+          ]
+        },
+        {
+          "text": "Take Aftershock, Shield Bash, Bone Plating, Unflinching, Cosmic Insight, and Hextech Flashtraption as the rune setup.",
+          "scope": "champion",
+          "sourceIds": [
+            "mobalytics-rell-support-build"
+          ]
+        },
+        {
+          "text": "Choose Thornmail as a situational fourth-item alternative to Locket against auto-attack-heavy teams or when anti-heal is needed.",
+          "scope": "champion",
+          "sourceIds": [
+            "mobalytics-rell-support-build"
+          ],
+          "itemIds": [
+            3075
+          ]
+        },
+        {
+          "text": "Start W, Q, E, max Crash Down first, then Attract and Repel, then Shattering Strike, ranking Magnet Storm at levels six, eleven, and sixteen.",
+          "scope": "champion",
+          "sourceIds": [
+            "mobalytics-rell-support-build"
+          ],
+          "abilityKeys": [
+            {
+              "champion": 526,
+              "key": "W"
+            },
+            {
+              "champion": 526,
+              "key": "Q"
+            },
+            {
+              "champion": 526,
+              "key": "E"
+            },
+            {
+              "champion": 526,
+              "key": "R"
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "id": "mobalytics-rell-support",
+          "author": "Mobalytics",
+          "rankClaim": "No rank claim",
+          "url": "https://mobalytics.gg/lol/champions/rell/guide",
+          "kind": "web"
+        },
+        {
+          "id": "mobalytics-rell-support-build",
+          "author": "Mobalytics",
+          "rankClaim": "No rank claim",
+          "url": "https://mobalytics.gg/lol/champions/rell/build",
+          "kind": "web"
+        }
+      ]
+    }
+  ],
+  "vods": [
+    {
+      "enemy": 12,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "lgO7_eChnzg",
+          "title": "Rell Support vs Alistar - KR Challenger Patch 26.20",
+          "rankClaim": "Challenger",
+          "patch": "26.20",
+          "durationSec": 1738,
+          "region": "KR",
+          "uploaded": "2026-10-20",
+          "result": "W",
+          "moments": [
+            {
+              "atSec": 127,
+              "label": "First Blood — Ezreal kills Tristana",
+              "kind": "kill"
+            },
+            {
+              "atSec": 545,
+              "label": "Blue takes 1st Dragon (Hextech)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 836,
+              "label": "Nidalee takes down Viego"
+            },
+            {
+              "atSec": 883,
+              "label": "Red takes 1st Dragon (Chemtech)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 986,
+              "label": "Nidalee takes down Viego"
+            },
+            {
+              "atSec": 1006,
+              "label": "K'Sante eliminates Alistar"
+            },
+            {
+              "atSec": 1029,
+              "label": "Nidalee kills Pantheon",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1125,
+              "label": "Locke Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1224,
+              "label": "Team fight (3 kills)",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1231,
+              "label": "Locke Triple Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1273,
+              "label": "Red takes 2nd Dragon (Infernal)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1302,
+              "label": "Nidalee picks off Syndra"
+            },
+            {
+              "atSec": 1347,
+              "label": "Red takes Baron",
+              "kind": "baron"
+            },
+            {
+              "atSec": 1609,
+              "label": "Red takes 3rd Dragon (Infernal)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1681,
+              "label": "Locke Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1686,
+              "label": "Locke Triple Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1691,
+              "label": "Nidalee Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1713,
+              "label": "Mid Inhibitor falls (Blue)"
+            }
+          ]
+        },
+        {
+          "videoId": "PVCPwD_0oHM",
+          "title": "(JDG Vampire) Rell Support vs Alistar (DK Career) - KR Challenger Patch 26.13",
+          "rankClaim": "Challenger",
+          "patch": "26.13",
+          "durationSec": 1628,
+          "region": "KR",
+          "player": "Vampire",
+          "team": "JDG",
+          "uploaded": "2026-06-29",
+          "result": "W",
+          "moments": [
+            {
+              "atSec": 85,
+              "label": "First Blood — Nidalee kills Draven",
+              "kind": "kill"
+            },
+            {
+              "atSec": 99,
+              "label": "Miss Fortune picks off Alistar"
+            },
+            {
+              "atSec": 126,
+              "label": "Rell picks off Draven"
+            },
+            {
+              "atSec": 197,
+              "label": "Miss Fortune picks off Alistar"
+            },
+            {
+              "atSec": 233,
+              "label": "Nidalee kills Alistar",
+              "kind": "kill"
+            },
+            {
+              "atSec": 305,
+              "label": "Akshan takes down Alistar"
+            },
+            {
+              "atSec": 383,
+              "label": "Nidalee kills Alistar",
+              "kind": "kill"
+            },
+            {
+              "atSec": 427,
+              "label": "Blue takes 1st Dragon (Cloud)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 485,
+              "label": "Team fight (3 kills)",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 638,
+              "label": "Miss Fortune takes down Draven"
+            },
+            {
+              "atSec": 748,
+              "label": "Blue takes 2nd Dragon (Infernal)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 825,
+              "label": "Rell eliminates Alistar"
+            },
+            {
+              "atSec": 1062,
+              "label": "Blue takes 3rd Dragon (Hextech)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1395,
+              "label": "Blue takes Baron",
+              "kind": "baron"
+            },
+            {
+              "atSec": 1412,
+              "label": "Red takes 1st Dragon (Hextech)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1547,
+              "label": "Nidalee eliminates Draven"
+            },
+            {
+              "atSec": 1583,
+              "label": "Top Inhibitor falls (Red)"
+            }
+          ]
+        },
+        {
+          "videoId": "A1BjxC47A6c",
+          "title": "(TJ Lekcycc) Rell Support vs Alistar - EUW Challenger Patch 26.11",
+          "rankClaim": "Challenger",
+          "patch": "26.11",
+          "durationSec": 1425,
+          "region": "EUW",
+          "player": "TJ Lekcycc",
+          "uploaded": "2026-06-04",
+          "moments": []
+        },
+        {
+          "videoId": "FJExeOdelF0",
+          "title": "(GEN Duro) Rell Support vs Alistar - KR Challenger Patch 26.10",
+          "rankClaim": "Challenger",
+          "patch": "26.10",
+          "durationSec": 1781,
+          "region": "KR",
+          "player": "Duro",
+          "team": "GEN",
+          "uploaded": "2026-05-30",
+          "moments": []
+        },
+        {
+          "videoId": "qwsSNZcnOWI",
+          "title": "Rell Support vs Alistar - EUW Challenger Patch 25.23",
+          "rankClaim": "Challenger",
+          "patch": "25.23",
+          "durationSec": 1445,
+          "region": "EUW",
+          "uploaded": "2025-12-03",
+          "moments": []
+        },
+        {
+          "videoId": "oJmVpwI0Tqc",
+          "title": "Rell Support vs Alistar - KR Challenger Patch 25.21",
+          "rankClaim": "Challenger",
+          "patch": "25.21",
+          "durationSec": 1687,
+          "region": "KR",
+          "uploaded": "2025-10-27",
+          "moments": []
+        },
+        {
+          "videoId": "birDZysMED4",
+          "title": "Rell Support vs Alistar - KR Grandmaster Patch 25.13",
+          "rankClaim": "Grandmaster",
+          "patch": "25.13",
+          "durationSec": 1542,
+          "region": "KR",
+          "uploaded": "2025-06-27",
+          "moments": []
+        },
+        {
+          "videoId": "1vHeSB171q8",
+          "title": "Rell Support vs Alistar - EUW Grandmaster Patch 25.05",
+          "rankClaim": "Grandmaster",
+          "patch": "25.5",
+          "durationSec": 1874,
+          "region": "EUW",
+          "uploaded": "2025-03-20",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 16,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "YWvEY0PU_JI",
+          "title": "Rell Support vs Soraka - EUW Grandmaster Patch 25.14",
+          "rankClaim": "Grandmaster",
+          "patch": "25.14",
+          "durationSec": 1560,
+          "region": "EUW",
+          "uploaded": "2025-07-30",
+          "moments": []
+        },
+        {
+          "videoId": "iYky7mI-a1E",
+          "title": "Rell Support vs Soraka - KR Master Patch 25.13",
+          "rankClaim": "Master",
+          "patch": "25.13",
+          "durationSec": 1811,
+          "region": "KR",
+          "uploaded": "2025-07-17",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 24,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "-sjpx4UAN7I",
+          "title": "Rell Top vs Jax - KR Grandmaster Patch 26.07",
+          "rankClaim": "Grandmaster",
+          "patch": "26.7",
+          "durationSec": 1798,
+          "region": "KR",
+          "uploaded": "2026-04-13",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 315,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 742,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 896,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 962,
+              "label": "Hunt The Rift Herald",
+              "kind": "herald"
+            },
+            {
+              "atSec": 997,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1329,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1445,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1476,
+              "label": "Hunt The Baron Nashor",
+              "kind": "baron"
+            },
+            {
+              "atSec": 1487,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1613,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1633,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1644,
+              "label": "Take down The Inhibitor"
+            },
+            {
+              "atSec": 1743,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1774,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1787,
+              "label": "End credit"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 34,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "vU5gI6kXPJI",
+          "title": "Rell Support vs Anivia - KR Challenger Patch 26.08",
+          "rankClaim": "Challenger",
+          "patch": "26.8",
+          "durationSec": 1854,
+          "region": "KR",
+          "uploaded": "2026-05-01",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 37,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "XLyqYmWAL1c",
+          "title": "Rell Support vs Sona - KR Master Patch 26.02",
+          "rankClaim": "Master",
+          "patch": "26.2",
+          "durationSec": 1548,
+          "region": "KR",
+          "uploaded": "2026-01-24",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 123,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 284,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 338,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 544,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 937,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1014,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1149,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1171,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1192,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1301,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1384,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1402,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1426,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1460,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1475,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1491,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1510,
+              "label": "Take down The Inhibitor"
+            },
+            {
+              "atSec": 1526,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1537,
+              "label": "End credit"
+            }
+          ]
+        },
+        {
+          "videoId": "KzuMkgQ5vk8",
+          "title": "Rell Support vs Sona - KR Master Patch 26.01",
+          "rankClaim": "Master",
+          "patch": "26.1",
+          "durationSec": 1468,
+          "region": "KR",
+          "uploaded": "2026-01-13",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 184,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 333,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 425,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 528,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 697,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 788,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 999,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1125,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1142,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1308,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1333,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1356,
+              "label": "Take down The Inhibitor"
+            },
+            {
+              "atSec": 1404,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1457,
+              "label": "End credit"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 40,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "8B6cVBe2oRU",
+          "title": "Rell Support vs Janna - EUW Grandmaster Patch 25.21",
+          "rankClaim": "Grandmaster",
+          "patch": "25.21",
+          "durationSec": 1519,
+          "region": "EUW",
+          "uploaded": "2025-11-06",
+          "moments": []
+        },
+        {
+          "videoId": "Chg3AkrFa-8",
+          "title": "Rell Support vs Janna - EUW Grandmaster Patch 25.16",
+          "rankClaim": "Grandmaster",
+          "patch": "25.16",
+          "durationSec": 1592,
+          "region": "EUW",
+          "uploaded": "2025-08-28",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 43,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "Y1z-ErsWtoM",
+          "title": "Rell Support vs Karma - EUW Challenger Patch 25.04",
+          "rankClaim": "Challenger",
+          "patch": "25.4",
+          "durationSec": 1662,
+          "region": "EUW",
+          "uploaded": "2025-02-26",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 44,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "HSiyr7VC_DU",
+          "title": "Rell Support vs Taric - EUW Challenger Patch 25.17",
+          "rankClaim": "Challenger",
+          "patch": "25.17",
+          "durationSec": 1593,
+          "region": "EUW",
+          "uploaded": "2025-09-11",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 53,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "0Cf9BkyiRK0",
+          "title": "Rell Support vs Blitzcrank - EUW Challenger Patch 25.13",
+          "rankClaim": "Challenger",
+          "patch": "25.13",
+          "durationSec": 1698,
+          "region": "EUW",
+          "uploaded": "2025-07-10",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 57,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "GkXRBoso9Fc",
+          "title": "Rell Support vs Maokai - KR Challenger Patch 25.14",
+          "rankClaim": "Challenger",
+          "patch": "25.14",
+          "durationSec": 1548,
+          "region": "KR",
+          "uploaded": "2025-07-20",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 60,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "fV142NCImW8",
+          "title": "Rell Support vs Elise - KR Challenger Patch 26.06",
+          "rankClaim": "Challenger",
+          "patch": "26.6",
+          "durationSec": 1875,
+          "region": "KR",
+          "uploaded": "2026-03-24",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 188,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 342,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 394,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 675,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 732,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 784,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 865,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1081,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1245,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1331,
+              "label": "Hunt The Dragon",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1346,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1427,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1459,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1543,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1571,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1591,
+              "label": "Take down The Inhibitor"
+            },
+            {
+              "atSec": 1649,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1706,
+              "label": "Take down The Inhibitor"
+            },
+            {
+              "atSec": 1726,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1802,
+              "label": "Hunt The Baron Nashor",
+              "kind": "baron"
+            },
+            {
+              "atSec": 1831,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1864,
+              "label": "End credit"
+            }
+          ]
+        },
+        {
+          "videoId": "5D2wupkX0m0",
+          "title": "Rell Support vs Elise - KR Grandmaster Patch 25.23",
+          "rankClaim": "Grandmaster",
+          "patch": "25.23",
+          "durationSec": 1530,
+          "region": "KR",
+          "uploaded": "2025-11-24",
+          "moments": []
+        },
+        {
+          "videoId": "-yc-51vC-Lk",
+          "title": "Rell Support vs Elise - KR Challenger Patch 25.19",
+          "rankClaim": "Challenger",
+          "patch": "25.19",
+          "durationSec": 1438,
+          "region": "KR",
+          "uploaded": "2025-09-29",
+          "moments": []
+        },
+        {
+          "videoId": "Nfo0piM7t9o",
+          "title": "Rell Support vs Elise - KR Challenger Patch 25.07",
+          "rankClaim": "Challenger",
+          "patch": "25.7",
+          "durationSec": 1657,
+          "region": "KR",
+          "uploaded": "2025-04-05",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 68,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "e6DBavvxHGQ",
+          "title": "Rell Support vs Rumble - EUW Grandmaster Patch 25.11",
+          "rankClaim": "Grandmaster",
+          "patch": "25.11",
+          "durationSec": 1597,
+          "region": "EUW",
+          "uploaded": "2025-06-12",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 72,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "zmbNOe6mU6Y",
+          "title": "(DNS Life) Rell Support vs Skarner - KR Challenger Patch 26.21",
+          "rankClaim": "Challenger",
+          "patch": "26.21",
+          "durationSec": 1437,
+          "region": "KR",
+          "player": "DNS Life",
+          "uploaded": "2026-11-03",
+          "result": "W",
+          "moments": [
+            {
+              "atSec": 148,
+              "label": "Aphelios Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 413,
+              "label": "Aphelios takes down Miss Fortune"
+            },
+            {
+              "atSec": 513,
+              "label": "Team fight (3 kills)",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 553,
+              "label": "Jarvan IV Triple Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 583,
+              "label": "Galio picks off Hecarim"
+            },
+            {
+              "atSec": 710,
+              "label": "Blue takes 1st Dragon (Ocean)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 777,
+              "label": "Jarvan IV takes down Hecarim"
+            },
+            {
+              "atSec": 1048,
+              "label": "Blue takes 2nd Dragon (Chemtech)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1297,
+              "label": "Red takes Baron",
+              "kind": "baron"
+            },
+            {
+              "atSec": 1363,
+              "label": "Red takes 1st Dragon (Hextech)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1386,
+              "label": "Aphelios Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1388,
+              "label": "Aphelios Triple Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1402,
+              "label": "Top Inhibitor falls (Red)"
+            },
+            {
+              "atSec": 1413,
+              "label": "Mid Inhibitor falls (Blue)"
+            },
+            {
+              "atSec": 1418,
+              "label": "Aphelios Double Kill",
+              "kind": "kill"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 78,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "p-_v24IiCQw",
+          "title": "Rell Support vs Poppy - EUW Grandmaster Patch 25.24",
+          "rankClaim": "Grandmaster",
+          "patch": "25.24",
+          "durationSec": 1449,
+          "region": "EUW",
+          "uploaded": "2026-01-09",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 358,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 599,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 699,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 824,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 907,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1022,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1134,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1161,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1342,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1368,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1385,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1396,
+              "label": "Take down The Inhibitor"
+            },
+            {
+              "atSec": 1407,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1417,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1438,
+              "label": "End credit"
+            }
+          ]
+        },
+        {
+          "videoId": "4e0SD4Hs9bg",
+          "title": "Rell Support vs Poppy - KR Grandmaster Patch 25.15",
+          "rankClaim": "Grandmaster",
+          "patch": "25.15",
+          "durationSec": 1762,
+          "region": "KR",
+          "uploaded": "2025-08-03",
+          "moments": []
+        },
+        {
+          "videoId": "HB5D4puHBV0",
+          "title": "Rell Support vs Poppy - KR Challenger Patch 25.12",
+          "rankClaim": "Challenger",
+          "patch": "25.12",
+          "durationSec": 1632,
+          "region": "KR",
+          "uploaded": "2025-06-14",
+          "moments": []
+        },
+        {
+          "videoId": "fyCfQZr5lJo",
+          "title": "Rell Support vs Poppy - KR Challenger Patch 25.05",
+          "rankClaim": "Challenger",
+          "patch": "25.5",
+          "durationSec": 1485,
+          "region": "KR",
+          "uploaded": "2025-03-09",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 80,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "Cq9MNRKfrjM",
+          "title": "(OMG Moham) Rell Support vs Pantheon - KR Challenger Patch 26.15",
+          "rankClaim": "Challenger",
+          "patch": "26.15",
+          "durationSec": 1455,
+          "region": "KR",
+          "player": "OMG Moham",
+          "uploaded": "2026-08-04",
+          "moments": []
+        },
+        {
+          "videoId": "7I5yvS3lvhY",
+          "title": "Rell Support vs Pantheon - EUW Grandmaster Patch 25.24",
+          "rankClaim": "Grandmaster",
+          "patch": "25.24",
+          "durationSec": 1608,
+          "region": "EUW",
+          "uploaded": "2025-12-16",
+          "moments": []
+        },
+        {
+          "videoId": "S4RY_YAjAIg",
+          "title": "Rell Support vs Pantheon - KR Challenger Patch 25.22",
+          "rankClaim": "Challenger",
+          "patch": "25.22",
+          "durationSec": 1640,
+          "region": "KR",
+          "uploaded": "2025-11-09",
+          "moments": []
+        },
+        {
+          "videoId": "4Ttrp9qoqcA",
+          "title": "Rell Support vs Pantheon - KR Grandmaster Patch 25.10",
+          "rankClaim": "Grandmaster",
+          "patch": "25.10",
+          "durationSec": 1801,
+          "region": "KR",
+          "uploaded": "2025-05-18",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 89,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "1waA3pnPkDA",
+          "title": "Rell Support vs Leona - KR Grandmaster Patch 26.20",
+          "rankClaim": "Grandmaster",
+          "patch": "26.20",
+          "durationSec": 1849,
+          "region": "KR",
+          "uploaded": "2026-10-10",
+          "result": "W",
+          "moments": [
+            {
+              "atSec": 162,
+              "label": "First Blood — Yone kills Kindred",
+              "kind": "kill"
+            },
+            {
+              "atSec": 166,
+              "label": "Yone Triple Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 437,
+              "label": "Red takes 1st Dragon (Ocean)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 444,
+              "label": "Rell catches Kindred"
+            },
+            {
+              "atSec": 768,
+              "label": "Blue takes 1st Dragon (Chemtech)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 909,
+              "label": "Blue takes Rift Herald",
+              "kind": "herald"
+            },
+            {
+              "atSec": 1090,
+              "label": "Blue takes 2nd Dragon (Cloud)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1129,
+              "label": "Cho'Gath takes down Kindred"
+            },
+            {
+              "atSec": 1186,
+              "label": "Team fight (3 kills)",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1308,
+              "label": "Cho'Gath eliminates Senna"
+            },
+            {
+              "atSec": 1427,
+              "label": "Mid Inhibitor falls (Blue)"
+            },
+            {
+              "atSec": 1465,
+              "label": "Red takes 2nd Dragon (Cloud)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1547,
+              "label": "Team fight (3 kills)",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1578,
+              "label": "Bot Inhibitor falls (Red)"
+            },
+            {
+              "atSec": 1690,
+              "label": "Cho'Gath takes down Kindred"
+            },
+            {
+              "atSec": 1741,
+              "label": "Blue takes Baron",
+              "kind": "baron"
+            },
+            {
+              "atSec": 1805,
+              "label": "Jax Double Kill",
+              "kind": "kill"
+            }
+          ]
+        },
+        {
+          "videoId": "soKIMIQom9E",
+          "title": "Rell Support vs Leona - KR Grandmaster Patch 25.04",
+          "rankClaim": "Grandmaster",
+          "patch": "25.4",
+          "durationSec": 1790,
+          "region": "KR",
+          "uploaded": "2025-03-06",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 92,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "irUDitEI_do",
+          "title": "Rell Top vs Riven - KR Master Patch 25.20",
+          "rankClaim": "Master",
+          "patch": "25.20",
+          "durationSec": 1856,
+          "region": "KR",
+          "uploaded": "2025-10-23",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 98,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "jMudlWaoN7w",
+          "title": "Rell Support vs Shen - KR Challenger Patch 26.09",
+          "rankClaim": "Challenger",
+          "patch": "26.9",
+          "durationSec": 1559,
+          "region": "KR",
+          "uploaded": "2026-05-08",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 98,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "DAVn61DXrwo",
+          "title": "Rell Top vs Shen - KR Master Patch 26.03",
+          "rankClaim": "Master",
+          "patch": "26.3",
+          "durationSec": 1852,
+          "region": "KR",
+          "uploaded": "2026-02-16",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 110,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "YwYL9Op_1Jc",
+          "title": "Rell Top vs Varus - KR Master Patch 26.05",
+          "rankClaim": "Master",
+          "patch": "26.5",
+          "durationSec": 1464,
+          "region": "KR",
+          "uploaded": "2026-03-15",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 58,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 361,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 428,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 502,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 717,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 826,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 849,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 915,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1238,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1279,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1334,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1429,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1453,
+              "label": "End credit"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 111,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "tjPhSvGNtFA",
+          "title": "(KHK Rabble) Rell Support vs Nautilus - EUW Challenger Patch 26.18",
+          "rankClaim": "Challenger",
+          "patch": "26.18",
+          "durationSec": 1513,
+          "region": "EUW",
+          "player": "KHK Rabble",
+          "uploaded": "2026-09-13",
+          "moments": []
+        },
+        {
+          "videoId": "Ggi5-GG1QWY",
+          "title": "(DNS Quantum ) Rell Support vs Nautilus - KR Challenger Patch 26.17",
+          "rankClaim": "Challenger",
+          "patch": "26.17",
+          "durationSec": 1734,
+          "region": "KR",
+          "player": "DNS Quantum",
+          "uploaded": "2026-09-11",
+          "moments": []
+        },
+        {
+          "videoId": "H3bSRDIb8xI",
+          "title": "(KC kyeahoo) Rell Support vs Nautilus - EUW Grandmaster Patch 26.16",
+          "rankClaim": "Grandmaster",
+          "patch": "26.16",
+          "durationSec": 1608,
+          "region": "EUW",
+          "player": "kyeahoo",
+          "team": "KC",
+          "uploaded": "2026-08-17",
+          "moments": []
+        },
+        {
+          "videoId": "tUAqON7umUU",
+          "title": "(DINO Elio) Rell Support vs Nautilus - KR Master Patch 26.12",
+          "rankClaim": "Master",
+          "patch": "26.12",
+          "durationSec": 1587,
+          "region": "KR",
+          "player": "DINO Elio",
+          "uploaded": "2026-06-15",
+          "moments": []
+        },
+        {
+          "videoId": "34vg7UyToqg",
+          "title": "Rell Support vs Nautilus - KR Challenger Patch 26.08",
+          "rankClaim": "Challenger",
+          "patch": "26.8",
+          "durationSec": 1827,
+          "region": "KR",
+          "uploaded": "2026-04-21",
+          "moments": []
+        },
+        {
+          "videoId": "A-Q-oowuCTM",
+          "title": "Rell Support vs Nautilus - KR Challenger Patch 26.05",
+          "rankClaim": "Challenger",
+          "patch": "26.5",
+          "durationSec": 1524,
+          "region": "KR",
+          "uploaded": "2026-03-18",
+          "moments": []
+        },
+        {
+          "videoId": "-oyEf7ACapg",
+          "title": "Rell Support vs Nautilus - KR Challenger Patch 26.04",
+          "rankClaim": "Challenger",
+          "patch": "26.4",
+          "durationSec": 1541,
+          "region": "KR",
+          "uploaded": "2026-02-24",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 220,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 402,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 515,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 584,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 751,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 841,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 860,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 904,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 961,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1102,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1261,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1317,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1414,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1451,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1473,
+              "label": "Take down The Inhibitor"
+            },
+            {
+              "atSec": 1494,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1530,
+              "label": "End credit"
+            }
+          ]
+        },
+        {
+          "videoId": "HvwsaeshSUw",
+          "title": "Rell Support vs Nautilus - KR Master Patch 26.03",
+          "rankClaim": "Master",
+          "patch": "26.3",
+          "durationSec": 1578,
+          "region": "KR",
+          "uploaded": "2026-02-09",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 175,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 272,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 519,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 591,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 703,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 765,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 923,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1098,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1179,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1213,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1266,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1348,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1456,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1492,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1549,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1567,
+              "label": "End credit"
+            }
+          ]
+        },
+        {
+          "videoId": "oExNiKDgvQw",
+          "title": "Rell Support vs Nautilus - EUW Challenger Patch 26.02",
+          "rankClaim": "Challenger",
+          "patch": "26.2",
+          "durationSec": 1515,
+          "region": "EUW",
+          "uploaded": "2026-02-04",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 117,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 182,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 240,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 296,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 393,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 717,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 780,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 875,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 925,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1192,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1408,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1477,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1504,
+              "label": "End credit"
+            }
+          ]
+        },
+        {
+          "videoId": "6NImQKBW8kM",
+          "title": "Rell Support vs Nautilus - KR Master Patch 25.24",
+          "rankClaim": "Master",
+          "patch": "25.24",
+          "durationSec": 1563,
+          "region": "KR",
+          "uploaded": "2025-12-27",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 464,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 554,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 619,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 711,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 814,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 860,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1022,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1297,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1383,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1511,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1552,
+              "label": "End credit"
+            }
+          ]
+        },
+        {
+          "videoId": "XyRLV9Pxz3o",
+          "title": "Rell Support vs Nautilus - EUW Grandmaster Patch 25.22",
+          "rankClaim": "Grandmaster",
+          "patch": "25.22",
+          "durationSec": 1607,
+          "region": "EUW",
+          "uploaded": "2025-11-20",
+          "moments": []
+        },
+        {
+          "videoId": "RGWAlDBdGc8",
+          "title": "Rell Support vs Nautilus - EUW Grandmaster Patch 25.12",
+          "rankClaim": "Grandmaster",
+          "patch": "25.12",
+          "durationSec": 1895,
+          "region": "EUW",
+          "uploaded": "2025-06-25",
+          "moments": []
+        },
+        {
+          "videoId": "BBjpDeDeOe0",
+          "title": "Rell Support vs Nautilus - KR Challenger Patch 25.11",
+          "rankClaim": "Challenger",
+          "patch": "25.11",
+          "durationSec": 1536,
+          "region": "KR",
+          "uploaded": "2025-06-02",
+          "moments": []
+        },
+        {
+          "videoId": "1H060piYASo",
+          "title": "Rell Support vs Nautilus - KR Grandmaster Patch 25.08",
+          "rankClaim": "Grandmaster",
+          "patch": "25.8",
+          "durationSec": 1590,
+          "region": "KR",
+          "uploaded": "2025-04-19",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 63,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 293,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 384,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 493,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 578,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 666,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 963,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 991,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1104,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1195,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1215,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1230,
+              "label": "Take down The Inhibitor"
+            },
+            {
+              "atSec": 1294,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1413,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1446,
+              "label": "Take down The Inhibitor"
+            },
+            {
+              "atSec": 1501,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1569,
+              "label": "End credit"
+            }
+          ]
+        },
+        {
+          "videoId": "GdVyzXnXD1w",
+          "title": "Rell Support vs Nautilus - EUW Grandmaster Patch 25.06",
+          "rankClaim": "Grandmaster",
+          "patch": "25.6",
+          "durationSec": 1780,
+          "region": "EUW",
+          "uploaded": "2025-04-01",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 117,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "TwzZSd9r45E",
+          "title": "Rell Support vs Lulu - EUW Challenger Patch 25.08",
+          "rankClaim": "Challenger",
+          "patch": "25.8",
+          "durationSec": 1999,
+          "region": "EUW",
+          "uploaded": "2025-04-30",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 147,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "V8laTQKezY4",
+          "title": "(JL Comp) Rell Support vs Seraphine (KHK Doss) - EUW Challenger Patch 26.18",
+          "rankClaim": "Challenger",
+          "patch": "26.18",
+          "durationSec": 1402,
+          "region": "EUW",
+          "player": "JL Comp",
+          "uploaded": "2026-09-24",
+          "moments": []
+        },
+        {
+          "videoId": "AlNHiehcpbg",
+          "title": "(GZ 1Jiang) Rell Support vs Seraphine - KR Grandmaster Patch 26.14",
+          "rankClaim": "Grandmaster",
+          "patch": "26.14",
+          "durationSec": 1499,
+          "region": "KR",
+          "player": "GZ 1Jiang",
+          "uploaded": "2026-07-24",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 161,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "Q0IKYW2vFMI",
+          "title": "Rell Support vs Vel'Koz - EUW Grandmaster Patch 26.07",
+          "rankClaim": "Grandmaster",
+          "patch": "26.7",
+          "durationSec": 1686,
+          "region": "EUW",
+          "uploaded": "2026-04-05",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 177,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 267,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 344,
+              "label": "Hunt The Dragon",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 545,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 613,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 669,
+              "label": "Hunt The Dragon",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 699,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 786,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 848,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 901,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1047,
+              "label": "Hunt The Dragon",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1063,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1196,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1237,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1297,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1390,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1527,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1648,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1675,
+              "label": "End credit"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 163,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "tIYqpqhRJVc",
+          "title": "Rell Support vs Taliyah - KR Master Patch 25.20",
+          "rankClaim": "Master",
+          "patch": "25.20",
+          "durationSec": 1617,
+          "region": "KR",
+          "uploaded": "2025-10-11",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 164,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "LK8OouCCv2Q",
+          "title": "(HLE Cracker) Rell Support vs Camille - KR Challenger Patch 26.16",
+          "rankClaim": "Challenger",
+          "patch": "26.16",
+          "durationSec": 1683,
+          "region": "KR",
+          "player": "Cracker",
+          "team": "HLE",
+          "uploaded": "2026-08-23",
+          "moments": []
+        },
+        {
+          "videoId": "zcRs3USmj1s",
+          "title": "Rell Support vs Camille - KR Challenger Patch 25.06",
+          "rankClaim": "Challenger",
+          "patch": "25.6",
+          "durationSec": 1499,
+          "region": "KR",
+          "uploaded": "2025-03-23",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 140,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 322,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 699,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 793,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 896,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 964,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1062,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1183,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1394,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1478,
+              "label": "End credit"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 166,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "hcV-MpKVy_0",
+          "title": "Rell Top vs Akshan - KR Master Patch 26.04",
+          "rankClaim": "Master",
+          "patch": "26.4",
+          "durationSec": 1745,
+          "region": "KR",
+          "uploaded": "2026-03-01",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 201,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "tcvxRp-pV6g",
+          "title": "Rell Support vs Braum - KR Grandmaster Patch 26.19",
+          "rankClaim": "Grandmaster",
+          "patch": "26.19",
+          "durationSec": 1794,
+          "region": "KR",
+          "uploaded": "2026-10-06",
+          "result": "W",
+          "moments": [
+            {
+              "atSec": 244,
+              "label": "First Blood — Rell kills Lucian",
+              "kind": "kill"
+            },
+            {
+              "atSec": 246,
+              "label": "Yunara picks off Braum"
+            },
+            {
+              "atSec": 345,
+              "label": "Rell kills Cho'Gath",
+              "kind": "kill"
+            },
+            {
+              "atSec": 481,
+              "label": "Yunara takes down Lucian"
+            },
+            {
+              "atSec": 567,
+              "label": "Yunara takes down Lucian"
+            },
+            {
+              "atSec": 694,
+              "label": "Red takes 1st Dragon (Infernal)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1017,
+              "label": "Kindred picks off Yasuo"
+            },
+            {
+              "atSec": 1050,
+              "label": "Red takes 2nd Dragon (Hextech)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1064,
+              "label": "Team fight (3 kills)",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1160,
+              "label": "Yunara takes down Lucian"
+            },
+            {
+              "atSec": 1393,
+              "label": "Blue takes 1st Dragon (Chemtech)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1447,
+              "label": "Blue takes Baron",
+              "kind": "baron"
+            },
+            {
+              "atSec": 1482,
+              "label": "Yunara eliminates Cho'Gath"
+            },
+            {
+              "atSec": 1623,
+              "label": "Kindred takes down Cho'Gath"
+            },
+            {
+              "atSec": 1697,
+              "label": "Kindred takes down Cho'Gath"
+            },
+            {
+              "atSec": 1720,
+              "label": "Yunara Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1731,
+              "label": "Bot Inhibitor falls (Blue)"
+            }
+          ]
+        },
+        {
+          "videoId": "Kh5eY737Q4g",
+          "title": "Rell Support vs Braum - EUW Challenger Patch 25.18",
+          "rankClaim": "Challenger",
+          "patch": "25.18",
+          "durationSec": 1581,
+          "region": "EUW",
+          "uploaded": "2025-09-25",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 235,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "mVDRu5ir-cU",
+          "title": "Rell Support vs Senna - KR Grandmaster Patch 26.19",
+          "rankClaim": "Grandmaster",
+          "patch": "26.19",
+          "durationSec": 1526,
+          "region": "KR",
+          "uploaded": "2026-09-26",
+          "moments": []
+        },
+        {
+          "videoId": "hCMB409q14Y",
+          "title": "Rell Support vs Senna - NA Challenger Patch 25.24",
+          "rankClaim": "Challenger",
+          "patch": "25.24",
+          "durationSec": 1601,
+          "region": "NA",
+          "uploaded": "2026-01-03",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 412,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "kVfwcA2JZkc",
+          "title": "(SK Mikyx) Rell Support vs Thresh - EUW Challenger Patch 26.13",
+          "rankClaim": "Challenger",
+          "patch": "26.13",
+          "durationSec": 1513,
+          "region": "EUW",
+          "player": "SK Mikyx",
+          "uploaded": "2026-07-12",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 432,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "JGBmuNhnDRQ",
+          "title": "Rell Support vs Bard - KR Challenger Patch 25.24",
+          "rankClaim": "Challenger",
+          "patch": "25.24",
+          "durationSec": 1662,
+          "region": "KR",
+          "uploaded": "2025-12-07",
+          "moments": []
+        },
+        {
+          "videoId": "qT2jO21e0Mo",
+          "title": "Rell Support vs Bard - EUW Challenger Patch 25.15",
+          "rankClaim": "Challenger",
+          "patch": "25.15",
+          "durationSec": 1482,
+          "region": "EUW",
+          "uploaded": "2025-08-13",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 497,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "iSR_bidwSmc",
+          "title": "(DNS Peter) Rell Support vs Rakan - KR Challenger Patch 26.21",
+          "rankClaim": "Challenger",
+          "patch": "26.21",
+          "durationSec": 1712,
+          "region": "KR",
+          "player": "DNS Peter",
+          "uploaded": "2026-10-24",
+          "result": "W",
+          "moments": [
+            {
+              "atSec": 361,
+              "label": "Blue takes 1st Dragon (Hextech)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 516,
+              "label": "First Blood — Miss Fortune kills Kai'Sa",
+              "kind": "kill"
+            },
+            {
+              "atSec": 573,
+              "label": "Sylas picks off Kai'Sa"
+            },
+            {
+              "atSec": 708,
+              "label": "Blue takes 2nd Dragon (Mountain)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 898,
+              "label": "Talon picks off Swain"
+            },
+            {
+              "atSec": 1054,
+              "label": "Blue takes 3rd Dragon (Infernal)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1136,
+              "label": "Vladimir picks off Naafiri"
+            },
+            {
+              "atSec": 1215,
+              "label": "Blue takes Baron",
+              "kind": "baron"
+            },
+            {
+              "atSec": 1273,
+              "label": "Miss Fortune Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1283,
+              "label": "Miss Fortune Triple Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1370,
+              "label": "Vladimir Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1397,
+              "label": "Red takes 1st Dragon (Infernal)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1648,
+              "label": "Red takes Baron",
+              "kind": "baron"
+            },
+            {
+              "atSec": 1687,
+              "label": "Mid Inhibitor falls (Blue)"
+            }
+          ]
+        },
+        {
+          "videoId": "oCSg9vO0g-Y",
+          "title": "Rell Support vs Rakan - KR Grandmaster Patch 25.18",
+          "rankClaim": "Grandmaster",
+          "patch": "25.18",
+          "durationSec": 1514,
+          "region": "KR",
+          "uploaded": "2025-09-15",
+          "moments": []
+        },
+        {
+          "videoId": "KqDtGF_gTw4",
+          "title": "Rell Support vs Rakan - KR Master Patch 25.17",
+          "rankClaim": "Master",
+          "patch": "25.17",
+          "durationSec": 1631,
+          "region": "KR",
+          "uploaded": "2025-08-30",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 518,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "gACVcrKgmhI",
+          "title": "Rell Support vs Neeko - KR Grandmaster Patch 26.17",
+          "rankClaim": "Grandmaster",
+          "patch": "26.17",
+          "durationSec": 1762,
+          "region": "KR",
+          "uploaded": "2026-08-30",
+          "moments": []
+        },
+        {
+          "videoId": "cM4UHuVzn0w",
+          "title": "Rell Support vs Neeko - KR Challenger Patch 26.05",
+          "rankClaim": "Challenger",
+          "patch": "26.5",
+          "durationSec": 1841,
+          "region": "KR",
+          "uploaded": "2026-03-09",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 555,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "mpuFsx48YSw",
+          "title": "(KT Cuzz) Rell Support vs Pyke (LGD Heng) - KR Challenger Patch 26.10",
+          "rankClaim": "Challenger",
+          "patch": "26.10",
+          "durationSec": 1683,
+          "region": "KR",
+          "player": "Cuzz",
+          "team": "KT",
+          "uploaded": "2026-05-21",
+          "moments": []
+        },
+        {
+          "videoId": "5Rn0piQRyTA",
+          "title": "Rell Support vs Pyke - KR Challenger Patch 25.16",
+          "rankClaim": "Challenger",
+          "patch": "25.16",
+          "durationSec": 1680,
+          "region": "KR",
+          "uploaded": "2025-08-17",
+          "moments": []
+        },
+        {
+          "videoId": "3gyaaok9-6Y",
+          "title": "Rell Support vs Pyke - EUW Challenger Patch 25.10",
+          "rankClaim": "Challenger",
+          "patch": "25.10",
+          "durationSec": 1421,
+          "region": "EUW",
+          "uploaded": "2025-05-30",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 777,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "rP_lYI6kLJ4",
+          "title": "Rell Top vs Yone - KR Master Patch 25.19",
+          "rankClaim": "Master",
+          "patch": "25.19",
+          "durationSec": 1787,
+          "region": "KR",
+          "uploaded": "2025-10-05",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 888,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "dwpMUYnmPj8",
+          "title": "Rell Support vs Renata Glasc - EUW Grandmaster Patch 25.09",
+          "rankClaim": "Grandmaster",
+          "patch": "25.9",
+          "durationSec": 1604,
+          "region": "EUW",
+          "uploaded": "2025-05-12",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 503,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 629,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 825,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 987,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1078,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1189,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1259,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1331,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1435,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1456,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1471,
+              "label": "Take down The Inhibitor"
+            },
+            {
+              "atSec": 1520,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1564,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1583,
+              "label": "End credit"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 902,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "_Au8GFdWAzw",
+          "title": "(BFX Kellin) Rell Support vs Milio (DK Career) - KR Challenger Patch 26.15",
+          "rankClaim": "Challenger",
+          "patch": "26.15",
+          "durationSec": 1446,
+          "region": "KR",
+          "player": "Kellin",
+          "team": "BFX",
+          "uploaded": "2026-08-13",
+          "moments": []
+        }
+      ]
+    }
+  ]
+}

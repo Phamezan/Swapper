@@ -1,0 +1,2937 @@
+{
+  "schema": 1,
+  "champion": 427,
+  "generatedAt": "2026-11-07T13:25:14.592Z",
+  "guides": [],
+  "general": [
+    {
+      "champion": 427,
+      "lane": "jungle",
+      "patch": "26.21",
+      "reviewed": false,
+      "keyTips": [
+        {
+          "text": "Pick the clear by the lane targeted at the end: red-side routes to bot or a Wolves start toward top.",
+          "scope": "champion",
+          "sourceIds": [
+            "iverngott"
+          ]
+        },
+        {
+          "text": "Treat counter-ganks as the core strength by tracking the enemy jungler toward their likely attack.",
+          "scope": "champion",
+          "sourceIds": [
+            "iverngott"
+          ]
+        },
+        {
+          "text": "Link roots, shields, brush, and knock-ups with teammates, since Daisy plus E teamfighting carries his value.",
+          "scope": "champion",
+          "sourceIds": [
+            "iverngott"
+          ],
+          "abilityKeys": [
+            {
+              "champion": 427,
+              "key": "E"
+            }
+          ]
+        }
+      ],
+      "sections": {
+        "overview": {
+          "tips": []
+        },
+        "early-lane": {
+          "tips": [
+            {
+              "text": "Run the red-side full clear by tapping Red, Raptors, Wolves, Blue, and Gromp, then freeing Raptors and Red before Smiting Krugs and finishing the rest.",
+              "scope": "champion",
+              "sourceIds": [
+                "iverngott"
+              ]
+            },
+            {
+              "text": "Run the top-side route from Wolves into Blue, Gromp, Raptors, and Red before freeing them, saving Smite for Krugs.",
+              "scope": "champion",
+              "sourceIds": [
+                "iverngott"
+              ]
+            },
+            {
+              "text": "On blue side, clear fully toward bot by tapping Blue, Wolves, Raptors, Red, and Krugs, then freeing Blue, Smiting Gromp, and continuing on.",
+              "scope": "champion",
+              "sourceIds": [
+                "iverngott"
+              ]
+            },
+            {
+              "text": "Keep camp timers synced by clearing in groups instead of letting one side drift behind.",
+              "scope": "champion",
+              "sourceIds": [
+                "iverngott"
+              ]
+            },
+            {
+              "text": "Respect invade vulnerability and predictable paths by watching for early invades and demanding nearby priority before contesting.",
+              "scope": "champion",
+              "sourceIds": [
+                "iverngott"
+              ]
+            },
+            {
+              "text": "Ride Q through camps for faster travel, rooting a chaser behind for an escape in a pinch.",
+              "scope": "champion",
+              "sourceIds": [
+                "iverngott"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 427,
+                  "key": "Q"
+                }
+              ]
+            }
+          ]
+        },
+        "mid-lane": {
+          "tips": [
+            {
+              "text": "Plant Brushmaker in fights for its bonus damage to Ivern and nearby allies, keeping Daisy around brush too.",
+              "scope": "champion",
+              "sourceIds": [
+                "iverngott"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 427,
+                  "key": "W"
+                }
+              ]
+            },
+            {
+              "text": "Root with Q so allies can dash into range, using its dash recast and monster cooldown cut as confirmed.",
+              "scope": "champion",
+              "sourceIds": [
+                "iverngott"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 427,
+                  "key": "Q"
+                }
+              ]
+            },
+            {
+              "text": "Cast Triggerseed on an ally or Daisy before they enter so its shield and delayed burst hit nearby opponents.",
+              "scope": "champion",
+              "sourceIds": [
+                "iverngott"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 427,
+                  "key": "E"
+                }
+              ]
+            },
+            {
+              "text": "Steer Daisy so her third straight hit on a champion or epic monster knocks up nearby enemies where it matters.",
+              "scope": "champion",
+              "sourceIds": [
+                "iverngott"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 427,
+                  "key": "R"
+                }
+              ]
+            },
+            {
+              "text": "Start or stretch teamfights with Daisy under E shielding.",
+              "scope": "champion",
+              "sourceIds": [
+                "iverngott"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 427,
+                  "key": "R"
+                },
+                {
+                  "champion": 427,
+                  "key": "E"
+                }
+              ]
+            }
+          ]
+        },
+        "win-condition": {
+          "tips": [
+            {
+              "text": "Turn enemy movement reads into counter-ganks: shield the threatened ally and flip the response with Q or Daisy.",
+              "scope": "champion",
+              "sourceIds": [
+                "iverngott"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 427,
+                  "key": "Q"
+                },
+                {
+                  "champion": 427,
+                  "key": "R"
+                }
+              ]
+            },
+            {
+              "text": "Guard the carrying ally from close range so support-build shields, heals, and utility all connect.",
+              "scope": "champion",
+              "sourceIds": [
+                "iverngott"
+              ]
+            },
+            {
+              "text": "Never rest the whole plan on solo counter-jungling; predictable routes get punished without teammates.",
+              "scope": "champion",
+              "sourceIds": [
+                "iverngott"
+              ]
+            },
+            {
+              "text": "Shape routes and timers around the stronger side to arrive first at likely skirmishes.",
+              "scope": "champion",
+              "sourceIds": [
+                "iverngott"
+              ]
+            }
+          ]
+        }
+      },
+      "itemization": [
+        {
+          "text": "Run Glacial Augment with Cash Back, Triple Tonic, and Cosmic Insight plus Font of Life and Revitalize on the support page.",
+          "scope": "champion",
+          "sourceIds": [
+            "iverngott"
+          ]
+        },
+        {
+          "text": "Take Flash and Smite.",
+          "scope": "champion",
+          "sourceIds": [
+            "iverngott"
+          ]
+        },
+        {
+          "text": "Open Ionian Boots of Lucidity and Dark Seal into Redemption, Moonstone Renewer, and Dawncore, with Mikael's Blessing, Staff of Flowing Water, Ardent Censer, Mejai's Soulstealer, and Knight's Vow as options.",
+          "scope": "champion",
+          "sourceIds": [
+            "iverngott"
+          ],
+          "itemIds": [
+            3158,
+            1082,
+            3107,
+            6617,
+            6621,
+            3222,
+            6616,
+            3504,
+            3041,
+            3109
+          ]
+        },
+        {
+          "text": "Vary into the Echoes of Helia side-lane support build, or rush Knight's Vow earlier on the defensive anti-assassin variant.",
+          "scope": "champion",
+          "sourceIds": [
+            "iverngott"
+          ],
+          "itemIds": [
+            6620,
+            3109
+          ]
+        },
+        {
+          "text": "Take the AP build of Cosmic Drive, Lich Bane, Rabadon's Deathcap, and Zhonya's Hourglass when the team needs damage and the selfish build survives.",
+          "scope": "champion",
+          "sourceIds": [
+            "iverngott"
+          ],
+          "itemIds": [
+            4629,
+            3100,
+            3089,
+            3157
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "id": "iverngott",
+          "author": "IvernGott",
+          "rankClaim": "Challenger (title); Diamond (profile badge)",
+          "rank": "diamond",
+          "url": "https://www.mobafire.com/league-of-legends/build/season-16-challenger-ivern-guide-633796",
+          "kind": "mobafire"
+        }
+      ]
+    }
+  ],
+  "vods": [
+    {
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "EfClevdcLmw",
+          "title": "FULL EDUCATIONAL IVERN GAMEPLAY | FREE GUIDE",
+          "rankClaim": "Master+",
+          "patch": "26.20",
+          "durationSec": 2547,
+          "patchEstimated": true,
+          "player": "Sinerias",
+          "uploaded": "2026-10-20",
+          "format": "stream",
+          "cam": true,
+          "moments": [
+            {
+              "atSec": 0,
+              "label": "Initial ivern gameplay"
+            },
+            {
+              "atSec": 268,
+              "label": "Champion selection strategy"
+            },
+            {
+              "atSec": 422,
+              "label": "Analyzing ender's hunger build"
+            },
+            {
+              "atSec": 565,
+              "label": "Early game jungle pathing"
+            },
+            {
+              "atSec": 840,
+              "label": "Mid-game objective control"
+            },
+            {
+              "atSec": 1054,
+              "label": "Aggressive team fight support",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1265,
+              "label": "Macro play and sieging"
+            },
+            {
+              "atSec": 1473,
+              "label": "Win condition consistency"
+            },
+            {
+              "atSec": 1840,
+              "label": "Mid-to-late game macro"
+            },
+            {
+              "atSec": 2118,
+              "label": "Reviewing team dynamics"
+            },
+            {
+              "atSec": 2320,
+              "label": "Closing the match"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 2,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "UarfBGfrZbw",
+          "title": "Ivern Top vs Olaf - KR Master Patch 25.24",
+          "rankClaim": "Master",
+          "patch": "25.24",
+          "durationSec": 1613,
+          "region": "KR",
+          "uploaded": "2026-01-03",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 3,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "UUf8O_lPsS0",
+          "title": "Ivern Top vs Galio - KR Grandmaster Patch 26.09",
+          "rankClaim": "Grandmaster",
+          "patch": "26.9",
+          "durationSec": 1576,
+          "region": "KR",
+          "uploaded": "2026-05-14",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 5,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "uZjaIpMZCSE",
+          "title": "Ivern Jungle vs Xin Zhao - EUW Master Patch 26.01",
+          "rankClaim": "Master",
+          "patch": "26.1",
+          "durationSec": 1445,
+          "region": "EUW",
+          "uploaded": "2026-01-14",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 188,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 384,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 480,
+              "label": "Hunt The Void Grubs",
+              "kind": "grubs"
+            },
+            {
+              "atSec": 586,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 623,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 747,
+              "label": "Hunt The Dragon",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 868,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 994,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1039,
+              "label": "Hunt The Rift Herald",
+              "kind": "herald"
+            },
+            {
+              "atSec": 1099,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1172,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1203,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1262,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1352,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1434,
+              "label": "End credit"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 7,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "PMZjUE0F0Oo",
+          "title": "Ivern Mid vs LeBlanc - NA Grandmaster Patch 25.13",
+          "rankClaim": "Grandmaster",
+          "patch": "25.13",
+          "durationSec": 1771,
+          "region": "NA",
+          "uploaded": "2025-07-12",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 7,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "5sa_VKfiyeE",
+          "title": "Ivern Support vs LeBlanc - KR Master Patch 26.19",
+          "rankClaim": "Master",
+          "patch": "26.19",
+          "durationSec": 1710,
+          "region": "KR",
+          "uploaded": "2026-10-05",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 8,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "QKdUTnmbTtQ",
+          "title": "Ivern Top vs Vladimir - KR Master Patch 25.11",
+          "rankClaim": "Master",
+          "patch": "25.11",
+          "durationSec": 1908,
+          "region": "KR",
+          "uploaded": "2025-06-11",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 9,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "aXTXIaRT1CQ",
+          "title": "Ivern Jungle vs Fiddlesticks - KR Challenger Patch 25.04",
+          "rankClaim": "Challenger",
+          "patch": "25.4",
+          "durationSec": 1764,
+          "region": "KR",
+          "uploaded": "2025-02-24",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 9,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "zI_Zvzd4uXY",
+          "title": "Ivern Top vs Fiddlesticks - KR Master Patch 25.21",
+          "rankClaim": "Master",
+          "patch": "25.21",
+          "durationSec": 1520,
+          "region": "KR",
+          "uploaded": "2025-11-05",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 13,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "HJzgJ1KG-5I",
+          "title": "Ivern Mid vs Ryze - KR Grandmaster Patch 26.11",
+          "rankClaim": "Grandmaster",
+          "patch": "26.11",
+          "durationSec": 1889,
+          "region": "KR",
+          "uploaded": "2026-06-09",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 20,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "0wvRs3HRK3A",
+          "title": "(MISA 113) Ivern Jungle vs Nunu & Willump - EUW Challenger Patch 26.12",
+          "rankClaim": "Challenger",
+          "patch": "26.12",
+          "durationSec": 1403,
+          "region": "EUW",
+          "player": "MISA 113",
+          "uploaded": "2026-06-16",
+          "moments": []
+        },
+        {
+          "videoId": "_1TxgfXoC_M",
+          "title": "Ivern vs Nunu 6/0/16 (Jungle) | EUW Grandmaster | Ivern OTP Replay",
+          "rankClaim": "Grandmaster",
+          "patch": "26.7",
+          "durationSec": 1878,
+          "region": "EUW",
+          "patchEstimated": true,
+          "uploaded": "2026-04-08",
+          "moments": []
+        },
+        {
+          "videoId": "iWSaX1pgdxg",
+          "title": "Ivern Jungle vs Nunu & Willump - KR Grandmaster Patch 25.19",
+          "rankClaim": "Grandmaster",
+          "patch": "25.19",
+          "durationSec": 1680,
+          "region": "KR",
+          "uploaded": "2025-10-02",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 24,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "UCQQP05CoM8",
+          "title": "Ivern Top vs Jax - KR Master Patch 26.21",
+          "rankClaim": "Master",
+          "patch": "26.21",
+          "durationSec": 1815,
+          "region": "KR",
+          "uploaded": "2026-11-02",
+          "result": "W",
+          "moments": [
+            {
+              "atSec": 22,
+              "label": "First Blood — Shaco kills Rek'Sai",
+              "kind": "kill"
+            },
+            {
+              "atSec": 331,
+              "label": "Red takes 1st Dragon (Cloud)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 350,
+              "label": "Ivern catches Jax"
+            },
+            {
+              "atSec": 665,
+              "label": "Ivern outduels Jax again"
+            },
+            {
+              "atSec": 736,
+              "label": "Red takes 2nd Dragon (Mountain)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1078,
+              "label": "Red takes 3rd Dragon (Hextech)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1201,
+              "label": "Blue takes Baron",
+              "kind": "baron"
+            },
+            {
+              "atSec": 1397,
+              "label": "Ivern eliminates Jax"
+            },
+            {
+              "atSec": 1405,
+              "label": "Ivern Triple Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1445,
+              "label": "Red takes 4th Dragon (Hextech)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1476,
+              "label": "Mid Inhibitor falls (Blue)"
+            },
+            {
+              "atSec": 1504,
+              "label": "Braum eliminates Jax"
+            },
+            {
+              "atSec": 1625,
+              "label": "Mid Inhibitor falls (Red)"
+            },
+            {
+              "atSec": 1643,
+              "label": "Shaco kills Jax",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1647,
+              "label": "Shaco Triple Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1656,
+              "label": "Shaco Quadra Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1697,
+              "label": "Red takes Baron",
+              "kind": "baron"
+            },
+            {
+              "atSec": 1793,
+              "label": "Ivern Double Kill",
+              "kind": "kill"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 25,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "10P2Zxui8Jw",
+          "title": "Ivern Support vs Morgana - KR Master Patch 25.24",
+          "rankClaim": "Master",
+          "patch": "25.24",
+          "durationSec": 1605,
+          "region": "KR",
+          "uploaded": "2025-12-29",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 28,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "-OFnTc47EzE",
+          "title": "Ivern Jungle vs Evelynn - KR Master Patch 26.18",
+          "rankClaim": "Master",
+          "patch": "26.18",
+          "durationSec": 1524,
+          "region": "KR",
+          "uploaded": "2026-09-16",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 30,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "3aBT2iEiRVc",
+          "title": "Ivern Jungle vs Karthus - KR Master Patch 25.09",
+          "rankClaim": "Master",
+          "patch": "25.9",
+          "durationSec": 2131,
+          "region": "KR",
+          "uploaded": "2025-05-05",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 176,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 196,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 291,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 395,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 431,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 576,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 690,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1026,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1214,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1297,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1321,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1346,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1529,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1583,
+              "label": "Hunt The Baron Nashor",
+              "kind": "baron"
+            },
+            {
+              "atSec": 1610,
+              "label": "Hunt The Dragon",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1642,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1928,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1995,
+              "label": "Hunt The Dragon",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 2085,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 2110,
+              "label": "End credit"
+            }
+          ]
+        },
+        {
+          "videoId": "y-efUprmuyY",
+          "title": "Ivern Jungle vs Karthus - EUW Grandmaster Patch 25.08",
+          "rankClaim": "Grandmaster",
+          "patch": "25.8",
+          "durationSec": 1802,
+          "region": "EUW",
+          "uploaded": "2025-04-26",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 31,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "LCX5mLmZ9u4",
+          "title": "Ivern Top vs Cho'Gath - KR Master Patch 25.17",
+          "rankClaim": "Master",
+          "patch": "25.17",
+          "durationSec": 1424,
+          "region": "KR",
+          "uploaded": "2025-09-11",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 35,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "WvMHRJ3AEZ4",
+          "title": "Ivern Jungle vs Shaco - KR Challenger Patch 26.06",
+          "rankClaim": "Challenger",
+          "patch": "26.6",
+          "durationSec": 1739,
+          "region": "KR",
+          "uploaded": "2026-03-28",
+          "moments": []
+        },
+        {
+          "videoId": "co_n-Hd1-Xg",
+          "title": "Ivern Jungle vs Shaco - NA Challenger Patch 26.04",
+          "rankClaim": "Challenger",
+          "patch": "26.4",
+          "durationSec": 1855,
+          "region": "NA",
+          "uploaded": "2026-02-28",
+          "moments": []
+        },
+        {
+          "videoId": "cxAb2fIujCg",
+          "title": "Ivern Jungle vs Shaco - KR Master Patch 25.05",
+          "rankClaim": "Master",
+          "patch": "25.5",
+          "durationSec": 2050,
+          "region": "KR",
+          "uploaded": "2025-03-09",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 36,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "GI4q-cbpZ74",
+          "title": "Ivern Jungle vs Dr. Mundo - EUW Grandmaster Patch 26.05",
+          "rankClaim": "Grandmaster",
+          "patch": "26.5",
+          "durationSec": 1588,
+          "region": "EUW",
+          "uploaded": "2026-03-19",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 39,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "jdNZujZC3aM",
+          "title": "Ivern Top vs Irelia - KR Master Patch 25.13",
+          "rankClaim": "Master",
+          "patch": "25.13",
+          "durationSec": 1593,
+          "region": "KR",
+          "uploaded": "2025-07-08",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 41,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "YHkyQC2T4IM",
+          "title": "Ivern Top vs Gangplank - KR Master Patch 25.19",
+          "rankClaim": "Master",
+          "patch": "25.19",
+          "durationSec": 1967,
+          "region": "KR",
+          "uploaded": "2025-10-10",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 48,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "wj1Su3RuIP8",
+          "title": "Ivern Jungle vs Trundle - KR Challenger Patch 26.16",
+          "rankClaim": "Challenger",
+          "patch": "26.16",
+          "durationSec": 1798,
+          "region": "KR",
+          "uploaded": "2026-08-28",
+          "moments": []
+        },
+        {
+          "videoId": "8E9kygRPDTI",
+          "title": "Ivern Jungle vs Trundle - KR Challenger Patch 25.13",
+          "rankClaim": "Challenger",
+          "patch": "25.13",
+          "durationSec": 1972,
+          "region": "KR",
+          "uploaded": "2025-07-02",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 56,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "wPl7PtJFBEY",
+          "title": "Ivern Jungle vs Nocturne - EUW Grandmaster Patch 26.14",
+          "rankClaim": "Grandmaster",
+          "patch": "26.14",
+          "durationSec": 1550,
+          "region": "EUW",
+          "uploaded": "2026-07-31",
+          "moments": []
+        },
+        {
+          "videoId": "wNIwGKUrfmk",
+          "title": "Ivern Jungle vs Nocturne (AL Shanks) - EUW Grandmaster Patch 26.12",
+          "rankClaim": "Grandmaster",
+          "patch": "26.12",
+          "durationSec": 1701,
+          "region": "EUW",
+          "player": "Shanks",
+          "uploaded": "2026-06-24",
+          "moments": []
+        },
+        {
+          "videoId": "czmGP58d2BI",
+          "title": "Ivern Jungle vs Nocturne - NA Grandmaster Patch 25.24",
+          "rankClaim": "Grandmaster",
+          "patch": "25.24",
+          "durationSec": 1522,
+          "region": "NA",
+          "uploaded": "2025-12-12",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 26,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 260,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 376,
+              "label": "Hunt The Dragon",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 393,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 523,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 633,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 703,
+              "label": "Hunt The Dragon",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 732,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 826,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 929,
+              "label": "Hunt The Rift Herald",
+              "kind": "herald"
+            },
+            {
+              "atSec": 965,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1034,
+              "label": "Hunt The Dragon",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1068,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1171,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1227,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1246,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1259,
+              "label": "Hunt The Atakhan"
+            },
+            {
+              "atSec": 1282,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1348,
+              "label": "Hunt The Dragon",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1382,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1408,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1428,
+              "label": "Take down The Inhibitor"
+            },
+            {
+              "atSec": 1511,
+              "label": "End credit"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 58,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "Gj500iR4DbY",
+          "title": "Ivern Top vs Renekton - EUW Challenger Patch 26.03",
+          "rankClaim": "Challenger",
+          "patch": "26.3",
+          "durationSec": 1896,
+          "region": "EUW",
+          "uploaded": "2026-02-18",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 61,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "w63uXwDwF1o",
+          "title": "Ivern Mid vs Orianna - EUW Grandmaster Patch 26.02",
+          "rankClaim": "Grandmaster",
+          "patch": "26.2",
+          "durationSec": 1569,
+          "region": "EUW",
+          "uploaded": "2026-02-03",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 64,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "eghY7qWtDNA",
+          "title": "Ivern Jungle vs Lee Sin (OMG Juhan) - KR Challenger Patch 26.17",
+          "rankClaim": "Challenger",
+          "patch": "26.17",
+          "durationSec": 1492,
+          "region": "KR",
+          "uploaded": "2026-09-02",
+          "moments": []
+        },
+        {
+          "videoId": "sJlgWHzA22c",
+          "title": "Ivern Jungle vs Lee Sin - KR Challenger Patch 26.15",
+          "rankClaim": "Challenger",
+          "patch": "26.15",
+          "durationSec": 1495,
+          "region": "KR",
+          "uploaded": "2026-08-13",
+          "moments": []
+        },
+        {
+          "videoId": "_nLGkE2JjGU",
+          "title": "Ivern Jungle vs Lee Sin (DNS Pyosik) - KR Challenger Patch 26.15",
+          "rankClaim": "Challenger",
+          "patch": "26.15",
+          "durationSec": 1501,
+          "region": "KR",
+          "player": "Pyosik",
+          "uploaded": "2026-08-03",
+          "result": "W",
+          "moments": [
+            {
+              "atSec": 195,
+              "label": "First Blood — Caitlyn kills Kai'Sa",
+              "kind": "kill"
+            },
+            {
+              "atSec": 376,
+              "label": "Rell picks off Kai'Sa"
+            },
+            {
+              "atSec": 450,
+              "label": "Rell eliminates Nautilus"
+            },
+            {
+              "atSec": 480,
+              "label": "Blue takes 1st Dragon (Hextech)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 797,
+              "label": "Blue takes 2nd Dragon (Ocean)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 878,
+              "label": "Blue takes Rift Herald",
+              "kind": "herald"
+            },
+            {
+              "atSec": 1067,
+              "label": "Caitlyn kills Ryze",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1154,
+              "label": "Blue takes 3rd Dragon (Cloud)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1268,
+              "label": "Team fight (3 kills)",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1314,
+              "label": "Blue takes Baron",
+              "kind": "baron"
+            },
+            {
+              "atSec": 1414,
+              "label": "Mid Inhibitor falls (Red)"
+            }
+          ]
+        },
+        {
+          "videoId": "_s1G4nfYZaI",
+          "title": "Ivern Jungle vs Lee Sin - KR Grandmaster Patch 26.02",
+          "rankClaim": "Grandmaster",
+          "patch": "26.2",
+          "durationSec": 1482,
+          "region": "KR",
+          "uploaded": "2026-01-30",
+          "moments": []
+        },
+        {
+          "videoId": "RBHL39lwD0k",
+          "title": "Ivern Jungle vs Lee Sin - KR Grandmaster Patch 25.15",
+          "rankClaim": "Grandmaster",
+          "patch": "25.15",
+          "durationSec": 1427,
+          "region": "KR",
+          "uploaded": "2025-08-09",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 68,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "74axslk5epo",
+          "title": "Ivern Jungle vs Rumble - KR Master Patch 25.18",
+          "rankClaim": "Master",
+          "patch": "25.18",
+          "durationSec": 1498,
+          "region": "KR",
+          "uploaded": "2025-09-20",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 69,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "eib7pXnsWl0",
+          "title": "Ivern Top vs Cassiopeia - KR Master Patch 26.04",
+          "rankClaim": "Master",
+          "patch": "26.4",
+          "durationSec": 1632,
+          "region": "KR",
+          "uploaded": "2026-03-05",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 222,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 308,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 548,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 627,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 721,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 790,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 827,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 910,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 942,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 972,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1052,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1181,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1240,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1463,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1588,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1621,
+              "label": "End credit"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 72,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "g5biBXJcXeo",
+          "title": "Ivern Jungle vs Skarner - NA Challenger Patch 26.19",
+          "rankClaim": "Challenger",
+          "patch": "26.19",
+          "durationSec": 1693,
+          "region": "NA",
+          "uploaded": "2026-09-28",
+          "moments": []
+        },
+        {
+          "videoId": "5pwTebuyYqE",
+          "title": "(BW Elramir) Ivern Jungle vs Skarner - EUW Grandmaster Patch 26.11",
+          "rankClaim": "Grandmaster",
+          "patch": "26.11",
+          "durationSec": 1547,
+          "region": "EUW",
+          "player": "BW Elramir",
+          "uploaded": "2026-06-02",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 76,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "P4-2IGw5fpA",
+          "title": "Ivern Jungle vs Nidalee - EUW Challenger Patch 26.14",
+          "rankClaim": "Challenger",
+          "patch": "26.14",
+          "durationSec": 1620,
+          "region": "EUW",
+          "uploaded": "2026-07-21",
+          "moments": []
+        },
+        {
+          "videoId": "Ejzw5Gm3Di8",
+          "title": "Ivern Jungle vs Nidalee - KR Grandmaster Patch 25.22",
+          "rankClaim": "Grandmaster",
+          "patch": "25.22",
+          "durationSec": 1734,
+          "region": "KR",
+          "uploaded": "2025-11-12",
+          "moments": []
+        },
+        {
+          "videoId": "mV2KRAUJSLY",
+          "title": "Ivern Jungle vs Nidalee - KR Grandmaster Patch 25.11",
+          "rankClaim": "Grandmaster",
+          "patch": "25.11",
+          "durationSec": 1502,
+          "region": "KR",
+          "uploaded": "2025-06-04",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 80,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "j87WyXX5T0o",
+          "title": "Ivern Jungle vs Pantheon - KR Challenger Patch 25.10",
+          "rankClaim": "Challenger",
+          "patch": "25.10",
+          "durationSec": 1576,
+          "region": "KR",
+          "uploaded": "2025-05-22",
+          "moments": []
+        },
+        {
+          "videoId": "7_nG6T72yPQ",
+          "title": "Ivern Jungle vs Pantheon - EUW Grandmaster Patch 25.07",
+          "rankClaim": "Grandmaster",
+          "patch": "25.7",
+          "durationSec": 1877,
+          "region": "EUW",
+          "uploaded": "2025-04-05",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 82,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "qWb1frByinI",
+          "title": "Ivern Top vs Mordekaiser - KR Master Patch 25.15",
+          "rankClaim": "Master",
+          "patch": "25.15",
+          "durationSec": 1539,
+          "region": "KR",
+          "uploaded": "2025-08-13",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 85,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "GKKU1YYN1Es",
+          "title": "Ivern Top vs Kennen - KR Master Patch 26.20",
+          "rankClaim": "Master",
+          "patch": "26.20",
+          "durationSec": 1813,
+          "region": "KR",
+          "uploaded": "2026-10-19",
+          "result": "W",
+          "moments": [
+            {
+              "atSec": 336,
+              "label": "First Blood — Ivern kills Kennen",
+              "kind": "kill"
+            },
+            {
+              "atSec": 454,
+              "label": "Red takes 1st Dragon (Hextech)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 504,
+              "label": "Ivern eliminates Kennen"
+            },
+            {
+              "atSec": 672,
+              "label": "Ivern eliminates Vex"
+            },
+            {
+              "atSec": 820,
+              "label": "Red takes 2nd Dragon (Cloud)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 833,
+              "label": "Ivern outduels Kayn"
+            },
+            {
+              "atSec": 930,
+              "label": "Team fight (3 kills)",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1075,
+              "label": "Jayce eliminates Draven"
+            },
+            {
+              "atSec": 1103,
+              "label": "Ivern catches Kennen"
+            },
+            {
+              "atSec": 1138,
+              "label": "Blue takes 1st Dragon (Mountain)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1285,
+              "label": "Singed eliminates Kayn"
+            },
+            {
+              "atSec": 1290,
+              "label": "Singed Triple Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1293,
+              "label": "Singed PENTA KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1473,
+              "label": "Blue takes 2nd Dragon (Mountain)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1545,
+              "label": "Syndra eliminates Mel"
+            },
+            {
+              "atSec": 1764,
+              "label": "Syndra Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1791,
+              "label": "Mid Inhibitor falls (Red)"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 91,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "Kfa07EIQk78",
+          "title": "Ivern Jungle vs Talon - EUW Grandmaster Patch 25.12",
+          "rankClaim": "Grandmaster",
+          "patch": "25.12",
+          "durationSec": 1978,
+          "region": "EUW",
+          "uploaded": "2025-06-14",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 99,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "JG52-4kP_mc",
+          "title": "Ivern Mid vs Lux - KR Master Patch 26.01",
+          "rankClaim": "Master",
+          "patch": "26.1",
+          "durationSec": 1511,
+          "region": "KR",
+          "uploaded": "2026-01-22",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 347,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 411,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 572,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 857,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1104,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1137,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1190,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1260,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1285,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1387,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1449,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1500,
+              "label": "End credit"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 104,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "WTUT248bWrw",
+          "title": "Ivern Jungle vs Graves - KR Grandmaster Patch 25.21",
+          "rankClaim": "Grandmaster",
+          "patch": "25.21",
+          "durationSec": 2061,
+          "region": "KR",
+          "uploaded": "2025-10-31",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 107,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "uJLwWVGoNEo",
+          "title": "Ivern Top vs Rengar - KR Master Patch 25.16",
+          "rankClaim": "Master",
+          "patch": "25.16",
+          "durationSec": 1676,
+          "region": "KR",
+          "uploaded": "2025-08-26",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 110,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "IZwVCRDxePU",
+          "title": "Ivern Top vs Varus - KR Master Patch 26.18",
+          "rankClaim": "Master",
+          "patch": "26.18",
+          "durationSec": 1669,
+          "region": "KR",
+          "uploaded": "2026-09-23",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 111,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "0bc-m4G0Y2Y",
+          "title": "Ivern Support vs Nautilus - EUW Challenger Patch 25.18",
+          "rankClaim": "Challenger",
+          "patch": "25.18",
+          "durationSec": 1510,
+          "region": "EUW",
+          "uploaded": "2025-09-23",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 112,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "sqkMIP7ZIQs",
+          "title": "Ivern Mid vs Viktor - KR Grandmaster Patch 25.23",
+          "rankClaim": "Grandmaster",
+          "patch": "25.23",
+          "durationSec": 1688,
+          "region": "KR",
+          "uploaded": "2025-12-04",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 121,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "VuCZuvbL8Ps",
+          "title": "Ivern Jungle vs Kha'Zix - NA Challenger Patch 26.05",
+          "rankClaim": "Challenger",
+          "patch": "26.5",
+          "durationSec": 1671,
+          "region": "NA",
+          "uploaded": "2026-03-13",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 126,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "5qJ4VWWqLAg",
+          "title": "Ivern Top vs Jayce - KR Master Patch 26.17",
+          "rankClaim": "Master",
+          "patch": "26.17",
+          "durationSec": 1539,
+          "region": "KR",
+          "uploaded": "2026-09-08",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 131,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "AXRInbz-1CY",
+          "title": "Ivern Mid vs Diana - KR Master Patch 25.07",
+          "rankClaim": "Master",
+          "patch": "25.7",
+          "durationSec": 1776,
+          "region": "KR",
+          "uploaded": "2025-04-15",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 154,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "fyXEqUaJ8mI",
+          "title": "Ivern Jungle vs Zac - KR Master Patch 25.16",
+          "rankClaim": "Master",
+          "patch": "25.16",
+          "durationSec": 1951,
+          "region": "KR",
+          "uploaded": "2025-08-18",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 157,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "HPdKU06K084",
+          "title": "Ivern Mid vs Yasuo - EUW Grandmaster Patch 25.09",
+          "rankClaim": "Grandmaster",
+          "patch": "25.9",
+          "durationSec": 2097,
+          "region": "EUW",
+          "uploaded": "2025-05-15",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 203,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 321,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 692,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 809,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 953,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1024,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1097,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1114,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1126,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1247,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1266,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1375,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1510,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1646,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1793,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 2005,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 2036,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 2052,
+              "label": "Take down The Inhibitor"
+            },
+            {
+              "atSec": 2063,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 2076,
+              "label": "End credit"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 163,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "JWJlJzUgI-I",
+          "title": "(GNG Dean) Ivern Jungle vs Taliyah - EUW Grandmaster Patch 26.16",
+          "rankClaim": "Grandmaster",
+          "patch": "26.16",
+          "durationSec": 1525,
+          "region": "EUW",
+          "player": "GNG Dean",
+          "uploaded": "2026-08-20",
+          "result": "L",
+          "moments": [
+            {
+              "atSec": 198,
+              "label": "First Blood — Braum kills Cassiopeia",
+              "kind": "kill"
+            },
+            {
+              "atSec": 403,
+              "label": "Katarina kills Cassiopeia",
+              "kind": "kill"
+            },
+            {
+              "atSec": 555,
+              "label": "Blue takes 1st Dragon (Ocean)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 662,
+              "label": "Ivern kills Sett",
+              "kind": "kill"
+            },
+            {
+              "atSec": 728,
+              "label": "Katarina takes down Twitch"
+            },
+            {
+              "atSec": 789,
+              "label": "Katarina eliminates Taliyah"
+            },
+            {
+              "atSec": 864,
+              "label": "Katarina kills Cassiopeia",
+              "kind": "kill"
+            },
+            {
+              "atSec": 890,
+              "label": "Red takes 1st Dragon (Cloud)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1024,
+              "label": "Anivia picks off Taliyah"
+            },
+            {
+              "atSec": 1061,
+              "label": "Ivern Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1176,
+              "label": "Anivia takes down Elise"
+            },
+            {
+              "atSec": 1214,
+              "label": "Red takes 2nd Dragon (Infernal)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1251,
+              "label": "Katarina eliminates Taliyah"
+            },
+            {
+              "atSec": 1282,
+              "label": "Red takes Baron",
+              "kind": "baron"
+            },
+            {
+              "atSec": 1398,
+              "label": "Katarina takes down Twitch"
+            },
+            {
+              "atSec": 1438,
+              "label": "Mid Inhibitor falls (Blue)"
+            },
+            {
+              "atSec": 1462,
+              "label": "Viktor Double Kill",
+              "kind": "kill"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 200,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "De5KHI94Whw",
+          "title": "Ivern Jungle vs Bel'Veth - KR Master Patch 26.08",
+          "rankClaim": "Master",
+          "patch": "26.8",
+          "durationSec": 1481,
+          "region": "KR",
+          "uploaded": "2026-04-23",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 234,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "6W_C1yfX-Mc",
+          "title": "Ivern Jungle vs Viego - KR Master Patch 26.07",
+          "rankClaim": "Master",
+          "patch": "26.7",
+          "durationSec": 1889,
+          "region": "KR",
+          "uploaded": "2026-04-10",
+          "moments": []
+        },
+        {
+          "videoId": "nOU4VCD-9tk",
+          "title": "Ivern Jungle vs Viego - KR Master Patch 25.24",
+          "rankClaim": "Master",
+          "patch": "25.24",
+          "durationSec": 1596,
+          "region": "KR",
+          "uploaded": "2025-12-18",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 133,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 192,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 246,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 397,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 534,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 665,
+              "label": "Hunt The Dragon",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 755,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 867,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 993,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1113,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1164,
+              "label": "Hunt The Rift Herald",
+              "kind": "herald"
+            },
+            {
+              "atSec": 1221,
+              "label": "Hunt The Atakhan"
+            },
+            {
+              "atSec": 1247,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1266,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1280,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1380,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1404,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1462,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1496,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1510,
+              "label": "Take down The Inhibitor"
+            },
+            {
+              "atSec": 1529,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1573,
+              "label": "Hunt The Baron Nashor",
+              "kind": "baron"
+            },
+            {
+              "atSec": 1585,
+              "label": "End credit"
+            }
+          ]
+        },
+        {
+          "videoId": "Vm0wCjfQDa8",
+          "title": "Ivern Jungle vs Viego - KR Grandmaster Patch 25.23",
+          "rankClaim": "Grandmaster",
+          "patch": "25.23",
+          "durationSec": 1870,
+          "region": "KR",
+          "uploaded": "2025-11-28",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 235,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "KwibbZBeRQQ",
+          "title": "Ivern Support vs Senna - NA Challenger Patch 26.08",
+          "rankClaim": "Challenger",
+          "patch": "26.8",
+          "durationSec": 1696,
+          "region": "NA",
+          "uploaded": "2026-05-01",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 238,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "EMWzvjQIckI",
+          "title": "Ivern Jungle vs Zed - KR Challenger Patch 25.14",
+          "rankClaim": "Challenger",
+          "patch": "25.14",
+          "durationSec": 2060,
+          "region": "KR",
+          "uploaded": "2025-07-24",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 238,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "9Igk8T6bG5M",
+          "title": "Ivern Mid vs Zed - KR Master Patch 25.04",
+          "rankClaim": "Master",
+          "patch": "25.4",
+          "durationSec": 1992,
+          "region": "KR",
+          "uploaded": "2025-03-04",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 245,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "rllCxwX_z0A",
+          "title": "Ivern Jungle vs Ekko - KR Grandmaster Patch 26.03",
+          "rankClaim": "Grandmaster",
+          "patch": "26.3",
+          "durationSec": 1587,
+          "region": "KR",
+          "uploaded": "2026-02-13",
+          "moments": []
+        },
+        {
+          "videoId": "31wTGdKUD1A",
+          "title": "Ivern Jungle vs Ekko - KR Grandmaster Patch 25.20",
+          "rankClaim": "Grandmaster",
+          "patch": "25.20",
+          "durationSec": 1958,
+          "region": "KR",
+          "uploaded": "2025-10-11",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 246,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "EQCySD2xNpQ",
+          "title": "Ivern Jungle vs Qiyana - EUW Grandmaster Patch 26.20",
+          "rankClaim": "Grandmaster",
+          "patch": "26.20",
+          "durationSec": 1753,
+          "region": "EUW",
+          "uploaded": "2026-10-13",
+          "result": "W",
+          "moments": [
+            {
+              "atSec": 30,
+              "label": "First Blood — Ivern kills Zeri",
+              "kind": "kill"
+            },
+            {
+              "atSec": 322,
+              "label": "Ivern outplays Qiyana"
+            },
+            {
+              "atSec": 411,
+              "label": "Red takes 1st Dragon (Hextech)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 754,
+              "label": "Red takes 2nd Dragon (Infernal)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 970,
+              "label": "Caitlyn picks off Braum"
+            },
+            {
+              "atSec": 1026,
+              "label": "Riven takes down Sylas"
+            },
+            {
+              "atSec": 1087,
+              "label": "Blue takes 1st Dragon (Mountain)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1190,
+              "label": "Caitlyn eliminates Qiyana"
+            },
+            {
+              "atSec": 1219,
+              "label": "Red takes Baron",
+              "kind": "baron"
+            },
+            {
+              "atSec": 1421,
+              "label": "Riven Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1444,
+              "label": "Red takes 3rd Dragon (Mountain)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1501,
+              "label": "Caitlyn kills Sylas",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1599,
+              "label": "Blue takes Baron",
+              "kind": "baron"
+            },
+            {
+              "atSec": 1603,
+              "label": "Riven eliminates Akali"
+            },
+            {
+              "atSec": 1703,
+              "label": "Caitlyn Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1710,
+              "label": "Caitlyn Triple Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1716,
+              "label": "Caitlyn Quadra Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1732,
+              "label": "Mid Inhibitor falls (Blue)"
+            }
+          ]
+        },
+        {
+          "videoId": "vDsr-gIjbrc",
+          "title": "Ivern Jungle vs Qiyana - KR Master Patch 26.10",
+          "rankClaim": "Master",
+          "patch": "26.10",
+          "durationSec": 1640,
+          "region": "KR",
+          "uploaded": "2026-05-29",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 267,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "xG9v4ukeuAg",
+          "title": "Ivern Support vs Nami - NA Challenger Patch 25.19",
+          "rankClaim": "Challenger",
+          "patch": "25.19",
+          "durationSec": 1598,
+          "region": "NA",
+          "uploaded": "2025-10-09",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 268,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "t_o2zSdLB-I",
+          "title": "Ivern Mid vs Azir - NA Grandmaster Patch 25.10",
+          "rankClaim": "Grandmaster",
+          "patch": "25.10",
+          "durationSec": 1584,
+          "region": "NA",
+          "uploaded": "2025-05-27",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 412,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "VDvwQWNarFE",
+          "title": "Ivern Support vs Thresh - NA Grandmaster Patch 26.07",
+          "rankClaim": "Grandmaster",
+          "patch": "26.7",
+          "durationSec": 1750,
+          "region": "NA",
+          "uploaded": "2026-04-15",
+          "moments": []
+        },
+        {
+          "videoId": "xUiAQlkrkIY",
+          "title": "Ivern Support vs Thresh - KR Master Patch 26.06",
+          "rankClaim": "Master",
+          "patch": "26.6",
+          "durationSec": 1499,
+          "region": "KR",
+          "uploaded": "2026-03-31",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 139,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 430,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 460,
+              "label": "Hunt The Dragon",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 487,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 852,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 879,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1000,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1128,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1152,
+              "label": "Hunt The Dragon",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1180,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1225,
+              "label": "Hunt The Baron Nashor",
+              "kind": "baron"
+            },
+            {
+              "atSec": 1320,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1365,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1378,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1459,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1488,
+              "label": "End credit"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 497,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "tgmZj_0Un-4",
+          "title": "Ivern Support vs Rakan - TW Challenger Patch 25.24",
+          "rankClaim": "Challenger",
+          "patch": "25.24",
+          "durationSec": 1594,
+          "uploaded": "2025-12-20",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 517,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "1isFLj04_qc",
+          "title": "(LR Baus) Ivern Jungle vs Sylas - EUW Grandmaster Patch 26.13",
+          "rankClaim": "Grandmaster",
+          "patch": "26.13",
+          "durationSec": 1512,
+          "region": "EUW",
+          "player": "Thebausffs",
+          "uploaded": "2026-07-11",
+          "moments": []
+        },
+        {
+          "videoId": "0HcVmJQw5ks",
+          "title": "(WK Rybson) Ivern Jungle vs Sylas - EUW Challenger Patch 26.13",
+          "rankClaim": "Challenger",
+          "patch": "26.13",
+          "durationSec": 1428,
+          "region": "EUW",
+          "player": "WK Rybson",
+          "uploaded": "2026-07-01",
+          "moments": []
+        },
+        {
+          "videoId": "qr4nlOObPWA",
+          "title": "Ivern Jungle vs Sylas - KR Challenger Patch 25.17",
+          "rankClaim": "Challenger",
+          "patch": "25.17",
+          "durationSec": 1643,
+          "region": "KR",
+          "uploaded": "2025-09-03",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 517,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "QayrlBN_0Hs",
+          "title": "Ivern Mid vs Sylas - KR Master Patch 25.06",
+          "rankClaim": "Master",
+          "patch": "25.6",
+          "durationSec": 1648,
+          "region": "KR",
+          "uploaded": "2025-04-01",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 777,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "W4zyAVzuIG0",
+          "title": "Ivern Mid vs Yone - KR Master Patch 25.14",
+          "rankClaim": "Master",
+          "patch": "25.14",
+          "durationSec": 1805,
+          "region": "KR",
+          "uploaded": "2025-07-30",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 777,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "Sb51TRfUE5c",
+          "title": "Ivern Top vs Yone (KRX Vincenzo) - KR Grandmaster Patch 26.13",
+          "rankClaim": "Grandmaster",
+          "patch": "26.13",
+          "durationSec": 1588,
+          "region": "KR",
+          "uploaded": "2026-07-06",
+          "moments": []
+        },
+        {
+          "videoId": "Vz3zM1aZ9-U",
+          "title": "Ivern Top vs Yone - KR Master Patch 25.08",
+          "rankClaim": "Master",
+          "patch": "25.8",
+          "durationSec": 2058,
+          "region": "KR",
+          "uploaded": "2025-04-21",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 799,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "aB-RAsSotHE",
+          "title": "(LR Baus) Ivern Jungle vs Ambessa - EUW Grandmaster Patch 26.10",
+          "rankClaim": "Grandmaster",
+          "patch": "26.10",
+          "durationSec": 1746,
+          "region": "EUW",
+          "player": "Thebausffs",
+          "uploaded": "2026-05-22",
+          "moments": []
+        },
+        {
+          "videoId": "fVHyIhsSicE",
+          "title": "Ivern Jungle vs Ambessa - KR Grandmaster Patch 26.09",
+          "rankClaim": "Grandmaster",
+          "patch": "26.9",
+          "durationSec": 1547,
+          "region": "KR",
+          "uploaded": "2026-05-08",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 799,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "Dqm3Kuhd430",
+          "title": "Ivern Top vs Ambessa - EUW Challenger Patch 25.24",
+          "rankClaim": "Challenger",
+          "patch": "25.24",
+          "durationSec": 1464,
+          "region": "EUW",
+          "uploaded": "2026-01-10",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 356,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 393,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 826,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 852,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 900,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 980,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1184,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1316,
+              "label": "Hunt The Dragon",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1373,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1453,
+              "label": "End credit"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 876,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "WeqW6CdbH34",
+          "title": "(Sojo) Ivern Jungle vs Lillia - EUW Grandmaster Patch 26.21",
+          "rankClaim": "Grandmaster",
+          "patch": "26.21",
+          "durationSec": 1771,
+          "region": "EUW",
+          "player": "Sojo",
+          "uploaded": "2026-10-27",
+          "result": "W",
+          "moments": [
+            {
+              "atSec": 104,
+              "label": "First Blood — Twisted Fate kills Yone",
+              "kind": "kill"
+            },
+            {
+              "atSec": 379,
+              "label": "Blue takes 1st Dragon (Hextech)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 712,
+              "label": "Blue takes 2nd Dragon (Mountain)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 768,
+              "label": "Twisted Fate picks off Lillia"
+            },
+            {
+              "atSec": 873,
+              "label": "Twisted Fate kills Zeri",
+              "kind": "kill"
+            },
+            {
+              "atSec": 937,
+              "label": "Yorick kills Lillia",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1047,
+              "label": "Blue takes 3rd Dragon (Ocean)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1067,
+              "label": "Blue takes Rift Herald",
+              "kind": "herald"
+            },
+            {
+              "atSec": 1137,
+              "label": "Kai'Sa takes down Zeri"
+            },
+            {
+              "atSec": 1225,
+              "label": "Kai'Sa Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1254,
+              "label": "Mid Inhibitor falls (Red)"
+            },
+            {
+              "atSec": 1311,
+              "label": "Kai'Sa picks off Ambessa"
+            },
+            {
+              "atSec": 1315,
+              "label": "Kai'Sa Triple Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1403,
+              "label": "Red takes Baron",
+              "kind": "baron"
+            },
+            {
+              "atSec": 1438,
+              "label": "Blue takes 4th Dragon (Ocean)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1510,
+              "label": "Kai'Sa eliminates Lillia"
+            },
+            {
+              "atSec": 1739,
+              "label": "Yorick Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1749,
+              "label": "Mid Inhibitor falls (Red)"
+            }
+          ]
+        },
+        {
+          "videoId": "pSqJRuXnrE0",
+          "title": "Ivern Jungle vs Lillia - KR Grandmaster Patch 25.06",
+          "rankClaim": "Grandmaster",
+          "patch": "25.6",
+          "durationSec": 1989,
+          "region": "KR",
+          "uploaded": "2025-03-30",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 897,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "r2kuCbNSy2k",
+          "title": "Ivern Top vs K'Sante - KR Master Patch 25.20",
+          "rankClaim": "Master",
+          "patch": "25.20",
+          "durationSec": 1493,
+          "region": "KR",
+          "uploaded": "2025-10-22",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 902,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "f09uC5UjuUM",
+          "title": "Ivern Support vs Milio - KR Master Patch 25.12",
+          "rankClaim": "Master",
+          "patch": "25.12",
+          "durationSec": 1717,
+          "region": "KR",
+          "uploaded": "2025-06-24",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 904,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "YlgRUlSBf90",
+          "title": "Ivern vs Zaahen 8/2/24 (Jungle) | EUW Grandmaster | Ivern OTP Replay",
+          "rankClaim": "Grandmaster",
+          "patch": "26.7",
+          "durationSec": 2095,
+          "region": "EUW",
+          "patchEstimated": true,
+          "uploaded": "2026-04-13",
+          "moments": []
+        }
+      ]
+    }
+  ]
+}

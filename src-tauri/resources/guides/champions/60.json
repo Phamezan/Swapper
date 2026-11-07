@@ -1,0 +1,3677 @@
+{
+  "schema": 1,
+  "champion": 60,
+  "generatedAt": "2026-11-07T13:25:14.592Z",
+  "guides": [],
+  "general": [
+    {
+      "champion": 60,
+      "lane": "jungle",
+      "patch": "26.21",
+      "reviewed": false,
+      "keyTips": [
+        {
+          "text": "Gank reliably at level 3 with E online; the level-2 gank works only when E comes second.",
+          "scope": "champion",
+          "sourceIds": [
+            "mobalytics-elise"
+          ],
+          "abilityKeys": [
+            {
+              "champion": 60,
+              "key": "E"
+            }
+          ]
+        },
+        {
+          "text": "Spend early strength on frequent ganks while still farming camps between them.",
+          "scope": "champion",
+          "sourceIds": [
+            "mobalytics-elise"
+          ]
+        },
+        {
+          "text": "Peel for carries late and hit the nearest enemy instead of diving alone.",
+          "scope": "champion",
+          "sourceIds": [
+            "mobalytics-elise"
+          ]
+        }
+      ],
+      "sections": {
+        "overview": {
+          "tips": []
+        },
+        "early-lane": {
+          "tips": [
+            {
+              "text": "Turn early leads into lane advantages for teammates rather than solo plays.",
+              "scope": "champion",
+              "sourceIds": [
+                "mobalytics-elise"
+              ]
+            },
+            {
+              "text": "Guard Blue buff when possible, since losing it cuts casts and invites invades.",
+              "scope": "champion",
+              "sourceIds": [
+                "mobalytics-elise"
+              ]
+            },
+            {
+              "text": "Take Dragon and other early objectives with teammates for safety even though Elise can solo them.",
+              "scope": "champion",
+              "sourceIds": [
+                "mobalytics-elise"
+              ]
+            },
+            {
+              "text": "Open picks with long-range human E, then follow with Q and W on the controlled target.",
+              "scope": "champion",
+              "sourceIds": [
+                "mobalytics-elise"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 60,
+                  "key": "E"
+                },
+                {
+                  "champion": 60,
+                  "key": "Q"
+                },
+                {
+                  "champion": 60,
+                  "key": "W"
+                }
+              ]
+            },
+            {
+              "text": "Save Spider E to dodge key crowd control or stall a lost all-in; careless casts delete the escape.",
+              "scope": "champion",
+              "sourceIds": [
+                "mobalytics-elise"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 60,
+                  "key": "E"
+                }
+              ]
+            },
+            {
+              "text": "Treat the first finished item as an early kill-pressure spike, especially into low-magic-resistance squishies.",
+              "scope": "champion",
+              "sourceIds": [
+                "mobalytics-elise"
+              ]
+            }
+          ]
+        },
+        "mid-lane": {
+          "tips": [
+            {
+              "text": "Catch out-of-position enemies with E picks, then bring nearby teammates to cash them into objectives.",
+              "scope": "champion",
+              "sourceIds": [
+                "mobalytics-elise"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 60,
+                  "key": "E"
+                }
+              ]
+            },
+            {
+              "text": "Keep taking Dragons and clearing camps so gold never slides behind.",
+              "scope": "champion",
+              "sourceIds": [
+                "mobalytics-elise"
+              ]
+            },
+            {
+              "text": "At level 9, duel and contest harder with maxed Q.",
+              "scope": "champion",
+              "sourceIds": [
+                "mobalytics-elise"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 60,
+                  "key": "Q"
+                }
+              ]
+            },
+            {
+              "text": "Never treat levels 6 or 11 as spikes; the ultimate runs from level 1, so enemy junglers may gain more at those ranks.",
+              "scope": "champion",
+              "sourceIds": [
+                "mobalytics-elise"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 60,
+                  "key": "R"
+                }
+              ]
+            },
+            {
+              "text": "After the first item, challenge most junglers 1v1 with the first move.",
+              "scope": "champion",
+              "sourceIds": [
+                "mobalytics-elise"
+              ]
+            }
+          ]
+        },
+        "win-condition": {
+          "tips": [
+            {
+              "text": "Turn early ganks and picks into Dragon and objective control.",
+              "scope": "champion",
+              "sourceIds": [
+                "mobalytics-elise"
+              ]
+            },
+            {
+              "text": "Catch someone mid-game with E only with allies close enough to hold them.",
+              "scope": "champion",
+              "sourceIds": [
+                "mobalytics-elise"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 60,
+                  "key": "E"
+                }
+              ]
+            },
+            {
+              "text": "Group late and skip plan-less side lanes; Elise fades fast when behind.",
+              "scope": "champion",
+              "sourceIds": [
+                "mobalytics-elise"
+              ]
+            },
+            {
+              "text": "Throw late E picks beside allies on its shorter cooldown for more catch chances.",
+              "scope": "champion",
+              "sourceIds": [
+                "mobalytics-elise"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 60,
+                  "key": "E"
+                }
+              ]
+            },
+            {
+              "text": "Never bank on level 16 as an ultimate spike; keep playing around picks and E.",
+              "scope": "champion",
+              "sourceIds": [
+                "mobalytics-elise"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 60,
+                  "key": "E"
+                },
+                {
+                  "champion": 60,
+                  "key": "R"
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "itemization": [
+        {
+          "text": "Rush the first finished item for a major kill-pressure spike.",
+          "scope": "champion",
+          "sourceIds": [
+            "mobalytics-elise"
+          ]
+        },
+        {
+          "text": "Protect Blue buff as the resource plan, since its loss means fewer casts and open invasions.",
+          "scope": "champion",
+          "sourceIds": [
+            "mobalytics-elise"
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "id": "mobalytics-elise",
+          "author": "Mobalytics",
+          "rankClaim": "No rank claim",
+          "url": "https://mobalytics.gg/lol/champions/elise/guide/jungle",
+          "kind": "web"
+        }
+      ]
+    }
+  ],
+  "vods": [
+    {
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "iR1jPPtU2gw",
+          "title": "ELISE IS S+ TIER TO CLIMB NOW",
+          "rankClaim": "Master+",
+          "patch": "26.19",
+          "durationSec": 1404,
+          "patchEstimated": true,
+          "player": "Sinerias",
+          "uploaded": "2026-09-26",
+          "format": "stream",
+          "cam": true,
+          "moments": []
+        },
+        {
+          "videoId": "FFv91TddHFg",
+          "title": "This Is How I Won 10 GAMES IN A ROW With Elise",
+          "rankClaim": "Master+",
+          "patch": "26.8",
+          "durationSec": 2143,
+          "patchEstimated": true,
+          "player": "Broxah",
+          "uploaded": "2026-04-21",
+          "format": "stream",
+          "cam": true,
+          "moments": [
+            {
+              "atSec": 30,
+              "label": "Game 1"
+            },
+            {
+              "atSec": 952,
+              "label": "Game 2"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "tGS3ROD8YW4",
+          "title": "FIGHTING THE BEST ELISE OTP ON EUW",
+          "rankClaim": "Master+",
+          "patch": "26.21",
+          "durationSec": 1622,
+          "region": "EUW",
+          "patchEstimated": true,
+          "player": "Makkro",
+          "uploaded": "2026-10-22",
+          "format": "stream",
+          "cam": true,
+          "moments": [
+            {
+              "atSec": 0,
+              "label": "Match preparation"
+            },
+            {
+              "atSec": 66,
+              "label": "Early laning phase"
+            },
+            {
+              "atSec": 280,
+              "label": "Mid-game transitions"
+            },
+            {
+              "atSec": 691,
+              "label": "State of top lane"
+            },
+            {
+              "atSec": 813,
+              "label": "Escalation and skirmishes"
+            },
+            {
+              "atSec": 1174,
+              "label": "Late game team fighting"
+            },
+            {
+              "atSec": 1496,
+              "label": "Victory and match review"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 5,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "jQ_pkOdQymk",
+          "title": "Elise Jungle vs Xin Zhao - KR Challenger Patch 26.06",
+          "rankClaim": "Challenger",
+          "patch": "26.6",
+          "durationSec": 1508,
+          "region": "KR",
+          "uploaded": "2026-03-29",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 6,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "yPV7u3wPrdQ",
+          "title": "Elise Jungle vs Urgot - EUW Challenger Patch 25.21",
+          "rankClaim": "Challenger",
+          "patch": "25.21",
+          "durationSec": 1791,
+          "region": "EUW",
+          "uploaded": "2025-11-04",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 6,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "FxzBmqK-07A",
+          "title": "Elise Top vs Urgot - KR Master Patch 25.05",
+          "rankClaim": "Master",
+          "patch": "25.5",
+          "durationSec": 1701,
+          "region": "KR",
+          "uploaded": "2025-03-21",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 239,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 428,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 624,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 662,
+              "label": "Hunt The Void Grubs",
+              "kind": "grubs"
+            },
+            {
+              "atSec": 737,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 786,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 935,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1046,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1218,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1291,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1315,
+              "label": "Take down The Inhibitor"
+            },
+            {
+              "atSec": 1431,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1510,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1548,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1628,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1643,
+              "label": "Take down The Inhibitor"
+            },
+            {
+              "atSec": 1661,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1680,
+              "label": "End credit"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 11,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "z-YG9qMn2fI",
+          "title": "Elise Jungle vs Master Yi - KR Master Patch 26.09",
+          "rankClaim": "Master",
+          "patch": "26.9",
+          "durationSec": 1744,
+          "region": "KR",
+          "uploaded": "2026-05-11",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 12,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "uaQcAWYx0Gw",
+          "title": "Elise Support vs Alistar - KR Master Patch 25.11",
+          "rankClaim": "Master",
+          "patch": "25.11",
+          "durationSec": 1787,
+          "region": "KR",
+          "uploaded": "2025-06-03",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 17,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "bVqfUU8GVSE",
+          "title": "Elise Jungle vs Teemo - EUW Challenger Patch 25.24",
+          "rankClaim": "Challenger",
+          "patch": "25.24",
+          "durationSec": 1534,
+          "region": "EUW",
+          "uploaded": "2025-12-12",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 19,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "vMn7EDs05OE",
+          "title": "Elise Jungle vs Warwick - EUW Grandmaster Patch 25.16",
+          "rankClaim": "Grandmaster",
+          "patch": "25.16",
+          "durationSec": 1597,
+          "region": "EUW",
+          "uploaded": "2025-08-23",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 20,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "Is9fE-WrBnM",
+          "title": "(Agurin) Elise Jungle vs Nunu & Willump - EUW Challenger Patch 26.16",
+          "rankClaim": "Challenger",
+          "patch": "26.16",
+          "durationSec": 1520,
+          "region": "EUW",
+          "player": "Agurin",
+          "uploaded": "2026-08-18",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 26,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "lshBzxxY-xk",
+          "title": "Elise Support vs Zilean - KR Master Patch 26.20",
+          "rankClaim": "Master",
+          "patch": "26.20",
+          "durationSec": 1484,
+          "region": "KR",
+          "uploaded": "2026-10-17",
+          "result": "W",
+          "moments": [
+            {
+              "atSec": 110,
+              "label": "First Blood — Elise kills Rek'Sai",
+              "kind": "kill"
+            },
+            {
+              "atSec": 200,
+              "label": "Elise eliminates Malphite"
+            },
+            {
+              "atSec": 291,
+              "label": "Akali eliminates Lissandra"
+            },
+            {
+              "atSec": 364,
+              "label": "Elise takes down Malphite"
+            },
+            {
+              "atSec": 513,
+              "label": "Vex takes down Jhin"
+            },
+            {
+              "atSec": 573,
+              "label": "Red takes 1st Dragon (Mountain)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 579,
+              "label": "Elise takes down Lissandra"
+            },
+            {
+              "atSec": 628,
+              "label": "Vex eliminates Rek'Sai"
+            },
+            {
+              "atSec": 687,
+              "label": "Elise eliminates Malphite"
+            },
+            {
+              "atSec": 709,
+              "label": "Vex Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 909,
+              "label": "Blue takes 1st Dragon (Ocean)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1033,
+              "label": "Renekton picks off Jhin"
+            },
+            {
+              "atSec": 1135,
+              "label": "Elise eliminates Malphite"
+            },
+            {
+              "atSec": 1169,
+              "label": "Elise solo kills Zilean",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1233,
+              "label": "Renekton picks off Jhin"
+            },
+            {
+              "atSec": 1273,
+              "label": "Red takes 2nd Dragon (Infernal)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1352,
+              "label": "Red takes Baron",
+              "kind": "baron"
+            },
+            {
+              "atSec": 1433,
+              "label": "Elise picks off Jhin"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 28,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "9QNnl4pTpQA",
+          "title": "Elise Jungle vs Evelynn - EUW Challenger Patch 25.17",
+          "rankClaim": "Challenger",
+          "patch": "25.17",
+          "durationSec": 1624,
+          "region": "EUW",
+          "uploaded": "2025-09-07",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 30,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "DbpyRH64G7s",
+          "title": "Elise Jungle vs Karthus - KR Challenger Patch 25.04",
+          "rankClaim": "Challenger",
+          "patch": "25.4",
+          "durationSec": 2043,
+          "region": "KR",
+          "uploaded": "2025-02-26",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 31,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "QrhhiDIiS7s",
+          "title": "Elise Top vs Cho'Gath (POL Overpow) - EUW Grandmaster Patch 26.13",
+          "rankClaim": "Grandmaster",
+          "patch": "26.13",
+          "durationSec": 1838,
+          "region": "EUW",
+          "uploaded": "2026-07-05",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 36,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "WdoWQqEaM0U",
+          "title": "Elise Jungle vs Dr. Mundo - EUW Grandmaster Patch 25.24",
+          "rankClaim": "Grandmaster",
+          "patch": "25.24",
+          "durationSec": 1544,
+          "region": "EUW",
+          "uploaded": "2026-01-04",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 220,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 342,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 369,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 395,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 577,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 609,
+              "label": "Hunt The Dragon",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 644,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 679,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 797,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 903,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 928,
+              "label": "Hunt The Dragon",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 962,
+              "label": "Hunt The Rift Herald",
+              "kind": "herald"
+            },
+            {
+              "atSec": 995,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1202,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1282,
+              "label": "Hunt The Dragon",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1310,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1497,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1521,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1533,
+              "label": "End credit"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 37,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "sWe3AoL_OIw",
+          "title": "Elise Support vs Sona - EUW Challenger Patch 26.06",
+          "rankClaim": "Challenger",
+          "patch": "26.6",
+          "durationSec": 1746,
+          "region": "EUW",
+          "uploaded": "2026-03-22",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 170,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 380,
+              "label": "Hunt The Dragon",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 402,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 516,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 624,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 832,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 899,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 934,
+              "label": "Hunt The Rift Herald",
+              "kind": "herald"
+            },
+            {
+              "atSec": 957,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 987,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1050,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1312,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1327,
+              "label": "Hunt The Baron Nashor",
+              "kind": "baron"
+            },
+            {
+              "atSec": 1395,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1416,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1427,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1438,
+              "label": "Take down The Inhibitor"
+            },
+            {
+              "atSec": 1463,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1520,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1585,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1735,
+              "label": "End credit"
+            }
+          ]
+        },
+        {
+          "videoId": "hO4DkD4Q7q0",
+          "title": "Elise Support vs Sona - EUW Challenger Patch 25.10",
+          "rankClaim": "Challenger",
+          "patch": "25.10",
+          "durationSec": 1685,
+          "region": "EUW",
+          "uploaded": "2025-05-23",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 40,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "xyVOrQOuDuk",
+          "title": "Elise Support vs Janna - EUW Challenger Patch 25.19",
+          "rankClaim": "Challenger",
+          "patch": "25.19",
+          "durationSec": 1717,
+          "region": "EUW",
+          "uploaded": "2025-10-07",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 43,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "1GqOTLqAU8Q",
+          "title": "Elise Support vs Karma - KR Grandmaster Patch 26.21",
+          "rankClaim": "Grandmaster",
+          "patch": "26.21",
+          "durationSec": 1599,
+          "region": "KR",
+          "uploaded": "2026-10-30",
+          "result": "W",
+          "moments": [
+            {
+              "atSec": 550,
+              "label": "Blue takes 1st Dragon (Chemtech)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 588,
+              "label": "Rengar kills Karma",
+              "kind": "kill"
+            },
+            {
+              "atSec": 653,
+              "label": "Rengar picks off Anivia"
+            },
+            {
+              "atSec": 702,
+              "label": "Rengar Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 749,
+              "label": "Rengar picks off Anivia"
+            },
+            {
+              "atSec": 813,
+              "label": "Rengar eliminates Aphelios"
+            },
+            {
+              "atSec": 904,
+              "label": "Elise kills Wukong",
+              "kind": "kill"
+            },
+            {
+              "atSec": 910,
+              "label": "Red takes 1st Dragon (Infernal)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 959,
+              "label": "Team fight (3 kills)",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1084,
+              "label": "Cassiopeia picks off Wukong"
+            },
+            {
+              "atSec": 1160,
+              "label": "Rengar eliminates Aphelios"
+            },
+            {
+              "atSec": 1186,
+              "label": "Red takes Baron",
+              "kind": "baron"
+            },
+            {
+              "atSec": 1221,
+              "label": "Corki eliminates Wukong"
+            },
+            {
+              "atSec": 1256,
+              "label": "Blue takes 2nd Dragon (Cloud)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1341,
+              "label": "Team fight (3 kills)",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1434,
+              "label": "Rengar eliminates Aphelios"
+            },
+            {
+              "atSec": 1566,
+              "label": "Corki Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1583,
+              "label": "Cassiopeia Triple Kill",
+              "kind": "kill"
+            }
+          ]
+        },
+        {
+          "videoId": "sJaWkyOlJzU",
+          "title": "Elise Support vs Karma - KR Grandmaster Patch 26.05",
+          "rankClaim": "Grandmaster",
+          "patch": "26.5",
+          "durationSec": 1737,
+          "region": "KR",
+          "uploaded": "2026-03-18",
+          "moments": []
+        },
+        {
+          "videoId": "DwYK3_uNXSU",
+          "title": "Elise Support vs Karma - KR Master Patch 25.15",
+          "rankClaim": "Master",
+          "patch": "25.15",
+          "durationSec": 1644,
+          "region": "KR",
+          "uploaded": "2025-08-10",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 44,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "ajQrBJu4VgU",
+          "title": "Elise Jungle vs Taric - EUW Grandmaster Patch 25.08",
+          "rankClaim": "Grandmaster",
+          "patch": "25.8",
+          "durationSec": 1829,
+          "region": "EUW",
+          "uploaded": "2025-04-29",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 56,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "stI8L7kXGSo",
+          "title": "Elise Jungle vs Nocturne - EUW Challenger Patch 25.12",
+          "rankClaim": "Challenger",
+          "patch": "25.12",
+          "durationSec": 1485,
+          "region": "EUW",
+          "uploaded": "2025-06-21",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 57,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "R0Z9KER4VgA",
+          "title": "Elise Support vs Maokai - KR Grandmaster Patch 25.12",
+          "rankClaim": "Grandmaster",
+          "patch": "25.12",
+          "durationSec": 1711,
+          "region": "KR",
+          "uploaded": "2025-06-15",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 59,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "xExA2wQmLC4",
+          "title": "Elise Jungle vs Jarvan IV (T1 Painter) - KR Challenger Patch 26.15",
+          "rankClaim": "Challenger",
+          "patch": "26.15",
+          "durationSec": 1527,
+          "region": "KR",
+          "uploaded": "2026-08-12",
+          "moments": []
+        },
+        {
+          "videoId": "1CZoTfGT0as",
+          "title": "Elise vs Jarvan IV 15/0/6 (Jungle) | EUW Master | Elise OTP Replay",
+          "rankClaim": "Master",
+          "patch": "26.8",
+          "durationSec": 1306,
+          "region": "EUW",
+          "patchEstimated": true,
+          "uploaded": "2026-04-24",
+          "moments": []
+        },
+        {
+          "videoId": "3d8EGeqbXew",
+          "title": "Elise Jungle vs Jarvan IV - EUW Grandmaster Patch 25.06",
+          "rankClaim": "Grandmaster",
+          "patch": "25.6",
+          "durationSec": 1940,
+          "region": "EUW",
+          "uploaded": "2025-04-02",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 62,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "iM9mfnUJq78",
+          "title": "Elise Jungle vs Wukong - KR Master Patch 25.10",
+          "rankClaim": "Master",
+          "patch": "25.10",
+          "durationSec": 1514,
+          "region": "KR",
+          "uploaded": "2025-05-18",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 63,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "YsSx7zqQDHI",
+          "title": "Elise Support vs Brand - KR Grandmaster Patch 25.21",
+          "rankClaim": "Grandmaster",
+          "patch": "25.21",
+          "durationSec": 1785,
+          "region": "KR",
+          "uploaded": "2025-10-27",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 64,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "hlx1ToejCY4",
+          "title": "Elise Jungle vs Lee Sin - KR Master Patch 26.18",
+          "rankClaim": "Master",
+          "patch": "26.18",
+          "durationSec": 1479,
+          "region": "KR",
+          "uploaded": "2026-09-18",
+          "moments": []
+        },
+        {
+          "videoId": "3uRoSUmA1ew",
+          "title": "Elise Jungle vs Lee Sin - KR Master Patch 26.09",
+          "rankClaim": "Master",
+          "patch": "26.9",
+          "durationSec": 1546,
+          "region": "KR",
+          "uploaded": "2026-05-05",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 76,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "R0YOMZfjrDk",
+          "title": "Elise Jungle vs Nidalee - KR Challenger Patch 26.16",
+          "rankClaim": "Challenger",
+          "patch": "26.16",
+          "durationSec": 1641,
+          "region": "KR",
+          "uploaded": "2026-08-28",
+          "moments": []
+        },
+        {
+          "videoId": "UZViPGSZB74",
+          "title": "(KHK Densi) Elise Jungle vs Nidalee (ZZG Coli) - EUW Grandmaster Patch 26.13",
+          "rankClaim": "Grandmaster",
+          "patch": "26.13",
+          "durationSec": 1712,
+          "region": "EUW",
+          "player": "KHK Densi",
+          "uploaded": "2026-07-13",
+          "moments": []
+        },
+        {
+          "videoId": "gBNGZrPYxUE",
+          "title": "Elise Jungle vs Nidalee - KR Grandmaster Patch 25.15",
+          "rankClaim": "Grandmaster",
+          "patch": "25.15",
+          "durationSec": 1482,
+          "region": "KR",
+          "uploaded": "2025-08-04",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 77,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "eXlQAyP5f6c",
+          "title": "Elise Jungle vs Udyr - EUW Challenger Patch 25.13",
+          "rankClaim": "Challenger",
+          "patch": "25.13",
+          "durationSec": 1424,
+          "region": "EUW",
+          "uploaded": "2025-07-06",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 78,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "xLO_wdSSPAk",
+          "title": "(KRX Andil) Elise Support vs Poppy - KR Challenger Patch 26.12",
+          "rankClaim": "Challenger",
+          "patch": "26.12",
+          "durationSec": 1680,
+          "region": "KR",
+          "player": "KRX Andil",
+          "uploaded": "2026-06-23",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 80,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "DKl-I3vNfMA",
+          "title": "Elise Jungle vs Pantheon - EUW Challenger Patch 25.11",
+          "rankClaim": "Challenger",
+          "patch": "25.11",
+          "durationSec": 1984,
+          "region": "EUW",
+          "uploaded": "2025-06-08",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 80,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "fxkjWuQ8WRc",
+          "title": "Elise Support vs Pantheon - KR Master Patch 25.23",
+          "rankClaim": "Master",
+          "patch": "25.23",
+          "durationSec": 1448,
+          "region": "KR",
+          "uploaded": "2025-11-23",
+          "moments": []
+        },
+        {
+          "videoId": "uYmUn_8KU38",
+          "title": "Elise Support vs Pantheon - KR Grandmaster Patch 25.05",
+          "rankClaim": "Grandmaster",
+          "patch": "25.5",
+          "durationSec": 1672,
+          "region": "KR",
+          "uploaded": "2025-03-08",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 89,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "Hd4JcnCu-Uo",
+          "title": "Elise Support vs Leona - KR Master Patch 26.08",
+          "rankClaim": "Master",
+          "patch": "26.8",
+          "durationSec": 1661,
+          "region": "KR",
+          "uploaded": "2026-04-28",
+          "moments": []
+        },
+        {
+          "videoId": "vINbAru_cds",
+          "title": "Elise Support vs Leona - EUW Challenger Patch 26.03",
+          "rankClaim": "Challenger",
+          "patch": "26.3",
+          "durationSec": 1689,
+          "region": "EUW",
+          "uploaded": "2026-02-17",
+          "moments": []
+        },
+        {
+          "videoId": "8V6UI1wgarg",
+          "title": "Elise Support vs Leona - KR Master Patch 25.24",
+          "rankClaim": "Master",
+          "patch": "25.24",
+          "durationSec": 1613,
+          "region": "KR",
+          "uploaded": "2025-12-07",
+          "moments": []
+        },
+        {
+          "videoId": "eb9qa9AmZZo",
+          "title": "Elise Support vs Leona - KR Challenger Patch 25.09",
+          "rankClaim": "Challenger",
+          "patch": "25.9",
+          "durationSec": 1681,
+          "region": "KR",
+          "uploaded": "2025-05-04",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 193,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 221,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 258,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 543,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 738,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 833,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 857,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 908,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1066,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1363,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1465,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1491,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1544,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1598,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1660,
+              "label": "End credit"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 91,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "BSt7mU8tEJ8",
+          "title": "Elise Jungle vs Talon - KR Master Patch 26.20",
+          "rankClaim": "Master",
+          "patch": "26.20",
+          "durationSec": 1428,
+          "region": "KR",
+          "uploaded": "2026-10-14",
+          "result": "W",
+          "moments": [
+            {
+              "atSec": 120,
+              "label": "First Blood — Elise kills Lucian",
+              "kind": "kill"
+            },
+            {
+              "atSec": 383,
+              "label": "Blue takes 1st Dragon (Ocean)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 502,
+              "label": "Elise catches Pyke"
+            },
+            {
+              "atSec": 601,
+              "label": "Elise outduels Pyke again"
+            },
+            {
+              "atSec": 722,
+              "label": "Blue takes 2nd Dragon (Infernal)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 967,
+              "label": "Blue takes Rift Herald",
+              "kind": "herald"
+            },
+            {
+              "atSec": 1009,
+              "label": "Elise eliminates Lucian"
+            },
+            {
+              "atSec": 1051,
+              "label": "Blue takes 3rd Dragon (Hextech)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1061,
+              "label": "Elise outplays Pyke (3rd time)"
+            },
+            {
+              "atSec": 1078,
+              "label": "Elise picks off Ekko"
+            },
+            {
+              "atSec": 1155,
+              "label": "Elise takes down Talon"
+            },
+            {
+              "atSec": 1228,
+              "label": "Elise outplays Talon"
+            },
+            {
+              "atSec": 1258,
+              "label": "Blue takes Baron",
+              "kind": "baron"
+            },
+            {
+              "atSec": 1331,
+              "label": "Elise picks off Ekko"
+            },
+            {
+              "atSec": 1371,
+              "label": "Blue takes 4th Dragon (Hextech)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1382,
+              "label": "Elise eliminates Lucian"
+            },
+            {
+              "atSec": 1394,
+              "label": "Mid Inhibitor falls (Red)"
+            },
+            {
+              "atSec": 1416,
+              "label": "Elise picks off Ekko"
+            }
+          ]
+        },
+        {
+          "videoId": "nlPbZVvoy40",
+          "title": "Elise Jungle vs Talon - EUNE Challenger Patch 26.08",
+          "rankClaim": "Challenger",
+          "patch": "26.8",
+          "durationSec": 1555,
+          "region": "EUNE",
+          "uploaded": "2026-04-22",
+          "moments": []
+        },
+        {
+          "videoId": "GOWP5LZkGoc",
+          "title": "Elise vs Talon Jungle - KR Challenger - Patch 25.20 Season 15",
+          "rankClaim": "Challenger",
+          "patch": "25.20",
+          "durationSec": 1576,
+          "region": "KR",
+          "uploaded": "2025-10-23",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 99,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "zc0-S5pZ-cM",
+          "title": "(BLG ON) Elise Support vs Lux - KR Challenger Patch 26.10",
+          "rankClaim": "Challenger",
+          "patch": "26.10",
+          "durationSec": 1864,
+          "region": "KR",
+          "player": "ON",
+          "team": "BLG",
+          "uploaded": "2026-05-25",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 104,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "lv1WMpeJh8g",
+          "title": "Elise Jungle vs Graves - EUW Grandmaster Patch 25.22",
+          "rankClaim": "Grandmaster",
+          "patch": "25.22",
+          "durationSec": 1813,
+          "region": "EUW",
+          "uploaded": "2025-11-15",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 111,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "K9y6ggMqmK8",
+          "title": "(BW Jeyrus) Elise Support vs Nautilus - EUW Challenger Patch 26.14",
+          "rankClaim": "Challenger",
+          "patch": "26.14",
+          "durationSec": 1513,
+          "region": "EUW",
+          "player": "BW Jeyrus",
+          "uploaded": "2026-07-29",
+          "moments": []
+        },
+        {
+          "videoId": "KqtLgCkjw8Y",
+          "title": "Elise Support vs Nautilus - EUW Challenger Patch 26.01",
+          "rankClaim": "Challenger",
+          "patch": "26.1",
+          "durationSec": 1618,
+          "region": "EUW",
+          "uploaded": "2026-01-18",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 187,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 271,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 330,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 425,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 734,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 812,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1002,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1093,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1177,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1420,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1439,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1463,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1492,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1528,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1547,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1607,
+              "label": "End credit"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 117,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "TidwjZzFRLg",
+          "title": "Elise Support vs Lulu - KR Challenger Patch 26.17",
+          "rankClaim": "Challenger",
+          "patch": "26.17",
+          "durationSec": 1811,
+          "region": "KR",
+          "uploaded": "2026-09-08",
+          "result": "W",
+          "moments": [
+            {
+              "atSec": 109,
+              "label": "First Blood — Jhin kills Lulu",
+              "kind": "kill"
+            },
+            {
+              "atSec": 388,
+              "label": "Blue takes 1st Dragon (Mountain)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 716,
+              "label": "Blue takes 2nd Dragon (Infernal)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 771,
+              "label": "Elise eliminates Olaf"
+            },
+            {
+              "atSec": 878,
+              "label": "Blue takes Rift Herald",
+              "kind": "herald"
+            },
+            {
+              "atSec": 915,
+              "label": "Lee Sin eliminates Yunara"
+            },
+            {
+              "atSec": 934,
+              "label": "Elise solo kills Lulu",
+              "kind": "kill"
+            },
+            {
+              "atSec": 948,
+              "label": "Elise kills Taliyah",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1057,
+              "label": "Blue takes 3rd Dragon (Ocean)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1354,
+              "label": "Elise takes down Yone"
+            },
+            {
+              "atSec": 1364,
+              "label": "Red takes 1st Dragon (Ocean)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1409,
+              "label": "Elise eliminates Olaf"
+            },
+            {
+              "atSec": 1446,
+              "label": "Blue takes Baron",
+              "kind": "baron"
+            },
+            {
+              "atSec": 1512,
+              "label": "Team fight (3 kills)",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1536,
+              "label": "Mid Inhibitor falls (Red)"
+            },
+            {
+              "atSec": 1612,
+              "label": "Trundle picks off Yunara"
+            },
+            {
+              "atSec": 1691,
+              "label": "Blue takes 4th Dragon (Ocean)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1709,
+              "label": "Elise catches Taliyah"
+            }
+          ]
+        },
+        {
+          "videoId": "fyEyqFEE22U",
+          "title": "Elise Support vs Lulu - KR Master Patch 26.07",
+          "rankClaim": "Master",
+          "patch": "26.7",
+          "durationSec": 1569,
+          "region": "KR",
+          "uploaded": "2026-04-06",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 120,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "7REKJl0-NHc",
+          "title": "Elise Jungle vs Hecarim - KR Master Patch 25.14",
+          "rankClaim": "Master",
+          "patch": "25.14",
+          "durationSec": 1580,
+          "region": "KR",
+          "uploaded": "2025-07-20",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 121,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "CnwFye6CsiU",
+          "title": "Elise Jungle vs Kha'Zix - KR Master Patch 26.07",
+          "rankClaim": "Master",
+          "patch": "26.7",
+          "durationSec": 1484,
+          "region": "KR",
+          "uploaded": "2026-04-13",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 104,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 160,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 224,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 312,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 367,
+              "label": "Hunt The Dragon",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 388,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 482,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 534,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 660,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 687,
+              "label": "Hunt The Dragon",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 776,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 895,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1030,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1074,
+              "label": "Hunt The Dragon",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1106,
+              "label": "Hunt The Rift Herald",
+              "kind": "herald"
+            },
+            {
+              "atSec": 1132,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1148,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1162,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1311,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1330,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1351,
+              "label": "Take down The Inhibitor"
+            },
+            {
+              "atSec": 1382,
+              "label": "Hunt The Dragon",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1421,
+              "label": "Hunt The Baron Nashor",
+              "kind": "baron"
+            },
+            {
+              "atSec": 1451,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1473,
+              "label": "End credit"
+            }
+          ]
+        },
+        {
+          "videoId": "4tR73hOHrGA",
+          "title": "Elise Jungle vs Kha'Zix - NA Challenger Patch 25.20",
+          "rankClaim": "Challenger",
+          "patch": "25.20",
+          "durationSec": 1693,
+          "region": "NA",
+          "uploaded": "2025-10-19",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 126,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "PPU0VlaActY",
+          "title": "Elise Jungle vs Jayce - EUW Challenger Patch 26.05",
+          "rankClaim": "Challenger",
+          "patch": "26.5",
+          "durationSec": 1555,
+          "region": "EUW",
+          "uploaded": "2026-03-09",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 131,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "olFxt8caLeI",
+          "title": "Elise Jungle vs Diana - EUW Challenger Patch 26.02",
+          "rankClaim": "Challenger",
+          "patch": "26.2",
+          "durationSec": 1539,
+          "region": "EUW",
+          "uploaded": "2026-02-01",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 182,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 258,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 369,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 391,
+              "label": "Hunt The Dragon",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 473,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 536,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 560,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 689,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 720,
+              "label": "Hunt The Dragon",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 771,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 840,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 893,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 967,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1046,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1065,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1084,
+              "label": "Hunt The Dragon",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1104,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1225,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1255,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1272,
+              "label": "Hunt The Baron Nashor",
+              "kind": "baron"
+            },
+            {
+              "atSec": 1298,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1401,
+              "label": "Hunt The Dragon",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1483,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1513,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1528,
+              "label": "End credit"
+            }
+          ]
+        },
+        {
+          "videoId": "VjWC2psms9k",
+          "title": "Elise vs Diana Jungle - EUW Challenger - Patch 26.02 Season 16",
+          "rankClaim": "Challenger",
+          "patch": "26.2",
+          "durationSec": 1521,
+          "region": "EUW",
+          "uploaded": "2026-01-29",
+          "moments": []
+        },
+        {
+          "videoId": "atIyd3XC9ss",
+          "title": "Elise Jungle vs Diana - EUW Master Patch 26.01",
+          "rankClaim": "Master",
+          "patch": "26.1",
+          "durationSec": 1556,
+          "region": "EUW",
+          "uploaded": "2026-01-15",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 141,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "IKYotlAc8TA",
+          "title": "Elise vs Kayn Jungle - KR Challenger - Patch 25.21 Season 15",
+          "rankClaim": "Challenger",
+          "patch": "25.21",
+          "durationSec": 1606,
+          "region": "KR",
+          "uploaded": "2025-10-27",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 143,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "kN7zZQKITDg",
+          "title": "Elise Jungle vs Zyra - EUW Challenger Patch 26.12",
+          "rankClaim": "Challenger",
+          "patch": "26.12",
+          "durationSec": 1722,
+          "region": "EUW",
+          "uploaded": "2026-06-17",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 154,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "NNEC9ciRc6U",
+          "title": "Elise Jungle vs Zac - TW Challenger Patch 25.07",
+          "rankClaim": "Challenger",
+          "patch": "25.7",
+          "durationSec": 1894,
+          "uploaded": "2025-04-12",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 233,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 372,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 460,
+              "label": "Hunt The Dragon",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 537,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 619,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 714,
+              "label": "Hunt The Void Grubs",
+              "kind": "grubs"
+            },
+            {
+              "atSec": 882,
+              "label": "Hunt The Dragon",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 914,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 946,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 985,
+              "label": "Hunt The Rift Herald",
+              "kind": "herald"
+            },
+            {
+              "atSec": 1093,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1297,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1321,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1400,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1523,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1552,
+              "label": "Hunt The Atakhan"
+            },
+            {
+              "atSec": 1635,
+              "label": "Hunt The Baron Nashor",
+              "kind": "baron"
+            },
+            {
+              "atSec": 1660,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1840,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1873,
+              "label": "End credit"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 166,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "ezmf4wvN8OM",
+          "title": "Elise Mid vs Akshan - NA Grandmaster Patch 25.24",
+          "rankClaim": "Grandmaster",
+          "patch": "25.24",
+          "durationSec": 1603,
+          "region": "NA",
+          "uploaded": "2025-12-21",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 219,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 357,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 416,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 483,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 541,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 711,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 740,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 808,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 872,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 968,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 997,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1077,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1170,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1244,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1353,
+              "label": "Get a Triple Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1422,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1490,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1592,
+              "label": "End credit"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 200,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "imFQleY_Pe0",
+          "title": "Elise Jungle vs Bel'Veth (Crowno) - EUW Grandmaster Patch 26.15",
+          "rankClaim": "Grandmaster",
+          "patch": "26.15",
+          "durationSec": 1726,
+          "region": "EUW",
+          "uploaded": "2026-08-05",
+          "moments": []
+        },
+        {
+          "videoId": "PixSxv9XiBM",
+          "title": "Elise Jungle vs Bel'Veth - NA Challenger Patch 25.18",
+          "rankClaim": "Challenger",
+          "patch": "25.18",
+          "durationSec": 1470,
+          "region": "NA",
+          "uploaded": "2025-09-22",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 201,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "e9PeXc3I3UM",
+          "title": "Elise Support vs Braum - KR Challenger Patch 25.24",
+          "rankClaim": "Challenger",
+          "patch": "25.24",
+          "durationSec": 1519,
+          "region": "KR",
+          "uploaded": "2025-12-28",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 144,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 315,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 387,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 474,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 588,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 615,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 629,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 653,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 781,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 875,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 980,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1044,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1060,
+              "label": "Get a Triple Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1087,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1160,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1268,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1293,
+              "label": "Get a Triple Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1315,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1365,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1478,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1508,
+              "label": "End credit"
+            }
+          ]
+        },
+        {
+          "videoId": "3j7ijNQj6Xc",
+          "title": "Elise Support vs Braum - KR Grandmaster Patch 25.18",
+          "rankClaim": "Grandmaster",
+          "patch": "25.18",
+          "durationSec": 1437,
+          "region": "KR",
+          "uploaded": "2025-09-14",
+          "moments": []
+        },
+        {
+          "videoId": "YSRP6jeR1cE",
+          "title": "Elise Support vs Braum - EUW Grandmaster Patch 25.14",
+          "rankClaim": "Grandmaster",
+          "patch": "25.14",
+          "durationSec": 1586,
+          "region": "EUW",
+          "uploaded": "2025-07-28",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 233,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "1STEbLzP5tI",
+          "title": "Elise Jungle vs Briar - KR Master Patch 26.10",
+          "rankClaim": "Master",
+          "patch": "26.10",
+          "durationSec": 1490,
+          "region": "KR",
+          "uploaded": "2026-05-20",
+          "result": "W",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "First Blood — Quinn kills Singed",
+              "kind": "kill"
+            },
+            {
+              "atSec": 218,
+              "label": "Team fight (3 kills)",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 433,
+              "label": "Quinn picks off Briar"
+            },
+            {
+              "atSec": 459,
+              "label": "Quinn eliminates Singed"
+            },
+            {
+              "atSec": 584,
+              "label": "Elise takes down Briar"
+            },
+            {
+              "atSec": 634,
+              "label": "Elise kills Malphite",
+              "kind": "kill"
+            },
+            {
+              "atSec": 684,
+              "label": "Elise takes down Briar"
+            },
+            {
+              "atSec": 704,
+              "label": "Blue takes 1st Dragon (Chemtech)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 854,
+              "label": "Team fight (3 kills)",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 908,
+              "label": "Blue takes Rift Herald",
+              "kind": "herald"
+            },
+            {
+              "atSec": 991,
+              "label": "Jayce kills Briar",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1033,
+              "label": "Elise kills Malphite",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1140,
+              "label": "Ashe Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1168,
+              "label": "Blue takes 2nd Dragon (Ocean)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1223,
+              "label": "Blue takes Baron",
+              "kind": "baron"
+            },
+            {
+              "atSec": 1260,
+              "label": "Mid Inhibitor falls (Red)"
+            },
+            {
+              "atSec": 1434,
+              "label": "Elise Double Kill",
+              "kind": "kill"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 235,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "R9IO0GYuH3U",
+          "title": "Elise Support vs Senna - KR Master Patch 26.02",
+          "rankClaim": "Master",
+          "patch": "26.2",
+          "durationSec": 1598,
+          "region": "KR",
+          "uploaded": "2026-01-26",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 82,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 107,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 154,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 285,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 422,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 505,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 559,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 639,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 786,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 860,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 904,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1165,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1220,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1237,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1317,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1521,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1555,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1576,
+              "label": "Take down The Inhibitor"
+            },
+            {
+              "atSec": 1587,
+              "label": "End credit"
+            }
+          ]
+        },
+        {
+          "videoId": "QFiOzjU2rAY",
+          "title": "Elise Support vs Senna - KR Challenger Patch 25.08",
+          "rankClaim": "Challenger",
+          "patch": "25.8",
+          "durationSec": 1627,
+          "region": "KR",
+          "uploaded": "2025-04-20",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 163,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 352,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 512,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 571,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 676,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 781,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 907,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1123,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1237,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1388,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1415,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1469,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1566,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1606,
+              "label": "End credit"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 238,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "5s7a-dcOfEA",
+          "title": "Elise Jungle vs Zed - EUW Grandmaster Patch 25.23",
+          "rankClaim": "Grandmaster",
+          "patch": "25.23",
+          "durationSec": 1426,
+          "region": "EUW",
+          "uploaded": "2025-11-29",
+          "moments": []
+        },
+        {
+          "videoId": "YEH_AyaJcfg",
+          "title": "Elise vs Zed Jungle - KR Challenger - Patch 25.16 Season 15",
+          "rankClaim": "Challenger",
+          "patch": "25.16",
+          "durationSec": 1271,
+          "region": "KR",
+          "uploaded": "2025-08-24",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 245,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "O0b3LV79lQw",
+          "title": "Elise vs Ekko Jungle - KR Challenger - Patch 16.04 Season 16",
+          "rankClaim": "Challenger",
+          "patch": "26.4",
+          "durationSec": 1936,
+          "region": "KR",
+          "uploaded": "2026-02-27",
+          "moments": []
+        },
+        {
+          "videoId": "qSYd2AXsc20",
+          "title": "Elise Jungle vs Ekko - TW Challenger Patch 26.04",
+          "rankClaim": "Challenger",
+          "patch": "26.4",
+          "durationSec": 1784,
+          "uploaded": "2026-02-23",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 112,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 213,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 331,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 387,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 482,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 616,
+              "label": "Hunt The Void Grubs",
+              "kind": "grubs"
+            },
+            {
+              "atSec": 643,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 690,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 767,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 819,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 840,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 862,
+              "label": "Hunt The Dragon",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 989,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1060,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1132,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1190,
+              "label": "Hunt The Dragon",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1225,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1435,
+              "label": "Hunt The Baron Nashor",
+              "kind": "baron"
+            },
+            {
+              "atSec": 1451,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1480,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1504,
+              "label": "Hunt The Dragon",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1572,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1603,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1623,
+              "label": "Take down The Inhibitor"
+            },
+            {
+              "atSec": 1715,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1757,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1773,
+              "label": "End credit"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 246,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "e93xEz2AZdk",
+          "title": "Elise Jungle vs Qiyana - KR Master Patch 26.21",
+          "rankClaim": "Master",
+          "patch": "26.21",
+          "durationSec": 1537,
+          "region": "KR",
+          "uploaded": "2026-10-29",
+          "result": "W",
+          "moments": [
+            {
+              "atSec": 390,
+              "label": "Elise solo kills Zoe",
+              "kind": "kill"
+            },
+            {
+              "atSec": 448,
+              "label": "Elise outplays Qiyana"
+            },
+            {
+              "atSec": 643,
+              "label": "Blue takes 1st Dragon (Hextech)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 839,
+              "label": "Team fight (4 kills)",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 887,
+              "label": "Elise catches Rell"
+            },
+            {
+              "atSec": 895,
+              "label": "Elise Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 898,
+              "label": "Elise Triple Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 956,
+              "label": "Red takes 1st Dragon (Cloud)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1031,
+              "label": "Red takes Rift Herald",
+              "kind": "herald"
+            },
+            {
+              "atSec": 1183,
+              "label": "Akshan takes down Zaahen"
+            },
+            {
+              "atSec": 1218,
+              "label": "Red takes Baron",
+              "kind": "baron"
+            },
+            {
+              "atSec": 1259,
+              "label": "Sion picks off Kai'Sa"
+            },
+            {
+              "atSec": 1291,
+              "label": "Blue takes 2nd Dragon (Infernal)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1395,
+              "label": "Akshan eliminates Zoe"
+            },
+            {
+              "atSec": 1406,
+              "label": "Elise solo kills Qiyana again",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1490,
+              "label": "Team fight (3 kills)",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1519,
+              "label": "Mid Inhibitor falls (Blue)"
+            }
+          ]
+        },
+        {
+          "videoId": "ynKLuGah2rg",
+          "title": "Elise Jungle vs Qiyana - KR Master Patch 25.19",
+          "rankClaim": "Master",
+          "patch": "25.19",
+          "durationSec": 1526,
+          "region": "KR",
+          "uploaded": "2025-09-26",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 254,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "LadRa91XvV0",
+          "title": "Elise Jungle vs Vi - KR Grandmaster Patch 26.03",
+          "rankClaim": "Grandmaster",
+          "patch": "26.3",
+          "durationSec": 1576,
+          "region": "KR",
+          "uploaded": "2026-02-08",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 235,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 258,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 409,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 429,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 475,
+              "label": "Hunt The Void Grubs",
+              "kind": "grubs"
+            },
+            {
+              "atSec": 539,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 650,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 706,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 837,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 911,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 978,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1035,
+              "label": "Hunt The Dragon",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1082,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1112,
+              "label": "Hunt The Rift Herald",
+              "kind": "herald"
+            },
+            {
+              "atSec": 1180,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1370,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1527,
+              "label": "Take down The Inhibitor"
+            },
+            {
+              "atSec": 1547,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1565,
+              "label": "End credit"
+            }
+          ]
+        },
+        {
+          "videoId": "J1Ab_DOyWnM",
+          "title": "Elise Jungle vs Vi - EUW Challenger Patch 25.05",
+          "rankClaim": "Challenger",
+          "patch": "25.5",
+          "durationSec": 1667,
+          "region": "EUW",
+          "uploaded": "2025-03-15",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 367,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 397,
+              "label": "Hunt The Void Grubs",
+              "kind": "grubs"
+            },
+            {
+              "atSec": 585,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 620,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 691,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 768,
+              "label": "Hunt The Void Grubs",
+              "kind": "grubs"
+            },
+            {
+              "atSec": 925,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1033,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1050,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1211,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1338,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1374,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1401,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1476,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1596,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1646,
+              "label": "End credit"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 266,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "tByBbru4I9I",
+          "title": "(BDG Ronaldo) Elise Jungle vs Aatrox - EUW Challenger Patch 26.14",
+          "rankClaim": "Challenger",
+          "patch": "26.14",
+          "durationSec": 1636,
+          "region": "EUW",
+          "player": "BDG Ronaldo",
+          "uploaded": "2026-07-19",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 421,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "vyvrt1dWTx8",
+          "title": "(TH Daglas) Elise Jungle vs Rek'Sai - EUW Grandmaster Patch 26.13",
+          "rankClaim": "Grandmaster",
+          "patch": "26.13",
+          "durationSec": 1502,
+          "region": "EUW",
+          "player": "TH Daglas",
+          "uploaded": "2026-06-30",
+          "moments": []
+        },
+        {
+          "videoId": "w0G5Xx_k06E",
+          "title": "Elise Jungle vs Rek'Sai - EUW Grandmaster Patch 25.09",
+          "rankClaim": "Grandmaster",
+          "patch": "25.9",
+          "durationSec": 1729,
+          "region": "EUW",
+          "uploaded": "2025-05-12",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 427,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "v1VQCbipzCw",
+          "title": "(SkitterKing) Elise Jungle vs Ivern (Sojo) - EUW Challenger Patch 26.19",
+          "rankClaim": "Challenger",
+          "patch": "26.19",
+          "durationSec": 1623,
+          "region": "EUW",
+          "player": "SkitterKing",
+          "uploaded": "2026-10-01",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 432,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "4fxKu3gS7D0",
+          "title": "Elise Support vs Bard - KR Grandmaster Patch 25.20",
+          "rankClaim": "Grandmaster",
+          "patch": "25.20",
+          "durationSec": 1579,
+          "region": "KR",
+          "uploaded": "2025-10-13",
+          "moments": []
+        },
+        {
+          "videoId": "vS4hW2pl_uw",
+          "title": "Elise Support vs Bard - KR Grandmaster Patch 25.17",
+          "rankClaim": "Grandmaster",
+          "patch": "25.17",
+          "durationSec": 1564,
+          "region": "KR",
+          "uploaded": "2025-09-01",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 497,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "ehx1pAxurvI",
+          "title": "Elise Support vs Rakan - KR Grandmaster Patch 25.07",
+          "rankClaim": "Grandmaster",
+          "patch": "25.7",
+          "durationSec": 1551,
+          "region": "KR",
+          "uploaded": "2025-04-06",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 517,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "D_DD5Y7Ej28",
+          "title": "Elise Jungle vs Sylas - KR Master Patch 26.17",
+          "rankClaim": "Master",
+          "patch": "26.17",
+          "durationSec": 1663,
+          "region": "KR",
+          "uploaded": "2026-09-02",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 518,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "Ay-oVdHCs5Q",
+          "title": "Elise Support vs Neeko - KR Challenger Patch 25.22",
+          "rankClaim": "Challenger",
+          "patch": "25.22",
+          "durationSec": 1786,
+          "region": "KR",
+          "uploaded": "2025-11-10",
+          "moments": []
+        },
+        {
+          "videoId": "4GrAP74rRe8",
+          "title": "Elise Support vs Neeko - KR Challenger Patch 25.06",
+          "rankClaim": "Challenger",
+          "patch": "25.6",
+          "durationSec": 1786,
+          "region": "KR",
+          "uploaded": "2025-03-23",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 555,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "9ZxII5ikg3Y",
+          "title": "(G2 Labrov) Elise Support vs Pyke - EUW Challenger Patch 26.11",
+          "rankClaim": "Challenger",
+          "patch": "26.11",
+          "durationSec": 1527,
+          "region": "EUW",
+          "player": "Labrov",
+          "team": "G2",
+          "uploaded": "2026-06-11",
+          "moments": []
+        },
+        {
+          "videoId": "KHEezERu0cE",
+          "title": "Elise Support vs Pyke - KR Master Patch 25.16",
+          "rankClaim": "Master",
+          "patch": "25.16",
+          "durationSec": 1726,
+          "region": "KR",
+          "uploaded": "2025-08-19",
+          "moments": []
+        },
+        {
+          "videoId": "e_HilZq5ccA",
+          "title": "Elise Support vs Pyke - KR Grandmaster Patch 25.13",
+          "rankClaim": "Grandmaster",
+          "patch": "25.13",
+          "durationSec": 1863,
+          "region": "KR",
+          "uploaded": "2025-06-29",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 799,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "HxlWh3iNA8k",
+          "title": "(BAR Legolas) Elise Jungle vs Ambessa - EUW Challenger Patch 26.11",
+          "rankClaim": "Challenger",
+          "patch": "26.11",
+          "durationSec": 1791,
+          "region": "EUW",
+          "player": "BAR Legolas",
+          "uploaded": "2026-06-04",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 888,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "mx4gqhB65O0",
+          "title": "Elise Support vs Renata Glasc - KR Challenger Patch 26.04",
+          "rankClaim": "Challenger",
+          "patch": "26.4",
+          "durationSec": 1663,
+          "region": "KR",
+          "uploaded": "2026-03-01",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 950,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "z6b49KyN-fw",
+          "title": "Elise vs Naafiri 12/2/6 (Jungle) | EUW Grandmaster | Elise OTP Replay",
+          "rankClaim": "Grandmaster",
+          "patch": "26.10",
+          "durationSec": 906,
+          "region": "EUW",
+          "patchEstimated": true,
+          "uploaded": "2026-05-18",
+          "moments": []
+        },
+        {
+          "videoId": "rDRr3upndpg",
+          "title": "Elise vs Naafiri Jungle - KR Challenger - Patch 25.19 Season 15",
+          "rankClaim": "Challenger",
+          "patch": "25.19",
+          "durationSec": 2111,
+          "region": "KR",
+          "uploaded": "2025-10-07",
+          "moments": []
+        }
+      ]
+    }
+  ]
+}

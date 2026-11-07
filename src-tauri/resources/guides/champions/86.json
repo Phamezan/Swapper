@@ -1,0 +1,4144 @@
+{
+  "schema": 1,
+  "champion": 86,
+  "generatedAt": "2026-11-07T13:25:14.592Z",
+  "guides": [
+    {
+      "champion": 86,
+      "enemy": 24,
+      "lane": "top",
+      "patch": "26.21",
+      "reviewed": false,
+      "difficulty": "Medium",
+      "favoredWhen": "Garen wins the level 6 to mid-game window with short trades; Jax wins if he survives to scale or baits out the full combo.",
+      "keyTips": [
+        {
+          "text": "Start E and use W when he jumps in or when his stun lands. Decide which part of the trade to blunt, since the shield covers only one burst window.",
+          "scope": "pair",
+          "sourceIds": [
+            "yshuro13"
+          ],
+          "heading": "Trade defense",
+          "abilityKeys": [
+            {
+              "champion": 86,
+              "key": "E"
+            },
+            {
+              "champion": 86,
+              "key": "W"
+            },
+            {
+              "champion": 24,
+              "key": "Q"
+            },
+            {
+              "champion": 24,
+              "key": "E"
+            }
+          ]
+        },
+        {
+          "text": "Never auto-attack into his Counter Strike. Its return damage turns your spin trade into his winning exchange.",
+          "scope": "pair",
+          "sourceIds": [
+            "yshuro13"
+          ],
+          "heading": "E respect",
+          "abilityKeys": [
+            {
+              "champion": 86,
+              "key": "E"
+            },
+            {
+              "champion": 24,
+              "key": "E"
+            }
+          ]
+        },
+        {
+          "text": "Shape every trade to disengage after your E instead of staying for his return damage. His full combo after your spin ends is where he wins.",
+          "scope": "pair",
+          "sourceIds": [
+            "yshuro13"
+          ],
+          "heading": "Disengage rule",
+          "abilityKeys": [
+            {
+              "champion": 86,
+              "key": "E"
+            }
+          ]
+        }
+      ],
+      "enemyTips": {},
+      "sections": {
+        "overview": {
+          "tips": []
+        },
+        "early-lane": {
+          "tips": [
+            {
+              "text": "Time Q as his stun ends so its damage lands right after, accepting the risk. The tight window punishes his E cooldown, but a mistimed Q wastes the silence.",
+              "scope": "pair",
+              "sourceIds": [
+                "yshuro13"
+              ],
+              "heading": "Q timing",
+              "abilityKeys": [
+                {
+                  "champion": 86,
+                  "key": "Q"
+                },
+                {
+                  "champion": 24,
+                  "key": "E"
+                }
+              ]
+            },
+            {
+              "text": "Re-hit him before his passive regenerates. His recovery depends on quiet time, so short re-engages keep him from healing back to full.",
+              "scope": "pair",
+              "sourceIds": [
+                "ph45"
+              ],
+              "heading": "Regen denial",
+              "patch": "26.21"
+            }
+          ]
+        },
+        "mid-lane": {
+          "tips": [
+            {
+              "text": "From level 6, take short trades before attempting an all-in. Chipping first keeps his ultimate from deciding the finish at full health.",
+              "scope": "pair",
+              "sourceIds": [
+                "yshuro13"
+              ],
+              "heading": "Post-6 pattern"
+            },
+            {
+              "text": "Threaten the execute once he is low, since he must respect it. His whole late trade bends around your ult range, which opens the all-in you set up with shorts.",
+              "scope": "pair",
+              "sourceIds": [
+                "ph45"
+              ],
+              "heading": "Execute threat",
+              "patch": "26.21",
+              "abilityKeys": [
+                {
+                  "champion": 86,
+                  "key": "R"
+                }
+              ]
+            }
+          ]
+        },
+        "win-condition": {
+          "tips": [
+            {
+              "text": "Close the lane in the level 6 through mid-game window. You hold the advantage there, while he scales to match you late.",
+              "scope": "pair",
+              "sourceIds": [
+                "yshuro13"
+              ],
+              "heading": "Timing window"
+            },
+            {
+              "text": "Track his scaling and end before it lands. An even lane that drags on becomes his lane, so convert the mid-game lead into objectives.",
+              "scope": "pair",
+              "sourceIds": [
+                "yshuro13"
+              ],
+              "heading": "Closing rule"
+            }
+          ]
+        }
+      },
+      "itemization": [],
+      "sources": [
+        {
+          "id": "yshuro13",
+          "author": "Yshuro13",
+          "rankClaim": "Grandmaster (self-stated 800 LP+ peak) · Garen main",
+          "rank": "grandmaster",
+          "peak": true,
+          "url": "https://docs.google.com/spreadsheets/d/1GbCYcSJLSrSIdOja9EhNFWWSynM0Oin157plraoHO3s/edit?gid=522857221#gid=522857221",
+          "kind": "sheet"
+        },
+        {
+          "id": "ph45",
+          "author": "PH45",
+          "rankClaim": "Master (profile badge; no title claim) · Jax main",
+          "rank": "master",
+          "url": "https://www.mobafire.com/league-of-legends/build/26-21-thisispatriks-in-depth-jax-guide-503356",
+          "kind": "mobafire"
+        }
+      ]
+    },
+    {
+      "champion": 86,
+      "enemy": 114,
+      "lane": "top",
+      "patch": "26.21",
+      "reviewed": false,
+      "difficulty": "Hard",
+      "favoredWhen": "Garen wins by baiting Riposte and landing silence into ult; Fiora wins any extended trade where she holds W for his combo.",
+      "keyTips": [
+        {
+          "text": "Open with a faked Q to draw Riposte, then commit the real combo after her W is gone. A parried Q hands her the stun that decides the duel.",
+          "scope": "pair",
+          "sourceIds": [
+            "yshuro13"
+          ],
+          "heading": "Q bait",
+          "abilityKeys": [
+            {
+              "champion": 86,
+              "key": "Q"
+            },
+            {
+              "champion": 114,
+              "key": "W"
+            }
+          ]
+        },
+        {
+          "text": "Track her vitals and move away from the marked side, using a wall to deny easy angles. Every free proc is the extended trade she wants.",
+          "scope": "pair",
+          "sourceIds": [
+            "yshuro13"
+          ],
+          "heading": "Vital denial"
+        },
+        {
+          "text": "Silence before ulting, and never telegraph Q into R. Apply Q's silence right before R while varying the timing, since a predictable Q or R gets parried.",
+          "scope": "pair",
+          "sourceIds": [
+            "yshuro13"
+          ],
+          "heading": "Ult setup",
+          "abilityKeys": [
+            {
+              "champion": 86,
+              "key": "Q"
+            },
+            {
+              "champion": 86,
+              "key": "R"
+            },
+            {
+              "champion": 114,
+              "key": "W"
+            }
+          ]
+        }
+      ],
+      "enemyTips": {},
+      "sections": {
+        "overview": {
+          "tips": []
+        },
+        "early-lane": {
+          "tips": [
+            {
+              "text": "Use Q to clear her Riposte slow and attack-speed debuff, then spin through it. The slow never reduces your E damage, so keep spinning once Q is back up.",
+              "scope": "pair",
+              "sourceIds": [
+                "yshuro13"
+              ],
+              "heading": "Slowed spins",
+              "abilityKeys": [
+                {
+                  "champion": 86,
+                  "key": "Q"
+                },
+                {
+                  "champion": 86,
+                  "key": "E"
+                },
+                {
+                  "champion": 114,
+                  "key": "W"
+                }
+              ]
+            },
+            {
+              "text": "Accept a small Q poke if minion aggro keeps the wave near your side. Conceding position for perfect health loses the wave, while a held wave denies her run-down angles.",
+              "scope": "pair",
+              "sourceIds": [
+                "yshuro13"
+              ],
+              "heading": "Wave over health",
+              "abilityKeys": [
+                {
+                  "champion": 114,
+                  "key": "Q"
+                }
+              ]
+            }
+          ]
+        },
+        "mid-lane": {
+          "tips": [
+            {
+              "text": "Cancel E early sometimes to surprise her with Q. The shortened spin breaks her parry timing and lands the silence she was holding W against.",
+              "scope": "pair",
+              "sourceIds": [
+                "yshuro13"
+              ],
+              "heading": "E cancel",
+              "abilityKeys": [
+                {
+                  "champion": 86,
+                  "key": "E"
+                },
+                {
+                  "champion": 86,
+                  "key": "Q"
+                },
+                {
+                  "champion": 114,
+                  "key": "W"
+                }
+              ]
+            },
+            {
+              "text": "Answer her melee commits with E instead of chasing max-range pokes. She wants you to overextend into her vitals; punish the commits she actually makes.",
+              "scope": "pair",
+              "sourceIds": [
+                "justsad42"
+              ],
+              "heading": "Punish commits",
+              "abilityKeys": [
+                {
+                  "champion": 86,
+                  "key": "E"
+                }
+              ]
+            }
+          ]
+        },
+        "win-condition": {
+          "tips": [
+            {
+              "text": "Favor fights when both champions are already around half health over fresh full-health duels. The short window favors your burst combo before her sustained damage takes over.",
+              "scope": "pair",
+              "sourceIds": [
+                "yshuro13"
+              ],
+              "heading": "Half-health fights"
+            },
+            {
+              "text": "Never chase her split alone even with a movement-speed rune. Account for her chase and split-push threat by answering with numbers instead of solo runs.",
+              "scope": "pair",
+              "sourceIds": [
+                "yshuro13"
+              ],
+              "heading": "Split answer"
+            }
+          ]
+        }
+      },
+      "itemization": [],
+      "sources": [
+        {
+          "id": "yshuro13",
+          "author": "Yshuro13",
+          "rankClaim": "Grandmaster (self-stated 800 LP+ peak) · Garen main",
+          "rank": "grandmaster",
+          "peak": true,
+          "url": "https://docs.google.com/spreadsheets/d/1GbCYcSJLSrSIdOja9EhNFWWSynM0Oin157plraoHO3s/edit?gid=522857221#gid=522857221",
+          "kind": "sheet"
+        },
+        {
+          "id": "justsad42",
+          "author": "TTVJustSad42",
+          "rankClaim": "Challenger EUNE / Grandmaster EUW (self-claim, no badge) · Fiora main",
+          "rank": "challenger",
+          "url": "https://docs.google.com/spreadsheets/d/1g_YjX4jYcz15k8FZuOkhc4IWA1LLm28WinrVCGBXxLY/edit?gid=0#gid=0",
+          "kind": "sheet"
+        }
+      ]
+    },
+    {
+      "champion": 86,
+      "enemy": 266,
+      "lane": "top",
+      "patch": "26.21",
+      "reviewed": false,
+      "difficulty": "Medium",
+      "favoredWhen": "Garen wins by owning levels 1–3, sidestepping both Q casts, and scaling an even lane; Aatrox wins if he controls waves, holds Garen tagged, and turns ganks.",
+      "keyTips": [
+        {
+          "text": "Sidestep the first Q laterally and leave the second Q's outer zone. Stepping forward beats some casts, and your Q carries you out of his W pull when the zone closes.",
+          "scope": "pair",
+          "sourceIds": [
+            "yshuro13",
+            "yshuro13-web"
+          ],
+          "heading": "Both Q casts",
+          "abilityKeys": [
+            {
+              "champion": 86,
+              "key": "Q"
+            },
+            {
+              "champion": 266,
+              "key": "Q"
+            },
+            {
+              "champion": 266,
+              "key": "W"
+            }
+          ]
+        },
+        {
+          "text": "Own the first three levels while tracking his cooldowns. That window plus spacing is the whole early game, so press it before his range comes online.",
+          "scope": "pair",
+          "sourceIds": [
+            "yshuro13-web",
+            "yshuro13"
+          ],
+          "heading": "Levels 1–3"
+        },
+        {
+          "text": "Hold Courage for his commit, never for the wave. He times poke around your W downtime, so a spent shield is his invitation to open up.",
+          "scope": "pair",
+          "sourceIds": [
+            "lilpicky"
+          ],
+          "heading": "W discipline",
+          "abilityKeys": [
+            {
+              "champion": 86,
+              "key": "W"
+            }
+          ]
+        }
+      ],
+      "enemyTips": {},
+      "sections": {
+        "overview": {
+          "tips": []
+        },
+        "early-lane": {
+          "tips": [
+            {
+              "text": "Expect Q on every approach to a last hit. Concede the creep whenever the trade costs more than the gold, since his aim point is your farming pattern.",
+              "scope": "pair",
+              "sourceIds": [
+                "yshuro13-web",
+                "yshuro13"
+              ],
+              "heading": "Last-hit tax"
+            },
+            {
+              "text": "Use Q to leave the center of his W, not to engage. The pull zone is where his combo starts, so save the silence-break for exits.",
+              "scope": "pair",
+              "sourceIds": [
+                "yshuro13"
+              ],
+              "heading": "Q as exit",
+              "abilityKeys": [
+                {
+                  "champion": 86,
+                  "key": "Q"
+                },
+                {
+                  "champion": 266,
+                  "key": "W"
+                }
+              ]
+            }
+          ]
+        },
+        "mid-lane": {
+          "tips": [
+            {
+              "text": "Take Conqueror only to build an early lead with its fighting power. When the damage will not open kills, run Stormraider's Surge and save Q to clear slows instead.",
+              "scope": "pair",
+              "sourceIds": [
+                "federals1-garen"
+              ],
+              "heading": "Setup pick"
+            },
+            {
+              "text": "Leave completely until Perseverance restarts. He tags you to hold your healing down, so a half-reset just invites the next Q chain.",
+              "scope": "pair",
+              "sourceIds": [
+                "lilpicky"
+              ],
+              "heading": "Full resets",
+              "abilityKeys": [
+                {
+                  "champion": 266,
+                  "key": "Q"
+                },
+                {
+                  "champion": 86,
+                  "key": "P"
+                }
+              ]
+            }
+          ]
+        },
+        "win-condition": {
+          "tips": [
+            {
+              "text": "Let an even lane stay even. You scale slightly better from parity, so stop forcing duels and let the map tilt instead.",
+              "scope": "pair",
+              "sourceIds": [
+                "yshuro13-web",
+                "yshuro13"
+              ],
+              "heading": "Even wins"
+            },
+            {
+              "text": "Call the jungler only for certain kills. His Q spread turns a hesitant dive into his double kill, so bring numbers or do not come at all.",
+              "scope": "pair",
+              "sourceIds": [
+                "yshuro13"
+              ],
+              "heading": "Gank care"
+            }
+          ]
+        }
+      },
+      "itemization": [],
+      "sources": [
+        {
+          "id": "yshuro13",
+          "author": "Yshuro13",
+          "rankClaim": "Grandmaster (self-stated 800 LP+ peak) · Garen main",
+          "rank": "grandmaster",
+          "peak": true,
+          "url": "https://docs.google.com/spreadsheets/d/1GbCYcSJLSrSIdOja9EhNFWWSynM0Oin157plraoHO3s/edit?gid=522857221#gid=522857221",
+          "kind": "sheet"
+        },
+        {
+          "id": "yshuro13-web",
+          "author": "Yshuro13",
+          "rankClaim": "Grandmaster (lolmatchups, Yshuro13",
+          "rank": "grandmaster",
+          "url": "https://lolmatchups.gg/Garen/matchups?lane=TOP",
+          "kind": "web"
+        },
+        {
+          "id": "federals1-garen",
+          "author": "Federals1",
+          "rankClaim": "Challenger (self-stated 900 LP+ each season since 2018; EUW Challenger) · Garen main",
+          "rank": "challenger",
+          "url": "https://www.mobafire.com/league-of-legends/build/26-20-challenger-garen-top-guide-642197",
+          "kind": "mobafire"
+        },
+        {
+          "id": "lilpicky",
+          "author": "LilPicky",
+          "rankClaim": "Emerald · Aatrox main",
+          "rank": "emerald",
+          "url": "https://www.mobafire.com/league-of-legends/build/not-basic-aatrox-s16-guide-630818",
+          "kind": "mobafire"
+        }
+      ]
+    }
+  ],
+  "general": [
+    {
+      "champion": 86,
+      "lane": "top",
+      "patch": "26.21",
+      "reviewed": false,
+      "keyTips": [
+        {
+          "text": "Play the first levels cautiously until trades turn reliable.",
+          "scope": "champion",
+          "sourceIds": [
+            "mobalytics-garen"
+          ]
+        },
+        {
+          "text": "From level 6, shorten trades to lower the opponent, heal back on the passive, and hunt the R execute.",
+          "scope": "champion",
+          "sourceIds": [
+            "mobalytics-garen"
+          ],
+          "abilityKeys": [
+            {
+              "champion": 86,
+              "key": "R"
+            }
+          ]
+        },
+        {
+          "text": "Peel and absorb on a tank build, or flank from fog for carries on a bruiser build.",
+          "scope": "champion",
+          "sourceIds": [
+            "mobalytics-garen"
+          ]
+        }
+      ],
+      "sections": {
+        "overview": {
+          "tips": []
+        },
+        "early-lane": {
+          "tips": [
+            {
+              "text": "Hide approaches with lane brush cover when lining up an all-in.",
+              "scope": "champion",
+              "sourceIds": [
+                "mobalytics-garen"
+              ]
+            },
+            {
+              "text": "Trade more often after a few levels or a first component lands.",
+              "scope": "champion",
+              "sourceIds": [
+                "mobalytics-garen"
+              ]
+            },
+            {
+              "text": "Never chase ranged opponents without a flank, since zero ranged engage means getting kited.",
+              "scope": "champion",
+              "sourceIds": [
+                "mobalytics-garen"
+              ]
+            },
+            {
+              "text": "Match the build to team need; full damage risks everything when nobody else frontlines.",
+              "scope": "champion",
+              "sourceIds": [
+                "mobalytics-garen"
+              ]
+            }
+          ]
+        },
+        "mid-lane": {
+          "tips": [
+            {
+              "text": "Split-push without a developing fight to pull opponents while teammates siege or start plays.",
+              "scope": "champion",
+              "sourceIds": [
+                "mobalytics-garen"
+              ]
+            },
+            {
+              "text": "Duel defenders who answer the split instead of surrendering the lane free.",
+              "scope": "champion",
+              "sourceIds": [
+                "mobalytics-garen"
+              ]
+            },
+            {
+              "text": "At level 9, press the first maxed ability for stronger short trades and easier duels.",
+              "scope": "champion",
+              "sourceIds": [
+                "mobalytics-garen"
+              ]
+            },
+            {
+              "text": "Set picks with Q and R alongside teammates while rotating lanes.",
+              "scope": "champion",
+              "sourceIds": [
+                "mobalytics-garen"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 86,
+                  "key": "Q"
+                },
+                {
+                  "champion": 86,
+                  "key": "R"
+                }
+              ]
+            },
+            {
+              "text": "Read the first component fork: a tank piece holds lanes and joins fights, a bruiser piece raises duel damage.",
+              "scope": "champion",
+              "sourceIds": [
+                "mobalytics-garen"
+              ]
+            },
+            {
+              "text": "At level 11, catch exposed opponents from brush with short burst around the second R point.",
+              "scope": "champion",
+              "sourceIds": [
+                "mobalytics-garen"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 86,
+                  "key": "R"
+                }
+              ]
+            }
+          ]
+        },
+        "win-condition": {
+          "tips": [
+            {
+              "text": "Peel for carries and eat pressure on the tank build so they keep dealing damage.",
+              "scope": "champion",
+              "sourceIds": [
+                "mobalytics-garen"
+              ]
+            },
+            {
+              "text": "Punish an exposed target with Q and R in late fights, then peel for allies instead of diving solo.",
+              "scope": "champion",
+              "sourceIds": [
+                "mobalytics-garen"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 86,
+                  "key": "Q"
+                },
+                {
+                  "champion": 86,
+                  "key": "R"
+                }
+              ]
+            },
+            {
+              "text": "After poke lands, retreat briefly and let the passive refill health before deciding on recall.",
+              "scope": "champion",
+              "sourceIds": [
+                "mobalytics-garen"
+              ]
+            },
+            {
+              "text": "At level 16, hunt a safe catch with teammates near the third R point and its damage and cooldown jump.",
+              "scope": "champion",
+              "sourceIds": [
+                "mobalytics-garen"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 86,
+                  "key": "R"
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "itemization": [
+        {
+          "text": "Choose the durable route whenever the team lacks a frontline.",
+          "scope": "champion",
+          "sourceIds": [
+            "mobalytics-garen"
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "id": "mobalytics-garen",
+          "author": "Mobalytics",
+          "rankClaim": "No rank claim",
+          "url": "https://mobalytics.gg/lol/champions/garen/guide/top",
+          "kind": "web"
+        }
+      ]
+    }
+  ],
+  "vods": [
+    {
+      "enemy": 2,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "RfNeJoIwISA",
+          "title": "Garen Top vs Olaf - KR Master Patch 26.06",
+          "rankClaim": "Master",
+          "patch": "26.6",
+          "durationSec": 1480,
+          "region": "KR",
+          "uploaded": "2026-03-24",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 3,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "Bv_MV7gLbTU",
+          "title": "Garen Mid vs Galio - KR Master Patch 26.10",
+          "rankClaim": "Master",
+          "patch": "26.10",
+          "durationSec": 1871,
+          "region": "KR",
+          "uploaded": "2026-05-17",
+          "moments": []
+        },
+        {
+          "videoId": "0wwcqaQfP4Y",
+          "title": "Garen Mid vs Galio - KR Master Patch 25.21",
+          "rankClaim": "Master",
+          "patch": "25.21",
+          "durationSec": 1689,
+          "region": "KR",
+          "uploaded": "2025-11-04",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 6,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "7JltSKP06_Q",
+          "title": "Garen Top vs Urgot - KR Master Patch 25.13",
+          "rankClaim": "Master",
+          "patch": "25.13",
+          "durationSec": 1865,
+          "region": "KR",
+          "uploaded": "2025-07-05",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 7,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "oanZjwZkXF4",
+          "title": "Garen Mid vs LeBlanc - KR Master Patch 26.18",
+          "rankClaim": "Master",
+          "patch": "26.18",
+          "durationSec": 1812,
+          "region": "KR",
+          "uploaded": "2026-09-23",
+          "result": "W",
+          "moments": [
+            {
+              "atSec": 10,
+              "label": "First Blood — Kennen kills Fiora",
+              "kind": "kill"
+            },
+            {
+              "atSec": 384,
+              "label": "Red takes 1st Dragon (Mountain)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 394,
+              "label": "Garen takes down LeBlanc"
+            },
+            {
+              "atSec": 751,
+              "label": "Red takes 2nd Dragon (Ocean)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 970,
+              "label": "Garen catches Caitlyn"
+            },
+            {
+              "atSec": 1033,
+              "label": "Garen catches LeBlanc again"
+            },
+            {
+              "atSec": 1109,
+              "label": "Blue takes 1st Dragon (Chemtech)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1282,
+              "label": "Red takes Baron",
+              "kind": "baron"
+            },
+            {
+              "atSec": 1306,
+              "label": "Yasuo picks off Bard"
+            },
+            {
+              "atSec": 1346,
+              "label": "Garen kills Caitlyn",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1418,
+              "label": "Garen takes down Bard"
+            },
+            {
+              "atSec": 1444,
+              "label": "Blue takes 2nd Dragon (Chemtech)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1548,
+              "label": "Garen picks off Ekko"
+            },
+            {
+              "atSec": 1589,
+              "label": "Sylas kills Fiora",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1607,
+              "label": "Mid Inhibitor falls (Red)"
+            },
+            {
+              "atSec": 1633,
+              "label": "Garen picks off Ekko"
+            },
+            {
+              "atSec": 1708,
+              "label": "Team fight (4 kills)",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1761,
+              "label": "Garen eliminates LeBlanc"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 14,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "li1566SOyYs",
+          "title": "Garen vs Sion [ TOP ] Lol Korea Master Patch 26.12 ✅",
+          "rankClaim": "Master",
+          "patch": "26.12",
+          "durationSec": 2023,
+          "region": "KR",
+          "uploaded": "2026-06-16",
+          "moments": []
+        },
+        {
+          "videoId": "eUSEtKQVki4",
+          "title": "Garen Top vs Sion - KR Master Patch 25.17",
+          "rankClaim": "Master",
+          "patch": "25.17",
+          "durationSec": 2107,
+          "region": "KR",
+          "uploaded": "2025-09-06",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 17,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "2yc_K_PB_M0",
+          "title": "Garen vs Teemo TOP [ TripleKill ] Korea Master Patch 25.21",
+          "rankClaim": "Master",
+          "patch": "25.21",
+          "durationSec": 2199,
+          "region": "KR",
+          "player": "TripleKill",
+          "uploaded": "2025-10-31",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 19,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "ESTBVxJELFA",
+          "title": "Garen vs Warwick 10/1/7 (Top) | EUW Master | Garen OTP Replay",
+          "rankClaim": "Master",
+          "patch": "26.17",
+          "durationSec": 1713,
+          "region": "EUW",
+          "patchEstimated": true,
+          "uploaded": "2026-09-06",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 20,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "CSuXOXGqZiQ",
+          "title": "I LOST MY MIND BUT WINNERSQ SAVES THE DAY",
+          "rankClaim": "Master+",
+          "patch": "26.7",
+          "durationSec": 28210,
+          "patchEstimated": true,
+          "player": "Alois",
+          "uploaded": "2026-04-09",
+          "format": "stream",
+          "cam": true,
+          "startSec": 24517,
+          "endSec": 26211,
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 23,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "SRnYAs_CpwE",
+          "title": "Garen Top vs Tryndamere - KR Master Patch 25.16",
+          "rankClaim": "Master",
+          "patch": "25.16",
+          "durationSec": 2101,
+          "region": "KR",
+          "uploaded": "2025-08-21",
+          "moments": []
+        },
+        {
+          "videoId": "UjjPsygCekA",
+          "title": "Garen Top vs Tryndamere - NA Grandmaster Patch 25.10",
+          "rankClaim": "Grandmaster",
+          "patch": "25.10",
+          "durationSec": 2105,
+          "region": "NA",
+          "uploaded": "2025-05-22",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 238,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 501,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 685,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 782,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 909,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 940,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 980,
+              "label": "Hunt The Rift Herald",
+              "kind": "herald"
+            },
+            {
+              "atSec": 1050,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1175,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1295,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1358,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1425,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1523,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1566,
+              "label": "Hunt The Dragon",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1635,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1653,
+              "label": "Take down The Inhibitor"
+            },
+            {
+              "atSec": 1729,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1748,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1759,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1848,
+              "label": "Take down The Inhibitor"
+            },
+            {
+              "atSec": 2006,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 2084,
+              "label": "End credit"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 24,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "i6txK0_R0CU",
+          "title": "Garen Top vs Jax - BR Challenger Patch 26.16",
+          "rankClaim": "Challenger",
+          "patch": "26.16",
+          "durationSec": 1680,
+          "uploaded": "2026-08-23",
+          "moments": []
+        },
+        {
+          "videoId": "LtKjgSHeg7k",
+          "title": "Garen Top vs Jax - KR Master Patch 26.05",
+          "rankClaim": "Master",
+          "patch": "26.5",
+          "durationSec": 1596,
+          "region": "KR",
+          "uploaded": "2026-03-18",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 286,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 417,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 536,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 631,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 777,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 803,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 833,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 922,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1049,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1152,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1246,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1361,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1475,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1503,
+              "label": "Take down The Inhibitor"
+            },
+            {
+              "atSec": 1526,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1559,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1585,
+              "label": "End credit"
+            }
+          ]
+        },
+        {
+          "videoId": "J_zOjMz_YBQ",
+          "title": "Garen vs Jax Top - EUW Grandmaster - Patch 25.18 Season 15",
+          "rankClaim": "Grandmaster",
+          "patch": "25.18",
+          "durationSec": 2111,
+          "region": "EUW",
+          "uploaded": "2025-09-23",
+          "moments": []
+        },
+        {
+          "videoId": "9iP9DuwFGK4",
+          "title": "Garen Top vs Jax - KR Grandmaster Patch 25.08",
+          "rankClaim": "Grandmaster",
+          "patch": "25.8",
+          "durationSec": 1956,
+          "region": "KR",
+          "uploaded": "2025-04-23",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 27,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "V02E2DudMRc",
+          "title": "Garen Mid vs Singed - KR Master Patch 25.07",
+          "rankClaim": "Master",
+          "patch": "25.7",
+          "durationSec": 1862,
+          "region": "KR",
+          "uploaded": "2025-04-13",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 27,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "sNlgpgXkvJM",
+          "title": "Garen Top vs Singed - KR Master Patch 25.18",
+          "rankClaim": "Master",
+          "patch": "25.18",
+          "durationSec": 1778,
+          "region": "KR",
+          "uploaded": "2025-09-16",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 36,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "oFWX5Ka3EKo",
+          "title": "Garen Mid vs Dr. Mundo - KR Master Patch 25.20",
+          "rankClaim": "Master",
+          "patch": "25.20",
+          "durationSec": 1599,
+          "region": "KR",
+          "uploaded": "2025-10-21",
+          "moments": []
+        },
+        {
+          "videoId": "ZsYGn-aTHnY",
+          "title": "Garen Mid vs Dr. Mundo - EUW Grandmaster Patch 25.12",
+          "rankClaim": "Grandmaster",
+          "patch": "25.12",
+          "durationSec": 1677,
+          "region": "EUW",
+          "uploaded": "2025-06-25",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 36,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "TeZfGAexoIg",
+          "title": "Garen vs Dr. Mundo [ TOP ] Lol Korea Master Patch 26.2 ✅",
+          "rankClaim": "Master",
+          "patch": "26.2",
+          "durationSec": 1745,
+          "region": "KR",
+          "uploaded": "2026-01-24",
+          "moments": []
+        },
+        {
+          "videoId": "QDch6HbIf8Q",
+          "title": "Garen vs Dr Mundo Top - KR Grandmaster - Patch 25.8 Season 15",
+          "rankClaim": "Grandmaster",
+          "patch": "25.8",
+          "durationSec": 2056,
+          "region": "KR",
+          "uploaded": "2025-04-25",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 39,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "3_gyrgqZ4RI",
+          "title": "TOPLANE GAMING",
+          "rankClaim": "Master+",
+          "patch": "26.10",
+          "durationSec": 17402,
+          "patchEstimated": true,
+          "player": "Alois",
+          "uploaded": "2026-05-16",
+          "format": "stream",
+          "cam": true,
+          "startSec": 2943,
+          "endSec": 4969,
+          "moments": []
+        },
+        {
+          "videoId": "dA26IqHlFak",
+          "title": "SPEEDRUNNING THROUGH THE LADDER AS ADC",
+          "rankClaim": "Master+",
+          "patch": "26.5",
+          "durationSec": 29278,
+          "patchEstimated": true,
+          "player": "Alois",
+          "uploaded": "2026-03-13",
+          "format": "stream",
+          "cam": true,
+          "startSec": 7282,
+          "endSec": 9775,
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 41,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "HKMPGWZjKVU",
+          "title": "Garen vs Gangplank [ TOP ] Korea Master 587 LP | Patch 26.14 ✅",
+          "rankClaim": "Master",
+          "patch": "26.14",
+          "durationSec": 1676,
+          "region": "KR",
+          "uploaded": "2026-07-17",
+          "moments": []
+        },
+        {
+          "videoId": "R0oQNwquNto",
+          "title": "Garen Top vs Gangplank - EUW Challenger Patch 26.10",
+          "rankClaim": "Challenger",
+          "patch": "26.10",
+          "durationSec": 1856,
+          "region": "EUW",
+          "uploaded": "2026-05-28",
+          "moments": []
+        },
+        {
+          "videoId": "_gyjpOuh12o",
+          "title": "THE NEW OMNIVAMPMAXXING META",
+          "rankClaim": "Master+",
+          "patch": "26.9",
+          "durationSec": 19098,
+          "patchEstimated": true,
+          "player": "Alois",
+          "uploaded": "2026-05-08",
+          "format": "stream",
+          "cam": true,
+          "startSec": 11920,
+          "endSec": 14798,
+          "moments": []
+        },
+        {
+          "videoId": "IcYb9KXFnmY",
+          "title": "Garen vs Gangplank [ TOP ] Lol Korea Master Patch 25.22 ✅",
+          "rankClaim": "Master",
+          "patch": "25.22",
+          "durationSec": 1496,
+          "region": "KR",
+          "uploaded": "2025-11-06",
+          "moments": []
+        },
+        {
+          "videoId": "SU_F1QEn4U8",
+          "title": "Garen Top vs Gangplank - KR Grandmaster Patch 25.20",
+          "rankClaim": "Grandmaster",
+          "patch": "25.20",
+          "durationSec": 1659,
+          "region": "KR",
+          "uploaded": "2025-10-15",
+          "moments": []
+        },
+        {
+          "videoId": "2XcVjImkTOg",
+          "title": "Garen Top vs Gangplank - KR Grandmaster Patch 25.19",
+          "rankClaim": "Grandmaster",
+          "patch": "25.19",
+          "durationSec": 1927,
+          "region": "KR",
+          "uploaded": "2025-10-05",
+          "moments": []
+        },
+        {
+          "videoId": "ZPaUU77neKw",
+          "title": "Garen vs Gangplank TOP [ Perfect KDA ] Korea Master Patch 25.17",
+          "rankClaim": "Master",
+          "patch": "25.17",
+          "durationSec": 1278,
+          "region": "KR",
+          "player": "Perfect KDA",
+          "uploaded": "2025-08-31",
+          "moments": []
+        },
+        {
+          "videoId": "Fm2isnbGyO0",
+          "title": "Garen vs Gangplank [ TOP ] Lol Korea Master Patch 25.11 ✅",
+          "rankClaim": "Master",
+          "patch": "25.11",
+          "durationSec": 1445,
+          "region": "KR",
+          "uploaded": "2025-05-31",
+          "moments": []
+        },
+        {
+          "videoId": "zr40074SWCY",
+          "title": "Garen vs GangPlank Top - KR Grandmaster - Patch 25.9 Season 15",
+          "rankClaim": "Grandmaster",
+          "patch": "25.9",
+          "durationSec": 2070,
+          "region": "KR",
+          "uploaded": "2025-05-01",
+          "moments": []
+        },
+        {
+          "videoId": "YFcBZVpd1eQ",
+          "title": "Garen Top vs Gangplank - KR Grandmaster Patch 25.07",
+          "rankClaim": "Grandmaster",
+          "patch": "25.7",
+          "durationSec": 2021,
+          "region": "KR",
+          "uploaded": "2025-04-08",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 240,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 360,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 476,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 651,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 727,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 755,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1023,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1248,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1363,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1477,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1495,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1630,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1898,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1932,
+              "label": "Take down The Inhibitor"
+            },
+            {
+              "atSec": 1974,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 2000,
+              "label": "End credit"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 50,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "MnGlP_mmcek",
+          "title": "Garen Top vs Swain - EUW Grandmaster Patch 26.04",
+          "rankClaim": "Grandmaster",
+          "patch": "26.4",
+          "durationSec": 1467,
+          "region": "EUW",
+          "uploaded": "2026-02-26",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 51,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "BlquIFORSHM",
+          "title": "Garen Mid vs Caitlyn - KR Master Patch 26.09",
+          "rankClaim": "Master",
+          "patch": "26.9",
+          "durationSec": 1732,
+          "region": "KR",
+          "uploaded": "2026-05-12",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 54,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "bV27vXTbma4",
+          "title": "Garen Top vs Malphite - EUW Master Patch 26.19",
+          "rankClaim": "Master",
+          "patch": "26.19",
+          "durationSec": 1806,
+          "region": "EUW",
+          "uploaded": "2026-10-09",
+          "result": "W",
+          "moments": [
+            {
+              "atSec": 233,
+              "label": "First Blood — Garen kills Malphite",
+              "kind": "kill"
+            },
+            {
+              "atSec": 307,
+              "label": "Garen catches Malphite"
+            },
+            {
+              "atSec": 320,
+              "label": "Red takes 1st Dragon (Mountain)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 679,
+              "label": "Red takes 2nd Dragon (Chemtech)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 737,
+              "label": "Garen outduels Malphite again"
+            },
+            {
+              "atSec": 1025,
+              "label": "Red takes 3rd Dragon (Hextech)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1181,
+              "label": "Red takes Baron",
+              "kind": "baron"
+            },
+            {
+              "atSec": 1290,
+              "label": "Garen kills Kayn",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1341,
+              "label": "Blue takes 1st Dragon (Hextech)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1403,
+              "label": "Garen eliminates Malphite"
+            },
+            {
+              "atSec": 1504,
+              "label": "Garen eliminates LeBlanc"
+            },
+            {
+              "atSec": 1542,
+              "label": "Mid Inhibitor falls (Red)"
+            },
+            {
+              "atSec": 1660,
+              "label": "Blue takes 2nd Dragon (Hextech)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1664,
+              "label": "Garen picks off Jinx"
+            },
+            {
+              "atSec": 1686,
+              "label": "Zac Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1690,
+              "label": "Zac Triple Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1773,
+              "label": "Blue takes Baron",
+              "kind": "baron"
+            },
+            {
+              "atSec": 1780,
+              "label": "Garen kills Kayn",
+              "kind": "kill"
+            }
+          ]
+        },
+        {
+          "videoId": "uuzDXOaoPYg",
+          "title": "Garen Top vs Malphite - KR Grandmaster Patch 26.14",
+          "rankClaim": "Grandmaster",
+          "patch": "26.14",
+          "durationSec": 1504,
+          "region": "KR",
+          "uploaded": "2026-07-24",
+          "moments": []
+        },
+        {
+          "videoId": "CSuXOXGqZiQ",
+          "title": "I LOST MY MIND BUT WINNERSQ SAVES THE DAY",
+          "rankClaim": "Master+",
+          "patch": "26.7",
+          "durationSec": 28210,
+          "patchEstimated": true,
+          "player": "Alois",
+          "uploaded": "2026-04-09",
+          "format": "stream",
+          "cam": true,
+          "startSec": 14642,
+          "endSec": 17498,
+          "moments": []
+        },
+        {
+          "videoId": "t3zfoOQDAHY",
+          "title": "Garen vs Malphite [ TOP ] Lol Korea Master Patch 25.13",
+          "rankClaim": "Master",
+          "patch": "25.13",
+          "durationSec": 1474,
+          "region": "KR",
+          "uploaded": "2025-06-29",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 55,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "4V_UKLda6Mg",
+          "title": "Garen Mid vs Katarina - KR Master Patch 26.14",
+          "rankClaim": "Master",
+          "patch": "26.14",
+          "durationSec": 1709,
+          "region": "KR",
+          "uploaded": "2026-07-30",
+          "moments": []
+        },
+        {
+          "videoId": "SxDlnZvC4Ns",
+          "title": "Garen Mid vs Katarina - NA Grandmaster Patch 26.03",
+          "rankClaim": "Grandmaster",
+          "patch": "26.3",
+          "durationSec": 2115,
+          "region": "NA",
+          "uploaded": "2026-02-16",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 57,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "CsdM98c4nUI",
+          "title": "(DIG Photon) Garen Top vs Maokai - KR Grandmaster Patch 26.16",
+          "rankClaim": "Grandmaster",
+          "patch": "26.16",
+          "durationSec": 1700,
+          "region": "KR",
+          "player": "DIG Photon",
+          "uploaded": "2026-08-18",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 58,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "IatjgZw70As",
+          "title": "Garen Top vs Renekton - KR Grandmaster Patch 25.05",
+          "rankClaim": "Grandmaster",
+          "patch": "25.5",
+          "durationSec": 1599,
+          "region": "KR",
+          "uploaded": "2025-03-11",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 159,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 435,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 503,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 754,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 826,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 872,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 967,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1156,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1247,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1357,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1440,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1465,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1493,
+              "label": "Take down The Inhibitor"
+            },
+            {
+              "atSec": 1535,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1564,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1578,
+              "label": "End credit"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 61,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "N92Ex7k6LXM",
+          "title": "Garen Mid vs Orianna - KR Master Patch 25.14",
+          "rankClaim": "Master",
+          "patch": "25.14",
+          "durationSec": 2126,
+          "region": "KR",
+          "uploaded": "2025-07-29",
+          "moments": []
+        },
+        {
+          "videoId": "m1tvm9sklLA",
+          "title": "Garen Mid vs Orianna - KR Master Patch 25.08",
+          "rankClaim": "Master",
+          "patch": "25.8",
+          "durationSec": 1804,
+          "region": "KR",
+          "uploaded": "2025-05-02",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 428,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 529,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 747,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 773,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 942,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 965,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1037,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1149,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1175,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1191,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1284,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1433,
+              "label": "Get a Triple Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1454,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1566,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1588,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1615,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1725,
+              "label": "Take down The Inhibitor"
+            },
+            {
+              "atSec": 1751,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1769,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1783,
+              "label": "End credit"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 68,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "fa8qWw8CGcQ",
+          "title": "Garen Mid vs Rumble - BR Challenger Patch 26.06",
+          "rankClaim": "Challenger",
+          "patch": "26.6",
+          "durationSec": 1800,
+          "uploaded": "2026-03-31",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 412,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 688,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 820,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 865,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1010,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1101,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1138,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1267,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1285,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1313,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1361,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1383,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1404,
+              "label": "Hunt The Baron Nashor",
+              "kind": "baron"
+            },
+            {
+              "atSec": 1474,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1498,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1608,
+              "label": "Take down The Inhibitor"
+            },
+            {
+              "atSec": 1627,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1759,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1789,
+              "label": "End credit"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 69,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "TfNxUv9u8Xw",
+          "title": "Garen vs Cassiopeia Top - KR Grandmaster - Patch 25.21 Season 15",
+          "rankClaim": "Grandmaster",
+          "patch": "25.21",
+          "durationSec": 1741,
+          "region": "KR",
+          "uploaded": "2025-11-03",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 75,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "3E1wOCpVFlA",
+          "title": "Garen Top vs Nasus - KR Master Patch 26.21",
+          "rankClaim": "Master",
+          "patch": "26.21",
+          "durationSec": 1870,
+          "region": "KR",
+          "uploaded": "2026-10-27",
+          "result": "W",
+          "moments": [
+            {
+              "atSec": 217,
+              "label": "Garen catches Nasus"
+            },
+            {
+              "atSec": 290,
+              "label": "Garen outduels Nasus again"
+            },
+            {
+              "atSec": 373,
+              "label": "Red takes 1st Dragon (Infernal)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 524,
+              "label": "Garen outplays Nasus (3rd time)"
+            },
+            {
+              "atSec": 715,
+              "label": "Blue takes 1st Dragon (Hextech)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 920,
+              "label": "Garen solo kills Nasus (4th time)",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1109,
+              "label": "Garen takes down Nasus (5th time)"
+            },
+            {
+              "atSec": 1139,
+              "label": "Red takes 2nd Dragon (Cloud)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1271,
+              "label": "Red takes Baron",
+              "kind": "baron"
+            },
+            {
+              "atSec": 1421,
+              "label": "Garen outduels Zyra"
+            },
+            {
+              "atSec": 1457,
+              "label": "Red takes 3rd Dragon (Cloud)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1504,
+              "label": "Garen catches Nasus (6th time)"
+            },
+            {
+              "atSec": 1568,
+              "label": "Team fight (3 kills)",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1725,
+              "label": "Team fight (3 kills)",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1781,
+              "label": "Red takes 4th Dragon (Cloud)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1818,
+              "label": "Red takes 2nd Baron",
+              "kind": "baron"
+            },
+            {
+              "atSec": 1839,
+              "label": "Mid Inhibitor falls (Blue)"
+            },
+            {
+              "atSec": 1851,
+              "label": "Bot Inhibitor falls (Red)"
+            }
+          ]
+        },
+        {
+          "videoId": "qVaInu3QTxs",
+          "title": "Garen Top vs Nasus - BR Master Patch 26.20",
+          "rankClaim": "Master",
+          "patch": "26.20",
+          "durationSec": 1810,
+          "uploaded": "2026-10-14",
+          "result": "W",
+          "moments": [
+            {
+              "atSec": 153,
+              "label": "First Blood — Garen kills Nasus",
+              "kind": "kill"
+            },
+            {
+              "atSec": 253,
+              "label": "Garen catches Nasus"
+            },
+            {
+              "atSec": 647,
+              "label": "Red takes 1st Dragon (Chemtech)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 660,
+              "label": "Garen outduels Nasus again"
+            },
+            {
+              "atSec": 893,
+              "label": "Garen outplays Zed"
+            },
+            {
+              "atSec": 1021,
+              "label": "Red takes 2nd Dragon (Cloud)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1038,
+              "label": "Garen solo kills Zed again",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1227,
+              "label": "Garen takes down Zed (3rd time)"
+            },
+            {
+              "atSec": 1346,
+              "label": "Team fight (4 kills)",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1393,
+              "label": "Blue takes 1st Dragon (Mountain)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1476,
+              "label": "Garen eliminates Sona"
+            },
+            {
+              "atSec": 1597,
+              "label": "Vayne Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1603,
+              "label": "Vayne Triple Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1640,
+              "label": "Blue takes Baron",
+              "kind": "baron"
+            },
+            {
+              "atSec": 1707,
+              "label": "Blue takes 2nd Dragon (Mountain)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1756,
+              "label": "Team fight (3 kills)",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1778,
+              "label": "Bot Inhibitor falls (Red)"
+            },
+            {
+              "atSec": 1801,
+              "label": "Mid Inhibitor falls (Red)"
+            }
+          ]
+        },
+        {
+          "videoId": "4pJz-3RE030",
+          "title": "T1 Faker Garen vs Nasus [ TOP ] Korea Challenger 2120 LP | Patch 26.20",
+          "rankClaim": "Challenger",
+          "patch": "26.20",
+          "durationSec": 1382,
+          "region": "KR",
+          "player": "Faker",
+          "team": "T1",
+          "uploaded": "2026-10-12",
+          "moments": []
+        },
+        {
+          "videoId": "8w2dWEF8Fu8",
+          "title": "Garen Top vs Nasus - TW Challenger Patch 26.17",
+          "rankClaim": "Challenger",
+          "patch": "26.17",
+          "durationSec": 1761,
+          "uploaded": "2026-08-31",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 79,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "IPp3K-5bgE4",
+          "title": "Garen Top vs Gragas - EUW Challenger Patch 26.03",
+          "rankClaim": "Challenger",
+          "patch": "26.3",
+          "durationSec": 1564,
+          "region": "EUW",
+          "uploaded": "2026-02-12",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 80,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "FGJg6eYmMds",
+          "title": "Garen Top vs Pantheon - KR Master Patch 25.24",
+          "rankClaim": "Master",
+          "patch": "25.24",
+          "durationSec": 1536,
+          "region": "KR",
+          "uploaded": "2026-01-09",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 111,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 309,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 385,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 486,
+              "label": "Hunt The Void Grubs",
+              "kind": "grubs"
+            },
+            {
+              "atSec": 667,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 774,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 797,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 880,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 979,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1002,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1086,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1106,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1196,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1217,
+              "label": "Take down The Inhibitor"
+            },
+            {
+              "atSec": 1232,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1249,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1320,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1353,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1439,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1460,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1479,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1525,
+              "label": "End credit"
+            }
+          ]
+        },
+        {
+          "videoId": "uLwJJEwTOUE",
+          "title": "Garen Top vs Pantheon - KR Master Patch 25.22",
+          "rankClaim": "Master",
+          "patch": "25.22",
+          "durationSec": 1593,
+          "region": "KR",
+          "uploaded": "2025-11-12",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 82,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "-KmVrO_D5vI",
+          "title": "Garen vs Mordekaiser [ TOP ] Lol Korea Master Patch 25.15",
+          "rankClaim": "Master",
+          "patch": "25.15",
+          "durationSec": 1529,
+          "region": "KR",
+          "uploaded": "2025-08-08",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 84,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "z4gLZbH1Sj4",
+          "title": "Garen Top vs Akali - EUW Grandmaster Patch 26.08",
+          "rankClaim": "Grandmaster",
+          "patch": "26.8",
+          "durationSec": 1553,
+          "region": "EUW",
+          "uploaded": "2026-04-21",
+          "moments": []
+        },
+        {
+          "videoId": "qtMOTsPwJDc",
+          "title": "Garen Top vs Akali - EUW Grandmaster Patch 26.07",
+          "rankClaim": "Grandmaster",
+          "patch": "26.7",
+          "durationSec": 1497,
+          "region": "EUW",
+          "uploaded": "2026-04-07",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 85,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "SoOduAnd024",
+          "title": "Garen vs Kennen [ TOP ] Lol Korea Master Patch 26.10 ✅",
+          "rankClaim": "Master",
+          "patch": "26.10",
+          "durationSec": 1216,
+          "region": "KR",
+          "uploaded": "2026-05-18",
+          "moments": []
+        },
+        {
+          "videoId": "urk6-JYiq14",
+          "title": "Garen Top vs Kennen - KR Master Patch 25.06",
+          "rankClaim": "Master",
+          "patch": "25.6",
+          "durationSec": 2036,
+          "region": "KR",
+          "uploaded": "2025-03-26",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 396,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 657,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 877,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 951,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 981,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1101,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1129,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1210,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1233,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1396,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1418,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1445,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1486,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1559,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1653,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1698,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1773,
+              "label": "Get a Triple Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1812,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1925,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1958,
+              "label": "Take down The Inhibitor"
+            },
+            {
+              "atSec": 1991,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 2015,
+              "label": "End credit"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 92,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "1rvhWt6Oyu8",
+          "title": "(Oscarinin) Garen Top vs Riven - EUW Grandmaster Patch 26.11",
+          "rankClaim": "Grandmaster",
+          "patch": "26.11",
+          "durationSec": 1546,
+          "region": "EUW",
+          "player": "Oscarinin",
+          "uploaded": "2026-06-04",
+          "moments": []
+        },
+        {
+          "videoId": "CQsi1z4moSg",
+          "title": "Garen Top vs Riven - KR Master Patch 26.01",
+          "rankClaim": "Master",
+          "patch": "26.1",
+          "durationSec": 1458,
+          "region": "KR",
+          "uploaded": "2026-01-20",
+          "moments": []
+        },
+        {
+          "videoId": "kCZ5tKcQ3Ws",
+          "title": "Garen Top vs Riven - KR Master Patch 25.21",
+          "rankClaim": "Master",
+          "patch": "25.21",
+          "durationSec": 1448,
+          "region": "KR",
+          "uploaded": "2025-10-29",
+          "moments": []
+        },
+        {
+          "videoId": "H3WbiC9JDBo",
+          "title": "Garen vs Riven Top - KR Grandmaster - Patch 25.8 Season 15",
+          "rankClaim": "Grandmaster",
+          "patch": "25.8",
+          "durationSec": 2111,
+          "region": "KR",
+          "uploaded": "2025-04-29",
+          "moments": []
+        },
+        {
+          "videoId": "yS0m1Ros4JI",
+          "title": "Garen vs Riven [ TOP ] Lol Korea Master Patch 25.8 ✅",
+          "rankClaim": "Master",
+          "patch": "25.8",
+          "durationSec": 1877,
+          "region": "KR",
+          "uploaded": "2025-04-26",
+          "moments": []
+        },
+        {
+          "videoId": "uS3sH02a9gI",
+          "title": "Garen vs Riven [ TOP ] Korea Challenger Patch 25.1 ✅",
+          "rankClaim": "Challenger",
+          "patch": "25.1",
+          "durationSec": 1473,
+          "region": "KR",
+          "uploaded": "2025-01-20",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 98,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "DHVbJAitvEU",
+          "title": "Garen Top vs Shen - EUW Master Patch 26.19",
+          "rankClaim": "Master",
+          "patch": "26.19",
+          "durationSec": 1631,
+          "region": "EUW",
+          "uploaded": "2026-10-03",
+          "moments": []
+        },
+        {
+          "videoId": "B3sCbh1oUh4",
+          "title": "LEARNING HOW TO PLAY NAAFIRI DRUTUTT EDITION",
+          "rankClaim": "Master+",
+          "patch": "26.9",
+          "durationSec": 22602,
+          "patchEstimated": true,
+          "player": "Alois",
+          "uploaded": "2026-05-06",
+          "format": "stream",
+          "cam": true,
+          "startSec": 20175,
+          "endSec": 22602,
+          "moments": []
+        },
+        {
+          "videoId": "Iek3ySAOWd4",
+          "title": "Garen Top vs Shen - KR Master Patch 26.02",
+          "rankClaim": "Master",
+          "patch": "26.2",
+          "durationSec": 1496,
+          "region": "KR",
+          "uploaded": "2026-01-29",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 51,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 536,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 795,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 887,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 973,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1013,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1054,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1111,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1190,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1299,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1317,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1453,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1485,
+              "label": "End credit"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 103,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "-ZGXbWl5GY0",
+          "title": "Garen Mid vs Ahri - EUW Grandmaster Patch 25.18",
+          "rankClaim": "Grandmaster",
+          "patch": "25.18",
+          "durationSec": 1740,
+          "region": "EUW",
+          "uploaded": "2025-09-26",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 105,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "SS5bD4V9rnU",
+          "title": "Garen Mid vs Fizz - KR Challenger Patch 26.08",
+          "rankClaim": "Challenger",
+          "patch": "26.8",
+          "durationSec": 1669,
+          "region": "KR",
+          "uploaded": "2026-04-28",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 106,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "p8t9MR0k9KU",
+          "title": "Garen Top vs Volibear - KR Master Patch 26.12",
+          "rankClaim": "Master",
+          "patch": "26.12",
+          "durationSec": 1620,
+          "region": "KR",
+          "uploaded": "2026-06-18",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 112,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "F3rNWNvCH9Y",
+          "title": "Garen Mid vs Viktor - KR Master Patch 26.11",
+          "rankClaim": "Master",
+          "patch": "26.11",
+          "durationSec": 1790,
+          "region": "KR",
+          "uploaded": "2026-06-11",
+          "result": "W",
+          "moments": [
+            {
+              "atSec": 191,
+              "label": "First Blood — Garen kills Viktor",
+              "kind": "kill"
+            },
+            {
+              "atSec": 329,
+              "label": "Red takes 1st Dragon (Cloud)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 661,
+              "label": "Garen Triple Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 745,
+              "label": "Garen takes down Lulu"
+            },
+            {
+              "atSec": 874,
+              "label": "Jhin Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 895,
+              "label": "Blue takes 1st Dragon (Infernal)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 954,
+              "label": "Garen outplays Ornn"
+            },
+            {
+              "atSec": 1089,
+              "label": "Jhin Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1216,
+              "label": "Blue takes 2nd Dragon (Ocean)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1328,
+              "label": "Team fight (3 kills)",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1360,
+              "label": "Blue takes Baron",
+              "kind": "baron"
+            },
+            {
+              "atSec": 1405,
+              "label": "Garen takes down Viktor"
+            },
+            {
+              "atSec": 1435,
+              "label": "Bot Inhibitor falls (Red)"
+            },
+            {
+              "atSec": 1480,
+              "label": "Garen catches Viktor again"
+            },
+            {
+              "atSec": 1513,
+              "label": "Jhin eliminates Xin Zhao"
+            },
+            {
+              "atSec": 1529,
+              "label": "Blue takes 3rd Dragon (Ocean)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1624,
+              "label": "Mid Inhibitor falls (Red)"
+            },
+            {
+              "atSec": 1722,
+              "label": "Garen kills Zeri",
+              "kind": "kill"
+            }
+          ]
+        },
+        {
+          "videoId": "D5GldyQvsvI",
+          "title": "Garen Mid vs Viktor - KR Master Patch 25.16",
+          "rankClaim": "Master",
+          "patch": "25.16",
+          "durationSec": 1884,
+          "region": "KR",
+          "uploaded": "2025-08-27",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 114,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "twAym63LE1M",
+          "title": "KOREA TRAINING ARC",
+          "rankClaim": "Master+",
+          "patch": "26.9",
+          "durationSec": 35158,
+          "patchEstimated": true,
+          "player": "Alois",
+          "uploaded": "2026-05-09",
+          "format": "stream",
+          "cam": true,
+          "startSec": 24100,
+          "endSec": 25309,
+          "moments": []
+        },
+        {
+          "videoId": "vSQRg-R_Po8",
+          "title": "Garen vs Fiora [ TOP ] Lol Korea Master Patch 25.18",
+          "rankClaim": "Master",
+          "patch": "25.18",
+          "durationSec": 1354,
+          "region": "KR",
+          "uploaded": "2025-09-16",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 122,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "B3sCbh1oUh4",
+          "title": "LEARNING HOW TO PLAY NAAFIRI DRUTUTT EDITION",
+          "rankClaim": "Master+",
+          "patch": "26.9",
+          "durationSec": 22602,
+          "patchEstimated": true,
+          "player": "Alois",
+          "uploaded": "2026-05-06",
+          "format": "stream",
+          "cam": true,
+          "startSec": 703,
+          "endSec": 2732,
+          "moments": []
+        },
+        {
+          "videoId": "xkU5hV0bV_4",
+          "title": "Garen vs Darius [ TOP ] Lol Korea Master Patch 25.24 ✅",
+          "rankClaim": "Master",
+          "patch": "25.24",
+          "durationSec": 1468,
+          "region": "KR",
+          "uploaded": "2025-12-16",
+          "moments": []
+        },
+        {
+          "videoId": "sshYzixkWeY",
+          "title": "Garen vs Darius [ TOP ] Lol Korea Master Patch 25.20 ✅",
+          "rankClaim": "Master",
+          "patch": "25.20",
+          "durationSec": 1241,
+          "region": "KR",
+          "uploaded": "2025-10-19",
+          "moments": []
+        },
+        {
+          "videoId": "0khk1LkFm9c",
+          "title": "Garen vs Darius Top - KR Master - Patch 25.16 Season 15",
+          "rankClaim": "Master",
+          "patch": "25.16",
+          "durationSec": 1680,
+          "region": "KR",
+          "uploaded": "2025-08-16",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 126,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "A0aV9_FgB_Q",
+          "title": "Garen Mid vs Jayce - KR Master Patch 26.17",
+          "rankClaim": "Master",
+          "patch": "26.17",
+          "durationSec": 1717,
+          "region": "KR",
+          "uploaded": "2026-09-08",
+          "moments": []
+        },
+        {
+          "videoId": "OFSwXXzlzP0",
+          "title": "Garen Mid vs Jayce - EUW Grandmaster Patch 26.02",
+          "rankClaim": "Grandmaster",
+          "patch": "26.2",
+          "durationSec": 1527,
+          "region": "EUW",
+          "uploaded": "2026-02-06",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 126,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "9zAIwenYwYA",
+          "title": "Garen Top vs Jayce - NA Master Patch 26.18",
+          "rankClaim": "Master",
+          "patch": "26.18",
+          "durationSec": 1852,
+          "region": "NA",
+          "uploaded": "2026-09-15",
+          "moments": []
+        },
+        {
+          "videoId": "RY-WXmf2sWc",
+          "title": "Garen vs Jayce [ TOP ] Lol Korea Master Patch 26.5 ✅",
+          "rankClaim": "Master",
+          "patch": "26.5",
+          "durationSec": 1416,
+          "region": "KR",
+          "uploaded": "2026-03-10",
+          "moments": []
+        },
+        {
+          "videoId": "lY4Hd28Yo0I",
+          "title": "Garen vs Jayce [ TOP ] Lol Korea Master Patch 25.19 ✅",
+          "rankClaim": "Master",
+          "patch": "25.19",
+          "durationSec": 1754,
+          "region": "KR",
+          "uploaded": "2025-10-02",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 131,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "HIOPN1Xs1QI",
+          "title": "Garen Mid vs Diana - KR Master Patch 26.07",
+          "rankClaim": "Master",
+          "patch": "26.7",
+          "durationSec": 1539,
+          "region": "KR",
+          "uploaded": "2026-04-11",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 150,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "yZGbYblhD9A",
+          "title": "Garen Top vs Gnar - KR Master Patch 26.13",
+          "rankClaim": "Master",
+          "patch": "26.13",
+          "durationSec": 1850,
+          "region": "KR",
+          "uploaded": "2026-07-03",
+          "moments": []
+        },
+        {
+          "videoId": "wOfl5Xzm4qI",
+          "title": "Garen vs Gnar Top - KR Grandmaster - Patch 25.9 Season 15",
+          "rankClaim": "Grandmaster",
+          "patch": "25.9",
+          "durationSec": 1501,
+          "region": "KR",
+          "uploaded": "2025-05-11",
+          "moments": []
+        },
+        {
+          "videoId": "U6QszkucKTM",
+          "title": "Garen Top vs Gnar - KR Grandmaster Patch 25.09",
+          "rankClaim": "Grandmaster",
+          "patch": "25.9",
+          "durationSec": 1531,
+          "region": "KR",
+          "uploaded": "2025-05-09",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 157,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "R_5_q-toPhk",
+          "title": "Garen Mid vs Yasuo - KR Master Patch 26.13",
+          "rankClaim": "Master",
+          "patch": "26.13",
+          "durationSec": 1561,
+          "region": "KR",
+          "uploaded": "2026-07-09",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 157,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "Tydu-jVErlY",
+          "title": "Garen Top vs Yasuo - KR Master Patch 25.24",
+          "rankClaim": "Master",
+          "patch": "25.24",
+          "durationSec": 1484,
+          "region": "KR",
+          "uploaded": "2025-12-11",
+          "moments": []
+        },
+        {
+          "videoId": "hbBsxxjrmUQ",
+          "title": "Garen vs Yasuo Top - EUW Challenger - Patch 25.22 Season 15",
+          "rankClaim": "Challenger",
+          "patch": "25.22",
+          "durationSec": 2341,
+          "region": "EUW",
+          "uploaded": "2025-11-17",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 164,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "UG7nQm4vuiw",
+          "title": "Garen Top vs Camille - KR Master Patch 25.15",
+          "rankClaim": "Master",
+          "patch": "25.15",
+          "durationSec": 2099,
+          "region": "KR",
+          "uploaded": "2025-08-08",
+          "moments": []
+        },
+        {
+          "videoId": "2ML9x0RgWgo",
+          "title": "Garen Top vs Camille - KR Master Patch 25.14",
+          "rankClaim": "Master",
+          "patch": "25.14",
+          "durationSec": 1440,
+          "region": "KR",
+          "uploaded": "2025-07-26",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 238,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "GCAo7ctTdoA",
+          "title": "Garen Mid vs Zed - TW Challenger Patch 25.17",
+          "rankClaim": "Challenger",
+          "patch": "25.17",
+          "durationSec": 1747,
+          "uploaded": "2025-09-10",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 240,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "w67Wd3FmSG0",
+          "title": "Garen vs Kled [ TOP ] Korea Master 557 LP | Patch 26.16 ✅",
+          "rankClaim": "Master",
+          "patch": "26.16",
+          "durationSec": 1348,
+          "region": "KR",
+          "uploaded": "2026-08-25",
+          "moments": []
+        },
+        {
+          "videoId": "uWoT2DT330o",
+          "title": "Garen Top vs Kled - TW Challenger Patch 25.19",
+          "rankClaim": "Challenger",
+          "patch": "25.19",
+          "durationSec": 1670,
+          "uploaded": "2025-10-09",
+          "moments": []
+        },
+        {
+          "videoId": "DvDKlhpz5zc",
+          "title": "Garen vs Kled [ TOP ] Lol Korea Master Patch 25.14",
+          "rankClaim": "Master",
+          "patch": "25.14",
+          "durationSec": 1871,
+          "region": "KR",
+          "uploaded": "2025-07-19",
+          "moments": []
+        },
+        {
+          "videoId": "i-ugQpLHIaM",
+          "title": "Garen Top vs Kled - KR Master Patch 25.12",
+          "rankClaim": "Master",
+          "patch": "25.12",
+          "durationSec": 1770,
+          "region": "KR",
+          "uploaded": "2025-06-22",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 245,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "RAMy4p--se8",
+          "title": "Garen Mid vs Ekko - KR Master Patch 25.09",
+          "rankClaim": "Master",
+          "patch": "25.9",
+          "durationSec": 2021,
+          "region": "KR",
+          "uploaded": "2025-05-13",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 559,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 820,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 896,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 928,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 990,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1087,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1187,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1380,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1452,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1518,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1540,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1615,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1650,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1667,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1753,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1847,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1885,
+              "label": "Take down The Inhibitor"
+            },
+            {
+              "atSec": 1967,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1985,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 2000,
+              "label": "End credit"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 246,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "9ee-duyi-zI",
+          "title": "Garen Mid vs Qiyana - KR Master Patch 25.10",
+          "rankClaim": "Master",
+          "patch": "25.10",
+          "durationSec": 1934,
+          "region": "KR",
+          "uploaded": "2025-05-27",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 254,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "kF9fHvo4zhI",
+          "title": "Garen Top vs Vi - KR Challenger Patch 25.04",
+          "rankClaim": "Challenger",
+          "patch": "25.4",
+          "durationSec": 1468,
+          "region": "KR",
+          "uploaded": "2025-02-26",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 266,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "kl6HXypWROI",
+          "title": "Garen vs Aatrox Top - KR Master - Patch 25.12 Season 15",
+          "rankClaim": "Master",
+          "patch": "25.12",
+          "durationSec": 1846,
+          "region": "KR",
+          "uploaded": "2025-06-24",
+          "moments": []
+        },
+        {
+          "videoId": "kKhAtAhR_ic",
+          "title": "Garen vs Aatrox [ TOP ] Lol Korea Master Patch 25.4 ✅",
+          "rankClaim": "Master",
+          "patch": "25.4",
+          "durationSec": 1866,
+          "region": "KR",
+          "uploaded": "2025-02-22",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 497,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "ZqYlr84YXPM",
+          "title": "Garen Mid vs Rakan - NA Challenger Patch 25.24",
+          "rankClaim": "Challenger",
+          "patch": "25.24",
+          "durationSec": 1579,
+          "region": "NA",
+          "uploaded": "2026-01-07",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 155,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 339,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 493,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 624,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 752,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 839,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 898,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 929,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1066,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1209,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1275,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1355,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1511,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1568,
+              "label": "End credit"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 517,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "V_ISOrCUkDU",
+          "title": "Garen Mid vs Sylas - KR Master Patch 25.15",
+          "rankClaim": "Master",
+          "patch": "25.15",
+          "durationSec": 1455,
+          "region": "KR",
+          "uploaded": "2025-08-12",
+          "moments": []
+        },
+        {
+          "videoId": "ed0BngY5xN4",
+          "title": "Garen Mid vs Sylas - KR Master Patch 25.06",
+          "rankClaim": "Master",
+          "patch": "25.6",
+          "durationSec": 1718,
+          "region": "KR",
+          "uploaded": "2025-03-31",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 258,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 485,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 715,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 935,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 965,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1078,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1325,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1343,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1395,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1443,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1467,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1543,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1568,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1697,
+              "label": "End credit"
+            }
+          ]
+        },
+        {
+          "videoId": "okbimcNCTnc",
+          "title": "Garen Mid vs Sylas - KR Master Patch 25.05",
+          "rankClaim": "Master",
+          "patch": "25.5",
+          "durationSec": 1509,
+          "region": "KR",
+          "uploaded": "2025-03-18",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 777,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "hX3tSgyKB4U",
+          "title": "Garen vs Yone [ TOP ] Lol Korea Master 186 LP | Patch 26.18 ✅",
+          "rankClaim": "Master",
+          "patch": "26.18",
+          "durationSec": 1437,
+          "region": "KR",
+          "uploaded": "2026-09-16",
+          "moments": []
+        },
+        {
+          "videoId": "_7d6WUIjjNc",
+          "title": "Garen Top vs Yone - EUW Master Patch 26.17",
+          "rankClaim": "Master",
+          "patch": "26.17",
+          "durationSec": 1572,
+          "region": "EUW",
+          "uploaded": "2026-09-11",
+          "moments": []
+        },
+        {
+          "videoId": "DnkeBe8wY_8",
+          "title": "Garen Top vs Yone - KR Master Patch 25.11",
+          "rankClaim": "Master",
+          "patch": "25.11",
+          "durationSec": 1848,
+          "region": "KR",
+          "uploaded": "2025-06-08",
+          "moments": []
+        },
+        {
+          "videoId": "RCR9MDOBHDY",
+          "title": "Garen vs Yone Top - KR Master - Patch 25.11 Season 15",
+          "rankClaim": "Master",
+          "patch": "25.11",
+          "durationSec": 1861,
+          "region": "KR",
+          "uploaded": "2025-06-04",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 799,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "ms3e9fwjbWA",
+          "title": "Garen Top vs Ambessa - EUW Grandmaster Patch 25.23",
+          "rankClaim": "Grandmaster",
+          "patch": "25.23",
+          "durationSec": 1560,
+          "region": "EUW",
+          "uploaded": "2025-12-05",
+          "moments": []
+        },
+        {
+          "videoId": "d1jfIYrWY0Y",
+          "title": "Garen vs Ambessa Top - KR Challenger - Patch 25.21 Season 15",
+          "rankClaim": "Challenger",
+          "patch": "25.21",
+          "durationSec": 1861,
+          "region": "KR",
+          "uploaded": "2025-11-02",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 875,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "5YnwjwvJB8k",
+          "title": "Garen Top vs Sett - VN Challenger Patch 26.05",
+          "rankClaim": "Challenger",
+          "patch": "26.5",
+          "durationSec": 1608,
+          "uploaded": "2026-03-10",
+          "moments": []
+        },
+        {
+          "videoId": "9MHK7uNB18o",
+          "title": "Garen vs Sett [ TOP ] Lol Korea Master Patch 25.6 ✅",
+          "rankClaim": "Master",
+          "patch": "25.6",
+          "durationSec": 1574,
+          "region": "KR",
+          "uploaded": "2025-03-30",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 887,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "WBKcJe463ME",
+          "title": "Garen Top vs Gwen - EUW Grandmaster Patch 26.15",
+          "rankClaim": "Grandmaster",
+          "patch": "26.15",
+          "durationSec": 1624,
+          "region": "EUW",
+          "uploaded": "2026-08-06",
+          "moments": []
+        },
+        {
+          "videoId": "vB6XbbUFPks",
+          "title": "Garen Top vs Gwen - NA Grandmaster Patch 25.24",
+          "rankClaim": "Grandmaster",
+          "patch": "25.24",
+          "durationSec": 1504,
+          "region": "NA",
+          "uploaded": "2025-12-19",
+          "moments": []
+        },
+        {
+          "videoId": "tkVtOvQhHVo",
+          "title": "Garen Top vs Gwen - KR Master Patch 25.23",
+          "rankClaim": "Master",
+          "patch": "25.23",
+          "durationSec": 1499,
+          "region": "KR",
+          "uploaded": "2025-11-27",
+          "moments": []
+        },
+        {
+          "videoId": "8nNhkURZyuk",
+          "title": "Garen vs Gwen Top - KR Challenger - Patch 25.22 Season 15",
+          "rankClaim": "Challenger",
+          "patch": "25.22",
+          "durationSec": 1696,
+          "region": "KR",
+          "uploaded": "2025-11-10",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 897,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "SrzmtkxvSGQ",
+          "title": "Garen Top vs K'Sante - KR Master Patch 26.20",
+          "rankClaim": "Master",
+          "patch": "26.20",
+          "durationSec": 1488,
+          "region": "KR",
+          "uploaded": "2026-10-23",
+          "result": "W",
+          "moments": [
+            {
+              "atSec": 73,
+              "label": "First Blood — Garen kills K'Sante",
+              "kind": "kill"
+            },
+            {
+              "atSec": 350,
+              "label": "Kha'Zix kills K'Sante",
+              "kind": "kill"
+            },
+            {
+              "atSec": 452,
+              "label": "Red takes 1st Dragon (Infernal)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 547,
+              "label": "Kha'Zix kills K'Sante",
+              "kind": "kill"
+            },
+            {
+              "atSec": 580,
+              "label": "Kha'Zix takes down Sylas"
+            },
+            {
+              "atSec": 778,
+              "label": "Blue takes 1st Dragon (Chemtech)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1136,
+              "label": "Red takes 2nd Dragon (Cloud)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1169,
+              "label": "Viktor kills Kalista",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1205,
+              "label": "Red takes Baron",
+              "kind": "baron"
+            },
+            {
+              "atSec": 1336,
+              "label": "Viktor Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1340,
+              "label": "Viktor Triple Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1357,
+              "label": "Lucian picks off K'Sante"
+            },
+            {
+              "atSec": 1361,
+              "label": "Mid Inhibitor falls (Blue)"
+            },
+            {
+              "atSec": 1463,
+              "label": "Garen picks off Kalista"
+            }
+          ]
+        },
+        {
+          "videoId": "rfC-FSn46Cc",
+          "title": "Garen Top vs K'Sante - KR Master Patch 26.12",
+          "rankClaim": "Master",
+          "patch": "26.12",
+          "durationSec": 1738,
+          "region": "KR",
+          "uploaded": "2026-06-25",
+          "moments": []
+        },
+        {
+          "videoId": "v53xrhCbMAc",
+          "title": "KOREA WANTS ME TO LOSE THE BET  |  KOREA DAY 11",
+          "rankClaim": "Master+",
+          "patch": "26.12",
+          "durationSec": 30163,
+          "patchEstimated": true,
+          "player": "Alois",
+          "uploaded": "2026-06-17",
+          "format": "stream",
+          "cam": true,
+          "startSec": 21122,
+          "endSec": 23280,
+          "moments": []
+        },
+        {
+          "videoId": "v53xrhCbMAc",
+          "title": "KOREA WANTS ME TO LOSE THE BET  |  KOREA DAY 11",
+          "rankClaim": "Master+",
+          "patch": "26.12",
+          "durationSec": 30163,
+          "patchEstimated": true,
+          "player": "Alois",
+          "uploaded": "2026-06-17",
+          "format": "stream",
+          "cam": true,
+          "startSec": 29044,
+          "endSec": 30163,
+          "moments": []
+        },
+        {
+          "videoId": "3_gyrgqZ4RI",
+          "title": "TOPLANE GAMING",
+          "rankClaim": "Master+",
+          "patch": "26.10",
+          "durationSec": 17402,
+          "patchEstimated": true,
+          "player": "Alois",
+          "uploaded": "2026-05-16",
+          "format": "stream",
+          "cam": true,
+          "startSec": 6617,
+          "endSec": 8904,
+          "moments": []
+        },
+        {
+          "videoId": "Quzm7MzRN3s",
+          "title": "Garen Top vs K'Sante - EUW Challenger Patch 26.09",
+          "rankClaim": "Challenger",
+          "patch": "26.9",
+          "durationSec": 1473,
+          "region": "EUW",
+          "uploaded": "2026-05-03",
+          "moments": []
+        },
+        {
+          "videoId": "hhGTomHuJ8c",
+          "title": "I LOVE MY SUPPORTS",
+          "rankClaim": "Master+",
+          "patch": "26.8",
+          "durationSec": 23187,
+          "patchEstimated": true,
+          "player": "Alois",
+          "uploaded": "2026-04-23",
+          "format": "stream",
+          "cam": true,
+          "startSec": 2269,
+          "endSec": 3709,
+          "moments": []
+        },
+        {
+          "videoId": "DYuWUU4XgAw",
+          "title": "Garen Top vs K'Sante - EUW Grandmaster Patch 25.13",
+          "rankClaim": "Grandmaster",
+          "patch": "25.13",
+          "durationSec": 1771,
+          "region": "EUW",
+          "uploaded": "2025-07-14",
+          "moments": []
+        },
+        {
+          "videoId": "Tb2ODfR2mw8",
+          "title": "Garen vs K'Sante Top - EUW Grandmaster - Patch 25.4 Season 15",
+          "rankClaim": "Grandmaster",
+          "patch": "25.4",
+          "durationSec": 1561,
+          "region": "EUW",
+          "uploaded": "2025-03-05",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 901,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "O67Jk0Bab6M",
+          "title": "Garen Mid vs Smolder - KR Master Patch 25.24",
+          "rankClaim": "Master",
+          "patch": "25.24",
+          "durationSec": 1544,
+          "region": "KR",
+          "uploaded": "2025-12-22",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 904,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "aAsQ83eFSJw",
+          "title": "Garen Top vs Zaahen - KR Master Patch 26.13",
+          "rankClaim": "Master",
+          "patch": "26.13",
+          "durationSec": 1685,
+          "region": "KR",
+          "uploaded": "2026-07-17",
+          "moments": []
+        },
+        {
+          "videoId": "VTNm1HTHtH8",
+          "title": "Garen vs Zaahen 10/1/1 (Top) | EUW Challenger | Garen OTP Replay",
+          "rankClaim": "Challenger",
+          "patch": "26.10",
+          "durationSec": 1282,
+          "region": "EUW",
+          "patchEstimated": true,
+          "uploaded": "2026-05-19",
+          "moments": []
+        },
+        {
+          "videoId": "peYNsF9m96w",
+          "title": "Garen vs Zaahen [ TOP ] Lol Korea Master Patch 25.23 ✅",
+          "rankClaim": "Master",
+          "patch": "25.23",
+          "durationSec": 1466,
+          "region": "KR",
+          "uploaded": "2025-11-24",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 910,
+      "lane": "adc",
+      "videos": [
+        {
+          "videoId": "owogeWkRpXc",
+          "title": "(KRX LazyFeel) Garen ADC vs Hwei - KR Challenger Patch 26.15",
+          "rankClaim": "Challenger",
+          "patch": "26.15",
+          "durationSec": 1761,
+          "region": "KR",
+          "player": "KRX LazyFeel",
+          "uploaded": "2026-08-11",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 950,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "xfIbwMRkebg",
+          "title": "Garen Mid vs Naafiri - KR Master Patch 25.13",
+          "rankClaim": "Master",
+          "patch": "25.13",
+          "durationSec": 1653,
+          "region": "KR",
+          "uploaded": "2025-07-12",
+          "moments": []
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,3454 @@
+{
+  "schema": 1,
+  "champion": 421,
+  "generatedAt": "2026-11-07T13:25:14.592Z",
+  "guides": [],
+  "general": [
+    {
+      "champion": 421,
+      "lane": "jungle",
+      "patch": "26.21",
+      "reviewed": false,
+      "keyTips": [
+        {
+          "text": "Open Raptors, Krugs, and Red, look for a level-three gank, then take the blue-side Scuttle or Blue by timer and finish through Gromp; accept running about two camps behind a double full-clear for the earlier map pressure.",
+          "scope": "champion",
+          "sourceIds": [
+            "lordgrox"
+          ]
+        },
+        {
+          "text": "Pick ganks by win condition, objective access, killability, and scoreboard state: check enemy escapes and mobility, allied follow-up crowd control, and self-peel before spending the tunnel engage.",
+          "scope": "champion",
+          "sourceIds": [
+            "lordgrox"
+          ],
+          "abilityKeys": [
+            {
+              "champion": 421,
+              "key": "E"
+            }
+          ]
+        },
+        {
+          "text": "Time R to avoid high-impact damage or control with its brief untargetability rather than saving it only as a finisher, and recast W during its travel to arrive burrowed with an instant knock-up ready.",
+          "scope": "champion",
+          "sourceIds": [
+            "lordgrox"
+          ],
+          "abilityKeys": [
+            {
+              "champion": 421,
+              "key": "R"
+            },
+            {
+              "champion": 421,
+              "key": "W"
+            }
+          ]
+        }
+      ],
+      "sections": {
+        "overview": {
+          "tips": []
+        },
+        "early-lane": {
+          "tips": [
+            {
+              "text": "Run Hail of Blades for the quick-burst empowered E sequence, and switch to Press the Attack or Conqueror when the fight continues past the opening combo.",
+              "scope": "champion",
+              "sourceIds": [
+                "lordgrox"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 421,
+                  "key": "E"
+                }
+              ]
+            },
+            {
+              "text": "Take Blue Smite for its movement speed and playmaking access on the early gank route.",
+              "scope": "champion",
+              "sourceIds": [
+                "lordgrox"
+              ]
+            },
+            {
+              "text": "Never precommit to one lane before the match develops; let the win condition and objective side choose the gank after the first clear.",
+              "scope": "champion",
+              "sourceIds": [
+                "lordgrox"
+              ]
+            }
+          ]
+        },
+        "mid-lane": {
+          "tips": [
+            {
+              "text": "Treat tunnels as both engage and escape: save E tunnels when a gank or skirmish is likely, and only lay utility tunnels while moving through quiet areas.",
+              "scope": "champion",
+              "sourceIds": [
+                "lordgrox"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 421,
+                  "key": "E"
+                }
+              ]
+            },
+            {
+              "text": "Track Grounded effects before choosing a route, since they block Tunnel, R, and Flash alike.",
+              "scope": "champion",
+              "sourceIds": [
+                "lordgrox"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 421,
+                  "key": "E"
+                },
+                {
+                  "champion": 421,
+                  "key": "R"
+                }
+              ]
+            },
+            {
+              "text": "While burrowed, respect the compressed senses: Nearsight shrinks the already reduced sight radius, Soraka's silence stops the burrowed knock-up, and Teemo's blind denies the auto-attack Fury generation the combo needs.",
+              "scope": "champion",
+              "sourceIds": [
+                "lordgrox"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 421,
+                  "key": "W"
+                }
+              ]
+            },
+            {
+              "text": "Drill camp kiting and combo execution in Practice Tool, learning how far each camp can be pulled before it resets; that pull distance is the core clear-speed skill.",
+              "scope": "champion",
+              "sourceIds": [
+                "lordgrox"
+              ]
+            }
+          ]
+        },
+        "win-condition": {
+          "tips": [
+            {
+              "text": "Use R's travel to expose certain invisible targets as a situational team reveal, not as a replacement for real vision setup.",
+              "scope": "champion",
+              "sourceIds": [
+                "lordgrox"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 421,
+                  "key": "R"
+                }
+              ]
+            },
+            {
+              "text": "Arrive at the decisive fight burrowed and ready: R in, knock up with W immediately, and let the team follow rather than opening unburrowed into control.",
+              "scope": "champion",
+              "sourceIds": [
+                "lordgrox"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 421,
+                  "key": "R"
+                },
+                {
+                  "champion": 421,
+                  "key": "W"
+                }
+              ]
+            },
+            {
+              "text": "For jungle macro beyond fixed routes, study early-game paths and enemy camp tracking through play or coaching.",
+              "scope": "champion",
+              "sourceIds": [
+                "lordgrox"
+              ]
+            }
+          ]
+        }
+      },
+      "itemization": [
+        {
+          "text": "Choose the identity first: bruiser trades some burst for health and skirmish durability, while the crit path makes picks deadlier but leaves Rek'Sai vulnerable to crowd control.",
+          "scope": "champion",
+          "sourceIds": [
+            "lordgrox"
+          ]
+        },
+        {
+          "text": "Build around Titanic Hydra as the common core, taking Spear of Shojin first on bruiser when the game fits; the bruiser core adds Sterak's Gage, Death's Dance, and Overlord's Bloodmail as a May 2026 snapshot.",
+          "scope": "champion",
+          "sourceIds": [
+            "lordgrox"
+          ],
+          "itemIds": [
+            3748,
+            3161,
+            3053,
+            6333,
+            2501
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "id": "lordgrox",
+          "author": "LordGrox",
+          "rankClaim": "Emerald profile badge",
+          "rank": "emerald",
+          "url": "https://www.mobafire.com/league-of-legends/build/s16-lordgrox-high-elo-reksai-guide-595303",
+          "kind": "mobafire"
+        }
+      ]
+    }
+  ],
+  "vods": [
+    {
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "p66230VsLwo",
+          "title": "FULL EDUCATIONAL REK'SAI GAMEPLAY",
+          "rankClaim": "Master+",
+          "patch": "26.4",
+          "durationSec": 1609,
+          "patchEstimated": true,
+          "player": "Sinerias",
+          "uploaded": "2026-02-28",
+          "format": "stream",
+          "cam": true,
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 2,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "B4bveAeLtFM",
+          "title": "Rek'Sai Top vs Olaf - EUW Master Patch 26.18",
+          "rankClaim": "Master",
+          "patch": "26.18",
+          "durationSec": 1460,
+          "region": "EUW",
+          "uploaded": "2026-09-22",
+          "moments": []
+        },
+        {
+          "videoId": "g3noICpSKC0",
+          "title": "Rek'Sai Top vs Olaf - EUW Grandmaster Patch 25.19",
+          "rankClaim": "Grandmaster",
+          "patch": "25.19",
+          "durationSec": 1983,
+          "region": "EUW",
+          "uploaded": "2025-10-06",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 5,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "0TwAGO39Goo",
+          "title": "(G2N Markoon) Rek'Sai Jungle vs Xin Zhao - EUW Challenger Patch 26.12",
+          "rankClaim": "Challenger",
+          "patch": "26.12",
+          "durationSec": 1417,
+          "region": "EUW",
+          "player": "G2N Markoon",
+          "uploaded": "2026-06-14",
+          "moments": []
+        },
+        {
+          "videoId": "qn66w8b4EQI",
+          "title": "Rek'Sai Jungle vs Xin Zhao - KR Grandmaster Patch 25.12",
+          "rankClaim": "Grandmaster",
+          "patch": "25.12",
+          "durationSec": 1688,
+          "region": "KR",
+          "uploaded": "2025-06-22",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 9,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "7zovqR6-rpQ",
+          "title": "(FEC Dino) Rek'Sai Jungle vs Fiddlesticks - EUW Challenger Patch 26.16",
+          "rankClaim": "Challenger",
+          "patch": "26.16",
+          "durationSec": 1754,
+          "region": "EUW",
+          "player": "FEC Dino",
+          "uploaded": "2026-08-19",
+          "moments": []
+        },
+        {
+          "videoId": "iTMfNsIv3-M",
+          "title": "Rek'Sai Jungle vs Fiddlesticks - NA Challenger Patch 25.13",
+          "rankClaim": "Challenger",
+          "patch": "25.13",
+          "durationSec": 1684,
+          "region": "NA",
+          "uploaded": "2025-07-16",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 14,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "4CzrNfOdvf8",
+          "title": "Rek'Sai Top vs Sion - KR Master Patch 25.16",
+          "rankClaim": "Master",
+          "patch": "25.16",
+          "durationSec": 1814,
+          "region": "KR",
+          "uploaded": "2025-08-23",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 24,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "GFCyEyeXxj8",
+          "title": "Rek'Sai Top vs Jax - KR Master Patch 25.17",
+          "rankClaim": "Master",
+          "patch": "25.17",
+          "durationSec": 1712,
+          "region": "KR",
+          "uploaded": "2025-09-07",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 27,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "rhft5YjfN4A",
+          "title": "Rek'Sai Top vs Singed - EUW Challenger Patch 25.18",
+          "rankClaim": "Challenger",
+          "patch": "25.18",
+          "durationSec": 1696,
+          "region": "EUW",
+          "uploaded": "2025-09-22",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 28,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "GwSAn-48CgY",
+          "title": "(VNR Listo) Rek'Sai Jungle vs Evelynn - KR Challenger Patch 26.16",
+          "rankClaim": "Challenger",
+          "patch": "26.16",
+          "durationSec": 1728,
+          "region": "KR",
+          "player": "VNR Listo",
+          "uploaded": "2026-08-27",
+          "moments": []
+        },
+        {
+          "videoId": "RSRBPIzseio",
+          "title": "Rek'Sai Jungle vs Evelynn - KR Master Patch 25.24",
+          "rankClaim": "Master",
+          "patch": "25.24",
+          "durationSec": 1575,
+          "region": "KR",
+          "uploaded": "2025-12-22",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 163,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 317,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 408,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 442,
+              "label": "Hunt The Dragon",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 501,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 525,
+              "label": "Hunt The Void Grubs",
+              "kind": "grubs"
+            },
+            {
+              "atSec": 572,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 660,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 759,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 788,
+              "label": "Hunt The Dragon",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 901,
+              "label": "Hunt The Rift Herald",
+              "kind": "herald"
+            },
+            {
+              "atSec": 922,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 969,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1118,
+              "label": "Hunt The Dragon",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1139,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1150,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1204,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1249,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1269,
+              "label": "Hunt The Atakhan"
+            },
+            {
+              "atSec": 1339,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1369,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1403,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1445,
+              "label": "Hunt The Dragon",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1489,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1536,
+              "label": "Take down The Inhibitor"
+            },
+            {
+              "atSec": 1550,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1564,
+              "label": "End credit"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 35,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "4iZn8aUA1iY",
+          "title": "Rek'Sai vs Shaco 18/2/12 (Jungle) | EUW Master | Rek'Sai OTP Replay",
+          "rankClaim": "Master",
+          "patch": "26.7",
+          "durationSec": 2132,
+          "region": "EUW",
+          "patchEstimated": true,
+          "uploaded": "2026-04-14",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 36,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "BjszyR8nBYk",
+          "title": "Rek'Sai Top vs Dr. Mundo - KR Master Patch 25.13",
+          "rankClaim": "Master",
+          "patch": "25.13",
+          "durationSec": 1659,
+          "region": "KR",
+          "uploaded": "2025-07-09",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 39,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "w0N-t-h-CyM",
+          "title": "Rek'Sai vs Irelia Top - KR Challenger - Patch 25.22 Season 15",
+          "rankClaim": "Challenger",
+          "patch": "25.22",
+          "durationSec": 1866,
+          "region": "KR",
+          "uploaded": "2025-11-14",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 41,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "mlWv8-ypRdQ",
+          "title": "Rek'Sai Top vs Gangplank - KR Master Patch 25.12",
+          "rankClaim": "Master",
+          "patch": "25.12",
+          "durationSec": 1731,
+          "region": "KR",
+          "uploaded": "2025-06-23",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 59,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "wcKO8r334h8",
+          "title": "(TSPT Diamondprox) Rek'Sai Jungle vs Jarvan IV - EUW Grandmaster Patch 26.12",
+          "rankClaim": "Grandmaster",
+          "patch": "26.12",
+          "durationSec": 1759,
+          "region": "EUW",
+          "player": "TSPT Diamondprox",
+          "uploaded": "2026-06-24",
+          "moments": []
+        },
+        {
+          "videoId": "8GptXG9a2EA",
+          "title": "Rek'Sai Jungle vs Jarvan IV - EUW Challenger Patch 25.24",
+          "rankClaim": "Challenger",
+          "patch": "25.24",
+          "durationSec": 1475,
+          "region": "EUW",
+          "uploaded": "2026-01-07",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 60,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "n24Dz_s8e5g",
+          "title": "Rek'Sai Jungle vs Elise - KR Master Patch 26.17",
+          "rankClaim": "Master",
+          "patch": "26.17",
+          "durationSec": 1745,
+          "region": "KR",
+          "uploaded": "2026-08-31",
+          "result": "W",
+          "moments": [
+            {
+              "atSec": 100,
+              "label": "First Blood — Rek'Sai kills Elise",
+              "kind": "kill"
+            },
+            {
+              "atSec": 624,
+              "label": "Blue takes 1st Dragon (Mountain)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 949,
+              "label": "Blue takes 2nd Dragon (Hextech)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1026,
+              "label": "Rek'Sai takes down Elise"
+            },
+            {
+              "atSec": 1085,
+              "label": "Rek'Sai outplays Elise"
+            },
+            {
+              "atSec": 1123,
+              "label": "Talon kills Yunara",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1208,
+              "label": "Rek'Sai outduels Yone"
+            },
+            {
+              "atSec": 1237,
+              "label": "Lissandra picks off Yunara"
+            },
+            {
+              "atSec": 1263,
+              "label": "Blue takes 3rd Dragon (Ocean)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1276,
+              "label": "Talon eliminates Zoe"
+            },
+            {
+              "atSec": 1313,
+              "label": "Rek'Sai eliminates Yunara"
+            },
+            {
+              "atSec": 1367,
+              "label": "Blue takes Baron",
+              "kind": "baron"
+            },
+            {
+              "atSec": 1425,
+              "label": "Team fight (4 kills)",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1511,
+              "label": "Team fight (3 kills)",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1555,
+              "label": "Rek'Sai Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1581,
+              "label": "Blue takes 4th Dragon (Ocean)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1664,
+              "label": "Team fight (4 kills)",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1704,
+              "label": "Mid Inhibitor falls (Red)"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 62,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "-RkfiNKE-9w",
+          "title": "Rek'Sai Jungle vs Wukong - KR Master Patch 26.20",
+          "rankClaim": "Master",
+          "patch": "26.20",
+          "durationSec": 1722,
+          "region": "KR",
+          "uploaded": "2026-10-11",
+          "result": "W",
+          "moments": [
+            {
+              "atSec": 90,
+              "label": "First Blood — Rek'Sai kills Yunara",
+              "kind": "kill"
+            },
+            {
+              "atSec": 203,
+              "label": "Rek'Sai outplays Wukong"
+            },
+            {
+              "atSec": 329,
+              "label": "Blue takes 1st Dragon (Infernal)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 501,
+              "label": "Rek'Sai solo kills Wukong again",
+              "kind": "kill"
+            },
+            {
+              "atSec": 690,
+              "label": "Blue takes 2nd Dragon (Chemtech)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 795,
+              "label": "Rek'Sai takes down Yunara"
+            },
+            {
+              "atSec": 865,
+              "label": "Team fight (3 kills)",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 922,
+              "label": "Blue takes Rift Herald",
+              "kind": "herald"
+            },
+            {
+              "atSec": 1045,
+              "label": "Red takes 1st Dragon (Mountain)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1160,
+              "label": "Corki kills Wukong",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1238,
+              "label": "Rek'Sai picks off Locke"
+            },
+            {
+              "atSec": 1304,
+              "label": "Rek'Sai takes down Wukong"
+            },
+            {
+              "atSec": 1374,
+              "label": "Team fight (3 kills)",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1400,
+              "label": "Blue takes 3rd Dragon (Mountain)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1449,
+              "label": "Team fight (3 kills)",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1615,
+              "label": "Rek'Sai kills Lulu",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1701,
+              "label": "Rek'Sai kills Kai'Sa",
+              "kind": "kill"
+            }
+          ]
+        },
+        {
+          "videoId": "bn9puAKiND4",
+          "title": "Rek'Sai Jungle vs Wukong - KR Challenger Patch 25.15",
+          "rankClaim": "Challenger",
+          "patch": "25.15",
+          "durationSec": 1634,
+          "region": "KR",
+          "uploaded": "2025-08-02",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 63,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "3p-qU94WD6k",
+          "title": "(G2 SkewMond) Rek'Sai Jungle vs Brand - EUW Challenger Patch 26.10",
+          "rankClaim": "Challenger",
+          "patch": "26.10",
+          "durationSec": 1527,
+          "region": "EUW",
+          "player": "SkewMond",
+          "team": "G2",
+          "uploaded": "2026-05-27",
+          "moments": []
+        },
+        {
+          "videoId": "eSr5e0OF2lA",
+          "title": "Rek'Sai Jungle vs Brand - KR Challenger Patch 25.07",
+          "rankClaim": "Challenger",
+          "patch": "25.7",
+          "durationSec": 1712,
+          "region": "KR",
+          "uploaded": "2025-04-09",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 217,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 398,
+              "label": "Hunt The Dragon",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 432,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 474,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 663,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 739,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 839,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 906,
+              "label": "Hunt The Dragon",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1120,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1248,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1298,
+              "label": "Hunt The Dragon",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1350,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1459,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1497,
+              "label": "Hunt The Atakhan"
+            },
+            {
+              "atSec": 1568,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1608,
+              "label": "Hunt The Baron Nashor",
+              "kind": "baron"
+            },
+            {
+              "atSec": 1652,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1691,
+              "label": "End credit"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 64,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "2wgmWzj6gaw",
+          "title": "Rek'Sai Jungle vs Lee Sin (DNS Pyosik) - KR Challenger Patch 26.21",
+          "rankClaim": "Challenger",
+          "patch": "26.21",
+          "durationSec": 1690,
+          "region": "KR",
+          "player": "Pyosik",
+          "uploaded": "2026-10-24",
+          "result": "W",
+          "moments": [
+            {
+              "atSec": 94,
+              "label": "First Blood — Rek'Sai kills Caitlyn",
+              "kind": "kill"
+            },
+            {
+              "atSec": 336,
+              "label": "Red takes 1st Dragon (Infernal)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 383,
+              "label": "Rek'Sai takes down Caitlyn"
+            },
+            {
+              "atSec": 713,
+              "label": "Blue takes 1st Dragon (Mountain)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 897,
+              "label": "Blue takes Rift Herald",
+              "kind": "herald"
+            },
+            {
+              "atSec": 991,
+              "label": "Quinn eliminates Bard"
+            },
+            {
+              "atSec": 1029,
+              "label": "Rek'Sai takes down Lee Sin"
+            },
+            {
+              "atSec": 1105,
+              "label": "Blue takes 2nd Dragon (Ocean)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1205,
+              "label": "Blue takes Baron",
+              "kind": "baron"
+            },
+            {
+              "atSec": 1234,
+              "label": "Mel eliminates Lee Sin"
+            },
+            {
+              "atSec": 1296,
+              "label": "Mel picks off Anivia"
+            },
+            {
+              "atSec": 1344,
+              "label": "Mid Inhibitor falls (Red)"
+            },
+            {
+              "atSec": 1385,
+              "label": "Quinn Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1421,
+              "label": "Blue takes 3rd Dragon (Ocean)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1534,
+              "label": "Top Inhibitor falls (Red)"
+            },
+            {
+              "atSec": 1627,
+              "label": "Team fight (3 kills)",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1653,
+              "label": "Mid Inhibitor falls (Red)"
+            },
+            {
+              "atSec": 1678,
+              "label": "Mel kills Akshan",
+              "kind": "kill"
+            }
+          ]
+        },
+        {
+          "videoId": "NIXyrYJvVzs",
+          "title": "Rek'Sai Jungle vs Lee Sin - KR Grandmaster Patch 26.17",
+          "rankClaim": "Grandmaster",
+          "patch": "26.17",
+          "durationSec": 1646,
+          "region": "KR",
+          "uploaded": "2026-09-10",
+          "moments": []
+        },
+        {
+          "videoId": "4Zc19kNophE",
+          "title": "(FEC Dino) Rek'Sai Jungle vs Lee Sin (FNC Razork) - EUW Challenger Patch 26.15",
+          "rankClaim": "Challenger",
+          "patch": "26.15",
+          "durationSec": 1661,
+          "region": "EUW",
+          "player": "FEC Dino",
+          "uploaded": "2026-08-13",
+          "moments": []
+        },
+        {
+          "videoId": "JwvyA-C6ZTQ",
+          "title": "Rek'Sai Jungle vs Lee Sin - KR Master Patch 26.15",
+          "rankClaim": "Master",
+          "patch": "26.15",
+          "durationSec": 1547,
+          "region": "KR",
+          "uploaded": "2026-08-06",
+          "moments": []
+        },
+        {
+          "videoId": "J-JWrVbvROI",
+          "title": "Rek'Sai Jungle vs Lee Sin - KR Master Patch 26.05",
+          "rankClaim": "Master",
+          "patch": "26.5",
+          "durationSec": 1508,
+          "region": "KR",
+          "uploaded": "2026-03-08",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 181,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 390,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 481,
+              "label": "Hunt The Void Grubs",
+              "kind": "grubs"
+            },
+            {
+              "atSec": 522,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 746,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 864,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 917,
+              "label": "Hunt The Rift Herald",
+              "kind": "herald"
+            },
+            {
+              "atSec": 944,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1063,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1112,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1153,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1252,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1294,
+              "label": "Hunt The Baron Nashor",
+              "kind": "baron"
+            },
+            {
+              "atSec": 1330,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1378,
+              "label": "Hunt The Dragon",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1430,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1462,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1497,
+              "label": "End credit"
+            }
+          ]
+        },
+        {
+          "videoId": "jqvsWcjSpmA",
+          "title": "Kanavi Rek'Sai vs Lee Sin Jungle - KR Grandmaster - Patch 16.2 Season 16",
+          "rankClaim": "Grandmaster",
+          "patch": "26.2",
+          "durationSec": 1596,
+          "region": "KR",
+          "player": "Kanavi",
+          "uploaded": "2026-02-03",
+          "moments": []
+        },
+        {
+          "videoId": "6r0D-rHo4ys",
+          "title": "Rek'Sai vs Lee Sin [ Jungle ] Korea Grandmaster 1174 LP | Patch 25.24 ✅",
+          "rankClaim": "Grandmaster",
+          "patch": "25.24",
+          "durationSec": 1455,
+          "region": "KR",
+          "uploaded": "2026-01-06",
+          "moments": []
+        },
+        {
+          "videoId": "kzbI75MjeNA",
+          "title": "Rek'Sai Jungle vs Lee Sin - KR Grandmaster Patch 25.20",
+          "rankClaim": "Grandmaster",
+          "patch": "25.20",
+          "durationSec": 1629,
+          "region": "KR",
+          "uploaded": "2025-10-13",
+          "moments": []
+        },
+        {
+          "videoId": "MRrOuuhcmIQ",
+          "title": "Rek'Sai Jungle vs Lee Sin - KR Master Patch 25.19",
+          "rankClaim": "Master",
+          "patch": "25.19",
+          "durationSec": 1529,
+          "region": "KR",
+          "uploaded": "2025-09-29",
+          "moments": []
+        },
+        {
+          "videoId": "y6jeOFBcUaw",
+          "title": "Rek'Sai Jungle vs Lee Sin - KR Grandmaster Patch 25.16",
+          "rankClaim": "Grandmaster",
+          "patch": "25.16",
+          "durationSec": 1923,
+          "region": "KR",
+          "uploaded": "2025-08-17",
+          "moments": []
+        },
+        {
+          "videoId": "a7Cu6HdGMr8",
+          "title": "Rek'Sai Jungle vs Lee Sin - KR Grandmaster Patch 25.08",
+          "rankClaim": "Grandmaster",
+          "patch": "25.8",
+          "durationSec": 1486,
+          "region": "KR",
+          "uploaded": "2025-04-23",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 223,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 398,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 470,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 613,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 637,
+              "label": "Hunt The Void Grubs",
+              "kind": "grubs"
+            },
+            {
+              "atSec": 669,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 774,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 833,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 896,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 928,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1032,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1069,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1130,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1176,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1186,
+              "label": "Take down The Inhibitor"
+            },
+            {
+              "atSec": 1238,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1299,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1407,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1465,
+              "label": "End credit"
+            }
+          ]
+        },
+        {
+          "videoId": "ihz2PtOY4NI",
+          "title": "Rek'Sai Jungle vs Lee Sin - KR Challenger Patch 25.06",
+          "rankClaim": "Challenger",
+          "patch": "25.6",
+          "durationSec": 1810,
+          "region": "KR",
+          "uploaded": "2025-03-27",
+          "moments": []
+        },
+        {
+          "videoId": "4ZQQj75kgQg",
+          "title": "Rek'Sai Jungle vs Lee Sin - KR Master Patch 25.04",
+          "rankClaim": "Master",
+          "patch": "25.4",
+          "durationSec": 2028,
+          "region": "KR",
+          "uploaded": "2025-02-26",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 72,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "4k7ho2-ScZ8",
+          "title": "Rek'Sai Jungle vs Skarner - KR Challenger Patch 26.08",
+          "rankClaim": "Challenger",
+          "patch": "26.8",
+          "durationSec": 1451,
+          "region": "KR",
+          "uploaded": "2026-04-23",
+          "moments": []
+        },
+        {
+          "videoId": "KpahHFor3HQ",
+          "title": "Rek'Sai Jungle vs Skarner - EUW Grandmaster Patch 25.05",
+          "rankClaim": "Grandmaster",
+          "patch": "25.5",
+          "durationSec": 2137,
+          "region": "EUW",
+          "uploaded": "2025-03-21",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 75,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "GmIpG4k55Kg",
+          "title": "(FEC Dino) Rek'Sai Jungle vs Nasus - EUW Grandmaster Patch 26.13",
+          "rankClaim": "Grandmaster",
+          "patch": "26.13",
+          "durationSec": 1446,
+          "region": "EUW",
+          "player": "FEC Dino",
+          "uploaded": "2026-07-04",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 76,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "cYfE-t_8Aqg",
+          "title": "Rek'Sai Jungle vs Nidalee - KR Master Patch 26.19",
+          "rankClaim": "Master",
+          "patch": "26.19",
+          "durationSec": 1844,
+          "region": "KR",
+          "uploaded": "2026-09-29",
+          "moments": []
+        },
+        {
+          "videoId": "hYR5XkdZUqI",
+          "title": "(BRO GIDEON) Rek'Sai Jungle vs Nidalee - KR Grandmaster Patch 26.11",
+          "rankClaim": "Grandmaster",
+          "patch": "26.11",
+          "durationSec": 1730,
+          "region": "KR",
+          "player": "GIDEON",
+          "team": "BRO",
+          "uploaded": "2026-06-09",
+          "moments": []
+        },
+        {
+          "videoId": "MlJkpwgqJ5c",
+          "title": "Rek'Sai Jungle vs Nidalee - KR Challenger Patch 26.07",
+          "rankClaim": "Challenger",
+          "patch": "26.7",
+          "durationSec": 1571,
+          "region": "KR",
+          "uploaded": "2026-04-06",
+          "moments": []
+        },
+        {
+          "videoId": "FY7GFrlUa30",
+          "title": "Rek'Sai Jungle vs Nidalee - KR Master Patch 25.21",
+          "rankClaim": "Master",
+          "patch": "25.21",
+          "durationSec": 2082,
+          "region": "KR",
+          "uploaded": "2025-10-25",
+          "moments": []
+        },
+        {
+          "videoId": "8VXjXnAZER0",
+          "title": "Rek'Sai Jungle vs Nidalee - KR Master Patch 25.11",
+          "rankClaim": "Master",
+          "patch": "25.11",
+          "durationSec": 1605,
+          "region": "KR",
+          "uploaded": "2025-06-10",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 77,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "AoAXAQey3N4",
+          "title": "Rek'Sai Jungle vs Udyr - KR Master Patch 25.09",
+          "rankClaim": "Master",
+          "patch": "25.9",
+          "durationSec": 2113,
+          "region": "KR",
+          "uploaded": "2025-05-08",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 79,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "-I4Ks0iqTLo",
+          "title": "Rek'Sai Top vs Gragas - KR Master Patch 25.14",
+          "rankClaim": "Master",
+          "patch": "25.14",
+          "durationSec": 1505,
+          "region": "KR",
+          "uploaded": "2025-07-31",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 80,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "cfkFt8TSwoM",
+          "title": "Rek'Sai Jungle vs Pantheon - KR Master Patch 25.10",
+          "rankClaim": "Master",
+          "patch": "25.10",
+          "durationSec": 1578,
+          "region": "KR",
+          "uploaded": "2025-05-22",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 80,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "2Ll5y62uHTI",
+          "title": "Rek'Sai Top vs Pantheon - KR Master Patch 25.11",
+          "rankClaim": "Master",
+          "patch": "25.11",
+          "durationSec": 2068,
+          "region": "KR",
+          "uploaded": "2025-06-12",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 91,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "UPs0iWSM064",
+          "title": "(Karsa) Rek'Sai Jungle vs Talon - KR Master Patch 26.14",
+          "rankClaim": "Master",
+          "patch": "26.14",
+          "durationSec": 1719,
+          "region": "KR",
+          "player": "Karsa",
+          "uploaded": "2026-07-28",
+          "moments": []
+        },
+        {
+          "videoId": "FDDHMlaYqIY",
+          "title": "(KC Yike) Rek'Sai Jungle vs Talon - EUW Challenger Patch 26.11",
+          "rankClaim": "Challenger",
+          "patch": "26.11",
+          "durationSec": 1557,
+          "region": "EUW",
+          "player": "Yike",
+          "team": "KC",
+          "uploaded": "2026-05-31",
+          "moments": []
+        },
+        {
+          "videoId": "_Tm73ZJIb_4",
+          "title": "Rek'Sai Jungle vs Talon - KR Challenger Patch 26.10",
+          "rankClaim": "Challenger",
+          "patch": "26.10",
+          "durationSec": 1696,
+          "region": "KR",
+          "uploaded": "2026-05-20",
+          "moments": []
+        },
+        {
+          "videoId": "vF4FixipVHM",
+          "title": "Rek'Sai Jungle vs Talon - KR Grandmaster Patch 26.03",
+          "rankClaim": "Grandmaster",
+          "patch": "26.3",
+          "durationSec": 1450,
+          "region": "KR",
+          "uploaded": "2026-02-09",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 110,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 199,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 406,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 499,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 568,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 651,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 669,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 695,
+              "label": "Hunt The Dragon",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 783,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 878,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 903,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 925,
+              "label": "Hunt The Rift Herald",
+              "kind": "herald"
+            },
+            {
+              "atSec": 948,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 981,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1026,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1100,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1233,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1365,
+              "label": "Hunt The Dragon",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1398,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1439,
+              "label": "End credit"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 105,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "LcfBB8mWlxE",
+          "title": "Rek'Sai Jungle vs Fizz - KR Challenger Patch 26.04",
+          "rankClaim": "Challenger",
+          "patch": "26.4",
+          "durationSec": 1531,
+          "region": "KR",
+          "uploaded": "2026-02-24",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 107,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "YA04k2Hr81E",
+          "title": "Rek'Sai Jungle vs Rengar - KR Challenger Patch 26.06",
+          "rankClaim": "Challenger",
+          "patch": "26.6",
+          "durationSec": 1474,
+          "region": "KR",
+          "uploaded": "2026-03-23",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 114,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "oWErj6_bJGk",
+          "title": "Rek'Sai Top vs Fiora - NA Grandmaster Patch 25.24",
+          "rankClaim": "Grandmaster",
+          "patch": "25.24",
+          "durationSec": 1574,
+          "region": "NA",
+          "uploaded": "2025-12-28",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 269,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 453,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 732,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 763,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 836,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 917,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1088,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1234,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1293,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1333,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1436,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1512,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1551,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1563,
+              "label": "End credit"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 120,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "-DC6MsNNXCA",
+          "title": "Rek'Sai Jungle vs Hecarim - KR Grandmaster Patch 26.05",
+          "rankClaim": "Grandmaster",
+          "patch": "26.5",
+          "durationSec": 1544,
+          "region": "KR",
+          "uploaded": "2026-03-16",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 138,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 320,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 386,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 458,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 495,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 645,
+              "label": "Hunt The Dragon",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 723,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 829,
+              "label": "Get a Triple Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 858,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 905,
+              "label": "Hunt The Rift Herald",
+              "kind": "herald"
+            },
+            {
+              "atSec": 926,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 938,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 961,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1015,
+              "label": "Hunt The Dragon",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1146,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1167,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1195,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1239,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1261,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1290,
+              "label": "Hunt The Baron Nashor",
+              "kind": "baron"
+            },
+            {
+              "atSec": 1315,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1362,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1440,
+              "label": "Hunt The Dragon",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1495,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1510,
+              "label": "Get a Triple Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1533,
+              "label": "End credit"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 126,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "7qT14XGZFMg",
+          "title": "Rek'Sai Top vs Jayce - KR Master Patch 26.08",
+          "rankClaim": "Master",
+          "patch": "26.8",
+          "durationSec": 1725,
+          "region": "KR",
+          "uploaded": "2026-04-27",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 131,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "_vqXmsDwkNw",
+          "title": "Rek'Sai Jungle vs Diana - EUW Grandmaster Patch 26.18",
+          "rankClaim": "Grandmaster",
+          "patch": "26.18",
+          "durationSec": 1705,
+          "region": "EUW",
+          "uploaded": "2026-09-15",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 133,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "O9DmTi06V0c",
+          "title": "Rek'Sai Top vs Quinn - KR Master Patch 25.08",
+          "rankClaim": "Master",
+          "patch": "25.8",
+          "durationSec": 2015,
+          "region": "KR",
+          "uploaded": "2025-04-28",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 29,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 163,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 200,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 315,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 364,
+              "label": "Hunt The Void Grubs",
+              "kind": "grubs"
+            },
+            {
+              "atSec": 502,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 581,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 617,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 712,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 853,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1062,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1203,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1339,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1460,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1540,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1739,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1850,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1913,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1967,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1994,
+              "label": "End credit"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 150,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "9w5WkuC3zaQ",
+          "title": "(NS Kingen) Rek'Sai Top vs Gnar - KR Grandmaster Patch 26.13",
+          "rankClaim": "Grandmaster",
+          "patch": "26.13",
+          "durationSec": 1730,
+          "region": "KR",
+          "player": "Kingen",
+          "team": "NS",
+          "uploaded": "2026-06-26",
+          "moments": []
+        },
+        {
+          "videoId": "r7CtbTl_0zo",
+          "title": "Rek'Sai Top vs Gnar - KR Master Patch 25.04",
+          "rankClaim": "Master",
+          "patch": "25.4",
+          "durationSec": 1995,
+          "region": "KR",
+          "uploaded": "2025-03-03",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 157,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "jYic3C2RaLg",
+          "title": "Rek'Sai Top vs Yasuo - VN Challenger Patch 25.22",
+          "rankClaim": "Challenger",
+          "patch": "25.22",
+          "durationSec": 1762,
+          "uploaded": "2025-11-16",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 163,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "SLHS4rNumr4",
+          "title": "Rek'Sai Jungle vs Taliyah - KR Master Patch 25.23",
+          "rankClaim": "Master",
+          "patch": "25.23",
+          "durationSec": 1880,
+          "region": "KR",
+          "uploaded": "2025-11-22",
+          "moments": []
+        },
+        {
+          "videoId": "RoSlOAx9KsQ",
+          "title": "Rek'Sai Jungle vs Taliyah - KR Grandmaster Patch 25.13",
+          "rankClaim": "Grandmaster",
+          "patch": "25.13",
+          "durationSec": 2049,
+          "region": "KR",
+          "uploaded": "2025-07-06",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 164,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "CH4eXKMHBxQ",
+          "title": "Rek'Sai Top vs Camille - KR Master Patch 25.06",
+          "rankClaim": "Master",
+          "patch": "25.6",
+          "durationSec": 1898,
+          "region": "KR",
+          "uploaded": "2025-03-31",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 166,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "jsr1IjQp3u8",
+          "title": "Rek'Sai Mid vs Akshan - EUW Grandmaster Patch 26.02",
+          "rankClaim": "Grandmaster",
+          "patch": "26.2",
+          "durationSec": 1616,
+          "region": "EUW",
+          "uploaded": "2026-02-05",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 200,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "IvZoS9Bf-Y8",
+          "title": "Rek'Sai Jungle vs Bel'Veth - KR Master Patch 26.01",
+          "rankClaim": "Master",
+          "patch": "26.1",
+          "durationSec": 1504,
+          "region": "KR",
+          "uploaded": "2026-01-10",
+          "moments": []
+        },
+        {
+          "videoId": "WhQk8poP2EE",
+          "title": "Rek'Sai Jungle vs Bel'Veth - KR Grandmaster Patch 25.24",
+          "rankClaim": "Grandmaster",
+          "patch": "25.24",
+          "durationSec": 1474,
+          "region": "KR",
+          "uploaded": "2025-12-07",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 228,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 247,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 296,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 478,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 498,
+              "label": "Hunt The Void Grubs",
+              "kind": "grubs"
+            },
+            {
+              "atSec": 544,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 615,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 670,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 744,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 911,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1064,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1091,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1122,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1157,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1233,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1399,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1463,
+              "label": "End credit"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 203,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "s8M5XvDq3Cc",
+          "title": "Rek'Sai Jungle vs Kindred - EUW Challenger Patch 26.01",
+          "rankClaim": "Challenger",
+          "patch": "26.1",
+          "durationSec": 1447,
+          "region": "EUW",
+          "uploaded": "2026-01-22",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 119,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 229,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 290,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 352,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 482,
+              "label": "Hunt The Void Grubs",
+              "kind": "grubs"
+            },
+            {
+              "atSec": 559,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 677,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 741,
+              "label": "Hunt The Dragon",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 859,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 963,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 992,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1028,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1149,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1286,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1406,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1420,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1436,
+              "label": "End credit"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 234,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "j4s9rDRhhok",
+          "title": "(Karsa) Rek'Sai Jungle vs Viego - KR Master Patch 26.14",
+          "rankClaim": "Master",
+          "patch": "26.14",
+          "durationSec": 1716,
+          "region": "KR",
+          "player": "Karsa",
+          "uploaded": "2026-07-20",
+          "moments": []
+        },
+        {
+          "videoId": "SlDMi9aY2Ks",
+          "title": "Rek'Sai Jungle vs Viego - KR Challenger Patch 26.09",
+          "rankClaim": "Challenger",
+          "patch": "26.9",
+          "durationSec": 1693,
+          "region": "KR",
+          "uploaded": "2026-05-06",
+          "moments": []
+        },
+        {
+          "videoId": "jx32n0cfWQc",
+          "title": "Rek'Sai Jungle vs Viego - KR Grandmaster Patch 25.22",
+          "rankClaim": "Grandmaster",
+          "patch": "25.22",
+          "durationSec": 1607,
+          "region": "KR",
+          "uploaded": "2025-11-10",
+          "moments": []
+        },
+        {
+          "videoId": "ylHGQw-jStg",
+          "title": "Rek'Sai vs Viego [ Jungle ] Lol Korea Master Patch 25.20 ✅",
+          "rankClaim": "Master",
+          "patch": "25.20",
+          "durationSec": 1898,
+          "region": "KR",
+          "uploaded": "2025-10-14",
+          "moments": []
+        },
+        {
+          "videoId": "b_EQoxh30Bw",
+          "title": "Rek'Sai Jungle vs Viego - KR Master Patch 25.14",
+          "rankClaim": "Master",
+          "patch": "25.14",
+          "durationSec": 1595,
+          "region": "KR",
+          "uploaded": "2025-07-24",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 245,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "uzG8qJWPiy8",
+          "title": "Rek'Sai vs Ekko Jungle - KR Grandmaster - Patch 16.06 Season 16",
+          "rankClaim": "Grandmaster",
+          "patch": "26.6",
+          "durationSec": 1981,
+          "region": "KR",
+          "uploaded": "2026-03-31",
+          "moments": []
+        },
+        {
+          "videoId": "wH5TK6OG3_I",
+          "title": "Rek'Sai Jungle vs Ekko - KR Grandmaster Patch 26.02",
+          "rankClaim": "Grandmaster",
+          "patch": "26.2",
+          "durationSec": 1529,
+          "region": "KR",
+          "uploaded": "2026-01-25",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 229,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 345,
+              "label": "Hunt The Dragon",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 362,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 517,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 571,
+              "label": "Hunt The Void Grubs",
+              "kind": "grubs"
+            },
+            {
+              "atSec": 716,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 778,
+              "label": "Hunt The Dragon",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 846,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 917,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1032,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1098,
+              "label": "Hunt The Dragon",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1118,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1132,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1191,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1336,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1419,
+              "label": "Hunt The Dragon",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1456,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1498,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1518,
+              "label": "End credit"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 246,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "z9Zk_AouaRM",
+          "title": "(FEC Dino) Rek'Sai Jungle vs Qiyana - EUW Grandmaster Patch 26.13",
+          "rankClaim": "Grandmaster",
+          "patch": "26.13",
+          "durationSec": 1857,
+          "region": "EUW",
+          "player": "FEC Dino",
+          "uploaded": "2026-07-13",
+          "moments": []
+        },
+        {
+          "videoId": "ElLTNUIstWE",
+          "title": "Rek'Sai Jungle vs Qiyana - KR Grandmaster Patch 25.18",
+          "rankClaim": "Grandmaster",
+          "patch": "25.18",
+          "durationSec": 1764,
+          "region": "KR",
+          "uploaded": "2025-09-17",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 254,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "s5kIlPqhA3Y",
+          "title": "Rek'Sai vs Vi Jungle - KR Master - Patch 26.01 Season 16",
+          "rankClaim": "Master",
+          "patch": "26.1",
+          "durationSec": 1771,
+          "region": "KR",
+          "uploaded": "2026-01-10",
+          "moments": []
+        },
+        {
+          "videoId": "vObxHFnn3sw",
+          "title": "Rek'Sai Jungle vs Vi - KR Challenger Patch 25.05",
+          "rankClaim": "Challenger",
+          "patch": "25.5",
+          "durationSec": 1871,
+          "region": "KR",
+          "uploaded": "2025-03-12",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 217,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 307,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 359,
+              "label": "Hunt The Void Grubs",
+              "kind": "grubs"
+            },
+            {
+              "atSec": 403,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 492,
+              "label": "Hunt The Dragon",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 702,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 839,
+              "label": "Hunt The Dragon",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 874,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 999,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1124,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1151,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1171,
+              "label": "Hunt The Dragon",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1417,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1494,
+              "label": "Get a Triple Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1516,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1532,
+              "label": "Hunt The Dragon",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1597,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1685,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1730,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1756,
+              "label": "Take down The Inhibitor"
+            },
+            {
+              "atSec": 1779,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1850,
+              "label": "End credit"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 267,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "l6swJO1Dd4s",
+          "title": "Rek'Sai Top vs Nami - NA Grandmaster Patch 25.07",
+          "rankClaim": "Grandmaster",
+          "patch": "25.7",
+          "durationSec": 1709,
+          "region": "NA",
+          "uploaded": "2025-04-15",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 241,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 334,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 491,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 594,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 711,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 796,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 926,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 954,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 978,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1029,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1057,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1105,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1405,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1513,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1557,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1688,
+              "label": "End credit"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 516,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "r5-Is5neyjM",
+          "title": "Rek'Sai Top vs Ornn - KR Challenger Patch 25.24",
+          "rankClaim": "Challenger",
+          "patch": "25.24",
+          "durationSec": 1540,
+          "region": "KR",
+          "uploaded": "2025-12-13",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 202,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 258,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 640,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 699,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 758,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 852,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 876,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 898,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 948,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1121,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1146,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1164,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1219,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1249,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1331,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1366,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1410,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1423,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1436,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1453,
+              "label": "Take down The Inhibitor"
+            },
+            {
+              "atSec": 1529,
+              "label": "End credit"
+            }
+          ]
+        },
+        {
+          "videoId": "Me2a9xghU9Y",
+          "title": "Rek'Sai vs Ornn Top - KR Challenger - Patch 25.24 Season 15",
+          "rankClaim": "Challenger",
+          "patch": "25.24",
+          "durationSec": 1531,
+          "region": "KR",
+          "uploaded": "2025-12-08",
+          "moments": []
+        },
+        {
+          "videoId": "0xAQO4KmTa4",
+          "title": "Rek'Sai Top vs Ornn - NA Grandmaster Patch 25.15",
+          "rankClaim": "Grandmaster",
+          "patch": "25.15",
+          "durationSec": 1593,
+          "region": "NA",
+          "uploaded": "2025-08-10",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 799,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "T5AjEZM7zks",
+          "title": "Rek'Sai Jungle vs Ambessa - KR Grandmaster Patch 26.09",
+          "rankClaim": "Grandmaster",
+          "patch": "26.9",
+          "durationSec": 1808,
+          "region": "KR",
+          "uploaded": "2026-05-12",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 799,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "XlHSyu4PQxM",
+          "title": "Rek'Sai Top vs Ambessa - NA Grandmaster Patch 26.19",
+          "rankClaim": "Grandmaster",
+          "patch": "26.19",
+          "durationSec": 1646,
+          "region": "NA",
+          "uploaded": "2026-10-05",
+          "moments": []
+        },
+        {
+          "videoId": "lQ56GmbAgLY",
+          "title": "Rek'Sai Top vs Ambessa - EUW Challenger Patch 26.06",
+          "rankClaim": "Challenger",
+          "patch": "26.6",
+          "durationSec": 1516,
+          "region": "EUW",
+          "uploaded": "2026-03-30",
+          "moments": []
+        },
+        {
+          "videoId": "-QXuC7Mkyk8",
+          "title": "Rek'Sai Top vs Ambessa - EUW Challenger Patch 26.03",
+          "rankClaim": "Challenger",
+          "patch": "26.3",
+          "durationSec": 1788,
+          "region": "EUW",
+          "uploaded": "2026-02-16",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 288,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 343,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 486,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 640,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 663,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 674,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 938,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1188,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1254,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1286,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1384,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1417,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1438,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1549,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1584,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1604,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1719,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1777,
+              "label": "End credit"
+            }
+          ]
+        },
+        {
+          "videoId": "pBIGWrbDH0I",
+          "title": "Rek'Sai Top vs Ambessa - KR Master Patch 26.02",
+          "rankClaim": "Master",
+          "patch": "26.2",
+          "durationSec": 1573,
+          "region": "KR",
+          "uploaded": "2026-01-31",
+          "moments": []
+        },
+        {
+          "videoId": "5sAYEubpmyg",
+          "title": "Rek'Sai Top vs Ambessa - EUW Grandmaster Patch 25.21",
+          "rankClaim": "Grandmaster",
+          "patch": "25.21",
+          "durationSec": 1870,
+          "region": "EUW",
+          "uploaded": "2025-11-01",
+          "moments": []
+        },
+        {
+          "videoId": "QhTcu_o1V6o",
+          "title": "Rek'Sai Top vs Ambessa - KR Challenger Patch 25.20",
+          "rankClaim": "Challenger",
+          "patch": "25.20",
+          "durationSec": 1574,
+          "region": "KR",
+          "uploaded": "2025-10-20",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 805,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "kG6FqXo1AX8",
+          "title": "(RG Lifetime) Rek'Sai Top vs Locke - EUW Grandmaster Patch 26.20",
+          "rankClaim": "Grandmaster",
+          "patch": "26.20",
+          "durationSec": 1717,
+          "region": "EUW",
+          "player": "RG Lifetime",
+          "uploaded": "2026-10-19",
+          "result": "W",
+          "moments": [
+            {
+              "atSec": 283,
+              "label": "Red takes 1st Dragon (Chemtech)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 483,
+              "label": "First Blood — Rek'Sai kills Locke",
+              "kind": "kill"
+            },
+            {
+              "atSec": 613,
+              "label": "Red takes 2nd Dragon (Infernal)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 869,
+              "label": "Rek'Sai eliminates Locke"
+            },
+            {
+              "atSec": 971,
+              "label": "Rek'Sai eliminates Locke"
+            },
+            {
+              "atSec": 1031,
+              "label": "Sylas takes down Shyvana"
+            },
+            {
+              "atSec": 1046,
+              "label": "Blue takes 1st Dragon (Ocean)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1148,
+              "label": "Anivia picks off Shyvana"
+            },
+            {
+              "atSec": 1230,
+              "label": "Kog'Maw kills Ekko",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1298,
+              "label": "Rek'Sai picks off Vayne"
+            },
+            {
+              "atSec": 1320,
+              "label": "Blue takes Baron",
+              "kind": "baron"
+            },
+            {
+              "atSec": 1355,
+              "label": "Rek'Sai eliminates Pantheon"
+            },
+            {
+              "atSec": 1403,
+              "label": "Blue takes 2nd Dragon (Ocean)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1447,
+              "label": "Mid Inhibitor falls (Red)"
+            },
+            {
+              "atSec": 1500,
+              "label": "Rek'Sai eliminates Pantheon"
+            },
+            {
+              "atSec": 1579,
+              "label": "Rek'Sai eliminates Pantheon"
+            },
+            {
+              "atSec": 1678,
+              "label": "Rek'Sai eliminates Pantheon"
+            },
+            {
+              "atSec": 1703,
+              "label": "Anivia takes down Locke"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 887,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "f4HI_L9O0U0",
+          "title": "Rek'Sai Top vs Gwen - KR Master Patch 26.07",
+          "rankClaim": "Master",
+          "patch": "26.7",
+          "durationSec": 1727,
+          "region": "KR",
+          "uploaded": "2026-04-14",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 897,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "lgl-NRPRKtU",
+          "title": "Rek'Sai Top vs K'Sante - KR Master Patch 26.04",
+          "rankClaim": "Master",
+          "patch": "26.4",
+          "durationSec": 1815,
+          "region": "KR",
+          "uploaded": "2026-03-01",
+          "moments": []
+        },
+        {
+          "videoId": "Z2BEQrvQpvE",
+          "title": "Rek'Sai Top vs K'Sante - KR Master Patch 25.09",
+          "rankClaim": "Master",
+          "patch": "25.9",
+          "durationSec": 2006,
+          "region": "KR",
+          "uploaded": "2025-05-13",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 342,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 694,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 854,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 896,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 949,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1015,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1289,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1441,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1476,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1599,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1674,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1796,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1931,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1947,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1963,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1985,
+              "label": "End credit"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 904,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "SWgLDos_8kk",
+          "title": "Rek'Sai Top vs Zaahen - EUW Grandmaster Patch 25.23",
+          "rankClaim": "Grandmaster",
+          "patch": "25.23",
+          "durationSec": 1615,
+          "region": "EUW",
+          "uploaded": "2025-12-01",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 950,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "mkT8fOMjK1I",
+          "title": "Rek'Sai Jungle vs Naafiri - KR Grandmaster Patch 25.17",
+          "rankClaim": "Grandmaster",
+          "patch": "25.17",
+          "durationSec": 1743,
+          "region": "KR",
+          "uploaded": "2025-09-03",
+          "moments": []
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,2894 @@
+{
+  "schema": 1,
+  "champion": 240,
+  "generatedAt": "2026-11-07T13:25:14.592Z",
+  "guides": [],
+  "general": [
+    {
+      "champion": 240,
+      "lane": "top",
+      "patch": "26.21",
+      "reviewed": false,
+      "keyTips": [
+        {
+          "text": "Open cautiously unless the matchup runs clearly favorable, taking longer trades once a few levels bank.",
+          "scope": "champion",
+          "sourceIds": [
+            "mobalytics-kled"
+          ]
+        },
+        {
+          "text": "At level 6, spend R on the kill window when opponents step too far forward, never forcing it from bad positioning.",
+          "scope": "champion",
+          "sourceIds": [
+            "mobalytics-kled"
+          ],
+          "abilityKeys": [
+            {
+              "champion": 240,
+              "key": "R"
+            }
+          ]
+        },
+        {
+          "text": "Start fights with R only beside following allies; its speed helps them keep up, but a split team strands Kled.",
+          "scope": "champion",
+          "sourceIds": [
+            "mobalytics-kled"
+          ],
+          "abilityKeys": [
+            {
+              "champion": 240,
+              "key": "R"
+            }
+          ]
+        }
+      ],
+      "sections": {
+        "overview": {
+          "tips": []
+        },
+        "early-lane": {
+          "tips": [
+            {
+              "text": "Build all-ins around Q and E, refusing starts with W down since its attack run carries extended trades.",
+              "scope": "champion",
+              "sourceIds": [
+                "mobalytics-kled"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 240,
+                  "key": "Q"
+                },
+                {
+                  "champion": 240,
+                  "key": "E"
+                },
+                {
+                  "champion": 240,
+                  "key": "W"
+                }
+              ]
+            },
+            {
+              "text": "Bank E access against ranged opponents; a miss lets them kite Kled down before contact.",
+              "scope": "champion",
+              "sourceIds": [
+                "mobalytics-kled"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 240,
+                  "key": "E"
+                }
+              ]
+            },
+            {
+              "text": "Dismounted, skip risky farm into ranged opponents unless Skaarl returns safely; the passive also tanks tower shots for planned dives.",
+              "scope": "champion",
+              "sourceIds": [
+                "mobalytics-kled"
+              ]
+            },
+            {
+              "text": "Never assume the remount: enemies who disengage after the dismount can deny Skaarl recovery in time.",
+              "scope": "champion",
+              "sourceIds": [
+                "mobalytics-kled"
+              ]
+            },
+            {
+              "text": "Take extended trades around W instead of burning its empowered run on brief exchanges.",
+              "scope": "champion",
+              "sourceIds": [
+                "mobalytics-kled-build"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 240,
+                  "key": "W"
+                }
+              ]
+            }
+          ]
+        },
+        "mid-lane": {
+          "tips": [
+            {
+              "text": "Split-push to pull a defender and free the team elsewhere, checking the map before spending R on duels or rotations.",
+              "scope": "champion",
+              "sourceIds": [
+                "mobalytics-kled"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 240,
+                  "key": "R"
+                }
+              ]
+            },
+            {
+              "text": "When an answer arrives, hunt the pick or fight with the advantage in hand.",
+              "scope": "champion",
+              "sourceIds": [
+                "mobalytics-kled"
+              ]
+            },
+            {
+              "text": "Flank grouped fights from the side for high-value targets instead of walking through the frontline.",
+              "scope": "champion",
+              "sourceIds": [
+                "mobalytics-kled"
+              ]
+            }
+          ]
+        },
+        "win-condition": {
+          "tips": [
+            {
+              "text": "Ride R onto isolated or overextended targets, then remove the backline member that buys a numbers edge.",
+              "scope": "champion",
+              "sourceIds": [
+                "mobalytics-kled"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 240,
+                  "key": "R"
+                }
+              ]
+            },
+            {
+              "text": "Group for late fights; starting R from too far out removes Kled while the fight gets decided.",
+              "scope": "champion",
+              "sourceIds": [
+                "mobalytics-kled"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 240,
+                  "key": "R"
+                }
+              ]
+            },
+            {
+              "text": "Soak with the passive and scramble formations without treating durability as a solo-engage license.",
+              "scope": "champion",
+              "sourceIds": [
+                "mobalytics-kled"
+              ]
+            }
+          ]
+        }
+      },
+      "itemization": [
+        {
+          "text": "Run Flash and Ignite with Conqueror, Triumph, Legend: Alacrity, and Last Stand plus Bone Plating and Demolish, tuning the defensive shard to the lane.",
+          "scope": "champion",
+          "sourceIds": [
+            "mobalytics-kled-build"
+          ]
+        },
+        {
+          "text": "Build Titanic Hydra, Plated Steelcaps, Black Cleaver, Overlord's Bloodmail, Sterak's Gage, and Hullbreaker for patch 26.21 while maxing Q before W then E.",
+          "scope": "champion",
+          "sourceIds": [
+            "mobalytics-kled-build"
+          ],
+          "abilityKeys": [
+            {
+              "champion": 240,
+              "key": "Q"
+            },
+            {
+              "champion": 240,
+              "key": "W"
+            },
+            {
+              "champion": 240,
+              "key": "E"
+            }
+          ],
+          "itemIds": [
+            3748,
+            3047,
+            3071,
+            2501,
+            3053,
+            3181
+          ]
+        },
+        {
+          "text": "Slot Randuin's Omen fourth against substantial physical or critical-strike damage.",
+          "scope": "champion",
+          "sourceIds": [
+            "mobalytics-kled-build"
+          ],
+          "itemIds": [
+            3143
+          ]
+        },
+        {
+          "text": "Keep the Profane Hydra and Voltaic Cyclosword path plus the Eclipse off-meta path as separate options without mixing their orders.",
+          "scope": "champion",
+          "sourceIds": [
+            "mobalytics-kled-build"
+          ],
+          "itemIds": [
+            6698,
+            6699,
+            6692
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "id": "mobalytics-kled",
+          "author": "Mobalytics",
+          "rankClaim": "No rank claim",
+          "url": "https://mobalytics.gg/lol/champions/kled/guide/top",
+          "kind": "web"
+        },
+        {
+          "id": "mobalytics-kled-build",
+          "author": "Mobalytics",
+          "rankClaim": "No rank claim",
+          "url": "https://mobalytics.gg/lol/champions/kled/build",
+          "kind": "web"
+        }
+      ]
+    }
+  ],
+  "vods": [
+    {
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "yGdaOkVG4JI",
+          "title": "Baicaiovo Top 2 Chinese Super Server Kled Mid Lane Challenger Mechanics Engsub",
+          "rankClaim": "Challenger",
+          "patch": "26.1",
+          "durationSec": 1290,
+          "patchEstimated": true,
+          "player": "Baicaiovo",
+          "uploaded": "2026-01-10",
+          "format": "stream",
+          "moments": []
+        },
+        {
+          "videoId": "Im4pBQ8WKGo",
+          "title": "Baicaiovo Top 2 Super Server Mid Kled Mechanics and Roaming Strategy Engsub",
+          "rankClaim": "Master+",
+          "patch": "26.1",
+          "durationSec": 1748,
+          "patchEstimated": true,
+          "player": "Baicaiovo",
+          "uploaded": "2026-01-10",
+          "format": "stream",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 2,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "i9UOcGqF-8E",
+          "title": "(GEN Kiin) Kled Top vs Olaf - KR Challenger Patch 26.15",
+          "rankClaim": "Challenger",
+          "patch": "26.15",
+          "durationSec": 1449,
+          "region": "KR",
+          "player": "Kiin",
+          "team": "GEN",
+          "uploaded": "2026-08-14",
+          "moments": []
+        },
+        {
+          "videoId": "SmV3W75O0QU",
+          "title": "(Philip) Kled Top vs Olaf - NA Challenger Patch 26.13",
+          "rankClaim": "Challenger",
+          "patch": "26.13",
+          "durationSec": 1593,
+          "region": "NA",
+          "player": "Philip",
+          "uploaded": "2026-07-03",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 4,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "nkti0VHKzrw",
+          "title": "Kled Mid vs Twisted Fate - KR Challenger Patch 26.01",
+          "rankClaim": "Challenger",
+          "patch": "26.1",
+          "durationSec": 1449,
+          "region": "KR",
+          "uploaded": "2026-01-21",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 6,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "poJNSEAgiqc",
+          "title": "Kled Top vs Urgot - KR Master Patch 26.11",
+          "rankClaim": "Master",
+          "patch": "26.11",
+          "durationSec": 1810,
+          "region": "KR",
+          "uploaded": "2026-06-05",
+          "moments": []
+        },
+        {
+          "videoId": "0IBG4uNj9zs",
+          "title": "Kled Top vs Urgot - KR Master Patch 26.02",
+          "rankClaim": "Master",
+          "patch": "26.2",
+          "durationSec": 1444,
+          "region": "KR",
+          "uploaded": "2026-01-28",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 8,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "SsY02uX8q8A",
+          "title": "Kled Mid vs Vladimir - KR Master Patch 25.20",
+          "rankClaim": "Master",
+          "patch": "25.20",
+          "durationSec": 1646,
+          "region": "KR",
+          "uploaded": "2025-10-22",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 10,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "cGNXpLufkso",
+          "title": "Kled Top vs Kayle - KR Master Patch 25.16",
+          "rankClaim": "Master",
+          "patch": "25.16",
+          "durationSec": 1793,
+          "region": "KR",
+          "uploaded": "2025-08-23",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 13,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "--00VTqZ5H4",
+          "title": "Kled Mid vs Ryze - KR Master Patch 26.03",
+          "rankClaim": "Master",
+          "patch": "26.3",
+          "durationSec": 1865,
+          "region": "KR",
+          "uploaded": "2026-02-18",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 14,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "FagMksBluHI",
+          "title": "Kled Mid vs Sion - KR Master Patch 26.07",
+          "rankClaim": "Master",
+          "patch": "26.7",
+          "durationSec": 1830,
+          "region": "KR",
+          "uploaded": "2026-04-16",
+          "moments": []
+        },
+        {
+          "videoId": "wVChXK7BQC0",
+          "title": "Kled Mid vs Sion - NA Challenger Patch 25.09",
+          "rankClaim": "Challenger",
+          "patch": "25.9",
+          "durationSec": 1858,
+          "region": "NA",
+          "uploaded": "2025-05-13",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 14,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "Zlg75fmcXcM",
+          "title": "Kled Top vs Sion - KR Master Patch 25.21",
+          "rankClaim": "Master",
+          "patch": "25.21",
+          "durationSec": 1621,
+          "region": "KR",
+          "uploaded": "2025-10-29",
+          "moments": []
+        },
+        {
+          "videoId": "hK-6nGnDlY4",
+          "title": "Kled Top vs Sion - KR Master Patch 25.11",
+          "rankClaim": "Master",
+          "patch": "25.11",
+          "durationSec": 1652,
+          "region": "KR",
+          "uploaded": "2025-06-07",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 17,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "oWru6DMWSKA",
+          "title": "Kled Top vs Teemo - EUW Master Patch 26.17",
+          "rankClaim": "Master",
+          "patch": "26.17",
+          "durationSec": 1630,
+          "region": "EUW",
+          "uploaded": "2026-08-30",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 24,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "rm4xpAlzhDs",
+          "title": "Kled Top vs Jax - KR Grandmaster Patch 25.17",
+          "rankClaim": "Grandmaster",
+          "patch": "25.17",
+          "durationSec": 1758,
+          "region": "KR",
+          "uploaded": "2025-09-04",
+          "moments": []
+        },
+        {
+          "videoId": "_1XaYsye8M4",
+          "title": "Kled Top vs Jax - KR Master Patch 25.14",
+          "rankClaim": "Master",
+          "patch": "25.14",
+          "durationSec": 1463,
+          "region": "KR",
+          "uploaded": "2025-07-22",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 27,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "tc8KVTCdrmE",
+          "title": "Kled Top vs Singed - TW Challenger Patch 25.13",
+          "rankClaim": "Challenger",
+          "patch": "25.13",
+          "durationSec": 1920,
+          "uploaded": "2025-07-17",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 32,
+      "lane": "jungle",
+      "videos": [
+        {
+          "videoId": "I_u6qhjxaKk",
+          "title": "Kled Jungle vs Amumu - EUW Grandmaster Patch 25.24",
+          "rankClaim": "Grandmaster",
+          "patch": "25.24",
+          "durationSec": 1566,
+          "region": "EUW",
+          "uploaded": "2025-12-24",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 363,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 479,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 493,
+              "label": "Hunt The Void Grubs",
+              "kind": "grubs"
+            },
+            {
+              "atSec": 528,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 601,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 666,
+              "label": "Hunt The Dragon",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 693,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 783,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 890,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 985,
+              "label": "Hunt The Dragon",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1060,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1185,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1320,
+              "label": "Hunt The Dragon",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1346,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1439,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1467,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1495,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1543,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1555,
+              "label": "End credit"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 36,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "fLpvZBcf2V0",
+          "title": "Kled Top vs Dr. Mundo - KR Master Patch 25.08",
+          "rankClaim": "Master",
+          "patch": "25.8",
+          "durationSec": 1569,
+          "region": "KR",
+          "uploaded": "2025-04-25",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 39,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "qukH8F8epG4",
+          "title": "Kled Mid vs Irelia - NA Challenger Patch 25.18",
+          "rankClaim": "Challenger",
+          "patch": "25.18",
+          "durationSec": 1714,
+          "region": "NA",
+          "uploaded": "2025-09-22",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 39,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "dI4_PMTDtlk",
+          "title": "(GAM Kiaya) Kled Top vs Irelia - KR Challenger Patch 26.16",
+          "rankClaim": "Challenger",
+          "patch": "26.16",
+          "durationSec": 1732,
+          "region": "KR",
+          "player": "GAM Kiaya",
+          "uploaded": "2026-08-17",
+          "moments": []
+        },
+        {
+          "videoId": "rFaW-Pc4GZg",
+          "title": "Kled Top vs Irelia - KR Grandmaster Patch 25.09",
+          "rankClaim": "Grandmaster",
+          "patch": "25.9",
+          "durationSec": 1934,
+          "region": "KR",
+          "uploaded": "2025-05-12",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 41,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "X_adYlpHDt8",
+          "title": "Kled Top vs Gangplank - KR Master Patch 26.20",
+          "rankClaim": "Master",
+          "patch": "26.20",
+          "durationSec": 1788,
+          "region": "KR",
+          "uploaded": "2026-10-12",
+          "result": "W",
+          "moments": [
+            {
+              "atSec": 91,
+              "label": "First Blood — Kled kills Gangplank",
+              "kind": "kill"
+            },
+            {
+              "atSec": 280,
+              "label": "Kled catches Gangplank"
+            },
+            {
+              "atSec": 422,
+              "label": "Red takes 1st Dragon (Mountain)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 737,
+              "label": "Red takes 2nd Dragon (Cloud)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 746,
+              "label": "Kled outduels Gangplank again"
+            },
+            {
+              "atSec": 869,
+              "label": "Kled outplays Twisted Fate"
+            },
+            {
+              "atSec": 1064,
+              "label": "Blue takes 1st Dragon (Ocean)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1152,
+              "label": "Kled solo kills Twisted Fate again",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1196,
+              "label": "Xerath Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1253,
+              "label": "Blue takes Baron",
+              "kind": "baron"
+            },
+            {
+              "atSec": 1318,
+              "label": "Mid Inhibitor falls (Red)"
+            },
+            {
+              "atSec": 1385,
+              "label": "Red takes 3rd Dragon (Ocean)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1424,
+              "label": "Top Inhibitor falls (Red)"
+            },
+            {
+              "atSec": 1484,
+              "label": "Kled picks off Cassiopeia"
+            },
+            {
+              "atSec": 1666,
+              "label": "Red takes Baron",
+              "kind": "baron"
+            },
+            {
+              "atSec": 1725,
+              "label": "Blue takes 2nd Dragon (Ocean)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1761,
+              "label": "Mid Inhibitor falls (Red)"
+            },
+            {
+              "atSec": 1765,
+              "label": "Bot Inhibitor falls (Red)"
+            }
+          ]
+        },
+        {
+          "videoId": "PW2XXd2NauM",
+          "title": "Kled Top vs Gangplank - VN Challenger Patch 26.05",
+          "rankClaim": "Challenger",
+          "patch": "26.5",
+          "durationSec": 1754,
+          "uploaded": "2026-03-12",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 64,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 223,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 509,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 668,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 699,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 724,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 802,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 893,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 918,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1011,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1080,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1209,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1228,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1312,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1364,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1459,
+              "label": "Hunt The Baron Nashor",
+              "kind": "baron"
+            },
+            {
+              "atSec": 1504,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1538,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1558,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1589,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1612,
+              "label": "Take down The Inhibitor"
+            },
+            {
+              "atSec": 1697,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1733,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1743,
+              "label": "End credit"
+            }
+          ]
+        },
+        {
+          "videoId": "OykAwRl33LI",
+          "title": "Kled Top vs Gangplank - KR Master Patch 25.05",
+          "rankClaim": "Master",
+          "patch": "25.5",
+          "durationSec": 1958,
+          "region": "KR",
+          "uploaded": "2025-03-13",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 42,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "AAKy1YhXo2w",
+          "title": "Kled Mid vs Corki - KR Master Patch 25.16",
+          "rankClaim": "Master",
+          "patch": "25.16",
+          "durationSec": 1480,
+          "region": "KR",
+          "uploaded": "2025-08-28",
+          "moments": []
+        },
+        {
+          "videoId": "4vEJXETcyTM",
+          "title": "Kled Mid vs Corki - KR Master Patch 25.14",
+          "rankClaim": "Master",
+          "patch": "25.14",
+          "durationSec": 1539,
+          "region": "KR",
+          "uploaded": "2025-07-29",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 48,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "DuBJRbL6bZM",
+          "title": "(GNG Shourdy) Kled Top vs Trundle - EUW Grandmaster Patch 26.15",
+          "rankClaim": "Grandmaster",
+          "patch": "26.15",
+          "durationSec": 1468,
+          "region": "EUW",
+          "player": "GNG Shourdy",
+          "uploaded": "2026-08-03",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 56,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "q7cVU2-jZFU",
+          "title": "Kled Top vs Nocturne - KR Grandmaster Patch 25.07",
+          "rankClaim": "Grandmaster",
+          "patch": "25.7",
+          "durationSec": 1863,
+          "region": "KR",
+          "uploaded": "2025-04-10",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 299,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 376,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 399,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 489,
+              "label": "Hunt The Void Grubs",
+              "kind": "grubs"
+            },
+            {
+              "atSec": 521,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 634,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 739,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 887,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1021,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1041,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1052,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1239,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1339,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1446,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1533,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1571,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1649,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1677,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1703,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1718,
+              "label": "Take down The Inhibitor"
+            },
+            {
+              "atSec": 1741,
+              "label": "Hunt The Dragon",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1811,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1842,
+              "label": "End credit"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 63,
+      "lane": "adc",
+      "videos": [
+        {
+          "videoId": "7h3-U4fwc8Q",
+          "title": "Kled ADC vs Brand - KR Master Patch 26.09",
+          "rankClaim": "Master",
+          "patch": "26.9",
+          "durationSec": 1465,
+          "region": "KR",
+          "uploaded": "2026-05-13",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 67,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "NRUuofm2OIM",
+          "title": "Kled Top vs Vayne - NA Challenger Patch 25.24",
+          "rankClaim": "Challenger",
+          "patch": "25.24",
+          "durationSec": 1478,
+          "region": "NA",
+          "uploaded": "2025-12-30",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 236,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 260,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 362,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 495,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 518,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 601,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 674,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 705,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 959,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1059,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1087,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1181,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1218,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1334,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1359,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1373,
+              "label": "Take down The Inhibitor"
+            },
+            {
+              "atSec": 1395,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1419,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1443,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1467,
+              "label": "End credit"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 75,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "ABc18d4Ric4",
+          "title": "Kled vs Nasus Top - KR Master - Patch 15.4 Season 15",
+          "rankClaim": "Master",
+          "patch": "25.4",
+          "durationSec": 1471,
+          "region": "KR",
+          "uploaded": "2025-02-26",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 79,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "0l007677_k8",
+          "title": "Doran Kled vs Gragas Top - NA Master - Patch 16.21 Season 16",
+          "rankClaim": "Master",
+          "patch": "26.21",
+          "durationSec": 2220,
+          "region": "NA",
+          "player": "Doran",
+          "uploaded": "2026-11-02",
+          "moments": []
+        },
+        {
+          "videoId": "Voz2t0pcYko",
+          "title": "Kled Top vs Gragas - KR Grandmaster Patch 26.09",
+          "rankClaim": "Grandmaster",
+          "patch": "26.9",
+          "durationSec": 1671,
+          "region": "KR",
+          "uploaded": "2026-05-07",
+          "moments": []
+        },
+        {
+          "videoId": "49VMGYloqvI",
+          "title": "Kled Top vs Gragas - KR Master Patch 25.24",
+          "rankClaim": "Master",
+          "patch": "25.24",
+          "durationSec": 1566,
+          "region": "KR",
+          "uploaded": "2025-12-11",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 258,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 322,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 559,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 608,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 757,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 778,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 947,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1041,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1064,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1173,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1210,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1247,
+              "label": "Take down The Inhibitor"
+            },
+            {
+              "atSec": 1265,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1347,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1409,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1504,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1555,
+              "label": "End credit"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 81,
+      "lane": "adc",
+      "videos": [
+        {
+          "videoId": "ng7q4oyPWWo",
+          "title": "Kled ADC vs Ezreal - KR Master Patch 26.10",
+          "rankClaim": "Master",
+          "patch": "26.10",
+          "durationSec": 1556,
+          "region": "KR",
+          "uploaded": "2026-05-28",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 82,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "L7snNm8vJgQ",
+          "title": "Kled Top vs Mordekaiser - KR Master Patch 25.10",
+          "rankClaim": "Master",
+          "patch": "25.10",
+          "durationSec": 1529,
+          "region": "KR",
+          "uploaded": "2025-05-23",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 83,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "81SwC3kGNV4",
+          "title": "Kled Top vs Yorick - KR Master Patch 25.20",
+          "rankClaim": "Master",
+          "patch": "25.20",
+          "durationSec": 1936,
+          "region": "KR",
+          "uploaded": "2025-10-16",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 85,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "x9rWD8qTGTE",
+          "title": "Kled Top vs Kennen - KR Grandmaster Patch 25.06",
+          "rankClaim": "Grandmaster",
+          "patch": "25.6",
+          "durationSec": 1802,
+          "region": "KR",
+          "uploaded": "2025-03-27",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 86,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "j3Ud05lXMpk",
+          "title": "Kled Top vs Garen - KR Master Patch 26.03",
+          "rankClaim": "Master",
+          "patch": "26.3",
+          "durationSec": 1453,
+          "region": "KR",
+          "uploaded": "2026-02-12",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 92,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "kuZuvTB0jAo",
+          "title": "Kled Top vs Riven - KR Master Patch 26.01",
+          "rankClaim": "Master",
+          "patch": "26.1",
+          "durationSec": 1567,
+          "region": "KR",
+          "uploaded": "2026-01-16",
+          "moments": []
+        },
+        {
+          "videoId": "e1ev_F7luIg",
+          "title": "Kled Top vs Riven - KR Master Patch 25.13",
+          "rankClaim": "Master",
+          "patch": "25.13",
+          "durationSec": 2081,
+          "region": "KR",
+          "uploaded": "2025-07-01",
+          "moments": []
+        },
+        {
+          "videoId": "Fa0vptQEeyc",
+          "title": "Kled Top vs Riven - KR Master Patch 25.12",
+          "rankClaim": "Master",
+          "patch": "25.12",
+          "durationSec": 1573,
+          "region": "KR",
+          "uploaded": "2025-06-20",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 101,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "QaurHYggHZg",
+          "title": "Kled Mid vs Xerath - TW Challenger Patch 25.23",
+          "rankClaim": "Challenger",
+          "patch": "25.23",
+          "durationSec": 1637,
+          "uploaded": "2025-12-02",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 103,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "PAmrrPnt654",
+          "title": "Kled Mid vs Ahri - EUW Grandmaster Patch 26.14",
+          "rankClaim": "Grandmaster",
+          "patch": "26.14",
+          "durationSec": 1527,
+          "region": "EUW",
+          "uploaded": "2026-07-30",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 106,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "AnC3ybcW4uU",
+          "title": "Kled Top vs Volibear - KR Master Patch 26.14",
+          "rankClaim": "Master",
+          "patch": "26.14",
+          "durationSec": 1412,
+          "region": "KR",
+          "uploaded": "2026-07-23",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 107,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "Q0jYVvXkqus",
+          "title": "Kled Top vs Rengar - NA Challenger Patch 25.04",
+          "rankClaim": "Challenger",
+          "patch": "25.4",
+          "durationSec": 1464,
+          "region": "NA",
+          "uploaded": "2025-03-06",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 133,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 622,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 836,
+              "label": "Hunt The Void Grubs",
+              "kind": "grubs"
+            },
+            {
+              "atSec": 868,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 934,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 952,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 976,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1060,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1086,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1121,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1203,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1218,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1240,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1274,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1301,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1336,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1351,
+              "label": "Take down The Inhibitor"
+            },
+            {
+              "atSec": 1392,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1443,
+              "label": "End credit"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 114,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "XT98KtS1dpg",
+          "title": "Kled Top vs Fiora - NA Challenger Patch 26.12",
+          "rankClaim": "Challenger",
+          "patch": "26.12",
+          "durationSec": 1506,
+          "region": "NA",
+          "uploaded": "2026-06-17",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 117,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "s2Mdj4DpQ54",
+          "title": "Kled Top vs Lulu - KR Grandmaster Patch 26.18",
+          "rankClaim": "Grandmaster",
+          "patch": "26.18",
+          "durationSec": 1497,
+          "region": "KR",
+          "uploaded": "2026-09-14",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 119,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "h09z92ZxQ5M",
+          "title": "Kled Top vs Draven - KR Master Patch 26.19",
+          "rankClaim": "Master",
+          "patch": "26.19",
+          "durationSec": 1651,
+          "region": "KR",
+          "uploaded": "2026-10-09",
+          "result": "W",
+          "moments": [
+            {
+              "atSec": 80,
+              "label": "First Blood — Kled kills Draven",
+              "kind": "kill"
+            },
+            {
+              "atSec": 275,
+              "label": "Kled catches Draven"
+            },
+            {
+              "atSec": 293,
+              "label": "Blue takes 1st Dragon (Ocean)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 353,
+              "label": "Kled outduels Draven again"
+            },
+            {
+              "atSec": 495,
+              "label": "Kled outplays Draven (3rd time)"
+            },
+            {
+              "atSec": 560,
+              "label": "Kled solo kills Draven (4th time)",
+              "kind": "kill"
+            },
+            {
+              "atSec": 620,
+              "label": "Kled takes down Draven (5th time)"
+            },
+            {
+              "atSec": 643,
+              "label": "Blue takes 2nd Dragon (Mountain)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 714,
+              "label": "Kled catches Draven (6th time)"
+            },
+            {
+              "atSec": 765,
+              "label": "Kled outduels Draven (7th time)"
+            },
+            {
+              "atSec": 828,
+              "label": "Kled outplays Draven (8th time)"
+            },
+            {
+              "atSec": 905,
+              "label": "Kled solo kills Draven (9th time)",
+              "kind": "kill"
+            },
+            {
+              "atSec": 967,
+              "label": "Red takes 1st Dragon (Cloud)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1003,
+              "label": "Kled takes down Draven (10th time)"
+            },
+            {
+              "atSec": 1154,
+              "label": "Kled outplays Orianna"
+            },
+            {
+              "atSec": 1193,
+              "label": "Red takes Baron",
+              "kind": "baron"
+            },
+            {
+              "atSec": 1318,
+              "label": "Blue takes 3rd Dragon (Cloud)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1329,
+              "label": "Kled catches Draven (11th time)"
+            },
+            {
+              "atSec": 1512,
+              "label": "Mid Inhibitor falls (Blue)"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 122,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "xW_AF0RR8sA",
+          "title": "Kled Top vs Darius - EUW Grandmaster Patch 26.08",
+          "rankClaim": "Grandmaster",
+          "patch": "26.8",
+          "durationSec": 1691,
+          "region": "EUW",
+          "uploaded": "2026-04-24",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 126,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "E6mR5Facu2c",
+          "title": "Kled Mid vs Jayce - KR Master Patch 26.04",
+          "rankClaim": "Master",
+          "patch": "26.4",
+          "durationSec": 1694,
+          "region": "KR",
+          "uploaded": "2026-03-05",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 170,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 230,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 374,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 469,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 609,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 708,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 732,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 837,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1117,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1180,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1203,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1266,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1296,
+              "label": "Hunt The Dragon",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1332,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1510,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1626,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1683,
+              "label": "End credit"
+            }
+          ]
+        },
+        {
+          "videoId": "V46FvaFBWHU",
+          "title": "Kled Mid vs Jayce - KR Master Patch 25.24",
+          "rankClaim": "Master",
+          "patch": "25.24",
+          "durationSec": 1470,
+          "region": "KR",
+          "uploaded": "2026-01-04",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 126,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "pojrAuLQ0zw",
+          "title": "Kled Top vs Jayce - KR Master Patch 26.21",
+          "rankClaim": "Master",
+          "patch": "26.21",
+          "durationSec": 1850,
+          "region": "KR",
+          "uploaded": "2026-10-25",
+          "result": "W",
+          "moments": [
+            {
+              "atSec": 486,
+              "label": "Red takes 1st Dragon (Cloud)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 574,
+              "label": "Kled catches Jayce"
+            },
+            {
+              "atSec": 824,
+              "label": "Red takes 2nd Dragon (Hextech)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 834,
+              "label": "Kled eliminates Jayce"
+            },
+            {
+              "atSec": 841,
+              "label": "Kled Triple Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 847,
+              "label": "Kled Quadra Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 999,
+              "label": "Kled outduels Jayce again"
+            },
+            {
+              "atSec": 1013,
+              "label": "Kled takes down Shen"
+            },
+            {
+              "atSec": 1023,
+              "label": "Kled Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1132,
+              "label": "Kled takes down Akali"
+            },
+            {
+              "atSec": 1271,
+              "label": "Kled kills Lee Sin",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1435,
+              "label": "Red takes Baron",
+              "kind": "baron"
+            },
+            {
+              "atSec": 1471,
+              "label": "Kayn takes down Lee Sin"
+            },
+            {
+              "atSec": 1552,
+              "label": "Syndra picks off Lee Sin"
+            },
+            {
+              "atSec": 1607,
+              "label": "Red takes 4th Dragon (Mountain)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1702,
+              "label": "Mid Inhibitor falls (Blue)"
+            },
+            {
+              "atSec": 1709,
+              "label": "Bot Inhibitor falls (Blue)"
+            }
+          ]
+        },
+        {
+          "videoId": "WEbo5cOrkS4",
+          "title": "Kled Top vs Jayce - VN Master Patch 26.19",
+          "rankClaim": "Master",
+          "patch": "26.19",
+          "durationSec": 1671,
+          "uploaded": "2026-09-27",
+          "moments": []
+        },
+        {
+          "videoId": "j7jY29H1w_k",
+          "title": "Kled Top vs Jayce - KR Master Patch 25.15",
+          "rankClaim": "Master",
+          "patch": "25.15",
+          "durationSec": 2065,
+          "region": "KR",
+          "uploaded": "2025-08-06",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 127,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "4JDCe5AdhhU",
+          "title": "Kled Mid vs Lissandra - KR Grandmaster Patch 26.02",
+          "rankClaim": "Grandmaster",
+          "patch": "26.2",
+          "durationSec": 1517,
+          "region": "KR",
+          "uploaded": "2026-02-02",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 136,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "vwELx7WvqwM",
+          "title": "Kled Mid vs Aurelion Sol - KR Master Patch 25.04",
+          "rankClaim": "Master",
+          "patch": "25.4",
+          "durationSec": 1540,
+          "region": "KR",
+          "uploaded": "2025-03-03",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 146,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 330,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 490,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 648,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 672,
+              "label": "Hunt The Void Grubs",
+              "kind": "grubs"
+            },
+            {
+              "atSec": 810,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 841,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 879,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1034,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1058,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1087,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1156,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1200,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1221,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1315,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1381,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1472,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1519,
+              "label": "End credit"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 145,
+      "lane": "adc",
+      "videos": [
+        {
+          "videoId": "yQjIOuRFwqI",
+          "title": "Kled ADC vs Kai'Sa - KR Master Patch 25.21",
+          "rankClaim": "Master",
+          "patch": "25.21",
+          "durationSec": 1985,
+          "region": "KR",
+          "uploaded": "2025-11-04",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 147,
+      "lane": "adc",
+      "videos": [
+        {
+          "videoId": "OsbpFCGepVw",
+          "title": "Kled ADC vs Seraphine - NA Grandmaster Patch 26.12",
+          "rankClaim": "Grandmaster",
+          "patch": "26.12",
+          "durationSec": 1461,
+          "region": "NA",
+          "uploaded": "2026-06-24",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 150,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "w7ZHSKdsF1g",
+          "title": "Kled Top vs Gnar - KR Master Patch 26.10",
+          "rankClaim": "Master",
+          "patch": "26.10",
+          "durationSec": 1869,
+          "region": "KR",
+          "uploaded": "2026-05-21",
+          "moments": []
+        },
+        {
+          "videoId": "mMe40h56BFs",
+          "title": "Kled vs Gnar Top - KR Challenger - Patch 16.05 Season 16",
+          "rankClaim": "Challenger",
+          "patch": "26.5",
+          "durationSec": 2086,
+          "region": "KR",
+          "uploaded": "2026-03-18",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 157,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "5TIkRqPbJmY",
+          "title": "Kled Mid vs Yasuo - KR Challenger Patch 26.13",
+          "rankClaim": "Challenger",
+          "patch": "26.13",
+          "durationSec": 1432,
+          "region": "KR",
+          "uploaded": "2026-07-17",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 157,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "9JKs0zc5FOg",
+          "title": "Kled Top vs Yasuo - NA Grandmaster Patch 25.19",
+          "rankClaim": "Grandmaster",
+          "patch": "25.19",
+          "durationSec": 2072,
+          "region": "NA",
+          "uploaded": "2025-10-01",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 164,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "rffMxrJe5KQ",
+          "title": "Kled Top vs Camille - NA Challenger Patch 26.04",
+          "rankClaim": "Challenger",
+          "patch": "26.4",
+          "durationSec": 1527,
+          "region": "NA",
+          "uploaded": "2026-02-26",
+          "moments": []
+        },
+        {
+          "videoId": "m-N19F7WG1g",
+          "title": "Kled Top vs Camille - KR Grandmaster Patch 25.22",
+          "rankClaim": "Grandmaster",
+          "patch": "25.22",
+          "durationSec": 1538,
+          "region": "KR",
+          "uploaded": "2025-11-14",
+          "moments": []
+        },
+        {
+          "videoId": "TW3NBV7cURk",
+          "title": "Kled Top vs Camille - KR Grandmaster Patch 25.18",
+          "rankClaim": "Grandmaster",
+          "patch": "25.18",
+          "durationSec": 1804,
+          "region": "KR",
+          "uploaded": "2025-09-16",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 238,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "m5bP8LmnLmg",
+          "title": "Kled Mid vs Zed - TW Challenger Patch 26.20",
+          "rankClaim": "Challenger",
+          "patch": "26.20",
+          "durationSec": 1586,
+          "uploaded": "2026-10-19",
+          "result": "W",
+          "moments": [
+            {
+              "atSec": 92,
+              "label": "First Blood — Kled kills Zed",
+              "kind": "kill"
+            },
+            {
+              "atSec": 290,
+              "label": "Red takes 1st Dragon (Chemtech)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 745,
+              "label": "Blue takes 1st Dragon (Cloud)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 793,
+              "label": "Cho'Gath kills Swain",
+              "kind": "kill"
+            },
+            {
+              "atSec": 910,
+              "label": "Riven eliminates Garen"
+            },
+            {
+              "atSec": 920,
+              "label": "Kled catches Yunara"
+            },
+            {
+              "atSec": 993,
+              "label": "Cho'Gath kills Garen",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1040,
+              "label": "Lulu takes down Zed"
+            },
+            {
+              "atSec": 1125,
+              "label": "Tristana kills Zed",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1180,
+              "label": "Red takes 2nd Dragon (Infernal)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1223,
+              "label": "Tristana Triple Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1307,
+              "label": "Kled outduels Yunara again"
+            },
+            {
+              "atSec": 1310,
+              "label": "Kled Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1340,
+              "label": "Mid Inhibitor falls (Blue)"
+            },
+            {
+              "atSec": 1495,
+              "label": "Blue takes 2nd Dragon (Infernal)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1540,
+              "label": "Tristana Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1542,
+              "label": "Tristana Triple Kill",
+              "kind": "kill"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 238,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "hRO9kmQPO4o",
+          "title": "(S04 Simpli) Kled Top vs Zed - EUW Challenger Patch 26.13",
+          "rankClaim": "Challenger",
+          "patch": "26.13",
+          "durationSec": 1780,
+          "region": "EUW",
+          "player": "S04 Simpli",
+          "uploaded": "2026-07-09",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 245,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "PhgT2_huRe4",
+          "title": "Kled Mid vs Ekko - KR Grandmaster Patch 25.13",
+          "rankClaim": "Grandmaster",
+          "patch": "25.13",
+          "durationSec": 1734,
+          "region": "KR",
+          "uploaded": "2025-07-09",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 266,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "QQaH2GqlIy0",
+          "title": "Kled Top vs Aatrox - KR Grandmaster Patch 26.16",
+          "rankClaim": "Grandmaster",
+          "patch": "26.16",
+          "durationSec": 1625,
+          "region": "KR",
+          "uploaded": "2026-08-28",
+          "moments": []
+        },
+        {
+          "videoId": "Jk-hCpKSPrQ",
+          "title": "Kled Top vs Aatrox - KR Grandmaster Patch 25.23",
+          "rankClaim": "Grandmaster",
+          "patch": "25.23",
+          "durationSec": 1797,
+          "region": "KR",
+          "uploaded": "2025-11-26",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 517,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "deupZGgwBXQ",
+          "title": "Kled Mid vs Sylas - NA Grandmaster Patch 26.08",
+          "rankClaim": "Grandmaster",
+          "patch": "26.8",
+          "durationSec": 1868,
+          "region": "NA",
+          "uploaded": "2026-04-30",
+          "moments": []
+        },
+        {
+          "videoId": "N1NqkAmd19U",
+          "title": "Kled Mid vs Sylas - NA Grandmaster Patch 25.05",
+          "rankClaim": "Grandmaster",
+          "patch": "25.5",
+          "durationSec": 1595,
+          "region": "NA",
+          "uploaded": "2025-03-18",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 143,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 386,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 487,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 553,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 633,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 731,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 904,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1095,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1185,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1220,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1269,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1328,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1525,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1547,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1561,
+              "label": "Take down The Inhibitor"
+            },
+            {
+              "atSec": 1574,
+              "label": "End credit"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 517,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "PW7MUW7x_LI",
+          "title": "Kled Top vs Sylas - KR Master Patch 26.17",
+          "rankClaim": "Master",
+          "patch": "26.17",
+          "durationSec": 1767,
+          "region": "KR",
+          "uploaded": "2026-09-11",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 777,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "VxONQjWkjIg",
+          "title": "Kled Mid vs Yone - BR Challenger Patch 26.06",
+          "rankClaim": "Challenger",
+          "patch": "26.6",
+          "durationSec": 1576,
+          "uploaded": "2026-03-31",
+          "moments": []
+        },
+        {
+          "videoId": "39Vl0aLbsWs",
+          "title": "Kled Mid vs Yone - KR Master Patch 25.11",
+          "rankClaim": "Master",
+          "patch": "25.11",
+          "durationSec": 1443,
+          "region": "KR",
+          "uploaded": "2025-06-11",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 777,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "TqgojITLqGk",
+          "title": "Kled vs Yone 9/2/17 (Top) | EUW Master | Kled OTP Replay",
+          "rankClaim": "Master",
+          "patch": "26.9",
+          "durationSec": 1413,
+          "region": "EUW",
+          "patchEstimated": true,
+          "uploaded": "2026-04-29",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 799,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "JppYFQGkeFE",
+          "title": "Kled Top vs Ambessa - EUW Grandmaster Patch 26.06",
+          "rankClaim": "Grandmaster",
+          "patch": "26.6",
+          "durationSec": 1542,
+          "region": "EUW",
+          "uploaded": "2026-03-25",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 182,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 306,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 535,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 656,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 726,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 906,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 932,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 959,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1042,
+              "label": "Hunt The Dragon",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1114,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1144,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1272,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1349,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1399,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1506,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1531,
+              "label": "End credit"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 804,
+      "lane": "adc",
+      "videos": [
+        {
+          "videoId": "foGq0xdlNT8",
+          "title": "Kled ADC vs Yunara - KR Master Patch 25.22",
+          "rankClaim": "Master",
+          "patch": "25.22",
+          "durationSec": 1665,
+          "region": "KR",
+          "uploaded": "2025-11-19",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 901,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "Sai7bKcWmrg",
+          "title": "Kled Mid vs Smolder - KR Master Patch 25.19",
+          "rankClaim": "Master",
+          "patch": "25.19",
+          "durationSec": 2055,
+          "region": "KR",
+          "uploaded": "2025-10-06",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 904,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "vX7Mmh4YXqM",
+          "title": "Kled Mid vs Zaahen - EUW Grandmaster Patch 25.24",
+          "rankClaim": "Grandmaster",
+          "patch": "25.24",
+          "durationSec": 1486,
+          "region": "EUW",
+          "uploaded": "2025-12-16",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 904,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "QW_gJRDzlVw",
+          "title": "Kled Top vs Zaahen - KR Master Patch 26.07",
+          "rankClaim": "Master",
+          "patch": "26.7",
+          "durationSec": 1818,
+          "region": "KR",
+          "uploaded": "2026-04-09",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 59,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 236,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 334,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 530,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 700,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 776,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 793,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 847,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1143,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1205,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1483,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1505,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1518,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1548,
+              "label": "Hunt The Dragon",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1585,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1614,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1640,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1675,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1715,
+              "label": "Hunt The Baron Nashor",
+              "kind": "baron"
+            },
+            {
+              "atSec": 1769,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1807,
+              "label": "End credit"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

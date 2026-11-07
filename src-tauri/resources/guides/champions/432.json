@@ -1,0 +1,2659 @@
+{
+  "schema": 1,
+  "champion": 432,
+  "generatedAt": "2026-11-07T13:25:14.592Z",
+  "guides": [],
+  "general": [
+    {
+      "champion": 432,
+      "lane": "support",
+      "patch": "26.21",
+      "reviewed": false,
+      "keyTips": [
+        {
+          "text": "Survive the first 15 minutes patiently; Bard stays weak early, so refuse forced lane wins.",
+          "scope": "champion",
+          "sourceIds": [
+            "tndd"
+          ]
+        },
+        {
+          "text": "From about 15 to 25 minutes, play as a map and objective champion with early vision and Magical Journey routes.",
+          "scope": "champion",
+          "sourceIds": [
+            "tndd"
+          ],
+          "abilityKeys": [
+            {
+              "champion": 432,
+              "key": "E"
+            }
+          ]
+        },
+        {
+          "text": "In late game, catch the enemy carry with Tempered Fate and sync the team follow-up to finish the target.",
+          "scope": "champion",
+          "sourceIds": [
+            "tndd"
+          ],
+          "abilityKeys": [
+            {
+              "champion": 432,
+              "key": "R"
+            }
+          ]
+        }
+      ],
+      "sections": {
+        "overview": {
+          "tips": []
+        },
+        "early-lane": {
+          "tips": [
+            {
+              "text": "Track the enemy jungler on the map and bend lane movement around their position.",
+              "scope": "champion",
+              "sourceIds": [
+                "tndd"
+              ]
+            },
+            {
+              "text": "Chain a basic attack into Q, since slowed targets past five chimes line up far more easily.",
+              "scope": "champion",
+              "sourceIds": [
+                "tndd"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 432,
+                  "key": "Q"
+                }
+              ]
+            },
+            {
+              "text": "Place and clear wards boldly even when enemies sit unseen, trusting Bard escape tools to support deep vision.",
+              "scope": "champion",
+              "sourceIds": [
+                "tndd"
+              ]
+            },
+            {
+              "text": "Check collection against roughly two chimes per game minute without blindly abandoning waves for them.",
+              "scope": "champion",
+              "sourceIds": [
+                "tndd"
+              ]
+            }
+          ]
+        },
+        "mid-lane": {
+          "tips": [
+            {
+              "text": "Reach objectives early to plant vision, opening Bard and teammate routes with Magical Journey.",
+              "scope": "champion",
+              "sourceIds": [
+                "tndd"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 432,
+                  "key": "E"
+                }
+              ]
+            },
+            {
+              "text": "Spend Tempered Fate as objective control and setup, not as a damage-only button.",
+              "scope": "champion",
+              "sourceIds": [
+                "tndd"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 432,
+                  "key": "R"
+                }
+              ]
+            },
+            {
+              "text": "Keep gathering chimes through mid game, since meep attacks gain effects including a stronger slow as the count climbs.",
+              "scope": "champion",
+              "sourceIds": [
+                "tndd"
+              ]
+            }
+          ]
+        },
+        "win-condition": {
+          "tips": [
+            {
+              "text": "Let chime-enhanced attacks slow more late, backing the pick plan into the later game.",
+              "scope": "champion",
+              "sourceIds": [
+                "tndd"
+              ]
+            },
+            {
+              "text": "Coordinate the follow-up the moment Tempered Fate lands its brief stasis, and never let it stall allied damage.",
+              "scope": "champion",
+              "sourceIds": [
+                "tndd"
+              ],
+              "abilityKeys": [
+                {
+                  "champion": 432,
+                  "key": "R"
+                }
+              ]
+            },
+            {
+              "text": "Follow the full arc: survive the weak lane, build mid-game plays through roams and vision, then find a carry pick with the team.",
+              "scope": "champion",
+              "sourceIds": [
+                "tndd"
+              ]
+            }
+          ]
+        }
+      },
+      "itemization": [
+        {
+          "text": "Build Solstice Sleigh, Ionian Boots of Lucidity, Staff of Flowing Water, Ardent Censer, Redemption, and Moonstone Renewer.",
+          "scope": "champion",
+          "sourceIds": [
+            "jesuscirraptor"
+          ],
+          "itemIds": [
+            3876,
+            3158,
+            6616,
+            3504,
+            3107,
+            6617
+          ]
+        },
+        {
+          "text": "Run Summon Aery, Nimbus Cloak, Transcendence, Gathering Storm, Legend: Haste, and Triumph.",
+          "scope": "champion",
+          "sourceIds": [
+            "jesuscirraptor"
+          ]
+        },
+        {
+          "text": "Take Flash always, with Ignite or Heal.",
+          "scope": "champion",
+          "sourceIds": [
+            "tndd",
+            "jesuscirraptor"
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "id": "tndd",
+          "author": "TnDD",
+          "rankClaim": "Emerald (profile badge; no title claim)",
+          "rank": "emerald",
+          "url": "https://www.mobafire.com/league-of-legends/build/season-16-bard-guide-t-rk-e-614202",
+          "kind": "mobafire"
+        },
+        {
+          "id": "jesuscirraptor",
+          "author": "Jesuscirraptor",
+          "rankClaim": "No rank claim",
+          "url": "https://www.mobafire.com/league-of-legends/build/bard-jesuscirraptor-sup-heal-amp-shield-power-haven-652820",
+          "kind": "mobafire"
+        }
+      ]
+    }
+  ],
+  "vods": [
+    {
+      "enemy": 12,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "JXp-ZGuN5Gc",
+          "title": "Bard Support vs Alistar - KR Challenger Patch 26.17",
+          "rankClaim": "Challenger",
+          "patch": "26.17",
+          "durationSec": 1859,
+          "region": "KR",
+          "uploaded": "2026-09-07",
+          "moments": []
+        },
+        {
+          "videoId": "qOLpF42OJHg",
+          "title": "Bard Support vs Alistar - KR Challenger Patch 26.07",
+          "rankClaim": "Challenger",
+          "patch": "26.7",
+          "durationSec": 1543,
+          "region": "KR",
+          "uploaded": "2026-04-04",
+          "moments": []
+        },
+        {
+          "videoId": "mY_iUe7eO50",
+          "title": "Bard Support vs Alistar - EUW Challenger Patch 26.02",
+          "rankClaim": "Challenger",
+          "patch": "26.2",
+          "durationSec": 1512,
+          "region": "EUW",
+          "uploaded": "2026-02-06",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 16,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "B-qCvbFkdfU",
+          "title": "Bard Support vs Soraka - EUW Grandmaster Patch 26.01",
+          "rankClaim": "Grandmaster",
+          "patch": "26.1",
+          "durationSec": 1546,
+          "region": "EUW",
+          "uploaded": "2026-01-14",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 34,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "9HcL2HF4aIo",
+          "title": "(BFX Kellin) Bard Support vs Anivia (T1 Keria) - KR Challenger Patch 26.11",
+          "rankClaim": "Challenger",
+          "patch": "26.11",
+          "durationSec": 1874,
+          "region": "KR",
+          "player": "Keria",
+          "team": "BFX",
+          "uploaded": "2026-06-01",
+          "moments": []
+        },
+        {
+          "videoId": "pn6U0vY0Zvc",
+          "title": "Bard Support vs Anivia - EUW Challenger Patch 26.08",
+          "rankClaim": "Challenger",
+          "patch": "26.8",
+          "durationSec": 1749,
+          "region": "EUW",
+          "uploaded": "2026-04-18",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 35,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "wW5wjqk1Lxs",
+          "title": "Bard Support vs Shaco - EUW Challenger Patch 25.10",
+          "rankClaim": "Challenger",
+          "patch": "25.10",
+          "durationSec": 1551,
+          "region": "EUW",
+          "uploaded": "2025-05-28",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 37,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "7ycUwOXqZic",
+          "title": "Bard Support vs Sona - NA Challenger Patch 25.24",
+          "rankClaim": "Challenger",
+          "patch": "25.24",
+          "durationSec": 1541,
+          "region": "NA",
+          "uploaded": "2025-12-30",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 124,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 190,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 329,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 514,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 544,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 828,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1060,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1131,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1151,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1169,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1207,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1265,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1296,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1404,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1505,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1530,
+              "label": "End credit"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 40,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "eW9Jw3Hw8Jg",
+          "title": "Bard Support vs Janna - EUW Grandmaster Patch 25.04",
+          "rankClaim": "Grandmaster",
+          "patch": "25.4",
+          "durationSec": 1479,
+          "region": "EUW",
+          "uploaded": "2025-03-06",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 232,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 366,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 456,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 692,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 780,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 944,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 974,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1006,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1131,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1166,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1259,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1323,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1393,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1427,
+              "label": "Take down The Inhibitor"
+            },
+            {
+              "atSec": 1446,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1458,
+              "label": "End credit"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 43,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "GPEtRzy44nY",
+          "title": "(HLE Delight) Bard Support vs Karma (BFX Kellin) - KR Grandmaster Patch 26.10",
+          "rankClaim": "Grandmaster",
+          "patch": "26.10",
+          "durationSec": 1827,
+          "region": "KR",
+          "player": "Delight",
+          "team": "HLE",
+          "uploaded": "2026-05-29",
+          "moments": []
+        },
+        {
+          "videoId": "XwOQWdYFAsQ",
+          "title": "Bard Support vs Karma - KR Challenger Patch 26.06",
+          "rankClaim": "Challenger",
+          "patch": "26.6",
+          "durationSec": 1916,
+          "region": "KR",
+          "uploaded": "2026-04-02",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 51,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 327,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 492,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 574,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 659,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 818,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 933,
+              "label": "Hunt The Rift Herald",
+              "kind": "herald"
+            },
+            {
+              "atSec": 1030,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1141,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1199,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1255,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1360,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1390,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1461,
+              "label": "Hunt The Baron Nashor",
+              "kind": "baron"
+            },
+            {
+              "atSec": 1557,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1595,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1736,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1766,
+              "label": "Take down The Inhibitor"
+            },
+            {
+              "atSec": 1786,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1866,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1905,
+              "label": "End credit"
+            }
+          ]
+        },
+        {
+          "videoId": "i41q8WUpDWQ",
+          "title": "Bard Support vs Karma - KR Challenger Patch 26.02",
+          "rankClaim": "Challenger",
+          "patch": "26.2",
+          "durationSec": 1568,
+          "region": "KR",
+          "uploaded": "2026-01-25",
+          "moments": []
+        },
+        {
+          "videoId": "0FoHZSKd__U",
+          "title": "Bard Support vs Karma - EUW Grandmaster Patch 25.23",
+          "rankClaim": "Grandmaster",
+          "patch": "25.23",
+          "durationSec": 1680,
+          "region": "EUW",
+          "uploaded": "2025-12-03",
+          "moments": []
+        },
+        {
+          "videoId": "DDo4GBxP0Qc",
+          "title": "Bard Support vs Karma - KR Challenger Patch 25.15",
+          "rankClaim": "Challenger",
+          "patch": "25.15",
+          "durationSec": 1540,
+          "region": "KR",
+          "uploaded": "2025-08-06",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 44,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "ahxEMycF-yg",
+          "title": "Bard Support vs Taric - EUW Grandmaster Patch 25.18",
+          "rankClaim": "Grandmaster",
+          "patch": "25.18",
+          "durationSec": 1749,
+          "region": "EUW",
+          "uploaded": "2025-09-25",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 53,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "hrS78EjZcnE",
+          "title": "(WBG Elk) Bard Support vs Blitzcrank - KR Challenger Patch 26.12",
+          "rankClaim": "Challenger",
+          "patch": "26.12",
+          "durationSec": 1734,
+          "region": "KR",
+          "player": "Elk",
+          "team": "WBG",
+          "uploaded": "2026-06-13",
+          "moments": []
+        },
+        {
+          "videoId": "Dtu08j86dbo",
+          "title": "Bard Support vs Blitzcrank - KR Challenger Patch 25.17",
+          "rankClaim": "Challenger",
+          "patch": "25.17",
+          "durationSec": 1517,
+          "region": "KR",
+          "uploaded": "2025-08-30",
+          "moments": []
+        },
+        {
+          "videoId": "4U5a8rM2YaM",
+          "title": "Bard Support vs Blitzcrank - KR Master Patch 25.13",
+          "rankClaim": "Master",
+          "patch": "25.13",
+          "durationSec": 1551,
+          "region": "KR",
+          "uploaded": "2025-07-16",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 60,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "zxqj39O28uY",
+          "title": "Bard Support vs Elise - KR Challenger Patch 25.19",
+          "rankClaim": "Challenger",
+          "patch": "25.19",
+          "durationSec": 1680,
+          "region": "KR",
+          "uploaded": "2025-09-29",
+          "moments": []
+        },
+        {
+          "videoId": "_6f6SyAC04U",
+          "title": "Bard Support vs Elise - KR Challenger Patch 25.16",
+          "rankClaim": "Challenger",
+          "patch": "25.16",
+          "durationSec": 1582,
+          "region": "KR",
+          "uploaded": "2025-08-16",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 76,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "LdKjKUjPj2I",
+          "title": "Bard Support vs Nidalee - EUW Grandmaster Patch 25.19",
+          "rankClaim": "Grandmaster",
+          "patch": "25.19",
+          "durationSec": 1993,
+          "region": "EUW",
+          "uploaded": "2025-10-10",
+          "moments": []
+        },
+        {
+          "videoId": "dqW6xi9Y1No",
+          "title": "Bard Support vs Nidalee - KR Master Patch 25.10",
+          "rankClaim": "Master",
+          "patch": "25.10",
+          "durationSec": 1615,
+          "region": "KR",
+          "uploaded": "2025-05-20",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 78,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "UD5A3Q7x_Xw",
+          "title": "Bard Support vs Poppy - EUW Challenger Patch 25.20",
+          "rankClaim": "Challenger",
+          "patch": "25.20",
+          "durationSec": 1850,
+          "region": "EUW",
+          "uploaded": "2025-10-22",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 80,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "HIA0SVNuwB4",
+          "title": "Bard Support vs Pantheon - KR Challenger Patch 25.24",
+          "rankClaim": "Challenger",
+          "patch": "25.24",
+          "durationSec": 1541,
+          "region": "KR",
+          "uploaded": "2025-12-07",
+          "moments": []
+        },
+        {
+          "videoId": "3pIxK6_TNCA",
+          "title": "Bard Support vs Pantheon - KR Grandmaster Patch 25.22",
+          "rankClaim": "Grandmaster",
+          "patch": "25.22",
+          "durationSec": 1789,
+          "region": "KR",
+          "uploaded": "2025-11-09",
+          "moments": []
+        },
+        {
+          "videoId": "VZqyOKbaqGI",
+          "title": "Bard Support vs Pantheon - KR Challenger Patch 25.04",
+          "rankClaim": "Challenger",
+          "patch": "25.4",
+          "durationSec": 1909,
+          "region": "KR",
+          "uploaded": "2025-02-26",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 43,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 150,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 271,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 422,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 481,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 644,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 765,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 892,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 989,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1157,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1276,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1408,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1499,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1527,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1649,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1716,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1728,
+              "label": "Take down The Inhibitor"
+            },
+            {
+              "atSec": 1745,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1838,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1872,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1888,
+              "label": "End credit"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 89,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "q2H-L_Diq1o",
+          "title": "(Berr) Bard Support vs Leona (DCG Pop9) - KR Challenger Patch 26.20",
+          "rankClaim": "Challenger",
+          "patch": "26.20",
+          "durationSec": 1786,
+          "region": "KR",
+          "player": "Berr",
+          "uploaded": "2026-10-20",
+          "result": "W",
+          "moments": [
+            {
+              "atSec": 498,
+              "label": "First Blood — Ahri kills Yone",
+              "kind": "kill"
+            },
+            {
+              "atSec": 616,
+              "label": "Red takes 1st Dragon (Mountain)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 762,
+              "label": "Talon kills Leona",
+              "kind": "kill"
+            },
+            {
+              "atSec": 840,
+              "label": "Talon kills Lucian",
+              "kind": "kill"
+            },
+            {
+              "atSec": 905,
+              "label": "Talon kills Lucian",
+              "kind": "kill"
+            },
+            {
+              "atSec": 937,
+              "label": "Red takes 2nd Dragon (Ocean)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1013,
+              "label": "Talon eliminates Kai'Sa"
+            },
+            {
+              "atSec": 1100,
+              "label": "Bard eliminates Leona"
+            },
+            {
+              "atSec": 1169,
+              "label": "Team fight (3 kills)",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1248,
+              "label": "Team fight (3 kills)",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1288,
+              "label": "Red takes 3rd Dragon (Cloud)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1401,
+              "label": "Blue takes Baron",
+              "kind": "baron"
+            },
+            {
+              "atSec": 1457,
+              "label": "Talon picks off Yone"
+            },
+            {
+              "atSec": 1523,
+              "label": "Talon takes down Ivern"
+            },
+            {
+              "atSec": 1620,
+              "label": "Ahri kills Kai'Sa",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1656,
+              "label": "Red takes 4th Dragon (Cloud)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1661,
+              "label": "Mid Inhibitor falls (Blue)"
+            },
+            {
+              "atSec": 1727,
+              "label": "Team fight (3 kills)",
+              "kind": "teamfight"
+            }
+          ]
+        },
+        {
+          "videoId": "7AFv5ABzRk4",
+          "title": "(IG Breathe) Bard Support vs Leona - KR Master Patch 26.14",
+          "rankClaim": "Master",
+          "patch": "26.14",
+          "durationSec": 1786,
+          "region": "KR",
+          "player": "Breathe",
+          "team": "IG",
+          "uploaded": "2026-07-21",
+          "moments": []
+        },
+        {
+          "videoId": "8d-khR9oZUo",
+          "title": "Bard Support vs Leona - EUW Grandmaster Patch 25.24",
+          "rankClaim": "Grandmaster",
+          "patch": "25.24",
+          "durationSec": 1468,
+          "region": "EUW",
+          "uploaded": "2026-01-09",
+          "moments": []
+        },
+        {
+          "videoId": "9ochPCEXk38",
+          "title": "Bard Support vs Leona - KR Challenger Patch 25.21",
+          "rankClaim": "Challenger",
+          "patch": "25.21",
+          "durationSec": 1468,
+          "region": "KR",
+          "uploaded": "2025-10-25",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 99,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "X3bBJywHFvQ",
+          "title": "Bard Support vs Lux - KR Master Patch 25.06",
+          "rankClaim": "Master",
+          "patch": "25.6",
+          "durationSec": 1744,
+          "region": "KR",
+          "uploaded": "2025-03-24",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 111,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "hTed87FyYUw",
+          "title": "Bard Support vs Nautilus - KR Challenger Patch 26.05",
+          "rankClaim": "Challenger",
+          "patch": "26.5",
+          "durationSec": 1703,
+          "region": "KR",
+          "uploaded": "2026-03-15",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 169,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 358,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 476,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 524,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 679,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 749,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 927,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1011,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1081,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1206,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1302,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1453,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1559,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1625,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1660,
+              "label": "Take down The Inhibitor"
+            },
+            {
+              "atSec": 1676,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1692,
+              "label": "End credit"
+            }
+          ]
+        },
+        {
+          "videoId": "44sZz-clfM0",
+          "title": "Bard Support vs Nautilus - KR Challenger Patch 26.04",
+          "rankClaim": "Challenger",
+          "patch": "26.4",
+          "durationSec": 1455,
+          "region": "KR",
+          "uploaded": "2026-02-21",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 349,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 441,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 578,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 746,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 850,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 952,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1001,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1061,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1090,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1229,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1332,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1387,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1444,
+              "label": "End credit"
+            }
+          ]
+        },
+        {
+          "videoId": "729wooyFcBw",
+          "title": "Bard Support vs Nautilus - KR Challenger Patch 26.03",
+          "rankClaim": "Challenger",
+          "patch": "26.3",
+          "durationSec": 1576,
+          "region": "KR",
+          "uploaded": "2026-02-20",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 111,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 201,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 375,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 503,
+              "label": "Get a Double Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 525,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 617,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 751,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 813,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 926,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1038,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1137,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1222,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1335,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1533,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1565,
+              "label": "End credit"
+            }
+          ]
+        },
+        {
+          "videoId": "QfV-XDl9SZ0",
+          "title": "Bard Support vs Nautilus - KR Grandmaster Patch 25.13",
+          "rankClaim": "Grandmaster",
+          "patch": "25.13",
+          "durationSec": 1806,
+          "region": "KR",
+          "uploaded": "2025-07-02",
+          "moments": []
+        },
+        {
+          "videoId": "haeBj5zii8A",
+          "title": "Bard Support vs Nautilus - EUW Challenger Patch 25.12",
+          "rankClaim": "Challenger",
+          "patch": "25.12",
+          "durationSec": 1607,
+          "region": "EUW",
+          "uploaded": "2025-06-26",
+          "moments": []
+        },
+        {
+          "videoId": "s65Cxw9f9sE",
+          "title": "Bard Support vs Nautilus - EUW Challenger Patch 25.09",
+          "rankClaim": "Challenger",
+          "patch": "25.9",
+          "durationSec": 1662,
+          "region": "EUW",
+          "uploaded": "2025-05-15",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 117,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "jIL3nWr0kw4",
+          "title": "(Berr) Bard Support vs Lulu (NS Pleata) - KR Challenger Patch 26.19",
+          "rankClaim": "Challenger",
+          "patch": "26.19",
+          "durationSec": 1856,
+          "region": "KR",
+          "player": "Berr",
+          "uploaded": "2026-10-07",
+          "result": "W",
+          "moments": [
+            {
+              "atSec": 312,
+              "label": "Blue takes 1st Dragon (Chemtech)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 434,
+              "label": "First Blood — Lee Sin kills Zeri",
+              "kind": "kill"
+            },
+            {
+              "atSec": 641,
+              "label": "Red takes 1st Dragon (Infernal)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 966,
+              "label": "Red takes 2nd Dragon (Hextech)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 997,
+              "label": "K'Sante eliminates Dr. Mundo"
+            },
+            {
+              "atSec": 1136,
+              "label": "Bard picks off Zeri"
+            },
+            {
+              "atSec": 1246,
+              "label": "Red takes Baron",
+              "kind": "baron"
+            },
+            {
+              "atSec": 1265,
+              "label": "Lee Sin eliminates Zeri"
+            },
+            {
+              "atSec": 1296,
+              "label": "Red takes 3rd Dragon (Hextech)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1404,
+              "label": "Team fight (3 kills)",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1560,
+              "label": "Lee Sin takes down Qiyana"
+            },
+            {
+              "atSec": 1584,
+              "label": "Yunara picks off Lulu"
+            },
+            {
+              "atSec": 1617,
+              "label": "Team fight (3 kills)",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1670,
+              "label": "Red takes 4th Dragon (Hextech)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1677,
+              "label": "Lee Sin kills Lulu",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1725,
+              "label": "Red takes 2nd Baron",
+              "kind": "baron"
+            },
+            {
+              "atSec": 1785,
+              "label": "Bard catches Qiyana"
+            },
+            {
+              "atSec": 1794,
+              "label": "Top Inhibitor falls (Blue)"
+            }
+          ]
+        },
+        {
+          "videoId": "g8YYzpGQIVg",
+          "title": "Bard Support vs Lulu (WBG Moham) - KR Challenger Patch 26.18",
+          "rankClaim": "Challenger",
+          "patch": "26.18",
+          "durationSec": 1697,
+          "region": "KR",
+          "uploaded": "2026-09-13",
+          "result": "W",
+          "moments": [
+            {
+              "atSec": 212,
+              "label": "First Blood — Yunara kills Graves",
+              "kind": "kill"
+            },
+            {
+              "atSec": 402,
+              "label": "Red takes 1st Dragon (Infernal)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 636,
+              "label": "Zoe eliminates Anivia"
+            },
+            {
+              "atSec": 702,
+              "label": "Yunara takes down Vayne"
+            },
+            {
+              "atSec": 747,
+              "label": "Red takes 2nd Dragon (Hextech)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 909,
+              "label": "Yunara eliminates Graves"
+            },
+            {
+              "atSec": 1057,
+              "label": "Yunara eliminates Graves"
+            },
+            {
+              "atSec": 1088,
+              "label": "Red takes 3rd Dragon (Cloud)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1185,
+              "label": "Zoe picks off Graves"
+            },
+            {
+              "atSec": 1226,
+              "label": "Red takes Baron",
+              "kind": "baron"
+            },
+            {
+              "atSec": 1242,
+              "label": "Sylas takes down Anivia"
+            },
+            {
+              "atSec": 1282,
+              "label": "Xin Zhao takes down Graves"
+            },
+            {
+              "atSec": 1376,
+              "label": "Yunara eliminates Graves"
+            },
+            {
+              "atSec": 1462,
+              "label": "Red takes 4th Dragon (Cloud)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1477,
+              "label": "Zoe eliminates Anivia"
+            },
+            {
+              "atSec": 1500,
+              "label": "Bot Inhibitor falls (Blue)"
+            },
+            {
+              "atSec": 1521,
+              "label": "Mid Inhibitor falls (Blue)"
+            },
+            {
+              "atSec": 1596,
+              "label": "Yunara takes down Vayne"
+            }
+          ]
+        },
+        {
+          "videoId": "XcTgv2whAdg",
+          "title": "(DK Career) Bard Support vs Lulu (OMG Juhan) - KR Challenger Patch 26.16",
+          "rankClaim": "Challenger",
+          "patch": "26.16",
+          "durationSec": 1558,
+          "region": "KR",
+          "player": "Career",
+          "team": "DK",
+          "uploaded": "2026-08-23",
+          "moments": []
+        },
+        {
+          "videoId": "KeLi2SQJz98",
+          "title": "Bard Support vs Lulu - KR Challenger Patch 26.10",
+          "rankClaim": "Challenger",
+          "patch": "26.10",
+          "durationSec": 1678,
+          "region": "KR",
+          "uploaded": "2026-05-19",
+          "moments": []
+        },
+        {
+          "videoId": "Oj0xGyGEbHM",
+          "title": "Bard Support vs Lulu - KR Challenger Patch 26.07",
+          "rankClaim": "Challenger",
+          "patch": "26.7",
+          "durationSec": 1655,
+          "region": "KR",
+          "uploaded": "2026-04-17",
+          "moments": []
+        },
+        {
+          "videoId": "bEeLHUF9aX4",
+          "title": "Bard Support vs Lulu - KR Challenger Patch 26.05",
+          "rankClaim": "Challenger",
+          "patch": "26.5",
+          "durationSec": 1569,
+          "region": "KR",
+          "uploaded": "2026-03-06",
+          "moments": []
+        },
+        {
+          "videoId": "6OVtGW9eujE",
+          "title": "Bard Support vs Lulu - EUW Challenger Patch 25.13",
+          "rankClaim": "Challenger",
+          "patch": "25.13",
+          "durationSec": 2082,
+          "region": "EUW",
+          "uploaded": "2025-07-08",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 147,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "fZjETMmACO0",
+          "title": "Bard Support vs Seraphine - KR Challenger Patch 26.17",
+          "rankClaim": "Challenger",
+          "patch": "26.17",
+          "durationSec": 1640,
+          "region": "KR",
+          "uploaded": "2026-08-29",
+          "result": "W",
+          "moments": [
+            {
+              "atSec": 246,
+              "label": "First Blood — Varus kills Graves",
+              "kind": "kill"
+            },
+            {
+              "atSec": 434,
+              "label": "Blue takes 1st Dragon (Chemtech)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 475,
+              "label": "Varus takes down Jhin"
+            },
+            {
+              "atSec": 539,
+              "label": "Varus takes down Jhin"
+            },
+            {
+              "atSec": 745,
+              "label": "Varus picks off Yone"
+            },
+            {
+              "atSec": 790,
+              "label": "Blue takes 2nd Dragon (Infernal)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 908,
+              "label": "LeBlanc kills Jhin",
+              "kind": "kill"
+            },
+            {
+              "atSec": 937,
+              "label": "LeBlanc takes down Yone"
+            },
+            {
+              "atSec": 1092,
+              "label": "LeBlanc picks off Graves"
+            },
+            {
+              "atSec": 1114,
+              "label": "Blue takes 3rd Dragon (Mountain)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1174,
+              "label": "LeBlanc takes down Yone"
+            },
+            {
+              "atSec": 1206,
+              "label": "Blue takes Baron",
+              "kind": "baron"
+            },
+            {
+              "atSec": 1361,
+              "label": "Team fight (3 kills)",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1409,
+              "label": "Bot Inhibitor falls (Red)"
+            },
+            {
+              "atSec": 1452,
+              "label": "Varus eliminates Graves"
+            },
+            {
+              "atSec": 1516,
+              "label": "Mid Inhibitor falls (Red)"
+            },
+            {
+              "atSec": 1561,
+              "label": "Red takes 1st Dragon (Mountain)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1584,
+              "label": "Rumble eliminates Yone"
+            }
+          ]
+        },
+        {
+          "videoId": "bEA0IAAW-bU",
+          "title": "Bard Support vs Seraphine - KR Master Patch 25.07",
+          "rankClaim": "Master",
+          "patch": "25.7",
+          "durationSec": 1967,
+          "region": "KR",
+          "uploaded": "2025-04-09",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 388,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 493,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 660,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 747,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 883,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1265,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1354,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1514,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1680,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1895,
+              "label": "Take down The Inhibitor"
+            },
+            {
+              "atSec": 1913,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1924,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1936,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1946,
+              "label": "End credit"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 154,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "QsNRpCPBzcA",
+          "title": "Bard Support vs Zac - EUW Grandmaster Patch 25.14",
+          "rankClaim": "Grandmaster",
+          "patch": "25.14",
+          "durationSec": 1564,
+          "region": "EUW",
+          "uploaded": "2025-07-31",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 164,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "M5w9ZAXMQHM",
+          "title": "Bard Support vs Camille - KR Challenger Patch 26.21",
+          "rankClaim": "Challenger",
+          "patch": "26.21",
+          "durationSec": 1677,
+          "region": "KR",
+          "uploaded": "2026-11-04",
+          "moments": []
+        },
+        {
+          "videoId": "ZVgONx8h2fo",
+          "title": "Bard Support vs Camille - KR Challenger Patch 26.19",
+          "rankClaim": "Challenger",
+          "patch": "26.19",
+          "durationSec": 1738,
+          "region": "KR",
+          "uploaded": "2026-09-26",
+          "result": "W",
+          "moments": [
+            {
+              "atSec": 243,
+              "label": "First Blood — Jayce kills Camille",
+              "kind": "kill"
+            },
+            {
+              "atSec": 318,
+              "label": "Red takes 1st Dragon (Infernal)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 653,
+              "label": "Varus takes down Vel'Koz"
+            },
+            {
+              "atSec": 687,
+              "label": "Blue takes 1st Dragon (Mountain)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 732,
+              "label": "Yasuo takes down Camille"
+            },
+            {
+              "atSec": 745,
+              "label": "Yasuo Triple Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 783,
+              "label": "Yasuo kills Vel'Koz",
+              "kind": "kill"
+            },
+            {
+              "atSec": 883,
+              "label": "Blue takes Rift Herald",
+              "kind": "herald"
+            },
+            {
+              "atSec": 1014,
+              "label": "Blue takes 2nd Dragon (Cloud)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1184,
+              "label": "Team fight (4 kills)",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1306,
+              "label": "Bard picks off Vel'Koz"
+            },
+            {
+              "atSec": 1335,
+              "label": "Blue takes 3rd Dragon (Cloud)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1448,
+              "label": "Yasuo kills Vel'Koz",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1583,
+              "label": "Varus takes down Vel'Koz"
+            },
+            {
+              "atSec": 1613,
+              "label": "Blue takes Baron",
+              "kind": "baron"
+            },
+            {
+              "atSec": 1645,
+              "label": "Blue takes 4th Dragon (Cloud)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1678,
+              "label": "Yasuo takes down Camille"
+            },
+            {
+              "atSec": 1704,
+              "label": "Mid Inhibitor falls (Red)"
+            }
+          ]
+        },
+        {
+          "videoId": "ElyVxj98xUo",
+          "title": "(GEN Duro) Bard Support vs Camille (HLE Bluffing) - KR Challenger Patch 26.14",
+          "rankClaim": "Challenger",
+          "patch": "26.14",
+          "durationSec": 1423,
+          "region": "KR",
+          "player": "Duro",
+          "team": "GEN",
+          "uploaded": "2026-07-31",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 201,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "G8KoPmlBJb4",
+          "title": "Bard Support vs Braum - KR Master Patch 26.21",
+          "rankClaim": "Master",
+          "patch": "26.21",
+          "durationSec": 1734,
+          "region": "KR",
+          "uploaded": "2026-10-25",
+          "result": "W",
+          "moments": [
+            {
+              "atSec": 305,
+              "label": "Red takes 1st Dragon (Ocean)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 650,
+              "label": "Blue takes 1st Dragon (Mountain)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 663,
+              "label": "Sylas Triple Kill",
+              "kind": "kill"
+            },
+            {
+              "atSec": 840,
+              "label": "Lee Sin eliminates Zeri"
+            },
+            {
+              "atSec": 894,
+              "label": "Bard picks off Zeri"
+            },
+            {
+              "atSec": 921,
+              "label": "Blue takes Rift Herald",
+              "kind": "herald"
+            },
+            {
+              "atSec": 1042,
+              "label": "Blue takes 2nd Dragon (Chemtech)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1069,
+              "label": "Lee Sin kills Rumble",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1127,
+              "label": "Lee Sin kills Braum",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1227,
+              "label": "Sylas takes down Braum"
+            },
+            {
+              "atSec": 1251,
+              "label": "Red takes Baron",
+              "kind": "baron"
+            },
+            {
+              "atSec": 1256,
+              "label": "Darius eliminates Rumble"
+            },
+            {
+              "atSec": 1381,
+              "label": "Red takes 2nd Dragon (Chemtech)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1545,
+              "label": "Darius eliminates Rumble"
+            },
+            {
+              "atSec": 1591,
+              "label": "Sylas kills Zeri",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1630,
+              "label": "Blue takes Baron",
+              "kind": "baron"
+            },
+            {
+              "atSec": 1680,
+              "label": "Miss Fortune takes down Zeri"
+            },
+            {
+              "atSec": 1707,
+              "label": "Mid Inhibitor falls (Red)"
+            }
+          ]
+        },
+        {
+          "videoId": "OOH3i80mJTI",
+          "title": "Bard Support vs Braum - KR Master Patch 25.24",
+          "rankClaim": "Master",
+          "patch": "25.24",
+          "durationSec": 1529,
+          "region": "KR",
+          "uploaded": "2025-12-24",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 235,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "M-Rr-zfXb8Y",
+          "title": "Bard Support vs Senna - EUW Grandmaster Patch 25.21",
+          "rankClaim": "Grandmaster",
+          "patch": "25.21",
+          "durationSec": 1455,
+          "region": "EUW",
+          "uploaded": "2025-11-06",
+          "moments": []
+        },
+        {
+          "videoId": "lKAKAnPKvtc",
+          "title": "Bard Support vs Senna - KR Challenger Patch 25.05",
+          "rankClaim": "Challenger",
+          "patch": "25.5",
+          "durationSec": 1984,
+          "region": "KR",
+          "uploaded": "2025-03-10",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 266,
+      "lane": "top",
+      "videos": [
+        {
+          "videoId": "7q61gt160RI",
+          "title": "Bard Top vs Aatrox - NA Grandmaster Patch 25.08",
+          "rankClaim": "Grandmaster",
+          "patch": "25.8",
+          "durationSec": 1584,
+          "region": "NA",
+          "uploaded": "2025-05-01",
+          "moments": [
+            {
+              "atSec": 15,
+              "label": "Runes & Abilities"
+            },
+            {
+              "atSec": 25,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 212,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 245,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 331,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 449,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 481,
+              "label": "Hunt The Void Grubs",
+              "kind": "grubs"
+            },
+            {
+              "atSec": 509,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 578,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 729,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 756,
+              "label": "Get a SOLO KILL",
+              "kind": "kill"
+            },
+            {
+              "atSec": 792,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 891,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 943,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1014,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1148,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1230,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1307,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1410,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1431,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1441,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1454,
+              "label": "Take down The Turret",
+              "kind": "tower"
+            },
+            {
+              "atSec": 1539,
+              "label": "Team FIGHT",
+              "kind": "teamfight"
+            },
+            {
+              "atSec": 1563,
+              "label": "End credit"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "enemy": 267,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "rIhRaUi4dkQ",
+          "title": "Bard Support vs Nami - KR Challenger Patch 25.14",
+          "rankClaim": "Challenger",
+          "patch": "25.14",
+          "durationSec": 1605,
+          "region": "KR",
+          "uploaded": "2025-07-20",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 350,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "BGz8cMfzfJE",
+          "title": "(NAVI Parus) Bard Support vs Yuumi (SK Mikyx) - EUW Grandmaster Patch 26.15",
+          "rankClaim": "Grandmaster",
+          "patch": "26.15",
+          "durationSec": 1747,
+          "region": "EUW",
+          "player": "NAVI Parus",
+          "uploaded": "2026-08-02",
+          "moments": []
+        },
+        {
+          "videoId": "ntCQUQ0H_ek",
+          "title": "Bard Support vs Yuumi - KR Master Patch 26.03",
+          "rankClaim": "Master",
+          "patch": "26.3",
+          "durationSec": 1592,
+          "region": "KR",
+          "uploaded": "2026-02-06",
+          "moments": []
+        },
+        {
+          "videoId": "M9J1Vw5rRsk",
+          "title": "Bard Support vs Yuumi - KR Grandmaster Patch 25.09",
+          "rankClaim": "Grandmaster",
+          "patch": "25.9",
+          "durationSec": 1700,
+          "region": "KR",
+          "uploaded": "2025-05-06",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 412,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "qX7N0sQ2s18",
+          "title": "(JDG GALA) Bard Support vs Thresh - KR Grandmaster Patch 26.13",
+          "rankClaim": "Grandmaster",
+          "patch": "26.13",
+          "durationSec": 1731,
+          "region": "KR",
+          "player": "GALA",
+          "team": "JDG",
+          "uploaded": "2026-06-28",
+          "moments": []
+        },
+        {
+          "videoId": "YxNEujG2W-Y",
+          "title": "Bard Support vs Thresh - KR Challenger Patch 26.08",
+          "rankClaim": "Challenger",
+          "patch": "26.8",
+          "durationSec": 1743,
+          "region": "KR",
+          "uploaded": "2026-05-01",
+          "moments": []
+        },
+        {
+          "videoId": "A0zFq-QYtRA",
+          "title": "Bard Support vs Thresh - EUW Grandmaster Patch 25.16",
+          "rankClaim": "Grandmaster",
+          "patch": "25.16",
+          "durationSec": 1717,
+          "region": "EUW",
+          "uploaded": "2025-08-27",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 497,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "l3FYAXcrhsE",
+          "title": "(LNG BuLLDoG) Bard Support vs Rakan (KC kyeahoo) - KR Challenger Patch 26.12",
+          "rankClaim": "Challenger",
+          "patch": "26.12",
+          "durationSec": 1629,
+          "region": "KR",
+          "player": "BuLLDoG",
+          "team": "LNG",
+          "uploaded": "2026-06-26",
+          "moments": []
+        },
+        {
+          "videoId": "Z6kUx5fRB2Q",
+          "title": "Bard Support vs Rakan - KR Challenger Patch 26.04",
+          "rankClaim": "Challenger",
+          "patch": "26.4",
+          "durationSec": 1785,
+          "region": "KR",
+          "uploaded": "2026-03-06",
+          "moments": []
+        },
+        {
+          "videoId": "hjSnK_TCHtk",
+          "title": "Bard Support vs Rakan - EUW Grandmaster Patch 25.24",
+          "rankClaim": "Grandmaster",
+          "patch": "25.24",
+          "durationSec": 1510,
+          "region": "EUW",
+          "uploaded": "2025-12-17",
+          "moments": []
+        },
+        {
+          "videoId": "C3iFjsmNXXQ",
+          "title": "Bard Support vs Rakan - EUW Challenger Patch 25.22",
+          "rankClaim": "Challenger",
+          "patch": "25.22",
+          "durationSec": 1464,
+          "region": "EUW",
+          "uploaded": "2025-11-20",
+          "moments": []
+        },
+        {
+          "videoId": "eFUJw3Cr6yY",
+          "title": "Bard Support vs Rakan - KR Challenger Patch 25.18",
+          "rankClaim": "Challenger",
+          "patch": "25.18",
+          "durationSec": 1537,
+          "region": "KR",
+          "uploaded": "2025-09-15",
+          "moments": []
+        },
+        {
+          "videoId": "v2t48RIi2cc",
+          "title": "Bard Support vs Rakan - KR Master Patch 25.12",
+          "rankClaim": "Master",
+          "patch": "25.12",
+          "durationSec": 1519,
+          "region": "KR",
+          "uploaded": "2025-06-14",
+          "moments": []
+        },
+        {
+          "videoId": "t9eMnpbG-fU",
+          "title": "Bard Support vs Rakan - EUW Challenger Patch 25.06",
+          "rankClaim": "Challenger",
+          "patch": "25.6",
+          "durationSec": 1555,
+          "region": "EUW",
+          "uploaded": "2025-04-02",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 517,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "gozXUPWsLPc",
+          "title": "Bard Support vs Sylas - KR Grandmaster Patch 25.20",
+          "rankClaim": "Grandmaster",
+          "patch": "25.20",
+          "durationSec": 1632,
+          "region": "KR",
+          "uploaded": "2025-10-11",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 518,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "Q4w7gr-kK2c",
+          "title": "Bard Support vs Neeko (WBG Xiaohao) - KR Challenger Patch 26.18",
+          "rankClaim": "Challenger",
+          "patch": "26.18",
+          "durationSec": 1871,
+          "region": "KR",
+          "uploaded": "2026-09-24",
+          "moments": []
+        },
+        {
+          "videoId": "CPadoty7FLY",
+          "title": "Bard Support vs Neeko - KR Challenger Patch 25.23",
+          "rankClaim": "Challenger",
+          "patch": "25.23",
+          "durationSec": 1569,
+          "region": "KR",
+          "uploaded": "2025-11-23",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 526,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "sUFNelKbj3M",
+          "title": "Bard Support vs Rell - KR Challenger Patch 25.08",
+          "rankClaim": "Challenger",
+          "patch": "25.8",
+          "durationSec": 1773,
+          "region": "KR",
+          "uploaded": "2025-04-22",
+          "moments": []
+        },
+        {
+          "videoId": "yEvow1KFh9w",
+          "title": "Bard Support vs Rell - EUW Challenger Patch 25.07",
+          "rankClaim": "Challenger",
+          "patch": "25.7",
+          "durationSec": 2087,
+          "region": "EUW",
+          "uploaded": "2025-04-17",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 555,
+      "lane": "support",
+      "videos": [
+        {
+          "videoId": "wa4Oe4iiHAk",
+          "title": "(BLG ON) Bard Support vs Pyke - KR Challenger Patch 26.20",
+          "rankClaim": "Challenger",
+          "patch": "26.20",
+          "durationSec": 1869,
+          "region": "KR",
+          "player": "ON",
+          "team": "BLG",
+          "uploaded": "2026-10-11",
+          "result": "L",
+          "moments": [
+            {
+              "atSec": 70,
+              "label": "First Blood — Hwei kills Xin Zhao",
+              "kind": "kill"
+            },
+            {
+              "atSec": 763,
+              "label": "Blue takes 1st Dragon (Cloud)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1053,
+              "label": "Jhin picks off Pyke"
+            },
+            {
+              "atSec": 1084,
+              "label": "Hwei eliminates Kayle"
+            },
+            {
+              "atSec": 1089,
+              "label": "Blue takes 2nd Dragon (Chemtech)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1239,
+              "label": "Lee Sin kills Pyke",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1289,
+              "label": "Jhin picks off Corki"
+            },
+            {
+              "atSec": 1375,
+              "label": "Bard eliminates Corki"
+            },
+            {
+              "atSec": 1392,
+              "label": "Bot Inhibitor falls (Red)"
+            },
+            {
+              "atSec": 1394,
+              "label": "Mid Inhibitor falls (Red)"
+            },
+            {
+              "atSec": 1477,
+              "label": "Red takes 1st Dragon (Ocean)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1539,
+              "label": "Lee Sin takes down Xin Zhao"
+            },
+            {
+              "atSec": 1660,
+              "label": "Lee Sin kills Pyke",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1735,
+              "label": "Red takes Baron",
+              "kind": "baron"
+            },
+            {
+              "atSec": 1803,
+              "label": "Red takes 2nd Dragon (Ocean)",
+              "kind": "dragon"
+            },
+            {
+              "atSec": 1813,
+              "label": "Lee Sin kills Pyke",
+              "kind": "kill"
+            },
+            {
+              "atSec": 1847,
+              "label": "Mid Inhibitor falls (Blue)"
+            }
+          ]
+        },
+        {
+          "videoId": "-CecxNBxIwU",
+          "title": "(BRO Namgung) Bard Support vs Pyke - KR Challenger Patch 26.16",
+          "rankClaim": "Challenger",
+          "patch": "26.16",
+          "durationSec": 1693,
+          "region": "KR",
+          "player": "Namgung",
+          "team": "BRO",
+          "uploaded": "2026-08-16",
+          "moments": []
+        },
+        {
+          "videoId": "VmRbAbJ6-wo",
+          "title": "(KT PerfecT) Bard Support vs Pyke - KR Challenger Patch 26.13",
+          "rankClaim": "Challenger",
+          "patch": "26.13",
+          "durationSec": 1449,
+          "region": "KR",
+          "player": "PerfecT",
+          "team": "KT",
+          "uploaded": "2026-07-11",
+          "moments": []
+        },
+        {
+          "videoId": "uhCJ6tscXGk",
+          "title": "Bard Support vs Pyke - KR Challenger Patch 26.09",
+          "rankClaim": "Challenger",
+          "patch": "26.9",
+          "durationSec": 1599,
+          "region": "KR",
+          "uploaded": "2026-05-04",
+          "moments": []
+        },
+        {
+          "videoId": "pvrzetxxjmM",
+          "title": "Bard Support vs Pyke - KR Challenger Patch 26.06",
+          "rankClaim": "Challenger",
+          "patch": "26.6",
+          "durationSec": 1912,
+          "region": "KR",
+          "uploaded": "2026-03-20",
+          "moments": []
+        },
+        {
+          "videoId": "tcN8x5oRaSc",
+          "title": "Bard Support vs Pyke - EUW Grandmaster Patch 25.17",
+          "rankClaim": "Grandmaster",
+          "patch": "25.17",
+          "durationSec": 1724,
+          "region": "EUW",
+          "uploaded": "2025-09-10",
+          "moments": []
+        },
+        {
+          "videoId": "FX9vcQTfYGU",
+          "title": "Bard Support vs Pyke - KR Grandmaster Patch 25.11",
+          "rankClaim": "Grandmaster",
+          "patch": "25.11",
+          "durationSec": 1424,
+          "region": "KR",
+          "uploaded": "2025-06-06",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 777,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "3TtMv1lTRmE",
+          "title": "Bard Mid vs Yone - EUW Grandmaster Patch 26.15",
+          "rankClaim": "Grandmaster",
+          "patch": "26.15",
+          "durationSec": 1473,
+          "region": "EUW",
+          "uploaded": "2026-08-14",
+          "moments": []
+        }
+      ]
+    },
+    {
+      "enemy": 893,
+      "lane": "mid",
+      "videos": [
+        {
+          "videoId": "x7dzVEo4_14",
+          "title": "Bard Mid vs Aurora - KR Master Patch 26.09",
+          "rankClaim": "Master",
+          "patch": "26.9",
+          "durationSec": 1582,
+          "region": "KR",
+          "uploaded": "2026-05-11",
+          "moments": []
+        }
+      ]
+    }
+  ]
+}
