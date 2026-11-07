@@ -1,6 +1,6 @@
 import { PageHeader } from "./ui/PageHeader";
 import { useEffect, useMemo, useRef, useState } from "react";
-import { ArrowLeft, ArrowUpRight, ChevronRight, Flag, Play, Plus, Scissors } from "lucide-react";
+import { ArrowLeft, ArrowUpRight, ChevronRight, Flag, Play, Plus, Scissors, Globe } from "lucide-react";
 import { invoke } from "@tauri-apps/api/core";
 import { VodMomentArt } from "./VodMomentArt";
 import type { VodRequest } from "./MatchupVodEntry";
@@ -9,6 +9,7 @@ import { ChampionIcon } from "../runes/ChampionIcon";
 import { RankCrest } from "../runes/RankCrest";
 import { RoleIcon } from "../runes/RoleIcon";
 import { TeamLogo } from "../runes/TeamLogo";
+import { RegionFlag } from "./RegionFlag";
 import { GuideSourceButton } from "./GuideSourceButton";
 import { loadAllVods, loadChampionVods } from "./loadMatchupVods";
 import { GUIDE_SECTIONS, type GuideSectionId, type MatchupVod } from "./matchupGuide";
@@ -175,8 +176,8 @@ export function MatchupVods({ request, onChampionChange, onGuideSection, active 
               <Picker label="Patch" className={`mv-filter-chip${filters.patch ? " is-active" : ""}`} trigger={filters.patch ?? "Patch"} value={filters.patch ?? ""} onChange={patch => filter({ patch: patch || null })}
                 options={[{ value: "", label: "Any patch", count: count({ patch: null }), disabled: !count({ patch: null }) },
                   ...patches.map(patch => { const games = count({ patch }); return { value: patch, label: `Patch ${patch}`, count: games, disabled: !games }; })]} />
-              <Picker label="Region" className={`mv-filter-chip${filters.region ? " is-active" : ""}`} trigger={filters.region ?? "Region"} value={filters.region ?? ""} onChange={region => filter({ region: region || null })}
-                options={[{ value: "", label: "Any region", count: count({ region: null }) }, ...["KR", "EUW", "NA", "EUNE"].map(value => ({ value, label: value, count: count({ region: value }) }))]} />
+              <Picker label="Region" className={`mv-filter-chip${filters.region ? " is-active" : ""}`} trigger={filters.region ? <><RegionFlag region={filters.region} />{filters.region}</> : "Region"} value={filters.region ?? ""} onChange={region => filter({ region: region || null })}
+                options={[{ value: "", label: "Any region", icon: <Globe size={16} aria-hidden />, count: count({ region: null }) }, ...["KR", "EUW", "NA", "EUNE"].map(value => ({ value, label: value, icon: <RegionFlag region={value} />, count: count({ region: value }) }))]} />
               <button type="button" className="mv-filter-chip" aria-label="Streamers" aria-pressed={filters.streamer}
                 disabled={!filters.streamer && !count({ streamer: true })} onClick={() => filter({ streamer: !filters.streamer })}>Streamers <small>{count({ streamer: true }).toLocaleString("en")}</small></button>
             </div>
