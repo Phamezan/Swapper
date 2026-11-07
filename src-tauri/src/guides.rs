@@ -3,6 +3,7 @@ pub(crate) mod blind_picks;
 use model::*;
 use serde::{Deserialize, Serialize};
 use futures_util::{stream, StreamExt};
+use tauri::Emitter;
 use std::collections::BTreeMap;
 use std::path::{Path, PathBuf};
 use std::sync::OnceLock;
@@ -140,11 +141,13 @@ impl GuideCache {
 struct SharedGuideCache {
     data: tokio::sync::Mutex<GuideCache>,
     index_load: tokio::sync::Mutex<()>,
+    library_load: tokio::sync::Mutex<Option<u64>>,
     champion_loads: tokio::sync::Mutex<BTreeMap<i64, std::sync::Arc<tokio::sync::Mutex<()>>>>,
 }
 impl SharedGuideCache {
     fn new(data: GuideCache) -> Self {
         Self { data: tokio::sync::Mutex::new(data), index_load: tokio::sync::Mutex::new(()),
+            library_load: tokio::sync::Mutex::new(None),
             champion_loads: tokio::sync::Mutex::new(BTreeMap::new()) }
     }
 
@@ -198,7 +201,33 @@ impl SharedGuideCache {
         bytes
     }
 
-    async fn all_vods(&self, client: &reqwest::Client, now: u64) -> Vec<LibraryVod> {
+    async fn all_vods(&self) -> Vec<LibraryVod> {
+        let mut data = self.data.lock().await;
+        let offline_index = data.bundled("index.json").and_then(parse_index);
+        let index = if data.base.is_empty() { offline_index.clone() } else { data.index.clone().or_else(|| offline_index.clone()) };
+        let Some(index) = index else { return vec![] };
+        let mut vods = vec![];
+        for (id, entry) in index.champions.iter().filter(|(_, entry)| entry.vods.unwrap_or(0) > 0) {
+            let champion = id.parse::<i64>().expect("validated index id");
+            let bytes = if data.base.is_empty() { None } else { data.cached(champion).map(|(_, bytes)| bytes) }
+                .or_else(|| offline_index.as_ref().and_then(|i| i.champions.get(id))
+                    .and_then(|e| data.bundled(&format!("champions/{champion}.json"))
+                        .filter(|b| verified_champion(b, &e.sha256, champion).is_some()).map(|b| b.to_vec())))
+                .unwrap_or_default();
+            vods.extend(parse_champion_vods(&bytes, champion).into_iter().map(|vod| LibraryVod { champion, vod }));
+        }
+        vods
+    }
+
+    async fn refresh_library(&self, client: &reqwest::Client, now: u64) -> bool {
+        let Ok(mut last) = self.library_load.try_lock() else { return false };
+        if !due(*last, now) || self.data.lock().await.base.is_empty() { return false; }
+        *last = Some(now);
+        self.refresh_vods(client, now).await;
+        true
+    }
+
+    async fn refresh_vods(&self, client: &reqwest::Client, now: u64) -> Vec<LibraryVod> {
         self.refresh_index(client, now).await;
         let index = {
             let data = self.data.lock().await;
@@ -209,7 +238,7 @@ impl SharedGuideCache {
             let champion = id.parse::<i64>().expect("validated index id");
             async move { (champion, self.content(client, champion, now).await) }
         }).collect::<Vec<_>>();
-        let mut loads = stream::iter(loads).buffered(4);
+        let mut loads = stream::iter(loads).buffered(12);
         let mut vods = vec![];
         while let Some((champion, bytes)) = loads.next().await {
             vods.extend(parse_champion_vods(&bytes, champion).into_iter().map(|vod| LibraryVod { champion, vod }));
@@ -317,10 +346,17 @@ pub(crate) async fn get_champion_vods(champion_id: i64) -> Result<Vec<ChampionVo
 pub(crate) struct LibraryVod { champion: i64, #[serde(flatten)] vod: ChampionVod }
 
 #[tauri::command]
-pub(crate) async fn get_all_vods() -> Result<Vec<LibraryVod>, String> {
-    let client = guide_client().ok_or("VOD library unavailable.")?;
-    let now = crate::runes::provider::now_ms().max(0) as u64 / 1000;
-    Ok(guide_cache().all_vods(&client, now).await)
+pub(crate) async fn get_all_vods(app: tauri::AppHandle) -> Result<Vec<LibraryVod>, String> {
+    let vods = guide_cache().all_vods().await;
+    tauri::async_runtime::spawn(async move {
+        if let Some(client) = guide_client() {
+            let now = crate::runes::provider::now_ms().max(0) as u64 / 1000;
+            if guide_cache().refresh_library(&client, now).await {
+                let _ = app.emit("vod_library_changed", ());
+            }
+        }
+    });
+    Ok(vods)
 }
 
 #[cfg(test)]

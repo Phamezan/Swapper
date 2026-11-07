@@ -2,6 +2,7 @@ import { PageHeader } from "./ui/PageHeader";
 import { useEffect, useMemo, useRef, useState } from "react";
 import { ArrowLeft, ArrowUpRight, ChevronRight, Flag, Play, Plus, Scissors, Globe } from "lucide-react";
 import { invoke } from "@tauri-apps/api/core";
+import { listen } from "@tauri-apps/api/event";
 import { VodMomentArt } from "./VodMomentArt";
 import type { VodRequest } from "./MatchupVodEntry";
 import type { ChampionOption } from "../runes/types";
@@ -85,8 +86,14 @@ export function MatchupVods({ request, onChampionChange, onGuideSection, active 
   }, []);
   useEffect(() => {
     let live = true;
-    void loadAllVods().then(vods => { if (live) { setAll(vods); setError(vods === null); } });
-    return () => { live = false; };
+    let version = 0;
+    const load = () => {
+      const current = ++version;
+      return loadAllVods().then(vods => { if (live && current === version) { setAll(vods); setError(vods === null); } });
+    };
+    const stop = listen("vod_library_changed", load).catch(() => () => {});
+    void stop.then(() => { if (live) void load(); });
+    return () => { live = false; void stop.then(unlisten => unlisten()); };
   }, [retry]);
   useEffect(() => {
     setFilters({ ...ANY_VOD, enemy: enemy?.id ?? null, lane: lane ?? null });

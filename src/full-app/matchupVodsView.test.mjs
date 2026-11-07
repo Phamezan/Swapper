@@ -10,7 +10,7 @@ import { ahriVsZedVods } from "./fixtures/ahriVsZedVods.ts";
 
 const photos = {};
 function harness(file, component, vods = ahriVsZedVods, championVods = vods.map(vod => ({ ...vod, enemy: 238, lane: "mid" }))) {
-  const states = [], effects = [], focus = [], domRefs = new Set(), messages = [], listeners = new Map(), timers = new Map(), fullscreen = [], scrolls = [];
+  const states = [], effects = [], focus = [], domRefs = new Set(), messages = [], listeners = new Map(), timers = new Map(), fullscreen = [], scrolls = [], events = new Map();
   const contentWindow = { postMessage: (data, origin) => messages.push({ data: JSON.parse(data), origin }) };
   const browser = { innerWidth: 1600, innerHeight: 900, addEventListener: (name, fn) => listeners.set(name, fn), removeEventListener: name => listeners.delete(name), setInterval: fn => { timers.set('interval', fn); return 'interval'; }, clearInterval: name => timers.delete(name), setTimeout: fn => { timers.set('timeout', fn); return 'timeout'; }, clearTimeout: name => timers.delete(name) };
   const documentListeners = new Map();
@@ -25,6 +25,7 @@ function harness(file, component, vods = ahriVsZedVods, championVods = vods.map(
   };
   const jsx = (type, props) => ({ type, props });
   const modules = {
+    "@tauri-apps/api/event": { listen: async (name, fn) => { events.set(name, fn); return () => events.delete(name); } },
     "../components/ui/button": { Button: "shared-button" },
     "@tauri-apps/api/core": { isTauri: () => true, invoke: async () => [{ id: 103, name: "Ahri" }, { id: 238, name: "Zed" }, { id: 157, name: "Yasuo" }] },
     "../runes/ChampionIcon": { ChampionIcon: "champion-icon" }, "../runes/RoleIcon": { RoleIcon: "role-icon" }, "./VodMomentArt": { VodMomentArt: "event-art" },
@@ -54,12 +55,26 @@ function harness(file, component, vods = ahriVsZedVods, championVods = vods.map(
     }
     pending.splice(0).forEach(fn => fn()); return tree;
   };
-  return { browser, render, tauriWindow, focus, messages, contentWindow, timers, fullscreen, fakeDocument, documentListeners, receive(event) { listeners.get('message')?.(event); }, unmount() { effects.forEach(effect => effect?.cleanup?.()); }, async flush() { for (let i = 0; i < 5; i++) await new Promise(setImmediate); return render(); } };
+  return { browser, render, tauriWindow, focus, messages, contentWindow, timers, fullscreen, fakeDocument, documentListeners, events, receive(event) { listeners.get('message')?.(event); }, unmount() { effects.forEach(effect => effect?.cleanup?.()); }, async flush() { for (let i = 0; i < 5; i++) await new Promise(setImmediate); return render(); } };
 }
 // The player's header is a prop like its children; walk both.
 function nodes(tree) { return !tree || typeof tree !== "object" ? [] : Array.isArray(tree) ? tree.flatMap(nodes) : [tree, ...nodes(tree.props?.header), ...nodes(tree.props?.children)]; }
 function text(tree) { return typeof tree === "string" || typeof tree === "number" ? String(tree) : !tree || typeof tree !== "object" ? "" : Array.isArray(tree) ? tree.map(text).join("") : text(tree.props?.children); }
 const props = { champion: { id: 103, name: "Ahri" }, enemy: { id: 238, name: "Zed" }, lane: "mid", onGuideSection() {} };
+
+test('the VOD library reloads after background refresh and removes its listener on unmount', async () => {
+  const vods = [{ ...ahriVsZedVods[0], champion: 103, enemy: 238, lane: 'mid' }];
+  const h = harness('./MatchupVods.tsx', 'MatchupVods', vods, vods);
+  h.render(props);
+  assert.equal(nodes(await h.flush()).filter(node => node.props.className === 'mv-vod-row').length, 1);
+  vods.push({ ...vods[0], videoId: 'newVod00001' });
+  assert.ok(h.events.has('vod_library_changed'));
+  h.events.get('vod_library_changed')();
+  assert.equal(nodes(await h.flush()).filter(node => node.props.className === 'mv-vod-row').length, 2);
+  h.unmount();
+  await new Promise(setImmediate);
+  assert.equal(h.events.size, 0);
+});
 
 test('moment cards render roster portraits and unnamed replays show a rank crest', async () => {
   const vod = { ...ahriVsZedVods[0], player: undefined, result: undefined, moments: [{ atSec: 30, label: 'Ahri takes down Zed', kind: 'kill' }] };
