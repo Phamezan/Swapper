@@ -4,8 +4,8 @@ use serde_json::Value;
 pub fn supports_rift(session: &Value) -> bool {
     let data = &session["gameData"];
     let queues = [&data["queue"], &session["queue"]];
-    // SR custom, draft/blind, solo/flex, Swiftplay/Quickplay and Clash; other queues are out of scope.
-    const SR_QUEUES: [i64; 8] = [0, 400, 420, 430, 440, 480, 490, 700];
+    // SR custom, draft/blind, solo/flex, Swiftplay/Quickplay, Clash and ranked 5s (710); other queues are out of scope.
+    const SR_QUEUES: [i64; 9] = [0, 400, 420, 430, 440, 480, 490, 700, 710];
     for queue in queues {
         if queue["id"].as_i64().is_some_and(|id| id > 0 && !SR_QUEUES.contains(&id)) {
             return false;
@@ -34,7 +34,7 @@ mod tests {
 
     #[test]
     fn sr_queues_and_custom_games() {
-        for id in [0, 400, 420, 430, 440, 480, 490, 700] {
+        for id in [0, 400, 420, 430, 440, 480, 490, 700, 710] {
             assert!(supports_rift(&json!({"gameData":{"queue":{"id":id,"mapId":11,"gameMode":"CLASSIC"}}})), "queue {id}");
             assert!(supports_rift(&json!({"gameData":{"queue":{"id":id}}})), "queue only {id}");
         }
