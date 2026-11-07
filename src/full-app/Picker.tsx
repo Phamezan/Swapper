@@ -10,11 +10,12 @@ import { NearViewport } from "./NearViewport";
 /** `accent` tints the option (and the trigger while it is chosen), e.g. a rune tree's colour. `count` shows right-aligned in the menu only. */
 export type PickOption = { value: string; label: string; icon?: ReactNode; disabled?: boolean; accent?: string; count?: number };
 const accented = (accent?: string) => accent ? { "--accent": accent } as CSSProperties : undefined;
-export function Picker({ label, value, options, onChange, grid = false, searchable = false, disabled = false, hideLabel = false, className = "" }: {
+export function Picker({ label, value, options, onChange, grid = false, searchable = false, disabled = false, hideLabel = false, className = "", trigger }: {
   label: string; value: string; options: PickOption[]; onChange: (value: string) => void;
   grid?: boolean; searchable?: boolean; disabled?: boolean;
   /** Drop the visible heading in the menu; it stays the accessible name. */
   hideLabel?: boolean; className?: string;
+  trigger?: ReactNode;
 }) {
   const [open, setOpen] = useState(false);
   const [query, setQuery] = useState("");
@@ -22,7 +23,7 @@ export function Picker({ label, value, options, onChange, grid = false, searchab
   const visible = options.filter(option => option.label.toLowerCase().includes(query.trim().toLowerCase()));
   return <Popover.Root open={open} onOpenChange={next => { setOpen(next); setQuery(""); }}>
     <Popover.Trigger className={`fa-picker${selected?.accent ? " is-accented" : ""} ${className}`.trim()} style={accented(selected?.accent)} disabled={disabled} aria-label={`${label}: ${selected?.label ?? "Choose"}`}>
-      {selected?.icon}<span>{selected?.label ?? label}</span><ChevronDown size={14} />
+      {trigger ?? <>{selected?.icon}<span>{selected?.label ?? label}</span></>}<ChevronDown size={14} />
     </Popover.Trigger>
     <Popover.Portal><Popover.Content className={`fa-picker-popover${grid ? " is-grid" : ""} ${className}`.trim()} sideOffset={8} collisionPadding={12} aria-label={label} onKeyDown={event => {
       if (!["ArrowDown", "ArrowUp", "Home", "End"].includes(event.key)) return;

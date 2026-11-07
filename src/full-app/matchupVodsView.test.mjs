@@ -27,7 +27,7 @@ function harness(file, component, vods = ahriVsZedVods, championVods = vods.map(
   const modules = {
     "../components/ui/button": { Button: "shared-button" },
     "@tauri-apps/api/core": { isTauri: () => true, invoke: async () => [{ id: 103, name: "Ahri" }, { id: 238, name: "Zed" }, { id: 157, name: "Yasuo" }] },
-    "../runes/ChampionIcon": { ChampionIcon: "champion-icon" }, "./VodMomentArt": { VodMomentArt: "event-art" },
+    "../runes/ChampionIcon": { ChampionIcon: "champion-icon" }, "../runes/RoleIcon": { RoleIcon: "role-icon" }, "./VodMomentArt": { VodMomentArt: "event-art" },
     react, "react/jsx-runtime": { jsx, jsxs: jsx, Fragment: "fragment" }, "lucide-react": { Play: "play", Flag: "flag", ChevronRight: "chevron", ArrowLeft: "back-icon", TriangleAlert: "triangle-alert" },
     "./matchupVodModel": logic, "./matchupGuide": guide, "./loadMatchupVods": { loadMatchupVods: async () => vods, loadChampionVods: async () => championVods, loadAllVods: async () => championVods.map(vod => ({ ...vod, champion: vod.champion ?? (vod.enemy === 103 ? 238 : 103) })) },
     "./Picker": { ChampionPicker: "champion-picker", Picker: "picker", ROLES: [["mid", "Mid"], ["top", "Top"]] }, "./NearViewport": { NearEnd: "near-end" },
@@ -38,7 +38,7 @@ function harness(file, component, vods = ahriVsZedVods, championVods = vods.map(
     "./MatchupGuideSummary": { MatchupGuideSummary: "summary" }, "./TradeWindows": { TradeWindows: "trades" }, "./PowerSpikeTimeline": { PowerSpikeTimeline: "spikes" },
   };
   const source = readFileSync(new URL(file, import.meta.url), "utf8");
-  const code = ts.transpileModule(source, { compilerOptions: { module: ts.ModuleKind.CommonJS, jsx: ts.JsxEmit.ReactJSX, target: ts.ScriptTarget.ES2022 } }).outputText + (component === "RowThumb" ? "\nexports.RowThumb = RowThumb;" : "");
+  const code = ts.transpileModule(source, { compilerOptions: { module: ts.ModuleKind.CommonJS, jsx: ts.JsxEmit.ReactJSX, target: ts.ScriptTarget.ES2022 } }).outputText + (["RowThumb", "VodFacts"].includes(component) ? `\nexports.${component} = ${component};` : "");
   const exports = {};
   new Function("require", "exports", "window", 'location', 'document', code)(name => modules[name] ?? {}, exports, browser, { origin: 'http://tauri.localhost' }, fakeDocument);
   const render = value => {
@@ -556,13 +556,13 @@ test("library rows show the player or rank and region, a result badge and moment
 });
 
 
-test("filters are hidden under eight VODs and visible at eight", async () => {
+test("banner filters stay available below and above eight VODs", async () => {
   for (const count of [7, 8]) {
     const list = Array.from({ length: count }, (_, i) => ({ ...ahriVsZedVods[0], videoId: `count-${i}`, enemy: 238, lane: "mid" }));
     const h = harness('./MatchupVods.tsx', 'MatchupVods', list, list);
     h.render(props);
     const tree = await h.flush();
-    assert.equal(nodes(tree).some(node => node.props.label === 'Players'), count >= 8);
+    assert.equal(nodes(tree).some(node => node.props.label === 'Players'), true);
   }
 });
 
@@ -590,8 +590,8 @@ test("estimated patch tooltip and upload age are visible on the row", async () =
   const h = harness('./MatchupVods.tsx', 'MatchupVods', [vod]);
   h.render(props);
   const tree = await h.flush();
-  assert.match(text(rows(tree)[0]), /~26.21.*Mar 4, 2020/);
-  assert.ok(nodes(tree).some(node => node.type === 'tooltip' && node.props.label === 'Patch estimated from the upload date'));
+  assert.match(text(rows(tree)[0]), /26.21est\..*Mar 4, 2020/);
+  assert.ok(nodes(tree).some(node => node.type === 'tooltip' && node.props.label === 'Estimated from the upload date'));
 });
 
 test("champion picker hands the selected champion to the section", async () => {
@@ -616,7 +616,7 @@ test("matchup entry opens the exact champion, opponent and lane or browses all w
 });
 
 
-test("a small matchup hides filters even in a large champion library", async () => {
+test("a small matchup keeps banner filters in a large champion library", async () => {
   const list = Array.from({ length: 10 }, (_, i) => ({ ...ahriVsZedVods[0], videoId: `scope-${i}`, enemy: i < 7 ? 238 : 157, lane: 'mid' }));
   const h = harness('./MatchupVods.tsx', 'MatchupVods', [], list);
   h.render(props);
@@ -698,9 +698,9 @@ test("two segments of one stream are two rows, streamer badge and filter work, a
   assert.deepEqual(rows(tree).map(row => row.props["data-vod-id"]).slice(0, 3), [logic.vodKey(segA), logic.vodKey(segB), logic.vodKey(anyVod)]);
   assert.match(text(tree), /Streamer/);
   assert.match(text(tree), /vs any/);
-  const streamer = labelled(tree, "Streamer");
+  const streamer = nodes(tree).find(node => node.props["aria-label"] === "Streamers");
   assert.ok(streamer, "streamer filter renders when the pool has a stream VOD");
-  streamer.props.onChange(true);
+  streamer.props.onClick();
   tree = h.render();
   assert.equal(rows(tree).length, 9, "every pooled VOD is a stream");
   // Opening the second segment keys the player by its segment, not the bare video.
@@ -775,7 +775,7 @@ test("thumbnail URLs exclude fixtures and invalid IDs", () => {
 test("spoken label includes segment, facecam, estimated patch and singular moment", () => {
  const vod = {...ahriVsZedVods[0], player: "Peng", team: "MKOI", format: "stream", cam: true, patch: "26.21", patchEstimated: true, startSec: 100, endSec: 200, moments: [{atSec: 120, label: "Trade"}]};
  const label = logic.vodLabel(vod, {champion: "Ahri", enemy: null, lane: "Mid"}, new Date());
- for (const part of ["streamer with facecam", "vs any opponent", "patch ~26.21 (estimated)", "1 key moment.", "(game segment)"]) assert.ok(label.includes(part));
+ for (const part of ["streamer with facecam", "vs any opponent", "patch 26.21 (estimated)", "1 key moment.", "(game segment)"]) assert.ok(label.includes(part));
 });
 test("thumbnail uses enemy splash for missing, failed and placeholder stills, with moments on every thumbnail", () => {
  const vod = {...ahriVsZedVods[0], champion: 103, enemy: 238, videoId: "A_b-cD12345", fixture: false};
@@ -841,4 +841,46 @@ test("teamName maps VOD team tags to the logo CDN's full names and passes unknow
   assert.equal(teamName("Gen.G"), "Gen.G Esports");
   assert.equal(teamName("T1"), "T1");
   assert.equal(teamName("NIP"), "NIP");
+});
+
+
+test("champion banner uses splash art and lane buttons toggle their filter", async () => {
+  const vods = [
+    { ...realVod, champion: 103, enemy: 238, lane: 'mid' },
+    { ...realVod, champion: 103, videoId: 'top-replay', enemy: 238, lane: 'top' },
+  ];
+  const h = harness('./MatchupVods.tsx', 'MatchupVods', vods, vods);
+  h.render({ ...props, enemy: undefined, lane: undefined });
+  let tree = await h.flush();
+  assert.equal(nodes(tree).find(node => node.props.className === 'mv-banner-art').props.src, '/art/splash-103.jpg');
+  assert.equal(labelled(tree, 'Champion').props.trigger, 'Ahri');
+  assert.deepEqual(labelled(tree, 'Players').props.options.map(option => option[1]), ['All', 'Pros']);
+  assert.equal(labelled(tree, 'Players').props.options[1][3], 'Pros and well-known streamers');
+  const lane = () => nodes(tree).find(node => node.type === 'button' && node.props['aria-label'] === 'Top');
+  assert.ok(nodes(lane()).some(node => node.type === 'role-icon' && node.props.role === 'top'));
+  lane().props.onClick(); tree = h.render();
+  assert.equal(lane().props['aria-pressed'], true);
+  assert.deepEqual(rows(tree).map(row => row.props['data-vod-id']), ['top-replay@0']);
+  lane().props.onClick(); tree = h.render();
+  assert.equal(lane().props['aria-pressed'], false);
+  assert.equal(rows(tree).length, 2);
+});
+
+test("all-champion banner stays neutral and keeps filters available for a small library", async () => {
+  const h = harness('./MatchupVods.tsx', 'MatchupVods', [realVod]);
+  h.render({ ...props, champion: null, enemy: undefined, lane: undefined });
+  const tree = await h.flush();
+  assert.equal(nodes(tree).some(node => node.props.className === 'mv-banner-art'), false);
+  assert.equal(labelled(tree, 'Champion').props.trigger, 'Choose champion');
+  for (const label of ['Rank', 'Patch', 'Region', 'Players']) assert.ok(labelled(tree, label));
+});
+
+
+test("player header shows the patch number with a separate estimated tag", () => {
+  const tree = harness('./MatchupVods.tsx', 'VodFacts').render({ vod: { ...realVod, patch: '26.21', patchEstimated: true } });
+  assert.match(text(tree), /Patch 26\.21est\./);
+  assert.doesNotMatch(text(tree), /~/);
+  assert.ok(nodes(tree).some(node => node.type === 'tooltip' && node.props.label === 'Estimated from the upload date'));
+  const known = harness('./MatchupVods.tsx', 'VodFacts').render({ vod: { ...realVod, patchEstimated: false } });
+  assert.equal(nodes(known).some(node => node.props.className === 'mv-patch-estimate'), false);
 });

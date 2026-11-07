@@ -238,11 +238,11 @@ test("library sorts patch, named player, upload day and stable ties", () => {
   assert.deepEqual(filterVods(list, { ...ANY_VOD, named: true }).map(v => v.videoId), ["named-new", "tie", "named-old"]);
 });
 
-test("explicit region wins and estimated patches carry a tilde", () => {
+test("explicit region wins and estimated patches retain a clean patch number", () => {
   const vod = { videoId: "x", title: "EUW Challenger", rankClaim: "Grandmaster", region: "KR", patch: "26.21", patchEstimated: true, moments: [] };
   assert.equal(vodRegion(vod), "KR");
   assert.equal(vodRow(vod).primary, "KR Grandmaster");
-  assert.deepEqual(vodRow(vod).details, ["Patch ~26.21"]);
+  assert.deepEqual(vodRow(vod).details, ["Patch 26.21 (estimated)"]);
 });
 
 

@@ -135,10 +135,10 @@ export function vodRow(vod: MatchupVod): VodRow {
   const rank = tier === "other" ? vod.rankClaim.replace(REGION_BEFORE_RANK, "").trim() : RANK_TIERS.find(([id]) => id === tier)![1];
   const standing = [region, rank].filter(Boolean).join(" ");
   return {
-    rank, region, crest: crestTier(vod.rankClaim), patch: `${vod.patchEstimated ? "~" : ""}${vod.patch}`,
+    rank, region, crest: crestTier(vod.rankClaim), patch: vod.patch,
     segment: vod.startSec !== undefined || vod.endSec !== undefined ? segmentOf(vod) : null,
     primary: name ?? (standing || "Ranked game"), named: !!name,
-    details: [...(name && standing ? [standing] : []), `Patch ${vod.patchEstimated ? "~" : ""}${vod.patch}`],
+    details: [...(name && standing ? [standing] : []), `Patch ${vod.patch}${vod.patchEstimated ? " (estimated)" : ""}`],
     result: vod.result === "W" ? "win" : vod.result === "L" ? "loss" : null,
     moments: vod.moments.length || null,
   };

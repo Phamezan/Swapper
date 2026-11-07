@@ -1,12 +1,13 @@
 import { PageHeader } from "./ui/PageHeader";
 import { useEffect, useMemo, useRef, useState } from "react";
-import { ArrowLeft, ArrowUpRight, ChevronRight, Flag, Play, Scissors } from "lucide-react";
+import { ArrowLeft, ArrowUpRight, ChevronRight, Flag, Play, Plus, Scissors } from "lucide-react";
 import { invoke } from "@tauri-apps/api/core";
 import { VodMomentArt } from "./VodMomentArt";
 import type { VodRequest } from "./MatchupVodEntry";
 import type { ChampionOption } from "../runes/types";
 import { ChampionIcon } from "../runes/ChampionIcon";
 import { RankCrest } from "../runes/RankCrest";
+import { RoleIcon } from "../runes/RoleIcon";
 import { TeamLogo } from "../runes/TeamLogo";
 import { GuideSourceButton } from "./GuideSourceButton";
 import { loadAllVods, loadChampionVods } from "./loadMatchupVods";
@@ -24,9 +25,9 @@ import "./matchup-vods.css";
 // Rows render in steps as the list scrolls, so a 1,000-VOD library opens as fast as a short one.
 const ROW_STEP = 60;
 const LANES: Record<string, string> = Object.fromEntries(ROLES);
-function Segment<T>({ label, value, options, onChange }: { label: string; value: T; options: [T, string, number | null][]; onChange: (value: T) => void }) {
-  return <div className="segmented mv-segment" role="group" aria-label={label}>{options.map(([option, text, count]) =>
-    <button key={text} type="button" className={option === value ? "is-on" : undefined} aria-pressed={option === value} disabled={count === 0} onClick={() => onChange(option)}>{text}{count !== null && <small>{count.toLocaleString("en")}</small>}</button>)}</div>;
+function Segment<T>({ label, value, options, onChange, className = "segmented" }: { label: string; value: T; options: [T, string, number | null, string?][]; onChange: (value: T) => void; className?: string }) {
+  return <div className={`${className} mv-segment`} role="group" aria-label={label}>{options.map(([option, text, count, hint]) =>
+    <Tooltip key={text} label={hint}><button type="button" className={option === value ? "is-on" : undefined} aria-pressed={option === value} disabled={count === 0} onClick={() => onChange(option)}>{text}{count !== null && <small>{count.toLocaleString("en")}</small>}</button></Tooltip>)}</div>;
 }
 function RowAvatar({ vod }: { vod: MatchupVod }) {
   const name = vodPlayerName(vod.player), photo = usePlayerPhoto(name);
@@ -49,7 +50,7 @@ function RowThumb({ vod, row }: { vod: MatchupVod; row: VodRow }) {
 /** Patch and upload date follow the player identity in the header. */
 function VodFacts({ vod }: { vod: MatchupVod }) {
   const age = uploadAge(vod.uploaded, new Date());
-  return <span className="mv-facts"><Tooltip label={vod.patchEstimated ? "Patch estimated from the upload date" : undefined}><span>Patch {vodRow(vod).patch}</span></Tooltip>
+  return <span className="mv-facts"><span>Patch {vodRow(vod).patch}{vod.patchEstimated && <Tooltip label="Estimated from the upload date"><span className="mv-patch-estimate">est.</span></Tooltip>}</span>
     {age && <Tooltip label={vod.uploaded}><span>{age}</span></Tooltip>}
   </span>;
 }
@@ -60,6 +61,7 @@ export function MatchupVods({ request, onChampionChange, onGuideSection, active 
   active?: boolean; onReopen?: () => void; onPlaybackChange?: (open: boolean) => void;
 }) {
   const { champion, enemy, lane } = request;
+  const splash = useChampionArt(champion?.id, "splash");
   const [all, setAll] = useState<MatchupVod[] | null>(null);
   const [error, setError] = useState(false);
   const [retry, setRetry] = useState(0);
@@ -127,7 +129,6 @@ export function MatchupVods({ request, onChampionChange, onGuideSection, active 
   if (!selected) {
     const filter = (next: Partial<VodFilters>) => { setFilters(previous => ({ ...previous, ...next })); setLimit(ROW_STEP); };
     const count = (next: Partial<VodFilters>) => { const key = Object.keys(next)[0] as keyof VodFilters; const value = next[key]; return counts[key].get(value === false ? null : value) ?? 0; };
-    const scopedCount = pool.filter(vod => vodMatches(vod, { ...ANY_VOD, enemy: effectiveFilters.enemy, lane: filters.lane })).length;
     const patches = [...new Set(pool.map(vod => vod.patch))].sort((a, b) => comparePatch(b, a));
     const championName = (id?: number) => champions.find(c => c.id === id)?.name ?? "Champion";
     const enemyName = (id?: number) => champions.find(c => c.id === id)?.name ?? "Opponent";
@@ -135,7 +136,6 @@ export function MatchupVods({ request, onChampionChange, onGuideSection, active 
       games: libraryCounts.enemy.get(id) ?? 0 }))
       .sort((a, b) => b.games - a.games || a.name.localeCompare(b.name));
     const anyOpponentCount = libraryCounts.enemy.get(null) ?? 0;
-    const lanes = ROLES.filter(([id]) => library?.some(vod => vod.lane === id));
     const clear = () => { filter(ANY_VOD); setFromOtherSide(false); };
     const wide = !(champion && filters.enemy && !fromOtherSide), now = new Date();
     return <div className="mv-library">
@@ -143,32 +143,50 @@ export function MatchupVods({ request, onChampionChange, onGuideSection, active 
       {(filters.enemy || filters.lane) && <div className="mv-matchup-scope"><span>{champion?.name ?? "All champions"}{filters.enemy ? ` vs ${enemyName(filters.enemy)}` : ""}{filters.lane ? ` · ${LANES[filters.lane] ?? filters.lane}` : ""}</span>
         <button type="button" className="mv-text-button" onClick={clear}>{champion ? `Browse all ${champion.name} VODs` : "Clear filters"}</button></div>}
       {error ? <Notice tone="error" action={<button onClick={() => { setError(false); setRetry(n => n + 1); }}>Retry</button>}>Couldn't load VODs.</Notice> : !library || (fromOtherSide && !otherSide) ? <Skeleton label="Loading VODs" rows={6} height={40} /> : <>
-        {<div className="mv-filters" role="group" aria-label="Filter VODs">
-<Picker label="Champion" searchable value={String(champion?.id ?? 0)} onChange={id => {
-          onChampionChange?.(champions.find(c => c.id === Number(id)) ?? null);
-        }} options={[{ value: "0", label: "All champions", count: all?.length, disabled: all?.length === 0 }, ...champions.map(c => {
-          const games = championCounts.get(c.id) ?? 0;
-          return { value: String(c.id), label: c.name, count: games, disabled: games === 0, icon: <ChampionIcon id={c.id} name={c.name} mode="desktop" /> };
-        })]} />
-          <Picker label="Opponent" searchable value={String(filters.enemy ?? 0)} onChange={id => { filter({ enemy: Number(id) || null }); setFromOtherSide(false); }} options={[{ value: "0", label: "Any opponent", count: anyOpponentCount, disabled: !anyOpponentCount },
-            ...opponents.map(({ id, name, games }) => ({ value: String(id), label: name, count: games, disabled: !games, icon: <ChampionIcon id={id} name={name} mode="desktop" /> }))]} />
-          {lanes.length > 1 && <Picker label="Lane" value={filters.lane ?? ""} onChange={lane => filter({ lane: lane || null })} options={[{ value: "", label: "Any lane", count: count({ lane: null }), disabled: !count({ lane: null }) },
-            ...lanes.map(([value, label]) => { const games = count({ lane: value }); return { value, label, count: games, disabled: !games }; })]} />}
-      {champion && filters.enemy && !!otherSide?.length && <Segment label="Perspective" value={fromOtherSide} onChange={value => { setFromOtherSide(value); filter({ named: false, streamer: false, tier: null, patch: null }); }}
-        options={[[false, `As ${champion.name}`, library?.filter(vod => vodMatches(vod, { ...ANY_VOD, enemy: filters.enemy, lane: filters.lane })).length ?? null],
-          [true, `From ${enemyName(filters.enemy)}’s side`, otherSide?.filter(vod => !filters.lane || vod.lane === filters.lane).length ?? null]]} />}
-          {scopedCount >= 8 && <><span className="mv-filter-sep" aria-hidden />
-          <Segment label="Players" value={filters.named} onChange={named => filter({ named })} options={[[false, "Everyone", count({ named: false })], [true, "Named players", count({ named: true })]]} />
-          {pool.some(vod => vod.format === "stream") && <Segment label="Streamer" value={filters.streamer} onChange={streamer => filter({ streamer })} options={[[false, "All VODs", count({ streamer: false })], [true, "Streamer", count({ streamer: true })]]} />}
-          <Picker label="Rank" value={filters.tier ?? ""} onChange={tier => filter({ tier: (tier || null) as RankTier | null })} options={[{ value: "", label: "Any rank", count: count({ tier: null }), disabled: !count({ tier: null }) },
-            ...RANK_TIERS.map(([value, label]) => { const games = count({ tier: value }); return { value, label, count: games, disabled: !games, icon: <RankCrest tier={value} size={22} mode="desktop" /> }; })]} />
-          <Picker label="Patch" value={filters.patch ?? ""} onChange={patch => filter({ patch: patch || null })} options={[{ value: "", label: "Any patch", count: count({ patch: null }), disabled: !count({ patch: null }) },
-            ...patches.map(patch => { const games = count({ patch }); return { value: patch, label: `Patch ${patch}`, count: games, disabled: !games }; })]} />
-          <Picker label="Region" value={filters.region ?? ""} onChange={region => filter({ region: region || null })} options={[{ value: "", label: "Any region", count: count({ region: null }) }, ...["KR", "EUW", "NA", "EUNE"].map(value => ({ value, label: value, count: count({ region: value }) }))]} />
-          </>}
-          {(filters.named || filters.streamer || filters.tier || filters.patch || filters.region) && <button className="mv-text-button" onClick={clear}>Clear filters</button>}
-          <span className="mv-match-count" role="status">{shown.length.toLocaleString("en")} VODs</span>
-        </div>}
+        <section className="mv-filters" aria-label="Filter VODs">
+          {champion && splash && <img className="mv-banner-art" src={splash} alt="" draggable={false} />}
+          <div className="mv-banner-top">
+            <div className="mv-banner-matchup">
+              <Picker label="Champion" className="mv-champion-picker" trigger={champion?.name ?? "Choose champion"} searchable value={String(champion?.id ?? 0)} onChange={id => {
+                onChampionChange?.(champions.find(c => c.id === Number(id)) ?? null);
+              }} options={[{ value: "0", label: "All champions", count: all?.length, disabled: all?.length === 0 }, ...champions.map(c => {
+                const games = championCounts.get(c.id) ?? 0;
+                return { value: String(c.id), label: c.name, count: games, disabled: games === 0, icon: <ChampionIcon id={c.id} name={c.name} mode="desktop" /> };
+              })]} />
+              <span className="mv-banner-vs">VS</span>
+              <Picker label="Opponent" className={`mv-opponent-picker${filters.enemy ? "" : " is-any"}`} trigger={filters.enemy ? undefined : <><Plus size={15} aria-hidden />Any opponent</>}
+                searchable value={String(filters.enemy ?? 0)} onChange={id => { filter({ enemy: Number(id) || null }); setFromOtherSide(false); }}
+                options={[{ value: "0", label: "Any opponent", count: anyOpponentCount, disabled: !anyOpponentCount },
+                  ...opponents.map(({ id, name, games }) => ({ value: String(id), label: name, count: games, disabled: !games, icon: <ChampionIcon id={id} name={name} mode="desktop" /> }))]} />
+            </div>
+            <Segment className="mv-player-tabs" label="Players" value={filters.named} onChange={named => filter({ named })}
+              options={[[false, "All", count({ named: false })], [true, "Pros", count({ named: true }), "Pros and well-known streamers"]]} />
+          </div>
+          <div className="mv-banner-bottom">
+            <div className="mv-lanes" role="group" aria-label="Lane">
+              <Tooltip label="Any lane"><button type="button" aria-label="Any lane" aria-pressed={!filters.lane} onClick={() => filter({ lane: null })}><RoleIcon role="all" size={20} mode="desktop" /></button></Tooltip>
+              {ROLES.map(([value, label]) => <Tooltip key={value} label={`${label} · ${count({ lane: value })} VODs`}><button type="button" aria-label={label} aria-pressed={filters.lane === value}
+                disabled={filters.lane !== value && !count({ lane: value })} onClick={() => filter({ lane: filters.lane === value ? null : value })}><RoleIcon role={value} size={20} mode="desktop" /></button></Tooltip>)}
+            </div>
+            <div className="mv-filter-chips">
+              <Picker label="Rank" className={`mv-filter-chip${filters.tier ? " is-active" : ""}`} trigger={filters.tier ? undefined : "Rank"} value={filters.tier ?? ""} onChange={tier => filter({ tier: (tier || null) as RankTier | null })}
+                options={[{ value: "", label: "Any rank", count: count({ tier: null }), disabled: !count({ tier: null }) },
+                  ...RANK_TIERS.map(([value, label]) => { const games = count({ tier: value }); return { value, label, count: games, disabled: !games, icon: <RankCrest tier={value} size={22} mode="desktop" /> }; })]} />
+              <Picker label="Patch" className={`mv-filter-chip${filters.patch ? " is-active" : ""}`} trigger={filters.patch ?? "Patch"} value={filters.patch ?? ""} onChange={patch => filter({ patch: patch || null })}
+                options={[{ value: "", label: "Any patch", count: count({ patch: null }), disabled: !count({ patch: null }) },
+                  ...patches.map(patch => { const games = count({ patch }); return { value: patch, label: `Patch ${patch}`, count: games, disabled: !games }; })]} />
+              <Picker label="Region" className={`mv-filter-chip${filters.region ? " is-active" : ""}`} trigger={filters.region ?? "Region"} value={filters.region ?? ""} onChange={region => filter({ region: region || null })}
+                options={[{ value: "", label: "Any region", count: count({ region: null }) }, ...["KR", "EUW", "NA", "EUNE"].map(value => ({ value, label: value, count: count({ region: value }) }))]} />
+              <button type="button" className="mv-filter-chip" aria-label="Streamers" aria-pressed={filters.streamer}
+                disabled={!filters.streamer && !count({ streamer: true })} onClick={() => filter({ streamer: !filters.streamer })}>Streamers <small>{count({ streamer: true }).toLocaleString("en")}</small></button>
+            </div>
+            {(filters.named || filters.streamer || filters.tier || filters.patch || filters.region) && <button className="mv-text-button" onClick={clear}>Clear filters</button>}
+            <span className="mv-match-count" role="status">{shown.length.toLocaleString("en")} VODs</span>
+          </div>
+        </section>
+        {champion && filters.enemy && !!otherSide?.length && <Segment label="Perspective" value={fromOtherSide} onChange={value => { setFromOtherSide(value); filter({ named: false, streamer: false, tier: null, patch: null }); }}
+          options={[[false, `As ${champion.name}`, library?.filter(vod => vodMatches(vod, { ...ANY_VOD, enemy: filters.enemy, lane: filters.lane })).length ?? null],
+            [true, `From ${enemyName(filters.enemy)}’s side`, otherSide?.filter(vod => !filters.lane || vod.lane === filters.lane).length ?? null]]} />}
         {!shown.length ? <div className="mv-empty"><p>{!library.length && !fromOtherSide ? (champion ? `No ${champion.name} VODs yet.` : "No VODs available yet. Try again later.") : fromOtherSide ? `No VODs from ${enemyName(filters.enemy ?? undefined)}’s side match these filters` : "No VODs match these filters"}</p>
           {!library.length && champion && <button className="mv-text-button" onClick={() => onChampionChange?.(null)}>Browse all champions</button>}
           {(pool.length > 0 || filters.enemy || filters.lane) && <button type="button" className="mv-text-button" onClick={clear}>Clear filters</button>}</div>
@@ -181,7 +199,7 @@ export function MatchupVods({ request, onChampionChange, onGuideSection, active 
               {wide && <span className="mv-cell-matchup"><span className="mv-pair" aria-hidden><ChampionIcon id={vod.champion ?? 0} name="" mode="desktop" /><span className="mv-vs">vs</span><ChampionIcon id={vod.enemy ?? -1} name={vod.enemy ? "" : "Unknown opponent"} mode="desktop" /></span><span className="mv-lines"><strong>{championName(vod.champion)} <span className="mv-vs-word">vs</span> {vod.enemy ? enemyName(vod.enemy) : <span className="is-any">any</span>}</strong>{vod.lane && <small>{LANES[vod.lane]}</small>}</span></span>}
               <span className="mv-cell-who"><RowAvatar vod={vod} /><span className="mv-who-line"><strong className={row.named ? undefined : "is-unnamed"}>{row.named ? row.primary : "Ranked replay"}</strong>{vod.team && <Tooltip label={teamName(vod.team)}><span className="mv-team-tag"><TeamLogo team={teamName(vod.team)} size={16} mode="desktop" />{vod.team}</span></Tooltip>}{vod.format === "stream" && <span className="mv-stream-tag">Streamer{vod.cam && <Tooltip label="Facecam"><span className="mv-cam-dot" role="img" aria-label="Facecam" /></Tooltip>}</span>}</span></span>
               <Tooltip label={[row.rank, row.region].filter(Boolean).join(" · ")}><span className="mv-cell-rank">{row.crest ? <RankCrest tier={row.crest} size={26} mode="desktop" /> : <span />}<span className="mv-lines"><span className="mv-rank-tier">{row.rank}</span>{row.region && <small>{row.region}</small>}</span></span></Tooltip>
-              <span className="mv-cell-patch"><Tooltip label={vod.patchEstimated ? "Patch estimated from the upload date" : undefined}><span className={vod.patchEstimated ? "is-estimated" : undefined}>{row.patch}</span></Tooltip>{age && <Tooltip label={vod.uploaded}><small>{age}</small></Tooltip>}</span>
+              <span className="mv-cell-patch"><span>{row.patch}{vod.patchEstimated && <Tooltip label="Estimated from the upload date"><span className="mv-patch-estimate">est.</span></Tooltip>}</span>{age && <Tooltip label={vod.uploaded}><small>{age}</small></Tooltip>}</span>
               <span className="mv-cell-chips">{row.result && <span className={`mv-result-badge is-${row.result}`}>{row.result === "win" ? "Win" : "Loss"}</span>}</span>
             </button></Tooltip></li>;
           })}{limit < shown.length && <li className="mv-more"><NearEnd onNear={() => setLimit(current => current + ROW_STEP)} /></li>}</ul></div>}
