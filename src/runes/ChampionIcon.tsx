@@ -1,6 +1,8 @@
 import { useEffect, useState } from "react";
 import { cachedIcon, loadIcon } from "./iconLoader";
 import { Tooltip } from "../full-app/ui/Tooltip";
+// Bundled: the release CSP blocks remote image hosts.
+import unknownIcon from "../assets/champion-unknown.png";
 
 type Props = {
   id: number;
@@ -12,7 +14,6 @@ type Props = {
  *  fetched over IPC in the desktop flyout. Shows a muted square until it loads. */
 export function ChampionIcon({ id, name, mode }: Props) {
   const key = `champion:${id}`;
-  const unknownIcon = "https://raw.communitydragon.org/latest/plugins/rcp-be-lol-game-data/global/default/v1/champion-icons/-1.png";
   const [src, setSrc] = useState<string | null>(() =>
     mode === "remote" && id > 0 ? `/api/champion/icon/${id}` : cachedIcon(key) ?? null,
   );
