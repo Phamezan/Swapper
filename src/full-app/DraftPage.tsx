@@ -17,6 +17,6 @@ export function DraftPage(props: ComponentProps<typeof RunesPanel>) {
     return () => { live = false; };
   }, []);
   return draftStage(props.view?.phase, inGame) === "live"
-    ? <><PageHeader title="Draft" /><Suspense fallback={<Skeleton label="Loading game" rows={5} height={56} />}><LiveGame championNames={names} /></Suspense></>
+    ? <><PageHeader title="Live game" /><Suspense fallback={<Skeleton label="Loading game" rows={5} height={56} />}><LiveGame championNames={names} /></Suspense></>
     : <ChampionSelect {...props} />;
 }

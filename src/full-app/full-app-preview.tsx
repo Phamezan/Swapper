@@ -27,7 +27,7 @@ const CHAMPIONS: Record<number, [string, string]> = {
   17: ["Teemo", "Teemo"], 126: ["Jayce", "Jayce"], 54: ["Malphite", "Malphite"], 86: ["Garen", "Garen"], 24: ["Jax", "Jax"],
   268: ["Azir", "Azir"], 51: ["Caitlyn", "Caitlyn"], 7: ["LeBlanc", "Leblanc"],
   58: ["Renekton", "Renekton"], 164: ["Camille", "Camille"], 82: ["Mordekaiser", "Mordekaiser"], 516: ["Ornn", "Ornn"], 98: ["Shen", "Shen"],
-  412: ["Thresh", "Thresh"], 81: ["Ezreal", "Ezreal"], 238: ["Zed", "Zed"], 11: ["Master Yi", "MasterYi"], 89: ["Leona", "Leona"],
+  412: ["Thresh", "Thresh"], 81: ["Ezreal", "Ezreal"], 238: ["Zed", "Zed"], 11: ["Master Yi", "MasterYi"], 89: ["Leona", "Leona"], 804: ["Yunara", "Yunara"],
 };
 const DUO_CHAMPIONS: Record<number, string> = { 115: "Ziggs", 30: "Karthus", 50: "Swain", 45: "Veigar", 910: "Hwei", 147: "Seraphine", 63: "Brand", 901: "Smolder", 117: "Lulu" };
 const key = (id: number) => CHAMPIONS[id]?.[1] ?? DUO_CHAMPIONS[id] ?? "Aatrox";
@@ -115,6 +115,25 @@ const liveView = {
     damage: "", status: "ready", live: { level: 9 + p % 3, kills: p % 4, deaths: p % 3, assists: p % 5, cs: 80 + p * 6, wardScore: 8, items: [1055, 3047, 6692, 0, 0, 0, 3340], dead: p === 7 },
   })),
 };
+
+// Exercise content sizing, missing damage metadata and the pregame roster.
+if (params.has('live-stress')) {
+  const player = liveView.players[7];
+  player.riotId = 'A very long invented player name that must stay in its cell#EUW';
+  player.badges = [
+    { kind: 'streak-win', label: '3W streak', detail: 'Won the last 3 games' },
+    { kind: 'new-champ', label: 'New on champ', detail: 'No recent games on this champion' },
+    { kind: 'off-role', label: 'Off-role?', detail: 'Usually plays Mid' },
+  ];
+  Object.assign(liveView.players[3], { championId: 804, championName: 'Yunara', damage: 'kPhysical' });
+  ['kPhysical', 'kPhysical', 'kMagic', 'kPhysical', ''].forEach((damage, i) => { liveView.players[i].damage = damage; });
+  Object.assign(liveView.players[4], { riotId: '', status: 'skipped', damage: '' });
+  liveView.blue.physical = 75; // Three physical and one magic; unknown excluded.
+}
+if (params.has('live-pregame')) {
+  Object.assign(liveView, { gameTime: null });
+  for (const player of liveView.players) Object.assign(player, { live: null });
+}
 
 // ---- uibuilds: champion page, matchups and build workspace mocks (preview only) ----
 const SHARD_ROWS = [[5008, 5005, 5007], [5008, 5010, 5001], [5011, 5013, 5001]];

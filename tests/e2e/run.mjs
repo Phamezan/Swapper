@@ -1838,6 +1838,50 @@ async function main() {
     });
   }
 
+  await check("Live game columns align with long names, badges and hidden players", async () => {
+    for (const pregame of [false, true]) {
+      await navigate(`${fullApp}?live=1&live-stress${pregame ? '&live-pregame' : ''}`, '.lg-row');
+      assert.equal(await page.evaluate("document.querySelectorAll('.lg-team.is-red .lg-row')[2].querySelectorAll('.lg-badge').length"), 3);
+      await page.text('.lg-team.is-blue .lg-dmg', 'AD 75%');
+      for (const width of [1624, 1280, 1100, 900, 800]) {
+        await page.cdp.send('Emulation.setDeviceMetricsOverride', { width, height: 1100, deviceScaleFactor: 1, mobile: false });
+        await page.settle();
+        const errors = await page.evaluate(`(() => {
+          const errors = [];
+          for (const team of document.querySelectorAll('.lg-team')) {
+            const header = team.querySelector('.lg-cols');
+            const columns = getComputedStyle(header).gridTemplateColumns;
+            const wide = getComputedStyle(header).display !== 'none';
+            for (const row of team.querySelectorAll('.lg-row')) {
+              if (Math.abs(row.getBoundingClientRect().width - team.querySelector('ol').getBoundingClientRect().width) > 1) errors.push('row does not fill the team');
+              if (wide && getComputedStyle(row).gridTemplateColumns !== columns) errors.push('row columns differ from header');
+              for (const cell of row.children) {
+                const bounds = cell.getBoundingClientRect();
+                if (bounds.right > row.getBoundingClientRect().right + 1) errors.push('cell overflows row');
+                if (wide && !cell.classList.contains('lg-streamer')) {
+                  const index = [...row.children].indexOf(cell);
+                  const column = header.children[row.classList.contains('is-hidden') && index === 2 ? 3 : index];
+                  const expected = column.getBoundingClientRect();
+                  if (bounds.left < expected.left - 1 || bounds.right > expected.right + 1) errors.push('cell outside its header column');
+                }
+              }
+            }
+          }
+          return errors;
+        })()`);
+        assert.deepEqual(errors, [], `${pregame ? 'pregame' : 'live'} at ${width}px`);
+        assert.deepEqual(await page.evaluate(`(${horizontalOverflow.toString()})()`), []);
+        if ([1624, 1280, 900].includes(width)) await screenshot(`live-columns-${pregame ? 'pregame' : 'live'}`, width, 1100);
+        if (capture && width === 900) {
+          await page.evaluate("document.querySelector('.lg-team.is-red').scrollIntoView({ block: 'end' })");
+          await screenshot(`live-columns-${pregame ? 'pregame' : 'live'}-red`, width, 1100);
+          await page.evaluate("document.querySelector('.lg-team.is-blue').scrollIntoView({ block: 'start' })");
+        }
+      }
+    }
+    await page.cdp.send('Emulation.setDeviceMetricsOverride', { width: 1280, height: 820, deviceScaleFactor: 1, mobile: false });
+  });
+
   await check("Draft follows champ select, loading, live, reconnect and game end", async () => {
     await navigate(fullApp, ".nav-group");
     await nav("Draft", ".fa-draft-empty");
@@ -1846,6 +1890,7 @@ async function main() {
     for (const phase of ["GameStart", "InProgress", "Reconnect"]) {
       await page.evaluate(`window.previewGamePhase('${phase}')`);
       await page.visible(".lg-team");
+      await page.text('.ui-page-header h1', 'Live game');
       await page.text('nav[aria-label="Swapper pages"] [aria-current="page"]', "Draft");
       assert.equal(await page.evaluate("document.querySelectorAll('.lg-row').length"), 10);
     }

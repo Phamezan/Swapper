@@ -294,7 +294,7 @@ pub struct TeamSummary {
     pub average_division: String,
     pub ranked: usize,
     /// Share of physical damage dealers in percent (mixed counts half), from
-    /// each champion's `tacticalInfo.damageType`; `None` until known.
+    /// known champions' `tacticalInfo.damageType`; `None` if none are known.
     pub physical: Option<u32>,
 }
 
@@ -318,7 +318,7 @@ pub fn team_summary(players: &[&Player]) -> TeamSummary {
         average_tier: tier,
         average_division: division.unwrap_or_default(),
         ranked: scores.len(),
-        physical: (damage.len() == players.len() && !damage.is_empty())
+        physical: (!damage.is_empty())
             .then(|| (100.0 * damage.iter().sum::<f64>() / damage.len() as f64).round() as u32),
     }
 }

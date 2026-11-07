@@ -428,12 +428,21 @@ fn fixture_game_end_to_end() {
 }
 
 #[test]
-fn team_damage_mix_waits_for_every_champion() {
+fn team_damage_mix_uses_known_champions() {
     let mut view = full_view();
     view.players[0].damage.clear();
     view.summarize_teams();
-    assert_eq!(view.blue.physical, None);
+    assert_eq!(view.blue.physical, Some(50));
     assert_eq!(view.red.physical, Some(50));
+    view.players[0].damage = "kUnknown".into();
+    view.summarize_teams();
+    assert_eq!(view.blue.physical, Some(50));
+    for player in &mut view.players {
+        player.damage.clear();
+    }
+    view.summarize_teams();
+    assert_eq!(view.blue.physical, None);
+    assert_eq!(team_summary(&[]).physical, None);
 }
 
 #[test]
