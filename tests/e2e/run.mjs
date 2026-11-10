@@ -542,7 +542,7 @@ async function main() {
     assert.equal(ranks[2].label, 'Diamond II 45 LP');
     assert.ok(!ranks[3].label.includes('LP'), 'missing LP stays missing');
     await page.click('.location-trail button', 'Dashboard');
-    await page.click('.match-row:nth-child(2) .match-champ');
+    await page.click('.match-row ~ .match-row .match-champ');
     await page.wait("document.querySelector('#md-tab-Overview').getAttribute('aria-selected') === 'true'", 'another match resets Overview');
     await matchPreview('?slow-ranks');
     await page.click('.match-champ');

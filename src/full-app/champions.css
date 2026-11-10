@@ -212,3 +212,41 @@
 .fa-frame .champion-tools .fa-versus .fa-versus-side.is-end .fa-versus-art { -webkit-mask-image: linear-gradient(270deg, #000 45%, transparent); mask-image: linear-gradient(270deg, #000 45%, transparent); }
 .fa-frame .champion-tools .fa-versus .fa-versus-side > span { position: relative; z-index: 1; }
 .fa-frame .champion-tools .fa-versus .fa-versus-side { padding-left: 32px; padding-right: 32px; }
+
+/* ---------- Tier list, redesigned ----------
+   Leading picks become a podium: the first is wider, each carries its tier's light, a ghost rank
+   numeral and its pick, ban and game counts. Table rows carry their tier's colour on the left edge,
+   so the list reads as bands of tiers. All static paint. */
+.fa-frame .champion-tools :is(.fa-featured-pick, .tier-table tr).is-splus { --tier: var(--tier-splus); }
+.fa-frame .champion-tools :is(.fa-featured-pick, .tier-table tr).is-s { --tier: var(--tier-s); }
+.fa-frame .champion-tools :is(.fa-featured-pick, .tier-table tr).is-a { --tier: var(--tier-a); }
+.fa-frame .champion-tools :is(.fa-featured-pick, .tier-table tr).is-b { --tier: var(--tier-b); }
+.fa-frame .champion-tools :is(.fa-featured-pick, .tier-table tr).is-c { --tier: var(--tier-c); }
+.fa-frame .champion-tools :is(.fa-featured-pick, .tier-table tr).is-d { --tier: var(--tier-d); }
+
+.fa-frame .champion-tools .fa-featured-picks { grid-template-columns: minmax(0, 1.35fr) minmax(0, 1fr) minmax(0, 1fr); }
+.fa-frame .champion-tools .fa-featured-pick { min-height: 176px; border-radius: var(--ui-radius-lg); border-color: var(--ui-line-2); border-top-color: var(--ui-line-3);
+  background: radial-gradient(70% 90% at 0% 0%, color-mix(in srgb, var(--tier, #888) 20%, transparent), transparent 70%), linear-gradient(180deg, var(--ui-surface-3), #141417);
+  box-shadow: var(--ui-inner-hi), inset 0 -2px 0 color-mix(in srgb, var(--tier, #888) 70%, transparent), 0 22px 48px -26px rgb(0 0 0 / .95);
+  transition: transform var(--ui-base) var(--ui-ease), border-color var(--ui-base) var(--ui-ease); }
+.fa-frame .champion-tools .fa-featured-pick:hover { border-color: color-mix(in srgb, var(--tier, #888) 55%, var(--ui-line-2)); }
+.fa-frame .champion-tools .fa-featured-pick .fa-featured-art { inset: 0 0 0 34%; }
+.fa-frame .champion-tools .fa-featured-art img { transition: transform 420ms var(--ui-ease); }
+.fa-frame .champion-tools .fa-featured-pick:hover .fa-featured-art img { transform: scale(1.05); }
+.fa-frame .champion-tools .fa-featured-pick::after { background: linear-gradient(90deg, rgb(15 15 18 / .94) 0 30%, rgb(15 15 18 / .5) 56%, transparent 100%), linear-gradient(0deg, rgb(11 11 13 / .55), transparent 55%); }
+.fa-frame .champion-tools .fa-featured-pick strong { font-size: 28px; }
+.fa-frame .champion-tools .fa-featured-pick:first-child strong { font-size: 34px; }
+.fa-frame .champion-tools .fa-featured-pick b { font-size: 20px; }
+.fa-frame .champion-tools .fa-featured-pick .fa-featured-meta { margin-top: 2px; color: var(--ui-text-3); font-variant-numeric: tabular-nums; }
+/* The ghost numeral sits behind the copy, over the art's dark side. */
+.fa-featured-rank { position: absolute; z-index: -1; right: 14px; bottom: -22px; font-size: 150px; font-style: normal; font-weight: 800; line-height: 1; letter-spacing: -.06em; color: transparent; -webkit-text-stroke: 2px color-mix(in srgb, var(--tier, #888) 45%, rgb(255 255 255 / .55)); pointer-events: none; }
+
+.fa-frame .champion-tools .tier-table td:first-child { box-shadow: inset 3px 0 0 color-mix(in srgb, var(--tier, transparent) 75%, transparent); }
+.fa-frame .champion-tools .tier-table tbody tr { background: linear-gradient(90deg, color-mix(in srgb, var(--tier, transparent) 7%, transparent), transparent 22%); }
+.fa-frame .champion-tools .tier-table tbody tr:hover { background: linear-gradient(90deg, color-mix(in srgb, var(--tier, #c5e39e) 16%, transparent), rgb(255 255 255 / .04) 55%, transparent); box-shadow: none; }
+.fa-frame .champion-tools .tier-table .col-rank { color: var(--ui-text-3); font-variant-numeric: tabular-nums; }
+.fa-frame .champion-tools .tier-table tbody tr:nth-child(-n+3) .col-rank { color: var(--tier, var(--ui-text-1)); font-size: 16px; font-weight: 750; }
+.fa-frame .champion-tools .tier-table tbody tr:hover .tier-champ strong { color: var(--ui-brand); }
+.fa-frame .champion-tools .fa-tier-portrait { box-shadow: 0 0 0 1px var(--ui-line-2); overflow: hidden; }
+.fa-frame .champion-tools .fa-rate-bar { height: 4px; }
+@media (max-width: 1100px) { .fa-frame .champion-tools .fa-featured-picks { grid-template-columns: 1fr; } }

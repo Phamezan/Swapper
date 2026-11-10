@@ -1,4 +1,4 @@
-import { Fragment, useState } from "react";
+import { useState } from "react";
 import { Popover } from "radix-ui";
 import { CheckIcon, ForwardIcon, RefreshIcon, SearchIcon, SettingsIcon, SwitchIcon } from "./icons";
 import { Tooltip } from "./Tooltip";
@@ -80,7 +80,8 @@ export function AccountPicker({ accounts, activeId, activeRank, cards, disabled,
           const [gameName, tag] = account.riotId?.split("#") ?? [];
           const name = account.nickname || gameName || account.name;
           const region = account.region ?? account.platform;
-          return <Fragment key={account.id}><button type="button" className={`picker-row${isCurrent ? " is-current" : ""}`} disabled={disabled || isCurrent} onClick={() => onSwitch(account.id)}>
+          // The current account is a card that also holds its client action.
+          return <div key={account.id} className={isCurrent ? "picker-current" : "picker-other"}><button type="button" className={`picker-row${isCurrent ? " is-current" : ""}`} disabled={disabled || isCurrent} onClick={() => onSwitch(account.id)}>
             {account.iconDataUrl ? <img src={account.iconDataUrl} alt="" loading="lazy" /> : <span className="picker-initial">{name[0]?.toUpperCase()}</span>}
             <span className="picker-copy"><b>{name}</b>
               <span className="picker-meta">
@@ -88,10 +89,11 @@ export function AccountPicker({ accounts, activeId, activeRank, cards, disabled,
                 <span className="picker-tier">{slug && <RankCrest tier={slug} size={16} mode="desktop" />}{rank ? rankLabel(rank) : "Unranked"}</span>
               </span>
             </span>
-            {isCurrent && <span className="picker-check" aria-label="Current account"><CheckIcon size={16} /></span>}
+            {isCurrent ? <span className="picker-check" aria-label="Current account"><CheckIcon size={16} /></span>
+              : <span className="picker-go" aria-hidden><SwitchIcon size={16} /></span>}
           </button>
           {isCurrent && <button type="button" className="picker-restart" disabled={disabled} onClick={onRestart}><RefreshIcon size={18} aria-hidden />
-            <span><b>{closed ? "Open League" : "Restart client"}</b></span></button>}</Fragment>;
+            <span><b>{closed ? "Open League" : "Restart client"}</b></span></button>}</div>;
       })}
       {!shown.length && <p className="picker-empty">{accounts.length ? "No matches." : "No saved accounts yet."}</p>}
     </div>

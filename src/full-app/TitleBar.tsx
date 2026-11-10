@@ -179,6 +179,7 @@ function Palette({ champions, pages, snapshot, onPickChampion, onPickPage, onPic
       </label>
       <div className="palette">
       <div className="palette-hint"><span>{q ? pending ? 'Searching players…' : 'Player suggestions via OP.GG' : 'Jump to a page, or type to search'}</span>
+        <span className="palette-keys" aria-hidden><kbd>↑</kbd><kbd>↓</kbd>Move<kbd>↵</kbd>Open<kbd>Esc</kbd>Close</span>
         {recents.length > 0 && <button onClick={() => { save([]); input.current?.focus(); }}>Clear recent</button>}</div>
       <div id="palette-results" role="listbox" aria-label="Search results">
         {['Recent', 'Pages', 'Actions', 'Champions', 'Players'].map(group => {

@@ -146,3 +146,38 @@ button[aria-current="page"] .nav-badge.patch { background: #ece9e2; color: #141a
 .sidebar-play > svg .ic-duo { fill: currentColor; }
 .sidebar-play:hover { border-color: var(--ui-line-3); background: var(--ui-surface-hover); }
 .sidebar-play:focus-visible { outline: 2px solid var(--ui-brand); outline-offset: 2px; }
+
+/* ---------- Account popover, redesigned: frosted sheet, the current account as a card ----------
+   Same language as the Dashboard's top panel: a brand light in the corner and a sheen on the top
+   edge. The current account is a brand-edged card holding its client action; the others are
+   quiet inset rows that show a switch mark on hover. Still one flat list, no headings. */
+.account-picker.ui-popover { width: 348px; padding: 8px; border-color: var(--ui-line-3) var(--ui-line-2) var(--ui-line-2); border-radius: var(--ui-radius-lg);
+  background: radial-gradient(80% 55% at 0% 0%, color-mix(in srgb, var(--ui-brand) 12%, transparent), transparent 70%), linear-gradient(180deg, rgb(255 255 255 / .05), transparent 140px), var(--ui-popover);
+  transform-origin: var(--radix-popover-content-transform-origin); }
+.account-picker[data-state="open"] { animation: picker-in 170ms var(--ui-ease); }
+@keyframes picker-in { from { opacity: 0; transform: translateY(-6px) scale(.98); } }
+@media (prefers-reduced-motion: reduce) { .account-picker[data-state="open"] { animation: none; } }
+.account-picker::before { content: ""; position: absolute; inset: 0 14% auto; height: 1px; pointer-events: none; background: linear-gradient(90deg, transparent, rgb(255 255 255 / .34), transparent); }
+.account-picker .picker-search { margin: 2px 2px 8px; }
+.account-picker .picker-list { display: grid; align-content: start; gap: 2px; padding: 0; }
+.account-picker .picker-row { grid-template-columns: 42px minmax(0, 1fr) 20px; min-height: 62px; padding: 9px 12px 9px 10px; border-radius: 10px; }
+.account-picker .picker-row > img, .account-picker .picker-initial { border-radius: 12px; }
+.account-picker .picker-row:hover:not(:disabled), .account-picker .picker-row:focus-visible { background: var(--ui-press); }
+.picker-go { display: grid; place-items: center; color: var(--ui-brand); opacity: 0; transform: translateX(-4px); transition: opacity var(--ui-fast), transform var(--ui-fast); }
+.picker-row:hover:not(:disabled) .picker-go, .picker-row:focus-visible .picker-go { opacity: 1; transform: none; }
+
+.picker-current { margin-bottom: 6px; overflow: hidden; border: 1px solid var(--ui-brand-line); border-radius: var(--ui-radius-md);
+  background: radial-gradient(90% 120% at 0% 0%, color-mix(in srgb, var(--ui-brand) 15%, transparent), transparent 70%), rgb(255 255 255 / .035); box-shadow: var(--ui-inner-hi); }
+.account-picker .picker-current .picker-row { grid-template-columns: 52px minmax(0, 1fr) 24px; min-height: 76px; padding: 12px 14px 12px 12px; border-radius: 0; background: none; }
+.account-picker .picker-current .picker-row > img, .account-picker .picker-current .picker-initial { width: 52px; height: 52px; border: 2px solid var(--ui-brand); border-radius: 14px; box-shadow: 0 6px 16px rgb(0 0 0 / .35); }
+.picker-current .picker-copy > b { font-size: 17px; font-weight: 700; letter-spacing: -.01em; line-height: 22px; }
+.picker-current .picker-check { width: 24px; height: 24px; border-radius: 50%; background: var(--ui-brand); color: var(--ui-brand-ink); }
+.account-picker .picker-restart { width: 100%; margin: 0; padding: 10px 14px; border: 0; border-top: 1px solid var(--ui-line-1); border-radius: 0; background: rgb(0 0 0 / .2); }
+.account-picker .picker-restart b { font-size: var(--ui-label); }
+.account-picker .picker-restart:hover:not(:disabled) { background: var(--ui-press); }
+.account-picker .picker-restart:focus-visible { outline-offset: -3px; }
+
+.account-picker .picker-foot { margin: 8px -8px -8px; padding: 12px 8px 8px; background: var(--ui-well); }
+.account-picker .picker-foot > p { padding: 0 10px 8px; font-size: 12.5px; }
+.account-picker .picker-foot > button { min-height: 40px; padding: 8px 10px; border-radius: 10px; color: var(--ui-text-2); }
+.account-picker .picker-foot > button:hover, .account-picker .picker-foot > button:focus-visible { background: var(--ui-press); color: var(--ui-text-1); }

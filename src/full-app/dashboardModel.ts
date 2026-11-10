@@ -47,6 +47,8 @@ const STATS: Record<string, Stat> = {
 export type Tile = {
   key: string; label: string; unit: string; digits: number;
   value: number | null;
+  /** The user's value in each game, in the order the games were given. */
+  series: number[];
   /** What the value is compared with, when there were enough games. */
   versus: { label: string; value: number; delta: number; games: number } | null;
 };
@@ -67,7 +69,7 @@ export function tiles(games: Game[], benches: Record<string, Bench>, tierLabel: 
   return keys.map(key => {
     const stat = STATS[key];
     const own = games.flatMap(g => { const p = me(g); const v = p && stat.of(g, p); return v == null ? [] : [v]; });
-    const tile: Tile = { key, label: stat.label, unit: stat.unit, digits: stat.digits, value: mean(own), versus: null };
+    const tile: Tile = { key, label: stat.label, unit: stat.unit, digits: stat.digits, value: mean(own), series: own, versus: null };
     const benched = stat.bench ? games.filter(g => benches[benchKey(g)] && me(g)) : [];
     if (stat.bench && benched.length >= MIN_COMPARED) {
       const mine = mean(benched.map(g => stat.of(g, me(g)!)!))!;
@@ -100,6 +102,11 @@ export function tone(value: number, reference: number): "up" | "even" | "down" {
   const diff = value - reference;
   if (Math.abs(diff) <= 0.05 * Math.abs(reference)) return "even";
   return diff > 0 ? "up" : "down";
+}
+
+/** Where a value sits on a diverging meter around its reference: −1…1, full scale at ±100%. */
+export function meter(value: number, reference: number) {
+  return reference ? Math.max(-1, Math.min(1, (value - reference) / Math.abs(reference))) : 0;
 }
 
 /** The Solo/Duo bracket label for a tier, matching the benchmark brackets. */

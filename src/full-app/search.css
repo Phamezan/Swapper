@@ -27,3 +27,40 @@
 .palette .palette-empty { display: flex; flex-direction: column; align-items: center; gap: 12px; padding: 32px 18px; color: var(--ui-text-3); font-size: 13px; }
 .palette-empty strong { font-size: 14px; color: var(--ui-text-2); font-weight: 500; }
 .palette-player-status { margin: 0; padding: 12px 16px; border-top: 1px solid var(--ui-line-1); color: var(--ui-text-3); font-size: 12px; line-height: 1.5; }
+
+/* ---------- Command palette, redesigned ----------
+   Same sheet as the account picker: frosted, a brand light in the corner, a sheen on the top edge.
+   The hint row becomes a footer with the keys; row captions stay quiet until their row is active. */
+.fa-frame .location-search .palette { padding-top: 0; border-color: var(--ui-line-3) var(--ui-line-2) var(--ui-line-2); border-radius: var(--ui-radius-lg);
+  background: radial-gradient(70% 180px at 0% 0%, color-mix(in srgb, var(--ui-brand) 10%, transparent), transparent 75%), var(--ui-popover);
+  transform-origin: 50% 0; animation: palette-in 170ms var(--ui-ease); }
+@keyframes palette-in { from { opacity: 0; transform: translateY(-6px) scale(.98); } }
+.fa-frame .location-search .palette::before { content: ""; position: absolute; inset: 0 12% auto; height: 1px; background: linear-gradient(90deg, transparent, rgb(255 255 255 / .34), transparent); pointer-events: none; }
+#palette-results { padding: 4px 8px 8px; scrollbar-width: thin; scrollbar-color: var(--ui-line-3) transparent; }
+.fa-frame .palette h3 { display: flex; align-items: center; gap: 10px; margin: 0; padding: 12px 10px 6px; font-size: 12px; font-weight: 600; color: var(--ui-text-3); }
+.fa-frame .palette h3::after { content: ""; flex: 1; height: 1px; background: var(--ui-line-1); }
+.palette-option { position: relative; gap: 12px; min-height: 44px; padding: 6px 10px; border-radius: 10px; font-weight: 550; transition: background-color var(--ui-fast) var(--ui-ease); }
+.palette-option[aria-selected="true"] { background: linear-gradient(90deg, color-mix(in srgb, var(--ui-brand) 16%, transparent), rgb(255 255 255 / .04) 70%); box-shadow: inset 0 0 0 1px rgb(255 255 255 / .06); }
+.palette-option[aria-selected="true"]::before { content: ""; position: absolute; left: 0; top: 10px; bottom: 10px; width: 3px; border-radius: 0 3px 3px 0; background: var(--ui-brand); }
+/* The active row shows the key that opens it. */
+.palette-option[aria-selected="true"]::after { content: "↵"; flex: none; display: grid; place-items: center; width: 24px; height: 24px; margin-left: 10px; border: 1px solid var(--ui-line-2); border-radius: 7px; background: rgb(0 0 0 / .28); color: var(--ui-text-2); font-size: 13px; font-weight: 500; }
+.palette-option:not(:has(> small)):not(:has(.nav-badge))[aria-selected="true"]::after { margin-left: auto; }
+.palette-option:is(:has(> .palette-nav-icon), :has(> .champion-icon), :has(> .champion-icon-fallback)) > small { opacity: 0; transition: opacity var(--ui-fast) var(--ui-ease); }
+.palette-option[aria-selected="true"] > small { opacity: 1; color: var(--ui-text-2); }
+.palette-option .champion-icon, .palette-option .champion-icon-fallback, .palette-option .search-profile-icon { width: 32px; height: 32px; border-radius: 9px; box-shadow: 0 0 0 1px var(--ui-line-2); }
+.palette-nav-icon { border: 1px solid var(--ui-line-1); border-radius: 9px; background: var(--ui-well); }
+.palette-option[aria-selected="true"] .palette-nav-icon { border-color: var(--ui-brand-line); color: var(--ui-brand); }
+/* Footer: status on the left, keys and Clear recent on the right. */
+.palette-hint { order: 3; gap: 12px; padding: 8px 14px; border-top: 1px solid var(--ui-line-1); background: var(--ui-well); }
+.palette-hint > span:first-child { margin-right: auto; }
+.palette-keys { display: flex; align-items: center; gap: 5px; white-space: nowrap; }
+.palette-keys kbd { display: grid; place-items: center; min-width: 22px; height: 22px; padding: 0 5px; border: 1px solid var(--ui-line-2); border-radius: 6px; background: rgb(255 255 255 / .04); color: var(--ui-text-2); font: inherit; font-size: 12px; }
+.palette-keys kbd:not(:first-child):not(kbd + kbd) { margin-left: 8px; }
+.palette-hint button { padding: 4px 9px; border: 1px solid var(--ui-line-2); border-radius: 7px; white-space: nowrap; }
+.palette-hint button:hover { border-color: var(--ui-line-3); color: var(--ui-text-1); }
+.palette-player-status { order: 2; }
+.palette .palette-empty { padding: 44px 18px; }
+@media (prefers-reduced-motion: reduce) { .fa-frame .location-search .palette { animation: none; } }
+/* The open search box is already the obvious focus: a neutral edge instead of the brand ring. */
+.fa-frame .title-location.is-searching, .fa-frame .title-location.is-searching:focus-within { border-color: var(--ui-line-3); box-shadow: var(--ui-inner-hi); outline: none; }
+.fa-frame .title-location.is-searching :is(.location-search, .palette-input, input) { outline: none; }

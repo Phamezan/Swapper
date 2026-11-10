@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState, type CSSProperties } from "react";
+import { Fragment, useEffect, useRef, useState, type CSSProperties, type PointerEvent } from "react";
 import { invoke, isTauri } from "@tauri-apps/api/core";
 import { ChevronRight } from "lucide-react";
 import { MatchupsIcon } from "./ui/icons";
@@ -9,8 +9,10 @@ import { RoleIcon } from "../runes/RoleIcon";
 import { RuneIcon } from "../runes/RuneIcon";
 import { SpellIcon } from "../runes/SpellIcon";
 import { fmtAgo } from "../runes/types";
-import { benchKey, defaultQueue, deltaText, formatStat, MIN_COMPARED, newestFirst, opponent, playTime, rankProgress, tierLabel, tiles, today, tone } from "./dashboardModel";
+import { useChampionArt } from "./art";
+import { benchKey, defaultQueue, deltaText, formatStat, meter, MIN_COMPARED, newestFirst, smoothPath, opponent, playTime, rankProgress, tierLabel, tiles, today, tone } from "./dashboardModel";
 import type { AccountCard, Bench, Game, LpPoint, Mmr, RoleRecord, Snapshot } from "./types";
+type ChampionRecord = Snapshot["summaries"][string]["champions"][number];
 import { Slot } from "./ui/Slot";
 import { Tooltip } from "./ui/Tooltip";
 import { EmptyState, Skeleton } from "./ui/States";
@@ -53,13 +55,15 @@ function useSeen<T extends Element>() {
 const pct = (wins: number, games: number) => (games ? Math.round(100 * wins / games) : 0);
 
 export function RoleStrip({ roles }: { roles: RoleRecord[] }) {
+  const most = Math.max(0, ...roles.map(r => r.games));
   return <div className="role-strip" aria-label="Win rate by role (estimated from spells, items and lane)">
     {Object.entries(roleLabels).map(([role, label]) => {
       const r = roles.find(r => r.role === role) ?? { role, games: 0, wins: 0 };
-      return <Tooltip key={role} label={`${label}: ${r.wins}W ${r.games - r.wins}L`}><div className={r.games ? "" : "is-empty"}>
+      return <Tooltip key={role} label={`${label}: ${r.wins}W ${r.games - r.wins}L`}><div className={!r.games ? "is-empty" : r.games === most ? "is-main" : ""}>
         <RoleIcon role={role} size={18} mode="desktop" />
         <b className={!r.games ? "" : pct(r.wins, r.games) >= 50 ? "up" : "down"}>{r.games ? `${pct(r.wins, r.games)}%` : "–"}</b>
         <small>{r.games} {r.games === 1 ? "game" : "games"}</small>
+        <i style={{ "--rate": `${pct(r.wins, r.games)}%` } as CSSProperties} aria-hidden />
       </div></Tooltip>;
     })}
   </div>;
@@ -100,35 +104,77 @@ export function Dashboard(props: Props) {
     invoke<Record<string, Bench>>("dashboard_benchmarks", { picks: list, tier }).then(next => { if (live) setBenches(next); }).catch(() => {});
     return () => { live = false; };
   }, [picks, tier]);
+  const listed = props.justEnded && !snapshot.games.some(game => game.id === props.justEnded!.id) ? [props.justEnded, ...games] : games;
   useEffect(() => { document.querySelector(".match-row.is-last")?.scrollIntoView({ block: "nearest" }); }, []);
-  return <div className={`dash-v2${stale ? " is-stale" : ""}`}>
+  return <div className={`dash-v2${stale ? " is-stale" : ""}`} onPointerMove={spotlight}>
+    <div className="dash-hero">
     <div className="dash-top">
       <TodayCard games={snapshot.games} rank={snapshot.rank} history={snapshot.lpHistory} mmr={snapshot.mmr} live={inGamePhases.has(props.phase)} onOpenLive={props.onOpenLive} />
       <RankCard snapshot={snapshot} stale={stale} />
     </div>
     <Performance games={games} queue={queue} onQueue={setQueue} benches={benches} tier={tier} name={name} />
+    </div>
     <div className="dash-columns">
       <section className="panel matches-panel" aria-labelledby="matches-title">
         <div className="panel-head"><h2 id="matches-title">Recent games</h2><small>{games.length} {games.length === 1 ? "game" : "games"} · {queue === "all" ? "all queues" : queueLabels[queue]}</small></div>
         {!games.length ? <NoMatches queue={queue} hasOthers={snapshot.games.length > 0} onShowAll={() => setQueue("all")} />
-          : <ol className="match-list">{(props.justEnded && !snapshot.games.some(game => game.id === props.justEnded!.id) ? [props.justEnded, ...games] : games).map(game => <MatchRow key={game.id} game={game} name={name} isLast={game.id === lastOpenedMatch} onOpen={() => openMatch(game)} />)}</ol>}
+          : <ol className="match-list">{listed.map((game, i) => <Fragment key={game.id}>
+            {(i === 0 || dayOf(listed[i - 1].createdAt) !== dayOf(game.createdAt)) && <DayHeader games={listed.filter(g => dayOf(g.createdAt) === dayOf(game.createdAt))} />}
+            <MatchRow game={game} name={name} isLast={game.id === lastOpenedMatch} onOpen={() => openMatch(game)} />
+          </Fragment>)}</ol>}
       </section>
       <section className="panel" aria-labelledby="champions-title">
         <div className="panel-head"><h2 id="champions-title">Champions &amp; roles</h2><small>{queueLabels[queue]}</small></div>
         {!summary.champions.length ? <p className="panel-empty">Play a game in this queue to see champions.</p> : <ul className="champ-perf">
-          {summary.champions.map(c => {
-            const total = c.wins + c.losses;
-            return <li key={c.id}><Tooltip label={`Open ${name(c.id)} build`}><button className="ui-row" onClick={() => onOpenChampion(c.id, name(c.id))}>
-              <ChampionIcon id={c.id} mode="desktop" />
-              <span className="champ-perf-copy"><strong>{name(c.id)}</strong><small>{c.kda.toFixed(2)} KDA · {total} {total === 1 ? "game" : "games"}</small></span>
-              <span className="champ-perf-rate"><b className={pct(c.wins, total) >= 50 ? "up" : "down"}>{pct(c.wins, total)}%</b><small>{c.wins}W {c.losses}L</small><i style={{ "--rate": `${pct(c.wins, total)}%` } as CSSProperties} aria-hidden /></span>
-            </button></Tooltip></li>;
-          })}
+          {summary.champions.map(c => <ChampCard key={c.id} c={c} name={name(c.id)} onOpen={() => onOpenChampion(c.id, name(c.id))} />)}
         </ul>}
         <RoleStrip roles={summary.roles} />
       </section>
     </div>
   </div>;
+}
+
+/** Tells the top panel where the pointer is, for the light that follows it (dashboard.css). */
+function spotlight(event: PointerEvent<HTMLElement>) {
+  const card = (event.target as Element).closest<HTMLElement>(".dash-hero");
+  if (!card) return;
+  const box = card.getBoundingClientRect();
+  card.style.setProperty("--mx", `${event.clientX - box.left}px`);
+  card.style.setProperty("--my", `${event.clientY - box.top}px`);
+}
+
+const dayOf = (at: number) => new Date(at).setHours(0, 0, 0, 0);
+
+/** Heads each day's games in the list: the day and its record. LP stays on the Today card, which reads the recorded history. */
+function DayHeader({ games }: { games: Game[] }) {
+  const days = Math.round((dayOf(Date.now()) - dayOf(games[0].createdAt)) / 864e5);
+  const wins = games.filter(g => g.win).length;
+  return <li className="match-day">
+    <strong>{days === 0 ? "Today" : days === 1 ? "Yesterday" : new Date(games[0].createdAt).toLocaleDateString([], { weekday: "long", month: "short", day: "numeric" })}</strong>
+    <small>{wins}W {games.length - wins}L</small>
+  </li>;
+}
+
+function ChampCard({ c, name, onOpen }: { c: ChampionRecord; name: string; onOpen: () => void }) {
+  const [item, seen] = useSeen<HTMLLIElement>();
+  const art = useChampionArt(seen ? c.id : null, "splash");
+  const total = c.wins + c.losses;
+  return <li ref={item}><Tooltip label={`Open ${name} build`}><button className="ui-row" onClick={onOpen}>
+    {art && <img className="champ-art" src={art} alt="" aria-hidden />}
+    <ChampionIcon id={c.id} mode="desktop" />
+    <span className="champ-perf-copy"><strong>{name}</strong><small>{c.kda.toFixed(2)} KDA · {total} {total === 1 ? "game" : "games"}</small></span>
+    <span className="champ-perf-rate"><b className={pct(c.wins, total) >= 50 ? "up" : "down"}>{pct(c.wins, total)}%</b><small>{c.wins}W {c.losses}L</small><i style={{ "--rate": `${pct(c.wins, total)}%` } as CSSProperties} aria-hidden /></span>
+  </button></Tooltip></li>;
+}
+
+/** A stat's game-by-game line, oldest to newest; drawn only with three or more games. */
+function Spark({ values }: { values: number[] }) {
+  if (values.length < 3) return null;
+  const min = Math.min(...values), span = Math.max(...values) - min || 1;
+  const line = smoothPath(values.map((v, i) => ({ x: 100 * i / (values.length - 1), y: 3 + 22 * (1 - (v - min) / span) })));
+  return <svg className="tile-spark" viewBox="0 0 100 28" preserveAspectRatio="none" aria-hidden>
+    <path className="tile-spark-area" d={`${line} L100,28 L0,28 Z`} /><path d={line} />
+  </svg>;
 }
 
 /** Placeholder shaped like the Dashboard while the first snapshot loads. */
@@ -154,6 +200,10 @@ function TodayCard({ games, rank, history, mmr, live, onOpenLive }: { games: Gam
   const day = today(games, Date.now(), rank, history);
   const since = day.since == null ? "no games yet" : `since ${new Date(day.since).toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" })}`;
   const none = day.games === 0;
+  // Today's results, newest first; `since` is today's first game.
+  const results = day.since == null ? [] : newestFirst(games).filter(g => g.createdAt >= day.since!).map(g => g.win);
+  const run = results.findIndex(win => win !== results[0]);
+  const streak = run < 0 ? results.length : run;
   return <section className="panel today-card" aria-label="Today">
     <div className="card-head"><h2>Today</h2><small>{since}</small>{live && <button className="fa-primary live-button" onClick={onOpenLive}>Open live game</button>}</div>
     <dl className="today-stats">
@@ -163,6 +213,10 @@ function TodayCard({ games, rank, history, mmr, live, onOpenLive }: { games: Gam
         <dt>{day.lp != null && day.lp < 0 ? "LP lost" : "LP gained"}</dt><dd className={day.lp == null ? "" : day.lp >= 0 ? "up" : "down"}>{day.lp == null ? "–" : `${day.lp >= 0 ? "+" : "−"}${Math.abs(day.lp)}`}</dd></div></Tooltip>
       <div><dt>played</dt><dd>{none ? "–" : playTime(day.seconds)}</dd></div>
     </dl>
+    {!none && <div className="today-form" aria-label={`Today's results, oldest first: ${[...results].reverse().map(win => win ? "win" : "loss").join(", ")}`}>
+      {[...results].reverse().map((win, i) => <i key={i} className={win ? "" : "is-loss"} />)}
+      {streak >= 2 && <small className={results[0] ? "up" : "down"}>{streak} {results[0] ? "win" : "loss"} streak</small>}
+    </div>}
     {mmr && <MmrLine mmr={mmr} explain={`Swapper's estimate, not Riot's: the average Solo/Duo rank of the other players in your last ${mmr.games} ranked ${mmr.games === 1 ? "game" : "games"}, as recorded when each game started (current ranks for games before Swapper recorded them).`} />}
   </section>;
 }
@@ -225,17 +279,21 @@ function Performance({ games, queue, onQueue, benches, tier, name }: {
       <div className="wl-strip" aria-label={`${wins} wins, ${games.length - wins} losses, newest first`}>
         {games.map(g => <Tooltip key={g.id} label={`${g.win ? "Win" : "Loss"} · ${name(g.championId)} · ${g.kills}/${g.deaths}/${g.assists} · ${fmtAgo(g.createdAt)}`}><span className={g.win ? "is-win" : "is-loss"}>
           <ChampionIcon id={g.championId} mode="desktop" /></span></Tooltip>)}
+        {games.length > 0 && <span className="wl-ring" style={{ "--rate": `${pct(wins, games.length)}%` } as CSSProperties} aria-hidden>{pct(wins, games.length)}</span>}
         <small>{wins}W {games.length - wins}L</small>
       </div>
     </div>
     <div className="tiles">{rows.map(tile => {
       const versus = tile.value != null ? tile.versus : null;
+      const m = versus ? meter(tile.value!, versus.value) : 0;
       return <Tooltip key={tile.key} label={versus ? `You ${formatStat(tile.value!, tile.digits, tile.unit)} vs ${versus.label} ${formatStat(versus.value, tile.digits, tile.unit)} over the same ${versus.games} games` : undefined}>
       <article className={`tile tone-${versus ? tone(tile.value!, versus.value) : "none"}`}>
         <small className="tile-label">{tile.label}</small>
         <strong className="tile-value">{tile.value == null ? "–" : big(tile.value, tile.digits, tile.unit)}</strong>
+        {versus && <i className={`tile-meter${m < 0 ? " is-neg" : ""}`} style={{ "--w": `${Math.abs(m) * 50}%` } as CSSProperties} aria-hidden />}
         <p className="tile-foot">{versus ? deltaText({ ...tile, versus }) : tile.value == null ? `Needs ${MIN_COMPARED} games`
           : games.length < MIN_COMPARED ? `Needs ${MIN_COMPARED} games to compare` : "Not enough comparable games"}</p>
+        <Spark values={[...tile.series].reverse()} />
       </article>
       </Tooltip>;
     })}</div>
@@ -249,7 +307,9 @@ export function MatchRow({ game, name, isLast, onOpen }: { game: Game; name: (id
   const [row, seen] = useSeen<HTMLLIElement>();
   const opp = opponent(game);
   const csDiff = opp ? game.cs - opp.cs : null;
+  const art = useChampionArt(seen ? game.championId : null, "splash");
   return <li ref={row} className={`match-row ${game.win ? "is-win" : "is-loss"}${isLast ? " is-last" : ""}`} onClick={onOpen}>
+    {art && <img className="match-art" src={art} alt="" aria-hidden />}
     <Tooltip label={`Open ${name(game.championId)} match details`}><button className="match-champ" onClick={event => { event.stopPropagation(); onOpen(); }} aria-label={`Open ${name(game.championId)} match details`}>
       <ChampionIcon id={game.championId} mode="desktop" />
       {game.level > 0 && <b>{game.level}</b>}

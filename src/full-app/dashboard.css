@@ -352,3 +352,104 @@ button.location-segment:hover { background: var(--ui-hover); color: var(--ui-bra
 
 /* Champions: stacked under the matches below 1760px, so the list spreads into columns. */
 .fa-frame .dash-v2 .champ-perf { grid-template-columns: repeat(auto-fill, minmax(290px, 1fr)); gap: 2px 16px; }
+
+/* ---------- Dashboard polish: champion art in rows, benchmark meters, today's form ---------- */
+/* Sections arrive one after another, once. */
+.dash-v2 > * { animation: fa-enter 320ms var(--ui-ease) backwards; }
+.dash-v2 > :nth-child(2) { animation-delay: 60ms; }
+.dash-v2 > :nth-child(3) { animation-delay: 120ms; }
+
+/* Today's results, oldest to newest, with the current streak. */
+/* Both top cards share the taller one's height. */
+.dash-top { align-items: stretch; }
+.today-form { display: flex; align-items: center; gap: 4px; min-height: 18px; }
+.today-form i { flex: 1 1 0; max-width: 20px; height: 6px; border-radius: 99px; background: var(--ui-win); }
+.today-form i.is-loss { background: var(--ui-loss); opacity: .7; }
+.today-form small { margin-left: auto; padding-left: 10px; font-size: 13px; font-weight: 650; white-space: nowrap; }
+
+/* You against the benchmark: the tick is the benchmark, the bar is the gap (full at ±100%). */
+.tile-meter { position: relative; width: min(150px, 82%); height: 4px; margin: 4px 0 2px; border-radius: 99px; background: var(--ui-line-1); }
+.tile-meter::before { content: ""; position: absolute; left: calc(50% - 1px); top: -3px; bottom: -3px; width: 2px; border-radius: 2px; background: var(--ui-text-3); }
+.tile-meter::after { content: ""; position: absolute; top: 0; bottom: 0; left: 50%; width: max(var(--w), 3px); border-radius: 0 99px 99px 0; background: var(--tone, var(--ui-text-3)); transform-origin: left; animation: tile-meter-grow 520ms 200ms var(--ui-ease) backwards; }
+.tile-meter.is-neg::after { left: auto; right: 50%; border-radius: 99px 0 0 99px; transform-origin: right; }
+@keyframes tile-meter-grow { from { transform: scaleX(0); } }
+
+/* The played champion's splash fades in behind the left of each row. */
+.fa-frame .dash-v2 .match-row { isolation: isolate; overflow: hidden; transition: background-color var(--ui-fast), border-color var(--ui-fast), transform var(--ui-fast); }
+.match-art { position: absolute; inset: 0 auto 0 0; z-index: -1; width: min(48%, 620px); height: 100%; object-fit: cover; object-position: 50% 20%; opacity: .42; pointer-events: none; transition: opacity var(--ui-base);
+  -webkit-mask-image: linear-gradient(90deg, rgb(0 0 0 / .5), #000 22%, rgb(0 0 0 / .45) 60%, transparent); mask-image: linear-gradient(90deg, rgb(0 0 0 / .5), #000 22%, rgb(0 0 0 / .45) 60%, transparent); }
+.match-row.is-loss .match-art { opacity: .28; filter: grayscale(.6); }
+.match-row:hover .match-art { opacity: .6; }
+.fa-frame .dash-v2 .match-row:hover { transform: translateY(-1px); }
+.match-row :is(.match-result, .match-kda) { text-shadow: 0 1px 6px rgb(0 0 0 / .55); }
+
+/* ---------- Dashboard polish, pass 2: day headers, champion cards, trends, role bars ---------- */
+
+/* Win rate of the listed games as a ring beside the champion strip. */
+.wl-strip > .wl-ring { --ring: 5px; flex: none; box-shadow: none; display: grid; place-items: center; width: 40px; height: 40px; margin-left: 10px; border-radius: 50%; font-size: 13px; font-weight: 700; color: var(--ui-text-1);
+  background: radial-gradient(closest-side, var(--ui-surface-2) calc(100% - var(--ring)), transparent calc(100% - var(--ring) + 1px)), conic-gradient(var(--ui-win) var(--rate), color-mix(in srgb, var(--ui-loss) 60%, transparent) 0); }
+.wl-strip .wl-ring + small { margin-left: 2px; }
+
+/* Each tile's stat game by game, oldest to newest, under its figure. */
+.tile-spark { width: min(190px, 92%); height: 30px; margin-top: 6px; overflow: visible; color: var(--tone, var(--ui-text-3)); }
+.tile-spark path { fill: none; stroke: currentColor; stroke-width: 1.6; stroke-linecap: round; stroke-linejoin: round; vector-effect: non-scaling-stroke; opacity: .85; }
+.tile-spark .tile-spark-area { stroke: none; fill: currentColor; opacity: .1; }
+
+/* Recent games are grouped by day; each day shows its record. */
+.match-day { display: flex; align-items: baseline; gap: 10px; padding: 12px 2px 2px; }
+.match-day:first-child { padding-top: 0; }
+.match-day strong { font-size: 14px; font-weight: 650; color: var(--ui-text-1); }
+.match-day small { font-size: 13px; color: var(--ui-text-2); }
+.match-day::after { content: ""; flex: 1; align-self: center; height: 1px; background: var(--ui-line-1); }
+
+/* Champions: cards with the champion's splash behind the name, like the match rows. */
+.fa-frame .dash-v2 .champ-perf { gap: 10px; }
+.fa-frame .dash-v2 .champ-perf button { position: relative; isolation: isolate; overflow: hidden; min-height: 76px; padding: 12px 16px 12px 14px; border: 1px solid var(--ui-line-1); border-radius: var(--ui-radius-md); background: var(--ui-surface-3); transition: border-color var(--ui-fast), transform var(--ui-fast); }
+.fa-frame .dash-v2 .champ-perf button:hover { border-color: var(--ui-line-3); background: var(--ui-surface-3); transform: translateY(-2px); }
+.champ-art { position: absolute; inset: 0 auto 0 0; z-index: -1; width: 78%; height: 100%; object-fit: cover; object-position: 50% 18%; opacity: .38; pointer-events: none; transition: opacity var(--ui-base);
+  -webkit-mask-image: linear-gradient(90deg, #000 25%, transparent); mask-image: linear-gradient(90deg, #000 25%, transparent); }
+.champ-perf button:hover .champ-art { opacity: .6; }
+.fa-frame .dash-v2 .champ-perf .champion-icon, .fa-frame .dash-v2 .champ-perf .champion-icon-fallback { width: 48px; height: 48px; box-shadow: 0 0 0 1px var(--ui-line-3), 0 4px 12px rgb(0 0 0 / .5); }
+.dash-v2 .champ-perf-copy { text-shadow: 0 1px 6px rgb(0 0 0 / .6); }
+.dash-v2 .champ-perf-copy strong { font-size: 16px; font-weight: 700; }
+.dash-v2 .champ-perf-copy small { font-size: 13px; color: var(--ui-text-2); }
+.fa-frame .dash-v2 .champ-perf button { grid-template-columns: 48px minmax(0, 1fr) auto; }
+.dash-v2 .champ-perf-rate { white-space: nowrap; }
+.dash-v2 .champ-perf-rate i { width: 100%; min-width: 84px; }
+.dash-v2 .champ-perf-rate b { font-size: 20px; font-weight: 750; letter-spacing: -.02em; }
+.dash-v2 .champ-perf-rate small { font-size: 12px; }
+
+/* Roles: a win/loss bar under each role; the most played role carries the brand colour. */
+.role-strip div i { width: min(72px, 70%); height: 4px; margin-top: 4px; border-radius: 99px; background: linear-gradient(90deg, var(--ui-win) var(--rate), color-mix(in srgb, var(--ui-loss) 55%, transparent) var(--rate)); }
+.role-strip div.is-empty i { background: var(--ui-line-1); }
+.role-strip div.is-main small { color: var(--ui-brand); }
+.dash-v2 .champ-perf-copy small { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.dash-v2 .champ-perf-rate i { min-width: 64px; }
+.fa-frame .dash-v2 .champ-perf button { gap: 10px; padding-right: 14px; }
+
+/* ---------- Top panel: Today, rank and Performance share one sheet ----------
+   One graphite surface with hairline dividers between its three regions, a brand light in
+   the top-left corner, the tier light behind the rank, a fine dot grid fading in toward the
+   bottom-right, a soft sheen along the top edge and a light that follows the pointer.
+   .dash-v2 is doubled to outrank the opaque-card rules in full-app.css, which loads later. */
+.dash-hero { position: relative; isolation: isolate; overflow: hidden; display: grid; border: 1px solid var(--ui-line-2); border-top-color: var(--ui-line-3); border-radius: var(--ui-radius-lg);
+  background:
+    radial-gradient(60% 70% at 0% 0%, color-mix(in srgb, var(--ui-brand) 13%, transparent), transparent 70%),
+    linear-gradient(135deg, var(--ui-surface-2) 40%, transparent 96%),
+    radial-gradient(rgb(255 255 255 / .09) 1px, transparent 1.5px) 0 0 / 18px 18px,
+    linear-gradient(180deg, var(--ui-surface-3), var(--ui-surface-2) 40%, #141417);
+  box-shadow: var(--ui-inner-hi), 0 1px 2px rgb(0 0 0 / .4), 0 22px 48px -26px rgb(0 0 0 / .95); }
+/* Top edge sheen: brightest in the middle, gone at the corners. */
+.dash-hero::before { content: ""; position: absolute; inset: 0 12% auto; z-index: 1; height: 1px; pointer-events: none; background: linear-gradient(90deg, transparent, rgb(255 255 255 / .34), transparent); }
+.dash-hero::after { content: ""; position: absolute; inset: 0; z-index: -1; pointer-events: none; opacity: 0; transition: opacity 260ms;
+  background: radial-gradient(520px circle at var(--mx, 50%) var(--my, 0%), rgb(255 255 255 / .055), transparent 70%); }
+.dash-hero:hover::after { opacity: 1; }
+.dash-hero .dash-top { gap: 0; }
+.fa-frame[data-look] .dashboard-shell .dash-v2.dash-v2 .dash-hero :is(.today-card, .rank-card, .performance) { border: 0; border-radius: 0; background: none; box-shadow: none; }
+.fa-frame[data-look] .dashboard-shell .dash-v2.dash-v2 .dash-hero .rank-card { background: radial-gradient(70% 90% at 22% 0%, color-mix(in srgb, var(--ui-rank-tone) 16%, transparent), transparent 75%); }
+.fa-frame[data-look] .dashboard-shell .dash-v2.dash-v2 .dash-hero .today-card { border-right: 1px solid var(--ui-line-1); }
+.fa-frame[data-look] .dashboard-shell .dash-v2.dash-v2 .dash-hero .performance { border-top: 1px solid var(--ui-line-1); }
+.dash-hero .tiles { padding-bottom: 0; border-bottom: 0; }
+@media (max-width: 1100px) {
+  .fa-frame[data-look] .dashboard-shell .dash-v2.dash-v2 .dash-hero .today-card { border-right: 0; border-bottom: 1px solid var(--ui-line-1); }
+}

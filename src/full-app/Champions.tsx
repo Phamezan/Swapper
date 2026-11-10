@@ -304,7 +304,7 @@ export default function Champions({ matchups, focus, onSelectionChange, onOpenVo
       {!cards.length && <p>No {selected ? "opponent" : "champion"} matches{query ? ` “${query}”` : " this role"}.{selected && !showAll && " Try Show all champions."}</p>}
     </section>}
     {!selected && !matchups && (lane === "duos" ? <DuoTable tier={tier} query={query} /> : <>
-      {list && !query && <div className="fa-featured-picks">{list.rows.slice(0, 3).map(row => <button className="fa-featured-pick" key={row.championId} onClick={() => void open({ id: row.championId, name: row.name })}><NearViewport className="fa-featured-art"><ChampionArt id={row.championId} name={row.name} /></NearViewport><span className={`fa-tier ${tierClass(row.tier)}`}>{row.tier}</span><span><small>Leading {laneLabel((row as Partial<AutoRow>).role ?? lane).toLowerCase()} pick</small><strong>{row.name}</strong><b>{fmtPct(row.winPct)} <small>win rate</small></b></span></button>)}</div>}
+      {list && !query && <div className="fa-featured-picks">{list.rows.slice(0, 3).map((row, index) => <button className={`fa-featured-pick ${tierClass(row.tier)}`} key={row.championId} onClick={() => void open({ id: row.championId, name: row.name })}><NearViewport className="fa-featured-art"><ChampionArt id={row.championId} name={row.name} /></NearViewport><i className="fa-featured-rank" aria-hidden>{index + 1}</i><span className={`fa-tier ${tierClass(row.tier)}`}>{row.tier}</span><span><small>Leading {laneLabel((row as Partial<AutoRow>).role ?? lane).toLowerCase()} pick</small><strong>{row.name}</strong><b>{fmtPct(row.winPct)} <small>win rate</small></b><small className="fa-featured-meta">{fmtPct(row.pickPct)} pick · {fmtPct(row.banPct)} ban · {fmtCount(row.games)} games</small></span></button>)}</div>}
       {list?.stale && <CachedBadge stale updatedAt={list.updatedAt} />}
       {list?.unavailable ? <Notice tone="warn">Tier list unavailable. Try another role or rank.</Notice> : !list ? <TableSkeleton /> : <div className="tier-table-wrap">
         <table className="tier-table">
@@ -323,7 +323,7 @@ function TierLine({ row, rank, lane, average, peak, onOpen, onIntent }: { row: T
   const delta = row.winPct - average;
   // A short dwell, so sweeping the pointer across the table does not start a download per row.
   const dwell = useRef<number>(0);
-  return <tr onClick={onOpen} onPointerEnter={() => { dwell.current = window.setTimeout(onIntent, 120); }} onPointerLeave={() => window.clearTimeout(dwell.current)} onFocus={onIntent}>
+  return <tr className={tierClass(row.tier)} onClick={onOpen} onPointerEnter={() => { dwell.current = window.setTimeout(onIntent, 120); }} onPointerLeave={() => window.clearTimeout(dwell.current)} onFocus={onIntent}>
     <td className="col-rank">{rank}</td>
     <td><button className="tier-champ" onClick={event => { event.stopPropagation(); onOpen(); }}><NearViewport className="fa-tier-portrait"><ChampionIcon id={row.championId} name={row.name} mode="desktop" /></NearViewport><strong>{row.name}</strong></button></td>
     <td className="col-role"><RoleIcon role={lane} size={18} mode="desktop" /></td>

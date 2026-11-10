@@ -1,6 +1,18 @@
 import { test } from "node:test";
 import { strict as assert } from "node:assert";
-import { defaultQueue, deltaText, ladderScore, lpGraph, newestFirst, smoothPath, playTime, rankProgress, tiles, tierLabel, today, tone } from "./dashboardModel.ts";
+import { defaultQueue, deltaText, ladderScore, lpGraph, meter, newestFirst, smoothPath, playTime, rankProgress, tiles, tierLabel, today, tone } from "./dashboardModel.ts";
+
+test("tiles carry the per-game series in the given order", () => {
+  const games = [game({ cs: 100 }), game({ cs: 200 }), game({ cs: 300 })];
+  assert.deepEqual(tiles(games, {}, "Diamond", () => "x")[1].series, [100, 200, 300]);
+});
+
+test("meter is signed, full at ±100% and clamped", () => {
+  assert.equal(meter(150, 100), 0.5);
+  assert.equal(meter(50, 100), -0.5);
+  assert.equal(meter(300, 100), 1);
+  assert.equal(meter(5, 0), 0);
+});
 
 const line = (over = {}) => ({ championId: 1, riotId: "", me: false, ally: true, role: "mid", kills: 2, deaths: 2, assists: 2, cs: 150, damage: 10000, gold: 0, vision: 10, items: [], ...over });
 function game({ win = true, deaths = 3, cs = 200, oppCs = 150, champion = 103, queue = "solo", opponent = 7, kills = 5, assists = 5 } = {}) {
