@@ -75,16 +75,15 @@ button { -webkit-tap-highlight-color: transparent; }
 
 .remote-ready {
   gap: 7px;
-  padding: 7px 10px;
-  border: 1px solid var(--line-strong);
-  border-radius: 9px;
+  padding: 7px 2px;
   font-size: 11px;
   font-weight: 700;
   white-space: nowrap;
 }
 
-.remote-ready.is-ready { color: #52dfa6; border-color: #347c61; background: #143329; }
-.remote-ready.is-bad { color: var(--danger); border-color: color-mix(in srgb, var(--danger) 45%, var(--line-subtle)); }
+/* A status readout, not a button: no border or fill. */
+.remote-ready.is-ready { color: #52dfa6; }
+.remote-ready.is-bad { color: var(--danger); }
 .remote-ready-dot { width: 9px; height: 9px; border-radius: 50%; background: currentColor; }
 .remote-ready.is-ready .remote-ready-dot { animation: remote-pulse 1.4s ease-in-out infinite; }
 
@@ -231,7 +230,7 @@ button { -webkit-tap-highlight-color: transparent; }
 .remote-picker-footer span { flex: 1; min-width: 0; overflow: hidden; color: var(--text-secondary); font-size: 12px; font-weight: 650; text-overflow: ellipsis; white-space: nowrap; }
 .remote-picker-footer button { min-width: 110px; padding: 0 18px; }
 
-.remote-waiting { margin: auto 20px; padding: 30px 6px; }
+.remote-waiting { margin: 0 20px; padding: 72px 6px 30px; }
 .remote-queue-time { display: block; margin-top: 4px; font-size: clamp(52px, 16vw, 82px); font-weight: 740; line-height: 1; letter-spacing: -0.06em; font-variant-numeric: tabular-nums; }
 
 button:focus-visible, input:focus-visible { outline: 2px solid #52dfa6; outline-offset: 2px; }

@@ -21,33 +21,42 @@ const MIN_RANKED: usize = 4;
 const LOOKUP_TIMEOUT: Duration = Duration::from_secs(4);
 /// How long a caller waits for rank lookups; they keep filling the cache after that.
 const ESTIMATE_DEADLINE: Duration = Duration::from_secs(3);
-/// Recorded lobbies kept, newest game ids first.
+/// Recorded lobbies kept per account, newest game ids first.
 const RECORDED_GAMES: usize = 50;
 const SOLO_QUEUE_ID: i64 = 420;
 
 /// Other players' ladder scores per game id, as they were at game start.
 type Lobbies = BTreeMap<u64, Vec<i64>>;
+/// Recorded lobbies per account PUUID: Swapper switches accounts, and one
+/// account's lobbies must never count toward another's estimate.
+type AccountLobbies = BTreeMap<String, Lobbies>;
 static LOBBY_FILE: Mutex<()> = Mutex::new(());
 
 fn lobby_path() -> Option<std::path::PathBuf> {
-    Some(crate::vault::data_root().ok()?.join("lobby-ranks.json"))
+    // A new file: the old lobby-ranks.json mixed every account's lobbies together.
+    Some(crate::vault::data_root().ok()?.join("lobby-ranks-by-account.json"))
 }
 
-fn load_lobbies(path: &Path) -> Lobbies {
-    if std::fs::metadata(path).map_or(true, |m| m.len() > 512 * 1024) {
-        return Lobbies::new();
+fn load_all(path: &Path) -> AccountLobbies {
+    if std::fs::metadata(path).map_or(true, |m| m.len() > 2 * 1024 * 1024) {
+        return AccountLobbies::new();
     }
     std::fs::read(path).ok().and_then(|bytes| serde_json::from_slice(&bytes).ok()).unwrap_or_default()
 }
 
-fn save_lobby_at(path: &Path, game_id: u64, scores: Vec<i64>) {
+fn load_lobbies(path: &Path, puuid: &str) -> Lobbies {
+    load_all(path).remove(puuid).unwrap_or_default()
+}
+
+fn save_lobby_at(path: &Path, puuid: &str, game_id: u64, scores: Vec<i64>) {
     let _guard = LOBBY_FILE.lock().unwrap_or_else(|e| e.into_inner());
-    let mut lobbies = load_lobbies(path);
+    let mut all = load_all(path);
+    let lobbies = all.entry(puuid.to_string()).or_default();
     lobbies.insert(game_id, scores);
     while lobbies.len() > RECORDED_GAMES {
         lobbies.pop_first();
     }
-    if let Ok(bytes) = serde_json::to_vec(&lobbies) {
+    if let Ok(bytes) = serde_json::to_vec(&all) {
         let pending = path.with_extension("tmp");
         if std::fs::write(&pending, bytes).is_ok() {
             let _ = std::fs::rename(pending, path);
@@ -139,15 +148,17 @@ pub async fn record_lobby() {
     let scores: Vec<i64> = ranks(&client, puuids).await.into_iter().filter_map(|(_, score)| score).collect();
     if scores.len() >= MIN_RANKED {
         if let Some(path) = lobby_path() {
-            let _ = tokio::task::spawn_blocking(move || save_lobby_at(&path, game_id, scores)).await;
+            let me = me.to_string();
+            let _ = tokio::task::spawn_blocking(move || save_lobby_at(&path, &me, game_id, scores)).await;
         }
     }
 }
 
-/// The signed-in account's estimate for its `games` (newest first): recorded
-/// lobbies where Swapper saw the game start, current ranks otherwise.
-pub async fn current(games: &[Game]) -> Option<Mmr> {
-    let recorded = lobby_path().map(|path| load_lobbies(&path)).unwrap_or_default();
+/// The signed-in account's (`puuid`) estimate over its last Solo/Duo games:
+/// its `games` (newest first) plus lobbies Swapper recorded for this account
+/// that match history (about twenty games, all queues) no longer lists.
+pub async fn current(puuid: &str, games: &[Game]) -> Option<Mmr> {
+    let recorded = lobby_path().map(|path| load_lobbies(&path, puuid)).unwrap_or_default();
     estimate_from(games, &recorded).await
 }
 
@@ -185,13 +196,14 @@ async fn estimate_from(games: &[Game], recorded: &Lobbies) -> Option<Mmr> {
     }
     let cache = RANKS.lock().unwrap_or_else(|e| e.into_inner());
     let known = |puuid: &String| cache.as_ref().and_then(|c| c.get(puuid).copied().flatten());
-    let lobbies: Vec<Vec<i64>> = recent
-        .iter()
-        .map(|game| match recorded.get(&game.id) {
-            Some(scores) => scores.clone(),
-            None => others(game).iter().filter_map(known).collect(),
-        })
-        .collect();
+    // Newest game first (ids grow over time): this account's recorded
+    // lobbies with its match-history games merged in; `estimate` keeps the
+    // newest GAMES of them.
+    let mut by_id: Lobbies = recorded.clone();
+    for game in &recent {
+        by_id.entry(game.id).or_insert_with(|| others(game).iter().filter_map(known).collect());
+    }
+    let lobbies: Vec<Vec<i64>> = by_id.into_values().rev().collect();
     estimate(&lobbies)
 }
 
@@ -222,15 +234,37 @@ mod tests {
         assert!(estimate(&[]).is_none());
     }
 
+    #[tokio::test]
+    async fn the_estimate_covers_the_last_ten_games_including_recorded_ones() {
+        // Match history lists about twenty games across all queues, so it can
+        // hold only a few Solo/Duo games; recorded lobbies fill in the rest,
+        // newest first, up to ten. Older ones (Diamond IV) drop out.
+        let game: Game = serde_json::from_value(serde_json::json!({
+            "id": 9_999, "queue": "solo", "championId": 1, "createdAt": 9_999_000, "duration": 1800,
+            "win": true, "kills": 1, "deaths": 1, "assists": 1,
+            "metrics": [null, null, null, null, null, null], "players": []
+        }))
+        .unwrap();
+        let mut recorded: Lobbies = (1..=5u64).map(|id| (id, vec![2400; 9])).collect();
+        recorded.extend((6..=15u64).map(|id| (id, vec![2600; 9])));
+        recorded.insert(9_999, vec![2600; 9]);
+        let mmr = estimate_from(&[game], &recorded).await.unwrap();
+        assert_eq!(mmr.games, 10);
+        assert_eq!((mmr.rank.tier.as_str(), mmr.rank.division.as_str()), ("DIAMOND", "II"), "only the newest ten lobbies count");
+    }
+
     #[test]
-    fn recorded_lobbies_keep_the_newest_games() {
+    fn recorded_lobbies_are_kept_per_account() {
         let path = std::env::temp_dir().join(format!("lobby-ranks-{}.json", uuid::Uuid::new_v4()));
         for id in 0..RECORDED_GAMES as u64 + 3 {
-            save_lobby_at(&path, id, vec![2600; 9]);
+            save_lobby_at(&path, "main", id, vec![2600; 9]);
         }
-        let lobbies = load_lobbies(&path);
-        assert_eq!(lobbies.len(), RECORDED_GAMES);
-        assert_eq!(lobbies.keys().next(), Some(&3), "the oldest game ids drop first");
+        save_lobby_at(&path, "alt", 1_000, vec![1400; 9]);
+        let main = load_lobbies(&path, "main");
+        assert_eq!(main.len(), RECORDED_GAMES);
+        assert_eq!(main.keys().next(), Some(&3), "the oldest game ids drop first");
+        assert!(!main.contains_key(&1_000), "another account's lobby never counts");
+        assert_eq!(load_lobbies(&path, "alt").len(), 1);
         let _ = std::fs::remove_file(path);
     }
 

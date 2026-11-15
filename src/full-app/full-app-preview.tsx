@@ -26,11 +26,14 @@ const CHAMPIONS: Record<number, [string, string]> = {
   157: ["Yasuo", "Yasuo"], 777: ["Yone", "Yone"], 875: ["Sett", "Sett"], 902: ["Milio", "Milio"], 67: ["Vayne", "Vayne"],
   17: ["Teemo", "Teemo"], 126: ["Jayce", "Jayce"], 54: ["Malphite", "Malphite"], 86: ["Garen", "Garen"], 24: ["Jax", "Jax"],
   268: ["Azir", "Azir"], 51: ["Caitlyn", "Caitlyn"], 7: ["LeBlanc", "Leblanc"],
-  58: ["Renekton", "Renekton"], 164: ["Camille", "Camille"], 82: ["Mordekaiser", "Mordekaiser"], 516: ["Ornn", "Ornn"], 98: ["Shen", "Shen"],
+  58: ["Renekton", "Renekton"],
+  61: ["Orianna", "Orianna"], 113: ["Sejuani", "Sejuani"], 498: ["Xayah", "Xayah"], 497: ["Rakan", "Rakan"], 111: ["Nautilus", "Nautilus"], 39: ["Irelia", "Irelia"], 164: ["Camille", "Camille"], 82: ["Mordekaiser", "Mordekaiser"], 516: ["Ornn", "Ornn"], 98: ["Shen", "Shen"],
   412: ["Thresh", "Thresh"], 81: ["Ezreal", "Ezreal"], 238: ["Zed", "Zed"], 11: ["Master Yi", "MasterYi"], 89: ["Leona", "Leona"], 804: ["Yunara", "Yunara"],
+  59: ["Jarvan IV", "JarvanIV"], 145: ["Kai'Sa", "Kaisa"], 79: ["Gragas", "Gragas"], 115: ["Ziggs", "Ziggs"], 110: ["Varus", "Varus"], 43: ["Karma", "Karma"], 76: ["Nidalee", "Nidalee"], 101: ["Xerath", "Xerath"], 150: ["Gnar", "Gnar"], 96: ["Kog'Maw", "KogMaw"], 117: ["Lulu", "Lulu"], 897: ["K'Sante", "KSante"], 201: ["Braum", "Braum"], 523: ["Aphelios", "Aphelios"], 78: ["Poppy", "Poppy"], 254: ["Vi", "Vi"], 22: ["Ashe", "Ashe"], 4: ["Twisted Fate", "TwistedFate"], 53: ["Blitzcrank", "Blitzcrank"], 5: ["Xin Zhao", "XinZhao"], 131: ["Diana", "Diana"], 154: ["Zac", "Zac"], 2: ["Olaf", "Olaf"], 163: ["Taliyah", "Taliyah"], 147: ["Seraphine", "Seraphine"], 57: ["Maokai", "Maokai"], 3: ["Galio", "Galio"], 517: ["Sylas", "Sylas"], 84: ["Akali", "Akali"], 112: ["Viktor", "Viktor"], 18: ["Tristana", "Tristana"], 202: ["Jhin", "Jhin"], 25: ["Morgana", "Morgana"], 888: ["Renata Glasc", "Renata"], 526: ["Rell", "Rell"], 432: ["Bard", "Bard"], 14: ["Sion", "Sion"], 104: ["Graves", "Graves"], 120: ["Hecarim", "Hecarim"], 60: ["Elise", "Elise"], 56: ["Nocturne", "Nocturne"], 114: ["Fiora", "Fiora"],
 };
+const COMPS_CHAMPIONS: Record<number, string> = { 61:"Orianna", 113:"Sejuani", 498:"Xayah", 497:"Rakan", 111:"Nautilus", 59:"JarvanIV", 145:"Kaisa", 79:"Gragas", 110:"Varus", 43:"Karma", 76:"Nidalee", 101:"Xerath", 150:"Gnar", 96:"KogMaw", 897:"KSante", 201:"Braum", 523:"Aphelios", 78:"Poppy", 254:"Vi", 22:"Ashe", 4:"TwistedFate", 53:"Blitzcrank", 5:"XinZhao", 131:"Diana", 154:"Zac", 2:"Olaf", 163:"Taliyah", 888:"Renata", 57:"Maokai", 32:"Amumu", 3:"Galio", 25:"Morgana" };
 const DUO_CHAMPIONS: Record<number, string> = { 115: "Ziggs", 30: "Karthus", 50: "Swain", 45: "Veigar", 910: "Hwei", 147: "Seraphine", 63: "Brand", 901: "Smolder", 117: "Lulu" };
-const key = (id: number) => CHAMPIONS[id]?.[1] ?? DUO_CHAMPIONS[id] ?? "Aatrox";
+const key = (id: number) => CHAMPIONS[id]?.[1] ?? DUO_CHAMPIONS[id] ?? COMPS_CHAMPIONS[id] ?? "Aatrox";
 const names = Object.fromEntries(Object.entries(CHAMPIONS).map(([id, [name]]) => [id, name]));
 const now = Date.now();
 let live = new URLSearchParams(location.search).has("live");
@@ -463,6 +466,37 @@ mockIPC(async (cmd, args) => {
     case "champ_select_status": return { phase: gamePhase, championId: 0, championName: "", position: "", locked: false };
     case "live_game_active": return live;
     case "live_game_view": case "live_game_live": return live ? { ...liveView, supported: gameSupported } : null;
+    // ---- comps preview fixtures ----
+    case "comps_team": {
+      const me = { puuid: "preview-self", riotId: "Swapper Demo#EUW" };
+      if (params.get("comps") === "solo") return { me, lobby: [], saved: [], suggested: [], overrides: { added: [], hidden: [] } };
+      if (params.get("comps") === "lobby") return { me, lobby: [me,
+        { puuid: "preview-1", riotId: "Player 1#DEMO" }, { puuid: "preview-2", riotId: "Player 2#DEMO" },
+        { puuid: "preview-3", riotId: "Player 3#DEMO" }, { puuid: "preview-4", riotId: "Player 4#DEMO" } ], saved: [], suggested: [], overrides: { added: [], hidden: [] } };
+      return { me, lobby: [], saved: [], suggested: [
+        { puuid: "preview-1", riotId: "Player 1#DEMO", games: 23 }, { puuid: "preview-2", riotId: "Player 2#DEMO", games: 12 },
+        { puuid: "preview-3", riotId: "Player 3#DEMO", games: 6 } ], overrides: { added: [], hidden: [] } };
+    }
+    case "comps_resolve": { const riotId = String(a.riotId ?? ""); if (!riotId.includes("#")) throw new Error("No player found for that Riot ID."); return { puuid: "preview-added", riotId }; }
+    case "comps_pools": {
+      const pools: Record<string, unknown> = {
+        "preview-self": { puuid: "preview-self", error: null, profileIconId: 4568, entries: [
+          { championId: 61, role: "mid", reason: "Played 9 of last 20", games: 9 }, { championId: 103, role: "mid", reason: "Played 4 of last 20", games: 4 },
+          { championId: 115, role: "mid", reason: "Mastery 150k", masteryPoints: 150000, masteryLevel: 5 }, { championId: 268, role: "mid", reason: "Mastery 120k", masteryPoints: 120000, masteryLevel: 4 } ] },
+        "preview-1": { puuid: "preview-1", error: null, profileIconId: 29, entries: [
+          { championId: 113, role: "jungle", reason: "Played 6 of last 20", games: 6 }, { championId: 254, role: "jungle", reason: "Mastery 130k", masteryPoints: 130000, masteryLevel: 4 } ] },
+        "preview-2": { puuid: "preview-2", error: null, profileIconId: 5432, entries: [
+          { championId: 498, role: "bot", reason: "Played 5 of last 20", games: 5 }, { championId: 222, role: "bot", reason: "Played 3 of last 20", games: 3 }, { championId: 145, role: "bot", reason: "Mastery 110k", masteryPoints: 110000, masteryLevel: 4 } ] },
+        "preview-3": { puuid: "preview-3", error: null, profileIconId: 6271, entries: [
+          { championId: 497, role: "support", reason: "Mastery 340k", masteryPoints: 340000, masteryLevel: 11 }, { championId: 111, role: "support", reason: "Played 4 of last 20", games: 4 }, { championId: 117, role: "support", reason: "Mastery 130k", masteryPoints: 130000, masteryLevel: 4 } ] },
+        "preview-4": { puuid: "preview-4", error: null, profileIconId: 4652, entries: [
+          { championId: 516, role: "top", reason: "Mastery 210k", masteryPoints: 210000, masteryLevel: 7 }, { championId: 54, role: "top", reason: "Played 3 of last 20", games: 3 }, { championId: 126, role: "top", reason: "Played 2 of last 20", games: 2 }, { championId: 164, role: "top", reason: "Mastery 105k", masteryPoints: 105000, masteryLevel: 4 } ] },
+      };
+      pools["preview-added"] = { puuid: "preview-added", error: null, profileIconId: 4568, entries: [{ championId: 61, role: "mid", reason: "Played 5 of last 20", games: 5 }] };
+      return (a.puuids as string[]).map(id => pools[id] ?? { puuid: id, entries: [], error: "Pool unavailable" });
+    }
+    case "comps_save_team": case "comps_save_overrides": return null;
+    // ---- end comps fixtures ----
     default: throw new Error(`Not mocked: ${cmd}`);
   }
 }, { shouldMockEvents: true });

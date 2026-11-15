@@ -50,11 +50,11 @@
 .fa-frame .fa-build-section .cs-skill-area > div:last-child > :nth-child(1) { grid-area: head; justify-self: end; }
 .fa-frame .fa-build-section .cs-skill-area > div:last-child > :nth-child(2) { grid-area: order; justify-self: end; }
 .fa-frame .fa-build-section .cs-skill-area > div:last-child > :nth-child(3) { grid-area: levels; margin-top: 4px; }
-.fa-frame .fa-build-section .cs-skill-grid { gap: 5px; }
+.fa-frame .fa-build-section .cs-skill-grid { gap: 3px; }
 .fa-frame .fa-build-section .fa-spells { gap: 12px; margin-bottom: 0; }
-.fa-frame .fa-build-section .cs-skill-row { grid-template-columns: 18px repeat(18, minmax(12px, 1fr)); gap: 5px; }
-.fa-frame .fa-build-section .cs-skill-row > span { font-size: 12px; }
-.fa-frame .fa-build-section .cs-skill-row > b { height: auto; aspect-ratio: 1; font-size: 12px; }
+.fa-frame .fa-build-section .cs-skill-row { grid-template-columns: 16px repeat(18, minmax(10px, 1fr)); gap: 2px; }
+.fa-frame .fa-build-section .cs-skill-row > span { font-size: 11px; }
+.fa-frame .fa-build-section .cs-skill-row > b { height: auto; aspect-ratio: 1; font-size: 10px; }
 .fa-frame .fa-build-section .cs-skill-row > b.is-filled { background: rgb(197 227 158 / .16); box-shadow: inset 0 0 0 1px rgb(197 227 158 / .5); }
 .fa-frame .fa-build-section .fa-rune-page { gap: 20px; }
 /* Runes fill their tree's width: four keystones or three runes per row. */
@@ -97,6 +97,11 @@
 .fa-frame .fa-build-section .cs-row-runes img { width: 26px !important; height: 26px !important; border-radius: 50% !important; }
 .fa-frame .fa-build-section .cs-row-runes .cs-row-sub { position: absolute; right: -2px; bottom: -2px; width: 14px !important; height: 14px !important; padding: 1px; background: #15181b; }
 .fa-frame .fa-build-section .cs-row-chip { justify-self: end; padding: 3px 7px; border-radius: 7px; font-size: 12.5px; font-weight: 700; color: var(--text-secondary); background: rgb(255 255 255 / .06); }
+/* Win-rate chips follow the app-wide preset scale (theme.css): >=54 high,
+   52-54 good, 50-52 plain, under 50 low. */
+.fa-frame .fa-build-section .cs-row-chip.wr-high { color: var(--wr-high); background: rgb(95 224 196 / .13); }
+.fa-frame .fa-build-section .cs-row-chip.wr-good { color: var(--wr-good); background: rgb(166 221 126 / .12); }
+.fa-frame .fa-build-section .cs-row-chip.wr-low { color: var(--wr-low); background: rgb(239 143 137 / .12); }
 .fa-frame .fa-build-section .cs-row-chip.up { color: var(--fa-win); background: rgb(95 207 180 / .12); }
 .fa-frame .fa-build-section .cs-row-chip.down { color: var(--fa-loss); background: rgb(239 143 137 / .12); }
 .fa-frame .fa-build-section .cs-build-entries > .cs-build-row { grid-template-columns: minmax(0, 1fr) auto auto; gap: 8px; }
@@ -139,6 +144,37 @@
 
 .cs-inferred-lane { color: var(--ui-text-3); padding: 0 10px 8px; font-size: 11px; }
 .cs-build-list > .fa-picker { margin-top: 8px; justify-content: space-between; }
+
+/* More main runes: folded into the builds list as "more +n"; opening it
+   expands ordinary build rows inline instead of a dropdown menu. */
+.fa-frame .cs-build-list > .cs-more-runes-toggle { display: flex; align-items: center; justify-content: space-between; width: 100%; min-height: 30px; margin-top: 12px; padding: 8px 8px 4px; border: 0; background: none; color: var(--text-muted); font: inherit; cursor: pointer; }
+.fa-frame .cs-build-list > .cs-more-runes-toggle:hover:not(:disabled) { color: var(--text-primary); }
+.fa-frame .cs-build-list > .cs-more-runes-toggle svg { color: var(--text-muted); transition: transform var(--ui-fast) var(--ui-ease); }
+.cs-more-runes-heading { display: inline-flex; align-items: center; gap: 7px; font-size: 11px; font-weight: 750; letter-spacing: .08em; text-transform: uppercase; }
+.cs-more-runes-count { padding: 1px 7px; border-radius: 999px; background: rgb(197 227 158 / .15); color: var(--fa-you); font-size: 11px; font-weight: 750; letter-spacing: 0; }
+.fa-frame .cs-build-list > .cs-more-runes-toggle svg { transition: transform var(--ui-fast) var(--ui-ease); }
+.fa-frame .cs-build-list > .cs-more-runes-toggle[aria-expanded="true"] svg { transform: rotate(180deg); }
+.fa-frame .cs-build-list > .cs-more-runes-toggle:disabled { opacity: .55; cursor: default; }
+.fa-frame .cs-more-runes-list { margin-top: 2px; margin-bottom: 14px; }
+.fa-frame .cs-build-section .cs-build-entries > .cs-more-rune-row { grid-template-columns: auto minmax(0, 1fr) auto; align-items: center; gap: 10px; text-align: left; }
+.cs-more-rune-tree { color: var(--text-muted); font-size: 12px; font-weight: 600; white-space: nowrap; }
+
+/* Keystone hero: the rune leads every build row on a neutral dark tile, so
+   gold/red/blue rune art keeps its contrast (tinting the tile in the tree
+   colour washed same-coloured icons out). The tree colour lives on the
+   border instead, and the secondary tree badges inside the tile's corner
+   so the next row can never clip it. */
+.cs-keystone-hero { position: relative; flex: none; display: grid; place-items: center; width: 46px; height: 46px; border: 1px solid color-mix(in srgb, var(--accent, var(--ui-line-3)) 48%, transparent); border-radius: 11px; background: #17181c; box-shadow: inset 0 1px 0 rgb(255 255 255 / .05); }
+.cs-keystone-hero > img, .cs-keystone-hero > .rune-icon-fallback { width: 40px; height: 40px; border-radius: 50%; }
+.cs-keystone-hero > .cs-keystone-hero-sub { position: absolute; z-index: 1; right: 2px; bottom: 2px; width: 18px !important; height: 18px !important; padding: 1px; border-radius: 50% !important; background: #101114; box-shadow: 0 0 0 1px var(--ui-line-3); }
+.cs-keystone-hero > .rune-icon-fallback.cs-keystone-hero-sub { width: 18px; height: 18px; padding: 0; }
+.fa-frame .fa-build-section .cs-build-entries > .cs-build-row.has-keystone { grid-template-columns: auto minmax(0, 1fr) auto auto; align-items: center; }
+.fa-frame .fa-build-section .cs-build-entries > .cs-build-row.has-keystone.is-matchup { grid-template-columns: auto auto minmax(0, 1fr) auto auto; }
+/* Other keystones: hero, then text, then tree — three columns only, stated
+   with higher specificity than the four-column has-keystone rule above so
+   no other row rule can push the text away from its icon. */
+.fa-frame .fa-build-section .cs-build-entries > .cs-build-row.cs-more-rune-row.has-keystone { grid-template-columns: auto minmax(0, 1fr) auto; }
+@media (prefers-reduced-motion: reduce) { .fa-frame .cs-build-list > .cs-more-runes-toggle svg { transition: none; } }
 
 /* The workspace stacks by its own width, not the window's: the build list beside it is fixed, so a
    window between the minimum and full screen used to squeeze runes and skill order into two thin columns.

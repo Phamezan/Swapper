@@ -96,6 +96,11 @@ function textOf(tree) {
   return Array.isArray(tree) ? tree.map(textOf).join("") : textOf(tree.props?.children);
 }
 const button = (h, text) => nodes(h.tree()).find(n => n.type === "button" && textOf(n) === text);
+async function openMoreRunes(h) {
+  nodes(h.tree()).find(n => n.props.className === "cs-more-runes-toggle").props.onClick();
+  await h.flush();
+  nodes(h.tree()).find(n => n.props.className?.includes("cs-more-rune-row")).props.onClick();
+}
 const build = () => ({ runes: fixtureView("locked").presets[0], spells: [4, 12], skillOrder: "QWE", items: { items: [], starters: [], options: [], coreGames: 100, coreWinPct: 51, coreLen: 0 } });
 const catalog = { trees: [
   { id: 8000, name: "Precision", keystones: [{ id: 8010 }], rows: [9111, 9104, 8299].map(id => ({ runes: [{ id }] })) },
@@ -408,17 +413,24 @@ test("draft more main runes excludes shown keystones and loads a chosen full bui
   const chosenItems = { ...itemBuild(), coreWinPct: 59 };
   const { h } = panel({ liveView, laneInferred: true }, { get_keystone_build: ({ keystone }) => keystone === 8128 ? chosenItems : null });
   await h.flush();
-  const picker = nodes(h.tree()).find(n => n.props.label === "More main runes");
-  assert.ok(picker);
-  assert.deepEqual(picker.props.options.map(option => option.value), ["8128"]);
+  const toggle = nodes(h.tree()).find(n => n.props.className === "cs-more-runes-toggle");
+  assert.ok(toggle, "more runes stay folded into the list");
+  assert.equal(toggle.props["aria-label"], "Show 1 more main runes");
+  assert.match(textOf(toggle), /Other keystones/);
+  assert.ok(!nodes(h.tree()).some(n => n.props.className?.includes("cs-more-rune-row")), "rows stay hidden until opened");
+  toggle.props.onClick(); await h.flush();
+  const moreRow = nodes(h.tree()).find(n => n.props.className?.includes("cs-more-rune-row"));
+  assert.ok(moreRow, "opening shows the other keystone as a build row");
+  assert.match(textOf(moreRow), /Dark Harvest/);
+  assert.match(textOf(moreRow), /250 games/);
   assert.match(textOf(h.tree()), /Builds · Top/);
   assert.match(textOf(h.tree()), /Inferred/);
-  await picker.props.onChange("8128"); await h.flush();
+  moreRow.props.onClick(); await h.flush();
   assert.deepEqual(h.calls.findLast(c => c.name === "get_keystone_build").args, {
     championId: 266, position: "top", tier: "diamond_plus", keystone: 8128, mostPlayed: runeTypes.selectionFromPreset(preset),
   });
   assert.ok(nodes(h.tree()).some(n => n.props.className === "cs-build-selected" && /Dark Harvest/.test(textOf(n))));
-  assert.ok(!nodes(h.tree()).some(n => n.props.label === "More main runes"), "hide when no other keystones remain");
+  assert.ok(!nodes(h.tree()).some(n => n.props.className === "cs-more-runes-toggle"), "hide when no other keystones remain");
   button(h, "Apply all").props.onClick(); await h.flush();
   assert.equal(h.calls.find(c => c.name === "apply_rune_page").args.selection.keystone, 8128);
 });
@@ -429,7 +441,7 @@ test("other main rune failures preserve the current build and stale responses ca
   const liveView = { ...fixtureView("locked"), keystonePresets: [preset] };
   const failed = panel({ liveView }, { get_keystone_build: () => null });
   await failed.h.flush();
-  nodes(failed.h.tree()).find(n => n.props.label === "More main runes").props.onChange("8128");
+  await openMoreRunes(failed.h);
   await failed.h.flush();
   assert.match(textOf(failed.h.tree()), /Build unavailable for this main rune/);
   assert.match(textOf(nodes(failed.h.tree()).find(n => n.props.className === "cs-build-selected")), /Most played/);
@@ -437,7 +449,7 @@ test("other main rune failures preserve the current build and stale responses ca
   const waiting = new Promise(resolve => { finish = resolve; });
   const { h, props } = panel({ liveView }, { get_keystone_build: ({ keystone }) => keystone === 8128 ? waiting : null });
   await h.flush();
-  nodes(h.tree()).find(n => n.props.label === "More main runes").props.onChange("8128");
+  await openMoreRunes(h);
   h.render({ ...props, lane: "mid" }); await h.flush();
   finish(itemBuild()); await h.flush();
   assert.match(textOf(nodes(h.tree()).find(n => n.props.className === "cs-build-selected")), /Most played/);

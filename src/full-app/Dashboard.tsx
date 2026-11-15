@@ -10,14 +10,14 @@ import { RuneIcon } from "../runes/RuneIcon";
 import { SpellIcon } from "../runes/SpellIcon";
 import { fmtAgo } from "../runes/types";
 import { useChampionArt } from "./art";
-import { benchKey, defaultQueue, deltaText, formatStat, meter, MIN_COMPARED, newestFirst, smoothPath, opponent, playTime, rankProgress, tierLabel, tiles, today, tone } from "./dashboardModel";
+import { benchKey, defaultQueue, deltaText, formatStat, meter, MIN_COMPARED, newestFirst, smoothPath, opponent, playTime, rankProgress, supportVision, tierLabel, tiles, today, tone, visionGap } from "./dashboardModel";
 import type { AccountCard, Bench, Game, LpPoint, Mmr, RoleRecord, Snapshot } from "./types";
 type ChampionRecord = Snapshot["summaries"][string]["champions"][number];
 import { Slot } from "./ui/Slot";
 import { Tooltip } from "./ui/Tooltip";
 import { EmptyState, Skeleton } from "./ui/States";
 import { fmtCompact } from "./ui/format";
-export const queueLabels: Record<string, string> = { all: "All", solo: "Solo/Duo", flex: "Flex", normal: "Normal" };
+export const queueLabels: Record<string, string> = { all: "All", solo: "Solo/Duo", flex: "Flex", normal: "Normal", clash: "Clash" };
 const roleLabels: Record<string, string> = { top: "Top", jungle: "Jungle", mid: "Mid", adc: "Bot", support: "Support" };
 
 export { crestForTier as crestSlug } from "./buildLogic";
@@ -124,7 +124,7 @@ export function Dashboard(props: Props) {
           </Fragment>)}</ol>}
       </section>
       <section className="panel" aria-labelledby="champions-title">
-        <div className="panel-head"><h2 id="champions-title">Champions &amp; roles</h2><small>{queueLabels[queue]}</small></div>
+        <div className="panel-head"><h2 id="champions-title">Champions &amp; roles</h2><small>{queueLabels[queue]} · {games.length} {games.length === 1 ? "game" : "games"}</small></div>
         {!summary.champions.length ? <p className="panel-empty">Play a game in this queue to see champions.</p> : <ul className="champ-perf">
           {summary.champions.map(c => <ChampCard key={c.id} c={c} name={name(c.id)} onOpen={() => onOpenChampion(c.id, name(c.id))} />)}
         </ul>}
@@ -159,11 +159,12 @@ function ChampCard({ c, name, onOpen }: { c: ChampionRecord; name: string; onOpe
   const [item, seen] = useSeen<HTMLLIElement>();
   const art = useChampionArt(seen ? c.id : null, "splash");
   const total = c.wins + c.losses;
-  return <li ref={item}><Tooltip label={`Open ${name} build`}><button className="ui-row" onClick={onOpen}>
+  const rate = pct(c.wins, total);
+  return <li ref={item}><Tooltip label={`Open ${name} build`}><button className={`ui-row champ-card${art ? " has-art" : ""}`} onClick={onOpen}>
     {art && <img className="champ-art" src={art} alt="" aria-hidden />}
-    <ChampionIcon id={c.id} mode="desktop" />
-    <span className="champ-perf-copy"><strong>{name}</strong><small>{c.kda.toFixed(2)} KDA · {total} {total === 1 ? "game" : "games"}</small></span>
-    <span className="champ-perf-rate"><b className={pct(c.wins, total) >= 50 ? "up" : "down"}>{pct(c.wins, total)}%</b><small>{c.wins}W {c.losses}L</small><i style={{ "--rate": `${pct(c.wins, total)}%` } as CSSProperties} aria-hidden /></span>
+    {!art && <ChampionIcon id={c.id} mode="desktop" />}
+    <span className="champ-perf-copy"><strong>{name}</strong><small><b className={`champ-kda ${c.kda >= 3 ? "up" : c.kda >= 2 ? "mid" : "down"}`}>{c.kda.toFixed(2)} KDA</b><span className="champ-record"><b>{total} {total === 1 ? "game" : "games"}</b> · <b className="up">{c.wins}W</b> <b className="down">{c.losses}L</b></span></small></span>
+    <span className="champ-perf-rate"><b className={rate >= 50 ? "up" : "down"}>{rate}%</b><i style={{ "--rate": `${rate}%` } as CSSProperties} aria-hidden /></span>
   </button></Tooltip></li>;
 }
 
@@ -179,16 +180,19 @@ function Spark({ values }: { values: number[] }) {
 
 /** Placeholder shaped like the Dashboard while the first snapshot loads. */
 export function DashboardSkeleton() {
+  // Same shape as the loaded page: one hero card (today, rank and graph over five stat tiles), then the match list.
   return <div className="dash-v2">
-    <div className="dash-top"><Skeleton label="Loading today" rows={1} height={118} /><Skeleton label="Loading rank" rows={1} height={118} /></div>
-    <Skeleton label="Loading performance" rows={1} height={170} />
+    <div className="dash-hero">
+      <div className="dash-top"><Skeleton label="Loading today" rows={1} height={250} /><Skeleton label="Loading rank" rows={1} height={250} /></div>
+      <Skeleton label="Loading performance" rows={1} height={150} />
+    </div>
     <Skeleton label="Loading match history" rows={5} height={76} />
   </div>;
 }
 
 function NoMatches({ queue, hasOthers, onShowAll }: { queue: string; hasOthers: boolean; onShowAll: () => void }) {
   const filtered = queue !== "all" && hasOthers;
-  return <EmptyState icon={<MatchupsIcon size={22} />} title={filtered ? `No ${queueLabels[queue]} games in your latest 20` : "No games yet"}
+  return <EmptyState icon={<MatchupsIcon size={22} />} title={filtered ? `No ${queueLabels[queue]} games in your latest 100` : "No games yet"}
     action={filtered ? <button className="fa-text-button" onClick={onShowAll}>Show all queues</button> : undefined}>
     Games appear a minute after the end screen.
   </EmptyState>;
@@ -307,6 +311,9 @@ export function MatchRow({ game, name, isLast, onOpen }: { game: Game; name: (id
   const [row, seen] = useSeen<HTMLLIElement>();
   const opp = opponent(game);
   const csDiff = opp ? game.cs - opp.cs : null;
+  // Supports barely farm: their row stat is vision score, not CS.
+  const vision = supportVision(game);
+  const visionDiff = visionGap(game, opp);
   const art = useChampionArt(seen ? game.championId : null, "splash");
   return <li ref={row} className={`match-row ${game.win ? "is-win" : "is-loss"}${isLast ? " is-last" : ""}`} onClick={onOpen}>
     {art && <img className="match-art" src={art} alt="" aria-hidden />}
@@ -317,20 +324,20 @@ export function MatchRow({ game, name, isLast, onOpen }: { game: Game; name: (id
     <div className="match-result">
       <p><strong>{game.win ? "Victory" : "Defeat"}</strong>{game.lpChange != null &&
         <b className={game.lpChange >= 0 ? "up" : "down"}>{game.lpChange >= 0 ? "+" : "−"}{Math.abs(game.lpChange)} LP</b>}</p>
-      <small>{queueLabels[game.queue]} · {fmtAgo(game.createdAt)} · {clock(game.duration)}</small>
+      <small>{queueLabels[game.queue]} · {fmtAgo(game.createdAt)} · <b>{clock(game.duration)}</b></small>
       {isLast && <em className="match-seen">Last opened</em>}
     </div>
     <div className="match-kda">
       <strong>{game.kills} <i>/</i> <em>{game.deaths}</em> <i>/</i> {game.assists}</strong>
-      <small className={ratio >= 3 ? "up" : ratio < 1.5 ? "down" : ""}>{ratio.toFixed(2)} KDA</small>
+      <small className={ratio >= 3 ? "up" : ratio >= 2 ? "mid" : "down"}>{ratio.toFixed(2)} KDA</small>
     </div>
     <div className="match-loadout" aria-label="Spells and keystone">
       {seen && game.spells.map((id, i) => <SpellIcon key={i} id={id} mode="desktop" />)}
       {seen && game.keystone > 0 && <RuneIcon id={game.keystone} mode="desktop" className="match-keystone" />}
     </div>
-    <div className="match-cs"><strong>{game.cs || "–"} CS</strong><small>{game.metrics[2] == null ? "per game" : `${game.metrics[2].toFixed(1)} / min`}</small></div>
+    <div className="match-cs">{vision ? <><strong>{vision.total} vision</strong><small>{vision.perMin.toFixed(1)} / min</small></> : <><strong>{game.cs || "–"} CS</strong><small>{game.metrics[2] == null ? "per game" : `${game.metrics[2].toFixed(1)} / min`}</small></>}</div>
     <Tooltip label={opp ? `Lane opponent: ${name(opp.championId)}` : "Lane opponent unclear"}><div className="match-opp">
-      {opp ? <>{seen && <ChampionIcon id={opp.championId} mode="desktop" />}<span><small>vs {name(opp.championId)}</small><b className={csDiff! >= 0 ? "up" : "down"}>{csDiff! >= 0 ? "+" : "−"}{Math.abs(csDiff!)} CS</b></span></> : <small>–</small>}
+      {opp ? <>{seen && <ChampionIcon id={opp.championId} mode="desktop" />}<span><small>vs {name(opp.championId)}</small>{vision ? (visionDiff != null && <b className={visionDiff >= 0 ? "up" : "down"}>{visionDiff >= 0 ? "+" : "−"}{Math.abs(visionDiff)} vision</b>) : <b className={csDiff! >= 0 ? "up" : "down"}>{csDiff! >= 0 ? "+" : "−"}{Math.abs(csDiff!)} CS</b>}</span></> : <small>–</small>}
     </div></Tooltip>
     <div className="match-items" aria-label="Items">
       {!game.items.length ? <small>Refresh to load items</small>

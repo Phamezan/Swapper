@@ -63,7 +63,7 @@ fn incomplete_teams_and_zero_totals_do_not_invent_percentages() {
 
 #[test]
 fn filters_modes_remakes_and_malformed_games() {
-    for queue in [400, 420, 430, 440, 480, 490] {
+    for queue in [400, 420, 430, 440, 480, 490, 700] {
         let mut v = fixture();
         v["queueId"] = json!(queue);
         assert!(eligible(&v));

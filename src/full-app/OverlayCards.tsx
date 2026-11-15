@@ -47,10 +47,9 @@ export function OverlayCards() {
         <div className={`fa-overlay-preview is-${widget.key}`}>{widget.key === "skills" ? <SkillHint />
           : widget.key === "gold" ? <img src="/overlay-gold-preview.png" alt="Gold difference preview: team gold totals with coin icons, and a blue and a red lane gap marker" loading="lazy" />
           : <img src="/overlay-fixture.png" alt={`${widget.title} preview from Swapper's native overlay fixture`} loading="lazy" />}<small>Preview</small></div>
-        <div className="fa-overlay-copy"><div><h3>{widget.title}</h3><Switch aria-label={widget.title} checked={settings[widget.key]} disabled={busy || !settings.enabled} onCheckedChange={value => void update({ [widget.key]: value })} /></div><p>{widget.description}</p></div>
+        <div className="fa-overlay-copy"><div><h3>{widget.title}</h3><Switch aria-label={widget.title} checked={settings[widget.key]} disabled={busy || !settings.enabled} onCheckedChange={value => void update({ [widget.key]: value })} /></div><p>{widget.description}</p>{widget.key === "skills" && <p className="fa-data-note">Needs a cached build for your champion, role and rank. Champions with unusual ability ranks are omitted.</p>}</div>
       </article>)}</div>
       <div className="setting-row"><div className="setting-copy"><strong>Hold to show gold</strong><p>Excludes unspent gold and consumed or sold items.</p></div><Picker label="Overlay hotkey" value={String(settings.goldHotkey)} disabled={busy || !settings.enabled || !settings.gold} onChange={value => void update({ goldHotkey: Number(value) })} options={[[9, "Tab"], [16, "Shift"], [17, "Ctrl"], [18, "Alt"], ...Array.from({ length: 12 }, (_, i) => [112 + i, `F${i + 1}`])].map(([value, label]) => ({ value: String(value), label: String(label) }))} /></div>
-      <p className="fa-data-note">Skill hints need a cached build for your champion, role and rank. Champions with unusual ability ranks are omitted.</p>
     </>}
   </div>;
 }

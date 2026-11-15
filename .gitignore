@@ -25,3 +25,10 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+# Local design and research material, not shipped
+docs/wireframes/
+docs/screenshots/
+scripts/screenshots.mjs
+scripts/screenshot-scenes.mjs
+guides-stats-research.md

@@ -11,6 +11,9 @@ const W = 400, H = 210;
 const signedLp = (lp: number) => <b><i className={lp >= 0 ? "up" : "down"} aria-hidden>{lp === 0 ? "–" : lp > 0 ? "▲" : "▼"}</i><span className="lp-graph-sr">{lp < 0 ? "Lost" : "Gained"} </span>{Math.abs(lp)} <small>LP</small></b>;
 const tone = (tier: string) => `var(--ui-tier-${crestSlug(tier)})`;
 const date = (at: number) => new Date(at).toLocaleDateString([], { day: "numeric", month: "short" });
+const time = (at: number) => new Date(at).toLocaleTimeString([], { hour: "numeric", minute: "2-digit" });
+/** Axis ends: dates, or times of day when every point falls on one date. */
+const axisLabels = (from: number, to: number) => (date(from) === date(to) ? [time(from), time(to)] : [date(from), date(to)]).filter((label, i, all) => all.indexOf(label) === i);
 
 function Rank({ point }: { point: LpPoint }) {
   return <span className="lp-graph-rank" style={{ color: tone(point.tier) }}>
@@ -77,7 +80,7 @@ export function LpGraph({ history }: { history: LpPoint[] | undefined }) {
         <small>{active.games > 0 ? `${active.games} ${active.games === 1 ? "game" : "games"}` : "Recorded rank"}</small></>}
       </div>
     </div>
-    <div className="lp-graph-dates" aria-hidden><span>{date(points[0].point.at)}</span><span>{date(last.point.at)}</span></div>
+    <div className="lp-graph-dates" aria-hidden>{axisLabels(points[0].point.at, last.point.at).map(label => <span key={label}>{label}</span>)}</div>
     <p className="lp-graph-peak"><span>Peak</span><Rank point={peak} /><small>Last 30d</small></p>
   </figure>;
 }

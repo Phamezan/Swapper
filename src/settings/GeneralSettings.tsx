@@ -121,7 +121,7 @@ export function GeneralSettings({
         <button type="button" className={manualPath ? "" : "is-on"} aria-pressed={!manualPath} onClick={() => onPathModeChange("auto")}>Auto</button>
         <button type="button" className={manualPath ? "is-on" : ""} aria-pressed={manualPath} onClick={() => onPathModeChange("manual")}>Manual</button>
       </div>
-      {!manualPath && <p className="path-status" role="status"><span className={`status-dot ${riotDetected ? "good" : "idle"}`} />{riotDetected ? "Riot Client detected" : "Riot Client not found"}</p>}
+      {!manualPath && <p className="path-status" role="status"><span className={`status-dot ${riotDetected ? "good" : "idle"}`} />{riotDetected ? "Riot Client detected" : "Riot Client not found. Choose Manual to set its path."}</p>}
       {manualPath && (
         <div className="path-input">
           <Input id="riot-path" placeholder="Path to RiotClientServices.exe" value={riotExe} onChange={(e) => onRiotExeChange(e.target.value)} onKeyDown={(e) => { if (e.key === "Enter") e.currentTarget.blur(); }} onBlur={(e) => onRiotPathCommit(e.currentTarget.value.trim() || null)} />

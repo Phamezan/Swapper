@@ -4,12 +4,13 @@ import { createRoot } from "react-dom/client";
 import { invoke, isTauri } from "@tauri-apps/api/core";
 import { Popover } from "radix-ui";
 import { listen } from "@tauri-apps/api/event";
-import { AccountsIcon, DashboardIcon, DraftIcon, MatchupsIcon, PatchNotesIcon, PlayIcon, SettingsIcon, TierlistIcon } from "./ui/icons";
+import { AccountsIcon, DashboardIcon, DraftIcon, MatchupsIcon, CompsIcon, PatchNotesIcon, PlayIcon, SettingsIcon, TierlistIcon } from "./ui/icons";
 import { BrandIcon } from "../components/BrandIcon";
 import { useRiotClientIcon } from "../riotIcon";
 import type { ChampionOption } from "../runes/types";
 import type { DashboardView, Game } from "./types";
-import { Dashboard, DashboardSkeleton, crestSlug, splitRiotId } from "./Dashboard";
+import { Dashboard, DashboardSkeleton, crestSlug, queueLabels, splitRiotId } from "./Dashboard";
+import { formatPatchDate } from "./PatchNotesModel";
 import { TitleBar } from "./TitleBar";
 import { locationTrail } from './locationTrail';
 import { useInGame } from "./LiveGameData";
@@ -37,10 +38,11 @@ import { Tooltip, TooltipProvider } from "./ui/Tooltip";
 
 const Champions = lazy(() => import("./Champions"));
 const PatchNotes = lazy(() => import("./PatchNotes"));
+const CompsPage = lazy(() => import("./Comps").then(m => ({ default: m.Comps })));
 const MatchDetail = lazy(() => import("./MatchDetail"));
 const PlayerPage = lazy(() => import('./PlayerPage'));
 type MatchLocation = `Match:${number}` | `Match:${number}:${string}`;
-type Page = "Dashboard" | "Tier list & Builds" | "Matchups" | "VODs" | "Patch notes" | MatchLocation | `Player:${string}`;
+type Page = "Dashboard" | "Tier list & Builds" | "Matchups" | "Comps" | "VODs" | "Patch notes" | MatchLocation | `Player:${string}`;
 type AppPage = "Accounts" | "Champion select" | "Settings";
 type Location = Page | AppPage;
 // Pages hosted by the flyout's own App component, and the App view each opens.
@@ -48,7 +50,7 @@ const appViews: Record<AppPage, View> = { Accounts: "accounts", "Champion select
 const appPageOf = (view: View): AppPage => view === "runes" ? "Champion select" : view === "settings" ? "Settings" : "Accounts";
 const groups: { label: string; items: [Location, typeof DashboardIcon][] }[] = [
   { label: "Overview", items: [["Dashboard", DashboardIcon]] },
-  { label: "Champions", items: [["Tier list & Builds", TierlistIcon], ["Matchups", MatchupsIcon], ["VODs", PlayIcon], ["Patch notes", PatchNotesIcon], ["Champion select", DraftIcon]] },
+  { label: "Champions", items: [["Tier list & Builds", TierlistIcon], ["Matchups", MatchupsIcon], ["Comps", CompsIcon], ["VODs", PlayIcon], ["Patch notes", PatchNotesIcon], ["Champion select", DraftIcon]] },
   { label: "Swapper", items: [["Accounts", AccountsIcon], ["Settings", SettingsIcon]] },
 ];
 const SEEN_PATCH_KEY = "pn-seen-patch";
@@ -86,7 +88,10 @@ function App() {
     else setPage(target as Page);
   }, []);
   const openVods = (request: VodRequest) => { if (request.champion && request.enemy && request.lane) setFocus({ champion: request.champion, matchup: { enemy: request.enemy.id, lane: request.lane } }); setVodRequest(request); setPage("VODs"); };
+  // Bumped by the sidebar's Comps button so an open comp returns to the overview.
+  const [compsHome, setCompsHome] = useState(0);
   const sidebarGo = (target: Location) => {
+    if (target === "Comps") setCompsHome(n => n + 1);
     if (target !== currentRef.current) { setFocus(null); go(target); return; }
     const scroller = document.querySelector<HTMLElement>(".dashboard-main")
       ?? document.querySelector<HTMLElement>(".full-app-embed .main-panel");
@@ -231,6 +236,7 @@ function App() {
     if (isTauri()) void invoke<string>("client_health").then(state => { if (mounted.current) setClientHealth(state); }).catch(() => {});
     if (isTauri()) void invoke<ChampionOption[]>("get_champion_list").then(list => { if (mounted.current) setChampions(list); }).catch(() => {});
     if (isTauri()) void invoke<string | null>("get_current_patch").then(p => { if (mounted.current) setPatch(p); }).catch(() => {});
+    if (isTauri()) void invoke("window_ready").catch(() => {});
     void refresh();
     return () => {
       mounted.current = false;
@@ -332,13 +338,14 @@ function App() {
       </aside>
       {restartDialog}
       {switching && <SwitchOverlay account={switchingAccount} name={switching.name} restart={switching.restart} />}
-      <OnboardingGate />
       <div className="full-app-embed" style={page === "app" ? undefined : { display: "none" }}><FlyoutApp fullApp={bridge} /></div>
       <main className={page === "app" ? "mv-background-host" : "dashboard-main dash-scope"}>
         {page !== "app" && <>
-        {selectedMatch ? <PageHeader
-            title={`${snapshot?.championNames[selectedMatch.championId] ?? championNames.get(selectedMatch.championId) ?? "Match"} · ${selectedMatch.win ? "Victory" : "Defeat"}`} />
-          : page !== "VODs" && <PageHeader title={playerId != null ? 'Player profile' : matchId != null ? "Match detail" : pageLabel(page)}
+        {/* Champion and result show once, in the Overview hero and the location trail; the header carries the match facts. */}
+        {selectedMatch ? <PageHeader title="Match detail" actions={<small className="updated md-header-meta">
+            {queueLabels[selectedMatch.queue] ?? selectedMatch.queue} · {Math.floor(selectedMatch.duration / 60)}:{String(selectedMatch.duration % 60).padStart(2, "0")} · <time dateTime={new Date(selectedMatch.createdAt).toISOString()} title={new Date(selectedMatch.createdAt).toLocaleString()}>{formatPatchDate(new Date(selectedMatch.createdAt).toISOString())}</time>
+          </small>} />
+          : page !== "VODs" && page !== "Comps" && <PageHeader title={playerId != null ? 'Player profile' : matchId != null ? "Match detail" : pageLabel(page)}
             actions={page === "Dashboard" && snapshot && <small className="updated">Updated {fmtAgoShort(snapshot.fetchedAt)}</small>} />}
         {error && <Notice tone="error">{error}</Notice>}
         {page === "VODs" ? null : page === "Dashboard"
@@ -351,6 +358,7 @@ function App() {
               names={snapshot?.championNames ?? Object.fromEntries(championNames)} onBack={() => travel(-1)} onOpenPlayer={riotId => go(`Player:${riotId}`)}
               onOpenMatch={game => { const target = `Match:${game.id}:${encodeURIComponent(playerId)}` as const; visitedMatches.current.set(target, game); go(target); }} /></Suspense>
           : selectedMatch ? <Suspense fallback={<Skeleton label="Loading match details" rows={4} height={64} />}><MatchDetail key={page} game={selectedMatch} riotId={matchPlayer} names={snapshot?.championNames ?? Object.fromEntries(championNames)} onOpenPlayer={riotId => go(`Player:${riotId}`)} /></Suspense>
+          : page === "Comps" ? <Suspense fallback={<Skeleton label="Loading comps" rows={6} height={72} />}><CompsPage snapshot={snapshot ?? null} champions={champions} signedIn={Boolean(signedIn)} onOpenVods={openVods} homeSignal={compsHome} /></Suspense>
           : page === "Patch notes" ? <Suspense fallback={<Skeleton label="Loading patch notes" rows={6} height={72} />}><PatchNotes /></Suspense>
           : <Suspense fallback={<Skeleton label="Loading champion tools" rows={6} height={52} />}>
               <Champions key={page === "Matchups" && focus?.matchup ? `${page}-${focus.champion?.id}-${focus.matchup.enemy}-${focus.matchup.lane}` : page}
@@ -366,6 +374,8 @@ function App() {
         </div>
       </main>
     </div>
+    {/* Outside the shell: its isolation would put the title bar and sidebar above the setup scrim. */}
+    <OnboardingGate />
   </div></AmbientArtContext.Provider></TooltipProvider>;
 }
 

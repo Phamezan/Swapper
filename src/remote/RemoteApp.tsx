@@ -640,12 +640,12 @@ export default function RemoteApp() {
                 <i />
                 {!status?.lcuConnected && <b>League offline</b>}
               </span>
-              <span className={`remote-ready ${ready ? "is-ready" : "is-bad"}`}>
+              <span className={`remote-ready ${ready ? "is-ready" : "is-bad"}`} role="status">
                 <span className="remote-ready-dot" />{ready ? "Ready" : "Check"}
               </span>
             </div>
           ) : ready ? (
-            <span className="remote-ready is-ready">
+            <span className="remote-ready is-ready" role="status">
               <span className="remote-ready-dot" />Ready
             </span>
           ) : null}
@@ -770,7 +770,7 @@ export default function RemoteApp() {
               </>
             )}
           </section>
-        ) : (
+        ) : everConnected && !swapperConnected ? null : (
           <section className="remote-waiting">
             {status?.lcuConnected && phase === "Matchmaking" ? (
               <>

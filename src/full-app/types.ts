@@ -20,7 +20,7 @@ export type Game = {
   opponent?: number | null;
 };
 export type Player = {
-  championId: number; riotId: string; me: boolean; ally: boolean; role: string;
+  championId: number; riotId: string; me: boolean; ally: boolean; role: string; puuid?: string;
   kills: number; deaths: number; assists: number; cs: number; damage: number; gold: number; vision: number; items: number[];
 };
 /** Per-game averages of a champion in a role and tier (lolalytics). */

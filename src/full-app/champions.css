@@ -42,22 +42,84 @@
 .fa-frame .champion-tools .ban .fa-rate-bar::after { background: var(--fa-loss); }
 .fa-frame .champion-tools .tier-table-wrap .skeleton-row { height: 52px; }
 
-/* One compact identity; each portrait filters every pair containing that champion. */
-.fa-duo-identity { display: flex; align-items: center; gap: 12px; }
-.fa-duo-portraits { display: flex; flex: none; gap: 4px; padding: 4px; border: 1px solid var(--ui-line-2); border-radius: var(--ui-radius-md); background: var(--ui-surface-0); }
-.fa-frame .champion-tools .fa-duo-portrait { display: grid; place-items: center; width: 40px; height: 40px; padding: 1px; border: 1px solid transparent; border-radius: var(--ui-radius-sm); background: none; cursor: pointer; }
-.fa-frame .champion-tools .fa-duo-portrait :is(.champion-icon, .champion-icon-fallback) { display: block; width: 36px; height: 36px; border-radius: calc(var(--ui-radius-sm) - 2px); }
-.fa-frame .champion-tools .fa-duo-portrait:hover, .fa-frame .champion-tools .fa-duo-portrait[aria-pressed="true"] { border-color: var(--ui-brand); background: var(--ui-brand-tint); }
-.fa-frame .champion-tools :is(.fa-duo-portrait, .fa-duo-filter button):focus-visible { outline: 2px solid var(--ui-brand); outline-offset: 2px; }
-.fa-duo-names { display: grid; gap: 4px; }
-.fa-duo-names > span { display: flex; align-items: baseline; gap: 8px; }
-.fa-duo-names strong { color: var(--ui-text-1); font-size: var(--ui-body); font-weight: 650; }
-.fa-duo-names small { color: var(--ui-text-3); font-size: var(--ui-caption); }
+/* Duos: compact vertical list. Each row's identity is a split banner (bot left,
+   support right, slanted seam) using wide splash art so faces survive the short
+   height. Columns match the solo tier list scale so both lists read as one page.
+   Each half filters every pair with that champion. */
+.fa-frame .champion-tools .fa-duo-table { width: 100%; }
+.fa-frame .champion-tools .fa-duo-table thead th { padding-inline: 12px; }
+.fa-frame .champion-tools .fa-duo-table tbody tr { cursor: default; }
+.fa-frame .champion-tools .fa-duo-table td { padding: 6px 12px; vertical-align: middle; }
+
+/* Duo absorbs extra width on wide windows; Games takes the rest, so neither
+   the banner nor the stats drift into dead space. Fixed sizes for the rest. */
+.fa-frame .champion-tools .fa-duo-table .col-rank { width: 48px; text-align: center; }
+.fa-frame .champion-tools .fa-duo-table .col-duo { width: 52%; min-width: 300px; }
+.fa-frame .champion-tools .fa-duo-table .col-tier { width: 72px; text-align: center; }
+.fa-frame .champion-tools .fa-duo-table .col-wr { width: 168px; min-width: 148px; white-space: nowrap; }
+.fa-frame .champion-tools .fa-duo-table .col-num { width: 26%; min-width: 180px; }
+
+/* Rank: quiet numeral, top three tinted (no glow). */
+.fa-frame .champion-tools .fa-duo-table .col-rank .fa-duo-rank-num { font-size: 13.5px; font-weight: 650; color: var(--ui-text-3); font-variant-numeric: tabular-nums; }
+.fa-frame .champion-tools .fa-duo-table .col-rank.is-top-1 .fa-duo-rank-num { font-size: 15px; font-weight: 750; color: #e8b45a; }
+.fa-frame .champion-tools .fa-duo-table .col-rank.is-top-2 .fa-duo-rank-num { font-size: 15px; font-weight: 750; color: #c9ced6; }
+.fa-frame .champion-tools .fa-duo-table .col-rank.is-top-3 .fa-duo-rank-num { font-size: 15px; font-weight: 750; color: #c98a5a; }
+
+/* Tier badge: same size as the solo list. */
+.fa-frame .champion-tools .fa-duo-table .fa-tier { min-width: 34px; height: 26px; font-size: 13px; font-weight: 700; border-radius: var(--ui-radius-sm); }
+
+/* Win rate: solo scale, tabular figures, delta chip inline. */
+.fa-frame .champion-tools .fa-duo-table .col-wr strong { font-size: 16px; font-weight: 720; letter-spacing: -.01em; color: var(--ui-text-1); font-variant-numeric: tabular-nums; }
+.fa-frame .champion-tools .fa-duo-table .col-wr small { margin-left: 7px; padding: 1px 7px; border-radius: 99px; font-size: 11.5px; font-weight: 650; font-variant-numeric: tabular-nums; }
+
+/* Games: big count beside a horizontal meter (win rate is % + chip, games is
+   count + meter, so the two stat columns never read as the same pattern). */
+.fa-duo-games { display: flex; align-items: center; gap: 12px; min-width: 0; }
+.fa-duo-games b { flex: none; min-width: 58px; font-size: 17px; font-weight: 760; letter-spacing: -.01em; color: var(--ui-text-1); font-variant-numeric: tabular-nums; }
+.fa-frame .champion-tools .fa-duo-table .fa-rate-bar { flex: 1 1 auto; width: auto; min-width: 32px; height: 6px; margin-top: 0; border-radius: 99px; background: rgb(255 255 255 / .07); box-shadow: inset 0 1px 2px rgb(0 0 0 / .45); }
+.fa-frame .champion-tools .fa-duo-table .fa-rate-bar::after { background: linear-gradient(90deg, rgb(197 227 158 / .45), var(--fa-you)); }
+
+/* Banner: short and wide. Splash art (wide) crops far less than square tiles. */
+.fa-duo-banner { position: relative; isolation: isolate; display: flex; align-items: flex-end; justify-content: space-between; container-type: inline-size; width: 100%; min-width: 300px; height: 76px; padding: 9px 14px; overflow: hidden; border: 1px solid var(--ui-line-2); border-radius: 10px; background: var(--ui-surface-0); box-shadow: inset 0 1px 0 rgb(255 255 255 / .04); transition: border-color var(--ui-fast) var(--ui-ease); }
+.fa-frame .champion-tools .fa-duo-table tbody tr:hover .fa-duo-banner { border-color: var(--ui-line-3); }
+.fa-duo-banner:has([aria-pressed="true"]) { border-color: var(--ui-brand-line); box-shadow: inset 0 0 0 1px var(--ui-brand-line); }
+.fa-frame .champion-tools .fa-duo-half { position: absolute; z-index: 0; top: 0; bottom: 0; left: 0; width: 54%; padding: 0; border: 0; background: none; cursor: pointer; clip-path: polygon(0 0, 100% 0, 86% 100%, 0 100%); }
+.fa-frame .champion-tools .fa-duo-half.is-support { left: auto; right: 0; clip-path: polygon(14% 0, 100% 0, 100% 100%, 0 100%); filter: drop-shadow(-2px 0 4px rgb(0 0 0 / .55)); }
+.fa-duo-art { display: block; width: 100%; height: 100%; }
+.fa-duo-art img { display: block; width: 100%; height: 100%; object-fit: cover; object-position: 50% 30%; filter: brightness(.84); transition: transform 320ms var(--ui-ease), filter var(--ui-base) var(--ui-ease); }
+.fa-duo-half:hover .fa-duo-art img { transform: scale(1.03); filter: brightness(1.02); }
+.fa-duo-half[aria-pressed="true"] .fa-duo-art img { filter: brightness(1.1) saturate(1.1); }
+.fa-duo-half:active .fa-duo-art img { transform: scale(.99); }
+.fa-frame .champion-tools .fa-duo-half:focus-visible { outline: none; }
+.fa-frame .champion-tools .fa-duo-filter button:focus-visible { outline: 2px solid var(--ui-brand); outline-offset: 2px; }
+.fa-duo-banner:has(.fa-duo-half:focus-visible) { outline: 2px solid var(--ui-brand); outline-offset: 2px; }
+
+/* Scrim sits over the art (z 1) and under the names (z 2): darkest only where
+   the names sit, so faces stay clear. */
+.fa-duo-banner::after { content: ""; position: absolute; z-index: 1; inset: 0; background: linear-gradient(0deg, rgb(9 9 12 / .88) 0%, rgb(9 9 12 / .42) 42%, transparent 68%), linear-gradient(90deg, rgb(9 9 12 / .5) 0%, transparent 24% 76%, rgb(9 9 12 / .5) 100%); pointer-events: none; }
+.fa-duo-name { position: relative; z-index: 2; display: flex; flex-direction: column; gap: 2px; min-width: 0; max-width: 47%; pointer-events: none; }
+.fa-duo-name.is-support { text-align: right; align-items: flex-end; }
+/* Hero names: the champions are the card, so their names carry it — heavy,
+   tight and lifted off the art by a hard shadow, role as a quiet caption.
+   Size follows banner width so long names shrink before they meet at the seam. */
+.fa-duo-name strong { max-width: 100%; overflow: hidden; color: #fff; font-size: clamp(16px, 5.2cqw, 22px); font-weight: 820; letter-spacing: -.02em; line-height: 1.05; white-space: nowrap; text-overflow: ellipsis; text-shadow: 0 1px 0 rgb(0 0 0 / .85), 0 2px 4px rgb(0 0 0 / .8), 0 6px 18px rgb(0 0 0 / .65); }
+.fa-duo-name small { align-self: flex-start; padding: 1px 5px; border-radius: 4px; background: rgb(5 5 8 / .55); color: rgb(255 255 255 / .88); font-size: 9.5px; font-weight: 720; text-transform: uppercase; letter-spacing: .09em; line-height: 1.5; }
+.fa-duo-name.is-support small { align-self: flex-end; }
+.fa-duo-low { flex: none; margin-left: 0; padding: 1px 6px; border-radius: 99px; background: rgb(233 194 122 / .16); color: var(--fa-gold); font-size: 11px; font-style: normal; font-weight: 700; white-space: nowrap; }
+@media (max-width: 1150px) {
+  .fa-duo-banner { min-width: 260px; height: 72px; }
+  .fa-duo-name strong { font-size: 17px; }
+  .fa-frame .champion-tools .fa-duo-table .col-duo { min-width: 260px; }
+  .fa-frame .champion-tools .fa-duo-table .col-num { min-width: 150px; }
+  .fa-frame .champion-tools .fa-duo-table .col-wr { min-width: 132px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .fa-duo-art img { transition: none; }
+  .fa-duo-half:hover .fa-duo-art img, .fa-duo-half:active .fa-duo-art img { transform: none; }
+}
 .fa-duo-filter { margin-bottom: 12px; }
 .fa-frame .champion-tools .fa-duo-filter button { display: inline-flex; align-items: center; gap: 12px; padding: 6px 12px; border: 1px solid var(--ui-brand-line); border-radius: 99px; background: var(--ui-brand-tint); color: var(--ui-text-1); font: inherit; font-size: var(--ui-label); cursor: pointer; }
 .fa-duo-filter button > span { color: var(--ui-brand); font-size: 18px; line-height: 1; }
-.fa-frame .champion-tools .fa-duo-table tbody tr { cursor: default; }
-.fa-frame .champion-tools .fa-duo-table tbody tr:focus-within { background: var(--ui-brand-tint); }
 
 /* ---------- Champion page: slimmer hero, quiet stat strip ---------- */
 .fa-frame .champion-tools .champion-hero { min-height: 176px; padding: 16px 24px 18px; }

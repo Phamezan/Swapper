@@ -105,7 +105,7 @@ body { background: var(--ui-surface-0); }
 .fa-frame[data-look] .md-your-game i { opacity: 1; }
 
 /* Pass 2: leave the artwork exposed; protect the text at its own position. */
-.fa-frame[data-look^="glass-"] .dashboard-shell :is(.ui-page-header, .md-context, .cs-build-selected, .fa-settings-heading) { background: var(--ui-region-fill); border-radius: var(--ui-radius-md); padding: 12px var(--ui-card-pad); }
+.fa-frame[data-look^="glass-"] .dashboard-shell :is(.ui-page-header, .cs-build-selected, .fa-settings-heading) { background: var(--ui-region-fill); border-radius: var(--ui-radius-md); padding: 12px var(--ui-card-pad); }
 .fa-frame[data-look^="glass-"] .dashboard-shell :is(.tool-bar .fa-picker, .fa-hero-filters .fa-picker, .cs-apply-chip, .md-tabs) { background: var(--ui-control-on-art); }
 .fa-frame[data-look^="glass-"] .dashboard-shell .champion-hero .hero-art { width: 100%; opacity: 1; mask-image: var(--ui-hero-fade); -webkit-mask-image: var(--ui-hero-fade); }
 .fa-frame[data-look^="glass-"] .dashboard-shell .champion-hero::after { background: linear-gradient(90deg, rgb(9 9 13 / .92) 0 22%, rgb(9 9 13 / .42) 40%, transparent 65%), linear-gradient(0deg, var(--ui-card), transparent 60%); }
@@ -515,6 +515,8 @@ body { background: var(--ui-surface-0); }
 .fa-settings-heading p { margin-top: 6px; }
 .fa-settings-group { padding: 4px 24px 12px; border: 1px solid var(--fa-line); border-radius: var(--fa-radius); background: var(--fa-card-bg); box-shadow: var(--fa-shadow); }
 .fa-settings-group .setting-row { min-height: 78px; gap: 24px; padding: 18px 0; border-color: var(--fa-line); }
+.fa-settings-group > .setting-row:last-child { border-bottom: 0; }
+.fa-settings-group > .update-section:first-child { margin-top: 0; padding-top: 0; border-top: 0; }
 .fa-settings-group .setting-copy, .fa-settings-group .setting-copy label { font-size: var(--fa-body); }
 .fa-settings-group .setting-copy strong { font-weight: 600; }
 .fa-settings-group .setting-copy p { margin-top: 5px; color: var(--text-secondary); font-size: var(--fa-small); }

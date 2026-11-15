@@ -255,6 +255,8 @@ Your settings file was not changed. Close programs that may be using it and star
             // and low memory mode create their window on first open.
             if full_app::window_settings(app.handle().clone()).create_flyout_at_startup() {
                 create_flyout(app.handle(), None)?;
+            } else if full_app::enabled(app.handle()) && !std::env::args().any(|a| a == AUTOSTART_ARG) {
+                let _ = full_app::open(app.handle(), None);
             }
             Ok(())
         })
@@ -315,6 +317,11 @@ Your settings file was not changed. Close programs that may be using it and star
                 full_app::open_full_app,
                 full_app::window_ready,
                 full_app::dashboard_snapshot,
+                full_app::comps::comps_team,
+                full_app::comps::comps_pools,
+                full_app::comps::comps_save_team,
+                full_app::comps::comps_save_overrides,
+                full_app::comps::comps_resolve,
                 match_detail::full_app_match_detail,
                 full_app::search::full_app_search_players,
                 full_app::search::full_app_player_profile,

@@ -27,6 +27,13 @@ export const MatchupsIcon = (p: IconProps) => <Icon {...p}>
   <circle className="ic-duo" cx="19.25" cy="19.25" r="1.25" />
 </Icon>;
 
+export const CompsIcon = (p: IconProps) => <Icon {...p}>
+  <rect className="ic-duo" x="3.5" y="3.5" width="7" height="7" rx="2" />
+  <rect x="13.5" y="3.5" width="7" height="7" rx="2" />
+  <rect x="3.5" y="13.5" width="7" height="7" rx="2" />
+  <rect x="13.5" y="13.5" width="7" height="7" rx="2" />
+</Icon>;
+
 export const DraftIcon = (p: IconProps) => <Icon {...p}>
   <rect className="ic-duo" x="9.5" y="3" width="11" height="15" rx="2" />
   <path d="M9.5 6.5H5.5a2 2 0 0 0-2 2V19a2 2 0 0 0 2 2H14a2 2 0 0 0 2-2v-1" />

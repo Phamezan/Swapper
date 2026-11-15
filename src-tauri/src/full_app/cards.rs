@@ -15,7 +15,7 @@ const MAX_FILE_BYTES: u64 = 256 * 1024;
 #[serde(rename_all = "camelCase")]
 pub struct Card {
     pub rank: Option<Rank>,
-    /// Wins and losses over the recent Rift games in the snapshot (up to 20).
+    /// Wins and losses over the recent Rift games in the snapshot (up to 100).
     pub wins: u64,
     pub losses: u64,
     /// When the newest of those games ended (ms), 0 if none.

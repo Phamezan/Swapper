@@ -9,7 +9,7 @@ use std::{collections::BTreeMap, path::PathBuf, sync::OnceLock, time::Duration};
 
 mod online;
 pub mod live;
-mod season;
+pub mod season;
 
 const LIMIT: usize = 8;
 const CLOSED: &str = "Open League Client to load a profile. Showing saved players only.";

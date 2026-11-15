@@ -145,7 +145,7 @@ export function Onboarding({ onClose }: { onClose: () => void }) {
   const onKeyDown = (event: React.KeyboardEvent) => {
     if (event.key === "Escape") { event.preventDefault(); setConfirmSkip(true); return; }
     if (event.key !== "Tab" || !dialog.current) return;
-    const items = [...dialog.current.querySelectorAll<HTMLElement>("button:not(:disabled), h2[tabindex]")];
+    const items = [...dialog.current.querySelectorAll<HTMLElement>("button:not(:disabled), h2[tabindex]")].filter(item => !item.closest("[inert]"));
     const first = items[0], last = items[items.length - 1];
     if (event.shiftKey && document.activeElement === first) { event.preventDefault(); last.focus(); }
     else if (!event.shiftKey && document.activeElement === last) { event.preventDefault(); first.focus(); }
@@ -194,17 +194,19 @@ export function Onboarding({ onClose }: { onClose: () => void }) {
         </>}
         {failedToSave && <div className="ob-error" role="alert">{errors.map(error => <p key={error}>{error}</p>)}</div>}
       </div>
-      {confirmSkip ? <footer className="ob-confirm" role="alertdialog" aria-label="Skip setup">
+      {confirmSkip && <footer className="ob-confirm" role="alertdialog" aria-label="Skip setup">
         <p>Skip setup? Swapper keeps its defaults. You can run it again from Settings → General.</p>
         <Button variant="outline" className="ob-quiet" onClick={() => setConfirmSkip(false)} autoFocus>Keep going</Button>
         <Button disabled={saving} onClick={() => void skip()}>Skip setup</Button>
-      </footer> : <footer>
+      </footer>}
+      {/* Stays in place under the confirmation, so asking never resizes the card. */}
+      <footer inert={confirmSkip}>
         <Button variant="ghost" className="ob-quiet" disabled={saving} onClick={() => setConfirmSkip(true)}>Skip setup</Button>
         <span />
         {step > 0 && !failedToSave && <Button variant="outline" className="ob-quiet" disabled={saving} onClick={() => setStep(clampStep(step - 1))}>Back</Button>}
         {failedToSave ? <Button onClick={onClose}>Close</Button>
           : <Button disabled={!choices || saving} onClick={() => last ? void finish() : setStep(clampStep(step + 1))}>{last ? (saving ? "Saving…" : "Done") : "Next"}</Button>}
-      </footer>}
+      </footer>
     </div>
   </div>;
 }

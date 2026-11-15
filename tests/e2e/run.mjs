@@ -355,7 +355,7 @@ async function main() {
     assert.equal(await page.evaluate("document.querySelector('#md-tab-Overview').getAttribute('aria-selected')"), 'true');
     assert.deepEqual(await page.evaluate("[...document.querySelectorAll('.md-tabs button')].map(el => el.textContent)"), ['Overview', 'Scoreboard', 'Loadout', 'Stats', 'Graphs']);
     assert.equal(await page.evaluate("document.querySelectorAll('.md-team').length"), 0);
-    await page.text('.md-context', 'Solo/Duo');
+    await page.text('.md-header-meta', 'Solo/Duo');
     // ---- end matchdetail default ----
     await audit();
     await screenshot("match-detail");
@@ -534,7 +534,7 @@ async function main() {
     await matchPreview('?detail-flex&detail-rank-fallback&detail-unranked&detail-rank-missing-lp');
     await page.click('.match-champ');
     await page.click('#md-tab-Scoreboard');
-    await page.text('.md-context', 'Flex');
+    await page.text('.md-header-meta', 'Flex');
     const ranks = await page.evaluate("[...document.querySelectorAll('.md-rank')].map(el => ({label: el.textContent, tooltip: el.dataset.tooltip}))");
     assert.equal(ranks[0].tooltip, 'Current Flex rank');
     assert.equal(ranks[1].label, 'Unranked');
@@ -575,10 +575,14 @@ async function main() {
     await page.visible(".tier-table tbody tr");
     await page.text('.location-trail [aria-current="page"]', 'Tierlist');
   });
-  await check("Tierlist Duos groups paired portraits and filters by either champion", async () => {
+  await check("Tierlist Duos shows paired banner art and filters by either champion", async () => {
+    if (!await page.evaluate("!!document.querySelector('.role-tabs')")) {
+      await navigate(fullApp, '.match-row');
+      await nav('Tierlist', '.tier-table tbody tr');
+    }
     await page.click('.role-tabs button', 'Duos');
     await page.visible('.fa-duo-table tbody tr');
-    await page.wait("Array.from(document.querySelectorAll('.fa-duo-table tbody tr')).every(row => row.querySelectorAll('img.champion-icon').length === 2)", 'two champion portraits per duo');
+    await page.wait("document.querySelectorAll('.fa-duo-table tbody tr:first-child .fa-duo-half img').length === 2 && Array.from(document.querySelectorAll('.fa-duo-table tbody tr')).every(row => row.querySelectorAll('button.fa-duo-half').length === 2)", 'two champion images per duo');
     await page.text('.fa-duo-table tbody tr:first-child', 'Jinx');
     await page.text('.fa-duo-table tbody tr:first-child', 'Milio');
     await page.text('.fa-duo-table tbody tr:first-child', '54.8%');
@@ -586,8 +590,8 @@ async function main() {
       await cdp.send('Emulation.setDeviceMetricsOverride', { width, height: 900, deviceScaleFactor: 1, mobile: false });
       await page.settle();
       assert.deepEqual(await page.evaluate(`(${horizontalOverflow.toString()})()`), [], `${width}px duo layout`);
-      const pair = await page.evaluate("(() => { const row = document.querySelector('.fa-duo-table tbody tr'); const group = row.querySelector('.fa-duo-portraits'); return { portraits: [...row.querySelectorAll('img')].map(img => img.getBoundingClientRect().width), groupWidth: group?.getBoundingClientRect().width }; })()");
-      assert.ok(pair.portraits.every(width => width >= 32) && pair.groupWidth < 100, `${width}px: portraits must read as a compact pair`);
+      const pair = await page.evaluate("(() => { const row = document.querySelector('.fa-duo-table tbody tr'); const halves = [...row.querySelectorAll('button.fa-duo-half')]; return { halves: halves.length, names: [...row.querySelectorAll('.fa-duo-name strong')].map(n => n.textContent), support: halves[1]?.classList.contains('is-support') }; })()");
+      assert.ok(pair.halves === 2 && pair.support && pair.names.join() === 'Jinx,Milio', `${width}px: banner must show the bot and support halves`);
       if (width !== 1650) await screenshot('tierlist-duos-second-pass', width, 900);
     }
     await cdp.send('Emulation.setDeviceMetricsOverride', { width: 1280, height: 820, deviceScaleFactor: 1, mobile: false });
@@ -606,7 +610,7 @@ async function main() {
     await page.text('.fa-duo-filter', 'With Ziggs');
     await page.type('[aria-label="Search duo"]', 'mIlIo');
     await page.wait("document.querySelectorAll('.fa-duo-table tbody tr').length === 1", 'champion filter combines with search');
-    await page.click('.fa-duo-table th button', 'Games together');
+    await page.click('.fa-duo-table th button', 'Games');
     await page.text('.fa-duo-table tbody tr', 'Ziggs');
     await page.click('button[aria-label="Clear champion filter"]');
     await page.wait("document.querySelectorAll('.fa-duo-table tbody tr').length === 5", 'chip clears only champion filter');
@@ -631,7 +635,7 @@ async function main() {
     await cdp.send('Input.dispatchKeyEvent', { type: 'keyDown', key: 'Backspace', windowsVirtualKeyCode: 8 });
     await cdp.send('Input.dispatchKeyEvent', { type: 'keyUp', key: 'Backspace', windowsVirtualKeyCode: 8 });
     await page.wait("document.querySelectorAll('.fa-duo-table tbody tr').length === 17", 'cleared duo search');
-    await page.click('.fa-duo-table th button', 'Games together');
+    await page.click('.fa-duo-table th button', 'Games');
     await page.text('.fa-duo-table tbody tr:nth-child(2)', 'Jinx');
     await page.click('.fa-duo-table th button', 'Rank');
     await page.text('.fa-duo-table tbody tr:nth-child(2)', 'Vayne');
@@ -872,7 +876,7 @@ async function main() {
     assert.ok(await page.evaluate("[...document.querySelectorAll('.mv-cell-chips')].every(cell => !cell.querySelector('.mv-moments, .mv-chip'))"), 'the right column contains only the result');
 
     assert.ok(await page.evaluate("![...document.querySelectorAll('.mv-filters .fa-picker')].some(b => /Sort|patch first|Shortest|Longest/.test(b.getAttribute('aria-label')))"), 'no sort picker');
-    assert.ok(await page.evaluate("[...document.querySelectorAll('.mv-vod-row')].every(row => row.getBoundingClientRect().height <= 64)"), 'one dense row per VOD');
+    assert.ok(await page.evaluate("[...document.querySelectorAll('.mv-vod-row')].every(row => row.getBoundingClientRect().height <= 88)"), 'one dense row per VOD');
     await page.evaluate("document.querySelector('.mv-vod-list').scrollTop = 1e6");
     await page.wait("document.querySelectorAll('.mv-vod-row').length === 120", 'scrolling renders the next step');
     await page.click('button[aria-label^="Opponent:"]');
@@ -887,7 +891,7 @@ async function main() {
     await screenshot('vod-library-filtered');
     await page.cdp.send('Emulation.setDeviceMetricsOverride', { width: 1000, height: 700, deviceScaleFactor: 1, mobile: false });
     await page.settle();
-    assert.ok(await page.evaluate("[...document.querySelectorAll('.mv-vod-row')].every(row => row.querySelector('.mv-who-line strong').checkVisibility() && row.querySelector('.mv-cell-length').checkVisibility() && row.scrollWidth <= row.clientWidth && row.getBoundingClientRect().height <= 64)"), 'small windows keep player, length and one dense row without overflow');
+    assert.ok(await page.evaluate("[...document.querySelectorAll('.mv-vod-row')].every(row => row.querySelector('.mv-who-line strong').checkVisibility() && row.querySelector('.mv-cell-length').checkVisibility() && row.scrollWidth <= row.clientWidth && row.getBoundingClientRect().height <= 88)"), 'small windows keep player, length and one dense row without overflow');
     await audit();
     await screenshot('vod-library-filtered-small', 1000, 700);
     await page.cdp.send('Emulation.setDeviceMetricsOverride', { width: 1280, height: 820, deviceScaleFactor: 1, mobile: false });
@@ -1082,7 +1086,7 @@ async function main() {
     await page.evaluate("window.previewGamePhase('InProgress')");
     await page.text('nav button[aria-current="page"]', 'Draft');
     // The lazy Live Game page must commit before the game ends; otherwise the matchup page never unmounts and the next check inherits it.
-    await page.visible(':is(.lg, .lg-empty)');
+    await page.visible(':is(.lg, .lg-empty, .ui-notice)');
     await page.evaluate("window.previewGamePhase('None')");
   });
   await check("Matchups champion grid fills the page at desktop widths", async () => {
@@ -1910,7 +1914,7 @@ async function main() {
     await page.text(".fa-draft-page", "Swapper's draft and live game work for Summoner's Rift games.");
     assert.equal(await page.evaluate("document.querySelectorAll('.cs-slot').length"), 0);
     await page.evaluate("window.previewGamePhase('GameStart', false)");
-    await page.text(".lg-empty", "Swapper's draft and live game work for Summoner's Rift games.");
+    await page.text(".ui-notice", "Swapper's draft and live game work for Summoner's Rift games.");
     assert.equal(await page.evaluate("document.querySelectorAll('.lg-row').length"), 0);
   });
 
@@ -1946,14 +1950,17 @@ async function main() {
     await page.text('.cs-list-tabs', 'Builds · Top');
     await page.visible('button[aria-label="Top"][aria-pressed="true"]');
     await page.visible('.cs-inferred-lane[data-tooltip]');
-    await page.visible('button[aria-label="More main runes: Choose"]');
+    await page.visible('.cs-more-runes-toggle');
+    await page.text('.cs-more-runes-toggle', 'Other keystones');
+    assert.equal(await page.evaluate("!!document.querySelector('.cs-more-rune-row')"), false, 'more runes start folded');
     assert.equal(await page.evaluate("window.__draftBuildCalls.some(c=>c.cmd==='get_runes' && c.args?.position==='mid')"), false);
-    await page.click('button[aria-label="More main runes: Choose"]');
-    await page.text('.fa-picker-option', 'Conqueror');
-    await page.click('.fa-picker-option');
+    await page.click('.cs-more-runes-toggle');
+    await page.text('.cs-more-rune-row', 'Conqueror');
+    assert.ok(await page.evaluate("(() => { const row = document.querySelector('.cs-more-rune-row'); const hero = row.querySelector('.cs-keystone-hero').getBoundingClientRect(); const text = row.querySelector('.cs-row-text').getBoundingClientRect(); const gap = text.left - hero.right; return gap >= 0 && gap <= 16; })()"), 'other keystone text sits beside its icon');
+    await page.click('.cs-more-rune-row');
     await page.text('.cs-build-selected', 'Conqueror');
     assert.ok(await page.evaluate("window.__draftBuildCalls.some(c=>c.cmd==='get_keystone_build' && c.args?.championId===126 && c.args.position==='top' && c.args.keystone===8010)"));
-    assert.equal(await page.evaluate("!!document.querySelector('button[aria-label^=\"More main runes:\"]')"), false);
+    assert.equal(await page.evaluate("!!document.querySelector('.cs-more-runes-toggle')"), false, 'no more runes left to expand');
     await page.click('.cs-apply-bar .fa-primary');
     await page.wait("window.__draftBuildCalls.some(c=>c.cmd==='apply_rune_page' && c.args.selection.keystone===8010)", 'chosen main rune applies');
   });

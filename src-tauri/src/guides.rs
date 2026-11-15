@@ -207,7 +207,7 @@ impl SharedGuideCache {
         let index = if data.base.is_empty() { offline_index.clone() } else { data.index.clone().or_else(|| offline_index.clone()) };
         let Some(index) = index else { return vec![] };
         let mut vods = vec![];
-        for (id, entry) in index.champions.iter().filter(|(_, entry)| entry.vods.unwrap_or(0) > 0) {
+        for (id, _) in index.champions.iter().filter(|(_, entry)| entry.vods.unwrap_or(0) > 0) {
             let champion = id.parse::<i64>().expect("validated index id");
             let bytes = if data.base.is_empty() { None } else { data.cached(champion).map(|(_, bytes)| bytes) }
                 .or_else(|| offline_index.as_ref().and_then(|i| i.champions.get(id))

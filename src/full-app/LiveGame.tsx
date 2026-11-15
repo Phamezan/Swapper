@@ -12,6 +12,7 @@ import { LiveGamePlayer } from "./LiveGamePlayer";
 import { Tooltip } from "./ui/Tooltip";
 import "./live-game.css";
 import { UNSUPPORTED_GAME } from "./LiveGameModel";
+import { Notice } from "./ui/States";
 
 const roleNames: Record<string, string> = { top: "Top", jungle: "Jungle", mid: "Mid", adc: "Bot", support: "Support" };
 
@@ -29,7 +30,7 @@ export function LiveGameContent({ view, error, loaded, championNames, readOnly =
   const player = view?.players.find(p => p.key === selected) ?? null;
   const selfSide = view?.players.find(p => p.isSelf)?.side;
   const fetched = view?.players.filter(p => p.status !== "pending").length ?? 0;
-  if (view?.supported === false) return <section className="empty lg-empty"><p>{UNSUPPORTED_GAME}</p></section>;
+  if (view?.supported === false) return <Notice>{UNSUPPORTED_GAME}</Notice>;
   if (!view) {
     return <section className="empty lg-empty">
       <BrandIcon size={52} />
@@ -105,8 +106,8 @@ function Row({ player: p, live, onOpen }: { player: Player; live: boolean; onOpe
         </span>
         <span className="lg-name">
           {hidden ? <strong className="lg-hidden-name"><EyeOff size={14} aria-hidden />Hidden player</strong>
-            : <strong><span className="riot-name">{name}</span><span className="riot-tag">{tag}</span>{p.isSelf && <em className="lg-you">You</em>}</strong>}
-          <span className="lg-player-meta"><small>{p.championName}{p.summonerLevel ? ` · Lv ${p.summonerLevel}` : ""}</small>
+            : <strong><span className="riot-name">{name}</span><span className="riot-tag">{tag}</span></strong>}
+          <span className="lg-player-meta">{p.isSelf && <em className="lg-you">You</em>}<small>{p.championName}{p.summonerLevel ? ` · Lv ${p.summonerLevel}` : ""}</small>
             <Tooltip label={h?.mainRole ? `Usually ${roleNames[h.mainRole[0]]} (${h.mainRole[1]} of ${h.form.games}, estimated)${assigned ? `; playing ${roleNames[assigned]}` : ""}` : assigned ? `Playing ${roleNames[assigned]}` : undefined}>
               <span className="lg-role">
                 {h?.mainRole ? <><RoleIcon role={h.mainRole[0]} size={14} mode="desktop" /><small>{h.mainRole[1]}/{h.form.games}</small></> : assigned ? <RoleIcon role={assigned} size={14} mode="desktop" /> : null}

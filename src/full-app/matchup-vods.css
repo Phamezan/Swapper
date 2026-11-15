@@ -5,13 +5,13 @@
 .mv-segment button { display: inline-flex; align-items: center; gap: 6px; padding: 0 10px; white-space: nowrap; }
 .mv-segment small { color: var(--ui-text-3); font-size: 12px; font-weight: 500; font-variant-numeric: tabular-nums; }
 .mv-segment button.is-on small { color: inherit; opacity: .75; }
-.mv-filters { position: relative; isolation: isolate; display: flex; flex-direction: column; justify-content: space-between; flex-shrink: 0; gap: 20px; min-height: 152px; padding: 20px 22px; overflow: hidden; border: 1px solid var(--ui-line-2); border-radius: var(--ui-radius-md); background: var(--ui-surface-1); }
+.mv-filters { position: relative; isolation: isolate; display: flex; flex-direction: column; justify-content: center; flex-shrink: 0; gap: 18px; min-height: 152px; padding: 20px 22px; overflow: hidden; border: 1px solid var(--ui-line-2); border-radius: var(--ui-radius-md); background: var(--ui-surface-1); }
 .mv-banner-art { position: absolute; inset: 0 0 0 auto; z-index: -2; width: 75%; height: 100%; object-fit: cover; object-position: 70% 30%; }
 .mv-filters::before { content: ''; position: absolute; inset: 0; z-index: -1; background: linear-gradient(90deg, var(--ui-surface-1) 15%, color-mix(in srgb, var(--ui-surface-1) 85%, transparent) 45%, color-mix(in srgb, var(--ui-surface-1) 35%, transparent)), linear-gradient(0deg, var(--ui-surface-1), transparent); pointer-events: none; }
 .mv-banner-top, .mv-banner-bottom, .mv-banner-matchup, .mv-filter-chips { display: flex; align-items: center; flex-wrap: wrap; gap: 10px; min-width: 0; }
 .mv-banner-top { justify-content: space-between; gap: 16px; }
 .mv-banner-matchup { gap: 14px; }
-.fa-frame .mv-filters .mv-champion-picker { min-height: 42px; max-width: 100%; padding: 0; border: 0; background: transparent; box-shadow: none; color: var(--ui-text-1); font-size: 26px; font-weight: 700; letter-spacing: -.03em; white-space: normal; text-align: left; }
+.fa-frame .mv-filters .mv-champion-picker { min-height: 42px; max-width: 100%; padding: 0; border: 0; background: transparent; box-shadow: none; color: var(--ui-text-1); font-size: 28px; font-weight: 760; letter-spacing: -.03em; white-space: normal; text-align: left; }
 .mv-banner-vs { color: var(--ui-text-3); font-size: 11px; font-weight: 700; letter-spacing: .08em; }
 .fa-frame .mv-filters .mv-opponent-picker { min-height: 36px; max-width: 100%; padding: 4px 10px; border: 1px solid var(--ui-line-3); border-radius: var(--ui-radius-sm); background: color-mix(in srgb, var(--ui-surface-1) 70%, transparent); color: var(--ui-text-1); font-size: 15px; white-space: normal; }
 .fa-frame .mv-filters .mv-opponent-picker.is-any { border-style: dashed; color: var(--ui-text-2); }
@@ -20,7 +20,7 @@
 .fa-frame .mv-player-tabs button { min-height: 42px; padding: 0 2px; border: 0; border-bottom: 2px solid transparent; border-radius: 0; background: transparent; color: var(--ui-text-2); font: inherit; font-size: 13px; font-weight: 600; cursor: pointer; }
 .fa-frame .mv-player-tabs button.is-on { border-bottom-color: var(--ui-brand); color: var(--ui-brand); }
 .mv-lanes { display: flex; align-items: center; flex-wrap: wrap; gap: 3px; padding-right: 12px; border-right: 1px solid var(--ui-line-3); }
-.mv-lanes button { display: grid; place-items: center; width: 30px; height: 30px; padding: 0; border: 1px solid transparent; border-radius: var(--ui-radius-sm); background: transparent; color: var(--ui-text-2); cursor: pointer; }
+.mv-lanes button { display: grid; place-items: center; width: 32px; height: 32px; padding: 0; border: 1px solid transparent; border-radius: var(--ui-radius-sm); background: transparent; color: var(--ui-text-2); cursor: pointer; }
 .mv-lanes button[aria-pressed="true"] { border-color: var(--ui-brand); background: var(--ui-brand-tint); color: var(--ui-brand); }
 .mv-filter-chips { gap: 6px; }
 .fa-frame .mv-filters .mv-filter-chip { display: inline-flex; align-items: center; justify-content: center; gap: 6px; min-height: 30px; padding: 2px 10px; border: 1px solid var(--ui-line-3); border-radius: 999px; background: color-mix(in srgb, var(--ui-surface-1) 85%, transparent); color: var(--ui-text-2); font: inherit; font-size: 12px; cursor: pointer; }
@@ -34,20 +34,24 @@
   .mv-lanes { border-right: 0; padding-right: 0; }
   .mv-filter-chips { flex-basis: 100%; }
 }
-.mv-match-count { margin-left: auto; color: var(--ui-text-3); font-size: 12px; font-variant-numeric: tabular-nums; white-space: nowrap; }
+.mv-match-count { margin-left: auto; padding: 4px 9px; border: 1px solid var(--ui-line-2); border-radius: 999px; background: var(--ui-surface-2); color: var(--ui-text-2); font-size: 12px; font-weight: 650; font-variant-numeric: tabular-nums; white-space: nowrap; }
 .mv-empty { display: flex; flex-direction: column; align-items: start; gap: 10px; padding: 24px 0; color: var(--ui-text-2); font-size: 13px; }
 .mv-empty > p { margin: 0; }
 .mv-text-button { display: inline-flex; align-items: center; gap: 4px; padding: 0; border: 0; background: none; color: var(--ui-brand); font: inherit; font-size: 13px; cursor: pointer; }
-/* ---- VOD table: one dense row per VOD, thumbnail first, matchup leads ---- */
-.mv-table { --mv-thumb: 88px; --mv-cols: var(--mv-thumb) minmax(220px, 1.3fr) minmax(190px, 1.2fr) minmax(120px, .8fr) 72px 64px; --mv-gap: 16px;
+/* ---- VOD table: one dense row per VOD, thumbnail first, matchup leads.
+   Rank/Patch/Result are fixed-width so they stay grouped at the right edge
+   (inside the frame) instead of drifting apart on wide windows. ---- */
+.mv-table { --mv-thumb: 128px; --mv-cols: var(--mv-thumb) minmax(250px, 1fr) minmax(200px, .65fr) 188px 108px; --mv-gap: 16px;
   display: flex; flex-direction: column; flex: 1; min-height: 0; border: 1px solid var(--ui-line-2); border-radius: var(--ui-radius-md); background: var(--ui-surface-1); overflow: hidden; }
-.mv-table:not(.is-wide) { --mv-cols: var(--mv-thumb) minmax(220px, 1.4fr) minmax(120px, .8fr) 72px 64px; }
-.mv-vod-head, .mv-vod-row { display: grid; grid-template-columns: var(--mv-cols); align-items: center; gap: var(--mv-gap); padding: 0 16px 0 10px; }
-.mv-vod-head { flex-shrink: 0; height: 30px; border-bottom: 1px solid var(--ui-line-2); color: var(--ui-text-3); font-size: 11px; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; scrollbar-gutter: stable; overflow: hidden; }
+.mv-table.has-result { --mv-cols: var(--mv-thumb) minmax(250px, 1fr) minmax(200px, .65fr) 188px 108px 76px; }
+.mv-table:not(.is-wide) { --mv-cols: var(--mv-thumb) minmax(250px, 1fr) 188px 108px; }
+.mv-table:not(.is-wide).has-result { --mv-cols: var(--mv-thumb) minmax(250px, 1fr) 188px 108px 76px; }
+.mv-vod-head, .mv-vod-row { display: grid; grid-template-columns: var(--mv-cols); align-items: center; gap: var(--mv-gap); padding: 0 20px 0 10px; }
+.mv-vod-head { flex-shrink: 0; height: 32px; border-bottom: 1px solid var(--ui-line-2); color: var(--ui-text-3); font-size: 11px; font-weight: 650; letter-spacing: .07em; text-transform: uppercase; scrollbar-gutter: stable; overflow: hidden; }
 .mv-vod-head > .is-end { text-align: right; }
 .mv-vod-list { flex: 1; min-height: 0; margin: 0; padding: 0; list-style: none; overflow-y: auto; scrollbar-width: thin; scrollbar-gutter: stable; }
 .mv-vod-list > li + li { border-top: 1px solid var(--ui-line-1); }
-.mv-vod-row { width: 100%; min-height: 62px; padding-block: 6px; border: 0; background: none; color: var(--ui-text-2); font-size: 14px; line-height: 20px; text-align: left; cursor: pointer; box-shadow: inset 3px 0 transparent; transition: background var(--ui-fast); }
+.mv-vod-row { width: 100%; min-height: 76px; padding-block: 2px; border: 0; background: none; color: var(--ui-text-2); font-size: 14px; line-height: 20px; text-align: left; cursor: pointer; box-shadow: inset 3px 0 transparent; transition: background var(--ui-fast); }
 .mv-vod-row[data-result="win"] { box-shadow: inset 3px 0 var(--ui-win); }
 .mv-vod-row[data-result="loss"] { box-shadow: inset 3px 0 var(--ui-loss); }
 .mv-vod-row:hover, .mv-vod-row.is-hover { background: var(--ui-surface-hover); }
@@ -57,37 +61,45 @@
 .mv-vod-row > span { min-width: 0; }
 .mv-vod-row small { display: block; overflow: hidden; color: var(--ui-text-3); font-size: 12px; line-height: 16px; text-overflow: ellipsis; white-space: nowrap; }
 
-/* Thumbnail: 16:9, length badge bottom right like every video site, play glyph on hover/focus. */
-.mv-thumb { position: relative; display: grid; place-items: center; width: var(--mv-thumb); aspect-ratio: 16 / 9; overflow: hidden; border-radius: var(--ui-radius-xs); background: linear-gradient(135deg, var(--ui-surface-3), var(--ui-surface-2)); box-shadow: inset 0 0 0 1px var(--ui-line-2); }
-.mv-thumb > img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+/* Thumbnail: 16:9 filling the row height, length badge bottom right like
+   every video site, play glyph on hover/focus. */
+.mv-thumb { position: relative; display: grid; place-items: center; width: var(--mv-thumb); aspect-ratio: 16 / 9; overflow: hidden; border-radius: 8px; background: linear-gradient(135deg, var(--ui-surface-3), var(--ui-surface-2)); box-shadow: inset 0 0 0 1px var(--ui-line-2); }
+.mv-thumb > img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; transition: transform 320ms var(--ui-ease); }
+.mv-vod-row:hover .mv-thumb > img { transform: scale(1.04); }
 .mv-thumb > .mv-thumb-splash { object-position: 72% 22%; }
 .mv-thumb-shade { position: absolute; inset: 0; background: linear-gradient(to right, rgb(0 0 0 / .08), rgb(0 0 0 / .45)); }
-.mv-thumb-play { position: absolute; inset: 0; display: grid; place-items: center; background: rgb(0 0 0 / .35); color: #fff; opacity: 0; transition: opacity var(--ui-fast); }
-.mv-thumb-play > svg { width: 26px; height: 26px; padding: 7px 6px 7px 8px; border-radius: 50%; background: rgb(0 0 0 / .6); }
+.mv-thumb-play { position: absolute; inset: 0; display: grid; place-items: center; background: rgb(0 0 0 / .32); color: #fff; opacity: 0; transition: opacity var(--ui-fast); }
+.mv-thumb-play > svg { width: 32px; height: 32px; padding: 8px 7px 8px 10px; border-radius: 50%; background: rgb(0 0 0 / .62); box-shadow: 0 2px 10px rgb(0 0 0 / .5); }
 .mv-vod-row:is(:hover, :focus-visible, .is-hover, .is-focus) .mv-thumb-play { opacity: 1; }
 .mv-vod-row[data-recent] .mv-thumb { box-shadow: 0 0 0 2px var(--ui-brand); }
-.mv-cell-length, .mv-thumb-moments { position: absolute; bottom: 3px; display: inline-flex; align-items: center; gap: 3px; padding: 0 4px; border-radius: 4px; background: rgb(0 0 0 / .78); color: #fff; font-size: 11px; font-weight: 600; line-height: 16px; font-variant-numeric: tabular-nums; }
-.mv-cell-length { right: 3px; }
-.mv-thumb-moments { left: 3px; }
+.mv-cell-length, .mv-thumb-moments { position: absolute; bottom: 4px; display: inline-flex; align-items: center; gap: 3px; padding: 0 5px; border-radius: 4px; background: rgb(0 0 0 / .82); color: #fff; font-size: 11px; font-weight: 650; line-height: 17px; font-variant-numeric: tabular-nums; }
+.mv-cell-length { right: 4px; }
+.mv-thumb-moments { left: 4px; }
+/* Known result sits on the thumbnail too, so W/L reads while scanning the
+   left edge instead of only in the far-right column. */
+.mv-thumb-result { position: absolute; top: 4px; left: 4px; display: grid; place-items: center; width: 20px; height: 20px; border-radius: 6px; font-size: 11px; font-weight: 800; line-height: 1; box-shadow: 0 1px 6px rgb(0 0 0 / .55); }
+.mv-thumb-result.is-win { background: rgb(22 68 52 / .92); color: #6ee7b7; }
+.mv-thumb-result.is-loss { background: rgb(74 26 30 / .92); color: #fca5a5; }
 
-/* Matchup: own champion, "vs", opponent (or a dashed "any" slot), then names over lane. */
-.mv-cell-matchup { display: flex; align-items: center; gap: 10px; }
+/* Matchup leads the row: paired portraits, then hero names over the lane. */
+.mv-cell-matchup { display: flex; align-items: center; gap: 11px; }
 .mv-pair { display: inline-flex; align-items: center; gap: 5px; flex-shrink: 0; }
-.mv-pair .champion-icon, .mv-any { display: block; width: 32px; height: 32px; border-radius: 7px; object-fit: cover; box-shadow: 0 0 0 1px var(--ui-line-3); }
+.mv-pair .champion-icon, .mv-any { display: block; width: 36px; height: 36px; border-radius: 8px; object-fit: cover; box-shadow: 0 0 0 1px var(--ui-line-3); }
 .mv-any { display: grid; place-items: center; box-shadow: none; border: 1px dashed var(--ui-line-3); color: var(--ui-text-3); font-size: 13px; font-weight: 600; }
 .mv-vs { color: var(--ui-text-3); font-size: 10px; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; }
-.mv-lines { display: flex; flex-direction: column; min-width: 0; }
-.mv-lines > strong { overflow: hidden; color: var(--ui-text-1); font-size: 15px; font-weight: 600; text-overflow: ellipsis; white-space: nowrap; }
+.mv-lines { display: flex; flex-direction: column; gap: 1px; min-width: 0; }
+.mv-lines > strong { overflow: hidden; color: var(--ui-text-1); font-size: 17px; font-weight: 740; letter-spacing: -.015em; line-height: 1.2; text-overflow: ellipsis; white-space: nowrap; }
 .mv-lines > strong .mv-vs-word { color: var(--ui-text-3); font-weight: 500; }
 .mv-lines > strong .is-any { color: var(--ui-text-3); font-weight: 500; }
+.mv-cell-matchup .mv-lines > small { font-size: 11.5px; font-weight: 600; letter-spacing: .04em; text-transform: uppercase; color: var(--ui-text-3); }
 
 /* Player: avatar (photo, initials or a muted glyph for anonymous replays), name, team, Streamer badge. */
 .mv-cell-who { display: flex; align-items: center; gap: 10px; }
-.mv-row-photo, .mv-row-initials { flex: 0 0 32px; width: 32px; height: 32px; border-radius: 50%; background: var(--ui-surface-3); object-fit: cover; object-position: center 12%; }
-.mv-row-initials { display: grid; place-items: center; color: var(--ui-brand); font-size: 11px; font-weight: 600; }
-.mv-row-initials.is-unnamed { color: var(--ui-text-3); }
+.mv-row-photo, .mv-row-initials { flex: 0 0 34px; width: 34px; height: 34px; border-radius: 50%; background: var(--ui-surface-3); object-fit: cover; object-position: center 12%; box-shadow: 0 0 0 1px var(--ui-line-2); }
+.mv-row-initials { display: grid; place-items: center; background: var(--ui-brand-tint); color: var(--ui-brand); font-size: 12px; font-weight: 700; }
+.mv-row-initials.is-unnamed { background: var(--ui-surface-3); color: var(--ui-text-3); }
 .mv-who-line { display: flex; align-items: center; gap: 7px; min-width: 0; }
-.mv-who-line strong { overflow: hidden; color: var(--ui-text-1); font-size: 15px; font-weight: 600; text-overflow: ellipsis; white-space: nowrap; }
+.mv-who-line strong { overflow: hidden; color: var(--ui-text-1); font-size: 14.5px; font-weight: 650; text-overflow: ellipsis; white-space: nowrap; }
 .mv-who-line strong.is-unnamed { color: var(--ui-text-3); font-weight: 500; }
 .mv-team-tag { display: inline-flex; align-items: center; gap: 4px; flex-shrink: 0; padding: 0 6px 0 3px; border: 1px solid var(--ui-line-3); border-radius: var(--ui-radius-xs); color: var(--ui-text-2); font-size: 12px; font-weight: 600; line-height: 18px; }
 .mv-stream-tag { flex-shrink: 0; display: inline-flex; align-items: center; gap: 4px; padding: 0 5px; border: 1px solid color-mix(in srgb, var(--ui-brand) 55%, transparent); border-radius: var(--ui-radius-xs); background: var(--ui-brand-tint); color: var(--ui-brand); font-size: 11px; font-weight: 600; line-height: 16px; white-space: nowrap; }
@@ -95,30 +107,54 @@
 
 /* Rank: crest, tier over region. */
 .mv-cell-rank { display: flex; align-items: center; gap: 8px; }
-.mv-cell-rank > img, .mv-cell-rank > .rank-crest { flex: 0 0 26px; width: 26px; height: 26px; object-fit: contain; }
-.mv-cell-rank .mv-lines > span { overflow: hidden; color: var(--ui-text-1); font-size: 14px; font-weight: 500; text-overflow: ellipsis; white-space: nowrap; }
+.mv-cell-rank > img, .mv-cell-rank > .rank-crest { flex: 0 0 28px; width: 28px; height: 28px; object-fit: contain; }
+.mv-cell-rank .mv-lines > span { overflow: hidden; color: var(--ui-text-1); font-size: 14px; font-weight: 620; text-overflow: ellipsis; white-space: nowrap; }
 
 /* Patch over upload age. */
-.mv-cell-patch > span { color: var(--ui-text-1); font-size: 14px; font-variant-numeric: tabular-nums; }
+.mv-cell-patch > span { color: var(--ui-text-1); font-size: 15px; font-weight: 650; font-variant-numeric: tabular-nums; }
 .mv-patch-estimate { display: inline-flex; vertical-align: middle; margin-left: 4px; padding: 0 3px; border: 1px solid var(--ui-line-3); border-radius: var(--ui-radius-xs); color: var(--ui-text-2); font-size: 10px; line-height: 14px; }
 
-/* Result, right-aligned so the row ends on a clean edge. */
+/* Result, right-aligned inside the frame so the row ends on a clean edge. */
 .mv-cell-chips { display: flex; align-items: center; justify-content: flex-end; }
-.mv-result-badge { display: inline-grid; place-items: center; min-width: 40px; height: 22px; padding: 0 8px; border-radius: 999px; font-size: 12px; font-weight: 600; }
+.mv-result-none { color: var(--ui-text-3); opacity: .45; font-size: 13px; }
+.mv-result-badge { display: inline-grid; place-items: center; min-width: 44px; height: 24px; padding: 0 9px; border-radius: 999px; font-size: 12px; font-weight: 650; }
 .mv-result-badge.is-win { background: color-mix(in srgb, var(--ui-win) 14%, transparent); color: var(--ui-win); }
 .mv-result-badge.is-loss { background: color-mix(in srgb, var(--ui-loss) 14%, transparent); color: var(--ui-loss); }
 
+/* Wide windows: thumbs and type scale up and the capped matchup/player
+   tracks are spread out, so columns fill the table without drifting apart. */
+@container matchup-vods (min-width: 1250px) {
+  .mv-table { --mv-thumb: 152px; --mv-cols: var(--mv-thumb) minmax(340px, 480px) minmax(230px, 330px) 196px 112px; }
+  .mv-table.has-result { --mv-cols: var(--mv-thumb) minmax(340px, 480px) minmax(230px, 330px) 196px 112px 80px; }
+  .mv-table:not(.is-wide) { --mv-cols: var(--mv-thumb) minmax(320px, 460px) 196px 112px; }
+  .mv-table:not(.is-wide).has-result { --mv-cols: var(--mv-thumb) minmax(320px, 460px) 196px 112px 80px; }
+  .mv-vod-head, .mv-vod-row { justify-content: space-between; }
+  .mv-vod-row { min-height: 88px; padding-block: 0; }
+  .mv-pair .champion-icon, .mv-any { width: 44px; height: 44px; border-radius: 9px; }
+  .mv-lines > strong { font-size: 20px; }
+  .mv-row-photo, .mv-row-initials { flex-basis: 40px; width: 40px; height: 40px; font-size: 13px; }
+  .mv-who-line strong { font-size: 16px; }
+  .mv-cell-rank > img, .mv-cell-rank > .rank-crest { flex-basis: 34px; width: 34px; height: 34px; }
+  .mv-cell-rank .mv-lines > span { font-size: 15.5px; }
+  .mv-cell-patch > span { font-size: 16.5px; }
+}
+
 /* ---- Breakpoints (container = .mv-view inline size) ---- */
 @container matchup-vods (max-width: 1100px) {
-  .mv-table { --mv-thumb: 80px; --mv-cols: var(--mv-thumb) minmax(190px, 1.3fr) minmax(160px, 1.2fr) 76px 64px 60px; }
-  .mv-table:not(.is-wide) { --mv-cols: var(--mv-thumb) minmax(190px, 1.4fr) 76px 64px 60px; }
+  .mv-table { --mv-thumb: 112px; --mv-cols: var(--mv-thumb) minmax(190px, 1fr) minmax(160px, .65fr) 150px 96px; }
+  .mv-table.has-result { --mv-cols: var(--mv-thumb) minmax(190px, 1fr) minmax(160px, .65fr) 150px 96px 68px; }
+  .mv-table:not(.is-wide) { --mv-cols: var(--mv-thumb) minmax(190px, 1fr) 150px 96px; }
+  .mv-table:not(.is-wide).has-result { --mv-cols: var(--mv-thumb) minmax(190px, 1fr) 150px 96px 68px; }
+  .mv-vod-row { min-height: 72px; }
   .mv-cell-rank .mv-rank-tier { display: none; }
 }
 @container matchup-vods (max-width: 760px) {
-  .mv-table { --mv-thumb: 72px; --mv-gap: 12px; --mv-cols: var(--mv-thumb) minmax(0, 1.25fr) minmax(0, 1fr) 40px 56px 56px; }
-  .mv-table:not(.is-wide) { --mv-cols: var(--mv-thumb) minmax(0, 1fr) 40px 56px 56px; }
-  .mv-vod-head, .mv-vod-row { padding: 0 12px 0 8px; }
-  .mv-vod-row { min-height: 54px; padding-block: 6px; }
+  .mv-table { --mv-thumb: 96px; --mv-gap: 12px; --mv-cols: var(--mv-thumb) minmax(0, 1.25fr) minmax(0, 1fr) 44px 64px; }
+  .mv-table.has-result { --mv-cols: var(--mv-thumb) minmax(0, 1.25fr) minmax(0, 1fr) 44px 64px 56px; }
+  .mv-table:not(.is-wide) { --mv-cols: var(--mv-thumb) minmax(0, 1fr) 44px 64px; }
+  .mv-table:not(.is-wide).has-result { --mv-cols: var(--mv-thumb) minmax(0, 1fr) 44px 64px 56px; }
+  .mv-vod-head, .mv-vod-row { padding: 0 16px 0 8px; }
+  .mv-vod-row { min-height: 60px; padding-block: 3px; }
   .mv-pair { gap: 0; }
   .mv-pair .mv-vs { display: none; }
   .mv-pair > :nth-child(3) { margin-left: -6px; box-shadow: 0 0 0 2px var(--ui-surface-1); }
@@ -267,7 +303,7 @@ html:has(.mv-video-player.is-fullscreen), body:has(.mv-video-player.is-fullscree
 
 .mv-more > div { height: 1px; }
 
-.mv-vod-list > li { content-visibility: auto; contain-intrinsic-size: auto 63px; }
+.mv-vod-list > li { content-visibility: auto; contain-intrinsic-size: auto 76px; }
 
 .fa-frame .dashboard-main:has(> .mv-mini-host [data-default-mini]) { padding-bottom: calc(min(360px, 100vw - 48px) * 9 / 16 + 76px); }
 .mv-screen { position: relative; }
@@ -284,8 +320,6 @@ html:has(.mv-video-player.is-fullscreen), body:has(.mv-video-player.is-fullscree
 .mv-header-matchup .champion-icon, .mv-header-matchup img { width: 20px; height: 20px; flex-shrink: 0; }
 
 .mv-library > .ui-page-header { margin: 0; }
-.ui-page-title:has(.mv-head-count) { align-items: baseline; gap: 14px; }
-.mv-head-count { margin-left: 14px; font-size: 13px; font-weight: 400; letter-spacing: 0; color: var(--ui-text-3); }
 .mv-view .mv-vod-row:focus-visible { outline: 2px solid var(--ui-brand); outline-offset: -2px; }
 
 .is-mini .mv-video-player { z-index: 50; border: 1px solid var(--ui-line-3); border-radius: var(--ui-radius-md); background: var(--ui-surface-1); box-shadow: 0 16px 48px rgb(0 0 0 / .4); overflow: hidden; }

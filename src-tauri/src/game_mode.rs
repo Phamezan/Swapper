@@ -2,7 +2,18 @@ use serde_json::Value;
 
 /// Accept incomplete LCU gameflow or Live Client data unless it identifies another mode.
 pub fn supports_rift(session: &Value) -> bool {
+    // Dev builds only: SWAPPER_DEV_ALL_MODES=1 lets every game mode reach the
+    // draft/live screens for manual testing; release builds never read it.
+    if cfg!(debug_assertions) && std::env::var_os("SWAPPER_DEV_ALL_MODES").is_some() {
+        return true;
+    }
+    // Dev builds only: SWAPPER_DEV_PRACTICE=1 treats Practice Tool as a Rift game for manual testing.
     let data = &session["gameData"];
+    if cfg!(debug_assertions) && std::env::var_os("SWAPPER_DEV_PRACTICE").is_some()
+        && [&data["queue"]["gameMode"], &session["queue"]["gameMode"], &session["map"]["gameMode"], &data["gameMode"], &data["queue"]["type"]]
+            .iter().any(|mode| mode.as_str().is_some_and(|m| m.eq_ignore_ascii_case("PRACTICETOOL"))) {
+        return true;
+    }
     let queues = [&data["queue"], &session["queue"]];
     // SR custom, draft/blind, solo/flex, Swiftplay/Quickplay, Clash and ranked 5s (710); other queues are out of scope.
     const SR_QUEUES: [i64; 9] = [0, 400, 420, 430, 440, 480, 490, 700, 710];
@@ -23,8 +34,7 @@ pub fn supports_rift(session: &Value) -> bool {
     [&data["queue"]["gameMode"], &session["queue"]["gameMode"], &session["map"]["gameMode"], &data["gameMode"]]
         .iter().all(|mode| {
             let mode = mode.as_str().unwrap_or("").trim().to_ascii_uppercase();
-            matches!(mode.as_str(), "" | "CLASSIC" | "SWIFTPLAY")
-        })
+            matches!(mode.as_str(), "" | "CLASSIC" | "SWIFTPLAY")        })
 }
 
 #[cfg(test)]

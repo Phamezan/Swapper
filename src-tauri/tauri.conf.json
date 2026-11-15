@@ -31,7 +31,7 @@
       }
     ],
     "security": {
-      "csp": "default-src 'self'; img-src 'self' asset: http://asset.localhost data: https://i.ytimg.com; style-src 'self' 'unsafe-inline'; frame-src https://www.youtube-nocookie.com https://www.youtube.com"
+      "csp": "default-src 'self'; img-src 'self' asset: http://asset.localhost data: https://i.ytimg.com https://raw.communitydragon.org https://cdn.communitydragon.org; style-src 'self' 'unsafe-inline'; frame-src https://www.youtube-nocookie.com https://www.youtube.com"
     }
   },
   "plugins": {

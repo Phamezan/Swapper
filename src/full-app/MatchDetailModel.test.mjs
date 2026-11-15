@@ -49,7 +49,7 @@ test('comparison and hero facts use full teams and distinguish final totals from
   assert.deepEqual(comparisonRows(players, teams).find(r => r.label === 'Gold earned').values, [50000, 45000]);
   const facts = matchFacts(players, teams);
   assert.equal(facts[0].value, '+5,000');
-  assert.match(facts[0].label, /gold at the finish/i);
+  assert.match(facts[0].label, /team gold/i);
   assert.equal(facts[1].value, '9 : 3');
   assert.equal(facts[2].value, '20%');
   assert.deepEqual(facts.map(f => f.kind), ['gold', 'towers', 'damage']);
@@ -58,6 +58,16 @@ test('comparison and hero facts use full teams and distinguish final totals from
   assert.equal(facts[2].share, 20);
   assert.deepEqual(matchFacts(players.filter(p => !p.me), teams), []);
   assert.equal(comparisonRows(players.slice(1), teams)[0].values[0], null);
+});
+
+test('a support sees kill participation instead of damage share', () => {
+  const players = Array.from({length: 10}, (_, i) => ({ teamId: i < 5 ? 100 : 200, me: i === 0, role: i === 0 ? 'support' : 'mid',
+    kills: i < 5 ? 4 : 2, deaths: 2, assists: i === 0 ? 11 : 3, gold: 10000, damage: 20000, vision: 20 }));
+  const teams = [100, 200].map(teamId => ({teamId, objectives: [{label: 'Towers', kills: 2}]}));
+  const facts = matchFacts(players, teams);
+  assert.deepEqual(facts.map(f => f.kind), ['gold', 'towers', 'participation']);
+  assert.equal(facts[2].value, '75%');
+  assert.deepEqual([facts[2].takedowns, facts[2].teamKills], [15, 20]);
 });
 
 test('hero visuals keep your side first on red and preserve ties, zeroes and missing totals', () => {

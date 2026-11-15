@@ -45,6 +45,7 @@ function RowThumb({ vod, row }: { vod: MatchupVod; row: VodRow }) {
       <span className="mv-thumb-shade" />
     </>}
     <span className="mv-thumb-play"><Play size={12} fill="currentColor" /></span>
+    {row.result && <span className={`mv-thumb-result is-${row.result}`}>{row.result === "win" ? "W" : "L"}</span>}
     {row.moments && <span className="mv-thumb-moments"><Flag size={10} />{row.moments}</span>}
     <Tooltip label={row.segment ? `Game from ${formatVodTime(row.segment.start)} to ${formatVodTime(row.segment.end)} of the stream` : undefined}><span className="mv-cell-length">{row.segment && <Scissors size={10} aria-hidden />}{formatVodTime(seg.end - seg.start)}</span></Tooltip>
   </span>;
@@ -100,6 +101,7 @@ export function MatchupVods({ request, onChampionChange, onGuideSection, active 
     setFromOtherSide(false); setLimit(ROW_STEP);
     // Opening the browser resets filters while an already playing video keeps its own context.
     if (champion) { setSelection(null); setSeek(null); setActiveMoment(-1); }
+    if (request.play) { setSelection({ vod: request.play, fromOtherSide: false, watch: request }); setSeek(null); setActiveMoment(-1); }
   }, [request]);
   useEffect(() => {
     if (!champion || !filters.enemy) return;
@@ -146,8 +148,10 @@ export function MatchupVods({ request, onChampionChange, onGuideSection, active 
     const anyOpponentCount = libraryCounts.enemy.get(null) ?? 0;
     const clear = () => { filter(ANY_VOD); setFromOtherSide(false); };
     const wide = !(champion && filters.enemy && !fromOtherSide), now = new Date();
+    // The Result column only exists when some VOD in view has a result.
+    const hasResult = shown.some(vod => vodRow(vod).result);
     return <div className="mv-library">
-      <PageHeader title={<>VODs<span className="mv-head-count">{library ? <><b>{library.length.toLocaleString("en")}</b> {champion ? `${champion.name} VODs` : "across all champions"}</> : "Loading…"}</span></>} actions={pool.some(vod => vod.fixture) && <span className="mv-preview">Preview data</span>} />
+      <PageHeader title="VODs" actions={pool.some(vod => vod.fixture) && <span className="mv-preview">Preview data</span>} />
       {(filters.enemy || filters.lane) && <div className="mv-matchup-scope"><span>{champion?.name ?? "All champions"}{filters.enemy ? ` vs ${enemyName(filters.enemy)}` : ""}{filters.lane ? ` · ${LANES[filters.lane] ?? filters.lane}` : ""}</span>
         <button type="button" className="mv-text-button" onClick={clear}>{champion ? `Browse all ${champion.name} VODs` : "Clear filters"}</button></div>}
       {error ? <Notice tone="error" action={<button onClick={() => { setError(false); setRetry(n => n + 1); }}>Retry</button>}>Couldn't load VODs.</Notice> : !library || (fromOtherSide && !otherSide) ? <Skeleton label="Loading VODs" rows={6} height={40} /> : <>
@@ -185,10 +189,14 @@ export function MatchupVods({ request, onChampionChange, onGuideSection, active 
                   ...patches.map(patch => { const games = count({ patch }); return { value: patch, label: `Patch ${patch}`, count: games, disabled: !games }; })]} />
               <Picker label="Region" className={`mv-filter-chip${filters.region ? " is-active" : ""}`} trigger={filters.region ? <><RegionFlag region={filters.region} />{filters.region}</> : "Region"} value={filters.region ?? ""} onChange={region => filter({ region: region || null })}
                 options={[{ value: "", label: "Any region", icon: <Globe size={16} aria-hidden />, count: count({ region: null }) }, ...["KR", "EUW", "NA", "EUNE"].map(value => ({ value, label: value, icon: <RegionFlag region={value} />, count: count({ region: value }) }))]} />
+              <Picker label="Result" className={`mv-filter-chip${filters.result ? " is-active" : ""}`} trigger={filters.result ? (filters.result === "win" ? "Wins" : "Losses") : "Result"} value={filters.result ?? ""} onChange={result => filter({ result: (result || null) as VodFilters["result"] })}
+                options={[{ value: "", label: "Any result", count: count({ result: null }), disabled: !count({ result: null }) },
+                  { value: "win", label: "Wins", count: count({ result: "win" }), disabled: !count({ result: "win" }) },
+                  { value: "loss", label: "Losses", count: count({ result: "loss" }), disabled: !count({ result: "loss" }) }]} />
               <button type="button" className="mv-filter-chip" aria-label="Streamers" aria-pressed={filters.streamer}
                 disabled={!filters.streamer && !count({ streamer: true })} onClick={() => filter({ streamer: !filters.streamer })}>Streamers <small>{count({ streamer: true }).toLocaleString("en")}</small></button>
             </div>
-            {(filters.named || filters.streamer || filters.tier || filters.patch || filters.region) && <button className="mv-text-button" onClick={clear}>Clear filters</button>}
+            {(filters.named || filters.streamer || filters.tier || filters.patch || filters.region || filters.result) && <button className="mv-text-button" onClick={clear}>Clear filters</button>}
             <span className="mv-match-count" role="status">{shown.length.toLocaleString("en")} VODs</span>
           </div>
         </section>
@@ -198,7 +206,7 @@ export function MatchupVods({ request, onChampionChange, onGuideSection, active 
         {!shown.length ? <div className="mv-empty"><p>{!library.length && !fromOtherSide ? (champion ? `No ${champion.name} VODs yet.` : "No VODs available yet. Try again later.") : fromOtherSide ? `No VODs from ${enemyName(filters.enemy ?? undefined)}’s side match these filters` : "No VODs match these filters"}</p>
           {!library.length && champion && <button className="mv-text-button" onClick={() => onChampionChange?.(null)}>Browse all champions</button>}
           {(pool.length > 0 || filters.enemy || filters.lane) && <button type="button" className="mv-text-button" onClick={clear}>Clear filters</button>}</div>
-          : <div className={`mv-table${wide ? " is-wide" : ""}`}><div className="mv-vod-head" aria-hidden><span />{wide && <span>Matchup</span>}<span>Player</span><span>Rank</span><span>Patch</span><span className="is-end">Result</span></div><ul className="mv-vod-list" aria-label={fromOtherSide ? `From ${enemyName(filters.enemy ?? undefined)}’s side` : champion ? `Every ${champion.name} VOD` : "All champion VODs"}>{shown.slice(0, limit).map(vod => {
+          : <div className={`mv-table${wide ? " is-wide" : ""}${hasResult ? " has-result" : ""}`}><div className="mv-vod-head" aria-hidden><span />{wide && <span>Matchup</span>}<span>Player</span><span>Rank</span><span>Patch</span>{hasResult && <span className="is-end">Result</span>}</div><ul className="mv-vod-list" aria-label={fromOtherSide ? `From ${enemyName(filters.enemy ?? undefined)}’s side` : champion ? `Every ${champion.name} VOD` : "All champion VODs"}>{shown.slice(0, limit).map(vod => {
             const row = vodRow(vod), age = uploadAge(vod.uploaded, now), rowKey = `${vod.champion}-${vodKey(vod)}`;
             return <li key={rowKey}><Tooltip label={vod.title}><button type="button" className="mv-vod-row" data-vod-id={vodKey(vod)} data-result={row.result ?? undefined} data-recent={rowKey === lastOpened.current || undefined}
               ref={rowKey === lastOpened.current ? sourceRow : undefined} aria-label={vodLabel(vod, { champion: championName(vod.champion), enemy: vod.enemy ? enemyName(vod.enemy) : null, lane: LANES[vod.lane ?? ""] ?? null }, now)}
@@ -208,7 +216,7 @@ export function MatchupVods({ request, onChampionChange, onGuideSection, active 
               <span className="mv-cell-who"><RowAvatar vod={vod} /><span className="mv-who-line"><strong className={row.named ? undefined : "is-unnamed"}>{row.named ? row.primary : "Ranked replay"}</strong>{vod.team && <Tooltip label={teamName(vod.team)}><span className="mv-team-tag"><TeamLogo team={teamName(vod.team)} size={16} mode="desktop" />{vod.team}</span></Tooltip>}{vod.format === "stream" && <span className="mv-stream-tag">Streamer{vod.cam && <Tooltip label="Facecam"><span className="mv-cam-dot" role="img" aria-label="Facecam" /></Tooltip>}</span>}</span></span>
               <Tooltip label={[row.rank, row.region].filter(Boolean).join(" · ")}><span className="mv-cell-rank">{row.crest ? <RankCrest tier={row.crest} size={26} mode="desktop" /> : <span />}<span className="mv-lines"><span className="mv-rank-tier">{row.rank}</span>{row.region && <small>{row.region}</small>}</span></span></Tooltip>
               <span className="mv-cell-patch"><span>{row.patch}{vod.patchEstimated && <Tooltip label="Estimated from the upload date"><span className="mv-patch-estimate">est.</span></Tooltip>}</span>{age && <Tooltip label={vod.uploaded}><small>{age}</small></Tooltip>}</span>
-              <span className="mv-cell-chips">{row.result && <span className={`mv-result-badge is-${row.result}`}>{row.result === "win" ? "Win" : "Loss"}</span>}</span>
+              {hasResult && <span className="mv-cell-chips">{row.result ? <span className={`mv-result-badge is-${row.result}`}>{row.result === "win" ? "Win" : "Loss"}</span> : <span className="mv-result-none" aria-hidden>—</span>}</span>}
             </button></Tooltip></li>;
           })}{limit < shown.length && <li className="mv-more"><NearEnd onNear={() => setLimit(current => current + ROW_STEP)} /></li>}</ul></div>}
       </>}
@@ -229,13 +237,13 @@ export function MatchupVods({ request, onChampionChange, onGuideSection, active 
         <button type="button" className="mv-back" ref={backButton} onClick={close}><ArrowLeft size={15} aria-hidden />Back to VODs</button>
         <Tooltip label={selected.title}><span className="mv-game-info">
           <span className="mv-header-game">
-            <span className="mv-header-length" aria-label="Video length">{formatVodTime(segmentOf(selected).end - segmentOf(selected).start)}</span>
+            {selected.champion == null ? <strong className="mv-header-title">{selected.title}</strong> : <><span className="mv-header-length" aria-label="Video length">{formatVodTime(segmentOf(selected).end - segmentOf(selected).start)}</span>
             <span className="mv-header-matchup" role="group" aria-label={`${champions.find(c => c.id === selected.champion)?.name ?? 'Champion'} vs ${selected.enemy ? champions.find(c => c.id === selected.enemy)?.name ?? 'Opponent' : 'unknown opponent'}`}>
               <ChampionIcon id={selected.champion ?? 0} name="" mode="desktop" /><strong>{champions.find(c => c.id === selected.champion)?.name ?? 'Champion'}</strong>
               <span>vs</span><ChampionIcon id={selected.enemy ?? -1} name="" mode="desktop" /><strong>{selected.enemy ? champions.find(c => c.id === selected.enemy)?.name ?? 'Opponent' : '?'}</strong>
             </span>
             <span>{LANES[selected.lane ?? '']}</span>
-            <span className="mv-header-rank">{vodRow(selected).crest && <RankCrest tier={vodRow(selected).crest!} size={30} mode="desktop" />}{vodRow(selected).rank}</span>
+            <span className="mv-header-rank">{vodRow(selected).crest && <RankCrest tier={vodRow(selected).crest!} size={30} mode="desktop" />}{vodRow(selected).rank}</span></>}
           </span>
           <span className="mv-header-meta"><VodPlayer key={vodKey(selected)} vod={selected} />{selection?.fromOtherSide && <span className="mv-perspective-label">From {champions.find(c => c.id === selected.champion)?.name ?? "opponent"}’s side</span>}<VodFacts vod={selected} /></span>
         </span></Tooltip>

@@ -4,7 +4,7 @@ import { invoke, isTauri } from "@tauri-apps/api/core";
 import { getCurrentWindow } from "@tauri-apps/api/window";
 import { getVersion } from "@tauri-apps/api/app";
 import { Copy, Minus, Square, X } from "lucide-react";
-import { AccountsIcon, DashboardIcon, DraftIcon, LiveGameIcon, MatchupsIcon, SettingsIcon, TierlistIcon, BackIcon, ForwardIcon, RefreshIcon, SearchIcon, SwitchIcon } from "./ui/icons";
+import { AccountsIcon, DashboardIcon, DraftIcon, LiveGameIcon, MatchupsIcon, CompsIcon, PatchNotesIcon, PlayIcon, SettingsIcon, TierlistIcon, BackIcon, ForwardIcon, RefreshIcon, SearchIcon, SwitchIcon } from "./ui/icons";
 
 import { ChampionIcon } from "../runes/ChampionIcon";
 import type { ChampionOption } from "../runes/types";
@@ -37,7 +37,7 @@ type Props = {
 };
 
 type Result = ({ kind: "champion"; champion: ChampionOption } | { kind: "page"; page: string } | { kind: 'action' } | { kind: 'player'; player: PlayerHit }) & { group: string };
-const pageIcons: Record<string, typeof DashboardIcon> = { Dashboard: DashboardIcon, 'Live Game': LiveGameIcon, 'Tier list & Builds': TierlistIcon, Matchups: MatchupsIcon, 'Champion select': DraftIcon, Accounts: AccountsIcon, Settings: SettingsIcon };
+const pageIcons: Record<string, typeof DashboardIcon> = { Dashboard: DashboardIcon, 'Live Game': LiveGameIcon, 'Tier list & Builds': TierlistIcon, Matchups: MatchupsIcon, Comps: CompsIcon, VODs: PlayIcon, 'Patch notes': PatchNotesIcon, 'Champion select': DraftIcon, Accounts: AccountsIcon, Settings: SettingsIcon };
 
 /** Frameless window chrome: drag region, history, Ctrl+K search and window buttons. */
 export function TitleBar(props: Props) {
@@ -178,7 +178,7 @@ function Palette({ champions, pages, snapshot, onPickChampion, onPickPage, onPic
           }} />
       </label>
       <div className="palette">
-      <div className="palette-hint"><span>{q ? pending ? 'Searching players…' : 'Player suggestions via OP.GG' : 'Jump to a page, or type to search'}</span>
+      <div className="palette-hint"><span>{q ? pending ? 'Searching players…' : playerHits.length ? 'Player suggestions via OP.GG' : 'Jump to a page, or type to search' : 'Jump to a page, or type to search'}</span>
         <span className="palette-keys" aria-hidden><kbd>↑</kbd><kbd>↓</kbd>Move<kbd>↵</kbd>Open<kbd>Esc</kbd>Close</span>
         {recents.length > 0 && <button onClick={() => { save([]); input.current?.focus(); }}>Clear recent</button>}</div>
       <div id="palette-results" role="listbox" aria-label="Search results">
@@ -199,7 +199,7 @@ function Palette({ champions, pages, snapshot, onPickChampion, onPickPage, onPic
         })}
       </div>
       {!results.length && <div className="palette-empty" role="status"><SearchIcon size={24} /><strong>{pending ? 'Searching…' : 'No results found'}</strong><span>Try a champion, page or a full Riot ID: Name#TAG.</span></div>}
-      {q && <p className="palette-player-status" role="status">{lookup?.query === q && lookup.message ? lookup.message : 'Search by name, or use Name#TAG for an exact League Client lookup.'}</p>}
+      {q && (results.length > 0 || lookup?.query === q && lookup.message) && <p className="palette-player-status" role="status">{lookup?.query === q && lookup.message ? lookup.message : 'Search by name, or use Name#TAG for an exact League Client lookup.'}</p>}
       </div>
   </div>;
 }

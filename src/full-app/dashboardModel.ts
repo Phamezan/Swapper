@@ -18,6 +18,23 @@ export function defaultQueue(games: Game[]) {
 export const me = (game: Game) => game.players.find(p => p.me);
 export const opponent = (game: Game) => game.opponent == null ? undefined : game.players[game.opponent];
 
+/** A support's farm stat is vision, not CS: the game's vision score
+ *  (metrics[5] is per minute) as a total with its rate. Other roles, and
+ *  games without a recorded rate, keep CS. */
+export function supportVision(game: Game) {
+  if (game.role !== "support") return null;
+  const perMin = game.metrics[5];
+  if (perMin == null || !(game.duration > 0)) return null;
+  return { total: Math.round(perMin * game.duration / 60), perMin };
+}
+
+/** Vision gap to the lane opponent. u.gg season games carry no opponent
+ *  vision (0), so the gap only exists when the opponent's score is known. */
+export function visionGap(game: Game, opp?: Player) {
+  const vision = supportVision(game);
+  return vision && opp && opp.vision > 0 ? vision.total - opp.vision : null;
+}
+
 const sum = (values: number[]) => values.reduce((a, b) => a + b, 0);
 const mean = (values: number[]) => values.length ? sum(values) / values.length : null;
 

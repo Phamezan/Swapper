@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, type ReactNode } from "react";
 import { cachedIcon, loadIcon } from "./iconLoader";
 import { Tooltip } from "../full-app/ui/Tooltip";
 // Bundled: the release CSP blocks remote image hosts.
@@ -8,11 +8,13 @@ type Props = {
   id: number;
   name?: string;
   mode: "desktop" | "remote";
+  /** Richer tooltip body; defaults to the name. */
+  tip?: ReactNode;
 };
 
 /** Champion portrait from the League client's game data: proxied on the phone,
  *  fetched over IPC in the desktop flyout. Shows a muted square until it loads. */
-export function ChampionIcon({ id, name, mode }: Props) {
+export function ChampionIcon({ id, name, mode, tip }: Props) {
   const key = `champion:${id}`;
   const [src, setSrc] = useState<string | null>(() =>
     mode === "remote" && id > 0 ? `/api/champion/icon/${id}` : cachedIcon(key) ?? null,
@@ -50,6 +52,6 @@ export function ChampionIcon({ id, name, mode }: Props) {
   }, [id, key, mode]);
 
   if (id === -1) return <img className="champion-icon" src={unknownIcon} alt={name ?? ""} loading="lazy" draggable={false} />;
-  if (!src) return <Tooltip label={name}><span className="champion-icon-fallback" role={name ? "img" : undefined} aria-label={name} aria-hidden={!name} /></Tooltip>;
-  return <Tooltip label={name}><img className="champion-icon" src={src} alt={name ?? ""} loading="lazy" draggable={false} /></Tooltip>;
+  if (!src) return <Tooltip label={name} content={tip}><span className="champion-icon-fallback" role={name ? "img" : undefined} aria-label={name} aria-hidden={!name} /></Tooltip>;
+  return <Tooltip label={name} content={tip}><img className="champion-icon" src={src} alt={name ?? ""} loading="lazy" draggable={false} /></Tooltip>;
 }

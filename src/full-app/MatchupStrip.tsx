@@ -10,7 +10,7 @@ import { fmtCount } from "./ui/format";
 import { artWindow, stripRows, MIN_STRIP_GAMES } from "./buildLogic";
 import { Tooltip } from "./ui/Tooltip";
 
-export function ChampionArt({ id, name, kind = "tile" }: { id: number; name: string; kind?: "tile" | "loading" }) {
+export function ChampionArt({ id, name, kind = "tile" }: { id: number; name: string; kind?: "tile" | "loading" | "splash" }) {
   const art = useChampionArt(id, kind);
   return art ? <img className="fa-card-art" src={art} alt="" loading="lazy" /> : <ChampionIcon id={id} name={name} mode="desktop" />;
 }

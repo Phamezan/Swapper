@@ -1,8 +1,8 @@
 import { displayPatch } from "../patchDisplay";
-import { Fragment, useEffect, useRef, useState } from "react";
+import { Fragment, useEffect, useRef, useState, type CSSProperties } from "react";
 import { invoke } from "@tauri-apps/api/core";
 import { listen } from "@tauri-apps/api/event";
-import { ArrowRight, ChevronRight, Trash2 } from "lucide-react";
+import { ArrowRight, ChevronDown, ChevronRight, Trash2 } from "lucide-react";
 import { CheckIcon } from "./ui/icons";
 import { ChampionIcon } from "../runes/ChampionIcon";
 import { ItemIcon } from "../runes/ItemIcon";
@@ -11,7 +11,7 @@ import { TeamLogo } from "../runes/TeamLogo";
 import { SpellIcon } from "../runes/SpellIcon";
 import { CachedBadge } from "../runes/CachedBadge";
 import { Switch } from "../components/ui/switch";
-import { TIER_OPTIONS, fmtPct, selectionFromPreset, shopNoticeFrom, togglePrimary, toggleSecondary, selectShard, shardChosen } from "../runes/types";
+import { TIER_OPTIONS, fmtPct, selectionFromPreset, shopNoticeFrom, togglePrimary, toggleSecondary, selectShard, shardChosen, wrTone } from "../runes/types";
 import type { ChampionBuild, HighestWinView, ItemsImported, MatchupView, PresetBuildView, Preset, ProBuild, ProBuildsView, RuneRow, RuneTree, RunesView, Selection } from "../runes/types";
 import { overviewSelection, spellLayout, type FlashKey } from "./buildLogic";
 import { applyStatus, itemSetKey, maxOrder, skillGrid, type ApplyStatus } from "./champ-select-model";
@@ -58,6 +58,8 @@ export function BuildPanel({ championId, name, lane, tier, build, liveView, matc
   const [other, setOther] = useState<HighestWinView | null>(null);
   const [extra, setExtra] = useState<Variant | null>(null);
   const [extraLoading, setExtraLoading] = useState(false);
+  // Other keystone builds stay folded into the list until "more +n" is opened.
+  const [moreOpen, setMoreOpen] = useState(false);
   const extraRequest = useRef(0);
   const [abilities, setAbilities] = useState<Ability[]>([]);
   // Label of the clicked tab; null until then, so the default follows what loaded. Labels are unique, indexes shift as tabs load.
@@ -113,7 +115,7 @@ export function BuildPanel({ championId, name, lane, tier, build, liveView, matc
   const selection = overviewSelection(build, catalog?.trees ?? []);
   const sourceKey = JSON.stringify(build);
   useEffect(() => {
-    extraRequest.current++; setExtra(null); setExtraLoading(false);
+    extraRequest.current++; setExtra(null); setExtraLoading(false); setMoreOpen(false);
     setDetails(null); setOther(null); setChosenLabel(null); setPro(null); setPros(null); setProLimit(PRO_STEP); setProOffset(0); setNotice(""); setFailed(null); setCustom(null);
     proRequest.current++; proBusy.current = false; setProLoading(false); setProError("");
     setImported(null);
@@ -252,19 +254,26 @@ export function BuildPanel({ championId, name, lane, tier, build, liveView, matc
       </div>}
       {!preview && laneInferred && <Tooltip label={`No assigned position; using ${name}’s main lane.`}><small className="cs-inferred-lane">Inferred lane</small></Tooltip>}
       {/* Each row is followed by its delete button: the list's grid puts them side by side. */}
-      {listTab === "presets" && !preview ? presets.length ? <div className="cs-build-entries is-presets">{presets.map(preset => <Fragment key={preset.name}><button className="cs-build-row" disabled={!!busy} aria-pressed={shownPreset?.name === preset.name} onClick={() => { setPro(null); setCustom(preset.selection); setPresetName(preset.name); setNotice(""); setFailed(null); }}>
+      {listTab === "presets" && !preview ? presets.length ? <div className="cs-build-entries is-presets">{presets.map(preset => <Fragment key={preset.name}><button className="cs-build-row has-keystone" disabled={!!busy} aria-pressed={shownPreset?.name === preset.name} onClick={() => { setPro(null); setCustom(preset.selection); setPresetName(preset.name); setNotice(""); setFailed(null); }}>
+        <KeystoneHero selection={preset.selection} />
         <span className="cs-row-text"><strong>{preset.name}</strong><small>Rune page</small></span>
-        <BuildIcons keystone={preset.selection.keystone} secondary={preset.selection.secondaryPageId} items={[]} />
+        
       </button>
       <Tooltip label="Delete preset"><button className="cs-preset-delete" disabled={!!busy} aria-label={`Delete preset ${preset.name}`} onClick={() => { if (shownPreset?.name === preset.name) setCustom(null); void deletePreset(preset.name); }}><Trash2 size={15} aria-hidden /></button></Tooltip></Fragment>)}</div> :<p>No presets for {name} yet. Change a rune, then choose Save as preset.</p> : <>
-      {preview && <h3>Builds</h3>}<div className="cs-build-entries">{variants.map((variant, index) => <button className={`cs-build-row${variant.enemyId ? " is-matchup" : ""}`} disabled={!!busy} key={variant.label} aria-pressed={!pro && !shownPreset && index === variantIndex} onClick={() => showTab(variant.label)}>
+      {preview && <h3>Builds</h3>}<div className="cs-build-entries">{variants.map((variant, index) => <button className={`cs-build-row${variant.enemyId ? " is-matchup" : ""}${variant.selection?.keystone ? " has-keystone" : ""}`} disabled={!!busy} key={variant.label} aria-pressed={!pro && !shownPreset && index === variantIndex} onClick={() => showTab(variant.label)}>
         {variant.enemyId ? <span className="cs-row-logo"><ChampionIcon id={variant.enemyId} name={variant.label.slice(3)} mode="desktop" /></span> : null}
+        <KeystoneHero selection={variant.selection} />
         <span className="cs-row-text"><strong>{variant.label}</strong><small>{fmtCount(variant.games)} games</small></span>
-        <BuildIcons keystone={variant.selection?.keystone} secondary={variant.selection?.secondaryPageId} items={variant.items.items} />
-        <b className="cs-row-chip">{fmtPct(variant.winPct)}</b>
+        <span className="cs-build-icons">{variant.items.items.slice(0, 2).map(item => <ItemIcon key={item.id} {...item} mode="desktop" />)}</span>
+        <b className={`cs-row-chip${variant.winPct != null ? ` wr-${wrTone(variant.winPct)}` : ""}`}>{fmtPct(variant.winPct)}</b>
       </button>)}</div>
-      {!preview && moreKeystones.length > 0 && <Picker label="More main runes" value={extra ? String(extra.selection?.keystone) : ""}
-        disabled={!!busy || extraLoading} onChange={value => void loadKeystone(value)} options={moreKeystones.map(preset => ({ value: String(preset.keystone), label: runeName(preset), icon: <RuneIcon id={preset.keystone} mode="desktop" />, count: preset.play }))} />}
+      {!preview && moreKeystones.length > 0 && <><button type="button" className="cs-more-runes-toggle" aria-expanded={moreOpen} aria-label={moreOpen ? "Hide more main runes" : `Show ${moreKeystones.length} more main runes`} disabled={!!busy || extraLoading} onClick={() => setMoreOpen(open => !open)}><span className="cs-more-runes-heading">Other keystones <span className="cs-more-runes-count">{moreKeystones.length}</span></span><ChevronDown size={14} aria-hidden /></button>
+      {moreOpen && <div className="cs-build-entries cs-more-runes-list" role="group" aria-label="More main runes">{moreKeystones.map(preset => { const tree = catalog?.trees.find(tree => tree.keystones.some(rune => rune.id === preset.keystone)); return <button type="button" key={preset.keystone} className="cs-build-row cs-more-rune-row has-keystone" disabled={!!busy || extraLoading} aria-pressed={extra?.selection?.keystone === preset.keystone} onClick={() => void loadKeystone(String(preset.keystone))}>
+        <KeystoneHero selection={selectionFromPreset(preset)} />
+        <span className="cs-row-text"><strong>{runeName(preset)}</strong><small>{fmtCount(preset.play)} games</small></span>
+        <span className="cs-more-rune-tree">{tree?.name}</span>
+      </button>; })}</div>}</>}
+        
       {extraLoading && <small role="status">Loading main rune build…</small>}
       <h3>Pro builds <small>Recent matches</small></h3>
       <div className="cs-build-entries">{pros?.matches.slice(proOffset, proOffset + (proPageSize ?? proLimit)).map(match => <Tooltip key={match.matchId} label={`${[match.team, match.league].filter(Boolean).join(" · ")} · ${match.kills}/${match.deaths}/${match.assists}`}><button className="cs-build-row is-pro" disabled={!!busy} aria-pressed={pro?.matchId === match.matchId} onClick={() => { extraRequest.current++; setExtraLoading(false); setPro(match); setProPart("all"); setCustom(null); setNotice(""); setFailed(null); }}>
@@ -353,6 +362,18 @@ export function RunePage({ catalog, selection, onChange }: { catalog: RuneCatalo
 }
 function RuneRowDisplay({ row, selected, onPick }: { row: RuneRow["runes"]; selected: number[]; onPick?: (id: number) => void }) {
   return <div className="fa-rune-row">{row.map(rune => <Tooltip key={rune.id} label={rune.name}><button type="button" disabled={!onPick} className={selected.includes(rune.id) ? "is-chosen" : ""} aria-label={rune.name} aria-pressed={selected.includes(rune.id)} onClick={() => onPick?.(rune.id)}><NearViewport><RuneIcon id={rune.id} mode="desktop" /></NearViewport></button></Tooltip>)}</div>;
+}
+
+/** The keystone leads a build row: a large tree-coloured tile with the rune,
+ *  its secondary tree as a corner badge. Rows select on the whole button, so
+ *  this is purely the visual anchor. */
+export function KeystoneHero({ selection }: { selection?: Selection | null }) {
+  if (!selection?.keystone) return null;
+  const accent = TREE_COLORS[selection.primaryPageId];
+  return <span className="cs-keystone-hero" style={accent ? { "--accent": accent } as CSSProperties : undefined} aria-hidden>
+    <RuneIcon id={selection.keystone} mode="desktop" />
+    {selection.secondaryPageId ? <RuneIcon id={selection.secondaryPageId} mode="desktop" className="cs-keystone-hero-sub" /> : null}
+  </span>;
 }
 
 /** Keystone with its secondary tree, then the first two core items, like a pro build card. */

@@ -5,8 +5,7 @@ import { listen } from "@tauri-apps/api/event";
 import { ChampionIcon } from "../runes/ChampionIcon";
 import { SpellIcon } from "../runes/SpellIcon";
 import { RankCrest } from "../runes/RankCrest";
-import { fmtAgo } from "../runes/types";
-import { crestSlug, queueLabels, splitRiotId, titleCase } from "./Dashboard";
+import { crestSlug, splitRiotId, titleCase } from "./Dashboard";
 import { useChampionArt } from "./art";
 import { barWidth, matchFacts, percent, placementLabel, rankLabel, scoreTone, teamAverageDamage, teamTotals, type MatchPlayer as Player, type MatchView } from "./MatchDetailModel";
 import type { Game, Snapshot } from "./types";
@@ -25,6 +24,9 @@ const compact = (value: number | null | undefined) => value == null ? "–" : fm
 const kda = (p: Player) => p.kills == null || p.deaths == null || p.assists == null ? null : (p.kills + p.assists) / Math.max(1, p.deaths);
 const ITEM_SLOTS = 7;
 const participation = (p: Player, total: number | null) => percent(p.kills != null && p.assists != null ? p.kills + p.assists : null, total);
+
+const ROLE_NAMES: Record<string, string> = { top: "Top", jungle: "Jungle", mid: "Mid", middle: "Mid", adc: "Bot", bottom: "Bot", support: "Support", utility: "Support" };
+const roleName = (role: string) => ROLE_NAMES[role.toLowerCase()] ?? titleCase(role);
 
 export default function MatchDetail({ game, names, riotId, onOpenPlayer }: { game: Game; names: Snapshot["championNames"]; riotId?: string; onOpenPlayer: (riotId: string) => void }) {
   const [detail, setDetail] = useState<MatchView | null>(null);
@@ -76,7 +78,6 @@ export default function MatchDetail({ game, names, riotId, onOpenPlayer }: { gam
   const ownTeam = teamRows.find(row => row.team.teamId === own?.teamId);
   const ownLabel = own ? placementLabel(own.placement, ownTeam?.team.win ?? null, own === ownTeam?.best) : "–";
   const name = (id: number) => names[id] ?? `Champion ${id}`;
-  const duration = `${Math.floor(match.duration / 60)}:${String(match.duration % 60).padStart(2, "0")}`;
   const minutes = match.duration / 60;
   const facts = useMemo(() => detail ? matchFacts(detail.players, detail.teams) : [], [detail]);
   const tabs = ["Overview", "Scoreboard", "Loadout", "Stats", ...(detail?.timeline ? ["Graphs"] : [])];
@@ -84,23 +85,17 @@ export default function MatchDetail({ game, names, riotId, onOpenPlayer }: { gam
   const hero = <section className={`md-header ${match.win ? "is-win" : "is-loss"}`} aria-label="Your match performance">
       {splash && <img className="md-art" src={splash} alt="" draggable={false} loading="lazy" />}
       <div className="md-header-main">
-        <div className="md-story"><div className="md-match-meta"><span>{queueLabels[match.queue] ?? match.queue}</span><span>{duration}</span><span>{fmtAgo(match.createdAt)}</span></div>
+        <div className="md-story">
           <div className="md-outcome"><h2>{match.win ? "Victory" : "Defeat"}</h2>{ownLabel !== "–" && <Placement label={ownLabel} long />}</div>
-          <div className="md-hero-champion"><ChampionIcon id={match.championId} name={name(match.championId)} mode="desktop" /><strong>{name(match.championId)}</strong><span>Level {own?.level ?? match.level} · {titleCase(own?.role ?? match.role)}</span></div>
+          <div className="md-hero-champion"><ChampionIcon id={match.championId} name={name(match.championId)} mode="desktop" /><strong>{name(match.championId)}</strong><span>{roleName(own?.role ?? match.role)} · Level {own?.level ?? match.level}</span></div>
         </div>
-        <div className="md-your-game"><span>Your contribution{own && <> · <b className={own.teamId === 100 ? "is-blue" : "is-red"}>{own.teamId === 100 ? "Blue" : "Red"} side</b></>}</span><strong>{own ? stat(own.kills) : match.kills}<i> / </i><em>{own ? stat(own.deaths) : match.deaths}</em><i> / </i>{own ? stat(own.assists) : match.assists}</strong>
+        <div className="md-your-game"><span>Your K / D / A{own && <> · <b className={own.teamId === 100 ? "is-blue" : "is-red"}>{own.teamId === 100 ? "Blue" : "Red"} side</b></>}</span><strong>{own ? stat(own.kills) : match.kills}<i> / </i><em>{own ? stat(own.deaths) : match.deaths}</em><i> / </i>{own ? stat(own.assists) : match.assists}</strong>
           <div><span>{stat(own ? kda(own) : match.metrics[0], 2)} KDA</span><span>{stat(own ? own.cs : match.cs)} CS</span>{own?.score != null && <span className="md-hero-score">Score <b>{Math.round(own.score)}</b><small>/100</small></span>}</div>
         </div>
       </div>
       {facts.length > 0 && <Facts facts={facts} />}
     </section>;
   return <div className="md-page">
-    <header className="md-context" aria-label="Match summary">
-      <ChampionIcon id={match.championId} name={name(match.championId)} mode="desktop" />
-      <strong>{name(match.championId)}</strong><b className={match.win ? "is-win" : "is-loss"}>{match.win ? "Victory" : "Defeat"}</b>
-      <span>{queueLabels[match.queue] ?? match.queue}</span><span>{duration}</span>
-      <Tooltip label={new Date(match.createdAt).toLocaleString()}><time dateTime={new Date(match.createdAt).toISOString()}>{new Date(match.createdAt).toLocaleDateString()}</time></Tooltip>
-    </header>
     {error ? <Notice tone="error" action={<button className="fa-text-button" onClick={() => setAttempt(n => n + 1)}>Retry</button>}>{error}</Notice>
       : !detail ? <Skeleton label="Loading match details and player ranks" rows={5} height={66} /> : <>
         <div ref={tabBar} className="md-tabs" role="tablist" aria-label="Match views">{tabs.map((label, index) => <button key={label} id={`md-tab-${label}`} role="tab" tabIndex={tab === label ? 0 : -1} aria-selected={tab === label} aria-controls="md-panel" onClick={() => selectTab(label)} onKeyDown={event => {

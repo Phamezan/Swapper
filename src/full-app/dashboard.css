@@ -290,8 +290,11 @@ button.location-segment:hover { background: var(--ui-hover); color: var(--ui-bra
 .dash-v2 .tile::after { display: none; }
 .tile-label { font-size: 13px; color: var(--ui-text-2); }
 .tile-value { font-size: 40px; font-weight: 700; letter-spacing: -.035em; line-height: 1.05; }
-.tile.tone-up .tile-value, .tile.tone-down .tile-value { color: var(--ui-text-1); }
-.tile-foot { font-size: 13px; color: var(--ui-text-3); }
+/* The headline number carries the tile's tone like its meter, sparkline
+   and foot text: win colour above the benchmark, loss below, plain when
+   within ±5% (tone-even) or unmeasured (tone-none). */
+.tile.tone-up .tile-value, .tile.tone-down .tile-value { color: var(--tone, var(--ui-text-1)); }
+.tile-foot { min-height: 2lh; font-size: 13px; color: var(--ui-text-3); } /* two lines, so every sparkline starts at the same height */
 .tile.tone-up .tile-foot { color: var(--ui-win); }
 .tile.tone-down .tile-foot { color: var(--ui-loss); }
 @media (max-width: 1240px) {
@@ -345,6 +348,18 @@ button.location-segment:hover { background: var(--ui-hover); color: var(--ui-bra
 .placement small { font-size: 12px; }
 .placement.is-mvp { background: var(--ui-brand-tint); box-shadow: inset 0 0 0 1px var(--ui-brand-line); color: var(--ui-brand); }
 .placement.is-mvp small { color: var(--ui-brand); }
+
+/* Match rows get the champion cards' text treatment: the KDA ratio is the
+   hero stat in gold (>=3, white 2-3, loss red under 2 — the same scale),
+   headline numbers are bold near-white with tabular figures, and only the
+   secondary labels stay muted. Deaths were already loss red. */
+.fa-frame .dash-v2 .match-kda small { font-size: 13.5px; font-weight: 750; }
+.fa-frame .dash-v2 .match-kda small.up { color: var(--ui-gold); }
+.fa-frame .dash-v2 .match-kda small.mid { color: var(--ui-text-1); }
+.fa-frame .dash-v2 .match-kda small.down { color: var(--fa-loss); }
+.fa-frame .dash-v2 .match-kda strong { font-variant-numeric: tabular-nums; }
+.fa-frame .dash-v2 .match-cs strong { color: var(--ui-text-1); font-weight: 700; font-size: 15px; font-variant-numeric: tabular-nums; }
+.fa-frame .dash-v2 .match-result small b { color: var(--ui-text-1); font-weight: 700; font-variant-numeric: tabular-nums; }
 @media (max-width: 1360px) {
   .fa-frame .dash-v2 .match-row { gap: 8px; padding-right: 10px; }
   .fa-frame .dash-v2 .match-items .ui-slot { --slot: 22px; }
@@ -426,6 +441,37 @@ button.location-segment:hover { background: var(--ui-hover); color: var(--ui-bra
 .dash-v2 .champ-perf-copy small { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
 .dash-v2 .champ-perf-rate i { min-width: 64px; }
 .fa-frame .dash-v2 .champ-perf button { gap: 10px; padding-right: 14px; }
+
+/* Champions, hierarchy pass: the splash is the visual, so a card with art
+   drops the duplicate tile icon and gives the freed width to the copy.
+   KDA, games and the W-L record sit under the name at full width (wrapping
+   rather than truncating in narrow columns), and the win rate shrinks to a
+   quiet figure over its meter instead of shouting over the row. */
+.fa-frame .dash-v2 .champ-perf button.champ-card.has-art { grid-template-columns: minmax(0, 1fr) auto; padding-left: 16px; }
+.fa-frame .dash-v2 .champ-perf .champ-card .champion-icon, .fa-frame .dash-v2 .champ-perf .champ-card .champion-icon-fallback { width: 40px; height: 40px; }
+.dash-v2 .champ-card .champ-perf-copy strong { font-size: 17px; font-weight: 750; letter-spacing: -.01em; }
+.dash-v2 .champ-card .champ-perf-copy small { white-space: normal; overflow: visible; text-overflow: clip; line-height: 1.45; }
+.dash-v2 .champ-card .champ-perf-rate { display: grid; grid-template-columns: auto; justify-items: end; gap: 5px; }
+.dash-v2 .champ-card .champ-perf-rate b { font-size: 16px; font-weight: 700; letter-spacing: 0; }
+.dash-v2 .champ-card .champ-perf-rate i { width: 64px; min-width: 64px; }
+
+/* The card's KDA is a hero stat, not grey small print: bigger, bold and
+   coloured by quality (>=3 gold, 2-3 plain, under 2 loss red). Gold keeps
+   it apart from the win greens: the record's W is lime (--wr-good) and the
+   win rate with its meter keeps the teal win colour, so each stat on the
+   card owns a hue. Games and the W-L record stay muted beside it. */
+.dash-v2 .champ-card .champ-perf-copy small { display: flex; align-items: baseline; gap: 7px; flex-wrap: wrap; }
+.dash-v2 .champ-card .champ-kda { font-size: 15px; font-weight: 800; letter-spacing: -.01em; white-space: nowrap; }
+.dash-v2 .champ-card .champ-kda.up { color: var(--ui-gold); }
+.dash-v2 .champ-card .champ-kda.mid { color: var(--ui-text-1); }
+.dash-v2 .champ-card .champ-kda.down { color: var(--fa-loss); }
+
+/* The record beside the KDA: games count bold and near-white, wins green,
+   losses red — same up/down language as the rest of the dashboard. */
+.dash-v2 .champ-card .champ-record { white-space: nowrap; }
+.dash-v2 .champ-card .champ-record b { font-weight: 700; color: var(--ui-text-1); font-variant-numeric: tabular-nums; }
+.dash-v2 .champ-card .champ-record b.up { color: var(--wr-good); }
+.dash-v2 .champ-card .champ-record b.down { color: var(--fa-loss); }
 
 /* ---------- Top panel: Today, rank and Performance share one sheet ----------
    One graphite surface with hairline dividers between its three regions, a brand light in

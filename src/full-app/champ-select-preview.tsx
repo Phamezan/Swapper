@@ -11,6 +11,7 @@ import type { RunesView } from "../runes/types";
 import { ChampionSelect } from "./ChampionSelect";
 import Champions, { type ChampionFocus } from "./Champions";
 import { current, listeners } from "./champ-select-mock";
+import "../App.css";
 import "../runes/runes.css";
 import "./dashboard.css";
 import "./full-app.css";

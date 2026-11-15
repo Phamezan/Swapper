@@ -169,6 +169,8 @@ test("filters combine named players, rank, patch, opponent and lane", () => {
   assert.deepEqual(matching({ enemy: 238, named: true, tier: 'challenger', lane: 'mid' }), ['a']);
   assert.deepEqual(matching({ tier: 'other' }), ['d']);
   assert.deepEqual(matching({ patch: '26.10' }), ['b', 'c']);
+  assert.deepEqual(matching({ result: 'win' }), ['d', 'e', 'a'], "wins keep patch order");
+  assert.deepEqual(matching({ result: 'loss' }), ['b']);
   assert.deepEqual(matching({ enemy: 238 }), ['e', 'c', 'a']);
   assert.deepEqual(matching({ patch: '26.1' }), []);
 });
@@ -284,7 +286,7 @@ test('facet counts equal brute force for every selection including unknown regio
   for (const f of [ANY_VOD, {...ANY_VOD,named:true,tier:'master'}, {...ANY_VOD,region:'KR',enemy:238,streamer:true}]) {
     const counts=facetCounts(pool,f);
     assert.equal(counts.total,pool.filter(v=>vodMatches(v,f)).length);
-    for (const key of ['named','streamer','tier','patch','enemy','lane','region']) {
+    for (const key of ['named','streamer','tier','patch','enemy','lane','region','result']) {
       const values = key==='named'||key==='streamer' ? [false,true] : [null,...counts[key].keys()];
       for(const value of values) assert.equal(counts[key].get(value===false?null:value)??0,pool.filter(v=>vodMatches(v,{...f,[key]:value})).length, key);
     }

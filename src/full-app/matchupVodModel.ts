@@ -165,12 +165,13 @@ export function comparePatch(a: string, b: string): number {
 }
 
 /** Opponent and lane restrict the champion library; null means any. */
-export type VodFilters = { named: boolean; streamer: boolean; tier: RankTier | null; patch: string | null; enemy: number | null; lane: string | null; region: string | null };
-export const ANY_VOD: VodFilters = { named: false, streamer: false, tier: null, patch: null, enemy: null, lane: null, region: null };
+export type VodFilters = { named: boolean; streamer: boolean; tier: RankTier | null; patch: string | null; enemy: number | null; lane: string | null; region: string | null; result: "win" | "loss" | null };
+export const ANY_VOD: VodFilters = { named: false, streamer: false, tier: null, patch: null, enemy: null, lane: null, region: null, result: null };
 
 export function vodMatches(vod: MatchupVod, f: VodFilters): boolean {
   return (!f.named || !!vodPlayerName(vod.player)) && (!f.streamer || vod.format === "stream") && (!f.tier || rankTier(vod.rankClaim) === f.tier)
-    && (!f.region || vodRegion(vod) === f.region) && (!f.patch || vod.patch === f.patch) && (!f.enemy || vod.enemy === f.enemy) && (!f.lane || vod.lane === f.lane);
+    && (!f.region || vodRegion(vod) === f.region) && (!f.patch || vod.patch === f.patch) && (!f.enemy || vod.enemy === f.enemy) && (!f.lane || vod.lane === f.lane)
+    && (!f.result || (vod.result === "W" ? "win" : vod.result === "L" ? "loss" : null) === f.result);
 }
 
 /** Newest patch, then named players, then latest upload; remaining ties keep content order. */
@@ -215,11 +216,11 @@ export function crestTier(claim: string): string | null {
 
 /** Each facet ignores its own selection, preserving the pickers' existing counts. */
 export function facetCounts(pool: readonly MatchupVod[], filters: VodFilters) {
-  const keys = ['named', 'streamer', 'tier', 'patch', 'enemy', 'lane', 'region'] as const;
+  const keys = ['named', 'streamer', 'tier', 'patch', 'enemy', 'lane', 'region', 'result'] as const;
   const counts = Object.fromEntries(keys.map(key => [key, new Map<unknown, number>()])) as Record<typeof keys[number], Map<unknown, number>>;
   let total = 0;
   for (const vod of pool) {
-    const values = { named: !!vodPlayerName(vod.player), streamer: vod.format === 'stream', tier: rankTier(vod.rankClaim), patch: vod.patch, enemy: vod.enemy, lane: vod.lane, region: vodRegion(vod) };
+    const values = { named: !!vodPlayerName(vod.player), streamer: vod.format === 'stream', tier: rankTier(vod.rankClaim), patch: vod.patch, enemy: vod.enemy, lane: vod.lane, region: vodRegion(vod), result: vod.result === "W" ? "win" as const : vod.result === "L" ? "loss" as const : null };
     const passes = keys.map(key => !filters[key] || values[key] === filters[key]);
     const failures = passes.filter(pass => !pass).length;
     if (!failures) total++;

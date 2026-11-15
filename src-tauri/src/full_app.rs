@@ -4,6 +4,7 @@
 //! memory mode destroys it instead).
 pub mod abilities;
 pub mod art;
+pub mod comps;
 pub mod champ_select;
 pub(crate) mod bench;
 pub(crate) mod cards;
@@ -24,6 +25,10 @@ use std::sync::Mutex;
 use tauri::{Emitter, Manager};
 
 pub const LABEL: &str = "full_app";
+/// Match-history games behind the Dashboard's stats. The client is asked for
+/// this many; summaries, performance tiles and the recent-games list all read
+/// the same window, so the champions panel no longer speaks for 20 games.
+pub const HISTORY_GAMES: usize = 100;
 pub const FLYOUT: &str = "main";
 
 pub struct Runtime {
@@ -220,9 +225,8 @@ fn open_window(
     .shadow(true)
     .center()
     .focused(!background)
-    // Shown by `window_ready` once painted: no blank frame, and no close
-    // request lands while WebView2 is still initializing (it is ignored then).
-    .visible(false);
+    // Shown by `window_ready` once painted; visible immediately for dev/normal launch
+    .visible(!background);
     if let Some(args) = flyout_config(app).and_then(|c| c.additional_browser_args) {
         builder = builder.additional_browser_args(&args);
     }
@@ -335,11 +339,11 @@ pub(crate) fn read_cache() -> Option<Snapshot> {
 }
 
 fn read_cache_at(path: &std::path::Path) -> Option<Snapshot> {
-    if std::fs::metadata(path).ok()?.len() > 512 * 1024 {
+    if std::fs::metadata(path).ok()?.len() > 4 * 1024 * 1024 {
         return None;
     }
     let snapshot: Snapshot = serde_json::from_slice(&std::fs::read(path).ok()?).ok()?;
-    (snapshot.games.len() <= 20 && !snapshot.summoner.puuid.is_empty()).then_some(snapshot)
+    (snapshot.games.len() <= HISTORY_GAMES && !snapshot.summoner.puuid.is_empty()).then_some(snapshot)
 }
 
 /// Keeps a saved account's avatar in step with its League profile icon. Icons
@@ -532,7 +536,7 @@ async fn fresh(app: &tauri::AppHandle, previous: Option<&Snapshot>) -> Result<Sn
     let (history, ranked) = tokio::try_join!(
         crate::runes::lcu_get::<Value>(
             &client,
-            "/lol-match-history/v1/products/lol/current-summoner/matches?begIndex=0&endIndex=19"
+            "/lol-match-history/v1/products/lol/current-summoner/matches?begIndex=0&endIndex=99"
         ),
         crate::runes::lcu_get::<Value>(&client, "/lol-ranked/v1/current-ranked-stats")
     )
@@ -543,7 +547,7 @@ async fn fresh(app: &tauri::AppHandle, previous: Option<&Snapshot>) -> Result<Sn
     let cached = previous.filter(|s| s.summoner.puuid == summoner.puuid);
     let eligible: Vec<Value> = rows
         .iter()
-        .take(20)
+        .take(HISTORY_GAMES)
         .filter(|g| model::eligible(g))
         .cloned()
         .collect();
@@ -604,7 +608,7 @@ async fn fresh(app: &tauri::AppHandle, previous: Option<&Snapshot>) -> Result<Sn
     let points = lp::record_current(&client, account, summoner.puuid.clone(), rank.clone()).await?;
     lp::annotate(&mut games, &points);
     lp_seed::spawn(summoner.puuid.clone(), summoner.riot_id.clone(), &points);
-    let mmr = mmr::current(&games).await;
+    let mmr = mmr::current(&summoner.puuid, &games).await;
     Ok(Snapshot {
         lp_history: points,
         mmr,
@@ -615,6 +619,94 @@ async fn fresh(app: &tauri::AppHandle, previous: Option<&Snapshot>) -> Result<Sn
         summaries: model::summaries(&games),
         games,
     })
+}
+
+/// League Client closed and no saved snapshot to fall back on: the active
+/// account's dashboard from u.gg instead — identity, Solo/Duo rank and up to
+/// HISTORY_GAMES season games (ranked queues only; u.gg has no normals).
+/// Best-effort: any failure keeps the signed-out screen.
+async fn season_fallback(app: &tauri::AppHandle) -> Option<Snapshot> {
+    let (accounts, active_id) = {
+        let state = app.try_state::<crate::AppState>()?;
+        let config = state.config.lock().ok()?;
+        (config.accounts.clone(), config.active_id)
+    };
+    let account = accounts
+        .iter()
+        .find(|a| Some(a.id) == active_id && a.riot_id().is_some())
+        .or_else(|| accounts.iter().find(|a| a.riot_id().is_some()))?;
+    let riot_id = account.riot_id()?;
+    let (name, tag) = riot_id.split_once('#')?;
+    let found = search::season::identity(name, tag, account.region.as_deref()).await?;
+    let mut games: Vec<model::Game> = Vec::new();
+    for page in 1..=(HISTORY_GAMES / 20) as u32 {
+        let Ok(part) = search::season::page(name, tag, found.region, page).await else { break };
+        let done = part.done;
+        for game in part.games {
+            if !games.iter().any(|g| g.id == game.id) {
+                games.push(game);
+            }
+        }
+        if done || games.len() >= HISTORY_GAMES {
+            break;
+        }
+    }
+    if games.is_empty() {
+        return None;
+    }
+    let rank = crate::runes::ugg_record::lookup(name, tag, found.region)
+        .await
+        .unwrap_or_default()
+        .into_iter()
+        .find(|r| r.queue == "ranked_solo_5x5")
+        .map(|r| {
+            let tier = r.tier.to_ascii_uppercase();
+            model::Rank {
+                division: if ["MASTER", "GRANDMASTER", "CHALLENGER"].contains(&tier.as_str()) { String::new() } else { r.division },
+                tier,
+                lp: r.lp,
+                wins: r.wins,
+                losses: r.losses,
+            }
+        });
+    let champion_names = crate::runes::champion_list()
+        .await
+        .into_iter()
+        .map(|c| (c.id, c.name))
+        .collect();
+    Some(season_snapshot(
+        model::Summoner {
+            puuid: account.puuid.clone().unwrap_or_default(),
+            summoner_id: 0,
+            riot_id: found.riot_id.clone(),
+            level: found.level.unwrap_or(0),
+            icon: None,
+        },
+        games,
+        rank,
+        champion_names,
+    ))
+}
+
+/// The newest HISTORY_GAMES games, with the Dashboard's summaries over them.
+fn season_snapshot(
+    summoner: model::Summoner,
+    mut games: Vec<model::Game>,
+    rank: Option<model::Rank>,
+    champion_names: std::collections::BTreeMap<i64, String>,
+) -> Snapshot {
+    games.sort_by_key(|g| std::cmp::Reverse(g.created_at));
+    games.truncate(HISTORY_GAMES);
+    Snapshot {
+        lp_history: Vec::new(),
+        mmr: None,
+        champion_names,
+        summoner,
+        rank,
+        fetched_at: crate::runes::provider::now_ms(),
+        summaries: model::summaries(&games),
+        games,
+    }
 }
 
 #[tauri::command]
@@ -650,7 +742,19 @@ pub async fn dashboard_snapshot(
                 },
                 Err(error) => {
                     let cards = tokio::task::spawn_blocking(|| cards::update(None)).await.unwrap_or_default();
-                    Ok(View { snapshot: previous, cards, stale: true, message: Some(error) })
+                    // No saved snapshot: try the u.gg season fallback before
+                    // giving up to the signed-out screen.
+                    let fell_back = previous.is_none();
+                    let snapshot = match previous {
+                        Some(saved) => Some(saved),
+                        None => season_fallback(&app).await,
+                    };
+                    let message = if fell_back && snapshot.is_some() {
+                        Some("League Client is closed — showing season stats from u.gg.".into())
+                    } else {
+                        Some(error)
+                    };
+                    Ok(View { snapshot, cards, stale: true, message })
                 },
             }
         } => result
@@ -701,6 +805,30 @@ mod tests {
         assert!(history_has_game(&history, 9));
         assert!(!history_has_game(&history, 8));
         assert!(!history_has_game(&serde_json::json!({}), 9));
+    }
+
+    #[test]
+    fn season_snapshot_keeps_the_newest_hundred_and_summarizes_them() {
+        use super::*;
+        let game = |id: u64, at: u64, win: bool| {
+            serde_json::from_value::<model::Game>(serde_json::json!({
+                "id": id, "queue": "solo", "championId": 1, "createdAt": at, "duration": 1800,
+                "win": win, "kills": 5, "deaths": 2, "assists": 7,
+                "metrics": [null, null, null, null, null, null]
+            }))
+            .unwrap()
+        };
+        // 105 games, oldest first, alternating results starting with a loss.
+        let games: Vec<_> = (0..105u64).map(|i| game(i, i * 1000, i % 2 == 1)).collect();
+        let summoner = model::Summoner { puuid: "p".into(), summoner_id: 0, riot_id: "A#B".into(), level: 30, icon: None };
+        let snapshot = season_snapshot(summoner, games, None, Default::default());
+        assert_eq!(snapshot.games.len(), HISTORY_GAMES);
+        assert_eq!(snapshot.games.first().map(|g| g.id), Some(104), "newest first");
+        assert_eq!(snapshot.games.last().map(|g| g.id), Some(5), "oldest dropped");
+        let all = &snapshot.summaries["all"];
+        assert_eq!(all.champions.len(), 1);
+        assert_eq!((all.champions[0].wins, all.champions[0].losses), (50, 50));
+        assert_eq!(snapshot.summaries["normal"].champions.len(), 0);
     }
 
     #[test]

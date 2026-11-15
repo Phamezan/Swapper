@@ -51,6 +51,9 @@ const ICON_LOAD_TRIES = 3;
 /** Wait between retries. */
 const ICON_RETRY_MS = 3_000;
 
+/** Shown in place of the icon when it cannot be loaded. */
+const LABEL: Partial<Record<RoleKey, string>> = { top: "TOP", jungle: "JNG", mid: "MID", adc: "BOT", support: "SUP" };
+
 /** The roles that have no client SVG keep a small inline glyph. */
 const PATHS: Partial<Record<RoleKey, ReactNode>> = {
   // All: a grid of every role.
@@ -92,6 +95,7 @@ export function RoleIcon({
   const key = roleKey(role);
   const asset = ASSET[key] ?? null;
   const cacheKey = `role:${asset}`;
+  const [failed, setFailed] = useState(false);
   const [src, setSrc] = useState<string | null>(() =>
     asset ? (mode === "remote" ? `/api/role/icon/${asset}` : cachedIcon(cacheKey) ?? null) : null,
   );
@@ -102,6 +106,7 @@ export function RoleIcon({
       setSrc(`/api/role/icon/${asset}`);
       return;
     }
+    setFailed(false);
     const cached = cachedIcon(cacheKey);
     if (cached) {
       setSrc(cached);
@@ -118,9 +123,9 @@ export function RoleIcon({
           if (live) setSrc(data);
         })
         .catch(() => {
-          if (live && triesLeft > 1) {
-            timer = setTimeout(() => attempt(triesLeft - 1), ICON_RETRY_MS);
-          }
+          if (!live) return;
+          if (triesLeft > 1) timer = setTimeout(() => attempt(triesLeft - 1), ICON_RETRY_MS);
+          else setFailed(true);
         });
     };
     attempt(ICON_LOAD_TRIES);
@@ -153,9 +158,11 @@ export function RoleIcon({
     return (
       <span
         className={`role-icon role-icon-fallback ${className ?? ""}`}
-        style={{ width: size, height: size }}
+        style={{ width: size, height: size, fontSize: Math.max(7, Math.round(size * 0.4)) }}
         aria-hidden
-      />
+      >
+        {failed ? LABEL[key] : null}
+      </span>
     );
   }
 

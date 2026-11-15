@@ -12,13 +12,13 @@ function ignoreNestedTrigger(event: SyntheticEvent) {
 
 /** Styled replacement for a native `title` tooltip. Wraps `children` with `asChild`, so it adds no extra DOM node.
  *  `data-tooltip` mirrors the label onto the trigger element so e2e tests can query it without simulating a hover. */
-export function Tooltip({ label, side = "top", children }: { label?: string; side?: "top" | "right" | "bottom" | "left"; children: ReactNode }) {
+export function Tooltip({ label, content, side = "top", children }: { label?: string; content?: ReactNode; side?: "top" | "right" | "bottom" | "left"; children: ReactNode }) {
   if (!label) return children;
   return <TooltipPrimitive.Root>
     <TooltipPrimitive.Trigger asChild data-tooltip={label} onFocus={ignoreNestedTrigger} onPointerMove={ignoreNestedTrigger}>{children}</TooltipPrimitive.Trigger>
     <TooltipPrimitive.Portal>
       <TooltipPrimitive.Content className="ui-tooltip" side={side} sideOffset={6} collisionPadding={8}>
-        {label}
+        {content ?? label}
         <TooltipPrimitive.Arrow className="ui-tooltip-arrow" />
       </TooltipPrimitive.Content>
     </TooltipPrimitive.Portal>

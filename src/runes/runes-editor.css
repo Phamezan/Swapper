@@ -234,7 +234,7 @@
 /* Role icons use the League client's SVGs as a CSS mask, so the current text
    colour drives them: dim when idle, gold when the parent marks them active. */
 .role-icon { display: inline-block; flex: none; background-color: currentColor; }
-.role-icon-fallback { border-radius: 4px; background: var(--surface-raised); }
+.role-icon-fallback { display: inline-flex; align-items: center; justify-content: center; overflow: visible; border-radius: 4px; background: var(--surface-raised); font-weight: 700; line-height: 1; letter-spacing: -.02em; }
 
 .spell-icon { display: block; border-radius: 6px; background: var(--surface-raised); }
 .spell-icon-fallback { display: inline-block; border-radius: 6px; background: var(--surface-raised); }

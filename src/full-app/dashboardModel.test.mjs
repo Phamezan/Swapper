@@ -1,10 +1,21 @@
 import { test } from "node:test";
 import { strict as assert } from "node:assert";
-import { defaultQueue, deltaText, ladderScore, lpGraph, meter, newestFirst, smoothPath, playTime, rankProgress, tiles, tierLabel, today, tone } from "./dashboardModel.ts";
+import { defaultQueue, deltaText, ladderScore, lpGraph, meter, newestFirst, smoothPath, playTime, rankProgress, supportVision, tiles, tierLabel, today, tone, visionGap } from "./dashboardModel.ts";
 
 test("tiles carry the per-game series in the given order", () => {
   const games = [game({ cs: 100 }), game({ cs: 200 }), game({ cs: 300 })];
   assert.deepEqual(tiles(games, {}, "Diamond", () => "x")[1].series, [100, 200, 300]);
+});
+
+test("supports read vision instead of CS, other roles keep CS", () => {
+  const support = { role: "support", duration: 1860, metrics: [null, null, null, null, null, 2.0] };
+  assert.deepEqual(supportVision(support), { total: 62, perMin: 2.0 });
+  assert.equal(supportVision({ ...support, role: "mid" }), null);
+  assert.equal(supportVision({ ...support, metrics: [null, null, null, null, null, null] }), null);
+  assert.equal(supportVision({ ...support, duration: 0 }), null);
+  assert.equal(visionGap(support, { vision: 47 }), 15);
+  assert.equal(visionGap(support, { vision: 0 }), null, "u.gg games carry no opponent vision");
+  assert.equal(visionGap({ ...support, role: "adc" }, { vision: 47 }), null);
 });
 
 test("meter is signed, full at ±100% and clamped", () => {

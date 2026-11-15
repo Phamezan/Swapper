@@ -1,12 +1,14 @@
 import { useEffect, useState } from "react";
 import type { ChampionOption } from "../runes/types";
+import type { MatchupVod } from "./matchupGuide";
 import { loadMatchupVods } from "./loadMatchupVods";
 import { Button } from "../components/ui/button";
 import { Play } from "lucide-react";
 import "./matchup-vods.css";
 
 
-export type VodRequest = { champion: ChampionOption | null; enemy?: ChampionOption; lane?: string };
+/** `play` opens that video straight in the VODs page player (e.g. a pro game from Comps). */
+export type VodRequest = { champion: ChampionOption | null; enemy?: ChampionOption; lane?: string; play?: MatchupVod };
 
 
 export function MatchupVodEntry({ champion, enemy, lane, onWatch, compact = false }: VodRequest & { champion: ChampionOption; enemy: ChampionOption; lane: string; compact?: boolean; onWatch: (request: VodRequest) => void }) {

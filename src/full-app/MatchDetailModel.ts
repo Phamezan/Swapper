@@ -123,9 +123,10 @@ export function recapRows(players: Pick<MatchPlayer, "teamId" | "kills" | "death
 export type MatchFact = { value: string; label: string; detail: string; teamId: number } & (
   { kind: "gold" | "towers"; values: [number, number] } |
   { kind: "damage"; share: number; damage: number; teamDamage: number } |
+  { kind: "participation"; share: number; takedowns: number; teamKills: number } |
   { kind: "vision" }
 );
-export function matchFacts(players: Pick<MatchPlayer, "teamId" | "me" | "kills" | "gold" | "damage" | "vision">[], teams: MatchDetailTeam[]): MatchFact[] {
+export function matchFacts(players: Pick<MatchPlayer, "teamId" | "me" | "kills" | "assists" | "gold" | "damage" | "vision" | "role">[], teams: MatchDetailTeam[]): MatchFact[] {
   const own = players.find(p => p.me);
   if (!own) return [];
   const rows = comparisonRows(players, teams), index = own.teamId === 100 ? 0 : 1, other = 1 - index;
@@ -135,13 +136,21 @@ export function matchFacts(players: Pick<MatchPlayer, "teamId" | "me" | "kills" 
   const teamId = own.teamId;
   if (gold[index] != null && gold[other] != null) {
     const diff = gold[index]! - gold[other]!;
-    facts.push({kind: "gold", teamId, values: [gold[index]!, gold[other]!], value: `${diff > 0 ? "+" : diff < 0 ? "−" : ""}${Math.abs(diff).toLocaleString("en-US")}`, label: "Gold at the finish", detail: diff === 0 ? "Teams even" : `Your team ${diff > 0 ? "ahead" : "behind"}`});
+    facts.push({kind: "gold", teamId, values: [gold[index]!, gold[other]!], value: `${diff > 0 ? "+" : diff < 0 ? "−" : ""}${Math.abs(diff).toLocaleString("en-US")}`, label: "Team gold", detail: diff === 0 ? "Even at the end" : `${diff > 0 ? "Ahead" : "Behind"} at the end`});
   }
-  if (towers && towers[index] != null && towers[other] != null) facts.push({ kind: "towers", teamId, values: [towers[index]!, towers[other]!], value: `${towers[index]} : ${towers[other]}`, label: "Towers taken", detail: "Your team : enemy" });
-  const totalDamage = rows.find(r => r.label === "Damage to champions")!.values[index];
-  const share = percent(own.damage, totalDamage);
-  if (share != null) facts.push({ kind: "damage", teamId, share, damage: own.damage!, teamDamage: totalDamage!, value: `${Math.round(share)}%`, label: "Your damage share", detail: "Damage to champions" });
-  if (facts.length < 3 && own.vision != null) facts.push({kind: "vision", teamId, value: String(own.vision), label: "Your vision score", detail: "Reported by League Client"});
+  if (towers && towers[index] != null && towers[other] != null) facts.push({ kind: "towers", teamId, values: [towers[index]!, towers[other]!], value: `${towers[index]} : ${towers[other]}`, label: "Towers destroyed", detail: "Your team : enemy" });
+  if (own.role === "support") {
+    // A support's damage share says little about their game; kill participation does.
+    const teamKills = rows.find(r => r.label === "Kills")!.values[index];
+    const takedowns = own.kills != null && own.assists != null ? own.kills + own.assists : null;
+    const share = percent(takedowns, teamKills);
+    if (share != null) facts.push({ kind: "participation", teamId, share, takedowns: takedowns!, teamKills: teamKills!, value: `${Math.round(share)}%`, label: "Kill participation", detail: "Team kills you helped with" });
+  } else {
+    const totalDamage = rows.find(r => r.label === "Damage to champions")!.values[index];
+    const share = percent(own.damage, totalDamage);
+    if (share != null) facts.push({ kind: "damage", teamId, share, damage: own.damage!, teamDamage: totalDamage!, value: `${Math.round(share)}%`, label: "Damage share", detail: "Of your team's damage" });
+  }
+  if (facts.length < 3 && own.vision != null) facts.push({kind: "vision", teamId, value: String(own.vision), label: "Vision score", detail: "Wards placed, cleared and seen through"});
   return facts.slice(0, 3);
 }
 
