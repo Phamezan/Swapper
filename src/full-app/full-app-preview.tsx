@@ -212,7 +212,7 @@ mockIPC(async (cmd, args) => {
       publishedAt: `2026-${String(1 + i).padStart(2, "0")}-11T12:00:00Z`, updatedAt: null, licence: null, pageUrl: "https://runeforge.dev/mods/x", tags: [] })) };
     // ---- end custom mods ----
     // ---- locbar: keep the existing version label visible in browser evidence ----
-    case 'plugin:app|version': return '1.0.19';
+    case 'plugin:app|version': return '1.0.20';
     // ---- end locbar version fixture ----
     // ---- search: player fixtures (?stale / ?disconnected / ?search-partial / ?search-slow / ?search-error) ----
     case 'full_app_search_players': {
