@@ -115,7 +115,6 @@ impl WatchState {
 
     fn observe(&mut self, app: &tauri::AppHandle, phase: &str) {
         let previous = self.phase.clone();
-        crate::korean_font::observe(app, phase);
         if !self.set_phase(phase) {
             return;
         }

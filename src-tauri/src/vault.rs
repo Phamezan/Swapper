@@ -135,6 +135,13 @@ pub struct Config {
     /// patches League's in-game UI while a game runs.
     #[serde(default)]
     pub korean_font: bool,
+    /// Whether custom mods are on. Off by default; when off, no custom mod
+    /// is loaded (files stay on disk).
+    #[serde(default)]
+    pub custom_mods: bool,
+    /// Whether the one-time custom-mods risk confirm was accepted.
+    #[serde(default)]
+    pub custom_mods_risk_ack: bool,
     /// First-run setup state. `Some(false)` only for a genuinely new install
     /// (see `load`); `None` or `Some(true)` never shows it.
     #[serde(default)]
@@ -162,7 +169,7 @@ impl Config {
             return Err("Pick a champion first.".into());
         }
         if name.is_empty() || name.chars().count() > MAX_PRESET_NAME || name.chars().any(char::is_control) {
-            return Err(format!("Give the preset a name of up to {MAX_PRESET_NAME} characters."));
+            return Err(format!("Name is too long. Use up to {MAX_PRESET_NAME} characters."));
         }
         let ids = selection.perk_ids();
         if selection.primary_runes.len() != 3 || selection.secondary_runes.len() != 2 || selection.shards.len() != 3
@@ -174,7 +181,7 @@ impl Config {
         if let Some(existing) = presets.iter_mut().find(|preset| preset.name.eq_ignore_ascii_case(name)) {
             *existing = saved;
         } else if presets.len() >= MAX_RUNE_PRESETS {
-            return Err(format!("This champion already has {MAX_RUNE_PRESETS} presets. Delete one first."));
+            return Err(format!("You already have {MAX_RUNE_PRESETS} presets here. Delete one first."));
         } else {
             presets.push(saved);
         }
@@ -234,12 +241,12 @@ fn valid_profile_icon_data_url(value: &str) -> bool {
 pub fn save_profile_icon(account_id: Uuid, data_url: &str) -> Result<(), String> {
     let value = data_url.trim();
     if !valid_profile_icon_data_url(value) {
-        return Err("League profile icon data is invalid or too large".into());
+        return Err("That profile picture couldn't be saved.".into());
     }
     let root = data_root()?.join("icons");
-    fs::create_dir_all(&root).map_err(|e| e.to_string())?;
+    fs::create_dir_all(&root).map_err(|e| { eprintln!("Swapper data failed: {e}"); "Couldn't read or save your data. Restart Swapper and retry.".to_string() })?;
     fs::write(root.join(format!("{account_id}.data-url")), value.as_bytes())
-        .map_err(|e| format!("Cannot cache League profile icon: {e}"))
+        .map_err(|e| { eprintln!("Profile icon cache failed: {e}"); "That profile picture couldn't be saved.".to_string() })
 }
 
 /// Returns a cached profile icon for UI presentation. Corrupt or stale cache
@@ -257,7 +264,7 @@ pub fn profile_icon_data_url(account_id: Uuid) -> Option<String> {
 pub fn remove_profile_icon(account_id: Uuid) -> Result<(), String> {
     let path = data_root()?.join("icons").join(format!("{account_id}.data-url"));
     if path.exists() {
-        fs::remove_file(path).map_err(|e| e.to_string())?;
+        fs::remove_file(path).map_err(|e| { eprintln!("Swapper data failed: {e}"); "Couldn't read or save your data. Restart Swapper and retry.".to_string() })?;
     }
     Ok(())
 }
@@ -270,7 +277,7 @@ pub fn load() -> Result<Config, String> {
             return Ok(Config { onboarded: Some(false), ..Config::default() });
         }
         // A lock (antivirus, backup) is transient; the file itself is fine.
-        Err(error) => return Err(format!("Cannot read Swapper settings: {error}")),
+        Err(error) => { eprintln!("Settings read failed: {error}"); return Err("Couldn't read your settings. Restart Swapper and try again.".into()) },
     };
     let mut config: Config = match serde_json::from_slice(&bytes) {
         Ok(config) => config,
@@ -297,18 +304,18 @@ fn read_with_retry(path: &Path) -> std::io::Result<Vec<u8>> {
 fn recover_settings(path: &Path, reason: &str) -> Result<Config, String> {
     use std::os::windows::ffi::OsStrExt;
     use std::time::{SystemTime, UNIX_EPOCH};
-    let error = format!("Cannot read Swapper settings: {reason}");
+    eprintln!("Settings read failed: {reason}"); let error = "Couldn't read your settings. Restart Swapper and try again.".to_string();
     // A directory or symlink at this path must not be moved out of the way.
     if !fs::symlink_metadata(path).map_err(|_| error.clone())?.is_file() {
         return Err(error);
     }
-    let millis = SystemTime::now().duration_since(UNIX_EPOCH).map_err(|e| e.to_string())?.as_millis();
+    let millis = SystemTime::now().duration_since(UNIX_EPOCH).map_err(|e| { eprintln!("Swapper data failed: {e}"); "Couldn't read or save your data. Restart Swapper and retry.".to_string() })?.as_millis();
     let backup = path.with_file_name(format!("state.json.broken-{millis}"));
     let source: Vec<u16> = path.as_os_str().encode_wide().chain([0]).collect();
     let target: Vec<u16> = backup.as_os_str().encode_wide().chain([0]).collect();
     // MoveFileW refuses to replace an existing backup, including a timestamp collision.
     if unsafe { windows_sys::Win32::Storage::FileSystem::MoveFileW(source.as_ptr(), target.as_ptr()) } == 0 {
-        return Err(format!("{error}. Cannot preserve the original settings: {}", std::io::Error::last_os_error()));
+        eprintln!("Settings backup failed: {}", std::io::Error::last_os_error()); return Err(error);
     }
     #[cfg(not(test))]
     {
@@ -326,38 +333,44 @@ fn recover_settings(path: &Path, reason: &str) -> Result<Config, String> {
 
 pub fn save(config: &Config) -> Result<(), String> {
     let root = data_root()?;
-    fs::create_dir_all(&root).map_err(|e| e.to_string())?;
+    fs::create_dir_all(&root).map_err(|e| { eprintln!("Swapper data failed: {e}"); "Couldn't read or save your data. Restart Swapper and retry.".to_string() })?;
     let pending = root.join(format!("state-{}.tmp", Uuid::new_v4()));
     fs::write(
         &pending,
-        serde_json::to_vec_pretty(config).map_err(|e| e.to_string())?,
+        serde_json::to_vec_pretty(config).map_err(|e| { eprintln!("Swapper data failed: {e}"); "Couldn't read or save your data. Restart Swapper and retry.".to_string() })?,
     )
-    .map_err(|e| e.to_string())?;
+    .map_err(|e| { eprintln!("Swapper data failed: {e}"); "Couldn't read or save your data. Restart Swapper and retry.".to_string() })?;
     if let Err(e) = fs::rename(&pending, root.join("state.json")) {
         let _ = fs::remove_file(&pending);
-        return Err(format!("Cannot save Swapper settings: {e}"));
+        eprintln!("Settings save failed: {e}"); return Err("Couldn't save. Try again.".into());
     }
     Ok(())
 }
 
 pub fn save_snapshot(snapshot: &Snapshot) -> Result<Uuid, String> {
-    let bytes = bincode::serialize(snapshot).map_err(|e| e.to_string())?;
+    let bytes = bincode::serialize(snapshot).map_err(|e| { eprintln!("Swapper data failed: {e}"); "Couldn't read or save your data. Restart Swapper and retry.".to_string() })?;
     if bytes.len() > MAX_SNAPSHOT_BYTES {
-        return Err("Riot session is too large to save safely".into());
+        return Err("That sign-in is too large to save. Sign in again and retry.".into());
     }
     let encrypted = protect(&bytes)?;
     let id = Uuid::new_v4();
     let root = data_root()?.join("vault");
-    fs::create_dir_all(&root).map_err(|e| e.to_string())?;
-    fs::write(root.join(format!("{id}.bin")), encrypted).map_err(|e| e.to_string())?;
+    fs::create_dir_all(&root).map_err(|e| { eprintln!("Swapper data failed: {e}"); "Couldn't read or save your data. Restart Swapper and retry.".to_string() })?;
+    fs::write(root.join(format!("{id}.bin")), encrypted).map_err(|e| { eprintln!("Swapper data failed: {e}"); "Couldn't read or save your data. Restart Swapper and retry.".to_string() })?;
     Ok(id)
 }
 
 pub fn read_snapshot(id: Uuid) -> Result<Snapshot, String> {
     let path = data_root()?.join("vault").join(format!("{id}.bin"));
-    let encrypted = fs::read(path).map_err(|e| format!("Cannot read saved account: {e}"))?;
+    let encrypted = fs::read(path).map_err(|e| { eprintln!("Saved account read failed: {e}"); "Couldn't open the saved sign-in. Try Repair account.".to_string() })?;
     let bytes = unprotect(&encrypted)?;
-    bincode::deserialize(&bytes).map_err(|e| format!("Saved account is invalid: {e}"))
+    let snapshot: Snapshot = bincode::deserialize(&bytes).map_err(|e| { eprintln!("Saved account invalid: {e}"); "Couldn't open the saved sign-in. Try Repair account.".to_string() })?;
+    // A snapshot with no sign-in would wipe the live session and land on the login screen.
+    if !snapshot_has_sign_in(&snapshot) {
+        eprintln!("Saved account {id} holds no sign-in");
+        return Err("Couldn't restore that sign-in. Try Repair account.".into());
+    }
+    Ok(snapshot)
 }
 
 /// Replaces one account's saved snapshot in place: writes `snapshot` as a new
@@ -390,7 +403,7 @@ pub fn replace_account_snapshot(
 pub fn remove_snapshot(id: Uuid) -> Result<(), String> {
     let path = data_root()?.join("vault").join(format!("{id}.bin"));
     if path.exists() {
-        fs::remove_file(path).map_err(|e| e.to_string())?;
+        fs::remove_file(path).map_err(|e| { eprintln!("Swapper data failed: {e}"); "Couldn't read or save your data. Restart Swapper and retry.".to_string() })?;
     }
     Ok(())
 }
@@ -569,7 +582,7 @@ pub fn live_session_exists() -> Result<bool, String> {
     let root = local_riot_root()?;
     for (path, _) in &FILES[..2] {
         let source = root.join(path);
-        if source.is_file() && has_persistent_auth(&fs::read(source).map_err(|e| e.to_string())?) {
+        if source.is_file() && has_persistent_auth(&fs::read(source).map_err(|e| { eprintln!("Swapper data failed: {e}"); "Couldn't read or save your data. Restart Swapper and retry.".to_string() })?) {
             return Ok(true);
         }
     }
@@ -642,10 +655,8 @@ pub fn capture() -> Result<Snapshot, String> {
             push_file(&source, name.to_string(), &mut entries, &mut total)?;
         }
     }
-    if !entries.iter().any(|e: &Entry| {
-        (e.relative == "client/private.yaml" || e.relative == "client/legacy-private.yaml")
-            && has_persistent_auth(&e.bytes)
-    }) {
+    let mut snapshot = Snapshot { entries };
+    if !snapshot_has_sign_in(&snapshot) {
         return Err(
             "No signed-in Riot session found. Sign in with Stay signed in, then try again.".into(),
         );
@@ -653,10 +664,10 @@ pub fn capture() -> Result<Snapshot, String> {
     for (path, name) in DIRS {
         let source = root.join(path);
         if source.is_dir() {
-            visit_dir(&source, &source, name, &mut entries, &mut total)?;
+            visit_dir(&source, &source, name, &mut snapshot.entries, &mut total)?;
         }
     }
-    Ok(Snapshot { entries })
+    Ok(snapshot)
 }
 
 fn visit_dir(
@@ -666,9 +677,9 @@ fn visit_dir(
     out: &mut Vec<Entry>,
     total: &mut usize,
 ) -> Result<(), String> {
-    for item in fs::read_dir(dir).map_err(|e| e.to_string())? {
-        let item = item.map_err(|e| e.to_string())?;
-        let ty = item.file_type().map_err(|e| e.to_string())?;
+    for item in fs::read_dir(dir).map_err(|e| { eprintln!("Swapper data failed: {e}"); "Couldn't read or save your data. Restart Swapper and retry.".to_string() })? {
+        let item = item.map_err(|e| { eprintln!("Swapper data failed: {e}"); "Couldn't read or save your data. Restart Swapper and retry.".to_string() })?;
+        let ty = item.file_type().map_err(|e| { eprintln!("Swapper data failed: {e}"); "Couldn't read or save your data. Restart Swapper and retry.".to_string() })?;
         if ty.is_symlink() {
             continue;
         }
@@ -676,7 +687,7 @@ fn visit_dir(
         if ty.is_dir() {
             visit_dir(base, &path, target, out, total)?;
         } else if ty.is_file() {
-            let relative = path.strip_prefix(base).map_err(|e| e.to_string())?;
+            let relative = path.strip_prefix(base).map_err(|e| { eprintln!("Swapper data failed: {e}"); "Couldn't read or save your data. Restart Swapper and retry.".to_string() })?;
             let relative = format!("{target}/{}", relative.to_string_lossy().replace('\\', "/"));
             push_file(&path, relative, out, total)?;
         }
@@ -690,17 +701,17 @@ fn push_file(
     out: &mut Vec<Entry>,
     total: &mut usize,
 ) -> Result<(), String> {
-    let size = source.metadata().map_err(|e| e.to_string())?.len();
+    let size = source.metadata().map_err(|e| { eprintln!("Swapper data failed: {e}"); "Couldn't read or save your data. Restart Swapper and retry.".to_string() })?.len();
     if size > MAX_FILE_BYTES {
-        return Err("A Riot session file is too large to save safely".into());
+        return Err("That sign-in is too large to save. Sign in again and retry.".into());
     }
     *total += size as usize;
     if *total > MAX_SNAPSHOT_BYTES {
-        return Err("Riot session is too large to save safely".into());
+        return Err("That sign-in is too large to save. Sign in again and retry.".into());
     }
     out.push(Entry {
         relative,
-        bytes: fs::read(source).map_err(|e| e.to_string())?,
+        bytes: fs::read(source).map_err(|e| { eprintln!("Swapper data failed: {e}"); "Couldn't read or save your data. Restart Swapper and retry.".to_string() })?,
     });
     Ok(())
 }
@@ -725,22 +736,78 @@ fn target_path(relative: &str) -> Option<PathBuf> {
 }
 
 pub fn clear_live() -> Result<(), String> {
-    let root = local_riot_root()?;
-    for (path, _) in FILES {
-        let target = root.join(path);
-        if target.exists() {
-            fs::remove_file(target).map_err(|e| e.to_string())?;
-        }
-    }
-    for (path, _) in DIRS {
-        let target = root.join(path);
-        if target.exists() {
-            fs::remove_dir_all(target).map_err(|e| e.to_string())?;
-        }
-    }
-    Ok(())
+    restore(&Snapshot { entries: Vec::new() })
 }
 
+const DATA_ERROR: &str = "Couldn't read or save your data. Restart Swapper and retry.";
+pub const ROLLBACK_FAILED: &str =
+    "Couldn't put your previous sign-in back. Open Riot Client and sign in again.";
+
+fn io_error(e: std::io::Error) -> String {
+    eprintln!("Swapper data failed: {e}");
+    DATA_ERROR.to_string()
+}
+
+/// Whether a snapshot carries a persistent Riot sign-in (not just settings files).
+pub fn snapshot_has_sign_in(snapshot: &Snapshot) -> bool {
+    snapshot.entries.iter().any(|e| {
+        (e.relative == "client/private.yaml" || e.relative == "client/legacy-private.yaml")
+            && has_persistent_auth(&e.bytes)
+    })
+}
+
+/// Moves the live auth files and folders into `backup`, returning (original, moved) pairs.
+fn move_live_aside(root: &Path, backup: &Path) -> Result<Vec<(PathBuf, PathBuf)>, String> {
+    let mut moved = Vec::new();
+    for (index, (path, _)) in FILES.iter().chain(DIRS).enumerate() {
+        let target = root.join(path);
+        if !target.exists() {
+            continue;
+        }
+        fs::create_dir_all(backup).map_err(io_error)?;
+        let aside = backup.join(index.to_string());
+        if let Err(e) = fs::rename(&target, &aside) {
+            // Only move back what was moved: the paths not reached yet still hold live files.
+            for (original, aside) in moved.iter().rev() {
+                if let Err(e) = fs::rename(aside, original) {
+                    eprintln!("Swapper rollback failed: {e}");
+                    return Err(ROLLBACK_FAILED.to_string());
+                }
+            }
+            let _ = fs::remove_dir(backup);
+            return Err(io_error(e));
+        }
+        moved.push((target, aside));
+    }
+    Ok(moved)
+}
+
+/// Removes whatever now sits at the auth paths and moves the backed-up originals back.
+fn put_back(root: &Path, moved: &[(PathBuf, PathBuf)]) -> Result<(), String> {
+    let mut failure = None;
+    for (path, _) in FILES.iter().chain(DIRS) {
+        let target = root.join(path);
+        let result = if target.is_dir() { fs::remove_dir_all(&target) } else if target.exists() { fs::remove_file(&target) } else { Ok(()) };
+        if let Err(e) = result {
+            failure = Some(e);
+        }
+    }
+    for (target, aside) in moved {
+        if let Err(e) = fs::rename(aside, target) {
+            failure = Some(e);
+        }
+    }
+    match failure {
+        None => Ok(()),
+        Some(e) => {
+            eprintln!("Swapper rollback failed: {e}");
+            Err(ROLLBACK_FAILED.to_string())
+        }
+    }
+}
+
+/// Replaces the live auth files with the snapshot. The old files are moved aside first and
+/// put back if anything fails, so the live session is either fully new or fully unchanged.
 pub fn restore(snapshot: &Snapshot) -> Result<(), String> {
     // Validate the entire encrypted snapshot before modifying the live Riot files.
     let targets: Vec<_> = snapshot
@@ -751,12 +818,24 @@ pub fn restore(snapshot: &Snapshot) -> Result<(), String> {
                 .ok_or_else(|| "Saved session contains an invalid path".to_string())
         })
         .collect::<Result<_, _>>()?;
-    clear_live()?;
-    for (entry, target) in snapshot.entries.iter().zip(targets) {
+    let root = local_riot_root()?;
+    let backup = root.join(format!(".swapper-restore-{}", Uuid::new_v4()));
+    let moved = move_live_aside(&root, &backup)?;
+    let written = snapshot.entries.iter().zip(targets).try_for_each(|(entry, target)| {
         if let Some(parent) = target.parent() {
-            fs::create_dir_all(parent).map_err(|e| e.to_string())?;
+            fs::create_dir_all(parent).map_err(io_error)?;
         }
-        fs::write(target, &entry.bytes).map_err(|e| e.to_string())?;
+        fs::write(target, &entry.bytes).map_err(io_error)
+    });
+    if let Err(error) = written {
+        put_back(&root, &moved)?;
+        let _ = fs::remove_dir_all(&backup);
+        return Err(error);
+    }
+    if let Err(e) = fs::remove_dir_all(&backup) {
+        if backup.exists() {
+            eprintln!("Swapper couldn't remove its restore backup: {e}");
+        }
     }
     Ok(())
 }
@@ -1075,5 +1154,148 @@ mod tests {
         assert!(fresh.onboarding_pending());
         let done = Config { onboarded: Some(true), ..Config::default() };
         assert!(!done.onboarding_pending());
+    }
+
+    // ---- swap e2e: capture / restore failure paths (edge cases 20, 21, 23) ----
+
+    fn signed_in_entry(puuid: &str) -> Entry {
+        Entry { relative: "client/private.yaml".into(), bytes: test_session_yaml(puuid) }
+    }
+
+    fn private_path(root: &Path) -> PathBuf {
+        root.join("Riot Games/Riot Client/Data/RiotGamesPrivateSettings.yaml")
+    }
+
+    #[test]
+    fn restore_then_capture_round_trips_every_saved_entry() {
+        with_test_data(|root| {
+            let snapshot = Snapshot {
+                entries: vec![
+                    signed_in_entry("00000000-0000-0000-0000-000000000001"),
+                    Entry { relative: "client/settings.yaml".into(), bytes: b"settings: 1\n".to_vec() },
+                    Entry { relative: "client/sessions/a/b.json".into(), bytes: b"{}".to_vec() },
+                    Entry { relative: "client/cookies/c".into(), bytes: b"cookie".to_vec() },
+                ],
+            };
+            restore(&snapshot).unwrap();
+            assert!(live_session_exists().unwrap());
+            let captured = capture().unwrap();
+            let mut left: Vec<_> = snapshot.entries.iter().map(|e| (e.relative.clone(), e.bytes.clone())).collect();
+            let mut right: Vec<_> = captured.entries.iter().map(|e| (e.relative.clone(), e.bytes.clone())).collect();
+            left.sort();
+            right.sort();
+            assert_eq!(left, right);
+            assert!(private_path(root).is_file());
+        });
+    }
+
+    #[test]
+    fn restore_rejects_an_invalid_path_before_touching_the_live_session() {
+        with_test_data(|root| {
+            restore(&Snapshot { entries: vec![signed_in_entry("00000000-0000-0000-0000-000000000001")] }).unwrap();
+            let before = fs::read(private_path(root)).unwrap();
+            let bad = Snapshot {
+                entries: vec![signed_in_entry("00000000-0000-0000-0000-000000000002"), Entry { relative: "client/sessions/../../evil".into(), bytes: vec![1] }],
+            };
+            assert!(restore(&bad).is_err());
+            assert_eq!(fs::read(private_path(root)).unwrap(), before);
+        });
+    }
+
+    // edge case 21 / finding SW-03: a failure part-way through must leave the old session whole.
+    #[test]
+    fn a_failed_restore_leaves_the_live_session_intact() {
+        with_test_data(|root| {
+            let first = Snapshot {
+                entries: vec![
+                    signed_in_entry("00000000-0000-0000-0000-000000000001"),
+                    Entry { relative: "client/sessions/keep.json".into(), bytes: b"keep".to_vec() },
+                ],
+            };
+            restore(&first).unwrap();
+            let before = fs::read(private_path(root)).unwrap();
+            // A file and a folder claiming the same path: the second write fails after the first landed.
+            let next = Snapshot {
+                entries: vec![
+                    signed_in_entry("00000000-0000-0000-0000-000000000002"),
+                    Entry { relative: "client/sessions/a".into(), bytes: vec![1] },
+                    Entry { relative: "client/sessions/a/b".into(), bytes: vec![2] },
+                ],
+            };
+            assert!(restore(&next).is_err());
+            assert_eq!(fs::read(private_path(root)).ok(), Some(before), "the previous live session must survive a failed restore");
+            assert_eq!(fs::read(root.join("Riot Games/Riot Client/Data/Sessions/keep.json")).unwrap(), b"keep");
+            assert!(!root.join("Riot Games/Riot Client/Data/Sessions/a").exists());
+            let strays: Vec<_> = fs::read_dir(root.join("Riot Games")).unwrap().flatten()
+                .filter(|e| e.file_name().to_string_lossy().starts_with(".swapper-restore")).collect();
+            assert!(strays.is_empty(), "the backup folder must be cleaned up");
+        });
+    }
+
+    #[test]
+    fn clear_live_removes_every_auth_file_and_a_second_clear_is_fine() {
+        with_test_data(|root| {
+            restore(&Snapshot { entries: vec![signed_in_entry("00000000-0000-0000-0000-000000000001"),
+                Entry { relative: "client/cookies/c".into(), bytes: b"x".to_vec() }] }).unwrap();
+            clear_live().unwrap();
+            clear_live().unwrap();
+            assert!(!private_path(root).exists());
+            assert!(!root.join("Riot Games/Riot Client/Data/Cookies").exists());
+        });
+    }
+
+    #[test]
+    fn a_failed_move_aside_keeps_every_live_file() {
+        with_test_data(|root| {
+            restore(&Snapshot { entries: vec![signed_in_entry("00000000-0000-0000-0000-000000000001"),
+                Entry { relative: "client/sessions/keep.json".into(), bytes: b"keep".to_vec() }] }).unwrap();
+            let before = fs::read(private_path(root)).unwrap();
+            let riot = root.join("Riot Games");
+            let backup = riot.join(".swapper-restore-test");
+            // Index 4 is the Sessions folder: a non-empty folder in its way makes that move fail
+            // after private.yaml was already moved.
+            fs::create_dir_all(backup.join("4/blocker")).unwrap();
+            fs::write(backup.join("4/blocker/x"), b"x").unwrap();
+            assert!(move_live_aside(&riot, &backup).is_err());
+            assert_eq!(fs::read(private_path(root)).unwrap(), before, "moved files come back");
+            assert_eq!(fs::read(riot.join("Riot Client/Data/Sessions/keep.json")).unwrap(), b"keep", "unmoved files stay");
+        });
+    }
+
+    #[test]
+    fn a_snapshot_without_a_sign_in_is_not_restorable() {
+        assert!(snapshot_has_sign_in(&Snapshot { entries: vec![signed_in_entry("00000000-0000-0000-0000-000000000001")] }));
+        let hollow = Snapshot { entries: vec![Entry { relative: "client/private.yaml".into(), bytes: b"psl:
+  authorization: {}
+".to_vec() }] };
+        assert!(!snapshot_has_sign_in(&hollow));
+        assert!(!snapshot_has_sign_in(&Snapshot { entries: vec![] }));
+    }
+
+    // edge case 20
+    #[test]
+    fn capture_of_an_oversized_session_file_fails_without_touching_it() {
+        with_test_data(|root| {
+            let path = private_path(root);
+            fs::create_dir_all(path.parent().unwrap()).unwrap();
+            fs::write(&path, test_session_yaml("00000000-0000-0000-0000-000000000001")).unwrap();
+            let file = fs::OpenOptions::new().write(true).open(&path).unwrap();
+            file.set_len(MAX_FILE_BYTES + 1).unwrap();
+            drop(file);
+            let before = fs::metadata(&path).unwrap().len();
+            assert!(capture().err().unwrap().contains("too large"));
+            assert_eq!(fs::metadata(&path).unwrap().len(), before);
+        });
+    }
+
+    #[test]
+    fn capture_without_a_persistent_sign_in_is_refused() {
+        with_test_data(|root| {
+            let path = private_path(root);
+            fs::create_dir_all(path.parent().unwrap()).unwrap();
+            fs::write(&path, "psl:\n  authorization: {}\n").unwrap();
+            assert!(!live_session_exists().unwrap());
+            assert!(capture().err().unwrap().contains("No signed-in Riot session"));
+        });
     }
 }

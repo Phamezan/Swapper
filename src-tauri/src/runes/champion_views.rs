@@ -10,6 +10,7 @@ use super::items;
 use super::lolalytics;
 use super::overview::{self, Damage, Overview};
 use super::provider::Sourced;
+use super::tier_history;
 use super::tierlist::{self, TierList, TierRow};
 use super::view::{self, KeystoneBuildView};
 
@@ -28,6 +29,10 @@ pub struct TierRowView {
     pub pick_pct: f64,
     pub ban_pct: f64,
     pub games: u64,
+    /// The previous patch's tier label, when it had enough games on both patches.
+    pub prev_tier: Option<String>,
+    /// Win rate now minus about a week ago (same patch, enough games both times).
+    pub week_win_delta: Option<f64>,
 }
 
 #[derive(Debug, Clone, PartialEq, serde::Serialize)]
@@ -42,15 +47,23 @@ pub struct TierListView {
 
 /// The tier list for a Swapper role (`mid`, `adc`, ...) and rank bracket.
 pub async fn tier_list_view(position: &str, tier: &str) -> TierListView {
-    let found = match lolalytics::lane(position) {
+    let lane = lolalytics::lane(position);
+    let found = match lane {
         Some(lane) => tierlist::load(lane, tier).await.ok().flatten(),
         None => None,
     };
+    let deltas = match (lane, &found) {
+        (Some(lane), Some(found)) => match &found.value.patch {
+            Some(info) => tier_history::week_deltas(lane, tier, &info.patch, &found.value.rows, tierlist::min_games(tier), found.stale),
+            None => HashMap::new(),
+        },
+        _ => HashMap::new(),
+    };
     let names = data::champion_names().await.unwrap_or_default();
-    build_tier_list(found, &names)
+    build_tier_list(found, &names, &deltas)
 }
 
-fn build_tier_list(found: Option<Sourced<TierList>>, names: &HashMap<i64, String>) -> TierListView {
+fn build_tier_list(found: Option<Sourced<TierList>>, names: &HashMap<i64, String>, deltas: &HashMap<i64, f64>) -> TierListView {
     let Some(sourced) = found else {
         return TierListView {
             rows: Vec::new(),
@@ -73,6 +86,8 @@ fn build_tier_list(found: Option<Sourced<TierList>>, names: &HashMap<i64, String
                 pick_pct: row.pick_pct,
                 ban_pct: row.ban_pct,
                 games: row.games,
+                prev_tier: row.prev_tier.map(|tier| tierlist::tier_label(tier).to_string()),
+                week_win_delta: deltas.get(&row.champion_id).copied(),
             })
         })
         .collect();
@@ -338,6 +353,7 @@ mod tests {
             ban_pct: 3.0,
             games: 9000,
             score: 0.0,
+            prev_tier: None,
         }
     }
 
@@ -348,10 +364,11 @@ mod tests {
             rows: vec![row(31, 0), row(9999, 1)],
             patch: None,
         };
-        let view = build_tier_list(Some(Sourced::fresh(list, Provider::Lolalytics)), &names);
+        let view = build_tier_list(Some(Sourced::fresh(list, Provider::Lolalytics)), &names, &HashMap::from([(31, 1.5)]));
+        assert_eq!(view.rows[0].week_win_delta, Some(1.5));
         assert_eq!(view.rows.len(), 1);
         assert_eq!((view.rows[0].name.as_str(), view.rows[0].tier.as_str()), ("Cho'Gath", "S+"));
-        assert!(build_tier_list(None, &names).unavailable);
+        assert!(build_tier_list(None, &names, &HashMap::new()).unavailable);
     }
 
     fn list() -> TierList {
@@ -391,7 +408,7 @@ mod tests {
             row
         }).collect();
         let list = tierlist::blend_tierlist(TierList {rows,patch:None},None,"emerald_plus",Default::default());
-        let shown = build_tier_list(Some(Sourced::fresh(list.clone(),Provider::Ugg)),&names);
+        let shown = build_tier_list(Some(Sourced::fresh(list.clone(),Provider::Ugg)),&names,&HashMap::new());
         for (index,row) in shown.rows.iter().enumerate() {
             let placed = placement(&list,row.champion_id,&names);
             let view = build_overview(row.champion_id,Some(Sourced::fresh(overview(),Provider::Ugg)),placed,&HashMap::new());

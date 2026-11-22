@@ -1,7 +1,13 @@
 /** Patch notes as `runes::patch_notes` serializes them, plus the pure helpers
  *  the page shares with its test. No React or Tauri imports. */
 
-export type PatchLine = { label: string | null; before: string | null; after: string | null; text: string | null };
+export type PatchLine = { label: string | null; before: string | null; after: string | null; text: string | null; note?: string; cost?: boolean };
+
+/** Riot sometimes tacks a sentence onto the new value ("… (+105% AD). Reminder that …"): split it off as a note. */
+export function splitAfterNote(line: PatchLine): PatchLine {
+  const match = line.after?.match(/^(.*?[\d)%])\.\s+([A-Z].*)$/);
+  return match ? { ...line, after: match[1], note: match[2] } : line;
+}
 export type PatchGroup = { title: string | null; lines: PatchLine[] };
 export type PatchEntry = { name: string; itemId?: number | null; context: string | null; groups: PatchGroup[]; notes: string[] };
 export type PatchSection = { title: string; entries: PatchEntry[]; paragraphs: string[] };
@@ -30,7 +36,7 @@ export function abilityHeading(title: string | null, abilities: PatchAbility[] =
 }
 
 const LOWER_IS_BETTER = /\b(?:cooldowns?|costs?|cast(?:ing)? time|wind[ -]?up|delays?|recharges?|lockouts?|time to)\b/i;
-const HIGHER_IS_BETTER = /\b(?:damage|ad|ap|ratios?|heal(?:s|ing)?|shield(?:s|ing)?|health|mana|energy|armou?r|magic resist(?:ance)?|mr|speed|range|duration|slow|stun|growth|scaling|monsters?|camps?|mod(?:ifier)?s?|bonus|regeneration|regen|penetration|lethality|crit|critical strike|radius|width|area|lifesteal|omnivamp|tenacity|haste|ability power)\b/i;
+const HIGHER_IS_BETTER = /\b(?:damage|retaliation|ad|ap|ratios?|heal(?:s|ing)?|shield(?:s|ing)?|health|mana|energy|armou?r|magic resist(?:ance)?|mr|speed|range|duration|slow|stun|growth|scaling|monsters?|camps?|mod(?:ifier)?s?|bonus|regeneration|regen|penetration|lethality|crit|critical strike|radius|width|area|life\s?steal|omnivamp|tenacity|haste|ability power)\b/i;
 const ENEMY_AMPLIFICATION = /\b(?:(?:increased|bonus) damage taken|damage amplification|amplified|vulnerability)\b/i;
 const AMBIGUOUS_STAT = /\b(?:penalty|decay|falloff|channel|requirement|required)\b/i;
 
@@ -46,6 +52,9 @@ function stackDirection(line: PatchLine): -1 | 0 | 1 | null {
     || /\b(?:thresholds?|checkpoints?)\b/i.test(counts)
     || /\bat\s+\d[\d\s/.,–—−-]*\s+stacks?\b/i.test(counts);
   const earned = perYield || /\bstacks?\s+(?:gained|granted|per\s+(?:kill|cannon|minion|hit|takedown)s?)\b/i.test(counts);
+  const label = line.label ?? "";
+  const explicitStat = /\bstacks?\s+duration\b/i.test(label) || /\bstacks?\s+\w+\s+(?:damage|heal(?:s|ing)?|duration)\b/i.test(label);
+  if (required === earned && !required && explicitStat) return null;
   return required === earned ? 0 : required ? -1 : 1;
 }
 
@@ -54,6 +63,7 @@ function statDirection(line: PatchLine): -1 | 0 | 1 {
   if (stacks != null) return stacks;
   const label = line.label;
   if (!label) return 0;
+  if (line.cost) return -1;
   if (/\brefund\b/i.test(label)) return 1;
   if (/\b(?:charges(?:\s+(?:count|limit|capacity))?|charge\s+(?:count|limit|capacity))(?:\s+(?:per|at|based on)\b.*)?$/i.test(label) || AMBIGUOUS_STAT.test(label)) return 0;
   if (/\bself\b/i.test(label) && !/\bself[ -]+(?:heal(?:ing)?|shield(?:ing)?|damage)\b/i.test(label)) return 0;
@@ -63,7 +73,7 @@ function statDirection(line: PatchLine): -1 | 0 | 1 {
   const amplification = ENEMY_AMPLIFICATION.test(label);
   if (/\bdamage taken\b/i.test(label) && !amplification && !/\breduction\b/i.test(label)) return 0;
   const lower = LOWER_IS_BETTER.test(label) || /\bself[ -]+damage\b/i.test(label);
-  const higher = HIGHER_IS_BETTER.test(label) || executeThreshold || amplification;
+  const higher = HIGHER_IS_BETTER.test(label) || /\b(?:AR|AS|MS)\b/.test(label) || executeThreshold || amplification;
   if (lower && higher && /[/&]|\b(?:and|or)\b/i.test(label)) return 0;
   if (lower) return /\b(?:reduction|refund|discount)\b/i.test(label) ? 1 : -1;
   return higher ? 1 : 0;
@@ -120,10 +130,19 @@ function rankUnit(shape: string): string | null {
 function compareChange(line: PatchLine) {
   const direction = statDirection(line);
   if (!direction || line.before == null || line.after == null) return null;
-  const before = numericValues(line.before), after = numericValues(line.after);
+  const before = numericValues(line.before);
+  let after = numericValues(line.after);
+  if (after.shape.endsWith(")")) {
+    const open = after.shape.lastIndexOf("(");
+    const extra = open >= 0 ? after.shape.slice(open) : "";
+    const reduced = open >= 0 ? after.shape.slice(0, open) : "";
+    const extraCount = (extra.match(/#/g) ?? []).length;
+    if (open > 0 && (after.shape.match(/\(/g) ?? []).length > (before.shape.match(/\(/g) ?? []).length && after.numbers.length - extraCount === before.numbers.length && matchingShapes(before.shape, reduced))
+      after = { shape: reduced, numbers: after.numbers.slice(0, after.numbers.length - extraCount) };
+  }
   const beforeUnit = rankUnit(before.shape), afterUnit = rankUnit(after.shape);
   const broadcast = before.numbers.length !== after.numbers.length && Math.min(before.numbers.length, after.numbers.length) === 1
-    && beforeUnit != null && beforeUnit === afterUnit;
+    && ((beforeUnit != null && beforeUnit === afterUnit) || matchingShapes(before.shape.replace(/#(?:\/#)+/g, "#"), after.shape.replace(/#(?:\/#)+/g, "#")));
   if (!before.numbers.length || (!broadcast && (before.numbers.length !== after.numbers.length || !matchingShapes(before.shape, after.shape)))
     || /,|#e[+-]?#|##/.test(after.shape)
     || [...before.numbers, ...after.numbers].some(number => !Number.isFinite(number.value))) return null;
@@ -179,7 +198,7 @@ export function riftSections(sections: PatchSection[]): PatchSection[] {
     const title = section.title.toLowerCase().replace(/[’']/g, "").trim();
     if (!gameplay(title)) continue;
     let category: string;
-    if (/^champions?(?: (?:balance )?changes)?$/.test(title)) category = "Champions";
+    if (/^mid[-\s]?patch(?: updates?)?$/.test(title) || /^champions?(?: (?:balance )?changes)?$/.test(title)) category = "Champions";
     else if (/^items?(?: (?:balance )?changes)?$/.test(title)) category = "Items";
     else if (/^runes?(?: (?:balance )?changes)?$/.test(title)) category = "Runes";
     else if (/^(?:(?:core )?systems?|summoners rift|summoner spells|jungle|monsters|objectives|turrets|minions)(?: changes| adjustments| updates)?$/.test(title)) category = "Systems";
@@ -188,11 +207,13 @@ export function riftSections(sections: PatchSection[]): PatchSection[] {
 
     const entries = section.entries.filter(entry => gameplay(entry.name)).map(entry => ({
       ...entry,
-      context: gameplay(entry.context) ? entry.context : null,
+      context: entry.context,
       notes: entry.notes.filter(gameplay),
       groups: entry.groups.filter(group => gameplay(group.title)).map(group => ({
         ...group,
-        lines: group.lines.filter(line => gameplay([line.label, line.before, line.after, line.text].filter(Boolean).join(" "))),
+        lines: group.lines.filter(line => gameplay(line.label ?? (line.before == null && line.after == null ? line.text : ""))).map(splitAfterNote)
+          // A bare "Mana"/"Energy" under Q/W/E/R is the spell's cost, not the champion's pool.
+          .map(line => /^[QWER]\b/i.test(group.title ?? "") && /^(?:mana|energy)$/i.test(line.label ?? "") ? { ...line, cost: true } : line),
       })).filter(group => group.lines.length > 0),
     })).filter(entry => entry.groups.length > 0 || entry.notes.length > 0);
     const paragraphs = section.paragraphs.filter(gameplay);
@@ -205,23 +226,31 @@ export function riftSections(sections: PatchSection[]): PatchSection[] {
   return ["Champions", "Items", "Runes", "Systems", "Bugfixes"].flatMap(title => buckets.get(title) ?? []);
 }
 
-/** Riot's explicit wording takes priority; otherwise aggregate line signals,
- * including range endpoints and scaling notes. Mixed or unknown means Adjustment. */
+/** Clear line numbers win; adjustment wording is an Adjustment; predicative
+ * context wording only decides when lines are neutral. Mixed or unknown means Adjustment. */
+function contextDirection(context: string | null): ChangeKind | null {
+  const text = (context ?? "").toLowerCase()
+    .replace(/\b(?:might|may|could|would|will|should) (?:read|look|seem|feel|land)\w* as (?:a |an )?(?:\w+ )?(?:buff|nerf)\b[^.,;]*/g, " ")
+    .replace(/\brevert\w*\b(?:(?!\band\b)[^.,;]){0,30}?\b(buff|nerf)/g, (_, word) => word === "buff" ? "nerf" : "buff");
+  const reverted = text.match(/\brevert\w*\b[^.,;]{0,30}?\b(buff|nerf)\b/);
+  if (reverted) return reverted[1] === "buff" ? "buff" : "nerf";
+  const buff = /\bbuffing\b|\bbuff(?:s|ed)?\s+(?:for|on|him|her|them|it)\b|\bbuff(?:s|ed)?\s+to\s+(?:[pqwer]\b|his\b|her\b|their\b)|\bcompensat\w*\b|\bmaking it up\b|\bmake it up\b|\brestor\w*\b|\bboost\b|\bbump\b|\bmore punchy\b|\bsome love\b|\bmore power\b/.test(text);
+  const nerf = /\bnerfing\b|\bnerf(?:s|ed)?\s+(?:for|on|him|her|them|it)\b|\bnerf(?:s|ed)?\s+to\s+(?:[pqwer]\b|his\b|her\b|their\b)|\btime to nerf\b|\bpull\w*\b[^.,;]{0,30}\bpower\b|\bsoften\w*\b|\b(?:tap|tone|toning|dial|knock|bring|pare)\w*\s+(?:\w+\s+)?down\b/.test(text);
+  return buff === nerf ? null : buff ? "buff" : "nerf";
+}
+
 export function classifyChange(entry: PatchEntry): ChangeKind {
-  // "Reverting the buff" is a nerf and "reverting the nerf" a buff: flip those before reading the wording.
-  const text = (entry.context ?? "").toLowerCase().replace(/\brevert\w*\b(?:(?!\band\b)[^.,;]){0,30}?\b(buff|nerf)/g, (_, word) => word === "buff" ? "nerf" : "buff");
-  const buff = /\bbuff/.test(text);
-  const nerf = /\bnerf/.test(text);
-  if (buff && !nerf) return "buff";
-  if (nerf && !buff) return "nerf";
-  // Mixed or no wording (e.g. "with the Hubris nerf … a couple buffs"): count the lines. Each line is a buff
-  // or a nerf by its own numbers (a line pulling both ways counts as neither); the majority decides, a tie is an adjustment.
-  let score = 0;
+  // Not bare "adjust": Riot uses it for other entities too ("Rocketbelt's adjustment… a small nerf for Neeko").
+  if (/\b(?:midscope|rework\w*)\b/i.test(entry.context ?? "")) return "adjust";
+  let score = 0, signals = 0;
   for (const line of entry.groups.flatMap(group => group.lines)) {
     const tones = new Set(lineSignals(line));
-    if (tones.size === 1) score += tones.has("buff") ? 1 : -1;
+    if (tones.size === 1) { score += tones.has("buff") ? 1 : -1; signals++; }
   }
-  return score > 0 ? "buff" : score < 0 ? "nerf" : "adjust";
+  if (score > 0) return "buff";
+  if (score < 0) return "nerf";
+  if (signals > 0) return "adjust";
+  return contextDirection(entry.context) ?? "adjust";
 }
 
 const normalize = (name: string) => name.toLowerCase().replace(/[^a-z0-9]/g, "");

@@ -18,7 +18,7 @@ pub(crate) fn set_auto_apply_top_preset(
             let _ = runes::auto_apply_current(&app).await;
         });
     }
-    let config = state.config.lock().map_err(|e| e.to_string())?;
+    let config = state.config.lock().map_err(|e| { eprintln!("Settings lock poisoned: {e}"); "Couldn't read your settings. Restart Swapper.".to_string() })?;
     Ok(view(
         &config,
         &state.bundled_deceive,
@@ -52,7 +52,7 @@ pub(crate) fn set_apply_spells_with_runes(
 ) -> Result<AppView, String> {
     state.set_apply_spells_with_runes(enabled)?;
     let view = {
-        let config = state.config.lock().map_err(|e| e.to_string())?;
+        let config = state.config.lock().map_err(|e| { eprintln!("Settings lock poisoned: {e}"); "Couldn't read your settings. Restart Swapper.".to_string() })?;
         view(
             &config,
             &state.bundled_deceive,
@@ -105,7 +105,7 @@ pub(crate) fn set_import_items_with_runes(
 ) -> Result<AppView, String> {
     state.set_import_items_with_runes(enabled)?;
     let view = {
-        let config = state.config.lock().map_err(|e| e.to_string())?;
+        let config = state.config.lock().map_err(|e| { eprintln!("Settings lock poisoned: {e}"); "Couldn't read your settings. Restart Swapper.".to_string() })?;
         view(
             &config,
             &state.bundled_deceive,
@@ -147,7 +147,7 @@ pub(crate) fn set_rune_tier(
 ) -> Result<AppView, String> {
     state.set_rune_tier(&tier)?;
     let view = {
-        let config = state.config.lock().map_err(|e| e.to_string())?;
+        let config = state.config.lock().map_err(|e| { eprintln!("Settings lock poisoned: {e}"); "Couldn't read your settings. Restart Swapper.".to_string() })?;
         view(
             &config,
             &state.bundled_deceive,

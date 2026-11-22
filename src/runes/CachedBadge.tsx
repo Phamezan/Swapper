@@ -18,7 +18,7 @@ type Props = {
 export function CachedBadge({ stale, updatedAt, className }: Props) {
   if (!stale) return null;
   return (
-    <Tooltip label="The live source could not be reached; showing the last successful result.">
+    <Tooltip label="Showing saved results. Live stats couldn't load.">
       <span className={`cached-badge${className ? ` ${className}` : ""}`}>
         Cached · updated {fmtAgo(updatedAt)}
       </span>

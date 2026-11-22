@@ -312,3 +312,17 @@
 .fa-frame .champion-tools .fa-tier-portrait { box-shadow: 0 0 0 1px var(--ui-line-2); overflow: hidden; }
 .fa-frame .champion-tools .fa-rate-bar { height: 4px; }
 @media (max-width: 1100px) { .fa-frame .champion-tools .fa-featured-picks { grid-template-columns: 1fr; } }
+
+/* ---------- Tier movement: tier vs last patch, win rate vs a week ago ---------- */
+.fa-frame .champion-tools .tier-table .col-tier { white-space: nowrap; }
+.fa-tier-move { display: inline-flex; vertical-align: middle; margin-left: 6px; border-radius: 99px; }
+.fa-tier-move > span { display: inline-flex; align-items: center; gap: 4px; height: 20px; padding: 0 7px; border-radius: inherit; font-size: 12px; font-weight: 700; line-height: 1; font-variant-numeric: tabular-nums; }
+.fa-tier-move i { font-size: 9px; font-style: normal; }
+.fa-tier-move.up > span { color: var(--fa-win); background: color-mix(in srgb, var(--fa-win) 13%, transparent); }
+.fa-tier-move.down > span { color: var(--fa-loss); background: color-mix(in srgb, var(--fa-loss) 13%, transparent); }
+.fa-tier-move.is-glow { animation: fa-tier-move-glow 1.4s var(--ui-ease, ease-out) 1; }
+.fa-tier-move.down.is-glow { --glow: var(--fa-loss); }
+@keyframes fa-tier-move-glow { 0%, 100% { box-shadow: 0 0 0 0 transparent; } 35% { box-shadow: 0 0 10px 1px color-mix(in srgb, var(--glow, var(--fa-win)) 55%, transparent); } }
+.fa-frame .champion-tools .col-wr .fa-week-move { display: inline-flex; vertical-align: middle; margin-left: 5px; font-style: normal; }
+.fa-week-move.up { color: var(--fa-win); } .fa-week-move.down { color: var(--fa-loss); }
+@media (prefers-reduced-motion: reduce) { .fa-tier-move.is-glow { animation: none; } }

@@ -676,7 +676,7 @@ pub async fn view(
         Some(format!("Not enough games at {tier_label}."))
     } else {
         (loaded.source == "none" && presets.is_empty())
-            .then(|| "Rune recommendations are unavailable right now.".to_string())
+            .then(|| "Runes are unavailable right now. Try again shortly.".to_string())
     };
     RunesView {
         phase,

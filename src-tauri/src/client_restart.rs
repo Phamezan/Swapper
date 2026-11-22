@@ -31,7 +31,7 @@ async fn current_plan() -> Result<RestartPlan, String> {
         (crate::riot::client_running(), crate::riot::ensure_no_game().is_err())
     })
     .await
-    .map_err(|e| e.to_string())?;
+    .map_err(|e| { eprintln!("Restart plan failed: {e}"); "Couldn't check the client. Try again.".to_string() })?;
     // The phase read only matters while a client runs.
     let phase = if client && !game { crate::runes::current_status().await.phase } else { String::new() };
     Ok(plan(client, game, &phase))
@@ -55,10 +55,10 @@ fn tray_action(plan: RestartPlan, has_active_account: bool) -> TrayRestart {
     match plan {
         RestartPlan::Defer => TrayRestart::Skip("Can't restart during a game."),
         RestartPlan::Ask => {
-            TrayRestart::Skip("You're in champion select. Restart from Swapper to confirm.")
+            TrayRestart::Skip("You're in champion select. Confirm the restart in Swapper.")
         }
         RestartPlan::Save | RestartPlan::Restart if !has_active_account => {
-            TrayRestart::Skip("Save the signed-in account in Swapper first.")
+            TrayRestart::Skip("Save your signed-in account first.")
         }
         // Nothing running: the same switch opens the client.
         RestartPlan::Save | RestartPlan::Restart => TrayRestart::Restart,

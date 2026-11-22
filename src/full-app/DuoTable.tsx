@@ -37,7 +37,7 @@ export function DuoTable({ tier, query }: { tier: string; query: string }) {
   const peakGames = Math.max(1, ...all.map(row => row.games));
   const toggleChampion = (id: number, name: string) => setChampion(current => current?.id === id ? null : { id, name });
 
-  if (error) return <Notice tone="error">Could not load bot-lane duos. {error}</Notice>;
+  if (error) return <Notice tone="error">Couldn't load bot duos. {error}</Notice>;
   if (!view) return <Skeleton label="Loading bot-lane duos" rows={8} height={88} />;
   return <>
     {view.stale && <CachedBadge stale updatedAt={view.updatedAt} />}

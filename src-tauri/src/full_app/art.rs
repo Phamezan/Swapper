@@ -102,17 +102,17 @@ pub async fn ambient_background(name: String) -> Result<String, String> {
                 .error_for_status()
                 .map_err(|e| e.to_string())?;
             if response.content_length().is_some_and(|len| len > MAX_BYTES) {
-                return Err("Ambient background is too large.".into());
+                return Err("That background is too large to show.".into());
             }
             let mut bytes = Vec::new();
             while let Some(chunk) = response.chunk().await.map_err(|e| e.to_string())? {
                 if bytes.len() + chunk.len() > MAX_BYTES as usize {
-                    return Err("Ambient background is too large.".into());
+                    return Err("That background is too large to show.".into());
                 }
                 bytes.extend_from_slice(&chunk);
             }
             if !is_jpeg(&bytes) {
-                return Err("Ambient background is not a JPEG.".into());
+                return Err("That background couldn't be shown.".into());
             }
             let copy = bytes.clone();
             let _ = tokio::task::spawn_blocking(move || {
@@ -141,7 +141,7 @@ async fn fetch(id: i64, kind: Kind) -> Result<Vec<u8>, String> {
         crate::runes::game_data::json(&format!("/lol-game-data/assets/v1/champions/{id}.json"))
             .await
             .map_err(|e| e.to_string())?;
-    let path = base_skin_path(&champion, kind).ok_or("Champion art is unavailable.")?;
+    let path = base_skin_path(&champion, kind).ok_or("That art couldn't be loaded. Try again.")?;
     let bytes = crate::runes::game_data::fetch_bytes(&path)
         .await
         .map_err(|e| e.to_string())?;

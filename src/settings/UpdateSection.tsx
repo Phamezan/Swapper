@@ -141,7 +141,7 @@ export function UpdateSection() {
       {snapshot.state === "failed" && (
         <div className="setting-status update-failed">
           <CircleAlert size={13} />
-          <span>{snapshot.message ?? "The last update check failed."}</span>
+          <span>{snapshot.message ?? "Update check failed. Try again."}</span>
         </div>
       )}
     </section>

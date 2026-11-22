@@ -109,8 +109,13 @@ fn set_active(app: &tauri::AppHandle, active: bool) {
         return;
     }
     if auto_open(app) && crate::full_app::enabled(app) {
-        // Created minimized and never activated: the game keeps focus.
-        let _ = crate::full_app::open_in_background(app, "live");
+        // Created minimized and never activated: the game keeps focus. Not for unsupported modes.
+        let app = app.clone();
+        tauri::async_runtime::spawn(async move {
+            if crate::game_mode::current_supported().await {
+                let _ = crate::full_app::open_in_background(&app, "live");
+            }
+        });
     }
 }
 
@@ -135,7 +140,7 @@ pub fn live_game_auto_open(app: tauri::AppHandle) -> bool {
 #[tauri::command]
 pub fn set_live_game_auto_open(app: tauri::AppHandle, enabled: bool) -> Result<(), String> {
     let state = app.state::<crate::AppState>();
-    let mut config = state.config.lock().map_err(|e| e.to_string())?;
+    let mut config = state.config.lock().map_err(|e| { eprintln!("Settings lock poisoned: {e}"); "Couldn't read your settings. Restart Swapper.".to_string() })?;
     let mut saved = config.clone();
     saved.live_game_auto_open = enabled;
     crate::vault::save(&saved)?;
@@ -335,7 +340,7 @@ mod source {
             crate::runes::lcu_get::<Value>(&client, path),
         )
         .await
-        .map_err(|_| "League Client timed out.".to_string())?
+        .map_err(|_| "League didn't answer. Wait a moment and try again.".to_string())?
         .map_err(|e| e.to_string())
     }
 

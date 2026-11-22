@@ -125,7 +125,7 @@ pub async fn apply(
         }
         PagePlan::LimitReached => {
             return Err(RuneError::conflict(
-                "Your rune pages are full. Select one of your own pages in the League client so Swapper can overwrite it, or remove one, then try again.",
+                "Your rune pages are full. Remove one in League, then try again.",
             ));
         }
     };
@@ -286,7 +286,7 @@ pub async fn apply_selection(
         Err(error) => return Err(error),
     };
     let Some(mut context) = context else {
-        return Err(RuneError::conflict("Champion select is not active."));
+        return Err(RuneError::conflict("You're not in champion select. Join a lobby and try again."));
     };
     if context.champion_name.trim().is_empty() {
         if let Ok(names) = data::champion_names().await {
@@ -327,7 +327,7 @@ pub async fn import_preset_items(
         Err(error) => return Err(error),
     };
     let Some(mut context) = context else {
-        return Err(RuneError::conflict("Champion select is not active."));
+        return Err(RuneError::conflict("You're not in champion select. Join a lobby and try again."));
     };
     if context.champion_name.trim().is_empty() {
         if let Ok(names) = data::champion_names().await {
@@ -389,7 +389,7 @@ impl ItemsImported {
             Ok(None) => Self {
                 ok: false,
                 title: None,
-                message: Some("No item build is available for this champion and role.".into()),
+                message: Some("No build for this champion and role. Try another role.".into()),
             },
             Err(error) => Self {
                 ok: false,

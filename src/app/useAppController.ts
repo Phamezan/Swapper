@@ -27,7 +27,7 @@ const empty: AppState = {
   riotExe: null, riotDetected: false, deceiveDetected: false,
   autoApplyTopPreset: false, runeTier: "emerald_plus", applySpellsWithRunes: true, importItemsWithRunes: true,
   hotkey: null, hotkeyActive: false,
-  notificationsEnabled: true, readyCheckNotifications: true, koreanFont: false, ltkInstalled: false, remote: emptyRemote,
+  notificationsEnabled: true, readyCheckNotifications: true, koreanFont: false, customMods: false, customModsRiskAck: false, modsRegionBlocked: false, ltkInstalled: false, ltkVersion: null, ltkOutdated: false, ltkLatestVersion: null, ltkNeedsSetup: false, ltkNotice: null, remote: emptyRemote,
 };
 
 /** Polls (2 s apart) of "unavailable" in a row before the add flow gives up: about 30 s. */
@@ -52,11 +52,15 @@ export function useAppController(fullApp?: FullAppBridge) {
   // Switch failure that left a dead saved session, and the account currently
   // going through the repair flow.
   const [repairableId, setRepairableId] = useState<string | null>(null);
+  const [launchFailed, setLaunchFailed] = useState(false);
+  // A switch waiting for "Switch anyway" because champion select is live.
+  const [switchAsk, setSwitchAsk] = useState<string | null>(null);
   const [repairingId, setRepairingId] = useState<string | null>(null);
   const [accountMenu, setAccountMenu] = useState<{ id: string; x: number; y: number } | null>(null);
   const [useDeceive, setUseDeceive] = useState(false);
   const [deceivePrompt, setDeceivePrompt] = useState<DeceivePrompt | null>(null);
   const [koreanFont, setKoreanFont] = useState(false);
+  const [customMods, setCustomMods] = useState(false);
   const [ltkInstalling, setLtkInstalling] = useState(false);
   const [ltkInstallError, setLtkInstallError] = useState<string | null>(null);
   const [riotExe, setRiotExe] = useState("");
@@ -126,20 +130,25 @@ export function useAppController(fullApp?: FullAppBridge) {
       listen<{ id: string; name: string }>("switch_started", ({ payload }) => {
         setSwitchingAccountId(payload.id);
         setRepairableId(null);
+        setLaunchFailed(false);
         setError(null);
       }),
       listen<{ id: string; view: AppState }>("switch_done", ({ payload }) => {
         setSwitchingAccountId(null);
+        previousActiveId.current = null;
         sync(payload.view);
       }),
       listen<{ id: string; error: string; repairable: boolean }>("switch_failed", ({ payload }) => {
         setSwitchingAccountId(null);
-        setData((prev) => ({ ...prev, activeId: previousActiveId.current }));
+        // Only a row click records the previous account; tray and shortcut switches never set the active one early.
+        setData((prev) => ({ ...prev, activeId: previousActiveId.current ?? prev.activeId }));
+        previousActiveId.current = null;
         showError(payload.error);
         setRepairableId(payload.repairable ? payload.id : null);
         invoke<AppState>("get_state").then(sync).catch(() => {});
       }),
       listen<{ id: string; error: string }>("launch_failed", ({ payload }) => {
+        setLaunchFailed(true);
         showError(payload.error);
       }),
       listen<{ id: string; name: string; mismatch: boolean }>("session_expired", ({ payload }) => {
@@ -147,8 +156,8 @@ export function useAppController(fullApp?: FullAppBridge) {
         // arrival; offer the same Repair Account action as a failed switch.
         setRepairableId(payload.id);
         showError(payload.mismatch
-          ? `Riot Client signed in to a different account than ${payload.name}. Use Repair account to fix it.`
-          : `The saved session for ${payload.name} has expired. Use Repair account to sign in again.`);
+          ? `Wrong account signed in, not ${payload.name}. Repair the account to fix it.`
+          : `${payload.name}'s sign-in expired. Repair the account to sign in again.`);
       }),
       listen("lan_reconnect_changed", () => {
         invoke<AppState>("get_state").then(sync).catch(() => {});
@@ -188,6 +197,7 @@ export function useAppController(fullApp?: FullAppBridge) {
     setUseDeceive(next.useDeceive);
     setRiotExe(next.riotExe ?? "");
     setKoreanFont(next.koreanFont);
+    setCustomMods(next.customMods);
   }
 
   useEffect(() => {
@@ -295,6 +305,17 @@ export function useAppController(fullApp?: FullAppBridge) {
 
   function showError(reason: unknown) {
     setError(String(reason));
+  }
+
+  // Optimistic: the new order shows at once and rolls back if saving fails.
+  async function reorderAccounts(ids: string[]) {
+    if (!native) { setError("Open the Swapper app on your PC to do this."); return; }
+    const before = data.accounts;
+    const byId = new Map(before.map(account => [account.id, account]));
+    setData(current => ({ ...current, accounts: ids.flatMap(id => byId.get(id) ?? []) }));
+    setError(null);
+    try { sync(await invoke<AppState>("reorder_accounts", { ids })); }
+    catch (reason) { setData(current => ({ ...current, accounts: before })); showError(reason); }
   }
 
   async function loadRunes(position?: string) {
@@ -492,10 +513,12 @@ export function useAppController(fullApp?: FullAppBridge) {
     action("ready-check-notifications", () => invoke<AppState>("set_ready_check_notifications", { enabled }));
   const setKoreanFontSetting = (enabled: boolean) =>
     action("korean-font", () => invoke<AppState>("set_korean_font", { enabled }));
+  const setCustomModsSetting = (enabled: boolean, riskAck: boolean) =>
+    action("custom-mods", () => invoke<AppState>("set_custom_mods", { enabled, riskAck }));
 
   async function installLtkManager() {
     if (!native) {
-      setError("Installing LTK Manager is available in the Windows tray app. Start it with npm run tauri dev.");
+      setError("Open the Swapper app on your PC to install LTK.");
       return;
     }
     setLtkInstalling(true);
@@ -505,6 +528,9 @@ export function useAppController(fullApp?: FullAppBridge) {
       sync(await invoke<AppState>("get_state"));
     } catch (reason) {
       setLtkInstallError(String(reason));
+      // The install can succeed and still report a next step (e.g. "open LTK Manager once"), so re-read the state either way.
+      const state = await invoke<AppState>("get_state").catch(() => null);
+      if (state) sync(state);
     } finally {
       setLtkInstalling(false);
     }
@@ -534,7 +560,7 @@ export function useAppController(fullApp?: FullAppBridge) {
 
   async function setRemote(enabled: boolean) {
     if (!native) {
-      setError("Remote Control is available in the Windows tray app. Start it with npm run tauri dev.");
+      setError("Open the Swapper app on your PC to use phone access.");
       return;
     }
     const previous = data.remote;
@@ -577,7 +603,7 @@ export function useAppController(fullApp?: FullAppBridge) {
 
   async function action(key: string, fn: () => Promise<AppState | void>, after?: () => void) {
     if (!native) {
-      setError("Account actions are available in the Windows tray app. Start it with npm run tauri dev.");
+      setError("Open the Swapper app on your PC to do this.");
       return;
     }
     setBusy(key);
@@ -632,18 +658,21 @@ export function useAppController(fullApp?: FullAppBridge) {
     });
   };
   const menuAccount = data.accounts.find((account) => account.id === accountMenu?.id);
-  const switchToAccount = async (id: string) => {
+  const switchToAccount = async (id: string, confirmed = false) => {
     if (!native) {
-      setError("Account actions are available in the Windows tray app. Start it with npm run tauri dev.");
+      setError("Open the Swapper app on your PC to do this.");
       return;
     }
-    if (isSwitching) { setError("Another account action is in progress. Try again when it finishes."); return; }
-    // The flyout's signed-in row restarts the client; the full app asks via its own shared check.
-    if (!fullApp && id === data.activeId) {
+    if (isSwitching) { setError("Something else is running. Wait for it to finish."); return; }
+    // Any switch closes the client, so champion select asks first. The full app's
+    // restart of the signed-in account already asked through its own dialog.
+    if (!confirmed && !(fullApp && id === data.activeId)) {
+      // An unreadable plan asks instead of switching on a guess.
       const plan = await invoke<string>("restart_plan").catch(() => "ask");
-      if (plan === "defer") { setError("Can't restart during a game."); return; }
-      if (plan === "ask") { setError("Restarting now dodges champion select and can cost LP. Restart after it ends."); return; }
+      if (plan === "defer") { setError(id === data.activeId ? "Can't restart during a game." : "Can't switch accounts during a game."); return; }
+      if (plan === "ask") { setError(null); setSwitchAsk(id); return; }
     }
+    setSwitchAsk(null);
     setError(null);
     setAccountMenu(null);
     detectionEpoch.current += 1;
@@ -730,7 +759,7 @@ export function useAppController(fullApp?: FullAppBridge) {
   };
   const restartClientNow = () => {
     setDeceivePrompt(null);
-    if (data.activeId) void switchToAccount(data.activeId);
+    if (data.activeId) void switchToAccount(data.activeId, true); // The Deceive notice already asked.
   };
 
   const changeRiotPathMode = (mode: "auto" | "manual") => {
@@ -757,7 +786,7 @@ export function useAppController(fullApp?: FullAppBridge) {
   // HotkeySetting shows the rejection inline instead of the shared error banner.
   const applyHotkey = async (value: string | null) => {
     if (!native) {
-      setError("The global hotkey is available in the Windows tray app. Start it with npm run tauri dev.");
+      setError("Open the Swapper app on your PC to set a shortcut.");
       return;
     }
     sync(await invoke<AppState>("set_hotkey", { shortcut: value }));
@@ -791,14 +820,14 @@ export function useAppController(fullApp?: FullAppBridge) {
 
   return {
     data, clientHealth, view, inChampSelect, modeSpin, setModeSpin, busy, switchingAccountId, error, setError, name,
-    setName, editing, setEditing, pendingRemove, setPendingRemove, repairableId, setRepairableId,
-    repairingId, setRepairingId, accountMenu, setAccountMenu, useDeceive, koreanFont, ltkInstalling,
+    setName, editing, setEditing, pendingRemove, setPendingRemove, repairableId, setRepairableId, launchFailed, setLaunchFailed, switchAsk, setSwitchAsk,
+    repairingId, setRepairingId, accountMenu, setAccountMenu, useDeceive, koreanFont, customMods, ltkInstalling,
     ltkInstallError, riotExe, setRiotExe, addStage, setAddStage, detect, setDetectRound, setDetectedPrompt,
     remoteTransport, setRemoteTransport, settingsTab, setSettingsTab, remoteQrRequest, startOnStartup,
-    runes, runesLoading, runesBusy, runesError, shopNotice, runeSession, native, sync, showError,
+    runes, runesLoading, runesBusy, runesError, shopNotice, runeSession, native, sync, showError, reorderAccounts,
     loadRunes, importItemBuild, applyRunes, pickSpell, allowLanFirewall, setImportItemsWithRunes,
     setApplySpellsWithRunes, loadProBuilds, loadKeystoneBuild, loadMatchup, championApi, setAutoApply,
-    setRuneTier, setNotifications, setReadyCheckNotifications, setKoreanFontSetting, installLtkManager,
+    setRuneTier, setNotifications, setReadyCheckNotifications, setKoreanFontSetting, setCustomModsSetting, installLtkManager,
     setRemote, showRemoteQr, dismissReconnect, setStartOnStartupSetting, action, navigate, isBusy,
     openAccountMenu, menuAccount, switchToAccount, startRepair, visibleDetectedPrompt, displayedActiveId,
     pageTitle, footerText, footerLoggedIn, conflictingSavedAccount, saveDetected, manualPath,

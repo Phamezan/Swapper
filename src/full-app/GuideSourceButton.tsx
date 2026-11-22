@@ -11,6 +11,6 @@ export function GuideSourceButton({ url, className, label, children }: { url: st
       try { await invoke("open_guide_source", { url }); }
       catch (reason) { setError(String(reason)); }
     }}>{children}</button></Tooltip>
-    {error && <Notice tone="error">Could not open source: {error}</Notice>}
+    {error && <Notice tone="error">Couldn't open that link. {error}</Notice>}
   </>;
 }

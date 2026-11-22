@@ -17,7 +17,7 @@ export function CreateShortcutButton({ accountId, accountName, disabled, onError
 
   async function create() {
     if (!isTauri()) {
-      onError("Account actions are available in the Windows tray app. Start it with npm run tauri dev.");
+      onError("Open the Swapper app on your PC to do this.");
       return;
     }
     setPhase("busy");

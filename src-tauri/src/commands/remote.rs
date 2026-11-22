@@ -9,7 +9,7 @@ pub(crate) fn set_remote_enabled(
     enabled: bool,
 ) -> Result<remote::RemoteStatus, String> {
     {
-        let mut config = state.config.lock().map_err(|e| e.to_string())?;
+        let mut config = state.config.lock().map_err(|e| { eprintln!("Settings lock poisoned: {e}"); "Couldn't read your settings. Restart Swapper.".to_string() })?;
         config.remote_enabled = enabled;
         vault::save(&config)?;
     }
@@ -70,7 +70,7 @@ pub(crate) async fn allow_lan_firewall(state: State<'_, AppState>) -> Result<App
     tauri::async_runtime::spawn_blocking(move || remote.allow_lan_firewall())
         .await
         .map_err(|error| error.to_string())??;
-    let config = state.config.lock().map_err(|e| e.to_string())?;
+    let config = state.config.lock().map_err(|e| { eprintln!("Settings lock poisoned: {e}"); "Couldn't read your settings. Restart Swapper.".to_string() })?;
     Ok(view(
         &config,
         &state.bundled_deceive,
@@ -92,10 +92,10 @@ pub(crate) fn open_windows_network_settings() -> Result<(), String> {
             .creation_flags(CREATE_NO_WINDOW)
             .spawn()
             .map(|_| ())
-            .map_err(|error| format!("Could not open Windows network settings: {error}"))
+            .map_err(|error| { eprintln!("Network settings open failed: {error}"); "Couldn't open network settings. Try again.".to_string() })
     }
     #[cfg(not(target_os = "windows"))]
     {
-        Err("Windows network settings are only available on Windows.".into())
+        Err("Network settings are only on Windows.".into())
     }
 }

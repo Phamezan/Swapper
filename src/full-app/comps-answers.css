@@ -1,0 +1,161 @@
+/* Counters tab (CompsAnswers.tsx). Threat rows are splash banners with raised answer tiles; the open row becomes a
+   two-column brief with display numerals, a rune loadout strip and the VOD. Shared classes live in comps.css. */
+.ans-bar { display: flex; align-items: center; gap: 12px 16px; flex-wrap: wrap; }
+.ans-roles { display: inline-flex; gap: 2px; padding: 4px; border: 1px solid var(--ui-line-2); border-radius: 14px; background: rgb(8 8 10 / .5); box-shadow: var(--ui-inner-hi); }
+.ans-role-wrap { display: inline-flex; align-items: center; }
+.ans-role-wrap > i { width: 1px; align-self: stretch; margin: 8px 4px; background: var(--ui-line-2); }
+.ans-roles button { display: inline-flex; align-items: center; gap: 7px; height: 34px; padding: 0 13px; border: 0; border-radius: 10px; background: none; color: var(--ui-text-2); font: inherit; font-size: 13.5px; font-weight: 600; cursor: pointer; transition: background-color var(--ui-fast) var(--ui-ease), color var(--ui-fast) var(--ui-ease); }
+.ans-roles button:hover { background: var(--ui-hover); color: var(--ui-text-1); }
+.ans-roles button.on { background: var(--ui-surface-3); color: var(--ui-text-1); box-shadow: inset 0 0 0 1px var(--ui-line-2), 0 4px 12px -6px rgb(0 0 0 / .8); }
+.ans-roles em { min-width: 20px; padding: 1px 5px; border-radius: 6px; background: rgb(255 255 255 / .06); color: var(--ui-text-3); font-size: 11.5px; font-style: normal; font-variant-numeric: tabular-nums; text-align: center; }
+.ans-roles button.on em { background: var(--ui-brand-tint); color: var(--ui-brand); }
+:is(.ans-roles button, .ans-tile, .ans-more, .f-hid, .xa-thumb, .ans-search button):focus-visible { outline: 2px solid var(--ui-brand); outline-offset: 2px; }
+.ans-search { position: relative; margin-left: auto; }
+.ans-search::before { content: ""; position: absolute; left: 13px; top: 50%; width: 11px; height: 11px; border: 1.75px solid var(--ui-text-3); border-radius: 50%; transform: translateY(-62%); pointer-events: none; }
+.ans-search::after { content: ""; position: absolute; left: 24px; top: 50%; width: 6px; height: 1.75px; border-radius: 1px; background: var(--ui-text-3); transform: translateY(4px) rotate(45deg); pointer-events: none; }
+.ans-search input { width: 260px; height: 42px; padding: 0 34px 0 36px; border: 1px solid var(--ui-line-2); border-radius: 12px; background: rgb(8 8 10 / .5); color: var(--ui-text-1); font: inherit; font-size: 13.5px; transition: border-color var(--ui-fast) var(--ui-ease), background-color var(--ui-fast) var(--ui-ease); }
+.ans-search input::placeholder { color: var(--ui-text-3); }
+.ans-search input:hover { border-color: var(--ui-line-3); }
+.ans-search input:focus { border-color: var(--ui-brand-line); background: rgb(8 8 10 / .7); outline: none; }
+.ans-search button { position: absolute; right: 9px; top: 9px; width: 24px; height: 24px; border: 0; border-radius: 7px; background: none; color: var(--ui-text-3); cursor: pointer; }
+.ans-search button:hover { background: var(--ui-hover); color: var(--ui-text-1); }
+
+/* Threat rows. */
+.ans-list { display: grid; gap: 12px; }
+.ans-row { overflow: hidden; border-radius: var(--ui-radius-lg); transition: border-color var(--ui-base) var(--ui-ease); }
+.ans-row:hover { border-color: var(--ui-line-3); }
+.ans-row.open { border-color: rgb(239 143 137 / .3); box-shadow: var(--ui-elev-2), 0 20px 44px -30px rgb(239 143 137 / .45); }
+.ans-head { display: grid; grid-template-columns: 280px minmax(0, 1fr) 44px; min-height: 124px; cursor: pointer; }
+.ans-head:hover .ans-chev { color: var(--ui-text-1); }
+.ans-threat { position: relative; isolation: isolate; overflow: hidden; display: grid; align-content: end; gap: 3px; padding: 14px 18px; }
+.ans-art, .ans-art .fa-card-art { position: absolute; inset: 0; width: 100%; height: 100%; }
+.ans-art { z-index: -2; }
+.ans-art .fa-card-art { object-fit: cover; object-position: 50% 20%; transition: transform 600ms var(--ui-ease); }
+.ans-row:hover .ans-art .fa-card-art { transform: scale(1.04); }
+.ans-threat.duo .ans-art { width: 58%; }
+.ans-threat.duo .ans-art + .ans-art { left: 42%; clip-path: polygon(24% 0, 100% 0, 100% 100%, 0 100%); }
+.ans-threat::after { content: ""; position: absolute; inset: 0; z-index: -1; background: linear-gradient(0deg, rgb(16 16 20 / .96) 6%, rgb(16 16 20 / .3) 62%, transparent), linear-gradient(90deg, transparent 60%, rgb(25 25 29 / .9)), linear-gradient(0deg, rgb(239 143 137 / .16), transparent 55%); }
+.ans-threat em { color: var(--ui-loss); font-size: 12px; font-style: normal; font-weight: 600; }
+.ans-threat strong { font-size: 26px; font-weight: 600; letter-spacing: -.035em; line-height: 1.05; text-shadow: 0 2px 10px rgb(0 0 0 / .7); }
+.ans-threat small { color: var(--ui-text-2); font-size: 12px; }
+
+/* Answer tiles: icons and stat on top, the full name underneath so long names never truncate. */
+.ans-tiles { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 10px; padding: 12px 4px 12px 12px; align-content: center; }
+.ans-tile { position: relative; display: grid; grid-template-areas: "ics stat" "name name" "team team"; grid-template-columns: auto minmax(0, 1fr); align-content: start; align-items: center; gap: 8px 10px; padding: 11px 12px 10px; border: 1px solid var(--ui-line-1); border-top-color: var(--ui-line-2); border-radius: var(--ui-radius-md); background: var(--ui-surface-3); color: var(--ui-text-1); font: inherit; text-align: left; cursor: pointer; transition: border-color var(--ui-fast) var(--ui-ease), opacity var(--ui-fast) var(--ui-ease), transform var(--ui-base) var(--ui-ease); }
+.ans-tile:hover { border-color: var(--ui-line-3); transform: translateY(-2px); }
+.ans-tile.mine { border-color: var(--ui-brand-line); background: linear-gradient(160deg, rgb(197 227 158 / .14), rgb(197 227 158 / .03) 60%), var(--ui-surface-3); }
+.ans-tile.sub { border-color: rgb(233 194 122 / .3); }
+.ans-tile.sel { border-color: var(--ui-text-2); box-shadow: 0 0 0 1px var(--ui-text-2); }
+.ans-tile.old { opacity: .6; }
+.ans-tile.dim { opacity: .4; }
+.ans-tile.dim:hover, .ans-tile.dim.sel { opacity: 1; }
+.ans-ics { grid-area: ics; position: relative; display: inline-flex; gap: 4px; }
+.ans-ics .champion-icon, .ans-ics .champion-icon-fallback { width: 40px; height: 40px; border-radius: 10px; }
+.ans-rank { position: absolute; z-index: 1; top: -6px; left: -6px; display: grid; place-items: center; width: 19px; height: 19px; border-radius: 6px; background: #34343c; box-shadow: 0 0 0 2px var(--ui-surface-3); color: var(--ui-text-1); font-size: 10.5px; font-weight: 700; }
+.ans-tile.mine .ans-rank { background: var(--ui-brand); color: var(--ui-brand-ink); }
+.ans-name { grid-area: name; min-width: 0; }
+.ans-name strong { display: block; overflow: hidden; font-size: 14.5px; font-weight: 600; letter-spacing: -.01em; text-overflow: ellipsis; white-space: nowrap; }
+.ans-name small { display: block; overflow: hidden; color: var(--ui-text-3); font-size: 12px; text-overflow: ellipsis; white-space: nowrap; }
+.ans-src { padding: 1px 6px; border-radius: 5px; background: rgb(185 140 255 / .18); color: #b98cff; font-size: 10.5px; font-weight: 700; }
+.ans-stat { grid-area: stat; justify-self: end; text-align: right; }
+.ans-stat b { display: block; color: var(--ui-win); font-size: 24px; font-weight: 600; letter-spacing: -.03em; line-height: 1; font-variant-numeric: tabular-nums; }
+.ans-stat small { color: var(--ui-text-3); font-size: 11px; white-space: nowrap; }
+.ans-stat .up, .ans-detail .up { color: var(--ui-win); } .ans-stat .down, .ans-detail .down { color: var(--ui-loss); } .ans-stat .flat, .ans-detail .flat { color: var(--ui-text-3); }
+.ans-team { grid-area: team; display: flex; align-items: center; gap: 6px; min-height: 28px; padding-top: 8px; border-top: 1px solid var(--ui-line-1); overflow: hidden; color: var(--ui-text-3); font-size: 12px; font-weight: 600; white-space: nowrap; }
+.ans-team img, .ans-team i { width: 22px; height: 22px; flex: none; border-radius: 6px; box-shadow: 0 0 0 1.5px var(--ui-brand); }
+.ans-team i { display: grid; place-items: center; background: var(--ui-line-3); color: var(--ui-text-2); font-size: 11px; font-style: normal; }
+.ans-team .sub { box-shadow: 0 0 0 1.5px var(--ui-gold); opacity: .6; }
+.ans-more, .f-hid { min-height: 44px; border: 1.5px dashed var(--ui-line-2); border-radius: var(--ui-radius-md); background: none; color: var(--ui-text-3); font: inherit; font-size: 13px; font-weight: 600; cursor: pointer; transition: color var(--ui-fast), border-color var(--ui-fast); }
+.ans-more:hover, .f-hid:hover { border-color: var(--ui-line-3); color: var(--ui-text-1); }
+.ans-chev { display: grid; place-items: center; color: var(--ui-text-3); }
+.ans-chev svg { transition: transform var(--ui-base) var(--ui-ease); }
+.ans-row.open .ans-chev svg { transform: rotate(180deg); }
+
+/* Open row: the counter brief. */
+.ans-detail { display: grid; grid-template-columns: minmax(0, 1.35fr) minmax(0, 1fr); gap: 20px 36px; padding: 26px 26px 20px; border-top: 1px solid var(--ui-line-1); background: linear-gradient(180deg, rgb(8 8 10 / .45), rgb(8 8 10 / .2)); }
+.xa-l, .xa-r { display: grid; align-content: start; gap: 16px; min-width: 0; }
+.xa-top { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; }
+.xa-top h3 { margin: 0; font-size: 26px; font-weight: 600; letter-spacing: -.035em; line-height: 1.1; text-wrap: balance; }
+.xa-kinds { display: flex; gap: 6px; flex-wrap: wrap; }
+.xa-stats { display: grid; grid-template-columns: auto minmax(0, 1fr) auto; align-items: end; gap: 26px; padding: 16px 18px; border-radius: var(--ui-radius-md); background: var(--ui-surface-2); box-shadow: inset 0 0 0 1px var(--ui-line-1); }
+.xa-stats > div { display: grid; gap: 6px; }
+.xa-stats b { font-size: 38px; font-weight: 600; letter-spacing: -.045em; line-height: .95; font-variant-numeric: tabular-nums; }
+.xa-stats small { color: var(--ui-text-3); font-size: 12px; }
+.xa-pips { display: flex; flex-wrap: wrap; gap: 3px; }
+.xa-pips i { width: 7px; height: 16px; border-radius: 2px; background: var(--ui-win); }
+.xa-pips i.l { background: rgb(239 143 137 / .75); }
+.xa-stats .ans-bars { display: flex; gap: 4px; align-items: end; height: 30px; margin: 0; }
+.xa-stats .ans-bars i { width: 12px; flex: none; border-radius: 3px 3px 1px 1px; background: rgb(255 255 255 / .17); }
+.xa-stats .ans-bars i.now { background: var(--ui-brand); box-shadow: 0 0 10px -2px var(--ui-brand); }
+.xa-lead { margin: 0; max-width: 68ch; color: var(--ui-text-1); font-size: 15px; line-height: 1.65; text-wrap: pretty; }
+.xa-tips { display: grid; list-style: none; counter-reset: tip; margin: 0; padding: 0; }
+.xa-tips li { counter-increment: tip; display: grid; grid-template-columns: 28px 1fr; gap: 12px; padding: 11px 0; border-top: 1px solid var(--ui-line-1); color: var(--ui-text-2); font-size: 14.5px; line-height: 1.55; text-wrap: pretty; }
+.xa-tips li::before { content: counter(tip); display: grid; place-items: center; width: 26px; height: 26px; border-radius: 8px; background: var(--ui-brand-tint); color: var(--ui-brand); font-size: 12.5px; font-weight: 700; }
+
+/* Pro rune page: a framed loadout strip, keystone leads. */
+.xa-runes { display: grid; gap: 12px; padding: 16px 18px; border: 1px solid var(--ui-line-1); border-top-color: var(--ui-line-2); border-radius: var(--ui-radius-md); background: radial-gradient(ellipse at 0 0, rgb(185 140 255 / .08), transparent 55%), var(--ui-surface-2); }
+.xa-runes-head { display: flex; align-items: baseline; gap: 8px; }
+.xa-runes-head h4 { margin: 0; color: var(--ui-text-1); font-size: 15px; font-weight: 600; }
+.xa-runes-head small { color: var(--ui-text-3); font-size: 12px; }
+.xa-runes-main, .xa-runes-alt { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; }
+.xa-runes-set { display: inline-flex; align-items: center; gap: 5px; }
+.xa-runes-set + .xa-runes-set { padding-left: 12px; box-shadow: -1px 0 0 var(--ui-line-1); }
+.xa-rune { width: 30px; height: 30px; border-radius: 50%; }
+.xa-rune.key { width: 50px; height: 50px; padding: 3px; background: rgb(8 8 10 / .6); box-shadow: 0 0 0 1px var(--ui-line-2), 0 0 22px -6px rgb(185 140 255 / .6); }
+.xa-rune.sm { width: 20px; height: 20px; }
+.xa-rune.sm.key { width: 30px; height: 30px; padding: 2px; box-shadow: 0 0 0 1px var(--ui-line-2); }
+.xa-runes-set.shards .xa-rune { width: 22px; height: 22px; }
+.xa-runes-set.shards .xa-rune.sm { width: 16px; height: 16px; }
+.xa-runes-note { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 14px; flex-basis: 100%; padding-top: 12px; border-top: 1px solid var(--ui-line-1); }
+.xa-runes-note b { margin-right: auto; color: var(--ui-text-2); font-size: 13px; font-weight: 600; }
+.xa-runes-note .cp-btn { border-color: var(--ui-brand-line); background: var(--ui-brand-tint); color: var(--ui-brand); }
+.xa-runes-note .cp-btn:hover:not(:disabled) { border-color: var(--ui-brand); background: rgb(197 227 158 / .2); }
+.xa-runes-note .cp-btn:disabled { opacity: .6; cursor: progress; }
+.xa-runes-alt { padding-top: 12px; border-top: 1px dashed var(--ui-line-2); opacity: .7; transition: opacity var(--ui-fast); }
+.xa-runes-alt .xa-runes-note { flex-basis: auto; flex: 1 1 200px; padding-top: 0; border-top: 0; }
+.xa-runes-alt small { margin-right: auto; color: var(--ui-text-3); font-size: 12px; }
+.xa-runes-alt .cp-btn { height: 30px; border-color: var(--ui-line-2); background: rgb(255 255 255 / .04); color: var(--ui-text-1); }
+.xa-runes-alt:hover, .xa-runes-alt:focus-within { opacity: 1; }
+.xa-runes-saved { color: var(--ui-win); font-size: 12.5px; font-weight: 600; }
+.xa-runes-saved::before { content: "✓ "; }
+.xa-runes-err { flex-basis: 100%; color: var(--ui-loss); font-size: 12.5px; }
+
+/* Right column: VOD lead, pro game list. */
+.xa-r h4 { display: flex; align-items: baseline; gap: 8px; margin: 0; color: var(--ui-text-1); font-size: 15px; font-weight: 600; }
+.xa-r h4 small { color: var(--ui-text-3); font-size: 12px; font-weight: 500; }
+.xa-thumb { position: relative; display: block; overflow: hidden; width: 100%; padding: 0; border: 1px solid var(--ui-line-2); border-radius: var(--ui-radius-lg); aspect-ratio: 16 / 9; background: #000; color: var(--ui-text-1); font: inherit; text-align: left; cursor: pointer; box-shadow: var(--ui-elev-2); transition: border-color var(--ui-fast) var(--ui-ease), transform var(--ui-base) var(--ui-ease); }
+.xa-thumb:hover { border-color: var(--ui-brand-line); transform: translateY(-2px); }
+.xa-thumb img { width: 100%; height: 100%; object-fit: cover; transition: transform 600ms var(--ui-ease); }
+.xa-thumb:hover img { transform: scale(1.03); }
+.xa-thumb::after { content: ""; position: absolute; inset: 0; background: linear-gradient(0deg, rgb(8 8 10 / .94), transparent 58%); }
+.xa-thumb .play { position: absolute; z-index: 1; top: 42%; left: 50%; display: grid; place-items: center; width: 56px; height: 56px; padding-left: 4px; border-radius: 50%; background: var(--ui-brand-gradient); color: var(--ui-brand-ink); font-size: 19px; font-style: normal; box-shadow: 0 8px 26px -6px rgb(0 0 0 / .8); transform: translate(-50%, -50%); transition: transform var(--ui-base) var(--ui-ease); }
+.xa-thumb:hover .play { transform: translate(-50%, -50%) scale(1.08); }
+.xa-thumb .cap { position: absolute; z-index: 1; left: 16px; right: 16px; bottom: 13px; }
+.xa-thumb .cap strong { display: block; font-size: 15px; font-weight: 600; }
+.xa-thumb .cap small { color: var(--ui-text-2); font-size: 12px; }
+.ans-game { display: grid; grid-template-columns: 46px minmax(0, 1fr) auto; align-items: center; gap: 12px; padding: 10px 0; border-top: 1px solid var(--ui-line-1); font-size: 13px; }
+.ans-game > span:nth-child(2) { min-width: 0; }
+.ans-game strong { display: block; overflow: hidden; font-weight: 600; text-overflow: ellipsis; white-space: nowrap; }
+.ans-game small { color: var(--ui-text-3); font-size: 12px; }
+.ans-res { justify-self: start; padding: 3px 8px; border-radius: 6px; font-size: 11.5px; font-weight: 650; }
+.ans-res.w { background: rgb(95 207 180 / .14); color: var(--ui-win); } .ans-res.l { background: rgb(239 143 137 / .13); color: var(--ui-loss); }
+.ans-game .cp-link { padding: 5px 9px; border-radius: 7px; background: var(--ui-brand-tint); }
+.ans-game .cp-link:hover { background: rgb(197 227 158 / .2); }
+
+/* Footer: who on the roster plays it. */
+.xa-foot { grid-column: 1 / -1; display: flex; align-items: center; gap: 14px; padding-top: 16px; border-top: 1px solid var(--ui-line-1); }
+.xa-foot h4 { margin: 0; color: var(--ui-text-2); font-size: 13.5px; font-weight: 600; white-space: nowrap; }
+.xa-who { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+.xa-chip { display: inline-flex; align-items: center; gap: 8px; padding: 4px 12px 4px 4px; border-radius: 10px; background: var(--ui-surface-2); box-shadow: inset 0 0 0 1px var(--ui-line-2); font-size: 13px; font-weight: 600; }
+.xa-chip img, .xa-chip i { width: 26px; height: 26px; flex: none; border-radius: 7px; box-shadow: 0 0 0 1.5px var(--ui-gold); }
+.xa-chip i { display: grid; place-items: center; background: var(--ui-line-3); color: var(--ui-text-2); font-size: 12px; font-style: normal; }
+.xa-chip.on img, .xa-chip.on i { box-shadow: 0 0 0 1.5px var(--ui-brand); }
+.xa-chip small { color: var(--ui-text-3); font-size: 12px; font-weight: 500; }
+
+/* Empty state. */
+.ans-empty { display: grid; justify-items: center; gap: 10px; padding: 52px 20px; border-radius: var(--ui-radius-lg); text-align: center; }
+.ans-empty > span { display: grid; place-items: center; width: 56px; height: 56px; border-radius: 16px; background: var(--ui-surface-3); box-shadow: inset 0 0 0 1px var(--ui-line-2); color: var(--ui-text-3); font-size: 26px; }
+.ans-empty h3 { margin: 0; font-size: 20px; font-weight: 600; letter-spacing: -.02em; }
+.ans-empty p { margin: 0; max-width: 470px; color: var(--ui-text-3); font-size: 13.5px; }
+.ans-empty div { display: flex; gap: 8px; margin-top: 8px; flex-wrap: wrap; justify-content: center; }
+@media (max-width: 1180px) { .ans-head { grid-template-columns: 220px minmax(0, 1fr) 36px; } .ans-tiles { grid-template-columns: repeat(2, minmax(0, 1fr)); } .ans-detail { grid-template-columns: 1fr; } .xa-foot { flex-wrap: wrap; } .ans-search input { width: 220px; } }

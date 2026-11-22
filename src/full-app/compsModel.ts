@@ -4,7 +4,8 @@ export type Role = (typeof ROLES)[number];
 export const ROLE_LABEL: Record<Role, string> = { top: "TOP", jungle: "JNG", mid: "MID", bot: "BOT", support: "SUP" };
 
 export type PoolEntry = { championId: number; role: Role; reason: string; games?: number; masteryPoints?: number; masteryLevel?: number; added?: boolean; hidden?: boolean };
-export type TeamPlayer = { puuid: string; riotId: string; games?: number; profileIconId?: number; isSelf: boolean; included: boolean; pool: PoolEntry[] | null; mainRole?: Role | null };
+export type TeamPlayer = { puuid: string; riotId: string; nickname?: string | null; roles?: Role[]; games?: number; profileIconId?: number; isSelf: boolean; included: boolean; pool: PoolEntry[] | null; mainRole?: Role | null; assignedRole?: Role | null; inLobby?: boolean };
+export type RosterMember = { puuid: string; riotId: string; nickname?: string | null; roles: Role[] };
 export type CompOption = { championId: number; name: string; core?: boolean };
 export type CompSlot = { role: Role; options: CompOption[]; draftOrder: "Pick early" | "Flexible" | "Hold for last" | "Pick together" };
 export type Variation = { id: string; style: string; name: string; winCondition: string; tags: string[]; power: { early: number; mid: number; late: number }; weakAgainst: string[]; slots: CompSlot[]; tips: string[]; proExamples: { title: string; detail: string; result?: string; vod?: string; vodStart?: number }[]; sources: string[] };
@@ -71,44 +72,102 @@ export function teamMode(team: TeamPlayer[]): "browse" | "solo" | "team" {
   if (inc.some(p => !p.isSelf)) return "team";
   return inc.length === 1 && inc[0].isSelf ? "solo" : "browse";
 }
+/** Display name: You, else nickname, else Riot ID game name. */
+export function playerLabel(p: { isSelf?: boolean; nickname?: string | null; riotId: string }): string {
+  if (p.isSelf) return "You";
+  return p.nickname?.trim() || p.riotId.split("#")[0] || "Player";
+}
+
+/** Toggle a player in the active set (max 5). Returns the same array when full and adding. */
+export function toggleActive(active: string[], puuid: string): string[] {
+  if (active.includes(puuid)) return active.filter(id => id !== puuid);
+  return active.length >= 5 ? active : [...active, puuid];
+}
+
+/** Roster members in the lobby become active (up to 5); manual order is kept. */
+export function lobbyActive(rosterPuuids: string[], lobbyPuuids: string[], current: string[]): string[] {
+  const roster = new Set(rosterPuuids);
+  const next = [...current];
+  for (const puuid of lobbyPuuids) if (roster.has(puuid) && !next.includes(puuid) && next.length < 5) next.push(puuid);
+  return next;
+}
+
+/** Lobby players who are not You and not in the roster yet. */
+export function lobbyCandidates<T extends { puuid: string }>(lobby: T[], rosterPuuids: string[], mePuuid: string | null): T[] {
+  const roster = new Set(rosterPuuids);
+  return lobby.filter(m => m.puuid !== mePuuid && !roster.has(m.puuid));
+}
+
+const ROLE_PERMS: Role[][] = (() => {
+  const perms = (a: Role[]): Role[][] => a.length < 2 ? [a] : a.flatMap((x, i) => perms(a.filter((_, j) => j !== i)).map(p => [x, ...p]));
+  return perms([...ROLES]);
+})();
+
+/**
+ * Role auto-assign: distinct roles maximising preference rank; manual overrides win.
+ * A player the solver could not place on a preferred role keeps their first choice
+ * and is flagged in `clash` when that duplicates someone else's role.
+ */
+export function assignRoles(players: { puuid: string; roles: Role[] }[], overrides: Record<string, Role>): { assigned: Record<string, Role>; clash: string[]; open: Role[] } {
+  let best: Role[] = [...ROLES], bestScore = -Infinity;
+  for (const perm of ROLE_PERMS) {
+    const score = players.reduce((s, p, i) => {
+      const o = overrides[p.puuid], rank = p.roles.indexOf(perm[i]);
+      return s + (o ? (o === perm[i] ? 1000 : -1000) : rank < 0 ? -100 : 5 - rank);
+    }, 0);
+    if (score > bestScore) { bestScore = score; best = perm; }
+  }
+  const assigned: Record<string, Role> = {};
+  players.forEach((p, i) => { assigned[p.puuid] = overrides[p.puuid] ?? (p.roles.includes(best[i]) ? best[i] : (p.roles[0] ?? best[i])); });
+  const clash = players.filter(a => players.some(b => b.puuid !== a.puuid && assigned[b.puuid] === assigned[a.puuid])).map(p => p.puuid);
+  return { assigned, clash, open: ROLES.filter(r => !Object.values(assigned).includes(r)) };
+}
+
+/** Comps are tailored only with exactly five active players. */
+export const isTailored = (activeCount: number) => activeCount === 5;
+
+/**
+ * Single-swap sub hint: swapping one active non-self player for one inactive
+ * roster member makes this comp 5/5. Never swaps You out. Null otherwise.
+ */
+export function subHintFor(variation: Variation, team: TeamPlayer[]): { out: TeamPlayer; inn: TeamPlayer } | null {
+  const active = team.filter(p => p.included);
+  if (active.length !== 5 || coverageFor(variation, team).count === 5) return null;
+  for (const out of active) {
+    if (out.isSelf) continue;
+    for (const inn of team) {
+      if (inn.included || !inn.pool) continue;
+      const swapped = team.map(p => p.puuid === out.puuid ? { ...p, included: false } : p.puuid === inn.puuid ? { ...p, included: true } : p);
+      if (coverageFor(variation, swapped).count === 5) return { out, inn };
+    }
+  }
+  return null;
+}
+
+/**
+ * Round-2 filter (13A): is this comp playable for the current active set?
+ * With 5 active it is playable when the five cover it (5/5) or one swap fixes it.
+ * With fewer active it is playable when the active players cover at least one pick.
+ * With nobody active nothing is highlighted.
+ */
+export function compPlayable(cov: Coverage, hasHint: boolean, activeCount: number): boolean {
+  if (activeCount <= 0) return false;
+  if (activeCount === 5) return cov.count === 5 || hasHint;
+  return cov.count > 0;
+}
+
+/** Stable partition: playable first (in the given order), the rest after. */
+export function partitionPlayable<T>(items: readonly T[], isPlayable: (item: T) => boolean): { playable: T[]; rest: T[] } {
+  const playable: T[] = [], rest: T[] = [];
+  for (const item of items) (isPlayable(item) ? playable : rest).push(item);
+  return { playable, rest };
+}
+
 /** Role for a manually added champion: its own main role, else your main role, else mid. */
 export function addedChampionRole(champRole: Role | undefined, mainRole: Role | null | undefined): Role {
   return champRole ?? mainRole ?? "mid";
 }
 
-/** Team source: lobby (>=2) > saved > me + backend suggestions (or snapshot fallback), then added, cap 5. */
-export function selectTeamMembers(input: {
-  lobby: Member[]; saved: Member[]; me: Member | null;
-  suggested: { puuid: string; riotId: string; games: number }[];
-  snapshotGames: Parameters<typeof suggestTeammates>[0];
-  added: Member[];
-}): { members: Member[]; source: "lobby" | "saved" | "auto" } {
-  let members: Member[] = [];
-  let source: "lobby" | "saved" | "auto" = "auto";
-  if (input.lobby.length >= 2) { members = [...input.lobby]; source = "lobby"; }
-  else if (input.saved.length) { members = [...input.saved]; source = "saved"; }
-  else if (input.me) {
-    members = [input.me];
-    const fromBackend = input.suggested ?? [];
-    const fallback = fromBackend.length ? [] : suggestTeammates(input.snapshotGames ?? []).filter(s => s.puuid).map(s => ({ puuid: s.puuid, riotId: s.riotId, games: s.count }));
-    for (const s of (fromBackend.length ? fromBackend : fallback)) if (s.puuid !== input.me.puuid && members.length < 5) members.push({ puuid: s.puuid, riotId: s.riotId, games: s.games });
-  }
-  for (const a of input.added) if (!members.some(m => m.puuid === a.puuid) && members.length < 5) members.push(a);
-  return { members: members.slice(0, 5), source };
-}
-/** Queues whose games count as playing together as a team: Ranked Flex (5-stacks) and Clash. */
-export const TEAM_QUEUES = ["flex", "clash"];
-/** Teammates on the user's team in 3+ of their recent Ranked Flex or Clash games. games: snapshot games with players[]. */
-export function suggestTeammates(games: { queue?: string; players: { riotId: string; ally: boolean; me: boolean; puuid?: string }[] }[], limit = 20): { riotId: string; puuid: string; count: number }[] {
-  const counts = new Map<string, { riotId: string; puuid: string; count: number }>();
-  for (const g of games.filter(g => TEAM_QUEUES.includes(g.queue ?? "")).slice(0, limit)) for (const p of g.players ?? []) {
-    if (p.me || !p.ally) continue;
-    const key = p.puuid || p.riotId;
-    const cur = counts.get(key) ?? { riotId: p.riotId, puuid: p.puuid ?? "", count: 0 };
-    cur.count++; counts.set(key, cur);
-  }
-  return [...counts.values()].filter(c => c.count >= 3).sort((a, b) => b.count - a.count);
-}
 export function applyOverrides(pool: PoolEntry[], added: { championId: number; role: Role; name?: string }[], hidden: number[]): PoolEntry[] {
   const hiddenSet = new Set(hidden);
   const base: PoolEntry[] = pool.map(e => ({ ...e, hidden: hiddenSet.has(e.championId) }));

@@ -27,6 +27,8 @@ Contact sheet (dev only): `/src/full-app/ui/icons/icons-preview.html`.
 | `SwitchIcon` | The brand's two half-barb arrows | Podium "Switch account", account card switch button |
 | `AddAccountIcon` | Profile with plus | Account picker, Accounts "Add another account", tray "Add account" |
 | `AddIcon` | Plus | Tray empty-state symbol |
+| `GripIcon` | Six dots, drag handle | Accounts card drag handle in reorder mode |
+| `ReorderIcon` | Up and down arrows | Accounts "Reorder" button |
 | `SearchIcon` | Lens | Title bar search and palette, champion/opponent/picker searches |
 | `BackIcon` / `ForwardIcon` | Chevrons | Title bar history, matchup strip scroll, tray back button |
 | `RefreshIcon` | Arc with half barb | Title bar refresh stats, tray update/try again |

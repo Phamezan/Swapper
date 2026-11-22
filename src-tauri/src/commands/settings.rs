@@ -1,11 +1,11 @@
 use crate::state::{view, AppView};
-use crate::{hotkey, korean_font, riot, vault, AppState};
+use crate::{hotkey, mods, riot, vault, AppState};
 use std::sync::atomic::Ordering;
 use tauri::State;
 
 #[tauri::command]
 pub(crate) fn get_state(state: State<'_, AppState>) -> Result<AppView, String> {
-    let config = state.config.lock().map_err(|e| e.to_string())?;
+    let config = state.config.lock().map_err(|e| { eprintln!("Settings lock poisoned: {e}"); "Couldn't read your settings. Restart Swapper.".to_string() })?;
     Ok(view(
         &config,
         &state.bundled_deceive,
@@ -21,7 +21,7 @@ pub(crate) fn save_settings(
     use_deceive: bool,
     riot_exe: Option<String>,
 ) -> Result<AppView, String> {
-    let mut config = state.config.lock().map_err(|e| e.to_string())?;
+    let mut config = state.config.lock().map_err(|e| { eprintln!("Settings lock poisoned: {e}"); "Couldn't read your settings. Restart Swapper.".to_string() })?;
     riot::save_settings(&mut config, use_deceive, riot_exe, &state.bundled_deceive)?;
     Ok(view(
         &config,
@@ -54,12 +54,12 @@ pub(crate) fn set_hotkey(
     // An inactive saved hotkey (another app held it at startup) is retried
     // even when the same combination is recorded again.
     let unchanged = {
-        let config = state.config.lock().map_err(|e| e.to_string())?;
+        let config = state.config.lock().map_err(|e| { eprintln!("Settings lock poisoned: {e}"); "Couldn't read your settings. Restart Swapper.".to_string() })?;
         config.hotkey.as_deref() == incoming.as_ref().map(|(_, text)| text.as_str())
             && (incoming.is_none() || state.hotkey_active.load(Ordering::SeqCst))
     };
     if unchanged {
-        let config = state.config.lock().map_err(|e| e.to_string())?;
+        let config = state.config.lock().map_err(|e| { eprintln!("Settings lock poisoned: {e}"); "Couldn't read your settings. Restart Swapper.".to_string() })?;
         return Ok(view(
             &config,
             &state.bundled_deceive,
@@ -71,7 +71,7 @@ pub(crate) fn set_hotkey(
     let previous = state
         .config
         .lock()
-        .map_err(|e| e.to_string())?
+        .map_err(|e| { eprintln!("Settings lock poisoned: {e}"); "Couldn't read your settings. Restart Swapper.".to_string() })?
         .hotkey
         .clone();
     let registered = previous
@@ -80,7 +80,7 @@ pub(crate) fn set_hotkey(
     let wanted = incoming.as_ref().map(|(parsed, _)| *parsed);
     hotkey::swap(&app, registered, wanted)?;
     let saved = {
-        let mut config = state.config.lock().map_err(|e| e.to_string())?;
+        let mut config = state.config.lock().map_err(|e| { eprintln!("Settings lock poisoned: {e}"); "Couldn't read your settings. Restart Swapper.".to_string() })?;
         config.hotkey = incoming.map(|(_, text)| text);
         match vault::save(&config) {
             Ok(()) => Ok(()),
@@ -104,7 +104,7 @@ pub(crate) fn set_hotkey(
     state
         .hotkey_active
         .store(wanted.is_some(), Ordering::SeqCst);
-    let config = state.config.lock().map_err(|e| e.to_string())?;
+    let config = state.config.lock().map_err(|e| { eprintln!("Settings lock poisoned: {e}"); "Couldn't read your settings. Restart Swapper.".to_string() })?;
     Ok(view(
         &config,
         &state.bundled_deceive,
@@ -120,7 +120,7 @@ pub(crate) fn set_notifications_enabled(
     enabled: bool,
 ) -> Result<AppView, String> {
     state.set_notifications_enabled(enabled)?;
-    let config = state.config.lock().map_err(|e| e.to_string())?;
+    let config = state.config.lock().map_err(|e| { eprintln!("Settings lock poisoned: {e}"); "Couldn't read your settings. Restart Swapper.".to_string() })?;
     Ok(view(
         &config,
         &state.bundled_deceive,
@@ -136,7 +136,7 @@ pub(crate) fn set_ready_check_notifications(
     enabled: bool,
 ) -> Result<AppView, String> {
     state.set_ready_check_notifications(enabled)?;
-    let config = state.config.lock().map_err(|e| e.to_string())?;
+    let config = state.config.lock().map_err(|e| { eprintln!("Settings lock poisoned: {e}"); "Couldn't read your settings. Restart Swapper.".to_string() })?;
     Ok(view(
         &config,
         &state.bundled_deceive,
@@ -152,14 +152,14 @@ pub(crate) fn onboarding_pending(state: State<'_, AppState>) -> Result<bool, Str
     Ok(state
         .config
         .lock()
-        .map_err(|e| e.to_string())?
+        .map_err(|e| { eprintln!("Settings lock poisoned: {e}"); "Couldn't read your settings. Restart Swapper.".to_string() })?
         .onboarding_pending())
 }
 
 /// Marks the first-run setup finished or skipped, so it never opens by itself again.
 #[tauri::command]
 pub(crate) fn set_onboarded(state: State<'_, AppState>) -> Result<(), String> {
-    let mut config = state.config.lock().map_err(|e| e.to_string())?;
+    let mut config = state.config.lock().map_err(|e| { eprintln!("Settings lock poisoned: {e}"); "Couldn't read your settings. Restart Swapper.".to_string() })?;
     let mut saved = config.clone();
     saved.onboarded = Some(true);
     vault::save(&saved)?;
@@ -167,9 +167,8 @@ pub(crate) fn set_onboarded(state: State<'_, AppState>) -> Result<(), String> {
     Ok(())
 }
 
-/// Persists the Korean font toggle and, when turned on mid-game, starts the
-/// patcher now instead of waiting for the watcher's next poll. Turning it off
-/// stops the patcher immediately.
+/// Persists the Korean font toggle and turns the font on or off in LTK
+/// Manager in the background.
 #[tauri::command]
 pub(crate) fn set_korean_font(
     app: tauri::AppHandle,
@@ -177,12 +176,30 @@ pub(crate) fn set_korean_font(
     enabled: bool,
 ) -> Result<AppView, String> {
     state.set_korean_font_enabled(enabled)?;
-    if enabled {
-        korean_font::on_enabled(&app);
-    } else {
-        korean_font::stop();
-    }
-    let config = state.config.lock().map_err(|e| e.to_string())?;
+    tauri::async_runtime::spawn_blocking(move || {
+        if let Err(error) = mods::korean_font_changed(&app, enabled) {
+            eprintln!("Korean font: {error}");
+        }
+    });
+    let config = state.config.lock().map_err(|e| { eprintln!("Settings lock poisoned: {e}"); "Couldn't read your settings. Restart Swapper.".to_string() })?;
+    Ok(view(
+        &config,
+        &state.bundled_deceive,
+        &state.remote.status(),
+        false,
+        state.hotkey_active.load(Ordering::SeqCst),
+    ))
+}
+
+/// Persists the Custom mods toggle, which shows the Custom mods page.
+#[tauri::command]
+pub(crate) fn set_custom_mods(
+    state: State<'_, AppState>,
+    enabled: bool,
+    risk_ack: bool,
+) -> Result<AppView, String> {
+    state.set_custom_mods_enabled(enabled, risk_ack)?;
+    let config = state.config.lock().map_err(|e| { eprintln!("Settings lock poisoned: {e}"); "Couldn't read your settings. Restart Swapper.".to_string() })?;
     Ok(view(
         &config,
         &state.bundled_deceive,

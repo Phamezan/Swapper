@@ -156,7 +156,7 @@ export function YoutubeVodPlayer({ vod, seek, mini = false, champions = [], onMo
     setFullscreenError('');
     if (on && isTauri()) {
       try { await nativeFullscreen(true); }
-      catch (error) { setFullscreenError(`Window fullscreen unavailable: ${String(error)}`); }
+      catch (error) { setFullscreenError("Couldn't go fullscreen. Try again."); }
       if (!fullscreenNow.current) return;
     }
     try {
@@ -170,7 +170,7 @@ export function YoutubeVodPlayer({ vod, seek, mini = false, champions = [], onMo
     } catch { /* A detached view must not prevent the window from leaving fullscreen. */ }
     if (!on && isTauri()) {
       try { await nativeFullscreen(false); }
-      catch (error) { setFullscreenError(`Could not leave window fullscreen: ${String(error)}`); }
+      catch (error) { setFullscreenError("Couldn't leave fullscreen. Try again."); }
     }
     if (!on) setFullscreen(false);
   };

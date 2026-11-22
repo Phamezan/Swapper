@@ -127,7 +127,7 @@ mockIPC(async (cmd, args) => {
       if (!currentDraft().canLock || selectedChampion !== a.championId) throw new Error("Wait for your pick turn to lock in.");
       change("locked"); return null;
     }
-    case "apply_rune_page": if (new URLSearchParams(location.search).has("rune-fail")) throw new Error("Your rune pages are full (25 of 25). Delete a page in League Client, then try again."); applied = { name: "Swapper", championId: 266, ...a.selection, presetIndex: null }; if (a.spells) spells = { ...spells, spell1Id: a.spells[0], spell2Id: a.spells[1] }; return null;
+    case "apply_rune_page": if (new URLSearchParams(location.search).has("rune-fail")) throw new Error("Your rune pages are full. Remove one in League, then try again."); applied = { name: "Swapper", championId: 266, ...a.selection, presetIndex: null }; if (a.spells) spells = { ...spells, spell1Id: a.spells[0], spell2Id: a.spells[1] }; return null;
     case "apply_spell": spells = a.slot === "d" ? { ...spells, spell1Id: a.spellId } : { ...spells, spell2Id: a.spellId }; return null;
     case "import_full_item_build": return null;
     case "get_rune_presets": return runePresets;

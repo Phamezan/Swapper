@@ -70,7 +70,7 @@ pub fn find_cli() -> Option<PathBuf> {
 pub fn status(cli: &Path) -> Result<TailscaleStatus, String> {
     let output = capture(cli, &["status", "--json"])?;
     if !output.status.success() {
-        return Err(failure("Tailscale is not reachable", &output));
+        return Err(failure("Tailscale isn't reachable. Start it and try again.", &output));
     }
     let body = String::from_utf8_lossy(&output.stdout);
     parse_status(&body)
@@ -80,7 +80,7 @@ pub fn serve_set(cli: &Path, port: u16) -> Result<(), String> {
     let target = format!("http://127.0.0.1:{port}");
     let output = capture(cli, &["serve", "--bg", "--set-path", "/", &target])?;
     if !output.status.success() {
-        return Err(failure("Could not expose Swapper through Tailscale Serve", &output));
+        return Err(failure("Couldn't share Swapper through Tailscale. Try again.", &output));
     }
     Ok(())
 }
@@ -88,7 +88,7 @@ pub fn serve_set(cli: &Path, port: u16) -> Result<(), String> {
 pub fn root_route(cli: &Path, dns_name: &str) -> Result<RootRoute, String> {
     let output = capture(cli, &["serve", "status", "--json"])?;
     if !output.status.success() {
-        return Err(failure("Could not inspect Tailscale Serve routes", &output));
+        return Err(failure("Couldn't read Tailscale routes. Try again.", &output));
     }
     parse_root_route(&String::from_utf8_lossy(&output.stdout), dns_name)
 }
@@ -98,11 +98,11 @@ fn parse_root_route(body: &str, dns_name: &str) -> Result<RootRoute, String> {
         return Ok(RootRoute::Vacant);
     }
     let config: serde_json::Value = serde_json::from_str(body)
-        .map_err(|e| format!("Tailscale returned unreadable Serve routes: {e}"))?;
+        .map_err(|e| { eprintln!("Tailscale routes unreadable: {e}"); "Tailscale sent something unreadable. Try again.".to_string() })?;
     let Some(web) = config.get("Web") else {
         return Ok(RootRoute::Vacant);
     };
-    let web = web.as_object().ok_or("Tailscale returned invalid Serve routes")?;
+    let web = web.as_object().ok_or("Tailscale sent something unreadable. Try again.")?;
     let host_port = format!("{}:443", dns_name.trim_end_matches('.'));
     let Some((_, server)) = web.iter().find(|(key, _)| key.eq_ignore_ascii_case(&host_port)) else {
         return Ok(RootRoute::Vacant);
@@ -127,7 +127,7 @@ pub fn serve_off(cli: &Path) -> Result<(), String> {
         if text.contains("does not exist") {
             return Ok(());
         }
-        return Err(failure("Could not remove the Tailscale Serve route", &output));
+        return Err(failure("Couldn't remove the Tailscale route. Try again.", &output));
     }
     Ok(())
 }
@@ -142,11 +142,11 @@ pub fn address_for(dns_name: &str) -> Option<String> {
 
 pub fn parse_status(body: &str) -> Result<TailscaleStatus, String> {
     let parsed: StatusFile =
-        serde_json::from_str(body).map_err(|e| format!("Tailscale returned unreadable status: {e}"))?;
+        serde_json::from_str(body).map_err(|e| { eprintln!("Tailscale status unreadable: {e}"); "Tailscale sent something unreadable. Try again.".to_string() })?;
     let backend_state = parsed
         .backend_state
         .filter(|state| !state.trim().is_empty())
-        .ok_or("Tailscale did not report its state")?;
+        .ok_or("Tailscale didn't report its state. Try again.")?;
     let node = parsed.node;
     let dns_name = node
         .as_ref()
@@ -185,7 +185,7 @@ fn run_bounded(mut command: Command, timeout: Duration) -> Result<Output, String
     command.stdout(Stdio::piped()).stderr(Stdio::piped());
     let mut child = command
         .spawn()
-        .map_err(|e| format!("Could not run Tailscale: {e}"))?;
+        .map_err(|e| { eprintln!("Tailscale run failed: {e}"); "Couldn't run Tailscale. Check it's installed.".to_string() })?;
     let stdout = drain(child.stdout.take());
     let stderr = drain(child.stderr.take());
     let deadline = Instant::now() + timeout;
@@ -196,13 +196,13 @@ fn run_bounded(mut command: Command, timeout: Duration) -> Result<Output, String
             Err(e) => {
                 let _ = child.kill();
                 let _ = child.wait();
-                return Err(format!("Could not run Tailscale: {e}"));
+                return Err({ eprintln!("Tailscale run failed: {e}"); "Couldn't run Tailscale. Check it's installed.".to_string() });
             }
         }
         if Instant::now() >= deadline {
             let _ = child.kill();
             let _ = child.wait();
-            return Err("Tailscale did not respond in time.".into());
+            return Err("Tailscale didn't answer. Start it and try again.".into());
         }
         thread::sleep(Duration::from_millis(20));
     };
@@ -237,11 +237,8 @@ fn describe(output: &Output) -> String {
 
 fn failure(prefix: &str, output: &Output) -> String {
     let detail = describe(output);
-    if detail.is_empty() {
-        prefix.to_string()
-    } else {
-        format!("{prefix}: {detail}")
-    }
+    if !detail.is_empty() { eprintln!("Tailscale failed: {detail}"); }
+    prefix.to_string()
 }
 
 #[cfg(test)]

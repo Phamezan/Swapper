@@ -438,7 +438,7 @@ export function RunesPanel({
         <button type="button" aria-pressed={screen === "champion"} className={screen === "champion" ? "is-active" : ""} onClick={() => pickTab("champion")}>Champion</button>
         <button type="button" aria-pressed={screen === "editor"} className={screen === "editor" ? "is-active" : ""} onClick={startEditor}>Editor</button>
         {view.source === "lcu" && (
-          <Tooltip label="op.gg had no data for this champion and role (or could not be reached); showing the League client's own recommendations.">
+          <Tooltip label="No op.gg data here. Showing League's own picks.">
             <span className="runes-source is-fallback">
               League fallback
             </span>
@@ -713,7 +713,7 @@ export function RunesPanel({
             onChange={setSelection}
           />
         ) : (
-          <p className="runes-note">The rune grid is unavailable{view.message ? `: ${view.message}` : "."}</p>
+          <p className="runes-note">Runes couldn't load.{view.message ? ` ${view.message}` : ""}</p>
         )}
       </div>
 

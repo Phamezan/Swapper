@@ -144,7 +144,7 @@ fn client() -> Result<reqwest::Client, String> {
 }
 
 async fn get_text(client: &reqwest::Client, url: &str, max_bytes: usize) -> Result<String, String> {
-    String::from_utf8(get_bytes(client, url, max_bytes).await?).map_err(|_| "Patch notes returned an unexpected format.".to_string())
+    String::from_utf8(get_bytes(client, url, max_bytes).await?).map_err(|_| "Patch notes look different than expected. Try again later.".to_string())
 }
 
 async fn get_bytes(client: &reqwest::Client, url: &str, max_bytes: usize) -> Result<Vec<u8>, String> {
@@ -156,20 +156,20 @@ async fn get_bytes(client: &reqwest::Client, url: &str, max_bytes: usize) -> Res
             if error.is_timeout() {
                 "Patch notes timed out.".to_string()
             } else {
-                "Patch notes are unavailable right now.".to_string()
+                "Couldn't load patch notes. Check your connection and try again.".to_string()
             }
         })?;
     if !response.status().is_success() {
-        return Err("Patch notes are unavailable right now.".to_string());
+        return Err("Couldn't load patch notes. Check your connection and try again.".to_string());
     }
     let mut bytes = Vec::new();
     while let Some(chunk) = response
         .chunk()
         .await
-        .map_err(|_| "Patch notes are unavailable right now.".to_string())?
+        .map_err(|_| "Couldn't load patch notes. Check your connection and try again.".to_string())?
     {
         if bytes.len() + chunk.len() > max_bytes {
-            return Err("Patch notes returned an unexpected format.".to_string());
+            return Err("Patch notes look different than expected. Try again later.".to_string());
         }
         bytes.extend_from_slice(&chunk);
     }
@@ -203,7 +203,7 @@ pub async fn banner(version: &str) -> Result<String, String> {
     let sized = format!("{url}{}{BANNER_SIZE}", if url.contains('?') { "&" } else { "?" });
     let bytes = get_bytes(&client()?, &sized, MAX_BANNER_BYTES).await?;
     if !is_jpeg(&bytes) {
-        return Err("Patch key art returned an unexpected format.".to_string());
+        return Err("Patch art couldn't be loaded. Try again later.".to_string());
     }
     if let Some(parent) = path.parent() {
         let _ = std::fs::create_dir_all(parent);
@@ -326,7 +326,7 @@ async fn fetch_patch_links() -> Result<[PatchLink; 2], String> {
     let client = client()?;
     let listing = get_text(&client, LISTING_URL, MAX_LISTING_BYTES).await?;
     let mut links = latest_patch_links(&listing)
-        .ok_or_else(|| "Patch notes returned an unexpected format.".to_string())?;
+        .ok_or_else(|| "Patch notes look different than expected. Try again later.".to_string())?;
     let listing_data = next_data(&listing);
     for link in &mut links {
         link.2 = listing_data.as_ref().and_then(|data| listing_banner(data, &link.1));
@@ -359,7 +359,7 @@ async fn fetch_patch(patch: &str, slug: &str) -> Result<PatchNotes, String> {
     let article_url = format!("{ARTICLE_BASE}/{slug}/");
     let article = get_text(&client, &article_url, MAX_ARTICLE_BYTES).await?;
     parse_article(&article, patch, &article_url)
-        .ok_or_else(|| "Patch notes returned an unexpected format.".to_string())
+        .ok_or_else(|| "Patch notes look different than expected. Try again later.".to_string())
 }
 
 // ---------------------------------------------------------------------------
@@ -581,11 +581,26 @@ fn finish(
                 }
             }
         }
-        Capture::H3Other | Capture::H4 => {
+        Capture::H3Other => {
             if text.is_empty() {
                 return;
             }
-            push_group(sections, Some(cap(&text, 160)));
+            let title = cap(&text, 160);
+            push_group(sections, Some(title));
+        }
+        Capture::H4 => {
+            if text.is_empty() {
+                return;
+            }
+            if is_mid_patch_entry(sections, &text) {
+                if let Some(section) = sections.last_mut() {
+                    if section.entries.len() < MAX_ENTRIES {
+                        section.entries.push(PatchEntry { item_id: None, name: cap(&text, 120), context: None, groups: Vec::new(), notes: Vec::new() });
+                    }
+                }
+            } else {
+                push_group(sections, Some(cap(&text, 160)));
+            }
         }
         Capture::H4Skin => {
             if !text.is_empty() {
@@ -622,6 +637,19 @@ fn finish(
             if sections.is_empty() {
                 return; // The byline/designer credits before the first heading.
             }
+            if text.contains('⇒') {
+                if let Some(entry) = current_entry(sections) {
+                    if entry.groups.is_empty() {
+                        entry.groups.push(PatchGroup { title: None, lines: Vec::new() });
+                    }
+                    if let Some(group) = entry.groups.last_mut() {
+                        if group.lines.len() < MAX_LINES {
+                            group.lines.push(parse_line(&text));
+                        }
+                    }
+                    return;
+                }
+            }
             if let Some(entry) = current_entry(sections) {
                 if entry.notes.len() < MAX_PARAGRAPHS {
                     entry.notes.push(cap(&text, 1200));
@@ -644,6 +672,23 @@ fn finish(
             if entry.groups.is_empty() {
                 entry.groups.push(PatchGroup { title: None, lines: Vec::new() });
             }
+            if text.trim_start().starts_with('⇒') {
+                let continuation = text.trim_start().trim_start_matches('⇒').trim();
+                if let Some(prev) = entry.groups.last_mut().and_then(|group| group.lines.last_mut()) {
+                    if let Some(old_text) = prev.text.take() {
+                        *prev = parse_line(&format!("{old_text} ⇒ {continuation}"));
+                    } else if prev.before.is_none() && prev.after.is_some() {
+                        prev.before = prev.after.take();
+                        prev.after = Some(cap(continuation, 300));
+                    } else if let Some(existing) = &mut prev.after {
+                        existing.push(' ');
+                        existing.push_str(continuation);
+                    } else {
+                        prev.after = Some(cap(continuation, 300));
+                    }
+                    return;
+                }
+            }
             if let Some(group) = entry.groups.last_mut() {
                 if group.lines.len() < MAX_LINES {
                     group.lines.push(parse_line(&text));
@@ -651,6 +696,30 @@ fn finish(
             }
         }
         Capture::None => {}
+    }
+}
+
+fn is_ability_title(text: &str) -> bool {
+    let t = text.trim().to_ascii_lowercase();
+    if t.starts_with("base stats") || t.starts_with("passive") {
+        return true;
+    }
+    matches!(t.chars().next(), Some('p' | 'q' | 'w' | 'e' | 'r'))
+        && (t.len() == 1 || t[1..].starts_with(|c: char| c == ' ' || c == '-' || c == '\u{2013}' || c == '\u{2014}'))
+}
+
+fn is_mid_patch_entry(sections: &[PatchSection], text: &str) -> bool {
+    let Some(section) = sections.last() else { return false };
+    let title = section.title.to_ascii_lowercase();
+    if !title.contains("mid-patch") && !title.contains("mid patch") {
+        return false;
+    }
+    if is_ability_title(text) {
+        return false;
+    }
+    match section.entries.last() {
+        None => true,
+        Some(entry) => entry.groups.iter().any(|group| !group.lines.is_empty()) || !entry.notes.is_empty(),
     }
 }
 
@@ -679,7 +748,7 @@ fn parse_line(text: &str) -> PatchLine {
         let (label, before) = split_label(left.trim());
         return PatchLine {
             label,
-            before: Some(cap(before, 300)),
+            before: Some(cap(before, 300)).filter(|value| !value.is_empty()),
             after: Some(cap(right.trim(), 300)),
             text: None,
         };
@@ -1063,6 +1132,35 @@ mod tests {
         assert_eq!(line.label.as_deref(), Some("Damage"));
         let long = parse_line(&"x".repeat(5000));
         assert!(long.text.unwrap().chars().count() <= 600);
+    }
+
+    #[test]
+    fn parses_para_change_lines_split_items_and_mid_patch_entries() {
+        let body = r#"<h2>Champions</h2><h3 class="change-title">Corki</h3><h4 class="change-detail-title">R</h4><p><strong>Big One Damage</strong>: 180/340/500 (+170% bonus AD) &#8658; 200/380/560 (+180% bonus AD)</p><h3 class="change-title">Rumble</h3><p>Maximum Damage Ability Power Ratio: 175% AP &#8658; 200% AP</p><h3 class="change-title">Zaahen</h3><h4 class="change-detail-title">Q</h4><ul><li>Cooldown: 10/9/8/7/6s</li><li>&#8658; 8/7.5/7/6.5/6s</li></ul><h2>Mid-Patch Updates</h2><h4>Varus</h4><h4>Passive</h4><ul><li>Bonus Damage: 50-230 &#8658; 50-250</li></ul>"#;
+        let (_, sections) = parse_body(body);
+        assert_eq!(sections.len(), 2);
+        let corki = &sections[0].entries[0];
+        assert_eq!(corki.name, "Corki");
+        assert!(corki.notes.is_empty());
+        let line = &corki.groups[0].lines[0];
+        assert_eq!(line.label.as_deref(), Some("Big One Damage"));
+        assert_eq!(line.before.as_deref(), Some("180/340/500 (+170% bonus AD)"));
+        assert_eq!(line.after.as_deref(), Some("200/380/560 (+180% bonus AD)"));
+        let rumble = &sections[0].entries[1];
+        assert_eq!(rumble.groups[0].lines[0].label.as_deref(), Some("Maximum Damage Ability Power Ratio"));
+        assert_eq!(rumble.groups[0].lines[0].after.as_deref(), Some("200% AP"));
+        let zaahen = &sections[0].entries[2];
+        assert_eq!(zaahen.groups[0].lines.len(), 1);
+        let line = &zaahen.groups[0].lines[0];
+        assert_eq!(line.label.as_deref(), Some("Cooldown"));
+        assert_eq!(line.before.as_deref(), Some("10/9/8/7/6s"));
+        assert_eq!(line.after.as_deref(), Some("8/7.5/7/6.5/6s"));
+        let mid = &sections[1];
+        assert_eq!(mid.title, "Mid-Patch Updates");
+        assert_eq!(mid.entries.len(), 1);
+        assert_eq!(mid.entries[0].name, "Varus");
+        assert_eq!(mid.entries[0].groups[0].title.as_deref(), Some("Passive"));
+        assert_eq!(mid.entries[0].groups[0].lines[0].after.as_deref(), Some("50-250"));
     }
 
     #[test]

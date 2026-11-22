@@ -11,11 +11,11 @@ use tauri::AppHandle;
 use tauri_plugin_global_shortcut::{GlobalShortcutExt, Modifiers, Shortcut};
 
 const INVALID_MESSAGE: &str =
-    "That combination is not usable as a global hotkey. Record it again.";
+    "That shortcut won't work. Record it again.";
 /// A global key fires no matter which app has focus, so plain Shift — which
 /// users press constantly while typing — must never be enough on its own.
 const NEEDS_MODIFIER_MESSAGE: &str =
-    "Add Ctrl, Alt or the Windows key. Shift alone would fire while you type.";
+    "Add Ctrl, Alt, or the Windows key. Shift alone fires while typing.";
 
 /// Parses and validates a recorded combination such as "ctrl+shift+KeyS".
 pub fn parse(raw: &str) -> Result<Shortcut, String> {
@@ -52,7 +52,7 @@ pub fn canonical(shortcut: Shortcut) -> String {
 pub fn register(app: &AppHandle, shortcut: Shortcut) -> Result<(), String> {
     app.global_shortcut()
         .register(shortcut)
-        .map_err(|_| "That combination is already used by another application. Pick a different one.".to_string())
+        .map_err(|_| "Another app uses that shortcut. Pick a different one.".to_string())
 }
 
 pub fn unregister(app: &AppHandle, shortcut: Shortcut) {

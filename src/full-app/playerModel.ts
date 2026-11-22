@@ -7,10 +7,10 @@ export type PlayerSearch = { connected: boolean; players: PlayerHit[]; message: 
 export type PlayerLive = { live: boolean; view: LiveGameView | null; message: string | null };
 export type ProfileRank = NonNullable<Snapshot['rank']> & { recordAvailable?: boolean; recordSource?: 'ugg' };
 export type PlayerProfile = { player: PlayerHit; region?: string | null; solo: ProfileRank | null; flex: Snapshot['rank']; profileIcons?: Record<string, string>; games: Game[]; live: boolean; source?: 'ugg' | null; fetchedAt: number; message: string | null };
-export type SeasonPage = { games: Game[]; done: boolean };
-/** u.gg pages bound for one season; matches the backend's limit. */
-export const SEASON_PAGES = 100;
-/** A season has dozens of repeat teammates; the side column shows the most frequent. */
+type Totals = { games: number; wins: number; kills: number; deaths: number; assists: number };
+/** u.gg's ranked season totals (Solo/Duo + Flex); champions are most played first. */
+export type SeasonSummary = Totals & { champions: (Totals & { id: number })[] };
+/** Twenty games have few repeat teammates; the side column shows the most frequent. */
 const PLAYED_WITH_LIMIT = 5;
 export type Recent = { kind: 'champion'; champion: ChampionOption } | { kind: 'player'; riotId: string };
 export const RECENT_KEY = 'swapper.search.recents.v1';
@@ -60,7 +60,18 @@ export function profileGame(game: Game, riotId: string): Game | null {
       game.duration > 0 ? player.cs / (game.duration / 60) : null, null, null, null], opponent, players };
 }
 
-export function profileStats(loaded: Game[], profileIcons: Record<string, string> = {}) {
+/** Record, top champions and KDA come from the season summary when u.gg has one; everything else from the recent games. */
+export function profileStats(loaded: Game[], profileIcons: Record<string, string> = {}, summary?: SeasonSummary | null) {
+  const stats = recentStats(loaded, profileIcons);
+  if (!summary?.games) return { ...stats, recentGames: stats.games, season: false };
+  const kda = (summary.kills + summary.assists) / Math.max(1, summary.deaths);
+  const [first, ...rest] = stats.metrics;
+  return { ...stats, recentGames: stats.games, season: true, games: summary.games, wins: summary.wins,
+    champions: summary.champions.slice(0, 3).map(c => ({ ...c, losses: c.games - c.wins, kda: (c.kills + c.assists) / Math.max(1, c.deaths) })),
+    metrics: [{ ...first, average: kda, delta: first.recent == null ? null : first.recent - kda }, ...rest] };
+}
+
+function recentStats(loaded: Game[], profileIcons: Record<string, string>) {
   const games = [...new Map(loaded.map(game => [game.id, game])).values()].sort((a, b) => a.createdAt - b.createdAt);
   const champions = new Map<number, { id: number; games: number; wins: number; losses: number; kills: number; deaths: number; assists: number }>();
   const together = new Map<string, { riotId: string; games: number; wins: number }>();
@@ -93,8 +104,9 @@ export function profileStats(loaded: Game[], profileIcons: Record<string, string
     metrics: Array.from({ length: 6 }, (_, index) => {
       const points = games.map(game => game.metrics[index]).filter((v): v is number => v != null && Number.isFinite(v));
       const average = points.length ? points.reduce((a, b) => a + b, 0) / points.length : null;
-      const recent = games.slice(-5).map(game => game.metrics[index]).filter((v): v is number => v != null && Number.isFinite(v));
-      return { average, points, samples: points.length, delta: average != null && recent.length ? recent.reduce((a, b) => a + b, 0) / recent.length - average : null };
+      const last = games.slice(-5).map(game => game.metrics[index]).filter((v): v is number => v != null && Number.isFinite(v));
+      const recent = last.length ? last.reduce((a, b) => a + b, 0) / last.length : null;
+      return { average, points, samples: points.length, recent, delta: average != null && recent != null ? recent - average : null };
     }),
   };
 }

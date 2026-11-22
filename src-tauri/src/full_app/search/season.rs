@@ -1,7 +1,8 @@
-//! A player's whole ranked season from u.gg: the League Client lists only the
-//! last 20 games, and nothing without it. The profile asks for one page at a
-//! time; pages are kept per player so a revisit only fetches what is new.
-//! Only the viewed player's Riot ID and region are sent.
+//! A player's ranked season from u.gg: the League Client lists only the last
+//! 20 games, and nothing without it. The profile's season totals come from one
+//! `fetchPlayerStatistics` request; match pages are kept per player so a
+//! revisit only fetches what is new. Only the viewed player's Riot ID and
+//! region are sent.
 
 use super::super::model::{self, Game, Player};
 use crate::runes::ugg_record::{self, SEASON_ID};
@@ -15,7 +16,7 @@ use std::time::Duration;
 const REQUEST_TIMEOUT: Duration = Duration::from_secs(8);
 /// u.gg serves 20 games a page; 100 pages bounds the busiest season.
 const PAGE_SIZE: usize = 20;
-pub const MAX_PAGES: u32 = 100;
+const MAX_PAGES: u32 = 100;
 const KEEP_PLAYERS: usize = 16;
 const MAX_FILE_BYTES: u64 = 16 * 1024 * 1024;
 const QUEUES: [u32; 2] = [420, 440];
@@ -27,6 +28,16 @@ query FetchMatchSummaries($page: Int, $queueType: [Int], $regionId: String!, $ri
       teamA { championId riotUserName riotTagLine role } teamB { championId riotUserName riotTagLine role } }
   }
 }";
+/// u.gg's per-champion season totals; role 7 is every role. One alias per queue.
+const STATISTICS: &str = "\
+query FetchPlayerStatistics($regionId: String!, $riotUserName: String!, $riotTagLine: String!, $seasonId: Int!) {
+  solo: fetchPlayerStatistics(queueType: 420, role: 7, regionId: $regionId, riotUserName: $riotUserName, riotTagLine: $riotTagLine, seasonId: $seasonId) {
+    basicChampionPerformances { championId totalMatches wins kills deaths assists } }
+  flex: fetchPlayerStatistics(queueType: 440, role: 7, regionId: $regionId, riotUserName: $riotUserName, riotTagLine: $riotTagLine, seasonId: $seasonId) {
+    basicChampionPerformances { championId totalMatches wins kills deaths assists } }
+}";
+/// A saved summary this recent is shown without asking u.gg again.
+const SUMMARY_TTL_MS: i64 = 10 * 60 * 1000;
 const INFO_FIELDS: &str = "iconId summonerLevel riotUserName riotTagLine regionId";
 static FILES: Mutex<()> = Mutex::new(());
 
@@ -38,10 +49,37 @@ pub struct Identity {
     pub level: Option<u64>,
 }
 
-#[derive(Serialize)]
 pub struct SeasonPage {
     pub games: Vec<Game>,
     pub done: bool,
+}
+
+/// The season's Solo/Duo and Flex totals, per champion (most played first) and overall.
+#[derive(Clone, Debug, Default, PartialEq, Serialize, Deserialize)]
+pub struct Summary {
+    pub games: u64,
+    pub wins: u64,
+    pub kills: u64,
+    pub deaths: u64,
+    pub assists: u64,
+    pub champions: Vec<ChampionSummary>,
+}
+
+#[derive(Clone, Debug, Default, PartialEq, Serialize, Deserialize)]
+pub struct ChampionSummary {
+    pub id: i64,
+    pub games: u64,
+    pub wins: u64,
+    pub kills: u64,
+    pub deaths: u64,
+    pub assists: u64,
+}
+
+#[derive(Serialize, Deserialize)]
+struct SavedSummary {
+    season: i64,
+    fetched_at: i64,
+    summary: Summary,
 }
 
 #[derive(Default, Serialize, Deserialize)]
@@ -52,7 +90,7 @@ struct Saved {
 }
 
 async fn post(body: Value) -> Result<Value, String> {
-    let unavailable = |_| "u.gg is unavailable right now. Try again shortly.".to_string();
+    let unavailable = |_| "Couldn't reach u.gg. Check your connection and try again.".to_string();
     let response = reqwest::Client::builder()
         .connect_timeout(REQUEST_TIMEOUT)
         .timeout(REQUEST_TIMEOUT)
@@ -64,9 +102,9 @@ async fn post(body: Value) -> Result<Value, String> {
         .await
         .map_err(unavailable)?;
     if !response.status().is_success() {
-        return Err("u.gg is unavailable right now. Try again shortly.".into());
+        return Err("Couldn't reach u.gg. Check your connection and try again.".into());
     }
-    response.json().await.map_err(|_| "u.gg sent an unreadable answer.".to_string())
+    response.json().await.map_err(|_| "u.gg sent something unreadable. Try again shortly.".to_string())
 }
 
 /// A player u.gg has never seen is an answer, not an outage.
@@ -98,6 +136,66 @@ fn parse_identity(info: &Value) -> Option<Identity> {
     })
 }
 
+/// The season summary, from disk while fresh. If u.gg fails, an older saved one beats none.
+pub async fn summary(name: &str, tag: &str, client_region: &str) -> Result<Summary, String> {
+    let region = ugg_record::region_id(client_region).ok_or("u.gg doesn't cover this region.")?;
+    let path = path("profile-summaries", region, name, tag);
+    let saved = path.as_deref().and_then(read::<SavedSummary>).filter(|s| s.season == SEASON_ID);
+    let now = crate::runes::provider::now_ms();
+    if let Some(saved) = saved.as_ref().filter(|s| (0..SUMMARY_TTL_MS).contains(&(now - s.fetched_at))) {
+        return Ok(saved.summary.clone());
+    }
+    let fetched = post(json!({ "query": STATISTICS, "variables": {
+        "regionId": region, "riotUserName": name, "riotTagLine": tag, "seasonId": SEASON_ID } }))
+    .await
+    .and_then(|body| parse_summary(&body).ok_or_else(|| "u.gg sent something unreadable. Try again shortly.".to_string()));
+    match fetched {
+        Ok(summary) => {
+            if let Some(path) = path {
+                let saved = SavedSummary { season: SEASON_ID, fetched_at: now, summary: summary.clone() };
+                let _ = tokio::task::spawn_blocking(move || write(&path, &saved)).await;
+            }
+            Ok(summary)
+        }
+        Err(error) => saved.map(|s| s.summary).ok_or(error),
+    }
+}
+
+/// Both queues' champions added together, as the profile counts them.
+fn parse_summary(body: &Value) -> Option<Summary> {
+    if unknown_player(body) {
+        return Some(Summary::default());
+    }
+    let mut champions: Vec<ChampionSummary> = Vec::new();
+    for queue in ["solo", "flex"] {
+        let entries = body["data"][queue].as_array()?;
+        for row in entries.iter().flat_map(|e| e["basicChampionPerformances"].as_array().into_iter().flatten()) {
+            let n = |key: &str| row[key].as_u64().unwrap_or(0);
+            let (Some(id), games) = (row["championId"].as_i64(), n("totalMatches")) else { continue };
+            if games == 0 {
+                continue;
+            }
+            let at = champions.iter().position(|c| c.id == id).unwrap_or_else(|| {
+                champions.push(ChampionSummary { id, ..Default::default() });
+                champions.len() - 1
+            });
+            let c = &mut champions[at];
+            (c.games, c.wins) = (c.games + games, c.wins + n("wins").min(games));
+            (c.kills, c.deaths, c.assists) = (c.kills + n("kills"), c.deaths + n("deaths"), c.assists + n("assists"));
+        }
+    }
+    champions.sort_by(|a, b| b.games.cmp(&a.games).then(b.wins.cmp(&a.wins)).then(a.id.cmp(&b.id)));
+    let total = |f: fn(&ChampionSummary) -> u64| champions.iter().map(f).sum::<u64>();
+    Some(Summary {
+        games: total(|c| c.games),
+        wins: total(|c| c.wins),
+        kills: total(|c| c.kills),
+        deaths: total(|c| c.deaths),
+        assists: total(|c| c.assists),
+        champions,
+    })
+}
+
 /// One page (from 1) of the season's Solo/Duo and Flex games, newest first. Once
 /// the season is covered, `done` is set and `games` holds every saved game.
 pub async fn page(name: &str, tag: &str, client_region: &str, page: u32) -> Result<SeasonPage, String> {
@@ -109,11 +207,11 @@ pub async fn page(name: &str, tag: &str, client_region: &str, page: u32) -> Resu
     let rows = match body["data"]["fetchPlayerMatchSummaries"]["matchSummaries"].as_array() {
         Some(rows) => rows.clone(),
         None if unknown_player(&body) => Vec::new(),
-        None => return Err("u.gg sent an unreadable answer.".into()),
+        None => return Err("u.gg sent something unreadable. Try again shortly.".into()),
     };
     let finished = rows.len() < PAGE_SIZE || page >= MAX_PAGES;
     let games: Vec<Game> = rows.iter().filter_map(|row| game(row, name, tag)).collect();
-    let Some(path) = path(region, name, tag) else {
+    let Some(path) = path("profile-seasons", region, name, tag) else {
         return Ok(SeasonPage { games, done: finished });
     };
     tokio::task::spawn_blocking(move || merge(&path, games, finished))
@@ -121,20 +219,22 @@ pub async fn page(name: &str, tag: &str, client_region: &str, page: u32) -> Resu
         .map_err(|_| "Saved season games are unavailable.".to_string())
 }
 
-fn path(region: &str, name: &str, tag: &str) -> Option<PathBuf> {
+fn path(dir: &str, region: &str, name: &str, tag: &str) -> Option<PathBuf> {
     let key = format!("{region}|{name}#{tag}").to_lowercase();
     let file = base64::engine::general_purpose::URL_SAFE_NO_PAD.encode(key);
-    Some(crate::vault::data_root().ok()?.join("profile-seasons").join(format!("{file}.json")))
+    Some(crate::vault::data_root().ok()?.join(dir).join(format!("{file}.json")))
+}
+
+fn read<T: serde::de::DeserializeOwned>(path: &Path) -> Option<T> {
+    std::fs::metadata(path).ok().filter(|m| m.len() <= MAX_FILE_BYTES)?;
+    serde_json::from_slice(&std::fs::read(path).ok()?).ok()
 }
 
 /// Adds a fetched page to the saved season. A page of only known games, once a
 /// previous run reached the season's start, means everything older is saved.
 fn merge(path: &Path, games: Vec<Game>, finished: bool) -> SeasonPage {
     let _guard = FILES.lock().unwrap_or_else(|e| e.into_inner());
-    let mut saved = std::fs::metadata(path)
-        .ok()
-        .filter(|m| m.len() <= MAX_FILE_BYTES)
-        .and_then(|_| serde_json::from_slice::<Saved>(&std::fs::read(path).ok()?).ok())
+    let mut saved = read::<Saved>(path)
         .filter(|s| s.season == SEASON_ID)
         .unwrap_or(Saved { season: SEASON_ID, ..Saved::default() });
     let known = !games.is_empty() && games.iter().all(|g| saved.games.iter().any(|s| s.id == g.id));
@@ -147,7 +247,7 @@ fn merge(path: &Path, games: Vec<Game>, finished: bool) -> SeasonPage {
     SeasonPage { games: if done { saved.games } else { games }, done }
 }
 
-fn write(path: &Path, saved: &Saved) {
+fn write(path: &Path, saved: &impl Serialize) {
     let (Some(dir), Ok(bytes)) = (path.parent(), serde_json::to_vec(saved)) else { return };
     if bytes.len() as u64 > MAX_FILE_BYTES || std::fs::create_dir_all(dir).is_err() {
         return;
@@ -323,6 +423,33 @@ mod tests {
         assert!(rest.done);
         assert_eq!(rest.games.iter().map(|g| g.id).collect::<Vec<_>>(), vec![4, 3, 2, 1]);
         let _ = std::fs::remove_dir_all(&dir);
+    }
+
+    #[test]
+    fn adds_both_queues_of_a_u_gg_season_summary() {
+        let mut body: Value = serde_json::from_str(include_str!("fixtures/ugg-player-statistics.json")).unwrap();
+        body["data"]["flex"][0]["basicChampionPerformances"] = json!([
+            {"championId": 777, "totalMatches": 2, "wins": 1, "kills": 5, "deaths": 4, "assists": 3},
+            {"championId": 1, "totalMatches": 0, "wins": 0, "kills": 0, "deaths": 0, "assists": 0}]);
+        let summary = parse_summary(&body).unwrap();
+        assert_eq!(summary.champions.iter().map(|c| c.id).collect::<Vec<_>>(), vec![777, 893, 13, 34]);
+        assert_eq!(summary.champions[0], ChampionSummary { id: 777, games: 64, wins: 31, kills: 305, deaths: 278, assists: 365 });
+        assert_eq!((summary.games, summary.wins), (62 + 56 + 52 + 45 + 2, 30 + 33 + 31 + 30 + 1));
+        assert_eq!(summary.kills, 300 + 403 + 358 + 264 + 5);
+        assert_eq!(parse_summary(&json!({"errors": [{"message": "player_info_not_found"}]})), Some(Summary::default()));
+        assert!(parse_summary(&json!({"errors": [{"message": "boom"}]})).is_none());
+    }
+
+    /// Set `SWAPPER_LIVE_RIOT_ID` to a ranked player's `Name#TAG` and run with `--ignored`.
+    #[test]
+    #[ignore = "live u.gg request"]
+    fn live_u_gg_season_summary() {
+        let Ok(id) = std::env::var("SWAPPER_LIVE_RIOT_ID") else { return };
+        let (name, tag) = id.split_once('#').expect("Name#TAG");
+        let rt = tokio::runtime::Runtime::new().unwrap();
+        let found = rt.block_on(identity(name, tag, None)).expect("identity");
+        let summary = rt.block_on(summary(name, tag, found.region)).expect("summary");
+        assert!(summary.games > 0 && !summary.champions.is_empty());
     }
 
     /// Set `SWAPPER_LIVE_RIOT_ID` to a ranked player's `Name#TAG` to run it.

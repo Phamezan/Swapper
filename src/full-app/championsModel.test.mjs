@@ -1,6 +1,6 @@
 import { test } from "node:test";
 import { strict as assert } from "node:assert";
-import { assignRoles, autoRows, mainRoles, mostPlayed } from "./championsModel.ts";
+import { assignRoles, autoRows, mainRoles, mostPlayed, tierMove, weekMove } from "./championsModel.ts";
 
 const row = (championId, tier, winPct, games) => ({ championId, name: `C${championId}`, tier, winPct, games, pickPct: 1, banPct: 1 });
 const lists = {
@@ -60,4 +60,26 @@ test("draft roles: Karthus with Shyvana is the bot laner, not a second jungler",
   // Clashing positions or a sixth member cannot be placed.
   assert.deepEqual(assignRoles([{ championId: 30, role: "mid" }, { championId: 102, role: "mid" }], lists), []);
   assert.deepEqual(assignRoles(team(1, 2, 3, 4, 5, 6), lists), []);
+});
+
+test("tier chips need a whole tier step and ignore churn below C", () => {
+  assert.deepEqual(tierMove("A", "B"), { up: true, was: "B", label: "Was B last patch" });
+  assert.deepEqual(tierMove("B", "S"), { up: false, was: "S", label: "Was S last patch" });
+  assert.equal(tierMove("S+", "S"), null, "S and S+ are one tier");
+  assert.equal(tierMove("A", "A"), null);
+  assert.equal(tierMove("C", "D")?.up, true, "D to C is shown");
+  assert.equal(tierMove("D", "D-"), null, "both below C");
+  assert.equal(tierMove("A", null), null);
+  assert.equal(tierMove("A", undefined), null);
+  assert.equal(tierMove("A", "?"), null);
+});
+
+test("week markers need a 1.5 point swing either way", () => {
+  assert.deepEqual(weekMove(2.1), { up: true, label: "Win rate up 2.1 points this week" });
+  assert.deepEqual(weekMove(-1.5), { up: false, label: "Win rate down 1.5 points this week" });
+  assert.equal(weekMove(52.1 - 50.6)?.up, true, "a float just under 1.5 still rounds to the shown 1.5");
+  assert.equal(weekMove(1.44), null);
+  assert.equal(weekMove(-1.4), null);
+  assert.equal(weekMove(null), null);
+  assert.equal(weekMove(undefined), null);
 });

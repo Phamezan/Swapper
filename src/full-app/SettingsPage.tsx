@@ -37,7 +37,9 @@ type Props = {
   onNotificationsChange: (enabled: boolean) => void;
   onReadyCheckChange: (enabled: boolean) => void;
   koreanFont: boolean;
-  onKoreanFontChange: (enabled: boolean) => void;
+  customMods: boolean;
+  customModsRiskAck: boolean;
+  onCustomModsChange: (enabled: boolean, riskAck: boolean) => void;
   ltkInstalled: boolean;
   ltkInstalling: boolean;
   ltkInstallError: string | null;
@@ -136,8 +138,13 @@ export function SettingsPage(props: Props) {
           onNotificationsChange={props.onNotificationsChange}
           onReadyCheckChange={props.onReadyCheckChange}
           koreanFont={props.koreanFont}
-          onKoreanFontChange={props.onKoreanFontChange}
+          customMods={props.customMods}
+          customModsRiskAck={props.customModsRiskAck}
+          onCustomModsChange={props.onCustomModsChange}
           ltkInstalled={props.ltkInstalled}
+          ltkOutdated={props.state.ltkOutdated}
+          ltkNeedsSetup={props.state.ltkNeedsSetup}
+          ltkNotice={props.state.ltkNotice}
           ltkInstalling={props.ltkInstalling}
           ltkInstallError={props.ltkInstallError}
           onInstallLtk={props.onInstallLtk}

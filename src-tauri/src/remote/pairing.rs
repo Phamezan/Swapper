@@ -51,24 +51,24 @@ pub(super) fn paired_devices_path() -> Result<PathBuf, String> {
 pub(super) fn load_paired_devices_at(path: &Path) -> Result<Vec<PairedLanDevice>, String> {
     match fs::metadata(path) {
         Ok(metadata) if metadata.len() > MAX_LAN_DEVICE_STORE_BYTES as u64 => {
-            return Err("Paired LAN device store is too large".into());
+            return Err("Couldn't open paired phones. Restart Swapper and retry.".into());
         }
         Ok(_) => {}
         Err(error) if error.kind() == std::io::ErrorKind::NotFound => return Ok(Vec::new()),
-        Err(error) => return Err(format!("Could not read paired LAN devices: {error}")),
+        Err(error) => return Err({ eprintln!("Paired devices read failed: {error}"); "Couldn't read paired phones. Restart Swapper and retry.".to_string() }),
     }
     let encrypted = match fs::read(path) {
         Ok(bytes) => bytes,
         Err(error) if error.kind() == std::io::ErrorKind::NotFound => return Ok(Vec::new()),
-        Err(error) => return Err(format!("Could not read paired LAN devices: {error}")),
+        Err(error) => return Err({ eprintln!("Paired devices read failed: {error}"); "Couldn't read paired phones. Restart Swapper and retry.".to_string() }),
     };
     if encrypted.len() > MAX_LAN_DEVICE_STORE_BYTES {
-        return Err("Paired LAN device store is too large".into());
+        return Err("Couldn't open paired phones. Restart Swapper and retry.".into());
     }
     let plain = crate::vault::unprotect_local_data(&encrypted)
         .map_err(|_| "Could not unlock paired LAN devices for this Windows user".to_string())?;
     if plain.len() > MAX_LAN_DEVICE_STORE_BYTES {
-        return Err("Paired LAN device store is too large".into());
+        return Err("Couldn't open paired phones. Restart Swapper and retry.".into());
     }
     let devices: Vec<PairedLanDevice> = serde_json::from_slice(&plain)
         .map_err(|_| "Paired LAN device store is invalid".to_string())?;
@@ -80,7 +80,7 @@ pub(super) fn load_paired_devices_at(path: &Path) -> Result<Vec<PairedLanDevice>
                 .all(|byte| byte.is_ascii_hexdigit())
             || device.name.len() > 32
     }) {
-        return Err("Paired LAN device store contains invalid entries".into());
+        return Err("Paired phones couldn't be read. Pair your phone again.".into());
     }
     Ok(devices)
 }
@@ -88,7 +88,7 @@ pub(super) fn load_paired_devices_at(path: &Path) -> Result<Vec<PairedLanDevice>
 fn save_paired_devices_at(path: &Path, devices: &[PairedLanDevice]) -> Result<(), String> {
     let plain = serde_json::to_vec(devices).map_err(|_| "Could not encode paired LAN devices")?;
     if plain.len() > MAX_LAN_DEVICE_STORE_BYTES {
-        return Err("Paired LAN device store is too large".into());
+        return Err("Couldn't open paired phones. Restart Swapper and retry.".into());
     }
     let encrypted = crate::vault::protect_local_data(&plain)
         .map_err(|_| "Could not protect paired LAN devices for this Windows user")?;
@@ -100,11 +100,11 @@ fn save_paired_devices_at(path: &Path, devices: &[PairedLanDevice]) -> Result<()
     let pending = parent.join(format!("lan-paired-devices-{}.tmp", uuid::Uuid::new_v4()));
     if let Err(error) = fs::write(&pending, encrypted) {
         let _ = fs::remove_file(&pending);
-        return Err(format!("Could not write paired LAN devices: {error}"));
+        return Err({ eprintln!("Paired devices write failed: {error}"); "Couldn't save that phone. Try again.".to_string() });
     }
     if let Err(error) = fs::rename(&pending, path) {
         let _ = fs::remove_file(&pending);
-        return Err(format!("Could not save paired LAN devices: {error}"));
+        return Err({ eprintln!("Paired devices save failed: {error}"); "Couldn't save that phone. Try again.".to_string() });
     }
     Ok(())
 }
@@ -155,7 +155,7 @@ fn ensure_lan_storage(access: &LanAccess) -> Result<(), String> {
         Ok(())
     } else {
         Err(
-            "Saved LAN devices could not be opened. Use Reset LAN Access in Swapper Settings first."
+            "Paired phones couldn't open. Reset LAN access in Settings first."
                 .into(),
         )
     }
@@ -166,7 +166,7 @@ fn apply_revoke(devices: &mut Vec<PairedLanDevice>, id: &str) -> Result<(), Stri
         .iter()
         .position(|device| device.id.to_string() == id)
     else {
-        return Err("That paired device is no longer paired.".into());
+        return Err("That phone isn't paired anymore. Pair it again.".into());
     };
     devices.remove(index);
     Ok(())
@@ -183,7 +183,7 @@ fn apply_rename(devices: &mut [PairedLanDevice], id: &str, name: &str) -> Result
         .iter_mut()
         .find(|device| device.id.to_string() == id)
     else {
-        return Err("That paired device is no longer paired.".into());
+        return Err("That phone isn't paired anymore. Pair it again.".into());
     };
     device.name = name.clone();
     Ok(name)
@@ -239,7 +239,7 @@ impl RemoteCore {
         let mut access = lock(&self.lan_access);
         if !access.storage_available {
             return Err(
-                "Saved LAN devices could not be opened. Use Reset LAN Access in Swapper Settings before pairing again."
+                "Paired phones couldn't open. Reset LAN access in Settings, then pair again."
                     .into(),
             );
         }
@@ -444,7 +444,7 @@ impl RemoteCore {
             .find(|device| constant_time_eq(&device.credential, session))
             .map(|device| device.id.to_string())
         else {
-            return Err("This device is not paired.".into());
+            return Err("This phone isn't paired. Pair it first.".into());
         };
         Ok(access
             .handoff

@@ -27,7 +27,12 @@ pub struct Added { pub champion_id: i64, pub role: String }
 
 #[derive(Clone, Debug, Default, Serialize)]
 #[serde(rename_all = "camelCase")]
-pub struct Context { pub me: Option<Member>, pub lobby: Vec<Member>, pub saved: Vec<Member>, pub suggested: Vec<Suggested>, pub overrides: Overrides }
+pub struct Context { pub me: Option<Member>, pub lobby: Vec<Member>, pub roster: Vec<RosterMember>, pub suggested: Vec<Suggested>, pub overrides: Overrides }
+
+/// One roster friend, shared across all signed-in accounts (never "You").
+#[derive(Clone, Debug, Default, Serialize, Deserialize, PartialEq)]
+#[serde(rename_all = "camelCase")]
+pub struct RosterMember { pub puuid: String, pub riot_id: String, #[serde(default)] pub nickname: Option<String>, #[serde(default)] pub roles: Vec<String> }
 /// A frequent Flex/Clash teammate found over the season, with shared games.
 #[derive(Clone, Debug, Serialize)]
 #[serde(rename_all = "camelCase")]
@@ -41,7 +46,7 @@ pub struct PoolEntry { pub champion_id: i64, pub role: String, pub reason: Strin
 pub struct Pool { pub puuid: String, pub entries: Vec<PoolEntry>, pub error: Option<String>, pub profile_icon_id: Option<i64> }
 
 #[derive(Clone, Default, Serialize, Deserialize)]
-struct Stored { #[serde(default)] saved: Vec<Member>, #[serde(default)] overrides: Overrides }
+struct Stored { #[serde(default)] overrides: Overrides }
 type ByAccount = BTreeMap<String, Stored>;
 static FILE_LOCK: Mutex<()> = Mutex::new(());
 static CACHE: Mutex<Option<HashMap<String, (std::time::Instant, Pool)>>> = Mutex::new(None);
@@ -67,7 +72,7 @@ fn load_all_for_write(path: &Path) -> Result<ByAccount, String> {
     }
 }
 /// Keep the unreadable file as `.bad`; refuse to overwrite it if that copy fails.
-fn backup_bad(path: &Path) -> Result<(), String> { std::fs::copy(path, path.with_extension("bad")).map(|_| ()).map_err(|e| format!("Could not back up unreadable comps file: {e}")) }
+fn backup_bad(path: &Path) -> Result<(), String> { std::fs::copy(path, path.with_extension("bad")).map(|_| ()).map_err(|e| { eprintln!("Comps backup failed: {e}"); "Couldn't back up your comps. Try again.".to_string() }) }
 fn update_store(path: &Path, puuid: &str, change: impl FnOnce(&mut Stored)) -> Result<(), String> {
     let _g = FILE_LOCK.lock().unwrap_or_else(|e| e.into_inner());
     let mut all = load_all_for_write(path)?;
@@ -78,6 +83,55 @@ fn update_store(path: &Path, puuid: &str, change: impl FnOnce(&mut Stored)) -> R
     std::fs::rename(&tmp, path).map_err(|e| e.to_string())
 }
 fn valid(puuid: &str) -> bool { !puuid.is_empty() && puuid.len() <= 128 && puuid.bytes().all(|b| b.is_ascii_alphanumeric() || b == b'-' || b == b'_') }
+
+const ROLE_ORDER: [&str; 5] = ["top", "jungle", "mid", "bot", "support"];
+fn roster_path() -> Option<std::path::PathBuf> { Some(crate::vault::data_root().ok()?.join("comps-roster.json")) }
+#[derive(Default, Serialize, Deserialize)]
+struct RosterFile { #[serde(default)] members: Vec<RosterMember> }
+/// Boundary validation for roster writes: known PUUIDs only, deduped, max 20, roles are known/deduped/max 5.
+pub fn sanitize_roster(members: Vec<RosterMember>) -> Vec<RosterMember> {
+    let mut out: Vec<RosterMember> = Vec::new();
+    for m in members {
+        if !valid(&m.puuid) || out.iter().any(|x| x.puuid == m.puuid) { continue; }
+        let mut roles: Vec<String> = Vec::new();
+        for r in &m.roles { let r = r.to_lowercase(); if ROLE_ORDER.contains(&r.as_str()) && !roles.contains(&r) { roles.push(r); } }
+        out.push(RosterMember { puuid: m.puuid, riot_id: m.riot_id.trim().chars().take(80).collect(),
+            nickname: m.nickname.map(|n| n.trim().to_string()).filter(|n| !n.is_empty()), roles: roles.into_iter().take(5).collect() });
+        if out.len() >= 20 { break; }
+    }
+    out
+}
+fn load_roster(path: &Path) -> Vec<RosterMember> {
+    if std::fs::metadata(path).map_or(true, |m| m.len() > 1024 * 1024) { return Vec::new(); }
+    let file: RosterFile = std::fs::read(path).ok().and_then(|b| serde_json::from_slice(&b).ok()).unwrap_or_default();
+    sanitize_roster(file.members)
+}
+fn save_roster(path: &Path, members: Vec<RosterMember>) -> Result<Vec<RosterMember>, String> {
+    let members = sanitize_roster(members);
+    let _g = FILE_LOCK.lock().unwrap_or_else(|e| e.into_inner());
+    if let Ok(m) = std::fs::metadata(path) { if m.len() > 1024 * 1024 { backup_bad(path)?; } }
+    let bytes = serde_json::to_vec(&RosterFile { members: members.clone() }).map_err(|e| e.to_string())?;
+    let tmp = path.with_extension("tmp");
+    std::fs::write(&tmp, bytes).map_err(|e| e.to_string())?;
+    std::fs::rename(&tmp, path).map_err(|e| e.to_string())?;
+    Ok(members)
+}
+/// Ordered role preferences from a player's recent Summoner's Rift games, most-played first.
+pub fn roles_from_history(history: &Value, puuid: &str) -> Vec<String> {
+    let mut counted: Vec<(String, u64)> = Vec::new();
+    for game in history["games"]["games"].as_array().into_iter().flatten().take(20) {
+        if let Some(q) = game["queueId"].as_u64() { if !matches!(q, 400 | 420 | 430 | 440 | 490 | 700) { continue; } }
+        if let Some(m) = game["mapId"].as_u64() { if m != 11 { continue; } }
+        let pid = game["participantIdentities"].as_array().into_iter().flatten()
+            .find(|i| i["player"]["puuid"].as_str() == Some(puuid)).and_then(|i| i["participantId"].as_u64());
+        let Some(part) = pid.and_then(|id| game["participants"].as_array().into_iter().flatten().find(|p| p["participantId"].as_u64() == Some(id))) else { continue };
+        let raw = super::model::role(part);
+        let role = if raw == "adc" { "bot" } else { raw };
+        match counted.iter_mut().find(|(r, _)| r == role) { Some((_, n)) => *n += 1, None => counted.push((role.into(), 1)) }
+    }
+    counted.sort_by(|a, b| b.1.cmp(&a.1).then(ROLE_ORDER.iter().position(|r| *r == a.0).cmp(&ROLE_ORDER.iter().position(|r| *r == b.0))));
+    counted.into_iter().map(|(r, _)| r).collect()
+}
 
 async fn current_member(client: &crate::runes::Lcu) -> Option<Member> {
     let v: Value = crate::runes::lcu_get(client, "/lol-summoner/v1/current-summoner").await.ok()?;
@@ -204,9 +258,10 @@ async fn season_suggestions(client: &crate::runes::Lcu, me: &Member) -> Vec<Sugg
 #[tauri::command]
 pub async fn comps_team() -> Context {
     let mut ctx = Context::default();
+    if let Some(path) = roster_path() { ctx.roster = load_roster(&path); }
     let Ok(client) = crate::runes::lcu().await else { return ctx };
     let Some(me) = current_member(&client).await else { return ctx };
-    if let Some(path) = store_path() { let stored = load_all(&path).remove(&me.puuid).unwrap_or_default(); ctx.saved = stored.saved; ctx.overrides = stored.overrides; }
+    if let Some(path) = store_path() { let stored = load_all(&path).remove(&me.puuid).unwrap_or_default(); ctx.overrides = stored.overrides; }
     if let Ok(Ok(lobby)) = tokio::time::timeout(TIMEOUT, crate::runes::lcu_get::<Value>(&client, "/lol-lobby/v2/lobby")).await {
         ctx.lobby = lobby["members"].as_array().into_iter().flatten().filter_map(|m| {
             let puuid = m["puuid"].as_str().filter(|s| valid(s))?.to_string();
@@ -216,9 +271,11 @@ pub async fn comps_team() -> Context {
         }).collect();
     }
     ctx.suggested = season_suggestions(&client, &me).await;
-    // The lobby often gives only a PUUID; saved teams from before this fix stored that PUUID as the name.
-    let (lobby, saved) = tokio::join!(named(&client, std::mem::take(&mut ctx.lobby)), named(&client, std::mem::take(&mut ctx.saved)));
-    ctx.lobby = lobby; ctx.saved = saved;
+    // The lobby often gives only a PUUID; resolve missing Riot IDs for display.
+    ctx.lobby = named(&client, std::mem::take(&mut ctx.lobby)).await;
+    // Refresh stored Riot IDs from the lobby when it knows them.
+    for m in &ctx.lobby { if let Some(r) = ctx.roster.iter_mut().find(|r| r.puuid == m.puuid) { if !m.riot_id.is_empty() && m.riot_id != m.puuid { r.riot_id = m.riot_id.clone(); } } }
+    // Roster Riot IDs above are display-only refreshes; the file is rewritten on the next roster save.
     ctx.me = Some(me);
     ctx
 }
@@ -252,7 +309,7 @@ pub async fn comps_resolve(riot_id: String) -> Result<Member, String> {
 pub async fn comps_pools(puuids: Vec<String>) -> Vec<Pool> {
     use futures_util::{stream, StreamExt};
     stream::iter(puuids.into_iter().map(|puuid| async move {
-        if !valid(&puuid) { return Pool { puuid, entries: vec![], error: Some("Invalid player id.".into()), profile_icon_id: None }; }
+        if !valid(&puuid) { return Pool { puuid, entries: vec![], error: Some("That player couldn't load. Try again.".into()), profile_icon_id: None }; }
         if let Some((at, c)) = CACHE.lock().unwrap_or_else(|e| e.into_inner()).as_ref().and_then(|c| c.get(&puuid).cloned()) { if at.elapsed() < POOL_CACHE_TTL { return c; } }
         let (pool, mastery_ok) = fetch_pool(&puuid).await;
         if pool.error.is_none() && mastery_ok { CACHE.lock().unwrap_or_else(|e| e.into_inner()).get_or_insert_with(HashMap::new).insert(puuid.clone(), (std::time::Instant::now(), pool.clone())); }
@@ -278,27 +335,40 @@ async fn fetch_pool(puuid: &str) -> (Pool, bool) {
 }
 
 fn check_account(me: &Member, expected_puuid: &str) -> Result<(), String> {
-    if expected_puuid != me.puuid { return Err("Signed-in account changed; reload before saving.".into()); }
+    if expected_puuid != me.puuid { return Err("Your signed-in account changed. Reload, then save again.".into()); }
     Ok(())
 }
 
 #[tauri::command]
-pub async fn comps_save_team(members: Vec<Member>, expected_puuid: String) -> Result<(), String> {
-    let client = crate::runes::lcu().await.map_err(|e| e.to_string())?;
-    let me = current_member(&client).await.ok_or("League Client has no signed-in summoner.")?;
-    check_account(&me, &expected_puuid)?;
-    let path = store_path().ok_or("Storage unavailable.")?;
-    let members: Vec<Member> = members.into_iter().filter(|m| valid(&m.puuid)).take(5).collect();
-    tokio::task::spawn_blocking(move || update_store(&path, &me.puuid, |s| s.saved = members)).await.map_err(|e| e.to_string())??;
-    Ok(())
+pub async fn comps_roster_load() -> Vec<RosterMember> {
+    roster_path().map(|p| load_roster(&p)).unwrap_or_default()
 }
+
+#[tauri::command]
+pub async fn comps_roster_save(members: Vec<RosterMember>) -> Result<Vec<RosterMember>, String> {
+    let path = roster_path().ok_or("Couldn't open storage. Restart Swapper and retry.")?;
+    tokio::task::spawn_blocking(move || save_roster(&path, members)).await.map_err(|e| e.to_string())?
+}
+
+/// Ordered role preferences for a new roster member, from their recent games. Empty when unknown.
+#[tauri::command]
+pub async fn comps_prefill_roles(puuid: String) -> Vec<String> {
+    if !valid(&puuid) { return Vec::new(); }
+    let Ok(client) = crate::runes::lcu().await else { return Vec::new() };
+    let hist_path = format!("/lol-match-history/v1/products/lol/{puuid}/matches?begIndex=0&endIndex=19");
+    match tokio::time::timeout(TIMEOUT, crate::runes::lcu_get::<Value>(&client, &hist_path)).await {
+        Ok(Ok(history)) => roles_from_history(&history, &puuid),
+        _ => Vec::new(),
+    }
+}
+
 
 #[tauri::command]
 pub async fn comps_save_overrides(added: Vec<Added>, hidden: Vec<i64>, expected_puuid: String) -> Result<(), String> {
     let client = crate::runes::lcu().await.map_err(|e| e.to_string())?;
-    let me = current_member(&client).await.ok_or("League Client has no signed-in summoner.")?;
+    let me = current_member(&client).await.ok_or("No one is signed in. Open League Client first.")?;
     check_account(&me, &expected_puuid)?;
-    let path = store_path().ok_or("Storage unavailable.")?;
+    let path = store_path().ok_or("Couldn't open storage. Restart Swapper and retry.")?;
     let added: Vec<Added> = added.into_iter().take(200).collect();
     let hidden: Vec<i64> = hidden.into_iter().take(200).collect();
     tokio::task::spawn_blocking(move || update_store(&path, &me.puuid, |s| s.overrides = Overrides { added, hidden })).await.map_err(|e| e.to_string())??;
@@ -349,10 +419,10 @@ mod tests {
     fn overrides_round_trip_per_account() {
         let path = std::env::temp_dir().join(format!("comps-{}.json", uuid::Uuid::new_v4()));
         update_store(&path, "a", |s| s.overrides.hidden = vec![157]).unwrap();
-        update_store(&path, "b", |s| s.saved = vec![Member { puuid: "x".into(), riot_id: "X#1".into() }]).unwrap();
+        update_store(&path, "b", |s| s.overrides.added = vec![Added { champion_id: 61, role: "mid".into() }]).unwrap();
         let all = load_all(&path);
         assert_eq!(all["a"].overrides.hidden, vec![157]);
-        assert_eq!(all["b"].saved.len(), 1);
+        assert_eq!(all["b"].overrides.added.len(), 1);
         let _ = std::fs::remove_file(path);
     }
     #[test]
@@ -380,5 +450,27 @@ mod tests {
         assert_eq!(bad, b"not json");
         assert_eq!(load_all(&path)["a"].overrides.hidden, vec![157]);
         let _ = std::fs::remove_file(&path); let _ = std::fs::remove_file(path.with_extension("bad"));
+    }
+    #[test]
+    fn roster_round_trip_and_sanitize() {
+        let path = std::env::temp_dir().join(format!("comps-roster-{}.json", uuid::Uuid::new_v4()));
+        let saved = save_roster(&path, vec![
+            RosterMember { puuid: "p1".into(), riot_id: " A#1 ".into(), nickname: Some(" Al ".into()), roles: vec!["MID".into(), "mid".into(), "top".into(), "bogus".into()] },
+            RosterMember { puuid: "p1".into(), riot_id: "Dup#1".into(), nickname: None, roles: vec![] },
+            RosterMember { puuid: "bad puuid!".into(), riot_id: "Bad#1".into(), nickname: None, roles: vec![] },
+        ]).unwrap();
+        assert_eq!(saved.len(), 1);
+        assert_eq!(saved[0].riot_id, "A#1");
+        assert_eq!(saved[0].nickname.as_deref(), Some("Al"));
+        assert_eq!(saved[0].roles, vec!["mid".to_string(), "top".to_string()]);
+        assert_eq!(load_roster(&path), saved);
+        let _ = std::fs::remove_file(path);
+    }
+    #[test]
+    fn prefill_roles_orders_by_recent_games() {
+        let jng = serde_json::json!({"participantIdentities":[{"participantId":1,"player":{"puuid":"me"}}],"participants":[{"participantId":1,"championId":64,"spell1Id":11,"spell2Id":4,"stats":{"item0":0},"timeline":{"lane":"JUNGLE","role":"NONE"}}]});
+        let history = serde_json::json!({"games":{"games":[game(103,"MIDDLE"), game(103,"MIDDLE"), jng, game(103,"MIDDLE")]}});
+        assert_eq!(roles_from_history(&history, "me"), vec!["mid".to_string(), "jungle".to_string()]);
+        assert!(roles_from_history(&history, "someone-else").is_empty());
     }
 }

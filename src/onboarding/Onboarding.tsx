@@ -19,10 +19,10 @@ async function pairingUrl(): Promise<Omit<Pairing, "busy">> {
     const remote = (await invoke<{ remote: RemoteStatus }>("get_state")).remote;
     if (remote.lanAddress) return { url: await invoke<string>("create_lan_pairing_url"), error: "", firewall: false };
     if (remote.lanFirewallNeeded) return { url: null, error: "", firewall: true };
-    if (attempt === 11) throw new Error(remote.lanMessage ?? "Remote Control could not start.");
+    if (attempt === 11) throw new Error(remote.lanMessage ?? "Phone access couldn't start. Try again.");
     await new Promise(resolve => setTimeout(resolve, 400));
   }
-  throw new Error("Remote Control could not start.");
+  throw new Error("Phone access couldn't start. Try again.");
 }
 
 type Snapshot = { choices: Choices; overlay: OverlaySettings | null; riotExe: string | null; ltkInstalled: boolean };

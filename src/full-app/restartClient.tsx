@@ -7,7 +7,7 @@ type Ask = "ask" | "defer" | "unsaved";
 const COPY: Record<Ask, { title: string; body: string }> = {
   defer: { title: "Can't restart during a game", body: "Restart the client after the game ends." },
   ask: { title: "Restart during champion select?", body: "Restarting now dodges champion select and can cost LP." },
-  unsaved: { title: "Save this account first", body: "Swapper can't sign you back in until the account is saved. Save it in Accounts, then restart." },
+  unsaved: { title: "Save this account first", body: "Save this account in Accounts first. Then Swapper can restart for you." },
 };
 
 /** The one way every "Restart client" entry point starts: the backend plan decides whether to restart, ask or refuse. */

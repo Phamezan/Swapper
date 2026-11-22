@@ -162,7 +162,7 @@ async fn cdn_png(art: Art, name: &str) -> Result<Vec<u8>, RuneError> {
 /// Fetches one picture. `Ok(None)` means the CDN answered 404 (nothing for this
 /// name); `Err` is a transient failure worth retrying later.
 async fn fetch(art: Art, slug: &str) -> Result<Option<Vec<u8>>, RuneError> {
-    let unavailable = || RuneError::unavailable("Could not load the picture.");
+    let unavailable = || RuneError::unavailable("Couldn't load that picture. Try again.");
     let client = reqwest::Client::builder()
         .connect_timeout(REQUEST_TIMEOUT)
         .timeout(REQUEST_TIMEOUT)

@@ -137,12 +137,12 @@ pub fn create_desktop_shortcut(app: &AppHandle, id: Uuid, name: &str) -> Result<
     let desktop = app
         .path()
         .desktop_dir()
-        .map_err(|e| format!("Could not find the Desktop folder: {e}"))?;
+        .map_err(|e| { eprintln!("Desktop lookup failed: {e}"); "Couldn't find your Desktop. Try again.".to_string() })?;
     let file = desktop.join(format!("Swapper {}.url", shortcut_file_stem(name)));
     let icon = std::env::current_exe().ok();
     let contents = shortcut_contents(&switch_link(id), icon.as_deref());
     std::fs::write(&file, contents)
-        .map_err(|e| format!("Could not write the desktop shortcut: {e}"))?;
+        .map_err(|e| { eprintln!("Shortcut write failed: {e}"); "Couldn't create the shortcut. Try again.".to_string() })?;
     Ok(file.display().to_string())
 }
 
@@ -153,12 +153,12 @@ pub fn create_account_shortcut(
     id: Uuid,
 ) -> Result<String, String> {
     let name = {
-        let config = state.config.lock().map_err(|e| e.to_string())?;
+        let config = state.config.lock().map_err(|e| { eprintln!("Settings lock poisoned: {e}"); "Couldn't read your settings. Restart Swapper.".to_string() })?;
         config
             .accounts
             .iter()
             .find(|a| a.id == id)
-            .ok_or_else(|| "Account no longer exists.".to_string())?
+            .ok_or_else(|| "That account was removed. Add it again to switch.".to_string())?
             .display_name()
     };
     create_desktop_shortcut(&app, id, &name)
@@ -177,7 +177,7 @@ pub fn handle_switch_link(app: &AppHandle, raw: &str) {
             return notify(
                 app,
                 "Swapper link not recognized",
-                "Only swapper://switch links to a saved account are supported. No action was taken."
+                "That link isn't a Swapper account link. Nothing happened."
                     .into(),
             );
         }
@@ -194,7 +194,7 @@ pub fn handle_switch_link(app: &AppHandle, raw: &str) {
         return notify(
             app,
             "Shortcut account missing",
-            "The account this shortcut points to is no longer saved in Swapper.".into(),
+            "That shortcut's account isn't saved anymore.".into(),
         );
     }
     if let Err(reason) = crate::start_switch(app, &state, id) {

@@ -42,13 +42,13 @@ struct LaunchFailedPayload {
 pub(crate) async fn riot_client_icon(
     state: State<'_, AppState>,
 ) -> Result<Option<riot_icon::IconPixels>, String> {
-    let path = riot::riot_path(&*state.config.lock().map_err(|e| e.to_string())?);
+    let path = riot::riot_path(&*state.config.lock().map_err(|e| { eprintln!("Settings lock poisoned: {e}"); "Couldn't read your settings. Restart Swapper.".to_string() })?);
     Ok(path.and_then(|path| riot_icon::icon(&path, 64)))
 }
 
 #[tauri::command]
 pub(crate) fn open_riot(state: State<'_, AppState>) -> Result<(), String> {
-    let config = state.config.lock().map_err(|e| e.to_string())?;
+    let config = state.config.lock().map_err(|e| { eprintln!("Settings lock poisoned: {e}"); "Couldn't read your settings. Restart Swapper.".to_string() })?;
     riot::open_riot(&config)
 }
 
@@ -57,7 +57,7 @@ pub(crate) async fn detect_account_identity(
     state: State<'_, AppState>,
 ) -> Result<identity::DetectOutcome, String> {
     let detection = identity::detect().await;
-    let mut config = state.config.lock().map_err(|e| e.to_string())?;
+    let mut config = state.config.lock().map_err(|e| { eprintln!("Settings lock poisoned: {e}"); "Couldn't read your settings. Restart Swapper.".to_string() })?;
     identity::outcome_for(&detection, &mut config)
 }
 
@@ -67,7 +67,7 @@ pub(crate) async fn begin_add(state: State<'_, AppState>) -> Result<AppView, Str
     // Detect identity first, while Riot Client is still alive; the
     // backend verifies it before overwriting any saved session.
     let detection = identity::detect().await;
-    let mut config = state.config.lock().map_err(|e| e.to_string())?;
+    let mut config = state.config.lock().map_err(|e| { eprintln!("Settings lock poisoned: {e}"); "Couldn't read your settings. Restart Swapper.".to_string() })?;
     riot::begin_add(&mut config, &detection)?;
     Ok(view(
         &config,
@@ -96,7 +96,7 @@ pub(crate) async fn complete_add(
         return Err(mismatch_error());
     }
     let (saved_view, saved_id) = {
-        let mut config = state.config.lock().map_err(|e| e.to_string())?;
+        let mut config = state.config.lock().map_err(|e| { eprintln!("Settings lock poisoned: {e}"); "Couldn't read your settings. Restart Swapper.".to_string() })?;
         riot::complete_add(&mut config, &live)?;
         let saved_view = view(
             &config,
@@ -122,19 +122,19 @@ fn detection_error(detection: &identity::Detection) -> String {
     match detection {
         identity::Detection::Identified(_) => mismatch_error(),
         identity::Detection::NotRunning => {
-            "Open Riot Client and sign in with Stay signed in so Swapper can detect your account.".into()
+            "Open Riot Client and sign in with \"Stay signed in\" checked.".into()
         }
         identity::Detection::NotReady => {
-            "Waiting for Riot Client sign-in. Keep Riot Client open; Swapper will detect the account automatically.".into()
+            "Riot Client is still signing in. Wait a moment, then try again.".into()
         }
         identity::Detection::Unavailable => {
-            "Could not read account identity. Make sure Riot Client is open and signed in.".into()
+            "Couldn't read your sign-in. Make sure Riot Client is open.".into()
         }
     }
 }
 
 fn mismatch_error() -> String {
-    "Different Riot account detected. The current login does not match the account Swapper expected. Save this account separately or sign back into the expected account.".into()
+    "Wrong account signed in. Sign in to the expected account.".into()
 }
 
 /// Opens Riot Client so the user can sign in to the account whose saved
@@ -143,12 +143,12 @@ fn mismatch_error() -> String {
 #[tauri::command]
 pub(crate) fn begin_repair(state: State<'_, AppState>, id: Uuid) -> Result<(), String> {
     let _lease = state.switch_guard.acquire()?;
-    let config = state.config.lock().map_err(|e| e.to_string())?;
+    let config = state.config.lock().map_err(|e| { eprintln!("Settings lock poisoned: {e}"); "Couldn't read your settings. Restart Swapper.".to_string() })?;
     let account = config
         .accounts
         .iter()
         .find(|a| a.id == id)
-        .ok_or_else(|| "Account no longer exists.".to_string())?;
+        .ok_or_else(|| "That account was removed. Add it again to switch.".to_string())?;
     repair::ensure_repairable(account)?;
     riot::open_riot(&config)
 }
@@ -166,7 +166,7 @@ pub(crate) async fn complete_repair(
         identity::Detection::Identified(found) => found,
         other => return Err(detection_error(&other)),
     };
-    let mut config = state.config.lock().map_err(|e| e.to_string())?;
+    let mut config = state.config.lock().map_err(|e| { eprintln!("Settings lock poisoned: {e}"); "Couldn't read your settings. Restart Swapper.".to_string() })?;
     repair::complete(&mut config, id, &live)?;
     Ok(view(
         &config,
@@ -189,12 +189,12 @@ pub(crate) fn start_switch(
     let lease = state.switch_guard.acquire()?;
 
     let (name, use_deceive, expected_puuid, watch_epoch) = {
-        let config = state.config.lock().map_err(|e| e.to_string())?;
+        let config = state.config.lock().map_err(|e| { eprintln!("Settings lock poisoned: {e}"); "Couldn't read your settings. Restart Swapper.".to_string() })?;
         let target = config
             .accounts
             .iter()
             .find(|a| a.id == id)
-            .ok_or_else(|| "Account no longer exists.".to_string())?;
+            .ok_or_else(|| "That account was removed. Add it again to switch.".to_string())?;
         (
             target.display_name(),
             config.use_deceive,
@@ -202,16 +202,6 @@ pub(crate) fn start_switch(
             state.switch_guard.epoch(),
         )
     };
-
-    notify::switch_started(app, &name);
-    update_tray_tooltip(app, &format!("Swapper · Switching to {name}…"));
-    let _ = app.emit(
-        "switch_started",
-        SwitchStartedPayload {
-            id,
-            name: name.clone(),
-        },
-    );
 
     let app_handle = app.clone();
     let app = app.clone();
@@ -226,19 +216,27 @@ pub(crate) fn start_switch(
             let app_state = match app_handle.try_state::<AppState>() {
                 Some(state) => state,
                 None => {
-                    let err = "App state unavailable".to_string();
+                    eprintln!("Switch failed: app state unavailable"); let err = "Couldn't switch accounts. Try again.".to_string();
                     return Err((riot::SwitchFailure::from(err.clone()), err));
                 }
             };
             let mut config = match app_state.config.lock() {
                 Ok(guard) => guard,
                 Err(e) => {
-                    let err = format!("Lock error: {e}");
+                    eprintln!("Switch failed: settings lock poisoned: {e}"); let err = "Couldn't switch accounts. Try again.".to_string();
                     return Err((riot::SwitchFailure::from(err.clone()), err));
                 }
             };
 
-            riot::switch_account(&mut config, id, &bundled_deceive, &detection).map_err(
+            let announce = || {
+                notify::switch_started(&app_handle, &name_for_switch);
+                update_tray_tooltip(&app_handle, &format!("Swapper · Switching to {name_for_switch}…"));
+                let _ = app_handle.emit(
+                    "switch_started",
+                    SwitchStartedPayload { id, name: name_for_switch.clone() },
+                );
+            };
+            riot::switch_account(&mut config, id, &bundled_deceive, &detection, announce).map_err(
                 |failure| {
                     let friendly =
                         notify::human_reason(failure.kind, &name_for_switch, use_deceive)
@@ -313,7 +311,7 @@ pub(crate) fn start_switch(
                 );
             }
             Err(join_err) => {
-                let err_msg = format!("Background switch error: {join_err}");
+                eprintln!("Background switch failed: {join_err}"); let err_msg = "Couldn't switch accounts. Try again.".to_string();
                 let failure = riot::SwitchFailure::from(err_msg.clone());
                 notify::switch_failed(&app, &name, use_deceive, &failure);
                 let _ = app.emit(
@@ -342,12 +340,15 @@ pub(crate) fn switch_account(
 
 #[tauri::command]
 pub(crate) fn set_nickname(
+    app: tauri::AppHandle,
     state: State<'_, AppState>,
     id: Uuid,
     name: String,
 ) -> Result<AppView, String> {
-    let mut config = state.config.lock().map_err(|e| e.to_string())?;
+    let mut config = state.config.lock().map_err(|e| { eprintln!("Settings lock poisoned: {e}"); "Couldn't read your settings. Restart Swapper.".to_string() })?;
     riot::set_nickname(&mut config, id, name)?;
+    // The full app's sidebar picker keeps its own account list.
+    let _ = app.emit("accounts_changed", ());
     Ok(view(
         &config,
         &state.bundled_deceive,
@@ -358,10 +359,12 @@ pub(crate) fn set_nickname(
 }
 
 #[tauri::command]
-pub(crate) fn remove_account(state: State<'_, AppState>, id: Uuid) -> Result<AppView, String> {
+pub(crate) fn remove_account(app: tauri::AppHandle, state: State<'_, AppState>, id: Uuid) -> Result<AppView, String> {
     let _lease = state.switch_guard.acquire()?;
-    let mut config = state.config.lock().map_err(|e| e.to_string())?;
+    let mut config = state.config.lock().map_err(|e| { eprintln!("Settings lock poisoned: {e}"); "Couldn't read your settings. Restart Swapper.".to_string() })?;
     riot::remove_account(&mut config, id)?;
+    // The full app's sidebar picker keeps its own account list.
+    let _ = app.emit("accounts_changed", ());
     Ok(view(
         &config,
         &state.bundled_deceive,
@@ -369,4 +372,27 @@ pub(crate) fn remove_account(state: State<'_, AppState>, id: Uuid) -> Result<App
         false,
         state.hotkey_active.load(Ordering::SeqCst),
     ))
+}
+
+/// Saves a new account order. Every list (flyout, tray, full app) shows
+/// accounts in saved order, so they refresh on `accounts_changed`.
+#[tauri::command]
+pub(crate) fn reorder_accounts(
+    app: tauri::AppHandle,
+    state: State<'_, AppState>,
+    ids: Vec<String>,
+) -> Result<AppView, String> {
+    let _lease = state.switch_guard.acquire()?;
+    let mut config = state.config.lock().map_err(|e| { eprintln!("Settings lock poisoned: {e}"); "Couldn't read your settings. Restart Swapper.".to_string() })?;
+    riot::reorder_accounts(&mut config, &ids)?;
+    let updated = view(
+        &config,
+        &state.bundled_deceive,
+        &state.remote.status(),
+        false,
+        state.hotkey_active.load(Ordering::SeqCst),
+    );
+    drop(config);
+    let _ = app.emit("accounts_changed", ());
+    Ok(updated)
 }

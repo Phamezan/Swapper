@@ -1,7 +1,7 @@
 use url::Url;
 
 pub(crate) fn validate_guide_source_url(raw: &str) -> Result<Url, String> {
-    let url = Url::parse(raw).map_err(|_| "Invalid guide source URL.".to_string())?;
+    let url = Url::parse(raw).map_err(|_| "That guide link isn't valid. Check it and try again.".to_string())?;
     if url.scheme() != "https"
         || !url.username().is_empty()
         || url.password().is_some()
@@ -14,7 +14,7 @@ pub(crate) fn validate_guide_source_url(raw: &str) -> Result<Url, String> {
                 | "www.inven.co.kr" | "talk.op.gg" | "mobalytics.gg" | "riven.saltyy.at")
         )
     {
-        return Err("Guide sources must use HTTPS on an allowed host without credentials.".to_string());
+        return Err("That guide link isn't allowed. Use an HTTPS link.".to_string());
     }
     Ok(url)
 }
@@ -28,13 +28,13 @@ pub(crate) fn open_in_browser(url: &Url) -> Result<(), String> {
     let (verb, file) = (wide("open"), wide(url.as_str()));
     let result = unsafe { ShellExecuteW(std::ptr::null_mut(), verb.as_ptr(), file.as_ptr(), std::ptr::null(), std::ptr::null(), SW_SHOWNORMAL) };
     // ShellExecuteW reports success as a value above 32.
-    if result as isize > 32 { Ok(()) } else { Err(format!("Windows could not open the link (code {}).", result as isize)) }
+    if result as isize > 32 { Ok(()) } else { { eprintln!("Open link failed: ShellExecute code {}", result as isize); Err("Couldn't open that link. Try again.".to_string()) } }
 }
 
 #[tauri::command]
 pub(crate) fn open_guide_source(url: String) -> Result<(), String> {
     // Launch the parsed URL, never the webview's raw string.
-    open_in_browser(&validate_guide_source_url(&url)?).map_err(|error| format!("Could not open the guide source: {error}"))
+    open_in_browser(&validate_guide_source_url(&url)?).map_err(|error| { eprintln!("Guide open failed: {error}"); "Couldn't open the guide. Try again.".to_string() })
 }
 
 #[cfg(test)]

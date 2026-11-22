@@ -1,3 +1,4 @@
+import answersData from "./answersData.json" with { type: "json" };
 // REAL PRO CATALOG — researched 2026-11-14 from Leaguepedia Cargo (PicksAndBansS7 + ScoreboardGames +
 // MatchScheduleGame joined on GameId) over 711 games: LCK 2026 Rounds 3-4 / Season Play-In / Season
 // Playoffs, LPL 2026 Split 3 / Grand Finals, LEC 2026 Summer + Summer Playoffs, LCS 2026 Summer +
@@ -9,8 +10,11 @@
 // in those games, and proExamples are real games from the set. Refresh: re-run the Cargo queries in
 // docs/research/comps-sources.md, rebuild the counts, and replace the affected entries.
 import type { Role, Variation } from "./compsModel";
+import type { ProRunePage } from "./proRunePages";
 export type DraftTag = Variation["slots"][number]["draftOrder"];
-export type Answer = { id: string; kind: "lane" | "draft"; threat: string[]; answer: string[]; reason: string; patch: string; games: number; lift?: number; sources: string[] };
+export type AnswerTrend = { patch: string; games: number; wins: number; winRate: number };
+export type AnswerProGame = { gameId: string; tournament: string; teams: string; winner: string; patch: string; vod: string | null; result: "Win" | "Loss" };
+export type Answer = { id: string; kind: "lane" | "draft"; role: Role; threat: string[]; answer: string[]; source: "pro" | "soloq"; patch: string; games: number; winRate: number; lift?: number; trend: AnswerTrend[]; why: string; tips: string[]; proGames: AnswerProGame[]; runePages?: ProRunePage[]; olderMeta: boolean; sources: string[]; lowConfidence?: boolean };
 export type ProMetaEntry = { champion: string; presence: number; pickPct: number; banPct: number; answers: string[]; sources: string[] };
 
 export const CHAMPION_IDS: Record<string, number> = {
@@ -121,45 +125,7 @@ v("kalista-renata-glasc","Engage","Kalista + Renata Glasc","Kalista and Renata G
   v("kai-sa-shen","Dive","Kai'Sa + Shen","Shen protects Kai'Sa's dive with his ult and taunt while she finishes the marked carry. Win fights by keeping Kai'Sa alive after she jumps in.",["Dive","Bot lane"],{early:56,mid:88,late:50},["Protect the carry","Poke"],[s("top","Hold for last","Ambessa","Vayne","Kled"),s("jungle","Pick early","Naafiri","Vi","Lee Sin"),s("mid","Flexible","Annie","Galio","Ryze"),s("bot","Pick together",["Kai'Sa"]),s("support","Pick together",["Shen"])],T("Dive one marked carry with Shen protecting Kai'Sa's landing, then fight together around her reset position.","Cover Kai'Sa's jump as a team, block peel on her landing, and guard her retreat path.","Only dive targets Shen can reach; Kai'Sa jumping beyond protection dies before dealing damage."),[{title:"BNK FEARX vs Kiwoom DRX · LCK 2026 Rounds 3-4", detail:"Game 3 · Vayne, Naafiri, Annie, Kai'Sa, Shen", result:"Win", vod:"Nvf8r8nA_XI", vodStart:7896},{title:"BNK FEARX vs T1 · LCK 2026 Season Playoffs", detail:"Game 3 · Kled, Lee Sin, Annie, Kai'Sa, Shen", result:"Win", vod:"LSCnrGz5-HU", vodStart:9818},{title:"Disguised vs FlyQuest · LCS 2026 Summer", detail:"Game 1 · Ambessa, Vi, Galio, Kai'Sa, Shen", result:"Loss", vod:"42lFVM4ivWA", vodStart:17022}],[SRC]),
 ];
 
-export const ANSWERS: Answer[] = [
-  { id:"rumble-ambessa", kind:"lane", threat:["Rumble"], answer:["Ambessa"], reason:"Ambessa dashes out of the Equalizer and all-ins before Rumble's second rotation.", patch:"26.20", games:34, sources:[SRC] },
-  { id:"jayce-ksante", kind:"lane", threat:["Jayce"], answer:["K'Sante"], reason:"K'Sante soaks the poke, then drags Jayce away from his team with his ultimate.", patch:"26.20", games:27, sources:[SRC] },
-  { id:"olaf-kled", kind:"lane", threat:["Olaf"], answer:["Kled"], reason:"Kled's hook applies grievous wounds to cut Olaf's lifesteal, and remounting survives the all-in.", patch:"26.20", games:18, sources:[SRC] },
-  { id:"ryze-syndra", kind:"lane", threat:["Ryze"], answer:["Syndra"], reason:"Syndra trades from longer range and bursts Ryze before his second rotation.", patch:"26.17", games:25, sources:[SRC] },
-  { id:"cassiopeia-syndra", kind:"lane", threat:["Cassiopeia"], answer:["Syndra"], reason:"Syndra plays outside Cassiopeia's poison range and answers her engage with a stun.", patch:"26.20", games:22, sources:[SRC] },
-  { id:"syndra-viktor", kind:"lane", threat:["Syndra"], answer:["Viktor"], reason:"Viktor zones Syndra off her spheres with his storm and matches her burst trade.", patch:"26.20", games:14, sources:[SRC] },
-  { id:"jarvan-leesin", kind:"lane", threat:["Jarvan IV"], answer:["Lee Sin"], reason:"Lee Sin kicks Jarvan IV out of his own Cataclysm or safeguards out and re-engages.", patch:"26.20", games:25, sources:[SRC] },
-  { id:"vi-jarvan", kind:"lane", threat:["Vi"], answer:["Jarvan IV"], reason:"Cataclysm walls in Vi after her ultimate lands while her team cannot follow through the terrain.", patch:"26.20", games:25, sources:[SRC] },
-  { id:"nocturne-leesin", kind:"lane", threat:["Nocturne"], answer:["Lee Sin"], reason:"Lee Sin marks Nocturne through Paranoia and kicks him off the dive target.", patch:"26.20", games:11, sources:[SRC] },
-  { id:"leesin-skarner", kind:"lane", threat:["Lee Sin"], answer:["Skarner"], reason:"Skarner drags Lee Sin with Impale before he can kick, and out-tanks the early duel.", patch:"26.20", games:19, sources:[SRC] },
-  { id:"ezreal-jhin", kind:"lane", threat:["Ezreal"], answer:["Jhin"], reason:"Jhin matches Ezreal's range, roots him with Deadly Flourish as he steps up, and wins with the fourth shot.", patch:"26.20", games:26, sources:[SRC] },
-  { id:"karma-bard", kind:"lane", threat:["Karma"], answer:["Bard"], reason:"Bard roams first, then returns with Tempered Fate or a wall stun to catch Karma before she can shield the lane.", patch:"26.17", games:24, sources:[SRC] },
-  { id:"milio-rakan", kind:"lane", threat:["Milio"], answer:["Rakan"], reason:"Rakan's knock-up lands before Milio can kick him away, and the all-in sticks.", patch:"26.20", games:18, sources:[SRC] },
-  { id:"renata-neeko", kind:"lane", threat:["Renata Glasc"], answer:["Neeko"], reason:"Neeko approaches in disguise and lands an empowered root through the wave before Renata Glasc can answer.", patch:"26.20", games:9, sources:[SRC] },
-  { id:"lucianmilio-xayahrakan", kind:"lane", threat:["Lucian","Milio"], answer:["Xayah","Rakan"], reason:"Xayah and Rakan all-in Lucian before Milio can peel: the knock-up sets up Xayah's feather recall root.", patch:"26.20", games:18, sources:[SRC] },
-  { id:"rumble-ksante", kind:"lane", threat:["Rumble"], answer:["K'Sante"], reason:"K'Sante soaks the Equalizer, then drags Rumble away from his team with his ultimate.", patch:"26.20", games:23, sources:[SRC] },
-  { id:"jarvan-xinzhao", kind:"lane", threat:["Jarvan IV"], answer:["Xin Zhao"], reason:"Xin Zhao duels Jarvan IV inside the Cataclysm and knocks his team away from the cage.", patch:"26.20", games:22, sources:[SRC] },
-  { id:"lucian-yunara", kind:"lane", threat:["Lucian"], answer:["Yunara"], reason:"Yunara matches Lucian's lane pressure and wins the longer trade once his dash is spent.", patch:"26.20", games:22, sources:[SRC] },
-  { id:"vi-pantheon", kind:"lane", threat:["Vi"], answer:["Pantheon"], reason:"Pantheon's shield blocks Vi's engage and his point-and-click stun wins the early duel.", patch:"26.20", games:20, sources:[SRC] },
-  { id:"ezreal-twistedfate-draft", kind:"draft", threat:["Ezreal"], answer:["Twisted Fate"], reason:"Twisted Fate's ultimate reveals Ezreal's reposition and lands a gold card where he blinks to.", patch:"26.17", games:10, lift:1.8, sources:[SRC] },
-  { id:"leesin-twistedfate-draft", kind:"draft", threat:["Lee Sin"], answer:["Twisted Fate"], reason:"A gold card is a point-and-click stun that stops Lee Sin's second dash cold.", patch:"26.20", games:11, lift:2.2, sources:[SRC] },
-  { id:"orianna-renekton-draft", kind:"draft", threat:["Orianna"], answer:["Renekton"], reason:"Renekton threatens the side lane Orianna wants to scale in, then dives her in teamfights.", patch:"26.17", games:11, lift:1.6, sources:[SRC] },
-  { id:"lucian-rakan-draft", kind:"draft", threat:["Lucian"], answer:["Rakan"], reason:"Rakan's knock-up starts the all-in before Lucian can dash out of it.", patch:"26.20", games:22, lift:2.8, sources:[SRC] },
-  { id:"lucian-lulu-draft", kind:"draft", threat:["Lucian"], answer:["Lulu"], reason:"Lulu polymorphs Lucian mid-dash and shields the target of his burst.", patch:"26.20", games:23, lift:2.0, sources:[SRC] },
-  { id:"milio-xayah-draft", kind:"draft", threat:["Milio"], answer:["Xayah"], reason:"Xayah pairs with Rakan and roots Milio's lane on the feather recall, before Milio can disengage.", patch:"26.17", games:11, lift:2.0, sources:[SRC] },
-  { id:"seraphine-sylas-draft", kind:"draft", threat:["Seraphine"], answer:["Sylas"], reason:"Sylas steals Seraphine's ultimate and turns her own engage back on her team.", patch:"26.20", games:10, lift:2.2, sources:[SRC] },
-  { id:"shen-corki-draft", kind:"draft", threat:["Shen"], answer:["Corki"], reason:"Corki out-ranges Shen in lane and pokes him down before Shen can close for a taunt.", patch:"26.15", games:13, lift:2.1, sources:[SRC] },
-  { id:"camille-skarner-draft", kind:"draft", threat:["Camille"], answer:["Skarner"], reason:"Skarner drags Camille away with Impale before her ultimate locks a carry down.", patch:"26.20", games:10, lift:1.6, sources:[SRC] },
-  { id:"cassiopeia-rell-draft", kind:"draft", threat:["Cassiopeia"], answer:["Rell"], reason:"Rell's Crash Down starts the fight at once, before Cassiopeia can stack poison damage.", patch:"26.20", games:11, lift:1.9, sources:[SRC] },
-  { id:"cassiopeia-shen-draft", kind:"draft", threat:["Cassiopeia"], answer:["Shen"], reason:"Shen's ultimate shields the dive target Cassiopeia is poisoning, then taunts her off.", patch:"26.15", games:15, lift:1.7, sources:[SRC] },
-  { id:"nocturne-renekton-draft", kind:"draft", threat:["Nocturne"], answer:["Renekton"], reason:"Renekton's point-and-click stun holds Nocturne when he dives in through Paranoia.", patch:"26.20", games:13, lift:2.6, sources:[SRC] },
-  { id:"nocturne-ahri-draft", kind:"draft", threat:["Nocturne"], answer:["Ahri"], reason:"Ahri's charm stops Nocturne's dive and her dashes outrun the fear tether.", patch:"26.20", games:10, lift:1.7, sources:[SRC] },
-  { id:"yunara-renata-draft", kind:"draft", threat:["Yunara"], answer:["Renata Glasc"], reason:"Renata Glasc's bailout keeps the dive target alive through Yunara's burst window.", patch:"26.20", games:12, lift:2.2, sources:[SRC] },
-  { id:"yunara-milio-draft", kind:"draft", threat:["Yunara"], answer:["Milio"], reason:"Milio's shields and kick keep Yunara's target alive through her all-in.", patch:"26.17", games:15, lift:1.6, sources:[SRC] },
-  { id:"ashe-milio-draft", kind:"draft", threat:["Ashe"], answer:["Milio"], reason:"Milio's ultimate cleanses Ashe's arrow off his carry and resets the fight.", patch:"26.20", games:14, lift:1.6, sources:[SRC] },
-  { id:"akali-renekton-draft", kind:"draft", threat:["Akali"], answer:["Renekton"], reason:"Renekton's point-and-click stun catches Akali out of her shroud dives.", patch:"26.20", games:10, lift:2.4, sources:[SRC] },
-  { id:"locke-ksante-draft", kind:"draft", threat:["Locke"], answer:["K'Sante"], reason:"K'Sante soaks the burst, then drags Locke out of position with his ult.", patch:"26.20", games:12, lift:1.5, sources:[SRC] },
-];
+export const ANSWERS: Answer[] = answersData as Answer[];
 
 export const PRO_META: ProMetaEntry[] = [
   { champion:"Nocturne", presence:88, pickPct:17, banPct:71, answers:["Lee Sin","Renekton"], sources:[SRC] },

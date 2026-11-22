@@ -38,7 +38,7 @@ pub fn default_interface() -> Result<Option<LanInterface>, String> {
         return Ok(None);
     }
     if first != ERROR_BUFFER_OVERFLOW {
-        return Err(format!("Could not inspect network adapters (Windows error {first})."));
+        return Err({ eprintln!("Network adapter check failed: Windows error {first}"); "Couldn't read your network. Restart Swapper and retry.".to_string() });
     }
 
     let mut storage = vec![0usize; (size as usize).div_ceil(std::mem::size_of::<usize>())];
@@ -53,7 +53,7 @@ pub fn default_interface() -> Result<Option<LanInterface>, String> {
         )
     };
     if result != 0 {
-        return Err(format!("Could not inspect network adapters (Windows error {result})."));
+        return Err({ eprintln!("Network adapter check failed: Windows error {result}"); "Couldn't read your network. Restart Swapper and retry.".to_string() });
     }
 
     let mut candidates = Vec::new();
@@ -138,7 +138,7 @@ fn active_physical_adapter_is_wifi() -> Result<Option<bool>, String> {
         return Ok(None);
     }
     if first != ERROR_BUFFER_OVERFLOW {
-        return Err(format!("Could not inspect network adapters (Windows error {first})."));
+        return Err({ eprintln!("Network adapter check failed: Windows error {first}"); "Couldn't read your network. Restart Swapper and retry.".to_string() });
     }
 
     let mut storage = vec![0usize; (size as usize).div_ceil(std::mem::size_of::<usize>())];
@@ -153,7 +153,7 @@ fn active_physical_adapter_is_wifi() -> Result<Option<bool>, String> {
         )
     };
     if result != 0 {
-        return Err(format!("Could not inspect network adapters (Windows error {result})."));
+        return Err({ eprintln!("Network adapter check failed: Windows error {result}"); "Couldn't read your network. Restart Swapper and retry.".to_string() });
     }
 
     let mut selected: Option<(bool, u32, bool)> = None;
@@ -423,11 +423,11 @@ pub fn run_elevated(exe: &str, args: &str, wait_ms: u32) -> Result<u32, ElevateE
 pub fn request_private_app_rule() -> Result<(), String> {
     match run_elevated(&current_executable()?, ALLOW_FIREWALL_ARG, 60_000) {
         Ok(0) => Ok(()),
-        Ok(_) => Err("Could not add the Windows Firewall rule.".into()),
+        Ok(_) => Err("Couldn't add the firewall rule. Try again with permission.".into()),
         Err(ElevateError::Cancelled) => {
-            Err("Windows Firewall permission was not given, so LAN access stays off.".into())
+            Err("Permission wasn't given, so phone access stays off.".into())
         }
-        Err(ElevateError::Failed) => Err("Could not ask Windows for firewall permission.".into()),
+        Err(ElevateError::Failed) => Err("Couldn't ask Windows for permission. Try again.".into()),
     }
 }
 

@@ -113,7 +113,7 @@
 .player-more span { margin-left: 10px; color: var(--ui-text-3); font-size: 12px; }
 .player-page button:focus-visible { outline: 2px solid var(--ui-brand); outline-offset: 2px; }
 @media (min-width: 1440px) {
-  .player-layout { grid-template-columns: minmax(0, 1fr) 340px; grid-template-areas: 'hero side' 'notices side' 'performance side' 'games side'; grid-template-rows: auto auto auto 1fr; row-gap: 18px; }
+  .player-layout { grid-template-columns: minmax(0, 1fr) clamp(340px, 17vw, 440px); grid-template-areas: 'hero side' 'notices side' 'performance side' 'games side'; grid-template-rows: auto auto auto 1fr; row-gap: 18px; }
   .player-hero { grid-area: hero; }
   .player-side { grid-area: side; grid-template-columns: minmax(0, 1fr); }
   .player-performance { grid-area: performance; }
@@ -140,3 +140,10 @@
 .player-live-badge { margin-left: 12px; cursor: pointer; vertical-align: middle; }
 .player-live-game { display: grid; gap: 16px; min-width: 0; }
 .player-live-game > h2 { margin: 0; font-size: 20px; }
+.player-match-items { display: none; }
+/* Wide lists also show the item build, which the row already carries. */
+.player-match-list { container: player-games / inline-size; }
+@container player-games (min-width: 1000px) {
+  .player-match-open { grid-template-columns: 36px minmax(140px, 1.5fr) minmax(100px, 1fr) 72px auto minmax(100px, 1fr); }
+  .player-match-items { display: flex; gap: 3px; --slot: 24px; }
+}

@@ -195,7 +195,7 @@ export function RemoteSettings({ remote, transport, onTransportChange, onToggle,
               ? "Install Tailscale to use it. LAN still works on a Private network."
               : !remote.tailscaleRunning
                 ? "Connect Tailscale on this PC and your phone."
-                : remote.message ?? "Tailscale Serve could not be started."}</p>
+                : remote.message ?? "Tailscale couldn't start. Try again."}</p>
           </>
         )}
         {transport === "lan" && <>

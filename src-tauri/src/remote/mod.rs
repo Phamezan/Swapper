@@ -154,28 +154,24 @@ fn load_route_claim_at(path: &Path) -> Result<Option<OwnedRoute>, String> {
     match fs::read(path) {
         Ok(bytes) => serde_json::from_slice(&bytes)
             .map(Some)
-            .map_err(|e| format!("Could not read Swapper's Tailscale route record: {e}")),
+            .map_err(|e| { eprintln!("Tailscale route record read failed: {e}"); "Couldn't read Tailscale settings. Restart Swapper.".to_string() }),
         Err(e) if e.kind() == std::io::ErrorKind::NotFound => Ok(None),
-        Err(e) => Err(format!(
-            "Could not read Swapper's Tailscale route record: {e}"
-        )),
+        Err(e) => Err({ eprintln!("Tailscale route record read failed: {e}"); "Couldn't read Tailscale settings. Restart Swapper.".to_string() }),
     }
 }
 
 fn save_route_claim_at(path: &Path, claim: &OwnedRoute) -> Result<(), String> {
-    let parent = path.parent().ok_or("Invalid Tailscale route record path")?;
-    fs::create_dir_all(parent).map_err(|e| e.to_string())?;
+    let parent = path.parent().ok_or("Couldn't save Tailscale settings. Try again.")?;
+    fs::create_dir_all(parent).map_err(|e| { eprintln!("Tailscale settings save failed: {e}"); "Couldn't save Tailscale settings. Try again.".to_string() })?;
     let pending = parent.join(format!("remote-route-{}.tmp", uuid::Uuid::new_v4()));
     fs::write(
         &pending,
-        serde_json::to_vec(claim).map_err(|e| e.to_string())?,
+        serde_json::to_vec(claim).map_err(|e| { eprintln!("Tailscale settings save failed: {e}"); "Couldn't save Tailscale settings. Try again.".to_string() })?,
     )
-    .map_err(|e| e.to_string())?;
+    .map_err(|e| { eprintln!("Tailscale settings save failed: {e}"); "Couldn't save Tailscale settings. Try again.".to_string() })?;
     if let Err(e) = fs::rename(&pending, path) {
         let _ = fs::remove_file(&pending);
-        return Err(format!(
-            "Could not save Swapper's Tailscale route record: {e}"
-        ));
+        eprintln!("Tailscale route record save failed: {e}"); return Err("Couldn't save Tailscale settings. Try again.".into());
     }
     Ok(())
 }
@@ -579,7 +575,7 @@ impl RemoteCore {
                             status.message = None;
                         } else {
                             status.state = RemoteState::Failed;
-                            status.message = Some("Tailscale is connected but did not report a MagicDNS name, and no private LAN address is available.".into());
+                            status.message = Some("Tailscale gave no address, and no home network was found.".into());
                         }
                     });
                     return;
@@ -612,7 +608,7 @@ impl RemoteCore {
                         if route_is_available(&route, ts.dns_name.as_deref().unwrap_or_default(), owned.as_ref()) {
                             Ok(())
                         } else {
-                            Err("Tailscale's HTTPS root route is already in use. Swapper will not replace it.".into())
+                            Err("That Tailscale address is taken. Swapper left it alone.".into())
                         }
                     })
                     .and_then(|()| save_route_claim_at(&route_claim_path()?, &OwnedRoute {

@@ -80,7 +80,7 @@ export function TierList({ mode, position, tier, onLoad, onLoadDuos, onPick }: P
     return (
       <section className="tier-list" aria-label="Tier list">
         {toggle}
-        <p className="runes-note">The {duos ? "duo" : "tier"} list is unavailable right now.</p>
+        <p className="runes-note">This list is unavailable right now. Try another rank.</p>
       </section>
     );
   }

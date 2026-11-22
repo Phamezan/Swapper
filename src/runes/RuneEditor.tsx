@@ -228,7 +228,7 @@ export function RuneEditor({ mode, view, selection, busy, focusGrid, onChange }:
     view.trees.find((tree) => tree.id !== primaryTree?.id);
 
   if (!primaryTree || !secondaryTree) {
-    return <p className="runes-note">The rune grid is unavailable.</p>;
+    return <p className="runes-note">Runes couldn't load. Try again.</p>;
   }
 
   function choosePrimaryTree(tree: RuneTree) {

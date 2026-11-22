@@ -66,7 +66,7 @@ export default function PatchNotes() {
   ), [notes, champions]);
 
   if (!notes) return <div className="pn-page">
-    {error ? <EmptyState title="Patch notes unavailable"><p>{error}</p>
+    {error ? <EmptyState title="Couldn't load patch notes"><p>{error}</p>
       <button className="pn-refresh" onClick={() => void load(true)} disabled={refreshing}>Try again</button>
     </EmptyState> : <Skeleton label="Loading patch notes" rows={3} height={170} />}
   </div>;
@@ -92,8 +92,8 @@ export default function PatchNotes() {
       {notes.availablePatches.map(({ version }, i) => <PatchCard key={version} version={version} current={i === 0}
         selected={version === notes.patch} disabled={refreshing} onSelect={() => { if (version !== notes.patch) void load(false, version); }} />)}
     </div>
-    {notes.stale && <Notice tone="warn">Showing the last downloaded copy. Live notes could not be refreshed.</Notice>}
-    {error && <Notice tone="warn">Could not refresh patch notes. {error}</Notice>}
+    {notes.stale && <Notice tone="warn">Showing saved notes. New notes couldn't load.</Notice>}
+    {error && <Notice tone="warn">Couldn't refresh notes. {error}</Notice>}
 
     <div key={notes.patch} className="pn-layout">
       <div className="pn-content">
@@ -170,6 +170,7 @@ function ScrollRail({ checkpoints }: { checkpoints: Checkpoint[] }) {
       if (atStart) index = 0;
       else if (scroller.scrollTop + scroller.clientHeight >= scroller.scrollHeight - 2) index = checkpoints.length - 1;
       const fraction = !atStart && index < tops.length - 1 ? Math.max(0, Math.min(1, -tops[index] / Math.max(1, tops[index + 1] - tops[index]))) : 0;
+      if (!buttons[index]) return;
       const start = buttons[index].offsetTop + buttons[index].offsetHeight / 2;
       const next = buttons[index + 1];
       const y = start + (next ? next.offsetTop + next.offsetHeight / 2 - start : 0) * fraction;
@@ -251,14 +252,14 @@ function EntryCard({ id, entry, championId, itemId }: { id: string; entry: Patch
     return () => { live = false; };
   }, [championId, hasSpells, hasPassive]);
   const kind = classifyChange(entry);
-  return <article id={id} className={`pn-entry is-${kind}${championId != null ? " is-champion" : ""}`} tabIndex={-1} aria-label={entry.name || "Bugfixes"}>
+  return <article id={id} className={`pn-entry is-${kind}${championId != null ? " is-champion" : ""}`} tabIndex={-1} aria-label={entry.name || "Change"}>
     {(entry.name || entry.context) && <header className="pn-entry-head">
       {art && <img className="pn-entry-art" src={art} alt="" draggable={false} />}
       <div className="pn-entry-identity">
         {championId != null && <ChampionIcon id={championId} name={entry.name} mode="desktop" />}
         {championId == null && itemId != null && <ItemIcon id={itemId} name={entry.name} mode="desktop" />}
-        {championId == null && itemId == null && <span className="pn-entry-letter" aria-hidden>{entry.name.slice(0, 1)}</span>}
-        <h3>{entry.name}</h3>
+        {championId == null && itemId == null && entry.name && <span className="pn-entry-letter" aria-hidden>{entry.name.slice(0, 1)}</span>}
+        {entry.name && <h3>{entry.name}</h3>}
         {entry.name && <span className={`pn-tag is-${kind}`}><span aria-hidden>{KIND_SYMBOL[kind]}</span> {KIND_LABEL[kind]}</span>}
       </div>
       {entry.context && <p className="pn-context">{entry.context}</p>}
@@ -271,11 +272,12 @@ function EntryCard({ id, entry, championId, itemId }: { id: string; entry: Patch
           <ul>{group.lines.map((line, li) => <li key={li} className="pn-line">
             {line.label && <span className="pn-line-label">{line.label}</span>}
             {line.before != null || line.after != null ? <span className="pn-change">
-              {line.before != null && <span className="pn-before"><span className="pn-sr">Before: </span>{line.before}</span>}
-              {line.before != null && line.after != null && <span className="pn-arrow" aria-hidden>→</span>}
+              {line.before?.trim() && <span className="pn-before"><span className="pn-sr">Before: </span>{line.before}</span>}
+              {line.before?.trim() && line.after != null && <span className="pn-arrow" aria-hidden>→</span>}
               {line.after != null && <strong className="pn-after"><span className="pn-sr">After: </span>{changeSegments(line).map((part, i) =>
                 <Tooltip key={i} label={part.tone === "buff" ? "Better" : part.tone === "nerf" ? "Worse" : undefined}><span className={`pn-number is-${part.tone}`}>{part.text}</span></Tooltip>
               )}</strong>}
+              {line.note && <span className="pn-line-note">{line.note}</span>}
             </span> : <span className="pn-line-text">{line.text}</span>}
           </li>)}</ul>
         </div>;

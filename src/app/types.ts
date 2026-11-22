@@ -76,7 +76,15 @@ export type AppState = {
   notificationsEnabled: boolean;
   readyCheckNotifications: boolean;
   koreanFont: boolean;
+  customMods: boolean;
+  customModsRiskAck: boolean;
+  modsRegionBlocked: boolean;
   ltkInstalled: boolean;
+  ltkVersion: string | null;
+  ltkOutdated: boolean;
+  ltkLatestVersion: string | null;
+  ltkNeedsSetup: boolean;
+  ltkNotice: string | null;
   remote: RemoteStatus;
 };
 export type ChampSelectStatus = {

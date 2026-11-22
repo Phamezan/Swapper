@@ -71,12 +71,12 @@ fn lock_ready(session: &Value, champion_id: i64, kind: &'static str) -> Result<c
         return Err(if kind == "ban" { "It is your pick turn, not your ban." } else { "It is your ban turn, not your pick." }.into());
     }
     if action["championId"].as_i64() != Some(champion_id) || champion_id <= 0 {
-        return Err("Your hovered champion changed. Check it and try again.".into());
+        return Err("Your champion changed. Check it and try again.".into());
     }
     Ok(crate::remote::PickConfirmation {
-        game_id: session["gameId"].as_i64().ok_or("Draft identity is unavailable.")?,
-        cell_id: local.ok_or("Your draft slot is unavailable.")?,
-        action_id: action["id"].as_i64().ok_or("Draft action is unavailable.")?,
+        game_id: session["gameId"].as_i64().ok_or("This draft couldn't load. Try again.")?,
+        cell_id: local.ok_or("Your draft slot couldn't load. Try again.")?,
+        action_id: action["id"].as_i64().ok_or("That action couldn't load. Try again.")?,
         champion_id,
         kind,
     })

@@ -66,19 +66,19 @@ pub fn normalize_asset_path(path: &str) -> Option<String> {
 
 pub fn parse_perks(body: &str) -> Result<HashMap<i64, PerkAsset>, RuneError> {
     let perks: Vec<PerkAsset> = serde_json::from_str(body)
-        .map_err(|e| RuneError::unavailable(format!("Could not read perk data: {e}")))?;
+        .map_err(|e| RuneError::unavailable({ eprintln!("Perk data read failed: {e}"); "Couldn't load runes. Try again.".to_string() }))?;
     Ok(perks.into_iter().map(|perk| (perk.id, perk)).collect())
 }
 
 pub fn parse_styles(body: &str) -> Result<Vec<PerkStyleAsset>, RuneError> {
     let file: PerkStylesFile = serde_json::from_str(body)
-        .map_err(|e| RuneError::unavailable(format!("Could not read rune tree data: {e}")))?;
+        .map_err(|e| RuneError::unavailable({ eprintln!("Rune tree read failed: {e}"); "Couldn't load runes. Try again.".to_string() }))?;
     Ok(file.styles)
 }
 
 pub fn parse_recommended_pages(body: &str) -> Result<Vec<RecommendedPage>, RuneError> {
     serde_json::from_str(body)
-        .map_err(|e| RuneError::unavailable(format!("Could not read recommended pages: {e}")))
+        .map_err(|e| RuneError::unavailable({ eprintln!("Recommended pages read failed: {e}"); "Couldn't load runes. Try again.".to_string() }))
 }
 
 #[derive(Debug, Clone, Deserialize)]

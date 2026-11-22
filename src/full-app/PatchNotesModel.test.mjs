@@ -1,6 +1,6 @@
 import { test } from "node:test";
 import { strict as assert } from "node:assert";
-import { abilityHeading, bugfixLines, championIdFor, championIdInText, changeSegments, classifyChange, formatPatchDate, patchCounts, riftSections } from "./PatchNotesModel.ts";
+import { splitAfterNote, abilityHeading, bugfixLines, championIdFor, championIdInText, changeSegments, classifyChange, formatPatchDate, patchCounts, riftSections } from "./PatchNotesModel.ts";
 
 const entry = (name, context) => ({ name, context, groups: [{ title: "Base Stats", lines: [{ label: "Mana", before: "1", after: "2", text: null }] }], notes: [] });
 
@@ -22,9 +22,12 @@ test("passive headers use Passive and fall back without inventing a name", () =>
   assert.equal(abilityHeading(null, []), null);
 });
 
-test("classifies from one-sided wording; mixed wording falls back to the line count", () => {
+test("clear line numbers win over wording; wording only decides neutral lines", () => {
   assert.equal(classifyChange(entry("Azir", "We are buffing his mana.")), "buff");
-  assert.equal(classifyChange(entry("Caitlyn", "It's time to nerf her.")), "nerf");
+  assert.equal(classifyChange(entry("Caitlyn", "It's time to nerf her.")), "buff", "the Mana 1 → 2 line wins over the wording");
+  const neutral = context => ({ name: "Caitlyn", context, notes: [], groups: [{ title: "Q", lines: [{ label: "Mystery Stat", before: "1", after: "2", text: null }] }] });
+  assert.equal(classifyChange(neutral("It's time to nerf her.")), "nerf");
+  assert.equal(classifyChange(neutral("We are buffing his mana.")), "buff");
   // Mixed wording: the one changed line (Mana 1 → 2) is a buff.
   assert.equal(classifyChange(entry("Caitlyn", "A buff to Q, a nerf to passive.")), "buff");
   assert.equal(classifyChange({ ...entry("X", null), groups: [] }), "adjust");
@@ -503,9 +506,9 @@ test("unknown or ambiguous labels, unlabeled lines and unchanged values remain n
   assert.deepEqual(colored(line("Damage", "100", "100")), []);
 });
 
-test("Riot's explicit verdict overrides numeric aggregation; summary counts use the fallback", () => {
+test("numeric aggregation wins over explicit verdict wording; summary counts use the numbers", () => {
   const reduced = { name: "Lee Sin", context: null, notes: [], groups: [{ title: "R", lines: [line("Kick Damage", "175 / 400 / 625 (+200% bonus AD)", "150 / 350 / 550 (+200% bonus AD)")] }] };
-  assert.equal(classifyChange({ ...reduced, context: "We are buffing his other tools." }), "buff");
+  assert.equal(classifyChange({ ...reduced, context: "We are buffing his other tools." }), "nerf", "the reduced kick numbers win");
   assert.equal(classifyChange({ ...reduced, context: "A buff here and a nerf there." }), "nerf", "mixed wording falls back to the numbers");
   assert.deepEqual(patchCounts({ sections: [{ title: "Champions", entries: [reduced] }] }), { buffs: 0, nerfs: 1, adjusts: 0, champions: 1, items: 0, lines: 1 });
 });
@@ -543,7 +546,7 @@ test("matches champion names across punctuation and aliases", () => {
 
 test("counts champions by kind and every change line", () => {
   const notes = { sections: [
-    { title: "Champions", entries: [entry("Azir", "buffing"), entry("Caitlyn", "nerf her")], paragraphs: [] },
+    { title: "Champions", entries: [entry("Azir", "buffing"), { ...entry("Caitlyn", "nerf her"), groups: [{ title: "Q", lines: [{ label: "Cooldown", before: "10s", after: "12s", text: null }] }] }], paragraphs: [] },
     { title: "Items", entries: [entry("Dawncore", "buffing")], paragraphs: [] },
     { title: "Bugfixes & QoL Changes", entries: [{ name: "", context: null, groups: [{ title: null, lines: [{ label: null, before: null, after: null, text: "Fixed." }] }], notes: [] }], paragraphs: [] },
   ] };
@@ -583,4 +586,100 @@ test("filters mode-specific subsections and mixed bugfix lists, dropping empty s
   assert.deepEqual(filtered[1].paragraphs, ["Fixed jungle pathing."]);
   assert.deepEqual(filtered[1].entries[0].notes, []);
   assert.deepEqual(filtered[1].entries[0].groups, [{ title: null, lines: [{ text: "Fixed a ward vision bug." }] }]);
+});
+
+test("Master Yi 'tapping him down' reads as a nerf and the trailing reminder splits off", () => {
+  const after = "35 / 70 / 105 / 140 / 175 (+105% AD). Reminder that this can also Critically Strike for bonus damage.";
+  const yi = {
+    name: "Master Yi",
+    context: "We've been keeping an eye on Master Yi for a few patches as the buffs have settled. We think he's still a bit strong, and are tapping him down.",
+    notes: [],
+    groups: [{ title: "Q - Alpha Strike", lines: [
+      { label: "Damage", before: "20 / 40 / 60 / 80 / 100 (+70% AD)", after: "20 / 40 / 60 / 80 / 100 (+60% AD)", text: null },
+      { label: "Maximum Single Target Damage", before: "35 / 70 / 105 / 140 / 175 (+122.5% AD)", after, text: null },
+    ] }],
+  };
+  assert.equal(classifyChange(yi), "nerf");
+  const split = splitAfterNote(yi.groups[0].lines[1]);
+  assert.equal(split.after, "35 / 70 / 105 / 140 / 175 (+105% AD)");
+  assert.equal(split.note, "Reminder that this can also Critically Strike for bonus damage.");
+  assert.equal(splitAfterNote({ label: "Ratio", before: "0.5", after: "0.6", text: null }).note, undefined);
+});
+
+test("a bare Mana line under an ability is a cost: flat 45 from 45-65 is a buff", () => {
+  const champ = title => ({ title: "Champions", paragraphs: [], entries: [{ name: "Taliyah", context: null, notes: [], groups: [{ title, lines: [
+    { label: "Mana", before: "45 / 50 / 55 / 60 / 65", after: "45", text: null },
+  ] }] }] });
+  const [ability] = riftSections([champ("W - Path Maker")]);
+  assert.equal(classifyChange(ability.entries[0]), "buff");
+  assert.equal(changeSegments(ability.entries[0].groups[0].lines[0]).find(part => part.text === "45").tone, "buff");
+  const [base] = riftSections([champ("Base Stats")]);
+  assert.equal(classifyChange(base.entries[0]), "nerf");
+});
+
+const champEntry = (name, context, lines) => ({ name, context, notes: [], groups: [{ title: "Q", lines }] });
+const dmg = (before, after) => line("Damage", before, after);
+for (const [name, context, lines, expected] of [
+  ["Bard", "After pro focused nerfs earlier, we're giving him a little boost.", [line("Damage", "80 / 120 / 160 / 200 / 240 (+80% AP)", "80 / 125 / 170 / 215 / 260 (+100% AP)")], "buff"],
+  ["Nunu & Willump", "When we nerfed Hextech Rocketbelt, we're restoring some of that damage.", [dmg("100", "120")], "buff"],
+  ["Neeko", "Rocketbelt's adjustment will land as a small nerf for Neeko, so we're giving her some minor compensation.", [dmg("100", "120")], "buff"],
+  ["Smolder", "With the Cleaver ranged nerf, we're giving him some power back.", [dmg("100", "120")], "buff"],
+  ["Aatrox", "Sundered Sky nerfs hit him, so we're giving him a bump.", [dmg("100", "120")], "buff"],
+  ["Aurora", "We had to nerf Rocketbelt, so we're giving her more power.", [dmg("100", "120")], "buff"],
+  ["Kassadin", "He has been weak since our earlier nerfs. His Q should feel more punchy.", [dmg("100", "120")], "buff"],
+  ["Cho'Gath", "Hextech Rocketbelt nerfs hurt him, so we are making it up to him.", [dmg("100", "120")], "buff"],
+  ["Zaahen", "This might read as a nerf, but we're here to give Zaahen some love!", [dmg("100", "120")], "buff"],
+  ["Graves", "He received a number of indirect buffs. We are looking to soften his power.", [line("Damage Ratio", "(+80% AD)", "(+60% AD)")], "nerf"],
+  ["Zeri", "With the recent Runaan's Hurricane and Yun Tal Wildarrows buffs, we are pulling some power out.", [line("Damage Ratio", "(+80% AD)", "(+60% AD)")], "nerf"],
+  ["Lucian", "We're looking to adjust the tuning to strike a balance.", [dmg("100", "120"), line("Cooldown", "10s", "12s")], "adjust"],
+  ["Mel", "This midscope rework shifts her kit around.", [dmg("100", "120")], "adjust"],
+]) {
+  test(`${name}: real context wording does not override the line direction (${expected})`, () => {
+    assert.equal(classifyChange(champEntry(name, context, lines)), expected);
+  });
+}
+
+test("predicative context decides only neutral lines and ignores other-entity mentions", () => {
+  const neutral = context => champEntry("Test", context, [line("Mystery Stat", "1", "2")]);
+  assert.equal(classifyChange(neutral("We're giving him a little boost.")), "buff");
+  assert.equal(classifyChange(neutral("We are pulling some power out.")), "nerf");
+  assert.equal(classifyChange(neutral("With the recent Runaan's Hurricane buffs this patch.")), "adjust");
+  assert.equal(classifyChange(neutral("After the earlier nerfs to Hextech Rocketbelt.")), "adjust");
+});
+
+test("Mid-Patch Updates map into Champions", () => {
+  const sections = [{ title: "Mid-Patch Updates", paragraphs: [], entries: [champEntry("Varus", null, [line("Bonus AD", "1.1", "1.4")])] }];
+  const filtered = riftSections(sections);
+  assert.deepEqual(filtered.map(s => s.title), ["Champions"]);
+  assert.equal(filtered[0].entries[0].name, "Varus");
+});
+
+test("mode mentions in lines and context do not drop Rift changes", () => {
+  const sections = [{ title: "Champions", paragraphs: [], entries: [
+    { name: "Irelia", context: null, notes: [], groups: [{ title: "R", lines: [line("Ability Power Ratio", "70%", "100% (It is already 100% in Arena, so this is standardizing the value)")] }] },
+    { name: "Master Yi", context: "He is also strong in Arena, but this targets the Rift.", notes: [], groups: [{ title: "Q", lines: [dmg("100", "90")] }] },
+  ] }];
+  const [champions] = riftSections(sections);
+  assert.equal(champions.entries.length, 2);
+  assert.equal(champions.entries[0].groups[0].lines.length, 1);
+  assert.equal(champions.entries[1].context, "He is also strong in Arena, but this targets the Rift.");
+});
+
+test("stack modifier labels let damage and duration keywords win", () => {
+  assert.equal(verdict(line("Stack Bonus Damage", "18 / 26 / 34 / 42 / 50", "15 / 22 / 29 / 36 / 43")), "nerf");
+  assert.deepEqual(colored(line("Seething Strike Stack Duration", "3s", "4s")), [["4", "buff"]]);
+  assert.equal(verdict(line("Seething Strike Stack Duration", "3s", "4s")), "buff");
+});
+
+test("added trailing parentheticals and ranked ratios still compare", () => {
+  assert.equal(verdict(line("Tibbers Health", "1150-3500 (+50% AP)", "1275-4000 (+50% AP) (+150% Bonus HP)")), "buff");
+  assert.equal(verdict(line("Ability Power Ratio", "(+60% AP)", "(+60/65/70/75/80% AP)")), "buff");
+  assert.deepEqual(colored(line("Missile Speed", "3800", "3200 (takes .047s longer to arrive)")), [["3200", "nerf"]]);
+  assert.equal(verdict(line("Missile Speed", "3800", "3200 (takes .047s longer to arrive)")), "nerf");
+});
+
+test("Retaliation, Life Steal and AR/AS/MS abbreviations have a direction", () => {
+  assert.equal(verdict(line("Retaliation", "35 / 40 / 45 / 50 / 55", "35 / 45 / 55 / 65 / 75 (+10% AP)")), "buff");
+  assert.equal(verdict(line("Life Steal", "12/18/24%", "10/15/20%")), "nerf");
+  for (const label of ["AR", "AS", "MS"]) assert.deepEqual(colored(line(label, "10", "20")), [["20", "buff"]], label);
 });

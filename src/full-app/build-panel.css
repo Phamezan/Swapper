@@ -36,8 +36,8 @@
 /* Apply all is the one real action: bold uppercase, pushed to the right of the bar. */
 .fa-frame .fa-build-section .cs-apply-bar .fa-primary { margin-left: auto; min-height: 38px; padding: 8px 18px; font-size: 12.5px; font-weight: 750; letter-spacing: .07em; text-transform: uppercase; }
 .fa-frame .fa-build-section .cs-auto-apply { margin-left: 8px; font-size: 13px; }
-.fa-frame .fa-build-section .cs-build-content > .ui-notice b { font-weight: 650; }
-.fa-frame .fa-build-section .cs-build-content > .ui-notice .fa-secondary { min-height: 34px; padding: 5px 14px; font-size: 13px; }
+.fa-frame .fa-build-section .cs-build-head > .ui-notice b { font-weight: 650; }
+.fa-frame .fa-build-section .cs-build-head > .ui-notice .fa-secondary { min-height: 34px; padding: 5px 14px; font-size: 13px; }
 
 /* ---------- Workspace: runes | spells + skill order over the item build ---------- */
 .fa-frame .fa-build-section .cs-build-grid { grid-template-columns: minmax(0, 1fr) minmax(0, 1.15fr); grid-template-areas: "runes skill" "runes items"; grid-template-rows: auto 1fr; border-radius: var(--fa-radius); }
@@ -118,11 +118,18 @@
 .fa-frame .cs-list-tabs button[aria-pressed="true"] { border-bottom-color: var(--ui-brand); color: var(--text-primary); }
 .cs-list-tabs small { margin-left: 6px; color: var(--text-muted); font-weight: 500; }
 /* Auto-apply and Apply all share the build title's row. */
-.fa-frame .fa-build-section .cs-build-content { display: grid; grid-template-columns: minmax(0, 1fr) auto; align-items: center; }
-.fa-frame .fa-build-section .cs-build-content > * { grid-column: 1 / -1; }
-.fa-frame .fa-build-section .cs-build-content > .cs-build-selected { grid-column: 1; }
-.fa-frame .fa-build-section .cs-build-content > .cs-apply-bar { grid-column: 2; margin: 0 0 0 16px; gap: 16px; }
-.fa-frame .fa-build-section .cs-build-content > .cs-build-grid { margin-top: 12px; }
+.fa-frame .fa-build-section .cs-build-head { display: grid; grid-template-columns: minmax(0, 1fr) auto; align-items: center; }
+.fa-frame .fa-build-section .cs-build-head > * { grid-column: 1 / -1; }
+.fa-frame .fa-build-section .cs-build-head { margin-bottom: 12px; }
+.fa-frame .fa-build-section .cs-build-head > .cs-build-selected { grid-column: 1; }
+.fa-frame .fa-build-section .cs-build-head > .cs-apply-bar { grid-column: 2; margin: 0 0 0 16px; gap: 16px; }
+/* Row 1 is the title/apply/notice header, row 2 holds both cards so Builds and Runes start and end together.
+   The list gets height:0 + min-height:100% so its own length never sizes the row; it scrolls inside instead. */
+.fa-frame .fa-build-section.cs-build-browser { grid-template-rows: auto minmax(380px, 1fr); align-items: stretch; }
+.fa-frame .fa-build-section .cs-build-list { grid-column: 1; grid-row: 2; position: static; max-height: none; overflow-y: auto; scrollbar-width: thin; height: 0; min-height: 100%; }
+.fa-frame .fa-build-section .cs-build-content { display: contents; }
+.fa-frame .fa-build-section .cs-build-head { grid-column: 2; grid-row: 1; }
+.fa-frame .fa-build-section .cs-build-grid { grid-column: 2; grid-row: 2; margin: 0; }
 /* Which parts of a pro build to use: a segmented control beside the title. */
 .cs-pro-part { align-self: center; align-items: center; margin-left: 6px; }
 .cs-pro-part > small { padding: 0 8px 0 10px; color: var(--text-muted); font-size: 12px; }
@@ -179,8 +186,13 @@
 /* The workspace stacks by its own width, not the window's: the build list beside it is fixed, so a
    window between the minimum and full screen used to squeeze runes and skill order into two thin columns.
    Champion and Matchups pages only: the Draft page has its own fixed layout. */
-.fa-frame .champion-tools .fa-build-section .cs-build-content { container: build-content / inline-size; }
-@container build-content (max-width: 820px) {
+.fa-frame .champion-tools .fa-build-section.cs-build-browser { container: build-browser / inline-size; }
+@container build-browser (max-width: 1170px) {
   .fa-frame .champion-tools .fa-build-section .cs-build-grid { grid-template-columns: 1fr; grid-template-areas: "runes" "skill" "items"; }
   .fa-frame .champion-tools .fa-build-section .cs-build-grid > div + div, .fa-frame .champion-tools .fa-build-section .cs-build-grid > .fa-item-area { border-left: 0; border-top: 1px solid var(--ui-line-1); }
 }
+.fa-frame .fa-build-section .cs-build-list h3.cs-pro-head { display: flex; align-items: center; justify-content: space-between; gap: 8px; }
+.fa-frame .cs-pro-kind { display: inline-flex; padding: 2px; border: 1px solid var(--ui-line-1); border-radius: 8px; background: var(--ui-surface-2, rgb(255 255 255 / .03)); }
+.fa-frame .cs-pro-kind button { height: 22px; min-height: 0; padding: 0 9px; border: 0; border-radius: 6px; background: none; box-shadow: none; color: var(--text-muted); font: inherit; font-size: 12px; font-weight: 600; cursor: pointer; }
+.fa-frame .cs-pro-kind button[aria-pressed="true"] { background: var(--ui-surface-3, rgb(255 255 255 / .08)); color: var(--text-primary); }
+.fa-frame .cs-pro-kind button:focus-visible { outline: 2px solid var(--ui-brand); outline-offset: 1px; }

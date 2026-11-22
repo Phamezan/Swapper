@@ -24,14 +24,14 @@ impl AccountRead {
         use tauri::Manager;
         let guard = app.state::<crate::AppState>().switch_guard.clone();
         let epoch = guard.epoch();
-        if guard.is_switching() { return Err("League account is changing.".into()); }
+        if guard.is_switching() { return Err("Your account is switching. Wait, then try again.".into()); }
         Ok(Self { epoch, guard })
     }
 
     pub(crate) fn verify(&self, puuid: &str, verified: &Value) -> Result<(), String> {
         if puuid.is_empty() || verified["puuid"].as_str() != Some(puuid)
             || self.guard.is_switching() || self.guard.epoch() != self.epoch {
-            return Err("League account changed; refresh the dashboard.".into());
+            return Err("Your account changed. Refresh to see it.".into());
         }
         Ok(())
     }

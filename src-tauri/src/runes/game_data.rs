@@ -58,7 +58,7 @@ enum Source {
 /// A game-data JSON file, parsed.
 pub(crate) async fn json<T: DeserializeOwned>(path: &str) -> Result<T, RuneError> {
     let text = text(path).await?;
-    serde_json::from_str(&text).map_err(|_| RuneError::unavailable("Game data was unexpected."))
+    serde_json::from_str(&text).map_err(|_| RuneError::unavailable("Game data couldn't be read. Try again."))
 }
 
 /// A game-data JSON file as text: client, disk, then CommunityDragon.
@@ -70,7 +70,7 @@ pub(crate) async fn text(path: &str) -> Result<String, RuneError> {
         super::lcu_get_text(&lcu, path).await.map(String::into_bytes)
     };
     let (bytes, source) = json_order(lcu, read(relative.clone()), cdn(relative.clone())).await?;
-    let text = String::from_utf8(bytes).map_err(|_| RuneError::unavailable("Game data was unreadable."))?;
+    let text = String::from_utf8(bytes).map_err(|_| RuneError::unavailable("Game data couldn't be read. Try again."))?;
     if source != Source::Disk {
         write(relative, text.as_bytes().to_vec());
     }
@@ -221,38 +221,38 @@ fn cdn_client() -> Result<&'static reqwest::Client, RuneError> {
         .connect_timeout(CDN_TIMEOUT)
         .timeout(CDN_TIMEOUT)
         .build()
-        .map_err(|_| RuneError::unavailable("Could not reach CommunityDragon."))?;
+        .map_err(|_| RuneError::unavailable("Couldn't reach game data. Check your connection and try again."))?;
     Ok(CLIENT.get_or_init(|| client))
 }
 
 async fn cdn(relative: Option<String>) -> Result<Vec<u8>, RuneError> {
-    let relative = relative.ok_or_else(|| RuneError::not_found("That game asset is unavailable."))?;
+    let relative = relative.ok_or_else(|| RuneError::not_found("That image couldn't be loaded. Try again."))?;
     let _permit = CDN_FETCHES
         .acquire()
         .await
-        .map_err(|_| RuneError::unavailable("Could not reach CommunityDragon."))?;
-    let unavailable = || RuneError::unavailable("Could not reach CommunityDragon.");
+        .map_err(|_| RuneError::unavailable("Couldn't reach game data. Check your connection and try again."))?;
+    let unavailable = || RuneError::unavailable("Couldn't reach game data. Check your connection and try again.");
     let mut response = cdn_client()?
         .get(format!("{CDRAGON_BASE}/{relative}"))
         .send()
         .await
         .map_err(|_| unavailable())?;
     if !response.status().is_success() {
-        return Err(RuneError::not_found("That game asset is unavailable."));
+        return Err(RuneError::not_found("That image couldn't be loaded. Try again."));
     }
     let cap = limit(&relative);
     if response.content_length().is_some_and(|len| len > cap as u64) {
-        return Err(RuneError::not_found("That game asset is too large."));
+        return Err(RuneError::not_found("That image is too large to load."));
     }
     let mut body = Vec::new();
     while let Some(chunk) = response.chunk().await.map_err(|_| unavailable())? {
         body.extend_from_slice(&chunk);
         if body.len() > cap {
-            return Err(RuneError::not_found("That game asset is too large."));
+            return Err(RuneError::not_found("That image is too large to load."));
         }
     }
     if !valid(&relative, &body) {
-        return Err(RuneError::not_found("That game asset was not valid."));
+        return Err(RuneError::not_found("That image couldn't be loaded. Try again."));
     }
     Ok(body)
 }
@@ -327,7 +327,7 @@ mod tests {
     }
 
     async fn down() -> Result<Vec<u8>, RuneError> {
-        Err(RuneError::unavailable("League Client is not connected."))
+        Err(RuneError::unavailable("League isn't open. Open it and try again."))
     }
 
     async fn never<T>() -> T {
@@ -422,7 +422,7 @@ mod tests {
         // The running client saying "no such asset" is final.
         let missing = image_order(
             async { None },
-            async { Err(RuneError::not_found("That rune asset is unavailable.")) },
+            async { Err(RuneError::not_found("That image couldn't be loaded. Try again.")) },
             never(),
         )
         .await;

@@ -201,7 +201,7 @@ pub fn parse_champion_summary(body: &str) -> Result<HashMap<i64, String>, RuneEr
         name: String,
     }
     let entries: Vec<Summary> = serde_json::from_str(body)
-        .map_err(|e| RuneError::unavailable(format!("Could not read champion data: {e}")))?;
+        .map_err(|e| RuneError::unavailable({ eprintln!("Champion data read failed: {e}"); "Couldn't load champions. Try again.".to_string() }))?;
     Ok(entries.into_iter().map(|entry| (entry.id, entry.name)).collect())
 }
 
@@ -230,7 +230,7 @@ fn enemy_laner(their_team: &[TeamMember], assigned: &str) -> Option<i64> {
 /// local player and reporting whether the pick is locked in.
 pub fn parse_champ_select(body: &str) -> Result<Option<ChampSelectContext>, RuneError> {
     let session: ChampionSession = serde_json::from_str(body)
-        .map_err(|e| RuneError::unavailable(format!("Could not read champion select: {e}")))?;
+        .map_err(|e| RuneError::unavailable({ eprintln!("Champion select read failed: {e}"); "Couldn't read champion select. Try again.".to_string() }))?;
     let local = session
         .my_team
         .iter()
@@ -297,7 +297,7 @@ pub struct GameflowInfo {
 /// Parses `/lol-gameflow/v1/session` for the map, queue and game-mode ids.
 pub fn parse_gameflow(body: &str) -> Result<GameflowInfo, RuneError> {
     let session: GameflowSession = serde_json::from_str(body)
-        .map_err(|e| RuneError::unavailable(format!("Could not read the gameflow: {e}")))?;
+        .map_err(|e| RuneError::unavailable({ eprintln!("Gameflow read failed: {e}"); "Couldn't read the game state. Try again.".to_string() }))?;
     Ok(GameflowInfo {
         map_id: session.map.map(|map| map.id).unwrap_or(0),
         queue_id: session.queue.map(|queue| queue.id).unwrap_or(0),

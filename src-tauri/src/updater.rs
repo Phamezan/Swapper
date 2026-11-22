@@ -329,27 +329,27 @@ pub fn is_missing_feed_error(error: &UpdaterError) -> bool {
 fn friendly_check_error(error: &UpdaterError) -> String {
     match error {
         UpdaterError::Reqwest(problem) if problem.is_timeout() => {
-            "The update check timed out. Check your internet connection, then retry.".into()
+            "Update check timed out. Check your connection, then retry.".into()
         }
         UpdaterError::Reqwest(problem) if problem.is_connect() => {
-            "Could not reach the update server. Check your internet connection, then retry.".into()
+            "Couldn't reach updates. Check your connection, then retry.".into()
         }
-        _ => "Could not check for updates. Swapper keeps running the current version.".into(),
+        _ => "Couldn't check for updates. You'll keep this version.".into(),
     }
 }
 
 fn friendly_install_error(error: &UpdaterError) -> String {
     match error {
         UpdaterError::Network(_) | UpdaterError::Reqwest(_) => {
-            "The update download failed. Check your internet connection, then retry.".into()
+            "Update download failed. Check your connection, then retry.".into()
         }
         UpdaterError::Minisign(_)
         | UpdaterError::SignatureUtf8(_)
         | UpdaterError::SignedVersionMismatch { .. } => {
-            "The update could not be verified as an official Swapper release.".into()
+            "That update isn't official. It wasn't installed.".into()
         }
         _ => {
-            "The update could not be installed. Swapper keeps running the current version.".into()
+            "Couldn't install the update. You'll keep this version.".into()
         }
     }
 }
@@ -380,10 +380,10 @@ pub async fn update_install(app: AppHandle) -> Result<(), String> {
         .ok_or("Swapper is still starting. Try again in a moment.")?;
     match state.snapshot().state {
         UpdateStateKind::Installing => {
-            return Err("An update is already being installed.".into());
+            return Err("An update is already installing. Wait for it to finish.".into());
         }
         UpdateStateKind::Available => {}
-        _ => return Err("No update is ready to install. Check for updates first.".into()),
+        _ => return Err("No update is ready. Check for updates first.".into()),
     }
     // Held for the whole install so an account switch cannot start mid-update.
     let _lease = match app.try_state::<crate::AppState>() {
@@ -401,11 +401,11 @@ pub async fn update_install(app: AppHandle) -> Result<(), String> {
             }
             Ok(_) => {
                 state.set_up_to_date();
-                return Err("No update is available anymore.".into());
+                return Err("That update is gone. Check for updates again.".into());
             }
             Err(error) if is_missing_feed_error(&error) => {
                 state.set_up_to_date();
-                return Err("No update is available anymore.".into());
+                return Err("That update is gone. Check for updates again.".into());
             }
             Err(error) => {
                 let message = friendly_check_error(&error);

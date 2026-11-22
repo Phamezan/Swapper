@@ -9,12 +9,12 @@ export function DeceiveRestartNotice({ prompt, onRestart, onDismiss }: {
   if (!prompt) return null;
   return <div className="deceive-notice" role="status">
     {prompt === "ask"
-      ? <><p>Restart the client now to apply this? You are in champion select, so restarting means dodging and can cost LP.</p>
+      ? <><p>Restart now to apply this? You're in champion select — restarting can cost LP.</p>
         <div><Button variant="outline" onClick={onRestart}>Restart client</Button><Button variant="ghost" onClick={onDismiss}>Not now</Button></div></>
       : prompt === "unsaved"
-      ? <><p>Saved. Restart Riot Client to apply it. Save this account in Swapper and it restarts for you next time.</p>
+      ? <><p>Saved. Restart Riot Client to apply it.</p>
         <div><Button variant="ghost" onClick={onDismiss}>Dismiss</Button></div></>
-      : <><p>Saved. A game is running, so this applies after the game or at the next launch.</p>
+      : <><p>Saved. This applies after your game ends.</p>
         <div><Button variant="ghost" onClick={onDismiss}>Dismiss</Button></div></>}
   </div>;
 }

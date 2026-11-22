@@ -47,6 +47,7 @@ pub mod spells;
 pub mod stats;
 pub mod teams;
 pub mod tierlist;
+mod tier_history;
 pub mod ugg;
 pub mod view;
 pub mod watch;
@@ -186,7 +187,7 @@ fn lcu_client() -> Result<&'static Client, RuneError> {
         .pool_max_idle_per_host(4)
         .pool_idle_timeout(Duration::from_secs(15))
         .build()
-        .map_err(|_| RuneError::unavailable("Could not reach the League Client."))?;
+        .map_err(|_| RuneError::unavailable("Couldn't reach League. Open it and try again."))?;
     Ok(LCU_CLIENT.get_or_init(|| client))
 }
 
@@ -212,7 +213,7 @@ fn invalidate_endpoint() {
 }
 
 async fn discover_endpoint() -> Result<LcuEndpoint, RuneError> {
-    let not_connected = || RuneError::unavailable("League Client is not connected.");
+    let not_connected = || RuneError::unavailable("League isn't open. Open it and try again.");
     let miss = || LCU_MISS.lock().unwrap_or_else(|error| error.into_inner());
     if miss().is_some_and(|at| at.elapsed() < LCU_MISS_TTL) {
         return Err(not_connected());
@@ -276,10 +277,10 @@ impl Lcu {
                     client = fresh.client;
                     endpoint = fresh.endpoint;
                 }
-                Err(_) => return Err(RuneError::unavailable("League Client did not respond.")),
+                Err(_) => return Err(RuneError::unavailable("League didn't answer. Wait a moment and try again.")),
             }
         }
-        Err(RuneError::unavailable("League Client did not respond."))
+        Err(RuneError::unavailable("League didn't answer. Wait a moment and try again."))
     }
 }
 
@@ -320,21 +321,22 @@ fn authorized(lcu: &Lcu, method: Method, path: &str) -> reqwest::RequestBuilder 
 async fn lcu_get_text(lcu: &Lcu, path: &str) -> Result<String, RuneError> {
     let response = lcu.send(Method::GET, path, None).await?;
     if !response.status().is_success() {
-        return Err(RuneError::unavailable(format!(
-            "League Client returned HTTP {}.",
-            response.status().as_u16()
-        )));
+        // 404 just means "not in that state" (no lobby, no champ select); not worth logging.
+        if response.status() != reqwest::StatusCode::NOT_FOUND {
+            eprintln!("League request failed: HTTP {}", response.status().as_u16());
+        }
+        return Err(RuneError::unavailable("League didn't answer that. Try again."));
     }
     response
         .text()
         .await
-        .map_err(|_| RuneError::unavailable("League Client response was unreadable."))
+        .map_err(|_| RuneError::unavailable("League sent something unreadable. Try again."))
 }
 
 pub(crate) async fn lcu_get<T: for<'de> Deserialize<'de>>(lcu: &Lcu, path: &str) -> Result<T, RuneError> {
     let text = lcu_get_text(lcu, path).await?;
     serde_json::from_str(&text)
-        .map_err(|_| RuneError::unavailable("League Client sent an unexpected response."))
+        .map_err(|_| RuneError::unavailable("League sent something unreadable. Try again."))
 }
 
 /// Read-only game scope check for the native overlay, reusing the LCU connection.
@@ -346,13 +348,13 @@ pub(crate) async fn lcu_get_bytes(lcu: &Lcu, path: &str) -> Result<Vec<u8>, Rune
     let response = lcu.send(Method::GET, path, None).await?;
     let response = response
         .error_for_status()
-        .map_err(|_| RuneError::not_found("That rune asset is unavailable."))?;
+        .map_err(|_| RuneError::not_found("That image couldn't be loaded. Try again."))?;
     let bytes = response
         .bytes()
         .await
-        .map_err(|_| RuneError::unavailable("League Client response was unreadable."))?;
+        .map_err(|_| RuneError::unavailable("League sent something unreadable. Try again."))?;
     if bytes.is_empty() || bytes.len() > MAX_ICON_BYTES {
-        return Err(RuneError::not_found("That rune asset is unavailable."));
+        return Err(RuneError::not_found("That image couldn't be loaded. Try again."));
     }
     Ok(bytes.to_vec())
 }
@@ -365,21 +367,19 @@ async fn lcu_send(
 ) -> Result<Option<Value>, RuneError> {
     let response = lcu.send(method, path, body.as_ref()).await?;
     if !response.status().is_success() {
-        return Err(RuneError::conflict(format!(
-            "League rejected the rune page (HTTP {}).",
-            response.status().as_u16()
-        )));
+        eprintln!("League refused rune page: HTTP {}", response.status().as_u16());
+        return Err(RuneError::conflict("League refused that rune page. Try again."));
     }
     let text = response
         .text()
         .await
-        .map_err(|_| RuneError::unavailable("League Client response was unreadable."))?;
+        .map_err(|_| RuneError::unavailable("League sent something unreadable. Try again."))?;
     if text.trim().is_empty() {
         return Ok(None);
     }
     serde_json::from_str(&text)
         .map(Some)
-        .map_err(|_| RuneError::unavailable("League Client sent an unexpected response."))
+        .map_err(|_| RuneError::unavailable("League sent something unreadable. Try again."))
 }
 
 // ---------------------------------------------------------------------------

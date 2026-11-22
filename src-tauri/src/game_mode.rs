@@ -1,5 +1,13 @@
 use serde_json::Value;
 
+/// Whether the current game (gameflow session) is one Swapper supports. A
+/// session that can't be read counts as supported, so nothing is hidden by a
+/// failed request.
+pub async fn current_supported() -> bool {
+    let Ok(client) = crate::runes::lcu().await else { return true };
+    crate::runes::lcu_get::<Value>(&client, "/lol-gameflow/v1/session").await.map_or(true, |session| supports_rift(&session))
+}
+
 /// Accept incomplete LCU gameflow or Live Client data unless it identifies another mode.
 pub fn supports_rift(session: &Value) -> bool {
     // Dev builds only: SWAPPER_DEV_ALL_MODES=1 lets every game mode reach the
@@ -7,22 +15,16 @@ pub fn supports_rift(session: &Value) -> bool {
     if cfg!(debug_assertions) && std::env::var_os("SWAPPER_DEV_ALL_MODES").is_some() {
         return true;
     }
-    // Dev builds only: SWAPPER_DEV_PRACTICE=1 treats Practice Tool as a Rift game for manual testing.
     let data = &session["gameData"];
-    if cfg!(debug_assertions) && std::env::var_os("SWAPPER_DEV_PRACTICE").is_some()
-        && [&data["queue"]["gameMode"], &session["queue"]["gameMode"], &session["map"]["gameMode"], &data["gameMode"], &data["queue"]["type"]]
-            .iter().any(|mode| mode.as_str().is_some_and(|m| m.eq_ignore_ascii_case("PRACTICETOOL"))) {
-        return true;
-    }
     let queues = [&data["queue"], &session["queue"]];
-    // SR custom, draft/blind, solo/flex, Swiftplay/Quickplay, Clash and ranked 5s (710); other queues are out of scope.
+    // SR custom and Practice Tool, draft/blind, solo/flex, Swiftplay/Quickplay, Clash and ranked 5s (710); other queues are out of scope.
     const SR_QUEUES: [i64; 9] = [0, 400, 420, 430, 440, 480, 490, 700, 710];
     for queue in queues {
         if queue["id"].as_i64().is_some_and(|id| id > 0 && !SR_QUEUES.contains(&id)) {
             return false;
         }
         let kind = queue["type"].as_str().unwrap_or("").to_ascii_uppercase();
-        if ["BOT", "COOP", "PRACTICE", "TUTORIAL", "ARAM", "TFT", "CHERRY", "URF", "ONEFORALL", "NEXUSBLITZ", "BRAWL"]
+        if ["BOT", "COOP", "TUTORIAL", "ARAM", "TFT", "CHERRY", "URF", "ONEFORALL", "NEXUSBLITZ", "BRAWL"]
             .iter().any(|mode| kind.contains(mode)) {
             return false;
         }
@@ -34,7 +36,8 @@ pub fn supports_rift(session: &Value) -> bool {
     [&data["queue"]["gameMode"], &session["queue"]["gameMode"], &session["map"]["gameMode"], &data["gameMode"]]
         .iter().all(|mode| {
             let mode = mode.as_str().unwrap_or("").trim().to_ascii_uppercase();
-            matches!(mode.as_str(), "" | "CLASSIC" | "SWIFTPLAY")        })
+            matches!(mode.as_str(), "" | "CLASSIC" | "SWIFTPLAY" | "PRACTICETOOL")
+        })
 }
 
 #[cfg(test)]
@@ -51,6 +54,10 @@ mod tests {
         assert!(supports_rift(&json!({"gameData":{"isCustomGame":true},"map":{"id":11,"gameMode":"CLASSIC"}})));
         assert!(supports_rift(&json!({"gameData":{"queue":{"id":-1,"mapId":11,"gameMode":"CLASSIC"}}})));
         assert!(supports_rift(&json!({"queue":{"id":480,"mapId":11,"gameMode":"SWIFTPLAY"}})));
+        // Practice Tool on Summoner's Rift.
+        assert!(supports_rift(&json!({"map":{"id":11,"gameMode":"PRACTICETOOL"},"gameData":{"queue":{"id":-1}}})));
+        assert!(supports_rift(&json!({"gameData":{"queue":{"type":"PRACTICETOOL"}}})));
+        assert!(supports_rift(&json!({"gameData":{"gameMode":"PRACTICETOOL","mapNumber":11}})), "Live Client");
     }
 
     #[test]
@@ -63,7 +70,7 @@ mod tests {
 
     #[test]
     fn unsupported_modes_and_maps_override_an_sr_queue() {
-        for mode in ["ARAM", "CHERRY", "TFT", "URF", "ARURF", "ONEFORALL", "PRACTICETOOL", "NEXUSBLITZ", "BRAWL", "STRAWBERRY", "TUTORIAL"] {
+        for mode in ["ARAM", "CHERRY", "TFT", "URF", "ARURF", "ONEFORALL", "NEXUSBLITZ", "BRAWL", "STRAWBERRY", "TUTORIAL"] {
             assert!(!supports_rift(&json!({"gameData":{"queue":{"id":420,"gameMode":mode}}})), "{mode}");
             assert!(!supports_rift(&json!({"gameData":{"gameMode":mode,"mapNumber":11}})), "Live Client {mode}");
         }
@@ -72,9 +79,8 @@ mod tests {
             assert!(!supports_rift(&json!({"gameData":{"mapNumber":map}})), "Live Client map {map}");
         }
         assert!(!supports_rift(&json!({"gameData":{"queue":{"type":"BOT"}}})));
-        assert!(!supports_rift(&json!({"gameData":{"queue":{"type":"PRACTICETOOL"}}})));
         assert!(!supports_rift(&json!({"queue":{"id":870}})));
-        assert!(!supports_rift(&json!({"map":{"id":11,"gameMode":"PRACTICETOOL"},"gameData":{"queue":{"id":-1}}})));
+        assert!(!supports_rift(&json!({"map":{"id":12,"gameMode":"PRACTICETOOL"}})), "Practice Tool on another map");
     }
 
     #[test]

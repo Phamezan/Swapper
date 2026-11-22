@@ -70,18 +70,15 @@ button[aria-current="page"] .nav-badge.patch { background: #ece9e2; color: #141a
 .picker-row.is-current { background: rgb(255 255 255 / .025); }
 .picker-row.is-current:disabled { opacity: 1; }
 .picker-row:disabled { cursor: default; }
-.picker-row > img, .picker-initial { display: grid; place-items: center; width: 42px; height: 42px; border: 1px solid var(--ui-line-2); border-radius: 50%; background: var(--ui-surface-3); object-fit: cover; font-weight: 700; }
+.picker-avatar > img, .picker-initial { display: grid; place-items: center; width: 42px; height: 42px; border: 1px solid var(--ui-line-2); border-radius: 50%; background: var(--ui-surface-3); object-fit: cover; font-weight: 700; }
 .picker-copy { min-width: 0; }
 .picker-copy > b { display: block; overflow: hidden; color: var(--ui-text-1); font-size: 15.5px; font-weight: 600; line-height: 20px; text-overflow: ellipsis; white-space: nowrap; }
 .picker-check { display: grid; place-items: center; color: var(--ui-brand); }
 .picker-empty { margin: 0; padding: 14px 16px; color: var(--ui-text-2); font-size: var(--ui-label); }
-.picker-restart { display: flex; align-items: center; gap: 12px; width: calc(100% - 24px); margin: 2px 12px 10px; padding: 9px 12px; border: 1px solid var(--ui-line-2); border-radius: var(--ui-radius-sm); background: rgb(255 255 255 / .035); color: var(--ui-text-1); font: inherit; text-align: left; cursor: pointer; transition: background-color var(--ui-fast), border-color var(--ui-fast); }
-.picker-restart > svg { flex: none; color: var(--ui-text-2); }
-.picker-restart > span { min-width: 0; }
-.picker-restart b { display: block; font-size: var(--ui-body); font-weight: 600; line-height: 20px; }
-.picker-restart:hover:not(:disabled) { border-color: var(--ui-line-3); background: var(--ui-surface-hover); }
-.picker-restart:hover:not(:disabled) > svg, .picker-restart:focus-visible > svg { color: var(--ui-brand); }
-.picker-restart:focus-visible { outline: 2px solid var(--ui-brand); outline-offset: 2px; }
+/* Icon-only client action in the current card's right edge; the Tooltip names it. */
+.picker-restart { position: absolute; top: 50%; right: 10px; display: grid; place-items: center; width: 34px; height: 34px; padding: 0; border: 1px solid var(--ui-line-2); border-radius: 10px; background: rgb(255 255 255 / .04); color: var(--ui-text-2); cursor: pointer; transform: translateY(-50%); transition: background-color var(--ui-fast), border-color var(--ui-fast), color var(--ui-fast); }
+.picker-restart:hover:not(:disabled) { border-color: var(--ui-line-3); background: var(--ui-surface-hover); color: var(--ui-brand); }
+.picker-restart:focus-visible { outline: 2px solid var(--ui-brand); outline-offset: 2px; color: var(--ui-brand); }
 .picker-restart:disabled { cursor: default; opacity: .5; }
 
 /* ---------- League Client isn't responding: a neutral banner with a warning edge ---------- */
@@ -99,11 +96,12 @@ button[aria-current="page"] .nav-badge.patch { background: #ece9e2; color: #141a
 .restart-dialog p { margin: 0; color: var(--ui-text-2); font-size: var(--ui-body); line-height: 1.5; }
 .restart-actions { display: flex; justify-content: flex-end; gap: 10px; margin-top: 18px; }
 .restart-dialog:focus-visible { outline: none; }
-.picker-foot { flex: none; padding: 12px 0 6px; border-top: 1px solid var(--ui-line-1); }
-.picker-foot > p { margin: 0; padding: 0 16px 10px; color: var(--ui-text-3); font-size: var(--ui-label); line-height: 1.5; }
-.picker-foot > button { display: flex; align-items: center; gap: 10px; width: 100%; min-height: 42px; padding: 8px 16px; border: 0; background: transparent; color: var(--ui-text-1); font: inherit; font-size: var(--ui-body); font-weight: 550; text-align: left; cursor: pointer; }
-.picker-foot > button:hover, .picker-foot > button:focus-visible { background: var(--ui-surface-hover); }
-.picker-foot > button:focus-visible { outline: 2px solid var(--ui-brand); outline-offset: -3px; }
+.picker-foot { flex: none; display: flex; align-items: center; gap: 4px; padding: 6px 0; border-top: 1px solid var(--ui-line-1); }
+.picker-foot > button { display: flex; align-items: center; gap: 10px; min-height: 36px; padding: 6px 10px; border: 0; border-radius: 10px; background: transparent; color: var(--ui-text-2); font: inherit; font-size: var(--ui-label); font-weight: 550; text-align: left; cursor: pointer; transition: background-color var(--ui-fast), color var(--ui-fast); }
+.picker-foot > button:first-child { flex: 1; }
+.picker-foot > .picker-info { flex: none; justify-content: center; width: 36px; padding: 0; color: var(--ui-text-3); }
+.picker-foot > button:hover, .picker-foot > button:focus-visible { background: var(--ui-press); color: var(--ui-text-1); }
+.picker-foot > button:focus-visible { outline: 2px solid var(--ui-brand); outline-offset: -2px; }
 .fa-frame :is(.fa-primary, .fa-secondary).is-compact { min-height: 32px; padding: 5px 14px; }
 
 /* Keep the dossier airy on tall windows, then tighten its rhythm before links need to scroll.
@@ -147,37 +145,77 @@ button[aria-current="page"] .nav-badge.patch { background: #ece9e2; color: #141a
 .sidebar-play:hover { border-color: var(--ui-line-3); background: var(--ui-surface-hover); }
 .sidebar-play:focus-visible { outline: 2px solid var(--ui-brand); outline-offset: 2px; }
 
-/* ---------- Account popover, redesigned: frosted sheet, the current account as a card ----------
-   Same language as the Dashboard's top panel: a brand light in the corner and a sheen on the top
-   edge. The current account is a brand-edged card holding its client action; the others are
-   quiet inset rows that show a switch mark on hover. Still one flat list, no headings. */
-.account-picker.ui-popover { width: 348px; padding: 8px; border-color: var(--ui-line-3) var(--ui-line-2) var(--ui-line-2); border-radius: var(--ui-radius-lg);
+/* ---------- Account popover, rank cards ----------
+   Frosted sheet with a brand light in the corner. Every account is a clean card whose rank gives
+   it identity: a tier-colored left stripe, a soft glow behind the crest and the tier name in its
+   color (--tier, unset for unranked). The current account is the hero card holding its client action.
+   It grows out of the selector and the cards stagger in; reduced motion only fades. */
+.account-picker.ui-popover { --picker-dy: -4px; width: 360px; padding: 8px; border-color: var(--ui-line-3) var(--ui-line-2) var(--ui-line-2); border-radius: var(--ui-radius-lg);
   background: radial-gradient(80% 55% at 0% 0%, color-mix(in srgb, var(--ui-brand) 12%, transparent), transparent 70%), linear-gradient(180deg, rgb(255 255 255 / .05), transparent 140px), var(--ui-popover);
   transform-origin: var(--radix-popover-content-transform-origin); }
-.account-picker[data-state="open"] { animation: picker-in 170ms var(--ui-ease); }
-@keyframes picker-in { from { opacity: 0; transform: translateY(-6px) scale(.98); } }
-@media (prefers-reduced-motion: reduce) { .account-picker[data-state="open"] { animation: none; } }
+.account-picker[data-side="top"] { --picker-dy: 4px; }
+.account-picker[data-state="open"] { animation: picker-in 200ms var(--ui-ease); }
+.account-picker[data-state="closed"] { animation: picker-out 130ms ease-in forwards; pointer-events: none; }
+.account-picker[data-state="open"] .picker-list > div { animation: picker-card-in 220ms var(--ui-ease) both; animation-delay: calc(min(var(--i, 0), 8) * 25ms); }
+@keyframes picker-in { from { opacity: 0; transform: translateY(var(--picker-dy)) scale(.96); } }
+@keyframes picker-out { to { opacity: 0; transform: translateY(var(--picker-dy)) scale(.97); } }
+@keyframes picker-card-in { from { opacity: 0; transform: translateY(6px); } }
+@keyframes picker-fade { from { opacity: 0; } }
 .account-picker::before { content: ""; position: absolute; inset: 0 14% auto; height: 1px; pointer-events: none; background: linear-gradient(90deg, transparent, rgb(255 255 255 / .34), transparent); }
 .account-picker .picker-search { margin: 2px 2px 8px; }
-.account-picker .picker-list { display: grid; align-content: start; gap: 2px; padding: 0; }
-.account-picker .picker-row { grid-template-columns: 42px minmax(0, 1fr) 20px; min-height: 62px; padding: 9px 12px 9px 10px; border-radius: 10px; }
-.account-picker .picker-row > img, .account-picker .picker-initial { border-radius: 12px; }
-.account-picker .picker-row:hover:not(:disabled), .account-picker .picker-row:focus-visible { background: var(--ui-press); }
-.picker-go { display: grid; place-items: center; color: var(--ui-brand); opacity: 0; transform: translateX(-4px); transition: opacity var(--ui-fast), transform var(--ui-fast); }
-.picker-row:hover:not(:disabled) .picker-go, .picker-row:focus-visible .picker-go { opacity: 1; transform: none; }
+.account-picker .picker-list { display: grid; grid-auto-rows: max-content; align-content: start; gap: 6px; padding: 0; }
+/* Thin, translucent scrollbar that only shows while the list is hovered or focused. */
+.picker-list { scrollbar-color: transparent transparent; transition: scrollbar-color var(--ui-fast); }
+.picker-list:is(:hover, :focus-within) { scrollbar-color: var(--ui-line-2) transparent; }
+.picker-list::-webkit-scrollbar { width: 6px; }
+.picker-list::-webkit-scrollbar-track { background: transparent; }
+.picker-list::-webkit-scrollbar-thumb { border-radius: 99px; background: transparent; }
+.picker-list:is(:hover, :focus-within)::-webkit-scrollbar-thumb { background: var(--ui-line-2); }
 
-.picker-current { margin-bottom: 6px; overflow: hidden; border: 1px solid var(--ui-brand-line); border-radius: var(--ui-radius-md);
-  background: radial-gradient(90% 120% at 0% 0%, color-mix(in srgb, var(--ui-brand) 15%, transparent), transparent 70%), rgb(255 255 255 / .035); box-shadow: var(--ui-inner-hi); }
-.account-picker .picker-current .picker-row { grid-template-columns: 52px minmax(0, 1fr) 24px; min-height: 76px; padding: 12px 14px 12px 12px; border-radius: 0; background: none; }
-.account-picker .picker-current .picker-row > img, .account-picker .picker-current .picker-initial { width: 52px; height: 52px; border: 2px solid var(--ui-brand); border-radius: 14px; box-shadow: 0 6px 16px rgb(0 0 0 / .35); }
-.picker-current .picker-copy > b { font-size: 17px; font-weight: 700; letter-spacing: -.01em; line-height: 22px; }
-.picker-current .picker-check { width: 24px; height: 24px; border-radius: 50%; background: var(--ui-brand); color: var(--ui-brand-ink); }
-.account-picker .picker-restart { width: 100%; margin: 0; padding: 10px 14px; border: 0; border-top: 1px solid var(--ui-line-1); border-radius: 0; background: rgb(0 0 0 / .2); }
-.account-picker .picker-restart b { font-size: var(--ui-label); }
-.account-picker .picker-restart:hover:not(:disabled) { background: var(--ui-press); }
-.account-picker .picker-restart:focus-visible { outline-offset: -3px; }
+.account-picker .picker-row { position: relative; isolation: isolate; overflow: hidden; grid-template-columns: 42px minmax(0, 1fr) auto 16px; gap: 12px; min-height: 64px; padding: 10px 12px;
+  border: 1px solid var(--ui-line-1); border-radius: 12px; background: rgb(255 255 255 / .025);
+  transition: transform var(--ui-base) var(--ui-ease), background-color var(--ui-fast), border-color var(--ui-fast), box-shadow var(--ui-base) var(--ui-ease); }
+.account-picker .picker-row::before { content: ""; position: absolute; inset: 12px auto 12px 0; width: 3px; border-radius: 0 3px 3px 0; pointer-events: none; background: color-mix(in srgb, var(--tier) 80%, transparent); transition: transform 240ms var(--ui-ease), width 240ms var(--ui-ease), background-color var(--ui-fast); }
+.account-picker .picker-row::after { content: ""; position: absolute; inset: 0; z-index: 1; pointer-events: none; opacity: 0; transform: translateX(-100%); background: linear-gradient(100deg, transparent 25%, color-mix(in srgb, var(--tier) 22%, transparent) 50%, transparent 75%); }
+.account-picker .picker-row:is(:hover, :focus-visible):not(:disabled) { transform: translateY(-2px); border-color: color-mix(in srgb, var(--tier) 45%, var(--ui-line-2)); background: var(--ui-press); box-shadow: 0 10px 24px rgb(0 0 0 / .32), 0 0 18px color-mix(in srgb, var(--tier) 16%, transparent); }
+.account-picker .picker-row:is(:hover, :focus-visible):not(:disabled)::before { width: 4px; transform: scaleY(1.6); background: var(--tier); }
+.account-picker .picker-row:is(:hover, :focus-visible):not(:disabled)::after { animation: picker-sweep 500ms var(--ui-ease) both; }
+@keyframes picker-sweep { 0% { opacity: 1; transform: translateX(-100%); } 100% { opacity: 0; transform: translateX(100%); } }
+.account-picker .picker-row:active:not(:disabled) { transform: scale(.98); transition-duration: 80ms; }
+.account-picker .picker-row:focus-visible { background: var(--ui-press); }
 
-.account-picker .picker-foot { margin: 8px -8px -8px; padding: 12px 8px 8px; background: var(--ui-well); }
-.account-picker .picker-foot > p { padding: 0 10px 8px; font-size: 12.5px; }
-.account-picker .picker-foot > button { min-height: 40px; padding: 8px 10px; border-radius: 10px; color: var(--ui-text-2); }
-.account-picker .picker-foot > button:hover, .account-picker .picker-foot > button:focus-visible { background: var(--ui-press); color: var(--ui-text-1); }
+.picker-avatar { position: relative; display: block; width: 42px; height: 42px; }
+.picker-avatar > img, .account-picker .picker-initial { width: 100%; height: 100%; border-radius: 12px; box-shadow: 0 4px 10px rgb(0 0 0 / .3); transition: transform 240ms var(--ui-ease); }
+.account-picker .picker-row:is(:hover, :focus-visible):not(:disabled) :is(.picker-avatar > img, .picker-initial) { transform: scale(1.06); }
+.account-picker .picker-copy > b { font-weight: 700; }
+.account-picker .picker-meta { display: block; overflow: hidden; margin-top: 2px; color: var(--ui-text-2); text-overflow: ellipsis; white-space: nowrap; }
+.account-picker .picker-tier { position: relative; display: grid; justify-items: center; gap: 2px; min-width: 64px; color: var(--ui-text-2); font-size: 11.5px; font-weight: 600; line-height: 14px; text-align: center; transition: transform 260ms cubic-bezier(.34, 1.56, .64, 1); }
+.account-picker .picker-row:is(:hover, :focus-visible):not(:disabled) .picker-tier { transform: scale(1.12); }
+.account-picker .picker-row:is(:hover, :focus-visible):not(:disabled) .picker-tier::before { opacity: 1; transform: scale(1.35); background: radial-gradient(closest-side, color-mix(in srgb, var(--tier) 50%, transparent), transparent); }
+.account-picker .picker-tier::before { content: ""; position: absolute; z-index: -1; top: -11px; left: 50%; width: 52px; height: 52px; margin-left: -26px; border-radius: 50%; pointer-events: none; background: radial-gradient(closest-side, color-mix(in srgb, var(--tier) 30%, transparent), transparent); transition: transform 260ms var(--ui-ease), opacity var(--ui-base); }
+.account-picker .picker-tier > span { color: color-mix(in srgb, var(--tier) 88%, var(--ui-text-1)); }
+.picker-go { display: grid; place-items: center; color: var(--ui-brand); opacity: 0; transform: translateX(-12px); transition: opacity var(--ui-fast), transform 240ms var(--ui-ease); }
+.picker-row:hover:not(:disabled) .picker-go, .picker-row:focus-visible .picker-go { opacity: 1; transform: translateX(2px); }
+
+.picker-current { position: relative; margin-bottom: 4px; overflow: hidden; border: 1px solid var(--ui-brand-line); border-radius: var(--ui-radius-md);
+  background: rgb(255 255 255 / .04); box-shadow: var(--ui-inner-hi), 0 8px 22px rgb(0 0 0 / .25); }
+.account-picker .picker-current .picker-row { grid-template-columns: 56px minmax(0, 1fr) auto; min-height: 84px; padding: 14px 56px 14px 14px; border: 0; border-radius: 0; background: none; }
+.account-picker .picker-current .picker-row::before { inset-block: 16px; }
+.picker-current .picker-avatar { width: 56px; height: 56px; }
+.picker-current .picker-avatar > img, .account-picker .picker-current .picker-initial { border: 2px solid var(--ui-brand); border-radius: 14px; box-shadow: 0 0 0 3px color-mix(in srgb, var(--ui-brand) 18%, transparent), 0 6px 16px rgb(0 0 0 / .35); }
+.picker-current .picker-copy > b { font-size: 17px; letter-spacing: -.01em; line-height: 22px; }
+.picker-current .picker-check { position: absolute; right: -5px; bottom: -5px; width: 20px; height: 20px; border: 2px solid var(--ui-surface-2); border-radius: 50%; background: var(--ui-brand); color: var(--ui-brand-ink); }
+@media (prefers-reduced-motion: reduce) {
+  .account-picker[data-state="open"] { animation: picker-fade 120ms linear; }
+  .account-picker[data-state="closed"] { animation: picker-fade 100ms linear reverse forwards; }
+  .account-picker[data-state="open"] .picker-list > div { animation: none; }
+  .account-picker .picker-row:is(:hover, :focus-visible, :active):not(:disabled), .picker-go, .picker-row:hover:not(:disabled) .picker-go, .picker-row:focus-visible .picker-go { transform: none; }
+  .account-picker .picker-row:is(:hover, :focus-visible):not(:disabled)::before, .account-picker .picker-row:is(:hover, :focus-visible):not(:disabled) .picker-tier, .account-picker .picker-row:is(:hover, :focus-visible):not(:disabled) .picker-tier::before, .account-picker .picker-row:is(:hover, :focus-visible):not(:disabled) :is(.picker-avatar > img, .picker-initial) { transform: none; }
+  .account-picker .picker-row:is(:hover, :focus-visible):not(:disabled)::after { animation: none; }
+}
+
+.account-picker .picker-foot { margin: 8px -8px -8px; padding: 6px 8px; background: var(--ui-well); }
+.profile-podium.is-pending .podium-portrait { animation: podium-pending 1.2s ease-in-out infinite alternate; }
+.profile-podium.is-pending .podium-rank-copy > b { color: var(--ui-text-3); font-weight: 550; }
+@keyframes podium-pending { from { opacity: 1; } to { opacity: .45; } }
+@media (prefers-reduced-motion: reduce) { .profile-podium.is-pending .podium-portrait { animation: none; opacity: .6; } }

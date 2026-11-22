@@ -288,7 +288,7 @@ export function ChampionTab({
           <ChampionOverview mode={mode} championId={championId} name={champion?.name ?? ""} view={overview} loading={loading} />
           {data?.stale && <CachedBadge stale updatedAt={data.updatedAt} />}
           {unavailable && !loading && (
-            <p className="runes-note">Matchup data for {champion?.name} is unavailable right now.</p>
+            <p className="runes-note">No matchup data for {champion?.name} right now.</p>
           )}
           <CardStrip
             title="Toughest matchups"

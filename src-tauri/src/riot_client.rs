@@ -17,6 +17,8 @@ const LAUNCH_WAIT: Duration = Duration::from_secs(60);
 const LAUNCH_POLL: Duration = Duration::from_secs(2);
 const LAUNCH_RETRY_GRACE: Duration = Duration::from_secs(15);
 const PATCH_WAIT: Duration = Duration::from_secs(5 * 60);
+/// Consecutive polls without a Riot Client (after seeing it) before giving up.
+const GONE_POLLS: u32 = 3;
 
 struct Endpoint {
     port: u16,
@@ -184,6 +186,10 @@ enum LaunchPoll {
     Waiting,
     Accepted,
     Updating,
+    /// Riot Client answered 423: still starting up, not a refusal.
+    Busy,
+    /// No Riot Client lockfile/process.
+    Gone,
     Running,
 }
 
@@ -201,19 +207,36 @@ where
     let mut last_refusal = None;
     let mut deadline = wait;
     let mut retry_at = Duration::ZERO;
+    let mut seen_riot = false;
+    let mut gone_polls = 0;
     while started.elapsed() < deadline && !cancelled() {
         let observation = poll(started.elapsed() >= retry_at).await;
         if cancelled() {
             return Ok(());
         }
+        if matches!(observation, Ok(LaunchPoll::Gone)) {
+            // Riot may not have written its lockfile yet; only count a client that vanished.
+            gone_polls = if seen_riot { gone_polls + 1 } else { 0 };
+            if gone_polls >= GONE_POLLS {
+                return Err("Riot Client closed. Open it to finish signing in.".into());
+            }
+        } else {
+            seen_riot = true;
+            gone_polls = 0;
+        }
         match observation {
             Ok(LaunchPoll::Running) => return Ok(()),
-            Ok(LaunchPoll::Waiting) => {}
+            Ok(LaunchPoll::Waiting | LaunchPoll::Gone) => {}
+            Ok(LaunchPoll::Busy) => {
+                // Still starting (HTTP 423): keep waiting while it stays busy, up to the patch cap.
+                deadline = deadline.max((started.elapsed() + wait).min(PATCH_WAIT));
+                last_refusal = Some("Riot Client is still starting.".into());
+            }
             Ok(LaunchPoll::Accepted) => retry_at = started.elapsed() + LAUNCH_RETRY_GRACE,
             Ok(LaunchPoll::Updating) => {
                 // The patch budget is measured from launch start, never reset by another 424.
                 deadline = deadline.max(PATCH_WAIT);
-                last_refusal = Some("Riot Client reported that League is not up to date (HTTP 424).".into());
+                last_refusal = Some("League is updating.".into());
             }
             // Riot can refuse while its agreement and patch status are still loading.
             Err(reason) => last_refusal = Some(reason),
@@ -223,8 +246,8 @@ where
     if cancelled() {
         return Ok(());
     }
-    let reason = last_refusal.map(|reason| format!(" Last Riot Client response: {reason}")).unwrap_or_default();
-    Err(format!("League did not start.{reason} Open Riot Client to finish any updates or sign-in prompts, then press Play again."))
+    if let Some(reason) = &last_refusal { eprintln!("League launch failed: {reason}"); }
+    Err("League didn't start. Open Riot Client to finish any update or sign-in.".into())
 }
 
 async fn poll_launch(cancelled: &impl Fn() -> bool, can_request: bool) -> Result<LaunchPoll, String> {
@@ -232,18 +255,23 @@ async fn poll_launch(cancelled: &impl Fn() -> bool, can_request: bool) -> Result
         crate::windows::process::any_running(&["LeagueClient.exe", "LeagueClientUx.exe"])
     })
     .await
-    .map_err(|error| format!("Could not check League startup: {error}"))?
-    .map_err(|error| format!("Could not check League startup: {error:?}"))?;
+    .map_err(|error| { eprintln!("League startup check failed: {error}"); "Couldn't check if League started.".to_string() })?
+    .map_err(|error| { eprintln!("League startup check failed: {error:?}"); "Couldn't check if League started.".to_string() })?;
     if league_up {
         return Ok(LaunchPoll::Running);
     }
-    if !can_request || cancelled() || !matches!(detect().await, RiotProbe::Identified(_)) {
+    if !can_request || cancelled() {
         return Ok(LaunchPoll::Waiting);
+    }
+    match detect().await {
+        RiotProbe::Identified(_) => {}
+        RiotProbe::NotRunning => return Ok(LaunchPoll::Gone),
+        _ => return Ok(LaunchPoll::Waiting),
     }
     let endpoint = tokio::task::spawn_blocking(discover)
         .await
-        .map_err(|error| format!("Could not find Riot Client: {error}"))?
-        .map_err(|error| format!("Could not find Riot Client: {error:?}"))?;
+        .map_err(|error| { eprintln!("Riot Client discovery failed: {error}"); "Riot Client wasn't found. Set its path in Settings.".to_string() })?
+        .map_err(|error| { eprintln!("Riot Client discovery failed: {error:?}"); "Riot Client wasn't found. Set its path in Settings.".to_string() })?;
     // Discovery can outlive the account action that started this worker.
     if cancelled() {
         return Ok(LaunchPoll::Waiting);
@@ -252,16 +280,17 @@ async fn poll_launch(cancelled: &impl Fn() -> bool, can_request: bool) -> Result
         return Ok(LaunchPoll::Waiting);
     };
     let response = request.send().await
-        .map_err(|_| "Riot Client did not answer the League launch request.".to_string())?;
+        .map_err(|_| "Riot Client didn't answer. Try again.".to_string())?;
     launch_response(response.status().as_u16())
 }
 
 fn launch_response(status: u16) -> Result<LaunchPoll, String> {
     match status {
         200..=299 => Ok(LaunchPoll::Accepted),
-        464 => Err("Riot Client reported that League's agreement status is not ready (HTTP 464).".into()),
+        464 => Err("League isn't ready yet.".into()),
         424 => Ok(LaunchPoll::Updating),
-        _ => Err(format!("Riot Client refused to launch League (HTTP {status}).")),
+        423 => Ok(LaunchPoll::Busy),
+        _ => { eprintln!("Riot Client refused League launch: HTTP {status}"); Err("Riot Client refused the launch.".into()) },
     }
 }
 
@@ -273,9 +302,10 @@ mod tests {
     fn riot_launch_refusals_describe_status_without_assuming_user_action() {
         assert!(launch_response(200).is_ok());
         assert!(launch_response(202).is_ok());
-        assert!(launch_response(464).unwrap_err().contains("not ready (HTTP 464)"));
+        assert_eq!(launch_response(464).unwrap_err(), "League isn't ready yet.");
         assert!(matches!(launch_response(424), Ok(LaunchPoll::Updating)));
-        assert!(launch_response(503).unwrap_err().contains("HTTP 503"));
+        assert!(matches!(launch_response(423), Ok(LaunchPoll::Busy)));
+        assert_eq!(launch_response(503).unwrap_err(), "Riot Client refused the launch.");
     }
 
     #[tokio::test(start_paused = true)]
@@ -303,9 +333,7 @@ mod tests {
         }).await.unwrap_err();
         assert!(polls > 1, "An early refusal must be retried");
         assert_eq!(started.elapsed(), PATCH_WAIT, "Repeated 424s must not reset the five-minute cap");
-        assert!(error.contains("424"), "Report the last refusal: {error}");
-        assert!(!error.contains("464"), "Do not report an obsolete refusal: {error}");
-        assert!(error.contains("Play again"));
+        assert_eq!(error, "League didn't start. Open Riot Client to finish any update or sign-in.");
     }
 
     #[tokio::test(start_paused = true)]
@@ -320,8 +348,7 @@ mod tests {
             })
         }).await.unwrap_err();
         assert_eq!(started.elapsed(), PATCH_WAIT);
-        assert!(error.contains("424"), "An accepted POST does not confirm startup: {error}");
-        assert!(!error.contains("464"));
+        assert_eq!(error, "League didn't start. Open Riot Client to finish any update or sign-in.");
     }
 
     #[tokio::test(start_paused = true)]
@@ -363,11 +390,53 @@ mod tests {
     }
 
     #[tokio::test(start_paused = true)]
+    async fn riot_busy_past_sixty_seconds_is_not_a_failure() {
+        let started = tokio::time::Instant::now();
+        wait_for_league(&|| false, LAUNCH_WAIT, LAUNCH_POLL, |_| {
+            std::future::ready(if started.elapsed() > Duration::from_secs(64) {
+                Ok(LaunchPoll::Running)
+            } else {
+                launch_response(423)
+            })
+        }).await.expect("HTTP 423 for over a minute is still starting");
+        assert!(started.elapsed() > LAUNCH_WAIT);
+    }
+
+    #[tokio::test(start_paused = true)]
+    async fn riot_busy_forever_still_stops_at_the_cap() {
+        let started = tokio::time::Instant::now();
+        wait_for_league(&|| false, LAUNCH_WAIT, LAUNCH_POLL, |_| std::future::ready(launch_response(423)))
+            .await.unwrap_err();
+        assert_eq!(started.elapsed(), PATCH_WAIT);
+    }
+
+    #[tokio::test(start_paused = true)]
+    async fn closing_riot_client_stops_the_wait_early() {
+        let started = tokio::time::Instant::now();
+        let mut polls = 0;
+        let error = wait_for_league(&|| false, LAUNCH_WAIT, LAUNCH_POLL, |_| {
+            polls += 1;
+            std::future::ready(Ok(if polls < 3 { LaunchPoll::Waiting } else { LaunchPoll::Gone }))
+        }).await.unwrap_err();
+        assert!(started.elapsed() < Duration::from_secs(15));
+        assert!(error.starts_with("Riot Client closed"));
+    }
+
+    #[tokio::test(start_paused = true)]
+    async fn riot_not_started_yet_is_not_treated_as_closed() {
+        let mut polls = 0;
+        wait_for_league(&|| false, LAUNCH_WAIT, LAUNCH_POLL, |_| {
+            polls += 1;
+            std::future::ready(Ok(if polls < 6 { LaunchPoll::Gone } else { LaunchPoll::Running }))
+        }).await.expect("a lockfile that has not appeared yet must not fail the wait");
+    }
+
+    #[tokio::test(start_paused = true)]
     async fn launch_deadline_reports_failure() {
         let error = wait_for_league(&|| false, Duration::ZERO, Duration::ZERO, |_| {
             std::future::ready(Ok(LaunchPoll::Waiting))
         }).await.expect_err("A launch that never starts must report an error");
-        assert!(error.contains("Play again"));
+        assert_eq!(error, "League didn't start. Open Riot Client to finish any update or sign-in.");
     }
 
     #[tokio::test(start_paused = true)]
@@ -377,7 +446,7 @@ mod tests {
             std::future::ready(launch_response(503))
         }).await.unwrap_err();
         assert_eq!(started.elapsed(), LAUNCH_WAIT);
-        assert!(error.contains("503"));
+        assert_eq!(error, "League didn't start. Open Riot Client to finish any update or sign-in.");
     }
 
     #[tokio::test(start_paused = true)]

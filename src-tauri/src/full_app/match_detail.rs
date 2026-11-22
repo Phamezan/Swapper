@@ -330,13 +330,13 @@ fn bans(team: &Value) -> Vec<i64> {
 
 fn parse(value: &Value, summoner: &model::Summoner) -> Result<Detail, String> {
     let game = model::game(value, summoner)
-        .ok_or("This Rift match is unavailable for the signed-in player.")?;
+        .ok_or("This match isn't available for your account.")?;
     let participants = value["participants"]
         .as_array()
-        .ok_or("Match participants unavailable.")?;
+        .ok_or("Players couldn't load. Try again.")?;
     let identities = value["participantIdentities"]
         .as_array()
-        .ok_or("Match identities unavailable.")?;
+        .ok_or("Players couldn't load. Try again.")?;
     let scores = model::performance_scores(participants);
     // Same per-team assignment as the history rows, so labels and lane opponents agree.
     let roles = model::assigned_roles(value);
@@ -559,7 +559,7 @@ fn save_detail_at(path: &std::path::Path, key: &(u64, String), detail: &Detail) 
 
 fn valid_perspective(perspective: &str) -> Result<(), String> {
     if perspective.len() > 128 || perspective.chars().any(char::is_control) {
-        return Err("Invalid player name.".into());
+        return Err("That name isn't valid. Check it and try again.".into());
     }
     Ok(())
 }
@@ -591,7 +591,7 @@ pub async fn full_app_match_detail(
     riot_id: Option<String>,
 ) -> Result<Detail, String> {
     if window.label() != full_app::LABEL || !full_app::enabled(&app) {
-        return Err("Fullsized App is closed or disabled.".into());
+        return Err("The full app is closed. Reopen it and try again.".into());
     }
     // A match opened before loads without League Client. No Riot ID means the
     // dashboard owner, whose Riot ID the saved dashboard knows.
@@ -609,7 +609,7 @@ pub async fn full_app_match_detail(
     let client = crate::runes::lcu().await.map_err(|e| e.to_string())?;
     let current = get(&client, "/lol-summoner/v1/current-summoner").await?;
     let owner =
-        model::summoner(&current).ok_or("Sign in to League Client to load match details.")?;
+        model::summoner(&current).ok_or("Open League Client to load this match.")?;
     let perspective = riot_id.unwrap_or_else(|| owner.riot_id.clone());
     valid_perspective(&perspective)?;
     let key = (game_id, perspective.to_lowercase());
@@ -631,7 +631,7 @@ pub async fn full_app_match_detail(
         }
     };
     if value["gameId"].as_u64() != Some(game_id) {
-        return Err("League Client returned another match.".into());
+        return Err("That match changed. Go back and open it again.".into());
     }
     let selected = value["participantIdentities"]
         .as_array()
@@ -663,7 +663,7 @@ pub async fn full_app_match_detail(
     } else {
         selected
             .as_ref()
-            .ok_or("This player is not in the match details.")?
+            .ok_or("That player isn't in this match.")?
     };
     let mut detail = parse(&value, summoner)?;
     // Paint the scoreboard before remote rank lookups finish.

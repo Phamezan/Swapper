@@ -12,7 +12,7 @@ pub mod live;
 pub mod season;
 
 const LIMIT: usize = 8;
-const CLOSED: &str = "Open League Client to load a profile. Showing saved players only.";
+const CLOSED: &str = "Open League Client to load a profile. Showing saved players.";
 static GATE: OnceLock<tokio::sync::Semaphore> = OnceLock::new();
 static CACHE_GATE: OnceLock<std::sync::Mutex<()>> = OnceLock::new();
 static ICON_CACHE: OnceLock<std::sync::Mutex<BTreeMap<u64, String>>> = OnceLock::new();
@@ -306,8 +306,8 @@ fn saved_players(
 async fn get(client: &crate::runes::Lcu, path: &str) -> Result<Value, String> {
     tokio::time::timeout(Duration::from_secs(4), crate::runes::lcu_get(client, path))
         .await
-        .map_err(|_| "League Client timed out. Try again.".to_string())?
-        .map_err(|_| "League Client could not provide this data.".to_string())
+        .map_err(|_| "League didn't answer. Wait a moment and try again.".to_string())?
+        .map_err(|_| "League couldn't share that. Try again.".to_string())
 }
 
 async fn lookup(
@@ -327,11 +327,11 @@ async fn lookup(
     let puuid = alias["puuid"]
         .as_str()
         .filter(|p| valid_puuid(p))
-        .ok_or("No player found for that Riot ID.")?;
+        .ok_or("No player found for that ID.")?;
     let value = get(client, &format!("/lol-summoner/v2/summoners/puuid/{puuid}")).await?;
     let summoner = model::summoner(&value)
         .filter(|s| s.puuid == puuid)
-        .ok_or("Player profile is unavailable.")?;
+        .ok_or("Couldn't load that profile. Try again.")?;
     Ok((summoner, value))
 }
 
@@ -415,7 +415,7 @@ fn player(summoner: &model::Summoner, icon: Option<String>) -> Player {
 
 fn check(app: &tauri::AppHandle, window: &tauri::WebviewWindow) -> Result<(), String> {
     if window.label() != LABEL || !super::enabled(app) {
-        return Err("Fullsized App is closed or disabled.".into());
+        return Err("The full app is closed. Reopen it and try again.".into());
     }
     Ok(())
 }
@@ -429,7 +429,7 @@ pub async fn full_app_search_players(
 ) -> Result<Search, String> {
     check(&app, &window)?;
     if query.len() > 128 || query.chars().any(char::is_control) {
-        return Err("Search is too long or contains invalid characters.".into());
+        return Err("That search is too long. Shorten it and try again.".into());
     }
     let query = query.trim().to_string();
     let channel = SEARCH_QUERY.get_or_init(|| tokio::sync::watch::channel(String::new()).0);
@@ -489,7 +489,7 @@ async fn search_offline(query: &str, mut players: Vec<Player>, region: Option<St
             put_first(&mut players, ugg_player(&found, icon));
             Search { connected: false, players, message: None }
         }
-        None => Search { connected: false, players, message: Some("No player found for that Riot ID on u.gg. Open League Client to search it there.".into()) },
+        None => Search { connected: false, players, message: Some("No player found for that ID. Try again in League Client.".into()) },
     }
 }
 
@@ -579,11 +579,11 @@ fn saved_profile(snapshot: Option<&model::Snapshot>, profiles: Vec<Profile>, id:
 const APEX: [&str; 3] = ["MASTER", "GRANDMASTER", "CHALLENGER"];
 
 /// Without League Client: who the player is and their Solo/Duo rank from u.gg.
-/// Games follow through `full_app_player_season`.
+/// Season totals follow through `full_app_player_summary`, games through `full_app_player_season`.
 async fn ugg_profile(saved: Profile, id: &str) -> Profile {
     let Ok((name, tag)) = riot_id(id) else { return saved };
     let Some(found) = season::identity(name, tag, saved.region.as_deref()).await else {
-        return Profile { message: Some("u.gg couldn't find this player. Open League Client to load the profile.".into()), ..saved };
+        return Profile { message: Some("Couldn't find that player. Open League Client and try again.".into()), ..saved };
     };
     let (icon, ranks) = tokio::join!(remote_icon(found.icon_id), crate::runes::ugg_record::lookup(name, tag, found.region));
     let solo = ranks.unwrap_or_default().into_iter().find(|r| r.queue == "ranked_solo_5x5").map(|r| {
@@ -607,21 +607,31 @@ async fn ugg_profile(saved: Profile, id: &str) -> Profile {
     profile
 }
 
-/// One page (from 1) of the player's ranked season from u.gg; see `season::page`.
+/// The player's latest 20 ranked games from u.gg, for when League Client has none.
 #[tauri::command]
 pub async fn full_app_player_season(
     app: tauri::AppHandle,
     window: tauri::WebviewWindow,
     riot_id: String,
     region: String,
-    page: u32,
-) -> Result<season::SeasonPage, String> {
+) -> Result<Vec<model::Game>, String> {
     check(&app, &window)?;
     let (name, tag) = self::riot_id(&riot_id)?;
-    if page == 0 || page > season::MAX_PAGES {
-        return Err("Invalid page.".into());
-    }
-    season::page(name, tag, &region, page).await
+    // A saved, complete season comes back whole; the profile lists the latest page.
+    Ok(season::page(name, tag, &region, 1).await?.games.into_iter().take(20).collect())
+}
+
+/// The player's ranked season totals from u.gg; see `season::summary`.
+#[tauri::command]
+pub async fn full_app_player_summary(
+    app: tauri::AppHandle,
+    window: tauri::WebviewWindow,
+    riot_id: String,
+    region: String,
+) -> Result<season::Summary, String> {
+    check(&app, &window)?;
+    let (name, tag) = self::riot_id(&riot_id)?;
+    season::summary(name, tag, &region).await
 }
 
 #[tauri::command]
@@ -688,9 +698,9 @@ pub async fn full_app_player_mmr(
 ) -> Result<Option<super::mmr::Mmr>, String> {
     check(&app, &window)?;
     if riot_id.trim().is_empty() || riot_id.len() > 128 || riot_id.chars().any(char::is_control) {
-        return Err("Invalid player name.".into());
+        return Err("That name isn't valid. Check it and try again.".into());
     }
-    let profiles = tokio::task::spawn_blocking(read).await.map_err(|_| "Saved profile is unavailable.".to_string())?;
+    let profiles = tokio::task::spawn_blocking(read).await.map_err(|_| "Couldn't load the saved profile. Try again.".to_string())?;
     let Some(profile) = profiles.into_iter().find(|p| p.player.riot_id.eq_ignore_ascii_case(riot_id.trim())) else {
         return Ok(None);
     };
@@ -705,13 +715,13 @@ pub async fn full_app_player_profile(
 ) -> Result<Profile, String> {
     check(&app, &window)?;
     if riot_id.trim().is_empty() || riot_id.len() > 128 || riot_id.chars().any(char::is_control) {
-        return Err("Invalid player name.".into());
+        return Err("That name isn't valid. Check it and try again.".into());
     }
     let id = riot_id.clone();
     let saved =
         tokio::task::spawn_blocking(move || saved_profile(saved_snapshot().as_ref(), read(), &id))
             .await
-            .map_err(|_| "Saved profile is unavailable.".to_string())?;
+            .map_err(|_| "Couldn't load the saved profile. Try again.".to_string())?;
     let Ok(client) = crate::runes::lcu().await else {
         return Ok(ugg_profile(saved, &riot_id).await);
     };
@@ -825,7 +835,7 @@ pub async fn full_app_player_profile(
         fill_record(rank, &summoner.riot_id, region.as_deref()).await;
     }
     let profile = Profile { player: player(&summoner, profile_icon), region, solo, flex: None, profile_icons,
-        games, live: true, source: None, fetched_at: crate::runes::provider::now_ms(), message: incomplete.then(|| "Some profile data could not be loaded. Saved games may be shown; try again shortly.".into()) };
+        games, live: true, source: None, fetched_at: crate::runes::provider::now_ms(), message: incomplete.then(|| "Some profile data couldn't load. Try again shortly.".into()) };
     let cached = profile.clone();
     let _ = tokio::task::spawn_blocking(move || save(cached)).await;
     Ok(profile)

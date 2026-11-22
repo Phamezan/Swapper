@@ -196,6 +196,33 @@ answer (Lee Sin) reached only 6 games, below the threshold used for the list.
 - Champions with tiny samples in this window (e.g. Jinx 7 bot games, Kog'Maw 4, Azir 21 mid games)
   have no variations; pre-26.14 patches and non-major regions were out of scope by design.
 
+## Answers dataset (2026-11-16, reworked Answers tab)
+
+Built by `docs/research/answers/build-answers.mjs` (thresholds in one block at its top, spec §5);
+output `docs/research/answers/answers-numbers.json`, raw rows in `docs/research/answers/raw/`.
+
+- Queries run: the same three scope queries as above (ScoreboardGames 713 rows, PicksAndBansS7
+  714, MatchScheduleGame 728; same `GameId LIKE` scope filter, User-Agent, limit 500, ~10 s
+  pauses, no `ratelimited` hit). Joined on `GameId`: 713 games (up from 711 — Finals scoreboard
+  rows have since filled in). Note: Cargo `Winner` is `"1"`/`"2"` (first/second listed team),
+  not a team name; ScoreboardGames `Team1` is blue.
+- Window: last 4 patches present — 26.15, 26.16, 26.17, 26.20 (600 games). Pre-window games
+  (26.14) only tag `olderMeta: true` entries that pass thresholds on the full 713 but not in-window.
+- Lane counter: same-role opponent via `PicksByRoleOrder` (validated against `TeamXRole1..5`),
+  ≥6 games, answer win rate ≥55%. Draft answer: opposing champion picked later in draft order
+  (B1, R1R2, B2B3, R3R4, B4B5, R5), cross-role, lift = P(picked later | threat picked) /
+  P(picked by any team) ≥1.5, ≥8 games; two-champion threats are bot+support pairs (single
+  cross-role answers, plus duo answers completed after the pair). Lane has no pick-order
+  requirement, so it yields far more pairs than the old curated 37.
+- Counts: top 29 (7 older), jungle 33 (9), mid 26 (5), bot 29 (7), support 35 (10), draft 42 (8);
+  194 entries total. Each carries games, winRate, lift (draft), per-patch trend, and proGames
+  {gameId, tournament, teams, winner, patch, vod, result}; `why`/`tips` left empty for prose pass.
+- Cross-check (`docs/research/answers/cross-check-golgg.mjs`, raw in `raw/golgg-crosscheck.json`):
+  10 entries (2 top, 2 jungle, 2 mid, 1 bot, 1 support, 2 draft) — for all 20 threat/answer
+  champions, our Worlds 2026 Main Event pick counts (76 joined games) match gol.gg's champion
+  list for that tournament exactly (e.g. Lee Sin 25, Ezreal 24, Orianna 22, Rumble 20). gol.gg
+  exposes no per-matchup table on that page, so matchup-level counts are not directly checked.
+
 ## Refresh
 
 Re-run the three scope queries above (respecting the pause and rate-limit stop), rebuild the

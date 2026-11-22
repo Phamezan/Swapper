@@ -81,7 +81,7 @@ pub(super) async fn pair_lan_device(
         Err(_) => {
             return (
                 StatusCode::SERVICE_UNAVAILABLE,
-                "LAN pairing is unavailable. Reset LAN Access in Swapper Settings and try again.",
+                "Phone pairing is off. Reset LAN access in Settings, then retry.",
             )
                 .into_response();
         }

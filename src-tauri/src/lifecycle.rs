@@ -169,7 +169,13 @@ pub fn observe(app: &AppHandle, previous: Option<&str>, current: &str) {
         return;
     };
     if raises_full_app(event, crate::full_app::enabled(app)) {
-        let _ = crate::full_app::open(app, None);
+        // Only a mode Swapper supports takes focus; ARAM or Arena would land on a "not supported" page.
+        let app = app.clone();
+        tauri::async_runtime::spawn(async move {
+            if crate::game_mode::current_supported().await {
+                let _ = crate::full_app::open(&app, None);
+            }
+        });
     }
     use tauri::Manager;
     let Some(state) = app.try_state::<crate::AppState>() else {

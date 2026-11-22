@@ -103,7 +103,7 @@ export default function MatchDetail({ game, names, riotId, onOpenPlayer }: { gam
           if (next != null) { event.preventDefault(); selectTab(tabs[next]); document.getElementById(`md-tab-${tabs[next]}`)?.focus({ preventScroll: true }); }
         }}>{label}</button>)}</div>
         {detail.players.some(p => !p.rankLoaded) && <Notice tone={rankPending ? "info" : "warn"}>{rankPending ? "Loading ranks…" : "Some player ranks are unavailable."}</Notice>}
-        {detail.players.length !== 10 && <Notice tone="warn">League Client returned {detail.players.length} of 10 players for this match. Some team statistics and performance scores are unavailable.</Notice>}
+        {detail.players.length !== 10 && <Notice tone="warn">Only {detail.players.length} of 10 players loaded. Some stats are missing.</Notice>}
         <div id="md-panel" role="tabpanel" aria-labelledby={`md-tab-${tab}`}>
         {tab === "Overview" ? <div className="md-overview">{hero}<Recap players={detail.players} teams={detail.teams} timeline={detail.timeline} duration={detail.game.duration} name={name} /></div>
         : tab === "Stats" ? <Stats players={detail.players} name={name} /> : tab === "Graphs" && detail.timeline ? <Timeline data={detail.timeline} players={detail.players} name={name} /> : <>

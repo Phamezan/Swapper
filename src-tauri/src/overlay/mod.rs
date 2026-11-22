@@ -49,7 +49,7 @@ impl Settings {
         if matches!(self.gold_hotkey,9|16..=18|112..=123) {
             Ok(())
         } else {
-            Err("Choose Tab, Shift, Ctrl, Alt or F1–F12 for overlay gold.".into())
+            Err("Pick Tab, Shift, Ctrl, Alt, or F1–F12 for gold.".into())
         }
     }
 }
@@ -143,7 +143,7 @@ static APP: std::sync::OnceLock<tauri::AppHandle> = std::sync::OnceLock::new();
 pub fn init(app: &tauri::AppHandle) -> Result<(), String> {
     let _ = APP.set(app.clone());
     let state = app.state::<crate::AppState>();
-    let config = state.config.lock().map_err(|e| e.to_string())?;
+    let config = state.config.lock().map_err(|e| { eprintln!("Settings lock poisoned: {e}"); "Couldn't read your settings. Restart Swapper.".to_string() })?;
     let mut worker = None;
     // The only spawn is below the active gate. Disabled startup allocates just
     // this empty mutex: no runtime, client, timer, native resources or thread.
@@ -173,7 +173,7 @@ pub fn observe(app: &tauri::AppHandle, phase: &str) {
 
 #[tauri::command]
 pub fn get_overlay_settings(state: State<'_, crate::AppState>) -> Result<Settings, String> {
-    Ok(state.config.lock().map_err(|e| e.to_string())?.overlay)
+    Ok(state.config.lock().map_err(|e| { eprintln!("Settings lock poisoned: {e}"); "Couldn't read your settings. Restart Swapper.".to_string() })?.overlay)
 }
 
 #[tauri::command]
@@ -183,8 +183,8 @@ pub fn set_overlay_settings(
     settings: Settings,
 ) -> Result<Settings, String> {
     settings.validate()?;
-    let mut worker = overlay.0.lock().map_err(|e| e.to_string())?;
-    let mut config = state.config.lock().map_err(|e| e.to_string())?;
+    let mut worker = overlay.0.lock().map_err(|e| { eprintln!("Settings lock poisoned: {e}"); "Couldn't read your settings. Restart Swapper.".to_string() })?;
+    let mut config = state.config.lock().map_err(|e| { eprintln!("Settings lock poisoned: {e}"); "Couldn't read your settings. Restart Swapper.".to_string() })?;
     let previous = config.overlay;
     let tier = config.rune_tier.as_deref().unwrap_or("emerald_plus");
     Controller::apply(&mut worker, settings, tier)?;

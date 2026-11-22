@@ -41,6 +41,15 @@ let gamePhase = live ? "InProgress" : "None";
 let gameSupported = !new URLSearchParams(location.search).has("unsupported");
 // --- uishell preview block: shell states (?disconnected, ?stale, ?empty-accounts, ?switching) ---
 const shellState = new URLSearchParams(location.search);
+const previewMod = (id: string, name: string, extra: Record<string, unknown> = {}) => ({ id, name, author: "Ada", version: "1.0.0", category: "champion-skin", champion: "Ahri",
+  slotLabel: "Skin · Ahri", enabled: true, source: null, licence: null, pageUrl: null, runeforgeModId: null, health: "healthy", fatals: 0, errors: 0, ...extra });
+let previewMods = [
+  previewMod("m1", "Star Guardian Ahri", { runeforgeModId: "rf-ahri", pageUrl: "https://runeforge.dev/mods/x", source: "runeforge" }),
+  previewMod("m2", "Arcade Ahri", { enabled: false }),
+  previewMod("m3", "Winter Rift", { author: "Di", category: "map_skin", champion: null, slotLabel: "Map", enabled: false, health: "repairable", fatals: 1411 }),
+  previewMod("m4", "Quiet Sounds", { author: "", category: null, champion: null, slotLabel: "Other", health: null }),
+  previewMod("m5", "Clean HUD", { author: "Cy", category: "hud", champion: null, slotLabel: "HUD", health: "repairable", fatals: 0 }),
+];
 
 const ROLES = ["top", "jungle", "mid", "adc", "support"];
 const ALLY = [266, 64, 103, 222, 412], ENEMY = [122, 11, 238, 81, 89];
@@ -91,7 +100,7 @@ const state = {
   accounts: [account("a", "Swapper Demo", 5367), account("b", "Alt Account", 4658), account("c", "Smurf Two", 29)], activeId: new URLSearchParams(location.search).has("no-active") ? null : "a", isSwitching: false,
   useDeceive: false, riotExe: null, riotDetected: false, deceiveDetected: false, autoApplyTopPreset: false, runeTier: "emerald_plus",
   applySpellsWithRunes: true, importItemsWithRunes: true, hotkey: null, hotkeyActive: false, notificationsEnabled: true, readyCheckNotifications: true,
-  koreanFont: false, ltkInstalled: false,
+  koreanFont: false, customMods: shellState.has("mods"), customModsRiskAck: shellState.has("mods"), modsRegionBlocked: false, ltkInstalled: shellState.has("mods"), ltkVersion: null, ltkOutdated: false, ltkLatestVersion: null, ltkNeedsSetup: false, ltkNotice: null,
   remote: { enabled: false, state: "disabled", address: null, tailscaleAddress: null, lanAddress: null, lanMessage: null, lanFirewallNeeded: false, message: null,
     tailscaleInstalled: false, tailscaleRunning: false, dnsName: null, localAddress: null, leagueRunning: false, lcuConnected: false,
     lanReconnectNeeded: false, lanReconnectOldAddress: null, lanReconnectNewAddress: null, lanReconnectSince: null },
@@ -103,6 +112,9 @@ const cards = {
 const tiers: [number, string, number][] = [[266, "S+", 52.6], [24, "S", 51.4], [875, "S+", 52.2], [86, "S", 51.1], [58, "A", 50.6], [164, "S", 50.9], [82, "A", 51.0], [516, "A", 50.4], [54, "A", 51.3], [122, "B", 49.8], [98, "B", 49.6], [126, "C", 48.7], [17, "C", 48.9], [67, "D", 47.8]];
 
 const form = (games: number, wins: number) => ({ games, wins, kills: games * 6, deaths: games * 4, assists: games * 7 });
+// Tier movement samples: rises (A to S, C to B, D to C), a fall (S to A), S+/S and D/D churn that shows nothing, and a week spike/dip.
+const PREV_TIERS: Record<number, string> = { 24: "A", 58: "S", 122: "C", 126: "D", 266: "S", 67: "D" };
+const WEEK_DELTAS: Record<number, number> = { 875: 2.1, 98: -1.8, 54: 1.4 };
 const rank = (tier: string, division: string) => ({ tier, division, lp: 40, wins: 60, losses: 52 });
 const RANKS = [["EMERALD", "II"], ["DIAMOND", "IV"], ["EMERALD", "I"], ["PLATINUM", "I"], ["EMERALD", "III"], ["EMERALD", "IV"], ["DIAMOND", "III"], ["EMERALD", "II"], ["PLATINUM", "II"], ["EMERALD", "I"]];
 const BADGES = [[], [{ kind: "streak-win", label: "4 win streak", detail: "Won the last 4 ranked games" }], [{ kind: "one-trick", label: "One-trick", detail: "80% of games on this champion" }], [],
@@ -187,6 +199,18 @@ mockIPC(async (cmd, args) => {
   }
   // ---- end glass draft fixture ----
   switch (cmd) {
+    // ---- custom mods (?mods): invented library and RuneForge page ----
+    case "mods_list": return { mods: previewMods, regionBlocked: false, inGame: false, appliesNextGame: false, needsClose: false };
+    case "mods_set_enabled": previewMods = previewMods.map(m => m.id === a.id ? { ...m, enabled: a.enabled } : m); return { mods: previewMods, regionBlocked: false, inGame: false, appliesNextGame: false, needsClose: false };
+    case "mods_thumbnail": return a.id === "m4" ? null : `${DD}/img/champion/splash/${["Ahri", "Jinx", "Ezreal", "Aatrox", "Yasuo"][Number(String(a.id).slice(1)) % 5]}_0.jpg`;
+    case "runeforge_thumbnail": return a.url;
+    case "runeforge_list": return { total: 48, page: a.page, champions: [{ id: 103, name: "Ahri" }, { id: 222, name: "Jinx" }], mods: Array.from({ length: 8 }, (_, i) => ({
+      id: i === 0 ? "rf-ahri" : `rf-${a.page}-${i}`, slug: `mod-${i}`, name: ["Star Guardian Ahri Reimagined With A Much Longer Title Than Usual", "Arcane Jinx", "Clean HUD", "Summoner's Rift Winter", "Pulsefire Ezreal", "Blood Moon Aatrox", "High Noon Yasuo", "Quiet Announcer"][i],
+      author: ["Ada", "Bo", "Cy", "Di", "Ed", "Flo", "Gus", "Hal"][i], category: "champion_skin", champions: ["Ahri"], status: i === 3 ? "broken" : "working",
+      thumbnailUrl: i === 7 ? null : `${DD}/img/champion/splash/${["Ahri", "Jinx", "Ekko", "Ornn", "Ezreal", "Aatrox", "Yasuo", "Sona"][i]}_${i % 2}.jpg`,
+      downloadCount: [1695, 48210, 920, 12, 3400, 1500000, 77, 5][i], viewCount: 0, likeCount: [7, 0, 120, 0, 3, 9800, 0, 1][i],
+      publishedAt: `2026-${String(1 + i).padStart(2, "0")}-11T12:00:00Z`, updatedAt: null, licence: null, pageUrl: "https://runeforge.dev/mods/x", tags: [] })) };
+    // ---- end custom mods ----
     // ---- locbar: keep the existing version label visible in browser evidence ----
     case 'plugin:app|version': return '1.0.19';
     // ---- end locbar version fixture ----
@@ -242,7 +266,7 @@ mockIPC(async (cmd, args) => {
         message: params.has('search-partial') ? 'Some profile data could not be loaded. Try again shortly.' : null };
     }
     // ---- end search fixtures ----
-    case "get_state": return shellState.has("empty-accounts") ? { ...state, accounts: [], activeId: null } : state;
+    case "get_state": return shellState.has("empty-accounts") ? { ...state, accounts: [], activeId: null } : { ...state }; // fresh, like real IPC
     // uishell preview states: ?disconnected (no client), ?stale (saved stats), ?empty-accounts handled in get_state above.
     case "dashboard_snapshot":
       if (params.has("slow")) await new Promise(resolve => setTimeout(resolve, 6000));
@@ -379,9 +403,9 @@ mockIPC(async (cmd, args) => {
       const pool: Record<string, number[]> = { top: tiers.map(([id]) => id), jungle: [64, 11], mid: [103, 7, 157, 777, 268, 238], adc: [222, 67, 51, 81], support: [902, 412, 89] };
       const rows = (pool[a.position] ?? []).map((id, i) => {
         const ranked = tiers.find(([championId]) => championId === id);
-        return { championId: id, name: CHAMPIONS[id][0], tier: ranked?.[1] ?? "B", winPct: ranked?.[2] ?? 50.5, pickPct: 9 - i * .5, banPct: 4 + i % 3, games: 24000 - i * 1200 };
+        return { championId: id, name: CHAMPIONS[id][0], tier: ranked?.[1] ?? "B", winPct: ranked?.[2] ?? 50.5, pickPct: 9 - i * .5, banPct: 4 + i % 3, games: 24000 - i * 1200, prevTier: PREV_TIERS[id] ?? ranked?.[1] ?? "B", weekWinDelta: WEEK_DELTAS[id] ?? 0.3 };
       });
-      if (a.position === "top") rows.push({ championId: 7, name: "LeBlanc", tier: "D", winPct: 49, pickPct: .2, banPct: 4, games: 775 });
+      if (a.position === "top") rows.push({ championId: 7, name: "LeBlanc", tier: "D", winPct: 49, pickPct: .2, banPct: 4, games: 775, prevTier: "D", weekWinDelta: 0 });
       return { unavailable: false, stale: false, updatedAt: null, rows };
     }
     case "full_app_matchups": return { championId: a.championId, championName: CHAMPIONS[a.championId]?.[0] ?? "Aatrox", position: "top", bestInto: [], unavailable: false, stale: false, updatedAt: null,
@@ -402,6 +426,11 @@ mockIPC(async (cmd, args) => {
     // The VOD player's native fullscreen; the browser page has no window to resize.
     case "plugin:window|is_maximized": return false;
     case "plugin:window|set_fullscreen": case "plugin:window|toggle_maximize": return null;
+    // UI scale: a 100% DPI monitor, where WebView2 zoom shows up as devicePixelRatio. The browser
+    // can't zoom itself; emulate the zoom with the viewport's device scale factor and read window.previewZoom.
+    case "plugin:window|inner_size": return { width: Math.round(innerWidth * devicePixelRatio), height: Math.round(innerHeight * devicePixelRatio) };
+    case "plugin:window|scale_factor": return 1;
+    case "plugin:webview|set_webview_zoom": Object.assign(window, { previewZoom: a.value }); return null;
     case "get_matchup_guide":
       if (params.has("guide-missing-command")) throw new Error("Unknown command get_matchup_guide");
       if (params.has("guide-null")) return null;
@@ -455,6 +484,13 @@ mockIPC(async (cmd, args) => {
     case "rank_emblem": return params.has("emblem") ? `https://raw.communitydragon.org/latest/plugins/rcp-fe-lol-static-assets/global/default/images/ranked-emblem/emblem-${a.tier}.png` : null;
     case "riot_client_icon": return null; // PLAY falls back to its own icon; Swapper ships no Riot artwork.
     case "restart_plan": return new URLSearchParams(location.search).get("restart") ?? "restart";
+    case "reorder_accounts": {
+      // ?reorder-fail exercises the optimistic rollback.
+      if (params.has("reorder-fail")) throw "Couldn't save your account order. Try again.";
+      state.accounts = (a.ids as string[]).map(id => state.accounts.find(x => x.id === id)!);
+      setTimeout(() => void emit("accounts_changed"), 0);
+      return { ...state };
+    }
     case "switch_account": {
       const account = state.accounts.find(x => x.id === a.id);
       setTimeout(() => void emit("switch_started", { id: a.id, name: account?.name ?? "" }), 0);
@@ -469,11 +505,11 @@ mockIPC(async (cmd, args) => {
     // ---- comps preview fixtures ----
     case "comps_team": {
       const me = { puuid: "preview-self", riotId: "Swapper Demo#EUW" };
-      if (params.get("comps") === "solo") return { me, lobby: [], saved: [], suggested: [], overrides: { added: [], hidden: [] } };
+      if (params.get("comps") === "solo") return { me, lobby: [], roster: [], suggested: [], overrides: { added: [], hidden: [] } };
       if (params.get("comps") === "lobby") return { me, lobby: [me,
         { puuid: "preview-1", riotId: "Player 1#DEMO" }, { puuid: "preview-2", riotId: "Player 2#DEMO" },
-        { puuid: "preview-3", riotId: "Player 3#DEMO" }, { puuid: "preview-4", riotId: "Player 4#DEMO" } ], saved: [], suggested: [], overrides: { added: [], hidden: [] } };
-      return { me, lobby: [], saved: [], suggested: [
+        { puuid: "preview-3", riotId: "Player 3#DEMO" }, { puuid: "preview-4", riotId: "Player 4#DEMO" } ], roster: [], suggested: [], overrides: { added: [], hidden: [] } };
+      return { me, lobby: [], roster: [{ puuid: "preview-1", riotId: "Player 1#DEMO", nickname: null, roles: ["jungle"] }, { puuid: "preview-2", riotId: "Player 2#DEMO", nickname: null, roles: ["bot"] }, { puuid: "preview-3", riotId: "Player 3#DEMO", nickname: null, roles: ["support"] }, { puuid: "preview-4", riotId: "Player 4#DEMO", nickname: null, roles: ["top"] }], suggested: [
         { puuid: "preview-1", riotId: "Player 1#DEMO", games: 23 }, { puuid: "preview-2", riotId: "Player 2#DEMO", games: 12 },
         { puuid: "preview-3", riotId: "Player 3#DEMO", games: 6 } ], overrides: { added: [], hidden: [] } };
     }
@@ -495,7 +531,10 @@ mockIPC(async (cmd, args) => {
       pools["preview-added"] = { puuid: "preview-added", error: null, profileIconId: 4568, entries: [{ championId: 61, role: "mid", reason: "Played 5 of last 20", games: 5 }] };
       return (a.puuids as string[]).map(id => pools[id] ?? { puuid: id, entries: [], error: "Pool unavailable" });
     }
-    case "comps_save_team": case "comps_save_overrides": return null;
+    case "comps_save_overrides": return null;
+    case "comps_roster_load": return [];
+    case "comps_roster_save": return a.members ?? [];
+    case "comps_prefill_roles": return ["mid"];
     // ---- end comps fixtures ----
     default: throw new Error(`Not mocked: ${cmd}`);
   }

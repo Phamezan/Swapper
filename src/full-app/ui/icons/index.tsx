@@ -57,6 +57,12 @@ export const AccountsIcon = (p: IconProps) => <Icon {...p}>
   <path d="M3.5 20a6 6 0 0 1 12 0M15.5 5.25a3.5 3.5 0 0 1 0 6.5M17.75 14.5a6 6 0 0 1 2.75 5.5" />
 </Icon>;
 
+/** A storefront: the custom mods marketplace. */
+export const ModsIcon = (p: IconProps) => <Icon {...p}>
+  <path className="ic-duo" d="M5 11.5v8a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-8" />
+  <path d="M4.5 3.5h15l1.5 5a3 3 0 0 1-6 .5 3 3 0 0 1-6 0 3 3 0 0 1-6-.5zM10 20.5v-5h4v5" />
+</Icon>;
+
 export const SettingsIcon = (p: IconProps) => <Icon {...p}>
   <path className="ic-duo" d="M12 3l7.8 4.5v9L12 21l-7.8-4.5v-9z" />
   <circle cx="12" cy="12" r="3" />
@@ -75,6 +81,14 @@ export const AddAccountIcon = (p: IconProps) => <Icon {...p}>
 </Icon>;
 
 export const AddIcon = (p: IconProps) => <Icon {...p}><path d="M12 5v14M5 12h14" /></Icon>;
+
+export const GripIcon = (p: IconProps) => <Icon {...p}>
+  <path d="M9 6h.01M15 6h.01M9 12h.01M15 12h.01M9 18h.01M15 18h.01" strokeWidth={3} />
+</Icon>;
+
+export const ReorderIcon = (p: IconProps) => <Icon {...p}>
+  <path d="M8 19V5M4.5 8.5 8 5l3.5 3.5M16 5v14M12.5 15.5 16 19l3.5-3.5" />
+</Icon>;
 
 export const SearchIcon = (p: IconProps) => <Icon {...p}>
   <circle cx="10.5" cy="10.5" r="6.5" />

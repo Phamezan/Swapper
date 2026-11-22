@@ -3,6 +3,7 @@ import { invoke, isTauri } from "@tauri-apps/api/core";
 import { listen } from "@tauri-apps/api/event";
 import { Switch } from "@/components/ui/switch";
 import { LiveGameSettings } from "./LiveGameSettings";
+import { autoScaleEnabled, setAutoScaleEnabled } from "./uiScale";
 
 type WindowSettings = { fullApp: boolean; lowMemory: boolean };
 
@@ -11,6 +12,7 @@ export function WindowModeSettings() {
   const [settings, setSettings] = useState<WindowSettings | null>(null);
   const [busy, setBusy] = useState(false);
   const [error, setError] = useState("");
+  const [autoScale, setAutoScale] = useState(autoScaleEnabled);
   useEffect(() => {
     if (!isTauri()) return;
     let live = true;
@@ -35,6 +37,13 @@ export function WindowModeSettings() {
       </div>
       <Switch id="full-app-switch" checked={settings?.fullApp ?? false} disabled={disabled} onCheckedChange={value => void change("set_full_app_enabled", value)} aria-label="Fullsized App" />
     </div>
+    {settings?.fullApp && <div className="setting-row">
+      <div className="setting-copy">
+        <label htmlFor="auto-scale-switch">Auto-scale UI</label>
+        <p>Grows the window's content on screens larger than 1080p.</p>
+      </div>
+      <Switch id="auto-scale-switch" checked={autoScale} onCheckedChange={value => { setAutoScale(value); setAutoScaleEnabled(value); }} aria-label="Auto-scale UI" />
+    </div>}
     {settings?.fullApp && <LiveGameSettings />}
     {settings && !settings.fullApp && <div className="setting-row">
       <div className="setting-copy">

@@ -339,6 +339,12 @@ export function MatchRow({ game, name, isLast, onOpen }: { game: Game; name: (id
     <Tooltip label={opp ? `Lane opponent: ${name(opp.championId)}` : "Lane opponent unclear"}><div className="match-opp">
       {opp ? <>{seen && <ChampionIcon id={opp.championId} mode="desktop" />}<span><small>vs {name(opp.championId)}</small>{vision ? (visionDiff != null && <b className={visionDiff >= 0 ? "up" : "down"}>{visionDiff >= 0 ? "+" : "−"}{Math.abs(visionDiff)} vision</b>) : <b className={csDiff! >= 0 ? "up" : "down"}>{csDiff! >= 0 ? "+" : "−"}{Math.abs(csDiff!)} CS</b>}</span></> : <small>–</small>}
     </div></Tooltip>
+    {/* Shown only on wide rows (CSS container query); own team first, as the data orders it. */}
+    {game.players.length === 10 && <div className="match-teams" aria-label="Teams">
+      {[game.players.slice(0, 5), game.players.slice(5)].map((team, t) => <span key={t}>
+        {team.map((player, i) => <span key={i} className={player.me ? "is-me" : undefined}>{seen && <ChampionIcon id={player.championId} name={name(player.championId)} mode="desktop" />}</span>)}
+      </span>)}
+    </div>}
     <div className="match-items" aria-label="Items">
       {!game.items.length ? <small>Refresh to load items</small>
         : Array.from({ length: ITEM_SLOTS }, (_, i) => <Slot key={i} kind="item" id={game.items[i] ?? 0} pending={!seen} className={i === ITEM_SLOTS - 1 ? "is-trinket" : undefined} />)}

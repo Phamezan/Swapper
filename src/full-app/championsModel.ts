@@ -82,3 +82,27 @@ export function championPool(recent: { championId: number; role: string }[], mas
   const rest = [...mastery].sort((a, b) => b.lastPlayed - a.lastPlayed).filter(pick => !seen.has(pick.championId)).map(pick => ({ championId: pick.championId, role: "auto" }));
   return [...recent, ...rest].slice(0, limit);
 }
+
+/** A week's win-rate swing, in points, that counts as a spike (or, falling, a dip). */
+export const WEEK_SWING_POINTS = 1.5;
+// Whole tier steps: a "+" or "-" variant shares its letter's step (S+ and S are one tier).
+const TIER_STEPS = ["S", "A", "B", "C", "D"];
+// Moves whose better tier is below this one are churn at the bottom of the list.
+const LOWEST_SHOWN_STEP = TIER_STEPS.indexOf("C");
+const tierStep = (tier: string) => TIER_STEPS.indexOf(tier.replace(/[+-]$/, ""));
+
+/** A tier chip for a row: at least one whole tier up or down since last patch, unless both tiers are below C. */
+export function tierMove(tier: string, prevTier?: string | null): { up: boolean; was: string; label: string } | null {
+  if (!prevTier) return null;
+  const now = tierStep(tier), was = tierStep(prevTier);
+  if (now < 0 || was < 0 || now === was || Math.min(now, was) > LOWEST_SHOWN_STEP) return null;
+  return { up: now < was, was: prevTier, label: `Was ${prevTier} last patch` };
+}
+
+/** A spike/dip marker for a week's win-rate change in points, at one decimal as shown. */
+export function weekMove(delta?: number | null): { up: boolean; label: string } | null {
+  if (delta == null || !Number.isFinite(delta)) return null;
+  const points = Math.round(Math.abs(delta) * 10) / 10;
+  if (points < WEEK_SWING_POINTS) return null;
+  return { up: delta > 0, label: `Win rate ${delta > 0 ? "up" : "down"} ${points.toFixed(1)} points this week` };
+}

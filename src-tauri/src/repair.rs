@@ -38,7 +38,7 @@ pub(crate) fn ensure_repairable(account: &Account) -> Result<(), String> {
 }
 
 fn unverifiable_message() -> String {
-    "This account was saved without an account identifier, so its sign-in cannot be verified. Remove the account and add it again.".into()
+    "This account can't be verified. Remove it and add it again.".into()
 }
 
 /// Pure policy for the repair flow: may `identity`'s live session replace the
@@ -72,7 +72,7 @@ pub(crate) fn repair_check(saved: Option<&Account>, identity: &DetectedIdentity)
 /// already detected. The account keeps its id, so no duplicate is created.
 pub(crate) fn complete(config: &mut Config, id: Uuid, identity: &DetectedIdentity) -> Result<(), String> {
     if identity.puuid.trim().is_empty() {
-        return Err("Could not read account identity. Make sure Riot Client is signed in.".into());
+        return Err("Couldn't read your sign-in. Make sure Riot Client is open.".into());
     }
     let saved = config.accounts.iter().find(|a| a.id == id);
     match repair_check(saved, identity) {
@@ -82,10 +82,10 @@ pub(crate) fn complete(config: &mut Config, id: Uuid, identity: &DetectedIdentit
                 .map(Account::display_name)
                 .unwrap_or_else(|| "the saved account".into());
             return Err(format!(
-                "Different Riot account detected. Sign out in Riot Client and sign in to {name}, then retry. Swapper did not change the saved session."
+                "Wrong account signed in. Sign in to {name}, then retry."
             ));
         }
-        RepairCheck::AccountMissing => return Err("Account no longer exists.".into()),
+        RepairCheck::AccountMissing => return Err("That account was removed. Add it again to switch.".into()),
         RepairCheck::Unverifiable => return Err(unverifiable_message()),
     }
     riot::ensure_no_game().map_err(|error| error.message())?;
@@ -283,9 +283,9 @@ fn notify_session_expired(app: &AppHandle, account_id: Uuid, account_name: &str,
         },
     );
     let body = if mismatch {
-        format!("Riot Client signed in to a different account than {account_name}. Use Repair Account to fix it.")
+        format!("Wrong account signed in, not {account_name}. Repair the account to fix it.")
     } else {
-        format!("The saved session for {account_name} has expired. Use Repair Account to sign in again.")
+        format!("{account_name}'s sign-in expired. Repair the account to sign in again.")
     };
     let _ = app
         .notification()

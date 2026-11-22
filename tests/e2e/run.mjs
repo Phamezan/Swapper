@@ -132,7 +132,8 @@ async function navigate(url, selector) {
 
 async function shell() {
   await page.visible('nav[aria-label="Swapper pages"]');
-  for (const label of ["Dashboard", "Tierlist", "Matchups", "Draft", "Accounts", "Settings"]) {
+  // Draft only shows while champion select or a game is live.
+  for (const label of ["Dashboard", "Tierlist", "Matchups", "Accounts", "Settings"]) {
     await page.text('nav[aria-label="Swapper pages"] button', label);
   }
   assert.equal(await page.evaluate("[...document.querySelectorAll('nav[aria-label=\"Swapper pages\"] button')].filter(b => b.textContent.includes('Live game')).length"), 0);
@@ -175,6 +176,156 @@ async function searchPillFocus(box = '.search-pill') {
   assert.equal(focus.inputOutline, "none", "search input must not draw a square focus outline");
   assert.equal(focus.pillOutline, "solid", "search pill must show keyboard focus");
   assert.ok(focus.pillOutlineWidth >= 2 && focus.radius > 0, "focus ring belongs to the rounded pill");
+}
+
+const flyout = "/src/flyout-preview.html";
+const emitEvent = (event, payload = null) => page.evaluate(`window.__TAURI_INTERNALS__.invoke('plugin:event|emit', { event: ${JSON.stringify(event)}, payload: ${JSON.stringify(payload)} })`);
+const pause = ms => new Promise(resolve => setTimeout(resolve, ms));
+// Replaces Tauri commands for this page load only; every call is recorded in window.__calls.
+const stubInvoke = stubs => page.evaluate(`(() => {
+  const t = window.__TAURI_INTERNALS__, stubs = ${JSON.stringify(stubs)};
+  t.__orig ??= t.invoke; window.__calls = [];
+  t.invoke = (cmd, args, options) => {
+    window.__calls.push(cmd);
+    if (!(cmd in stubs)) return t.__orig(cmd, args, options);
+    const stub = stubs[cmd];
+    return stub.reject ? Promise.reject(stub.reject) : Promise.resolve(stub.delayed ? new Promise(resolve => setTimeout(() => resolve(stub.value ?? null), stub.delayed)) : stub.value ?? null);
+  };
+})()`);
+const switchDone = id => page.evaluate(`window.__TAURI_INTERNALS__.invoke('get_state').then(view => window.__TAURI_INTERNALS__.invoke('plugin:event|emit', { event: 'switch_done', payload: { id: ${JSON.stringify(id)}, view: { ...view, activeId: ${JSON.stringify(id)} } } }))`);
+const hoverBanner = async () => {
+  const at = await page.evaluate("(() => { const r = document.querySelector('.error-banner').getBoundingClientRect(); return { x: r.x + 20, y: r.y + r.height / 2 }; })()");
+  await page.cdp.send("Input.dispatchMouseEvent", { type: "mouseMoved", ...at });
+};
+
+// Swap UI events (docs/research/swap-edge-cases.md cases 1, 31, 34, 36): the backend contract is
+// switch_started / switch_done / switch_failed / launch_failed / session_expired.
+async function swapEvents() {
+  await check("Swap events: started shows a spinner and locks the rows, done clears both", async () => {
+    await navigate(flyout, ".account-row.is-active");
+    await emitEvent("switch_started", { id: "b", name: "Smurf" });
+    await page.wait("[...document.querySelectorAll('.account-row')].find(r => r.textContent.includes('Smurf'))?.textContent.includes('Switching')", "Smurf row switching");
+    assert.equal(await page.evaluate("document.querySelectorAll('.account-row .spin').length"), 1);
+    assert.equal(await page.evaluate("[...document.querySelectorAll('.account-row')].every(r => r.disabled)"), true, "every row is locked while a switch runs");
+    await switchDone("b");
+    await page.wait("document.querySelectorAll('.account-row .spin').length === 0", "spinner cleared");
+    await page.text(".account-row.is-active", "Smurf");
+    assert.equal(await page.evaluate("[...document.querySelectorAll('.account-row')].every(r => !r.disabled)"), true, "rows unlock after switch_done");
+  });
+  await check("Swap events: a failed switch clears busy, keeps the old account active and offers Repair", async () => {
+    await navigate(flyout, ".account-row.is-active");
+    await stubInvoke({ begin_repair: { value: null } });
+    await emitEvent("switch_started", { id: "b", name: "Smurf" });
+    await emitEvent("switch_failed", { id: "b", error: "Couldn't restore Smurf's sign-in. Try Repair account.", repairable: true });
+    await page.text(".error-banner", "Couldn't restore Smurf's sign-in");
+    await page.text(".error-banner .repair-banner-action", "Repair account");
+    assert.equal(await page.evaluate("document.querySelectorAll('.account-row .spin').length"), 0);
+    await page.text(".account-row.is-active", "Main account");
+    await page.text(".account-row:not(.is-active)", "Session needs repair");
+    assert.equal(await page.evaluate("[...document.querySelectorAll('.account-row')].every(r => !r.disabled)"), true);
+    await page.click(".error-banner .repair-banner-action");
+    await page.wait("window.__calls.includes('begin_repair')", "begin_repair invoked");
+    await page.wait("!document.querySelector('.error-banner .repair-banner-action')", "Repair action gone after starting repair");
+  });
+  await check("Swap events: a non-repairable failure shows no Repair action", async () => {
+    await navigate(flyout, ".account-row.is-active");
+    await emitEvent("switch_started", { id: "b", name: "Smurf" });
+    await emitEvent("switch_failed", { id: "b", error: "Close your game first, then switch accounts.", repairable: false });
+    await page.text(".error-banner", "Close your game first");
+    assert.equal(await page.evaluate("document.querySelectorAll('.error-banner .repair-banner-action').length"), 0);
+    assert.equal(await page.evaluate("document.querySelectorAll('.account-row .spin').length"), 0);
+  });
+  await check("Swap events: launch_failed offers Open Riot Client and a new switch clears it", async () => {
+    await navigate(flyout, ".account-row.is-active");
+    await stubInvoke({ open_riot: { value: null } });
+    await emitEvent("launch_failed", { id: "b", error: "League didn't start. Open Riot Client to finish any update or sign-in." });
+    await page.text(".error-banner", "League didn't start");
+    await page.click(".error-banner .repair-banner-action", "Open Riot Client");
+    await page.wait("window.__calls.includes('open_riot')", "open_riot invoked");
+    assert.equal(await page.evaluate("!!document.querySelector('.error-banner')"), true, "opening Riot Client must not hide the banner by itself");
+    await emitEvent("switch_started", { id: "c", name: "Practice" });
+    await page.wait("!document.querySelector('.error-banner')", "stale launch banner cleared by the next switch");
+    await emitEvent("switch_failed", { id: "c", error: "Close your game first, then switch accounts.", repairable: false });
+    await page.wait("!!document.querySelector('.error-banner')", "banner");
+    assert.equal(await page.evaluate("document.querySelectorAll('.error-banner .repair-banner-action').length"), 0, "Open Riot Client must not leak onto the next failure");
+  });
+  await check("Swap events: session_expired offers Repair and names a wrong-account mismatch", async () => {
+    await navigate(flyout, ".account-row.is-active");
+    await emitEvent("session_expired", { id: "b", name: "Smurf", mismatch: false });
+    await page.text(".error-banner", "Smurf's sign-in expired");
+    await page.text(".error-banner .repair-banner-action", "Repair account");
+    await page.click('.error-banner button[aria-label="Dismiss error"]');
+    await page.wait("!document.querySelector('.error-banner')", "banner dismissed");
+    await emitEvent("session_expired", { id: "b", name: "Smurf", mismatch: true });
+    await page.text(".error-banner", "Wrong account signed in, not Smurf");
+    await page.text(".account-row:not(.is-active)", "Session needs repair");
+  });
+  await check("Swap events: a rejected switch command (Something else is running) clears busy", async () => {
+    await navigate(flyout, ".account-row.is-active");
+    await stubInvoke({ switch_account: { reject: "Something else is running. Wait for it to finish." } });
+    await page.click(".account-row:not(.is-active)");
+    await page.text(".error-banner", "Something else is running");
+    assert.equal(await page.evaluate("document.querySelectorAll('.account-row .spin').length"), 0);
+    await page.text(".account-row.is-active", "Main account");
+    assert.equal(await page.evaluate("[...document.querySelectorAll('.account-row')].every(r => !r.disabled)"), true);
+  });
+  await check("Swap events: the error banner auto-dismisses after 5 s and a hover pauses the count", async () => {
+    await navigate(flyout, ".account-row.is-active");
+    await emitEvent("switch_failed", { id: "b", error: "Riot Client is still open. Close it fully, then try again.", repairable: false });
+    await page.text(".error-banner", "Riot Client is still open");
+    await pause(2000);
+    await hoverBanner();
+    await page.wait("document.querySelector('.error-countdown').classList.contains('is-paused')", "countdown paused by hover");
+    await pause(4500); // 6.5 s since the banner appeared: a running timer would have dismissed it
+    assert.equal(await page.evaluate("!!document.querySelector('.error-banner')"), true, "hovered banner must stay");
+    await page.cdp.send("Input.dispatchMouseEvent", { type: "mouseMoved", x: 2, y: 2 });
+    await poll("banner dismissed after the hover ends", () => page.evaluate("!document.querySelector('.error-banner')"), 5000);
+  });
+  await check("Swap events: a banner with a Repair action never auto-dismisses, only the X closes it", async () => {
+    await navigate(flyout, ".account-row.is-active");
+    await emitEvent("switch_failed", { id: "b", error: "Couldn't restore Smurf's sign-in. Try Repair account.", repairable: true });
+    await page.text(".error-banner .repair-banner-action", "Repair account");
+    await pause(5600);
+    await page.text(".error-banner .repair-banner-action", "Repair account");
+    await page.text(".account-row:not(.is-active)", "Session needs repair");
+    await page.click('.error-banner button[aria-label="Dismiss error"]');
+    await page.wait("!document.querySelector('.error-banner')", "banner dismissed by the X");
+  });
+  await check("Swap events: an Open Riot Client banner never auto-dismisses", async () => {
+    await navigate(flyout, ".account-row.is-active");
+    await emitEvent("launch_failed", { id: "b", error: "League didn't start. Open Riot Client to finish any update or sign-in." });
+    await page.text(".error-banner .repair-banner-action", "Open Riot Client");
+    await pause(5600);
+    await page.text(".error-banner .repair-banner-action", "Open Riot Client");
+  });
+  await check("Swap events: the full app overlay follows started/failed and shows Open Riot Client on launch_failed", async () => {
+    await navigate(fullApp, ".nav-group");
+    await emitEvent("switch_started", { id: "b", name: "Alt Account" });
+    await page.text(".switch-overlay h2", "Switching to Alt Account");
+    await emitEvent("switch_failed", { id: "b", error: "Close your game first, then switch accounts.", repairable: false });
+    await page.wait("!document.querySelector('.switch-overlay')", "overlay cleared by switch_failed");
+    await emitEvent("launch_failed", { id: "b", error: "League didn't start. Open Riot Client to finish any update or sign-in." });
+    await page.text(".ui-notice.is-error", "League didn't start");
+    await page.text(".ui-notice.is-error button", "Open Riot Client");
+    await pause(5600);
+    assert.equal(await page.evaluate("!!document.querySelector('.ui-notice.is-error button')"), true, "full-app launch notice keeps its action");
+  });
+  await check("Swap events: full app overlay survives a started event for another account and clears on done", async () => {
+    await navigate(fullApp, ".nav-group");
+    await emitEvent("switch_started", { id: "a", name: "Main Account" });
+    await page.visible(".switch-overlay");
+    await switchDone("a");
+    await page.wait("!document.querySelector('.switch-overlay')", "overlay cleared by switch_done");
+  });
+  await check("Swap events: a failed switch that Swapper did not start from the row blanks the active account until get_state returns", async () => {
+    await navigate(flyout, ".account-row.is-active");
+    const state = await page.evaluate("window.__TAURI_INTERNALS__.invoke('get_state')");
+    await stubInvoke({ get_state: { delayed: 800, value: state } });
+    await emitEvent("switch_started", { id: "b", name: "Smurf" }); // tray, shortcut or Restart client: previousActiveId was never set
+    await emitEvent("switch_failed", { id: "b", error: "Close your game first, then switch accounts.", repairable: false });
+    await pause(150);
+    assert.equal(await page.evaluate("document.querySelectorAll('.account-row.is-active').length"), 1, "the signed-in account must stay marked while the state reloads");
+  });
 }
 
 async function main() {
@@ -1357,7 +1508,7 @@ async function main() {
     await page.text('.pn-patch-switch [aria-pressed="true"]', "26.21");
   });
   await check("Active sidebar entries scroll every page back to the top", async () => {
-    for (const [label, selector] of [["Patch notes", ".pn-entry"], ["Dashboard", ".match-row"], ["Tierlist", ".tier-table"], ["Matchups", ".fa-matchup-empty"], ["Draft", ".fa-draft-empty"], ["Accounts", ".fa-account-card"], ["Settings", ".fa-settings-content"]]) {
+    for (const [label, selector] of [["Patch notes", ".pn-entry"], ["Dashboard", ".match-row"], ["Tierlist", ".tier-table"], ["Matchups", ".fa-matchup-empty"], ["Accounts", ".fa-account-card"], ["Settings", ".fa-settings-content"]]) {
       await nav(label, selector);
       const reduce = label !== "Patch notes";
       await page.cdp.send("Emulation.setEmulatedMedia", { features: [{ name: "prefers-reduced-motion", value: reduce ? "reduce" : "no-preference" }] });
@@ -1386,7 +1537,15 @@ async function main() {
     assert.equal(await page.evaluate("document.querySelector('.pn-ability-icon') === null"), true, "unavailable metadata leaves readable source names or bare keys");
     await navigate(fullApp, ".nav-group");
   });
-  await check("Sidebar Draft", () => nav("Draft", ".fa-draft-empty"));
+  await check("Sidebar Draft appears only with champion select", async () => {
+    assert.equal(await page.evaluate("[...document.querySelectorAll('nav[aria-label=\"Swapper pages\"] button')].some(b => b.textContent.includes('Draft'))"), false, "hidden while idle");
+    await page.evaluate("window.previewGamePhase('ChampSelect')");
+    await page.visible(".cs-band");
+    await page.text('nav[aria-label="Swapper pages"] [aria-current="page"]', "Draft");
+    await page.evaluate("window.previewGamePhase('None')");
+    await page.wait("![...document.querySelectorAll('nav[aria-label=\"Swapper pages\"] button')].some(b => b.textContent.includes('Draft'))", "Draft hidden again");
+    await navigate(fullApp, ".nav-group");
+  });
   await check("Sidebar Accounts", async () => {
     await nav("Accounts", ".fa-account-card");
     await page.text('.fa-account-card.is-active .fa-restart', 'Restart client');
@@ -1732,6 +1891,29 @@ async function main() {
     await page.click(".picker-foot button", "Manage accounts");
     await page.visible(".fa-account-card");
   });
+  await check("Accounts reorder mode moves cards and the sidebar picker follows", async () => {
+    const cardNames = "[...document.querySelectorAll('.fa-account-card h2')].map(h => h.textContent).join('|')";
+    assert.equal(await page.evaluate("document.querySelectorAll('.fa-account-grip, .fa-account-step').length"), 0, 'no reorder controls outside reorder mode');
+    await page.click('.fa-reorder-toggle', 'Reorder');
+    await page.visible('.fa-reorder-hint');
+    assert.equal(await page.evaluate("document.querySelectorAll('.fa-account-card .fa-switch').length"), 0, 'card actions step aside in reorder mode');
+    assert.equal(await page.evaluate("document.querySelector('[aria-label=\"Move Swapper Demo up\"]').disabled"), true, 'first card cannot move up');
+    await page.click('[aria-label="Move Swapper Demo down"]');
+    await page.wait(`${cardNames} === 'Alt Account|Swapper Demo|Smurf Two'`, 'Move down moves the card');
+    await page.text('.fa-accounts [aria-live]', 'Moved Swapper Demo to position 2 of 3');
+    // ArrowUp on the drag handle moves its card.
+    await page.evaluate("document.querySelectorAll('.fa-account-grip')[2].focus()");
+    await key('ArrowUp');
+    await page.wait(`${cardNames} === 'Alt Account|Smurf Two|Swapper Demo'`, 'handle ArrowUp moves the card');
+    assert.equal(await page.evaluate("document.activeElement.getAttribute('aria-label')"), 'Reorder Smurf Two, position 2 of 3', 'focus stays on the moved handle');
+    await page.click('.fa-reorder-toggle', 'Done');
+    await page.visible('.fa-account-card .fa-switch');
+    await page.click('.podium-switch');
+    await page.visible('.account-picker');
+    await page.wait("[...document.querySelectorAll('.picker-copy b')].map(b => b.textContent).join('|') === 'Alt Account|Smurf Two|Swapper Demo'", 'picker follows the saved order');
+    await page.cdp.send('Input.dispatchKeyEvent', { type: 'keyDown', key: 'Escape', code: 'Escape', windowsVirtualKeyCode: 27 });
+    await page.cdp.send('Input.dispatchKeyEvent', { type: 'keyUp', key: 'Escape', code: 'Escape', windowsVirtualKeyCode: 27 });
+  });
   // Every restart entry point asks the backend plan first (mocked via ?restart=); the status offer is mocked via ?client=.
   await check("Picker restart action explains itself and is guarded", async () => {
     await navigate(`${fullApp}?restart=ask`, ".nav-group");
@@ -1888,7 +2070,6 @@ async function main() {
 
   await check("Draft follows champ select, loading, live, reconnect and game end", async () => {
     await navigate(fullApp, ".nav-group");
-    await nav("Draft", ".fa-draft-empty");
     await page.evaluate("window.previewGamePhase('ChampSelect')");
     await page.visible(".cs-band");
     for (const phase of ["GameStart", "InProgress", "Reconnect"]) {
@@ -1904,7 +2085,6 @@ async function main() {
     await page.text('nav[aria-label="Swapper pages"] [aria-current="page"]', "Draft");
     await page.evaluate("window.previewGamePhase('EndOfGame')");
     await page.text('nav[aria-label="Swapper pages"] [aria-current="page"]', "Dashboard");
-    await nav("Draft", ".fa-draft-empty");
     await shell();
   });
 
@@ -2293,6 +2473,7 @@ async function main() {
     await page.evaluate("window.__TAURI_INTERNALS__.invoke('plugin:event|emit', { event: 'client_health', payload: 'closed' })");
     await page.text('.account-row.is-active small', 'Open League');
   });
+  await swapEvents();
   if (existsSync(path.join(root, setup))) {
     await check("Setup next back and finish", async () => {
       await navigate(setup, '.ob-card [role="radio"]');

@@ -285,13 +285,13 @@ pub async fn champion_abilities(
 #[tauri::command]
 pub async fn ability_icon(path: String) -> Result<String, String> {
     if !valid_asset(&path) {
-        return Err("Not a game-data icon.".into());
+        return Err("That icon couldn't be loaded. Try again.".into());
     }
     let bytes = crate::runes::game_data::bytes(&path)
         .await
         .map_err(|e| e.to_string())?;
     if bytes.len() > MAX_ICON_BYTES || !bytes.starts_with(b"\x89PNG\r\n\x1a\n") {
-        return Err("Unexpected icon data.".into());
+        return Err("That icon couldn't be loaded. Try again.".into());
     }
     Ok(format!(
         "data:image/png;base64,{}",

@@ -307,7 +307,7 @@ fn load_file<T: DeserializeOwned>(path: &Path) -> Option<HashMap<String, Stored<
     )
 }
 
-fn write_atomic(path: &Path, bytes: &[u8]) {
+pub(crate) fn write_atomic(path: &Path, bytes: &[u8]) {
     if let Some(parent) = path.parent() {
         if std::fs::create_dir_all(parent).is_err() {
             return;

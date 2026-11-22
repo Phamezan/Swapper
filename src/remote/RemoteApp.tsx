@@ -302,11 +302,11 @@ export default function RemoteApp() {
           if (response.ok) setActionError(null);
           else {
             const result = await response.json() as { message?: string };
-            setActionError(result.message ?? "Could not apply the prepick.");
+            setActionError(result.message ?? "Couldn't set that pick. Try again.");
           }
         }
       } catch {
-        if (!cancelled) setActionError("Could not apply the prepick. Waiting to retry.");
+        if (!cancelled) setActionError("Couldn't set that pick. Retrying…");
       } finally {
         pending = false;
       }
@@ -380,7 +380,7 @@ export default function RemoteApp() {
         runeChampion.current = next.championId;
       }
     } catch {
-      if (request === runeRequest.current) setRunesError("Could not load runes.");
+      if (request === runeRequest.current) setRunesError("Couldn't load runes. Try again.");
     }
   }
 
@@ -399,7 +399,7 @@ export default function RemoteApp() {
         body: JSON.stringify({ championId, championName, build }),
       });
       const result = await response.json() as { ok: boolean; message: string | null };
-      if (!response.ok || !result.ok) throw new Error(result.message ?? "Could not add the item set.");
+      if (!response.ok || !result.ok) throw new Error(result.message ?? "Couldn't add those items. Try again.");
     } catch (reason) {
       setRunesError(String(reason));
       throw reason;
@@ -469,10 +469,10 @@ export default function RemoteApp() {
         headers: { "X-Swapper-Action": "1", "Content-Type": "application/json" },
         body: JSON.stringify({ enabled }),
       });
-      if (!response.ok) setRunesError("Could not update the setting.");
+      if (!response.ok) setRunesError("Couldn't save that setting. Try again.");
       else await loadRunes();
     } catch {
-      setRunesError("Could not update the setting.");
+      setRunesError("Couldn't save that setting. Try again.");
     } finally {
       setRunesBusy(false);
     }
@@ -487,10 +487,10 @@ export default function RemoteApp() {
         headers: { "X-Swapper-Action": "1", "Content-Type": "application/json" },
         body: JSON.stringify({ enabled }),
       });
-      if (!response.ok) setRunesError("Could not update the setting.");
+      if (!response.ok) setRunesError("Couldn't save that setting. Try again.");
       else await loadRunes();
     } catch {
-      setRunesError("Could not update the setting.");
+      setRunesError("Couldn't save that setting. Try again.");
     } finally {
       setRunesBusy(false);
     }
@@ -501,7 +501,7 @@ export default function RemoteApp() {
       `/api/runes/pro-builds?championId=${championId}&position=${encodeURIComponent(position)}&page=${page}&isOtp=${otp}`,
       { cache: "no-store" },
     );
-    if (!response.ok) throw new Error("Could not load pro builds.");
+    if (!response.ok) throw new Error("Couldn't load pro builds. Try again.");
     return await response.json() as ProBuildsView;
   }
 
@@ -545,7 +545,7 @@ export default function RemoteApp() {
     const query = new URLSearchParams();
     for (const [key, value] of Object.entries(params)) if (value) query.set(key, value);
     const response = await fetch(`${path}?${query.toString()}`, { cache: "no-store" });
-    if (!response.ok) throw new Error("Could not load champion data.");
+    if (!response.ok) throw new Error("Couldn't load champions. Try again.");
     return await response.json() as T;
   }
 
@@ -568,10 +568,10 @@ export default function RemoteApp() {
         headers: { "X-Swapper-Action": "1", "Content-Type": "application/json" },
         body: JSON.stringify({ enabled }),
       });
-      if (!response.ok) setRunesError("Could not update the setting.");
+      if (!response.ok) setRunesError("Couldn't save that setting. Try again.");
       else await loadRunes();
     } catch {
-      setRunesError("Could not update the setting.");
+      setRunesError("Couldn't save that setting. Try again.");
     } finally {
       setRunesBusy(false);
     }
@@ -587,7 +587,7 @@ export default function RemoteApp() {
         body: JSON.stringify({ tier }),
       });
       const result = await response.json() as { ok: boolean; message: string | null };
-      if (!response.ok || !result.ok) setRunesError(result.message ?? "Could not update the rank filter.");
+      if (!response.ok || !result.ok) setRunesError(result.message ?? "Couldn't save that rank. Try again.");
       else await loadRunes();
     } catch {
       setRunesError("Could not reach Swapper. Check your connection and try again.");
@@ -664,7 +664,7 @@ export default function RemoteApp() {
         {game?.message && status?.lcuConnected && <p className="remote-inline-error" role="alert">{game.message}</p>}
         {actionError && <p className="remote-inline-error" role="alert">{actionError}</p>}
         {everConnected && !swapperConnected && (
-          <p className="remote-offline-help" role="alert">Can't reach Swapper on your PC. If your PC's network changed, open Swapper on your PC → Remote and scan the new QR code.</p>
+          <p className="remote-offline-help" role="alert">Can't reach your PC. Open Swapper there, go to Remote, scan the QR.</p>
         )}
 
         {showHandoff && (
@@ -741,7 +741,7 @@ export default function RemoteApp() {
             ) : (
               <>
                 <div className="remote-grid-wrap">
-                  {catalogError && champions.length === 0 && <p className="remote-empty">Champion data is unavailable. Waiting for League to reconnect.</p>}
+                  {catalogError && champions.length === 0 && <p className="remote-empty">Champions couldn't load. Waiting for League…</p>}
                   {!catalogError && champions.length === 0 && <p className="remote-empty">Loading champions…</p>}
                   {champions.length > 0 && filtered.length === 0 && <p className="remote-empty">No available champions match this filter.</p>}
                   <div className="remote-champion-grid">
@@ -807,7 +807,7 @@ export default function RemoteApp() {
               <>
                 <p className="remote-eyebrow">LEAGUE CONTROL</p>
                 <h1>{status?.lcuConnected ? "Waiting for League" : "League is offline"}</h1>
-                <p>{status?.lcuConnected ? "Open a lobby or start matchmaking in League." : "Start League Client on this PC. The controls will appear when it connects."}</p>
+                <p>{status?.lcuConnected ? "Open a lobby or start matchmaking in League." : "Start League on this PC. Controls appear when it connects."}</p>
               </>
             )}
           </section>

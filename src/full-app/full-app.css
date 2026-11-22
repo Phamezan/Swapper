@@ -469,7 +469,7 @@ body { background: var(--ui-surface-0); }
 .fa-launcher-intro { display: flex; flex-wrap: wrap; align-items: center; gap: 14px; padding: 4px 0 0; }
 .fa-launcher-intro > p { display: flex; align-items: center; gap: 8px; margin: 0; color: var(--text-secondary); font-size: var(--fa-small); }
 .fa-launcher-intro > p > svg { color: var(--fa-you); }
-.fa-launcher-intro > small { margin-left: auto; font-size: var(--fa-small); }
+.fa-launcher-intro > .fa-reorder-toggle { margin-left: auto; }
 .fa-account-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(310px, 1fr)); gap: 20px; }
 .fa-account-card { position: relative; isolation: isolate; overflow: hidden; padding: 22px; }
 .fa-account-card::before { content: ""; position: absolute; inset: 0 0 auto; z-index: -1; height: 120px; background: radial-gradient(80% 120% at 85% -10%, rgb(255 255 255 / .05), transparent 70%); }
@@ -478,13 +478,28 @@ body { background: var(--ui-surface-0); }
 .fa-account-card.is-active, .fa-frame[data-look] .dashboard-shell .fa-account-card.is-active { border-color: rgb(197 227 158 / .55); box-shadow: inset 0 0 0 1px rgb(197 227 158 / .25), var(--fa-shadow); }
 .fa-account-card.is-active::before { background: linear-gradient(180deg, var(--fa-you-tint), transparent); }
 .fa-account-top { display: flex; align-items: center; justify-content: space-between; margin-bottom: 18px; }
+.fa-frame .fa-reorder-toggle { min-height: 34px; padding: 6px 12px; gap: 8px; }
+.fa-reorder-hint { margin: -10px 0 0; color: var(--ui-text-2); font-size: var(--ui-label); }
+/* Reorder mode: the whole card is the drag target; a dashed outline marks it as movable. */
+.fa-account-grid.is-editing .fa-account-card { cursor: grab; touch-action: none; outline: 1px dashed var(--ui-brand-line); outline-offset: 3px; transition: outline-color var(--ui-fast) var(--ui-ease); }
+.fa-account-grid.is-editing .fa-account-card:hover { outline-color: var(--ui-brand); }
+.fa-account-steps { display: inline-flex; gap: 2px; margin: -6px -8px -6px 0; }
+.fa-frame .fa-account-step:disabled { opacity: .35; cursor: default; }
+.fa-frame .fa-account-grip { display: inline-flex; align-items: center; justify-content: center; gap: 10px; border: 1px dashed var(--ui-line-3); border-radius: var(--ui-radius-sm); background: var(--ui-well); color: var(--ui-text-2); font: inherit; font-size: var(--ui-label); font-weight: 600; cursor: grab; touch-action: none; }
+.fa-frame .fa-account-grip:hover:not(:disabled) { border-color: var(--ui-brand-line); color: var(--ui-text-1); }
+.fa-frame .fa-account-grip:disabled { cursor: default; opacity: .5; }
+.fa-account-grid.is-sorting { user-select: none; }
+.fa-account-grid.is-sorting .fa-account-card { transition: transform 160ms var(--ui-ease); }
+.fa-frame .fa-account-grid.is-sorting .fa-account-card.is-dragging { z-index: 2; transition: none; cursor: grabbing; background: var(--ui-surface-2); box-shadow: 0 24px 48px -16px rgb(0 0 0 / .85), var(--fa-shadow); }
+.fa-account-grid.is-sorting .fa-account-card.is-settling { transition: transform 160ms var(--ui-ease); }
 .fa-account-state { display: inline-flex; align-items: center; gap: 6px; padding: 4px 10px; border: 1px solid var(--fa-line-2); border-radius: var(--fa-radius-xs); background: rgb(11 11 13 / .45); color: var(--text-secondary); font-size: var(--ui-label); font-weight: 550; }
 .fa-account-state.is-active { border-color: rgb(197 227 158 / .45); color: var(--fa-you); background: rgb(197 227 158 / .1); }
 .fa-account-identity { display: flex; align-items: center; gap: 18px; margin-bottom: 22px; }
 .fa-account-identity img, .fa-account-initial { display: grid; place-items: center; width: 84px; height: 84px; flex: none; border: 2px solid var(--fa-line-3); border-radius: var(--fa-radius); background: linear-gradient(140deg, var(--fa-raised), var(--fa-panel)); font-size: 32px; font-weight: 750; box-shadow: 0 10px 24px -12px rgb(0 0 0 / .9); }
 .fa-account-card.is-active .fa-account-identity img, .fa-account-card.is-active .fa-account-initial { border-color: var(--fa-you); }
-.fa-account-identity h2 { font-size: 24px; font-weight: 750; letter-spacing: -.025em; overflow-wrap: anywhere; }
-.fa-account-identity p { margin-top: 4px; font-size: var(--fa-small); overflow-wrap: anywhere; }
+.fa-account-identity > span { min-width: 0; }
+.fa-account-identity h2 { overflow: hidden; font-size: 24px; font-weight: 750; letter-spacing: -.025em; white-space: nowrap; text-overflow: ellipsis; }
+.fa-account-identity p { overflow: hidden; margin-top: 4px; font-size: var(--fa-small); white-space: nowrap; text-overflow: ellipsis; }
 .fa-account-meta { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 20px; padding-top: 16px; border-top: 1px solid var(--fa-line); }
 .fa-account-meta span { display: grid; gap: 4px; color: var(--text-muted); font-size: var(--ui-label); }
 .fa-account-meta strong { color: var(--text-primary); font-size: var(--fa-body); font-weight: 600; }
@@ -502,7 +517,7 @@ body { background: var(--ui-surface-0); }
 .fa-account-menu .is-danger { color: var(--fa-loss); }
 
 /* ---------- Settings ---------- */
-.fa-settings-layout { display: grid; grid-template-columns: 210px minmax(0, 1fr); gap: 32px; min-height: 0; flex: 1; }
+.fa-settings-layout { display: grid; grid-template-columns: 210px minmax(0, 1fr); gap: 32px; min-height: 0; flex: 1; width: 100%; max-width: 1320px; margin-inline: auto; }
 .fa-settings-nav { padding: 6px 0; }
 .fa-settings-tabs { position: sticky; top: 0; display: grid; gap: 4px; padding: 8px; border: 1px solid var(--fa-line); border-radius: var(--fa-radius); background: var(--fa-card-bg); box-shadow: var(--fa-shadow); }
 .fa-frame .fa-settings-tabs .settings-tab { justify-content: flex-start; height: auto; min-height: 42px; padding: 0 14px; border: 1px solid transparent; border-radius: var(--fa-radius-sm); background: transparent; color: var(--text-secondary); font-size: var(--fa-body); font-weight: 550; letter-spacing: 0; text-align: left; text-transform: none; }
@@ -516,6 +531,10 @@ body { background: var(--ui-surface-0); }
 .fa-settings-group { padding: 4px 24px 12px; border: 1px solid var(--fa-line); border-radius: var(--fa-radius); background: var(--fa-card-bg); box-shadow: var(--fa-shadow); }
 .fa-settings-group .setting-row { min-height: 78px; gap: 24px; padding: 18px 0; border-color: var(--fa-line); }
 .fa-settings-group > .setting-row:last-child { border-bottom: 0; }
+.fa-settings-group .deceive-notice { display: grid; gap: 10px; margin: -6px 0 14px; padding: 12px 14px; border: 1px solid var(--fa-line); border-left: 3px solid var(--ui-accent, #c5e39e); border-radius: 8px; background: rgb(255 255 255 / .03); font-size: 13px; line-height: 1.5; }
+.fa-settings-group .deceive-notice p { margin: 0; }
+.fa-settings-group .deceive-notice div { display: flex; gap: 8px; }
+.fa-settings-group .deceive-notice.is-warn { border-left-color: var(--ui-warn, #e6b45a); }
 .fa-settings-group > .update-section:first-child { margin-top: 0; padding-top: 0; border-top: 0; }
 .fa-settings-group .setting-copy, .fa-settings-group .setting-copy label { font-size: var(--fa-body); }
 .fa-settings-group .setting-copy strong { font-weight: 600; }

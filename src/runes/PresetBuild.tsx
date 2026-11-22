@@ -30,7 +30,7 @@ export function PresetBuild({ mode, build, loading, matchupOnly = false }: Props
       </span>
     );
   }
-  if (!build) return matchupOnly ? <p className="runes-note">Item build unavailable for this matchup.</p> : null;
+  if (!build) return matchupOnly ? <p className="runes-note">No build for this matchup.</p> : null;
   if (build.items.length === 0 && build.starters.length === 0) return null;
 
   // The first `coreLen` items are one observed 3-item core; the rest are

@@ -28,7 +28,7 @@ function formatRelative(seconds: number) {
 }
 
 function revokeMessage(reason: unknown) {
-  return typeof reason === "string" ? reason : "Could not update paired devices.";
+  return typeof reason === "string" ? reason : "Couldn't update paired phones. Try again.";
 }
 
 type Props = {

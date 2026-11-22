@@ -6,7 +6,7 @@ use tauri_plugin_positioner::{Position, WindowExt};
 pub(crate) fn hide_flyout(app: tauri::AppHandle) -> Result<(), String> {
     hide_main(
         &app.get_webview_window(full_app::FLYOUT)
-            .ok_or("Flyout is unavailable")?,
+            .ok_or("Swapper is unavailable. Restart it.")?,
     )
 }
 
@@ -61,9 +61,9 @@ pub(crate) fn set_flyout_memory(window: &tauri::WebviewWindow, low: bool) {
 /// low memory target, or in low memory mode releases its webview entirely.
 pub(crate) fn hide_main(window: &tauri::WebviewWindow) -> Result<(), String> {
     if full_app::low_memory(window.app_handle()) {
-        return window.destroy().map_err(|e| e.to_string());
+        return window.destroy().map_err(|e| { eprintln!("Window close failed: {e}"); "Couldn't close Swapper. Try again.".to_string() });
     }
-    let result = window.hide().map_err(|e| e.to_string());
+    let result = window.hide().map_err(|e| { eprintln!("Window hide failed: {e}"); "Couldn't hide Swapper. Try again.".to_string() });
     set_flyout_memory(window, true);
     result
 }
@@ -74,11 +74,11 @@ pub(crate) fn create_flyout(
     app: &tauri::AppHandle,
     destination: Option<&str>,
 ) -> Result<(), String> {
-    let config = full_app::flyout_config(app).ok_or("Flyout window config is missing")?;
+    let config = full_app::flyout_config(app).ok_or("Swapper couldn't open. Restart it.")?;
     full_app::expect_flyout(app, destination);
     let window = tauri::WebviewWindowBuilder::from_config(app, &config)
         .and_then(|builder| builder.build())
-        .map_err(|e| e.to_string())?;
+        .map_err(|e| { eprintln!("Flyout create failed: {e}"); "Swapper couldn't open. Restart it.".to_string() })?;
     disable_window_transitions(&window);
     set_flyout_memory(&window, true);
     Ok(())

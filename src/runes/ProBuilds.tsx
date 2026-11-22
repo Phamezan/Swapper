@@ -316,7 +316,7 @@ export function ProBuilds({
       <div className="pro-list">
         {toggle}
         <p className="runes-note pro-unavailable">
-          {view.message ?? "Pro builds unavailable."}
+          {view.message ?? "Pro builds are unavailable. Try again shortly."}
         </p>
         <button type="button" className="pro-retry" onClick={onRetry}>Try again</button>
       </div>

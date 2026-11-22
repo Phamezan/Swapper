@@ -17,6 +17,7 @@ export default defineConfig(() => ({
         main: path.resolve(import.meta.dirname, "index.html"),
         remote: path.resolve(import.meta.dirname, "remote.html"),
         "full-app": path.resolve(import.meta.dirname, "full-app.html"),
+        "tray-menu": path.resolve(import.meta.dirname, "tray-menu.html"),
       },
     },
   },

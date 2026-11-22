@@ -2,7 +2,7 @@ import { displayPatch } from "../patchDisplay";
 import { AbilityHover } from "./AbilityHover";
 import { useEffect, useMemo, useRef, useState, type CSSProperties, type ReactNode, type KeyboardEvent } from "react";
 import { invoke } from "@tauri-apps/api/core";
-import { RefreshCw } from "lucide-react";
+import { RefreshCw, TrendingDown, TrendingUp } from "lucide-react";
 import { SearchIcon } from "./ui/icons";
 import { ChampionIcon } from "../runes/ChampionIcon";
 import { MatchupGuideCarousel } from "./MatchupGuideCarousel";
@@ -17,7 +17,7 @@ import { DuoTable } from "./DuoTable";
 import { MatchupStrip, ChampionArt } from "./MatchupStrip";
 import { ChampionSlot } from "./ChampionSlot";
 import { RankPicker, ChampionPicker } from "./Picker";
-import { NearEnd, NearViewport } from "./NearViewport";
+import { GlowOnce, NearEnd, NearViewport } from "./NearViewport";
 import { PresetBuild } from "../runes/PresetBuild";
 import { CachedBadge } from "../runes/CachedBadge";
 import { RoleIcon } from "../runes/RoleIcon";
@@ -25,7 +25,7 @@ import { TIER_OPTIONS, fmtPct, isLowSample, tierClass, wrTone } from "../runes/t
 import type { ChampionOption, ChampionOverviewView, ChampionCountersView, TierListView, TierRow, MatchupView } from "../runes/types";
 import { useChampionArt } from "./art";
 import { useAmbientChampion } from './AmbientArt';
-import { autoRows, championPool, mainRoles, mostPlayed, ROLES, type AutoRow } from "./championsModel";
+import { autoRows, championPool, mainRoles, mostPlayed, ROLES, tierMove, weekMove, type AutoRow } from "./championsModel";
 import type { DashboardView } from "./types";
 import { Notice, Skeleton } from "./ui/States";
 import { fmtCount } from "./ui/format";
@@ -259,7 +259,7 @@ export default function Champions({ matchups, focus, onSelectionChange, onOpenVo
         <div className="fa-versus-stat">
           {detail.stats ? <><small>{selected.name} win rate</small><strong className={detail.stats.winPct >= 50 ? "up" : "down"}>{fmtPct(detail.stats.winPct)}</strong>
             <span className="fa-versus-bar" role="img" aria-label={`${selected.name} ${fmtPct(detail.stats.winPct)}, ${detail.enemyName} ${fmtPct(100 - detail.stats.winPct)}`}><i style={{ width: `${detail.stats.winPct}%` }} /></span>
-            <span>{fmtCount(detail.stats.games)} games{isLowSample(detail.stats.games) && <> · <Tooltip label="Under 100 games in this matchup: the win rate is a rough read, and the build below is the general one."><em className="fa-low-sample">Low sample</em></Tooltip></>} · {laneLabel(role)} · <b className={detail.stats.delta >= 0 ? "up" : "down"}>{detail.stats.delta >= 0 ? "+" : "−"}{Math.abs(detail.stats.delta).toFixed(1)} vs avg</b></span></>
+            <span>{fmtCount(detail.stats.games)} games{isLowSample(detail.stats.games) && <> · <Tooltip label="Under 100 games here: treat this win rate as a rough guide."><em className="fa-low-sample">Low sample</em></Tooltip></>} · {laneLabel(role)} · <b className={detail.stats.delta >= 0 ? "up" : "down"}>{detail.stats.delta >= 0 ? "+" : "−"}{Math.abs(detail.stats.delta).toFixed(1)} vs avg</b></span></>
             : <><small>{laneLabel(role)} · {tierLabel(tier)}</small><span>Too few games.</span></>}
         </div>
         <VersusSide id={enemy} name={detail.enemyName} label="Opponent" end />
@@ -321,14 +321,15 @@ export default function Champions({ matchups, focus, onSelectionChange, onOpenVo
 
 function TierLine({ row, rank, lane, average, peak, onOpen, onIntent }: { row: TierRow; rank: number; lane: string; average: number; peak: { pick: number; ban: number }; onOpen: () => void; onIntent: () => void }) {
   const delta = row.winPct - average;
+  const move = tierMove(row.tier, row.prevTier), week = weekMove(row.weekWinDelta);
   // A short dwell, so sweeping the pointer across the table does not start a download per row.
   const dwell = useRef<number>(0);
   return <tr className={tierClass(row.tier)} onClick={onOpen} onPointerEnter={() => { dwell.current = window.setTimeout(onIntent, 120); }} onPointerLeave={() => window.clearTimeout(dwell.current)} onFocus={onIntent}>
     <td className="col-rank">{rank}</td>
     <td><button className="tier-champ" onClick={event => { event.stopPropagation(); onOpen(); }}><NearViewport className="fa-tier-portrait"><ChampionIcon id={row.championId} name={row.name} mode="desktop" /></NearViewport><strong>{row.name}</strong></button></td>
     <td className="col-role"><RoleIcon role={lane} size={18} mode="desktop" /></td>
-    <td><span className={`fa-tier ${tierClass(row.tier)}`}>{row.tier}</span></td>
-    <td className="col-wr"><strong>{fmtPct(row.winPct)}</strong><Tooltip label="Compared with this role’s average"><small className={delta >= 0 ? "up" : "down"}>{delta >= 0 ? "+" : "−"}{Math.abs(delta).toFixed(1)}</small></Tooltip></td>
+    <td className="col-tier"><span className={`fa-tier ${tierClass(row.tier)}`}>{row.tier}</span>{move && <GlowOnce className={`fa-tier-move ${move.up ? "up" : "down"}`}><Tooltip label={move.label}><span aria-label={move.label}><i aria-hidden>{move.up ? "▲" : "▼"}</i> {move.was}</span></Tooltip></GlowOnce>}</td>
+    <td className="col-wr"><strong>{fmtPct(row.winPct)}</strong>{week && <Tooltip label={week.label}><i className={`fa-week-move ${week.up ? "up" : "down"}`} aria-label={week.label}>{week.up ? <TrendingUp size={14} aria-hidden /> : <TrendingDown size={14} aria-hidden />}</i></Tooltip>}<Tooltip label="Compared with this role’s average"><small className={delta >= 0 ? "up" : "down"}>{delta >= 0 ? "+" : "−"}{Math.abs(delta).toFixed(1)}</small></Tooltip></td>
     <td className="col-num"><RateBar value={row.pickPct} peak={peak.pick} /></td>
     <td className="col-num ban"><RateBar value={row.banPct} peak={peak.ban} /></td>
     <td className="col-num muted">{fmtCount(row.games)}</td>

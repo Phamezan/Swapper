@@ -13,6 +13,7 @@ import { PageHeader } from "./full-app/ui/PageHeader";
 import { OnboardingGate } from "./onboarding/Onboarding";
 import { AccountsView, AccountForms, AccountMenu } from "./app/AccountViews";
 import { useAppController } from "./app/useAppController";
+import { useAutoDismiss } from "./app/useAutoDismiss";
 import type { FullAppBridge } from "./app/types";
 import "./App.css";
 import "./flyout.css";
@@ -25,16 +26,20 @@ function App({ fullApp }: { fullApp?: FullAppBridge } = {}) {
   const controller = useAppController(fullApp);
   const {
     data, view, inChampSelect, modeSpin, setModeSpin, busy, error, setError, repairableId, setRepairableId,
-    useDeceive, koreanFont, ltkInstalling, ltkInstallError, riotExe, setRiotExe, remoteTransport,
+    switchAsk, setSwitchAsk, switchToAccount, useDeceive, koreanFont, customMods, setCustomModsSetting, ltkInstalling, ltkInstallError, riotExe, setRiotExe, remoteTransport,
     setRemoteTransport, settingsTab, setSettingsTab, remoteQrRequest, startOnStartup, runes, runesLoading,
-    runesBusy, runesError, shopNotice, runeSession, native, showError, loadRunes, importItemBuild,
+    runesBusy, runesError, shopNotice, runeSession, native, showError, loadRunes, importItemBuild, launchFailed, setLaunchFailed,
     applyRunes, pickSpell, allowLanFirewall, setImportItemsWithRunes, setApplySpellsWithRunes,
     loadProBuilds, loadKeystoneBuild, loadMatchup, championApi, setAutoApply, setRuneTier,
-    setNotifications, setReadyCheckNotifications, setKoreanFontSetting, installLtkManager, setRemote,
+    setNotifications, setReadyCheckNotifications, installLtkManager, setRemote,
     setStartOnStartupSetting, navigate, startRepair, pageTitle, footerText, footerLoggedIn, manualPath,
     changeDeceive, deceivePrompt, setDeceivePrompt, restartClientNow, changeRiotPathMode, commitRiotPath, applyHotkey, browseRiotPath,
     toolsOpen, brandMode, otherMode, switchLabel, themed, modeName,
   } = controller;
+  const dismissError = () => { setRepairableId(null); setLaunchFailed(false); setError(null); };
+  // A banner carrying an action (Repair account / Open Riot Client) stays until dismissed or replaced.
+  const hasAction = Boolean(repairableId) || launchFailed;
+  const errorTimer = useAutoDismiss(hasAction ? null : error, dismissError);
 
   return (
     <div className={`shell dark${fullApp ? " full-app-embedded" : " flyout-topbar"}${themed ? " flyout-themed" : ""}`}>
@@ -128,7 +133,9 @@ function App({ fullApp }: { fullApp?: FullAppBridge } = {}) {
               onNotificationsChange={(enabled) => void setNotifications(enabled)}
               onReadyCheckChange={(enabled) => void setReadyCheckNotifications(enabled)}
               koreanFont={koreanFont}
-              onKoreanFontChange={(enabled) => void setKoreanFontSetting(enabled)}
+              customMods={customMods}
+              customModsRiskAck={data.customModsRiskAck}
+              onCustomModsChange={(enabled, riskAck) => void setCustomModsSetting(enabled, riskAck)}
               ltkInstalled={data.ltkInstalled}
               ltkInstalling={ltkInstalling}
               ltkInstallError={ltkInstallError}
@@ -149,11 +156,12 @@ function App({ fullApp }: { fullApp?: FullAppBridge } = {}) {
       </main>
       <AccountMenu controller={controller} />
 
-      {!native && !error && <div className="error-banner" role="status"><InfoIcon size={16} /><span>Browser preview only. Account actions need the Windows tray app.</span></div>}
+      {!native && !error && <div className="error-banner" role="status"><InfoIcon size={16} /><span>Preview only. Open the Swapper app to manage accounts.</span></div>}
       {/* The Fullsized App mounts its own, once, around this embedded copy. */}
       {!fullApp && <OnboardingGate />}
       <PairingNotice />
-      {error && <div className="error-banner" role="alert"><ErrorIcon size={16} /><span>{error}</span>{repairableId && <Button size="sm" variant="outline" className="repair-banner-action" onClick={() => startRepair(repairableId)}><Wrench size={14} /> Repair account</Button>}<button aria-label="Dismiss error" onClick={() => { setRepairableId(null); setError(null); }}><X size={14} /></button></div>}
+      {switchAsk && <div className="error-banner" role="alert"><ErrorIcon size={16} /><span>You're in champion select. Switching now dodges it and can cost LP.</span><Button size="sm" variant="outline" className="repair-banner-action" onClick={() => void switchToAccount(switchAsk, true)}>Switch anyway</Button><button aria-label="Cancel switch" onClick={() => setSwitchAsk(null)}><X size={14} /></button></div>}
+      {error && <div className="error-banner" role="alert" {...errorTimer.hoverProps}>{!hasAction && <span key={error} className={`error-countdown${errorTimer.paused ? " is-paused" : ""}`} aria-hidden />}<ErrorIcon size={16} /><span>{error}</span>{repairableId && <Button size="sm" variant="outline" className="repair-banner-action" onClick={() => startRepair(repairableId)}><Wrench size={14} /> Repair account</Button>}{launchFailed && <Button size="sm" variant="outline" className="repair-banner-action" onClick={() => { void invoke("open_riot").catch(showError); }}>Open Riot Client</Button>}<button aria-label="Dismiss error" onClick={dismissError}><X size={14} /></button></div>}
       {/* The Fullsized App shows status in its sidebar podium instead. */}
       {!fullApp && <footer className="footer"><span className="footer-status"><span className={footerLoggedIn ? "status-dot good" : "status-dot idle"} /> {footerText}</span><span className="footer-mode">{data.useDeceive ? "DECEIVE" : "RIOT CLIENT"}</span></footer>}
     </div>

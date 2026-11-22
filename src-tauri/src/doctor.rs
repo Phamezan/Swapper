@@ -246,7 +246,7 @@ async fn run_one(context: &DoctorContext, id: &str) -> DoctorCheck {
                         Ok(summary) => check_remote(&summary),
                         Err(_) => DoctorCheck::warn(
                             id,
-                            "Could not read the Remote Control status. Retry.",
+                            "Couldn't read phone access status. Retry.",
                         ),
                     }
                 } else {
@@ -254,7 +254,7 @@ async fn run_one(context: &DoctorContext, id: &str) -> DoctorCheck {
                     match context.tailscale_selected {
                         false => DoctorCheck::ok(
                             id,
-                            "Not selected. Remote Control is using the LAN transport; select Tailscale in Settings to use it.",
+                            "Not in use. Pick Tailscale in Settings to use it.",
                         ),
                         true => {
                             let availability =
@@ -264,7 +264,7 @@ async fn run_one(context: &DoctorContext, id: &str) -> DoctorCheck {
                                 Ok((installed, running)) => check_tailscale(installed, running),
                                 Err(_) => DoctorCheck::warn(
                                     id,
-                                    "Could not read the Tailscale status. Retry.",
+                                    "Couldn't read Tailscale status. Retry.",
                                 ),
                             }
                         }
@@ -298,34 +298,51 @@ async fn run_one(context: &DoctorContext, id: &str) -> DoctorCheck {
                 ),
                 None if context.config.use_deceive => DoctorCheck::error(
                     id,
-                    "Deceive.exe is missing. Reinstall Swapper or turn off Launch through Deceive.",
+                    "Deceive is missing. Reinstall Swapper or turn it off.",
                 ),
                 None => DoctorCheck::warn(
                     id,
-                    "Deceive.exe is missing. Reinstall Swapper to launch through Deceive.",
+                    "Deceive is missing. Reinstall Swapper to use it.",
                 ),
             }
         })
         .await,
         CHECK_KOREAN_FONT => guarded(id, async {
-            // LTK Manager's patcher is resolved from the user's install, not
-            // bundled, so it is checked here at run time.
-            let found = tokio::task::spawn_blocking(crate::korean_font::patcher_path)
-                .await
-                .ok()
-                .flatten()
-                .is_some();
-            if found {
-                DoctorCheck::ok(id, "The Korean font patcher was found in LTK Manager.")
+            // LTK Manager applies the font, so its install is checked here at run time.
+            let _ = crate::mods::patcher::refresh_latest_version().await;
+            let status = tokio::task::spawn_blocking(|| {
+                (
+                    crate::mods::patcher::ltk_installed(),
+                    crate::mods::patcher::installed_version(),
+                    crate::mods::ltk::is_set_up(),
+                )
+            })
+            .await
+            .ok()
+            .unwrap_or((false, None, false));
+            let (found, version, set_up) = status;
+            let outdated = crate::mods::patcher::is_outdated(version.as_deref());
+            if outdated {
+                with_detail_or_none(
+                    DoctorCheck::warn(id, crate::mods::patcher::OUTDATED_MESSAGE),
+                    version.map(|version| format!("LTK Manager {version}")),
+                )
+            } else if found && !set_up {
+                DoctorCheck::warn(id, "LTK Manager isn't set up. Set it up in Settings.")
+            } else if found {
+                with_detail_or_none(
+                    DoctorCheck::ok(id, "Korean font is ready."),
+                    version.map(|version| format!("LTK Manager {version}")),
+                )
             } else if context.config.korean_font {
                 DoctorCheck::error(
                     id,
-                    "The Korean font needs LTK Manager. Install it from Settings \u{2192} General.",
+                    "Korean font needs LTK Manager. Install it in Settings.",
                 )
             } else {
                 DoctorCheck::warn(
                     id,
-                    "The Korean font needs LTK Manager. Install it from Settings \u{2192} General.",
+                    "Korean font needs LTK Manager. Install it in Settings.",
                 )
             }
         })
@@ -355,15 +372,15 @@ async fn check_riot_client() -> DoctorCheck {
         }
         crate::riot_client::RiotProbe::NotRunning => DoctorCheck::warn(
             CHECK_RIOT_CLIENT,
-            "Riot Client is not running. Start it to switch or add accounts.",
+            "Riot Client is closed. Open it to switch accounts.",
         ),
         crate::riot_client::RiotProbe::NotReady => DoctorCheck::warn(
             CHECK_RIOT_CLIENT,
-            "Riot Client is open but not signed in yet. Sign in, then retry.",
+            "Riot Client isn't signed in yet. Sign in, then retry.",
         ),
         crate::riot_client::RiotProbe::Unavailable => DoctorCheck::error(
             CHECK_RIOT_CLIENT,
-            "Riot Client could not be reached. Restart it, then retry.",
+            "Riot Client needs attention. Restart it, then retry.",
         ),
     }
 }
@@ -376,11 +393,11 @@ async fn check_league_client() -> DoctorCheck {
     if let Some(endpoint) = endpoint {
         let answered = probe_lcu(&endpoint).await;
         return if answered {
-            DoctorCheck::ok(CHECK_LEAGUE_CLIENT, "League Client is running and answering.")
+            DoctorCheck::ok(CHECK_LEAGUE_CLIENT, "League Client is running.")
         } else {
             DoctorCheck::warn(
                 CHECK_LEAGUE_CLIENT,
-                "League Client was found but is not answering yet. If it just started, retry in a moment.",
+                "League is still starting. Wait a moment, then retry.",
             )
         };
     }
@@ -390,15 +407,15 @@ async fn check_league_client() -> DoctorCheck {
     match running {
         Some(Ok(true)) => DoctorCheck::warn(
             CHECK_LEAGUE_CLIENT,
-            "League Client is starting. Retry in a moment.",
+            "League is still starting. Wait a moment, then retry.",
         ),
         Some(Ok(false)) => DoctorCheck::ok(
             CHECK_LEAGUE_CLIENT,
-            "League Client is not running. It is only needed for runes and champion select.",
+            "League is closed. It's only needed for runes and draft.",
         ),
         _ => DoctorCheck::error(
             CHECK_LEAGUE_CLIENT,
-            "Swapper could not inspect running processes. Restart Swapper, then retry.",
+            "Couldn't check running apps. Restart Swapper, then retry.",
         ),
     }
 }
@@ -432,13 +449,13 @@ async fn check_session(context: &DoctorContext) -> DoctorCheck {
     if context.config.accounts.is_empty() {
         return DoctorCheck::warn(
             CHECK_SESSION,
-            "No accounts are saved yet. Add an account in Swapper to get started.",
+            "No accounts saved yet. Add one to get started.",
         );
     }
     let Some(active) = context.active_account() else {
         return DoctorCheck::warn(
             CHECK_SESSION,
-            "No account is active. Choose one in the account list or add a new account.",
+            "No account is selected. Pick one from your list.",
         );
     };
     let snapshot_id = active.vault_id;
@@ -448,35 +465,35 @@ async fn check_session(context: &DoctorContext) -> DoctorCheck {
     if !snapshot_ok {
         return DoctorCheck::error(
             CHECK_SESSION,
-            "The active account's saved session could not be opened. Switch to it once; if that fails, remove and re-add the account.",
+            "Couldn't open the saved sign-in. Try Repair account.",
         );
     }
     match identity::detect_account().await {
         Detection::Identified(found) => match &active.puuid {
             None => DoctorCheck::warn(
                 CHECK_SESSION,
-                "Saved session is present, but this account was saved without an identity check. Switch to it once to re-verify.",
+                "This account can't be verified. Switch to it once to fix.",
             ),
             Some(puuid) if *puuid == found.puuid => DoctorCheck::ok(
                 CHECK_SESSION,
-                "The active account matches the signed-in Riot Client.",
+                "Signed-in account matches Swapper.",
             ),
             Some(_) => DoctorCheck::warn(
                 CHECK_SESSION,
-                "The signed-in Riot account is not the active Swapper account. Switch accounts to bring the session back in sync.",
+                "A different account is signed in. Switch accounts to fix it.",
             ),
         },
         Detection::NotRunning => DoctorCheck::ok(
             CHECK_SESSION,
-            "Saved session is present. Riot Client is closed, so it could not be verified.",
+            "Saved sign-in found. Open Riot Client to verify it.",
         ),
         Detection::NotReady => DoctorCheck::warn(
             CHECK_SESSION,
-            "Saved session is present. Riot Client is still signing in; retry to verify it.",
+            "Riot Client is still signing in. Retry to verify.",
         ),
         Detection::Unavailable => DoctorCheck::warn(
             CHECK_SESSION,
-            "Saved session is present, but Riot Client could not be reached to verify it.",
+            "Couldn't reach Riot Client to verify your sign-in.",
         ),
     }
 }
@@ -528,17 +545,17 @@ async fn check_provider(id: &str, url: &str) -> DoctorCheck {
     match last_error {
         Some(error) if error.is_timeout() => DoctorCheck::warn(
             id,
-            "Timed out. The site may be slow or blocked by your network; retry.",
+            "Timed out. Check your connection, then retry.",
         ),
         Some(error) if error.is_connect() => DoctorCheck::error(
             id,
-            "Could not connect. Check your internet connection, then retry.",
+            "Couldn't connect. Check your internet, then retry.",
         ),
         Some(_) => DoctorCheck::error(
             id,
-            "The request failed before an answer came back. Check your internet connection, then retry.",
+            "Request failed. Check your internet, then retry.",
         ),
-        None => DoctorCheck::error(id, "The request could not be sent. Retry."),
+        None => DoctorCheck::error(id, "Couldn't send the request. Retry."),
     }
 }
 
@@ -557,9 +574,9 @@ fn with_health(check: DoctorCheck, state: health::State) -> DoctorCheck {
         health::State::FormatChanged(parser) if check.status == DoctorStatus::Ok => {
             DoctorCheck::warn(
                 &check.id,
-                "Reachable, but the site changed its data format. Some stats may be missing or out of date until Swapper is updated.",
+                "Site changed its format. Some stats may be missing for now.",
             )
-            .with_detail(format!("Unreadable: {parser}"))
+            .with_detail(format!("Couldn't read: {parser}"))
         }
         _ => check,
     }
@@ -570,8 +587,8 @@ fn with_health(check: DoctorCheck, state: health::State) -> DoctorCheck {
 /// available; an outright block (403/429) or a server-side outage (5xx) does not.
 fn provider_answer_status(status: u16) -> (DoctorStatus, &'static str) {
     match status {
-        403 | 429 => (DoctorStatus::Warn, "Blocked or rate-limited by the site."),
-        500..=599 => (DoctorStatus::Error, "The site is having problems right now."),
+        403 | 429 => (DoctorStatus::Warn, "The site is busy. Try again shortly."),
+        500..=599 => (DoctorStatus::Error, "The site is down right now. Try again shortly."),
         _ => (DoctorStatus::Ok, "Reachable."),
     }
 }
@@ -593,18 +610,18 @@ fn provider_client() -> &'static reqwest::Client {
 /// verdict. Read-only — it never triggers a check, it reports the updater state.
 fn version_check(snapshot: Option<&updater::UpdateSnapshot>, installed: &str) -> DoctorCheck {
     let Some(snapshot) = snapshot else {
-        return DoctorCheck::warn(CHECK_VERSION, "Could not read the updater status. Retry.");
+        return DoctorCheck::warn(CHECK_VERSION, "Couldn't read update status. Retry.");
     };
     match snapshot.state {
         updater::UpdateStateKind::NotConfigured => DoctorCheck::ok(
             CHECK_VERSION,
             format!(
-                "Swapper {installed} is installed. Update checking is not configured in this build."
+                "Swapper {installed}. Updates aren't set up in this build."
             ),
         ),
         updater::UpdateStateKind::Checking => DoctorCheck::ok(
             CHECK_VERSION,
-            format!("Swapper {installed} is installed. Checking for updates…"),
+            format!("Swapper {installed}. Checking for updates…"),
         ),
         updater::UpdateStateKind::UpToDate => {
             DoctorCheck::ok(CHECK_VERSION, format!("Swapper {installed} is up to date."))
@@ -614,17 +631,17 @@ fn version_check(snapshot: Option<&updater::UpdateSnapshot>, installed: &str) ->
             DoctorCheck::ok(
                 CHECK_VERSION,
                 format!(
-                    "Swapper {installed} is installed, and version {available} is available. Use Update & Restart to install it."
+                    "Version {available} is ready. Use Update & Restart to install it."
                 ),
             )
         }
         updater::UpdateStateKind::Installing => DoctorCheck::ok(
             CHECK_VERSION,
-            "An update is installing. Swapper restarts when it finishes.",
+            "Update is installing. Swapper will restart soon.",
         ),
         updater::UpdateStateKind::Failed => DoctorCheck::warn(
             CHECK_VERSION,
-            "The last update check failed. Retry, or check for updates in Settings.",
+            "Update check failed. Retry from Settings.",
         ),
     }
 }
@@ -632,7 +649,7 @@ fn version_check(snapshot: Option<&updater::UpdateSnapshot>, installed: &str) ->
 fn check_remote(summary: &crate::remote::DoctorSummary) -> DoctorCheck {    if !summary.enabled {
         return DoctorCheck::ok(
             CHECK_REMOTE,
-            "Remote Control is off. Turn it on in Settings to control League from a phone.",
+            "Phone access is off. Turn it on in Settings.",
         );
     }
     let detail = summary
@@ -647,7 +664,7 @@ fn check_remote(summary: &crate::remote::DoctorSummary) -> DoctorCheck {    if !
     }
     if summary.state == RemoteState::Starting {
         return with_detail_or_none(
-            DoctorCheck::warn(CHECK_REMOTE, "The remote service is starting. Retry in a moment."),
+            DoctorCheck::warn(CHECK_REMOTE, "Phone access is starting. Retry in a moment."),
             detail,
         );
     }
@@ -659,7 +676,7 @@ fn check_remote(summary: &crate::remote::DoctorSummary) -> DoctorCheck {    if !
         .filter(|reason| !reason.is_empty())
         .map(str::to_string)
         .unwrap_or_else(|| {
-            "LAN is unavailable. Set the active Windows network to Private, then retry.".into()
+            "LAN is unavailable. Set your network to Private, then retry.".into()
         });
     with_detail_or_none(DoctorCheck::warn(CHECK_REMOTE, reason), detail)
 }
@@ -668,7 +685,7 @@ fn check_tailscale(installed: bool, running: bool) -> DoctorCheck {
     if !installed {
         return DoctorCheck::ok(
             CHECK_TAILSCALE,
-            "Tailscale is not installed. It is optional and only used to reach Swapper from outside your home network.",
+            "Tailscale isn't installed. It's optional for remote access.",
         );
     }
     if running {
@@ -676,7 +693,7 @@ fn check_tailscale(installed: bool, running: bool) -> DoctorCheck {
     } else {
         DoctorCheck::warn(
             CHECK_TAILSCALE,
-            "Tailscale is installed but not connected. Start Tailscale to use it for Remote Control.",
+            "Tailscale isn't connected. Start it to use phone access.",
         )
     }
 }
@@ -697,7 +714,7 @@ fn status_word(status: DoctorStatus) -> &'static str {
 fn label(id: &str) -> &'static str {
     match id {
         CHECK_RIOT_CLIENT => "Riot Client",
-        CHECK_LEAGUE_CLIENT => "League Client / LCU",
+        CHECK_LEAGUE_CLIENT => "League Client",
         CHECK_SESSION => "Active account session",
         CHECK_OPGG => "OP.GG",
         CHECK_LOLALYTICS => "Lolalytics",
@@ -851,12 +868,12 @@ mod tests {
         for line in [
             "Riot Client is connected.",
             "Reachable.",
-            "Swapper 0.4.0 is installed. Update checking is not configured in this build.",
-            "Swapper 0.4.0 is installed, and version 0.5.0 is available. Use Update & Restart to install it.",
+            "Swapper 0.4.0. Updates aren't set up in this build.",
+            "Version 0.5.0 is ready. Use Update & Restart to install it.",
             "Bundled Deceive is available.",
             "File version 1.18.0",
             "LAN Remote Control is ready.",
-            "Timed out. The site may be slow or blocked by your network; retry.",
+            "Timed out. Check your connection, then retry.",
             "Adapter: Wi-Fi",
         ] {
             assert_eq!(sanitize(line), line);
@@ -882,7 +899,7 @@ mod tests {
         );
         assert_eq!(unconfigured.status, DoctorStatus::Ok);
         assert!(unconfigured.message.contains("0.4.0"));
-        assert!(unconfigured.message.contains("not configured in this build"));
+        assert!(unconfigured.message.contains("aren't set up in this build"));
 
         let up_to_date = version_check(
             Some(&snapshot(updater::UpdateStateKind::UpToDate)),
@@ -953,8 +970,8 @@ mod tests {
             health::State::FormatChanged("counters page"),
         );
         assert_eq!(changed.status, DoctorStatus::Warn);
-        assert!(changed.message.contains("changed its data format"));
-        assert_eq!(changed.detail.as_deref(), Some("Unreadable: counters page"));
+        assert!(changed.message.contains("changed its format"));
+        assert_eq!(changed.detail.as_deref(), Some("Couldn't read: counters page"));
         for state in [health::State::Ok, health::State::Unused, health::State::Unreachable] {
             assert_eq!(with_health(reachable.clone(), state).status, DoctorStatus::Ok);
         }
@@ -975,18 +992,18 @@ mod tests {
         for status in [403, 429] {
             let (status_kind, message) = provider_answer_status(status);
             assert_eq!(status_kind, DoctorStatus::Warn, "{status} should warn");
-            assert!(message.contains("rate-limited"));
+            assert!(message.contains("busy"));
         }
         for status in [500, 502, 503] {
             let (status_kind, message) = provider_answer_status(status);
             assert_eq!(status_kind, DoctorStatus::Error, "{status} should error");
-            assert!(message.contains("having problems"));
+            assert!(message.contains("down right now"));
         }
     }
 
     #[test]
     fn a_blocked_provider_answer_carries_no_latency_and_an_ok_one_does() {
-        let blocked = DoctorCheck::new(CHECK_OPGG, DoctorStatus::Warn, "Blocked or rate-limited by the site.");
+        let blocked = DoctorCheck::new(CHECK_OPGG, DoctorStatus::Warn, "The site is busy. Try again shortly.");
         assert!(blocked.detail.is_none());
 
         let healthy = DoctorCheck::new(CHECK_OPGG, DoctorStatus::Ok, "Reachable.")

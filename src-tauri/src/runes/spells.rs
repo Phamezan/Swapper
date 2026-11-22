@@ -65,7 +65,7 @@ impl Spell {
 /// Parses the summoner-spells game-data file.
 pub fn parse(body: &str) -> Result<Vec<Spell>, RuneError> {
     serde_json::from_str(body)
-        .map_err(|e| RuneError::unavailable(format!("Could not read summoner spell data: {e}")))
+        .map_err(|e| RuneError::unavailable({ eprintln!("Spell data read failed: {e}"); "Couldn't load spells. Try again.".to_string() }))
 }
 
 /// The spells the picker offers for a game mode, as the client does: each is

@@ -8,11 +8,11 @@ mod guides;
 mod game_mode;
 mod hotkey;
 mod identity;
-mod korean_font;
 mod lcu;
 mod lifecycle;
 mod live_game;
 mod matchup_records;
+mod mods;
 #[path = "full_app/match_detail.rs"]
 mod match_detail;
 mod notify;
@@ -25,13 +25,13 @@ mod riot_icon;
 mod runes;
 mod shortcuts;
 mod state;
+mod tray_menu;
 mod updater;
 mod vault;
 pub mod windows;
 
 use std::sync::atomic::{AtomicBool, Ordering};
 use std::sync::Mutex;
-use tauri::menu::{Menu, MenuItem};
 use tauri::tray::{MouseButton, MouseButtonState, TrayIconBuilder, TrayIconEvent};
 use tauri::{path::BaseDirectory, Emitter, Manager, WindowEvent};
 use tauri_plugin_global_shortcut::ShortcutState;
@@ -165,6 +165,7 @@ Your settings file was not changed. Close programs that may be using it and star
                 hotkey_active: AtomicBool::new(false),
             });
             overlay::init(app.handle())?;
+            mods::ltk::spawn_worker(app.handle().clone());
             full_app::cards::init(app.handle());
             matchup_records::spawn_watch(app.handle().clone());
             let auto_enable = remote.clone();
@@ -210,44 +211,21 @@ Your settings file was not changed. Close programs that may be using it and star
                     .app_name("Swapper")
                     .build(),
             )?;
-            let add = MenuItem::with_id(app, "add", "Add Account", true, None::<&str>)?;
-            let edit = MenuItem::with_id(app, "edit", "Edit Account", true, None::<&str>)?;
-            let remove = MenuItem::with_id(app, "remove", "Remove Account", true, None::<&str>)?;
-            let settings = MenuItem::with_id(app, "settings", "Settings", true, None::<&str>)?;
-            let restart = MenuItem::with_id(app, "restart", "Restart client", true, None::<&str>)?;
-            let exit = MenuItem::with_id(app, "exit", "Exit", true, None::<&str>)?;
-            let menu = Menu::with_items(app, &[&add, &edit, &remove, &settings, &restart, &exit])?;
             TrayIconBuilder::with_id(TRAY_ID)
                 .icon(app.default_window_icon().expect("Missing app icon").clone())
                 .tooltip(DEFAULT_TRAY_TOOLTIP)
-                .menu(&menu)
-                .show_menu_on_left_click(false)
-                .on_menu_event(|app, event| match event.id().as_ref() {
-                    "add" => show_flyout(app, "add"),
-                    "edit" => show_flyout(app, "edit"),
-                    "remove" => show_flyout(app, "remove"),
-                    "settings" => show_flyout(app, "settings"),
-                    "restart" => client_restart::tray_restart(app),
-                    full_app::LABEL => {
-                        let _ = full_app::open(app, None);
-                    }
-                    "exit" => exit_app(app),
-                    _ => {}
-                })
                 .on_tray_icon_event(|tray, event| {
                     tauri_plugin_positioner::on_tray_event(tray.app_handle(), &event);
-                    if let TrayIconEvent::Click {
-                        button: MouseButton::Left,
-                        button_state: MouseButtonState::Up,
-                        ..
-                    } = event
-                    {
-                        toggle_flyout(tray.app_handle());
+                    if let TrayIconEvent::Click { button, button_state: MouseButtonState::Up, position, .. } = event {
+                        match button {
+                            MouseButton::Left => toggle_flyout(tray.app_handle()),
+                            MouseButton::Right => tray_menu::show(tray.app_handle(), (position.x, position.y)),
+                            _ => {}
+                        }
                     }
                 })
                 .build(app)?;
-            app.manage(full_app::Runtime::new(menu.clone()));
-            full_app::sync_menu(app.handle())?;
+            app.manage(full_app::Runtime::new());
             // Windows starts Swapper through the autostart entry with --autostart.
             // Startup never shows a window, so a login launch leaves the tray
             // icon as the only entry point. The flyout is created hidden on the
@@ -283,6 +261,11 @@ Your settings file was not changed. Close programs that may be using it and star
                 }
                 return;
             }
+            // Clicking away from the tray menu closes it.
+            if window.label() == tray_menu::LABEL && matches!(event, WindowEvent::Focused(false)) {
+                tray_menu::hide(window.app_handle());
+                return;
+            }
             if window.label() != full_app::FLYOUT {
                 return;
             }
@@ -299,6 +282,22 @@ Your settings file was not changed. Close programs that may be using it and star
             }
         })
         .invoke_handler(|invoke| {
+            if invoke.message.webview_ref().label() == tray_menu::LABEL {
+                return match invoke.message.command() {
+                    "tray_menu_state" | "tray_menu_hide" | "tray_menu_action" => {
+                        let handler: fn(tauri::ipc::Invoke<tauri::Wry>) -> bool = tauri::generate_handler![
+                            tray_menu::tray_menu_state,
+                            tray_menu::tray_menu_hide,
+                            tray_menu::tray_menu_action
+                        ];
+                        handler(invoke)
+                    }
+                    _ => {
+                        invoke.resolver.reject("This window cannot call Swapper commands.");
+                        true
+                    }
+                };
+            }
             if !full_app::routing::window_may_invoke(invoke.message.webview_ref().label()) {
                 invoke
                     .resolver
@@ -319,7 +318,9 @@ Your settings file was not changed. Close programs that may be using it and star
                 full_app::dashboard_snapshot,
                 full_app::comps::comps_team,
                 full_app::comps::comps_pools,
-                full_app::comps::comps_save_team,
+                full_app::comps::comps_roster_load,
+                full_app::comps::comps_roster_save,
+                full_app::comps::comps_prefill_roles,
                 full_app::comps::comps_save_overrides,
                 full_app::comps::comps_resolve,
                 match_detail::full_app_match_detail,
@@ -328,6 +329,7 @@ Your settings file was not changed. Close programs that may be using it and star
                 full_app::search::full_app_player_live,
                 full_app::search::full_app_player_mmr,
                 full_app::search::full_app_player_season,
+                full_app::search::full_app_player_summary,
                 full_app::bench::dashboard_benchmarks,
                 full_app::art::champion_art,
                 full_app::art::ambient_background,
@@ -357,8 +359,12 @@ Your settings file was not changed. Close programs that may be using it and star
                 shortcuts::create_account_shortcut,
                 commands::accounts::set_nickname,
                 commands::accounts::remove_account,
+                commands::accounts::reorder_accounts,
                 commands::settings::save_settings,
                 flyout::hide_flyout,
+                tray_menu::tray_menu_state,
+                tray_menu::tray_menu_hide,
+                tray_menu::tray_menu_action,
                 commands::settings::set_hotkey,
                 commands::remote::open_windows_network_settings,
                 commands::remote::set_remote_enabled,
@@ -387,8 +393,20 @@ Your settings file was not changed. Close programs that may be using it and star
                 commands::settings::set_korean_font,
                 commands::settings::onboarding_pending,
                 commands::settings::set_onboarded,
-                korean_font::install_ltk_manager,
-                korean_font::open_ltk_website,
+                mods::patcher::install_ltk_manager,
+                mods::patcher::open_ltk_website,
+                mods::mods_list,
+                mods::mods_add,
+                mods::mods_set_enabled,
+                mods::mods_remove,
+                mods::mods_disable_all,
+                mods::runeforge_list,
+                mods::runeforge_mod,
+                mods::runeforge_install,
+                mods::runeforge_thumbnail,
+                mods::mods_thumbnail,
+                mods::runeforge_open,
+                commands::settings::set_custom_mods,
                 commands::guide::open_guide_source,
                 guides::get_matchup_guide,
                 guides::get_matchup_vods,
@@ -441,8 +459,6 @@ Your settings file was not changed. Close programs that may be using it and star
             tauri::RunEvent::ExitRequested {
                 code: None, api, ..
             } => api.prevent_exit(),
-            // Never leave the Korean font patcher running once Swapper exits.
-            tauri::RunEvent::Exit => korean_font::stop(),
             _ => {}
         });
 }

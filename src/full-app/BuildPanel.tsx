@@ -74,6 +74,8 @@ export function BuildPanel({ championId, name, lane, tier, build, liveView, matc
   const proRequest = useRef(0);
   const proBusy = useRef(false);
   const [pros, setPros] = useState<ProBuildsView | null>(null);
+  // False lists pro players' games, true one-trick (OTP) players'.
+  const [otp, setOtp] = useState(false);
   const [pro, setPro] = useState<ProBuild | null>(null);
   const [proPart, setProPart] = useState<ProPart>("all");
   // Pages hold many matches; show a few at a time so the build column stays aligned.
@@ -135,7 +137,12 @@ export function BuildPanel({ championId, name, lane, tier, build, liveView, matc
       .then(value => { if (live) setOther(value); }).catch(() => {});
     return () => { live = false; };
   }, [championId, lane, tier, sourceKey, details]);
-  useEffect(() => { void loadPros(1); }, [championId, lane, tier, sourceKey]);
+  useEffect(() => { void loadPros(1); }, [championId, lane, tier, sourceKey, otp]);
+  const showOtp = (next: boolean) => {
+    if (next === otp) return;
+    proRequest.current++; proBusy.current = false; setProLoading(false); setProError("");
+    setPros(null); setProLimit(PRO_STEP); setProOffset(0); setOtp(next);
+  };
   useEffect(() => () => { proRequest.current++; extraRequest.current++; }, []);
   // With auto-apply on, switching to another build (or editing its runes) applies it; set each render below.
   const autoRun = useRef<() => void>(() => {});
@@ -153,9 +160,9 @@ export function BuildPanel({ championId, name, lane, tier, build, liveView, matc
     proBusy.current = true; setProLoading(true);
     setProError("");
     try {
-      const value = await invoke<ProBuildsView>("get_pro_builds", { championId, position: lane, page, isOtp: false });
+      const value = await invoke<ProBuildsView>("get_pro_builds", { championId, position: lane, page, isOtp: otp });
       if (request !== proRequest.current) return false;
-      if (value.unavailable) throw new Error(value.message || "Pro builds unavailable. Try again.");
+      if (value.unavailable) throw new Error(value.message || "Pro builds are unavailable. Try again shortly.");
       setPros(previous => mergeProPage(page === 1 ? null : previous, value));
       return true;
     } catch (error) { if (request === proRequest.current) setProError(String(error)); return false; }
@@ -188,7 +195,7 @@ export function BuildPanel({ championId, name, lane, tier, build, liveView, matc
       const selection = selectionFromPreset(preset);
       const items = await invoke<PresetBuildView | null>("get_keystone_build", { championId, position: lane, tier, keystone: preset.keystone, mostPlayed: selection });
       if (request !== extraRequest.current) return;
-      if (!items) throw new Error("Build unavailable for this main rune. Try another.");
+      if (!items) throw new Error("No build for this rune. Try another one.");
       const label = runeName(preset);
       setExtra({ label, selection, items, spells: preset.spells, order: items.skillOrder ?? build.skillOrder, winPct: items.coreWinPct, games: items.coreGames });
       setPro(null); setCustom(null); setChosenLabel(label); setFailed(null);
@@ -233,7 +240,7 @@ export function BuildPanel({ championId, name, lane, tier, build, liveView, matc
       if (runes || spells) {
         const current = await invoke<RunesView>("get_runes");
         setClient(current);
-        if (current.phase !== "ChampSelect" || current.championId !== championId) throw new Error(`Select ${name} in League Client before applying this build.`);
+        if (current.phase !== "ChampSelect" || current.championId !== championId) throw new Error(`Pick ${name} in League first, then apply this build.`);
       }
       if (runes) await invoke("apply_rune_page", { selection: chosenSelection, presetIndex: null, spells: null, position: lane, enemyChampionId: null, highestWin: false });
       if (spells) for (const [index, slot] of (["d", "f"] as const).entries()) await invoke("apply_spell", { slot, spellId: chosenSpells[index] });
@@ -275,7 +282,11 @@ export function BuildPanel({ championId, name, lane, tier, build, liveView, matc
       </button>; })}</div>}</>}
         
       {extraLoading && <small role="status">Loading main rune build…</small>}
-      <h3>Pro builds <small>Recent matches</small></h3>
+      <h3 className="cs-pro-head">{otp ? "OTP builds" : "Pro builds"}
+        <span className="cs-pro-kind" role="group" aria-label="Whose builds">
+          <button type="button" aria-pressed={!otp} onClick={() => showOtp(false)}>Pro</button>
+          <button type="button" aria-pressed={otp} onClick={() => showOtp(true)}>OTP</button>
+        </span></h3>
       <div className="cs-build-entries">{pros?.matches.slice(proOffset, proOffset + (proPageSize ?? proLimit)).map(match => <Tooltip key={match.matchId} label={`${[match.team, match.league].filter(Boolean).join(" · ")} · ${match.kills}/${match.deaths}/${match.assists}`}><button className="cs-build-row is-pro" disabled={!!busy} aria-pressed={pro?.matchId === match.matchId} onClick={() => { extraRequest.current++; setExtraLoading(false); setPro(match); setProPart("all"); setCustom(null); setNotice(""); setFailed(null); }}>
         <TeamLogo team={match.team} size={30} mode="desktop" className="cs-row-logo" />
         <span className="cs-row-text"><strong>{match.proName}</strong><small>{match.playedAgo}</small></span>
@@ -285,7 +296,7 @@ export function BuildPanel({ championId, name, lane, tier, build, liveView, matc
       {pros?.stale && <CachedBadge stale updatedAt={pros.updatedAt} />}
       {proError && <p role="alert">{proError}</p>}
       {proLoading && (!pros || !proPageSize) ? <Skeleton label="Loading pro builds" rows={proPageSize ?? 4} height={46} /> : proError ? <button className="fa-text-button" onClick={() => void loadPros((pros?.page ?? 0) + 1)}>Retry</button>
-        : pros && !pros.matches.length ? <p>No recent pro builds for this role.</p> : proPageSize && pros ? <nav className="cs-pro-pages" aria-label="Pro build pages">
+        : pros && !pros.matches.length ? <p>{otp ? "No recent OTP builds for this role." : "No recent pro builds for this role."}</p> : proPageSize && pros ? <nav className="cs-pro-pages" aria-label="Pro build pages">
           <button className="fa-text-button" disabled={proOffset === 0 || proLoading} onClick={() => setProOffset(offset => Math.max(0, offset - proPageSize))}>Previous</button>
           <span>{Math.floor(proOffset / proPageSize) + 1}</span>
           <button className="fa-text-button" disabled={proLoading || (proOffset + proPageSize >= pros.matches.length && !pros.hasMore)} onClick={async () => {
@@ -297,6 +308,7 @@ export function BuildPanel({ championId, name, lane, tier, build, liveView, matc
       </>}
     </aside>
     <div className="cs-build-content">
+    <div className="cs-build-head">
     <div className="cs-build-selected"><strong>{pro ? `${pro.proName}’s ${proPart === "runes" ? "runes" : proPart === "build" ? "items" : "build"}` : chosen.label}</strong><small>{pro ? proPart === "all" ? `${pro.team} · ${pro.playedAgo} · Patch ${displayPatch(pro.patch)}` : `with ${base.label} ${proPart === "runes" ? "items" : "runes"}` : `${name} · ${lane}${build.fromTier ? ` · from ${TIER_OPTIONS.find(option => option.value === build.fromTier)?.label ?? build.fromTier} games` : ""}`}</small>
       {pro && <div className="fa-seg cs-pro-part" role="group" aria-label="Use from this pro build"><small>Use</small>{([["all", "Everything"], ["runes", "Runes only"], ["build", "Items only"]] as const).map(([value, label]) => <button key={value} aria-pressed={proPart === value} disabled={!!busy} onClick={() => { setProPart(value); setCustom(null); }}>{label}</button>)}</div>}</div>
     {!preview && <><div className="cs-apply-bar" aria-label="Apply to League Client">
@@ -305,6 +317,7 @@ export function BuildPanel({ championId, name, lane, tier, build, liveView, matc
     </div>
     {failed && <Notice tone="error" action={<button className="fa-secondary" disabled={!!busy} onClick={() => void apply(failed.section)}>Try again</button>}><b>{failed.section === "all" ? "Couldn’t apply the build." : `Couldn’t apply ${sections.find(([key]) => key === failed.section)?.[1].toLowerCase()}.`}</b> {failed.message}</Notice>}
     {notice && <Notice>{notice}</Notice>}</>}
+    </div>
     <section className="fa-card fa-build-grid cs-build-grid">
       <div className="fa-rune-area"><div className="fa-section-heading"><h4>{shownPreset ? shownPreset.name : custom ? "Custom runes" : "Runes"}</h4>{preview ? null : custom ? <span className="cs-rune-actions">
         {!shownPreset && naming === null && presets.some(preset => preset.name === presetName) && <button className="fa-text-button" disabled={!!busy} onClick={() => void savePreset(presetName!)}>Update {presetName}</button>}

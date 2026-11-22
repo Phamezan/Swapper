@@ -23,6 +23,7 @@ use super::patch::{self, blend_rate, PatchInfo};
 use super::provider::{DataKind, Provider, ProviderError, Sourced};
 use super::RuneError;
 
+use std::collections::HashMap;
 use std::sync::OnceLock;
 
 /// Rows with fewer games are too noisy to rank.
@@ -34,7 +35,7 @@ const MIN_CHALLENGER_GAMES: u64 = 100;
 
 /// The games floor for one rank bracket. The smallest bracket needs a lower
 /// one, since its whole sample is a fraction of the others'.
-fn min_games(tier: &str) -> u64 {
+pub(super) fn min_games(tier: &str) -> u64 {
     match tier.trim().to_ascii_lowercase().as_str() {
         "challenger" => MIN_CHALLENGER_GAMES,
         _ => MIN_TIER_GAMES,
@@ -70,6 +71,10 @@ pub struct TierRow {
     /// cached before it existed.
     #[serde(default)]
     pub score: f64,
+    /// The tier the previous patch alone gave this champion, scored the same
+    /// way; only when it cleared the games floor on both patches.
+    #[serde(default)]
+    pub prev_tier: Option<u8>,
 }
 
 impl TierRow {
@@ -127,7 +132,21 @@ pub fn blend_tierlist(now: TierList, prev: Option<&TierList>, tier: &str, info: 
         );
     }
     score_rows(&mut rows);
+    if let Some(prev) = prev {
+        let tiers = previous_tiers(prev, floor);
+        for row in rows.iter_mut().filter(|row| row.games >= floor) {
+            row.prev_tier = tiers.get(&row.champion_id).copied();
+        }
+    }
     TierList { rows, patch: Some(info) }
+}
+
+/// Each champion's tier on the previous patch's own list: its rows above the
+/// games floor, scored and labelled like the current list.
+fn previous_tiers(prev: &TierList, floor: u64) -> HashMap<i64, u8> {
+    let mut rows: Vec<TierRow> = prev.rows.iter().filter(|row| row.games >= floor).cloned().collect();
+    score_rows(&mut rows);
+    rows.iter().map(|row| (row.champion_id, row.tier)).collect()
 }
 
 pub fn tierlist_url(lane: &str, tier: &str, patch: Option<&str>) -> String {
@@ -281,6 +300,7 @@ fn tier_row(champion_id: i64, row: &Value, min_games: u64) -> Option<TierRow> {
         ban_pct: row.get("br").and_then(number)?,
         games,
         score: 0.0,
+        prev_tier: None,
     })
 }
 
@@ -632,7 +652,7 @@ mod tests {
     }
 
     fn raw(id: i64, win: f64, pick: f64, games: u64) -> TierRow {
-        TierRow { champion_id: id, tier: 0, win_pct: win, pick_pct: pick, ban_pct: 1.0, games, score: 0.0 }
+        TierRow { champion_id: id, win_pct: win, pick_pct: pick, ban_pct: 1.0, games, ..TierRow::default() }
     }
 
     fn info() -> PatchInfo {
@@ -659,6 +679,25 @@ mod tests {
         let list = blend_tierlist(now, None, "emerald_plus", PatchInfo { previous: None, ..info() });
         assert_eq!(list.rows.len(), 2);
         assert!(list.patch.unwrap().previous.is_none());
+    }
+
+    #[test]
+    fn the_previous_tier_is_scored_from_the_previous_patch_alone() {
+        // Champion 1 was the best on the previous patch and the worst now.
+        let now = TierList { rows: vec![raw(1, 46.0, 2.0, 20_000), raw(2, 54.0, 8.0, 20_000), raw(3, 50.0, 5.0, 20_000), raw(4, 51.0, 5.0, 100)], patch: None };
+        let prev = TierList { rows: vec![raw(1, 56.0, 9.0, 20_000), raw(2, 47.0, 2.0, 20_000), raw(4, 53.0, 6.0, 20_000), raw(5, 50.0, 5.0, 100)], patch: None };
+        let list = blend_tierlist(now, Some(&prev), "emerald_plus", info());
+        let prev_of = |id| list.rows.iter().find(|row| row.champion_id == id).unwrap().prev_tier;
+        let fresh = previous_tiers(&prev, MIN_TIER_GAMES);
+        assert_eq!(prev_of(1), Some(fresh[&1]));
+        assert_eq!(prev_of(1), Some(0), "best of the previous list");
+        assert!(prev_of(2) > prev_of(1));
+        // Too few games now, or none on the previous patch: no previous tier.
+        assert_eq!(prev_of(4), None);
+        assert_eq!(prev_of(3), None);
+        assert!(!fresh.contains_key(&5));
+        let alone = blend_tierlist(TierList { rows: vec![raw(1, 50.0, 5.0, 20_000)], patch: None }, None, "emerald_plus", info());
+        assert_eq!(alone.rows[0].prev_tier, None);
     }
 
     #[test]

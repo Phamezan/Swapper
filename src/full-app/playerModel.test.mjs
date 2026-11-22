@@ -54,6 +54,33 @@ test('profile aggregates top three by games, combined KDA, allies and observed a
   assert.deepEqual(stats.roles, [{ role: 'adc', games: 5, wins: 3 }]);
 });
 
+test('a season summary sets the record, top champions and KDA while recent games keep trends, roles and allies', () => {
+  const games = [sample(1, 145, true), sample(2, 145, false), sample(3, 236, true)];
+  const champion = (id, games, wins) => ({ id, games, wins, kills: 2 * games, deaths: games, assists: 2 * games });
+  const summary = { games: 120, wins: 70, kills: 300, deaths: 100, assists: 200,
+    champions: [champion(222, 60, 40), champion(145, 40, 20), champion(103, 15, 8), champion(1, 5, 2)] };
+  const stats = profileStats(games, {}, summary);
+  assert.equal(stats.season, true);
+  assert.deepEqual([stats.games, stats.wins, stats.recentGames], [120, 70, 3]);
+  assert.deepEqual(stats.champions.map(c => [c.id, c.losses, c.kda]), [[222, 20, 4], [145, 20, 4], [103, 7, 4]]);
+  assert.equal(stats.metrics[0].average, 5);
+  assert.equal(stats.metrics[0].delta, 0);
+  assert.deepEqual(stats.metrics[0].points, [5, 5, 5]);
+  assert.equal(stats.metrics[1].average, 50);
+  assert.deepEqual(stats.roles, [{ role: 'adc', games: 3, wins: 2 }]);
+  assert.equal(stats.playedWith[0].games, 3);
+});
+
+test('without a usable season summary the recent games carry every number', () => {
+  const games = [sample(1, 145, true), sample(2, 236, false)];
+  for (const summary of [null, undefined, { games: 0, wins: 0, kills: 0, deaths: 0, assists: 0, champions: [] }]) {
+    const stats = profileStats(games, {}, summary);
+    assert.equal(stats.season, false);
+    assert.deepEqual([stats.games, stats.wins, stats.recentGames], [2, 1, 2]);
+    assert.deepEqual(stats.champions.map(c => c.id), [145, 236]);
+  }
+});
+
 test('missing metrics stay absent, trends preserve chronology and duplicate games do not inflate a profile', () => {
   const first = { ...sample(1, 145, true), metrics: [null, 40, null, null, null, null], role: '' };
   const last = { ...sample(2, 145, false), metrics: [null, 60, NaN, Infinity, null, null] };

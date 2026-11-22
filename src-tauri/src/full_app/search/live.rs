@@ -75,9 +75,9 @@ fn unsupported_mode(value: &Value) -> Option<&'static str> {
     let five_v_five = ["teamA", "teamB"].iter().all(|key| game[*key].as_array().is_some_and(|team| team.len() == 5));
     if five_v_five { return None; }
     Some(match game["queueId"].as_i64()? {
-        1700 | 1710 => "Live players for Arena games aren't supported yet. Swapper shows 5v5 games.",
-        1810..=1840 => "Live players for Swarm games aren't supported yet. Swapper shows 5v5 games.",
-        _ => "Live players for this game mode aren't supported yet. Swapper shows 5v5 games.",
+        1700 | 1710 => "Arena games aren't supported yet. Swapper shows 5v5 games.",
+        1810..=1840 => "Swarm games aren't supported yet. Swapper shows 5v5 games.",
+        _ => "This mode isn't supported yet. Swapper shows 5v5 games.",
     })
 }
 
@@ -203,7 +203,7 @@ pub(super) async fn status(client: &crate::runes::Lcu, id: &str, details: bool) 
         // They are in a game, just not one with a 5v5 roster to show.
         result.live = true;
         result.message = Some(reason);
-    } else { result.message = Some("Live players are unavailable. The game may have ended; try again shortly."); }
+    } else { result.message = Some("Live players unavailable. The game may have ended \u{2014} retry soon."); }
     if let Ok(mut cache) = GAMES.lock() { cache.get_or_insert_with(online::Cache::default).put(key, result.view.clone()); }
     result
 }
@@ -279,7 +279,7 @@ mod tests {
         let game = |queue: i64, a: usize, b: usize| serde_json::json!({ "data": { "getLiveGame": { "queueId": queue, "teamA": team(a), "teamB": team(b) } } });
         assert!(unsupported_mode(&game(1700, 8, 8)).unwrap().contains("Arena"));
         assert!(unsupported_mode(&game(1820, 4, 0)).unwrap().contains("Swarm"));
-        assert!(unsupported_mode(&game(9999, 3, 3)).unwrap().contains("this game mode"));
+        assert!(unsupported_mode(&game(9999, 3, 3)).unwrap().contains("This mode isn't supported"));
         assert_eq!(unsupported_mode(&game(420, 5, 5)), None, "a 5v5 game is supported");
         assert_eq!(unsupported_mode(&serde_json::json!({ "errors": [{}], "data": null })), None);
     }

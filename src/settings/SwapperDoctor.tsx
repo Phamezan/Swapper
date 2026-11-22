@@ -150,7 +150,7 @@ export function SwapperDoctor({ remoteTransport }: { remoteTransport: "lan" | "t
         <div className="doctor-note"><LoaderCircle className="spin" size={13} /> Running checks…</div>
       )}
       {state.phase === "failed" && (
-        <div className="doctor-note">Checks failed. Run again.</div>
+        <div className="doctor-note">Checks failed. Try again.</div>
       )}
       {state.phase === "done" && (
         <div className="doctor-list">

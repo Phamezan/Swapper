@@ -1,7 +1,5 @@
-import { Tooltip } from "../full-app/ui/Tooltip";
 import { useState, type ReactNode } from "react";
-import { invoke } from "@tauri-apps/api/core";
-import { CircleHelp, Info } from "lucide-react";
+import { Info } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Switch } from "@/components/ui/switch";
@@ -36,8 +34,14 @@ type Props = {
   onNotificationsChange: (enabled: boolean) => void;
   onReadyCheckChange: (enabled: boolean) => void;
   koreanFont: boolean;
-  onKoreanFontChange: (enabled: boolean) => void;
+  customMods: boolean;
+  customModsRiskAck: boolean;
+  onCustomModsChange: (enabled: boolean, riskAck: boolean) => void;
   ltkInstalled: boolean;
+  ltkOutdated: boolean;
+  ltkNeedsSetup: boolean;
+  /** What a queued LTK Manager change waits for. */
+  ltkNotice: string | null;
   ltkInstalling: boolean;
   ltkInstallError: string | null;
   onInstallLtk: () => void;
@@ -65,14 +69,30 @@ export function GeneralSettings({
   onNotificationsChange,
   onReadyCheckChange,
   koreanFont,
-  onKoreanFontChange,
+  customMods,
+  customModsRiskAck,
+  onCustomModsChange,
   ltkInstalled,
+  ltkOutdated,
+  ltkNeedsSetup,
+  ltkNotice,
   ltkInstalling,
   ltkInstallError,
   onInstallLtk,
 }: Props) {
   const [openInfo, setOpenInfo] = useState<string | null>(null);
+  const [confirmingMods, setConfirmingMods] = useState(false);
+  const changeCustomMods = (checked: boolean) => {
+    if (checked && !customModsRiskAck) { setConfirmingMods(true); return; }
+    onCustomModsChange(checked, false);
+  };
   const toggle = (key: string) => setOpenInfo(openInfo === key ? null : key);
+  const ltkBox = ltkNotice !== null || !ltkInstalled || ltkOutdated || (ltkNeedsSetup && (koreanFont || customMods));
+  const ltkAction = !ltkInstalled
+    ? (ltkInstalling ? "Installing…" : "Install")
+    : ltkOutdated
+      ? (ltkInstalling ? "Updating…" : "Update")
+      : (ltkInstalling ? "Setting up…" : "Set up LTK Manager");
 
   return (
     <>
@@ -98,23 +118,28 @@ export function GeneralSettings({
 
       <div className="setting-row">
         <div className="setting-copy">
-          <label htmlFor={ltkInstalled ? "korean-font-switch" : undefined}>Korean font</label>
-          {!ltkInstalled && (
-            <Tooltip label="What is LTK Manager?"><button className="info-button" aria-label="What is LTK Manager?" onClick={() => void invoke("open_ltk_website")}><CircleHelp size={13} /></button></Tooltip>
-          )}
-          {ltkInstalled ? (
-            <p>Use at your own risk: changes League's game files while it runs.</p>
-          ) : (
-            <>
-              <p>Requires LTK Manager.</p>
-              {ltkInstallError && <p>{ltkInstallError}</p>}
-            </>
-          )}
+          <label htmlFor="custom-mods-switch">Custom mods</label>
+          <p>Enables a marketplace section where you can browse and install custom mods.</p>
         </div>
-        {ltkInstalled
-          ? <Switch id="korean-font-switch" checked={koreanFont} disabled={busy} onCheckedChange={onKoreanFontChange} aria-label="Korean font" />
-          : <Button variant="outline" disabled={ltkInstalling} onClick={onInstallLtk}>{ltkInstalling ? "Installing…" : "Install"}</Button>}
+        <Switch id="custom-mods-switch" checked={customMods} disabled={busy} onCheckedChange={changeCustomMods} aria-label="Custom mods" />
       </div>
+      {confirmingMods && <div className="deceive-notice is-warn" role="alertdialog" aria-label="Custom mods warning">
+        <p>Mods can break after patches and are against Riot&apos;s rules. Use at your own risk.</p>
+        <div>
+          <Button variant="outline" onClick={() => setConfirmingMods(false)}>Cancel</Button>
+          <Button onClick={() => { setConfirmingMods(false); onCustomModsChange(true, true); }}>Turn on</Button>
+        </div>
+      </div>}
+      {ltkBox && <div className="deceive-notice is-warn" role="status">
+        {ltkNotice
+          ? <p>{ltkNotice}</p>
+          : <>
+            <p>{!ltkInstalled ? "LTK Manager applies the Korean font and custom mods." : ltkOutdated ? "LTK Manager is out of date." : "LTK Manager isn't set up yet."}</p>
+            <p>Swapper sets LTK Manager to run in the background and apply your mods every game.</p>
+            <div><Button variant="outline" disabled={ltkInstalling} onClick={onInstallLtk}>{ltkAction}</Button></div>
+          </>}
+        {ltkInstallError && <p>{ltkInstallError}</p>}
+      </div>}
 
       <p className="field-label">Riot Client path</p>
       <div className="segmented" role="group" aria-label="Riot Client path">

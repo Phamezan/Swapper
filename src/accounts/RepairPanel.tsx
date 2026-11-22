@@ -44,7 +44,7 @@ export function RepairPanel({ account, onDone, onCancel }: RepairPanelProps) {
         if (outcome.state === "unavailable") {
           setPhase({
             kind: "failed",
-            problem: "Can’t read the account. Open Riot Client and sign in.",
+            problem: "Couldn't read your account. Open Riot Client and sign in.",
           });
           return;
         }
@@ -84,7 +84,7 @@ export function RepairPanel({ account, onDone, onCancel }: RepairPanelProps) {
       <section className="add-stage">
         <span className="step-number"><Wrench size={13} /></span>
         {phase.kind === "failed" ? <>
-          <h2>Could not repair the account</h2>
+          <h2>Couldn't repair this account</h2>
           <p>{phase.problem}</p>
           <Button className="primary-action" onClick={retry}><RefreshCw size={16} /> Try again</Button>
           <button className="text-action" onClick={onCancel}>Back to accounts</button>

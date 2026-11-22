@@ -120,9 +120,9 @@ impl ProviderError {
     /// A short, user-facing sentence naming the data kind.
     pub fn message(self, kind: DataKind) -> String {
         match self {
-            Self::Timeout => format!("{} timed out.", kind.label()),
-            Self::Unavailable => format!("{} are unavailable right now.", kind.label()),
-            Self::Format => format!("{} returned an unexpected format.", kind.label()),
+            Self::Timeout => format!("{} timed out. Check your connection and try again.", kind.label()),
+            Self::Unavailable => format!("{} are unavailable right now. Try again shortly.", kind.label()),
+            Self::Format => format!("{} look different than expected. Try again after an update.", kind.label()),
         }
     }
 }
@@ -190,18 +190,18 @@ mod tests {
     }
 
     #[test]
-    fn names_the_data_kind_in_failure_messages() {
+    fn failure_messages_are_short_and_actionable() {
         assert_eq!(
             ProviderError::Timeout.message(DataKind::RuneRecommendations),
-            "Rune recommendations timed out."
+            "Rune recommendations timed out. Check your connection and try again."
         );
         assert_eq!(
             ProviderError::Unavailable.message(DataKind::ProBuilds),
-            "Pro builds are unavailable right now."
+            "Pro builds are unavailable right now. Try again shortly."
         );
         assert_eq!(
             ProviderError::Format.message(DataKind::ItemBuild),
-            "Item builds returned an unexpected format."
+            "Item builds look different than expected. Try again after an update."
         );
     }
 

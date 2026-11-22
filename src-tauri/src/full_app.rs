@@ -32,7 +32,6 @@ pub const HISTORY_GAMES: usize = 100;
 pub const FLYOUT: &str = "main";
 
 pub struct Runtime {
-    menu: tauri::menu::Menu<tauri::Wry>,
     cancel: tokio::sync::watch::Sender<u64>,
     gate: tokio::sync::Mutex<()>,
     /// Destination each window shows once its page reports ready. `Some`
@@ -45,9 +44,8 @@ pub struct Runtime {
 }
 
 impl Runtime {
-    pub fn new(menu: tauri::menu::Menu<tauri::Wry>) -> Self {
+    pub fn new() -> Self {
         Self {
-            menu,
             cancel: tokio::sync::watch::channel(0).0,
             gate: tokio::sync::Mutex::new(()),
             pending_flyout: Mutex::new(None),
@@ -89,7 +87,7 @@ fn save_setting(
     change: impl Fn(&mut crate::vault::Config),
 ) -> Result<(), String> {
     let state = app.state::<crate::AppState>();
-    let mut config = state.config.lock().map_err(|e| e.to_string())?;
+    let mut config = state.config.lock().map_err(|e| { eprintln!("Settings lock poisoned: {e}"); "Couldn't read your settings. Restart Swapper.".to_string() })?;
     let previous = config.clone();
     change(&mut config);
     if let Err(error) = crate::vault::save(&config) {
@@ -114,22 +112,21 @@ pub async fn set_full_app_enabled(
     window: tauri::WebviewWindow,
 ) -> Result<(), String> {
     if !routing::window_may_invoke(window.label()) {
-        return Err("Change this setting from Swapper's Settings.".into());
+        return Err("Change this in Settings.".into());
     }
     save_setting(&app, |c| c.full_app = enabled)?;
-    sync_menu(&app)?;
     let _ = app.emit("window_settings", settings(&app));
     let runtime = app.state::<Runtime>();
     if enabled {
         if let Some(flyout) = app.get_webview_window(FLYOUT) {
-            flyout.destroy().map_err(|e| e.to_string())?;
+            flyout.destroy().map_err(|e| { eprintln!("Window close failed: {e}"); "Couldn't close that window. Try again.".to_string() })?;
         }
         clear(&runtime.pending_flyout);
         open(&app, None)
     } else {
         cancel(&app);
         if let Some(full) = app.get_webview_window(LABEL) {
-            full.destroy().map_err(|e| e.to_string())?;
+            full.destroy().map_err(|e| { eprintln!("Window close failed: {e}"); "Couldn't close that window. Try again.".to_string() })?;
         }
         clear(&runtime.pending_full);
         crate::show_flyout(&app, "settings");
@@ -141,20 +138,6 @@ pub async fn set_full_app_enabled(
 pub fn set_low_memory_mode(app: tauri::AppHandle, enabled: bool) -> Result<(), String> {
     save_setting(&app, |c| c.low_memory_mode = Some(enabled))?;
     let _ = app.emit("window_settings", settings(&app));
-    Ok(())
-}
-
-pub fn sync_menu(app: &tauri::AppHandle) -> Result<(), String> {
-    let runtime = app.state::<Runtime>();
-    let menu = &runtime.menu;
-    if let Some(item) = menu.get(LABEL) {
-        menu.remove(&item).map_err(|e| e.to_string())?;
-    }
-    if enabled(app) {
-        let item = tauri::menu::MenuItem::with_id(app, LABEL, "Open Swapper", true, None::<&str>)
-            .map_err(|e| e.to_string())?;
-        menu.insert(&item, 0).map_err(|e| e.to_string())?;
-    }
     Ok(())
 }
 
@@ -180,7 +163,7 @@ fn open_window(
     background: bool,
 ) -> Result<(), String> {
     if !enabled(app) {
-        return Err("Turn on Fullsized App in Settings first.".into());
+        return Err("Turn on the full app in Settings first.".into());
     }
     let runtime = app.state::<Runtime>();
     // A user's open while a background window is still loading shows it normally.
@@ -189,7 +172,7 @@ fn open_window(
         .store(background, std::sync::atomic::Ordering::Relaxed);
     if let Some(window) = app.get_webview_window(LABEL) {
         {
-            let mut pending = runtime.pending_full.lock().map_err(|e| e.to_string())?;
+            let mut pending = runtime.pending_full.lock().map_err(|e| { eprintln!("Settings lock poisoned: {e}"); "Couldn't read your settings. Restart Swapper.".to_string() })?;
             if pending.is_some() {
                 // Still loading; `window_ready` shows it at the latest destination.
                 if let Some(destination) = destination {
@@ -201,12 +184,12 @@ fn open_window(
         if let Some(destination) = destination {
             let _ = app.emit_to(LABEL, "navigate", destination);
         }
-        window.unminimize().map_err(|e| e.to_string())?;
-        window.show().map_err(|e| e.to_string())?;
+        window.unminimize().map_err(|e| { eprintln!("Window show failed: {e}"); "Couldn't open the full app. Try again.".to_string() })?;
+        window.show().map_err(|e| { eprintln!("Window show failed: {e}"); "Couldn't open the full app. Try again.".to_string() })?;
         crate::set_flyout_memory(&window, false);
-        return window.set_focus().map_err(|e| e.to_string());
+        return window.set_focus().map_err(|e| { eprintln!("Window focus failed: {e}"); "Couldn't open the full app. Try again.".to_string() });
     }
-    *runtime.pending_full.lock().map_err(|e| e.to_string())? =
+    *runtime.pending_full.lock().map_err(|e| { eprintln!("Settings lock poisoned: {e}"); "Couldn't read your settings. Restart Swapper.".to_string() })? =
         Some(destination.unwrap_or_default().to_string());
     // Shares the flyout's WebView2 environment (default data directory), which
     // requires identical browser arguments; they come from the flyout config.
@@ -232,7 +215,7 @@ fn open_window(
     }
     if let Err(error) = builder.build() {
         clear(&runtime.pending_full);
-        return Err(error.to_string());
+        eprintln!("Full app window failed: {error}"); return Err("Couldn't open the full app. Try again.".into());
     }
     Ok(())
 }
@@ -532,7 +515,7 @@ async fn fresh(app: &tauri::AppHandle, previous: Option<&Snapshot>) -> Result<Sn
         .await
         .map_err(|e| e.to_string())?;
     let mut summoner =
-        model::summoner(&current).ok_or("League Client has no signed-in summoner.")?;
+        model::summoner(&current).ok_or("No one is signed in. Open League Client first.")?;
     let (history, ranked) = tokio::try_join!(
         crate::runes::lcu_get::<Value>(
             &client,
@@ -543,7 +526,7 @@ async fn fresh(app: &tauri::AppHandle, previous: Option<&Snapshot>) -> Result<Sn
     .map_err(|e| e.to_string())?;
     let rows = history["games"]["games"]
         .as_array()
-        .ok_or("League Client sent an unexpected match history.")?;
+        .ok_or("League sent something unreadable. Try again.")?;
     let cached = previous.filter(|s| s.summoner.puuid == summoner.puuid);
     let eligible: Vec<Value> = rows
         .iter()
@@ -715,7 +698,7 @@ pub async fn dashboard_snapshot(
     window: tauri::WebviewWindow,
 ) -> Result<View, String> {
     if window.label() != LABEL || !enabled(&app) {
-        return Err("Fullsized App is closed or disabled.".into());
+        return Err("The full app is closed. Reopen it and try again.".into());
     }
     let runtime = app.state::<Runtime>();
     let mut cancelled = runtime.cancel.subscribe();
@@ -737,7 +720,7 @@ pub async fn dashboard_snapshot(
                         let cards = cards::update(Some(&snapshot));
                         (cards, snapshot)
                     }).await;
-                    let (cards, snapshot) = saved.map_err(|e| e.to_string())?;
+                    let (cards, snapshot) = saved.map_err(|e| { eprintln!("Dashboard load failed: {e}"); "Couldn't load your dashboard. Try again.".to_string() })?;
                     Ok(View { snapshot: Some(snapshot), cards, stale: false, message: None })
                 },
                 Err(error) => {

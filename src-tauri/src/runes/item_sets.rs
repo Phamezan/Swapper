@@ -60,12 +60,12 @@ fn item_set_body(
 ) -> Result<(String, Value), RuneError> {
     if !(1..=10_000).contains(&champion_id) {
         return Err(RuneError::conflict(
-            "Choose a valid champion before importing items.",
+            "Pick a champion first, then import items.",
         ));
     }
     if blocks.is_empty() {
         return Err(RuneError::conflict(
-            "This build does not contain any item groups.",
+            "This build has no items to import.",
         ));
     }
     let champion_name = clean(champion_name, MAX_CHAMPION_CHARS);
@@ -107,7 +107,7 @@ fn preset_item_set_body(
         || build.items.iter().any(|item| item.id <= 0)
     {
         return Err(RuneError::conflict(
-            "This build does not contain a valid full build.",
+            "This build's items look wrong. Pick another build.",
         ));
     }
     if build.starters.len() > MAX_ITEMS
@@ -117,12 +117,12 @@ fn preset_item_set_body(
             .any(|item| item.id <= 0 || !(1..=20).contains(&item.count))
     {
         return Err(RuneError::conflict(
-            "This build does not contain valid starter items.",
+            "This build's starting items look wrong. Pick another build.",
         ));
     }
     if build.options.len() > MAX_OPTION_CANDIDATES {
         return Err(RuneError::conflict(
-            "This build contains too many item alternatives.",
+            "This build has too many options. Pick another build.",
         ));
     }
 
@@ -260,7 +260,7 @@ async fn item_sets_path(lcu: &super::Lcu) -> Result<String, RuneError> {
     let summoner: CurrentSummoner = super::lcu_get(lcu, CURRENT_SUMMONER_PATH).await?;
     if summoner.summoner_id <= 0 {
         return Err(RuneError::unavailable(
-            "League did not report the current summoner id.",
+            "League didn't share your player ID. Reopen League and retry.",
         ));
     }
     Ok(format!("{ITEM_SETS_PATH}/{}/sets", summoner.summoner_id))
@@ -271,10 +271,8 @@ async fn put_item_sets(lcu: &super::Lcu, path: &str, sets: &Value) -> Result<(),
     if response.status().is_success() {
         return Ok(());
     }
-    Err(RuneError::conflict(format!(
-        "League rejected the item set (HTTP {}).",
-        response.status().as_u16()
-    )))
+    eprintln!("League refused item set: HTTP {}", response.status().as_u16());
+    Err(RuneError::conflict("League refused that item set. Try again."))
 }
 
 /// Removes the item sets Swapper imported, e.g. once a game ends. The

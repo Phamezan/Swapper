@@ -41,17 +41,17 @@ fn load(path: &Path) -> Result<Store, String> {
     let file = match std::fs::File::open(path) {
         Ok(file) => file,
         Err(e) if e.kind() == std::io::ErrorKind::NotFound => return Ok(Store::default()),
-        Err(_) => return Err("Could not read matchup records.".into()),
+        Err(_) => return Err("Couldn't load your matchup notes. Try again.".into()),
     };
     let mut bytes = Vec::new();
-    file.take(MAX_STORE_BYTES as u64 + 1).read_to_end(&mut bytes).map_err(|_| "Could not read matchup records.")?;
-    if bytes.len() > MAX_STORE_BYTES { return Err("Matchup record store is too large.".into()); }
-    serde_json::from_slice(&bytes).map_err(|_| "Could not read matchup records.".into())
+    file.take(MAX_STORE_BYTES as u64 + 1).read_to_end(&mut bytes).map_err(|_| "Couldn't load your matchup notes. Try again.")?;
+    if bytes.len() > MAX_STORE_BYTES { return Err("Couldn't open matchup notes. Restart Swapper and retry.".into()); }
+    serde_json::from_slice(&bytes).map_err(|_| "Couldn't load your matchup notes. Try again.".into())
 }
 
 fn save(path: &Path, store: &Store) -> Result<(), String> {
     let bytes = serde_json::to_vec(store).map_err(|_| "Could not save matchup records.")?;
-    if bytes.len() > MAX_STORE_BYTES { return Err("Matchup record store is too large.".into()); }
+    if bytes.len() > MAX_STORE_BYTES { return Err("Couldn't open matchup notes. Restart Swapper and retry.".into()); }
     let parent = path.parent().ok_or("Invalid record directory.")?;
     std::fs::create_dir_all(parent).map_err(|_| "Could not save matchup records.")?;
     let pending = path.with_extension("tmp");
@@ -170,7 +170,7 @@ async fn sync(app: &tauri::AppHandle) -> Result<(), String> {
         async move { crate::runes::lcu_get::<Value>(client, &url).await.map_err(|_| "Match history unavailable.".to_string()) }
     }, |verified| {
         account_read.verify(puuid, verified)?;
-        if !saved_accounts(app).iter().any(|p| p == puuid) { return Err("Account was removed.".into()); }
+        if !saved_accounts(app).iter().any(|p| p == puuid) { return Err("That account was removed. Pick another account.".into()); }
         Ok(())
     }).await?;
     let _ = app.emit("matchup_records_changed", ());
@@ -202,12 +202,12 @@ where F: Fn(String) -> Fut, Fut: std::future::Future<Output = Result<Value,Strin
             if newest.is_none() { newest = Some(id); }
             if Some(id) == stop { finished = true; break; }
             // A server that clamps pagination must not send us around forever.
-            if !visited.insert(id) { return Err("Match history repeated a page; backfill will retry later.".into()); }
+            if !visited.insert(id) { return Err("Match history stalled. It will retry on its own.".into()); }
             if held.seen.contains(&id) { continue; }
             let detail = if draft_game(row) && row["participants"].as_array().is_none_or(|p| p.len() != 10) {
                 tokio::time::sleep(Duration::from_millis(250)).await;
                 let detail = get(format!("/lol-match-history/v1/games/{id}")).await?;
-                if detail["gameId"].as_u64() != Some(id) { return Err("Unexpected match detail.".into()); }
+                if detail["gameId"].as_u64() != Some(id) { return Err("That match couldn't be read. Try another match.".into()); }
                 detail
             } else { row.clone() };
             if let Some(record) = record_from_game(&detail, puuid) { games.push((id,record)); }

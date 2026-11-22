@@ -1,4 +1,4 @@
-use crate::{korean_font, remote, riot, runes, vault};
+use crate::{mods, remote, riot, runes, vault};
 use serde::Serialize;
 use std::path::PathBuf;
 use std::sync::atomic::{AtomicBool, AtomicU64, Ordering};
@@ -52,7 +52,7 @@ impl SwitchGuard {
                 in_progress: Arc::clone(&self.in_progress),
             })
         } else {
-            Err("Another account action is in progress. Try again when it finishes.".into())
+            Err("Something else is running. Wait for it to finish.".into())
         }
     }
 }
@@ -66,8 +66,7 @@ impl Drop for SwitchLease {
 pub(crate) struct AppState {
     pub(crate) config: Mutex<vault::Config>,
     pub(crate) bundled_deceive: PathBuf,
-    /// Bundled `.fantome` the Korean font overlay is built from. Its patcher is
-    /// resolved at use time from the user's LTK Manager install.
+    /// Bundled Korean font `.fantome`, handed to LTK Manager when turned on.
     pub(crate) bundled_korean_font: PathBuf,
     pub(crate) switch_guard: SwitchGuard,
     pub(crate) remote: Arc<remote::RemoteCore>,
@@ -91,7 +90,7 @@ impl AppState {
     }
 
     pub(crate) fn set_auto_apply_top_preset(&self, enabled: bool) -> Result<(), String> {
-        let mut config = self.config.lock().map_err(|e| e.to_string())?;
+        let mut config = self.config.lock().map_err(|e| { eprintln!("Settings lock poisoned: {e}"); "Couldn't read your settings. Restart Swapper.".to_string() })?;
         config.auto_apply_top_preset = enabled;
         vault::save(&config)
     }
@@ -108,9 +107,9 @@ impl AppState {
 
     pub(crate) fn set_rune_tier(&self, tier: &str) -> Result<(), String> {
         let Some(slug) = runes::tier_slug(tier) else {
-            return Err("That rank filter is not available.".into());
+            return Err("That rank isn't available. Pick another rank.".into());
         };
-        let mut config = self.config.lock().map_err(|e| e.to_string())?;
+        let mut config = self.config.lock().map_err(|e| { eprintln!("Settings lock poisoned: {e}"); "Couldn't read your settings. Restart Swapper.".to_string() })?;
         if config.rune_tier.as_deref() == Some(slug) {
             return Ok(());
         }
@@ -127,7 +126,7 @@ impl AppState {
     }
 
     pub(crate) fn set_rune_page_id(&self, id: i64) -> Result<(), String> {
-        let mut config = self.config.lock().map_err(|e| e.to_string())?;
+        let mut config = self.config.lock().map_err(|e| { eprintln!("Settings lock poisoned: {e}"); "Couldn't read your settings. Restart Swapper.".to_string() })?;
         if config.rune_page_id == Some(id) {
             return Ok(());
         }
@@ -150,7 +149,7 @@ impl AppState {
     }
 
     pub(crate) fn set_apply_spells_with_runes(&self, enabled: bool) -> Result<(), String> {
-        let mut config = self.config.lock().map_err(|e| e.to_string())?;
+        let mut config = self.config.lock().map_err(|e| { eprintln!("Settings lock poisoned: {e}"); "Couldn't read your settings. Restart Swapper.".to_string() })?;
         if config.apply_spells_with_runes == Some(enabled) {
             return Ok(());
         }
@@ -167,7 +166,7 @@ impl AppState {
 
     /// Applies `change` to the config and saves it, keeping the old config if saving fails.
     pub(crate) fn change_rune_presets(&self, champion_id: i64, change: impl FnOnce(&mut vault::Config) -> Result<(), String>) -> Result<Vec<vault::SavedRunes>, String> {
-        let mut config = self.config.lock().map_err(|e| e.to_string())?;
+        let mut config = self.config.lock().map_err(|e| { eprintln!("Settings lock poisoned: {e}"); "Couldn't read your settings. Restart Swapper.".to_string() })?;
         let mut next = config.clone();
         change(&mut next)?;
         vault::save(&next)?;
@@ -183,9 +182,9 @@ impl AppState {
         let value = match key {
             "d" | "f" => Some(key.to_string()),
             "keep" => None,
-            _ => return Err("Choose D, F or keep for Flash.".into()),
+            _ => return Err("Pick D, F, or Keep for Flash.".into()),
         };
-        let mut config = self.config.lock().map_err(|e| e.to_string())?;
+        let mut config = self.config.lock().map_err(|e| { eprintln!("Settings lock poisoned: {e}"); "Couldn't read your settings. Restart Swapper.".to_string() })?;
         config.flash_key = value;
         vault::save(&config)?;
         crate::runes::spells::set_flash_key(key);
@@ -201,7 +200,7 @@ impl AppState {
     }
 
     pub(crate) fn set_import_items_with_runes(&self, enabled: bool) -> Result<(), String> {
-        let mut config = self.config.lock().map_err(|e| e.to_string())?;
+        let mut config = self.config.lock().map_err(|e| { eprintln!("Settings lock poisoned: {e}"); "Couldn't read your settings. Restart Swapper.".to_string() })?;
         if config.import_items_with_runes == Some(enabled) {
             return Ok(());
         }
@@ -220,7 +219,7 @@ impl AppState {
     }
 
     pub(crate) fn set_notifications_enabled(&self, enabled: bool) -> Result<(), String> {
-        let mut config = self.config.lock().map_err(|e| e.to_string())?;
+        let mut config = self.config.lock().map_err(|e| { eprintln!("Settings lock poisoned: {e}"); "Couldn't read your settings. Restart Swapper.".to_string() })?;
         if config.notifications_enabled == Some(enabled) {
             return Ok(());
         }
@@ -239,7 +238,7 @@ impl AppState {
     }
 
     pub(crate) fn set_ready_check_notifications(&self, enabled: bool) -> Result<(), String> {
-        let mut config = self.config.lock().map_err(|e| e.to_string())?;
+        let mut config = self.config.lock().map_err(|e| { eprintln!("Settings lock poisoned: {e}"); "Couldn't read your settings. Restart Swapper.".to_string() })?;
         if config.ready_check_notifications == Some(enabled) {
             return Ok(());
         }
@@ -247,20 +246,26 @@ impl AppState {
         vault::save(&config)
     }
 
-    /// Whether the optional Korean font is on. Off until the user turns it on.
-    pub(crate) fn korean_font_enabled(&self) -> bool {
-        self.config
-            .lock()
-            .map(|config| config.korean_font)
-            .unwrap_or(false)
-    }
-
     pub(crate) fn set_korean_font_enabled(&self, enabled: bool) -> Result<(), String> {
-        let mut config = self.config.lock().map_err(|e| e.to_string())?;
+        let mut config = self.config.lock().map_err(|e| { eprintln!("Settings lock poisoned: {e}"); "Couldn't read your settings. Restart Swapper.".to_string() })?;
         if config.korean_font == enabled {
             return Ok(());
         }
         config.korean_font = enabled;
+        vault::save(&config)
+    }
+
+    /// Whether custom mods are on. Off until the user turns them on.
+    pub(crate) fn custom_mods_enabled(&self) -> bool {
+        self.config.lock().map(|config| config.custom_mods).unwrap_or(false)
+    }
+
+    pub(crate) fn set_custom_mods_enabled(&self, enabled: bool, risk_ack: bool) -> Result<(), String> {
+        let mut config = self.config.lock().map_err(|e| { eprintln!("Settings lock poisoned: {e}"); "Couldn't read your settings. Restart Swapper.".to_string() })?;
+        config.custom_mods = enabled;
+        if risk_ack {
+            config.custom_mods_risk_ack = true;
+        }
         vault::save(&config)
     }
 }
@@ -297,9 +302,21 @@ pub(crate) struct AppView {
     notifications_enabled: bool,
     ready_check_notifications: bool,
     korean_font: bool,
-    /// Whether the user's LTK Manager install has the patcher host the Korean
-    /// font needs. The UI shows the toggle only when it is.
+    custom_mods: bool,
+    custom_mods_risk_ack: bool,
+    mods_region_blocked: bool,
+    /// Whether LTK Manager is installed. The UI shows the toggle only when it is.
     ltk_installed: bool,
+    /// Installed LTK Manager version, when it can be read.
+    ltk_version: Option<String>,
+    /// Whether the installed LTK Manager is below the minimum supported version.
+    ltk_outdated: bool,
+    /// Latest LTK Manager version already fetched from GitHub, if any.
+    ltk_latest_version: Option<String>,
+    /// Whether a current LTK Manager is not set up to apply mods every game.
+    ltk_needs_setup: bool,
+    /// What a queued LTK change waits for, if anything.
+    ltk_notice: Option<&'static str>,
     remote: remote::RemoteStatus,
 }
 
@@ -344,7 +361,17 @@ pub(crate) fn view(
         notifications_enabled: config.notifications_enabled.unwrap_or(true),
         ready_check_notifications: config.ready_check_notifications.unwrap_or(true),
         korean_font: config.korean_font,
-        ltk_installed: korean_font::patcher_path().is_some(),
+        custom_mods: config.custom_mods,
+        custom_mods_risk_ack: config.custom_mods_risk_ack,
+        mods_region_blocked: config.accounts.iter().find(|a| Some(a.id) == config.active_id).is_some_and(|a| mods::library::region_blocked(a.platform.as_deref(), a.region.as_deref())),
+        ltk_installed: mods::patcher::ltk_installed(),
+        ltk_version: mods::patcher::installed_version(),
+        ltk_outdated: mods::patcher::is_outdated(mods::patcher::installed_version().as_deref()),
+        ltk_latest_version: mods::patcher::cached_latest_version(),
+        ltk_needs_setup: mods::patcher::ltk_installed()
+            && !mods::patcher::is_outdated(mods::patcher::installed_version().as_deref())
+            && !mods::ltk::is_set_up(),
+        ltk_notice: mods::ltk::notice(),
         remote: remote.clone(),
     }
 }
@@ -369,7 +396,7 @@ mod tests {
         assert!(second.is_err(), "Second acquire while leased should fail");
         assert_eq!(
             second.unwrap_err(),
-            "Another account action is in progress. Try again when it finishes."
+            "Something else is running. Wait for it to finish."
         );
 
         drop(lease);
@@ -413,5 +440,55 @@ mod tests {
             next_lease.is_ok(),
             "Guard can be acquired after panic unwinds"
         );
+    }
+
+
+    // ---- swap e2e: lease / epoch (edge cases 1, 31, 34) ----
+
+    #[test]
+    fn epoch_moves_on_every_acquired_lease_but_not_on_a_refused_one() {
+        let guard = SwitchGuard::new();
+        let start = guard.epoch();
+        let lease = guard.acquire().unwrap();
+        assert_eq!(guard.epoch(), start + 1);
+        assert!(guard.acquire().is_err());
+        assert_eq!(guard.epoch(), start + 1, "a refused action must not cancel the running watch");
+        drop(lease);
+        let _next = guard.acquire().unwrap();
+        assert_eq!(guard.epoch(), start + 2);
+    }
+
+    #[test]
+    fn a_watch_started_by_a_switch_is_cancelled_by_the_next_action() {
+        let guard = SwitchGuard::new();
+        let lease = guard.acquire().unwrap();
+        let watch_epoch = guard.epoch();
+        let handle = guard.epoch_handle();
+        let cancelled = || handle.load(Ordering::SeqCst) != watch_epoch;
+        drop(lease);
+        assert!(!cancelled(), "releasing the lease alone must not cancel the post-switch watches");
+        let _other_action = guard.acquire().unwrap();
+        assert!(cancelled());
+    }
+
+    #[test]
+    fn only_one_of_many_simultaneous_switches_wins() {
+        let guard = SwitchGuard::new();
+        let barrier = Arc::new(std::sync::Barrier::new(16));
+        let wins: Vec<_> = (0..16)
+            .map(|_| {
+                let guard = guard.clone();
+                let barrier = Arc::clone(&barrier);
+                std::thread::spawn(move || {
+                    barrier.wait();
+                    guard.acquire().map(|lease| std::mem::forget(lease)).is_ok()
+                })
+            })
+            .collect::<Vec<_>>()
+            .into_iter()
+            .map(|handle| handle.join().unwrap())
+            .collect();
+        assert_eq!(wins.iter().filter(|won| **won).count(), 1);
+        assert!(guard.is_switching());
     }
 }

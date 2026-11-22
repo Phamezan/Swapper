@@ -82,7 +82,7 @@ pub fn valid_id(id: i64) -> bool {
 /// Parses the client's item game-data file.
 pub fn parse(body: &str) -> Result<Vec<Item>, RuneError> {
     serde_json::from_str(body)
-        .map_err(|e| RuneError::unavailable(format!("Could not read item data: {e}")))
+        .map_err(|e| RuneError::unavailable({ eprintln!("Item data read failed: {e}"); "Couldn't load items. Try again.".to_string() }))
 }
 
 /// The safe LCU asset path for an item, or `None` when it is not an asset the
@@ -251,7 +251,7 @@ async fn from_ddragon(id: i64) -> Result<Vec<u8>, RuneError> {
         .connect_timeout(REQUEST_TIMEOUT)
         .timeout(REQUEST_TIMEOUT)
         .build()
-        .map_err(|_| RuneError::unavailable("Could not create the item client."))?;
+        .map_err(|_| RuneError::unavailable("Couldn't load images. Check your connection and try again."))?;
     let version = match VERSION.get() {
         Some(version) => version.clone(),
         None => {
@@ -259,14 +259,14 @@ async fn from_ddragon(id: i64) -> Result<Vec<u8>, RuneError> {
                 .get("https://ddragon.leagueoflegends.com/api/versions.json")
                 .send()
                 .await
-                .map_err(|_| RuneError::unavailable("Could not load the item icon."))?
+                .map_err(|_| RuneError::unavailable("Couldn't load that image. Try again."))?
                 .json()
                 .await
-                .map_err(|_| RuneError::unavailable("Could not load the item icon."))?;
+                .map_err(|_| RuneError::unavailable("Couldn't load that image. Try again."))?;
             let latest = versions
                 .into_iter()
                 .next()
-                .ok_or_else(|| RuneError::unavailable("Could not load the item icon."))?;
+                .ok_or_else(|| RuneError::unavailable("Couldn't load that image. Try again."))?;
             VERSION.get_or_init(|| latest).clone()
         }
     };
@@ -276,16 +276,16 @@ async fn from_ddragon(id: i64) -> Result<Vec<u8>, RuneError> {
         ))
         .send()
         .await
-        .map_err(|_| RuneError::unavailable("Could not load the item icon."))?;
+        .map_err(|_| RuneError::unavailable("Couldn't load that image. Try again."))?;
     if !response.status().is_success() {
-        return Err(RuneError::not_found("That item icon is unavailable."));
+        return Err(RuneError::not_found("That image couldn't be loaded. Try again."));
     }
     let bytes = response
         .bytes()
         .await
-        .map_err(|_| RuneError::unavailable("Could not load the item icon."))?;
+        .map_err(|_| RuneError::unavailable("Couldn't load that image. Try again."))?;
     if bytes.is_empty() || bytes.len() > super::MAX_ICON_BYTES {
-        return Err(RuneError::not_found("That item icon is unavailable."));
+        return Err(RuneError::not_found("That image couldn't be loaded. Try again."));
     }
     Ok(bytes.to_vec())
 }

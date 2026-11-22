@@ -159,12 +159,13 @@ test("switch during launch keeps launch errors visible and allows the next Play"
   await h.tree().switchToAccount("main");
   await h.emit("switch_started", { id: "main", name: "Main" });
   await h.tree().switchToAccount("main"); await h.flush();
-  assert.match(h.tree().error, /account action is in progress/);
+  assert.match(h.tree().error, /Something else is running/);
   const selected = { ...state, activeId: "main" };
   commands.get_state = selected;
   await h.emit("switch_done", { id: "main", view: selected });
   await h.emit("launch_failed", { id: "main", error: "League needs an update. Open Riot Client, then press Play again." });
   assert.match(h.tree().error, /League needs an update/);
+  assert.equal(h.tree().launchFailed, true, "a launch failure offers Open Riot Client");
   assert.equal(h.tree().data.activeId, "main");
   assert.equal(h.tree().switchingAccountId, null);
   await h.tree().switchToAccount("main");
@@ -443,7 +444,7 @@ test("other main rune failures preserve the current build and stale responses ca
   await failed.h.flush();
   await openMoreRunes(failed.h);
   await failed.h.flush();
-  assert.match(textOf(failed.h.tree()), /Build unavailable for this main rune/);
+  assert.match(textOf(failed.h.tree()), /No build for this rune/);
   assert.match(textOf(nodes(failed.h.tree()).find(n => n.props.className === "cs-build-selected")), /Most played/);
   let finish;
   const waiting = new Promise(resolve => { finish = resolve; });

@@ -44,7 +44,7 @@ pub async fn icon(name: &str) -> Result<Vec<u8>, RuneError> {
         .connect_timeout(REQUEST_TIMEOUT)
         .timeout(REQUEST_TIMEOUT)
         .build()
-        .map_err(|_| RuneError::unavailable("Could not load the objective icon."))?;
+        .map_err(|_| RuneError::unavailable("Couldn't load that image. Try again."))?;
     let response = client
         .get(format!(
             "{}/{name}.png",
@@ -56,14 +56,14 @@ pub async fn icon(name: &str) -> Result<Vec<u8>, RuneError> {
         ))
         .send()
         .await
-        .map_err(|_| RuneError::unavailable("Could not load the objective icon."))?;
+        .map_err(|_| RuneError::unavailable("Couldn't load that image. Try again."))?;
     if !response.status().is_success() {
-        return Err(RuneError::not_found("That objective icon is unavailable."));
+        return Err(RuneError::not_found("That image couldn't be loaded. Try again."));
     }
     let bytes = response
         .bytes()
         .await
-        .map_err(|_| RuneError::unavailable("Could not load the objective icon."))?;
+        .map_err(|_| RuneError::unavailable("Couldn't load that image. Try again."))?;
     if !is_png(
         &bytes,
         if name == "map11" {
@@ -72,7 +72,7 @@ pub async fn icon(name: &str) -> Result<Vec<u8>, RuneError> {
             MAX_BYTES
         },
     ) {
-        return Err(RuneError::not_found("That objective icon is unavailable."));
+        return Err(RuneError::not_found("That image couldn't be loaded. Try again."));
     }
     asset_cache::write(asset_cache::Kind::Objective, name, &bytes);
     Ok(bytes.to_vec())

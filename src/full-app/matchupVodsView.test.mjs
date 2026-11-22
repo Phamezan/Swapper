@@ -275,10 +275,10 @@ test('element fullscreen waits for the native resize and native errors stay visi
   h.tauriWindow.setFullscreen = async () => { throw new Error('permission denied'); };
   tree.props.onKeyDown({ key: 'Escape', preventDefault() {}, stopPropagation() {} });
   tree = await h.flush();
-  assert.match(text(tree), /Could not leave window fullscreen: Error: permission denied/);
+  assert.match(text(tree), /Couldn't leave fullscreen\. Try again\./);
   control(tree, 'Full screen').props.onClick();
   tree = await h.flush();
-  assert.doesNotMatch(text(tree), /Window fullscreen unavailable/);
+  assert.doesNotMatch(text(tree), /permission denied/);
 });
 
 test('player receives trusted progress, jumps to moments and shows a failed embed with a way out', () => {

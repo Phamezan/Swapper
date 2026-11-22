@@ -18,7 +18,7 @@ const state = {
   accounts: [account("a", "Main account", "EUW"), account("b", "Smurf", "EUW"), account("c", "Practice", "NA")], activeId: "a", isSwitching: false,
   useDeceive: false, riotExe: null, riotDetected: true, deceiveDetected: true, autoApplyTopPreset: true, runeTier: "emerald_plus",
   applySpellsWithRunes: true, importItemsWithRunes: true, hotkey: "Ctrl+Shift+S", hotkeyActive: true, notificationsEnabled: true,
-  readyCheckNotifications: true, koreanFont: false, ltkInstalled: false, remote,
+  readyCheckNotifications: true, koreanFont: false, ltkInstalled: false, ltkVersion: null, ltkOutdated: false, ltkLatestVersion: null, ltkNeedsSetup: false, ltkNotice: null, remote,
 };
 const none = () => null;
 const champSelect = { phase: params.get("fixture") ? "ChampSelect" : "None", championId: 266, championName: "Aatrox", position: "top", locked: params.get("fixture") === "locked" };

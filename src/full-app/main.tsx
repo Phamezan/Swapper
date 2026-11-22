@@ -1,10 +1,10 @@
 import { displayPatch } from "../patchDisplay";
-import { lazy, Suspense, useCallback, useEffect, useMemo, useRef, useState, type CSSProperties } from "react";
+import { Fragment, lazy, Suspense, useCallback, useEffect, useMemo, useRef, useState, type CSSProperties } from "react";
 import { createRoot } from "react-dom/client";
 import { invoke, isTauri } from "@tauri-apps/api/core";
 import { Popover } from "radix-ui";
 import { listen } from "@tauri-apps/api/event";
-import { AccountsIcon, DashboardIcon, DraftIcon, MatchupsIcon, CompsIcon, PatchNotesIcon, PlayIcon, SettingsIcon, TierlistIcon } from "./ui/icons";
+import { AccountsIcon, DashboardIcon, DraftIcon, MatchupsIcon, ModsIcon, CompsIcon, PatchNotesIcon, PlayIcon, SettingsIcon, TierlistIcon } from "./ui/icons";
 import { BrandIcon } from "../components/BrandIcon";
 import { useRiotClientIcon } from "../riotIcon";
 import type { ChampionOption } from "../runes/types";
@@ -22,6 +22,7 @@ import "./dashboard.css";
 import "./full-app.css";
 import { AccountCards } from "./AccountCards";
 import { SettingsPage } from "./SettingsPage";
+import { CustomModsPage } from "./CustomModsPage";
 import { DraftPage } from "./DraftPage";
 import { MatchupVods } from "./MatchupVods";
 import type { VodRequest } from "./MatchupVodEntry";
@@ -35,6 +36,7 @@ import { contextualChampion, sidebarChampion, type AmbientChampions } from './lo
 import { EmptyState, Notice, Skeleton } from "./ui/States";
 import { useRestartClient } from "./restartClient";
 import { Tooltip, TooltipProvider } from "./ui/Tooltip";
+import { useUiScale } from "./uiScale";
 
 const Champions = lazy(() => import("./Champions"));
 const PatchNotes = lazy(() => import("./PatchNotes"));
@@ -42,7 +44,7 @@ const CompsPage = lazy(() => import("./Comps").then(m => ({ default: m.Comps }))
 const MatchDetail = lazy(() => import("./MatchDetail"));
 const PlayerPage = lazy(() => import('./PlayerPage'));
 type MatchLocation = `Match:${number}` | `Match:${number}:${string}`;
-type Page = "Dashboard" | "Tier list & Builds" | "Matchups" | "Comps" | "VODs" | "Patch notes" | MatchLocation | `Player:${string}`;
+type Page = "Dashboard" | "Tier list & Builds" | "Matchups" | "Comps" | "VODs" | "Patch notes" | "Custom mods" | MatchLocation | `Player:${string}`;
 type AppPage = "Accounts" | "Champion select" | "Settings";
 type Location = Page | AppPage;
 // Pages hosted by the flyout's own App component, and the App view each opens.
@@ -59,6 +61,7 @@ const NOTES_CHECK_MS = 60 * 60 * 1000;
 const allPages = groups.flatMap(group => group.items.map(([label]) => label));
 
 function App() {
+  useUiScale();
   const [ambientIds, setAmbientIds] = useState<AmbientChampions>({ champion: null, player: null, draft: null });
   const publishAmbient = useCallback((kind: keyof AmbientChampions, id: number | null) => {
     setAmbientIds(ids => ids[kind] === id ? ids : { ...ids, [kind]: id });
@@ -169,6 +172,7 @@ function App() {
   const [champions, setChampions] = useState<ChampionOption[]>([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
+  const [launchError, setLaunchError] = useState(false);
   const [pickerOpen, setPickerOpen] = useState(false);
   const [patch, setPatch] = useState<string | null>(null);
   // Newest patch in Riot's notes listing (not the game patch: notes can land before or after it).
@@ -201,14 +205,14 @@ function App() {
   const queued = useRef(false);
   const lastPhase = useRef("");
   async function refresh() {
-    if (!isTauri()) { setError("Open Swapper from the tray to connect to League Client."); return; }
+    if (!isTauri()) { setError("Open Swapper from the tray to connect to League."); return; }
     if (fetching.current) { queued.current = true; return; }
     fetching.current = true; setLoading(true);
     void invoke<AppState>("get_state").then(state => {
       if (mounted.current) { setAccounts(state); setRegion(state.accounts.find(a => a.id === state.activeId)?.region ?? null); }
     }).catch(() => {});
-    try { const next = await invoke<DashboardView>("dashboard_snapshot"); if (mounted.current) { setView(next); setError(""); } }
-    catch (reason) { if (mounted.current) setError(String(reason)); }
+    try { const next = await invoke<DashboardView>("dashboard_snapshot"); if (mounted.current) { setView(next); setError(""); setLaunchError(false); } }
+    catch (reason) { if (mounted.current) { setError(String(reason)); setLaunchError(false); } }
     finally {
       fetching.current = false;
       if (mounted.current) { setLoading(false); if (queued.current) { queued.current = false; void refresh(); } }
@@ -225,10 +229,10 @@ function App() {
     const navigate = isTauri() ? listen<string>("navigate", ({ payload }) => payload === "live" || payload === "Live Game" ? go(DRAFT_PAGE) : setPage("app")) : Promise.resolve(() => {});
     const switches = isTauri() ? Promise.all([
       // Switching onto the signed-in account is a client restart.
-      listen<{ id: string; name: string }>("switch_started", ({ payload }) => { setPickerOpen(false); setSwitching({ ...payload, restart: payload.id === activeIdRef.current && !clientClosed.current }); }),
+      listen<{ id: string; name: string }>("switch_started", ({ payload }) => { setPickerOpen(false); setError(""); setLaunchError(false); setSwitching({ ...payload, restart: payload.id === activeIdRef.current && !clientClosed.current }); }),
       listen("switch_done", () => { setSwitching(null); void refresh(); }),
       listen("switch_failed", () => setSwitching(null)),
-      listen<{ error: string }>("launch_failed", ({ payload }) => setError(payload.error)),
+      listen<{ error: string }>("launch_failed", ({ payload }) => { setError(payload.error); setLaunchError(true); }),
     ]) : Promise.resolve([]);
     const health = isTauri() ? listen<string>("client_health", ({ payload }) => setClientHealth(payload)) : Promise.resolve(() => {});
     // A saved account's icon was refreshed: the picker shows it.
@@ -280,11 +284,14 @@ function App() {
   }, [snapshot, ended, go]);
   const selectedMatch = matchId == null ? null : visitedMatches.current.get(page) ?? snapshot?.games.find(game => game.id === matchId) ?? (ended?.id === matchId ? ended : undefined);
   const activeAccount = accounts?.accounts.find(account => account.id === accounts.activeId);
-  const [gameName, tag] = splitRiotId(snapshot?.summoner.riotId ?? activeAccount?.riotId ?? "");
+  // Mid-switch the sidebar shows the account being signed into; a snapshot of another account never shows.
+  const shownAccount = (switching && accounts?.accounts.find(account => account.id === switching.id)) || activeAccount;
+  const ownSnapshot = !switching && snapshot && (!shownAccount?.riotId || snapshot.summoner.riotId.toLowerCase() === shownAccount.riotId.toLowerCase()) ? snapshot : null;
+  const [gameName, tag] = splitRiotId(ownSnapshot?.summoner.riotId ?? shownAccount?.riotId ?? "");
   const who: PodiumIdentity = {
-    name: gameName || activeAccount?.name || "League Client", tag: tag.slice(1) || null,
-    icon: snapshot?.summoner.icon ?? activeAccount?.iconDataUrl ?? null, level: snapshot?.summoner.level ?? null,
-    region, rank: rank ?? null, unranked: Boolean(snapshot),
+    name: gameName || shownAccount?.name || "League Client", tag: tag.slice(1) || null,
+    icon: ownSnapshot?.summoner.icon ?? shownAccount?.iconDataUrl ?? null, level: ownSnapshot?.summoner.level ?? null,
+    region, rank: ownSnapshot ? rank ?? null : (shownAccount && view?.cards[shownAccount.id]?.rank) || null, unranked: Boolean(ownSnapshot),
   };
   // Connected = the client reported who is signed in (not saved stats, not an error).
   const connected = Boolean(signedIn) && !error;
@@ -315,7 +322,7 @@ function App() {
       <AmbientArt src={pageArt} />
       <aside className="sidebar dash-scope">
         <Popover.Root open={pickerOpen} onOpenChange={setPickerOpen}>
-          <div className="podium-wrap"><Podium who={who} connected={connected} open={pickerOpen} crest={rank ? crestSlug(rank.tier) : null} disabled={Boolean(switching)}
+          <div className="podium-wrap"><Podium who={who} connected={connected && Boolean(ownSnapshot)} open={pickerOpen} crest={who.rank ? crestSlug(who.rank.tier) : null} disabled={Boolean(switching)} pending={Boolean(switching)}
             trouble={(clientHealth === "dead" || clientHealth === "hung") && !switching && !inGame} onRestart={() => void restartClient()} onOpenProfile={who.tag ? () => go(`Player:${who.name}#${who.tag}`) : undefined} />
             {pickerOpen && <AccountPicker accounts={accounts?.accounts ?? []} activeId={accounts?.activeId ?? null} activeRank={rank ?? null} cards={view?.cards ?? {}} disabled={Boolean(switching)} closed={clientHealth === "closed"}
               onSwitch={switchTo} onRestart={() => { setPickerOpen(false); void restartClient(); }} onManage={() => { setPickerOpen(false); go("Accounts"); }} />}
@@ -323,12 +330,18 @@ function App() {
         </Popover.Root>
         <nav aria-label="Swapper pages">
           {groups.map(group => <div className="nav-group" key={group.label} role="group" aria-label={group.label}>
-            {group.items.map(([label, Icon]) => <button key={label} aria-label={pageLabel(label)} aria-current={current === label ? "page" : undefined} onClick={() => sidebarGo(label)}>
+            {/* Champion select only shows while there is one (or its game) to show. */}
+            {group.items.filter(([label]) => label !== "Champion select" || inChampSelect || inGame).map(([label, Icon]) => <Fragment key={label}>
+              {group.label === "Swapper" && label === "Settings" && accounts?.customMods && <button aria-label="Custom mods" aria-current={current === "Custom mods" ? "page" : undefined} onClick={() => sidebarGo("Custom mods")}>
+                <ModsIcon size={19} aria-hidden />Custom mods
+              </button>}
+              <button key={label} aria-label={pageLabel(label)} aria-current={current === label ? "page" : undefined} onClick={() => sidebarGo(label)}>
               <Icon size={19} aria-hidden />{pageLabel(label)}
               {label === "Tier list & Builds" && patch && <Tooltip label={`Patch ${displayPatch(patch)}`}><span className="nav-badge patch" data-label={`PATCH ${displayPatch(patch)}`} /></Tooltip>}
               {label === "Patch notes" && notesPatch && seenPatch !== notesPatch && current !== label && <Tooltip label={`Patch ${displayPatch(notesPatch)} notes are out`}><span className="nav-badge new">NEW!</span></Tooltip>}
               {label === "Champion select" && (inChampSelect || inGame) && <span className="nav-badge live"><i aria-hidden />LIVE</span>}
-            </button>)}
+              </button>
+            </Fragment>)}
           </div>)}
         </nav>
         {/* The restart flow opens the client when none runs. */}
@@ -345,9 +358,9 @@ function App() {
         {selectedMatch ? <PageHeader title="Match detail" actions={<small className="updated md-header-meta">
             {queueLabels[selectedMatch.queue] ?? selectedMatch.queue} · {Math.floor(selectedMatch.duration / 60)}:{String(selectedMatch.duration % 60).padStart(2, "0")} · <time dateTime={new Date(selectedMatch.createdAt).toISOString()} title={new Date(selectedMatch.createdAt).toLocaleString()}>{formatPatchDate(new Date(selectedMatch.createdAt).toISOString())}</time>
           </small>} />
-          : page !== "VODs" && page !== "Comps" && <PageHeader title={playerId != null ? 'Player profile' : matchId != null ? "Match detail" : pageLabel(page)}
+          : page !== "VODs" && page !== "Comps" && page !== "Custom mods" && <PageHeader title={playerId != null ? 'Player profile' : matchId != null ? "Match detail" : pageLabel(page)}
             actions={page === "Dashboard" && snapshot && <small className="updated">Updated {fmtAgoShort(snapshot.fetchedAt)}</small>} />}
-        {error && <Notice tone="error">{error}</Notice>}
+        {error && <Notice tone="error" action={launchError ? <button type="button" className="fa-secondary" onClick={() => void invoke("open_riot").catch(() => {})}>Open Riot Client</button> : undefined}>{error}</Notice>}
         {page === "VODs" ? null : page === "Dashboard"
           ? snapshot ? <Dashboard snapshot={snapshot} phase={phase} justEnded={ended} onOpenLive={() => go(DRAFT_PAGE)}
               onOpenChampion={(id, name) => openChampion({ id, name })}
@@ -360,6 +373,7 @@ function App() {
           : selectedMatch ? <Suspense fallback={<Skeleton label="Loading match details" rows={4} height={64} />}><MatchDetail key={page} game={selectedMatch} riotId={matchPlayer} names={snapshot?.championNames ?? Object.fromEntries(championNames)} onOpenPlayer={riotId => go(`Player:${riotId}`)} /></Suspense>
           : page === "Comps" ? <Suspense fallback={<Skeleton label="Loading comps" rows={6} height={72} />}><CompsPage snapshot={snapshot ?? null} champions={champions} signedIn={Boolean(signedIn)} onOpenVods={openVods} homeSignal={compsHome} /></Suspense>
           : page === "Patch notes" ? <Suspense fallback={<Skeleton label="Loading patch notes" rows={6} height={72} />}><PatchNotes /></Suspense>
+          : page === "Custom mods" ? <CustomModsPage ltkInstalled={accounts?.ltkInstalled ?? false} ltkOutdated={accounts?.ltkOutdated ?? false} ltkNeedsSetup={accounts?.ltkNeedsSetup ?? false} ltkInstalling={false} onInstallLtk={() => { void invoke("install_ltk_manager").then(() => refresh()).catch(() => refresh()); }} koreanFont={accounts?.koreanFont ?? false} onKoreanFont={enabled => { void invoke("set_korean_font", { enabled }).then(() => refresh()).catch(() => refresh()); }} />
           : <Suspense fallback={<Skeleton label="Loading champion tools" rows={6} height={52} />}>
               <Champions key={page === "Matchups" && focus?.matchup ? `${page}-${focus.champion?.id}-${focus.matchup.enemy}-${focus.matchup.lane}` : page}
                 matchups={page === "Matchups"} focus={page === 'Matchups' && focus?.champion && !focus.matchup ? null : focus} onSelectionChange={setLocationChampion} onOpenVods={openVods} />

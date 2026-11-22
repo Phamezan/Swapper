@@ -26,3 +26,19 @@ export function NearEnd({ onNear }: { onNear: () => void }) {
   }, []);
   return <div ref={ref} aria-hidden />;
 }
+
+/** Adds `is-glow` the first time its content is fully in view, for a one-time highlight; never again while mounted,
+ *  and never with reduced motion. */
+export function GlowOnce({ children, className = "" }: { children: ReactNode; className?: string }) {
+  const ref = useRef<HTMLSpanElement>(null);
+  const [glow, setGlow] = useState(false);
+  useEffect(() => {
+    if (window.matchMedia?.("(prefers-reduced-motion: reduce)").matches) return;
+    const observer = new IntersectionObserver(entries => {
+      if (entries.some(entry => entry.isIntersecting)) { setGlow(true); observer.disconnect(); }
+    }, { threshold: 1 });
+    if (ref.current) observer.observe(ref.current);
+    return () => observer.disconnect();
+  }, []);
+  return <span ref={ref} className={`${className}${glow ? " is-glow" : ""}`}>{children}</span>;
+}

@@ -28,7 +28,7 @@ pub fn switch_succeeded(app: &AppHandle, account: &str, use_deceive: bool) {
 
 pub fn switch_failed(app: &AppHandle, account: &str, use_deceive: bool, failure: &SwitchFailure) {
     let body = human_reason(failure.kind, account, use_deceive)
-        .unwrap_or_else(|| format!("Could not switch to {account}."));
+        .unwrap_or_else(|| format!("Couldn't switch to {account}. Try again."));
     let _ = app
         .notification()
         .builder()
@@ -42,7 +42,7 @@ pub fn update_available(app: &AppHandle, version: &str) {
         .notification()
         .builder()
         .title("Swapper update available")
-        .body(format!("Version {version} is ready. Click Update in Swapper's title bar to install it."))
+        .body(format!("Version {version} is ready. Open Swapper to install it."))
         .show();
 }
 
@@ -81,21 +81,21 @@ pub fn lan_reconnect_needed(app: &AppHandle) {
         .notification()
         .builder()
         .title("Phone needs to reconnect")
-        .body("Your PC's network address changed. Scan the new QR code in Swapper to keep using your phone.")
+        .body("Your PC address changed. Scan the new QR code in Swapper.")
         .show();
 }
 
 pub(crate) fn human_reason(kind: SwitchFailureKind, account: &str, use_deceive: bool) -> Option<String> {
     let text = match kind {
-        SwitchFailureKind::GameRunning => "Close the running Riot game before switching accounts.".to_string(),
-        SwitchFailureKind::ClientBusy => "Riot Client is still running. Close it from the tray and try again.".to_string(),
-        SwitchFailureKind::InspectionFailed => "Swapper could not verify which Riot processes are running. No account or session data was changed - try again.".to_string(),
-        SwitchFailureKind::AccountMissing => "Account no longer exists.".to_string(),
-        SwitchFailureKind::LauncherMissing if use_deceive => "Bundled Deceive.exe was not found. Reinstall Swapper.".to_string(),
-        SwitchFailureKind::LauncherMissing => "Riot Client was not found. Set its path in Settings.".to_string(),
-        SwitchFailureKind::SessionRestore => format!("The saved session for {account} could not be restored."),
-        SwitchFailureKind::Launch if use_deceive => "Deceive could not be launched.".to_string(),
-        SwitchFailureKind::Launch => "Riot Client could not be launched.".to_string(),
+        SwitchFailureKind::GameRunning => "Close your game first, then switch accounts.".to_string(),
+        SwitchFailureKind::ClientBusy => "Riot Client is still open. Close it fully, then try again.".to_string(),
+        SwitchFailureKind::InspectionFailed => "Couldn't check for running games. Nothing changed \u{2014} try again.".to_string(),
+        SwitchFailureKind::AccountMissing => "That account was removed. Add it again to switch.".to_string(),
+        SwitchFailureKind::LauncherMissing if use_deceive => "Deceive is missing. Reinstall Swapper.".to_string(),
+        SwitchFailureKind::LauncherMissing => "Riot Client wasn't found. Set its path in Settings.".to_string(),
+        SwitchFailureKind::SessionRestore => format!("Couldn't restore {account}'s sign-in. Try Repair account."),
+        SwitchFailureKind::Launch if use_deceive => "Deceive didn't start. Try switching again.".to_string(),
+        SwitchFailureKind::Launch => "Riot Client didn't start. Try switching again.".to_string(),
         SwitchFailureKind::Other => return None,
     };
     Some(text)
@@ -109,7 +109,7 @@ mod tests {
     fn restore_failures_explain_the_saved_session() {
         assert_eq!(
             human_reason(SwitchFailureKind::SessionRestore, "Example#EUW", false),
-            Some("The saved session for Example#EUW could not be restored.".to_string())
+            Some("Couldn't restore Example#EUW's sign-in. Try Repair account.".to_string())
         );
     }
 
@@ -117,11 +117,11 @@ mod tests {
     fn launch_failures_name_the_launcher() {
         assert_eq!(
             human_reason(SwitchFailureKind::Launch, "Example#EUW", false),
-            Some("Riot Client could not be launched.".to_string())
+            Some("Riot Client didn't start. Try switching again.".to_string())
         );
         assert_eq!(
             human_reason(SwitchFailureKind::Launch, "Example#EUW", true),
-            Some("Deceive could not be launched.".to_string())
+            Some("Deceive didn't start. Try switching again.".to_string())
         );
     }
 
@@ -130,7 +130,7 @@ mod tests {
         assert_eq!(
             human_reason(SwitchFailureKind::InspectionFailed, "Example#EUW", false),
             Some(
-                "Swapper could not verify which Riot processes are running. No account or session data was changed - try again."
+                "Couldn't check for running games. Nothing changed \u{2014} try again."
                     .to_string()
             )
         );
@@ -140,11 +140,11 @@ mod tests {
     fn friendly_categories_are_explicit_and_raw_errors_stay_hidden() {
         assert_eq!(
             human_reason(SwitchFailureKind::GameRunning, "Example#EUW", false),
-            Some("Close the running Riot game before switching accounts.".to_string())
+            Some("Close your game first, then switch accounts.".to_string())
         );
         assert_eq!(
             human_reason(SwitchFailureKind::LauncherMissing, "Example#EUW", true),
-            Some("Bundled Deceive.exe was not found. Reinstall Swapper.".to_string())
+            Some("Deceive is missing. Reinstall Swapper.".to_string())
         );
         assert_eq!(human_reason(SwitchFailureKind::Other, "Example#EUW", false), None);
     }

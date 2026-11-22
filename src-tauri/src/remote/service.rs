@@ -84,7 +84,7 @@ impl RemoteCore {
         let join = thread::Builder::new()
             .name("swapper-remote".into())
             .spawn(move || service_thread(thread_core, ready_tx, shutdown_rx))
-            .map_err(|e| format!("Could not start the remote service: {e}"))?;
+            .map_err(|e| { eprintln!("Remote service spawn failed: {e}"); "Couldn't start phone access. Try again.".to_string() })?;
         let info = match ready_rx.recv_timeout(Duration::from_secs(30)) {
             Ok(Ok(info)) => info,
             Ok(Err(err)) => {
@@ -95,7 +95,7 @@ impl RemoteCore {
             Err(_) => {
                 let _ = shutdown_tx.send(());
                 let _ = join.join();
-                return Err("The remote service did not start in time.".into());
+                return Err("Phone access didn't start. Turn it off and on again.".into());
             }
         };
         *lock(&core.service) = Some(Service {
@@ -122,7 +122,7 @@ fn service_thread(
     {
         Ok(runtime) => runtime,
         Err(err) => {
-            let _ = ready.send(Err(format!("Could not start the remote service: {err}")));
+            let _ = ready.send(Err({ eprintln!("Remote service start failed: {err}"); "Couldn't start phone access. Try again.".to_string() }));
             return;
         }
     };
@@ -130,18 +130,14 @@ fn service_thread(
         let listener = match tokio::net::TcpListener::bind(("127.0.0.1", 0)).await {
             Ok(listener) => listener,
             Err(err) => {
-                let _ = ready.send(Err(format!(
-                    "Could not listen for remote connections: {err}"
-                )));
+                eprintln!("Remote listen failed: {err}"); let _ = ready.send(Err("Couldn't start phone access. Try again.".to_string()));
                 return;
             }
         };
         let port = match listener.local_addr() {
             Ok(addr) => addr.port(),
             Err(err) => {
-                let _ = ready.send(Err(format!(
-                    "Could not read the remote service address: {err}"
-                )));
+                eprintln!("Remote address read failed: {err}"); let _ = ready.send(Err("Couldn't read your network address. Try again.".to_string()));
                 return;
             }
         };
@@ -152,10 +148,10 @@ fn service_thread(
             Option<std::net::Ipv4Addr>,
         ) = match network::default_interface() {
             Err(error) => (None, Some(error), None),
-            Ok(None) => (None, Some("No active Ethernet or Wi-Fi interface with a private IPv4 default route was found.".into()), None),
+            Ok(None) => (None, Some("No home network found. Connect to Wi-Fi, then retry.".into()), None),
             Ok(Some(interface)) => match network::is_private_profile(&interface.adapter_id) {
                 Err(error) => (None, Some(error), None),
-                Ok(false) => (None, Some("LAN access is off because the active Windows network is not set to Private.".into()), None),
+                Ok(false) => (None, Some("LAN is unavailable. Set your network to Private, then retry.".into()), None),
                 // Checked before binding: listening without a rule would make
                 // Windows pop its own firewall prompt on startup.
                 Ok(true) if !network::private_app_allowed() => {
@@ -164,13 +160,9 @@ fn service_thread(
                 Ok(true) => {
                     let target = Some(interface.address);
                     match tokio::net::TcpListener::bind((interface.address, LAN_REMOTE_PORT)).await {
-                        Err(error) => (None, Some(format!(
-                            "Could not listen on {} ({}:{LAN_REMOTE_PORT}): {error}",
-                            interface.name,
-                            interface.address
-                        )), target),
+                        Err(error) => { eprintln!("LAN listen failed on {} ({}): {error}", interface.name, interface.address); (None, Some("Couldn't use this network. Try another network.".to_string()), target) },
                         Ok(listener) => match listener.local_addr() {
-                            Err(error) => (None, Some(format!("Could not read the LAN listener address: {error}")), target),
+                            Err(error) => (None, Some({ eprintln!("LAN address read failed: {error}"); "Couldn't read your network address. Try again.".to_string() }), target),
                             Ok(address) => {
                                 let endpoint = LanEndpoint {
                                     address: interface.address,

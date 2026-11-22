@@ -155,6 +155,10 @@ export type TierRow = {
   pickPct: number;
   banPct: number;
   games: number;
+  /** The previous patch's tier, when the champion had enough games on both patches. */
+  prevTier?: string | null;
+  /** Win rate now minus about a week ago, same patch; null without enough history. */
+  weekWinDelta?: number | null;
 };
 
 /** One ADC + Support pair in the bot lane duo list. */
@@ -462,7 +466,7 @@ export function shopNoticeFrom(result: ItemsImported): ShopNotice {
     ok: result.ok,
     message: result.ok
       ? result.title ? `Shop items added: ${result.title}` : "Shop items added."
-      : result.message ?? "Could not add the item build to the shop.",
+      : result.message ?? "Couldn't add those items. Try again.",
   };
 }
 

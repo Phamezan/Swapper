@@ -2,7 +2,7 @@ import { test } from "node:test";
 import assert from "node:assert/strict";
 // Import TS via built? compsModel is TS; node test runs the .ts through --experimental-strip-types if available.
 // Fallback: duplicate minimal import using tsx-less strip.
-import { TEAM_QUEUES, addedChampionRole, coverageFor, selectTeamMembers, suggestTeammates, teamMode, applyOverrides, isOlderMeta, peakLabel } from "./compsModel.ts";
+import { addedChampionRole, assignRoles, compPlayable, coverageFor, isTailored, lobbyActive, lobbyCandidates, partitionPlayable, playerLabel, subHintFor, toggleActive, teamMode, applyOverrides, isOlderMeta, peakLabel } from "./compsModel.ts";
 
 const player = (riotId, isSelf, pool, mainRole) => ({ puuid: riotId, riotId, isSelf, included: true, pool, mainRole });
 const entry = (championId, role, extra = {}) => ({ championId, role, reason: "test", ...extra });
@@ -30,12 +30,6 @@ test("core preferred over non-core for same player conflict", () => {
   assert.equal(cov.assignments.find(a => a.role === "mid")?.player?.riotId, "You");
   assert.equal(cov.count, 1);
 });
-test("suggestTeammates threshold 3", () => {
-  const games = Array.from({ length: 5 }, () => ({ queue: "flex", players: [{ riotId: "A#1", ally: true, me: false, puuid: "a" }, { riotId: "B#1", ally: true, me: false, puuid: "b" }, { riotId: "Me#1", ally: true, me: true, puuid: "me" }] }));
-  for (let i = 0; i < 3; i++) games[i].players = games[i].players.filter(p => p.riotId !== "B#1");
-  const s = suggestTeammates(games);
-  assert.equal(s.length, 1); assert.equal(s[0].riotId, "A#1");
-});
 test("overrides hide and add", () => {
   const out = applyOverrides([entry(103, "mid"), entry(157, "mid")], [{ championId: 147, role: "mid" }], [157]);
   assert.equal(out.find(e => e.championId === 157)?.hidden, true);
@@ -47,13 +41,6 @@ test("older meta and peak", () => {
   assert.equal(peakLabel(variation), "Strong mid game");
 });
 
-test('teammate suggestions only count Ranked Flex and Clash games', () => {
-  const ally = { riotId: 'Friend#1', puuid: 'f1', ally: true, me: false };
-  const game = queue => ({ queue, players: [{ riotId: 'Me#1', puuid: 'me', ally: true, me: true }, ally] });
-  assert.deepEqual(TEAM_QUEUES, ['flex', 'clash']);
-  assert.deepEqual(suggestTeammates([game('normal'), game('normal'), game('normal'), game('solo')]), []);
-  assert.equal(suggestTeammates([game('flex'), game('clash'), game('flex'), game('normal')])[0].count, 3);
-});
 
 test("optimal assignment: A core top+mid (main mid), B only core mid -> 2/5 A top B mid", () => {
   const v = { ...variation, slots: [slot("top", [{ championId: 516, name: "Ornn", core: true }]), slot("jungle", [{ championId: 64, name: "Lee Sin" }]), slot("mid", [{ championId: 61, name: "Orianna", core: true }]), slot("bot", [{ championId: 222, name: "Jinx" }]), slot("support", [{ championId: 412, name: "Thresh" }])] };
@@ -63,17 +50,6 @@ test("optimal assignment: A core top+mid (main mid), B only core mid -> 2/5 A to
   assert.equal(cov.count, 2);
   assert.equal(cov.assignments.find(x => x.role === "top")?.player?.riotId, "A");
   assert.equal(cov.assignments.find(x => x.role === "mid")?.player?.riotId, "B");
-});
-test("team-source selection: lobby > saved > backend > snapshot fallback, added, cap 5", () => {
-  const me = { puuid: "me", riotId: "Me#1" };
-  const snap = Array.from({ length: 3 }, () => ({ queue: "flex", players: [{ riotId: "Me#1", ally: true, me: true, puuid: "me" }, { riotId: "Snap#1", ally: true, me: false, puuid: "snap" }] }));
-  assert.equal(selectTeamMembers({ lobby: [me, { puuid: "l1", riotId: "L#1" }], saved: [{ puuid: "s1", riotId: "S#1" }], me, suggested: [], snapshotGames: [], added: [] }).source, "lobby");
-  assert.equal(selectTeamMembers({ lobby: [], saved: [{ puuid: "s1", riotId: "S#1" }], me, suggested: [], snapshotGames: [], added: [] }).source, "saved");
-  const backend = selectTeamMembers({ lobby: [], saved: [], me, suggested: [{ puuid: "b1", riotId: "B#1", games: 5 }], snapshotGames: snap, added: [] });
-  assert.deepEqual(backend.members.map(m => m.puuid), ["me", "b1"]);
-  const fallback = selectTeamMembers({ lobby: [], saved: [], me, suggested: [], snapshotGames: snap, added: [{ puuid: "add", riotId: "Add#1" }] });
-  assert.deepEqual(fallback.members.map(m => m.puuid), ["me", "snap", "add"]);
-  assert.equal(fallback.source, "auto");
 });
 test("browse/solo/team mode uses included players only", () => {
   const me = player("Me", true, [], "mid"); const mate = player("Mate", false, [], "top");
@@ -98,4 +74,63 @@ test('a core slot only fills with its core pick', () => {
   assert.equal(yasuoOnly.assignments.find(a => a.role === 'mid').champion, null);
   const ori = coverageFor(v, [player('Me#1', true, [entry(61, 'mid')], 'mid')]);
   assert.equal(ori.assignments.find(a => a.role === 'mid').champion.name, 'Orianna');
+});
+test("active set caps at five and toggles off", () => {
+  assert.deepEqual(toggleActive(["you"], "a"), ["you", "a"]);
+  assert.deepEqual(toggleActive(["you", "a"], "a"), ["you"]);
+  const five = ["you", "a", "b", "c", "d"];
+  assert.equal(toggleActive(five, "e"), five);
+});
+test("lobby merge activates roster members only, candidates exclude roster and you", () => {
+  assert.deepEqual(lobbyActive(["a", "b", "c"], ["b", "x", "c"], ["you"]), ["you", "b", "c"]);
+  const lobby = [{ puuid: "you" }, { puuid: "a" }, { puuid: "x" }];
+  assert.deepEqual(lobbyCandidates(lobby, ["a"], "you").map(m => m.puuid), ["x"]);
+});
+test("role auto-assign maximises preference rank with no clashes", () => {
+  const players = [{ puuid: "you", roles: ["mid", "top"] }, { puuid: "a", roles: ["top", "jungle"] }, { puuid: "b", roles: ["jungle"] }, { puuid: "c", roles: ["bot"] }, { puuid: "d", roles: ["support"] }];
+  const { assigned, clash, open } = assignRoles(players, {});
+  assert.equal(assigned.you, "mid"); assert.equal(assigned.a, "top"); assert.equal(assigned.b, "jungle");
+  assert.deepEqual(clash, []); assert.deepEqual(open, []);
+});
+test("manual override wins and unresolvable clash is flagged", () => {
+  const players = [{ puuid: "a", roles: ["bot", "support"] }, { puuid: "b", roles: ["bot", "support"] }, { puuid: "c", roles: ["mid"] }];
+  const forced = assignRoles(players, { a: "bot", b: "bot" });
+  assert.equal(forced.assigned.a, "bot"); assert.equal(forced.assigned.b, "bot");
+  assert.deepEqual([...forced.clash].sort(), ["a", "b"]);
+  const stuck = assignRoles([{ puuid: "a", roles: ["mid"] }, { puuid: "b", roles: ["mid"] }], {});
+  assert.deepEqual([...stuck.clash].sort(), ["a", "b"]);
+});
+test("tailoring only at exactly five active", () => {
+  assert.equal(isTailored(5), true); assert.equal(isTailored(4), false); assert.equal(isTailored(0), false);
+});
+test("sub hint swaps one non-self player, never you", () => {
+  const team = [player("You", true, [entry(103, "mid")], "mid"), player("P1", false, [entry(64, "jungle")], "jungle"), player("P2", false, [entry(222, "bot")], "bot"), player("P3", false, [entry(412, "support")], "support"), player("P4", false, [entry(1, "top")], "top"), player("Sub", false, [entry(516, "top")], "top")];
+  team[5].included = false;
+  const hint = subHintFor(variation, team);
+  assert.equal(hint?.out.riotId, "P4"); assert.equal(hint?.inn.riotId, "Sub");
+  // Without the sub there is no hint; with only 4 active there is no hint either.
+  assert.equal(subHintFor(variation, team.slice(0, 5)), null);
+  team[4].included = false; assert.equal(subHintFor(variation, team), null);
+});
+test("player label prefers nickname over riot name", () => {
+  assert.equal(playerLabel({ riotId: "Name#TAG", nickname: "Nick" }), "Nick");
+  assert.equal(playerLabel({ riotId: "Name#TAG" }), "Name");
+  assert.equal(playerLabel({ riotId: "Name#TAG", isSelf: true }), "You");
+});
+
+test("13A playable: 5 active needs 5/5 or a one-swap hint", () => {
+  const cov = (count) => ({ count, assignments: [], missing: [], playableByMe: false });
+  assert.equal(compPlayable(cov(5), false, 5), true);
+  assert.equal(compPlayable(cov(4), true, 5), true);
+  assert.equal(compPlayable(cov(4), false, 5), false);
+  assert.equal(compPlayable(cov(1), false, 1), true);
+  assert.equal(compPlayable(cov(0), false, 1), false);
+  assert.equal(compPlayable(cov(3), false, 3), true);
+  assert.equal(compPlayable(cov(5), true, 0), false);
+});
+test("partitionPlayable is stable: playable first, order kept", () => {
+  const items = [{ id: "a", p: false }, { id: "b", p: true }, { id: "c", p: false }, { id: "d", p: true }];
+  const { playable, rest } = partitionPlayable(items, x => x.p);
+  assert.deepEqual(playable.map(x => x.id), ["b", "d"]);
+  assert.deepEqual(rest.map(x => x.id), ["a", "c"]);
 });

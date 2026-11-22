@@ -18,7 +18,7 @@ export function AccountsView({ controller, fullApp }: { controller: AppControlle
   const {
     data, clientHealth, busy, switchingAccountId, setName, setEditing, setPendingRemove, repairableId,
     setDetectedPrompt, showError, showRemoteQr, dismissReconnect, navigate, isBusy, openAccountMenu,
-    switchToAccount, startRepair, visibleDetectedPrompt, displayedActiveId, saveDetected,
+    switchToAccount, startRepair, visibleDetectedPrompt, displayedActiveId, saveDetected, reorderAccounts,
   } = controller;
   const AccountsSurface = fullApp?.Accounts;
   return (
@@ -47,7 +47,7 @@ export function AccountsView({ controller, fullApp }: { controller: AppControlle
               </section>
             )}
             {AccountsSurface ? <AccountsSurface accounts={data.accounts} activeId={displayedActiveId} switchingId={switchingAccountId} repairableId={repairableId} busy={isBusy} closed={clientHealth === "closed"}
-              onSwitch={id => void switchToAccount(id)} onRestart={fullApp?.onRestart} onAdd={() => navigate("add")} onRepair={startRepair} onError={showError}
+              onSwitch={id => void switchToAccount(id)} onRestart={fullApp?.onRestart} onAdd={() => navigate("add")} onRepair={startRepair} onError={showError} onReorder={ids => void reorderAccounts(ids)}
               onRename={account => { navigate("edit"); setEditing(account.id); setName(account.nickname ?? ""); }}
               onRemove={id => { navigate("remove"); setPendingRemove(id); }} /> : <div className="account-list">
               {data.accounts.length === 0 ? (
@@ -142,7 +142,7 @@ export function AccountForms({ controller }: { controller: AppController; fullAp
                 <span className="step-number">02</span>
                 {detect.phase === "found" && conflictingSavedAccount ? <>
                   <h2>Account name already saved</h2>
-                  <p>A saved account has this Riot ID but a different identifier. Swapper can’t safely save a copy or update it.</p>
+                  <p>This Riot ID is already saved differently. Swapper can't copy or update it.</p>
                   <IdentityCard identity={detect.identity} />
                   <button className="text-action" onClick={() => navigate("accounts")}>Back to accounts</button>
                 </> : detect.phase === "found" && detect.savedAccountId === null ? <>
@@ -161,7 +161,7 @@ export function AccountForms({ controller }: { controller: AppController; fullAp
                   </Button>
                   <button className="text-action" onClick={() => setAddStage("signIn")}>Use a different account</button>
                 </> : detect.phase === "failed" ? <>
-                  <h2>Could not read account identity</h2>
+                  <h2>Couldn't read your account</h2>
                   <p>Open Riot Client, sign in, then try again.</p>
                   <Button className="primary-action" disabled={busy !== null} onClick={() => { setError(null); setDetectRound((round) => round + 1); }}>
                     <RefreshIcon size={16} /> Try Again
